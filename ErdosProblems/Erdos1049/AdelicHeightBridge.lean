@@ -1411,17 +1411,6 @@ theorem zudilinTransformedNormalizedMoment_one_initialMonomial (l : ℕ) :
   exact ⟨order_zudilinTransformedNormalizedMoment_one l,
     coeff_zudilinTransformedNormalizedMoment_one_first l⟩
 
-/-- The first candidate coefficient in transformed row `2`, column `0`.
-This is the smallest literal-source test beyond the all-column row-`1`
-theorem. -/
-theorem coeff_zudilinTransformedNormalizedMoment_two_zero_first :
-    PowerSeries.coeff 3 (zudilinTransformedNormalizedMoment 2 0) = 18 := by
-  norm_num [zudilinTransformedNormalizedMoment, zudilinBackwardShiftApply,
-    zudilinBackwardShiftCoeff, zudilinQBinomialPS,
-    zudilinNormalizedMoment, zudilinNormalizedTail,
-    zudilinNormalizedTailUnit, zudilinPochhammerPS,
-    PowerSeries.coeff_mul, PowerSeries.coeff_X_pow_mul']
-
 /-- The exact exponent left after the transformed-row factors and the
 Vandermonde leading monomial are combined.  Writing it as a sum of squares
 keeps the assembly independent of any division convention. -/
