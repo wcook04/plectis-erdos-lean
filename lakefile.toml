@@ -1,7 +1,7 @@
 name = "erdos257_period_noncollapse"
 version = "0.1.0"
 keywords = ["math", "erdos257", "period-noncollapse"]
-defaultTargets = ["ExternalVerification68ChannelRadius", "ExternalVerification243PeriodicNegativeOrbit", "ExternalVerification249BinaryCyclotomicAnchors", "ExternalVerification249RankOneSharpFloor", "ExternalVerification251PolynomialShiftCountermodel", "ExternalVerification251ActualPrimeGapTail", "ExternalVerification257ReciprocalSupport", "ExternalVerification257FinitePeriodNoncollapse", "ExternalVerification257RationalTailRigidity", "ExternalVerification269ThreePrimeStructure", "ExternalVerification1041SolvedFamilies", "ExternalVerification1041CyclicTrinomialFiber", "ExternalVerification1041QuarticQuotientFiber", "ExternalVerification1041CriticalGeometry", "ExternalVerification1041TetranomialSpokes", "ExternalVerification1049AdelicHeightBridge", "ExternalVerification1049RationalBaseBarrier", "ExternalVerification1049PrimeSupportSelectors", "ExternalVerification1049HermitePadeNoGo", "Solutions"]
+defaultTargets = ["ExternalVerification68ChannelRadius", "ExternalVerification68CompanionOrbitBoundary", "ExternalVerification243PeriodicNegativeOrbit", "ExternalVerification249BinaryCyclotomicAnchors", "ExternalVerification249RankOneSharpFloor", "ExternalVerification251PolynomialShiftCountermodel", "ExternalVerification251ActualPrimeGapTail", "ExternalVerification257ReciprocalSupport", "ExternalVerification257FinitePeriodNoncollapse", "ExternalVerification257RationalTailRigidity", "ExternalVerification269ThreePrimeStructure", "ExternalVerification1041SolvedFamilies", "ExternalVerification1041CyclicTrinomialFiber", "ExternalVerification1041QuarticQuotientFiber", "ExternalVerification1041CriticalGeometry", "ExternalVerification1041TetranomialSpokes", "ExternalVerification1041FirstMergeCriticalValueSeparation", "ExternalVerification1049AdelicHeightBridge", "ExternalVerification1049RationalBaseBarrier", "ExternalVerification1049PrimeSupportSelectors", "ExternalVerification1049HermitePadeNoGo", "Solutions"]
 
 [leanOptions]
 pp.unicode.fun = true
@@ -20,6 +20,10 @@ name = "ErdosProblems"
 [[lean_lib]]
 name = "ExternalVerification68ChannelRadius"
 globs = ["ExternalVerification68ChannelRadius.+"]
+
+[[lean_lib]]
+name = "ExternalVerification68CompanionOrbitBoundary"
+globs = ["ExternalVerification68CompanionOrbitBoundary.+"]
 
 [[lean_lib]]
 name = "ExternalVerification243PeriodicNegativeOrbit"
@@ -76,6 +80,10 @@ globs = ["ExternalVerification1041CriticalGeometry.+"]
 [[lean_lib]]
 name = "ExternalVerification1041TetranomialSpokes"
 globs = ["ExternalVerification1041TetranomialSpokes.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1041FirstMergeCriticalValueSeparation"
+globs = ["ExternalVerification1041FirstMergeCriticalValueSeparation.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1049AdelicHeightBridge"

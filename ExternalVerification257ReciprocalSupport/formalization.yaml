@@ -12,14 +12,14 @@ project:
     produces close returns of shifted binary support atoms from an LCM-prefix orbit-mean
     argument, transfers them to every radix through a uniform pointwise inequality
     bounding the base-b atom displacement by twice the binary one, and closes with
-    an exact radix integer orbit. Erdős proved the pairwise-coprime case at base two
-    and stated that pairwise coprimality can be removed by a more complicated argument
-    without printing that argument; the base-two proof here is an independent reconstruction,
-    the passage to every integer base is a local strengthening, and no theorem-priority
-    claim is made and no identification with Erdős's omitted argument is asserted.
-    The audience is analytic number theorists working on irrationality of Mersenne-type
-    reciprocal subseries. Reciprocal-divergent supports are untouched, so the universal
-    Erdős Problem 257 remains open.
+    an exact radix integer orbit. Erdős (1968) proved the pairwise-coprime reciprocal-summable
+    case for every integer base t at least two and stated that pairwise coprimality
+    is superfluous by a more complicated argument he did not print; this formalization
+    proves that stated extension, in every integer base, by an independent argument.
+    No theorem-priority claim is made and no identification with Erdős's omitted argument
+    is asserted. The audience is analytic number theorists working on irrationality
+    of Mersenne-type reciprocal subseries. Reciprocal-divergent supports are untouched,
+    so the universal Erdős Problem 257 remains open.
   authors:
   - Will Cook
   license: Apache-2.0
@@ -38,12 +38,15 @@ sources:
   type: paper
   location: The Mathematics Student 36 (1968, issued 1969), 222–226
   relationship: independently-proves
-  note: Erdős proves the pairwise-coprime reciprocal-summable case and states that
-    pairwise coprimality can be removed by a more complicated argument, without printing
-    that argument. This formalization independently proves the stated no-coprimality
-    conclusion at base two and then proves a local all-base strengthening by uniform
-    atom comparison. A bounded source search found no printed proof of the exact historical
-    extension, but that non-location does not support a first-proof or priority claim.
+  note: Erdős proves the pairwise-coprime reciprocal-summable case for every integer
+    base t at least two (Math. Student 36, p. 222) and states that pairwise coprimality
+    is superfluous by a more complicated argument, without printing that argument
+    (p. 226 names fractional parts of t^n alpha as the mechanism). This formalization
+    independently proves the stated no-coprimality conclusion in every integer base;
+    the base generality is Erdős's own, and the removed hypothesis is the only strengthening
+    over his printed theorem. A bounded source search (audit 2026-09-02, docs/formal_math/palomar/prior_art_adjudication_2026_09_02.md)
+    found no printed proof of the extension, but that non-location does not support
+    a first-proof or priority claim.
   license: unknown
   author_endorsement: not-contacted
 - title: Mathlib

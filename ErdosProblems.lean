@@ -5,6 +5,7 @@ import ErdosProblems.Erdos1041.CriticalTwoRootProximity
 import ErdosProblems.Erdos1041.CubicQuotientFiberCase
 import ErdosProblems.Erdos1041.CyclicTetranomialCoefficientCase
 import ErdosProblems.Erdos1041.CyclicTrinomialFiberCase
+import ErdosProblems.Erdos1041.FirstMergeCriticalValueSeparation
 import ErdosProblems.Erdos1041.PrimitiveQuinticBoundaryTail
 import ErdosProblems.Erdos1041.PrimitiveQuinticInteriorTail
 import ErdosProblems.Erdos1041.QuarticQuotientFiberCase
@@ -30,6 +31,17 @@ import ErdosProblems.Erdos249.RankOneSubrankObstruction
 import ErdosProblems.Erdos251.PrimeGapDyadicTail
 import ErdosProblems.Erdos269.KernelCarryRank
 import ErdosProblems.Erdos269.ThreePrimeRunningLcm
+import ErdosProblems.Erdos68.CanonicalFactorialDigits
+import ErdosProblems.Erdos68.CarryCongruenceNormalForm
 import ErdosProblems.Erdos68.ChannelBreakpointRigidity
 import ErdosProblems.Erdos68.ChannelIntegralCongruence
+import ErdosProblems.Erdos68.CompanionConstantBridge
+import ErdosProblems.Erdos68.CompanionOrbitRationality
+import ErdosProblems.Erdos68.ConstantOnlyMissCertificates
+import ErdosProblems.Erdos68.FactorialDigitRigidity
+import ErdosProblems.Erdos68.FactorialZeroPlateau
+import ErdosProblems.Erdos68.GapScalarNormalForm
+import ErdosProblems.Erdos68.PrimeUnitTranslator
+import ErdosProblems.Erdos68.SecondLayerDigit
+import ErdosProblems.Erdos68.StrictSuccessorArithmetic
 import ErdosProblems.Shared.IrrationalRotationStaircase

@@ -30,7 +30,7 @@
       "status": "allowed_only_with_resource_headroom"
     }
   },
-  "generated_at": "2026-09-01T21:00:50Z",
+  "generated_at": "2026-09-01T23:51:01Z",
   "moving_frontier_policy": {
     "breaking_private_change": "Topology changes require a compatibility adapter or a new snapshot lane in Plectis.",
     "private_frontier": "Private #249/#257 work is excluded until a new manifest row and release gate promote it.",
@@ -97,8 +97,8 @@
     ],
     "plectis_consumption_mode": "pointer_only_until_public_tag",
     "schema": "plectis_lean_public_api_contract_v0",
-    "source_file_count": 180,
-    "source_snapshot_sha256": "f939772987e7c19f3d255a934b6599dea551064a970ec1b275d24de3f42a3fda",
+    "source_file_count": 202,
+    "source_snapshot_sha256": "9b7cb88601476f8d459d2c271028f1d82ef5497e14f46db843a1b0d9c544ab2c",
     "stable_metadata_files": [
       "snapshot/PLECTIS_INTEGRATION.json",
       "snapshot/PUBLIC_SNAPSHOT_MANIFEST.json",
@@ -448,6 +448,11 @@
       "sha256": "6c7d5f5bbdae7466b61dea88bd628ca7d4e49d28f9a4267302a0a0f6df68b853"
     },
     {
+      "bytes": 8347,
+      "path": "ErdosProblems/Erdos1041/FirstMergeCriticalValueSeparation.lean",
+      "sha256": "d031793cb70e88bfa3a5cdd410108a0c7004a91b922d169f2996ed82b83c9356"
+    },
+    {
       "bytes": 11186,
       "path": "ErdosProblems/Erdos1041/PrimitiveQuinticBoundaryTail.lean",
       "sha256": "25adf76b6e209c54688d5878f0524943dd85312a2a09a59673f56a9ba74d67dc"
@@ -493,9 +498,9 @@
       "sha256": "a2144b4fdacf466d68be3908870e0e721a5cd24a651072530a253b52770df875"
     },
     {
-      "bytes": 82840,
+      "bytes": 83425,
       "path": "ErdosProblems/Erdos1049/AdelicHeightBridge.lean",
-      "sha256": "3cd36a9463c6cbd51a945f544ce06f3d253e30a1540e71ca3cfd2776f9014a50"
+      "sha256": "05f1921a45eb7876f2d583a67df25a6d1e77328a65957cd64f6e401e492b0b89"
     },
     {
       "bytes": 13024,
@@ -573,6 +578,16 @@
       "sha256": "769d80481465f4fd8655d5d62c5eb3e372c80c39b0722e80659bf4e150c6c036"
     },
     {
+      "bytes": 10650,
+      "path": "ErdosProblems/Erdos68/CanonicalFactorialDigits.lean",
+      "sha256": "a0b711c869ded5d04b3f22b27ff57ea574cb28550c27535f3c8b4047f8f14827"
+    },
+    {
+      "bytes": 15873,
+      "path": "ErdosProblems/Erdos68/CarryCongruenceNormalForm.lean",
+      "sha256": "e85047cb300ff5bcb6e201807e20f938915cf4a717a92a969c42aded1f3171c5"
+    },
+    {
       "bytes": 6507,
       "path": "ErdosProblems/Erdos68/ChannelBreakpointRigidity.lean",
       "sha256": "0f62e658b9964a37ad2bf0310d99ec4fa35f385720932d66e91abac28b65a903"
@@ -581,6 +596,51 @@
       "bytes": 52507,
       "path": "ErdosProblems/Erdos68/ChannelIntegralCongruence.lean",
       "sha256": "39461fdf3fa1ff404e6b9ae3ba5e642c88250f62edde20216e1cd65563bd2227"
+    },
+    {
+      "bytes": 7232,
+      "path": "ErdosProblems/Erdos68/CompanionConstantBridge.lean",
+      "sha256": "18d64c58660749777137a1ee8a2e81ecf8e6bc56af1173dbdbdf441d455ee7c3"
+    },
+    {
+      "bytes": 21708,
+      "path": "ErdosProblems/Erdos68/CompanionOrbitRationality.lean",
+      "sha256": "9b0ee56e4ab624ca694aaad7fa3a9b38a89751fe8a81292a2f0c8cfb5d296edf"
+    },
+    {
+      "bytes": 8052,
+      "path": "ErdosProblems/Erdos68/ConstantOnlyMissCertificates.lean",
+      "sha256": "e7de8e3080d2ce69bda7a1ab106160e780f850cbb7bf623a1885c3ae9a0694c3"
+    },
+    {
+      "bytes": 4828,
+      "path": "ErdosProblems/Erdos68/FactorialDigitRigidity.lean",
+      "sha256": "23a39810f47f393046be2075423c646fdfaddb1f6e35e92fd71c4cf6bca7d215"
+    },
+    {
+      "bytes": 69638,
+      "path": "ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
+      "sha256": "2d6bf8d6048d6247a1ce3793f6506146bc1d899facfab1f50e6be574304027aa"
+    },
+    {
+      "bytes": 13826,
+      "path": "ErdosProblems/Erdos68/GapScalarNormalForm.lean",
+      "sha256": "9dc4edcd1f0852d6a38667c8ccebd1ffd3acd23b883875c2b836b6f233689826"
+    },
+    {
+      "bytes": 72848,
+      "path": "ErdosProblems/Erdos68/PrimeUnitTranslator.lean",
+      "sha256": "3ef49f719f4596f08efb76f561fef7badf7e287873ffd0ad2cb588cd4acf7a5d"
+    },
+    {
+      "bytes": 7909,
+      "path": "ErdosProblems/Erdos68/SecondLayerDigit.lean",
+      "sha256": "75c5320d621ba7b42e0fe633783599a81ee8ad2b4b9ab08ef366dfdd555d3008"
+    },
+    {
+      "bytes": 6903,
+      "path": "ErdosProblems/Erdos68/StrictSuccessorArithmetic.lean",
+      "sha256": "e03320c57d2ae0d42f52564023f4d62d92e805696bf010d6b48c66ecb053064b"
     },
     {
       "bytes": 19200,
@@ -609,9 +669,9 @@
       "sha256": "5b2cc3363866e4fcca8834ce397b3852ff71f86e63a2c16ff6551f794da4acb7"
     },
     {
-      "bytes": 10369,
+      "bytes": 10409,
       "path": "ExternalVerification1041CriticalGeometry/formalization.yaml",
-      "sha256": "b3a3331f1c6dacc000d0d86e388ba28e64cc0bb53dfeaa55b590faa4ca126ed1"
+      "sha256": "cd84d490d30ab9ef1fab1f7814c446c2613e71e79319c57f4d2b016dab95c41b"
     },
     {
       "bytes": 401,
@@ -635,9 +695,35 @@
       "sha256": "d1d5ee54af5f6fa298e6379cf1e0ffdbc215494bd0eb61d4fa2a019fedb560cc"
     },
     {
-      "bytes": 3861,
+      "bytes": 3901,
       "path": "ExternalVerification1041CyclicTrinomialFiber/formalization.yaml",
-      "sha256": "2773d87b82e92e9d6f0c3f08a226bfc2fd609d38c78d2b14237f743b8e30d77a"
+      "sha256": "ea019ce1103eab2e5f31294831660c21c0c3c67734a803811c50932c28ecd7cf"
+    },
+    {
+      "bytes": 324,
+      "path": "ExternalVerification1041FirstMergeCriticalValueSeparation/AxiomAudit.lean",
+      "sha256": "98cd45dc00e49a50ef1d81288f7ad214a637ced2916dcf6502b00757efbb49da"
+    },
+    {
+      "bytes": 1617,
+      "path": "ExternalVerification1041FirstMergeCriticalValueSeparation/Challenge.lean",
+      "sha256": "d4a8fe074516e0ecf1ab03557a2310dc0e8c2bfd5af0e55cb75066ea58da8838"
+    },
+    {
+      "bytes": 1477,
+      "path": "Solutions/ExternalVerification1041FirstMergeCriticalValueSeparation.lean",
+      "relocated_from": "ExternalVerification1041FirstMergeCriticalValueSeparation/Solution.lean",
+      "sha256": "d0e8121da3fd2e989f3149fb2a4af2c8b0f45f8531b44b97ba1f3cbc0c68f9da"
+    },
+    {
+      "bytes": 557,
+      "path": "ExternalVerification1041FirstMergeCriticalValueSeparation/comparator.json",
+      "sha256": "34f3ff2da87fb8598010a04026e1be0788b7de14422954334882a3b3ac238111"
+    },
+    {
+      "bytes": 12301,
+      "path": "ExternalVerification1041FirstMergeCriticalValueSeparation/formalization.yaml",
+      "sha256": "b1bd917ba0929404cfe03d2bbaf26170bc82fa76f30dcb4da73396f45d233733"
     },
     {
       "bytes": 470,
@@ -661,9 +747,9 @@
       "sha256": "088c7b7320fc29d2e72c2c0dc3fd9e46f269298f0b256c93967d02fa81b21959"
     },
     {
-      "bytes": 4100,
+      "bytes": 4140,
       "path": "ExternalVerification1041QuarticQuotientFiber/formalization.yaml",
-      "sha256": "7a0ca4137041b2be46bc3464ab84d46b63baaeb7fee3714ebe1f3b9b139719a1"
+      "sha256": "a3dbc400b9420d063b1616488994948106d77da321a88dc5fc9ce23678cac410"
     },
     {
       "bytes": 353,
@@ -687,9 +773,9 @@
       "sha256": "2548f6968e40ea974aa2d86e685c5e5c0158aea89b10d07146cc1346f36cf86b"
     },
     {
-      "bytes": 16664,
+      "bytes": 16629,
       "path": "ExternalVerification1041SolvedFamilies/formalization.yaml",
-      "sha256": "7df13ef1546ba36b7ad2eefeb1274fa227aa7a6054b3cf94202ff509d16bad98"
+      "sha256": "83724a43c05077edd4f69549ba352995d47a49da644a317073a7315949f2d113"
     },
     {
       "bytes": 881,
@@ -713,9 +799,9 @@
       "sha256": "a44f247ac9f203fdb0885b6174d292c1ce5b13b5434736e4389b11a6ef8137c7"
     },
     {
-      "bytes": 7864,
+      "bytes": 7904,
       "path": "ExternalVerification1041TetranomialSpokes/formalization.yaml",
-      "sha256": "b12111770edd4a9621666f6e2e728ae4153a769aa7652810a95ca27bade558fc"
+      "sha256": "5a0dd9fba7593526a4904d1bfec664c7d1f80ceb2ea7c2de023201129aaaa6c8"
     },
     {
       "bytes": 1309,
@@ -739,9 +825,9 @@
       "sha256": "ef0572655c509b618f0c87c1495791b79bfb5eaebbda6ba78f41e04b507a7b1e"
     },
     {
-      "bytes": 18673,
+      "bytes": 18689,
       "path": "ExternalVerification1049AdelicHeightBridge/formalization.yaml",
-      "sha256": "b0c88173208c492adf403b3b9e31a0ef54162e7b3827f32a54054dbb1e8f6331"
+      "sha256": "15e7a41469042ceeb3de3130748442ced95b99e1f935260b2abbc3e5c0d69715"
     },
     {
       "bytes": 535,
@@ -765,9 +851,9 @@
       "sha256": "e4577d3292075f6a82c388201e586e46497ce214546a1c7d9f120be639ed041a"
     },
     {
-      "bytes": 7333,
+      "bytes": 7373,
       "path": "ExternalVerification1049HermitePadeNoGo/formalization.yaml",
-      "sha256": "ec782568248c172bcbd34397c861303290b7932b31d5b7a3fcc811f0e2844696"
+      "sha256": "d86d3b3575f9d973d380929d822a00c8f2072c33f6efb9bb7332f57223210a8c"
     },
     {
       "bytes": 729,
@@ -791,9 +877,9 @@
       "sha256": "4ce5612402c2f45c49a3eee0708ba1c40f04029e933f1f6fd2d03dbb5dbf96bc"
     },
     {
-      "bytes": 13436,
+      "bytes": 13418,
       "path": "ExternalVerification1049PrimeSupportSelectors/formalization.yaml",
-      "sha256": "d3a681b3dd44ec5811e15855c8f691f2d8104ca2c8040220c330a7111822938e"
+      "sha256": "8c512f08bb71b4f14a9120a0b5caff99f72dc183ae07133501a2131690dcfc97"
     },
     {
       "bytes": 372,
@@ -817,9 +903,9 @@
       "sha256": "56cb776a855b4c0f9be4292f13e918a0c20b47c8f181380f9feb0b9da8c6dbb6"
     },
     {
-      "bytes": 5509,
+      "bytes": 5549,
       "path": "ExternalVerification1049RationalBaseBarrier/formalization.yaml",
-      "sha256": "71c6ded45c4d2c0c1254df14493f8a47b10e59bbdccbc88f72de0df3071928f4"
+      "sha256": "3532b3b86c3b2a4e8877df3875002fa6328e74a4f769e319a55dc7fc0f9aea54"
     },
     {
       "bytes": 377,
@@ -843,9 +929,9 @@
       "sha256": "5482bfb835dc2584b432414298830b1c91257d6cc1a9736fc2cdd926bd22d397"
     },
     {
-      "bytes": 10216,
+      "bytes": 10223,
       "path": "ExternalVerification243PeriodicNegativeOrbit/formalization.yaml",
-      "sha256": "9b0f354c7923b5bb7c7ef9f9c3002604e6bc04197021048e2400f7e1225370b7"
+      "sha256": "76915ff5adf6fb81aa7df11445b6d68200cad49275872b658ca85417900c6042"
     },
     {
       "bytes": 567,
@@ -869,9 +955,9 @@
       "sha256": "a1a14e8eafe476ab1d8e890f84ca712fdbd4edd6ac11a05f71658b32d7c5029c"
     },
     {
-      "bytes": 6316,
+      "bytes": 6333,
       "path": "ExternalVerification249BinaryCyclotomicAnchors/formalization.yaml",
-      "sha256": "a40ccc14689750cc3ac540d6d6c1148430ab43c615537af72ca2497fa49f360f"
+      "sha256": "b0028e1f022e40edb48618a4fb7786cb88fec5765da97823787d62cbbf4eef37"
     },
     {
       "bytes": 799,
@@ -895,9 +981,9 @@
       "sha256": "9094cd3378a69985c5d9b81e5d8f6e221443f40016a2867d73cf03fb16e0fafe"
     },
     {
-      "bytes": 8528,
+      "bytes": 8575,
       "path": "ExternalVerification249RankOneSharpFloor/formalization.yaml",
-      "sha256": "27f794fe4c14f0ee25658dc461cc0de7817b75de03fd382e644e6f70f951a494"
+      "sha256": "e95193a64094bf0cb875ed2b144cc23a9cf9dc304811ced4828f19ebd12647ea"
     },
     {
       "bytes": 540,
@@ -921,9 +1007,9 @@
       "sha256": "397cf30c609491bcd219b53f96e264db2928be8f6a1962b2e93d6e45ac0f666f"
     },
     {
-      "bytes": 8750,
+      "bytes": 8767,
       "path": "ExternalVerification251ActualPrimeGapTail/formalization.yaml",
-      "sha256": "93a34cc320dc567f3dcb3dcf1bc8699dc447af72add75dbf19b8a77726409eae"
+      "sha256": "e5873b4d225963117045159029e91d26eceb17b0c5320a2bad8ebf1ef020c1b4"
     },
     {
       "bytes": 538,
@@ -947,9 +1033,9 @@
       "sha256": "eea8db71eaf26c54e43d3d26446dd7fb6fe6f85aff7fff5d1127ade36045409b"
     },
     {
-      "bytes": 9516,
+      "bytes": 9563,
       "path": "ExternalVerification251PolynomialShiftCountermodel/formalization.yaml",
-      "sha256": "cb075c93d861da4cfe54e0134e8affce499d317ab690f82c70ca3031f4f50ef8"
+      "sha256": "c6c8b2f096c792b874e71c808bcdb7410f65af0a609b33a7b04a7cbf0fda598b"
     },
     {
       "bytes": 270,
@@ -973,9 +1059,9 @@
       "sha256": "6f0dc1ae75e860464b51f4ae67ec82c4d8afd63cafc6b32d545051d0359d40e4"
     },
     {
-      "bytes": 10766,
+      "bytes": 10776,
       "path": "ExternalVerification257FinitePeriodNoncollapse/formalization.yaml",
-      "sha256": "71f593429dac4dd52bc34a93e0839177112c4e074b6ad8270270bb2ce78d03e4"
+      "sha256": "8a41a7868fb83ff055791d98cf5c81506e00e98b2a5c1e96260ba3686497dd63"
     },
     {
       "bytes": 564,
@@ -999,9 +1085,9 @@
       "sha256": "a102fa1a53dfe6f84f7476f6fa409a557829fefe66c792ed57829f99be36fe53"
     },
     {
-      "bytes": 7709,
+      "bytes": 7749,
       "path": "ExternalVerification257RationalTailRigidity/formalization.yaml",
-      "sha256": "875d9f6031111399f72b1420ec56b230a3ce3d71e42a3c2cd17ad0ca2e196115"
+      "sha256": "42dbb21b0c06cfe714204cc7f25c93763919fa5c2767d8c33ce2e5b63e4bafbb"
     },
     {
       "bytes": 569,
@@ -1025,9 +1111,9 @@
       "sha256": "714df3de1f4c6b47f9fb6287e1bbbb8cfdf08a6130bcc73b40c088f58adc247d"
     },
     {
-      "bytes": 13702,
+      "bytes": 13963,
       "path": "ExternalVerification257ReciprocalSupport/formalization.yaml",
-      "sha256": "0755c964c6329540a53a04109200a7cef0ecd0cfca7f20b9c4fea7ece7802145"
+      "sha256": "f08154d00273ff7d91be2c952c11a762879c0f9533ea0a12a253ff6600462524"
     },
     {
       "bytes": 808,
@@ -1051,9 +1137,9 @@
       "sha256": "d8ae3f2c8cbc3e85a5ab26c5bb8045ff8957f784a97667ea224c0d9a73c74a5d"
     },
     {
-      "bytes": 12160,
+      "bytes": 12607,
       "path": "ExternalVerification269ThreePrimeStructure/formalization.yaml",
-      "sha256": "58d8448e1df33522321b4c5cb8d09672a835518fc43135642431d933d1a379a0"
+      "sha256": "21db2555a504f2c0af26b8a8f99d4d485987fc820b95b36a2df180eac6c4c838"
     },
     {
       "bytes": 374,
@@ -1077,9 +1163,35 @@
       "sha256": "1850e3f5463aa27e917c7abd20397333c7f13dfe84942ceb826dcfbc3c00ccb6"
     },
     {
-      "bytes": 5603,
+      "bytes": 5643,
       "path": "ExternalVerification68ChannelRadius/formalization.yaml",
-      "sha256": "fcea6078041cf2239d61f53def16ec3fa971b3f5bf40de20dd784d06bb6b0356"
+      "sha256": "f173256efaea48f5c4dc4330b83f6cfd0ef1d98b26a89fc66b9a9ee2b078a657"
+    },
+    {
+      "bytes": 390,
+      "path": "ExternalVerification68CompanionOrbitBoundary/AxiomAudit.lean",
+      "sha256": "58619cb4af0174154f1dab6cf17f5950a22e52ad50895da30fdfe4eb7e1d9f82"
+    },
+    {
+      "bytes": 3535,
+      "path": "ExternalVerification68CompanionOrbitBoundary/Challenge.lean",
+      "sha256": "a70ce63cc43e1ed55bc217f9e5bb3589163eab6ac7e1f4f76b3bfe3a27ec4e8e"
+    },
+    {
+      "bytes": 3593,
+      "path": "Solutions/ExternalVerification68CompanionOrbitBoundary.lean",
+      "relocated_from": "ExternalVerification68CompanionOrbitBoundary/Solution.lean",
+      "sha256": "967f8ed3ea1732605ea1391861f64e1dd1a525c2bfa1f531c40233f0218db703"
+    },
+    {
+      "bytes": 603,
+      "path": "ExternalVerification68CompanionOrbitBoundary/comparator.json",
+      "sha256": "3f4e5794dac3d77c0ae7730477b379c37a743eb7e0ff9976f744423b02954a80"
+    },
+    {
+      "bytes": 7171,
+      "path": "ExternalVerification68CompanionOrbitBoundary/formalization.yaml",
+      "sha256": "6748be4c88f7e771f254c3405e12323c4e2f180194452d217f7f1b26661fcc43"
     },
     {
       "bytes": 10380,
@@ -1092,9 +1204,9 @@
       "sha256": "742c0e1042fd1e6c8b8024fd3c96d87916370420f2ae36315936907152dd8bd8"
     },
     {
-      "bytes": 5096,
+      "bytes": 5164,
       "path": "lakefile.toml",
-      "sha256": "aa541717739f7ff34e623ef899f3475ad396d05abc2517444920a5b85602c944"
+      "sha256": "2617b76f7802f41de8b980ab30b3dfa3e931b99376e2db43802000139f8c40df"
     },
     {
       "bytes": 26,
@@ -1102,17 +1214,11 @@
       "sha256": "88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5"
     }
   ],
-  "source_ref": {
-    "commit": "b7395e4e2075c1003df291924d6b2a68f4699163",
-    "ref": "b7395e4e2075c1003df291924d6b2a68f4699163",
-    "working_tree_drift": [
-      "ErdosProblems/Erdos1049/AdelicHeightBridge.lean"
-    ]
-  },
+  "source_ref": null,
   "source_root": "formal_math/erdos257_period_noncollapse",
   "source_snapshot": {
     "schema": "plectis_lean_source_snapshot_v0",
-    "source_file_count": 180,
+    "source_file_count": 202,
     "source_file_sha256": {
       ".gitignore": "52ffb75b5c6effc6ade9cd750e2039acbe0025f490e66b4425569dc0d61591a5",
       "Erdos257PeriodNoncollapse/AdjacentPhaseSeparation.lean": "cee256a3196f1a42fbff74ae17e958eb038b7a11e3a5af469c634ff8f3644b6d",
@@ -1167,6 +1273,7 @@
       "ErdosProblems/Erdos1041/CubicQuotientFiberCase.lean": "8d48e206629d9d6283b7f1c66aa01651d9ff45314c0ed541f566c329131fa6dd",
       "ErdosProblems/Erdos1041/CyclicTetranomialCoefficientCase.lean": "7a0de6ca9655f8fd75be23cd24daae5907184ed8fa6594f3429cc03df3574053",
       "ErdosProblems/Erdos1041/CyclicTrinomialFiberCase.lean": "6c7d5f5bbdae7466b61dea88bd628ca7d4e49d28f9a4267302a0a0f6df68b853",
+      "ErdosProblems/Erdos1041/FirstMergeCriticalValueSeparation.lean": "d031793cb70e88bfa3a5cdd410108a0c7004a91b922d169f2996ed82b83c9356",
       "ErdosProblems/Erdos1041/PrimitiveQuinticBoundaryTail.lean": "25adf76b6e209c54688d5878f0524943dd85312a2a09a59673f56a9ba74d67dc",
       "ErdosProblems/Erdos1041/PrimitiveQuinticInteriorTail.lean": "62346892d5a137e02a193774dff0d79b9583e59581f1341d1b78ecfef21a9ee7",
       "ErdosProblems/Erdos1041/QuarticQuotientFiberCase.lean": "64127e86c0bf185402796e4716200629038d9abbfe553908f55a4710f09a3d18",
@@ -1192,113 +1299,134 @@
       "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean": "d284ca394ba94d6e43b2819757ce27eb86562949b525f8bbf81546d613abfcd1",
       "ErdosProblems/Erdos269/KernelCarryRank.lean": "8b32ea2f9583cbea2d5c31c53da1f76400a4f3312a888bea0598016c16044839",
       "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean": "769d80481465f4fd8655d5d62c5eb3e372c80c39b0722e80659bf4e150c6c036",
+      "ErdosProblems/Erdos68/CanonicalFactorialDigits.lean": "a0b711c869ded5d04b3f22b27ff57ea574cb28550c27535f3c8b4047f8f14827",
+      "ErdosProblems/Erdos68/CarryCongruenceNormalForm.lean": "e85047cb300ff5bcb6e201807e20f938915cf4a717a92a969c42aded1f3171c5",
       "ErdosProblems/Erdos68/ChannelBreakpointRigidity.lean": "0f62e658b9964a37ad2bf0310d99ec4fa35f385720932d66e91abac28b65a903",
       "ErdosProblems/Erdos68/ChannelIntegralCongruence.lean": "39461fdf3fa1ff404e6b9ae3ba5e642c88250f62edde20216e1cd65563bd2227",
+      "ErdosProblems/Erdos68/CompanionConstantBridge.lean": "18d64c58660749777137a1ee8a2e81ecf8e6bc56af1173dbdbdf441d455ee7c3",
+      "ErdosProblems/Erdos68/CompanionOrbitRationality.lean": "9b0ee56e4ab624ca694aaad7fa3a9b38a89751fe8a81292a2f0c8cfb5d296edf",
+      "ErdosProblems/Erdos68/ConstantOnlyMissCertificates.lean": "e7de8e3080d2ce69bda7a1ab106160e780f850cbb7bf623a1885c3ae9a0694c3",
+      "ErdosProblems/Erdos68/FactorialDigitRigidity.lean": "23a39810f47f393046be2075423c646fdfaddb1f6e35e92fd71c4cf6bca7d215",
+      "ErdosProblems/Erdos68/FactorialZeroPlateau.lean": "2d6bf8d6048d6247a1ce3793f6506146bc1d899facfab1f50e6be574304027aa",
+      "ErdosProblems/Erdos68/GapScalarNormalForm.lean": "9dc4edcd1f0852d6a38667c8ccebd1ffd3acd23b883875c2b836b6f233689826",
+      "ErdosProblems/Erdos68/PrimeUnitTranslator.lean": "3ef49f719f4596f08efb76f561fef7badf7e287873ffd0ad2cb588cd4acf7a5d",
+      "ErdosProblems/Erdos68/SecondLayerDigit.lean": "75c5320d621ba7b42e0fe633783599a81ee8ad2b4b9ab08ef366dfdd555d3008",
+      "ErdosProblems/Erdos68/StrictSuccessorArithmetic.lean": "e03320c57d2ae0d42f52564023f4d62d92e805696bf010d6b48c66ecb053064b",
       "ErdosProblems/Shared/IrrationalRotationStaircase.lean": "c3c2013d856ecedc3751e6fb0a4ac237e3ea397aa96fd475c76811137a74ba71",
       "ExternalVerification1041CriticalGeometry/AxiomAudit.lean": "92b515c95ade68afc14ccc84de26c28a99d362f7cc410105b9b06e71cf5af531",
       "ExternalVerification1041CriticalGeometry/Challenge.lean": "584bb5eabb6d74ebe3eee5da4d6a2aa3f3c6826ab310a283e8d31132346aabc6",
       "ExternalVerification1041CriticalGeometry/Solution.lean": "b1e4aafca85e49cf18c300c2c647d560ccdb45d53dbd7cccbe20b0251b68705c",
       "ExternalVerification1041CriticalGeometry/comparator.json": "5b2cc3363866e4fcca8834ce397b3852ff71f86e63a2c16ff6551f794da4acb7",
-      "ExternalVerification1041CriticalGeometry/formalization.yaml": "b3a3331f1c6dacc000d0d86e388ba28e64cc0bb53dfeaa55b590faa4ca126ed1",
+      "ExternalVerification1041CriticalGeometry/formalization.yaml": "cd84d490d30ab9ef1fab1f7814c446c2613e71e79319c57f4d2b016dab95c41b",
       "ExternalVerification1041CyclicTrinomialFiber/AxiomAudit.lean": "69f45c5552fada500a4cb92612b36c720b8a998c76a8024f6bb81aeacb979ec4",
       "ExternalVerification1041CyclicTrinomialFiber/Challenge.lean": "5f0835b9a95ca711ee7e34f72ea9da377fe10565cfdaf1a190e099a22ec405e4",
       "ExternalVerification1041CyclicTrinomialFiber/Solution.lean": "8694e1841ea45da449bbeae5112f68129d4286133710c909d1d5ca1bc4e79782",
       "ExternalVerification1041CyclicTrinomialFiber/comparator.json": "d1d5ee54af5f6fa298e6379cf1e0ffdbc215494bd0eb61d4fa2a019fedb560cc",
-      "ExternalVerification1041CyclicTrinomialFiber/formalization.yaml": "2773d87b82e92e9d6f0c3f08a226bfc2fd609d38c78d2b14237f743b8e30d77a",
+      "ExternalVerification1041CyclicTrinomialFiber/formalization.yaml": "ea019ce1103eab2e5f31294831660c21c0c3c67734a803811c50932c28ecd7cf",
+      "ExternalVerification1041FirstMergeCriticalValueSeparation/AxiomAudit.lean": "98cd45dc00e49a50ef1d81288f7ad214a637ced2916dcf6502b00757efbb49da",
+      "ExternalVerification1041FirstMergeCriticalValueSeparation/Challenge.lean": "d4a8fe074516e0ecf1ab03557a2310dc0e8c2bfd5af0e55cb75066ea58da8838",
+      "ExternalVerification1041FirstMergeCriticalValueSeparation/Solution.lean": "d0e8121da3fd2e989f3149fb2a4af2c8b0f45f8531b44b97ba1f3cbc0c68f9da",
+      "ExternalVerification1041FirstMergeCriticalValueSeparation/comparator.json": "34f3ff2da87fb8598010a04026e1be0788b7de14422954334882a3b3ac238111",
+      "ExternalVerification1041FirstMergeCriticalValueSeparation/formalization.yaml": "b1bd917ba0929404cfe03d2bbaf26170bc82fa76f30dcb4da73396f45d233733",
       "ExternalVerification1041QuarticQuotientFiber/AxiomAudit.lean": "978ee87994fcf69dcfec818f92697596f74ad30aa551c652215e4e4893df0675",
       "ExternalVerification1041QuarticQuotientFiber/Challenge.lean": "a099f669fedde0400fa6751721b3dadf63d69a61d20c75b8a7d0daf0305e2a4b",
       "ExternalVerification1041QuarticQuotientFiber/Solution.lean": "de2a2ef39395573987347007de06219ba095fa4c2223ea48b176260c43100bf3",
       "ExternalVerification1041QuarticQuotientFiber/comparator.json": "088c7b7320fc29d2e72c2c0dc3fd9e46f269298f0b256c93967d02fa81b21959",
-      "ExternalVerification1041QuarticQuotientFiber/formalization.yaml": "7a0ca4137041b2be46bc3464ab84d46b63baaeb7fee3714ebe1f3b9b139719a1",
+      "ExternalVerification1041QuarticQuotientFiber/formalization.yaml": "a3dbc400b9420d063b1616488994948106d77da321a88dc5fc9ce23678cac410",
       "ExternalVerification1041SolvedFamilies/AxiomAudit.lean": "486bed1c4b5cbe7e68fe6786e16b1d4e547c7fd4462ba8adbb73fec64ed21140",
       "ExternalVerification1041SolvedFamilies/Challenge.lean": "508e5bf18231f88f361eb821864ee55a2b6dd9d6d50f49544f4eaef3188ab1f4",
       "ExternalVerification1041SolvedFamilies/Solution.lean": "8a4d7f4bac5263aeb22da364d7db4a7576f3717d09a729196e13b542a9da5d39",
       "ExternalVerification1041SolvedFamilies/comparator.json": "2548f6968e40ea974aa2d86e685c5e5c0158aea89b10d07146cc1346f36cf86b",
-      "ExternalVerification1041SolvedFamilies/formalization.yaml": "7df13ef1546ba36b7ad2eefeb1274fa227aa7a6054b3cf94202ff509d16bad98",
+      "ExternalVerification1041SolvedFamilies/formalization.yaml": "83724a43c05077edd4f69549ba352995d47a49da644a317073a7315949f2d113",
       "ExternalVerification1041TetranomialSpokes/AxiomAudit.lean": "61df069d42704d6f9e7974e5e68ef3085ff0fa9b3c71e3c3669e4883bf323d27",
       "ExternalVerification1041TetranomialSpokes/Challenge.lean": "e5571575b172aee3b86142cfd56650a3a8477f7a195065a5a8803414a96058c3",
       "ExternalVerification1041TetranomialSpokes/Solution.lean": "91c2594a872544e8e47aef075b39b96bee9d510c0e3dbb491c66c96440d857fc",
       "ExternalVerification1041TetranomialSpokes/comparator.json": "a44f247ac9f203fdb0885b6174d292c1ce5b13b5434736e4389b11a6ef8137c7",
-      "ExternalVerification1041TetranomialSpokes/formalization.yaml": "b12111770edd4a9621666f6e2e728ae4153a769aa7652810a95ca27bade558fc",
+      "ExternalVerification1041TetranomialSpokes/formalization.yaml": "5a0dd9fba7593526a4904d1bfec664c7d1f80ceb2ea7c2de023201129aaaa6c8",
       "ExternalVerification1049AdelicHeightBridge/AxiomAudit.lean": "c364dc801626dc4702fa95e37012fc2a5ebeb70b76048929c078f9c911d96301",
       "ExternalVerification1049AdelicHeightBridge/Challenge.lean": "7da818c6966767f446413adf0540b06592eb070d056f71d4232f13e3d22aaf21",
       "ExternalVerification1049AdelicHeightBridge/Solution.lean": "233bba72cc39abe149e0e44248321b0186860d55db00a1c45179dbfc2d68e114",
       "ExternalVerification1049AdelicHeightBridge/comparator.json": "ef0572655c509b618f0c87c1495791b79bfb5eaebbda6ba78f41e04b507a7b1e",
-      "ExternalVerification1049AdelicHeightBridge/formalization.yaml": "b0c88173208c492adf403b3b9e31a0ef54162e7b3827f32a54054dbb1e8f6331",
+      "ExternalVerification1049AdelicHeightBridge/formalization.yaml": "15e7a41469042ceeb3de3130748442ced95b99e1f935260b2abbc3e5c0d69715",
       "ExternalVerification1049HermitePadeNoGo/AxiomAudit.lean": "6bad350d9a6b9eb7677fe923e7abbc89684ad82e8ee4873045e16059eb526ccf",
       "ExternalVerification1049HermitePadeNoGo/Challenge.lean": "e2c05ede637a78571936b2b33826946707a60e93d43e71adc07e2b2cdc002131",
       "ExternalVerification1049HermitePadeNoGo/Solution.lean": "d2827227f5b9b523f5a72c4cd23c2515cba58143281f90b3cbcfb43022c319c8",
       "ExternalVerification1049HermitePadeNoGo/comparator.json": "e4577d3292075f6a82c388201e586e46497ce214546a1c7d9f120be639ed041a",
-      "ExternalVerification1049HermitePadeNoGo/formalization.yaml": "ec782568248c172bcbd34397c861303290b7932b31d5b7a3fcc811f0e2844696",
+      "ExternalVerification1049HermitePadeNoGo/formalization.yaml": "d86d3b3575f9d973d380929d822a00c8f2072c33f6efb9bb7332f57223210a8c",
       "ExternalVerification1049PrimeSupportSelectors/AxiomAudit.lean": "dd507cb038bcda23e5a2097e9e6142ab21bab84db8ed44d8896670b08887c5cb",
       "ExternalVerification1049PrimeSupportSelectors/Challenge.lean": "c5553b55facccbb6989587060fb4d309312eb06f4958df0b720e2ae8739433ce",
       "ExternalVerification1049PrimeSupportSelectors/Solution.lean": "5eafe632eb323bfa2695c681a4285e1bfa42110b1ae34241ee5b45d998bfd163",
       "ExternalVerification1049PrimeSupportSelectors/comparator.json": "4ce5612402c2f45c49a3eee0708ba1c40f04029e933f1f6fd2d03dbb5dbf96bc",
-      "ExternalVerification1049PrimeSupportSelectors/formalization.yaml": "d3a681b3dd44ec5811e15855c8f691f2d8104ca2c8040220c330a7111822938e",
+      "ExternalVerification1049PrimeSupportSelectors/formalization.yaml": "8c512f08bb71b4f14a9120a0b5caff99f72dc183ae07133501a2131690dcfc97",
       "ExternalVerification1049RationalBaseBarrier/AxiomAudit.lean": "1b6d197a02511f86540216bba86ee1a647bb02b7635e71bab12b9a69c3220b02",
       "ExternalVerification1049RationalBaseBarrier/Challenge.lean": "8dc1a3e2d6117f299d1be5c0627f103a0aeb1a2b878f6a0caba93911ec1ac547",
       "ExternalVerification1049RationalBaseBarrier/Solution.lean": "bed923ae79d13972ec589ebe44d85eea6602ca11dd0f22390e914da59e3a6e54",
       "ExternalVerification1049RationalBaseBarrier/comparator.json": "56cb776a855b4c0f9be4292f13e918a0c20b47c8f181380f9feb0b9da8c6dbb6",
-      "ExternalVerification1049RationalBaseBarrier/formalization.yaml": "71c6ded45c4d2c0c1254df14493f8a47b10e59bbdccbc88f72de0df3071928f4",
+      "ExternalVerification1049RationalBaseBarrier/formalization.yaml": "3532b3b86c3b2a4e8877df3875002fa6328e74a4f769e319a55dc7fc0f9aea54",
       "ExternalVerification243PeriodicNegativeOrbit/AxiomAudit.lean": "4f56d4a5078f74c2f090da314cae197bbba5eacc58f8a4a92875a113c6e3d40b",
       "ExternalVerification243PeriodicNegativeOrbit/Challenge.lean": "acfe4334c87cc06ca172c93eff6a1f93975792c4bd69c8b19a3523544198acd3",
       "ExternalVerification243PeriodicNegativeOrbit/Solution.lean": "078e3d76d02e2d0ae20aab8bfff1135e1eff488a2ac03ccf5b9ce7ba0f16e899",
       "ExternalVerification243PeriodicNegativeOrbit/comparator.json": "5482bfb835dc2584b432414298830b1c91257d6cc1a9736fc2cdd926bd22d397",
-      "ExternalVerification243PeriodicNegativeOrbit/formalization.yaml": "9b0f354c7923b5bb7c7ef9f9c3002604e6bc04197021048e2400f7e1225370b7",
+      "ExternalVerification243PeriodicNegativeOrbit/formalization.yaml": "76915ff5adf6fb81aa7df11445b6d68200cad49275872b658ca85417900c6042",
       "ExternalVerification249BinaryCyclotomicAnchors/AxiomAudit.lean": "9dbbf34ff7721e45165c52ac5d551a869d289bc242d07c890de346744f395692",
       "ExternalVerification249BinaryCyclotomicAnchors/Challenge.lean": "a72223cbdf3132e65ac4c156b3549261308c5949c52f1d23579fcc1cd017b39b",
       "ExternalVerification249BinaryCyclotomicAnchors/Solution.lean": "23e3365e08da0a83c836b053999b415af86035e646e9886cedca3b64b95a1a5d",
       "ExternalVerification249BinaryCyclotomicAnchors/comparator.json": "a1a14e8eafe476ab1d8e890f84ca712fdbd4edd6ac11a05f71658b32d7c5029c",
-      "ExternalVerification249BinaryCyclotomicAnchors/formalization.yaml": "a40ccc14689750cc3ac540d6d6c1148430ab43c615537af72ca2497fa49f360f",
+      "ExternalVerification249BinaryCyclotomicAnchors/formalization.yaml": "b0028e1f022e40edb48618a4fb7786cb88fec5765da97823787d62cbbf4eef37",
       "ExternalVerification249RankOneSharpFloor/AxiomAudit.lean": "bbaa4457dc35868d7aa5bcc78a0809ecaae154d79f0bbaa04966881bb1bd8ac6",
       "ExternalVerification249RankOneSharpFloor/Challenge.lean": "87fe8d197a51fa4d97e46e8a11ccb6990439c9eda684c5b07be8d37af225be84",
       "ExternalVerification249RankOneSharpFloor/Solution.lean": "8dc0a1563cd45ae1db5885030c6e1e4304f052c517f42c5c72b8fe80622e2ff4",
       "ExternalVerification249RankOneSharpFloor/comparator.json": "9094cd3378a69985c5d9b81e5d8f6e221443f40016a2867d73cf03fb16e0fafe",
-      "ExternalVerification249RankOneSharpFloor/formalization.yaml": "27f794fe4c14f0ee25658dc461cc0de7817b75de03fd382e644e6f70f951a494",
+      "ExternalVerification249RankOneSharpFloor/formalization.yaml": "e95193a64094bf0cb875ed2b144cc23a9cf9dc304811ced4828f19ebd12647ea",
       "ExternalVerification251ActualPrimeGapTail/AxiomAudit.lean": "e8f4818c972cd4e7ab04b21324c4b608cc50320affb8fdeb5fa966f7766362cc",
       "ExternalVerification251ActualPrimeGapTail/Challenge.lean": "36deeb61a396fdd54003de9f0a52f24f190ec9e01fd0020179ce9fff90e961d2",
       "ExternalVerification251ActualPrimeGapTail/Solution.lean": "7150e51cffea74576ca81e32db47b569cbbbd5812825825f997be6b3924ca566",
       "ExternalVerification251ActualPrimeGapTail/comparator.json": "397cf30c609491bcd219b53f96e264db2928be8f6a1962b2e93d6e45ac0f666f",
-      "ExternalVerification251ActualPrimeGapTail/formalization.yaml": "93a34cc320dc567f3dcb3dcf1bc8699dc447af72add75dbf19b8a77726409eae",
+      "ExternalVerification251ActualPrimeGapTail/formalization.yaml": "e5873b4d225963117045159029e91d26eceb17b0c5320a2bad8ebf1ef020c1b4",
       "ExternalVerification251PolynomialShiftCountermodel/AxiomAudit.lean": "95a79f87dbc57eeb090a761514c966ba99928fe6678a13b8450a87fe4a8c20c2",
       "ExternalVerification251PolynomialShiftCountermodel/Challenge.lean": "f033dc6801afc773bfecc7facf6737286a02522271661f15ce2b2a58d9103fcf",
       "ExternalVerification251PolynomialShiftCountermodel/Solution.lean": "3ec6540777db5abeb33a2ae9b3f3f4278436d564f9aeccd75a776b2d8e3f209e",
       "ExternalVerification251PolynomialShiftCountermodel/comparator.json": "eea8db71eaf26c54e43d3d26446dd7fb6fe6f85aff7fff5d1127ade36045409b",
-      "ExternalVerification251PolynomialShiftCountermodel/formalization.yaml": "cb075c93d861da4cfe54e0134e8affce499d317ab690f82c70ca3031f4f50ef8",
+      "ExternalVerification251PolynomialShiftCountermodel/formalization.yaml": "c6c8b2f096c792b874e71c808bcdb7410f65af0a609b33a7b04a7cbf0fda598b",
       "ExternalVerification257FinitePeriodNoncollapse/AxiomAudit.lean": "477cfb3f58800784d7ef7ded6b34923e1974b6cd221dbbd3ce84ebd8b33e6564",
       "ExternalVerification257FinitePeriodNoncollapse/Challenge.lean": "eef31494be0de3c764a58cbec40261342655507fdc66db77842c332318bb7078",
       "ExternalVerification257FinitePeriodNoncollapse/Solution.lean": "d7c18101880870ae624764799d92b20d8414c67cce3e63da06c5728384cdd7ef",
       "ExternalVerification257FinitePeriodNoncollapse/comparator.json": "6f0dc1ae75e860464b51f4ae67ec82c4d8afd63cafc6b32d545051d0359d40e4",
-      "ExternalVerification257FinitePeriodNoncollapse/formalization.yaml": "71f593429dac4dd52bc34a93e0839177112c4e074b6ad8270270bb2ce78d03e4",
+      "ExternalVerification257FinitePeriodNoncollapse/formalization.yaml": "8a41a7868fb83ff055791d98cf5c81506e00e98b2a5c1e96260ba3686497dd63",
       "ExternalVerification257RationalTailRigidity/AxiomAudit.lean": "198dcba7dd1fd38fe5ad312029a13d4de215001251551d54099c4de19f873f8d",
       "ExternalVerification257RationalTailRigidity/Challenge.lean": "9e4f26d5af218ea7f78b37b83b7969c5b14177651ecba9ef8eb25ba9df53b8e3",
       "ExternalVerification257RationalTailRigidity/Solution.lean": "c757bbd34402c9a183d7c01865b935648db8b6c628e2c148eaab8b73fa596762",
       "ExternalVerification257RationalTailRigidity/comparator.json": "a102fa1a53dfe6f84f7476f6fa409a557829fefe66c792ed57829f99be36fe53",
-      "ExternalVerification257RationalTailRigidity/formalization.yaml": "875d9f6031111399f72b1420ec56b230a3ce3d71e42a3c2cd17ad0ca2e196115",
+      "ExternalVerification257RationalTailRigidity/formalization.yaml": "42dbb21b0c06cfe714204cc7f25c93763919fa5c2767d8c33ce2e5b63e4bafbb",
       "ExternalVerification257ReciprocalSupport/AxiomAudit.lean": "058152ecaefb2927d658d8e06fb618dbdf51f856e7bb991e2add2841380e4564",
       "ExternalVerification257ReciprocalSupport/Challenge.lean": "001e8b59796b57f9629be978fa36516dd681e9a921cb916964a0cc1636aba68f",
       "ExternalVerification257ReciprocalSupport/Solution.lean": "41e3a59afa12e66be53fc657d90e49b2024d225fd0549cbb63004da9a420f2a6",
       "ExternalVerification257ReciprocalSupport/comparator.json": "714df3de1f4c6b47f9fb6287e1bbbb8cfdf08a6130bcc73b40c088f58adc247d",
-      "ExternalVerification257ReciprocalSupport/formalization.yaml": "0755c964c6329540a53a04109200a7cef0ecd0cfca7f20b9c4fea7ece7802145",
+      "ExternalVerification257ReciprocalSupport/formalization.yaml": "f08154d00273ff7d91be2c952c11a762879c0f9533ea0a12a253ff6600462524",
       "ExternalVerification269ThreePrimeStructure/AxiomAudit.lean": "1970db110b233f192588b4f4524c89f52853d54a9a770523d1d065ea58b65a72",
       "ExternalVerification269ThreePrimeStructure/Challenge.lean": "bb86ff5e8a3b161e25cb3d22bdf2856f0003d4a05dcde8d3ef66c664f676e1eb",
       "ExternalVerification269ThreePrimeStructure/Solution.lean": "50be5b16a63c73aba10ea74dd635d3390081a5c9226374a016b262da3b89af53",
       "ExternalVerification269ThreePrimeStructure/comparator.json": "d8ae3f2c8cbc3e85a5ab26c5bb8045ff8957f784a97667ea224c0d9a73c74a5d",
-      "ExternalVerification269ThreePrimeStructure/formalization.yaml": "58d8448e1df33522321b4c5cb8d09672a835518fc43135642431d933d1a379a0",
+      "ExternalVerification269ThreePrimeStructure/formalization.yaml": "21db2555a504f2c0af26b8a8f99d4d485987fc820b95b36a2df180eac6c4c838",
       "ExternalVerification68ChannelRadius/AxiomAudit.lean": "731cd3508377e5b75223e0288ffe7e930b435449dd617457ef7a96fd865bb875",
       "ExternalVerification68ChannelRadius/Challenge.lean": "cd92d49d58929be9a9347e4920405b6214b478eafe24ea6c7e2fc99d69c637cf",
       "ExternalVerification68ChannelRadius/Solution.lean": "08ac31291573715a73914f1b3b02f943784e31baa9b8b1ac06962af8dc753224",
       "ExternalVerification68ChannelRadius/comparator.json": "1850e3f5463aa27e917c7abd20397333c7f13dfe84942ceb826dcfbc3c00ccb6",
-      "ExternalVerification68ChannelRadius/formalization.yaml": "fcea6078041cf2239d61f53def16ec3fa971b3f5bf40de20dd784d06bb6b0356",
+      "ExternalVerification68ChannelRadius/formalization.yaml": "f173256efaea48f5c4dc4330b83f6cfd0ef1d98b26a89fc66b9a9ee2b078a657",
+      "ExternalVerification68CompanionOrbitBoundary/AxiomAudit.lean": "58619cb4af0174154f1dab6cf17f5950a22e52ad50895da30fdfe4eb7e1d9f82",
+      "ExternalVerification68CompanionOrbitBoundary/Challenge.lean": "a70ce63cc43e1ed55bc217f9e5bb3589163eab6ac7e1f4f76b3bfe3a27ec4e8e",
+      "ExternalVerification68CompanionOrbitBoundary/Solution.lean": "967f8ed3ea1732605ea1391861f64e1dd1a525c2bfa1f531c40233f0218db703",
+      "ExternalVerification68CompanionOrbitBoundary/comparator.json": "3f4e5794dac3d77c0ae7730477b379c37a743eb7e0ff9976f744423b02954a80",
+      "ExternalVerification68CompanionOrbitBoundary/formalization.yaml": "6748be4c88f7e771f254c3405e12323c4e2f180194452d217f7f1b26661fcc43",
       "LICENSE": "e3d1c4810cb5759529a73e07d921090256007e2c984c4b55cbc14826303f744c",
       "lake-manifest.json": "742c0e1042fd1e6c8b8024fd3c96d87916370420f2ae36315936907152dd8bd8",
-      "lakefile.toml": "aa541717739f7ff34e623ef899f3475ad396d05abc2517444920a5b85602c944",
+      "lakefile.toml": "2617b76f7802f41de8b980ab30b3dfa3e931b99376e2db43802000139f8c40df",
       "lean-toolchain": "88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5"
     },
-    "source_files_sha256": "f939772987e7c19f3d255a934b6599dea551064a970ec1b275d24de3f42a3fda",
+    "source_files_sha256": "9b7cb88601476f8d459d2c271028f1d82ef5497e14f46db843a1b0d9c544ab2c",
     "source_manifest": "microcosm-substrate/docs/lean_formal_methods_os/release_topology_source_v0.json",
     "source_root": "formal_math/erdos257_period_noncollapse",
-    "source_total_bytes": 3846256
+    "source_total_bytes": 4126842
   },
   "standalone_repo": {
     "dependency_pin": {

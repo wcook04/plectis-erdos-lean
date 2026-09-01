@@ -1,6 +1,6 @@
 {
   "_type": "https://in-toto.io/Statement/v1",
-  "generated_at": "2026-09-01T21:00:50Z",
+  "generated_at": "2026-09-01T23:51:01Z",
   "predicate": {
     "buildDefinition": {
       "buildType": "https://plectis.local/build-types/lean-standalone-export/v0",
@@ -38,8 +38,8 @@
       "internalParameters": {
         "non_claim_gate_status": "pass",
         "publication_ready_boolean": false,
-        "selected_file_count": 180,
-        "source_files_sha256": "b2498332a2bb52b2f2c47902090c222de31401bd67e2632448083bb83ab21c9a"
+        "selected_file_count": 202,
+        "source_files_sha256": "4cb5ab8034fe5c84fd942465dd331b89471b0146eb98029ea25092b73d215458"
       },
       "resolvedDependencies": [
         {
@@ -50,7 +50,7 @@
         },
         {
           "digest": {
-            "sha256": "b2498332a2bb52b2f2c47902090c222de31401bd67e2632448083bb83ab21c9a"
+            "sha256": "4cb5ab8034fe5c84fd942465dd331b89471b0146eb98029ea25092b73d215458"
           },
           "uri": "source_files_sha256"
         },
@@ -97,7 +97,7 @@
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "f3e4a31d65ae09c90b5dfd4a0f529255868bad65f22def17ddef292a31e79293"
+            "sha256": "5f826aaa20cd55242381ea8a05a0b189ef03cb1f32e04389d29ffddcf8458d36"
           },
           "name": "CITATION.cff"
         },
@@ -111,7 +111,7 @@
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "9add69f2d617676e86ed82b0ee8cee5cced1a121ca0472be3a20ee002147fef5"
+            "sha256": "088cb1312dbc701623ff91d80ff686dc390ae2689ae939c4d6c4baa79377aa15"
           },
           "name": "ErdosProblems.lean"
         },
@@ -132,6 +132,13 @@
         {
           "body_in_receipt": false,
           "digest": {
+            "sha256": "1d1d9d4a22802a6ab95b8f08e49a3e0dea5c1fea901a44ddd4932bdc8b249de4"
+          },
+          "name": "PROBLEMS.md"
+        },
+        {
+          "body_in_receipt": false,
+          "digest": {
             "sha256": "5635d5dea4b0765490f4e268b903ea2352650b2aebd9b41c08399f6baa8fff7e"
           },
           "name": "PlectisSnapshot.lean"
@@ -139,14 +146,14 @@
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "6b05fd9898bf3f10035ab460741c7c89b8a5295717c50d82e667b7acdbe5ec2e"
+            "sha256": "606f57110d4405b7ddc5866331dd85b149b183785d103b26dc3bde957998ec9f"
           },
           "name": "PlectisSnapshot/PublicAPI.lean"
         },
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "820aced00a50af937f63c90dd0777424aa299100452551ab978497388d183f16"
+            "sha256": "644ee6d6804e659cc295484bbb59851896d62e3b244e402376bf1bbf68b4e9bf"
           },
           "name": "README.md"
         },
@@ -160,7 +167,7 @@
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "3de300f4174ab5f02fea42f57d513f5ee42275fa7d5645aadc1f06213cdc9943"
+            "sha256": "e9a893521c034ba95d8e5906f74ffc87d7fc09e5523025e771182713b40d635d"
           },
           "name": "lakefile.toml"
         },
@@ -174,7 +181,7 @@
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "a0288450c944baaa155294d985975de8afe7e27d15a6d46312b573f26d357743"
+            "sha256": "dd99fa5fc52a6eeaf6fed00cf55a37e1531abf9c187e06508211850d9a1568eb"
           },
           "name": "snapshot/CLAIM_TO_REFERENCE_MAP.json"
         },
@@ -188,21 +195,21 @@
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "3aa43020ead0f7e88f2f5039931ba2fafb9540064225e85e2d0ae0ea3b67d216"
+            "sha256": "2c971bb54386d51e2bb47364bdb901565d0883d77d23b25d1892cf34b2ae9102"
           },
           "name": "snapshot/PLECTIS_INTEGRATION.json"
         },
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "7b81da9306206457f24fa61be77ea2c6b357bcb0c7d79d793d68d0864d400d53"
+            "sha256": "f5c3195ea51b475e54d2851bfcfdaa1264b18e268f6bb34d02c423b7ac17673c"
           },
           "name": "snapshot/PUBLIC_API_CONTRACT.json"
         },
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "12c42e413de7702b78d8f9d915ecc417b54727d98da02572b01cef12c8aa6286"
+            "sha256": "833fd2ca3f4f62073c5daa5a4b1aa76af963f68debc8e79b496245fabad4fee2"
           },
           "name": "snapshot/PUBLIC_SNAPSHOT_MANIFEST.json"
         },
@@ -216,7 +223,7 @@
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "8d1683e21edcca6990482899849c3aa42632dddc5e0e5f2cb89fe6b2b36e0db5"
+            "sha256": "4553f09aa4b93ec9cc272253930491eb63d1875a31fbe691bbf5910f61303e59"
           },
           "name": "snapshot/REFERENCES.yaml"
         },
@@ -230,13 +237,13 @@
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "0be4499d2b6f7bc1c479b86c218b8e8f047ee10161c65b040ecdd3f4dab669ca"
+            "sha256": "486fd6af975eb7e37ea83470a0210943331357d5e16ce26a0ebb3a9277c1c581"
           },
           "name": "snapshot/RELEASE_NOTES.md"
         }
       ],
       "metadata": {
-        "invocationFinishedOn": "2026-09-01T21:00:50Z",
+        "invocationFinishedOn": "2026-09-01T23:51:01Z",
         "reproducibilityBoundary": "public export source selection plus generated metadata"
       }
     }
@@ -246,9 +253,9 @@
   "subject": [
     {
       "digest": {
-        "sha256": "03ba703b782aef40d53ff336a9a05375928181b5754dad48ea4a2e3897efc8c8"
+        "sha256": "06da73796dfcbf3d4fd77213472c45a9750cebae770b387f30e40924b874100f"
       },
-      "file_count": 200,
+      "file_count": 223,
       "name": "plectis-erdos-lean"
     }
   ],

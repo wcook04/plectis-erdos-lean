@@ -16,9 +16,14 @@ project:
     exactly -1/15. Three distinct primes keep the three logarithm floors independent,
     which is what makes the running-LCM identity exact and the minors nonsingular
     in every order, and it removes every method that would evaluate the three-prime
-    sum by finitely many separated factors. Priority for the three-prime structure
-    has not been established, none of the seven theorems yields irrationality or transcendence,
-    and Erdős #269 remains open.'
+    sum by finitely many separated factors. The running-LCM factorisation identity
+    for every finite prime set, and the two-prime case in which the series factorises
+    and is transcendental by Hecke and Mahler, are due to Steve Fan (erdosproblems.com/269
+    comment, 26 June 2026), who also records that the factorisation does not extend
+    to three or more primes; the identity theorem here formalises his identity at
+    three primes, and the rank statements are the addition. Priority for the rank
+    statements has not been established, none of the seven theorems yields irrationality
+    or transcendence, and Erdős #269 remains open.'
   authors:
   - Will Cook
   license: Apache-2.0

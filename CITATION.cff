@@ -8,7 +8,7 @@ authors:
   - family-names: "Cook"
     given-names: "Will"
 license: Apache-2.0
-abstract: "Lean 4 formalizations of 19 partial results across 8 open Erdős problems (#68, #243, #249, #251, #257, #269, #1041, #1049). Each entry states a theorem, proves it against Mathlib with no sorry on the proof side, prints the axioms it depends on, and records in its metadata what the theorem does not reach. None of the problems is claimed to be solved, and novelty is recorded as unassessed wherever the literature does not settle it."
+abstract: "Lean 4 formalizations of 21 partial results across 8 open Erdős problems (#68, #243, #249, #251, #257, #269, #1041, #1049). Each entry states a theorem, proves it against Mathlib with no sorry on the proof side, prints the axioms it depends on, and records in its metadata what the theorem does not reach. None of the problems is claimed to be solved, and novelty is recorded as unassessed wherever the literature does not settle it."
 keywords:
   - "Lean 4"
   - "formal mathematics"

@@ -12,8 +12,8 @@ namespace PlectisSnapshot
 
 def publicApiContractSchema : String := "plectis_lean_public_api_contract_v0"
 def publicApiContractVersion : String := "0.1.0-pre"
-def sourceSnapshotSHA256 : String := "f939772987e7c19f3d255a934b6599dea551064a970ec1b275d24de3f42a3fda"
-def sourceFileCount : Nat := 180
+def sourceSnapshotSHA256 : String := "9b7cb88601476f8d459d2c271028f1d82ef5497e14f46db843a1b0d9c544ab2c"
+def sourceFileCount : Nat := 202
 def plectisConsumptionMode : String := "pointer_only_until_public_tag"
 
 def exposedDeclarationFamilies : List String :=
