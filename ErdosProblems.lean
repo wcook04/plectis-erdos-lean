@@ -1,0 +1,35 @@
+-- Root module for the ErdosProblems library as shipped in this release.
+-- Generated from the launch closure: exactly the modules the launch entries import.
+
+import ErdosProblems.Erdos1041.CriticalTwoRootProximity
+import ErdosProblems.Erdos1041.CubicQuotientFiberCase
+import ErdosProblems.Erdos1041.CyclicTetranomialCoefficientCase
+import ErdosProblems.Erdos1041.CyclicTrinomialFiberCase
+import ErdosProblems.Erdos1041.PrimitiveQuinticBoundaryTail
+import ErdosProblems.Erdos1041.PrimitiveQuinticInteriorTail
+import ErdosProblems.Erdos1041.QuarticQuotientFiberCase
+import ErdosProblems.Erdos1041.SharpCollinearAlternation
+import ErdosProblems.Erdos1041.SharpCollinearChebyshev
+import ErdosProblems.Erdos1041.TetranomialElementarySymmetricSelector
+import ErdosProblems.Erdos1041.TetranomialL2Selector
+import ErdosProblems.Erdos1041.TetranomialProductSensitiveSelector
+import ErdosProblems.Erdos1041.TetranomialTailProductSelector
+import ErdosProblems.Erdos1049.AdelicHeightBridge
+import ErdosProblems.Erdos1049.BezoutPluckerJets
+import ErdosProblems.Erdos1049.HermitePadeNoGo
+import ErdosProblems.Erdos1049.QAperyTailDenominator
+import ErdosProblems.Erdos1049.RationalBaseLambert
+import ErdosProblems.Erdos1049.TwoSelectorRemainderEscape
+import ErdosProblems.Erdos1049.ZudilinConeArithmetic
+import ErdosProblems.Erdos1049.ZudilinHeightRegion
+import ErdosProblems.Erdos243.ReciprocalTailRigidity
+import ErdosProblems.Erdos249.CyclotomicAnchoredKill
+import ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature
+import ErdosProblems.Erdos249.RankOneSharpFloor
+import ErdosProblems.Erdos249.RankOneSubrankObstruction
+import ErdosProblems.Erdos251.PrimeGapDyadicTail
+import ErdosProblems.Erdos269.KernelCarryRank
+import ErdosProblems.Erdos269.ThreePrimeRunningLcm
+import ErdosProblems.Erdos68.ChannelBreakpointRigidity
+import ErdosProblems.Erdos68.ChannelIntegralCongruence
+import ErdosProblems.Shared.IrrationalRotationStaircase

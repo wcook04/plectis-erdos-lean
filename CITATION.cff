@@ -1,0 +1,55 @@
+# SPDX-FileCopyrightText: 2026 Will Cook
+# SPDX-License-Identifier: Apache-2.0
+cff-version: 1.2.0
+type: software-code
+message: "Cite this repository at the commit you read. No Erdős problem in it is claimed solved."
+title: "Plectis Erdős Lean"
+authors:
+  - family-names: "Cook"
+    given-names: "Will"
+license: Apache-2.0
+abstract: "Lean 4 formalizations of 19 partial results across 8 open Erdős problems (#68, #243, #249, #251, #257, #269, #1041, #1049). Each entry states a theorem, proves it against Mathlib with no sorry on the proof side, prints the axioms it depends on, and records in its metadata what the theorem does not reach. None of the problems is claimed to be solved, and novelty is recorded as unassessed wherever the literature does not settle it."
+keywords:
+  - "Lean 4"
+  - "formal mathematics"
+  - "number theory"
+  - "Erdős problems"
+  - "irrationality"
+  - "polynomial geometry"
+  - "proof verification"
+references:
+  - type: "article"
+    title: "The Lean Theorem Prover"
+    authors:
+      - family-names: "de Moura"
+        given-names: "Leonardo"
+      - family-names: "Kong"
+        given-names: "Soonho"
+      - family-names: "Avigad"
+        given-names: "Jeremy"
+      - family-names: "van Doorn"
+        given-names: "Floris"
+      - family-names: "von Raumer"
+        given-names: "Jakob"
+    year: "2015"
+    url: "https://lean-lang.org/papers/system.pdf"
+  - type: "manual"
+    title: "Lean Language Reference"
+    authors:
+      - name: "Lean FRO"
+    url: "https://lean-lang.org/doc/reference/latest/"
+  - type: "software"
+    title: "mathlib4"
+    authors:
+      - name: "The mathlib Community"
+    repository-code: "https://github.com/leanprover-community/mathlib4"
+  - type: "generic"
+    title: "Local bibliography placeholder: exact Erdos/Lambert-series source map"
+    authors:
+      - name: "Plectis citation map"
+    notes: "Resolved before publication by the Plectis paper-module citation lane."
+  - type: "generic"
+    title: "Local bibliography placeholder: exact #249/#257 Lean source snapshot"
+    authors:
+      - name: "Plectis source manifest"
+    notes: "Resolved before publication by public tag, commit hash, and standalone export receipt."

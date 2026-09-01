@@ -1,0 +1,97 @@
+name = "erdos257_period_noncollapse"
+version = "0.1.0"
+keywords = ["math", "erdos257", "period-noncollapse"]
+defaultTargets = ["ExternalVerification68ChannelRadius", "ExternalVerification243PeriodicNegativeOrbit", "ExternalVerification249BinaryCyclotomicAnchors", "ExternalVerification249RankOneSharpFloor", "ExternalVerification251PolynomialShiftCountermodel", "ExternalVerification251ActualPrimeGapTail", "ExternalVerification257ReciprocalSupport", "ExternalVerification257FinitePeriodNoncollapse", "ExternalVerification257RationalTailRigidity", "ExternalVerification269ThreePrimeStructure", "ExternalVerification1041SolvedFamilies", "ExternalVerification1041CyclicTrinomialFiber", "ExternalVerification1041QuarticQuotientFiber", "ExternalVerification1041CriticalGeometry", "ExternalVerification1041TetranomialSpokes", "ExternalVerification1049AdelicHeightBridge", "ExternalVerification1049RationalBaseBarrier", "ExternalVerification1049PrimeSupportSelectors", "ExternalVerification1049HermitePadeNoGo"]
+
+[leanOptions]
+pp.unicode.fun = true
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.29.1"
+
+[[lean_lib]]
+name = "Erdos257PeriodNoncollapse"
+
+[[lean_lib]]
+name = "ErdosProblems"
+
+[[lean_lib]]
+name = "ExternalVerification68ChannelRadius"
+globs = ["ExternalVerification68ChannelRadius.+"]
+
+[[lean_lib]]
+name = "ExternalVerification243PeriodicNegativeOrbit"
+globs = ["ExternalVerification243PeriodicNegativeOrbit.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249BinaryCyclotomicAnchors"
+globs = ["ExternalVerification249BinaryCyclotomicAnchors.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249RankOneSharpFloor"
+globs = ["ExternalVerification249RankOneSharpFloor.+"]
+
+[[lean_lib]]
+name = "ExternalVerification251PolynomialShiftCountermodel"
+globs = ["ExternalVerification251PolynomialShiftCountermodel.+"]
+
+[[lean_lib]]
+name = "ExternalVerification251ActualPrimeGapTail"
+globs = ["ExternalVerification251ActualPrimeGapTail.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257ReciprocalSupport"
+globs = ["ExternalVerification257ReciprocalSupport.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257FinitePeriodNoncollapse"
+globs = ["ExternalVerification257FinitePeriodNoncollapse.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257RationalTailRigidity"
+globs = ["ExternalVerification257RationalTailRigidity.+"]
+
+[[lean_lib]]
+name = "ExternalVerification269ThreePrimeStructure"
+globs = ["ExternalVerification269ThreePrimeStructure.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1041SolvedFamilies"
+globs = ["ExternalVerification1041SolvedFamilies.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1041CyclicTrinomialFiber"
+globs = ["ExternalVerification1041CyclicTrinomialFiber.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1041QuarticQuotientFiber"
+globs = ["ExternalVerification1041QuarticQuotientFiber.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1041CriticalGeometry"
+globs = ["ExternalVerification1041CriticalGeometry.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1041TetranomialSpokes"
+globs = ["ExternalVerification1041TetranomialSpokes.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1049AdelicHeightBridge"
+globs = ["ExternalVerification1049AdelicHeightBridge.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1049RationalBaseBarrier"
+globs = ["ExternalVerification1049RationalBaseBarrier.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1049PrimeSupportSelectors"
+globs = ["ExternalVerification1049PrimeSupportSelectors.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1049HermitePadeNoGo"
+globs = ["ExternalVerification1049HermitePadeNoGo.+"]
+
+[[lean_lib]]
+name = "PlectisSnapshot"

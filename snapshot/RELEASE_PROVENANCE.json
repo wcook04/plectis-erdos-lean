@@ -1,0 +1,241 @@
+{
+  "_type": "https://in-toto.io/Statement/v1",
+  "generated_at": "2026-09-01T19:15:25Z",
+  "predicate": {
+    "buildDefinition": {
+      "buildType": "https://plectis.local/build-types/lean-standalone-export/v0",
+      "externalParameters": {
+        "export_handle": "plectis-erdos-lean",
+        "source_config_path": "microcosm-substrate/docs/lean_formal_methods_os/release_topology_source_v0.json",
+        "source_root": "formal_math/erdos257_period_noncollapse",
+        "standalone_repo": {
+          "directory_name": "plectis-erdos-lean",
+          "display_name": "Plectis Erd\u0151s Lean",
+          "programme": {
+            "name": "the Plectis programme",
+            "note": "The papers behind each entry, the eight problem pages and the further verified work outside this release are indexed at <https://wcook04.github.io/plectis/maths/>.",
+            "url": "https://wcook04.github.io/plectis/"
+          },
+          "remote_name_suggestion": "plectis-erdos-lean",
+          "repository_role": "standalone_lean_lake_package_export"
+        }
+      },
+      "internalParameters": {
+        "non_claim_gate_status": "pass",
+        "publication_ready_boolean": false,
+        "selected_file_count": 180,
+        "source_files_sha256": "f065e59a3c58c7ef7c2ce9ac1df059bc2f38864bda96008153e00a80bf3cf3c6"
+      },
+      "resolvedDependencies": [
+        {
+          "digest": {
+            "sha256": "e3ecb38a4789232ccf2c5b5715caced18f6bb3cbcf7149215363479e086b498c"
+          },
+          "uri": "microcosm-substrate/docs/lean_formal_methods_os/release_topology_source_v0.json"
+        },
+        {
+          "digest": {
+            "sha256": "f065e59a3c58c7ef7c2ce9ac1df059bc2f38864bda96008153e00a80bf3cf3c6"
+          },
+          "uri": "source_files_sha256"
+        },
+        {
+          "digest": {
+            "sha256": "742c0e1042fd1e6c8b8024fd3c96d87916370420f2ae36315936907152dd8bd8"
+          },
+          "uri": "lake-manifest.json"
+        },
+        {
+          "digest": {
+            "sha256": "88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5"
+          },
+          "uri": "lean-toolchain"
+        }
+      ]
+    },
+    "runDetails": {
+      "builder": {
+        "id": "tools/meta/factory/build_plectis_lean_release_topology.py"
+      },
+      "byproducts": [
+        {
+          "body_in_receipt": false,
+          "digest": {
+            "sha256": "a46b29441ca8f853a9fc242b110f038d2deefa88d96bae5cff5a14d2c4924fe3"
+          },
+          "name": ".github/CODEOWNERS"
+        },
+        {
+          "body_in_receipt": false,
+          "digest": {
+            "sha256": "7132c1652660ac646e7787e45d37c2cfefd22316c30620a5b87c2b2fad53b941"
+          },
+          "name": ".github/workflows/lean.yml"
+        },
+        {
+          "body_in_receipt": false,
+          "digest": {
+            "sha256": "2829bfcf6564563e25eb0b65e598a5349f45ae32beb33c6795cd83fb3087a8c4"
+          },
+          "name": ".github/workflows/release-gate.yml"
+        },
+        {
+          "body_in_receipt": false,
+          "digest": {
+            "sha256": "f3e4a31d65ae09c90b5dfd4a0f529255868bad65f22def17ddef292a31e79293"
+          },
+          "name": "CITATION.cff"
+        },
+        {
+          "body_in_receipt": false,
+          "digest": {
+            "sha256": "a8521d142459db7e8fead51c623af5a41f020d2bb25d5c7bdea00010c86cfa84"
+          },
+          "name": "Erdos257PeriodNoncollapse.lean"
+        },
+        {
+          "body_in_receipt": false,
+          "digest": {
+            "sha256": "9add69f2d617676e86ed82b0ee8cee5cced1a121ca0472be3a20ee002147fef5"
+          },
+          "name": "ErdosProblems.lean"
+        },
+        {
+          "body_in_receipt": false,
+          "digest": {
+            "sha256": "5f73f0aafc768cc7c7f5da786dc7614296ee891a456faf175ab07456d3c35046"
+          },
+          "name": "LICENSE"
+        },
+        {
+          "body_in_receipt": false,
+          "digest": {
+            "sha256": "5f73f0aafc768cc7c7f5da786dc7614296ee891a456faf175ab07456d3c35046"
+          },
+          "name": "LICENSES/Apache-2.0.txt"
+        },
+        {
+          "body_in_receipt": false,
+          "digest": {
+            "sha256": "5635d5dea4b0765490f4e268b903ea2352650b2aebd9b41c08399f6baa8fff7e"
+          },
+          "name": "PlectisSnapshot.lean"
+        },
+        {
+          "body_in_receipt": false,
+          "digest": {
+            "sha256": "6b05fd9898bf3f10035ab460741c7c89b8a5295717c50d82e667b7acdbe5ec2e"
+          },
+          "name": "PlectisSnapshot/PublicAPI.lean"
+        },
+        {
+          "body_in_receipt": false,
+          "digest": {
+            "sha256": "1f8788a67587a5453e7126ed9769718b111fea5961785f1a0b4cc03c302e4bef"
+          },
+          "name": "README.md"
+        },
+        {
+          "body_in_receipt": false,
+          "digest": {
+            "sha256": "933ce98cafc01c821ecd5bbdd89cd9b5916041bdcd22e18de2239f6b728d3ded"
+          },
+          "name": "REUSE.toml"
+        },
+        {
+          "body_in_receipt": false,
+          "digest": {
+            "sha256": "6cd6e35a6b58121bef43bd663c663a65e544f605aae3c1ac66e1e040f026724e"
+          },
+          "name": "lakefile.toml"
+        },
+        {
+          "body_in_receipt": false,
+          "digest": {
+            "sha256": "22492b85bb6cf0d87aea4d5d6411b7be07140453bd27acc88f9aac8458da9183"
+          },
+          "name": "scripts/verify_snapshot.py"
+        },
+        {
+          "body_in_receipt": false,
+          "digest": {
+            "sha256": "7fe05221e15304fe7e0d0eb3859597b2213c140c558eeceaf5bcc861ef3cb01d"
+          },
+          "name": "snapshot/CLAIM_TO_REFERENCE_MAP.json"
+        },
+        {
+          "body_in_receipt": false,
+          "digest": {
+            "sha256": "35560a2b48db4a25cfdc8f6d85971b5e4c7252ba26548059612cb72d1d0384df"
+          },
+          "name": "snapshot/NON_CLAIMS.md"
+        },
+        {
+          "body_in_receipt": false,
+          "digest": {
+            "sha256": "c8214710528af04f43377695685b74a7af947c91332d0961febaaef0f3618eb3"
+          },
+          "name": "snapshot/PLECTIS_INTEGRATION.json"
+        },
+        {
+          "body_in_receipt": false,
+          "digest": {
+            "sha256": "7b81da9306206457f24fa61be77ea2c6b357bcb0c7d79d793d68d0864d400d53"
+          },
+          "name": "snapshot/PUBLIC_API_CONTRACT.json"
+        },
+        {
+          "body_in_receipt": false,
+          "digest": {
+            "sha256": "bfc902dcf58ecea9a7438834fff8831edd3c7604161a93d121c9b61af9f56426"
+          },
+          "name": "snapshot/PUBLIC_SNAPSHOT_MANIFEST.json"
+        },
+        {
+          "body_in_receipt": false,
+          "digest": {
+            "sha256": "284ce79a70f75343b8e28cb965adceaf40baf736cbe98512b6be53c2e997c45f"
+          },
+          "name": "snapshot/README.md"
+        },
+        {
+          "body_in_receipt": false,
+          "digest": {
+            "sha256": "8e1fc7a09a968a5ae51a4364bc4a29f10b70a13703892e2b7d09d188c78e2a9b"
+          },
+          "name": "snapshot/REFERENCES.yaml"
+        },
+        {
+          "body_in_receipt": false,
+          "digest": {
+            "sha256": "5c6e5eb15aabbcf15196bd5af6ec3f49d7b064ff89477a914f4a8c5299d5e777"
+          },
+          "name": "snapshot/RELEASE_BOUNDARY.md"
+        },
+        {
+          "body_in_receipt": false,
+          "digest": {
+            "sha256": "f6708997534b5a7777d9bddb560ca6c65c714c9a67084f04b7c2125f3c2db816"
+          },
+          "name": "snapshot/RELEASE_NOTES.md"
+        }
+      ],
+      "metadata": {
+        "invocationFinishedOn": "2026-09-01T19:15:25Z",
+        "reproducibilityBoundary": "public export source selection plus generated metadata"
+      }
+    }
+  },
+  "predicateType": "https://slsa.dev/provenance/v1",
+  "schema": "plectis_lean_release_provenance_v0",
+  "subject": [
+    {
+      "digest": {
+        "sha256": "d5250857570f6ef17e2021dd74aad00db084aaee4e4932af974d37fb40d13e01"
+      },
+      "file_count": 200,
+      "name": "plectis-erdos-lean"
+    }
+  ],
+  "subject_digest_scope": "export_subject_tree_excludes_release_notes_and_provenance_to_avoid_circular_digest"
+}
