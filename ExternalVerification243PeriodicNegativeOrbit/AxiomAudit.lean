@@ -1,4 +1,4 @@
-import ExternalVerification243PeriodicNegativeOrbit.Solution
+import Solutions.ExternalVerification243PeriodicNegativeOrbit
 
 #print axioms Erdos249257.ExternalVerification243PeriodicNegativeOrbit.no_phasePrimitivePeriodicNegative_orbit
 #print axioms Erdos249257.ExternalVerification243PeriodicNegativeOrbit.no_periodicNegative_orbit

@@ -1,6 +1,6 @@
 {
   "challenge_module": "ExternalVerification1049PrimeSupportSelectors.Challenge",
-  "solution_module": "ExternalVerification1049PrimeSupportSelectors.Solution",
+  "solution_module": "Solutions.ExternalVerification1049PrimeSupportSelectors",
   "theorem_names": [
     "Erdos249257.ExternalVerification1049PrimeSupportSelectors.primeSupportedTwoSelector_rationalGap",
     "Erdos249257.ExternalVerification1049PrimeSupportSelectors.rationalTwoSelector_notBothTendstoZero",

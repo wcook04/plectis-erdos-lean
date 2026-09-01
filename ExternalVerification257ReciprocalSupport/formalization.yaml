@@ -81,7 +81,7 @@ status:
   - Classical.choice
   main_results:
   - declaration: Erdos249257.ExternalVerification257ReciprocalSupport.irrational_supportPowerSeries_of_summable_reciprocal
-    file: ExternalVerification257ReciprocalSupport/Solution.lean
+    file: Solutions/ExternalVerification257ReciprocalSupport.lean
     sorry_count: 0
     axioms:
     - propext

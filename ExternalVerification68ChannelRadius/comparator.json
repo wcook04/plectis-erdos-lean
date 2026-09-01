@@ -1,6 +1,6 @@
 {
   "challenge_module": "ExternalVerification68ChannelRadius.Challenge",
-  "solution_module": "ExternalVerification68ChannelRadius.Solution",
+  "solution_module": "Solutions.ExternalVerification68ChannelRadius",
   "theorem_names": [
     "Erdos249257.ExternalVerification68ChannelRadius.square_subsequence_radius_three_halves_lower",
     "Erdos249257.ExternalVerification68ChannelRadius.no_eventual_square_subsequence_three_halves_upper",

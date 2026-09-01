@@ -1,4 +1,4 @@
-import ExternalVerification1049RationalBaseBarrier.Solution
+import Solutions.ExternalVerification1049RationalBaseBarrier
 
 #print axioms Erdos249257.ExternalVerification1049RationalBaseBarrier.rationalBaseClearedTailQ_succ
 #print axioms Erdos249257.ExternalVerification1049RationalBaseBarrier.twoPow_le_rationalBaseForcingNat

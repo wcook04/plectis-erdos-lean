@@ -78,7 +78,7 @@ status:
   - Classical.choice
   main_results:
   - declaration: Erdos249257.ExternalVerification68ChannelRadius.square_subsequence_radius_three_halves_lower
-    file: ExternalVerification68ChannelRadius/Solution.lean
+    file: Solutions/ExternalVerification68ChannelRadius.lean
     sorry_count: 0
     canonical_claim_status: exact source transport; focused check deferred by low-disk
       firewall
@@ -86,7 +86,7 @@ status:
     boundary: Conditional channel-radius obstruction; no construction of the channel
       hypotheses and no irrationality proof.
   - declaration: Erdos249257.ExternalVerification68ChannelRadius.no_eventual_square_subsequence_three_halves_upper
-    file: ExternalVerification68ChannelRadius/Solution.lean
+    file: Solutions/ExternalVerification68ChannelRadius.lean
     sorry_count: 0
     canonical_claim_status: exact source transport; focused check deferred by low-disk
       firewall
@@ -94,7 +94,7 @@ status:
     boundary: Rules out an eventual competing cubic upper bound only under the stated
       all-large-t hypotheses.
   - declaration: Erdos249257.ExternalVerification68ChannelRadius.not_isLittleO_square_subsequence_radius
-    file: ExternalVerification68ChannelRadius/Solution.lean
+    file: Solutions/ExternalVerification68ChannelRadius.lean
     sorry_count: 0
     canonical_claim_status: exact source transport; focused check deferred by low-disk
       firewall

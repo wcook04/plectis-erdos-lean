@@ -1,7 +1,7 @@
 name = "erdos257_period_noncollapse"
 version = "0.1.0"
 keywords = ["math", "erdos257", "period-noncollapse"]
-defaultTargets = ["ExternalVerification68ChannelRadius", "ExternalVerification243PeriodicNegativeOrbit", "ExternalVerification249BinaryCyclotomicAnchors", "ExternalVerification249RankOneSharpFloor", "ExternalVerification251PolynomialShiftCountermodel", "ExternalVerification251ActualPrimeGapTail", "ExternalVerification257ReciprocalSupport", "ExternalVerification257FinitePeriodNoncollapse", "ExternalVerification257RationalTailRigidity", "ExternalVerification269ThreePrimeStructure", "ExternalVerification1041SolvedFamilies", "ExternalVerification1041CyclicTrinomialFiber", "ExternalVerification1041QuarticQuotientFiber", "ExternalVerification1041CriticalGeometry", "ExternalVerification1041TetranomialSpokes", "ExternalVerification1049AdelicHeightBridge", "ExternalVerification1049RationalBaseBarrier", "ExternalVerification1049PrimeSupportSelectors", "ExternalVerification1049HermitePadeNoGo"]
+defaultTargets = ["ExternalVerification68ChannelRadius", "ExternalVerification243PeriodicNegativeOrbit", "ExternalVerification249BinaryCyclotomicAnchors", "ExternalVerification249RankOneSharpFloor", "ExternalVerification251PolynomialShiftCountermodel", "ExternalVerification251ActualPrimeGapTail", "ExternalVerification257ReciprocalSupport", "ExternalVerification257FinitePeriodNoncollapse", "ExternalVerification257RationalTailRigidity", "ExternalVerification269ThreePrimeStructure", "ExternalVerification1041SolvedFamilies", "ExternalVerification1041CyclicTrinomialFiber", "ExternalVerification1041QuarticQuotientFiber", "ExternalVerification1041CriticalGeometry", "ExternalVerification1041TetranomialSpokes", "ExternalVerification1049AdelicHeightBridge", "ExternalVerification1049RationalBaseBarrier", "ExternalVerification1049PrimeSupportSelectors", "ExternalVerification1049HermitePadeNoGo", "Solutions"]
 
 [leanOptions]
 pp.unicode.fun = true
@@ -92,6 +92,10 @@ globs = ["ExternalVerification1049PrimeSupportSelectors.+"]
 [[lean_lib]]
 name = "ExternalVerification1049HermitePadeNoGo"
 globs = ["ExternalVerification1049HermitePadeNoGo.+"]
+
+[[lean_lib]]
+name = "Solutions"
+globs = ["Solutions.+"]
 
 [[lean_lib]]
 name = "PlectisSnapshot"

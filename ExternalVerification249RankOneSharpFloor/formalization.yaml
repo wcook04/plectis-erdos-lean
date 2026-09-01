@@ -77,7 +77,7 @@ status:
   - Classical.choice
   main_results:
   - declaration: Erdos249257.ExternalVerification249RankOneSharpFloor.rankOneSubrankQuotient_eq_one_five_iff
-    file: ExternalVerification249RankOneSharpFloor/Solution.lean
+    file: Solutions/ExternalVerification249RankOneSharpFloor.lean
     sorry_count: 0
     comparator_config: ExternalVerification249RankOneSharpFloor/comparator.json
     canonical_claim_status: source_proved_wrapper_pending_focused_check

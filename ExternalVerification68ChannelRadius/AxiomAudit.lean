@@ -1,4 +1,4 @@
-import ExternalVerification68ChannelRadius.Solution
+import Solutions.ExternalVerification68ChannelRadius
 
 #print axioms Erdos249257.ExternalVerification68ChannelRadius.square_subsequence_radius_three_halves_lower
 #print axioms Erdos249257.ExternalVerification68ChannelRadius.no_eventual_square_subsequence_three_halves_upper

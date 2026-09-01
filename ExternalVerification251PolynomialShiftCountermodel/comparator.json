@@ -1,6 +1,6 @@
 {
   "challenge_module": "ExternalVerification251PolynomialShiftCountermodel.Challenge",
-  "solution_module": "ExternalVerification251PolynomialShiftCountermodel.Solution",
+  "solution_module": "Solutions.ExternalVerification251PolynomialShiftCountermodel",
   "theorem_names": [
     "Erdos249257.ExternalVerification251PolynomialShiftCountermodel.polynomialGapTailCountermodel"
   ],

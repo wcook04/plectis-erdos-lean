@@ -85,7 +85,7 @@ status:
   - Classical.choice
   main_results:
   - declaration: Erdos249257.ExternalVerification1041SolvedFamilies.SharpCollinear.existsPeakLeComparisonBound
-    file: ExternalVerification1041SolvedFamilies/Solution.lean
+    file: Solutions/ExternalVerification1041SolvedFamilies.lean
     sorry_count: 0
     axioms:
     - propext
@@ -117,7 +117,7 @@ status:
         these labels. The local patch adds them.
     literature_dependencies: []
   - declaration: Erdos249257.ExternalVerification1041SolvedFamilies.primitiveQuintic_twoStrictTailEnergies
-    file: ExternalVerification1041SolvedFamilies/Solution.lean
+    file: Solutions/ExternalVerification1041SolvedFamilies.lean
     sorry_count: 0
     axioms:
     - propext
@@ -149,7 +149,7 @@ status:
         these labels. The local patch adds them.
     literature_dependencies: []
   - declaration: Erdos249257.ExternalVerification1041SolvedFamilies.cubic_safeRootSpoke
-    file: ExternalVerification1041SolvedFamilies/Solution.lean
+    file: Solutions/ExternalVerification1041SolvedFamilies.lean
     sorry_count: 0
     axioms:
     - propext

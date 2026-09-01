@@ -1,6 +1,6 @@
 {
   "challenge_module": "ExternalVerification1041TetranomialSpokes.Challenge",
-  "solution_module": "ExternalVerification1041TetranomialSpokes.Solution",
+  "solution_module": "Solutions.ExternalVerification1041TetranomialSpokes",
   "theorem_names": [
     "Erdos249257.ExternalVerification1041TetranomialSpokes.tetranomialRoot_spoke_factorization",
     "Erdos249257.ExternalVerification1041TetranomialSpokes.tetranomialRoot_spoke_norm_lt_one_of_rootBudget",

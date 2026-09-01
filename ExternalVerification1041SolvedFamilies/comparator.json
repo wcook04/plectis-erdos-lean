@@ -1,6 +1,6 @@
 {
   "challenge_module": "ExternalVerification1041SolvedFamilies.Challenge",
-  "solution_module": "ExternalVerification1041SolvedFamilies.Solution",
+  "solution_module": "Solutions.ExternalVerification1041SolvedFamilies",
   "theorem_names": [
     "Erdos249257.ExternalVerification1041SolvedFamilies.SharpCollinear.existsPeakLeComparisonBound",
     "Erdos249257.ExternalVerification1041SolvedFamilies.primitiveQuintic_twoStrictTailEnergies",

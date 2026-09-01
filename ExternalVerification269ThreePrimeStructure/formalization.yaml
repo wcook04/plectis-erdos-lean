@@ -73,7 +73,7 @@ status:
   - Classical.choice
   main_results:
   - declaration: Erdos249257.ExternalVerification269ThreePrimeStructure.finiteSmoothKernelSum_groupedByHeight
-    file: ExternalVerification269ThreePrimeStructure/Solution.lean
+    file: Solutions/ExternalVerification269ThreePrimeStructure.lean
     sorry_count: 0
     comparator_config: ExternalVerification269ThreePrimeStructure/comparator.json
     canonical_claim_status: source_proved_wrapper_focused_lean_and_axiom_audit_passed
@@ -83,7 +83,7 @@ status:
     boundary: Finite structural identity; no irrationality conclusion.
     literature_dependencies: []
   - declaration: Erdos249257.ExternalVerification269ThreePrimeStructure.smoothExponentShell_card_quadratic
-    file: ExternalVerification269ThreePrimeStructure/Solution.lean
+    file: Solutions/ExternalVerification269ThreePrimeStructure.lean
     sorry_count: 0
     comparator_config: ExternalVerification269ThreePrimeStructure/comparator.json
     canonical_claim_status: source_proved_wrapper_focused_lean_and_axiom_audit_passed
@@ -93,7 +93,7 @@ status:
     boundary: Requires the stated multiplicative-width and sorted-height hypotheses.
     literature_dependencies: []
   - declaration: Erdos249257.ExternalVerification269ThreePrimeStructure.threePrimeKernel_infiniteRank_and_noFiniteSeparation
-    file: ExternalVerification269ThreePrimeStructure/Solution.lean
+    file: Solutions/ExternalVerification269ThreePrimeStructure.lean
     sorry_count: 0
     comparator_config: ExternalVerification269ThreePrimeStructure/comparator.json
     canonical_claim_status: source_proved_wrapper_focused_lean_and_axiom_audit_passed
@@ -105,7 +105,7 @@ status:
       does not prove irrationality or exclude nonlinear or infinite representations.
     literature_dependencies: []
   - declaration: Erdos249257.ExternalVerification269ThreePrimeStructure.smoothPrefixLcm_eq_threePrimeHeight
-    file: ExternalVerification269ThreePrimeStructure/Solution.lean
+    file: Solutions/ExternalVerification269ThreePrimeStructure.lean
     sorry_count: 0
     comparator_config: ExternalVerification269ThreePrimeStructure/comparator.json
     canonical_claim_status: source_proved_wrapper_focused_lean_and_axiom_audit_passed
@@ -116,7 +116,7 @@ status:
     boundary: No irrationality or transcendence conclusion.
     literature_dependencies: []
   - declaration: Erdos249257.ExternalVerification269ThreePrimeStructure.kernel_235_minor_eq_neg_one_fifteen
-    file: ExternalVerification269ThreePrimeStructure/Solution.lean
+    file: Solutions/ExternalVerification269ThreePrimeStructure.lean
     sorry_count: 0
     comparator_config: ExternalVerification269ThreePrimeStructure/comparator.json
     canonical_claim_status: source_proved_wrapper_focused_lean_and_axiom_audit_passed

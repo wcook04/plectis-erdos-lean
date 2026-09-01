@@ -79,7 +79,7 @@ status:
   - Classical.choice
   main_results:
   - declaration: Erdos249257.ExternalVerification257FinitePeriodNoncollapse.finite_period_noncollapse_rat_den
-    file: ExternalVerification257FinitePeriodNoncollapse/Solution.lean
+    file: Solutions/ExternalVerification257FinitePeriodNoncollapse.lean
     sorry_count: 0
     comparator_config: ExternalVerification257FinitePeriodNoncollapse/comparator.json
     canonical_claim_status: source_backed_exact_transport_focused_checked
@@ -95,7 +95,7 @@ status:
     comparator_declaration: Erdos249257.ExternalVerification257FinitePeriodNoncollapse.finite_period_noncollapse_rat_den
     literature_dependencies: []
   - declaration: Erdos249257.ExternalVerification257FinitePeriodNoncollapse.lcm_lt_den_finiteErdosSum
-    file: ExternalVerification257FinitePeriodNoncollapse/Solution.lean
+    file: Solutions/ExternalVerification257FinitePeriodNoncollapse.lean
     sorry_count: 0
     comparator_config: ExternalVerification257FinitePeriodNoncollapse/comparator.json
     canonical_claim_status: source_backed_exact_transport_focused_checked

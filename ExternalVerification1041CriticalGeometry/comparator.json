@@ -1,6 +1,6 @@
 {
   "challenge_module": "ExternalVerification1041CriticalGeometry.Challenge",
-  "solution_module": "ExternalVerification1041CriticalGeometry.Solution",
+  "solution_module": "Solutions.ExternalVerification1041CriticalGeometry",
   "theorem_names": [
     "Erdos249257.ExternalVerification1041CriticalGeometry.criticalGeometricMean_twoRootProximity",
     "Erdos249257.ExternalVerification1041CriticalGeometry.criticalDiskInverseBalance_twoRootProximity",

@@ -83,7 +83,7 @@ status:
   - Classical.choice
   main_results:
   - declaration: Erdos249257.ExternalVerification251PolynomialShiftCountermodel.polynomialGapTailCountermodel
-    file: ExternalVerification251PolynomialShiftCountermodel/Solution.lean
+    file: Solutions/ExternalVerification251PolynomialShiftCountermodel.lean
     sorry_count: 0
     comparator_config: ExternalVerification251PolynomialShiftCountermodel/comparator.json
     canonical_claim_status: lean_checked_composite_wrapper

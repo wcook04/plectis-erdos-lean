@@ -60,7 +60,7 @@ status:
   - Classical.choice
   main_results:
   - declaration: Erdos249257.ExternalVerification1049HermitePadeNoGo.rectangular_hp_threshold_le_classical
-    file: ExternalVerification1049HermitePadeNoGo/Solution.lean
+    file: Solutions/ExternalVerification1049HermitePadeNoGo.lean
     sorry_count: 0
     comparator_config: ExternalVerification1049HermitePadeNoGo/comparator.json
     canonical_claim_status: source_proved_wrapper_pending_focused_check
@@ -70,7 +70,7 @@ status:
     boundary: Applies only to the explicit exponent model encoded by the package definitions.
     literature_dependencies: []
   - declaration: Erdos249257.ExternalVerification1049HermitePadeNoGo.rectangular_hp_threshold_eq_classical_iff
-    file: ExternalVerification1049HermitePadeNoGo/Solution.lean
+    file: Solutions/ExternalVerification1049HermitePadeNoGo.lean
     sorry_count: 0
     comparator_config: ExternalVerification1049HermitePadeNoGo/comparator.json
     canonical_claim_status: source_proved_wrapper_pending_focused_check

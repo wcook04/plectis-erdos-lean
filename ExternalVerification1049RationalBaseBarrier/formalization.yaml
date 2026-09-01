@@ -78,7 +78,7 @@ status:
   - Classical.choice
   main_results:
   - declaration: Erdos249257.ExternalVerification1049RationalBaseBarrier.rationalBaseClearedTailQ_succ
-    file: ExternalVerification1049RationalBaseBarrier/Solution.lean
+    file: Solutions/ExternalVerification1049RationalBaseBarrier.lean
     sorry_count: 0
     canonical_claim_status: exact source transport; focused check deferred by low-disk
       firewall
@@ -86,14 +86,14 @@ status:
     boundary: Algebraic recurrence for an abstract coefficient stream; no rationality
       implication.
   - declaration: Erdos249257.ExternalVerification1049RationalBaseBarrier.twoPow_le_rationalBaseForcingNat
-    file: ExternalVerification1049RationalBaseBarrier/Solution.lean
+    file: Solutions/ExternalVerification1049RationalBaseBarrier.lean
     sorry_count: 0
     canonical_claim_status: exact source transport; focused check deferred by low-disk
       firewall
     novelty_status: unassessed
     boundary: Exponential forcing under explicit positivity and denominator-base hypotheses.
   - declaration: Erdos249257.ExternalVerification1049RationalBaseBarrier.threeHalves_no_coordinatewiseCorridor
-    file: ExternalVerification1049RationalBaseBarrier/Solution.lean
+    file: Solutions/ExternalVerification1049RationalBaseBarrier.lean
     sorry_count: 0
     canonical_claim_status: exact source transport; focused check deferred by low-disk
       firewall

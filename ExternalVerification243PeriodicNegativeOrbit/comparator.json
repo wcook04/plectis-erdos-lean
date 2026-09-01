@@ -1,6 +1,6 @@
 {
   "challenge_module": "ExternalVerification243PeriodicNegativeOrbit.Challenge",
-  "solution_module": "ExternalVerification243PeriodicNegativeOrbit.Solution",
+  "solution_module": "Solutions.ExternalVerification243PeriodicNegativeOrbit",
   "theorem_names": [
     "Erdos249257.ExternalVerification243PeriodicNegativeOrbit.no_eventuallyPeriodicNegative_orbit",
     "Erdos249257.ExternalVerification243PeriodicNegativeOrbit.no_periodicNegative_orbit",

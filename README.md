@@ -83,13 +83,16 @@ Source: [`ExternalVerification251PolynomialShiftCountermodel/`](ExternalVerifica
 
 ## Reading an entry
 
-Each entry contains the same five core files.
+Each entry is five files: four in its directory and its Solution under `Solutions/`.
 
-- `Challenge.lean` states the theorem for a reviewer and does not prove it.
-- `Solution.lean` proves it. A `sorry` here would be fatal and there is none.
-- `AxiomAudit.lean` prints the axioms each selected declaration depends on.
-- `comparator.json` is the configuration a registry submission names.
-- `formalization.yaml` records scope, sources, attribution and known divergences.
+- `<Entry>/Challenge.lean` states the theorem for a reviewer and does not prove it.
+- `Solutions/<Entry>.lean` proves it. A `sorry` here would be fatal and there is none.
+- `<Entry>/AxiomAudit.lean` prints the axioms each selected declaration depends on.
+- `<Entry>/comparator.json` is the configuration a registry submission names.
+- `<Entry>/formalization.yaml` records scope, sources, attribution and known divergences.
+
+The Solution lives under its own module prefix because the registry compiles each
+Challenge into a protected directory that shadows every module sharing its prefix.
 
 ## What this repository does not establish
 

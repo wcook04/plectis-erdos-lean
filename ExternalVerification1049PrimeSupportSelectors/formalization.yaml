@@ -67,7 +67,7 @@ status:
   - Classical.choice
   main_results:
   - declaration: Erdos249257.ExternalVerification1049PrimeSupportSelectors.primeSupportedTwoSelector_rationalGap
-    file: ExternalVerification1049PrimeSupportSelectors/Solution.lean
+    file: Solutions/ExternalVerification1049PrimeSupportSelectors.lean
     sorry_count: 0
     comparator_config: ExternalVerification1049PrimeSupportSelectors/comparator.json
     canonical_claim_status: source_proved_wrapper_pending_focused_check
@@ -78,7 +78,7 @@ status:
       are not proved.
     literature_dependencies: []
   - declaration: Erdos249257.ExternalVerification1049PrimeSupportSelectors.rationalTwoSelector_notBothTendstoZero
-    file: ExternalVerification1049PrimeSupportSelectors/Solution.lean
+    file: Solutions/ExternalVerification1049PrimeSupportSelectors.lean
     sorry_count: 0
     comparator_config: ExternalVerification1049PrimeSupportSelectors/comparator.json
     canonical_claim_status: source_proved_wrapper_pending_focused_check
@@ -88,7 +88,7 @@ status:
     boundary: Does not produce the analytic decay required for irrationality.
     literature_dependencies: []
   - declaration: Erdos249257.ExternalVerification1049PrimeSupportSelectors.primeSupportedOneRow_rationalGap
-    file: ExternalVerification1049PrimeSupportSelectors/Solution.lean
+    file: Solutions/ExternalVerification1049PrimeSupportSelectors.lean
     sorry_count: 0
     comparator_config: ExternalVerification1049PrimeSupportSelectors/comparator.json
     canonical_claim_status: source_proved_wrapper_pending_focused_check
@@ -99,7 +99,7 @@ status:
       not produce cofinal support or prove irrationality.
     literature_dependencies: []
   - declaration: Erdos249257.ExternalVerification1049PrimeSupportSelectors.primePowerSupportedOneRow_rationalGap
-    file: ExternalVerification1049PrimeSupportSelectors/Solution.lean
+    file: Solutions/ExternalVerification1049PrimeSupportSelectors.lean
     sorry_count: 0
     comparator_config: ExternalVerification1049PrimeSupportSelectors/comparator.json
     canonical_claim_status: source_proved_wrapper_pending_focused_check
@@ -110,7 +110,7 @@ status:
       it does not produce cofinal support or prove irrationality.
     literature_dependencies: []
   - declaration: Erdos249257.ExternalVerification1049PrimeSupportSelectors.twoSelector_unimodularHeightDecay_tradeoff
-    file: ExternalVerification1049PrimeSupportSelectors/Solution.lean
+    file: Solutions/ExternalVerification1049PrimeSupportSelectors.lean
     sorry_count: 0
     comparator_config: ExternalVerification1049PrimeSupportSelectors/comparator.json
     canonical_claim_status: source_proved_wrapper_pending_focused_check
@@ -122,7 +122,7 @@ status:
       estimate.
     literature_dependencies: []
   - declaration: Erdos249257.ExternalVerification1049PrimeSupportSelectors.zeroDenominatorCoordinates_binaryCollision
-    file: ExternalVerification1049PrimeSupportSelectors/Solution.lean
+    file: Solutions/ExternalVerification1049PrimeSupportSelectors.lean
     sorry_count: 0
     comparator_config: ExternalVerification1049PrimeSupportSelectors/comparator.json
     canonical_claim_status: source_proved_wrapper_pending_focused_check

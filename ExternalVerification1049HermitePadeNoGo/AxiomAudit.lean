@@ -1,4 +1,4 @@
-import ExternalVerification1049HermitePadeNoGo.Solution
+import Solutions.ExternalVerification1049HermitePadeNoGo
 
 #print axioms Erdos249257.ExternalVerification1049HermitePadeNoGo.hpClearedGap_expansion
 #print axioms Erdos249257.ExternalVerification1049HermitePadeNoGo.hpClearedGap_nonpos

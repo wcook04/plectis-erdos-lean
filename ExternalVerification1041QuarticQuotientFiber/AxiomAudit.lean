@@ -1,4 +1,4 @@
-import ExternalVerification1041QuarticQuotientFiber.Solution
+import Solutions.ExternalVerification1041QuarticQuotientFiber
 
 #print axioms Erdos249257.ExternalVerification1041QuarticQuotientFiber.rootLift_kernel_le_axis
 #print axioms Erdos249257.ExternalVerification1041QuarticQuotientFiber.rootLift_axis_integral

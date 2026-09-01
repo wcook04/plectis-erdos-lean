@@ -30,7 +30,7 @@
       "status": "allowed_only_with_resource_headroom"
     }
   },
-  "generated_at": "2026-09-01T20:25:04Z",
+  "generated_at": "2026-09-01T21:00:50Z",
   "moving_frontier_policy": {
     "breaking_private_change": "Topology changes require a compatibility adapter or a new snapshot lane in Plectis.",
     "private_frontier": "Private #249/#257 work is excluded until a new manifest row and release gate promote it.",
@@ -599,7 +599,8 @@
     },
     {
       "bytes": 5663,
-      "path": "ExternalVerification1041CriticalGeometry/Solution.lean",
+      "path": "Solutions/ExternalVerification1041CriticalGeometry.lean",
+      "relocated_from": "ExternalVerification1041CriticalGeometry/Solution.lean",
       "sha256": "b1e4aafca85e49cf18c300c2c647d560ccdb45d53dbd7cccbe20b0251b68705c"
     },
     {
@@ -624,7 +625,8 @@
     },
     {
       "bytes": 1209,
-      "path": "ExternalVerification1041CyclicTrinomialFiber/Solution.lean",
+      "path": "Solutions/ExternalVerification1041CyclicTrinomialFiber.lean",
+      "relocated_from": "ExternalVerification1041CyclicTrinomialFiber/Solution.lean",
       "sha256": "8694e1841ea45da449bbeae5112f68129d4286133710c909d1d5ca1bc4e79782"
     },
     {
@@ -649,7 +651,8 @@
     },
     {
       "bytes": 1263,
-      "path": "ExternalVerification1041QuarticQuotientFiber/Solution.lean",
+      "path": "Solutions/ExternalVerification1041QuarticQuotientFiber.lean",
+      "relocated_from": "ExternalVerification1041QuarticQuotientFiber/Solution.lean",
       "sha256": "de2a2ef39395573987347007de06219ba095fa4c2223ea48b176260c43100bf3"
     },
     {
@@ -674,7 +677,8 @@
     },
     {
       "bytes": 4047,
-      "path": "ExternalVerification1041SolvedFamilies/Solution.lean",
+      "path": "Solutions/ExternalVerification1041SolvedFamilies.lean",
+      "relocated_from": "ExternalVerification1041SolvedFamilies/Solution.lean",
       "sha256": "8a4d7f4bac5263aeb22da364d7db4a7576f3717d09a729196e13b542a9da5d39"
     },
     {
@@ -699,7 +703,8 @@
     },
     {
       "bytes": 3989,
-      "path": "ExternalVerification1041TetranomialSpokes/Solution.lean",
+      "path": "Solutions/ExternalVerification1041TetranomialSpokes.lean",
+      "relocated_from": "ExternalVerification1041TetranomialSpokes/Solution.lean",
       "sha256": "91c2594a872544e8e47aef075b39b96bee9d510c0e3dbb491c66c96440d857fc"
     },
     {
@@ -724,7 +729,8 @@
     },
     {
       "bytes": 6628,
-      "path": "ExternalVerification1049AdelicHeightBridge/Solution.lean",
+      "path": "Solutions/ExternalVerification1049AdelicHeightBridge.lean",
+      "relocated_from": "ExternalVerification1049AdelicHeightBridge/Solution.lean",
       "sha256": "233bba72cc39abe149e0e44248321b0186860d55db00a1c45179dbfc2d68e114"
     },
     {
@@ -749,7 +755,8 @@
     },
     {
       "bytes": 1983,
-      "path": "ExternalVerification1049HermitePadeNoGo/Solution.lean",
+      "path": "Solutions/ExternalVerification1049HermitePadeNoGo.lean",
+      "relocated_from": "ExternalVerification1049HermitePadeNoGo/Solution.lean",
       "sha256": "d2827227f5b9b523f5a72c4cd23c2515cba58143281f90b3cbcfb43022c319c8"
     },
     {
@@ -774,7 +781,8 @@
     },
     {
       "bytes": 3327,
-      "path": "ExternalVerification1049PrimeSupportSelectors/Solution.lean",
+      "path": "Solutions/ExternalVerification1049PrimeSupportSelectors.lean",
+      "relocated_from": "ExternalVerification1049PrimeSupportSelectors/Solution.lean",
       "sha256": "5eafe632eb323bfa2695c681a4285e1bfa42110b1ae34241ee5b45d998bfd163"
     },
     {
@@ -799,7 +807,8 @@
     },
     {
       "bytes": 2254,
-      "path": "ExternalVerification1049RationalBaseBarrier/Solution.lean",
+      "path": "Solutions/ExternalVerification1049RationalBaseBarrier.lean",
+      "relocated_from": "ExternalVerification1049RationalBaseBarrier/Solution.lean",
       "sha256": "bed923ae79d13972ec589ebe44d85eea6602ca11dd0f22390e914da59e3a6e54"
     },
     {
@@ -824,7 +833,8 @@
     },
     {
       "bytes": 2332,
-      "path": "ExternalVerification243PeriodicNegativeOrbit/Solution.lean",
+      "path": "Solutions/ExternalVerification243PeriodicNegativeOrbit.lean",
+      "relocated_from": "ExternalVerification243PeriodicNegativeOrbit/Solution.lean",
       "sha256": "078e3d76d02e2d0ae20aab8bfff1135e1eff488a2ac03ccf5b9ce7ba0f16e899"
     },
     {
@@ -849,7 +859,8 @@
     },
     {
       "bytes": 3770,
-      "path": "ExternalVerification249BinaryCyclotomicAnchors/Solution.lean",
+      "path": "Solutions/ExternalVerification249BinaryCyclotomicAnchors.lean",
+      "relocated_from": "ExternalVerification249BinaryCyclotomicAnchors/Solution.lean",
       "sha256": "23e3365e08da0a83c836b053999b415af86035e646e9886cedca3b64b95a1a5d"
     },
     {
@@ -874,7 +885,8 @@
     },
     {
       "bytes": 6109,
-      "path": "ExternalVerification249RankOneSharpFloor/Solution.lean",
+      "path": "Solutions/ExternalVerification249RankOneSharpFloor.lean",
+      "relocated_from": "ExternalVerification249RankOneSharpFloor/Solution.lean",
       "sha256": "8dc0a1563cd45ae1db5885030c6e1e4304f052c517f42c5c72b8fe80622e2ff4"
     },
     {
@@ -899,7 +911,8 @@
     },
     {
       "bytes": 2245,
-      "path": "ExternalVerification251ActualPrimeGapTail/Solution.lean",
+      "path": "Solutions/ExternalVerification251ActualPrimeGapTail.lean",
+      "relocated_from": "ExternalVerification251ActualPrimeGapTail/Solution.lean",
       "sha256": "7150e51cffea74576ca81e32db47b569cbbbd5812825825f997be6b3924ca566"
     },
     {
@@ -924,7 +937,8 @@
     },
     {
       "bytes": 3034,
-      "path": "ExternalVerification251PolynomialShiftCountermodel/Solution.lean",
+      "path": "Solutions/ExternalVerification251PolynomialShiftCountermodel.lean",
+      "relocated_from": "ExternalVerification251PolynomialShiftCountermodel/Solution.lean",
       "sha256": "3ec6540777db5abeb33a2ae9b3f3f4278436d564f9aeccd75a776b2d8e3f209e"
     },
     {
@@ -949,7 +963,8 @@
     },
     {
       "bytes": 1755,
-      "path": "ExternalVerification257FinitePeriodNoncollapse/Solution.lean",
+      "path": "Solutions/ExternalVerification257FinitePeriodNoncollapse.lean",
+      "relocated_from": "ExternalVerification257FinitePeriodNoncollapse/Solution.lean",
       "sha256": "d7c18101880870ae624764799d92b20d8414c67cce3e63da06c5728384cdd7ef"
     },
     {
@@ -974,7 +989,8 @@
     },
     {
       "bytes": 5144,
-      "path": "ExternalVerification257RationalTailRigidity/Solution.lean",
+      "path": "Solutions/ExternalVerification257RationalTailRigidity.lean",
+      "relocated_from": "ExternalVerification257RationalTailRigidity/Solution.lean",
       "sha256": "c757bbd34402c9a183d7c01865b935648db8b6c628e2c148eaab8b73fa596762"
     },
     {
@@ -999,7 +1015,8 @@
     },
     {
       "bytes": 1548,
-      "path": "ExternalVerification257ReciprocalSupport/Solution.lean",
+      "path": "Solutions/ExternalVerification257ReciprocalSupport.lean",
+      "relocated_from": "ExternalVerification257ReciprocalSupport/Solution.lean",
       "sha256": "41e3a59afa12e66be53fc657d90e49b2024d225fd0549cbb63004da9a420f2a6"
     },
     {
@@ -1024,7 +1041,8 @@
     },
     {
       "bytes": 7355,
-      "path": "ExternalVerification269ThreePrimeStructure/Solution.lean",
+      "path": "Solutions/ExternalVerification269ThreePrimeStructure.lean",
+      "relocated_from": "ExternalVerification269ThreePrimeStructure/Solution.lean",
       "sha256": "50be5b16a63c73aba10ea74dd635d3390081a5c9226374a016b262da3b89af53"
     },
     {
@@ -1049,7 +1067,8 @@
     },
     {
       "bytes": 2045,
-      "path": "ExternalVerification68ChannelRadius/Solution.lean",
+      "path": "Solutions/ExternalVerification68ChannelRadius.lean",
+      "relocated_from": "ExternalVerification68ChannelRadius/Solution.lean",
       "sha256": "08ac31291573715a73914f1b3b02f943784e31baa9b8b1ac06962af8dc753224"
     },
     {
@@ -1084,8 +1103,8 @@
     }
   ],
   "source_ref": {
-    "commit": "4cf311d924665d08366c02c26b0287a599be0462",
-    "ref": "4cf311d924665d08366c02c26b0287a599be0462",
+    "commit": "b7395e4e2075c1003df291924d6b2a68f4699163",
+    "ref": "b7395e4e2075c1003df291924d6b2a68f4699163",
     "working_tree_drift": [
       "ErdosProblems/Erdos1049/AdelicHeightBridge.lean"
     ]

@@ -1,6 +1,6 @@
 {
   "challenge_module": "ExternalVerification269ThreePrimeStructure.Challenge",
-  "solution_module": "ExternalVerification269ThreePrimeStructure.Solution",
+  "solution_module": "Solutions.ExternalVerification269ThreePrimeStructure",
   "theorem_names": [
     "Erdos249257.ExternalVerification269ThreePrimeStructure.smoothPrefixLcm_eq_threePrimeHeight",
     "Erdos249257.ExternalVerification269ThreePrimeStructure.threePrimeKernelQ_eq_of_sameLogCell",

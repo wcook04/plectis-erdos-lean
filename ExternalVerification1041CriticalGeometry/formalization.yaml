@@ -64,7 +64,7 @@ status:
   - Classical.choice
   main_results:
   - declaration: Erdos249257.ExternalVerification1041CriticalGeometry.criticalGeometricMean_twoRootProximity
-    file: ExternalVerification1041CriticalGeometry/Solution.lean
+    file: Solutions/ExternalVerification1041CriticalGeometry.lean
     sorry_count: 0
     comparator_config: ExternalVerification1041CriticalGeometry/comparator.json
     canonical_claim_status: source_proved_wrapper_pending_focused_check
@@ -74,7 +74,7 @@ status:
     boundary: Does not prove lemniscate containment.
     literature_dependencies: []
   - declaration: Erdos249257.ExternalVerification1041CriticalGeometry.criticalDiskInverseBalance_twoRootProximity
-    file: ExternalVerification1041CriticalGeometry/Solution.lean
+    file: Solutions/ExternalVerification1041CriticalGeometry.lean
     sorry_count: 0
     comparator_config: ExternalVerification1041CriticalGeometry/comparator.json
     canonical_claim_status: source_proved_wrapper_pending_focused_check
@@ -86,7 +86,7 @@ status:
       open.
     literature_dependencies: []
   - declaration: Erdos249257.ExternalVerification1041CriticalGeometry.criticalDiskInverseBalance_twoRootProximity_strict
-    file: ExternalVerification1041CriticalGeometry/Solution.lean
+    file: Solutions/ExternalVerification1041CriticalGeometry.lean
     sorry_count: 0
     comparator_config: ExternalVerification1041CriticalGeometry/comparator.json
     canonical_claim_status: source_proved_wrapper_pending_focused_check
@@ -97,7 +97,7 @@ status:
       lemniscate containment.
     literature_dependencies: []
   - declaration: Erdos249257.ExternalVerification1041CriticalGeometry.nearestSpoke_unique_nearest_spoke_escapes
-    file: ExternalVerification1041CriticalGeometry/Solution.lean
+    file: Solutions/ExternalVerification1041CriticalGeometry.lean
     sorry_count: 0
     comparator_config: ExternalVerification1041CriticalGeometry/comparator.json
     canonical_claim_status: source_proved_wrapper_pending_focused_check
@@ -108,7 +108,7 @@ status:
       remain separately checked source declarations.
     literature_dependencies: []
   - declaration: Erdos249257.ExternalVerification1041CriticalGeometry.allStraightCubic_every_pair_midpoint_escapes
-    file: ExternalVerification1041CriticalGeometry/Solution.lean
+    file: Solutions/ExternalVerification1041CriticalGeometry.lean
     sorry_count: 0
     comparator_config: ExternalVerification1041CriticalGeometry/comparator.json
     canonical_claim_status: source_proved_explicit_private_definition_transport_pending_focused_check

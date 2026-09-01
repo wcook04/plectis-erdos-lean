@@ -70,7 +70,7 @@ status:
   - Classical.choice
   main_results:
   - declaration: Erdos249257.ExternalVerification1041CyclicTrinomialFiber.trinomialRoot_spoke_norm_lt_one_of_norm_lt_one
-    file: ExternalVerification1041CyclicTrinomialFiber/Solution.lean
+    file: Solutions/ExternalVerification1041CyclicTrinomialFiber.lean
     sorry_count: 0
     canonical_claim_status: source_transport_pending_focused_check
     novelty_status: unassessed

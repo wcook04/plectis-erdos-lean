@@ -101,7 +101,7 @@ status:
   axiom_audit_status: passed_exact_propext_Quot_sound_Classical_choice
   main_results:
   - declaration: Erdos249257.ExternalVerification243PeriodicNegativeOrbit.no_eventuallyPeriodicNegative_orbit
-    file: ExternalVerification243PeriodicNegativeOrbit/Solution.lean
+    file: Solutions/ExternalVerification243PeriodicNegativeOrbit.lean
     sorry_count: 0
     comparator_config: ExternalVerification243PeriodicNegativeOrbit/comparator.json
     canonical_claim_status: source_checked_wrapper_focused_build_passed
@@ -112,7 +112,7 @@ status:
     boundary: Exact recurrence, positive drift, eventual periodicity, and the magnitude
       bound are hypotheses rather than outputs.
   - declaration: Erdos249257.ExternalVerification243PeriodicNegativeOrbit.no_periodicNegative_orbit
-    file: ExternalVerification243PeriodicNegativeOrbit/Solution.lean
+    file: Solutions/ExternalVerification243PeriodicNegativeOrbit.lean
     sorry_count: 0
     comparator_config: ExternalVerification243PeriodicNegativeOrbit/comparator.json
     canonical_claim_status: source_checked_wrapper_focused_build_passed
@@ -123,7 +123,7 @@ status:
     boundary: The theorem excludes every common scale but assumes periodicity and
       the genuine magnitude bound.
   - declaration: Erdos249257.ExternalVerification243PeriodicNegativeOrbit.no_phasePrimitivePeriodicNegative_orbit
-    file: ExternalVerification243PeriodicNegativeOrbit/Solution.lean
+    file: Solutions/ExternalVerification243PeriodicNegativeOrbit.lean
     sorry_count: 0
     comparator_config: ExternalVerification243PeriodicNegativeOrbit/comparator.json
     canonical_claim_status: source_checked_wrapper_focused_build_passed

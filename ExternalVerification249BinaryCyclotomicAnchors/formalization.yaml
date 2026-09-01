@@ -79,27 +79,27 @@ status:
   - Classical.choice
   main_results:
   - declaration: Erdos249257.ExternalVerification249BinaryCyclotomicAnchors.exists_clean_binaryCyclotomicAnchor
-    file: ExternalVerification249BinaryCyclotomicAnchors/Solution.lean
+    file: Solutions/ExternalVerification249BinaryCyclotomicAnchors.lean
     sorry_count: 0
     canonical_claim_status: exact source transport; focused Lean and axiom audit passed
     novelty_status: unassessed
     boundary: Unconditional clean-anchor production; it supplies no carry or phase
       escape.
   - declaration: Erdos249257.ExternalVerification249BinaryCyclotomicAnchors.binaryCyclotomicLayer_unboundedPrimeDivisorSupply
-    file: ExternalVerification249BinaryCyclotomicAnchors/Solution.lean
+    file: Solutions/ExternalVerification249BinaryCyclotomicAnchors.lean
     sorry_count: 0
     canonical_claim_status: exact source transport; focused Lean and axiom audit passed
     novelty_status: unassessed
     boundary: Unconditional unbounded prime support; support alone does not contradict
       a rational period law.
   - declaration: Erdos249257.ExternalVerification249BinaryCyclotomicAnchors.binaryCyclotomicAnchoredKillSupply_iff_irrational
-    file: ExternalVerification249BinaryCyclotomicAnchors/Solution.lean
+    file: Solutions/ExternalVerification249BinaryCyclotomicAnchors.lean
     sorry_count: 0
     canonical_claim_status: exact source transport; focused Lean and axiom audit passed
     novelty_status: unassessed
     boundary: Exact equivalence; the cofinal certified discrepancy field remains unproved.
   - declaration: Erdos249257.ExternalVerification249BinaryCyclotomicAnchors.exists_unbounded_binaryCyclotomicSupport_with_periodLock_of_not_irrational
-    file: ExternalVerification249BinaryCyclotomicAnchors/Solution.lean
+    file: Solutions/ExternalVerification249BinaryCyclotomicAnchors.lean
     sorry_count: 0
     canonical_claim_status: exact source transport; focused Lean and axiom audit passed
     novelty_status: unassessed

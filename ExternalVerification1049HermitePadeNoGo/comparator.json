@@ -1,6 +1,6 @@
 {
   "challenge_module": "ExternalVerification1049HermitePadeNoGo.Challenge",
-  "solution_module": "ExternalVerification1049HermitePadeNoGo.Solution",
+  "solution_module": "Solutions.ExternalVerification1049HermitePadeNoGo",
   "theorem_names": [
     "Erdos249257.ExternalVerification1049HermitePadeNoGo.hpClearedGap_expansion",
     "Erdos249257.ExternalVerification1049HermitePadeNoGo.hpClearedGap_nonpos",

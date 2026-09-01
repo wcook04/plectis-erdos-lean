@@ -1,6 +1,6 @@
 {
   "challenge_module": "ExternalVerification251ActualPrimeGapTail.Challenge",
-  "solution_module": "ExternalVerification251ActualPrimeGapTail.Solution",
+  "solution_module": "Solutions.ExternalVerification251ActualPrimeGapTail",
   "theorem_names": [
     "Erdos249257.ExternalVerification251ActualPrimeGapTail.exists_rationalPrimeGapTailState_representation_of_not_irrational",
     "Erdos249257.ExternalVerification251ActualPrimeGapTail.rationalPrimeGapTailState_recurrence",

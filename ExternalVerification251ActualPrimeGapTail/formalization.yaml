@@ -62,7 +62,7 @@ status:
   - Classical.choice
   main_results:
   - declaration: Erdos249257.ExternalVerification251ActualPrimeGapTail.exists_rationalPrimeGapTailState_representation_of_not_irrational
-    file: ExternalVerification251ActualPrimeGapTail/Solution.lean
+    file: Solutions/ExternalVerification251ActualPrimeGapTail.lean
     sorry_count: 0
     comparator_config: ExternalVerification251ActualPrimeGapTail/comparator.json
     canonical_claim_status: source-proved exact transport; focused Lean and axiom
@@ -73,7 +73,7 @@ status:
     boundary: Conditional on non-irrationality; it supplies no contradiction.
     literature_dependencies: []
   - declaration: Erdos249257.ExternalVerification251ActualPrimeGapTail.rationalPrimeGapTailState_recurrence
-    file: ExternalVerification251ActualPrimeGapTail/Solution.lean
+    file: Solutions/ExternalVerification251ActualPrimeGapTail.lean
     sorry_count: 0
     comparator_config: ExternalVerification251ActualPrimeGapTail/comparator.json
     canonical_claim_status: source-proved exact transport; focused Lean and axiom
@@ -84,7 +84,7 @@ status:
     boundary: The algebraic recurrence alone does not identify S with the real series.
     literature_dependencies: []
   - declaration: Erdos249257.ExternalVerification251ActualPrimeGapTail.rationalPrimeGapTailShift_eventuallyIntegral
-    file: ExternalVerification251ActualPrimeGapTail/Solution.lean
+    file: Solutions/ExternalVerification251ActualPrimeGapTail.lean
     sorry_count: 0
     comparator_config: ExternalVerification251ActualPrimeGapTail/comparator.json
     canonical_claim_status: source-proved exact transport; focused Lean and axiom
@@ -95,7 +95,7 @@ status:
     boundary: Produces eventual integrality, not eventual smallness.
     literature_dependencies: []
   - declaration: Erdos249257.ExternalVerification251ActualPrimeGapTail.rationalPrimeGapTail_has_positive_shift_not_eventually_small
-    file: ExternalVerification251ActualPrimeGapTail/Solution.lean
+    file: Solutions/ExternalVerification251ActualPrimeGapTail.lean
     sorry_count: 0
     comparator_config: ExternalVerification251ActualPrimeGapTail/comparator.json
     canonical_claim_status: source-proved exact transport; focused Lean and axiom

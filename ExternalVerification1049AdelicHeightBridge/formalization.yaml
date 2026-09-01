@@ -74,7 +74,7 @@ status:
   - Classical.choice
   main_results:
   - declaration: Erdos249257.ExternalVerification1049AdelicHeightBridge.zudilin_firstTransformedRow_initialMonomial
-    file: ExternalVerification1049AdelicHeightBridge/Solution.lean
+    file: Solutions/ExternalVerification1049AdelicHeightBridge.lean
     sorry_count: 0
     comparator_config: ExternalVerification1049AdelicHeightBridge/comparator.json
     canonical_claim_status: source_authored_wrapper_focused_build_serialized_replay_and_axiom_audit_passed
@@ -90,7 +90,7 @@ status:
       Comparator declaration.
     literature_dependencies: []
   - declaration: Erdos249257.ExternalVerification1049AdelicHeightBridge.threePow_fortyOne_lt_twoPow_sixtyFive
-    file: ExternalVerification1049AdelicHeightBridge/Solution.lean
+    file: Solutions/ExternalVerification1049AdelicHeightBridge.lean
     sorry_count: 0
     comparator_config: ExternalVerification1049AdelicHeightBridge/comparator.json
     canonical_claim_status: source_proved_exact_transport_focused_build_and_axiom_audit_passed
@@ -100,7 +100,7 @@ status:
     boundary: An arithmetic certificate, not an irrationality result.
     literature_dependencies: []
   - declaration: Erdos249257.ExternalVerification1049AdelicHeightBridge.twoPow_sixtyFour_lt_threePow_fortyOne
-    file: ExternalVerification1049AdelicHeightBridge/Solution.lean
+    file: Solutions/ExternalVerification1049AdelicHeightBridge.lean
     sorry_count: 0
     comparator_config: ExternalVerification1049AdelicHeightBridge/comparator.json
     canonical_claim_status: source_proved_exact_transport_focused_build_and_axiom_audit_passed
@@ -111,7 +111,7 @@ status:
       a separate integer comparison.
     literature_dependencies: []
   - declaration: Erdos249257.ExternalVerification1049AdelicHeightBridge.threeHalves_rectangular_hp_gap_gt_threeThirteenths
-    file: ExternalVerification1049AdelicHeightBridge/Solution.lean
+    file: Solutions/ExternalVerification1049AdelicHeightBridge.lean
     sorry_count: 0
     comparator_config: ExternalVerification1049AdelicHeightBridge/comparator.json
     canonical_claim_status: source_proved_exact_transport_focused_build_and_axiom_audit_passed
@@ -121,7 +121,7 @@ status:
     boundary: Only the explicit admissible exponent model is excluded.
     literature_dependencies: []
   - declaration: Erdos249257.ExternalVerification1049AdelicHeightBridge.threeHalves_hankelChargeThreshold_lt_eightFortyOne
-    file: ExternalVerification1049AdelicHeightBridge/Solution.lean
+    file: Solutions/ExternalVerification1049AdelicHeightBridge.lean
     sorry_count: 0
     comparator_config: ExternalVerification1049AdelicHeightBridge/comparator.json
     canonical_claim_status: source_proved_exact_transport_focused_build_and_axiom_audit_passed
@@ -131,7 +131,7 @@ status:
     boundary: Does not prove a determinant valuation or decay estimate.
     literature_dependencies: []
   - declaration: Erdos249257.ExternalVerification1049AdelicHeightBridge.zudilinScalarContent_cannot_meet_required_charge
-    file: ExternalVerification1049AdelicHeightBridge/Solution.lean
+    file: Solutions/ExternalVerification1049AdelicHeightBridge.lean
     sorry_count: 0
     comparator_config: ExternalVerification1049AdelicHeightBridge/comparator.json
     canonical_claim_status: source_proved_exact_transport_focused_build_and_axiom_audit_passed
@@ -141,7 +141,7 @@ status:
     boundary: Conditional on the explicit source-facing degree ceiling.
     literature_dependencies: []
   - declaration: Erdos249257.ExternalVerification1049AdelicHeightBridge.zudilinScalarPlusBorder_cannot_meet_required_charge
-    file: ExternalVerification1049AdelicHeightBridge/Solution.lean
+    file: Solutions/ExternalVerification1049AdelicHeightBridge.lean
     sorry_count: 0
     comparator_config: ExternalVerification1049AdelicHeightBridge/comparator.json
     canonical_claim_status: source_proved_exact_transport_focused_build_and_axiom_audit_passed
@@ -151,7 +151,7 @@ status:
     boundary: Higher residual valuations and determinant cancellation remain open.
     literature_dependencies: []
   - declaration: Erdos249257.ExternalVerification1049AdelicHeightBridge.three_two_scalar_margin_lt_explicit
-    file: ExternalVerification1049AdelicHeightBridge/Solution.lean
+    file: Solutions/ExternalVerification1049AdelicHeightBridge.lean
     sorry_count: 0
     comparator_config: ExternalVerification1049AdelicHeightBridge/comparator.json
     canonical_claim_status: source_proved_exact_transport_focused_build_and_axiom_audit_passed
@@ -161,7 +161,7 @@ status:
     boundary: Excludes the source scalar cone, not all coefficient constructions.
     literature_dependencies: []
   - declaration: Erdos249257.ExternalVerification1049AdelicHeightBridge.exists_distinct_binary_selectors_same_fourJet_of_rank_41
-    file: ExternalVerification1049AdelicHeightBridge/Solution.lean
+    file: Solutions/ExternalVerification1049AdelicHeightBridge.lean
     sorry_count: 0
     comparator_config: ExternalVerification1049AdelicHeightBridge/comparator.json
     canonical_claim_status: source_proved_exact_transport_focused_build_and_axiom_audit_passed
@@ -172,7 +172,7 @@ status:
       not proved.
     literature_dependencies: []
   - declaration: Erdos249257.ExternalVerification1049AdelicHeightBridge.fourJet_card_gt_two_pow_of_rank_41
-    file: ExternalVerification1049AdelicHeightBridge/Solution.lean
+    file: Solutions/ExternalVerification1049AdelicHeightBridge.lean
     sorry_count: 0
     comparator_config: ExternalVerification1049AdelicHeightBridge/comparator.json
     canonical_claim_status: source_proved_exact_transport_focused_build_and_axiom_audit_passed
@@ -182,7 +182,7 @@ status:
     boundary: Exact optimality is asserted only for T=1, not every block multiple.
     literature_dependencies: []
   - declaration: Erdos249257.ExternalVerification1049AdelicHeightBridge.exists_ne_map_eq_map_ne_of_card_mul_lt
-    file: ExternalVerification1049AdelicHeightBridge/Solution.lean
+    file: Solutions/ExternalVerification1049AdelicHeightBridge.lean
     sorry_count: 0
     comparator_config: ExternalVerification1049AdelicHeightBridge/comparator.json
     canonical_claim_status: source_proved_exact_transport_focused_build_and_axiom_audit_passed

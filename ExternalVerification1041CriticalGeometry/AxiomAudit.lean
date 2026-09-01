@@ -1,4 +1,4 @@
-import ExternalVerification1041CriticalGeometry.Solution
+import Solutions.ExternalVerification1041CriticalGeometry
 
 #print axioms Erdos249257.ExternalVerification1041CriticalGeometry.criticalGeometricMean_twoRootProximity
 #print axioms Erdos249257.ExternalVerification1041CriticalGeometry.criticalDiskInverseBalance_twoRootProximity

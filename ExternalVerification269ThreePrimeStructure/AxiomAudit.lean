@@ -1,4 +1,4 @@
-import ExternalVerification269ThreePrimeStructure.Solution
+import Solutions.ExternalVerification269ThreePrimeStructure
 
 #print axioms Erdos249257.ExternalVerification269ThreePrimeStructure.smoothPrefixLcm_eq_threePrimeHeight
 #print axioms Erdos249257.ExternalVerification269ThreePrimeStructure.threePrimeKernelQ_eq_of_sameLogCell
