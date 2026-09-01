@@ -1,6 +1,6 @@
 {
   "_type": "https://in-toto.io/Statement/v1",
-  "generated_at": "2026-09-01T19:15:25Z",
+  "generated_at": "2026-09-01T20:25:05Z",
   "predicate": {
     "buildDefinition": {
       "buildType": "https://plectis.local/build-types/lean-standalone-export/v0",
@@ -9,6 +9,21 @@
         "source_config_path": "microcosm-substrate/docs/lean_formal_methods_os/release_topology_source_v0.json",
         "source_root": "formal_math/erdos257_period_noncollapse",
         "standalone_repo": {
+          "dependency_pin": {
+            "lean_toolchain": "leanprover/lean4:v4.29.0",
+            "mathlib_input_rev": "v4.29.0",
+            "packages": {
+              "mathlib": {
+                "inputRev": "v4.29.0",
+                "rev": "8a178386ffc0f5fef0b77738bb5449d50efeea95"
+              },
+              "proofwidgets": {
+                "inputRev": "v0.0.95",
+                "rev": "3c52dee17f0cd89c1ec14de78920d1bdaa3d26b3"
+              }
+            },
+            "why": "Palomar accepts a Mathlib revision only if it is an ancestor of mathlib4 master. The private v4.29.1 tag commit is a toolchain bump on a side branch (1 ahead, 4196 behind master); its parent is the v4.29.0 tag commit on master with identical Lean sources. First canary 1rwlfskltakg failed on exactly this, 2026-09-01."
+          },
           "directory_name": "plectis-erdos-lean",
           "display_name": "Plectis Erd\u0151s Lean",
           "programme": {
@@ -24,30 +39,30 @@
         "non_claim_gate_status": "pass",
         "publication_ready_boolean": false,
         "selected_file_count": 180,
-        "source_files_sha256": "f065e59a3c58c7ef7c2ce9ac1df059bc2f38864bda96008153e00a80bf3cf3c6"
+        "source_files_sha256": "724abb0875f8e35d058f0f1185af74f9177cfe6de67cba5faade34759e39f0c7"
       },
       "resolvedDependencies": [
         {
           "digest": {
-            "sha256": "e3ecb38a4789232ccf2c5b5715caced18f6bb3cbcf7149215363479e086b498c"
+            "sha256": "c57145b8e8e1050264a8832ae04296d5958c4ab4654d1e1287b1b99fd787c2df"
           },
           "uri": "microcosm-substrate/docs/lean_formal_methods_os/release_topology_source_v0.json"
         },
         {
           "digest": {
-            "sha256": "f065e59a3c58c7ef7c2ce9ac1df059bc2f38864bda96008153e00a80bf3cf3c6"
+            "sha256": "724abb0875f8e35d058f0f1185af74f9177cfe6de67cba5faade34759e39f0c7"
           },
           "uri": "source_files_sha256"
         },
         {
           "digest": {
-            "sha256": "742c0e1042fd1e6c8b8024fd3c96d87916370420f2ae36315936907152dd8bd8"
+            "sha256": "c3d9416adf1dbead94c7df45ad71c120835663c3174fc62c5592be6d895a1a0b"
           },
           "uri": "lake-manifest.json"
         },
         {
           "digest": {
-            "sha256": "88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5"
+            "sha256": "651c8accb402b0c071cd336e9d3dc0a55516b1bfb434ddc4801f14936785b1d2"
           },
           "uri": "lean-toolchain"
         }
@@ -145,7 +160,7 @@
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "6cd6e35a6b58121bef43bd663c663a65e544f605aae3c1ac66e1e040f026724e"
+            "sha256": "93e6813c45d3f117af3d944c6e92a0d891aa8be82bb190b21c4037c83a290552"
           },
           "name": "lakefile.toml"
         },
@@ -159,7 +174,7 @@
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "7fe05221e15304fe7e0d0eb3859597b2213c140c558eeceaf5bcc861ef3cb01d"
+            "sha256": "47ff060d75fd6b337a3bcbab3947e93b8f44bfa89d2641365bf0e7eb1bb4ffdf"
           },
           "name": "snapshot/CLAIM_TO_REFERENCE_MAP.json"
         },
@@ -173,7 +188,7 @@
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "c8214710528af04f43377695685b74a7af947c91332d0961febaaef0f3618eb3"
+            "sha256": "10c4c1268726138a19c35022efa796638ba60b8ae00a5aa71a955657ad9c2bad"
           },
           "name": "snapshot/PLECTIS_INTEGRATION.json"
         },
@@ -187,7 +202,7 @@
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "bfc902dcf58ecea9a7438834fff8831edd3c7604161a93d121c9b61af9f56426"
+            "sha256": "66e777fc11f9cc5560a0a159a75e48a7284f060e99c3c231580995e0bcb57e94"
           },
           "name": "snapshot/PUBLIC_SNAPSHOT_MANIFEST.json"
         },
@@ -201,7 +216,7 @@
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "8e1fc7a09a968a5ae51a4364bc4a29f10b70a13703892e2b7d09d188c78e2a9b"
+            "sha256": "aeda8fa86de1d8973f0113115088f246ed5a5548697272909eab926a08003304"
           },
           "name": "snapshot/REFERENCES.yaml"
         },
@@ -215,13 +230,13 @@
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "f6708997534b5a7777d9bddb560ca6c65c714c9a67084f04b7c2125f3c2db816"
+            "sha256": "1cfff9a69f29ae0d7614505b57a481b826ab6f92b166ccd91e2156c3e079961a"
           },
           "name": "snapshot/RELEASE_NOTES.md"
         }
       ],
       "metadata": {
-        "invocationFinishedOn": "2026-09-01T19:15:25Z",
+        "invocationFinishedOn": "2026-09-01T20:25:05Z",
         "reproducibilityBoundary": "public export source selection plus generated metadata"
       }
     }
@@ -231,7 +246,7 @@
   "subject": [
     {
       "digest": {
-        "sha256": "d5250857570f6ef17e2021dd74aad00db084aaee4e4932af974d37fb40d13e01"
+        "sha256": "d77f85da09dbe4587257f2a13b9e39d3cfdc747a846f0c0970e7b46bd66860c1"
       },
       "file_count": 200,
       "name": "plectis-erdos-lean"

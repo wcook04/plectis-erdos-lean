@@ -30,7 +30,7 @@
       "status": "allowed_only_with_resource_headroom"
     }
   },
-  "generated_at": "2026-09-01T19:15:24Z",
+  "generated_at": "2026-09-01T20:25:04Z",
   "moving_frontier_policy": {
     "breaking_private_change": "Topology changes require a compatibility adapter or a new snapshot lane in Plectis.",
     "private_frontier": "Private #249/#257 work is excluded until a new manifest row and release gate promote it.",
@@ -1084,8 +1084,8 @@
     }
   ],
   "source_ref": {
-    "commit": "820b02848916471c83a3c698c3d43cc4345420df",
-    "ref": "820b02848916471c83a3c698c3d43cc4345420df",
+    "commit": "4cf311d924665d08366c02c26b0287a599be0462",
+    "ref": "4cf311d924665d08366c02c26b0287a599be0462",
     "working_tree_drift": [
       "ErdosProblems/Erdos1049/AdelicHeightBridge.lean"
     ]
@@ -1282,6 +1282,21 @@
     "source_total_bytes": 3846256
   },
   "standalone_repo": {
+    "dependency_pin": {
+      "lean_toolchain": "leanprover/lean4:v4.29.0",
+      "mathlib_input_rev": "v4.29.0",
+      "packages": {
+        "mathlib": {
+          "inputRev": "v4.29.0",
+          "rev": "8a178386ffc0f5fef0b77738bb5449d50efeea95"
+        },
+        "proofwidgets": {
+          "inputRev": "v0.0.95",
+          "rev": "3c52dee17f0cd89c1ec14de78920d1bdaa3d26b3"
+        }
+      },
+      "why": "Palomar accepts a Mathlib revision only if it is an ancestor of mathlib4 master. The private v4.29.1 tag commit is a toolchain bump on a side branch (1 ahead, 4196 behind master); its parent is the v4.29.0 tag commit on master with identical Lean sources. First canary 1rwlfskltakg failed on exactly this, 2026-09-01."
+    },
     "directory_name": "plectis-erdos-lean",
     "display_name": "Plectis Erd\u0151s Lean",
     "programme": {

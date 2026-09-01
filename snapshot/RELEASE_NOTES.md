@@ -8,7 +8,7 @@ Publication status: blocked until a clean build receipt and public tag/hash exis
 Snapshot name: `Plectis Erdős Lean`
 Public tag: `pending`
 Public commit: `pending`
-Export subject tree sha256: `d5250857570f6ef17e2021dd74aad00db084aaee4e4932af974d37fb40d13e01`
+Export subject tree sha256: `d77f85da09dbe4587257f2a13b9e39d3cfdc747a846f0c0970e7b46bd66860c1`
 Selected source files: `180`
 
 This generated note is intentionally not a publication announcement. It records the local export candidate and the gates still required before public promotion.

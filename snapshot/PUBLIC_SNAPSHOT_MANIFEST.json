@@ -30,7 +30,7 @@
       "status": "allowed_only_with_resource_headroom"
     }
   },
-  "generated_at": "2026-09-01T19:15:24Z",
+  "generated_at": "2026-09-01T20:25:04Z",
   "local_receipt": "standalone_export_receipt_v0.json",
   "metadata_gate_policy": {
     "bibliography": "placeholders_allowed_only_for_blocked_local_candidates",
@@ -358,6 +358,21 @@
     "source_total_bytes": 3845671
   },
   "standalone_repo": {
+    "dependency_pin": {
+      "lean_toolchain": "leanprover/lean4:v4.29.0",
+      "mathlib_input_rev": "v4.29.0",
+      "packages": {
+        "mathlib": {
+          "inputRev": "v4.29.0",
+          "rev": "8a178386ffc0f5fef0b77738bb5449d50efeea95"
+        },
+        "proofwidgets": {
+          "inputRev": "v0.0.95",
+          "rev": "3c52dee17f0cd89c1ec14de78920d1bdaa3d26b3"
+        }
+      },
+      "why": "Palomar accepts a Mathlib revision only if it is an ancestor of mathlib4 master. The private v4.29.1 tag commit is a toolchain bump on a side branch (1 ahead, 4196 behind master); its parent is the v4.29.0 tag commit on master with identical Lean sources. First canary 1rwlfskltakg failed on exactly this, 2026-09-01."
+    },
     "directory_name": "plectis-erdos-lean",
     "display_name": "Plectis Erd\u0151s Lean",
     "programme": {
