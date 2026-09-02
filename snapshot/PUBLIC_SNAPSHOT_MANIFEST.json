@@ -30,7 +30,7 @@
       "status": "allowed_only_with_resource_headroom"
     }
   },
-  "generated_at": "2026-09-02T01:44:48Z",
+  "generated_at": "2026-09-02T09:12:14Z",
   "local_receipt": "standalone_export_receipt_v0.json",
   "metadata_gate_policy": {
     "bibliography": "placeholders_allowed_only_for_blocked_local_candidates",
@@ -115,7 +115,7 @@
     "plectis_consumption_mode": "pointer_only_until_public_tag",
     "schema": "plectis_lean_public_api_contract_v0",
     "source_file_count": 202,
-    "source_snapshot_sha256": "bb31d9ae34c509120d27c17db68a4b4af7a16a78b4268864dcb69be892cbfd47",
+    "source_snapshot_sha256": "9b4baafe5a076b6ae7fccc44edf185bd625ee9739b3128d0808cec675cea4376",
     "stable_metadata_files": [
       "snapshot/PLECTIS_INTEGRATION.json",
       "snapshot/PUBLIC_SNAPSHOT_MANIFEST.json",
@@ -165,7 +165,7 @@
   "snapshot_lineage_ref": "snapshot_lineage_v0.json",
   "snapshot_steward_ref": "snapshot_steward_v0.json",
   "source_file_count": 202,
-  "source_files_sha256": "bb31d9ae34c509120d27c17db68a4b4af7a16a78b4268864dcb69be892cbfd47",
+  "source_files_sha256": "9b4baafe5a076b6ae7fccc44edf185bd625ee9739b3128d0808cec675cea4376",
   "source_manifest": "microcosm-substrate/docs/lean_formal_methods_os/release_topology_source_v0.json",
   "source_snapshot": {
     "schema": "plectis_lean_source_snapshot_v0",
@@ -234,7 +234,7 @@
       "ErdosProblems/Erdos1041/TetranomialL2Selector.lean": "883371f85bd3033a69dbe09bf53d0f9bec202c31ef4b14c4ae78cb0f904ce978",
       "ErdosProblems/Erdos1041/TetranomialProductSensitiveSelector.lean": "5c85ec742f1c7b2f5bd1295c9db533274e141f1077fc3f37439a0482a299cae2",
       "ErdosProblems/Erdos1041/TetranomialTailProductSelector.lean": "a2144b4fdacf466d68be3908870e0e721a5cd24a651072530a253b52770df875",
-      "ErdosProblems/Erdos1049/AdelicHeightBridge.lean": "3cd36a9463c6cbd51a945f544ce06f3d253e30a1540e71ca3cfd2776f9014a50",
+      "ErdosProblems/Erdos1049/AdelicHeightBridge.lean": "1027da513594b867a54d67c34fb1eb3e6f7c743553b29f84b3f30dc86a04a4f0",
       "ErdosProblems/Erdos1049/BezoutPluckerJets.lean": "4579858b1b497ca1c9a377a202bb3bf84d4cdaad20c0e3f5ba2730740cbccdb3",
       "ErdosProblems/Erdos1049/HermitePadeNoGo.lean": "812f2ca2ea8b18f8ce8e0a68ae14897aa851fba2e050a07881d839168182f2cc",
       "ErdosProblems/Erdos1049/QAperyTailDenominator.lean": "43d0fc98e92785172b12e3fc59b423fdf9c4ff88bb7172e6b00930f7f76d2cc6",
@@ -374,26 +374,26 @@
       "lakefile.toml": "2617b76f7802f41de8b980ab30b3dfa3e931b99376e2db43802000139f8c40df",
       "lean-toolchain": "88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5"
     },
-    "source_files_sha256": "bb31d9ae34c509120d27c17db68a4b4af7a16a78b4268864dcb69be892cbfd47",
+    "source_files_sha256": "9b4baafe5a076b6ae7fccc44edf185bd625ee9739b3128d0808cec675cea4376",
     "source_manifest": "microcosm-substrate/docs/lean_formal_methods_os/release_topology_source_v0.json",
     "source_root": "formal_math/erdos257_period_noncollapse",
-    "source_total_bytes": 4094305
+    "source_total_bytes": 4095311
   },
   "standalone_repo": {
     "dependency_pin": {
       "lean_toolchain": "leanprover/lean4:v4.29.0",
-      "mathlib_input_rev": "v4.29.0",
+      "mathlib_input_rev": "b301d257a1c13bc4e27350c06e5169b8b08a53ed",
       "packages": {
         "mathlib": {
-          "inputRev": "v4.29.0",
-          "rev": "8a178386ffc0f5fef0b77738bb5449d50efeea95"
+          "inputRev": "b301d257a1c13bc4e27350c06e5169b8b08a53ed",
+          "rev": "b301d257a1c13bc4e27350c06e5169b8b08a53ed"
         },
         "proofwidgets": {
-          "inputRev": "v0.0.95",
-          "rev": "3c52dee17f0cd89c1ec14de78920d1bdaa3d26b3"
+          "inputRev": "main",
+          "rev": "00fe208b8e1364736cca3a9b9601c4fe865856af"
         }
       },
-      "why": "Palomar accepts a Mathlib revision only if it is an ancestor of mathlib4 master. The private v4.29.1 tag commit is a toolchain bump on a side branch (1 ahead, 4196 behind master); its parent is the v4.29.0 tag commit on master with identical Lean sources. First canary 1rwlfskltakg failed on exactly this, 2026-09-01."
+      "why": "Palomar accepts a Mathlib revision only if it is an ancestor of mathlib4 master, and its Challenge renderer runs `lake exe cache get-` inside a no-network sandbox. Mathlib's cache tool on the v4.29.x line calls getProofWidgets from getFiles, which fetches the ProofWidgets cloud release from github.com, so cache discovery exits 1 and every render check fails at the workspace stage before a Challenge is read. mathlib4 PR #37290 removed that call, merged 2026-03-30 as b301d257a1c13bc4e27350c06e5169b8b08a53ed, which is on master, seven commits ahead of the v4.29.0 tag, and still declares leanprover/lean4:v4.29.0 in its own lean-toolchain. The release pins that commit and the dependency revisions from its own lake-manifest.json; the accepted toolchain does not move and the private project keeps its own pin and cache untouched. Diagnosis: docs/formal_math/palomar/palomar_renderability_diagnosis_2026_09_02.md."
     },
     "directory_name": "plectis-erdos-lean",
     "display_name": "Plectis Erd\u0151s Lean",

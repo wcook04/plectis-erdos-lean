@@ -9,7 +9,7 @@ pp.unicode.fun = true
 [[require]]
 name = "mathlib"
 scope = "leanprover-community"
-rev = "v4.29.0"
+rev = "b301d257a1c13bc4e27350c06e5169b8b08a53ed"
 
 [[lean_lib]]
 name = "Erdos257PeriodNoncollapse"

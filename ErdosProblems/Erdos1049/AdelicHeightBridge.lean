@@ -35,6 +35,21 @@ The final section adds a general **bounded-fibre escape** pigeonhole, which
 turns a bound on the multiplicity of equal analytic remainders into a
 four-jet collision that escapes the remainder nullspace.
 
+The middle sections concern the `q`-order of Zudilin's normalized Hankel
+determinant `V_N^*` (Zudilin 2016, Res. Number Theory 2, Art. 15, §4).  Their
+exact Lean reach is: the associated-graded recurrence and both tail
+reciprocals; the exact source tails, their step identity and first step
+coefficient; the determinant-preserving backward shift; the leading matrix as
+a scaled Vandermonde with its all-rank nonzero determinant, exact order
+`∑_{j<N} j²`, and the closed forms `6·ord = N(N-1)(2N-1)` and
+`2^N·lc = (N!)²(N+1)!`; and the initial monomial of transformed row `j = 1`
+in every column (`zudilinTransformedNormalizedMoment_one_initialMonomial`).
+The initial-monomial theorem for rows `j ≥ 2`, and hence the identification
+of `V_N^*` itself with the leading matrix, is not proved here; the all-rank
+statement `ord_q V_N^* = N(N-1)(2N-1)/6` with leading coefficient
+`(N!)²(N+1)!/2^N` is an ordinary proof in `HankelQOrderComputationalLab.md`,
+verified by exact computation for `N ≤ 7`.
+
 No theorem here decides the arithmetic nature of the Lambert value at `3 / 2`.
 -/
 
