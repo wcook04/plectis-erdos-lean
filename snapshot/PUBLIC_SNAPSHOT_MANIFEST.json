@@ -30,7 +30,7 @@
       "status": "allowed_only_with_resource_headroom"
     }
   },
-  "generated_at": "2026-09-02T09:12:14Z",
+  "generated_at": "2026-09-02T15:02:21Z",
   "local_receipt": "standalone_export_receipt_v0.json",
   "metadata_gate_policy": {
     "bibliography": "placeholders_allowed_only_for_blocked_local_candidates",
@@ -399,11 +399,14 @@
     "display_name": "Plectis Erd\u0151s Lean",
     "programme": {
       "name": "the Plectis programme",
-      "note": "The papers behind each entry, the eight problem pages and the further verified work outside this release are indexed at <https://wcook04.github.io/plectis/maths/>.",
+      "note": "The papers behind each entry, the eight problem pages and the further verified work outside this release are indexed at <https://wcook04.github.io/plectis/maths/>. The reviewed claim registry, the declaration atlas and the papers live in the companion public corpus <https://github.com/wcook04/plectis-lean-erdos249-257>; this repository is its Comparator and Palomar projection at one commit, and entry counts here never compose with declaration counts there.",
       "url": "https://wcook04.github.io/plectis/"
     },
     "public_commit": null,
-    "public_tag": null,
+    "public_release_date": "2026-09-02",
+    "public_repo_url": "https://github.com/wcook04/plectis-erdos-lean",
+    "public_tag": "v0.1.0",
+    "public_version_rationale": "v0.1.0 is the smallest coherent first public version of this repository: the twenty-one Comparator entries that were selected for the first Palomar launch, at one immutable commit, on one Mathlib pin, with nothing added to round the number up. It is 0.x because the entry set is a queue rather than a finished collection, and because no entry here has been reviewed by a human mathematician.",
     "remote_name_suggestion": "plectis-erdos-lean",
     "repository_role": "standalone_lean_lake_package_export"
   },

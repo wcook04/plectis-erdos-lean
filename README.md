@@ -16,7 +16,7 @@ Problems covered: #68, #243, #249, #251, #257, #269, #1041, #1049.
 [`PROBLEMS.md`](PROBLEMS.md) states, for each problem, the strongest theorem this
 release carries, the exact unresolved step, and the smallest contribution that would move it.
 
-This repository is the Lean surface of the Plectis programme: <https://wcook04.github.io/plectis/>. The papers behind each entry, the eight problem pages and the further verified work outside this release are indexed at <https://wcook04.github.io/plectis/maths/>.
+This repository is the Lean surface of the Plectis programme: <https://wcook04.github.io/plectis/>. The papers behind each entry, the eight problem pages and the further verified work outside this release are indexed at <https://wcook04.github.io/plectis/maths/>. The reviewed claim registry, the declaration atlas and the papers live in the companion public corpus <https://github.com/wcook04/plectis-lean-erdos249-257>; this repository is its Comparator and Palomar projection at one commit, and entry counts here never compose with declaration counts there.
 
 ## Start here
 

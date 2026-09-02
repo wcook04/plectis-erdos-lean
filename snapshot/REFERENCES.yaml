@@ -22,16 +22,7 @@
         "claim_family": "problem_numbering_249_257_if_publicly_cited"
       }
     ],
-    "blocked_placeholders": [
-      {
-        "id": "local_placeholder_erdos_lambert_source_map",
-        "title": "Local bibliography placeholder: exact Erdos/Lambert-series source map"
-      },
-      {
-        "id": "local_placeholder_249_257_snapshot_identity",
-        "title": "Local bibliography placeholder: exact #249/#257 Lean source snapshot"
-      }
-    ],
+    "blocked_placeholders": [],
     "claim_reference_map_schema": "plectis_lean_claim_reference_map_v0",
     "required_claim_families": [
       "lean_kernel_model",
@@ -43,7 +34,7 @@
     ],
     "status": "blocked"
   },
-  "generated_at": "2026-09-02T09:12:14Z",
+  "generated_at": "2026-09-02T15:02:21Z",
   "local_resolution_required_before_publication": [
     "exact Erdos/Lambert-series bibliography row",
     "exact public tag",
@@ -106,24 +97,28 @@
     {
       "authors": [
         {
-          "name": "Plectis citation map"
+          "family-names": "Bloom",
+          "given-names": "Thomas F."
         }
       ],
-      "id": "local_placeholder_erdos_lambert_source_map",
-      "notes": "Resolved before publication by the Plectis paper-module citation lane.",
-      "title": "Local bibliography placeholder: exact Erdos/Lambert-series source map",
-      "type": "generic"
+      "id": "erdos_problems_database",
+      "notes": "The problem numbering used throughout this repository (#68, #243, #249, #251, #257, #269, #1041, #1049) is the numbering of this database, and the prior-art antecedents recorded in PROBLEMS.md cite its per-problem comment threads by problem number and comment date.",
+      "title": "Erd\u0151s Problems",
+      "type": "database",
+      "url": "https://www.erdosproblems.com/"
     },
     {
       "authors": [
         {
-          "name": "Plectis source manifest"
+          "family-names": "Cook",
+          "given-names": "Will"
         }
       ],
-      "id": "local_placeholder_249_257_snapshot_identity",
-      "notes": "Resolved before publication by public tag, commit hash, and standalone export receipt.",
-      "title": "Local bibliography placeholder: exact #249/#257 Lean source snapshot",
-      "type": "generic"
+      "id": "plectis_lean_erdos249_257_public",
+      "notes": "The companion public corpus. It carries the reviewed claim registry, the declaration atlas and the papers behind these entries; this repository is its Comparator and Palomar release projection at one commit.",
+      "repository-code": "https://github.com/wcook04/plectis-lean-erdos249-257",
+      "title": "Plectis public formal-mathematics corpus",
+      "type": "software"
     }
   ],
   "role": "citation_map_for_generated_lean_snapshot",

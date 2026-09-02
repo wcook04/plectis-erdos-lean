@@ -179,6 +179,7 @@ def verify(root: Path) -> dict[str, Any]:
             failures.append({"kind": "missing_required_file", "path": rel})
 
     cff: dict[str, Any] = {"top": {}, "reference_titles": []}
+    citation_public_keys: list[str] = []
     try:
         cff = _parse_generated_cff(root / "CITATION.cff")
         for key in ("cff-version", "type", "message", "title", "license"):
@@ -186,9 +187,11 @@ def verify(root: Path) -> dict[str, Any]:
                 failures.append({"kind": "citation_missing_key", "key": key})
         if cff["top"].get("type") != "software-code":
             failures.append({"kind": "citation_type_not_software_code"})
-        forbidden_public_keys = [key for key in ("repository-code", "version", "commit", "date-released") if key in cff["top"]]
-        if forbidden_public_keys:
-            failures.append({"kind": "citation_public_fields_present_before_public_tag", "keys": forbidden_public_keys})
+        # The public citation fields are forbidden *before* a public tag, which is what the
+        # failure kind says. They are exactly what a tagged release must carry, so the check
+        # is deferred until the snapshot manifest below says whether a tag is declared.
+        # Evaluating it unconditionally here made a correctly tagged release fail its own gate.
+        citation_public_keys = [key for key in ("repository-code", "version", "commit", "date-released") if key in cff["top"]]
         placeholder_titles = [title for title in cff["reference_titles"] if "placeholder" in title.lower()]
         if placeholder_titles:
             blockers.append({"kind": "citation_placeholders_unresolved", "titles": placeholder_titles})
@@ -231,6 +234,12 @@ def verify(root: Path) -> dict[str, Any]:
             failures.append({"kind": "release_notes_not_blocked_without_public_tag"})
         if public_tag or public_commit:
             blockers.append({"kind": "public_fields_present_in_local_candidate", "public_tag": public_tag, "public_commit": public_commit})
+        if citation_public_keys and not public_tag:
+            failures.append({"kind": "citation_public_fields_present_before_public_tag", "keys": citation_public_keys})
+        if public_tag and "version" not in cff["top"]:
+            failures.append({"kind": "citation_version_missing_at_public_tag", "public_tag": public_tag})
+        if public_tag and "date-released" not in cff["top"]:
+            failures.append({"kind": "citation_date_released_missing_at_public_tag", "public_tag": public_tag})
     except Exception as exc:  # noqa: BLE001
         failures.append({"kind": "public_manifest_or_integration_error", "error": str(exc)})
 

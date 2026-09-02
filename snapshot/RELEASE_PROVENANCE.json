@@ -1,6 +1,6 @@
 {
   "_type": "https://in-toto.io/Statement/v1",
-  "generated_at": "2026-09-02T09:12:14Z",
+  "generated_at": "2026-09-02T15:02:22Z",
   "predicate": {
     "buildDefinition": {
       "buildType": "https://plectis.local/build-types/lean-standalone-export/v0",
@@ -28,9 +28,13 @@
           "display_name": "Plectis Erd\u0151s Lean",
           "programme": {
             "name": "the Plectis programme",
-            "note": "The papers behind each entry, the eight problem pages and the further verified work outside this release are indexed at <https://wcook04.github.io/plectis/maths/>.",
+            "note": "The papers behind each entry, the eight problem pages and the further verified work outside this release are indexed at <https://wcook04.github.io/plectis/maths/>. The reviewed claim registry, the declaration atlas and the papers live in the companion public corpus <https://github.com/wcook04/plectis-lean-erdos249-257>; this repository is its Comparator and Palomar projection at one commit, and entry counts here never compose with declaration counts there.",
             "url": "https://wcook04.github.io/plectis/"
           },
+          "public_release_date": "2026-09-02",
+          "public_repo_url": "https://github.com/wcook04/plectis-erdos-lean",
+          "public_tag": "v0.1.0",
+          "public_version_rationale": "v0.1.0 is the smallest coherent first public version of this repository: the twenty-one Comparator entries that were selected for the first Palomar launch, at one immutable commit, on one Mathlib pin, with nothing added to round the number up. It is 0.x because the entry set is a queue rather than a finished collection, and because no entry here has been reviewed by a human mathematician.",
           "remote_name_suggestion": "plectis-erdos-lean",
           "repository_role": "standalone_lean_lake_package_export"
         }
@@ -44,7 +48,7 @@
       "resolvedDependencies": [
         {
           "digest": {
-            "sha256": "c96d7f6bf5791b81cbfbc2bf8e84e6595aeacfb20d4452bf63a85f67176797ca"
+            "sha256": "6c89e2ea7bf265422d88f263f24b818d69bba41dddc1fabd1b7485ee453eeff7"
           },
           "uri": "microcosm-substrate/docs/lean_formal_methods_os/release_topology_source_v0.json"
         },
@@ -97,7 +101,7 @@
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "5f826aaa20cd55242381ea8a05a0b189ef03cb1f32e04389d29ffddcf8458d36"
+            "sha256": "79b6712ef25fb34f40690f79e9b6e9948f6cd5ab5382380391fefe608063b1b5"
           },
           "name": "CITATION.cff"
         },
@@ -132,7 +136,7 @@
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "89cd9721d8db0dc8b250032a6884593e3cf995c997f8027dd298bc2042a67674"
+            "sha256": "604ac0def438e9ffec9135d6271ce9b8a946af37135062d881579317bec63939"
           },
           "name": "PROBLEMS.md"
         },
@@ -146,14 +150,14 @@
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "f96549d4e5f51133015fc4752a707dfeba9cbae2c4e865863b8cae9f9ad1640b"
+            "sha256": "b32c82587179aae17550bee93abee1c37fb6f71f01948cfb70c8aa4244f76465"
           },
           "name": "PlectisSnapshot/PublicAPI.lean"
         },
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "644ee6d6804e659cc295484bbb59851896d62e3b244e402376bf1bbf68b4e9bf"
+            "sha256": "4b255325911771e7ec63572a8142b8b3c101db736e5ba836955096e27aa3eb8e"
           },
           "name": "README.md"
         },
@@ -174,14 +178,14 @@
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "22492b85bb6cf0d87aea4d5d6411b7be07140453bd27acc88f9aac8458da9183"
+            "sha256": "859eb9a6a570103a1724acc0f005b3b5492c991353feb44d4383d2822213cb2e"
           },
           "name": "scripts/verify_snapshot.py"
         },
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "928ec8994fda7a692fded3b241586f80e7040448b63fb74fd81e7ae06c49ed1d"
+            "sha256": "3a56a9080392a477b272cc02a0946d8eb74c434fda95a6dfa46c7d0064c8454f"
           },
           "name": "snapshot/CLAIM_TO_REFERENCE_MAP.json"
         },
@@ -195,21 +199,21 @@
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "ec331b6ec1b9b449fea00a59ec09b1c057d532c0dc3fb63ec5d4d3dbd0048d5a"
+            "sha256": "6ca2e879d2393d79df82ea88796e9c6314e84c8fcbf4d837e819d600dec36a91"
           },
           "name": "snapshot/PLECTIS_INTEGRATION.json"
         },
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "bcabb1f8771c5e3adb3ba9ae0ac42e6d224f0db6ad0fc05f38950a1a76043daf"
+            "sha256": "f4981a197aa72ca70bb5a327f33d26d0b52d2bc0fda59ed85aefc5565191ae88"
           },
           "name": "snapshot/PUBLIC_API_CONTRACT.json"
         },
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "83e7a792669ad8f6711c17a125cd901581a61c35004fed785541801826fc23ee"
+            "sha256": "ea9f41e923333406f3fc31b016a17aae9b25e43e766095307cad59b53f5e9218"
           },
           "name": "snapshot/PUBLIC_SNAPSHOT_MANIFEST.json"
         },
@@ -223,7 +227,7 @@
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "dbeb69179235e8583c5411e00197fa1a6f46791b6ccb4294d1cef54d3d6edd89"
+            "sha256": "b9383328459ce816ae9cd267454a608c6c404ebeb2b597de0c429465255194f8"
           },
           "name": "snapshot/REFERENCES.yaml"
         },
@@ -237,13 +241,13 @@
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "e65019da61198fcdcfbdd08ea47955e126d687124a1d4db3007279bfdfcc491c"
+            "sha256": "681869571e1f87e2d5d3075046504f0a00c21bfa810d4cd3201314c13770999d"
           },
           "name": "snapshot/RELEASE_NOTES.md"
         }
       ],
       "metadata": {
-        "invocationFinishedOn": "2026-09-02T09:12:14Z",
+        "invocationFinishedOn": "2026-09-02T15:02:22Z",
         "reproducibilityBoundary": "public export source selection plus generated metadata"
       }
     }
@@ -253,7 +257,7 @@
   "subject": [
     {
       "digest": {
-        "sha256": "2e8344ccaca27eafbdf4c958d2a02e5ef34deaf79c2b71bd31b6901c950ad19b"
+        "sha256": "f64663109ab89e47a4d96748fb0de823bcb6d10e62d523e9ace6d311a190c714"
       },
       "file_count": 223,
       "name": "plectis-erdos-lean"
