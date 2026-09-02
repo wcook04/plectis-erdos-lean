@@ -30,7 +30,7 @@
       "status": "allowed_only_with_resource_headroom"
     }
   },
-  "generated_at": "2026-09-01T23:51:01Z",
+  "generated_at": "2026-09-02T01:44:48Z",
   "moving_frontier_policy": {
     "breaking_private_change": "Topology changes require a compatibility adapter or a new snapshot lane in Plectis.",
     "private_frontier": "Private #249/#257 work is excluded until a new manifest row and release gate promote it.",
@@ -98,7 +98,7 @@
     "plectis_consumption_mode": "pointer_only_until_public_tag",
     "schema": "plectis_lean_public_api_contract_v0",
     "source_file_count": 202,
-    "source_snapshot_sha256": "9b7cb88601476f8d459d2c271028f1d82ef5497e14f46db843a1b0d9c544ab2c",
+    "source_snapshot_sha256": "f05691b912c33036bd401de071b60524482f260fef89b1f20eda1ae76506bc8e",
     "stable_metadata_files": [
       "snapshot/PLECTIS_INTEGRATION.json",
       "snapshot/PUBLIC_SNAPSHOT_MANIFEST.json",
@@ -498,9 +498,9 @@
       "sha256": "a2144b4fdacf466d68be3908870e0e721a5cd24a651072530a253b52770df875"
     },
     {
-      "bytes": 83425,
+      "bytes": 82840,
       "path": "ErdosProblems/Erdos1049/AdelicHeightBridge.lean",
-      "sha256": "05f1921a45eb7876f2d583a67df25a6d1e77328a65957cd64f6e401e492b0b89"
+      "sha256": "3cd36a9463c6cbd51a945f544ce06f3d253e30a1540e71ca3cfd2776f9014a50"
     },
     {
       "bytes": 13024,
@@ -583,9 +583,9 @@
       "sha256": "a0b711c869ded5d04b3f22b27ff57ea574cb28550c27535f3c8b4047f8f14827"
     },
     {
-      "bytes": 15873,
+      "bytes": 15876,
       "path": "ErdosProblems/Erdos68/CarryCongruenceNormalForm.lean",
-      "sha256": "e85047cb300ff5bcb6e201807e20f938915cf4a717a92a969c42aded1f3171c5"
+      "sha256": "fa8c55e485de4bcb82d4a657402928a155adabf7a5c4b447560bbc38aa359cc7"
     },
     {
       "bytes": 6507,
@@ -618,14 +618,14 @@
       "sha256": "23a39810f47f393046be2075423c646fdfaddb1f6e35e92fd71c4cf6bca7d215"
     },
     {
-      "bytes": 69638,
-      "path": "ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
-      "sha256": "2d6bf8d6048d6247a1ce3793f6506146bc1d899facfab1f50e6be574304027aa"
+      "bytes": 37677,
+      "path": "ErdosProblems/Erdos68/FactorialGapPlateauCore.lean",
+      "sha256": "2eb8e4e63d7282a58c84b83801b06cafe0d383044f5a8a2a8960e58cac28d94b"
     },
     {
-      "bytes": 13826,
+      "bytes": 13829,
       "path": "ErdosProblems/Erdos68/GapScalarNormalForm.lean",
-      "sha256": "9dc4edcd1f0852d6a38667c8ccebd1ffd3acd23b883875c2b836b6f233689826"
+      "sha256": "eeb392e6131a9e6f41bbd33ad90884dab1e6dfee66386e62e59e1bfa9408b528"
     },
     {
       "bytes": 72848,
@@ -633,9 +633,9 @@
       "sha256": "3ef49f719f4596f08efb76f561fef7badf7e287873ffd0ad2cb588cd4acf7a5d"
     },
     {
-      "bytes": 7909,
+      "bytes": 7912,
       "path": "ErdosProblems/Erdos68/SecondLayerDigit.lean",
-      "sha256": "75c5320d621ba7b42e0fe633783599a81ee8ad2b4b9ab08ef366dfdd555d3008"
+      "sha256": "15f3867244566ad2868a0f92eae3d795942db2844a991991631dd50f53b56cc7"
     },
     {
       "bytes": 6903,
@@ -1214,7 +1214,13 @@
       "sha256": "88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5"
     }
   ],
-  "source_ref": null,
+  "source_ref": {
+    "commit": "f6b046a5fe2fe735e48c2efdb56c852d50f4f923",
+    "ref": "HEAD",
+    "working_tree_drift": [
+      "ErdosProblems/Erdos1049/AdelicHeightBridge.lean"
+    ]
+  },
   "source_root": "formal_math/erdos257_period_noncollapse",
   "source_snapshot": {
     "schema": "plectis_lean_source_snapshot_v0",
@@ -1300,17 +1306,17 @@
       "ErdosProblems/Erdos269/KernelCarryRank.lean": "8b32ea2f9583cbea2d5c31c53da1f76400a4f3312a888bea0598016c16044839",
       "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean": "769d80481465f4fd8655d5d62c5eb3e372c80c39b0722e80659bf4e150c6c036",
       "ErdosProblems/Erdos68/CanonicalFactorialDigits.lean": "a0b711c869ded5d04b3f22b27ff57ea574cb28550c27535f3c8b4047f8f14827",
-      "ErdosProblems/Erdos68/CarryCongruenceNormalForm.lean": "e85047cb300ff5bcb6e201807e20f938915cf4a717a92a969c42aded1f3171c5",
+      "ErdosProblems/Erdos68/CarryCongruenceNormalForm.lean": "fa8c55e485de4bcb82d4a657402928a155adabf7a5c4b447560bbc38aa359cc7",
       "ErdosProblems/Erdos68/ChannelBreakpointRigidity.lean": "0f62e658b9964a37ad2bf0310d99ec4fa35f385720932d66e91abac28b65a903",
       "ErdosProblems/Erdos68/ChannelIntegralCongruence.lean": "39461fdf3fa1ff404e6b9ae3ba5e642c88250f62edde20216e1cd65563bd2227",
       "ErdosProblems/Erdos68/CompanionConstantBridge.lean": "18d64c58660749777137a1ee8a2e81ecf8e6bc56af1173dbdbdf441d455ee7c3",
       "ErdosProblems/Erdos68/CompanionOrbitRationality.lean": "9b0ee56e4ab624ca694aaad7fa3a9b38a89751fe8a81292a2f0c8cfb5d296edf",
       "ErdosProblems/Erdos68/ConstantOnlyMissCertificates.lean": "e7de8e3080d2ce69bda7a1ab106160e780f850cbb7bf623a1885c3ae9a0694c3",
       "ErdosProblems/Erdos68/FactorialDigitRigidity.lean": "23a39810f47f393046be2075423c646fdfaddb1f6e35e92fd71c4cf6bca7d215",
-      "ErdosProblems/Erdos68/FactorialZeroPlateau.lean": "2d6bf8d6048d6247a1ce3793f6506146bc1d899facfab1f50e6be574304027aa",
-      "ErdosProblems/Erdos68/GapScalarNormalForm.lean": "9dc4edcd1f0852d6a38667c8ccebd1ffd3acd23b883875c2b836b6f233689826",
+      "ErdosProblems/Erdos68/FactorialGapPlateauCore.lean": "2eb8e4e63d7282a58c84b83801b06cafe0d383044f5a8a2a8960e58cac28d94b",
+      "ErdosProblems/Erdos68/GapScalarNormalForm.lean": "eeb392e6131a9e6f41bbd33ad90884dab1e6dfee66386e62e59e1bfa9408b528",
       "ErdosProblems/Erdos68/PrimeUnitTranslator.lean": "3ef49f719f4596f08efb76f561fef7badf7e287873ffd0ad2cb588cd4acf7a5d",
-      "ErdosProblems/Erdos68/SecondLayerDigit.lean": "75c5320d621ba7b42e0fe633783599a81ee8ad2b4b9ab08ef366dfdd555d3008",
+      "ErdosProblems/Erdos68/SecondLayerDigit.lean": "15f3867244566ad2868a0f92eae3d795942db2844a991991631dd50f53b56cc7",
       "ErdosProblems/Erdos68/StrictSuccessorArithmetic.lean": "e03320c57d2ae0d42f52564023f4d62d92e805696bf010d6b48c66ecb053064b",
       "ErdosProblems/Shared/IrrationalRotationStaircase.lean": "c3c2013d856ecedc3751e6fb0a4ac237e3ea397aa96fd475c76811137a74ba71",
       "ExternalVerification1041CriticalGeometry/AxiomAudit.lean": "92b515c95ade68afc14ccc84de26c28a99d362f7cc410105b9b06e71cf5af531",
@@ -1423,10 +1429,10 @@
       "lakefile.toml": "2617b76f7802f41de8b980ab30b3dfa3e931b99376e2db43802000139f8c40df",
       "lean-toolchain": "88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5"
     },
-    "source_files_sha256": "9b7cb88601476f8d459d2c271028f1d82ef5497e14f46db843a1b0d9c544ab2c",
+    "source_files_sha256": "f05691b912c33036bd401de071b60524482f260fef89b1f20eda1ae76506bc8e",
     "source_manifest": "microcosm-substrate/docs/lean_formal_methods_os/release_topology_source_v0.json",
     "source_root": "formal_math/erdos257_period_noncollapse",
-    "source_total_bytes": 4126842
+    "source_total_bytes": 4094890
   },
   "standalone_repo": {
     "dependency_pin": {
