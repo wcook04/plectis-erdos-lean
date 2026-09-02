@@ -3,20 +3,17 @@
 
 # Snapshot Notes
 
-Publication status: blocked until a clean build receipt and public tag/hash exist.
+Publication status: released at tag `v0.1.1`.
 
 Snapshot name: `Plectis Erdős Lean`
-Public tag: `v0.1.0`
-Public commit: `pending`
-Export subject tree sha256: `f64663109ab89e47a4d96748fb0de823bcb6d10e62d523e9ace6d311a190c714`
-Selected source files: `202`
+Public tag: `v0.1.1`
+Public commit: `resolved by tag v0.1.1`
+Export subject tree sha256: `42205ba7751d1f3786df22a7da35d68d8c6f3e178ce69e7c0ecaafb8bd70ad34`
+Source files copied from the private tree: `202`
 
-This generated note is intentionally not a publication announcement. It records the local export candidate and the gates still required before public promotion.
+This generated note records the export identity. A release is cited by its tag or by the commit that tag resolves to; this file cannot carry that commit, because it is part of the tree the commit hashes.
 
-Required before promotion:
+Still outside this note:
 
-- clean standalone Lake build receipt
-- public repository URL
-- public tag
-- public commit hash
-- Plectis import pointer update
+- Palomar registration, which is a separate registry decision and is not implied by a tag
+- human mathematical peer review, which no entry in this snapshot has had

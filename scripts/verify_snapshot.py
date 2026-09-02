@@ -232,6 +232,12 @@ def verify(root: Path) -> dict[str, Any]:
         notes = (root / "snapshot" / "RELEASE_NOTES.md").read_text(encoding="utf-8")
         if not public_tag and "Publication status: blocked" not in notes:
             failures.append({"kind": "release_notes_not_blocked_without_public_tag"})
+        # The symmetric half. Without it a tagged release kept printing "blocked" and
+        # "Public commit: pending" in its own snapshot notes and nothing objected.
+        if public_tag and "Publication status: blocked" in notes:
+            failures.append({"kind": "release_notes_blocked_at_public_tag", "public_tag": public_tag})
+        if public_tag and "pending" in notes.split("Export subject tree", 1)[0]:
+            failures.append({"kind": "release_notes_pending_identity_at_public_tag", "public_tag": public_tag})
         if public_tag or public_commit:
             blockers.append({"kind": "public_fields_present_in_local_candidate", "public_tag": public_tag, "public_commit": public_commit})
         if citation_public_keys and not public_tag:

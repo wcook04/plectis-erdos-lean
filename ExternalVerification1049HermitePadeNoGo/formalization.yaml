@@ -53,7 +53,7 @@ status:
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
   trusted_challenge_sorry_count: 5
-  axiom_audit_status: pending_focused_lean_check
+  axiom_audit_status: public_ci_2026_09_02_run_33646295554_all_compared_declarations_printed_within_permitted_axioms_no_sorryAx
   permitted_axiom_budget:
   - propext
   - Quot.sound

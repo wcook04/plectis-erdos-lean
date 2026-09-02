@@ -85,7 +85,7 @@ status:
   sorry_count: 0
   proof_corpus_sorry_count: 0
   trusted_challenge_sorry_count: 6
-  axiom_audit_status: pending_focused_replay_of_merged_configuration
+  axiom_audit_status: public_ci_2026_09_02_run_33646295554_all_compared_declarations_printed_within_permitted_axioms_no_sorryAx
   permitted_axiom_budget:
   - propext
   - Quot.sound

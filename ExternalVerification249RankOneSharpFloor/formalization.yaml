@@ -70,7 +70,7 @@ status:
   trusted_challenge_sorry_count: 6
   sorry_boundary: The only deliberate placeholders are the trusted theorem bodies
     in Challenge.lean. They are excluded from the proof-corpus count.
-  axiom_audit_status: capacity_deferred_pending_focused_lean_check
+  axiom_audit_status: public_ci_2026_09_02_run_33646295554_all_compared_declarations_printed_within_permitted_axioms_no_sorryAx
   permitted_axiom_budget:
   - propext
   - Quot.sound

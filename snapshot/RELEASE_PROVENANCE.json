@@ -1,6 +1,6 @@
 {
   "_type": "https://in-toto.io/Statement/v1",
-  "generated_at": "2026-09-02T15:02:22Z",
+  "generated_at": "2026-09-02T16:16:41Z",
   "predicate": {
     "buildDefinition": {
       "buildType": "https://plectis.local/build-types/lean-standalone-export/v0",
@@ -33,8 +33,8 @@
           },
           "public_release_date": "2026-09-02",
           "public_repo_url": "https://github.com/wcook04/plectis-erdos-lean",
-          "public_tag": "v0.1.0",
-          "public_version_rationale": "v0.1.0 is the smallest coherent first public version of this repository: the twenty-one Comparator entries that were selected for the first Palomar launch, at one immutable commit, on one Mathlib pin, with nothing added to round the number up. It is 0.x because the entry set is a queue rather than a finished collection, and because no entry here has been reviewed by a human mathematician.",
+          "public_tag": "v0.1.1",
+          "public_version_rationale": "v0.1.1 is the first published version of this repository: the smallest coherent first cut, the twenty-one Comparator entries selected for the first Palomar launch, at one immutable commit on one Mathlib pin, with nothing added to round the number up. It is 0.x because the entry set is a queue rather than a finished collection, and because no entry here has been read by a human mathematician. The tag v0.1.0 was cut first and superseded before any release was published: its snapshot notes still described the repository as unreleased, ten entries still recorded a pending axiom audit, and the release-gate workflow had no trigger that a tag could fire. v0.1.0 is left in place rather than moved.",
           "remote_name_suggestion": "plectis-erdos-lean",
           "repository_role": "standalone_lean_lake_package_export"
         }
@@ -43,18 +43,18 @@
         "non_claim_gate_status": "pass",
         "publication_ready_boolean": false,
         "selected_file_count": 202,
-        "source_files_sha256": "6d85fb6e641ef627d15018f72714bf2f36366ae078ea6470c6baa65780c4a7d4"
+        "source_files_sha256": "db32ca43d466fba3037414156929e77f2d5d1bf525b3d13a703662fca707c091"
       },
       "resolvedDependencies": [
         {
           "digest": {
-            "sha256": "6c89e2ea7bf265422d88f263f24b818d69bba41dddc1fabd1b7485ee453eeff7"
+            "sha256": "05957124371adcf80cf79766081524523286774f5810666d9e08f86743188765"
           },
           "uri": "microcosm-substrate/docs/lean_formal_methods_os/release_topology_source_v0.json"
         },
         {
           "digest": {
-            "sha256": "6d85fb6e641ef627d15018f72714bf2f36366ae078ea6470c6baa65780c4a7d4"
+            "sha256": "db32ca43d466fba3037414156929e77f2d5d1bf525b3d13a703662fca707c091"
           },
           "uri": "source_files_sha256"
         },
@@ -94,14 +94,14 @@
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "492963a091368aac20698410be15b491b6ee62872ad8049bb3b894ef8f5eac6a"
+            "sha256": "7916b84db5a76ed0f465d05a87923d466defbe46a26df89397337e9029ea7722"
           },
           "name": ".github/workflows/release-gate.yml"
         },
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "79b6712ef25fb34f40690f79e9b6e9948f6cd5ab5382380391fefe608063b1b5"
+            "sha256": "20ccbae81a00b57ed6775e83d17a9d2aa0a45a248ddde0a46656115091da210d"
           },
           "name": "CITATION.cff"
         },
@@ -150,7 +150,7 @@
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "b32c82587179aae17550bee93abee1c37fb6f71f01948cfb70c8aa4244f76465"
+            "sha256": "a1b6c99a5a7108df2520833421fbd0df8df61ebad1a6cf574d9e7b41a23d758b"
           },
           "name": "PlectisSnapshot/PublicAPI.lean"
         },
@@ -178,14 +178,14 @@
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "859eb9a6a570103a1724acc0f005b3b5492c991353feb44d4383d2822213cb2e"
+            "sha256": "9c64d840747b9f4c95f392bcbbf87bbdf611f217ea3693fb3d04a76fb47c4e42"
           },
           "name": "scripts/verify_snapshot.py"
         },
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "3a56a9080392a477b272cc02a0946d8eb74c434fda95a6dfa46c7d0064c8454f"
+            "sha256": "83ec1eb8ce3d75d4e29c56f9fe122b6af41bcaeb656b933df7df96aa9c60d4c6"
           },
           "name": "snapshot/CLAIM_TO_REFERENCE_MAP.json"
         },
@@ -199,21 +199,21 @@
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "6ca2e879d2393d79df82ea88796e9c6314e84c8fcbf4d837e819d600dec36a91"
+            "sha256": "89e303b016b9017802addc8aedd451130cd930e3dc106a0149c876411cb8d021"
           },
           "name": "snapshot/PLECTIS_INTEGRATION.json"
         },
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "f4981a197aa72ca70bb5a327f33d26d0b52d2bc0fda59ed85aefc5565191ae88"
+            "sha256": "13c1ea55f5682c8a2d263fd19fb9b42cc5db1d1460222027fadf4f727975c80b"
           },
           "name": "snapshot/PUBLIC_API_CONTRACT.json"
         },
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "ea9f41e923333406f3fc31b016a17aae9b25e43e766095307cad59b53f5e9218"
+            "sha256": "0fbd3f7de12e04159bab8d0300bd8824ea89d8e917ef00b6d0add8d12ae20c16"
           },
           "name": "snapshot/PUBLIC_SNAPSHOT_MANIFEST.json"
         },
@@ -227,7 +227,7 @@
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "b9383328459ce816ae9cd267454a608c6c404ebeb2b597de0c429465255194f8"
+            "sha256": "d0e73b146cfa2845e0baeb561affb989965a035857073108ce11683c377881d5"
           },
           "name": "snapshot/REFERENCES.yaml"
         },
@@ -241,13 +241,13 @@
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "681869571e1f87e2d5d3075046504f0a00c21bfa810d4cd3201314c13770999d"
+            "sha256": "a6a1e5f05208474ed9f98d02c2e87a0b49aa8404eaa70a8c54253fefaac2b261"
           },
           "name": "snapshot/RELEASE_NOTES.md"
         }
       ],
       "metadata": {
-        "invocationFinishedOn": "2026-09-02T15:02:22Z",
+        "invocationFinishedOn": "2026-09-02T16:16:41Z",
         "reproducibilityBoundary": "public export source selection plus generated metadata"
       }
     }
@@ -257,7 +257,7 @@
   "subject": [
     {
       "digest": {
-        "sha256": "f64663109ab89e47a4d96748fb0de823bcb6d10e62d523e9ace6d311a190c714"
+        "sha256": "42205ba7751d1f3786df22a7da35d68d8c6f3e178ce69e7c0ecaafb8bd70ad34"
       },
       "file_count": 223,
       "name": "plectis-erdos-lean"

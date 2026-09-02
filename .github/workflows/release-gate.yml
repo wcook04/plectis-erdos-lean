@@ -7,6 +7,11 @@ on:
   workflow_dispatch:
   pull_request:
     branches: [main]
+  # A release is cut by pushing a tag, and until this trigger existed the gate had
+  # never run on one: pull_request and workflow_dispatch alone meant a tag could be
+  # published with only the convenience workflow behind it.
+  push:
+    tags: ['v*']
 
 permissions:
   contents: read

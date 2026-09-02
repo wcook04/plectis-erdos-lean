@@ -65,7 +65,7 @@ status:
   sorry_count: 0
   proof_corpus_sorry_count: 0
   trusted_challenge_sorry_count: 4
-  axiom_audit_status: pending_guarded_build_deferred_low_disk_exit_75
+  axiom_audit_status: public_ci_2026_09_02_run_33646295554_all_compared_declarations_printed_within_permitted_axioms_no_sorryAx
   permitted_axiom_budget:
   - propext
   - Quot.sound

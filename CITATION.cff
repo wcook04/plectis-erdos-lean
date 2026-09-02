@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 cff-version: 1.2.0
 type: software-code
-message: "Cite this repository at the commit or tag you read. Version v0.1.0 is the first public version: the smallest coherent first cut, twenty-one Comparator entries at one commit on one Mathlib pin. No Erdős problem in it is claimed solved, and no entry has been peer reviewed."
+message: "Cite this repository at the commit or tag you read. Version v0.1.1 is the first published version: the smallest coherent first cut, twenty-one Comparator entries at one commit on one Mathlib pin. The earlier tag v0.1.0 was superseded before publication and is not the citable version. No Erdős problem in this repository is claimed solved, and no entry has been peer reviewed."
 title: "Plectis Erdős Lean"
 authors:
   - family-names: "Cook"
@@ -18,7 +18,7 @@ keywords:
   - "polynomial geometry"
   - "proof verification"
 repository-code: "https://github.com/wcook04/plectis-erdos-lean"
-version: "v0.1.0"
+version: "v0.1.1"
 date-released: "2026-09-02"
 references:
   - type: "article"
