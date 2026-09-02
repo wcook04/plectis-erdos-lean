@@ -15,17 +15,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Add swap for heavy launch-closure builds
-        run: |
-          sudo fallocate -l 8G /swapfile
-          sudo chmod 600 /swapfile
-          sudo mkswap /swapfile
-          sudo swapon /swapfile
       - uses: leanprover/lean-action@v1
-        env:
-          # Cap per-process Lean threads; the launch closure now includes
-          # AdelicHeightBridge and FactorialZeroPlateau together.
-          LEAN_NUM_THREADS: "1"
         with:
           use-mathlib-cache: auto
-          build: true
+          build: false
+      - name: Build launch entries sequentially
+        env:
+          LEAN_NUM_THREADS: "1"
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import re
+          import subprocess
+
+          text = open("lakefile.toml", encoding="utf-8").read()
+          match = re.search(r'defaultTargets\s*=\s*\[(.*?)\]', text, re.S)
+          if not match:
+              raise SystemExit("defaultTargets not found in lakefile.toml")
+          targets = re.findall(r'"([^"]+)"', match.group(1))
+          for target in targets:
+              print(f"=== lake build {target} ===", flush=True)
+              subprocess.run(["lake", "build", target], check=True)
+          PY
