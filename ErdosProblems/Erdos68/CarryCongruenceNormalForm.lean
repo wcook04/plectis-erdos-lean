@@ -1,4 +1,4 @@
-import ErdosProblems.Erdos68.FactorialZeroPlateau
+import ErdosProblems.Erdos68.FactorialGapPlateauCore
 
 /-!
 # Erdős #68: carry congruence normal form

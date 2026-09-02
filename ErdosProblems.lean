@@ -39,7 +39,7 @@ import ErdosProblems.Erdos68.CompanionConstantBridge
 import ErdosProblems.Erdos68.CompanionOrbitRationality
 import ErdosProblems.Erdos68.ConstantOnlyMissCertificates
 import ErdosProblems.Erdos68.FactorialDigitRigidity
-import ErdosProblems.Erdos68.FactorialZeroPlateau
+import ErdosProblems.Erdos68.FactorialGapPlateauCore
 import ErdosProblems.Erdos68.GapScalarNormalForm
 import ErdosProblems.Erdos68.PrimeUnitTranslator
 import ErdosProblems.Erdos68.SecondLayerDigit
