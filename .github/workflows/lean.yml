@@ -16,6 +16,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: leanprover/lean-action@v1
+        env:
+          # Serialise Lean work so AdelicHeightBridge + FactorialZeroPlateau do not
+          # exhaust the 7 GiB GitHub-hosted runner during the launch closure build.
+          LEAN_NUM_THREADS: "1"
         with:
           use-mathlib-cache: auto
           build: true
+          build-args: "-j 1"
