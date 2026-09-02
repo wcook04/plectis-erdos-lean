@@ -99,6 +99,20 @@ Each entry is five files: four in its directory and its Solution under `Solution
 The Solution lives under its own module prefix because the registry compiles each
 Challenge into a protected directory that shadows every module sharing its prefix.
 
+## Method
+
+[`METHOD.md`](METHOD.md) describes how the work reaches the models that do a large part
+of it, and what makes the result safe to accept. In short: reasoning depth and harness
+fitness are separable capabilities, the strongest available reasoner is often the one
+with no tool access and one response per question, and the entry format below is what
+converts an argument from such a source into a checked theorem. The test never asks who
+produced the proof, which is what lets an argument be accepted from a source that cannot
+be supervised.
+
+[`skills/lean-checkpoint-entry/SKILL.md`](skills/lean-checkpoint-entry/SKILL.md) is the
+authoring and review procedure for an entry, written to be usable against any problem
+set and any proof assistant convention, not only this one.
+
 ## What this repository does not establish
 
 A Lean proof establishes that the Solution proves the theorem the Challenge states,
@@ -111,7 +125,9 @@ No human mathematical peer review is claimed for any entry in this release.
 
 Will Cook is the human author and responsible maintainer.
 AI systems assisted with mathematical exploration, proof search, formalisation and
-Lean engineering. The author selected the public claims, reviewed their stated
+Lean engineering, including systems reached only through a chat interface with no
+access to this repository; [`METHOD.md`](METHOD.md) describes that arrangement and its
+verification boundary. The author selected the public claims, reviewed their stated
 boundaries and accepts responsibility for every statement in this repository.
 
 ## Citation
