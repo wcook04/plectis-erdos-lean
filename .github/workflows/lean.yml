@@ -15,12 +15,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Add swap for heavy launch-closure builds
+        run: |
+          sudo fallocate -l 8G /swapfile
+          sudo chmod 600 /swapfile
+          sudo mkswap /swapfile
+          sudo swapon /swapfile
       - uses: leanprover/lean-action@v1
         env:
-          # Serialise Lean work so AdelicHeightBridge + FactorialZeroPlateau do not
-          # exhaust the 7 GiB GitHub-hosted runner during the launch closure build.
+          # Cap per-process Lean threads; the launch closure now includes
+          # AdelicHeightBridge and FactorialZeroPlateau together.
           LEAN_NUM_THREADS: "1"
         with:
           use-mathlib-cache: auto
           build: true
-          build-args: "-j 1"

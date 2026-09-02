@@ -16,12 +16,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+      - name: Add swap for heavy launch-closure builds
+        run: |
+          sudo fallocate -l 8G /swapfile
+          sudo chmod 600 /swapfile
+          sudo mkswap /swapfile
+          sudo swapon /swapfile
       - uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
         env:
           LEAN_NUM_THREADS: "1"
         with:
           use-mathlib-cache: auto
           build: true
-          build-args: "-j 1"
           test: false
           lint: false
