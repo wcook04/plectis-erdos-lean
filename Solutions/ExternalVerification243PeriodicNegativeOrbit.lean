@@ -52,12 +52,12 @@ theorem no_eventuallyPeriodicNegative_orbit
     (a D C e : ℕ → ℕ) (N h M : ℕ)
     (hh : 0 < h)
     (hM : 0 < M)
-    (ha : ∀ n, 2 ≤ a n)
+    (ha : ∀ n, N ≤ n → 2 ≤ a n)
     (hepos : ∀ n, 0 < e (N + n))
     (helt : ∀ n, e (N + n) < a (N + n))
-    (hD : ∀ n, D (n + 1) = a n * D n)
-    (hC : ∀ n, C (n + 1) = C n + e n)
-    (hshape : ∀ n, D n + e n = (a n - 1) * C n)
+    (hD : ∀ n, N ≤ n → D (n + 1) = a n * D n)
+    (hC : ∀ n, N ≤ n → C (n + 1) = C n + e n)
+    (hshape : ∀ n, N ≤ n → D n + e n = (a n - 1) * C n)
     (hperiod : ∀ n, e (N + n + h) = e (N + n))
     (hphase : ∀ n, C (N + n + h) = C (N + n) + M) :
     False := by

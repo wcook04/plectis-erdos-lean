@@ -2,24 +2,24 @@ version: v0.4
 project:
   name: 'Erdős #257: irrationality for every reciprocal-summable support and every
     integer base'
-  description: For every infinite set A of exponents whose reciprocal sum converges
-    and every integer base b at least two, the series with terms 1/(b^a - 1) supported
-    on A is irrational. The theorem settles the whole reciprocal-summable support
-    regime at once and uniformly in the base, with no pairwise-coprimality, periodicity,
-    density or powerful-support hypothesis, and with the zero exponent normalised
-    to zero by real division. Any counterexample to the universal Erdős Problem 257
-    must therefore be supported on a set whose reciprocal sum diverges. The mechanism
-    produces close returns of shifted binary support atoms from an LCM-prefix orbit-mean
-    argument, transfers them to every radix through a uniform pointwise inequality
-    bounding the base-b atom displacement by twice the binary one, and closes with
-    an exact radix integer orbit. Erdős (1968) proved the pairwise-coprime reciprocal-summable
+  description: For every integer base b at least two and every infinite set A of exponents
+    whose reciprocal sum converges, the series with terms 1/(b^a - 1) supported on
+    A is irrational. One declaration is compared and it carries exactly that statement.
+    The support is an arbitrary infinite set of natural numbers, the exponent zero
+    is normalised to zero by real division, and no pairwise-coprimality, periodicity,
+    density, or powerful-support hypothesis appears. The whole reciprocal-summable
+    support regime is settled uniformly in the base, so every support carrying a counterexample
+    to universal Erdős Problem 257 has divergent reciprocal sum. The proof produces
+    close returns of shifted binary support atoms from an LCM-prefix orbit-mean argument,
+    transfers those returns to every radix through a pointwise inequality bounding
+    the base-b atom displacement by twice the binary one, and closes with an exact
+    radix integer orbit. Erdős (1968) proved the pairwise-coprime reciprocal-summable
     case for every integer base t at least two and stated that pairwise coprimality
-    is superfluous by a more complicated argument he did not print; this formalization
+    is superfluous by a more complicated argument he did not print. This development
     proves that stated extension, in every integer base, by an independent argument.
     No theorem-priority claim is made and no identification with Erdős's omitted argument
-    is asserted. The audience is analytic number theorists working on irrationality
-    of Mersenne-type reciprocal subseries. Reciprocal-divergent supports are untouched,
-    so the universal Erdős Problem 257 remains open.
+    is asserted. Reciprocal-divergent supports are untouched, so universal Erdős Problem
+    257 remains open.
   authors:
   - Will Cook
   license: Apache-2.0
@@ -44,9 +44,9 @@ sources:
     (p. 226 names fractional parts of t^n alpha as the mechanism). This formalization
     independently proves the stated no-coprimality conclusion in every integer base;
     the base generality is Erdős's own, and the removed hypothesis is the only strengthening
-    over his printed theorem. A bounded source search (audit 2026-09-02, docs/formal_math/palomar/prior_art_adjudication_2026_09_02.md)
-    found no printed proof of the extension, but that non-location does not support
-    a first-proof or priority claim.
+    over his printed theorem. A bounded source search recorded in the development
+    prior-art adjudication of 2026-09-02 found no printed proof of the extension.
+    That non-location does not support a first-proof or priority claim.
   license: unknown
   author_endorsement: not-contacted
 - title: Mathlib
@@ -108,15 +108,15 @@ status:
       source_path: paper/erdos-257-mersenne-support-subseries.tex
       source_url: https://github.com/wcook04/plectis-lean-erdos249-257/blob/c7f752d0aec77a29ef852ddc2e805ccc38f7a609/paper/erdos-257-mersenne-support-subseries.tex
       authoritative_base_commit: c7f752d0aec77a29ef852ddc2e805ccc38f7a609
-      result_label: res:reciprocal-support
-      mechanism_section_label: sec:reciprocal-support
-      boundary_label: bdry:reciprocal-support
-      relation: exact_paper_theorem_with_subordinate_mechanism
-      status: staged_revision_applies_cleanly_pending_operator_authorized_authoritative_promotion
-      note: The pinned URL identifies the exact clean public-paper base, not a published
-        version of the new theorem. The local staged patch adds the all-base result,
-        transfer mechanism, and boundary labels and must be promoted by the authoritative
-        paper owner before this route can be marked live.
+      relation: no_published_paper_statement_lean_source_module_is_the_authority
+      status: staged_paper_revision_awaiting_operator_authorized_promotion_labels_withheld_until_it_lands
+      note: The pinned commit is the clean public-paper base. It contains no statement
+        of the compared theorem, and the labels res:reciprocal-support, sec:reciprocal-support,
+        and bdry:reciprocal-support occur nowhere in that file, checked on 2026-09-05
+        against the pinned blob. The authority for the compared declaration is the
+        Lean source module recorded under status.source_current_authority. Result,
+        mechanism-section, and boundary label fields return here once the authoritative
+        paper owner promotes the staged revision.
     comparator_declaration: Erdos249257.ExternalVerification257ReciprocalSupport.irrational_supportPowerSeries_of_summable_reciprocal
     literature_dependencies:
     - statement: Erdős stated the no-coprimality extension after his printed pairwise-coprime

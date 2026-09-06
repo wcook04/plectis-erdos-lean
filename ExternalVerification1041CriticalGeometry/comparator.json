@@ -5,7 +5,11 @@
     "Erdos249257.ExternalVerification1041CriticalGeometry.criticalGeometricMean_twoRootProximity",
     "Erdos249257.ExternalVerification1041CriticalGeometry.criticalDiskInverseBalance_twoRootProximity",
     "Erdos249257.ExternalVerification1041CriticalGeometry.criticalDiskInverseBalance_twoRootProximity_strict",
+    "Erdos249257.ExternalVerification1041CriticalGeometry.nearestSpoke_reciprocal_balance",
+    "Erdos249257.ExternalVerification1041CriticalGeometry.nearestSpoke_unique_nearest_normSq",
     "Erdos249257.ExternalVerification1041CriticalGeometry.nearestSpoke_unique_nearest_spoke_escapes",
+    "Erdos249257.ExternalVerification1041CriticalGeometry.allStraightCubic_roots",
+    "Erdos249257.ExternalVerification1041CriticalGeometry.allStraightCubic_roots_in_unitDisk",
     "Erdos249257.ExternalVerification1041CriticalGeometry.allStraightCubic_every_pair_midpoint_escapes"
   ],
   "permitted_axioms": [

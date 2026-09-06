@@ -28,6 +28,18 @@ noncomputable def rankOneSubrankQuotient (e Y : ℕ) : ℝ :=
   mobiusMersennePrefix Y (e + 2) ^ 2 /
     mobiusMersennePrefix Y (2 * e + 2)
 
+theorem rankOneSubrankQuotient_ge_one_five
+    {e Y : ℕ} (he : 1 ≤ e) (hY : 4 ≤ Y) :
+    rankOneSubrankQuotient 1 5 ≤ rankOneSubrankQuotient e Y := by
+  simpa [rankOneSubrankQuotient, mobiusMersennePrefix,
+    mobiusMersenneTheta, mobiusMersenneTerm,
+    ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient,
+    ErdosProblems.Erdos249.RankOneSubrankObstruction.mobiusMersennePrefix,
+    Erdos257PeriodNoncollapse.SignedQMomentObstruction.mobiusMersenneTheta,
+    Erdos257PeriodNoncollapse.SignedQMomentObstruction.mobiusMersenneTerm] using
+    ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient_ge_one_five
+      he hY
+
 theorem rankOneSubrankQuotient_eq_one_five_iff
     {e Y : ℕ} (he : 1 ≤ e) (hY : 4 ≤ Y) :
     rankOneSubrankQuotient e Y = rankOneSubrankQuotient 1 5 ↔

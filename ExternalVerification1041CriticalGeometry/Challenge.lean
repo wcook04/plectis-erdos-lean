@@ -11,11 +11,13 @@ import Mathlib
 The package combines two source-current all-degree critical metric summits and
 two exact straight-line obstructions.  The cubic safe-spoke theorem is compared
 in `ExternalVerification1041SolvedFamilies`, where it supports the complete
-translated cubic family, and is not repeated here.  The first
-obstruction is the arithmetic endpoint of the unique-nearest-spoke quintic
-certificate.  The second gives an explicit cubic for which every root-pair
-midpoint escapes the unit lemniscate.  None of these statements claims the
-unrestricted root-to-root path theorem.
+translated cubic family, and is not repeated here.  The first obstruction is
+the explicit quintic whose reciprocal sum vanishes at the origin, whose real
+root is the strictly unique nearest root, and whose value at one tenth of that
+unique nearest spoke exceeds modulus one.  The second gives an explicit cubic
+whose three roots lie strictly inside the unit disk and for which every
+root-pair midpoint escapes the unit lemniscate.  None of these statements
+claims the unrestricted root-to-root path theorem.
 -/
 
 namespace Erdos249257.ExternalVerification1041CriticalGeometry
@@ -57,9 +59,40 @@ theorem criticalDiskInverseBalance_twoRootProximity_strict
     δ + e < 2 := by
   sorry
 
+/- The source keeps these five quintic configuration definitions private.  They
+are reproduced literally here so that the unique-nearest-spoke obstruction has
+a public, self-contained Challenge interface. -/
+
+noncomputable def nearestSpokeP : ℂ := (999 : ℂ) / 1000
+
+noncomputable def nearestSpokeA : ℂ := ((901 : ℂ) / 902) * nearestSpokeP
+
+noncomputable def nearestSpokeUPlus : ℂ := ((-451 : ℂ) + 780 * Complex.I) / 901
+
+noncomputable def nearestSpokeUMinus : ℂ := ((-451 : ℂ) - 780 * Complex.I) / 901
+
+noncomputable def nearestSpokeRoot : Fin 5 → ℂ
+  | 0 => nearestSpokeA
+  | 1 => Complex.I * nearestSpokeP
+  | 2 => -Complex.I * nearestSpokeP
+  | 3 => nearestSpokeP * nearestSpokeUPlus
+  | 4 => nearestSpokeP * nearestSpokeUMinus
+
+/-- The five explicit quintic roots have critical-point balance at the origin. -/
+theorem nearestSpoke_reciprocal_balance :
+    ∑ k, (nearestSpokeRoot k)⁻¹ = 0 := by
+  sorry
+
+/-- The real root is the strictly unique nearest root to that critical point.
+Squared norms avoid any square-root normalization in this exact certificate. -/
+theorem nearestSpoke_unique_nearest_normSq :
+    (∀ k : Fin 5, k ≠ 0 →
+      Complex.normSq (nearestSpokeRoot 0) < Complex.normSq (nearestSpokeRoot k)) := by
+  sorry
+
 /-- Exact arithmetic escape certificate at one tenth of the unique nearest
-spoke in the source quintic construction.  The reciprocal-balance and
-unique-nearest-root parts of that construction are separate source theorems. -/
+spoke in the source quintic construction.  The four positive factors are the
+absolute values of `(z-a)`, `(z²+p²)`, and `(z-pu₊)(z-pu₋)` at `z = a/10`. -/
 theorem nearestSpoke_unique_nearest_spoke_escapes :
     (1 : ℝ) <
       (900099 / 902000 : ℝ) * (1 - 1 / 10) *
@@ -84,6 +117,16 @@ noncomputable def allStraightRoot : Fin 3 → ℂ
 
 noncomputable def allStraightCubic (z : ℂ) : ℂ :=
   z ^ 3 - allStraightRadius ^ 3
+
+/-- The three displayed points are roots of `z³ - (99/100)³`. -/
+theorem allStraightCubic_roots :
+    ∀ k : Fin 3, allStraightCubic (allStraightRoot k) = 0 := by
+  sorry
+
+/-- All three explicit cubic roots lie strictly inside the unit disk. -/
+theorem allStraightCubic_roots_in_unitDisk :
+    ∀ k : Fin 3, ‖allStraightRoot k‖ < 1 := by
+  sorry
 
 /-- For the explicit monic cubic with radius `99/100`, the midpoint of every
 pair of distinct roots lies outside the strict unit lemniscate. -/

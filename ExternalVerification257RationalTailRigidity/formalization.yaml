@@ -2,25 +2,31 @@ version: v0.4
 project:
   name: 'Erdős #257: rational values force unbounded integer tail orbits and mass
     lower bounds'
-  description: 'Suppose the series of 1/(2^a - 1) over an infinite set A of positive
-    integers takes the rational value p/(2^c v) with v positive, and write d_A(n)
-    for the number of divisors of n lying in A. The denominator-cleared binary tails
-    are then strictly positive integers u(n) obeying the exact recurrence u(n+1) +
-    v d_A(c+n+1) = 2 u(n) and the residue law u(n) = p 2^n mod v, and they are unbounded.
-    Under the same rational value every zero window of d_A is sublogarithmic: for
-    each eps > 0 there is a constant B with h ≤ eps log_2(N+1) + B for every window
-    position N and every window length h. If the reciprocal mass of A converges and
-    the reduced denominator v is odd and greater than one, that mass is at least the
-    reciprocal of the multiplicative order of 2 modulo v, and for a dyadic value with
-    A infinite the reciprocal mass diverges or exceeds one strictly. One mechanism
-    produces all four laws: the divisor-counting coefficients of the support are the
-    binary coefficients of the value, so clearing the denominator turns rationality
-    into a positive integer orbit under doubling, and each law measures how often
-    the support must fire to keep that orbit positive and unbounded. These are support-uniform
-    necessary conditions in the irrationality theory of reciprocal-power series, imposed
-    with no density or regularity assumption on A, and priority for them has not been
-    established. They do not contradict all rational values, and Erdős #257 remains
-    open.'
+  description: >-
+    Write S(A) for the sum of 1/(2^a - 1) over the elements a of A, and write d_A(n)
+    for the number of divisors of n that lie in A. Four declarations are compared, and
+    each is conditional on a hypothetical rational value of S(A). The strongest assumes
+    A infinite, v positive, and S(A) = p/(2^c v). It produces a sequence u of natural
+    numbers with u(n) equal to v times the binary tail of d_A from index c + n, with
+    u(n) strictly positive at every n, with the exact recurrence
+    u(n+1) + v d_A(c+n+1) = 2 u(n), with the residue law u(n) congruent to p 2^n modulo
+    v, and with u exceeding every natural bound. The second assumes that A contains a
+    positive element, that v is positive, and that S(A) = p/(2^c v). For every eps > 0
+    it produces a constant B at least zero such that every zero window of d_A beginning
+    at c + N of length h satisfies h <= eps log_2(N+1) + B. The infinitude of A is
+    absent from its hypotheses. The third assumes that A contains a positive element,
+    that the reciprocal support terms of A are summable, that v is odd and exceeds one,
+    that p and v are coprime, and that S(A) = p/(2^c v). It bounds the reciprocal mass
+    of A below by the reciprocal of the multiplicative order of 2 modulo v. It carries
+    no infinitude assumption, so it is a mass bound that applies to finite supports. The
+    fourth assumes A infinite and S(A) = p/2^c. It concludes that the reciprocal support
+    terms of A fail to be summable or that the reciprocal mass of A exceeds one. One
+    mechanism carries all four. The divisor-counting coefficients d_A are the binary
+    coefficients of S(A), so clearing the denominator turns a rational value into a
+    positive integer orbit under doubling, and each declaration measures how often the
+    support must fire to keep that orbit positive. These are support-uniform necessary
+    conditions imposed with no density or regularity assumption on A. They exclude no
+    rational value of S(A), and Erdős #257 remains open. Novelty is unassessed.
   authors:
   - Will Cook
   license: Apache-2.0
@@ -80,6 +86,29 @@ status:
     novelty_status: unassessed
     contribution_class: uniform sublogarithmic gap obstruction
     boundary: The additive constant depends on the displayed rationality data.
+    literature_dependencies: []
+  - declaration: Erdos249257.ExternalVerification257RationalTailRigidity.one_div_oddOrder_le_reciprocalMass_of_support_fraction
+    file: Solutions/ExternalVerification257RationalTailRigidity.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257RationalTailRigidity/comparator.json
+    canonical_claim_status: exact_source_transport_pending_focused_check
+    local_proof_provenance: Erdos257PeriodNoncollapse/RationalSupportCarrySkeleton.lean
+    novelty_status: unassessed
+    contribution_class: odd-denominator reciprocal mass floor
+    boundary: The hypotheses are a positive element of A, summable reciprocal support,
+      an odd reduced denominator greater than one, and coprimality. Infinitude of
+      A is absent from them, so the bound applies to finite supports.
+    literature_dependencies: []
+  - declaration: Erdos249257.ExternalVerification257RationalTailRigidity.dyadic_support_fraction_reciprocalMass_diverges_or_gt_one
+    file: Solutions/ExternalVerification257RationalTailRigidity.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257RationalTailRigidity/comparator.json
+    canonical_claim_status: exact_source_transport_pending_focused_check
+    local_proof_provenance: Erdos257PeriodNoncollapse/RationalSupportCarrySkeleton.lean
+    novelty_status: unassessed
+    contribution_class: dyadic reciprocal-mass alternative
+    boundary: The conclusion is a disjunction. It supplies neither summability nor
+      a reciprocal-mass upper bound, so it produces no contradiction by itself.
     literature_dependencies: []
 automation:
   methods:

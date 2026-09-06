@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification269ActualShellOrbit
+
+#print axioms Erdos249257.ExternalVerification269ActualShellOrbit.actual_dyadicShellOrbit_recurrence_and_escape

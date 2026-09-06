@@ -1,35 +1,44 @@
 version: v0.4
 project:
-  name: 'Erdős #1049: exact first transformed Zudilin row and the 2^64 < 3^41 < 2^65
-    bracket'
-  description: 'In every column l, the first transformed normalised Zudilin row v*_(l+1)
-    - v*_l has order exactly l+1 and coefficient exactly -6 at that order. The two-sided
-    integer certificate 2^64 < 3^41 < 2^65 is exact, 65 cannot be replaced by 64,
-    and every constant below descends from it. Uniformly over the entire admissible
-    rectangular Hermite–Padé exponent cone, meaning every rho ≥ 0 and every sigma
-    ≥ 1 + rho, the achievable threshold stays more than 3/13 below log 2 / log 3,
-    so no exponent choice in that cone buys enough decay for the coefficient growth
-    it pays. The cubic Hankel determinant accumulates a raw denominator power 4N^3
-    - 3N^2, of which more than 39/41 must be cleared because the surviving charge
-    threshold (log 3 / log 2 - 1)/3 lies below 8/41, and three natural producers fail
-    that requirement for every admissible N: the source scalar content of degree at
-    most N^3 - N, the scalar content together with the universally forced first-order
-    residual border of combined degree at most 2N^3 - N, and the positive scalar ray
-    C1 ≥ 2 C0, which misses by the fixed relative margin 17/41. At bottom depth 41T
-    any 130T + 2S binary forms contain two distinct selectors with the same four-jet
-    signature, 130 is exactly optimal at T = 1 since 2^(129 + 2S) is strictly below
-    the number of signatures, and a general bounded-fibre pigeonhole converts such
-    a collision into an escape from the remainder nullspace whenever equal remainders
-    occur with multiplicity at most k and the signature count times k is below the
-    number of selectors. For anyone building Hermite–Padé or q-Apéry approximations
-    to the Lambert value at 3/2, the consequence is that a successful family must
-    carry cancellation absent from the scalar and border models, and that reaching
-    the nullspace escape by this counting route needs at least 130 + 2S forms at bottom
-    depth 41; the ancestry is the classical rectangular Hermite–Padé threshold, and
-    priority for these certificates is unassessed. Transformed rows j ≥ 2, the all-rank
-    normalised-Hankel order and leading-coefficient theorem, the construction of an
-    approximation family, a remainder-fibre bound for one, analytic decay, and irrationality
-    at 3/2 remain open.'
+  name: 'Erdős #1049: power-certificate four-jet threshold, exact first transformed
+    Zudilin row, and the 2^64 < 3^41 < 2^65 bracket'
+  description: >-
+    Thirteen declarations are compared. The most general is a power-certificate compiler
+    for the four-jet counting bound: for all natural numbers p, q, T, S, W with T
+    positive, a certified binary bound 3^p < 2^q forces any family of 2qT + 2S binary
+    forms to contain two distinct selectors with the same four-jet signature at bottom
+    depth pT. The integer certificate 2^64 < 3^41 < 2^65 is exact in both directions,
+    and the instance p = 41, q = 65 yields the threshold 130T + 2S at bottom depth 41T.
+    That threshold is exactly optimal at T = 1, since 2^(129 + 2S) is strictly below the
+    number of four-jet signatures. A bounded-fibre pigeonhole converts such a collision
+    into an escape from the remainder nullspace whenever equal remainders occur with
+    multiplicity at most k and the number of signatures times k is below the number of
+    selectors. In every column l, the first transformed normalised Zudilin row
+    v*_(l+1) - v*_l has order exactly l+1 and coefficient exactly -6 at that order. Two
+    division-free closed forms hold for every N: six times the sum of j^2 over j < N
+    equals N(N-1)(2N-1), and 2^N times the product of the transformed-row coefficients
+    (j+1)^2(j+2)/2 over j < N equals (N!)^2 (N+1)!. That assembly is algebraic. It
+    identifies no formal power-series determinant with these data, and it establishes no
+    all-rank normalised-Hankel order or leading-coefficient theorem. Uniformly over the
+    admissible rectangular Hermite–Padé exponent cone, meaning every rho ≥ 0 and every
+    sigma ≥ 1 + rho, the achievable threshold stays more than 3/13 below
+    log 2 / log 3, so no exponent choice in that cone buys enough decay for the
+    coefficient growth it pays. The cubic Hankel determinant accumulates a raw
+    denominator power 4N^3 - 3N^2, of which more than 39/41 must be cleared because the
+    surviving charge threshold (log 3 / log 2 - 1)/3 lies below 8/41, and three
+    producers fail that requirement for every admissible N: the source scalar content of
+    degree at most N^3 - N, the scalar content together with the universally forced
+    first-order residual border of combined degree at most 2N^3 - N, and the positive
+    scalar ray C1 ≥ 2 C0, which misses by the fixed relative margin 17/41. For anyone
+    building Hermite–Padé or q-Apéry approximations to the Lambert value at 3/2, the
+    consequence is that a successful family must carry cancellation absent from the
+    scalar and border models, and that reaching the nullspace escape by this counting
+    route needs at least 130 + 2S forms at bottom depth 41. The ancestry is the
+    classical rectangular Hermite–Padé threshold, and priority for these certificates is
+    unassessed. Transformed rows j ≥ 2, the all-rank normalised-Hankel order and
+    leading-coefficient theorem, the construction of an approximation family, a
+    remainder-fibre bound for one, analytic decay, and irrationality at 3/2 lie outside
+    this module and outside these thirteen declarations.
   authors:
   - Will Cook
   license: Apache-2.0
@@ -58,16 +67,18 @@ sources:
   license: unknown
   author_endorsement: not-contacted
 status:
-  scope: Exact all-column initial monomial for transformed row j=1, plus arithmetic
-    exclusions and finite collision/escape interfaces at 3/2. Transformed rows j>=2,
-    the full all-rank normalized-Hankel equality, an approximation family, an actual
-    remainder-fibre bound, analytic decay, and irrationality remain outside this Comparator
-    claim.
+  scope: Thirteen exact source-backed declarations. A power-certificate four-jet
+    collision compiler with its sharp (41, 65) instance and T=1 optimality, the exact
+    all-column initial monomial for transformed row j=1, two division-free algebraic
+    closed forms, and arithmetic exclusions plus the finite escape interface at 3/2.
+    Transformed rows j>=2, the full all-rank normalized-Hankel equality, an
+    approximation family, an actual remainder-fibre bound, analytic decay, and
+    irrationality remain outside this Comparator claim.
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
-  trusted_challenge_sorry_count: 11
-  axiom_audit_status: passed_exact_propext_Quot_sound_Classical_choice
+  trusted_challenge_sorry_count: 13
+  axiom_audit_status: eleven_originally_compared_declarations_passed_exact_propext_Quot_sound_Classical_choice_two_declarations_added_afterwards_await_the_next_audit_run
   permitted_axiom_budget:
   - propext
   - Quot.sound
@@ -88,6 +99,21 @@ status:
     boundary: Exact only for transformed row j=1. Rows j>=2 and the paper's full all-rank
       normalized-Hankel order and leading-coefficient theorem remain outside this
       Comparator declaration.
+    literature_dependencies: []
+  - declaration: Erdos249257.ExternalVerification1049AdelicHeightBridge.zudilinSharpHankelOrderAndCoeff_algebraicAssembly
+    file: Solutions/ExternalVerification1049AdelicHeightBridge.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification1049AdelicHeightBridge/comparator.json
+    canonical_claim_status: source_proved_exact_transport_axiom_audit_pending_next_run
+    source_declaration: ErdosProblems.Erdos1049.zudilinSharpHankelOrderAndCoeff_algebraicAssembly
+    source_file: ErdosProblems/Erdos1049/AdelicHeightBridge.lean
+    local_proof_provenance: ErdosProblems/Erdos1049/AdelicHeightBridge.lean
+    novelty_status: unassessed
+    contribution_class: division-free closed forms for the sharp-Hankel exponent and
+      the transformed-row coefficient product
+    boundary: An algebraic identity about a sum of squares and a product of integers.
+      It identifies no formal power-series determinant with these data and proves no
+      all-rank normalized-Hankel order or leading-coefficient theorem.
     literature_dependencies: []
   - declaration: Erdos249257.ExternalVerification1049AdelicHeightBridge.threePow_fortyOne_lt_twoPow_sixtyFive
     file: Solutions/ExternalVerification1049AdelicHeightBridge.lean
@@ -160,6 +186,20 @@ status:
     contribution_class: quantitative scalar-ray margin
     boundary: Excludes the source scalar cone, not all coefficient constructions.
     literature_dependencies: []
+  - declaration: Erdos249257.ExternalVerification1049AdelicHeightBridge.exists_distinct_binary_selectors_same_fourJet_of_power_certificate
+    file: Solutions/ExternalVerification1049AdelicHeightBridge.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification1049AdelicHeightBridge/comparator.json
+    canonical_claim_status: source_proved_exact_transport_axiom_audit_pending_next_run
+    source_declaration: ErdosProblems.Erdos1049.exists_distinct_binary_selectors_same_fourJet_of_power_certificate
+    source_file: ErdosProblems/Erdos1049/AdelicHeightBridge.lean
+    local_proof_provenance: ErdosProblems/Erdos1049/AdelicHeightBridge.lean
+    novelty_status: unassessed
+    contribution_class: power-certificate compiler for the four-jet collision threshold
+    boundary: Kernel existence only. Optimality of the compiled threshold is proved
+      only for the certificate p=41, q=65 at T=1, and polynomial-pair and analytic
+      nonvanishing are not proved.
+    literature_dependencies: []
   - declaration: Erdos249257.ExternalVerification1049AdelicHeightBridge.exists_distinct_binary_selectors_same_fourJet_of_rank_41
     file: Solutions/ExternalVerification1049AdelicHeightBridge.lean
     sorry_count: 0
@@ -204,19 +244,22 @@ automation:
       hardware: local machine
       prompting_notes: n/a
 fidelity:
-  divergences: The challenge reproduces the normalized-moment, height, and four-jet
-    definitions and copies eleven source endpoint types. It exposes only the first
-    transformed row of the staged normalized-Hankel theorem and adds no all-rank claim,
-    analytic family construction, remainder-fibre estimate, or irrationality statement.
+  divergences: The challenge reproduces the normalized-moment, height, four-jet,
+    sharp-Hankel-exponent, and transformed-row-coefficient definitions and copies
+    thirteen source endpoint types. It exposes only the first transformed row of the
+    staged normalized-Hankel theorem and the division-free algebraic closed forms, and
+    adds no determinant identification, no all-rank claim, no analytic family
+    construction, no remainder-fibre estimate, and no irrationality statement.
 review:
   status: self-assessed
   reviewers: []
-  notes: Source statements, Mathlib-only challenge boundary, exact first-row and unit-block
-    boundaries, Comparator metadata, and open-problem scope were reviewed. Source,
-    Challenge, and Solution pass focused Lean build plus serialized replay, and all
-    eleven selected endpoints report exactly the configured `propext`, `Quot.sound`,
-    and `Classical.choice` axiom budget. Terminal Comparator/NanoDa receipts are tracked
-    separately.
+  notes: Source statements, Mathlib-only challenge boundary, exact first-row and
+    unit-block boundaries, Comparator metadata, and open-problem scope were reviewed.
+    Source, Challenge, and Solution pass focused Lean build plus serialized replay for
+    the eleven originally selected endpoints, and those eleven report exactly the
+    configured `propext`, `Quot.sound`, and `Classical.choice` axiom budget. The two
+    declarations added afterwards await the next focused build and axiom-audit run.
+    Terminal Comparator/NanoDa receipts are tracked separately.
 alignment:
   namespace: Erdos249257.ExternalVerification1049AdelicHeightBridge
   paper:
@@ -234,6 +277,10 @@ alignment:
     paper_result_label: res:zudilin-sharp-qorder
     paper_boundary_label: sec:hankel-order
     status: exact-transport-focused-Lean-and-serialized-replay-passed
+  - source: ErdosProblems.Erdos1049.zudilinSharpHankelOrderAndCoeff_algebraicAssembly
+    lean: Erdos249257.ExternalVerification1049AdelicHeightBridge.zudilinSharpHankelOrderAndCoeff_algebraicAssembly
+    module: ExternalVerification1049AdelicHeightBridge/Challenge.lean
+    status: exact-transport-axiom-audit-pending-next-run
   - source: ErdosProblems.Erdos1049.threePow_fortyOne_lt_twoPow_sixtyFive
     lean: Erdos249257.ExternalVerification1049AdelicHeightBridge.threePow_fortyOne_lt_twoPow_sixtyFive
     module: ExternalVerification1049AdelicHeightBridge/Challenge.lean
@@ -262,6 +309,10 @@ alignment:
     lean: Erdos249257.ExternalVerification1049AdelicHeightBridge.three_two_scalar_margin_lt_explicit
     module: ExternalVerification1049AdelicHeightBridge/Challenge.lean
     status: exact-transport-focused-Lean-and-axiom-audit-passed
+  - source: ErdosProblems.Erdos1049.exists_distinct_binary_selectors_same_fourJet_of_power_certificate
+    lean: Erdos249257.ExternalVerification1049AdelicHeightBridge.exists_distinct_binary_selectors_same_fourJet_of_power_certificate
+    module: ExternalVerification1049AdelicHeightBridge/Challenge.lean
+    status: exact-transport-axiom-audit-pending-next-run
   - source: ErdosProblems.Erdos1049.exists_distinct_binary_selectors_same_fourJet_of_rank_41
     lean: Erdos249257.ExternalVerification1049AdelicHeightBridge.exists_distinct_binary_selectors_same_fourJet_of_rank_41
     module: ExternalVerification1049AdelicHeightBridge/Challenge.lean

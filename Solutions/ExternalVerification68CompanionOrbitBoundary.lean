@@ -9,15 +9,18 @@ import ErdosProblems.Erdos68.CompanionOrbitRationality
 /-!
 # Source transport for the Erdős #68 companion-orbit rationality boundary
 
-The proof exposes three source-independent, Mathlib-only Comparator
-statements. The generic shift boundary comes first because it is the widest
-coordinate: it holds at every real base point. The named-series boundary is
-the specialisation at the companion constant of `∑_{d≥2} 1/(d! - 1)`, and the
-exponential identity is the evaluation that makes that specialisation exact.
+The proof exposes four source-independent, Mathlib-only Comparator
+statements. The strict-successor carry boundary comes first because it is the
+sharpest coordinate: it reduces the irrationality question to a cofinal
+divisibility failure among the integers `⌊m! H_m⌋ + 1` attached to the exact
+rational prefixes `H_m`. The generic shift boundary holds at every real base
+point. The named-series boundary is the specialisation at the companion
+constant of `∑_{d≥2} 1/(d! - 1)`, and the exponential identity is the
+evaluation that makes that specialisation exact.
 
 Each theorem is an equivalence in both directions. None of them produces the
-cofinal misses of the exceptional residue, so none of them proves
-irrationality of the Erdős #68 series.
+cofinal misses of the exceptional residue or the cofinal divisibility
+failures, so none of them proves irrationality of the Erdős #68 series.
 -/
 
 namespace Erdos249257.ExternalVerification68CompanionOrbitBoundary
@@ -44,6 +47,25 @@ noncomputable def facFloor (x : ℝ) (m : ℕ) : ℤ :=
 noncomputable def canonicalDigit (x : ℝ) (m : ℕ) : ℤ :=
   facFloor x m - (m : ℤ) * facFloor x (m - 1)
 
+def factorialGapPrefix (n : ℕ) : ℚ :=
+  ∑ k ∈ Finset.Icc 2 n, 1 / ((k.factorial : ℚ) - 1)
+
+noncomputable def strictFacTop (x : ℝ) (n : ℕ) : ℤ :=
+  ⌊(n.factorial : ℝ) * x⌋ + 1
+
+def strictFacTopRat (x : ℚ) (n : ℕ) : ℤ :=
+  ⌊(n.factorial : ℚ) * x⌋ + 1
+
+noncomputable def factorialGapPredecessorGap (m : ℕ) : ℝ :=
+  (strictFacTop
+      ((factorialGapPrefix (m - 1) : ℚ) : ℝ) (m - 1) : ℝ) -
+    ((m - 1).factorial : ℝ) *
+      ((factorialGapPrefix (m - 1) : ℚ) : ℝ)
+
+noncomputable def factorialGapStepCarry (m : ℕ) : ℤ :=
+  -⌊1 + 1 / ((m.factorial : ℝ) - 1) -
+      (m : ℝ) * factorialGapPredecessorGap m⌋
+
 private theorem unitFactTerm_eq :
     unitFactTerm = ErdosProblems.Erdos68.unitFactTerm := rfl
 
@@ -58,6 +80,52 @@ private theorem companionConstant_eq :
 
 private theorem factorialGapSeries_eq :
     factorialGapSeries = Erdos68.factorialGapSeries := rfl
+
+theorem companionOrbitBoundary_strictSuccessorCarry :
+    (¬Irrational factorialGapSeries ↔
+      ∃ M : ℕ, ∀ m : ℕ, M ≤ m → factorialGapStepCarry m = 1) ∧
+    (Irrational factorialGapSeries ↔
+      ∀ B : ℕ, ∃ m : ℕ, B < m ∧ factorialGapStepCarry m ≠ 1) ∧
+    (∀ m : ℕ, 3 ≤ m →
+      (factorialGapStepCarry m = 1 ↔
+        (m : ℤ) ∣ strictFacTopRat (factorialGapPrefix m) m)) ∧
+    (Irrational factorialGapSeries ↔
+      ∀ B : ℕ, ∃ m : ℕ, B < m ∧
+        ¬((m : ℤ) ∣ strictFacTopRat (factorialGapPrefix m) m)) := by
+  refine ⟨?_, ?_, ?_, ?_⟩
+  · simpa [factorialGapSeries, Erdos68.factorialGapSeries,
+      Erdos68.factorialGapTail, Erdos68.factorialGapTailTerm,
+      factorialGapStepCarry, factorialGapPredecessorGap, strictFacTop,
+      factorialGapPrefix,
+      ErdosProblems.Erdos68.factorialGapStepCarry,
+      ErdosProblems.Erdos68.factorialGapPredecessorGap,
+      ErdosProblems.Erdos68.strictFacTop,
+      ErdosProblems.Erdos68.factorialGapPrefix] using
+      ErdosProblems.Erdos68.not_irrational_factorialGapSeries_iff_eventually_unit_carries
+  · simpa [factorialGapSeries, Erdos68.factorialGapSeries,
+      Erdos68.factorialGapTail, Erdos68.factorialGapTailTerm,
+      factorialGapStepCarry, factorialGapPredecessorGap, strictFacTop,
+      factorialGapPrefix,
+      ErdosProblems.Erdos68.factorialGapStepCarry,
+      ErdosProblems.Erdos68.factorialGapPredecessorGap,
+      ErdosProblems.Erdos68.strictFacTop,
+      ErdosProblems.Erdos68.factorialGapPrefix] using
+      ErdosProblems.Erdos68.irrational_factorialGapSeries_iff_cofinal_nonunit_carries
+  · intro m hm
+    simpa [factorialGapStepCarry, factorialGapPredecessorGap, strictFacTop,
+      strictFacTopRat, factorialGapPrefix,
+      ErdosProblems.Erdos68.factorialGapStepCarry,
+      ErdosProblems.Erdos68.factorialGapPredecessorGap,
+      ErdosProblems.Erdos68.strictFacTop,
+      ErdosProblems.Erdos68.strictFacTopRat,
+      ErdosProblems.Erdos68.factorialGapPrefix] using
+      ErdosProblems.Erdos68.factorialGapStepCarry_eq_one_iff_dvd_strictFacTopRat hm
+  · simpa [factorialGapSeries, Erdos68.factorialGapSeries,
+      Erdos68.factorialGapTail, Erdos68.factorialGapTailTerm,
+      strictFacTopRat, factorialGapPrefix,
+      ErdosProblems.Erdos68.strictFacTopRat,
+      ErdosProblems.Erdos68.factorialGapPrefix] using
+      ErdosProblems.Erdos68.irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses
 
 theorem companionOrbitBoundary_genericShift (x : ℝ) :
     (¬Irrational (x + ∑' n : ℕ, unitFactTerm n) ↔

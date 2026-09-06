@@ -83,6 +83,27 @@ theorem zudilin_firstTransformedRow_initialMonomial (l : ℕ) :
   exact
     ErdosProblems.Erdos1049.zudilinTransformedNormalizedMoment_one_initialMonomial l
 
+def zudilinSharpHankelQOrder (N : ℕ) : ℤ :=
+  ∑ j ∈ Finset.range N, (j : ℤ) ^ 2
+
+def zudilinTransformedRowCoeff (j : ℕ) : ℕ :=
+  ((j + 1) ^ 2 * (j + 2)) / 2
+
+theorem zudilinSharpHankelOrderAndCoeff_algebraicAssembly (N : ℕ) :
+    6 * zudilinSharpHankelQOrder N =
+        (N : ℤ) * ((N : ℤ) - 1) * (2 * (N : ℤ) - 1) ∧
+      2 ^ N * (∏ j ∈ Finset.range N, zudilinTransformedRowCoeff j) =
+        (N.factorial) ^ 2 * (N + 1).factorial := by
+  have horder :
+      zudilinSharpHankelQOrder =
+        ErdosProblems.Erdos1049.zudilinSharpHankelQOrder := rfl
+  have hcoeff :
+      zudilinTransformedRowCoeff =
+        ErdosProblems.Erdos1049.zudilinTransformedRowCoeff := rfl
+  rw [horder, hcoeff]
+  exact
+    ErdosProblems.Erdos1049.zudilinSharpHankelOrderAndCoeff_algebraicAssembly N
+
 theorem threePow_fortyOne_lt_twoPow_sixtyFive : 3 ^ 41 < 2 ^ 65 := by
   exact ErdosProblems.Erdos1049.threePow_fortyOne_lt_twoPow_sixtyFive
 
@@ -122,6 +143,22 @@ theorem three_two_scalar_margin_lt_explicit {C0 C1 : ℝ}
     C0 * Real.log 3 - C1 * Real.log 2 <
       -((17 : ℝ) / 41) * C0 * Real.log 2 := by
   exact ErdosProblems.Erdos1049.three_two_scalar_margin_lt_explicit hC0 hsource
+
+theorem exists_distinct_binary_selectors_same_fourJet_of_power_certificate
+    {n p q T S W : ℕ}
+    (forms : Fin n → Polynomial ℤ × Polynomial ℤ)
+    (hpq : (3 : ℕ) ^ p < (2 : ℕ) ^ q) (hT : 0 < T)
+    (hrank : 2 * q * T + 2 * S ≤ n) :
+    ∃ ε η : Fin n → Bool, ε ≠ η ∧
+      selectedFourJetSum (p * T) S W forms ε =
+        selectedFourJetSum (p * T) S W forms η := by
+  simpa [selectedFourJetSum, fourJetSignature, bottomJet3, topJet2,
+    homEvalThreeTwo, ErdosProblems.Erdos1049.selectedFourJetSum,
+    ErdosProblems.Erdos1049.fourJetSignature,
+    ErdosProblems.Erdos1049.bottomJet3, ErdosProblems.Erdos1049.topJet2,
+    ErdosProblems.Erdos1049.homEvalThreeTwo] using
+    ErdosProblems.Erdos1049.exists_distinct_binary_selectors_same_fourJet_of_power_certificate
+      forms hpq hT hrank
 
 theorem exists_distinct_binary_selectors_same_fourJet_of_rank_41
     {n T S W : ℕ}

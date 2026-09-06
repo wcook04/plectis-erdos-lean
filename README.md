@@ -1,5 +1,14 @@
 # Plectis Erdős Lean
 
+> **Archived packaging snapshot.** The packaged content below is the frozen
+> Palomar-era `v0.1.1` snapshot from commit
+> `3a108347a146e86667fe124bfad20a145b639596`; this notice does not update those
+> packages. Current claim, paper,
+> Comparator, Palomar-history, and release authority lives in
+> [`wcook04/plectis-lean-erdos249-257`](https://github.com/wcook04/plectis-lean-erdos249-257).
+> The package-local `comparator.json` and `formalization.yaml` files here are
+> historical records, not the current onboarding or verification architecture.
+
 ### 21 Lean-verified theorem families across eight open Erdős problems
 
 **Will Cook · human-led, AI-assisted mathematical research and formalisation · Lean 4 / Mathlib**
@@ -16,7 +25,7 @@ Problems covered: #68, #243, #249, #251, #257, #269, #1041, #1049.
 [`PROBLEMS.md`](PROBLEMS.md) states, for each problem, the strongest theorem this
 release carries, the exact unresolved step, and the smallest contribution that would move it.
 
-This repository is the Lean surface of the Plectis programme: <https://wcook04.github.io/plectis/>. The papers behind each entry, the eight problem pages and the further verified work outside this release are indexed at <https://wcook04.github.io/plectis/maths/>. The reviewed claim registry, the declaration atlas and the papers live in the companion public corpus <https://github.com/wcook04/plectis-lean-erdos249-257>; this repository is its Comparator and Palomar projection at one commit, and entry counts here never compose with declaration counts there.
+This repository is a frozen Lean packaging snapshot of the Plectis programme: <https://wcook04.github.io/plectis/>. The papers behind each entry, the eight problem pages and the current verified corpus are indexed at <https://wcook04.github.io/plectis/maths/>. The claim registry, declaration atlas, papers, current Comparator portfolios, and assimilated Palomar execution history live in <https://github.com/wcook04/plectis-lean-erdos249-257>; entry counts in this snapshot never compose with declaration counts there.
 
 ## Start here
 
@@ -86,15 +95,17 @@ Source: [`ExternalVerification251PolynomialShiftCountermodel/`](ExternalVerifica
 | #1049 | Erdős #1049: prime support forces the sharp 1/q gap in q-Apéry linear forms | [`ExternalVerification1049PrimeSupportSelectors`](ExternalVerification1049PrimeSupportSelectors/) |
 | #1049 | Erdős #1049: no coordinatewise denominator clearing at the rational base 3/2 | [`ExternalVerification1049RationalBaseBarrier`](ExternalVerification1049RationalBaseBarrier/) |
 
-## Reading an entry
+## Reading a historical entry
 
-Each entry is five files: four in its directory and its Solution under `Solutions/`.
+Each archived entry is five files: four in its directory and its Solution under
+`Solutions/`. This layout records how the Palomar-era release was packaged; do
+not reproduce it when adding work to the current repository.
 
 - `<Entry>/Challenge.lean` states the theorem for a reviewer and does not prove it.
 - `Solutions/<Entry>.lean` proves it. A `sorry` here would be fatal and there is none.
 - `<Entry>/AxiomAudit.lean` prints the axioms each selected declaration depends on.
-- `<Entry>/comparator.json` is the configuration a registry submission names.
-- `<Entry>/formalization.yaml` records scope, sources, attribution and known divergences.
+- `<Entry>/comparator.json` is the historical configuration a registry submission named.
+- `<Entry>/formalization.yaml` is historical package metadata. The current repository uses one generated root manifest.
 
 The Solution lives under its own module prefix because the registry compiles each
 Challenge into a protected directory that shadows every module sharing its prefix.

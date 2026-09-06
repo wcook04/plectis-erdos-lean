@@ -38,6 +38,35 @@ theorem criticalDiskInverseBalance_twoRootProximity_strict
   exact ErdosProblems.Erdos1041.two_add_lt_two_of_disk_inverse_balance_of_strict_diameter
     hN ht1 hδ hδe hδ1 hemax hbal hstar
 
+noncomputable def nearestSpokeP : ℂ := (999 : ℂ) / 1000
+
+noncomputable def nearestSpokeA : ℂ := ((901 : ℂ) / 902) * nearestSpokeP
+
+noncomputable def nearestSpokeUPlus : ℂ := ((-451 : ℂ) + 780 * Complex.I) / 901
+
+noncomputable def nearestSpokeUMinus : ℂ := ((-451 : ℂ) - 780 * Complex.I) / 901
+
+noncomputable def nearestSpokeRoot : Fin 5 → ℂ
+  | 0 => nearestSpokeA
+  | 1 => Complex.I * nearestSpokeP
+  | 2 => -Complex.I * nearestSpokeP
+  | 3 => nearestSpokeP * nearestSpokeUPlus
+  | 4 => nearestSpokeP * nearestSpokeUMinus
+
+theorem nearestSpoke_reciprocal_balance :
+    ∑ k, (nearestSpokeRoot k)⁻¹ = 0 := by
+  simp [Fin.sum_univ_succ, nearestSpokeRoot, nearestSpokeA, nearestSpokeP,
+    nearestSpokeUPlus, nearestSpokeUMinus]
+  apply Complex.ext <;>
+    norm_num [Complex.div_re, Complex.div_im, Complex.normSq_apply]
+
+theorem nearestSpoke_unique_nearest_normSq :
+    (∀ k : Fin 5, k ≠ 0 →
+      Complex.normSq (nearestSpokeRoot 0) < Complex.normSq (nearestSpokeRoot k)) := by
+  intro k hk
+  fin_cases k <;> norm_num [nearestSpokeRoot, nearestSpokeA, nearestSpokeP,
+    nearestSpokeUPlus, nearestSpokeUMinus, Complex.normSq_apply] at *
+
 theorem nearestSpoke_unique_nearest_spoke_escapes :
     (1 : ℝ) <
       (900099 / 902000 : ℝ) * (1 - 1 / 10) *
@@ -73,6 +102,35 @@ private theorem allStraightOmega_cube : allStraightOmega ^ 3 = 1 := by
         (allStraightOmega - 1) *
           (allStraightOmega ^ 2 + allStraightOmega + 1) := by ring
     _ = 0 := by rw [allStraightOmega_quadratic, mul_zero]
+
+private theorem allStraightOmega_normSq :
+    Complex.normSq allStraightOmega = 1 := by
+  have hsqrt : (Real.sqrt 3) ^ 2 = (3 : ℝ) :=
+    Real.sq_sqrt (by norm_num)
+  simp [allStraightOmega, Complex.normSq_apply]
+  ring_nf
+  nlinarith
+
+theorem allStraightCubic_roots :
+    ∀ k : Fin 3, allStraightCubic (allStraightRoot k) = 0 := by
+  intro k
+  fin_cases k
+  · simp [allStraightCubic, allStraightRoot]
+  · simp [allStraightCubic, allStraightRoot, mul_pow, allStraightOmega_cube]
+  · simp [allStraightCubic, allStraightRoot, mul_pow, allStraightOmega_cube]
+    rw [show (allStraightOmega ^ 2) ^ 3 =
+      (allStraightOmega ^ 3) ^ 2 by ring]
+    rw [allStraightOmega_cube]
+    ring
+
+theorem allStraightCubic_roots_in_unitDisk :
+    ∀ k : Fin 3, ‖allStraightRoot k‖ < 1 := by
+  intro k
+  have homega : ‖allStraightOmega‖ = 1 := by
+    rw [Complex.norm_def, allStraightOmega_normSq]
+    norm_num
+  fin_cases k <;>
+    simp [allStraightRoot, allStraightRadius, homega, norm_pow] <;> norm_num
 
 private theorem allStraight_midpoint_value_of_unit
     (u : ℂ) (hu : u ^ 3 = 1) :

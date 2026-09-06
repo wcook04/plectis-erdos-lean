@@ -9,9 +9,11 @@ import Mathlib
 # Trusted challenge for the sharp positive rank-one floor in Erdős #249
 
 The compared family determines the positive rank-one Möbius--Mersenne cone
-exactly enough to identify its unique minimizer, certify its sharp explicit
-separation from `Θ₂`, propagate that separation through every finite positive
-direct sum, and express the result as a rational linear-form obstruction.
+exactly enough to prove that the five-atom first-depth kernel `(e, Y) = (1, 5)`
+minimises the admissible quotient and is the only admissible pair attaining
+that minimum value, certify the sharp explicit separation of the quotient from
+`Θ₂`, propagate that separation through every finite positive direct sum, and
+express the result as a rational linear-form obstruction.
 
 This rules out one coherent positive rank-one mechanism.  It does not rule out
 signed cancellation or genuinely coupled higher-rank constructions, and it
@@ -40,7 +42,14 @@ noncomputable def rankOneSubrankQuotient (e Y : ℕ) : ℝ :=
   mobiusMersennePrefix Y (e + 2) ^ 2 /
     mobiusMersennePrefix Y (2 * e + 2)
 
-/-- The five-atom first-depth kernel is the unique admissible minimizer. -/
+/-- The five-atom first-depth kernel minimises the admissible quotient. -/
+theorem rankOneSubrankQuotient_ge_one_five
+    {e Y : ℕ} (he : 1 ≤ e) (hY : 4 ≤ Y) :
+    rankOneSubrankQuotient 1 5 ≤ rankOneSubrankQuotient e Y := by
+  sorry
+
+/-- The five-atom first-depth kernel is the only admissible pair attaining the
+minimum value. -/
 theorem rankOneSubrankQuotient_eq_one_five_iff
     {e Y : ℕ} (he : 1 ≤ e) (hY : 4 ≤ Y) :
     rankOneSubrankQuotient e Y = rankOneSubrankQuotient 1 5 ↔

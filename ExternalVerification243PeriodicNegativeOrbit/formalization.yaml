@@ -1,30 +1,29 @@
 version: v0.4
 project:
   name: 'Erdős #243: exclusion of eventually periodic negative-magnitude orbits'
-  description: 'Clearing denominators in the rational case of Erdős Problem 243 produces
-    an exact integer orbit: multipliers a n at least 2 drive D(n+1) = a n D n and
-    C(n+1) = C n + e n, where e n is the magnitude of a negative Sylvester-centred
-    error tied to the state by D n + e n = (a n - 1) C n. Eventual periodicity of
-    that magnitude sequence, with a fixed positive drift M gained over one period,
-    is the natural way such an orbit could carry a rational value, since a repeating
-    error pattern is the discrete analogue of a repeating expansion. The strongest
-    theorem is that this is impossible: for every offset N, every period h > 0 and
-    every positive drift M, positivity and e n < a n on the tail, together with the
-    exact recurrence and the shape equation, are contradictory. Two further theorems
-    give the same exclusion for genuinely periodic orbits at every common scale and
-    for the phase-primitive case, so the whole eventually periodic negative-magnitude
-    family is closed with no residual period, offset, drift or scale, which removes
-    the first construction an irrationality specialist would attempt for this dynamics.
-    The mechanism is prime propagation: a prime occurring in two multiplier states
-    divides every later denominator, tail and magnitude, so periodicity carries any
-    prime divisor of the drift back through all phases and a finite pigeonhole closes
-    the phase-primitive case, while if primitivity fails the shared prime divides
-    the whole orbit, dividing it out strictly decreases the positive drift, and strong
-    induction returns to the primitive case. The ingredients are elementary prime
-    divisibility and pigeonhole, and the novelty of the family is unassessed. The
-    exact recurrence, the positive drift, the periodicity and the bound e n < a n
-    are hypotheses here, orbits that are aperiodic or that change sign lie outside
-    every statement, and Erdős Problem 243 remains open.'
+  description: >-
+    The strongest theorem excludes an eventually periodic negative-magnitude orbit under
+    hypotheses imposed only from the offset onwards: for all sequences a, D, C, e from the
+    naturals to the naturals and all naturals N, h, M with h positive and M positive, the
+    following eight conditions are contradictory: a n at least 2 for every n at least N; e (N +
+    n) positive for every n; e (N + n) < a (N + n) for every n; D (n + 1) = a n D n for every n
+    at least N; C (n + 1) = C n + e n for every n at least N; D n + e n = (a n - 1) C n for
+    every n at least N; e (N + n + h) = e (N + n) for every n; and C (N + n + h) = C (N + n) + M
+    for every n. Two further theorems give the same exclusion with every condition imposed at
+    every index, one for a periodic orbit at any common scale and one for the phase-primitive
+    case, which adds the condition that no prime dividing M divides both C 0 and every value of
+    e. Within these hypotheses no period, offset, drift or common scale survives. The setting is
+    the product-cleared rational case of Erdős Problem 243, where a n is the multiplier at step
+    n, D n the cleared denominator state, C n the numerator state, and e n the magnitude of a
+    negative Sylvester-centred error. The mechanism is prime propagation: a prime occurring in
+    two multiplier states divides every later denominator, tail and magnitude, so periodicity
+    carries any prime divisor of the drift back through all phases and a finite pigeonhole
+    closes the phase-primitive case; when primitivity fails the shared prime divides the whole
+    orbit, dividing it out strictly decreases the positive drift, and strong induction returns
+    to the primitive case. The ingredients are elementary prime divisibility and pigeonhole, and
+    the novelty of the family is unassessed. The exact recurrence, the positive drift, the
+    periodicity and the bound e n < a n are hypotheses. Orbits that are aperiodic or that change
+    sign lie outside every statement. Erdős Problem 243 remains open.
   authors:
   - Will Cook
   responsible_maintainers:
@@ -36,8 +35,8 @@ sources:
   - Will Cook
   type: original-proof
   relationship: other
-  note: Lean source in ErdosProblems/Erdos243/ReciprocalTailRigidity.lean and complete
-    exposition at paper theorem res:periodic.
+  note: Lean source in ErdosProblems/Erdos243/ReciprocalTailRigidity.lean, which ships
+    in this artifact and is the resolvable authority for every compared statement.
   license: Apache-2.0
   author_endorsement: participated
 - title: 'Erdős Problem #243'
@@ -104,7 +103,7 @@ status:
     file: Solutions/ExternalVerification243PeriodicNegativeOrbit.lean
     sorry_count: 0
     comparator_config: ExternalVerification243PeriodicNegativeOrbit/comparator.json
-    canonical_claim_status: source_checked_wrapper_focused_build_passed
+    canonical_claim_status: source_checked_wrapper_recheck_pending_after_tail_quantifier_weakening
     source_declaration: ErdosProblems.Erdos243.no_eventuallyPeriodicNegative_orbit
     source_file: ErdosProblems/Erdos243/ReciprocalTailRigidity.lean
     contribution_class: eventually periodic structured-tail exclusion
@@ -115,7 +114,7 @@ status:
     file: Solutions/ExternalVerification243PeriodicNegativeOrbit.lean
     sorry_count: 0
     comparator_config: ExternalVerification243PeriodicNegativeOrbit/comparator.json
-    canonical_claim_status: source_checked_wrapper_focused_build_passed
+    canonical_claim_status: source_checked_wrapper_recheck_pending_after_tail_quantifier_weakening
     source_declaration: ErdosProblems.Erdos243.no_periodicNegative_orbit
     source_file: ErdosProblems/Erdos243/ReciprocalTailRigidity.lean
     contribution_class: all-common-scales periodic structured-tail exclusion
@@ -126,7 +125,7 @@ status:
     file: Solutions/ExternalVerification243PeriodicNegativeOrbit.lean
     sorry_count: 0
     comparator_config: ExternalVerification243PeriodicNegativeOrbit/comparator.json
-    canonical_claim_status: source_checked_wrapper_focused_build_passed
+    canonical_claim_status: source_checked_wrapper_recheck_pending_after_tail_quantifier_weakening
     source_declaration: ErdosProblems.Erdos243.no_phasePrimitivePeriodicNegative_orbit
     source_file: ErdosProblems/Erdos243/ReciprocalTailRigidity.lean
     contribution_class: phase-primitive periodic structured-tail exclusion
@@ -139,22 +138,26 @@ fidelity:
 review:
   status: self-assessed
   reviewers: []
-  notes: Source statements, strongest-first Comparator order, exact paper label, source
-    routes, and the open conditional boundary were reviewed. Focused source/challenge/solution/deliberate-negative/axiom-audit
+  notes: Source statements, strongest-first Comparator order, source routes, and the
+    open conditional boundary were reviewed. An earlier focused source/challenge/solution/deliberate-negative/axiom-audit
     elaboration passed, with all three selected declarations using exactly propext,
-    Quot.sound, and Classical.choice.
+    Quot.sound, and Classical.choice. The eventual-tail theorem has since been restated
+    with its multiplier bound, denominator recurrence, numerator recurrence, and shape
+    equation imposed only from the offset onwards, which the existing proof already
+    used only at tail indices, and that restatement awaits re-elaboration.
 alignment:
   namespace: Erdos249257.ExternalVerification243PeriodicNegativeOrbit
   statements:
-  - source: eventually periodic negative magnitudes are impossible
+  - source: eventually periodic negative magnitudes are impossible under hypotheses
+      imposed only from the offset onwards
     lean: Erdos249257.ExternalVerification243PeriodicNegativeOrbit.no_eventuallyPeriodicNegative_orbit
     module: ExternalVerification243PeriodicNegativeOrbit/Challenge.lean
-    status: exact-source-transport-focused-build-passed
+    status: exact-source-transport-recheck-pending-after-tail-quantifier-weakening
   - source: periodic negative magnitudes are impossible at every common scale
     lean: Erdos249257.ExternalVerification243PeriodicNegativeOrbit.no_periodicNegative_orbit
     module: ExternalVerification243PeriodicNegativeOrbit/Challenge.lean
-    status: exact-source-transport-focused-build-passed
+    status: exact-source-transport-recheck-pending-after-tail-quantifier-weakening
   - source: phase-primitive periodic negative magnitudes are impossible
     lean: Erdos249257.ExternalVerification243PeriodicNegativeOrbit.no_phasePrimitivePeriodicNegative_orbit
     module: ExternalVerification243PeriodicNegativeOrbit/Challenge.lean
-    status: exact-source-transport-focused-build-passed
+    status: exact-source-transport-recheck-pending-after-tail-quantifier-weakening

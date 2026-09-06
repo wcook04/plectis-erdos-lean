@@ -1,0 +1,127 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+# formalization.yaml v0.4
+version: "v0.4"
+
+project:
+  name: "Erdős #257: rational-fibre null theorem and supported Mersenne achievement-set geometry"
+  description: >-
+    A supported Mersenne achievement set is the set of reals coded by binary
+    strings whose support lies in a fixed set J of allowed digit positions,
+    where digit position k contributes the Mersenne weight 1 / (2^(k+1) - 1).
+    Two declarations are compared. The first is a measure no-go on rational
+    fibres. If 0 is not in J and the sum of 1 / (2^m - 1) over m in J is a
+    rational number, the achievement set supported on J has Lebesgue measure
+    zero. Positive-measure selection over a rational fibre is excluded by
+    that measure-zero conclusion. An exceptional null point stays unexcluded.
+    In that first declaration the set J indexes exponents in the hypothesis
+    and digit positions in the conclusion. The second declaration classifies
+    the whole family, with no hypothesis on J. The supported digit map is
+    injective, its range is compact, its range is nowhere dense, the range is
+    perfect whenever J is infinite, and the Lebesgue measure of the range
+    satisfies an exact dichotomy: when the omitted digit positions form a
+    finite set F the measure is the reciprocal of 2^|F|, and when infinitely
+    many digit positions are omitted the measure is zero. Both statements are
+    proved for the literal Mathlib-only definitions repeated in the Challenge
+    module. The compared declarations establish no irrationality of any
+    infinite Mersenne subseries, and Erdős Problem 257 remains open.
+  authors:
+    - "Will Cook"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Will Cook"
+
+classification:
+  arxiv: ["math.CA", "math.NT"]
+  msc2020: ["28A80", "11B83"]
+
+sources:
+  - title: "Supported Mersenne achievement-set rigidity"
+    authors:
+      - "Will Cook"
+    type: "original-proof"
+    relationship: "other"
+    note: >-
+      The source development proves hereditary unique coding, compactness,
+      nowhere density, perfection for infinite support, exact finite-face
+      volumes, the infinite-complement null theorem, and the rational-value
+      null theorem. This presentation is the first recorded here; novelty is
+      unassessed and achievement-set geometry has classical antecedents.
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #257"
+    authors:
+      - "Thomas F. Bloom"
+    id: "https://www.erdosproblems.com/257"
+    type: "web discussion"
+    relationship: "background"
+    note: >-
+      The catalogue supplies the problem statement, numbering, references,
+      and open status. The compared theorems are not attributed to the
+      catalogue.
+    license: "unknown"
+    author_endorsement: "not-contacted"
+  - title: "Mathlib"
+    authors:
+      - "The mathlib contributors"
+    id: "https://github.com/leanprover-community/mathlib4"
+    relationship: "background"
+    license: "Apache-2.0"
+    author_endorsement: "n/a"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "OpenAI Codex"
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted formalization, verification packaging, and exposition"
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    The source theorem family, the literal Challenge definitions, and the
+    open-problem boundary were checked by the author with AI assistance. No
+    independent review is claimed.
+
+status:
+  scope: >-
+    Two exact source-backed declarations; one trusted sorry per Challenge
+    theorem.
+  sorry_count: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 2
+  axiom_audit_status: awaiting_public_ci_axiom_print_for_both_compared_declarations
+  permitted_axiom_budget:
+    - "propext"
+    - "Quot.sound"
+    - "Classical.choice"
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification257AchievementSetGeometry.volume_supportedMersenneAchievementSet_eq_zero_of_rat_value"
+      file: "Solutions/ExternalVerification257AchievementSetGeometry.lean"
+      sorry_count: 0
+      canonical_claim_status: "exact source transport; axiom print pending the next public CI run"
+      novelty_status: "unassessed"
+      boundary: >-
+        Rational coded value on a zero-free support forces Lebesgue measure
+        zero. The statement excludes no individual point and proves no
+        irrationality.
+    - declaration: "Erdos249257.ExternalVerification257AchievementSetGeometry.supportedMersenneAchievementSet_geometry_and_volume"
+      file: "Solutions/ExternalVerification257AchievementSetGeometry.lean"
+      sorry_count: 0
+      canonical_claim_status: "exact source transport; axiom print pending the next public CI run"
+      novelty_status: "unassessed"
+      boundary: >-
+        Support-uniform geometry and exact Lebesgue dichotomy. The statement
+        proves no irrationality of any infinite Mersenne subseries and does
+        not solve universal Erdős 257.
+
+alignment:
+  namespace: "Erdos249257.ExternalVerification257AchievementSetGeometry"
+  statements:
+    - source: "ErdosProblems.Erdos257.MersenneSubseriesRigidity"
+      lean: "two same-named exact transports"
+      module: "ExternalVerification257AchievementSetGeometry/Challenge.lean"
+      status: "two-exact-transports-awaiting-public-ci-axiom-print"
+
+acknowledgements: "Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue."

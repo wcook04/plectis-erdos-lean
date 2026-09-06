@@ -141,9 +141,30 @@ theorem kernel_235_minor_eq_neg_one_fifteen :
     ErdosProblems.Erdos269.smooth3Val] using
     ErdosProblems.Erdos269.kernel_235_minor_eq_neg_one_fifteen
 
+def NoIntegerOrbit (α : ℝ) : Prop :=
+  ∀ n : ℕ, 0 < n → Int.fract ((n : ℝ) * α) ≠ 0
+
+theorem exists_uniform_nonsingular_threePrimeKernel_minor
+    {p q r : ℕ} (hp : 1 < p) (hq : 1 < q) (hr : 1 < r)
+    (hα : NoIntegerOrbit (Real.logb r p)) (hβ : NoIntegerOrbit (Real.logb r q))
+    (n : ℕ) :
+    ∃ I J : Fin n → ℕ,
+      Function.Injective I ∧ Function.Injective J ∧
+        ∀ k : ℕ,
+          (Matrix.det fun a b : Fin n =>
+            threePrimeKernelQ p q r (I a) (J b) k) ≠ 0 := by
+  have hα' : ErdosProblems.Shared.NoIntegerOrbit (Real.logb r p) := hα
+  have hβ' : ErdosProblems.Shared.NoIntegerOrbit (Real.logb r q) := hβ
+  simpa [threePrimeKernelQ, threePrimeHeight, smooth3Val,
+    ErdosProblems.Erdos269.threePrimeKernelQ,
+    ErdosProblems.Erdos269.threePrimeHeight,
+    ErdosProblems.Erdos269.smooth3Val] using
+    ErdosProblems.Erdos269.exists_uniform_nonsingular_threePrimeKernel_minor
+      hp hq hr hα' hβ' n
+
 theorem threePrimeKernel_infiniteRank_and_noFiniteSeparation
     {p q r : ℕ} (hp : p.Prime) (hq : q.Prime) (hr : r.Prime)
-    (hpq : p ≠ q) (hpr : p ≠ r) (hqr : q ≠ r) :
+    (hpr : p ≠ r) (hqr : q ≠ r) :
     (∀ n : ℕ,
       ∃ I J : Fin n → ℕ,
         Function.Injective I ∧ Function.Injective J ∧

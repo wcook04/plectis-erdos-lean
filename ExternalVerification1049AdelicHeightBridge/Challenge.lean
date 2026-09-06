@@ -90,6 +90,28 @@ theorem zudilin_firstTransformedRow_initialMonomial (l : ℕ) :
       PowerSeries.coeff (l + 1) (zudilinFirstTransformedRow l) = -6 := by
   sorry
 
+/-- The exact exponent left after the transformed-row factors and the
+Vandermonde leading monomial are combined, written as a sum of squares. -/
+def zudilinSharpHankelQOrder (N : ℕ) : ℤ :=
+  ∑ j ∈ Finset.range N, (j : ℤ) ^ 2
+
+/-- Positive magnitude of the leading coefficient contributed by transformed
+row `j`. -/
+def zudilinTransformedRowCoeff (j : ℕ) : ℕ :=
+  ((j + 1) ^ 2 * (j + 2)) / 2
+
+/-- The two division-free closed forms carried by the sharp-Hankel endpoint.
+Six times the sum of squares equals `N (N - 1) (2 N - 1)`, and `2 ^ N` times
+the product of the transformed-row coefficients equals `(N !) ^ 2 (N + 1)!`.
+This is an algebraic assembly; it identifies no formal power-series
+determinant with these data. -/
+theorem zudilinSharpHankelOrderAndCoeff_algebraicAssembly (N : ℕ) :
+    6 * zudilinSharpHankelQOrder N =
+        (N : ℤ) * ((N : ℤ) - 1) * (2 * (N : ℤ) - 1) ∧
+      2 ^ N * (∏ j ∈ Finset.range N, zudilinTransformedRowCoeff j) =
+        (N.factorial) ^ 2 * (N + 1).factorial := by
+  sorry
+
 /-- The exact upper half of the sharp `41/65` power bracket. -/
 theorem threePow_fortyOne_lt_twoPow_sixtyFive : 3 ^ 41 < 2 ^ 65 := by
   sorry
@@ -128,6 +150,18 @@ theorem three_two_scalar_margin_lt_explicit {C0 C1 : ℝ}
     (hC0 : 0 < C0) (hsource : 2 * C0 ≤ C1) :
     C0 * Real.log 3 - C1 * Real.log 2 <
       -((17 : ℝ) / 41) * C0 * Real.log 2 := by
+  sorry
+
+/-- Every certified binary power bound `3 ^ p < 2 ^ q` lowers the four-jet
+collision threshold to `2 q T + 2 S` at bottom depth `p T`. -/
+theorem exists_distinct_binary_selectors_same_fourJet_of_power_certificate
+    {n p q T S W : ℕ}
+    (forms : Fin n → Polynomial ℤ × Polynomial ℤ)
+    (hpq : (3 : ℕ) ^ p < (2 : ℕ) ^ q) (hT : 0 < T)
+    (hrank : 2 * q * T + 2 * S ≤ n) :
+    ∃ ε η : Fin n → Bool, ε ≠ η ∧
+      selectedFourJetSum (p * T) S W forms ε =
+        selectedFourJetSum (p * T) S W forms η := by
   sorry
 
 /-- At depth `41T`, `130T + 2S` binary forms force a four-jet collision. -/

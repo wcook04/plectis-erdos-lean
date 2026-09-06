@@ -9,10 +9,13 @@ import Mathlib
 # Trusted challenge for the three-prime structure in Erdős #269
 
 The package exposes the exact running-LCM coordinate for every finite prefix
-of a three-prime smooth semigroup and the full rank phase transition: for every
-order there is a nonsingular kernel minor, uniformly in the remaining layer,
-and consequently no finite separable representation exists.  The explicit
-`{2,3,5}` determinant `-1/15` is retained as the smallest concrete witness.
+of a three-prime smooth semigroup and the full rank phase transition.  The
+rank statement holds for arbitrary generators `1 < p, q, r` whose logarithmic
+ratios `Real.logb r p` and `Real.logb r q` have no integer orbit: for every
+order there is a nonsingular kernel minor, uniformly in the remaining layer.
+Three primes `p, q, r` with `p ≠ r` and `q ≠ r` satisfy that hypothesis, and
+for them no finite separable representation exists.  The explicit `{2,3,5}`
+determinant `-1/15` is retained as the smallest concrete witness.
 
 Neither theorem proves irrationality or transcendence of the three-prime
 series in Erdős #269.
@@ -126,12 +129,30 @@ theorem kernel_235_minor_eq_neg_one_fifteen :
       -(1 / 15 : ℚ) := by
   sorry
 
-/-- Three distinct prime generators force nonsingular minors of every order,
-simultaneously in every third-coordinate layer, and hence rule out every
-finite decomposition `∑ l, f l i * G l j k`. -/
+/-- `NoIntegerOrbit α` : no positive integer multiple of `α` is an integer. -/
+def NoIntegerOrbit (α : ℝ) : Prop :=
+  ∀ n : ℕ, 0 < n → Int.fract ((n : ℝ) * α) ≠ 0
+
+/-- Generators `1 < p, q, r` whose logarithmic ratios `Real.logb r p` and
+`Real.logb r q` have no integer orbit force nonsingular kernel minors of every
+order, simultaneously in every third-coordinate layer. -/
+theorem exists_uniform_nonsingular_threePrimeKernel_minor
+    {p q r : ℕ} (hp : 1 < p) (hq : 1 < q) (hr : 1 < r)
+    (hα : NoIntegerOrbit (Real.logb r p)) (hβ : NoIntegerOrbit (Real.logb r q))
+    (n : ℕ) :
+    ∃ I J : Fin n → ℕ,
+      Function.Injective I ∧ Function.Injective J ∧
+        ∀ k : ℕ,
+          (Matrix.det fun a b : Fin n =>
+            threePrimeKernelQ p q r (I a) (J b) k) ≠ 0 := by
+  sorry
+
+/-- Three prime generators with `p ≠ r` and `q ≠ r` force nonsingular minors of
+every order, simultaneously in every third-coordinate layer, and hence rule out
+every finite decomposition `∑ l, f l i * G l j k`. -/
 theorem threePrimeKernel_infiniteRank_and_noFiniteSeparation
     {p q r : ℕ} (hp : p.Prime) (hq : q.Prime) (hr : r.Prime)
-    (hpq : p ≠ q) (hpr : p ≠ r) (hqr : q ≠ r) :
+    (hpr : p ≠ r) (hqr : q ≠ r) :
     (∀ n : ℕ,
       ∃ I J : Fin n → ℕ,
         Function.Injective I ∧ Function.Injective J ∧

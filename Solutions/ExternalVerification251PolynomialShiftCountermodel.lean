@@ -5,6 +5,7 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos251.PrimeGapDyadicTail
+import ErdosProblems.Erdos251.PolynomialGapSeriesValue
 
 /-!
 # Source transport for the Erdős #251 polynomial-shift countermodel
@@ -12,12 +13,15 @@ import ErdosProblems.Erdos251.PrimeGapDyadicTail
 The proof transports the complete source countermodel into the literal,
 Mathlib-only Comparator vocabulary.  The single compared declaration includes
 the recurrence, positivity, evenness, strict growth, integrality of every fixed
-shift, and global absence of adjacent `±2` differences.  Consequently those
-coarse properties cannot force the small-mismatch producer needed by the
-current #251 route.
+shift, the exact adjacent difference `4n + 10`, the resulting failure of the
+adjacent `±2` event at every index, and the rational value `32` of the dyadic
+series together with its non-irrationality.  Consequently those coarse
+properties are jointly compatible with a rational sum and cannot force the
+small-mismatch producer needed by the current #251 route.
 
-This is a strategy-elimination theorem, not a theorem about the actual
-consecutive-prime gaps and not a solution or refutation of Erdős #251.
+This is internal infrastructure that removes one of our own routes.  It is a
+statement about a model word, and it decides nothing about the actual
+consecutive prime gaps or about Erdős #251.
 -/
 
 namespace Erdos249257.ExternalVerification251PolynomialShiftCountermodel
@@ -37,16 +41,30 @@ def polynomialTailOrbit (n : ℕ) : ℚ :=
 def polynomialGapWord (n : ℕ) : ℤ :=
   (2 * (n ^ 2 + 4 * n + 2) : ℕ)
 
+noncomputable def polynomialGapDyadicTerm (n : ℕ) : ℝ :=
+  (polynomialGapWord (n + 1) : ℝ) / 2 ^ (n + 1)
+
+/-- The Comparator vocabulary word is the source word. -/
+theorem polynomialGapWord_eq_source :
+    polynomialGapWord = ErdosProblems.Erdos251.polynomialGapWord := rfl
+
+/-- The Comparator vocabulary series term is the source series term. -/
+theorem polynomialGapDyadicTerm_eq_source :
+    polynomialGapDyadicTerm = ErdosProblems.Erdos251.polynomialGapDyadicTerm := rfl
+
 theorem polynomialGapTailCountermodel :
     DyadicTailRecurrence polynomialGapWord polynomialTailOrbit ∧
       (∀ n, 0 < polynomialGapWord n) ∧
       (∀ n, ∃ k : ℤ, polynomialGapWord n = 2 * k) ∧
       StrictMono polynomialGapWord ∧
       (∀ h N, RatIntegral (tailShift polynomialTailOrbit h N)) ∧
-      (∀ N,
-        polynomialGapWord (N + 2) - polynomialGapWord (N + 1) ≠ 2 ∧
-        polynomialGapWord (N + 2) - polynomialGapWord (N + 1) ≠ -2) := by
-  refine ⟨?_, ?_, ?_, ?_, ?_, ?_⟩
+      (∀ n, polynomialGapWord (n + 1) - polynomialGapWord n = ((4 * n + 10 : ℕ) : ℤ)) ∧
+      (∀ n,
+        polynomialGapWord (n + 1) - polynomialGapWord n ≠ 2 ∧
+        polynomialGapWord (n + 1) - polynomialGapWord n ≠ -2) ∧
+      (∑' n : ℕ, polynomialGapDyadicTerm n) = 32 ∧
+      ¬ Irrational (∑' n : ℕ, polynomialGapDyadicTerm n) := by
+  refine ⟨?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_⟩
   · simpa [DyadicTailRecurrence, polynomialGapWord, polynomialTailOrbit,
       ErdosProblems.Erdos251.DyadicTailRecurrence,
       ErdosProblems.Erdos251.polynomialGapWord,
@@ -66,8 +84,16 @@ theorem polynomialGapTailCountermodel :
       ErdosProblems.Erdos251.RatIntegral,
       ErdosProblems.Erdos251.polynomialTailOrbit] using
       ErdosProblems.Erdos251.polynomialTailOrbit_shift_integral h N
-  · intro N
-    simpa [polynomialGapWord, ErdosProblems.Erdos251.polynomialGapWord] using
-      ErdosProblems.Erdos251.polynomialGapWord_no_adjacent_two_digit N
+  · intro n
+    rw [polynomialGapWord_eq_source]
+    exact ErdosProblems.Erdos251.polynomialGapWord_succ_sub n
+  · intro n
+    rw [polynomialGapWord_eq_source]
+    exact ⟨ErdosProblems.Erdos251.polynomialGapWord_adjacent_difference_ne_two n,
+      ErdosProblems.Erdos251.polynomialGapWord_adjacent_difference_ne_neg_two n⟩
+  · rw [polynomialGapDyadicTerm_eq_source]
+    exact ErdosProblems.Erdos251.tsum_polynomialGapDyadicTerm_eq
+  · rw [polynomialGapDyadicTerm_eq_source]
+    exact ErdosProblems.Erdos251.not_irrational_tsum_polynomialGapDyadicTerm
 
 end Erdos249257.ExternalVerification251PolynomialShiftCountermodel

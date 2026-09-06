@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification243BoundedNegativePartRigidity
+
+#print axioms Erdos249257.ExternalVerification243BoundedNegativePartRigidity.boundedNegativePart_completeRigidity

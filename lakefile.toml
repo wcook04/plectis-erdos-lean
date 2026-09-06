@@ -1,7 +1,7 @@
 name = "erdos257_period_noncollapse"
 version = "0.1.0"
 keywords = ["math", "erdos257", "period-noncollapse"]
-defaultTargets = ["ExternalVerification68ChannelRadius", "ExternalVerification68CompanionOrbitBoundary", "ExternalVerification243PeriodicNegativeOrbit", "ExternalVerification249BinaryCyclotomicAnchors", "ExternalVerification249RankOneSharpFloor", "ExternalVerification251PolynomialShiftCountermodel", "ExternalVerification251ActualPrimeGapTail", "ExternalVerification257ReciprocalSupport", "ExternalVerification257FinitePeriodNoncollapse", "ExternalVerification257RationalTailRigidity", "ExternalVerification269ThreePrimeStructure", "ExternalVerification1041SolvedFamilies", "ExternalVerification1041CyclicTrinomialFiber", "ExternalVerification1041QuarticQuotientFiber", "ExternalVerification1041CriticalGeometry", "ExternalVerification1041TetranomialSpokes", "ExternalVerification1041FirstMergeCriticalValueSeparation", "ExternalVerification1049AdelicHeightBridge", "ExternalVerification1049RationalBaseBarrier", "ExternalVerification1049PrimeSupportSelectors", "ExternalVerification1049HermitePadeNoGo", "Solutions"]
+defaultTargets = ["ExternalVerification68ChannelRadius", "ExternalVerification68CompanionOrbitBoundary", "ExternalVerification243PeriodicNegativeOrbit", "ExternalVerification249BinaryCyclotomicAnchors", "ExternalVerification249RankOneSharpFloor", "ExternalVerification251PolynomialShiftCountermodel", "ExternalVerification251ActualPrimeGapTail", "ExternalVerification257ReciprocalSupport", "ExternalVerification257FinitePeriodNoncollapse", "ExternalVerification257RationalTailRigidity", "ExternalVerification269ThreePrimeStructure", "ExternalVerification1041SolvedFamilies", "ExternalVerification1041CyclicTrinomialFiber", "ExternalVerification1041QuarticQuotientFiber", "ExternalVerification1041CriticalGeometry", "ExternalVerification1041TetranomialSpokes", "ExternalVerification1041FirstMergeCriticalValueSeparation", "ExternalVerification1049AdelicHeightBridge", "ExternalVerification1049RationalBaseBarrier", "ExternalVerification1049PrimeSupportSelectors", "ExternalVerification1049HermitePadeNoGo", "ExternalVerification68PrimeUnitTranslator", "ExternalVerification243BoundedRiseReducedTail", "ExternalVerification243BoundedNegativePartRigidity", "ExternalVerification249MobiusMersenneLadderStructure", "ExternalVerification249ParityPerturbedRationalControl", "ExternalVerification249ResidueClassTotientSeries", "ExternalVerification251BoundedPerturbationCountermodel", "ExternalVerification251PrimeGapIdentity", "ExternalVerification251FreePairEquivalence", "ExternalVerification251KernelDenominatorFloor", "ExternalVerification257AchievementSetGeometry", "ExternalVerification269ActualShellOrbit", "ExternalVerification269WindowEscapeEquivalence", "ExternalVerification1041DiskFamilySeparation", "Solutions"]
 
 [leanOptions]
 pp.unicode.fun = true
@@ -9,7 +9,7 @@ pp.unicode.fun = true
 [[require]]
 name = "mathlib"
 scope = "leanprover-community"
-rev = "b301d257a1c13bc4e27350c06e5169b8b08a53ed"
+rev = "v4.30.0"
 
 [[lean_lib]]
 name = "Erdos257PeriodNoncollapse"
@@ -100,6 +100,62 @@ globs = ["ExternalVerification1049PrimeSupportSelectors.+"]
 [[lean_lib]]
 name = "ExternalVerification1049HermitePadeNoGo"
 globs = ["ExternalVerification1049HermitePadeNoGo.+"]
+
+[[lean_lib]]
+name = "ExternalVerification68PrimeUnitTranslator"
+globs = ["ExternalVerification68PrimeUnitTranslator.+"]
+
+[[lean_lib]]
+name = "ExternalVerification243BoundedRiseReducedTail"
+globs = ["ExternalVerification243BoundedRiseReducedTail.+"]
+
+[[lean_lib]]
+name = "ExternalVerification243BoundedNegativePartRigidity"
+globs = ["ExternalVerification243BoundedNegativePartRigidity.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249MobiusMersenneLadderStructure"
+globs = ["ExternalVerification249MobiusMersenneLadderStructure.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249ParityPerturbedRationalControl"
+globs = ["ExternalVerification249ParityPerturbedRationalControl.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249ResidueClassTotientSeries"
+globs = ["ExternalVerification249ResidueClassTotientSeries.+"]
+
+[[lean_lib]]
+name = "ExternalVerification251BoundedPerturbationCountermodel"
+globs = ["ExternalVerification251BoundedPerturbationCountermodel.+"]
+
+[[lean_lib]]
+name = "ExternalVerification251PrimeGapIdentity"
+globs = ["ExternalVerification251PrimeGapIdentity.+"]
+
+[[lean_lib]]
+name = "ExternalVerification251FreePairEquivalence"
+globs = ["ExternalVerification251FreePairEquivalence.+"]
+
+[[lean_lib]]
+name = "ExternalVerification251KernelDenominatorFloor"
+globs = ["ExternalVerification251KernelDenominatorFloor.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257AchievementSetGeometry"
+globs = ["ExternalVerification257AchievementSetGeometry.+"]
+
+[[lean_lib]]
+name = "ExternalVerification269ActualShellOrbit"
+globs = ["ExternalVerification269ActualShellOrbit.+"]
+
+[[lean_lib]]
+name = "ExternalVerification269WindowEscapeEquivalence"
+globs = ["ExternalVerification269WindowEscapeEquivalence.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1041DiskFamilySeparation"
+globs = ["ExternalVerification1041DiskFamilySeparation.+"]
 
 [[lean_lib]]
 name = "Solutions"

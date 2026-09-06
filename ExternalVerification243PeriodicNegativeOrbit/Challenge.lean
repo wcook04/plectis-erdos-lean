@@ -10,9 +10,10 @@ import Mathlib
 
 The three endpoints expose the complete checked mechanism: exclusion of a
 phase-primitive periodic orbit, descent through every common prime scale, and
-the eventual-tail consequence.  The hypotheses are explicit.  In particular,
-the magnitude bound `e n < a n`, positive drift, and exact recurrence are not
-produced here, and the unrestricted parent problem remains open.
+the eventual-tail consequence, whose hypotheses are all imposed from the offset
+`N` onwards.  The hypotheses are explicit.  In particular, the magnitude bound
+`e n < a n`, positive drift, and exact recurrence are not produced here, and
+the unrestricted parent problem remains open.
 -/
 
 namespace Erdos249257.ExternalVerification243PeriodicNegativeOrbit
@@ -51,17 +52,18 @@ theorem no_periodicNegative_orbit
     False := by
   sorry
 
-/-- An eventually periodic negative-magnitude tail is impossible. -/
+/-- An eventually periodic negative-magnitude tail is impossible, with every
+hypothesis imposed only from the offset `N` onwards. -/
 theorem no_eventuallyPeriodicNegative_orbit
     (a D C e : ℕ → ℕ) (N h M : ℕ)
     (hh : 0 < h)
     (hM : 0 < M)
-    (ha : ∀ n, 2 ≤ a n)
+    (ha : ∀ n, N ≤ n → 2 ≤ a n)
     (hepos : ∀ n, 0 < e (N + n))
     (helt : ∀ n, e (N + n) < a (N + n))
-    (hD : ∀ n, D (n + 1) = a n * D n)
-    (hC : ∀ n, C (n + 1) = C n + e n)
-    (hshape : ∀ n, D n + e n = (a n - 1) * C n)
+    (hD : ∀ n, N ≤ n → D (n + 1) = a n * D n)
+    (hC : ∀ n, N ≤ n → C (n + 1) = C n + e n)
+    (hshape : ∀ n, N ≤ n → D n + e n = (a n - 1) * C n)
     (hperiod : ∀ n, e (N + n + h) = e (N + n))
     (hphase : ∀ n, C (N + n + h) = C (N + n) + M) :
     False := by
