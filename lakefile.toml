@@ -1,7 +1,7 @@
 name = "erdos257_period_noncollapse"
 version = "0.1.0"
 keywords = ["math", "erdos257", "period-noncollapse"]
-defaultTargets = ["ExternalVerification68ChannelRadius", "ExternalVerification68CompanionOrbitBoundary", "ExternalVerification243PeriodicNegativeOrbit", "ExternalVerification249BinaryCyclotomicAnchors", "ExternalVerification249RankOneSharpFloor", "ExternalVerification251PolynomialShiftCountermodel", "ExternalVerification251ActualPrimeGapTail", "ExternalVerification257ReciprocalSupport", "ExternalVerification257FinitePeriodNoncollapse", "ExternalVerification257RationalTailRigidity", "ExternalVerification269ThreePrimeStructure", "ExternalVerification1041SolvedFamilies", "ExternalVerification1041CyclicTrinomialFiber", "ExternalVerification1041QuarticQuotientFiber", "ExternalVerification1041CriticalGeometry", "ExternalVerification1041TetranomialSpokes", "ExternalVerification1041FirstMergeCriticalValueSeparation", "ExternalVerification1049AdelicHeightBridge", "ExternalVerification1049RationalBaseBarrier", "ExternalVerification1049PrimeSupportSelectors", "ExternalVerification1049HermitePadeNoGo", "ExternalVerification68PrimeUnitTranslator", "ExternalVerification243BoundedRiseReducedTail", "ExternalVerification243BoundedNegativePartRigidity", "ExternalVerification249MobiusMersenneLadderStructure", "ExternalVerification249ParityPerturbedRationalControl", "ExternalVerification249ResidueClassTotientSeries", "ExternalVerification251BoundedPerturbationCountermodel", "ExternalVerification251PrimeGapIdentity", "ExternalVerification251FreePairEquivalence", "ExternalVerification251KernelDenominatorFloor", "ExternalVerification257AchievementSetGeometry", "ExternalVerification269ActualShellOrbit", "ExternalVerification269WindowEscapeEquivalence", "ExternalVerification1041DiskFamilySeparation", "Solutions"]
+defaultTargets = ["ExternalVerification68ChannelRadius", "ExternalVerification68CompanionOrbitBoundary", "ExternalVerification243PeriodicNegativeOrbit", "ExternalVerification249BinaryCyclotomicAnchors", "ExternalVerification249RankOneSharpFloor", "ExternalVerification251PolynomialShiftCountermodel", "ExternalVerification251ActualPrimeGapTail", "ExternalVerification257ReciprocalSupport", "ExternalVerification257FinitePeriodNoncollapse", "ExternalVerification257RationalTailRigidity", "ExternalVerification269ThreePrimeStructure", "ExternalVerification1041SolvedFamilies", "ExternalVerification1041CyclicTrinomialFiber", "ExternalVerification1041QuarticQuotientFiber", "ExternalVerification1041CriticalGeometry", "ExternalVerification1041TetranomialSpokes", "ExternalVerification1041FirstMergeCriticalValueSeparation", "ExternalVerification1049AdelicHeightBridge", "ExternalVerification1049RationalBaseBarrier", "ExternalVerification1049PrimeSupportSelectors", "ExternalVerification1049HermitePadeNoGo", "ExternalVerification249DyadicTotientKernel", "ExternalVerification249ResidueClassTotientSeries", "ExternalVerification251KernelDenominatorFloor", "ExternalVerification251FreePairEquivalence", "ExternalVerification251PrimeGapIdentity", "ExternalVerification269WindowEscapeEquivalence", "ExternalVerification269ActualShellOrbit", "ExternalVerification1049RationalBaseContour", "ExternalVerification249MobiusMersenneLadderStructure", "ExternalVerification249ParityPerturbedRationalControl", "ExternalVerification257AchievementSetGeometry", "ExternalVerification243BoundedNegativePartRigidity", "ExternalVerification243BoundedRiseReducedTail", "ExternalVerification68PrimeUnitTranslator", "ExternalVerification1041DiskFamilySeparation", "ExternalVerification251BoundedPerturbationCountermodel", "ExternalVerification1041CollinearChord", "Solutions"]
 
 [leanOptions]
 pp.unicode.fun = true
@@ -102,16 +102,36 @@ name = "ExternalVerification1049HermitePadeNoGo"
 globs = ["ExternalVerification1049HermitePadeNoGo.+"]
 
 [[lean_lib]]
-name = "ExternalVerification68PrimeUnitTranslator"
-globs = ["ExternalVerification68PrimeUnitTranslator.+"]
+name = "ExternalVerification249DyadicTotientKernel"
+globs = ["ExternalVerification249DyadicTotientKernel.+"]
 
 [[lean_lib]]
-name = "ExternalVerification243BoundedRiseReducedTail"
-globs = ["ExternalVerification243BoundedRiseReducedTail.+"]
+name = "ExternalVerification249ResidueClassTotientSeries"
+globs = ["ExternalVerification249ResidueClassTotientSeries.+"]
 
 [[lean_lib]]
-name = "ExternalVerification243BoundedNegativePartRigidity"
-globs = ["ExternalVerification243BoundedNegativePartRigidity.+"]
+name = "ExternalVerification251KernelDenominatorFloor"
+globs = ["ExternalVerification251KernelDenominatorFloor.+"]
+
+[[lean_lib]]
+name = "ExternalVerification251FreePairEquivalence"
+globs = ["ExternalVerification251FreePairEquivalence.+"]
+
+[[lean_lib]]
+name = "ExternalVerification251PrimeGapIdentity"
+globs = ["ExternalVerification251PrimeGapIdentity.+"]
+
+[[lean_lib]]
+name = "ExternalVerification269WindowEscapeEquivalence"
+globs = ["ExternalVerification269WindowEscapeEquivalence.+"]
+
+[[lean_lib]]
+name = "ExternalVerification269ActualShellOrbit"
+globs = ["ExternalVerification269ActualShellOrbit.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1049RationalBaseContour"
+globs = ["ExternalVerification1049RationalBaseContour.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249MobiusMersenneLadderStructure"
@@ -122,40 +142,32 @@ name = "ExternalVerification249ParityPerturbedRationalControl"
 globs = ["ExternalVerification249ParityPerturbedRationalControl.+"]
 
 [[lean_lib]]
-name = "ExternalVerification249ResidueClassTotientSeries"
-globs = ["ExternalVerification249ResidueClassTotientSeries.+"]
+name = "ExternalVerification257AchievementSetGeometry"
+globs = ["ExternalVerification257AchievementSetGeometry.+"]
+
+[[lean_lib]]
+name = "ExternalVerification243BoundedNegativePartRigidity"
+globs = ["ExternalVerification243BoundedNegativePartRigidity.+"]
+
+[[lean_lib]]
+name = "ExternalVerification243BoundedRiseReducedTail"
+globs = ["ExternalVerification243BoundedRiseReducedTail.+"]
+
+[[lean_lib]]
+name = "ExternalVerification68PrimeUnitTranslator"
+globs = ["ExternalVerification68PrimeUnitTranslator.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1041DiskFamilySeparation"
+globs = ["ExternalVerification1041DiskFamilySeparation.+"]
 
 [[lean_lib]]
 name = "ExternalVerification251BoundedPerturbationCountermodel"
 globs = ["ExternalVerification251BoundedPerturbationCountermodel.+"]
 
 [[lean_lib]]
-name = "ExternalVerification251PrimeGapIdentity"
-globs = ["ExternalVerification251PrimeGapIdentity.+"]
-
-[[lean_lib]]
-name = "ExternalVerification251FreePairEquivalence"
-globs = ["ExternalVerification251FreePairEquivalence.+"]
-
-[[lean_lib]]
-name = "ExternalVerification251KernelDenominatorFloor"
-globs = ["ExternalVerification251KernelDenominatorFloor.+"]
-
-[[lean_lib]]
-name = "ExternalVerification257AchievementSetGeometry"
-globs = ["ExternalVerification257AchievementSetGeometry.+"]
-
-[[lean_lib]]
-name = "ExternalVerification269ActualShellOrbit"
-globs = ["ExternalVerification269ActualShellOrbit.+"]
-
-[[lean_lib]]
-name = "ExternalVerification269WindowEscapeEquivalence"
-globs = ["ExternalVerification269WindowEscapeEquivalence.+"]
-
-[[lean_lib]]
-name = "ExternalVerification1041DiskFamilySeparation"
-globs = ["ExternalVerification1041DiskFamilySeparation.+"]
+name = "ExternalVerification1041CollinearChord"
+globs = ["ExternalVerification1041CollinearChord.+"]
 
 [[lean_lib]]
 name = "Solutions"

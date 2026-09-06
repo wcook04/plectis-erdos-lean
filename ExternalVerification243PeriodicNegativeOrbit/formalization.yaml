@@ -1,29 +1,31 @@
 version: v0.4
 project:
   name: 'Erdős #243: exclusion of eventually periodic negative-magnitude orbits'
-  description: >-
-    The strongest theorem excludes an eventually periodic negative-magnitude orbit under
-    hypotheses imposed only from the offset onwards: for all sequences a, D, C, e from the
-    naturals to the naturals and all naturals N, h, M with h positive and M positive, the
-    following eight conditions are contradictory: a n at least 2 for every n at least N; e (N +
-    n) positive for every n; e (N + n) < a (N + n) for every n; D (n + 1) = a n D n for every n
-    at least N; C (n + 1) = C n + e n for every n at least N; D n + e n = (a n - 1) C n for
-    every n at least N; e (N + n + h) = e (N + n) for every n; and C (N + n + h) = C (N + n) + M
-    for every n. Two further theorems give the same exclusion with every condition imposed at
+  description: 'The strongest theorem excludes an eventually periodic negative-magnitude
+    orbit under hypotheses imposed only from the offset onwards: for all sequences
+    a, D, C, e from the naturals to the naturals and all naturals N, h, M with h positive
+    and M positive, the following eight conditions are contradictory: a n at least
+    2 for every n at least N; e (N + n) positive for every n; e (N + n) < a (N + n)
+    for every n; D (n + 1) = a n D n for every n at least N; C (n + 1) = C n + e n
+    for every n at least N; D n + e n = (a n - 1) C n for every n at least N; e (N
+    + n + h) = e (N + n) for every n; and C (N + n + h) = C (N + n) + M for every
+    n. Two further theorems give the same exclusion with every condition imposed at
     every index, one for a periodic orbit at any common scale and one for the phase-primitive
-    case, which adds the condition that no prime dividing M divides both C 0 and every value of
-    e. Within these hypotheses no period, offset, drift or common scale survives. The setting is
-    the product-cleared rational case of Erdős Problem 243, where a n is the multiplier at step
-    n, D n the cleared denominator state, C n the numerator state, and e n the magnitude of a
-    negative Sylvester-centred error. The mechanism is prime propagation: a prime occurring in
-    two multiplier states divides every later denominator, tail and magnitude, so periodicity
-    carries any prime divisor of the drift back through all phases and a finite pigeonhole
-    closes the phase-primitive case; when primitivity fails the shared prime divides the whole
-    orbit, dividing it out strictly decreases the positive drift, and strong induction returns
-    to the primitive case. The ingredients are elementary prime divisibility and pigeonhole, and
-    the novelty of the family is unassessed. The exact recurrence, the positive drift, the
-    periodicity and the bound e n < a n are hypotheses. Orbits that are aperiodic or that change
-    sign lie outside every statement. Erdős Problem 243 remains open.
+    case, which adds the condition that no prime dividing M divides both C 0 and every
+    value of e. Within these hypotheses no period, offset, drift or common scale survives.
+    The setting is the product-cleared rational case of Erdős Problem 243, where a
+    n is the multiplier at step n, D n the cleared denominator state, C n the numerator
+    state, and e n the magnitude of a negative Sylvester-centred error. The mechanism
+    is prime propagation: a prime occurring in two multiplier states divides every
+    later denominator, tail and magnitude, so periodicity carries any prime divisor
+    of the drift back through all phases and a finite pigeonhole closes the phase-primitive
+    case; when primitivity fails the shared prime divides the whole orbit, dividing
+    it out strictly decreases the positive drift, and strong induction returns to
+    the primitive case. The ingredients are elementary prime divisibility and pigeonhole,
+    and the novelty of the family is unassessed. The exact recurrence, the positive
+    drift, the periodicity and the bound e n < a n are hypotheses. Orbits that are
+    aperiodic or that change sign lie outside every statement. Erdős Problem 243 remains
+    open.'
   authors:
   - Will Cook
   responsible_maintainers:
@@ -35,8 +37,8 @@ sources:
   - Will Cook
   type: original-proof
   relationship: other
-  note: Lean source in ErdosProblems/Erdos243/ReciprocalTailRigidity.lean, which ships
-    in this artifact and is the resolvable authority for every compared statement.
+  note: Lean source in ErdosProblems/Erdos243/ReciprocalTailRigidity.lean and complete
+    exposition at paper theorem res:periodic.
   license: Apache-2.0
   author_endorsement: participated
 - title: 'Erdős Problem #243'
@@ -138,8 +140,8 @@ fidelity:
 review:
   status: self-assessed
   reviewers: []
-  notes: Source statements, strongest-first Comparator order, source routes, and the
-    open conditional boundary were reviewed. An earlier focused source/challenge/solution/deliberate-negative/axiom-audit
+  notes: Source statements, strongest-first Comparator order, exact paper label, source
+    routes, and the open conditional boundary were reviewed. An earlier focused source/challenge/solution/deliberate-negative/axiom-audit
     elaboration passed, with all three selected declarations using exactly propext,
     Quot.sound, and Classical.choice. The eventual-tail theorem has since been restated
     with its multiplier bound, denominator recurrence, numerator recurrence, and shape

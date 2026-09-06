@@ -158,7 +158,7 @@ status:
     local_proof_provenance: ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean
     novelty_status: unassessed
     contribution_class: open-unit-disk hypothesis certificate for the cubic countermodel
-    boundary: Certifies the Erdős #1041 root hypothesis for this one explicit cubic.
+    boundary: 'Certifies the Erdős #1041 root hypothesis for this one explicit cubic.'
     literature_dependencies: []
   - declaration: Erdos249257.ExternalVerification1041CriticalGeometry.allStraightCubic_every_pair_midpoint_escapes
     file: Solutions/ExternalVerification1041CriticalGeometry.lean

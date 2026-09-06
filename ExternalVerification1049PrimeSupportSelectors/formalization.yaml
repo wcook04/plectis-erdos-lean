@@ -28,11 +28,11 @@ project:
     modulo N the pigeonhole only has to see the numerator coordinate, so N < 2^k already
     forces a nontrivial binary selector collision in both coordinates. For a q-Apéry
     approach to the Lambert value at 3/2 the hypotheses these declarations do not
-    supply are prime or prime-power support in the denominator coordinates
-    that persists cofinally, together with determinant control that survives recombination;
-    the ancestry is the classical Apéry-style linear-form argument, and priority is
-    unassessed. Producing that cofinal support for the actual q-Apéry rows, the analytic
-    decay, and irrationality at 3/2 remain open.'
+    supply are prime or prime-power support in the denominator coordinates that persists
+    cofinally, together with determinant control that survives recombination; the
+    ancestry is the classical Apéry-style linear-form argument, and priority is unassessed.
+    Producing that cofinal support for the actual q-Apéry rows, the analytic decay,
+    and irrationality at 3/2 remain open.'
   authors:
   - Will Cook
   license: Apache-2.0
@@ -227,8 +227,12 @@ alignment:
       primePowerSupportedOneRow_rationalGap: res:prime-power-supported-one-row-gap
       twoSelector_unimodularHeightDecay_tradeoff: res:unit-determinant-height-decay
       zeroDenominatorCoordinates_binaryCollision: res:zero-denominator-selector-collision
+    unrouted_declarations:
+    - twoSelector_rationalGap
+    - integerLinearForm_rationalGap
+    - twoSelector_detHeightDecay_tradeoff
     shared_boundary: bdry:prime-support-remaining-hypotheses
-    status: source_current_staged_patch_dry_applies_compiles_27_pages_visual_check_passed_the_three_unconditional_declarations_twoSelector_rationalGap_integerLinearForm_rationalGap_and_twoSelector_detHeightDecay_tradeoff_are_not_yet_routed_in_the_staged_patch_public_promotion_not_authorized
+    status: source_current_staged_patch_dry_applies_compiles_27_pages_visual_check_passed_three_unconditional_declarations_not_yet_routed_in_the_staged_patch_public_promotion_not_authorized
   statements:
   - source: ErdosProblems.Erdos1049.rational_twoSelector_remainder_gap
     lean: Erdos249257.ExternalVerification1049PrimeSupportSelectors.twoSelector_rationalGap

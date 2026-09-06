@@ -10,21 +10,21 @@ project:
     is unconditional and quantified over both the cutoff and the threshold. A channel
     is an index d at least 2 carrying the modulus d! - 1; the channel numerator at
     d reweights each factorial term by the powers of d! that divide out, and the channel
-    residual beyond a cutoff D sums the numerator at d divided by d! - 1 over all d
-    greater than D. The prime pair supplying the reduction is pinned by four exact
+    residual beyond a cutoff D sums the numerator at d divided by d! - 1 over all
+    d greater than D. The prime pair supplying the reduction is pinned by four exact
     facts, each stated under the hypotheses its proof uses: the factorial moment of
     the pair vanishes for every positive p, the channel numerator vanishes at every
     d with 2 ≤ d < p for prime p, the channel numerator vanishes at every d greater
-    than p for every positive p, and the channel numerator at p equals p! - 1 for prime
-    p. Together with 2 ≤ D < p and p prime these give a residual of exactly 1 beyond
-    D, so appending z copies of the pair to any finite-support coefficient vector adds
-    exactly z to its residual beyond D. This theorem family is the first presentation
-    recorded in the development and its novelty is unassessed. The residual bound 1/2
-    is non-strict and the reduced residual may be zero. No declaration here proves
-    that the un-translated residual avoids the integers, bounds the size of the Cramer
-    coefficients, or proves irrationality of the factorial-gap series, so the irrationality
-    question in Erdős Problem 68 is untouched, and the remaining problem is to supply
-    a nonintegrality certificate for the un-translated residual.'
+    than p for every positive p, and the channel numerator at p equals p! - 1 for
+    prime p. Together with 2 ≤ D < p and p prime these give a residual of exactly
+    1 beyond D, so appending z copies of the pair to any finite-support coefficient
+    vector adds exactly z to its residual beyond D. This theorem family is the first
+    presentation recorded in the development and its novelty is unassessed. The residual
+    bound 1/2 is non-strict and the reduced residual may be zero. No declaration here
+    proves that the un-translated residual avoids the integers, bounds the size of
+    the Cramer coefficients, or proves irrationality of the factorial-gap series,
+    so the irrationality question in Erdős Problem 68 is untouched, and the remaining
+    problem is to supply a nonintegrality certificate for the un-translated residual.'
   authors:
   - Will Cook
   license: Apache-2.0
@@ -130,4 +130,4 @@ alignment:
   - source: ErdosProblems.Erdos68.PrimeUnitTranslator
     lean: seven same-named exact transports
     module: ExternalVerification68PrimeUnitTranslator/Challenge.lean
-    status: exact-transport-pending-release-build
+    status: exact-transport-pending-rebuild-after-hypothesis-split

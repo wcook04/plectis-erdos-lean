@@ -21,21 +21,21 @@ Two public repositories carry this work, with different roles. wcook04/plectis-e
 
 **Smallest useful contribution** (proof). Formalise the 1/3 certificate lemma as an inequality chain of roughly two hundred lines, after which finite certificates decide an individual support and rational-target pair.
 
-**Strongest genuine longitudinal theorem.** irrationality for every infinite reciprocal-summable support at every integer base.
+**Strongest genuine longitudinal theorem.** Finite divisibility-weighted mass implies hereditary all-base irrationality, including explicit reciprocal-divergent short-gap supports..
 
-For every infinite set A of exponents whose reciprocal sum converges and every integer base b at least two, the series with terms 1/(b^a - 1) supported on A is irrational. The theorem settles the whole reciprocal-summable support regime at once and uniformly in the base, with no pairwise-coprimality, periodicity, density or powerful-support hypothesis, and with the zero exponent normalised to zero by real division. Any counterexample to the universal Erdős Problem 257 must therefore be supported on a set whose reciprocal sum diverges. The mechanism produces close returns of shifted binary support atoms from an LCM-prefix orbit-mean argument, transfers them to every radix through a uniform pointwise inequality bounding the base-b atom displacement by twice the binary one, and closes with an exact radix integer orbit. Erdős (1968) proved the pairwise-coprime reciprocal-summable case for every integer base t at least two and stated that pairwise coprimality is superfluous by a more complicated argument he did not print; this formalization proves that stated extension, in every integer base, by an independent argument. No theorem-priority claim is made and no identification with Erdős's omitted argument is asserted. The audience is analytic number theorists working on irrationality of Mersenne-type reciprocal subseries. Reciprocal-divergent supports are untouched, so the universal Erdős Problem 257 remains open.
+Finite divisibility-weighted mass implies hereditary all-base irrationality, including explicit reciprocal-divergent short-gap supports.
 
-Evidence: lean_kernel_checked. Prior art: matched_to_stated_extension_strictly_stronger_than_printed_theorem, audited 2026-09-02; antecedent P. Erdős, On the irrationality of certain series, Math. Student 36 (1968), 222-226: printed theorem for pairwise-coprime reciprocal-summable supports at every integer base t ≥ 2; the removal of coprimality is stated without proof.
+Evidence: ordinary_proof. Prior art: unassessed, no audit date.
 
-Routes: source [`ExternalVerification257ReciprocalSupport/`](ExternalVerification257ReciprocalSupport/), proof `Solutions.ExternalVerification257ReciprocalSupport`, package `ExternalVerification257ReciprocalSupport/comparator.json`; paper labels `res:reciprocal-support`, `bdry:reciprocal-support`, `sec:reciprocal-support`; public entry launch_core.
+Routes: no Lean package in this release; paper label `sec:eight-return-extensions`; public entry not_packaged.
 
 **Best standalone structural theorem.** achievement-set topology and exact volume dichotomy.
 
-For every set J of allowed binary Mersenne coordinates, the supported digit map is injective and has compact nowhere-dense range; the range is perfect when J is infinite. Its Lebesgue measure is exactly 2^(-|F|) when J omits the finite set F, and zero when the omitted coordinates are infinite. This support-uniform geometric classification does not prove universal Mersenne-subseries irrationality or solve Erdős Problem 257.
+A supported Mersenne achievement set is the set of reals coded by binary strings whose support lies in a fixed set J of allowed digit positions, where digit position k contributes the Mersenne weight 1 / (2^(k+1) - 1). Two declarations are compared. The first is a measure no-go on rational fibres. If 0 is not in J and the sum of 1 / (2^m - 1) over m in J is a rational number, the achievement set supported on J has Lebesgue measure zero. Positive-measure selection over a rational fibre is excluded by that measure-zero conclusion. An exceptional null point stays unexcluded. In that first declaration the set J indexes exponents in the hypothesis and digit positions in the conclusion. The second declaration classifies the whole family, with no hypothesis on J. The supported digit map is injective, its range is compact, its range is nowhere dense, the range is perfect whenever J is infinite, and the Lebesgue measure of the range satisfies an exact dichotomy: when the omitted digit positions form a finite set F the measure is the reciprocal of 2^|F|, and when infinitely many digit positions are omitted the measure is zero. Both statements are proved for the literal Mathlib-only definitions repeated in the Challenge module. The compared declarations establish no irrationality of any infinite Mersenne subseries, and Erdős Problem 257 remains open.
 
 Evidence: lean_kernel_checked. Prior art: classical_input_disclosed, no audit date; antecedent Kakeya (1914) and Kovač-Tao Remark 4.1 own compact/perfect/totally disconnected/nowhere dense; the exact measure dichotomy is presented as added.
 
-Routes: packaged privately, not in this release; no paper label; public entry reserve.
+Routes: source [`ExternalVerification257AchievementSetGeometry/`](ExternalVerification257AchievementSetGeometry/), proof `Solutions.ExternalVerification257AchievementSetGeometry`, package `ExternalVerification257AchievementSetGeometry/comparator.json`; no paper label; public entry reserve.
 
 **Strongest unresolved producer** (`contradict_twenty_one_permanent_affine_supercapacity`). Contradict the exact permanent affine-supercapacity regime forced by TwentyOneFatalAlignedBranch. Commit bad43508 proves that any unbounded sequence of closed canonical rows s_R<=2^R already gives the compactness decay required for 1/21 membership, so the fatal branch must eventually satisfy 2^R<s_R at every rank. Combined with commit f23727a, the boundary coin is then always taken: support appends R+1 and the scalar follows one literal affine recurrence with no residual Boolean branch. Commit 73f417a additionally proves that an aligned crossing from exact saturation into strict supercapacity must occur at R=3a+2 and omit a canonical ancestor at a+1 or 2(a+1). This restricts one entrance mechanism but does not show that the fatal branch enters late from exact saturation or contradict the regime after entry. One direct producer is an arbitrarily deep closed return, or any checked consequ…
 
@@ -44,21 +44,75 @@ Routes: packaged privately, not in this release; no paper label; public entry re
 - Any counterexample support must have divergent reciprocal sum; every candidate support with summable reciprocals is now excluded at every integer base.
 - Powerful supports as an independent contribution: subsumed by the reciprocal-summable theorem and removed from public lanes.
 - The 4/9 modulus-84 2-3-7 causal producer: false despite explaining all eight observed repair-gap rescues.
-- Any counterexample to universal #257 must have divergent reciprocal sum; the theorem says nothing about divergent supports.
-- Kovač-Tao Thm 2.3 constructs rational sums only with m ≥ 2 distinct bases and divergent reciprocal mass; no conflict.
+- The actual modulus-420 tetraprime repair producer is false at arbitrarily large prime cofactors. EightReturnSynthesis.md section 3 supplies the proof from an exact 80-anchor selected prefix and Dirichlet; the new audit gives jumps >=2 and causal-margin failures >=3. This supersedes the earlier fifty-million finite survival evidence. Unrestricted cofinal repairs remain open.
+- Finite checks do not settle cofinal repairs or universal #257. Complete Lean formalization is separate from this ordinary proof.
 
 **Does a contribution advance the frontier?** It does when it proves the producer above, refutes the route that producer names, or states a theorem no claim in the frontier already carries; a restatement of a listed claim or a return to a superseded constant does not. Check the proof with the build command below; the maintainers classify the statement with `build_claim_frontier.py --decide --problem 257` against the frontier.
 
 **Entries.**
 
 - [`ExternalVerification257ReciprocalSupport/`](ExternalVerification257ReciprocalSupport/), irrationality for every reciprocal-summable support and every integer base.
+- [`ExternalVerification257AchievementSetGeometry/`](ExternalVerification257AchievementSetGeometry/), rational-fibre null theorem and supported Mersenne achievement-set geometry.
 - [`ExternalVerification257FinitePeriodNoncollapse/`](ExternalVerification257FinitePeriodNoncollapse/), exact multiplicative-order noncollapse at every integer base.
 - [`ExternalVerification257RationalTailRigidity/`](ExternalVerification257RationalTailRigidity/), rational values force unbounded integer tail orbits and mass lower bounds.
 
 ```sh
 lake build ExternalVerification257ReciprocalSupport Solutions.ExternalVerification257ReciprocalSupport
+lake build ExternalVerification257AchievementSetGeometry Solutions.ExternalVerification257AchievementSetGeometry
 lake build ExternalVerification257FinitePeriodNoncollapse Solutions.ExternalVerification257FinitePeriodNoncollapse
 lake build ExternalVerification257RationalTailRigidity Solutions.ExternalVerification257RationalTailRigidity
+```
+
+## Erdős #251
+
+**The question.** Prove irrationality of the dyadic series built from consecutive prime gaps.
+
+**What the release proves.** ExternalVerification251PolynomialShiftCountermodel exhibits the explicit digit word g(n) = 2(n^2 + 4n + 2) with orbit T(n) = 2(n + 4)^2, which satisfies the dyadic tail recurrence at every index, is positive, even, strictly increasing, unbounded and nonperiodic, has every fixed tail shift integral, and has every adjacent difference past the first term at least fourteen.
+
+**Where it is stuck.** The remaining producer is the cofinal adjacent small mismatch, that for each fixed h at least 1 and every N0 there is an index N at least N0 at which T(N+h) - T(N) and T(N+h+1) - T(N+1) both lie strictly between -1 and 1 while g(N+h+1) differs from g(N+1).
+
+**Smallest useful contribution** (proof). Supply the h = 1 cofinal adjacent-small-mismatch producer from actual consecutive-prime arithmetic. Coarse gap properties cannot supply it (the polynomial countermodel), the measured event density of 0.0042 to 0.0082 over 6.8 million primes is finite evidence only, and a Lean-checked consumer converts the producer into irrationality.
+
+**Strongest genuine longitudinal theorem.** None. No genuine climb: the rational-tail normal form is pinned to one located obstruction, the free-pair producer with the shift offset free; the coarse-gap route is refuted as a proposal by an explicit countermodel rather than closed; and the denominator exclusions q >= 2^589 and q > 10^12040 are finite (longitudinal_truth_2026_09_01 section 1).
+
+**Best standalone structural theorem.** Free-pair lattice and the equivalence of irrationality with cofinal free-pair nonintegrality.
+
+(F) with converse: for any integer-digit dyadic tail recurrence, at and beyond an odd-denominator state with reduced denominator d, T_M - T_N is an integer iff N == M mod orderOf(2 : ZMod d); the offset M - N is free. Every rational-valued orbit therefore has a cutoff N0 and a positive modulus t with T_M - T_N in Z iff M == N mod t beyond N0 (exists_free_pair_lattice), in particular the rational candidate tail of every proposed rational value S of the prime-gap series. (P) is formalised as CofinalFreePairNonintegral T: for every t > 0 and every cutoff there are N, M beyond the cutoff with N == M mod t and T_M - T_N not an integer. Lean proves Irrational (T 0) <-> (P) for every real integer-digit dyadic tail orbit, that (P) is equivalent to the fixed-offset criterion CofinalNonintegralTailShifts, and, with the real tail primeGapRealTail N = 2^(N+1) sum_k g_(k+N+1)/2^(k+N+2) satisfying the recurrence with the actual prime gaps as digits and primeGapRealTail 0 = 2S - 1, that Irrational S <-> CofinalFreePairNonintegral primeGapRealTail for the actual consecutive-prime-gap series S.
+
+Evidence: lean_kernel_checked. Prior art: new, audited 2026-09-02; antecedent J.-C. Schlage-Puchta, The irrationality of some number theoretical series, arXiv:1105.1451 (Theorem 2 (periodic base-b digit expansions); Theorem 3 (linear independence for S_k = sum p_n^k / n!)).
+
+Routes: no Lean package in this release; no paper label; public entry not_packaged.
+
+**Strongest unresolved producer** (`cofinal_adjacent_small_mismatch`). For each fixed h >= 1 and every N0, produce N >= N0 such that both actual tail shifts T_(N+h)-T_N and T_(N+h+1)-T_(N+1) lie strictly between -1 and 1 while g_(N+h+1) != g_(N+1). The checked finite consumer then excludes eventual integrality of the h-shift.
+
+**Failed approaches and falsifiers.**
+
+- Coarse gap properties (positive, even, increasing, unbounded, nonperiodic): the word g_n = 2(n^2+4n+2) satisfies all of them, has rational value 32, and never produces an adjacent small mismatch. This refutes the proposal that those properties suffice; the density measurement over 6,841,648 primes shows the event does occur in the actual primes, so the countermodel does not transfer to them.
+- Bounded additive perturbation invariance: raising every gap by at most M while preserving its residue modulo M and any prescribed prefix already makes the sum rational, so no size-and-residue gap theorem invariant under that perturbation can suffice.
+- Data-dependent affine cylinder escape and its fixed-lattice replacement: both are proved equivalent to the non-eventual-integrality they were introduced to derive, so neither is an independent producer.
+- State compression by word repetition alone: the margin is recorded so the lane is not re-walked, and the exchanged-summation bound makes equal-tail pairs abundant for free, which leaves nonintegrality as the whole difficulty.
+- Liouville-flavoured attacks: the certified expansion has irrationality-exponent witness 2.0007.
+- The equivalence relocates the burden to the free-pair condition; it supplies no free pair for the actual prime-gap tail.
+- The measurement that supports the condition is finite: over 1,270,607 primes below 2e7 every residue class modulo every t up to 20 carries witnesses into the last usable index window, and uniformity in t and in the cutoff is missing.
+
+**Does a contribution advance the frontier?** It does when it proves the producer above, refutes the route that producer names, or states a theorem no claim in the frontier already carries; a restatement of a listed claim or a return to a superseded constant does not. Check the proof with the build command below; the maintainers classify the statement with `build_claim_frontier.py --decide --problem 251` against the frontier.
+
+**Entries.**
+
+- [`ExternalVerification251PolynomialShiftCountermodel/`](ExternalVerification251PolynomialShiftCountermodel/), exact countermodel to coarse gap-profile irrationality routes.
+- [`ExternalVerification251KernelDenominatorFloor/`](ExternalVerification251KernelDenominatorFloor/), kernel-decided denominator floor for the prime-gap dyadic series.
+- [`ExternalVerification251ActualPrimeGapTail/`](ExternalVerification251ActualPrimeGapTail/), exact rational-tail collapse for the actual prime-gap dyadic series.
+- [`ExternalVerification251BoundedPerturbationCountermodel/`](ExternalVerification251BoundedPerturbationCountermodel/), bounded-perturbation countermodel anchored at the actual prime gaps.
+- [`ExternalVerification251FreePairEquivalence/`](ExternalVerification251FreePairEquivalence/), free-pair equivalence for the actual prime-gap dyadic series.
+- [`ExternalVerification251PrimeGapIdentity/`](ExternalVerification251PrimeGapIdentity/), unconditional prime-gap reformulation of the dyadic prime series.
+
+```sh
+lake build ExternalVerification251PolynomialShiftCountermodel Solutions.ExternalVerification251PolynomialShiftCountermodel
+lake build ExternalVerification251KernelDenominatorFloor Solutions.ExternalVerification251KernelDenominatorFloor
+lake build ExternalVerification251ActualPrimeGapTail Solutions.ExternalVerification251ActualPrimeGapTail
+lake build ExternalVerification251BoundedPerturbationCountermodel Solutions.ExternalVerification251BoundedPerturbationCountermodel
+lake build ExternalVerification251FreePairEquivalence Solutions.ExternalVerification251FreePairEquivalence
+lake build ExternalVerification251PrimeGapIdentity Solutions.ExternalVerification251PrimeGapIdentity
 ```
 
 ## Erdős #249
@@ -79,7 +133,7 @@ The two zero-residue base channels and one odd-residue channel at each positive 
 
 Evidence: lean_kernel_checked. Prior art: extends, audited 2026-09-02; antecedent M. Coons, (Non)Automaticity of number theoretic functions, J. Theor. Nombres Bordeaux 22 (2010), no. 2, 339-352 (Theorem 3.2, proof printed p. 349; k-kernel definition in Section 1).
 
-Routes: packaged privately, not in this release; no paper label; public entry reserve.
+Routes: source [`ExternalVerification249DyadicTotientKernel/`](ExternalVerification249DyadicTotientKernel/), proof `Solutions.ExternalVerification249DyadicTotientKernel`, package `ExternalVerification249DyadicTotientKernel/comparator.json`; no paper label; public entry reserve.
 
 **Strongest unresolved producer** (`totient_specific_moving_dyadic_escape`). Prove FullMersenneCanonicalBasepointResidueGapSupply, the Lean-equivalent arithmetic normal form: for every c and positive odd v, find H>0 divisible by phi(v) such that the canonical residue (-totientBlock(H,c)) mod ((2^H-1)/v) lies in the central interval of radius c+H+1. On the pure-dyadic axis, the Lean-checked signed error E_H=totientBlock(H,c)-k(2^H-1) obeys E_(H+1)=2E_H+phi(c+H+1)-k while the nearest quotient k stays fixed. Exact computation through c<=1000000 finds delay nineteen at c=490794, ruling out caps through seventeen. Pointwise legal-letter methods, the constant-two mode, sublinear errors, and every eventually affine linear-scale error are eliminated. Actual prime positions cofinally force linear excursions; more directionally, if the successor remains upper-trapped then 4E_H+p+phi(p+1)<=4+3k, so any permanent trap is cofinally bottom-locked immediately before large prim…
 
@@ -94,12 +148,20 @@ Routes: packaged privately, not in this release; no paper label; public entry re
 
 **Entries.**
 
-- [`ExternalVerification249RankOneSharpFloor/`](ExternalVerification249RankOneSharpFloor/), explicit 21/320 floor for the positive rank-one Möbius Mersenne cone.
+- [`ExternalVerification249RankOneSharpFloor/`](ExternalVerification249RankOneSharpFloor/), sharp minimiser and explicit 21/320 floor for the positive rank-one Möbius Mersenne cone.
+- [`ExternalVerification249ResidueClassTotientSeries/`](ExternalVerification249ResidueClassTotientSeries/), irrationality of fixed-resolution observables of the totient word.
 - [`ExternalVerification249BinaryCyclotomicAnchors/`](ExternalVerification249BinaryCyclotomicAnchors/), unconditional clean prime anchors in the binary cyclotomic layers.
+- [`ExternalVerification249DyadicTotientKernel/`](ExternalVerification249DyadicTotientKernel/), complete dyadic totient-kernel structure.
+- [`ExternalVerification249MobiusMersenneLadderStructure/`](ExternalVerification249MobiusMersenneLadderStructure/), no finite linear recurrence for the Möbius-Mersenne power ladder, and its separation from the literal Möbius-Lambert ladder.
+- [`ExternalVerification249ParityPerturbedRationalControl/`](ExternalVerification249ParityPerturbedRationalControl/), a parity-perturbed rational control for the binary totient series.
 
 ```sh
 lake build ExternalVerification249RankOneSharpFloor Solutions.ExternalVerification249RankOneSharpFloor
+lake build ExternalVerification249ResidueClassTotientSeries Solutions.ExternalVerification249ResidueClassTotientSeries
 lake build ExternalVerification249BinaryCyclotomicAnchors Solutions.ExternalVerification249BinaryCyclotomicAnchors
+lake build ExternalVerification249DyadicTotientKernel Solutions.ExternalVerification249DyadicTotientKernel
+lake build ExternalVerification249MobiusMersenneLadderStructure Solutions.ExternalVerification249MobiusMersenneLadderStructure
+lake build ExternalVerification249ParityPerturbedRationalControl Solutions.ExternalVerification249ParityPerturbedRationalControl
 ```
 
 ## Erdős #269
@@ -116,7 +178,7 @@ lake build ExternalVerification249BinaryCyclotomicAnchors Solutions.ExternalVeri
 
 **Best standalone structural theorem.** exact running-LCM identity, logarithmic-cell constancy, exact jump count, height-fibre normal form, quadratic shell bound, arbitrary-order nonsingular minors, and no finite exact separation.
 
-For pairwise distinct primes p, q, r and every nonzero x, the least common multiple of all smooth numbers p^i q^j r^k at most x equals the product of the three maximal pure prime powers below x. The reciprocal-height kernel K(i,j,k) built from that identity is constant on every logarithmic cell, and the first m positive jump values across the three prime channels number exactly 3m. Every finite exponent box sums to the height-fibre normal form, the sum over genuine running-LCM heights of the fibre cardinality divided by the height, and a multiplicative shell of width factor r inside a sorted exponent budget j satisfies 9 times its cardinality at most (j+3)^2. For every order n there are injective index families giving a nonsingular n by n minor of K uniformly in the remaining exponent layer, so K has infinite rank and no finite separable representation K(i,j,k) = sum over l < d of f_l(i) G_l(j,k) exists for any d. The smallest 2,3,5 rectangle has determinant exactly -1/15. Three distinct primes keep the three logarithm floors independent, which is what makes the running-LCM identity exact and the minors nonsingular in every order, and it removes every method that would evaluate the three-prime sum by finitely many separated factors. The running-LCM factorisation identity for every finite prime set, and the two-prime case in which the series factorises and is transcendental by Hecke and Mahler, are due to Steve Fan (erdosproblems.com/269 comment, 26 June 2026), who also records that the factorisation does not extend to three or more primes; the identity theorem here formalises his identity at three primes, and the rank statements are the addition. Priority for the rank statements has not been established, none of the seven theorems yields irrationality or transcendence, and Erdős #269 remains open.
+The running-LCM kernel is K(i,j,k) = 1 / (p^a q^b r^c) with a, b, c the Nat.log exponents of N = p^i q^j r^k in the bases p, q, r. Eight declarations are compared. The strongest is stated for arbitrary generators. For natural numbers p, q, r each greater than 1 such that no positive integer multiple of logb r p is an integer and no positive integer multiple of logb r q is an integer, and for every order n, there are injective index families I, J from Fin n to the naturals whose n by n minor det K(I a, J b, k) is nonzero simultaneously for every value of the third exponent k. Distinct primes satisfy that independence hypothesis: for primes p, q, r with p different from r and q different from r, the same uniform nonsingular minors exist at every order, and for every d there is no representation K(i,j,k) = sum over l < d of f_l(i) G_l(j,k) by finitely many separated factors. That pair carries no hypothesis relating p and q. For pairwise distinct primes p, q, r and every nonzero x, the least common multiple of all smooth numbers p^i q^j r^k at most x equals p^(log_p x) q^(log_q x) r^(log_r x), the product of the three maximal pure prime powers below x. For pairwise distinct primes p, q, r the first m positive jump values across the three prime channels number exactly 3m. Two declarations hold for arbitrary natural generators with no hypothesis at all: K is constant on every logarithmic cell, and the sum of K over a finite exponent box equals the sum over the genuine running-LCM heights of the fibre cardinality divided by the height. A multiplicative shell of width factor r inside a sorted exponent budget hp at most hq at most hr summing to j satisfies 9 times its cardinality at most (j+3)^2, on the hypotheses that r is positive and the shell width hi is at most r times lo. The smallest 2, 3, 5 kernel rectangle has determinant exactly -1/15. The running-LCM factorisation identity for every finite prime set, and the two-prime case in which the series factorises and is transcendental by Hecke and Mahler, are due to Steve Fan (erdosproblems.com/269 comment, 26 June 2026), who also records that the factorisation does not extend to three or more primes. The identity theorem here formalises his identity at three primes, and the rank statements are the addition. Priority for the rank statements is unassessed. None of the eight declarations yields irrationality or transcendence, and Erdős #269 remains open.
 
 Evidence: lean_kernel_checked. Prior art: new, audited 2026-09-02; antecedent Steve Fan, comment on erdosproblems.com/269, 05:22 on 26 June 2026 (the general-k running-LCM identity, the two-prime factorisation S = S_1 S_2, and transcendence via Hecke-Mahler; closing sentence "This argument does not seem to generalize immediately to |P| >= 3, since S does not factor nicely in the first place.").
 
@@ -136,107 +198,13 @@ Routes: source [`ExternalVerification269ThreePrimeStructure/`](ExternalVerificat
 **Entries.**
 
 - [`ExternalVerification269ThreePrimeStructure/`](ExternalVerification269ThreePrimeStructure/), exact three-prime running-LCM identity and infinite kernel rank.
+- [`ExternalVerification269WindowEscapeEquivalence/`](ExternalVerification269WindowEscapeEquivalence/), the cofinal local-window escape is equivalent to irrationality of the three-prime running-LCM value.
+- [`ExternalVerification269ActualShellOrbit/`](ExternalVerification269ActualShellOrbit/), actual dyadic shell orbit, exact recurrence and integral-or-far escape.
 
 ```sh
 lake build ExternalVerification269ThreePrimeStructure Solutions.ExternalVerification269ThreePrimeStructure
-```
-
-## Erdős #1041
-
-**The question.** If a monic polynomial f(z)=product_i(z-z_i) has all roots in the open unit disk, prove that two roots can be joined by a curve of length less than 2 contained in the open lemniscate |f|<1.
-
-**What the release proves.** ExternalVerification1041FirstMergeCriticalValueSeparation proves the exact all-degree critical-value separation thresholds C(n, 4) < 1 for every n at least 3, C(n, 3) < 1 for every n at least 4, and C(n, 2) < 1 for every n at least 6, where C(n, S) = (1 + S)^(2/n) log(S/(S - 1)), together with the sign-free consumer that a squared length at most 4 C(n, S) with C(n, S) < 1 forces length strictly below 2.
-
-**Where it is stuck.** The sharp constant is settled in every degree only under the critical-spectrum separation hypothesis, and the two surviving unconditional routes are the componentwise combined-charge lemma, that every nontrivial connected component C of the admissible critical forest satisfies the sum over edges e in C of D_e + K_e being at least 0, and the covering statement COVER, that for monic g with roots in the closed unit disk there is a level lambda in [mu, 1] and a compact connected subset Gamma of the first-merge component of {|g| <= lambda} carrying two roots with every point of Gamma within intrinsic distance 1 of a root.
-
-**Smallest useful contribution** (computation). Re-run the degree-five moment computation with directed rounding rather than IEEE double arithmetic, which converts the fifth arithmetic-mean strengthening into a certificate-backed statement and opens the sixth.
-
-**Strongest genuine longitudinal theorem.** Sharp constant 2 in every degree under critical-value separation.
-
-Let f be monic of degree n ≥ 3 with a nonzero simple critical hub c, and suppose every other critical point d satisfies |1 − f(d)/f(c)| ≥ S > 1. Then two distinct roots of f are joined inside {|f| ≤ |f(c)|} by a path of length at most 2(1+S)^{1/n} √log(S/(S−1)), which is below 2 whenever C(n,S) = (1+S)^{2/n} log(S/(S−1)) < 1; exact thresholds are S = 4 for n ≥ 3, S = 3 for n ≥ 4 and S = 2 for n ≥ 6, each sharp in the degree since C(2,4), C(3,3) and C(5,2) exceed 1. With open-unit-disk roots the Fekete chain gives |f(c)| < 1, so Erdős #1041 holds for every such polynomial. The numerical kernel and the sign-free consumer are Lean-checked; analytic continuation, univalence, the area formula and Pólya's area-capacity inequality are ordinary mathematics.
-
-Evidence: ordinary_proof. conditional on the separation hypothesis (a hypothesis on the critical spectrum, not an open statement); the Lean entry proves the three thresholds and the consumer only. The area bound behind the capacity-closure step is Dubinin's Theorem 1 (a Pólya-type inequality), an input the paper does not yet cite. Prior art: new, audited 2026-09-02; antecedent V. N. Dubinin, Some inequalities for polynomials and rational functions associated with lemniscates, Zap. Nauchn. Sem. POMI 404 (2012), 83-99 (Analytical theory of numbers and theory of functions, Part 27, ed. G. V. Kuz'mina and O. M. Fomenko, POMI, St. Petersburg, 2012, 262 pp.); English translation J. Math. Sci. 193:1 (2013), 45-54, DOI 10.1007/s10958-013-1432-4 (Theorem 1. Its text was NOT obtained (see searches_not_completed). Best available paraphrase is Terence Tao on the erdosproblems.com/1041 thread, 02:45 on 25 Mar 2026: "By Theorem 1 of this paper of Dubinin (a Polya type inequality), this area is at most s^{2/m} times the area of U; and by the classical Polya inequality, U has area at most pi.").
-
-Routes: no Lean package in this release; paper labels `res:critical-value-separation`, `res:critical-value-thresholds`, `bdry:critical-value-separation`; public entry not_packaged.
-
-**Best standalone structural theorem.** sharp all-degree collinear root-diameter theorem with equality configurations, complete primitive sparse quintic, and translated cubic quotient fibres.
-
-The accompanying ordinary mathematics completely solves three structured families of Erdős #1041: collinear root configurations in every degree, the primitive sparse quintics, and translated cubic quotient fibres in every degree 3q with q at least two. This configuration verifies in Lean the three load-bearing kernels of those solutions, and only those three. For every degree n at least two, a monic polynomial of degree n vanishing at -1 and 1, with n-1 increasing interior nodes in the closed interval and values alternating in sign along them, has one node at which the absolute value is at most 2^-(n-1) times cos(pi/2n)^-n. Five real disk coordinates satisfying the first three rotated Newton moments for r strictly between 0 and 2 contain two distinct indices whose tail energy is strictly below one, and three roots in the open unit disc admit one complete radial spoke along which their monic cubic stays inside the closed unit lemniscate. Each family solution is reduced to a single finite inequality, so the delicate step in the geometry of polynomial sublevel sets is the part submitted for checking. The alternation argument sits in the classical Chebyshev context, a bounded search found no earlier form of the quintic selector, and priority is unresolved. Affine transport, the final selection, and the surrounding analytic assembly are ordinary proofs rather than Lean-checked conclusions, and the unrestricted problem is untouched.
-
-Evidence: lean_kernel_checked. Prior art: unknown, no audit date; antecedent The alternation argument sits in the classical Chebyshev context; a bounded search found no earlier form of the quintic selector (entry metadata).
-
-Routes: source [`ExternalVerification1041SolvedFamilies/`](ExternalVerification1041SolvedFamilies/), proof `Solutions.ExternalVerification1041SolvedFamilies`, package `ExternalVerification1041SolvedFamilies/comparator.json`; paper labels `thm:sharp-collinear-diameter`, `prop:sharp-collinear-chebyshev-comparator`, `thm:primitive-quintic-two-tail`, `prop:primitive-quintic-two-tail-energy-selector`, `thm:translated-cubic-quotient-fibres`, `lem:cubic-safe-root-spoke`, `bdry:solved-polynomial-families`, `rem:sharp-collinear-formal-boundary`, `rem:primitive-quintic-formal-boundary`, `rem:cubic-quotient-formal-boundary`; public entry launch_core.
-
-**Strongest unresolved producer** (`one_root_covering_of_the_first_merge_component`). Prove (COVER): for monic g with roots in the closed unit disk there is a level lambda in [mu,1] and a compact CONNECTED subset Gamma of the first-merge component of {|g| <= lambda} carrying two roots, such that every point of Gamma lies within intrinsic distance 1 of a root of g, paths being allowed to run in the whole component. By visibility_overlap_reduction_to_a_one_root_statement this settles Erdos #1041, with no separate length obligation. Take Gamma as SMALL as possible and the ambient as LARGE as possible: the cheapest Gamma is the descending Newton branch pair from c*, on which the covering was measured in its strongest form -- straight segments at level 1 -- with zero uncovered points over 26 scored rows at 283 points per arc, at least 155 overlap points per row, and worst overlap length 1.90422 against a budget of 2. Two guards are mandatory: the level is NOT monotone, so nev…
-
-**Failed approaches and falsifiers.**
-
-- Universal scalar saddle-wall thresholds T ≤ 2√2(βγ)^{1/2n}: false for the actual wall of (z²−a²)(z²+b²).
-- Least-critical nearest-pair hub selectors: refuted in the quartic fixed-pair no-go (CEGMQuarticFixedPairNoGo.md).
-- Separate critical contours for resolved critical stars: a negative result for the monodromy route.
-- The shtuka tree-budget proposition: the Cassini level-length tail 4(√(a²+a) − a) falls below the root distance 2a for a > 4/5 (recorded countermodel, not re-derived on 2026-09-02).
-- Degree four with a near-tie in the critical spectrum is Pendyala's and outside this theorem; degree 40 with S = 4 separation is inside it and outside Pendyala's.
-- The anonymous general-degree manuscript of March 2026 was withdrawn by its author (Proposition 12 incorrect, thread 26 Mar 2026) and a second general-degree attempt of April 2026 was broken; nothing subsumes this theorem and the parent stays open with zero accepted proof claims (disposition E0_1041_shtuka_withdrawn).
-
-**Does a contribution advance the frontier?** It does when it proves the producer above, refutes the route that producer names, or states a theorem no claim in the frontier already carries; a restatement of a listed claim or a return to a superseded constant does not. Check the proof with the build command below; the maintainers classify the statement with `build_claim_frontier.py --decide --problem 1041` against the frontier.
-
-**Entries.**
-
-- [`ExternalVerification1041FirstMergeCriticalValueSeparation/`](ExternalVerification1041FirstMergeCriticalValueSeparation/), exact all-degree critical-value separation thresholds and a sign-free first-merge length bound.
-- [`ExternalVerification1041SolvedFamilies/`](ExternalVerification1041SolvedFamilies/), checked kernels for three completely solved polynomial families.
-- [`ExternalVerification1041CriticalGeometry/`](ExternalVerification1041CriticalGeometry/), global two-root critical proximity and exact straight-line obstructions.
-- [`ExternalVerification1041CyclicTrinomialFiber/`](ExternalVerification1041CyclicTrinomialFiber/), strict lemniscate containment of trinomial root spokes.
-- [`ExternalVerification1041QuarticQuotientFiber/`](ExternalVerification1041QuarticQuotientFiber/), strict length budget below two for quotient-fibre root lifts.
-- [`ExternalVerification1041TetranomialSpokes/`](ExternalVerification1041TetranomialSpokes/), coefficient and energy criteria forcing two safe tetranomial spokes.
-
-```sh
-lake build ExternalVerification1041FirstMergeCriticalValueSeparation Solutions.ExternalVerification1041FirstMergeCriticalValueSeparation
-lake build ExternalVerification1041SolvedFamilies Solutions.ExternalVerification1041SolvedFamilies
-lake build ExternalVerification1041CriticalGeometry Solutions.ExternalVerification1041CriticalGeometry
-lake build ExternalVerification1041CyclicTrinomialFiber Solutions.ExternalVerification1041CyclicTrinomialFiber
-lake build ExternalVerification1041QuarticQuotientFiber Solutions.ExternalVerification1041QuarticQuotientFiber
-lake build ExternalVerification1041TetranomialSpokes Solutions.ExternalVerification1041TetranomialSpokes
-```
-
-## Erdős #251
-
-**The question.** Prove irrationality of the dyadic series built from consecutive prime gaps.
-
-**What the release proves.** ExternalVerification251PolynomialShiftCountermodel exhibits the explicit digit word g(n) = 2(n^2 + 4n + 2) with orbit T(n) = 2(n + 4)^2, which satisfies the dyadic tail recurrence at every index, is positive, even, strictly increasing, unbounded and nonperiodic, has every fixed tail shift integral, and has every adjacent difference past the first term at least fourteen.
-
-**Where it is stuck.** The remaining producer is the cofinal adjacent small mismatch, that for each fixed h at least 1 and every N0 there is an index N at least N0 at which T(N+h) - T(N) and T(N+h+1) - T(N+1) both lie strictly between -1 and 1 while g(N+h+1) differs from g(N+1).
-
-**Smallest useful contribution** (proof). Supply the h = 1 cofinal adjacent-small-mismatch producer from actual consecutive-prime arithmetic. Coarse gap properties cannot supply it (the polynomial countermodel), the measured event density of 0.0042 to 0.0082 over 6.8 million primes is finite evidence only, and a Lean-checked consumer converts the producer into irrationality.
-
-**Strongest genuine longitudinal theorem.** None. No genuine climb: the rational-tail normal form is pinned to one located obstruction (cofinal adjacent small mismatch), the coarse-gap route is closed by an explicit countermodel, and q > 10^12041 is a finite exclusion (longitudinal_truth_2026_09_01 §1).
-
-**Best standalone structural theorem.** exact polynomial shift countermodel eliminating coarse-gap strategies.
-
-The explicit digit word g(n) = 2(n^2 + 4n + 2) and the explicit rational orbit T(n) = 2(n + 4)^2 satisfy the dyadic tail recurrence T(N + 1) = 2 T(N) - g(N + 1) at every index. The word is positive, even and strictly increasing, hence unbounded and nonperiodic; every fixed tail shift T(N + h) - T(N) is an integer for every h and every N; and every difference of consecutive digits past the first term is at least fourteen, so it is never 2 or -2. The construction is an exact countermodel, and it eliminates every argument that would force the adjacent small-mismatch producer out of positivity, parity, polynomial growth, unboundedness, nonperiodicity, the dyadic recurrence and integrality at every fixed shift taken together. The mechanism is that an integer-valued quadratic orbit turns all-shift integrality into a polynomial identity over the integers while the word has constant second difference, so its adjacent differences grow linearly and clear the small window from the outset. The readers are number theorists working on the irrationality of the dyadic prime-gap series; priority for the construction has not been assessed. The orbit is not the actual consecutive-prime-gap orbit, so the theorem does not decide Erdős Problem 251.
-
-Evidence: lean_kernel_checked. Prior art: unassessed, no audit date.
-
-Routes: source [`ExternalVerification251PolynomialShiftCountermodel/`](ExternalVerification251PolynomialShiftCountermodel/), proof `Solutions.ExternalVerification251PolynomialShiftCountermodel`, package `ExternalVerification251PolynomialShiftCountermodel/comparator.json`; no paper label; public entry launch_core.
-
-**Strongest unresolved producer** (`cofinal_adjacent_small_mismatch`). For each fixed h >= 1 and every N0, produce N >= N0 such that both actual tail shifts T_(N+h)-T_N and T_(N+h+1)-T_(N+1) lie strictly between -1 and 1 while g_(N+h+1) != g_(N+1). The checked finite consumer then excludes eventual integrality of the h-shift.
-
-**Failed approaches and falsifiers.**
-
-- Coarse gap properties (positive, even, increasing, unbounded, nonperiodic): the word g_n = 2(n²+4n+2) satisfies all of them, has rational value 32, and never produces an adjacent small mismatch.
-- State compression by word repetition alone: the margin is recorded so the lane is not re-walked.
-- Liouville-flavoured attacks: the certified expansion has irrationality-exponent witness 2.0007.
-- The countermodel is not the actual prime-gap word; it rules out coarse-gap strategies only.
-
-**Does a contribution advance the frontier?** It does when it proves the producer above, refutes the route that producer names, or states a theorem no claim in the frontier already carries; a restatement of a listed claim or a return to a superseded constant does not. Check the proof with the build command below; the maintainers classify the statement with `build_claim_frontier.py --decide --problem 251` against the frontier.
-
-**Entries.**
-
-- [`ExternalVerification251PolynomialShiftCountermodel/`](ExternalVerification251PolynomialShiftCountermodel/), exact countermodel to coarse gap-profile irrationality routes.
-- [`ExternalVerification251ActualPrimeGapTail/`](ExternalVerification251ActualPrimeGapTail/), exact rational-tail collapse for the actual prime-gap dyadic series.
-
-```sh
-lake build ExternalVerification251PolynomialShiftCountermodel Solutions.ExternalVerification251PolynomialShiftCountermodel
-lake build ExternalVerification251ActualPrimeGapTail Solutions.ExternalVerification251ActualPrimeGapTail
+lake build ExternalVerification269WindowEscapeEquivalence Solutions.ExternalVerification269WindowEscapeEquivalence
+lake build ExternalVerification269ActualShellOrbit Solutions.ExternalVerification269ActualShellOrbit
 ```
 
 ## Erdős #68
@@ -253,7 +221,7 @@ lake build ExternalVerification251ActualPrimeGapTail Solutions.ExternalVerificat
 
 **Best standalone structural theorem.** quantitative square-subsequence channel-radius lower bound, exclusion of eventual three-halves upper bounds, and exact failure of little-o decay.
 
-A channel is an index d at least 2 carrying the modulus d! - 1, obtained by reweighting each factorial term of the series so that the powers of d! divide out; the channel test at d compares that reweighted integer with the factorial moment modulo d! - 1. The main theorem is explicit: for every t at least 2^32 and all natural numbers M and R with M positive, M divisible by the least common multiple of d! - 1 over 2 ≤ d ≤ 2t^2, and M < (R+1)! - 1, the support radius satisfies 3t^3 < 2(R+1). Imposing those hypotheses at every large t gives two sequence forms: no radius function can eventually satisfy 2(R(t)+1) ≤ 3t^3, and R(t)+1 is not o(t^3), the second under hypotheses required only from t = 4096 onwards. The entire subcubic range is therefore closed on the square subsequence D = 2t^2, since every finite channel system meeting the hypotheses carries support radius above (3/2)t^3, which prices the method for anyone pursuing irrationality of series with factorial denominators. The nontrivial input is a finite lower estimate for the channel least common multiple, in which consecutive numbers d! - 1 are combined while their pairwise gcd losses are counted explicitly, and a Stirling bound converts that estimate into the cubic radius. This theorem family is the first presentation recorded in the development and its novelty is unassessed. The divisibility and factorial bounds remain hypotheses, so the irrationality question in Erdős Problem 68 is untouched, and the remaining problem is to derive those hypotheses from the factorial-gap series and to prove that the required channels vanish.
+A channel is an index d at least 2 carrying the modulus d! - 1, obtained by reweighting each factorial term of the series so that the powers of d! divide out; the channel test at d compares that reweighted integer with the factorial moment modulo d! - 1. Six declarations are compared. The sharpest is explicit: for every t at least 2^32 and all natural numbers M and R with M positive, M divisible by the least common multiple of d! - 1 over 2 ≤ d ≤ 2t^2, and M < (R+1)! - 1, the support radius satisfies 3t^3 < 2(R+1). The same hypotheses imposed from t = 4096 onwards give t^3 < 8(R+1), which is the explicit bound available on 4096 ≤ t < 2^32. Imposing each hypothesis set at every large t gives the sequence forms: no radius function can eventually satisfy 2(R(t)+1) ≤ 3t^3, no radius function can eventually satisfy 8(R(t)+1) ≤ t^3, and R(t)+1 is not o(t^3). The sixth declaration evaluates the finite logarithmic constraint that produces these bounds at the value R+1 = (16/9)t^3 and proves that for every t at least 4 the constraint is satisfied there. That declaration bounds no support radius. It establishes that the logarithmic constraint alone does not force a lower bound at the constant 16/9, while the constant proved on this subsequence is 3/2. The subcubic range is closed on the square subsequence D = 2t^2, since every finite channel system meeting the hypotheses carries support radius above (3/2)t^3. The nontrivial input is a finite lower estimate for the channel least common multiple, in which consecutive numbers d! - 1 are combined while their pairwise gcd losses are counted explicitly, and a Stirling bound converts that estimate into the cubic radius. This theorem family is the first presentation recorded in the development and its novelty is unassessed. The divisibility and factorial bounds remain hypotheses, so the irrationality question in Erdős Problem 68 is untouched, and the remaining problem is to derive those hypotheses from the factorial-gap series and to prove that the required channels vanish.
 
 Evidence: lean_kernel_checked. Prior art: unassessed, no audit date.
 
@@ -274,57 +242,12 @@ Routes: source [`ExternalVerification68ChannelRadius/`](ExternalVerification68Ch
 
 - [`ExternalVerification68CompanionOrbitBoundary/`](ExternalVerification68CompanionOrbitBoundary/), companion-orbit rationality boundary.
 - [`ExternalVerification68ChannelRadius/`](ExternalVerification68ChannelRadius/), explicit cubic radius floor for simultaneous factorial channel cancellation.
+- [`ExternalVerification68PrimeUnitTranslator/`](ExternalVerification68PrimeUnitTranslator/), remote factorial-grid kernels reduced by an exact prime unit translator.
 
 ```sh
 lake build ExternalVerification68CompanionOrbitBoundary Solutions.ExternalVerification68CompanionOrbitBoundary
 lake build ExternalVerification68ChannelRadius Solutions.ExternalVerification68ChannelRadius
-```
-
-## Erdős #243
-
-**The question.** Under a_{n+1}/a_n^2 -> 1 and rational reciprocal sum, force eventual Sylvester recurrence.
-
-**What the release proves.** ExternalVerification243PeriodicNegativeOrbit proves that for every offset N, every period h > 0 and every positive drift M, positivity of the negative-magnitude sequence together with e_n < a_n on the tail, the exact recurrence and the shape equation D_n + e_n = (a_n - 1) C_n are contradictory, so no eventually periodic negative-magnitude orbit with positive drift carries a rational value.
-
-**Where it is stuck.** The surviving signed-state obstruction is cofinally unbounded negative excursions in the exact dynamic cocycle, and the decisive producer is a global negative-mass, cumulative-LCM or repair-payment theorem.
-
-**Smallest useful contribution** (proof). Formalise the bridge from Koizumi, Irrationality of the reciprocal sum of doubly exponential sequences, arXiv:2504.05933, INTEGERS 26 (2026), A28, so that bounded-negative rigidity becomes a statement about Erdős #243 itself under one added hypothesis.
-
-**Strongest genuine longitudinal theorem.** bounded-negative complete rigidity and eventual Sylvester recurrence.
-
-Exact reciprocal-tail dynamics with eventual strict centering, an eventual one-sided lower bound on the centered error, and division-free normalized vanishing have zero centered defect eventually and obey the exact Sylvester recurrence eventually. No periodicity assumption is used. The theorem is conditional and does not settle unrestricted Erdős #243.
-
-Evidence: lean_kernel_checked. Prior art: extends, audited 2026-09-02; antecedent J. Koizumi, arXiv:2504.05933, Proposition 19(2) and Corollary 20(2) (Badea) (as above).
-
-Routes: packaged privately, not in this release; no paper label; public entry reserve.
-
-**Best standalone structural theorem.** CRT bounded-rise barrier: a slowly rising natural state cannot avoid an infinite pairwise-coprime modulus family at every strict rise.
-
-A natural state tending to infinity with upward increments bounded by B cannot, at every strict rise, avoid all earlier members of an infinite pairwise-coprime modulus family. The proof uses B old moduli, a shifted consecutive CRT block, and the first crossing; avoidance away from strict rises is not assumed.
-
-No exact reduced tail u_(n+1)+v_n=a_n*u_n, v_(n+1)=a_n*v_n with gcd(u_n,v_n)=1 can have u_n tend to infinity while u_(n+1)<=u_n+B for a fixed positive B. Reduced exactness forces pairwise-coprime multipliers and permanent whole-modulus avoidance; a shifted CRT block and first-crossing argument give the contradiction.
-
-Evidence: lean_kernel_checked. Prior art: new, audited 2026-09-02; antecedent J. Koizumi, arXiv:2504.05933, Lemma 15 (the modular recurrence e_n == d_n (mod c_n), c_{n+1} = c_n - e_n).
-
-Routes: no Lean package in this release; no paper label; public entry not_packaged.
-
-**Strongest unresolved producer** (`exclude_aperiodic_negative_state_orbits`). Attack the sole remaining signed-state obstruction, now quantified: any counterexample has negative excursions with -E_n > (1 - delta) log2 log2 C_n infinitely often for every delta > 0 (slow_negative_part_rigidity, counterexample_loglog_negative_excursions), with divergent normalised negative mass and with every multiplier overlap gcd(a_n, D_n) bounded by the next negative magnitude. Coprimality-only arguments are capped at O(log C_n) rises, so the producer must use the congruence E_n = D_n (mod C_n) or a second landing mechanism. Attack the sole remaining signed-state obstruction: cofinally unbounded negative excursions in the exact dynamic cocycle. Corrected unit-field propagation kills the factor-35 branch, forces eight cofinal returns on (31,-10) at factor 41, and forces four more on its (41,-20) child at factor 61. The exact formerly inert factor-25 continuation is now 1061100/292…
-
-**Failed approaches and falsifiers.**
-
-- Finite-prefix rules: arbitrary finite deviations can precede an exact Sylvester tail.
-- Eventually periodic and eventually constant negative orbits: excluded unconditionally, so a counterexample must have aperiodic unbounded negative excursions.
-- Working at the 1/n rate: the critical constant-negative template sits exactly at the boundary of Koizumi's rate theorem.
-- Avoidance away from strict rises is not assumed, and the barrier alone does not force eventual Sylvester recurrence.
-
-**Does a contribution advance the frontier?** It does when it proves the producer above, refutes the route that producer names, or states a theorem no claim in the frontier already carries; a restatement of a listed claim or a return to a superseded constant does not. Check the proof with the build command below; the maintainers classify the statement with `build_claim_frontier.py --decide --problem 243` against the frontier.
-
-**Entries.**
-
-- [`ExternalVerification243PeriodicNegativeOrbit/`](ExternalVerification243PeriodicNegativeOrbit/), exclusion of eventually periodic negative-magnitude orbits.
-
-```sh
-lake build ExternalVerification243PeriodicNegativeOrbit Solutions.ExternalVerification243PeriodicNegativeOrbit
+lake build ExternalVerification68PrimeUnitTranslator Solutions.ExternalVerification68PrimeUnitTranslator
 ```
 
 ## Erdős #1049
@@ -365,22 +288,137 @@ Routes: no Lean package in this release; paper labels `res:zudilin-sharp-qorder`
 - Outward scalar diagonal evaluation: the homogenisation ceiling caps every content lane on the fixed diagonal at a > b².
 - The theorem says nothing about F(3/2) (θ = 0.630930, gap 0.225247 above θ*), negative bases, or any base with b^μ ≥ a.
 - Theorem C (Archimedean cap) shows no p-uniform Padé-type family reaches any base with b² ≥ a, so 3/2 needs a base-dependent smallness exponent, content constraints, or rank ≥ 3.
-- Equality closes the hope that hidden cancellation supplies extra cubic decay; any height improvement must come from arithmetic denominator extraction or a different integral model.
+- The conditional Lean statement's row hypothesis is discharged only for rows j = 0, 1, 2; rows j >= 3 are open, so the all-rank Lean statement is not unconditional.
+- The exact computation covers N <= 7 only.
+- Closing the hidden-cubic-decay hope is a statement about the determinant's order and does not decide irrationality at 3/2.
 
 **Does a contribution advance the frontier?** It does when it proves the producer above, refutes the route that producer names, or states a theorem no claim in the frontier already carries; a restatement of a listed claim or a return to a superseded constant does not. Check the proof with the build command below; the maintainers classify the statement with `build_claim_frontier.py --decide --problem 1049` against the frontier.
 
 **Entries.**
 
 - [`ExternalVerification1049HermitePadeNoGo/`](ExternalVerification1049HermitePadeNoGo/), sharp rectangular Hermite–Padé threshold no-go with unique equality point.
+- [`ExternalVerification1049RationalBaseContour/`](ExternalVerification1049RationalBaseContour/), the rational-base contour of Zudilin's (14,12,14;27) forms.
 - [`ExternalVerification1049AdelicHeightBridge/`](ExternalVerification1049AdelicHeightBridge/), exact first transformed Zudilin row and the 2^64 < 3^41 < 2^65 bracket.
-- [`ExternalVerification1049PrimeSupportSelectors/`](ExternalVerification1049PrimeSupportSelectors/), prime support forces the sharp 1/q gap in q-Apéry linear forms.
+- [`ExternalVerification1049PrimeSupportSelectors/`](ExternalVerification1049PrimeSupportSelectors/), sharp rational gaps for integral linear forms and the exterior-determinant height tradeoff.
 - [`ExternalVerification1049RationalBaseBarrier/`](ExternalVerification1049RationalBaseBarrier/), no coordinatewise denominator clearing at the rational base 3/2.
 
 ```sh
 lake build ExternalVerification1049HermitePadeNoGo Solutions.ExternalVerification1049HermitePadeNoGo
+lake build ExternalVerification1049RationalBaseContour Solutions.ExternalVerification1049RationalBaseContour
 lake build ExternalVerification1049AdelicHeightBridge Solutions.ExternalVerification1049AdelicHeightBridge
 lake build ExternalVerification1049PrimeSupportSelectors Solutions.ExternalVerification1049PrimeSupportSelectors
 lake build ExternalVerification1049RationalBaseBarrier Solutions.ExternalVerification1049RationalBaseBarrier
+```
+
+## Erdős #243
+
+**The question.** Under a_{n+1}/a_n^2 -> 1 and rational reciprocal sum, force eventual Sylvester recurrence.
+
+**What the release proves.** ExternalVerification243PeriodicNegativeOrbit proves that for every offset N, every period h > 0 and every positive drift M, positivity of the negative-magnitude sequence together with e_n < a_n on the tail, the exact recurrence and the shape equation D_n + e_n = (a_n - 1) C_n are contradictory, so no eventually periodic negative-magnitude orbit with positive drift carries a rational value.
+
+**Where it is stuck.** The surviving signed-state obstruction is cofinally unbounded negative excursions in the exact dynamic cocycle, and the decisive producer is a global negative-mass, cumulative-LCM or repair-payment theorem.
+
+**Smallest useful contribution** (proof). Formalise the bridge from Koizumi, Irrationality of the reciprocal sum of doubly exponential sequences, arXiv:2504.05933, INTEGERS 26 (2026), A28, so that bounded-negative rigidity becomes a statement about Erdős #243 itself under one added hypothesis.
+
+**Strongest genuine longitudinal theorem.** bounded-negative complete rigidity and eventual Sylvester recurrence.
+
+Clearing denominators in the rational case of Erdős Problem 243 produces an exact integer orbit: multipliers a n greater than 1 drive C (n+1) + D n = a n * C n and D (n+1) = a n * D n, and the centred error is E n = D n - (a n - 1) * C n. The compared theorem proves complete rigidity of the bounded-negative branch of that orbit. An eventual one-sided lower bound -B ≤ E n on the centred error, together with division-free normalized vanishing K * Int.natAbs (E n) < C n at every scale K, forces two conclusions at once: the centred error is exactly zero from some index onward, and the multipliers satisfy the exact Sylvester recurrence a (n+1) = a n ^ 2 - a n + 1 from some index onward. The second conclusion is the Sylvester recurrence itself, which is the target shape for this dynamics, so the theorem reaches that endpoint inside the stated regime. The hypothesis list contains no periodicity assumption, no eventual periodicity assumption, and no sign condition on the centred error, so the statement covers aperiodic orbits and orbits whose centred error changes sign infinitely often. The normalized-vanishing hypothesis is stated division-free over the natural numbers, so the theorem consumes no real-analytic input. Eventual strict centring Int.natAbs (E n) < C n is the K = 1 instance of normalized vanishing and is absorbed into that hypothesis. The proof runs a natural-tail descent on the eventually nonnegative branch and a gcd-stabilisation and scale-reduction obstruction on the recurring bounded-negative branch, then composes the resulting zero-defect statement with the algebraic step that turns a vanishing centred state into the Sylvester successor. The exact recurrence, the one-sided lower bound, and normalized vanishing are hypotheses of the theorem. No declaration in this package produces them for an arbitrary orbit, orbits with cofinally unbounded negative centred error lie outside the statement, and Erdős Problem 243 remains open.
+
+Evidence: lean_kernel_checked. Prior art: extends, audited 2026-09-02; antecedent J. Koizumi, arXiv:2504.05933, Proposition 19(2) and Corollary 20(2) (Badea) (as above).
+
+Routes: source [`ExternalVerification243BoundedNegativePartRigidity/`](ExternalVerification243BoundedNegativePartRigidity/), proof `Solutions.ExternalVerification243BoundedNegativePartRigidity`, package `ExternalVerification243BoundedNegativePartRigidity/comparator.json`; no paper label; public entry reserve.
+
+**Best standalone structural theorem.** CRT bounded-rise barrier: a slowly rising natural state cannot avoid an infinite pairwise-coprime modulus family at every strict rise.
+
+A natural state tending to infinity with upward increments bounded by B cannot, at every strict rise, avoid all earlier members of an infinite pairwise-coprime modulus family. The proof uses B old moduli, a shifted consecutive CRT block, and the first crossing; avoidance away from strict rises is not assumed.
+
+No exact reduced tail u_(n+1)+v_n=a_n*u_n, v_(n+1)=a_n*v_n with gcd(u_n,v_n)=1 can have u_n tend to infinity while u_(n+1)<=u_n+B for a fixed positive B. Reduced exactness forces pairwise-coprime multipliers and permanent whole-modulus avoidance; a shifted CRT block and first-crossing argument give the contradiction.
+
+Evidence: lean_kernel_checked. Prior art: new, audited 2026-09-02; antecedent J. Koizumi, arXiv:2504.05933, Lemma 15 (the modular recurrence e_n == d_n (mod c_n), c_{n+1} = c_n - e_n).
+
+Routes: no Lean package in this release; no paper label; public entry not_packaged.
+
+**Strongest unresolved producer** (`exclude_aperiodic_negative_state_orbits`). Attack the sole remaining signed-state obstruction, now quantified: any counterexample has negative excursions with -E_n > (1 - delta) log2 log2 C_n infinitely often for every delta > 0 (slow_negative_part_rigidity, counterexample_loglog_negative_excursions), with divergent normalised negative mass and with every multiplier overlap gcd(a_n, D_n) bounded by the next negative magnitude. Coprimality-only arguments are capped at O(log C_n) rises, so the producer must use the congruence E_n = D_n (mod C_n) or a second landing mechanism. Attack the sole remaining signed-state obstruction: cofinally unbounded negative excursions in the exact dynamic cocycle. Corrected unit-field propagation kills the factor-35 branch, forces eight cofinal returns on (31,-10) at factor 41, and forces four more on its (41,-20) child at factor 61. The exact formerly inert factor-25 continuation is now 1061100/292…
+
+**Failed approaches and falsifiers.**
+
+- Finite-prefix rules: arbitrary finite deviations can precede an exact Sylvester tail.
+- Eventually periodic and eventually constant negative orbits: excluded unconditionally, so a counterexample must have aperiodic unbounded negative excursions.
+- Working at the 1/n rate: the critical constant-negative template sits exactly at the boundary of Koizumi's rate theorem.
+- Avoidance away from strict rises is not assumed, and the barrier alone does not force eventual Sylvester recurrence.
+
+**Does a contribution advance the frontier?** It does when it proves the producer above, refutes the route that producer names, or states a theorem no claim in the frontier already carries; a restatement of a listed claim or a return to a superseded constant does not. Check the proof with the build command below; the maintainers classify the statement with `build_claim_frontier.py --decide --problem 243` against the frontier.
+
+**Entries.**
+
+- [`ExternalVerification243PeriodicNegativeOrbit/`](ExternalVerification243PeriodicNegativeOrbit/), exclusion of eventually periodic negative-magnitude orbits.
+- [`ExternalVerification243BoundedNegativePartRigidity/`](ExternalVerification243BoundedNegativePartRigidity/), bounded-negative-part rigidity for reciprocal-tail dynamics.
+- [`ExternalVerification243BoundedRiseReducedTail/`](ExternalVerification243BoundedRiseReducedTail/), exclusion of bounded-rise reduced tails.
+
+```sh
+lake build ExternalVerification243PeriodicNegativeOrbit Solutions.ExternalVerification243PeriodicNegativeOrbit
+lake build ExternalVerification243BoundedNegativePartRigidity Solutions.ExternalVerification243BoundedNegativePartRigidity
+lake build ExternalVerification243BoundedRiseReducedTail Solutions.ExternalVerification243BoundedRiseReducedTail
+```
+
+## Erdős #1041
+
+**The question.** If a monic polynomial f(z)=product_i(z-z_i) has all roots in the open unit disk, prove that two roots can be joined by a curve of length less than 2 contained in the open lemniscate |f|<1.
+
+**What the release proves.** ExternalVerification1041FirstMergeCriticalValueSeparation proves the exact all-degree critical-value separation thresholds C(n, 4) < 1 for every n at least 3, C(n, 3) < 1 for every n at least 4, and C(n, 2) < 1 for every n at least 6, where C(n, S) = (1 + S)^(2/n) log(S/(S - 1)), together with the sign-free consumer that a squared length at most 4 C(n, S) with C(n, S) < 1 forces length strictly below 2.
+
+**Where it is stuck.** The sharp constant is settled in every degree only under the critical-spectrum separation hypothesis, and the two surviving unconditional routes are the componentwise combined-charge lemma, that every nontrivial connected component C of the admissible critical forest satisfies the sum over edges e in C of D_e + K_e being at least 0, and the covering statement COVER, that for monic g with roots in the closed unit disk there is a level lambda in [mu, 1] and a compact connected subset Gamma of the first-merge component of {|g| <= lambda} carrying two roots with every point of Gamma within intrinsic distance 1 of a root.
+
+**Smallest useful contribution** (computation). Re-run the degree-five moment computation with directed rounding rather than IEEE double arithmetic, which converts the fifth arithmetic-mean strengthening into a certificate-backed statement and opens the sixth.
+
+**Strongest genuine longitudinal theorem.** Unconditional all-degree regime: least critical value at most 13/25, via the circle-slice angular packing floor.
+
+{'op': 'substring_replace', 'find': 'Certificate: full mode (step 1/400, 12 grid areas, 14 radii per dual, 7 arities, 126 certified duals, 13.5 minutes) X_cert = 317881444799/500000000000 < 0.6357629 and (13/25) exp(X_cert) < 1; quick mode (101 s) certifies 51/100 with X_cert < 0.664374.', 'replace': 'Certificate: full mode (step 1/400, 18 area-table levels, 14 radii per dual, 7 arities, 126 certified duals, single initial lower area 1e-6, about 13.5 minutes) X_cert = 635762889599/1000000000000 < 0.6357629 and (13/25) exp(X_cert) < 1; quick mode certifies 51/100 with X_cert = 664373027131/1000000000000 < 0.664374.'}
+
+Evidence: ordinary_proof. elementary hyperbolic packing lemma (disjoint balls cut disjoint arcs from every circle about the observer) with an LP-proposed, exactly-disposed dual floor; full-mode exact rational certificate X_cert < 0.6357629 (13.5 min) and quick-mode 51/100 (101 s, conductor replayed rc=0); conductor read the lemma, the dual and the checker's branch-and-bound sup bound; not Lean-checked, not independently reviewed. Prior art: unassessed, no audit date.
+
+Routes: no Lean package in this release; no paper label; public entry not_packaged.
+
+**Best standalone structural theorem.** sharp all-degree collinear root-diameter theorem with equality configurations, complete primitive sparse quintic, and translated cubic quotient fibres.
+
+The accompanying ordinary mathematics completely solves three structured families of Erdős #1041: collinear root configurations in every degree, the primitive sparse quintics, and translated cubic quotient fibres in every degree 3q with q at least two. This configuration verifies in Lean the three load-bearing kernels of those solutions, and only those three. For every degree n at least two, a monic polynomial of degree n vanishing at -1 and 1, with n-1 increasing interior nodes in the closed interval and values alternating in sign along them, has one node at which the absolute value is at most 2^-(n-1) times cos(pi/2n)^-n. Five real disk coordinates satisfying the first three rotated Newton moments for r strictly between 0 and 2 contain two distinct indices whose tail energy is strictly below one, and three roots in the open unit disc admit one complete radial spoke along which their monic cubic stays inside the closed unit lemniscate. Each family solution is reduced to a single finite inequality, so the delicate step in the geometry of polynomial sublevel sets is the part submitted for checking. The alternation argument sits in the classical Chebyshev context, a bounded search found no earlier form of the quintic selector, and priority is unresolved. Affine transport, the final selection, and the surrounding analytic assembly are ordinary proofs rather than Lean-checked conclusions, and the unrestricted problem is untouched.
+
+Evidence: lean_kernel_checked. Prior art: unknown, no audit date; antecedent The alternation argument sits in the classical Chebyshev context; a bounded search found no earlier form of the quintic selector (entry metadata).
+
+Routes: source [`ExternalVerification1041SolvedFamilies/`](ExternalVerification1041SolvedFamilies/), proof `Solutions.ExternalVerification1041SolvedFamilies`, package `ExternalVerification1041SolvedFamilies/comparator.json`; paper labels `thm:sharp-collinear-diameter`, `prop:sharp-collinear-chebyshev-comparator`, `thm:primitive-quintic-two-tail`, `prop:primitive-quintic-two-tail-energy-selector`, `thm:translated-cubic-quotient-fibres`, `lem:cubic-safe-root-spoke`, `bdry:solved-polynomial-families`, `rem:sharp-collinear-formal-boundary`, `rem:primitive-quintic-formal-boundary`, `rem:cubic-quotient-formal-boundary`; public entry launch_core.
+
+**Strongest unresolved producer** (`one_root_covering_of_the_first_merge_component`). Prove (COVER): for monic g with roots in the closed unit disk there is a level lambda in [mu,1] and a compact CONNECTED subset Gamma of the first-merge component of {|g| <= lambda} carrying two roots, such that every point of Gamma lies within intrinsic distance 1 of a root of g, paths being allowed to run in the whole component. By visibility_overlap_reduction_to_a_one_root_statement this settles Erdos #1041, with no separate length obligation. Take Gamma as SMALL as possible and the ambient as LARGE as possible: the cheapest Gamma is the descending Newton branch pair from c*, on which the covering was measured in its strongest form -- straight segments at level 1 -- with zero uncovered points over 26 scored rows at 283 points per arc, at least 155 overlap points per row, and worst overlap length 1.90422 against a budget of 2. Two guards are mandatory: the level is NOT monotone, so nev…
+
+**Failed approaches and falsifiers.**
+
+- Universal scalar saddle-wall thresholds T ≤ 2√2(βγ)^{1/2n}: false for the actual wall of (z²−a²)(z²+b²).
+- Least-critical nearest-pair hub selectors: refuted in the quartic fixed-pair no-go (CEGMQuarticFixedPairNoGo.md).
+- Separate critical contours for resolved critical stars: a negative result for the monodromy route.
+- The shtuka tree-budget proposition: the Cassini level-length tail 4(√(a²+a) − a) falls below the root distance 2a for a > 4/5 (recorded countermodel, not re-derived on 2026-09-02).
+- The consecutive-gap angular budget is proved empty; the mechanism cannot pass mu ~ 0.545 with any arity floor; the exterior energy has no failure-derived floor.
+
+**Does a contribution advance the frontier?** It does when it proves the producer above, refutes the route that producer names, or states a theorem no claim in the frontier already carries; a restatement of a listed claim or a return to a superseded constant does not. Check the proof with the build command below; the maintainers classify the statement with `build_claim_frontier.py --decide --problem 1041` against the frontier.
+
+**Entries.**
+
+- [`ExternalVerification1041FirstMergeCriticalValueSeparation/`](ExternalVerification1041FirstMergeCriticalValueSeparation/), exact all-degree critical-value separation thresholds and a sign-free first-merge length bound.
+- [`ExternalVerification1041CriticalGeometry/`](ExternalVerification1041CriticalGeometry/), global two-root critical proximity and exact straight-line obstructions.
+- [`ExternalVerification1041CollinearChord/`](ExternalVerification1041CollinearChord/), straight-chord selection from quantitative collinear critical-gap data.
+- [`ExternalVerification1041CyclicTrinomialFiber/`](ExternalVerification1041CyclicTrinomialFiber/), sublevel containment of trinomial root spokes.
+- [`ExternalVerification1041DiskFamilySeparation/`](ExternalVerification1041DiskFamilySeparation/), uniform disk-family critical-value separation thresholds and a sign-free connector-length bound.
+- [`ExternalVerification1041QuarticQuotientFiber/`](ExternalVerification1041QuarticQuotientFiber/), strict length budget below two for quotient-fibre root lifts.
+- [`ExternalVerification1041SolvedFamilies/`](ExternalVerification1041SolvedFamilies/), checked kernels for three completely solved polynomial families.
+- [`ExternalVerification1041TetranomialSpokes/`](ExternalVerification1041TetranomialSpokes/), coefficient and energy criteria forcing two safe tetranomial spokes.
+
+```sh
+lake build ExternalVerification1041FirstMergeCriticalValueSeparation Solutions.ExternalVerification1041FirstMergeCriticalValueSeparation
+lake build ExternalVerification1041CriticalGeometry Solutions.ExternalVerification1041CriticalGeometry
+lake build ExternalVerification1041CollinearChord Solutions.ExternalVerification1041CollinearChord
+lake build ExternalVerification1041CyclicTrinomialFiber Solutions.ExternalVerification1041CyclicTrinomialFiber
+lake build ExternalVerification1041DiskFamilySeparation Solutions.ExternalVerification1041DiskFamilySeparation
+lake build ExternalVerification1041QuarticQuotientFiber Solutions.ExternalVerification1041QuarticQuotientFiber
+lake build ExternalVerification1041SolvedFamilies Solutions.ExternalVerification1041SolvedFamilies
+lake build ExternalVerification1041TetranomialSpokes Solutions.ExternalVerification1041TetranomialSpokes
 ```
 
 ## How a contribution is checked

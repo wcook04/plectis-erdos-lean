@@ -30,8 +30,8 @@ project:
     square-resolved inverse branch, its univalence, the Bergman segment inequality,
     Pólya''s area-capacity inequality, and the exterior-fibre capacity gap that together
     produce the squared connector bound are ordinary proofs in the companion note.
-    Lean checks none of them. The squared bound enters both consumer declarations as
-    an explicit hypothesis, and no declaration here constructs it for any polynomial.
+    Lean checks none of them. The squared bound enters both consumer declarations
+    as an explicit hypothesis, and no declaration here constructs it for any polynomial.
     The companion note records Dubinin, Some inequalities for polynomials and rational
     functions associated with lemniscates, Journal of Mathematical Sciences 193 (2013)
     45 to 54, Theorem 1, as a relative Pólya inequality standing behind the area input,
@@ -78,8 +78,8 @@ sources:
 status:
   scope: Five compared declarations expose the uniform disk-family coefficient threshold,
     two named specializations, the sign-free squared-length consumer, and their composition.
-    Challenge.lean carries one intended specification sorry per compared theorem; the
-    proof-bearing source module is sorry-free.
+    Challenge.lean carries one intended specification sorry per compared theorem;
+    the proof-bearing source module is sorry-free.
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
@@ -96,24 +96,24 @@ status:
     comparator_config: ExternalVerification1041DiskFamilySeparation/comparator.json
     source_declaration: ErdosProblems.Erdos1041.diskFamilyCoefficient_lt_two_of_uniform_separation
     source_file: ErdosProblems/Erdos1041/DiskFamilyCriticalValueSeparation.lean
-    canonical_claim_status: exact source transport; axiom print pending the first public
-      CI run for this entry
+    canonical_claim_status: exact source transport; axiom print pending the first
+      public CI run for this entry
     novelty_status: unassessed
     literature_dependencies: []
     statement: For every integer n at least 3, every real S with 4/3 at most S and
       S at most 2, and every real p at least 0, (S / (n - 1))^(2/n) log((S^2 + S +
       p) / (S^2 - S + p)) < 2.
     contribution_class: uniform three-parameter coefficient threshold
-    boundary: The result consumes the analytic coefficient formula. It constructs no
-      inverse branch and performs no continuation.
+    boundary: The result consumes the analytic coefficient formula. It constructs
+      no inverse branch and performs no continuation.
   - declaration: Erdos249257.ExternalVerification1041DiskFamilySeparation.diskFamilyCoefficient_radius_two_lt_two
     file: Solutions/ExternalVerification1041DiskFamilySeparation.lean
     sorry_count: 0
     comparator_config: ExternalVerification1041DiskFamilySeparation/comparator.json
     source_declaration: ErdosProblems.Erdos1041.diskFamilyCoefficient_radius_two_lt_two
     source_file: ErdosProblems/Erdos1041/DiskFamilyCriticalValueSeparation.lean
-    canonical_claim_status: exact source transport; axiom print pending the first public
-      CI run for this entry
+    canonical_claim_status: exact source transport; axiom print pending the first
+      public CI run for this entry
     novelty_status: unassessed
     literature_dependencies: []
     statement: For every integer n at least 3, (2 / (n - 1))^(2/n) log 3 < 2.
@@ -126,8 +126,8 @@ status:
     comparator_config: ExternalVerification1041DiskFamilySeparation/comparator.json
     source_declaration: ErdosProblems.Erdos1041.diskFamilyCoefficient_three_six_fifths_lt_two
     source_file: ErdosProblems/Erdos1041/DiskFamilyCriticalValueSeparation.lean
-    canonical_claim_status: exact source transport; axiom print pending the first public
-      CI run for this entry
+    canonical_claim_status: exact source transport; axiom print pending the first
+      public CI run for this entry
     novelty_status: unassessed
     literature_dependencies: []
     statement: (3/5)^(2/3) log 11 < 2.
@@ -140,14 +140,14 @@ status:
     comparator_config: ExternalVerification1041DiskFamilySeparation/comparator.json
     source_declaration: ErdosProblems.Erdos1041.diskFamily_length_lt_two_of_squared_bound
     source_file: ErdosProblems/Erdos1041/DiskFamilyCriticalValueSeparation.lean
-    canonical_claim_status: exact source transport; axiom print pending the first public
-      CI run for this entry
+    canonical_claim_status: exact source transport; axiom print pending the first
+      public CI run for this entry
     novelty_status: unassessed
     literature_dependencies: []
-    statement: For every degree n and all real S, p and length, if length squared is
-      at most 2 (S / (n - 1))^(2/n) log((S^2 + S + p) / (S^2 - S + p)) and that coefficient
-      is below 2, then length is strictly below 2. No positivity or sign hypothesis
-      on the length is assumed.
+    statement: For every degree n and all real S, p and length, if length squared
+      is at most 2 (S / (n - 1))^(2/n) log((S^2 + S + p) / (S^2 - S + p)) and that
+      coefficient is below 2, then length is strictly below 2. No positivity or sign
+      hypothesis on the length is assumed.
     contribution_class: sign-free strict connector-length threshold consumer
     boundary: The squared-length estimate enters as an explicit hypothesis supplied
       by the ordinary analytic argument in the companion note.
@@ -157,14 +157,14 @@ status:
     comparator_config: ExternalVerification1041DiskFamilySeparation/comparator.json
     source_declaration: ErdosProblems.Erdos1041.diskFamily_length_lt_two_of_uniform_separation
     source_file: ErdosProblems/Erdos1041/DiskFamilyCriticalValueSeparation.lean
-    canonical_claim_status: exact source transport; axiom print pending the first public
-      CI run for this entry
+    canonical_claim_status: exact source transport; axiom print pending the first
+      public CI run for this entry
     novelty_status: unassessed
     literature_dependencies: []
     statement: For every integer n at least 3, every real S with 4/3 at most S and
-      S at most 2, every real p at least 0, and every real length whose square is at
-      most 2 (S / (n - 1))^(2/n) log((S^2 + S + p) / (S^2 - S + p)), the length is
-      strictly below 2.
+      S at most 2, every real p at least 0, and every real length whose square is
+      at most 2 (S / (n - 1))^(2/n) log((S^2 + S + p) / (S^2 - S + p)), the length
+      is strictly below 2.
     contribution_class: composed uniform threshold and connector consumer
     boundary: The squared connector bound remains a hypothesis. No polynomial, branch
       or connector is constructed.

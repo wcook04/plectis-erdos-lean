@@ -1,6 +1,6 @@
 {
   "_type": "https://in-toto.io/Statement/v1",
-  "generated_at": "2026-09-02T16:16:41Z",
+  "generated_at": "2026-09-06T13:54:50Z",
   "predicate": {
     "buildDefinition": {
       "buildType": "https://plectis.local/build-types/lean-standalone-export/v0",
@@ -10,19 +10,48 @@
         "source_root": "formal_math/erdos257_period_noncollapse",
         "standalone_repo": {
           "dependency_pin": {
-            "lean_toolchain": "leanprover/lean4:v4.29.0",
-            "mathlib_input_rev": "b301d257a1c13bc4e27350c06e5169b8b08a53ed",
+            "lake_manifest_version": "1.2.0",
+            "lean_toolchain": "leanprover/lean4:v4.30.0",
+            "mathlib_input_rev": "v4.30.0",
             "packages": {
+              "Cli": {
+                "inputRev": "v4.30.0",
+                "rev": "6b907cf12b2e445ccb7c24bc208ef04a1f39e84c"
+              },
+              "LeanSearchClient": {
+                "inputRev": "main",
+                "rev": "c5d5b8fe6e5158def25cd28eb94e4141ad97c843"
+              },
+              "Qq": {
+                "inputRev": "v4.30.0",
+                "rev": "a6e6c34c4ef182f83b219a3a5a385f51f44bdc4c"
+              },
+              "aesop": {
+                "inputRev": "v4.30.0",
+                "rev": "558915ae105bfd8074e22d597613d1961822adc2"
+              },
+              "batteries": {
+                "inputRev": "main",
+                "rev": "32dc18cde3684679f3c003de608743b57498c56f"
+              },
+              "importGraph": {
+                "inputRev": "main",
+                "rev": "515cf9d0c00ece5e661f6de4326a53dedc1e8ea1"
+              },
               "mathlib": {
-                "inputRev": "b301d257a1c13bc4e27350c06e5169b8b08a53ed",
-                "rev": "b301d257a1c13bc4e27350c06e5169b8b08a53ed"
+                "inputRev": "v4.30.0",
+                "rev": "c5ea00351c28e24afc9f0f84379aa41082b1188f"
+              },
+              "plausible": {
+                "inputRev": "main",
+                "rev": "a456461b368b71d2accd95234832cd9c174b5437"
               },
               "proofwidgets": {
-                "inputRev": "main",
-                "rev": "00fe208b8e1364736cca3a9b9601c4fe865856af"
+                "inputRev": "v0.0.99",
+                "rev": "a84b3e2475d5c5ab979567b1ad8aea21b764bcf8"
               }
             },
-            "why": "Palomar accepts a Mathlib revision only if it is an ancestor of mathlib4 master, and its Challenge renderer runs `lake exe cache get-` inside a no-network sandbox. Mathlib's cache tool on the v4.29.x line calls getProofWidgets from getFiles, which fetches the ProofWidgets cloud release from github.com, so cache discovery exits 1 and every render check fails at the workspace stage before a Challenge is read. mathlib4 PR #37290 removed that call, merged 2026-03-30 as b301d257a1c13bc4e27350c06e5169b8b08a53ed, which is on master, seven commits ahead of the v4.29.0 tag, and still declares leanprover/lean4:v4.29.0 in its own lean-toolchain. The release pins that commit and the dependency revisions from its own lake-manifest.json; the accepted toolchain does not move and the private project keeps its own pin and cache untouched. Diagnosis: docs/formal_math/palomar/palomar_renderability_diagnosis_2026_09_02.md."
+            "why": "Palomar accepts a Mathlib revision only if it is an ancestor of mathlib4 master, and its Challenge renderer runs `lake exe cache get` inside a no-network sandbox. Mathlib's cache client before the v4.30.0 tag downloads leantar from github.com inside that sandbox and fails, so every render check on the v4.29 line failed at the workspace stage; from v4.30.0 onward the cache client uses the leantar bundled in the Lean sysroot (docs/formal_math/palomar/palomar_toolchain_bump_2026_09_05.md). The release therefore pins leanprover/lean4:v4.30.0, Mathlib inputRev v4.30.0 (rev c5ea00351c28e24afc9f0f84379aa41082b1188f) and every transitive package at the revisions Lake 4.30 resolved in the v4.30 cut on 2026-09-05, with lake-manifest schema version 1.2.0, so the rendered lakefile and manifest match the cut byte for byte. Reconciliation plan: docs/formal_math/palomar/exporter_reconciliation_plan_20260906.json."
           },
           "directory_name": "plectis-erdos-lean",
           "display_name": "Plectis Erd\u0151s Lean",
@@ -42,31 +71,31 @@
       "internalParameters": {
         "non_claim_gate_status": "pass",
         "publication_ready_boolean": false,
-        "selected_file_count": 202,
-        "source_files_sha256": "db32ca43d466fba3037414156929e77f2d5d1bf525b3d13a703662fca707c091"
+        "selected_file_count": 313,
+        "source_files_sha256": "fd540147c7a0e4af1e83c951f78952e5084e328273c7d44671dd82bc29a94212"
       },
       "resolvedDependencies": [
         {
           "digest": {
-            "sha256": "05957124371adcf80cf79766081524523286774f5810666d9e08f86743188765"
+            "sha256": "25f5f5b7bf1bba3d2c718ef69023c5222b94cc1f3b0e5c22998d9e85bed8c19d"
           },
           "uri": "microcosm-substrate/docs/lean_formal_methods_os/release_topology_source_v0.json"
         },
         {
           "digest": {
-            "sha256": "db32ca43d466fba3037414156929e77f2d5d1bf525b3d13a703662fca707c091"
+            "sha256": "fd540147c7a0e4af1e83c951f78952e5084e328273c7d44671dd82bc29a94212"
           },
           "uri": "source_files_sha256"
         },
         {
           "digest": {
-            "sha256": "9070e6c9ecfd758316471de8b9bfd4a9fcaa3f4dc38fd33562bb0452216d4b6b"
+            "sha256": "48c00670762672b37a1860b0b1192d90d707ac047e7504a1d4828107cb6c902f"
           },
           "uri": "lake-manifest.json"
         },
         {
           "digest": {
-            "sha256": "651c8accb402b0c071cd336e9d3dc0a55516b1bfb434ddc4801f14936785b1d2"
+            "sha256": "54727eec5cba149c18842e6deb5c41b369d66455c93ce135d7d5347c782b2325"
           },
           "uri": "lean-toolchain"
         }
@@ -101,7 +130,7 @@
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "20ccbae81a00b57ed6775e83d17a9d2aa0a45a248ddde0a46656115091da210d"
+            "sha256": "24d57becd8c67f8d2a471c0ef1b35e3e73642d195e774014329efdabb541a509"
           },
           "name": "CITATION.cff"
         },
@@ -115,7 +144,7 @@
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "030d7af3317135676567ad499010d788728b38071ef23db9022f8e8f3a9b8fea"
+            "sha256": "82ecc638a12d9367c0c97150f85481571baf93a42709d4468e699921858e7a43"
           },
           "name": "ErdosProblems.lean"
         },
@@ -136,7 +165,7 @@
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "604ac0def438e9ffec9135d6271ce9b8a946af37135062d881579317bec63939"
+            "sha256": "8d75dfa41922178de132791c595d434e526e5213a324ac054973bbe0603c3614"
           },
           "name": "PROBLEMS.md"
         },
@@ -150,14 +179,14 @@
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "a1b6c99a5a7108df2520833421fbd0df8df61ebad1a6cf574d9e7b41a23d758b"
+            "sha256": "d6a38e1fd37a97bfd149824d4f740278b32fe23f3d11bdf7ceef86be5d69670f"
           },
           "name": "PlectisSnapshot/PublicAPI.lean"
         },
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "4b255325911771e7ec63572a8142b8b3c101db736e5ba836955096e27aa3eb8e"
+            "sha256": "7fd49416c184cf53b54a4f66fc1d562ec78e27c516c278bcb3bd14c606d32451"
           },
           "name": "README.md"
         },
@@ -171,7 +200,7 @@
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "36c3062225b9cbc1055c79a699f09613505b30322d896f8e5c5aca550f59e9ea"
+            "sha256": "db804052ed94468b74487e1506c7a2d1ea3a42a79ee7c77e34c2cb5468a3dec4"
           },
           "name": "lakefile.toml"
         },
@@ -185,7 +214,7 @@
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "83ec1eb8ce3d75d4e29c56f9fe122b6af41bcaeb656b933df7df96aa9c60d4c6"
+            "sha256": "cb991b45eb30453a3cedf4a88e6a40424679051440c2a58723654aa68b21fac1"
           },
           "name": "snapshot/CLAIM_TO_REFERENCE_MAP.json"
         },
@@ -199,21 +228,21 @@
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "89e303b016b9017802addc8aedd451130cd930e3dc106a0149c876411cb8d021"
+            "sha256": "e739402eacd8d7fecb2b7494368f5efeb857dbd234cb1c0fcebe0845175bb76d"
           },
           "name": "snapshot/PLECTIS_INTEGRATION.json"
         },
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "13c1ea55f5682c8a2d263fd19fb9b42cc5db1d1460222027fadf4f727975c80b"
+            "sha256": "08833e0f9a78a0def8d5795ccf9da04e69d3550c4f7d2d230ae6cb43f5e29b1e"
           },
           "name": "snapshot/PUBLIC_API_CONTRACT.json"
         },
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "0fbd3f7de12e04159bab8d0300bd8824ea89d8e917ef00b6d0add8d12ae20c16"
+            "sha256": "3e97bd6b15c06f96664d7b7b02db1a62fda794974632c6f819d215a18ad93981"
           },
           "name": "snapshot/PUBLIC_SNAPSHOT_MANIFEST.json"
         },
@@ -227,7 +256,7 @@
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "d0e73b146cfa2845e0baeb561affb989965a035857073108ce11683c377881d5"
+            "sha256": "2788b1dd1fa56945d1169a642addf286aef444bc34598b7f59a0c9ac2a74fd28"
           },
           "name": "snapshot/REFERENCES.yaml"
         },
@@ -241,13 +270,13 @@
         {
           "body_in_receipt": false,
           "digest": {
-            "sha256": "a6a1e5f05208474ed9f98d02c2e87a0b49aa8404eaa70a8c54253fefaac2b261"
+            "sha256": "f1c8494b1937bb1cf2a1d23593c6e7fac8ed472be834f85a4c38ca5ff4af7fa4"
           },
           "name": "snapshot/RELEASE_NOTES.md"
         }
       ],
       "metadata": {
-        "invocationFinishedOn": "2026-09-02T16:16:41Z",
+        "invocationFinishedOn": "2026-09-06T13:54:50Z",
         "reproducibilityBoundary": "public export source selection plus generated metadata"
       }
     }
@@ -257,9 +286,9 @@
   "subject": [
     {
       "digest": {
-        "sha256": "42205ba7751d1f3786df22a7da35d68d8c6f3e178ce69e7c0ecaafb8bd70ad34"
+        "sha256": "9e8b4a31a9394ac59f1df02585bae498cfd59f765d367c775fc19e8d28268722"
       },
-      "file_count": 223,
+      "file_count": 334,
       "name": "plectis-erdos-lean"
     }
   ],

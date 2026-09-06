@@ -80,7 +80,8 @@ status:
     sorry_count: 0
     comparator_config: ExternalVerification249RankOneSharpFloor/comparator.json
     canonical_claim_status: exact source transport; public CI axiom audit passed
-    local_proof_provenance: Source declaration in ErdosProblems/Erdos249/RankOneSharpFloor.lean.
+    local_proof_provenance: Source declaration rankOneSubrankQuotient_ge_one_five
+      in ErdosProblems/Erdos249/RankOneSharpFloor.lean.
     novelty_status: unassessed
     contribution_class: sharp positive rank-one cone obstruction
     statement: For all natural numbers e and Y with 1 ≤ e and 4 ≤ Y, Q(1,5) ≤ Q(e,Y).
@@ -93,7 +94,8 @@ status:
     sorry_count: 0
     comparator_config: ExternalVerification249RankOneSharpFloor/comparator.json
     canonical_claim_status: exact source transport; public CI axiom audit passed
-    local_proof_provenance: Source declaration in ErdosProblems/Erdos249/RankOneSharpFloor.lean.
+    local_proof_provenance: Source declaration rankOneSubrankQuotient_eq_one_five_iff
+      in ErdosProblems/Erdos249/RankOneSharpFloor.lean.
     novelty_status: unassessed
     contribution_class: sharp positive rank-one cone obstruction
     statement: For all natural numbers e and Y with 1 ≤ e and 4 ≤ Y, Q(e,Y) = Q(1,5)
@@ -106,7 +108,8 @@ status:
     sorry_count: 0
     comparator_config: ExternalVerification249RankOneSharpFloor/comparator.json
     canonical_claim_status: exact source transport; public CI axiom audit passed
-    local_proof_provenance: Source declaration in ErdosProblems/Erdos249/RankOneSharpFloor.lean.
+    local_proof_provenance: Source declaration rankOneSubrankQuotient_sub_theta_two_gt_twentyOne_div_threeTwenty
+      in ErdosProblems/Erdos249/RankOneSharpFloor.lean.
     novelty_status: unassessed
     contribution_class: sharp positive rank-one cone obstruction
     statement: For all natural numbers e and Y with 1 ≤ e and 4 ≤ Y, 21/320 < Q(e,Y)
@@ -120,7 +123,8 @@ status:
     sorry_count: 0
     comparator_config: ExternalVerification249RankOneSharpFloor/comparator.json
     canonical_claim_status: exact source transport; public CI axiom audit passed
-    local_proof_provenance: Source declaration in ErdosProblems/Erdos249/RankOneSharpFloor.lean.
+    local_proof_provenance: Source declaration rankOneSubrankQuotient_sub_theta_two_gt_one_div_sixteen
+      in ErdosProblems/Erdos249/RankOneSharpFloor.lean.
     novelty_status: unassessed
     contribution_class: sharp positive rank-one cone obstruction
     statement: For all natural numbers e and Y with 1 ≤ e and 4 ≤ Y, 1/16 < Q(e,Y)
@@ -133,7 +137,8 @@ status:
     sorry_count: 0
     comparator_config: ExternalVerification249RankOneSharpFloor/comparator.json
     canonical_claim_status: exact source transport; public CI axiom audit passed
-    local_proof_provenance: Source declaration in ErdosProblems/Erdos249/RankOneSharpFloor.lean.
+    local_proof_provenance: Source declaration not_forall_rankOneSubrankQuotient_sub_theta_two_gt_one_div_fifteen
+      in ErdosProblems/Erdos249/RankOneSharpFloor.lean.
     novelty_status: unassessed
     contribution_class: sharp positive rank-one cone obstruction
     statement: The uniform bound 1/15 < Q(e,Y) - Θ₂ for all natural numbers e and
@@ -147,7 +152,8 @@ status:
     sorry_count: 0
     comparator_config: ExternalVerification249RankOneSharpFloor/comparator.json
     canonical_claim_status: exact source transport; public CI axiom audit passed
-    local_proof_provenance: Source declaration in ErdosProblems/Erdos249/RankOneSharpFloor.lean.
+    local_proof_provenance: Source declaration positive_direct_sum_sub_theta_two_gt_twentyOne_div_threeTwenty
+      in ErdosProblems/Erdos249/RankOneSharpFloor.lean.
     novelty_status: unassessed
     contribution_class: sharp positive rank-one cone obstruction
     statement: For a nonempty finite index set s, real weights w with w i positive
@@ -161,7 +167,8 @@ status:
     sorry_count: 0
     comparator_config: ExternalVerification249RankOneSharpFloor/comparator.json
     canonical_claim_status: exact source transport; public CI axiom audit passed
-    local_proof_provenance: Source declaration in ErdosProblems/Erdos249/RankOneSharpFloor.lean.
+    local_proof_provenance: Source declaration primitive_form_abs_gt_twentyOne_div_threeTwenty
+      in ErdosProblems/Erdos249/RankOneSharpFloor.lean.
     novelty_status: unassessed
     contribution_class: sharp positive rank-one cone obstruction
     statement: For natural numbers e, Y, q and an integer p with 1 ≤ e, 4 ≤ Y, 1 ≤
@@ -195,7 +202,7 @@ automation:
     models: []
     framework: Lean kernel
     tool_setup: Public CI axiom audit over every compared declaration with the pinned
-      toolchain
+      toolchain.
   notes: Human mathematical review remains separate from Lean checking, Comparator
     preparation, and any future Palomar editorial review.
 fidelity:

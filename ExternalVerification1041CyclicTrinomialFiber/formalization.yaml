@@ -1,29 +1,28 @@
 version: v0.4
 project:
   name: 'Erdős #1041: sublevel containment of trinomial root spokes'
-  description: >-
-    Write f(z) = z^m + a z^r + c over the complex numbers, let w satisfy f(w) = 0, and
-    call the spoke of w the segment of points u w for real u in [0,1] running from the
-    origin to the root. Five declarations are compared. The sharpest is an exact
-    sublevel containment: for all natural numbers r ≤ m, all complex a, c, w with
-    f(w) = 0 and ‖w‖^m ≤ ‖c‖, and every real u in [0,1], the value
-    u^m w^m + a u^r w^r + c, which is f at the point u w, satisfies
-    ‖f(u w)‖ ≤ ‖c‖. The whole spoke of such a root lies in the sublevel set of the
-    constant term, ‖f‖ ≤ ‖f(0)‖. That statement assumes neither 1 ≤ r nor ‖c‖ < 1 nor
-    ‖w‖ < 1, and the hypothesis ‖w‖^m ≤ ‖c‖ on the root is an additional condition that
-    the open-disk hypotheses do not supply. Imposing ‖c‖ < 1 on the same root turns the
-    bound into ‖f(u w)‖ < 1 on the whole spoke. A further declaration reaches every root
-    of the trinomial under a different hypothesis set: for 1 ≤ r ≤ m, ‖w‖ < 1 and
-    ‖c‖ < 1 give ‖f(u w)‖ < 1 for every u in [0,1], so each such root supplies a
-    complete radial displacement whose image stays strictly inside the unit lemniscate.
-    No condition on the middle coefficient a appears in any of these statements. The
-    mechanism is an exact factorisation that eliminates a at the root: for every real u,
-    f(u w) = (1 - u^r) c - (u^r - u^m) w^m. The fifth declaration records the metric
-    budget consumed downstream, that two complex numbers of modulus below one have
-    moduli summing to less than two, which is the threshold appearing in Erdős #1041.
-    The subject is the geometry of polynomial lemniscates, of interest to geometric
-    function theory; novelty is unassessed. Fibre selection, assembly of the selected
-    displacements into a lifted path, and Erdős Problem 1041 itself remain outside Lean.
+  description: 'Write f(z) = z^m + a z^r + c over the complex numbers, let w satisfy
+    f(w) = 0, and call the spoke of w the segment of points u w for real u in [0,1]
+    running from the origin to the root. Five declarations are compared. The sharpest
+    is an exact sublevel containment: for all natural numbers r ≤ m, all complex a,
+    c, w with f(w) = 0 and ‖w‖^m ≤ ‖c‖, and every real u in [0,1], the value u^m w^m
+    + a u^r w^r + c, which is f at the point u w, satisfies ‖f(u w)‖ ≤ ‖c‖. The whole
+    spoke of such a root lies in the sublevel set of the constant term, ‖f‖ ≤ ‖f(0)‖.
+    That statement assumes neither 1 ≤ r nor ‖c‖ < 1 nor ‖w‖ < 1, and the hypothesis
+    ‖w‖^m ≤ ‖c‖ on the root is an additional condition that the open-disk hypotheses
+    do not supply. Imposing ‖c‖ < 1 on the same root turns the bound into ‖f(u w)‖
+    < 1 on the whole spoke. A further declaration reaches every root of the trinomial
+    under a different hypothesis set: for 1 ≤ r ≤ m, ‖w‖ < 1 and ‖c‖ < 1 give ‖f(u
+    w)‖ < 1 for every u in [0,1], so each such root supplies a complete radial displacement
+    whose image stays strictly inside the unit lemniscate. No condition on the middle
+    coefficient a appears in any of these statements. The mechanism is an exact factorisation
+    that eliminates a at the root: for every real u, f(u w) = (1 - u^r) c - (u^r -
+    u^m) w^m. The fifth declaration records the metric budget consumed downstream,
+    that two complex numbers of modulus below one have moduli summing to less than
+    two, which is the threshold appearing in Erdős #1041. The subject is the geometry
+    of polynomial lemniscates, of interest to geometric function theory; novelty is
+    unassessed. Fibre selection, assembly of the selected displacements into a lifted
+    path, and Erdős Problem 1041 itself remain outside Lean.'
   authors:
   - Will Cook
   license: Apache-2.0
@@ -85,9 +84,9 @@ status:
     canonical_claim_status: exact source transport; axiom print pending the next public
       CI run
     novelty_status: unassessed
-    boundary: Requires the root hypothesis ‖w‖^m ≤ ‖c‖, which the open-disk hypotheses
+    boundary: 'Requires the root hypothesis ‖w‖^m ≤ ‖c‖, which the open-disk hypotheses
       do not supply; formalizes no fibre selection, no lifted-path assembly, and no
-      part of unrestricted Erdős #1041.
+      part of unrestricted Erdős #1041.'
   - declaration: Erdos249257.ExternalVerification1041CyclicTrinomialFiber.trinomialRoot_spoke_norm_lt_one
     file: Solutions/ExternalVerification1041CyclicTrinomialFiber.lean
     sorry_count: 0

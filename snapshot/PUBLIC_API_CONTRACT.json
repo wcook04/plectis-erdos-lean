@@ -42,8 +42,8 @@
   ],
   "plectis_consumption_mode": "pointer_only_until_public_tag",
   "schema": "plectis_lean_public_api_contract_v0",
-  "source_file_count": 202,
-  "source_snapshot_sha256": "4c29b84e5839aa9ff3283c5933095d8af682fe744dcc5a080fef32c798d5fe12",
+  "source_file_count": 313,
+  "source_snapshot_sha256": "84905119c4ffb37c33e4cb2a003fe25c076e7be91f01b770ff80b214d6b2a6fb",
   "stable_metadata_files": [
     "snapshot/PLECTIS_INTEGRATION.json",
     "snapshot/PUBLIC_SNAPSHOT_MANIFEST.json",

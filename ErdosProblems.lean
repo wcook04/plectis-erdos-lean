@@ -1,10 +1,12 @@
 -- Root module for the ErdosProblems library as shipped in this release.
 -- Generated from the launch closure: exactly the modules the launch entries import.
 
+import ErdosProblems.Erdos1041.CollinearRootCase
 import ErdosProblems.Erdos1041.CriticalTwoRootProximity
 import ErdosProblems.Erdos1041.CubicQuotientFiberCase
 import ErdosProblems.Erdos1041.CyclicTetranomialCoefficientCase
 import ErdosProblems.Erdos1041.CyclicTrinomialFiberCase
+import ErdosProblems.Erdos1041.DiskFamilyCriticalValueSeparation
 import ErdosProblems.Erdos1041.FirstMergeCriticalValueSeparation
 import ErdosProblems.Erdos1041.PrimitiveQuinticBoundaryTail
 import ErdosProblems.Erdos1041.PrimitiveQuinticInteriorTail
@@ -19,17 +21,41 @@ import ErdosProblems.Erdos1049.AdelicHeightBridge
 import ErdosProblems.Erdos1049.BezoutPluckerJets
 import ErdosProblems.Erdos1049.HermitePadeNoGo
 import ErdosProblems.Erdos1049.QAperyTailDenominator
+import ErdosProblems.Erdos1049.RationalBaseContour
 import ErdosProblems.Erdos1049.RationalBaseLambert
 import ErdosProblems.Erdos1049.TwoSelectorRemainderEscape
 import ErdosProblems.Erdos1049.ZudilinConeArithmetic
 import ErdosProblems.Erdos1049.ZudilinHeightRegion
 import ErdosProblems.Erdos243.ReciprocalTailRigidity
 import ErdosProblems.Erdos249.CyclotomicAnchoredKill
+import ErdosProblems.Erdos249.MobiusMersenneLadderSeparation
+import ErdosProblems.Erdos249.ParityPerturbedRationalControl
 import ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature
 import ErdosProblems.Erdos249.RankOneSharpFloor
 import ErdosProblems.Erdos249.RankOneSubrankObstruction
+import ErdosProblems.Erdos249.ResidueClassTotientSeries
+import ErdosProblems.Erdos251.BoundedPerturbationCountermodel
+import ErdosProblems.Erdos251.FreePairReduction
+import ErdosProblems.Erdos251.KernelDenominatorFloor
+import ErdosProblems.Erdos251.OrderLatticeDiagonal
+import ErdosProblems.Erdos251.PolynomialGapSeriesValue
 import ErdosProblems.Erdos251.PrimeGapDyadicTail
+import ErdosProblems.Erdos257.MersenneSubseriesRigidity
+import ErdosProblems.Erdos269.BlockMassEngines
+import ErdosProblems.Erdos269.BoundedRadixTailEscape
+import ErdosProblems.Erdos269.CofinalWindowEscapeEquivalence
+import ErdosProblems.Erdos269.DyadicBlockMassIdentity
+import ErdosProblems.Erdos269.DyadicBlockThresholdPartition
+import ErdosProblems.Erdos269.DyadicOrderedTailRecurrence
+import ErdosProblems.Erdos269.DyadicRadixTailEscape
+import ErdosProblems.Erdos269.DyadicShellSummability
+import ErdosProblems.Erdos269.IntegralBranchExtinction
 import ErdosProblems.Erdos269.KernelCarryRank
+import ErdosProblems.Erdos269.NormalizedStateWidth
+import ErdosProblems.Erdos269.RationalLatticeReduction
+import ErdosProblems.Erdos269.RationalityCarryBridge
+import ErdosProblems.Erdos269.ResidueEscape
+import ErdosProblems.Erdos269.RestrictedFloorSum
 import ErdosProblems.Erdos269.ThreePrimeRunningLcm
 import ErdosProblems.Erdos68.CanonicalFactorialDigits
 import ErdosProblems.Erdos68.CarryCongruenceNormalForm

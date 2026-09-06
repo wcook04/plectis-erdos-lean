@@ -1,7 +1,29 @@
 version: v0.4
 project:
   name: 'Erdős #68 companion-orbit rationality boundary'
-  description: "Irrationality of the Erdős #68 series S = sum over d at least 2 of 1/(d! - 1) is equivalent to a cofinal failure of one integer divisibility test on exact rational prefixes. Write H_m for the exact rational partial sum of S through index m, and write Z_m for the least integer strictly greater than m! H_m. The series is irrational exactly when m divides Z_m fails for cofinally many m. The series is rational exactly when the carry of the strict-successor recurrence equals one for all sufficiently large m, and at every index m at least 3 a unit carry is equivalent to m dividing Z_m. That reformulation carries no real approximation, no prime restriction, and no residual rounding hypothesis. A second coordinate states the same boundary as a factorial orbit. With the fixed companion constant C = sum over n at least 2 of 1/(n!(n! - 1)), the series is rational exactly when floor(m! C) is congruent to -2 modulo m for all sufficiently large m, and irrational exactly when that residue is missed cofinally. The orbit criterion is proved at every real base point x: the number x + (e - 2) is rational exactly when the canonical factorial digits of x are eventually m - 2, equivalently when floor(m! x) is congruent to -2 modulo m eventually. The evaluation sum over n at least 2 of 1/n! = e - 2 supplies the shift that makes C the companion of S. Every statement is an exact equivalence in both directions. The compared declarations produce no cofinal non-unit carry, no cofinal divisibility failure, and no cofinal miss of the exceptional residue, so they leave the irrationality of S undecided and Erdős #68 open. The generic statement is proved at an arbitrary real base point. Specialisation to other members of the shifted family sum over n at least 2 of 1/(n! + t) is recorded elsewhere in the corpus and is outside this entry."
+  description: 'Irrationality of the Erdős #68 series S = sum over d at least 2 of
+    1/(d! - 1) is equivalent to a cofinal failure of one integer divisibility test
+    on exact rational prefixes. Write H_m for the exact rational partial sum of S
+    through index m, and write Z_m for the least integer strictly greater than m!
+    H_m. The series is irrational exactly when m divides Z_m fails for cofinally many
+    m. The series is rational exactly when the carry of the strict-successor recurrence
+    equals one for all sufficiently large m, and at every index m at least 3 a unit
+    carry is equivalent to m dividing Z_m. That reformulation carries no real approximation,
+    no prime restriction, and no residual rounding hypothesis. A second coordinate
+    states the same boundary as a factorial orbit. With the fixed companion constant
+    C = sum over n at least 2 of 1/(n!(n! - 1)), the series is rational exactly when
+    floor(m! C) is congruent to -2 modulo m for all sufficiently large m, and irrational
+    exactly when that residue is missed cofinally. The orbit criterion is proved at
+    every real base point x: the number x + (e - 2) is rational exactly when the canonical
+    factorial digits of x are eventually m - 2, equivalently when floor(m! x) is congruent
+    to -2 modulo m eventually. The evaluation sum over n at least 2 of 1/n! = e -
+    2 supplies the shift that makes C the companion of S. Every statement is an exact
+    equivalence in both directions. The compared declarations produce no cofinal non-unit
+    carry, no cofinal divisibility failure, and no cofinal miss of the exceptional
+    residue, so they leave the irrationality of S undecided and Erdős #68 open. The
+    generic statement is proved at an arbitrary real base point. Specialisation to
+    other members of the shifted family sum over n at least 2 of 1/(n! + t) is recorded
+    elsewhere in the corpus and is outside this entry.'
   authors:
   - Will Cook
   license: Apache-2.0

@@ -42,7 +42,8 @@ sources:
   - Will Cook
   type: original-proof
   relationship: other
-  note: Lean source in ErdosProblems/Erdos243/ReciprocalTailRigidity.lean.
+  note: Lean source in ErdosProblems/Erdos243/ReciprocalTailRigidity.lean, declarations
+    no_boundedRise_of_tailAvoidance, no_boundedRise_reducedTail and no_eventuallyBoundedRise_reducedTail.
   license: Apache-2.0
   author_endorsement: participated
 - title: Irrationality of the reciprocal sum of doubly exponential sequences
@@ -52,7 +53,8 @@ sources:
   type: preprint
   relationship: background
   note: Lemma 15 records the modular recurrence that is the nearest located antecedent
-    for the bounded-rise barrier. The barrier proved here is independent of that lemma.
+    for the bounded-rise barrier, per the prior-art disposition F3c_243_crt_bounded_rise_barrier
+    audited 2026-09-02. The barrier proved here is independent of that lemma.
   license: unknown
   author_endorsement: not-contacted
 - title: 'Erdős Problem #243'
@@ -161,7 +163,8 @@ review:
   reviewers: []
   notes: Source statements, strongest-first Comparator order, source routes, and the
     open conditional boundary were reviewed against ErdosProblems/Erdos243/ReciprocalTailRigidity.lean.
-    The three selected source declarations were read and are sorry-free. No Lean elaboration,
+    The three selected source declarations were read and are sorry-free, and the module
+    is md5-identical in the private corpus and the release tree. No Lean elaboration,
     axiom audit, or Comparator replay was run for this entry, so the axiom set and
     claim status are recorded as unverified.
 alignment:

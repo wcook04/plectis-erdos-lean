@@ -1,37 +1,36 @@
 version: v0.4
 project:
   name: 'Erdős #251: free-pair equivalence for the actual prime-gap dyadic series'
-  description: >-
-    The dyadic series over the actual consecutive prime gaps is irrational if and only
-    if for every positive modulus t and every cutoff there are two indices beyond the
-    cutoff, congruent modulo t, whose scaled real tails differ by a non-integer. The
-    scaled real tail at index N is 2^(N+1) times the sum of the series terms from index
-    N+1 onwards, and the pair offset is free, so the criterion ranges over every pair of
-    congruent indices beyond the cutoff. This is an equivalence whose left side is
-    Erdős Problem 251 itself. Seven declarations are compared. The same equivalence
+  description: 'The dyadic series over the actual consecutive prime gaps is irrational
+    if and only if for every positive modulus t and every cutoff there are two indices
+    beyond the cutoff, congruent modulo t, whose scaled real tails differ by a non-integer.
+    The scaled real tail at index N is 2^(N+1) times the sum of the series terms from
+    index N+1 onwards, and the pair offset is free, so the criterion ranges over every
+    pair of congruent indices beyond the cutoff. This is an equivalence whose left
+    side is Erdős Problem 251 itself. Seven declarations are compared. The same equivalence
     holds for every real orbit T satisfying T(N+1) = 2 T(N) - g(N+1) with integer
-    digits g: irrationality of T(0) is equivalent to the free-pair criterion for T. On
-    every such orbit the free-pair criterion is equivalent to the fixed-offset
-    criterion that every positive shift length h admits arbitrarily late basepoints N
-    with T(N+h) - T(N) a non-integer, so the free-offset form and the fixed-offset form
-    are interchangeable on these orbits. The rational side is exact: every rational-valued
+    digits g: irrationality of T(0) is equivalent to the free-pair criterion for T.
+    On every such orbit the free-pair criterion is equivalent to the fixed-offset
+    criterion that every positive shift length h admits arbitrarily late basepoints
+    N with T(N+h) - T(N) a non-integer, so the free-offset form and the fixed-offset
+    form are interchangeable on these orbits. The rational side is exact: every rational-valued
     orbit satisfying the same recurrence over the rationals has a cutoff N₀ and a
-    positive modulus t such that, for all indices N and M beyond N₀, T(M) - T(N) is an
-    integer exactly when N is congruent to M modulo t. The modulus is identified: at a
-    basepoint N₀ whose reduced denominator is odd, T(M) - T(N) is an integer exactly
-    when N is congruent to M modulo the multiplicative order of 2 in the ring of
-    integers modulo that denominator. The integral pairs of a rational orbit are
-    therefore one congruence lattice. Two declarations connect the abstract layer to
-    the actual series: the scaled real tails of the prime-gap series satisfy the
-    integer-digit recurrence with the actual consecutive prime gaps as digits, and the
-    initial scaled tail equals 2S - 1 with S the value of the series. Priority for the
-    argument has not been assessed. The closest published statement located is
-    J.-C. Schlage-Puchta, The irrationality of some number theoretical series,
+    positive modulus t such that, for all indices N and M beyond N₀, T(M) - T(N) is
+    an integer exactly when N is congruent to M modulo t. The modulus is identified:
+    at a basepoint N₀ whose reduced denominator is odd, T(M) - T(N) is an integer
+    exactly when N is congruent to M modulo the multiplicative order of 2 in the ring
+    of integers modulo that denominator. The integral pairs of a rational orbit are
+    therefore one congruence lattice. Two declarations connect the abstract layer
+    to the actual series: the scaled real tails of the prime-gap series satisfy the
+    integer-digit recurrence with the actual consecutive prime gaps as digits, and
+    the initial scaled tail equals 2S - 1 with S the value of the series. Priority
+    for the argument has not been assessed. The closest published statement located
+    is J.-C. Schlage-Puchta, The irrationality of some number theoretical series,
     arXiv:1105.1451, whose Theorem 2 treats periodic base-b digit expansions and whose
     Theorem 3 treats linear independence for the series of p_n^k / n!, and neither
-    theorem concerns a dyadic tail recurrence. No declaration exhibits a congruent pair
-    of indices with non-integral tail difference for the actual prime gaps. The
-    equivalence supplies no such pair, and Erdős Problem 251 is not decided here.
+    theorem concerns a dyadic tail recurrence. No declaration exhibits a congruent
+    pair of indices with non-integral tail difference for the actual prime gaps. The
+    equivalence supplies no such pair, and Erdős Problem 251 is not decided here.'
   authors:
   - Will Cook
   license: Apache-2.0
@@ -59,9 +58,9 @@ sources:
   type: preprint
   relationship: background
   note: Nearest located published equivalence in this neighbourhood; Theorem 2 covers
-    periodic base-b digit expansions and Theorem 3 covers linear independence for the
-    series of p_n^k / n!, and both concern a different object from the dyadic tail
-    recurrence used here.
+    periodic base-b digit expansions and Theorem 3 covers linear independence for
+    the series of p_n^k / n!, and both concern a different object from the dyadic
+    tail recurrence used here.
   license: unknown
   author_endorsement: not-contacted
 - title: 'Erdős Problem #251'
@@ -180,9 +179,9 @@ automation:
     framework: Lean 4 and Mathlib
     tool_setup: AI-assisted formalization, verification packaging, and exposition
 fidelity:
-  divergences: The challenge reproduces the prime-gap definitions, the dyadic
-    recurrence vocabulary, and seven exact source statements without asserting any
-    producer of a nonintegral congruent pair.
+  divergences: The challenge reproduces the prime-gap definitions, the dyadic recurrence
+    vocabulary, and seven exact source statements without asserting any producer of
+    a nonintegral congruent pair.
 review:
   status: self-assessed
   reviewers: []

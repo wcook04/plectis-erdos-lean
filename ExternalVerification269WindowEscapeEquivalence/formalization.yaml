@@ -2,40 +2,39 @@ version: v0.4
 project:
   name: 'Erdős #269: the cofinal local-window escape is equivalent to irrationality
     of the three-prime running-LCM value'
-  description: >-
-    The actual cofinal local-window escape for the {2,3,5} dyadic shell orbit is
-    equivalent to irrationality of the running-LCM value, with no hypotheses.
+  description: 'The actual cofinal local-window escape for the {2,3,5} dyadic shell
+    orbit is equivalent to irrationality of the running-LCM value, with no hypotheses.
     Write H(x) = 2^(log 2 x) 3^(log 3 x) 5^(log 5 x) for the three-prime running-LCM
     height, let the dyadic shell at index a be the set of exponent triples (i,j,k)
-    with 2^a <= 2^i 3^j 5^k < 2^(a+1), let the shell mass be the sum of 1/H(2^i 3^j 5^k)
-    over that shell, and let S(a) be the sum of the shell masses from index a onward.
-    The actual radix word b(a) is 2 times 3 or 1 according to whether a pure 3-power
-    lies strictly inside the dyadic block, times 5 or 1 according to whether a pure
-    5-power does; the actual ordered digit m(a) is the shell cardinality corrected by
-    the two threshold counts with the suffix coefficients 10 and 4 when the 3-jump
-    precedes the 5-jump and 2 and 12 in the reverse order. The escape proposition at
-    a short bound sb asserts that for every positive B coprime to 30 and every
+    with 2^a <= 2^i 3^j 5^k < 2^(a+1), let the shell mass be the sum of 1/H(2^i 3^j
+    5^k) over that shell, and let S(a) be the sum of the shell masses from index a
+    onward. The actual radix word b(a) is 2 times 3 or 1 according to whether a pure
+    3-power lies strictly inside the dyadic block, times 5 or 1 according to whether
+    a pure 5-power does; the actual ordered digit m(a) is the shell cardinality corrected
+    by the two threshold counts with the suffix coefficients 10 and 4 when the 3-jump
+    precedes the 5-jump and 2 and 12 in the reverse order. The escape proposition
+    at a short bound sb asserts that for every positive B coprime to 30 and every
     starting index there are lo at least that index and a positive window length len
-    for which the window base is nonzero and the least positive residue of
-    -B times the window forcing modulo the absolute window base exceeds sb B (lo+len);
-    the actual escape is this proposition at the radix word b, the digit m, and the
-    short bound B times 90 (n+1)^2. Eight declarations are compared. The actual escape
-    holds if and only if S(0) is irrational, and if and only if S(1) is irrational.
-    Irrationality of S(1) implies the escape at every short bound sb admitting a
-    function c with sb B n at most c B (n+1)^2, which covers the actual short bound
-    and every rescaling and sharpening of it inside the quadratic family. A rational
-    value S(1) = p/q with q positive yields a positive B coprime to 30, a finite onset
-    a0, and an integer sequence d satisfying d(n+1) = b(n) d(n) - B m(n),
-    0 < d(n), and |d(n)| at most B times 90 (n+1)^2 for every n at least a0. The
-    normalized state X(a) = (H(2^a)/2) S(a) satisfies the exact window identity
-    X(lo+len) = W X(lo) - F for the integer window base W and window forcing F of b
-    and m. If that residue at (lo, len) is at most K and K is at least
-    B times 90 (lo+len+1)^2, then B X(lo) lies within K / 2^len of an integer, for
-    every K meeting the width condition and with no growth condition on K. For all c
-    and lo there is a positive len with c (lo+len+1)^2 < 2^len. The equivalence
-    establishes that the escape proposition is exactly as strong as the target, so
-    proving it is proving Erdős #269. It proves neither side. Erdős #269 remains open,
-    and nothing here bounds, computes, or decides the irrationality of S(0).
+    for which the window base is nonzero and the least positive residue of -B times
+    the window forcing modulo the absolute window base exceeds sb B (lo+len); the
+    actual escape is this proposition at the radix word b, the digit m, and the short
+    bound B times 90 (n+1)^2. Eight declarations are compared. The actual escape holds
+    if and only if S(0) is irrational, and if and only if S(1) is irrational. Irrationality
+    of S(1) implies the escape at every short bound sb admitting a function c with
+    sb B n at most c B (n+1)^2, which covers the actual short bound and every rescaling
+    and sharpening of it inside the quadratic family. A rational value S(1) = p/q
+    with q positive yields a positive B coprime to 30, a finite onset a0, and an integer
+    sequence d satisfying d(n+1) = b(n) d(n) - B m(n), 0 < d(n), and |d(n)| at most
+    B times 90 (n+1)^2 for every n at least a0. The normalized state X(a) = (H(2^a)/2)
+    S(a) satisfies the exact window identity X(lo+len) = W X(lo) - F for the integer
+    window base W and window forcing F of b and m. If that residue at (lo, len) is
+    at most K and K is at least B times 90 (lo+len+1)^2, then B X(lo) lies within
+    K / 2^len of an integer, for every K meeting the width condition and with no growth
+    condition on K. For all c and lo there is a positive len with c (lo+len+1)^2 <
+    2^len. The equivalence establishes that the escape proposition is exactly as strong
+    as the target, so proving it is proving Erdős #269. It proves neither side. Erdős
+    #269 remains open, and nothing here bounds, computes, or decides the irrationality
+    of S(0).'
   authors:
   - Will Cook
   license: Apache-2.0
@@ -79,9 +78,9 @@ sources:
   license: unknown
   author_endorsement: not-contacted
   note: The identity expressing the running least common multiple of a smooth prefix
-    as the product of the maximal pure prime powers is due to Steve Fan in the
-    erdosproblems.com/269 comment of 26 June 2026. It supplies the reading of H as a
-    running LCM. No declaration compared here is that identity.
+    as the product of the maximal pure prime powers is due to Steve Fan in the erdosproblems.com/269
+    comment of 26 June 2026. It supplies the reading of H as a running LCM. No declaration
+    compared here is that identity.
 - title: Mathlib
   authors:
   - The mathlib contributors
@@ -127,8 +126,8 @@ status:
     local_proof_provenance: ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean
     novelty_status: unassessed
     contribution_class: quadratic-family form of the forward implication
-    boundary: Requires a quadratic dominating function for the short bound. Says
-      nothing about short bounds of higher growth.
+    boundary: Requires a quadratic dominating function for the short bound. Says nothing
+      about short bounds of higher growth.
     literature_dependencies: []
   - declaration: Erdos249257.ExternalVerification269WindowEscapeEquivalence.exists_reducedCarry_of_value_eq_rat
     file: Solutions/ExternalVerification269WindowEscapeEquivalence.lean
@@ -149,8 +148,8 @@ status:
     local_proof_provenance: ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean
     novelty_status: unassessed
     contribution_class: exact residue pinning at an arbitrary admissible short bound
-    boundary: Requires the short bound to dominate the state width. A finite
-      approximation statement with no irrationality conclusion.
+    boundary: Requires the short bound to dominate the state width. A finite approximation
+      statement with no irrationality conclusion.
     literature_dependencies: []
   - declaration: Erdos249257.ExternalVerification269WindowEscapeEquivalence.trueNormalizedState_window
     file: Solutions/ExternalVerification269WindowEscapeEquivalence.lean
@@ -160,8 +159,7 @@ status:
     local_proof_provenance: ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean
     novelty_status: unassessed
     contribution_class: exact real window identity for the genuine normalized state
-    boundary: A structural identity holding for every window. No irrationality
-      conclusion.
+    boundary: A structural identity holding for every window. No irrationality conclusion.
     literature_dependencies: []
 automation:
   methods:
@@ -186,8 +184,8 @@ automation:
 fidelity:
   divergences: The Challenge copies the literal source definitions of the shell orbit,
     the compressed radix word, the ordered block digit, the window algebra, and the
-    escape proposition, together with the eight exact source conclusions. It adds no
-    analytic or irrationality consequence.
+    escape proposition, together with the eight exact source conclusions. It adds
+    no analytic or irrationality consequence.
 review:
   status: self-assessed
   reviewers: []

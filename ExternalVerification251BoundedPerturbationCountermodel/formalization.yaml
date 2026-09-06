@@ -2,34 +2,32 @@ version: v0.4
 project:
   name: 'Erdős #251: bounded-perturbation countermodel anchored at the actual prime
     gaps'
-  description: >-
-    For every positive integer M and every natural number K there are digits δ(n) in
-    {0, 1}, all zero for n below K, such that the dyadic series over the perturbed
-    actual prime gaps, the sum of (g(n) + M δ(n)) / 2^(n+1) with g(n) = p_(n+1) - p_n
-    and p_0 = 2, has a value that fails to be irrational. The same digits carry an
-    explicit rational r with the sum of (g(n) + M δ(n)) / 2^(n+1) equal to r. Every
-    perturbed gap satisfies g(n) ≤ g(n) + M δ(n) ≤ g(n) + M together with
-    (g(n) + M δ(n)) mod M = g(n) mod M, so the perturbation raises each gap by at most
-    M and preserves every gap modulo M. The mechanism is proved for an arbitrary
+  description: 'For every positive integer M and every natural number K there are
+    digits δ(n) in {0, 1}, all zero for n below K, such that the dyadic series over
+    the perturbed actual prime gaps, the sum of (g(n) + M δ(n)) / 2^(n+1) with g(n)
+    = p_(n+1) - p_n and p_0 = 2, has a value that fails to be irrational. The same
+    digits carry an explicit rational r with the sum of (g(n) + M δ(n)) / 2^(n+1)
+    equal to r. Every perturbed gap satisfies g(n) ≤ g(n) + M δ(n) ≤ g(n) + M together
+    with (g(n) + M δ(n)) mod M = g(n) mod M, so the perturbation raises each gap by
+    at most M and preserves every gap modulo M. The mechanism is proved for an arbitrary
     natural-digit dyadic series: if the sum of g(n) / 2^(n+1) is S, then for every
-    M ≥ 1, every K, and every real r with S < r < S + M / 2^K there are digits δ(n) in
-    {0, 1}, all zero for n below K, with the sum of (g(n) + M δ(n)) / 2^(n+1) equal to
-    r. The digit supply is the binary expansion: for 0 ≤ D < 1 the digits
-    ⌊2^(n+1) D⌋ - 2⌊2^n D⌋ sum to D against the weights 2^(-(n+1)).
-    The five compared declarations are statements about perturbed gap sequences and
-    about the binary expansion. They determine no value of the sum of g(n) / 2^(n+1),
-    and Erdős Problem 251 is undecided here. The consequence they support is a
-    strategy-elimination statement: a hypothesis on a gap sequence that is preserved by
-    the replacement of g(n) with g(n) + M δ(n) for digits δ(n) in {0, 1} holds for a
-    sequence whose dyadic sum is rational, so that hypothesis cannot imply
-    irrationality of the sum, and an irrationality proof must use a property of the
-    primes that a bounded additive perturbation destroys. No compared declaration
-    formalizes the invariance of any named gap theorem under the perturbation, so the
-    coverage of that strategy elimination is outside the Lean witness. Telescoping
-    constructions of this species in this neighbourhood were published first by Vjeko
-    Kovač, whose April 2026 note refutes the variable-denominator conjecture printed
-    under Erdős Problem 251. Priority for the bounded, prime-anchored form recorded
-    here is unassessed.
+    M ≥ 1, every K, and every real r with S < r < S + M / 2^K there are digits δ(n)
+    in {0, 1}, all zero for n below K, with the sum of (g(n) + M δ(n)) / 2^(n+1) equal
+    to r. The digit supply is the binary expansion: for 0 ≤ D < 1 the digits ⌊2^(n+1)
+    D⌋ - 2⌊2^n D⌋ sum to D against the weights 2^(-(n+1)). The five compared declarations
+    are statements about perturbed gap sequences and about the binary expansion. They
+    determine no value of the sum of g(n) / 2^(n+1), and Erdős Problem 251 is undecided
+    here. The consequence they support is a strategy-elimination statement: a hypothesis
+    on a gap sequence that is preserved by the replacement of g(n) with g(n) + M δ(n)
+    for digits δ(n) in {0, 1} holds for a sequence whose dyadic sum is rational, so
+    that hypothesis cannot imply irrationality of the sum, and an irrationality proof
+    must use a property of the primes that a bounded additive perturbation destroys.
+    No compared declaration formalizes the invariance of any named gap theorem under
+    the perturbation, so the coverage of that strategy elimination is outside the
+    Lean witness. Telescoping constructions of this species in this neighbourhood
+    were published first by Vjeko Kovač, whose April 2026 note refutes the variable-denominator
+    conjecture printed under Erdős Problem 251. Priority for the bounded, prime-anchored
+    form recorded here is unassessed.'
   authors:
   - Will Cook
   license: Apache-2.0
@@ -53,17 +51,17 @@ sources:
     It is a strategy-elimination theorem beneath the still-open Erdős Problem 251.
   license: Apache-2.0
   author_endorsement: participated
-- title: On the Erdős problem #251
+- title: On the Erdős problem
   authors:
   - Vjeko Kovač
   id: https://web.math.pmf.unizg.hr/~vjekovac/files/Erdos_problem_251.pdf
   type: preprint
   relationship: background
-  note: 'Posted to the Erdős Problems thread for 251 on 15 April 2026. Theorem 1
-    constructs integers g_n with g_n at least 2 and g_n = o(p_n) whose series sums to
-    1, refuting the variable-denominator conjecture printed under the problem. That
-    construction is the same species of telescoping freedom used here, applied to a
-    different object, and it was published first.'
+  note: Posted to the Erdős Problems thread for 251 on 15 April 2026. Theorem 1 constructs
+    integers g_n with g_n at least 2 and g_n = o(p_n) whose series sums to 1, refuting
+    the variable-denominator conjecture printed under the problem. That construction
+    is the same species of telescoping freedom used here, applied to a different object,
+    and it was published first.
   license: unknown
   author_endorsement: not-contacted
 - title: 'Erdős Problem #251'
@@ -85,11 +83,11 @@ sources:
   license: Apache-2.0
   author_endorsement: n/a
 status:
-  scope: Five exact source-backed declarations expose the bounded-perturbation
-    countermodel for the actual prime gaps, its pointwise size and residue bounds,
-    the general construction for any natural-digit dyadic series, and the binary-digit
-    summation that supplies the perturbation. No value of the unperturbed prime-gap
-    series is claimed and no irrationality theorem is claimed.
+  scope: Five exact source-backed declarations expose the bounded-perturbation countermodel
+    for the actual prime gaps, its pointwise size and residue bounds, the general
+    construction for any natural-digit dyadic series, and the binary-digit summation
+    that supplies the perturbation. No value of the unperturbed prime-gap series is
+    claimed and no irrationality theorem is claimed.
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
@@ -104,8 +102,8 @@ status:
     file: Solutions/ExternalVerification251BoundedPerturbationCountermodel.lean
     sorry_count: 0
     comparator_config: ExternalVerification251BoundedPerturbationCountermodel/comparator.json
-    canonical_claim_status: exact source transport; axiom print pending the first build
-      of this entry
+    canonical_claim_status: exact source transport; axiom print pending the first
+      build of this entry
     local_proof_provenance: ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean
     novelty_status: unassessed
     contribution_class: bounded-perturbation countermodel for the actual prime gaps
@@ -116,8 +114,8 @@ status:
     file: Solutions/ExternalVerification251BoundedPerturbationCountermodel.lean
     sorry_count: 0
     comparator_config: ExternalVerification251BoundedPerturbationCountermodel/comparator.json
-    canonical_claim_status: exact source transport; axiom print pending the first build
-      of this entry
+    canonical_claim_status: exact source transport; axiom print pending the first
+      build of this entry
     local_proof_provenance: ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean
     novelty_status: unassessed
     contribution_class: explicit rational witness for the perturbed series
@@ -128,8 +126,8 @@ status:
     file: Solutions/ExternalVerification251BoundedPerturbationCountermodel.lean
     sorry_count: 0
     comparator_config: ExternalVerification251BoundedPerturbationCountermodel/comparator.json
-    canonical_claim_status: exact source transport; axiom print pending the first build
-      of this entry
+    canonical_claim_status: exact source transport; axiom print pending the first
+      build of this entry
     local_proof_provenance: ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean
     novelty_status: unassessed
     contribution_class: pointwise size and residue bounds for the perturbation
@@ -140,8 +138,8 @@ status:
     file: Solutions/ExternalVerification251BoundedPerturbationCountermodel.lean
     sorry_count: 0
     comparator_config: ExternalVerification251BoundedPerturbationCountermodel/comparator.json
-    canonical_claim_status: exact source transport; axiom print pending the first build
-      of this entry
+    canonical_claim_status: exact source transport; axiom print pending the first
+      build of this entry
     local_proof_provenance: ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean
     novelty_status: unassessed
     contribution_class: general natural-digit dyadic construction
@@ -152,8 +150,8 @@ status:
     file: Solutions/ExternalVerification251BoundedPerturbationCountermodel.lean
     sorry_count: 0
     comparator_config: ExternalVerification251BoundedPerturbationCountermodel/comparator.json
-    canonical_claim_status: exact source transport; axiom print pending the first build
-      of this entry
+    canonical_claim_status: exact source transport; axiom print pending the first
+      build of this entry
     local_proof_provenance: ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean
     novelty_status: standard
     contribution_class: binary expansion of a real number in the unit interval
@@ -174,8 +172,8 @@ fidelity:
 review:
   status: self-assessed
   reviewers: []
-  notes: The perturbation bounds, the rational witness, and the open boundary for the
-    unperturbed series were checked by the author with AI assistance. No independent
+  notes: The perturbation bounds, the rational witness, and the open boundary for
+    the unperturbed series were checked by the author with AI assistance. No independent
     review is claimed and no axiom print has been recorded for this entry.
 alignment:
   namespace: Erdos249257.ExternalVerification251BoundedPerturbationCountermodel
