@@ -27,6 +27,13 @@ import ErdosProblems.Erdos1049.TwoSelectorRemainderEscape
 import ErdosProblems.Erdos1049.ZudilinConeArithmetic
 import ErdosProblems.Erdos1049.ZudilinHeightRegion
 import ErdosProblems.Erdos243.ReciprocalTailRigidity
+import ErdosProblems.Erdos243.DynamicCancellation
+import ErdosProblems.Erdos243.PrimitiveRecordBarrier
+import ErdosProblems.Erdos243.ProtectedEpochEnergy
+import ErdosProblems.Erdos243.RecordIncrementBarrier
+import ErdosProblems.Erdos243.SaturatedSquareTransport
+import ErdosProblems.Erdos243.SlowRiseBarrier
+import ErdosProblems.Erdos243.TwoModulusRecordCut
 import ErdosProblems.Erdos249.CyclotomicAnchoredKill
 import ErdosProblems.Erdos249.MobiusMersenneLadderSeparation
 import ErdosProblems.Erdos249.ParityPerturbedRationalControl

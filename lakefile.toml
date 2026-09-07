@@ -169,6 +169,31 @@ globs = ["ExternalVerification251BoundedPerturbationCountermodel.+"]
 name = "ExternalVerification1041CollinearChord"
 globs = ["ExternalVerification1041CollinearChord.+"]
 
+
+[[lean_lib]]
+name = "ExternalVerification243ProtectedEpochEnergy"
+globs = ["ExternalVerification243ProtectedEpochEnergy.+"]
+
+[[lean_lib]]
+name = "ExternalVerification243SlowRiseBarrier"
+globs = ["ExternalVerification243SlowRiseBarrier.+"]
+
+[[lean_lib]]
+name = "ExternalVerification243TwoModulusRecordCut"
+globs = ["ExternalVerification243TwoModulusRecordCut.+"]
+
+[[lean_lib]]
+name = "ExternalVerification243SaturatedSquareTransport"
+globs = ["ExternalVerification243SaturatedSquareTransport.+"]
+
+[[lean_lib]]
+name = "ExternalVerification243RecordIncrementBarrier"
+globs = ["ExternalVerification243RecordIncrementBarrier.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249TotientKernelBasis"
+globs = ["ExternalVerification249TotientKernelBasis.+"]
+
 [[lean_lib]]
 name = "Solutions"
 globs = ["Solutions.+"]

@@ -19,6 +19,8 @@ rationality of the binary totient series forces finite kernel rank, and Erdős
 
 namespace Erdos249257.ExternalVerification249DyadicTotientKernel
 
+open Module
+
 /-- The `(j,r)` dyadic section of Euler's totient. -/
 def totientKernelSeq (j r : ℕ) : ℕ → ℚ := fun n =>
   Nat.totient (2 ^ j * n + r)

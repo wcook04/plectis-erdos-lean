@@ -1,0 +1,4 @@
+import Solutions.ExternalVerification243TwoModulusRecordCut
+
+#print axioms Erdos249257.ExternalVerification243TwoModulusRecordCut.two_modulus_cut
+#print axioms Erdos249257.ExternalVerification243TwoModulusRecordCut.two_modulus_record_cut

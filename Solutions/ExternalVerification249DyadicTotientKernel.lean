@@ -12,6 +12,8 @@ import Erdos257PeriodNoncollapse.TotientMahlerDefect
 
 namespace Erdos249257.ExternalVerification249DyadicTotientKernel
 
+open Module
+
 def totientKernelSeq (j r : ℕ) : ℕ → ℚ := fun n =>
   Nat.totient (2 ^ j * n + r)
 

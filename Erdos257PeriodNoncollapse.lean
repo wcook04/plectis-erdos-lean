@@ -3,6 +3,7 @@
 
 import Erdos257PeriodNoncollapse.AdjacentPhaseSeparation
 import Erdos257PeriodNoncollapse.AllBaseReciprocalSupportIrrationality
+import Erdos257PeriodNoncollapse.AllBaseTotientKernel
 import Erdos257PeriodNoncollapse.BinaryTailWindowTransfer
 import Erdos257PeriodNoncollapse.BooleanMobiusCarry
 import Erdos257PeriodNoncollapse.CarrySurvivorExtinction
