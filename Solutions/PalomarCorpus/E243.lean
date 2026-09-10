@@ -15,28 +15,23 @@ import ErdosProblems.Erdos243.PaperCompleteR8.CanonicalNegativeMass
 import ErdosProblems.Erdos243.SparseResetRecovery
 import ErdosProblems.Erdos243.PaperCompleteR8.GrowthDebtSummability
 
-namespace PalomarCorpus.E243.Shared
-def centeredState (a D C : ℤ) : ℤ :=
-  D - (a - 1) * C
-/-- Complete rigidity of the bounded-negative centered-error branch: the
-centered defect vanishes eventually and the denominator orbit consequently
-follows the exact Sylvester recurrence eventually. -/
+open scoped BigOperators
+open Finset
+open Filter
+open scoped Topology
 
-def runningMax (u : ℕ → ℕ) : ℕ → ℕ
+namespace PalomarCorpus.E243.Shared
+noncomputable def centeredState (a D C : ℤ) : ℤ :=
+  D - (a - 1) * C
+
+noncomputable def runningMax (u : ℕ → ℕ) : ℕ → ℕ
   | 0 => u 0
   | n + 1 => max (runningMax u n) (u (n + 1))
-/-- **Valuation-loss threshold.** For one primitive step with arbitrary
-cancellation `hc`, a prime power dividing the reduced denominator survives
-the step as long as the raw numerator stays below the next power of `p`. -/
 
-def sylvesterNext (a : ℤ) : ℤ :=
+noncomputable def sylvesterNext (a : ℤ) : ℤ :=
   a ^ 2 - a + 1
-/-- Centered reciprocal-tail error. -/
 
 end PalomarCorpus.E243.Shared
-import Mathlib
-import ErdosProblems.Erdos243.ReciprocalTailRigidity
-
 namespace PalomarCorpus.E243.BoundedNegativePartRigidity
 export PalomarCorpus.E243.Shared (centeredState sylvesterNext)
 
@@ -68,9 +63,6 @@ theorem boundedNegativePart_completeRigidity
   exact ⟨hzero, hrec⟩
 
 end PalomarCorpus.E243.BoundedNegativePartRigidity
-
-import Mathlib
-import ErdosProblems.Erdos243.ReciprocalTailRigidity
 
 namespace PalomarCorpus.E243.BoundedRiseReducedTail
 
@@ -120,9 +112,6 @@ theorem no_eventuallyBoundedRise_reducedTail
     a u v N B hB ha hred hu hv hrise huTop
 
 end PalomarCorpus.E243.BoundedRiseReducedTail
-
-import Mathlib
-import ErdosProblems.Erdos243.ReciprocalTailRigidity
 
 namespace PalomarCorpus.E243.PeriodicNegativeOrbit
 
@@ -177,9 +166,6 @@ theorem no_eventuallyPeriodicNegative_orbit
     a D C e N h M hh hM ha hepos helt hD hC hshape hperiod hphase
 
 end PalomarCorpus.E243.PeriodicNegativeOrbit
-
-import Mathlib
-import ErdosProblems.Erdos243.PrimitiveRecordBarrier
 
 namespace PalomarCorpus.E243.PrimitiveRecordRigidity
 export PalomarCorpus.E243.Shared (runningMax sylvesterNext)
@@ -337,9 +323,6 @@ theorem recordRiseTwo_sylvesterNext_eventually
 
 end PalomarCorpus.E243.PrimitiveRecordRigidity
 
-import Mathlib
-import ErdosProblems.Erdos243.ProtectedEpochEnergy
-
 namespace PalomarCorpus.E243.ProtectedEpochEnergy
 export PalomarCorpus.E243.Shared (runningMax)
 
@@ -379,9 +362,6 @@ theorem protected_epoch_energy_integer
   exact ⟨J, fun n hn => by simpa [runningMax_eq] using hJ n hn, hbound⟩
 
 end PalomarCorpus.E243.ProtectedEpochEnergy
-
-import Mathlib
-import ErdosProblems.Erdos243.RecordIncrementBarrier
 
 namespace PalomarCorpus.E243.RecordIncrementBarrier
 export PalomarCorpus.E243.Shared (runningMax sylvesterNext)
@@ -423,19 +403,14 @@ theorem recordIncrementOne_sylvesterNext_eventually
 
 end PalomarCorpus.E243.RecordIncrementBarrier
 
-import Mathlib
-import ErdosProblems.Erdos243.RepairEntropy
-
 namespace PalomarCorpus.E243.RepairEntropy
 
 open scoped BigOperators
 
-def deletionProduct (c : ℕ → ℕ) (s t : ℕ) : ℕ :=
+noncomputable def deletionProduct (c : ℕ → ℕ) (s t : ℕ) : ℕ :=
   ∏ n ∈ Finset.Ico s t, c n
-
-def repairedAt (c : ℕ → ℕ) (s t m : ℕ) : Prop :=
+noncomputable def repairedAt (c : ℕ → ℕ) (s t m : ℕ) : Prop :=
   m ∣ deletionProduct c s t
-
 theorem repairedFamily_recovery_energy_divisionFree
     {ι : Type*} [DecidableEq ι]
     (R : Finset ι) (m : ι → ℕ)
@@ -495,9 +470,6 @@ theorem eventually_recoveryPayment_eq_one_of_fixedLength
 
 end PalomarCorpus.E243.RepairEntropy
 
-import Mathlib
-import ErdosProblems.Erdos243.SaturatedSquareTransport
-
 namespace PalomarCorpus.E243.SaturatedSquareTransport
 
 /-- **Saturated square transport, unnormalised form.**  The whole next reduced
@@ -527,9 +499,6 @@ theorem legendre_defect_forces_nonsquare_content
 
 end PalomarCorpus.E243.SaturatedSquareTransport
 
-import Mathlib
-import ErdosProblems.Erdos243.SlowRiseBarrier
-
 namespace PalomarCorpus.E243.SlowRiseBarrier
 
 theorem no_slowRise_reducedTail
@@ -548,24 +517,19 @@ theorem no_slowRise_reducedTail
 
 end PalomarCorpus.E243.SlowRiseBarrier
 
-import ErdosProblems.Erdos243.PaperCompleteR8.CanonicalNegativeMass
 /-
 Copyright (c) 2026 Will Cook. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Will Cook
 -/
-import Mathlib
-import ErdosProblems.Erdos243.SparseResetRecovery
 
 namespace PalomarCorpus.E243.SummableNegativeMassRigidity
 export PalomarCorpus.E243.Shared (centeredState sylvesterNext)
 
-def nextDenState (a D : ℤ) : ℤ :=
+noncomputable def nextDenState (a D : ℤ) : ℤ :=
   a * D
-
-def nextTailState (a D C : ℤ) : ℤ :=
+noncomputable def nextTailState (a D C : ℤ) : ℤ :=
   a * C - D
-
 noncomputable def negativeRelativeMass
     (C : ℕ → ℕ) (E : ℕ → ℤ) (n : ℕ) : ℝ :=
   (Int.natAbs (min (E n) 0) : ℝ) / C n
@@ -618,19 +582,15 @@ theorem summableNegativeMass_completeRigidity
 open scoped BigOperators
 open Finset
 
-def prefixProduct (a : ℕ → ℕ) (n : ℕ) : ℕ :=
+noncomputable def prefixProduct (a : ℕ → ℕ) (n : ℕ) : ℕ :=
   ∏ j ∈ Finset.range n, a j
-
-def clearedIntegerNumerator (a : ℕ → ℕ) (p : ℤ) (q n : ℕ) : ℤ :=
+noncomputable def clearedIntegerNumerator (a : ℕ → ℕ) (p : ℤ) (q n : ℕ) : ℤ :=
   p * (prefixProduct a n : ℤ) -
     ∑ j ∈ Finset.range n, (q : ℤ) * (prefixProduct a n / a j : ℕ)
-
-def canonicalNaturalNumerator (a : ℕ → ℕ) (p : ℤ) (q n : ℕ) : ℕ :=
+noncomputable def canonicalNaturalNumerator (a : ℕ → ℕ) (p : ℤ) (q n : ℕ) : ℕ :=
   (clearedIntegerNumerator a p q n).toNat
-
-def canonicalDenominator (a : ℕ → ℕ) (q n : ℕ) : ℕ :=
+noncomputable def canonicalDenominator (a : ℕ → ℕ) (q n : ℕ) : ℕ :=
   q * prefixProduct a n
-
 theorem finite_negative_mass_scalar (C : ℕ → ℕ) (E : ℕ → ℤ)
     (hCpos : ∀ n, 0 < C n)
     (hstep : ∀ n, (C (n + 1) : ℤ) = (C n : ℤ) - E n)
@@ -651,24 +611,22 @@ theorem canonical_finite_negative_mass
 
 end PalomarCorpus.E243.SummableNegativeMassRigidity
 
-import ErdosProblems.Erdos243.PaperCompleteR8.GrowthDebtSummability
-
 namespace PalomarCorpus.E243.WeightedRecordExcess
 open Filter
 open scoped Topology
 noncomputable section
 
-def L (q : ℕ) (a : ℕ → ℕ) : ℕ → ℕ
+noncomputable def L (q : ℕ) (a : ℕ → ℕ) : ℕ → ℕ
   | 0 => q
   | n+1 => Nat.lcm (L q a n) (a n)
-def M (q : ℕ) (a : ℕ → ℕ) : ℕ → ℕ
+noncomputable def M (q : ℕ) (a : ℕ → ℕ) : ℕ → ℕ
   | 0 => 1
   | n+1 => M q a n * Nat.gcd (L q a n) (a n)
-def C (a : ℕ → ℕ) (p : ℤ) (q n : ℕ) : ℕ :=
+noncomputable def C (a : ℕ → ℕ) (p : ℤ) (q n : ℕ) : ℕ :=
   (p * ((∏ j ∈ Finset.range n, a j : ℕ) : ℤ) -
     ∑ j ∈ Finset.range n, (q : ℤ) * ((∏ k ∈ Finset.range n, a k : ℕ) / a j : ℕ)).toNat
-def U (a : ℕ → ℕ) (p : ℤ) (q n : ℕ) : ℕ := C a p q n / M q a n
-def V (a : ℕ → ℕ) (p : ℤ) (q n : ℕ) : ℤ :=
+noncomputable def U (a : ℕ → ℕ) (p : ℤ) (q n : ℕ) : ℕ := C a p q n / M q a n
+noncomputable def V (a : ℕ → ℕ) (p : ℤ) (q n : ℕ) : ℤ :=
   (L q a n : ℤ) - ((a n : ℤ)-1) * (U a p q n : ℤ)
 noncomputable def weight (a : ℕ → ℕ) (p : ℤ) (q B : ℕ) (f : ℝ → ℝ) (n : ℕ) : ℝ := by
   classical

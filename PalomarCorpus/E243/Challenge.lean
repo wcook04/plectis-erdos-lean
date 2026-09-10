@@ -14,23 +14,21 @@ Comparator-grade proof coverage for this problem. Parent problem remains open.
 Narrative lives in `PalomarCorpus/README.md`.
 -/
 
-namespace PalomarCorpus.E243.Shared
-def centeredState (a D C : ℤ) : ℤ :=
-  D - (a - 1) * C
-/-- Complete rigidity of the bounded-negative centered-error branch: the
-centered defect vanishes eventually and the denominator orbit consequently
-follows the exact Sylvester recurrence eventually. -/
+open scoped BigOperators
+open Finset
+open Filter
+open scoped Topology
 
-def runningMax (u : ℕ → ℕ) : ℕ → ℕ
+namespace PalomarCorpus.E243.Shared
+noncomputable def centeredState (a D C : ℤ) : ℤ :=
+  D - (a - 1) * C
+
+noncomputable def runningMax (u : ℕ → ℕ) : ℕ → ℕ
   | 0 => u 0
   | n + 1 => max (runningMax u n) (u (n + 1))
-/-- **Valuation-loss threshold.** For one primitive step with arbitrary
-cancellation `hc`, a prime power dividing the reduced denominator survives
-the step as long as the raw numerator stays below the next power of `p`. -/
 
-def sylvesterNext (a : ℤ) : ℤ :=
+noncomputable def sylvesterNext (a : ℤ) : ℤ :=
   a ^ 2 - a + 1
-/-- Centered reciprocal-tail error. -/
 
 end PalomarCorpus.E243.Shared
 
@@ -283,10 +281,10 @@ end PalomarCorpus.E243.RecordIncrementBarrier
 
 namespace PalomarCorpus.E243.RepairEntropy
 open scoped BigOperators
-def deletionProduct (c : ℕ → ℕ) (s t : ℕ) : ℕ :=
+noncomputable def deletionProduct (c : ℕ → ℕ) (s t : ℕ) : ℕ :=
   ∏ n ∈ Finset.Ico s t, c n
 
-def repairedAt (c : ℕ → ℕ) (s t m : ℕ) : Prop :=
+noncomputable def repairedAt (c : ℕ → ℕ) (s t m : ℕ) : Prop :=
   m ∣ deletionProduct c s t
 
 theorem repairedFamily_recovery_energy_divisionFree
@@ -374,21 +372,17 @@ end PalomarCorpus.E243.SlowRiseBarrier
 
 namespace PalomarCorpus.E243.SummableNegativeMassRigidity
 open scoped BigOperators
+open Finset
 export PalomarCorpus.E243.Shared (centeredState sylvesterNext)
-def nextDenState (a D : ℤ) : ℤ :=
+noncomputable def nextDenState (a D : ℤ) : ℤ :=
   a * D
-/-- Product-cleared reciprocal-tail update. -/
 
-def nextTailState (a D C : ℤ) : ℤ :=
+noncomputable def nextTailState (a D C : ℤ) : ℤ :=
   a * C - D
-/-- Centered reciprocal-tail error. -/
 
 noncomputable def negativeRelativeMass
     (C : ℕ → ℕ) (E : ℕ → ℤ) (n : ℕ) : ℝ :=
   (Int.natAbs (min (E n) 0) : ℝ) / C n
-/-- Complete rigidity of the summable normalized-negative-mass branch: the
-centered defect vanishes eventually and the orbit consequently follows the
-exact Sylvester recurrence eventually. -/
 
 theorem summableNegativeMass_completeRigidity
     (a D : ℕ → ℤ) (C : ℕ → ℕ)
@@ -405,17 +399,17 @@ theorem summableNegativeMass_completeRigidity
       ∃ N, ∀ n, N ≤ n → a (n + 1) = sylvesterNext (a n) := by
   sorry
 
-def prefixProduct (a : ℕ → ℕ) (n : ℕ) : ℕ :=
+noncomputable def prefixProduct (a : ℕ → ℕ) (n : ℕ) : ℕ :=
   ∏ j ∈ Finset.range n, a j
 
-def clearedIntegerNumerator (a : ℕ → ℕ) (p : ℤ) (q n : ℕ) : ℤ :=
+noncomputable def clearedIntegerNumerator (a : ℕ → ℕ) (p : ℤ) (q n : ℕ) : ℤ :=
   p * (prefixProduct a n : ℤ) -
     ∑ j ∈ Finset.range n, (q : ℤ) * (prefixProduct a n / a j : ℕ)
 
-def canonicalNaturalNumerator (a : ℕ → ℕ) (p : ℤ) (q n : ℕ) : ℕ :=
+noncomputable def canonicalNaturalNumerator (a : ℕ → ℕ) (p : ℤ) (q n : ℕ) : ℕ :=
   (clearedIntegerNumerator a p q n).toNat
 
-def canonicalDenominator (a : ℕ → ℕ) (q n : ℕ) : ℕ :=
+noncomputable def canonicalDenominator (a : ℕ → ℕ) (q n : ℕ) : ℕ :=
   q * prefixProduct a n
 
 theorem finite_negative_mass_scalar (C : ℕ → ℕ) (E : ℕ → ℤ)
@@ -440,21 +434,22 @@ end PalomarCorpus.E243.SummableNegativeMassRigidity
 
 namespace PalomarCorpus.E243.WeightedRecordExcess
 open Filter
-def L (q : ℕ) (a : ℕ → ℕ) : ℕ → ℕ
+open scoped Topology
+noncomputable def L (q : ℕ) (a : ℕ → ℕ) : ℕ → ℕ
   | 0 => q
   | n+1 => Nat.lcm (L q a n) (a n)
 
-def M (q : ℕ) (a : ℕ → ℕ) : ℕ → ℕ
+noncomputable def M (q : ℕ) (a : ℕ → ℕ) : ℕ → ℕ
   | 0 => 1
   | n+1 => M q a n * Nat.gcd (L q a n) (a n)
 
-def C (a : ℕ → ℕ) (p : ℤ) (q n : ℕ) : ℕ :=
+noncomputable def C (a : ℕ → ℕ) (p : ℤ) (q n : ℕ) : ℕ :=
   (p * ((∏ j ∈ Finset.range n, a j : ℕ) : ℤ) -
     ∑ j ∈ Finset.range n, (q : ℤ) * ((∏ k ∈ Finset.range n, a k : ℕ) / a j : ℕ)).toNat
 
-def U (a : ℕ → ℕ) (p : ℤ) (q n : ℕ) : ℕ := C a p q n / M q a n
+noncomputable def U (a : ℕ → ℕ) (p : ℤ) (q n : ℕ) : ℕ := C a p q n / M q a n
 
-def V (a : ℕ → ℕ) (p : ℤ) (q n : ℕ) : ℤ :=
+noncomputable def V (a : ℕ → ℕ) (p : ℤ) (q n : ℕ) : ℤ :=
   (L q a n : ℤ) - ((a n : ℤ)-1) * (U a p q n : ℤ)
 
 noncomputable def weight (a : ℕ → ℕ) (p : ℤ) (q B : ℕ) (f : ℝ → ℝ) (n : ℕ) : ℝ := by

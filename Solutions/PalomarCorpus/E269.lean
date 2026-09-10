@@ -14,47 +14,93 @@ import ErdosProblems.Erdos269.KernelCarryRank
 import ErdosProblems.Erdos269.ThreePrimeRunningLcm
 import ErdosProblems.Erdos269.CofinalWindowEscapeEquivalence
 
+open scoped BigOperators
+
 namespace PalomarCorpus.E269.Shared
-noncomputable def DyadicInternalPower (p a e : ℕ) : Prop := 2 ^ a < p ^ e ∧ p ^ e < 2 ^ (a + 1)
+noncomputable def DyadicInternalPower (p a e : ℕ) : Prop :=
+  2 ^ a < p ^ e ∧ p ^ e < 2 ^ (a + 1)
 
-noncomputable def dyadicBlockBase235 (a : ℕ) : ℕ := by classical exact 2 * (if ∃ e, DyadicInternalPower 3 a e then 3 else 1) * (if ∃ e, DyadicInternalPower 5 a e then 5 else 1)
+noncomputable def dyadicBlockBase235 (a : ℕ) : ℕ :=
+  by
+    classical
+    exact
+      2 *
+        (if ∃ e, DyadicInternalPower 3 a e then 3 else 1) *
+        (if ∃ e, DyadicInternalPower 5 a e then 5 else 1)
 
-noncomputable def leastPositiveResidue (C : ℕ) (x : ℤ) : ℕ := if x % (C : ℤ) = 0 then C else Int.natAbs (x % (C : ℤ))
+noncomputable def leastPositiveResidue (C : ℕ) (x : ℤ) : ℕ :=
+  if x % (C : ℤ) = 0 then C else Int.natAbs (x % (C : ℤ))
 
-noncomputable def smooth3Val (p q r i j k : ℕ) : ℕ := p ^ i * q ^ j * r ^ k
+noncomputable def smooth3Val (p q r i j k : ℕ) : ℕ :=
+  p ^ i * q ^ j * r ^ k
 
-noncomputable def strictSmoothExponents (p q r x : ℕ) : Finset (ℕ × ℕ × ℕ) := ((Finset.range x).product ((Finset.range x).product (Finset.range x))).filter fun e => smooth3Val p q r e.1 e.2.1 e.2.2 < x
+noncomputable def strictSmoothExponents (p q r x : ℕ) : Finset (ℕ × ℕ × ℕ) :=
+  ((Finset.range x).product ((Finset.range x).product (Finset.range x))).filter
+    fun e => smooth3Val p q r e.1 e.2.1 e.2.2 < x
 
-noncomputable def strictSmoothShell (p q r x y : ℕ) : Finset (ℕ × ℕ × ℕ) := strictSmoothExponents p q r y \ strictSmoothExponents p q r x
+noncomputable def strictSmoothShell (p q r x y : ℕ) : Finset (ℕ × ℕ × ℕ) :=
+  strictSmoothExponents p q r y \ strictSmoothExponents p q r x
 
-noncomputable def dyadicSmoothShell235 (a : ℕ) : Finset (ℕ × ℕ × ℕ) := strictSmoothShell 2 3 5 (2 ^ a) (2 ^ (a + 1))
+noncomputable def dyadicSmoothShell235 (a : ℕ) : Finset (ℕ × ℕ × ℕ) :=
+  strictSmoothShell 2 3 5 (2 ^ a) (2 ^ (a + 1))
 
-noncomputable def dyadicBeforeThresholdCount235 (p a : ℕ) : ℕ := ((dyadicSmoothShell235 a).filter fun e => smooth3Val 2 3 5 e.1 e.2.1 e.2.2 < p ^ Nat.log p (2 ^ (a + 1))).card
+noncomputable def dyadicBeforeThresholdCount235 (p a : ℕ) : ℕ :=
+  ((dyadicSmoothShell235 a).filter fun e =>
+    smooth3Val 2 3 5 e.1 e.2.1 e.2.2 <
+      p ^ Nat.log p (2 ^ (a + 1))).card
 
-noncomputable def dyadicOrderedBlockDigit235 (a : ℕ) : ℕ := if 3 ^ Nat.log 3 (2 ^ (a + 1)) ≤ 5 ^ Nat.log 5 (2 ^ (a + 1)) then (dyadicSmoothShell235 a).card + 10 * dyadicBeforeThresholdCount235 3 a + 4 * dyadicBeforeThresholdCount235 5 a else (dyadicSmoothShell235 a).card + 2 * dyadicBeforeThresholdCount235 3 a + 12 * dyadicBeforeThresholdCount235 5 a
+noncomputable def dyadicOrderedBlockDigit235 (a : ℕ) : ℕ :=
+  if 3 ^ Nat.log 3 (2 ^ (a + 1)) ≤ 5 ^ Nat.log 5 (2 ^ (a + 1)) then
+    (dyadicSmoothShell235 a).card +
+      10 * dyadicBeforeThresholdCount235 3 a +
+      4 * dyadicBeforeThresholdCount235 5 a
+  else
+    (dyadicSmoothShell235 a).card +
+      2 * dyadicBeforeThresholdCount235 3 a +
+      12 * dyadicBeforeThresholdCount235 5 a
 
-noncomputable def threePrimeHeight (p q r x : ℕ) : ℕ := p ^ Nat.log p x * q ^ Nat.log q x * r ^ Nat.log r x
+noncomputable def threePrimeHeight (p q r x : ℕ) : ℕ :=
+  p ^ Nat.log p x * q ^ Nat.log q x * r ^ Nat.log r x
 
-noncomputable def dyadicNormalizedTailStateR235 (tail : ℕ → ℝ) (a : ℕ) : ℝ := ((threePrimeHeight 2 3 5 (2 ^ a) : ℝ) / 2) * tail a
+noncomputable def dyadicNormalizedTailStateR235
+    (tail : ℕ → ℝ) (a : ℕ) : ℝ :=
+  ((threePrimeHeight 2 3 5 (2 ^ a) : ℝ) / 2) * tail a
 
-noncomputable def dyadicShellMassQ235 (a : ℕ) : ℚ := ∑ e ∈ dyadicSmoothShell235 a, ((threePrimeHeight 2 3 5 (smooth3Val 2 3 5 e.1 e.2.1 e.2.2) : ℚ)⁻¹)
+noncomputable def dyadicShellMassQ235 (a : ℕ) : ℚ :=
+  ∑ e ∈ dyadicSmoothShell235 a,
+    ((threePrimeHeight 2 3 5
+      (smooth3Val 2 3 5 e.1 e.2.1 e.2.2) : ℚ)⁻¹)
 
-noncomputable def dyadicShellMassR235 (a : ℕ) : ℝ := dyadicShellMassQ235 a
+noncomputable def dyadicShellMassR235 (a : ℕ) : ℝ :=
+  dyadicShellMassQ235 a
 
-noncomputable def dyadicShellTsumTailR235 (a : ℕ) : ℝ := ∑' n : ℕ, dyadicShellMassR235 (a + n)
+noncomputable def dyadicShellTsumTailR235 (a : ℕ) : ℝ :=
+  ∑' n : ℕ, dyadicShellMassR235 (a + n)
 
-noncomputable def trueNormalizedState (a : ℕ) : ℝ := dyadicNormalizedTailStateR235 dyadicShellTsumTailR235 a /-- Every true state is pinned exactly above its ordered digit anchor. -/
+noncomputable def trueNormalizedState (a : ℕ) : ℝ :=
+  dyadicNormalizedTailStateR235 dyadicShellTsumTailR235 a
 
-noncomputable def windowBase (b : ℕ → ℤ) (lo : ℕ) : ℕ → ℤ | 0 => 1 | len + 1 => b (lo + len) * windowBase b lo len
+noncomputable def windowBase (b : ℕ → ℤ) (lo : ℕ) : ℕ → ℤ
+  | 0 => 1
+  | len + 1 => b (lo + len) * windowBase b lo len
 
-noncomputable def windowForcing (b e : ℕ → ℤ) (lo : ℕ) : ℕ → ℤ | 0 => 0 | len + 1 => b (lo + len) * windowForcing b e lo len + e (lo + len) /-- The exact denominator-dependent producer consumed by the local-window contradiction.  It is deliberately named as a proposition, not asserted. -/
+noncomputable def windowForcing (b e : ℕ → ℤ) (lo : ℕ) : ℕ → ℤ
+  | 0 => 0
+  | len + 1 => b (lo + len) * windowForcing b e lo len + e (lo + len)
 
-noncomputable def CofinalLocalWindowEscape (b m : ℕ → ℕ) (shortBound : ℕ → ℕ → ℕ) : Prop := ∀ B : ℕ, 0 < B → Nat.Coprime B 30 → ∀ lo₀ : ℕ, ∃ lo len : ℕ, lo₀ ≤ lo ∧ 0 < len ∧ 0 < Int.natAbs (windowBase (fun n => b n) lo len) ∧ shortBound B (lo + len) < leastPositiveResidue (Int.natAbs (windowBase (fun n => b n) lo len)) (-((B : ℤ) * windowForcing (fun n => b n) (fun n => m n) lo len)) /-- Cofinal local-window escape rules out a positive reduced carry obeying the matching recurrence and short bound. -/
+noncomputable def CofinalLocalWindowEscape
+    (b m : ℕ → ℕ) (shortBound : ℕ → ℕ → ℕ) : Prop :=
+  ∀ B : ℕ, 0 < B → Nat.Coprime B 30 →
+    ∀ lo₀ : ℕ, ∃ lo len : ℕ,
+      lo₀ ≤ lo ∧ 0 < len ∧
+      0 < Int.natAbs (windowBase (fun n => b n) lo len) ∧
+      shortBound B (lo + len) <
+        leastPositiveResidue
+          (Int.natAbs (windowBase (fun n => b n) lo len))
+          (-((B : ℤ) *
+            windowForcing (fun n => b n) (fun n => m n) lo len))
 
 end PalomarCorpus.E269.Shared
-import Mathlib
-import ErdosProblems.Erdos269.DyadicShellSummability
-
 namespace PalomarCorpus.E269.ActualShellOrbit
 export PalomarCorpus.E269.Shared (DyadicInternalPower dyadicBeforeThresholdCount235 dyadicBlockBase235 dyadicNormalizedTailStateR235 dyadicOrderedBlockDigit235 dyadicShellMassQ235 dyadicShellMassR235 dyadicShellTsumTailR235 dyadicSmoothShell235 smooth3Val strictSmoothExponents strictSmoothShell threePrimeHeight)
 
@@ -62,9 +108,8 @@ open scoped BigOperators
 
 noncomputable section
 
-def FarFromIntegers (x δ : ℝ) : Prop :=
+noncomputable def FarFromIntegers (x δ : ℝ) : Prop :=
   ∀ z : ℤ, δ ≤ |x - (z : ℝ)|
-
 theorem actual_dyadicShellOrbit_recurrence_and_escape :
     Summable dyadicShellMassR235 ∧
       (∀ a : ℕ,
@@ -135,17 +180,14 @@ end
 
 end PalomarCorpus.E269.ActualShellOrbit
 
-import ErdosProblems.Erdos269.RationalLatticeReduction
-
 namespace PalomarCorpus.E269.AllScaleLattice
 export PalomarCorpus.E269.Shared (dyadicNormalizedTailStateR235 dyadicShellMassQ235 dyadicShellMassR235 dyadicShellTsumTailR235 dyadicSmoothShell235 smooth3Val strictSmoothExponents strictSmoothShell threePrimeHeight)
 
 open scoped BigOperators
 
-abbrev heightNormalizer235 := ErdosProblems.Erdos269.heightNormalizer235
-abbrev dyadicSmoothWindowMassQ235 :=
+noncomputable abbrev heightNormalizer235 := ErdosProblems.Erdos269.heightNormalizer235
+noncomputable abbrev dyadicSmoothWindowMassQ235 :=
   ErdosProblems.Erdos269.dyadicSmoothWindowMassQ235
-
 theorem smoothHeight_mul_prime_dvd_boundaryHeight
     {p m x : ℕ} (hp : p = 2 ∨ p = 3 ∨ p = 5) (hx : 0 < x) (hlt : x < p ^ m) :
     p * threePrimeHeight 2 3 5 x ∣ threePrimeHeight 2 3 5 (p ^ m) :=
@@ -189,35 +231,25 @@ theorem exists_normalizedTailState_collision_of_value_eq_rat
 
 end PalomarCorpus.E269.AllScaleLattice
 
-import Mathlib
-import ErdosProblems.Erdos269.CarryLiftExtinction
-import ErdosProblems.Erdos269.RestrictedFloorSum
-import ErdosProblems.Erdos269.WeightedPhaseCarry
-
 namespace PalomarCorpus.E269.CarryMechanism
 export PalomarCorpus.E269.Shared (CofinalLocalWindowEscape leastPositiveResidue windowBase windowForcing)
 
 open scoped BigOperators
 
-def carryLiftPerturbation
+noncomputable def carryLiftPerturbation
     (base digit z : ℕ → ℤ) (n : ℕ) : ℤ :=
   base n * z n - z (n + 1) - digit n
-
-def carryLiftError
+noncomputable def carryLiftError
     (D : ℤ) (z carry : ℕ → ℤ) (n : ℕ) : ℤ :=
   D * z n - carry n
-
-def channelPrefix {G : Type*} [AddCommGroup G]
+noncomputable def channelPrefix {G : Type*} [AddCommGroup G]
     (ε : ℕ → G) (N : ℕ) : G :=
   ∑ n ∈ Finset.range N, ε n
-
-def ChannelBlockNull {ι G : Type*} [AddCommGroup G]
+noncomputable def ChannelBlockNull {ι G : Type*} [AddCommGroup G]
     (jumpBase : ℕ → ι) (ε : ℕ → G) : Prop :=
   ∀ a b, jumpBase a = jumpBase b →
     channelPrefix ε a = channelPrefix ε b
-
-abbrev Prime235 := ErdosProblems.Erdos269.Prime235
-
+noncomputable abbrev Prime235 := ErdosProblems.Erdos269.Prime235
 theorem no_carryLift_of_errorBound_below_twoPow
     (D : ℤ)
     (base digit z carry : ℕ → ℤ)
@@ -323,11 +355,10 @@ theorem carryLift_blockDefect
     ErdosProblems.Erdos269.carryLift_blockDefect
       D base digit z carry hcarry a b hab
 
-def carryResidue (B c : ℤ) : ℤ := c % B
-def carryQuotient (B c : ℤ) : ℤ := c / B
-def residueDigit (B base residue nextResidue : ℤ) : ℤ :=
+noncomputable def carryResidue (B c : ℤ) : ℤ := c % B
+noncomputable def carryQuotient (B c : ℤ) : ℤ := c / B
+noncomputable def residueDigit (B base residue nextResidue : ℤ) : ℤ :=
   (base * residue - nextResidue) / B
-
 theorem carry_eq_residueDigit_add_coboundary
     (B : ℤ) (hB : 0 < B)
     (base carry digit : ℕ → ℤ)
@@ -362,8 +393,6 @@ theorem no_positive_reducedCarry_of_cofinalLocalWindowEscape
       b m shortBound hescape B hBpos hBcoprime d hrec hpos hbound
 
 end PalomarCorpus.E269.CarryMechanism
-
-import ErdosProblems.Erdos269.IntegralBranchWidth
 
 namespace PalomarCorpus.E269.IntegralBranchPinning
 export PalomarCorpus.E269.Shared (DyadicInternalPower dyadicBeforeThresholdCount235 dyadicBlockBase235 dyadicNormalizedTailStateR235 dyadicOrderedBlockDigit235 dyadicShellMassQ235 dyadicShellMassR235 dyadicShellTsumTailR235 dyadicSmoothShell235 smooth3Val strictSmoothExponents strictSmoothShell threePrimeHeight trueNormalizedState)
@@ -412,56 +441,42 @@ theorem surviving_window_orbit_eq_true_state
 
 end PalomarCorpus.E269.IntegralBranchPinning
 
-import Mathlib
-import ErdosProblems.Erdos269.KernelCarryRank
-import ErdosProblems.Erdos269.ThreePrimeRunningLcm
-
 namespace PalomarCorpus.E269.ThreePrimeStructure
 export PalomarCorpus.E269.Shared (smooth3Val threePrimeHeight)
 
-def threePrimeKernelQ (p q r i j k : ℕ) : ℚ :=
+noncomputable def threePrimeKernelQ (p q r i j k : ℕ) : ℚ :=
   (threePrimeHeight p q r (smooth3Val p q r i j k) : ℚ)⁻¹
-
-def smoothPrefixExponents (p q r x : ℕ) : Finset (ℕ × ℕ × ℕ) :=
+noncomputable def smoothPrefixExponents (p q r x : ℕ) : Finset (ℕ × ℕ × ℕ) :=
   ((Finset.range (Nat.log p x + 1)).product
       ((Finset.range (Nat.log q x + 1)).product
         (Finset.range (Nat.log r x + 1)))).filter
     fun e => smooth3Val p q r e.1 e.2.1 e.2.2 ≤ x
-
-def smoothPrefixLcm (p q r x : ℕ) : ℕ :=
+noncomputable def smoothPrefixLcm (p q r x : ℕ) : ℕ :=
   (smoothPrefixExponents p q r x).lcm
     fun e => smooth3Val p q r e.1 e.2.1 e.2.2
-
-def SameThreePrimeLogCell (p q r x y : ℕ) : Prop :=
+noncomputable def SameThreePrimeLogCell (p q r x y : ℕ) : Prop :=
   Nat.log p x = Nat.log p y ∧
     Nat.log q x = Nat.log q y ∧
       Nat.log r x = Nat.log r y
-
-def positivePrimePowers (p count : ℕ) : Finset ℕ :=
+noncomputable def positivePrimePowers (p count : ℕ) : Finset ℕ :=
   (Finset.range count).image fun e => p ^ (e + 1)
-
-def threePrimePositiveJumpSet (p q r count : ℕ) : Finset ℕ :=
+noncomputable def threePrimePositiveJumpSet (p q r count : ℕ) : Finset ℕ :=
   (positivePrimePowers p count ∪ positivePrimePowers q count) ∪
     positivePrimePowers r count
-
-def smoothExponentBox (hp hq hr : ℕ) : Finset (ℕ × ℕ × ℕ) :=
+noncomputable def smoothExponentBox (hp hq hr : ℕ) : Finset (ℕ × ℕ × ℕ) :=
   (Finset.range (hp + 1)).product
     ((Finset.range (hq + 1)).product (Finset.range (hr + 1)))
-
-def smoothPointHeight (p q r : ℕ) (e : ℕ × ℕ × ℕ) : ℕ :=
+noncomputable def smoothPointHeight (p q r : ℕ) (e : ℕ × ℕ × ℕ) : ℕ :=
   threePrimeHeight p q r (smooth3Val p q r e.1 e.2.1 e.2.2)
-
-def smoothHeightFiber
+noncomputable def smoothHeightFiber
     (p q r hp hq hr H : ℕ) : Finset (ℕ × ℕ × ℕ) :=
   (smoothExponentBox hp hq hr).filter fun e => smoothPointHeight p q r e = H
-
-def smoothExponentShell
+noncomputable def smoothExponentShell
     (p q r lo hi hp hq hr : ℕ) : Finset (ℕ × ℕ × ℕ) :=
   ((Finset.range (hp + 1)).product
       ((Finset.range (hq + 1)).product (Finset.range (hr + 1)))).filter
     fun e => lo ≤ smooth3Val p q r e.1 e.2.1 e.2.2 ∧
       smooth3Val p q r e.1 e.2.1 e.2.2 < hi
-
 theorem smoothPrefixLcm_eq_threePrimeHeight
     {p q r x : ℕ} (hp : p.Prime) (hq : q.Prime) (hr : r.Prime)
     (hpq : p ≠ q) (hpr : p ≠ r) (hqr : q ≠ r) (hx : x ≠ 0) :
@@ -545,9 +560,8 @@ theorem kernel_235_minor_eq_neg_one_fifteen :
     ErdosProblems.Erdos269.smooth3Val] using
     ErdosProblems.Erdos269.kernel_235_minor_eq_neg_one_fifteen
 
-def NoIntegerOrbit (α : ℝ) : Prop :=
+noncomputable def NoIntegerOrbit (α : ℝ) : Prop :=
   ∀ n : ℕ, 0 < n → Int.fract ((n : ℝ) * α) ≠ 0
-
 theorem exists_uniform_nonsingular_threePrimeKernel_minor
     {p q r : ℕ} (hp : 1 < p) (hq : 1 < q) (hr : 1 < r)
     (hα : NoIntegerOrbit (Real.logb r p)) (hβ : NoIntegerOrbit (Real.logb r q))
@@ -598,16 +612,12 @@ theorem threePrimeKernel_infiniteRank_and_noFiniteSeparation
 
 end PalomarCorpus.E269.ThreePrimeStructure
 
-import Mathlib
-import ErdosProblems.Erdos269.CofinalWindowEscapeEquivalence
-
 namespace PalomarCorpus.E269.WindowEscapeEquivalence
 export PalomarCorpus.E269.Shared (CofinalLocalWindowEscape DyadicInternalPower dyadicBeforeThresholdCount235 dyadicBlockBase235 dyadicNormalizedTailStateR235 dyadicOrderedBlockDigit235 dyadicShellMassQ235 dyadicShellMassR235 dyadicShellTsumTailR235 dyadicSmoothShell235 leastPositiveResidue smooth3Val strictSmoothExponents strictSmoothShell threePrimeHeight trueNormalizedState windowBase windowForcing)
 
-abbrev bridgeWidth := ErdosProblems.Erdos269.bridgeWidth
-abbrev ActualCofinalLocalWindowEscape :=
+noncomputable abbrev bridgeWidth := ErdosProblems.Erdos269.bridgeWidth
+noncomputable abbrev ActualCofinalLocalWindowEscape :=
   ErdosProblems.Erdos269.ActualCofinalLocalWindowEscape
-
 theorem actualCofinalLocalWindowEscape_iff_irrational_value :
     ActualCofinalLocalWindowEscape ↔ Irrational (dyadicShellTsumTailR235 0) :=
   ErdosProblems.Erdos269.actualCofinalLocalWindowEscape_iff_irrational_value

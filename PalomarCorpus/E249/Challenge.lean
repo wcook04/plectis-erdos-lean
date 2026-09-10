@@ -14,25 +14,39 @@ Comparator-grade proof coverage for this problem. Parent problem remains open.
 Narrative lives in `PalomarCorpus/README.md`.
 -/
 
+open scoped BigOperators
+open Module
+open ArithmeticFunction
+
 namespace PalomarCorpus.E249.Shared
-noncomputable abbrev TotientCanonicalIndex (e : ℕ) := Fin 2 ⊕ Σ j : Fin e, Fin (2 ^ j.val)
+noncomputable abbrev TotientCanonicalIndex (e : ℕ) :=
+  Fin 2 ⊕ Σ j : Fin e, Fin (2 ^ j.val)
 
-noncomputable def mobiusMersenneTerm (r n : ℕ) : ℝ := ((moebius (n + 1) : ℤ) : ℝ) / (((2 : ℝ) ^ (n + 1) - 1) ^ r) /-- The Möbius–Mersenne power ladder `Θᵣ = ∑_{d ≥ 1} μ(d) / (2^d - 1)^r`. -/
+noncomputable def mobiusMersenneTerm (r n : ℕ) : ℝ :=
+  ((moebius (n + 1) : ℤ) : ℝ) /
+    (((2 : ℝ) ^ (n + 1) - 1) ^ r)
 
-noncomputable def mobiusMersenneTheta (r : ℕ) : ℝ := ∑' n : ℕ, mobiusMersenneTerm r n /-- The literal Möbius–Lambert rung `Θ̂ᵣ = ∑_{d ≥ 1} μ(d) / (2^(r·d) - 1)`. -/
+noncomputable def mobiusMersenneTheta (r : ℕ) : ℝ :=
+  ∑' n : ℕ, mobiusMersenneTerm r n
 
-noncomputable def totientKernelSeq (j r : ℕ) : ℕ → ℚ := fun n => Nat.totient (2 ^ j * n + r)
+noncomputable def totientKernelSeq (j r : ℕ) : ℕ → ℚ := fun n =>
+  Nat.totient (2 ^ j * n + r)
 
-noncomputable def canonicalTotientKernelFamily (e : ℕ) : TotientCanonicalIndex e → ℕ → ℚ | Sum.inl i => totientKernelSeq i.val 0 | Sum.inr ⟨j, r⟩ => totientKernelSeq (j.val + 1) (2 * r.val + 1)
+noncomputable def canonicalTotientKernelFamily (e : ℕ) :
+    TotientCanonicalIndex e → ℕ → ℚ
+  | Sum.inl i => totientKernelSeq i.val 0
+  | Sum.inr ⟨j, r⟩ =>
+      totientKernelSeq (j.val + 1) (2 * r.val + 1)
 
-noncomputable def totientTail (N : ℕ) : ℝ := ∑' j : ℕ, (Nat.totient (N + 1 + j) : ℝ) / 2 ^ (j + 1) /-- The integer prefix of the scaled binary totient series. -/
+noncomputable def totientTail (N : ℕ) : ℝ :=
+  ∑' j : ℕ, (Nat.totient (N + 1 + j) : ℝ) / 2 ^ (j + 1)
 
-def windowDiscrepancy (h N L : ℕ) : ℤ :=
+noncomputable def windowDiscrepancy (h N L : ℕ) : ℤ :=
   ∑ j ∈ Finset.range L,
     ((Nat.totient (N + h + 1 + j) : ℤ) -
       (Nat.totient (N + 1 + j) : ℤ)) * 2 ^ (L - 1 - j)
 
-def certifiedKill (h N L : ℕ) : Prop :=
+noncomputable def certifiedKill (h N L : ℕ) : Prop :=
   (N + h + L + 2 : ℤ) < windowDiscrepancy h N L % 2 ^ L ∧
     windowDiscrepancy h N L % 2 ^ L < 2 ^ L - (N + h + L + 2)
 
@@ -41,27 +55,22 @@ end PalomarCorpus.E249.Shared
 namespace PalomarCorpus.E249.ActualLcmOrbit
 open scoped BigOperators
 export PalomarCorpus.E249.Shared (totientTail)
-def periodLcm : ℕ → ℕ
+noncomputable def periodLcm : ℕ → ℕ
   | 0 => 1
   | t + 1 => Nat.lcm (periodLcm t) (t + 1)
-/-- The local binary totient tail. -/
 
-def totientPrefix (N : ℕ) : ℕ :=
+noncomputable def totientPrefix (N : ℕ) : ℕ :=
   ∑ n ∈ Finset.range (N + 1), Nat.totient n * 2 ^ (N - n)
-/-- The actual LCM height at the power-two endpoint `2^a`. -/
 
-def actualLcmHeight (a : ℕ) : ℕ :=
+noncomputable def actualLcmHeight (a : ℕ) : ℕ :=
   periodLcm (2 ^ a)
-/-- The actual power-two LCM-diagonal tail orbit. -/
 
 noncomputable def actualLcmTailOrbit (a : ℕ) : ℝ :=
   totientTail (2 * actualLcmHeight a) - totientTail (actualLcmHeight a)
-/-- Cofinal non-integrality of the actual LCM-diagonal orbit. -/
 
-def PowerTwoActualLcmOrbitNonintegralitySupply : Prop :=
+noncomputable def PowerTwoActualLcmOrbitNonintegralitySupply : Prop :=
   ∀ a₀ : ℕ, ∃ a, a₀ ≤ a ∧
     actualLcmTailOrbit a ∉ Set.range ((↑) : ℤ → ℝ)
-/-- The actual orbit is an integer translate of a scaled copy of the target. -/
 
 theorem actualLcmTailOrbit_eq_scaled_totientSeries_sub_prefix (a : ℕ) :
     actualLcmTailOrbit a =
@@ -85,11 +94,11 @@ export PalomarCorpus.E249.Shared (certifiedKill totientTail windowDiscrepancy)
 noncomputable def binaryCyclotomicLayer (n : ℕ) : ℕ :=
   ((Polynomial.cyclotomic n ℤ).eval (2 : ℤ)).natAbs
 
-def UnboundedPrimeDivisorSupply (C : ℕ → ℕ) (h : ℕ) : Prop :=
+noncomputable def UnboundedPrimeDivisorSupply (C : ℕ → ℕ) (h : ℕ) : Prop :=
   ∀ B N₀ : ℕ, ∃ q p : ℕ,
     q.Prime ∧ N₀ ≤ q ∧ p.Prime ∧ p ∣ C (h * q) ∧ B < p
 
-def CyclotomicAnchoredKillSupply (C : ℕ → ℕ) : Prop :=
+noncomputable def CyclotomicAnchoredKillSupply (C : ℕ → ℕ) : Prop :=
   ∀ h : ℕ, 0 < h →
     ∀ N₀ : ℕ, ∃ q p L : ℕ,
       q.Prime ∧
@@ -135,28 +144,28 @@ end PalomarCorpus.E249.BinaryCyclotomicAnchors
 
 namespace PalomarCorpus.E249.CanonicalMersenneFrontier
 open scoped BigOperators
-def deltaTotient (h n : ℕ) : ℤ :=
+noncomputable def deltaTotient (h n : ℕ) : ℤ :=
   (Nat.totient (n + h) : ℤ) - (Nat.totient n : ℤ)
 
-def totientBlock (H N : ℕ) : ℤ :=
+noncomputable def totientBlock (H N : ℕ) : ℤ :=
   ∑ j ∈ Finset.range H,
     (Nat.totient (N + 1 + j) : ℤ) * 2 ^ (H - 1 - j)
 
-def fullMersenneBlockResidue (H N M : ℕ) : ℤ :=
+noncomputable def fullMersenneBlockResidue (H N M : ℕ) : ℤ :=
   (-totientBlock H N) % (M : ℤ)
 
-def FullMersenneCenteredResidueGap (H N M : ℕ) : Prop :=
+noncomputable def FullMersenneCenteredResidueGap (H N M : ℕ) : Prop :=
   let B : ℤ := N + H + 1
   B < fullMersenneBlockResidue H N M ∧
     fullMersenneBlockResidue H N M < (M : ℤ) - B
 
-def FullMersenneCenteredResidueGapSupply : Prop :=
+noncomputable def FullMersenneCenteredResidueGapSupply : Prop :=
   ∀ c v : ℕ, 0 < v → Nat.Coprime 2 v →
     ∀ N₀ : ℕ, ∃ H N M : ℕ,
       0 < H ∧ Nat.totient v ∣ H ∧ max c N₀ ≤ N ∧
       v * M = 2 ^ H - 1 ∧ FullMersenneCenteredResidueGap H N M
 
-def FullMersenneCanonicalBasepointResidueGapSupply : Prop :=
+noncomputable def FullMersenneCanonicalBasepointResidueGapSupply : Prop :=
   ∀ c v : ℕ, 0 < v → Nat.Coprime 2 v →
     ∃ H M : ℕ,
       0 < H ∧ Nat.totient v ∣ H ∧ v * M = 2 ^ H - 1 ∧
@@ -186,19 +195,19 @@ export PalomarCorpus.E249.Shared (TotientCanonicalIndex canonicalTotientKernelFa
 noncomputable def binaryCoeffSeries (c : ℕ → ℕ) : ℝ :=
   ∑' n : ℕ, (c (n + 1) : ℝ) / (2 : ℝ) ^ (n + 1)
 
-def IsTemperedBinaryOrbit (c : ℕ → ℕ) (v : ℕ) (u : ℕ → ℤ) : Prop :=
+noncomputable def IsTemperedBinaryOrbit (c : ℕ → ℕ) (v : ℕ) (u : ℕ → ℤ) : Prop :=
   (∀ N : ℕ,
       u (N + 1) = 2 * u N - ((v * c (N + 1) : ℕ) : ℤ)) ∧
     Filter.Tendsto (fun N : ℕ ↦ (u N : ℝ) / (2 : ℝ) ^ N)
       Filter.atTop (nhds 0)
 
-def carryKernelSeq (u : ℕ → ℤ) (j r : ℕ) : ℕ → ℚ := fun n =>
+noncomputable def carryKernelSeq (u : ℕ → ℤ) (j r : ℕ) : ℕ → ℚ := fun n =>
   u (2 ^ j * n + r)
 
-abbrev TotientCarryIndex (e : ℕ) :=
+noncomputable abbrev TotientCarryIndex (e : ℕ) :=
   Σ j : Fin e, Fin (2 ^ (j.val + 1))
 
-def canonicalCarryKernelFamily (u : ℕ → ℤ) (e : ℕ) :
+noncomputable def canonicalCarryKernelFamily (u : ℕ → ℤ) (e : ℕ) :
     TotientCarryIndex e → ℕ → ℚ
   | ⟨j, r⟩ => carryKernelSeq u (j.val + 1) r.val
 
@@ -208,12 +217,10 @@ structure SeparatedMinorCertificate {ι : Type*} [Fintype ι] [DecidableEq ι]
   det_ne_zero :
     Matrix.det (fun i j : ι => family j (rowIndex i)) ≠ 0
 
-def CarrySectionsEventuallyPeriodicMod
+noncomputable def CarrySectionsEventuallyPeriodicMod
     (v h N₀ : ℕ) (u : ℕ → ℤ) : Prop :=
   ∀ j r n : ℕ, N₀ ≤ n →
     u (2 ^ j * n + r) ≡ u (2 ^ j * (n + h) + r) [ZMOD (v : ℤ)]
-/-- Subexponential binary coefficient tails are non-irrational exactly when
-they admit a positive-multiplier integral tempered orbit. -/
 
 theorem not_irrational_binaryCoeffSeries_iff_exists_temperedBinaryOrbit
     (c : ℕ → ℕ) (hgrowth : ∀ n : ℕ, c n ≤ n) :
@@ -277,29 +284,23 @@ end PalomarCorpus.E249.CarryRankFrontier
 namespace PalomarCorpus.E249.DyadicTotientKernel
 open Module
 export PalomarCorpus.E249.Shared (TotientCanonicalIndex canonicalTotientKernelFamily totientKernelSeq)
-abbrev TotientKernelThroughLevelIndex (e : ℕ) :=
+noncomputable abbrev TotientKernelThroughLevelIndex (e : ℕ) :=
   Σ j : Fin (e + 1), Fin (2 ^ j.val)
-/-- The complete finite dyadic kernel through level `e`. -/
 
-def totientKernelThroughLevelFamily (e : ℕ) :
+noncomputable def totientKernelThroughLevelFamily (e : ℕ) :
     TotientKernelThroughLevelIndex e → ℕ → ℚ
   | ⟨j, r⟩ => totientKernelSeq j.val r.val
-/-- All canonical dyadic sections. -/
 
-abbrev TotientDyadicKernelIndex := Σ j : ℕ, Fin (2 ^ j)
+noncomputable abbrev TotientDyadicKernelIndex := Σ j : ℕ, Fin (2 ^ j)
 
-def fullTotientKernelFamily : TotientDyadicKernelIndex → ℕ → ℚ
+noncomputable def fullTotientKernelFamily : TotientDyadicKernelIndex → ℕ → ℚ
   | ⟨j, r⟩ => totientKernelSeq j r.val
-/-- The two zero-residue base channels and one odd residue per positive
-level. -/
 
-abbrev TotientOddCoreIndex := Fin 2 ⊕ Σ j : ℕ, Fin (2 ^ j)
+noncomputable abbrev TotientOddCoreIndex := Fin 2 ⊕ Σ j : ℕ, Fin (2 ^ j)
 
-def oddCoreTotientKernelFamily : TotientOddCoreIndex → ℕ → ℚ
+noncomputable def oddCoreTotientKernelFamily : TotientOddCoreIndex → ℕ → ℚ
   | Sum.inl i => totientKernelSeq i.val 0
   | Sum.inr ⟨j, r⟩ => totientKernelSeq (j + 1) (2 * r.val + 1)
-/-- The odd-core sections form the complete independent spanning family, and
-the unreduced finite kernel through level `e` has exact rank `2^e+1`. -/
 
 theorem dyadicTotientKernelOddCoreBasisAndFiniteRanks :
     LinearIndependent ℚ oddCoreTotientKernelFamily ∧
@@ -334,18 +335,18 @@ end PalomarCorpus.E249.FareyWindowExclusion
 namespace PalomarCorpus.E249.FullDepthRayAmplifier
 open scoped BigOperators
 export PalomarCorpus.E249.Shared (certifiedKill totientTail windowDiscrepancy)
-def PeriodMultipleKillSupply : Prop :=
+noncomputable def PeriodMultipleKillSupply : Prop :=
   ∀ d : ℕ, 0 < d → ∀ c : ℕ,
     ∃ t N L : ℕ, 0 < t ∧ c ≤ N ∧ certifiedKill (t * d) N L
 
-def ApFullDepthEscape : Prop :=
+noncomputable def ApFullDepthEscape : Prop :=
   ∀ d : ℕ, 0 < d → ∀ N : ℕ,
     ∃ t : ℕ, 0 < t ∧ certifiedKill (t * d) N (t * d)
 
-def fullDepthKillMultipliers (d N : ℕ) : Set ℕ :=
+noncomputable def fullDepthKillMultipliers (d N : ℕ) : Set ℕ :=
   {t | certifiedKill (t * d) N (t * d)}
 
-def CofinalFullDepthKillSupply : Prop :=
+noncomputable def CofinalFullDepthKillSupply : Prop :=
   ∀ d : ℕ, 0 < d → ∀ c : ℕ,
     ∃ t N : ℕ, 0 < t ∧ c ≤ N ∧ certifiedKill (t * d) N (t * d)
 
@@ -379,6 +380,7 @@ end PalomarCorpus.E249.FullDepthRayAmplifier
 
 namespace PalomarCorpus.E249.MobiusMersenneLadderStructure
 open scoped BigOperators
+open ArithmeticFunction
 export PalomarCorpus.E249.Shared (mobiusMersenneTerm mobiusMersenneTheta)
 theorem mobiusMersenneTheta_strict_logConcave (r : ℕ) (hr : 1 ≤ r) :
     mobiusMersenneTheta r * mobiusMersenneTheta (r + 2) <
@@ -393,9 +395,8 @@ theorem mobiusMersenneTheta_hankel_two_neg (r : ℕ) (hr : 1 ≤ r) :
 end PalomarCorpus.E249.MobiusMersenneLadderStructure
 
 namespace PalomarCorpus.E249.PrefixTwoAdicExclusion
-def totientPrefix (n : ℕ) : ℕ :=
+noncomputable def totientPrefix (n : ℕ) : ℕ :=
   ∑ i ∈ Finset.range n, 2 ^ (n - 1 - i) * Nat.totient (i + 1)
-/-- The defining recurrence `P_{n+1} = 2 P_n + φ(n+1)`. -/
 
 theorem totientPrefix_succ (n : ℕ) :
     totientPrefix (n + 1) = 2 * totientPrefix n + Nat.totient (n + 1) := by
@@ -407,7 +408,6 @@ theorem totientPrefix_eq_corpusForm (n : ℕ) :
 
 noncomputable def prefixTail (S : ℝ) (n : ℕ) : ℝ :=
   2 ^ n * S - (totientPrefix n : ℝ)
-/-- Under `S = a / (2^c v)` and `c ≤ n`, the rescaled tail `v·R_n` is an integer. -/
 
 theorem oddPart_mul_prefixTail_eq_intCast
     {S : ℝ} {a : ℤ} {c v n : ℕ} (hvpos : 0 < v)
@@ -452,15 +452,14 @@ end PalomarCorpus.E249.PrefixTwoAdicExclusion
 
 namespace PalomarCorpus.E249.RankOneSharpFloor
 open scoped BigOperators
+open ArithmeticFunction
 export PalomarCorpus.E249.Shared (mobiusMersenneTerm mobiusMersenneTheta)
 noncomputable def mobiusMersennePrefix (Y r : ℕ) : ℝ :=
   ∑ n ∈ Finset.range Y, mobiusMersenneTerm r n
-/-- The positive rank-one strict-subrank quotient. -/
 
 noncomputable def rankOneSubrankQuotient (e Y : ℕ) : ℝ :=
   mobiusMersennePrefix Y (e + 2) ^ 2 /
     mobiusMersennePrefix Y (2 * e + 2)
-/-- The five-atom first-depth kernel minimises the admissible quotient. -/
 
 theorem rankOneSubrankQuotient_ge_one_five
     {e Y : ℕ} (he : 1 ≤ e) (hY : 4 ≤ Y) :
@@ -516,17 +515,12 @@ end PalomarCorpus.E249.RankOneSharpFloor
 
 namespace PalomarCorpus.E249.ResidueClassTotientSeries
 noncomputable def dyadicValue (a : ℕ → ℤ) : ℝ := ∑' n : ℕ, (a n : ℝ) / 2 ^ n
-/-- The binary value of a fixed-resolution observable of the totient word. -/
 
 noncomputable def totientObservableValue (f : ℕ → ℤ) (m : ℕ) : ℝ :=
   ∑' n : ℕ, ((f (Nat.totient n % m) : ℤ) : ℝ) / 2 ^ n
-/-- `A_m = ∑_{n} (φ n mod m) / 2 ^ n`, least nonnegative residues. -/
 
 noncomputable def totientResidueValue (m : ℕ) : ℝ :=
   ∑' n : ℕ, ((Nat.totient n % m : ℕ) : ℝ) / 2 ^ n
-/-- **Isolated pulse separation.**  A bounded integer sequence with a nonzero
-letter `t` at `p = N + 1 + L` and a two-sided block of `L` zeros around it keeps
-`q * dyadicValue a` at an explicit distance from every integer. -/
 
 theorem isolated_pulse_separation {a : ℕ → ℤ} {C : ℝ} (hC : ∀ n, |(a n : ℝ)| ≤ C)
     {N L q : ℕ} {t : ℤ} (hq : 1 ≤ q) (hL : 2 * (q : ℝ) * C < 2 ^ L)
@@ -582,50 +576,28 @@ theorem allSlopeAffineTotientFormsLinearIndependent
     LinearIndependent ℚ (fun (i : ι) (n : ℕ) => (Nat.totient (a i * n + b i) : ℚ)) := by
   sorry
 
-def kernelSeq (k j r : ℕ) : ℕ → ℚ := fun n =>
+noncomputable def kernelSeq (k j r : ℕ) : ℕ → ℚ := fun n =>
   (Nat.totient (k ^ j * n + r) : ℚ)
-/-- The canonical level-`e` index: two zero-residue base channels, and one
-channel per canonical residue at each level `1, …, e`.  A canonical residue at
-level `j + 1` is written `k * s + (u + 1)` with `s < k^j` and `u < k - 1`, which
-is exactly the parametrisation of `1 ≤ r < k^(j+1)` with `k ∤ r`. -/
 
-abbrev CanonicalIndex (k e : ℕ) :=
+noncomputable abbrev CanonicalIndex (k e : ℕ) :=
   Fin 2 ⊕ Σ j : Fin e, Fin (k ^ j.val) × Fin (k - 1)
-/-- The canonical residue `k * s + (u + 1)` named by a positive-level index. -/
 
-def canonicalResidue (k : ℕ) {e : ℕ}
+noncomputable def canonicalResidue (k : ℕ) {e : ℕ}
     (x : Σ j : Fin e, Fin (k ^ j.val) × Fin (k - 1)) : ℕ :=
   k * x.2.1.val + (x.2.2.val + 1)
-/-- The canonical level-`e` family of base-`k` totient channels. -/
 
-def canonicalFamily (k e : ℕ) : CanonicalIndex k e → ℕ → ℚ
+noncomputable def canonicalFamily (k e : ℕ) : CanonicalIndex k e → ℕ → ℚ
   | Sum.inl i => kernelSeq k i.val 0
   | Sum.inr x => kernelSeq k (x.1.val + 1) (canonicalResidue k x)
-/-- The complete base-`k` kernel index through level `e`, before any reduction:
-every pair `(j, r)` with `j ≤ e` and `r < k^j`. -/
 
-abbrev ThroughLevelIndex (k e : ℕ) := Σ j : Fin (e + 1), Fin (k ^ j.val)
-/-- Every base-`k` section `n ↦ φ(k^j n + r)` at levels `0, …, e`. -/
+noncomputable abbrev ThroughLevelIndex (k e : ℕ) := Σ j : Fin (e + 1), Fin (k ^ j.val)
 
-def throughLevelFamily (k e : ℕ) : ThroughLevelIndex k e → ℕ → ℚ
+noncomputable def throughLevelFamily (k e : ℕ) : ThroughLevelIndex k e → ℕ → ℚ
   | ⟨j, r⟩ => kernelSeq k j.val r.val
-/-- Evaluation of a formal `ℚ`-combination of the symbols `E_{j,r}`, `j ≤ e`,
-`r < k^j`, at the corresponding kernel channels.  Its kernel is the module of
-`ℚ`-linear relations among the unreduced level-`e` channels. -/
 
 noncomputable def relationMap (k e : ℕ) :
     (ThroughLevelIndex k e → ℚ) →ₗ[ℚ] (ℕ → ℚ) :=
   Fintype.linearCombination ℚ (throughLevelFamily k e)
-/-- **The all-base totient kernel structure theorem.**  For every integer base
-`k ≥ 2` and every depth `e ≥ 1`:
-1. the canonical family is `ℚ`-linearly independent;
-2. it spans the whole unreduced level-`e` kernel;
-3. it therefore indexes a basis of that span;
-4. the span has dimension exactly `k^e + 1`;
-5. the relation module has dimension exactly `∑_{1 ≤ j < e} k^j`.
-Part 5 is the complement of part 4 inside the `∑_{j ≤ e} k^j` unreduced
-channels.  It states the dimension of the relation space only; it does not
-assert that any particular family of relations generates it. -/
 
 theorem allBaseTotientKernelBasisRankAndRelationDimension
     (k e : ℕ) (hk : 2 ≤ k) (he : 1 ≤ e) :
@@ -643,8 +615,7 @@ theorem allBaseTotientKernelBasisRankAndRelationDimension
 end PalomarCorpus.E249.TotientKernelBasis
 
 namespace PalomarCorpus.E249.TotientRigidity
-def totientDefect (g : ℕ → ℤ) (n : ℕ) : ℤ := g n - (Nat.totient n : ℤ)
-/-- `φ(pn) = p φ(n)` when `p` is prime and `p ∣ n`. -/
+noncomputable def totientDefect (g : ℕ → ℤ) (n : ℕ) : ℤ := g n - (Nat.totient n : ℤ)
 
 theorem totient_prime_mul_of_dvd {p n : ℕ} (hp : p.Prime) (h : p ∣ n) :
     (Nat.totient (p * n) : ℤ) = (p : ℤ) * (Nat.totient n : ℤ) := by

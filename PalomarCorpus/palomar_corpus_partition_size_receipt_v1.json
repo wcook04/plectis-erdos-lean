@@ -1,8 +1,8 @@
 {
   "schema": "palomar_corpus_size_receipt_v1",
-  "generated_at": "2026-09-10T20:52:08Z",
+  "generated_at": "2026-09-10T21:27:58Z",
   "public_root": "/Users/willcook/src/palomar-release/plectis-erdos-lean",
-  "git_head": "a25422e2f1c3c8753bd7baa3b59e11d0e192a3ca",
+  "git_head": "01b2464bf2c213eee47b4bac2705150356f45e6d",
   "selected_families": [
     "ExternalVerification1041CriticalGeometry",
     "ExternalVerification1041CubicPath",
@@ -90,8 +90,8 @@
   ],
   "selected_theorem_count": 309,
   "measurement": {
-    "challenge_lines": 921,
-    "challenge_bytes": 38833,
+    "challenge_lines": 935,
+    "challenge_bytes": 36766,
     "hard_line_limit": 1000,
     "hard_byte_limit": 102400,
     "over_hard_limit": false,

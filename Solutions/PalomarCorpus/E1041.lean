@@ -16,7 +16,11 @@ import ErdosProblems.Erdos1041.SharpCollinearChebyshev
 import ErdosProblems.Erdos1041.CyclicTetranomialCoefficientCase
 import ErdosProblems.Erdos1041.TetranomialL2Selector
 
-import ErdosProblems.Erdos1041.CriticalTwoRootProximity
+open Finset
+open Polynomial Set
+open scoped BigOperators
+open Polynomial
+open scoped ComplexConjugate
 
 namespace PalomarCorpus.E1041.CriticalGeometry
 
@@ -205,9 +209,6 @@ theorem allStraightCubic_every_pair_midpoint_escapes :
 
 end PalomarCorpus.E1041.CriticalGeometry
 
-import ErdosProblems.Erdos1041.PaperCubicCompletion
-import ErdosProblems.Erdos1041.PaperCubicMonic
-
 namespace PalomarCorpus.E1041.CubicPath
 
 noncomputable section
@@ -215,10 +216,9 @@ open Polynomial Set
 open scoped BigOperators
 
 /-- The two-segment path with endpoints at times zero and two. -/
-def hub (a c b : ℂ) (t : ℝ) : ℂ :=
+noncomputable def hub (a c b : ℂ) (t : ℝ) : ℂ :=
   c + ((max (1 - t) 0 : ℝ) : ℂ) * (a - c) +
     ((max (t - 1) 0 : ℝ) : ℂ) * (b - c)
-
 theorem cubic_paper_complete (p : ℂ[X]) (z : Fin 3 → ℂ)
     (hp : p = ∏ i, (X - C (z i))) (hz : ∀ i, ‖z i‖ < 1) :
     ∃ i j : Fin 3, ∃ c : ℂ, i ≠ j ∧
@@ -258,9 +258,6 @@ theorem monic_cubic_connector (p : ℂ[X]) (hm : p.Monic)
 end
 
 end PalomarCorpus.E1041.CubicPath
-
-import Mathlib
-import ErdosProblems.Erdos1041.CyclicTrinomialFiberCase
 
 namespace PalomarCorpus.E1041.CyclicTrinomialFiber
 
@@ -306,8 +303,6 @@ theorem cyclicTrinomial_two_short_fiber_displacements {y₁ y₂ : ℂ}
 
 end PalomarCorpus.E1041.CyclicTrinomialFiber
 
-import ErdosProblems.Erdos1041.FirstMergeCriticalValueSeparation
-
 namespace PalomarCorpus.E1041.FirstMergeCriticalValueSeparation
 
 noncomputable def firstMergeSquaredCoefficient (n : ℕ) (S : ℝ) : ℝ :=
@@ -333,9 +328,6 @@ theorem firstMerge_length_lt_two_of_squared_bound
       ErdosProblems.Erdos1041.firstMergeSquaredCoefficient] using hthreshold
 
 end PalomarCorpus.E1041.FirstMergeCriticalValueSeparation
-
-import Mathlib
-import ErdosProblems.Erdos1041.QuarticQuotientFiberCase
 
 namespace PalomarCorpus.E1041.QuarticQuotientFiber
 
@@ -368,10 +360,6 @@ theorem rootLift_length_lt_two_of_le_endpoint_budget
     halpha ha0 ha1 hb0 hb1 hlength
 
 end PalomarCorpus.E1041.QuarticQuotientFiber
-
-import ErdosProblems.Erdos1041.CubicQuotientFiberCase
-import ErdosProblems.Erdos1041.PrimitiveQuinticInteriorTail
-import ErdosProblems.Erdos1041.SharpCollinearChebyshev
 
 open Polynomial
 
@@ -454,10 +442,6 @@ theorem existsPeakLeComparisonBound
 
 end SharpCollinear
 end PalomarCorpus.E1041.SolvedFamilies
-
-import Mathlib
-import ErdosProblems.Erdos1041.CyclicTetranomialCoefficientCase
-import ErdosProblems.Erdos1041.TetranomialL2Selector
 
 open scoped ComplexConjugate
 

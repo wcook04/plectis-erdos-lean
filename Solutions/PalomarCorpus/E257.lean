@@ -23,51 +23,104 @@ import ErdosProblems.Erdos257.HalfCounterexampleFrontier
 import Erdos257PeriodNoncollapse.TwentyOneQuotientGreedy
 import ErdosProblems.Erdos257.PaperCompleteR8.PositiveCoverReturn
 
+open scoped ENNReal
+open Set MeasureTheory
+open Set
+open scoped BigOperators
+open ArithmeticFunction Filter Set
+open scoped ArithmeticFunction.Moebius
+open Filter Topology
+open Set MeasureTheory Topology
+open Filter Set
+
 namespace PalomarCorpus.E257.Shared
-noncomputable structure PositiveCoverData where frame : ℕ → Finset ℕ exponent : ℕ → ℝ coefficient : ℕ → ℕ → ℝ frame_positive : ∀ j, 0 ∉ frame j exponent_bounds : ∀ j, 0 < exponent j ∧ exponent j ≤ 1 coefficient_nonneg : ∀ j d, 0 < d → 0 ≤ coefficient j d column_summable : ∀ j, Summable (fun d : ℕ => coefficient j d / (d : ℝ)) majorises : ∀ j n, 0 < n → (((frame j).filter (fun a => a ∣ n)).card : ℝ) ^ exponent j ≤ ∑ d ∈ n.divisors, coefficient j d
+structure PositiveCoverData where
+  frame : ℕ → Finset ℕ
+  exponent : ℕ → ℝ
+  coefficient : ℕ → ℕ → ℝ
+  frame_positive : ∀ j, 0 ∉ frame j
+  exponent_bounds : ∀ j, 0 < exponent j ∧ exponent j ≤ 1
+  coefficient_nonneg : ∀ j d, 0 < d → 0 ≤ coefficient j d
+  column_summable : ∀ j, Summable (fun d : ℕ => coefficient j d / (d : ℝ))
+  majorises : ∀ j n, 0 < n →
+    (((frame j).filter (fun a => a ∣ n)).card : ℝ) ^ exponent j ≤
+      ∑ d ∈ n.divisors, coefficient j d
 
-noncomputable def binaryCoeffPrefixNumerator (c : ℕ → ℕ) : ℕ → ℕ | 0 => 0 | N + 1 => 2 * binaryCoeffPrefixNumerator c N + c (N + 1)
+noncomputable def binaryCoeffPrefixNumerator (c : ℕ → ℕ) : ℕ → ℕ
+  | 0 => 0
+  | N + 1 => 2 * binaryCoeffPrefixNumerator c N + c (N + 1)
 
-noncomputable def PositiveCoverData.cost (C : PositiveCoverData) (j : ℕ) : ℝ := ∑' d : ℕ, C.coefficient j d / (d : ℝ)
+noncomputable def PositiveCoverData.cost (C : PositiveCoverData) (j : ℕ) : ℝ :=
+  ∑' d : ℕ, C.coefficient j d / (d : ℝ)
 
-noncomputable def PositiveCoverData.StrengthenedCostSummable (C : PositiveCoverData) : Prop := Summable (fun j : ℕ => C.cost j * (2 : ℝ) ^ (((j + 1 : ℕ) : ℝ) * C.exponent j) / ((2 : ℝ) ^ C.exponent j - 1))
+noncomputable def PositiveCoverData.StrengthenedCostSummable (C : PositiveCoverData) : Prop :=
+  Summable (fun j : ℕ =>
+    C.cost j * (2 : ℝ) ^ (((j + 1 : ℕ) : ℝ) * C.exponent j) /
+      ((2 : ℝ) ^ C.exponent j - 1))
 
-noncomputable def erdosSupportSeries (b : ℕ) (A : Set ℕ) : ℝ := ∑' a : ℕ, Set.indicator A (fun a => (1 : ℝ) / ((b : ℝ) ^ a - 1)) a
+noncomputable def erdosSupportSeries (b : ℕ) (A : Set ℕ) : ℝ :=
+  ∑' a : ℕ, Set.indicator A
+    (fun a => (1 : ℝ) / ((b : ℝ) ^ a - 1)) a
 
-noncomputable def UniversalMersenneSubseriesIrrationality : Prop := ∀ A : Set ℕ, A.Infinite → Irrational (erdosSupportSeries 2 A) /-- Complete problem-level consequence of the actual successor producer. -/
+noncomputable def UniversalMersenneSubseriesIrrationality : Prop :=
+  ∀ A : Set ℕ, A.Infinite → Irrational (erdosSupportSeries 2 A)
 
-noncomputable def PositiveCoverData.host (C : PositiveCoverData) : Set ℕ := {a | ∃ j, a ∈ C.frame j}
+noncomputable def PositiveCoverData.host (C : PositiveCoverData) : Set ℕ :=
+  {a | ∃ j, a ∈ C.frame j}
 
-noncomputable def HasStrengthenedPositiveCover (A : Set ℕ) : Prop := ∃ C : PositiveCoverData, A ⊆ C.host ∧ C.StrengthenedCostSummable /-- Arbitrary-weight positive-cover data on an actual support. -/
+noncomputable def HasStrengthenedPositiveCover (A : Set ℕ) : Prop :=
+  ∃ C : PositiveCoverData, A ⊆ C.host ∧ C.StrengthenedCostSummable
 
-noncomputable def integerGreedyBits : List ℕ → ℕ → List Bool | [], _ => [] | w :: ws, C => if w ≤ C then true :: integerGreedyBits ws (C - w) else false :: integerGreedyBits ws C
+noncomputable def integerGreedyBits : List ℕ → ℕ → List Bool
+  | [], _ => []
+  | w :: ws, C =>
+      if w ≤ C then
+        true :: integerGreedyBits ws (C - w)
+      else
+        false :: integerGreedyBits ws C
 
-noncomputable def mersenneWeight (n : ℕ) : ℝ := 1 / ((2 : ℝ) ^ n - 1) /-- The contribution of the `k`th binary digit. -/
+noncomputable def mersenneWeight (n : ℕ) : ℝ :=
+  1 / ((2 : ℝ) ^ n - 1)
 
-noncomputable def greedyMersenneRemainder (x : ℝ) : ℕ → ℝ | 0 => x | n + 1 => if mersenneWeight (n + 1) ≤ greedyMersenneRemainder x n then greedyMersenneRemainder x n - mersenneWeight (n + 1) else greedyMersenneRemainder x n
+noncomputable def greedyMersenneRemainder (x : ℝ) : ℕ → ℝ
+  | 0 => x
+  | n + 1 =>
+      if mersenneWeight (n + 1) ≤ greedyMersenneRemainder x n then
+        greedyMersenneRemainder x n - mersenneWeight (n + 1)
+      else
+        greedyMersenneRemainder x n
 
-noncomputable def greedyMersenneSupport (x : ℝ) : Set ℕ := {m : ℕ | m ≠ 0 ∧ mersenneWeight m ≤ greedyMersenneRemainder x (m - 1)}
+noncomputable def greedyMersenneSupport (x : ℝ) : Set ℕ :=
+  {m : ℕ | m ≠ 0 ∧ mersenneWeight m ≤ greedyMersenneRemainder x (m - 1)}
 
-noncomputable def greedyMersenneSkippedSupport (x : ℝ) : Set ℕ := {m : ℕ | m ≠ 0 ∧ m ∉ greedyMersenneSupport x}
+noncomputable def greedyMersenneSkippedSupport (x : ℝ) : Set ℕ :=
+  {m : ℕ | m ≠ 0 ∧ m ∉ greedyMersenneSupport x}
 
-noncomputable def mersenneWeightRat (n : ℕ) : ℚ := 1 / ((2 : ℚ) ^ n - 1)
+noncomputable def mersenneWeightRat (n : ℕ) : ℚ :=
+  1 / ((2 : ℚ) ^ n - 1)
 
-noncomputable def positiveMersenneSupportValue (A : Set ℕ) : ℝ := ∑' k : ℕ, Set.indicator A mersenneWeight (k + 1) /-- Binary digit strings supported on `J`. -/
+noncomputable def positiveMersenneSupportValue (A : Set ℕ) : ℝ :=
+  ∑' k : ℕ, Set.indicator A mersenneWeight (k + 1)
 
-noncomputable def mersenneAchievementSet : Set ℝ := {x : ℝ | ∃ A : Set ℕ, 0 ∉ A ∧ x = positiveMersenneSupportValue A}
+noncomputable def mersenneAchievementSet : Set ℝ :=
+  {x : ℝ | ∃ A : Set ℕ, 0 ∉ A ∧ x = positiveMersenneSupportValue A}
 
-noncomputable def primeSetPart (P : Finset ℕ) (a : ℕ) : ℕ := ∏ p ∈ P, p ^ a.factorization p /-- The literal weighted term at an integer base. -/
+noncomputable def primeSetPart (P : Finset ℕ) (a : ℕ) : ℕ :=
+  ∏ p ∈ P, p ^ a.factorization p
 
-noncomputable def primeWeightedTerm (b : ℕ) (P : Finset ℕ) (a : ℕ) : ℝ := (primeSetPart P a : ℝ) / ((a : ℝ) * ((b : ℝ) ^ primeSetPart P a - 1)) /-- The weighted hypothesis, not its irrationality conclusion. -/
+noncomputable def primeWeightedTerm (b : ℕ) (P : Finset ℕ) (a : ℕ) : ℝ :=
+  (primeSetPart P a : ℝ) /
+    ((a : ℝ) * ((b : ℝ) ^ primeSetPart P a - 1))
 
-noncomputable def FinitePrimeWeighted (b : ℕ) (A : Set ℕ) : Prop := ∃ P : Finset ℕ, P.Nonempty ∧ (∀ p ∈ P, Nat.Prime p) ∧ Summable (Set.indicator A (primeWeightedTerm b P)) /-- Open Lean goal for long thm:257-weighted, including the all-base hereditary consequence of a finite binary weighted mass. -/
+noncomputable def FinitePrimeWeighted (b : ℕ) (A : Set ℕ) : Prop :=
+  ∃ P : Finset ℕ, P.Nonempty ∧ (∀ p ∈ P, Nat.Prime p) ∧
+    Summable (Set.indicator A (primeWeightedTerm b P))
 
-noncomputable def supportCoeff (A : Set ℕ) (n : ℕ) : ℕ := letI := Classical.decPred fun d : ℕ => d ∈ A (n.divisors.filter fun d => d ∈ A).card /-- The base-`b` Mersenne support series. -/
+noncomputable def supportCoeff (A : Set ℕ) (n : ℕ) : ℕ :=
+  letI := Classical.decPred fun d : ℕ => d ∈ A
+  (n.divisors.filter fun d => d ∈ A).card
 
 end PalomarCorpus.E257.Shared
-import Mathlib
-import ErdosProblems.Erdos257.MersenneSubseriesRigidity
-
 namespace PalomarCorpus.E257.AchievementSetGeometry
 export PalomarCorpus.E257.Shared (mersenneWeight positiveMersenneSupportValue)
 
@@ -83,16 +136,14 @@ noncomputable def mersenneDigitTerm (k : ℕ) (b : ℕ → Fin 2) : ℝ :=
 noncomputable def positiveMersenneDigitValue (b : ℕ → Fin 2) : ℝ :=
   ∑' k : ℕ, mersenneDigitTerm k b
 
-def SupportedMersenneDigits (J : Set ℕ) :=
+noncomputable def SupportedMersenneDigits (J : Set ℕ) :=
   {b : ℕ → Fin 2 // ∀ k, k ∉ J → b k = 0}
-
 noncomputable def supportedMersenneDigitValue
     (J : Set ℕ) (b : SupportedMersenneDigits J) : ℝ :=
   positiveMersenneDigitValue b.1
 
-def supportedMersenneAchievementSet (J : Set ℕ) : Set ℝ :=
+noncomputable def supportedMersenneAchievementSet (J : Set ℕ) : Set ℝ :=
   Set.range (supportedMersenneDigitValue J)
-
 theorem volume_supportedMersenneAchievementSet_eq_zero_of_rat_value
     {J : Set ℕ} (hJ0 : 0 ∉ J) {q : ℚ}
     (hvalue : positiveMersenneSupportValue J = (q : ℝ)) :
@@ -194,8 +245,6 @@ end
 
 end PalomarCorpus.E257.AchievementSetGeometry
 
-import ErdosProblems.Erdos257.ActualUpperSuccessorCounterexampleEndpoint
-
 namespace PalomarCorpus.E257.ActualUpperSuccessor
 export PalomarCorpus.E257.Shared (UniversalMersenneSubseriesIrrationality erdosSupportSeries integerGreedyBits)
 
@@ -204,42 +253,31 @@ open scoped BigOperators
 
 noncomputable section
 
-def truncatedMersenneWeight (s d : ℕ) : ℕ :=
+noncomputable def truncatedMersenneWeight (s d : ℕ) : ℕ :=
   Erdos257PeriodNoncollapse.HalfCylinderIntegerGreedy.truncatedMersenneWeight s d
-
-def seamSubsetTarget (s : ℕ) : ℕ :=
+noncomputable def seamSubsetTarget (s : ℕ) : ℕ :=
   Erdos257PeriodNoncollapse.HalfCylinderIntegerGreedy.seamSubsetTarget s
-
-def seamWeightsFrom (s : ℕ) (d : ℕ) : List ℕ :=
+noncomputable def seamWeightsFrom (s : ℕ) (d : ℕ) : List ℕ :=
   Erdos257PeriodNoncollapse.HalfCylinderIntegerGreedy.seamWeightsFrom s d
-
-def seamWeights (s : ℕ) : List ℕ :=
+noncomputable def seamWeights (s : ℕ) : List ℕ :=
   Erdos257PeriodNoncollapse.HalfCylinderIntegerGreedy.seamWeights s
-
-def weightedBoolSum (weights : List ℕ) (bits : List Bool) : ℕ :=
+noncomputable def weightedBoolSum (weights : List ℕ) (bits : List Bool) : ℕ :=
   Erdos257PeriodNoncollapse.HalfCylinderIntegerGreedy.weightedBoolSum weights bits
-
-def integerGreedyRemainder (weights : List ℕ) (C : ℕ) : ℕ :=
+noncomputable def integerGreedyRemainder (weights : List ℕ) (C : ℕ) : ℕ :=
   Erdos257PeriodNoncollapse.HalfCylinderIntegerGreedy.integerGreedyRemainder weights C
-
-def seamIntegerGreedyRemainder (s : ℕ) : ℕ :=
+noncomputable def seamIntegerGreedyRemainder (s : ℕ) : ℕ :=
   Erdos257PeriodNoncollapse.HalfCylinderIntegerGreedy.seamIntegerGreedyRemainder s
-
-def rowPulse (s d : ℕ) : ℕ :=
+noncomputable def rowPulse (s d : ℕ) : ℕ :=
   Erdos257PeriodNoncollapse.HalfCylinderIntegerGreedy.rowPulse s d
-
-def seamGreedyBits (s : ℕ) : List Bool :=
+noncomputable def seamGreedyBits (s : ℕ) : List Bool :=
   Erdos257PeriodNoncollapse.HalfCylinderIntegerGreedy.integerGreedyBits
     (Erdos257PeriodNoncollapse.HalfCylinderIntegerGreedy.seamWeights s)
     (Erdos257PeriodNoncollapse.HalfCylinderIntegerGreedy.seamSubsetTarget s)
-
-def seamGreedyBit (s d : ℕ) : Bool :=
+noncomputable def seamGreedyBit (s d : ℕ) : Bool :=
   (seamGreedyBits s).getD (d - 2) false
-
-def seamBelowPulse (s : ℕ) : ℕ :=
+noncomputable def seamBelowPulse (s : ℕ) : ℕ :=
   ∑ i ∈ Finset.range (s - 2),
     if seamGreedyBit s (i + 2) then rowPulse s (i + 2) else 0
-
 structure SeamAdjacentCutView where
   successorCarries : Prop
   belowPulse : ℕ
@@ -250,10 +288,9 @@ noncomputable def seamAdjacentCut (s : ℕ) (hs : 5 ≤ s) : SeamAdjacentCutView
   belowPulse :=
     (Erdos257PeriodNoncollapse.HalfCylinderIntegerGreedy.seamAdjacentCut s hs).belowPulse
 
-def affineRightRunCharge (pulse : ℕ → ℕ) (k : ℕ) : ℕ :=
+noncomputable def affineRightRunCharge (pulse : ℕ → ℕ) (k : ℕ) : ℕ :=
   Erdos257PeriodNoncollapse.affineRightRunCharge pulse k
-
-def SeamActualUpperRightPacketLinearEscape : Prop :=
+noncomputable def SeamActualUpperRightPacketLinearEscape : Prop :=
   ∀ (d k : ℕ) (hd5 : 5 ≤ d), 13 ≤ d → k ≤ d →
     (seamAdjacentCut d hd5).successorCarries →
     (∀ q : ℕ, q < k →
@@ -266,8 +303,7 @@ def SeamActualUpperRightPacketLinearEscape : Prop :=
         affineRightRunCharge
           (fun q ↦
             (seamAdjacentCut (d + q + 1) (by omega)).belowPulse) k
-
-def SeamActualUpperSuccessorLinearEscape : Prop :=
+noncomputable def SeamActualUpperSuccessorLinearEscape : Prop :=
   ∀ (d k : ℕ) (hd5 : 5 ≤ d), 13 ≤ d → k ≤ d →
     (seamAdjacentCut d hd5).successorCarries →
     (∀ q : ℕ, q < k →
@@ -277,7 +313,6 @@ def SeamActualUpperSuccessorLinearEscape : Prop :=
         4 * seamIntegerGreedyRemainder (d + q + 1)) →
     2 ^ (d + 1) - 2 ^ (d - k + 1) + 2 * (d + k) ≤
       seamIntegerGreedyRemainder (d + 1)
-
 theorem actualUpperRightPacketLinearEscape_iff_successorLinearEscape :
     SeamActualUpperRightPacketLinearEscape ↔
       SeamActualUpperSuccessorLinearEscape := by
@@ -303,8 +338,6 @@ end
 
 end PalomarCorpus.E257.ActualUpperSuccessor
 
-import Erdos257PeriodNoncollapse.BooleanMobiusCarry
-
 namespace PalomarCorpus.E257.BooleanMobiusCarry
 export PalomarCorpus.E257.Shared (erdosSupportSeries supportCoeff)
 
@@ -313,23 +346,20 @@ open scoped ArithmeticFunction.Moebius
 
 noncomputable section
 
-def IsTemperedBinaryOrbit (c : ℕ → ℕ) (v : ℕ) (u : ℕ → ℤ) : Prop :=
+noncomputable def IsTemperedBinaryOrbit (c : ℕ → ℕ) (v : ℕ) (u : ℕ → ℤ) : Prop :=
   (∀ N : ℕ,
       u (N + 1) = 2 * u N - ((v * c (N + 1) : ℕ) : ℤ)) ∧
     Tendsto (fun N : ℕ ↦ (u N : ℝ) / (2 : ℝ) ^ N) atTop (nhds 0)
-
 noncomputable def supportCoeffAF (A : Set ℕ) : ArithmeticFunction ℤ :=
   ⟨fun n ↦ (supportCoeff A n : ℤ), by simp [supportCoeff]⟩
 
 noncomputable def booleanMobiusSupport (f : ArithmeticFunction ℤ) : Set ℕ :=
   {n : ℕ | 0 < n ∧ (ArithmeticFunction.moebius * f) n = 1}
 
-def carryQuotient (q : ℕ) (U : ℕ → ℤ) (n : ℕ) : ℤ :=
+noncomputable def carryQuotient (q : ℕ) (U : ℕ → ℤ) (n : ℕ) : ℤ :=
   if n = 0 then 0 else (2 * U (n - 1) - U n) / (q : ℤ)
-
-def carryQuotientAF (q : ℕ) (U : ℕ → ℤ) : ArithmeticFunction ℤ :=
+noncomputable def carryQuotientAF (q : ℕ) (U : ℕ → ℤ) : ArithmeticFunction ℤ :=
   ⟨carryQuotient q U, by simp [carryQuotient]⟩
-
 structure BooleanMobiusCarryCertificate
     (p : ℤ) (q : ℕ) (U : ℕ → ℤ) : Prop where
   initial : U 0 = p
@@ -341,7 +371,7 @@ structure BooleanMobiusCarryCertificate
     (ArithmeticFunction.moebius * carryQuotientAF q U) n = 0 ∨
       (ArithmeticFunction.moebius * carryQuotientAF q U) n = 1
 
-private def toSourceCertificate
+noncomputable private def toSourceCertificate
     {p : ℤ} {q : ℕ} {U : ℕ → ℤ}
     (cert : BooleanMobiusCarryCertificate p q U) :
     Erdos257PeriodNoncollapse.BooleanMobiusCarryCertificate p q U where
@@ -354,8 +384,7 @@ private def toSourceCertificate
     simpa [carryQuotientAF, carryQuotient,
       Erdos257PeriodNoncollapse.carryQuotientAF,
       Erdos257PeriodNoncollapse.carryQuotient] using cert.mobiusBoolean n hn
-
-private def ofSourceCertificate
+noncomputable private def ofSourceCertificate
     {p : ℤ} {q : ℕ} {U : ℕ → ℤ}
     (cert : Erdos257PeriodNoncollapse.BooleanMobiusCarryCertificate p q U) :
     BooleanMobiusCarryCertificate p q U where
@@ -368,7 +397,6 @@ private def ofSourceCertificate
     simpa [carryQuotientAF, carryQuotient,
       Erdos257PeriodNoncollapse.carryQuotientAF,
       Erdos257PeriodNoncollapse.carryQuotient] using cert.mobiusBoolean n hn
-
 theorem exists_booleanMobiusCarry_of_support_fraction
     (A : Set ℕ) (hzero : 0 ∉ A)
     (hpos : ∃ a : ℕ, 0 < a ∧ a ∈ A)
@@ -452,8 +480,6 @@ end
 
 end PalomarCorpus.E257.BooleanMobiusCarry
 
-import ErdosProblems.Erdos257.PaperCompleteR8.WeightedReturn
-
 namespace PalomarCorpus.E257.DivisibilityWeightedSupport
 export PalomarCorpus.E257.Shared (FinitePrimeWeighted erdosSupportSeries primeSetPart primeWeightedTerm)
 
@@ -461,13 +487,12 @@ open Set
 
 noncomputable section
 
-def DivisibilityWeightedClaim : Prop :=
+noncomputable def DivisibilityWeightedClaim : Prop :=
   (∀ (b : ℕ) (A : Set ℕ), 2 ≤ b → 0 ∉ A → A.Infinite →
     FinitePrimeWeighted b A → Irrational (erdosSupportSeries b A)) ∧
   (∀ H : Set ℕ, 0 ∉ H → FinitePrimeWeighted 2 H →
     ∀ A : Set ℕ, A ⊆ H → A.Infinite →
       ∀ b : ℕ, 2 ≤ b → Irrational (erdosSupportSeries b A))
-
 theorem erdosSupportSeries_eq :
     erdosSupportSeries = Erdos257PeriodNoncollapse.erdosSupportSeries := rfl
 
@@ -501,23 +526,18 @@ end
 
 end PalomarCorpus.E257.DivisibilityWeightedSupport
 
-import Mathlib
-import ErdosProblems.Erdos257.WeightedSupportLimits
-
 namespace PalomarCorpus.E257.DyadicObservationSummability
 
 open Filter Topology
 
 noncomputable section
 
-def supportObservationMass (A : Set ℕ) (α : ℕ → ℝ) (R : ℕ) : ℝ := by
+noncomputable def supportObservationMass (A : Set ℕ) (α : ℕ → ℝ) (R : ℕ) : ℝ := by
   classical
   exact ∑ a ∈ (Finset.range (R + 1)).filter (fun a => 0 < a ∧ a ∈ A), α a
-
-def weightedObservationTerm (A : Set ℕ) (α : ℕ → ℝ) (a : ℕ) : ℝ := by
+noncomputable def weightedObservationTerm (A : Set ℕ) (α : ℕ → ℝ) (a : ℕ) : ℝ := by
   classical
   exact if 0 < a ∧ a ∈ A then α a / a else 0
-
 theorem supportObservationMass_eq :
     supportObservationMass = ErdosProblems.Erdos257.supportObservationMass :=
   rfl
@@ -564,9 +584,6 @@ end
 
 end PalomarCorpus.E257.DyadicObservationSummability
 
-import Mathlib
-import ErdosProblems.Erdos257.PaperGeometryCompletion.FairCoding
-
 namespace PalomarCorpus.E257.FairCoding
 export PalomarCorpus.E257.Shared (mersenneAchievementSet mersenneWeight positiveMersenneSupportValue)
 
@@ -575,20 +592,17 @@ open scoped ENNReal
 
 noncomputable section
 
-abbrev Digits := ℕ → Fin 2
-
+noncomputable abbrev Digits := ℕ → Fin 2
 noncomputable def mersenneDigitTerm (k : ℕ) (b : Digits) : ℝ :=
   ((b k : ℕ) : ℝ) * mersenneWeight (k + 1)
 
 noncomputable def positiveMersenneDigitValue (b : Digits) : ℝ :=
   ∑' k : ℕ, mersenneDigitTerm k b
 
-def fairCoin : Measure (Fin 2) :=
+noncomputable def fairCoin : Measure (Fin 2) :=
   (2 : ℝ≥0∞)⁻¹ • Measure.dirac 0 + (2 : ℝ≥0∞)⁻¹ • Measure.dirac 1
-
-def fairDigits : Measure Digits :=
+noncomputable def fairDigits : Measure Digits :=
   Measure.infinitePi (fun _ : ℕ => fairCoin)
-
 theorem mersenneWeight_eq :
     mersenneWeight = Erdos257PeriodNoncollapse.mersenneWeight :=
   rfl
@@ -650,14 +664,10 @@ end
 
 end PalomarCorpus.E257.FairCoding
 
-import Mathlib
-import Erdos257PeriodNoncollapse.CertificateKernel
-
 namespace PalomarCorpus.E257.FinitePeriodNoncollapse
 
-def finiteErdosSum (F : Finset ℕ) (b : ℕ) : ℚ :=
+noncomputable def finiteErdosSum (F : Finset ℕ) (b : ℕ) : ℚ :=
   ∑ n ∈ F, 1 / ((b : ℚ) ^ n - 1)
-
 theorem finite_period_noncollapse_rat_den
     (F : Finset ℕ) (b : ℕ)
     (hF : F.Nonempty) (h0 : 0 ∉ F) (hb : 2 ≤ b) :
@@ -686,8 +696,6 @@ theorem lcm_lt_den_finiteErdosSum
 
 end PalomarCorpus.E257.FinitePeriodNoncollapse
 
-import ErdosProblems.Erdos257.BatchReturnSynthesis
-
 namespace PalomarCorpus.E257.FourNinthsRepairWindows
 export PalomarCorpus.E257.Shared (binaryCoeffPrefixNumerator greedyMersenneRemainder greedyMersenneSupport mersenneAchievementSet mersenneWeight positiveMersenneSupportValue supportCoeff)
 
@@ -695,20 +703,17 @@ open Set
 
 noncomputable section
 
-def fourNinthsBinaryFloor (N : ℕ) : ℕ :=
+noncomputable def fourNinthsBinaryFloor (N : ℕ) : ℕ :=
   4 * 2 ^ N / 9
-
 noncomputable def fourNinthsGreedyDefect (N : ℕ) : ℕ :=
   fourNinthsBinaryFloor N -
     binaryCoeffPrefixNumerator
       (supportCoeff (greedyMersenneSupport (4 / 9 : ℝ))) N
 
-def FourNinthsOneStepRepairSucc (N : ℕ) : Prop :=
+noncomputable def FourNinthsOneStepRepairSucc (N : ℕ) : Prop :=
   (fourNinthsGreedyDefect (N + 1) : ℤ) ≤ (fourNinthsGreedyDefect N : ℤ)
-
-def FourNinthsOneStepRepairCofinal : Prop :=
+noncomputable def FourNinthsOneStepRepairCofinal : Prop :=
   ∀ K : ℕ, ∃ N : ℕ, K ≤ N ∧ FourNinthsOneStepRepairSucc N
-
 theorem mersenneWeight_eq : mersenneWeight = Erdos257PeriodNoncollapse.mersenneWeight := rfl
 
 theorem greedyMersenneRemainder_eq :
@@ -806,9 +811,6 @@ end
 
 end PalomarCorpus.E257.FourNinthsRepairWindows
 
-import Mathlib
-import ErdosProblems.Erdos257.GreedyRepairCriterion
-
 namespace PalomarCorpus.E257.GeneralRepairCriterion
 export PalomarCorpus.E257.Shared (binaryCoeffPrefixNumerator greedyMersenneRemainder greedyMersenneSupport mersenneAchievementSet mersenneWeight positiveMersenneSupportValue supportCoeff)
 
@@ -889,10 +891,8 @@ end
 
 end PalomarCorpus.E257.GeneralRepairCriterion
 
-import ErdosProblems.Erdos257.PaperCompleteR8.AnalyticSeparationReturn
-
 namespace PalomarCorpus.E257.LiteralWeightedCover
-export PalomarCorpus.E257.Shared (FinitePrimeWeighted HasStrengthenedPositiveCover PositiveCoverData StrengthenedCostSummable cost erdosSupportSeries host primeSetPart primeWeightedTerm)
+export PalomarCorpus.E257.Shared (FinitePrimeWeighted HasStrengthenedPositiveCover PositiveCoverData PositiveCoverData.StrengthenedCostSummable PositiveCoverData.cost erdosSupportSeries PositiveCoverData.host primeSetPart primeWeightedTerm)
 
 open Set
 
@@ -935,7 +935,7 @@ theorem FinitePrimeWeighted_eq :
   simp [FinitePrimeWeighted, ErdosProblems.Erdos257.PaperCompleteR7.FinitePrimeWeighted,
     primeWeightedTerm_eq]
 
-def PositiveCoverData.toSource (C : PositiveCoverData) :
+noncomputable def PositiveCoverData.toSource (C : PositiveCoverData) :
     ErdosProblems.Erdos257.PaperCompleteR7.PositiveCoverData where
   frame := C.frame
   exponent := C.exponent
@@ -945,8 +945,7 @@ def PositiveCoverData.toSource (C : PositiveCoverData) :
   coefficient_nonneg := C.coefficient_nonneg
   column_summable := C.column_summable
   majorises := C.majorises
-
-def PositiveCoverData.ofSource
+noncomputable def PositiveCoverData.ofSource
     (C : ErdosProblems.Erdos257.PaperCompleteR7.PositiveCoverData) :
     PositiveCoverData where
   frame := C.frame
@@ -957,7 +956,6 @@ def PositiveCoverData.ofSource
   coefficient_nonneg := C.coefficient_nonneg
   column_summable := C.column_summable
   majorises := C.majorises
-
 theorem PositiveCoverData.host_toSource (C : PositiveCoverData) :
     C.host = C.toSource.host := rfl
 
@@ -990,7 +988,7 @@ theorem HasStrengthenedPositiveCover_iff (A : Set ℕ) :
       (PositiveCoverData.StrengthenedCostSummable_ofSource C).mpr hC⟩
     simpa [PositiveCoverData.host] using hA
 
-def LogBudgetCover.toSource {A : Set ℕ} (C : LogBudgetCover A) :
+noncomputable def LogBudgetCover.toSource {A : Set ℕ} (C : LogBudgetCover A) :
     ErdosProblems.Erdos257.PaperCompleteR8.LogBudgetCover A where
   frame := C.frame
   weight := C.weight
@@ -1005,8 +1003,7 @@ def LogBudgetCover.toSource {A : Set ℕ} (C : LogBudgetCover A) :
   covers := C.covers
   majorises := C.majorises
   budget_summable := C.budget_summable
-
-def LogBudgetCover.ofSource {A : Set ℕ}
+noncomputable def LogBudgetCover.ofSource {A : Set ℕ}
     (C : ErdosProblems.Erdos257.PaperCompleteR8.LogBudgetCover A) :
     LogBudgetCover A where
   frame := C.frame
@@ -1022,7 +1019,6 @@ def LogBudgetCover.ofSource {A : Set ℕ}
   covers := C.covers
   majorises := C.majorises
   budget_summable := C.budget_summable
-
 theorem isEmpty_logBudgetCover_iff (A : Set ℕ) :
     IsEmpty (LogBudgetCover A) ↔
       IsEmpty (ErdosProblems.Erdos257.PaperCompleteR8.LogBudgetCover A) := by
@@ -1067,21 +1063,18 @@ end
 
 end PalomarCorpus.E257.LiteralWeightedCover
 
-import ErdosProblems.Erdos257.PaperCompleteR8.WeightedReturn
-
 namespace PalomarCorpus.E257.MixedWeightedCover
-export PalomarCorpus.E257.Shared (FinitePrimeWeighted HasStrengthenedPositiveCover PositiveCoverData StrengthenedCostSummable cost erdosSupportSeries host primeSetPart primeWeightedTerm)
+export PalomarCorpus.E257.Shared (FinitePrimeWeighted HasStrengthenedPositiveCover PositiveCoverData PositiveCoverData.StrengthenedCostSummable PositiveCoverData.cost erdosSupportSeries PositiveCoverData.host primeSetPart primeWeightedTerm)
 
 open Set
 
 noncomputable section
 
-def MixedSupportClaim : Prop :=
+noncomputable def MixedSupportClaim : Prop :=
   ∀ E V : Set ℕ, 0 ∉ E → FinitePrimeWeighted 2 E →
     HasStrengthenedPositiveCover V →
     ∀ A : Set ℕ, A ⊆ E ∪ V → A.Infinite →
       ∀ b : ℕ, 2 ≤ b → Irrational (erdosSupportSeries b A)
-
 theorem erdosSupportSeries_eq :
     erdosSupportSeries = Erdos257PeriodNoncollapse.erdosSupportSeries := rfl
 
@@ -1100,7 +1093,7 @@ theorem FinitePrimeWeighted_eq :
   simp [FinitePrimeWeighted, ErdosProblems.Erdos257.PaperCompleteR7.FinitePrimeWeighted,
     primeWeightedTerm_eq]
 
-def PositiveCoverData.toSource (C : PositiveCoverData) :
+noncomputable def PositiveCoverData.toSource (C : PositiveCoverData) :
     ErdosProblems.Erdos257.PaperCompleteR7.PositiveCoverData where
   frame := C.frame
   exponent := C.exponent
@@ -1110,8 +1103,7 @@ def PositiveCoverData.toSource (C : PositiveCoverData) :
   coefficient_nonneg := C.coefficient_nonneg
   column_summable := C.column_summable
   majorises := C.majorises
-
-def PositiveCoverData.ofSource
+noncomputable def PositiveCoverData.ofSource
     (C : ErdosProblems.Erdos257.PaperCompleteR7.PositiveCoverData) :
     PositiveCoverData where
   frame := C.frame
@@ -1122,7 +1114,6 @@ def PositiveCoverData.ofSource
   coefficient_nonneg := C.coefficient_nonneg
   column_summable := C.column_summable
   majorises := C.majorises
-
 theorem PositiveCoverData.host_toSource (C : PositiveCoverData) :
     C.host = C.toSource.host := rfl
 
@@ -1181,8 +1172,6 @@ end
 
 end PalomarCorpus.E257.MixedWeightedCover
 
-import Erdos257PeriodNoncollapse.BooleanMobiusSkipRowCofinal
-
 namespace PalomarCorpus.E257.PositiveSkipEquivalence
 export PalomarCorpus.E257.Shared (mersenneAchievementSet mersenneWeight mersenneWeightRat positiveMersenneSupportValue)
 
@@ -1190,16 +1179,14 @@ open Set
 
 noncomputable section
 
-def greedyMersenneRemainderRat (x : ℚ) : ℕ → ℚ :=
+noncomputable def greedyMersenneRemainderRat (x : ℚ) : ℕ → ℚ :=
   Erdos257PeriodNoncollapse.greedyMersenneRemainderRat x
-
-def CofinalPositiveHalfGreedySkips : Prop :=
+noncomputable def CofinalPositiveHalfGreedySkips : Prop :=
   ∀ N : ℕ, ∃ c : ℕ,
     max N 4 ≤ c ∧
       0 < greedyMersenneRemainderRat (1 / 2 : ℚ) (c - 1) ∧
       greedyMersenneRemainderRat (1 / 2 : ℚ) (c - 1) <
         mersenneWeightRat c
-
 theorem greedyMersenneRemainderRat_half_pos (n : ℕ) :
     0 < greedyMersenneRemainderRat (1 / 2 : ℚ) n := by
   change 0 < Erdos257PeriodNoncollapse.greedyMersenneRemainderRat
@@ -1216,9 +1203,6 @@ theorem cofinalPositiveHalfGreedySkips_iff_half_mem :
 end
 
 end PalomarCorpus.E257.PositiveSkipEquivalence
-
-import Mathlib
-import Erdos257PeriodNoncollapse.GreedyAchievementSet
 
 namespace PalomarCorpus.E257.RationalMembership
 export PalomarCorpus.E257.Shared (greedyMersenneRemainder greedyMersenneSkippedSupport greedyMersenneSupport mersenneAchievementSet mersenneWeight positiveMersenneSupportValue)
@@ -1305,8 +1289,6 @@ end
 
 end PalomarCorpus.E257.RationalMembership
 
-import Erdos257PeriodNoncollapse.SublogDivisorCoverage
-
 namespace PalomarCorpus.E257.RationalTailRigidity
 export PalomarCorpus.E257.Shared (erdosSupportSeries supportCoeff)
 
@@ -1317,12 +1299,10 @@ noncomputable section
 noncomputable def binaryCoeffTail (c : ℕ → ℕ) (N : ℕ) : ℝ :=
   ∑' j : ℕ, (c (N + j + 1) : ℝ) / (2 : ℝ) ^ (j + 1)
 
-def CoeffZeroWindow (f : ℕ → ℕ) (N h : ℕ) : Prop :=
+noncomputable def CoeffZeroWindow (f : ℕ → ℕ) (N h : ℕ) : Prop :=
   ∀ j : ℕ, j < h → f (N + j + 1) = 0
-
-def SupportCoeffZeroWindow (A : Set ℕ) (N h : ℕ) : Prop :=
+noncomputable def SupportCoeffZeroWindow (A : Set ℕ) (N h : ℕ) : Prop :=
   CoeffZeroWindow (supportCoeff A) N h
-
 noncomputable def reciprocalSupportTerm (A : Set ℕ) (a : ℕ) : ℝ :=
   Set.indicator A (fun a : ℕ => (1 : ℝ) / (a : ℝ)) a
 
@@ -1414,9 +1394,6 @@ end
 
 end PalomarCorpus.E257.RationalTailRigidity
 
-import Mathlib
-import Erdos257PeriodNoncollapse.AllBaseReciprocalSupportIrrationality
-
 namespace PalomarCorpus.E257.ReciprocalSupport
 
 noncomputable section
@@ -1442,9 +1419,6 @@ end
 
 end PalomarCorpus.E257.ReciprocalSupport
 
-import Mathlib
-import Erdos257PeriodNoncollapse.GreedyTrapDynamics
-
 namespace PalomarCorpus.E257.ScaledGreedyTrap
 export PalomarCorpus.E257.Shared (greedyMersenneRemainder mersenneAchievementSet mersenneWeight positiveMersenneSupportValue)
 
@@ -1454,18 +1428,14 @@ open scoped BigOperators
 
 noncomputable section
 
-def scaledGreedyRemainder (x : ℝ) (N : ℕ) : ℝ :=
+noncomputable def scaledGreedyRemainder (x : ℝ) (N : ℕ) : ℝ :=
   Erdos257PeriodNoncollapse.scaledGreedyRemainder x N
-
-def mersenneScale (n : ℕ) : ℝ :=
+noncomputable def mersenneScale (n : ℕ) : ℝ :=
   Erdos257PeriodNoncollapse.mersenneScale n
-
-def ScaledGreedyLowerBranchCofinally (x : ℝ) : Prop :=
+noncomputable def ScaledGreedyLowerBranchCofinally (x : ℝ) : Prop :=
   Erdos257PeriodNoncollapse.ScaledGreedyLowerBranchCofinally x
-
-def ScaledGreedyRemainderCofinallyBounded (x : ℝ) : Prop :=
+noncomputable def ScaledGreedyRemainderCofinallyBounded (x : ℝ) : Prop :=
   Erdos257PeriodNoncollapse.ScaledGreedyRemainderCofinallyBounded x
-
 theorem scaledGreedyRemainder_tendsto_atTop_of_not_mem {x : ℝ} (hx : 0 ≤ x)
     (hnot : x ∉ mersenneAchievementSet) :
     Tendsto (fun N : ℕ => scaledGreedyRemainder x N) atTop atTop := by
@@ -1516,8 +1486,6 @@ end
 
 end PalomarCorpus.E257.ScaledGreedyTrap
 
-import ErdosProblems.Erdos257.HalfCounterexampleFrontier
-
 namespace PalomarCorpus.E257.TerminalScaledVanishing
 export PalomarCorpus.E257.Shared (UniversalMersenneSubseriesIrrationality erdosSupportSeries supportCoeff)
 
@@ -1525,17 +1493,14 @@ open Filter Set
 
 noncomputable section
 
-def affineBinaryOrbit (a : ℕ → ℤ) (u0 : ℤ) : ℕ → ℤ :=
+noncomputable def affineBinaryOrbit (a : ℕ → ℤ) (u0 : ℤ) : ℕ → ℤ :=
   Erdos257PeriodNoncollapse.affineBinaryOrbit a u0
-
 noncomputable def integerHalfCarry (A : Set ℕ) : ℕ → ℤ :=
   Erdos257PeriodNoncollapse.HalfCarryReachability.integerHalfCarry A
 
-abbrev HalfWord (N : ℕ) := Fin (N + 1) → Bool
-
-def wordSupport {N : ℕ} (a : HalfWord N) : Set ℕ :=
+noncomputable abbrev HalfWord (N : ℕ) := Fin (N + 1) → Bool
+noncomputable def wordSupport {N : ℕ} (a : HalfWord N) : Set ℕ :=
   Erdos257PeriodNoncollapse.HalfCarryReachability.wordSupport a
-
 structure HalfTerminalOnlyScaledVanishingSequence where
   depth : ℕ → ℕ
   word : ∀ n : ℕ, HalfWord (depth n)
@@ -1579,47 +1544,43 @@ end
 
 end PalomarCorpus.E257.TerminalScaledVanishing
 
-import Mathlib
-import Erdos257PeriodNoncollapse.TwentyOneQuotientGreedy
-
 namespace PalomarCorpus.E257.TwentyOneFatalBranch
 export PalomarCorpus.E257.Shared (greedyMersenneRemainder greedyMersenneSkippedSupport greedyMersenneSupport integerGreedyBits mersenneAchievementSet mersenneWeight mersenneWeightRat positiveMersenneSupportValue)
 
 noncomputable section
 
 noncomputable abbrev mersenneTail := Erdos257PeriodNoncollapse.mersenneTail
-abbrev GreedyMersenneFatalAt := Erdos257PeriodNoncollapse.GreedyMersenneFatalAt
-abbrev weightedBoolSum :=
+noncomputable abbrev GreedyMersenneFatalAt := Erdos257PeriodNoncollapse.GreedyMersenneFatalAt
+noncomputable abbrev weightedBoolSum :=
   Erdos257PeriodNoncollapse.HalfCylinderIntegerGreedy.weightedBoolSum
-abbrev integerGreedyRemainder :=
+noncomputable abbrev integerGreedyRemainder :=
   Erdos257PeriodNoncollapse.HalfCylinderIntegerGreedy.integerGreedyRemainder
-abbrev localMersenneQuotient := Erdos257PeriodNoncollapse.localMersenneQuotient
-abbrev localPrefixQuotient := Erdos257PeriodNoncollapse.localPrefixQuotient
-abbrev endpointDivisorContribution :=
+noncomputable abbrev localMersenneQuotient := Erdos257PeriodNoncollapse.localMersenneQuotient
+noncomputable abbrev localPrefixQuotient := Erdos257PeriodNoncollapse.localPrefixQuotient
+noncomputable abbrev endpointDivisorContribution :=
   Erdos257PeriodNoncollapse.endpointDivisorContribution
-abbrev localMersenneWeightsFrom :=
+noncomputable abbrev localMersenneWeightsFrom :=
   Erdos257PeriodNoncollapse.BooleanMobiusGreedyReduction.localMersenneWeightsFrom
-abbrev localMersenneWeights :=
+noncomputable abbrev localMersenneWeights :=
   Erdos257PeriodNoncollapse.BooleanMobiusGreedyReduction.localMersenneWeights
-abbrev lowerSupportFromBits :=
+noncomputable abbrev lowerSupportFromBits :=
   Erdos257PeriodNoncollapse.BooleanMobiusGreedyReduction.lowerSupportFromBits
-abbrev twentyOneQuotientTarget := Erdos257PeriodNoncollapse.twentyOneQuotientTarget
-abbrev rationalMersenneGreedyBitsFrom :=
+noncomputable abbrev twentyOneQuotientTarget := Erdos257PeriodNoncollapse.twentyOneQuotientTarget
+noncomputable abbrev rationalMersenneGreedyBitsFrom :=
   Erdos257PeriodNoncollapse.rationalMersenneGreedyBitsFrom
-abbrev twentyOneEvenQuotientGreedySupport :=
+noncomputable abbrev twentyOneEvenQuotientGreedySupport :=
   Erdos257PeriodNoncollapse.twentyOneEvenQuotientGreedySupport
-abbrev twentyOneEvenQuotientGreedyRemainder :=
+noncomputable abbrev twentyOneEvenQuotientGreedyRemainder :=
   Erdos257PeriodNoncollapse.twentyOneEvenQuotientGreedyRemainder
-abbrev localPrefixTwoStepPulse := Erdos257PeriodNoncollapse.localPrefixTwoStepPulse
-abbrev twentyOneTargetTwoStepPulse :=
+noncomputable abbrev localPrefixTwoStepPulse := Erdos257PeriodNoncollapse.localPrefixTwoStepPulse
+noncomputable abbrev twentyOneTargetTwoStepPulse :=
   Erdos257PeriodNoncollapse.twentyOneTargetTwoStepPulse
-abbrev TwentyOneClosedLowerStateSupply :=
+noncomputable abbrev TwentyOneClosedLowerStateSupply :=
   Erdos257PeriodNoncollapse.TwentyOneClosedLowerStateSupply
-abbrev TwentyOneGreedyEventuallyHitsDoublingBlocks :=
+noncomputable abbrev TwentyOneGreedyEventuallyHitsDoublingBlocks :=
   Erdos257PeriodNoncollapse.TwentyOneGreedyEventuallyHitsDoublingBlocks
-abbrev TwentyOneFatalAlignedBranch :=
+noncomputable abbrev TwentyOneFatalAlignedBranch :=
   Erdos257PeriodNoncollapse.TwentyOneFatalAlignedBranch
-
 theorem twentyOneClosedRow_forces_quotientGreedy
     {R s : ℕ} {bits : List Bool}
     (hlen : bits.length = (localMersenneWeights (2 * R) R).length)
@@ -1670,24 +1631,21 @@ end
 
 end PalomarCorpus.E257.TwentyOneFatalBranch
 
-import ErdosProblems.Erdos257.PaperCompleteR8.PositiveCoverReturn
-
 namespace PalomarCorpus.E257.VariableExponentCover
-export PalomarCorpus.E257.Shared (PositiveCoverData StrengthenedCostSummable cost erdosSupportSeries host)
+export PalomarCorpus.E257.Shared (PositiveCoverData PositiveCoverData.StrengthenedCostSummable PositiveCoverData.cost erdosSupportSeries PositiveCoverData.host)
 
 open Set
 
 noncomputable section
 
-def StrengthenedPositiveCoverClaim : Prop :=
+noncomputable def StrengthenedPositiveCoverClaim : Prop :=
   ∀ C : PositiveCoverData, C.StrengthenedCostSummable →
     ∀ A : Set ℕ, A ⊆ C.host → A.Infinite →
       ∀ b : ℕ, 2 ≤ b → Irrational (erdosSupportSeries b A)
-
 theorem erdosSupportSeries_eq :
     erdosSupportSeries = Erdos257PeriodNoncollapse.erdosSupportSeries := rfl
 
-def PositiveCoverData.toSource (C : PositiveCoverData) :
+noncomputable def PositiveCoverData.toSource (C : PositiveCoverData) :
     ErdosProblems.Erdos257.PaperCompleteR7.PositiveCoverData where
   frame := C.frame
   exponent := C.exponent
@@ -1697,8 +1655,7 @@ def PositiveCoverData.toSource (C : PositiveCoverData) :
   coefficient_nonneg := C.coefficient_nonneg
   column_summable := C.column_summable
   majorises := C.majorises
-
-def PositiveCoverData.ofSource
+noncomputable def PositiveCoverData.ofSource
     (C : ErdosProblems.Erdos257.PaperCompleteR7.PositiveCoverData) :
     PositiveCoverData where
   frame := C.frame
@@ -1709,7 +1666,6 @@ def PositiveCoverData.ofSource
   coefficient_nonneg := C.coefficient_nonneg
   column_summable := C.column_summable
   majorises := C.majorises
-
 theorem PositiveCoverData.host_toSource (C : PositiveCoverData) :
     C.host = C.toSource.host := rfl
 

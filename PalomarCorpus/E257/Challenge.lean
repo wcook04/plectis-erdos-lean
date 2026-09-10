@@ -14,73 +14,124 @@ Comparator-grade proof coverage for this problem. Parent problem remains open.
 Narrative lives in `PalomarCorpus/README.md`.
 -/
 
+open scoped ENNReal
+open Set MeasureTheory
+open Set
+open scoped BigOperators
+open ArithmeticFunction Filter Set
+open scoped ArithmeticFunction.Moebius
+open Filter Topology
+open Set MeasureTheory Topology
+open Filter Set
+
 namespace PalomarCorpus.E257.Shared
-noncomputable structure PositiveCoverData where frame : ℕ → Finset ℕ exponent : ℕ → ℝ coefficient : ℕ → ℕ → ℝ frame_positive : ∀ j, 0 ∉ frame j exponent_bounds : ∀ j, 0 < exponent j ∧ exponent j ≤ 1 coefficient_nonneg : ∀ j d, 0 < d → 0 ≤ coefficient j d column_summable : ∀ j, Summable (fun d : ℕ => coefficient j d / (d : ℝ)) majorises : ∀ j n, 0 < n → (((frame j).filter (fun a => a ∣ n)).card : ℝ) ^ exponent j ≤ ∑ d ∈ n.divisors, coefficient j d
+structure PositiveCoverData where
+  frame : ℕ → Finset ℕ
+  exponent : ℕ → ℝ
+  coefficient : ℕ → ℕ → ℝ
+  frame_positive : ∀ j, 0 ∉ frame j
+  exponent_bounds : ∀ j, 0 < exponent j ∧ exponent j ≤ 1
+  coefficient_nonneg : ∀ j d, 0 < d → 0 ≤ coefficient j d
+  column_summable : ∀ j, Summable (fun d : ℕ => coefficient j d / (d : ℝ))
+  majorises : ∀ j n, 0 < n →
+    (((frame j).filter (fun a => a ∣ n)).card : ℝ) ^ exponent j ≤
+      ∑ d ∈ n.divisors, coefficient j d
 
-noncomputable def binaryCoeffPrefixNumerator (c : ℕ → ℕ) : ℕ → ℕ | 0 => 0 | N + 1 => 2 * binaryCoeffPrefixNumerator c N + c (N + 1)
+noncomputable def binaryCoeffPrefixNumerator (c : ℕ → ℕ) : ℕ → ℕ
+  | 0 => 0
+  | N + 1 => 2 * binaryCoeffPrefixNumerator c N + c (N + 1)
 
-noncomputable def PositiveCoverData.cost (C : PositiveCoverData) (j : ℕ) : ℝ := ∑' d : ℕ, C.coefficient j d / (d : ℝ)
+noncomputable def PositiveCoverData.cost (C : PositiveCoverData) (j : ℕ) : ℝ :=
+  ∑' d : ℕ, C.coefficient j d / (d : ℝ)
 
-noncomputable def PositiveCoverData.StrengthenedCostSummable (C : PositiveCoverData) : Prop := Summable (fun j : ℕ => C.cost j * (2 : ℝ) ^ (((j + 1 : ℕ) : ℝ) * C.exponent j) / ((2 : ℝ) ^ C.exponent j - 1))
+noncomputable def PositiveCoverData.StrengthenedCostSummable (C : PositiveCoverData) : Prop :=
+  Summable (fun j : ℕ =>
+    C.cost j * (2 : ℝ) ^ (((j + 1 : ℕ) : ℝ) * C.exponent j) /
+      ((2 : ℝ) ^ C.exponent j - 1))
 
-noncomputable def erdosSupportSeries (b : ℕ) (A : Set ℕ) : ℝ := ∑' a : ℕ, Set.indicator A (fun a => (1 : ℝ) / ((b : ℝ) ^ a - 1)) a
+noncomputable def erdosSupportSeries (b : ℕ) (A : Set ℕ) : ℝ :=
+  ∑' a : ℕ, Set.indicator A
+    (fun a => (1 : ℝ) / ((b : ℝ) ^ a - 1)) a
 
-noncomputable def UniversalMersenneSubseriesIrrationality : Prop := ∀ A : Set ℕ, A.Infinite → Irrational (erdosSupportSeries 2 A) /-- Complete problem-level consequence of the actual successor producer. -/
+noncomputable def UniversalMersenneSubseriesIrrationality : Prop :=
+  ∀ A : Set ℕ, A.Infinite → Irrational (erdosSupportSeries 2 A)
 
-noncomputable def PositiveCoverData.host (C : PositiveCoverData) : Set ℕ := {a | ∃ j, a ∈ C.frame j}
+noncomputable def PositiveCoverData.host (C : PositiveCoverData) : Set ℕ :=
+  {a | ∃ j, a ∈ C.frame j}
 
-noncomputable def HasStrengthenedPositiveCover (A : Set ℕ) : Prop := ∃ C : PositiveCoverData, A ⊆ C.host ∧ C.StrengthenedCostSummable /-- Arbitrary-weight positive-cover data on an actual support. -/
+noncomputable def HasStrengthenedPositiveCover (A : Set ℕ) : Prop :=
+  ∃ C : PositiveCoverData, A ⊆ C.host ∧ C.StrengthenedCostSummable
 
-noncomputable def integerGreedyBits : List ℕ → ℕ → List Bool | [], _ => [] | w :: ws, C => if w ≤ C then true :: integerGreedyBits ws (C - w) else false :: integerGreedyBits ws C
+noncomputable def integerGreedyBits : List ℕ → ℕ → List Bool
+  | [], _ => []
+  | w :: ws, C =>
+      if w ≤ C then
+        true :: integerGreedyBits ws (C - w)
+      else
+        false :: integerGreedyBits ws C
 
-noncomputable def mersenneWeight (n : ℕ) : ℝ := 1 / ((2 : ℝ) ^ n - 1) /-- The contribution of the `k`th binary digit. -/
+noncomputable def mersenneWeight (n : ℕ) : ℝ :=
+  1 / ((2 : ℝ) ^ n - 1)
 
-noncomputable def greedyMersenneRemainder (x : ℝ) : ℕ → ℝ | 0 => x | n + 1 => if mersenneWeight (n + 1) ≤ greedyMersenneRemainder x n then greedyMersenneRemainder x n - mersenneWeight (n + 1) else greedyMersenneRemainder x n
+noncomputable def greedyMersenneRemainder (x : ℝ) : ℕ → ℝ
+  | 0 => x
+  | n + 1 =>
+      if mersenneWeight (n + 1) ≤ greedyMersenneRemainder x n then
+        greedyMersenneRemainder x n - mersenneWeight (n + 1)
+      else
+        greedyMersenneRemainder x n
 
-noncomputable def greedyMersenneSupport (x : ℝ) : Set ℕ := {m : ℕ | m ≠ 0 ∧ mersenneWeight m ≤ greedyMersenneRemainder x (m - 1)}
+noncomputable def greedyMersenneSupport (x : ℝ) : Set ℕ :=
+  {m : ℕ | m ≠ 0 ∧ mersenneWeight m ≤ greedyMersenneRemainder x (m - 1)}
 
-noncomputable def greedyMersenneSkippedSupport (x : ℝ) : Set ℕ := {m : ℕ | m ≠ 0 ∧ m ∉ greedyMersenneSupport x}
+noncomputable def greedyMersenneSkippedSupport (x : ℝ) : Set ℕ :=
+  {m : ℕ | m ≠ 0 ∧ m ∉ greedyMersenneSupport x}
 
-noncomputable def mersenneWeightRat (n : ℕ) : ℚ := 1 / ((2 : ℚ) ^ n - 1)
+noncomputable def mersenneWeightRat (n : ℕ) : ℚ :=
+  1 / ((2 : ℚ) ^ n - 1)
 
-noncomputable def positiveMersenneSupportValue (A : Set ℕ) : ℝ := ∑' k : ℕ, Set.indicator A mersenneWeight (k + 1) /-- Binary digit strings supported on `J`. -/
+noncomputable def positiveMersenneSupportValue (A : Set ℕ) : ℝ :=
+  ∑' k : ℕ, Set.indicator A mersenneWeight (k + 1)
 
-noncomputable def mersenneAchievementSet : Set ℝ := {x : ℝ | ∃ A : Set ℕ, 0 ∉ A ∧ x = positiveMersenneSupportValue A}
+noncomputable def mersenneAchievementSet : Set ℝ :=
+  {x : ℝ | ∃ A : Set ℕ, 0 ∉ A ∧ x = positiveMersenneSupportValue A}
 
-noncomputable def primeSetPart (P : Finset ℕ) (a : ℕ) : ℕ := ∏ p ∈ P, p ^ a.factorization p /-- The literal weighted term at an integer base. -/
+noncomputable def primeSetPart (P : Finset ℕ) (a : ℕ) : ℕ :=
+  ∏ p ∈ P, p ^ a.factorization p
 
-noncomputable def primeWeightedTerm (b : ℕ) (P : Finset ℕ) (a : ℕ) : ℝ := (primeSetPart P a : ℝ) / ((a : ℝ) * ((b : ℝ) ^ primeSetPart P a - 1)) /-- The weighted hypothesis, not its irrationality conclusion. -/
+noncomputable def primeWeightedTerm (b : ℕ) (P : Finset ℕ) (a : ℕ) : ℝ :=
+  (primeSetPart P a : ℝ) /
+    ((a : ℝ) * ((b : ℝ) ^ primeSetPart P a - 1))
 
-noncomputable def FinitePrimeWeighted (b : ℕ) (A : Set ℕ) : Prop := ∃ P : Finset ℕ, P.Nonempty ∧ (∀ p ∈ P, Nat.Prime p) ∧ Summable (Set.indicator A (primeWeightedTerm b P)) /-- Open Lean goal for long thm:257-weighted, including the all-base hereditary consequence of a finite binary weighted mass. -/
+noncomputable def FinitePrimeWeighted (b : ℕ) (A : Set ℕ) : Prop :=
+  ∃ P : Finset ℕ, P.Nonempty ∧ (∀ p ∈ P, Nat.Prime p) ∧
+    Summable (Set.indicator A (primeWeightedTerm b P))
 
-noncomputable def supportCoeff (A : Set ℕ) (n : ℕ) : ℕ := letI := Classical.decPred fun d : ℕ => d ∈ A (n.divisors.filter fun d => d ∈ A).card /-- The base-`b` Mersenne support series. -/
+noncomputable def supportCoeff (A : Set ℕ) (n : ℕ) : ℕ :=
+  letI := Classical.decPred fun d : ℕ => d ∈ A
+  (n.divisors.filter fun d => d ∈ A).card
 
 end PalomarCorpus.E257.Shared
 
 namespace PalomarCorpus.E257.AchievementSetGeometry
 open scoped ENNReal
+open Set MeasureTheory
 export PalomarCorpus.E257.Shared (mersenneWeight positiveMersenneSupportValue)
 noncomputable def mersenneDigitTerm (k : ℕ) (b : ℕ → Fin 2) : ℝ :=
   ((b k : ℕ) : ℝ) * mersenneWeight (k + 1)
-/-- The value of a positive-index binary Mersenne digit string. -/
 
 noncomputable def positiveMersenneDigitValue (b : ℕ → Fin 2) : ℝ :=
   ∑' k : ℕ, mersenneDigitTerm k b
-/-- The value coded by a set of positive exponents. -/
 
-def SupportedMersenneDigits (J : Set ℕ) :=
+noncomputable def SupportedMersenneDigits (J : Set ℕ) :=
   {b : ℕ → Fin 2 // ∀ k, k ∉ J → b k = 0}
-/-- The Mersenne digit map restricted to the selected support. -/
 
 noncomputable def supportedMersenneDigitValue
     (J : Set ℕ) (b : SupportedMersenneDigits J) : ℝ :=
   positiveMersenneDigitValue b.1
-/-- The achievement set obtained by allowing binary digits only on `J`. -/
 
-def supportedMersenneAchievementSet (J : Set ℕ) : Set ℝ :=
+noncomputable def supportedMersenneAchievementSet (J : Set ℕ) : Set ℝ :=
   Set.range (supportedMersenneDigitValue J)
-/-- A Boolean support with rational Mersenne value has a Lebesgue-null
-orientation space. -/
 
 theorem volume_supportedMersenneAchievementSet_eq_zero_of_rat_value
     {J : Set ℕ} (hJ0 : 0 ∉ J) {q : ℚ}
@@ -105,16 +156,15 @@ end PalomarCorpus.E257.AchievementSetGeometry
 
 namespace PalomarCorpus.E257.ActualUpperSuccessor
 open Set
+open scoped BigOperators
 export PalomarCorpus.E257.Shared (UniversalMersenneSubseriesIrrationality erdosSupportSeries integerGreedyBits)
-def truncatedMersenneWeight (s d : ℕ) : ℕ :=
+noncomputable def truncatedMersenneWeight (s d : ℕ) : ℕ :=
   4 ^ s / (2 ^ d - 1)
-/-- Integer capacity of the seam subset-sum problem. -/
 
-def seamSubsetTarget (s : ℕ) : ℕ :=
+noncomputable def seamSubsetTarget (s : ℕ) : ℕ :=
   2 ^ (2 * s - 1) - 2 ^ s
-/-- Proper-divisor weights in decreasing greedy order. -/
 
-def seamWeightsFrom (s : ℕ) : ℕ → List ℕ
+noncomputable def seamWeightsFrom (s : ℕ) : ℕ → List ℕ
   | d =>
       if h : d < s then
         truncatedMersenneWeight s d :: seamWeightsFrom s (d + 1)
@@ -123,54 +173,47 @@ def seamWeightsFrom (s : ℕ) : ℕ → List ℕ
 termination_by d => s - d
 decreasing_by omega
 
-def seamWeights (s : ℕ) : List ℕ := seamWeightsFrom s 2
+noncomputable def seamWeights (s : ℕ) : List ℕ := seamWeightsFrom s 2
 
-def weightedBoolSum : List ℕ → List Bool → ℕ
+noncomputable def weightedBoolSum : List ℕ → List Bool → ℕ
   | [], _ => 0
   | _, [] => 0
   | w :: ws, b :: bs => (if b then w else 0) + weightedBoolSum ws bs
-/-- Descending Boolean greedy word. -/
 
-def integerGreedyRemainder (weights : List ℕ) (C : ℕ) : ℕ :=
+noncomputable def integerGreedyRemainder (weights : List ℕ) (C : ℕ) : ℕ :=
   C - weightedBoolSum weights (integerGreedyBits weights C)
-/-- The actual integer greedy remainder at seam row `s`. -/
 
-def seamIntegerGreedyRemainder (s : ℕ) : ℕ :=
+noncomputable def seamIntegerGreedyRemainder (s : ℕ) : ℕ :=
   integerGreedyRemainder (seamWeights s) (seamSubsetTarget s)
-/-- Quotient pulse contributed by rank `d` between consecutive seam rows. -/
 
-def rowPulse (s d : ℕ) : ℕ :=
+noncomputable def rowPulse (s d : ℕ) : ℕ :=
   (if d ∣ 2 * s + 2 then 1 else 0) +
     2 * (if d ∣ 2 * s + 1 then 1 else 0)
 
-def seamGreedyBits (s : ℕ) : List Bool :=
+noncomputable def seamGreedyBits (s : ℕ) : List Bool :=
   integerGreedyBits (seamWeights s) (seamSubsetTarget s)
 
-def seamGreedyBit (s d : ℕ) : Bool :=
+noncomputable def seamGreedyBit (s d : ℕ) : Bool :=
   (seamGreedyBits s).getD (d - 2) false
 
-def seamBelowPulse (s : ℕ) : ℕ :=
+noncomputable def seamBelowPulse (s : ℕ) : ℕ :=
   ∑ i ∈ Finset.range (s - 2),
     if seamGreedyBit s (i + 2) then rowPulse s (i + 2) else 0
-/-- The two fields of the actual adjacent cut used by the realized-run
-producer.  Prefix change is the concrete upper-transition test. -/
 
 structure SeamAdjacentCutView where
   successorCarries : Prop
   belowPulse : ℕ
 
-def seamAdjacentCut (s : ℕ) (_hs : 5 ≤ s) : SeamAdjacentCutView where
+noncomputable def seamAdjacentCut (s : ℕ) (_hs : 5 ≤ s) : SeamAdjacentCutView where
   successorCarries :=
     (seamGreedyBits (s + 1)).take (s - 2) ≠ seamGreedyBits s
   belowPulse := seamBelowPulse s
-/-- Complete affine charge accumulated over a realized right run. -/
 
-def affineRightRunCharge (pulse : ℕ → ℕ) : ℕ → ℕ
+noncomputable def affineRightRunCharge (pulse : ℕ → ℕ) : ℕ → ℕ
   | 0 => 0
   | k + 1 => 4 * affineRightRunCharge pulse k + pulse k + 4
-/-- Terminal-packet lower envelope on literal upper/right runs. -/
 
-def SeamActualUpperRightPacketLinearEscape : Prop :=
+noncomputable def SeamActualUpperRightPacketLinearEscape : Prop :=
   ∀ (d k : ℕ) (hd5 : 5 ≤ d), 13 ≤ d → k ≤ d →
     (seamAdjacentCut d hd5).successorCarries →
     (∀ q : ℕ, q < k →
@@ -183,9 +226,8 @@ def SeamActualUpperRightPacketLinearEscape : Prop :=
         affineRightRunCharge
           (fun q ↦
             (seamAdjacentCut (d + q + 1) (by omega)).belowPulse) k
-/-- Pulse-free lower envelope at the immediate successor of the upper reset. -/
 
-def SeamActualUpperSuccessorLinearEscape : Prop :=
+noncomputable def SeamActualUpperSuccessorLinearEscape : Prop :=
   ∀ (d k : ℕ) (hd5 : 5 ≤ d), 13 ≤ d → k ≤ d →
     (seamAdjacentCut d hd5).successorCarries →
     (∀ q : ℕ, q < k →
@@ -195,7 +237,6 @@ def SeamActualUpperSuccessorLinearEscape : Prop :=
         4 * seamIntegerGreedyRemainder (d + q + 1)) →
     2 ^ (d + 1) - 2 ^ (d - k + 1) + 2 * (d + k) ≤
       seamIntegerGreedyRemainder (d + 1)
-/-- Exact cancellation of the upper reset and its realized right-run charge. -/
 
 theorem actualUpperRightPacketLinearEscape_iff_successorLinearEscape :
     SeamActualUpperRightPacketLinearEscape ↔
@@ -213,29 +254,24 @@ end PalomarCorpus.E257.ActualUpperSuccessor
 
 namespace PalomarCorpus.E257.BooleanMobiusCarry
 open ArithmeticFunction Filter Set
+open scoped ArithmeticFunction.Moebius
 export PalomarCorpus.E257.Shared (erdosSupportSeries supportCoeff)
-def IsTemperedBinaryOrbit (c : ℕ → ℕ) (v : ℕ) (u : ℕ → ℤ) : Prop :=
+noncomputable def IsTemperedBinaryOrbit (c : ℕ → ℕ) (v : ℕ) (u : ℕ → ℤ) : Prop :=
   (∀ N : ℕ,
       u (N + 1) = 2 * u N - ((v * c (N + 1) : ℕ) : ℤ)) ∧
     Tendsto (fun N : ℕ ↦ (u N : ℝ) / (2 : ℝ) ^ N) atTop (nhds 0)
-/-- The support coefficient as an integer-valued arithmetic function. -/
 
 noncomputable def supportCoeffAF (A : Set ℕ) : ArithmeticFunction ℤ :=
   ⟨fun n ↦ (supportCoeff A n : ℤ), by simp [supportCoeff]⟩
-/-- The positive support selected by the Boolean Möbius transform of `f`. -/
 
 noncomputable def booleanMobiusSupport (f : ArithmeticFunction ℤ) : Set ℕ :=
   {n : ℕ | 0 < n ∧ (ArithmeticFunction.moebius * f) n = 1}
-/-- The normalized integer carry quotient. -/
 
-def carryQuotient (q : ℕ) (U : ℕ → ℤ) (n : ℕ) : ℤ :=
+noncomputable def carryQuotient (q : ℕ) (U : ℕ → ℤ) (n : ℕ) : ℤ :=
   if n = 0 then 0 else (2 * U (n - 1) - U n) / (q : ℤ)
-/-- The carry quotient as an arithmetic function. -/
 
-def carryQuotientAF (q : ℕ) (U : ℕ → ℤ) : ArithmeticFunction ℤ :=
+noncomputable def carryQuotientAF (q : ℕ) (U : ℕ → ℤ) : ArithmeticFunction ℤ :=
   ⟨carryQuotient q U, by simp [carryQuotient]⟩
-/-- A positive square-root-bounded integer carry whose quotient has Boolean
-Möbius transform. -/
 
 structure BooleanMobiusCarryCertificate
     (p : ℤ) (q : ℕ) (U : ℕ → ℤ) : Prop where
@@ -247,8 +283,6 @@ structure BooleanMobiusCarryCertificate
   mobiusBoolean : ∀ n : ℕ, 0 < n →
     (ArithmeticFunction.moebius * carryQuotientAF q U) n = 0 ∨
       (ArithmeticFunction.moebius * carryQuotientAF q U) n = 1
-/-- A normalized nonempty support with value `p/q` produces a Boolean--Möbius
-carry certificate which reconstructs that exact support. -/
 
 theorem exists_booleanMobiusCarry_of_support_fraction
     (A : Set ℕ) (hzero : 0 ∉ A)
@@ -291,7 +325,7 @@ end PalomarCorpus.E257.BooleanMobiusCarry
 namespace PalomarCorpus.E257.DivisibilityWeightedSupport
 open Set
 export PalomarCorpus.E257.Shared (FinitePrimeWeighted erdosSupportSeries primeSetPart primeWeightedTerm)
-def DivisibilityWeightedClaim : Prop :=
+noncomputable def DivisibilityWeightedClaim : Prop :=
   (∀ (b : ℕ) (A : Set ℕ), 2 ≤ b → 0 ∉ A → A.Infinite →
     FinitePrimeWeighted b A → Irrational (erdosSupportSeries b A)) ∧
   (∀ H : Set ℕ, 0 ∉ H → FinitePrimeWeighted 2 H →
@@ -305,11 +339,11 @@ end PalomarCorpus.E257.DivisibilityWeightedSupport
 
 namespace PalomarCorpus.E257.DyadicObservationSummability
 open Filter Topology
-def supportObservationMass (A : Set ℕ) (α : ℕ → ℝ) (R : ℕ) : ℝ := by
+noncomputable def supportObservationMass (A : Set ℕ) (α : ℕ → ℝ) (R : ℕ) : ℝ := by
   classical
   exact ∑ a ∈ (Finset.range (R + 1)).filter (fun a => 0 < a ∧ a ∈ A), α a
 
-def weightedObservationTerm (A : Set ℕ) (α : ℕ → ℝ) (a : ℕ) : ℝ := by
+noncomputable def weightedObservationTerm (A : Set ℕ) (α : ℕ → ℝ) (a : ℕ) : ℝ := by
   classical
   exact if 0 < a ∧ a ∈ A then α a / a else 0
 
@@ -339,8 +373,9 @@ end PalomarCorpus.E257.DyadicObservationSummability
 
 namespace PalomarCorpus.E257.FairCoding
 open Set MeasureTheory Topology
+open scoped ENNReal
 export PalomarCorpus.E257.Shared (mersenneAchievementSet mersenneWeight positiveMersenneSupportValue)
-abbrev Digits := ℕ → Fin 2
+noncomputable abbrev Digits := ℕ → Fin 2
 
 noncomputable def mersenneDigitTerm (k : ℕ) (b : Digits) : ℝ :=
   ((b k : ℕ) : ℝ) * mersenneWeight (k + 1)
@@ -348,10 +383,10 @@ noncomputable def mersenneDigitTerm (k : ℕ) (b : Digits) : ℝ :=
 noncomputable def positiveMersenneDigitValue (b : Digits) : ℝ :=
   ∑' k : ℕ, mersenneDigitTerm k b
 
-def fairCoin : Measure (Fin 2) :=
+noncomputable def fairCoin : Measure (Fin 2) :=
   (2 : ℝ≥0∞)⁻¹ • Measure.dirac 0 + (2 : ℝ≥0∞)⁻¹ • Measure.dirac 1
 
-def fairDigits : Measure Digits :=
+noncomputable def fairDigits : Measure Digits :=
   Measure.infinitePi (fun _ : ℕ => fairCoin)
 
 theorem fairCoding_pushforward_eq_volume_restrict :
@@ -373,10 +408,8 @@ theorem fairCoding_rational_values_null :
 end PalomarCorpus.E257.FairCoding
 
 namespace PalomarCorpus.E257.FinitePeriodNoncollapse
-def finiteErdosSum (F : Finset ℕ) (b : ℕ) : ℚ :=
+noncomputable def finiteErdosSum (F : Finset ℕ) (b : ℕ) : ℚ :=
   ∑ n ∈ F, 1 / ((b : ℚ) ^ n - 1)
-/-- Exact finite-period noncollapse over the actual reduced denominator,
-including production of the coprimality witness needed to state the order. -/
 
 theorem finite_period_noncollapse_rat_den
     (F : Finset ℕ) (b : ℕ)
@@ -397,7 +430,7 @@ end PalomarCorpus.E257.FinitePeriodNoncollapse
 namespace PalomarCorpus.E257.FourNinthsRepairWindows
 open Set
 export PalomarCorpus.E257.Shared (binaryCoeffPrefixNumerator greedyMersenneRemainder greedyMersenneSupport mersenneAchievementSet mersenneWeight positiveMersenneSupportValue supportCoeff)
-def fourNinthsBinaryFloor (N : ℕ) : ℕ :=
+noncomputable def fourNinthsBinaryFloor (N : ℕ) : ℕ :=
   4 * 2 ^ N / 9
 
 noncomputable def fourNinthsGreedyDefect (N : ℕ) : ℕ :=
@@ -405,13 +438,11 @@ noncomputable def fourNinthsGreedyDefect (N : ℕ) : ℕ :=
     binaryCoeffPrefixNumerator
       (supportCoeff (greedyMersenneSupport (4 / 9 : ℝ))) N
 
-def FourNinthsOneStepRepairSucc (N : ℕ) : Prop :=
+noncomputable def FourNinthsOneStepRepairSucc (N : ℕ) : Prop :=
   (fourNinthsGreedyDefect (N + 1) : ℤ) ≤ (fourNinthsGreedyDefect N : ℤ)
 
-def FourNinthsOneStepRepairCofinal : Prop :=
+noncomputable def FourNinthsOneStepRepairCofinal : Prop :=
   ∀ K : ℕ, ∃ N : ℕ, K ≤ N ∧ FourNinthsOneStepRepairSucc N
-/-- A natural sequence in the square-root strip cannot strictly increase
-through a window of length `2 * sqrt K + 12`. -/
 
 theorem exists_repair_in_sqrt_window
     (Q : ℕ → ℕ)
@@ -462,7 +493,7 @@ end PalomarCorpus.E257.GeneralRepairCriterion
 
 namespace PalomarCorpus.E257.LiteralWeightedCover
 open Set
-export PalomarCorpus.E257.Shared (FinitePrimeWeighted HasStrengthenedPositiveCover PositiveCoverData StrengthenedCostSummable cost erdosSupportSeries host primeSetPart primeWeightedTerm)
+export PalomarCorpus.E257.Shared (FinitePrimeWeighted HasStrengthenedPositiveCover PositiveCoverData PositiveCoverData.StrengthenedCostSummable PositiveCoverData.cost erdosSupportSeries PositiveCoverData.host primeSetPart primeWeightedTerm)
 structure LogBudgetCover (A : Set ℕ) where
   frame : ℕ → Finset ℕ
   weight : ℕ → ℝ
@@ -481,7 +512,6 @@ structure LogBudgetCover (A : Set ℕ) where
   budget_summable : Summable (fun j =>
     (∑' d : ℕ, coefficient j d / (d : ℝ)) /
       (weight j ^ exponent j) / ((2 : ℝ) ^ exponent j - 1))
-/-- A weighted host that fails the literal strengthened-cover predicate. -/
 
 theorem exists_weighted_not_strengthened_host :
     ∃ A : Set ℕ, A.Infinite ∧ 0 ∉ A ∧ FinitePrimeWeighted 2 A ∧
@@ -503,8 +533,8 @@ end PalomarCorpus.E257.LiteralWeightedCover
 
 namespace PalomarCorpus.E257.MixedWeightedCover
 open Set
-export PalomarCorpus.E257.Shared (FinitePrimeWeighted HasStrengthenedPositiveCover PositiveCoverData StrengthenedCostSummable cost erdosSupportSeries host primeSetPart primeWeightedTerm)
-def MixedSupportClaim : Prop :=
+export PalomarCorpus.E257.Shared (FinitePrimeWeighted HasStrengthenedPositiveCover PositiveCoverData PositiveCoverData.StrengthenedCostSummable PositiveCoverData.cost erdosSupportSeries PositiveCoverData.host primeSetPart primeWeightedTerm)
+noncomputable def MixedSupportClaim : Prop :=
   ∀ E V : Set ℕ, 0 ∉ E → FinitePrimeWeighted 2 E →
     HasStrengthenedPositiveCover V →
     ∀ A : Set ℕ, A ⊆ E ∪ V → A.Infinite →
@@ -518,7 +548,7 @@ end PalomarCorpus.E257.MixedWeightedCover
 namespace PalomarCorpus.E257.PositiveSkipEquivalence
 open Set
 export PalomarCorpus.E257.Shared (mersenneAchievementSet mersenneWeight mersenneWeightRat positiveMersenneSupportValue)
-def greedyMersenneRemainderRat (x : ℚ) : ℕ → ℚ
+noncomputable def greedyMersenneRemainderRat (x : ℚ) : ℕ → ℚ
   | 0 => x
   | n + 1 =>
       if mersenneWeightRat (n + 1) ≤ greedyMersenneRemainderRat x n then
@@ -526,13 +556,12 @@ def greedyMersenneRemainderRat (x : ℚ) : ℕ → ℚ
       else
         greedyMersenneRemainderRat x n
 
-def CofinalPositiveHalfGreedySkips : Prop :=
+noncomputable def CofinalPositiveHalfGreedySkips : Prop :=
   ∀ N : ℕ, ∃ c : ℕ,
     max N 4 ≤ c ∧
       0 < greedyMersenneRemainderRat (1 / 2 : ℚ) (c - 1) ∧
       greedyMersenneRemainderRat (1 / 2 : ℚ) (c - 1) <
         mersenneWeightRat c
-/-- A finite half-greedy prefix can never exhaust one half exactly. -/
 
 theorem greedyMersenneRemainderRat_half_pos (n : ℕ) :
     0 < greedyMersenneRemainderRat (1 / 2 : ℚ) n := by
@@ -581,10 +610,10 @@ export PalomarCorpus.E257.Shared (erdosSupportSeries supportCoeff)
 noncomputable def binaryCoeffTail (c : ℕ → ℕ) (N : ℕ) : ℝ :=
   ∑' j : ℕ, (c (N + j + 1) : ℝ) / (2 : ℝ) ^ (j + 1)
 
-def CoeffZeroWindow (f : ℕ → ℕ) (N h : ℕ) : Prop :=
+noncomputable def CoeffZeroWindow (f : ℕ → ℕ) (N h : ℕ) : Prop :=
   ∀ j : ℕ, j < h → f (N + j + 1) = 0
 
-def SupportCoeffZeroWindow (A : Set ℕ) (N h : ℕ) : Prop :=
+noncomputable def SupportCoeffZeroWindow (A : Set ℕ) (N h : ℕ) : Prop :=
   CoeffZeroWindow (supportCoeff A) N h
 
 noncomputable def reciprocalSupportTerm (A : Set ℕ) (a : ℕ) : ℝ :=
@@ -595,8 +624,6 @@ noncomputable def reciprocalMass (A : Set ℕ) : ℝ :=
 
 noncomputable def oddDoublingOrder (v : ℕ) (hvodd : Odd v) : ℕ :=
   orderOf (ZMod.unitOfCoprime 2 (Nat.coprime_two_left.mpr hvodd))
-/-- Every infinite rational-valued support produces an unbounded positive
-natural tail orbit with exact recurrence and residue dynamics. -/
 
 theorem exists_unbounded_shifted_odd_tail_nat_state_of_support_fraction
     (A : Set ℕ) (hAinf : A.Infinite) (p : ℤ) (c v : ℕ) (hv : 0 < v)
@@ -646,13 +673,10 @@ end PalomarCorpus.E257.RationalTailRigidity
 namespace PalomarCorpus.E257.ReciprocalSupport
 noncomputable def supportReciprocalTerm (A : Set ℕ) (a : ℕ) : ℝ :=
   Set.indicator A (fun a : ℕ => (1 : ℝ) / (a : ℝ)) a
-/-- The reciprocal-power subseries at base b supported on A. -/
 
 noncomputable def supportPowerSeries (b : ℕ) (A : Set ℕ) : ℝ :=
   ∑' a : ℕ, Set.indicator A
     (fun a : ℕ => (1 : ℝ) / ((b : ℝ) ^ a - 1)) a
-/-- Every infinite reciprocal-summable support gives an irrational
-reciprocal-power subseries at every integer base at least two. -/
 
 theorem irrational_supportPowerSeries_of_summable_reciprocal
     (b : ℕ) (A : Set ℕ) (hb : 2 ≤ b) (hA : A.Infinite)
@@ -664,21 +688,21 @@ end PalomarCorpus.E257.ReciprocalSupport
 
 namespace PalomarCorpus.E257.ScaledGreedyTrap
 open Set
+open Filter Topology
+open scoped BigOperators
 export PalomarCorpus.E257.Shared (greedyMersenneRemainder mersenneAchievementSet mersenneWeight positiveMersenneSupportValue)
-def scaledGreedyRemainder (x : ℝ) (N : ℕ) : ℝ :=
+noncomputable def scaledGreedyRemainder (x : ℝ) (N : ℕ) : ℝ :=
   (2 : ℝ) ^ N * greedyMersenneRemainder x N
 
-def mersenneScale (n : ℕ) : ℝ :=
+noncomputable def mersenneScale (n : ℕ) : ℝ :=
   (2 : ℝ) ^ n * mersenneWeight n
 
-def ScaledGreedyLowerBranchCofinally (x : ℝ) : Prop :=
+noncomputable def ScaledGreedyLowerBranchCofinally (x : ℝ) : Prop :=
   ∀ K : ℕ, ∃ N : ℕ, K ≤ N ∧
     2 * scaledGreedyRemainder x N < mersenneScale (N + 1)
-/-- One bounded cofinal subsequence of the scaled greedy remainder. -/
 
-def ScaledGreedyRemainderCofinallyBounded (x : ℝ) : Prop :=
+noncomputable def ScaledGreedyRemainderCofinallyBounded (x : ℝ) : Prop :=
   ∃ B : ℝ, ∀ K : ℕ, ∃ N : ℕ, K ≤ N ∧ scaledGreedyRemainder x N ≤ B
-/-- Outside the achievement set the scaled orbit escapes to infinity. -/
 
 theorem scaledGreedyRemainder_tendsto_atTop_of_not_mem {x : ℝ} (hx : 0 ≤ x)
     (hnot : x ∉ mersenneAchievementSet) :
@@ -716,24 +740,17 @@ end PalomarCorpus.E257.ScaledGreedyTrap
 namespace PalomarCorpus.E257.TerminalScaledVanishing
 open Filter Set
 export PalomarCorpus.E257.Shared (UniversalMersenneSubseriesIrrationality erdosSupportSeries supportCoeff)
-def affineBinaryOrbit (a : ℕ → ℤ) (u0 : ℤ) : ℕ → ℤ
+noncomputable def affineBinaryOrbit (a : ℕ → ℤ) (u0 : ℤ) : ℕ → ℤ
   | 0 => u0
   | n + 1 => 2 * affineBinaryOrbit a u0 n - a (n + 1)
-/-- Integer half-carry attached to a support. -/
 
 noncomputable def integerHalfCarry (A : Set ℕ) : ℕ → ℤ :=
   affineBinaryOrbit (fun n : ℕ ↦ (supportCoeff A (n + 1) : ℤ)) 1
-/-- Boolean support word through depth N. -/
 
-abbrev HalfWord (N : ℕ) := Fin (N + 1) → Bool
-/-- Set represented by a finite Boolean word. -/
+noncomputable abbrev HalfWord (N : ℕ) := Fin (N + 1) → Bool
 
-def wordSupport {N : ℕ} (a : HalfWord N) : Set ℕ :=
+noncomputable def wordSupport {N : ℕ} (a : HalfWord N) : Set ℕ :=
   {n | ∃ h : n < N + 1, a ⟨n, h⟩ = true}
-/-- The exact terminal scaled-vanishing hypothesis.
-The finite words exclude ranks zero and one, their depths tend to infinity,
-and their absolute terminal carry divided by the binary place value tends to
-zero. No compatibility between successive words is assumed. -/
 
 structure HalfTerminalOnlyScaledVanishingSequence where
   depth : ℕ → ℕ
@@ -749,7 +766,6 @@ structure HalfTerminalOnlyScaledVanishingSequence where
         |(integerHalfCarry (wordSupport (word n)) (depth n - 1) : ℝ)| /
           (2 : ℝ) ^ depth n)
       atTop (nhds 0)
-/-- The base-b reciprocal-Mersenne support series. -/
 
 theorem terminalScaledVanishing_completeCounterexample
     (S : HalfTerminalOnlyScaledVanishingSequence) :
@@ -765,27 +781,27 @@ export PalomarCorpus.E257.Shared (greedyMersenneRemainder greedyMersenneSkippedS
 noncomputable def mersenneTail (n : ℕ) : ℝ :=
   ∑' k : ℕ, mersenneWeight (n + k + 1)
 
-def GreedyMersenneFatalAt (x : ℝ) (n : ℕ) : Prop :=
+noncomputable def GreedyMersenneFatalAt (x : ℝ) (n : ℕ) : Prop :=
   mersenneTail n < greedyMersenneRemainder x n
 
-def weightedBoolSum : List ℕ → List Bool → ℕ
+noncomputable def weightedBoolSum : List ℕ → List Bool → ℕ
   | w :: ws, true :: bs => w + weightedBoolSum ws bs
   | _ :: ws, false :: bs => weightedBoolSum ws bs
   | _, _ => 0
 
-def integerGreedyRemainder (weights : List ℕ) (C : ℕ) : ℕ :=
+noncomputable def integerGreedyRemainder (weights : List ℕ) (C : ℕ) : ℕ :=
   C - weightedBoolSum weights (integerGreedyBits weights C)
 
-def localMersenneQuotient (M d : ℕ) : ℕ :=
+noncomputable def localMersenneQuotient (M d : ℕ) : ℕ :=
   2 ^ M / (2 ^ d - 1)
 
-def localPrefixQuotient (D : Finset ℕ) (M : ℕ) : ℕ :=
+noncomputable def localPrefixQuotient (D : Finset ℕ) (M : ℕ) : ℕ :=
   ∑ d ∈ D, localMersenneQuotient M d
 
-def endpointDivisorContribution (D : Finset ℕ) (n : ℕ) : ℕ :=
+noncomputable def endpointDivisorContribution (D : Finset ℕ) (n : ℕ) : ℕ :=
   (D.filter fun d ↦ d ∣ n).card
 
-def localMersenneWeightsFrom (M R : ℕ) : ℕ → List ℕ
+noncomputable def localMersenneWeightsFrom (M R : ℕ) : ℕ → List ℕ
   | d =>
       if h : d ≤ R then
         localMersenneQuotient M d :: localMersenneWeightsFrom M R (d + 1)
@@ -794,18 +810,18 @@ def localMersenneWeightsFrom (M R : ℕ) : ℕ → List ℕ
 termination_by d => R + 1 - d
 decreasing_by omega
 
-def localMersenneWeights (M R : ℕ) : List ℕ :=
+noncomputable def localMersenneWeights (M R : ℕ) : List ℕ :=
   localMersenneWeightsFrom M R 2
 
-def lowerSupportFromBits : ℕ → List Bool → Finset ℕ
+noncomputable def lowerSupportFromBits : ℕ → List Bool → Finset ℕ
   | _, [] => ∅
   | d, false :: bits => lowerSupportFromBits (d + 1) bits
   | d, true :: bits => insert d (lowerSupportFromBits (d + 1) bits)
 
-def twentyOneQuotientTarget (M : ℕ) : ℕ :=
+noncomputable def twentyOneQuotientTarget (M : ℕ) : ℕ :=
   2 ^ M / 21
 
-def rationalMersenneGreedyBitsFrom : ℕ → ℕ → ℚ → List Bool
+noncomputable def rationalMersenneGreedyBitsFrom : ℕ → ℕ → ℚ → List Bool
   | _, 0, _ => []
   | d, n + 1, x =>
       if mersenneWeightRat d ≤ x then
@@ -815,25 +831,25 @@ def rationalMersenneGreedyBitsFrom : ℕ → ℕ → ℚ → List Bool
       else
         false :: rationalMersenneGreedyBitsFrom (d + 1) n x
 
-def twentyOneEvenQuotientGreedySupport (R : ℕ) : Finset ℕ :=
+noncomputable def twentyOneEvenQuotientGreedySupport (R : ℕ) : Finset ℕ :=
   lowerSupportFromBits 2
     (integerGreedyBits
       (localMersenneWeights (2 * R) R)
       (twentyOneQuotientTarget (2 * R)))
 
-def twentyOneEvenQuotientGreedyRemainder (R : ℕ) : ℕ :=
+noncomputable def twentyOneEvenQuotientGreedyRemainder (R : ℕ) : ℕ :=
   integerGreedyRemainder
     (localMersenneWeights (2 * R) R)
     (twentyOneQuotientTarget (2 * R))
 
-def localPrefixTwoStepPulse (D : Finset ℕ) (M : ℕ) : ℕ :=
+noncomputable def localPrefixTwoStepPulse (D : Finset ℕ) (M : ℕ) : ℕ :=
   2 * endpointDivisorContribution D (M + 1) +
     endpointDivisorContribution D (M + 2)
 
-def twentyOneTargetTwoStepPulse (M : ℕ) : ℕ :=
+noncomputable def twentyOneTargetTwoStepPulse (M : ℕ) : ℕ :=
   4 * (2 ^ M % 21) / 21
 
-def TwentyOneClosedLowerStateSupply : Prop :=
+noncomputable def TwentyOneClosedLowerStateSupply : Prop :=
   ∀ R : ℕ, 2 ≤ R →
     ∃ D : Finset ℕ, ∃ s : ℕ,
       (∀ d ∈ D, 2 ≤ d ∧ d ≤ R) ∧
@@ -841,12 +857,12 @@ def TwentyOneClosedLowerStateSupply : Prop :=
         twentyOneQuotientTarget (2 * R) ∧
       s ≤ 2 ^ R
 
-def TwentyOneGreedyEventuallyHitsDoublingBlocks : Prop :=
+noncomputable def TwentyOneGreedyEventuallyHitsDoublingBlocks : Prop :=
   ∃ K₀ : ℕ, ∀ K : ℕ, K₀ ≤ K →
     ∃ n : ℕ, K < n ∧ n ≤ 2 * K ∧
       n ∈ greedyMersenneSupport (1 / 21 : ℝ)
 
-def TwentyOneFatalAlignedBranch : Prop :=
+noncomputable def TwentyOneFatalAlignedBranch : Prop :=
   ∃ n R₀ : ℕ,
     GreedyMersenneFatalAt (1 / 21 : ℝ) n ∧
       (greedyMersenneSkippedSupport (1 / 21 : ℝ)).Finite ∧
@@ -858,8 +874,6 @@ def TwentyOneFatalAlignedBranch : Prop :=
             (twentyOneQuotientTarget (2 * R)) =
           rationalMersenneGreedyBitsFrom 2 (2 * R - 1) (1 / 21 : ℚ)) ∧
       TwentyOneGreedyEventuallyHitsDoublingBlocks
-/-- Every closed denominator-21 quotient row is the canonical greedy row,
-including exact saturation at the binary boundary. -/
 
 theorem twentyOneClosedRow_forces_quotientGreedy
     {R s : ℕ} {bits : List Bool}
@@ -909,8 +923,8 @@ end PalomarCorpus.E257.TwentyOneFatalBranch
 
 namespace PalomarCorpus.E257.VariableExponentCover
 open Set
-export PalomarCorpus.E257.Shared (PositiveCoverData StrengthenedCostSummable cost erdosSupportSeries host)
-def StrengthenedPositiveCoverClaim : Prop :=
+export PalomarCorpus.E257.Shared (PositiveCoverData PositiveCoverData.StrengthenedCostSummable PositiveCoverData.cost erdosSupportSeries PositiveCoverData.host)
+noncomputable def StrengthenedPositiveCoverClaim : Prop :=
   ∀ C : PositiveCoverData, C.StrengthenedCostSummable →
     ∀ A : Set ℕ, A ⊆ C.host → A.Infinite →
       ∀ b : ℕ, 2 ≤ b → Irrational (erdosSupportSeries b A)

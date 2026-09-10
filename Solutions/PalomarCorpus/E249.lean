@@ -17,54 +17,61 @@ import ErdosProblems.Erdos249.RankOneSharpFloor
 import ErdosProblems.Erdos249.ResidueClassTotientSeries
 import Erdos257PeriodNoncollapse.AllBaseTotientKernel
 
+open scoped BigOperators
+open Module
+open ArithmeticFunction
+
 namespace PalomarCorpus.E249.Shared
-noncomputable abbrev TotientCanonicalIndex (e : ℕ) := Fin 2 ⊕ Σ j : Fin e, Fin (2 ^ j.val)
+noncomputable abbrev TotientCanonicalIndex (e : ℕ) :=
+  Fin 2 ⊕ Σ j : Fin e, Fin (2 ^ j.val)
 
-noncomputable def mobiusMersenneTerm (r n : ℕ) : ℝ := ((moebius (n + 1) : ℤ) : ℝ) / (((2 : ℝ) ^ (n + 1) - 1) ^ r) /-- The Möbius–Mersenne power ladder `Θᵣ = ∑_{d ≥ 1} μ(d) / (2^d - 1)^r`. -/
+noncomputable def mobiusMersenneTerm (r n : ℕ) : ℝ :=
+  ((moebius (n + 1) : ℤ) : ℝ) /
+    (((2 : ℝ) ^ (n + 1) - 1) ^ r)
 
-noncomputable def mobiusMersenneTheta (r : ℕ) : ℝ := ∑' n : ℕ, mobiusMersenneTerm r n /-- The literal Möbius–Lambert rung `Θ̂ᵣ = ∑_{d ≥ 1} μ(d) / (2^(r·d) - 1)`. -/
+noncomputable def mobiusMersenneTheta (r : ℕ) : ℝ :=
+  ∑' n : ℕ, mobiusMersenneTerm r n
 
-noncomputable def totientKernelSeq (j r : ℕ) : ℕ → ℚ := fun n => Nat.totient (2 ^ j * n + r)
+noncomputable def totientKernelSeq (j r : ℕ) : ℕ → ℚ := fun n =>
+  Nat.totient (2 ^ j * n + r)
 
-noncomputable def canonicalTotientKernelFamily (e : ℕ) : TotientCanonicalIndex e → ℕ → ℚ | Sum.inl i => totientKernelSeq i.val 0 | Sum.inr ⟨j, r⟩ => totientKernelSeq (j.val + 1) (2 * r.val + 1)
+noncomputable def canonicalTotientKernelFamily (e : ℕ) :
+    TotientCanonicalIndex e → ℕ → ℚ
+  | Sum.inl i => totientKernelSeq i.val 0
+  | Sum.inr ⟨j, r⟩ =>
+      totientKernelSeq (j.val + 1) (2 * r.val + 1)
 
-noncomputable def totientTail (N : ℕ) : ℝ := ∑' j : ℕ, (Nat.totient (N + 1 + j) : ℝ) / 2 ^ (j + 1) /-- The integer prefix of the scaled binary totient series. -/
+noncomputable def totientTail (N : ℕ) : ℝ :=
+  ∑' j : ℕ, (Nat.totient (N + 1 + j) : ℝ) / 2 ^ (j + 1)
 
-def windowDiscrepancy (h N L : ℕ) : ℤ :=
+noncomputable def windowDiscrepancy (h N L : ℕ) : ℤ :=
   ∑ j ∈ Finset.range L,
     ((Nat.totient (N + h + 1 + j) : ℤ) -
       (Nat.totient (N + 1 + j) : ℤ)) * 2 ^ (L - 1 - j)
 
-def certifiedKill (h N L : ℕ) : Prop :=
+noncomputable def certifiedKill (h N L : ℕ) : Prop :=
   (N + h + L + 2 : ℤ) < windowDiscrepancy h N L % 2 ^ L ∧
     windowDiscrepancy h N L % 2 ^ L < 2 ^ L - (N + h + L + 2)
 
 end PalomarCorpus.E249.Shared
-import Mathlib
-import Erdos257PeriodNoncollapse.TotientActualLcmOrbitNonintegrality
-
 namespace PalomarCorpus.E249.ActualLcmOrbit
 export PalomarCorpus.E249.Shared (totientTail)
 
 open scoped BigOperators
 
-def periodLcm : ℕ → ℕ
+noncomputable def periodLcm : ℕ → ℕ
   | 0 => 1
   | t + 1 => Nat.lcm (periodLcm t) (t + 1)
-
-def totientPrefix (N : ℕ) : ℕ :=
+noncomputable def totientPrefix (N : ℕ) : ℕ :=
   ∑ n ∈ Finset.range (N + 1), Nat.totient n * 2 ^ (N - n)
-
-def actualLcmHeight (a : ℕ) : ℕ :=
+noncomputable def actualLcmHeight (a : ℕ) : ℕ :=
   periodLcm (2 ^ a)
-
 noncomputable def actualLcmTailOrbit (a : ℕ) : ℝ :=
   totientTail (2 * actualLcmHeight a) - totientTail (actualLcmHeight a)
 
-def PowerTwoActualLcmOrbitNonintegralitySupply : Prop :=
+noncomputable def PowerTwoActualLcmOrbitNonintegralitySupply : Prop :=
   ∀ a₀ : ℕ, ∃ a, a₀ ≤ a ∧
     actualLcmTailOrbit a ∉ Set.range ((↑) : ℤ → ℝ)
-
 private theorem periodLcm_eq_source :
     ∀ t : ℕ, periodLcm t =
       Erdos257PeriodNoncollapse.TotientTailPeriodKiller.periodLcm t
@@ -103,9 +110,6 @@ theorem irrational_totientSeries_iff_actualLcmOrbitNonintegralitySupply :
 
 end PalomarCorpus.E249.ActualLcmOrbit
 
-import Mathlib
-import ErdosProblems.Erdos249.CyclotomicAnchoredKill
-
 namespace PalomarCorpus.E249.BinaryCyclotomicAnchors
 export PalomarCorpus.E249.Shared (certifiedKill totientTail windowDiscrepancy)
 
@@ -114,11 +118,10 @@ open scoped BigOperators
 noncomputable def binaryCyclotomicLayer (n : ℕ) : ℕ :=
   ((Polynomial.cyclotomic n ℤ).eval (2 : ℤ)).natAbs
 
-def UnboundedPrimeDivisorSupply (C : ℕ → ℕ) (h : ℕ) : Prop :=
+noncomputable def UnboundedPrimeDivisorSupply (C : ℕ → ℕ) (h : ℕ) : Prop :=
   ∀ B N₀ : ℕ, ∃ q p : ℕ,
     q.Prime ∧ N₀ ≤ q ∧ p.Prime ∧ p ∣ C (h * q) ∧ B < p
-
-def CyclotomicAnchoredKillSupply (C : ℕ → ℕ) : Prop :=
+noncomputable def CyclotomicAnchoredKillSupply (C : ℕ → ℕ) : Prop :=
   ∀ h : ℕ, 0 < h →
     ∀ N₀ : ℕ, ∃ q p L : ℕ,
       q.Prime ∧
@@ -128,7 +131,6 @@ def CyclotomicAnchoredKillSupply (C : ℕ → ℕ) : Prop :=
       h * q ∣ p - 1 ∧
       N₀ ≤ p - 1 ∧
       certifiedKill (h * q) (p - 1) L
-
 theorem exists_clean_binaryCyclotomicAnchor
     (h N₀ : ℕ) (hh : 0 < h) :
     ∃ q p : ℕ,
@@ -180,40 +182,31 @@ theorem exists_unbounded_binaryCyclotomicSupport_with_periodLock_of_not_irration
 
 end PalomarCorpus.E249.BinaryCyclotomicAnchors
 
-import Mathlib
-import ErdosProblems.Erdos249.CyclotomicAnchoredKill
-
 namespace PalomarCorpus.E249.CanonicalMersenneFrontier
 
 open scoped BigOperators
 
-def deltaTotient (h n : ℕ) : ℤ :=
+noncomputable def deltaTotient (h n : ℕ) : ℤ :=
   (Nat.totient (n + h) : ℤ) - (Nat.totient n : ℤ)
-
-def totientBlock (H N : ℕ) : ℤ :=
+noncomputable def totientBlock (H N : ℕ) : ℤ :=
   ∑ j ∈ Finset.range H,
     (Nat.totient (N + 1 + j) : ℤ) * 2 ^ (H - 1 - j)
-
-def fullMersenneBlockResidue (H N M : ℕ) : ℤ :=
+noncomputable def fullMersenneBlockResidue (H N M : ℕ) : ℤ :=
   (-totientBlock H N) % (M : ℤ)
-
-def FullMersenneCenteredResidueGap (H N M : ℕ) : Prop :=
+noncomputable def FullMersenneCenteredResidueGap (H N M : ℕ) : Prop :=
   let B : ℤ := N + H + 1
   B < fullMersenneBlockResidue H N M ∧
     fullMersenneBlockResidue H N M < (M : ℤ) - B
-
-def FullMersenneCenteredResidueGapSupply : Prop :=
+noncomputable def FullMersenneCenteredResidueGapSupply : Prop :=
   ∀ c v : ℕ, 0 < v → Nat.Coprime 2 v →
     ∀ N₀ : ℕ, ∃ H N M : ℕ,
       0 < H ∧ Nat.totient v ∣ H ∧ max c N₀ ≤ N ∧
       v * M = 2 ^ H - 1 ∧ FullMersenneCenteredResidueGap H N M
-
-def FullMersenneCanonicalBasepointResidueGapSupply : Prop :=
+noncomputable def FullMersenneCanonicalBasepointResidueGapSupply : Prop :=
   ∀ c v : ℕ, 0 < v → Nat.Coprime 2 v →
     ∃ H M : ℕ,
       0 < H ∧ Nat.totient v ∣ H ∧ v * M = 2 ^ H - 1 ∧
       FullMersenneCenteredResidueGap H c M
-
 theorem fullMersenneBlockResidue_succ
     {H N M : ℕ} (hM : M ∣ 2 ^ H - 1) :
     fullMersenneBlockResidue H (N + 1) M =
@@ -252,9 +245,6 @@ theorem fullMersenneCanonicalBasepointResidueGapSupply_iff_irrational :
 
 end PalomarCorpus.E249.CanonicalMersenneFrontier
 
-import Mathlib
-import Erdos257PeriodNoncollapse.TotientTailCarryPeriod
-
 namespace PalomarCorpus.E249.CarryRankFrontier
 export PalomarCorpus.E249.Shared (TotientCanonicalIndex canonicalTotientKernelFamily totientKernelSeq totientTail)
 
@@ -262,18 +252,17 @@ noncomputable section
 
 noncomputable abbrev binaryCoeffSeries :=
   Erdos257PeriodNoncollapse.binaryCoeffSeries
-abbrev IsTemperedBinaryOrbit :=
+noncomputable abbrev IsTemperedBinaryOrbit :=
   Erdos257PeriodNoncollapse.IsTemperedBinaryOrbit
-abbrev carryKernelSeq := Erdos257PeriodNoncollapse.carryKernelSeq
-abbrev TotientCarryIndex := Erdos257PeriodNoncollapse.TotientCarryIndex
-abbrev canonicalCarryKernelFamily :=
+noncomputable abbrev carryKernelSeq := Erdos257PeriodNoncollapse.carryKernelSeq
+noncomputable abbrev TotientCarryIndex := Erdos257PeriodNoncollapse.TotientCarryIndex
+noncomputable abbrev canonicalCarryKernelFamily :=
   Erdos257PeriodNoncollapse.canonicalCarryKernelFamily
-abbrev SeparatedMinorCertificate {ι : Type*} [Fintype ι] [DecidableEq ι]
+noncomputable abbrev SeparatedMinorCertificate {ι : Type*} [Fintype ι] [DecidableEq ι]
     (family : ι → ℕ → ℚ) :=
   Erdos257PeriodNoncollapse.SeparatedMinorCertificate family
-abbrev CarrySectionsEventuallyPeriodicMod :=
+noncomputable abbrev CarrySectionsEventuallyPeriodicMod :=
   Erdos257PeriodNoncollapse.CarrySectionsEventuallyPeriodicMod
-
 theorem not_irrational_binaryCoeffSeries_iff_exists_temperedBinaryOrbit
     (c : ℕ → ℕ) (hgrowth : ∀ n : ℕ, c n ≤ n) :
     ¬ Irrational (binaryCoeffSeries c) ↔
@@ -340,32 +329,23 @@ end
 
 end PalomarCorpus.E249.CarryRankFrontier
 
-import Mathlib
-import Erdos257PeriodNoncollapse.TotientMahlerDefect
-
 namespace PalomarCorpus.E249.DyadicTotientKernel
 export PalomarCorpus.E249.Shared (TotientCanonicalIndex canonicalTotientKernelFamily totientKernelSeq)
 
 open Module
 
-abbrev TotientKernelThroughLevelIndex (e : ℕ) :=
+noncomputable abbrev TotientKernelThroughLevelIndex (e : ℕ) :=
   Σ j : Fin (e + 1), Fin (2 ^ j.val)
-
-def totientKernelThroughLevelFamily (e : ℕ) :
+noncomputable def totientKernelThroughLevelFamily (e : ℕ) :
     TotientKernelThroughLevelIndex e → ℕ → ℚ
   | ⟨j, r⟩ => totientKernelSeq j.val r.val
-
-abbrev TotientDyadicKernelIndex := Σ j : ℕ, Fin (2 ^ j)
-
-def fullTotientKernelFamily : TotientDyadicKernelIndex → ℕ → ℚ
+noncomputable abbrev TotientDyadicKernelIndex := Σ j : ℕ, Fin (2 ^ j)
+noncomputable def fullTotientKernelFamily : TotientDyadicKernelIndex → ℕ → ℚ
   | ⟨j, r⟩ => totientKernelSeq j r.val
-
-abbrev TotientOddCoreIndex := Fin 2 ⊕ Σ j : ℕ, Fin (2 ^ j)
-
-def oddCoreTotientKernelFamily : TotientOddCoreIndex → ℕ → ℚ
+noncomputable abbrev TotientOddCoreIndex := Fin 2 ⊕ Σ j : ℕ, Fin (2 ^ j)
+noncomputable def oddCoreTotientKernelFamily : TotientOddCoreIndex → ℕ → ℚ
   | Sum.inl i => totientKernelSeq i.val 0
   | Sum.inr ⟨j, r⟩ => totientKernelSeq (j + 1) (2 * r.val + 1)
-
 theorem dyadicTotientKernelOddCoreBasisAndFiniteRanks :
     LinearIndependent ℚ oddCoreTotientKernelFamily ∧
       Submodule.span ℚ (Set.range fullTotientKernelFamily) =
@@ -404,36 +384,29 @@ theorem dyadicTotientKernelOddCoreBasisAndFiniteRanks :
 
 end PalomarCorpus.E249.DyadicTotientKernel
 
-import Erdos257PeriodNoncollapse.CertificateKernel
-
 namespace PalomarCorpus.E249.FareyWindowExclusion
-def fareyDenBound : ℕ := 79639646646701375323355774875831053
-
+noncomputable def fareyDenBound : ℕ := 79639646646701375323355774875831053
 theorem farey_int_exclusion :
     ∀ (a : ℤ) (d : ℕ), 0 < d → d ≤ fareyDenBound →
       (∑' n : ℕ, ((Nat.totient n : ℝ)) / (2 : ℝ) ^ n) ≠ (a : ℝ) / (d : ℝ) :=
-  Erdos257PeriodNoncollapse.farey_int_exclusion
+  Erdos257PeriodNoncollapse.tsum_totient_div_pow_two_ne_int_div_of_den_le_79639646646701375323355774875831053
 
 theorem farey_rat_exclusion :
     ∀ p : ℚ, p.den ≤ fareyDenBound →
       (∑' n : ℕ, ((Nat.totient n : ℝ)) / (2 : ℝ) ^ n) ≠ (p : ℝ) :=
-  Erdos257PeriodNoncollapse.farey_rat_exclusion
+  Erdos257PeriodNoncollapse.tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053
 
 end PalomarCorpus.E249.FareyWindowExclusion
-
-import Mathlib
-import ErdosProblems.Erdos249.FullDepthRayAmplifier
 
 namespace PalomarCorpus.E249.FullDepthRayAmplifier
 export PalomarCorpus.E249.Shared (certifiedKill totientTail windowDiscrepancy)
 
 open scoped BigOperators
 
-def PeriodMultipleKillSupply : Prop := ∀ d : ℕ, 0 < d → ∀ c : ℕ, ∃ t N L : ℕ, 0 < t ∧ c ≤ N ∧ certifiedKill (t * d) N L
-def ApFullDepthEscape : Prop := ∀ d : ℕ, 0 < d → ∀ N : ℕ, ∃ t : ℕ, 0 < t ∧ certifiedKill (t * d) N (t * d)
-def fullDepthKillMultipliers (d N : ℕ) : Set ℕ := {t | certifiedKill (t * d) N (t * d)}
-def CofinalFullDepthKillSupply : Prop := ∀ d : ℕ, 0 < d → ∀ c : ℕ, ∃ t N : ℕ, 0 < t ∧ c ≤ N ∧ certifiedKill (t * d) N (t * d)
-
+noncomputable def PeriodMultipleKillSupply : Prop := ∀ d : ℕ, 0 < d → ∀ c : ℕ, ∃ t N L : ℕ, 0 < t ∧ c ≤ N ∧ certifiedKill (t * d) N L
+noncomputable def ApFullDepthEscape : Prop := ∀ d : ℕ, 0 < d → ∀ N : ℕ, ∃ t : ℕ, 0 < t ∧ certifiedKill (t * d) N (t * d)
+noncomputable def fullDepthKillMultipliers (d N : ℕ) : Set ℕ := {t | certifiedKill (t * d) N (t * d)}
+noncomputable def CofinalFullDepthKillSupply : Prop := ∀ d : ℕ, 0 < d → ∀ c : ℕ, ∃ t N : ℕ, 0 < t ∧ c ≤ N ∧ certifiedKill (t * d) N (t * d)
 theorem eventually_twoSyndetic_fullDepthKillMultipliers_of_seed
     {d N L : ℕ} (hd : 0 < d) (hseed : certifiedKill d N L) :
     ∃ T : ℕ, 0 < T ∧ ∀ t : ℕ, T ≤ t →
@@ -481,10 +454,6 @@ theorem cofinalFullDepthKillSupply_iff_irrational :
     ErdosProblems.Erdos249.FullDepthRayAmplifier.cofinalFullDepthKillSupply_iff_irrational
 
 end PalomarCorpus.E249.FullDepthRayAmplifier
-
-import Mathlib
-import Erdos257PeriodNoncollapse.SignedQMomentObstruction
-import ErdosProblems.Erdos249.MobiusMersenneLadderSeparation
 
 namespace PalomarCorpus.E249.MobiusMersenneLadderStructure
 export PalomarCorpus.E249.Shared (mobiusMersenneTerm mobiusMersenneTheta)
@@ -553,16 +522,12 @@ theorem mobiusMersenneTheta_ne_mobiusMersenneLambertRung :
 
 end PalomarCorpus.E249.MobiusMersenneLadderStructure
 
-import Mathlib
-import ErdosProblems.Erdos249.PrefixValuationAndControlRigidity
-
 namespace PalomarCorpus.E249.PrefixTwoAdicExclusion
 
 set_option linter.unusedVariables false
 
-def totientPrefix (n : ℕ) : ℕ :=
+noncomputable def totientPrefix (n : ℕ) : ℕ :=
   ∑ i ∈ Finset.range n, 2 ^ (n - 1 - i) * Nat.totient (i + 1)
-
 theorem totientPrefix_succ (n : ℕ) :
     totientPrefix (n + 1) = 2 * totientPrefix n + Nat.totient (n + 1) := by
   simpa [totientPrefix, ErdosProblems.Erdos249.totientPrefix] using
@@ -626,9 +591,6 @@ theorem prefix_twoAdic_odd_denominator_floor
       hvodd hvpos hS hpos htail hct hdvd
 
 end PalomarCorpus.E249.PrefixTwoAdicExclusion
-
-import Mathlib
-import ErdosProblems.Erdos249.RankOneSharpFloor
 
 namespace PalomarCorpus.E249.RankOneSharpFloor
 export PalomarCorpus.E249.Shared (mobiusMersenneTerm mobiusMersenneTheta)
@@ -750,9 +712,6 @@ theorem primitive_form_abs_gt_twentyOne_div_threeTwenty
 
 end PalomarCorpus.E249.RankOneSharpFloor
 
-import Mathlib
-import ErdosProblems.Erdos249.ResidueClassTotientSeries
-
 namespace PalomarCorpus.E249.ResidueClassTotientSeries
 
 noncomputable def dyadicValue (a : ℕ → ℤ) : ℝ := ∑' n : ℕ, (a n : ℝ) / 2 ^ n
@@ -807,9 +766,6 @@ theorem residue_series_irrational {m : ℕ} (hm : 3 ≤ m) :
 
 end PalomarCorpus.E249.ResidueClassTotientSeries
 
-import Mathlib
-import ErdosProblems.Erdos249.PrefixValuationAndControlRigidity
-
 namespace PalomarCorpus.E249.TermwiseDyadicVacuous
 
 set_option linter.unusedVariables false
@@ -822,9 +778,6 @@ theorem termwise_dyadic_window_vacuous
 
 end PalomarCorpus.E249.TermwiseDyadicVacuous
 
-import Mathlib
-import Erdos257PeriodNoncollapse.AllBaseTotientKernel
-
 namespace PalomarCorpus.E249.TotientKernelBasis
 
 open Module
@@ -836,25 +789,19 @@ theorem allSlopeAffineTotientFormsLinearIndependent
     LinearIndependent ℚ (fun (i : ι) (n : ℕ) => (Nat.totient (a i * n + b i) : ℚ)) :=
   Erdos257PeriodNoncollapse.linearIndependent_totientAffineForms a b ha hb hcross
 
-def kernelSeq (k j r : ℕ) : ℕ → ℚ := fun n =>
+noncomputable def kernelSeq (k j r : ℕ) : ℕ → ℚ := fun n =>
   (Nat.totient (k ^ j * n + r) : ℚ)
-
-abbrev CanonicalIndex (k e : ℕ) :=
+noncomputable abbrev CanonicalIndex (k e : ℕ) :=
   Fin 2 ⊕ Σ j : Fin e, Fin (k ^ j.val) × Fin (k - 1)
-
-def canonicalResidue (k : ℕ) {e : ℕ}
+noncomputable def canonicalResidue (k : ℕ) {e : ℕ}
     (x : Σ j : Fin e, Fin (k ^ j.val) × Fin (k - 1)) : ℕ :=
   k * x.2.1.val + (x.2.2.val + 1)
-
-def canonicalFamily (k e : ℕ) : CanonicalIndex k e → ℕ → ℚ
+noncomputable def canonicalFamily (k e : ℕ) : CanonicalIndex k e → ℕ → ℚ
   | Sum.inl i => kernelSeq k i.val 0
   | Sum.inr x => kernelSeq k (x.1.val + 1) (canonicalResidue k x)
-
-abbrev ThroughLevelIndex (k e : ℕ) := Σ j : Fin (e + 1), Fin (k ^ j.val)
-
-def throughLevelFamily (k e : ℕ) : ThroughLevelIndex k e → ℕ → ℚ
+noncomputable abbrev ThroughLevelIndex (k e : ℕ) := Σ j : Fin (e + 1), Fin (k ^ j.val)
+noncomputable def throughLevelFamily (k e : ℕ) : ThroughLevelIndex k e → ℕ → ℚ
   | ⟨j, r⟩ => kernelSeq k j.val r.val
-
 noncomputable def relationMap (k e : ℕ) :
     (ThroughLevelIndex k e → ℚ) →ₗ[ℚ] (ℕ → ℚ) :=
   Fintype.linearCombination ℚ (throughLevelFamily k e)
@@ -904,13 +851,9 @@ theorem allBaseTotientKernelBasisRankAndRelationDimension
 
 end PalomarCorpus.E249.TotientKernelBasis
 
-import Mathlib
-import ErdosProblems.Erdos249.PrefixValuationAndControlRigidity
-
 namespace PalomarCorpus.E249.TotientRigidity
 
-def totientDefect (g : ℕ → ℤ) (n : ℕ) : ℤ := g n - (Nat.totient n : ℤ)
-
+noncomputable def totientDefect (g : ℕ → ℤ) (n : ℕ) : ℤ := g n - (Nat.totient n : ℤ)
 theorem totient_prime_mul_of_dvd {p n : ℕ} (hp : p.Prime) (h : p ∣ n) :
     (Nat.totient (p * n) : ℤ) = (p : ℤ) * (Nat.totient n : ℤ) :=
   ErdosProblems.Erdos249.totient_prime_mul_of_dvd hp h

@@ -14,91 +14,85 @@ Comparator-grade proof coverage for this problem. Parent problem remains open.
 Narrative lives in `PalomarCorpus/README.md`.
 -/
 
+open Polynomial
+open Filter Asymptotics
+open scoped Topology
+open scoped BigOperators
+open Filter
+
 namespace PalomarCorpus.E1049.Shared
-noncomputable def hpCyclotomicSaving (sigma : ℝ) : ℝ := 3 * sigma ^ 2 / Real.pi ^ 2
+noncomputable def hpCyclotomicSaving (sigma : ℝ) : ℝ :=
+  3 * sigma ^ 2 / Real.pi ^ 2
 
-noncomputable def hpDecay (rho sigma : ℝ) : ℝ := (1 + rho ^ 2) / 2 + sigma
+noncomputable def hpDecay (rho sigma : ℝ) : ℝ :=
+  (1 + rho ^ 2) / 2 + sigma
 
-noncomputable def hpHeight (rho sigma : ℝ) : ℝ := (1 + rho) ^ 2 / 2 + sigma * (1 + rho)
+noncomputable def hpHeight (rho sigma : ℝ) : ℝ :=
+  (1 + rho) ^ 2 / 2 + sigma * (1 + rho)
 
-noncomputable def hpThreshold (rho sigma : ℝ) : ℝ := (hpDecay rho sigma - hpCyclotomicSaving sigma) / (hpHeight rho sigma + hpDecay rho sigma)
+noncomputable def hpThreshold (rho sigma : ℝ) : ℝ :=
+  (hpDecay rho sigma - hpCyclotomicSaving sigma) /
+    (hpHeight rho sigma + hpDecay rho sigma)
 
 end PalomarCorpus.E1049.Shared
 
 namespace PalomarCorpus.E1049.AdelicHeightBridge
 open Polynomial
 export PalomarCorpus.E1049.Shared (hpCyclotomicSaving hpDecay hpHeight hpThreshold)
-def homEvalThreeTwo (W : ℕ) (P : Polynomial ℤ) : ℤ :=
+noncomputable def homEvalThreeTwo (W : ℕ) (P : Polynomial ℤ) : ℤ :=
   ∑ i ∈ Finset.range (W + 1), P.coeff i * 3 ^ i * 2 ^ (W - i)
 
-def bottomJet3 (R W : ℕ) (P : Polynomial ℤ) : ZMod (3 ^ R) :=
+noncomputable def bottomJet3 (R W : ℕ) (P : Polynomial ℤ) : ZMod (3 ^ R) :=
   homEvalThreeTwo W P
 
-def topJet2 (S W : ℕ) (P : Polynomial ℤ) : ZMod (2 ^ S) :=
+noncomputable def topJet2 (S W : ℕ) (P : Polynomial ℤ) : ZMod (2 ^ S) :=
   homEvalThreeTwo W P
 
-abbrev FourJetSignature (R S : ℕ) :=
+noncomputable abbrev FourJetSignature (R S : ℕ) :=
   (ZMod (3 ^ R) × ZMod (3 ^ R)) ×
     (ZMod (2 ^ S) × ZMod (2 ^ S))
 
-def fourJetSignature (R S W : ℕ) (U V : Polynomial ℤ) :
+noncomputable def fourJetSignature (R S W : ℕ) (U V : Polynomial ℤ) :
     FourJetSignature R S :=
   ((bottomJet3 R W U, bottomJet3 R W V),
     (topJet2 S W U, topJet2 S W V))
 
-def selectedFourJetSum {n : ℕ} (R S W : ℕ)
+noncomputable def selectedFourJetSum {n : ℕ} (R S W : ℕ)
     (forms : Fin n → Polynomial ℤ × Polynomial ℤ)
     (ε : Fin n → Bool) : FourJetSignature R S :=
   ∑ i, if ε i then
     fourJetSignature R S W (forms i).1 (forms i).2
   else 0
-/-- Finite `q`-Pochhammer product `(q^start;q)_len`. -/
 
 noncomputable def zudilinPochhammerPS (start len : ℕ) : PowerSeries ℤ :=
   ∏ r ∈ Finset.range len,
     (1 - PowerSeries.X ^ (start + r) : PowerSeries ℤ)
-/-- The unit factor in the `t`th normalized Zudilin summand. -/
 
 noncomputable def zudilinNormalizedTailUnit (n t : ℕ) : PowerSeries ℤ :=
   zudilinPochhammerPS 1 n ^ 3 * zudilinPochhammerPS (t + 1) n *
     PowerSeries.invOfUnit (zudilinPochhammerPS (n + 1 + t) (n + 1)) 1
-/-- The exact `t`th summand of the normalized moment `v_n^*`. -/
 
 noncomputable def zudilinNormalizedTail (n t : ℕ) : PowerSeries ℤ :=
   PowerSeries.X ^ ((n + 1) * t) * zudilinNormalizedTailUnit n t
-/-- The normalized moment, defined coefficientwise by its finite support at
-each degree. -/
 
 noncomputable def zudilinNormalizedMoment (n : ℕ) : PowerSeries ℤ :=
   PowerSeries.mk fun d =>
     ∑ t ∈ Finset.range (d / (n + 1) + 1),
       PowerSeries.coeff d (zudilinNormalizedTail n t)
-/-- The first nontrivial transformed row
-`D₁v^*_(l+1) = v^*_(l+1) - v^*_l`. -/
 
 noncomputable def zudilinFirstTransformedRow (l : ℕ) : PowerSeries ℤ :=
   zudilinNormalizedMoment (l + 1) - zudilinNormalizedMoment l
-/-- In every column, the complete initial monomial of the first nontrivial
-transformed row is `-6 X^(l+1)`.  This is an unconditional all-column partial
-result; no assertion about transformed rows `j ≥ 2` is included. -/
 
 theorem zudilin_firstTransformedRow_initialMonomial (l : ℕ) :
     PowerSeries.order (zudilinFirstTransformedRow l) = l + 1 ∧
       PowerSeries.coeff (l + 1) (zudilinFirstTransformedRow l) = -6 := by
   sorry
 
-def zudilinSharpHankelQOrder (N : ℕ) : ℤ :=
+noncomputable def zudilinSharpHankelQOrder (N : ℕ) : ℤ :=
   ∑ j ∈ Finset.range N, (j : ℤ) ^ 2
-/-- Positive magnitude of the leading coefficient contributed by transformed
-row `j`. -/
 
-def zudilinTransformedRowCoeff (j : ℕ) : ℕ :=
+noncomputable def zudilinTransformedRowCoeff (j : ℕ) : ℕ :=
   ((j + 1) ^ 2 * (j + 2)) / 2
-/-- The two division-free closed forms carried by the sharp-Hankel endpoint.
-Six times the sum of squares equals `N (N - 1) (2 N - 1)`, and `2 ^ N` times
-the product of the transformed-row coefficients equals `(N !) ^ 2 (N + 1)!`.
-This is an algebraic assembly; it identifies no formal power-series
-determinant with these data. -/
 
 theorem zudilinSharpHankelOrderAndCoeff_algebraicAssembly (N : ℕ) :
     6 * zudilinSharpHankelQOrder N =
@@ -175,6 +169,7 @@ end PalomarCorpus.E1049.AdelicHeightBridge
 
 namespace PalomarCorpus.E1049.ArchimedeanCap
 open Filter Asymptotics
+open scoped Topology
 noncomputable def width (U V : ℕ → Polynomial ℤ) (n : ℕ) : ℕ := max (U n).natDegree (V n).natDegree
 
 noncomputable def height (P : Polynomial ℤ) : ℝ := ∑ i ∈ P.support, |(P.coeff i : ℝ)|
@@ -200,7 +195,6 @@ theorem archimedean_cap (U V : ℕ → Polynomial ℤ) (F : ℝ → ℝ) (σ δ 
 
 noncomputable def maxCoefficient (P : Polynomial ℤ) : ℕ :=
   P.support.sup (fun i => (P.coeff i).natAbs)
-/-- Exact all-base hypotheses; no limit of the normalized degree is assumed. -/
 
 theorem cleared_below_square_not_tendsto_zero
     (U V : ℕ → Polynomial ℤ) (F : ℝ → ℝ) (σ δ h : ℝ)
@@ -261,7 +255,6 @@ export PalomarCorpus.E1049.Shared (hpCyclotomicSaving hpDecay hpHeight hpThresho
 noncomputable def hpClearedGap (rho sigma : ℝ) : ℝ :=
   (Real.pi ^ 2 + 2) * hpDecay rho sigma - 6 * sigma ^ 2 -
     (Real.pi ^ 2 - 2) * hpHeight rho sigma
-/-- Exact polynomial identity after writing `sigma = 1 + rho + u`. -/
 
 theorem hpClearedGap_expansion (rho u : ℝ) :
     hpClearedGap rho (1 + rho + u) =
@@ -385,15 +378,11 @@ theorem zeroDenominatorCoordinates_binaryCollision
 end PalomarCorpus.E1049.PrimeSupportSelectors
 
 namespace PalomarCorpus.E1049.PublishedHeightRegions
-def BundschuhVaananenHeightRegion (a b : ℕ) : Prop :=
+noncomputable def BundschuhVaananenHeightRegion (a b : ℕ) : Prop :=
   Real.log b / Real.log a < 1 / 2 - 1 / Real.pi ^ 2
-/-- The parameter region cut out by the single inequality
-`log b / log a < 81 / 200`; no analytic hypotheses are included. -/
 
-def ZudilinHeightRegion (a b : ℕ) : Prop :=
+noncomputable def ZudilinHeightRegion (a b : ℕ) : Prop :=
   Real.log b / Real.log a < (81 : ℝ) / 200
-/-- The exact integer comparison placing `3 / 2` beyond the `81 / 200`
-threshold defined above. -/
 
 theorem threeHalves_zudilin_power_obstruction :
     3 ^ 81 < 2 ^ 200 := by
@@ -415,28 +404,24 @@ end PalomarCorpus.E1049.PublishedHeightRegions
 
 namespace PalomarCorpus.E1049.RationalBaseBarrier
 open scoped BigOperators
-def CoordinatewiseCorridor
+noncomputable def CoordinatewiseCorridor
     (a b N K Q digit : ℕ) : Prop :=
   0 < a ∧ 0 < Q ∧ 0 < digit ∧ digit ≤ N + K ∧
     a ^ K ∣ Q * digit ∧
     Q * b ^ (N + K + 1) < a ^ (K + 1)
-/-- The first `N` rational-base divisor-series coordinates. -/
 
-def rationalBasePrefixQ
+noncomputable def rationalBasePrefixQ
     (r s : ℚ) (coeff : ℕ → ℚ) (N : ℕ) : ℚ :=
   ∑ m ∈ Finset.range N,
     coeff (m + 1) * s ^ (m + 1) / r ^ (m + 1)
-/-- The denominator-cleared tail state attached to a putative value `F`. -/
 
-def rationalBaseClearedTailQ
+noncomputable def rationalBaseClearedTailQ
     (r s B F : ℚ) (coeff : ℕ → ℚ) (N : ℕ) : ℚ :=
   B * r ^ N * (F - rationalBasePrefixQ r s coeff N)
-/-- Natural-valued magnitude of the recurrence forcing term. -/
 
-def rationalBaseForcingNat
+noncomputable def rationalBaseForcingNat
     (s B : ℕ) (coeff : ℕ → ℕ) (N : ℕ) : ℕ :=
   B * coeff (N + 1) * s ^ (N + 1)
-/-- Exact rational-base cleared-tail recurrence. -/
 
 theorem rationalBaseClearedTailQ_succ
     {r s B F : ℚ} {coeff : ℕ → ℚ} (hr : r ≠ 0) (N : ℕ) :

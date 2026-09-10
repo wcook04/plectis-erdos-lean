@@ -14,6 +14,12 @@ Comparator-grade proof coverage for this problem. Parent problem remains open.
 Narrative lives in `PalomarCorpus/README.md`.
 -/
 
+open Finset
+open Polynomial Set
+open scoped BigOperators
+open Polynomial
+open scoped ComplexConjugate
+
 namespace PalomarCorpus.E1041.CriticalGeometry
 open Finset
 theorem criticalGeometricMean_twoRootProximity
@@ -56,7 +62,6 @@ noncomputable def nearestSpokeRoot : Fin 5 → ℂ
   | 2 => -Complex.I * nearestSpokeP
   | 3 => nearestSpokeP * nearestSpokeUPlus
   | 4 => nearestSpokeP * nearestSpokeUMinus
-/-- The five explicit quintic roots have critical-point balance at the origin. -/
 
 theorem nearestSpoke_reciprocal_balance :
     ∑ k, (nearestSpokeRoot k)⁻¹ = 0 := by
@@ -87,7 +92,6 @@ noncomputable def allStraightRoot : Fin 3 → ℂ
 
 noncomputable def allStraightCubic (z : ℂ) : ℂ :=
   z ^ 3 - allStraightRadius ^ 3
-/-- The three displayed points are roots of `z³ - (99/100)³`. -/
 
 theorem allStraightCubic_roots :
     ∀ k : Fin 3, allStraightCubic (allStraightRoot k) = 0 := by
@@ -106,7 +110,8 @@ end PalomarCorpus.E1041.CriticalGeometry
 
 namespace PalomarCorpus.E1041.CubicPath
 open Polynomial Set
-def hub (a c b : ℂ) (t : ℝ) : ℂ :=
+open scoped BigOperators
+noncomputable def hub (a c b : ℂ) (t : ℝ) : ℂ :=
   c + ((max (1 - t) 0 : ℝ) : ℂ) * (a - c) +
     ((max (t - 1) 0 : ℝ) : ℂ) * (b - c)
 
@@ -185,7 +190,6 @@ end PalomarCorpus.E1041.CyclicTrinomialFiber
 namespace PalomarCorpus.E1041.FirstMergeCriticalValueSeparation
 noncomputable def firstMergeSquaredCoefficient (n : ℕ) (S : ℝ) : ℝ :=
   (1 + S) ^ ((2 : ℝ) / (n : ℝ)) * Real.log (S / (S - 1))
-/-- The three exact convenient separation regimes. -/
 
 theorem firstMerge_exact_convenient_thresholds :
     (∀ n : ℕ, 3 ≤ n → firstMergeSquaredCoefficient n 4 < 1) ∧
@@ -286,12 +290,9 @@ theorem primitiveQuintic_twoStrictTailEnergies
 namespace SharpCollinear
 noncomputable def endpointScale (n : ℕ) : ℝ :=
   Real.cos (Real.pi / (2 * (n : ℝ)))
-/-- The sharp endpoint-normalised Chebyshev height. -/
 
 noncomputable def comparisonBound (n : ℕ) : ℝ :=
   |((2 : ℝ) ^ (n - 1))⁻¹ * (endpointScale n)⁻¹ ^ n|
-/-- The checked sharp Chebyshev endpoint after collinear affine
-normalisation: one alternating peak is no higher than the comparison bound. -/
 
 theorem existsPeakLeComparisonBound
     {m : ℕ} {p : ℝ[X]} {c : Fin (m + 1) → ℝ}

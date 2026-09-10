@@ -13,48 +13,51 @@ import ErdosProblems.Erdos1049.TwoSelectorRemainderEscape
 import ErdosProblems.Erdos1049.ZudilinHeightRegion
 import ErdosProblems.Erdos1049.RationalBaseLambert
 
+open Polynomial
+open Filter Asymptotics
+open scoped Topology
+open scoped BigOperators
+open Filter
+
 namespace PalomarCorpus.E1049.Shared
-noncomputable def hpCyclotomicSaving (sigma : ℝ) : ℝ := 3 * sigma ^ 2 / Real.pi ^ 2
+noncomputable def hpCyclotomicSaving (sigma : ℝ) : ℝ :=
+  3 * sigma ^ 2 / Real.pi ^ 2
 
-noncomputable def hpDecay (rho sigma : ℝ) : ℝ := (1 + rho ^ 2) / 2 + sigma
+noncomputable def hpDecay (rho sigma : ℝ) : ℝ :=
+  (1 + rho ^ 2) / 2 + sigma
 
-noncomputable def hpHeight (rho sigma : ℝ) : ℝ := (1 + rho) ^ 2 / 2 + sigma * (1 + rho)
+noncomputable def hpHeight (rho sigma : ℝ) : ℝ :=
+  (1 + rho) ^ 2 / 2 + sigma * (1 + rho)
 
-noncomputable def hpThreshold (rho sigma : ℝ) : ℝ := (hpDecay rho sigma - hpCyclotomicSaving sigma) / (hpHeight rho sigma + hpDecay rho sigma)
+noncomputable def hpThreshold (rho sigma : ℝ) : ℝ :=
+  (hpDecay rho sigma - hpCyclotomicSaving sigma) /
+    (hpHeight rho sigma + hpDecay rho sigma)
 
 end PalomarCorpus.E1049.Shared
-import ErdosProblems.Erdos1049.AdelicHeightBridge
-
 namespace PalomarCorpus.E1049.AdelicHeightBridge
 export PalomarCorpus.E1049.Shared (hpCyclotomicSaving hpDecay hpHeight hpThreshold)
 
 open Polynomial
 
-def homEvalThreeTwo (W : ℕ) (P : Polynomial ℤ) : ℤ :=
+noncomputable def homEvalThreeTwo (W : ℕ) (P : Polynomial ℤ) : ℤ :=
   ∑ i ∈ Finset.range (W + 1), P.coeff i * 3 ^ i * 2 ^ (W - i)
-
-def bottomJet3 (R W : ℕ) (P : Polynomial ℤ) : ZMod (3 ^ R) :=
+noncomputable def bottomJet3 (R W : ℕ) (P : Polynomial ℤ) : ZMod (3 ^ R) :=
   homEvalThreeTwo W P
-
-def topJet2 (S W : ℕ) (P : Polynomial ℤ) : ZMod (2 ^ S) :=
+noncomputable def topJet2 (S W : ℕ) (P : Polynomial ℤ) : ZMod (2 ^ S) :=
   homEvalThreeTwo W P
-
-abbrev FourJetSignature (R S : ℕ) :=
+noncomputable abbrev FourJetSignature (R S : ℕ) :=
   (ZMod (3 ^ R) × ZMod (3 ^ R)) ×
     (ZMod (2 ^ S) × ZMod (2 ^ S))
-
-def fourJetSignature (R S W : ℕ) (U V : Polynomial ℤ) :
+noncomputable def fourJetSignature (R S W : ℕ) (U V : Polynomial ℤ) :
     FourJetSignature R S :=
   ((bottomJet3 R W U, bottomJet3 R W V),
     (topJet2 S W U, topJet2 S W V))
-
-def selectedFourJetSum {n : ℕ} (R S W : ℕ)
+noncomputable def selectedFourJetSum {n : ℕ} (R S W : ℕ)
     (forms : Fin n → Polynomial ℤ × Polynomial ℤ)
     (ε : Fin n → Bool) : FourJetSignature R S :=
   ∑ i, if ε i then
     fourJetSignature R S W (forms i).1 (forms i).2
   else 0
-
 noncomputable def zudilinPochhammerPS (start len : ℕ) : PowerSeries ℤ :=
   ∏ r ∈ Finset.range len,
     (1 - PowerSeries.X ^ (start + r) : PowerSeries ℤ)
@@ -91,12 +94,10 @@ theorem zudilin_firstTransformedRow_initialMonomial (l : ℕ) :
   exact
     ErdosProblems.Erdos1049.zudilinTransformedNormalizedMoment_one_initialMonomial l
 
-def zudilinSharpHankelQOrder (N : ℕ) : ℤ :=
+noncomputable def zudilinSharpHankelQOrder (N : ℕ) : ℤ :=
   ∑ j ∈ Finset.range N, (j : ℤ) ^ 2
-
-def zudilinTransformedRowCoeff (j : ℕ) : ℕ :=
+noncomputable def zudilinTransformedRowCoeff (j : ℕ) : ℕ :=
   ((j + 1) ^ 2 * (j + 2)) / 2
-
 theorem zudilinSharpHankelOrderAndCoeff_algebraicAssembly (N : ℕ) :
     6 * zudilinSharpHankelQOrder N =
         (N : ℤ) * ((N : ℤ) - 1) * (2 * (N : ℤ) - 1) ∧
@@ -198,8 +199,6 @@ theorem exists_ne_map_eq_map_ne_of_card_mul_lt {α β γ : Type*}
 
 end PalomarCorpus.E1049.AdelicHeightBridge
 
-import ErdosProblems.Erdos1049.PaperNoDecayR9
-
 namespace PalomarCorpus.E1049.ArchimedeanCap
 open Filter Asymptotics
 open scoped Topology
@@ -228,7 +227,6 @@ theorem archimedean_cap (U V : ℕ → Polynomial ℤ) (F : ℝ → ℝ) (σ δ 
 
 noncomputable def maxCoefficient (P : Polynomial ℤ) : ℕ :=
   P.support.sup (fun i => (P.coeff i).natAbs)
-
 /-- Exact all-base hypotheses; no limit of the normalized degree is assumed. -/
 theorem cleared_below_square_not_tendsto_zero
     (U V : ℕ → Polynomial ℤ) (F : ℝ → ℝ) (σ δ h : ℝ)
@@ -249,9 +247,6 @@ theorem cleared_below_square_not_tendsto_zero
     U V F σ δ h ⟨hσ, hδ, hh, hdeg, hheight, hne, hrate⟩ a b hb hab hsquare
 
 end PalomarCorpus.E1049.ArchimedeanCap
-
-import Mathlib
-import ErdosProblems.Erdos1049.BezoutPluckerJets
 
 namespace PalomarCorpus.E1049.BezoutPluckerJets
 
@@ -294,8 +289,6 @@ theorem zmod_binary_tail_collision_of_two_three_depth {R S k : ℕ}
 
 end PalomarCorpus.E1049.BezoutPluckerJets
 
-import ErdosProblems.Erdos1049.HermitePadeNoGo
-
 namespace PalomarCorpus.E1049.HermitePadeNoGo
 export PalomarCorpus.E1049.Shared (hpCyclotomicSaving hpDecay hpHeight hpThreshold)
 
@@ -332,9 +325,6 @@ theorem rectangular_hp_threshold_eq_classical_iff (rho sigma : ℝ)
     rho sigma hrho hsigma
 
 end PalomarCorpus.E1049.HermitePadeNoGo
-
-import ErdosProblems.Erdos1049.QAperyTailDenominator
-import ErdosProblems.Erdos1049.TwoSelectorRemainderEscape
 
 namespace PalomarCorpus.E1049.PrimeSupportSelectors
 
@@ -437,16 +427,12 @@ theorem zeroDenominatorCoordinates_binaryCollision
 
 end PalomarCorpus.E1049.PrimeSupportSelectors
 
-import ErdosProblems.Erdos1049.ZudilinHeightRegion
-
 namespace PalomarCorpus.E1049.PublishedHeightRegions
 
-def BundschuhVaananenHeightRegion (a b : ℕ) : Prop :=
+noncomputable def BundschuhVaananenHeightRegion (a b : ℕ) : Prop :=
   Real.log b / Real.log a < 1 / 2 - 1 / Real.pi ^ 2
-
-def ZudilinHeightRegion (a b : ℕ) : Prop :=
+noncomputable def ZudilinHeightRegion (a b : ℕ) : Prop :=
   Real.log b / Real.log a < (81 : ℝ) / 200
-
 theorem threeHalves_zudilin_power_obstruction :
     3 ^ 81 < 2 ^ 200 :=
   ErdosProblems.Erdos1049.threeHalves_zudilin_power_obstruction
@@ -468,32 +454,25 @@ theorem threeHalves_outside_bundschuhVaananenHeightRegion :
 
 end PalomarCorpus.E1049.PublishedHeightRegions
 
-import Mathlib
-import ErdosProblems.Erdos1049.RationalBaseLambert
-
 namespace PalomarCorpus.E1049.RationalBaseBarrier
 
 open scoped BigOperators
 
-def CoordinatewiseCorridor
+noncomputable def CoordinatewiseCorridor
     (a b N K Q digit : ℕ) : Prop :=
   0 < a ∧ 0 < Q ∧ 0 < digit ∧ digit ≤ N + K ∧
     a ^ K ∣ Q * digit ∧
     Q * b ^ (N + K + 1) < a ^ (K + 1)
-
-def rationalBasePrefixQ
+noncomputable def rationalBasePrefixQ
     (r s : ℚ) (coeff : ℕ → ℚ) (N : ℕ) : ℚ :=
   ∑ m ∈ Finset.range N,
     coeff (m + 1) * s ^ (m + 1) / r ^ (m + 1)
-
-def rationalBaseClearedTailQ
+noncomputable def rationalBaseClearedTailQ
     (r s B F : ℚ) (coeff : ℕ → ℚ) (N : ℕ) : ℚ :=
   B * r ^ N * (F - rationalBasePrefixQ r s coeff N)
-
-def rationalBaseForcingNat
+noncomputable def rationalBaseForcingNat
     (s B : ℕ) (coeff : ℕ → ℕ) (N : ℕ) : ℕ :=
   B * coeff (N + 1) * s ^ (N + 1)
-
 theorem rationalBaseClearedTailQ_succ
     {r s B F : ℚ} {coeff : ℕ → ℚ} (hr : r ≠ 0) (N : ℕ) :
     rationalBaseClearedTailQ r s B F coeff (N + 1) =

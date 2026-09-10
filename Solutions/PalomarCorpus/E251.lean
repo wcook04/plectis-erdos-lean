@@ -11,40 +11,38 @@ import ErdosProblems.Erdos251.KernelDenominatorFloor
 import ErdosProblems.Erdos251.OrderLatticeDiagonal
 import ErdosProblems.Erdos251.PolynomialGapSeriesValue
 
+open scoped BigOperators
+
 namespace PalomarCorpus.E251.Shared
-def DyadicTailRecurrence (g : ℕ → ℤ) (T : ℕ → ℚ) : Prop :=
+noncomputable def DyadicTailRecurrence (g : ℕ → ℤ) (T : ℕ → ℚ) : Prop :=
   ∀ N, T (N + 1) = 2 * T N - g (N + 1)
 
-def RatIntegral (x : ℚ) : Prop :=
+noncomputable def RatIntegral (x : ℚ) : Prop :=
   ∃ z : ℤ, x = z
-/-- Hypothetical non-irrationality produces one rational candidate whose
-algebraic states are every scaled real tail of the actual gap series. -/
 
-def RealDyadicTailRecurrence (g : ℕ → ℤ) (T : ℕ → ℝ) : Prop :=
+noncomputable def RealDyadicTailRecurrence (g : ℕ → ℤ) (T : ℕ → ℝ) : Prop :=
   ∀ N, T (N + 1) = 2 * T N - g (N + 1)
 
-def RealIntegral (x : ℝ) : Prop :=
+noncomputable def RealIntegral (x : ℝ) : Prop :=
   ∃ z : ℤ, x = z
-/-- The fixed-offset cofinal criterion: every positive shift length misses
-integrality at arbitrarily late basepoints. -/
 
 noncomputable def prime0 (n : ℕ) : ℕ := Nat.nth Nat.Prime n
 
-noncomputable def primeDyadicTerm (n : ℕ) : ℝ := (prime0 n : ℝ) / 2 ^ (n + 1) /-- The real term in the corresponding consecutive-prime-gap series. -/
+noncomputable def primeDyadicTerm (n : ℕ) : ℝ :=
+  (prime0 n : ℝ) / 2 ^ (n + 1)
 
 noncomputable def primeGap0 (n : ℕ) : ℕ := prime0 (n + 1) - prime0 n
 
-noncomputable def primeGapDyadicTerm (n : ℕ) : ℝ := (primeGap0 n : ℝ) / 2 ^ (n + 1)
+noncomputable def primeGapDyadicTerm (n : ℕ) : ℝ :=
+  (primeGap0 n : ℝ) / 2 ^ (n + 1)
 
-def realTailShift (T : ℕ → ℝ) (h N : ℕ) : ℝ :=
+noncomputable def realTailShift (T : ℕ → ℝ) (h N : ℕ) : ℝ :=
   T (N + h) - T N
 
-def tailShift (T : ℕ → ℚ) (h N : ℕ) : ℚ :=
+noncomputable def tailShift (T : ℕ → ℚ) (h N : ℕ) : ℚ :=
   T (N + h) - T N
 
 end PalomarCorpus.E251.Shared
-import ErdosProblems.Erdos251.PrimeGapDyadicTail
-
 open scoped BigOperators
 
 namespace PalomarCorpus.E251.ActualPrimeGapTail
@@ -86,16 +84,13 @@ theorem rationalPrimeGapTail_has_positive_shift_not_eventually_small
 
 end PalomarCorpus.E251.ActualPrimeGapTail
 
-import ErdosProblems.Erdos251.AffineCylinderCollapse
-
 namespace PalomarCorpus.E251.AffineCircularity
 export PalomarCorpus.E251.Shared (DyadicTailRecurrence RatIntegral tailShift)
 
-abbrev dyadicTailBlock := ErdosProblems.Erdos251.dyadicTailBlock
-abbrev RatAffinePowTwo := ErdosProblems.Erdos251.RatAffinePowTwo
-abbrev shiftDigit := ErdosProblems.Erdos251.shiftDigit
-abbrev DyadicScaleDominates := ErdosProblems.Erdos251.DyadicScaleDominates
-
+noncomputable abbrev dyadicTailBlock := ErdosProblems.Erdos251.dyadicTailBlock
+noncomputable abbrev RatAffinePowTwo := ErdosProblems.Erdos251.RatAffinePowTwo
+noncomputable abbrev shiftDigit := ErdosProblems.Erdos251.shiftDigit
+noncomputable abbrev DyadicScaleDominates := ErdosProblems.Erdos251.DyadicScaleDominates
 theorem adjacent_small_mismatch_iff_signed_two_window
     {g : ℕ → ℤ} {T : ℕ → ℚ}
     (hrec : DyadicTailRecurrence g T) (h N : ℕ)
@@ -135,16 +130,13 @@ theorem cofinal_blockResidue_escape_iff_not_eventuallyIntegral
 
 end PalomarCorpus.E251.AffineCircularity
 
-import Mathlib
-import ErdosProblems.Erdos251.FreePairReduction
-
 open scoped BigOperators
 
 namespace PalomarCorpus.E251.FreePairEquivalence
 export PalomarCorpus.E251.Shared (DyadicTailRecurrence RatIntegral RealDyadicTailRecurrence RealIntegral prime0 primeGap0 primeGapDyadicTerm realTailShift)
 
-abbrev CofinalNonintegralTailShifts := ErdosProblems.Erdos251.CofinalNonintegralTailShifts
-abbrev CofinalFreePairNonintegral := ErdosProblems.Erdos251.CofinalFreePairNonintegral
+noncomputable abbrev CofinalNonintegralTailShifts := ErdosProblems.Erdos251.CofinalNonintegralTailShifts
+noncomputable abbrev CofinalFreePairNonintegral := ErdosProblems.Erdos251.CofinalFreePairNonintegral
 noncomputable abbrev primeGapRealTail := ErdosProblems.Erdos251.primeGapRealTail
 
 theorem irrational_primeGap_tsum_iff_cofinalFreePairNonintegral :
@@ -184,24 +176,21 @@ theorem primeGapRealTail_zero :
 
 end PalomarCorpus.E251.FreePairEquivalence
 
-import ErdosProblems.Erdos251.KernelDenominatorFloor
-
 open scoped BigOperators
 
 namespace PalomarCorpus.E251.KernelDenominatorFloor
 export PalomarCorpus.E251.Shared (prime0 primeDyadicTerm primeGap0 primeGapDyadicTerm)
 
-abbrev noSmallDivisor := ErdosProblems.Erdos251.noSmallDivisor
-abbrev isPrimeTD := ErdosProblems.Erdos251.isPrimeTD
-abbrev primeSumLoop := ErdosProblems.Erdos251.primeSumLoop
-abbrev certCheck := ErdosProblems.Erdos251.certCheck
-abbrev certX := ErdosProblems.Erdos251.certX
-abbrev certC := ErdosProblems.Erdos251.certC
-abbrev certU := ErdosProblems.Erdos251.certU
-abbrev certV := ErdosProblems.Erdos251.certV
-abbrev certU' := ErdosProblems.Erdos251.certU'
-abbrev certV' := ErdosProblems.Erdos251.certV'
-
+noncomputable abbrev noSmallDivisor := ErdosProblems.Erdos251.noSmallDivisor
+noncomputable abbrev isPrimeTD := ErdosProblems.Erdos251.isPrimeTD
+noncomputable abbrev primeSumLoop := ErdosProblems.Erdos251.primeSumLoop
+noncomputable abbrev certCheck := ErdosProblems.Erdos251.certCheck
+noncomputable abbrev certX := ErdosProblems.Erdos251.certX
+noncomputable abbrev certC := ErdosProblems.Erdos251.certC
+noncomputable abbrev certU := ErdosProblems.Erdos251.certU
+noncomputable abbrev certV := ErdosProblems.Erdos251.certV
+noncomputable abbrev certU' := ErdosProblems.Erdos251.certU'
+noncomputable abbrev certV' := ErdosProblems.Erdos251.certV'
 /-- The kernel re-runs the `10^4` trial-division sieve and decides the six
 conditions on the certificate literals. -/
 theorem cert_10000 : certCheck certC certU certV certU' certV' certX = true :=
@@ -226,16 +215,12 @@ theorem kernel_denominator_floor_primeGap (a : ℤ) (b : ℕ) (hb : 0 < b)
 
 end PalomarCorpus.E251.KernelDenominatorFloor
 
-import ErdosProblems.Erdos251.OrderLatticeDiagonal
-
 namespace PalomarCorpus.E251.LcmDiagonalCriterion
 export PalomarCorpus.E251.Shared (DyadicTailRecurrence RatIntegral RealDyadicTailRecurrence RealIntegral realTailShift tailShift)
 
-abbrev CofinalNonintegralTailShifts :=
+noncomputable abbrev CofinalNonintegralTailShifts :=
   ErdosProblems.Erdos251.CofinalNonintegralTailShifts
-
-abbrev lcmDiagonalSchedule := ErdosProblems.Erdos251.lcmDiagonalSchedule
-
+noncomputable abbrev lcmDiagonalSchedule := ErdosProblems.Erdos251.lcmDiagonalSchedule
 theorem notIrrationalInitial_iff_exists_integral_positive_tailShift
     {g : ℕ → ℤ} {T : ℕ → ℝ}
     (hrec : RealDyadicTailRecurrence g T) :
@@ -279,22 +264,15 @@ theorem irrationalInitial_iff_allLcmDiagonal_nonintegral
 
 end PalomarCorpus.E251.LcmDiagonalCriterion
 
-import Mathlib
-import ErdosProblems.Erdos251.PrimeGapDyadicTail
-import ErdosProblems.Erdos251.PolynomialGapSeriesValue
-
 namespace PalomarCorpus.E251.PolynomialShiftCountermodel
 export PalomarCorpus.E251.Shared (DyadicTailRecurrence RatIntegral tailShift)
 
-def polynomialTailOrbit (n : ℕ) : ℚ :=
+noncomputable def polynomialTailOrbit (n : ℕ) : ℚ :=
   (2 * (n + 4) ^ 2 : ℕ)
-
-def polynomialGapWord (n : ℕ) : ℤ :=
+noncomputable def polynomialGapWord (n : ℕ) : ℤ :=
   (2 * (n ^ 2 + 4 * n + 2) : ℕ)
-
 noncomputable def polynomialGapDyadicTerm (n : ℕ) : ℝ :=
   (polynomialGapWord (n + 1) : ℝ) / 2 ^ (n + 1)
-
 /-- The Comparator vocabulary word is the source word. -/
 theorem polynomialGapWord_eq_source :
     polynomialGapWord = ErdosProblems.Erdos251.polynomialGapWord := rfl
@@ -348,8 +326,6 @@ theorem polynomialGapTailCountermodel :
     exact ErdosProblems.Erdos251.not_irrational_tsum_polynomialGapDyadicTerm
 
 end PalomarCorpus.E251.PolynomialShiftCountermodel
-
-import ErdosProblems.Erdos251.PrimeGapDyadicTail
 
 namespace PalomarCorpus.E251.PrimeGapIdentity
 export PalomarCorpus.E251.Shared (prime0 primeDyadicTerm primeGap0 primeGapDyadicTerm)
