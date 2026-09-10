@@ -1,5 +1,6 @@
 import Mathlib
 import ErdosProblems.Erdos249.CyclotomicAnchoredKill
+import Erdos257PeriodNoncollapse.CarrySurvivorExtinction
 
 namespace Erdos249257.ExternalVerification249CanonicalMersenneFrontier
 
@@ -38,10 +39,10 @@ theorem fullMersenneBlockResidue_succ
       (2 * fullMersenneBlockResidue H N M -
         deltaTotient H (N + 1)) % (M : ℤ) := by
   simpa [fullMersenneBlockResidue, totientBlock, deltaTotient,
-    ErdosProblems.Erdos249.fullMersenneBlockResidue,
-    ErdosProblems.Erdos249.totientBlock,
-    Erdos257PeriodNoncollapse.deltaTotient] using
-    ErdosProblems.Erdos249.fullMersenneBlockResidue_succ hM
+    ErdosProblems.Erdos249.CyclotomicAnchoredKill.fullMersenneBlockResidue,
+    ErdosProblems.Erdos249.CyclotomicAnchoredKill.totientBlock,
+    Erdos257PeriodNoncollapse.TotientTailPeriodKiller.deltaTotient] using
+    ErdosProblems.Erdos249.CyclotomicAnchoredKill.fullMersenneBlockResidue_succ hM
 
 theorem fullMersenneCenteredResidueGapSupply_of_canonicalBasepoint
     (hsupply : FullMersenneCanonicalBasepointResidueGapSupply) :
@@ -49,12 +50,12 @@ theorem fullMersenneCenteredResidueGapSupply_of_canonicalBasepoint
   simpa [FullMersenneCanonicalBasepointResidueGapSupply,
     FullMersenneCenteredResidueGapSupply,
     FullMersenneCenteredResidueGap, fullMersenneBlockResidue, totientBlock,
-    ErdosProblems.Erdos249.FullMersenneCanonicalBasepointResidueGapSupply,
-    ErdosProblems.Erdos249.FullMersenneCenteredResidueGapSupply,
-    ErdosProblems.Erdos249.FullMersenneCenteredResidueGap,
-    ErdosProblems.Erdos249.fullMersenneBlockResidue,
-    ErdosProblems.Erdos249.totientBlock] using
-    ErdosProblems.Erdos249.fullMersenneCenteredResidueGapSupply_of_canonicalBasepoint
+    ErdosProblems.Erdos249.CyclotomicAnchoredKill.FullMersenneCanonicalBasepointResidueGapSupply,
+    ErdosProblems.Erdos249.CyclotomicAnchoredKill.FullMersenneCenteredResidueGapSupply,
+    ErdosProblems.Erdos249.CyclotomicAnchoredKill.FullMersenneCenteredResidueGap,
+    ErdosProblems.Erdos249.CyclotomicAnchoredKill.fullMersenneBlockResidue,
+    ErdosProblems.Erdos249.CyclotomicAnchoredKill.totientBlock] using
+    ErdosProblems.Erdos249.CyclotomicAnchoredKill.fullMersenneCenteredResidueGapSupply_of_canonicalBasepoint
       hsupply
 
 theorem fullMersenneCanonicalBasepointResidueGapSupply_iff_irrational :
@@ -62,10 +63,10 @@ theorem fullMersenneCanonicalBasepointResidueGapSupply_iff_irrational :
       Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) := by
   simpa [FullMersenneCanonicalBasepointResidueGapSupply,
     FullMersenneCenteredResidueGap, fullMersenneBlockResidue, totientBlock,
-    ErdosProblems.Erdos249.FullMersenneCanonicalBasepointResidueGapSupply,
-    ErdosProblems.Erdos249.FullMersenneCenteredResidueGap,
-    ErdosProblems.Erdos249.fullMersenneBlockResidue,
-    ErdosProblems.Erdos249.totientBlock] using
-    ErdosProblems.Erdos249.fullMersenneCanonicalBasepointResidueGapSupply_iff_irrational
+    ErdosProblems.Erdos249.CyclotomicAnchoredKill.FullMersenneCanonicalBasepointResidueGapSupply,
+    ErdosProblems.Erdos249.CyclotomicAnchoredKill.FullMersenneCenteredResidueGap,
+    ErdosProblems.Erdos249.CyclotomicAnchoredKill.fullMersenneBlockResidue,
+    ErdosProblems.Erdos249.CyclotomicAnchoredKill.totientBlock] using
+    ErdosProblems.Erdos249.CyclotomicAnchoredKill.fullMersenneCanonicalBasepointResidueGapSupply_iff_irrational
 
 end Erdos249257.ExternalVerification249CanonicalMersenneFrontier

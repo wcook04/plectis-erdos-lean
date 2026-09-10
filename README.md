@@ -13,6 +13,31 @@ not close any of them.
 
 Problems covered: #68, #243, #249, #251, #257, #269, #1041, #1049.
 
+## Palomar publication surface
+
+Palomar review of this repository uses the eight nested problem-level
+configurations, with the Lake project root selected:
+
+- [`PalomarCorpus/E68`](PalomarCorpus/E68/)
+- [`PalomarCorpus/E243`](PalomarCorpus/E243/)
+- [`PalomarCorpus/E249`](PalomarCorpus/E249/)
+- [`PalomarCorpus/E251`](PalomarCorpus/E251/)
+- [`PalomarCorpus/E257`](PalomarCorpus/E257/)
+- [`PalomarCorpus/E269`](PalomarCorpus/E269/)
+- [`PalomarCorpus/E1041`](PalomarCorpus/E1041/)
+- [`PalomarCorpus/E1049`](PalomarCorpus/E1049/)
+
+Each directory holds the selected declarations for that problem in
+`Challenge.lean`, with `comparator.json` and `formalization.yaml`. The matching
+proof-side modules are `Solutions.PalomarCorpus.E68` through
+`Solutions.PalomarCorpus.E1049`. Family `ExternalVerification*` entries listed
+later in this file remain internal regression inventory, not the Palomar
+publication roster.
+
+This section names the publication home of the selected declarations. It does
+not claim Palomar Comparator verification, NanoDa, an axiom-subset certificate,
+or a verified release candidate.
+
 [`PROBLEMS.md`](PROBLEMS.md) states, for each problem, the strongest theorem this
 release carries, the exact unresolved step, and the smallest contribution that would move it.
 

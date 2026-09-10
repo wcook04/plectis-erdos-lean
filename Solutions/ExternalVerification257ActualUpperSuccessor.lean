@@ -112,7 +112,8 @@ theorem actualUpperSuccessorLinearEscape_completeCounterexample
     simpa [SeamActualUpperSuccessorLinearEscape, seamAdjacentCut,
       seamIntegerGreedyRemainder] using hescape
   simpa [erdosSupportSeries, UniversalMersenneSubseriesIrrationality,
-    ErdosProblems.Erdos257.UniversalMersenneSubseriesIrrationality] using
+    ErdosProblems.Erdos257.UniversalMersenneSubseriesIrrationality,
+    Erdos257PeriodNoncollapse.erdosSupportSeries] using
     ErdosProblems.Erdos257.actualUpperSuccessorLinearEscape_completeCounterexample
       hsource
 

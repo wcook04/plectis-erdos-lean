@@ -81,7 +81,7 @@ theorem FinitePrimeWeighted_eq :
   simp [FinitePrimeWeighted, ErdosProblems.Erdos257.PaperCompleteR7.FinitePrimeWeighted,
     primeWeightedTerm_eq]
 
-def PositiveCoverData.toSource (C : PositiveCoverData) :
+def toSource (C : PositiveCoverData) :
     ErdosProblems.Erdos257.PaperCompleteR7.PositiveCoverData where
   frame := C.frame
   exponent := C.exponent
@@ -92,7 +92,7 @@ def PositiveCoverData.toSource (C : PositiveCoverData) :
   column_summable := C.column_summable
   majorises := C.majorises
 
-def PositiveCoverData.ofSource
+def ofSource
     (C : ErdosProblems.Erdos257.PaperCompleteR7.PositiveCoverData) :
     PositiveCoverData where
   frame := C.frame
@@ -105,23 +105,23 @@ def PositiveCoverData.ofSource
   majorises := C.majorises
 
 theorem PositiveCoverData.host_toSource (C : PositiveCoverData) :
-    C.host = C.toSource.host := rfl
+    C.host = (toSource C).host := rfl
 
 theorem PositiveCoverData.cost_toSource (C : PositiveCoverData) :
-    C.cost = C.toSource.cost := rfl
+    C.cost = (toSource C).cost := rfl
 
 theorem PositiveCoverData.exponent_toSource (C : PositiveCoverData) :
-    C.exponent = C.toSource.exponent := rfl
+    C.exponent = (toSource C).exponent := rfl
 
 theorem PositiveCoverData.StrengthenedCostSummable_toSource (C : PositiveCoverData) :
-    C.StrengthenedCostSummable ↔ C.toSource.StrengthenedCostSummable := by
+    C.StrengthenedCostSummable ↔ (toSource C).StrengthenedCostSummable := by
   unfold PositiveCoverData.StrengthenedCostSummable
     ErdosProblems.Erdos257.PaperCompleteR7.PositiveCoverData.StrengthenedCostSummable
   rw [PositiveCoverData.cost_toSource, PositiveCoverData.exponent_toSource]
 
 theorem PositiveCoverData.StrengthenedCostSummable_ofSource
     (C : ErdosProblems.Erdos257.PaperCompleteR7.PositiveCoverData) :
-    (PositiveCoverData.ofSource C).StrengthenedCostSummable ↔
+    (ofSource C).StrengthenedCostSummable ↔
       C.StrengthenedCostSummable := Iff.rfl
 
 theorem HasStrengthenedPositiveCover_iff (A : Set ℕ) :
@@ -129,11 +129,11 @@ theorem HasStrengthenedPositiveCover_iff (A : Set ℕ) :
       ErdosProblems.Erdos257.PaperCompleteR7.HasStrengthenedPositiveCover A := by
   constructor
   · rintro ⟨C, hA, hC⟩
-    refine ⟨C.toSource, ?_, ?_⟩
+    refine ⟨(toSource C), ?_, ?_⟩
     · simpa [PositiveCoverData.host_toSource] using hA
     · exact (PositiveCoverData.StrengthenedCostSummable_toSource C).mp hC
   · rintro ⟨C, hA, hC⟩
-    refine ⟨PositiveCoverData.ofSource C, ?_,
+    refine ⟨ofSource C, ?_,
       (PositiveCoverData.StrengthenedCostSummable_ofSource C).mpr hC⟩
     simpa [PositiveCoverData.host] using hA
 

@@ -64,6 +64,18 @@ abbrev TwentyOneGreedyEventuallyHitsDoublingBlocks :=
 abbrev TwentyOneFatalAlignedBranch :=
   Erdos257PeriodNoncollapse.TwentyOneFatalAlignedBranch
 
+lemma integerGreedyBits_fun_eq :
+    integerGreedyBits =
+      Erdos257PeriodNoncollapse.HalfCylinderIntegerGreedy.integerGreedyBits := by
+  funext weights C
+  induction weights generalizing C with
+  | nil =>
+    simp [integerGreedyBits,
+      Erdos257PeriodNoncollapse.HalfCylinderIntegerGreedy.integerGreedyBits]
+  | cons w ws ih =>
+    simp [integerGreedyBits,
+      Erdos257PeriodNoncollapse.HalfCylinderIntegerGreedy.integerGreedyBits, ih]
+
 theorem twentyOneClosedRow_forces_quotientGreedy
     {R s : ℕ} {bits : List Bool}
     (hlen : bits.length = (localMersenneWeights (2 * R) R).length)
@@ -74,27 +86,31 @@ theorem twentyOneClosedRow_forces_quotientGreedy
     bits = integerGreedyBits
           (localMersenneWeights (2 * R) R)
           (twentyOneQuotientTarget (2 * R)) ∧
-      s = twentyOneEvenQuotientGreedyRemainder R :=
-  Erdos257PeriodNoncollapse.twentyOneClosedRow_forces_quotientGreedy
+      s = twentyOneEvenQuotientGreedyRemainder R := by
+  convert Erdos257PeriodNoncollapse.twentyOneClosedRow_forces_quotientGreedy
     hlen hrow hclosed
+  all_goals try exact integerGreedyBits_fun_eq
 
 theorem one_div_twenty_one_mem_mersenneAchievementSet_of_closedLowerStates
     (hsupply : TwentyOneClosedLowerStateSupply) :
-    (1 / 21 : ℝ) ∈ mersenneAchievementSet :=
-  Erdos257PeriodNoncollapse.one_div_twenty_one_mem_mersenneAchievementSet_of_closedLowerStates
+    (1 / 21 : ℝ) ∈ mersenneAchievementSet := by
+  convert Erdos257PeriodNoncollapse.one_div_twenty_one_mem_mersenneAchievementSet_of_closedLowerStates
     hsupply
+  all_goals try rfl
 
 theorem one_div_twenty_one_mem_iff_not_fatalAlignedBranch :
     (1 / 21 : ℝ) ∈ mersenneAchievementSet ↔
-      ¬ TwentyOneFatalAlignedBranch :=
-  Erdos257PeriodNoncollapse.one_div_twenty_one_mem_iff_not_fatalAlignedBranch
+      ¬ TwentyOneFatalAlignedBranch := by
+  convert Erdos257PeriodNoncollapse.one_div_twenty_one_mem_iff_not_fatalAlignedBranch
+  all_goals try rfl
 
 theorem twentyOneFatalAlignedBranch_eventually_strict_supercapacity
     (hbranch : TwentyOneFatalAlignedBranch) :
     ∃ K : ℕ, ∀ R : ℕ, K ≤ R →
-      2 ^ R < twentyOneEvenQuotientGreedyRemainder R :=
-  Erdos257PeriodNoncollapse.twentyOneFatalAlignedBranch_eventually_strict_supercapacity
+      2 ^ R < twentyOneEvenQuotientGreedyRemainder R := by
+  convert Erdos257PeriodNoncollapse.twentyOneFatalAlignedBranch_eventually_strict_supercapacity
     hbranch
+  all_goals try rfl
 
 theorem twentyOneFatalAlignedBranch_eventually_affine_supercapacity
     (hbranch : TwentyOneFatalAlignedBranch) :
@@ -106,9 +122,10 @@ theorem twentyOneFatalAlignedBranch_eventually_affine_supercapacity
               twentyOneTargetTwoStepPulse (2 * R) -
                 localPrefixTwoStepPulse
                   (twentyOneEvenQuotientGreedySupport R) (2 * R)) -
-            (2 ^ (R + 1) + 1) :=
-  Erdos257PeriodNoncollapse.twentyOneFatalAlignedBranch_eventually_affine_supercapacity
+            (2 ^ (R + 1) + 1) := by
+  convert Erdos257PeriodNoncollapse.twentyOneFatalAlignedBranch_eventually_affine_supercapacity
     hbranch
+  all_goals try rfl
 
 end
 

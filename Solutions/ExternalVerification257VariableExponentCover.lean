@@ -52,7 +52,7 @@ def StrengthenedPositiveCoverClaim : Prop :=
 theorem erdosSupportSeries_eq :
     erdosSupportSeries = Erdos257PeriodNoncollapse.erdosSupportSeries := rfl
 
-def PositiveCoverData.toSource (C : PositiveCoverData) :
+def toSource (C : PositiveCoverData) :
     ErdosProblems.Erdos257.PaperCompleteR7.PositiveCoverData where
   frame := C.frame
   exponent := C.exponent
@@ -63,7 +63,7 @@ def PositiveCoverData.toSource (C : PositiveCoverData) :
   column_summable := C.column_summable
   majorises := C.majorises
 
-def PositiveCoverData.ofSource
+def ofSource
     (C : ErdosProblems.Erdos257.PaperCompleteR7.PositiveCoverData) :
     PositiveCoverData where
   frame := C.frame
@@ -76,27 +76,27 @@ def PositiveCoverData.ofSource
   majorises := C.majorises
 
 theorem PositiveCoverData.host_toSource (C : PositiveCoverData) :
-    C.host = C.toSource.host := rfl
+    C.host = (toSource C).host := rfl
 
 theorem PositiveCoverData.cost_toSource (C : PositiveCoverData) :
-    C.cost = C.toSource.cost := rfl
+    C.cost = (toSource C).cost := rfl
 
 theorem PositiveCoverData.exponent_toSource (C : PositiveCoverData) :
-    C.exponent = C.toSource.exponent := rfl
+    C.exponent = (toSource C).exponent := rfl
 
 theorem PositiveCoverData.StrengthenedCostSummable_toSource (C : PositiveCoverData) :
-    C.StrengthenedCostSummable ↔ C.toSource.StrengthenedCostSummable := by
+    C.StrengthenedCostSummable ↔ (toSource C).StrengthenedCostSummable := by
   unfold PositiveCoverData.StrengthenedCostSummable
     ErdosProblems.Erdos257.PaperCompleteR7.PositiveCoverData.StrengthenedCostSummable
   rw [PositiveCoverData.cost_toSource, PositiveCoverData.exponent_toSource]
 
 theorem PositiveCoverData.host_ofSource
     (C : ErdosProblems.Erdos257.PaperCompleteR7.PositiveCoverData) :
-    (PositiveCoverData.ofSource C).host = C.host := rfl
+    (ofSource C).host = C.host := rfl
 
 theorem PositiveCoverData.StrengthenedCostSummable_ofSource
     (C : ErdosProblems.Erdos257.PaperCompleteR7.PositiveCoverData) :
-    (PositiveCoverData.ofSource C).StrengthenedCostSummable ↔
+    (ofSource C).StrengthenedCostSummable ↔
       C.StrengthenedCostSummable := Iff.rfl
 
 theorem StrengthenedPositiveCoverClaim_iff :
@@ -104,18 +104,18 @@ theorem StrengthenedPositiveCoverClaim_iff :
       ErdosProblems.Erdos257.PaperCompleteR7.StrengthenedPositiveCoverClaim := by
   constructor
   · intro h C hC A hA hInf b hb
-    have hC' : (PositiveCoverData.ofSource C).StrengthenedCostSummable :=
+    have hC' : (ofSource C).StrengthenedCostSummable :=
       (PositiveCoverData.StrengthenedCostSummable_ofSource C).mpr hC
-    have hA' : A ⊆ (PositiveCoverData.ofSource C).host := by
+    have hA' : A ⊆ (ofSource C).host := by
       simpa [PositiveCoverData.host_ofSource] using hA
-    have := h (PositiveCoverData.ofSource C) hC' A hA' hInf b hb
+    have := h (ofSource C) hC' A hA' hInf b hb
     simpa [erdosSupportSeries_eq] using this
   · intro h C hC A hA hInf b hb
-    have hC' : C.toSource.StrengthenedCostSummable :=
+    have hC' : (toSource C).StrengthenedCostSummable :=
       (PositiveCoverData.StrengthenedCostSummable_toSource C).mp hC
-    have hA' : A ⊆ C.toSource.host := by
+    have hA' : A ⊆ (toSource C).host := by
       simpa [PositiveCoverData.host_toSource] using hA
-    have := h C.toSource hC' A hA' hInf b hb
+    have := h (toSource C) hC' A hA' hInf b hb
     simpa [erdosSupportSeries_eq] using this
 
 theorem strengthenedPositiveCoverClaim : StrengthenedPositiveCoverClaim :=

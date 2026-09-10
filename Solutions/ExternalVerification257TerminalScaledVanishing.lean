@@ -63,10 +63,11 @@ theorem terminalScaledVanishing_completeCounterexample
         simpa [integerHalfCarry, wordSupport] using
           S.carry_scaled_tendsto }
   constructor
-  · simpa [erdosSupportSeries] using
+  · simpa [erdosSupportSeries, Erdos257PeriodNoncollapse.erdosSupportSeries] using
       ErdosProblems.Erdos257.exists_rational_half_counterexample_of_terminalScaledVanishing
         S'
   · simpa [UniversalMersenneSubseriesIrrationality, erdosSupportSeries,
+      Erdos257PeriodNoncollapse.erdosSupportSeries,
       ErdosProblems.Erdos257.UniversalMersenneSubseriesIrrationality] using
       ErdosProblems.Erdos257.not_universal_of_terminalScaledVanishing S'
 

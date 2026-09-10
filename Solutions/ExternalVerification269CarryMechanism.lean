@@ -170,6 +170,35 @@ abbrev windowForcing := ErdosProblems.Erdos269.windowForcing
 abbrev CofinalLocalWindowEscape :=
   ErdosProblems.Erdos269.CofinalLocalWindowEscape
 
+lemma leastPositiveResidue_fun_eq :
+    leastPositiveResidue = ErdosProblems.Erdos269.leastPositiveResidue := by
+  funext C x
+  simp [leastPositiveResidue, ErdosProblems.Erdos269.leastPositiveResidue]
+
+lemma windowBase_fun_eq :
+    windowBase = ErdosProblems.Erdos269.windowBase := by
+  funext b lo len
+  induction len with
+  | zero =>
+    simp [windowBase, ErdosProblems.Erdos269.windowBase]
+  | succ n ih =>
+    simp [windowBase, ErdosProblems.Erdos269.windowBase, ih]
+
+lemma windowForcing_fun_eq :
+    windowForcing = ErdosProblems.Erdos269.windowForcing := by
+  funext b e lo len
+  induction len with
+  | zero =>
+    simp [windowForcing, ErdosProblems.Erdos269.windowForcing]
+  | succ n ih =>
+    simp [windowForcing, ErdosProblems.Erdos269.windowForcing, ih]
+
+lemma CofinalLocalWindowEscape_fun_eq :
+    CofinalLocalWindowEscape = ErdosProblems.Erdos269.CofinalLocalWindowEscape := by
+  funext b m sb
+  simp [CofinalLocalWindowEscape, ErdosProblems.Erdos269.CofinalLocalWindowEscape,
+    windowBase_fun_eq, windowForcing_fun_eq, leastPositiveResidue_fun_eq]
+
 theorem no_positive_reducedCarry_of_cofinalLocalWindowEscape
     (b m : ℕ → ℕ) (shortBound : ℕ → ℕ → ℕ)
     (hescape : CofinalLocalWindowEscape b m shortBound)
@@ -182,6 +211,8 @@ theorem no_positive_reducedCarry_of_cofinalLocalWindowEscape
     False := by
   exact
     ErdosProblems.Erdos269.no_positive_reducedCarry_of_cofinalLocalWindowEscape
-      b m shortBound hescape B hBpos hBcoprime d hrec hpos hbound
+      b m shortBound
+      (by simpa [CofinalLocalWindowEscape_fun_eq] using hescape)
+      B hBpos hBcoprime d hrec hpos hbound
 
 end Erdos249257.ExternalVerification269CarryMechanism
