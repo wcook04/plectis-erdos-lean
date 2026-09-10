@@ -1,0 +1,43 @@
+/-
+Copyright (c) 2026 Will Cook. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Will Cook
+-/
+import ErdosProblems.Erdos1049.ZudilinHeightRegion
+
+/-!
+# Source transport for the Erdős #1049 published-height placement at `3 / 2`
+
+The four compared theorems are the elementary `3 / 2` certificates from
+`ErdosProblems.Erdos1049.ZudilinHeightRegion`.  Local copies of the two height
+regions unfold to the same inequalities as the corpus definitions.
+-/
+
+namespace Erdos249257.ExternalVerification1049PublishedHeightRegions
+
+def BundschuhVaananenHeightRegion (a b : ℕ) : Prop :=
+  Real.log b / Real.log a < 1 / 2 - 1 / Real.pi ^ 2
+
+def ZudilinHeightRegion (a b : ℕ) : Prop :=
+  Real.log b / Real.log a < (81 : ℝ) / 200
+
+theorem threeHalves_zudilin_power_obstruction :
+    3 ^ 81 < 2 ^ 200 :=
+  ErdosProblems.Erdos1049.threeHalves_zudilin_power_obstruction
+
+theorem eightyOneTwoHundredths_lt_threeHalves_log_ratio :
+    (81 : ℝ) / 200 < Real.log 2 / Real.log 3 :=
+  ErdosProblems.Erdos1049.eightyOneTwoHundredths_lt_threeHalves_log_ratio
+
+theorem threeHalves_outside_zudilinHeightRegion :
+    ¬ ZudilinHeightRegion 3 2 := by
+  simpa [ZudilinHeightRegion, ErdosProblems.Erdos1049.ZudilinHeightRegion] using
+    ErdosProblems.Erdos1049.threeHalves_outside_zudilinHeightRegion
+
+theorem threeHalves_outside_bundschuhVaananenHeightRegion :
+    ¬ BundschuhVaananenHeightRegion 3 2 := by
+  simpa [BundschuhVaananenHeightRegion,
+    ErdosProblems.Erdos1049.BundschuhVaananenHeightRegion] using
+    ErdosProblems.Erdos1049.threeHalves_outside_bundschuhVaananenHeightRegion
+
+end Erdos249257.ExternalVerification1049PublishedHeightRegions

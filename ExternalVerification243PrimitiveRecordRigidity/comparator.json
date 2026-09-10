@@ -1,0 +1,20 @@
+{
+  "challenge_module": "ExternalVerification243PrimitiveRecordRigidity.Challenge",
+  "solution_module": "Solutions.ExternalVerification243PrimitiveRecordRigidity",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification243PrimitiveRecordRigidity.primitive_valuation_no_drop",
+    "Erdos249257.ExternalVerification243PrimitiveRecordRigidity.protectedPrimePower_persists",
+    "Erdos249257.ExternalVerification243PrimitiveRecordRigidity.odd_record_cut",
+    "Erdos249257.ExternalVerification243PrimitiveRecordRigidity.exists_oddMultiple_trapHeight",
+    "Erdos249257.ExternalVerification243PrimitiveRecordRigidity.numerator_bounded_of_oddPrimePower",
+    "Erdos249257.ExternalVerification243PrimitiveRecordRigidity.centeredZero_forces_unit",
+    "Erdos249257.ExternalVerification243PrimitiveRecordRigidity.sylvesterStep_of_centeredZero_pair",
+    "Erdos249257.ExternalVerification243PrimitiveRecordRigidity.recordRiseTwo_sylvesterNext_eventually"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

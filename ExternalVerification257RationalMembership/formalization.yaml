@@ -1,0 +1,35 @@
+version: v0.4
+project:
+  name: Rational greedy-skip membership for the Mersenne achievement set
+  description: A nonnegative rational belongs to the base-two Mersenne achievement set exactly when its canonical greedy orbit omits infinitely many positive exponents, equivalently when it skips at arbitrarily late ranks.
+  authors: [Will Cook]
+  license: Apache-2.0
+  responsible_maintainers: [Will Cook]
+sources:
+- title: Greedy geometry for the Mersenne achievement set
+  location: Erdos257PeriodNoncollapse/GreedyAchievementSet.lean
+  declaration: Erdos257PeriodNoncollapse.rat_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite
+  relationship: other
+- title: Erdős Problem #257
+  authors: [Thomas F. Bloom]
+  id: https://www.erdosproblems.com/257
+  type: web discussion
+  relationship: background
+automation:
+  methods:
+  - method: agent
+    tool_setup: Independent Mathlib-only challenge; direct projection of audited source endpoints. Wrapper compile pending.
+review:
+  status: unchecked
+  reviewers: []
+  notes: Source endpoints are present on the public cut; wrapper has not yet compiled or run Comparator.
+status:
+  scope: Four exact rational skip-criterion endpoints; no constructive infinite support and no #257 settlement.
+  novelty_status: unassessed
+  canonical_claim_status: source present; wrapper compile pending
+  trusted_challenge_sorry_count: 4
+palomar_qualification:
+  status: prepared_local_only
+  replay_status: not_run_for_this_entry
+  submission_authorization: operator_approval_required_for_exact_public_commit
+  blockers: [lakefile.toml registration remains for the integrating agent, Wrapper build and axiom audit pending, Supported-runner Comparator replay pending]

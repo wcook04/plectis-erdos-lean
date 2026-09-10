@@ -1,0 +1,72 @@
+version: v0.4
+project:
+  name: 'Erdős #249: termwise dyadic window excludes no denominator'
+  description: The termwise hypothesis 2^t ∣ φ(N+t) never beats v·(N+t+2), so the
+    termwise dyadic window excludes no denominator. No-go only; the binary totient
+    series is not proved irrational.
+  authors: [Will Cook]
+  license: Apache-2.0
+  responsible_maintainers: [Will Cook]
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - 11A25
+sources:
+- title: Termwise dyadic-window vacuity for Erdős Problem 249
+  location: ErdosProblems/Erdos249/PrefixValuationAndControlRigidity.lean
+  declaration: ErdosProblems.Erdos249.termwise_dyadic_window_vacuous
+  relationship: other
+  license: Apache-2.0
+  author_endorsement: participated
+- title: 'Erdős Problem #249'
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com/249
+  type: web discussion
+  relationship: background
+  license: unknown
+  author_endorsement: not-contacted
+automation:
+  methods:
+  - method: agent
+    tool_setup: Independent Mathlib-only challenge; direct citation of the audited source endpoint.
+review:
+  status: unchecked
+  reviewers: []
+  notes: Source endpoint exists on the public cut; wrapper compile, axiom audit, and Comparator replay remain pending.
+status:
+  scope: One no-go endpoint; no irrationality claim.
+  novelty_status: unassessed
+  canonical_claim_status: source_reconciled_wrapper_pending_focused_check
+  local_proof_provenance: ErdosProblems/Erdos249/PrefixValuationAndControlRigidity.lean
+  sorry_count: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 1
+  axiom_audit_status: pending_source_and_focused_lean_checks
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: Erdos249257.ExternalVerification249TermwiseDyadicVacuous.termwise_dyadic_window_vacuous
+    file: Solutions/ExternalVerification249TermwiseDyadicVacuous.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249TermwiseDyadicVacuous/comparator.json
+    canonical_claim_status: source_reconciled_wrapper_pending_focused_check
+    local_proof_provenance: ErdosProblems.Erdos249.termwise_dyadic_window_vacuous
+    novelty_status: unassessed
+    boundary: Vacuity of the termwise window; does not solve Erdős 249.
+palomar_qualification:
+  status: prepared_local_only
+  replay_status: not_run_for_this_entry
+  submission_authorization: operator_approval_required_for_exact_public_commit
+  blockers: [lakefile.toml registration pending integrating agent, Wrapper build and axiom audit pending, Supported-runner Comparator replay pending]
+alignment:
+  namespace: Erdos249257.ExternalVerification249TermwiseDyadicVacuous
+  statements:
+  - source: ErdosProblems.Erdos249.termwise_dyadic_window_vacuous
+    lean: Erdos249257.ExternalVerification249TermwiseDyadicVacuous.termwise_dyadic_window_vacuous
+    module: ExternalVerification249TermwiseDyadicVacuous/Challenge.lean
+    status: exact-transport-pending-check
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

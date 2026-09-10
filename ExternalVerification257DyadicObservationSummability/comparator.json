@@ -1,0 +1,15 @@
+{
+  "challenge_module": "ExternalVerification257DyadicObservationSummability.Challenge",
+  "solution_module": "Solutions.ExternalVerification257DyadicObservationSummability",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257DyadicObservationSummability.dyadic_supportObservationMass_sum_le",
+    "Erdos249257.ExternalVerification257DyadicObservationSummability.summable_dyadic_supportObservationMass",
+    "Erdos249257.ExternalVerification257DyadicObservationSummability.tendsto_dyadic_supportObservationMass_mean"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

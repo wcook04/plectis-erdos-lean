@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification249TermwiseDyadicVacuous.Challenge",
+  "solution_module": "Solutions.ExternalVerification249TermwiseDyadicVacuous",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249TermwiseDyadicVacuous.termwise_dyadic_window_vacuous"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,4 @@
+import Solutions.ExternalVerification257FairCoding
+#print axioms Erdos249257.ExternalVerification257FairCoding.fairCoding_pushforward_eq_volume_restrict
+#print axioms Erdos249257.ExternalVerification257FairCoding.measurePreserving_fairCoding
+#print axioms Erdos249257.ExternalVerification257FairCoding.fairCoding_rational_values_null

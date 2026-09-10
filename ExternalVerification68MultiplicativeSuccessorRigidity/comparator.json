@@ -1,0 +1,19 @@
+{
+  "challenge_module": "ExternalVerification68MultiplicativeSuccessorRigidity.Challenge",
+  "solution_module": "Solutions.ExternalVerification68MultiplicativeSuccessorRigidity",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification68MultiplicativeSuccessorRigidity.gapSuccessor_eq_mul_pred_of_dvd",
+    "Erdos249257.ExternalVerification68MultiplicativeSuccessorRigidity.gapSuccessor_dvd_of_eventually_dvd",
+    "Erdos249257.ExternalVerification68MultiplicativeSuccessorRigidity.factorial_mul_gapSuccessor_eq_of_eventually_dvd",
+    "Erdos249257.ExternalVerification68MultiplicativeSuccessorRigidity.eventually_dvd_gapSuccessor_of_not_irrational",
+    "Erdos249257.ExternalVerification68MultiplicativeSuccessorRigidity.irrational_factorialGapSeries_of_cofinal_not_dvd_gapSuccessor",
+    "Erdos249257.ExternalVerification68MultiplicativeSuccessorRigidity.irrational_factorialGapSeries_of_cofinal_odd_gapSuccessor",
+    "Erdos249257.ExternalVerification68MultiplicativeSuccessorRigidity.not_eventually_odd_gapSuccessor_of_not_irrational"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

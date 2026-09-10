@@ -1,0 +1,16 @@
+{
+  "challenge_module": "ExternalVerification68ResidualIntegerClass.Challenge",
+  "solution_module": "Solutions.ExternalVerification68ResidualIntegerClass",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification68ResidualIntegerClass.residual_transparency",
+    "Erdos249257.ExternalVerification68ResidualIntegerClass.summable_fullResidual",
+    "Erdos249257.ExternalVerification68ResidualIntegerClass.zero_moment_residual_integral",
+    "Erdos249257.ExternalVerification68ResidualIntegerClass.equal_moment_residual_integer_difference"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

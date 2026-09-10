@@ -1,0 +1,60 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Erdős #257: mixed weighted-cover synchronisation"
+  description: >-
+    A binary finite-prime-weighted host and a strengthened positive-cover host
+    together force all-base hereditary irrationality of every infinite subset of
+    their union. No individual irrationality premises are assumed. Erdős
+    Problem 257 remains open.
+  authors: ["Will Cook"]
+  license: "Apache-2.0"
+  responsible_maintainers: ["Will Cook"]
+
+palomar_qualification:
+  status: "prepared_local_only"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "ExternalVerification257MixedWeightedCover/comparator.json"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "not_run_for_this_entry"
+  submission_authorization: "not_authorised_no_submission_prepared"
+  blockers:
+    - "no Comparator or NanoDa run has been recorded on a supported runner"
+    - "no Palomar submission; no git commit/push this turn"
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11J72", "11A25"]
+
+sources:
+  - title: "Mixed-support irrationality"
+    authors: ["Will Cook"]
+    type: "original-proof"
+    relationship: "other"
+    note: >-
+      Source theorem ErdosProblems.Erdos257.PaperCompleteR8.mixedSupportClaim
+      in ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean.
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+
+status:
+  scope: >-
+    One compared theorem restates MixedSupportClaim.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 1
+  sorry_boundary: "The only deliberate placeholder is the trusted theorem body in Challenge.lean."
+  axiom_audit_status: "local_print_axioms_propext_choice_quot"
+  permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification257MixedWeightedCover.mixedSupportClaim"
+      file: "Solutions/ExternalVerification257MixedWeightedCover.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification257MixedWeightedCover/comparator.json"
+      canonical_claim_status: "source_backed_exact_transport"
+
+review:
+  status: "self-assessed"
+  reviewers: []

@@ -1,0 +1,18 @@
+{
+  "challenge_module": "ExternalVerification249TotientRigidity.Challenge",
+  "solution_module": "Solutions.ExternalVerification249TotientRigidity",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249TotientRigidity.one_prime_law_and_little_o_forces_totient",
+    "Erdos249257.ExternalVerification249TotientRigidity.totient_prime_mul_of_dvd",
+    "Erdos249257.ExternalVerification249TotientRigidity.totient_prime_mul_of_not_dvd",
+    "Erdos249257.ExternalVerification249TotientRigidity.even_law_and_eventual_congruence_forces_totient",
+    "Erdos249257.ExternalVerification249TotientRigidity.totient_two_mul_of_odd",
+    "Erdos249257.ExternalVerification249TotientRigidity.totient_two_mul_of_even"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

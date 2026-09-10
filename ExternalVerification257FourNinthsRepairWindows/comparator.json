@@ -1,0 +1,16 @@
+{
+  "challenge_module": "ExternalVerification257FourNinthsRepairWindows.Challenge",
+  "solution_module": "Solutions.ExternalVerification257FourNinthsRepairWindows",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257FourNinthsRepairWindows.exists_repair_in_sqrt_window",
+    "Erdos249257.ExternalVerification257FourNinthsRepairWindows.four_ninths_mem_iff_repairCofinal",
+    "Erdos249257.ExternalVerification257FourNinthsRepairWindows.four_ninths_mem_iff_repair_sqrt_windows",
+    "Erdos249257.ExternalVerification257FourNinthsRepairWindows.four_ninths_not_mem_of_strict_sqrt_window"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

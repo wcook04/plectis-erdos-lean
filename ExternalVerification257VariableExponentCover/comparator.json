@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification257VariableExponentCover.Challenge",
+  "solution_module": "Solutions.ExternalVerification257VariableExponentCover",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257VariableExponentCover.strengthenedPositiveCoverClaim"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

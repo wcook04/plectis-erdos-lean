@@ -1,0 +1,15 @@
+{
+  "challenge_module": "ExternalVerification257FairCoding.Challenge",
+  "solution_module": "Solutions.ExternalVerification257FairCoding",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257FairCoding.fairCoding_pushforward_eq_volume_restrict",
+    "Erdos249257.ExternalVerification257FairCoding.measurePreserving_fairCoding",
+    "Erdos249257.ExternalVerification257FairCoding.fairCoding_rational_values_null"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

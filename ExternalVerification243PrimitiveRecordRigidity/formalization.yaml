@@ -1,0 +1,29 @@
+version: v0.4
+project:
+  name: Primitive record-rise-two rigidity for reciprocal-tail dynamics
+  description: Eight finite-arithmetic theorems for a dynamically reduced reciprocal tail with arbitrary cancellation, culminating in conditional Sylvester rigidity under a record-jump bound of two and a fresh odd prime-power supply.
+  authors: [Will Cook]
+  license: Apache-2.0
+  responsible_maintainers: [Will Cook]
+sources:
+- title: Prime-power barriers for record numerator jumps
+  location: ErdosProblems/Erdos243/PrimitiveRecordBarrier.lean
+  declaration: ErdosProblems.Erdos243.recordRiseTwo_sylvesterNext_eventually
+  relationship: other
+automation:
+  methods:
+  - method: agent
+    tool_setup: Independent Mathlib-only challenge; direct projection of audited source endpoints. Wrapper compile pending.
+review:
+  status: unchecked
+  reviewers: []
+  notes: Source endpoints compiled; wrapper has not yet compiled or run Comparator.
+status:
+  scope: Eight compared theorems; conditional on the record-jump bound and prime-power supply; no unrestricted solution of Erdős #243.
+  novelty_status: unassessed
+  canonical_claim_status: source audited; wrapper compile pending
+palomar_qualification:
+  status: prepared_local_only
+  replay_status: not_run_for_this_entry
+  submission_authorization: operator_approval_required_for_exact_public_commit
+  blockers: [Wrapper build and axiom audit pending, Supported-runner Comparator replay pending]

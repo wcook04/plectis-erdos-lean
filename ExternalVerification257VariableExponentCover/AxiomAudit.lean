@@ -1,0 +1,2 @@
+import Solutions.ExternalVerification257VariableExponentCover
+#print axioms Erdos249257.ExternalVerification257VariableExponentCover.strengthenedPositiveCoverClaim

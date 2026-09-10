@@ -1,0 +1,86 @@
+version: v0.4
+project:
+  name: 'Erdős #249: Farey-window totient-series denominator exclusion'
+  description: The binary totient series is not a/d for any integer a and any
+    denominator at most 79639646646701375323355774875831053, and therefore is
+    not any rational whose reduced denominator lies in that range. Finite
+    exclusion only; the series is not proved irrational.
+  authors: [Will Cook]
+  license: Apache-2.0
+  responsible_maintainers: [Will Cook]
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - 11J72
+  - 11A25
+sources:
+- title: Kernel-checked Farey-window totient series exclusion
+  location: Erdos257PeriodNoncollapse/CertificateKernel.lean
+  declaration: Erdos257PeriodNoncollapse.tsum_totient_div_pow_two_ne_int_div_of_den_le_79639646646701375323355774875831053
+  relationship: other
+  license: Apache-2.0
+  author_endorsement: participated
+- title: 'Erdős Problem #249'
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com/249
+  type: web discussion
+  relationship: background
+  license: unknown
+  author_endorsement: not-contacted
+automation:
+  methods:
+  - method: agent
+    tool_setup: Independent Mathlib-only challenge; direct citation of audited source endpoints.
+review:
+  status: unchecked
+  reviewers: []
+  notes: Source endpoints exist on the public cut; wrapper compile, axiom audit, and Comparator replay remain pending.
+status:
+  scope: Two finite-exclusion endpoints; no irrationality claim.
+  novelty_status: unassessed
+  canonical_claim_status: source_reconciled_wrapper_pending_focused_check
+  local_proof_provenance: Erdos257PeriodNoncollapse/CertificateKernel.lean
+  sorry_count: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 2
+  axiom_audit_status: pending_source_and_focused_lean_checks
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: Erdos249257.ExternalVerification249FareyWindowExclusion.tsum_totient_div_pow_two_ne_int_div_of_den_le_79639646646701375323355774875831053
+    file: Solutions/ExternalVerification249FareyWindowExclusion.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249FareyWindowExclusion/comparator.json
+    canonical_claim_status: source_reconciled_wrapper_pending_focused_check
+    local_proof_provenance: Erdos257PeriodNoncollapse.tsum_totient_div_pow_two_ne_int_div_of_den_le_79639646646701375323355774875831053
+    novelty_status: unassessed
+    boundary: Finite exclusion only; does not solve Erdős 249.
+  - declaration: Erdos249257.ExternalVerification249FareyWindowExclusion.tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053
+    file: Solutions/ExternalVerification249FareyWindowExclusion.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249FareyWindowExclusion/comparator.json
+    canonical_claim_status: source_reconciled_wrapper_pending_focused_check
+    local_proof_provenance: Erdos257PeriodNoncollapse.tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053
+    novelty_status: unassessed
+    boundary: Finite exclusion only; does not solve Erdős 249.
+palomar_qualification:
+  status: prepared_local_only
+  replay_status: not_run_for_this_entry
+  submission_authorization: operator_approval_required_for_exact_public_commit
+  blockers: [lakefile.toml registration pending integrating agent, Wrapper build and axiom audit pending, Supported-runner Comparator replay pending]
+alignment:
+  namespace: Erdos249257.ExternalVerification249FareyWindowExclusion
+  statements:
+  - source: Erdos257PeriodNoncollapse.tsum_totient_div_pow_two_ne_int_div_of_den_le_79639646646701375323355774875831053
+    lean: Erdos249257.ExternalVerification249FareyWindowExclusion.tsum_totient_div_pow_two_ne_int_div_of_den_le_79639646646701375323355774875831053
+    module: ExternalVerification249FareyWindowExclusion/Challenge.lean
+    status: exact-transport-pending-check
+  - source: Erdos257PeriodNoncollapse.tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053
+    lean: Erdos249257.ExternalVerification249FareyWindowExclusion.tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053
+    module: ExternalVerification249FareyWindowExclusion/Challenge.lean
+    status: exact-transport-pending-check
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification257DivisibilityWeightedSupport.Challenge",
+  "solution_module": "Solutions.ExternalVerification257DivisibilityWeightedSupport",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257DivisibilityWeightedSupport.divisibilityWeightedClaim"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

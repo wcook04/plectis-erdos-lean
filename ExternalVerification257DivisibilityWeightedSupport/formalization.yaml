@@ -1,0 +1,82 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Erdős #257: divisibility-weighted support irrationality"
+  description: >-
+    A finite prime-weighted cost on an infinite support excluding zero forces
+    irrationality of the reciprocal-Mersenne series at that base, and a finite
+    binary weighted cost on a host forces all-base hereditary irrationality of
+    every infinite subset. This is the long-record weighted claim. It does not
+    decide every infinite support. Erdős Problem 257 remains open.
+  authors: ["Will Cook"]
+  license: "Apache-2.0"
+  responsible_maintainers: ["Will Cook"]
+
+palomar_qualification:
+  status: "prepared_local_only"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "ExternalVerification257DivisibilityWeightedSupport/comparator.json"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "not_run_for_this_entry"
+  submission_authorization: "not_authorised_no_submission_prepared"
+  blockers:
+    - "no Comparator or NanoDa run has been recorded on a supported runner"
+    - "no Palomar submission; no git commit/push this turn"
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11J72", "11A25"]
+
+sources:
+  - title: "Divisibility-weighted support irrationality"
+    authors: ["Will Cook"]
+    type: "original-proof"
+    relationship: "other"
+    note: >-
+      Source theorem ErdosProblems.Erdos257.PaperCompleteR8.divisibilityWeightedClaim
+      in ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean.
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #257"
+    authors: ["Thomas F. Bloom"]
+    id: "https://www.erdosproblems.com/257"
+    type: "web discussion"
+    relationship: "background"
+    license: "unknown"
+    author_endorsement: "not-contacted"
+
+status:
+  scope: >-
+    One compared theorem restates DivisibilityWeightedClaim. Challenge.lean has
+    one intentional Comparator specification sorry; Solution.lean cites the
+    source theorem through identification equations.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 1
+  sorry_boundary: >-
+    The only deliberate placeholder is the trusted theorem body in Challenge.lean.
+  axiom_audit_status: "local_print_axioms_propext_choice_quot"
+  permitted_axiom_budget:
+    - "propext"
+    - "Quot.sound"
+    - "Classical.choice"
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification257DivisibilityWeightedSupport.divisibilityWeightedClaim"
+      file: "Solutions/ExternalVerification257DivisibilityWeightedSupport.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification257DivisibilityWeightedSupport/comparator.json"
+      canonical_claim_status: "source_backed_exact_transport"
+      statement: >-
+        Finite prime-weighted cost implies irrationality at that base, and
+        finite binary weighted cost implies all-base hereditary irrationality.
+      boundary: >-
+        Not a universal infinite-support theorem. Erdős 257 remains open.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Packaged on the public Lean cut. Solution and AxiomAudit compiled locally.
+    Comparator replay and Palomar submission are unclaimed.

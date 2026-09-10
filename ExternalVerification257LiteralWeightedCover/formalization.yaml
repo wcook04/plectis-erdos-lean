@@ -1,0 +1,68 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Erdős #257: literal weighted-cover separation"
+  description: >-
+    There is an infinite weighted host that satisfies the literal finite-prime
+    weighted criterion, fails reciprocal summability, fails the strengthened
+    positive-cover predicate, and lies outside every logarithmic-budget cover,
+    while every infinite subset is irrational at every integer base at least
+    two. The same host can still be synchronised with any actual
+    strengthened-cover host. Neither statement assumes that a cover host
+    exists. Erdős Problem 257 remains open.
+  authors: ["Will Cook"]
+  license: "Apache-2.0"
+  responsible_maintainers: ["Will Cook"]
+
+palomar_qualification:
+  status: "prepared_local_only"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "ExternalVerification257LiteralWeightedCover/comparator.json"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "not_run_for_this_entry"
+  submission_authorization: "not_authorised_no_submission_prepared"
+  blockers:
+    - "no Comparator or NanoDa run has been recorded on a supported runner"
+    - "no Palomar submission; no git commit/push this turn"
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11J72", "11A25"]
+
+sources:
+  - title: "Literal weighted-cover separation"
+    authors: ["Will Cook"]
+    type: "original-proof"
+    relationship: "other"
+    note: >-
+      Source theorems exists_weighted_not_strengthened_host and
+      exists_weighted_obstruction_with_mixed_heredity in
+      ErdosProblems/Erdos257/PaperCompleteR8/AnalyticSeparationReturn.lean.
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+
+status:
+  scope: "Two compared existence theorems for a weighted obstruction host."
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 2
+  sorry_boundary: "The only deliberate placeholders are the two trusted theorem bodies in Challenge.lean."
+  axiom_audit_status: "local_print_axioms_propext_choice_quot"
+  permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification257LiteralWeightedCover.exists_weighted_not_strengthened_host"
+      file: "Solutions/ExternalVerification257LiteralWeightedCover.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification257LiteralWeightedCover/comparator.json"
+      canonical_claim_status: "source_backed_exact_transport"
+    - declaration: "Erdos249257.ExternalVerification257LiteralWeightedCover.exists_weighted_obstruction_with_mixed_heredity"
+      file: "Solutions/ExternalVerification257LiteralWeightedCover.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification257LiteralWeightedCover/comparator.json"
+      canonical_claim_status: "source_backed_exact_transport"
+
+review:
+  status: "self-assessed"
+  reviewers: []

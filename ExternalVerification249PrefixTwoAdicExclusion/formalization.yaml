@@ -1,0 +1,101 @@
+version: v0.4
+project:
+  name: 'Erdős #249: prefix 2-adic totient-prefix denominator exclusion'
+  description: A 2-adic valuation of the totient prefix integer excludes a rectangle
+    of candidate denominators 2^c v, with corollaries under the canonical tail bound
+    R_n ≤ n+2. Finite exclusion only; the binary totient series is not proved irrational.
+  authors: [Will Cook]
+  license: Apache-2.0
+  responsible_maintainers: [Will Cook]
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - 11A25
+  - 11J72
+sources:
+- title: Prefix 2-adic valuation exclusion for Erdős Problem 249
+  location: ErdosProblems/Erdos249/PrefixValuationAndControlRigidity.lean
+  declaration: ErdosProblems.Erdos249.prefix_twoAdic_denominator_exclusion
+  relationship: other
+  license: Apache-2.0
+  author_endorsement: participated
+- title: 'Erdős Problem #249'
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com/249
+  type: web discussion
+  relationship: background
+  license: unknown
+  author_endorsement: not-contacted
+automation:
+  methods:
+  - method: agent
+    tool_setup: Independent Mathlib-only challenge; direct transport of audited source endpoints.
+review:
+  status: unchecked
+  reviewers: []
+  notes: Source declarations exist on the public cut; wrapper compile, axiom audit, and Comparator replay remain pending.
+status:
+  scope: Eight source-backed prefix and exclusion declarations; no irrationality claim.
+  novelty_status: unassessed
+  canonical_claim_status: source_reconciled_wrapper_pending_focused_check
+  local_proof_provenance: ErdosProblems/Erdos249/PrefixValuationAndControlRigidity.lean
+  sorry_count: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 6
+  axiom_audit_status: pending_source_and_focused_lean_checks
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: Erdos249257.ExternalVerification249PrefixTwoAdicExclusion.prefix_twoAdic_denominator_exclusion
+    file: Solutions/ExternalVerification249PrefixTwoAdicExclusion.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PrefixTwoAdicExclusion/comparator.json
+    canonical_claim_status: source_reconciled_wrapper_pending_focused_check
+    local_proof_provenance: ErdosProblems.Erdos249.prefix_twoAdic_denominator_exclusion
+    novelty_status: unassessed
+    boundary: Finite exclusion only; does not solve Erdős 249.
+palomar_qualification:
+  status: prepared_local_only
+  replay_status: not_run_for_this_entry
+  submission_authorization: operator_approval_required_for_exact_public_commit
+  blockers: [lakefile.toml registration pending integrating agent, Wrapper build and axiom audit pending, Supported-runner Comparator replay pending]
+alignment:
+  namespace: Erdos249257.ExternalVerification249PrefixTwoAdicExclusion
+  statements:
+  - source: ErdosProblems.Erdos249.totientPrefix
+    lean: Erdos249257.ExternalVerification249PrefixTwoAdicExclusion.totientPrefix
+    module: ExternalVerification249PrefixTwoAdicExclusion/Challenge.lean
+    status: exact-transport-pending-check
+  - source: ErdosProblems.Erdos249.totientPrefix_succ
+    lean: Erdos249257.ExternalVerification249PrefixTwoAdicExclusion.totientPrefix_succ
+    module: ExternalVerification249PrefixTwoAdicExclusion/Challenge.lean
+    status: exact-transport-pending-check
+  - source: ErdosProblems.Erdos249.totientPrefix_eq_corpusForm
+    lean: Erdos249257.ExternalVerification249PrefixTwoAdicExclusion.totientPrefix_eq_corpusForm
+    module: ExternalVerification249PrefixTwoAdicExclusion/Challenge.lean
+    status: exact-transport-pending-check
+  - source: ErdosProblems.Erdos249.prefixTail
+    lean: Erdos249257.ExternalVerification249PrefixTwoAdicExclusion.prefixTail
+    module: ExternalVerification249PrefixTwoAdicExclusion/Challenge.lean
+    status: exact-transport-pending-check
+  - source: ErdosProblems.Erdos249.oddPart_mul_prefixTail_eq_intCast
+    lean: Erdos249257.ExternalVerification249PrefixTwoAdicExclusion.oddPart_mul_prefixTail_eq_intCast
+    module: ExternalVerification249PrefixTwoAdicExclusion/Challenge.lean
+    status: exact-transport-pending-check
+  - source: ErdosProblems.Erdos249.prefix_twoAdic_denominator_exclusion
+    lean: Erdos249257.ExternalVerification249PrefixTwoAdicExclusion.prefix_twoAdic_denominator_exclusion
+    module: ExternalVerification249PrefixTwoAdicExclusion/Challenge.lean
+    status: exact-transport-pending-check
+  - source: ErdosProblems.Erdos249.prefix_twoAdic_denominator_lower_bound
+    lean: Erdos249257.ExternalVerification249PrefixTwoAdicExclusion.prefix_twoAdic_denominator_lower_bound
+    module: ExternalVerification249PrefixTwoAdicExclusion/Challenge.lean
+    status: exact-transport-pending-check
+  - source: ErdosProblems.Erdos249.prefix_twoAdic_odd_denominator_floor
+    lean: Erdos249257.ExternalVerification249PrefixTwoAdicExclusion.prefix_twoAdic_odd_denominator_floor
+    module: ExternalVerification249PrefixTwoAdicExclusion/Challenge.lean
+    status: exact-transport-pending-check
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

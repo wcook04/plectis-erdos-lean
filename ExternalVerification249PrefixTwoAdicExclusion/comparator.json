@@ -1,0 +1,20 @@
+{
+  "challenge_module": "ExternalVerification249PrefixTwoAdicExclusion.Challenge",
+  "solution_module": "Solutions.ExternalVerification249PrefixTwoAdicExclusion",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249PrefixTwoAdicExclusion.totientPrefix",
+    "Erdos249257.ExternalVerification249PrefixTwoAdicExclusion.totientPrefix_succ",
+    "Erdos249257.ExternalVerification249PrefixTwoAdicExclusion.totientPrefix_eq_corpusForm",
+    "Erdos249257.ExternalVerification249PrefixTwoAdicExclusion.prefixTail",
+    "Erdos249257.ExternalVerification249PrefixTwoAdicExclusion.oddPart_mul_prefixTail_eq_intCast",
+    "Erdos249257.ExternalVerification249PrefixTwoAdicExclusion.prefix_twoAdic_denominator_exclusion",
+    "Erdos249257.ExternalVerification249PrefixTwoAdicExclusion.prefix_twoAdic_denominator_lower_bound",
+    "Erdos249257.ExternalVerification249PrefixTwoAdicExclusion.prefix_twoAdic_odd_denominator_floor"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

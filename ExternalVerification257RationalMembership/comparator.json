@@ -1,0 +1,16 @@
+{
+  "challenge_module": "ExternalVerification257RationalMembership.Challenge",
+  "solution_module": "Solutions.ExternalVerification257RationalMembership",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257RationalMembership.greedyMersenneSkippedSupport_infinite_iff_cofinal_skips",
+    "Erdos249257.ExternalVerification257RationalMembership.infinite_greedyMersenneSkippedSupport_of_rat_mem",
+    "Erdos249257.ExternalVerification257RationalMembership.rat_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite",
+    "Erdos249257.ExternalVerification257RationalMembership.rat_mem_mersenneAchievementSet_iff_cofinal_greedy_skips"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

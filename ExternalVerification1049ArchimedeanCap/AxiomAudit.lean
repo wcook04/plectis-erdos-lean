@@ -1,0 +1,4 @@
+import Solutions.ExternalVerification1049ArchimedeanCap
+#print axioms Erdos249257.ExternalVerification1049ArchimedeanCap.archimedean_cap
+
+#print axioms Erdos249257.ExternalVerification1049ArchimedeanCap.cleared_below_square_not_tendsto_zero

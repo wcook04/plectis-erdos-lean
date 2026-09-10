@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ExternalVerification68KempnerIndex.Challenge",
+  "solution_module": "Solutions.ExternalVerification68KempnerIndex",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification68KempnerIndex.rational_denominator_not_dvd_pred_factorial_of_nonunit_carry",
+    "Erdos249257.ExternalVerification68KempnerIndex.rational_denominator_not_dvd_fiftynine_factorial"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

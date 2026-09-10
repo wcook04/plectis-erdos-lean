@@ -1,0 +1,16 @@
+{
+  "challenge_module": "ExternalVerification68MomentIdeal.Challenge",
+  "solution_module": "Solutions.ExternalVerification68MomentIdeal",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification68MomentIdeal.attainable_moment_ideal",
+    "Erdos249257.ExternalVerification68MomentIdeal.exact_moment_ideal_with_primitive_attainment",
+    "Erdos249257.ExternalVerification68MomentIdeal.minimum_moment_content_one",
+    "Erdos249257.ExternalVerification68MomentIdeal.minimumMoment_independent_prime"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

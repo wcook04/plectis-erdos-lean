@@ -1,0 +1,15 @@
+{
+  "challenge_module": "ExternalVerification243SummableNegativeMassRigidity.Challenge",
+  "solution_module": "Solutions.ExternalVerification243SummableNegativeMassRigidity",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification243SummableNegativeMassRigidity.summableNegativeMass_completeRigidity",
+    "Erdos249257.ExternalVerification243SummableNegativeMassRigidity.finite_negative_mass_scalar",
+    "Erdos249257.ExternalVerification243SummableNegativeMassRigidity.canonical_finite_negative_mass"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

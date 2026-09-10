@@ -6,22 +6,20 @@ Authors: Will Cook
 import Mathlib
 
 /-!
-# Trusted challenge for the Erdős #1049 height-region placement at base `31 / 4`
+# Trusted challenge for the Erdős #1049 height-region placement at base `3 / 2`
 
 This Mathlib-only interface fixes two parameter regions for a reduced rational
-base `a / b` and places `31 / 4` against both.
+base `a / b` and places `3 / 2` against both.
 
 `BundschuhVaananenHeightRegion` is the elementary parameter inequality
 `log b / log a < 1/2 - 1/π²` appearing in the published Bundschuh--Väänänen
 criterion.  `ZudilinHeightRegion` is the inequality `log b / log a < 81/200`.
 The second threshold is defined here; it is not a published criterion.
 
-Two placements are stated.  The exact integer certificate `4^200 < 31^81` puts
-`log 4 / log 31` below `81/200`, and the height ratio is invariant under a
-common positive power, so every base `31^r / 4^r` with `r ≥ 1` satisfies the
-same threshold.  The certificate `31² < 4⁵` puts `log 4 / log 31` above `2/5`,
-and `1/2 - 1/π² < 2/5`, so `31 / 4` lies outside the Bundschuh--Väänänen
-region.
+The exact integer obstruction `3^81 < 2^200` puts `log 2 / log 3` strictly
+above `81/200`, so `3 / 2` lies outside `ZudilinHeightRegion`.  The published
+Bundschuh--Väänänen margin is smaller than that threshold, so `3 / 2` also
+lies outside `BundschuhVaananenHeightRegion`.
 
 Every statement here is an inequality between explicit parameters.  Membership
 in a region is applicability of a method and not an irrationality theorem;
@@ -43,24 +41,28 @@ def BundschuhVaananenHeightRegion (a b : ℕ) : Prop :=
 def ZudilinHeightRegion (a b : ℕ) : Prop :=
   Real.log b / Real.log a < (81 : ℝ) / 200
 
-/-- The exact integer comparison behind the `31 / 4` parameter certificate. -/
-theorem thirtyoneFour_power_certificate : 4 ^ 200 < 31 ^ 81 := by
+/-- The exact integer comparison placing `3 / 2` beyond the `81 / 200`
+threshold defined above. -/
+theorem threeHalves_zudilin_power_obstruction :
+    3 ^ 81 < 2 ^ 200 := by
   sorry
 
-/-- The logarithmic height ratio is invariant under a common positive power. -/
-theorem zudilinHeightRegion_pow (a b r : ℕ) (hr : 0 < r)
-    (h : ZudilinHeightRegion a b) :
-    ZudilinHeightRegion (a ^ r) (b ^ r) := by
+/-- The height ratio of `3 / 2` is strictly larger than `81 / 200`. -/
+theorem eightyOneTwoHundredths_lt_threeHalves_log_ratio :
+    (81 : ℝ) / 200 < Real.log 2 / Real.log 3 := by
   sorry
 
-/-- Every positive power of `31 / 4` satisfies the `81 / 200` threshold. -/
-theorem thirtyoneFour_power_mem_zudilinHeightRegion (r : ℕ) (hr : 0 < r) :
-    ZudilinHeightRegion (31 ^ r) (4 ^ r) := by
+/-- The height region defined above does not contain `3 / 2`.  This is a
+method boundary, not a rationality or irrationality theorem for the
+corresponding Lambert value. -/
+theorem threeHalves_outside_zudilinHeightRegion :
+    ¬ ZudilinHeightRegion 3 2 := by
   sorry
 
-/-- The base `31 / 4` lies outside the Bundschuh--Väänänen height region. -/
-theorem thirtyoneFour_outside_bundschuhVaananenHeightRegion :
-    ¬ BundschuhVaananenHeightRegion 31 4 := by
+/-- The Bundschuh--Väänänen height region also does not contain `3 / 2`; its
+margin is smaller than the threshold already crossed above. -/
+theorem threeHalves_outside_bundschuhVaananenHeightRegion :
+    ¬ BundschuhVaananenHeightRegion 3 2 := by
   sorry
 
 end Erdos249257.ExternalVerification1049PublishedHeightRegions

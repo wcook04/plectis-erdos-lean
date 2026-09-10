@@ -1,0 +1,35 @@
+version: v0.4
+project:
+  name: Fair coding of the base-two Mersenne achievement set
+  description: Fair infinite product measure on binary digit strings is pushed forward by the positive-index Mersenne coding map onto Lebesgue measure restricted to the achievement set; the same map is measure-preserving; the preimage of the rationals is null.
+  authors: [Will Cook]
+  license: Apache-2.0
+  responsible_maintainers: [Will Cook]
+sources:
+- title: Fair coding of the actual Mersenne achievement set
+  location: ErdosProblems/Erdos257/PaperGeometryCompletion/FairCoding.lean
+  declaration: ErdosProblems.Erdos257.PaperGeometryCompletion.fairCoding_pushforward_eq_volume_restrict
+  relationship: other
+- title: Erdős Problem #257
+  authors: [Thomas F. Bloom]
+  id: https://www.erdosproblems.com/257
+  type: web discussion
+  relationship: background
+automation:
+  methods:
+  - method: agent
+    tool_setup: Independent Mathlib-only challenge; direct projection of audited source endpoints. Wrapper compile pending.
+review:
+  status: unchecked
+  reviewers: []
+  notes: Source module is present on the public cut; wrapper has not yet compiled or run Comparator.
+status:
+  scope: Three fair-coding identities; no irrationality or universal #257 settlement.
+  novelty_status: unassessed
+  canonical_claim_status: source present; wrapper compile pending
+  trusted_challenge_sorry_count: 3
+palomar_qualification:
+  status: prepared_local_only
+  replay_status: not_run_for_this_entry
+  submission_authorization: operator_approval_required_for_exact_public_commit
+  blockers: [lakefile.toml registration remains for the integrating agent, Wrapper build and axiom audit pending, Supported-runner Comparator replay pending]

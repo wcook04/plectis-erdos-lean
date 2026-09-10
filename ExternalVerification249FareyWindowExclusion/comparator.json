@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ExternalVerification249FareyWindowExclusion.Challenge",
+  "solution_module": "Solutions.ExternalVerification249FareyWindowExclusion",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249FareyWindowExclusion.tsum_totient_div_pow_two_ne_int_div_of_den_le_79639646646701375323355774875831053",
+    "Erdos249257.ExternalVerification249FareyWindowExclusion.tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

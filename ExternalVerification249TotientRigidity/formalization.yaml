@@ -1,0 +1,100 @@
+version: v0.4
+project:
+  name: 'Erdős #249: totient rigidity theorems'
+  description: One exact prime law plus an o(n) error forces g = φ. Exact even doubling
+    identities plus eventual congruence modulo every integer also force g = φ. Rigidity
+    no-gos only; the binary totient series is not proved irrational.
+  authors: [Will Cook]
+  license: Apache-2.0
+  responsible_maintainers: [Will Cook]
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - 11A25
+sources:
+- title: Totient rigidity theorems for Erdős Problem 249
+  location: ErdosProblems/Erdos249/PrefixValuationAndControlRigidity.lean
+  declaration: ErdosProblems.Erdos249.one_prime_law_and_little_o_forces_totient
+  relationship: other
+  license: Apache-2.0
+  author_endorsement: participated
+- title: 'Erdős Problem #249'
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com/249
+  type: web discussion
+  relationship: background
+  license: unknown
+  author_endorsement: not-contacted
+automation:
+  methods:
+  - method: agent
+    tool_setup: Independent Mathlib-only challenge; direct transport of audited source endpoints.
+review:
+  status: unchecked
+  reviewers: []
+  notes: Source declarations exist on the public cut; wrapper compile, axiom audit, and Comparator replay remain pending.
+status:
+  scope: Six source-backed rigidity declarations; no irrationality claim.
+  novelty_status: unassessed
+  canonical_claim_status: source_reconciled_wrapper_pending_focused_check
+  local_proof_provenance: ErdosProblems/Erdos249/PrefixValuationAndControlRigidity.lean
+  sorry_count: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 6
+  axiom_audit_status: pending_source_and_focused_lean_checks
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: Erdos249257.ExternalVerification249TotientRigidity.one_prime_law_and_little_o_forces_totient
+    file: Solutions/ExternalVerification249TotientRigidity.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249TotientRigidity/comparator.json
+    canonical_claim_status: source_reconciled_wrapper_pending_focused_check
+    local_proof_provenance: ErdosProblems.Erdos249.one_prime_law_and_little_o_forces_totient
+    novelty_status: unassessed
+    boundary: Rigidity no-go; does not solve Erdős 249.
+  - declaration: Erdos249257.ExternalVerification249TotientRigidity.even_law_and_eventual_congruence_forces_totient
+    file: Solutions/ExternalVerification249TotientRigidity.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249TotientRigidity/comparator.json
+    canonical_claim_status: source_reconciled_wrapper_pending_focused_check
+    local_proof_provenance: ErdosProblems.Erdos249.even_law_and_eventual_congruence_forces_totient
+    novelty_status: unassessed
+    boundary: Rigidity no-go; does not solve Erdős 249.
+palomar_qualification:
+  status: prepared_local_only
+  replay_status: not_run_for_this_entry
+  submission_authorization: operator_approval_required_for_exact_public_commit
+  blockers: [lakefile.toml registration pending integrating agent, Wrapper build and axiom audit pending, Supported-runner Comparator replay pending]
+alignment:
+  namespace: Erdos249257.ExternalVerification249TotientRigidity
+  statements:
+  - source: ErdosProblems.Erdos249.one_prime_law_and_little_o_forces_totient
+    lean: Erdos249257.ExternalVerification249TotientRigidity.one_prime_law_and_little_o_forces_totient
+    module: ExternalVerification249TotientRigidity/Challenge.lean
+    status: exact-transport-pending-check
+  - source: ErdosProblems.Erdos249.totient_prime_mul_of_dvd
+    lean: Erdos249257.ExternalVerification249TotientRigidity.totient_prime_mul_of_dvd
+    module: ExternalVerification249TotientRigidity/Challenge.lean
+    status: exact-transport-pending-check
+  - source: ErdosProblems.Erdos249.totient_prime_mul_of_not_dvd
+    lean: Erdos249257.ExternalVerification249TotientRigidity.totient_prime_mul_of_not_dvd
+    module: ExternalVerification249TotientRigidity/Challenge.lean
+    status: exact-transport-pending-check
+  - source: ErdosProblems.Erdos249.even_law_and_eventual_congruence_forces_totient
+    lean: Erdos249257.ExternalVerification249TotientRigidity.even_law_and_eventual_congruence_forces_totient
+    module: ExternalVerification249TotientRigidity/Challenge.lean
+    status: exact-transport-pending-check
+  - source: ErdosProblems.Erdos249.totient_two_mul_of_odd
+    lean: Erdos249257.ExternalVerification249TotientRigidity.totient_two_mul_of_odd
+    module: ExternalVerification249TotientRigidity/Challenge.lean
+    status: exact-transport-pending-check
+  - source: ErdosProblems.Erdos249.totient_two_mul_of_even
+    lean: Erdos249257.ExternalVerification249TotientRigidity.totient_two_mul_of_even
+    module: ExternalVerification249TotientRigidity/Challenge.lean
+    status: exact-transport-pending-check
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

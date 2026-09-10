@@ -1,0 +1,29 @@
+version: v0.4
+project:
+  name: Published height-region placement of 3/2
+  description: The base 3/2 lies outside both the 81/200 height threshold and the published Bundschuh--Väänänen height region, via the integer obstruction 3^81 < 2^200.
+  authors: [Will Cook]
+  license: Apache-2.0
+  responsible_maintainers: [Will Cook]
+sources:
+- title: Elementary height-region certificates
+  location: ErdosProblems/Erdos1049/ZudilinHeightRegion.lean
+  declaration: ErdosProblems.Erdos1049.threeHalves_outside_zudilinHeightRegion
+  relationship: other
+automation:
+  methods:
+  - method: agent
+    tool_setup: Independent Mathlib-only challenge; direct projection of audited source endpoints. Wrapper compile pending.
+review:
+  status: unchecked
+  reviewers: []
+  notes: Source endpoints compiled; wrapper has not yet compiled or run Comparator.
+status:
+  scope: Four elementary 3/2 placements; no irrationality or internalized analytic theorem.
+  novelty_status: unassessed
+  canonical_claim_status: source audited; wrapper compile pending
+palomar_qualification:
+  status: prepared_local_only
+  replay_status: not_run_for_this_entry
+  submission_authorization: operator_approval_required_for_exact_public_commit
+  blockers: [Wrapper build and axiom audit pending, Supported-runner Comparator replay pending]

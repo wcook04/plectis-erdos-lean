@@ -195,6 +195,186 @@ name = "ExternalVerification249TotientKernelBasis"
 globs = ["ExternalVerification249TotientKernelBasis.+"]
 
 [[lean_lib]]
+name = "ExternalVerification1049BezoutPluckerJets"
+globs = ["ExternalVerification1049BezoutPluckerJets.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249ActualLcmOrbit"
+globs = ["ExternalVerification249ActualLcmOrbit.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249CanonicalMersenneFrontier"
+globs = ["ExternalVerification249CanonicalMersenneFrontier.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249CarryRankFrontier"
+globs = ["ExternalVerification249CarryRankFrontier.+"]
+
+[[lean_lib]]
+name = "ExternalVerification251LcmDiagonalCriterion"
+globs = ["ExternalVerification251LcmDiagonalCriterion.+"]
+
+[[lean_lib]]
+name = "ExternalVerification269AllScaleLattice"
+globs = ["ExternalVerification269AllScaleLattice.+"]
+
+[[lean_lib]]
+name = "ExternalVerification68StrictSuccessorCarry"
+globs = ["ExternalVerification68StrictSuccessorCarry.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1041CubicPath"
+globs = ["ExternalVerification1041CubicPath.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1049ArchimedeanCap"
+globs = ["ExternalVerification1049ArchimedeanCap.+"]
+
+[[lean_lib]]
+name = "ExternalVerification243RepairEntropy"
+globs = ["ExternalVerification243RepairEntropy.+"]
+
+[[lean_lib]]
+name = "ExternalVerification243SummableNegativeMassRigidity"
+globs = ["ExternalVerification243SummableNegativeMassRigidity.+"]
+
+[[lean_lib]]
+name = "ExternalVerification243WeightedRecordExcess"
+globs = ["ExternalVerification243WeightedRecordExcess.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249FullDepthRayAmplifier"
+globs = ["ExternalVerification249FullDepthRayAmplifier.+"]
+
+[[lean_lib]]
+name = "ExternalVerification251AffineCircularity"
+globs = ["ExternalVerification251AffineCircularity.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257ActualUpperSuccessor"
+globs = ["ExternalVerification257ActualUpperSuccessor.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257BooleanMobiusCarry"
+globs = ["ExternalVerification257BooleanMobiusCarry.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257PositiveSkipEquivalence"
+globs = ["ExternalVerification257PositiveSkipEquivalence.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257ScaledGreedyTrap"
+globs = ["ExternalVerification257ScaledGreedyTrap.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257TerminalScaledVanishing"
+globs = ["ExternalVerification257TerminalScaledVanishing.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257TwentyOneFatalBranch"
+globs = ["ExternalVerification257TwentyOneFatalBranch.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257GeneralRepairCriterion"
+globs = ["ExternalVerification257GeneralRepairCriterion.+"]
+
+[[lean_lib]]
+name = "ExternalVerification269CarryMechanism"
+globs = ["ExternalVerification269CarryMechanism.+"]
+
+[[lean_lib]]
+name = "ExternalVerification269IntegralBranchPinning"
+globs = ["ExternalVerification269IntegralBranchPinning.+"]
+
+[[lean_lib]]
+name = "ExternalVerification68AdjacentUnitCarryWindow"
+globs = ["ExternalVerification68AdjacentUnitCarryWindow.+"]
+
+[[lean_lib]]
+name = "ExternalVerification68FiniteDenominator"
+globs = ["ExternalVerification68FiniteDenominator.+"]
+
+[[lean_lib]]
+name = "ExternalVerification68MovingFactorScaleSplit"
+globs = ["ExternalVerification68MovingFactorScaleSplit.+"]
+
+[[lean_lib]]
+name = "ExternalVerification68PrimePole"
+globs = ["ExternalVerification68PrimePole.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257FairCoding"
+globs = ["ExternalVerification257FairCoding.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257RationalMembership"
+globs = ["ExternalVerification257RationalMembership.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257DyadicObservationSummability"
+globs = ["ExternalVerification257DyadicObservationSummability.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1049PublishedHeightRegions"
+globs = ["ExternalVerification1049PublishedHeightRegions.+"]
+
+[[lean_lib]]
+name = "ExternalVerification243PrimitiveRecordRigidity"
+globs = ["ExternalVerification243PrimitiveRecordRigidity.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249FareyWindowExclusion"
+globs = ["ExternalVerification249FareyWindowExclusion.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249PrefixTwoAdicExclusion"
+globs = ["ExternalVerification249PrefixTwoAdicExclusion.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249TermwiseDyadicVacuous"
+globs = ["ExternalVerification249TermwiseDyadicVacuous.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249TotientRigidity"
+globs = ["ExternalVerification249TotientRigidity.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257DivisibilityWeightedSupport"
+globs = ["ExternalVerification257DivisibilityWeightedSupport.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257FourNinthsRepairWindows"
+globs = ["ExternalVerification257FourNinthsRepairWindows.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257LiteralWeightedCover"
+globs = ["ExternalVerification257LiteralWeightedCover.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257MixedWeightedCover"
+globs = ["ExternalVerification257MixedWeightedCover.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257VariableExponentCover"
+globs = ["ExternalVerification257VariableExponentCover.+"]
+
+[[lean_lib]]
+name = "ExternalVerification68KempnerIndex"
+globs = ["ExternalVerification68KempnerIndex.+"]
+
+[[lean_lib]]
+name = "ExternalVerification68MomentIdeal"
+globs = ["ExternalVerification68MomentIdeal.+"]
+
+[[lean_lib]]
+name = "ExternalVerification68MultiplicativeSuccessorRigidity"
+globs = ["ExternalVerification68MultiplicativeSuccessorRigidity.+"]
+
+[[lean_lib]]
+name = "ExternalVerification68ResidualIntegerClass"
+globs = ["ExternalVerification68ResidualIntegerClass.+"]
+
+[[lean_lib]]
 name = "PalomarCorpus"
 globs = ["PalomarCorpus.+"]
 
