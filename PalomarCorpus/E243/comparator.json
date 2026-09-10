@@ -1,0 +1,38 @@
+{
+  "challenge_module": "PalomarCorpus.E243.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E243",
+  "theorem_names": [
+    "PalomarCorpus.E243.BoundedNegativePartRigidity.boundedNegativePart_completeRigidity",
+    "PalomarCorpus.E243.BoundedRiseReducedTail.no_boundedRise_reducedTail",
+    "PalomarCorpus.E243.PeriodicNegativeOrbit.no_eventuallyPeriodicNegative_orbit",
+    "PalomarCorpus.E243.PeriodicNegativeOrbit.no_periodicNegative_orbit",
+    "PalomarCorpus.E243.PeriodicNegativeOrbit.no_phasePrimitivePeriodicNegative_orbit",
+    "PalomarCorpus.E243.PrimitiveRecordRigidity.centeredZero_forces_unit",
+    "PalomarCorpus.E243.PrimitiveRecordRigidity.exists_oddMultiple_trapHeight",
+    "PalomarCorpus.E243.PrimitiveRecordRigidity.numerator_bounded_of_oddPrimePower",
+    "PalomarCorpus.E243.PrimitiveRecordRigidity.odd_record_cut",
+    "PalomarCorpus.E243.PrimitiveRecordRigidity.primitive_valuation_no_drop",
+    "PalomarCorpus.E243.PrimitiveRecordRigidity.protectedPrimePower_persists",
+    "PalomarCorpus.E243.PrimitiveRecordRigidity.recordRiseTwo_sylvesterNext_eventually",
+    "PalomarCorpus.E243.PrimitiveRecordRigidity.sylvesterStep_of_centeredZero_pair",
+    "PalomarCorpus.E243.ProtectedEpochEnergy.protected_epoch_energy_integer",
+    "PalomarCorpus.E243.RecordIncrementBarrier.recordIncrementOne_sylvesterNext_eventually",
+    "PalomarCorpus.E243.RepairEntropy.eventually_recoveryPayment_eq_one_of_fixedLength",
+    "PalomarCorpus.E243.RepairEntropy.repairedFamily_recovery_energy_divisionFree",
+    "PalomarCorpus.E243.RepairEntropy.repaired_card_bound_of_independent",
+    "PalomarCorpus.E243.SaturatedSquareTransport.legendre_defect_forces_nonsquare_content",
+    "PalomarCorpus.E243.SaturatedSquareTransport.saturated_square_transport_raw",
+    "PalomarCorpus.E243.SlowRiseBarrier.no_slowRise_reducedTail",
+    "PalomarCorpus.E243.SummableNegativeMassRigidity.canonical_finite_negative_mass",
+    "PalomarCorpus.E243.SummableNegativeMassRigidity.finite_negative_mass_scalar",
+    "PalomarCorpus.E243.SummableNegativeMassRigidity.summableNegativeMass_completeRigidity",
+    "PalomarCorpus.E243.WeightedRecordExcess.weighted_growth_record_excess",
+    "PalomarCorpus.E243.WeightedRecordExcess.weighted_record_excess"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

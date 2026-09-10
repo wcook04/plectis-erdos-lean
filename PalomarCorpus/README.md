@@ -1,494 +1,981 @@
 # Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
 
-One Palomar publication interface. Family `ExternalVerification*` modules remain
-internal regression inventory. Parent Erdős problems remain open.
+Eight Palomar publication configurations at one repository and commit:
+`PalomarCorpus/E68`, `E243`, `E249`, `E251`, `E257`, `E269`, `E1041`, and `E1049`.
+Family `ExternalVerification*` modules remain internal regression inventory.
+Parent Erdős problems remain open. The superseded flat `PalomarCorpus/comparator.json`
+is not a publication entry.
 
 ## Selected Comparator theorems
 
-157 independently restated theorems across 38 families.
+309 independently restated theorems across 83 families, partitioned by problem.
 
 ### ExternalVerification1041CriticalGeometry
 
-- `PalomarCorpus.ExternalVerification1041CriticalGeometry.allStraightCubic_every_pair_midpoint_escapes`
-- `PalomarCorpus.ExternalVerification1041CriticalGeometry.allStraightCubic_roots`
-- `PalomarCorpus.ExternalVerification1041CriticalGeometry.allStraightCubic_roots_in_unitDisk`
-- `PalomarCorpus.ExternalVerification1041CriticalGeometry.criticalDiskInverseBalance_twoRootProximity`
-- `PalomarCorpus.ExternalVerification1041CriticalGeometry.criticalDiskInverseBalance_twoRootProximity_strict`
-- `PalomarCorpus.ExternalVerification1041CriticalGeometry.criticalGeometricMean_twoRootProximity`
-- `PalomarCorpus.ExternalVerification1041CriticalGeometry.nearestSpoke_reciprocal_balance`
-- `PalomarCorpus.ExternalVerification1041CriticalGeometry.nearestSpoke_unique_nearest_normSq`
-- `PalomarCorpus.ExternalVerification1041CriticalGeometry.nearestSpoke_unique_nearest_spoke_escapes`
+- `PalomarCorpus.E1041.CriticalGeometry.allStraightCubic_every_pair_midpoint_escapes`
+- `PalomarCorpus.E1041.CriticalGeometry.allStraightCubic_roots`
+- `PalomarCorpus.E1041.CriticalGeometry.allStraightCubic_roots_in_unitDisk`
+- `PalomarCorpus.E1041.CriticalGeometry.criticalDiskInverseBalance_twoRootProximity`
+- `PalomarCorpus.E1041.CriticalGeometry.criticalDiskInverseBalance_twoRootProximity_strict`
+- `PalomarCorpus.E1041.CriticalGeometry.criticalGeometricMean_twoRootProximity`
+- `PalomarCorpus.E1041.CriticalGeometry.nearestSpoke_reciprocal_balance`
+- `PalomarCorpus.E1041.CriticalGeometry.nearestSpoke_unique_nearest_normSq`
+- `PalomarCorpus.E1041.CriticalGeometry.nearestSpoke_unique_nearest_spoke_escapes`
+
+### ExternalVerification1041CubicPath
+
+- `PalomarCorpus.E1041.CubicPath.cubic_paper_complete`
+- `PalomarCorpus.E1041.CubicPath.monic_cubic_connector`
 
 ### ExternalVerification1041CyclicTrinomialFiber
 
-- `PalomarCorpus.ExternalVerification1041CyclicTrinomialFiber.cyclicTrinomial_two_short_fiber_displacements`
-- `PalomarCorpus.ExternalVerification1041CyclicTrinomialFiber.trinomialRoot_spoke_factorization`
-- `PalomarCorpus.ExternalVerification1041CyclicTrinomialFiber.trinomialRoot_spoke_norm_le_constant`
-- `PalomarCorpus.ExternalVerification1041CyclicTrinomialFiber.trinomialRoot_spoke_norm_lt_one`
-- `PalomarCorpus.ExternalVerification1041CyclicTrinomialFiber.trinomialRoot_spoke_norm_lt_one_of_norm_lt_one`
+- `PalomarCorpus.E1041.CyclicTrinomialFiber.cyclicTrinomial_two_short_fiber_displacements`
+- `PalomarCorpus.E1041.CyclicTrinomialFiber.trinomialRoot_spoke_factorization`
+- `PalomarCorpus.E1041.CyclicTrinomialFiber.trinomialRoot_spoke_norm_le_constant`
+- `PalomarCorpus.E1041.CyclicTrinomialFiber.trinomialRoot_spoke_norm_lt_one`
+- `PalomarCorpus.E1041.CyclicTrinomialFiber.trinomialRoot_spoke_norm_lt_one_of_norm_lt_one`
 
 ### ExternalVerification1041FirstMergeCriticalValueSeparation
 
-- `PalomarCorpus.ExternalVerification1041FirstMergeCriticalValueSeparation.firstMerge_exact_convenient_thresholds`
-- `PalomarCorpus.ExternalVerification1041FirstMergeCriticalValueSeparation.firstMerge_length_lt_two_of_squared_bound`
+- `PalomarCorpus.E1041.FirstMergeCriticalValueSeparation.firstMerge_exact_convenient_thresholds`
+- `PalomarCorpus.E1041.FirstMergeCriticalValueSeparation.firstMerge_length_lt_two_of_squared_bound`
 
 ### ExternalVerification1041QuarticQuotientFiber
 
-- `PalomarCorpus.ExternalVerification1041QuarticQuotientFiber.rootLift_axis_integral`
-- `PalomarCorpus.ExternalVerification1041QuarticQuotientFiber.rootLift_endpoint_budget_lt_two`
-- `PalomarCorpus.ExternalVerification1041QuarticQuotientFiber.rootLift_kernel_le_axis`
-- `PalomarCorpus.ExternalVerification1041QuarticQuotientFiber.rootLift_length_lt_two_of_le_endpoint_budget`
+- `PalomarCorpus.E1041.QuarticQuotientFiber.rootLift_axis_integral`
+- `PalomarCorpus.E1041.QuarticQuotientFiber.rootLift_endpoint_budget_lt_two`
+- `PalomarCorpus.E1041.QuarticQuotientFiber.rootLift_kernel_le_axis`
+- `PalomarCorpus.E1041.QuarticQuotientFiber.rootLift_length_lt_two_of_le_endpoint_budget`
 
 ### ExternalVerification1041SolvedFamilies
 
-- `PalomarCorpus.ExternalVerification1041SolvedFamilies.SharpCollinear.existsPeakLeComparisonBound`
-- `PalomarCorpus.ExternalVerification1041SolvedFamilies.cubic_safeRootSpoke`
-- `PalomarCorpus.ExternalVerification1041SolvedFamilies.primitiveQuintic_twoStrictTailEnergies`
+- `PalomarCorpus.E1041.SolvedFamilies.SharpCollinear.existsPeakLeComparisonBound`
+- `PalomarCorpus.E1041.SolvedFamilies.cubic_safeRootSpoke`
+- `PalomarCorpus.E1041.SolvedFamilies.primitiveQuintic_twoStrictTailEnergies`
 
 ### ExternalVerification1041TetranomialSpokes
 
-- `PalomarCorpus.ExternalVerification1041TetranomialSpokes.exists_two_tails_norm_lt_one_of_exact_L2_budget`
-- `PalomarCorpus.ExternalVerification1041TetranomialSpokes.exists_two_tetranomialRoot_safeSpokes_of_moment_coeff_budget`
-- `PalomarCorpus.ExternalVerification1041TetranomialSpokes.sum_normSq_const_add_mul`
-- `PalomarCorpus.ExternalVerification1041TetranomialSpokes.tetranomialRoot_spoke_factorization`
-- `PalomarCorpus.ExternalVerification1041TetranomialSpokes.tetranomialRoot_spoke_norm_lt_one_of_lowCoeffBudget`
-- `PalomarCorpus.ExternalVerification1041TetranomialSpokes.tetranomialRoot_spoke_norm_lt_one_of_rootBudget`
+- `PalomarCorpus.E1041.TetranomialSpokes.exists_two_tails_norm_lt_one_of_exact_L2_budget`
+- `PalomarCorpus.E1041.TetranomialSpokes.exists_two_tetranomialRoot_safeSpokes_of_moment_coeff_budget`
+- `PalomarCorpus.E1041.TetranomialSpokes.sum_normSq_const_add_mul`
+- `PalomarCorpus.E1041.TetranomialSpokes.tetranomialRoot_spoke_factorization`
+- `PalomarCorpus.E1041.TetranomialSpokes.tetranomialRoot_spoke_norm_lt_one_of_lowCoeffBudget`
+- `PalomarCorpus.E1041.TetranomialSpokes.tetranomialRoot_spoke_norm_lt_one_of_rootBudget`
 
 ### ExternalVerification1049AdelicHeightBridge
 
-- `PalomarCorpus.ExternalVerification1049AdelicHeightBridge.exists_distinct_binary_selectors_same_fourJet_of_power_certificate`
-- `PalomarCorpus.ExternalVerification1049AdelicHeightBridge.exists_distinct_binary_selectors_same_fourJet_of_rank_41`
-- `PalomarCorpus.ExternalVerification1049AdelicHeightBridge.exists_ne_map_eq_map_ne_of_card_mul_lt`
-- `PalomarCorpus.ExternalVerification1049AdelicHeightBridge.fourJet_card_gt_two_pow_of_rank_41`
-- `PalomarCorpus.ExternalVerification1049AdelicHeightBridge.threeHalves_hankelChargeThreshold_lt_eightFortyOne`
-- `PalomarCorpus.ExternalVerification1049AdelicHeightBridge.threeHalves_rectangular_hp_gap_gt_threeThirteenths`
-- `PalomarCorpus.ExternalVerification1049AdelicHeightBridge.threePow_fortyOne_lt_twoPow_sixtyFive`
-- `PalomarCorpus.ExternalVerification1049AdelicHeightBridge.three_two_scalar_margin_lt_explicit`
-- `PalomarCorpus.ExternalVerification1049AdelicHeightBridge.twoPow_sixtyFour_lt_threePow_fortyOne`
-- `PalomarCorpus.ExternalVerification1049AdelicHeightBridge.zudilinScalarContent_cannot_meet_required_charge`
-- `PalomarCorpus.ExternalVerification1049AdelicHeightBridge.zudilinScalarPlusBorder_cannot_meet_required_charge`
-- `PalomarCorpus.ExternalVerification1049AdelicHeightBridge.zudilinSharpHankelOrderAndCoeff_algebraicAssembly`
-- `PalomarCorpus.ExternalVerification1049AdelicHeightBridge.zudilin_firstTransformedRow_initialMonomial`
+- `PalomarCorpus.E1049.AdelicHeightBridge.exists_distinct_binary_selectors_same_fourJet_of_power_certificate`
+- `PalomarCorpus.E1049.AdelicHeightBridge.exists_distinct_binary_selectors_same_fourJet_of_rank_41`
+- `PalomarCorpus.E1049.AdelicHeightBridge.exists_ne_map_eq_map_ne_of_card_mul_lt`
+- `PalomarCorpus.E1049.AdelicHeightBridge.fourJet_card_gt_two_pow_of_rank_41`
+- `PalomarCorpus.E1049.AdelicHeightBridge.threeHalves_hankelChargeThreshold_lt_eightFortyOne`
+- `PalomarCorpus.E1049.AdelicHeightBridge.threeHalves_rectangular_hp_gap_gt_threeThirteenths`
+- `PalomarCorpus.E1049.AdelicHeightBridge.threePow_fortyOne_lt_twoPow_sixtyFive`
+- `PalomarCorpus.E1049.AdelicHeightBridge.three_two_scalar_margin_lt_explicit`
+- `PalomarCorpus.E1049.AdelicHeightBridge.twoPow_sixtyFour_lt_threePow_fortyOne`
+- `PalomarCorpus.E1049.AdelicHeightBridge.zudilinScalarContent_cannot_meet_required_charge`
+- `PalomarCorpus.E1049.AdelicHeightBridge.zudilinScalarPlusBorder_cannot_meet_required_charge`
+- `PalomarCorpus.E1049.AdelicHeightBridge.zudilinSharpHankelOrderAndCoeff_algebraicAssembly`
+- `PalomarCorpus.E1049.AdelicHeightBridge.zudilin_firstTransformedRow_initialMonomial`
+
+### ExternalVerification1049ArchimedeanCap
+
+- `PalomarCorpus.E1049.ArchimedeanCap.archimedean_cap`
+- `PalomarCorpus.E1049.ArchimedeanCap.cleared_below_square_not_tendsto_zero`
+
+### ExternalVerification1049BezoutPluckerJets
+
+- `PalomarCorpus.E1049.BezoutPluckerJets.adjacent_det_zero_forces_all_det_zero`
+- `PalomarCorpus.E1049.BezoutPluckerJets.anchor_det_zero_forces_all_det_zero`
+- `PalomarCorpus.E1049.BezoutPluckerJets.binary_row_collision_of_anchor_det_zero`
+- `PalomarCorpus.E1049.BezoutPluckerJets.zmod_binary_tail_collision_of_two_three_depth`
 
 ### ExternalVerification1049HermitePadeNoGo
 
-- `PalomarCorpus.ExternalVerification1049HermitePadeNoGo.hpClearedGap_eq_zero_iff`
-- `PalomarCorpus.ExternalVerification1049HermitePadeNoGo.hpClearedGap_expansion`
-- `PalomarCorpus.ExternalVerification1049HermitePadeNoGo.hpClearedGap_nonpos`
-- `PalomarCorpus.ExternalVerification1049HermitePadeNoGo.rectangular_hp_threshold_eq_classical_iff`
-- `PalomarCorpus.ExternalVerification1049HermitePadeNoGo.rectangular_hp_threshold_le_classical`
+- `PalomarCorpus.E1049.HermitePadeNoGo.hpClearedGap_eq_zero_iff`
+- `PalomarCorpus.E1049.HermitePadeNoGo.hpClearedGap_expansion`
+- `PalomarCorpus.E1049.HermitePadeNoGo.hpClearedGap_nonpos`
+- `PalomarCorpus.E1049.HermitePadeNoGo.rectangular_hp_threshold_eq_classical_iff`
+- `PalomarCorpus.E1049.HermitePadeNoGo.rectangular_hp_threshold_le_classical`
 
 ### ExternalVerification1049PrimeSupportSelectors
 
-- `PalomarCorpus.ExternalVerification1049PrimeSupportSelectors.integerLinearForm_rationalGap`
-- `PalomarCorpus.ExternalVerification1049PrimeSupportSelectors.primePowerSupportedOneRow_rationalGap`
-- `PalomarCorpus.ExternalVerification1049PrimeSupportSelectors.primeSupportedOneRow_rationalGap`
-- `PalomarCorpus.ExternalVerification1049PrimeSupportSelectors.primeSupportedTwoSelector_rationalGap`
-- `PalomarCorpus.ExternalVerification1049PrimeSupportSelectors.rationalTwoSelector_notBothTendstoZero`
-- `PalomarCorpus.ExternalVerification1049PrimeSupportSelectors.twoSelector_detHeightDecay_tradeoff`
-- `PalomarCorpus.ExternalVerification1049PrimeSupportSelectors.twoSelector_rationalGap`
-- `PalomarCorpus.ExternalVerification1049PrimeSupportSelectors.twoSelector_unimodularHeightDecay_tradeoff`
-- `PalomarCorpus.ExternalVerification1049PrimeSupportSelectors.zeroDenominatorCoordinates_binaryCollision`
+- `PalomarCorpus.E1049.PrimeSupportSelectors.integerLinearForm_rationalGap`
+- `PalomarCorpus.E1049.PrimeSupportSelectors.primePowerSupportedOneRow_rationalGap`
+- `PalomarCorpus.E1049.PrimeSupportSelectors.primeSupportedOneRow_rationalGap`
+- `PalomarCorpus.E1049.PrimeSupportSelectors.primeSupportedTwoSelector_rationalGap`
+- `PalomarCorpus.E1049.PrimeSupportSelectors.rationalTwoSelector_notBothTendstoZero`
+- `PalomarCorpus.E1049.PrimeSupportSelectors.twoSelector_detHeightDecay_tradeoff`
+- `PalomarCorpus.E1049.PrimeSupportSelectors.twoSelector_rationalGap`
+- `PalomarCorpus.E1049.PrimeSupportSelectors.twoSelector_unimodularHeightDecay_tradeoff`
+- `PalomarCorpus.E1049.PrimeSupportSelectors.zeroDenominatorCoordinates_binaryCollision`
+
+### ExternalVerification1049PublishedHeightRegions
+
+- `PalomarCorpus.E1049.PublishedHeightRegions.eightyOneTwoHundredths_lt_threeHalves_log_ratio`
+- `PalomarCorpus.E1049.PublishedHeightRegions.threeHalves_outside_bundschuhVaananenHeightRegion`
+- `PalomarCorpus.E1049.PublishedHeightRegions.threeHalves_outside_zudilinHeightRegion`
+- `PalomarCorpus.E1049.PublishedHeightRegions.threeHalves_zudilin_power_obstruction`
 
 ### ExternalVerification1049RationalBaseBarrier
 
-- `PalomarCorpus.ExternalVerification1049RationalBaseBarrier.rationalBaseClearedTailQ_succ`
-- `PalomarCorpus.ExternalVerification1049RationalBaseBarrier.threeHalves_no_coordinatewiseCorridor`
-- `PalomarCorpus.ExternalVerification1049RationalBaseBarrier.twoPow_le_rationalBaseForcingNat`
+- `PalomarCorpus.E1049.RationalBaseBarrier.rationalBaseClearedTailQ_succ`
+- `PalomarCorpus.E1049.RationalBaseBarrier.threeHalves_no_coordinatewiseCorridor`
+- `PalomarCorpus.E1049.RationalBaseBarrier.twoPow_le_rationalBaseForcingNat`
 
 ### ExternalVerification243BoundedNegativePartRigidity
 
-- `PalomarCorpus.ExternalVerification243BoundedNegativePartRigidity.boundedNegativePart_completeRigidity`
+- `PalomarCorpus.E243.BoundedNegativePartRigidity.boundedNegativePart_completeRigidity`
 
 ### ExternalVerification243BoundedRiseReducedTail
 
-- `PalomarCorpus.ExternalVerification243BoundedRiseReducedTail.no_boundedRise_reducedTail`
+- `PalomarCorpus.E243.BoundedRiseReducedTail.no_boundedRise_reducedTail`
 
 ### ExternalVerification243PeriodicNegativeOrbit
 
-- `PalomarCorpus.ExternalVerification243PeriodicNegativeOrbit.no_eventuallyPeriodicNegative_orbit`
-- `PalomarCorpus.ExternalVerification243PeriodicNegativeOrbit.no_periodicNegative_orbit`
-- `PalomarCorpus.ExternalVerification243PeriodicNegativeOrbit.no_phasePrimitivePeriodicNegative_orbit`
+- `PalomarCorpus.E243.PeriodicNegativeOrbit.no_eventuallyPeriodicNegative_orbit`
+- `PalomarCorpus.E243.PeriodicNegativeOrbit.no_periodicNegative_orbit`
+- `PalomarCorpus.E243.PeriodicNegativeOrbit.no_phasePrimitivePeriodicNegative_orbit`
+
+### ExternalVerification243PrimitiveRecordRigidity
+
+- `PalomarCorpus.E243.PrimitiveRecordRigidity.centeredZero_forces_unit`
+- `PalomarCorpus.E243.PrimitiveRecordRigidity.exists_oddMultiple_trapHeight`
+- `PalomarCorpus.E243.PrimitiveRecordRigidity.numerator_bounded_of_oddPrimePower`
+- `PalomarCorpus.E243.PrimitiveRecordRigidity.odd_record_cut`
+- `PalomarCorpus.E243.PrimitiveRecordRigidity.primitive_valuation_no_drop`
+- `PalomarCorpus.E243.PrimitiveRecordRigidity.protectedPrimePower_persists`
+- `PalomarCorpus.E243.PrimitiveRecordRigidity.recordRiseTwo_sylvesterNext_eventually`
+- `PalomarCorpus.E243.PrimitiveRecordRigidity.sylvesterStep_of_centeredZero_pair`
 
 ### ExternalVerification243ProtectedEpochEnergy
 
-- `PalomarCorpus.ExternalVerification243ProtectedEpochEnergy.protected_epoch_energy_integer`
+- `PalomarCorpus.E243.ProtectedEpochEnergy.protected_epoch_energy_integer`
 
 ### ExternalVerification243RecordIncrementBarrier
 
-- `PalomarCorpus.ExternalVerification243RecordIncrementBarrier.recordIncrementOne_sylvesterNext_eventually`
+- `PalomarCorpus.E243.RecordIncrementBarrier.recordIncrementOne_sylvesterNext_eventually`
+
+### ExternalVerification243RepairEntropy
+
+- `PalomarCorpus.E243.RepairEntropy.eventually_recoveryPayment_eq_one_of_fixedLength`
+- `PalomarCorpus.E243.RepairEntropy.repairedFamily_recovery_energy_divisionFree`
+- `PalomarCorpus.E243.RepairEntropy.repaired_card_bound_of_independent`
 
 ### ExternalVerification243SaturatedSquareTransport
 
-- `PalomarCorpus.ExternalVerification243SaturatedSquareTransport.legendre_defect_forces_nonsquare_content`
-- `PalomarCorpus.ExternalVerification243SaturatedSquareTransport.saturated_square_transport_raw`
+- `PalomarCorpus.E243.SaturatedSquareTransport.legendre_defect_forces_nonsquare_content`
+- `PalomarCorpus.E243.SaturatedSquareTransport.saturated_square_transport_raw`
 
 ### ExternalVerification243SlowRiseBarrier
 
-- `PalomarCorpus.ExternalVerification243SlowRiseBarrier.no_slowRise_reducedTail`
+- `PalomarCorpus.E243.SlowRiseBarrier.no_slowRise_reducedTail`
+
+### ExternalVerification243SummableNegativeMassRigidity
+
+- `PalomarCorpus.E243.SummableNegativeMassRigidity.canonical_finite_negative_mass`
+- `PalomarCorpus.E243.SummableNegativeMassRigidity.finite_negative_mass_scalar`
+- `PalomarCorpus.E243.SummableNegativeMassRigidity.summableNegativeMass_completeRigidity`
+
+### ExternalVerification243WeightedRecordExcess
+
+- `PalomarCorpus.E243.WeightedRecordExcess.weighted_growth_record_excess`
+- `PalomarCorpus.E243.WeightedRecordExcess.weighted_record_excess`
+
+### ExternalVerification249ActualLcmOrbit
+
+- `PalomarCorpus.E249.ActualLcmOrbit.actualLcmTailOrbit_eq_scaled_totientSeries_sub_prefix`
+- `PalomarCorpus.E249.ActualLcmOrbit.irrational_totientSeries_iff_actualLcmOrbitNonintegralitySupply`
 
 ### ExternalVerification249BinaryCyclotomicAnchors
 
-- `PalomarCorpus.ExternalVerification249BinaryCyclotomicAnchors.binaryCyclotomicAnchoredKillSupply_iff_irrational`
-- `PalomarCorpus.ExternalVerification249BinaryCyclotomicAnchors.binaryCyclotomicLayer_unboundedPrimeDivisorSupply`
-- `PalomarCorpus.ExternalVerification249BinaryCyclotomicAnchors.exists_clean_binaryCyclotomicAnchor`
-- `PalomarCorpus.ExternalVerification249BinaryCyclotomicAnchors.exists_unbounded_binaryCyclotomicSupport_with_periodLock_of_not_irrational`
+- `PalomarCorpus.E249.BinaryCyclotomicAnchors.binaryCyclotomicAnchoredKillSupply_iff_irrational`
+- `PalomarCorpus.E249.BinaryCyclotomicAnchors.binaryCyclotomicLayer_unboundedPrimeDivisorSupply`
+- `PalomarCorpus.E249.BinaryCyclotomicAnchors.exists_clean_binaryCyclotomicAnchor`
+- `PalomarCorpus.E249.BinaryCyclotomicAnchors.exists_unbounded_binaryCyclotomicSupport_with_periodLock_of_not_irrational`
+
+### ExternalVerification249CanonicalMersenneFrontier
+
+- `PalomarCorpus.E249.CanonicalMersenneFrontier.fullMersenneBlockResidue_succ`
+- `PalomarCorpus.E249.CanonicalMersenneFrontier.fullMersenneCanonicalBasepointResidueGapSupply_iff_irrational`
+- `PalomarCorpus.E249.CanonicalMersenneFrontier.fullMersenneCenteredResidueGapSupply_of_canonicalBasepoint`
+
+### ExternalVerification249CarryRankFrontier
+
+- `PalomarCorpus.E249.CarryRankFrontier.carryShift_dvd_iff_tailDiff_mem_int`
+- `PalomarCorpus.E249.CarryRankFrontier.finrank_canonicalCarryKernel_ge_of_certificate`
+- `PalomarCorpus.E249.CarryRankFrontier.not_irrational_binaryCoeffSeries_iff_exists_temperedBinaryOrbit`
+- `PalomarCorpus.E249.CarryRankFrontier.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank`
+- `PalomarCorpus.E249.CarryRankFrontier.not_irrational_totientSeries_implies_unbounded_carryRank_unconditional`
+- `PalomarCorpus.E249.CarryRankFrontier.totient_carryKernel_diff`
 
 ### ExternalVerification249DyadicTotientKernel
 
-- `PalomarCorpus.ExternalVerification249DyadicTotientKernel.dyadicTotientKernelOddCoreBasisAndFiniteRanks`
+- `PalomarCorpus.E249.DyadicTotientKernel.dyadicTotientKernelOddCoreBasisAndFiniteRanks`
+
+### ExternalVerification249FareyWindowExclusion
+
+- `PalomarCorpus.E249.FareyWindowExclusion.farey_int_exclusion`
+- `PalomarCorpus.E249.FareyWindowExclusion.farey_rat_exclusion`
+
+### ExternalVerification249FullDepthRayAmplifier
+
+- `PalomarCorpus.E249.FullDepthRayAmplifier.apFullDepthEscape_iff_irrational`
+- `PalomarCorpus.E249.FullDepthRayAmplifier.cofinalFullDepthKillSupply_iff_irrational`
+- `PalomarCorpus.E249.FullDepthRayAmplifier.cofinalFullDepthKillSupply_iff_periodMultipleKillSupply`
+- `PalomarCorpus.E249.FullDepthRayAmplifier.eventually_twoSyndetic_fullDepthKillMultipliers_of_seed`
+- `PalomarCorpus.E249.FullDepthRayAmplifier.exists_fullDepthKill_on_ray_iff_shift_notMem_int`
 
 ### ExternalVerification249MobiusMersenneLadderStructure
 
-- `PalomarCorpus.ExternalVerification249MobiusMersenneLadderStructure.mobiusMersenneTheta_hankel_two_neg`
-- `PalomarCorpus.ExternalVerification249MobiusMersenneLadderStructure.mobiusMersenneTheta_strict_logConcave`
+- `PalomarCorpus.E249.MobiusMersenneLadderStructure.mobiusMersenneTheta_hankel_two_neg`
+- `PalomarCorpus.E249.MobiusMersenneLadderStructure.mobiusMersenneTheta_strict_logConcave`
+
+### ExternalVerification249PrefixTwoAdicExclusion
+
+- `PalomarCorpus.E249.PrefixTwoAdicExclusion.oddPart_mul_prefixTail_eq_intCast`
+- `PalomarCorpus.E249.PrefixTwoAdicExclusion.prefix_twoAdic_denominator_exclusion`
+- `PalomarCorpus.E249.PrefixTwoAdicExclusion.prefix_twoAdic_denominator_lower_bound`
+- `PalomarCorpus.E249.PrefixTwoAdicExclusion.prefix_twoAdic_odd_denominator_floor`
+- `PalomarCorpus.E249.PrefixTwoAdicExclusion.totientPrefix_eq_corpusForm`
+- `PalomarCorpus.E249.PrefixTwoAdicExclusion.totientPrefix_succ`
 
 ### ExternalVerification249RankOneSharpFloor
 
-- `PalomarCorpus.ExternalVerification249RankOneSharpFloor.not_forall_rankOneSubrankQuotient_sub_theta_two_gt_one_div_fifteen`
-- `PalomarCorpus.ExternalVerification249RankOneSharpFloor.positive_direct_sum_sub_theta_two_gt_twentyOne_div_threeTwenty`
-- `PalomarCorpus.ExternalVerification249RankOneSharpFloor.primitive_form_abs_gt_twentyOne_div_threeTwenty`
-- `PalomarCorpus.ExternalVerification249RankOneSharpFloor.rankOneSubrankQuotient_eq_one_five_iff`
-- `PalomarCorpus.ExternalVerification249RankOneSharpFloor.rankOneSubrankQuotient_ge_one_five`
-- `PalomarCorpus.ExternalVerification249RankOneSharpFloor.rankOneSubrankQuotient_sub_theta_two_gt_one_div_sixteen`
-- `PalomarCorpus.ExternalVerification249RankOneSharpFloor.rankOneSubrankQuotient_sub_theta_two_gt_twentyOne_div_threeTwenty`
+- `PalomarCorpus.E249.RankOneSharpFloor.not_forall_rankOneSubrankQuotient_sub_theta_two_gt_one_div_fifteen`
+- `PalomarCorpus.E249.RankOneSharpFloor.positive_direct_sum_sub_theta_two_gt_twentyOne_div_threeTwenty`
+- `PalomarCorpus.E249.RankOneSharpFloor.primitive_form_abs_gt_twentyOne_div_threeTwenty`
+- `PalomarCorpus.E249.RankOneSharpFloor.rankOneSubrankQuotient_eq_one_five_iff`
+- `PalomarCorpus.E249.RankOneSharpFloor.rankOneSubrankQuotient_ge_one_five`
+- `PalomarCorpus.E249.RankOneSharpFloor.rankOneSubrankQuotient_sub_theta_two_gt_one_div_sixteen`
+- `PalomarCorpus.E249.RankOneSharpFloor.rankOneSubrankQuotient_sub_theta_two_gt_twentyOne_div_threeTwenty`
 
 ### ExternalVerification249ResidueClassTotientSeries
 
-- `PalomarCorpus.ExternalVerification249ResidueClassTotientSeries.fixed_resolution_observable_irrational`
-- `PalomarCorpus.ExternalVerification249ResidueClassTotientSeries.irrational_dyadicValue_of_pulses`
-- `PalomarCorpus.ExternalVerification249ResidueClassTotientSeries.irrational_totientObservable`
-- `PalomarCorpus.ExternalVerification249ResidueClassTotientSeries.isolated_pulse_separation`
-- `PalomarCorpus.ExternalVerification249ResidueClassTotientSeries.residue_series_irrational`
-- `PalomarCorpus.ExternalVerification249ResidueClassTotientSeries.two_sided_prime_isolation`
+- `PalomarCorpus.E249.ResidueClassTotientSeries.fixed_resolution_observable_irrational`
+- `PalomarCorpus.E249.ResidueClassTotientSeries.irrational_dyadicValue_of_pulses`
+- `PalomarCorpus.E249.ResidueClassTotientSeries.irrational_totientObservable`
+- `PalomarCorpus.E249.ResidueClassTotientSeries.isolated_pulse_separation`
+- `PalomarCorpus.E249.ResidueClassTotientSeries.residue_series_irrational`
+- `PalomarCorpus.E249.ResidueClassTotientSeries.two_sided_prime_isolation`
+
+### ExternalVerification249TermwiseDyadicVacuous
+
+- `PalomarCorpus.E249.TermwiseDyadicVacuous.termwise_dyadic_window_vacuous`
 
 ### ExternalVerification249TotientKernelBasis
 
-- `PalomarCorpus.ExternalVerification249TotientKernelBasis.allBaseTotientKernelBasisRankAndRelationDimension`
-- `PalomarCorpus.ExternalVerification249TotientKernelBasis.allSlopeAffineTotientFormsLinearIndependent`
+- `PalomarCorpus.E249.TotientKernelBasis.allBaseTotientKernelBasisRankAndRelationDimension`
+- `PalomarCorpus.E249.TotientKernelBasis.allSlopeAffineTotientFormsLinearIndependent`
+
+### ExternalVerification249TotientRigidity
+
+- `PalomarCorpus.E249.TotientRigidity.even_law_and_eventual_congruence_forces_totient`
+- `PalomarCorpus.E249.TotientRigidity.one_prime_law_and_little_o_forces_totient`
+- `PalomarCorpus.E249.TotientRigidity.totient_prime_mul_of_dvd`
+- `PalomarCorpus.E249.TotientRigidity.totient_prime_mul_of_not_dvd`
+- `PalomarCorpus.E249.TotientRigidity.totient_two_mul_of_even`
+- `PalomarCorpus.E249.TotientRigidity.totient_two_mul_of_odd`
 
 ### ExternalVerification251ActualPrimeGapTail
 
-- `PalomarCorpus.ExternalVerification251ActualPrimeGapTail.exists_rationalPrimeGapTailState_representation_of_not_irrational`
-- `PalomarCorpus.ExternalVerification251ActualPrimeGapTail.rationalPrimeGapTailShift_eventuallyIntegral`
-- `PalomarCorpus.ExternalVerification251ActualPrimeGapTail.rationalPrimeGapTailState_recurrence`
-- `PalomarCorpus.ExternalVerification251ActualPrimeGapTail.rationalPrimeGapTail_has_positive_shift_not_eventually_small`
+- `PalomarCorpus.E251.ActualPrimeGapTail.exists_rationalPrimeGapTailState_representation_of_not_irrational`
+- `PalomarCorpus.E251.ActualPrimeGapTail.rationalPrimeGapTailShift_eventuallyIntegral`
+- `PalomarCorpus.E251.ActualPrimeGapTail.rationalPrimeGapTailState_recurrence`
+- `PalomarCorpus.E251.ActualPrimeGapTail.rationalPrimeGapTail_has_positive_shift_not_eventually_small`
+
+### ExternalVerification251AffineCircularity
+
+- `PalomarCorpus.E251.AffineCircularity.adjacent_small_mismatch_iff_signed_two_window`
+- `PalomarCorpus.E251.AffineCircularity.cofinal_affinePowTwo_escape_iff_not_eventuallyIntegral`
+- `PalomarCorpus.E251.AffineCircularity.cofinal_blockResidue_escape_iff_not_eventuallyIntegral`
 
 ### ExternalVerification251FreePairEquivalence
 
-- `PalomarCorpus.ExternalVerification251FreePairEquivalence.cofinalFreePairNonintegral_iff_cofinalNonintegralTailShifts`
-- `PalomarCorpus.ExternalVerification251FreePairEquivalence.exists_free_pair_lattice`
-- `PalomarCorpus.ExternalVerification251FreePairEquivalence.free_pair_integral_iff_modEq`
-- `PalomarCorpus.ExternalVerification251FreePairEquivalence.irrational_initial_iff_cofinalFreePairNonintegral`
-- `PalomarCorpus.ExternalVerification251FreePairEquivalence.irrational_primeGap_tsum_iff_cofinalFreePairNonintegral`
-- `PalomarCorpus.ExternalVerification251FreePairEquivalence.primeGapRealTail_recurrence`
-- `PalomarCorpus.ExternalVerification251FreePairEquivalence.primeGapRealTail_zero`
+- `PalomarCorpus.E251.FreePairEquivalence.cofinalFreePairNonintegral_iff_cofinalNonintegralTailShifts`
+- `PalomarCorpus.E251.FreePairEquivalence.exists_free_pair_lattice`
+- `PalomarCorpus.E251.FreePairEquivalence.free_pair_integral_iff_modEq`
+- `PalomarCorpus.E251.FreePairEquivalence.irrational_initial_iff_cofinalFreePairNonintegral`
+- `PalomarCorpus.E251.FreePairEquivalence.irrational_primeGap_tsum_iff_cofinalFreePairNonintegral`
+- `PalomarCorpus.E251.FreePairEquivalence.primeGapRealTail_recurrence`
+- `PalomarCorpus.E251.FreePairEquivalence.primeGapRealTail_zero`
 
 ### ExternalVerification251KernelDenominatorFloor
 
-- `PalomarCorpus.ExternalVerification251KernelDenominatorFloor.cert_10000`
-- `PalomarCorpus.ExternalVerification251KernelDenominatorFloor.den_bound_of_certCheck`
-- `PalomarCorpus.ExternalVerification251KernelDenominatorFloor.kernel_denominator_floor`
-- `PalomarCorpus.ExternalVerification251KernelDenominatorFloor.kernel_denominator_floor_primeGap`
+- `PalomarCorpus.E251.KernelDenominatorFloor.cert_10000`
+- `PalomarCorpus.E251.KernelDenominatorFloor.den_bound_of_certCheck`
+- `PalomarCorpus.E251.KernelDenominatorFloor.kernel_denominator_floor`
+- `PalomarCorpus.E251.KernelDenominatorFloor.kernel_denominator_floor_primeGap`
+
+### ExternalVerification251LcmDiagonalCriterion
+
+- `PalomarCorpus.E251.LcmDiagonalCriterion.irrationalInitial_iff_allLcmDiagonal_nonintegral`
+- `PalomarCorpus.E251.LcmDiagonalCriterion.irrationalInitial_iff_cofinalNonintegralTailShifts`
+- `PalomarCorpus.E251.LcmDiagonalCriterion.irrationalInitial_iff_nonintegral_on_schedule`
+- `PalomarCorpus.E251.LcmDiagonalCriterion.notIrrationalInitial_iff_exists_integral_positive_tailShift`
+- `PalomarCorpus.E251.LcmDiagonalCriterion.tailShiftIntegral_iff_orderOf_dvd`
 
 ### ExternalVerification251PolynomialShiftCountermodel
 
-- `PalomarCorpus.ExternalVerification251PolynomialShiftCountermodel.polynomialGapTailCountermodel`
+- `PalomarCorpus.E251.PolynomialShiftCountermodel.polynomialGapTailCountermodel`
 
 ### ExternalVerification251PrimeGapIdentity
 
-- `PalomarCorpus.ExternalVerification251PrimeGapIdentity.prime0_le_polynomial`
-- `PalomarCorpus.ExternalVerification251PrimeGapIdentity.primeDisplayedSeries_eq_four_add_two_primeGapSeries`
-- `PalomarCorpus.ExternalVerification251PrimeGapIdentity.primeDisplayedSeries_irrational_iff_primeGapSeries`
-- `PalomarCorpus.ExternalVerification251PrimeGapIdentity.primeGapSeries_summable`
-- `PalomarCorpus.ExternalVerification251PrimeGapIdentity.primeSeries_eq_two_add_primeGapSeries`
-- `PalomarCorpus.ExternalVerification251PrimeGapIdentity.primeSeries_irrational_iff_primeGapSeries`
-- `PalomarCorpus.ExternalVerification251PrimeGapIdentity.primeSeries_summable`
+- `PalomarCorpus.E251.PrimeGapIdentity.prime0_le_polynomial`
+- `PalomarCorpus.E251.PrimeGapIdentity.primeDisplayedSeries_eq_four_add_two_primeGapSeries`
+- `PalomarCorpus.E251.PrimeGapIdentity.primeDisplayedSeries_irrational_iff_primeGapSeries`
+- `PalomarCorpus.E251.PrimeGapIdentity.primeGapSeries_summable`
+- `PalomarCorpus.E251.PrimeGapIdentity.primeSeries_eq_two_add_primeGapSeries`
+- `PalomarCorpus.E251.PrimeGapIdentity.primeSeries_irrational_iff_primeGapSeries`
+- `PalomarCorpus.E251.PrimeGapIdentity.primeSeries_summable`
 
 ### ExternalVerification257AchievementSetGeometry
 
-- `PalomarCorpus.ExternalVerification257AchievementSetGeometry.supportedMersenneAchievementSet_geometry_and_volume`
-- `PalomarCorpus.ExternalVerification257AchievementSetGeometry.volume_supportedMersenneAchievementSet_eq_zero_of_rat_value`
+- `PalomarCorpus.E257.AchievementSetGeometry.supportedMersenneAchievementSet_geometry_and_volume`
+- `PalomarCorpus.E257.AchievementSetGeometry.volume_supportedMersenneAchievementSet_eq_zero_of_rat_value`
+
+### ExternalVerification257ActualUpperSuccessor
+
+- `PalomarCorpus.E257.ActualUpperSuccessor.actualUpperRightPacketLinearEscape_iff_successorLinearEscape`
+- `PalomarCorpus.E257.ActualUpperSuccessor.actualUpperSuccessorLinearEscape_completeCounterexample`
+
+### ExternalVerification257BooleanMobiusCarry
+
+- `PalomarCorpus.E257.BooleanMobiusCarry.BooleanMobiusCarryCertificate.reconstructsSupport`
+- `PalomarCorpus.E257.BooleanMobiusCarry.exists_booleanMobiusCarry_of_support_fraction`
+- `PalomarCorpus.E257.BooleanMobiusCarry.exists_normalized_support_fraction_iff_exists_booleanMobiusCarry`
+- `PalomarCorpus.E257.BooleanMobiusCarry.support_fraction_of_booleanMobiusCarry`
+
+### ExternalVerification257DivisibilityWeightedSupport
+
+- `PalomarCorpus.E257.DivisibilityWeightedSupport.divisibilityWeightedClaim`
+
+### ExternalVerification257DyadicObservationSummability
+
+- `PalomarCorpus.E257.DyadicObservationSummability.dyadic_supportObservationMass_sum_le`
+- `PalomarCorpus.E257.DyadicObservationSummability.summable_dyadic_supportObservationMass`
+- `PalomarCorpus.E257.DyadicObservationSummability.tendsto_dyadic_supportObservationMass_mean`
+
+### ExternalVerification257FairCoding
+
+- `PalomarCorpus.E257.FairCoding.fairCoding_pushforward_eq_volume_restrict`
+- `PalomarCorpus.E257.FairCoding.fairCoding_rational_values_null`
+- `PalomarCorpus.E257.FairCoding.measurePreserving_fairCoding`
 
 ### ExternalVerification257FinitePeriodNoncollapse
 
-- `PalomarCorpus.ExternalVerification257FinitePeriodNoncollapse.finite_period_noncollapse_rat_den`
-- `PalomarCorpus.ExternalVerification257FinitePeriodNoncollapse.lcm_lt_den_finiteErdosSum`
+- `PalomarCorpus.E257.FinitePeriodNoncollapse.finite_period_noncollapse_rat_den`
+- `PalomarCorpus.E257.FinitePeriodNoncollapse.lcm_lt_den_finiteErdosSum`
+
+### ExternalVerification257FourNinthsRepairWindows
+
+- `PalomarCorpus.E257.FourNinthsRepairWindows.exists_repair_in_sqrt_window`
+- `PalomarCorpus.E257.FourNinthsRepairWindows.four_ninths_mem_iff_repairCofinal`
+- `PalomarCorpus.E257.FourNinthsRepairWindows.four_ninths_mem_iff_repair_sqrt_windows`
+- `PalomarCorpus.E257.FourNinthsRepairWindows.four_ninths_not_mem_of_strict_sqrt_window`
+
+### ExternalVerification257GeneralRepairCriterion
+
+- `PalomarCorpus.E257.GeneralRepairCriterion.mem_iff_greedyBinaryDefect_cofinal_repairs`
+- `PalomarCorpus.E257.GeneralRepairCriterion.mem_iff_greedyBinaryDefect_sqrt_windows`
+
+### ExternalVerification257LiteralWeightedCover
+
+- `PalomarCorpus.E257.LiteralWeightedCover.exists_weighted_not_strengthened_host`
+- `PalomarCorpus.E257.LiteralWeightedCover.exists_weighted_obstruction_with_mixed_heredity`
+
+### ExternalVerification257MixedWeightedCover
+
+- `PalomarCorpus.E257.MixedWeightedCover.mixedSupportClaim`
+
+### ExternalVerification257PositiveSkipEquivalence
+
+- `PalomarCorpus.E257.PositiveSkipEquivalence.cofinalPositiveHalfGreedySkips_iff_half_mem`
+- `PalomarCorpus.E257.PositiveSkipEquivalence.greedyMersenneRemainderRat_half_pos`
+
+### ExternalVerification257RationalMembership
+
+- `PalomarCorpus.E257.RationalMembership.greedyMersenneSkippedSupport_infinite_iff_cofinal_skips`
+- `PalomarCorpus.E257.RationalMembership.infinite_greedyMersenneSkippedSupport_of_rat_mem`
+- `PalomarCorpus.E257.RationalMembership.rat_mem_mersenneAchievementSet_iff_cofinal_greedy_skips`
+- `PalomarCorpus.E257.RationalMembership.rat_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite`
 
 ### ExternalVerification257RationalTailRigidity
 
-- `PalomarCorpus.ExternalVerification257RationalTailRigidity.dyadic_support_fraction_reciprocalMass_diverges_or_gt_one`
-- `PalomarCorpus.ExternalVerification257RationalTailRigidity.exists_unbounded_shifted_odd_tail_nat_state_of_support_fraction`
-- `PalomarCorpus.ExternalVerification257RationalTailRigidity.one_div_oddOrder_le_reciprocalMass_of_support_fraction`
-- `PalomarCorpus.ExternalVerification257RationalTailRigidity.supportCoeffZeroWindow_length_le_eps_logb_add`
+- `PalomarCorpus.E257.RationalTailRigidity.dyadic_support_fraction_reciprocalMass_diverges_or_gt_one`
+- `PalomarCorpus.E257.RationalTailRigidity.exists_unbounded_shifted_odd_tail_nat_state_of_support_fraction`
+- `PalomarCorpus.E257.RationalTailRigidity.one_div_oddOrder_le_reciprocalMass_of_support_fraction`
+- `PalomarCorpus.E257.RationalTailRigidity.supportCoeffZeroWindow_length_le_eps_logb_add`
 
 ### ExternalVerification257ReciprocalSupport
 
-- `PalomarCorpus.ExternalVerification257ReciprocalSupport.irrational_supportPowerSeries_of_summable_reciprocal`
+- `PalomarCorpus.E257.ReciprocalSupport.irrational_supportPowerSeries_of_summable_reciprocal`
+
+### ExternalVerification257ScaledGreedyTrap
+
+- `PalomarCorpus.E257.ScaledGreedyTrap.mem_mersenneAchievementSet_iff_scaledRemainder_cofinallyBounded`
+- `PalomarCorpus.E257.ScaledGreedyTrap.mersenneAchievementSet_eq_scaledGreedyTrap`
+- `PalomarCorpus.E257.ScaledGreedyTrap.one_div_twentyOne_mem_iff_scaledLowerBranchCofinally`
+- `PalomarCorpus.E257.ScaledGreedyTrap.one_div_twentyOne_mem_iff_scaledRemainder_cofinallyBounded`
+- `PalomarCorpus.E257.ScaledGreedyTrap.rat_mem_mersenneAchievementSet_iff_scaledLowerBranchCofinally`
+- `PalomarCorpus.E257.ScaledGreedyTrap.scaledGreedyRemainder_tendsto_atTop_of_not_mem`
+
+### ExternalVerification257TerminalScaledVanishing
+
+- `PalomarCorpus.E257.TerminalScaledVanishing.terminalScaledVanishing_completeCounterexample`
+
+### ExternalVerification257TwentyOneFatalBranch
+
+- `PalomarCorpus.E257.TwentyOneFatalBranch.one_div_twenty_one_mem_iff_not_fatalAlignedBranch`
+- `PalomarCorpus.E257.TwentyOneFatalBranch.one_div_twenty_one_mem_mersenneAchievementSet_of_closedLowerStates`
+- `PalomarCorpus.E257.TwentyOneFatalBranch.twentyOneClosedRow_forces_quotientGreedy`
+- `PalomarCorpus.E257.TwentyOneFatalBranch.twentyOneFatalAlignedBranch_eventually_affine_supercapacity`
+- `PalomarCorpus.E257.TwentyOneFatalBranch.twentyOneFatalAlignedBranch_eventually_strict_supercapacity`
+
+### ExternalVerification257VariableExponentCover
+
+- `PalomarCorpus.E257.VariableExponentCover.strengthenedPositiveCoverClaim`
 
 ### ExternalVerification269ActualShellOrbit
 
-- `PalomarCorpus.ExternalVerification269ActualShellOrbit.actual_dyadicShellOrbit_recurrence_and_escape`
+- `PalomarCorpus.E269.ActualShellOrbit.actual_dyadicShellOrbit_recurrence_and_escape`
+
+### ExternalVerification269AllScaleLattice
+
+- `PalomarCorpus.E269.AllScaleLattice.dyadicShellTsumTailR235_eq_range_add`
+- `PalomarCorpus.E269.AllScaleLattice.exists_normalizedTailState_collision_of_value_eq_rat`
+- `PalomarCorpus.E269.AllScaleLattice.heightNormalizer235_mul_windowMass_eq_int`
+- `PalomarCorpus.E269.AllScaleLattice.qsmul_normalizedTailState_eq_int_of_value_eq_rat`
+- `PalomarCorpus.E269.AllScaleLattice.smoothHeight_mul_prime_dvd_boundaryHeight`
+- `PalomarCorpus.E269.AllScaleLattice.two_mul_heightNormalizer235`
+
+### ExternalVerification269CarryMechanism
+
+- `PalomarCorpus.E269.CarryMechanism.carryLift_blockDefect`
+- `PalomarCorpus.E269.CarryMechanism.carry_eq_residueDigit_add_coboundary`
+- `PalomarCorpus.E269.CarryMechanism.no_carryLift_of_errorBound_below_twoPow`
+- `PalomarCorpus.E269.CarryMechanism.no_positive_reducedCarry_of_cofinalLocalWindowEscape`
+- `PalomarCorpus.E269.CarryMechanism.no_unitAccurateLift_with_twoAnchors_and_firstTwoBlockNull`
+- `PalomarCorpus.E269.CarryMechanism.perturbation_eq_zero_of_blockNull_twoAnchors`
+
+### ExternalVerification269IntegralBranchPinning
+
+- `PalomarCorpus.E269.IntegralBranchPinning.integral_state_upward_closed`
+- `PalomarCorpus.E269.IntegralBranchPinning.surviving_window_orbit_eq_true_state`
+- `PalomarCorpus.E269.IntegralBranchPinning.trueNormalizedState_eq_telescope`
+- `PalomarCorpus.E269.IntegralBranchPinning.trueNormalizedState_pinning`
 
 ### ExternalVerification269ThreePrimeStructure
 
-- `PalomarCorpus.ExternalVerification269ThreePrimeStructure.exists_uniform_nonsingular_threePrimeKernel_minor`
-- `PalomarCorpus.ExternalVerification269ThreePrimeStructure.finiteSmoothKernelSum_groupedByHeight`
-- `PalomarCorpus.ExternalVerification269ThreePrimeStructure.kernel_235_minor_eq_neg_one_fifteen`
-- `PalomarCorpus.ExternalVerification269ThreePrimeStructure.smoothExponentShell_card_quadratic`
-- `PalomarCorpus.ExternalVerification269ThreePrimeStructure.smoothPrefixLcm_eq_threePrimeHeight`
-- `PalomarCorpus.ExternalVerification269ThreePrimeStructure.threePrimeKernelQ_eq_of_sameLogCell`
-- `PalomarCorpus.ExternalVerification269ThreePrimeStructure.threePrimeKernel_infiniteRank_and_noFiniteSeparation`
-- `PalomarCorpus.ExternalVerification269ThreePrimeStructure.threePrimePositiveJumpSet_card`
+- `PalomarCorpus.E269.ThreePrimeStructure.exists_uniform_nonsingular_threePrimeKernel_minor`
+- `PalomarCorpus.E269.ThreePrimeStructure.finiteSmoothKernelSum_groupedByHeight`
+- `PalomarCorpus.E269.ThreePrimeStructure.kernel_235_minor_eq_neg_one_fifteen`
+- `PalomarCorpus.E269.ThreePrimeStructure.smoothExponentShell_card_quadratic`
+- `PalomarCorpus.E269.ThreePrimeStructure.smoothPrefixLcm_eq_threePrimeHeight`
+- `PalomarCorpus.E269.ThreePrimeStructure.threePrimeKernelQ_eq_of_sameLogCell`
+- `PalomarCorpus.E269.ThreePrimeStructure.threePrimeKernel_infiniteRank_and_noFiniteSeparation`
+- `PalomarCorpus.E269.ThreePrimeStructure.threePrimePositiveJumpSet_card`
 
 ### ExternalVerification269WindowEscapeEquivalence
 
-- `PalomarCorpus.ExternalVerification269WindowEscapeEquivalence.actualCofinalLocalWindowEscape_iff`
-- `PalomarCorpus.ExternalVerification269WindowEscapeEquivalence.actualCofinalLocalWindowEscape_iff_irrational_value`
-- `PalomarCorpus.ExternalVerification269WindowEscapeEquivalence.cofinalLocalWindowEscape_of_irrational`
-- `PalomarCorpus.ExternalVerification269WindowEscapeEquivalence.cofinalLocalWindowEscape_of_irrational_of_quadratic`
-- `PalomarCorpus.ExternalVerification269WindowEscapeEquivalence.exists_pow_gt_quadratic`
-- `PalomarCorpus.ExternalVerification269WindowEscapeEquivalence.exists_reducedCarry_of_value_eq_rat`
-- `PalomarCorpus.ExternalVerification269WindowEscapeEquivalence.near_integer_of_residue_le_general`
-- `PalomarCorpus.ExternalVerification269WindowEscapeEquivalence.trueNormalizedState_window`
+- `PalomarCorpus.E269.WindowEscapeEquivalence.actualCofinalLocalWindowEscape_iff`
+- `PalomarCorpus.E269.WindowEscapeEquivalence.actualCofinalLocalWindowEscape_iff_irrational_value`
+- `PalomarCorpus.E269.WindowEscapeEquivalence.cofinalLocalWindowEscape_of_irrational`
+- `PalomarCorpus.E269.WindowEscapeEquivalence.cofinalLocalWindowEscape_of_irrational_of_quadratic`
+- `PalomarCorpus.E269.WindowEscapeEquivalence.exists_pow_gt_quadratic`
+- `PalomarCorpus.E269.WindowEscapeEquivalence.exists_reducedCarry_of_value_eq_rat`
+- `PalomarCorpus.E269.WindowEscapeEquivalence.near_integer_of_residue_le_general`
+- `PalomarCorpus.E269.WindowEscapeEquivalence.trueNormalizedState_window`
+
+### ExternalVerification68AdjacentUnitCarryWindow
+
+- `PalomarCorpus.E68.AdjacentUnitCarryWindow.adjacentUnitCarryWindowDen_eq_twoStep_den`
+- `PalomarCorpus.E68.AdjacentUnitCarryWindow.adjacentUnitCarryWindowOffset_eq_twoStep_factorization`
+- `PalomarCorpus.E68.AdjacentUnitCarryWindow.consecutive_unit_carries_iff_positive_offset_le_den`
+- `PalomarCorpus.E68.AdjacentUnitCarryWindow.twoStep_den_mul_transitionNormalizers`
 
 ### ExternalVerification68ChannelRadius
 
-- `PalomarCorpus.ExternalVerification68ChannelRadius.no_eventual_square_subsequence_cubic_upper`
-- `PalomarCorpus.ExternalVerification68ChannelRadius.no_eventual_square_subsequence_three_halves_upper`
-- `PalomarCorpus.ExternalVerification68ChannelRadius.not_isLittleO_square_subsequence_radius`
-- `PalomarCorpus.ExternalVerification68ChannelRadius.sharp_radius_satisfies_square_log_constraint`
-- `PalomarCorpus.ExternalVerification68ChannelRadius.square_subsequence_radius_cubic_lower`
-- `PalomarCorpus.ExternalVerification68ChannelRadius.square_subsequence_radius_three_halves_lower`
+- `PalomarCorpus.E68.ChannelRadius.no_eventual_square_subsequence_cubic_upper`
+- `PalomarCorpus.E68.ChannelRadius.no_eventual_square_subsequence_three_halves_upper`
+- `PalomarCorpus.E68.ChannelRadius.not_isLittleO_square_subsequence_radius`
+- `PalomarCorpus.E68.ChannelRadius.sharp_radius_satisfies_square_log_constraint`
+- `PalomarCorpus.E68.ChannelRadius.square_subsequence_radius_cubic_lower`
+- `PalomarCorpus.E68.ChannelRadius.square_subsequence_radius_three_halves_lower`
 
 ### ExternalVerification68CompanionOrbitBoundary
 
-- `PalomarCorpus.ExternalVerification68CompanionOrbitBoundary.companionOrbitBoundary_factorialGapSeries`
-- `PalomarCorpus.ExternalVerification68CompanionOrbitBoundary.companionOrbitBoundary_genericShift`
-- `PalomarCorpus.ExternalVerification68CompanionOrbitBoundary.companionOrbitBoundary_strictSuccessorCarry`
-- `PalomarCorpus.ExternalVerification68CompanionOrbitBoundary.tsum_unitFactTerm_eq_exp_one_sub_two`
+- `PalomarCorpus.E68.CompanionOrbitBoundary.companionOrbitBoundary_factorialGapSeries`
+- `PalomarCorpus.E68.CompanionOrbitBoundary.companionOrbitBoundary_genericShift`
+- `PalomarCorpus.E68.CompanionOrbitBoundary.companionOrbitBoundary_strictSuccessorCarry`
+- `PalomarCorpus.E68.CompanionOrbitBoundary.tsum_unitFactTerm_eq_exp_one_sub_two`
+
+### ExternalVerification68FiniteDenominator
+
+- `PalomarCorpus.E68.FiniteDenominator.finite_denominator_exclusion`
+
+### ExternalVerification68KempnerIndex
+
+- `PalomarCorpus.E68.KempnerIndex.rational_denominator_not_dvd_fiftynine_factorial`
+- `PalomarCorpus.E68.KempnerIndex.rational_denominator_not_dvd_pred_factorial_of_nonunit_carry`
+
+### ExternalVerification68MomentIdeal
+
+- `PalomarCorpus.E68.MomentIdeal.attainable_moment_ideal`
+- `PalomarCorpus.E68.MomentIdeal.exact_moment_ideal_with_primitive_attainment`
+- `PalomarCorpus.E68.MomentIdeal.minimumMoment_independent_prime`
+- `PalomarCorpus.E68.MomentIdeal.minimum_moment_content_one`
+
+### ExternalVerification68MovingFactorScaleSplit
+
+- `PalomarCorpus.E68.MovingFactorScaleSplit.fixedOwnerPair_eventually_absorbed`
+- `PalomarCorpus.E68.MovingFactorScaleSplit.movingPrivateFactorScaleSplit_implies_irrational`
+- `PalomarCorpus.E68.MovingFactorScaleSplit.splitFactorNormalizedCollision_implies_irrational`
+
+### ExternalVerification68MultiplicativeSuccessorRigidity
+
+- `PalomarCorpus.E68.MultiplicativeSuccessorRigidity.eventually_dvd_gapSuccessor_of_not_irrational`
+- `PalomarCorpus.E68.MultiplicativeSuccessorRigidity.factorial_mul_gapSuccessor_eq_of_eventually_dvd`
+- `PalomarCorpus.E68.MultiplicativeSuccessorRigidity.gapSuccessor_dvd_of_eventually_dvd`
+- `PalomarCorpus.E68.MultiplicativeSuccessorRigidity.gapSuccessor_eq_mul_pred_of_dvd`
+- `PalomarCorpus.E68.MultiplicativeSuccessorRigidity.irrational_factorialGapSeries_of_cofinal_not_dvd_gapSuccessor`
+- `PalomarCorpus.E68.MultiplicativeSuccessorRigidity.irrational_factorialGapSeries_of_cofinal_odd_gapSuccessor`
+- `PalomarCorpus.E68.MultiplicativeSuccessorRigidity.not_eventually_odd_gapSuccessor_of_not_irrational`
+
+### ExternalVerification68PrimePole
+
+- `PalomarCorpus.E68.PrimePole.factorialGapPrefixLCMNumerator_mod_prime`
 
 ### ExternalVerification68PrimeUnitTranslator
 
-- `PalomarCorpus.ExternalVerification68PrimeUnitTranslator.channelResidual_appendPrimeTranslator`
-- `PalomarCorpus.ExternalVerification68PrimeUnitTranslator.exists_remote_factorialGrid_primeTranslator_reduction`
-- `PalomarCorpus.ExternalVerification68PrimeUnitTranslator.primeTranslator_channelResidual_eq_one`
-- `PalomarCorpus.ExternalVerification68PrimeUnitTranslator.primeTranslator_channel_at_prime`
-- `PalomarCorpus.ExternalVerification68PrimeUnitTranslator.primeTranslator_channel_zero_of_lt_p`
-- `PalomarCorpus.ExternalVerification68PrimeUnitTranslator.primeTranslator_channel_zero_of_p_lt`
-- `PalomarCorpus.ExternalVerification68PrimeUnitTranslator.primeTranslator_moment_zero`
+- `PalomarCorpus.E68.PrimeUnitTranslator.channelResidual_appendPrimeTranslator`
+- `PalomarCorpus.E68.PrimeUnitTranslator.exists_remote_factorialGrid_primeTranslator_reduction`
+- `PalomarCorpus.E68.PrimeUnitTranslator.primeTranslator_channelResidual_eq_one`
+- `PalomarCorpus.E68.PrimeUnitTranslator.primeTranslator_channel_at_prime`
+- `PalomarCorpus.E68.PrimeUnitTranslator.primeTranslator_channel_zero_of_lt_p`
+- `PalomarCorpus.E68.PrimeUnitTranslator.primeTranslator_channel_zero_of_p_lt`
+- `PalomarCorpus.E68.PrimeUnitTranslator.primeTranslator_moment_zero`
+
+### ExternalVerification68ResidualIntegerClass
+
+- `PalomarCorpus.E68.ResidualIntegerClass.equal_moment_residual_integer_difference`
+- `PalomarCorpus.E68.ResidualIntegerClass.residual_transparency`
+- `PalomarCorpus.E68.ResidualIntegerClass.summable_fullResidual`
+- `PalomarCorpus.E68.ResidualIntegerClass.zero_moment_residual_integral`
+
+### ExternalVerification68StrictSuccessorCarry
+
+- `PalomarCorpus.E68.StrictSuccessorCarry.companionOrbit_completeCharacterization`
+- `PalomarCorpus.E68.StrictSuccessorCarry.strictSuccessorCarry_completeCharacterization`
 
 ## Paper-linked required Lean claims in this entry
 
 - `erdos1041.critical_geometry` (#1041, lean_kernel_checked): global critical-disk inverse-balance and geometric-mean two-root proximity with exact straight-path obstructions
-  - compared as `PalomarCorpus.ExternalVerification1041CriticalGeometry.criticalGeometricMean_twoRootProximity`
-  - compared as `PalomarCorpus.ExternalVerification1041CriticalGeometry.criticalDiskInverseBalance_twoRootProximity`
-  - compared as `PalomarCorpus.ExternalVerification1041CriticalGeometry.criticalDiskInverseBalance_twoRootProximity_strict`
-  - compared as `PalomarCorpus.ExternalVerification1041CriticalGeometry.nearestSpoke_reciprocal_balance`
-  - compared as `PalomarCorpus.ExternalVerification1041CriticalGeometry.nearestSpoke_unique_nearest_normSq`
-  - compared as `PalomarCorpus.ExternalVerification1041CriticalGeometry.nearestSpoke_unique_nearest_spoke_escapes`
-  - compared as `PalomarCorpus.ExternalVerification1041CriticalGeometry.allStraightCubic_roots`
-  - compared as `PalomarCorpus.ExternalVerification1041CriticalGeometry.allStraightCubic_roots_in_unitDisk`
-  - compared as `PalomarCorpus.ExternalVerification1041CriticalGeometry.allStraightCubic_every_pair_midpoint_escapes`
+  - compared as `PalomarCorpus.E1041.CriticalGeometry.criticalGeometricMean_twoRootProximity`
+  - compared as `PalomarCorpus.E1041.CriticalGeometry.criticalDiskInverseBalance_twoRootProximity`
+  - compared as `PalomarCorpus.E1041.CriticalGeometry.criticalDiskInverseBalance_twoRootProximity_strict`
+  - compared as `PalomarCorpus.E1041.CriticalGeometry.nearestSpoke_reciprocal_balance`
+  - compared as `PalomarCorpus.E1041.CriticalGeometry.nearestSpoke_unique_nearest_normSq`
+  - compared as `PalomarCorpus.E1041.CriticalGeometry.nearestSpoke_unique_nearest_spoke_escapes`
+  - compared as `PalomarCorpus.E1041.CriticalGeometry.allStraightCubic_roots`
+  - compared as `PalomarCorpus.E1041.CriticalGeometry.allStraightCubic_roots_in_unitDisk`
+  - compared as `PalomarCorpus.E1041.CriticalGeometry.allStraightCubic_every_pair_midpoint_escapes`
+- `erdos1041.cubic_case_complete` (#1041, lean_kernel_checked): Erdős #1041 in degree three
+  - compared as `PalomarCorpus.E1041.CubicPath.cubic_paper_complete`
+  - compared as `PalomarCorpus.E1041.CubicPath.monic_cubic_connector`
 - `erdos1041.cyclic_tetranomial_coefficient` (#1041, lean_kernel_checked): coefficient-controlled cyclic tetranomial root-spoke bounds
-  - compared as `PalomarCorpus.ExternalVerification1041TetranomialSpokes.tetranomialRoot_spoke_factorization`
-  - compared as `PalomarCorpus.ExternalVerification1041TetranomialSpokes.tetranomialRoot_spoke_norm_lt_one_of_rootBudget`
-  - compared as `PalomarCorpus.ExternalVerification1041TetranomialSpokes.tetranomialRoot_spoke_norm_lt_one_of_lowCoeffBudget`
+  - compared as `PalomarCorpus.E1041.TetranomialSpokes.tetranomialRoot_spoke_factorization`
+  - compared as `PalomarCorpus.E1041.TetranomialSpokes.tetranomialRoot_spoke_norm_lt_one_of_rootBudget`
+  - compared as `PalomarCorpus.E1041.TetranomialSpokes.tetranomialRoot_spoke_norm_lt_one_of_lowCoeffBudget`
 - `erdos1041.cyclic_trinomial_fiber` (#1041, lean_kernel_checked): centered and translated cyclic trinomial spoke-factorization and two-short-fibre endpoint
-  - compared as `PalomarCorpus.ExternalVerification1041CyclicTrinomialFiber.trinomialRoot_spoke_factorization`
-  - compared as `PalomarCorpus.ExternalVerification1041CyclicTrinomialFiber.trinomialRoot_spoke_norm_le_constant`
-  - compared as `PalomarCorpus.ExternalVerification1041CyclicTrinomialFiber.trinomialRoot_spoke_norm_lt_one`
-  - compared as `PalomarCorpus.ExternalVerification1041CyclicTrinomialFiber.trinomialRoot_spoke_norm_lt_one_of_norm_lt_one`
-  - compared as `PalomarCorpus.ExternalVerification1041CyclicTrinomialFiber.cyclicTrinomial_two_short_fiber_displacements`
+  - compared as `PalomarCorpus.E1041.CyclicTrinomialFiber.trinomialRoot_spoke_factorization`
+  - compared as `PalomarCorpus.E1041.CyclicTrinomialFiber.trinomialRoot_spoke_norm_le_constant`
+  - compared as `PalomarCorpus.E1041.CyclicTrinomialFiber.trinomialRoot_spoke_norm_lt_one`
+  - compared as `PalomarCorpus.E1041.CyclicTrinomialFiber.trinomialRoot_spoke_norm_lt_one_of_norm_lt_one`
+  - compared as `PalomarCorpus.E1041.CyclicTrinomialFiber.cyclicTrinomial_two_short_fiber_displacements`
 - `erdos1041.first_merge_critical_value_separation` (#1041, lean_kernel_checked): exact first-merge numerical threshold kernel: degree monotonicity, the S=4/n>=3, S=3/n>=4, and S=2/n>=6 regimes, and the sign-free squared-length-below-four consumer
-  - compared as `PalomarCorpus.ExternalVerification1041FirstMergeCriticalValueSeparation.firstMerge_exact_convenient_thresholds`
-  - compared as `PalomarCorpus.ExternalVerification1041FirstMergeCriticalValueSeparation.firstMerge_length_lt_two_of_squared_bound`
+  - compared as `PalomarCorpus.E1041.FirstMergeCriticalValueSeparation.firstMerge_exact_convenient_thresholds`
+  - compared as `PalomarCorpus.E1041.FirstMergeCriticalValueSeparation.firstMerge_length_lt_two_of_squared_bound`
 - `erdos1041.quartic_quotient_fiber` (#1041, lean_kernel_checked): translated quartic quotient-fibre root lift and strict endpoint budget
-  - compared as `PalomarCorpus.ExternalVerification1041QuarticQuotientFiber.rootLift_kernel_le_axis`
-  - compared as `PalomarCorpus.ExternalVerification1041QuarticQuotientFiber.rootLift_axis_integral`
-  - compared as `PalomarCorpus.ExternalVerification1041QuarticQuotientFiber.rootLift_endpoint_budget_lt_two`
-  - compared as `PalomarCorpus.ExternalVerification1041QuarticQuotientFiber.rootLift_length_lt_two_of_le_endpoint_budget`
+  - compared as `PalomarCorpus.E1041.QuarticQuotientFiber.rootLift_kernel_le_axis`
+  - compared as `PalomarCorpus.E1041.QuarticQuotientFiber.rootLift_axis_integral`
+  - compared as `PalomarCorpus.E1041.QuarticQuotientFiber.rootLift_endpoint_budget_lt_two`
+  - compared as `PalomarCorpus.E1041.QuarticQuotientFiber.rootLift_length_lt_two_of_le_endpoint_budget`
 - `erdos1041.signed_moment_tetranomial` (#1041, lean_kernel_checked): exact signed mixed-moment energy and two-index safe-spoke selection for centered tetranomial root families
-  - compared as `PalomarCorpus.ExternalVerification1041TetranomialSpokes.sum_normSq_const_add_mul`
-  - compared as `PalomarCorpus.ExternalVerification1041TetranomialSpokes.exists_two_tails_norm_lt_one_of_exact_L2_budget`
-  - compared as `PalomarCorpus.ExternalVerification1041TetranomialSpokes.exists_two_tetranomialRoot_safeSpokes_of_moment_coeff_budget`
+  - compared as `PalomarCorpus.E1041.TetranomialSpokes.sum_normSq_const_add_mul`
+  - compared as `PalomarCorpus.E1041.TetranomialSpokes.exists_two_tetranomialRoot_safeSpokes_of_moment_coeff_budget`
+  - compared as `PalomarCorpus.E1041.TetranomialSpokes.exists_two_tails_norm_lt_one_of_exact_L2_budget`
 - `erdos1041.solved_families` (#1041, lean_kernel_checked): sharp all-degree collinear root-diameter theorem with equality configurations, complete primitive sparse quintic, and translated cubic quotient fibres
-  - compared as `PalomarCorpus.ExternalVerification1041SolvedFamilies.SharpCollinear.existsPeakLeComparisonBound`
-  - compared as `PalomarCorpus.ExternalVerification1041SolvedFamilies.primitiveQuintic_twoStrictTailEnergies`
-  - compared as `PalomarCorpus.ExternalVerification1041SolvedFamilies.cubic_safeRootSpoke`
+  - compared as `PalomarCorpus.E1041.SolvedFamilies.SharpCollinear.existsPeakLeComparisonBound`
+  - compared as `PalomarCorpus.E1041.SolvedFamilies.primitiveQuintic_twoStrictTailEnergies`
+  - compared as `PalomarCorpus.E1041.SolvedFamilies.cubic_safeRootSpoke`
 - `erdos1041.tetranomial_spokes` (#1041, lean_kernel_checked): Coefficient and energy criteria forcing two safe tetranomial spokes
-  - compared as `PalomarCorpus.ExternalVerification1041TetranomialSpokes.tetranomialRoot_spoke_factorization`
-  - compared as `PalomarCorpus.ExternalVerification1041TetranomialSpokes.tetranomialRoot_spoke_norm_lt_one_of_rootBudget`
-  - compared as `PalomarCorpus.ExternalVerification1041TetranomialSpokes.tetranomialRoot_spoke_norm_lt_one_of_lowCoeffBudget`
-  - compared as `PalomarCorpus.ExternalVerification1041TetranomialSpokes.sum_normSq_const_add_mul`
-  - compared as `PalomarCorpus.ExternalVerification1041TetranomialSpokes.exists_two_tails_norm_lt_one_of_exact_L2_budget`
-  - compared as `PalomarCorpus.ExternalVerification1041TetranomialSpokes.exists_two_tetranomialRoot_safeSpokes_of_moment_coeff_budget`
+  - compared as `PalomarCorpus.E1041.TetranomialSpokes.tetranomialRoot_spoke_factorization`
+  - compared as `PalomarCorpus.E1041.TetranomialSpokes.tetranomialRoot_spoke_norm_lt_one_of_rootBudget`
+  - compared as `PalomarCorpus.E1041.TetranomialSpokes.tetranomialRoot_spoke_norm_lt_one_of_lowCoeffBudget`
+  - compared as `PalomarCorpus.E1041.TetranomialSpokes.sum_normSq_const_add_mul`
+  - compared as `PalomarCorpus.E1041.TetranomialSpokes.exists_two_tails_norm_lt_one_of_exact_L2_budget`
+  - compared as `PalomarCorpus.E1041.TetranomialSpokes.exists_two_tetranomialRoot_safeSpokes_of_moment_coeff_budget`
 - `erdos1049.adelic_height_bridge` (#1049, lean_kernel_checked): sharp 41/65 adelic-height threshold, scalar-plus-border no-go, and four-jet bounded-fibre escape
-  - compared as `PalomarCorpus.ExternalVerification1049AdelicHeightBridge.zudilin_firstTransformedRow_initialMonomial`
-  - compared as `PalomarCorpus.ExternalVerification1049AdelicHeightBridge.zudilinSharpHankelOrderAndCoeff_algebraicAssembly`
-  - compared as `PalomarCorpus.ExternalVerification1049AdelicHeightBridge.threePow_fortyOne_lt_twoPow_sixtyFive`
-  - compared as `PalomarCorpus.ExternalVerification1049AdelicHeightBridge.twoPow_sixtyFour_lt_threePow_fortyOne`
-  - compared as `PalomarCorpus.ExternalVerification1049AdelicHeightBridge.threeHalves_rectangular_hp_gap_gt_threeThirteenths`
-  - compared as `PalomarCorpus.ExternalVerification1049AdelicHeightBridge.threeHalves_hankelChargeThreshold_lt_eightFortyOne`
-  - compared as `PalomarCorpus.ExternalVerification1049AdelicHeightBridge.zudilinScalarContent_cannot_meet_required_charge`
-  - compared as `PalomarCorpus.ExternalVerification1049AdelicHeightBridge.zudilinScalarPlusBorder_cannot_meet_required_charge`
-  - compared as `PalomarCorpus.ExternalVerification1049AdelicHeightBridge.three_two_scalar_margin_lt_explicit`
-  - compared as `PalomarCorpus.ExternalVerification1049AdelicHeightBridge.exists_distinct_binary_selectors_same_fourJet_of_power_certificate`
-  - compared as `PalomarCorpus.ExternalVerification1049AdelicHeightBridge.exists_distinct_binary_selectors_same_fourJet_of_rank_41`
-  - compared as `PalomarCorpus.ExternalVerification1049AdelicHeightBridge.fourJet_card_gt_two_pow_of_rank_41`
-  - compared as `PalomarCorpus.ExternalVerification1049AdelicHeightBridge.exists_ne_map_eq_map_ne_of_card_mul_lt`
+  - compared as `PalomarCorpus.E1049.AdelicHeightBridge.zudilin_firstTransformedRow_initialMonomial`
+  - compared as `PalomarCorpus.E1049.AdelicHeightBridge.zudilinSharpHankelOrderAndCoeff_algebraicAssembly`
+  - compared as `PalomarCorpus.E1049.AdelicHeightBridge.threePow_fortyOne_lt_twoPow_sixtyFive`
+  - compared as `PalomarCorpus.E1049.AdelicHeightBridge.twoPow_sixtyFour_lt_threePow_fortyOne`
+  - compared as `PalomarCorpus.E1049.AdelicHeightBridge.threeHalves_rectangular_hp_gap_gt_threeThirteenths`
+  - compared as `PalomarCorpus.E1049.AdelicHeightBridge.threeHalves_hankelChargeThreshold_lt_eightFortyOne`
+  - compared as `PalomarCorpus.E1049.AdelicHeightBridge.zudilinScalarContent_cannot_meet_required_charge`
+  - compared as `PalomarCorpus.E1049.AdelicHeightBridge.zudilinScalarPlusBorder_cannot_meet_required_charge`
+  - compared as `PalomarCorpus.E1049.AdelicHeightBridge.three_two_scalar_margin_lt_explicit`
+  - compared as `PalomarCorpus.E1049.AdelicHeightBridge.exists_distinct_binary_selectors_same_fourJet_of_power_certificate`
+  - compared as `PalomarCorpus.E1049.AdelicHeightBridge.exists_distinct_binary_selectors_same_fourJet_of_rank_41`
+  - compared as `PalomarCorpus.E1049.AdelicHeightBridge.fourJet_card_gt_two_pow_of_rank_41`
+  - compared as `PalomarCorpus.E1049.AdelicHeightBridge.exists_ne_map_eq_map_ne_of_card_mul_lt`
+- `erdos1049.archimedean_homogenisation_cap` (#1049, lean_kernel_checked): Archimedean cap and below-square nondecay without a degree limit
+  - compared as `PalomarCorpus.E1049.ArchimedeanCap.archimedean_cap`
+  - compared as `PalomarCorpus.E1049.ArchimedeanCap.cleared_below_square_not_tendsto_zero`
+- `erdos1049.bezout_plucker_jets` (#1049, lean_kernel_checked): conditional Bezout-Plucker minor collapse and halved binary-selector exponent threshold
+  - compared as `PalomarCorpus.E1049.BezoutPluckerJets.anchor_det_zero_forces_all_det_zero`
+  - compared as `PalomarCorpus.E1049.BezoutPluckerJets.binary_row_collision_of_anchor_det_zero`
+  - compared as `PalomarCorpus.E1049.BezoutPluckerJets.adjacent_det_zero_forces_all_det_zero`
+  - compared as `PalomarCorpus.E1049.BezoutPluckerJets.zmod_binary_tail_collision_of_two_three_depth`
 - `erdos1049.hermite_pade_no_go` (#1049, lean_kernel_checked): rectangular Hermite-Pade threshold no-go with exact equality boundary
-  - compared as `PalomarCorpus.ExternalVerification1049HermitePadeNoGo.hpClearedGap_expansion`
-  - compared as `PalomarCorpus.ExternalVerification1049HermitePadeNoGo.hpClearedGap_nonpos`
-  - compared as `PalomarCorpus.ExternalVerification1049HermitePadeNoGo.hpClearedGap_eq_zero_iff`
-  - compared as `PalomarCorpus.ExternalVerification1049HermitePadeNoGo.rectangular_hp_threshold_le_classical`
-  - compared as `PalomarCorpus.ExternalVerification1049HermitePadeNoGo.rectangular_hp_threshold_eq_classical_iff`
+  - compared as `PalomarCorpus.E1049.HermitePadeNoGo.hpClearedGap_expansion`
+  - compared as `PalomarCorpus.E1049.HermitePadeNoGo.hpClearedGap_nonpos`
+  - compared as `PalomarCorpus.E1049.HermitePadeNoGo.hpClearedGap_eq_zero_iff`
+  - compared as `PalomarCorpus.E1049.HermitePadeNoGo.rectangular_hp_threshold_le_classical`
+  - compared as `PalomarCorpus.E1049.HermitePadeNoGo.rectangular_hp_threshold_eq_classical_iff`
 - `erdos1049.prime_support_selectors` (#1049, lean_kernel_checked): sharp prime-supported two-selector rational gap, rational no-double-decay, one-row prime gaps, determinant-height tradeoff, and reduced selector collision
-  - compared as `PalomarCorpus.ExternalVerification1049PrimeSupportSelectors.twoSelector_rationalGap`
-  - compared as `PalomarCorpus.ExternalVerification1049PrimeSupportSelectors.integerLinearForm_rationalGap`
-  - compared as `PalomarCorpus.ExternalVerification1049PrimeSupportSelectors.rationalTwoSelector_notBothTendstoZero`
-  - compared as `PalomarCorpus.ExternalVerification1049PrimeSupportSelectors.twoSelector_detHeightDecay_tradeoff`
-  - compared as `PalomarCorpus.ExternalVerification1049PrimeSupportSelectors.twoSelector_unimodularHeightDecay_tradeoff`
-  - compared as `PalomarCorpus.ExternalVerification1049PrimeSupportSelectors.primeSupportedTwoSelector_rationalGap`
-  - compared as `PalomarCorpus.ExternalVerification1049PrimeSupportSelectors.primeSupportedOneRow_rationalGap`
-  - compared as `PalomarCorpus.ExternalVerification1049PrimeSupportSelectors.primePowerSupportedOneRow_rationalGap`
-  - compared as `PalomarCorpus.ExternalVerification1049PrimeSupportSelectors.zeroDenominatorCoordinates_binaryCollision`
+  - compared as `PalomarCorpus.E1049.PrimeSupportSelectors.twoSelector_rationalGap`
+  - compared as `PalomarCorpus.E1049.PrimeSupportSelectors.integerLinearForm_rationalGap`
+  - compared as `PalomarCorpus.E1049.PrimeSupportSelectors.rationalTwoSelector_notBothTendstoZero`
+  - compared as `PalomarCorpus.E1049.PrimeSupportSelectors.twoSelector_detHeightDecay_tradeoff`
+  - compared as `PalomarCorpus.E1049.PrimeSupportSelectors.twoSelector_unimodularHeightDecay_tradeoff`
+  - compared as `PalomarCorpus.E1049.PrimeSupportSelectors.primeSupportedTwoSelector_rationalGap`
+  - compared as `PalomarCorpus.E1049.PrimeSupportSelectors.primeSupportedOneRow_rationalGap`
+  - compared as `PalomarCorpus.E1049.PrimeSupportSelectors.primePowerSupportedOneRow_rationalGap`
+  - compared as `PalomarCorpus.E1049.PrimeSupportSelectors.zeroDenominatorCoordinates_binaryCollision`
 - `erdos1049.rational_base_barrier` (#1049, lean_kernel_checked): exact rational-base cleared-tail recurrence, exponential forcing lower bound, and coordinatewise-corridor impossibility at three-halves
-  - compared as `PalomarCorpus.ExternalVerification1049RationalBaseBarrier.rationalBaseClearedTailQ_succ`
-  - compared as `PalomarCorpus.ExternalVerification1049RationalBaseBarrier.twoPow_le_rationalBaseForcingNat`
-  - compared as `PalomarCorpus.ExternalVerification1049RationalBaseBarrier.threeHalves_no_coordinatewiseCorridor`
+  - compared as `PalomarCorpus.E1049.RationalBaseBarrier.rationalBaseClearedTailQ_succ`
+  - compared as `PalomarCorpus.E1049.RationalBaseBarrier.twoPow_le_rationalBaseForcingNat`
+  - compared as `PalomarCorpus.E1049.RationalBaseBarrier.threeHalves_no_coordinatewiseCorridor`
+- `erdos1049.three_halves_outside_published_height_regions` (#1049, lean_kernel_checked): 3/2 lies outside every published height region
+  - compared as `PalomarCorpus.E1049.PublishedHeightRegions.threeHalves_zudilin_power_obstruction`
+  - compared as `PalomarCorpus.E1049.PublishedHeightRegions.threeHalves_outside_zudilinHeightRegion`
+  - compared as `PalomarCorpus.E1049.PublishedHeightRegions.threeHalves_outside_bundschuhVaananenHeightRegion`
+  - compared as `PalomarCorpus.E1049.PublishedHeightRegions.eightyOneTwoHundredths_lt_threeHalves_log_ratio`
 - `erdos243.bounded_negative_part_rigidity` (#243, lean_kernel_checked): bounded-negative complete rigidity and eventual Sylvester recurrence
-  - compared as `PalomarCorpus.ExternalVerification243BoundedNegativePartRigidity.boundedNegativePart_completeRigidity`
+  - compared as `PalomarCorpus.E243.BoundedNegativePartRigidity.boundedNegativePart_completeRigidity`
 - `erdos243.crt_bounded_rise_barrier` (#243, lean_kernel_checked): CRT bounded-rise barrier: a slowly rising natural state cannot avoid an infinite pairwise-coprime modulus family at every strict rise
-  - compared as `PalomarCorpus.ExternalVerification243BoundedRiseReducedTail.no_boundedRise_reducedTail`
+  - compared as `PalomarCorpus.E243.BoundedRiseReducedTail.no_boundedRise_reducedTail`
 - `erdos243.periodic_negative_orbit` (#243, lean_kernel_checked): phase-primitive, arbitrary-common-scale, and eventually periodic negative-magnitude orbit exclusion by prime lock, pigeonhole, and strong-induction descent
-  - compared as `PalomarCorpus.ExternalVerification243PeriodicNegativeOrbit.no_eventuallyPeriodicNegative_orbit`
-  - compared as `PalomarCorpus.ExternalVerification243PeriodicNegativeOrbit.no_periodicNegative_orbit`
-  - compared as `PalomarCorpus.ExternalVerification243PeriodicNegativeOrbit.no_phasePrimitivePeriodicNegative_orbit`
+  - compared as `PalomarCorpus.E243.PeriodicNegativeOrbit.no_eventuallyPeriodicNegative_orbit`
+  - compared as `PalomarCorpus.E243.PeriodicNegativeOrbit.no_periodicNegative_orbit`
+  - compared as `PalomarCorpus.E243.PeriodicNegativeOrbit.no_phasePrimitivePeriodicNegative_orbit`
+- `erdos243.primitive_record_two_unit_rigidity` (#243, lean_kernel_checked): Record-setting primitive jumps of size at most two force the Sylvester recurrence under arbitrary cancellation
+  - compared as `PalomarCorpus.E243.PrimitiveRecordRigidity.sylvesterStep_of_centeredZero_pair`
+  - compared as `PalomarCorpus.E243.PrimitiveRecordRigidity.primitive_valuation_no_drop`
+  - compared as `PalomarCorpus.E243.PrimitiveRecordRigidity.centeredZero_forces_unit`
+  - compared as `PalomarCorpus.E243.PrimitiveRecordRigidity.protectedPrimePower_persists`
+  - compared as `PalomarCorpus.E243.PrimitiveRecordRigidity.numerator_bounded_of_oddPrimePower`
+  - compared as `PalomarCorpus.E243.PrimitiveRecordRigidity.odd_record_cut`
+  - compared as `PalomarCorpus.E243.PrimitiveRecordRigidity.recordRiseTwo_sylvesterNext_eventually`
+  - compared as `PalomarCorpus.E243.PrimitiveRecordRigidity.exists_oddMultiple_trapHeight`
 - `erdos243.protected_epoch_energy_criterion` (#243, lean_kernel_checked): Every protected odd prime-power epoch carries at least 1/16 of record energy, and finite energy is equivalent to the Sylvester recurrence
-  - compared as `PalomarCorpus.ExternalVerification243ProtectedEpochEnergy.protected_epoch_energy_integer`
+  - compared as `PalomarCorpus.E243.ProtectedEpochEnergy.protected_epoch_energy_integer`
 - `erdos243.record_increment_unit_rigidity` (#243, lean_kernel_checked): True record increments of at most one force the Sylvester recurrence under arbitrary cancellation
-  - compared as `PalomarCorpus.ExternalVerification243RecordIncrementBarrier.recordIncrementOne_sylvesterNext_eventually`
+  - compared as `PalomarCorpus.E243.RecordIncrementBarrier.recordIncrementOne_sylvesterNext_eventually`
+- `erdos243.repair_entropy` (#243, lean_kernel_checked): repair-energy inequality, independent-family entropy bound, and eventual disappearance of fixed-length reset payments
+  - compared as `PalomarCorpus.E243.RepairEntropy.repairedFamily_recovery_energy_divisionFree`
+  - compared as `PalomarCorpus.E243.RepairEntropy.repaired_card_bound_of_independent`
+  - compared as `PalomarCorpus.E243.RepairEntropy.eventually_recoveryPayment_eq_one_of_fixedLength`
 - `erdos243.saturated_square_transport` (#243, lean_kernel_checked): Square transport of consecutive centred errors modulo the whole next numerator, and the record-amplified error after a cancellation
-  - compared as `PalomarCorpus.ExternalVerification243SaturatedSquareTransport.saturated_square_transport_raw`
-  - compared as `PalomarCorpus.ExternalVerification243SaturatedSquareTransport.legendre_defect_forces_nonsquare_content`
+  - compared as `PalomarCorpus.E243.SaturatedSquareTransport.legendre_defect_forces_nonsquare_content`
+  - compared as `PalomarCorpus.E243.SaturatedSquareTransport.saturated_square_transport_raw`
 - `erdos243.slow_rise_landing_barrier` (#243, lean_kernel_checked): Slow-rise landing barrier: the rise bound is needed only below twice the block product
-  - compared as `PalomarCorpus.ExternalVerification243SlowRiseBarrier.no_slowRise_reducedTail`
+  - compared as `PalomarCorpus.E243.SlowRiseBarrier.no_slowRise_reducedTail`
+- `erdos243.summable_negative_mass_rigidity` (#243, lean_kernel_checked): summable normalized-negative-mass complete rigidity and eventual Sylvester recurrence
+  - compared as `PalomarCorpus.E243.SummableNegativeMassRigidity.summableNegativeMass_completeRigidity`
+  - compared as `PalomarCorpus.E243.SummableNegativeMassRigidity.finite_negative_mass_scalar`
+  - compared as `PalomarCorpus.E243.SummableNegativeMassRigidity.canonical_finite_negative_mass`
+- `erdos243.weighted_lcm_record_excess` (#243, lean_kernel_checked): Weighted LCM record first crossings and exact discounted summability criteria
+  - compared as `PalomarCorpus.E243.WeightedRecordExcess.weighted_record_excess`
+  - compared as `PalomarCorpus.E243.WeightedRecordExcess.weighted_growth_record_excess`
+- `erdos249.actual_lcm_orbit` (#249, lean_kernel_checked): actual power-of-two LCM tail-orbit identity and exact cofinal nonintegrality equivalence to irrationality
+  - compared as `PalomarCorpus.E249.ActualLcmOrbit.actualLcmTailOrbit_eq_scaled_totientSeries_sub_prefix`
+  - compared as `PalomarCorpus.E249.ActualLcmOrbit.irrational_totientSeries_iff_actualLcmOrbitNonintegralitySupply`
 - `erdos249.all_base_totient_kernel_rank` (#249, lean_kernel_checked): unconditional all-base totient kernel dimension k^e+1, canonical basis, and relation-module dimension
-  - compared as `PalomarCorpus.ExternalVerification249TotientKernelBasis.allSlopeAffineTotientFormsLinearIndependent`
-  - compared as `PalomarCorpus.ExternalVerification249TotientKernelBasis.allBaseTotientKernelBasisRankAndRelationDimension`
+  - compared as `PalomarCorpus.E249.TotientKernelBasis.allSlopeAffineTotientFormsLinearIndependent`
+  - compared as `PalomarCorpus.E249.TotientKernelBasis.allBaseTotientKernelBasisRankAndRelationDimension`
 - `erdos249.binary_cyclotomic_anchors` (#249, lean_kernel_checked): clean binary-cyclotomic anchors, unconditional unbounded prime-divisor supply, exact anchored-kill equivalence to irrationality, and the support-only period-lock boundary
-  - compared as `PalomarCorpus.ExternalVerification249BinaryCyclotomicAnchors.exists_clean_binaryCyclotomicAnchor`
-  - compared as `PalomarCorpus.ExternalVerification249BinaryCyclotomicAnchors.binaryCyclotomicLayer_unboundedPrimeDivisorSupply`
-  - compared as `PalomarCorpus.ExternalVerification249BinaryCyclotomicAnchors.binaryCyclotomicAnchoredKillSupply_iff_irrational`
-  - compared as `PalomarCorpus.ExternalVerification249BinaryCyclotomicAnchors.exists_unbounded_binaryCyclotomicSupport_with_periodLock_of_not_irrational`
+  - compared as `PalomarCorpus.E249.BinaryCyclotomicAnchors.exists_clean_binaryCyclotomicAnchor`
+  - compared as `PalomarCorpus.E249.BinaryCyclotomicAnchors.binaryCyclotomicLayer_unboundedPrimeDivisorSupply`
+  - compared as `PalomarCorpus.E249.BinaryCyclotomicAnchors.binaryCyclotomicAnchoredKillSupply_iff_irrational`
+  - compared as `PalomarCorpus.E249.BinaryCyclotomicAnchors.exists_unbounded_binaryCyclotomicSupport_with_periodLock_of_not_irrational`
+- `erdos249.canonical_mersenne_frontier` (#249, lean_kernel_checked): canonical full-Mersenne-block residue recurrence and exact basepoint gap-supply equivalence to irrationality
+  - compared as `PalomarCorpus.E249.CanonicalMersenneFrontier.fullMersenneBlockResidue_succ`
+  - compared as `PalomarCorpus.E249.CanonicalMersenneFrontier.fullMersenneCenteredResidueGapSupply_of_canonicalBasepoint`
+  - compared as `PalomarCorpus.E249.CanonicalMersenneFrontier.fullMersenneCanonicalBasepointResidueGapSupply_iff_irrational`
+- `erdos249.carry_rank_frontier` (#249, lean_kernel_checked): rationality-to-tempered-carry equivalence, exact channel recovery, certificate-driven all-level carry-rank growth, tail-integrality bridge, and the modular-period/unbounded-rank frontier
+  - compared as `PalomarCorpus.E249.CarryRankFrontier.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank`
+  - compared as `PalomarCorpus.E249.CarryRankFrontier.not_irrational_totientSeries_implies_unbounded_carryRank_unconditional`
+  - compared as `PalomarCorpus.E249.CarryRankFrontier.finrank_canonicalCarryKernel_ge_of_certificate`
+  - compared as `PalomarCorpus.E249.CarryRankFrontier.totient_carryKernel_diff`
+  - compared as `PalomarCorpus.E249.CarryRankFrontier.carryShift_dvd_iff_tailDiff_mem_int`
+  - compared as `PalomarCorpus.E249.CarryRankFrontier.not_irrational_binaryCoeffSeries_iff_exists_temperedBinaryOrbit`
 - `erdos249.dyadic_totient_kernel` (#249, lean_kernel_checked): explicit odd-core basis, full-span equality, canonical finite normal form, and exact ranks
-  - compared as `PalomarCorpus.ExternalVerification249DyadicTotientKernel.dyadicTotientKernelOddCoreBasisAndFiniteRanks`
+  - compared as `PalomarCorpus.E249.DyadicTotientKernel.dyadicTotientKernelOddCoreBasisAndFiniteRanks`
+- `erdos249.farey_window_denominator_exclusion` (#249, lean_kernel_checked): Lean-checked Farey-window denominator exclusion (35 digits), superseded as the floor
+  - compared as `PalomarCorpus.E249.FareyWindowExclusion.farey_rat_exclusion`
+  - compared as `PalomarCorpus.E249.FareyWindowExclusion.farey_int_exclusion`
+- `erdos249.full_depth_ray_amplifier` (#249, lean_kernel_checked): full-depth ray amplification, eventual two-syndetic kill multipliers, and exact equivalence of cofinal full-depth supply with irrationality
+  - compared as `PalomarCorpus.E249.FullDepthRayAmplifier.eventually_twoSyndetic_fullDepthKillMultipliers_of_seed`
+  - compared as `PalomarCorpus.E249.FullDepthRayAmplifier.exists_fullDepthKill_on_ray_iff_shift_notMem_int`
+  - compared as `PalomarCorpus.E249.FullDepthRayAmplifier.apFullDepthEscape_iff_irrational`
+  - compared as `PalomarCorpus.E249.FullDepthRayAmplifier.cofinalFullDepthKillSupply_iff_periodMultipleKillSupply`
+  - compared as `PalomarCorpus.E249.FullDepthRayAmplifier.cofinalFullDepthKillSupply_iff_irrational`
 - `erdos249.mobius_mersenne_all_rungs_strict_log_concavity` (#249, lean_kernel_checked): Strict log-concavity of the whole Möbius-Mersenne ladder
-  - compared as `PalomarCorpus.ExternalVerification249MobiusMersenneLadderStructure.mobiusMersenneTheta_strict_logConcave`
-  - compared as `PalomarCorpus.ExternalVerification249MobiusMersenneLadderStructure.mobiusMersenneTheta_hankel_two_neg`
+  - compared as `PalomarCorpus.E249.MobiusMersenneLadderStructure.mobiusMersenneTheta_hankel_two_neg`
+  - compared as `PalomarCorpus.E249.MobiusMersenneLadderStructure.mobiusMersenneTheta_strict_logConcave`
+- `erdos249.prefix_two_adic_valuation_exclusion` (#249, lean_kernel_checked): 2-adic valuation of the totient prefix integer: exclusion rectangle consumer (Lean) with an exact witness
+  - compared as `PalomarCorpus.E249.PrefixTwoAdicExclusion.prefix_twoAdic_denominator_exclusion`
+  - compared as `PalomarCorpus.E249.PrefixTwoAdicExclusion.totientPrefix_eq_corpusForm`
+  - compared as `PalomarCorpus.E249.PrefixTwoAdicExclusion.prefix_twoAdic_odd_denominator_floor`
+  - compared as `PalomarCorpus.E249.PrefixTwoAdicExclusion.oddPart_mul_prefixTail_eq_intCast`
+  - compared as `PalomarCorpus.E249.PrefixTwoAdicExclusion.prefix_twoAdic_denominator_lower_bound`
+  - compared as `PalomarCorpus.E249.PrefixTwoAdicExclusion.totientPrefix_succ`
 - `erdos249.rank_one_sharp_floor` (#249, lean_kernel_checked): sharp positive rank-one Schur-cone floor, unique minimizer, positive-mixture closure, and rational-linear-form obstruction
-  - compared as `PalomarCorpus.ExternalVerification249RankOneSharpFloor.rankOneSubrankQuotient_ge_one_five`
-  - compared as `PalomarCorpus.ExternalVerification249RankOneSharpFloor.rankOneSubrankQuotient_eq_one_five_iff`
-  - compared as `PalomarCorpus.ExternalVerification249RankOneSharpFloor.rankOneSubrankQuotient_sub_theta_two_gt_twentyOne_div_threeTwenty`
-  - compared as `PalomarCorpus.ExternalVerification249RankOneSharpFloor.rankOneSubrankQuotient_sub_theta_two_gt_one_div_sixteen`
-  - compared as `PalomarCorpus.ExternalVerification249RankOneSharpFloor.not_forall_rankOneSubrankQuotient_sub_theta_two_gt_one_div_fifteen`
-  - compared as `PalomarCorpus.ExternalVerification249RankOneSharpFloor.positive_direct_sum_sub_theta_two_gt_twentyOne_div_threeTwenty`
-  - compared as `PalomarCorpus.ExternalVerification249RankOneSharpFloor.primitive_form_abs_gt_twentyOne_div_threeTwenty`
+  - compared as `PalomarCorpus.E249.RankOneSharpFloor.rankOneSubrankQuotient_ge_one_five`
+  - compared as `PalomarCorpus.E249.RankOneSharpFloor.rankOneSubrankQuotient_eq_one_five_iff`
+  - compared as `PalomarCorpus.E249.RankOneSharpFloor.rankOneSubrankQuotient_sub_theta_two_gt_twentyOne_div_threeTwenty`
+  - compared as `PalomarCorpus.E249.RankOneSharpFloor.rankOneSubrankQuotient_sub_theta_two_gt_one_div_sixteen`
+  - compared as `PalomarCorpus.E249.RankOneSharpFloor.not_forall_rankOneSubrankQuotient_sub_theta_two_gt_one_div_fifteen`
+  - compared as `PalomarCorpus.E249.RankOneSharpFloor.positive_direct_sum_sub_theta_two_gt_twentyOne_div_threeTwenty`
+  - compared as `PalomarCorpus.E249.RankOneSharpFloor.primitive_form_abs_gt_twentyOne_div_threeTwenty`
 - `erdos249.residue_class_totient_series_irrational` (#249, lean_kernel_checked): irrationality of every residue-class totient series (A_m = sum (phi(n) mod m)/2^n for m >= 3, and any nonzero integer observable of phi mod m at a unit residue)
-  - compared as `PalomarCorpus.ExternalVerification249ResidueClassTotientSeries.residue_series_irrational`
-  - compared as `PalomarCorpus.ExternalVerification249ResidueClassTotientSeries.irrational_totientObservable`
-  - compared as `PalomarCorpus.ExternalVerification249ResidueClassTotientSeries.fixed_resolution_observable_irrational`
-  - compared as `PalomarCorpus.ExternalVerification249ResidueClassTotientSeries.isolated_pulse_separation`
-  - compared as `PalomarCorpus.ExternalVerification249ResidueClassTotientSeries.two_sided_prime_isolation`
-  - compared as `PalomarCorpus.ExternalVerification249ResidueClassTotientSeries.irrational_dyadicValue_of_pulses`
+  - compared as `PalomarCorpus.E249.ResidueClassTotientSeries.residue_series_irrational`
+  - compared as `PalomarCorpus.E249.ResidueClassTotientSeries.irrational_totientObservable`
+  - compared as `PalomarCorpus.E249.ResidueClassTotientSeries.fixed_resolution_observable_irrational`
+  - compared as `PalomarCorpus.E249.ResidueClassTotientSeries.isolated_pulse_separation`
+  - compared as `PalomarCorpus.E249.ResidueClassTotientSeries.two_sided_prime_isolation`
+  - compared as `PalomarCorpus.E249.ResidueClassTotientSeries.irrational_dyadicValue_of_pulses`
+- `erdos249.termwise_dyadic_window_vacuous` (#249, lean_kernel_checked): termwise dyadic windows exclude no denominator (Erdős-1948 transfer is vacuous for the totient)
+  - compared as `PalomarCorpus.E249.TermwiseDyadicVacuous.termwise_dyadic_window_vacuous`
+- `erdos249.totient_rigidity_theorems` (#249, lean_kernel_checked): two kernel-checked rigidity theorems for the totient: one exact prime law plus o(n) error forces phi; the exact even law plus eventual congruence modulo every integer forces phi
+  - compared as `PalomarCorpus.E249.TotientRigidity.totient_prime_mul_of_dvd`
+  - compared as `PalomarCorpus.E249.TotientRigidity.totient_two_mul_of_even`
+  - compared as `PalomarCorpus.E249.TotientRigidity.one_prime_law_and_little_o_forces_totient`
+  - compared as `PalomarCorpus.E249.TotientRigidity.totient_prime_mul_of_not_dvd`
+  - compared as `PalomarCorpus.E249.TotientRigidity.even_law_and_eventual_congruence_forces_totient`
+  - compared as `PalomarCorpus.E249.TotientRigidity.totient_two_mul_of_odd`
 - `erdos251.actual_prime_gap_tail` (#251, lean_kernel_checked): actual prime-gap rational-candidate representation, unconditional actual-gap recurrence, denominator-driven eventual integral shift, and the fixed-shift smallness obstruction
-  - compared as `PalomarCorpus.ExternalVerification251ActualPrimeGapTail.exists_rationalPrimeGapTailState_representation_of_not_irrational`
-  - compared as `PalomarCorpus.ExternalVerification251ActualPrimeGapTail.rationalPrimeGapTailState_recurrence`
-  - compared as `PalomarCorpus.ExternalVerification251ActualPrimeGapTail.rationalPrimeGapTailShift_eventuallyIntegral`
-  - compared as `PalomarCorpus.ExternalVerification251ActualPrimeGapTail.rationalPrimeGapTail_has_positive_shift_not_eventually_small`
+  - compared as `PalomarCorpus.E251.ActualPrimeGapTail.exists_rationalPrimeGapTailState_representation_of_not_irrational`
+  - compared as `PalomarCorpus.E251.ActualPrimeGapTail.rationalPrimeGapTailState_recurrence`
+  - compared as `PalomarCorpus.E251.ActualPrimeGapTail.rationalPrimeGapTailShift_eventuallyIntegral`
+  - compared as `PalomarCorpus.E251.ActualPrimeGapTail.rationalPrimeGapTail_has_positive_shift_not_eventually_small`
+- `erdos251.affine_circularity` (#251, lean_kernel_checked): signed two-window normal form and exact affine and fixed-lattice circularity equivalences
+  - compared as `PalomarCorpus.E251.AffineCircularity.adjacent_small_mismatch_iff_signed_two_window`
+  - compared as `PalomarCorpus.E251.AffineCircularity.cofinal_affinePowTwo_escape_iff_not_eventuallyIntegral`
+  - compared as `PalomarCorpus.E251.AffineCircularity.cofinal_blockResidue_escape_iff_not_eventuallyIntegral`
 - `erdos251.free_pair_equivalence` (#251, lean_kernel_checked): Free-pair lattice and the equivalence of irrationality with cofinal free-pair nonintegrality
-  - compared as `PalomarCorpus.ExternalVerification251FreePairEquivalence.irrational_primeGap_tsum_iff_cofinalFreePairNonintegral`
-  - compared as `PalomarCorpus.ExternalVerification251FreePairEquivalence.irrational_initial_iff_cofinalFreePairNonintegral`
-  - compared as `PalomarCorpus.ExternalVerification251FreePairEquivalence.cofinalFreePairNonintegral_iff_cofinalNonintegralTailShifts`
-  - compared as `PalomarCorpus.ExternalVerification251FreePairEquivalence.exists_free_pair_lattice`
-  - compared as `PalomarCorpus.ExternalVerification251FreePairEquivalence.free_pair_integral_iff_modEq`
-  - compared as `PalomarCorpus.ExternalVerification251FreePairEquivalence.primeGapRealTail_recurrence`
-  - compared as `PalomarCorpus.ExternalVerification251FreePairEquivalence.primeGapRealTail_zero`
+  - compared as `PalomarCorpus.E251.FreePairEquivalence.irrational_primeGap_tsum_iff_cofinalFreePairNonintegral`
+  - compared as `PalomarCorpus.E251.FreePairEquivalence.irrational_initial_iff_cofinalFreePairNonintegral`
+  - compared as `PalomarCorpus.E251.FreePairEquivalence.cofinalFreePairNonintegral_iff_cofinalNonintegralTailShifts`
+  - compared as `PalomarCorpus.E251.FreePairEquivalence.exists_free_pair_lattice`
+  - compared as `PalomarCorpus.E251.FreePairEquivalence.free_pair_integral_iff_modEq`
+  - compared as `PalomarCorpus.E251.FreePairEquivalence.primeGapRealTail_recurrence`
+  - compared as `PalomarCorpus.E251.FreePairEquivalence.primeGapRealTail_zero`
 - `erdos251.kernel_denominator_floor_2e589` (#251, lean_kernel_checked): Kernel-decided denominator floor b ≥ 2^589 for the prime series and the prime-gap series
-  - compared as `PalomarCorpus.ExternalVerification251KernelDenominatorFloor.cert_10000`
-  - compared as `PalomarCorpus.ExternalVerification251KernelDenominatorFloor.den_bound_of_certCheck`
-  - compared as `PalomarCorpus.ExternalVerification251KernelDenominatorFloor.kernel_denominator_floor`
-  - compared as `PalomarCorpus.ExternalVerification251KernelDenominatorFloor.kernel_denominator_floor_primeGap`
+  - compared as `PalomarCorpus.E251.KernelDenominatorFloor.cert_10000`
+  - compared as `PalomarCorpus.E251.KernelDenominatorFloor.den_bound_of_certCheck`
+  - compared as `PalomarCorpus.E251.KernelDenominatorFloor.kernel_denominator_floor`
+  - compared as `PalomarCorpus.E251.KernelDenominatorFloor.kernel_denominator_floor_primeGap`
+- `erdos251.lcm_diagonal_criterion` (#251, lean_kernel_checked): exact one-shift and cofinal dyadic-tail rationality classifier, multiplicative-order lattice, and generic deciding-schedule criterion with LCM specialization
+  - compared as `PalomarCorpus.E251.LcmDiagonalCriterion.notIrrationalInitial_iff_exists_integral_positive_tailShift`
+  - compared as `PalomarCorpus.E251.LcmDiagonalCriterion.irrationalInitial_iff_cofinalNonintegralTailShifts`
+  - compared as `PalomarCorpus.E251.LcmDiagonalCriterion.tailShiftIntegral_iff_orderOf_dvd`
+  - compared as `PalomarCorpus.E251.LcmDiagonalCriterion.irrationalInitial_iff_nonintegral_on_schedule`
+  - compared as `PalomarCorpus.E251.LcmDiagonalCriterion.irrationalInitial_iff_allLcmDiagonal_nonintegral`
 - `erdos251.polynomial_shift_countermodel` (#251, lean_kernel_checked): exact polynomial shift countermodel eliminating coarse-gap strategies
-  - compared as `PalomarCorpus.ExternalVerification251PolynomialShiftCountermodel.polynomialGapTailCountermodel`
+  - compared as `PalomarCorpus.E251.PolynomialShiftCountermodel.polynomialGapTailCountermodel`
 - `erdos251.prime_gap_identity` (#251, lean_kernel_checked): unconditional convergence, exact prime/prime-gap summation-by-parts identity, and equivalent irrationality status
-  - compared as `PalomarCorpus.ExternalVerification251PrimeGapIdentity.prime0_le_polynomial`
-  - compared as `PalomarCorpus.ExternalVerification251PrimeGapIdentity.primeSeries_summable`
-  - compared as `PalomarCorpus.ExternalVerification251PrimeGapIdentity.primeGapSeries_summable`
-  - compared as `PalomarCorpus.ExternalVerification251PrimeGapIdentity.primeSeries_eq_two_add_primeGapSeries`
-  - compared as `PalomarCorpus.ExternalVerification251PrimeGapIdentity.primeSeries_irrational_iff_primeGapSeries`
-  - compared as `PalomarCorpus.ExternalVerification251PrimeGapIdentity.primeDisplayedSeries_eq_four_add_two_primeGapSeries`
-  - compared as `PalomarCorpus.ExternalVerification251PrimeGapIdentity.primeDisplayedSeries_irrational_iff_primeGapSeries`
+  - compared as `PalomarCorpus.E251.PrimeGapIdentity.prime0_le_polynomial`
+  - compared as `PalomarCorpus.E251.PrimeGapIdentity.primeSeries_summable`
+  - compared as `PalomarCorpus.E251.PrimeGapIdentity.primeGapSeries_summable`
+  - compared as `PalomarCorpus.E251.PrimeGapIdentity.primeSeries_eq_two_add_primeGapSeries`
+  - compared as `PalomarCorpus.E251.PrimeGapIdentity.primeSeries_irrational_iff_primeGapSeries`
+  - compared as `PalomarCorpus.E251.PrimeGapIdentity.primeDisplayedSeries_eq_four_add_two_primeGapSeries`
+  - compared as `PalomarCorpus.E251.PrimeGapIdentity.primeDisplayedSeries_irrational_iff_primeGapSeries`
 - `erdos257.achievement_set_geometry` (#257, lean_kernel_checked): achievement-set topology and exact volume dichotomy
-  - compared as `PalomarCorpus.ExternalVerification257AchievementSetGeometry.volume_supportedMersenneAchievementSet_eq_zero_of_rat_value`
-  - compared as `PalomarCorpus.ExternalVerification257AchievementSetGeometry.supportedMersenneAchievementSet_geometry_and_volume`
+  - compared as `PalomarCorpus.E257.AchievementSetGeometry.volume_supportedMersenneAchievementSet_eq_zero_of_rat_value`
+  - compared as `PalomarCorpus.E257.AchievementSetGeometry.supportedMersenneAchievementSet_geometry_and_volume`
+- `erdos257.actual_upper_successor` (#257, lean_kernel_checked): exact realized upper/right packet lower envelope equivalence with a pulse-free successor boundary, yielding a conditional infinite-support half-value counterexample and universal refutation
+  - compared as `PalomarCorpus.E257.ActualUpperSuccessor.actualUpperRightPacketLinearEscape_iff_successorLinearEscape`
+  - compared as `PalomarCorpus.E257.ActualUpperSuccessor.actualUpperSuccessorLinearEscape_completeCounterexample`
+- `erdos257.boolean_mobius_carry` (#257, lean_kernel_checked): exact Boolean-Mobius carry certificate equivalence and support reconstruction
+  - compared as `PalomarCorpus.E257.BooleanMobiusCarry.exists_booleanMobiusCarry_of_support_fraction`
+  - compared as `PalomarCorpus.E257.BooleanMobiusCarry.support_fraction_of_booleanMobiusCarry`
+  - compared as `PalomarCorpus.E257.BooleanMobiusCarry.BooleanMobiusCarryCertificate.reconstructsSupport`
+  - compared as `PalomarCorpus.E257.BooleanMobiusCarry.exists_normalized_support_fraction_iff_exists_booleanMobiusCarry`
+- `erdos257.divisibility_weighted_support_irrationality` (#257, lean_kernel_checked): Finite divisibility-weighted mass implies hereditary all-base irrationality, including explicit reciprocal-divergent short-gap supports.
+  - compared as `PalomarCorpus.E257.DivisibilityWeightedSupport.divisibilityWeightedClaim`
+- `erdos257.fair_coding_lebesgue_pushforward` (#257, lean_kernel_checked): Fair Mersenne digit coding gives restricted Lebesgue measure and almost-everywhere irrationality
+  - compared as `PalomarCorpus.E257.FairCoding.fairCoding_pushforward_eq_volume_restrict`
+  - compared as `PalomarCorpus.E257.FairCoding.fairCoding_rational_values_null`
+  - compared as `PalomarCorpus.E257.FairCoding.measurePreserving_fairCoding`
 - `erdos257.finite_period_noncollapse` (#257, lean_kernel_checked): complete finite-period noncollapse with denominator growth
-  - compared as `PalomarCorpus.ExternalVerification257FinitePeriodNoncollapse.finite_period_noncollapse_rat_den`
-  - compared as `PalomarCorpus.ExternalVerification257FinitePeriodNoncollapse.lcm_lt_den_finiteErdosSum`
+  - compared as `PalomarCorpus.E257.FinitePeriodNoncollapse.finite_period_noncollapse_rat_den`
+  - compared as `PalomarCorpus.E257.FinitePeriodNoncollapse.lcm_lt_den_finiteErdosSum`
+- `erdos257.four_ninths_square_root_repair_windows` (#257, lean_kernel_checked): 4/9 membership is equivalent to a repair at some N in every interval [K,K+2 floor(sqrt K)+12). A single strict-increase window excludes membership.
+  - compared as `PalomarCorpus.E257.FourNinthsRepairWindows.four_ninths_mem_iff_repair_sqrt_windows`
+  - compared as `PalomarCorpus.E257.FourNinthsRepairWindows.four_ninths_not_mem_of_strict_sqrt_window`
+  - compared as `PalomarCorpus.E257.FourNinthsRepairWindows.exists_repair_in_sqrt_window`
+  - compared as `PalomarCorpus.E257.FourNinthsRepairWindows.four_ninths_mem_iff_repairCofinal`
+- `erdos257.generic_real_target_square_root_repair_criterion` (#257, lean_kernel_checked): For every real x >= 0, define Q_N as floor_nat(2^N x) minus the actual greedy support Lambert prefix numerator. Membership of x in the Mersenne achievement set is equivalent to cofinal nonincreases of Q_N, to a nonincrease in every [K,K+2 floor(sqrt K)+12), to cofinal Q_N <= the actual next divisor load, and to cofinal Q_N <= N+1. One strict-increase window excludes membership.
+  - compared as `PalomarCorpus.E257.GeneralRepairCriterion.mem_iff_greedyBinaryDefect_cofinal_repairs`
+  - compared as `PalomarCorpus.E257.GeneralRepairCriterion.mem_iff_greedyBinaryDefect_sqrt_windows`
+- `erdos257.literal_weighted_cover_separation` (#257, lean_kernel_checked): A literal weighted host outside every strengthened cover, with mixed hereditary irrationality
+  - compared as `PalomarCorpus.E257.LiteralWeightedCover.exists_weighted_not_strengthened_host`
+  - compared as `PalomarCorpus.E257.LiteralWeightedCover.exists_weighted_obstruction_with_mixed_heredity`
+- `erdos257.mixed_weighted_cover_synchronisation` (#257, lean_kernel_checked): Mixed weighted and strengthened-cover supports have hereditary all-base irrationality
+  - compared as `PalomarCorpus.E257.MixedWeightedCover.mixedSupportClaim`
+- `erdos257.positive_skip_equivalence` (#257, lean_kernel_checked): strict positivity of finite half-greedy residuals and exact cofinal positive-skip equivalence
+  - compared as `PalomarCorpus.E257.PositiveSkipEquivalence.greedyMersenneRemainderRat_half_pos`
+  - compared as `PalomarCorpus.E257.PositiveSkipEquivalence.cofinalPositiveHalfGreedySkips_iff_half_mem`
+- `erdos257.rational_membership_criterion` (#257, lean_kernel_checked): Rational membership in the Mersenne achievement set is equivalent to cofinal greedy skips
+  - compared as `PalomarCorpus.E257.RationalMembership.greedyMersenneSkippedSupport_infinite_iff_cofinal_skips`
+  - compared as `PalomarCorpus.E257.RationalMembership.rat_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite`
+  - compared as `PalomarCorpus.E257.RationalMembership.rat_mem_mersenneAchievementSet_iff_cofinal_greedy_skips`
+  - compared as `PalomarCorpus.E257.RationalMembership.infinite_greedyMersenneSkippedSupport_of_rat_mem`
 - `erdos257.rational_tail_rigidity` (#257, lean_kernel_checked): support-uniform rational-tail rigidity: unbounded integral states, sublogarithmic divisor-coverage gaps, and sharp odd/dyadic reciprocal-mass constraints
-  - compared as `PalomarCorpus.ExternalVerification257RationalTailRigidity.exists_unbounded_shifted_odd_tail_nat_state_of_support_fraction`
-  - compared as `PalomarCorpus.ExternalVerification257RationalTailRigidity.supportCoeffZeroWindow_length_le_eps_logb_add`
-  - compared as `PalomarCorpus.ExternalVerification257RationalTailRigidity.one_div_oddOrder_le_reciprocalMass_of_support_fraction`
-  - compared as `PalomarCorpus.ExternalVerification257RationalTailRigidity.dyadic_support_fraction_reciprocalMass_diverges_or_gt_one`
+  - compared as `PalomarCorpus.E257.RationalTailRigidity.exists_unbounded_shifted_odd_tail_nat_state_of_support_fraction`
+  - compared as `PalomarCorpus.E257.RationalTailRigidity.supportCoeffZeroWindow_length_le_eps_logb_add`
+  - compared as `PalomarCorpus.E257.RationalTailRigidity.one_div_oddOrder_le_reciprocalMass_of_support_fraction`
+  - compared as `PalomarCorpus.E257.RationalTailRigidity.dyadic_support_fraction_reciprocalMass_diverges_or_gt_one`
 - `erdos257.reciprocal_support` (#257, lean_kernel_checked): irrationality for every infinite reciprocal-summable support at every integer base
-  - compared as `PalomarCorpus.ExternalVerification257ReciprocalSupport.irrational_supportPowerSeries_of_summable_reciprocal`
+  - compared as `PalomarCorpus.E257.ReciprocalSupport.irrational_supportPowerSeries_of_summable_reciprocal`
+- `erdos257.scaled_greedy_trap` (#257, lean_kernel_checked): exact scaled greedy-trap equality, exponential escape off the achievement set, cofinal bounded-return characterization, and rational lower-separatrix criteria including one over twenty-one
+  - compared as `PalomarCorpus.E257.ScaledGreedyTrap.mersenneAchievementSet_eq_scaledGreedyTrap`
+  - compared as `PalomarCorpus.E257.ScaledGreedyTrap.scaledGreedyRemainder_tendsto_atTop_of_not_mem`
+  - compared as `PalomarCorpus.E257.ScaledGreedyTrap.mem_mersenneAchievementSet_iff_scaledRemainder_cofinallyBounded`
+  - compared as `PalomarCorpus.E257.ScaledGreedyTrap.rat_mem_mersenneAchievementSet_iff_scaledLowerBranchCofinally`
+  - compared as `PalomarCorpus.E257.ScaledGreedyTrap.one_div_twentyOne_mem_iff_scaledLowerBranchCofinally`
+  - compared as `PalomarCorpus.E257.ScaledGreedyTrap.one_div_twentyOne_mem_iff_scaledRemainder_cofinallyBounded`
+- `erdos257.terminal_scaled_vanishing` (#257, lean_kernel_checked): terminal scaled vanishing produces an infinite-support value one half and refutes the universal irrationality assertion
+  - compared as `PalomarCorpus.E257.TerminalScaledVanishing.terminalScaledVanishing_completeCounterexample`
+- `erdos257.twenty_one_fatal_branch` (#257, lean_kernel_checked): exact denominator-twenty-one fatal-branch dichotomy, closed-state compactness, permanent escape, and affine supercapacity normal form
+  - compared as `PalomarCorpus.E257.TwentyOneFatalBranch.twentyOneClosedRow_forces_quotientGreedy`
+  - compared as `PalomarCorpus.E257.TwentyOneFatalBranch.one_div_twenty_one_mem_mersenneAchievementSet_of_closedLowerStates`
+  - compared as `PalomarCorpus.E257.TwentyOneFatalBranch.one_div_twenty_one_mem_iff_not_fatalAlignedBranch`
+  - compared as `PalomarCorpus.E257.TwentyOneFatalBranch.twentyOneFatalAlignedBranch_eventually_strict_supercapacity`
+  - compared as `PalomarCorpus.E257.TwentyOneFatalBranch.twentyOneFatalAlignedBranch_eventually_affine_supercapacity`
+- `erdos257.variable_exponent_fractional_cover_irrationality` (#257, lean_kernel_checked): Strengthened one-inverse-power positive covers give hereditary all-base irrationality
+  - compared as `PalomarCorpus.E257.VariableExponentCover.strengthenedPositiveCoverClaim`
+- `erdos257.weighted_support_dyadic_observation_summability` (#257, lean_kernel_checked): For arbitrary support A and nonnegative alpha on A, summability of indicator_(0<a and a in A) alpha(a)/a implies summability of j -> 2^(-j) sum_(0<a<=Q 2^j,a in A) alpha(a). Every finite sum over dyadic scales is at most 2Q times the weighted reciprocal total; the means over j=M,...,2M-1 tend to zero. Summability of alpha itself is not assumed.
+  - compared as `PalomarCorpus.E257.DyadicObservationSummability.summable_dyadic_supportObservationMass`
+  - compared as `PalomarCorpus.E257.DyadicObservationSummability.tendsto_dyadic_supportObservationMass_mean`
+  - compared as `PalomarCorpus.E257.DyadicObservationSummability.dyadic_supportObservationMass_sum_le`
 - `erdos269.actual_shell_orbit` (#269, lean_kernel_checked): actual infinite shell-tail recurrence and integer-or-cofinally-one-over-thirty-one dichotomy
-  - compared as `PalomarCorpus.ExternalVerification269ActualShellOrbit.actual_dyadicShellOrbit_recurrence_and_escape`
+  - compared as `PalomarCorpus.E269.ActualShellOrbit.actual_dyadicShellOrbit_recurrence_and_escape`
+- `erdos269.all_scale_lattice` (#269, lean_kernel_checked): symmetric prime-power boundary clearing, rationality-to-all-scale lattice, and normalized-tail collision reduction
+  - compared as `PalomarCorpus.E269.AllScaleLattice.qsmul_normalizedTailState_eq_int_of_value_eq_rat`
+  - compared as `PalomarCorpus.E269.AllScaleLattice.exists_normalizedTailState_collision_of_value_eq_rat`
+  - compared as `PalomarCorpus.E269.AllScaleLattice.smoothHeight_mul_prime_dvd_boundaryHeight`
+  - compared as `PalomarCorpus.E269.AllScaleLattice.dyadicShellTsumTailR235_eq_range_add`
+  - compared as `PalomarCorpus.E269.AllScaleLattice.heightNormalizer235_mul_windowMass_eq_int`
+  - compared as `PalomarCorpus.E269.AllScaleLattice.two_mul_heightNormalizer235`
+- `erdos269.carry_mechanism` (#269, lean_kernel_checked): conditional carry-lift extinction from two channel anchors, sharp four-state first-block obstruction, exact weighted block defect, residue-coboundary decomposition, and cofinal local-window consumer
+  - compared as `PalomarCorpus.E269.CarryMechanism.no_carryLift_of_errorBound_below_twoPow`
+  - compared as `PalomarCorpus.E269.CarryMechanism.no_unitAccurateLift_with_twoAnchors_and_firstTwoBlockNull`
+  - compared as `PalomarCorpus.E269.CarryMechanism.perturbation_eq_zero_of_blockNull_twoAnchors`
+  - compared as `PalomarCorpus.E269.CarryMechanism.carryLift_blockDefect`
+  - compared as `PalomarCorpus.E269.CarryMechanism.no_positive_reducedCarry_of_cofinalLocalWindowEscape`
+  - compared as `PalomarCorpus.E269.CarryMechanism.carry_eq_residueDigit_add_coboundary`
+- `erdos269.integral_branch_pinning` (#269, lean_kernel_checked): surviving-window identification with the true normalized state, exact finite-depth mixed-radix telescope, integral upward closure, and actual pinning
+  - compared as `PalomarCorpus.E269.IntegralBranchPinning.surviving_window_orbit_eq_true_state`
+  - compared as `PalomarCorpus.E269.IntegralBranchPinning.trueNormalizedState_eq_telescope`
+  - compared as `PalomarCorpus.E269.IntegralBranchPinning.integral_state_upward_closed`
+  - compared as `PalomarCorpus.E269.IntegralBranchPinning.trueNormalizedState_pinning`
 - `erdos269.rationality_carry_bridge` (#269, lean_kernel_checked): Rationality-to-reduced-carry bridge for the actual series, with an explicit quadratic state width
-  - compared as `PalomarCorpus.ExternalVerification269WindowEscapeEquivalence.exists_reducedCarry_of_value_eq_rat`
+  - compared as `PalomarCorpus.E269.WindowEscapeEquivalence.exists_reducedCarry_of_value_eq_rat`
 - `erdos269.three_prime_structure` (#269, lean_kernel_checked): exact running-LCM identity, logarithmic-cell constancy, exact jump count, height-fibre normal form, quadratic shell bound, arbitrary-order nonsingular minors, and no finite exact separation
-  - compared as `PalomarCorpus.ExternalVerification269ThreePrimeStructure.smoothPrefixLcm_eq_threePrimeHeight`
-  - compared as `PalomarCorpus.ExternalVerification269ThreePrimeStructure.threePrimeKernelQ_eq_of_sameLogCell`
-  - compared as `PalomarCorpus.ExternalVerification269ThreePrimeStructure.threePrimePositiveJumpSet_card`
-  - compared as `PalomarCorpus.ExternalVerification269ThreePrimeStructure.finiteSmoothKernelSum_groupedByHeight`
-  - compared as `PalomarCorpus.ExternalVerification269ThreePrimeStructure.smoothExponentShell_card_quadratic`
-  - compared as `PalomarCorpus.ExternalVerification269ThreePrimeStructure.kernel_235_minor_eq_neg_one_fifteen`
-  - compared as `PalomarCorpus.ExternalVerification269ThreePrimeStructure.exists_uniform_nonsingular_threePrimeKernel_minor`
-  - compared as `PalomarCorpus.ExternalVerification269ThreePrimeStructure.threePrimeKernel_infiniteRank_and_noFiniteSeparation`
+  - compared as `PalomarCorpus.E269.ThreePrimeStructure.smoothPrefixLcm_eq_threePrimeHeight`
+  - compared as `PalomarCorpus.E269.ThreePrimeStructure.threePrimeKernelQ_eq_of_sameLogCell`
+  - compared as `PalomarCorpus.E269.ThreePrimeStructure.threePrimePositiveJumpSet_card`
+  - compared as `PalomarCorpus.E269.ThreePrimeStructure.finiteSmoothKernelSum_groupedByHeight`
+  - compared as `PalomarCorpus.E269.ThreePrimeStructure.smoothExponentShell_card_quadratic`
+  - compared as `PalomarCorpus.E269.ThreePrimeStructure.kernel_235_minor_eq_neg_one_fifteen`
+  - compared as `PalomarCorpus.E269.ThreePrimeStructure.exists_uniform_nonsingular_threePrimeKernel_minor`
+  - compared as `PalomarCorpus.E269.ThreePrimeStructure.threePrimeKernel_infiniteRank_and_noFiniteSeparation`
 - `erdos269.window_escape_equivalence` (#269, lean_kernel_checked): The cofinal local-window escape producer is exactly equivalent to irrationality of the {2,3,5} running-LCM series
-  - compared as `PalomarCorpus.ExternalVerification269WindowEscapeEquivalence.actualCofinalLocalWindowEscape_iff_irrational_value`
-  - compared as `PalomarCorpus.ExternalVerification269WindowEscapeEquivalence.actualCofinalLocalWindowEscape_iff`
-  - compared as `PalomarCorpus.ExternalVerification269WindowEscapeEquivalence.cofinalLocalWindowEscape_of_irrational`
-  - compared as `PalomarCorpus.ExternalVerification269WindowEscapeEquivalence.cofinalLocalWindowEscape_of_irrational_of_quadratic`
-  - compared as `PalomarCorpus.ExternalVerification269WindowEscapeEquivalence.exists_reducedCarry_of_value_eq_rat`
-  - compared as `PalomarCorpus.ExternalVerification269WindowEscapeEquivalence.trueNormalizedState_window`
-  - compared as `PalomarCorpus.ExternalVerification269WindowEscapeEquivalence.near_integer_of_residue_le_general`
-  - compared as `PalomarCorpus.ExternalVerification269WindowEscapeEquivalence.exists_pow_gt_quadratic`
+  - compared as `PalomarCorpus.E269.WindowEscapeEquivalence.actualCofinalLocalWindowEscape_iff_irrational_value`
+  - compared as `PalomarCorpus.E269.WindowEscapeEquivalence.actualCofinalLocalWindowEscape_iff`
+  - compared as `PalomarCorpus.E269.WindowEscapeEquivalence.cofinalLocalWindowEscape_of_irrational`
+  - compared as `PalomarCorpus.E269.WindowEscapeEquivalence.cofinalLocalWindowEscape_of_irrational_of_quadratic`
+  - compared as `PalomarCorpus.E269.WindowEscapeEquivalence.exists_reducedCarry_of_value_eq_rat`
+  - compared as `PalomarCorpus.E269.WindowEscapeEquivalence.trueNormalizedState_window`
+  - compared as `PalomarCorpus.E269.WindowEscapeEquivalence.near_integer_of_residue_le_general`
+  - compared as `PalomarCorpus.E269.WindowEscapeEquivalence.exists_pow_gt_quadratic`
+- `erdos68.adjacent_unit_carry_window` (#68, lean_kernel_checked): adjacent unit-carry window characterization and exact two-step factorization
+  - compared as `PalomarCorpus.E68.AdjacentUnitCarryWindow.consecutive_unit_carries_iff_positive_offset_le_den`
+  - compared as `PalomarCorpus.E68.AdjacentUnitCarryWindow.twoStep_den_mul_transitionNormalizers`
+  - compared as `PalomarCorpus.E68.AdjacentUnitCarryWindow.adjacentUnitCarryWindowDen_eq_twoStep_den`
+  - compared as `PalomarCorpus.E68.AdjacentUnitCarryWindow.adjacentUnitCarryWindowOffset_eq_twoStep_factorization`
 - `erdos68.channel_radius` (#68, lean_kernel_checked): quantitative square-subsequence channel-radius lower bound, exclusion of eventual three-halves upper bounds, and exact failure of little-o decay
-  - compared as `PalomarCorpus.ExternalVerification68ChannelRadius.square_subsequence_radius_three_halves_lower`
-  - compared as `PalomarCorpus.ExternalVerification68ChannelRadius.no_eventual_square_subsequence_three_halves_upper`
-  - compared as `PalomarCorpus.ExternalVerification68ChannelRadius.not_isLittleO_square_subsequence_radius`
-  - compared as `PalomarCorpus.ExternalVerification68ChannelRadius.square_subsequence_radius_cubic_lower`
-  - compared as `PalomarCorpus.ExternalVerification68ChannelRadius.no_eventual_square_subsequence_cubic_upper`
-  - compared as `PalomarCorpus.ExternalVerification68ChannelRadius.sharp_radius_satisfies_square_log_constraint`
+  - compared as `PalomarCorpus.E68.ChannelRadius.square_subsequence_radius_three_halves_lower`
+  - compared as `PalomarCorpus.E68.ChannelRadius.no_eventual_square_subsequence_three_halves_upper`
+  - compared as `PalomarCorpus.E68.ChannelRadius.not_isLittleO_square_subsequence_radius`
+  - compared as `PalomarCorpus.E68.ChannelRadius.square_subsequence_radius_cubic_lower`
+  - compared as `PalomarCorpus.E68.ChannelRadius.no_eventual_square_subsequence_cubic_upper`
+  - compared as `PalomarCorpus.E68.ChannelRadius.sharp_radius_satisfies_square_log_constraint`
 - `erdos68.companion_orbit_boundary` (#68, lean_kernel_checked): Companion-orbit rationality boundary for the #68 series
-  - compared as `PalomarCorpus.ExternalVerification68CompanionOrbitBoundary.companionOrbitBoundary_strictSuccessorCarry`
-  - compared as `PalomarCorpus.ExternalVerification68CompanionOrbitBoundary.companionOrbitBoundary_genericShift`
-  - compared as `PalomarCorpus.ExternalVerification68CompanionOrbitBoundary.companionOrbitBoundary_factorialGapSeries`
-  - compared as `PalomarCorpus.ExternalVerification68CompanionOrbitBoundary.tsum_unitFactTerm_eq_exp_one_sub_two`
+  - compared as `PalomarCorpus.E68.CompanionOrbitBoundary.companionOrbitBoundary_strictSuccessorCarry`
+  - compared as `PalomarCorpus.E68.CompanionOrbitBoundary.companionOrbitBoundary_genericShift`
+  - compared as `PalomarCorpus.E68.CompanionOrbitBoundary.companionOrbitBoundary_factorialGapSeries`
+  - compared as `PalomarCorpus.E68.CompanionOrbitBoundary.tsum_unitFactTerm_eq_exp_one_sub_two`
+- `erdos68.exact_low_channel_moment_ideal` (#68, lean_kernel_checked): Exact attainable low-channel moment ideal with a content-one primitive generator
+  - compared as `PalomarCorpus.E68.MomentIdeal.exact_moment_ideal_with_primitive_attainment`
+  - compared as `PalomarCorpus.E68.MomentIdeal.attainable_moment_ideal`
+  - compared as `PalomarCorpus.E68.MomentIdeal.minimum_moment_content_one`
+  - compared as `PalomarCorpus.E68.MomentIdeal.minimumMoment_independent_prime`
+- `erdos68.finite_size_denominator_exclusion_10e12040` (#68, lean_kernel_checked): Kernel-checked finite denominator floor q > 10^12040
+  - compared as `PalomarCorpus.E68.FiniteDenominator.finite_denominator_exclusion`
+- `erdos68.full_residual_integer_class` (#68, lean_kernel_checked): Full residual transparency and invariance modulo the integers
+  - compared as `PalomarCorpus.E68.ResidualIntegerClass.zero_moment_residual_integral`
+  - compared as `PalomarCorpus.E68.ResidualIntegerClass.residual_transparency`
+  - compared as `PalomarCorpus.E68.ResidualIntegerClass.equal_moment_residual_integer_difference`
+  - compared as `PalomarCorpus.E68.ResidualIntegerClass.summable_fullResidual`
+- `erdos68.kempner_index_denominator_exclusion` (#68, lean_kernel_checked): Kempner-index exclusion: a non-unit carry at m forces q ∤ (m−1)!
+  - compared as `PalomarCorpus.E68.KempnerIndex.rational_denominator_not_dvd_pred_factorial_of_nonunit_carry`
+  - compared as `PalomarCorpus.E68.KempnerIndex.rational_denominator_not_dvd_fiftynine_factorial`
+- `erdos68.moving_factor_scale_split` (#68, lean_kernel_checked): one-moving-private-factor scale split, arbitrary split-factor normalized-collision criterion, and fixed-owner absorption no-go
+  - compared as `PalomarCorpus.E68.MovingFactorScaleSplit.movingPrivateFactorScaleSplit_implies_irrational`
+  - compared as `PalomarCorpus.E68.MovingFactorScaleSplit.splitFactorNormalizedCollision_implies_irrational`
+  - compared as `PalomarCorpus.E68.MovingFactorScaleSplit.fixedOwnerPair_eventually_absorbed`
+- `erdos68.multiplicative_successor_rigidity` (#68, lean_kernel_checked): Multiplicative rigidity of the strict successors, and irrationality from one fixed modulus
+  - compared as `PalomarCorpus.E68.MultiplicativeSuccessorRigidity.irrational_factorialGapSeries_of_cofinal_odd_gapSuccessor`
+  - compared as `PalomarCorpus.E68.MultiplicativeSuccessorRigidity.gapSuccessor_eq_mul_pred_of_dvd`
+  - compared as `PalomarCorpus.E68.MultiplicativeSuccessorRigidity.gapSuccessor_dvd_of_eventually_dvd`
+  - compared as `PalomarCorpus.E68.MultiplicativeSuccessorRigidity.factorial_mul_gapSuccessor_eq_of_eventually_dvd`
+  - compared as `PalomarCorpus.E68.MultiplicativeSuccessorRigidity.irrational_factorialGapSeries_of_cofinal_not_dvd_gapSuccessor`
+  - compared as `PalomarCorpus.E68.MultiplicativeSuccessorRigidity.not_eventually_odd_gapSuccessor_of_not_irrational`
+  - compared as `PalomarCorpus.E68.MultiplicativeSuccessorRigidity.eventually_dvd_gapSuccessor_of_not_irrational`
+- `erdos68.prime_pole` (#68, lean_kernel_checked): finite prime-pole residue formula
+  - compared as `PalomarCorpus.E68.PrimePole.factorialGapPrefixLCMNumerator_mod_prime`
 - `erdos68.prime_unit_translator` (#68, lean_kernel_checked): exact prime-unit translator profile, integer residual-translation law, and unconditional remote factorial-grid Cramer reduction
-  - compared as `PalomarCorpus.ExternalVerification68PrimeUnitTranslator.primeTranslator_moment_zero`
-  - compared as `PalomarCorpus.ExternalVerification68PrimeUnitTranslator.primeTranslator_channel_zero_of_lt_p`
-  - compared as `PalomarCorpus.ExternalVerification68PrimeUnitTranslator.primeTranslator_channel_at_prime`
-  - compared as `PalomarCorpus.ExternalVerification68PrimeUnitTranslator.primeTranslator_channel_zero_of_p_lt`
-  - compared as `PalomarCorpus.ExternalVerification68PrimeUnitTranslator.primeTranslator_channelResidual_eq_one`
-  - compared as `PalomarCorpus.ExternalVerification68PrimeUnitTranslator.channelResidual_appendPrimeTranslator`
-  - compared as `PalomarCorpus.ExternalVerification68PrimeUnitTranslator.exists_remote_factorialGrid_primeTranslator_reduction`
+  - compared as `PalomarCorpus.E68.PrimeUnitTranslator.primeTranslator_moment_zero`
+  - compared as `PalomarCorpus.E68.PrimeUnitTranslator.primeTranslator_channel_zero_of_lt_p`
+  - compared as `PalomarCorpus.E68.PrimeUnitTranslator.primeTranslator_channel_at_prime`
+  - compared as `PalomarCorpus.E68.PrimeUnitTranslator.primeTranslator_channel_zero_of_p_lt`
+  - compared as `PalomarCorpus.E68.PrimeUnitTranslator.primeTranslator_channelResidual_eq_one`
+  - compared as `PalomarCorpus.E68.PrimeUnitTranslator.channelResidual_appendPrimeTranslator`
+  - compared as `PalomarCorpus.E68.PrimeUnitTranslator.exists_remote_factorialGrid_primeTranslator_reduction`
+- `erdos68.strict_successor_carry` (#68, lean_kernel_checked): fixed companion-orbit rationality boundary and complete strict-successor carry characterization
+  - compared as `PalomarCorpus.E68.StrictSuccessorCarry.companionOrbit_completeCharacterization`
+  - compared as `PalomarCorpus.E68.StrictSuccessorCarry.strictSuccessorCarry_completeCharacterization`
 
 ## Paper-only claims (not manufactured as Comparator coverage)
 
-70 frontier claims remain paper-only, including ordinary-paper
+82 frontier claims remain paper-only, including ordinary-paper
 theorems that have formalized kernels or helpers.
 
 - `erdos1041.all_degree_invariants_and_pinned_witness_connectors` (#1041): Completed trace-curvature measure, sharp nodal Crofton budget 2nR, polygonal contour 1-sin(pi/d), and exact noncritical-hub connectors on the pinned witnesses
@@ -510,6 +997,10 @@ theorems that have formalized kernels or helpers.
 - `erdos1041.low_critical_potential_closure` (#1041): Unconditional all-degree regime: least critical value at most 199/1000, no arity or capacity hypothesis
 - `erdos1041.middle_regime_canonical_hub` (#1041): Middle regime by a canonical hub: the adjacent chord law kappa_n, the central-root family that breaks uniform Fekete rigidity, the exact eta-cap, and the chord-minimum conjecture
 - `erdos1041.near_fekete_inner_model_widening` (#1041): The widened near-Fekete inner model: exact reduction, the hub endpoint cancellation A_j = -K_j, the proper-slice correction, and a withdrawn degree-five refutation
+- `erdos1041.r11_analytic_all_degree_critical_value_budget` (#1041): All-degree critical-value mean and quadratic power budget
+- `erdos1041.r11_reciprocal_log_series` (#1041): Reciprocal logarithmic series with finite Taylor remainder control
+- `erdos1041.r11_three_point_defect_scalar_kernel` (#1041): Three-point defect scalar identity and equality classification
+- `erdos1041.r11_weighted_variance_and_free_point_endpoints` (#1041): Weighted variance identities and free-point endpoint consequences
 - `erdos1041.separated_neck_arity_forcing` (#1041): Under failure the critical spectrum inside a k-root component is compressed to [N_k t, t): a third arity floor, and the independent 1/5 confirmation
 - `erdos1041.sharp_collinear_root_diameter_theorem` (#1041): Sharp collinear root-diameter theorem with Chebyshev equality
 - `erdos1041.sharp_symmetric_merge_envelope` (#1041): Exact capacity-speed identity and the sharp symmetric next-merge envelope with its non-negative fibre defect
@@ -525,6 +1016,7 @@ theorems that have formalized kernels or helpers.
 - `erdos243.counterexample_frontier_profile` (#243): Frontier profile of any counterexample to #243
 - `erdos243.critical_boundary_integer_rounding_rigidity` (#243): Integer rounding under a divergent-reciprocal envelope forces a linear numerator and the Sylvester recurrence at and past the critical constant
 - `erdos243.good_prime_wall_landing_barrier` (#243): Distinct primes of the denominator that never reach the numerator below a ceiling force a rise larger than the wall width at the crossing
+- `erdos243.historical_square_payment` (#243): Erasing a prime power from the reduced denominator costs its square in the accumulated cancellation, however many steps it takes
 - `erdos243.lcm_debt_tail_gcd_sandwich_and_retention` (#243): The tail gcd is sandwiched between the LCM overlap debt and its square, almost every fresh source keeps a prime in the reduced denominator, and simultaneous erasure carries no surcharge
 - `erdos243.lcm_defect_criterion_is_primitive_reduction` (#243): The lcm-weighted defect criterion is the product criterion after primitive reduction
 - `erdos243.polynomial_profile_rigidity` (#243): No eventual or density-one polynomial numerator profile: nine finite-field feedback certificates and the rational-root exclusion
@@ -545,13 +1037,20 @@ theorems that have formalized kernels or helpers.
 - `erdos249.rank_uniform_hankel_and_cyclotomic_denominators` (#249): rank-uniform signed Hankel domination of the Möbius–Mersenne ladder, the parity-corrected exact 2-adic valuation, and the closure of denominator compression inside the cyclotomic lattice (kappa = 0.4282 N^2 prefix denominators, derivative rungs, coupled Schur family)
 - `erdos249.tail_only_denominator_exclusion_10e30` (#249): tail-only denominator exclusion: no S = a/(2^c v) with c <= 10^30 for every odd v <= 999999 and every divisor of 2^h - 1, h in {6,12,24,36,60}
 - `erdos251.certified_cf_denominator_exclusion_10e12041` (#251): Certified continued-fraction denominator floor q > 10^12041 for the prime-gap dyadic series
+- `erdos251.finite_sparse_window_localization` (#251): Exact finite localization of sparse support in a block window
 - `erdos251.first_finite_denominator_exclusion_10e602` (#251): First finite denominator exclusion (superseded)
 - `erdos251.polynomial_gap_countermodel_ratio_bound_receipt` (#251): Python ratio-bound receipt 25/32 for the countermodel value (superseded by the Lean tsum)
+- `erdos251.polynomial_gap_countermodel_series_value_32` (#251): The polynomial countermodel series sums to exactly 32 (Lean tsum)
+- `erdos251.scalar_truncation_consumers` (#251): Kernel-checked scalar consumers for bad-count and truncation-error bounds
 - `erdos257.arbitrary_prime_power_support_irrationality` (#257): Every infinite subset of the prime powers, with fixed dilations and finite modifications, has irrational sum at every integer base, using the reviewed analytic correlation input.
 - `erdos257.periodic_core_sparse_perturbation_probe` (#257): Falsification probes for the periodic-core sparse-perturbation programme pass with zero violations
 - `erdos257.powerful_support_kernel` (#257): Powerful-support irrationality (superseded by the reciprocal-summable theorem)
 - `erdos257.prime_cofactor_repair_obstruction` (#257): Actual modulus-420 tetraprime repair fails infinitely often; an exact 80-anchor prefix gives prime-cofactor jumps at least 7 for multiplier 120 and at least 2 for multiplier 420. General infinite admissible supports defeat every finite fixed multiplier menu.
 - `erdos257.prime_repair_finite_support_rigidity` (#257): Bounded prime jumps characterize finite greedy support; eventual repair at every prime characterizes zero or a single Mersenne atom for targets below one.
+- `erdos257.r11_geometry_measure_ahlfors_api` (#257): Ahlfors ball-growth API with explicit carrier, scale, exponent, constants, restriction, and mass transport
+- `erdos257.r11_geometry_measure_exact_dimension_api` (#257): Exact local dimension, normalization, comparability, and Ahlfors transport API
+- `erdos257.r11_geometry_measure_fourier_api` (#257): Paper Fourier transform with coding-map transports, convolution, and finite-measure injectivity
+- `erdos257.r11_geometry_measure_hausdorff_api` (#257): Hausdorff-measure and dimension bridges from explicit upper and lower ball growth
 - `erdos257.sub_logstar_reciprocal_mass_irrationality` (#257): Rational p/q forces liminf H_A(x)/ell(x) at least lambda_b(p/q)/2; sub-log-star mass implies hereditary all-base irrationality.
 - `erdos257.twenty_one_two_anchor_divergence_density` (#257): Conditional 1/21 divergence density from finite selected anchors, including the 2/5 twelve-anchor bound
 - `erdos269.certified_cf_denominator_exclusion_10e6768` (#269): Certified denominator floor 10^6768 for the {2,3,5} running-LCM series
@@ -567,63 +1066,11 @@ theorems that have formalized kernels or helpers.
 These `lean_kernel_checked` claims have no public Comparator identity yet.
 They stay listed; they are not silently omitted and they are not submitted.
 
-- `erdos1041.cubic_case_complete` (#1041): package=ExternalVerification1041CubicPath
-- `erdos1041.r11_analytic_all_degree_critical_value_budget` (#1041): package=None
-- `erdos1041.r11_reciprocal_log_series` (#1041): package=None
-- `erdos1041.r11_three_point_defect_scalar_kernel` (#1041): package=None
-- `erdos1041.r11_weighted_variance_and_free_point_endpoints` (#1041): package=None
-- `erdos1049.archimedean_homogenisation_cap` (#1049): package=ExternalVerification1049ArchimedeanCap
-- `erdos1049.bezout_plucker_jets` (#1049): package=ExternalVerification1049BezoutPluckerJets
-- `erdos1049.three_halves_outside_published_height_regions` (#1049): package=None
-- `erdos243.historical_square_payment` (#243): package=None
-- `erdos243.primitive_record_two_unit_rigidity` (#243): package=None
-- `erdos243.repair_entropy` (#243): package=ExternalVerification243RepairEntropy
-- `erdos243.summable_negative_mass_rigidity` (#243): package=ExternalVerification243SummableNegativeMassRigidity
-- `erdos243.weighted_lcm_record_excess` (#243): package=ExternalVerification243WeightedRecordExcess
-- `erdos249.actual_lcm_orbit` (#249): package=ExternalVerification249ActualLcmOrbit
-- `erdos249.canonical_mersenne_frontier` (#249): package=ExternalVerification249CanonicalMersenneFrontier
-- `erdos249.carry_rank_frontier` (#249): package=ExternalVerification249CarryRankFrontier
-- `erdos249.farey_window_denominator_exclusion` (#249): package=None
-- `erdos249.full_depth_ray_amplifier` (#249): package=ExternalVerification249FullDepthRayAmplifier
-- `erdos249.prefix_two_adic_valuation_exclusion` (#249): package=None
-- `erdos249.termwise_dyadic_window_vacuous` (#249): package=None
-- `erdos249.totient_rigidity_theorems` (#249): package=None
-- `erdos251.affine_circularity` (#251): package=ExternalVerification251AffineCircularity
-- `erdos251.finite_sparse_window_localization` (#251): package=None
-- `erdos251.lcm_diagonal_criterion` (#251): package=ExternalVerification251LcmDiagonalCriterion
-- `erdos251.polynomial_gap_countermodel_series_value_32` (#251): package=None
-- `erdos251.scalar_truncation_consumers` (#251): package=None
-- `erdos257.actual_upper_successor` (#257): package=ExternalVerification257ActualUpperSuccessor
-- `erdos257.boolean_mobius_carry` (#257): package=ExternalVerification257BooleanMobiusCarry
-- `erdos257.divisibility_weighted_support_irrationality` (#257): package=None
-- `erdos257.fair_coding_lebesgue_pushforward` (#257): package=None
-- `erdos257.four_ninths_square_root_repair_windows` (#257): package=None
-- `erdos257.generic_real_target_square_root_repair_criterion` (#257): package=None
-- `erdos257.literal_weighted_cover_separation` (#257): package=None
-- `erdos257.mixed_weighted_cover_synchronisation` (#257): package=None
-- `erdos257.positive_skip_equivalence` (#257): package=ExternalVerification257PositiveSkipEquivalence
-- `erdos257.r11_geometry_measure_ahlfors_api` (#257): package=None
-- `erdos257.r11_geometry_measure_exact_dimension_api` (#257): package=None
-- `erdos257.r11_geometry_measure_fourier_api` (#257): package=None
-- `erdos257.r11_geometry_measure_hausdorff_api` (#257): package=None
-- `erdos257.rational_membership_criterion` (#257): package=None
-- `erdos257.scaled_greedy_trap` (#257): package=ExternalVerification257ScaledGreedyTrap
-- `erdos257.terminal_scaled_vanishing` (#257): package=ExternalVerification257TerminalScaledVanishing
-- `erdos257.twenty_one_fatal_branch` (#257): package=ExternalVerification257TwentyOneFatalBranch
-- `erdos257.variable_exponent_fractional_cover_irrationality` (#257): package=None
-- `erdos257.weighted_support_dyadic_observation_summability` (#257): package=None
-- `erdos269.all_scale_lattice` (#269): package=ExternalVerification269AllScaleLattice
-- `erdos269.carry_mechanism` (#269): package=ExternalVerification269CarryMechanism
-- `erdos269.integral_branch_pinning` (#269): package=ExternalVerification269IntegralBranchPinning
-- `erdos68.adjacent_unit_carry_window` (#68): package=ExternalVerification68AdjacentUnitCarryWindow
-- `erdos68.exact_low_channel_moment_ideal` (#68): package=None
-- `erdos68.finite_size_denominator_exclusion_10e12040` (#68): package=ExternalVerification68FiniteDenominator
-- `erdos68.full_residual_integer_class` (#68): package=None
-- `erdos68.kempner_index_denominator_exclusion` (#68): package=None
-- `erdos68.moving_factor_scale_split` (#68): package=ExternalVerification68MovingFactorScaleSplit
-- `erdos68.multiplicative_successor_rigidity` (#68): package=None
-- `erdos68.prime_pole` (#68): package=ExternalVerification68PrimePole
-- `erdos68.strict_successor_carry` (#68): package=ExternalVerification68StrictSuccessorCarry
+
+## Documented holds (required Lean not yet on the public v4.30 cut)
+
+These remain required Lean. They are accounted, not Comparator coverage, and not submitted.
+
 
 ## Public Comparator families held out of this roster
 
