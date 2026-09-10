@@ -2,7 +2,7 @@
   "schema": "palomar_corpus_size_receipt_v1",
   "generated_at": "2026-09-10T21:27:58Z",
   "public_root": "/Users/willcook/src/palomar-release/plectis-erdos-lean",
-  "git_head": "01b2464bf2c213eee47b4bac2705150356f45e6d",
+  "git_head": "93b1e7a17e0f2c5d383cef40680b151ef161ff26",
   "selected_families": [
     "ExternalVerification1041CriticalGeometry",
     "ExternalVerification1041CubicPath",
