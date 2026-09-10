@@ -195,6 +195,10 @@ name = "ExternalVerification249TotientKernelBasis"
 globs = ["ExternalVerification249TotientKernelBasis.+"]
 
 [[lean_lib]]
+name = "PalomarCorpus"
+globs = ["PalomarCorpus.+"]
+
+[[lean_lib]]
 name = "Solutions"
 globs = ["Solutions.+"]
 
