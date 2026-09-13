@@ -18,8 +18,12 @@ Exit 0 when every compared declaration was printed and no printed axiom is
 outside its budget. Exit 1 otherwise, naming what is missing or over budget.
 
 The evidence is the log. This script does not run Lean, and a log from a
-different commit proves nothing about this one -- pass ``--expect-commit`` to
-bind the check to the commit you mean.
+different commit proves nothing about this one. ``--expect-commit`` checks
+that the *checkout* whose comparator.json files are read is the commit you
+mean; it cannot establish which commit produced a supplied log, so a
+``--log`` report carries ``source_binding.mode = "log_only"`` and names the
+checkout it was parsed in. Only ``--run-palomar`` binds the audit to the
+source bytes it actually ran on.
 """
 
 from __future__ import annotations
@@ -170,13 +174,23 @@ def main() -> int:
             return 1
 
     selected_entries = entries(palomar=args.run_palomar)
-    binding = None
     if args.run_palomar:
         text, binding = run_palomar_audits(selected_entries)
     else:
         text = sys.stdin.read() if args.log == "-" else Path(args.log).read_text(
             encoding="utf-8", errors="replace"
         )
+        head = subprocess.run(
+            ["git", "rev-parse", "HEAD"], cwd=REPO_ROOT, capture_output=True, text=True
+        ).stdout.strip()
+        # A parsed log establishes what it printed, not which source produced it;
+        # the checkout only supplies the comparator.json budgets it is compared against.
+        binding = {
+            "mode": "log_only",
+            "log_sha256": hashlib.sha256(text.encode("utf-8", "replace")).hexdigest(),
+            "budgets_read_from_checkout": head,
+            "producer": "not established by this parser",
+        }
     printed = parse_log(text)
 
     rows = []

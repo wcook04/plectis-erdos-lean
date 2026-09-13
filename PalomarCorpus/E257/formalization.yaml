@@ -44,7 +44,7 @@ sources:
   id: https://github.com/wcook04/plectis-erdos
   type: other
   relationship: background
-  note: The public problem notes and reasoning records that describe the compared theorems and their relationship to the literature. The principal compared theorem re-proves a result stated in the source marked independently-proves below; the remaining compared theorems are first presented in this repository. None solves the parent Erdős problem.
+  note: The public problem notes and reasoning records that describe the compared theorems and their relationship to the literature. The principal compared theorem re-proves a result stated in the source marked independently-proves below; the remaining compared theorems are proved in this repository, and no priority is claimed for them beyond the checked proofs. None solves the parent Erdős problem.
   license: Apache-2.0
   author_endorsement: participated
 - title: "On the irrationality of certain series"

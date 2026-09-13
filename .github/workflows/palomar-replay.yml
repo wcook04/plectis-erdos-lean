@@ -138,9 +138,9 @@ jobs:
           failures=0
           for n in 68 243 249 251 257 269 1041 1049; do
             run_comparator "PalomarCorpus/E$n/comparator.json" > "artifacts/E$n.log" 2>&1
-            rc=$?
-            echo "E$n exit=$rc"
-            echo "exit_E$n=$rc" >> "$GITHUB_OUTPUT"
+            process_rc=$?
+            rc=$process_rc
+            echo "E$n process_exit=$process_rc"
             grep -v '^Exporting' "artifacts/E$n.log" | tail -n 20
             # A green exit must carry both independent kernel verdicts, as Palomar's
             # protected configuration forces NanoDa; a run that skipped a kernel is not green.
@@ -150,6 +150,12 @@ jobs:
             if [[ "$rc" -eq 0 ]] && ! grep -q '^Lean default kernel accepts the solution' "artifacts/E$n.log"; then
               echo "E$n: exit 0 without a Lean kernel acceptance line"; rc=91
             fi
+            # The per-entry verdict is published only after every guard has run, so a
+            # consumer reading exit_E<n> sees the same result the failure count uses;
+            # the raw process exit is kept separately as diagnostic evidence.
+            echo "E$n exit=$rc"
+            echo "exit_E$n=$rc" >> "$GITHUB_OUTPUT"
+            echo "process_exit_E$n=$process_rc" >> "$GITHUB_OUTPUT"
             [[ "$rc" -eq 0 ]] || failures=$((failures + 1))
           done
           echo "failures=$failures" >> "$GITHUB_OUTPUT"
