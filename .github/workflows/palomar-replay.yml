@@ -35,6 +35,9 @@ jobs:
       LEAN4EXPORT_REV: a3e35a584f59b390667db7269cd37fca8575e4bf
       LANDRUN_REV: 811cfff51ceaf3d9843708aa6d22e9b84ccac8b4
       NANODA_REV: 68d5ca9db226849b41a6fff59d796ff19d0a8840
+      # PalomarSubmission commit whose scripts/core_notation_audit.lean the render
+      # stage ran on this repository's E257 submission (run 34786515414).
+      RENDERER_REV: ef2fa1eadcb246c2346ddba39b52eaa53d4bb763
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
       - uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
@@ -159,6 +162,33 @@ jobs:
             [[ "$rc" -eq 0 ]] || failures=$((failures + 1))
           done
           echo "failures=$failures" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: Replay Palomar's core-notation audit (render stage) on each entry
+        id: render_audit
+        # Palomar renders an accepted Challenge before its automated review. The render
+        # stage runs scripts/core_notation_audit.lean from PalomarSubmission at the
+        # promoted renderer commit; the audit copies every constant reachable from a
+        # theorem type into a trusted printing environment and, at RENDERER_REV,
+        # kernel-rechecks the copies. Replaying it here shows whether that renderer can
+        # print each entry. The step reports and never gates the Comparator verdict.
+        run: |
+          set +e
+          mkdir -p artifacts
+          curl --fail --silent --show-error -o "$RUNNER_TEMP/core_notation_audit.lean" \
+            "https://raw.githubusercontent.com/PalomarRegistry/PalomarSubmission/$RENDERER_REV/scripts/core_notation_audit.lean" \
+            || { echo "render audit source unavailable at $RENDERER_REV"; exit 0; }
+          echo "renderer_rev=$RENDERER_REV" > artifacts/render-audit-summary.txt
+          for n in 68 243 249 251 257 269 1041 1049; do
+            cfg="PalomarCorpus/E$n/comparator.json"
+            module=$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["challenge_module"])' "$cfg")
+            names=$(python3 -c 'import json,sys; print(" ".join("theorem " + t for t in json.load(open(sys.argv[1]))["theorem_names"]))' "$cfg")
+            timeout 20m lake env lean --run "$RUNNER_TEMP/core_notation_audit.lean" "$module" $names \
+              > "artifacts/render-audit-E$n.log" 2>&1
+            rc=$?
+            echo "E$n render_audit_exit=$rc" | tee -a artifacts/render-audit-summary.txt
+            [[ "$rc" -eq 0 ]] || head -c 600 "artifacts/render-audit-E$n.log"
+            echo "render_audit_E$n=$rc" >> "$GITHUB_OUTPUT"
+          done
           exit 0
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()

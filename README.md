@@ -39,6 +39,12 @@ mechanical stage on Linux with the verifier's pinned Comparator, lean4export, la
 NanoDa revisions, and the release gate prints the axioms of every selected theorem
 (`scripts/check_axiom_budget.py --run-palomar`). A green replay is our own evidence, not a
 Palomar verdict; the status column records what Palomar itself has done with each entry.
+The same workflow replays Palomar's render-stage core-notation audit at the pinned renderer
+commit as a report-only step. At `ef2fa1ea` that audit rejects seven of the eight entries: it
+kernel-rechecks copied theorem types in an environment where every Mathlib definition is opaque,
+so `FunLike`, `SmallCategory` and instance diamonds fail. The E257 render (run 34786515414) failed
+this way after mechanical verification passed; [PalomarSubmission pull request 137](https://github.com/PalomarRegistry/PalomarSubmission/pull/137) carries the fix, under which all
+eight entries print, and the E257 review waits on it.
 Family `ExternalVerification*` directories are internal regression inventory, not registry entries.
 
 ## Start here
