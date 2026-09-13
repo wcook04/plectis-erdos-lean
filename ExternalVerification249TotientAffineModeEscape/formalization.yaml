@@ -1,0 +1,100 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: v0.4
+project:
+  name: 'Erdős #249: eventual affine endpoint exclusion'
+  description: For every fixed natural offset c and integer coefficient k, the dyadically weighted totient
+    block error obtained by subtracting k times (2^H - 1) cannot agree with an affine function of H at
+    all sufficiently large H. The proof compares two sufficiently late primes p < q and the doubled index
+    2p.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - 11A25
+  - 11B83
+sources:
+- title: 'Erdős #249: eventual affine endpoint exclusion'
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: This package records the source development and its verification interface; novelty is unassessed.
+  license: Apache-2.0
+  author_endorsement: participated
+- title: 'Erdős Problem #249'
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com/249
+  type: web discussion
+  relationship: background
+  note: The catalogue supplies the problem statement and references; this theorem is not attributed to
+    the catalogue.
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+status:
+  scope: For every fixed natural offset c and integer coefficient k, the dyadically weighted totient block
+    error obtained by subtracting k times (2^H - 1) cannot agree with an affine function of H at all sufficiently
+    large H. The proof compares two sufficiently late primes p < q and the doubled index 2p.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 1
+  sorry_boundary: Only the trusted Challenge theorem bodies have placeholders. The Solution and deliberate-negative
+    fixture have no placeholders.
+  axiom_audit_status: pending_source_bound_release_build_and_supported_comparator_replay
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: Erdos249257.ExternalVerification249TotientAffineModeEscape.not_eventuallyAffine_pureDyadicEndpointError
+    file: Solutions/ExternalVerification249TotientAffineModeEscape.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249TotientAffineModeEscape/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249TotientAffineModeEscape.not_eventuallyAffine_pureDyadicEndpointError
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    boundary: This unconditional obstruction excludes a fixed affine endpoint mode. It does not exclude
+      all rationality mechanisms or prove irrationality of the binary totient series.
+    source_declaration: ErdosProblems.Erdos249.PeriodMultipleEscape.not_eventuallyAffine_pureDyadicEndpointError
+    source_file: ErdosProblems/Erdos249/TotientAffineModeEscape.lean
+    source_sha256: 9483a646e6bcb4a505149b00fc41b20b49f820ad5bada081184427132727f017
+automation:
+  methods:
+  - method: agent
+    models:
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and source-to-statement review
+  notes: These new release adapters have not yet been checked with the release toolchain. Positive Comparator
+    and axiom-clean deliberate-negative replay remain pending.
+fidelity:
+  divergences: Independent definitions reproduce the source totientBlock, pureDyadicEndpointError, and
+    EventuallyAffinePureDyadicEndpointError. The Solution unfolds only these definitions and applies the
+    source theorem.
+review:
+  status: self-assessed
+  reviewers: []
+  notes: Statements and source transports were inspected. No independent mathematical review or terminal
+    release verification verdict is claimed.
+alignment:
+  namespace: Erdos249257.ExternalVerification249TotientAffineModeEscape
+  statements:
+  - source: ErdosProblems.Erdos249.PeriodMultipleEscape.not_eventuallyAffine_pureDyadicEndpointError
+    lean: Erdos249257.ExternalVerification249TotientAffineModeEscape.not_eventuallyAffine_pureDyadicEndpointError
+    module: ExternalVerification249TotientAffineModeEscape/Challenge.lean
+    status: exact_source_transport_pending_release_validation
+    note: Independent definitions reproduce the source totientBlock, pureDyadicEndpointError, and EventuallyAffinePureDyadicEndpointError.
+      The Solution unfolds only these definitions and applies the source theorem.

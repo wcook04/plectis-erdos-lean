@@ -3,7 +3,7 @@ import ErdosProblems.Erdos243.PaperCompleteR7.RealTail
 /-!
 # Constructing the canonical integer state and its analytic hypotheses
 
-Uncompiled candidates.  The rational sum is supplied by its explicit
+Compiled candidates.  The rational sum is supplied by its explicit
 integer numerator p and positive natural denominator q; it is NOT replaced
 by an assumed integer-tail representation.
 

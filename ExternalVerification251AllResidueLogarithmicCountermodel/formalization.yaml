@@ -1,0 +1,104 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: v0.4
+project:
+  name: 'Erdős #251: an every-residue logarithmic rational countermodel'
+  description: There exists a synthetic positive even integer word with digits at most 4 log(n+1)+24,
+    unbounded and not eventually periodic, containing both 2 and 4 arbitrarily late in every residue class.
+    Its cumulative positions are strictly increasing, odd, and asymptotic to n log n. Its dyadic series
+    nevertheless has exact value 6, every scaled tail is integral, and every fixed difference of scaled
+    tails is integral. All these properties belong to the same existential construction.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - 11J72
+  - 11A41
+sources:
+- title: 'Erdős #251: an every-residue logarithmic rational countermodel'
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: This package records the source development and its verification interface; novelty is unassessed.
+  license: Apache-2.0
+  author_endorsement: participated
+- title: 'Erdős Problem #251'
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com/251
+  type: web discussion
+  relationship: background
+  note: The catalogue supplies the problem statement and references; this theorem is not attributed to
+    the catalogue.
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+status:
+  scope: There exists a synthetic positive even integer word with digits at most 4 log(n+1)+24, unbounded
+    and not eventually periodic, containing both 2 and 4 arbitrarily late in every residue class. Its
+    cumulative positions are strictly increasing, odd, and asymptotic to n log n. Its dyadic series nevertheless
+    has exact value 6, every scaled tail is integral, and every fixed difference of scaled tails is integral.
+    All these properties belong to the same existential construction.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 1
+  sorry_boundary: Only the trusted Challenge theorem bodies have placeholders. The Solution and deliberate-negative
+    fixture have no placeholders.
+  axiom_audit_status: pending_source_bound_release_build_and_supported_comparator_replay
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: Erdos249257.ExternalVerification251AllResidueLogarithmicCountermodel.exists_every_residue_logarithmic_countermodel
+    file: Solutions/ExternalVerification251AllResidueLogarithmicCountermodel.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification251AllResidueLogarithmicCountermodel/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification251AllResidueLogarithmicCountermodel.exists_every_residue_logarithmic_countermodel
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    boundary: The word is synthetic; no primality is asserted. These properties alone cannot force irrationality
+      of the actual prime-gap dyadic series, and Erdős Problem 251 remains open.
+    source_declaration: ErdosProblems.Erdos251.PaperR9.AllResidueLog.every_residue_countermodel
+    source_file: ErdosProblems/Erdos251/AllResidueLogarithmicR9.lean
+    source_sha256: 79d613ea2e45b09a4cc150c99b2b10221a72602d8af7b1cb6f72d915f0d9a7ab
+automation:
+  methods:
+  - method: agent
+    models:
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and source-to-statement review
+  notes: These new release adapters have not yet been checked with the release toolchain. Positive Comparator
+    and axiom-clean deliberate-negative replay remain pending.
+fidelity:
+  divergences: The complete existing private existential wrapper is reproduced in a dedicated namespace.
+    The explicit position identity is proved by rfl; every other conjunct is supplied by every_residue_countermodel.
+    Helper lemmas recurring_every_residue and position_PNT_scale are not substitutes for this full result.
+review:
+  status: self-assessed
+  reviewers: []
+  notes: Statements and source transports were inspected. No independent mathematical review or terminal
+    release verification verdict is claimed.
+alignment:
+  namespace: Erdos249257.ExternalVerification251AllResidueLogarithmicCountermodel
+  statements:
+  - source: ErdosProblems.Erdos251.PaperR9.AllResidueLog.every_residue_countermodel
+    lean: Erdos249257.ExternalVerification251AllResidueLogarithmicCountermodel.exists_every_residue_logarithmic_countermodel
+    module: ExternalVerification251AllResidueLogarithmicCountermodel/Challenge.lean
+    status: exact_source_transport_pending_release_validation
+    note: The complete existing private existential wrapper is reproduced in a dedicated namespace. The
+      explicit position identity is proved by rfl; every other conjunct is supplied by every_residue_countermodel.
+      Helper lemmas recurring_every_residue and position_PNT_scale are not substitutes for this full result.

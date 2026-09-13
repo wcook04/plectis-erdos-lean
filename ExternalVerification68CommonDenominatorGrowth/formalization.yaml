@@ -1,0 +1,116 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: v0.4
+project:
+  name: 'Erdős #68: a three-halves lower growth bound for factorial-gap common denominators'
+  description: For L(N) = lcm of n! - 1 over 2 ≤ n ≤ N, the lower limit of log L(N) divided by N^(3/2)
+    log N is at least 2 sqrt(2) / 3. The interface includes the eventual lower-bound form and a literal
+    extended-real liminf, allowing an infinite liminf without any extra boundedness assumption.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - 11J72
+  - 11A05
+sources:
+- title: 'Erdős #68: a three-halves lower growth bound for factorial-gap common denominators'
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: This package records the source development and its verification interface; novelty is unassessed.
+  license: Apache-2.0
+  author_endorsement: participated
+- title: 'Erdős Problem #68'
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com/68
+  type: web discussion
+  relationship: background
+  note: The catalogue supplies the problem statement and references; this theorem is not attributed to
+    the catalogue.
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+status:
+  scope: For L(N) = lcm of n! - 1 over 2 ≤ n ≤ N, the lower limit of log L(N) divided by N^(3/2) log N
+    is at least 2 sqrt(2) / 3. The interface includes the eventual lower-bound form and a literal extended-real
+    liminf, allowing an infinite liminf without any extra boundedness assumption.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 2
+  sorry_boundary: Only the trusted Challenge theorem bodies have placeholders. The Solution and deliberate-negative
+    fixture have no placeholders.
+  axiom_audit_status: pending_source_bound_release_build_and_supported_comparator_replay
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: Erdos249257.ExternalVerification68CommonDenominatorGrowth.common_denominator_growth
+    file: Solutions/ExternalVerification68CommonDenominatorGrowth.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification68CommonDenominatorGrowth/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification68CommonDenominatorGrowth.common_denominator_growth
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    boundary: This bounds the common denominator lcm, not the reduced denominator of the reciprocal sum.
+      It does not prove irrationality or settle Erdős Problem 68.
+    source_declaration: ErdosProblems.Erdos68.PaperComplete.common_denominator_growth
+    source_file: ErdosProblems/Erdos68/PaperCompleteAsymptotics.lean
+    source_sha256: 06e0cdc3a2efc8b0b57c7f08804d80eca6872fa3d4fb6e60405f76ab6ce48b8f
+  - declaration: Erdos249257.ExternalVerification68CommonDenominatorGrowth.common_denominator_growth_liminf
+    file: Solutions/ExternalVerification68CommonDenominatorGrowth.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification68CommonDenominatorGrowth/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification68CommonDenominatorGrowth.common_denominator_growth_liminf
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    boundary: This bounds the common denominator lcm, not the reduced denominator of the reciprocal sum.
+      It does not prove irrationality or settle Erdős Problem 68.
+    source_declaration: ErdosProblems.Erdos68.PaperComplete.common_denominator_growth_liminf
+    source_file: ErdosProblems/Erdos68/PaperCompleteLiminf.lean
+    source_sha256: 618a50923335a93cd4d1991edbf19b0df5318c8acb5f8538412c5a3dda365fdf
+automation:
+  methods:
+  - method: agent
+    models:
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and source-to-statement review
+  notes: These new release adapters have not yet been checked with the release toolchain. Positive Comparator
+    and axiom-clean deliberate-negative replay remain pending.
+fidelity:
+  divergences: Independent definitions of channelLCM and LowerLimitAtLeast reproduce the source definitions.
+    The real exponent and EReal codomain of the literal liminf are preserved.
+review:
+  status: self-assessed
+  reviewers: []
+  notes: Statements and source transports were inspected. No independent mathematical review or terminal
+    release verification verdict is claimed.
+alignment:
+  namespace: Erdos249257.ExternalVerification68CommonDenominatorGrowth
+  statements:
+  - source: ErdosProblems.Erdos68.PaperComplete.common_denominator_growth
+    lean: Erdos249257.ExternalVerification68CommonDenominatorGrowth.common_denominator_growth
+    module: ExternalVerification68CommonDenominatorGrowth/Challenge.lean
+    status: exact_source_transport_pending_release_validation
+    note: Independent definitions of channelLCM and LowerLimitAtLeast reproduce the source definitions.
+      The real exponent and EReal codomain of the literal liminf are preserved.
+  - source: ErdosProblems.Erdos68.PaperComplete.common_denominator_growth_liminf
+    lean: Erdos249257.ExternalVerification68CommonDenominatorGrowth.common_denominator_growth_liminf
+    module: ExternalVerification68CommonDenominatorGrowth/Challenge.lean
+    status: exact_source_transport_pending_release_validation
+    note: Independent definitions of channelLCM and LowerLimitAtLeast reproduce the source definitions.
+      The real exponent and EReal codomain of the literal liminf are preserved.

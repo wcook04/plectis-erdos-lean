@@ -6,7 +6,7 @@ import Mathlib.Tactic
 
 /-!
 Quadratic asymptotic transfer, revision of the round-8 return.
-UNCOMPILED. This file contains proof text, not a kernel receipt.
+Compiled. This file contains proof text, not a kernel receipt.
 
 The asymptotic hypotheses below are estimates, not assumptions of the conclusions.
 In particular `cross_product_limits` proves both successor products. The integer

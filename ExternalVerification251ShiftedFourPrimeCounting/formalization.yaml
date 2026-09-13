@@ -1,0 +1,124 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: v0.4
+project:
+  name: 'Erdős #251: shifted prime-gap coincidences and a four-prime counting reduction'
+  description: For each shift h ≥ 2 and integer r, an unconditional finite inequality bounds the indices
+    n < N with g(n+h)-g(n)=r by an explicit separated four-prime candidate count and a large-span term.
+    A second theorem proves that the displayed quadruple-sieve estimate implies density zero for those
+    shifted-gap coincidences.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - 11N05
+  - 11N36
+  - 11J72
+sources:
+- title: 'Erdős #251: shifted prime-gap coincidences and a four-prime counting reduction'
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: This package records the source development and its verification interface; novelty is unassessed.
+  license: Apache-2.0
+  author_endorsement: participated
+- title: 'Erdős Problem #251'
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com/251
+  type: web discussion
+  relationship: background
+  note: The catalogue supplies the problem statement and references; this theorem is not attributed to
+    the catalogue.
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+status:
+  scope: For each shift h ≥ 2 and integer r, an unconditional finite inequality bounds the indices n <
+    N with g(n+h)-g(n)=r by an explicit separated four-prime candidate count and a large-span term. A
+    second theorem proves that the displayed quadruple-sieve estimate implies density zero for those shifted-gap
+    coincidences.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 2
+  sorry_boundary: Only the trusted Challenge theorem bodies have placeholders. The Solution and deliberate-negative
+    fixture have no placeholders.
+  axiom_audit_status: pending_source_bound_release_build_and_supported_comparator_replay
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: Erdos249257.ExternalVerification251ShiftedFourPrimeCounting.shifted_count_bound
+    file: Solutions/ExternalVerification251ShiftedFourPrimeCounting.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification251ShiftedFourPrimeCounting/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification251ShiftedFourPrimeCounting.shifted_count_bound
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    boundary: SeparatedQuadSieve_target is an explicit unproved hypothesis of the density theorem. This
+      package proves neither that sieve estimate, unconditional zero density, the tail-smallness bridge,
+      nor irrationality.
+    source_declaration: ErdosProblems.Erdos251.PaperR11.PrimeSource.shifted_count_bound
+    source_file: ErdosProblems/Erdos251/ShiftedCountingSourceR11.lean
+    source_sha256: 03d7cd4f259be05d18f1faefbcb7d70a2c5a79086a6c101a7aef3015fe37482f
+  - declaration: Erdos249257.ExternalVerification251ShiftedFourPrimeCounting.separated_zeroDensity_of_quad_sieve
+    file: Solutions/ExternalVerification251ShiftedFourPrimeCounting.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification251ShiftedFourPrimeCounting/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification251ShiftedFourPrimeCounting.separated_zeroDensity_of_quad_sieve
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    boundary: SeparatedQuadSieve_target is an explicit unproved hypothesis of the density theorem. This
+      package proves neither that sieve estimate, unconditional zero density, the tail-smallness bridge,
+      nor irrationality.
+    source_declaration: ErdosProblems.Erdos251.PaperR11.PrimeSource.separated_zeroDensity_of_quad_sieve
+    source_file: ErdosProblems/Erdos251/ShiftedCountingSourceR11.lean
+    source_sha256: 03d7cd4f259be05d18f1faefbcb7d70a2c5a79086a6c101a7aef3015fe37482f
+automation:
+  methods:
+  - method: agent
+    models:
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and source-to-statement review
+  notes: These new release adapters have not yet been checked with the release toolchain. Positive Comparator
+    and axiom-clean deliberate-negative replay remain pending.
+fidelity:
+  divergences: Challenge and Solution repeat the source definitions literally. Both exact R11 source endpoints
+    are selected. The zero-density theorem retains the same separated quadruple-sieve premise; the finite
+    counting theorem needs no sieve assumption.
+review:
+  status: self-assessed
+  reviewers: []
+  notes: Statements and source transports were inspected. No independent mathematical review or terminal
+    release verification verdict is claimed.
+alignment:
+  namespace: Erdos249257.ExternalVerification251ShiftedFourPrimeCounting
+  statements:
+  - source: ErdosProblems.Erdos251.PaperR11.PrimeSource.shifted_count_bound
+    lean: Erdos249257.ExternalVerification251ShiftedFourPrimeCounting.shifted_count_bound
+    module: ExternalVerification251ShiftedFourPrimeCounting/Challenge.lean
+    status: exact_source_transport_pending_release_validation
+    note: Challenge and Solution repeat the source definitions literally. Both exact R11 source endpoints
+      are selected. The zero-density theorem retains the same separated quadruple-sieve premise; the finite
+      counting theorem needs no sieve assumption.
+  - source: ErdosProblems.Erdos251.PaperR11.PrimeSource.separated_zeroDensity_of_quad_sieve
+    lean: Erdos249257.ExternalVerification251ShiftedFourPrimeCounting.separated_zeroDensity_of_quad_sieve
+    module: ExternalVerification251ShiftedFourPrimeCounting/Challenge.lean
+    status: exact_source_transport_pending_release_validation
+    note: Challenge and Solution repeat the source definitions literally. Both exact R11 source endpoints
+      are selected. The zero-density theorem retains the same separated quadruple-sieve premise; the finite
+      counting theorem needs no sieve assumption.

@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification249TotientAffineModeEscape
+
+#print axioms Erdos249257.ExternalVerification249TotientAffineModeEscape.not_eventuallyAffine_pureDyadicEndpointError

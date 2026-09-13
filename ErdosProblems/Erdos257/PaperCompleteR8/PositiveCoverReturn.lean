@@ -5,7 +5,7 @@ import ErdosProblems.Erdos257.PaperCompleteR8.CommonScale
 /-!
 # End-to-end strengthened positive-cover theorem
 
-UNCOMPILED, but no new Prop target or unproved bridge is a hypothesis of the
+No new Prop target or unproved bridge is a hypothesis of the
 final theorem. Input is exactly the desk PositiveCoverData and its one-inverse-
 power cost. Finite prefixes, the actual host, the potential comparison,
 summability, one common finite observation mean, and all-base heredity are

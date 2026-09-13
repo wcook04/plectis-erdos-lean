@@ -1,0 +1,4 @@
+import Solutions.ExternalVerification251ShiftedFourPrimeCounting
+
+#print axioms Erdos249257.ExternalVerification251ShiftedFourPrimeCounting.shifted_count_bound
+#print axioms Erdos249257.ExternalVerification251ShiftedFourPrimeCounting.separated_zeroDensity_of_quad_sieve

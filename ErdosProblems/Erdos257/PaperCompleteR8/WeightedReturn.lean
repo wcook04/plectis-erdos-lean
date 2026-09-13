@@ -4,7 +4,7 @@ import ErdosProblems.Erdos257.PaperCompleteR8.MixedGaugeConsumer
 /-!
 # End-to-end weighted and mixed support candidates
 
-UNCOMPILED. This module proves the previously isolated weighted finite-mean
+This module proves the previously isolated weighted finite-mean
 producer from the actual FinitePrimeWeighted data. It does not assume that
 producer. The concluding declarations assert precisely the two Prop-valued
 paper goals; the separate strengthened positive-cover goal is proved in

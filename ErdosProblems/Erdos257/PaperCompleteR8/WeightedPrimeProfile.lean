@@ -3,7 +3,7 @@ import ErdosProblems.Erdos257.PaperCompleteR8.KernelRecurrence
 /-!
 # A logarithm-free prime-power sampling modulus
 
-UNCOMPILED candidate. The actual weighted prime part is retained. For
+The actual weighted prime part is retained. For
 Q = L (prod P)^H, either the complete P-part of a divides gcd(Q,a), or
 that gcd is at least 2^H. This replaces floor-logarithm bookkeeping with
 one uniform exponent, and is sufficient for the weighted analytic proof.

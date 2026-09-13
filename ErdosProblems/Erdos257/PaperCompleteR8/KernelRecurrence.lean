@@ -5,7 +5,7 @@ import ErdosProblems.Erdos257.PaperCompleteR7.CoverKernel
 /-!
 # The missing incidence-to-kernel bridge, by recurrence comparison
 
-UNCOMPILED proof candidate for the r8 upgrade. No additional analytic target is
+Proof module for the r8 upgrade. No additional analytic target is
 assumed in this module. The actual modular kernel is retained.
 
 Instead of exchanging the two infinite divisibility sums in the paper, compare

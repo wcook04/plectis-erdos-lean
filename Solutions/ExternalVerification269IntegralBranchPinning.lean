@@ -15,15 +15,15 @@ abbrev dyadicSmoothShell235 := ErdosProblems.Erdos269.dyadicSmoothShell235
 abbrev dyadicShellMassQ235 := ErdosProblems.Erdos269.dyadicShellMassQ235
 abbrev dyadicShellMassR235 := ErdosProblems.Erdos269.dyadicShellMassR235
 abbrev DyadicInternalPower := ErdosProblems.Erdos269.DyadicInternalPower
-abbrev dyadicBlockBase235 := ErdosProblems.Erdos269.dyadicBlockBase235
+noncomputable abbrev dyadicBlockBase235 := ErdosProblems.Erdos269.dyadicBlockBase235
 abbrev dyadicBeforeThresholdCount235 :=
   ErdosProblems.Erdos269.dyadicBeforeThresholdCount235
 abbrev dyadicOrderedBlockDigit235 :=
   ErdosProblems.Erdos269.dyadicOrderedBlockDigit235
-abbrev dyadicShellTsumTailR235 := ErdosProblems.Erdos269.dyadicShellTsumTailR235
-abbrev dyadicNormalizedTailStateR235 :=
+noncomputable abbrev dyadicShellTsumTailR235 := ErdosProblems.Erdos269.dyadicShellTsumTailR235
+noncomputable abbrev dyadicNormalizedTailStateR235 :=
   ErdosProblems.Erdos269.dyadicNormalizedTailStateR235
-abbrev trueNormalizedState := ErdosProblems.Erdos269.trueNormalizedState
+noncomputable abbrev trueNormalizedState := ErdosProblems.Erdos269.trueNormalizedState
 
 theorem trueNormalizedState_pinning (a : ℕ) :
     trueNormalizedState a =

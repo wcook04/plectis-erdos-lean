@@ -6,7 +6,7 @@ import ErdosProblems.Erdos1041.CubicCriticalHub
 /-!
 # The complete cubic polygonal connector
 
-Uncompiled proof candidates. The root-count supplier is proved algebraically
+Compiled proof candidates. The root-count supplier is proved algebraically
 in PaperCubicSchur. The existence of a small critical value is derived from
 the completed reflected inequality, not from an assumed component lemma.
 Repeated critical points and repeated roots are retained separately.

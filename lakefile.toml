@@ -1,7 +1,7 @@
 name = "erdos257_period_noncollapse"
 version = "0.1.0"
 keywords = ["math", "erdos257", "period-noncollapse"]
-defaultTargets = ["ExternalVerification68ChannelRadius", "ExternalVerification68CompanionOrbitBoundary", "ExternalVerification243PeriodicNegativeOrbit", "ExternalVerification249BinaryCyclotomicAnchors", "ExternalVerification249RankOneSharpFloor", "ExternalVerification251PolynomialShiftCountermodel", "ExternalVerification251ActualPrimeGapTail", "ExternalVerification257ReciprocalSupport", "ExternalVerification257FinitePeriodNoncollapse", "ExternalVerification257RationalTailRigidity", "ExternalVerification269ThreePrimeStructure", "ExternalVerification1041SolvedFamilies", "ExternalVerification1041CyclicTrinomialFiber", "ExternalVerification1041QuarticQuotientFiber", "ExternalVerification1041CriticalGeometry", "ExternalVerification1041TetranomialSpokes", "ExternalVerification1041FirstMergeCriticalValueSeparation", "ExternalVerification1049AdelicHeightBridge", "ExternalVerification1049RationalBaseBarrier", "ExternalVerification1049PrimeSupportSelectors", "ExternalVerification1049HermitePadeNoGo", "ExternalVerification249DyadicTotientKernel", "ExternalVerification249ResidueClassTotientSeries", "ExternalVerification251KernelDenominatorFloor", "ExternalVerification251FreePairEquivalence", "ExternalVerification251PrimeGapIdentity", "ExternalVerification269WindowEscapeEquivalence", "ExternalVerification269ActualShellOrbit", "ExternalVerification1049RationalBaseContour", "ExternalVerification249MobiusMersenneLadderStructure", "ExternalVerification249ParityPerturbedRationalControl", "ExternalVerification257AchievementSetGeometry", "ExternalVerification243BoundedNegativePartRigidity", "ExternalVerification243BoundedRiseReducedTail", "ExternalVerification68PrimeUnitTranslator", "ExternalVerification1041DiskFamilySeparation", "ExternalVerification251BoundedPerturbationCountermodel", "ExternalVerification1041CollinearChord", "Solutions"]
+defaultTargets = ["ExternalVerification68ChannelRadius", "ExternalVerification68CompanionOrbitBoundary", "ExternalVerification243PeriodicNegativeOrbit", "ExternalVerification249BinaryCyclotomicAnchors", "ExternalVerification249RankOneSharpFloor", "ExternalVerification251PolynomialShiftCountermodel", "ExternalVerification251ActualPrimeGapTail", "ExternalVerification257ReciprocalSupport", "ExternalVerification257FinitePeriodNoncollapse", "ExternalVerification257RationalTailRigidity", "ExternalVerification269ThreePrimeStructure", "ExternalVerification1041SolvedFamilies", "ExternalVerification1041CyclicTrinomialFiber", "ExternalVerification1041QuarticQuotientFiber", "ExternalVerification1041CriticalGeometry", "ExternalVerification1041TetranomialSpokes", "ExternalVerification1041FirstMergeCriticalValueSeparation", "ExternalVerification1049AdelicHeightBridge", "ExternalVerification1049RationalBaseBarrier", "ExternalVerification1049PrimeSupportSelectors", "ExternalVerification1049HermitePadeNoGo", "ExternalVerification249DyadicTotientKernel", "ExternalVerification249ResidueClassTotientSeries", "ExternalVerification251KernelDenominatorFloor", "ExternalVerification251FreePairEquivalence", "ExternalVerification251PrimeGapIdentity", "ExternalVerification269WindowEscapeEquivalence", "ExternalVerification269ActualShellOrbit", "ExternalVerification1049RationalBaseContour", "ExternalVerification249MobiusMersenneLadderStructure", "ExternalVerification249ParityPerturbedRationalControl", "ExternalVerification257AchievementSetGeometry", "ExternalVerification243BoundedNegativePartRigidity", "ExternalVerification243BoundedRiseReducedTail", "ExternalVerification68PrimeUnitTranslator", "ExternalVerification1041DiskFamilySeparation", "ExternalVerification251BoundedPerturbationCountermodel", "ExternalVerification1041CollinearChord", "Solutions", "PalomarCorpus"]
 
 [leanOptions]
 pp.unicode.fun = true
@@ -373,6 +373,30 @@ globs = ["ExternalVerification68MultiplicativeSuccessorRigidity.+"]
 [[lean_lib]]
 name = "ExternalVerification68ResidualIntegerClass"
 globs = ["ExternalVerification68ResidualIntegerClass.+"]
+
+[[lean_lib]]
+name = "ExternalVerification68CommonDenominatorGrowth"
+globs = ["ExternalVerification68CommonDenominatorGrowth.+"]
+
+[[lean_lib]]
+name = "ExternalVerification243OriginalCoordinateBoundedDefect"
+globs = ["ExternalVerification243OriginalCoordinateBoundedDefect.+"]
+
+[[lean_lib]]
+name = "ExternalVerification243RecordAmplifiedCancellationVisibility"
+globs = ["ExternalVerification243RecordAmplifiedCancellationVisibility.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249TotientAffineModeEscape"
+globs = ["ExternalVerification249TotientAffineModeEscape.+"]
+
+[[lean_lib]]
+name = "ExternalVerification251AllResidueLogarithmicCountermodel"
+globs = ["ExternalVerification251AllResidueLogarithmicCountermodel.+"]
+
+[[lean_lib]]
+name = "ExternalVerification251ShiftedFourPrimeCounting"
+globs = ["ExternalVerification251ShiftedFourPrimeCounting.+"]
 
 [[lean_lib]]
 name = "PalomarCorpus"

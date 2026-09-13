@@ -3,7 +3,7 @@ import ErdosProblems.Erdos257.PaperCompleteR8.WeightedFiniteMean
 /-!
 # Explicit closure of the weighted observation parameters
 
-UNCOMPILED. There is no asymptotic schedule premise. With Q=L*c^H,
+There is no asymptotic schedule premise. With Q=L*c^H,
 G=2^H and M=4Q, the entire high-GCD/geometric error is bounded by
 26*2^(-H), once H >= max 4 (L+c+2). Every inequality uses natural powers.
 -/

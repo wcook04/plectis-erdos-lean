@@ -1,6 +1,6 @@
 import ErdosProblems.Erdos257.PaperCompleteR8.WeightedFiniteEstimates
 
-/-! UNCOMPILED finite weighted mean assembly. No mean limit is assumed. -/
+/-! Finite weighted mean assembly. No mean limit is assumed. -/
 noncomputable section
 namespace ErdosProblems.Erdos257.PaperCompleteR8
 open Finset

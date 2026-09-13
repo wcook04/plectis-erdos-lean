@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ExternalVerification251ShiftedFourPrimeCounting.Challenge",
+  "solution_module": "ExternalVerification251ShiftedFourPrimeCounting.NegativeSolution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification251ShiftedFourPrimeCounting.shifted_count_bound",
+    "Erdos249257.ExternalVerification251ShiftedFourPrimeCounting.separated_zeroDensity_of_quad_sieve"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

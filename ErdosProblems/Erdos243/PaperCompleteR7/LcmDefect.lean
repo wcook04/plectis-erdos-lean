@@ -4,7 +4,7 @@ import ErdosProblems.Erdos243.PaperCompleteR7.LcmStationarity
 /-!
 # Original-coordinate LCM-prefactor corollary
 
-Uncompiled end-to-end candidate for short-note `res:lcmbounded`.
+Compiled end-to-end candidate for short-note `res:lcmbounded`.
 The rational denominator q is NOT assumed to divide the prefix LCM.
 The proof constructs the lifted integer state, derives its small-error
 hypothesis, supplies its one-sided bound from the printed LCM-weighted

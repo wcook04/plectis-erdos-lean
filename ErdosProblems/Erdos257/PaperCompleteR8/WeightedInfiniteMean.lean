@@ -3,7 +3,7 @@ import ErdosProblems.Erdos257.PaperCompleteR8.WeightedSchedule
 /-!
 # Pass the uniform finite bound to the actual infinite support
 
-UNCOMPILED. Summability of every series exchanged here precedes the exchange.
+Summability of every series exchanged here precedes the exchange.
 No ordinary reciprocal-summability assumption on the support is added.
 -/
 noncomputable section

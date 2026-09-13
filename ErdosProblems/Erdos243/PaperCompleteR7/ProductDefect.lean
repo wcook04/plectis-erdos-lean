@@ -3,7 +3,7 @@ import ErdosProblems.Erdos243.PaperCompleteR7.CanonicalState
 /-!
 # The original-coordinate bounded-product-defect corollary
 
-Uncompiled candidates.  This module supplies the analytic error dictionary
+Compiled candidates.  This module supplies the analytic error dictionary
 rather than assuming bounded centred error.  Finite upper limsup is stated
 as eventual boundedness above by a real constant; the finite initial
 segment is irrelevant.  Rationality is given by p/q and HasSum.

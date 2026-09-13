@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification243RecordAmplifiedCancellationVisibility.Challenge",
+  "solution_module": "Solutions.ExternalVerification243RecordAmplifiedCancellationVisibility",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification243RecordAmplifiedCancellationVisibility.recordAmplified_error_after_cancellation"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

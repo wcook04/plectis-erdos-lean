@@ -3,7 +3,7 @@ import ErdosProblems.Erdos243.PaperCompleteR7.Arithmetic
 /-!
 # Real limits and the division-free hypotheses used by the corpus
 
-Uncompiled candidates.  In particular, the real limit in the sparse-gcd
+Compiled candidates.  In particular, the real limit in the sparse-gcd
 paper statement is not silently replaced by an assumed arithmetic bound.
 The equivalence is proved here.  Little-o of the count relative to N is
 expressed as convergence of count/N to zero (the denominator is eventually

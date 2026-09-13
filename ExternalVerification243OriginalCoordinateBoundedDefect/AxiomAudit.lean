@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification243OriginalCoordinateBoundedDefect
+
+#print axioms Erdos249257.ExternalVerification243OriginalCoordinateBoundedDefect.original_coordinate_bounded_defect

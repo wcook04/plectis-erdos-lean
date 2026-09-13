@@ -3,7 +3,7 @@ import ErdosProblems.Erdos257.PaperCompleteR8.PositiveCoverReturn
 /-!
 # Weighted mean + nonlinear cover test on ONE finite sampling scheme
 
-UNCOMPILED. The previous return's JointDyadicMeanSupply is a sufficient
+The previous return's JointDyadicMeanSupply is a sufficient
 condition, but is not the exact interface of the ordinary mixed proof: a small
 fractional cover test need not give a small FIRST MOMENT of the displacement.
 This module uses the correct nonlinear test. PositiveCoverData contributes no

@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ExternalVerification68CommonDenominatorGrowth.Challenge",
+  "solution_module": "Solutions.ExternalVerification68CommonDenominatorGrowth",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification68CommonDenominatorGrowth.common_denominator_growth",
+    "Erdos249257.ExternalVerification68CommonDenominatorGrowth.common_denominator_growth_liminf"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

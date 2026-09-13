@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification249TotientAffineModeEscape.Challenge",
+  "solution_module": "ExternalVerification249TotientAffineModeEscape.NegativeSolution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249TotientAffineModeEscape.not_eventuallyAffine_pureDyadicEndpointError"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

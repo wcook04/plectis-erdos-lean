@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification251AllResidueLogarithmicCountermodel.Challenge",
+  "solution_module": "ExternalVerification251AllResidueLogarithmicCountermodel.NegativeSolution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification251AllResidueLogarithmicCountermodel.exists_every_residue_logarithmic_countermodel"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

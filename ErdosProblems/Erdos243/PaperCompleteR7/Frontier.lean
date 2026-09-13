@@ -4,7 +4,7 @@ import ErdosProblems.Erdos243.SparseResetRecovery
 /-!
 # State-level assembly behind the canonical frontier proposition
 
-Uncompiled candidates.  The state theorem is first assembled separately.
+Compiled candidates.  The state theorem is first assembled separately.
 The final theorem constructs the canonical state from the explicit rational
 sum and quadratic growth, then concludes the paper's whole frontier,
 including divergence of the nonnegative partial sums.

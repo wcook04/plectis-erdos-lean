@@ -7,7 +7,7 @@ import Mathlib.Tactic
 /-!
 # R7: the rank-two obstruction inside the degree-budget cap
 
-Uncompiled proof-source candidate. No admitted proofs.
+Compiled proof-source candidate. No admitted proofs.
 
 This completes the INTEGER-SEQUENCE part of the cap argument. It does not
 silently assume the paper's degree/height/logarithmic limits imply the two

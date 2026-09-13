@@ -12,7 +12,7 @@ budget, rate, or normalised-vanishing premise is added.
 
 The natural-weight theorem uses nonsummability. The final theorem derives
 that premise from the paper's improper integral through `WeightAnalysis`.
-All declarations in this file are uncompiled candidates.
+All declarations in this file are compiled candidates.
 
 Pinned Mathlib references used below:
 * Data/Nat/GCD/Basic.lean: Nat.Coprime.of_dvd_left, Nat.lcm_dvd.

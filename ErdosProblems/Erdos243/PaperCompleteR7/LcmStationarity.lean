@@ -8,7 +8,7 @@ import ErdosProblems.Erdos243.PrimitiveRecordBarrier
 /-!
 # Global boundedness and stationarity of the actual LCM state
 
-Uncompiled candidates.  Unlike the existing finite CRT consumers, the
+Compiled candidates.  Unlike the existing finite CRT consumers, the
 principal theorem constructs its old fresh multipliers from the unbounded
 orbit.  No old-prime supply, global avoidance hypothesis, or preconstructed
 cover is a premise.  Strict increase of the given denominators supplies

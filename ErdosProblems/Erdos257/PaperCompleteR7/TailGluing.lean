@@ -4,7 +4,7 @@ import Erdos257PeriodNoncollapse.GreedyAchievementSet
 /-!
 # Infinite tail budget and the landed r6 delayed gluing theorem
 
-Uncompiled proof candidates. This file goes beyond the finite algebra in
+Compiled proof candidates. This file goes beyond the finite algebra in
 `DisplacementTailBudget.lean`: it proves the tail estimate for actual infinite
 support sums and assembles the diagonal construction. Its hypothesis is the
 r6 general version, namely return admissibility of *every finite union* of

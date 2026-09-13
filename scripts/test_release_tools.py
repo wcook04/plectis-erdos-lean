@@ -10,9 +10,38 @@ from unittest.mock import patch
 
 import build_release_manifest as release
 import verify_snapshot as snapshot
+import check_axiom_budget as axioms
 
 
 class ReleaseToolsTests(unittest.TestCase):
+    def test_publication_inventory_requires_all_eight_and_no_ninth(self):
+        with tempfile.TemporaryDirectory() as tmp, patch.object(axioms, "REPO_ROOT", Path(tmp)):
+            root = Path(tmp)
+            for number in axioms.PALOMAR_PROBLEMS:
+                entry = root / f"PalomarCorpus/E{number}"
+                entry.mkdir(parents=True)
+                (entry / "comparator.json").write_text("{}")
+            self.assertEqual(len(axioms.entries(palomar=True)), 8)
+            extra = root / "PalomarCorpus/E70"
+            extra.mkdir()
+            (extra / "comparator.json").write_text("{}")
+            with self.assertRaisesRegex(ValueError, "exactly the eight"):
+                axioms.entries(palomar=True)
+
+    def test_publication_audit_rejects_candidate_local_challenge_import(self):
+        with tempfile.TemporaryDirectory() as tmp, patch.object(axioms, "REPO_ROOT", Path(tmp)), \
+                patch.object(axioms, "source_identity", return_value={"commit": "test"}):
+            entry = Path(tmp) / "PalomarCorpus/E68"
+            entry.mkdir(parents=True)
+            (entry / "comparator.json").write_text(json.dumps({
+                "challenge_module": "PalomarCorpus.E68.Challenge",
+                "solution_module": "Solutions.PalomarCorpus.E68",
+                "theorem_names": ["PalomarCorpus.E68.Family.result"],
+            }))
+            (entry / "Challenge.lean").write_text("import Solutions.PalomarCorpus.E68\n")
+            with self.assertRaisesRegex(ValueError, "only Mathlib"):
+                axioms.run_palomar_audits(["PalomarCorpus/E68"])
+
     def test_git_pointer_file_is_metadata_but_source_leaks_are_reported(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)

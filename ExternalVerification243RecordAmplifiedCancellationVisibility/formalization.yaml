@@ -1,0 +1,100 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: v0.4
+project:
+  name: 'Erdős #243: cancellation visibility at the first later negative error'
+  description: 'A local finite-window estimate for the reciprocal-tail cocycle: if the centered error
+    is nonnegative strictly between a cancellation index s and the first later negative error at t, then
+    u(t) ≤ u(s+1), and u(s)u(t) ≤ R(t)|e(t)|u(s+1), where R(t) is the running maximum of u. The primitive
+    cocycle identities and positive cancellation numerators are explicit hypotheses.'
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - 11A63
+  - 11B37
+sources:
+- title: 'Erdős #243: cancellation visibility at the first later negative error'
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: This package records the source development and its verification interface; novelty is unassessed.
+  license: Apache-2.0
+  author_endorsement: participated
+- title: 'Erdős Problem #243'
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com/243
+  type: web discussion
+  relationship: background
+  note: The catalogue supplies the problem statement and references; this theorem is not attributed to
+    the catalogue.
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+status:
+  scope: 'A local finite-window estimate for the reciprocal-tail cocycle: if the centered error is nonnegative
+    strictly between a cancellation index s and the first later negative error at t, then u(t) ≤ u(s+1),
+    and u(s)u(t) ≤ R(t)|e(t)|u(s+1), where R(t) is the running maximum of u. The primitive cocycle identities
+    and positive cancellation numerators are explicit hypotheses.'
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 1
+  sorry_boundary: Only the trusted Challenge theorem bodies have placeholders. The Solution and deliberate-negative
+    fixture have no placeholders.
+  axiom_audit_status: pending_source_bound_release_build_and_supported_comparator_replay
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: Erdos249257.ExternalVerification243RecordAmplifiedCancellationVisibility.recordAmplified_error_after_cancellation
+    file: Solutions/ExternalVerification243RecordAmplifiedCancellationVisibility.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification243RecordAmplifiedCancellationVisibility/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification243RecordAmplifiedCancellationVisibility.recordAmplified_error_after_cancellation
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    boundary: This estimate supplies no excursion-length bound, global record-production theorem, global
+      rigidity theorem, or solution of Erdős Problem 243.
+    source_declaration: ErdosProblems.Erdos243.recordAmplified_error_after_cancellation
+    source_file: ErdosProblems/Erdos243/SaturatedSquareTransport.lean
+    source_sha256: 1647bc4e0497187d1d5493badc01c5ec4e9f1960100d4c9872e78d39a938320e
+automation:
+  methods:
+  - method: agent
+    models:
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and source-to-statement review
+  notes: These new release adapters have not yet been checked with the release toolchain. Positive Comparator
+    and axiom-clean deliberate-negative replay remain pending.
+fidelity:
+  divergences: The source theorem signature is preserved exactly, with an independently repeated runningMax
+    definition identified by induction.
+review:
+  status: self-assessed
+  reviewers: []
+  notes: Statements and source transports were inspected. No independent mathematical review or terminal
+    release verification verdict is claimed.
+alignment:
+  namespace: Erdos249257.ExternalVerification243RecordAmplifiedCancellationVisibility
+  statements:
+  - source: ErdosProblems.Erdos243.recordAmplified_error_after_cancellation
+    lean: Erdos249257.ExternalVerification243RecordAmplifiedCancellationVisibility.recordAmplified_error_after_cancellation
+    module: ExternalVerification243RecordAmplifiedCancellationVisibility/Challenge.lean
+    status: exact_source_transport_pending_release_validation
+    note: The source theorem signature is preserved exactly, with an independently repeated runningMax
+      definition identified by induction.

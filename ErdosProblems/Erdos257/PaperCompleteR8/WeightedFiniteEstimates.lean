@@ -3,7 +3,7 @@ import ErdosProblems.Erdos257.PaperCompleteR8.WeightedPrimeProfile
 /-!
 # Finite weighted estimates with an explicit observation window
 
-UNCOMPILED. The high-GCD remainder is charged against a dyadic harmonic
+The high-GCD remainder is charged against a dyadic harmonic
 bound, not against the cardinality of an unbounded conductor support.
 The future-conductor contribution is bounded geometrically before any
 infinite interchange. All constants here are deliberately non-sharp.

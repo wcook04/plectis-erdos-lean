@@ -5,7 +5,7 @@ import ErdosProblems.Erdos1041.PaperCubicFibres
 /-!
 # An algebraic supplier for the normalised cubic root count
 
-Uncompiled candidates at the round-eight pin. No Rouché, homotopy, or
+Compiled candidates at the round-eight pin. No Rouché, homotopy, or
 root-count conclusion is taken as a premise. The elementary degree-two Schur
 inequality is applied to the reciprocals of two hypothetical exterior roots.
 The resulting real polynomial certificate is displayed explicitly.

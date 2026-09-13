@@ -5,7 +5,7 @@ import Mathlib.Tactic
 /-!
 # R7: integral homogeneous evaluation at a rational base
 
-Uncompiled proof-source candidate. This is the finite algebraic bridge in the
+Compiled proof-source candidate. This is the finite algebraic bridge in the
 main irrationality proof, not the existence or asymptotics of the cancelled
 source forms. It reuses `homEval`; it does not define a different clearing.
 

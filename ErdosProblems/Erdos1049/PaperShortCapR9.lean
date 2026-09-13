@@ -2,7 +2,7 @@ import ErdosProblems.Erdos1049.PaperAsymptoticsR9
 import ErdosProblems.Erdos1049.PaperHomogenisationR7
 
 /-!
-The complete short-note cap, as an uncompiled proof-source candidate.
+The complete short-note cap, as an compiled proof-source candidate.
 
 This is not an additional source-supply axiom: the hypotheses are the displayed
 polynomial degree, l1 height, nonvanishing and logarithmic-rate hypotheses.

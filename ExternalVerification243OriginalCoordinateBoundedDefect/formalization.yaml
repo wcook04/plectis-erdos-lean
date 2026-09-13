@@ -1,0 +1,103 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: v0.4
+project:
+  name: 'Erdős #243: the Sylvester recurrence from a bounded original-coordinate product defect'
+  description: A strictly increasing positive integer sequence with rational reciprocal sum and a(n+1)/a(n)^2
+    tending to one satisfies the eventual Sylvester recurrence a(n+1) = a(n)^2 - a(n) + 1 when its original-coordinate
+    product defect P(n)/a(n) * (a(n)^2/a(n+1) - 1) is eventually bounded above. Here P(n) is the product
+    of the preceding terms. The rationality and growth hypotheses supply the canonical integer state used
+    in the proof.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - 11A63
+  - 11B37
+  - 11J72
+sources:
+- title: 'Erdős #243: the Sylvester recurrence from a bounded original-coordinate product defect'
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: This package records the source development and its verification interface; novelty is unassessed.
+  license: Apache-2.0
+  author_endorsement: participated
+- title: 'Erdős Problem #243'
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com/243
+  type: web discussion
+  relationship: background
+  note: The catalogue supplies the problem statement and references; this theorem is not attributed to
+    the catalogue.
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+status:
+  scope: A strictly increasing positive integer sequence with rational reciprocal sum and a(n+1)/a(n)^2
+    tending to one satisfies the eventual Sylvester recurrence a(n+1) = a(n)^2 - a(n) + 1 when its original-coordinate
+    product defect P(n)/a(n) * (a(n)^2/a(n+1) - 1) is eventually bounded above. Here P(n) is the product
+    of the preceding terms. The rationality and growth hypotheses supply the canonical integer state used
+    in the proof.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 1
+  sorry_boundary: Only the trusted Challenge theorem bodies have placeholders. The Solution and deliberate-negative
+    fixture have no placeholders.
+  axiom_audit_status: pending_source_bound_release_build_and_supported_comparator_replay
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: Erdos249257.ExternalVerification243OriginalCoordinateBoundedDefect.original_coordinate_bounded_defect
+    file: Solutions/ExternalVerification243OriginalCoordinateBoundedDefect.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification243OriginalCoordinateBoundedDefect/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification243OriginalCoordinateBoundedDefect.original_coordinate_bounded_defect
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    boundary: The product-defect upper bound is an additional hypothesis; it is not derived for an arbitrary
+      sequence, and unrestricted Erdős Problem 243 remains open.
+    source_declaration: ErdosProblems.Erdos243.PaperCompleteR7.original_coordinate_bounded_defect
+    source_file: ErdosProblems/Erdos243/PaperCompleteR7/ProductDefect.lean
+    source_sha256: d235f934edb4e0826a331b3f3dce9801eb73da629052d686614176a943edf018
+automation:
+  methods:
+  - method: agent
+    models:
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and source-to-statement review
+  notes: These new release adapters have not yet been checked with the release toolchain. Positive Comparator
+    and axiom-clean deliberate-negative replay remain pending.
+fidelity:
+  divergences: Challenge and Solution repeat prefixProduct and productDefect verbatim. The Solution identifies
+    both with the source definitions by rfl and transports the exact source theorem.
+review:
+  status: self-assessed
+  reviewers: []
+  notes: Statements and source transports were inspected. No independent mathematical review or terminal
+    release verification verdict is claimed.
+alignment:
+  namespace: Erdos249257.ExternalVerification243OriginalCoordinateBoundedDefect
+  statements:
+  - source: ErdosProblems.Erdos243.PaperCompleteR7.original_coordinate_bounded_defect
+    lean: Erdos249257.ExternalVerification243OriginalCoordinateBoundedDefect.original_coordinate_bounded_defect
+    module: ExternalVerification243OriginalCoordinateBoundedDefect/Challenge.lean
+    status: exact_source_transport_pending_release_validation
+    note: Challenge and Solution repeat prefixProduct and productDefect verbatim. The Solution identifies
+      both with the source definitions by rfl and transports the exact source theorem.

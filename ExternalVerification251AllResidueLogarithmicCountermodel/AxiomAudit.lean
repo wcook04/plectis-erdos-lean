@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification251AllResidueLogarithmicCountermodel
+
+#print axioms Erdos249257.ExternalVerification251AllResidueLogarithmicCountermodel.exists_every_residue_logarithmic_countermodel

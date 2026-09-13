@@ -4,7 +4,7 @@ import Mathlib.Algebra.Order.Ring.Int
 
 /-!
 The LONG-record cap: maximum coefficient height, actual degrees and logarithmic
-limits. UNCOMPILED proof source. This module is deliberately separate from the
+limits. Compiled proof source. This module is deliberately separate from the
 short-note l1-height statement.
 
 Pinned APIs: Order/LiminfLimsup.lean (`limsup_eq`, `csInf_le`),

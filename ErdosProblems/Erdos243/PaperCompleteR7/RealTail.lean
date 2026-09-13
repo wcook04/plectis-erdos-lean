@@ -5,7 +5,7 @@ import Mathlib.Topology.Algebra.InfiniteSum.NatInt
 /-!
 # Analytic part of the canonical tail bridge
 
-Uncompiled candidates.  The principal analytic assertion is proved, not
+Compiled candidates.  The principal analytic assertion is proved, not
 postulated: if positive summable terms have successive ratio tending to
 zero, their tail divided by the leading term tends to one.
 
