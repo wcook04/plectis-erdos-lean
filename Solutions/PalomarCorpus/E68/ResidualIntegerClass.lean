@@ -5,32 +5,13 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos68.PaperCompleteResidualIdentity
-import Solutions.PalomarCorpus.E68.Shared
+import Solutions.PalomarCorpus.E68.Statement
 
 open scoped BigOperators
 open Finsupp
 
 namespace PalomarCorpus.E68.ResidualIntegerClass
 export PalomarCorpus.E68.Shared (adjacentDifference canonicalKernel channelBasisColumn channelLCM channelNumerator channelSynthesis channelWeight factorialGapSeries factorialMoment isolatedChannelUnit kernelCoordinates)
-
-noncomputable def TailCoordinates (D : ℕ) (z : ℕ →₀ ℤ) : Prop :=
-  ∀ j, j < D → z j = 0
-
-noncomputable def integerEvaluation (w : ℕ → ℤ) (z : ℕ →₀ ℤ) : ℤ :=
-  z.sum (fun i c => c * w i)
-
-noncomputable def coordinateMass (z : ℕ →₀ ℤ) : ℤ :=
-  integerEvaluation (fun _ => 1) z
-
-noncomputable def fullResidualTerm (f : ℕ →₀ ℤ) (d : ℕ) : ℝ :=
-  if 1 < d then (channelNumerator f d : ℝ) /
-    ((((d.factorial : ℤ) - 1 : ℤ)) : ℝ) else 0
-
-noncomputable def fullResidual (f : ℕ →₀ ℤ) : ℝ :=
-  ∑' d : ℕ, fullResidualTerm f d
-
-noncomputable def gapPrefixReal (D : ℕ) : ℝ :=
-  ∑ d ∈ Finset.Icc 2 D, (1 : ℝ) / ((((d.factorial : ℤ) - 1 : ℤ)) : ℝ)
 
 theorem residual_transparency {D : ℕ} (hD : 2 ≤ D) (t : ℤ)
     {z : ℕ →₀ ℤ} (hz : TailCoordinates D z) :

@@ -5,26 +5,11 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos68.PrimePoleCriterion
+import Solutions.PalomarCorpus.E68.Statement
 
 open scoped BigOperators
 
 namespace PalomarCorpus.E68.PrimePole
-
-noncomputable def factorialGapPrefixLCM (M : ℕ) : ℕ :=
-  (Finset.Icc 2 M).lcm fun n => n.factorial - 1
-
-noncomputable def factorialGapPrefixLCMNumerator (M : ℕ) : ℕ :=
-  ∑ n ∈ Finset.Icc 2 M,
-    factorialGapPrefixLCM M / (n.factorial - 1)
-
-noncomputable def factorialGapMaxHits (q M e : ℕ) : Finset ℕ :=
-  (Finset.Icc 2 M).filter fun n =>
-    q ^ e ∣ n.factorial - 1 ∧
-      ¬q ^ (e + 1) ∣ n.factorial - 1
-
-noncomputable def factorialGapPrincipalResidue (q M e : ℕ) : ZMod q :=
-  ∑ n ∈ factorialGapMaxHits q M e,
-    (((n.factorial - 1) / q ^ e : ℕ) : ZMod q)⁻¹
 
 theorem factorialGapPrefixLCMNumerator_mod_prime
     {q M e : ℕ}

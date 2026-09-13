@@ -5,6 +5,7 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos243.ReciprocalTailRigidity
+import Solutions.PalomarCorpus.E243.Statement
 
 namespace PalomarCorpus.E243.PeriodicNegativeOrbit
 

@@ -116,19 +116,35 @@ lemma CofinalLocalWindowEscape_fun_eq :
   simp [CofinalLocalWindowEscape, ErdosProblems.Erdos269.CofinalLocalWindowEscape,
     windowBase_fun_eq, windowForcing_fun_eq, leastPositiveResidue_fun_eq]
 
+lemma ActualCofinalLocalWindowEscape_prop_eq :
+    ActualCofinalLocalWindowEscape = ErdosProblems.Erdos269.ActualCofinalLocalWindowEscape := by
+  -- In this family file the abbreviation makes the two propositions definitionally equal; in the
+  -- generated problem-level adapter the Statement module supplies genuine copies of the escape
+  -- predicate, the radix word, the ordered digit and the short bound, so each is transported.
+  first
+  | rfl
+  | simp only [ActualCofinalLocalWindowEscape,
+      ErdosProblems.Erdos269.ActualCofinalLocalWindowEscape,
+      CofinalLocalWindowEscape_fun_eq, dyadicBlockBase235_fun_eq,
+      dyadicOrderedBlockDigit235_fun_eq, bridgeWidth,
+      ErdosProblems.Erdos269.bridgeWidth]
+
 theorem actualCofinalLocalWindowEscape_iff_irrational_value :
     ActualCofinalLocalWindowEscape ↔ Irrational (dyadicShellTsumTailR235 0) := by
+  rw [ActualCofinalLocalWindowEscape_prop_eq]
   convert ErdosProblems.Erdos269.actualCofinalLocalWindowEscape_iff_irrational_value
   all_goals try rfl
 
 theorem actualCofinalLocalWindowEscape_iff :
     ActualCofinalLocalWindowEscape ↔ Irrational (dyadicShellTsumTailR235 1) := by
+  rw [ActualCofinalLocalWindowEscape_prop_eq]
   convert ErdosProblems.Erdos269.actualCofinalLocalWindowEscape_iff
   all_goals try rfl
 
 theorem cofinalLocalWindowEscape_of_irrational
     (h : Irrational (dyadicShellTsumTailR235 1)) :
     ActualCofinalLocalWindowEscape := by
+  rw [ActualCofinalLocalWindowEscape_prop_eq]
   convert ErdosProblems.Erdos269.cofinalLocalWindowEscape_of_irrational h
   all_goals try rfl
 

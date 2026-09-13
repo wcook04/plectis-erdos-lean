@@ -5,16 +5,11 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos243.RepairEntropy
+import Solutions.PalomarCorpus.E243.Statement
 
 open scoped BigOperators
 
 namespace PalomarCorpus.E243.RepairEntropy
-
-noncomputable def deletionProduct (c : ℕ → ℕ) (s t : ℕ) : ℕ :=
-  ∏ n ∈ Finset.Ico s t, c n
-
-noncomputable def repairedAt (c : ℕ → ℕ) (s t m : ℕ) : Prop :=
-  m ∣ deletionProduct c s t
 
 theorem repairedFamily_recovery_energy_divisionFree
     {ι : Type*} [DecidableEq ι]

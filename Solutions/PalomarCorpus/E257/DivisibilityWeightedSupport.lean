@@ -5,7 +5,7 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos257.PaperCompleteR8.WeightedReturn
-import Solutions.PalomarCorpus.E257.Shared
+import Solutions.PalomarCorpus.E257.Statement
 
 open Set
 
@@ -13,13 +13,6 @@ namespace PalomarCorpus.E257.DivisibilityWeightedSupport
 export PalomarCorpus.E257.Shared (FinitePrimeWeighted erdosSupportSeries primeSetPart primeWeightedTerm)
 
 noncomputable section
-
-noncomputable def DivisibilityWeightedClaim : Prop :=
-  (∀ (b : ℕ) (A : Set ℕ), 2 ≤ b → 0 ∉ A → A.Infinite →
-    FinitePrimeWeighted b A → Irrational (erdosSupportSeries b A)) ∧
-  (∀ H : Set ℕ, 0 ∉ H → FinitePrimeWeighted 2 H →
-    ∀ A : Set ℕ, A ⊆ H → A.Infinite →
-      ∀ b : ℕ, 2 ≤ b → Irrational (erdosSupportSeries b A))
 
 theorem erdosSupportSeries_eq :
     erdosSupportSeries = Erdos257PeriodNoncollapse.erdosSupportSeries := rfl

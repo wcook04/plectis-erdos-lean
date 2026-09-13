@@ -5,7 +5,7 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos257.GreedyRepairCriterion
-import Solutions.PalomarCorpus.E257.Shared
+import Solutions.PalomarCorpus.E257.Statement
 
 open Set
 
@@ -13,10 +13,6 @@ namespace PalomarCorpus.E257.GeneralRepairCriterion
 export PalomarCorpus.E257.Shared (binaryCoeffPrefixNumerator greedyMersenneRemainder greedyMersenneSupport mersenneAchievementSet mersenneWeight positiveMersenneSupportValue supportCoeff)
 
 noncomputable section
-
-noncomputable def greedyBinaryDefect (x : ℝ) (N : ℕ) : ℕ :=
-  ⌊(2 : ℝ) ^ N * x⌋₊ -
-    binaryCoeffPrefixNumerator (supportCoeff (greedyMersenneSupport x)) N
 
 theorem mersenneWeight_eq : mersenneWeight = Erdos257PeriodNoncollapse.mersenneWeight := rfl
 

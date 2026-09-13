@@ -5,20 +5,10 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos68.AdjacentUnitCarryWindow
-import Solutions.PalomarCorpus.E68.Shared
+import Solutions.PalomarCorpus.E68.Statement
 
 namespace PalomarCorpus.E68.AdjacentUnitCarryWindow
 export PalomarCorpus.E68.Shared (factorialGapPrefix strictFacTopRat)
-
-noncomputable def predecessorScaled (m : ℕ) : ℚ := ((m - 1).factorial : ℚ) * factorialGapPrefix (m - 1)
-noncomputable def predecessorNumerator (m : ℕ) : ℤ := let q := predecessorScaled m; (⌊q⌋ + 1) * q.den - q.num
-noncomputable def transitionNormalizer (m : ℕ) : ℕ := (predecessorScaled m).den * (m.factorial - 1) / (predecessorScaled (m + 1)).den
-noncomputable def predecessorGap (m : ℕ) : ℝ := (strictFacTopRat (factorialGapPrefix (m - 1)) (m - 1) : ℝ) - ((m - 1).factorial : ℝ) * (factorialGapPrefix (m - 1) : ℝ)
-noncomputable def stepCarry (m : ℕ) : ℤ := -⌊1 + 1 / ((m.factorial : ℝ) - 1) - (m : ℝ) * predecessorGap m⌋
-noncomputable def windowDen (m : ℕ) : ℤ := ((predecessorScaled m).den : ℤ) * ((m.factorial : ℤ) - 1) * (((m + 1).factorial : ℤ) - 1)
-noncomputable def windowLower (m : ℕ) : ℤ := (m + 2 : ℤ) * windowDen m + (m + 1 : ℤ) * ((predecessorScaled m).den : ℤ) * (((m + 1).factorial : ℤ) - 1) + ((predecessorScaled m).den : ℤ) * ((m.factorial : ℤ) - 1)
-noncomputable def windowState (m : ℕ) : ℤ := (m : ℤ) * (m + 1 : ℤ) * predecessorNumerator m * ((m.factorial : ℤ) - 1) * (((m + 1).factorial : ℤ) - 1)
-noncomputable def windowOffset (m : ℕ) : ℤ := windowState m - windowLower m
 
 lemma factorialGapPrefix_source_eq (n : ℕ) :
     factorialGapPrefix n = ErdosProblems.Erdos68.factorialGapPrefix n := by

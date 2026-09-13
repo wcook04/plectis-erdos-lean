@@ -5,117 +5,13 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos68.PrimeZeroBranch
+import Solutions.PalomarCorpus.E68.Statement
 
 open scoped BigOperators
 
 namespace PalomarCorpus.E68.MovingFactorScaleSplit
 
 noncomputable section
-
-noncomputable def factorialGapSeries : ℝ :=
-  ∑' d : ℕ, if 1 < d then
-    (1 : ℝ) / ((((d.factorial : ℤ) - 1 : ℤ) : ℝ))
-  else 0
-
-noncomputable def factorialGapLargePrefixPrivatePrimes (m : ℕ) : Finset ℕ :=
-  (m.factorial - 1).primeFactors.filter fun q =>
-    m + 1 < q ∧
-      ∀ k ∈ Finset.Ico 2 m,
-        Nat.Coprime q (k.factorial - 1)
-
-noncomputable def factorialBlockIndices (p : ℕ) : Finset ℕ :=
-  Finset.Icc 2 (2 * p - 1)
-
-noncomputable def factorialGapDenominator (n : ℕ) : ℕ :=
-  n.factorial - 1
-
-noncomputable def factorialBlockBase (p : ℕ) : ℕ :=
-  (p - 1).factorial
-
-noncomputable def pairwiseCollisionCore
-    {ι : Type*} [DecidableEq ι]
-    (s : Finset ι) (d : ι → ℕ) : ℕ :=
-  s.lcm fun i =>
-    (s.erase i).lcm fun j => Nat.gcd (d i) (d j)
-
-noncomputable def collisionCore
-    {ι : Type*} [DecidableEq ι]
-    (base : ℕ) (s : Finset ι) (d : ι → ℕ) : ℕ :=
-  Nat.lcm base (pairwiseCollisionCore s d)
-
-noncomputable def endpointDenominatorLcm
-    {ι : Type*} [DecidableEq ι]
-    (base : ℕ) (s : Finset ι) (d : ι → ℕ) : ℕ :=
-  Nat.lcm base (s.lcm d)
-
-noncomputable def endpointTailNumerator
-    {ι : Type*} [DecidableEq ι]
-    (base : ℕ) (s : Finset ι) (d : ι → ℕ) : ℕ :=
-  s.sum fun i => endpointDenominatorLcm base s d / d i
-
-noncomputable def privateQuotient
-    {ι : Type*} [DecidableEq ι]
-    (base : ℕ) (s : Finset ι) (d : ι → ℕ) (i : ι) : ℕ :=
-  d i / Nat.gcd (d i) (collisionCore base s d)
-
-noncomputable def privateModulus
-    {ι : Type*} [DecidableEq ι]
-    (base : ℕ) (s : Finset ι) (d : ι → ℕ) : ℕ :=
-  s.prod (privateQuotient base s d)
-
-noncomputable def projectedResidue (T Q : ℕ) : ℕ :=
-  T % Q
-
-noncomputable def complementaryProjectedResidue (T Q : ℕ) : ℕ :=
-  projectedResidue (Q - projectedResidue T Q) Q
-
-noncomputable def leaveOneOutModulus (R r : ℕ) : ℕ :=
-  R / r
-
-noncomputable def factorialBlockEndpointLcm (p : ℕ) : ℕ :=
-  endpointDenominatorLcm
-    (factorialBlockBase p)
-    (factorialBlockIndices p)
-    factorialGapDenominator
-
-noncomputable def factorialBlockCollisionCore (p : ℕ) : ℕ :=
-  collisionCore
-    (factorialBlockBase p)
-    (factorialBlockIndices p)
-    factorialGapDenominator
-
-noncomputable def factorialBlockNormalizedCollisionCore (p : ℕ) : ℕ :=
-  factorialBlockCollisionCore p / factorialBlockBase p
-
-noncomputable def factorialBlockUpperDescFactorial (p : ℕ) : ℕ :=
-  (2 * p - 1).descFactorial p
-
-noncomputable def factorialBlockPrivateModulus (p : ℕ) : ℕ :=
-  privateModulus
-    (factorialBlockBase p)
-    (factorialBlockIndices p)
-    factorialGapDenominator
-
-noncomputable def factorialBlockTailNumerator (p : ℕ) : ℕ :=
-  endpointTailNumerator
-    (factorialBlockBase p)
-    (factorialBlockIndices p)
-    factorialGapDenominator
-
-noncomputable def factorialBlockPrivateQuotient (p n : ℕ) : ℕ :=
-  privateQuotient
-    (factorialBlockBase p)
-    (factorialBlockIndices p)
-    factorialGapDenominator n
-
-noncomputable def factorialBlockFactorProjectionModulus (p a : ℕ) : ℕ :=
-  leaveOneOutModulus (factorialBlockPrivateModulus p) a
-
-noncomputable def factorialBlockScale (p : ℕ) : ℕ :=
-  2 * p ^ 2 * (2 * p - 1).factorial
-
-noncomputable def factorialBlockBudget (p : ℕ) : ℕ :=
-  2 * p + 1
 
 theorem movingPrivateFactorScaleSplit_implies_irrational
     (hcert :

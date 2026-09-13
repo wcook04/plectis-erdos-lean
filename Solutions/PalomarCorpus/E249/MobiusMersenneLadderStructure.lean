@@ -6,7 +6,7 @@ Authors: Will Cook
 import Mathlib
 import Erdos257PeriodNoncollapse.SignedQMomentObstruction
 import ErdosProblems.Erdos249.MobiusMersenneLadderSeparation
-import Solutions.PalomarCorpus.E249.Shared
+import Solutions.PalomarCorpus.E249.Statement
 
 open scoped BigOperators
 open ArithmeticFunction

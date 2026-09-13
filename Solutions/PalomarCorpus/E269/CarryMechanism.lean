@@ -7,31 +7,44 @@ import Mathlib
 import ErdosProblems.Erdos269.CarryLiftExtinction
 import ErdosProblems.Erdos269.RestrictedFloorSum
 import ErdosProblems.Erdos269.WeightedPhaseCarry
-import Solutions.PalomarCorpus.E269.Shared
+import Solutions.PalomarCorpus.E269.Statement
 
 open scoped BigOperators
 
 namespace PalomarCorpus.E269.CarryMechanism
 export PalomarCorpus.E269.Shared (CofinalLocalWindowEscape leastPositiveResidue windowBase windowForcing)
 
-noncomputable def carryLiftPerturbation
-    (base digit z : ℕ → ℤ) (n : ℕ) : ℤ :=
-  base n * z n - z (n + 1) - digit n
+noncomputable def prime235ToSource : Prime235 → ErdosProblems.Erdos269.Prime235
+  | .two => .two
+  | .three => .three
+  | .five => .five
 
-noncomputable def carryLiftError
-    (D : ℤ) (z carry : ℕ → ℤ) (n : ℕ) : ℤ :=
-  D * z n - carry n
+noncomputable def prime235OfSource : ErdosProblems.Erdos269.Prime235 → Prime235
+  | .two => .two
+  | .three => .three
+  | .five => .five
 
-noncomputable def channelPrefix {G : Type*} [AddCommGroup G]
-    (ε : ℕ → G) (N : ℕ) : G :=
-  ∑ n ∈ Finset.range N, ε n
+lemma prime235OfSource_toSource (p : Prime235) :
+    prime235OfSource (prime235ToSource p) = p := by
+  cases p <;> rfl
 
-noncomputable def ChannelBlockNull {ι G : Type*} [AddCommGroup G]
-    (jumpBase : ℕ → ι) (ε : ℕ → G) : Prop :=
-  ∀ a b, jumpBase a = jumpBase b →
-    channelPrefix ε a = channelPrefix ε b
+lemma prime235ToSource_ofSource (p : ErdosProblems.Erdos269.Prime235) :
+    prime235ToSource (prime235OfSource p) = p := by
+  cases p <;> rfl
 
-noncomputable abbrev Prime235 := ErdosProblems.Erdos269.Prime235
+lemma prime235ToSource_injective : Function.Injective prime235ToSource := by
+  intro p q hpq
+  have h := congrArg prime235OfSource hpq
+  rwa [prime235OfSource_toSource, prime235OfSource_toSource] at h
+
+lemma prime235ToSource_comp_surjective {jumpBase : ℕ → Prime235}
+    (hchannel : Function.Surjective jumpBase) :
+    Function.Surjective fun n => prime235ToSource (jumpBase n) := by
+  intro y
+  obtain ⟨n, hn⟩ := hchannel (prime235OfSource y)
+  refine ⟨n, ?_⟩
+  show prime235ToSource (jumpBase n) = y
+  rw [hn, prime235ToSource_ofSource]
 
 theorem no_carryLift_of_errorBound_below_twoPow
     (D : ℤ)
@@ -61,18 +74,27 @@ theorem no_carryLift_of_errorBound_below_twoPow
     (N : ℕ) (hbelow : bound N < 2 ^ N) :
     False := by
   have hnull' :
-      ErdosProblems.Erdos269.ChannelBlockNull jumpBase
+      ErdosProblems.Erdos269.ChannelBlockNull
+        (fun n => prime235ToSource (jumpBase n))
         (ErdosProblems.Erdos269.carryLiftPerturbation base digit z) := by
-    simpa [ChannelBlockNull, channelPrefix, carryLiftPerturbation,
-      ErdosProblems.Erdos269.ChannelBlockNull,
+    intro a b hab
+    have hprefix := hnull a b (prime235ToSource_injective hab)
+    simpa [channelPrefix, carryLiftPerturbation,
       ErdosProblems.Erdos269.channelPrefix,
-      ErdosProblems.Erdos269.carryLiftPerturbation] using hnull
-  simpa [carryLiftPerturbation, carryLiftError,
-    ErdosProblems.Erdos269.carryLiftPerturbation,
-    ErdosProblems.Erdos269.carryLiftError] using
+      ErdosProblems.Erdos269.carryLiftPerturbation] using hprefix
+  have h23start' : prime235ToSource (jumpBase n23) = .two := by
+    simp [h23start, prime235ToSource]
+  have h23end' : prime235ToSource (jumpBase (n23 + 1)) = .three := by
+    simp [h23end, prime235ToSource]
+  have h25start' : prime235ToSource (jumpBase n25) = .two := by
+    simp [h25start, prime235ToSource]
+  have h25end' : prime235ToSource (jumpBase (n25 + 1)) = .five := by
+    simp [h25end, prime235ToSource]
+  exact
     ErdosProblems.Erdos269.no_carryLift_of_errorBound_below_twoPow
-      D base digit z carry jumpBase hcarry hchannel hnull'
-      h23start h23end h25start h25end
+      D base digit z carry (fun n => prime235ToSource (jumpBase n)) hcarry
+      (prime235ToSource_comp_surjective hchannel) hnull'
+      h23start' h23end' h25start' h25end'
       hanchor23 hanchor25 herror0 bound hbounded hbaseTwo N hbelow
 
 theorem no_unitAccurateLift_with_twoAnchors_and_firstTwoBlockNull
@@ -111,13 +133,23 @@ theorem perturbation_eq_zero_of_blockNull_twoAnchors
     (hanchor25 : ε n25 = 0) :
     ∀ n, ε n = 0 := by
   have hnull' :
-      ErdosProblems.Erdos269.ChannelBlockNull jumpBase ε := by
-    simpa [ChannelBlockNull, channelPrefix,
-      ErdosProblems.Erdos269.ChannelBlockNull,
-      ErdosProblems.Erdos269.channelPrefix] using hnull
+      ErdosProblems.Erdos269.ChannelBlockNull
+        (fun n => prime235ToSource (jumpBase n)) ε := by
+    intro a b hab
+    have hprefix := hnull a b (prime235ToSource_injective hab)
+    simpa [channelPrefix, ErdosProblems.Erdos269.channelPrefix] using hprefix
+  have h23start' : prime235ToSource (jumpBase n23) = .two := by
+    simp [h23start, prime235ToSource]
+  have h23end' : prime235ToSource (jumpBase (n23 + 1)) = .three := by
+    simp [h23end, prime235ToSource]
+  have h25start' : prime235ToSource (jumpBase n25) = .two := by
+    simp [h25start, prime235ToSource]
+  have h25end' : prime235ToSource (jumpBase (n25 + 1)) = .five := by
+    simp [h25end, prime235ToSource]
   exact
     ErdosProblems.Erdos269.perturbation_eq_zero_of_blockNull_twoAnchors
-      hbase hnull' h23start h23end h25start h25end hanchor23 hanchor25
+      (prime235ToSource_comp_surjective hbase) hnull'
+      h23start' h23end' h25start' h25end' hanchor23 hanchor25
 
 theorem carryLift_blockDefect
     (D : ℤ)
@@ -137,11 +169,6 @@ theorem carryLift_blockDefect
     ErdosProblems.Erdos269.carryLiftError] using
     ErdosProblems.Erdos269.carryLift_blockDefect
       D base digit z carry hcarry a b hab
-
-noncomputable def carryResidue (B c : ℤ) : ℤ := c % B
-noncomputable def carryQuotient (B c : ℤ) : ℤ := c / B
-noncomputable def residueDigit (B base residue nextResidue : ℤ) : ℤ :=
-  (base * residue - nextResidue) / B
 
 theorem carry_eq_residueDigit_add_coboundary
     (B : ℤ) (hB : 0 < B)

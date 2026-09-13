@@ -5,7 +5,7 @@ Authors: Will Cook
 -/
 import Mathlib
 import Erdos257PeriodNoncollapse.SublogDivisorCoverage
-import Solutions.PalomarCorpus.E257.Shared
+import Solutions.PalomarCorpus.E257.Statement
 
 open Filter Set
 
@@ -13,24 +13,6 @@ namespace PalomarCorpus.E257.RationalTailRigidity
 export PalomarCorpus.E257.Shared (erdosSupportSeries supportCoeff)
 
 noncomputable section
-
-noncomputable def binaryCoeffTail (c : ℕ → ℕ) (N : ℕ) : ℝ :=
-  ∑' j : ℕ, (c (N + j + 1) : ℝ) / (2 : ℝ) ^ (j + 1)
-
-noncomputable def CoeffZeroWindow (f : ℕ → ℕ) (N h : ℕ) : Prop :=
-  ∀ j : ℕ, j < h → f (N + j + 1) = 0
-
-noncomputable def SupportCoeffZeroWindow (A : Set ℕ) (N h : ℕ) : Prop :=
-  CoeffZeroWindow (supportCoeff A) N h
-
-noncomputable def reciprocalSupportTerm (A : Set ℕ) (a : ℕ) : ℝ :=
-  Set.indicator A (fun a : ℕ => (1 : ℝ) / (a : ℝ)) a
-
-noncomputable def reciprocalMass (A : Set ℕ) : ℝ :=
-  ∑' a : ℕ, reciprocalSupportTerm A a
-
-noncomputable def oddDoublingOrder (v : ℕ) (hvodd : Odd v) : ℕ :=
-  orderOf (ZMod.unitOfCoprime 2 (Nat.coprime_two_left.mpr hvodd))
 
 theorem exists_unbounded_shifted_odd_tail_nat_state_of_support_fraction
     (A : Set ℕ) (hAinf : A.Infinite) (p : ℤ) (c v : ℕ) (hv : 0 < v)

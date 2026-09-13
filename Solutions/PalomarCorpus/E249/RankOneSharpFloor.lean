@@ -5,20 +5,13 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos249.RankOneSharpFloor
-import Solutions.PalomarCorpus.E249.Shared
+import Solutions.PalomarCorpus.E249.Statement
 
 open scoped BigOperators
 open ArithmeticFunction
 
 namespace PalomarCorpus.E249.RankOneSharpFloor
 export PalomarCorpus.E249.Shared (mobiusMersenneTerm mobiusMersenneTheta)
-
-noncomputable def mobiusMersennePrefix (Y r : ℕ) : ℝ :=
-  ∑ n ∈ Finset.range Y, mobiusMersenneTerm r n
-
-noncomputable def rankOneSubrankQuotient (e Y : ℕ) : ℝ :=
-  mobiusMersennePrefix Y (e + 2) ^ 2 /
-    mobiusMersennePrefix Y (2 * e + 2)
 
 theorem rankOneSubrankQuotient_ge_one_five
     {e Y : ℕ} (he : 1 ≤ e) (hY : 4 ≤ Y) :

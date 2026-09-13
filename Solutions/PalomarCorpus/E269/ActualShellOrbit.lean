@@ -5,7 +5,7 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos269.DyadicShellSummability
-import Solutions.PalomarCorpus.E269.Shared
+import Solutions.PalomarCorpus.E269.Statement
 
 open scoped BigOperators
 
@@ -13,9 +13,6 @@ namespace PalomarCorpus.E269.ActualShellOrbit
 export PalomarCorpus.E269.Shared (DyadicInternalPower dyadicBeforeThresholdCount235 dyadicBlockBase235 dyadicNormalizedTailStateR235 dyadicOrderedBlockDigit235 dyadicShellMassQ235 dyadicShellMassR235 dyadicShellTsumTailR235 dyadicSmoothShell235 smooth3Val strictSmoothExponents strictSmoothShell threePrimeHeight)
 
 noncomputable section
-
-noncomputable def FarFromIntegers (x δ : ℝ) : Prop :=
-  ∀ z : ℤ, δ ≤ |x - (z : ℝ)|
 
 theorem actual_dyadicShellOrbit_recurrence_and_escape :
     Summable dyadicShellMassR235 ∧

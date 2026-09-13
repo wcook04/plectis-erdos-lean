@@ -5,15 +5,12 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos68.MultiplicativeSuccessorRigidity
-import Solutions.PalomarCorpus.E68.Shared
+import Solutions.PalomarCorpus.E68.Statement
 
 open scoped BigOperators
 
 namespace PalomarCorpus.E68.MultiplicativeSuccessorRigidity
 export PalomarCorpus.E68.Shared (factorialGapPrefix factorialGapSeries strictFacTopRat)
-
-noncomputable def gapSuccessor (m : ℕ) : ℤ :=
-  strictFacTopRat (factorialGapPrefix m) m
 
 theorem gapSuccessor_eq_mul_pred_of_dvd
     {m : ℕ} (hm : 3 ≤ m) (h : (m : ℤ) ∣ gapSuccessor m) :

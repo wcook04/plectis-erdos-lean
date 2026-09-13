@@ -5,9 +5,9 @@ Authors: Will Cook
 -/
 import Mathlib
 import Erdos257PeriodNoncollapse.CertificateKernel
+import Solutions.PalomarCorpus.E249.Statement
 
 namespace PalomarCorpus.E249.FareyWindowExclusion
-noncomputable def fareyDenBound : ℕ := 79639646646701375323355774875831053
 
 theorem farey_int_exclusion :
     ∀ (a : ℤ) (d : ℕ), 0 < d → d ≤ fareyDenBound →

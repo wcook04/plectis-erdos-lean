@@ -5,7 +5,7 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos68.PaperCompleteFiniteSizeCertificate
-import Solutions.PalomarCorpus.E68.Shared
+import Solutions.PalomarCorpus.E68.Statement
 
 namespace PalomarCorpus.E68.FiniteDenominator
 export PalomarCorpus.E68.Shared (factorialGapSeries)

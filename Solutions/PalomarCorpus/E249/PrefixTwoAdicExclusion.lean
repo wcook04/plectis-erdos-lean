@@ -5,13 +5,11 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos249.PrefixValuationAndControlRigidity
+import Solutions.PalomarCorpus.E249.Statement
 
 namespace PalomarCorpus.E249.PrefixTwoAdicExclusion
 
 set_option linter.unusedVariables false
-
-noncomputable def totientPrefix (n : ℕ) : ℕ :=
-  ∑ i ∈ Finset.range n, 2 ^ (n - 1 - i) * Nat.totient (i + 1)
 
 theorem totientPrefix_succ (n : ℕ) :
     totientPrefix (n + 1) = 2 * totientPrefix n + Nat.totient (n + 1) := by
@@ -22,9 +20,6 @@ theorem totientPrefix_eq_corpusForm (n : ℕ) :
     totientPrefix n = ∑ i ∈ Finset.range (n + 1), Nat.totient i * 2 ^ (n - i) := by
   simpa [totientPrefix, ErdosProblems.Erdos249.totientPrefix] using
     ErdosProblems.Erdos249.totientPrefix_eq_corpusForm n
-
-noncomputable def prefixTail (S : ℝ) (n : ℕ) : ℝ :=
-  2 ^ n * S - (totientPrefix n : ℝ)
 
 theorem oddPart_mul_prefixTail_eq_intCast
     {S : ℝ} {a : ℤ} {c v n : ℕ} (hvpos : 0 < v)

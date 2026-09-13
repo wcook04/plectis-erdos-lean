@@ -150,10 +150,10 @@ sources:
 - title: "A conditional proof of the irrationality of the dyadic prime series under a uniform Hardy-Littlewood prime-tuples conjecture, with a Lean formalisation of the conditional argument, posted in 2026 to the Erdős Problem #251 discussion"
   authors:
   - "J. Land"
-  id: "https://www.erdosproblems.com/251"
+  id: "https://github.com/beetree/math_erdos_251"
   type: "web discussion"
   relationship: "background"
-  note: "As recorded in the public reasoning record for this problem, Land's argument assumes Kuperberg's uniform Hardy-Littlewood prime-tuples conjecture, constructs weighted prime-gap tails, and comes with a Lean formalisation of that conditional argument. Every declaration compared in this entry is unconditional and was proved independently of it; nothing here uses, extends or contradicts his conditional theorem, and the parent problem remains open unconditionally."
+  note: "Posted 5 September 2026 on the Erdős Problems discussion thread for #251 with the linked repository; Conjecture 1 there is the large-x form of Conjecture 1.3 of V. Kuperberg. As recorded in the public reasoning record for this problem, Land's argument assumes Kuperberg's uniform Hardy-Littlewood prime-tuples conjecture, constructs weighted prime-gap tails, and comes with a Lean formalisation of that conditional argument. Every declaration compared in this entry is unconditional and was proved independently of it; nothing here uses, extends or contradicts his conditional theorem, and the parent problem remains open unconditionally."
   license: "unknown"
   author_endorsement: "not-contacted"
 - title: Erdős Problems catalogue
@@ -177,8 +177,8 @@ related_formalizations:
   title: "FormalConjectures.ErdosProblems.251"
   relationship: "independent"
   note: "An earlier Lean statement of the parent problem whose proof ends in sorry; it is statement-level prior art for the formalisation, it supplies no proof authority, and every declaration compared here was stated independently of it."
-- id: "https://www.erdosproblems.com/251"
-  title: "J. Land's Lean formalisation of a conditional proof of irrationality (2026)"
+- id: "https://github.com/beetree/math_erdos_251"
+  title: "J. Land's Lean formalisation of a conditional proof of irrationality (5 September 2026)"
   relationship: "independent"
   note: "Formalises Land's argument, which is conditional on Kuperberg's uniform prime-tuples conjecture; announced with the proof on the problem's discussion thread. The declarations compared here are unconditional and were stated independently of it."
 status:
@@ -216,5 +216,5 @@ automation:
 review:
   status: self-assessed
   reviewers: []
-  notes: The author checked every compared statement against the public problem note and reasoning record for Erdős problem #251 at https://github.com/wcook04/plectis-erdos; no external referee report exists for this entry.
+  notes: Every compared statement was checked declaration by declaration against the public problem note, the reasoning record for Erdős problem #251 at https://github.com/wcook04/plectis-erdos and the Lean sources in two automated passes run with Anthropic Claude on 2026-09-13 (an alignment review of each docstring against its Lean statement, then a simulated editorial review under Palomar's published prompts); the author applied every finding before publication and is responsible for the selection and the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
 acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

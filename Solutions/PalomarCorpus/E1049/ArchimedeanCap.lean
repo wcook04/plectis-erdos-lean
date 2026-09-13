@@ -5,16 +5,12 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos1049.PaperNoDecayR9
+import Solutions.PalomarCorpus.E1049.Statement
 
 open Filter Asymptotics
 open scoped Topology
 
 namespace PalomarCorpus.E1049.ArchimedeanCap
-
-noncomputable def width (U V : ℕ → Polynomial ℤ) (n : ℕ) : ℕ := max (U n).natDegree (V n).natDegree
-noncomputable def height (P : Polynomial ℤ) : ℝ := ∑ i ∈ P.support, |(P.coeff i : ℝ)|
-noncomputable def remainder (U V : ℕ → Polynomial ℤ) (F : ℝ → ℝ) (x : ℝ) (n : ℕ) : ℝ :=
-  (U n).eval₂ (Int.castRingHom ℝ) x * F x - (V n).eval₂ (Int.castRingHom ℝ) x
 
 theorem archimedean_cap (U V : ℕ → Polynomial ℤ) (F : ℝ → ℝ) (σ δ h : ℝ)
     (hσ : 0 < σ) (hδ : 0 < δ) (hh : 0 ≤ h)
@@ -32,9 +28,6 @@ theorem archimedean_cap (U V : ℕ → Polynomial ℤ) (F : ℝ → ℝ) (σ δ 
         atTop (𝓝 0) := by
   exact ErdosProblems.Erdos1049.PaperR9.short_note_archimedean_cap U V F σ δ h
     ⟨hσ, hδ, hh, hdeg, hheight, hne, hrate⟩
-
-noncomputable def maxCoefficient (P : Polynomial ℤ) : ℕ :=
-  P.support.sup (fun i => (P.coeff i).natAbs)
 
 /-- Exact all-base hypotheses; no limit of the normalized degree is assumed. -/
 theorem cleared_below_square_not_tendsto_zero

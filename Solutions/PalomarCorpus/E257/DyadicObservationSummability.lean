@@ -5,20 +5,13 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos257.WeightedSupportLimits
+import Solutions.PalomarCorpus.E257.Statement
 
 open Filter Topology
 
 namespace PalomarCorpus.E257.DyadicObservationSummability
 
 noncomputable section
-
-noncomputable def supportObservationMass (A : Set ℕ) (α : ℕ → ℝ) (R : ℕ) : ℝ := by
-  classical
-  exact ∑ a ∈ (Finset.range (R + 1)).filter (fun a => 0 < a ∧ a ∈ A), α a
-
-noncomputable def weightedObservationTerm (A : Set ℕ) (α : ℕ → ℝ) (a : ℕ) : ℝ := by
-  classical
-  exact if 0 < a ∧ a ∈ A then α a / a else 0
 
 theorem supportObservationMass_eq :
     supportObservationMass = ErdosProblems.Erdos257.supportObservationMass :=

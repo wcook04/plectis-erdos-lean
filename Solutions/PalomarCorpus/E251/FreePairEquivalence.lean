@@ -5,16 +5,12 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos251.FreePairReduction
-import Solutions.PalomarCorpus.E251.Shared
+import Solutions.PalomarCorpus.E251.Statement
 
 open scoped BigOperators
 
 namespace PalomarCorpus.E251.FreePairEquivalence
 export PalomarCorpus.E251.Shared (DyadicTailRecurrence RatIntegral RealDyadicTailRecurrence RealIntegral prime0 primeGap0 primeGapDyadicTerm realTailShift)
-
-noncomputable abbrev CofinalNonintegralTailShifts := ErdosProblems.Erdos251.CofinalNonintegralTailShifts
-noncomputable abbrev CofinalFreePairNonintegral := ErdosProblems.Erdos251.CofinalFreePairNonintegral
-noncomputable abbrev primeGapRealTail := ErdosProblems.Erdos251.primeGapRealTail
 
 theorem irrational_primeGap_tsum_iff_cofinalFreePairNonintegral :
     Irrational (∑' n : ℕ, primeGapDyadicTerm n) ↔

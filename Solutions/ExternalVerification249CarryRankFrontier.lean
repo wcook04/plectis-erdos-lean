@@ -57,7 +57,9 @@ theorem finrank_canonicalCarryKernel_ge_of_certificate
       Module.finrank ℚ
         (Submodule.span ℚ (Set.range (canonicalCarryKernelFamily u e))) :=
   Erdos257PeriodNoncollapse.finrank_canonicalCarryKernel_ge_of_certificate
-    hv hu e cert
+    hv hu e
+    { rowIndex := cert.rowIndex
+      det_ne_zero := cert.det_ne_zero }
 
 theorem not_irrational_totientSeries_implies_unbounded_carryRank_unconditional
     (hirr : ¬ Irrational (binaryCoeffSeries Nat.totient)) :

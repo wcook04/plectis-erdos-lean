@@ -6,53 +6,10 @@ Authors: Will Cook
 import Mathlib
 import ErdosProblems.Erdos269.KernelCarryRank
 import ErdosProblems.Erdos269.ThreePrimeRunningLcm
-import Solutions.PalomarCorpus.E269.Shared
+import Solutions.PalomarCorpus.E269.Statement
 
 namespace PalomarCorpus.E269.ThreePrimeStructure
 export PalomarCorpus.E269.Shared (smooth3Val threePrimeHeight)
-
-noncomputable def threePrimeKernelQ (p q r i j k : ℕ) : ℚ :=
-  (threePrimeHeight p q r (smooth3Val p q r i j k) : ℚ)⁻¹
-
-noncomputable def smoothPrefixExponents (p q r x : ℕ) : Finset (ℕ × ℕ × ℕ) :=
-  ((Finset.range (Nat.log p x + 1)).product
-      ((Finset.range (Nat.log q x + 1)).product
-        (Finset.range (Nat.log r x + 1)))).filter
-    fun e => smooth3Val p q r e.1 e.2.1 e.2.2 ≤ x
-
-noncomputable def smoothPrefixLcm (p q r x : ℕ) : ℕ :=
-  (smoothPrefixExponents p q r x).lcm
-    fun e => smooth3Val p q r e.1 e.2.1 e.2.2
-
-noncomputable def SameThreePrimeLogCell (p q r x y : ℕ) : Prop :=
-  Nat.log p x = Nat.log p y ∧
-    Nat.log q x = Nat.log q y ∧
-      Nat.log r x = Nat.log r y
-
-noncomputable def positivePrimePowers (p count : ℕ) : Finset ℕ :=
-  (Finset.range count).image fun e => p ^ (e + 1)
-
-noncomputable def threePrimePositiveJumpSet (p q r count : ℕ) : Finset ℕ :=
-  (positivePrimePowers p count ∪ positivePrimePowers q count) ∪
-    positivePrimePowers r count
-
-noncomputable def smoothExponentBox (hp hq hr : ℕ) : Finset (ℕ × ℕ × ℕ) :=
-  (Finset.range (hp + 1)).product
-    ((Finset.range (hq + 1)).product (Finset.range (hr + 1)))
-
-noncomputable def smoothPointHeight (p q r : ℕ) (e : ℕ × ℕ × ℕ) : ℕ :=
-  threePrimeHeight p q r (smooth3Val p q r e.1 e.2.1 e.2.2)
-
-noncomputable def smoothHeightFiber
-    (p q r hp hq hr H : ℕ) : Finset (ℕ × ℕ × ℕ) :=
-  (smoothExponentBox hp hq hr).filter fun e => smoothPointHeight p q r e = H
-
-noncomputable def smoothExponentShell
-    (p q r lo hi hp hq hr : ℕ) : Finset (ℕ × ℕ × ℕ) :=
-  ((Finset.range (hp + 1)).product
-      ((Finset.range (hq + 1)).product (Finset.range (hr + 1)))).filter
-    fun e => lo ≤ smooth3Val p q r e.1 e.2.1 e.2.2 ∧
-      smooth3Val p q r e.1 e.2.1 e.2.2 < hi
 
 theorem smoothPrefixLcm_eq_threePrimeHeight
     {p q r x : ℕ} (hp : p.Prime) (hq : q.Prime) (hr : r.Prime)
@@ -136,9 +93,6 @@ theorem kernel_235_minor_eq_neg_one_fifteen :
     ErdosProblems.Erdos269.threePrimeHeight,
     ErdosProblems.Erdos269.smooth3Val] using
     ErdosProblems.Erdos269.kernel_235_minor_eq_neg_one_fifteen
-
-noncomputable def NoIntegerOrbit (α : ℝ) : Prop :=
-  ∀ n : ℕ, 0 < n → Int.fract ((n : ℝ) * α) ≠ 0
 
 theorem exists_uniform_nonsingular_threePrimeKernel_minor
     {p q r : ℕ} (hp : 1 < p) (hq : 1 < q) (hr : 1 < r)

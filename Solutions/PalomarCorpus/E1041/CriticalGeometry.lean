@@ -5,6 +5,7 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos1041.CriticalTwoRootProximity
+import Solutions.PalomarCorpus.E1041.Statement
 
 open Finset
 
@@ -39,21 +40,6 @@ theorem criticalDiskInverseBalance_twoRootProximity_strict
   exact ErdosProblems.Erdos1041.two_add_lt_two_of_disk_inverse_balance_of_strict_diameter
     hN ht1 hδ hδe hδ1 hemax hbal hstar
 
-noncomputable def nearestSpokeP : ℂ := (999 : ℂ) / 1000
-
-noncomputable def nearestSpokeA : ℂ := ((901 : ℂ) / 902) * nearestSpokeP
-
-noncomputable def nearestSpokeUPlus : ℂ := ((-451 : ℂ) + 780 * Complex.I) / 901
-
-noncomputable def nearestSpokeUMinus : ℂ := ((-451 : ℂ) - 780 * Complex.I) / 901
-
-noncomputable def nearestSpokeRoot : Fin 5 → ℂ
-  | 0 => nearestSpokeA
-  | 1 => Complex.I * nearestSpokeP
-  | 2 => -Complex.I * nearestSpokeP
-  | 3 => nearestSpokeP * nearestSpokeUPlus
-  | 4 => nearestSpokeP * nearestSpokeUMinus
-
 theorem nearestSpoke_reciprocal_balance :
     ∑ k, (nearestSpokeRoot k)⁻¹ = 0 := by
   simp [Fin.sum_univ_succ, nearestSpokeRoot, nearestSpokeA, nearestSpokeP,
@@ -75,19 +61,6 @@ theorem nearestSpoke_unique_nearest_spoke_escapes :
         (((1 / 10 : ℝ) * (900099 / 902000)) ^ 2 +
           (1 / 10) * (999 / 1000) ^ 2 + (999 / 1000) ^ 2) := by
   exact ErdosProblems.Erdos1041.nearestSpoke_unique_nearest_spoke_escapes
-
-noncomputable def allStraightRadius : ℂ := (99 : ℂ) / 100
-
-noncomputable def allStraightOmega : ℂ :=
-  (-1 : ℂ) / 2 + ((Real.sqrt 3 : ℂ) / 2) * Complex.I
-
-noncomputable def allStraightRoot : Fin 3 → ℂ
-  | 0 => allStraightRadius
-  | 1 => allStraightRadius * allStraightOmega
-  | 2 => allStraightRadius * allStraightOmega ^ 2
-
-noncomputable def allStraightCubic (z : ℂ) : ℂ :=
-  z ^ 3 - allStraightRadius ^ 3
 
 private theorem allStraightOmega_quadratic :
     allStraightOmega ^ 2 + allStraightOmega + 1 = 0 := by

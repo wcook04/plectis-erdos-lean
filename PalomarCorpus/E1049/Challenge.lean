@@ -44,8 +44,10 @@ file proves irrationality of `F` at any base.
 * `BezoutPluckerJets`. Minor propagation and the halved `S + 2R` selector
   threshold, each under a minor-vanishing hypothesis that is not established
   here for any actual approximation family.
-* `PublishedHeightRegions`. `3^81 < 2^200`, so `3/2` lies outside the `81/200` The Bundschuh and Vaananen region is the published one; the `81/200` region is this entry's own elementary sub-boundary and carries no analytic hypothesis.
-  threshold and outside the published Bundschuh-Vaananen region. Membership is
+* `PublishedHeightRegions`. `3^81 < 2^200`, so `3/2` lies outside the `81/200`
+  threshold and outside the published Bundschuh-Vaananen region. The
+  Bundschuh and Vaananen region is the published one; the `81/200` region is
+  this entry's own elementary sub-boundary and carries no analytic hypothesis. Membership is
   applicability of a method rather than an irrationality statement.
 -/
 

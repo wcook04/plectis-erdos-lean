@@ -5,39 +5,13 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos68.PaperCompleteMomentIdeal
-import Solutions.PalomarCorpus.E68.Shared
+import Solutions.PalomarCorpus.E68.Statement
 
 open scoped BigOperators
 open Finsupp
 
 namespace PalomarCorpus.E68.MomentIdeal
 export PalomarCorpus.E68.Shared (adjacentDifference canonicalKernel channelBasisColumn channelLCM channelNumerator channelSynthesis channelWeight factorialMoment isolatedChannelUnit kernelCoordinates)
-
-noncomputable def channelScalar (n : ℕ) : ℤ := isolatedChannelUnit n 1
-
-noncomputable def finiteScalarGcd (D N : ℕ) : ℕ :=
-  (Finset.Icc (D + 1) N).gcd (fun n => (channelScalar n).natAbs)
-
-noncomputable def kernelOne (D : ℕ) : ℤ := canonicalKernel D 1
-
-noncomputable def Admissible (f : ℕ →₀ ℤ) : Prop :=
-  ∀ n ∈ f.support, 2 ≤ n
-
-noncomputable def LowChannels (D : ℕ) (f : ℕ →₀ ℤ) : Prop :=
-  ∀ d ∈ Finset.Icc 2 D, channelNumerator f d = 0
-
-noncomputable def AttainsMoment (D : ℕ) (m : ℤ) : Prop :=
-  ∃ f : ℕ →₀ ℤ, Admissible f ∧ LowChannels D f ∧ factorialMoment f = m
-
-noncomputable def minimumMoment (D p : ℕ) : ℤ :=
-  let G : ℤ := finiteScalarGcd D (D * (2 * p - 1))
-  (channelLCM D : ℤ) * (G / (Int.gcd G (kernelOne D) : ℤ))
-
-noncomputable def PrimitiveVector (f : ℕ →₀ ℤ) : Prop :=
-  ∀ k : ℕ, 2 ≤ k → ¬ ∃ g : ℕ →₀ ℤ, f = (k : ℤ) • g
-
-noncomputable def coefficientContent (f : ℕ →₀ ℤ) : ℕ :=
-  f.support.gcd (fun n => (f n).natAbs)
 
 theorem attainable_moment_ideal {D p : ℕ} (hD : 2 ≤ D)
     (hp : p.Prime) (hDp : D / 2 < p) (hpD : p ≤ D) (m : ℤ) :

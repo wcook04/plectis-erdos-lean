@@ -6,7 +6,7 @@ Authors: Will Cook
 import Mathlib
 import ErdosProblems.Erdos68.FactorialGapPlateauCore
 import ErdosProblems.Erdos68.FactorialZeroPlateauCertificates
-import Solutions.PalomarCorpus.E68.Shared
+import Solutions.PalomarCorpus.E68.Statement
 
 open scoped BigOperators
 

@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Will Cook
 -/
 import Mathlib
-import Solutions.PalomarCorpus.E257.Shared
+import Solutions.PalomarCorpus.E257.Statement
 import Solutions.PalomarCorpus.E257.AchievementSetGeometry
 import Solutions.PalomarCorpus.E257.ActualUpperSuccessor
 import Solutions.PalomarCorpus.E257.BooleanMobiusCarry

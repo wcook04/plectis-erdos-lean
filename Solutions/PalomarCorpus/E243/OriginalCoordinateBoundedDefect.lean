@@ -5,17 +5,12 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos243.PaperCompleteR7.ProductDefect
-import Solutions.PalomarCorpus.E243.Shared
+import Solutions.PalomarCorpus.E243.Statement
 
 open Filter
 
 namespace PalomarCorpus.E243.OriginalCoordinateBoundedDefect
 export PalomarCorpus.E243.Shared (prefixProduct)
-
-/-- The prefix product `∏_{j < n} a j`. -/
-noncomputable def productDefect (a : ℕ → ℕ) (n : ℕ) : ℝ :=
-  (prefixProduct a n : ℝ) / (a n : ℝ) *
-    ((a n : ℝ) ^ 2 / (a (n + 1) : ℝ) - 1)
 
 theorem prefixProduct_eq (a : ℕ → ℕ) (n : ℕ) :
     prefixProduct a n = ErdosProblems.Erdos243.PaperCompleteR7.prefixProduct a n :=

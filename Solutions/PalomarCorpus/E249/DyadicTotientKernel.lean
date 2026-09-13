@@ -5,30 +5,12 @@ Authors: Will Cook
 -/
 import Mathlib
 import Erdos257PeriodNoncollapse.TotientMahlerDefect
-import Solutions.PalomarCorpus.E249.Shared
+import Solutions.PalomarCorpus.E249.Statement
 
 open Module
 
 namespace PalomarCorpus.E249.DyadicTotientKernel
 export PalomarCorpus.E249.Shared (TotientCanonicalIndex canonicalTotientKernelFamily totientKernelSeq)
-
-noncomputable abbrev TotientKernelThroughLevelIndex (e : ℕ) :=
-  Σ j : Fin (e + 1), Fin (2 ^ j.val)
-
-noncomputable def totientKernelThroughLevelFamily (e : ℕ) :
-    TotientKernelThroughLevelIndex e → ℕ → ℚ
-  | ⟨j, r⟩ => totientKernelSeq j.val r.val
-
-noncomputable abbrev TotientDyadicKernelIndex := Σ j : ℕ, Fin (2 ^ j)
-
-noncomputable def fullTotientKernelFamily : TotientDyadicKernelIndex → ℕ → ℚ
-  | ⟨j, r⟩ => totientKernelSeq j r.val
-
-noncomputable abbrev TotientOddCoreIndex := Fin 2 ⊕ Σ j : ℕ, Fin (2 ^ j)
-
-noncomputable def oddCoreTotientKernelFamily : TotientOddCoreIndex → ℕ → ℚ
-  | Sum.inl i => totientKernelSeq i.val 0
-  | Sum.inr ⟨j, r⟩ => totientKernelSeq (j + 1) (2 * r.val + 1)
 
 theorem dyadicTotientKernelOddCoreBasisAndFiniteRanks :
     LinearIndependent ℚ oddCoreTotientKernelFamily ∧

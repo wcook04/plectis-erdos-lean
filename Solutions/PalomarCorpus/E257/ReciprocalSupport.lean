@@ -5,17 +5,11 @@ Authors: Will Cook
 -/
 import Mathlib
 import Erdos257PeriodNoncollapse.AllBaseReciprocalSupportIrrationality
+import Solutions.PalomarCorpus.E257.Statement
 
 namespace PalomarCorpus.E257.ReciprocalSupport
 
 noncomputable section
-
-noncomputable def supportReciprocalTerm (A : Set ℕ) (a : ℕ) : ℝ :=
-  Set.indicator A (fun a : ℕ => (1 : ℝ) / (a : ℝ)) a
-
-noncomputable def supportPowerSeries (b : ℕ) (A : Set ℕ) : ℝ :=
-  ∑' a : ℕ, Set.indicator A
-    (fun a : ℕ => (1 : ℝ) / ((b : ℝ) ^ a - 1)) a
 
 theorem irrational_supportPowerSeries_of_summable_reciprocal
     (b : ℕ) (A : Set ℕ) (hb : 2 ≤ b) (hA : A.Infinite)

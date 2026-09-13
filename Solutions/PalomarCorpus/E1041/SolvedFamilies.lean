@@ -7,6 +7,7 @@ import Mathlib
 import ErdosProblems.Erdos1041.CubicQuotientFiberCase
 import ErdosProblems.Erdos1041.PrimitiveQuinticInteriorTail
 import ErdosProblems.Erdos1041.SharpCollinearChebyshev
+import Solutions.PalomarCorpus.E1041.Statement
 
 open Polynomial
 
@@ -65,12 +66,6 @@ theorem primitiveQuintic_twoStrictTailEnergies
     hs3 hs3one hx3s hs4 hs4one hx4s hm1 hm2 hm3
 
 namespace SharpCollinear
-
-noncomputable def endpointScale (n : ℕ) : ℝ :=
-  Real.cos (Real.pi / (2 * (n : ℝ)))
-
-noncomputable def comparisonBound (n : ℕ) : ℝ :=
-  |((2 : ℝ) ^ (n - 1))⁻¹ * (endpointScale n)⁻¹ ^ n|
 
 theorem existsPeakLeComparisonBound
     {m : ℕ} {p : ℝ[X]} {c : Fin (m + 1) → ℝ}

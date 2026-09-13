@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Will Cook
 -/
 import Mathlib
-import Solutions.PalomarCorpus.E249.Shared
+import Solutions.PalomarCorpus.E249.Statement
 import Solutions.PalomarCorpus.E249.ActualLcmOrbit
 import Solutions.PalomarCorpus.E249.BinaryCyclotomicAnchors
 import Solutions.PalomarCorpus.E249.CanonicalMersenneFrontier

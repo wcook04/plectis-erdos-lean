@@ -5,7 +5,7 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos257.MersenneSubseriesRigidity
-import Solutions.PalomarCorpus.E257.Shared
+import Solutions.PalomarCorpus.E257.Statement
 
 open scoped ENNReal
 open Set MeasureTheory
@@ -14,22 +14,6 @@ namespace PalomarCorpus.E257.AchievementSetGeometry
 export PalomarCorpus.E257.Shared (mersenneWeight positiveMersenneSupportValue)
 
 noncomputable section
-
-noncomputable def mersenneDigitTerm (k : ℕ) (b : ℕ → Fin 2) : ℝ :=
-  ((b k : ℕ) : ℝ) * mersenneWeight (k + 1)
-
-noncomputable def positiveMersenneDigitValue (b : ℕ → Fin 2) : ℝ :=
-  ∑' k : ℕ, mersenneDigitTerm k b
-
-noncomputable def SupportedMersenneDigits (J : Set ℕ) :=
-  {b : ℕ → Fin 2 // ∀ k, k ∉ J → b k = 0}
-
-noncomputable def supportedMersenneDigitValue
-    (J : Set ℕ) (b : SupportedMersenneDigits J) : ℝ :=
-  positiveMersenneDigitValue b.1
-
-noncomputable def supportedMersenneAchievementSet (J : Set ℕ) : Set ℝ :=
-  Set.range (supportedMersenneDigitValue J)
 
 theorem volume_supportedMersenneAchievementSet_eq_zero_of_rat_value
     {J : Set ℕ} (hJ0 : 0 ∉ J) {q : ℚ}

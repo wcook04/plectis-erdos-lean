@@ -6,6 +6,7 @@ Authors: Will Cook
 import Mathlib
 import ErdosProblems.Erdos1041.PaperCubicCompletion
 import ErdosProblems.Erdos1041.PaperCubicMonic
+import Solutions.PalomarCorpus.E1041.Statement
 
 open Polynomial Set
 open scoped BigOperators
@@ -13,11 +14,6 @@ open scoped BigOperators
 namespace PalomarCorpus.E1041.CubicPath
 
 noncomputable section
-
-/-- The two-segment path with endpoints at times zero and two. -/
-noncomputable def hub (a c b : ℂ) (t : ℝ) : ℂ :=
-  c + ((max (1 - t) 0 : ℝ) : ℂ) * (a - c) +
-    ((max (t - 1) 0 : ℝ) : ℂ) * (b - c)
 
 theorem cubic_paper_complete (p : ℂ[X]) (z : Fin 3 → ℂ)
     (hp : p = ∏ i, (X - C (z i))) (hz : ∀ i, ‖z i‖ < 1) :

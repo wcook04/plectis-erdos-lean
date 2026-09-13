@@ -12,18 +12,20 @@ open Filter Set
 noncomputable section
 
 noncomputable def supportCoeff (A : Set ℕ) (n : ℕ) : ℕ :=
-  Erdos257PeriodNoncollapse.supportCoeff A n
+  letI := Classical.decPred fun d : ℕ => d ∈ A
+  (n.divisors.filter fun d => d ∈ A).card
 
-def affineBinaryOrbit (a : ℕ → ℤ) (u0 : ℤ) : ℕ → ℤ :=
-  Erdos257PeriodNoncollapse.affineBinaryOrbit a u0
+noncomputable def affineBinaryOrbit (a : ℕ → ℤ) (u0 : ℤ) : ℕ → ℤ
+  | 0 => u0
+  | n + 1 => 2 * affineBinaryOrbit a u0 n - a (n + 1)
 
 noncomputable def integerHalfCarry (A : Set ℕ) : ℕ → ℤ :=
-  Erdos257PeriodNoncollapse.HalfCarryReachability.integerHalfCarry A
+  affineBinaryOrbit (fun n : ℕ ↦ (supportCoeff A (n + 1) : ℤ)) 1
 
-abbrev HalfWord (N : ℕ) := Fin (N + 1) → Bool
+noncomputable abbrev HalfWord (N : ℕ) := Fin (N + 1) → Bool
 
-def wordSupport {N : ℕ} (a : HalfWord N) : Set ℕ :=
-  Erdos257PeriodNoncollapse.HalfCarryReachability.wordSupport a
+noncomputable def wordSupport {N : ℕ} (a : HalfWord N) : Set ℕ :=
+  {n | ∃ h : n < N + 1, a ⟨n, h⟩ = true}
 
 structure HalfTerminalOnlyScaledVanishingSequence where
   depth : ℕ → ℕ
@@ -41,10 +43,30 @@ structure HalfTerminalOnlyScaledVanishingSequence where
       atTop (nhds 0)
 
 noncomputable def erdosSupportSeries (b : ℕ) (A : Set ℕ) : ℝ :=
-  Erdos257PeriodNoncollapse.erdosSupportSeries b A
+  ∑' a : ℕ, Set.indicator A
+    (fun a => (1 : ℝ) / ((b : ℝ) ^ a - 1)) a
 
-def UniversalMersenneSubseriesIrrationality : Prop :=
+noncomputable def UniversalMersenneSubseriesIrrationality : Prop :=
   ∀ A : Set ℕ, A.Infinite → Irrational (erdosSupportSeries 2 A)
+
+private theorem affineBinaryOrbit_transport (a : ℕ → ℤ) (u0 : ℤ) (n : ℕ) :
+    affineBinaryOrbit a u0 n = Erdos257PeriodNoncollapse.affineBinaryOrbit a u0 n := by
+  induction n with
+  | zero =>
+      simp only [affineBinaryOrbit, Erdos257PeriodNoncollapse.affineBinaryOrbit]
+  | succ n ih =>
+      simp only [affineBinaryOrbit, Erdos257PeriodNoncollapse.affineBinaryOrbit, ih]
+
+private theorem integerHalfCarry_transport (A : Set ℕ) (n : ℕ) :
+    integerHalfCarry A n =
+      Erdos257PeriodNoncollapse.HalfCarryReachability.integerHalfCarry A n := by
+  simp only [integerHalfCarry,
+    Erdos257PeriodNoncollapse.HalfCarryReachability.integerHalfCarry,
+    affineBinaryOrbit_transport,
+    show supportCoeff = Erdos257PeriodNoncollapse.supportCoeff from rfl]
+
+private theorem wordSupport_transport {N : ℕ} (a : HalfWord N) :
+    wordSupport a = Erdos257PeriodNoncollapse.HalfCarryReachability.wordSupport a := rfl
 
 theorem terminalScaledVanishing_completeCounterexample
     (S : HalfTerminalOnlyScaledVanishingSequence) :
@@ -60,16 +82,14 @@ theorem terminalScaledVanishing_completeCounterexample
       zero := S.zero
       one := S.one
       carry_scaled_tendsto := by
-        simpa [integerHalfCarry, wordSupport] using
+        simpa only [integerHalfCarry_transport, wordSupport_transport] using
           S.carry_scaled_tendsto }
-  constructor
-  · simpa [erdosSupportSeries, Erdos257PeriodNoncollapse.erdosSupportSeries] using
-      ErdosProblems.Erdos257.exists_rational_half_counterexample_of_terminalScaledVanishing
-        S'
-  · simpa [UniversalMersenneSubseriesIrrationality, erdosSupportSeries,
-      Erdos257PeriodNoncollapse.erdosSupportSeries,
-      ErdosProblems.Erdos257.UniversalMersenneSubseriesIrrationality] using
-      ErdosProblems.Erdos257.not_universal_of_terminalScaledVanishing S'
+  rw [show erdosSupportSeries = Erdos257PeriodNoncollapse.erdosSupportSeries from rfl,
+    show UniversalMersenneSubseriesIrrationality =
+      ErdosProblems.Erdos257.UniversalMersenneSubseriesIrrationality from rfl]
+  exact
+    ⟨ErdosProblems.Erdos257.exists_rational_half_counterexample_of_terminalScaledVanishing S',
+      ErdosProblems.Erdos257.not_universal_of_terminalScaledVanishing S'⟩
 
 end
 

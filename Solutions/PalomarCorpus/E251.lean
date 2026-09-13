@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Will Cook
 -/
 import Mathlib
-import Solutions.PalomarCorpus.E251.Shared
+import Solutions.PalomarCorpus.E251.Statement
 import Solutions.PalomarCorpus.E251.ActualPrimeGapTail
 import Solutions.PalomarCorpus.E251.AffineCircularity
 import Solutions.PalomarCorpus.E251.AllResidueLogarithmicCountermodel

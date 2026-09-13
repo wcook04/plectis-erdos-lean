@@ -6,19 +6,10 @@ Authors: Will Cook
 import Mathlib
 import ErdosProblems.Erdos251.PrimeGapDyadicTail
 import ErdosProblems.Erdos251.PolynomialGapSeriesValue
-import Solutions.PalomarCorpus.E251.Shared
+import Solutions.PalomarCorpus.E251.Statement
 
 namespace PalomarCorpus.E251.PolynomialShiftCountermodel
 export PalomarCorpus.E251.Shared (DyadicTailRecurrence RatIntegral tailShift)
-
-noncomputable def polynomialTailOrbit (n : ℕ) : ℚ :=
-  (2 * (n + 4) ^ 2 : ℕ)
-
-noncomputable def polynomialGapWord (n : ℕ) : ℤ :=
-  (2 * (n ^ 2 + 4 * n + 2) : ℕ)
-
-noncomputable def polynomialGapDyadicTerm (n : ℕ) : ℝ :=
-  (polynomialGapWord (n + 1) : ℝ) / 2 ^ (n + 1)
 
 /-- The Comparator vocabulary word is the source word. -/
 theorem polynomialGapWord_eq_source :

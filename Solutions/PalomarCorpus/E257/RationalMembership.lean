@@ -5,7 +5,7 @@ Authors: Will Cook
 -/
 import Mathlib
 import Erdos257PeriodNoncollapse.GreedyAchievementSet
-import Solutions.PalomarCorpus.E257.Shared
+import Solutions.PalomarCorpus.E257.Statement
 
 open Set
 

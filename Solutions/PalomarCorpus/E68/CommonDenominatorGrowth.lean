@@ -5,7 +5,7 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos68.PaperCompleteLiminf
-import Solutions.PalomarCorpus.E68.Shared
+import Solutions.PalomarCorpus.E68.Statement
 
 open Filter
 
@@ -13,9 +13,6 @@ open Filter
 
 namespace PalomarCorpus.E68.CommonDenominatorGrowth
 export PalomarCorpus.E68.Shared (channelLCM)
-
-noncomputable def LowerLimitAtLeast (f : ℕ → ℝ) (c : ℝ) : Prop :=
-  ∀ a : ℝ, a < c → ∀ᶠ n : ℕ in atTop, a < f n
 
 theorem common_denominator_growth :
     LowerLimitAtLeast

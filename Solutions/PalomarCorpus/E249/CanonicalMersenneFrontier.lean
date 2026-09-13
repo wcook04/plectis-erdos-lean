@@ -6,35 +6,12 @@ Authors: Will Cook
 import Mathlib
 import ErdosProblems.Erdos249.CyclotomicAnchoredKill
 import Erdos257PeriodNoncollapse.CarrySurvivorExtinction
-import Solutions.PalomarCorpus.E249.Shared
+import Solutions.PalomarCorpus.E249.Statement
 
 open scoped BigOperators
 
 namespace PalomarCorpus.E249.CanonicalMersenneFrontier
 export PalomarCorpus.E249.Shared (totientBlock)
-
-noncomputable def deltaTotient (h n : ℕ) : ℤ :=
-  (Nat.totient (n + h) : ℤ) - (Nat.totient n : ℤ)
-
-noncomputable def fullMersenneBlockResidue (H N M : ℕ) : ℤ :=
-  (-totientBlock H N) % (M : ℤ)
-
-noncomputable def FullMersenneCenteredResidueGap (H N M : ℕ) : Prop :=
-  let B : ℤ := N + H + 1
-  B < fullMersenneBlockResidue H N M ∧
-    fullMersenneBlockResidue H N M < (M : ℤ) - B
-
-noncomputable def FullMersenneCenteredResidueGapSupply : Prop :=
-  ∀ c v : ℕ, 0 < v → Nat.Coprime 2 v →
-    ∀ N₀ : ℕ, ∃ H N M : ℕ,
-      0 < H ∧ Nat.totient v ∣ H ∧ max c N₀ ≤ N ∧
-      v * M = 2 ^ H - 1 ∧ FullMersenneCenteredResidueGap H N M
-
-noncomputable def FullMersenneCanonicalBasepointResidueGapSupply : Prop :=
-  ∀ c v : ℕ, 0 < v → Nat.Coprime 2 v →
-    ∃ H M : ℕ,
-      0 < H ∧ Nat.totient v ∣ H ∧ v * M = 2 ^ H - 1 ∧
-      FullMersenneCenteredResidueGap H c M
 
 theorem fullMersenneBlockResidue_succ
     {H N M : ℕ} (hM : M ∣ 2 ^ H - 1) :

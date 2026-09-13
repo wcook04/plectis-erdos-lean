@@ -5,7 +5,7 @@ Authors: Will Cook
 -/
 import Mathlib
 import Erdos257PeriodNoncollapse.BooleanMobiusCarry
-import Solutions.PalomarCorpus.E257.Shared
+import Solutions.PalomarCorpus.E257.Statement
 
 open ArithmeticFunction Filter Set
 open scoped ArithmeticFunction.Moebius
@@ -14,34 +14,6 @@ namespace PalomarCorpus.E257.BooleanMobiusCarry
 export PalomarCorpus.E257.Shared (erdosSupportSeries supportCoeff)
 
 noncomputable section
-
-noncomputable def IsTemperedBinaryOrbit (c : ℕ → ℕ) (v : ℕ) (u : ℕ → ℤ) : Prop :=
-  (∀ N : ℕ,
-      u (N + 1) = 2 * u N - ((v * c (N + 1) : ℕ) : ℤ)) ∧
-    Tendsto (fun N : ℕ ↦ (u N : ℝ) / (2 : ℝ) ^ N) atTop (nhds 0)
-
-noncomputable def supportCoeffAF (A : Set ℕ) : ArithmeticFunction ℤ :=
-  ⟨fun n ↦ (supportCoeff A n : ℤ), by simp [supportCoeff]⟩
-
-noncomputable def booleanMobiusSupport (f : ArithmeticFunction ℤ) : Set ℕ :=
-  {n : ℕ | 0 < n ∧ (ArithmeticFunction.moebius * f) n = 1}
-
-noncomputable def carryQuotient (q : ℕ) (U : ℕ → ℤ) (n : ℕ) : ℤ :=
-  if n = 0 then 0 else (2 * U (n - 1) - U n) / (q : ℤ)
-
-noncomputable def carryQuotientAF (q : ℕ) (U : ℕ → ℤ) : ArithmeticFunction ℤ :=
-  ⟨carryQuotient q U, by simp [carryQuotient]⟩
-
-structure BooleanMobiusCarryCertificate
-    (p : ℤ) (q : ℕ) (U : ℕ → ℤ) : Prop where
-  initial : U 0 = p
-  positive : ∀ N : ℕ, 0 < U N
-  sqrtBound : ∀ N : ℕ, (U N : ℝ) ≤
-    (q : ℝ) * (2 * Real.sqrt (N : ℝ) + 4)
-  divisible : ∀ N : ℕ, (q : ℤ) ∣ 2 * U N - U (N + 1)
-  mobiusBoolean : ∀ n : ℕ, 0 < n →
-    (ArithmeticFunction.moebius * carryQuotientAF q U) n = 0 ∨
-      (ArithmeticFunction.moebius * carryQuotientAF q U) n = 1
 
 private noncomputable def toSourceCertificate
     {p : ℤ} {q : ℕ} {U : ℕ → ℤ}

@@ -5,6 +5,7 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos251.AllResidueLogarithmicR9
+import Solutions.PalomarCorpus.E251.Statement
 
 open Filter
 open scoped BigOperators Topology

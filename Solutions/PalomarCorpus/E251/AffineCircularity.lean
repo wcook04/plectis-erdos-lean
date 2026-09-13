@@ -5,15 +5,17 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos251.AffineCylinderCollapse
-import Solutions.PalomarCorpus.E251.Shared
+import Solutions.PalomarCorpus.E251.Statement
 
 namespace PalomarCorpus.E251.AffineCircularity
 export PalomarCorpus.E251.Shared (DyadicTailRecurrence RatIntegral tailShift)
 
-noncomputable abbrev dyadicTailBlock := ErdosProblems.Erdos251.dyadicTailBlock
-noncomputable abbrev RatAffinePowTwo := ErdosProblems.Erdos251.RatAffinePowTwo
-noncomputable abbrev shiftDigit := ErdosProblems.Erdos251.shiftDigit
-noncomputable abbrev DyadicScaleDominates := ErdosProblems.Erdos251.DyadicScaleDominates
+private theorem dyadicTailBlock_eq_source (a : ℕ → ℤ) (N r : ℕ) :
+    dyadicTailBlock a N r = ErdosProblems.Erdos251.dyadicTailBlock a N r := by
+  induction r with
+  | zero => rfl
+  | succ r ih =>
+      simp only [dyadicTailBlock, ErdosProblems.Erdos251.dyadicTailBlock, ih]
 
 theorem adjacent_small_mismatch_iff_signed_two_window
     {g : ℕ → ℤ} {T : ℕ → ℚ}
@@ -35,8 +37,9 @@ theorem cofinal_affinePowTwo_escape_iff_not_eventuallyIntegral
     (∀ N₀ : ℕ, ∃ N r : ℕ, N₀ < N ∧
         ¬ RatAffinePowTwo (tailShift T h (N + r))
           (dyadicTailBlock (shiftDigit g h) N r) r) ↔
-      ¬ ∃ N₀, ∀ N, N₀ ≤ N → RatIntegral (tailShift T h N) :=
-  ErdosProblems.Erdos251.cofinal_affinePowTwo_escape_iff_not_eventuallyIntegral
+      ¬ ∃ N₀, ∀ N, N₀ ≤ N → RatIntegral (tailShift T h N) := by
+  simp only [dyadicTailBlock_eq_source]
+  exact ErdosProblems.Erdos251.cofinal_affinePowTwo_escape_iff_not_eventuallyIntegral
     hrec h hdiffEven
 
 theorem cofinal_blockResidue_escape_iff_not_eventuallyIntegral
@@ -48,8 +51,9 @@ theorem cofinal_blockResidue_escape_iff_not_eventuallyIntegral
       ∀ z : ℤ, bound (N + r) <
         |((dyadicTailBlock (shiftDigit g h) N r : ℤ) : ℚ) -
           2 ^ r * (z : ℚ)|) ↔
-      ¬ ∃ N₀, ∀ N, N₀ ≤ N → RatIntegral (tailShift T h N) :=
-  ErdosProblems.Erdos251.cofinal_blockResidue_escape_iff_not_eventuallyIntegral
+      ¬ ∃ N₀, ∀ N, N₀ ≤ N → RatIntegral (tailShift T h N) := by
+  simp only [dyadicTailBlock_eq_source]
+  exact ErdosProblems.Erdos251.cofinal_blockResidue_escape_iff_not_eventuallyIntegral
     hrec h bound hbound hscale
 
 end PalomarCorpus.E251.AffineCircularity

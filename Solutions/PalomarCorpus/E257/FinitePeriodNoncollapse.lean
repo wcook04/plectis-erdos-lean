@@ -5,11 +5,9 @@ Authors: Will Cook
 -/
 import Mathlib
 import Erdos257PeriodNoncollapse.CertificateKernel
+import Solutions.PalomarCorpus.E257.Statement
 
 namespace PalomarCorpus.E257.FinitePeriodNoncollapse
-
-noncomputable def finiteErdosSum (F : Finset ℕ) (b : ℕ) : ℚ :=
-  ∑ n ∈ F, 1 / ((b : ℚ) ^ n - 1)
 
 theorem finite_period_noncollapse_rat_den
     (F : Finset ℕ) (b : ℕ)

@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Will Cook
 -/
 import Mathlib
-import Solutions.PalomarCorpus.E1049.Shared
+import Solutions.PalomarCorpus.E1049.Statement
 import Solutions.PalomarCorpus.E1049.AdelicHeightBridge
 import Solutions.PalomarCorpus.E1049.ArchimedeanCap
 import Solutions.PalomarCorpus.E1049.BezoutPluckerJets

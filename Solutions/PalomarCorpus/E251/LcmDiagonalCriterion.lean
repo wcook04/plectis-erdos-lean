@@ -5,15 +5,18 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos251.OrderLatticeDiagonal
-import Solutions.PalomarCorpus.E251.Shared
+import Solutions.PalomarCorpus.E251.Statement
 
 namespace PalomarCorpus.E251.LcmDiagonalCriterion
 export PalomarCorpus.E251.Shared (DyadicTailRecurrence RatIntegral RealDyadicTailRecurrence RealIntegral realTailShift tailShift)
 
-noncomputable abbrev CofinalNonintegralTailShifts :=
-  ErdosProblems.Erdos251.CofinalNonintegralTailShifts
-
-noncomputable abbrev lcmDiagonalSchedule := ErdosProblems.Erdos251.lcmDiagonalSchedule
+private theorem lcmDiagonalSchedule_eq_source (j : ℕ) :
+    lcmDiagonalSchedule j = ErdosProblems.Erdos251.lcmDiagonalSchedule j := by
+  induction j with
+  | zero => rfl
+  | succ j ih =>
+      simp only [lcmDiagonalSchedule,
+        ErdosProblems.Erdos251.lcmDiagonalSchedule, ih]
 
 theorem notIrrationalInitial_iff_exists_integral_positive_tailShift
     {g : ℕ → ℤ} {T : ℕ → ℝ}
@@ -53,7 +56,8 @@ theorem irrationalInitial_iff_allLcmDiagonal_nonintegral
     Irrational (T 0) ↔
       ∀ j : ℕ,
         ¬ RealIntegral
-          (realTailShift T (lcmDiagonalSchedule j) (lcmDiagonalSchedule j)) :=
-  ErdosProblems.Erdos251.irrational_initial_iff_all_lcmDiagonal_nonintegral hrec
+          (realTailShift T (lcmDiagonalSchedule j) (lcmDiagonalSchedule j)) := by
+  simp only [lcmDiagonalSchedule_eq_source]
+  exact ErdosProblems.Erdos251.irrational_initial_iff_all_lcmDiagonal_nonintegral hrec
 
 end PalomarCorpus.E251.LcmDiagonalCriterion

@@ -7,13 +7,33 @@ import ErdosProblems.Erdos251.AffineCylinderCollapse
 
 namespace Erdos249257.ExternalVerification251AffineCircularity
 
-abbrev DyadicTailRecurrence := ErdosProblems.Erdos251.DyadicTailRecurrence
-abbrev tailShift := ErdosProblems.Erdos251.tailShift
-abbrev RatIntegral := ErdosProblems.Erdos251.RatIntegral
-abbrev dyadicTailBlock := ErdosProblems.Erdos251.dyadicTailBlock
-abbrev RatAffinePowTwo := ErdosProblems.Erdos251.RatAffinePowTwo
-abbrev shiftDigit := ErdosProblems.Erdos251.shiftDigit
-abbrev DyadicScaleDominates := ErdosProblems.Erdos251.DyadicScaleDominates
+noncomputable def DyadicTailRecurrence (g : ℕ → ℤ) (T : ℕ → ℚ) : Prop :=
+  ∀ N, T (N + 1) = 2 * T N - g (N + 1)
+
+noncomputable def RatIntegral (x : ℚ) : Prop :=
+  ∃ z : ℤ, x = z
+
+noncomputable def tailShift (T : ℕ → ℚ) (h N : ℕ) : ℚ :=
+  T (N + h) - T N
+
+noncomputable def dyadicTailBlock (g : ℕ → ℤ) (N : ℕ) : ℕ → ℤ
+  | 0 => 0
+  | r + 1 => 2 * dyadicTailBlock g N r + g (N + r + 1)
+
+noncomputable def RatAffinePowTwo (x : ℚ) (c : ℤ) (r : ℕ) : Prop :=
+  ∃ z : ℤ, x = ((((2 : ℤ) ^ (r + 1)) * z - c : ℤ) : ℚ)
+
+noncomputable def shiftDigit (g : ℕ → ℤ) (h n : ℕ) : ℤ := g (n + h) - g n
+
+noncomputable def DyadicScaleDominates (bound : ℕ → ℚ) : Prop :=
+  ∀ N q : ℕ, 0 < q → ∃ r : ℕ, 2 * bound (N + r) * q < 2 ^ r
+
+private theorem dyadicTailBlock_eq_source (a : ℕ → ℤ) (N r : ℕ) :
+    dyadicTailBlock a N r = ErdosProblems.Erdos251.dyadicTailBlock a N r := by
+  induction r with
+  | zero => rfl
+  | succ r ih =>
+      simp only [dyadicTailBlock, ErdosProblems.Erdos251.dyadicTailBlock, ih]
 
 theorem adjacent_small_mismatch_iff_signed_two_window
     {g : ℕ → ℤ} {T : ℕ → ℚ}
@@ -35,8 +55,9 @@ theorem cofinal_affinePowTwo_escape_iff_not_eventuallyIntegral
     (∀ N₀ : ℕ, ∃ N r : ℕ, N₀ < N ∧
         ¬ RatAffinePowTwo (tailShift T h (N + r))
           (dyadicTailBlock (shiftDigit g h) N r) r) ↔
-      ¬ ∃ N₀, ∀ N, N₀ ≤ N → RatIntegral (tailShift T h N) :=
-  ErdosProblems.Erdos251.cofinal_affinePowTwo_escape_iff_not_eventuallyIntegral
+      ¬ ∃ N₀, ∀ N, N₀ ≤ N → RatIntegral (tailShift T h N) := by
+  simp only [dyadicTailBlock_eq_source]
+  exact ErdosProblems.Erdos251.cofinal_affinePowTwo_escape_iff_not_eventuallyIntegral
     hrec h hdiffEven
 
 theorem cofinal_blockResidue_escape_iff_not_eventuallyIntegral
@@ -48,8 +69,9 @@ theorem cofinal_blockResidue_escape_iff_not_eventuallyIntegral
       ∀ z : ℤ, bound (N + r) <
         |((dyadicTailBlock (shiftDigit g h) N r : ℤ) : ℚ) -
           2 ^ r * (z : ℚ)|) ↔
-      ¬ ∃ N₀, ∀ N, N₀ ≤ N → RatIntegral (tailShift T h N) :=
-  ErdosProblems.Erdos251.cofinal_blockResidue_escape_iff_not_eventuallyIntegral
+      ¬ ∃ N₀, ∀ N, N₀ ≤ N → RatIntegral (tailShift T h N) := by
+  simp only [dyadicTailBlock_eq_source]
+  exact ErdosProblems.Erdos251.cofinal_blockResidue_escape_iff_not_eventuallyIntegral
     hrec h bound hbound hscale
 
 end Erdos249257.ExternalVerification251AffineCircularity

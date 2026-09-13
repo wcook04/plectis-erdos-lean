@@ -176,5 +176,5 @@ automation:
 review:
   status: self-assessed
   reviewers: []
-  notes: The author checked every compared statement against the public problem note and reasoning record for Erdős problem #243 at https://github.com/wcook04/plectis-erdos; no external referee report exists for this entry.
+  notes: Every compared statement was checked declaration by declaration against the public problem note, the reasoning record for Erdős problem #243 at https://github.com/wcook04/plectis-erdos and the Lean sources in two automated passes run with Anthropic Claude on 2026-09-13 (an alignment review of each docstring against its Lean statement, then a simulated editorial review under Palomar's published prompts); the author applied every finding before publication and is responsible for the selection and the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
 acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

@@ -5,6 +5,7 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos1041.CyclicTrinomialFiberCase
+import Solutions.PalomarCorpus.E1041.Statement
 
 namespace PalomarCorpus.E1041.CyclicTrinomialFiber
 

@@ -5,6 +5,7 @@ Authors: Will Cook
 -/
 import Mathlib
 import Erdos257PeriodNoncollapse.AllBaseTotientKernel
+import Solutions.PalomarCorpus.E249.Statement
 
 open Module
 
@@ -16,29 +17,6 @@ theorem allSlopeAffineTotientFormsLinearIndependent
     (hcross : ∀ i j, i ≠ j → a i * b j ≠ a j * b i) :
     LinearIndependent ℚ (fun (i : ι) (n : ℕ) => (Nat.totient (a i * n + b i) : ℚ)) :=
   Erdos257PeriodNoncollapse.linearIndependent_totientAffineForms a b ha hb hcross
-
-noncomputable def kernelSeq (k j r : ℕ) : ℕ → ℚ := fun n =>
-  (Nat.totient (k ^ j * n + r) : ℚ)
-
-noncomputable abbrev CanonicalIndex (k e : ℕ) :=
-  Fin 2 ⊕ Σ j : Fin e, Fin (k ^ j.val) × Fin (k - 1)
-
-noncomputable def canonicalResidue (k : ℕ) {e : ℕ}
-    (x : Σ j : Fin e, Fin (k ^ j.val) × Fin (k - 1)) : ℕ :=
-  k * x.2.1.val + (x.2.2.val + 1)
-
-noncomputable def canonicalFamily (k e : ℕ) : CanonicalIndex k e → ℕ → ℚ
-  | Sum.inl i => kernelSeq k i.val 0
-  | Sum.inr x => kernelSeq k (x.1.val + 1) (canonicalResidue k x)
-
-noncomputable abbrev ThroughLevelIndex (k e : ℕ) := Σ j : Fin (e + 1), Fin (k ^ j.val)
-
-noncomputable def throughLevelFamily (k e : ℕ) : ThroughLevelIndex k e → ℕ → ℚ
-  | ⟨j, r⟩ => kernelSeq k j.val r.val
-
-noncomputable def relationMap (k e : ℕ) :
-    (ThroughLevelIndex k e → ℚ) →ₗ[ℚ] (ℕ → ℚ) :=
-  Fintype.linearCombination ℚ (throughLevelFamily k e)
 
 theorem kernelSeq_eq (k j r : ℕ) :
     kernelSeq k j r = Erdos257PeriodNoncollapse.allBaseTotientKernelSeq k j r := rfl

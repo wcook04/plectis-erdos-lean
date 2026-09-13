@@ -5,7 +5,7 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos257.BatchReturnSynthesis
-import Solutions.PalomarCorpus.E257.Shared
+import Solutions.PalomarCorpus.E257.Statement
 
 open Set
 
@@ -13,20 +13,6 @@ namespace PalomarCorpus.E257.FourNinthsRepairWindows
 export PalomarCorpus.E257.Shared (binaryCoeffPrefixNumerator greedyMersenneRemainder greedyMersenneSupport mersenneAchievementSet mersenneWeight positiveMersenneSupportValue supportCoeff)
 
 noncomputable section
-
-noncomputable def fourNinthsBinaryFloor (N : ℕ) : ℕ :=
-  4 * 2 ^ N / 9
-
-noncomputable def fourNinthsGreedyDefect (N : ℕ) : ℕ :=
-  fourNinthsBinaryFloor N -
-    binaryCoeffPrefixNumerator
-      (supportCoeff (greedyMersenneSupport (4 / 9 : ℝ))) N
-
-noncomputable def FourNinthsOneStepRepairSucc (N : ℕ) : Prop :=
-  (fourNinthsGreedyDefect (N + 1) : ℤ) ≤ (fourNinthsGreedyDefect N : ℤ)
-
-noncomputable def FourNinthsOneStepRepairCofinal : Prop :=
-  ∀ K : ℕ, ∃ N : ℕ, K ≤ N ∧ FourNinthsOneStepRepairSucc N
 
 theorem mersenneWeight_eq : mersenneWeight = Erdos257PeriodNoncollapse.mersenneWeight := rfl
 

@@ -5,56 +5,12 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos1049.AdelicHeightBridge
-import Solutions.PalomarCorpus.E1049.Shared
+import Solutions.PalomarCorpus.E1049.Statement
 
 open Polynomial
 
 namespace PalomarCorpus.E1049.AdelicHeightBridge
 export PalomarCorpus.E1049.Shared (hpCyclotomicSaving hpDecay hpHeight hpThreshold)
-
-noncomputable def homEvalThreeTwo (W : ℕ) (P : Polynomial ℤ) : ℤ :=
-  ∑ i ∈ Finset.range (W + 1), P.coeff i * 3 ^ i * 2 ^ (W - i)
-
-noncomputable def bottomJet3 (R W : ℕ) (P : Polynomial ℤ) : ZMod (3 ^ R) :=
-  homEvalThreeTwo W P
-
-noncomputable def topJet2 (S W : ℕ) (P : Polynomial ℤ) : ZMod (2 ^ S) :=
-  homEvalThreeTwo W P
-
-noncomputable abbrev FourJetSignature (R S : ℕ) :=
-  (ZMod (3 ^ R) × ZMod (3 ^ R)) ×
-    (ZMod (2 ^ S) × ZMod (2 ^ S))
-
-noncomputable def fourJetSignature (R S W : ℕ) (U V : Polynomial ℤ) :
-    FourJetSignature R S :=
-  ((bottomJet3 R W U, bottomJet3 R W V),
-    (topJet2 S W U, topJet2 S W V))
-
-noncomputable def selectedFourJetSum {n : ℕ} (R S W : ℕ)
-    (forms : Fin n → Polynomial ℤ × Polynomial ℤ)
-    (ε : Fin n → Bool) : FourJetSignature R S :=
-  ∑ i, if ε i then
-    fourJetSignature R S W (forms i).1 (forms i).2
-  else 0
-
-noncomputable def zudilinPochhammerPS (start len : ℕ) : PowerSeries ℤ :=
-  ∏ r ∈ Finset.range len,
-    (1 - PowerSeries.X ^ (start + r) : PowerSeries ℤ)
-
-noncomputable def zudilinNormalizedTailUnit (n t : ℕ) : PowerSeries ℤ :=
-  zudilinPochhammerPS 1 n ^ 3 * zudilinPochhammerPS (t + 1) n *
-    PowerSeries.invOfUnit (zudilinPochhammerPS (n + 1 + t) (n + 1)) 1
-
-noncomputable def zudilinNormalizedTail (n t : ℕ) : PowerSeries ℤ :=
-  PowerSeries.X ^ ((n + 1) * t) * zudilinNormalizedTailUnit n t
-
-noncomputable def zudilinNormalizedMoment (n : ℕ) : PowerSeries ℤ :=
-  PowerSeries.mk fun d =>
-    ∑ t ∈ Finset.range (d / (n + 1) + 1),
-      PowerSeries.coeff d (zudilinNormalizedTail n t)
-
-noncomputable def zudilinFirstTransformedRow (l : ℕ) : PowerSeries ℤ :=
-  zudilinNormalizedMoment (l + 1) - zudilinNormalizedMoment l
 
 theorem zudilin_firstTransformedRow_initialMonomial (l : ℕ) :
     PowerSeries.order (zudilinFirstTransformedRow l) = l + 1 ∧
@@ -72,12 +28,6 @@ theorem zudilin_firstTransformedRow_initialMonomial (l : ℕ) :
   rw [zudilinFirstTransformedRow, hmoment, hmoment, ← hrow]
   exact
     ErdosProblems.Erdos1049.zudilinTransformedNormalizedMoment_one_initialMonomial l
-
-noncomputable def zudilinSharpHankelQOrder (N : ℕ) : ℤ :=
-  ∑ j ∈ Finset.range N, (j : ℤ) ^ 2
-
-noncomputable def zudilinTransformedRowCoeff (j : ℕ) : ℕ :=
-  ((j + 1) ^ 2 * (j + 2)) / 2
 
 theorem zudilinSharpHankelOrderAndCoeff_algebraicAssembly (N : ℕ) :
     6 * zudilinSharpHankelQOrder N =

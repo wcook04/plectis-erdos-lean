@@ -5,12 +5,10 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos1049.HermitePadeNoGo
-import Solutions.PalomarCorpus.E1049.Shared
+import Solutions.PalomarCorpus.E1049.Statement
 
 namespace PalomarCorpus.E1049.HermitePadeNoGo
 export PalomarCorpus.E1049.Shared (hpCyclotomicSaving hpDecay hpHeight hpThreshold)
-
-noncomputable abbrev hpClearedGap := ErdosProblems.Erdos1049.hpClearedGap
 
 theorem hpClearedGap_expansion (rho u : ℝ) :
     hpClearedGap rho (1 + rho + u) =

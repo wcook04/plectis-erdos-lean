@@ -5,14 +5,9 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos1049.ZudilinHeightRegion
+import Solutions.PalomarCorpus.E1049.Statement
 
 namespace PalomarCorpus.E1049.PublishedHeightRegions
-
-noncomputable def BundschuhVaananenHeightRegion (a b : ℕ) : Prop :=
-  Real.log b / Real.log a < 1 / 2 - 1 / Real.pi ^ 2
-
-noncomputable def ZudilinHeightRegion (a b : ℕ) : Prop :=
-  Real.log b / Real.log a < (81 : ℝ) / 200
 
 theorem threeHalves_zudilin_power_obstruction :
     3 ^ 81 < 2 ^ 200 :=

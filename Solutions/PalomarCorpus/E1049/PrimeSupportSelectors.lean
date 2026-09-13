@@ -6,6 +6,7 @@ Authors: Will Cook
 import Mathlib
 import ErdosProblems.Erdos1049.QAperyTailDenominator
 import ErdosProblems.Erdos1049.TwoSelectorRemainderEscape
+import Solutions.PalomarCorpus.E1049.Statement
 
 open Filter
 

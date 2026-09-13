@@ -5,7 +5,7 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos257.PaperGeometryCompletion.FairCoding
-import Solutions.PalomarCorpus.E257.Shared
+import Solutions.PalomarCorpus.E257.Statement
 
 open Set MeasureTheory Topology
 open scoped ENNReal
@@ -14,20 +14,6 @@ namespace PalomarCorpus.E257.FairCoding
 export PalomarCorpus.E257.Shared (mersenneAchievementSet mersenneWeight positiveMersenneSupportValue)
 
 noncomputable section
-
-noncomputable abbrev Digits := ℕ → Fin 2
-
-noncomputable def mersenneDigitTerm (k : ℕ) (b : Digits) : ℝ :=
-  ((b k : ℕ) : ℝ) * mersenneWeight (k + 1)
-
-noncomputable def positiveMersenneDigitValue (b : Digits) : ℝ :=
-  ∑' k : ℕ, mersenneDigitTerm k b
-
-noncomputable def fairCoin : Measure (Fin 2) :=
-  (2 : ℝ≥0∞)⁻¹ • Measure.dirac 0 + (2 : ℝ≥0∞)⁻¹ • Measure.dirac 1
-
-noncomputable def fairDigits : Measure Digits :=
-  Measure.infinitePi (fun _ : ℕ => fairCoin)
 
 theorem mersenneWeight_eq :
     mersenneWeight = Erdos257PeriodNoncollapse.mersenneWeight :=

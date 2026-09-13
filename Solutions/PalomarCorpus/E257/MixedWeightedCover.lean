@@ -5,7 +5,7 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos257.PaperCompleteR8.WeightedReturn
-import Solutions.PalomarCorpus.E257.Shared
+import Solutions.PalomarCorpus.E257.Statement
 
 open Set
 
@@ -13,12 +13,6 @@ namespace PalomarCorpus.E257.MixedWeightedCover
 export PalomarCorpus.E257.Shared (FinitePrimeWeighted HasStrengthenedPositiveCover PositiveCoverData PositiveCoverData.StrengthenedCostSummable PositiveCoverData.cost erdosSupportSeries PositiveCoverData.host primeSetPart primeWeightedTerm)
 
 noncomputable section
-
-noncomputable def MixedSupportClaim : Prop :=
-  ∀ E V : Set ℕ, 0 ∉ E → FinitePrimeWeighted 2 E →
-    HasStrengthenedPositiveCover V →
-    ∀ A : Set ℕ, A ⊆ E ∪ V → A.Infinite →
-      ∀ b : ℕ, 2 ≤ b → Irrational (erdosSupportSeries b A)
 
 theorem erdosSupportSeries_eq :
     erdosSupportSeries = Erdos257PeriodNoncollapse.erdosSupportSeries := rfl

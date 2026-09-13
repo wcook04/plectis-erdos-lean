@@ -5,29 +5,12 @@ Authors: Will Cook
 -/
 import Mathlib
 import Erdos257PeriodNoncollapse.TotientActualLcmOrbitNonintegrality
-import Solutions.PalomarCorpus.E249.Shared
+import Solutions.PalomarCorpus.E249.Statement
 
 open scoped BigOperators
 
 namespace PalomarCorpus.E249.ActualLcmOrbit
 export PalomarCorpus.E249.Shared (totientTail)
-
-noncomputable def periodLcm : ℕ → ℕ
-  | 0 => 1
-  | t + 1 => Nat.lcm (periodLcm t) (t + 1)
-
-noncomputable def totientPrefix (N : ℕ) : ℕ :=
-  ∑ n ∈ Finset.range (N + 1), Nat.totient n * 2 ^ (N - n)
-
-noncomputable def actualLcmHeight (a : ℕ) : ℕ :=
-  periodLcm (2 ^ a)
-
-noncomputable def actualLcmTailOrbit (a : ℕ) : ℝ :=
-  totientTail (2 * actualLcmHeight a) - totientTail (actualLcmHeight a)
-
-noncomputable def PowerTwoActualLcmOrbitNonintegralitySupply : Prop :=
-  ∀ a₀ : ℕ, ∃ a, a₀ ≤ a ∧
-    actualLcmTailOrbit a ∉ Set.range ((↑) : ℤ → ℝ)
 
 private theorem periodLcm_eq_source :
     ∀ t : ℕ, periodLcm t =

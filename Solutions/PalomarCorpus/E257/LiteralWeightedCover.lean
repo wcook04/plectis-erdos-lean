@@ -5,7 +5,7 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos257.PaperCompleteR8.AnalyticSeparationReturn
-import Solutions.PalomarCorpus.E257.Shared
+import Solutions.PalomarCorpus.E257.Statement
 
 open Set
 
@@ -13,25 +13,6 @@ namespace PalomarCorpus.E257.LiteralWeightedCover
 export PalomarCorpus.E257.Shared (FinitePrimeWeighted HasStrengthenedPositiveCover PositiveCoverData PositiveCoverData.StrengthenedCostSummable PositiveCoverData.cost erdosSupportSeries PositiveCoverData.host primeSetPart primeWeightedTerm)
 
 noncomputable section
-
-structure LogBudgetCover (A : Set ℕ) where
-  frame : ℕ → Finset ℕ
-  weight : ℕ → ℝ
-  exponent : ℕ → ℝ
-  coefficient : ℕ → ℕ → ℝ
-  frame_positive : ∀ j, 0 ∉ frame j
-  weight_positive : ∀ j, 0 < weight j
-  weight_sum : HasSum weight 1
-  exponent_bounds : ∀ j, 0 < exponent j ∧ exponent j ≤ 1
-  coefficient_nonneg : ∀ j d, 0 < d → 0 ≤ coefficient j d
-  column_summable : ∀ j, Summable (fun d : ℕ => coefficient j d / (d : ℝ))
-  covers : ∀ a ∈ A, ∃ j, a ∈ frame j
-  majorises : ∀ j n, 0 < n →
-    (((frame j).filter (fun a => a ∣ n)).card : ℝ) ^ exponent j ≤
-      ∑ d ∈ n.divisors, coefficient j d
-  budget_summable : Summable (fun j =>
-    (∑' d : ℕ, coefficient j d / (d : ℝ)) /
-      (weight j ^ exponent j) / ((2 : ℝ) ^ exponent j - 1))
 
 theorem erdosSupportSeries_eq :
     erdosSupportSeries = Erdos257PeriodNoncollapse.erdosSupportSeries := rfl

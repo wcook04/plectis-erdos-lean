@@ -5,6 +5,7 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos249.PrefixValuationAndControlRigidity
+import Solutions.PalomarCorpus.E249.Statement
 
 namespace PalomarCorpus.E249.TermwiseDyadicVacuous
 

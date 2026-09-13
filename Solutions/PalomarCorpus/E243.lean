@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Will Cook
 -/
 import Mathlib
-import Solutions.PalomarCorpus.E243.Shared
+import Solutions.PalomarCorpus.E243.Statement
 import Solutions.PalomarCorpus.E243.BoundedNegativePartRigidity
 import Solutions.PalomarCorpus.E243.BoundedRiseReducedTail
 import Solutions.PalomarCorpus.E243.OriginalCoordinateBoundedDefect

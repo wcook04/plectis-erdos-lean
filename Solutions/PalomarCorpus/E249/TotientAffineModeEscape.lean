@@ -5,7 +5,7 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos249.TotientAffineModeEscape
-import Solutions.PalomarCorpus.E249.Shared
+import Solutions.PalomarCorpus.E249.Statement
 
 open scoped BigOperators
 
@@ -13,13 +13,6 @@ open scoped BigOperators
 
 namespace PalomarCorpus.E249.TotientAffineModeEscape
 export PalomarCorpus.E249.Shared (totientBlock)
-
-noncomputable def pureDyadicEndpointError (H c : ℕ) (k : ℤ) : ℤ :=
-  totientBlock H c - k * ((2 : ℤ) ^ H - 1)
-
-noncomputable def EventuallyAffinePureDyadicEndpointError (c : ℕ) (k : ℤ) : Prop :=
-  ∃ A B : ℤ, ∃ H0 : ℕ, ∀ H, H0 ≤ H →
-    pureDyadicEndpointError H c k = A * H + B
 
 theorem not_eventuallyAffine_pureDyadicEndpointError (c : ℕ) (k : ℤ) :
     ¬ EventuallyAffinePureDyadicEndpointError c k := by

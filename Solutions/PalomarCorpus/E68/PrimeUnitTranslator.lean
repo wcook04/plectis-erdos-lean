@@ -5,71 +5,9 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos68.PrimeUnitTranslator
+import Solutions.PalomarCorpus.E68.Statement
 
 namespace PalomarCorpus.E68.PrimeUnitTranslator
-
-/-- The factorial moment of an integer coefficient vector. -/
-noncomputable def factorialMoment {ι : Type*} [Fintype ι]
-    (coeff : ι → ℤ) (index : ι → ℕ) : ℤ :=
-  ∑ j, coeff j * (index j).factorial
-
-/-- The integer numerator of the `d`-th divisor channel. -/
-noncomputable def channelNumerator {ι : Type*} [Fintype ι]
-    (coeff : ι → ℤ) (index : ι → ℕ) (d : ℕ) : ℤ :=
-  ∑ j, coeff j * ((index j).factorial /
-    d.factorial ^ (index j / d) : ℕ)
-
-/-- Coefficients `(p, -1)` of the prime-pair translator. -/
-noncomputable def primeTranslatorCoeff (p : ℕ) : Fin 2 → ℤ := ![(p : ℤ), -1]
-
-/-- Support indices `(p - 1, p)` of the prime-pair translator. -/
-noncomputable def primeTranslatorIndex (p : ℕ) : Fin 2 → ℕ := ![p - 1, p]
-
-/-- The real contribution of one channel to the tail beyond `D`. -/
-noncomputable def channelResidualTerm {ι : Type*} [Fintype ι]
-    (D : ℕ) (coeff : ι → ℤ) (index : ι → ℕ) (d : ℕ) : ℝ :=
-  if D < d then
-    (channelNumerator coeff index d : ℝ) /
-      (((d.factorial : ℤ) - 1 : ℤ) : ℝ)
-  else 0
-
-/-- The full normalized residual beyond the cutoff `D`. -/
-noncomputable def channelResidual {ι : Type*} [Fintype ι]
-    (D : ℕ) (coeff : ι → ℤ) (index : ι → ℕ) : ℝ :=
-  ∑' d : ℕ, channelResidualTerm D coeff index d
-
-/-- Coefficients for a support enlarged by a scaled prime translator. -/
-noncomputable def appendPrimeTranslatorCoeff {ι : Type*}
-    (coeff : ι → ℤ) (p : ℕ) (z : ℤ) : Sum ι (Fin 2) → ℤ :=
-  Sum.elim coeff (fun j => z * primeTranslatorCoeff p j)
-
-/-- Indices for a support enlarged by the prime translator. -/
-noncomputable def appendPrimeTranslatorIndex {ι : Type*}
-    (index : ι → ℕ) (p : ℕ) : Sum ι (Fin 2) → ℕ :=
-  Sum.elim index (primeTranslatorIndex p)
-
-/-- The moment row together with the consecutive channel rows. -/
-noncomputable def augmentedChannelMomentMatrix {n : ℕ}
-    (index : Fin (n + 1) → ℕ) :
-    Matrix (Fin (n + 1)) (Fin (n + 1)) ℤ :=
-  fun r j =>
-    Fin.cases ((index j).factorial : ℤ)
-      (fun d : Fin n =>
-        ((index j).factorial /
-          (d.val + 2).factorial ^ (index j / (d.val + 2)) : ℕ)) r
-
-/-- Cramer's-rule coefficient vector for unit factorial moment and zero
-consecutive channels. -/
-noncomputable def cramerChannelKernelCoeff {n : ℕ}
-    (index : Fin (n + 1) → ℕ) : Fin (n + 1) → ℤ :=
-  (augmentedChannelMomentMatrix index).cramer (Pi.single 0 1)
-
-/-- The common scale of the factorial grid at cutoff `D`. -/
-noncomputable def factorialGridScale (D : ℕ) : ℕ := D.factorial ^ 2
-
-/-- The factorial grid of `n + 2` indices starting at `t`. -/
-noncomputable def factorialGridIndex (n t : ℕ) (j : Fin (n + 2)) : ℕ :=
-  (t + j.val) * factorialGridScale (n + 2)
 
 /-- The prime-pair translator has zero factorial moment. -/
 theorem primeTranslator_moment_zero

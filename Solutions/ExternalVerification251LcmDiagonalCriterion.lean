@@ -7,24 +7,39 @@ import ErdosProblems.Erdos251.OrderLatticeDiagonal
 
 namespace Erdos249257.ExternalVerification251LcmDiagonalCriterion
 
-abbrev DyadicTailRecurrence :=
-  ErdosProblems.Erdos251.DyadicTailRecurrence
+noncomputable def DyadicTailRecurrence (g : ℕ → ℤ) (T : ℕ → ℚ) : Prop :=
+  ∀ N, T (N + 1) = 2 * T N - g (N + 1)
 
-abbrev tailShift := ErdosProblems.Erdos251.tailShift
+noncomputable def RatIntegral (x : ℚ) : Prop :=
+  ∃ z : ℤ, x = z
 
-abbrev RatIntegral := ErdosProblems.Erdos251.RatIntegral
+noncomputable def RealDyadicTailRecurrence (g : ℕ → ℤ) (T : ℕ → ℝ) : Prop :=
+  ∀ N, T (N + 1) = 2 * T N - g (N + 1)
 
-abbrev RealDyadicTailRecurrence :=
-  ErdosProblems.Erdos251.RealDyadicTailRecurrence
+noncomputable def RealIntegral (x : ℝ) : Prop :=
+  ∃ z : ℤ, x = z
 
-abbrev realTailShift := ErdosProblems.Erdos251.realTailShift
+noncomputable def realTailShift (T : ℕ → ℝ) (h N : ℕ) : ℝ :=
+  T (N + h) - T N
 
-abbrev RealIntegral := ErdosProblems.Erdos251.RealIntegral
+noncomputable def tailShift (T : ℕ → ℚ) (h N : ℕ) : ℚ :=
+  T (N + h) - T N
 
-abbrev CofinalNonintegralTailShifts :=
-  ErdosProblems.Erdos251.CofinalNonintegralTailShifts
+noncomputable def CofinalNonintegralTailShifts (T : ℕ → ℝ) : Prop :=
+  ∀ h, 0 < h → ∀ N₀, ∃ N, N₀ ≤ N ∧
+    ¬ RealIntegral (realTailShift T h N)
 
-abbrev lcmDiagonalSchedule := ErdosProblems.Erdos251.lcmDiagonalSchedule
+noncomputable def lcmDiagonalSchedule : ℕ → ℕ
+  | 0 => 1
+  | j + 1 => Nat.lcm (lcmDiagonalSchedule j) (j + 1)
+
+private theorem lcmDiagonalSchedule_eq_source (j : ℕ) :
+    lcmDiagonalSchedule j = ErdosProblems.Erdos251.lcmDiagonalSchedule j := by
+  induction j with
+  | zero => rfl
+  | succ j ih =>
+      simp only [lcmDiagonalSchedule,
+        ErdosProblems.Erdos251.lcmDiagonalSchedule, ih]
 
 theorem notIrrationalInitial_iff_exists_integral_positive_tailShift
     {g : ℕ → ℤ} {T : ℕ → ℝ}
@@ -64,7 +79,8 @@ theorem irrationalInitial_iff_allLcmDiagonal_nonintegral
     Irrational (T 0) ↔
       ∀ j : ℕ,
         ¬ RealIntegral
-          (realTailShift T (lcmDiagonalSchedule j) (lcmDiagonalSchedule j)) :=
-  ErdosProblems.Erdos251.irrational_initial_iff_all_lcmDiagonal_nonintegral hrec
+          (realTailShift T (lcmDiagonalSchedule j) (lcmDiagonalSchedule j)) := by
+  simp only [lcmDiagonalSchedule_eq_source]
+  exact ErdosProblems.Erdos251.irrational_initial_iff_all_lcmDiagonal_nonintegral hrec
 
 end Erdos249257.ExternalVerification251LcmDiagonalCriterion

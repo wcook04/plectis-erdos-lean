@@ -5,16 +5,12 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos269.RationalLatticeReduction
-import Solutions.PalomarCorpus.E269.Shared
+import Solutions.PalomarCorpus.E269.Statement
 
 open scoped BigOperators
 
 namespace PalomarCorpus.E269.AllScaleLattice
 export PalomarCorpus.E269.Shared (dyadicNormalizedTailStateR235 dyadicShellMassQ235 dyadicShellMassR235 dyadicShellTsumTailR235 dyadicSmoothShell235 smooth3Val strictSmoothExponents strictSmoothShell threePrimeHeight)
-
-noncomputable abbrev heightNormalizer235 := ErdosProblems.Erdos269.heightNormalizer235
-noncomputable abbrev dyadicSmoothWindowMassQ235 :=
-  ErdosProblems.Erdos269.dyadicSmoothWindowMassQ235
 
 theorem smoothHeight_mul_prime_dvd_boundaryHeight
     {p m x : ℕ} (hp : p = 2 ∨ p = 3 ∨ p = 5) (hx : 0 < x) (hlt : x < p ^ m) :

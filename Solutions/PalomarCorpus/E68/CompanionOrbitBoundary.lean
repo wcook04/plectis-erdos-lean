@@ -5,23 +5,12 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos68.CompanionOrbitRationality
-import Solutions.PalomarCorpus.E68.Shared
+import Solutions.PalomarCorpus.E68.Statement
 
 namespace PalomarCorpus.E68.CompanionOrbitBoundary
 export PalomarCorpus.E68.Shared (companionConstant facFloor factorialGapPredecessorGap factorialGapPrefix factorialGapStepCarry strictFacTop strictFacTopRat)
 
 noncomputable section
-
-noncomputable def factorialGapSeries : ℝ :=
-  ∑' d : ℕ, if 1 < d then
-    (1 : ℝ) / ((((d.factorial : ℤ) - 1 : ℤ) : ℝ))
-  else 0
-
-noncomputable def unitFactTerm (n : ℕ) : ℝ :=
-  if 2 ≤ n then (1 : ℝ) / ((n.factorial : ℝ)) else 0
-
-noncomputable def canonicalDigit (x : ℝ) (m : ℕ) : ℤ :=
-  facFloor x m - (m : ℤ) * facFloor x (m - 1)
 
 private theorem unitFactTerm_eq :
     unitFactTerm = ErdosProblems.Erdos68.unitFactTerm := rfl

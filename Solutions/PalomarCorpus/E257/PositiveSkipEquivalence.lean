@@ -5,7 +5,7 @@ Authors: Will Cook
 -/
 import Mathlib
 import Erdos257PeriodNoncollapse.BooleanMobiusSkipRowCofinal
-import Solutions.PalomarCorpus.E257.Shared
+import Solutions.PalomarCorpus.E257.Statement
 
 open Set
 
@@ -14,27 +14,37 @@ export PalomarCorpus.E257.Shared (mersenneAchievementSet mersenneWeight mersenne
 
 noncomputable section
 
-noncomputable def greedyMersenneRemainderRat (x : ℚ) : ℕ → ℚ :=
-  Erdos257PeriodNoncollapse.greedyMersenneRemainderRat x
+private theorem greedyRemainderRat_transport (x : ℚ) (n : ℕ) :
+    greedyMersenneRemainderRat x n =
+      Erdos257PeriodNoncollapse.greedyMersenneRemainderRat x n := by
+  induction n with
+  | zero =>
+      simp only [greedyMersenneRemainderRat,
+        Erdos257PeriodNoncollapse.greedyMersenneRemainderRat]
+  | succ n ih =>
+      simp only [greedyMersenneRemainderRat,
+        Erdos257PeriodNoncollapse.greedyMersenneRemainderRat, ih,
+        show mersenneWeightRat = Erdos257PeriodNoncollapse.mersenneWeightRat from rfl]
 
-noncomputable def CofinalPositiveHalfGreedySkips : Prop :=
-  ∀ N : ℕ, ∃ c : ℕ,
-    max N 4 ≤ c ∧
-      0 < greedyMersenneRemainderRat (1 / 2 : ℚ) (c - 1) ∧
-      greedyMersenneRemainderRat (1 / 2 : ℚ) (c - 1) <
-        mersenneWeightRat c
+private theorem cofinalPositiveHalfGreedySkips_transport :
+    CofinalPositiveHalfGreedySkips =
+      Erdos257PeriodNoncollapse.CofinalPositiveHalfGreedySkips := by
+  simp only [CofinalPositiveHalfGreedySkips,
+    Erdos257PeriodNoncollapse.CofinalPositiveHalfGreedySkips,
+    greedyRemainderRat_transport,
+    show mersenneWeightRat = Erdos257PeriodNoncollapse.mersenneWeightRat from rfl]
 
 theorem greedyMersenneRemainderRat_half_pos (n : ℕ) :
     0 < greedyMersenneRemainderRat (1 / 2 : ℚ) n := by
-  change 0 < Erdos257PeriodNoncollapse.greedyMersenneRemainderRat
-    (1 / 2 : ℚ) n
+  rw [greedyRemainderRat_transport]
   exact Erdos257PeriodNoncollapse.greedyMersenneRemainderRat_half_pos n
 
 theorem cofinalPositiveHalfGreedySkips_iff_half_mem :
     CofinalPositiveHalfGreedySkips ↔
       (1 / 2 : ℝ) ∈ mersenneAchievementSet := by
-  change Erdos257PeriodNoncollapse.CofinalPositiveHalfGreedySkips ↔
-    (1 / 2 : ℝ) ∈ Erdos257PeriodNoncollapse.mersenneAchievementSet
+  rw [cofinalPositiveHalfGreedySkips_transport,
+    show mersenneAchievementSet =
+      Erdos257PeriodNoncollapse.mersenneAchievementSet from rfl]
   exact Erdos257PeriodNoncollapse.cofinalPositiveHalfGreedySkips_iff_half_mem
 
 end

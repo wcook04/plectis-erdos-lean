@@ -5,16 +5,9 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos249.ResidueClassTotientSeries
+import Solutions.PalomarCorpus.E249.Statement
 
 namespace PalomarCorpus.E249.ResidueClassTotientSeries
-
-noncomputable def dyadicValue (a : ℕ → ℤ) : ℝ := ∑' n : ℕ, (a n : ℝ) / 2 ^ n
-
-noncomputable def totientObservableValue (f : ℕ → ℤ) (m : ℕ) : ℝ :=
-  ∑' n : ℕ, ((f (Nat.totient n % m) : ℤ) : ℝ) / 2 ^ n
-
-noncomputable def totientResidueValue (m : ℕ) : ℝ :=
-  ∑' n : ℕ, ((Nat.totient n % m : ℕ) : ℝ) / 2 ^ n
 
 theorem isolated_pulse_separation {a : ℕ → ℤ} {C : ℝ} (hC : ∀ n, |(a n : ℝ)| ≤ C)
     {N L q : ℕ} {t : ℤ} (hq : 1 ≤ q) (hL : 2 * (q : ℝ) * C < 2 ^ L)

@@ -5,7 +5,7 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos257.PaperCompleteR8.PositiveCoverReturn
-import Solutions.PalomarCorpus.E257.Shared
+import Solutions.PalomarCorpus.E257.Statement
 
 open Set
 
@@ -13,11 +13,6 @@ namespace PalomarCorpus.E257.VariableExponentCover
 export PalomarCorpus.E257.Shared (PositiveCoverData PositiveCoverData.StrengthenedCostSummable PositiveCoverData.cost erdosSupportSeries PositiveCoverData.host)
 
 noncomputable section
-
-noncomputable def StrengthenedPositiveCoverClaim : Prop :=
-  ∀ C : PositiveCoverData, C.StrengthenedCostSummable →
-    ∀ A : Set ℕ, A ⊆ C.host → A.Infinite →
-      ∀ b : ℕ, 2 ≤ b → Irrational (erdosSupportSeries b A)
 
 theorem erdosSupportSeries_eq :
     erdosSupportSeries = Erdos257PeriodNoncollapse.erdosSupportSeries := rfl

@@ -5,30 +5,12 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos249.CyclotomicAnchoredKill
-import Solutions.PalomarCorpus.E249.Shared
+import Solutions.PalomarCorpus.E249.Statement
 
 open scoped BigOperators
 
 namespace PalomarCorpus.E249.BinaryCyclotomicAnchors
 export PalomarCorpus.E249.Shared (certifiedKill totientTail windowDiscrepancy)
-
-noncomputable def binaryCyclotomicLayer (n : ℕ) : ℕ :=
-  ((Polynomial.cyclotomic n ℤ).eval (2 : ℤ)).natAbs
-
-noncomputable def UnboundedPrimeDivisorSupply (C : ℕ → ℕ) (h : ℕ) : Prop :=
-  ∀ B N₀ : ℕ, ∃ q p : ℕ,
-    q.Prime ∧ N₀ ≤ q ∧ p.Prime ∧ p ∣ C (h * q) ∧ B < p
-
-noncomputable def CyclotomicAnchoredKillSupply (C : ℕ → ℕ) : Prop :=
-  ∀ h : ℕ, 0 < h →
-    ∀ N₀ : ℕ, ∃ q p L : ℕ,
-      q.Prime ∧
-      p.Prime ∧
-      Nat.Coprime p (h * q) ∧
-      p ∣ C (h * q) ∧
-      h * q ∣ p - 1 ∧
-      N₀ ≤ p - 1 ∧
-      certifiedKill (h * q) (p - 1) L
 
 theorem exists_clean_binaryCyclotomicAnchor
     (h N₀ : ℕ) (hh : 0 < h) :

@@ -5,10 +5,9 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos249.PrefixValuationAndControlRigidity
+import Solutions.PalomarCorpus.E249.Statement
 
 namespace PalomarCorpus.E249.TotientRigidity
-
-noncomputable def totientDefect (g : ℕ → ℤ) (n : ℕ) : ℤ := g n - (Nat.totient n : ℤ)
 
 theorem totient_prime_mul_of_dvd {p n : ℕ} (hp : p.Prime) (h : p ∣ n) :
     (Nat.totient (p * n) : ℤ) = (p : ℤ) * (Nat.totient n : ℤ) :=

@@ -5,17 +5,12 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos249.FullDepthRayAmplifier
-import Solutions.PalomarCorpus.E249.Shared
+import Solutions.PalomarCorpus.E249.Statement
 
 open scoped BigOperators
 
 namespace PalomarCorpus.E249.FullDepthRayAmplifier
 export PalomarCorpus.E249.Shared (certifiedKill totientTail windowDiscrepancy)
-
-noncomputable def PeriodMultipleKillSupply : Prop := ∀ d : ℕ, 0 < d → ∀ c : ℕ, ∃ t N L : ℕ, 0 < t ∧ c ≤ N ∧ certifiedKill (t * d) N L
-noncomputable def ApFullDepthEscape : Prop := ∀ d : ℕ, 0 < d → ∀ N : ℕ, ∃ t : ℕ, 0 < t ∧ certifiedKill (t * d) N (t * d)
-noncomputable def fullDepthKillMultipliers (d N : ℕ) : Set ℕ := {t | certifiedKill (t * d) N (t * d)}
-noncomputable def CofinalFullDepthKillSupply : Prop := ∀ d : ℕ, 0 < d → ∀ c : ℕ, ∃ t N : ℕ, 0 < t ∧ c ≤ N ∧ certifiedKill (t * d) N (t * d)
 
 theorem eventually_twoSyndetic_fullDepthKillMultipliers_of_seed
     {d N L : ℕ} (hd : 0 < d) (hseed : certifiedKill d N L) :

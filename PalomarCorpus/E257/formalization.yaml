@@ -41,9 +41,10 @@ sources:
 - title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
   authors:
   - Will Cook
-  type: original-proof
-  relationship: other
-  note: The compared theorems are independently restated Lean theorems proved in this repository and described in the eight public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos. They do not solve the parent Erdős problem.
+  id: https://github.com/wcook04/plectis-erdos
+  type: other
+  relationship: background
+  note: The public problem notes and reasoning records that describe the compared theorems and their relationship to the literature. The principal compared theorem re-proves a result stated in the source marked independently-proves below; the remaining compared theorems are first presented in this repository. None solves the parent Erdős problem.
   license: Apache-2.0
   author_endorsement: participated
 - title: "On the irrationality of certain series"
@@ -51,7 +52,7 @@ sources:
   - "Paul Erdos"
   id: "https://users.renyi.hu/~p_erdos/1969-09.pdf"
   type: "paper"
-  relationship: "other"
+  relationship: "independently-proves"
   note: "The Mathematics Student 36 (1968, issued 1969), 222-226. The printed theorem on p. 222 gives irrationality for pairwise coprime supports with convergent reciprocal sum at every integer base at least 2, and Erdős states there that pairwise coprimality can be removed by a longer argument that he does not print. ReciprocalSupport.irrational_supportPowerSeries_of_summable_reciprocal is that stated extension, proved independently; no priority over Erdős and no identification with his omitted argument is taken from this source."
   license: "unknown"
   author_endorsement: "not-contacted"
@@ -167,5 +168,5 @@ automation:
 review:
   status: self-assessed
   reviewers: []
-  notes: The author checked every compared statement against the public problem note and reasoning record for Erdős problem #257 at https://github.com/wcook04/plectis-erdos; no external referee report exists for this entry.
+  notes: Every compared statement was checked declaration by declaration against the public problem note, the reasoning record for Erdős problem #257 at https://github.com/wcook04/plectis-erdos and the Lean sources in two automated passes run with Anthropic Claude on 2026-09-13 (an alignment review of each docstring against its Lean statement, then a simulated editorial review under Palomar's published prompts); the author applied every finding before publication and is responsible for the selection and the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
 acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

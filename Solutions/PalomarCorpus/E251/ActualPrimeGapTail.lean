@@ -5,16 +5,13 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos251.PrimeGapDyadicTail
-import Solutions.PalomarCorpus.E251.Shared
+import Solutions.PalomarCorpus.E251.Statement
 
 open scoped BigOperators
 
 namespace PalomarCorpus.E251.ActualPrimeGapTail
 export PalomarCorpus.E251.Shared (DyadicTailRecurrence RatIntegral prime0 primeGap0 primeGapDyadicTerm tailShift)
 
-noncomputable abbrev primeGapPartialSumQ := ErdosProblems.Erdos251.primeGapPartialSumQ
-noncomputable abbrev rationalPrimeGapTailState :=
-  ErdosProblems.Erdos251.rationalPrimeGapTailState
 theorem exists_rationalPrimeGapTailState_representation_of_not_irrational
     (h : ¬ Irrational (∑' n : ℕ, primeGapDyadicTerm n)) :
     ∃ S : ℚ,

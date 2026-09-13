@@ -6,6 +6,7 @@ Authors: Will Cook
 import Mathlib
 import ErdosProblems.Erdos1041.CyclicTetranomialCoefficientCase
 import ErdosProblems.Erdos1041.TetranomialL2Selector
+import Solutions.PalomarCorpus.E1041.Statement
 
 open scoped ComplexConjugate
 

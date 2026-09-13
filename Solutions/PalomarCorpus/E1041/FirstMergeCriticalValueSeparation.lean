@@ -5,11 +5,9 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos1041.FirstMergeCriticalValueSeparation
+import Solutions.PalomarCorpus.E1041.Statement
 
 namespace PalomarCorpus.E1041.FirstMergeCriticalValueSeparation
-
-noncomputable def firstMergeSquaredCoefficient (n : ℕ) (S : ℝ) : ℝ :=
-  (1 + S) ^ ((2 : ℝ) / (n : ℝ)) * Real.log (S / (S - 1))
 
 theorem firstMerge_exact_convenient_thresholds :
     (∀ n : ℕ, 3 ≤ n → firstMergeSquaredCoefficient n 4 < 1) ∧

@@ -6,7 +6,7 @@ Authors: Will Cook
 import ErdosProblems.Erdos243.PaperCompleteR8.CanonicalNegativeMass
 import Mathlib
 import ErdosProblems.Erdos243.SparseResetRecovery
-import Solutions.PalomarCorpus.E243.Shared
+import Solutions.PalomarCorpus.E243.Statement
 
 open scoped BigOperators
 open Finset
@@ -19,16 +19,6 @@ Authors: Will Cook
 
 namespace PalomarCorpus.E243.SummableNegativeMassRigidity
 export PalomarCorpus.E243.Shared (centeredState prefixProduct sylvesterNext)
-
-noncomputable def nextDenState (a D : ℤ) : ℤ :=
-  a * D
-
-noncomputable def nextTailState (a D C : ℤ) : ℤ :=
-  a * C - D
-
-noncomputable def negativeRelativeMass
-    (C : ℕ → ℕ) (E : ℕ → ℤ) (n : ℕ) : ℝ :=
-  (Int.natAbs (min (E n) 0) : ℝ) / C n
 
 theorem summableNegativeMass_completeRigidity
     (a D : ℕ → ℤ) (C : ℕ → ℕ)
@@ -74,16 +64,6 @@ theorem summableNegativeMass_completeRigidity
   constructor
   · simpa [centeredState, ErdosProblems.Erdos243.centeredState] using hzero'
   · simpa [sylvesterNext, ErdosProblems.Erdos243.sylvesterNext] using hrec'
-
-noncomputable def clearedIntegerNumerator (a : ℕ → ℕ) (p : ℤ) (q n : ℕ) : ℤ :=
-  p * (prefixProduct a n : ℤ) -
-    ∑ j ∈ Finset.range n, (q : ℤ) * (prefixProduct a n / a j : ℕ)
-
-noncomputable def canonicalNaturalNumerator (a : ℕ → ℕ) (p : ℤ) (q n : ℕ) : ℕ :=
-  (clearedIntegerNumerator a p q n).toNat
-
-noncomputable def canonicalDenominator (a : ℕ → ℕ) (q n : ℕ) : ℕ :=
-  q * prefixProduct a n
 
 theorem finite_negative_mass_scalar (C : ℕ → ℕ) (E : ℕ → ℤ)
     (hCpos : ∀ n, 0 < C n)

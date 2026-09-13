@@ -5,29 +5,11 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos1049.RationalBaseLambert
+import Solutions.PalomarCorpus.E1049.Statement
 
 open scoped BigOperators
 
 namespace PalomarCorpus.E1049.RationalBaseBarrier
-
-noncomputable def CoordinatewiseCorridor
-    (a b N K Q digit : ℕ) : Prop :=
-  0 < a ∧ 0 < Q ∧ 0 < digit ∧ digit ≤ N + K ∧
-    a ^ K ∣ Q * digit ∧
-    Q * b ^ (N + K + 1) < a ^ (K + 1)
-
-noncomputable def rationalBasePrefixQ
-    (r s : ℚ) (coeff : ℕ → ℚ) (N : ℕ) : ℚ :=
-  ∑ m ∈ Finset.range N,
-    coeff (m + 1) * s ^ (m + 1) / r ^ (m + 1)
-
-noncomputable def rationalBaseClearedTailQ
-    (r s B F : ℚ) (coeff : ℕ → ℚ) (N : ℕ) : ℚ :=
-  B * r ^ N * (F - rationalBasePrefixQ r s coeff N)
-
-noncomputable def rationalBaseForcingNat
-    (s B : ℕ) (coeff : ℕ → ℕ) (N : ℕ) : ℕ :=
-  B * coeff (N + 1) * s ^ (N + 1)
 
 theorem rationalBaseClearedTailQ_succ
     {r s B F : ℚ} {coeff : ℕ → ℚ} (hr : r ≠ 0) (N : ℕ) :

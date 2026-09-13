@@ -5,7 +5,7 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos243.ReciprocalTailRigidity
-import Solutions.PalomarCorpus.E243.Shared
+import Solutions.PalomarCorpus.E243.Statement
 
 namespace PalomarCorpus.E243.BoundedNegativePartRigidity
 export PalomarCorpus.E243.Shared (centeredState sylvesterNext)

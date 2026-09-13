@@ -5,6 +5,7 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos1049.BezoutPluckerJets
+import Solutions.PalomarCorpus.E1049.Statement
 
 open scoped BigOperators
 

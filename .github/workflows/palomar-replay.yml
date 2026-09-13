@@ -141,7 +141,15 @@ jobs:
             rc=$?
             echo "E$n exit=$rc"
             echo "exit_E$n=$rc" >> "$GITHUB_OUTPUT"
-            tail -n 20 "artifacts/E$n.log"
+            grep -v '^Exporting' "artifacts/E$n.log" | tail -n 20
+            # A green exit must carry both independent kernel verdicts, as Palomar's
+            # protected configuration forces NanoDa; a run that skipped a kernel is not green.
+            if [[ "$rc" -eq 0 ]] && ! grep -q '^nanoda kernel accepts the solution' "artifacts/E$n.log"; then
+              echo "E$n: exit 0 without a NanoDa acceptance line"; rc=90
+            fi
+            if [[ "$rc" -eq 0 ]] && ! grep -q '^Lean default kernel accepts the solution' "artifacts/E$n.log"; then
+              echo "E$n: exit 0 without a Lean kernel acceptance line"; rc=91
+            fi
             [[ "$rc" -eq 0 ]] || failures=$((failures + 1))
           done
           echo "failures=$failures" >> "$GITHUB_OUTPUT"

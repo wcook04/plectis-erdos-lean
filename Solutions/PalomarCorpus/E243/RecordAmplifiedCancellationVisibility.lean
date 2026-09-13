@@ -5,7 +5,7 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos243.SaturatedSquareTransport
-import Solutions.PalomarCorpus.E243.Shared
+import Solutions.PalomarCorpus.E243.Statement
 
 /- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
 

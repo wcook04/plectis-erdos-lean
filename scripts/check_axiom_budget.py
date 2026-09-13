@@ -82,16 +82,35 @@ def entries(*, palomar: bool = False) -> list[str]:
 
 
 def source_identity() -> dict:
-    paths = subprocess.check_output(["git", "ls-files", "-z"], cwd=REPO_ROOT).decode().split("\0")
-    selected = sorted(path for path in paths if path and (
+    """Fingerprint the worktree bytes the built environments can have consumed.
+
+    Tracked and untracked-but-not-ignored files both count (a new proof module that is
+    not yet committed still participates in the build), a path deleted in the worktree is
+    skipped and recorded, and ``worktree_clean`` says whether the fingerprint is the
+    committed tree at ``commit`` or a working state ahead of it.
+    """
+    paths = subprocess.check_output(
+        ["git", "ls-files", "-z", "--cached", "--others", "--exclude-standard"], cwd=REPO_ROOT
+    ).decode().split("\0")
+    selected = sorted(path for path in set(paths) if path and (
         path.endswith(".lean") or path.endswith("/comparator.json")
         or path in {"lakefile.toml", "lake-manifest.json", "lean-toolchain"}))
-    hashes = {path: hashlib.sha256((REPO_ROOT / path).read_bytes()).hexdigest() for path in selected}
+    hashes = {}
+    deleted = []
+    for path in selected:
+        full = REPO_ROOT / path
+        if full.is_file():
+            hashes[path] = hashlib.sha256(full.read_bytes()).hexdigest()
+        else:
+            deleted.append(path)
+    status = subprocess.check_output(["git", "status", "--porcelain"], cwd=REPO_ROOT).decode()
     return {
         "commit": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=REPO_ROOT).decode().strip(),
+        "worktree_clean": status.strip() == "",
         "source_file_count": len(hashes),
+        "deleted_in_worktree": deleted,
         "source_files_sha256": hashlib.sha256(json.dumps(hashes, sort_keys=True).encode()).hexdigest(),
-        "scope": "tracked Lean sources, Comparator configurations, Lake configuration and dependency lock",
+        "scope": "tracked and untracked-not-ignored Lean sources, Comparator configurations, Lake configuration and dependency lock, as present in the worktree",
     }
 
 
