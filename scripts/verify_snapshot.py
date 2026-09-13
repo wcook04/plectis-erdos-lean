@@ -141,7 +141,7 @@ def _private_text_findings(root: Path) -> list[dict[str, str]]:
         if not path.is_file():
             continue
         rel = path.relative_to(root).as_posix()
-        if rel.startswith(".git/") or rel.startswith(".lake/") or rel.startswith(".cursor/"):
+        if rel == ".git" or rel.startswith(".git/") or rel.startswith(".lake/") or rel.startswith(".cursor/"):
             continue
         try:
             text = path.read_text(encoding="utf-8")

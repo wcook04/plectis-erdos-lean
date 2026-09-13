@@ -28,6 +28,7 @@ import hashlib
 import json
 import re
 import subprocess
+import tomllib
 from pathlib import Path
 from typing import Any
 
@@ -132,9 +133,14 @@ def entry_row(entry: str) -> dict[str, Any]:
 
 
 def build(tag: str | None, commit: str | None) -> dict[str, Any]:
+    # Default targets define the released entries. The checkout also contains
+    # auxiliary Challenge-only directories that are not Comparator packages.
+    lakefile = tomllib.loads((REPO_ROOT / "lakefile.toml").read_text(encoding="utf-8"))
     entries = sorted(
-        p.name for p in REPO_ROOT.iterdir() if p.is_dir() and p.name.startswith(ENTRY_PREFIX)
+        target for target in lakefile["defaultTargets"] if target.startswith(ENTRY_PREFIX)
     )
+    if not entries or len(entries) != len(set(entries)):
+        raise ValueError("defaultTargets must name distinct Comparator release entries")
     rows = [entry_row(entry) for entry in entries]
     return {
         "schema": "plectis_erdos_lean_release_manifest_v1",
@@ -146,7 +152,7 @@ def build(tag: str | None, commit: str | None) -> dict[str, Any]:
         ),
         "axiom_audit_note": (
             "Each entry's AxiomAudit module is inside that entry's Lake library glob, so the "
-            "release workflow elaborates all 21 of them and the #print axioms output appears in "
+            f"release workflow elaborates all {len(rows)} of them and the #print axioms output appears in "
             "the build log. #print axioms prints; it does not fail a build when a printed axiom "
             "falls outside the entry's permitted_axioms. A green workflow therefore establishes "
             "that every Challenge, Solution and AxiomAudit module elaborates, not that the "
