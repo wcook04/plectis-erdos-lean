@@ -1,14 +1,20 @@
 version: v0.4
 project:
-  name: 'Formal reductions for Erdős problem #251'
+  name: 'Erdős problem #251: shifted prime-gap coincidences reduce to an explicit four-prime count, with exact tail-shift criteria, a kernel-decided denominator floor, and rational countermodels to coarse gap hypotheses'
   description: >-
-    A Comparator-checkable restatement of the paper-linked Lean theorems that
-    actually have proof coverage for Erdős problem #251. The compared
-    surface includes 31 independently stated declarations
-    (exists_rationalPrimeGapTailState_representation_of_not_irrational, rationalPrimeGapTailShift_eventuallyIntegral, rationalPrimeGapTailState_recurrence, rationalPrimeGapTail_has_positive_shift_not_eventually_small, adjacent_small_mismatch_iff_signed_two_window, cofinal_affinePowTwo_escape_iff_not_eventuallyIntegral, cofinal_blockResidue_escape_iff_not_eventuallyIntegral, cofinalFreePairNonintegral_iff_cofinalNonintegralTailShifts, exists_free_pair_lattice, free_pair_integral_iff_modEq, irrational_initial_iff_cofinalFreePairNonintegral, irrational_primeGap_tsum_iff_cofinalFreePairNonintegral, and 19 more). The parent problem remains open. This repository
-    is the substantive formalization, not a thin wrapper around another public
-    repo. This entry is one of eight problem-level Palomar configurations at
-    the same repository and commit.
+    Erdős problem #251 asks whether the dyadic prime series 2/2 + 3/4 + 5/8 and so on is irrational. The principal result here turns a prime-specific obstruction into a counting problem about four primes. Write `p n` for the primes indexed from `p 0 = 2` and `g n = p (n + 1) - p n` for the consecutive gaps. For every shift `h` at least 2, every integer `r`, and all `N` and `H`, the number of indices `n < N` with `g (n + h) - g n = r`, multiplied by `H + 1`, is at most `(h + 1) * p (N + h + 1)` plus `H + 1` times the number of triples `(x, d, s)` with `x < p N`, `0 < d < s` at most `H`, `d + r > 0`, and all four of `x`, `x + d`, `x + s`, `x + s + d + r` prime. That inequality is finite, unconditional, and assumes no sieve estimate. A second theorem shows that an explicit quadruple-sieve hypothesis, recorded as `SeparatedQuadSieve_target`, forces those indices to have density zero. This package does not prove that hypothesis, and the case `h = 1` is excluded because two of the four prime positions would coincide. Independently of the theorems here, J. Land posted in 2026 on the problem's discussion thread a proof of irrationality that is conditional on Kuperberg's uniform Hardy-Littlewood prime-tuples conjecture, with a Lean formalisation of that conditional argument; the declarations compared here assume no such conjecture and remain unconditional, and the parent problem remains open unconditionally. The unconditional reduction retains its interest beside any conditional proof: it is finite, assumes no sieve estimate, and places the obstruction in the standard separated four-prime shape for which sieve theory already has machinery.
+
+    The audience is the irrationality-of-series community Erdős addressed, together with workers on prime-gap distribution and formalised number theory. Erdős recorded this series as unproved in 1958 (page 94), repeated it with Graham in 1980 (page 62), and again in the chapter cited below (page 103). His dyadic irrationality theorem with Pomerance (1978, section 7) needs bounded digits and does not reach unbounded prime numerators or gaps. Kovač refuted in 2026 an adjacent conjecture printed under the same catalogue number, in which the denominators vary; that refutation left the fixed-denominator question here undecided. No antecedent for the tail criteria has been located, and the nearest located neighbour is Schlage-Puchta (2011), which treats a different object. What this entry adds is machine-checked in Lean 4 over Mathlib: a one-way route from the shifted-gap obstruction to a named four-prime sieve input, exact tail-shift classifiers for irrationality, a kernel-decided denominator floor, and two rational countermodels closing families of soft arguments. Erdős problem #251 remains open, and no declaration here asserts irrationality of any of the three series.
+
+    The reformulation layer is unconditional and exact. The elementary bound `p n <= 1250 * (n + 1) ^ 4`, proved here from a central binomial estimate, makes both series summable without the prime number theorem. Summation by parts over the dyadic weights gives `sum p n / 2 ^ (n + 1) = 2 + sum g n / 2 ^ (n + 1)` and `sum p n / 2 ^ n = 4 + 2 * sum g n / 2 ^ (n + 1)`, so the three series share one irrationality status. That identity was given by Terence Tao on the public problem thread on 7 October 2025 and is checked here without a priority claim. These are exact changes of coordinate and they decide no value.
+
+    The tail layer studies the recurrence `T (N + 1) = 2 * T N - g (N + 1)` obeyed by the rescaled tails `T N = sum over j at least 1 of g (N + j) / 2 ^ j`, for arbitrary integer digits. For every such real orbit, `T 0` is rational exactly when one shift `T (N + h) - T N` with `h` positive is an integer at one index. Irrationality is therefore equivalent to cofinal non-integrality of every fixed positive shift, to the free-pair condition with the offset `M - N` free, and to non-integrality on the single diagonal at shift length and basepoint both `lcm (1, ..., j)`. At a rational basepoint the integral shift lengths are exactly the multiples of the multiplicative order of 2 modulo the reduced denominator. Two escape tests, the data-dependent affine cylinder and a fixed lattice of multiples of `2 ^ r`, are proved equivalent to the non-integrality they were introduced to establish. These are exact reformulations and route closures. They are not progress on the value.
+
+    One unconditional numerical exclusion is recorded. Every representation of the prime series as `a / b` with `b` a positive natural number has `b` at least `2 ^ 589`, which exceeds `10 ^ 177`, and the same floor holds for the prime-gap series. It is decided inside the Lean kernel from a trial-division sieve below 10000, returning the 1229 primes there and the scaled prefix, together with a Farey certificate of four explicit constants of 177 and 178 digits. A denominator floor is a finite exclusion, compatible with rationality, and it proves no irrationality.
+
+    Two synthetic countermodels bound what a soft argument may use. The first constructs an integer word whose digits from index 1 are positive, even, at most `4 * log (n + 1) + 24`, unbounded, and without positive eventual period, which takes both values 2 and 4 at arbitrarily late indices in every residue class modulo every positive `t`, whose cumulative positions are strictly increasing and odd with `position N / (N * log N)` tending to 1, and whose dyadic series has the exact value 6 with every complete tail and every difference of tails an integer. That word is synthetic: it asserts no primality and says nothing about the actual prime gaps. An argument using only those properties cannot force a non-integral tail shift. The second is the quadratic word `a n = 2 * (n ^ 2 + 4 * n + 2)` with orbit `U n = 2 * (n + 4) ^ 2`: positive, even, strictly increasing, every shift integral, every adjacent difference `4 * n + 10` and hence never 2 or -2, and dyadic sum exactly 32. It is likewise synthetic. A telescoping construction of the same species was published first by Kovač in April 2026, with no priority claimed here.
+
+    What remains open is a statement about the actual primes: for every fixed positive `h` and every threshold, produce an index beyond it at which two adjacent shifts of length `h` both lie strictly between -1 and 1 while the two corresponding gaps differ. One theorem here puts that configuration in exact normal form under the hypothesis that the two gaps differ by an even number, forcing that difference to be exactly 2 or -2. Zhang (2014), Maynard (2015), and Ford, Green, Konyagin, Maynard and Tao (2018) address a different question and supply none of the joint dyadic block distribution the finite criterion needs. Erdős problem #251 remains open.
   authors:
   - Will Cook
   license: Apache-2.0
@@ -19,22 +25,137 @@ repository:
 classification:
   arxiv:
   - math.NT
-  - math.CA
-  - math.CV
   msc2020:
-  - 11A25
-  - 11B83
-  - 11B05
-  - 30C10
+  - "11J72"
+  - "11N05"
+  - "11N36"
+  - "11A41"
+  - "11B83"
+  - "11Y16"
+  - "68V20"
 sources:
 - title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
   authors:
   - Will Cook
   type: original-proof
   relationship: other
-  note: Independently restated Lean theorems already proved in this repository. Does not solve the parent Erdős problem.
+  note: The compared theorems are independently restated Lean theorems proved in this repository and described in the eight public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos. They do not solve the parent Erdős problem.
   license: Apache-2.0
   author_endorsement: participated
+- title: "Sur certaines séries à valeur irrationnelle"
+  authors:
+  - "Paul Erdős"
+  id: "10.5169/seals-34629"
+  type: "paper"
+  relationship: "background"
+  note: "States the dyadic prime series as unproved on page 94, which is the origin of the parent problem; the irrationality theorem printed alongside it is for a factorial-denominator family and is not used by any declaration here."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Old and New Problems and Results in Combinatorial Number Theory"
+  authors:
+  - "Paul Erdős"
+  - "Ronald L. Graham"
+  type: "book"
+  relationship: "background"
+  note: "Restates the dyadic prime series question on page 62; nothing in this entry is taken from the monograph beyond the problem statement."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "On the irrationality of certain series: problems and results"
+  authors:
+  - "Paul Erdős"
+  id: "10.1017/CBO9780511897184.009"
+  type: "paper"
+  relationship: "background"
+  note: "Repeats the problem on page 103 inside the wider irrationality-of-series programme that identifies the audience for this entry; no proof technique is taken from it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "On the largest prime factors of n and n+1"
+  authors:
+  - "Paul Erdős"
+  - "Carl Pomerance"
+  id: "10.1007/BF01818569"
+  type: "paper"
+  relationship: "background"
+  note: "Section 7 proves a dyadic irrationality theorem for bounded digits recording comparisons of largest prime factors; the prime numerators and prime gaps treated here are unbounded, so that theorem is context and supplies no step of any proof in this entry."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Erdős Problem #251 problem page and comment thread"
+  authors:
+  - "Thomas F. Bloom"
+  id: "https://www.erdosproblems.com/251"
+  type: "web discussion"
+  relationship: "background"
+  note: "Supplies the catalogue statement and open status, and carries the summation-by-parts identity between the prime series and the prime-gap series posted by Terence Tao on 7 October 2025, which is checked in this entry with no priority claimed; the compared theorems are not attributed to the catalogue."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "On the Erdős problem #251"
+  authors:
+  - "V. Kovač"
+  id: "https://web.math.pmf.unizg.hr/~vjekovac/files/Erdos_problem_251.pdf"
+  type: "other"
+  relationship: "background"
+  note: "Refutes by a telescoping construction the adjacent variable-denominator conjecture printed under the same catalogue number, and leaves the fixed-denominator question of this entry undecided; the quadratic countermodel here uses a construction of the same species and claims no priority over it. The note records a language model run orchestrated by the named author."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "On several irrationality problems for Ahmes series"
+  authors:
+  - "V. Kovač"
+  - "Terence Tao"
+  id: "10.1007/s10474-025-01528-0"
+  type: "paper"
+  relationship: "background"
+  note: "Recent work on irrationality of series with prescribed denominators, which locates the research area of this entry; no lemma of that paper is used in any declaration here."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "The irrationality of some number theoretical series"
+  authors:
+  - "Jan-Christoph Schlage-Puchta"
+  id: "arXiv:1105.1451"
+  type: "paper"
+  relationship: "background"
+  note: "The nearest located neighbour for the tail criteria recorded here, with no antecedent located: its Theorem 2 treats base-b digit strings that concatenate the representations of a slowly growing integer sequence, and its Theorem 3 gives linear independence over the rationals for series of prime powers over factorials. Its Lemma 4, a Selberg-sieve density-zero statement for polynomial relations among consecutive prime gaps, is used in the companion reasoning record and by no declaration in this entry, whose criteria are stated for a fixed dyadic denominator."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Bounded gaps between primes"
+  authors:
+  - "Yitang Zhang"
+  id: "10.4007/annals.2014.179.3.7"
+  type: "paper"
+  relationship: "background"
+  note: "Theorem 1 produces infinitely many bounded consecutive-prime gaps; it is recorded to mark the boundary, because it supplies no joint dyadic distribution of a block of consecutive gap differences and is used by no declaration here."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Small gaps between primes"
+  authors:
+  - "James Maynard"
+  id: "10.4007/annals.2015.181.1.7"
+  type: "paper"
+  relationship: "background"
+  note: "it bounds the lower limit of p(n+m) - p(n) for every fixed m and gives the explicit bound 600 for consecutive gaps; both are context for the open boundary and neither is used by any declaration here."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Long gaps between primes"
+  authors:
+  - "Kevin Ford"
+  - "Ben Green"
+  - "Sergei Konyagin"
+  - "James Maynard"
+  - "Terence Tao"
+  id: "10.1090/jams/876"
+  type: "paper"
+  relationship: "background"
+  note: "Theorem 1 on page 66 gives an effective lower bound for the largest single consecutive-prime gap below a threshold; unboundedness of the gaps is all that the non-periodicity argument here needs, and this stronger theorem supplies no residue-sensitive block estimate used by any declaration."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "A conditional proof of the irrationality of the dyadic prime series under a uniform Hardy-Littlewood prime-tuples conjecture, with a Lean formalisation of the conditional argument, posted in 2026 to the Erdős Problem #251 discussion"
+  authors:
+  - "J. Land"
+  id: "https://www.erdosproblems.com/251"
+  type: "web discussion"
+  relationship: "background"
+  note: "As recorded in the public reasoning record for this problem, Land's argument assumes Kuperberg's uniform Hardy-Littlewood prime-tuples conjecture, constructs weighted prime-gap tails, and comes with a Lean formalisation of that conditional argument. Every declaration compared in this entry is unconditional and was proved independently of it; nothing here uses, extends or contradicts his conditional theorem, and the parent problem remains open unconditionally."
+  license: "unknown"
+  author_endorsement: "not-contacted"
 - title: Erdős Problems catalogue
   authors:
   - Thomas F. Bloom
@@ -51,20 +172,29 @@ sources:
   relationship: background
   license: Apache-2.0
   author_endorsement: n/a
+related_formalizations:
+- id: "https://github.com/google-deepmind/formal-conjectures/blob/f776d2f2039351b00737ffcafb9d7d7666e1d9af/FormalConjectures/ErdosProblems/251.lean"
+  title: "FormalConjectures.ErdosProblems.251"
+  relationship: "independent"
+  note: "An earlier Lean statement of the parent problem whose proof ends in sorry; it is statement-level prior art for the formalisation, it supplies no proof authority, and every declaration compared here was stated independently of it."
+- id: "https://www.erdosproblems.com/251"
+  title: "J. Land's Lean formalisation of a conditional proof of irrationality (2026)"
+  relationship: "independent"
+  note: "Formalises Land's argument, which is conditional on Kuperberg's uniform prime-tuples conjecture; announced with the proof on the problem's discussion thread. The declarations compared here are unconditional and were stated independently of it."
 status:
-  scope: One publication Comparator covering the paper-linked Lean for Erdős problem #251. Family ExternalVerification* configs remain internal inventory. Sibling PalomarCorpus/E* entries cover the other seven problems at this commit.
+  scope: One publication Comparator configuration selecting the theorems named in the project description for Erdős problem #251; other paper-linked declarations for this problem that live only in the per-family ExternalVerification251* directories are internal regression inventory and are not selected here. The sibling PalomarCorpus/E* entries cover the other seven problems at this commit.
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
-  trusted_challenge_sorry_count: 31
-  sorry_boundary: The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E251/Challenge.lean.
-  axiom_audit_status: pending_elaboration
+  trusted_challenge_sorry_count: 34
+  sorry_boundary: The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E251/Challenge.lean; every Solution proof is complete.
+  axiom_audit_status: every compared theorem is printed with axioms propext, Quot.sound and Classical.choice only by scripts/check_axiom_budget.py --run-palomar, which the release gate runs on the built Solution environments
   permitted_axiom_budget:
   - propext
   - Quot.sound
   - Classical.choice
   development_status: substantive
-  local_proof_provenance: family Solutions.ExternalVerification* modules in this repository
+  local_proof_provenance: the ErdosProblems.Erdos251 proof modules in this repository, imported by Solutions.PalomarCorpus.E251; the Solutions.ExternalVerification251* family modules are a regression mirror of the same proofs and are not imported by this configuration
   canonical_claim_status: problem-level Comparator wrapper over substantive Lean in this repository
 automation:
   methods:
@@ -86,5 +216,5 @@ automation:
 review:
   status: self-assessed
   reviewers: []
-  notes: Palomar editorial review is a later operator decision. Family drain and isolated-family intake remain frozen. Flat PalomarCorpus/comparator.json is superseded.
+  notes: The author checked every compared statement against the public problem note and reasoning record for Erdős problem #251 at https://github.com/wcook04/plectis-erdos; no external referee report exists for this entry.
 acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

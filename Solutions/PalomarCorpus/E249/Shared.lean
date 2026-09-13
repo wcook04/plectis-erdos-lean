@@ -20,6 +20,10 @@ noncomputable def mobiusMersenneTerm (r n : ℕ) : ℝ :=
 noncomputable def mobiusMersenneTheta (r : ℕ) : ℝ :=
   ∑' n : ℕ, mobiusMersenneTerm r n
 
+noncomputable def totientBlock (H N : ℕ) : ℤ :=
+  ∑ j ∈ Finset.range H,
+    (Nat.totient (N + 1 + j) : ℤ) * 2 ^ (H - 1 - j)
+
 noncomputable def totientKernelSeq (j r : ℕ) : ℕ → ℚ := fun n =>
   Nat.totient (2 ^ j * n + r)
 

@@ -7,6 +7,7 @@ import Mathlib
 import Solutions.PalomarCorpus.E68.Shared
 import Solutions.PalomarCorpus.E68.AdjacentUnitCarryWindow
 import Solutions.PalomarCorpus.E68.ChannelRadius
+import Solutions.PalomarCorpus.E68.CommonDenominatorGrowth
 import Solutions.PalomarCorpus.E68.CompanionOrbitBoundary
 import Solutions.PalomarCorpus.E68.FiniteDenominator
 import Solutions.PalomarCorpus.E68.KempnerIndex

@@ -6,6 +6,9 @@ Authors: Will Cook
 import Mathlib
 
 open scoped BigOperators
+open Filter
+open scoped BigOperators Topology
+open Finset
 
 namespace PalomarCorpus.E251.Shared
 noncomputable def DyadicTailRecurrence (g : ℕ → ℤ) (T : ℕ → ℚ) : Prop :=

@@ -1,14 +1,22 @@
 version: v0.4
 project:
-  name: 'Formal reductions for Erdős problem #257'
+  name: 'Erdős problem #257: all base irrationality of the reciprocal Mersenne subseries for every infinite reciprocal summable support, with weighted mass and positive cover extensions, achievement set geometry, and exact greedy membership criteria'
   description: >-
-    A Comparator-checkable restatement of the paper-linked Lean theorems that
-    actually have proof coverage for Erdős problem #257. The compared
-    surface includes 50 independently stated declarations
-    (supportedMersenneAchievementSet_geometry_and_volume, volume_supportedMersenneAchievementSet_eq_zero_of_rat_value, actualUpperRightPacketLinearEscape_iff_successorLinearEscape, actualUpperSuccessorLinearEscape_completeCounterexample, reconstructsSupport, exists_booleanMobiusCarry_of_support_fraction, exists_normalized_support_fraction_iff_exists_booleanMobiusCarry, support_fraction_of_booleanMobiusCarry, divisibilityWeightedClaim, dyadic_supportObservationMass_sum_le, summable_dyadic_supportObservationMass, tendsto_dyadic_supportObservationMass_mean, and 38 more). The parent problem remains open. This repository
-    is the substantive formalization, not a thin wrapper around another public
-    repo. This entry is one of eight problem-level Palomar configurations at
-    the same repository and commit.
+    Erdős problem 257 asks whether the sum over a in A of 1/(2^a - 1) is irrational for every infinite set A of positive integers. The principal theorem compared here settles the whole reciprocal summable regime at every integer base: if A is infinite and the sum over a in A of 1/a converges, then the sum over a in A of 1/(b^a - 1) is irrational for every integer b at least 2 (ReciprocalSupport.irrational_supportPowerSeries_of_summable_reciprocal). No pairwise coprimality, periodicity, density, or powerful support hypothesis appears. Paul Erdős printed the pairwise coprime case of exactly this statement, at every integer base, in 1968, and stated there that pairwise coprimality can be removed by a longer argument he did not print. The theorem compared here is that stated extension, proved independently. No priority over Erdős is claimed and no identification with his omitted argument is asserted. The consequence for the parent problem is a boundary condition: any infinite support witnessing a counterexample has divergent reciprocal sum. Erdős problem 257 remains open.
+
+    The readers are number theorists working on irrationality for Lambert type and reciprocal Mersenne series, and analysts who study subsum sets of convergent series. Erdős (1948) proved irrationality of the full support value at every integer base; Erdős (1968) proved the pairwise coprime reciprocal summable case; Duverney and Tachiya (2019) treated the squarefree support at every base 2^j; Tao and Teravainen proved the prime support case at base two. Duverney and Tachiya record the Erdős and Graham conjecture that the sum is irrational for every increasing sequence of exponents and describe their corollary as support for it. Each covers one distinguished family; none covers an arbitrary reciprocal summable support, nor the reciprocal divergent supports below.
+
+    Three theorems state sufficient criteria that do not ask for reciprocal summability. Write h(a) for the P part of a at a finite nonempty prime set P. DivisibilityWeightedSupport.divisibilityWeightedClaim has two clauses: convergence of the sum over a in A of h(a)/(a(b^h(a) - 1)) at a fixed base b at least 2, for infinite A avoiding 0, gives irrationality at that base; the same weighted mass at base two on a host H avoiding 0 gives irrationality at every integer base at least 2 for every infinite subset of H. VariableExponentCover.strengthenedPositiveCoverClaim gives that hereditary all base conclusion for every infinite subset of the host of a positive fractional divisor cover of convergent one inverse power cost, and MixedWeightedCover.mixedSupportClaim combines the two criteria on one observation scale. LiteralWeightedCover.exists_weighted_not_strengthened_host makes the weighted enlargement strict: a weighted host of divergent reciprocal mass admitting no strengthened cover, whose infinite subsets are irrational at every integer base at least 2. DyadicObservationSummability records dyadic averaging estimates for weighted observation masses.
+
+    FinitePeriodNoncollapse is exact finite support arithmetic: for finite nonempty F of positive exponents and integer base b at least 2, the reduced denominator of the sum over n in F of 1/(b^n - 1) is coprime to b, the order of b modulo it is exactly lcm F, and lcm F is strictly below that denominator once it is at least 2. RationalTailRigidity adds four necessary conditions on a hypothetical rational value p/(2^c v): an unbounded positive integer tail orbit with exact doubling recurrence, a sublogarithmic bound on zero windows of the divisor incidence coefficients, a reciprocal mass floor from the order of 2 modulo an odd reduced denominator when the reciprocals are summable, and a dyadic mass alternative. None contradicts a rational value. BooleanMobiusCarry gives exact coordinates: for an integer p and a positive natural q, a support avoiding 0 with some positive element and base two value p/q exists precisely when a positive square root bounded integer carry has Boolean Moebius normalised quotient. That characterisation permits finite supports, so it excludes no rational value.
+
+    AchievementSetGeometry and FairCoding describe the set of all subsums of that series at base two. For every set J of allowed digit positions the supported coding map is injective with compact nowhere dense range, the range is perfect when J is infinite, and the Lebesgue measure obeys an exact dichotomy: 2^(-|F|) when the omitted positions form a finite set F, and zero when infinitely many are omitted. When 0 is not in J and the value coded by J read as exponents is rational, the supported set is Lebesgue null, which closes positive measure selection over a rational fibre. The fair product measure on digit strings pushes forward to Lebesgue measure restricted to the achievement set, and the preimage of the rationals is null. Perfectness and nowhere density of subsum sets are classical after Kakeya (1914), and Kovac and Tao record the fixed base Cantor structure; the measure dichotomy and the rational fibre null theorem are the additions.
+
+    Six families give exact membership criteria for that set. GeneralRepairCriterion replaces a quantifier over supports by a pointwise inequality on one integer sequence: a nonnegative real lies in the set exactly when its greedy defect fails to increase at cofinally many scales, and when it fails to increase inside every window that starts at K and has width 2 times the integer square root of K plus 12. ScaledGreedyTrap identifies the set with the nonnegative reals whose scaled greedy remainder stays strictly below the barrier 2 at every scale. RationalMembership characterises a nonnegative rational target by infinitude of its skipped greedy ranks; PositiveSkipEquivalence and FourNinthsRepairWindows give the criteria at 1/2 and at 4/9; TwentyOneFatalBranch reduces membership of 1/21 to excluding one explicit fatal aligned branch. These are exact reformulations; they decide no target.
+
+    TerminalScaledVanishing and ActualUpperSuccessor state conditional refutations of the universal assertion: an unconstructed terminal scaled vanishing sequence of finite Boolean support words, or an unconstructed realised upper run lower envelope, each produces an infinite support of value exactly 1/2. Neither theorem places 1/2 in the achievement set.
+
+    Irrationality for an arbitrary infinite support is not proved, the memberships of 1/2, 4/9 and 1/21 are not decided, and the parent problem remains open.
   authors:
   - Will Cook
   license: Apache-2.0
@@ -20,21 +28,89 @@ classification:
   arxiv:
   - math.NT
   - math.CA
-  - math.CV
+  - math.DS
   msc2020:
-  - 11A25
-  - 11B83
-  - 11B05
-  - 30C10
+  - "11J72"
+  - "11A25"
+  - "11A07"
+  - "11B37"
+  - "11B83"
+  - "28A80"
+  - "11K16"
 sources:
 - title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
   authors:
   - Will Cook
   type: original-proof
   relationship: other
-  note: Independently restated Lean theorems already proved in this repository. Does not solve the parent Erdős problem.
+  note: The compared theorems are independently restated Lean theorems proved in this repository and described in the eight public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos. They do not solve the parent Erdős problem.
   license: Apache-2.0
   author_endorsement: participated
+- title: "On the irrationality of certain series"
+  authors:
+  - "Paul Erdos"
+  id: "https://users.renyi.hu/~p_erdos/1969-09.pdf"
+  type: "paper"
+  relationship: "other"
+  note: "The Mathematics Student 36 (1968, issued 1969), 222-226. The printed theorem on p. 222 gives irrationality for pairwise coprime supports with convergent reciprocal sum at every integer base at least 2, and Erdős states there that pairwise coprimality can be removed by a longer argument that he does not print. ReciprocalSupport.irrational_supportPowerSeries_of_summable_reciprocal is that stated extension, proved independently; no priority over Erdős and no identification with his omitted argument is taken from this source."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "On arithmetical properties of Lambert series"
+  authors:
+  - "Paul Erdos"
+  type: "paper"
+  relationship: "background"
+  note: "J. Indian Math. Soc. 12 (1948), 63-66. Source of the classical irrationality of the full support value at every integer base, which is the historical starting point for the problem. That classical result is the analytic input to the forward implication of the rational membership criterion compared here, since finitely many greedy omissions would write the full support value as a rational plus a finite rational Mersenne sum. No statement compared in this entry is Erdős's, and no priority over him is claimed."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Refinement of the Chowla-Erdős method and linear independence of certain Lambert series"
+  authors:
+  - "Daniel Duverney"
+  - "Yohei Tachiya"
+  id: "https://doi.org/10.1515/forum-2018-0299"
+  type: "paper"
+  relationship: "background"
+  note: "Forum Math. 31 (2019), no. 6, 1557-1566. Corollary 1.2 and Example 1.1 give irrationality and linear independence for the squarefree support at every base 2^j with j at least 1. That family is prior art and is credited to these authors; no theorem compared in this entry is derived from it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Quantitative correlations and some problems on prime factors of consecutive integers"
+  authors:
+  - "Terence Tao"
+  - "Joni Teravainen"
+  id: "arXiv:2512.01739"
+  type: "paper"
+  relationship: "background"
+  note: "Theorem 1.3 proves irrationality of the prime support value at base two, with the extension to other integer bases and to prime power supports stated as remarks. That case is prior art and is credited to these authors; no theorem compared in this entry uses their correlation input."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "On several irrationality problems for Ahmes series"
+  authors:
+  - "Vjekoslav Kovac"
+  - "Terence Tao"
+  id: "https://doi.org/10.1007/s10474-025-01528-0"
+  type: "paper"
+  relationship: "background"
+  note: "Acta Math. Hungar. 175 (2025), 572-608. Remark 4.1 records the strict tail inequality and the resulting Cantor structure of the fixed base achievement set, which is the classical context for the geometry compared here. The exact Lebesgue measure dichotomy and the rational fibre null theorem are not taken from this source."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "On the set of partial sums of an infinite series"
+  authors:
+  - "Soichi Kakeya"
+  id: "https://doi.org/10.11429/ptmps1907.7.14_250"
+  type: "paper"
+  relationship: "background"
+  note: "Tokyo Sugaku-Buturigakkwai Kizi Dai 2 Ki 7 (1914), no. 14, 250-251. Kakeya proves that the subsum set of an absolutely convergent series is perfect and states the interval filling criterion and the nowhere density assertion. Perfectness and nowhere density in AchievementSetGeometry are classical in this sense; the exact measure dichotomy is not taken from this source."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "On an incomplete argument of Erdős on the irrationality of Lambert series"
+  authors:
+  - "J. Vandehey"
+  id: "arXiv:1206.0340"
+  type: "paper"
+  relationship: "background"
+  note: "Completes a different unprinted Erdős argument: irrationality of the divisor-function Lambert series at negative integer bases, with bounded nonzero integer weights. It does not treat subsums over a support, so it neither anticipates nor overlaps the reciprocal summable theorem compared here; it is cited as the nearest published completion of an Erdős gap in this circle."
+  license: "unknown"
+  author_endorsement: "not-contacted"
 - title: Erdős Problems catalogue
   authors:
   - Thomas F. Bloom
@@ -51,20 +127,25 @@ sources:
   relationship: background
   license: Apache-2.0
   author_endorsement: n/a
+related_formalizations:
+- id: "https://github.com/google-deepmind/formal-conjectures/blob/f776d2f2039351b00737ffcafb9d7d7666e1d9af/FormalConjectures/ErdosProblems/257.lean"
+  title: "FormalConjectures.ErdosProblems.257"
+  relationship: "independent"
+  note: "States the open parent problem (erdos_257, proof sorry), proves the Lambert identity tsum_top_eq, and states the Erdős 1948 full-support irrationality as the variant tsum_top with proof sorry. It is statement-level prior art; no theorem compared here is derived from it, and the theorem irrational_erdosBorwein_series elsewhere in this repository proves the statement that tsum_top leaves open."
 status:
-  scope: One publication Comparator covering the paper-linked Lean for Erdős problem #257. Family ExternalVerification* configs remain internal inventory. Sibling PalomarCorpus/E* entries cover the other seven problems at this commit.
+  scope: One publication Comparator configuration selecting the theorems named in the project description for Erdős problem #257; other paper-linked declarations for this problem that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected here. The sibling PalomarCorpus/E* entries cover the other seven problems at this commit.
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
   trusted_challenge_sorry_count: 50
-  sorry_boundary: The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E257/Challenge.lean.
-  axiom_audit_status: pending_elaboration
+  sorry_boundary: The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E257/Challenge.lean; every Solution proof is complete.
+  axiom_audit_status: every compared theorem is printed with axioms propext, Quot.sound and Classical.choice only by scripts/check_axiom_budget.py --run-palomar, which the release gate runs on the built Solution environments
   permitted_axiom_budget:
   - propext
   - Quot.sound
   - Classical.choice
   development_status: substantive
-  local_proof_provenance: family Solutions.ExternalVerification* modules in this repository
+  local_proof_provenance: the ErdosProblems.Erdos257 proof modules in this repository, imported by Solutions.PalomarCorpus.E257; the Solutions.ExternalVerification257* family modules are a regression mirror of the same proofs and are not imported by this configuration
   canonical_claim_status: problem-level Comparator wrapper over substantive Lean in this repository
 automation:
   methods:
@@ -86,5 +167,5 @@ automation:
 review:
   status: self-assessed
   reviewers: []
-  notes: Palomar editorial review is a later operator decision. Family drain and isolated-family intake remain frozen. Flat PalomarCorpus/comparator.json is superseded.
+  notes: The author checked every compared statement against the public problem note and reasoning record for Erdős problem #257 at https://github.com/wcook04/plectis-erdos; no external referee report exists for this entry.
 acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

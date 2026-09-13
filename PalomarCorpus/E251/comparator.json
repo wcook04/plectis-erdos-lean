@@ -9,6 +9,7 @@
     "PalomarCorpus.E251.AffineCircularity.adjacent_small_mismatch_iff_signed_two_window",
     "PalomarCorpus.E251.AffineCircularity.cofinal_affinePowTwo_escape_iff_not_eventuallyIntegral",
     "PalomarCorpus.E251.AffineCircularity.cofinal_blockResidue_escape_iff_not_eventuallyIntegral",
+    "PalomarCorpus.E251.AllResidueLogarithmicCountermodel.exists_every_residue_logarithmic_countermodel",
     "PalomarCorpus.E251.FreePairEquivalence.cofinalFreePairNonintegral_iff_cofinalNonintegralTailShifts",
     "PalomarCorpus.E251.FreePairEquivalence.exists_free_pair_lattice",
     "PalomarCorpus.E251.FreePairEquivalence.free_pair_integral_iff_modEq",
@@ -32,7 +33,9 @@
     "PalomarCorpus.E251.PrimeGapIdentity.primeGapSeries_summable",
     "PalomarCorpus.E251.PrimeGapIdentity.primeSeries_eq_two_add_primeGapSeries",
     "PalomarCorpus.E251.PrimeGapIdentity.primeSeries_irrational_iff_primeGapSeries",
-    "PalomarCorpus.E251.PrimeGapIdentity.primeSeries_summable"
+    "PalomarCorpus.E251.PrimeGapIdentity.primeSeries_summable",
+    "PalomarCorpus.E251.ShiftedFourPrimeCounting.separated_zeroDensity_of_quad_sieve",
+    "PalomarCorpus.E251.ShiftedFourPrimeCounting.shifted_count_bound"
   ],
   "permitted_axioms": [
     "propext",

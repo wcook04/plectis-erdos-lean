@@ -1,14 +1,24 @@
 version: v0.4
 project:
-  name: 'Formal reductions for Erdős problem #68'
+  name: 'Erdős problem #68: a three-halves lower growth bound for the common denominators lcm(n! - 1), with multiplicative successor rigidity, exact carry reformulations, and channel route closures for the series sum of 1/(n! - 1)'
   description: >-
-    A Comparator-checkable restatement of the paper-linked Lean theorems that
-    actually have proof coverage for Erdős problem #68. The compared
-    surface includes 45 independently stated declarations
-    (adjacentUnitCarryWindowDen_eq_twoStep_den, adjacentUnitCarryWindowOffset_eq_twoStep_factorization, consecutive_unit_carries_iff_positive_offset_le_den, twoStep_den_mul_transitionNormalizers, no_eventual_square_subsequence_cubic_upper, no_eventual_square_subsequence_three_halves_upper, not_isLittleO_square_subsequence_radius, sharp_radius_satisfies_square_log_constraint, square_subsequence_radius_cubic_lower, square_subsequence_radius_three_halves_lower, companionOrbitBoundary_factorialGapSeries, companionOrbitBoundary_genericShift, and 33 more). The parent problem remains open. This repository
-    is the substantive formalization, not a thin wrapper around another public
-    repo. This entry is one of eight problem-level Palomar configurations at
-    the same repository and commit.
+    Erdős Problem 68 asks whether S = sum over n >= 2 of 1/(n! - 1) is irrational. The question is open and no theorem here decides it.
+
+    The principal result is the common denominator growth bound. Write L_N for the least common multiple of n! - 1 over 2 <= n <= N. The lower limit of log L_N / (N^(3/2) log N) is at least 2 sqrt 2 / 3, stated both as an eventual lower bound and as a literal extended real liminf, which admits an infinite value. The estimate balances a terminal block of consecutive indices against the pairwise loss recorded by gcd(i! - 1, j! - 1) dividing j!/i! - 1. The bound recorded in this development before the present one was deduced by the author from Theorem 12 of Garaev, Luca and Shparlinski (2004) and has exponent 4/3; that deduction is not theirs, and the exponent 3/2 and the explicit constant use no multiplicity theorem. A literature search located no antecedent for a lower bound on the least common multiple of the numbers n! - 1, so novelty is unassessed rather than claimed.
+
+    The boundary is exact. L_N is a common denominator of the partial sums. It is not the reduced denominator of a hypothetical rational representation of S: a prime can occupy the common denominator and vanish from the reduced prefix, and the prime pole formula here is the exact criterion for that survival; its reciprocal residue vanishes at the prime 139 for the prefix through index 138, a computation recorded in the public Erdős problem 68 note and reasoning record at https://github.com/wcook04/plectis-erdos and not among these declarations. What the bound closes is a proof architecture, since L_N times the positive tail S - H_N tends to infinity and clearing a prefix by its full least common multiple therefore cannot make the remaining tail small.
+
+    The strongest reduction is multiplicative successor rigidity. Write H_m for the exact rational prefix, Z_m for the least integer strictly above m! H_m, and b_m for the carry in Z_m = m Z_(m-1) + 1 - b_m. If S is rational then the carry is eventually 1, the recurrence degenerates to Z_m = m Z_(m-1), and every fixed positive modulus d eventually divides Z_m. The contrapositive is a family of sufficient conditions: cofinal failure of one congruence fixed in advance implies irrationality, and at d = 2 it is enough that Z_m be odd infinitely often. This reduction replaces the moving condition m divides Z_m by a fixed modulus, and supplies no cofinal failure.
+
+    Several statements are exact reformulations rather than progress on the value. Irrationality is equivalent to cofinally many non unit carries, and equivalently to cofinal failure of m dividing Z_m. The companion constant C = sum over n >= 2 of 1/(n!(n! - 1)) satisfies C + (e - 2) = S, and S is rational exactly when floor(m! C) is congruent to -2 modulo m for all large m; that orbit criterion is proved at an arbitrary real base point and specialises the classical factorial base criterion of Cantor (1869), recorded by Galambos (1976, Chapter 1). The telescope C = S - e + 2, the exceptional digit m - 2 and the arbitrary base point are what is added. None of these equivalences produces the event it names.
+
+    The integral channel calculus is developed next: the channel numerator at d divides out the powers of d! and agrees with the factorial moment modulo d! - 1. The attainable moments are determined exactly: for D >= 2 the moments of admissible vectors annihilating the channels 2 through D are the multiples of one positive generator, independent of the eligible prime that cuts the horizon and attained by a primitive vector of content one. The transparency identity gives the full residual of every vector written in the low channel normal form of the statement as t L_D (S - H_D) plus an integer, so at fixed moment an integral correction moves it only by an integer. The prime unit translator is the constructive half: the pair (p, -1) on indices (p - 1, p) has zero moment, annihilates every channel except p, and has residual exactly 1 beyond any cutoff at least 2 and below p, so a Cramer vector on a remote factorial grid supplies, beyond any support threshold, coefficients with vanishing channels through a chosen cutoff, nonzero moment, and residual at most 1/2 in absolute value, a bound that is not strict, so nonintegrality is not established.
+
+    Three families close routes. The channel radius family shows that a positive moment divisible by every channel modulus through 2t^2 and smaller than (R + 1)! - 1 forces 3t^3 < 2(R + 1) once t >= 2^32, and t^3 < 8(R + 1) from t >= 4096; in sequence form neither reverse inequality holds eventually, and R(t) + 1 is not little o of t^3. The adjacent unit carry window makes one proposed argument circular: window denominator and offset both factor through the exact transition normalisers, and cancelling them leaves an inequality that every reduced predecessor gap already satisfies. Fixed owner absorption shows that once the block parameter passes i! - 1 and j! - 1 both private quotients equal 1, so no fixed pair of denominator owners feeds the two conditional block criteria cofinally; their cofinal certificates are stated and unproved.
+
+    Two finite exclusions constrain any representation S = a/q with q > 0. A single non unit carry at an index m at least 3 forces q not to divide (m - 1)!, so the Kempner index of q, the least k with q dividing k!, is at least m; the entry instantiates this at index 60, so q does not divide 59!. Exact dyadic and Farey data separately force 2^39990 <= q and 10^12040 < q with no reducedness hypothesis. The first restricts the multiplicative structure of q and the second its magnitude.
+
+    The readers addressed work on irrationality of rapidly converging series of rational terms: Hančl and Tijdeman (2005) on factorial series, Duverney (2001) and Koepf and Schmersau (2011) on fast converging reciprocal sums, and Barreto, Kang, Kim, Kovač and Zhang (2026) on the rapid growth problem of Erdős and Graham, whose hypothesis fails for n! - 1. For them this entry supplies an explicit growth rate for the common denominators, a restatement of the target as one congruence on a computable sequence, a fixed modulus sufficient condition, and a record of the clearing architectures now excluded. A second audience is the arithmetic of n! + 1 and n! - 1 studied by Garaev, Luca and Shparlinski, by Stewart and by Lai. Erdős Problem 68 remains open.
   authors:
   - Will Cook
   license: Apache-2.0
@@ -19,22 +29,128 @@ repository:
 classification:
   arxiv:
   - math.NT
-  - math.CA
-  - math.CV
   msc2020:
-  - 11A25
-  - 11B83
-  - 11B05
-  - 30C10
+  - "11J72"
+  - "11A05"
+  - "11B65"
+  - "11A07"
+  - "11J70"
 sources:
 - title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
   authors:
   - Will Cook
   type: original-proof
   relationship: other
-  note: Independently restated Lean theorems already proved in this repository. Does not solve the parent Erdős problem.
+  note: The compared theorems are independently restated Lean theorems proved in this repository and described in the eight public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos. They do not solve the parent Erdős problem.
   license: Apache-2.0
   author_endorsement: participated
+- title: "On the irrationality of certain series: problems and results"
+  authors:
+  - "Paul Erdős"
+  id: "10.1017/CBO9780511897184.009"
+  type: "paper"
+  relationship: "background"
+  note: "Erdős's own account of the irrationality problems from which this question comes; it supplies the problem and none of the theorems stated here."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Über die einfachen Zahlensysteme"
+  authors:
+  - "Georg Cantor"
+  type: "paper"
+  relationship: "other"
+  note: "Zeitschrift für Mathematik und Physik 14 (1869), pages 121 to 128, the source of the classical factorial base rationality criterion that the companion orbit statements specialise; the telescope C = S - e + 2, the exceptional digit value m - 2 and the arbitrary base point are not taken from it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Representations of Real Numbers by Infinite Series"
+  authors:
+  - "János Galambos"
+  id: "10.1007/BFb0081642"
+  type: "book"
+  relationship: "other"
+  note: "Lecture Notes in Mathematics 502, Springer 1976; its Chapter 1 is the standard modern reference for the same factorial base criterion, and the specialisation to this series and its carry coordinate are not taken from it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "On the irrationality of factorial series"
+  authors:
+  - "Jaroslav Hančl"
+  - "Robert Tijdeman"
+  id: "10.4064/aa118-4-5"
+  type: "paper"
+  relationship: "background"
+  note: "Lemma 2.1 and its remark give the standard tail integrality argument for integer coefficient factorial series; their finite difference criteria impose a coefficient regularity that the denominators n! - 1 do not satisfy, and no theorem here is taken from that paper."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Irrationality of fast converging series of rational numbers"
+  authors:
+  - "Daniel Duverney"
+  id: "https://www.ms.u-tokyo.ac.jp/journal/pdf/jms080206.pdf"
+  type: "paper"
+  relationship: "background"
+  note: "Gives irrationality criteria for fast converging reciprocal sums under two sided quadratic denominator growth, a hypothesis that fails for n! - 1; recorded as a criterion tested and found inapplicable."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Irrationality of certain infinite series II"
+  authors:
+  - "Wolfram Koepf"
+  - "Dieter Schmersau"
+  id: "10.1524/anly.2011.1094"
+  type: "paper"
+  relationship: "background"
+  note: "Their floor criterion was tested at the natural clearing scale for this series and its tail hypothesis fails from index 4 onward; recorded as a criterion tested and found inapplicable."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Irrationality of rapidly converging series: a problem of Erdős and Graham"
+  authors:
+  - "K. Barreto"
+  - "J. Kang"
+  - "S.-h. Kim"
+  - "V. Kovač"
+  - "S. Zhang"
+  id: "arXiv:2601.21442v3"
+  type: "paper"
+  relationship: "background"
+  note: "Proves irrationality of a reciprocal sum under a rapid growth hypothesis that fails for n! - 1, and identifies the clearing target that the growth bound here bounds from one side; no theorem in this entry is taken from it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Character sums and congruences with n!"
+  authors:
+  - "Moubariz Z. Garaev"
+  - "Florian Luca"
+  - "Igor E. Shparlinski"
+  id: "10.1090/S0002-9947-04-03612-8"
+  type: "paper"
+  relationship: "background"
+  note: "Theorem 12 bounds the number of solutions of n! congruent to a modulo a prime and yields a weaker lower exponent 4/3 for the same least common multiple; the exponent 3/2 and the explicit constant proved here use no multiplicity theorem of that kind."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "On the greatest and least prime factors of n! + 1, II"
+  authors:
+  - "Cameron L. Stewart"
+  id: "https://publi.math.unideb.hu/paper/989/download/10_5486_PMD_2004_3190.pdf"
+  type: "paper"
+  relationship: "other"
+  note: "Records the Wilson reflection identity and, for the plus sign, the shifted factorial gcd formula whose minus sign form the terminal block estimate uses; the growth theorem itself is not taken from it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "On the largest prime divisor of n! + 1"
+  authors:
+  - "L. Lai"
+  id: "arXiv:2103.14894v1"
+  type: "paper"
+  relationship: "other"
+  note: "Records the subtraction identity for greatest common divisors of shifted factorials that the terminal block estimate consumes; the lower bound on the least common multiple is not taken from it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Rational numbers with odd greedy expansion of fixed length"
+  authors:
+  - "J. Louwsma"
+  - "J. Martino"
+  id: "arXiv:2309.07280v1"
+  type: "paper"
+  relationship: "other"
+  note: "Lemma 4.1 is the general reciprocal sum valuation formula of which the finite prime pole residue formula here is the specialisation to the denominators n! - 1; nothing else in this entry depends on it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
 - title: Erdős Problems catalogue
   authors:
   - Thomas F. Bloom
@@ -52,19 +168,19 @@ sources:
   license: Apache-2.0
   author_endorsement: n/a
 status:
-  scope: One publication Comparator covering the paper-linked Lean for Erdős problem #68. Family ExternalVerification* configs remain internal inventory. Sibling PalomarCorpus/E* entries cover the other seven problems at this commit.
+  scope: One publication Comparator configuration selecting the theorems named in the project description for Erdős problem #68; other paper-linked declarations for this problem that live only in the per-family ExternalVerification68* directories are internal regression inventory and are not selected here. The sibling PalomarCorpus/E* entries cover the other seven problems at this commit.
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
-  trusted_challenge_sorry_count: 45
-  sorry_boundary: The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E68/Challenge.lean.
-  axiom_audit_status: pending_elaboration
+  trusted_challenge_sorry_count: 47
+  sorry_boundary: The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E68/Challenge.lean; every Solution proof is complete.
+  axiom_audit_status: every compared theorem is printed with axioms propext, Quot.sound and Classical.choice only by scripts/check_axiom_budget.py --run-palomar, which the release gate runs on the built Solution environments
   permitted_axiom_budget:
   - propext
   - Quot.sound
   - Classical.choice
   development_status: substantive
-  local_proof_provenance: family Solutions.ExternalVerification* modules in this repository
+  local_proof_provenance: the ErdosProblems.Erdos68 proof modules in this repository, imported by Solutions.PalomarCorpus.E68; the Solutions.ExternalVerification68* family modules are a regression mirror of the same proofs and are not imported by this configuration
   canonical_claim_status: problem-level Comparator wrapper over substantive Lean in this repository
 automation:
   methods:
@@ -86,5 +202,5 @@ automation:
 review:
   status: self-assessed
   reviewers: []
-  notes: Palomar editorial review is a later operator decision. Family drain and isolated-family intake remain frozen. Flat PalomarCorpus/comparator.json is superseded.
+  notes: The author checked every compared statement against the public problem note and reasoning record for Erdős problem #68 at https://github.com/wcook04/plectis-erdos; no external referee report exists for this entry.
 acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

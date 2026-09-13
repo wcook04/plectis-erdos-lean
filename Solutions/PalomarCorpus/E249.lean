@@ -17,5 +17,6 @@ import Solutions.PalomarCorpus.E249.PrefixTwoAdicExclusion
 import Solutions.PalomarCorpus.E249.RankOneSharpFloor
 import Solutions.PalomarCorpus.E249.ResidueClassTotientSeries
 import Solutions.PalomarCorpus.E249.TermwiseDyadicVacuous
+import Solutions.PalomarCorpus.E249.TotientAffineModeEscape
 import Solutions.PalomarCorpus.E249.TotientKernelBasis
 import Solutions.PalomarCorpus.E249.TotientRigidity

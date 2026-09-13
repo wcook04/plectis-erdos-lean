@@ -7,9 +7,11 @@ import Mathlib
 import Solutions.PalomarCorpus.E243.Shared
 import Solutions.PalomarCorpus.E243.BoundedNegativePartRigidity
 import Solutions.PalomarCorpus.E243.BoundedRiseReducedTail
+import Solutions.PalomarCorpus.E243.OriginalCoordinateBoundedDefect
 import Solutions.PalomarCorpus.E243.PeriodicNegativeOrbit
 import Solutions.PalomarCorpus.E243.PrimitiveRecordRigidity
 import Solutions.PalomarCorpus.E243.ProtectedEpochEnergy
+import Solutions.PalomarCorpus.E243.RecordAmplifiedCancellationVisibility
 import Solutions.PalomarCorpus.E243.RecordIncrementBarrier
 import Solutions.PalomarCorpus.E243.RepairEntropy
 import Solutions.PalomarCorpus.E243.SaturatedSquareTransport

@@ -1,14 +1,20 @@
 version: v0.4
 project:
-  name: 'Formal reductions for Erdős problem #1041'
+  name: 'Erdős problem #1041 on short connections inside polynomial lemniscates: a complete degree-three connector, the sharp collinear Chebyshev constant, critical-point proximity with two exact straight-path obstructions, and complete root spokes for sparse families'
   description: >-
-    A Comparator-checkable restatement of the paper-linked Lean theorems that
-    actually have proof coverage for Erdős problem #1041. The compared
-    surface includes 31 independently stated declarations
-    (allStraightCubic_every_pair_midpoint_escapes, allStraightCubic_roots, allStraightCubic_roots_in_unitDisk, criticalDiskInverseBalance_twoRootProximity, criticalDiskInverseBalance_twoRootProximity_strict, criticalGeometricMean_twoRootProximity, nearestSpoke_reciprocal_balance, nearestSpoke_unique_nearest_normSq, nearestSpoke_unique_nearest_spoke_escapes, cubic_paper_complete, monic_cubic_connector, cyclicTrinomial_two_short_fiber_displacements, and 19 more). The parent problem remains open. This repository
-    is the substantive formalization, not a thin wrapper around another public
-    repo. This entry is one of eight problem-level Palomar configurations at
-    the same repository and commit.
+    Erdős problem #1041 asks whether a monic polynomial f(z) = (z - z_1) ... (z - z_n) with all roots in the open unit disc must have two root occurrences joined by a curve of length less than 2 inside the open lemniscate {|f| < 1}. It is Problem 5 of Erdős, Herzog and Piranian (1958, p. 139), and it remains open. The 31 compared theorems record the complete degree-three case, the sharp constant of the collinear case, unconditional metric geometry at a critical point with two exact straight-line obstructions, complete radial spokes for several sparse coefficient families, and exact thresholds for a critical-value separation criterion. The audience is complex analysts working on the geometry of polynomials: the location of zeros and critical points and the shape of lemniscates and polynomial sublevel sets. The collinear statement also belongs to Chebyshev extremal theory.
+
+    The principal result is the complete degree-three case. For a monic cubic p whose three zeros all have modulus strictly below 1, monic_cubic_connector produces zeros a and b of p and a hub c such that the two-segment path from a through c to b is continuous, has bounded variation on [0, 2], keeps |p| strictly below 1 at every point of that interval, and has extended variation strictly less than 2. cubic_paper_complete states the same conclusion for a cubic presented by its three listed roots. Both give the connector explicitly, and both record that squarefreeness is what makes the two selected zeros distinct. Pendyala (arXiv:2606.24875) proves the degree-four case unconditionally, the comparable adjacent result; whether degree three was recorded earlier has not been adjudicated, so no priority is claimed.
+
+    The collinear case is settled in every degree with a sharp constant. Put C_n = 1 / (2^(n-1) cos^n(pi / (2n))). The ordinary theorem is that a monic polynomial of degree n with collinear zeros of diameter D has two zeros joined by their straight segment, of length at most D, on which |f| is at most C_n (D / 2)^n, the constant being attained by endpoint-normalised scaled Chebyshev configurations, an attainment fact the companion paper records and the compared declaration does not state. SharpCollinear.existsPeakLeComparisonBound is its alternation kernel: a real monic polynomial of degree m + 2 vanishing at -1 and at 1, with m + 1 strictly increasing interior nodes in [-1, 1] whose values alternate in sign, has a node where |p| is at most C_(m+2). Affine normalisation and gap-maximum selection are ordinary.
+
+    Critical-point geometry gives an unconditional metric selection in every degree, and two exact configurations show that it alone does not deliver a contained path. criticalGeometricMean_twoRootProximity proves that for n at least 2, when c differs from every z_k and the reciprocals 1 / (c - z_k) sum to zero, so that c is a critical point, two distinct root occurrences satisfy |c - z_i| + |c - z_j| at most 2r, with r the geometric mean of the n distances from c; criticalDiskInverseBalance_twoRootProximity is a real-variable inequality in four scalars, with no polynomial in its statement, standing behind the unit-disc version. Against this, an explicit monic quintic with vanishing reciprocal sum at the origin has a strictly unique nearest root whose straight spoke leaves the open unit lemniscate, and the monic cubic z^3 - (99/100)^3 has all roots in the open unit disc with every root-pair midpoint outside the open unit lemniscate. Each closes one straight-line route; curved connectors remain permitted.
+
+    Sparse coefficient families are handled by complete radial spokes. For the trinomial z^m + a z^r + c an exact Abel identity at a root eliminates the middle coefficient, and for 1 at most r at most m, |w| < 1 and |c| < 1 the whole spoke from the origin to the root w stays strictly inside the unit lemniscate. For the tetranomial z^m + a z^r + b z^s + c with 1 at most s at most r at most m, a root w with |w| < 1 and a constant term with |c| < 1, the budgets |c| + |b| |w|^s < 1 and |b| + |c| at most 1 each force the whole spoke of w below modulus 1, an exact signed mixed-moment identity turns a global L2 energy below card(S) - 1 into two distinct indices whose tails have modulus below 1, and the matching coefficient budget over a finite family of roots selects two distinct indices with complete safe spokes. The sparse quintic z^5 + a z^4 + b z + c reduces to a finite real selector over the first three rotated Newton moments, returning two indices whose tail quantities, read in the intended identification as |b w + c|^2, are below 1. One of any three open-disc roots has its complete origin spoke inside the closed unit sublevel set of their monic cubic, the kernel of the translated cubic quotient-fibre family; the translated quartic quotient-fibre construction contributes a density comparison, an exact axis integral, and the endpoint budget a^alpha + b^alpha < 2 for alpha > 0 and moduli in [0, 1).
+
+    A hypothesis on the critical spectrum, with no condition on the shape of the root set, gives the target constant 2 in every degree above an exact cutoff. Write C(n, S) = (1 + S)^(2/n) log(S / (S - 1)) for the squared-length coefficient produced by the ordinary analytic estimate at a simple saddle whose remaining critical values sit at normalised distance at least S. firstMerge_exact_convenient_thresholds proves C(n, 4) < 1 for n at least 3, C(n, 3) < 1 for n at least 4 and C(n, 2) < 1 for n at least 6, each cutoff being the first degree where its inequality holds, a sharpness fact the companion paper records and the declaration does not state, and firstMerge_length_lt_two_of_squared_bound turns a squared length at most 4 C(n, S), together with C(n, S) < 1, into a length below 2 with no sign hypothesis. The uniformisation, univalence, Bergman and Pólya inputs behind that squared bound are ordinary mathematics.
+
+    Boundary. Erdős problem #1041 remains open here; a degree-seven counterexample announced on the catalogue discussion page is a separate external claim this entry does not assess. Every conditional statement carries its hypothesis, the two exact configurations are described only by what they exclude, and the finite selectors are real-variable statements. Priority is unresolved: a bounded search found no earlier form of the quintic selector or of the separation thresholds, and the alternation argument sits in the classical Chebyshev context. Dubinin's neighbouring relative-area inequality (2012) is listed in the sources; its text was not obtained and no claim here rests on it.
   authors:
   - Will Cook
   license: Apache-2.0
@@ -18,23 +24,69 @@ repository:
   role: substantive-development
 classification:
   arxiv:
-  - math.NT
-  - math.CA
   - math.CV
+  - math.CA
   msc2020:
-  - 11A25
-  - 11B83
-  - 11B05
-  - 30C10
+  - "30C10"
+  - "30C15"
+  - "31A15"
+  - "26C10"
 sources:
 - title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
   authors:
   - Will Cook
   type: original-proof
   relationship: other
-  note: Independently restated Lean theorems already proved in this repository. Does not solve the parent Erdős problem.
+  note: The compared theorems are independently restated Lean theorems proved in this repository and described in the eight public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos. They do not solve the parent Erdős problem.
   license: Apache-2.0
   author_endorsement: participated
+- title: "Metric properties of polynomials"
+  authors:
+  - "Paul Erdős"
+  - "Fritz Herzog"
+  - "George Piranian"
+  id: "10.1007/BF02790232"
+  type: "paper"
+  relationship: "background"
+  note: "Poses the root-to-root connection question as Problem 5 on page 139, which is the parent problem of this entry; no theorem compared here is taken from it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "A Degree-Four Lemniscate Path Theorem"
+  authors:
+  - "V. S. Pendyala"
+  id: "arXiv:2606.24875"
+  type: "paper"
+  relationship: "background"
+  note: "Settles the degree-four case of the parent problem unconditionally by a radial-arm argument from the centre of the smallest disc containing the four zeros, and is the directly comparable adjacent result. The spoke declarations here are origin spokes for sparse coefficient families and a three-point origin-spoke selector; that mechanism is shared with this paper and no priority is claimed for it. The degree-three theorem compared here was proved without this paper and takes no statement, constant, or argument from it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "On the length of lemniscates"
+  authors:
+  - "Alexandre Eremenko"
+  - "Walter Hayman"
+  id: "arXiv:0805.2295"
+  type: "paper"
+  relationship: "background"
+  note: "Bounds the total length of the level set |p| = 1 by 9.173 times the degree and shows an extremal level set is connected; that is a different metric quantity and supplies no internal root-to-root connector, so nothing here uses it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Beitrag zur Verallgemeinerung des Verzerrungssatzes auf mehrfach zusammenhängende Gebiete"
+  authors:
+  - "George Pólya"
+  type: "paper"
+  relationship: "background"
+  note: "The absolute area-capacity inequality behind the ordinary analytic estimate whose squared connector bound the first-merge threshold declarations consume; those declarations check only the numerical coefficient and its sign-free consumer, and the area argument itself is not formalised here."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Some inequalities for polynomials and rational functions associated with lemniscates"
+  authors:
+  - "Vladimir N. Dubinin"
+  id: "10.1007/s10958-013-1432-4"
+  type: "paper"
+  relationship: "background"
+  note: "A neighbouring relative-area inequality of Pólya type, recorded in the companion bibliography for completeness; its text was not obtained, its covering hypothesis and relative-area conclusion are used by no declaration here, and no claim rests on it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
 - title: Erdős Problems catalogue
   authors:
   - Thomas F. Bloom
@@ -51,20 +103,25 @@ sources:
   relationship: background
   license: Apache-2.0
   author_endorsement: n/a
+related_formalizations:
+- id: "https://github.com/google-deepmind/formal-conjectures/blob/f776d2f2039351b00737ffcafb9d7d7666e1d9af/FormalConjectures/ErdosProblems/1041.lean"
+  title: "FormalConjectures.ErdosProblems.1041"
+  relationship: "independent"
+  note: "States the open parent problem and the Erdős, Herzog and Piranian connected-component lemma; it is statement-level prior art for the formalisation, it supplies no proof authority, and every declaration compared here was stated independently of it."
 status:
-  scope: One publication Comparator covering the paper-linked Lean for Erdős problem #1041. Family ExternalVerification* configs remain internal inventory. Sibling PalomarCorpus/E* entries cover the other seven problems at this commit.
+  scope: One publication Comparator configuration selecting the theorems named in the project description for Erdős problem #1041; other paper-linked declarations for this problem that live only in the per-family ExternalVerification1041* directories are internal regression inventory and are not selected here. The sibling PalomarCorpus/E* entries cover the other seven problems at this commit.
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
   trusted_challenge_sorry_count: 31
-  sorry_boundary: The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E1041/Challenge.lean.
-  axiom_audit_status: pending_elaboration
+  sorry_boundary: The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E1041/Challenge.lean; every Solution proof is complete.
+  axiom_audit_status: every compared theorem is printed with axioms propext, Quot.sound and Classical.choice only by scripts/check_axiom_budget.py --run-palomar, which the release gate runs on the built Solution environments
   permitted_axiom_budget:
   - propext
   - Quot.sound
   - Classical.choice
   development_status: substantive
-  local_proof_provenance: family Solutions.ExternalVerification* modules in this repository
+  local_proof_provenance: the ErdosProblems.Erdos1041 proof modules in this repository, imported by Solutions.PalomarCorpus.E1041; the Solutions.ExternalVerification1041* family modules are a regression mirror of the same proofs and are not imported by this configuration
   canonical_claim_status: problem-level Comparator wrapper over substantive Lean in this repository
 automation:
   methods:
@@ -86,5 +143,5 @@ automation:
 review:
   status: self-assessed
   reviewers: []
-  notes: Palomar editorial review is a later operator decision. Family drain and isolated-family intake remain frozen. Flat PalomarCorpus/comparator.json is superseded.
+  notes: The author checked every compared statement against the public problem note and reasoning record for Erdős problem #1041 at https://github.com/wcook04/plectis-erdos; no external referee report exists for this entry.
 acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

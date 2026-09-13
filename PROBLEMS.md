@@ -9,7 +9,7 @@ and the smallest contribution that would move it.
 The unrestricted parent problems are open. Sections run in the order a reader meets
 them in `README.md`.
 
-Two public repositories carry this work, with different roles. wcook04/plectis-erdos-lean is the Plectis Palomar release corpus (Palomar release corpus, 21 Comparator entries, eight problems), a release projection of the private corpus; the reviewed claim registry stays in wcook04/plectis-lean-erdos249-257 at one commit. wcook04/plectis-lean-erdos249-257 is the Plectis public formal-mathematics corpus: the reviewed claim registry (docs/claims.json), the declaration atlas and the papers live there, and this release repository is its Comparator and Palomar projection at one commit. A packaged Comparator entry is a review unit, never a theorem, a curated claim, or a problem. Entry counts never compose with declaration counts from the other corpus.
+Two public repositories carry this work, with different roles. wcook04/plectis-erdos-lean is the Plectis Palomar release corpus (Palomar release corpus: eight problem-level Palomar entries under PalomarCorpus/E* selecting 317 theorems, over 38 launch family entries, eight problems), a release projection of the private corpus; the reviewed claim registry stays in wcook04/plectis-lean-erdos249-257 at one commit. wcook04/plectis-lean-erdos249-257 is the Plectis public formal-mathematics corpus: the reviewed claim registry (docs/claims.json), the declaration atlas and the papers live there, and this release repository is its Comparator and Palomar projection at one commit. A packaged Comparator entry is a review unit, never a theorem, a curated claim, or a problem. Entry counts never compose with declaration counts from the other corpus.
 
 ## Erdős #257
 
@@ -21,7 +21,7 @@ Two public repositories carry this work, with different roles. wcook04/plectis-e
 
 **Remaining boundary.** Universal Erdős 257 and the rational targets 1/2 and 1/21 remain open. The weighted, cover, prime-power, sub-log-star, mixed, and delayed-gluing results cover proper support classes or freely constructed hosts. The reciprocal-summable theorem formalises Erdős's stated coprimality-free extension; it is not an original theorem statement. The arbitrary prime-power result uses Tao-Teräväinen's correlation theorem and has unverified priority for its arbitrary-selection extension.
 
-Evidence: lean_kernel_checked. Routes: no dedicated comparator entry in this release; proof source [`WeightedReturn.lean`](ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean); paper label `eq:weighted-return`; public entry not_packaged.
+Evidence: lean_kernel_checked. Routes: compared in the Palomar entry `PalomarCorpus/E257` as `DivisibilityWeightedSupport.divisibilityWeightedClaim`; proof source [`WeightedReturn.lean`](ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean); paper label `eq:weighted-return`; public entry PalomarCorpus/E257.
 
 **Strongest genuine longitudinal theorem.** Finite divisibility-weighted mass implies hereditary all-base irrationality, including explicit reciprocal-divergent short-gap supports..
 
@@ -29,7 +29,7 @@ Finite prime-part weighted mass gives fixed-base irrationality and, at binary we
 
 Evidence: lean_kernel_checked. Prior art: unassessed, no audit date.
 
-Routes: no dedicated comparator entry in this release; proof source [`WeightedReturn.lean`](ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean); paper label `eq:weighted-return`; public entry not_packaged.
+Routes: compared in the Palomar entry `PalomarCorpus/E257` as `DivisibilityWeightedSupport.divisibilityWeightedClaim`; proof source [`WeightedReturn.lean`](ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean); paper label `eq:weighted-return`; public entry PalomarCorpus/E257.
 
 **Best standalone structural theorem.** achievement-set topology and exact volume dichotomy.
 
@@ -138,15 +138,15 @@ lake build ExternalVerification249TotientKernelBasis Solutions.ExternalVerificat
 
 **Remaining boundary.** The quadruple-sieve estimate is an explicit unproved hypothesis, the h=1 case degenerates, and zero density of exact shifted-gap matches is not yet connected to the tail-smallness event needed to contradict rationality. Erdős #251 remains open.
 
-Evidence: lean_kernel_checked. Routes: no dedicated comparator entry in this release; no paper label; public entry not_packaged.
+Evidence: lean_kernel_checked. Routes: compared in the Palomar entry `PalomarCorpus/E251`; no paper label; public entry PalomarCorpus/E251.
 
 **Best standalone structural theorem.** A rational logarithmic dyadic word with small digits recurring in every residue class and PNT-scale cumulative growth.
 
 Explicit synthetic positive even logarithmically bounded digits, 2 and 4 recurring in every index residue, cofinal unboundedness, nonperiodicity, strictly increasing odd positions with N log N asymptotic, dyadic sum 6 and integral tail shifts. No primality assertion or counterexample to Erdos251. For all t>0,r<t,N, there are i,j>=N congruent to r mod t with digits2and4. Every positive shift fails to be an eventual period. Every N,h>=0 has integral complete-tail difference. The pointwise bound is4 log(n+1)+24 and position/(N logN) tends to1.
 
-Evidence: lean_kernel_checked. The focused build passed with unchanged proof inputs and the three endpoint axiom audits are clean; Comparator was not run and no public source pin is claimed.. Prior art: unassessed, audited 2026-09-02; antecedent Vjeko Kovač posted a telescoping countermodel of the same broad species for the neighbouring conjecture printed under #251 in April 2026; priority for this exact every-residue logarithmic form is unassessed..
+Evidence: lean_kernel_checked. The focused build passed with unchanged proof inputs and the three endpoint axiom audits are clean; the theorem is selected by the Palomar entry `PalomarCorpus/E251`, whose Comparator replay runs in `.github/workflows/palomar-replay.yml`. Prior art: unassessed, audited 2026-09-02; antecedent Vjeko Kovač posted a telescoping countermodel of the same broad species for the neighbouring conjecture printed under #251 in April 2026; priority for this exact every-residue logarithmic form is unassessed..
 
-Routes: no dedicated comparator entry in this release; no paper label; public entry not_packaged.
+Routes: compared in the Palomar entry `PalomarCorpus/E251`; no paper label; public entry PalomarCorpus/E251.
 
 **Strongest unresolved producer** (`cofinal_adjacent_small_mismatch`). For each fixed h >= 1 and every N0, produce N >= N0 such that both actual tail shifts T_(N+h)-T_N and T_(N+h+1)-T_(N+1) lie strictly between -1 and 1 while g_(N+h+1) != g_(N+1). The checked finite consumer then excludes eventual integrality of the h-shift. The quantifier is every positive h, not only h=1. Digit mismatch and smallness are a joint event. A preferred unproved substitute is a positive finite phase-variance lower bound V_t(X,L) on the schedule t=lcm(1..floor(log log X)), L~(1+ε)log_2 log X (PhaseVarianceLab.md); that lower bound is not proved. r5 sparse rationalisation preserves all unnormalised blocks of length o(log log X) and therefore does not supply this joint event; a distinguishing actual-prime estimate must exceed the block-change error or use a longer window. r6 residue-feedback / sharp δ_* construction is a stronger countermodel in the polylogarithmic regime; …
 

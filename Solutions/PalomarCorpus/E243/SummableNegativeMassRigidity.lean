@@ -18,7 +18,7 @@ Authors: Will Cook
 -/
 
 namespace PalomarCorpus.E243.SummableNegativeMassRigidity
-export PalomarCorpus.E243.Shared (centeredState sylvesterNext)
+export PalomarCorpus.E243.Shared (centeredState prefixProduct sylvesterNext)
 
 noncomputable def nextDenState (a D : ℤ) : ℤ :=
   a * D
@@ -74,9 +74,6 @@ theorem summableNegativeMass_completeRigidity
   constructor
   · simpa [centeredState, ErdosProblems.Erdos243.centeredState] using hzero'
   · simpa [sylvesterNext, ErdosProblems.Erdos243.sylvesterNext] using hrec'
-
-noncomputable def prefixProduct (a : ℕ → ℕ) (n : ℕ) : ℕ :=
-  ∏ j ∈ Finset.range n, a j
 
 noncomputable def clearedIntegerNumerator (a : ℕ → ℕ) (p : ℤ) (q n : ℕ) : ℤ :=
   p * (prefixProduct a n : ℤ) -

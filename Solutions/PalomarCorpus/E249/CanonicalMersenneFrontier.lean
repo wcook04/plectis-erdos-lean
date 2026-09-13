@@ -6,17 +6,15 @@ Authors: Will Cook
 import Mathlib
 import ErdosProblems.Erdos249.CyclotomicAnchoredKill
 import Erdos257PeriodNoncollapse.CarrySurvivorExtinction
+import Solutions.PalomarCorpus.E249.Shared
 
 open scoped BigOperators
 
 namespace PalomarCorpus.E249.CanonicalMersenneFrontier
+export PalomarCorpus.E249.Shared (totientBlock)
 
 noncomputable def deltaTotient (h n : ℕ) : ℤ :=
   (Nat.totient (n + h) : ℤ) - (Nat.totient n : ℤ)
-
-noncomputable def totientBlock (H N : ℕ) : ℤ :=
-  ∑ j ∈ Finset.range H,
-    (Nat.totient (N + 1 + j) : ℤ) * 2 ^ (H - 1 - j)
 
 noncomputable def fullMersenneBlockResidue (H N M : ℕ) : ℤ :=
   (-totientBlock H N) % (M : ℤ)

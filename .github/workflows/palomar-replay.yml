@@ -1,0 +1,157 @@
+# SPDX-FileCopyrightText: 2026 Will Cook
+# SPDX-License-Identifier: Apache-2.0
+name: Palomar Comparator replay
+
+# Replays Palomar's mechanical verification for the eight problem-level
+# publication entries under PalomarCorpus/E*/comparator.json with the same
+# pinned Comparator, lean4export, landrun and NanoDa revisions that the
+# PalomarSubmission verifier records (read from its submission.yml on
+# 2026-09-13). A green run here is our own evidence that the entries will pass
+# Palomar's mechanical stage; it is not a Palomar verdict, review, or
+# registration. All third-party actions are pinned by full commit SHA.
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, 'palomar/**']
+    paths:
+      - PalomarCorpus/**
+      - Solutions/**
+      - ErdosProblems/**
+      - Erdos257PeriodNoncollapse/**
+      - lakefile.toml
+      - lake-manifest.json
+      - lean-toolchain
+      - .github/workflows/palomar-replay.yml
+
+permissions:
+  contents: read
+
+jobs:
+  replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    env:
+      COMPARATOR_REV: 575674928e239f5bc452aab72d1dd7b0f1326494
+      LEAN4EXPORT_REV: a3e35a584f59b390667db7269cd37fca8575e4bf
+      LANDRUN_REV: 811cfff51ceaf3d9843708aa6d22e9b84ccac8b4
+      NANODA_REV: 68d5ca9db226849b41a6fff59d796ff19d0a8840
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+      - uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
+        with:
+          use-mathlib-cache: auto
+          build: false
+          test: false
+          lint: false
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version: '1.24'
+      - name: Check the publication inventory and Challenge limits
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json, re
+          from pathlib import Path
+          problems = (68, 243, 249, 251, 257, 269, 1041, 1049)
+          found = sorted(p.parent.name for p in Path("PalomarCorpus").glob("E*/comparator.json"))
+          assert found == sorted(f"E{n}" for n in problems), found
+          for n in problems:
+              entry = Path(f"PalomarCorpus/E{n}")
+              cfg = json.loads((entry / "comparator.json").read_text())
+              challenge = (entry / "Challenge.lean").read_bytes()
+              assert len(challenge) <= 102400 and len(challenge.splitlines()) <= 1000, entry
+              imports = re.findall(r"^import\s+(\S+)", challenge.decode(), re.M)
+              assert imports and all(i == "Mathlib" or i.startswith("Mathlib.") for i in imports), entry
+              assert cfg["challenge_module"] == f"PalomarCorpus.E{n}.Challenge", entry
+              assert cfg["solution_module"] == f"Solutions.PalomarCorpus.E{n}", entry
+              assert cfg["theorem_names"] and set(cfg["permitted_axioms"]) <= {"propext", "Quot.sound", "Classical.choice"}, entry
+              print(f"E{n}: {len(cfg['theorem_names'])} theorems, {len(challenge)} bytes")
+          PY
+      - name: Build the eight Challenges against Mathlib only
+        env:
+          LEAN_NUM_THREADS: "2"
+        run: lake build PalomarCorpus
+      - name: Build the pinned Comparator toolchain
+        id: tools
+        run: |
+          set -euo pipefail
+          git clone --filter=blob:none https://github.com/leanprover/comparator.git "$RUNNER_TEMP/comparator"
+          git -C "$RUNNER_TEMP/comparator" checkout --detach "$COMPARATOR_REV"
+          test "$(git -C "$RUNNER_TEMP/comparator" rev-parse HEAD)" = "$COMPARATOR_REV"
+          (cd "$RUNNER_TEMP/comparator" && lake build comparator)
+          git clone --filter=blob:none https://github.com/leanprover/lean4export.git "$RUNNER_TEMP/lean4export"
+          git -C "$RUNNER_TEMP/lean4export" checkout --detach "$LEAN4EXPORT_REV"
+          test "$(git -C "$RUNNER_TEMP/lean4export" rev-parse HEAD)" = "$LEAN4EXPORT_REV"
+          (cd "$RUNNER_TEMP/lean4export" && ELAN_TOOLCHAIN="$(tr -d '\r\n' < lean-toolchain)" lake build lean4export)
+          git clone --filter=blob:none https://github.com/zouuup/landrun.git "$RUNNER_TEMP/landrun-src"
+          git -C "$RUNNER_TEMP/landrun-src" checkout --detach "$LANDRUN_REV"
+          test "$(git -C "$RUNNER_TEMP/landrun-src" rev-parse HEAD)" = "$LANDRUN_REV"
+          (cd "$RUNNER_TEMP/landrun-src" && go build -o "$RUNNER_TEMP/landrun" cmd/landrun/main.go)
+          git clone --filter=blob:none https://github.com/robsimmons/nanoda_lib.git "$RUNNER_TEMP/nanoda"
+          git -C "$RUNNER_TEMP/nanoda" checkout --detach "$NANODA_REV"
+          test "$(git -C "$RUNNER_TEMP/nanoda" rev-parse HEAD)" = "$NANODA_REV"
+          export PATH="$HOME/.cargo/bin:/usr/local/bin:/usr/bin:/bin"
+          if ! command -v cargo >/dev/null 2>&1; then
+            curl --proto '=https' --tlsv1.2 --fail --silent --show-error \
+              https://sh.rustup.rs | sh -s -- -y --default-toolchain stable --profile minimal
+            . "$HOME/.cargo/env"
+          fi
+          (cd "$RUNNER_TEMP/nanoda" && cargo build --release --locked --bin nanoda_bin)
+          test -x "$RUNNER_TEMP/nanoda/target/release/nanoda_bin"
+          echo "comparator_lean_toolchain=$(tr -d '\r\n' < "$RUNNER_TEMP/comparator/lean-toolchain")" >> "$GITHUB_OUTPUT"
+      - name: Run Comparator on each publication entry
+        id: comparator
+        run: |
+          set +e
+          export COMPARATOR_LANDRUN="$RUNNER_TEMP/landrun"
+          export COMPARATOR_LEAN4EXPORT="$RUNNER_TEMP/lean4export/.lake/build/bin/lean4export"
+          export COMPARATOR_NANODA="$RUNNER_TEMP/nanoda/target/release/nanoda_bin"
+          comparator="$RUNNER_TEMP/comparator/.lake/build/bin/comparator"
+          mkdir -p artifacts
+          systemctl --user show-environment > artifacts/systemd-user-preflight.log 2>&1
+          if [[ $? -eq 0 ]]; then
+            sandbox_mode=user-manager
+          elif sudo -n systemctl show-environment > artifacts/systemd-system-preflight.log 2>&1; then
+            sandbox_mode=system-manager-nonprivileged-unit
+          else
+            sandbox_mode=unavailable
+          fi
+          echo "sandbox_mode=$sandbox_mode" >> "$GITHUB_OUTPUT"
+          run_comparator() {
+            config="$1"
+            if [[ "$sandbox_mode" == user-manager ]]; then
+              timeout 45m systemd-run --property=RestrictAddressFamilies=~AF_UNIX --user --pipe \
+                -E PATH="$PATH" -E COMPARATOR_LANDRUN="$COMPARATOR_LANDRUN" -E COMPARATOR_NANODA="$COMPARATOR_NANODA" \
+                -E COMPARATOR_LEAN4EXPORT="$COMPARATOR_LEAN4EXPORT" \
+                --working-directory="$(pwd)" -- lake env "$comparator" "$config"
+            elif [[ "$sandbox_mode" == system-manager-nonprivileged-unit ]]; then
+              timeout 45m sudo -n systemd-run --property=RestrictAddressFamilies=~AF_UNIX \
+                --uid="$(id -un)" --gid="$(id -gn)" --pipe \
+                -E PATH="$PATH" -E COMPARATOR_LANDRUN="$COMPARATOR_LANDRUN" -E COMPARATOR_NANODA="$COMPARATOR_NANODA" \
+                -E COMPARATOR_LEAN4EXPORT="$COMPARATOR_LEAN4EXPORT" \
+                --working-directory="$(pwd)" -- lake env "$comparator" "$config"
+            else
+              printf '%s\n' "No usable systemd transient-unit manager; refusing an insecure fallback."
+              return 125
+            fi
+          }
+          failures=0
+          for n in 68 243 249 251 257 269 1041 1049; do
+            run_comparator "PalomarCorpus/E$n/comparator.json" > "artifacts/E$n.log" 2>&1
+            rc=$?
+            echo "E$n exit=$rc"
+            echo "exit_E$n=$rc" >> "$GITHUB_OUTPUT"
+            tail -n 20 "artifacts/E$n.log"
+            [[ "$rc" -eq 0 ]] || failures=$((failures + 1))
+          done
+          echo "failures=$failures" >> "$GITHUB_OUTPUT"
+          exit 0
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: palomar-comparator-replay
+          path: artifacts/
+      - name: Enforce eight green Comparator replays
+        run: |
+          test '${{ steps.comparator.outputs.sandbox_mode }}' != unavailable
+          test '${{ steps.comparator.outputs.failures }}' = 0

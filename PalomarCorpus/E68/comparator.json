@@ -12,6 +12,8 @@
     "PalomarCorpus.E68.ChannelRadius.sharp_radius_satisfies_square_log_constraint",
     "PalomarCorpus.E68.ChannelRadius.square_subsequence_radius_cubic_lower",
     "PalomarCorpus.E68.ChannelRadius.square_subsequence_radius_three_halves_lower",
+    "PalomarCorpus.E68.CommonDenominatorGrowth.common_denominator_growth",
+    "PalomarCorpus.E68.CommonDenominatorGrowth.common_denominator_growth_liminf",
     "PalomarCorpus.E68.CompanionOrbitBoundary.companionOrbitBoundary_factorialGapSeries",
     "PalomarCorpus.E68.CompanionOrbitBoundary.companionOrbitBoundary_genericShift",
     "PalomarCorpus.E68.CompanionOrbitBoundary.companionOrbitBoundary_strictSuccessorCarry",

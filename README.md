@@ -15,35 +15,38 @@ Problems covered: #68, #243, #249, #251, #257, #269, #1041, #1049.
 
 ## Palomar publication surface
 
-Palomar review of this repository uses the eight nested problem-level
-configurations, with the Lake project root selected:
+Palomar (https://palomar-registry.org) registers machine-checked Lean proofs after an
+independent mechanical verification (Comparator, kernel replay through NanoDa) and an
+automated editorial review. This repository publishes eight problem-level entries, one
+Comparator configuration per Erdős problem, all at the same commit, with the Lake project
+root selected. Each `PalomarCorpus/E{n}/Challenge.lean` imports only Mathlib and states the
+selected theorems with documented definitions; `Solutions.PalomarCorpus.E{n}` supplies the
+proofs. The parent problems remain open; no entry claims a solution of one.
 
-- [`PalomarCorpus/E68`](PalomarCorpus/E68/)
-- [`PalomarCorpus/E243`](PalomarCorpus/E243/)
-- [`PalomarCorpus/E249`](PalomarCorpus/E249/)
-- [`PalomarCorpus/E251`](PalomarCorpus/E251/)
-- [`PalomarCorpus/E257`](PalomarCorpus/E257/)
-- [`PalomarCorpus/E269`](PalomarCorpus/E269/)
-- [`PalomarCorpus/E1041`](PalomarCorpus/E1041/)
-- [`PalomarCorpus/E1049`](PalomarCorpus/E1049/)
+| Entry | Theorems | Registry title | Palomar status |
+|---|---:|---|---|
+| [`E68`](PalomarCorpus/E68/) | 47 | Erdős problem #68: a three-halves lower growth bound for the common denominators lcm(n! - 1), with multiplicative successor rigidity, exact carry reformulations, and channel route closures for the series sum of 1/(n! - 1) | not yet submitted |
+| [`E243`](PalomarCorpus/E243/) | 28 | Erdős problem #243: a bounded product defect in the original coordinates, or an eventually bounded negative part of the cleared error, forces the Sylvester recurrence, with unconditional exclusions and exact record criteria | not yet submitted |
+| [`E249`](PalomarCorpus/E249/) | 54 | Erdős problem #249: rationality of the binary totient series would force one integral carry with unbounded dyadic section rank and a uniform eventual period, with the exact all-base totient kernel basis and unconditional irrationality of every residue-class totient series at modulus at least three | not yet submitted |
+| [`E251`](PalomarCorpus/E251/) | 34 | Erdős problem #251: shifted prime-gap coincidences reduce to an explicit four-prime count, with exact tail-shift criteria, a kernel-decided denominator floor, and rational countermodels to coarse gap hypotheses | not yet submitted |
+| [`E257`](PalomarCorpus/E257/) | 50 | Erdős problem #257: all base irrationality of the reciprocal Mersenne subseries for every infinite reciprocal summable support, with weighted mass and positive cover extensions, achievement set geometry, and exact greedy membership criteria | not yet submitted |
+| [`E269`](PalomarCorpus/E269/) | 33 | Erdős problem #269 at three primes: the reciprocal running-LCM kernel has nonsingular minors of every order and no finite separated representation, with the exact affine shell orbit of the {2,3,5} series and a window criterion equivalent to its irrationality | not yet submitted |
+| [`E1041`](PalomarCorpus/E1041/) | 31 | Erdős problem #1041 on short connections inside polynomial lemniscates: a complete degree-three connector, the sharp collinear Chebyshev constant, critical-point proximity with two exact straight-path obstructions, and complete root spokes for sparse families | not yet submitted |
+| [`E1049`](PalomarCorpus/E1049/) | 40 | Erdős problem #1049: an Archimedean one-half cap on base-uniform polynomial approximation to Lambert values, with sharp Hermite-Padé and adelic height exclusions at the base 3/2 | not yet submitted |
 
-Each directory holds the selected declarations for that problem in
-`Challenge.lean`, with `comparator.json` and `formalization.yaml`. The matching
-proof-side modules are `Solutions.PalomarCorpus.E68` through
-`Solutions.PalomarCorpus.E1049`. Family `ExternalVerification*` entries listed
-later in this file remain internal regression inventory, not the Palomar
-publication roster.
-
-This section names the publication home of the selected declarations. It does
-not claim Palomar Comparator verification, NanoDa, an axiom-subset certificate,
-or a verified release candidate.
-
-[`PROBLEMS.md`](PROBLEMS.md) states, for each problem, the strongest theorem this
-release carries, the exact unresolved step, and the smallest contribution that would move it.
-
-This repository is the Lean surface of the Plectis programme: <https://wcook04.github.io/plectis/>. The papers behind each entry, the eight problem pages and the further verified work outside this release are indexed at <https://wcook04.github.io/plectis/maths/>. The reviewed claim registry, the declaration atlas and the papers live in the companion public corpus <https://github.com/wcook04/plectis-lean-erdos249-257>; this repository is its Comparator and Palomar projection at one commit, and entry counts here never compose with declaration counts there.
+The workflow [`palomar-replay.yml`](.github/workflows/palomar-replay.yml) replays Palomar's
+mechanical stage on Linux with the verifier's pinned Comparator, lean4export, landrun and
+NanoDa revisions, and the release gate prints the axioms of every selected theorem
+(`scripts/check_axiom_budget.py --run-palomar`). A green replay is our own evidence, not a
+Palomar verdict; the status column records what Palomar itself has done with each entry.
+Family `ExternalVerification*` directories are internal regression inventory, not registry entries.
 
 ## Start here
+
+The per-problem sections below describe the `ExternalVerification*` family entries, the
+internal regression inventory, and each names its own configuration. The Palomar entries
+are the eight `PalomarCorpus/E{n}` configurations listed above; their theorem counts are
+larger and are the counts a registry submission names.
 
 ### Erdős #257: irrationality for every reciprocal-summable support and every integer base
 
@@ -51,7 +54,7 @@ For every integer base b at least two and every infinite set A of exponents whos
 
 Boundary. The compared result states that every infinite reciprocal-summable support A gives an irrational reciprocal-power subseries at every integer base at least two. The zero exponent is normalized to zero by real division. No pairwise-coprimality, periodicity, density, or powerful-support hypothesis is assumed. Challenge.lean contains the deliberate Comparator specification sorry; the proof-bearing Solution.lean and its imported source theorem are sorry-free. The atom comparison and close-return producer are subordinate proof mechanisms rather than extra results.
 
-Source: [`ExternalVerification257ReciprocalSupport/`](ExternalVerification257ReciprocalSupport/), configuration `ExternalVerification257ReciprocalSupport/comparator.json`.
+Source: [`ExternalVerification257ReciprocalSupport/`](ExternalVerification257ReciprocalSupport/), configuration `ExternalVerification257ReciprocalSupport/comparator.json`. One declaration is compared in that family entry; the Palomar entry [`PalomarCorpus/E257`](PalomarCorpus/E257/) compares the same theorem together with 49 others.
 
 ### Erdős #251: kernel-decided denominator floor for the prime-gap dyadic series
 
@@ -154,7 +157,15 @@ Source: [`ExternalVerification1041CriticalGeometry/`](ExternalVerification1041Cr
 
 ## Reading an entry
 
-Each entry is five files: four in its directory and its Solution under `Solutions/`.
+A Palomar entry `PalomarCorpus/E{n}` is four files: `Challenge.lean`, `comparator.json`
+and `formalization.yaml` in its directory, and its Solution `Solutions/PalomarCorpus/E{n}.lean`
+with the adapters under `Solutions/PalomarCorpus/E{n}/`. Its axiom audit is supplied by
+`scripts/check_axiom_budget.py --run-palomar`, which the release gate runs. The per-problem
+sections above and the table below describe the `ExternalVerification*` family entries, the
+internal regression inventory; their theorem counts are not the counts of the
+`PalomarCorpus/E{n}` configurations.
+
+Each `ExternalVerification*` entry is five files: four in its directory and its Solution under `Solutions/`.
 
 - `<Entry>/Challenge.lean` states the theorem for a reviewer and does not prove it.
 - `Solutions/<Entry>.lean` proves it. A `sorry` here would be fatal and there is none.

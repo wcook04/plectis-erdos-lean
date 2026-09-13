@@ -1,14 +1,20 @@
 version: v0.4
 project:
-  name: 'Formal reductions for Erdős problem #249'
+  name: 'Erdős problem #249: rationality of the binary totient series would force one integral carry with unbounded dyadic section rank and a uniform eventual period, with the exact all-base totient kernel basis and unconditional irrationality of every residue-class totient series at modulus at least three'
   description: >-
-    A Comparator-checkable restatement of the paper-linked Lean theorems that
-    actually have proof coverage for Erdős problem #249. The compared
-    surface includes 53 independently stated declarations
-    (actualLcmTailOrbit_eq_scaled_totientSeries_sub_prefix, irrational_totientSeries_iff_actualLcmOrbitNonintegralitySupply, binaryCyclotomicAnchoredKillSupply_iff_irrational, binaryCyclotomicLayer_unboundedPrimeDivisorSupply, exists_clean_binaryCyclotomicAnchor, exists_unbounded_binaryCyclotomicSupport_with_periodLock_of_not_irrational, fullMersenneBlockResidue_succ, fullMersenneCanonicalBasepointResidueGapSupply_iff_irrational, fullMersenneCenteredResidueGapSupply_of_canonicalBasepoint, carryShift_dvd_iff_tailDiff_mem_int, finrank_canonicalCarryKernel_ge_of_certificate, not_irrational_binaryCoeffSeries_iff_exists_temperedBinaryOrbit, and 41 more). The parent problem remains open. This repository
-    is the substantive formalization, not a thin wrapper around another public
-    repo. This entry is one of eight problem-level Palomar configurations at
-    the same repository and commit.
+    Erdős and Graham asked whether the binary totient series S = sum over n at least 1 of phi(n)/2^n is irrational, where phi is Euler's totient function (Erdős and Graham 1980, page 61). The problem is open and nothing here settles it. The audience is the irrationality theory of series with classical arithmetic-function coefficients, the Lambert series circle Erdős worked in from 1948, and the theory of k-regular sequences of Allouche and Shallit. The companion series with sigma in place of phi is transcendental by Nesterenko 1996 at q = 1/2, and no analogue of that route is known for phi.
+
+    The principal theorem is a rigidity consequence of rationality. Call u a tempered integral carry for phi with multiplier v when u(N+1) = 2 u(N) - v phi(N+1) for every N and u(N)/2^N tends to 0. If S fails to be irrational then such a pair exists with v > 0, and the same u satisfies two conditions at once: for every depth e the rational span of its dyadic sections n ↦ u(2^j n + r) through depth e has rank at least 2^e - 1, and u is eventually periodic modulo v with one fixed positive period. No theorem here turns eventual periodicity modulo v into a finite rational rank, so no contradiction and no irrationality statement follows.
+
+    Two unconditional families concern the totient itself. The first fixes its k-kernel at every base: for k at least 2 and e at least 1, the sections n ↦ phi(k^j n + r) with j at most e and r < k^j span a rational space of dimension exactly k^e + 1, the two zero-residue channels together with the residues not divisible by k index a basis, and the relation module has dimension exactly k + k^2 + ... + k^(e-1). The dyadic case is stated separately with its explicit odd-core basis. Coons proved in 2010 that phi is not k-regular, equivalently that the full kernel span is infinite dimensional; the exact bounded-depth dimension, canonical index and relation-module dimension are what is added. Martin's 2006 theorem on simultaneous inequalities among totient values already implies the independence input, proved here by an independent finite-determinant argument whose evaluation minor is diagonal modulo one auxiliary prime. Both theorems concern the coefficient sequence and say nothing about the value of S.
+
+    The second proves irrationality for infinitely many explicit constants. For every m at least 3 the least-residue series A_m = sum over n at least 1 of (phi(n) mod m)/2^n is irrational, and the excluded cases are rational, A_1 = 0 and A_2 = 3/4, a fact not formalised here. More generally, for m at least 2 and any integer-valued letter map f vanishing at residue 0 and nonzero at some residue r < m with r + 1 coprime to m, the series sum f(phi(n) mod m)/2^n is irrational; at resolution 2^k every even residue qualifies. The mechanism is the quantitative isolated-pulse separation of Erdős 1948 on Lambert series, with the pulses supplied by the Chinese remainder theorem and Dirichlet's theorem, and Wong proved the least-residue case where the denominator base and the modulus coincide. The object is the reduced word phi(n) mod m, so S is left where it was.
+
+    Four exact reformulations locate the remaining obligation. Write R_N for the binary totient tail, the sum over j at least 1 of phi(N+j)/2^j. A window certificate asks that the signed binary discrepancy of two length-L totient windows separated by h lie more than N + h + L + 2 from both ends of its range modulo 2^L; some L satisfies it exactly when R_(N+h) - R_N is not an integer. One certificate at step d amplifies, so every sufficiently late pair of consecutive multipliers carries one whose window equals its shift, and the supply of those for all steps and all basepoints is equivalent to irrationality of S. The canonical Mersenne form pins the basepoint: S is irrational if and only if for every c and every odd v > 0 some positive multiple H of phi(v) puts the residue of the negated totient block modulo (2^H - 1)/v further than c + H + 1 from both endpoints. The LCM diagonal orbit and an anchored cyclotomic supply give two further equivalent forms. These are exact changes of coordinate, and none is progress on the value of S.
+
+    The remaining families close named routes. Unconditionally, every ray of multiples of a period h carries primes p dividing the binary cyclotomic layer |Phi_(hq)(2)| for a prime q, hq dividing p - 1, and p - 1 arbitrarily large; a companion theorem shows that if S is not irrational then one period h carries that unbounded prime support while every tail difference R_(N+h) - R_N beyond one threshold is an integer, so prime support alone cannot force the annihilation that irrationality would need. For every basepoint c and every fixed quotient k the pure dyadic endpoint error is not eventually affine in the height; this excludes one fixed affine endpoint-error mode and does not exclude every mechanism by which S could be rational. The termwise dyadic window is vacuous: 2^t dividing phi(N+t) already forces 2^t at most phi(N+t), which is below N + t, so the compared bound 2^t at most v(N+t+2) holds for every v at least 1. Two rigidity theorems retire classes of integer-valued control sequences: one exact prime law with an o(n) error forces g = phi, as do the exact even doubling laws with eventual congruence modulo every integer. With Theta_2 = sum over d at least 1 of mu(d)/(2^d - 1)^2 = S - 1/2, an identity recorded by Fan in 2026, every positive rank-one strict-subrank quotient Q(e, Y) on e at least 1 and Y at least 4 exceeds Theta_2 by more than 21/320; the minimiser (1, 5) is unique, the floor survives finite positive mixtures, and Q(e, Y) = p/q forces |q Theta_2 - p| > 21q/320. The ladder Theta_r is strictly log-concave at every rung r at least 1, so it admits no nonnegative Stieltjes representation. Two finite exclusions carry explicit bounds: no rational of denominator at most 79639646646701375323355774875831053 equals S, and one exact power of two dividing the totient prefix excludes a rectangle of denominators 2^c v with v odd. Neither is progress towards irrationality.
+
+    Attributions above follow the public record. For the exact rank formula and index, the relation-module dimension, the ladder's log-concavity and the two rigidity theorems, no antecedent was located, and those searches were not exhaustive. The rank-one floor family carries no prior-art audit at all. Novelty for all of them is unknown.
   authors:
   - Will Cook
   license: Apache-2.0
@@ -19,22 +25,93 @@ repository:
 classification:
   arxiv:
   - math.NT
-  - math.CA
-  - math.CV
   msc2020:
-  - 11A25
-  - 11B83
-  - 11B05
-  - 30C10
+  - "11J72"
+  - "11A25"
+  - "11B83"
+  - "11J82"
+  - "11Y60"
 sources:
 - title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
   authors:
   - Will Cook
   type: original-proof
   relationship: other
-  note: Independently restated Lean theorems already proved in this repository. Does not solve the parent Erdős problem.
+  note: The compared theorems are independently restated Lean theorems proved in this repository and described in the eight public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos. They do not solve the parent Erdős problem.
   license: Apache-2.0
   author_endorsement: participated
+- title: "Old and New Problems and Results in Combinatorial Number Theory"
+  authors:
+  - "Paul Erdős"
+  - "Ronald L. Graham"
+  type: "book"
+  relationship: "background"
+  note: "Page 61 poses the question whether the sum of phi(n)/2^n is irrational; only the problem statement is taken from this source."
+  license: "unknown"
+  author_endorsement: "n/a"
+- title: "On arithmetical properties of Lambert series"
+  authors:
+  - "Paul Erdős"
+  type: "paper"
+  relationship: "background"
+  note: "Journal of the Indian Mathematical Society 12 (1948). Supplies the isolated digit-block separation mechanism reused by the residue-class irrationality theorems; no statement about the sum of phi(n)/2^n is taken from it."
+  license: "unknown"
+  author_endorsement: "n/a"
+- title: "Simultaneous inequalities among values of the Euler phi-function"
+  authors:
+  - "Greg Martin"
+  id: "arXiv:math/0603053"
+  type: "paper"
+  relationship: "background"
+  note: "Theorem 1 already implies the all-slope affine independence conclusion stated here, which is therefore not claimed as new; the exact rank formula, canonical index, basis and relation-module dimension are not taken from this source."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "(Non)Automaticity of number theoretic functions"
+  authors:
+  - "Michael Coons"
+  id: "doi:10.5802/jtnb.718"
+  type: "paper"
+  relationship: "background"
+  note: "Journal de Théorie des Nombres de Bordeaux 22 (2010), 339-352, Theorem 3.2 owns non-k-regularity of Euler's totient, equivalently infinite dimensionality of the full kernel span; that statement is not claimed here and the exact bounded-depth rank and normal form are not taken from it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "The ring of k-regular sequences"
+  authors:
+  - "Jean-Paul Allouche"
+  - "Jeffrey Shallit"
+  id: "doi:10.1016/0304-3975(92)90001-V"
+  type: "paper"
+  relationship: "background"
+  note: "Theoretical Computer Science 98 (1992), 163-197 introduces k-regular sequences and the k-kernel, the notion the rank and basis theorems are stated about; no result is taken from it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Answer 1211557 to: An infinite sum based on the mod-parity of Euler's totient function"
+  authors:
+  - "Erick Wong"
+  id: "https://math.stackexchange.com/a/1211557"
+  type: "web discussion"
+  relationship: "background"
+  note: "Proves least-residue irrationality when the denominator base and the modulus are the same integer k > 2, dated 29 March 2015; the theorems here fix base two, vary the modulus, and classify the dyadic observables, and that classification is not taken from this source."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Comment on Erdős Problem #249, 16 May 2026"
+  authors:
+  - "Steve Fan"
+  id: "https://www.erdosproblems.com/forum/thread/249"
+  type: "web discussion"
+  relationship: "background"
+  note: "Records the divisor-convolution identity giving the sum of phi(n)/2^n as 1/2 plus the sum of mu(n)/(2^n - 1)^2, which names the constant Theta_2 used by the rank-one floor theorems; those theorems are not taken from this source. The comment cannot be confirmed beyond the linked discussion thread."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Modular functions and transcendence questions"
+  authors:
+  - "Yuri V. Nesterenko"
+  id: "doi:10.1070/SM1996v187n09ABEH000158"
+  type: "paper"
+  relationship: "background"
+  note: "Sbornik: Mathematics 187 (1996), 1319-1348. Its algebraic independence theorem for the Ramanujan functions makes the companion divisor-sum series transcendental at q = 1/2; it is cited only as context for the totient problem and supplies nothing to any theorem compared here."
+  license: "unknown"
+  author_endorsement: "not-contacted"
 - title: Erdős Problems catalogue
   authors:
   - Thomas F. Bloom
@@ -51,20 +128,25 @@ sources:
   relationship: background
   license: Apache-2.0
   author_endorsement: n/a
+related_formalizations:
+- id: "https://github.com/google-deepmind/formal-conjectures/blob/f776d2f2039351b00737ffcafb9d7d7666e1d9af/FormalConjectures/ErdosProblems/249.lean"
+  title: "FormalConjectures.ErdosProblems.249"
+  relationship: "independent"
+  note: "An open-problem entry recording the same question as `answer(sorry) ↔ Irrational (∑' n : ℕ, φ n / 2 ^ n)`, with both the answer placeholder and the proof left as sorry. It is statement-level prior art for the formalisation of the target, it supplies no proof authority, and every declaration compared here was stated independently of it."
 status:
-  scope: One publication Comparator covering the paper-linked Lean for Erdős problem #249. Family ExternalVerification* configs remain internal inventory. Sibling PalomarCorpus/E* entries cover the other seven problems at this commit.
+  scope: One publication Comparator configuration selecting the theorems named in the project description for Erdős problem #249; other paper-linked declarations for this problem that live only in the per-family ExternalVerification249* directories are internal regression inventory and are not selected here. The sibling PalomarCorpus/E* entries cover the other seven problems at this commit.
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
-  trusted_challenge_sorry_count: 53
-  sorry_boundary: The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E249/Challenge.lean.
-  axiom_audit_status: pending_elaboration
+  trusted_challenge_sorry_count: 54
+  sorry_boundary: The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E249/Challenge.lean; every Solution proof is complete.
+  axiom_audit_status: every compared theorem is printed with axioms propext, Quot.sound and Classical.choice only by scripts/check_axiom_budget.py --run-palomar, which the release gate runs on the built Solution environments
   permitted_axiom_budget:
   - propext
   - Quot.sound
   - Classical.choice
   development_status: substantive
-  local_proof_provenance: family Solutions.ExternalVerification* modules in this repository
+  local_proof_provenance: the ErdosProblems.Erdos249 proof modules in this repository, imported by Solutions.PalomarCorpus.E249; the Solutions.ExternalVerification249* family modules are a regression mirror of the same proofs and are not imported by this configuration
   canonical_claim_status: problem-level Comparator wrapper over substantive Lean in this repository
 automation:
   methods:
@@ -86,5 +168,5 @@ automation:
 review:
   status: self-assessed
   reviewers: []
-  notes: Palomar editorial review is a later operator decision. Family drain and isolated-family intake remain frozen. Flat PalomarCorpus/comparator.json is superseded.
+  notes: The author checked every compared statement against the public problem note and reasoning record for Erdős problem #249 at https://github.com/wcook04/plectis-erdos; no external referee report exists for this entry.
 acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

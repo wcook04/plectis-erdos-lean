@@ -47,6 +47,7 @@
     "PalomarCorpus.E249.ResidueClassTotientSeries.residue_series_irrational",
     "PalomarCorpus.E249.ResidueClassTotientSeries.two_sided_prime_isolation",
     "PalomarCorpus.E249.TermwiseDyadicVacuous.termwise_dyadic_window_vacuous",
+    "PalomarCorpus.E249.TotientAffineModeEscape.not_eventuallyAffine_pureDyadicEndpointError",
     "PalomarCorpus.E249.TotientKernelBasis.allBaseTotientKernelBasisRankAndRelationDimension",
     "PalomarCorpus.E249.TotientKernelBasis.allSlopeAffineTotientFormsLinearIndependent",
     "PalomarCorpus.E249.TotientRigidity.even_law_and_eventual_congruence_forces_totient",

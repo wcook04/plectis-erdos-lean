@@ -71,14 +71,18 @@ lemma dyadicBlockBase235_fun_eq :
     dyadicBlockBase235 = ErdosProblems.Erdos269.dyadicBlockBase235 := by
   funext a
   unfold dyadicBlockBase235 ErdosProblems.Erdos269.dyadicBlockBase235
+  -- In this family file the abbreviation makes `simp` close the goal outright; in the
+  -- generated problem-level adapter the copied definition leaves the four radix cases,
+  -- so the case split runs only when a goal remains.
   simp [DyadicInternalPower, ErdosProblems.Erdos269.DyadicInternalPower]
-  by_cases h5 : ∃ e, 2 ^ a < 5 ^ e ∧ 5 ^ e < 2 ^ (a + 1)
-  · by_cases h3 : ∃ e, 2 ^ a < 3 ^ e ∧ 3 ^ e < 2 ^ (a + 1)
-    · simp [h5, h3]
-    · simp [h5, h3]
-  · by_cases h3 : ∃ e, 2 ^ a < 3 ^ e ∧ 3 ^ e < 2 ^ (a + 1)
-    · simp [h5, h3]
-    · simp [h5, h3]
+  all_goals
+    by_cases h5 : ∃ e, 2 ^ a < 5 ^ e ∧ 5 ^ e < 2 ^ (a + 1)
+    · by_cases h3 : ∃ e, 2 ^ a < 3 ^ e ∧ 3 ^ e < 2 ^ (a + 1)
+      · simp [h5, h3]
+      · simp [h5, h3]
+    · by_cases h3 : ∃ e, 2 ^ a < 3 ^ e ∧ 3 ^ e < 2 ^ (a + 1)
+      · simp [h5, h3]
+      · simp [h5, h3]
 
 lemma dyadicOrderedBlockDigit235_fun_eq :
     dyadicOrderedBlockDigit235 = ErdosProblems.Erdos269.dyadicOrderedBlockDigit235 := by

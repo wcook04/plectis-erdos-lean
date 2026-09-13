@@ -5,6 +5,7 @@ Authors: Will Cook
 -/
 import Mathlib
 
+open Filter
 open scoped BigOperators
 open Finsupp
 

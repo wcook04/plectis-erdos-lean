@@ -1,14 +1,24 @@
 version: v0.4
 project:
-  name: 'Formal reductions for Erdős problem #243'
+  name: 'Erdős problem #243: a bounded product defect in the original coordinates, or an eventually bounded negative part of the cleared error, forces the Sylvester recurrence, with unconditional exclusions and exact record criteria'
   description: >-
-    A Comparator-checkable restatement of the paper-linked Lean theorems that
-    actually have proof coverage for Erdős problem #243. The compared
-    surface includes 26 independently stated declarations
-    (boundedNegativePart_completeRigidity, no_boundedRise_reducedTail, no_eventuallyPeriodicNegative_orbit, no_periodicNegative_orbit, no_phasePrimitivePeriodicNegative_orbit, centeredZero_forces_unit, exists_oddMultiple_trapHeight, numerator_bounded_of_oddPrimePower, odd_record_cut, primitive_valuation_no_drop, protectedPrimePower_persists, recordRiseTwo_sylvesterNext_eventually, and 14 more). The parent problem remains open. This repository
-    is the substantive formalization, not a thin wrapper around another public
-    repo. This entry is one of eight problem-level Palomar configurations at
-    the same repository and commit.
+    Erdős problem 243 asks whether rationality forces the Sylvester recurrence: let a 1 < a 2 < ... be positive integers with a (n+1) / a n ^ 2 tending to 1 and rational reciprocal sum, and ask whether a (n+1) = a n ^ 2 - a n + 1 for all large n. The problem is open, and nothing here settles it. The principal theorem reaches the recurrence in the problem's own coordinates under one added hypothesis: with P n the prefix product of the first n terms, if the product defect (P n / a n) (a n ^ 2 / a (n+1) - 1) is bounded above by a single constant from some index onward, then a (n+1) = a n ^ 2 - a n + 1 for all large n. That upper bound is assumed and is not derived from the rational-sum and growth hypotheses.
+
+    Clearing denominators turns the rational case into an exact integer orbit. With x n the reciprocal tail, D n = q P n and C n = D n x n, the state obeys C (n+1) + D n = a n C n and D (n+1) = a n D n, and the centred error E n = D n - (a n - 1) C n vanishes exactly on a Sylvester tail. Its update C (n+1) = C n - E n turns a lower bound on the error into a cap on the numerator's rise. The second principal theorem works there: for an exact natural orbit with a n > 1 and C n > 0, an eventual lower bound -B at most E n, with division-free normalised vanishing, meaning K times the magnitude of E n is eventually below C n for every scale K, forces E n = 0 eventually and the recurrence eventually. No periodicity or sign condition appears, so aperiodic and infinitely sign-changing orbits are covered.
+
+    Erdős and Straus proved in 1964 that a counterexample to the recurrence has positive limit superior for the quantity lcm(a 1, ..., a n) / a (n+1) times (a (n+1) ^ 2 / a (n+2) - 1), whose growth factor sits one index later than the product defect used here. Duverney settled a signed version in 2001 under convergence of the growth-defect series, and Badea gave a positive-term criterion in 1993. Koizumi, in Integers 26 (2026), Paper No. A28, uses the same cleared coordinates; his Proposition 1(2), attributed there to Badea, shows that an eventually nonnegative error vanishes eventually, and the theorem above replaces that sign condition by a bound on the depth of negative visits while adding normalised vanishing. His coordinates supply normalised vanishing on the canonical orbit, and supply neither a bounded negative part nor finite negative mass. Kovač and Tao resolved other Ahmes-series problems of Erdős and Graham in 2025, and the Formal Conjectures collection carries a statement-level Lean declaration of this problem whose proof ends in sorry.
+
+    Two dynamical regimes are excluded outright. A reduced exact tail, meaning coprime states with u (n+1) + v n = a n u n and v (n+1) = a n v n, cannot have a numerator tending to infinity while rising by at most a fixed positive B at every step; a strengthening asks that budget only at the indices where the numerator is below twice the product P of B consecutive multipliers, and adds the start condition that the numerator is below P at index N + B. A second family excludes periodic and eventually periodic negative-error orbits with 0 < e n < a n and positive drift.
+
+    A second conditional endpoint replaces the lower bound by summability. On an exact orbit with normalised vanishing, if the normalised negative mass, the sum of the positive part of -E n divided by C n, converges, then the centred error vanishes eventually and the recurrence follows. A scalar form of the same criterion needs only the update C (n+1) = C n - E n and that summability, and a canonical form places the summability on the state built from the problem's own data. Summability is a hypothesis in each of them, and any surviving counterexample has divergent normalised negative mass.
+
+    The remaining families work in primitive coordinates: coprime pairs u n and v n carried by w n + v n = a n u n, w n = hc n u (n+1) and a n v n = hc n v (n+1), with arbitrary cancellation factors hc n. Two prove rigidity for restricted classes delimited by record behaviour: if every record-setting step of the primitive numerator rises by at most two, or if the running maximum increases by at most one at every late step, then under the centring bound 2 |e n| < u n, normalised vanishing, and a supply of prime powers dividing the denominator state at arbitrarily late indices, the recurrence holds eventually. The first needs odd prime powers above three times the running maximum at the supply index, the second any prime power at least that running maximum plus three; the supply is a hypothesis of both. A protected-epoch inequality charges one odd prime power against a finite set of cancellation-free record steps of jump at least three.
+
+    Three results record exact local structure. A cancellation payment stays visible at the first later index t with negative centred error: if the intervening errors are nonnegative, then u t is at most u (s+1) and u s times u t is at most the running maximum at t times the magnitude of e t times u (s+1). That is an estimate at one pair of indices; it bounds no excursion length and is not a global rigidity theorem. A square-transport identity makes the whole next primitive numerator divide hc e e' - v ^ 2 with no hypothesis beyond the cocycle equations; its quadratic-character companion is a bare divisibility implication whose conclusion is only that an auxiliary natural factor differs from 1. A repair-entropy inequality charges the squared least common multiple of a repaired family of moduli against a fixed relative-error budget over a recovery window.
+
+    Two equivalences are exact reformulations. In the least common multiple coordinates L n = lcm(q, a 0, ..., a (n-1)), with M n the overlap debt, U n = C n / M n by natural division and V n = L n - (a n - 1) U n, and for every weight f that is nonnegative and antitone on [1, infinity) with divergent integral, the sequence is eventually Sylvester if and only if the weighted record excess over the indices where U sets a strict record converges for some natural baseline B; the same holds in the original growth coordinates. The problem's hypotheses do not supply that convergence, so these criteria relocate the question.
+
+    The audience is the literature on irrationality of Ahmes series and Egyptian-fraction tails, and the Diophantine study of doubly exponential integer sequences, where Erdős and Straus, Badea, Duverney, Kovač and Tao, and Koizumi work. The entry supplies a sufficient regime that widens the eventually nonnegative sign condition to bounded negative depth under normalised vanishing, a criterion under the problem's own hypotheses with one explicit extra bound, unconditional exclusions of two named regimes, rigidity for two restricted record classes, and two exact reformulations. Erdős problem 243 remains open.
   authors:
   - Will Cook
   license: Apache-2.0
@@ -19,22 +29,97 @@ repository:
 classification:
   arxiv:
   - math.NT
-  - math.CA
-  - math.CV
+  - math.DS
   msc2020:
-  - 11A25
-  - 11B83
-  - 11B05
-  - 30C10
+  - "11J72"
+  - "11D68"
+  - "11B37"
+  - "11B83"
+  - "11A05"
 sources:
 - title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
   authors:
   - Will Cook
   type: original-proof
   relationship: other
-  note: Independently restated Lean theorems already proved in this repository. Does not solve the parent Erdős problem.
+  note: The compared theorems are independently restated Lean theorems proved in this repository and described in the eight public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos. They do not solve the parent Erdős problem.
   license: Apache-2.0
   author_endorsement: participated
+- title: "On the irrationality of certain Ahmes series"
+  authors:
+  - "Paul Erdős"
+  - "Ernst G. Straus"
+  id: "https://users.renyi.hu/~p_erdos/1964-19.pdf"
+  type: "paper"
+  relationship: "background"
+  note: "Theorem 3, page 132, gives the classical criterion that a counterexample has positive limit superior for lcm(a 1, ..., a n) / a (n+1) times (a (n+1) ^ 2 / a (n+2) - 1), whose growth factor sits one index later than the product defect compared here; no proof, lemma or formal statement is taken from it, and the present bounded-defect criterion needs only a finite upper bound in place of a nonpositive limit superior, for a prefix-product quantity at index n where their Theorem 3 bounds an lcm-scale quantity at index n + 1."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Irrationality of the reciprocal sum of doubly exponential sequences"
+  authors:
+  - "Junnosuke Koizumi"
+  id: "arXiv:2504.05933"
+  type: "paper"
+  relationship: "background"
+  note: "Supplies the cleared coordinates in which the integer-state theorems are read, and the eventually nonnegative case of the conclusion in Proposition 1(2), which Koizumi attributes to Badea; the bounded-negative-part and summable-mass theorems here are stated and proved independently of that source, and no analytic bridge from this article is formalised in the Challenge."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "A theorem on irrationality of infinite series and applications"
+  authors:
+  - "Catalin Badea"
+  id: "https://matwbn.icm.edu.pl/ksiazki/aa/aa63/aa6342.pdf"
+  type: "paper"
+  relationship: "background"
+  note: "Gives the positive-term irrationality criterion and the rationality-forces-equality companion that stand behind the eventually nonnegative case; its positive-term hypotheses do not cover the mixed-sign integer states studied here, and nothing in the Challenge recovers its statements."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Irrationality of fast converging series of rational numbers"
+  authors:
+  - "Daniel Duverney"
+  id: "https://www.ms.u-tokyo.ac.jp/journal/pdf/jms080206.pdf"
+  type: "paper"
+  relationship: "background"
+  note: "Corollary 3.2 settles a signed form of the problem under convergence of the series of growth defects, a hypothesis assumed nowhere in this entry; no result here is derived from it and no comparison of priority is made."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "On several irrationality problems for Ahmes series"
+  authors:
+  - "Vjekoslav Kovač"
+  - "Terence Tao"
+  id: "arXiv:2406.17593"
+  type: "paper"
+  relationship: "background"
+  note: "Calibrates the growth hypothesis by recording that the classical sufficient condition for irrationality is sharp for doubly exponential sequences; the article resolves other Erdős and Graham problems on Ahmes series and does not treat problem 243, so nothing here rests on it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Old and New Problems and Results in Combinatorial Number Theory, page 64"
+  authors:
+  - "Paul Erdős"
+  - "Ronald L. Graham"
+  id: "https://mathweb.ucsd.edu/~ronspubs/80_11_number_theory.pdf"
+  type: "book"
+  relationship: "background"
+  note: "The original published statement of the question; it supplies the problem and its attribution only, and no proof content."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Erdős Problem #243"
+  authors:
+  - "Thomas F. Bloom"
+  id: "https://www.erdosproblems.com/243"
+  type: "web discussion"
+  relationship: "background"
+  note: "The catalogue supplies the problem numbering, the standing references and the open status; no theorem in the Challenge is attributed to the catalogue, and the catalogue entry records its status as the site owner's present assessment."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Prime-Support Rigidity and Primitive Pseudo-Greedy Dynamics: Partial Progress on Erdős Problem #243"
+  authors:
+  - "Idriss Olivier Bado"
+  id: "https://doi.org/10.13140/RG.2.2.36612.08325"
+  type: "paper"
+  relationship: "background"
+  note: "An author-posted preprint whose Theorem 5.1 assumes two-sided bounded errors, a hypothesis strictly stronger than the one-sided bound used here; it is recorded as part of the literature search, it has not been independently validated for this entry, and no statement here depends on it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
 - title: Erdős Problems catalogue
   authors:
   - Thomas F. Bloom
@@ -51,20 +136,25 @@ sources:
   relationship: background
   license: Apache-2.0
   author_endorsement: n/a
+related_formalizations:
+- id: "https://github.com/google-deepmind/formal-conjectures/blob/f776d2f2039351b00737ffcafb9d7d7666e1d9af/FormalConjectures/ErdosProblems/243.lean"
+  title: "FormalConjectures.ErdosProblems.243"
+  relationship: "independent"
+  note: "A mathematically equivalent Lean statement of the problem, up to its zero-based indexing, whose proof ends in sorry; it is statement-level prior art for the formalisation, it supplies no proof authority, and every declaration compared here was stated independently of it."
 status:
-  scope: One publication Comparator covering the paper-linked Lean for Erdős problem #243. Family ExternalVerification* configs remain internal inventory. Sibling PalomarCorpus/E* entries cover the other seven problems at this commit.
+  scope: One publication Comparator configuration selecting the theorems named in the project description for Erdős problem #243; other paper-linked declarations for this problem that live only in the per-family ExternalVerification243* directories are internal regression inventory and are not selected here. The sibling PalomarCorpus/E* entries cover the other seven problems at this commit.
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
-  trusted_challenge_sorry_count: 26
-  sorry_boundary: The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E243/Challenge.lean.
-  axiom_audit_status: pending_elaboration
+  trusted_challenge_sorry_count: 28
+  sorry_boundary: The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E243/Challenge.lean; every Solution proof is complete.
+  axiom_audit_status: every compared theorem is printed with axioms propext, Quot.sound and Classical.choice only by scripts/check_axiom_budget.py --run-palomar, which the release gate runs on the built Solution environments
   permitted_axiom_budget:
   - propext
   - Quot.sound
   - Classical.choice
   development_status: substantive
-  local_proof_provenance: family Solutions.ExternalVerification* modules in this repository
+  local_proof_provenance: the ErdosProblems.Erdos243 proof modules in this repository, imported by Solutions.PalomarCorpus.E243; the Solutions.ExternalVerification243* family modules are a regression mirror of the same proofs and are not imported by this configuration
   canonical_claim_status: problem-level Comparator wrapper over substantive Lean in this repository
 automation:
   methods:
@@ -86,5 +176,5 @@ automation:
 review:
   status: self-assessed
   reviewers: []
-  notes: Palomar editorial review is a later operator decision. Family drain and isolated-family intake remain frozen. Flat PalomarCorpus/comparator.json is superseded.
+  notes: The author checked every compared statement against the public problem note and reasoning record for Erdős problem #243 at https://github.com/wcook04/plectis-erdos; no external referee report exists for this entry.
 acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

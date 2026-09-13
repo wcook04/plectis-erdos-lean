@@ -8,7 +8,7 @@ is not a publication entry.
 
 ## Selected Comparator theorems
 
-309 independently restated theorems across 83 families, partitioned by problem.
+317 independently restated theorems across 89 families, partitioned by problem.
 
 ### ExternalVerification1041CriticalGeometry
 
@@ -131,6 +131,10 @@ is not a publication entry.
 
 - `PalomarCorpus.E243.BoundedRiseReducedTail.no_boundedRise_reducedTail`
 
+### ExternalVerification243OriginalCoordinateBoundedDefect
+
+- `PalomarCorpus.E243.OriginalCoordinateBoundedDefect.original_coordinate_bounded_defect`
+
 ### ExternalVerification243PeriodicNegativeOrbit
 
 - `PalomarCorpus.E243.PeriodicNegativeOrbit.no_eventuallyPeriodicNegative_orbit`
@@ -151,6 +155,10 @@ is not a publication entry.
 ### ExternalVerification243ProtectedEpochEnergy
 
 - `PalomarCorpus.E243.ProtectedEpochEnergy.protected_epoch_energy_integer`
+
+### ExternalVerification243RecordAmplifiedCancellationVisibility
+
+- `PalomarCorpus.E243.RecordAmplifiedCancellationVisibility.recordAmplified_error_after_cancellation`
 
 ### ExternalVerification243RecordIncrementBarrier
 
@@ -263,6 +271,10 @@ is not a publication entry.
 
 - `PalomarCorpus.E249.TermwiseDyadicVacuous.termwise_dyadic_window_vacuous`
 
+### ExternalVerification249TotientAffineModeEscape
+
+- `PalomarCorpus.E249.TotientAffineModeEscape.not_eventuallyAffine_pureDyadicEndpointError`
+
 ### ExternalVerification249TotientKernelBasis
 
 - `PalomarCorpus.E249.TotientKernelBasis.allBaseTotientKernelBasisRankAndRelationDimension`
@@ -289,6 +301,10 @@ is not a publication entry.
 - `PalomarCorpus.E251.AffineCircularity.adjacent_small_mismatch_iff_signed_two_window`
 - `PalomarCorpus.E251.AffineCircularity.cofinal_affinePowTwo_escape_iff_not_eventuallyIntegral`
 - `PalomarCorpus.E251.AffineCircularity.cofinal_blockResidue_escape_iff_not_eventuallyIntegral`
+
+### ExternalVerification251AllResidueLogarithmicCountermodel
+
+- `PalomarCorpus.E251.AllResidueLogarithmicCountermodel.exists_every_residue_logarithmic_countermodel`
 
 ### ExternalVerification251FreePairEquivalence
 
@@ -328,6 +344,11 @@ is not a publication entry.
 - `PalomarCorpus.E251.PrimeGapIdentity.primeSeries_eq_two_add_primeGapSeries`
 - `PalomarCorpus.E251.PrimeGapIdentity.primeSeries_irrational_iff_primeGapSeries`
 - `PalomarCorpus.E251.PrimeGapIdentity.primeSeries_summable`
+
+### ExternalVerification251ShiftedFourPrimeCounting
+
+- `PalomarCorpus.E251.ShiftedFourPrimeCounting.separated_zeroDensity_of_quad_sieve`
+- `PalomarCorpus.E251.ShiftedFourPrimeCounting.shifted_count_bound`
 
 ### ExternalVerification257AchievementSetGeometry
 
@@ -503,6 +524,11 @@ is not a publication entry.
 - `PalomarCorpus.E68.ChannelRadius.square_subsequence_radius_cubic_lower`
 - `PalomarCorpus.E68.ChannelRadius.square_subsequence_radius_three_halves_lower`
 
+### ExternalVerification68CommonDenominatorGrowth
+
+- `PalomarCorpus.E68.CommonDenominatorGrowth.common_denominator_growth`
+- `PalomarCorpus.E68.CommonDenominatorGrowth.common_denominator_growth_liminf`
+
 ### ExternalVerification68CompanionOrbitBoundary
 
 - `PalomarCorpus.E68.CompanionOrbitBoundary.companionOrbitBoundary_factorialGapSeries`
@@ -585,8 +611,8 @@ is not a publication entry.
   - compared as `PalomarCorpus.E1041.CubicPath.monic_cubic_connector`
 - `erdos1041.cyclic_tetranomial_coefficient` (#1041, lean_kernel_checked): coefficient-controlled cyclic tetranomial root-spoke bounds
   - compared as `PalomarCorpus.E1041.TetranomialSpokes.tetranomialRoot_spoke_factorization`
-  - compared as `PalomarCorpus.E1041.TetranomialSpokes.tetranomialRoot_spoke_norm_lt_one_of_rootBudget`
   - compared as `PalomarCorpus.E1041.TetranomialSpokes.tetranomialRoot_spoke_norm_lt_one_of_lowCoeffBudget`
+  - compared as `PalomarCorpus.E1041.TetranomialSpokes.tetranomialRoot_spoke_norm_lt_one_of_rootBudget`
 - `erdos1041.cyclic_trinomial_fiber` (#1041, lean_kernel_checked): centered and translated cyclic trinomial spoke-factorization and two-short-fibre endpoint
   - compared as `PalomarCorpus.E1041.CyclicTrinomialFiber.trinomialRoot_spoke_factorization`
   - compared as `PalomarCorpus.E1041.CyclicTrinomialFiber.trinomialRoot_spoke_norm_le_constant`
@@ -602,9 +628,9 @@ is not a publication entry.
   - compared as `PalomarCorpus.E1041.QuarticQuotientFiber.rootLift_endpoint_budget_lt_two`
   - compared as `PalomarCorpus.E1041.QuarticQuotientFiber.rootLift_length_lt_two_of_le_endpoint_budget`
 - `erdos1041.signed_moment_tetranomial` (#1041, lean_kernel_checked): exact signed mixed-moment energy and two-index safe-spoke selection for centered tetranomial root families
-  - compared as `PalomarCorpus.E1041.TetranomialSpokes.sum_normSq_const_add_mul`
   - compared as `PalomarCorpus.E1041.TetranomialSpokes.exists_two_tetranomialRoot_safeSpokes_of_moment_coeff_budget`
   - compared as `PalomarCorpus.E1041.TetranomialSpokes.exists_two_tails_norm_lt_one_of_exact_L2_budget`
+  - compared as `PalomarCorpus.E1041.TetranomialSpokes.sum_normSq_const_add_mul`
 - `erdos1041.solved_families` (#1041, lean_kernel_checked): sharp all-degree collinear root-diameter theorem with equality configurations, complete primitive sparse quintic, and translated cubic quotient fibres
   - compared as `PalomarCorpus.E1041.SolvedFamilies.SharpCollinear.existsPeakLeComparisonBound`
   - compared as `PalomarCorpus.E1041.SolvedFamilies.primitiveQuintic_twoStrictTailEnergies`
@@ -667,21 +693,25 @@ is not a publication entry.
   - compared as `PalomarCorpus.E243.BoundedNegativePartRigidity.boundedNegativePart_completeRigidity`
 - `erdos243.crt_bounded_rise_barrier` (#243, lean_kernel_checked): CRT bounded-rise barrier: a slowly rising natural state cannot avoid an infinite pairwise-coprime modulus family at every strict rise
   - compared as `PalomarCorpus.E243.BoundedRiseReducedTail.no_boundedRise_reducedTail`
+- `erdos243.original_coordinate_bounded_defect` (#243, lean_kernel_checked): The original rational-sum and quadratic-growth hypotheses force the Sylvester recurrence under one bounded product-defect hypothesis
+  - compared as `PalomarCorpus.E243.OriginalCoordinateBoundedDefect.original_coordinate_bounded_defect`
 - `erdos243.periodic_negative_orbit` (#243, lean_kernel_checked): phase-primitive, arbitrary-common-scale, and eventually periodic negative-magnitude orbit exclusion by prime lock, pigeonhole, and strong-induction descent
   - compared as `PalomarCorpus.E243.PeriodicNegativeOrbit.no_eventuallyPeriodicNegative_orbit`
   - compared as `PalomarCorpus.E243.PeriodicNegativeOrbit.no_periodicNegative_orbit`
   - compared as `PalomarCorpus.E243.PeriodicNegativeOrbit.no_phasePrimitivePeriodicNegative_orbit`
 - `erdos243.primitive_record_two_unit_rigidity` (#243, lean_kernel_checked): Record-setting primitive jumps of size at most two force the Sylvester recurrence under arbitrary cancellation
-  - compared as `PalomarCorpus.E243.PrimitiveRecordRigidity.sylvesterStep_of_centeredZero_pair`
-  - compared as `PalomarCorpus.E243.PrimitiveRecordRigidity.primitive_valuation_no_drop`
-  - compared as `PalomarCorpus.E243.PrimitiveRecordRigidity.centeredZero_forces_unit`
-  - compared as `PalomarCorpus.E243.PrimitiveRecordRigidity.protectedPrimePower_persists`
-  - compared as `PalomarCorpus.E243.PrimitiveRecordRigidity.numerator_bounded_of_oddPrimePower`
-  - compared as `PalomarCorpus.E243.PrimitiveRecordRigidity.odd_record_cut`
-  - compared as `PalomarCorpus.E243.PrimitiveRecordRigidity.recordRiseTwo_sylvesterNext_eventually`
   - compared as `PalomarCorpus.E243.PrimitiveRecordRigidity.exists_oddMultiple_trapHeight`
+  - compared as `PalomarCorpus.E243.PrimitiveRecordRigidity.sylvesterStep_of_centeredZero_pair`
+  - compared as `PalomarCorpus.E243.PrimitiveRecordRigidity.centeredZero_forces_unit`
+  - compared as `PalomarCorpus.E243.PrimitiveRecordRigidity.numerator_bounded_of_oddPrimePower`
+  - compared as `PalomarCorpus.E243.PrimitiveRecordRigidity.primitive_valuation_no_drop`
+  - compared as `PalomarCorpus.E243.PrimitiveRecordRigidity.recordRiseTwo_sylvesterNext_eventually`
+  - compared as `PalomarCorpus.E243.PrimitiveRecordRigidity.odd_record_cut`
+  - compared as `PalomarCorpus.E243.PrimitiveRecordRigidity.protectedPrimePower_persists`
 - `erdos243.protected_epoch_energy_criterion` (#243, lean_kernel_checked): Every protected odd prime-power epoch carries at least 1/16 of record energy, and finite energy is equivalent to the Sylvester recurrence
   - compared as `PalomarCorpus.E243.ProtectedEpochEnergy.protected_epoch_energy_integer`
+- `erdos243.record_amplified_rigidity` (#243, lean_kernel_checked): A cancellation payment remains visible at the first later negative error
+  - compared as `PalomarCorpus.E243.RecordAmplifiedCancellationVisibility.recordAmplified_error_after_cancellation`
 - `erdos243.record_increment_unit_rigidity` (#243, lean_kernel_checked): True record increments of at most one force the Sylvester recurrence under arbitrary cancellation
   - compared as `PalomarCorpus.E243.RecordIncrementBarrier.recordIncrementOne_sylvesterNext_eventually`
 - `erdos243.repair_entropy` (#243, lean_kernel_checked): repair-energy inequality, independent-family entropy bound, and eventual disappearance of fixed-length reset payments
@@ -689,8 +719,9 @@ is not a publication entry.
   - compared as `PalomarCorpus.E243.RepairEntropy.repaired_card_bound_of_independent`
   - compared as `PalomarCorpus.E243.RepairEntropy.eventually_recoveryPayment_eq_one_of_fixedLength`
 - `erdos243.saturated_square_transport` (#243, lean_kernel_checked): Square transport of consecutive centred errors modulo the whole next numerator, and the record-amplified error after a cancellation
-  - compared as `PalomarCorpus.E243.SaturatedSquareTransport.legendre_defect_forces_nonsquare_content`
+  - compared as `PalomarCorpus.E243.RecordAmplifiedCancellationVisibility.recordAmplified_error_after_cancellation`
   - compared as `PalomarCorpus.E243.SaturatedSquareTransport.saturated_square_transport_raw`
+  - compared as `PalomarCorpus.E243.SaturatedSquareTransport.legendre_defect_forces_nonsquare_content`
 - `erdos243.slow_rise_landing_barrier` (#243, lean_kernel_checked): Slow-rise landing barrier: the rise bound is needed only below twice the block product
   - compared as `PalomarCorpus.E243.SlowRiseBarrier.no_slowRise_reducedTail`
 - `erdos243.summable_negative_mass_rigidity` (#243, lean_kernel_checked): summable normalized-negative-mass complete rigidity and eventual Sylvester recurrence
@@ -724,9 +755,11 @@ is not a publication entry.
   - compared as `PalomarCorpus.E249.CarryRankFrontier.not_irrational_binaryCoeffSeries_iff_exists_temperedBinaryOrbit`
 - `erdos249.dyadic_totient_kernel` (#249, lean_kernel_checked): explicit odd-core basis, full-span equality, canonical finite normal form, and exact ranks
   - compared as `PalomarCorpus.E249.DyadicTotientKernel.dyadicTotientKernelOddCoreBasisAndFiniteRanks`
+- `erdos249.eventual_affine_endpoint_exclusion` (#249, lean_kernel_checked): The actual totient word excludes every eventually affine fixed-quotient endpoint-error mode
+  - compared as `PalomarCorpus.E249.TotientAffineModeEscape.not_eventuallyAffine_pureDyadicEndpointError`
 - `erdos249.farey_window_denominator_exclusion` (#249, lean_kernel_checked): Lean-checked Farey-window denominator exclusion (35 digits), superseded as the floor
-  - compared as `PalomarCorpus.E249.FareyWindowExclusion.farey_rat_exclusion`
   - compared as `PalomarCorpus.E249.FareyWindowExclusion.farey_int_exclusion`
+  - compared as `PalomarCorpus.E249.FareyWindowExclusion.farey_rat_exclusion`
 - `erdos249.full_depth_ray_amplifier` (#249, lean_kernel_checked): full-depth ray amplification, eventual two-syndetic kill multipliers, and exact equivalence of cofinal full-depth supply with irrationality
   - compared as `PalomarCorpus.E249.FullDepthRayAmplifier.eventually_twoSyndetic_fullDepthKillMultipliers_of_seed`
   - compared as `PalomarCorpus.E249.FullDepthRayAmplifier.exists_fullDepthKill_on_ray_iff_shift_notMem_int`
@@ -737,12 +770,12 @@ is not a publication entry.
   - compared as `PalomarCorpus.E249.MobiusMersenneLadderStructure.mobiusMersenneTheta_hankel_two_neg`
   - compared as `PalomarCorpus.E249.MobiusMersenneLadderStructure.mobiusMersenneTheta_strict_logConcave`
 - `erdos249.prefix_two_adic_valuation_exclusion` (#249, lean_kernel_checked): 2-adic valuation of the totient prefix integer: exclusion rectangle consumer (Lean) with an exact witness
-  - compared as `PalomarCorpus.E249.PrefixTwoAdicExclusion.prefix_twoAdic_denominator_exclusion`
+  - compared as `PalomarCorpus.E249.PrefixTwoAdicExclusion.oddPart_mul_prefixTail_eq_intCast`
+  - compared as `PalomarCorpus.E249.PrefixTwoAdicExclusion.totientPrefix_succ`
   - compared as `PalomarCorpus.E249.PrefixTwoAdicExclusion.totientPrefix_eq_corpusForm`
   - compared as `PalomarCorpus.E249.PrefixTwoAdicExclusion.prefix_twoAdic_odd_denominator_floor`
-  - compared as `PalomarCorpus.E249.PrefixTwoAdicExclusion.oddPart_mul_prefixTail_eq_intCast`
   - compared as `PalomarCorpus.E249.PrefixTwoAdicExclusion.prefix_twoAdic_denominator_lower_bound`
-  - compared as `PalomarCorpus.E249.PrefixTwoAdicExclusion.totientPrefix_succ`
+  - compared as `PalomarCorpus.E249.PrefixTwoAdicExclusion.prefix_twoAdic_denominator_exclusion`
 - `erdos249.rank_one_sharp_floor` (#249, lean_kernel_checked): sharp positive rank-one Schur-cone floor, unique minimizer, positive-mixture closure, and rational-linear-form obstruction
   - compared as `PalomarCorpus.E249.RankOneSharpFloor.rankOneSubrankQuotient_ge_one_five`
   - compared as `PalomarCorpus.E249.RankOneSharpFloor.rankOneSubrankQuotient_eq_one_five_iff`
@@ -761,12 +794,12 @@ is not a publication entry.
 - `erdos249.termwise_dyadic_window_vacuous` (#249, lean_kernel_checked): termwise dyadic windows exclude no denominator (Erdős-1948 transfer is vacuous for the totient)
   - compared as `PalomarCorpus.E249.TermwiseDyadicVacuous.termwise_dyadic_window_vacuous`
 - `erdos249.totient_rigidity_theorems` (#249, lean_kernel_checked): two kernel-checked rigidity theorems for the totient: one exact prime law plus o(n) error forces phi; the exact even law plus eventual congruence modulo every integer forces phi
-  - compared as `PalomarCorpus.E249.TotientRigidity.totient_prime_mul_of_dvd`
-  - compared as `PalomarCorpus.E249.TotientRigidity.totient_two_mul_of_even`
-  - compared as `PalomarCorpus.E249.TotientRigidity.one_prime_law_and_little_o_forces_totient`
   - compared as `PalomarCorpus.E249.TotientRigidity.totient_prime_mul_of_not_dvd`
-  - compared as `PalomarCorpus.E249.TotientRigidity.even_law_and_eventual_congruence_forces_totient`
+  - compared as `PalomarCorpus.E249.TotientRigidity.one_prime_law_and_little_o_forces_totient`
   - compared as `PalomarCorpus.E249.TotientRigidity.totient_two_mul_of_odd`
+  - compared as `PalomarCorpus.E249.TotientRigidity.totient_two_mul_of_even`
+  - compared as `PalomarCorpus.E249.TotientRigidity.totient_prime_mul_of_dvd`
+  - compared as `PalomarCorpus.E249.TotientRigidity.even_law_and_eventual_congruence_forces_totient`
 - `erdos251.actual_prime_gap_tail` (#251, lean_kernel_checked): actual prime-gap rational-candidate representation, unconditional actual-gap recurrence, denominator-driven eventual integral shift, and the fixed-shift smallness obstruction
   - compared as `PalomarCorpus.E251.ActualPrimeGapTail.exists_rationalPrimeGapTailState_representation_of_not_irrational`
   - compared as `PalomarCorpus.E251.ActualPrimeGapTail.rationalPrimeGapTailState_recurrence`
@@ -776,6 +809,8 @@ is not a publication entry.
   - compared as `PalomarCorpus.E251.AffineCircularity.adjacent_small_mismatch_iff_signed_two_window`
   - compared as `PalomarCorpus.E251.AffineCircularity.cofinal_affinePowTwo_escape_iff_not_eventuallyIntegral`
   - compared as `PalomarCorpus.E251.AffineCircularity.cofinal_blockResidue_escape_iff_not_eventuallyIntegral`
+- `erdos251.all_residue_logarithmic_countermodel` (#251, lean_kernel_checked): A rational logarithmic dyadic word with small digits recurring in every residue class and PNT-scale cumulative growth
+  - compared as `PalomarCorpus.E251.AllResidueLogarithmicCountermodel.exists_every_residue_logarithmic_countermodel`
 - `erdos251.free_pair_equivalence` (#251, lean_kernel_checked): Free-pair lattice and the equivalence of irrationality with cofinal free-pair nonintegrality
   - compared as `PalomarCorpus.E251.FreePairEquivalence.irrational_primeGap_tsum_iff_cofinalFreePairNonintegral`
   - compared as `PalomarCorpus.E251.FreePairEquivalence.irrational_initial_iff_cofinalFreePairNonintegral`
@@ -805,6 +840,9 @@ is not a publication entry.
   - compared as `PalomarCorpus.E251.PrimeGapIdentity.primeSeries_irrational_iff_primeGapSeries`
   - compared as `PalomarCorpus.E251.PrimeGapIdentity.primeDisplayedSeries_eq_four_add_two_primeGapSeries`
   - compared as `PalomarCorpus.E251.PrimeGapIdentity.primeDisplayedSeries_irrational_iff_primeGapSeries`
+- `erdos251.shifted_four_prime_counting_reduction` (#251, lean_kernel_checked): Shifted prime-gap coincidences reduce to an explicit four-prime counting problem
+  - compared as `PalomarCorpus.E251.ShiftedFourPrimeCounting.separated_zeroDensity_of_quad_sieve`
+  - compared as `PalomarCorpus.E251.ShiftedFourPrimeCounting.shifted_count_bound`
 - `erdos257.achievement_set_geometry` (#257, lean_kernel_checked): achievement-set topology and exact volume dichotomy
   - compared as `PalomarCorpus.E257.AchievementSetGeometry.volume_supportedMersenneAchievementSet_eq_zero_of_rat_value`
   - compared as `PalomarCorpus.E257.AchievementSetGeometry.supportedMersenneAchievementSet_geometry_and_volume`
@@ -819,20 +857,20 @@ is not a publication entry.
 - `erdos257.divisibility_weighted_support_irrationality` (#257, lean_kernel_checked): Finite divisibility-weighted mass implies hereditary all-base irrationality, including explicit reciprocal-divergent short-gap supports.
   - compared as `PalomarCorpus.E257.DivisibilityWeightedSupport.divisibilityWeightedClaim`
 - `erdos257.fair_coding_lebesgue_pushforward` (#257, lean_kernel_checked): Fair Mersenne digit coding gives restricted Lebesgue measure and almost-everywhere irrationality
-  - compared as `PalomarCorpus.E257.FairCoding.fairCoding_pushforward_eq_volume_restrict`
   - compared as `PalomarCorpus.E257.FairCoding.fairCoding_rational_values_null`
+  - compared as `PalomarCorpus.E257.FairCoding.fairCoding_pushforward_eq_volume_restrict`
   - compared as `PalomarCorpus.E257.FairCoding.measurePreserving_fairCoding`
 - `erdos257.finite_period_noncollapse` (#257, lean_kernel_checked): complete finite-period noncollapse with denominator growth
   - compared as `PalomarCorpus.E257.FinitePeriodNoncollapse.finite_period_noncollapse_rat_den`
   - compared as `PalomarCorpus.E257.FinitePeriodNoncollapse.lcm_lt_den_finiteErdosSum`
 - `erdos257.four_ninths_square_root_repair_windows` (#257, lean_kernel_checked): 4/9 membership is equivalent to a repair at some N in every interval [K,K+2 floor(sqrt K)+12). A single strict-increase window excludes membership.
   - compared as `PalomarCorpus.E257.FourNinthsRepairWindows.four_ninths_mem_iff_repair_sqrt_windows`
-  - compared as `PalomarCorpus.E257.FourNinthsRepairWindows.four_ninths_not_mem_of_strict_sqrt_window`
   - compared as `PalomarCorpus.E257.FourNinthsRepairWindows.exists_repair_in_sqrt_window`
+  - compared as `PalomarCorpus.E257.FourNinthsRepairWindows.four_ninths_not_mem_of_strict_sqrt_window`
   - compared as `PalomarCorpus.E257.FourNinthsRepairWindows.four_ninths_mem_iff_repairCofinal`
 - `erdos257.generic_real_target_square_root_repair_criterion` (#257, lean_kernel_checked): For every real x >= 0, define Q_N as floor_nat(2^N x) minus the actual greedy support Lambert prefix numerator. Membership of x in the Mersenne achievement set is equivalent to cofinal nonincreases of Q_N, to a nonincrease in every [K,K+2 floor(sqrt K)+12), to cofinal Q_N <= the actual next divisor load, and to cofinal Q_N <= N+1. One strict-increase window excludes membership.
-  - compared as `PalomarCorpus.E257.GeneralRepairCriterion.mem_iff_greedyBinaryDefect_cofinal_repairs`
   - compared as `PalomarCorpus.E257.GeneralRepairCriterion.mem_iff_greedyBinaryDefect_sqrt_windows`
+  - compared as `PalomarCorpus.E257.GeneralRepairCriterion.mem_iff_greedyBinaryDefect_cofinal_repairs`
 - `erdos257.literal_weighted_cover_separation` (#257, lean_kernel_checked): A literal weighted host outside every strengthened cover, with mixed hereditary irrationality
   - compared as `PalomarCorpus.E257.LiteralWeightedCover.exists_weighted_not_strengthened_host`
   - compared as `PalomarCorpus.E257.LiteralWeightedCover.exists_weighted_obstruction_with_mixed_heredity`
@@ -843,9 +881,9 @@ is not a publication entry.
   - compared as `PalomarCorpus.E257.PositiveSkipEquivalence.cofinalPositiveHalfGreedySkips_iff_half_mem`
 - `erdos257.rational_membership_criterion` (#257, lean_kernel_checked): Rational membership in the Mersenne achievement set is equivalent to cofinal greedy skips
   - compared as `PalomarCorpus.E257.RationalMembership.greedyMersenneSkippedSupport_infinite_iff_cofinal_skips`
+  - compared as `PalomarCorpus.E257.RationalMembership.infinite_greedyMersenneSkippedSupport_of_rat_mem`
   - compared as `PalomarCorpus.E257.RationalMembership.rat_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite`
   - compared as `PalomarCorpus.E257.RationalMembership.rat_mem_mersenneAchievementSet_iff_cofinal_greedy_skips`
-  - compared as `PalomarCorpus.E257.RationalMembership.infinite_greedyMersenneSkippedSupport_of_rat_mem`
 - `erdos257.rational_tail_rigidity` (#257, lean_kernel_checked): support-uniform rational-tail rigidity: unbounded integral states, sublogarithmic divisor-coverage gaps, and sharp odd/dyadic reciprocal-mass constraints
   - compared as `PalomarCorpus.E257.RationalTailRigidity.exists_unbounded_shifted_odd_tail_nat_state_of_support_fraction`
   - compared as `PalomarCorpus.E257.RationalTailRigidity.supportCoeffZeroWindow_length_le_eps_logb_add`
@@ -933,20 +971,23 @@ is not a publication entry.
   - compared as `PalomarCorpus.E68.CompanionOrbitBoundary.companionOrbitBoundary_factorialGapSeries`
   - compared as `PalomarCorpus.E68.CompanionOrbitBoundary.tsum_unitFactTerm_eq_exp_one_sub_two`
 - `erdos68.exact_low_channel_moment_ideal` (#68, lean_kernel_checked): Exact attainable low-channel moment ideal with a content-one primitive generator
-  - compared as `PalomarCorpus.E68.MomentIdeal.exact_moment_ideal_with_primitive_attainment`
   - compared as `PalomarCorpus.E68.MomentIdeal.attainable_moment_ideal`
-  - compared as `PalomarCorpus.E68.MomentIdeal.minimum_moment_content_one`
   - compared as `PalomarCorpus.E68.MomentIdeal.minimumMoment_independent_prime`
+  - compared as `PalomarCorpus.E68.MomentIdeal.exact_moment_ideal_with_primitive_attainment`
+  - compared as `PalomarCorpus.E68.MomentIdeal.minimum_moment_content_one`
+- `erdos68.factorial_gap_lcm_lower_bound` (#68, lean_kernel_checked): Lean-checked 3/2 lower growth for lcm_{2<=n<=N}(n!-1)
+  - compared as `PalomarCorpus.E68.CommonDenominatorGrowth.common_denominator_growth_liminf`
+  - compared as `PalomarCorpus.E68.CommonDenominatorGrowth.common_denominator_growth`
 - `erdos68.finite_size_denominator_exclusion_10e12040` (#68, lean_kernel_checked): Kernel-checked finite denominator floor q > 10^12040
   - compared as `PalomarCorpus.E68.FiniteDenominator.finite_denominator_exclusion`
 - `erdos68.full_residual_integer_class` (#68, lean_kernel_checked): Full residual transparency and invariance modulo the integers
-  - compared as `PalomarCorpus.E68.ResidualIntegerClass.zero_moment_residual_integral`
-  - compared as `PalomarCorpus.E68.ResidualIntegerClass.residual_transparency`
   - compared as `PalomarCorpus.E68.ResidualIntegerClass.equal_moment_residual_integer_difference`
+  - compared as `PalomarCorpus.E68.ResidualIntegerClass.zero_moment_residual_integral`
   - compared as `PalomarCorpus.E68.ResidualIntegerClass.summable_fullResidual`
+  - compared as `PalomarCorpus.E68.ResidualIntegerClass.residual_transparency`
 - `erdos68.kempner_index_denominator_exclusion` (#68, lean_kernel_checked): Kempner-index exclusion: a non-unit carry at m forces q ∤ (m−1)!
-  - compared as `PalomarCorpus.E68.KempnerIndex.rational_denominator_not_dvd_pred_factorial_of_nonunit_carry`
   - compared as `PalomarCorpus.E68.KempnerIndex.rational_denominator_not_dvd_fiftynine_factorial`
+  - compared as `PalomarCorpus.E68.KempnerIndex.rational_denominator_not_dvd_pred_factorial_of_nonunit_carry`
 - `erdos68.moving_factor_scale_split` (#68, lean_kernel_checked): one-moving-private-factor scale split, arbitrary split-factor normalized-collision criterion, and fixed-owner absorption no-go
   - compared as `PalomarCorpus.E68.MovingFactorScaleSplit.movingPrivateFactorScaleSplit_implies_irrational`
   - compared as `PalomarCorpus.E68.MovingFactorScaleSplit.splitFactorNormalizedCollision_implies_irrational`
@@ -956,9 +997,9 @@ is not a publication entry.
   - compared as `PalomarCorpus.E68.MultiplicativeSuccessorRigidity.gapSuccessor_eq_mul_pred_of_dvd`
   - compared as `PalomarCorpus.E68.MultiplicativeSuccessorRigidity.gapSuccessor_dvd_of_eventually_dvd`
   - compared as `PalomarCorpus.E68.MultiplicativeSuccessorRigidity.factorial_mul_gapSuccessor_eq_of_eventually_dvd`
-  - compared as `PalomarCorpus.E68.MultiplicativeSuccessorRigidity.irrational_factorialGapSeries_of_cofinal_not_dvd_gapSuccessor`
   - compared as `PalomarCorpus.E68.MultiplicativeSuccessorRigidity.not_eventually_odd_gapSuccessor_of_not_irrational`
   - compared as `PalomarCorpus.E68.MultiplicativeSuccessorRigidity.eventually_dvd_gapSuccessor_of_not_irrational`
+  - compared as `PalomarCorpus.E68.MultiplicativeSuccessorRigidity.irrational_factorialGapSeries_of_cofinal_not_dvd_gapSuccessor`
 - `erdos68.prime_pole` (#68, lean_kernel_checked): finite prime-pole residue formula
   - compared as `PalomarCorpus.E68.PrimePole.factorialGapPrefixLCMNumerator_mod_prime`
 - `erdos68.prime_unit_translator` (#68, lean_kernel_checked): exact prime-unit translator profile, integer residual-translation law, and unconditional remote factorial-grid Cramer reduction
@@ -975,7 +1016,7 @@ is not a publication entry.
 
 ## Paper-only claims (not manufactured as Comparator coverage)
 
-82 frontier claims remain paper-only, including ordinary-paper
+85 frontier claims remain paper-only, including ordinary-paper
 theorems that have formalized kernels or helpers.
 
 - `erdos1041.all_degree_invariants_and_pinned_witness_connectors` (#1041): Completed trace-curvature measure, sharp nodal Crofton budget 2nR, polygonal contour 1-sin(pi/d), and exact noncritical-hub connectors on the pinned witnesses
@@ -984,6 +1025,7 @@ theorems that have formalized kernels or helpers.
 - `erdos1041.chord_conditioned_bergman` (#1041): Chord-conditioned Bergman geodesic bound with optimal spectral coefficient and a separating rational cubic
 - `erdos1041.circle_slice_angular_closure_thirteen_twentyfifths` (#1041): Unconditional all-degree regime: least critical value at most 13/25, via the circle-slice angular packing floor
 - `erdos1041.cluster_separation_low_critical_closure` (#1041): Unconditional all-degree regime: least critical value at most 9/25, via pairwise hyperbolic separation of the ancestor component's roots
+- `erdos1041.concyclic_alternation` (#1041): An adjacent-root chord in the open lemniscate for every concyclic root set of radius at most 2^(-1/n)
 - `erdos1041.critical_value_separation_sharp_constant` (#1041): Sharp constant 2 in every degree under critical-value separation
 - `erdos1041.disk_family_critical_value_separation` (#1041): all-degree Erdos 1041 conclusion in the disk-separated simple-hub regime: separation 4/3 from any real centre of the value segment suffices in every degree n >= 3
 - `erdos1041.exterior_energy_has_no_failure_derived_floor` (#1041): The exterior coefficient energy S of the ancestor component has no floor derivable from the failure inequalities
@@ -1009,10 +1051,10 @@ theorems that have formalized kernels or helpers.
 - `erdos1041.translated_nonadjacent_trinomial` (#1041): Every translated trinomial (z-h)^n + A(z-h)^m + C with 1 <= m <= n-2, coprime exponents included
 - `erdos1041.unconditional_constant_factor_71_over_10` (#1041): Unconditional constant-factor bound (71/10) μ^{1/n} inside K_{2μ}
 - `erdos1049.f_31_over_4_irrational_conditional` (#1049): F(31/4) and every F((31/4)^r) are irrational, conditional on Zudilin 2004 Lemma 7 and Lemma 2
-- `erdos1049.hankel_qorder_exact_all_rank` (#1049): Exact q-order N(N−1)(2N−1)/6 and leading coefficient (N!)²(N+1)!/2^N of Zudilin's normalized Hankel determinant
-- `erdos1049.homogenisation_ceiling_fixed_diagonal` (#1049): Homogenisation ceiling: every content lane on the fixed diagonal is capped at a > b²
+- `erdos1049.hankel_qorder_exact_all_rank` (#1049): Exact q-order N(N-1)(2N-1)/6 and leading coefficient (N!)^2(N+1)!/2^N of Zudilin's normalized Hankel determinant
+- `erdos1049.homogenisation_ceiling_fixed_diagonal` (#1049): Every outward scalar evaluation at 3/2 retains a positive forced-clearing main term
 - `erdos1049.homogenisation_contour_hypothesis` (#1049): The 0.40568… contour as an underived hypothesis (superseded by the conditional theorem)
-- `erdos1049.rational_base_region_theorem` (#1049): F(a/b) is irrational on the region b^μ < a, μ = 2.46497868…; 31/4 is the first new base
+- `erdos1049.rational_base_region_theorem` (#1049): F(a/b) is irrational on the region b^mu < a, mu = 2.46497868...; 31/4 is the first new base
 - `erdos243.counterexample_frontier_profile` (#243): Frontier profile of any counterexample to #243
 - `erdos243.critical_boundary_integer_rounding_rigidity` (#243): Integer rounding under a divergent-reciprocal envelope forces a linear numerator and the Sylvester recurrence at and past the critical constant
 - `erdos243.good_prime_wall_landing_barrier` (#243): Distinct primes of the denominator that never reach the numerator below a ceiling force a rise larger than the wall width at the crossing
@@ -1021,7 +1063,6 @@ theorems that have formalized kernels or helpers.
 - `erdos243.lcm_defect_criterion_is_primitive_reduction` (#243): The lcm-weighted defect criterion is the product criterion after primitive reduction
 - `erdos243.polynomial_profile_rigidity` (#243): No eventual or density-one polynomial numerator profile: nine finite-field feedback certificates and the rational-root exclusion
 - `erdos243.primitive_height_prime_height_dichotomy` (#243): A counterexample has unbounded primitive height over n or unbounded largest denominator prime over the running record
-- `erdos243.record_amplified_rigidity` (#243): Bounded record-amplified error is equivalent to the Sylvester recurrence under arbitrary cancellation; at the critical rate, so are linear numerator height and bounded negative part
 - `erdos243.record_excess_dichotomy_inclusive_loglog` (#243): The record-increment coefficient is zero or strictly greater than one, closing the inclusive log-log boundary
 - `erdos243.record_increment_cancellation_tradeoff` (#243): Small true record increments force large accumulated cancellation: K + Gamma >= 1 and the finite record-retirement dichotomy
 - `erdos243.rising_factorial_cubic_exclusion_cubic_rate_irrationality` (#243): No rising-factorial cubic numerator profile even up to density-zero repairs, and the reciprocal sum is irrational at the exact cubic rate 1 + 3/n + o(n^-3)
@@ -1034,6 +1075,7 @@ theorems that have formalized kernels or helpers.
 - `erdos249.control_rigidity_and_prime_uniformity` (#249): rational controls: precision–error frontier, controls obeying any finite set of exact prime laws, and r03's exact-even control; the diagnosis is loss of prime uniformity at an o(n) error scale
 - `erdos249.mechanism_gap_sigma_solved_and_no_eta_quotient` (#249): the mechanism gap: Erdős #250 (sigma) is solved by Duverney/Nesterenko, #249 is the unbounded-level Möbius superposition phi = (mu*mu)*sigma of it, the eta-quotient and finite-quasimodular routes do not exist, and every remaining implication is irrationality in another coordinate
 - `erdos249.prefix_two_adic_unbounded_excess_condition` (#249): one-way sufficient condition: unbounded excess of v_2(P_n) over log2 n forces irrationality (the compression producer for the reduced dyadic prefixes)
+- `erdos249.prefix_window_residue_diversity` (#249): Cofinal linear diversity of growing dyadic prefix residues is sufficient for irrationality
 - `erdos249.rank_uniform_hankel_and_cyclotomic_denominators` (#249): rank-uniform signed Hankel domination of the Möbius–Mersenne ladder, the parity-corrected exact 2-adic valuation, and the closure of denominator compression inside the cyclotomic lattice (kappa = 0.4282 N^2 prefix denominators, derivative rungs, coupled Schur family)
 - `erdos249.tail_only_denominator_exclusion_10e30` (#249): tail-only denominator exclusion: no S = a/(2^c v) with c <= 10^30 for every odd v <= 999999 and every divisor of 2^h - 1, h in {6,12,24,36,60}
 - `erdos251.certified_cf_denominator_exclusion_10e12041` (#251): Certified continued-fraction denominator floor q > 10^12041 for the prime-gap dyadic series
@@ -1043,6 +1085,7 @@ theorems that have formalized kernels or helpers.
 - `erdos251.polynomial_gap_countermodel_series_value_32` (#251): The polynomial countermodel series sums to exactly 32 (Lean tsum)
 - `erdos251.scalar_truncation_consumers` (#251): Kernel-checked scalar consumers for bad-count and truncation-error bounds
 - `erdos257.arbitrary_prime_power_support_irrationality` (#257): Every infinite subset of the prime powers, with fixed dilations and finite modifications, has irrational sum at every integer base, using the reviewed analytic correlation input.
+- `erdos257.delayed_gluing_host_outside_finite_mixed` (#257): Delayed gluing gives hereditary all-base irrational supports beyond every finite weighted-cover mixture
 - `erdos257.periodic_core_sparse_perturbation_probe` (#257): Falsification probes for the periodic-core sparse-perturbation programme pass with zero violations
 - `erdos257.powerful_support_kernel` (#257): Powerful-support irrationality (superseded by the reciprocal-summable theorem)
 - `erdos257.prime_cofactor_repair_obstruction` (#257): Actual modulus-420 tetraprime repair fails infinitely often; an exact 80-anchor prefix gives prime-cofactor jumps at least 7 for multiplier 120 and at least 2 for multiplier 420. General infinite admissible supports defeat every finite fixed multiplier menu.
@@ -1054,11 +1097,12 @@ theorems that have formalized kernels or helpers.
 - `erdos257.sub_logstar_reciprocal_mass_irrationality` (#257): Rational p/q forces liminf H_A(x)/ell(x) at least lambda_b(p/q)/2; sub-log-star mass implies hereditary all-base irrationality.
 - `erdos257.twenty_one_two_anchor_divergence_density` (#257): Conditional 1/21 divergence density from finite selected anchors, including the 2/5 twelve-anchor bound
 - `erdos269.certified_cf_denominator_exclusion_10e6768` (#269): Certified denominator floor 10^6768 for the {2,3,5} running-LCM series
+- `erdos269.coordinate_fibre_decoding` (#269): Irrationality of every coordinate fibre for {2,3,5}, and of largest-prime fibres for all finite prime sets
 - `erdos269.finite_farey_certificate_1_64e90` (#269): M = 200 Farey box exclusion (superseded)
 - `erdos269.lattice_first_hit_denominator_exclusion_10e187` (#269): Lattice first-hit denominator screen at depth 420 (superseded)
 - `erdos269.running_height_prime_power_telescope` (#269): ∑_{p∈{2,3,5}} (p−1) ∑_{n≥1} 1/H(p^n) = 1
 - `erdos68.certified_cf_denominator_exclusion_10e12039` (#68): Certified continued-fraction denominator floor q > 10^12039
-- `erdos68.factorial_gap_lcm_lower_bound` (#68): log lcm_{2≤n≤N}(n!−1) ≫ N^{4/3} log N
+- `erdos68.polynomial_perturbation_lcm_growth` (#68): Uniform 3/2 LCM growth for every fixed nonzero polynomial perturbation n!+P(n)
 - `erdos68.strict_successor_carry_search_q_ge_300000` (#68): Size exclusion q ≥ 300000 from the strict-successor carry search (superseded as the floor)
 
 ## Uncovered required Lean (not dropped by a Signal floor)
