@@ -294,6 +294,37 @@ noncomputable def throughLevelFamily (k e : ℕ) : ThroughLevelIndex k e → ℕ
 noncomputable def relationMap (k e : ℕ) :
     (ThroughLevelIndex k e → ℚ) →ₗ[ℚ] (ℕ → ℚ) :=
   Fintype.linearCombination ℚ (throughLevelFamily k e)
+/-- The `ℤ`-linear span, inside the functions `ℕ → ℚ`, of the complete unreduced base-`k` family through level `e`. -/
+noncomputable abbrev IntegralChannelSpan (k e : ℕ) :=
+  Submodule.span ℤ (Set.range (throughLevelFamily k e))
+/-- The unreduced channel retained for each canonical index: a left index `i` gives the zero-residue channel `⟨i, 0⟩`, and a right index `x` at level `j + 1` gives the channel `⟨j + 1, canonicalResidue k x⟩`. The hypotheses `2 ≤ k` and `1 ≤ e` supply the bounds that make these valid indices. -/
+noncomputable def retainedChannel (k e : ℕ) (hk : 2 ≤ k) (he : 1 ≤ e) :
+    CanonicalIndex k e → ThroughLevelIndex k e
+  | Sum.inl i =>
+      ⟨⟨i.val, by have hi := i.isLt; omega⟩,
+        ⟨0, pow_pos (by omega : 0 < k) _⟩⟩
+  | Sum.inr x =>
+      ⟨⟨x.1.val + 1, by have hx := x.1.isLt; omega⟩,
+        ⟨canonicalResidue k x, by
+          show k * x.2.1.val + (x.2.2.val + 1) < k ^ (x.1.val + 1)
+          have hs : x.2.1.val + 1 ≤ k ^ x.1.val := x.2.1.isLt
+          have hu : x.2.2.val < k - 1 := x.2.2.isLt
+          calc k * x.2.1.val + (x.2.2.val + 1) < k * x.2.1.val + k := by omega
+            _ = k * (x.2.1.val + 1) := by ring
+            _ ≤ k * k ^ x.1.val := Nat.mul_le_mul_left k hs
+            _ = k ^ (x.1.val + 1) := by ring⟩⟩
+/-- The unreduced channel indices through level `e` that are not retained channels. -/
+noncomputable abbrev OmittedIntegralChannel (k e : ℕ) (hk : 2 ≤ k) (he : 1 ≤ e) :=
+  { i : ThroughLevelIndex k e // i ∉ Set.range (retainedChannel k e hk he) }
+/-- The `ℤ`-linear evaluation sending a finitely supported integer combination of the unreduced channel symbols through level `e` to the corresponding element of their integral span. -/
+noncomputable def integralChannelEvaluation (k e : ℕ) :
+    (ThroughLevelIndex k e →₀ ℤ) →ₗ[ℤ] IntegralChannelSpan k e :=
+  Finsupp.linearCombination ℤ
+    (fun i => (⟨throughLevelFamily k e i, Submodule.subset_span ⟨i, rfl⟩⟩ :
+      IntegralChannelSpan k e))
+/-- The module of integer relations among the unreduced channels through level `e`, the kernel of the integral evaluation. -/
+noncomputable abbrev IntegralRelations (k e : ℕ) :=
+  LinearMap.ker (integralChannelEvaluation k e)
 end PalomarCorpus.E249.TotientKernelBasis
 
 namespace PalomarCorpus.E249.TotientRigidity

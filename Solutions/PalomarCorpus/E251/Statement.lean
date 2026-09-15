@@ -201,3 +201,54 @@ noncomputable def SeparatedQuadSieve_target (h : ℕ) (r : ℤ) : Prop :=
     ((h + 1 : ℕ) : ℝ) * prime0 (N + (h + 1)) +
       (H + 1 : ℕ) * ((quadCandidates N H r).card : ℝ) < ε * N * (H + 1 : ℕ)
 end PalomarCorpus.E251.ShiftedFourPrimeCounting
+
+namespace PalomarCorpus.E251.SparseRationalisation
+/-- Upper Banach density zero in reciprocal-integer form: for every positive natural `R` there is a length `L₀` such that every half-open interval `[a, a + L)` with `L ≥ L₀` contains at most `L / R` elements of `S`, written as `R` times the count being at most `L`. The bound is uniform in the starting point `a`. -/
+noncomputable def UpperBanachZero (S : Set ℕ) : Prop := by
+  classical
+  exact ∀ R : ℕ, 0 < R → ∃ L₀ : ℕ, ∀ a L : ℕ, L₀ ≤ L →
+    R * ((Finset.Ico a (a + L)).filter (fun n => n ∈ S)).card ≤ L
+/-- The spacing `(k + 4) ^ 2` between consecutive support centres at schedule level `k`. -/
+noncomputable def gap (k : ℕ) : ℕ := (k + 4) ^ 2
+/-- The digit capacity `4 (k + 3)! 2 ^ gap k` available at schedule level `k`. -/
+noncomputable def amplitude (k : ℕ) : ℕ := 4 * (k + 3).factorial * 2 ^ gap k
+/-- Level `k` is ready at index `n` for the envelope `f` when every index `m ≥ n` has `amplitude k ≤ f m` in the reals and `amplitude k ≤ m + 1` in the naturals. -/
+noncomputable def Ready (f : ℕ → ℝ) (n k : ℕ) : Prop :=
+  ∀ m, n ≤ m → (amplitude k : ℝ) ≤ f m ∧ amplitude k ≤ m + 1
+/-- The level used after the centre `n` when the current level is `k`: `k + 1` if level `k + 1` is ready at `n`, and `k` otherwise. -/
+noncomputable def upgrade (f : ℕ → ℝ) (n k : ℕ) : ℕ := by
+  classical
+  exact if Ready f n (k + 1) then k + 1 else k
+/-- The schedule state (centre, level) at step `j` for the envelope `f`: `(start, 0)` at step `0`, and from the state `(c, k)` the next centre is `n = c + gap k`, with level `upgrade f n k`. -/
+noncomputable def state (f : ℕ → ℝ) (start : ℕ) : ℕ → ℕ × ℕ
+  | 0 => (start, 0)
+  | j + 1 =>
+      let s := state f start j
+      let n := s.1 + gap s.2
+      (n, upgrade f n s.2)
+/-- The `j`-th support centre of the schedule for the envelope `f` begun at `start`, the first coordinate of the schedule state; the centres increase strictly with `j`. -/
+noncomputable def centre (f : ℕ → ℝ) (start j : ℕ) : ℕ := (state f start j).1
+/-- The envelope `n ↦ (log (n + 3)) ^ α`, a real power of the natural logarithm. -/
+noncomputable def polylog (α : ℝ) (n : ℕ) : ℝ := (Real.log ((n : ℝ) + 3)) ^ α
+/-- The iterated logarithm `n ↦ log (log (n + 3))`. -/
+noncomputable def iterlog (n : ℕ) : ℝ := Real.log (Real.log ((n : ℝ) + 3))
+/-- The values of `c` lying in the half-open interval `[a, a + L)`, as a finite set of natural numbers. -/
+noncomputable def supportSlice (c : ℕ → ℕ) (a L : ℕ) : Finset ℕ := by
+  classical
+  exact (Finset.Ico a (a + L)).filter (fun n => n ∈ Set.range c)
+/-- The starting indices `N` in the finite set `I` whose length-`m` block `i ↦ a (N + i)` belongs to the set of blocks `event`. -/
+noncomputable def eventStarts {α : Type*} (a : ℕ → α) (I : Finset ℕ) (m : ℕ)
+    (event : Set (Fin m → α)) : Finset ℕ := by
+  classical
+  exact I.filter (fun N => (fun i : Fin m => a (N + i.val)) ∈ event)
+/-- The proportion of starting indices `N` in `[X, 2 X)` whose length-`m` block of `a` belongs to `E`: the number of such `N` divided by `X`. -/
+noncomputable def eventFrequency {α : Type*} (a : ℕ → α) (X m : ℕ)
+    (E : Set (Fin m → α)) : ℝ := (eventStarts a (Finset.Ico X (2 * X)) m E).card / (X : ℝ)
+/-- The mean over starting indices `N` in `[X, 2 X)` of the test `Φ` evaluated at `N` and at the length-`m` block of `a` starting at `N`, the sum divided by `X`. -/
+noncomputable def testMean {α : Type*} (a : ℕ → α) (X m : ℕ)
+    (Φ : ℕ → (Fin m → α) → ℝ) : ℝ :=
+  (∑ N ∈ Finset.Ico X (2 * X), Φ N (fun i => a (N + i.val))) / X
+/-- The total variation distance between the length-`m` block distributions of `a` and `b` over starting indices in `[X, 2 X)`, in the supremum-over-events convention: the supremum over all sets `E` of blocks of `|eventFrequency a X m E - eventFrequency b X m E|`. -/
+noncomputable def blockTV {α : Type*} (a b : ℕ → α) (X m : ℕ) : ℝ :=
+  sSup (Set.range (fun E : Set (Fin m → α) => |eventFrequency a X m E - eventFrequency b X m E|))
+end PalomarCorpus.E251.SparseRationalisation

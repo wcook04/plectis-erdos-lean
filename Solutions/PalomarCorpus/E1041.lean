@@ -6,6 +6,7 @@ Authors: Will Cook
 import Mathlib
 import Solutions.PalomarCorpus.E1041.Statement
 import Solutions.PalomarCorpus.E1041.CriticalGeometry
+import Solutions.PalomarCorpus.E1041.CriticalValueMean
 import Solutions.PalomarCorpus.E1041.CubicPath
 import Solutions.PalomarCorpus.E1041.CyclicTrinomialFiber
 import Solutions.PalomarCorpus.E1041.FirstMergeCriticalValueSeparation

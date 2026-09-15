@@ -2,6 +2,7 @@
   "challenge_module": "PalomarCorpus.E1049.Challenge",
   "solution_module": "Solutions.PalomarCorpus.E1049",
   "theorem_names": [
+    "PalomarCorpus.E1049.AdelicHeightBridge.coeff_zudilinNormalizedHankelDet_all_rat",
     "PalomarCorpus.E1049.AdelicHeightBridge.exists_distinct_binary_selectors_same_fourJet_of_power_certificate",
     "PalomarCorpus.E1049.AdelicHeightBridge.exists_distinct_binary_selectors_same_fourJet_of_rank_41",
     "PalomarCorpus.E1049.AdelicHeightBridge.exists_ne_map_eq_map_ne_of_card_mul_lt",
@@ -14,6 +15,7 @@
     "PalomarCorpus.E1049.AdelicHeightBridge.zudilinScalarContent_cannot_meet_required_charge",
     "PalomarCorpus.E1049.AdelicHeightBridge.zudilinScalarPlusBorder_cannot_meet_required_charge",
     "PalomarCorpus.E1049.AdelicHeightBridge.zudilinSharpHankelOrderAndCoeff_algebraicAssembly",
+    "PalomarCorpus.E1049.AdelicHeightBridge.zudilinSharpHankelOrderAndCoeff_all",
     "PalomarCorpus.E1049.AdelicHeightBridge.zudilin_firstTransformedRow_initialMonomial",
     "PalomarCorpus.E1049.ArchimedeanCap.archimedean_cap",
     "PalomarCorpus.E1049.ArchimedeanCap.cleared_below_square_not_tendsto_zero",

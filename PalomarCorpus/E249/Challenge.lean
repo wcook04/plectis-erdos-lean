@@ -26,6 +26,9 @@ period. No theorem here turns eventual periodicity into a finite rank bound.
 `TotientKernelBasis` and `DyadicTotientKernel`: for every base `k ≥ 2` and
 depth `e ≥ 1` the base `k` kernel through level `e` has rank exactly
 `k ^ e + 1`, with a canonical basis and the exact relation-module dimension.
+Over `ℤ` the span of the unreduced channels has the canonical channels as a
+basis, and the relation module has a basis of two-term reductions and rank
+`∑_{j < e - 1} k ^ (j + 1)`.
 Martin 2006 already implies the affine independence input; Coons 2010 owns
 non-`k`-regularity of `φ`.
 
@@ -665,6 +668,49 @@ theorem allBaseTotientKernelBasisRankAndRelationDimension
         k ^ e + 1 ∧
       finrank ℚ (LinearMap.ker (relationMap k e)) =
         ∑ j ∈ Finset.Ico 1 e, k ^ j := by
+  sorry
+/-- The `ℤ`-linear span, inside the functions `ℕ → ℚ`, of the complete unreduced base-`k` family through level `e`. -/
+noncomputable abbrev IntegralChannelSpan (k e : ℕ) :=
+  Submodule.span ℤ (Set.range (throughLevelFamily k e))
+/-- The unreduced channel retained for each canonical index: a left index `i` gives the zero-residue channel `⟨i, 0⟩`, and a right index `x` at level `j + 1` gives the channel `⟨j + 1, canonicalResidue k x⟩`. The hypotheses `2 ≤ k` and `1 ≤ e` supply the bounds that make these valid indices. -/
+noncomputable def retainedChannel (k e : ℕ) (hk : 2 ≤ k) (he : 1 ≤ e) :
+    CanonicalIndex k e → ThroughLevelIndex k e
+  | Sum.inl i =>
+      ⟨⟨i.val, by have hi := i.isLt; omega⟩,
+        ⟨0, pow_pos (by omega : 0 < k) _⟩⟩
+  | Sum.inr x =>
+      ⟨⟨x.1.val + 1, by have hx := x.1.isLt; omega⟩,
+        ⟨canonicalResidue k x, by
+          show k * x.2.1.val + (x.2.2.val + 1) < k ^ (x.1.val + 1)
+          have hs : x.2.1.val + 1 ≤ k ^ x.1.val := x.2.1.isLt
+          have hu : x.2.2.val < k - 1 := x.2.2.isLt
+          calc k * x.2.1.val + (x.2.2.val + 1) < k * x.2.1.val + k := by omega
+            _ = k * (x.2.1.val + 1) := by ring
+            _ ≤ k * k ^ x.1.val := Nat.mul_le_mul_left k hs
+            _ = k ^ (x.1.val + 1) := by ring⟩⟩
+/-- The unreduced channel indices through level `e` that are not retained channels. -/
+noncomputable abbrev OmittedIntegralChannel (k e : ℕ) (hk : 2 ≤ k) (he : 1 ≤ e) :=
+  { i : ThroughLevelIndex k e // i ∉ Set.range (retainedChannel k e hk he) }
+/-- The `ℤ`-linear evaluation sending a finitely supported integer combination of the unreduced channel symbols through level `e` to the corresponding element of their integral span. -/
+noncomputable def integralChannelEvaluation (k e : ℕ) :
+    (ThroughLevelIndex k e →₀ ℤ) →ₗ[ℤ] IntegralChannelSpan k e :=
+  Finsupp.linearCombination ℤ
+    (fun i => (⟨throughLevelFamily k e i, Submodule.subset_span ⟨i, rfl⟩⟩ :
+      IntegralChannelSpan k e))
+/-- The module of integer relations among the unreduced channels through level `e`, the kernel of the integral evaluation. -/
+noncomputable abbrev IntegralRelations (k e : ℕ) :=
+  LinearMap.ker (integralChannelEvaluation k e)
+/-- Integral normal form of the base-`k` totient kernel through level `e`, for `k ≥ 2` and `e ≥ 1`. The integral span of the unreduced channels has a `ℤ`-basis indexed by the canonical index whose vectors are the canonical channels. The relation module has a `ℤ`-basis indexed by the omitted channels whose vectors are two-term reductions: for every omitted channel `o` there are a canonical index `j` and a natural number `a` such that channel `o` equals `a` times canonical channel `j` and the basis vector at `o` is the symbol of `o` minus `a` times the symbol of the retained channel of `j`. The relation module has rank `∑_{j < e - 1} k ^ (j + 1)` over `ℤ`. -/
+theorem displayed_integral_normal_form (k e : ℕ) (hk : 2 ≤ k) (he : 1 ≤ e) :
+    (∃ c : Basis (CanonicalIndex k e) ℤ (IntegralChannelSpan k e),
+      ∀ i, (c i : ℕ → ℚ) = canonicalFamily k e i) ∧
+    (∃ b : Basis (OmittedIntegralChannel k e hk he) ℤ (IntegralRelations k e),
+      ∀ o, ∃ j : CanonicalIndex k e, ∃ a : ℕ,
+        throughLevelFamily k e o.val = (a : ℤ) • canonicalFamily k e j ∧
+        (b o : ThroughLevelIndex k e →₀ ℤ) =
+          Finsupp.single o.val 1 - Finsupp.single (retainedChannel k e hk he j) (a : ℤ)) ∧
+    finrank ℤ (IntegralRelations k e) =
+      ∑ j ∈ Finset.range (e - 1), k ^ (j + 1) := by
   sorry
 end PalomarCorpus.E249.TotientKernelBasis
 

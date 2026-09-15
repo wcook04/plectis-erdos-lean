@@ -50,6 +50,7 @@
     "PalomarCorpus.E249.TotientAffineModeEscape.not_eventuallyAffine_pureDyadicEndpointError",
     "PalomarCorpus.E249.TotientKernelBasis.allBaseTotientKernelBasisRankAndRelationDimension",
     "PalomarCorpus.E249.TotientKernelBasis.allSlopeAffineTotientFormsLinearIndependent",
+    "PalomarCorpus.E249.TotientKernelBasis.displayed_integral_normal_form",
     "PalomarCorpus.E249.TotientRigidity.even_law_and_eventual_congruence_forces_totient",
     "PalomarCorpus.E249.TotientRigidity.one_prime_law_and_little_o_forces_totient",
     "PalomarCorpus.E249.TotientRigidity.totient_prime_mul_of_dvd",

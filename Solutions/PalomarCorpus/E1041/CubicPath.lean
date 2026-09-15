@@ -51,6 +51,21 @@ theorem monic_cubic_connector (p : ℂ[X]) (hm : p.Monic)
     ErdosProblems.Erdos1041.PaperCurve.ConnectedBelow] using
     (ErdosProblems.Erdos1041.PaperCubicMonic.monic_cubic_connector p hm hd hz)
 
+theorem complete_translated_cubic_quotient_fibres
+    {q : ℕ} (hq : 2 ≤ q) (h : ℂ) (P : ℂ[X])
+    (hP : P.Monic) (hdeg : P.natDegree = 3)
+    (hdisk : ∀ z : ℂ, P.eval ((z - h) ^ q) = 0 → ‖z‖ < 1)
+    (htwo : ∃ a b : ℂ, a ≠ b ∧
+      P.eval ((a - h) ^ q) = 0 ∧ P.eval ((b - h) ^ q) = 0) :
+    ∃ a b : ℂ, a ≠ b ∧ P.eval ((a - h) ^ q) = 0 ∧
+      P.eval ((b - h) ^ q) = 0 ∧
+      (∀ t ∈ Icc (0 : ℝ) 2, ‖P.eval ((hub a h b t - h) ^ q)‖ < 1) ∧
+      eVariationOn (hub a h b) (Icc (0 : ℝ) 2) < ENNReal.ofReal 2 := by
+  simpa only [hub, ErdosProblems.Erdos1041.PaperCurve.hub,
+    ErdosProblems.Erdos1041.PaperCurve.HubBelow] using
+    (ErdosProblems.Erdos1041.PaperCubicFibres.complete_translated_cubic_quotient_fibres
+      hq h P hP hdeg hdisk htwo)
+
 end
 
 end PalomarCorpus.E1041.CubicPath

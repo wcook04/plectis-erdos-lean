@@ -5,6 +5,7 @@ Authors: Will Cook
 -/
 import Mathlib
 import Erdos257PeriodNoncollapse.AllBaseTotientKernel
+import ErdosProblems.Erdos249.PaperCompleteR8.KernelRelationBasis
 import Solutions.PalomarCorpus.E249.Statement
 
 open Module
@@ -60,5 +61,18 @@ theorem allBaseTotientKernelBasisRankAndRelationDimension
     ⟨Erdos257PeriodNoncollapse.allBaseTotientKernelBasis k e hk he⟩,
     Erdos257PeriodNoncollapse.finrank_allBaseThroughLevelFamily_eq k e hk he,
     Erdos257PeriodNoncollapse.finrank_allBaseRelationModule_eq k e hk he⟩
+
+set_option smartUnfolding false in
+theorem displayed_integral_normal_form (k e : ℕ) (hk : 2 ≤ k) (he : 1 ≤ e) :
+    (∃ c : Basis (CanonicalIndex k e) ℤ (IntegralChannelSpan k e),
+      ∀ i, (c i : ℕ → ℚ) = canonicalFamily k e i) ∧
+    (∃ b : Basis (OmittedIntegralChannel k e hk he) ℤ (IntegralRelations k e),
+      ∀ o, ∃ j : CanonicalIndex k e, ∃ a : ℕ,
+        throughLevelFamily k e o.val = (a : ℤ) • canonicalFamily k e j ∧
+        (b o : ThroughLevelIndex k e →₀ ℤ) =
+          Finsupp.single o.val 1 - Finsupp.single (retainedChannel k e hk he j) (a : ℤ)) ∧
+    finrank ℤ (IntegralRelations k e) =
+      ∑ j ∈ Finset.range (e - 1), k ^ (j + 1) :=
+  ErdosProblems.Erdos249.PaperCompleteR8.displayed_integral_normal_form k e hk he
 
 end PalomarCorpus.E249.TotientKernelBasis

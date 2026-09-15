@@ -56,6 +56,17 @@ noncomputable def allStraightCubic (z : ℂ) : ℂ :=
   z ^ 3 - allStraightRadius ^ 3
 end PalomarCorpus.E1041.CriticalGeometry
 
+namespace PalomarCorpus.E1041.CriticalValueMean
+open Polynomial
+open scoped BigOperators
+/-- Every zero of the complex polynomial `p` lies in the closed disc of radius `R` about `h`: `p.eval z = 0` implies `‖z - h‖ ≤ R`. -/
+noncomputable def RootsInClosedDisc (p : ℂ[X]) (h : ℂ) (R : ℝ) : Prop :=
+  ∀ z : ℂ, p.eval z = 0 → ‖z - h‖ ≤ R
+/-- The family `c` indexed by `Fin (n - 1)` lists the critical points of `p` with multiplicity: the derivative of `p` equals `C (n : ℂ)` times the product over `j` of `X - C (c j)`. For a monic `p` of degree `n` this says that `c` enumerates the `n - 1` zeros of the derivative, each as often as its multiplicity. -/
+noncomputable def CriticalEnumeration {n : ℕ} (p : ℂ[X]) (c : Fin (n - 1) → ℂ) : Prop :=
+  p.derivative = C (n : ℂ) * ∏ j, (X - C (c j))
+end PalomarCorpus.E1041.CriticalValueMean
+
 namespace PalomarCorpus.E1041.CubicPath
 open Polynomial Set
 open scoped BigOperators
