@@ -11,6 +11,8 @@
     "PalomarCorpus.E1041.CriticalGeometry.nearestSpoke_reciprocal_balance",
     "PalomarCorpus.E1041.CriticalGeometry.nearestSpoke_unique_nearest_normSq",
     "PalomarCorpus.E1041.CriticalGeometry.nearestSpoke_unique_nearest_spoke_escapes",
+    "PalomarCorpus.E1041.CriticalValueMean.paper_critical_value_mean",
+    "PalomarCorpus.E1041.CubicPath.complete_translated_cubic_quotient_fibres",
     "PalomarCorpus.E1041.CubicPath.cubic_paper_complete",
     "PalomarCorpus.E1041.CubicPath.monic_cubic_connector",
     "PalomarCorpus.E1041.CyclicTrinomialFiber.cyclicTrinomial_two_short_fiber_displacements",

@@ -14,7 +14,7 @@ set_option autoImplicit false
 Erdős problem #1041 asks whether a monic polynomial with all roots in the open
 unit disc must have two root occurrences joined by a curve of length below 2
 inside the open lemniscate `{|f| < 1}`. It is Problem 5 of Erdős, Herzog and
-Piranian (1958). It remains open; nothing below decides it. The 44
+Piranian (1958). It remains open; nothing below decides it. The 48
 declarations group by family.
 
 `CubicPath`: the complete degree-three case. For a monic cubic with all zeros
@@ -22,7 +22,11 @@ in the open unit disc, two zeros are joined by an explicit two-segment path
 that is continuous, of bounded variation on `[0, 2]`, contained in `{|p| < 1}`,
 and of extended variation strictly below 2. Squarefreeness makes the selected
 zeros distinct. Pendyala (arXiv:2606.24875) proves degree four; priority for
-degree three is not adjudicated here.
+degree three is not adjudicated here. For translated cubic quotient fibres the
+same two-segment path, taken through the centre `h`, joins two distinct zeros
+of `z ↦ P ((z - h) ^ q)` inside `{|P ((z - h) ^ q)| < 1}` with extended
+variation below 2, for every monic cubic `P` and every `q ≥ 2` such that all
+zeros of that function lie in the open unit disc and two of them are distinct.
 
 `SolvedFamilies`: the alternation kernel of the sharp collinear theorem, whose
 constant `C_n = 1 / (2^(n-1) cos^n(pi / (2n)))` is attained, as the companion paper records and no compared declaration states, by the endpoint
@@ -36,6 +40,12 @@ to it at most twice the geometric mean of the n distances, with a real-scalar
 budget read as bounding the two smallest by 2; and two exact configurations, a
 quintic whose unique nearest spoke escapes and a cubic whose every root-pair
 midpoint escapes, closing the straight-line routes. Curved connectors remain.
+
+`CriticalValueMean`: for a monic polynomial `p` of degree `n ≥ 2` with all zeros
+in a closed disc of radius `R ≥ 0`, the critical values satisfy
+`∑ ‖p c‖ ^ (2 / (n - 1)) ≤ (n - 1) R ^ (2 n / (n - 1))` and
+`∑ ‖p c‖ ^ (1 / n) ≤ (n - 1) R`, the sums running over the critical points
+with multiplicity.
 
 `CyclicTrinomialFiber` and `TetranomialSpokes`: exact Abel factorisations at a
 root, with coefficient and signed-moment budgets forcing complete radial spokes
@@ -145,6 +155,25 @@ theorem allStraightCubic_every_pair_midpoint_escapes :
   sorry
 end PalomarCorpus.E1041.CriticalGeometry
 
+namespace PalomarCorpus.E1041.CriticalValueMean
+open Polynomial
+open scoped BigOperators
+/-- Every zero of the complex polynomial `p` lies in the closed disc of radius `R` about `h`: `p.eval z = 0` implies `‖z - h‖ ≤ R`. -/
+noncomputable def RootsInClosedDisc (p : ℂ[X]) (h : ℂ) (R : ℝ) : Prop :=
+  ∀ z : ℂ, p.eval z = 0 → ‖z - h‖ ≤ R
+/-- The family `c` indexed by `Fin (n - 1)` lists the critical points of `p` with multiplicity: the derivative of `p` equals `C (n : ℂ)` times the product over `j` of `X - C (c j)`. For a monic `p` of degree `n` this says that `c` enumerates the `n - 1` zeros of the derivative, each as often as its multiplicity. -/
+noncomputable def CriticalEnumeration {n : ℕ} (p : ℂ[X]) (c : Fin (n - 1) → ℂ) : Prop :=
+  p.derivative = C (n : ℂ) * ∏ j, (X - C (c j))
+/-- Critical-value mean in every degree. Let `n ≥ 2`, let `p` be a monic complex polynomial of degree `n` all of whose zeros lie in the closed disc of radius `R ≥ 0` about a centre `h`, and let `c` enumerate its `n - 1` critical points with multiplicity. Then the sum over `j` of `‖p (c j)‖ ^ (2 / (n - 1))` is at most `(n - 1) R ^ (2 n / (n - 1))`, and the sum over `j` of `‖p (c j)‖ ^ (1 / n)` is at most `(n - 1) R`. The exponents are real powers, the centre `h` is arbitrary, and the degenerate radius `R = 0` is included. -/
+theorem paper_critical_value_mean (n : ℕ) (p : ℂ[X]) (c : Fin (n - 1) → ℂ) (h : ℂ) (R : ℝ)
+    (hn : 2 ≤ n) (hp : p.Monic) (hdeg : p.natDegree = n) (hR : 0 ≤ R)
+    (hroots : RootsInClosedDisc p h R) (hc : CriticalEnumeration p c) :
+    (∑ j, ‖p.eval (c j)‖ ^ (2 / ((n : ℝ) - 1))) ≤
+        ((n : ℝ) - 1) * R ^ (2 * (n : ℝ) / ((n : ℝ) - 1)) ∧
+      (∑ j, ‖p.eval (c j)‖ ^ (1 / (n : ℝ))) ≤ ((n : ℝ) - 1) * R := by
+  sorry
+end PalomarCorpus.E1041.CriticalValueMean
+
 namespace PalomarCorpus.E1041.CubicPath
 open Polynomial Set
 open scoped BigOperators
@@ -181,6 +210,18 @@ theorem monic_cubic_connector (p : ℂ[X]) (hm : p.Monic)
         BoundedVariationOn γ (Icc (0 : ℝ) 2) ∧
         eVariationOn γ (Icc (0 : ℝ) 2) < ENNReal.ofReal 2) ∧
       (Squarefree p → a ≠ b) := by
+  sorry
+/-- Translated cubic quotient fibres. Let `q ≥ 2`, let `h` be a complex centre and let `P` be a monic complex polynomial of natural degree 3. Suppose every zero `z` of `z ↦ P.eval ((z - h) ^ q)` has modulus strictly below 1, and that this function has two distinct zeros. Then it has two distinct zeros `a` and `b` such that the two-segment path `hub a h b` from `a` through the centre `h` to `b` satisfies `‖P.eval ((hub a h b t - h) ^ q)‖ < 1` for every `t` in `Icc 0 2` and has extended variation strictly below `ENNReal.ofReal 2` on `Icc 0 2`. The factorisation of `P`, the bounds on its roots and the choice of the two zeros are derived in the proof; none of them is a hypothesis. -/
+theorem complete_translated_cubic_quotient_fibres
+    {q : ℕ} (hq : 2 ≤ q) (h : ℂ) (P : ℂ[X])
+    (hP : P.Monic) (hdeg : P.natDegree = 3)
+    (hdisk : ∀ z : ℂ, P.eval ((z - h) ^ q) = 0 → ‖z‖ < 1)
+    (htwo : ∃ a b : ℂ, a ≠ b ∧
+      P.eval ((a - h) ^ q) = 0 ∧ P.eval ((b - h) ^ q) = 0) :
+    ∃ a b : ℂ, a ≠ b ∧ P.eval ((a - h) ^ q) = 0 ∧
+      P.eval ((b - h) ^ q) = 0 ∧
+      (∀ t ∈ Icc (0 : ℝ) 2, ‖P.eval ((hub a h b t - h) ^ q)‖ < 1) ∧
+      eVariationOn (hub a h b) (Icc (0 : ℝ) 2) < ENNReal.ofReal 2 := by
   sorry
 end PalomarCorpus.E1041.CubicPath
 

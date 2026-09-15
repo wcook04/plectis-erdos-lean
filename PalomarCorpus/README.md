@@ -8,7 +8,7 @@ is not a publication entry.
 
 ## Selected Comparator theorems
 
-322 independently restated theorems across 90 families, partitioned by problem.
+325 independently restated theorems across 91 families, partitioned by problem.
 
 ### ExternalVerification1041CriticalGeometry
 
@@ -24,6 +24,7 @@ is not a publication entry.
 
 ### ExternalVerification1041CubicPath
 
+- `PalomarCorpus.E1041.CubicPath.complete_translated_cubic_quotient_fibres`
 - `PalomarCorpus.E1041.CubicPath.cubic_paper_complete`
 - `PalomarCorpus.E1041.CubicPath.monic_cubic_connector`
 
@@ -281,6 +282,7 @@ is not a publication entry.
 
 - `PalomarCorpus.E249.TotientKernelBasis.allBaseTotientKernelBasisRankAndRelationDimension`
 - `PalomarCorpus.E249.TotientKernelBasis.allSlopeAffineTotientFormsLinearIndependent`
+- `PalomarCorpus.E249.TotientKernelBasis.displayed_integral_normal_form`
 
 ### ExternalVerification249TotientRigidity
 
@@ -602,6 +604,10 @@ is not a publication entry.
 - `PalomarCorpus.E251.SparseRationalisation.growing_block_TV`
 - `PalomarCorpus.E251.SparseRationalisation.polylogarithmic_word_interval`
 
+### PalomarCorpus.E1041.CriticalValueMean
+
+- `PalomarCorpus.E1041.CriticalValueMean.paper_critical_value_mean`
+
 ## Paper-linked required Lean claims in this entry
 
 - `erdos1041.critical_geometry` (#1041, lean_kernel_checked): global critical-disk inverse-balance and geometric-mean two-root proximity with exact straight-path obstructions
@@ -635,6 +641,8 @@ is not a publication entry.
   - compared as `PalomarCorpus.E1041.QuarticQuotientFiber.rootLift_axis_integral`
   - compared as `PalomarCorpus.E1041.QuarticQuotientFiber.rootLift_endpoint_budget_lt_two`
   - compared as `PalomarCorpus.E1041.QuarticQuotientFiber.rootLift_length_lt_two_of_le_endpoint_budget`
+- `erdos1041.r11_analytic_all_degree_critical_value_budget` (#1041, lean_kernel_checked): All-degree critical-value mean and quadratic power budget
+  - compared as `PalomarCorpus.E1041.CriticalValueMean.paper_critical_value_mean`
 - `erdos1041.signed_moment_tetranomial` (#1041, lean_kernel_checked): exact signed mixed-moment energy and two-index safe-spoke selection for centered tetranomial root families
   - compared as `PalomarCorpus.E1041.TetranomialSpokes.exists_two_tetranomialRoot_safeSpokes_of_moment_coeff_budget`
   - compared as `PalomarCorpus.E1041.TetranomialSpokes.exists_two_tails_norm_lt_one_of_exact_L2_budget`
@@ -748,6 +756,7 @@ is not a publication entry.
 - `erdos249.all_base_totient_kernel_rank` (#249, lean_kernel_checked): unconditional all-base totient kernel dimension k^e+1, canonical basis, and relation-module dimension
   - compared as `PalomarCorpus.E249.TotientKernelBasis.allSlopeAffineTotientFormsLinearIndependent`
   - compared as `PalomarCorpus.E249.TotientKernelBasis.allBaseTotientKernelBasisRankAndRelationDimension`
+  - compared as `PalomarCorpus.E249.TotientKernelBasis.displayed_integral_normal_form`
 - `erdos249.binary_cyclotomic_anchors` (#249, lean_kernel_checked): clean binary-cyclotomic anchors, unconditional unbounded prime-divisor supply, exact anchored-kill equivalence to irrationality, and the support-only period-lock boundary
   - compared as `PalomarCorpus.E249.BinaryCyclotomicAnchors.exists_clean_binaryCyclotomicAnchor`
   - compared as `PalomarCorpus.E249.BinaryCyclotomicAnchors.binaryCyclotomicLayer_unboundedPrimeDivisorSupply`
@@ -1027,7 +1036,7 @@ is not a publication entry.
 
 ## Paper-only claims (not manufactured as Comparator coverage)
 
-84 frontier claims remain paper-only, including ordinary-paper
+83 frontier claims remain paper-only, including ordinary-paper
 theorems that have formalized kernels or helpers.
 
 - `erdos1041.all_degree_invariants_and_pinned_witness_connectors` (#1041): Completed trace-curvature measure, sharp nodal Crofton budget 2nR, polygonal contour 1-sin(pi/d), and exact noncritical-hub connectors on the pinned witnesses
@@ -1050,7 +1059,6 @@ theorems that have formalized kernels or helpers.
 - `erdos1041.low_critical_potential_closure` (#1041): Unconditional all-degree regime: least critical value at most 199/1000, no arity or capacity hypothesis
 - `erdos1041.middle_regime_canonical_hub` (#1041): Middle regime by a canonical hub: the adjacent chord law kappa_n, the central-root family that breaks uniform Fekete rigidity, the exact eta-cap, and the chord-minimum conjecture
 - `erdos1041.near_fekete_inner_model_widening` (#1041): The widened near-Fekete inner model: exact reduction, the hub endpoint cancellation A_j = -K_j, the proper-slice correction, and a withdrawn degree-five refutation
-- `erdos1041.r11_analytic_all_degree_critical_value_budget` (#1041): All-degree critical-value mean and quadratic power budget
 - `erdos1041.r11_reciprocal_log_series` (#1041): Reciprocal logarithmic series with finite Taylor remainder control
 - `erdos1041.r11_three_point_defect_scalar_kernel` (#1041): Three-point defect scalar identity and equality classification
 - `erdos1041.r11_weighted_variance_and_free_point_endpoints` (#1041): Weighted variance identities and free-point endpoint consequences
