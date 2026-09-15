@@ -45,6 +45,15 @@ in this module asserts irrationality of any series.
   quadratic word `2 (n ^ 2 + 4 n + 2)` have rational dyadic sums `6` and `32`
   while carrying long lists of coarse gap properties. Neither word is the
   prime-gap word and neither asserts that any position is prime.
+* **Sparse rationalisation.** For any natural digit word `a` with convergent
+  dyadic sum `A` and any envelope tending to infinity, one support set of upper
+  Banach density zero and one interval `[l, u]` above `A` are fixed such that
+  every real in the interval is the dyadic sum of `a + e` for a word `e` on
+  that support, bounded by the envelope and eventually divisible, with its
+  prefix sums, by every positive modulus. With the envelope `(log (n + 3)) ^ ε`
+  the support count is `O(X / log log X)`, and adding `e` moves block
+  statistics of length `o(log log X)` by a total variation tending to `0`.
+  The word is arbitrary, and no statement here concerns the prime digits.
 -/
 
 open scoped BigOperators
@@ -457,3 +466,100 @@ theorem separated_zeroDensity_of_quad_sieve (h : ℕ) (hh : 2 ≤ h) (r : ℤ)
     ZeroDensity {n | (primeGap0 (n + h) : ℤ) - primeGap0 n = r} := by
   sorry
 end PalomarCorpus.E251.ShiftedFourPrimeCounting
+
+namespace PalomarCorpus.E251.SparseRationalisation
+/-- Upper Banach density zero in reciprocal-integer form: for every positive natural `R` there is a length `L₀` such that every half-open interval `[a, a + L)` with `L ≥ L₀` contains at most `L / R` elements of `S`, written as `R` times the count being at most `L`. The bound is uniform in the starting point `a`. -/
+noncomputable def UpperBanachZero (S : Set ℕ) : Prop := by
+  classical
+  exact ∀ R : ℕ, 0 < R → ∃ L₀ : ℕ, ∀ a L : ℕ, L₀ ≤ L →
+    R * ((Finset.Ico a (a + L)).filter (fun n => n ∈ S)).card ≤ L
+/-- The spacing `(k + 4) ^ 2` between consecutive support centres at schedule level `k`. -/
+noncomputable def gap (k : ℕ) : ℕ := (k + 4) ^ 2
+/-- The digit capacity `4 (k + 3)! 2 ^ gap k` available at schedule level `k`. -/
+noncomputable def amplitude (k : ℕ) : ℕ := 4 * (k + 3).factorial * 2 ^ gap k
+/-- Level `k` is ready at index `n` for the envelope `f` when every index `m ≥ n` has `amplitude k ≤ f m` in the reals and `amplitude k ≤ m + 1` in the naturals. -/
+noncomputable def Ready (f : ℕ → ℝ) (n k : ℕ) : Prop :=
+  ∀ m, n ≤ m → (amplitude k : ℝ) ≤ f m ∧ amplitude k ≤ m + 1
+/-- The level used after the centre `n` when the current level is `k`: `k + 1` if level `k + 1` is ready at `n`, and `k` otherwise. -/
+noncomputable def upgrade (f : ℕ → ℝ) (n k : ℕ) : ℕ := by
+  classical
+  exact if Ready f n (k + 1) then k + 1 else k
+/-- The schedule state (centre, level) at step `j` for the envelope `f`: `(start, 0)` at step `0`, and from the state `(c, k)` the next centre is `n = c + gap k`, with level `upgrade f n k`. -/
+noncomputable def state (f : ℕ → ℝ) (start : ℕ) : ℕ → ℕ × ℕ
+  | 0 => (start, 0)
+  | j + 1 =>
+      let s := state f start j
+      let n := s.1 + gap s.2
+      (n, upgrade f n s.2)
+/-- The `j`-th support centre of the schedule for the envelope `f` begun at `start`, the first coordinate of the schedule state; the centres increase strictly with `j`. -/
+noncomputable def centre (f : ℕ → ℝ) (start j : ℕ) : ℕ := (state f start j).1
+/-- The envelope `n ↦ (log (n + 3)) ^ α`, a real power of the natural logarithm. -/
+noncomputable def polylog (α : ℝ) (n : ℕ) : ℝ := (Real.log ((n : ℝ) + 3)) ^ α
+/-- The iterated logarithm `n ↦ log (log (n + 3))`. -/
+noncomputable def iterlog (n : ℕ) : ℝ := Real.log (Real.log ((n : ℝ) + 3))
+/-- The values of `c` lying in the half-open interval `[a, a + L)`, as a finite set of natural numbers. -/
+noncomputable def supportSlice (c : ℕ → ℕ) (a L : ℕ) : Finset ℕ := by
+  classical
+  exact (Finset.Ico a (a + L)).filter (fun n => n ∈ Set.range c)
+/-- The starting indices `N` in the finite set `I` whose length-`m` block `i ↦ a (N + i)` belongs to the set of blocks `event`. -/
+noncomputable def eventStarts {α : Type*} (a : ℕ → α) (I : Finset ℕ) (m : ℕ)
+    (event : Set (Fin m → α)) : Finset ℕ := by
+  classical
+  exact I.filter (fun N => (fun i : Fin m => a (N + i.val)) ∈ event)
+/-- The proportion of starting indices `N` in `[X, 2 X)` whose length-`m` block of `a` belongs to `E`: the number of such `N` divided by `X`. -/
+noncomputable def eventFrequency {α : Type*} (a : ℕ → α) (X m : ℕ)
+    (E : Set (Fin m → α)) : ℝ := (eventStarts a (Finset.Ico X (2 * X)) m E).card / (X : ℝ)
+/-- The mean over starting indices `N` in `[X, 2 X)` of the test `Φ` evaluated at `N` and at the length-`m` block of `a` starting at `N`, the sum divided by `X`. -/
+noncomputable def testMean {α : Type*} (a : ℕ → α) (X m : ℕ)
+    (Φ : ℕ → (Fin m → α) → ℝ) : ℝ :=
+  (∑ N ∈ Finset.Ico X (2 * X), Φ N (fun i => a (N + i.val))) / X
+/-- The total variation distance between the length-`m` block distributions of `a` and `b` over starting indices in `[X, 2 X)`, in the supremum-over-events convention: the supremum over all sets `E` of blocks of `|eventFrequency a X m E - eventFrequency b X m E|`. -/
+noncomputable def blockTV {α : Type*} (a b : ℕ → α) (X m : ℕ) : ℝ :=
+  sSup (Set.range (fun E : Set (Fin m → α) => |eventFrequency a X m E - eventFrequency b X m E|))
+/-- Let `a` be any word of natural digits whose dyadic series `∑ a n / 2 ^ (n + 1)` has sum `A`, let `f` be any real envelope tending to infinity, and let `K` be any natural number. Then there are a set `S` of indices, all at least `K`, of upper Banach density zero, and reals `l < u` with `A < l`, such that every real `r` in `[l, u]` is the dyadic sum of the word `a + e` for some natural word `e` supported in `S`, eventually bounded by `f`, and such that for every positive `q` both `e n` and the prefix sum `∑ i < n, e i` are eventually divisible by `q`. The set `S` and the interval are fixed before `r` is chosen, and `[l, u]` contains rationals, so a sparse, envelope-bounded perturbation with eventual congruences at every modulus can give a rational value. The word `a` is arbitrary; nothing is asserted about the prime digits. -/
+theorem arbitrary_word_sparse_rationalisation (a : ℕ → ℕ) {A : ℝ}
+    (ha : HasSum (fun n => (a n : ℝ) / 2 ^ (n + 1)) A)
+    (f : ℕ → ℝ) (hf : Tendsto f atTop atTop) (K : ℕ) :
+    ∃ S : Set ℕ, ∃ l u : ℝ,
+      S ⊆ Set.Ici K ∧ UpperBanachZero S ∧ A < l ∧ l < u ∧
+      ∀ r : ℝ, l ≤ r → r ≤ u → ∃ e : ℕ → ℕ,
+        (∀ n, e n ≠ 0 → n ∈ S) ∧
+        (∀ᶠ n : ℕ in atTop, (e n : ℝ) ≤ f n) ∧
+        (∀ q : ℕ, 0 < q → ∀ᶠ n : ℕ in atTop,
+          q ∣ e n ∧ q ∣ ∑ i ∈ Finset.range n, e i) ∧
+        HasSum (fun n => ((a n + e n : ℕ) : ℝ) / 2 ^ (n + 1)) r := by
+  sorry
+/-- The polylogarithmic form with block statistics. For any natural digit word `a` with dyadic sum `A`, any `ε > 0` and any natural `K`, there are a start index, reals `l < u` with `A < l`, and `C > 0` such that the centres of the schedule for the envelope `(log (n + 3)) ^ ε` begun at that index are all at least `K`, have upper Banach density zero, and number at most `C X / log (log (X + 3))` in `[X, X + L)` for all large `X` and all `L ≤ 2 X`; and every real `r` in `[l, u]` is the dyadic sum of `a + e` for a natural word `e` supported on those centres, eventually at most `(log (n + 3)) ^ ε`, with `e n` and its prefix sums eventually divisible by every positive `q`, and vanishing below `K`. For that `e` and every block length function `m` with `m X / log (log (X + 3))` tending to `0`, the total variation distance between the length-`m X` block distributions of `a` and `a + e` over `[X, 2 X)` tends to `0`, and for every `η > 0`, for all large `X`, any test `Φ` bounded by `1` in absolute value on the blocks of both words has means differing by less than `η`; the tests may depend on the starting index. The start index, the interval and `C` are fixed before `r` is chosen. -/
+theorem polylogarithmic_word_interval (a : ℕ → ℕ) {A ε : ℝ}
+    (ha : HasSum (fun n => (a n : ℝ) / 2 ^ (n + 1)) A)
+    (hε : 0 < ε) (K : ℕ) :
+    ∃ start : ℕ, ∃ l u C : ℝ,
+      (Set.range (centre (polylog ε) start) ⊆ Set.Ici K) ∧
+      UpperBanachZero (Set.range (centre (polylog ε) start)) ∧
+      A < l ∧ l < u ∧ 0 < C ∧
+      (∃ X₀ : ℕ, ∀ X L : ℕ, X₀ ≤ X → L ≤ 2 * X →
+        ((supportSlice (centre (polylog ε) start) X L).card : ℝ) ≤ C * X / iterlog X) ∧
+      ∀ r : ℝ, l ≤ r → r ≤ u → ∃ e : ℕ → ℕ,
+        (∀ n, e n ≠ 0 → n ∈ Set.range (centre (polylog ε) start)) ∧
+        (∀ᶠ n : ℕ in atTop, (e n : ℝ) ≤ polylog ε n) ∧
+        (∀ q : ℕ, 0 < q → ∀ᶠ n : ℕ in atTop,
+          q ∣ e n ∧ q ∣ ∑ i ∈ Finset.range n, e i) ∧
+        (∀ n < K, a n + e n = a n) ∧
+        HasSum (fun n => ((a n + e n : ℕ) : ℝ) / 2 ^ (n + 1)) r ∧
+        ∀ m : ℕ → ℕ,
+          Tendsto (fun X => (m X : ℝ) / iterlog X) atTop (𝓝 0) →
+          Tendsto (fun X => blockTV a (fun n => a n + e n) X (m X)) atTop (𝓝 0) ∧
+          ∀ η : ℝ, 0 < η → ∀ᶠ X : ℕ in atTop,
+            ∀ Φ : ℕ → (Fin (m X) → ℕ) → ℝ,
+              (∀ N ∈ Finset.Ico X (2 * X), |Φ N (fun i => a (N + i.val))| ≤ 1) →
+              (∀ N ∈ Finset.Ico X (2 * X), |Φ N (fun i => a (N + i.val) + e (N + i.val))| ≤ 1) →
+              |testMean a X (m X) Φ - testMean (fun n => a n + e n) X (m X) Φ| < η := by
+  sorry
+/-- Let `a` and `b` be sequences with values in an arbitrary type that differ only at centres of the schedule for the envelope `(log (n + 3)) ^ β`, with `β > 0` and any start index. For every block length function `m` with `m X / log (log (X + 3))` tending to `0`, the total variation distance between the length-`m X` block distributions of `a` and `b` over starting indices in `[X, 2 X)` tends to `0`. The block alphabet is arbitrary and the letters are not rescaled. -/
+theorem growing_block_TV {α : Type*} (a b : ℕ → α) {β : ℝ}
+    (hβ : 0 < β) (start : ℕ)
+    (hchange : ∀ n, a n ≠ b n → n ∈ Set.range (centre (polylog β) start))
+    (m : ℕ → ℕ) (hm : Tendsto (fun X => (m X : ℝ) / iterlog X) atTop (𝓝 0)) :
+    Tendsto (fun X => blockTV a b X (m X)) atTop (𝓝 0) := by
+  sorry
+end PalomarCorpus.E251.SparseRationalisation

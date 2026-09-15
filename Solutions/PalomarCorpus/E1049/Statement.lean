@@ -87,12 +87,19 @@ noncomputable def zudilinNormalizedMoment (n : ℕ) : PowerSeries ℤ :=
 /-- The first nontrivial backward difference of the normalised moments in column l, that is the moment of index l + 1 minus the moment of index l; it is the entry in column l of the depth-one row produced by the backward-difference row transformation of the moment matrix. -/
 noncomputable def zudilinFirstTransformedRow (l : ℕ) : PowerSeries ℤ :=
   zudilinNormalizedMoment (l + 1) - zudilinNormalizedMoment l
-/-- The integer sum over j < N of j^2, written as a sum of squares. It is the exponent N(N-1)(2N-1)/6 that the project's separate sharp normalised Hankel statement records at rank N, assembled over the transformed row depths j below N. The definition is that sum alone; it names no determinant and asserts no order. -/
+/-- The integer sum over j < N of j^2, written as a sum of squares; it equals N(N-1)(2N-1)/6. The same sum taken in the natural numbers is the order that zudilinSharpHankelOrderAndCoeff_all below proves for the normalised Hankel determinant of rank N. The definition is that sum alone; it names no determinant and asserts no order. -/
 noncomputable def zudilinSharpHankelQOrder (N : ℕ) : ℤ :=
   ∑ j ∈ Finset.range N, (j : ℤ) ^ 2
 /-- The natural number (j+1)^2 (j+2)/2, the magnitude of the leading coefficient contributed by the transformed row of depth j; the natural-number division by 2 is exact because (j+1)^2 (j+2) is always even. -/
 noncomputable def zudilinTransformedRowCoeff (j : ℕ) : ℕ :=
   ((j + 1) ^ 2 * (j + 2)) / 2
+/-- The N by N Hankel matrix of a sequence v of formal power series over the integers: the entry in row j and column l is v (j + l), for j and l below N. -/
+noncomputable def zudilinMomentMatrix (N : ℕ) (v : ℕ → PowerSeries ℤ) :
+    Matrix (Fin N) (Fin N) (PowerSeries ℤ) :=
+  fun j l => v ((j : ℕ) + (l : ℕ))
+/-- Zudilin's normalised Hankel determinant V_N^* at x = z = 1: the determinant of the N by N Hankel matrix of the normalised moments above, a formal power series over the integers in q, equal to 1 at N = 0. The normalised moments and this determinant are Zudilin's construction (Acta Arith. 111 (2004); Res. Number Theory 2 (2016), Art. 15). -/
+noncomputable def zudilinNormalizedHankelDet (N : ℕ) : PowerSeries ℤ :=
+  (zudilinMomentMatrix N zudilinNormalizedMoment).det
 end PalomarCorpus.E1049.AdelicHeightBridge
 
 namespace PalomarCorpus.E1049.ArchimedeanCap

@@ -8,7 +8,7 @@ is not a publication entry.
 
 ## Selected Comparator theorems
 
-317 independently restated theorems across 89 families, partitioned by problem.
+322 independently restated theorems across 90 families, partitioned by problem.
 
 ### ExternalVerification1041CriticalGeometry
 
@@ -64,6 +64,7 @@ is not a publication entry.
 
 ### ExternalVerification1049AdelicHeightBridge
 
+- `PalomarCorpus.E1049.AdelicHeightBridge.coeff_zudilinNormalizedHankelDet_all_rat`
 - `PalomarCorpus.E1049.AdelicHeightBridge.exists_distinct_binary_selectors_same_fourJet_of_power_certificate`
 - `PalomarCorpus.E1049.AdelicHeightBridge.exists_distinct_binary_selectors_same_fourJet_of_rank_41`
 - `PalomarCorpus.E1049.AdelicHeightBridge.exists_ne_map_eq_map_ne_of_card_mul_lt`
@@ -76,6 +77,7 @@ is not a publication entry.
 - `PalomarCorpus.E1049.AdelicHeightBridge.zudilinScalarContent_cannot_meet_required_charge`
 - `PalomarCorpus.E1049.AdelicHeightBridge.zudilinScalarPlusBorder_cannot_meet_required_charge`
 - `PalomarCorpus.E1049.AdelicHeightBridge.zudilinSharpHankelOrderAndCoeff_algebraicAssembly`
+- `PalomarCorpus.E1049.AdelicHeightBridge.zudilinSharpHankelOrderAndCoeff_all`
 - `PalomarCorpus.E1049.AdelicHeightBridge.zudilin_firstTransformedRow_initialMonomial`
 
 ### ExternalVerification1049ArchimedeanCap
@@ -594,6 +596,12 @@ is not a publication entry.
 - `PalomarCorpus.E68.StrictSuccessorCarry.companionOrbit_completeCharacterization`
 - `PalomarCorpus.E68.StrictSuccessorCarry.strictSuccessorCarry_completeCharacterization`
 
+### PalomarCorpus.E251.SparseRationalisation
+
+- `PalomarCorpus.E251.SparseRationalisation.arbitrary_word_sparse_rationalisation`
+- `PalomarCorpus.E251.SparseRationalisation.growing_block_TV`
+- `PalomarCorpus.E251.SparseRationalisation.polylogarithmic_word_interval`
+
 ## Paper-linked required Lean claims in this entry
 
 - `erdos1041.critical_geometry` (#1041, lean_kernel_checked): global critical-disk inverse-balance and geometric-mean two-root proximity with exact straight-path obstructions
@@ -664,6 +672,9 @@ is not a publication entry.
   - compared as `PalomarCorpus.E1049.BezoutPluckerJets.binary_row_collision_of_anchor_det_zero`
   - compared as `PalomarCorpus.E1049.BezoutPluckerJets.adjacent_det_zero_forces_all_det_zero`
   - compared as `PalomarCorpus.E1049.BezoutPluckerJets.zmod_binary_tail_collision_of_two_three_depth`
+- `erdos1049.hankel_qorder_exact_all_rank` (#1049, lean_kernel_checked): Exact q-order N(N-1)(2N-1)/6 and leading coefficient (N!)^2(N+1)!/2^N of Zudilin's normalized Hankel determinant
+  - compared as `PalomarCorpus.E1049.AdelicHeightBridge.zudilinSharpHankelOrderAndCoeff_all`
+  - compared as `PalomarCorpus.E1049.AdelicHeightBridge.coeff_zudilinNormalizedHankelDet_all_rat`
 - `erdos1049.hermite_pade_no_go` (#1049, lean_kernel_checked): rectangular Hermite-Pade threshold no-go with exact equality boundary
   - compared as `PalomarCorpus.E1049.HermitePadeNoGo.hpClearedGap_expansion`
   - compared as `PalomarCorpus.E1049.HermitePadeNoGo.hpClearedGap_nonpos`
@@ -1016,7 +1027,7 @@ is not a publication entry.
 
 ## Paper-only claims (not manufactured as Comparator coverage)
 
-85 frontier claims remain paper-only, including ordinary-paper
+84 frontier claims remain paper-only, including ordinary-paper
 theorems that have formalized kernels or helpers.
 
 - `erdos1041.all_degree_invariants_and_pinned_witness_connectors` (#1041): Completed trace-curvature measure, sharp nodal Crofton budget 2nR, polygonal contour 1-sin(pi/d), and exact noncritical-hub connectors on the pinned witnesses
@@ -1051,7 +1062,6 @@ theorems that have formalized kernels or helpers.
 - `erdos1041.translated_nonadjacent_trinomial` (#1041): Every translated trinomial (z-h)^n + A(z-h)^m + C with 1 <= m <= n-2, coprime exponents included
 - `erdos1041.unconditional_constant_factor_71_over_10` (#1041): Unconditional constant-factor bound (71/10) μ^{1/n} inside K_{2μ}
 - `erdos1049.f_31_over_4_irrational_conditional` (#1049): F(31/4) and every F((31/4)^r) are irrational, conditional on Zudilin 2004 Lemma 7 and Lemma 2
-- `erdos1049.hankel_qorder_exact_all_rank` (#1049): Exact q-order N(N-1)(2N-1)/6 and leading coefficient (N!)^2(N+1)!/2^N of Zudilin's normalized Hankel determinant
 - `erdos1049.homogenisation_ceiling_fixed_diagonal` (#1049): Every outward scalar evaluation at 3/2 retains a positive forced-clearing main term
 - `erdos1049.homogenisation_contour_hypothesis` (#1049): The 0.40568… contour as an underived hypothesis (superseded by the conditional theorem)
 - `erdos1049.rational_base_region_theorem` (#1049): F(a/b) is irrational on the region b^mu < a, mu = 2.46497868...; 31/4 is the first new base

@@ -5,6 +5,7 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos1049.AdelicHeightBridge
+import ErdosProblems.Erdos1049.AllRow.Producer
 import Solutions.PalomarCorpus.E1049.Statement
 
 open Polynomial
@@ -43,6 +44,31 @@ theorem zudilinSharpHankelOrderAndCoeff_algebraicAssembly (N : ℕ) :
   rw [horder, hcoeff]
   exact
     ErdosProblems.Erdos1049.zudilinSharpHankelOrderAndCoeff_algebraicAssembly N
+
+theorem zudilinSharpHankelOrderAndCoeff_all (N : ℕ) :
+    PowerSeries.order (zudilinNormalizedHankelDet N) =
+        ((∑ j ∈ Finset.range N, j ^ 2 : ℕ) : ℕ∞) ∧
+      PowerSeries.coeff (∑ j ∈ Finset.range N, j ^ 2)
+          (zudilinNormalizedHankelDet N) =
+        ∏ j ∈ Finset.range N, (zudilinTransformedRowCoeff j : ℤ) := by
+  have hdet :
+      zudilinNormalizedHankelDet N =
+        ErdosProblems.Erdos1049.zudilinNormalizedHankelDet N := rfl
+  have hcoeff :
+      zudilinTransformedRowCoeff =
+        ErdosProblems.Erdos1049.zudilinTransformedRowCoeff := rfl
+  rw [hdet, hcoeff]
+  exact ErdosProblems.Erdos1049.zudilinSharpHankelOrderAndCoeff_all N
+
+theorem coeff_zudilinNormalizedHankelDet_all_rat (N : ℕ) :
+    ((PowerSeries.coeff (N * (N - 1) * (2 * N - 1) / 6)
+      (zudilinNormalizedHankelDet N) : ℤ) : ℚ) =
+      (N.factorial : ℚ) ^ 2 * ((N + 1).factorial : ℚ) / (2 : ℚ) ^ N := by
+  have hdet :
+      zudilinNormalizedHankelDet N =
+        ErdosProblems.Erdos1049.zudilinNormalizedHankelDet N := rfl
+  rw [hdet]
+  exact ErdosProblems.Erdos1049.coeff_zudilinNormalizedHankelDet_all_rat N
 
 theorem threePow_fortyOne_lt_twoPow_sixtyFive : 3 ^ 41 < 2 ^ 65 := by
   exact ErdosProblems.Erdos1049.threePow_fortyOne_lt_twoPow_sixtyFive
