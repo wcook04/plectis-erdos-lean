@@ -1,13 +1,15 @@
 {
   "schema": "palomar_corpus_size_receipt_v1",
-  "generated_at": "2026-09-13T20:56:02Z",
+  "generated_at": "2026-09-19T11:45:33Z",
   "public_root": ".",
   "path_base": "repository_root",
-  "git_head": "8929dfc017cbeabe83c9b928c6359ac01734e546",
+  "git_head": "47a91aa8b804fd27dde00bc257d4d88d3b06f010",
   "selected_families": [
     "ExternalVerification1041CriticalGeometry",
+    "ExternalVerification1041CriticalValueMean",
     "ExternalVerification1041CubicPath",
     "ExternalVerification1041CyclicTrinomialFiber",
+    "ExternalVerification1041DegreeSevenCounterexample",
     "ExternalVerification1041FirstMergeCriticalValueSeparation",
     "ExternalVerification1041QuarticQuotientFiber",
     "ExternalVerification1041SolvedFamilies",
@@ -56,6 +58,7 @@
     "ExternalVerification251PolynomialShiftCountermodel",
     "ExternalVerification251PrimeGapIdentity",
     "ExternalVerification251ShiftedFourPrimeCounting",
+    "ExternalVerification251SparseRationalisation",
     "ExternalVerification257AchievementSetGeometry",
     "ExternalVerification257ActualUpperSuccessor",
     "ExternalVerification257BooleanMobiusCarry",
@@ -95,7 +98,7 @@
     "ExternalVerification68ResidualIntegerClass",
     "ExternalVerification68StrictSuccessorCarry"
   ],
-  "selected_theorem_count": 317,
+  "selected_theorem_count": 326,
   "measurement": {
     "challenge_lines": 966,
     "challenge_bytes": 78047,

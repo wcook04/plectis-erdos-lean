@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification1041DegreeSevenCounterexample.Challenge",
+  "solution_module": "Solutions.ExternalVerification1041DegreeSevenCounterexample",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041DegreeSevenCounterexample.degreeSevenCounterexample"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

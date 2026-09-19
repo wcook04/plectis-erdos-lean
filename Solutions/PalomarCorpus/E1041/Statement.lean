@@ -23,6 +23,8 @@ open Polynomial Set
 open scoped BigOperators
 open Polynomial
 open scoped ComplexConjugate
+open scoped ENNReal
+open Polynomial Metric
 
 namespace PalomarCorpus.E1041.CriticalGeometry
 open Finset
@@ -78,6 +80,11 @@ end PalomarCorpus.E1041.CubicPath
 
 namespace PalomarCorpus.E1041.CyclicTrinomialFiber
 end PalomarCorpus.E1041.CyclicTrinomialFiber
+
+namespace PalomarCorpus.E1041.DegreeSevenCounterexample
+open scoped ENNReal
+open Polynomial Metric
+end PalomarCorpus.E1041.DegreeSevenCounterexample
 
 namespace PalomarCorpus.E1041.FirstMergeCriticalValueSeparation
 /-- The squared-length coefficient C(n, S) = (1 + S) ^ (2 / n) * log (S / (S - 1)) of the critical-value separation estimate, with the natural number n cast to a real in the exponent; the definition constrains neither n nor S. In the intended reading S is the normalised distance separating the remaining critical values from a simple saddle, and the ordinary analytic estimate of the companion paper bounds the squared length of the connector produced at that saddle by 4 * C(n, S). -/

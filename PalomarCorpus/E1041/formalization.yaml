@@ -1,10 +1,10 @@
 version: v0.4
 project:
-  name: 'Erdős problem #1041 on short connections inside polynomial lemniscates: a complete degree-three connector, the sharp collinear Chebyshev constant, critical-point proximity with two exact straight-path obstructions, and complete root spokes for sparse families'
+  name: 'Erdős problem #1041: a degree-seven total-variation counterexample and short connectors for restricted polynomial families'
   description: >-
-    Erdős problem #1041 asks whether a monic polynomial f(z) = (z - z_1) ... (z - z_n) with all roots in the open unit disc must have two root occurrences joined by a curve of length less than 2 inside the open lemniscate {|f| < 1}. It is Problem 5 of Erdős, Herzog and Piranian (1958, p. 139), and it remains open. The 33 compared theorems record the complete degree-three case and its translated cubic quotient fibres, the sharp constant of the collinear case, unconditional metric geometry at a critical point with two exact straight-line obstructions, a critical-value mean in every degree, complete radial spokes for several sparse coefficient families, and exact thresholds for a critical-value separation criterion. The audience is complex analysts working on the geometry of polynomials: the location of zeros and critical points and the shape of lemniscates and polynomial sublevel sets. The collinear statement also belongs to Chebyshev extremal theory.
+    A monic complex polynomial of degree seven has distinct roots in the open unit disc, yet every continuous path in its strict unit lemniscate between distinct roots has total variation greater than 2. This formalisation of ani’s construction refutes the total-variation formulation of Erdős problem #1041. The compared declaration records this one instance. The other selected results give short connectors for restricted families, critical-point metric bounds, and obstructions to straight-line methods. These positive results retain their stated hypotheses.
 
-    The principal result is the complete degree-three case. For a monic cubic p whose three zeros all have modulus strictly below 1, monic_cubic_connector produces zeros a and b of p and a hub c such that the two-segment path from a through c to b is continuous, has bounded variation on [0, 2], keeps |p| strictly below 1 at every point of that interval, and has extended variation strictly less than 2. cubic_paper_complete states the same conclusion for a cubic presented by its three listed roots. Both give the connector explicitly, and both record that squarefreeness is what makes the two selected zeros distinct. Pendyala (arXiv:2606.24875) proves the degree-four case unconditionally, the comparable adjacent result; whether degree three was recorded earlier has not been adjudicated, so no priority is claimed. complete_translated_cubic_quotient_fibres takes the same two-segment path through a centre h for the function z ↦ P((z - h)^q), with P a monic cubic and q at least 2: when every zero of that function has modulus below 1 and two of its zeros are distinct, two distinct zeros are joined by the path through h, which keeps the function below modulus 1 on [0, 2] and has extended variation below 2. The factorisation of P and the choice of the two zeros are derived in the proof.
+    The complete degree-three case provides a positive contrast. For a monic cubic p whose three zeros all have modulus strictly below 1, monic_cubic_connector produces zeros a and b of p and a hub c such that the two-segment path from a through c to b is continuous, has bounded variation on [0, 2], keeps |p| strictly below 1 at every point of that interval, and has extended variation strictly less than 2. cubic_paper_complete states the same conclusion for a cubic presented by its three listed roots. Both give the connector explicitly, and both record that squarefreeness is what makes the two selected zeros distinct. Pendyala (arXiv:2606.24875) proves the degree-four case unconditionally, the comparable adjacent result; whether degree three was recorded earlier has not been adjudicated, so no priority is claimed. complete_translated_cubic_quotient_fibres takes the same two-segment path through a centre h for the function z ↦ P((z - h)^q), with P a monic cubic and q at least 2: when every zero of that function has modulus below 1 and two of its zeros are distinct, two distinct zeros are joined by the path through h, which keeps the function below modulus 1 on [0, 2] and has extended variation below 2. The factorisation of P and the choice of the two zeros are derived in the proof.
 
     The collinear case is settled in every degree with a sharp constant. Put C_n = 1 / (2^(n-1) cos^n(pi / (2n))). The ordinary theorem is that a monic polynomial of degree n with collinear zeros of diameter D has two zeros joined by their straight segment, of length at most D, on which |f| is at most C_n (D / 2)^n, the constant being attained by endpoint-normalised scaled Chebyshev configurations, an attainment fact the companion paper records and the compared declaration does not state. SharpCollinear.existsPeakLeComparisonBound is its alternation kernel: a real monic polynomial of degree m + 2 vanishing at -1 and at 1, with m + 1 strictly increasing interior nodes in [-1, 1] whose values alternate in sign, has a node where |p| is at most C_(m+2). Affine normalisation and gap-maximum selection are ordinary.
 
@@ -16,7 +16,7 @@ project:
 
     A hypothesis on the critical spectrum, with no condition on the shape of the root set, gives the target constant 2 in every degree above an exact cutoff. Write C(n, S) = (1 + S)^(2/n) log(S / (S - 1)) for the squared-length coefficient produced by the ordinary analytic estimate at a simple saddle whose remaining critical values sit at normalised distance at least S. firstMerge_exact_convenient_thresholds proves C(n, 4) < 1 for n at least 3, C(n, 3) < 1 for n at least 4 and C(n, 2) < 1 for n at least 6, each cutoff being the first degree where its inequality holds, a sharpness fact the companion paper records and the declaration does not state, and firstMerge_length_lt_two_of_squared_bound turns a squared length at most 4 C(n, S), together with C(n, S) < 1, into a length below 2 with no sign hypothesis. The uniformisation, univalence, Bergman and Pólya inputs behind that squared bound are ordinary mathematics.
 
-    Boundary. Erdős problem #1041 remains open here; a degree-seven counterexample announced on the catalogue discussion page is a separate external claim this entry does not assess. Every conditional statement carries its hypothesis, the two exact configurations are described only by what they exclude, and the finite selectors are real-variable statements. Priority is unresolved: a bounded search found no earlier form of the quintic selector or of the separation thresholds, and the alternation argument sits in the classical Chebyshev context. Dubinin's neighbouring relative-area inequality (2012) is listed in the sources; its text was not obtained and no claim here rests on it.
+    Boundary. The degree-seven theorem concerns total variation on [0, 1]. It does not formalise ani’s whole small-parameter family or prove a comparison with a Hausdorff-measure formulation. Independent human review of the historical correspondence has not been recorded. Every conditional statement carries its hypothesis, the two exact configurations are described only by what they exclude, and the finite selectors are real-variable statements. Priority is unresolved: a bounded search found no earlier form of the quintic selector or of the separation thresholds, and the alternation argument sits in the classical Chebyshev context. Dubinin's neighbouring relative-area inequality (2012) is listed in the sources; its text was not obtained and no claim here rests on it.
   authors:
   - Will Cook
   license: Apache-2.0
@@ -37,11 +37,22 @@ sources:
 - title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
   authors:
   - Will Cook
-  type: original-proof
-  relationship: other
-  note: The compared theorems are independently restated Lean theorems proved in this repository and described in the eight public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos. They do not solve the parent Erdős problem.
+  id: https://github.com/wcook04/plectis-erdos
+  type: other
+  relationship: background
+  note: >-
+    The public problem notes and reasoning records describe the compared theorems and their relationship to the literature. The degree-seven result formalises one instance of ani’s construction, credited below; the remaining compared theorems retain their stated positive or conditional scope. This degree-seven instance refutes the universal total-variation formulation, while independent human review of its correspondence with historical wording or a Hausdorff-measure formulation remains unrecorded.
   license: Apache-2.0
   author_endorsement: participated
+- title: "Degree-seven counterexample in the discussion of Erdős problem 1041"
+  authors:
+  - "ani"
+  id: "https://www.erdosproblems.com/forum/thread/1041"
+  type: "web discussion"
+  relationship: "formalizes"
+  note: "The degree-seven total-variation counterexample is due to ani. The compared theorem formalises one explicit polynomial instance, not the whole small-parameter family; no mathematical priority is claimed for the formalization."
+  license: "unknown"
+  author_endorsement: "not-contacted"
 - title: "Metric properties of polynomials"
   authors:
   - "Paul Erdős"
@@ -95,7 +106,8 @@ sources:
   id: https://www.erdosproblems.com
   type: web discussion
   relationship: background
-  note: Catalogue numbering and open status of the parent problem. Compared theorems are not claimed as a solution of that problem.
+  note: >-
+    Catalogue numbering and historical context for problem 1041. The compared degree-seven result provides one counterexample to the universal total-variation formulation; it does not supply independent human review of historical correspondence or a Hausdorff-measure formulation.
   license: unknown
   author_endorsement: not-contacted
 - title: Mathlib
@@ -115,7 +127,7 @@ status:
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
-  trusted_challenge_sorry_count: 33
+  trusted_challenge_sorry_count: 34
   sorry_boundary: The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E1041/Challenge.lean; every Solution proof is complete.
   axiom_audit_status: every compared theorem is printed with axioms propext, Quot.sound and Classical.choice only by scripts/check_axiom_budget.py --run-palomar, which the release gate runs on the built Solution environments
   permitted_axiom_budget:
@@ -145,5 +157,6 @@ automation:
 review:
   status: self-assessed
   reviewers: []
-  notes: Every compared statement was checked declaration by declaration against the public problem note, the reasoning record for Erdős problem #1041 at https://github.com/wcook04/plectis-erdos and the Lean sources in two automated passes run with Anthropic Claude on 2026-09-13 (an alignment review of each docstring against its Lean statement, then a simulated editorial review under Palomar's published prompts); the author applied every finding before publication and is responsible for the selection and the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
+  notes: >-
+    The previously published selection retains its recorded automated reviews of 13 September 2026. The added degree-seven statement has an agent review of its exact polynomial, root and total-variation hypotheses and conclusion, together with the separately recorded Lean and axiom checks. Those checks are not independent human review of the historical correspondence or a Hausdorff-measure formulation. No external referee report is claimed.
 acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

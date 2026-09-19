@@ -408,3 +408,7 @@ globs = ["Solutions.+"]
 
 [[lean_lib]]
 name = "PlectisSnapshot"
+
+[[lean_lib]]
+name = "ExternalVerification1041DegreeSevenCounterexample"
+globs = ["ExternalVerification1041DegreeSevenCounterexample.+"]
