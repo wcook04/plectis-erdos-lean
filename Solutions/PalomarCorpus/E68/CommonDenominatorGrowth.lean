@@ -32,4 +32,14 @@ theorem common_denominator_growth_liminf :
   simpa only [channelLCM, _root_.Erdos68.channelLCM] using
     ErdosProblems.Erdos68.PaperComplete.common_denominator_growth_liminf
 
+theorem asymptotic_radius_constant_liminf (M R : ℕ → ℕ)
+    (hH : ∃ T : ℕ, ∀ t : ℕ, T ≤ t →
+      0 < M t ∧ channelLCM (2 * t ^ 2) ∣ M t ∧
+      M t < (R t + 1).factorial - 1) :
+    (((16 : ℝ) / 9) : EReal) ≤
+      Filter.liminf (fun t : ℕ =>
+        ((((R t + 1 : ℕ) : ℝ) / (t : ℝ) ^ 3 : ℝ) : EReal)) atTop := by
+  refine ErdosProblems.Erdos68.PaperComplete.asymptotic_radius_constant_liminf M R ?_
+  simpa only [channelLCM, _root_.Erdos68.channelLCM] using hH
+
 end PalomarCorpus.E68.CommonDenominatorGrowth

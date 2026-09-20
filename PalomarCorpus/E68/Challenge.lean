@@ -260,6 +260,15 @@ theorem common_denominator_growth_liminf :
         ((Real.log (channelLCM N : ℝ) /
           ((N : ℝ) ^ ((3 : ℝ) / 2) * Real.log (N : ℝ)) : ℝ) : EReal)) atTop := by
   sorry
+/-- The companion radius-constant bound in the same literal extended real form: if a channel multiple sequence `M` and a radius sequence `R` eventually satisfy `0 < M t`, `channelLCM (2 * t^2) ∣ M t` and `M t < (R t + 1)! - 1`, then the coercion of `16/9` is at most the `liminf` at infinity of the extended real values of `(R t + 1) / t^3`; the hypotheses are the paper's, carried in the signature rather than assumed, and the extended real codomain allows an infinite lower limit with no boundedness hypothesis. -/
+theorem asymptotic_radius_constant_liminf (M R : ℕ → ℕ)
+    (hH : ∃ T : ℕ, ∀ t : ℕ, T ≤ t →
+      0 < M t ∧ channelLCM (2 * t ^ 2) ∣ M t ∧
+      M t < (R t + 1).factorial - 1) :
+    (((16 : ℝ) / 9) : EReal) ≤
+      Filter.liminf (fun t : ℕ =>
+        ((((R t + 1 : ℕ) : ℝ) / (t : ℝ) ^ 3 : ℝ) : EReal)) atTop := by
+  sorry
 end PalomarCorpus.E68.CommonDenominatorGrowth
 
 namespace PalomarCorpus.E68.CompanionOrbitBoundary

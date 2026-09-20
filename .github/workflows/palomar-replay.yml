@@ -53,22 +53,34 @@ jobs:
         run: |
           set -euo pipefail
           python3 - <<'PY'
-          import json, re
+          import json, os, re
           from pathlib import Path
           problems = (68, 243, 249, 251, 257, 269, 1041, 1049)
+          # One Erdos problem is one entry. The submission slate's granularity_rule also
+          # allows a band entry (E269b, E269c, ...) when a concatenated Challenge would
+          # approach the 1000-line ceiling. Bands are optional and never replace a base
+          # entry: the eight base entries stay mandatory and every directory present must
+          # be a base or a band, so a stray directory still fails.
+          entry_re = re.compile(r"^E(?:" + "|".join(str(n) for n in problems) + r")[a-z]?$")
           found = sorted(p.parent.name for p in Path("PalomarCorpus").glob("E*/comparator.json"))
-          assert found == sorted(f"E{n}" for n in problems), found
-          for n in problems:
-              entry = Path(f"PalomarCorpus/E{n}")
+          stray = [name for name in found if not entry_re.match(name)]
+          assert not stray, f"unrecognised PalomarCorpus entries: {stray}"
+          missing = [f"E{n}" for n in problems if f"E{n}" not in found]
+          assert not missing, f"missing base PalomarCorpus entries: {missing}"
+          for name in found:
+              entry = Path("PalomarCorpus") / name
               cfg = json.loads((entry / "comparator.json").read_text())
               challenge = (entry / "Challenge.lean").read_bytes()
               assert len(challenge) <= 102400 and len(challenge.splitlines()) <= 1000, entry
               imports = re.findall(r"^import\s+(\S+)", challenge.decode(), re.M)
               assert imports and all(i == "Mathlib" or i.startswith("Mathlib.") for i in imports), entry
-              assert cfg["challenge_module"] == f"PalomarCorpus.E{n}.Challenge", entry
-              assert cfg["solution_module"] == f"Solutions.PalomarCorpus.E{n}", entry
+              assert cfg["challenge_module"] == f"PalomarCorpus.{name}.Challenge", entry
+              assert cfg["solution_module"] == f"Solutions.PalomarCorpus.{name}", entry
               assert cfg["theorem_names"] and set(cfg["permitted_axioms"]) <= {"propext", "Quot.sound", "Classical.choice"}, entry
-              print(f"E{n}: {len(cfg['theorem_names'])} theorems, {len(challenge)} bytes")
+              print(f"{name}: {len(cfg['theorem_names'])} theorems, {len(challenge)} bytes")
+          Path(os.environ["RUNNER_TEMP"], "palomar_entries.txt").write_text("\n".join(found) + "\n")
+          with open(os.environ["GITHUB_ENV"], "a") as handle:
+              handle.write(f"PALOMAR_ENTRIES={' '.join(found)}\n")
           PY
       - name: Build the eight Challenges against Mathlib only
         env:
@@ -139,26 +151,26 @@ jobs:
             fi
           }
           failures=0
-          for n in 68 243 249 251 257 269 1041 1049; do
-            run_comparator "PalomarCorpus/E$n/comparator.json" > "artifacts/E$n.log" 2>&1
+          for e in $(cat "$RUNNER_TEMP/palomar_entries.txt"); do
+            run_comparator "PalomarCorpus/$e/comparator.json" > "artifacts/$e.log" 2>&1
             process_rc=$?
             rc=$process_rc
-            echo "E$n process_exit=$process_rc"
-            grep -v '^Exporting' "artifacts/E$n.log" | tail -n 20
+            echo "$e process_exit=$process_rc"
+            grep -v '^Exporting' "artifacts/$e.log" | tail -n 20
             # A green exit must carry both independent kernel verdicts, as Palomar's
             # protected configuration forces NanoDa; a run that skipped a kernel is not green.
-            if [[ "$rc" -eq 0 ]] && ! grep -q '^nanoda kernel accepts the solution' "artifacts/E$n.log"; then
-              echo "E$n: exit 0 without a NanoDa acceptance line"; rc=90
+            if [[ "$rc" -eq 0 ]] && ! grep -q '^nanoda kernel accepts the solution' "artifacts/$e.log"; then
+              echo "$e: exit 0 without a NanoDa acceptance line"; rc=90
             fi
-            if [[ "$rc" -eq 0 ]] && ! grep -q '^Lean default kernel accepts the solution' "artifacts/E$n.log"; then
-              echo "E$n: exit 0 without a Lean kernel acceptance line"; rc=91
+            if [[ "$rc" -eq 0 ]] && ! grep -q '^Lean default kernel accepts the solution' "artifacts/$e.log"; then
+              echo "$e: exit 0 without a Lean kernel acceptance line"; rc=91
             fi
             # The per-entry verdict is published only after every guard has run, so a
             # consumer reading exit_E<n> sees the same result the failure count uses;
             # the raw process exit is kept separately as diagnostic evidence.
-            echo "E$n exit=$rc"
-            echo "exit_E$n=$rc" >> "$GITHUB_OUTPUT"
-            echo "process_exit_E$n=$process_rc" >> "$GITHUB_OUTPUT"
+            echo "$e exit=$rc"
+            echo "exit_$e=$rc" >> "$GITHUB_OUTPUT"
+            echo "process_exit_$e=$process_rc" >> "$GITHUB_OUTPUT"
             [[ "$rc" -eq 0 ]] || failures=$((failures + 1))
           done
           echo "failures=$failures" >> "$GITHUB_OUTPUT"
@@ -178,16 +190,16 @@ jobs:
             "https://raw.githubusercontent.com/PalomarRegistry/PalomarSubmission/$RENDERER_REV/scripts/core_notation_audit.lean" \
             || { echo "render audit source unavailable at $RENDERER_REV"; exit 0; }
           echo "renderer_rev=$RENDERER_REV" > artifacts/render-audit-summary.txt
-          for n in 68 243 249 251 257 269 1041 1049; do
-            cfg="PalomarCorpus/E$n/comparator.json"
+          for e in $(cat "$RUNNER_TEMP/palomar_entries.txt"); do
+            cfg="PalomarCorpus/$e/comparator.json"
             module=$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["challenge_module"])' "$cfg")
             names=$(python3 -c 'import json,sys; print(" ".join("theorem " + t for t in json.load(open(sys.argv[1]))["theorem_names"]))' "$cfg")
             timeout 20m lake env lean --run "$RUNNER_TEMP/core_notation_audit.lean" "$module" $names \
-              > "artifacts/render-audit-E$n.log" 2>&1
+              > "artifacts/render-audit-$e.log" 2>&1
             rc=$?
-            echo "E$n render_audit_exit=$rc" | tee -a artifacts/render-audit-summary.txt
-            [[ "$rc" -eq 0 ]] || head -c 600 "artifacts/render-audit-E$n.log"
-            echo "render_audit_E$n=$rc" >> "$GITHUB_OUTPUT"
+            echo "$e render_audit_exit=$rc" | tee -a artifacts/render-audit-summary.txt
+            [[ "$rc" -eq 0 ]] || head -c 600 "artifacts/render-audit-$e.log"
+            echo "render_audit_$e=$rc" >> "$GITHUB_OUTPUT"
           done
           exit 0
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02

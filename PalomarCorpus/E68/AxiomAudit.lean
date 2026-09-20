@@ -10,6 +10,7 @@ import Solutions.PalomarCorpus.E68
 #print axioms PalomarCorpus.E68.ChannelRadius.sharp_radius_satisfies_square_log_constraint
 #print axioms PalomarCorpus.E68.ChannelRadius.square_subsequence_radius_cubic_lower
 #print axioms PalomarCorpus.E68.ChannelRadius.square_subsequence_radius_three_halves_lower
+#print axioms PalomarCorpus.E68.CommonDenominatorGrowth.asymptotic_radius_constant_liminf
 #print axioms PalomarCorpus.E68.CommonDenominatorGrowth.common_denominator_growth
 #print axioms PalomarCorpus.E68.CommonDenominatorGrowth.common_denominator_growth_liminf
 #print axioms PalomarCorpus.E68.CompanionOrbitBoundary.companionOrbitBoundary_factorialGapSeries

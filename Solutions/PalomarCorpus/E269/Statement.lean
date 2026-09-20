@@ -250,4 +250,13 @@ noncomputable def bridgeWidth (n : ℕ) : ℕ := 90 * (n + 1) ^ 2
 noncomputable def ActualCofinalLocalWindowEscape : Prop :=
   CofinalLocalWindowEscape dyadicBlockBase235 dyadicOrderedBlockDigit235
     (fun B n => B * bridgeWidth n)
+/-- The exact jump index a + floor(log_3(2^a)) + floor(log_5(2^a)) at the dyadic endpoint 2^a, using integer-floor logarithms to bases 3 and 5. -/
+noncomputable def paperJumpIndex (a : ℕ) : ℕ := a + Nat.log 3 (2 ^ a) + Nat.log 5 (2 ^ a)
+/-- The rational quadratic majorant (n^2 + 8*n + 18)/9 at a jump index n. -/
+noncomputable def carryMajorantQ (n : ℕ) : ℚ := ((n : ℚ) ^ 2 + 8 * n + 18) / 9
+/-- The natural floor of B times the rational quadratic carry majorant at the jump index of the dyadic endpoint 2^a. -/
+noncomputable def longPaperCap (B a : ℕ) : ℕ :=
+  ⌊(B : ℚ) * carryMajorantQ (paperJumpIndex a)⌋₊
+/-- The explicit natural quadratic cap 90*B*(a+1)^2 for the actual dyadic orbit. -/
+noncomputable def shortPaperCap (B a : ℕ) : ℕ := 90 * B * (a + 1) ^ 2
 end PalomarCorpus.E269.WindowEscapeEquivalence

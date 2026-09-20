@@ -657,4 +657,32 @@ theorem near_integer_of_residue_le_general
 theorem exists_pow_gt_quadratic (c lo : ℕ) :
     ∃ len : ℕ, 0 < len ∧ c * (lo + len + 1) ^ 2 < 2 ^ len := by
   sorry
+/-- The exact jump index a + floor(log_3(2^a)) + floor(log_5(2^a)) at the dyadic endpoint 2^a, using integer-floor logarithms to bases 3 and 5. -/
+noncomputable def paperJumpIndex (a : ℕ) : ℕ := a + Nat.log 3 (2 ^ a) + Nat.log 5 (2 ^ a)
+/-- The rational quadratic majorant (n^2 + 8*n + 18)/9 at a jump index n. -/
+noncomputable def carryMajorantQ (n : ℕ) : ℚ := ((n : ℚ) ^ 2 + 8 * n + 18) / 9
+/-- The natural floor of B times the rational quadratic carry majorant at the jump index of the dyadic endpoint 2^a. -/
+noncomputable def longPaperCap (B a : ℕ) : ℕ :=
+  ⌊(B : ℚ) * carryMajorantQ (paperJumpIndex a)⌋₊
+/-- The explicit natural quadratic cap 90*B*(a+1)^2 for the actual dyadic orbit. -/
+noncomputable def shortPaperCap (B a : ℕ) : ℕ := 90 * B * (a + 1) ^ 2
+/-- The full long-paper escape proposition: every natural cap dominating the long-paper cap and tending to zero after division by 8^a gives an escape condition equivalent to irrationality of the literal {2,3,5} reciprocal running-LCM series. Both named caps satisfy the decay condition, the long cap is bounded by the short cap, and escape at each named cap is equivalent to irrationality. The zero cap always gives escape. The equivalences do not assert irrationality, and the zero cap is not asserted to dominate the long cap. -/
+theorem octic_escape_whole :
+    (∀ G : ℕ → ℕ → ℕ,
+      (∀ B a, 0 < B → longPaperCap B a ≤ G B a) →
+      (∀ B, 0 < B → Filter.Tendsto
+        (fun a : ℕ => (G B a : ℝ) / (8 : ℝ) ^ a) Filter.atTop (nhds 0)) →
+      (CofinalLocalWindowEscape dyadicBlockBase235 dyadicOrderedBlockDigit235 G ↔
+        Irrational (dyadicShellTsumTailR235 0))) ∧
+    (∀ B : ℕ, Filter.Tendsto
+      (fun a : ℕ => (longPaperCap B a : ℝ) / (8 : ℝ) ^ a) Filter.atTop (nhds 0)) ∧
+    (∀ B a : ℕ, longPaperCap B a ≤ shortPaperCap B a) ∧
+    (∀ B : ℕ, Filter.Tendsto
+      (fun a : ℕ => (shortPaperCap B a : ℝ) / (8 : ℝ) ^ a) Filter.atTop (nhds 0)) ∧
+    (CofinalLocalWindowEscape dyadicBlockBase235 dyadicOrderedBlockDigit235 longPaperCap ↔
+      Irrational (dyadicShellTsumTailR235 0)) ∧
+    (CofinalLocalWindowEscape dyadicBlockBase235 dyadicOrderedBlockDigit235 shortPaperCap ↔
+      Irrational (dyadicShellTsumTailR235 0)) ∧
+    CofinalLocalWindowEscape dyadicBlockBase235 dyadicOrderedBlockDigit235 (fun _ _ => 0) := by
+  sorry
 end PalomarCorpus.E269.WindowEscapeEquivalence

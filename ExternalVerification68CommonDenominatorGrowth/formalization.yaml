@@ -4,7 +4,11 @@ project:
   name: 'Erdős #68: a three-halves lower growth bound for factorial-gap common denominators'
   description: For L(N) = lcm of n! - 1 over 2 ≤ n ≤ N, the lower limit of log L(N) divided by N^(3/2)
     log N is at least 2 sqrt(2) / 3. The interface includes the eventual lower-bound form and a literal
-    extended-real liminf, allowing an infinite liminf without any extra boundedness assumption.
+    extended-real liminf, allowing an infinite liminf without any extra boundedness assumption. Three
+    declarations are compared. The third is the companion radius-constant liminf, in the same
+    extended-real form, for a channel multiple sequence M and a radius sequence R that eventually
+    satisfy the paper's divisibility and factorial-gap hypotheses; the lower limit of (R t + 1) / t^3
+    is then at least 16 / 9.
   authors:
   - Will Cook
   license: Apache-2.0

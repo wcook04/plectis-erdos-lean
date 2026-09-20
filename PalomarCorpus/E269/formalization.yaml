@@ -122,7 +122,7 @@ status:
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
-  trusted_challenge_sorry_count: 37
+  trusted_challenge_sorry_count: 38
   sorry_boundary: The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E269/Challenge.lean; every Solution proof is complete.
   axiom_audit_status: every compared theorem is printed with axioms propext, Quot.sound and Classical.choice only by scripts/check_axiom_budget.py --run-palomar, which the release gate runs on the built Solution environments
   permitted_axiom_budget:
