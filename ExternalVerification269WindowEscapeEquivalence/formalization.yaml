@@ -18,7 +18,10 @@ project:
     for which the window base is nonzero and the least positive residue of -B times
     the window forcing modulo the absolute window base exceeds sb B (lo+len); the
     actual escape is this proposition at the radix word b, the digit m, and the short
-    bound B times 90 (n+1)^2. Eight declarations are compared. The actual escape holds
+    bound B times 90 (n+1)^2. Nine declarations are compared. The complete octic escape proposition also covers
+    every cap G dominating the printed long cap with G(B,a)/8^a tending to zero,
+    proves the hypotheses for the long and short caps, and includes automatic
+    escape at the zero cap. The actual escape holds
     if and only if S(0) is irrational, and if and only if S(1) is irrational. Irrationality
     of S(1) implies the escape at every short bound sb admitting a function c with
     sb B n at most c B (n+1)^2, which covers the actual short bound and every rescaling
