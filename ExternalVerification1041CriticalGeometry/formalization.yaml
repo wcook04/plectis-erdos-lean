@@ -66,8 +66,8 @@ status:
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
-  trusted_challenge_sorry_count: 9
-  axiom_audit_status: public_ci_2026_09_02_run_33646295554_printed_the_five_originally_compared_declarations_within_permitted_axioms_with_no_sorryAx_the_four_declarations_added_on_2026_09_05_await_the_next_public_ci_run
+  trusted_challenge_sorry_count: 11
+  axiom_audit_status: local_2026_09_20_all_eleven_selected_declarations_checked_with_standard_axioms_only_independent_comparator_pending
   permitted_axiom_budget:
   - propext
   - Quot.sound
@@ -77,7 +77,7 @@ status:
     file: Solutions/ExternalVerification1041CriticalGeometry.lean
     sorry_count: 0
     comparator_config: ExternalVerification1041CriticalGeometry/comparator.json
-    canonical_claim_status: source_proved_wrapper_pending_focused_check
+    canonical_claim_status: source_proved_wrapper_local_kernel_checked_comparator_pending
     local_proof_provenance: ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean
     novelty_status: unassessed
     contribution_class: all-degree critical metric selector
@@ -87,7 +87,7 @@ status:
     file: Solutions/ExternalVerification1041CriticalGeometry.lean
     sorry_count: 0
     comparator_config: ExternalVerification1041CriticalGeometry/comparator.json
-    canonical_claim_status: source_proved_wrapper_pending_focused_check
+    canonical_claim_status: source_proved_wrapper_local_kernel_checked_comparator_pending
     local_proof_provenance: ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean
     novelty_status: unassessed
     contribution_class: global unit-disk critical metric theorem
@@ -99,7 +99,7 @@ status:
     file: Solutions/ExternalVerification1041CriticalGeometry.lean
     sorry_count: 0
     comparator_config: ExternalVerification1041CriticalGeometry/comparator.json
-    canonical_claim_status: source_proved_wrapper_pending_focused_check
+    canonical_claim_status: source_proved_wrapper_local_kernel_checked_comparator_pending
     local_proof_provenance: ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean
     novelty_status: unassessed
     contribution_class: strict global unit-disk critical metric refinement
@@ -110,7 +110,7 @@ status:
     file: Solutions/ExternalVerification1041CriticalGeometry.lean
     sorry_count: 0
     comparator_config: ExternalVerification1041CriticalGeometry/comparator.json
-    canonical_claim_status: source_proved_explicit_private_definition_transport_pending_focused_check
+    canonical_claim_status: source_proved_explicit_private_definition_transport_local_kernel_checked_comparator_pending
     local_proof_provenance: ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean
     novelty_status: unassessed
     contribution_class: exact quintic critical-point certificate
@@ -121,7 +121,7 @@ status:
     file: Solutions/ExternalVerification1041CriticalGeometry.lean
     sorry_count: 0
     comparator_config: ExternalVerification1041CriticalGeometry/comparator.json
-    canonical_claim_status: source_proved_explicit_private_definition_transport_pending_focused_check
+    canonical_claim_status: source_proved_explicit_private_definition_transport_local_kernel_checked_comparator_pending
     local_proof_provenance: ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean
     novelty_status: unassessed
     contribution_class: exact quintic unique-nearest-root certificate
@@ -132,7 +132,7 @@ status:
     file: Solutions/ExternalVerification1041CriticalGeometry.lean
     sorry_count: 0
     comparator_config: ExternalVerification1041CriticalGeometry/comparator.json
-    canonical_claim_status: source_proved_wrapper_pending_focused_check
+    canonical_claim_status: source_proved_wrapper_local_kernel_checked_comparator_pending
     local_proof_provenance: ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean
     novelty_status: unassessed
     contribution_class: exact unique-nearest-spoke escape endpoint
@@ -143,7 +143,7 @@ status:
     file: Solutions/ExternalVerification1041CriticalGeometry.lean
     sorry_count: 0
     comparator_config: ExternalVerification1041CriticalGeometry/comparator.json
-    canonical_claim_status: source_proved_explicit_private_definition_transport_pending_focused_check
+    canonical_claim_status: source_proved_explicit_private_definition_transport_local_kernel_checked_comparator_pending
     local_proof_provenance: ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean
     novelty_status: unassessed
     contribution_class: exact cubic root identification
@@ -154,7 +154,7 @@ status:
     file: Solutions/ExternalVerification1041CriticalGeometry.lean
     sorry_count: 0
     comparator_config: ExternalVerification1041CriticalGeometry/comparator.json
-    canonical_claim_status: source_proved_explicit_private_definition_transport_pending_focused_check
+    canonical_claim_status: source_proved_explicit_private_definition_transport_local_kernel_checked_comparator_pending
     local_proof_provenance: ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean
     novelty_status: unassessed
     contribution_class: open-unit-disk hypothesis certificate for the cubic countermodel
@@ -164,7 +164,7 @@ status:
     file: Solutions/ExternalVerification1041CriticalGeometry.lean
     sorry_count: 0
     comparator_config: ExternalVerification1041CriticalGeometry/comparator.json
-    canonical_claim_status: source_proved_explicit_private_definition_transport_pending_focused_check
+    canonical_claim_status: source_proved_explicit_private_definition_transport_local_kernel_checked_comparator_pending
     local_proof_provenance: ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean
     novelty_status: unassessed
     contribution_class: exact all-straight-root-pair cubic obstruction
@@ -233,4 +233,12 @@ alignment:
     lean: Erdos249257.ExternalVerification1041CriticalGeometry.allStraightCubic_every_pair_midpoint_escapes
     module: ExternalVerification1041CriticalGeometry/Challenge.lean
     status: exact-explicit-private-definition-transport-pending-check
+  - source: ErdosProblems.Erdos1041.PaperCompleteR20.newton_real_value_whole
+    lean: Erdos249257.ExternalVerification1041CriticalGeometry.newton_real_value_whole
+    module: ExternalVerification1041CriticalGeometry/Challenge.lean
+    status: exact-transport-pending-check
+  - source: ErdosProblems.Erdos1041.PaperCompleteR20.newton_real_endpoint_whole
+    lean: Erdos249257.ExternalVerification1041CriticalGeometry.newton_real_endpoint_whole
+    module: ExternalVerification1041CriticalGeometry/Challenge.lean
+    status: exact-transport-pending-check
 acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

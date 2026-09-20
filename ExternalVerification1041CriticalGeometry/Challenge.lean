@@ -135,4 +135,28 @@ theorem allStraightCubic_every_pair_midpoint_escapes :
       1 < ‖allStraightCubic ((allStraightRoot i + allStraightRoot j) / 2)‖ := by
   sorry
 
+/-- On any real interval, an existing noncritical Newton trajectory satisfies
+both the value differential equation and the integrated identity in either time order. -/
+theorem newton_real_value_whole
+    {f f' : ℂ → ℂ} {z : ℝ → ℂ} {I : Set ℝ} (hI : Set.OrdConnected I)
+    (hf : ∀ t ∈ I, HasDerivAt f (f' (z t)) (z t))
+    (hz : ∀ t ∈ I, HasDerivWithinAt z (-f (z t) / f' (z t)) I t)
+    (hc : ∀ t ∈ I, f' (z t) ≠ 0) :
+    (∀ t ∈ I, HasDerivWithinAt (fun s => f (z s)) (-f (z t)) I t) ∧
+    (∀ t ∈ I, ∀ t₀ ∈ I,
+      f (z t) = (Real.exp (-(t - t₀)) : ℂ) * f (z t₀)) := by
+  sorry
+
+/-- Interior Newton data and continuity at finite endpoints give the exact
+endpoint relation and one positive value ray, including critical endpoints. -/
+theorem newton_real_endpoint_whole
+    {f f' : ℂ → ℂ} {z : ℝ → ℂ} {a b : ℝ} (hab : a < b)
+    (hcont : ContinuousOn (fun t => f (z t)) (Set.Icc a b))
+    (hf : ∀ t ∈ Set.Ioo a b, HasDerivAt f (f' (z t)) (z t))
+    (hz : ∀ t ∈ Set.Ioo a b, HasDerivAt z (-f (z t) / f' (z t)) t)
+    (hc : ∀ t ∈ Set.Ioo a b, f' (z t) ≠ 0) :
+    f (z b) = (Real.exp (a - b) : ℂ) * f (z a) ∧
+      ∃ r : ℝ, 0 < r ∧ f (z b) = (r : ℂ) * f (z a) := by
+  sorry
+
 end Erdos249257.ExternalVerification1041CriticalGeometry
