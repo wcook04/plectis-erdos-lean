@@ -722,4 +722,19 @@ theorem primitive_form_abs_gt_twentyOne_div_threeTwenty
 #print axioms positive_direct_sum_sub_theta_two_gt_twentyOne_div_threeTwenty
 #print axioms primitive_form_abs_gt_twentyOne_div_threeTwenty
 
+
+
+/-! Additive exact paper correspondence, source commit c129ac97dcbc6a8218ba5f736aeb525c1652f8a5. -/
+theorem rankOne_denominator_pos {e Y : ℕ} (he : 1 ≤ e) (hY : 4 ≤ Y) :
+    0 < mobiusMersennePrefix Y (2 * e + 2) := by
+  have hr : 3 ≤ 2 * e + 2 := by omega
+  have hlow := mobiusMersenneTheta_ge_alpha hr
+  have herr := abs_mobiusMersenneTheta_sub_prefix_le hY hr
+  have hup := (abs_le.mp herr).2
+  linarith
+
+#print axioms rankOne_denominator_pos
+
+#print axioms rankOne_denominator_pos
+
 end ErdosProblems.Erdos249.RankOneSubrankObstruction

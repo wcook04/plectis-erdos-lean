@@ -51,7 +51,8 @@
     "PalomarCorpus.E257.TwentyOneFatalBranch.twentyOneClosedRow_forces_quotientGreedy",
     "PalomarCorpus.E257.TwentyOneFatalBranch.twentyOneFatalAlignedBranch_eventually_affine_supercapacity",
     "PalomarCorpus.E257.TwentyOneFatalBranch.twentyOneFatalAlignedBranch_eventually_strict_supercapacity",
-    "PalomarCorpus.E257.VariableExponentCover.strengthenedPositiveCoverClaim"
+    "PalomarCorpus.E257.VariableExponentCover.strengthenedPositiveCoverClaim",
+    "PalomarCorpus.E257.WeightedCloseReturn.weighted_displacement_cofinal_close_return"
   ],
   "permitted_axioms": [
     "propext",

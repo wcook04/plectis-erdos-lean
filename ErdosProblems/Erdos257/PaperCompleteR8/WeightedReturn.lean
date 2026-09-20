@@ -105,5 +105,28 @@ component and does not add individual irrationality premises. -/
 theorem mixedSupportClaim : MixedSupportClaim :=
   mixedSupportClaim_of_weighted_mean_target weightedDyadicMeanTarget
 
+
+
+/-! Additive exact paper correspondence, source commit c129ac97dcbc6a8218ba5f736aeb525c1652f8a5. -/
+theorem weighted_displacement_cofinal_close_return
+    (b : ℕ) (E : Set ℕ) (hb : 2 ≤ b) (hE0 : 0 ∉ E)
+    (hE : FinitePrimeWeighted b E) (hInf : E.Infinite)
+    (ε : ℝ) (hε : 0 < ε) (N : ℕ) :
+    ∃ m : ℕ, N ≤ m ∧ 0 < displacement b E m ∧ displacement b E m < ε := by
+  obtain ⟨Q, R, M, hQ, hdiv, hM, hsmall⟩ :=
+    weightedDyadicMeanTarget b E hb hE0 hE ε hε (max 1 N) (by omega)
+  obtain ⟨j, m, _, _, _, hsample⟩ :=
+    exists_sample_lt_of_dyadicMean_lt Q R M (by omega) (displacement b E) ε hsmall
+  have hNQ : N ≤ Q := (le_max_right 1 N).trans (Nat.le_of_dvd hQ hdiv)
+  have hQm : Q ≤ (m + 1) * Q := by
+    simpa only [one_mul] using
+      Nat.mul_le_mul_right Q (show 1 ≤ m + 1 by omega)
+  refine ⟨(m + 1) * Q, hNQ.trans hQm, ?_, hsample⟩
+  exact displacement_pos b E _ hb hInf (Nat.mul_pos (Nat.succ_pos m) hQ)
+
+#print axioms weighted_displacement_cofinal_close_return
+
+#print axioms weighted_displacement_cofinal_close_return
+
 end ErdosProblems.Erdos257.PaperCompleteR8
 end

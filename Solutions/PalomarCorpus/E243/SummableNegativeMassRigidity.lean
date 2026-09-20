@@ -18,7 +18,7 @@ Authors: Will Cook
 -/
 
 namespace PalomarCorpus.E243.SummableNegativeMassRigidity
-export PalomarCorpus.E243.Shared (centeredState prefixProduct sylvesterNext)
+export PalomarCorpus.E243.Shared (canonicalDenominator canonicalNaturalNumerator centeredState clearedIntegerNumerator prefixProduct sylvesterNext)
 
 theorem summableNegativeMass_completeRigidity
     (a D : ℕ → ℤ) (C : ℕ → ℕ)

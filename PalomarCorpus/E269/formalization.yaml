@@ -2,7 +2,7 @@ version: v0.4
 project:
   name: 'Erdős problem #269 at three primes: the reciprocal running-LCM kernel has nonsingular minors of every order and no finite separated representation, with the exact affine shell orbit of the {2,3,5} series and a window criterion equivalent to its irrationality'
   description: >-
-    Erdős problem 269 asks whether the reciprocal sum of running least common multiples is irrational. For a finite set P of at least two primes, let L(x) be the least common multiple of the P-smooth integers not exceeding x, and let R_P be the sum of 1/L(u) over the P-smooth integers u. Erdős posed the question in Erdős and Graham 1980 and again in Erdős 1988, and the Erdős Problems catalogue records the finite-support case as open. This entry collects 75 Lean declarations at three prime generators and at the prime set {2,3,5}: a shared layer of 18 definitions and six result families. The parent problem remains open, and nothing here proves irrationality or transcendence of a three-prime value.
+    Erdős problem 269 asks whether the reciprocal sum of running least common multiples is irrational. For a finite set P of at least two primes, let L(x) be the least common multiple of the P-smooth integers not exceeding x, and let R_P be the sum of 1/L(u) over the P-smooth integers u. Erdős posed the question in Erdős and Graham 1980 and again in Erdős 1988, and the Erdős Problems catalogue records the finite-support case as open. This entry collects results at three prime generators and at the prime set {2,3,5}, with independent definitions of the literal series, shell orbit and residue windows. The parent problem remains open, and nothing here proves irrationality or transcendence of a three-prime value.
 
     The principal result is the arbitrary-order rank theorem for the running-LCM kernel. Write H(x) for the product of the largest powers of p, q and r not exceeding x, and K(i,j,k) for 1/H(p^i q^j r^k). The theorem threePrimeKernel_infiniteRank_and_noFiniteSeparation states that for primes p, q, r with p different from r and q different from r, and with no hypothesis relating p and q, every order n admits injective index families I and J whose minor det K(I a, J b, k) is nonzero simultaneously for every value k of the third exponent, and that for no natural number d is there a representation K(i,j,k) = sum over l < d of f_l(i) G_l(j,k) with rational-valued f and G. The companion exists_uniform_nonsingular_threePrimeKernel_minor proves the minor clause for arbitrary generators greater than 1 whose logarithmic ratios log_r p and log_r q are irrational. One threshold carry survives the removal of all row and column factors and supplies the minors.
 
@@ -17,6 +17,8 @@ project:
     The audience works on irrationality and transcendence of lacunary and Mahler-type series, on reciprocal-sum irrationality questions from the Erdős catalogue, and on rank and separability of arithmetic kernels indexed by exponent lattices. For that audience the rank theorem answers a concrete structural question, since the mechanism that decides the two-prime case has no finite-rank analogue at three generators. Priority for the rank statements is unassessed beyond the recorded comparison with Fan's comment, and none is claimed here.
 
     Four questions stay open. Irrationality of the three-prime value is the parent question. Nonintegrality of B X_a for every a at least 1 and every positive B coprime to 30 is its pointwise form, equivalent to it through the clearing identity and the bridge; that equivalence is argued in the accompanying note and is not among the compared declarations. The actual cofinal local-window escape is proved equivalent to the parent question here. A two-dimensional Mahler or Hecke-Mahler representation of the {2,3,5} sum is untouched by these declarations.
+
+    The exact-denominator family retains a hypothetical reduced value N/(2^u 3^v 5^w B), with B positive and coprime to 30. It identifies the rational normalized tail with the actual tail, gives its reduced denominator before and after multiplication by B, and proves clearing at scale a equivalent to the three printed power thresholds. The fixed-start residue family gives the eventual ceiling formula and the limiting residue proportion for every positive B and every starting scale. When B X_lo is integral, the residue eventually equals B X_(lo+h); that surviving case is not removed. These statements sharpen the arithmetic description without deciding irrationality.
   authors:
   - Will Cook
   license: Apache-2.0
@@ -120,7 +122,7 @@ status:
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
-  trusted_challenge_sorry_count: 33
+  trusted_challenge_sorry_count: 37
   sorry_boundary: The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E269/Challenge.lean; every Solution proof is complete.
   axiom_audit_status: every compared theorem is printed with axioms propext, Quot.sound and Classical.choice only by scripts/check_axiom_budget.py --run-palomar, which the release gate runs on the built Solution environments
   permitted_axiom_budget:
@@ -150,5 +152,6 @@ automation:
 review:
   status: self-assessed
   reviewers: []
-  notes: Every compared statement was checked declaration by declaration against the public problem note, the reasoning record for Erdős problem #269 at https://github.com/wcook04/plectis-erdos and the Lean sources in two automated passes run with Anthropic Claude on 2026-09-13 (an alignment review of each docstring against its Lean statement, then a simulated editorial review under Palomar's published prompts); the author applied every finding before publication and is responsible for the selection and the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
+  notes: >-
+    The previously selected statements retain their recorded author and automated review history. On 19 September 2026, Codex reviewed the new independent statement definitions and their proof transports against the displayed paper claims and source theorem signatures. The new candidate transports require fresh Lean 4.30, axiom, Comparator and NanoDa validation before checked coverage is asserted. No external referee report, community acceptance or novelty adjudication is claimed.
 acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

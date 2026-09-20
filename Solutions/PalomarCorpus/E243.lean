@@ -7,6 +7,7 @@ import Mathlib
 import Solutions.PalomarCorpus.E243.Statement
 import Solutions.PalomarCorpus.E243.BoundedNegativePartRigidity
 import Solutions.PalomarCorpus.E243.BoundedRiseReducedTail
+import Solutions.PalomarCorpus.E243.CompletePaperRecords
 import Solutions.PalomarCorpus.E243.OriginalCoordinateBoundedDefect
 import Solutions.PalomarCorpus.E243.PeriodicNegativeOrbit
 import Solutions.PalomarCorpus.E243.PrimitiveRecordRigidity

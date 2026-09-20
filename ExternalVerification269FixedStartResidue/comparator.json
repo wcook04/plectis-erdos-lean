@@ -1,0 +1,15 @@
+{
+  "challenge_module": "ExternalVerification269FixedStartResidue.Challenge",
+  "solution_module": "Solutions.ExternalVerification269FixedStartResidue",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification269FixedStartResidue.eventually_fixedStartResidue_formula",
+    "Erdos249257.ExternalVerification269FixedStartResidue.fixedStartResidue_ratio_tendsto",
+    "Erdos249257.ExternalVerification269FixedStartResidue.eventually_fixedStartResidue_eq_tail_of_integral"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

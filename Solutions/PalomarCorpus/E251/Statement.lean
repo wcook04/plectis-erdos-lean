@@ -22,6 +22,7 @@ open scoped BigOperators
 open Filter
 open scoped BigOperators Topology
 open Finset
+open Filter Topology
 
 namespace PalomarCorpus.E251.Shared
 /-- The dyadic tail recurrence with integer digits `g`: a rational sequence `T` satisfies `T (N + 1) = 2 * T N - g (N + 1)` at every index `N`, with the integer digit cast into the rationals. This is the relation obeyed by the rescaled tails `T N = sum over j at least 1 of g (N + j) / 2 ^ j` of a dyadic series with integer coefficients. -/
@@ -36,6 +37,20 @@ noncomputable def RealDyadicTailRecurrence (g : ℕ → ℤ) (T : ℕ → ℝ) :
 /-- A real number is integral when it equals the cast of an integer. -/
 noncomputable def RealIntegral (x : ℝ) : Prop :=
   ∃ z : ℤ, x = z
+/-- Uniformly in the starting index, every sufficiently long interval contains at most a 1/R proportion of S, for each positive integer R. -/
+noncomputable def UpperBanachZero (S : Set ℕ) : Prop := by
+  classical
+  exact ∀ R : ℕ, 0 < R → ∃ L₀ : ℕ, ∀ a L : ℕ, L₀ ≤ L →
+    R * ((Finset.Ico a (a + L)).filter (fun n => n ∈ S)).card ≤ L
+/-- The starting indices in I whose length-m block lies in the specified event. -/
+noncomputable def eventStarts {α : Type*} (a : ℕ → α) (I : Finset ℕ) (m : ℕ)
+    (event : Set (Fin m → α)) : Finset ℕ := by
+  classical
+  exact I.filter (fun N => (fun i : Fin m => a (N + i.val)) ∈ event)
+/-- The smoothed iterated logarithm log(log(n + 3)). -/
+noncomputable def iterlog (n : ℕ) : ℝ := Real.log (Real.log ((n : ℝ) + 3))
+/-- The envelope (log(n + 3))^α. -/
+noncomputable def polylog (α : ℝ) (n : ℕ) : ℝ := (Real.log ((n : ℝ) + 3)) ^ α
 /-- The zero-based enumeration of the primes in increasing order, so that `prime0 0 = 2`, `prime0 1 = 3`, and `prime0 n` is the `(n + 1)`st prime. -/
 noncomputable def prime0 (n : ℕ) : ℕ := Nat.nth Nat.Prime n
 /-- The term of the normalised prime dyadic series: the `(n + 1)`st prime, cast to a real number, divided by `2 ^ (n + 1)`. The sum over `n` at least 0 is `2/2 + 3/4 + 5/8` and so on, the value whose irrationality Erdős problem 251 asks about. -/
@@ -85,6 +100,12 @@ namespace PalomarCorpus.E251.AllResidueLogarithmicCountermodel
 open Filter
 open scoped BigOperators Topology
 end PalomarCorpus.E251.AllResidueLogarithmicCountermodel
+
+namespace PalomarCorpus.E251.ExactDenominatorFloors
+open Filter Topology
+open scoped BigOperators
+export PalomarCorpus.E251.Shared (prime0 primeDyadicTerm primeGap0 primeGapDyadicTerm)
+end PalomarCorpus.E251.ExactDenominatorFloors
 
 namespace PalomarCorpus.E251.FreePairEquivalence
 open scoped BigOperators
@@ -176,6 +197,12 @@ noncomputable def primeDisplayedDyadicTerm (n : ℕ) : ℝ :=
   (prime0 n : ℝ) / 2 ^ n
 end PalomarCorpus.E251.PrimeGapIdentity
 
+namespace PalomarCorpus.E251.PrimeGapNonperiodicity
+open Filter Topology
+open scoped BigOperators
+export PalomarCorpus.E251.Shared (prime0 primeGap0)
+end PalomarCorpus.E251.PrimeGapNonperiodicity
+
 namespace PalomarCorpus.E251.ShiftedFourPrimeCounting
 open Finset
 export PalomarCorpus.E251.Shared (prime0 primeGap0)
@@ -203,11 +230,7 @@ noncomputable def SeparatedQuadSieve_target (h : ℕ) (r : ℤ) : Prop :=
 end PalomarCorpus.E251.ShiftedFourPrimeCounting
 
 namespace PalomarCorpus.E251.SparseRationalisation
-/-- Upper Banach density zero in reciprocal-integer form: for every positive natural `R` there is a length `L₀` such that every half-open interval `[a, a + L)` with `L ≥ L₀` contains at most `L / R` elements of `S`, written as `R` times the count being at most `L`. The bound is uniform in the starting point `a`. -/
-noncomputable def UpperBanachZero (S : Set ℕ) : Prop := by
-  classical
-  exact ∀ R : ℕ, 0 < R → ∃ L₀ : ℕ, ∀ a L : ℕ, L₀ ≤ L →
-    R * ((Finset.Ico a (a + L)).filter (fun n => n ∈ S)).card ≤ L
+export PalomarCorpus.E251.Shared (UpperBanachZero eventStarts iterlog polylog)
 /-- The spacing `(k + 4) ^ 2` between consecutive support centres at schedule level `k`. -/
 noncomputable def gap (k : ℕ) : ℕ := (k + 4) ^ 2
 /-- The digit capacity `4 (k + 3)! 2 ^ gap k` available at schedule level `k`. -/
@@ -228,19 +251,10 @@ noncomputable def state (f : ℕ → ℝ) (start : ℕ) : ℕ → ℕ × ℕ
       (n, upgrade f n s.2)
 /-- The `j`-th support centre of the schedule for the envelope `f` begun at `start`, the first coordinate of the schedule state; the centres increase strictly with `j`. -/
 noncomputable def centre (f : ℕ → ℝ) (start j : ℕ) : ℕ := (state f start j).1
-/-- The envelope `n ↦ (log (n + 3)) ^ α`, a real power of the natural logarithm. -/
-noncomputable def polylog (α : ℝ) (n : ℕ) : ℝ := (Real.log ((n : ℝ) + 3)) ^ α
-/-- The iterated logarithm `n ↦ log (log (n + 3))`. -/
-noncomputable def iterlog (n : ℕ) : ℝ := Real.log (Real.log ((n : ℝ) + 3))
 /-- The values of `c` lying in the half-open interval `[a, a + L)`, as a finite set of natural numbers. -/
 noncomputable def supportSlice (c : ℕ → ℕ) (a L : ℕ) : Finset ℕ := by
   classical
   exact (Finset.Ico a (a + L)).filter (fun n => n ∈ Set.range c)
-/-- The starting indices `N` in the finite set `I` whose length-`m` block `i ↦ a (N + i)` belongs to the set of blocks `event`. -/
-noncomputable def eventStarts {α : Type*} (a : ℕ → α) (I : Finset ℕ) (m : ℕ)
-    (event : Set (Fin m → α)) : Finset ℕ := by
-  classical
-  exact I.filter (fun N => (fun i : Fin m => a (N + i.val)) ∈ event)
 /-- The proportion of starting indices `N` in `[X, 2 X)` whose length-`m` block of `a` belongs to `E`: the number of such `N` divided by `X`. -/
 noncomputable def eventFrequency {α : Type*} (a : ℕ → α) (X m : ℕ)
     (E : Set (Fin m → α)) : ℝ := (eventStarts a (Finset.Ico X (2 * X)) m E).card / (X : ℝ)
@@ -252,3 +266,20 @@ noncomputable def testMean {α : Type*} (a : ℕ → α) (X m : ℕ)
 noncomputable def blockTV {α : Type*} (a b : ℕ → α) (X m : ℕ) : ℝ :=
   sSup (Set.range (fun E : Set (Fin m → α) => |eventFrequency a X m E - eventFrequency b X m E|))
 end PalomarCorpus.E251.SparseRationalisation
+
+namespace PalomarCorpus.E251.UniformSparseRationalisation
+open Filter Topology
+open scoped BigOperators
+open Finset
+export PalomarCorpus.E251.Shared (UpperBanachZero eventStarts iterlog polylog)
+/-- The fraction, normalized by X, of starts in [X, 2X) whose length-m block lies in the event. -/
+noncomputable def eventFrequency {α : Type*} (a : ℕ → α) (X m : ℕ)
+    (E : Set (Fin m → α)) : ℝ := (eventStarts a (Ico X (2 * X)) m E).card / (X : ℝ)
+/-- The supremum over block events of the absolute difference of their frequencies for the two words. -/
+noncomputable def blockTV {α : Type*} (a b : ℕ → α) (X m : ℕ) : ℝ :=
+  sSup (Set.range (fun E : Set (Fin m → α) => |eventFrequency a X m E - eventFrequency b X m E|))
+/-- The elements of S in the half-open interval [a, a + L). -/
+noncomputable def supportSlice (S : Set ℕ) (a L : ℕ) : Finset ℕ := by
+  classical
+  exact (Finset.Ico a (a + L)).filter (fun n => n ∈ S)
+end PalomarCorpus.E251.UniformSparseRationalisation

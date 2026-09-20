@@ -12,3 +12,4 @@ import Solutions.PalomarCorpus.E1049.HermitePadeNoGo
 import Solutions.PalomarCorpus.E1049.PrimeSupportSelectors
 import Solutions.PalomarCorpus.E1049.PublishedHeightRegions
 import Solutions.PalomarCorpus.E1049.RationalBaseBarrier
+import Solutions.PalomarCorpus.E1049.RationalBaseRegion

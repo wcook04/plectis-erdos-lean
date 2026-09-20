@@ -18,6 +18,8 @@
     "PalomarCorpus.E68.CompanionOrbitBoundary.companionOrbitBoundary_genericShift",
     "PalomarCorpus.E68.CompanionOrbitBoundary.companionOrbitBoundary_strictSuccessorCarry",
     "PalomarCorpus.E68.CompanionOrbitBoundary.tsum_unitFactTerm_eq_exp_one_sub_two",
+    "PalomarCorpus.E68.FactorialGapBounds.factorialGapSegment_log_sum_le_channelLCM_add_choose",
+    "PalomarCorpus.E68.FactorialGapBounds.factorial_gap_gcd_exact",
     "PalomarCorpus.E68.FiniteDenominator.finite_denominator_exclusion",
     "PalomarCorpus.E68.KempnerIndex.rational_denominator_not_dvd_fiftynine_factorial",
     "PalomarCorpus.E68.KempnerIndex.rational_denominator_not_dvd_pred_factorial_of_nonunit_carry",

@@ -54,6 +54,7 @@ open Filter
 open scoped BigOperators
 open Finset
 open scoped Topology
+open Filter Topology
 
 namespace PalomarCorpus.E243.Shared
 /-- The centred reciprocal-tail error `D - (a - 1) * C` of an integer state, the integer measuring the failure of the identity `D = (a - 1) * C` that holds exactly on a Sylvester tail. -/
@@ -62,6 +63,16 @@ noncomputable def centeredState (a D C : ℤ) : ℤ :=
 /-- The prefix product `a 0 * a 1 * ... * a (n-1)` of the first `n` terms of a natural sequence, with the empty product `1` at `n = 0`. -/
 noncomputable def prefixProduct (a : ℕ → ℕ) (n : ℕ) : ℕ :=
   ∏ j ∈ Finset.range n, a j
+/-- The denominator q multiplied by the product of the first n terms of a. -/
+noncomputable def canonicalDenominator (a : ℕ → ℕ) (q n : ℕ) : ℕ :=
+  q * prefixProduct a n
+/-- The integer numerator obtained by clearing q times the prefix product from the first n terms of the reciprocal-series remainder. -/
+noncomputable def clearedIntegerNumerator (a : ℕ → ℕ) (p : ℤ) (q n : ℕ) : ℤ :=
+  p * (prefixProduct a n : ℤ) -
+    ∑ j ∈ Finset.range n, (q : ℤ) * (prefixProduct a n / a j : ℕ)
+/-- The natural-number projection of the cleared integer remainder numerator. -/
+noncomputable def canonicalNaturalNumerator (a : ℕ → ℕ) (p : ℤ) (q n : ℕ) : ℕ :=
+  (clearedIntegerNumerator a p q n).toNat
 /-- The running maximum `max_{k ≤ n} u k` of a natural-valued sequence, given by `runningMax u 0 = u 0` and `runningMax u (n+1) = max (runningMax u n) (u (n+1))`. -/
 noncomputable def runningMax (u : ℕ → ℕ) : ℕ → ℕ
   | 0 => u 0
@@ -91,6 +102,19 @@ theorem boundedNegativePart_completeRigidity
 end PalomarCorpus.E243.BoundedNegativePartRigidity
 
 namespace PalomarCorpus.E243.BoundedRiseReducedTail
+/-- An unbounded natural sequence cannot have bounded upward increments while avoiding every earlier modulus in a pairwise coprime tail of moduli greater than one. -/
+theorem no_boundedRise_of_tailAvoidance
+    (u m : ℕ → ℕ) (N B : ℕ)
+    (hB : 0 < B)
+    (hm : ∀ n, N ≤ n → 1 < m n)
+    (hpair : ∀ {i j : ℕ}, N ≤ i → N ≤ j → i ≠ j →
+      Nat.Coprime (m i) (m j))
+    (havoid : ∀ {i t : ℕ}, N ≤ i → i < t →
+      Nat.Coprime (m i) (u t))
+    (hrise : ∀ n, N ≤ n → u (n + 1) ≤ u n + B)
+    (huTop : Filter.Tendsto u Filter.atTop Filter.atTop) :
+    False := by
+  sorry
 /-- Unconditional exclusion: there is no reduced exact tail of naturals with `a n > 1` for every `n`, `u n` coprime to `v n` for every `n`, `u (n+1) + v n = a n * u n`, `v (n+1) = a n * v n`, a fixed `B > 0` with `u (n+1) ≤ u n + B` at every index, and `u n → ∞`. Reduced exactness makes distinct multipliers pairwise coprime and keeps every earlier multiplier coprime to every later numerator, and a Chinese remainder block of consecutive forbidden heights cannot be crossed by steps of size at most `B`. -/
 theorem no_boundedRise_reducedTail
     (a u v : ℕ → ℕ) (B : ℕ)
@@ -103,7 +127,144 @@ theorem no_boundedRise_reducedTail
     (huTop : Filter.Tendsto u Filter.atTop Filter.atTop) :
     False := by
   sorry
+/-- The reduced numerator of a reciprocal-tail recurrence cannot tend to infinity while having eventually bounded upward increments. -/
+theorem no_eventuallyBoundedRise_reducedTail
+    (a u v : ℕ → ℕ) (N B : ℕ)
+    (hB : 0 < B)
+    (ha : ∀ n, N ≤ n → 1 < a n)
+    (hred : ∀ n, N ≤ n → Nat.Coprime (u n) (v n))
+    (hu : ∀ n, N ≤ n → u (n + 1) + v n = a n * u n)
+    (hv : ∀ n, N ≤ n → v (n + 1) = a n * v n)
+    (hrise : ∀ n, N ≤ n → u (n + 1) ≤ u n + B)
+    (huTop : Filter.Tendsto u Filter.atTop Filter.atTop) :
+    False := by
+  sorry
 end PalomarCorpus.E243.BoundedRiseReducedTail
+
+namespace PalomarCorpus.E243.CompletePaperRecords
+open Filter Topology
+open scoped BigOperators
+export PalomarCorpus.E243.Shared (canonicalDenominator canonicalNaturalNumerator centeredState clearedIntegerNumerator prefixProduct runningMax sylvesterNext)
+/-- The elements of E strictly below X. -/
+noncomputable def exceptionFinset (E : Set ℕ) (X : ℕ) : Finset ℕ := by
+  classical
+  exact (Finset.range X).filter (fun n ↦ n ∈ E)
+/-- The number of elements of E strictly below X. -/
+noncomputable def exceptionCount (E : Set ℕ) (X : ℕ) : ℕ :=
+  (exceptionFinset E X).card
+/-- For every positive ε, the count below X is eventually at least (d − ε)X; this is the stated lower-density bound. -/
+noncomputable def LowerDensityAtLeast (E : Set ℕ) (d : ℝ) : Prop :=
+  ∀ ε : ℝ, 0 < ε → ∃ N : ℕ, ∀ X : ℕ, N ≤ X →
+    (d - ε) * (X : ℝ) ≤ (exceptionCount E X : ℝ)
+/-- The least common multiple of q and the first n digits of a, defined recursively. -/
+noncomputable def cumulativeDigitLcm (q : ℕ) (a : ℕ → ℕ) : ℕ → ℕ
+  | 0 => q
+  | n + 1 => Nat.lcm (cumulativeDigitLcm q a n) (a n)
+/-- The product of the successive gcd overlaps between each digit and the preceding cumulative least common multiple. -/
+noncomputable def cumulativeOverlapDebt (q : ℕ) (a : ℕ → ℕ) : ℕ → ℕ
+  | 0 => 1
+  | n + 1 =>
+      cumulativeOverlapDebt q a n *
+        Nat.gcd (cumulativeDigitLcm q a n) (a n)
+/-- The numerator C n divided in the natural numbers by its cumulative overlap debt. -/
+noncomputable def lcmLiftedNumerator (q : ℕ) (a C : ℕ → ℕ) (n : ℕ) : ℕ :=
+  C n / cumulativeOverlapDebt q a n
+/-- The signed discrepancy between the cumulative least common multiple and (a n − 1) times the lifted numerator. -/
+noncomputable def lcmLiftedDigit (q : ℕ) (a C : ℕ → ℕ) (n : ℕ) : ℤ :=
+  (cumulativeDigitLcm q a n : ℤ) -
+    ((a n : ℤ) - 1) * (lcmLiftedNumerator q a C n : ℤ)
+/-- The value at n + 1 strictly exceeds every value at an index at most n. -/
+noncomputable def IsStrictRecord (U : ℕ → ℕ) (n : ℕ) : Prop :=
+  ∀ j, j ≤ n → U j < U (n + 1)
+/-- The integrals from 1 to R exceed every real bound as R ranges over values at least 1. -/
+noncomputable def IntegralUnbounded (f : ℝ → ℝ) : Prop :=
+  ∀ M : ℝ, ∃ R : ℝ, 1 ≤ R ∧ M < ∫ t in (1 : ℝ)..R, f t
+/-- The overlap-corrected natural numerator of the rational reciprocal-series remainder. -/
+noncomputable def canonicalLcmNumerator (a : ℕ → ℕ) (p : ℤ) (q : ℕ) : ℕ → ℕ :=
+  lcmLiftedNumerator q a (canonicalNaturalNumerator a p q)
+/-- The signed discrepancy associated with the canonical overlap-corrected numerator. -/
+noncomputable def canonicalLcmDigit (a : ℕ → ℕ) (p : ℤ) (q : ℕ) : ℕ → ℤ :=
+  lcmLiftedDigit q a (canonicalNaturalNumerator a p q)
+/-- At a strict record, the negative digit excess beyond B, weighted by f at the preceding numerator; zero at other indices. -/
+noncomputable def paperRecordCharge (U : ℕ → ℕ) (V : ℕ → ℤ)
+    (B : ℕ) (f : ℝ → ℝ) (n : ℕ) : ℝ := by
+  classical
+  exact if IsStrictRecord U n then
+    ((max (-V n - (B : ℤ)) 0 : ℤ) : ℝ) * f (U n : ℝ)
+  else 0
+/-- The truncated base-two iterated logarithm log₂(log₂(max(4, x))). -/
+noncomputable def recordLogLog (x : ℝ) : ℝ :=
+  Real.log (Real.log (max 4 x) / Real.log 2) / Real.log 2
+/-- The increment of the running maximum divided by the truncated iterated logarithm of its preceding value. -/
+noncomputable def recordLogLogCharge (U : ℕ → ℕ) (n : ℕ) : ℝ :=
+  ((runningMax U (n + 1) - runningMax U n : ℕ) : ℝ) / recordLogLog (runningMax U n)
+/-- The extended-real limit superior of the normalized running-record increments. -/
+noncomputable def recordTheta (U : ℕ → ℕ) : EReal :=
+  limsup (fun n ↦ (recordLogLogCharge U n : EReal)) atTop
+/-- The nonnegative part of the negative error, divided by the truncated iterated logarithm of the numerator. -/
+noncomputable def negativeErrorLogLogCharge (U : ℕ → ℕ) (E : ℕ → ℤ) (n : ℕ) : ℝ :=
+  ((max (-E n) 0 : ℤ) : ℝ) / recordLogLog (U n)
+/-- If each sufficiently late index in one residue class modulo s has a translate in E among L fixed offsets, E has lower density at least 1/(Ls). -/
+theorem fixed_offsets_periodic_lowerDensity (E : Set ℕ) (s L T r : ℕ)
+    (hs : 0 < s) (hL : 0 < L) (hr : r < s) (offset : Fin L → ℕ)
+    (hhit : ∀ n : ℕ, T ≤ n → n % s = r →
+      ∃ i : Fin L, n + offset i ∈ E) :
+    LowerDensityAtLeast E (1 / ((L : ℝ) * (s : ℝ))) := by
+  sorry
+/-- Under the rational-sum and asymptotically quadratic growth hypotheses, eventual Sylvester recurrence is equivalent to summability of the canonical weighted record excess for some finite cutoff B. -/
+theorem canonical_weighted_record_excess
+    (a : ℕ → ℕ) (ha : StrictMono a) (hapos : ∀ n, 0 < a n)
+    (p : ℤ) (q : ℕ) (hq : 0 < q)
+    (hs : HasSum (fun n ↦ 1 / (a n : ℝ)) ((p : ℝ) / (q : ℝ)))
+    (hgrowth : Tendsto (fun n ↦ (a (n + 1) : ℝ) / (a n : ℝ) ^ 2)
+      atTop (𝓝 1))
+    (f : ℝ → ℝ) (hf : AntitoneOn f (Set.Ici 1))
+    (hpos : ∀ x : ℝ, 1 ≤ x → 0 ≤ f x) (hdiv : IntegralUnbounded f) :
+    (∃ N, ∀ n, N ≤ n → (a (n + 1) : ℤ) = (a n : ℤ) ^ 2 - (a n : ℤ) + 1) ↔
+      ∃ B : ℕ, Summable (paperRecordCharge (canonicalLcmNumerator a p q)
+        (canonicalLcmDigit a p q) B f) := by
+  sorry
+/-- For a positive least-common-multiple numerator recurrence with the displayed centering inequality, boundedness of U is equivalent to summability of its weighted record excess, for every specified finite cutoff B and admissible weight. -/
+theorem arithmetic_weighted_record_dichotomy
+    (a L U : ℕ → ℕ) (V : ℕ → ℤ)
+    (ha : ∀ n, 0 < a n) (hLpos : ∀ n, 0 < L n) (hU : ∀ n, 0 < U n)
+    (hL : ∀ n, L (n + 1) = Nat.lcm (L n) (a n))
+    (hstate : ∀ n, (Nat.gcd (L n) (a n) : ℤ) * U (n + 1) =
+      (U n : ℤ) - V n)
+    (herror : ∀ n, V n = (L n : ℤ) - ((a n : ℤ) - 1) * U n)
+    (hcenter : ∀ n, -(U n : ℤ) ≤ 2 * V n)
+    (B : ℕ) (f : ℝ → ℝ) (hf : AntitoneOn f (Set.Ici 1))
+    (hpos : ∀ x : ℝ, 1 ≤ x → 0 ≤ f x) (hdiv : IntegralUnbounded f) :
+    (∃ H : ℕ, ∀ n, U n ≤ H) ↔ Summable (paperRecordCharge U V B f) := by
+  sorry
+/-- Outside eventual Sylvester recurrence, either numerator-denominator gcds are unbounded and recordTheta is infinite, or the gcd eventually equals a positive g and recordTheta satisfies the displayed totient-ratio bounds and strictly exceeds g. -/
+theorem canonical_quantitative_record_dichotomy
+    (a : ℕ → ℕ) (ha : StrictMono a) (hapos : ∀ n, 0 < a n)
+    (p : ℤ) (q : ℕ) (hq : 0 < q)
+    (hs : HasSum (fun n ↦ 1 / (a n : ℝ)) ((p : ℝ) / (q : ℝ)))
+    (hgrowth : Tendsto (fun n ↦ (a (n + 1) : ℝ) / (a n : ℝ) ^ 2) atTop (𝓝 1))
+    (hnot : ¬ ∃ N, ∀ n, N ≤ n → (a (n + 1) : ℤ) = sylvesterNext (a n : ℤ)) :
+    let C := canonicalNaturalNumerator a p q
+    let D := canonicalDenominator a q
+    ((∀ B : ℕ, ∃ n, B < Nat.gcd (C n) (D n)) ∧ recordTheta C = ⊤) ∨
+    ∃ N g : ℕ, 0 < g ∧ (∀ n, N ≤ n → Nat.gcd (C n) (D n) = g) ∧
+      (∀ T : ℕ, N + 2 ≤ T →
+        (((g : ℝ) * (D T / g : ℕ) / Nat.totient (D T / g) : ℝ) : EReal) ≤ recordTheta C) ∧
+      (g : EReal) < recordTheta C := by
+  sorry
+/-- Under the rational-sum and growth hypotheses, a limit superior of the normalized negative error at most one forces eventual Sylvester recurrence, including the boundary value one. -/
+theorem canonical_inclusive_logLog_criterion
+    (a : ℕ → ℕ) (ha : StrictMono a) (hapos : ∀ n, 0 < a n)
+    (p : ℤ) (q : ℕ) (hq : 0 < q)
+    (hs : HasSum (fun n ↦ 1 / (a n : ℝ)) ((p : ℝ) / (q : ℝ)))
+    (hgrowth : Tendsto (fun n ↦ (a (n + 1) : ℝ) / (a n : ℝ) ^ 2) atTop (𝓝 1))
+    (hlim : let C := canonicalNaturalNumerator a p q
+      let D := canonicalDenominator a q
+      let E := fun n ↦ centeredState (a n : ℤ) (D n : ℤ) (C n : ℤ)
+      limsup (fun n ↦ (negativeErrorLogLogCharge C E n : EReal)) atTop ≤ 1) :
+    ∃ N, ∀ n, N ≤ n → (a (n + 1) : ℤ) = sylvesterNext (a n : ℤ) := by
+  sorry
+end PalomarCorpus.E243.CompletePaperRecords
 
 namespace PalomarCorpus.E243.OriginalCoordinateBoundedDefect
 open Filter
@@ -449,7 +610,7 @@ end PalomarCorpus.E243.SlowRiseBarrier
 namespace PalomarCorpus.E243.SummableNegativeMassRigidity
 open scoped BigOperators
 open Finset
-export PalomarCorpus.E243.Shared (centeredState prefixProduct sylvesterNext)
+export PalomarCorpus.E243.Shared (canonicalDenominator canonicalNaturalNumerator centeredState clearedIntegerNumerator prefixProduct sylvesterNext)
 /-- The product-cleared denominator update `D ↦ a * D` on the integers, one step of the recurrence `D (n+1) = a n * D n`. -/
 noncomputable def nextDenState (a D : ℤ) : ℤ :=
   a * D
@@ -475,16 +636,6 @@ theorem summableNegativeMass_completeRigidity
     (∃ N, ∀ n, N ≤ n → centeredState (a n) (D n) (C n) = 0) ∧
       ∃ N, ∀ n, N ≤ n → a (n + 1) = sylvesterNext (a n) := by
   sorry
-/-- The cleared integer numerator `p * P n - ∑_{j < n} q * (P n / a j)` with `P n = ∏_{j < n} a j`, which is `q * P n` times the reciprocal tail `p / q - ∑_{j < n} 1 / a j`; the inner quotient is natural division and is exact for `j < n`. -/
-noncomputable def clearedIntegerNumerator (a : ℕ → ℕ) (p : ℤ) (q n : ℕ) : ℤ :=
-  p * (prefixProduct a n : ℤ) -
-    ∑ j ∈ Finset.range n, (q : ℤ) * (prefixProduct a n / a j : ℕ)
-/-- The canonical numerator state as a natural number, `Int.toNat` of the cleared integer numerator, hence equal to that integer when it is nonnegative and `0` otherwise. -/
-noncomputable def canonicalNaturalNumerator (a : ℕ → ℕ) (p : ℤ) (q n : ℕ) : ℕ :=
-  (clearedIntegerNumerator a p q n).toNat
-/-- The canonical cleared denominator `q * P n` with `P n = ∏_{j < n} a j`, the factor that clears the rational reciprocal sum `p / q` and every term of the preceding finite prefix. -/
-noncomputable def canonicalDenominator (a : ℕ → ℕ) (q n : ℕ) : ℕ :=
-  q * prefixProduct a n
 /-- Scalar finite-mass criterion, with no denominator dynamics and no normalised-vanishing hypothesis: if `C n` are positive naturals, `E n` are integers with `C (n+1) = C n - E n`, and the normalised negative mass `n ↦ (-E n)_+ / C n` is summable, then `E n = 0` from some index onward. Bounding `C N` by a product of factors `1 + (-E n)_+ / C n` caps the numerator, each strict rise costs a fixed amount of mass, and the remaining nonincreasing positive integer sequence stabilises. -/
 theorem finite_negative_mass_scalar (C : ℕ → ℕ) (E : ℕ → ℤ)
     (hCpos : ∀ n, 0 < C n)

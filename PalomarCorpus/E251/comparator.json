@@ -10,6 +10,7 @@
     "PalomarCorpus.E251.AffineCircularity.cofinal_affinePowTwo_escape_iff_not_eventuallyIntegral",
     "PalomarCorpus.E251.AffineCircularity.cofinal_blockResidue_escape_iff_not_eventuallyIntegral",
     "PalomarCorpus.E251.AllResidueLogarithmicCountermodel.exists_every_residue_logarithmic_countermodel",
+    "PalomarCorpus.E251.ExactDenominatorFloors.denominator_floor_both",
     "PalomarCorpus.E251.FreePairEquivalence.cofinalFreePairNonintegral_iff_cofinalNonintegralTailShifts",
     "PalomarCorpus.E251.FreePairEquivalence.exists_free_pair_lattice",
     "PalomarCorpus.E251.FreePairEquivalence.free_pair_integral_iff_modEq",
@@ -34,11 +35,14 @@
     "PalomarCorpus.E251.PrimeGapIdentity.primeSeries_eq_two_add_primeGapSeries",
     "PalomarCorpus.E251.PrimeGapIdentity.primeSeries_irrational_iff_primeGapSeries",
     "PalomarCorpus.E251.PrimeGapIdentity.primeSeries_summable",
+    "PalomarCorpus.E251.PrimeGapNonperiodicity.primeGap0_not_eventually_periodic",
     "PalomarCorpus.E251.ShiftedFourPrimeCounting.separated_zeroDensity_of_quad_sieve",
     "PalomarCorpus.E251.ShiftedFourPrimeCounting.shifted_count_bound",
     "PalomarCorpus.E251.SparseRationalisation.arbitrary_word_sparse_rationalisation",
     "PalomarCorpus.E251.SparseRationalisation.growing_block_TV",
-    "PalomarCorpus.E251.SparseRationalisation.polylogarithmic_word_interval"
+    "PalomarCorpus.E251.SparseRationalisation.polylogarithmic_word_interval",
+    "PalomarCorpus.E251.UniformSparseRationalisation.arbitrary_word_sparse_rationalisation_uniform",
+    "PalomarCorpus.E251.UniformSparseRationalisation.polylogarithmic_word_interval_uniform"
   ],
   "permitted_axioms": [
     "propext",

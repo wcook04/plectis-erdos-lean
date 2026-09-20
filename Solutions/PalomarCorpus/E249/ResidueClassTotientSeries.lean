@@ -8,6 +8,7 @@ import ErdosProblems.Erdos249.ResidueClassTotientSeries
 import Solutions.PalomarCorpus.E249.Statement
 
 namespace PalomarCorpus.E249.ResidueClassTotientSeries
+export PalomarCorpus.E249.Shared (totientResidueValue)
 
 theorem isolated_pulse_separation {a : ℕ → ℤ} {C : ℝ} (hC : ∀ n, |(a n : ℝ)| ≤ C)
     {N L q : ℕ} {t : ℤ} (hq : 1 ≤ q) (hL : 2 * (q : ℝ) * C < 2 ^ L)

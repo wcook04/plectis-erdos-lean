@@ -1,0 +1,16 @@
+{
+  "challenge_module": "ExternalVerification249RationalObservableClassification.Challenge",
+  "solution_module": "Solutions.ExternalVerification249RationalObservableClassification",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249RationalObservableClassification.rational_zmod_observable_iff",
+    "Erdos249257.ExternalVerification249RationalObservableClassification.zmod_observable_value",
+    "Erdos249257.ExternalVerification249RationalObservableClassification.residue_series_sharp_range",
+    "Erdos249257.ExternalVerification249RationalObservableClassification.short_note_residue_theorem"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

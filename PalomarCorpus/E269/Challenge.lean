@@ -13,7 +13,7 @@ set_option autoImplicit false
 
 Erdős asks whether the reciprocal sum of running least common multiples of the
 `P`-smooth integers is irrational, for a finite set `P` of at least two primes.
-This challenge restates 75 declarations about that series at three prime
+This challenge restates results about that series at three prime
 generators. The parent problem remains open, and nothing here proves
 irrationality or transcendence of a three-prime value.
 
@@ -42,9 +42,16 @@ reformulation of the problem and decides nothing about the value.
 clearing, pinning, rigidity and carry algebra that a remaining argument must
 use. Their lift, anchor and escape inputs are hypotheses rather than proved
 producers.
+
+`ExactDenominator` supplies the reduced denominators and the exact three
+power thresholds under a rational-value hypothesis. `FixedStartResidue`
+supplies the eventual ceiling formula and its limit, retaining the integral
+case in which the residue is the scaled final tail.
 -/
 
 open scoped BigOperators
+open Filter
+open scoped Topology BigOperators
 
 namespace PalomarCorpus.E269.Shared
 /-- The predicate that the power `p ^ e` lies strictly inside the dyadic block from `2 ^ a` to `2 ^ (a + 1)`, that is `2 ^ a < p ^ e` and `p ^ e < 2 ^ (a + 1)`; for an odd prime `p` it records that a new pure `p`-power is crossed strictly between two consecutive powers of two, so that the running least common multiple gains one further factor `p` inside that block. -/
@@ -107,6 +114,12 @@ noncomputable def dyadicShellMassR235 (a : ℕ) : ℝ :=
 /-- The tail of the shell masses from scale `a` onward, taken as the Mathlib unconditional sum of `dyadicShellMassR235 (a + n)` over `n`; summability is proved in `actual_dyadicShellOrbit_recurrence_and_escape`, so this is the genuine infinite sum, and the value at `a = 0` is the reciprocal running least common multiple sum of Erdős problem 269 for the prime set `{2, 3, 5}`. -/
 noncomputable def dyadicShellTsumTailR235 (a : ℕ) : ℝ :=
   ∑' n : ℕ, dyadicShellMassR235 (a + n)
+/-- The rational mass of the count consecutive dyadic smooth shells starting at start, with an empty window having mass zero. -/
+noncomputable def dyadicSmoothWindowMassQ235 (start count : ℕ) : ℚ :=
+  ∑ i ∈ Finset.range count, dyadicShellMassQ235 (start + i)
+/-- The natural number H(2^a)/2, where H is the three-prime running height for 2, 3 and 5; the denominator theorem uses positive scales. -/
+noncomputable def heightNormalizer235 (a : ℕ) : ℕ :=
+  threePrimeHeight 2 3 5 (2 ^ a) / 2
 /-- The genuine normalized state `(H (2 ^ a) / 2) * T a` of the literal `{2,3,5}` shell tail, that is `dyadicNormalizedTailStateR235` applied to the actual tail `dyadicShellTsumTailR235`. -/
 noncomputable def trueNormalizedState (a : ℕ) : ℝ :=
   dyadicNormalizedTailStateR235 dyadicShellTsumTailR235 a
@@ -157,13 +170,7 @@ end PalomarCorpus.E269.ActualShellOrbit
 
 namespace PalomarCorpus.E269.AllScaleLattice
 open scoped BigOperators
-export PalomarCorpus.E269.Shared (dyadicNormalizedTailStateR235 dyadicShellMassQ235 dyadicShellMassR235 dyadicShellTsumTailR235 dyadicSmoothShell235 smooth3Val strictSmoothExponents strictSmoothShell threePrimeHeight)
-/-- The integer normalizer `H (2 ^ a) / 2` for the primes 2, 3 and 5, with the division taken in the natural numbers; for `a` at least 1 the height is even and the division is exact, while the value at `a = 0` is 0 because `H 1 = 1`. -/
-noncomputable def heightNormalizer235 (a : ℕ) : ℕ :=
-  threePrimeHeight 2 3 5 (2 ^ a) / 2
-/-- The rational mass of the finite window of `count` consecutive dyadic shells beginning at index `start`, the sum of `dyadicShellMassQ235 (start + i)` over `i < count`. -/
-noncomputable def dyadicSmoothWindowMassQ235 (start count : ℕ) : ℚ :=
-  ∑ i ∈ Finset.range count, dyadicShellMassQ235 (start + i)
+export PalomarCorpus.E269.Shared (dyadicNormalizedTailStateR235 dyadicShellMassQ235 dyadicShellMassR235 dyadicShellTsumTailR235 dyadicSmoothShell235 dyadicSmoothWindowMassQ235 heightNormalizer235 smooth3Val strictSmoothExponents strictSmoothShell threePrimeHeight)
 /-- For `p` equal to 2, 3 or 5, for `x` positive and `x < p ^ m`, the product `p * H x` divides `H (p ^ m)`, where `H` is the three-prime height for 2, 3 and 5. This is the prime-power boundary clearing law used by the lattice reduction, and it is a supporting lemma rather than an advertised result. -/
 theorem smoothHeight_mul_prime_dvd_boundaryHeight
     {p m x : ℕ} (hp : p = 2 ∨ p = 3 ∨ p = 5) (hx : 0 < x) (hlt : x < p ^ m) :
@@ -343,6 +350,81 @@ theorem no_positive_reducedCarry_of_cofinalLocalWindowEscape
     False := by
   sorry
 end PalomarCorpus.E269.CarryMechanism
+
+namespace PalomarCorpus.E269.ExactDenominator
+open scoped BigOperators
+export PalomarCorpus.E269.Shared (dyadicNormalizedTailStateR235 dyadicShellMassQ235 dyadicShellMassR235 dyadicShellTsumTailR235 dyadicSmoothShell235 dyadicSmoothWindowMassQ235 heightNormalizer235 smooth3Val strictSmoothExponents strictSmoothShell threePrimeHeight trueNormalizedState)
+/-- The sum of the real dyadic shell masses from scale zero, equal to the literal reciprocal running-LCM series at the primes 2, 3 and 5. -/
+noncomputable def paperSeries235 : ℝ := dyadicShellTsumTailR235 0
+/-- The rational normalized tail obtained from a proposed value N/D by subtracting the initial term 1 and the shells at scales 1 through a-1, then multiplying by H(2^a)/2. -/
+noncomputable def rationalTailState (N : ℤ) (D a : ℕ) : ℚ :=
+  (heightNormalizer235 a : ℚ) *
+    ((N : ℚ) / (D : ℚ) - 1 - dyadicSmoothWindowMassQ235 1 (a - 1))
+/-- Under a reduced rational-value hypothesis with denominator 2^u 3^v 5^w B and B positive and coprime to 30, identifies the actual tail state, both exact reduced denominators, and the equivalence between clearing at scale a and the three power thresholds. This is conditional arithmetic, not a proof that the series is rational or irrational. -/
+theorem exact_denominators_and_threshold_clearing
+    {N : ℤ} {u v w B a : ℕ}
+    (hB : 0 < B) (hB30 : Nat.Coprime B 30)
+    (hcop : Nat.Coprime N.natAbs (2 ^ u * 3 ^ v * 5 ^ w * B))
+    (ha : 1 ≤ a)
+    (hval : paperSeries235 =
+      (N : ℝ) / ((2 ^ u * 3 ^ v * 5 ^ w * B : ℕ) : ℝ)) :
+    ((rationalTailState N (2 ^ u * 3 ^ v * 5 ^ w * B) a : ℚ) : ℝ) =
+        trueNormalizedState a ∧
+      (rationalTailState N (2 ^ u * 3 ^ v * 5 ^ w * B) a).den =
+        (2 ^ u * 3 ^ v * 5 ^ w * B) /
+          Nat.gcd (2 ^ u * 3 ^ v * 5 ^ w) (heightNormalizer235 a) ∧
+      ((B : ℚ) * rationalTailState N
+          (2 ^ u * 3 ^ v * 5 ^ w * B) a).den =
+        (2 ^ u * 3 ^ v * 5 ^ w) /
+          Nat.gcd (2 ^ u * 3 ^ v * 5 ^ w) (heightNormalizer235 a) ∧
+      (((B : ℚ) * rationalTailState N
+          (2 ^ u * 3 ^ v * 5 ^ w * B) a).den = 1 ↔
+        2 ^ (u + 1) ≤ 2 ^ a ∧ 3 ^ v ≤ 2 ^ a ∧ 5 ^ w ≤ 2 ^ a) := by
+  sorry
+end PalomarCorpus.E269.ExactDenominator
+
+namespace PalomarCorpus.E269.FixedStartResidue
+open Filter
+open scoped Topology BigOperators
+export PalomarCorpus.E269.Shared (DyadicInternalPower dyadicBeforeThresholdCount235 dyadicBlockBase235 dyadicNormalizedTailStateR235 dyadicOrderedBlockDigit235 dyadicShellMassQ235 dyadicShellMassR235 dyadicShellTsumTailR235 dyadicSmoothShell235 leastPositiveResidue smooth3Val strictSmoothExponents strictSmoothShell threePrimeHeight trueNormalizedState windowForcing)
+/-- The product of the actual dyadic radices over the window from lo through lo+len-1; it is 1 for the empty window. -/
+noncomputable def actualWindowProduct (lo len : ℕ) : ℕ :=
+  ∏ j ∈ Finset.range len, dyadicBlockBase235 (lo + j)
+/-- The accumulated integer forcing of the actual dyadic shell digits over a window, using the same affine recurrence as the normalized tail. -/
+noncomputable abbrev actualWindowForcing (lo len : ℕ) : ℤ :=
+  windowForcing (fun a => (dyadicBlockBase235 a : ℤ))
+    (fun a => (dyadicOrderedBlockDigit235 a : ℤ)) lo len
+/-- For every fixed positive multiplier B and starting scale lo, the least positive residue of minus B times the window forcing eventually equals (ceil(B X_lo)-B X_lo) times the window product plus B X_(lo+h), including the integral case. -/
+theorem eventually_fixedStartResidue_formula (B lo : ℕ) (hB : 0 < B) :
+    ∀ᶠ h in atTop,
+      (leastPositiveResidue (actualWindowProduct lo h)
+          (-((B : ℤ) * actualWindowForcing lo h)) : ℝ) =
+        ((⌈(B : ℝ) * trueNormalizedState lo⌉ : ℤ) : ℝ) *
+            (actualWindowProduct lo h : ℝ) -
+          (B : ℝ) * trueNormalizedState lo *
+            (actualWindowProduct lo h : ℝ) +
+          (B : ℝ) * trueNormalizedState (lo + h) := by
+  sorry
+/-- At each fixed starting scale and positive multiplier, the least positive residue divided by the window product converges to ceil(B X_lo)-B X_lo. The limit is zero exactly when B X_lo is integral. -/
+theorem fixedStartResidue_ratio_tendsto (B lo : ℕ) (hB : 0 < B) :
+    Tendsto
+      (fun h : ℕ =>
+        (leastPositiveResidue (actualWindowProduct lo h)
+          (-((B : ℤ) * actualWindowForcing lo h)) : ℝ) /
+            (actualWindowProduct lo h : ℝ))
+      atTop
+      (nhds (((⌈(B : ℝ) * trueNormalizedState lo⌉ : ℤ) : ℝ) -
+        (B : ℝ) * trueNormalizedState lo)) := by
+  sorry
+/-- If B X_lo is an integer with B positive, the least positive window residue eventually equals the positive final tail B X_(lo+h), so the integral case is explicitly retained. -/
+theorem eventually_fixedStartResidue_eq_tail_of_integral
+    (B lo : ℕ) (hB : 0 < B) (hInt : ∃ z : ℤ, (B : ℝ) * trueNormalizedState lo = z) :
+    ∀ᶠ h in atTop,
+      (leastPositiveResidue (actualWindowProduct lo h)
+          (-((B : ℤ) * actualWindowForcing lo h)) : ℝ) =
+        (B : ℝ) * trueNormalizedState (lo + h) := by
+  sorry
+end PalomarCorpus.E269.FixedStartResidue
 
 namespace PalomarCorpus.E269.IntegralBranchPinning
 open scoped BigOperators

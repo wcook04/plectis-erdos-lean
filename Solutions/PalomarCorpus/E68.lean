@@ -9,6 +9,7 @@ import Solutions.PalomarCorpus.E68.AdjacentUnitCarryWindow
 import Solutions.PalomarCorpus.E68.ChannelRadius
 import Solutions.PalomarCorpus.E68.CommonDenominatorGrowth
 import Solutions.PalomarCorpus.E68.CompanionOrbitBoundary
+import Solutions.PalomarCorpus.E68.FactorialGapBounds
 import Solutions.PalomarCorpus.E68.FiniteDenominator
 import Solutions.PalomarCorpus.E68.KempnerIndex
 import Solutions.PalomarCorpus.E68.MomentIdeal

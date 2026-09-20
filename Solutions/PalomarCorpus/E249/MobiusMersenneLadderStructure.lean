@@ -14,9 +14,6 @@ open ArithmeticFunction
 namespace PalomarCorpus.E249.MobiusMersenneLadderStructure
 export PalomarCorpus.E249.Shared (mobiusMersenneTerm mobiusMersenneTheta)
 
-noncomputable def mobiusMersenneLambertRung (r : ℕ) : ℝ :=
-  ∑' d : ℕ+, ((moebius (d : ℕ) : ℤ) : ℝ) / ((2 : ℝ) ^ (r * (d : ℕ)) - 1)
-
 private lemma theta_eq (r : ℕ) :
     mobiusMersenneTheta r =
       _root_.Erdos257PeriodNoncollapse.SignedQMomentObstruction.mobiusMersenneTheta r :=

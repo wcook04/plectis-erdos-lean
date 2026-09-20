@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification251ExactDenominatorFloors.Challenge",
+  "solution_module": "Solutions.ExternalVerification251ExactDenominatorFloors",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification251ExactDenominatorFloors.denominator_floor_both"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

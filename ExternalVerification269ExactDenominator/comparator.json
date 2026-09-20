@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification269ExactDenominator.Challenge",
+  "solution_module": "Solutions.ExternalVerification269ExactDenominator",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification269ExactDenominator.exact_denominators_and_threshold_clearing"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

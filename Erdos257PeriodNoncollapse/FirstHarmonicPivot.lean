@@ -397,15 +397,21 @@ theorem supplierPrime_not_globally_isolated_counterexample :
     pivotPrime 18 20 1 = 19 ∧
     19 ∣ pivotArgument 18 20 1 ∧
     19 ∣ 18 + 1 := by
-  have hp : Nat.Prime 19 := by native_decide
+  have hp : Nat.Prime 19 := by
+    norm_num [Nat.prime_def_lt]
+    intro m hm hd
+    interval_cases m <;> norm_num at hd <;> omega
   have harg : pivotArgument 18 20 1 = 2 * 19 := by
     norm_num [pivotArgument, pivotOffset]
   have hpivot : pivotPrime 18 20 1 = 19 :=
     pivotPrime_eq_of_argument_eq_mul_prime (by norm_num) hp (by norm_num) harg
   have hpSet : 19 ∈ pivotSupplierPrimes 16 20 1 2 := by
-    native_decide
+    decide
   have hfiber : 18 ∈ pivotFiber 16 20 1 2 :=
-    (mem_pivotFiber_iff_exists_supplierPrime (by norm_num) (by native_decide)).2
+    (mem_pivotFiber_iff_exists_supplierPrime (by norm_num) (by
+      have hsqrt : Nat.sqrt 16 = 4 := by
+        rw [show 16 = 4 * 4 by norm_num, Nat.sqrt_eq]
+      rw [hsqrt])).2
       ⟨19, hpSet, by norm_num [pivotBaseOfPrime, pivotOffset]⟩
   exact ⟨by norm_num [pivotOffset], hfiber, hpivot, by
     rw [harg]
