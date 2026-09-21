@@ -147,13 +147,25 @@ jobs:
             done
             return 1
           }
+          toolchain() {
+            # elan downloads a toolchain on first use; a failed download from
+            # releases.lean-lang.org must be retried, not reported as a red entry
+            for attempt in 1 2 3 4 5; do
+              if elan toolchain list | grep -Fq "${1#*:}"; then return 0; fi
+              if elan toolchain install "$1"; then return 0; fi
+              sleep $((attempt * 20))
+            done
+            return 1
+          }
           clone https://github.com/leanprover/comparator.git "$RUNNER_TEMP/comparator"
           git -C "$RUNNER_TEMP/comparator" checkout --detach "$COMPARATOR_REV"
           test "$(git -C "$RUNNER_TEMP/comparator" rev-parse HEAD)" = "$COMPARATOR_REV"
+          toolchain "$(tr -d '\r\n' < "$RUNNER_TEMP/comparator/lean-toolchain")"
           (cd "$RUNNER_TEMP/comparator" && lake build comparator)
           clone https://github.com/leanprover/lean4export.git "$RUNNER_TEMP/lean4export"
           git -C "$RUNNER_TEMP/lean4export" checkout --detach "$LEAN4EXPORT_REV"
           test "$(git -C "$RUNNER_TEMP/lean4export" rev-parse HEAD)" = "$LEAN4EXPORT_REV"
+          toolchain "$(tr -d '\r\n' < lean-toolchain)"
           (cd "$RUNNER_TEMP/lean4export" && ELAN_TOOLCHAIN="$(tr -d '\r\n' < lean-toolchain)" lake build lean4export)
           clone https://github.com/zouuup/landrun.git "$RUNNER_TEMP/landrun-src"
           git -C "$RUNNER_TEMP/landrun-src" checkout --detach "$LANDRUN_REV"
