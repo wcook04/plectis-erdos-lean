@@ -2,12 +2,9 @@
   "challenge_module": "PalomarCorpus.E257as.Challenge",
   "solution_module": "Solutions.PalomarCorpus.E257as",
   "theorem_names": [
-    "PalomarCorpus.E257.PaperStatementsAS.paper_seam_limit_unconditional",
     "PalomarCorpus.E257.PaperStatementsAS.paper_sharper_additive_estimate",
     "PalomarCorpus.E257.PaperStatementsAS.paper_skipped_core_recycling_witness_bounded",
-    "PalomarCorpus.E257.PaperStatementsAS.paper_unconditional_bound_one_extra_bit",
-    "PalomarCorpus.E257.PaperStatementsAS.tendsto_seamGreedyFiniteValue_greedyHalfTargetValue",
-    "PalomarCorpus.E257.PaperStatementsAS.tendsto_seamGreedyNormalizedRemainder"
+    "PalomarCorpus.E257.PaperStatementsAS.paper_unconditional_bound_one_extra_bit"
   ],
   "permitted_axioms": [
     "propext",

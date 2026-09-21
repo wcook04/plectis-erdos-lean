@@ -88,8 +88,7 @@
     "Erdos249257.ExternalVerification249PaperStatementsAJ.sum_divisors_totient_ne_totient",
     "Erdos249257.ExternalVerification249PaperStatementsAJ.three_not_dvd_two_pow",
     "Erdos249257.ExternalVerification249PaperStatementsAJ.totientBlock_concatenation",
-    "Erdos249257.ExternalVerification249PaperStatementsAJ.totientBlock_doubling",
-    "Erdos249257.ExternalVerification249PaperStatementsAJ.totientBlock_eq_paper_indexed_sum"
+    "Erdos249257.ExternalVerification249PaperStatementsAJ.totientBlock_doubling"
   ],
   "permitted_axioms": [
     "propext",

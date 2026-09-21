@@ -3,11 +3,11 @@ version: v0.4
 project:
   name: 'Erdős #257: independent restatements of refereed paper-linked theorems'
   description: >-
-    32 theorems of the substantive development for Erdős problem #257
+    27 theorems of the substantive development for Erdős problem #257
     restated against Mathlib alone and transported from the source declarations named
-    below. The substantive formalization lives in Erdos249257.BooleanMobiusCriticalCapacityGeometric, Erdos249257.BooleanMobiusExactRowRankTwo, Erdos249257.BooleanMobiusExactTransition, Erdos249257.BooleanMobiusLocalRepair, Erdos249257.HalfCylinderConcreteSeamAdapter, Erdos249257.HalfCylinderIntegerGreedy, Erdos249257.MersenneShadowCyclotomicNoncollapse, Erdos249257.MersenneShadowDenominatorGrowth, Erdos249257.RadicalMobiusShadow, ErdosProblems.Erdos257.PaperCompleteR21.MersenneChannelSurvivalAllHeights, ErdosProblems.Erdos257.PaperCompleteR21.OddReciprocalDenominators, ErdosProblems.Erdos257.PaperCompleteR21.ThreeBranchRowDynamics in this repository and at
+    below. The substantive formalization lives in Erdos249257.BooleanMobiusCriticalCapacityGeometric, Erdos249257.BooleanMobiusExactRowRankTwo, Erdos249257.BooleanMobiusExactTransition, Erdos249257.BooleanMobiusLocalRepair, Erdos249257.HalfCylinderIntegerGreedy, Erdos249257.MersenneShadowCyclotomicNoncollapse, Erdos249257.MersenneShadowDenominatorGrowth, Erdos249257.RadicalMobiusShadow, ErdosProblems.Erdos257.PaperCompleteR21.MersenneChannelSurvivalAllHeights, ErdosProblems.Erdos257.PaperCompleteR21.OddReciprocalDenominators, ErdosProblems.Erdos257.PaperCompleteR21.ThreeBranchRowDynamics in this repository and at
     public commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84 of https://github.com/wcook04/plectis-erdos. This entry is a comparison
-    interface over that development. 28 statements transport by direct term
+    interface over that development. 23 statements transport by direct term
     application, which certifies definitional identity with the source statement;
     4 transport through a tactic bridge, which certifies implication only. The
     parent Erdős problem remains open.
@@ -53,11 +53,11 @@ sources:
   license: Apache-2.0
   author_endorsement: n/a
 status:
-  scope: Independent restatements of 32 refereed declarations for Erdős problem #257.
+  scope: Independent restatements of 27 refereed declarations for Erdős problem #257.
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
-  trusted_challenge_sorry_count: 32
+  trusted_challenge_sorry_count: 27
   sorry_boundary: Only the trusted Challenge theorem bodies carry placeholders.
   axiom_audit_status: pending fresh target-toolchain axiom audit
   permitted_axiom_budget:
@@ -65,7 +65,7 @@ status:
   - Quot.sound
   - Classical.choice
   development_status: substantive
-  local_proof_provenance: Erdos249257.BooleanMobiusCriticalCapacityGeometric, Erdos249257.BooleanMobiusExactRowRankTwo, Erdos249257.BooleanMobiusExactTransition, Erdos249257.BooleanMobiusLocalRepair, Erdos249257.HalfCylinderConcreteSeamAdapter, Erdos249257.HalfCylinderIntegerGreedy, Erdos249257.MersenneShadowCyclotomicNoncollapse, Erdos249257.MersenneShadowDenominatorGrowth, Erdos249257.RadicalMobiusShadow, ErdosProblems.Erdos257.PaperCompleteR21.MersenneChannelSurvivalAllHeights, ErdosProblems.Erdos257.PaperCompleteR21.OddReciprocalDenominators, ErdosProblems.Erdos257.PaperCompleteR21.ThreeBranchRowDynamics in this repository, which is the same development published at https://github.com/wcook04/plectis-erdos commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+  local_proof_provenance: Erdos249257.BooleanMobiusCriticalCapacityGeometric, Erdos249257.BooleanMobiusExactRowRankTwo, Erdos249257.BooleanMobiusExactTransition, Erdos249257.BooleanMobiusLocalRepair, Erdos249257.HalfCylinderIntegerGreedy, Erdos249257.MersenneShadowCyclotomicNoncollapse, Erdos249257.MersenneShadowDenominatorGrowth, Erdos249257.RadicalMobiusShadow, ErdosProblems.Erdos257.PaperCompleteR21.MersenneChannelSurvivalAllHeights, ErdosProblems.Erdos257.PaperCompleteR21.OddReciprocalDenominators, ErdosProblems.Erdos257.PaperCompleteR21.ThreeBranchRowDynamics in this repository, which is the same development published at https://github.com/wcook04/plectis-erdos commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84
   canonical_claim_status: generated comparison interface over substantive Lean in this repository
   main_results:
   - declaration: Erdos249257.ExternalVerification257PaperStatementsAD.lcmHeight_scaledMobiusShadow_den_lower_bound
@@ -222,17 +222,6 @@ status:
     source_file: ErdosProblems/Erdos257/PaperCompleteR21/ThreeBranchRowDynamics.lean
     source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
     transport: definitional
-  - declaration: Erdos249257.ExternalVerification257PaperStatementsAD.paper_dynamics
-    file: Solutions/ExternalVerification257PaperStatementsAD.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification257PaperStatementsAD/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAD.paper_dynamics
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.paper_dynamics
-    source_file: ErdosProblems/Erdos257/PaperCompleteR21/ThreeBranchRowDynamics.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
   - declaration: Erdos249257.ExternalVerification257PaperStatementsAD.paper_finite_sum_inv_odd_den_odd
     file: Solutions/ExternalVerification257PaperStatementsAD.lean
     sorry_count: 0
@@ -255,50 +244,6 @@ status:
     source_file: ErdosProblems/Erdos257/PaperCompleteR21/OddReciprocalDenominators.lean
     source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
     transport: derived
-  - declaration: Erdos249257.ExternalVerification257PaperStatementsAD.paper_greedySupport_greedy_rule
-    file: Solutions/ExternalVerification257PaperStatementsAD.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification257PaperStatementsAD/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAD.paper_greedySupport_greedy_rule
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.paper_greedySupport_greedy_rule
-    source_file: ErdosProblems/Erdos257/PaperCompleteR21/ThreeBranchRowDynamics.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
-  - declaration: Erdos249257.ExternalVerification257PaperStatementsAD.paper_greedySupport_isRowLower
-    file: Solutions/ExternalVerification257PaperStatementsAD.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification257PaperStatementsAD/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAD.paper_greedySupport_isRowLower
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.paper_greedySupport_isRowLower
-    source_file: ErdosProblems/Erdos257/PaperCompleteR21/ThreeBranchRowDynamics.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
-  - declaration: Erdos249257.ExternalVerification257PaperStatementsAD.paper_greedySupport_mem
-    file: Solutions/ExternalVerification257PaperStatementsAD.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification257PaperStatementsAD/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAD.paper_greedySupport_mem
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.paper_greedySupport_mem
-    source_file: ErdosProblems/Erdos257/PaperCompleteR21/ThreeBranchRowDynamics.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
-  - declaration: Erdos249257.ExternalVerification257PaperStatementsAD.paper_greedy_step
-    file: Solutions/ExternalVerification257PaperStatementsAD.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification257PaperStatementsAD/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAD.paper_greedy_step
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.paper_greedy_step
-    source_file: ErdosProblems/Erdos257/PaperCompleteR21/ThreeBranchRowDynamics.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
   - declaration: Erdos249257.ExternalVerification257PaperStatementsAD.paper_isRowLower_unique
     file: Solutions/ExternalVerification257PaperStatementsAD.lean
     sorry_count: 0

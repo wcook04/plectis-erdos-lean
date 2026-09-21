@@ -3,13 +3,13 @@ version: v0.4
 project:
   name: 'Erdős #249: independent restatements of refereed paper-linked theorems'
   description: >-
-    71 theorems of the substantive development for Erdős problem #249
+    43 theorems of the substantive development for Erdős problem #249
     restated against Mathlib alone and transported from the source declarations named
-    below. The substantive formalization lives in Erdos249257.CarrySurvivorExtinction, Erdos249257.DiagonalPincerCertificatesT64, Erdos249257.FirstHarmonicGap, Erdos249257.FirstHarmonicPivot, Erdos249257.LcmConeNonflat, Erdos249257.PrimeJumpWindow, Erdos249257.TotientActualLcmOrbitArithmetic, Erdos249257.TotientActualLcmOrbitSeparation, Erdos249257.TotientTailCarryPeriod, Erdos249257.TotientTailPeriodKiller, ErdosProblems.Erdos249.PaperCompleteR20.FiniteCarryCorrespondence, ErdosProblems.Erdos249.PaperCompleteR20.LcmGridCorrespondence, ErdosProblems.Erdos249.PaperCompleteR20.TailDepthCorrespondence, ErdosProblems.Erdos249.PaperCompleteR21.ActualLcmDiagonalConditions, ErdosProblems.Erdos249.PaperCompleteR21.ActualLcmSeparationAndSign, ErdosProblems.Erdos249.PaperCompleteR21.DoublingOrbitTransferAndFullDepthPhase, ErdosProblems.Erdos249.PaperCompleteR21.DyadicPrefixTailBound, ErdosProblems.Erdos249.PaperCompleteR21.ExtremalOrderDirectedAndPulse, ErdosProblems.Erdos249.PaperCompleteR21.FirstHarmonicBlockCriteria, ErdosProblems.Erdos249.PaperCompleteR21.HarmonicGapAndFourTail, ErdosProblems.Erdos249.PaperCompleteR21.LcmJumpPositionsAndCentralSlack, ErdosProblems.Erdos249.PaperCompleteR21.PenultimateStaircaseAndRankCurvature, ErdosProblems.Erdos249.PaperCompleteR21.PeriodMultipleAndSecondDifference, ErdosProblems.Erdos249.PaperCompleteR21.RationalTailPeriodWitnesses, ErdosProblems.Erdos249.PaperCompleteR21.ShortWindowSupplyAndSixteenShifts, ErdosProblems.Erdos249.PaperCompleteR21.SimultaneousShiftCertificateDepth, ErdosProblems.Erdos249.PaperCompleteR21.TopEdgeCorridorAndSeparation, ErdosProblems.Erdos249.PaperCompleteR21.TopEdgeStaircaseConditions, ErdosProblems.Erdos249.PaperCompleteR21.TwoAdicHalfPulseAndAccumulatedResidue, ErdosProblems.Erdos249.PaperCompleteR21.TwoAdicPulseBlockAndMobiusInversion in this repository and at
+    below. The substantive formalization lives in Erdos249257.CarrySurvivorExtinction, Erdos249257.FirstHarmonicGap, Erdos249257.FirstHarmonicPivot, Erdos249257.LcmConeNonflat, Erdos249257.PrimeJumpWindow, Erdos249257.TotientActualLcmOrbitSeparation, Erdos249257.TotientTailCarryPeriod, Erdos249257.TotientTailPeriodKiller, ErdosProblems.Erdos249.PaperCompleteR20.LcmGridCorrespondence, ErdosProblems.Erdos249.PaperCompleteR20.TailDepthCorrespondence, ErdosProblems.Erdos249.PaperCompleteR21.DoublingOrbitTransferAndFullDepthPhase, ErdosProblems.Erdos249.PaperCompleteR21.DyadicPrefixTailBound, ErdosProblems.Erdos249.PaperCompleteR21.ExtremalOrderDirectedAndPulse, ErdosProblems.Erdos249.PaperCompleteR21.FirstHarmonicBlockCriteria, ErdosProblems.Erdos249.PaperCompleteR21.HarmonicGapAndFourTail, ErdosProblems.Erdos249.PaperCompleteR21.PenultimateStaircaseAndRankCurvature, ErdosProblems.Erdos249.PaperCompleteR21.PeriodMultipleAndSecondDifference, ErdosProblems.Erdos249.PaperCompleteR21.RationalTailPeriodWitnesses, ErdosProblems.Erdos249.PaperCompleteR21.ShortWindowSupplyAndSixteenShifts, ErdosProblems.Erdos249.PaperCompleteR21.SimultaneousShiftCertificateDepth, ErdosProblems.Erdos249.PaperCompleteR21.TwoAdicHalfPulseAndAccumulatedResidue, ErdosProblems.Erdos249.PaperCompleteR21.TwoAdicPulseBlockAndMobiusInversion in this repository and at
     public commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84 of https://github.com/wcook04/plectis-erdos. This entry is a comparison
-    interface over that development. 66 statements transport by direct term
+    interface over that development. 40 statements transport by direct term
     application, which certifies definitional identity with the source statement;
-    5 transport through a tactic bridge, which certifies implication only. The
+    3 transport through a tactic bridge, which certifies implication only. The
     parent Erdős problem remains open.
   authors:
   - Will Cook
@@ -53,11 +53,11 @@ sources:
   license: Apache-2.0
   author_endorsement: n/a
 status:
-  scope: Independent restatements of 71 refereed declarations for Erdős problem #249.
+  scope: Independent restatements of 43 refereed declarations for Erdős problem #249.
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
-  trusted_challenge_sorry_count: 71
+  trusted_challenge_sorry_count: 43
   sorry_boundary: Only the trusted Challenge theorem bodies carry placeholders.
   axiom_audit_status: pending fresh target-toolchain axiom audit
   permitted_axiom_budget:
@@ -65,42 +65,9 @@ status:
   - Quot.sound
   - Classical.choice
   development_status: substantive
-  local_proof_provenance: Erdos249257.CarrySurvivorExtinction, Erdos249257.DiagonalPincerCertificatesT64, Erdos249257.FirstHarmonicGap, Erdos249257.FirstHarmonicPivot, Erdos249257.LcmConeNonflat, Erdos249257.PrimeJumpWindow, Erdos249257.TotientActualLcmOrbitArithmetic, Erdos249257.TotientActualLcmOrbitSeparation, Erdos249257.TotientTailCarryPeriod, Erdos249257.TotientTailPeriodKiller, ErdosProblems.Erdos249.PaperCompleteR20.FiniteCarryCorrespondence, ErdosProblems.Erdos249.PaperCompleteR20.LcmGridCorrespondence, ErdosProblems.Erdos249.PaperCompleteR20.TailDepthCorrespondence, ErdosProblems.Erdos249.PaperCompleteR21.ActualLcmDiagonalConditions, ErdosProblems.Erdos249.PaperCompleteR21.ActualLcmSeparationAndSign, ErdosProblems.Erdos249.PaperCompleteR21.DoublingOrbitTransferAndFullDepthPhase, ErdosProblems.Erdos249.PaperCompleteR21.DyadicPrefixTailBound, ErdosProblems.Erdos249.PaperCompleteR21.ExtremalOrderDirectedAndPulse, ErdosProblems.Erdos249.PaperCompleteR21.FirstHarmonicBlockCriteria, ErdosProblems.Erdos249.PaperCompleteR21.HarmonicGapAndFourTail, ErdosProblems.Erdos249.PaperCompleteR21.LcmJumpPositionsAndCentralSlack, ErdosProblems.Erdos249.PaperCompleteR21.PenultimateStaircaseAndRankCurvature, ErdosProblems.Erdos249.PaperCompleteR21.PeriodMultipleAndSecondDifference, ErdosProblems.Erdos249.PaperCompleteR21.RationalTailPeriodWitnesses, ErdosProblems.Erdos249.PaperCompleteR21.ShortWindowSupplyAndSixteenShifts, ErdosProblems.Erdos249.PaperCompleteR21.SimultaneousShiftCertificateDepth, ErdosProblems.Erdos249.PaperCompleteR21.TopEdgeCorridorAndSeparation, ErdosProblems.Erdos249.PaperCompleteR21.TopEdgeStaircaseConditions, ErdosProblems.Erdos249.PaperCompleteR21.TwoAdicHalfPulseAndAccumulatedResidue, ErdosProblems.Erdos249.PaperCompleteR21.TwoAdicPulseBlockAndMobiusInversion in this repository, which is the same development published at https://github.com/wcook04/plectis-erdos commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+  local_proof_provenance: Erdos249257.CarrySurvivorExtinction, Erdos249257.FirstHarmonicGap, Erdos249257.FirstHarmonicPivot, Erdos249257.LcmConeNonflat, Erdos249257.PrimeJumpWindow, Erdos249257.TotientActualLcmOrbitSeparation, Erdos249257.TotientTailCarryPeriod, Erdos249257.TotientTailPeriodKiller, ErdosProblems.Erdos249.PaperCompleteR20.LcmGridCorrespondence, ErdosProblems.Erdos249.PaperCompleteR20.TailDepthCorrespondence, ErdosProblems.Erdos249.PaperCompleteR21.DoublingOrbitTransferAndFullDepthPhase, ErdosProblems.Erdos249.PaperCompleteR21.DyadicPrefixTailBound, ErdosProblems.Erdos249.PaperCompleteR21.ExtremalOrderDirectedAndPulse, ErdosProblems.Erdos249.PaperCompleteR21.FirstHarmonicBlockCriteria, ErdosProblems.Erdos249.PaperCompleteR21.HarmonicGapAndFourTail, ErdosProblems.Erdos249.PaperCompleteR21.PenultimateStaircaseAndRankCurvature, ErdosProblems.Erdos249.PaperCompleteR21.PeriodMultipleAndSecondDifference, ErdosProblems.Erdos249.PaperCompleteR21.RationalTailPeriodWitnesses, ErdosProblems.Erdos249.PaperCompleteR21.ShortWindowSupplyAndSixteenShifts, ErdosProblems.Erdos249.PaperCompleteR21.SimultaneousShiftCertificateDepth, ErdosProblems.Erdos249.PaperCompleteR21.TwoAdicHalfPulseAndAccumulatedResidue, ErdosProblems.Erdos249.PaperCompleteR21.TwoAdicPulseBlockAndMobiusInversion in this repository, which is the same development published at https://github.com/wcook04/plectis-erdos commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84
   canonical_claim_status: generated comparison interface over substantive Lean in this repository
   main_results:
-  - declaration: Erdos249257.ExternalVerification249PaperStatementsAT.certifiedKill_diagonal_all_imported_through_t64
-    file: Solutions/ExternalVerification249PaperStatementsAT.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification249PaperStatementsAT/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAT.certifiedKill_diagonal_all_imported_through_t64
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: Erdos249257.TotientTailPeriodKiller.certifiedKill_diagonal_all_imported_through_t64
-    source_file: Erdos249257/DiagonalPincerCertificatesT64.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
-  - declaration: Erdos249257.ExternalVerification249PaperStatementsAT.certifiedKill_diagonal_t64
-    file: Solutions/ExternalVerification249PaperStatementsAT.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification249PaperStatementsAT/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAT.certifiedKill_diagonal_t64
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: Erdos249257.TotientTailPeriodKiller.certifiedKill_diagonal_t64
-    source_file: Erdos249257/DiagonalPincerCertificatesT64.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
-  - declaration: Erdos249257.ExternalVerification249PaperStatementsAT.irrational_totientSeries_iff_cofinalDirectedLcmCertificateSupply
-    file: Solutions/ExternalVerification249PaperStatementsAT.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification249PaperStatementsAT/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAT.irrational_totientSeries_iff_cofinalDirectedLcmCertificateSupply
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: Erdos249257.irrational_totientSeries_iff_cofinalDirectedLcmCertificateSupply
-    source_file: Erdos249257/TotientTailCarryPeriod.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
   - declaration: Erdos249257.ExternalVerification249PaperStatementsAT.certificate_denominator_exclusion
     file: Solutions/ExternalVerification249PaperStatementsAT.lean
     sorry_count: 0
@@ -123,39 +90,6 @@ status:
     source_file: ErdosProblems/Erdos249/PaperCompleteR20/TailDepthCorrespondence.lean
     source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
     transport: definitional
-  - declaration: Erdos249257.ExternalVerification249PaperStatementsAT.clean_lcm_ray_factorisation
-    file: Solutions/ExternalVerification249PaperStatementsAT.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification249PaperStatementsAT/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAT.clean_lcm_ray_factorisation
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: ErdosProblems.Erdos249.PaperCompleteR20.clean_lcm_ray_factorisation
-    source_file: ErdosProblems/Erdos249/PaperCompleteR20/LcmGridCorrespondence.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
-  - declaration: Erdos249257.ExternalVerification249PaperStatementsAT.finite_carry_test_sound
-    file: Solutions/ExternalVerification249PaperStatementsAT.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification249PaperStatementsAT/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAT.finite_carry_test_sound
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: ErdosProblems.Erdos249.PaperCompleteR20.finite_carry_test_sound
-    source_file: ErdosProblems/Erdos249/PaperCompleteR20/FiniteCarryCorrespondence.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
-  - declaration: Erdos249257.ExternalVerification249PaperStatementsAT.finite_carry_true_orbit
-    file: Solutions/ExternalVerification249PaperStatementsAT.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification249PaperStatementsAT/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAT.finite_carry_true_orbit
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: ErdosProblems.Erdos249.PaperCompleteR20.finite_carry_true_orbit
-    source_file: ErdosProblems/Erdos249/PaperCompleteR20/FiniteCarryCorrespondence.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
   - declaration: Erdos249257.ExternalVerification249PaperStatementsAT.fixed_depth_bounds_indices
     file: Solutions/ExternalVerification249PaperStatementsAT.lean
     sorry_count: 0
@@ -167,50 +101,6 @@ status:
     source_file: ErdosProblems/Erdos249/PaperCompleteR20/TailDepthCorrespondence.lean
     source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
     transport: definitional
-  - declaration: Erdos249257.ExternalVerification249PaperStatementsAT.lcm_grid_flatness
-    file: Solutions/ExternalVerification249PaperStatementsAT.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification249PaperStatementsAT/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAT.lcm_grid_flatness
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_flatness
-    source_file: ErdosProblems/Erdos249/PaperCompleteR20/LcmGridCorrespondence.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
-  - declaration: Erdos249257.ExternalVerification249PaperStatementsAT.lcm_grid_fractional_parts
-    file: Solutions/ExternalVerification249PaperStatementsAT.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification249PaperStatementsAT/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAT.lcm_grid_fractional_parts
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_fractional_parts
-    source_file: ErdosProblems/Erdos249/PaperCompleteR20/LcmGridCorrespondence.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
-  - declaration: Erdos249257.ExternalVerification249PaperStatementsAT.lcm_grid_multiplier_positive
-    file: Solutions/ExternalVerification249PaperStatementsAT.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification249PaperStatementsAT/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAT.lcm_grid_multiplier_positive
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_multiplier_positive
-    source_file: ErdosProblems/Erdos249/PaperCompleteR20/LcmGridCorrespondence.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
-  - declaration: Erdos249257.ExternalVerification249PaperStatementsAT.lcm_grid_supply_iff
-    file: Solutions/ExternalVerification249PaperStatementsAT.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification249PaperStatementsAT/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAT.lcm_grid_supply_iff
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_supply_iff
-    source_file: ErdosProblems/Erdos249/PaperCompleteR20/LcmGridCorrespondence.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
   - declaration: Erdos249257.ExternalVerification249PaperStatementsAT.prefix_fractional_part
     file: Solutions/ExternalVerification249PaperStatementsAT.lean
     sorry_count: 0
@@ -220,17 +110,6 @@ status:
     novelty_status: unassessed
     source_declaration: ErdosProblems.Erdos249.PaperCompleteR20.prefix_fractional_part
     source_file: ErdosProblems/Erdos249/PaperCompleteR20/TailDepthCorrespondence.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
-  - declaration: Erdos249257.ExternalVerification249PaperStatementsAT.short_lcm_window_nondivisor
-    file: Solutions/ExternalVerification249PaperStatementsAT.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification249PaperStatementsAT/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAT.short_lcm_window_nondivisor
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: ErdosProblems.Erdos249.PaperCompleteR20.short_lcm_window_nondivisor
-    source_file: ErdosProblems/Erdos249/PaperCompleteR20/LcmGridCorrespondence.lean
     source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
     transport: definitional
   - declaration: Erdos249257.ExternalVerification249PaperStatementsAT.totient_scaled_truncation_error
@@ -266,17 +145,6 @@ status:
     source_file: ErdosProblems/Erdos249/PaperCompleteR21/PeriodMultipleAndSecondDifference.lean
     source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
     transport: definitional
-  - declaration: Erdos249257.ExternalVerification249PaperStatementsAT.actualLcmRawErrorRadius_tendsto_zero
-    file: Solutions/ExternalVerification249PaperStatementsAT.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification249PaperStatementsAT/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAT.actualLcmRawErrorRadius_tendsto_zero
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.actualLcmRawErrorRadius_tendsto_zero
-    source_file: ErdosProblems/Erdos249/PaperCompleteR21/TopEdgeCorridorAndSeparation.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
   - declaration: Erdos249257.ExternalVerification249PaperStatementsAT.actualLcmTailOrbit_eq_tail_difference
     file: Solutions/ExternalVerification249PaperStatementsAT.lean
     sorry_count: 0
@@ -287,62 +155,7 @@ status:
     source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.actualLcmTailOrbit_eq_tail_difference
     source_file: ErdosProblems/Erdos249/PaperCompleteR21/RationalTailPeriodWitnesses.lean
     source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
-  - declaration: Erdos249257.ExternalVerification249PaperStatementsAT.actualLcmTailOrbit_global_to_local
-    file: Solutions/ExternalVerification249PaperStatementsAT.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification249PaperStatementsAT/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAT.actualLcmTailOrbit_global_to_local
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.actualLcmTailOrbit_global_to_local
-    source_file: ErdosProblems/Erdos249/PaperCompleteR21/ActualLcmSeparationAndSign.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
-  - declaration: Erdos249257.ExternalVerification249PaperStatementsAT.actualLcmTailOrbit_pos
-    file: Solutions/ExternalVerification249PaperStatementsAT.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification249PaperStatementsAT/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAT.actualLcmTailOrbit_pos
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.actualLcmTailOrbit_pos
-    source_file: ErdosProblems/Erdos249/PaperCompleteR21/ActualLcmSeparationAndSign.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
-  - declaration: Erdos249257.ExternalVerification249PaperStatementsAT.actualLcm_corridor_pos
-    file: Solutions/ExternalVerification249PaperStatementsAT.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification249PaperStatementsAT/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAT.actualLcm_corridor_pos
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.actualLcm_corridor_pos
-    source_file: ErdosProblems/Erdos249/PaperCompleteR21/TopEdgeCorridorAndSeparation.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
-  - declaration: Erdos249257.ExternalVerification249PaperStatementsAT.actualLcm_integral_forces_topEdgeResidue_paper
-    file: Solutions/ExternalVerification249PaperStatementsAT.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification249PaperStatementsAT/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAT.actualLcm_integral_forces_topEdgeResidue_paper
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.actualLcm_integral_forces_topEdgeResidue_paper
-    source_file: ErdosProblems/Erdos249/PaperCompleteR21/ActualLcmSeparationAndSign.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
-  - declaration: Erdos249257.ExternalVerification249PaperStatementsAT.actualLcm_tailDiff_shift_pos_paper
-    file: Solutions/ExternalVerification249PaperStatementsAT.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification249PaperStatementsAT/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAT.actualLcm_tailDiff_shift_pos_paper
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.actualLcm_tailDiff_shift_pos_paper
-    source_file: ErdosProblems/Erdos249/PaperCompleteR21/ActualLcmSeparationAndSign.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
+    transport: derived
   - declaration: Erdos249257.ExternalVerification249PaperStatementsAT.blockNormCondition_unfolded
     file: Solutions/ExternalVerification249PaperStatementsAT.lean
     sorry_count: 0
@@ -375,7 +188,7 @@ status:
     source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.certifiedKill_of_fullDepth_phase_separation
     source_file: ErdosProblems/Erdos249/PaperCompleteR21/DoublingOrbitTransferAndFullDepthPhase.lean
     source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: derived
+    transport: definitional
   - declaration: Erdos249257.ExternalVerification249PaperStatementsAT.certifiedKill_of_halfModulus_residue
     file: Solutions/ExternalVerification249PaperStatementsAT.lean
     sorry_count: 0
@@ -407,39 +220,6 @@ status:
     novelty_status: unassessed
     source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.commonCertificate_sixteen_shifts_basepoint_fourteen
     source_file: ErdosProblems/Erdos249/PaperCompleteR21/ShortWindowSupplyAndSixteenShifts.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
-  - declaration: Erdos249257.ExternalVerification249PaperStatementsAT.corridor_height_lt_letter
-    file: Solutions/ExternalVerification249PaperStatementsAT.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification249PaperStatementsAT/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAT.corridor_height_lt_letter
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.corridor_height_lt_letter
-    source_file: ErdosProblems/Erdos249/PaperCompleteR21/TopEdgeCorridorAndSeparation.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
-  - declaration: Erdos249257.ExternalVerification249PaperStatementsAT.corridor_letter_pos
-    file: Solutions/ExternalVerification249PaperStatementsAT.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification249PaperStatementsAT/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAT.corridor_letter_pos
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.corridor_letter_pos
-    source_file: ErdosProblems/Erdos249/PaperCompleteR21/TopEdgeCorridorAndSeparation.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
-  - declaration: Erdos249257.ExternalVerification249PaperStatementsAT.diagonal_certificate_unfolded
-    file: Solutions/ExternalVerification249PaperStatementsAT.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification249PaperStatementsAT/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAT.diagonal_certificate_unfolded
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.diagonal_certificate_unfolded
-    source_file: ErdosProblems/Erdos249/PaperCompleteR21/ActualLcmDiagonalConditions.lean
     source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
     transport: definitional
   - declaration: Erdos249257.ExternalVerification249PaperStatementsAT.directed_certificate_example
@@ -596,17 +376,6 @@ status:
     source_file: ErdosProblems/Erdos249/PaperCompleteR21/SimultaneousShiftCertificateDepth.lean
     source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
     transport: definitional
-  - declaration: Erdos249257.ExternalVerification249PaperStatementsAT.exists_periodLcm_strict_jump_ge_paper
-    file: Solutions/ExternalVerification249PaperStatementsAT.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification249PaperStatementsAT/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAT.exists_periodLcm_strict_jump_ge_paper
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.exists_periodLcm_strict_jump_ge_paper
-    source_file: ErdosProblems/Erdos249/PaperCompleteR21/LcmJumpPositionsAndCentralSlack.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: derived
   - declaration: Erdos249257.ExternalVerification249PaperStatementsAT.exists_prime_integral_tailDiff_half_pulse
     file: Solutions/ExternalVerification249PaperStatementsAT.lean
     sorry_count: 0
@@ -673,17 +442,6 @@ status:
     source_file: ErdosProblems/Erdos249/PaperCompleteR21/HarmonicGapAndFourTail.lean
     source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
     transport: definitional
-  - declaration: Erdos249257.ExternalVerification249PaperStatementsAT.fixedRank_cleanWindow_structure
-    file: Solutions/ExternalVerification249PaperStatementsAT.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification249PaperStatementsAT/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAT.fixedRank_cleanWindow_structure
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.fixedRank_cleanWindow_structure
-    source_file: ErdosProblems/Erdos249/PaperCompleteR21/PenultimateStaircaseAndRankCurvature.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
   - declaration: Erdos249257.ExternalVerification249PaperStatementsAT.four_tail_checked_instance
     file: Solutions/ExternalVerification249PaperStatementsAT.lean
     sorry_count: 0
@@ -739,39 +497,6 @@ status:
     source_file: ErdosProblems/Erdos249/PaperCompleteR21/HarmonicGapAndFourTail.lean
     source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
     transport: definitional
-  - declaration: Erdos249257.ExternalVerification249PaperStatementsAT.integral_carry_strictly_between
-    file: Solutions/ExternalVerification249PaperStatementsAT.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification249PaperStatementsAT/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAT.integral_carry_strictly_between
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.integral_carry_strictly_between
-    source_file: ErdosProblems/Erdos249/PaperCompleteR21/TopEdgeStaircaseConditions.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
-  - declaration: Erdos249257.ExternalVerification249PaperStatementsAT.integral_tail_forces_upper_endpoint_residue
-    file: Solutions/ExternalVerification249PaperStatementsAT.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification249PaperStatementsAT/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAT.integral_tail_forces_upper_endpoint_residue
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.integral_tail_forces_upper_endpoint_residue
-    source_file: ErdosProblems/Erdos249/PaperCompleteR21/TopEdgeStaircaseConditions.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
-  - declaration: Erdos249257.ExternalVerification249PaperStatementsAT.irrational_iff_diagonal_orbit_nonintegrality
-    file: Solutions/ExternalVerification249PaperStatementsAT.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification249PaperStatementsAT/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAT.irrational_iff_diagonal_orbit_nonintegrality
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.irrational_iff_diagonal_orbit_nonintegrality
-    source_file: ErdosProblems/Erdos249/PaperCompleteR21/ActualLcmDiagonalConditions.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
   - declaration: Erdos249257.ExternalVerification249PaperStatementsAT.irrational_of_accumulated_halfModulus_supply
     file: Solutions/ExternalVerification249PaperStatementsAT.lean
     sorry_count: 0
@@ -805,17 +530,6 @@ status:
     source_file: ErdosProblems/Erdos249/PaperCompleteR21/RationalTailPeriodWitnesses.lean
     source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
     transport: definitional
-  - declaration: Erdos249257.ExternalVerification249PaperStatementsAT.irrational_of_diagonal_orbit_separation_supply
-    file: Solutions/ExternalVerification249PaperStatementsAT.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification249PaperStatementsAT/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAT.irrational_of_diagonal_orbit_separation_supply
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_diagonal_orbit_separation_supply
-    source_file: ErdosProblems/Erdos249/PaperCompleteR21/ActualLcmDiagonalConditions.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: derived
   - declaration: Erdos249257.ExternalVerification249PaperStatementsAT.irrational_of_first_harmonic_norm_gap
     file: Solutions/ExternalVerification249PaperStatementsAT.lean
     sorry_count: 0
@@ -825,28 +539,6 @@ status:
     novelty_status: unassessed
     source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_first_harmonic_norm_gap
     source_file: ErdosProblems/Erdos249/PaperCompleteR21/HarmonicGapAndFourTail.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
-  - declaration: Erdos249257.ExternalVerification249PaperStatementsAT.irrational_of_four_tail_supply
-    file: Solutions/ExternalVerification249PaperStatementsAT.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification249PaperStatementsAT/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAT.irrational_of_four_tail_supply
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_four_tail_supply
-    source_file: ErdosProblems/Erdos249/PaperCompleteR21/HarmonicGapAndFourTail.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
-  - declaration: Erdos249257.ExternalVerification249PaperStatementsAT.irrational_of_logarithmicDepth_diagonal_supply
-    file: Solutions/ExternalVerification249PaperStatementsAT.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification249PaperStatementsAT/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAT.irrational_of_logarithmicDepth_diagonal_supply
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_logarithmicDepth_diagonal_supply
-    source_file: ErdosProblems/Erdos249/PaperCompleteR21/ShortWindowSupplyAndSixteenShifts.lean
     source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
     transport: definitional
 automation:

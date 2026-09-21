@@ -3,13 +3,13 @@ version: v0.4
 project:
   name: 'Erdős #249: independent restatements of refereed paper-linked theorems'
   description: >-
-    88 theorems of the substantive development for Erdős problem #249
+    87 theorems of the substantive development for Erdős problem #249
     restated against Mathlib alone and transported from the source declarations named
     below. The substantive formalization lives in Erdos249257.CompositeDilationDefect, Erdos249257.GapFareyBound, Erdos249257.PrimeJumpWindow, Erdos249257.PrimitiveRationalGapSupply, Erdos249257.TotientActualLcmTopEdgeStaircase, Erdos249257.TotientFixedRankLcmAsymptotic, ErdosProblems.Erdos249.CyclotomicAnchoredKill, ErdosProblems.Erdos249.PaperCompleteR20.FiniteCarryCorrespondence, ErdosProblems.Erdos249.PaperCompleteR20.MobiusSquareReduction, ErdosProblems.Erdos249.PaperCompleteR20.RationalSpacingCorrespondence, ErdosProblems.Erdos249.PaperCompleteR21.ActualLcmShortWindowArithmetic, ErdosProblems.Erdos249.PaperCompleteR21.CompositeDilationIdentity, ErdosProblems.Erdos249.PaperCompleteR21.CoprimeLatticeSumsAndLambert, ErdosProblems.Erdos249.PaperCompleteR21.DoublingOrbitTransferAndFullDepthPhase, ErdosProblems.Erdos249.PaperCompleteR21.ExtremalOrderDirectedAndPulse, ErdosProblems.Erdos249.PaperCompleteR21.FareyDenominatorFloorExtension, ErdosProblems.Erdos249.PaperCompleteR21.FareyExactRangeAndDenominatorExclusion, ErdosProblems.Erdos249.PaperCompleteR21.FareyGapDenominatorExclusion, ErdosProblems.Erdos249.PaperCompleteR21.GeneralIrrationalityCriteriaAndGapBounds, ErdosProblems.Erdos249.PaperCompleteR21.HarmonicGapAndFourTail, ErdosProblems.Erdos249.PaperCompleteR21.MersennePrimeSupportAnchors, ErdosProblems.Erdos249.PaperCompleteR21.NearIntegerIrrationalityCriterion, ErdosProblems.Erdos249.PaperCompleteR21.PenultimateStaircaseAndRankCurvature, ErdosProblems.Erdos249.PaperCompleteR21.PrimeJumpWitnessAndMersenneChannels, ErdosProblems.Erdos249.PaperCompleteR21.RationalParityCountermodelProperties, ErdosProblems.Erdos249.PaperCompleteR21.RationalTailPeriodWitnesses, ErdosProblems.Erdos249.PaperCompleteR21.ScalarLocalisationAndInversePhaseGauge, ErdosProblems.Erdos249.PaperCompleteR21.TotientBlockConcatenation, ErdosProblems.Erdos249.PaperCompleteR21.TwoAdicPulseBlockAndMobiusInversion, ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature in this repository and at
     public commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84 of https://github.com/wcook04/plectis-erdos. This entry is a comparison
     interface over that development. 76 statements transport by direct term
     application, which certifies definitional identity with the source statement;
-    12 transport through a tactic bridge, which certifies implication only. The
+    11 transport through a tactic bridge, which certifies implication only. The
     parent Erdős problem remains open.
   authors:
   - Will Cook
@@ -53,11 +53,11 @@ sources:
   license: Apache-2.0
   author_endorsement: n/a
 status:
-  scope: Independent restatements of 88 refereed declarations for Erdős problem #249.
+  scope: Independent restatements of 87 refereed declarations for Erdős problem #249.
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
-  trusted_challenge_sorry_count: 88
+  trusted_challenge_sorry_count: 87
   sorry_boundary: Only the trusted Challenge theorem bodies carry placeholders.
   axiom_audit_status: pending fresh target-toolchain axiom audit
   permitted_axiom_budget:
@@ -782,7 +782,7 @@ status:
     source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.irrational_totientSeries_of_rational_separation
     source_file: ErdosProblems/Erdos249/PaperCompleteR21/PrimeJumpWitnessAndMersenneChannels.lean
     source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: derived
+    transport: definitional
   - declaration: Erdos249257.ExternalVerification249PaperStatementsAJ.mersenneLayer_orderConsumer_instance
     file: Solutions/ExternalVerification249PaperStatementsAJ.lean
     sorry_count: 0
@@ -1022,17 +1022,6 @@ status:
     canonical_claim_status: source_transport_prepared_pending_release_validation
     novelty_status: unassessed
     source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.totientBlock_doubling
-    source_file: ErdosProblems/Erdos249/PaperCompleteR21/TotientBlockConcatenation.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
-  - declaration: Erdos249257.ExternalVerification249PaperStatementsAJ.totientBlock_eq_paper_indexed_sum
-    file: Solutions/ExternalVerification249PaperStatementsAJ.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification249PaperStatementsAJ/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAJ.totientBlock_eq_paper_indexed_sum
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.totientBlock_eq_paper_indexed_sum
     source_file: ErdosProblems/Erdos249/PaperCompleteR21/TotientBlockConcatenation.lean
     source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
     transport: definitional

@@ -15,10 +15,6 @@ open Set
 
 namespace PalomarCorpus.E249.PaperStatementsAZ
 
-theorem affineBinaryOrbit_difference_and_reset (a : ℕ → ℤ) (u0 v0 : ℤ) (L : ℕ) :
-    affineBinaryOrbit a u0 L - affineBinaryOrbit a v0 L = (2 : ℤ) ^ L * (u0 - v0)
-      ∧ affineBinaryOrbit a u0 L ≡ affineBinaryOrbit a v0 L [ZMOD (2 : ℤ) ^ L] := @ErdosProblems.Erdos249.PaperCompleteR21.affineBinaryOrbit_difference_and_reset a u0 v0 L
-
 theorem balancedPulse_common_history (m : ℕ) (hm : 2 ≤ m) (r : ℕ)
     (hr : r ≤ balancedPulseRadius m) :
     (∀ n : ℕ, n ≠ m → n ≠ m + 1 → balancedPulseCoeff m r n = 0)

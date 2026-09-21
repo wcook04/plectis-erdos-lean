@@ -396,7 +396,9 @@ theorem gapFareyBound_window_1_240 (q : ℕ) (hq : 0 < q)
 /-- States prop:D1D2-inv from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_basePower_dilation in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem irrational_of_basePower_dilation {x : ℝ} (b₀ : ℕ)
     (h : ∀ Q : ℤ, 1 ≤ Q → ∃ n : ℕ, ∃ z : ℤ,
-      0 < |((b₀ ^ n : ℕ) : ℝ) * x - (z : ℝ)| ∧ := by
+      0 < |((b₀ ^ n : ℕ) : ℝ) * x - (z : ℝ)| ∧
+        |((b₀ ^ n : ℕ) : ℝ) * x - (z : ℝ)| < 1 / (Q : ℝ)) :
+    Irrational x := by
   sorry
 /-- States prop:D9-inv from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_den_mul_error_product_tendsto_zero in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem irrational_of_den_mul_error_product_tendsto_zero
@@ -459,7 +461,10 @@ theorem irrational_totientSeries_of_rational_separation (u : ℕ → ℚ)
     (hne : ∀ᶠ t in Filter.atTop,
       ((u t : ℝ)) ≠ ∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)
     (h0 : Filter.Tendsto
-      (fun t => ((u t).den : ℝ) * := by
+      (fun t => ((u t).den : ℝ) *
+        |(∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) - (u t : ℝ)|)
+      Filter.atTop (nhds 0)) :
+    Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) := by
   sorry
 /-- States the paper statement it is bound to from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.mersenneLayer_orderConsumer_instance in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem mersenneLayer_orderConsumer_instance :
@@ -564,10 +569,5 @@ theorem totientBlock_concatenation (a b N : ℕ) :
 /-- States the paper statement it is bound to from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.totientBlock_doubling in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem totientBlock_doubling (h N : ℕ) :
     totientBlock (2 * h) N = 2 ^ h * totientBlock h N + totientBlock h (N + h) := by
-  sorry
-/-- States the paper statement it is bound to from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.totientBlock_eq_paper_indexed_sum in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem totientBlock_eq_paper_indexed_sum (a N : ℕ) :
-    totientBlock a N
-      = ∑ j ∈ Finset.Icc 1 a, (Nat.totient (N + j) : ℤ) * 2 ^ (a - j) := by
   sorry
 end PalomarCorpus.E249.PaperStatementsAJ

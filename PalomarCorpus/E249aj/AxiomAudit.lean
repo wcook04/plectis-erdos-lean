@@ -87,4 +87,3 @@ import Solutions.PalomarCorpus.E249aj
 #print axioms PalomarCorpus.E249.PaperStatementsAJ.three_not_dvd_two_pow
 #print axioms PalomarCorpus.E249.PaperStatementsAJ.totientBlock_concatenation
 #print axioms PalomarCorpus.E249.PaperStatementsAJ.totientBlock_doubling
-#print axioms PalomarCorpus.E249.PaperStatementsAJ.totientBlock_eq_paper_indexed_sum

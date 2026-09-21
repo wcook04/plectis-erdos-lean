@@ -71,7 +71,13 @@ noncomputable def totientTail (N : ℕ) : ℝ :=
   ∑' j : ℕ, (Nat.totient (N + 1 + j) : ℝ) / 2 ^ (j + 1)
 
 theorem tailDifference_not_integral_of_separation {H D : ℕ}
-    (hbound : := by
-  apply ErdosProblems.Erdos249.PaperCompleteR21.tailDifference_not_integral_of_separation <;> assumption
+    (hbound :
+      |totientTail (2 * H) - totientTail H -
+        (scaleExplicitShadow H + projectedForeignDefect H D)| ≤
+        foreignComplementBound H D)
+    (hsep : ∀ z : ℤ,
+      foreignComplementBound H D <
+        |scaleExplicitShadow H + projectedForeignDefect H D - (z : ℝ)|) :
+    totientTail (2 * H) - totientTail H ∉ Set.range ((↑) : ℤ → ℝ) := @ErdosProblems.Erdos249.PaperCompleteR21.tailDifference_not_integral_of_separation H D hbound hsep
 
 end Erdos249257.ExternalVerification249PaperStatementsBK

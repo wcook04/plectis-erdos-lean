@@ -4,8 +4,6 @@ import Solutions.PalomarCorpus.E249ak
 #print axioms PalomarCorpus.E249.PaperStatementsAK.farey_gap
 #print axioms PalomarCorpus.E249.PaperStatementsAK.gap_check_window_1_240_first_failure
 #print axioms PalomarCorpus.E249.PaperStatementsAK.gap_check_window_1_240_le_79639646646701375323355774875831053
-#print axioms PalomarCorpus.E249.PaperStatementsAK.sternBrocotDepthMass_error
-#print axioms PalomarCorpus.E249.PaperStatementsAK.tendsto_sternBrocotDepthMass
 #print axioms PalomarCorpus.E249.PaperStatementsAK.totientSeries_ne_rat_of_den_dvd_two_pow_fourteen_mul_mersenne
 #print axioms PalomarCorpus.E249.PaperStatementsAK.totientSeries_rational_den_gt_fareyBound
 #print axioms PalomarCorpus.E249.PaperStatementsAK.totient_mul_eq_totient_mul_gcd_div_totient_gcd

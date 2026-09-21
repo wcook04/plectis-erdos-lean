@@ -24,10 +24,6 @@ open Set
 namespace PalomarCorpus.E249.PaperStatementsAZ
 open Filter
 open Set
-/-- The exact binary affine orbit driven by the fresh coefficient word `a`. Local copy of Erdos249257.affineBinaryOrbit, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def affineBinaryOrbit (a : ℕ → ℤ) (u0 : ℤ) : ℕ → ℤ
-  | 0 => u0
-  | n + 1 => 2 * affineBinaryOrbit a u0 n - a (n + 1)
 /-- The radius of the balanced-pulse family at location `m`. Local copy of Erdos249257.balancedPulseRadius, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def balancedPulseRadius (m : ℕ) : ℕ := (m + 1) / 2
 /-- A two-site pulse whose mass can be moved from position `m` to `m+1` without changing its binary-series value. Local copy of Erdos249257.balancedPulseCoeff, restated so the compared statements elaborate against Mathlib alone. -/

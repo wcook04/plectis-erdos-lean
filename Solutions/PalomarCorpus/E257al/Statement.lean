@@ -31,29 +31,16 @@ noncomputable def CoeffZeroWindow (f : ℕ → ℕ) (N h : ℕ) : Prop :=
   ∀ j : ℕ, j < h → f (N + j + 1) = 0
 /-- A Boolean support word through exponent `N`. Index zero is retained so restriction is literal; admissibility forces exponents zero and one off. Local copy of Erdos249257.HalfCarryReachability.HalfWord, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable abbrev HalfWord (N : ℕ) := Fin (N + 1) → Bool
-/-- The discrete square-root strip used by the half-carry search. Local copy of Erdos249257.HalfCarryReachability.halfStripBound, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def halfStripBound (n : ℕ) : ℕ :=
-  2 * Nat.sqrt n + 4
-/-- The exact binary affine orbit driven by the fresh coefficient word `a`. Local copy of Erdos249257.affineBinaryOrbit, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def affineBinaryOrbit (a : ℕ → ℤ) (u0 : ℤ) : ℕ → ℤ
-  | 0 => u0
-  | n + 1 => 2 * affineBinaryOrbit a u0 n - a (n + 1)
-/-- **The support coefficient** `f_A(n) = #{d ∣ n : d ∈ A}` — the Dirichlet incidence `1_A * 1` of a support set `A ⊆ ℕ`. This is the coefficient in which Erdős #257 is actually stated: `∑_{a∈A} 1/(b^a - 1) = ∑_n f_A(n)/b^n`. Full support gives `f_ℕ = τ`; primes give `ω`; prime powers give `Ω`. Local copy of Erdos249257.supportCoeff, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def supportCoeff (A : Set ℕ) (n : ℕ) : ℕ :=
-  letI := Classical.decPred fun d : ℕ => d ∈ A
-  (n.divisors.filter fun d => d ∈ A).card
-/-- The integer carry whose state at time `N` is the packet's `K_{N+1}`. Local copy of Erdos249257.HalfCarryReachability.integerHalfCarry, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def integerHalfCarry (A : Set ℕ) : ℕ → ℤ :=
-  affineBinaryOrbit (fun n : ℕ ↦ (supportCoeff A (n + 1) : ℤ)) 1
-/-- The canonical integer half carry measured relative to the signed Möbius solution. Index `N` corresponds to the packet's state `e_{N+1}`. Local copy of Erdos249257.HalfCarryReachability.mobiusCenteredHalfCarry, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def mobiusCenteredHalfCarry (A : Set ℕ) (N : ℕ) : ℤ :=
-  integerHalfCarry A N - 1
 /-- The set represented by a finite Boolean word. Local copy of Erdos249257.HalfCarryReachability.wordSupport, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def wordSupport {N : ℕ} (a : HalfWord N) : Set ℕ :=
   {n | ∃ h : n < N + 1, a ⟨n, h⟩ = true}
 /-- Append one Boolean bit to a finite half word. Local copy of Erdos249257.HalfCarrySelectedWindow.extendHalfWord, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def extendHalfWord {N : ℕ} (a : HalfWord N) (β : Bool) : HalfWord (N + 1) :=
   Fin.lastCases β a
+/-- **The support coefficient** `f_A(n) = #{d ∣ n : d ∈ A}` — the Dirichlet incidence `1_A * 1` of a support set `A ⊆ ℕ`. This is the coefficient in which Erdős #257 is actually stated: `∑_{a∈A} 1/(b^a - 1) = ∑_n f_A(n)/b^n`. Full support gives `f_ℕ = τ`; primes give `ω`; prime powers give `Ω`. Local copy of Erdos249257.supportCoeff, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def supportCoeff (A : Set ℕ) (n : ℕ) : ℕ :=
+  letI := Classical.decPred fun d : ℕ => d ∈ A
+  (n.divisors.filter fun d => d ∈ A).card
 /-- `supportCoeff A` vanishes on the `h` positive indices immediately after `N`, namely `N + 1, ..., N + h`. Local copy of Erdos249257.SupportCoeffZeroWindow, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def SupportCoeffZeroWindow (A : Set ℕ) (N h : ℕ) : Prop :=
   CoeffZeroWindow (supportCoeff A) N h

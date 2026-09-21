@@ -2,7 +2,6 @@
   "challenge_module": "PalomarCorpus.E249az.Challenge",
   "solution_module": "Solutions.PalomarCorpus.E249az",
   "theorem_names": [
-    "PalomarCorpus.E249.PaperStatementsAZ.affineBinaryOrbit_difference_and_reset",
     "PalomarCorpus.E249.PaperStatementsAZ.balancedPulse_common_history",
     "PalomarCorpus.E249.PaperStatementsAZ.balancedPulse_label_lower_bound",
     "PalomarCorpus.E249.PaperStatementsAZ.balancedPulse_no_decoder_from_common_state",

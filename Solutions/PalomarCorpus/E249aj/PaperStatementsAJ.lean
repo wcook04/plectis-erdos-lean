@@ -294,7 +294,9 @@ theorem gapFareyBound_window_1_240 (q : ℕ) (hq : 0 < q)
 
 theorem irrational_of_basePower_dilation {x : ℝ} (b₀ : ℕ)
     (h : ∀ Q : ℤ, 1 ≤ Q → ∃ n : ℕ, ∃ z : ℤ,
-      0 < |((b₀ ^ n : ℕ) : ℝ) * x - (z : ℝ)| ∧ := by
+      0 < |((b₀ ^ n : ℕ) : ℝ) * x - (z : ℝ)| ∧
+        |((b₀ ^ n : ℕ) : ℝ) * x - (z : ℝ)| < 1 / (Q : ℝ)) :
+    Irrational x := by
   apply ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_basePower_dilation <;> assumption
 
 theorem irrational_of_den_mul_error_product_tendsto_zero
@@ -352,8 +354,10 @@ theorem irrational_totientSeries_of_rational_separation (u : ℕ → ℚ)
     (hne : ∀ᶠ t in Filter.atTop,
       ((u t : ℝ)) ≠ ∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)
     (h0 : Filter.Tendsto
-      (fun t => ((u t).den : ℝ) * := by
-  apply ErdosProblems.Erdos249.PaperCompleteR21.irrational_totientSeries_of_rational_separation <;> assumption
+      (fun t => ((u t).den : ℝ) *
+        |(∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) - (u t : ℝ)|)
+      Filter.atTop (nhds 0)) :
+    Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) := @ErdosProblems.Erdos249.PaperCompleteR21.irrational_totientSeries_of_rational_separation u hne h0
 
 theorem mersenneLayer_orderConsumer_instance :
     BoundedDegreeOrderConsumer (fun n => 2 ^ n - 1) 1 1 ∧
@@ -437,9 +441,5 @@ theorem totientBlock_concatenation (a b N : ℕ) :
 
 theorem totientBlock_doubling (h N : ℕ) :
     totientBlock (2 * h) N = 2 ^ h * totientBlock h N + totientBlock h (N + h) := @ErdosProblems.Erdos249.PaperCompleteR21.totientBlock_doubling h N
-
-theorem totientBlock_eq_paper_indexed_sum (a N : ℕ) :
-    totientBlock a N
-      = ∑ j ∈ Finset.Icc 1 a, (Nat.totient (N + j) : ℤ) * 2 ^ (a - j) := @ErdosProblems.Erdos249.PaperCompleteR21.totientBlock_eq_paper_indexed_sum a N
 
 end PalomarCorpus.E249.PaperStatementsAJ

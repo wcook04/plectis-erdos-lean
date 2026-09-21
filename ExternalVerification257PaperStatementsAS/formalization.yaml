@@ -3,11 +3,11 @@ version: v0.4
 project:
   name: 'Erdős #257: independent restatements of refereed paper-linked theorems'
   description: >-
-    6 theorems of the substantive development for Erdős problem #257
+    3 theorems of the substantive development for Erdős problem #257
     restated against Mathlib alone and transported from the source declarations named
-    below. The substantive formalization lives in Erdos249257.BooleanMobiusCofinalExactRows, Erdos249257.BooleanMobiusLocalRepair, Erdos249257.GreedyAchievementSet, Erdos249257.HalfCylinderConcreteSeamAdapter, Erdos249257.HalfCylinderFloorErrorReset, Erdos249257.HalfCylinderIntegerGreedy, Erdos249257.HalfCylinderSeamLimit, ErdosProblems.Erdos257.PaperCompleteR21.ExactRowDichotomyCountermodels, ErdosProblems.Erdos257.PaperCompleteR21.MersenneQuotientRowRecurrences, ErdosProblems.Erdos257.PaperCompleteR21.SeamPrefixStabilityLimit in this repository and at
+    below. The substantive formalization lives in Erdos249257.BooleanMobiusCofinalExactRows, Erdos249257.BooleanMobiusLocalRepair, Erdos249257.GreedyAchievementSet, ErdosProblems.Erdos257.PaperCompleteR21.ExactRowDichotomyCountermodels, ErdosProblems.Erdos257.PaperCompleteR21.MersenneQuotientRowRecurrences in this repository and at
     public commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84 of https://github.com/wcook04/plectis-erdos. This entry is a comparison
-    interface over that development. 6 statements transport by direct term
+    interface over that development. 3 statements transport by direct term
     application, which certifies definitional identity with the source statement;
     0 transport through a tactic bridge, which certifies implication only. The
     parent Erdős problem remains open.
@@ -53,11 +53,11 @@ sources:
   license: Apache-2.0
   author_endorsement: n/a
 status:
-  scope: Independent restatements of 6 refereed declarations for Erdős problem #257.
+  scope: Independent restatements of 3 refereed declarations for Erdős problem #257.
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
-  trusted_challenge_sorry_count: 6
+  trusted_challenge_sorry_count: 3
   sorry_boundary: Only the trusted Challenge theorem bodies carry placeholders.
   axiom_audit_status: pending fresh target-toolchain axiom audit
   permitted_axiom_budget:
@@ -65,20 +65,9 @@ status:
   - Quot.sound
   - Classical.choice
   development_status: substantive
-  local_proof_provenance: Erdos249257.BooleanMobiusCofinalExactRows, Erdos249257.BooleanMobiusLocalRepair, Erdos249257.GreedyAchievementSet, Erdos249257.HalfCylinderConcreteSeamAdapter, Erdos249257.HalfCylinderFloorErrorReset, Erdos249257.HalfCylinderIntegerGreedy, Erdos249257.HalfCylinderSeamLimit, ErdosProblems.Erdos257.PaperCompleteR21.ExactRowDichotomyCountermodels, ErdosProblems.Erdos257.PaperCompleteR21.MersenneQuotientRowRecurrences, ErdosProblems.Erdos257.PaperCompleteR21.SeamPrefixStabilityLimit in this repository, which is the same development published at https://github.com/wcook04/plectis-erdos commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+  local_proof_provenance: Erdos249257.BooleanMobiusCofinalExactRows, Erdos249257.BooleanMobiusLocalRepair, Erdos249257.GreedyAchievementSet, ErdosProblems.Erdos257.PaperCompleteR21.ExactRowDichotomyCountermodels, ErdosProblems.Erdos257.PaperCompleteR21.MersenneQuotientRowRecurrences in this repository, which is the same development published at https://github.com/wcook04/plectis-erdos commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84
   canonical_claim_status: generated comparison interface over substantive Lean in this repository
   main_results:
-  - declaration: Erdos249257.ExternalVerification257PaperStatementsAS.paper_seam_limit_unconditional
-    file: Solutions/ExternalVerification257PaperStatementsAS.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification257PaperStatementsAS/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAS.paper_seam_limit_unconditional
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.paper_seam_limit_unconditional
-    source_file: ErdosProblems/Erdos257/PaperCompleteR21/SeamPrefixStabilityLimit.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
   - declaration: Erdos249257.ExternalVerification257PaperStatementsAS.paper_sharper_additive_estimate
     file: Solutions/ExternalVerification257PaperStatementsAS.lean
     sorry_count: 0
@@ -110,28 +99,6 @@ status:
     novelty_status: unassessed
     source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.paper_unconditional_bound_one_extra_bit
     source_file: ErdosProblems/Erdos257/PaperCompleteR21/MersenneQuotientRowRecurrences.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
-  - declaration: Erdos249257.ExternalVerification257PaperStatementsAS.tendsto_seamGreedyFiniteValue_greedyHalfTargetValue
-    file: Solutions/ExternalVerification257PaperStatementsAS.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification257PaperStatementsAS/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAS.tendsto_seamGreedyFiniteValue_greedyHalfTargetValue
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.tendsto_seamGreedyFiniteValue_greedyHalfTargetValue
-    source_file: ErdosProblems/Erdos257/PaperCompleteR21/SeamPrefixStabilityLimit.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
-  - declaration: Erdos249257.ExternalVerification257PaperStatementsAS.tendsto_seamGreedyNormalizedRemainder
-    file: Solutions/ExternalVerification257PaperStatementsAS.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification257PaperStatementsAS/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAS.tendsto_seamGreedyNormalizedRemainder
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.tendsto_seamGreedyNormalizedRemainder
-    source_file: ErdosProblems/Erdos257/PaperCompleteR21/SeamPrefixStabilityLimit.lean
     source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
     transport: definitional
 automation:

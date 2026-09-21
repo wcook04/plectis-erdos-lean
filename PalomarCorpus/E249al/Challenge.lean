@@ -34,7 +34,8 @@ noncomputable def xi : ℝ := tail digit 0
 theorem basePower_dilation_not_universal :
     ∃ x : ℝ, Irrational x ∧ ∃ b₀ : ℕ, 2 ≤ b₀ ∧
       ¬ ∀ Q : ℤ, 1 ≤ Q → ∃ (n : ℕ) (z : ℤ),
-          0 < |((b₀ ^ n : ℕ) : ℝ) * x - (z : ℝ)| ∧ := by
+          0 < |((b₀ ^ n : ℕ) : ℝ) * x - (z : ℝ)| ∧
+            |((b₀ ^ n : ℕ) : ℝ) * x - (z : ℝ)| < 1 / (Q : ℝ) := by
   sorry
 /-- States catalogue:cert:d2 from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.digit_block in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem digit_block (j : ℕ) :
@@ -79,7 +80,8 @@ theorem not_eventually_periodic (N P : ℕ) (hP : 0 < P) :
 /-- States catalogue:cert:d2 from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.not_near_integer_along_powers_of_two in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem not_near_integer_along_powers_of_two :
     ¬ ∀ q : ℕ, 0 < q → ∃ (n : ℕ) (z : ℤ),
-        0 < |(2 : ℝ) ^ n * xi - (z : ℝ)| ∧ := by
+        0 < |(2 : ℝ) ^ n * xi - (z : ℝ)| ∧
+          |(2 : ℝ) ^ n * xi - (z : ℝ)| < 1 / (q : ℝ) := by
   sorry
 /-- States catalogue:cert:d2 from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.one_div_eight_le_abs_sub_int in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem one_div_eight_le_abs_sub_int {d : ℕ → ℕ} (hd : ∀ n, d n ≤ 1)
@@ -92,7 +94,8 @@ theorem one_div_eight_le_dist_xi (n : ℕ) (z : ℤ) :
   sorry
 /-- States catalogue:cert:d2 from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.strict_lower_bound_needed in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem strict_lower_bound_needed :
-    ¬ ∀ ξ : ℝ, (∀ q : ℕ, 0 < q → ∃ m z : ℤ, := by
+    ¬ ∀ ξ : ℝ, (∀ q : ℕ, 0 < q → ∃ m z : ℤ,
+        |(m : ℝ) * ξ - (z : ℝ)| < 1 / (q : ℝ)) → Irrational ξ := by
   sorry
 /-- States catalogue:cert:d2 from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.tail_mem_Icc in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem tail_mem_Icc {d : ℕ → ℕ} (hd : ∀ n, d n ≤ 1)

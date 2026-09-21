@@ -261,14 +261,19 @@ theorem upper_half_product_denominator_bounds {t : ℕ} (ht : 5 ≤ t) :
 Transported from ErdosProblems.Erdos249.PaperCompleteR21.abs_mobiusSquareTail_le_paper in
 the substantive development, whose statement was refereed against the paper in the coverage
 ledger. -/
-theorem abs_mobiusSquareTail_le_paper (D : ℕ) : := by
+theorem abs_mobiusSquareTail_le_paper (D : ℕ) :
+    |∑' k : ℕ,
+        ((ArithmeticFunction.moebius (D + 1 + k) : ℤ) : ℝ) /
+          (((2 : ℝ) ^ (D + 1 + k) - 1) ^ 2)| ≤
+      4 / (3 * (((2 : ℝ) ^ (D + 1) - 1) ^ 2)) := by
   sorry
 
 /-- States the paper statement it is bound to from the long record for Erdős problem #249.
 Transported from ErdosProblems.Erdos249.PaperCompleteR21.abs_moebius_cast_le_one in the
 substantive development, whose statement was refereed against the paper in the coverage
 ledger. -/
-theorem abs_moebius_cast_le_one (d : ℕ) : := by
+theorem abs_moebius_cast_le_one (d : ℕ) :
+    |((ArithmeticFunction.moebius d : ℤ) : ℝ)| ≤ 1 := by
   sorry
 
 /-- States the paper statement it is bound to from the long record for Erdős problem #249.

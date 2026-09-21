@@ -624,10 +624,6 @@ name = "ExternalVerification249PaperStatementsAU"
 globs = ["ExternalVerification249PaperStatementsAU.+"]
 
 [[lean_lib]]
-name = "ExternalVerification249PaperStatementsAV"
-globs = ["ExternalVerification249PaperStatementsAV.+"]
-
-[[lean_lib]]
 name = "ExternalVerification249PaperStatementsAW"
 globs = ["ExternalVerification249PaperStatementsAW.+"]
 
@@ -664,20 +660,12 @@ name = "ExternalVerification249PaperStatementsBE"
 globs = ["ExternalVerification249PaperStatementsBE.+"]
 
 [[lean_lib]]
-name = "ExternalVerification249PaperStatementsBF"
-globs = ["ExternalVerification249PaperStatementsBF.+"]
-
-[[lean_lib]]
 name = "ExternalVerification249PaperStatementsBG"
 globs = ["ExternalVerification249PaperStatementsBG.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsBH"
 globs = ["ExternalVerification249PaperStatementsBH.+"]
-
-[[lean_lib]]
-name = "ExternalVerification249PaperStatementsBI"
-globs = ["ExternalVerification249PaperStatementsBI.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsBJ"
@@ -788,28 +776,8 @@ name = "ExternalVerification257PaperStatementsAV"
 globs = ["ExternalVerification257PaperStatementsAV.+"]
 
 [[lean_lib]]
-name = "ExternalVerification257PaperStatementsAW"
-globs = ["ExternalVerification257PaperStatementsAW.+"]
-
-[[lean_lib]]
 name = "ExternalVerification257PaperStatementsAX"
 globs = ["ExternalVerification257PaperStatementsAX.+"]
-
-[[lean_lib]]
-name = "ExternalVerification257PaperStatementsAY"
-globs = ["ExternalVerification257PaperStatementsAY.+"]
-
-[[lean_lib]]
-name = "ExternalVerification257PaperStatementsAZ"
-globs = ["ExternalVerification257PaperStatementsAZ.+"]
-
-[[lean_lib]]
-name = "ExternalVerification257PaperStatementsBA"
-globs = ["ExternalVerification257PaperStatementsBA.+"]
-
-[[lean_lib]]
-name = "ExternalVerification257PaperStatementsBB"
-globs = ["ExternalVerification257PaperStatementsBB.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStatementsBC"
@@ -826,10 +794,6 @@ globs = ["ExternalVerification257PaperStatementsBE.+"]
 [[lean_lib]]
 name = "ExternalVerification257PaperStatementsBF"
 globs = ["ExternalVerification257PaperStatementsBF.+"]
-
-[[lean_lib]]
-name = "ExternalVerification257PaperStatementsBG"
-globs = ["ExternalVerification257PaperStatementsBG.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1049PaperStatementsA"

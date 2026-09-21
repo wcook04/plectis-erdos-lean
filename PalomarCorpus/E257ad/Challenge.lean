@@ -23,23 +23,6 @@ open scoped BigOperators
 
 namespace PalomarCorpus.E257.PaperStatementsAD
 open scoped BigOperators
-/-- Local copy of Erdos249257.HalfCylinderIntegerGreedy.SeamRowWord, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable abbrev SeamRowWord (s : ℕ) := Fin (s - 2) → Bool
-/-- Local copy of Erdos249257.HalfCylinderIntegerGreedy.SeamRowWord.ofList, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def ofList {s : ℕ} (bits : List Bool) (hlen : bits.length = s - 2) :
-    SeamRowWord s :=
-  fun i => bits.get (Fin.cast hlen.symm i)
-/-- Local copy of Erdos249257.HalfCylinderIntegerGreedy.SeamRowWord.toNatWord, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def toNatWord {s : ℕ} (b : SeamRowWord s) : ℕ → Bool :=
-  fun d => if h : 2 ≤ d ∧ d < s then b ⟨d - 2, by omega⟩ else false
-/-- Descending greedy subset for an integer capacity. Local copy of Erdos249257.HalfCylinderIntegerGreedy.integerGreedyBits, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def integerGreedyBits : List ℕ → ℕ → List Bool
-  | [], _ => []
-  | w :: ws, C =>
-      if w ≤ C then
-        true :: integerGreedyBits ws (C - w)
-      else
-        false :: integerGreedyBits ws C
 /-- The exact quotient digit created when the row is multiplied by four. Local copy of Erdos249257.HalfCylinderIntegerGreedy.rowPulse, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def rowPulse (s d : ℕ) : ℕ :=
   (if d ∣ 2 * s + 2 then 1 else 0) +
@@ -50,23 +33,6 @@ noncomputable def seamSubsetTarget (s : ℕ) : ℕ :=
 /-- The exact integer weight contributed at seam rank `s` by selecting a proper divisor rank `d < s`. Local copy of Erdos249257.HalfCylinderIntegerGreedy.truncatedMersenneWeight, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def truncatedMersenneWeight (s d : ℕ) : ℕ :=
   4 ^ s / (2 ^ d - 1)
-/-- The weights with indices `d,d+1,…,s-1`, in descending size order. Local copy of Erdos249257.HalfCylinderIntegerGreedy.seamWeightsFrom, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def seamWeightsFrom (s : ℕ) : ℕ → List ℕ
-  | d =>
-      if h : d < s then
-        truncatedMersenneWeight s d :: seamWeightsFrom s (d + 1)
-      else
-        []
-termination_by d => s - d
-decreasing_by omega
-/-- The actual proper-divisor weight word, indexed by `2,…,s-1`. Local copy of Erdos249257.HalfCylinderIntegerGreedy.seamWeights, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def seamWeights (s : ℕ) : List ℕ :=
-  seamWeightsFrom s 2
-/-- Local copy of Erdos249257.HalfCylinderIntegerGreedy.seamGreedyWord, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def seamGreedyWord (s : ℕ) : SeamRowWord s :=
-  ofList
-    (integerGreedyBits (seamWeights s) (seamSubsetTarget s))
-    (by rw [integerGreedyBits_length, seamWeights_length_eq])
 /-- `Hₜ = lcm(1, ..., t)`. The interval avoids inserting zero into the finite LCM. Local copy of Erdos249257.MersenneShadowCyclotomicNoncollapse.lcmHeight, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def lcmHeight (t : ℕ) : ℕ :=
   (Finset.Icc 1 t).lcm (fun n ↦ n)
@@ -115,11 +81,6 @@ noncomputable def IsRowUpper (n : ℕ) (B : Finset ℕ) : Prop :=
       ∀ S, S ⊆ Finset.Ico 2 n →
         seamSubsetTarget n < localPrefixQuotient S (2 * n) →
           localPrefixQuotient B (2 * n) ≤ localPrefixQuotient S (2 * n)
-/-- The subset of `{2,…,n-1}` selected by a Boolean row word. Local copy of ErdosProblems.Erdos257.PaperCompleteR21.rowSupport, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def rowSupport (n : ℕ) (b : SeamRowWord n) : Finset ℕ :=
-  (Finset.Ico 2 n).filter (fun d => b.toNatWord d = true)
-/-- The take set of the integer greedy process of §`ssec:seam-model`: the ranks `d = 2,…,n-1` are visited in ascending order against `T_n`, and `d` is taken exactly when its weight does not exceed the current residual. The process is `integerGreedyBits` run on the weight list `seamWeights n = [w(n,2),…,w(n,n-1)]` with capacity `T_n`; see `paper_greedy_step`. Local copy of ErdosProblems.Erdos257.PaperCompleteR21.greedySupport, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def greedySupport (n : ℕ) : Finset ℕ := rowSupport n (seamGreedyWord n)
 /-- The paper's integral Möbius numerator `A_r = ∑_{d ∣ r} μ(d) (r/d) (M_r / M_d)`. Local copy of ErdosProblems.Erdos257.PaperCompleteR21.paperA, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def paperA (r : ℕ) : ℤ :=
   ∑ d ∈ r.divisors,
@@ -213,30 +174,6 @@ theorem paper_channel_factors_pairwise_coprime
 theorem paper_consecutive_not_both_divisible {d m : ℕ} (hd : 2 ≤ d) :
     ¬ (d ∣ m + 1 ∧ d ∣ m + 2) := by
   sorry
-/-- States thm:dynamics from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_dynamics in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem paper_dynamics {n : ℕ} (hn : 5 ≤ n) {D B D' : Finset ℕ}
-    (hD : IsRowLower n D) (hB : IsRowUpper n B) (hD' : IsRowLower (n + 1) D')
-    {r o pm pp rem : ℕ}
-    (hr : localPrefixQuotient D (2 * n) + r = seamSubsetTarget n)
-    (ho : seamSubsetTarget n + o = localPrefixQuotient B (2 * n))
-    (hpm : pm = ∑ d ∈ D, rowPulse n d)
-    (hpp : pp = ∑ d ∈ B, rowPulse n d)
-    (hrem : localPrefixQuotient D' (2 * (n + 1)) + rem = seamSubsetTarget (n + 1)) :
-    D = greedySupport n ∧
-      pm ≤ 2 * (n - 2) ∧ pp ≤ 2 * (n - 2) ∧
-      ((rem : ℤ) =
-        if 4 * (o : ℤ) + (pp : ℤ) ≤ 2 ^ (n + 1) then
-          (2 : ℤ) ^ (n + 1) - 4 * (o : ℤ) - (pp : ℤ)
-        else if 4 * (r : ℤ) + 2 ^ (n + 1) - (pm : ℤ) < 2 ^ (n + 2) + 4 then
-          4 * (r : ℤ) + 2 ^ (n + 1) - (pm : ℤ)
-        else 4 * (r : ℤ) - 2 ^ (n + 1) - (pm : ℤ) - 4) ∧
-      (((rem : ℚ) - 2 ^ (n + 1)) / 2 ^ (n + 1) =
-        if 4 * (o : ℤ) + (pp : ℤ) ≤ 2 ^ (n + 1) then
-          -((4 * (o : ℚ) + (pp : ℚ)) / 2 ^ (n + 1))
-        else if 4 * (r : ℤ) + 2 ^ (n + 1) - (pm : ℤ) < 2 ^ (n + 2) + 4 then
-          2 * (((r : ℚ) - 2 ^ n) / 2 ^ n) + 2 - (pm : ℚ) / 2 ^ (n + 1)
-        else 2 * (((r : ℚ) - 2 ^ n) / 2 ^ n) - ((pm : ℚ) + 4) / 2 ^ (n + 1)) := by
-  sorry
 /-- States record:257bm-i10 from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_finite_sum_inv_odd_den_odd in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem paper_finite_sum_inv_odd_den_odd {ι : Type*} (s : Finset ι) (f : ι → ℤ)
     (hodd : ∀ i ∈ s, Odd (f i)) :
@@ -246,30 +183,6 @@ theorem paper_finite_sum_inv_odd_den_odd {ι : Type*} (s : Finset ι) (f : ι �
 theorem paper_finite_sum_inv_odd_ne_half {ι : Type*} (s : Finset ι) (f : ι → ℤ)
     (hodd : ∀ i ∈ s, Odd (f i)) :
     (∑ i ∈ s, (1 : ℚ) / ((f i : ℤ) : ℚ)) ≠ (1 : ℚ) / 2 := by
-  sorry
-/-- States thm:dynamics from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_greedySupport_greedy_rule in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem paper_greedySupport_greedy_rule {n : ℕ} (hn : 5 ≤ n) {d : ℕ}
-    (hd : 2 ≤ d) (hdn : d < n) :
-    d ∈ greedySupport n ↔
-      truncatedMersenneWeight n d +
-          ∑ e ∈ (greedySupport n).filter (fun e => e < d),
-            truncatedMersenneWeight n e ≤ seamSubsetTarget n := by
-  sorry
-/-- States thm:dynamics from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_greedySupport_isRowLower in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem paper_greedySupport_isRowLower {n : ℕ} (hn : 5 ≤ n) :
-    IsRowLower n (greedySupport n) := by
-  sorry
-/-- States thm:dynamics from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_greedySupport_mem in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem paper_greedySupport_mem {n d : ℕ} (hd : 2 ≤ d) (hdn : d < n) :
-    d ∈ greedySupport n ↔ seamGreedyWord n ⟨d - 2, by omega⟩ = true := by
-  sorry
-/-- States thm:dynamics from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_greedy_step in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem paper_greedy_step {n d : ℕ} (hd : d < n) (C : ℕ) :
-    integerGreedyBits (seamWeightsFrom n d) C =
-      (decide (truncatedMersenneWeight n d ≤ C)) ::
-        integerGreedyBits (seamWeightsFrom n (d + 1))
-          (if truncatedMersenneWeight n d ≤ C then
-            C - truncatedMersenneWeight n d else C) := by
   sorry
 /-- States thm:dynamics from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_isRowLower_unique in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem paper_isRowLower_unique {n : ℕ} (hn : 5 ≤ n) {D D₀ : Finset ℕ}

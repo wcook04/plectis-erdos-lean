@@ -14,9 +14,6 @@ open Set
 
 namespace PalomarCorpus.E257.PaperStatementsAE
 
-theorem affineBinaryOrbit_mod_twoPow_eq (a : ℕ → ℤ) (u0 v0 : ℤ) (L : ℕ) :
-    affineBinaryOrbit a u0 L ≡ affineBinaryOrbit a v0 L [ZMOD (2 : ℤ) ^ L] := @Erdos249257.affineBinaryOrbit_mod_twoPow_eq a u0 v0 L
-
 theorem balancedPulse_endpoint_fanout (m r : ℕ) :
     balancedPulseCoeff m r (m + 1) / 2 = r := @Erdos249257.balancedPulse_endpoint_fanout m r
 

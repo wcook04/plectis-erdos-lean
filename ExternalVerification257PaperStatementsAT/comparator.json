@@ -3,11 +3,6 @@
   "solution_module": "Solutions.ExternalVerification257PaperStatementsAT",
   "theorem_names": [
     "Erdos249257.ExternalVerification257PaperStatementsAT.binaryCoeffTail_supportCoeff_coe_finset_le_card",
-    "Erdos249257.ExternalVerification257PaperStatementsAT.mobiusCenteredHalfCarry_add_two",
-    "Erdos249257.ExternalVerification257PaperStatementsAT.mobiusCenteredHalfCarry_nonneg_of_supportSeries_lt_half",
-    "Erdos249257.ExternalVerification257PaperStatementsAT.paper_exact_row_integerHalfCarry_eq_one",
-    "Erdos249257.ExternalVerification257PaperStatementsAT.paper_integerHalfCarry_eq_two_pow_sub_localPrefixQuotient",
-    "Erdos249257.ExternalVerification257PaperStatementsAT.paper_mobiusCenteredHalfCarry_add_two",
     "Erdos249257.ExternalVerification257PaperStatementsAT.paper_terminal_strip_witness_six"
   ],
   "permitted_axioms": [

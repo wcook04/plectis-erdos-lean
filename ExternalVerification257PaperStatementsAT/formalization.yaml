@@ -3,11 +3,11 @@ version: v0.4
 project:
   name: 'Erdős #257: independent restatements of refereed paper-linked theorems'
   description: >-
-    7 theorems of the substantive development for Erdős problem #257
+    2 theorems of the substantive development for Erdős problem #257
     restated against Mathlib alone and transported from the source declarations named
-    below. The substantive formalization lives in Erdos249257.BooleanMobiusLocalRepair, Erdos249257.CertificateKernel, Erdos249257.GenericTailOrbitRigidity, Erdos249257.HalfCarryReachability, Erdos249257.HalfCylinderFinalMiddleCellEscape, Erdos249257.HalfCylinderMiddleCarryLowerBound, ErdosProblems.Erdos257.PaperCompleteR21.LinearChannelAndMiddleCellExclusion, ErdosProblems.Erdos257.PaperCompleteR21.TerminalStripExactRowGap in this repository and at
+    below. The substantive formalization lives in Erdos249257.BooleanMobiusLocalRepair, Erdos249257.CertificateKernel, Erdos249257.GenericTailOrbitRigidity, Erdos249257.HalfCarryReachability, Erdos249257.HalfCylinderMiddleCarryLowerBound, ErdosProblems.Erdos257.PaperCompleteR21.TerminalStripExactRowGap in this repository and at
     public commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84 of https://github.com/wcook04/plectis-erdos. This entry is a comparison
-    interface over that development. 7 statements transport by direct term
+    interface over that development. 2 statements transport by direct term
     application, which certifies definitional identity with the source statement;
     0 transport through a tactic bridge, which certifies implication only. The
     parent Erdős problem remains open.
@@ -53,11 +53,11 @@ sources:
   license: Apache-2.0
   author_endorsement: n/a
 status:
-  scope: Independent restatements of 7 refereed declarations for Erdős problem #257.
+  scope: Independent restatements of 2 refereed declarations for Erdős problem #257.
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
-  trusted_challenge_sorry_count: 7
+  trusted_challenge_sorry_count: 2
   sorry_boundary: Only the trusted Challenge theorem bodies carry placeholders.
   axiom_audit_status: pending fresh target-toolchain axiom audit
   permitted_axiom_budget:
@@ -65,7 +65,7 @@ status:
   - Quot.sound
   - Classical.choice
   development_status: substantive
-  local_proof_provenance: Erdos249257.BooleanMobiusLocalRepair, Erdos249257.CertificateKernel, Erdos249257.GenericTailOrbitRigidity, Erdos249257.HalfCarryReachability, Erdos249257.HalfCylinderFinalMiddleCellEscape, Erdos249257.HalfCylinderMiddleCarryLowerBound, ErdosProblems.Erdos257.PaperCompleteR21.LinearChannelAndMiddleCellExclusion, ErdosProblems.Erdos257.PaperCompleteR21.TerminalStripExactRowGap in this repository, which is the same development published at https://github.com/wcook04/plectis-erdos commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+  local_proof_provenance: Erdos249257.BooleanMobiusLocalRepair, Erdos249257.CertificateKernel, Erdos249257.GenericTailOrbitRigidity, Erdos249257.HalfCarryReachability, Erdos249257.HalfCylinderMiddleCarryLowerBound, ErdosProblems.Erdos257.PaperCompleteR21.TerminalStripExactRowGap in this repository, which is the same development published at https://github.com/wcook04/plectis-erdos commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84
   canonical_claim_status: generated comparison interface over substantive Lean in this repository
   main_results:
   - declaration: Erdos249257.ExternalVerification257PaperStatementsAT.binaryCoeffTail_supportCoeff_coe_finset_le_card
@@ -77,61 +77,6 @@ status:
     novelty_status: unassessed
     source_declaration: Erdos249257.binaryCoeffTail_supportCoeff_coe_finset_le_card
     source_file: Erdos249257/HalfCylinderMiddleCarryLowerBound.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
-  - declaration: Erdos249257.ExternalVerification257PaperStatementsAT.mobiusCenteredHalfCarry_add_two
-    file: Solutions/ExternalVerification257PaperStatementsAT.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification257PaperStatementsAT/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAT.mobiusCenteredHalfCarry_add_two
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: Erdos249257.mobiusCenteredHalfCarry_add_two
-    source_file: Erdos249257/HalfCylinderFinalMiddleCellEscape.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
-  - declaration: Erdos249257.ExternalVerification257PaperStatementsAT.mobiusCenteredHalfCarry_nonneg_of_supportSeries_lt_half
-    file: Solutions/ExternalVerification257PaperStatementsAT.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification257PaperStatementsAT/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAT.mobiusCenteredHalfCarry_nonneg_of_supportSeries_lt_half
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: Erdos249257.mobiusCenteredHalfCarry_nonneg_of_supportSeries_lt_half
-    source_file: Erdos249257/HalfCylinderFinalMiddleCellEscape.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
-  - declaration: Erdos249257.ExternalVerification257PaperStatementsAT.paper_exact_row_integerHalfCarry_eq_one
-    file: Solutions/ExternalVerification257PaperStatementsAT.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification257PaperStatementsAT/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAT.paper_exact_row_integerHalfCarry_eq_one
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.paper_exact_row_integerHalfCarry_eq_one
-    source_file: ErdosProblems/Erdos257/PaperCompleteR21/TerminalStripExactRowGap.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
-  - declaration: Erdos249257.ExternalVerification257PaperStatementsAT.paper_integerHalfCarry_eq_two_pow_sub_localPrefixQuotient
-    file: Solutions/ExternalVerification257PaperStatementsAT.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification257PaperStatementsAT/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAT.paper_integerHalfCarry_eq_two_pow_sub_localPrefixQuotient
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.paper_integerHalfCarry_eq_two_pow_sub_localPrefixQuotient
-    source_file: ErdosProblems/Erdos257/PaperCompleteR21/TerminalStripExactRowGap.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
-  - declaration: Erdos249257.ExternalVerification257PaperStatementsAT.paper_mobiusCenteredHalfCarry_add_two
-    file: Solutions/ExternalVerification257PaperStatementsAT.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification257PaperStatementsAT/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAT.paper_mobiusCenteredHalfCarry_add_two
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.paper_mobiusCenteredHalfCarry_add_two
-    source_file: ErdosProblems/Erdos257/PaperCompleteR21/LinearChannelAndMiddleCellExclusion.lean
     source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
     transport: definitional
   - declaration: Erdos249257.ExternalVerification257PaperStatementsAT.paper_terminal_strip_witness_six

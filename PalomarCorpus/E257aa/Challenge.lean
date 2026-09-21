@@ -202,7 +202,8 @@ theorem paper_centred_completion_of_fixed_precision
     (hodd : ∀ i, i < m → Odd (a i)) (e₀ : ℤ) :
     ∃ e z : ℕ → ℤ, e 0 = e₀ ∧
       ∀ i, i < m →
-        e (i + 1) = 2 * e i + 2 ^ (v i) * (a i + 2 ^ u * z i) ∧ := by
+        e (i + 1) = 2 * e i + 2 ^ (v i) * (a i + 2 ^ u * z i) ∧
+          |e (i + 1)| ≤ 2 ^ (v i + u - 1) := by
   sorry
 /-- States record:257hg-i4 from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_dyadic_skip_test_iff in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem paper_dyadic_skip_test_iff {k u L a : ℕ}
@@ -271,7 +272,19 @@ theorem paper_reverse_carry_word :
       (∀ m : ℕ, b₂ m + 2 * u₂ m = a₂ m + u₂ (m + 1)) →
       ∀ (k L : ℕ) (B₁ B₂ : ℝ), a₁ k = a₂ k → b₁ k - b₂ k = 1 →
         (∀ j : ℕ, j < L → a₁ (k + 1 + j) = a₂ (k + 1 + j)) →
-        (∀ j : ℕ, j < L → b₁ (k + 1 + j) = b₂ (k + 1 + j)) → := by
+        (∀ j : ℕ, j < L → b₁ (k + 1 + j) = b₂ (k + 1 + j)) →
+        |((u₁ (k + L + 1) : ℤ) : ℝ)| ≤ B₁ →
+        |((u₂ (k + L + 1) : ℤ) : ℝ)| ≤ B₂ →
+        (2 : ℝ) ^ L ≤ B₁ + B₂) ∧
+    (∀ (a₁ b₁ u₁ a₂ b₂ u₂ : ℕ → ℤ),
+      (∀ m : ℕ, b₁ m + 2 * u₁ m = a₁ m + u₁ (m + 1)) →
+      (∀ m : ℕ, b₂ m + 2 * u₂ m = a₂ m + u₂ (m + 1)) →
+      ∀ (k L : ℕ) (B : ℝ), a₁ k = a₂ k → b₁ k - b₂ k = 1 →
+        (∀ j : ℕ, j < L → a₁ (k + 1 + j) = a₂ (k + 1 + j)) →
+        (∀ j : ℕ, j < L → b₁ (k + 1 + j) = b₂ (k + 1 + j)) →
+        |((u₁ (k + L + 1) : ℤ) : ℝ)| ≤ B →
+        |((u₂ (k + L + 1) : ℤ) : ℝ)| ≤ B →
+        (2 : ℝ) ^ L ≤ 2 * B) := by
   sorry
 /-- States lem:scalar-localization from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_scalar_localization in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem paper_scalar_localization (x : ℚ) (c : ℤ) {H : ℕ}
@@ -370,7 +383,9 @@ theorem reverse_carry_word_common_bound_sharp :
       (∀ m : ℕ, b₂ m + 2 * u₂ m = a₂ m + u₂ (m + 1)) ∧
       a₁ k = a₂ k ∧ b₁ k - b₂ k = 1 ∧
       (∀ j : ℕ, j < L → a₁ (k + 1 + j) = a₂ (k + 1 + j)) ∧
-      (∀ j : ℕ, j < L → b₁ (k + 1 + j) = b₂ (k + 1 + j)) ∧ := by
+      (∀ j : ℕ, j < L → b₁ (k + 1 + j) = b₂ (k + 1 + j)) ∧
+      |((u₁ (k + L + 1) : ℤ) : ℝ)| ≤ B ∧ |((u₂ (k + L + 1) : ℤ) : ℝ)| ≤ B ∧
+      ¬ ((2 : ℝ) ^ L ≤ B) := by
   sorry
 /-- States prop:exponent-gap from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.skipSum_den_dvd_prod in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem skipSum_den_dvd_prod (S : Finset ℕ) (hS : ∀ d ∈ S, 1 ≤ d) :

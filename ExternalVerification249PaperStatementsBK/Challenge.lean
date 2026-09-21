@@ -74,7 +74,14 @@ ErdosProblems.Erdos249.PaperCompleteR21.tailDifference_not_integral_of_separatio
 substantive development, whose statement was refereed against the paper in the coverage
 ledger. -/
 theorem tailDifference_not_integral_of_separation {H D : ℕ}
-    (hbound : := by
+    (hbound :
+      |totientTail (2 * H) - totientTail H -
+        (scaleExplicitShadow H + projectedForeignDefect H D)| ≤
+        foreignComplementBound H D)
+    (hsep : ∀ z : ℤ,
+      foreignComplementBound H D <
+        |scaleExplicitShadow H + projectedForeignDefect H D - (z : ℝ)|) :
+    totientTail (2 * H) - totientTail H ∉ Set.range ((↑) : ℤ → ℝ) := by
   sorry
 
 end Erdos249257.ExternalVerification249PaperStatementsBK

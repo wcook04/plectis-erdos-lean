@@ -8,7 +8,6 @@ import Erdos249257.BooleanMobiusCriticalCapacityGeometric
 import Erdos249257.BooleanMobiusExactRowRankTwo
 import Erdos249257.BooleanMobiusExactTransition
 import Erdos249257.BooleanMobiusLocalRepair
-import Erdos249257.HalfCylinderConcreteSeamAdapter
 import Erdos249257.HalfCylinderIntegerGreedy
 import Erdos249257.MersenneShadowCyclotomicNoncollapse
 import Erdos249257.MersenneShadowDenominatorGrowth
@@ -92,29 +91,6 @@ theorem paper_channel_factors_pairwise_coprime
 theorem paper_consecutive_not_both_divisible {d m : ℕ} (hd : 2 ≤ d) :
     ¬ (d ∣ m + 1 ∧ d ∣ m + 2) := @ErdosProblems.Erdos257.PaperCompleteR21.paper_consecutive_not_both_divisible d m hd
 
-theorem paper_dynamics {n : ℕ} (hn : 5 ≤ n) {D B D' : Finset ℕ}
-    (hD : IsRowLower n D) (hB : IsRowUpper n B) (hD' : IsRowLower (n + 1) D')
-    {r o pm pp rem : ℕ}
-    (hr : localPrefixQuotient D (2 * n) + r = seamSubsetTarget n)
-    (ho : seamSubsetTarget n + o = localPrefixQuotient B (2 * n))
-    (hpm : pm = ∑ d ∈ D, rowPulse n d)
-    (hpp : pp = ∑ d ∈ B, rowPulse n d)
-    (hrem : localPrefixQuotient D' (2 * (n + 1)) + rem = seamSubsetTarget (n + 1)) :
-    D = greedySupport n ∧
-      pm ≤ 2 * (n - 2) ∧ pp ≤ 2 * (n - 2) ∧
-      ((rem : ℤ) =
-        if 4 * (o : ℤ) + (pp : ℤ) ≤ 2 ^ (n + 1) then
-          (2 : ℤ) ^ (n + 1) - 4 * (o : ℤ) - (pp : ℤ)
-        else if 4 * (r : ℤ) + 2 ^ (n + 1) - (pm : ℤ) < 2 ^ (n + 2) + 4 then
-          4 * (r : ℤ) + 2 ^ (n + 1) - (pm : ℤ)
-        else 4 * (r : ℤ) - 2 ^ (n + 1) - (pm : ℤ) - 4) ∧
-      (((rem : ℚ) - 2 ^ (n + 1)) / 2 ^ (n + 1) =
-        if 4 * (o : ℤ) + (pp : ℤ) ≤ 2 ^ (n + 1) then
-          -((4 * (o : ℚ) + (pp : ℚ)) / 2 ^ (n + 1))
-        else if 4 * (r : ℤ) + 2 ^ (n + 1) - (pm : ℤ) < 2 ^ (n + 2) + 4 then
-          2 * (((r : ℚ) - 2 ^ n) / 2 ^ n) + 2 - (pm : ℚ) / 2 ^ (n + 1)
-        else 2 * (((r : ℚ) - 2 ^ n) / 2 ^ n) - ((pm : ℚ) + 4) / 2 ^ (n + 1)) := @ErdosProblems.Erdos257.PaperCompleteR21.paper_dynamics n hn D B D' hD hB hD' r o pm pp rem hr ho hpm hpp hrem
-
 theorem paper_finite_sum_inv_odd_den_odd {ι : Type*} (s : Finset ι) (f : ι → ℤ)
     (hodd : ∀ i ∈ s, Odd (f i)) :
     Odd (∑ i ∈ s, (1 : ℚ) / ((f i : ℤ) : ℚ)).den := by
@@ -124,26 +100,6 @@ theorem paper_finite_sum_inv_odd_ne_half {ι : Type*} (s : Finset ι) (f : ι �
     (hodd : ∀ i ∈ s, Odd (f i)) :
     (∑ i ∈ s, (1 : ℚ) / ((f i : ℤ) : ℚ)) ≠ (1 : ℚ) / 2 := by
   apply ErdosProblems.Erdos257.PaperCompleteR21.paper_finite_sum_inv_odd_ne_half <;> assumption
-
-theorem paper_greedySupport_greedy_rule {n : ℕ} (hn : 5 ≤ n) {d : ℕ}
-    (hd : 2 ≤ d) (hdn : d < n) :
-    d ∈ greedySupport n ↔
-      truncatedMersenneWeight n d +
-          ∑ e ∈ (greedySupport n).filter (fun e => e < d),
-            truncatedMersenneWeight n e ≤ seamSubsetTarget n := @ErdosProblems.Erdos257.PaperCompleteR21.paper_greedySupport_greedy_rule n hn d hd hdn
-
-theorem paper_greedySupport_isRowLower {n : ℕ} (hn : 5 ≤ n) :
-    IsRowLower n (greedySupport n) := @ErdosProblems.Erdos257.PaperCompleteR21.paper_greedySupport_isRowLower n hn
-
-theorem paper_greedySupport_mem {n d : ℕ} (hd : 2 ≤ d) (hdn : d < n) :
-    d ∈ greedySupport n ↔ seamGreedyWord n ⟨d - 2, by omega⟩ = true := @ErdosProblems.Erdos257.PaperCompleteR21.paper_greedySupport_mem n d hd hdn
-
-theorem paper_greedy_step {n d : ℕ} (hd : d < n) (C : ℕ) :
-    integerGreedyBits (seamWeightsFrom n d) C =
-      (decide (truncatedMersenneWeight n d ≤ C)) ::
-        integerGreedyBits (seamWeightsFrom n (d + 1))
-          (if truncatedMersenneWeight n d ≤ C then
-            C - truncatedMersenneWeight n d else C) := @ErdosProblems.Erdos257.PaperCompleteR21.paper_greedy_step n d hd C
 
 theorem paper_isRowLower_unique {n : ℕ} (hn : 5 ≤ n) {D D₀ : Finset ℕ}
     (hD : IsRowLower n D) (hD₀ : IsRowLower n D₀) : D = D₀ := by

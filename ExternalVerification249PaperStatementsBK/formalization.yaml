@@ -7,9 +7,9 @@ project:
     restated against Mathlib alone and transported from the source declarations named
     below. The substantive formalization lives in Erdos249257.ActualForeignResidueProjection, Erdos249257.FullTargetPrimeAdjunctionNoGo, Erdos249257.RadicalMobiusShadow, Erdos249257.TotientTailPeriodKiller, ErdosProblems.Erdos249.PaperCompleteR21.PhaseEnergyAndForeignResidueProjection in this repository and at
     public commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84 of https://github.com/wcook04/plectis-erdos. This entry is a comparison
-    interface over that development. 0 statements transport by direct term
+    interface over that development. 1 statements transport by direct term
     application, which certifies definitional identity with the source statement;
-    1 transport through a tactic bridge, which certifies implication only. The
+    0 transport through a tactic bridge, which certifies implication only. The
     parent Erdős problem remains open.
   authors:
   - Will Cook
@@ -78,7 +78,7 @@ status:
     source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.tailDifference_not_integral_of_separation
     source_file: ErdosProblems/Erdos249/PaperCompleteR21/PhaseEnergyAndForeignResidueProjection.lean
     source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: derived
+    transport: definitional
 automation:
   methods:
   - method: agent

@@ -26,7 +26,8 @@ noncomputable def xi : ℝ := tail digit 0
 theorem basePower_dilation_not_universal :
     ∃ x : ℝ, Irrational x ∧ ∃ b₀ : ℕ, 2 ≤ b₀ ∧
       ¬ ∀ Q : ℤ, 1 ≤ Q → ∃ (n : ℕ) (z : ℤ),
-          0 < |((b₀ ^ n : ℕ) : ℝ) * x - (z : ℝ)| ∧ := @ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.basePower_dilation_not_universal
+          0 < |((b₀ ^ n : ℕ) : ℝ) * x - (z : ℝ)| ∧
+            |((b₀ ^ n : ℕ) : ℝ) * x - (z : ℝ)| < 1 / (Q : ℝ) := @ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.basePower_dilation_not_universal
 
 theorem digit_block (j : ℕ) :
     (IsSquare (j + 1) → digit (2 * j) = 1 ∧ digit (2 * j + 1) = 0) ∧
@@ -62,7 +63,8 @@ theorem not_eventually_periodic (N P : ℕ) (hP : 0 < P) :
 
 theorem not_near_integer_along_powers_of_two :
     ¬ ∀ q : ℕ, 0 < q → ∃ (n : ℕ) (z : ℤ),
-        0 < |(2 : ℝ) ^ n * xi - (z : ℝ)| ∧ := @ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.not_near_integer_along_powers_of_two
+        0 < |(2 : ℝ) ^ n * xi - (z : ℝ)| ∧
+          |(2 : ℝ) ^ n * xi - (z : ℝ)| < 1 / (q : ℝ) := @ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.not_near_integer_along_powers_of_two
 
 theorem one_div_eight_le_abs_sub_int {d : ℕ → ℕ} (hd : ∀ n, d n ≤ 1)
     (hrun : ∀ n, ¬ (d n = d (n + 1) ∧ d (n + 1) = d (n + 2))) (n : ℕ) (z : ℤ) :
@@ -72,7 +74,8 @@ theorem one_div_eight_le_dist_xi (n : ℕ) (z : ℤ) :
     (1 : ℝ) / 8 ≤ |(2 : ℝ) ^ n * xi - (z : ℝ)| := @ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.one_div_eight_le_dist_xi n z
 
 theorem strict_lower_bound_needed :
-    ¬ ∀ ξ : ℝ, (∀ q : ℕ, 0 < q → ∃ m z : ℤ, := @ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.strict_lower_bound_needed
+    ¬ ∀ ξ : ℝ, (∀ q : ℕ, 0 < q → ∃ m z : ℤ,
+        |(m : ℝ) * ξ - (z : ℝ)| < 1 / (q : ℝ)) → Irrational ξ := @ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.strict_lower_bound_needed
 
 theorem tail_mem_Icc {d : ℕ → ℕ} (hd : ∀ n, d n ≤ 1)
     (hrun : ∀ n, ¬ (d n = d (n + 1) ∧ d (n + 1) = d (n + 2))) (n : ℕ) :

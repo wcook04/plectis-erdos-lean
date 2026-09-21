@@ -86,6 +86,8 @@ theorem scaled_tail_split (c : ℕ → ℕ) (hc : ∀ n, c n ≤ n) (N L : ℕ) 
       (windowPrefix c N L : ℝ) + binaryCoeffTail c (N + L) := by
   sorry
 /-- States lem:gsound from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR20.GenericTailCertificates.truncation_error_bound in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem truncation_error_bound (c : ℕ → ℕ) (hc : ∀ n, c n ≤ n) (h N L : ℕ) : := by
+theorem truncation_error_bound (c : ℕ → ℕ) (hc : ∀ n, c n ≤ n) (h N L : ℕ) :
+    |(2 : ℝ) ^ L * (binaryCoeffTail c (N + h) - binaryCoeffTail c N) -
+      (discrepancy c h N L : ℝ)| ≤ (N : ℝ) + h + L + 2 := by
   sorry
 end PalomarCorpus.E249.PaperStatementsAW

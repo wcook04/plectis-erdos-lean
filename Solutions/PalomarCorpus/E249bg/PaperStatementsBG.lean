@@ -37,7 +37,9 @@ theorem theta_strict_logConcave (r : ℕ) (hr : 1 ≤ r) :
       < mobiusMersenneTheta (r + 1) ^ 2 := @ErdosProblems.Erdos249.PaperCompleteR21.theta_strict_logConcave r hr
 
 theorem abs_mobiusMersenneTheta_sub_prefix_le
-    {Y r : ℕ} (hY : 4 ≤ Y) (hr : 3 ≤ r) : := @ErdosProblems.Erdos249.RankOneSubrankObstruction.abs_mobiusMersenneTheta_sub_prefix_le Y r hY hr
+    {Y r : ℕ} (hY : 4 ≤ Y) (hr : 3 ≤ r) :
+    |mobiusMersenneTheta r - mobiusMersennePrefix Y r| ≤
+      (1 : ℝ) / 3584 := @ErdosProblems.Erdos249.RankOneSubrankObstruction.abs_mobiusMersenneTheta_sub_prefix_le Y r hY hr
 
 theorem mobiusMersenneTheta_ge_alpha
     {r : ℕ} (hr : 3 ≤ r) :
@@ -65,7 +67,8 @@ theorem primitive_form_abs_gt
     (he : 1 ≤ e) (hY : 4 ≤ Y) (hq : 1 ≤ q)
     (hquot :
       rankOneSubrankQuotient e Y = (p : ℝ) / q) :
-    (q : ℝ) / 480 < := @ErdosProblems.Erdos249.RankOneSubrankObstruction.primitive_form_abs_gt e Y q p he hY hq hquot
+    (q : ℝ) / 480 <
+      |(q : ℝ) * mobiusMersenneTheta 2 - p| := @ErdosProblems.Erdos249.RankOneSubrankObstruction.primitive_form_abs_gt e Y q p he hY hq hquot
 
 theorem rankOneSubrankQuotient_one_five_sub_theta_two_lt_one_div_fifteen :
     rankOneSubrankQuotient 1 5 - mobiusMersenneTheta 2 <

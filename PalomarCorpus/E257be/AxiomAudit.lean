@@ -1,8 +1,6 @@
 import Solutions.PalomarCorpus.E257be
 
-#print axioms PalomarCorpus.E257.PaperStatementsBE.paper_carry_survivor_extinction
 #print axioms PalomarCorpus.E257.PaperStatementsBE.paper_critical_dyadic_band_index_eq_top_of_le_two
 #print axioms PalomarCorpus.E257.PaperStatementsBE.paper_critical_dyadic_band_index_unique
 #print axioms PalomarCorpus.E257.PaperStatementsBE.paper_critical_dyadic_boundary_is_smallest
 #print axioms PalomarCorpus.E257.PaperStatementsBE.paper_dyadic_band_escape_iff_single_test
-#print axioms PalomarCorpus.E257.PaperStatementsBE.paper_periodLcm_is_prefix_lcm

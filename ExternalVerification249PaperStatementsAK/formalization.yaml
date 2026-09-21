@@ -3,11 +3,11 @@ version: v0.4
 project:
   name: 'Erdős #249: independent restatements of refereed paper-linked theorems'
   description: >-
-    29 theorems of the substantive development for Erdős problem #249
+    27 theorems of the substantive development for Erdős problem #249
     restated against Mathlib alone and transported from the source declarations named
     below. The substantive formalization lives in Erdos249257.GapFareyBound, Erdos249257.GcdMomentCalculus, Erdos249257.GeometricCoprimality, ErdosProblems.Erdos249.PaperCompleteR21.ActualLcmShortWindowArithmetic, ErdosProblems.Erdos249.PaperCompleteR21.CoprimeLatticeSumsAndLambert, ErdosProblems.Erdos249.PaperCompleteR21.FareyDenominatorFloorExtension, ErdosProblems.Erdos249.PaperCompleteR21.FareyExactRangeAndDenominatorExclusion, ErdosProblems.Erdos249.PaperCompleteR21.GeneralIrrationalityCriteriaAndGapBounds, ErdosProblems.Erdos249.PaperCompleteR21.MersennePrimeSupportAnchors, ErdosProblems.Erdos249.PaperCompleteR21.MobiusMersenneLadderLogConcavity, ErdosProblems.Erdos249.PaperCompleteR21.RationalTailPeriodWitnesses, ErdosProblems.Erdos249.PaperCompleteR21.ShortWindowSupplyAndSixteenShifts, ErdosProblems.Erdos249.PaperCompleteR21.ThreeParticularEquivalences, ErdosProblems.Erdos249.PaperCompleteR21.TopEdgeCorridorAndSeparation, ErdosProblems.Erdos249.PaperCompleteR21.TwoAdicPulseCertificateFailure, ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature in this repository and at
     public commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84 of https://github.com/wcook04/plectis-erdos. This entry is a comparison
-    interface over that development. 29 statements transport by direct term
+    interface over that development. 27 statements transport by direct term
     application, which certifies definitional identity with the source statement;
     0 transport through a tactic bridge, which certifies implication only. The
     parent Erdős problem remains open.
@@ -53,11 +53,11 @@ sources:
   license: Apache-2.0
   author_endorsement: n/a
 status:
-  scope: Independent restatements of 29 refereed declarations for Erdős problem #249.
+  scope: Independent restatements of 27 refereed declarations for Erdős problem #249.
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
-  trusted_challenge_sorry_count: 29
+  trusted_challenge_sorry_count: 27
   sorry_boundary: Only the trusted Challenge theorem bodies carry placeholders.
   axiom_audit_status: pending fresh target-toolchain axiom audit
   permitted_axiom_budget:
@@ -307,28 +307,6 @@ status:
     canonical_claim_status: source_transport_prepared_pending_release_validation
     novelty_status: unassessed
     source_declaration: GcdMomentCalculus.cylinderMass_children_le
-    source_file: Erdos249257/GcdMomentCalculus.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
-  - declaration: Erdos249257.ExternalVerification249PaperStatementsAK.sternBrocotDepthMass_error
-    file: Solutions/ExternalVerification249PaperStatementsAK.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification249PaperStatementsAK/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAK.sternBrocotDepthMass_error
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: GcdMomentCalculus.sternBrocotDepthMass_error
-    source_file: Erdos249257/GcdMomentCalculus.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
-  - declaration: Erdos249257.ExternalVerification249PaperStatementsAK.tendsto_sternBrocotDepthMass
-    file: Solutions/ExternalVerification249PaperStatementsAK.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification249PaperStatementsAK/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAK.tendsto_sternBrocotDepthMass
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: GcdMomentCalculus.tendsto_sternBrocotDepthMass
     source_file: Erdos249257/GcdMomentCalculus.lean
     source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
     transport: definitional

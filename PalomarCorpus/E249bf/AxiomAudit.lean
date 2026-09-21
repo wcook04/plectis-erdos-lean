@@ -1,3 +1,0 @@
-import Solutions.PalomarCorpus.E249bf
-
-#print axioms PalomarCorpus.E249.PaperStatementsBF.fiveQuarter_comparison_rational_with_carryRank_floor

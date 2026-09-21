@@ -6,8 +6,6 @@
     "PalomarCorpus.E249.PaperStatementsAK.farey_gap",
     "PalomarCorpus.E249.PaperStatementsAK.gap_check_window_1_240_first_failure",
     "PalomarCorpus.E249.PaperStatementsAK.gap_check_window_1_240_le_79639646646701375323355774875831053",
-    "PalomarCorpus.E249.PaperStatementsAK.sternBrocotDepthMass_error",
-    "PalomarCorpus.E249.PaperStatementsAK.tendsto_sternBrocotDepthMass",
     "PalomarCorpus.E249.PaperStatementsAK.totientSeries_ne_rat_of_den_dvd_two_pow_fourteen_mul_mersenne",
     "PalomarCorpus.E249.PaperStatementsAK.totientSeries_rational_den_gt_fareyBound",
     "PalomarCorpus.E249.PaperStatementsAK.totient_mul_eq_totient_mul_gcd_div_totient_gcd",

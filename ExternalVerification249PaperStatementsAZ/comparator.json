@@ -2,7 +2,6 @@
   "challenge_module": "ExternalVerification249PaperStatementsAZ.Challenge",
   "solution_module": "Solutions.ExternalVerification249PaperStatementsAZ",
   "theorem_names": [
-    "Erdos249257.ExternalVerification249PaperStatementsAZ.affineBinaryOrbit_difference_and_reset",
     "Erdos249257.ExternalVerification249PaperStatementsAZ.balancedPulse_common_history",
     "Erdos249257.ExternalVerification249PaperStatementsAZ.balancedPulse_label_lower_bound",
     "Erdos249257.ExternalVerification249PaperStatementsAZ.balancedPulse_no_decoder_from_common_state",

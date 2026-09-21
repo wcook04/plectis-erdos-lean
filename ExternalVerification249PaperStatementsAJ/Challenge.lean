@@ -632,7 +632,9 @@ ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_basePower_dilation in the 
 development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem irrational_of_basePower_dilation {x : ℝ} (b₀ : ℕ)
     (h : ∀ Q : ℤ, 1 ≤ Q → ∃ n : ℕ, ∃ z : ℤ,
-      0 < |((b₀ ^ n : ℕ) : ℝ) * x - (z : ℝ)| ∧ := by
+      0 < |((b₀ ^ n : ℕ) : ℝ) * x - (z : ℝ)| ∧
+        |((b₀ ^ n : ℕ) : ℝ) * x - (z : ℝ)| < 1 / (Q : ℝ)) :
+    Irrational x := by
   sorry
 
 /-- States prop:D9-inv from the long record for Erdős problem #249. Transported from
@@ -732,7 +734,10 @@ theorem irrational_totientSeries_of_rational_separation (u : ℕ → ℚ)
     (hne : ∀ᶠ t in Filter.atTop,
       ((u t : ℝ)) ≠ ∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)
     (h0 : Filter.Tendsto
-      (fun t => ((u t).den : ℝ) * := by
+      (fun t => ((u t).den : ℝ) *
+        |(∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) - (u t : ℝ)|)
+      Filter.atTop (nhds 0)) :
+    Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) := by
   sorry
 
 /-- States the paper statement it is bound to from the long record for Erdős problem #249.
@@ -923,15 +928,6 @@ substantive development, whose statement was refereed against the paper in the c
 ledger. -/
 theorem totientBlock_doubling (h N : ℕ) :
     totientBlock (2 * h) N = 2 ^ h * totientBlock h N + totientBlock h (N + h) := by
-  sorry
-
-/-- States the paper statement it is bound to from the long record for Erdős problem #249.
-Transported from ErdosProblems.Erdos249.PaperCompleteR21.totientBlock_eq_paper_indexed_sum
-in the substantive development, whose statement was refereed against the paper in the
-coverage ledger. -/
-theorem totientBlock_eq_paper_indexed_sum (a N : ℕ) :
-    totientBlock a N
-      = ∑ j ∈ Finset.Icc 1 a, (Nat.totient (N + j) : ℤ) * 2 ^ (a - j) := by
   sorry
 
 end Erdos249257.ExternalVerification249PaperStatementsAJ

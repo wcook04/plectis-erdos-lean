@@ -55,12 +55,6 @@ noncomputable def IsFirstGapFailure (V K H qstar : ℕ) : Prop :=
 noncomputable def cylinderMass (a b : ℕ+) : ℝ :=
   1 / (((2 : ℝ) ^ (a : ℕ) - 1) * ((2 : ℝ) ^ (b : ℕ) - 1))
 
-noncomputable def sternBrocotDepthMass : ℕ → ℕ+ → ℕ+ → ℝ
-  | 0, _, _ => 0
-  | (dp + 1), a, b =>
-      1 / ((2 : ℝ) ^ ((a : ℕ) + (b : ℕ)) - 1)
-        + sternBrocotDepthMass dp (a + b) b + sternBrocotDepthMass dp a (a + b)
-
 theorem totientSeries_ne_rat_of_den_dvd_two_pow_fourteen_mul_mersenne
     (r : ℚ) (h : ℕ) (h1 : 1 ≤ h) (h16 : h ≤ 16)
     (hdvd : (r.den : ℕ) ∣ 2 ^ 14 * (2 ^ h - 1)) :
@@ -153,16 +147,6 @@ theorem gap_check_window_1_240_le_79639646646701375323355774875831053
 
 theorem cylinderMass_children_le (a b : ℕ+) :
     cylinderMass (a + b) b + cylinderMass a (a + b) ≤ (2 / 3) * cylinderMass a b := @GcdMomentCalculus.cylinderMass_children_le a b
-
-theorem sternBrocotDepthMass_error (dp : ℕ) :
-    ∀ a b : ℕ+,
-      0 ≤ cylinderMass a b - sternBrocotDepthMass dp a b
-        ∧ cylinderMass a b - sternBrocotDepthMass dp a b
-            ≤ (2 / 3 : ℝ) ^ dp * cylinderMass a b := @GcdMomentCalculus.sternBrocotDepthMass_error dp
-
-theorem tendsto_sternBrocotDepthMass (a b : ℕ+) :
-    Filter.Tendsto (fun dp : ℕ => sternBrocotDepthMass dp a b)
-      Filter.atTop (nhds (cylinderMass a b)) := @GcdMomentCalculus.tendsto_sternBrocotDepthMass a b
 
 theorem tsum_lambert_linear_weight_sq_pure
     (w : ℕ → ℝ) (hw : ∀ d : ℕ, 0 < d → |w d| ≤ (d : ℝ))

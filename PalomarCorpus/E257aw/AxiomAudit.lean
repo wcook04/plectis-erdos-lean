@@ -1,4 +1,0 @@
-import Solutions.PalomarCorpus.E257aw
-
-#print axioms PalomarCorpus.E257.PaperStatementsAW.half_mem_mersenneAchievementSet_iff_no_lastHalfGreedySkip
-#print axioms PalomarCorpus.E257.PaperStatementsAW.isLastHalfGreedySkip_iff_skip_and_fatal

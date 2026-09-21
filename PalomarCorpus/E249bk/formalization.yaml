@@ -2,7 +2,7 @@ version: v0.4
 project:
   name: 'Erdős problem #249: independently restated paper-linked theorems, band k'
   description: >-
-    Erdős problem #249 remains open and no theorem in this entry decides it. The entry restates 1 theorems of the paper-linked Lean development for that problem against Mathlib alone, with every definition the statements mention copied into the Challenge. Each statement was bound to a paper statement in the coverage ledger before the wrapper was generated, and the corresponding source declaration is named in the declaration's own documentation. 0 of the transports are direct term applications, which certify that the restated statement is definitionally the refereed source statement; 1 go through a tactic bridge and certify implication. The substantive development is in this repository and at public commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84 of https://github.com/wcook04/plectis-erdos.
+    Erdős problem #249 remains open and no theorem in this entry decides it. The entry restates 1 theorems of the paper-linked Lean development for that problem against Mathlib alone, with every definition the statements mention copied into the Challenge. Each statement was bound to a paper statement in the coverage ledger before the wrapper was generated, and the corresponding source declaration is named in the declaration's own documentation. 1 of the transports are direct term applications, which certify that the restated statement is definitionally the refereed source statement; 0 go through a tactic bridge and certify implication. The substantive development is in this repository and at public commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84 of https://github.com/wcook04/plectis-erdos.
   authors:
   - Will Cook
   license: Apache-2.0

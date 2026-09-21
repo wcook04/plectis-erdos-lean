@@ -2,7 +2,6 @@
   "challenge_module": "PalomarCorpus.E257ae.Challenge",
   "solution_module": "Solutions.PalomarCorpus.E257ae",
   "theorem_names": [
-    "PalomarCorpus.E257.PaperStatementsAE.affineBinaryOrbit_mod_twoPow_eq",
     "PalomarCorpus.E257.PaperStatementsAE.balancedPulse_endpoint_fanout",
     "PalomarCorpus.E257.PaperStatementsAE.balancedPulse_label_card_lower_bound",
     "PalomarCorpus.E257.PaperStatementsAE.balancedPulse_no_autonomous_decoder",

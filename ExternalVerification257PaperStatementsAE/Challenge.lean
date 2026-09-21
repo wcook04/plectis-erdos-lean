@@ -27,10 +27,6 @@ noncomputable def IsTemperedBinaryOrbit (c : ℕ → ℕ) (v : ℕ) (u : ℕ →
       u (N + 1) = 2 * u N - ((v * c (N + 1) : ℕ) : ℤ)) ∧
     Tendsto (fun N : ℕ ↦ (u N : ℝ) / (2 : ℝ) ^ N) atTop (nhds 0)
 
-noncomputable def affineBinaryOrbit (a : ℕ → ℤ) (u0 : ℤ) : ℕ → ℤ
-  | 0 => u0
-  | n + 1 => 2 * affineBinaryOrbit a u0 n - a (n + 1)
-
 noncomputable def balancedPulseRadius (m : ℕ) : ℕ := (m + 1) / 2
 
 noncomputable def balancedPulseCoeff (m r : ℕ) : ℕ → ℕ := fun n ↦
@@ -43,13 +39,6 @@ noncomputable def binaryCoeffSeries (c : ℕ → ℕ) : ℝ :=
 
 noncomputable def binaryCoeffTail (c : ℕ → ℕ) (N : ℕ) : ℝ :=
   ∑' j : ℕ, (c (N + j + 1) : ℝ) / (2 : ℝ) ^ (j + 1)
-
-/-- States prop:local-void from the long record for Erdős problem #257. Transported from
-Erdos249257.affineBinaryOrbit_mod_twoPow_eq in the substantive development, whose statement
-was refereed against the paper in the coverage ledger. -/
-theorem affineBinaryOrbit_mod_twoPow_eq (a : ℕ → ℤ) (u0 v0 : ℤ) (L : ℕ) :
-    affineBinaryOrbit a u0 L ≡ affineBinaryOrbit a v0 L [ZMOD (2 : ℤ) ^ L] := by
-  sorry
 
 /-- States prop:local-void from the long record for Erdős problem #257. Transported from
 Erdos249257.balancedPulse_endpoint_fanout in the substantive development, whose statement

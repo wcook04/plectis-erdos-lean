@@ -2,19 +2,13 @@
   "challenge_module": "PalomarCorpus.E257ak.Challenge",
   "solution_module": "Solutions.PalomarCorpus.E257ak",
   "theorem_names": [
-    "PalomarCorpus.E257.PaperStatementsAK.localMersenneHalfTarget_lower_word_eq_greedy_and_remainder_eq",
-    "PalomarCorpus.E257.PaperStatementsAK.localMersenneWeightsFrom_gapDominates",
-    "PalomarCorpus.E257.PaperStatementsAK.localMersenneWeights_gapDominates_even",
-    "PalomarCorpus.E257.PaperStatementsAK.localMersenneWeights_gapDominates_odd",
     "PalomarCorpus.E257.PaperStatementsAK.paper_floor_quotient_geometric_sum",
     "PalomarCorpus.E257.PaperStatementsAK.paper_next_floor_quotient",
     "PalomarCorpus.E257.PaperStatementsAK.paper_next_floor_quotient_no_fixed_point",
     "PalomarCorpus.E257.PaperStatementsAK.paper_next_quotient_sum",
     "PalomarCorpus.E257.PaperStatementsAK.paper_repair_integer_eq_endpoint_defect",
     "PalomarCorpus.E257.PaperStatementsAK.paper_signed_endpoint_defect_succ",
-    "PalomarCorpus.E257.PaperStatementsAK.paper_signed_endpoint_recurrence",
-    "PalomarCorpus.E257.PaperStatementsAK.paper_successor_remainders_fourteen_through_thirtyone",
-    "PalomarCorpus.E257.PaperStatementsAK.remainder_lt_gap_iff_eq_integerGreedyBits"
+    "PalomarCorpus.E257.PaperStatementsAK.paper_signed_endpoint_recurrence"
   ],
   "permitted_axioms": [
     "propext",

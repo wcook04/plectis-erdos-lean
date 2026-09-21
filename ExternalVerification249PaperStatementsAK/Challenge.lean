@@ -42,12 +42,6 @@ noncomputable def IsFirstGapFailure (V K H qstar : ℕ) : Prop :=
 noncomputable def cylinderMass (a b : ℕ+) : ℝ :=
   1 / (((2 : ℝ) ^ (a : ℕ) - 1) * ((2 : ℝ) ^ (b : ℕ) - 1))
 
-noncomputable def sternBrocotDepthMass : ℕ → ℕ+ → ℕ+ → ℝ
-  | 0, _, _ => 0
-  | (dp + 1), a, b =>
-      1 / ((2 : ℝ) ^ ((a : ℕ) + (b : ℕ)) - 1)
-        + sternBrocotDepthMass dp (a + b) b + sternBrocotDepthMass dp a (a + b)
-
 /-- States the paper statement it is bound to from the long record for Erdős problem #249.
 Transported from
 ErdosProblems.Erdos249.PaperCompleteR21.totientSeries_ne_rat_of_den_dvd_two_pow_fourteen_mul_mersenne
@@ -243,24 +237,6 @@ GcdMomentCalculus.cylinderMass_children_le in the substantive development, whose
 was refereed against the paper in the coverage ledger. -/
 theorem cylinderMass_children_le (a b : ℕ+) :
     cylinderMass (a + b) b + cylinderMass a (a + b) ≤ (2 / 3) * cylinderMass a b := by
-  sorry
-
-/-- States catalogue:mob:a9b from the long record for Erdős problem #249. Transported from
-GcdMomentCalculus.sternBrocotDepthMass_error in the substantive development, whose statement
-was refereed against the paper in the coverage ledger. -/
-theorem sternBrocotDepthMass_error (dp : ℕ) :
-    ∀ a b : ℕ+,
-      0 ≤ cylinderMass a b - sternBrocotDepthMass dp a b
-        ∧ cylinderMass a b - sternBrocotDepthMass dp a b
-            ≤ (2 / 3 : ℝ) ^ dp * cylinderMass a b := by
-  sorry
-
-/-- States catalogue:mob:a9b from the long record for Erdős problem #249. Transported from
-GcdMomentCalculus.tendsto_sternBrocotDepthMass in the substantive development, whose
-statement was refereed against the paper in the coverage ledger. -/
-theorem tendsto_sternBrocotDepthMass (a b : ℕ+) :
-    Filter.Tendsto (fun dp : ℕ => sternBrocotDepthMass dp a b)
-      Filter.atTop (nhds (cylinderMass a b)) := by
   sorry
 
 /-- States catalogue:mob:a2, prop:lambertengine from the long record for Erdős problem #249.

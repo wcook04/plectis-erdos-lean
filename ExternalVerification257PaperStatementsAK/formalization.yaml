@@ -3,11 +3,11 @@ version: v0.4
 project:
   name: 'Erdős #257: independent restatements of refereed paper-linked theorems'
   description: >-
-    13 theorems of the substantive development for Erdős problem #257
+    7 theorems of the substantive development for Erdős problem #257
     restated against Mathlib alone and transported from the source declarations named
-    below. The substantive formalization lives in Erdos249257.BooleanMobiusExactTransition, Erdos249257.BooleanMobiusGreedyReduction, Erdos249257.BooleanMobiusLocalRepair, Erdos249257.HalfCylinderIntegerGreedy, ErdosProblems.Erdos257.PaperCompleteR21.MersenneQuotientRowRecurrences, ErdosProblems.Erdos257.PaperCompleteR21.UpperResetBandCertificate in this repository and at
+    below. The substantive formalization lives in Erdos249257.BooleanMobiusExactTransition, Erdos249257.BooleanMobiusLocalRepair, ErdosProblems.Erdos257.PaperCompleteR21.MersenneQuotientRowRecurrences in this repository and at
     public commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84 of https://github.com/wcook04/plectis-erdos. This entry is a comparison
-    interface over that development. 13 statements transport by direct term
+    interface over that development. 7 statements transport by direct term
     application, which certifies definitional identity with the source statement;
     0 transport through a tactic bridge, which certifies implication only. The
     parent Erdős problem remains open.
@@ -53,11 +53,11 @@ sources:
   license: Apache-2.0
   author_endorsement: n/a
 status:
-  scope: Independent restatements of 13 refereed declarations for Erdős problem #257.
+  scope: Independent restatements of 7 refereed declarations for Erdős problem #257.
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
-  trusted_challenge_sorry_count: 13
+  trusted_challenge_sorry_count: 7
   sorry_boundary: Only the trusted Challenge theorem bodies carry placeholders.
   axiom_audit_status: pending fresh target-toolchain axiom audit
   permitted_axiom_budget:
@@ -65,64 +65,9 @@ status:
   - Quot.sound
   - Classical.choice
   development_status: substantive
-  local_proof_provenance: Erdos249257.BooleanMobiusExactTransition, Erdos249257.BooleanMobiusGreedyReduction, Erdos249257.BooleanMobiusLocalRepair, Erdos249257.HalfCylinderIntegerGreedy, ErdosProblems.Erdos257.PaperCompleteR21.MersenneQuotientRowRecurrences, ErdosProblems.Erdos257.PaperCompleteR21.UpperResetBandCertificate in this repository, which is the same development published at https://github.com/wcook04/plectis-erdos commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+  local_proof_provenance: Erdos249257.BooleanMobiusExactTransition, Erdos249257.BooleanMobiusLocalRepair, ErdosProblems.Erdos257.PaperCompleteR21.MersenneQuotientRowRecurrences in this repository, which is the same development published at https://github.com/wcook04/plectis-erdos commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84
   canonical_claim_status: generated comparison interface over substantive Lean in this repository
   main_results:
-  - declaration: Erdos249257.ExternalVerification257PaperStatementsAK.localMersenneHalfTarget_lower_word_eq_greedy_and_remainder_eq
-    file: Solutions/ExternalVerification257PaperStatementsAK.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification257PaperStatementsAK/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAK.localMersenneHalfTarget_lower_word_eq_greedy_and_remainder_eq
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: Erdos249257.BooleanMobiusGreedyReduction.localMersenneHalfTarget_lower_word_eq_greedy_and_remainder_eq
-    source_file: Erdos249257/BooleanMobiusGreedyReduction.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
-  - declaration: Erdos249257.ExternalVerification257PaperStatementsAK.localMersenneWeightsFrom_gapDominates
-    file: Solutions/ExternalVerification257PaperStatementsAK.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification257PaperStatementsAK/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAK.localMersenneWeightsFrom_gapDominates
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: Erdos249257.BooleanMobiusGreedyReduction.localMersenneWeightsFrom_gapDominates
-    source_file: Erdos249257/BooleanMobiusGreedyReduction.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
-  - declaration: Erdos249257.ExternalVerification257PaperStatementsAK.localMersenneWeights_gapDominates_even
-    file: Solutions/ExternalVerification257PaperStatementsAK.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification257PaperStatementsAK/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAK.localMersenneWeights_gapDominates_even
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: Erdos249257.BooleanMobiusGreedyReduction.localMersenneWeights_gapDominates_even
-    source_file: Erdos249257/BooleanMobiusGreedyReduction.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
-  - declaration: Erdos249257.ExternalVerification257PaperStatementsAK.localMersenneWeights_gapDominates_odd
-    file: Solutions/ExternalVerification257PaperStatementsAK.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification257PaperStatementsAK/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAK.localMersenneWeights_gapDominates_odd
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: Erdos249257.BooleanMobiusGreedyReduction.localMersenneWeights_gapDominates_odd
-    source_file: Erdos249257/BooleanMobiusGreedyReduction.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
-  - declaration: Erdos249257.ExternalVerification257PaperStatementsAK.remainder_lt_gap_iff_eq_integerGreedyBits
-    file: Solutions/ExternalVerification257PaperStatementsAK.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification257PaperStatementsAK/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAK.remainder_lt_gap_iff_eq_integerGreedyBits
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: Erdos249257.BooleanMobiusGreedyReduction.remainder_lt_gap_iff_eq_integerGreedyBits
-    source_file: Erdos249257/BooleanMobiusGreedyReduction.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
   - declaration: Erdos249257.ExternalVerification257PaperStatementsAK.paper_floor_quotient_geometric_sum
     file: Solutions/ExternalVerification257PaperStatementsAK.lean
     sorry_count: 0
@@ -198,17 +143,6 @@ status:
     novelty_status: unassessed
     source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.paper_signed_endpoint_recurrence
     source_file: ErdosProblems/Erdos257/PaperCompleteR21/MersenneQuotientRowRecurrences.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
-  - declaration: Erdos249257.ExternalVerification257PaperStatementsAK.paper_successor_remainders_fourteen_through_thirtyone
-    file: Solutions/ExternalVerification257PaperStatementsAK.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification257PaperStatementsAK/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAK.paper_successor_remainders_fourteen_through_thirtyone
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.paper_successor_remainders_fourteen_through_thirtyone
-    source_file: ErdosProblems/Erdos257/PaperCompleteR21/UpperResetBandCertificate.lean
     source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
     transport: definitional
 automation:

@@ -16,25 +16,12 @@ over that development, not the development itself. The mathematics is developed 
 `Erdos249257.BooleanMobiusCriticalCapacityGeometric`,
 `Erdos249257.BooleanMobiusExactRowCrossing`, `Erdos249257.BooleanMobiusExactRowDoubling`,
 `Erdos249257.BooleanMobiusGlobalRepair`, `Erdos249257.BooleanMobiusLocalRepair`,
-`Erdos249257.BooleanMobiusSkipRow`, `Erdos249257.BooleanMobiusSkipRowCofinal`,
-`Erdos249257.BooleanMobiusSkippedCoreCriticalCapacity`, `Erdos249257.CertificateKernel`,
-`Erdos249257.CofinalStripReturn`, `Erdos249257.DyadicPrefixCompression`,
-`Erdos249257.GenericTailOrbitRigidity`, `Erdos249257.GreedyAchievementSet`,
-`Erdos249257.HalfCarryReachability`, `Erdos249257.HalfCutLocator`,
-`Erdos249257.HalfCylinderConcreteSeamAdapter`, `Erdos249257.HalfCylinderFatalGapRightTail`,
-`Erdos249257.HalfCylinderFiniteShadow`, `Erdos249257.HalfCylinderFloorErrorReset`,
-`Erdos249257.HalfCylinderFullShellSeamBridge`,
-`Erdos249257.HalfCylinderHalfMembershipClassification`,
-`Erdos249257.HalfCylinderIntegerGreedy`, `Erdos249257.HalfCylinderSkippedRankLimit`,
-`Erdos249257.TerminalOnlyCofinal`,
+`Erdos249257.BooleanMobiusSkipRow`, `Erdos249257.BooleanMobiusSkippedCoreCriticalCapacity`,
+`Erdos249257.GreedyAchievementSet`, `Erdos249257.HalfCylinderIntegerGreedy`,
 `ErdosProblems.Erdos257.PaperCompleteR20.QuotientRowIdentity`,
 `ErdosProblems.Erdos257.PaperCompleteR20.QuotientRowReal`,
-`ErdosProblems.Erdos257.PaperCompleteR20.SixMembershipConditions`,
 `ErdosProblems.Erdos257.PaperCompleteR21.ExactRowDichotomyCountermodels`,
-`ErdosProblems.Erdos257.PaperCompleteR21.MersenneQuotientRowRecurrences`,
-`ErdosProblems.Erdos257.PaperCompleteR21.SeamEscapeAndTerminalStrip`,
-`ErdosProblems.Erdos257.PaperCompleteR21.SeamPrefixStabilityLimit`,
-`ErdosProblems.Erdos257.PaperCompleteR21.TerminalStripExactRowGap`.
+`ErdosProblems.Erdos257.PaperCompleteR21.MersenneQuotientRowRecurrences`.
 -/
 
 open Filter
@@ -60,260 +47,11 @@ noncomputable def ExactLocalMersenneHalfRow (n : ℕ) : Prop :=
 noncomputable def CofinalExactLocalMersenneHalfRows : Prop :=
   ∀ N : ℕ, ∃ n : ℕ, N ≤ n ∧ ExactLocalMersenneHalfRow n
 
-noncomputable def mersenneWeightRat (n : ℕ) : ℚ :=
-  1 / ((2 : ℚ) ^ n - 1)
-
-noncomputable def greedyMersenneRemainderRat (x : ℚ) : ℕ → ℚ
-  | 0 => x
-  | n + 1 =>
-      if mersenneWeightRat (n + 1) ≤ greedyMersenneRemainderRat x n then
-        greedyMersenneRemainderRat x n - mersenneWeightRat (n + 1)
-      else
-        greedyMersenneRemainderRat x n
-
-noncomputable def CofinalPositiveHalfGreedySkips : Prop :=
-  ∀ N : ℕ, ∃ c : ℕ,
-    max N 4 ≤ c ∧
-      0 < greedyMersenneRemainderRat (1 / 2 : ℚ) (c - 1) ∧
-      greedyMersenneRemainderRat (1 / 2 : ℚ) (c - 1) <
-        mersenneWeightRat c
-
-noncomputable def mersenneWeight (n : ℕ) : ℝ :=
-  1 / ((2 : ℝ) ^ n - 1)
-
-noncomputable def positiveMersenneSupportValue (A : Set ℕ) : ℝ :=
-  ∑' k : ℕ, Set.indicator A mersenneWeight (k + 1)
-
-noncomputable def mersenneTail (n : ℕ) : ℝ :=
-  ∑' k : ℕ, mersenneWeight (n + k + 1)
-
-noncomputable def ExistsFatalHalfGap : Prop :=
-  ∃ (u : Finset ℕ) (d : ℕ), (∀ n ∈ u, 0 < n ∧ n ≤ d) ∧
-    positiveMersenneSupportValue (↑u : Set ℕ) + mersenneTail (d + 1)
-      < 1 / 2 ∧
-    (1 / 2 : ℝ) < positiveMersenneSupportValue (↑u : Set ℕ)
-      + mersenneWeight (d + 1)
-
-noncomputable def halfStripBound (n : ℕ) : ℕ :=
-  2 * Nat.sqrt n + 4
-
-noncomputable def affineBinaryOrbit (a : ℕ → ℤ) (u0 : ℤ) : ℕ → ℤ
-  | 0 => u0
-  | n + 1 => 2 * affineBinaryOrbit a u0 n - a (n + 1)
-
-noncomputable def supportCoeff (A : Set ℕ) (n : ℕ) : ℕ :=
-  letI := Classical.decPred fun d : ℕ => d ∈ A
-  (n.divisors.filter fun d => d ∈ A).card
-
-noncomputable def integerHalfCarry (A : Set ℕ) : ℕ → ℤ :=
-  affineBinaryOrbit (fun n : ℕ ↦ (supportCoeff A (n + 1) : ℤ)) 1
-
-noncomputable def greedyMersenneRemainder (x : ℝ) : ℕ → ℝ
-  | 0 => x
-  | n + 1 =>
-      if mersenneWeight (n + 1) ≤ greedyMersenneRemainder x n then
-        greedyMersenneRemainder x n - mersenneWeight (n + 1)
-      else
-        greedyMersenneRemainder x n
-
-noncomputable def greedyMersenneSupport (x : ℝ) : Set ℕ :=
-  {m : ℕ | m ≠ 0 ∧
-    mersenneWeight m ≤ greedyMersenneRemainder x (m - 1)}
-
-noncomputable def GreedyHalfCarryCofinalStripReturn : Prop :=
-  ∀ N : ℕ, ∃ M : ℕ, N ≤ M ∧
-    integerHalfCarry (greedyMersenneSupport (1 / 2 : ℝ)) M ≤
-      (halfStripBound (M + 1) : ℤ)
-
-noncomputable abbrev HalfWord (N : ℕ) := Fin (N + 1) → Bool
-
-noncomputable def wordSupport {N : ℕ} (a : HalfWord N) : Set ℕ :=
-  {n | ∃ h : n < N + 1, a ⟨n, h⟩ = true}
-
-noncomputable def HalfTerminalOnlyStripWitness (M : ℕ) : Prop :=
-  ∃ a : HalfWord M,
-    a ⟨0, Nat.zero_lt_succ M⟩ = false ∧
-    (∀ h : 1 < M + 1, a ⟨1, h⟩ = false) ∧
-    |(integerHalfCarry (wordSupport a) (M - 1) : ℝ)| ≤
-      (halfStripBound M : ℝ)
-
-noncomputable def HalfCarryCofinalTerminalOnlyStrip : Prop :=
-  ∀ N : ℕ, ∃ M : ℕ, max N 1 ≤ M ∧ HalfTerminalOnlyStripWitness M
-
-noncomputable def mobiusCenteredHalfCarry (A : Set ℕ) (N : ℕ) : ℤ :=
-  integerHalfCarry A N - 1
-
-noncomputable def finiteCoeffWindowNumerator
-    (A : Set ℕ) (n : ℕ) : ℕ → ℕ
-  | 0 => 0
-  | J + 1 =>
-      2 * finiteCoeffWindowNumerator A n J +
-        supportCoeff A (n + J + 1)
-
-noncomputable def futureSkipCapacity
-    (A : Set ℕ) (n : ℕ) : ℕ → ℕ
-  | 0 => 0
-  | J + 1 =>
-      2 * futureSkipCapacity A n J +
-        (by
-          classical
-          exact if n + J + 1 ∈ A then 0 else 1)
-
-noncomputable abbrev SeamRowWord (s : ℕ) := Fin (s - 2) → Bool
-
-noncomputable def extend {s : ℕ} (b : SeamRowWord s) (beta : Bool) :
-    SeamRowWord (s + 1) :=
-  fun i => if h : (i : ℕ) < s - 2 then b ⟨i, h⟩ else beta
-
-noncomputable def ofList {s : ℕ} (bits : List Bool) (hlen : bits.length = s - 2) :
-    SeamRowWord s :=
-  fun i => bits.get (Fin.cast hlen.symm i)
-
-noncomputable def terminal {s : ℕ} (hs : 3 ≤ s) (b : SeamRowWord (s + 1)) : Bool :=
-  b ⟨s - 2, by omega⟩
-
-noncomputable def integerGreedyBits : List ℕ → ℕ → List Bool
-  | [], _ => []
-  | w :: ws, C =>
-      if w ≤ C then
-        true :: integerGreedyBits ws (C - w)
-      else
-        false :: integerGreedyBits ws C
-
-noncomputable def weightedBoolSum : List ℕ → List Bool → ℕ
-  | w :: ws, true :: bs => w + weightedBoolSum ws bs
-  | _ :: ws, false :: bs => weightedBoolSum ws bs
-  | _, _ => 0
-
-noncomputable def integerGreedyRemainder (weights : List ℕ) (C : ℕ) : ℕ :=
-  C - weightedBoolSum weights (integerGreedyBits weights C)
-
-noncomputable def seamSubsetTarget (s : ℕ) : ℕ :=
-  2 ^ (2 * s - 1) - 2 ^ s
-
 noncomputable def truncatedMersenneWeight (s d : ℕ) : ℕ :=
   4 ^ s / (2 ^ d - 1)
 
-noncomputable def seamWeightsFrom (s : ℕ) : ℕ → List ℕ
-  | d =>
-      if h : d < s then
-        truncatedMersenneWeight s d :: seamWeightsFrom s (d + 1)
-      else
-        []
-termination_by d => s - d
-decreasing_by omega
-
-noncomputable def seamWeights (s : ℕ) : List ℕ :=
-  seamWeightsFrom s 2
-
-noncomputable def seamGreedyWord (s : ℕ) : SeamRowWord s :=
-  ofList
-    (integerGreedyBits (seamWeights s) (seamSubsetTarget s))
-    (by rw [integerGreedyBits_length, seamWeights_length_eq])
-
-noncomputable def seamIntegerGreedyRemainder (s : ℕ) : ℕ :=
-  integerGreedyRemainder (seamWeights s) (seamSubsetTarget s)
-
-noncomputable def stemBitsFrom (s : ℕ) (P : Finset ℕ) : ℕ → List Bool
-  | d =>
-      if h : d < s then
-        decide (d ∈ P) :: stemBitsFrom s P (d + 1)
-      else
-        []
-termination_by d => s - d
-decreasing_by omega
-
-noncomputable def stemBits (s : ℕ) (P : Finset ℕ) : List Bool :=
-  stemBitsFrom s P 2
-
-noncomputable def localBinarySuffix (D : Finset ℕ) (k M : ℕ) : ℕ :=
-  2 ^ (M - k) - localPrefixQuotient D M - 1
-
-noncomputable def greedyMersennePrefixRat (x : ℚ) (n : ℕ) : Finset ℕ :=
-  (((Finset.range n).filter fun k =>
-      mersenneWeightRat (k + 1) ≤ greedyMersenneRemainderRat x k).image
-    fun k => k + 1)
-
-noncomputable def halfGreedyPrefixSupport (n : ℕ) : Finset ℕ :=
-  greedyMersennePrefixRat (1 / 2 : ℚ) n
-
-noncomputable def HalfGreedyPreTakePrecriticalSuffixSupply : Prop :=
-  ∀ c : ℕ,
-    6 ≤ c →
-    greedyMersenneRemainderRat (1 / 2 : ℚ) (c - 1) <
-      mersenneWeightRat c →
-    mersenneWeightRat (c + 1) ≤
-      greedyMersenneRemainderRat (1 / 2 : ℚ) c →
-    localBinarySuffix (halfGreedyPrefixSupport (c - 1)) 1 (2 * c - 3) <
-      2 ^ (c - 3)
-
-noncomputable def HalfGreedySkippedCriticalQuotientSupply : Prop :=
-  ∀ c : ℕ,
-    4 ≤ c →
-    greedyMersenneRemainderRat (1 / 2 : ℚ) (c - 1) <
-      mersenneWeightRat c →
-    2 ^ ((2 * c - 2) - 1) ≤
-      localPrefixQuotient
-        (insert c (halfGreedyPrefixSupport (c - 1))) (2 * c - 2)
-
-noncomputable def greedyHalfFrozenMargin (k J : ℕ) : ℤ :=
-  (finiteCoeffWindowNumerator
-      (↑(halfGreedyPrefixSupport k) : Set ℕ) (k + 1) J : ℤ) -
-    (2 : ℤ) ^ J *
-      mobiusCenteredHalfCarry
-        (↑(halfGreedyPrefixSupport k) : Set ℕ) k
-
-noncomputable def HalfGreedySkippedFullShellNonnegative : Prop :=
-  ∀ n : ℕ, 3 ≤ n →
-    (¬ mersenneWeight n ≤
-      greedyMersenneRemainder (1 / 2 : ℝ) (n - 1)) →
-    0 ≤ greedyHalfFrozenMargin (n - 1) n
-
-noncomputable def HalfGreedySkippedPrecriticalSuffixSupply : Prop :=
-  ∀ c : ℕ,
-    4 ≤ c →
-    greedyMersenneRemainderRat (1 / 2 : ℚ) (c - 1) <
-      mersenneWeightRat c →
-    localBinarySuffix (halfGreedyPrefixSupport (c - 1)) 1 (2 * c - 3) <
-      2 ^ (c - 3)
-
-noncomputable def HalfGreedySkippedSeamAlignmentZero : Prop :=
-  ∀ n : ℕ, 3 ≤ n →
-    (¬ mersenneWeight n ≤
-      greedyMersenneRemainder (1 / 2 : ℝ) (n - 1)) →
-    stemBits n (halfGreedyPrefixSupport (n - 1)) =
-        integerGreedyBits (seamWeights n) (seamSubsetTarget n) →
-      seamIntegerGreedyRemainder n = 0
-
-noncomputable def HalfGreedySkippedSeamEscape : Prop :=
-  ∀ n : ℕ, 3 ≤ n →
-    (¬ mersenneWeight n ≤
-      greedyMersenneRemainder (1 / 2 : ℝ) (n - 1)) →
-    halfStripBound (2 * n) < seamIntegerGreedyRemainder n
-
-noncomputable def SeamGreedyCofinalTerminalFalse : Prop :=
-  ∃ p : ℕ → ℕ, ∃ hp5 : ∀ j, 5 ≤ p j,
-    Tendsto p atTop atTop ∧
-      ∀ j, terminal
-          (by have := hp5 j; omega)
-          (seamGreedyWord (p j + 1)) = false
-
-noncomputable def SeamGreedyEventuallyRight : Prop :=
-  ∃ S : ℕ, 5 ≤ S ∧
-    ∀ s : ℕ, S ≤ s →
-      seamGreedyWord (s + 1) = (seamGreedyWord s).extend true
-
-noncomputable def SeamGreedyUnboundedSkippedRanksAlong (rows : ℕ → ℕ) : Prop :=
-  ∃ skip : ∀ j, Fin (rows j - 2),
-    Tendsto rows atTop atTop ∧
-      Tendsto (fun j => ((skip j : ℕ) + 2)) atTop atTop ∧
-        ∀ j, seamGreedyWord (rows j) (skip j) = false
-
-noncomputable def SeamGreedyUnboundedTerminalFalse : Prop :=
-  ∀ N : ℕ, ∃ p : ℕ, ∃ hp5 : 5 ≤ p,
-    N ≤ p ∧
-      terminal (by omega)
-        (seamGreedyWord (p + 1)) = false
+noncomputable def mersenneWeightRat (n : ℕ) : ℚ :=
+  1 / ((2 : ℚ) ^ n - 1)
 
 noncomputable def localMersennePrefixValue (D : Finset ℕ) : ℚ :=
   ∑ d ∈ D, mersenneWeightRat d
@@ -327,14 +65,20 @@ noncomputable def SkippedCoreCriticalQuotientSupply : Prop :=
     2 ^ ((2 * c - 2) - 1) ≤
       localPrefixQuotient (insert c D) (2 * c - 2)
 
+noncomputable def mersenneWeight (n : ℕ) : ℝ :=
+  1 / ((2 : ℝ) ^ n - 1)
+
+noncomputable def mersenneTail (n : ℕ) : ℝ :=
+  ∑' k : ℕ, mersenneWeight (n + k + 1)
+
 noncomputable def erdosBorweinMersenneConstant : ℝ :=
   mersenneTail 0
 
 noncomputable def exactLocalMersenneRowValue (D : Finset ℕ) : ℝ :=
   ((localMersennePrefixValue D : ℚ) : ℝ)
 
-noncomputable def greedyMersenneSkippedSupport (x : ℝ) : Set ℕ :=
-  {m : ℕ | m ≠ 0 ∧ m ∉ greedyMersenneSupport x}
+noncomputable def localBinarySuffix (D : Finset ℕ) (k M : ℕ) : ℕ :=
+  2 ^ (M - k) - localPrefixQuotient D M - 1
 
 noncomputable def localMersenneFraction (M d : ℕ) : ℚ :=
   ((2 ^ (M % d) : ℕ) : ℚ) / ((2 ^ d - 1 : ℕ) : ℚ)
@@ -348,12 +92,11 @@ noncomputable def localMersenneGeometricQuotient (M d : ℕ) : ℕ :=
 noncomputable def localGeometricPrefixQuotient (D : Finset ℕ) (M : ℕ) : ℕ :=
   ∑ d ∈ D, localMersenneGeometricQuotient M d
 
+noncomputable def positiveMersenneSupportValue (A : Set ℕ) : ℝ :=
+  ∑' k : ℕ, Set.indicator A mersenneWeight (k + 1)
+
 noncomputable def mersenneAchievementSet : Set ℝ :=
   {x : ℝ | ∃ A : Set ℕ, 0 ∉ A ∧ x = positiveMersenneSupportValue A}
-
-noncomputable def seamWordSupport {s : ℕ} (b : SeamRowWord s) : Finset ℕ :=
-  ((Finset.univ : Finset (Fin (s - 2))).filter (fun i => b i = true)).image
-    (fun i : Fin (s - 2) => (i : ℕ) + 2)
 
 noncomputable def rowDeviation (n : ℕ) (D : Finset ℕ) : ℤ :=
   (2 : ℤ)^(2*n-1) - (2 : ℤ)^(n+1) - ∑ d ∈ D, (truncatedMersenneWeight n d : ℤ)
@@ -364,7 +107,9 @@ statement was refereed against the paper in the coverage ledger. -/
 theorem abs_exactLocalMersenneRowValue_sub_half_le
     {D : Finset ℕ} {n : ℕ} (hn : 2 ≤ n)
     (hD : ∀ d ∈ D, 2 ≤ d ∧ d ≤ n)
-    (hquot : localPrefixQuotient D n = 2 ^ (n - 1) - 1) : := by
+    (hquot : localPrefixQuotient D n = 2 ^ (n - 1) - 1) :
+    |exactLocalMersenneRowValue D - (1 : ℝ) / 2| ≤
+      ((n + 1 : ℕ) : ℝ) / (2 : ℝ) ^ n := by
   sorry
 
 /-- States record:257bm-i9 from the long record for Erdős problem #257. Transported from
@@ -373,7 +118,9 @@ statement was refereed against the paper in the coverage ledger. -/
 theorem abs_localMersennePrefixValue_sub_half_le
     {D : Finset ℕ} {n : ℕ} (hn : 2 ≤ n)
     (hD : ∀ d ∈ D, 2 ≤ d ∧ d ≤ n)
-    (hquot : localPrefixQuotient D n = 2 ^ (n - 1) - 1) : := by
+    (hquot : localPrefixQuotient D n = 2 ^ (n - 1) - 1) :
+    |((localMersennePrefixValue D : ℚ) : ℝ) - (1 : ℝ) / 2| ≤
+      ((n + 1 : ℕ) : ℝ) / (2 : ℝ) ^ n := by
   sorry
 
 /-- States record:257bm-c4, record:257bm-c5 from the long record for Erdős problem #257.
@@ -383,38 +130,6 @@ ledger. -/
 theorem cofinalExactLocalMersenneHalfRows_of_criticalQuotientSupply
     (hcap : SkippedCoreCriticalQuotientSupply) :
     CofinalExactLocalMersenneHalfRows := by
-  sorry
-
-/-- States record:257bm-c2 from the long record for Erdős problem #257. Transported from
-Erdos249257.cofinalExactLocalMersenneHalfRows_of_positiveHalfGreedySkips in the substantive
-development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem cofinalExactLocalMersenneHalfRows_of_positiveHalfGreedySkips
-    (hskips : CofinalPositiveHalfGreedySkips) :
-    CofinalExactLocalMersenneHalfRows := by
-  sorry
-
-/-- States prop:canon from the long record for Erdős problem #257. Transported from
-Erdos249257.eq_halfGreedyPrefixSupport_of_critical_crossing in the substantive development,
-whose statement was refereed against the paper in the coverage ledger. -/
-theorem eq_halfGreedyPrefixSupport_of_critical_crossing
-    {D : Finset ℕ} {c : ℕ}
-    (hc : 4 ≤ c)
-    (hD : ∀ d ∈ D, 2 ≤ d ∧ d < c)
-    (hbelow : localMersennePrefixValue D < (1 / 2 : ℚ))
-    (hcross : (1 / 2 : ℚ) - localMersennePrefixValue D <
-      mersenneWeightRat c) :
-    D = halfGreedyPrefixSupport (c - 1) := by
-  sorry
-
-/-- States record:257bm-c2 from the long record for Erdős problem #257. Transported from
-Erdos249257.exactLocalMersenneHalfRow_of_positiveHalfGreedySkip in the substantive
-development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem exactLocalMersenneHalfRow_of_positiveHalfGreedySkip
-    {c : ℕ} (hc : 4 ≤ c)
-    (hpos : 0 < greedyMersenneRemainderRat (1 / 2 : ℚ) (c - 1))
-    (hskip : greedyMersenneRemainderRat (1 / 2 : ℚ) (c - 1) <
-      mersenneWeightRat c) :
-    ExactLocalMersenneHalfRow (2 * c - 2) := by
   sorry
 
 /-- States record:257bm-c8 from the long record for Erdős problem #257. Transported from
@@ -482,130 +197,6 @@ theorem exists_first_localMersenne_crossing
         localMersennePrefixValue (insert c (E.filter fun d ↦ d < c)) := by
   sorry
 
-/-- States record:257bm-c14 from the long record for Erdős problem #257. Transported from
-Erdos249257.greedyHalfFrozenMargin_fullShell_eq_neg_seamRemainder_of_alignment in the
-substantive development, whose statement was refereed against the paper in the coverage
-ledger. -/
-theorem greedyHalfFrozenMargin_fullShell_eq_neg_seamRemainder_of_alignment
-    (n : ℕ) (hn : 3 ≤ n)
-    (halign :
-      stemBits n (halfGreedyPrefixSupport (n - 1)) =
-        integerGreedyBits (seamWeights n) (seamSubsetTarget n)) :
-    greedyHalfFrozenMargin (n - 1) n =
-      -(seamIntegerGreedyRemainder n : ℤ) := by
-  sorry
-
-/-- States record:257bm-c6a from the long record for Erdős problem #257. Transported from
-Erdos249257.halfGreedySkippedCriticalQuotientSupply_of_precriticalSuffix in the substantive
-development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem halfGreedySkippedCriticalQuotientSupply_of_precriticalSuffix
-    (hpre : HalfGreedySkippedPrecriticalSuffixSupply) :
-    HalfGreedySkippedCriticalQuotientSupply := by
-  sorry
-
-/-- States record:257bm-c6a from the long record for Erdős problem #257. Transported from
-Erdos249257.halfGreedySkippedPrecriticalSuffixSupply_iff_preTake in the substantive
-development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem halfGreedySkippedPrecriticalSuffixSupply_iff_preTake :
-    HalfGreedySkippedPrecriticalSuffixSupply ↔
-      HalfGreedyPreTakePrecriticalSuffixSupply := by
-  sorry
-
-/-- States record:257rig-c18 from the long record for Erdős problem #257. Transported from
-Erdos249257.halfGreedy_precriticalSuffix_lt_iff_futureSkipCoverage in the substantive
-development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem halfGreedy_precriticalSuffix_lt_iff_futureSkipCoverage
-    {c : ℕ} (hc : 4 ≤ c)
-    (hskip : greedyMersenneRemainderRat (1 / 2 : ℚ) (c - 1) <
-      mersenneWeightRat c) :
-    localBinarySuffix (halfGreedyPrefixSupport (c - 1)) 1 (2 * c - 3) <
-        2 ^ (c - 3) ↔
-      mobiusCenteredHalfCarry
-          (greedyMersenneSupport (1 / 2 : ℝ)) (2 * c - 4) ≤
-        (futureSkipCapacity
-          (greedyMersenneSupport (1 / 2 : ℝ)) c (c - 3) : ℤ) := by
-  sorry
-
-/-- States record:257bm-c6b from the long record for Erdős problem #257. Transported from
-Erdos249257.halfGreedy_precriticalSuffix_lt_of_future_skip_after_takenBlock in the
-substantive development, whose statement was refereed against the paper in the coverage
-ledger. -/
-theorem halfGreedy_precriticalSuffix_lt_of_future_skip_after_takenBlock
-    {c t : ℕ} (hc : 4 ≤ c) (htPos : 0 < t) (ht : t ≤ c - 3)
-    (hskip : greedyMersenneRemainderRat (1 / 2 : ℚ) (c - 1) <
-      mersenneWeightRat c)
-    (htake : ∀ j ∈ Finset.range (t - 1),
-      mersenneWeightRat (c + j + 1) ≤
-        greedyMersenneRemainderRat (1 / 2 : ℚ) (c + j))
-    (hfuture : greedyMersenneRemainderRat (1 / 2 : ℚ) (c + t - 1) <
-      mersenneWeightRat (c + t))
-    (hroom : c - 2 ≤ 2 ^ (c - t - 3)) :
-    localBinarySuffix (halfGreedyPrefixSupport (c - 1)) 1 (2 * c - 3) <
-      2 ^ (c - 3) := by
-  sorry
-
-/-- States record:257bm-c6a from the long record for Erdős problem #257. Transported from
-Erdos249257.halfGreedy_precriticalSuffix_lt_of_next_skip in the substantive development,
-whose statement was refereed against the paper in the coverage ledger. -/
-theorem halfGreedy_precriticalSuffix_lt_of_next_skip
-    {c : ℕ} (hc : 6 ≤ c)
-    (hskip : greedyMersenneRemainderRat (1 / 2 : ℚ) (c - 1) <
-      mersenneWeightRat c)
-    (hnext : greedyMersenneRemainderRat (1 / 2 : ℚ) c <
-      mersenneWeightRat (c + 1)) :
-    localBinarySuffix (halfGreedyPrefixSupport (c - 1)) 1 (2 * c - 3) <
-      2 ^ (c - 3) := by
-  sorry
-
-/-- States lem:eventually-right-impossible from the long record for Erdős problem #257.
-Transported from Erdos249257.half_lt_upper_competitor_of_eventually_right in the substantive
-development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem half_lt_upper_competitor_of_eventually_right
-    {S D : ℕ} {u : Finset ℕ}
-    (hS5 : 5 ≤ S) (hD2 : 2 ≤ D) (hDS : D < S)
-    (hu : ∀ e ∈ u, 2 ≤ e ∧ e < D)
-    (hright : ∀ s : ℕ, S ≤ s →
-      seamGreedyWord (s + 1) = (seamGreedyWord s).extend true)
-    (hbase : seamWordSupport (seamGreedyWord S) =
-      u ∪ Finset.Ico (D + 1) S) :
-    (1 / 2 : ℝ) <
-      positiveMersenneSupportValue (↑(insert D u) : Set ℕ) := by
-  sorry
-
-/-- States thm:nine-way-hub from the long record for Erdős problem #257. Transported from
-Erdos249257.half_mem_mersenneAchievementSet_iff_cofinalTerminalFalse in the substantive
-development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem half_mem_mersenneAchievementSet_iff_cofinalTerminalFalse :
-    (1 / 2 : ℝ) ∈ mersenneAchievementSet ↔
-      SeamGreedyCofinalTerminalFalse := by
-  sorry
-
-/-- States thm:nine-way-hub from the long record for Erdős problem #257. Transported from
-Erdos249257.half_mem_mersenneAchievementSet_iff_exists_unboundedSkippedRanksAlong in the
-substantive development, whose statement was refereed against the paper in the coverage
-ledger. -/
-theorem half_mem_mersenneAchievementSet_iff_exists_unboundedSkippedRanksAlong :
-    (1 / 2 : ℝ) ∈ mersenneAchievementSet ↔
-      ∃ rows : ℕ → ℕ, SeamGreedyUnboundedSkippedRanksAlong rows := by
-  sorry
-
-/-- States thm:nine-way-hub from the long record for Erdős problem #257. Transported from
-Erdos249257.half_mem_mersenneAchievementSet_iff_not_seamGreedyEventuallyRight in the
-substantive development, whose statement was refereed against the paper in the coverage
-ledger. -/
-theorem half_mem_mersenneAchievementSet_iff_not_seamGreedyEventuallyRight :
-    (1 / 2 : ℝ) ∈ mersenneAchievementSet ↔
-      ¬ SeamGreedyEventuallyRight := by
-  sorry
-
-/-- States thm:nine-way-hub from the long record for Erdős problem #257. Transported from
-Erdos249257.half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse in the substantive
-development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse :
-    (1 / 2 : ℝ) ∈ mersenneAchievementSet ↔
-      SeamGreedyUnboundedTerminalFalse := by
-  sorry
-
 /-- States record:257bm-c1 from the long record for Erdős problem #257. Transported from
 Erdos249257.half_mem_mersenneAchievementSet_of_cofinalExactLocalRows in the substantive
 development, whose statement was refereed against the paper in the coverage ledger. -/
@@ -619,23 +210,6 @@ Erdos249257.half_mem_mersenneAchievementSet_of_criticalQuotientSupply in the sub
 development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem half_mem_mersenneAchievementSet_of_criticalQuotientSupply
     (hcap : SkippedCoreCriticalQuotientSupply) :
-    (1 / 2 : ℝ) ∈ mersenneAchievementSet := by
-  sorry
-
-/-- States thm:frozen-margin from the long record for Erdős problem #257. Transported from
-Erdos249257.half_mem_mersenneAchievementSet_of_skippedFullShellNonnegative in the
-substantive development, whose statement was refereed against the paper in the coverage
-ledger. -/
-theorem half_mem_mersenneAchievementSet_of_skippedFullShellNonnegative
-    (hsign : HalfGreedySkippedFullShellNonnegative) :
-    (1 / 2 : ℝ) ∈ mersenneAchievementSet := by
-  sorry
-
-/-- States thm:frozen-margin from the long record for Erdős problem #257. Transported from
-Erdos249257.half_mem_mersenneAchievementSet_of_skippedSeamEscape in the substantive
-development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem half_mem_mersenneAchievementSet_of_skippedSeamEscape
-    (hescape : HalfGreedySkippedSeamEscape) :
     (1 / 2 : ℝ) ∈ mersenneAchievementSet := by
   sorry
 
@@ -711,61 +285,6 @@ theorem precriticalCrossingTax_of_futureThreshold
         (localMersennePrefixValue (insert c D) - (1 / 2 : ℚ)) := by
   sorry
 
-/-- States lem:eventually-right-impossible from the long record for Erdős problem #257.
-Transported from Erdos249257.prefix_add_mersenneTail_lt_half_of_eventually_right in the
-substantive development, whose statement was refereed against the paper in the coverage
-ledger. -/
-theorem prefix_add_mersenneTail_lt_half_of_eventually_right
-    {S D : ℕ} {u : Finset ℕ}
-    (hS5 : 5 ≤ S) (hDS : D < S)
-    (hu : ∀ e ∈ u, 2 ≤ e ∧ e < D)
-    (hright : ∀ s : ℕ, S ≤ s →
-      seamGreedyWord (s + 1) = (seamGreedyWord s).extend true)
-    (hbase : seamWordSupport (seamGreedyWord S) =
-      u ∪ Finset.Ico (D + 1) S) :
-    positiveMersenneSupportValue (↑u : Set ℕ) + mersenneTail D <
-      (1 / 2 : ℝ) := by
-  sorry
-
-/-- States record:257bm-c6 from the long record for Erdős problem #257. Transported from
-Erdos249257.skippedCoreCriticalQuotientSupply_iff_halfGreedySkipped in the substantive
-development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem skippedCoreCriticalQuotientSupply_iff_halfGreedySkipped :
-    SkippedCoreCriticalQuotientSupply ↔
-      HalfGreedySkippedCriticalQuotientSupply := by
-  sorry
-
-/-- States record:257bm-c14, thm:frozen-margin from the long record for Erdős problem #257.
-Transported from Erdos249257.skippedSeamAlignmentZero_iff_skippedFullShellNonnegative in the
-substantive development, whose statement was refereed against the paper in the coverage
-ledger. -/
-theorem skippedSeamAlignmentZero_iff_skippedFullShellNonnegative :
-    HalfGreedySkippedSeamAlignmentZero ↔
-      HalfGreedySkippedFullShellNonnegative := by
-  sorry
-
-/-- States record:257bm-c14 from the long record for Erdős problem #257. Transported from
-Erdos249257.skipped_fullShell_neg_iff_alignment_and_seamRemainder_pos in the substantive
-development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem skipped_fullShell_neg_iff_alignment_and_seamRemainder_pos
-    (n : ℕ) (hn : 3 ≤ n)
-    (hskip : ¬ mersenneWeight n ≤
-      greedyMersenneRemainder (1 / 2 : ℝ) (n - 1)) :
-    greedyHalfFrozenMargin (n - 1) n < 0 ↔
-      stemBits n (halfGreedyPrefixSupport (n - 1)) =
-          integerGreedyBits (seamWeights n) (seamSubsetTarget n) ∧
-        1 ≤ seamIntegerGreedyRemainder n := by
-  sorry
-
-/-- States thm:nine-way-hub from the long record for Erdős problem #257. Transported from
-Erdos249257.unboundedTerminalFalse_iff_greedyMersenneSkippedSupport_infinite in the
-substantive development, whose statement was refereed against the paper in the coverage
-ledger. -/
-theorem unboundedTerminalFalse_iff_greedyMersenneSkippedSupport_infinite :
-    SeamGreedyUnboundedTerminalFalse ↔
-      (greedyMersenneSkippedSupport (1 / 2 : ℝ)).Infinite := by
-  sorry
-
 /-- States thm:real-form from the long record for Erdős problem #257. Transported from
 ErdosProblems.Erdos257.PaperCompleteR20.paper_real_quotient_core in the substantive
 development, whose statement was refereed against the paper in the coverage ledger. -/
@@ -783,42 +302,12 @@ ErdosProblems.Erdos257.PaperCompleteR20.paper_real_quotient_margins in the subst
 development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem paper_real_quotient_margins {n : ℕ} (hn : 6 ≤ n) (D : Finset ℕ)
     (hD : D ⊆ Finset.Ico 2 n) (H : ℝ) :
-    ((H+(2*(n : ℝ)+2))/(4 : ℝ)^n < := by
-  sorry
-
-/-- States prop:collapsed-list from the long record for Erdős problem #257. Transported from
-ErdosProblems.Erdos257.PaperCompleteR20.six_membership_conditions in the substantive
-development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem six_membership_conditions :
-    ((1/2 : ℝ) ∈ mersenneAchievementSet ↔
-      ∀ N : ℕ, (mobiusCenteredHalfCarry (greedyMersenneSupport (1/2 : ℝ)) N : ℝ) ≤
-        2*Real.sqrt (N : ℝ)+4) ∧
-    ((1/2 : ℝ) ∈ mersenneAchievementSet ↔
-      ∀ K : ℕ, ∃ n : ℕ, K ≤ n ∧ 0 < n ∧ n ∉ greedyMersenneSupport (1/2 : ℝ)) ∧
-    ((1/2 : ℝ) ∈ mersenneAchievementSet ↔ CofinalExactLocalMersenneHalfRows) ∧
-    ((1/2 : ℝ) ∈ mersenneAchievementSet ↔ GreedyHalfCarryCofinalStripReturn) ∧
-    ((1/2 : ℝ) ∈ mersenneAchievementSet ↔ HalfCarryCofinalTerminalOnlyStrip) ∧
-    ((1/2 : ℝ) ∈ mersenneAchievementSet ↔
-      (∀ n : ℕ, greedyMersenneRemainder (1/2 : ℝ) n ≤ mersenneTail n) ∧
-        ¬ ExistsFatalHalfGap) := by
-  sorry
-
-/-- States thm:seam-limit from the long record for Erdős problem #257. Transported from
-ErdosProblems.Erdos257.PaperCompleteR21.eventually_seamSupport_agrees in the substantive
-development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem eventually_seamSupport_agrees (K : ℕ) :
-    ∀ᶠ s in atTop, ∀ d : ℕ, 1 ≤ d → d ≤ K →
-      (d ∈ seamWordSupport (seamGreedyWord s)
-        ↔ d ∈ greedyMersenneSupport (1 / 2 : ℝ)) := by
-  sorry
-
-/-- States record:257rig-c17 from the long record for Erdős problem #257. Transported from
-ErdosProblems.Erdos257.PaperCompleteR21.paper_both_cofinal_statements_iff_half_membership in
-the substantive development, whose statement was refereed against the paper in the coverage
-ledger. -/
-theorem paper_both_cofinal_statements_iff_half_membership :
-    ((1 / 2 : ℝ) ∈ mersenneAchievementSet ↔ CofinalExactLocalMersenneHalfRows) ∧
-      ((1 / 2 : ℝ) ∈ mersenneAchievementSet ↔ HalfCarryCofinalTerminalOnlyStrip) := by
+    ((H+(2*(n : ℝ)+2))/(4 : ℝ)^n <
+      |(∑ d ∈ (Finset.Ico 2 n) \ D, mersenneWeight d) - (erdosBorweinMersenneConstant-3/2)| →
+      H < |(rowDeviation n D : ℝ)|) ∧
+    (H < |(rowDeviation n D : ℝ)| →
+      (H-(2*(n : ℝ)+2))/(4 : ℝ)^n <
+      |(∑ d ∈ (Finset.Ico 2 n) \ D, mersenneWeight d) - (erdosBorweinMersenneConstant-3/2)|) := by
   sorry
 
 /-- States record:257bm-i6 from the long record for Erdős problem #257. Transported from
@@ -834,18 +323,6 @@ theorem paper_capacity_band_exclusion {D : Finset ℕ} {c : ℕ}
       (localBinarySuffix D 1 (2 * c - 2) ∉
           Finset.Icc (2 ^ (c - 2)) (2 ^ (c - 2) + (c - 3)) →
         localBinarySuffix D 1 (2 * c - 2) < 2 ^ (c - 2)) := by
-  sorry
-
-/-- States record:257rig-k6 from the long record for Erdős problem #257. Transported from
-ErdosProblems.Erdos257.PaperCompleteR21.paper_critical_crossing_support_is_greedy_prefix in
-the substantive development, whose statement was refereed against the paper in the coverage
-ledger. -/
-theorem paper_critical_crossing_support_is_greedy_prefix
-    {D : Finset ℕ} {c : ℕ} (hc : 4 ≤ c) (hD : ∀ d ∈ D, 2 ≤ d ∧ d < c)
-    (hbelow : localMersennePrefixValue D < (1 / 2 : ℚ))
-    (hcross : (1 / 2 : ℚ) - localMersennePrefixValue D < mersenneWeightRat c) :
-    D = halfGreedyPrefixSupport (c - 1) ∧
-      (↑D : Set ℕ) = greedyMersenneSupport (1 / 2 : ℝ) ∩ Set.Iic (c - 1) := by
   sorry
 
 /-- States record:257bm-c10 from the long record for Erdős problem #257. Transported from
@@ -898,40 +375,6 @@ theorem paper_fractional_mass_bound_suffices_for_sharp_capacity
     (hcross : (1 / 2 : ℚ) < localMersennePrefixValue (insert c D))
     (hfrac : localFractionMass (insert c D) (2 * c - 2) ≤ 1) :
     localBinarySuffix D 1 (2 * c - 2) < 2 ^ (c - 2) := by
-  sorry
-
-/-- States record:257bm-c15 from the long record for Erdős problem #257. Transported from
-ErdosProblems.Erdos257.PaperCompleteR21.paper_seam_escape_forces_remainder_band in the
-substantive development, whose statement was refereed against the paper in the coverage
-ledger. -/
-theorem paper_seam_escape_forces_remainder_band
-    {n : ℕ} (hn : 3 ≤ n)
-    (hskip : ¬ mersenneWeight n ≤ greedyMersenneRemainder (1 / 2 : ℝ) (n - 1))
-    (hneg : greedyHalfFrozenMargin (n - 1) n < 0) :
-    1 ≤ seamIntegerGreedyRemainder n ∧
-      seamIntegerGreedyRemainder n ≤ halfStripBound (2 * n) := by
-  sorry
-
-/-- States record:257bm-c15 from the long record for Erdős problem #257. Transported from
-ErdosProblems.Erdos257.PaperCompleteR21.paper_seam_escape_implies_full_shell_nonnegative in
-the substantive development, whose statement was refereed against the paper in the coverage
-ledger. -/
-theorem paper_seam_escape_implies_full_shell_nonnegative
-    (hescape : ∀ n : ℕ, 3 ≤ n →
-      (¬ mersenneWeight n ≤ greedyMersenneRemainder (1 / 2 : ℝ) (n - 1)) →
-      halfStripBound (2 * n) < seamIntegerGreedyRemainder n) :
-    HalfGreedySkippedFullShellNonnegative := by
-  sorry
-
-/-- States record:257bm-c15 from the long record for Erdős problem #257. Transported from
-ErdosProblems.Erdos257.PaperCompleteR21.paper_seam_escape_implies_half_membership in the
-substantive development, whose statement was refereed against the paper in the coverage
-ledger. -/
-theorem paper_seam_escape_implies_half_membership
-    (hescape : ∀ n : ℕ, 3 ≤ n →
-      (¬ mersenneWeight n ≤ greedyMersenneRemainder (1 / 2 : ℝ) (n - 1)) →
-      halfStripBound (2 * n) < seamIntegerGreedyRemainder n) :
-    (1 / 2 : ℝ) ∈ mersenneAchievementSet := by
   sorry
 
 end Erdos249257.ExternalVerification257PaperStatementsAR

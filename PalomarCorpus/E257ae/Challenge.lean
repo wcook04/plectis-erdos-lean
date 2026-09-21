@@ -33,10 +33,6 @@ noncomputable def IsTemperedBinaryOrbit (c : ℕ → ℕ) (v : ℕ) (u : ℕ →
   (∀ N : ℕ,
       u (N + 1) = 2 * u N - ((v * c (N + 1) : ℕ) : ℤ)) ∧
     Tendsto (fun N : ℕ ↦ (u N : ℝ) / (2 : ℝ) ^ N) atTop (nhds 0)
-/-- The exact binary affine orbit driven by the fresh coefficient word `a`. Local copy of Erdos249257.affineBinaryOrbit, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def affineBinaryOrbit (a : ℕ → ℤ) (u0 : ℤ) : ℕ → ℤ
-  | 0 => u0
-  | n + 1 => 2 * affineBinaryOrbit a u0 n - a (n + 1)
 /-- The radius of the balanced-pulse family at location `m`. Local copy of Erdos249257.balancedPulseRadius, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def balancedPulseRadius (m : ℕ) : ℕ := (m + 1) / 2
 /-- A two-site pulse whose mass can be moved from position `m` to `m+1` without changing its binary-series value. Local copy of Erdos249257.balancedPulseCoeff, restated so the compared statements elaborate against Mathlib alone. -/
@@ -50,10 +46,6 @@ noncomputable def binaryCoeffSeries (c : ℕ → ℕ) : ℝ :=
 /-- The scaled tail `T_c(N) = ∑_{j≥1} c(N+j)/2^j`. Local copy of Erdos249257.binaryCoeffTail, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def binaryCoeffTail (c : ℕ → ℕ) (N : ℕ) : ℝ :=
   ∑' j : ℕ, (c (N + j + 1) : ℝ) / (2 : ℝ) ^ (j + 1)
-/-- States prop:local-void from the long record for Erdős problem #257. Transported from Erdos249257.affineBinaryOrbit_mod_twoPow_eq in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem affineBinaryOrbit_mod_twoPow_eq (a : ℕ → ℤ) (u0 v0 : ℤ) (L : ℕ) :
-    affineBinaryOrbit a u0 L ≡ affineBinaryOrbit a v0 L [ZMOD (2 : ℤ) ^ L] := by
-  sorry
 /-- States prop:local-void from the long record for Erdős problem #257. Transported from Erdos249257.balancedPulse_endpoint_fanout in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem balancedPulse_endpoint_fanout (m r : ℕ) :
     balancedPulseCoeff m r (m + 1) / 2 = r := by

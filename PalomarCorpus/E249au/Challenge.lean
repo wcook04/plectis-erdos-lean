@@ -39,10 +39,6 @@ noncomputable def ActualLcmTopEdgeResidueGap (a J K m : ℕ) : Prop :=
           (periodLcm (2 ^ a) + J) K % (2 : ℤ) ^ m ≤
         (2 : ℤ) ^ m -
           ((2 * periodLcm (2 ^ a) + J + K + 2 : ℕ) : ℤ)
-/-- Cofinal supply target for the genuinely non-vacuous one-sided actual-word gap. Local copy of Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.PowerTwoActualLcmTopEdgeResidueGapSupply, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def PowerTwoActualLcmTopEdgeResidueGapSupply : Prop :=
-  ∀ a₀ : ℕ, ∃ a K m : ℕ, a₀ ≤ a ∧ 8 ≤ a ∧
-    K + (a + 6) < 2 * 2 ^ a ∧ ActualLcmTopEdgeResidueGap a 0 K m
 /-- The LCM height used by the power-two endpoint at exponent `a`. Local copy of Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmHeight, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def actualLcmHeight (a : ℕ) : ℕ :=
   periodLcm (2 ^ a)
@@ -52,24 +48,6 @@ noncomputable def totientTail (N : ℕ) : ℝ :=
 /-- The actual LCM-diagonal tail orbit at exponent `a`. Local copy of Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmTailOrbit, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def actualLcmTailOrbit (a : ℕ) : ℝ :=
   totientTail (2 * actualLcmHeight a) - totientTail (actualLcmHeight a)
-/-- The integral correction for the primes shared by `j` and `x` in the totient of the product `j*x`. Local copy of Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.totientOverlapFactor, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def totientOverlapFactor (j x : ℕ) : ℕ :=
-  (Nat.totient j / Nat.totient (Nat.gcd j x)) * Nat.gcd j x
-/-- The quotient-scale letter attached to a divisor offset `j | H` on the actual diagonal. Its two overlap factors record exactly which saturated prime powers of `j` reappear in `H/j + 1` and `2*(H/j) + 1`. Local copy of Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.lcmDivisorRayLetter, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def lcmDivisorRayLetter (H j : ℕ) : ℤ :=
-  let a := H / j
-  ((totientOverlapFactor j (2 * a + 1) *
-      Nat.totient (2 * a + 1) : ℕ) : ℤ) -
-    ((totientOverlapFactor j (a + 1) *
-      Nat.totient (a + 1) : ℕ) : ℤ)
-/-- The window step `a_n = φ(n+h) - φ(n)` driving the carry recurrence. Local copy of Erdos249257.TotientTailPeriodKiller.deltaTotient, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def deltaTotient (h n : ℕ) : ℤ := (Nat.totient (n + h) : ℤ) - (Nat.totient n : ℤ)
-/-- Actual LCM-ray letter: divisor offsets use the exact quotient-scale formula, while nondivisor offsets retain the literal totient difference. Local copy of Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.lcmRayArithmeticLetter, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def lcmRayArithmeticLetter (t j : ℕ) : ℤ :=
-  if j ∣ periodLcm t then
-    lcmDivisorRayLetter (periodLcm t) j
-  else
-    deltaTotient (periodLcm t) (periodLcm t + j)
 /-- Predicate for a real quantity to be an integer. Local copy of Erdos249257.DiagonalPincerDecomposition.IsIntegralValue, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def IsIntegralValue (x : ℝ) : Prop := x ∈ Set.range ((↑) : ℤ → ℝ)
 /-- The diagonal tail difference `D(H) = R_(2H) - R_H`. Local copy of Erdos249257.PrimeJumpWindow.diagonalTailDifferenceAt, restated so the compared statements elaborate against Mathlib alone. -/
@@ -78,6 +56,9 @@ noncomputable def diagonalTailDifferenceAt (H : ℕ) : ℝ :=
 /-- Exact direct tail radius for the four-vertex commutator. Local copy of Erdos249257.PrimeJumpWindow.primeJumpSharpRadius, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def primeJumpSharpRadius (H p L : ℕ) : ℤ :=
   3 * p * H + (p + 1) * (L + 2)
+/-- The prime-jump commutator `J(H,p) = D(pH) - p D(H)`. Local copy of Erdos249257.PrimeJumpWindow.primeJumpTailCommutator, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def primeJumpTailCommutator (H p : ℕ) : ℝ :=
+  diagonalTailDifferenceAt (p * H) - p * diagonalTailDifferenceAt H
 /-- The depth-`L` window numerator `P_L(M) = Σ_{j<L} φ(M+1+j)·2^{L-1-j}`: the integer layer of `2^L·R_M`, exact up to the one-sided deep tail `0 ≤ 2^L·R_M - P_L(M) ≤ M+L+2`. Local copy of Erdos249257.TotientTailPeriodKiller.windowNumerator, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def windowNumerator (M L : ℕ) : ℕ :=
   ∑ j ∈ Finset.range L, Nat.totient (M + 1 + j) * 2 ^ (L - 1 - j)
@@ -87,15 +68,6 @@ noncomputable def primeJumpWindowCommutator (H p L : ℕ) : ℤ :=
     (windowNumerator (p * H) L : ℤ) -
     p * (windowNumerator (2 * H) L : ℤ) +
     p * (windowNumerator H L : ℤ)
-/-- Decidable direct consumer: the four-vertex window stays outside the sharp tail band around the integer lattice. Local copy of Erdos249257.PrimeJumpWindow.primeJumpSharpKill, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def primeJumpSharpKill (H p L : ℕ) : Prop :=
-  primeJumpSharpRadius H p L <
-      primeJumpWindowCommutator H p L % 2 ^ L ∧
-    primeJumpWindowCommutator H p L % 2 ^ L <
-      2 ^ L - primeJumpSharpRadius H p L
-/-- The prime-jump commutator `J(H,p) = D(pH) - p D(H)`. Local copy of Erdos249257.PrimeJumpWindow.primeJumpTailCommutator, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def primeJumpTailCommutator (H p : ℕ) : ℝ :=
-  diagonalTailDifferenceAt (p * H) - p * diagonalTailDifferenceAt H
 /-- The residue angle used by the first additive character. Local copy of Erdos249257.TotientTailPeriodKiller.windowFirstAngle, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def windowFirstAngle (h N L : ℕ) : ℝ :=
   2 * Real.pi *
@@ -120,10 +92,6 @@ noncomputable def DTWWindowSeparatedPairsAt (h : ℕ) : Prop :=
 /-- Fibre-free counted window-phase anti-concentration at every positive shift; neither primality nor a pivot factorization is part of the statement. Local copy of Erdos249257.TotientTailPeriodKiller.DTWWindowSeparatedPairs, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def DTWWindowSeparatedPairs : Prop :=
   ∀ h : ℕ, 0 < h → DTWWindowSeparatedPairsAt h
-/-- The integer carry orbit launched from candidate `d` at position `N`: `orbit 0 = d`, `orbit (i+1) = 2·orbit i - a_{N+i+1}`. If `D_h(N)` is the integer `d`, this orbit equals `D_h(N+i)` forever. Local copy of Erdos249257.TotientTailPeriodKiller.carryOrbit, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def carryOrbit (h N : ℕ) (d : ℤ) : ℕ → ℤ
-  | 0 => d
-  | i + 1 => 2 * carryOrbit h N d i - deltaTotient h (N + i + 1)
 /-- The decidable period-killer certificate: the residue of `A_{h,N,L}` modulo `2^L` avoids the radius-`(N+h+L+2)` neighbourhood of `0`. Local copy of Erdos249257.TotientTailPeriodKiller.certifiedKill, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def certifiedKill (h N L : ℕ) : Prop :=
   (N + h + L + 2 : ℤ) < windowDiscrepancy h N L % 2 ^ L ∧
@@ -135,6 +103,8 @@ noncomputable def windowDiscrepancy2 (h N L : ℕ) : ℤ :=
 noncomputable def certifiedRank2Kill (h N L : ℕ) : Prop :=
   (2 * ((N : ℤ) + 2 * h + L + 2)) < windowDiscrepancy2 h N L % 2 ^ L ∧
     windowDiscrepancy2 h N L % 2 ^ L < 2 ^ L - 2 * ((N : ℤ) + 2 * h + L + 2)
+/-- The window step `a_n = φ(n+h) - φ(n)` driving the carry recurrence. Local copy of Erdos249257.TotientTailPeriodKiller.deltaTotient, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def deltaTotient (h n : ℕ) : ℤ := (Nat.totient (n + h) : ℤ) - (Nat.totient n : ℤ)
 /-- The integer prefix `Φ_N = ∑_{n=0}^{N} φ(n)·2^{N-n}` of `2^N · S`. Local copy of Erdos249257.TotientTailPeriodKiller.totientPrefix, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def totientPrefix (N : ℕ) : ℕ :=
   ∑ n ∈ Finset.range (N + 1), Nat.totient n * 2 ^ (N - n)
@@ -148,72 +118,11 @@ noncomputable def windowFirstCos (h N L : ℕ) : ℝ :=
 noncomputable def PeriodMultipleKillSupply : Prop :=
   ∀ d : ℕ, 0 < d → ∀ c : ℕ,
     ∃ t N L : ℕ, 0 < t ∧ c ≤ N ∧ certifiedKill (t * d) N L
-/-- States prop:CP-07 from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_modFour_pulse_supply in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem irrational_of_modFour_pulse_supply
-    (hsupply : ∀ h : ℕ, 0 < h → ∀ B : ℕ, ∃ p : ℕ, B < p ∧ p.Prime ∧
-      ((Nat.totient (p + 4 * h) : ℤ) - (Nat.totient p : ℤ)) ≡ (2 : ℤ) [ZMOD 4] ∧
-      ∃ K : ℕ, ∀ z : ℤ, |z| ≤ ((p + 4 * h + 1 : ℕ) : ℤ) → z ≡ (2 : ℤ) [ZMOD 4] →
-        ∃ i : ℕ, i ≤ K ∧
-          ((p + i + 4 * h + 2 : ℕ) : ℤ) ≤ |carryOrbit (4 * h) p z i|) :
-    Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) := by
-  sorry
 /-- States catalogue:cert:b2 from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_period_multiple_certificate_supply in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem irrational_of_period_multiple_certificate_supply
     (hsupply : ∀ h₀ : ℕ, 0 < h₀ → ∀ N₀ : ℕ,
       ∃ m, 0 < m ∧ ∃ N, N₀ ≤ N ∧ ∃ L, certifiedKill (m * h₀) N L) :
     Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) := by
-  sorry
-/-- States the paper statement it is bound to from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_primeJumpSharp_supply in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem irrational_of_primeJumpSharp_supply
-    (hsupply : ∀ t₀ : ℕ, ∃ t, t₀ ≤ t ∧ ∃ p L : ℕ,
-      0 < p ∧ primeJumpSharpKill (periodLcm t) p L) :
-    Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) := by
-  sorry
-/-- States the paper statement it is bound to from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_restrictedDepth_diagonal_supply in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem irrational_of_restrictedDepth_diagonal_supply (depthBound : ℕ → ℕ → Prop)
-    (hsupply : ∀ t₀ : ℕ, ∃ t, t₀ ≤ t ∧ ∃ L : ℕ,
-      depthBound t L ∧ certifiedKill (periodLcm t) (periodLcm t) L) :
-    Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) := by
-  sorry
-/-- States prop:AR-07 from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_short_window_diagonal_supply in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem irrational_of_short_window_diagonal_supply
-    (hsupply : ∀ a₀ : ℕ, ∃ a L : ℕ, a₀ ≤ a ∧ L < 2 * 2 ^ a ∧
-      certifiedKill (periodLcm (2 ^ a)) (periodLcm (2 ^ a)) L) :
-    Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) := by
-  sorry
-/-- States the paper statement it is bound to from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_topEdgeResidueGapSupply in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem irrational_of_topEdgeResidueGapSupply
-    (hsupply : PowerTwoActualLcmTopEdgeResidueGapSupply) :
-    Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) := by
-  sorry
-/-- States prop:TE-04 from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_upper_endpoint_gap_supply in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem irrational_of_upper_endpoint_gap_supply
-    (hsupply : ∀ a₀ : ℕ, ∃ a K m : ℕ, a₀ ≤ a ∧ 8 ≤ a ∧
-      K + (a + 6) < 2 * 2 ^ a ∧ ActualLcmTopEdgeResidueGap a 0 K m) :
-    Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) := by
-  sorry
-/-- States prop:AR-04-inv from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.lcmRayArithmeticLetter_eq_totient_difference in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem lcmRayArithmeticLetter_eq_totient_difference (t j : ℕ) :
-    lcmRayArithmeticLetter t j
-      = (Nat.totient (2 * periodLcm t + j) : ℤ)
-        - (Nat.totient (periodLcm t + j) : ℤ) := by
-  sorry
-/-- States prop:AR-04-inv from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.lcmRay_divisor_clean_formula in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem lcmRay_divisor_clean_formula {t j : ℕ} (hjdvd : j ∣ periodLcm t)
-    (hclean : ∀ p : ℕ, Nat.Prime p → p ∣ j → p ∣ periodLcm t / j) :
-    Nat.gcd j (periodLcm t / j + 1) = 1
-      ∧ Nat.gcd j (2 * (periodLcm t / j) + 1) = 1
-      ∧ (Nat.totient (2 * periodLcm t + j) : ℤ)
-            - (Nat.totient (periodLcm t + j) : ℤ)
-          = (Nat.totient j : ℤ)
-              * ((Nat.totient (2 * (periodLcm t / j) + 1) : ℤ)
-                  - (Nat.totient (periodLcm t / j + 1) : ℤ)) := by
-  sorry
-/-- States prop:AR-04-inv from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.lcmRay_divisor_denominators_pos in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem lcmRay_divisor_denominators_pos {t j : ℕ} (hjdvd : j ∣ periodLcm t) :
-    0 < j
-      ∧ 0 < Nat.totient (Nat.gcd j (periodLcm t / j + 1))
-      ∧ 0 < Nat.totient (Nat.gcd j (2 * (periodLcm t / j) + 1)) := by
   sorry
 /-- States prop:AR-04-inv from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.lcmRay_divisor_gcd_example in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem lcmRay_divisor_gcd_example :
@@ -225,25 +134,6 @@ theorem lcmRay_divisor_gcd_example :
       ∧ (Nat.totient 2 : ℤ)
             * ((Nat.totient (2 * (periodLcm 2 / 2) + 1) : ℤ)
                 - (Nat.totient (periodLcm 2 / 2 + 1) : ℤ)) = 1 := by
-  sorry
-/-- States prop:AR-04-inv from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.lcmRay_divisor_product_formula in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem lcmRay_divisor_product_formula {t j : ℕ} (hjdvd : j ∣ periodLcm t) :
-    ((Nat.totient (2 * periodLcm t + j) : ℚ)
-        - (Nat.totient (periodLcm t + j) : ℚ))
-      = (Nat.totient j : ℚ) *
-          ((Nat.gcd j (2 * (periodLcm t / j) + 1) : ℚ)
-                * (Nat.totient (2 * (periodLcm t / j) + 1) : ℚ)
-                / (Nat.totient (Nat.gcd j (2 * (periodLcm t / j) + 1)) : ℚ)
-            - (Nat.gcd j (periodLcm t / j + 1) : ℚ)
-                * (Nat.totient (periodLcm t / j + 1) : ℚ)
-                / (Nat.totient (Nat.gcd j (periodLcm t / j + 1)) : ℚ)) := by
-  sorry
-/-- States prop:AR-04-inv from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.lcmRay_nondivisor_literal in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem lcmRay_nondivisor_literal {t j : ℕ} (hjdvd : ¬ j ∣ periodLcm t) :
-    lcmRayArithmeticLetter t j
-      = (Nat.totient (2 * periodLcm t + j) : ℤ)
-        - (Nat.totient (periodLcm t + j) : ℤ) ∧
-      lcmRayArithmeticLetter t j = deltaTotient (periodLcm t) (periodLcm t + j) := by
   sorry
 /-- States lem:orbit from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.orbit_tail_diff_eq in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem orbit_tail_diff_eq (h N : ℕ) :
@@ -278,36 +168,8 @@ theorem orbit_tail_diff_sub_scaled_is_int (h N : ℕ) :
 theorem orbit_tail_recurrence (N : ℕ) :
     totientTail (N + 1) = 2 * totientTail N - (Nat.totient (N + 1) : ℝ) := by
   sorry
-/-- States prop:TE-02-inv from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.penultimate_shortWindow_difference_eq_half in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem penultimate_shortWindow_difference_eq_half {a J K m : ℕ} (ha : 8 ≤ a)
-    (hmPos : 0 < m) (hmK : m ≤ K)
-    (hshort : J + K + (a + 6) < 2 * 2 ^ a)
-    (hroom : ((2 * periodLcm (2 ^ a) + J + K + 2 : ℕ) : ℤ) < (2 : ℤ) ^ m)
-    (hlast : (Nat.totient (2 * periodLcm (2 ^ a) + (J + K)) : ℤ)
-          - (Nat.totient (periodLcm (2 ^ a) + (J + K)) : ℤ)
-        ≤ (2 : ℤ) ^ m - ((2 * periodLcm (2 ^ a) + J + K + 2 : ℕ) : ℤ))
-    (hprefix : ∀ r : ℕ, r + 1 < m →
-        (2 : ℤ) ^ (r + 1) ∣
-          ((Nat.totient (2 * periodLcm (2 ^ a) + (J + K - m + r + 1)) : ℤ)
-            - (Nat.totient (periodLcm (2 ^ a) + (J + K - m + r + 1)) : ℤ))) :
-    ((Nat.totient (2 * periodLcm (2 ^ a) + (J + K - 1)) : ℤ)
-          - (Nat.totient (periodLcm (2 ^ a) + (J + K - 1)) : ℤ))
-        = (2 : ℤ) ^ (m - 1)
-      ∧ (2 : ℤ) ^ m < 2 * ((2 * periodLcm (2 ^ a) + J + K + 2 : ℕ) : ℤ)
-      ∧ (4 : ℤ) ≤ ((2 * periodLcm (2 ^ a) + J + K + 2 : ℕ) : ℤ)
-      ∧ 3 ≤ m := by
-  sorry
 /-- States the paper statement it is bound to from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.periodLcm_four_eq_twelve in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem periodLcm_four_eq_twelve : periodLcm 4 = 12 := by
-  sorry
-/-- States the paper statement it is bound to from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.periodLcm_strict_jump_at_powerTwo_pred in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem periodLcm_strict_jump_at_powerTwo_pred {a : ℕ} (ha : 1 ≤ a) :
-    periodLcm (2 ^ a - 1) < periodLcm (2 ^ a - 1 + 1) := by
-  sorry
-/-- States the paper statement it is bound to from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.periodLcm_strict_jump_at_prime_pred in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem periodLcm_strict_jump_at_prime_pred {t₀ p : ℕ} (hp : p.Prime)
-    (hpt : t₀ < p) :
-    t₀ ≤ p - 1 ∧ periodLcm (p - 1) < periodLcm (p - 1 + 1) := by
   sorry
 /-- States the paper statement it is bound to from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.periodLcm_zero_and_one_eq_one in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem periodLcm_zero_and_one_eq_one :
@@ -355,15 +217,6 @@ theorem pulse_delta_of_divisor_data {H K p : ℕ} (hK : 2 ≤ K) (hp : p.Prime)
     deltaTotient H p ≡ (2 : ℤ) ^ (K - 1) [ZMOD (2 : ℤ) ^ K] ∧
       ∀ j : ℕ, 1 ≤ j → j < K →
         deltaTotient H (p - j) ≡ 0 [ZMOD (2 : ℤ) ^ K] := by
-  sorry
-/-- States catalogue:mob:e2 from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_four_tail_diagonals_integral in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem rational_forces_four_tail_diagonals_integral
-    (hrat : ¬ Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)) :
-    ∃ t₁ : ℕ, ∀ t, t₁ ≤ t → ∀ p : ℕ, 0 < p →
-      (totientTail (2 * periodLcm t) - totientTail (periodLcm t) ∈
-          Set.range ((↑) : ℤ → ℝ)) ∧
-        (totientTail (2 * (p * periodLcm t)) - totientTail (p * periodLcm t) ∈
-          Set.range ((↑) : ℤ → ℝ)) := by
   sorry
 /-- States catalogue:cert:b2 from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_period_multiple_integrality in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem rational_forces_period_multiple_integrality
@@ -414,22 +267,10 @@ theorem second_difference_certificate_sound {h N L : ℕ}
       Set.range ((↑) : ℤ → ℝ) := by
   sorry
 /-- States catalogue:cert:b9a from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.second_difference_error_bound in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem second_difference_error_bound (h N L : ℕ) : := by
-  sorry
-/-- States the paper statement it is bound to from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.shortWindowSupply_single_witness_six_ninetyThree in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem shortWindowSupply_single_witness_six_ninetyThree (a₀ : ℕ) (ha₀ : a₀ ≤ 6) :
-    a₀ ≤ 6 ∧ (93 : ℕ) < 2 * 2 ^ 6 ∧
-      certifiedKill (periodLcm (2 ^ 6)) (periodLcm (2 ^ 6)) 93 := by
-  sorry
-/-- States the paper statement it is bound to from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.shortWindowSupply_through_six_paper in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem shortWindowSupply_through_six_paper (a₀ : ℕ) (ha₀ : a₀ ≤ 6) :
-    ∃ a L : ℕ, a₀ ≤ a ∧ L < 2 * 2 ^ a ∧
-      certifiedKill (periodLcm (2 ^ a)) (periodLcm (2 ^ a)) L := by
-  sorry
-/-- States the paper statement it is bound to from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.shortWindowSupply_witness_eq_t64_certificate in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem shortWindowSupply_witness_eq_t64_certificate :
-    certifiedKill (periodLcm (2 ^ 6)) (periodLcm (2 ^ 6)) 93 ↔
-      certifiedKill (periodLcm 64) (periodLcm 64) 93 := by
+theorem second_difference_error_bound (h N L : ℕ) :
+    |(2 : ℝ) ^ L * (totientTail (N + 2 * h) - 2 * totientTail (N + h) + totientTail N) -
+        ((windowDiscrepancy h (N + h) L - windowDiscrepancy h N L : ℤ) : ℝ)| ≤
+      2 * ((N : ℝ) + 2 * h + L + 2) := by
   sorry
 /-- States prop:SK-01-inv from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.shortWindow_certificates_kill_omega_four_and_six in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem shortWindow_certificates_kill_omega_four_and_six :
@@ -439,17 +280,6 @@ theorem shortWindow_certificates_kill_omega_four_and_six :
       (93 : ℕ) < 128 ∧
       actualLcmTailOrbit 4 ∉ Set.range ((↑) : ℤ → ℝ) ∧
       actualLcmTailOrbit 6 ∉ Set.range ((↑) : ℤ → ℝ) := by
-  sorry
-/-- States prop:AR-05-inv from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.shortWindow_totient_difference_pos in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem shortWindow_totient_difference_pos {a j : ℕ} (ha : 8 ≤ a)
-    (hjpos : 0 < j) (hjlt : j < 2 * 2 ^ a) :
-    0 < (Nat.totient (2 * periodLcm (2 ^ a) + j) : ℤ)
-          - (Nat.totient (periodLcm (2 ^ a) + j) : ℤ) := by
-  sorry
-/-- States prop:SK-02 from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.short_window_diagonal_through_six in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem short_window_diagonal_through_six (a₀ : ℕ) (ha₀ : a₀ ≤ 6) :
-    ∃ a L : ℕ, a₀ ≤ a ∧ L < 2 * 2 ^ a ∧
-      certifiedKill (periodLcm (2 ^ a)) (periodLcm (2 ^ a)) L := by
   sorry
 /-- States prop:SK-02 from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.short_window_diagonal_witnesses in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem short_window_diagonal_witnesses :
@@ -461,13 +291,6 @@ theorem tail_diff_notMem_int_of_irrational
     (hirr : Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n))
     {h N : ℕ} (hh : 0 < h) :
     totientTail (N + h) - totientTail N ∉ Set.range ((↑) : ℤ → ℝ) := by
-  sorry
-/-- States prop:SEP-02-inv from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.tendsto_actualLcmRawErrorRadius_atTop_nhds_zero in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem tendsto_actualLcmRawErrorRadius_atTop_nhds_zero (a : ℕ) :
-    Filter.Tendsto
-      (fun q : ℕ =>
-        ((2 * periodLcm (2 ^ a) + 2 * q + 3 : ℕ) : ℝ) / (2 : ℝ) ^ (2 * q + 1))
-      Filter.atTop (nhds 0) := by
   sorry
 /-- States prop:b2 from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.three_particular_equivalences in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem three_particular_equivalences :
@@ -481,20 +304,6 @@ theorem three_particular_equivalences :
               ∧ IsIntegralValue
                   (totientTail (2 * (p * q * H)) - totientTail (p * q * H)))
             ↔ IsIntegralValue (totientTail (2 * H) - totientTail H))) := by
-  sorry
-/-- States the paper statement it is bound to from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.topEdgeResidueGap_forces_nonintegral in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem topEdgeResidueGap_forces_nonintegral {a J K m : ℕ} (ha : 8 ≤ a)
-    (hshort : J + K + (a + 6) < 2 * 2 ^ a)
-    (hgap : ActualLcmTopEdgeResidueGap a J K m) :
-    totientTail (2 * periodLcm (2 ^ a) + J) - totientTail (periodLcm (2 ^ a) + J)
-      ∉ Set.range ((↑) : ℤ → ℝ) := by
-  sorry
-/-- States the paper statement it is bound to from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.topEdgeResidueGap_orbit_nonintegral in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem topEdgeResidueGap_orbit_nonintegral {a K m : ℕ} (ha : 8 ≤ a)
-    (hshort : K + (a + 6) < 2 * 2 ^ a)
-    (hgap : ActualLcmTopEdgeResidueGap a 0 K m) :
-    totientTail (2 * periodLcm (2 ^ a)) - totientTail (periodLcm (2 ^ a))
-      ∉ Set.range ((↑) : ℤ → ℝ) := by
   sorry
 /-- States the paper statement it is bound to from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.topEdgeResidueGap_unfolded in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem topEdgeResidueGap_unfolded (a J K m : ℕ) :
@@ -519,21 +328,6 @@ theorem twoAdic_pulse_construction_never_certifies
       windowDiscrepancy H (p - K) K ≡ (2 : ℤ) ^ (K - 1) [ZMOD (2 : ℤ) ^ K] ∧
       ¬ certifiedKill H (p - K) K := by
   sorry
-/-- States prop:FR-02-inv from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.two_mul_totient_dvd_totient_second_difference in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem two_mul_totient_dvd_totient_second_difference {a j : ℕ} (ha : 4 ≤ a)
-    (hj : 0 < j) (hsq : j * j ≤ 2 ^ a) :
-    (2 * (Nat.totient j : ℤ)) ∣
-          ((Nat.totient (3 * periodLcm (2 ^ a) + j) : ℤ)
-            - 2 * (Nat.totient (2 * periodLcm (2 ^ a) + j) : ℤ)
-            + (Nat.totient (periodLcm (2 ^ a) + j) : ℤ))
-      ∧ ((Nat.totient (3 * periodLcm (2 ^ a) + j) : ℤ)
-            - 2 * (Nat.totient (2 * periodLcm (2 ^ a) + j) : ℤ)
-            + (Nat.totient (periodLcm (2 ^ a) + j) : ℤ))
-          = (Nat.totient j : ℤ)
-              * ((Nat.totient (3 * (periodLcm (2 ^ a) / j) + 1) : ℤ)
-                  - 2 * (Nat.totient (2 * (periodLcm (2 ^ a) / j) + 1) : ℤ)
-                  + (Nat.totient (periodLcm (2 ^ a) / j + 1) : ℤ)) := by
-  sorry
 /-- States prop:TE-04 from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.upper_endpoint_condition_iff in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem upper_endpoint_condition_iff (a J K m : ℕ) :
     ActualLcmTopEdgeResidueGap a J K m ↔
@@ -541,34 +335,6 @@ theorem upper_endpoint_condition_iff (a J K m : ℕ) :
         ((2 * periodLcm (2 ^ a) + J + K + 2 : ℕ) : ℤ) < (2 : ℤ) ^ m ∧
         windowDiscrepancy (periodLcm (2 ^ a)) (periodLcm (2 ^ a) + J) K % (2 : ℤ) ^ m ≤
           (2 : ℤ) ^ m - ((2 * periodLcm (2 ^ a) + J + K + 2 : ℕ) : ℤ)) := by
-  sorry
-/-- States prop:TE-04 from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.upper_endpoint_gap_nonintegral in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem upper_endpoint_gap_nonintegral {a J K m : ℕ} (ha : 8 ≤ a)
-    (hshort : J + K + (a + 6) < 2 * 2 ^ a)
-    (hgap : ActualLcmTopEdgeResidueGap a J K m) :
-    totientTail (2 * periodLcm (2 ^ a) + J) - totientTail (periodLcm (2 ^ a) + J) ∉
-      Set.range ((↑) : ℤ → ℝ) := by
-  sorry
-/-- States prop:AR-06-inv from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.weighted_shortWindow_band_iff_certifiedKill in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem weighted_shortWindow_band_iff_certifiedKill (t L : ℕ) :
-    ((2 * (periodLcm t : ℤ) + L + 2 <
-          (∑ r ∈ Finset.range L,
-              ((Nat.totient (2 * periodLcm t + (r + 1)) : ℤ)
-                  - (Nat.totient (periodLcm t + (r + 1)) : ℤ))
-                * 2 ^ (L - 1 - r)) % 2 ^ L)
-        ∧ (∑ r ∈ Finset.range L,
-              ((Nat.totient (2 * periodLcm t + (r + 1)) : ℤ)
-                  - (Nat.totient (periodLcm t + (r + 1)) : ℤ))
-                * 2 ^ (L - 1 - r)) % 2 ^ L
-            < 2 ^ L - (2 * (periodLcm t : ℤ) + L + 2))
-      ↔ certifiedKill (periodLcm t) (periodLcm t) L := by
-  sorry
-/-- States prop:AR-06-inv from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.weighted_shortWindow_sum_eq_windowDiscrepancy in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem weighted_shortWindow_sum_eq_windowDiscrepancy (t L : ℕ) :
-    (∑ r ∈ Finset.range L,
-        ((Nat.totient (2 * periodLcm t + (r + 1)) : ℤ)
-            - (Nat.totient (periodLcm t + (r + 1)) : ℤ)) * 2 ^ (L - 1 - r))
-      = windowDiscrepancy (periodLcm t) (periodLcm t) L := by
   sorry
 /-- States catalogue:mob:e2 from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.windowDiscrepancy_diagonal_eq in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem windowDiscrepancy_diagonal_eq (M L : ℕ) :
@@ -609,9 +375,5 @@ theorem certifiedKill_97_300 : certifiedKill 97 300 13 := by
 theorem periodMultipleKillSupply_iff_irrational :
     PeriodMultipleKillSupply ↔
       Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) := by
-  sorry
-/-- States prop:deposits from the long record for Erdős problem #249. Transported from ErdosProblems.Skip.LadderT67.exists_diagonalKill_le_82 in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem exists_diagonalKill_le_82 (t : ℕ) (ht : t ≤ 82) :
-    ∃ L, certifiedKill (periodLcm t) (periodLcm t) L := by
   sorry
 end PalomarCorpus.E249.PaperStatementsAU

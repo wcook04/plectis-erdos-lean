@@ -1,3 +1,0 @@
-import Solutions.PalomarCorpus.E249av
-
-#print axioms PalomarCorpus.E249.PaperStatementsAV.irrational_totient_series_of_lcm_cone_window_kill_supply

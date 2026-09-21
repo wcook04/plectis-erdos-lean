@@ -119,16 +119,6 @@ theorem gap_check_window_1_240_le_79639646646701375323355774875831053
 theorem cylinderMass_children_le (a b : ℕ+) :
     cylinderMass (a + b) b + cylinderMass a (a + b) ≤ (2 / 3) * cylinderMass a b := @GcdMomentCalculus.cylinderMass_children_le a b
 
-theorem sternBrocotDepthMass_error (dp : ℕ) :
-    ∀ a b : ℕ+,
-      0 ≤ cylinderMass a b - sternBrocotDepthMass dp a b
-        ∧ cylinderMass a b - sternBrocotDepthMass dp a b
-            ≤ (2 / 3 : ℝ) ^ dp * cylinderMass a b := @GcdMomentCalculus.sternBrocotDepthMass_error dp
-
-theorem tendsto_sternBrocotDepthMass (a b : ℕ+) :
-    Filter.Tendsto (fun dp : ℕ => sternBrocotDepthMass dp a b)
-      Filter.atTop (nhds (cylinderMass a b)) := @GcdMomentCalculus.tendsto_sternBrocotDepthMass a b
-
 theorem tsum_lambert_linear_weight_sq_pure
     (w : ℕ → ℝ) (hw : ∀ d : ℕ, 0 < d → |w d| ≤ (d : ℝ))
     {r : ℝ} (hr0 : 0 ≤ r) (hr1 : r < 1) :

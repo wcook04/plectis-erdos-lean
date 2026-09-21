@@ -3,11 +3,11 @@ version: v0.4
 project:
   name: 'Erdős #257: independent restatements of refereed paper-linked theorems'
   description: >-
-    16 theorems of the substantive development for Erdős problem #257
+    7 theorems of the substantive development for Erdős problem #257
     restated against Mathlib alone and transported from the source declarations named
     below. The substantive formalization lives in Erdos249257.GreedyAchievementSet in this repository and at
     public commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84 of https://github.com/wcook04/plectis-erdos. This entry is a comparison
-    interface over that development. 16 statements transport by direct term
+    interface over that development. 7 statements transport by direct term
     application, which certifies definitional identity with the source statement;
     0 transport through a tactic bridge, which certifies implication only. The
     parent Erdős problem remains open.
@@ -53,11 +53,11 @@ sources:
   license: Apache-2.0
   author_endorsement: n/a
 status:
-  scope: Independent restatements of 16 refereed declarations for Erdős problem #257.
+  scope: Independent restatements of 7 refereed declarations for Erdős problem #257.
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
-  trusted_challenge_sorry_count: 16
+  trusted_challenge_sorry_count: 7
   sorry_boundary: Only the trusted Challenge theorem bodies carry placeholders.
   axiom_audit_status: pending fresh target-toolchain axiom audit
   permitted_axiom_budget:
@@ -68,17 +68,6 @@ status:
   local_proof_provenance: Erdos249257.GreedyAchievementSet in this repository, which is the same development published at https://github.com/wcook04/plectis-erdos commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84
   canonical_claim_status: generated comparison interface over substantive Lean in this repository
   main_results:
-  - declaration: Erdos249257.ExternalVerification257PaperStatementsAH.greedy_survives_of_mem_mersenneAchievementSet
-    file: Solutions/ExternalVerification257PaperStatementsAH.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification257PaperStatementsAH/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAH.greedy_survives_of_mem_mersenneAchievementSet
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: Erdos249257.greedy_survives_of_mem_mersenneAchievementSet
-    source_file: Erdos249257/GreedyAchievementSet.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
   - declaration: Erdos249257.ExternalVerification257PaperStatementsAH.halfTwoChannelCap_lt_mersenneTail
     file: Solutions/ExternalVerification257PaperStatementsAH.lean
     sorry_count: 0
@@ -90,61 +79,6 @@ status:
     source_file: Erdos249257/GreedyAchievementSet.lean
     source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
     transport: definitional
-  - declaration: Erdos249257.ExternalVerification257PaperStatementsAH.half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite
-    file: Solutions/ExternalVerification257PaperStatementsAH.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification257PaperStatementsAH/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAH.half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: Erdos249257.half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite
-    source_file: Erdos249257/GreedyAchievementSet.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
-  - declaration: Erdos249257.ExternalVerification257PaperStatementsAH.half_mem_mersenneAchievementSet_of_secondChannelSeparation
-    file: Solutions/ExternalVerification257PaperStatementsAH.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification257PaperStatementsAH/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAH.half_mem_mersenneAchievementSet_of_secondChannelSeparation
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: Erdos249257.half_mem_mersenneAchievementSet_of_secondChannelSeparation
-    source_file: Erdos249257/GreedyAchievementSet.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
-  - declaration: Erdos249257.ExternalVerification257PaperStatementsAH.half_mem_mersenneAchievementSet_of_secondChannelSeparationRat_from_seven
-    file: Solutions/ExternalVerification257PaperStatementsAH.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification257PaperStatementsAH/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAH.half_mem_mersenneAchievementSet_of_secondChannelSeparationRat_from_seven
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: Erdos249257.half_mem_mersenneAchievementSet_of_secondChannelSeparationRat_from_seven
-    source_file: Erdos249257/GreedyAchievementSet.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
-  - declaration: Erdos249257.ExternalVerification257PaperStatementsAH.half_mem_mersenneAchievementSet_of_skipped_dyadicCap
-    file: Solutions/ExternalVerification257PaperStatementsAH.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification257PaperStatementsAH/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAH.half_mem_mersenneAchievementSet_of_skipped_dyadicCap
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: Erdos249257.half_mem_mersenneAchievementSet_of_skipped_dyadicCap
-    source_file: Erdos249257/GreedyAchievementSet.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
-  - declaration: Erdos249257.ExternalVerification257PaperStatementsAH.half_mem_mersenneAchievementSet_of_skipped_twoChannelCap
-    file: Solutions/ExternalVerification257PaperStatementsAH.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification257PaperStatementsAH/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAH.half_mem_mersenneAchievementSet_of_skipped_twoChannelCap
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: Erdos249257.half_mem_mersenneAchievementSet_of_skipped_twoChannelCap
-    source_file: Erdos249257/GreedyAchievementSet.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
   - declaration: Erdos249257.ExternalVerification257PaperStatementsAH.irrational_erdosBorweinMersenneConstant
     file: Solutions/ExternalVerification257PaperStatementsAH.lean
     sorry_count: 0
@@ -153,39 +87,6 @@ status:
     canonical_claim_status: source_transport_prepared_pending_release_validation
     novelty_status: unassessed
     source_declaration: Erdos249257.irrational_erdosBorweinMersenneConstant
-    source_file: Erdos249257/GreedyAchievementSet.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
-  - declaration: Erdos249257.ExternalVerification257PaperStatementsAH.mem_mersenneAchievementSet_iff_greedy_survival
-    file: Solutions/ExternalVerification257PaperStatementsAH.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification257PaperStatementsAH/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAH.mem_mersenneAchievementSet_iff_greedy_survival
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: Erdos249257.mem_mersenneAchievementSet_iff_greedy_survival
-    source_file: Erdos249257/GreedyAchievementSet.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
-  - declaration: Erdos249257.ExternalVerification257PaperStatementsAH.mem_mersenneAchievementSet_of_greedySkippedSupport_infinite
-    file: Solutions/ExternalVerification257PaperStatementsAH.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification257PaperStatementsAH/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAH.mem_mersenneAchievementSet_of_greedySkippedSupport_infinite
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: Erdos249257.mem_mersenneAchievementSet_of_greedySkippedSupport_infinite
-    source_file: Erdos249257/GreedyAchievementSet.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
-  - declaration: Erdos249257.ExternalVerification257PaperStatementsAH.mem_mersenneAchievementSet_of_greedy_survival
-    file: Solutions/ExternalVerification257PaperStatementsAH.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification257PaperStatementsAH/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAH.mem_mersenneAchievementSet_of_greedy_survival
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: Erdos249257.mem_mersenneAchievementSet_of_greedy_survival
     source_file: Erdos249257/GreedyAchievementSet.lean
     source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
     transport: definitional

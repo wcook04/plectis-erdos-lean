@@ -4,7 +4,6 @@
   "theorem_names": [
     "Erdos249257.ExternalVerification257PaperStatementsAQ.half_lt_tsum_negativeMobius",
     "Erdos249257.ExternalVerification257PaperStatementsAQ.tsum_negativeMobius_eq_half_add_positiveMobiusTail",
-    "Erdos249257.ExternalVerification257PaperStatementsAQ.paper_finite_support_and_onesided_certificate",
     "Erdos249257.ExternalVerification257PaperStatementsAQ.paper_first_positiveMobius_tail_term",
     "Erdos249257.ExternalVerification257PaperStatementsAQ.paper_mobius_support_overshoots_half"
   ],

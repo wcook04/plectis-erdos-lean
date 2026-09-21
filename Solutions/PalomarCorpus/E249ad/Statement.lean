@@ -50,20 +50,10 @@ noncomputable def DTWWindowSeparatedPairsAt (h : ℕ) : Prop :=
 /-- Fibre-free counted window-phase anti-concentration at every positive shift; neither primality nor a pivot factorization is part of the statement. Local copy of Erdos249257.TotientTailPeriodKiller.DTWWindowSeparatedPairs, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def DTWWindowSeparatedPairs : Prop :=
   ∀ h : ℕ, 0 < h → DTWWindowSeparatedPairsAt h
-/-- The window step `a_n = φ(n+h) - φ(n)` driving the carry recurrence. Local copy of Erdos249257.TotientTailPeriodKiller.deltaTotient, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def deltaTotient (h n : ℕ) : ℤ := (Nat.totient (n + h) : ℤ) - (Nat.totient n : ℤ)
-/-- The integer carry orbit launched from candidate `d` at position `N`: `orbit 0 = d`, `orbit (i+1) = 2·orbit i - a_{N+i+1}`. If `D_h(N)` is the integer `d`, this orbit equals `D_h(N+i)` forever. Local copy of Erdos249257.TotientTailPeriodKiller.carryOrbit, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def carryOrbit (h N : ℕ) (d : ℤ) : ℕ → ℤ
-  | 0 => d
-  | i + 1 => 2 * carryOrbit h N d i - deltaTotient h (N + i + 1)
 /-- The decidable period-killer certificate: the residue of `A_{h,N,L}` modulo `2^L` avoids the radius-`(N+h+L+2)` neighbourhood of `0`. Local copy of Erdos249257.TotientTailPeriodKiller.certifiedKill, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def certifiedKill (h N L : ℕ) : Prop :=
   (N + h + L + 2 : ℤ) < windowDiscrepancy h N L % 2 ^ L ∧
     windowDiscrepancy h N L % 2 ^ L < 2 ^ L - (N + h + L + 2)
-/-- `periodLcm t = lcm(1, …, t)`: the universal period at scale `t`. Every primitive period `h₀ ≤ t` divides it. Local copy of Erdos249257.TotientTailPeriodKiller.periodLcm, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def periodLcm : ℕ → ℕ
-  | 0 => 1
-  | t + 1 => Nat.lcm (periodLcm t) (t + 1)
 /-- The integer prefix `Φ_N = ∑_{n=0}^{N} φ(n)·2^{N-n}` of `2^N · S`. Local copy of Erdos249257.TotientTailPeriodKiller.totientPrefix, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def totientPrefix (N : ℕ) : ℕ :=
   ∑ n ∈ Finset.range (N + 1), Nat.totient n * 2 ^ (N - n)

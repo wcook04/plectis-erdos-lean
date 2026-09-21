@@ -12,7 +12,7 @@ is not a publication entry.
 
 ## Selected Comparator theorems
 
-1359 independently restated theorems across 208 families, partitioned by problem.
+1147 independently restated theorems across 199 families, partitioned by problem.
 
 ### ExternalVerification1041CriticalGeometry
 
@@ -363,21 +363,12 @@ is not a publication entry.
 
 ### ExternalVerification249PaperStatementsAD
 
-- `PalomarCorpus.E249.PaperStatementsAD.actualLcmTailDiff_shift_pos`
-- `PalomarCorpus.E249.PaperStatementsAD.actualLcm_integral_forces_topEdgeResidue`
-- `PalomarCorpus.E249.PaperStatementsAD.carryOrbit_eq_tail_diff`
 - `PalomarCorpus.E249.PaperStatementsAD.certifiedKill_all_upto_sixteen`
 - `PalomarCorpus.E249.PaperStatementsAD.certifiedKill_depth_floor`
 - `PalomarCorpus.E249.PaperStatementsAD.dtwWindowSeparatedPairs_iff_irrational_totient_series`
-- `PalomarCorpus.E249.PaperStatementsAD.dvd_periodLcm`
-- `PalomarCorpus.E249.PaperStatementsAD.eq_prime_pow_of_not_dvd_periodLcm`
 - `PalomarCorpus.E249.PaperStatementsAD.exists_certifiedKill_iff_tail_diff_notMem_int`
 - `PalomarCorpus.E249.PaperStatementsAD.irrational_totient_series_iff_all_tail_diffs_nonintegral`
 - `PalomarCorpus.E249.PaperStatementsAD.irrational_totient_series_iff_certificate_supply`
-- `PalomarCorpus.E249.PaperStatementsAD.irrational_totient_series_iff_lcm_diagonal_certificate_supply`
-- `PalomarCorpus.E249.PaperStatementsAD.irrational_totient_series_of_lcm_cone_nonintegrality_supply`
-- `PalomarCorpus.E249.PaperStatementsAD.irrational_totient_series_of_lcm_diagonal_nonintegrality_supply`
-- `PalomarCorpus.E249.PaperStatementsAD.periodLcm_diagonal_kill_iff_tail_diff_notMem_int`
 - `PalomarCorpus.E249.PaperStatementsAD.tail_diff_int_of_den_dvd`
 - `PalomarCorpus.E249.PaperStatementsAD.tail_diff_mem_int_iff_scaled_series_mem_int`
 - `PalomarCorpus.E249.PaperStatementsAD.tail_diff_notMem_int_of_certifiedKill`
@@ -560,7 +551,6 @@ is not a publication entry.
 - `PalomarCorpus.E249.PaperStatementsAJ.three_not_dvd_two_pow`
 - `PalomarCorpus.E249.PaperStatementsAJ.totientBlock_concatenation`
 - `PalomarCorpus.E249.PaperStatementsAJ.totientBlock_doubling`
-- `PalomarCorpus.E249.PaperStatementsAJ.totientBlock_eq_paper_indexed_sum`
 
 ### ExternalVerification249PaperStatementsAK
 
@@ -568,8 +558,6 @@ is not a publication entry.
 - `PalomarCorpus.E249.PaperStatementsAK.farey_gap`
 - `PalomarCorpus.E249.PaperStatementsAK.gap_check_window_1_240_first_failure`
 - `PalomarCorpus.E249.PaperStatementsAK.gap_check_window_1_240_le_79639646646701375323355774875831053`
-- `PalomarCorpus.E249.PaperStatementsAK.sternBrocotDepthMass_error`
-- `PalomarCorpus.E249.PaperStatementsAK.tendsto_sternBrocotDepthMass`
 - `PalomarCorpus.E249.PaperStatementsAK.totientSeries_ne_rat_of_den_dvd_two_pow_fourteen_mul_mersenne`
 - `PalomarCorpus.E249.PaperStatementsAK.totientSeries_rational_den_gt_fareyBound`
 - `PalomarCorpus.E249.PaperStatementsAK.totient_mul_eq_totient_mul_gcd_div_totient_gcd`
@@ -673,27 +661,15 @@ is not a publication entry.
 ### ExternalVerification249PaperStatementsAT
 
 - `PalomarCorpus.E249.PaperStatementsAT.abs_tail_diff_scaled_sub_window_le`
-- `PalomarCorpus.E249.PaperStatementsAT.actualLcmRawErrorRadius_tendsto_zero`
 - `PalomarCorpus.E249.PaperStatementsAT.actualLcmTailOrbit_eq_tail_difference`
-- `PalomarCorpus.E249.PaperStatementsAT.actualLcmTailOrbit_global_to_local`
-- `PalomarCorpus.E249.PaperStatementsAT.actualLcmTailOrbit_pos`
-- `PalomarCorpus.E249.PaperStatementsAT.actualLcm_corridor_pos`
-- `PalomarCorpus.E249.PaperStatementsAT.actualLcm_integral_forces_topEdgeResidue_paper`
-- `PalomarCorpus.E249.PaperStatementsAT.actualLcm_tailDiff_shift_pos_paper`
 - `PalomarCorpus.E249.PaperStatementsAT.blockNormCondition_unfolded`
 - `PalomarCorpus.E249.PaperStatementsAT.block_real_part_bound_of_subset_form`
 - `PalomarCorpus.E249.PaperStatementsAT.certificate_denominator_exclusion`
 - `PalomarCorpus.E249.PaperStatementsAT.certificate_logarithmic_depth`
-- `PalomarCorpus.E249.PaperStatementsAT.certifiedKill_diagonal_all_imported_through_t64`
-- `PalomarCorpus.E249.PaperStatementsAT.certifiedKill_diagonal_t64`
 - `PalomarCorpus.E249.PaperStatementsAT.certifiedKill_of_fullDepth_phase_separation`
 - `PalomarCorpus.E249.PaperStatementsAT.certifiedKill_of_halfModulus_residue`
-- `PalomarCorpus.E249.PaperStatementsAT.clean_lcm_ray_factorisation`
 - `PalomarCorpus.E249.PaperStatementsAT.commonCertificate_eight_shifts_basepoint_twelve`
 - `PalomarCorpus.E249.PaperStatementsAT.commonCertificate_sixteen_shifts_basepoint_fourteen`
-- `PalomarCorpus.E249.PaperStatementsAT.corridor_height_lt_letter`
-- `PalomarCorpus.E249.PaperStatementsAT.corridor_letter_pos`
-- `PalomarCorpus.E249.PaperStatementsAT.diagonal_certificate_unfolded`
 - `PalomarCorpus.E249.PaperStatementsAT.directed_certificate_example`
 - `PalomarCorpus.E249.PaperStatementsAT.directed_certificate_iff`
 - `PalomarCorpus.E249.PaperStatementsAT.dyadic_prefix_den_dvd`
@@ -708,39 +684,23 @@ is not a publication entry.
 - `PalomarCorpus.E249.PaperStatementsAT.exists_certifiedKill_of_block_real_part_bound`
 - `PalomarCorpus.E249.PaperStatementsAT.exists_certifiedKill_of_subset_real_part_bound`
 - `PalomarCorpus.E249.PaperStatementsAT.exists_growingShift_simultaneous_certificate_iff_irrational`
-- `PalomarCorpus.E249.PaperStatementsAT.exists_periodLcm_strict_jump_ge_paper`
 - `PalomarCorpus.E249.PaperStatementsAT.exists_prime_integral_tailDiff_half_pulse`
 - `PalomarCorpus.E249.PaperStatementsAT.exists_prime_twoAdic_half_pulse_window`
 - `PalomarCorpus.E249.PaperStatementsAT.exists_prime_twoAdic_pulse_block`
 - `PalomarCorpus.E249.PaperStatementsAT.exists_simultaneous_depth_of_irrational`
 - `PalomarCorpus.E249.PaperStatementsAT.exists_simultaneous_depth_succ_of_irrational`
-- `PalomarCorpus.E249.PaperStatementsAT.finite_carry_test_sound`
-- `PalomarCorpus.E249.PaperStatementsAT.finite_carry_true_orbit`
 - `PalomarCorpus.E249.PaperStatementsAT.first_harmonic_re_bound_of_norm_bound`
-- `PalomarCorpus.E249.PaperStatementsAT.fixedRank_cleanWindow_structure`
 - `PalomarCorpus.E249.PaperStatementsAT.fixed_depth_bounds_indices`
 - `PalomarCorpus.E249.PaperStatementsAT.four_tail_checked_instance`
 - `PalomarCorpus.E249.PaperStatementsAT.four_tail_combination_eq`
 - `PalomarCorpus.E249.PaperStatementsAT.four_tail_criterion_sound`
 - `PalomarCorpus.E249.PaperStatementsAT.four_tail_error_bound`
 - `PalomarCorpus.E249.PaperStatementsAT.four_tail_window_eq`
-- `PalomarCorpus.E249.PaperStatementsAT.integral_carry_strictly_between`
-- `PalomarCorpus.E249.PaperStatementsAT.integral_tail_forces_upper_endpoint_residue`
-- `PalomarCorpus.E249.PaperStatementsAT.irrational_iff_diagonal_orbit_nonintegrality`
 - `PalomarCorpus.E249.PaperStatementsAT.irrational_of_accumulated_halfModulus_supply`
 - `PalomarCorpus.E249.PaperStatementsAT.irrational_of_blockNormCondition`
 - `PalomarCorpus.E249.PaperStatementsAT.irrational_of_certificate_supply`
-- `PalomarCorpus.E249.PaperStatementsAT.irrational_of_diagonal_orbit_separation_supply`
 - `PalomarCorpus.E249.PaperStatementsAT.irrational_of_first_harmonic_norm_gap`
-- `PalomarCorpus.E249.PaperStatementsAT.irrational_of_four_tail_supply`
-- `PalomarCorpus.E249.PaperStatementsAT.irrational_of_logarithmicDepth_diagonal_supply`
-- `PalomarCorpus.E249.PaperStatementsAT.irrational_totientSeries_iff_cofinalDirectedLcmCertificateSupply`
-- `PalomarCorpus.E249.PaperStatementsAT.lcm_grid_flatness`
-- `PalomarCorpus.E249.PaperStatementsAT.lcm_grid_fractional_parts`
-- `PalomarCorpus.E249.PaperStatementsAT.lcm_grid_multiplier_positive`
-- `PalomarCorpus.E249.PaperStatementsAT.lcm_grid_supply_iff`
 - `PalomarCorpus.E249.PaperStatementsAT.prefix_fractional_part`
-- `PalomarCorpus.E249.PaperStatementsAT.short_lcm_window_nondivisor`
 - `PalomarCorpus.E249.PaperStatementsAT.totient_scaled_truncation_error`
 - `PalomarCorpus.E249.PaperStatementsAT.unclean_lcm_ray_counterexample`
 
@@ -754,29 +714,14 @@ is not a publication entry.
 - `PalomarCorpus.E249.PaperStatementsAU.certifiedKill_67_300`
 - `PalomarCorpus.E249.PaperStatementsAU.certifiedKill_81_300`
 - `PalomarCorpus.E249.PaperStatementsAU.certifiedKill_97_300`
-- `PalomarCorpus.E249.PaperStatementsAU.exists_diagonalKill_le_82`
-- `PalomarCorpus.E249.PaperStatementsAU.irrational_of_modFour_pulse_supply`
 - `PalomarCorpus.E249.PaperStatementsAU.irrational_of_period_multiple_certificate_supply`
-- `PalomarCorpus.E249.PaperStatementsAU.irrational_of_primeJumpSharp_supply`
-- `PalomarCorpus.E249.PaperStatementsAU.irrational_of_restrictedDepth_diagonal_supply`
-- `PalomarCorpus.E249.PaperStatementsAU.irrational_of_short_window_diagonal_supply`
-- `PalomarCorpus.E249.PaperStatementsAU.irrational_of_topEdgeResidueGapSupply`
-- `PalomarCorpus.E249.PaperStatementsAU.irrational_of_upper_endpoint_gap_supply`
-- `PalomarCorpus.E249.PaperStatementsAU.lcmRayArithmeticLetter_eq_totient_difference`
-- `PalomarCorpus.E249.PaperStatementsAU.lcmRay_divisor_clean_formula`
-- `PalomarCorpus.E249.PaperStatementsAU.lcmRay_divisor_denominators_pos`
 - `PalomarCorpus.E249.PaperStatementsAU.lcmRay_divisor_gcd_example`
-- `PalomarCorpus.E249.PaperStatementsAU.lcmRay_divisor_product_formula`
-- `PalomarCorpus.E249.PaperStatementsAU.lcmRay_nondivisor_literal`
 - `PalomarCorpus.E249.PaperStatementsAU.orbit_tail_diff_eq`
 - `PalomarCorpus.E249.PaperStatementsAU.orbit_tail_diff_firstChar_eq`
 - `PalomarCorpus.E249.PaperStatementsAU.orbit_tail_diff_fract_eq_doubling_orbit`
 - `PalomarCorpus.E249.PaperStatementsAU.orbit_tail_diff_sub_scaled_is_int`
 - `PalomarCorpus.E249.PaperStatementsAU.orbit_tail_recurrence`
-- `PalomarCorpus.E249.PaperStatementsAU.penultimate_shortWindow_difference_eq_half`
 - `PalomarCorpus.E249.PaperStatementsAU.periodLcm_four_eq_twelve`
-- `PalomarCorpus.E249.PaperStatementsAU.periodLcm_strict_jump_at_powerTwo_pred`
-- `PalomarCorpus.E249.PaperStatementsAU.periodLcm_strict_jump_at_prime_pred`
 - `PalomarCorpus.E249.PaperStatementsAU.periodLcm_zero_and_one_eq_one`
 - `PalomarCorpus.E249.PaperStatementsAU.periodMultipleKillSupply_iff_irrational`
 - `PalomarCorpus.E249.PaperStatementsAU.period_multiple_certificate_at_one`
@@ -786,7 +731,6 @@ is not a publication entry.
 - `PalomarCorpus.E249.PaperStatementsAU.primeJumpTailCommutator_twelve_five_notMem_int`
 - `PalomarCorpus.E249.PaperStatementsAU.primeJump_witness_twelve_five_values`
 - `PalomarCorpus.E249.PaperStatementsAU.pulse_delta_of_divisor_data`
-- `PalomarCorpus.E249.PaperStatementsAU.rational_forces_four_tail_diagonals_integral`
 - `PalomarCorpus.E249.PaperStatementsAU.rational_forces_period_multiple_integrality`
 - `PalomarCorpus.E249.PaperStatementsAU.rational_forces_pulse_class_integrality`
 - `PalomarCorpus.E249.PaperStatementsAU.rational_tail_period_explicit_witnesses`
@@ -794,33 +738,17 @@ is not a publication entry.
 - `PalomarCorpus.E249.PaperStatementsAU.second_difference_cell_one_eight`
 - `PalomarCorpus.E249.PaperStatementsAU.second_difference_certificate_sound`
 - `PalomarCorpus.E249.PaperStatementsAU.second_difference_error_bound`
-- `PalomarCorpus.E249.PaperStatementsAU.shortWindowSupply_single_witness_six_ninetyThree`
-- `PalomarCorpus.E249.PaperStatementsAU.shortWindowSupply_through_six_paper`
-- `PalomarCorpus.E249.PaperStatementsAU.shortWindowSupply_witness_eq_t64_certificate`
 - `PalomarCorpus.E249.PaperStatementsAU.shortWindow_certificates_kill_omega_four_and_six`
-- `PalomarCorpus.E249.PaperStatementsAU.shortWindow_totient_difference_pos`
-- `PalomarCorpus.E249.PaperStatementsAU.short_window_diagonal_through_six`
 - `PalomarCorpus.E249.PaperStatementsAU.short_window_diagonal_witnesses`
 - `PalomarCorpus.E249.PaperStatementsAU.tail_diff_notMem_int_of_irrational`
-- `PalomarCorpus.E249.PaperStatementsAU.tendsto_actualLcmRawErrorRadius_atTop_nhds_zero`
 - `PalomarCorpus.E249.PaperStatementsAU.three_particular_equivalences`
-- `PalomarCorpus.E249.PaperStatementsAU.topEdgeResidueGap_forces_nonintegral`
-- `PalomarCorpus.E249.PaperStatementsAU.topEdgeResidueGap_orbit_nonintegral`
 - `PalomarCorpus.E249.PaperStatementsAU.topEdgeResidueGap_unfolded`
 - `PalomarCorpus.E249.PaperStatementsAU.totientTail_bounds`
 - `PalomarCorpus.E249.PaperStatementsAU.totientTail_le_add_two`
 - `PalomarCorpus.E249.PaperStatementsAU.twoAdic_pulse_construction_never_certifies`
-- `PalomarCorpus.E249.PaperStatementsAU.two_mul_totient_dvd_totient_second_difference`
 - `PalomarCorpus.E249.PaperStatementsAU.upper_endpoint_condition_iff`
-- `PalomarCorpus.E249.PaperStatementsAU.upper_endpoint_gap_nonintegral`
-- `PalomarCorpus.E249.PaperStatementsAU.weighted_shortWindow_band_iff_certifiedKill`
-- `PalomarCorpus.E249.PaperStatementsAU.weighted_shortWindow_sum_eq_windowDiscrepancy`
 - `PalomarCorpus.E249.PaperStatementsAU.windowDiscrepancy_diagonal_eq`
 - `PalomarCorpus.E249.PaperStatementsAU.windowFirstCos_unfolded`
-
-### ExternalVerification249PaperStatementsAV
-
-- `PalomarCorpus.E249.PaperStatementsAV.irrational_totient_series_of_lcm_cone_window_kill_supply`
 
 ### ExternalVerification249PaperStatementsAW
 
@@ -834,38 +762,12 @@ is not a publication entry.
 
 ### ExternalVerification249PaperStatementsAX
 
-- `PalomarCorpus.E249.PaperStatementsAX.abs_actualLcmTailOrbit_sub_rawApprox_lt_explicit`
-- `PalomarCorpus.E249.PaperStatementsAX.abs_actualLcmTailOrbit_sub_rawApprox_lt_paper_form`
-- `PalomarCorpus.E249.PaperStatementsAX.abs_orbit_sub_rawApprox_lt`
-- `PalomarCorpus.E249.PaperStatementsAX.actualLcmRawApprox_isRat`
-- `PalomarCorpus.E249.PaperStatementsAX.canonicalAdjacentSuffixCentralSlack_paper_formula`
-- `PalomarCorpus.E249.PaperStatementsAX.corridor_escape_and_irrational_of_magnitude`
-- `PalomarCorpus.E249.PaperStatementsAX.endpoint_criterion_nonintegral`
-- `PalomarCorpus.E249.PaperStatementsAX.endpoint_identity`
 - `PalomarCorpus.E249.PaperStatementsAX.finite_grid_nonintegral_pair`
-- `PalomarCorpus.E249.PaperStatementsAX.finite_grid_supply_irrational`
-- `PalomarCorpus.E249.PaperStatementsAX.irrational_of_actualLcmOrbitSeparationSupply`
-- `PalomarCorpus.E249.PaperStatementsAX.irrational_of_lower_escape_supply`
-- `PalomarCorpus.E249.PaperStatementsAX.irrational_of_paperAdjacentSuffixMidbandSupply`
-- `PalomarCorpus.E249.PaperStatementsAX.irrational_of_powerTwo_postJump_slack_supply`
-- `PalomarCorpus.E249.PaperStatementsAX.irrational_of_terminalDominanceSupply`
 - `PalomarCorpus.E249.PaperStatementsAX.joint35ConeWindow_eq`
 - `PalomarCorpus.E249.PaperStatementsAX.joint35_nonintegral_of_separated_window`
 - `PalomarCorpus.E249.PaperStatementsAX.joint35_truncation_error`
-- `PalomarCorpus.E249.PaperStatementsAX.lcmHeight_eq_periodLcm`
-- `PalomarCorpus.E249.PaperStatementsAX.oddGuarded_depth_eq_prescribed`
-- `PalomarCorpus.E249.PaperStatementsAX.oddHalfCenteredLift_spec`
-- `PalomarCorpus.E249.PaperStatementsAX.paperAdjacentSuffixMidbandSupply_of_adjacentSuffixMidband`
-- `PalomarCorpus.E249.PaperStatementsAX.paperAdjacentSuffixMidbandSupply_of_flexibleActualTopEdgeMagnitude`
-- `PalomarCorpus.E249.PaperStatementsAX.paperAdjacentSuffixMidbandSupply_of_oddGuardTopEdgeHalfWordBand`
 - `PalomarCorpus.E249.PaperStatementsAX.paperGridNumerator_eq`
-- `PalomarCorpus.E249.PaperStatementsAX.paperTeChain_fifth_gives_nonintegrality`
-- `PalomarCorpus.E249.PaperStatementsAX.paperTeChain_first_four_imply_topEdgeSupply`
-- `PalomarCorpus.E249.PaperStatementsAX.paperTeChain_five_sufficient_for_irrationality`
 - `PalomarCorpus.E249.PaperStatementsAX.paperTeChain_item_one_unfolded`
-- `PalomarCorpus.E249.PaperStatementsAX.paperTeChain_relations`
-- `PalomarCorpus.E249.PaperStatementsAX.powerTwoActualLcmTopEdgeResidueGapSupply_of_paperAdjacentSuffixMidband`
-- `PalomarCorpus.E249.PaperStatementsAX.rawApprox_separation_of_orbit_separation`
 - `PalomarCorpus.E249.PaperStatementsAX.specified_euler_tail_period`
 - `PalomarCorpus.E249.PaperStatementsAX.sum_sq_dist_from_phase_one`
 - `PalomarCorpus.E249.PaperStatementsAX.tailDifference_eq_coefficient_mul_series`
@@ -874,9 +776,6 @@ is not a publication entry.
 - `PalomarCorpus.E249.PaperStatementsAX.teChain_item_four_unfolded`
 - `PalomarCorpus.E249.PaperStatementsAX.teChain_item_three_unfolded`
 - `PalomarCorpus.E249.PaperStatementsAX.teChain_item_two_unfolded`
-- `PalomarCorpus.E249.PaperStatementsAX.te_chain_relations`
-- `PalomarCorpus.E249.PaperStatementsAX.terminalDominance_orbit_nonintegral`
-- `PalomarCorpus.E249.PaperStatementsAX.topEdgeResidueGap_or_of_paperAdjacentSuffixMidband`
 - `PalomarCorpus.E249.PaperStatementsAX.totientTail_enclosure`
 
 ### ExternalVerification249PaperStatementsAY
@@ -897,7 +796,6 @@ is not a publication entry.
 
 ### ExternalVerification249PaperStatementsAZ
 
-- `PalomarCorpus.E249.PaperStatementsAZ.affineBinaryOrbit_difference_and_reset`
 - `PalomarCorpus.E249.PaperStatementsAZ.balancedPulse_common_history`
 - `PalomarCorpus.E249.PaperStatementsAZ.balancedPulse_label_lower_bound`
 - `PalomarCorpus.E249.PaperStatementsAZ.balancedPulse_no_decoder_from_common_state`
@@ -945,10 +843,6 @@ is not a publication entry.
 - `PalomarCorpus.E249.PaperStatementsBE.residueOffset_of_dvd`
 - `PalomarCorpus.E249.PaperStatementsBE.transportResidueKernel_eq_mobiusTermKernel`
 
-### ExternalVerification249PaperStatementsBF
-
-- `PalomarCorpus.E249.PaperStatementsBF.fiveQuarter_comparison_rational_with_carryRank_floor`
-
 ### ExternalVerification249PaperStatementsBG
 
 - `PalomarCorpus.E249.PaperStatementsBG.abs_mobiusMersenneTheta_sub_prefix_le`
@@ -969,10 +863,6 @@ is not a publication entry.
 - `PalomarCorpus.E249.PaperStatementsBH.rationalControl_periodic_with_unbounded_carry_rank`
 - `PalomarCorpus.E249.PaperStatementsBH.rationality_forces_mod_period_and_unbounded_rank`
 - `PalomarCorpus.E249.PaperStatementsBH.rationality_gives_mod_period_and_unbounded_rank`
-
-### ExternalVerification249PaperStatementsBI
-
-- `PalomarCorpus.E249.PaperStatementsBI.rank_floor_and_false_proposed_carryRank_ceiling`
 
 ### ExternalVerification249PaperStatementsBJ
 
@@ -1375,13 +1265,8 @@ is not a publication entry.
 - `PalomarCorpus.E257.PaperStatementsAD.paper_channel_factor_gcd_eq_one`
 - `PalomarCorpus.E257.PaperStatementsAD.paper_channel_factors_pairwise_coprime`
 - `PalomarCorpus.E257.PaperStatementsAD.paper_consecutive_not_both_divisible`
-- `PalomarCorpus.E257.PaperStatementsAD.paper_dynamics`
 - `PalomarCorpus.E257.PaperStatementsAD.paper_finite_sum_inv_odd_den_odd`
 - `PalomarCorpus.E257.PaperStatementsAD.paper_finite_sum_inv_odd_ne_half`
-- `PalomarCorpus.E257.PaperStatementsAD.paper_greedySupport_greedy_rule`
-- `PalomarCorpus.E257.PaperStatementsAD.paper_greedySupport_isRowLower`
-- `PalomarCorpus.E257.PaperStatementsAD.paper_greedySupport_mem`
-- `PalomarCorpus.E257.PaperStatementsAD.paper_greedy_step`
 - `PalomarCorpus.E257.PaperStatementsAD.paper_isRowLower_unique`
 - `PalomarCorpus.E257.PaperStatementsAD.paper_isRowUpper_unique`
 - `PalomarCorpus.E257.PaperStatementsAD.paper_mersenne_channel_survival`
@@ -1398,7 +1283,6 @@ is not a publication entry.
 
 ### ExternalVerification257PaperStatementsAE
 
-- `PalomarCorpus.E257.PaperStatementsAE.affineBinaryOrbit_mod_twoPow_eq`
 - `PalomarCorpus.E257.PaperStatementsAE.balancedPulse_endpoint_fanout`
 - `PalomarCorpus.E257.PaperStatementsAE.balancedPulse_label_card_lower_bound`
 - `PalomarCorpus.E257.PaperStatementsAE.balancedPulse_no_autonomous_decoder`
@@ -1443,17 +1327,8 @@ is not a publication entry.
 
 ### ExternalVerification257PaperStatementsAH
 
-- `PalomarCorpus.E257.PaperStatementsAH.greedy_survives_of_mem_mersenneAchievementSet`
 - `PalomarCorpus.E257.PaperStatementsAH.halfTwoChannelCap_lt_mersenneTail`
-- `PalomarCorpus.E257.PaperStatementsAH.half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite`
-- `PalomarCorpus.E257.PaperStatementsAH.half_mem_mersenneAchievementSet_of_secondChannelSeparation`
-- `PalomarCorpus.E257.PaperStatementsAH.half_mem_mersenneAchievementSet_of_secondChannelSeparationRat_from_seven`
-- `PalomarCorpus.E257.PaperStatementsAH.half_mem_mersenneAchievementSet_of_skipped_dyadicCap`
-- `PalomarCorpus.E257.PaperStatementsAH.half_mem_mersenneAchievementSet_of_skipped_twoChannelCap`
 - `PalomarCorpus.E257.PaperStatementsAH.irrational_erdosBorweinMersenneConstant`
-- `PalomarCorpus.E257.PaperStatementsAH.mem_mersenneAchievementSet_iff_greedy_survival`
-- `PalomarCorpus.E257.PaperStatementsAH.mem_mersenneAchievementSet_of_greedySkippedSupport_infinite`
-- `PalomarCorpus.E257.PaperStatementsAH.mem_mersenneAchievementSet_of_greedy_survival`
 - `PalomarCorpus.E257.PaperStatementsAH.mersenneGap_pos`
 - `PalomarCorpus.E257.PaperStatementsAH.mersenneTail_eq_weight_add`
 - `PalomarCorpus.E257.PaperStatementsAH.mersenneTail_le_two_mul_weight`
@@ -1463,8 +1338,6 @@ is not a publication entry.
 ### ExternalVerification257PaperStatementsAI
 
 - `PalomarCorpus.E257.PaperStatementsAI.paper_forced_greedy_low_ranks`
-- `PalomarCorpus.E257.PaperStatementsAI.paper_forced_greedy_unique_support_and_criterion`
-- `PalomarCorpus.E257.PaperStatementsAI.paper_rung_finite_decision`
 
 ### ExternalVerification257PaperStatementsAJ
 
@@ -1472,10 +1345,6 @@ is not a publication entry.
 
 ### ExternalVerification257PaperStatementsAK
 
-- `PalomarCorpus.E257.PaperStatementsAK.localMersenneHalfTarget_lower_word_eq_greedy_and_remainder_eq`
-- `PalomarCorpus.E257.PaperStatementsAK.localMersenneWeightsFrom_gapDominates`
-- `PalomarCorpus.E257.PaperStatementsAK.localMersenneWeights_gapDominates_even`
-- `PalomarCorpus.E257.PaperStatementsAK.localMersenneWeights_gapDominates_odd`
 - `PalomarCorpus.E257.PaperStatementsAK.paper_floor_quotient_geometric_sum`
 - `PalomarCorpus.E257.PaperStatementsAK.paper_next_floor_quotient`
 - `PalomarCorpus.E257.PaperStatementsAK.paper_next_floor_quotient_no_fixed_point`
@@ -1483,23 +1352,13 @@ is not a publication entry.
 - `PalomarCorpus.E257.PaperStatementsAK.paper_repair_integer_eq_endpoint_defect`
 - `PalomarCorpus.E257.PaperStatementsAK.paper_signed_endpoint_defect_succ`
 - `PalomarCorpus.E257.PaperStatementsAK.paper_signed_endpoint_recurrence`
-- `PalomarCorpus.E257.PaperStatementsAK.paper_successor_remainders_fourteen_through_thirtyone`
-- `PalomarCorpus.E257.PaperStatementsAK.remainder_lt_gap_iff_eq_integerGreedyBits`
 
 ### ExternalVerification257PaperStatementsAL
 
 - `PalomarCorpus.E257.PaperStatementsAL.finite_boolSupport_ne_half`
-- `PalomarCorpus.E257.PaperStatementsAL.half_of_cofinal_absolute_carry`
-- `PalomarCorpus.E257.PaperStatementsAL.infinite_support_half_of_mobiusCenteredHalfCarry_sqrtBound`
-- `PalomarCorpus.E257.PaperStatementsAL.integerHalfCarry_eq_scaled_residual_add_tail`
 - `PalomarCorpus.E257.PaperStatementsAL.paper_coeffTail_le_index_add_two`
-- `PalomarCorpus.E257.PaperStatementsAL.paper_cofiniteRightTail_ne_zero_centeredEndpoint`
-- `PalomarCorpus.E257.PaperStatementsAL.paper_relaxed_constant_six_every_depth`
-- `PalomarCorpus.E257.PaperStatementsAL.paper_square_depth_terminal_bound`
-- `PalomarCorpus.E257.PaperStatementsAL.paper_terminal_strip_forces_half_membership`
 - `PalomarCorpus.E257.PaperStatementsAL.paper_zero_run_le_eps_logb`
 - `PalomarCorpus.E257.PaperStatementsAL.paper_zero_run_le_of_mem`
-- `PalomarCorpus.E257.PaperStatementsAL.square_depth_witness`
 - `PalomarCorpus.E257.PaperStatementsAL.supportCoeff_boundaryPair_unitDrop_at_double`
 - `PalomarCorpus.E257.PaperStatementsAL.supportCoeff_extend_true_eq_false_add_one_at_double`
 - `PalomarCorpus.E257.PaperStatementsAL.supportCoeff_insert_divisor`
@@ -1507,27 +1366,16 @@ is not a publication entry.
 ### ExternalVerification257PaperStatementsAM
 
 - `PalomarCorpus.E257.PaperStatementsAM.abs_supportValue_sub_le_mersenneTail`
-- `PalomarCorpus.E257.PaperStatementsAM.approx_orbit_induction`
 - `PalomarCorpus.E257.PaperStatementsAM.certificate_of_existsFatalHalfGap`
 - `PalomarCorpus.E257.PaperStatementsAM.certifiedTailBound_cast`
 - `PalomarCorpus.E257.PaperStatementsAM.certifiedWordValue_cast`
-- `PalomarCorpus.E257.PaperStatementsAM.cofinalPositiveHalfGreedySkips_iff_half_mem`
 - `PalomarCorpus.E257.PaperStatementsAM.depth_prefix_interval_disjoint`
 - `PalomarCorpus.E257.PaperStatementsAM.existsFatalHalfGap_iff_exists_certificate`
 - `PalomarCorpus.E257.PaperStatementsAM.existsFatalHalfGap_of_certificate`
-- `PalomarCorpus.E257.PaperStatementsAM.fatal_absorbing`
 - `PalomarCorpus.E257.PaperStatementsAM.fatal_gap_endpoint_bounds`
 - `PalomarCorpus.E257.PaperStatementsAM.fatal_gap_excludes_every_representation`
 - `PalomarCorpus.E257.PaperStatementsAM.fatal_gap_within_prefix_interval`
-- `PalomarCorpus.E257.PaperStatementsAM.greedyHalf_mem_nextMersenneDyadicSliver_iff_excess`
-- `PalomarCorpus.E257.PaperStatementsAM.greedy_half_infinite_of_cofinalStripReturn`
-- `PalomarCorpus.E257.PaperStatementsAM.greedy_half_infinite_of_mobiusCenteredHalfCarry_sqrtBound`
-- `PalomarCorpus.E257.PaperStatementsAM.greedy_half_infinite_of_mobiusCenteredHalfCarry_upperBound`
-- `PalomarCorpus.E257.PaperStatementsAM.greedy_half_of_cofinal_upper_carry`
-- `PalomarCorpus.E257.PaperStatementsAM.greedy_mobiusCenteredHalfCarry_nonneg`
-- `PalomarCorpus.E257.PaperStatementsAM.half_mem_iff_every_actual_skip_survives`
 - `PalomarCorpus.E257.PaperStatementsAM.half_mem_mersenneAchievementSet_iff_no_existsFatalHalfGap`
-- `PalomarCorpus.E257.PaperStatementsAM.half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips`
 - `PalomarCorpus.E257.PaperStatementsAM.half_mem_mersenneAchievementSet_or_exists_fatal_gap`
 - `PalomarCorpus.E257.PaperStatementsAM.half_ne_coe_finset_add_mersenneTail`
 - `PalomarCorpus.E257.PaperStatementsAM.irrational_mersenneTail`
@@ -1538,27 +1386,9 @@ is not a publication entry.
 - `PalomarCorpus.E257.PaperStatementsAM.mersenne_topology_quantitative`
 - `PalomarCorpus.E257.PaperStatementsAM.paper_achievement_geometry`
 - `PalomarCorpus.E257.PaperStatementsAM.paper_achievement_set_topology`
-- `PalomarCorpus.E257.PaperStatementsAM.paper_cpgs_equiv`
-- `PalomarCorpus.E257.PaperStatementsAM.paper_effective_horizon_test`
-- `PalomarCorpus.E257.PaperStatementsAM.paper_eta_eq_coeffTail_sub_carry`
-- `PalomarCorpus.E257.PaperStatementsAM.paper_eta_hasRationalValue`
-- `PalomarCorpus.E257.PaperStatementsAM.paper_eventual_nonnegative_margin_equivalence`
 - `PalomarCorpus.E257.PaperStatementsAM.paper_exact_mass_threshold`
-- `PalomarCorpus.E257.PaperStatementsAM.paper_frozen_margin_limit_pos_iff`
-- `PalomarCorpus.E257.PaperStatementsAM.paper_frozen_margin_normalised_monotone`
-- `PalomarCorpus.E257.PaperStatementsAM.paper_frozen_margin_normalised_tendsto`
-- `PalomarCorpus.E257.PaperStatementsAM.paper_frozen_margin_normalised_value`
-- `PalomarCorpus.E257.PaperStatementsAM.paper_greedyHalfRemainder_ne_dyadicCap`
-- `PalomarCorpus.E257.PaperStatementsAM.paper_greedy_survival`
-- `PalomarCorpus.E257.PaperStatementsAM.paper_halfGreedyPrefixSupport_eq_greedy_inter_Icc`
-- `PalomarCorpus.E257.PaperStatementsAM.paper_no_ties`
-- `PalomarCorpus.E257.PaperStatementsAM.paper_no_ties_skip`
-- `PalomarCorpus.E257.PaperStatementsAM.paper_no_ties_take`
-- `PalomarCorpus.E257.PaperStatementsAM.paper_one_orbit_stability`
-- `PalomarCorpus.E257.PaperStatementsAM.paper_one_sided_finite_decision_boundary`
 - `PalomarCorpus.E257.PaperStatementsAM.paper_sharp_fatal_gap`
 - `PalomarCorpus.E257.PaperStatementsAM.paper_sharp_skip_safe_actual_tail`
-- `PalomarCorpus.E257.PaperStatementsAM.paper_terminal_strip_equiv`
 - `PalomarCorpus.E257.PaperStatementsAM.paper_volume_supportedMersenneAchievementSet_dichotomy`
 - `PalomarCorpus.E257.PaperStatementsAM.perfect_supportedMersenneAchievementSet`
 - `PalomarCorpus.E257.PaperStatementsAM.positiveMersenneSupportValue_coe_finset_ne_half`
@@ -1569,7 +1399,6 @@ is not a publication entry.
 - `PalomarCorpus.E257.PaperStatementsAM.summable_mersenneGap_shift`
 - `PalomarCorpus.E257.PaperStatementsAM.summable_mersenneGap_succ`
 - `PalomarCorpus.E257.PaperStatementsAM.supportedMersenneDigitValue_injective`
-- `PalomarCorpus.E257.PaperStatementsAM.tailGreedyRemainder_mersenne`
 - `PalomarCorpus.E257.PaperStatementsAM.tendsto_mersenneGap_tail_zero`
 - `PalomarCorpus.E257.PaperStatementsAM.volume_supportedMersenneAchievementSet_dichotomy`
 - `PalomarCorpus.E257.PaperStatementsAM.volume_supportedMersenneAchievementSet_eq_zero_of_compl_infinite`
@@ -1594,7 +1423,6 @@ is not a publication entry.
 ### ExternalVerification257PaperStatementsAQ
 
 - `PalomarCorpus.E257.PaperStatementsAQ.half_lt_tsum_negativeMobius`
-- `PalomarCorpus.E257.PaperStatementsAQ.paper_finite_support_and_onesided_certificate`
 - `PalomarCorpus.E257.PaperStatementsAQ.paper_first_positiveMobius_tail_term`
 - `PalomarCorpus.E257.PaperStatementsAQ.paper_mobius_support_overshoots_half`
 - `PalomarCorpus.E257.PaperStatementsAQ.tsum_negativeMobius_eq_half_add_positiveMobiusTail`
@@ -1604,70 +1432,34 @@ is not a publication entry.
 - `PalomarCorpus.E257.PaperStatementsAR.abs_exactLocalMersenneRowValue_sub_half_le`
 - `PalomarCorpus.E257.PaperStatementsAR.abs_localMersennePrefixValue_sub_half_le`
 - `PalomarCorpus.E257.PaperStatementsAR.cofinalExactLocalMersenneHalfRows_of_criticalQuotientSupply`
-- `PalomarCorpus.E257.PaperStatementsAR.cofinalExactLocalMersenneHalfRows_of_positiveHalfGreedySkips`
-- `PalomarCorpus.E257.PaperStatementsAR.eq_halfGreedyPrefixSupport_of_critical_crossing`
-- `PalomarCorpus.E257.PaperStatementsAR.eventually_seamSupport_agrees`
-- `PalomarCorpus.E257.PaperStatementsAR.exactLocalMersenneHalfRow_of_positiveHalfGreedySkip`
 - `PalomarCorpus.E257.PaperStatementsAR.exactLocalMersenneHalfRow_two_mul_sub_two_of_skippedCoreSharpCapacity`
 - `PalomarCorpus.E257.PaperStatementsAR.exists_exactRowStrictUpperExtension_two_mul_sub_one_of_exact_below`
 - `PalomarCorpus.E257.PaperStatementsAR.exists_exactRowStrictUpperFill_of_skippedCoreSharpCapacity`
 - `PalomarCorpus.E257.PaperStatementsAR.exists_first_localMersenne_crossing`
-- `PalomarCorpus.E257.PaperStatementsAR.greedyHalfFrozenMargin_fullShell_eq_neg_seamRemainder_of_alignment`
-- `PalomarCorpus.E257.PaperStatementsAR.halfGreedySkippedCriticalQuotientSupply_of_precriticalSuffix`
-- `PalomarCorpus.E257.PaperStatementsAR.halfGreedySkippedPrecriticalSuffixSupply_iff_preTake`
-- `PalomarCorpus.E257.PaperStatementsAR.halfGreedy_precriticalSuffix_lt_iff_futureSkipCoverage`
-- `PalomarCorpus.E257.PaperStatementsAR.halfGreedy_precriticalSuffix_lt_of_future_skip_after_takenBlock`
-- `PalomarCorpus.E257.PaperStatementsAR.halfGreedy_precriticalSuffix_lt_of_next_skip`
-- `PalomarCorpus.E257.PaperStatementsAR.half_lt_upper_competitor_of_eventually_right`
-- `PalomarCorpus.E257.PaperStatementsAR.half_mem_mersenneAchievementSet_iff_cofinalTerminalFalse`
-- `PalomarCorpus.E257.PaperStatementsAR.half_mem_mersenneAchievementSet_iff_exists_unboundedSkippedRanksAlong`
-- `PalomarCorpus.E257.PaperStatementsAR.half_mem_mersenneAchievementSet_iff_not_seamGreedyEventuallyRight`
-- `PalomarCorpus.E257.PaperStatementsAR.half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse`
 - `PalomarCorpus.E257.PaperStatementsAR.half_mem_mersenneAchievementSet_of_cofinalExactLocalRows`
 - `PalomarCorpus.E257.PaperStatementsAR.half_mem_mersenneAchievementSet_of_criticalQuotientSupply`
-- `PalomarCorpus.E257.PaperStatementsAR.half_mem_mersenneAchievementSet_of_skippedFullShellNonnegative`
-- `PalomarCorpus.E257.PaperStatementsAR.half_mem_mersenneAchievementSet_of_skippedSeamEscape`
 - `PalomarCorpus.E257.PaperStatementsAR.localBinarySuffix_two_mul_sub_one_lt_upperWindow_of_exact_below`
 - `PalomarCorpus.E257.PaperStatementsAR.localBinarySuffix_two_mul_sub_two_lt_criticalCapacity_iff`
 - `PalomarCorpus.E257.PaperStatementsAR.localBinarySuffix_two_mul_sub_two_lt_criticalCapacity_iff_geometric`
 - `PalomarCorpus.E257.PaperStatementsAR.localBinarySuffix_two_mul_sub_two_lt_criticalCapacity_iff_geometricCore`
-- `PalomarCorpus.E257.PaperStatementsAR.paper_both_cofinal_statements_iff_half_membership`
 - `PalomarCorpus.E257.PaperStatementsAR.paper_capacity_band_exclusion`
-- `PalomarCorpus.E257.PaperStatementsAR.paper_critical_crossing_support_is_greedy_prefix`
 - `PalomarCorpus.E257.PaperStatementsAR.paper_exact_row_from_skipped_prefix`
 - `PalomarCorpus.E257.PaperStatementsAR.paper_finite_row_value_ne_half`
 - `PalomarCorpus.E257.PaperStatementsAR.paper_fractional_mass_bound_not_necessary`
 - `PalomarCorpus.E257.PaperStatementsAR.paper_fractional_mass_bound_suffices_for_sharp_capacity`
 - `PalomarCorpus.E257.PaperStatementsAR.paper_real_quotient_core`
 - `PalomarCorpus.E257.PaperStatementsAR.paper_real_quotient_margins`
-- `PalomarCorpus.E257.PaperStatementsAR.paper_seam_escape_forces_remainder_band`
-- `PalomarCorpus.E257.PaperStatementsAR.paper_seam_escape_implies_full_shell_nonnegative`
-- `PalomarCorpus.E257.PaperStatementsAR.paper_seam_escape_implies_half_membership`
 - `PalomarCorpus.E257.PaperStatementsAR.precriticalCrossingTax_of_futureThreshold`
-- `PalomarCorpus.E257.PaperStatementsAR.prefix_add_mersenneTail_lt_half_of_eventually_right`
-- `PalomarCorpus.E257.PaperStatementsAR.six_membership_conditions`
-- `PalomarCorpus.E257.PaperStatementsAR.skippedCoreCriticalQuotientSupply_iff_halfGreedySkipped`
-- `PalomarCorpus.E257.PaperStatementsAR.skippedSeamAlignmentZero_iff_skippedFullShellNonnegative`
-- `PalomarCorpus.E257.PaperStatementsAR.skipped_fullShell_neg_iff_alignment_and_seamRemainder_pos`
-- `PalomarCorpus.E257.PaperStatementsAR.unboundedTerminalFalse_iff_greedyMersenneSkippedSupport_infinite`
 
 ### ExternalVerification257PaperStatementsAS
 
-- `PalomarCorpus.E257.PaperStatementsAS.paper_seam_limit_unconditional`
 - `PalomarCorpus.E257.PaperStatementsAS.paper_sharper_additive_estimate`
 - `PalomarCorpus.E257.PaperStatementsAS.paper_skipped_core_recycling_witness_bounded`
 - `PalomarCorpus.E257.PaperStatementsAS.paper_unconditional_bound_one_extra_bit`
-- `PalomarCorpus.E257.PaperStatementsAS.tendsto_seamGreedyFiniteValue_greedyHalfTargetValue`
-- `PalomarCorpus.E257.PaperStatementsAS.tendsto_seamGreedyNormalizedRemainder`
 
 ### ExternalVerification257PaperStatementsAT
 
 - `PalomarCorpus.E257.PaperStatementsAT.binaryCoeffTail_supportCoeff_coe_finset_le_card`
-- `PalomarCorpus.E257.PaperStatementsAT.mobiusCenteredHalfCarry_add_two`
-- `PalomarCorpus.E257.PaperStatementsAT.mobiusCenteredHalfCarry_nonneg_of_supportSeries_lt_half`
-- `PalomarCorpus.E257.PaperStatementsAT.paper_exact_row_integerHalfCarry_eq_one`
-- `PalomarCorpus.E257.PaperStatementsAT.paper_integerHalfCarry_eq_two_pow_sub_localPrefixQuotient`
-- `PalomarCorpus.E257.PaperStatementsAT.paper_mobiusCenteredHalfCarry_add_two`
 - `PalomarCorpus.E257.PaperStatementsAT.paper_terminal_strip_witness_six`
 
 ### ExternalVerification257PaperStatementsAU
@@ -1688,36 +1480,11 @@ is not a publication entry.
 - `PalomarCorpus.E257.PaperStatementsAV.one_lt_reciprocalMass_of_dyadic_support_fraction_of_two_pos_mem`
 - `PalomarCorpus.E257.PaperStatementsAV.shifted_state_unbounded_of_infinite_support`
 
-### ExternalVerification257PaperStatementsAW
-
-- `PalomarCorpus.E257.PaperStatementsAW.half_mem_mersenneAchievementSet_iff_no_lastHalfGreedySkip`
-- `PalomarCorpus.E257.PaperStatementsAW.isLastHalfGreedySkip_iff_skip_and_fatal`
-
 ### ExternalVerification257PaperStatementsAX
 
-- `PalomarCorpus.E257.PaperStatementsAX.largestSkipLateAt_fourteen`
-- `PalomarCorpus.E257.PaperStatementsAX.mem_seamGreedySupport_iff_scaled`
 - `PalomarCorpus.E257.PaperStatementsAX.paper_exact_row_double_or_recycle`
 - `PalomarCorpus.E257.PaperStatementsAX.paper_exact_row_example_six_and_eleven`
 - `PalomarCorpus.E257.PaperStatementsAX.paper_returning_endpoint_may_fail_to_grow`
-
-### ExternalVerification257PaperStatementsAY
-
-- `PalomarCorpus.E257.PaperStatementsAY.one_div_twenty_one_mem_iff_not_fatalAlignedBranch`
-- `PalomarCorpus.E257.PaperStatementsAY.twentyOneFatalAlignedBranch_eventually_affine_supercapacity`
-- `PalomarCorpus.E257.PaperStatementsAY.twentyOneFatalAlignedBranch_eventually_strict_supercapacity`
-
-### ExternalVerification257PaperStatementsAZ
-
-- `PalomarCorpus.E257.PaperStatementsAZ.one_div_twenty_one_mem_mersenneAchievementSet_of_cofinalGreedyDecay`
-
-### ExternalVerification257PaperStatementsBA
-
-- `PalomarCorpus.E257.PaperStatementsBA.twentyOneCofinalEvenQuotientGreedyDecay_of_closedRows`
-
-### ExternalVerification257PaperStatementsBB
-
-- `PalomarCorpus.E257.PaperStatementsBB.paper_general_repair_criteria`
 
 ### ExternalVerification257PaperStatementsBC
 
@@ -1736,20 +1503,14 @@ is not a publication entry.
 
 ### ExternalVerification257PaperStatementsBE
 
-- `PalomarCorpus.E257.PaperStatementsBE.paper_carry_survivor_extinction`
 - `PalomarCorpus.E257.PaperStatementsBE.paper_critical_dyadic_band_index_eq_top_of_le_two`
 - `PalomarCorpus.E257.PaperStatementsBE.paper_critical_dyadic_band_index_unique`
 - `PalomarCorpus.E257.PaperStatementsBE.paper_critical_dyadic_boundary_is_smallest`
 - `PalomarCorpus.E257.PaperStatementsBE.paper_dyadic_band_escape_iff_single_test`
-- `PalomarCorpus.E257.PaperStatementsBE.paper_periodLcm_is_prefix_lcm`
 
 ### ExternalVerification257PaperStatementsBF
 
 - `PalomarCorpus.E257.PaperStatementsBF.paper_squarefree_support_engine_ceiling`
-
-### ExternalVerification257PaperStatementsBG
-
-- `PalomarCorpus.E257.PaperStatementsBG.seamScaledRem_eq_tailGreedyRemainder`
 
 ### ExternalVerification257PositiveSkipEquivalence
 

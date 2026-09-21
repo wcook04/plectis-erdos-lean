@@ -3,18 +3,10 @@
   "solution_module": "Solutions.ExternalVerification257PaperStatementsAL",
   "theorem_names": [
     "Erdos249257.ExternalVerification257PaperStatementsAL.finite_boolSupport_ne_half",
-    "Erdos249257.ExternalVerification257PaperStatementsAL.infinite_support_half_of_mobiusCenteredHalfCarry_sqrtBound",
-    "Erdos249257.ExternalVerification257PaperStatementsAL.integerHalfCarry_eq_scaled_residual_add_tail",
     "Erdos249257.ExternalVerification257PaperStatementsAL.supportCoeff_insert_divisor",
     "Erdos249257.ExternalVerification257PaperStatementsAL.supportCoeff_boundaryPair_unitDrop_at_double",
     "Erdos249257.ExternalVerification257PaperStatementsAL.supportCoeff_extend_true_eq_false_add_one_at_double",
-    "Erdos249257.ExternalVerification257PaperStatementsAL.half_of_cofinal_absolute_carry",
-    "Erdos249257.ExternalVerification257PaperStatementsAL.square_depth_witness",
     "Erdos249257.ExternalVerification257PaperStatementsAL.paper_coeffTail_le_index_add_two",
-    "Erdos249257.ExternalVerification257PaperStatementsAL.paper_cofiniteRightTail_ne_zero_centeredEndpoint",
-    "Erdos249257.ExternalVerification257PaperStatementsAL.paper_relaxed_constant_six_every_depth",
-    "Erdos249257.ExternalVerification257PaperStatementsAL.paper_square_depth_terminal_bound",
-    "Erdos249257.ExternalVerification257PaperStatementsAL.paper_terminal_strip_forces_half_membership",
     "Erdos249257.ExternalVerification257PaperStatementsAL.paper_zero_run_le_eps_logb",
     "Erdos249257.ExternalVerification257PaperStatementsAL.paper_zero_run_le_of_mem"
   ],

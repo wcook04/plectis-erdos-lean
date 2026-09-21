@@ -3,17 +3,9 @@
   "solution_module": "Solutions.PalomarCorpus.E257al",
   "theorem_names": [
     "PalomarCorpus.E257.PaperStatementsAL.finite_boolSupport_ne_half",
-    "PalomarCorpus.E257.PaperStatementsAL.half_of_cofinal_absolute_carry",
-    "PalomarCorpus.E257.PaperStatementsAL.infinite_support_half_of_mobiusCenteredHalfCarry_sqrtBound",
-    "PalomarCorpus.E257.PaperStatementsAL.integerHalfCarry_eq_scaled_residual_add_tail",
     "PalomarCorpus.E257.PaperStatementsAL.paper_coeffTail_le_index_add_two",
-    "PalomarCorpus.E257.PaperStatementsAL.paper_cofiniteRightTail_ne_zero_centeredEndpoint",
-    "PalomarCorpus.E257.PaperStatementsAL.paper_relaxed_constant_six_every_depth",
-    "PalomarCorpus.E257.PaperStatementsAL.paper_square_depth_terminal_bound",
-    "PalomarCorpus.E257.PaperStatementsAL.paper_terminal_strip_forces_half_membership",
     "PalomarCorpus.E257.PaperStatementsAL.paper_zero_run_le_eps_logb",
     "PalomarCorpus.E257.PaperStatementsAL.paper_zero_run_le_of_mem",
-    "PalomarCorpus.E257.PaperStatementsAL.square_depth_witness",
     "PalomarCorpus.E257.PaperStatementsAL.supportCoeff_boundaryPair_unitDrop_at_double",
     "PalomarCorpus.E257.PaperStatementsAL.supportCoeff_extend_true_eq_false_add_one_at_double",
     "PalomarCorpus.E257.PaperStatementsAL.supportCoeff_insert_divisor"

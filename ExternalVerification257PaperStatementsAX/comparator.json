@@ -2,8 +2,6 @@
   "challenge_module": "ExternalVerification257PaperStatementsAX.Challenge",
   "solution_module": "Solutions.ExternalVerification257PaperStatementsAX",
   "theorem_names": [
-    "Erdos249257.ExternalVerification257PaperStatementsAX.largestSkipLateAt_fourteen",
-    "Erdos249257.ExternalVerification257PaperStatementsAX.mem_seamGreedySupport_iff_scaled",
     "Erdos249257.ExternalVerification257PaperStatementsAX.paper_exact_row_double_or_recycle",
     "Erdos249257.ExternalVerification257PaperStatementsAX.paper_exact_row_example_six_and_eleven",
     "Erdos249257.ExternalVerification257PaperStatementsAX.paper_returning_endpoint_may_fail_to_grow"

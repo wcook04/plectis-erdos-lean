@@ -3,11 +3,11 @@ version: v0.4
 project:
   name: 'Erdős #257: independent restatements of refereed paper-linked theorems'
   description: >-
-    11 theorems of the substantive development for Erdős problem #257
+    10 theorems of the substantive development for Erdős problem #257
     restated against Mathlib alone and transported from the source declarations named
     below. The substantive formalization lives in Erdos249257.GenericTailOrbitRigidity in this repository and at
     public commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84 of https://github.com/wcook04/plectis-erdos. This entry is a comparison
-    interface over that development. 10 statements transport by direct term
+    interface over that development. 9 statements transport by direct term
     application, which certifies definitional identity with the source statement;
     1 transport through a tactic bridge, which certifies implication only. The
     parent Erdős problem remains open.
@@ -53,11 +53,11 @@ sources:
   license: Apache-2.0
   author_endorsement: n/a
 status:
-  scope: Independent restatements of 11 refereed declarations for Erdős problem #257.
+  scope: Independent restatements of 10 refereed declarations for Erdős problem #257.
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
-  trusted_challenge_sorry_count: 11
+  trusted_challenge_sorry_count: 10
   sorry_boundary: Only the trusted Challenge theorem bodies carry placeholders.
   axiom_audit_status: pending fresh target-toolchain axiom audit
   permitted_axiom_budget:
@@ -68,17 +68,6 @@ status:
   local_proof_provenance: Erdos249257.GenericTailOrbitRigidity in this repository, which is the same development published at https://github.com/wcook04/plectis-erdos commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84
   canonical_claim_status: generated comparison interface over substantive Lean in this repository
   main_results:
-  - declaration: Erdos249257.ExternalVerification257PaperStatementsAE.affineBinaryOrbit_mod_twoPow_eq
-    file: Solutions/ExternalVerification257PaperStatementsAE.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification257PaperStatementsAE/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAE.affineBinaryOrbit_mod_twoPow_eq
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: Erdos249257.affineBinaryOrbit_mod_twoPow_eq
-    source_file: Erdos249257/GenericTailOrbitRigidity.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
   - declaration: Erdos249257.ExternalVerification257PaperStatementsAE.balancedPulse_endpoint_fanout
     file: Solutions/ExternalVerification257PaperStatementsAE.lean
     sorry_count: 0

@@ -65,7 +65,9 @@ theorem theta_strict_logConcave (r : ℕ) (hr : 1 ≤ r) :
   sorry
 /-- States the paper statement it is bound to from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.RankOneSubrankObstruction.abs_mobiusMersenneTheta_sub_prefix_le in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem abs_mobiusMersenneTheta_sub_prefix_le
-    {Y r : ℕ} (hY : 4 ≤ Y) (hr : 3 ≤ r) : := by
+    {Y r : ℕ} (hY : 4 ≤ Y) (hr : 3 ≤ r) :
+    |mobiusMersenneTheta r - mobiusMersennePrefix Y r| ≤
+      (1 : ℝ) / 3584 := by
   sorry
 /-- States the paper statement it is bound to from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.RankOneSubrankObstruction.mobiusMersenneTheta_ge_alpha in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem mobiusMersenneTheta_ge_alpha
@@ -96,7 +98,8 @@ theorem primitive_form_abs_gt
     (he : 1 ≤ e) (hY : 4 ≤ Y) (hq : 1 ≤ q)
     (hquot :
       rankOneSubrankQuotient e Y = (p : ℝ) / q) :
-    (q : ℝ) / 480 < := by
+    (q : ℝ) / 480 <
+      |(q : ℝ) * mobiusMersenneTheta 2 - p| := by
   sorry
 /-- States res:rankonefloor from the short record for Erdős problem #249. Transported from ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient_one_five_sub_theta_two_lt_one_div_fifteen in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem rankOneSubrankQuotient_one_five_sub_theta_two_lt_one_div_fifteen :

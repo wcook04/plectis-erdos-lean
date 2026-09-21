@@ -1,6 +1,5 @@
 import Solutions.PalomarCorpus.E257ae
 
-#print axioms PalomarCorpus.E257.PaperStatementsAE.affineBinaryOrbit_mod_twoPow_eq
 #print axioms PalomarCorpus.E257.PaperStatementsAE.balancedPulse_endpoint_fanout
 #print axioms PalomarCorpus.E257.PaperStatementsAE.balancedPulse_label_card_lower_bound
 #print axioms PalomarCorpus.E257.PaperStatementsAE.balancedPulse_no_autonomous_decoder

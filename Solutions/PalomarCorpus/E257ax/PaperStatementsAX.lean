@@ -6,31 +6,16 @@ Authors: Will Cook
 import Mathlib
 import Erdos249257.BooleanMobiusCofinalExactRows
 import Erdos249257.BooleanMobiusLocalRepair
-import Erdos249257.HalfCylinderConcreteSeamAdapter
-import Erdos249257.HalfCylinderFloorErrorReset
-import Erdos249257.HalfCylinderIntegerGreedy
-import Erdos249257.HalfCylinderLargestSkipGap
-import Erdos249257.HalfCylinderLargestSkipInduction
 import ErdosProblems.Erdos257.PaperCompleteR21.ExactRowDichotomyCountermodels
-import ErdosProblems.Erdos257.PaperCompleteR21.GreedyOrbitNoTies
-import ErdosProblems.Erdos257.PaperCompleteR21.SeamPrefixStabilityLimit
 import Solutions.PalomarCorpus.E257ax.Statement
 
-open Set
-open Filter
 open scoped BigOperators
+open Filter
+open Set
 
 /- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
 
 namespace PalomarCorpus.E257.PaperStatementsAX
-
-theorem largestSkipLateAt_fourteen : LargestSkipLateAt 14 := @Erdos249257.largestSkipLateAt_fourteen
-
-theorem mem_seamGreedySupport_iff_scaled {s d : ℕ} (hs : 2 ≤ s) (h2 : 2 ≤ d)
-    (hd : d < s) :
-    d ∈ seamWordSupport (seamGreedyWord s)
-      ↔ seamScaledWeight s d
-          ≤ tailGreedyRemainder (seamScaledTarget s) (seamScaledWeight s) (d - 2) := @ErdosProblems.Erdos257.PaperCompleteR21.mem_seamGreedySupport_iff_scaled s d hs h2 hd
 
 theorem paper_exact_row_double_or_recycle {n : ℕ} (hn : 6 ≤ n)
     (hrow : ExactLocalMersenneHalfRow n) :

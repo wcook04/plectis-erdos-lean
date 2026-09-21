@@ -1,7 +1,5 @@
 import Solutions.PalomarCorpus.E257ax
 
-#print axioms PalomarCorpus.E257.PaperStatementsAX.largestSkipLateAt_fourteen
-#print axioms PalomarCorpus.E257.PaperStatementsAX.mem_seamGreedySupport_iff_scaled
 #print axioms PalomarCorpus.E257.PaperStatementsAX.paper_exact_row_double_or_recycle
 #print axioms PalomarCorpus.E257.PaperStatementsAX.paper_exact_row_example_six_and_eleven
 #print axioms PalomarCorpus.E257.PaperStatementsAX.paper_returning_endpoint_may_fail_to_grow

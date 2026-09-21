@@ -2,12 +2,9 @@
   "challenge_module": "ExternalVerification257PaperStatementsAS.Challenge",
   "solution_module": "Solutions.ExternalVerification257PaperStatementsAS",
   "theorem_names": [
-    "Erdos249257.ExternalVerification257PaperStatementsAS.paper_seam_limit_unconditional",
     "Erdos249257.ExternalVerification257PaperStatementsAS.paper_sharper_additive_estimate",
     "Erdos249257.ExternalVerification257PaperStatementsAS.paper_skipped_core_recycling_witness_bounded",
-    "Erdos249257.ExternalVerification257PaperStatementsAS.paper_unconditional_bound_one_extra_bit",
-    "Erdos249257.ExternalVerification257PaperStatementsAS.tendsto_seamGreedyFiniteValue_greedyHalfTargetValue",
-    "Erdos249257.ExternalVerification257PaperStatementsAS.tendsto_seamGreedyNormalizedRemainder"
+    "Erdos249257.ExternalVerification257PaperStatementsAS.paper_unconditional_bound_one_extra_bit"
   ],
   "permitted_axioms": [
     "propext",

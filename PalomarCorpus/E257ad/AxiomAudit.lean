@@ -12,13 +12,8 @@ import Solutions.PalomarCorpus.E257ad
 #print axioms PalomarCorpus.E257.PaperStatementsAD.paper_channel_factor_gcd_eq_one
 #print axioms PalomarCorpus.E257.PaperStatementsAD.paper_channel_factors_pairwise_coprime
 #print axioms PalomarCorpus.E257.PaperStatementsAD.paper_consecutive_not_both_divisible
-#print axioms PalomarCorpus.E257.PaperStatementsAD.paper_dynamics
 #print axioms PalomarCorpus.E257.PaperStatementsAD.paper_finite_sum_inv_odd_den_odd
 #print axioms PalomarCorpus.E257.PaperStatementsAD.paper_finite_sum_inv_odd_ne_half
-#print axioms PalomarCorpus.E257.PaperStatementsAD.paper_greedySupport_greedy_rule
-#print axioms PalomarCorpus.E257.PaperStatementsAD.paper_greedySupport_isRowLower
-#print axioms PalomarCorpus.E257.PaperStatementsAD.paper_greedySupport_mem
-#print axioms PalomarCorpus.E257.PaperStatementsAD.paper_greedy_step
 #print axioms PalomarCorpus.E257.PaperStatementsAD.paper_isRowLower_unique
 #print axioms PalomarCorpus.E257.PaperStatementsAD.paper_isRowUpper_unique
 #print axioms PalomarCorpus.E257.PaperStatementsAD.paper_mersenne_channel_survival

@@ -51,58 +51,16 @@ noncomputable def DTWWindowSeparatedPairsAt (h : ℕ) : Prop :=
 /-- Fibre-free counted window-phase anti-concentration at every positive shift; neither primality nor a pivot factorization is part of the statement. Local copy of Erdos249257.TotientTailPeriodKiller.DTWWindowSeparatedPairs, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def DTWWindowSeparatedPairs : Prop :=
   ∀ h : ℕ, 0 < h → DTWWindowSeparatedPairsAt h
-/-- The window step `a_n = φ(n+h) - φ(n)` driving the carry recurrence. Local copy of Erdos249257.TotientTailPeriodKiller.deltaTotient, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def deltaTotient (h n : ℕ) : ℤ := (Nat.totient (n + h) : ℤ) - (Nat.totient n : ℤ)
-/-- The integer carry orbit launched from candidate `d` at position `N`: `orbit 0 = d`, `orbit (i+1) = 2·orbit i - a_{N+i+1}`. If `D_h(N)` is the integer `d`, this orbit equals `D_h(N+i)` forever. Local copy of Erdos249257.TotientTailPeriodKiller.carryOrbit, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def carryOrbit (h N : ℕ) (d : ℤ) : ℕ → ℤ
-  | 0 => d
-  | i + 1 => 2 * carryOrbit h N d i - deltaTotient h (N + i + 1)
 /-- The decidable period-killer certificate: the residue of `A_{h,N,L}` modulo `2^L` avoids the radius-`(N+h+L+2)` neighbourhood of `0`. Local copy of Erdos249257.TotientTailPeriodKiller.certifiedKill, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def certifiedKill (h N L : ℕ) : Prop :=
   (N + h + L + 2 : ℤ) < windowDiscrepancy h N L % 2 ^ L ∧
     windowDiscrepancy h N L % 2 ^ L < 2 ^ L - (N + h + L + 2)
-/-- `periodLcm t = lcm(1, …, t)`: the universal period at scale `t`. Every primitive period `h₀ ≤ t` divides it. Local copy of Erdos249257.TotientTailPeriodKiller.periodLcm, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def periodLcm : ℕ → ℕ
-  | 0 => 1
-  | t + 1 => Nat.lcm (periodLcm t) (t + 1)
 /-- The integer prefix `Φ_N = ∑_{n=0}^{N} φ(n)·2^{N-n}` of `2^N · S`. Local copy of Erdos249257.TotientTailPeriodKiller.totientPrefix, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def totientPrefix (N : ℕ) : ℕ :=
   ∑ n ∈ Finset.range (N + 1), Nat.totient n * 2 ^ (N - n)
 /-- The local totient tail `R_N = ∑_{j≥0} φ(N+1+j)/2^{j+1} = ∑_{m≥1} φ(N+m)/2^m`: the fractional layer of `2^N · S`. Local copy of Erdos249257.TotientTailPeriodKiller.totientTail, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def totientTail (N : ℕ) : ℝ :=
   ∑' j : ℕ, (Nat.totient (N + 1 + j) : ℝ) / 2 ^ (j + 1)
-/-- States prop:sign from the long record for Erdős problem #249. Transported from Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmTailDiff_shift_pos in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem actualLcmTailDiff_shift_pos
-    {a J : ℕ} (ha : 8 ≤ a)
-    (hshort : J + (a + 6) < 2 * 2 ^ a) :
-    0 <
-      totientTail (2 * periodLcm (2 ^ a) + J) -
-        totientTail (periodLcm (2 ^ a) + J) := by
-  sorry
-/-- States prop:sign from the long record for Erdős problem #249. Transported from Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcm_integral_forces_topEdgeResidue in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem actualLcm_integral_forces_topEdgeResidue
-    {a J K : ℕ} (ha : 8 ≤ a)
-    (hshort : J + K + (a + 6) < 2 * 2 ^ a)
-    {d : ℤ}
-    (hd : (d : ℝ) =
-      totientTail (2 * periodLcm (2 ^ a) + J) -
-        totientTail (periodLcm (2 ^ a) + J))
-    (hroom :
-      ((2 * periodLcm (2 ^ a) + J + K + 2 : ℕ) : ℤ) <
-        (2 : ℤ) ^ K) :
-    let H := periodLcm (2 ^ a)
-    let e := carryOrbit H (H + J) d K
-    let P := (2 : ℤ) ^ K
-    let B := ((2 * H + J + K + 2 : ℕ) : ℤ)
-    windowDiscrepancy H (H + J) K % P = P - e ∧
-      P - B < windowDiscrepancy H (H + J) K % P ∧
-      windowDiscrepancy H (H + J) K % P < P := by
-  sorry
-/-- States prop:sign from the long record for Erdős problem #249. Transported from Erdos249257.TotientTailPeriodKiller.carryOrbit_eq_tail_diff in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-lemma carryOrbit_eq_tail_diff {h N : ℕ} {d : ℤ}
-    (hd : (d : ℝ) = totientTail (N + h) - totientTail N) (i : ℕ) :
-    (carryOrbit h N d i : ℝ) = totientTail (N + i + h) - totientTail (N + i) := by
-  sorry
 /-- States prop:deposits from the long record for Erdős problem #249. Transported from Erdos249257.TotientTailPeriodKiller.certifiedKill_all_upto_sixteen in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem certifiedKill_all_upto_sixteen :
     ∀ h ∈ Finset.Icc 1 16, certifiedKill h 14 9 := by
@@ -115,14 +73,6 @@ theorem certifiedKill_depth_floor {h N L : ℕ} (hcert : certifiedKill h N L) :
 theorem dtwWindowSeparatedPairs_iff_irrational_totient_series :
     DTWWindowSeparatedPairs ↔
       Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) := by
-  sorry
-/-- States the paper statement it is bound to from the long record for Erdős problem #249. Transported from Erdos249257.TotientTailPeriodKiller.dvd_periodLcm in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-lemma dvd_periodLcm {h t : ℕ} (h1 : 1 ≤ h) (ht : h ≤ t) : h ∣ periodLcm t := by
-  sorry
-/-- States catalogue:cert:b4 from the long record for Erdős problem #249. Transported from Erdos249257.TotientTailPeriodKiller.eq_prime_pow_of_not_dvd_periodLcm in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem eq_prime_pow_of_not_dvd_periodLcm {t j : ℕ} (hj : 0 < j) (hlt : j < 2 * t)
-    (hnd : ¬ j ∣ periodLcm t) :
-    ∃ p k : ℕ, Nat.Prime p ∧ j = p ^ k ∧ t < j := by
   sorry
 /-- States catalogue:cert:a7 from the long record for Erdős problem #249. Transported from Erdos249257.TotientTailPeriodKiller.exists_certifiedKill_iff_tail_diff_notMem_int in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem exists_certifiedKill_iff_tail_diff_notMem_int (h N : ℕ) :
@@ -140,32 +90,6 @@ theorem irrational_totient_series_iff_certificate_supply :
     Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) ↔
       ∀ h : ℕ, 0 < h → ∀ N₀ : ℕ,
         ∃ N, N₀ ≤ N ∧ ∃ L, certifiedKill h N L := by
-  sorry
-/-- States catalogue:cert:b3, prop:B3, prop:iffs from the long record for Erdős problem #249. Transported from Erdos249257.TotientTailPeriodKiller.irrational_totient_series_iff_lcm_diagonal_certificate_supply in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem irrational_totient_series_iff_lcm_diagonal_certificate_supply :
-    Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) ↔
-      ∀ t₀ : ℕ, ∃ t, t₀ ≤ t ∧ ∃ L,
-        certifiedKill (periodLcm t) (periodLcm t) L := by
-  sorry
-/-- States catalogue:cert:b8 from the long record for Erdős problem #249. Transported from Erdos249257.TotientTailPeriodKiller.irrational_totient_series_of_lcm_cone_nonintegrality_supply in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem irrational_totient_series_of_lcm_cone_nonintegrality_supply
-    (hsupply : ∀ t₀ : ℕ, ∃ t, t₀ ≤ t ∧ ∃ q m : ℕ, 0 < q ∧
-      totientTail (q * periodLcm t + m * periodLcm t) - totientTail (q * periodLcm t)
-        ∉ Set.range ((↑) : ℤ → ℝ)) :
-    Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) := by
-  sorry
-/-- States catalogue:cert:b8 from the long record for Erdős problem #249. Transported from Erdos249257.TotientTailPeriodKiller.irrational_totient_series_of_lcm_diagonal_nonintegrality_supply in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem irrational_totient_series_of_lcm_diagonal_nonintegrality_supply
-    (hsupply : ∀ t₀ : ℕ, ∃ t, t₀ ≤ t ∧
-      totientTail (periodLcm t + periodLcm t) - totientTail (periodLcm t)
-        ∉ Set.range ((↑) : ℤ → ℝ)) :
-    Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) := by
-  sorry
-/-- States catalogue:cert:b8 from the long record for Erdős problem #249. Transported from Erdos249257.TotientTailPeriodKiller.periodLcm_diagonal_kill_iff_tail_diff_notMem_int in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem periodLcm_diagonal_kill_iff_tail_diff_notMem_int (t : ℕ) :
-    (∃ L, certifiedKill (periodLcm t) (periodLcm t) L) ↔
-      totientTail (periodLcm t + periodLcm t) - totientTail (periodLcm t)
-        ∉ Set.range ((↑) : ℤ → ℝ) := by
   sorry
 /-- States catalogue:cert:a8 from the long record for Erdős problem #249. Transported from Erdos249257.TotientTailPeriodKiller.tail_diff_int_of_den_dvd in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem tail_diff_int_of_den_dvd (r : ℚ)

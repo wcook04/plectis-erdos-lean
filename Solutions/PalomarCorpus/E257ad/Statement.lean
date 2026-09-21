@@ -22,23 +22,6 @@ open scoped BigOperators
 
 namespace PalomarCorpus.E257.PaperStatementsAD
 open scoped BigOperators
-/-- Local copy of Erdos249257.HalfCylinderIntegerGreedy.SeamRowWord, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable abbrev SeamRowWord (s : ℕ) := Fin (s - 2) → Bool
-/-- Local copy of Erdos249257.HalfCylinderIntegerGreedy.SeamRowWord.ofList, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def ofList {s : ℕ} (bits : List Bool) (hlen : bits.length = s - 2) :
-    SeamRowWord s :=
-  fun i => bits.get (Fin.cast hlen.symm i)
-/-- Local copy of Erdos249257.HalfCylinderIntegerGreedy.SeamRowWord.toNatWord, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def toNatWord {s : ℕ} (b : SeamRowWord s) : ℕ → Bool :=
-  fun d => if h : 2 ≤ d ∧ d < s then b ⟨d - 2, by omega⟩ else false
-/-- Descending greedy subset for an integer capacity. Local copy of Erdos249257.HalfCylinderIntegerGreedy.integerGreedyBits, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def integerGreedyBits : List ℕ → ℕ → List Bool
-  | [], _ => []
-  | w :: ws, C =>
-      if w ≤ C then
-        true :: integerGreedyBits ws (C - w)
-      else
-        false :: integerGreedyBits ws C
 /-- The exact quotient digit created when the row is multiplied by four. Local copy of Erdos249257.HalfCylinderIntegerGreedy.rowPulse, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def rowPulse (s d : ℕ) : ℕ :=
   (if d ∣ 2 * s + 2 then 1 else 0) +
@@ -49,23 +32,6 @@ noncomputable def seamSubsetTarget (s : ℕ) : ℕ :=
 /-- The exact integer weight contributed at seam rank `s` by selecting a proper divisor rank `d < s`. Local copy of Erdos249257.HalfCylinderIntegerGreedy.truncatedMersenneWeight, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def truncatedMersenneWeight (s d : ℕ) : ℕ :=
   4 ^ s / (2 ^ d - 1)
-/-- The weights with indices `d,d+1,…,s-1`, in descending size order. Local copy of Erdos249257.HalfCylinderIntegerGreedy.seamWeightsFrom, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def seamWeightsFrom (s : ℕ) : ℕ → List ℕ
-  | d =>
-      if h : d < s then
-        truncatedMersenneWeight s d :: seamWeightsFrom s (d + 1)
-      else
-        []
-termination_by d => s - d
-decreasing_by omega
-/-- The actual proper-divisor weight word, indexed by `2,…,s-1`. Local copy of Erdos249257.HalfCylinderIntegerGreedy.seamWeights, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def seamWeights (s : ℕ) : List ℕ :=
-  seamWeightsFrom s 2
-/-- Local copy of Erdos249257.HalfCylinderIntegerGreedy.seamGreedyWord, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def seamGreedyWord (s : ℕ) : SeamRowWord s :=
-  ofList
-    (integerGreedyBits (seamWeights s) (seamSubsetTarget s))
-    (by rw [integerGreedyBits_length, seamWeights_length_eq])
 /-- `Hₜ = lcm(1, ..., t)`. The interval avoids inserting zero into the finite LCM. Local copy of Erdos249257.MersenneShadowCyclotomicNoncollapse.lcmHeight, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def lcmHeight (t : ℕ) : ℕ :=
   (Finset.Icc 1 t).lcm (fun n ↦ n)
@@ -114,11 +80,6 @@ noncomputable def IsRowUpper (n : ℕ) (B : Finset ℕ) : Prop :=
       ∀ S, S ⊆ Finset.Ico 2 n →
         seamSubsetTarget n < localPrefixQuotient S (2 * n) →
           localPrefixQuotient B (2 * n) ≤ localPrefixQuotient S (2 * n)
-/-- The subset of `{2,…,n-1}` selected by a Boolean row word. Local copy of ErdosProblems.Erdos257.PaperCompleteR21.rowSupport, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def rowSupport (n : ℕ) (b : SeamRowWord n) : Finset ℕ :=
-  (Finset.Ico 2 n).filter (fun d => b.toNatWord d = true)
-/-- The take set of the integer greedy process of §`ssec:seam-model`: the ranks `d = 2,…,n-1` are visited in ascending order against `T_n`, and `d` is taken exactly when its weight does not exceed the current residual. The process is `integerGreedyBits` run on the weight list `seamWeights n = [w(n,2),…,w(n,n-1)]` with capacity `T_n`; see `paper_greedy_step`. Local copy of ErdosProblems.Erdos257.PaperCompleteR21.greedySupport, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def greedySupport (n : ℕ) : Finset ℕ := rowSupport n (seamGreedyWord n)
 /-- The paper's integral Möbius numerator `A_r = ∑_{d ∣ r} μ(d) (r/d) (M_r / M_d)`. Local copy of ErdosProblems.Erdos257.PaperCompleteR21.paperA, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def paperA (r : ℕ) : ℤ :=
   ∑ d ∈ r.divisors,

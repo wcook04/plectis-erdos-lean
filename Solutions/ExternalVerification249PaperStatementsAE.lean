@@ -206,9 +206,14 @@ theorem upper_half_product_denominator_bounds {t : ℕ} (ht : 5 ≤ t) :
     (∏ p ∈ upperHalfPrimes t, mersenne p) ≤
       ((lcmHeight t : ℚ) * numericMobiusShadow (lcmHeight t)).den := @ErdosProblems.Erdos249.PaperCompleteR20.upper_half_product_denominator_bounds t ht
 
-theorem abs_mobiusSquareTail_le_paper (D : ℕ) : := @ErdosProblems.Erdos249.PaperCompleteR21.abs_mobiusSquareTail_le_paper D
+theorem abs_mobiusSquareTail_le_paper (D : ℕ) :
+    |∑' k : ℕ,
+        ((ArithmeticFunction.moebius (D + 1 + k) : ℤ) : ℝ) /
+          (((2 : ℝ) ^ (D + 1 + k) - 1) ^ 2)| ≤
+      4 / (3 * (((2 : ℝ) ^ (D + 1) - 1) ^ 2)) := @ErdosProblems.Erdos249.PaperCompleteR21.abs_mobiusSquareTail_le_paper D
 
-theorem abs_moebius_cast_le_one (d : ℕ) : := @ErdosProblems.Erdos249.PaperCompleteR21.abs_moebius_cast_le_one d
+theorem abs_moebius_cast_le_one (d : ℕ) :
+    |((ArithmeticFunction.moebius d : ℤ) : ℝ)| ≤ 1 := @ErdosProblems.Erdos249.PaperCompleteR21.abs_moebius_cast_le_one d
 
 theorem boundary_pair_at_one :
     (1, 0) ∈ (Finset.antidiagonal 1).filter

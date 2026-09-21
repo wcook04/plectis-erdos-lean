@@ -3,11 +3,11 @@ version: v0.4
 project:
   name: 'Erdős #257: independent restatements of refereed paper-linked theorems'
   description: >-
-    5 theorems of the substantive development for Erdős problem #257
+    4 theorems of the substantive development for Erdős problem #257
     restated against Mathlib alone and transported from the source declarations named
-    below. The substantive formalization lives in Erdos249257.CertificateKernel, Erdos249257.GreedyAchievementSet, Erdos249257.MobiusSignSupportNoGo, ErdosProblems.Erdos257.PaperCompleteR21.MobiusSignAndFiniteCertificates in this repository and at
+    below. The substantive formalization lives in Erdos249257.GreedyAchievementSet, Erdos249257.MobiusSignSupportNoGo, ErdosProblems.Erdos257.PaperCompleteR21.MobiusSignAndFiniteCertificates in this repository and at
     public commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84 of https://github.com/wcook04/plectis-erdos. This entry is a comparison
-    interface over that development. 5 statements transport by direct term
+    interface over that development. 4 statements transport by direct term
     application, which certifies definitional identity with the source statement;
     0 transport through a tactic bridge, which certifies implication only. The
     parent Erdős problem remains open.
@@ -53,11 +53,11 @@ sources:
   license: Apache-2.0
   author_endorsement: n/a
 status:
-  scope: Independent restatements of 5 refereed declarations for Erdős problem #257.
+  scope: Independent restatements of 4 refereed declarations for Erdős problem #257.
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
-  trusted_challenge_sorry_count: 5
+  trusted_challenge_sorry_count: 4
   sorry_boundary: Only the trusted Challenge theorem bodies carry placeholders.
   axiom_audit_status: pending fresh target-toolchain axiom audit
   permitted_axiom_budget:
@@ -65,7 +65,7 @@ status:
   - Quot.sound
   - Classical.choice
   development_status: substantive
-  local_proof_provenance: Erdos249257.CertificateKernel, Erdos249257.GreedyAchievementSet, Erdos249257.MobiusSignSupportNoGo, ErdosProblems.Erdos257.PaperCompleteR21.MobiusSignAndFiniteCertificates in this repository, which is the same development published at https://github.com/wcook04/plectis-erdos commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+  local_proof_provenance: Erdos249257.GreedyAchievementSet, Erdos249257.MobiusSignSupportNoGo, ErdosProblems.Erdos257.PaperCompleteR21.MobiusSignAndFiniteCertificates in this repository, which is the same development published at https://github.com/wcook04/plectis-erdos commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84
   canonical_claim_status: generated comparison interface over substantive Lean in this repository
   main_results:
   - declaration: Erdos249257.ExternalVerification257PaperStatementsAQ.half_lt_tsum_negativeMobius
@@ -88,17 +88,6 @@ status:
     novelty_status: unassessed
     source_declaration: Erdos249257.MobiusSignSupportNoGo.tsum_negativeMobius_eq_half_add_positiveMobiusTail
     source_file: Erdos249257/MobiusSignSupportNoGo.lean
-    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
-    transport: definitional
-  - declaration: Erdos249257.ExternalVerification257PaperStatementsAQ.paper_finite_support_and_onesided_certificate
-    file: Solutions/ExternalVerification257PaperStatementsAQ.lean
-    sorry_count: 0
-    comparator_config: ExternalVerification257PaperStatementsAQ/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAQ.paper_finite_support_and_onesided_certificate
-    canonical_claim_status: source_transport_prepared_pending_release_validation
-    novelty_status: unassessed
-    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.paper_finite_support_and_onesided_certificate
-    source_file: ErdosProblems/Erdos257/PaperCompleteR21/MobiusSignAndFiniteCertificates.lean
     source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
     transport: definitional
   - declaration: Erdos249257.ExternalVerification257PaperStatementsAQ.paper_first_positiveMobius_tail_term

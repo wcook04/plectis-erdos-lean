@@ -20,10 +20,6 @@ open Set
 
 namespace Erdos249257.ExternalVerification249PaperStatementsAZ
 
-noncomputable def affineBinaryOrbit (a : ℕ → ℤ) (u0 : ℤ) : ℕ → ℤ
-  | 0 => u0
-  | n + 1 => 2 * affineBinaryOrbit a u0 n - a (n + 1)
-
 noncomputable def balancedPulseRadius (m : ℕ) : ℕ := (m + 1) / 2
 
 noncomputable def balancedPulseCoeff (m r : ℕ) : ℕ → ℕ := fun n ↦
@@ -36,15 +32,6 @@ noncomputable def binaryCoeffSeries (c : ℕ → ℕ) : ℝ :=
 
 noncomputable def binaryCoeffTail (c : ℕ → ℕ) (N : ℕ) : ℝ :=
   ∑' j : ℕ, (c (N + j + 1) : ℝ) / (2 : ℝ) ^ (j + 1)
-
-/-- States prop:b5 from the long record for Erdős problem #249. Transported from
-ErdosProblems.Erdos249.PaperCompleteR21.affineBinaryOrbit_difference_and_reset in the
-substantive development, whose statement was refereed against the paper in the coverage
-ledger. -/
-theorem affineBinaryOrbit_difference_and_reset (a : ℕ → ℤ) (u0 v0 : ℤ) (L : ℕ) :
-    affineBinaryOrbit a u0 L - affineBinaryOrbit a v0 L = (2 : ℤ) ^ L * (u0 - v0)
-      ∧ affineBinaryOrbit a u0 L ≡ affineBinaryOrbit a v0 L [ZMOD (2 : ℤ) ^ L] := by
-  sorry
 
 /-- States prop:b5 from the long record for Erdős problem #249. Transported from
 ErdosProblems.Erdos249.PaperCompleteR21.balancedPulse_common_history in the substantive

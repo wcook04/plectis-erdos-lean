@@ -1,9 +1,5 @@
 import Solutions.PalomarCorpus.E257ak
 
-#print axioms PalomarCorpus.E257.PaperStatementsAK.localMersenneHalfTarget_lower_word_eq_greedy_and_remainder_eq
-#print axioms PalomarCorpus.E257.PaperStatementsAK.localMersenneWeightsFrom_gapDominates
-#print axioms PalomarCorpus.E257.PaperStatementsAK.localMersenneWeights_gapDominates_even
-#print axioms PalomarCorpus.E257.PaperStatementsAK.localMersenneWeights_gapDominates_odd
 #print axioms PalomarCorpus.E257.PaperStatementsAK.paper_floor_quotient_geometric_sum
 #print axioms PalomarCorpus.E257.PaperStatementsAK.paper_next_floor_quotient
 #print axioms PalomarCorpus.E257.PaperStatementsAK.paper_next_floor_quotient_no_fixed_point
@@ -11,5 +7,3 @@ import Solutions.PalomarCorpus.E257ak
 #print axioms PalomarCorpus.E257.PaperStatementsAK.paper_repair_integer_eq_endpoint_defect
 #print axioms PalomarCorpus.E257.PaperStatementsAK.paper_signed_endpoint_defect_succ
 #print axioms PalomarCorpus.E257.PaperStatementsAK.paper_signed_endpoint_recurrence
-#print axioms PalomarCorpus.E257.PaperStatementsAK.paper_successor_remainders_fourteen_through_thirtyone
-#print axioms PalomarCorpus.E257.PaperStatementsAK.remainder_lt_gap_iff_eq_integerGreedyBits

@@ -76,6 +76,8 @@ theorem scaled_tail_split (c : ℕ → ℕ) (hc : ∀ n, c n ≤ n) (N L : ℕ) 
     (2 : ℝ) ^ L * binaryCoeffTail c N =
       (windowPrefix c N L : ℝ) + binaryCoeffTail c (N + L) := @ErdosProblems.Erdos249.PaperCompleteR20.GenericTailCertificates.scaled_tail_split c hc N L
 
-theorem truncation_error_bound (c : ℕ → ℕ) (hc : ∀ n, c n ≤ n) (h N L : ℕ) : := @ErdosProblems.Erdos249.PaperCompleteR20.GenericTailCertificates.truncation_error_bound c hc h N L
+theorem truncation_error_bound (c : ℕ → ℕ) (hc : ∀ n, c n ≤ n) (h N L : ℕ) :
+    |(2 : ℝ) ^ L * (binaryCoeffTail c (N + h) - binaryCoeffTail c N) -
+      (discrepancy c h N L : ℝ)| ≤ (N : ℝ) + h + L + 2 := @ErdosProblems.Erdos249.PaperCompleteR20.GenericTailCertificates.truncation_error_bound c hc h N L
 
 end Erdos249257.ExternalVerification249PaperStatementsAW
