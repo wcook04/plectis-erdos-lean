@@ -39,9 +39,15 @@ env:
   LEAN4EXPORT_REV: a3e35a584f59b390667db7269cd37fca8575e4bf
   LANDRUN_REV: 811cfff51ceaf3d9843708aa6d22e9b84ccac8b4
   NANODA_REV: 68d5ca9db226849b41a6fff59d796ff19d0a8840
-  # PalomarSubmission commit whose scripts/core_notation_audit.lean the render
-  # stage ran on this repository's E257 submission (run 34786515414).
-  RENDERER_REV: ef2fa1eadcb246c2346ddba39b52eaa53d4bb763
+  # PalomarSubmission commit whose scripts/core_notation_audit.lean this replay fetches.
+  # ef2fa1eadcb246c2346ddba39b52eaa53d4bb763 is the renderer the render stage ran on this
+  # repository's E257 submission (run 34786515414); it kernel-rechecks the audit's type
+  # proxies, which is the defect that settled that submission as verification-error and
+  # which exits non-zero on most entries here. PalomarSubmission PR 137 removed the
+  # recheck; 32eb98553246ed62b120594297c2b31878a8e53b is its merge commit on main, two
+  # commits ahead of the old pin and carrying the fixed audit script. The render stage
+  # stays non-gating either way: it reports, it does not decide an entry.
+  RENDERER_REV: 32eb98553246ed62b120594297c2b31878a8e53b
 
 jobs:
   discover:
@@ -64,7 +70,7 @@ jobs:
           # approach the 1000-line ceiling. Bands are optional and never replace a base
           # entry: the eight base entries stay mandatory and every directory present must
           # be a base or a band, so a stray directory still fails.
-          entry_re = re.compile(r"^E(?:" + "|".join(str(n) for n in problems) + r")[a-z]?$")
+          entry_re = re.compile(r"^E(?:" + "|".join(str(n) for n in problems) + r")[a-z]{0,2}$")
           found = sorted(p.parent.name for p in Path("PalomarCorpus").glob("E*/comparator.json"))
           stray = [name for name in found if not entry_re.match(name)]
           assert not stray, f"unrecognised PalomarCorpus entries: {stray}"
@@ -95,6 +101,22 @@ jobs:
         entry: ${{ fromJSON(needs.discover.outputs.entries) }}
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+      - name: Install elan with retries
+        # GitHub release downloads return 5xx under load; one 504 on the elan tarball
+        # turned four entries red on 21 Sep 2026 with nothing wrong in the entries.
+        run: |
+          set -euo pipefail
+          for attempt in 1 2 3 4 5; do
+            if curl --retry 5 --retry-all-errors --retry-delay 10 -sSfL \
+                 https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh \
+                 -o "$RUNNER_TEMP/elan-init.sh" \
+               && sh "$RUNNER_TEMP/elan-init.sh" -y --default-toolchain none; then
+              break
+            fi
+            if [ "$attempt" = 5 ]; then exit 1; fi
+            sleep $((attempt * 20))
+          done
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
       - uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
         with:
           use-mathlib-cache: auto
@@ -116,19 +138,28 @@ jobs:
         id: tools
         run: |
           set -euo pipefail
-          git clone --filter=blob:none https://github.com/leanprover/comparator.git "$RUNNER_TEMP/comparator"
+          clone() {
+            # retry a clone: a transient 5xx from GitHub must not fail the entry
+            for attempt in 1 2 3 4; do
+              rm -rf "$2"
+              if git clone --filter=blob:none "$1" "$2"; then return 0; fi
+              sleep $((attempt * 15))
+            done
+            return 1
+          }
+          clone https://github.com/leanprover/comparator.git "$RUNNER_TEMP/comparator"
           git -C "$RUNNER_TEMP/comparator" checkout --detach "$COMPARATOR_REV"
           test "$(git -C "$RUNNER_TEMP/comparator" rev-parse HEAD)" = "$COMPARATOR_REV"
           (cd "$RUNNER_TEMP/comparator" && lake build comparator)
-          git clone --filter=blob:none https://github.com/leanprover/lean4export.git "$RUNNER_TEMP/lean4export"
+          clone https://github.com/leanprover/lean4export.git "$RUNNER_TEMP/lean4export"
           git -C "$RUNNER_TEMP/lean4export" checkout --detach "$LEAN4EXPORT_REV"
           test "$(git -C "$RUNNER_TEMP/lean4export" rev-parse HEAD)" = "$LEAN4EXPORT_REV"
           (cd "$RUNNER_TEMP/lean4export" && ELAN_TOOLCHAIN="$(tr -d '\r\n' < lean-toolchain)" lake build lean4export)
-          git clone --filter=blob:none https://github.com/zouuup/landrun.git "$RUNNER_TEMP/landrun-src"
+          clone https://github.com/zouuup/landrun.git "$RUNNER_TEMP/landrun-src"
           git -C "$RUNNER_TEMP/landrun-src" checkout --detach "$LANDRUN_REV"
           test "$(git -C "$RUNNER_TEMP/landrun-src" rev-parse HEAD)" = "$LANDRUN_REV"
           (cd "$RUNNER_TEMP/landrun-src" && go build -o "$RUNNER_TEMP/landrun" cmd/landrun/main.go)
-          git clone --filter=blob:none https://github.com/robsimmons/nanoda_lib.git "$RUNNER_TEMP/nanoda"
+          clone https://github.com/robsimmons/nanoda_lib.git "$RUNNER_TEMP/nanoda"
           git -C "$RUNNER_TEMP/nanoda" checkout --detach "$NANODA_REV"
           test "$(git -C "$RUNNER_TEMP/nanoda" rev-parse HEAD)" = "$NANODA_REV"
           export PATH="$HOME/.cargo/bin:/usr/local/bin:/usr/bin:/bin"
@@ -214,9 +245,11 @@ jobs:
         # Palomar renders an accepted Challenge before its automated review. The render
         # stage runs scripts/core_notation_audit.lean from PalomarSubmission at the
         # promoted renderer commit; the audit copies every constant reachable from a
-        # theorem type into a trusted printing environment and, at RENDERER_REV,
-        # kernel-rechecks the copies. Replaying it here shows whether that renderer can
-        # print each entry. The step reports and never gates the Comparator verdict.
+        # theorem type into a trusted printing environment. The renderer this repository's
+        # E257 submission met also kernel-rechecked those copies, which is the defect PR 137
+        # removed, so RENDERER_REV now names the fixed commit. Replaying it here shows
+        # whether that renderer can print each entry. The step reports and never gates the
+        # Comparator verdict.
         run: |
           set +e
           mkdir -p artifacts
