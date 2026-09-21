@@ -1,3 +1,0 @@
-import Solutions.ExternalVerification257PaperStatementsBA
-
-#print axioms Erdos249257.ExternalVerification257PaperStatementsBA.twentyOneCofinalEvenQuotientGreedyDecay_of_closedRows

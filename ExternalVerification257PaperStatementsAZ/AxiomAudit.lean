@@ -1,3 +1,0 @@
-import Solutions.ExternalVerification257PaperStatementsAZ
-
-#print axioms Erdos249257.ExternalVerification257PaperStatementsAZ.one_div_twenty_one_mem_mersenneAchievementSet_of_cofinalGreedyDecay
