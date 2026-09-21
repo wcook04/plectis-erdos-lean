@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification251PaperStatementsZA.Challenge",
+  "solution_module": "Solutions.ExternalVerification251PaperStatementsZA",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification251PaperStatementsZA.nonconcentration_does_not_force_irrationality"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

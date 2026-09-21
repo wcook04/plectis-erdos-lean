@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification269PaperStatementsY.Challenge",
+  "solution_module": "Solutions.ExternalVerification269PaperStatementsY",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification269PaperStatementsY.transcendental_heckeValue"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

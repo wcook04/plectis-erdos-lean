@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification1041PaperStatementsZ.Challenge",
+  "solution_module": "Solutions.ExternalVerification1041PaperStatementsZ",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041PaperStatementsZ.circle_slice_packing"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

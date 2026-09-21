@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification1041PaperStatementsZB.Challenge",
+  "solution_module": "Solutions.ExternalVerification1041PaperStatementsZB",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041PaperStatementsZB.subcritical_perimeter_path_paper"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

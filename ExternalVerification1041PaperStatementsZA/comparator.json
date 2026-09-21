@@ -1,0 +1,17 @@
+{
+  "challenge_module": "ExternalVerification1041PaperStatementsZA.Challenge",
+  "solution_module": "Solutions.ExternalVerification1041PaperStatementsZA",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041PaperStatementsZA.separation_parent",
+    "Erdos249257.ExternalVerification1041PaperStatementsZA.cfa_arity_criterion",
+    "Erdos249257.ExternalVerification1041PaperStatementsZA.cfa_constant_factor_path",
+    "Erdos249257.ExternalVerification1041PaperStatementsZA.scaledLowCriticalFiveHalves_of_lowCritical",
+    "Erdos249257.ExternalVerification1041PaperStatementsZA.scaledLowCritical_of_lowCritical"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

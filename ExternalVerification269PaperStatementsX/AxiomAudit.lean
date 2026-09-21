@@ -1,0 +1,4 @@
+import Solutions.ExternalVerification269PaperStatementsX
+
+#print axioms Erdos249257.ExternalVerification269PaperStatementsX.two_prime_sums_transcendental
+#print axioms Erdos249257.ExternalVerification269PaperStatementsX.two_prime_transcendence

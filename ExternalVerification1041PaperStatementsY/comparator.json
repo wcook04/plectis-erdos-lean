@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification1041PaperStatementsY.Challenge",
+  "solution_module": "Solutions.ExternalVerification1041PaperStatementsY",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041PaperStatementsY.cfa_capacity_criterion"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}
