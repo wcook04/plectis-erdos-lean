@@ -1,0 +1,229 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: v0.4
+project:
+  name: 'Erdős #269: independent restatements of refereed paper-linked theorems'
+  description: >-
+    13 theorems of the substantive development for Erdős problem #269
+    restated against Mathlib alone and transported from the source declarations named
+    below. The substantive formalization lives in ErdosProblems.Erdos269.ActualSharpTailMajorantR10, ErdosProblems.Erdos269.BoundedRadixTailEscape, ErdosProblems.Erdos269.DyadicBlockMassIdentity, ErdosProblems.Erdos269.DyadicBlockThresholdPartition, ErdosProblems.Erdos269.DyadicOrderedTailRecurrence, ErdosProblems.Erdos269.DyadicShellSummability, ErdosProblems.Erdos269.IntegralBranchExtinction, ErdosProblems.Erdos269.JumpConstraintMajorant, ErdosProblems.Erdos269.LongWindowCapR11, ErdosProblems.Erdos269.PaperCompleteR20.BoundedLatticeCollision, ErdosProblems.Erdos269.PaperCompleteR20.DyadicAlphabetWhole, ErdosProblems.Erdos269.PaperCompleteR20.EightScaleRigidity, ErdosProblems.Erdos269.PaperR7ActualOrbit, ErdosProblems.Erdos269.PaperR7BasicAssembly, ErdosProblems.Erdos269.PaperR7RationalBridge, ErdosProblems.Erdos269.PaperR7SeriesIdentification, ErdosProblems.Erdos269.PaperR7WindowResults, ErdosProblems.Erdos269.PaperR8RankMajorant, ErdosProblems.Erdos269.ResidueEscape, ErdosProblems.Erdos269.RestrictedFloorSum, ErdosProblems.Erdos269.ThreePrimeRunningLcm in this repository and at
+    public commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84 of https://github.com/wcook04/plectis-erdos. This entry is a comparison
+    interface over that development. 13 statements transport by direct term
+    application, which certifies definitional identity with the source statement;
+    0 transport through a tactic bridge, which certifies implication only. The
+    parent Erdős problem remains open.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - "11A25"
+  - "11B83"
+sources:
+- title: 'Erdős #269: paper-linked Lean development'
+  authors:
+  - Will Cook
+  id: https://github.com/wcook04/plectis-erdos
+  type: original-proof
+  relationship: other
+  note: >-
+    The source declarations this entry transports, at commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84.
+    Novelty is unassessed and the parent problem is not claimed as solved.
+  license: Apache-2.0
+  author_endorsement: participated
+- title: 'Erdős Problem #269'
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com/269
+  type: web discussion
+  relationship: background
+  note: The catalogue supplies the problem statement and references.
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+status:
+  scope: Independent restatements of 13 refereed declarations for Erdős problem #269.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 13
+  sorry_boundary: Only the trusted Challenge theorem bodies carry placeholders.
+  axiom_audit_status: pending fresh target-toolchain axiom audit
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  development_status: substantive
+  local_proof_provenance: ErdosProblems.Erdos269.ActualSharpTailMajorantR10, ErdosProblems.Erdos269.BoundedRadixTailEscape, ErdosProblems.Erdos269.DyadicBlockMassIdentity, ErdosProblems.Erdos269.DyadicBlockThresholdPartition, ErdosProblems.Erdos269.DyadicOrderedTailRecurrence, ErdosProblems.Erdos269.DyadicShellSummability, ErdosProblems.Erdos269.IntegralBranchExtinction, ErdosProblems.Erdos269.JumpConstraintMajorant, ErdosProblems.Erdos269.LongWindowCapR11, ErdosProblems.Erdos269.PaperCompleteR20.BoundedLatticeCollision, ErdosProblems.Erdos269.PaperCompleteR20.DyadicAlphabetWhole, ErdosProblems.Erdos269.PaperCompleteR20.EightScaleRigidity, ErdosProblems.Erdos269.PaperR7ActualOrbit, ErdosProblems.Erdos269.PaperR7BasicAssembly, ErdosProblems.Erdos269.PaperR7RationalBridge, ErdosProblems.Erdos269.PaperR7SeriesIdentification, ErdosProblems.Erdos269.PaperR7WindowResults, ErdosProblems.Erdos269.PaperR8RankMajorant, ErdosProblems.Erdos269.ResidueEscape, ErdosProblems.Erdos269.RestrictedFloorSum, ErdosProblems.Erdos269.ThreePrimeRunningLcm in this repository, which is the same development published at https://github.com/wcook04/plectis-erdos commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+  canonical_claim_status: generated comparison interface over substantive Lean in this repository
+  main_results:
+  - declaration: Erdos249257.ExternalVerification269PaperStatementsC.dyadic_alphabet_whole
+    file: Solutions/ExternalVerification269PaperStatementsC.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification269PaperStatementsC/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification269PaperStatementsC.dyadic_alphabet_whole
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos269.PaperCompleteR20.dyadic_alphabet_whole
+    source_file: ErdosProblems/Erdos269/PaperCompleteR20/DyadicAlphabetWhole.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification269PaperStatementsC.long_all_scale_lattice_exact
+    file: Solutions/ExternalVerification269PaperStatementsC.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification269PaperStatementsC/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification269PaperStatementsC.long_all_scale_lattice_exact
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos269.PaperCompleteR20.long_all_scale_lattice_exact
+    source_file: ErdosProblems/Erdos269/PaperCompleteR20/BoundedLatticeCollision.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification269PaperStatementsC.paper_pinning_and_eight_scale_rigidity
+    file: Solutions/ExternalVerification269PaperStatementsC.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification269PaperStatementsC/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification269PaperStatementsC.paper_pinning_and_eight_scale_rigidity
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos269.PaperCompleteR20.paper_pinning_and_eight_scale_rigidity
+    source_file: ErdosProblems/Erdos269/PaperCompleteR20/EightScaleRigidity.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification269PaperStatementsC.actual_sharp_tail_bound
+    file: Solutions/ExternalVerification269PaperStatementsC.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification269PaperStatementsC/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification269PaperStatementsC.actual_sharp_tail_bound
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos269.PaperR10.actual_sharp_tail_bound
+    source_file: ErdosProblems/Erdos269/ActualSharpTailMajorantR10.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification269PaperStatementsC.longPaperCap_le_three_squareR11
+    file: Solutions/ExternalVerification269PaperStatementsC.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification269PaperStatementsC/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification269PaperStatementsC.longPaperCap_le_three_squareR11
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos269.PaperR11.longPaperCap_le_three_squareR11
+    source_file: ErdosProblems/Erdos269/LongWindowCapR11.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification269PaperStatementsC.long_fixed_split_bridgeR11
+    file: Solutions/ExternalVerification269PaperStatementsC.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification269PaperStatementsC/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification269PaperStatementsC.long_fixed_split_bridgeR11
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos269.PaperR11.long_fixed_split_bridgeR11
+    source_file: ErdosProblems/Erdos269/LongWindowCapR11.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification269PaperStatementsC.allReducedTailsNonintegral_iff
+    file: Solutions/ExternalVerification269PaperStatementsC.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification269PaperStatementsC/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification269PaperStatementsC.allReducedTailsNonintegral_iff
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos269.PaperR7.allReducedTailsNonintegral_iff
+    source_file: ErdosProblems/Erdos269/PaperR7RationalBridge.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification269PaperStatementsC.long_actual_orbit
+    file: Solutions/ExternalVerification269PaperStatementsC.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification269PaperStatementsC/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification269PaperStatementsC.long_actual_orbit
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos269.PaperR7.long_actual_orbit
+    source_file: ErdosProblems/Erdos269/PaperR7SeriesIdentification.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification269PaperStatementsC.paper_finite_endpoint_obstruction
+    file: Solutions/ExternalVerification269PaperStatementsC.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification269PaperStatementsC/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification269PaperStatementsC.paper_finite_endpoint_obstruction
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos269.PaperR7.paper_finite_endpoint_obstruction
+    source_file: ErdosProblems/Erdos269/PaperR7BasicAssembly.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification269PaperStatementsC.scaled_integer_or_cofinal_separation
+    file: Solutions/ExternalVerification269PaperStatementsC.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification269PaperStatementsC/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification269PaperStatementsC.scaled_integer_or_cofinal_separation
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos269.PaperR7.scaled_integer_or_cofinal_separation
+    source_file: ErdosProblems/Erdos269/PaperR7ActualOrbit.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification269PaperStatementsC.short_actual_orbit
+    file: Solutions/ExternalVerification269PaperStatementsC.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification269PaperStatementsC/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification269PaperStatementsC.short_actual_orbit
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos269.PaperR7.short_actual_orbit
+    source_file: ErdosProblems/Erdos269/PaperR7SeriesIdentification.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification269PaperStatementsC.short_fixed_split_bridge
+    file: Solutions/ExternalVerification269PaperStatementsC.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification269PaperStatementsC/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification269PaperStatementsC.short_fixed_split_bridge
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos269.PaperR7.short_fixed_split_bridge
+    source_file: ErdosProblems/Erdos269/PaperR7RationalBridge.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification269PaperStatementsC.actual_tail_rank_bound
+    file: Solutions/ExternalVerification269PaperStatementsC.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification269PaperStatementsC/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification269PaperStatementsC.actual_tail_rank_bound
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos269.PaperR8.actual_tail_rank_bound
+    source_file: ErdosProblems/Erdos269/PaperR8RankMajorant.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+automation:
+  methods:
+  - method: agent
+    models:
+    - Anthropic Claude
+    framework: Lean 4 and Mathlib
+    tool_setup: Statement wrappers generated by tools/meta/formal_math/generate_statement_wrappers.py and elaborated before acceptance
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    Every statement was refereed against the paper in the coverage ledger before this
+    wrapper was generated. The transport proof is the fidelity evidence: a direct term
+    application certifies definitional identity with the refereed source statement.
+    No independent mathematical review outside the author is claimed.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

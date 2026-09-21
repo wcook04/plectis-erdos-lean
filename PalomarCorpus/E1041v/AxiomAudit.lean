@@ -1,0 +1,5 @@
+import Solutions.PalomarCorpus.E1041v
+
+#print axioms PalomarCorpus.E1041.PaperStatementsV.tail_le_one_and_eq_iff_of_leading_zero
+#print axioms PalomarCorpus.E1041.PaperStatementsV.tail_norm_of_leading_zero
+#print axioms PalomarCorpus.E1041.PaperStatementsV.two_tails_closedDisc_of_ne_zero

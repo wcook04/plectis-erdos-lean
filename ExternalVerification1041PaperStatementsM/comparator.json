@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification1041PaperStatementsM.Challenge",
+  "solution_module": "Solutions.ExternalVerification1041PaperStatementsM",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041PaperStatementsM.primitiveInterior_exists_two_tailEnergy_lt_one"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

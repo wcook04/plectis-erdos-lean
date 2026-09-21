@@ -1,0 +1,6 @@
+import Solutions.PalomarCorpus.E1041s
+
+#print axioms PalomarCorpus.E1041.PaperStatementsS.chebyshev_configuration_attains
+#print axioms PalomarCorpus.E1041.PaperStatementsS.exists_gap_le_comparisonBound
+#print axioms PalomarCorpus.E1041.PaperStatementsS.monicScaledChebyshev_eq_prod
+#print axioms PalomarCorpus.E1041.PaperStatementsS.sharp_collinear_equality_attained

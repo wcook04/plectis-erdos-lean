@@ -1,0 +1,16 @@
+{
+  "challenge_module": "PalomarCorpus.E243d.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E243d",
+  "theorem_names": [
+    "PalomarCorpus.E243.PaperStatementsD.energy_window_real_bound",
+    "PalomarCorpus.E243.PaperStatementsD.exists_avoiding_in_window",
+    "PalomarCorpus.E243.PaperStatementsD.exists_slow_rise_avoiding_sequence",
+    "PalomarCorpus.E243.PaperStatementsD.exists_sparse_prime_coprime_sequence"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification1041PaperStatementsN
+
+#print axioms Erdos249257.ExternalVerification1041PaperStatementsN.translated_samePositiveRay_parameterization

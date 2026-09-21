@@ -1,0 +1,17 @@
+{
+  "challenge_module": "ExternalVerification1041PaperStatementsE.Challenge",
+  "solution_module": "Solutions.ExternalVerification1041PaperStatementsE",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041PaperStatementsE.collinearDiameterBound_sharpConstant",
+    "Erdos249257.ExternalVerification1041PaperStatementsE.exists_collinear_factorisation",
+    "Erdos249257.ExternalVerification1041PaperStatementsE.sharpConstant_le_of_collinearDiameterBound",
+    "Erdos249257.ExternalVerification1041PaperStatementsE.sharp_collinear_root_diameter",
+    "Erdos249257.ExternalVerification1041PaperStatementsE.sharp_collinear_root_diameter_monic"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

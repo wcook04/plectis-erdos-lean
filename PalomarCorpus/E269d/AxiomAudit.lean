@@ -1,0 +1,9 @@
+import Solutions.PalomarCorpus.E269d
+
+#print axioms PalomarCorpus.E269.PaperStatementsD.realPrefixLcm_eq_of_sameLogCell
+#print axioms PalomarCorpus.E269.PaperStatementsD.realPrefixLcm_jump_first
+#print axioms PalomarCorpus.E269.PaperStatementsD.realPrefixLcm_jump_second
+#print axioms PalomarCorpus.E269.PaperStatementsD.realPrefixLcm_jump_third
+#print axioms PalomarCorpus.E269.PaperStatementsD.realSmoothExponentShell_bounds
+#print axioms PalomarCorpus.E269.PaperStatementsD.running_lcm_real_cutoff_exact
+#print axioms PalomarCorpus.E269.PaperStatementsD.threePrimeKernelQ_eq_of_sameRealLogCell

@@ -1,0 +1,13 @@
+{
+  "challenge_module": "PalomarCorpus.E1041k.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E1041k",
+  "theorem_names": [
+    "PalomarCorpus.E1041.PaperStatementsK.exists_two_roots_dist_sum_le_two_mul_geomMean"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

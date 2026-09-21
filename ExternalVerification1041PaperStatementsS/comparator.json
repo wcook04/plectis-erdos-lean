@@ -1,0 +1,16 @@
+{
+  "challenge_module": "ExternalVerification1041PaperStatementsS.Challenge",
+  "solution_module": "Solutions.ExternalVerification1041PaperStatementsS",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041PaperStatementsS.chebyshev_configuration_attains",
+    "Erdos249257.ExternalVerification1041PaperStatementsS.exists_gap_le_comparisonBound",
+    "Erdos249257.ExternalVerification1041PaperStatementsS.monicScaledChebyshev_eq_prod",
+    "Erdos249257.ExternalVerification1041PaperStatementsS.sharp_collinear_equality_attained"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

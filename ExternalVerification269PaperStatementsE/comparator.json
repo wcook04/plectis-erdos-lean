@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification269PaperStatementsE.Challenge",
+  "solution_module": "Solutions.ExternalVerification269PaperStatementsE",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification269PaperStatementsE.uniform_rank_complete"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

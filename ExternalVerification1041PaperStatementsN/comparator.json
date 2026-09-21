@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification1041PaperStatementsN.Challenge",
+  "solution_module": "Solutions.ExternalVerification1041PaperStatementsN",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041PaperStatementsN.translated_samePositiveRay_parameterization"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

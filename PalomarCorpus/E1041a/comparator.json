@@ -1,0 +1,13 @@
+{
+  "challenge_module": "PalomarCorpus.E1041a.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E1041a",
+  "theorem_names": [
+    "PalomarCorpus.E1041.PaperStatementsA.erdos1041_ani_degree_seven"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

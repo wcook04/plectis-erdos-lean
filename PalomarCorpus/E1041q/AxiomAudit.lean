@@ -1,0 +1,5 @@
+import Solutions.PalomarCorpus.E1041q
+
+#print axioms PalomarCorpus.E1041.PaperStatementsQ.complete_sep_or_counterexample
+#print axioms PalomarCorpus.E1041.PaperStatementsQ.newton_real_endpoint_whole
+#print axioms PalomarCorpus.E1041.PaperStatementsQ.newton_real_value_whole

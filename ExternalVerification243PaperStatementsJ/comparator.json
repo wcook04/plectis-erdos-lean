@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification243PaperStatementsJ.Challenge",
+  "solution_module": "Solutions.ExternalVerification243PaperStatementsJ",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification243PaperStatementsJ.real_lowerDensityZero_iff_exists_admissible_real_weight"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,4 @@
+import Solutions.PalomarCorpus.E1041aa
+
+#print axioms PalomarCorpus.E1041.PaperStatementsAA.all_degree_monic_trinomials_whole
+#print axioms PalomarCorpus.E1041.PaperStatementsAA.complete_trinomial

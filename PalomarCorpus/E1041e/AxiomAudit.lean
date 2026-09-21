@@ -1,0 +1,7 @@
+import Solutions.PalomarCorpus.E1041e
+
+#print axioms PalomarCorpus.E1041.PaperStatementsE.collinearDiameterBound_sharpConstant
+#print axioms PalomarCorpus.E1041.PaperStatementsE.exists_collinear_factorisation
+#print axioms PalomarCorpus.E1041.PaperStatementsE.sharpConstant_le_of_collinearDiameterBound
+#print axioms PalomarCorpus.E1041.PaperStatementsE.sharp_collinear_root_diameter
+#print axioms PalomarCorpus.E1041.PaperStatementsE.sharp_collinear_root_diameter_monic

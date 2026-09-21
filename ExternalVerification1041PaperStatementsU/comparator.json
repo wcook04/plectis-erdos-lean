@@ -1,0 +1,15 @@
+{
+  "challenge_module": "ExternalVerification1041PaperStatementsU.Challenge",
+  "solution_module": "Solutions.ExternalVerification1041PaperStatementsU",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041PaperStatementsU.primitive_quintic_two_tail",
+    "Erdos249257.ExternalVerification1041PaperStatementsU.primitive_quintic_two_tail_of_polynomial",
+    "Erdos249257.ExternalVerification1041PaperStatementsU.complete_primitive_quintic"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

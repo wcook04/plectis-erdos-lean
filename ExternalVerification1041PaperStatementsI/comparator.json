@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification1041PaperStatementsI.Challenge",
+  "solution_module": "Solutions.ExternalVerification1041PaperStatementsI",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041PaperStatementsI.exists_peak_le_comparisonBound"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

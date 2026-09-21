@@ -1,0 +1,9 @@
+import Solutions.PalomarCorpus.E243l
+
+#print axioms PalomarCorpus.E243.PaperStatementsL.canonicalCorrection_pos_and_lt_three_div
+#print axioms PalomarCorpus.E243.PaperStatementsL.canonical_frontier
+#print axioms PalomarCorpus.E243.PaperStatementsL.canonical_growthDefect_identity
+#print axioms PalomarCorpus.E243.PaperStatementsL.canonical_tail_ratio_quantitative
+#print axioms PalomarCorpus.E243.PaperStatementsL.finite_negative_mass_paper
+#print axioms PalomarCorpus.E243.PaperStatementsL.original_coordinate_slow_growth_defect
+#print axioms PalomarCorpus.E243.PaperStatementsL.prefix_ratio_le_canonicalNumerator

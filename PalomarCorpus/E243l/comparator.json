@@ -1,0 +1,19 @@
+{
+  "challenge_module": "PalomarCorpus.E243l.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E243l",
+  "theorem_names": [
+    "PalomarCorpus.E243.PaperStatementsL.canonicalCorrection_pos_and_lt_three_div",
+    "PalomarCorpus.E243.PaperStatementsL.canonical_frontier",
+    "PalomarCorpus.E243.PaperStatementsL.canonical_growthDefect_identity",
+    "PalomarCorpus.E243.PaperStatementsL.canonical_tail_ratio_quantitative",
+    "PalomarCorpus.E243.PaperStatementsL.finite_negative_mass_paper",
+    "PalomarCorpus.E243.PaperStatementsL.original_coordinate_slow_growth_defect",
+    "PalomarCorpus.E243.PaperStatementsL.prefix_ratio_le_canonicalNumerator"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

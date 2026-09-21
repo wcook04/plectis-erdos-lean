@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification1041PaperStatementsAB
+
+#print axioms Erdos249257.ExternalVerification1041PaperStatementsAB.paper_weighted_free_point

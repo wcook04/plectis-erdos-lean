@@ -1,0 +1,3 @@
+import Solutions.PalomarCorpus.E1041g
+
+#print axioms PalomarCorpus.E1041.PaperStatementsG.complete_straight_path_obstructions

@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification1041PaperStatementsJ.Challenge",
+  "solution_module": "Solutions.ExternalVerification1041PaperStatementsJ",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041PaperStatementsJ.cubic_has_safe_root_spoke"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

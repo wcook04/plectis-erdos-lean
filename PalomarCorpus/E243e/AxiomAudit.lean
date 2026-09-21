@@ -1,0 +1,5 @@
+import Solutions.PalomarCorpus.E243e
+
+#print axioms PalomarCorpus.E243.PaperStatementsE.growthDefect_eq_neg_relativeError_add_shiftedCorrection
+#print axioms PalomarCorpus.E243.PaperStatementsE.shiftedCorrectionTerm_pos_and_lt_three_div
+#print axioms PalomarCorpus.E243.PaperStatementsE.sylvesterTail_shiftedCorrection

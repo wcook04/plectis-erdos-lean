@@ -1,0 +1,20 @@
+{
+  "challenge_module": "PalomarCorpus.E1041f.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E1041f",
+  "theorem_names": [
+    "PalomarCorpus.E1041.PaperStatementsF.exists_mergerIntegral_lt",
+    "PalomarCorpus.E1041.PaperStatementsF.mergerIntegral_eq_mul_phi",
+    "PalomarCorpus.E1041.PaperStatementsF.orliczKernel_continuous",
+    "PalomarCorpus.E1041.PaperStatementsF.orliczKernel_tendsto_zero",
+    "PalomarCorpus.E1041.PaperStatementsF.orlicz_currency",
+    "PalomarCorpus.E1041.PaperStatementsF.phi_div_tendsto_zero",
+    "PalomarCorpus.E1041.PaperStatementsF.phi_strictConvexOn",
+    "PalomarCorpus.E1041.PaperStatementsF.phi_strictMonoOn"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

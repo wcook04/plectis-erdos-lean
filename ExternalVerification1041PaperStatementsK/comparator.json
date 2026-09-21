@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification1041PaperStatementsK.Challenge",
+  "solution_module": "Solutions.ExternalVerification1041PaperStatementsK",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041PaperStatementsK.exists_two_roots_dist_sum_le_two_mul_geomMean"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

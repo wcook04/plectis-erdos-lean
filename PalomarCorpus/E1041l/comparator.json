@@ -1,0 +1,13 @@
+{
+  "challenge_module": "PalomarCorpus.E1041l.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E1041l",
+  "theorem_names": [
+    "PalomarCorpus.E1041.PaperStatementsL.geometric_row_mean_closed_disc_le"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

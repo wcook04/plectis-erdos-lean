@@ -1,0 +1,3 @@
+import Solutions.PalomarCorpus.E243h
+
+#print axioms PalomarCorpus.E243.PaperStatementsH.cancellationFree_curvature_square

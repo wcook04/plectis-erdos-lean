@@ -1,0 +1,9 @@
+import Solutions.PalomarCorpus.E1041d
+
+#print axioms PalomarCorpus.E1041.PaperStatementsD.binomial_chord_decisive_step
+#print axioms PalomarCorpus.E1041.PaperStatementsD.binomial_chord_maximum
+#print axioms PalomarCorpus.E1041.PaperStatementsD.binomial_chords_above_threshold
+#print axioms PalomarCorpus.E1041.PaperStatementsD.binomial_chords_at_threshold
+#print axioms PalomarCorpus.E1041.PaperStatementsD.binomial_chords_below_threshold
+#print axioms PalomarCorpus.E1041.PaperStatementsD.binomial_chords_path
+#print axioms PalomarCorpus.E1041.PaperStatementsD.binomial_inner_chord_maximal

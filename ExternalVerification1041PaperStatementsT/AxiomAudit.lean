@@ -1,0 +1,4 @@
+import Solutions.ExternalVerification1041PaperStatementsT
+
+#print axioms Erdos249257.ExternalVerification1041PaperStatementsT.collinear_erdos_1041
+#print axioms Erdos249257.ExternalVerification1041PaperStatementsT.collinear_erdos_1041_monic

@@ -1,0 +1,17 @@
+{
+  "challenge_module": "PalomarCorpus.E1041e.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E1041e",
+  "theorem_names": [
+    "PalomarCorpus.E1041.PaperStatementsE.collinearDiameterBound_sharpConstant",
+    "PalomarCorpus.E1041.PaperStatementsE.exists_collinear_factorisation",
+    "PalomarCorpus.E1041.PaperStatementsE.sharpConstant_le_of_collinearDiameterBound",
+    "PalomarCorpus.E1041.PaperStatementsE.sharp_collinear_root_diameter",
+    "PalomarCorpus.E1041.PaperStatementsE.sharp_collinear_root_diameter_monic"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

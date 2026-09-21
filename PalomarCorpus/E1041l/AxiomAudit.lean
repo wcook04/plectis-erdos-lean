@@ -1,0 +1,3 @@
+import Solutions.PalomarCorpus.E1041l
+
+#print axioms PalomarCorpus.E1041.PaperStatementsL.geometric_row_mean_closed_disc_le

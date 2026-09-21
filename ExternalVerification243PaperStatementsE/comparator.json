@@ -1,0 +1,15 @@
+{
+  "challenge_module": "ExternalVerification243PaperStatementsE.Challenge",
+  "solution_module": "Solutions.ExternalVerification243PaperStatementsE",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification243PaperStatementsE.growthDefect_eq_neg_relativeError_add_shiftedCorrection",
+    "Erdos249257.ExternalVerification243PaperStatementsE.shiftedCorrectionTerm_pos_and_lt_three_div",
+    "Erdos249257.ExternalVerification243PaperStatementsE.sylvesterTail_shiftedCorrection"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

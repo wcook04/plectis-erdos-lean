@@ -1,0 +1,5 @@
+import Solutions.ExternalVerification1041PaperStatementsQ
+
+#print axioms Erdos249257.ExternalVerification1041PaperStatementsQ.complete_sep_or_counterexample
+#print axioms Erdos249257.ExternalVerification1041PaperStatementsQ.newton_real_endpoint_whole
+#print axioms Erdos249257.ExternalVerification1041PaperStatementsQ.newton_real_value_whole

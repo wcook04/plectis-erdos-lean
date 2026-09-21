@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification1041PaperStatementsW
+
+#print axioms Erdos249257.ExternalVerification1041PaperStatementsW.reflected_critical_value

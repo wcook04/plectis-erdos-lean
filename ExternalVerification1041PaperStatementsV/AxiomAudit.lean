@@ -1,0 +1,5 @@
+import Solutions.ExternalVerification1041PaperStatementsV
+
+#print axioms Erdos249257.ExternalVerification1041PaperStatementsV.tail_le_one_and_eq_iff_of_leading_zero
+#print axioms Erdos249257.ExternalVerification1041PaperStatementsV.tail_norm_of_leading_zero
+#print axioms Erdos249257.ExternalVerification1041PaperStatementsV.two_tails_closedDisc_of_ne_zero

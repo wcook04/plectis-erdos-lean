@@ -1,0 +1,13 @@
+{
+  "challenge_module": "PalomarCorpus.E243f.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E243f",
+  "theorem_names": [
+    "PalomarCorpus.E243.PaperStatementsF.original_coordinate_strict_one"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

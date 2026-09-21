@@ -854,3 +854,167 @@ globs = ["ExternalVerification269PaperStatementsX.+"]
 [[lean_lib]]
 name = "ExternalVerification269PaperStatementsY"
 globs = ["ExternalVerification269PaperStatementsY.+"]
+
+[[lean_lib]]
+name = "ExternalVerification269PaperStatementsA"
+globs = ["ExternalVerification269PaperStatementsA.+"]
+
+[[lean_lib]]
+name = "ExternalVerification269PaperStatementsB"
+globs = ["ExternalVerification269PaperStatementsB.+"]
+
+[[lean_lib]]
+name = "ExternalVerification269PaperStatementsC"
+globs = ["ExternalVerification269PaperStatementsC.+"]
+
+[[lean_lib]]
+name = "ExternalVerification269PaperStatementsD"
+globs = ["ExternalVerification269PaperStatementsD.+"]
+
+[[lean_lib]]
+name = "ExternalVerification269PaperStatementsE"
+globs = ["ExternalVerification269PaperStatementsE.+"]
+
+[[lean_lib]]
+name = "ExternalVerification243PaperStatementsA"
+globs = ["ExternalVerification243PaperStatementsA.+"]
+
+[[lean_lib]]
+name = "ExternalVerification243PaperStatementsC"
+globs = ["ExternalVerification243PaperStatementsC.+"]
+
+[[lean_lib]]
+name = "ExternalVerification243PaperStatementsD"
+globs = ["ExternalVerification243PaperStatementsD.+"]
+
+[[lean_lib]]
+name = "ExternalVerification243PaperStatementsE"
+globs = ["ExternalVerification243PaperStatementsE.+"]
+
+[[lean_lib]]
+name = "ExternalVerification243PaperStatementsF"
+globs = ["ExternalVerification243PaperStatementsF.+"]
+
+[[lean_lib]]
+name = "ExternalVerification243PaperStatementsG"
+globs = ["ExternalVerification243PaperStatementsG.+"]
+
+[[lean_lib]]
+name = "ExternalVerification243PaperStatementsH"
+globs = ["ExternalVerification243PaperStatementsH.+"]
+
+[[lean_lib]]
+name = "ExternalVerification243PaperStatementsI"
+globs = ["ExternalVerification243PaperStatementsI.+"]
+
+[[lean_lib]]
+name = "ExternalVerification243PaperStatementsJ"
+globs = ["ExternalVerification243PaperStatementsJ.+"]
+
+[[lean_lib]]
+name = "ExternalVerification243PaperStatementsL"
+globs = ["ExternalVerification243PaperStatementsL.+"]
+
+[[lean_lib]]
+name = "ExternalVerification243PaperStatementsN"
+globs = ["ExternalVerification243PaperStatementsN.+"]
+
+[[lean_lib]]
+name = "ExternalVerification243PaperStatementsO"
+globs = ["ExternalVerification243PaperStatementsO.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1041PaperStatementsA"
+globs = ["ExternalVerification1041PaperStatementsA.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1041PaperStatementsAA"
+globs = ["ExternalVerification1041PaperStatementsAA.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1041PaperStatementsAB"
+globs = ["ExternalVerification1041PaperStatementsAB.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1041PaperStatementsB"
+globs = ["ExternalVerification1041PaperStatementsB.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1041PaperStatementsD"
+globs = ["ExternalVerification1041PaperStatementsD.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1041PaperStatementsE"
+globs = ["ExternalVerification1041PaperStatementsE.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1041PaperStatementsF"
+globs = ["ExternalVerification1041PaperStatementsF.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1041PaperStatementsG"
+globs = ["ExternalVerification1041PaperStatementsG.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1041PaperStatementsH"
+globs = ["ExternalVerification1041PaperStatementsH.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1041PaperStatementsI"
+globs = ["ExternalVerification1041PaperStatementsI.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1041PaperStatementsJ"
+globs = ["ExternalVerification1041PaperStatementsJ.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1041PaperStatementsK"
+globs = ["ExternalVerification1041PaperStatementsK.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1041PaperStatementsL"
+globs = ["ExternalVerification1041PaperStatementsL.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1041PaperStatementsM"
+globs = ["ExternalVerification1041PaperStatementsM.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1041PaperStatementsN"
+globs = ["ExternalVerification1041PaperStatementsN.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1041PaperStatementsO"
+globs = ["ExternalVerification1041PaperStatementsO.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1041PaperStatementsP"
+globs = ["ExternalVerification1041PaperStatementsP.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1041PaperStatementsQ"
+globs = ["ExternalVerification1041PaperStatementsQ.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1041PaperStatementsR"
+globs = ["ExternalVerification1041PaperStatementsR.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1041PaperStatementsS"
+globs = ["ExternalVerification1041PaperStatementsS.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1041PaperStatementsT"
+globs = ["ExternalVerification1041PaperStatementsT.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1041PaperStatementsU"
+globs = ["ExternalVerification1041PaperStatementsU.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1041PaperStatementsV"
+globs = ["ExternalVerification1041PaperStatementsV.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1041PaperStatementsW"
+globs = ["ExternalVerification1041PaperStatementsW.+"]

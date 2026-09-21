@@ -1,0 +1,13 @@
+{
+  "challenge_module": "PalomarCorpus.E1041r.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E1041r",
+  "theorem_names": [
+    "PalomarCorpus.E1041.PaperStatementsR.sextic_spoke_counterexample_whole"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

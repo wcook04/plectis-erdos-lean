@@ -1,0 +1,13 @@
+{
+  "challenge_module": "PalomarCorpus.E1041o.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E1041o",
+  "theorem_names": [
+    "PalomarCorpus.E1041.PaperStatementsO.critical_value_three_budgets"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

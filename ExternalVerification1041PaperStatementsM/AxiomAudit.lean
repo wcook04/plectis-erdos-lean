@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification1041PaperStatementsM
+
+#print axioms Erdos249257.ExternalVerification1041PaperStatementsM.primitiveInterior_exists_two_tailEnergy_lt_one

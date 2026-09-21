@@ -1,0 +1,13 @@
+{
+  "challenge_module": "PalomarCorpus.E1041w.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E1041w",
+  "theorem_names": [
+    "PalomarCorpus.E1041.PaperStatementsW.reflected_critical_value"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

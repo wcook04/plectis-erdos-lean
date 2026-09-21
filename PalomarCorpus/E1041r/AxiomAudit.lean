@@ -1,0 +1,3 @@
+import Solutions.PalomarCorpus.E1041r
+
+#print axioms PalomarCorpus.E1041.PaperStatementsR.sextic_spoke_counterexample_whole

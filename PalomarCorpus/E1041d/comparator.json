@@ -1,0 +1,19 @@
+{
+  "challenge_module": "PalomarCorpus.E1041d.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E1041d",
+  "theorem_names": [
+    "PalomarCorpus.E1041.PaperStatementsD.binomial_chord_decisive_step",
+    "PalomarCorpus.E1041.PaperStatementsD.binomial_chord_maximum",
+    "PalomarCorpus.E1041.PaperStatementsD.binomial_chords_above_threshold",
+    "PalomarCorpus.E1041.PaperStatementsD.binomial_chords_at_threshold",
+    "PalomarCorpus.E1041.PaperStatementsD.binomial_chords_below_threshold",
+    "PalomarCorpus.E1041.PaperStatementsD.binomial_chords_path",
+    "PalomarCorpus.E1041.PaperStatementsD.binomial_inner_chord_maximal"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

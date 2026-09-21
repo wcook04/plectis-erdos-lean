@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ExternalVerification243PaperStatementsI.Challenge",
+  "solution_module": "Solutions.ExternalVerification243PaperStatementsI",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification243PaperStatementsI.canonical_negativeError_limsup_gt_one",
+    "Erdos249257.ExternalVerification243PaperStatementsI.maximal_gap_limsup_eq_inv_sigma"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification243PaperStatementsN.Challenge",
+  "solution_module": "Solutions.ExternalVerification243PaperStatementsN",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification243PaperStatementsN.regular_rate_extraction_cubic"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ExternalVerification1041PaperStatementsB.Challenge",
+  "solution_module": "Solutions.ExternalVerification1041PaperStatementsB",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041PaperStatementsB.exists_two_nearest_roots_of_polynomial_critical",
+    "Erdos249257.ExternalVerification1041PaperStatementsB.two_nearest_roots_of_polynomial_critical"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,19 @@
+{
+  "challenge_module": "ExternalVerification243PaperStatementsL.Challenge",
+  "solution_module": "Solutions.ExternalVerification243PaperStatementsL",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification243PaperStatementsL.canonicalCorrection_pos_and_lt_three_div",
+    "Erdos249257.ExternalVerification243PaperStatementsL.canonical_growthDefect_identity",
+    "Erdos249257.ExternalVerification243PaperStatementsL.original_coordinate_slow_growth_defect",
+    "Erdos249257.ExternalVerification243PaperStatementsL.prefix_ratio_le_canonicalNumerator",
+    "Erdos249257.ExternalVerification243PaperStatementsL.canonical_frontier",
+    "Erdos249257.ExternalVerification243PaperStatementsL.canonical_tail_ratio_quantitative",
+    "Erdos249257.ExternalVerification243PaperStatementsL.finite_negative_mass_paper"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

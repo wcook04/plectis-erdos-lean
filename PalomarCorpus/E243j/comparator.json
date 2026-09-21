@@ -1,0 +1,13 @@
+{
+  "challenge_module": "PalomarCorpus.E243j.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E243j",
+  "theorem_names": [
+    "PalomarCorpus.E243.PaperStatementsJ.real_lowerDensityZero_iff_exists_admissible_real_weight"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,13 @@
+{
+  "challenge_module": "PalomarCorpus.E243g.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E243g",
+  "theorem_names": [
+    "PalomarCorpus.E243.PaperStatementsG.regular_rate_extraction"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,15 @@
+{
+  "challenge_module": "ExternalVerification1041PaperStatementsQ.Challenge",
+  "solution_module": "Solutions.ExternalVerification1041PaperStatementsQ",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041PaperStatementsQ.newton_real_endpoint_whole",
+    "Erdos249257.ExternalVerification1041PaperStatementsQ.newton_real_value_whole",
+    "Erdos249257.ExternalVerification1041PaperStatementsQ.complete_sep_or_counterexample"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

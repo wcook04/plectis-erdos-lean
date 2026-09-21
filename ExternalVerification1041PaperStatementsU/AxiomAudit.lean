@@ -1,0 +1,5 @@
+import Solutions.ExternalVerification1041PaperStatementsU
+
+#print axioms Erdos249257.ExternalVerification1041PaperStatementsU.complete_primitive_quintic
+#print axioms Erdos249257.ExternalVerification1041PaperStatementsU.primitive_quintic_two_tail
+#print axioms Erdos249257.ExternalVerification1041PaperStatementsU.primitive_quintic_two_tail_of_polynomial

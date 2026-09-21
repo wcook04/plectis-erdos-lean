@@ -1,0 +1,15 @@
+{
+  "challenge_module": "PalomarCorpus.E1041u.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E1041u",
+  "theorem_names": [
+    "PalomarCorpus.E1041.PaperStatementsU.complete_primitive_quintic",
+    "PalomarCorpus.E1041.PaperStatementsU.primitive_quintic_two_tail",
+    "PalomarCorpus.E1041.PaperStatementsU.primitive_quintic_two_tail_of_polynomial"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

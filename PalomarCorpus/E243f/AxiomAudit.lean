@@ -1,0 +1,3 @@
+import Solutions.PalomarCorpus.E243f
+
+#print axioms PalomarCorpus.E243.PaperStatementsF.original_coordinate_strict_one
