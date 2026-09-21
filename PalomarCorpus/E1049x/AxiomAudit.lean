@@ -1,0 +1,3 @@
+import Solutions.PalomarCorpus.E1049x
+
+#print axioms PalomarCorpus.E1049.PaperStatementsX.no_finite_simultaneous_two_three_system

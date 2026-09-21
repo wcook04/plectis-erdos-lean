@@ -1,0 +1,25 @@
+{
+  "challenge_module": "PalomarCorpus.E249ay.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E249ay",
+  "theorem_names": [
+    "PalomarCorpus.E249.PaperStatementsAY.centeredLift_range",
+    "PalomarCorpus.E249.PaperStatementsAY.cylinderMass_eq_divisibility_mass_mul",
+    "PalomarCorpus.E249.PaperStatementsAY.cylinder_mediant_split",
+    "PalomarCorpus.E249.PaperStatementsAY.cylinder_root_values",
+    "PalomarCorpus.E249.PaperStatementsAY.exists_upperHalf_channel_paper",
+    "PalomarCorpus.E249.PaperStatementsAY.inversePhaseGauge_locks_row_and_preserves_minor",
+    "PalomarCorpus.E249.PaperStatementsAY.irrational_totient_iff_mobius_square",
+    "PalomarCorpus.E249.PaperStatementsAY.mobius_square_reduction",
+    "PalomarCorpus.E249.PaperStatementsAY.normalised_split_probabilities",
+    "PalomarCorpus.E249.PaperStatementsAY.upperHalfMersenneProduct_between_bounds",
+    "PalomarCorpus.E249.PaperStatementsAY.upperHalfPrimes_member_bounds",
+    "PalomarCorpus.E249.PaperStatementsAY.upperHalfPrimes_nonempty_paper",
+    "PalomarCorpus.E249.PaperStatementsAY.upperHalfPrimes_spec"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

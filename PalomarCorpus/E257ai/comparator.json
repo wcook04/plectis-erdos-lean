@@ -1,0 +1,15 @@
+{
+  "challenge_module": "PalomarCorpus.E257ai.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257ai",
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStatementsAI.paper_forced_greedy_low_ranks",
+    "PalomarCorpus.E257.PaperStatementsAI.paper_forced_greedy_unique_support_and_criterion",
+    "PalomarCorpus.E257.PaperStatementsAI.paper_rung_finite_decision"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,18 @@
+{
+  "challenge_module": "PalomarCorpus.E249be.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E249be",
+  "theorem_names": [
+    "PalomarCorpus.E249.PaperStatementsBE.divisorChannels_sum_eq",
+    "PalomarCorpus.E249.PaperStatementsBE.foreignComplementBound_paper",
+    "PalomarCorpus.E249.PaperStatementsBE.projectedForeignDefect_paper",
+    "PalomarCorpus.E249.PaperStatementsBE.residueKernel_increment_of_dvd",
+    "PalomarCorpus.E249.PaperStatementsBE.residueOffset_of_dvd",
+    "PalomarCorpus.E249.PaperStatementsBE.transportResidueKernel_eq_mobiusTermKernel"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

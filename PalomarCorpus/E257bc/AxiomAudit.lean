@@ -1,0 +1,5 @@
+import Solutions.PalomarCorpus.E257bc
+
+#print axioms PalomarCorpus.E257.PaperStatementsBC.finitePrimeWeighted_fixedBase_hereditary
+#print axioms PalomarCorpus.E257.PaperStatementsBC.irrational_residueClass_positive_support
+#print axioms PalomarCorpus.E257.PaperStatementsBC.paper_terminalhalf

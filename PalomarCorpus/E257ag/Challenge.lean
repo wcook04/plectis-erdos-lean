@@ -1,0 +1,164 @@
+/-
+Copyright (c) 2026 Will Cook. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Will Cook
+-/
+
+import Mathlib
+
+set_option autoImplicit false
+
+/-!
+# Palomar challenge for Erdős problem #257, band g
+
+Erdős problem #257 is open and nothing here decides it. Each theorem below
+restates one refereed declaration of the paper-linked Lean development for this
+problem, with the definitions its statement mentions copied in so the whole file
+elaborates against Mathlib alone. The declaration documentation names the source
+declaration each statement is transported from. This band is a packaging split of
+`PalomarCorpus/E257` under the Challenge size ceiling; it does not replace it.
+-/
+
+open Filter
+open Topology
+
+namespace PalomarCorpus.E257.PaperStatementsAG
+open Filter
+open Topology
+/-- **The Erdős #257 support series** `∑_{a ∈ A} 1/(b^a - 1)`, as an indicator series over ℕ. The `a = 0` term is `1/(1-1) = 0` under real division-by-zero conventions, so supports containing `0` contribute nothing spurious. Local copy of Erdos249257.erdosSupportSeries, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def erdosSupportSeries (b : ℕ) (A : Set ℕ) : ℝ :=
+  ∑' a : ℕ, Set.indicator A (fun a => (1 : ℝ) / ((b : ℝ) ^ a - 1)) a
+/-- The finite Erdős partial sum `∑_{n ∈ F} 1 / (b ^ n - 1)` as a rational number, stated with subtraction in `ℚ` so the statement reads exactly like the mathematical series. Local copy of Erdos249257.finiteErdosSum, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def finiteErdosSum (F : Finset Nat) (b : Nat) : Rat :=
+  ∑ n ∈ F, 1 / ((b : Rat) ^ n - 1)
+/-- **The signed weighted divisor coefficient** `∑_{d ∣ n} w d` for an integer weight `w : ℕ → ℤ` — the Dirichlet incidence `w * 1` with signs. At a Nat weight (cast) this is `weightedCoeff`. Local copy of Erdos249257.intWeightedCoeff, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def intWeightedCoeff (w : ℕ → ℤ) (n : ℕ) : ℤ :=
+  ∑ d ∈ n.divisors, w d
+/-- **The signed weighted Erdős series** `∑_a w(a)/(b^a - 1)` for an integer weight. The `a = 0` term is junk-safe (`w(0)/0 = 0`). At a cast Nat weight this is `weightedErdosSeries`; mixed-sign rational coefficient series reduce to it by clearing denominators. Local copy of Erdos249257.intWeightedErdosSeries, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def intWeightedErdosSeries (b : ℕ) (w : ℕ → ℤ) : ℝ :=
+  ∑' a : ℕ, ((w a : ℤ) : ℝ) / ((b : ℝ) ^ a - 1)
+/-- **The support coefficient** `f_A(n) = #{d ∣ n : d ∈ A}` — the Dirichlet incidence `1_A * 1` of a support set `A ⊆ ℕ`. This is the coefficient in which Erdős #257 is actually stated: `∑_{a∈A} 1/(b^a - 1) = ∑_n f_A(n)/b^n`. Full support gives `f_ℕ = τ`; primes give `ω`; prime powers give `Ω`. Local copy of Erdos249257.supportCoeff, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def supportCoeff (A : Set ℕ) (n : ℕ) : ℕ :=
+  letI := Classical.decPred fun d : ℕ => d ∈ A
+  (n.divisors.filter fun d => d ∈ A).card
+/-- States res:period from the short record for Erdős problem #257. Transported from Erdos249257.coprime_base_den_finiteErdosSum in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem coprime_base_den_finiteErdosSum
+    (F : Finset Nat) (b : Nat) (h0 : 0 ∉ F) (hb : 2 ≤ b) :
+    Nat.Coprime b (finiteErdosSum F b).den := by
+  sorry
+/-- States thm:multiples-support from the long record for Erdős problem #257. Transported from Erdos249257.erdosSupportSeries_multiples_eq_pow_base_full_support in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem erdosSupportSeries_multiples_eq_pow_base_full_support
+    (b d : ℕ) (hb : 2 ≤ b) (hd : 1 ≤ d) :
+    erdosSupportSeries b {n : ℕ | d ∣ n}
+      = ∑' k : ℕ, (1 : ℝ) / (((b : ℝ) ^ d) ^ (k + 1) - 1) := by
+  sorry
+/-- States thm:weighted-coeff-engine from the long record for Erdős problem #257. Transported from Erdos249257.irrational_coeff_series_of_weighted_coeff_block_certificates in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem irrational_coeff_series_of_weighted_coeff_block_certificates
+    (b : ℕ) (c : ℕ → ℕ) (hb : 2 ≤ b) (hgrowth : ∀ m : ℕ, c m ≤ m)
+    (hcert : ∀ q : ℕ, 0 < q → ∃ N K L C : ℕ, K ≤ L ∧
+        (∀ r ∈ Finset.Icc 1 K, b ^ r ∣ c (N + r)) ∧
+        (∑ r ∈ Finset.Icc (K + 1) L, c (N + r) * b ^ (L - r) ≤ C) ∧
+        (∃ t : ℕ, 0 < c (N + L + 1 + t)) ∧
+        q * (C + (N + L + 2)) < b ^ L) :
+    Irrational (∑' m : ℕ, ((c (m + 1) : ℝ)) / (b : ℝ) ^ (m + 1)) := by
+  sorry
+/-- States thm:factorial-twopow-support from the long record for Erdős problem #257. Transported from Erdos249257.irrational_erdosSum_factorial_support in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem irrational_erdosSum_factorial_support (b : ℕ) (hb : 2 ≤ b) :
+    Irrational (∑' k, (1 : ℝ) / ((b : ℝ) ^ (Nat.factorial (k + 1)) - 1)) := by
+  sorry
+/-- States thm:full-support, thm:full-support-catalogue from the long record for Erdős problem #257. Transported from Erdos249257.irrational_erdosSum_full_support in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem irrational_erdosSum_full_support (b : ℕ) (hb : 2 ≤ b) :
+    Irrational (∑' k : ℕ, (1 : ℝ) / ((b : ℝ) ^ (k + 1) - 1)) := by
+  sorry
+/-- States thm:lcm-gap-engine from the long record for Erdős problem #257. Transported from Erdos249257.irrational_erdosSum_of_lcm_gap in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem irrational_erdosSum_of_lcm_gap
+    (b : ℕ) (hb : 2 ≤ b) (a : ℕ → ℕ) (ha : StrictMono a) (ha0 : 1 ≤ a 0)
+    (hgap : Tendsto (fun k => a k - ((Finset.range k).image a).lcm id)
+      atTop atTop) :
+    Irrational (∑' k, (1 : ℝ) / ((b : ℝ) ^ (a k) - 1)) := by
+  sorry
+/-- States thm:factorial-twopow-support from the long record for Erdős problem #257. Transported from Erdos249257.irrational_erdosSum_two_pow_support in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem irrational_erdosSum_two_pow_support (b : ℕ) (hb : 2 ≤ b) :
+    Irrational (∑' k, (1 : ℝ) / ((b : ℝ) ^ (2 ^ k) - 1)) := by
+  sorry
+/-- States thm:eventually-periodic from the long record for Erdős problem #257. Transported from Erdos249257.irrational_erdosSupportSeries_eventuallyPeriodic in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem irrational_erdosSupportSeries_eventuallyPeriodic
+    (b m N₀ : ℕ) (A : Set ℕ) (hb : 2 ≤ b) (hm : 0 < m)
+    (hper : ∀ n : ℕ, N₀ ≤ n → (n + m ∈ A ↔ n ∈ A))
+    (hinf : A.Infinite) :
+    Irrational (erdosSupportSeries b A) := by
+  sorry
+/-- States thm:multiples-support from the long record for Erdős problem #257. Transported from Erdos249257.irrational_erdosSupportSeries_multiples in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem irrational_erdosSupportSeries_multiples (b d : ℕ) (hb : 2 ≤ b) (hd : 1 ≤ d) :
+    Irrational (erdosSupportSeries b {n : ℕ | d ∣ n}) := by
+  sorry
+/-- States thm:residue-odd from the long record for Erdős problem #257. Transported from Erdos249257.irrational_erdosSupportSeries_odd in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem irrational_erdosSupportSeries_odd (b : ℕ) (hb : 2 ≤ b) :
+    Irrational (erdosSupportSeries b {n : ℕ | Odd n}) := by
+  sorry
+/-- States lem:tail-transfer from the long record for Erdős problem #257. Transported from Erdos249257.irrational_erdosSupportSeries_of_tail in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem irrational_erdosSupportSeries_of_tail (b : ℕ) (A : Set ℕ) (hb : 2 ≤ b)
+    (B : ℕ) (h : Irrational (erdosSupportSeries b {n : ℕ | n ∈ A ∧ B < n})) :
+    Irrational (erdosSupportSeries b A) := by
+  sorry
+/-- States thm:pairwise-coprime from the long record for Erdős problem #257. Transported from Erdos249257.irrational_erdosSupportSeries_pairwise_coprime in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem irrational_erdosSupportSeries_pairwise_coprime (b : ℕ) (A : Set ℕ)
+    (hb : 2 ≤ b) (hA : A.Infinite) (hpair : A.Pairwise Nat.Coprime)
+    (hsum : Summable (Set.indicator A fun a : ℕ => (1 : ℝ) / a)) :
+    Irrational (erdosSupportSeries b A) := by
+  sorry
+/-- States thm:periodic-support from the long record for Erdős problem #257. Transported from Erdos249257.irrational_erdosSupportSeries_periodic in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem irrational_erdosSupportSeries_periodic
+    (b m : ℕ) (A : Set ℕ) (hb : 2 ≤ b) (hm : 0 < m)
+    (hper : ∀ n : ℕ, n + m ∈ A ↔ n ∈ A)
+    (hpos : ∃ a : ℕ, 0 < a ∧ a ∈ A) :
+    Irrational (erdosSupportSeries b A) := by
+  sorry
+/-- States thm:residue-odd from the long record for Erdős problem #257. Transported from Erdos249257.irrational_erdosSupportSeries_residueClass in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem irrational_erdosSupportSeries_residueClass
+    (b m c : ℕ) (hb : 2 ≤ b) (hm : 0 < m) :
+    Irrational (erdosSupportSeries b {n : ℕ | n % m = c % m}) := by
+  sorry
+/-- States lem:tail-transfer from the long record for Erdős problem #257. Transported from Erdos249257.irrational_erdosSupportSeries_tail_of_irrational in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem irrational_erdosSupportSeries_tail_of_irrational (b : ℕ) (A : Set ℕ)
+    (hb : 2 ≤ b) (B : ℕ) (h : Irrational (erdosSupportSeries b A)) :
+    Irrational (erdosSupportSeries b {n : ℕ | n ∈ A ∧ B < n}) := by
+  sorry
+/-- States thm:signed-periodic from the long record for Erdős problem #257. Transported from Erdos249257.irrational_intWeightedErdosSeries_periodic_of_coeff_nonneg_of_frequently_ne_zero in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem irrational_intWeightedErdosSeries_periodic_of_coeff_nonneg_of_frequently_ne_zero
+    (b m : ℕ) (w : ℕ → ℤ) (hb : 2 ≤ b) (hm : 0 < m)
+    (hper : ∀ n : ℕ, w (n + m) = w n)
+    (hc0 : ∀ n : ℕ, 0 < n → 0 ≤ intWeightedCoeff w n)
+    (hne : ∀ N : ℕ, ∃ n : ℕ, N < n ∧ intWeightedCoeff w n ≠ 0) :
+    Irrational (intWeightedErdosSeries b w) := by
+  sorry
+/-- States thm:signed-periodic from the long record for Erdős problem #257. Transported from Erdos249257.irrational_intWeightedErdosSeries_periodic_of_coeff_nonpos_of_frequently_ne_zero in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem irrational_intWeightedErdosSeries_periodic_of_coeff_nonpos_of_frequently_ne_zero
+    (b m : ℕ) (w : ℕ → ℤ) (hb : 2 ≤ b) (hm : 0 < m)
+    (hper : ∀ n : ℕ, w (n + m) = w n)
+    (hc0 : ∀ n : ℕ, 0 < n → intWeightedCoeff w n ≤ 0)
+    (hne : ∀ N : ℕ, ∃ n : ℕ, N < n ∧ intWeightedCoeff w n ≠ 0) :
+    Irrational (intWeightedErdosSeries b w) := by
+  sorry
+/-- States thm:signed-periodic from the long record for Erdős problem #257. Transported from Erdos249257.irrational_or_bpow_mul_eq_intCast_intWeightedErdosSeries_periodic in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem irrational_or_bpow_mul_eq_intCast_intWeightedErdosSeries_periodic
+    (b m : ℕ) (w : ℕ → ℤ) (hb : 2 ≤ b) (hm : 0 < m)
+    (hper : ∀ n : ℕ, w (n + m) = w n) :
+    Irrational (intWeightedErdosSeries b w)
+      ∨ ∃ (k : ℕ) (z : ℤ), (b : ℝ) ^ k * intWeightedErdosSeries b w = (z : ℝ) := by
+  sorry
+/-- States res:period from the short record for Erdős problem #257. Transported from Erdos249257.lcm_lt_den_finiteErdosSum in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem lcm_lt_den_finiteErdosSum
+    (F : Finset Nat) (b : Nat)
+    (hF : F.Nonempty) (h0 : 0 ∉ F) (hb : 2 ≤ b)
+    (h2 : 2 ≤ F.lcm id) :
+    F.lcm id < (finiteErdosSum F b).den := by
+  sorry
+/-- States record:257bm-i-bridge from the long record for Erdős problem #257. Transported from Erdos249257.supportCoeff_le_card_divisors in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem supportCoeff_le_card_divisors (A : Set ℕ) (n : ℕ) :
+    supportCoeff A n ≤ n.divisors.card := by
+  sorry
+/-- States record:257bm-i-bridge from the long record for Erdős problem #257. Transported from Erdos249257.supportCoeff_le_self in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem supportCoeff_le_self (A : Set ℕ) (n : ℕ) : supportCoeff A n ≤ n := by
+  sorry
+end PalomarCorpus.E257.PaperStatementsAG

@@ -1,0 +1,14 @@
+{
+  "challenge_module": "PalomarCorpus.E249ah.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E249ah",
+  "theorem_names": [
+    "PalomarCorpus.E249.PaperStatementsAH.binaryCoeffSeries_rational_iff_exists_temperedBinaryOrbit",
+    "PalomarCorpus.E249.PaperStatementsAH.temperedBinaryOrbit_eq_scaledTail"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

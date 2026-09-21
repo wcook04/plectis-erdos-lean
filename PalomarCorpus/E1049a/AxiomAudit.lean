@@ -1,0 +1,24 @@
+import Solutions.PalomarCorpus.E1049a
+
+#print axioms PalomarCorpus.E1049.PaperStatementsA.contour_enclosure
+#print axioms PalomarCorpus.E1049.PaperStatementsA.four_rpow_mu_lt_thirtyOne
+#print axioms PalomarCorpus.E1049.PaperStatementsA.inv_bvMu_eq
+#print axioms PalomarCorpus.E1049.PaperStatementsA.omega_indicator
+#print axioms PalomarCorpus.E1049.PaperStatementsA.paperBvMu_eq
+#print axioms PalomarCorpus.E1049.PaperStatementsA.printed_bvMu
+#print axioms PalomarCorpus.E1049.PaperStatementsA.printed_bv_cutoff
+#print axioms PalomarCorpus.E1049.PaperStatementsA.printed_contour
+#print axioms PalomarCorpus.E1049.PaperStatementsA.printed_contour_short
+#print axioms PalomarCorpus.E1049.PaperStatementsA.printed_four_rpow_bvMu
+#print axioms PalomarCorpus.E1049.PaperStatementsA.printed_four_rpow_mu
+#print axioms PalomarCorpus.E1049.PaperStatementsA.printed_log_ratio
+#print axioms PalomarCorpus.E1049.PaperStatementsA.printed_mu
+#print axioms PalomarCorpus.E1049.PaperStatementsA.tailLow_le_trigammaSeries
+#print axioms PalomarCorpus.E1049.PaperStatementsA.thirtyoneFour_between_rpow
+#print axioms PalomarCorpus.E1049.PaperStatementsA.thirtyoneFour_ratio_chain
+#print axioms PalomarCorpus.E1049.PaperStatementsA.trigammaSeries_le_tailHigh
+#print axioms PalomarCorpus.E1049.PaperStatementsA.zudilinC0_enclosure
+#print axioms PalomarCorpus.E1049.PaperStatementsA.zudilinContour_eq_inv_mu
+#print axioms PalomarCorpus.E1049.PaperStatementsA.zudilinJ_enclosure
+#print axioms PalomarCorpus.E1049.PaperStatementsA.zudilinMu_mul_zudilinContour
+#print axioms PalomarCorpus.E1049.PaperStatementsA.zudilin_rpow_lt_iff_contourRegion

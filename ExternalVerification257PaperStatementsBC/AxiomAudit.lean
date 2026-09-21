@@ -1,0 +1,5 @@
+import Solutions.ExternalVerification257PaperStatementsBC
+
+#print axioms Erdos249257.ExternalVerification257PaperStatementsBC.finitePrimeWeighted_fixedBase_hereditary
+#print axioms Erdos249257.ExternalVerification257PaperStatementsBC.irrational_residueClass_positive_support
+#print axioms Erdos249257.ExternalVerification257PaperStatementsBC.paper_terminalhalf

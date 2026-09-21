@@ -1,0 +1,17 @@
+{
+  "challenge_module": "PalomarCorpus.E257aq.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257aq",
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStatementsAQ.half_lt_tsum_negativeMobius",
+    "PalomarCorpus.E257.PaperStatementsAQ.paper_finite_support_and_onesided_certificate",
+    "PalomarCorpus.E257.PaperStatementsAQ.paper_first_positiveMobius_tail_term",
+    "PalomarCorpus.E257.PaperStatementsAQ.paper_mobius_support_overshoots_half",
+    "PalomarCorpus.E257.PaperStatementsAQ.tsum_negativeMobius_eq_half_add_positiveMobiusTail"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

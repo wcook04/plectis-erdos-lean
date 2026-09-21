@@ -1,0 +1,20 @@
+{
+  "challenge_module": "PalomarCorpus.E249aq.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E249aq",
+  "theorem_names": [
+    "PalomarCorpus.E249.PaperStatementsAQ.cyclotomicValue_dvd_baseMobiusShadow_den",
+    "PalomarCorpus.E249.PaperStatementsAQ.mobiusNumeratorPolynomial_eval_two",
+    "PalomarCorpus.E249.PaperStatementsAQ.mobiusNumerator_gcd_cyclotomicValue",
+    "PalomarCorpus.E249.PaperStatementsAQ.mobiusNumerator_mod_cyclotomicEval",
+    "PalomarCorpus.E249.PaperStatementsAQ.numerator_eval_two_divisors",
+    "PalomarCorpus.E249.PaperStatementsAQ.paperNumeratorPolynomial_eq",
+    "PalomarCorpus.E249.PaperStatementsAQ.radical_decomposition",
+    "PalomarCorpus.E249.PaperStatementsAQ.sum_divisorIndices_radical_form"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

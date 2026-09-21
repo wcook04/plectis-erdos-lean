@@ -1,0 +1,17 @@
+{
+  "challenge_module": "PalomarCorpus.E257an.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257an",
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStatementsAN.paper_endpoint_term_counts_divisors",
+    "PalomarCorpus.E257.PaperStatementsAN.paper_finiteErdosSum_den_odd",
+    "PalomarCorpus.E257.PaperStatementsAN.paper_finite_support_series_ne_half",
+    "PalomarCorpus.E257.PaperStatementsAN.paper_half_representing_support_is_infinite",
+    "PalomarCorpus.E257.PaperStatementsAN.supportCoeff_insert_eq_add_indicator"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification249PaperStatementsAV.Challenge",
+  "solution_module": "Solutions.ExternalVerification249PaperStatementsAV",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249PaperStatementsAV.irrational_totient_series_of_lcm_cone_window_kill_supply"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

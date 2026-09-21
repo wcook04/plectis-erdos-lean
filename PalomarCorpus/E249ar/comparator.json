@@ -1,0 +1,13 @@
+{
+  "challenge_module": "PalomarCorpus.E249ar.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E249ar",
+  "theorem_names": [
+    "PalomarCorpus.E249.PaperStatementsAR.lcmHeight_scaledMobiusShadow_den_exact"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

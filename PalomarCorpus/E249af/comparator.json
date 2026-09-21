@@ -1,0 +1,14 @@
+{
+  "challenge_module": "PalomarCorpus.E249af.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E249af",
+  "theorem_names": [
+    "PalomarCorpus.E249.PaperStatementsAF.mobiusMersenneTheta_two_eq_totient_offset",
+    "PalomarCorpus.E249.PaperStatementsAF.scaled_dyadic_sum_odd"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

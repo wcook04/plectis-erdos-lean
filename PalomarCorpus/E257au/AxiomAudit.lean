@@ -1,0 +1,8 @@
+import Solutions.PalomarCorpus.E257au
+
+#print axioms PalomarCorpus.E257.PaperStatementsAU.binaryCoeffTail_supportCoeff_le_two_sqrt_add_four
+#print axioms PalomarCorpus.E257.PaperStatementsAU.erdosSupportSeries_rational_iff_exists_temperedCarry
+#print axioms PalomarCorpus.E257.PaperStatementsAU.erdosSupportSeries_two_eq_binaryCoeffSeries
+#print axioms PalomarCorpus.E257.PaperStatementsAU.mobius_supportCoeff_boolean
+#print axioms PalomarCorpus.E257.PaperStatementsAU.mobius_supportCoeff_eq_one_iff
+#print axioms PalomarCorpus.E257.PaperStatementsAU.moebius_mul_supportCoeffAF

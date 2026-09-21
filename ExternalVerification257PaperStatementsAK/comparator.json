@@ -1,0 +1,25 @@
+{
+  "challenge_module": "ExternalVerification257PaperStatementsAK.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStatementsAK",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStatementsAK.localMersenneHalfTarget_lower_word_eq_greedy_and_remainder_eq",
+    "Erdos249257.ExternalVerification257PaperStatementsAK.localMersenneWeightsFrom_gapDominates",
+    "Erdos249257.ExternalVerification257PaperStatementsAK.localMersenneWeights_gapDominates_even",
+    "Erdos249257.ExternalVerification257PaperStatementsAK.localMersenneWeights_gapDominates_odd",
+    "Erdos249257.ExternalVerification257PaperStatementsAK.remainder_lt_gap_iff_eq_integerGreedyBits",
+    "Erdos249257.ExternalVerification257PaperStatementsAK.paper_floor_quotient_geometric_sum",
+    "Erdos249257.ExternalVerification257PaperStatementsAK.paper_next_floor_quotient",
+    "Erdos249257.ExternalVerification257PaperStatementsAK.paper_next_floor_quotient_no_fixed_point",
+    "Erdos249257.ExternalVerification257PaperStatementsAK.paper_next_quotient_sum",
+    "Erdos249257.ExternalVerification257PaperStatementsAK.paper_repair_integer_eq_endpoint_defect",
+    "Erdos249257.ExternalVerification257PaperStatementsAK.paper_signed_endpoint_defect_succ",
+    "Erdos249257.ExternalVerification257PaperStatementsAK.paper_signed_endpoint_recurrence",
+    "Erdos249257.ExternalVerification257PaperStatementsAK.paper_successor_remainders_fourteen_through_thirtyone"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,17 @@
+{
+  "challenge_module": "PalomarCorpus.E257ax.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257ax",
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStatementsAX.largestSkipLateAt_fourteen",
+    "PalomarCorpus.E257.PaperStatementsAX.mem_seamGreedySupport_iff_scaled",
+    "PalomarCorpus.E257.PaperStatementsAX.paper_exact_row_double_or_recycle",
+    "PalomarCorpus.E257.PaperStatementsAX.paper_exact_row_example_six_and_eleven",
+    "PalomarCorpus.E257.PaperStatementsAX.paper_returning_endpoint_may_fail_to_grow"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

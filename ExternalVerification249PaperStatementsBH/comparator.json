@@ -1,0 +1,16 @@
+{
+  "challenge_module": "ExternalVerification249PaperStatementsBH.Challenge",
+  "solution_module": "Solutions.ExternalVerification249PaperStatementsBH",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249PaperStatementsBH.no_generic_rationality_carryRank_ceiling",
+    "Erdos249257.ExternalVerification249PaperStatementsBH.rationalControl_periodic_with_unbounded_carry_rank",
+    "Erdos249257.ExternalVerification249PaperStatementsBH.rationality_forces_mod_period_and_unbounded_rank",
+    "Erdos249257.ExternalVerification249PaperStatementsBH.rationality_gives_mod_period_and_unbounded_rank"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

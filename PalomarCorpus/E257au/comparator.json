@@ -1,0 +1,18 @@
+{
+  "challenge_module": "PalomarCorpus.E257au.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257au",
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStatementsAU.binaryCoeffTail_supportCoeff_le_two_sqrt_add_four",
+    "PalomarCorpus.E257.PaperStatementsAU.erdosSupportSeries_rational_iff_exists_temperedCarry",
+    "PalomarCorpus.E257.PaperStatementsAU.erdosSupportSeries_two_eq_binaryCoeffSeries",
+    "PalomarCorpus.E257.PaperStatementsAU.mobius_supportCoeff_boolean",
+    "PalomarCorpus.E257.PaperStatementsAU.mobius_supportCoeff_eq_one_iff",
+    "PalomarCorpus.E257.PaperStatementsAU.moebius_mul_supportCoeffAF"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

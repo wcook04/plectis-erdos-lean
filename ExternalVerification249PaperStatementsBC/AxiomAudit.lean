@@ -1,0 +1,4 @@
+import Solutions.ExternalVerification249PaperStatementsBC
+
+#print axioms Erdos249257.ExternalVerification249PaperStatementsBC.carryShift_dvd_iff_tailDiff_integral
+#print axioms Erdos249257.ExternalVerification249PaperStatementsBC.temperedCarry_eq_scaledTail_and_shift

@@ -1,0 +1,295 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: v0.4
+project:
+  name: 'Erdős #249: independent restatements of refereed paper-linked theorems'
+  description: >-
+    19 theorems of the substantive development for Erdős problem #249
+    restated against Mathlib alone and transported from the source declarations named
+    below. The substantive formalization lives in Erdos249257.CarrySurvivorExtinction, Erdos249257.FirstHarmonicPivot, Erdos249257.LcmConeFlatness, Erdos249257.LcmDiagonalReduction, Erdos249257.PivotAntiReconstruction, Erdos249257.TotientActualLcmOrbitSign, Erdos249257.TotientTailPeriodKiller in this repository and at
+    public commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84 of https://github.com/wcook04/plectis-erdos. This entry is a comparison
+    interface over that development. 19 statements transport by direct term
+    application, which certifies definitional identity with the source statement;
+    0 transport through a tactic bridge, which certifies implication only. The
+    parent Erdős problem remains open.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - "11A25"
+  - "11B83"
+sources:
+- title: 'Erdős #249: paper-linked Lean development'
+  authors:
+  - Will Cook
+  id: https://github.com/wcook04/plectis-erdos
+  type: original-proof
+  relationship: other
+  note: >-
+    The source declarations this entry transports, at commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84.
+    Novelty is unassessed and the parent problem is not claimed as solved.
+  license: Apache-2.0
+  author_endorsement: participated
+- title: 'Erdős Problem #249'
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com/249
+  type: web discussion
+  relationship: background
+  note: The catalogue supplies the problem statement and references.
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+status:
+  scope: Independent restatements of 19 refereed declarations for Erdős problem #249.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 19
+  sorry_boundary: Only the trusted Challenge theorem bodies carry placeholders.
+  axiom_audit_status: pending fresh target-toolchain axiom audit
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  development_status: substantive
+  local_proof_provenance: Erdos249257.CarrySurvivorExtinction, Erdos249257.FirstHarmonicPivot, Erdos249257.LcmConeFlatness, Erdos249257.LcmDiagonalReduction, Erdos249257.PivotAntiReconstruction, Erdos249257.TotientActualLcmOrbitSign, Erdos249257.TotientTailPeriodKiller in this repository, which is the same development published at https://github.com/wcook04/plectis-erdos commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+  canonical_claim_status: generated comparison interface over substantive Lean in this repository
+  main_results:
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAD.actualLcmTailDiff_shift_pos
+    file: Solutions/ExternalVerification249PaperStatementsAD.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAD/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAD.actualLcmTailDiff_shift_pos
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmTailDiff_shift_pos
+    source_file: Erdos249257/TotientActualLcmOrbitSign.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAD.actualLcm_integral_forces_topEdgeResidue
+    file: Solutions/ExternalVerification249PaperStatementsAD.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAD/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAD.actualLcm_integral_forces_topEdgeResidue
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcm_integral_forces_topEdgeResidue
+    source_file: Erdos249257/TotientActualLcmOrbitSign.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAD.carryOrbit_eq_tail_diff
+    file: Solutions/ExternalVerification249PaperStatementsAD.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAD/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAD.carryOrbit_eq_tail_diff
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: Erdos249257.TotientTailPeriodKiller.carryOrbit_eq_tail_diff
+    source_file: Erdos249257/CarrySurvivorExtinction.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAD.certifiedKill_all_upto_sixteen
+    file: Solutions/ExternalVerification249PaperStatementsAD.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAD/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAD.certifiedKill_all_upto_sixteen
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: Erdos249257.TotientTailPeriodKiller.certifiedKill_all_upto_sixteen
+    source_file: Erdos249257/CarrySurvivorExtinction.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAD.certifiedKill_depth_floor
+    file: Solutions/ExternalVerification249PaperStatementsAD.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAD/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAD.certifiedKill_depth_floor
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: Erdos249257.TotientTailPeriodKiller.certifiedKill_depth_floor
+    source_file: Erdos249257/TotientTailPeriodKiller.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAD.dtwWindowSeparatedPairs_iff_irrational_totient_series
+    file: Solutions/ExternalVerification249PaperStatementsAD.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAD/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAD.dtwWindowSeparatedPairs_iff_irrational_totient_series
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: Erdos249257.TotientTailPeriodKiller.dtwWindowSeparatedPairs_iff_irrational_totient_series
+    source_file: Erdos249257/PivotAntiReconstruction.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAD.dvd_periodLcm
+    file: Solutions/ExternalVerification249PaperStatementsAD.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAD/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAD.dvd_periodLcm
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: Erdos249257.TotientTailPeriodKiller.dvd_periodLcm
+    source_file: Erdos249257/CarrySurvivorExtinction.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAD.eq_prime_pow_of_not_dvd_periodLcm
+    file: Solutions/ExternalVerification249PaperStatementsAD.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAD/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAD.eq_prime_pow_of_not_dvd_periodLcm
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: Erdos249257.TotientTailPeriodKiller.eq_prime_pow_of_not_dvd_periodLcm
+    source_file: Erdos249257/LcmDiagonalReduction.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAD.exists_certifiedKill_iff_tail_diff_notMem_int
+    file: Solutions/ExternalVerification249PaperStatementsAD.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAD/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAD.exists_certifiedKill_iff_tail_diff_notMem_int
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: Erdos249257.TotientTailPeriodKiller.exists_certifiedKill_iff_tail_diff_notMem_int
+    source_file: Erdos249257/LcmConeFlatness.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAD.irrational_totient_series_iff_all_tail_diffs_nonintegral
+    file: Solutions/ExternalVerification249PaperStatementsAD.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAD/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAD.irrational_totient_series_iff_all_tail_diffs_nonintegral
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: Erdos249257.TotientTailPeriodKiller.irrational_totient_series_iff_all_tail_diffs_nonintegral
+    source_file: Erdos249257/LcmConeFlatness.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAD.irrational_totient_series_iff_certificate_supply
+    file: Solutions/ExternalVerification249PaperStatementsAD.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAD/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAD.irrational_totient_series_iff_certificate_supply
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: Erdos249257.TotientTailPeriodKiller.irrational_totient_series_iff_certificate_supply
+    source_file: Erdos249257/LcmConeFlatness.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAD.irrational_totient_series_iff_lcm_diagonal_certificate_supply
+    file: Solutions/ExternalVerification249PaperStatementsAD.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAD/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAD.irrational_totient_series_iff_lcm_diagonal_certificate_supply
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: Erdos249257.TotientTailPeriodKiller.irrational_totient_series_iff_lcm_diagonal_certificate_supply
+    source_file: Erdos249257/LcmConeFlatness.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAD.irrational_totient_series_of_lcm_cone_nonintegrality_supply
+    file: Solutions/ExternalVerification249PaperStatementsAD.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAD/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAD.irrational_totient_series_of_lcm_cone_nonintegrality_supply
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: Erdos249257.TotientTailPeriodKiller.irrational_totient_series_of_lcm_cone_nonintegrality_supply
+    source_file: Erdos249257/LcmConeFlatness.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAD.irrational_totient_series_of_lcm_diagonal_nonintegrality_supply
+    file: Solutions/ExternalVerification249PaperStatementsAD.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAD/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAD.irrational_totient_series_of_lcm_diagonal_nonintegrality_supply
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: Erdos249257.TotientTailPeriodKiller.irrational_totient_series_of_lcm_diagonal_nonintegrality_supply
+    source_file: Erdos249257/LcmConeFlatness.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAD.periodLcm_diagonal_kill_iff_tail_diff_notMem_int
+    file: Solutions/ExternalVerification249PaperStatementsAD.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAD/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAD.periodLcm_diagonal_kill_iff_tail_diff_notMem_int
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: Erdos249257.TotientTailPeriodKiller.periodLcm_diagonal_kill_iff_tail_diff_notMem_int
+    source_file: Erdos249257/LcmConeFlatness.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAD.tail_diff_int_of_den_dvd
+    file: Solutions/ExternalVerification249PaperStatementsAD.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAD/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAD.tail_diff_int_of_den_dvd
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: Erdos249257.TotientTailPeriodKiller.tail_diff_int_of_den_dvd
+    source_file: Erdos249257/TotientTailPeriodKiller.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAD.tail_diff_mem_int_iff_scaled_series_mem_int
+    file: Solutions/ExternalVerification249PaperStatementsAD.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAD/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAD.tail_diff_mem_int_iff_scaled_series_mem_int
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: Erdos249257.TotientTailPeriodKiller.tail_diff_mem_int_iff_scaled_series_mem_int
+    source_file: Erdos249257/LcmConeFlatness.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAD.tail_diff_notMem_int_of_certifiedKill
+    file: Solutions/ExternalVerification249PaperStatementsAD.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAD/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAD.tail_diff_notMem_int_of_certifiedKill
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: Erdos249257.TotientTailPeriodKiller.tail_diff_notMem_int_of_certifiedKill
+    source_file: Erdos249257/TotientTailPeriodKiller.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAD.two_pow_mul_totient_series_eq
+    file: Solutions/ExternalVerification249PaperStatementsAD.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAD/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAD.two_pow_mul_totient_series_eq
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: Erdos249257.TotientTailPeriodKiller.two_pow_mul_totient_series_eq
+    source_file: Erdos249257/TotientTailPeriodKiller.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+automation:
+  methods:
+  - method: agent
+    models:
+    - Anthropic Claude
+    framework: Lean 4 and Mathlib
+    tool_setup: Statement wrappers generated by tools/meta/formal_math/generate_statement_wrappers.py and elaborated before acceptance
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    Every statement was refereed against the paper in the coverage ledger before this
+    wrapper was generated. The transport proof is the fidelity evidence: a direct term
+    application certifies definitional identity with the refereed source statement.
+    No independent mathematical review outside the author is claimed.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

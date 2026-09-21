@@ -1,0 +1,17 @@
+{
+  "challenge_module": "PalomarCorpus.E249ba.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E249ba",
+  "theorem_names": [
+    "PalomarCorpus.E249.PaperStatementsBA.alpha_divisor_sum_eq_totient",
+    "PalomarCorpus.E249.PaperStatementsBA.forwardMultipleShift_least",
+    "PalomarCorpus.E249.PaperStatementsBA.forwardMultiple_enumeration",
+    "PalomarCorpus.E249.PaperStatementsBA.forwardMultiple_spec",
+    "PalomarCorpus.E249.PaperStatementsBA.lambertValue_alpha_eq_totientSeries"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

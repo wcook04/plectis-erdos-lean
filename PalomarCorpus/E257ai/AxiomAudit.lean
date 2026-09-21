@@ -1,0 +1,5 @@
+import Solutions.PalomarCorpus.E257ai
+
+#print axioms PalomarCorpus.E257.PaperStatementsAI.paper_forced_greedy_low_ranks
+#print axioms PalomarCorpus.E257.PaperStatementsAI.paper_forced_greedy_unique_support_and_criterion
+#print axioms PalomarCorpus.E257.PaperStatementsAI.paper_rung_finite_decision

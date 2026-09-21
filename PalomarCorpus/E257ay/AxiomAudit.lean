@@ -1,0 +1,5 @@
+import Solutions.PalomarCorpus.E257ay
+
+#print axioms PalomarCorpus.E257.PaperStatementsAY.one_div_twenty_one_mem_iff_not_fatalAlignedBranch
+#print axioms PalomarCorpus.E257.PaperStatementsAY.twentyOneFatalAlignedBranch_eventually_affine_supercapacity
+#print axioms PalomarCorpus.E257.PaperStatementsAY.twentyOneFatalAlignedBranch_eventually_strict_supercapacity

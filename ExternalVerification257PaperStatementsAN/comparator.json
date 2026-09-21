@@ -1,0 +1,17 @@
+{
+  "challenge_module": "ExternalVerification257PaperStatementsAN.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStatementsAN",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStatementsAN.supportCoeff_insert_eq_add_indicator",
+    "Erdos249257.ExternalVerification257PaperStatementsAN.paper_endpoint_term_counts_divisors",
+    "Erdos249257.ExternalVerification257PaperStatementsAN.paper_finiteErdosSum_den_odd",
+    "Erdos249257.ExternalVerification257PaperStatementsAN.paper_finite_support_series_ne_half",
+    "Erdos249257.ExternalVerification257PaperStatementsAN.paper_half_representing_support_is_infinite"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

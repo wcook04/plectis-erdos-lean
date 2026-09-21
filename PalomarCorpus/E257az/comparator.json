@@ -1,0 +1,13 @@
+{
+  "challenge_module": "PalomarCorpus.E257az.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257az",
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStatementsAZ.one_div_twenty_one_mem_mersenneAchievementSet_of_cofinalGreedyDecay"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

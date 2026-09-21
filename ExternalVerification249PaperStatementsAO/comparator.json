@@ -1,0 +1,24 @@
+{
+  "challenge_module": "ExternalVerification249PaperStatementsAO.Challenge",
+  "solution_module": "Solutions.ExternalVerification249PaperStatementsAO",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249PaperStatementsAO.four_thirds_tsum_eighth_pow_tail",
+    "Erdos249257.ExternalVerification249PaperStatementsAO.mersenneRemainderTail_le",
+    "Erdos249257.ExternalVerification249PaperStatementsAO.mersenneRemainder_identity_and_bound",
+    "Erdos249257.ExternalVerification249PaperStatementsAO.mersenne_dvd_of_dvd",
+    "Erdos249257.ExternalVerification249PaperStatementsAO.one_sub_half_pow_ge",
+    "Erdos249257.ExternalVerification249PaperStatementsAO.paperNumerator_coeff_eq_gcd_divisor_sum",
+    "Erdos249257.ExternalVerification249PaperStatementsAO.paperNumerator_coeff_eq_zero",
+    "Erdos249257.ExternalVerification249PaperStatementsAO.paperNumerator_coeff_pos",
+    "Erdos249257.ExternalVerification249PaperStatementsAO.paperNumerator_eq_gcdWordForm",
+    "Erdos249257.ExternalVerification249PaperStatementsAO.paperNumerator_eval_two",
+    "Erdos249257.ExternalVerification249PaperStatementsAO.paperNumerator_eval_two_primeSubsetForm",
+    "Erdos249257.ExternalVerification249PaperStatementsAO.tsum_eighth_pow_tail"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

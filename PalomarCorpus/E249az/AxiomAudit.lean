@@ -1,0 +1,8 @@
+import Solutions.PalomarCorpus.E249az
+
+#print axioms PalomarCorpus.E249.PaperStatementsAZ.affineBinaryOrbit_difference_and_reset
+#print axioms PalomarCorpus.E249.PaperStatementsAZ.balancedPulse_common_history
+#print axioms PalomarCorpus.E249.PaperStatementsAZ.balancedPulse_label_lower_bound
+#print axioms PalomarCorpus.E249.PaperStatementsAZ.balancedPulse_no_decoder_from_common_state
+#print axioms PalomarCorpus.E249.PaperStatementsAZ.balancedPulse_series
+#print axioms PalomarCorpus.E249.PaperStatementsAZ.balancedPulse_tail_at

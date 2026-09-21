@@ -1,0 +1,14 @@
+{
+  "challenge_module": "PalomarCorpus.E249as.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E249as",
+  "theorem_names": [
+    "PalomarCorpus.E249.PaperStatementsAS.cyclotomic_dvd_primeJump_new_fibre",
+    "PalomarCorpus.E249.PaperStatementsAS.cyclotomic_dvd_primeJump_old_fibre"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

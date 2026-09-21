@@ -1,0 +1,8 @@
+import Solutions.PalomarCorpus.E249an
+
+#print axioms PalomarCorpus.E249.PaperStatementsAN.cos_pi_div_eight_gt
+#print axioms PalomarCorpus.E249.PaperStatementsAN.irrational_lacBeta
+#print axioms PalomarCorpus.E249.PaperStatementsAN.lacBeta_eq_factorial_series
+#print axioms PalomarCorpus.E249.PaperStatementsAN.lacCoef_bounds
+#print axioms PalomarCorpus.E249.PaperStatementsAN.lacunary_block_cos_gap
+#print axioms PalomarCorpus.E249.PaperStatementsAN.lacunary_block_norm_fails

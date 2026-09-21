@@ -1,0 +1,33 @@
+{
+  "challenge_module": "PalomarCorpus.E257ag.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257ag",
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStatementsAG.coprime_base_den_finiteErdosSum",
+    "PalomarCorpus.E257.PaperStatementsAG.erdosSupportSeries_multiples_eq_pow_base_full_support",
+    "PalomarCorpus.E257.PaperStatementsAG.irrational_coeff_series_of_weighted_coeff_block_certificates",
+    "PalomarCorpus.E257.PaperStatementsAG.irrational_erdosSum_factorial_support",
+    "PalomarCorpus.E257.PaperStatementsAG.irrational_erdosSum_full_support",
+    "PalomarCorpus.E257.PaperStatementsAG.irrational_erdosSum_of_lcm_gap",
+    "PalomarCorpus.E257.PaperStatementsAG.irrational_erdosSum_two_pow_support",
+    "PalomarCorpus.E257.PaperStatementsAG.irrational_erdosSupportSeries_eventuallyPeriodic",
+    "PalomarCorpus.E257.PaperStatementsAG.irrational_erdosSupportSeries_multiples",
+    "PalomarCorpus.E257.PaperStatementsAG.irrational_erdosSupportSeries_odd",
+    "PalomarCorpus.E257.PaperStatementsAG.irrational_erdosSupportSeries_of_tail",
+    "PalomarCorpus.E257.PaperStatementsAG.irrational_erdosSupportSeries_pairwise_coprime",
+    "PalomarCorpus.E257.PaperStatementsAG.irrational_erdosSupportSeries_periodic",
+    "PalomarCorpus.E257.PaperStatementsAG.irrational_erdosSupportSeries_residueClass",
+    "PalomarCorpus.E257.PaperStatementsAG.irrational_erdosSupportSeries_tail_of_irrational",
+    "PalomarCorpus.E257.PaperStatementsAG.irrational_intWeightedErdosSeries_periodic_of_coeff_nonneg_of_frequently_ne_zero",
+    "PalomarCorpus.E257.PaperStatementsAG.irrational_intWeightedErdosSeries_periodic_of_coeff_nonpos_of_frequently_ne_zero",
+    "PalomarCorpus.E257.PaperStatementsAG.irrational_or_bpow_mul_eq_intCast_intWeightedErdosSeries_periodic",
+    "PalomarCorpus.E257.PaperStatementsAG.lcm_lt_den_finiteErdosSum",
+    "PalomarCorpus.E257.PaperStatementsAG.supportCoeff_le_card_divisors",
+    "PalomarCorpus.E257.PaperStatementsAG.supportCoeff_le_self"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

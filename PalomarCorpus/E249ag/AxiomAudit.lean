@@ -1,0 +1,8 @@
+import Solutions.PalomarCorpus.E249ag
+
+#print axioms PalomarCorpus.E249.PaperStatementsAG.exists_later_arbitrarily_many_separated_parityCoboundaryWeight_carry_pairs
+#print axioms PalomarCorpus.E249.PaperStatementsAG.exists_totientParity_arbitrarilyManySeparatedCarry_rational_countermodel
+#print axioms PalomarCorpus.E249.PaperStatementsAG.parityCoboundaryWeight_le_self
+#print axioms PalomarCorpus.E249.PaperStatementsAG.parityCoboundaryWeight_le_six
+#print axioms PalomarCorpus.E249.PaperStatementsAG.parityCoboundaryWeight_mod_two_eq_totient
+#print axioms PalomarCorpus.E249.PaperStatementsAG.tsum_parityCoboundaryWeight_eq_three_halves

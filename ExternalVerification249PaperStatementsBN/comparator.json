@@ -1,0 +1,16 @@
+{
+  "challenge_module": "ExternalVerification249PaperStatementsBN.Challenge",
+  "solution_module": "Solutions.ExternalVerification249PaperStatementsBN",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249PaperStatementsBN.totient_convolution_weight_mul_zeta",
+    "Erdos249257.ExternalVerification249PaperStatementsBN.totient_convolution_weight_not_periodic",
+    "Erdos249257.ExternalVerification249PaperStatementsBN.totient_convolution_weight_prime",
+    "Erdos249257.ExternalVerification249PaperStatementsBN.totient_convolution_weight_unbounded"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

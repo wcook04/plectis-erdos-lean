@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ExternalVerification249PaperStatementsAF.Challenge",
+  "solution_module": "Solutions.ExternalVerification249PaperStatementsAF",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249PaperStatementsAF.mobiusMersenneTheta_two_eq_totient_offset",
+    "Erdos249257.ExternalVerification249PaperStatementsAF.scaled_dyadic_sum_odd"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

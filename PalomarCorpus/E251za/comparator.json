@@ -1,0 +1,13 @@
+{
+  "challenge_module": "PalomarCorpus.E251za.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E251za",
+  "theorem_names": [
+    "PalomarCorpus.E251.PaperStatementsZA.nonconcentration_does_not_force_irrationality"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

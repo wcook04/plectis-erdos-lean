@@ -1,0 +1,25 @@
+{
+  "challenge_module": "ExternalVerification249PaperStatementsAY.Challenge",
+  "solution_module": "Solutions.ExternalVerification249PaperStatementsAY",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249PaperStatementsAY.irrational_totient_iff_mobius_square",
+    "Erdos249257.ExternalVerification249PaperStatementsAY.mobius_square_reduction",
+    "Erdos249257.ExternalVerification249PaperStatementsAY.centeredLift_range",
+    "Erdos249257.ExternalVerification249PaperStatementsAY.cylinderMass_eq_divisibility_mass_mul",
+    "Erdos249257.ExternalVerification249PaperStatementsAY.cylinder_mediant_split",
+    "Erdos249257.ExternalVerification249PaperStatementsAY.cylinder_root_values",
+    "Erdos249257.ExternalVerification249PaperStatementsAY.exists_upperHalf_channel_paper",
+    "Erdos249257.ExternalVerification249PaperStatementsAY.inversePhaseGauge_locks_row_and_preserves_minor",
+    "Erdos249257.ExternalVerification249PaperStatementsAY.normalised_split_probabilities",
+    "Erdos249257.ExternalVerification249PaperStatementsAY.upperHalfMersenneProduct_between_bounds",
+    "Erdos249257.ExternalVerification249PaperStatementsAY.upperHalfPrimes_member_bounds",
+    "Erdos249257.ExternalVerification249PaperStatementsAY.upperHalfPrimes_nonempty_paper",
+    "Erdos249257.ExternalVerification249PaperStatementsAY.upperHalfPrimes_spec"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

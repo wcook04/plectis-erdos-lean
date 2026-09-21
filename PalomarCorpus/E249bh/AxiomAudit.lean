@@ -1,0 +1,6 @@
+import Solutions.PalomarCorpus.E249bh
+
+#print axioms PalomarCorpus.E249.PaperStatementsBH.no_generic_rationality_carryRank_ceiling
+#print axioms PalomarCorpus.E249.PaperStatementsBH.rationalControl_periodic_with_unbounded_carry_rank
+#print axioms PalomarCorpus.E249.PaperStatementsBH.rationality_forces_mod_period_and_unbounded_rank
+#print axioms PalomarCorpus.E249.PaperStatementsBH.rationality_gives_mod_period_and_unbounded_rank

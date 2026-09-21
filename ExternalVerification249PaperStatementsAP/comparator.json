@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification249PaperStatementsAP.Challenge",
+  "solution_module": "Solutions.ExternalVerification249PaperStatementsAP",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249PaperStatementsAP.tsum_moebius_lambert_sq"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

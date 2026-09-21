@@ -1,0 +1,28 @@
+{
+  "challenge_module": "ExternalVerification249PaperStatementsAL.Challenge",
+  "solution_module": "Solutions.ExternalVerification249PaperStatementsAL",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249PaperStatementsAL.basePower_dilation_not_universal",
+    "Erdos249257.ExternalVerification249PaperStatementsAL.digit_block",
+    "Erdos249257.ExternalVerification249PaperStatementsAL.exists_irrational_basePower_bounded_away",
+    "Erdos249257.ExternalVerification249PaperStatementsAL.fract_mem_Icc_of_no_three_equal",
+    "Erdos249257.ExternalVerification249PaperStatementsAL.fract_two_pow_mul_xi_mem_Icc",
+    "Erdos249257.ExternalVerification249PaperStatementsAL.irrational_tail_zero",
+    "Erdos249257.ExternalVerification249PaperStatementsAL.irrational_xi",
+    "Erdos249257.ExternalVerification249PaperStatementsAL.no_three_consecutive_equal",
+    "Erdos249257.ExternalVerification249PaperStatementsAL.not_approaches_int",
+    "Erdos249257.ExternalVerification249PaperStatementsAL.not_eventually_periodic",
+    "Erdos249257.ExternalVerification249PaperStatementsAL.not_near_integer_along_powers_of_two",
+    "Erdos249257.ExternalVerification249PaperStatementsAL.one_div_eight_le_abs_sub_int",
+    "Erdos249257.ExternalVerification249PaperStatementsAL.one_div_eight_le_dist_xi",
+    "Erdos249257.ExternalVerification249PaperStatementsAL.strict_lower_bound_needed",
+    "Erdos249257.ExternalVerification249PaperStatementsAL.tail_mem_Icc",
+    "Erdos249257.ExternalVerification249PaperStatementsAL.upper_bound_needed_for_every_q"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

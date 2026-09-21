@@ -1,0 +1,3 @@
+import Solutions.PalomarCorpus.E257ba
+
+#print axioms PalomarCorpus.E257.PaperStatementsBA.twentyOneCofinalEvenQuotientGreedyDecay_of_closedRows

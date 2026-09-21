@@ -1,0 +1,17 @@
+{
+  "challenge_module": "PalomarCorpus.E1041za.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E1041za",
+  "theorem_names": [
+    "PalomarCorpus.E1041.PaperStatementsZA.cfa_arity_criterion",
+    "PalomarCorpus.E1041.PaperStatementsZA.cfa_constant_factor_path",
+    "PalomarCorpus.E1041.PaperStatementsZA.scaledLowCriticalFiveHalves_of_lowCritical",
+    "PalomarCorpus.E1041.PaperStatementsZA.scaledLowCritical_of_lowCritical",
+    "PalomarCorpus.E1041.PaperStatementsZA.separation_parent"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

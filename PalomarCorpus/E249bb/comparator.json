@@ -1,0 +1,21 @@
+{
+  "challenge_module": "PalomarCorpus.E249bb.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E249bb",
+  "theorem_names": [
+    "PalomarCorpus.E249.PaperStatementsBB.canonicalTotientKernelFamily_entries",
+    "PalomarCorpus.E249.PaperStatementsBB.canonicalTotientKernelFamily_independent_card_and_span",
+    "PalomarCorpus.E249.PaperStatementsBB.canonical_family_basis_through_level",
+    "PalomarCorpus.E249.PaperStatementsBB.canonical_level_zero_channels",
+    "PalomarCorpus.E249.PaperStatementsBB.card_canonical_dyadic_index",
+    "PalomarCorpus.E249.PaperStatementsBB.completeLevelZeroTruncation_is_totient_and_rank_one",
+    "PalomarCorpus.E249.PaperStatementsBB.finrank_throughLevel_zero_eq_one",
+    "PalomarCorpus.E249.PaperStatementsBB.linearIndependent_canonical_dyadic_family",
+    "PalomarCorpus.E249.PaperStatementsBB.retainedSections_basis_and_rank"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,18 @@
+{
+  "challenge_module": "PalomarCorpus.E249am.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E249am",
+  "theorem_names": [
+    "PalomarCorpus.E249.PaperStatementsAM.cos_nonpos_of_quarterFarFromInt",
+    "PalomarCorpus.E249.PaperStatementsAM.irrational_totientSeries_of_digitChange_count",
+    "PalomarCorpus.E249.PaperStatementsAM.irrational_totientSeries_of_quarterFarPhase_count",
+    "PalomarCorpus.E249.PaperStatementsAM.irrational_totientSeries_of_quarterFarPhase_proportion",
+    "PalomarCorpus.E249.PaperStatementsAM.quarterFarFromInt_iff_binaryDigitAt_change",
+    "PalomarCorpus.E249.PaperStatementsAM.quarterFarFromInt_iff_floor_bounds"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

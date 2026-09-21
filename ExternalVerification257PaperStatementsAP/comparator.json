@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification257PaperStatementsAP.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStatementsAP",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStatementsAP.lcmHeight_scaledMobiusShadow_den_exact"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

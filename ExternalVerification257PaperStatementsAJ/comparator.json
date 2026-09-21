@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification257PaperStatementsAJ.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStatementsAJ",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStatementsAJ.tsum_moebius_div_two_pow_sub_one_eq_half"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

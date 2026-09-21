@@ -1,0 +1,15 @@
+{
+  "challenge_module": "ExternalVerification257PaperStatementsAY.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStatementsAY",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStatementsAY.one_div_twenty_one_mem_iff_not_fatalAlignedBranch",
+    "Erdos249257.ExternalVerification257PaperStatementsAY.twentyOneFatalAlignedBranch_eventually_affine_supercapacity",
+    "Erdos249257.ExternalVerification257PaperStatementsAY.twentyOneFatalAlignedBranch_eventually_strict_supercapacity"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

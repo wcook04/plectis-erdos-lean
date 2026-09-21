@@ -1,0 +1,9 @@
+import Solutions.PalomarCorpus.E257at
+
+#print axioms PalomarCorpus.E257.PaperStatementsAT.binaryCoeffTail_supportCoeff_coe_finset_le_card
+#print axioms PalomarCorpus.E257.PaperStatementsAT.mobiusCenteredHalfCarry_add_two
+#print axioms PalomarCorpus.E257.PaperStatementsAT.mobiusCenteredHalfCarry_nonneg_of_supportSeries_lt_half
+#print axioms PalomarCorpus.E257.PaperStatementsAT.paper_exact_row_integerHalfCarry_eq_one
+#print axioms PalomarCorpus.E257.PaperStatementsAT.paper_integerHalfCarry_eq_two_pow_sub_localPrefixQuotient
+#print axioms PalomarCorpus.E257.PaperStatementsAT.paper_mobiusCenteredHalfCarry_add_two
+#print axioms PalomarCorpus.E257.PaperStatementsAT.paper_terminal_strip_witness_six

@@ -1,0 +1,823 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: v0.4
+project:
+  name: 'Erdős #257: independent restatements of refereed paper-linked theorems'
+  description: >-
+    67 theorems of the substantive development for Erdős problem #257
+    restated against Mathlib alone and transported from the source declarations named
+    below. The substantive formalization lives in Erdos249257.BooleanMobiusSkipRowCofinal, Erdos249257.CertificateKernel, Erdos249257.CofinalStripReturn, Erdos249257.DyadicPrefixCompression, Erdos249257.GenericTailOrbitRigidity, Erdos249257.GreedyAchievementSet, Erdos249257.HalfCarryReachability, Erdos249257.HalfCutLocator, Erdos249257.HalfCylinderFiniteShadow, Erdos249257.HalfCylinderFixedTailSocket, Erdos249257.HalfGapMass, Erdos249257.TerminalOnlyCofinal, ErdosProblems.Erdos257.MersenneSubseriesRigidity, ErdosProblems.Erdos257.PaperCompleteR20.AchievementGeometry, ErdosProblems.Erdos257.PaperCompleteR20.CofinalCarryCollapse, ErdosProblems.Erdos257.PaperCompleteR20.GeneralTargetGap, ErdosProblems.Erdos257.PaperCompleteR20.MersenneConstantDecimal, ErdosProblems.Erdos257.PaperCompleteR20.QuotientRowReal, ErdosProblems.Erdos257.PaperCompleteR21.AchievementSetTopologyAndFiniteHalf, ErdosProblems.Erdos257.PaperCompleteR21.CentredCompletionAndDecisionBoundary, ErdosProblems.Erdos257.PaperCompleteR21.EventualNonnegativeMargin, ErdosProblems.Erdos257.PaperCompleteR21.GreedyGapCriteria, ErdosProblems.Erdos257.PaperCompleteR21.GreedyOrbitNoTies, ErdosProblems.Erdos257.PaperCompleteR21.OneSidedCertificateHierarchy, ErdosProblems.Erdos257.PaperCompleteR21.SeamPrefixStabilityLimit, ErdosProblems.Erdos257.PaperCompleteR21.SharedPrefixFamiliesAndMeasureDichotomy, ErdosProblems.Erdos257.PaperCompleteR21.SkipSafetyAndDivisorZeroRuns, ErdosProblems.Erdos257.PaperCompleteR21.SquareDepthAndHalfMembershipEquivalences in this repository and at
+    public commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84 of https://github.com/wcook04/plectis-erdos. This entry is a comparison
+    interface over that development. 67 statements transport by direct term
+    application, which certifies definitional identity with the source statement;
+    0 transport through a tactic bridge, which certifies implication only. The
+    parent Erdős problem remains open.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - "11A25"
+  - "11B83"
+sources:
+- title: 'Erdős #257: paper-linked Lean development'
+  authors:
+  - Will Cook
+  id: https://github.com/wcook04/plectis-erdos
+  type: original-proof
+  relationship: other
+  note: >-
+    The source declarations this entry transports, at commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84.
+    Novelty is unassessed and the parent problem is not claimed as solved.
+  license: Apache-2.0
+  author_endorsement: participated
+- title: 'Erdős Problem #257'
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com/257
+  type: web discussion
+  relationship: background
+  note: The catalogue supplies the problem statement and references.
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+status:
+  scope: Independent restatements of 67 refereed declarations for Erdős problem #257.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 67
+  sorry_boundary: Only the trusted Challenge theorem bodies carry placeholders.
+  axiom_audit_status: pending fresh target-toolchain axiom audit
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  development_status: substantive
+  local_proof_provenance: Erdos249257.BooleanMobiusSkipRowCofinal, Erdos249257.CertificateKernel, Erdos249257.CofinalStripReturn, Erdos249257.DyadicPrefixCompression, Erdos249257.GenericTailOrbitRigidity, Erdos249257.GreedyAchievementSet, Erdos249257.HalfCarryReachability, Erdos249257.HalfCutLocator, Erdos249257.HalfCylinderFiniteShadow, Erdos249257.HalfCylinderFixedTailSocket, Erdos249257.HalfGapMass, Erdos249257.TerminalOnlyCofinal, ErdosProblems.Erdos257.MersenneSubseriesRigidity, ErdosProblems.Erdos257.PaperCompleteR20.AchievementGeometry, ErdosProblems.Erdos257.PaperCompleteR20.CofinalCarryCollapse, ErdosProblems.Erdos257.PaperCompleteR20.GeneralTargetGap, ErdosProblems.Erdos257.PaperCompleteR20.MersenneConstantDecimal, ErdosProblems.Erdos257.PaperCompleteR20.QuotientRowReal, ErdosProblems.Erdos257.PaperCompleteR21.AchievementSetTopologyAndFiniteHalf, ErdosProblems.Erdos257.PaperCompleteR21.CentredCompletionAndDecisionBoundary, ErdosProblems.Erdos257.PaperCompleteR21.EventualNonnegativeMargin, ErdosProblems.Erdos257.PaperCompleteR21.GreedyGapCriteria, ErdosProblems.Erdos257.PaperCompleteR21.GreedyOrbitNoTies, ErdosProblems.Erdos257.PaperCompleteR21.OneSidedCertificateHierarchy, ErdosProblems.Erdos257.PaperCompleteR21.SeamPrefixStabilityLimit, ErdosProblems.Erdos257.PaperCompleteR21.SharedPrefixFamiliesAndMeasureDichotomy, ErdosProblems.Erdos257.PaperCompleteR21.SkipSafetyAndDivisorZeroRuns, ErdosProblems.Erdos257.PaperCompleteR21.SquareDepthAndHalfMembershipEquivalences in this repository, which is the same development published at https://github.com/wcook04/plectis-erdos commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+  canonical_claim_status: generated comparison interface over substantive Lean in this repository
+  main_results:
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.greedy_half_infinite_of_cofinalStripReturn
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.greedy_half_infinite_of_cofinalStripReturn
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: Erdos249257.HalfCarryReachability.greedy_half_infinite_of_cofinalStripReturn
+    source_file: Erdos249257/CofinalStripReturn.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.greedy_half_infinite_of_mobiusCenteredHalfCarry_sqrtBound
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.greedy_half_infinite_of_mobiusCenteredHalfCarry_sqrtBound
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: Erdos249257.HalfCarryReachability.greedy_half_infinite_of_mobiusCenteredHalfCarry_sqrtBound
+    source_file: Erdos249257/HalfCarryReachability.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.greedy_half_infinite_of_mobiusCenteredHalfCarry_upperBound
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.greedy_half_infinite_of_mobiusCenteredHalfCarry_upperBound
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: Erdos249257.HalfCarryReachability.greedy_half_infinite_of_mobiusCenteredHalfCarry_upperBound
+    source_file: Erdos249257/HalfCarryReachability.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.greedy_mobiusCenteredHalfCarry_nonneg
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.greedy_mobiusCenteredHalfCarry_nonneg
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: Erdos249257.HalfCarryReachability.greedy_mobiusCenteredHalfCarry_nonneg
+    source_file: Erdos249257/HalfCarryReachability.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.cofinalPositiveHalfGreedySkips_iff_half_mem
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.cofinalPositiveHalfGreedySkips_iff_half_mem
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: Erdos249257.cofinalPositiveHalfGreedySkips_iff_half_mem
+    source_file: Erdos249257/BooleanMobiusSkipRowCofinal.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.greedyHalf_mem_nextMersenneDyadicSliver_iff_excess
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.greedyHalf_mem_nextMersenneDyadicSliver_iff_excess
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: Erdos249257.greedyHalf_mem_nextMersenneDyadicSliver_iff_excess
+    source_file: Erdos249257/DyadicPrefixCompression.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.half_mem_iff_every_actual_skip_survives
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.half_mem_iff_every_actual_skip_survives
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: Erdos249257.half_mem_iff_every_actual_skip_survives
+    source_file: Erdos249257/HalfCylinderFixedTailSocket.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.half_mem_mersenneAchievementSet_iff_no_existsFatalHalfGap
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.half_mem_mersenneAchievementSet_iff_no_existsFatalHalfGap
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: Erdos249257.half_mem_mersenneAchievementSet_iff_no_existsFatalHalfGap
+    source_file: Erdos249257/HalfCutLocator.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: Erdos249257.half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips
+    source_file: Erdos249257/BooleanMobiusSkipRowCofinal.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.half_mem_mersenneAchievementSet_or_exists_fatal_gap
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.half_mem_mersenneAchievementSet_or_exists_fatal_gap
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: Erdos249257.half_mem_mersenneAchievementSet_or_exists_fatal_gap
+    source_file: Erdos249257/HalfCutLocator.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.half_ne_coe_finset_add_mersenneTail
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.half_ne_coe_finset_add_mersenneTail
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: Erdos249257.half_ne_coe_finset_add_mersenneTail
+    source_file: Erdos249257/HalfCutLocator.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.mersenneGap_le
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.mersenneGap_le
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: Erdos249257.mersenneGap_le
+    source_file: Erdos249257/HalfGapMass.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.mersenneGap_tail_le
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.mersenneGap_tail_le
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: Erdos249257.mersenneGap_tail_le
+    source_file: Erdos249257/HalfGapMass.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.positiveMersenneSupportValue_coe_finset_ne_half
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.positiveMersenneSupportValue_coe_finset_ne_half
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: Erdos249257.positiveMersenneSupportValue_coe_finset_ne_half
+    source_file: Erdos249257/HalfCutLocator.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.summable_mersenneGap_shift
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.summable_mersenneGap_shift
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: Erdos249257.summable_mersenneGap_shift
+    source_file: Erdos249257/HalfGapMass.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.summable_mersenneGap_succ
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.summable_mersenneGap_succ
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: Erdos249257.summable_mersenneGap_succ
+    source_file: Erdos249257/HalfGapMass.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.tendsto_mersenneGap_tail_zero
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.tendsto_mersenneGap_tail_zero
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: Erdos249257.tendsto_mersenneGap_tail_zero
+    source_file: Erdos249257/HalfGapMass.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.greedy_half_of_cofinal_upper_carry
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.greedy_half_of_cofinal_upper_carry
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR20.greedy_half_of_cofinal_upper_carry
+    source_file: ErdosProblems/Erdos257/PaperCompleteR20/CofinalCarryCollapse.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.mersenne_constant_decimal
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.mersenne_constant_decimal
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR20.mersenne_constant_decimal
+    source_file: ErdosProblems/Erdos257/PaperCompleteR20/MersenneConstantDecimal.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.mersenne_topology_quantitative
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.mersenne_topology_quantitative
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR20.mersenne_topology_quantitative
+    source_file: ErdosProblems/Erdos257/PaperCompleteR20/MersenneConstantDecimal.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.paper_achievement_geometry
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.paper_achievement_geometry
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR20.paper_achievement_geometry
+    source_file: ErdosProblems/Erdos257/PaperCompleteR20/AchievementGeometry.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.paper_greedy_survival
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.paper_greedy_survival
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR20.paper_greedy_survival
+    source_file: ErdosProblems/Erdos257/PaperCompleteR20/GeneralTargetGap.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.row_constant_eq_tail
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.row_constant_eq_tail
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR20.row_constant_eq_tail
+    source_file: ErdosProblems/Erdos257/PaperCompleteR20/QuotientRowReal.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.abs_supportValue_sub_le_mersenneTail
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.abs_supportValue_sub_le_mersenneTail
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.abs_supportValue_sub_le_mersenneTail
+    source_file: ErdosProblems/Erdos257/PaperCompleteR21/SeamPrefixStabilityLimit.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.approx_orbit_induction
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.approx_orbit_induction
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.approx_orbit_induction
+    source_file: ErdosProblems/Erdos257/PaperCompleteR21/GreedyOrbitNoTies.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.certificate_of_existsFatalHalfGap
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.certificate_of_existsFatalHalfGap
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.certificate_of_existsFatalHalfGap
+    source_file: ErdosProblems/Erdos257/PaperCompleteR21/OneSidedCertificateHierarchy.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.certifiedTailBound_cast
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.certifiedTailBound_cast
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.certifiedTailBound_cast
+    source_file: ErdosProblems/Erdos257/PaperCompleteR21/OneSidedCertificateHierarchy.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.certifiedWordValue_cast
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.certifiedWordValue_cast
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.certifiedWordValue_cast
+    source_file: ErdosProblems/Erdos257/PaperCompleteR21/OneSidedCertificateHierarchy.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.depth_prefix_interval_disjoint
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.depth_prefix_interval_disjoint
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.depth_prefix_interval_disjoint
+    source_file: ErdosProblems/Erdos257/PaperCompleteR21/GreedyGapCriteria.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.existsFatalHalfGap_iff_exists_certificate
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.existsFatalHalfGap_iff_exists_certificate
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.existsFatalHalfGap_iff_exists_certificate
+    source_file: ErdosProblems/Erdos257/PaperCompleteR21/OneSidedCertificateHierarchy.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.existsFatalHalfGap_of_certificate
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.existsFatalHalfGap_of_certificate
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.existsFatalHalfGap_of_certificate
+    source_file: ErdosProblems/Erdos257/PaperCompleteR21/OneSidedCertificateHierarchy.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.fatal_absorbing
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.fatal_absorbing
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.fatal_absorbing
+    source_file: ErdosProblems/Erdos257/PaperCompleteR21/GreedyGapCriteria.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.fatal_gap_endpoint_bounds
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.fatal_gap_endpoint_bounds
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.fatal_gap_endpoint_bounds
+    source_file: ErdosProblems/Erdos257/PaperCompleteR21/GreedyGapCriteria.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.fatal_gap_excludes_every_representation
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.fatal_gap_excludes_every_representation
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.fatal_gap_excludes_every_representation
+    source_file: ErdosProblems/Erdos257/PaperCompleteR21/GreedyGapCriteria.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.fatal_gap_within_prefix_interval
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.fatal_gap_within_prefix_interval
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.fatal_gap_within_prefix_interval
+    source_file: ErdosProblems/Erdos257/PaperCompleteR21/GreedyGapCriteria.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.irrational_mersenneTail
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.irrational_mersenneTail
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.irrational_mersenneTail
+    source_file: ErdosProblems/Erdos257/PaperCompleteR21/GreedyOrbitNoTies.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.mersenneTail_eq_sum_add
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.mersenneTail_eq_sum_add
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.mersenneTail_eq_sum_add
+    source_file: ErdosProblems/Erdos257/PaperCompleteR21/OneSidedCertificateHierarchy.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.paper_achievement_set_topology
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.paper_achievement_set_topology
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.paper_achievement_set_topology
+    source_file: ErdosProblems/Erdos257/PaperCompleteR21/AchievementSetTopologyAndFiniteHalf.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.paper_cpgs_equiv
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.paper_cpgs_equiv
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.paper_cpgs_equiv
+    source_file: ErdosProblems/Erdos257/PaperCompleteR21/SquareDepthAndHalfMembershipEquivalences.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.paper_effective_horizon_test
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.paper_effective_horizon_test
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.paper_effective_horizon_test
+    source_file: ErdosProblems/Erdos257/PaperCompleteR21/EventualNonnegativeMargin.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.paper_eta_eq_coeffTail_sub_carry
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.paper_eta_eq_coeffTail_sub_carry
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.paper_eta_eq_coeffTail_sub_carry
+    source_file: ErdosProblems/Erdos257/PaperCompleteR21/EventualNonnegativeMargin.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.paper_eta_hasRationalValue
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.paper_eta_hasRationalValue
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.paper_eta_hasRationalValue
+    source_file: ErdosProblems/Erdos257/PaperCompleteR21/EventualNonnegativeMargin.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.paper_eventual_nonnegative_margin_equivalence
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.paper_eventual_nonnegative_margin_equivalence
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.paper_eventual_nonnegative_margin_equivalence
+    source_file: ErdosProblems/Erdos257/PaperCompleteR21/EventualNonnegativeMargin.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.paper_exact_mass_threshold
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.paper_exact_mass_threshold
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.paper_exact_mass_threshold
+    source_file: ErdosProblems/Erdos257/PaperCompleteR21/SkipSafetyAndDivisorZeroRuns.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.paper_frozen_margin_limit_pos_iff
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.paper_frozen_margin_limit_pos_iff
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.paper_frozen_margin_limit_pos_iff
+    source_file: ErdosProblems/Erdos257/PaperCompleteR21/EventualNonnegativeMargin.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.paper_frozen_margin_normalised_monotone
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.paper_frozen_margin_normalised_monotone
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.paper_frozen_margin_normalised_monotone
+    source_file: ErdosProblems/Erdos257/PaperCompleteR21/EventualNonnegativeMargin.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.paper_frozen_margin_normalised_tendsto
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.paper_frozen_margin_normalised_tendsto
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.paper_frozen_margin_normalised_tendsto
+    source_file: ErdosProblems/Erdos257/PaperCompleteR21/EventualNonnegativeMargin.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.paper_frozen_margin_normalised_value
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.paper_frozen_margin_normalised_value
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.paper_frozen_margin_normalised_value
+    source_file: ErdosProblems/Erdos257/PaperCompleteR21/EventualNonnegativeMargin.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.paper_greedyHalfRemainder_ne_dyadicCap
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.paper_greedyHalfRemainder_ne_dyadicCap
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.paper_greedyHalfRemainder_ne_dyadicCap
+    source_file: ErdosProblems/Erdos257/PaperCompleteR21/EventualNonnegativeMargin.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.paper_halfGreedyPrefixSupport_eq_greedy_inter_Icc
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.paper_halfGreedyPrefixSupport_eq_greedy_inter_Icc
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.paper_halfGreedyPrefixSupport_eq_greedy_inter_Icc
+    source_file: ErdosProblems/Erdos257/PaperCompleteR21/EventualNonnegativeMargin.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.paper_no_ties
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.paper_no_ties
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.paper_no_ties
+    source_file: ErdosProblems/Erdos257/PaperCompleteR21/GreedyOrbitNoTies.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.paper_no_ties_skip
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.paper_no_ties_skip
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.paper_no_ties_skip
+    source_file: ErdosProblems/Erdos257/PaperCompleteR21/GreedyOrbitNoTies.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.paper_no_ties_take
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.paper_no_ties_take
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.paper_no_ties_take
+    source_file: ErdosProblems/Erdos257/PaperCompleteR21/GreedyOrbitNoTies.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.paper_one_orbit_stability
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.paper_one_orbit_stability
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.paper_one_orbit_stability
+    source_file: ErdosProblems/Erdos257/PaperCompleteR21/GreedyOrbitNoTies.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.paper_one_sided_finite_decision_boundary
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.paper_one_sided_finite_decision_boundary
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.paper_one_sided_finite_decision_boundary
+    source_file: ErdosProblems/Erdos257/PaperCompleteR21/CentredCompletionAndDecisionBoundary.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.paper_sharp_fatal_gap
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.paper_sharp_fatal_gap
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.paper_sharp_fatal_gap
+    source_file: ErdosProblems/Erdos257/PaperCompleteR21/GreedyGapCriteria.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.paper_sharp_skip_safe_actual_tail
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.paper_sharp_skip_safe_actual_tail
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.paper_sharp_skip_safe_actual_tail
+    source_file: ErdosProblems/Erdos257/PaperCompleteR21/SkipSafetyAndDivisorZeroRuns.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.paper_terminal_strip_equiv
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.paper_terminal_strip_equiv
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.paper_terminal_strip_equiv
+    source_file: ErdosProblems/Erdos257/PaperCompleteR21/SquareDepthAndHalfMembershipEquivalences.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.paper_volume_supportedMersenneAchievementSet_dichotomy
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.paper_volume_supportedMersenneAchievementSet_dichotomy
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.paper_volume_supportedMersenneAchievementSet_dichotomy
+    source_file: ErdosProblems/Erdos257/PaperCompleteR21/SharedPrefixFamiliesAndMeasureDichotomy.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.scaledMersenneWeight_cast
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.scaledMersenneWeight_cast
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.scaledMersenneWeight_cast
+    source_file: ErdosProblems/Erdos257/PaperCompleteR21/OneSidedCertificateHierarchy.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.straddle_all_depths_iff_mem
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.straddle_all_depths_iff_mem
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.straddle_all_depths_iff_mem
+    source_file: ErdosProblems/Erdos257/PaperCompleteR21/GreedyGapCriteria.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.straddle_limiting_support_inputs
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.straddle_limiting_support_inputs
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.straddle_limiting_support_inputs
+    source_file: ErdosProblems/Erdos257/PaperCompleteR21/GreedyGapCriteria.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.tailGreedyRemainder_mersenne
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.tailGreedyRemainder_mersenne
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.tailGreedyRemainder_mersenne
+    source_file: ErdosProblems/Erdos257/PaperCompleteR21/GreedyOrbitNoTies.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.perfect_supportedMersenneAchievementSet
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.perfect_supportedMersenneAchievementSet
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.perfect_supportedMersenneAchievementSet
+    source_file: ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.supportedMersenneDigitValue_injective
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.supportedMersenneDigitValue_injective
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.supportedMersenneDigitValue_injective
+    source_file: ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.volume_supportedMersenneAchievementSet_dichotomy
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.volume_supportedMersenneAchievementSet_dichotomy
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.volume_supportedMersenneAchievementSet_dichotomy
+    source_file: ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStatementsAM.volume_supportedMersenneAchievementSet_eq_zero_of_compl_infinite
+    file: Solutions/ExternalVerification257PaperStatementsAM.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStatementsAM/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStatementsAM.volume_supportedMersenneAchievementSet_eq_zero_of_compl_infinite
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.volume_supportedMersenneAchievementSet_eq_zero_of_compl_infinite
+    source_file: ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+automation:
+  methods:
+  - method: agent
+    models:
+    - Anthropic Claude
+    framework: Lean 4 and Mathlib
+    tool_setup: Statement wrappers generated by tools/meta/formal_math/generate_statement_wrappers.py and elaborated before acceptance
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    Every statement was refereed against the paper in the coverage ledger before this
+    wrapper was generated. The transport proof is the fidelity evidence: a direct term
+    application certifies definitional identity with the refereed source statement.
+    No independent mathematical review outside the author is claimed.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

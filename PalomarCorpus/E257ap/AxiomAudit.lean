@@ -1,0 +1,3 @@
+import Solutions.PalomarCorpus.E257ap
+
+#print axioms PalomarCorpus.E257.PaperStatementsAP.lcmHeight_scaledMobiusShadow_den_exact

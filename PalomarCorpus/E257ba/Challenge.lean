@@ -1,0 +1,91 @@
+/-
+Copyright (c) 2026 Will Cook. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Will Cook
+-/
+
+import Mathlib
+
+set_option autoImplicit false
+
+/-!
+# Palomar challenge for Erdős problem #257, band a
+
+Erdős problem #257 is open and nothing here decides it. Each theorem below
+restates one refereed declaration of the paper-linked Lean development for this
+problem, with the definitions its statement mentions copied in so the whole file
+elaborates against Mathlib alone. The declaration documentation names the source
+declaration each statement is transported from. This band is a packaging split of
+`PalomarCorpus/E257` under the Challenge size ceiling; it does not replace it.
+-/
+
+open Filter
+open Set
+open scoped Classical
+open scoped BigOperators
+
+namespace PalomarCorpus.E257.PaperStatementsBA
+open Filter
+open Set
+open scoped Classical
+open scoped BigOperators
+/-- The integral part of `2^M / (2^d - 1)`. Local copy of Erdos249257.localMersenneQuotient, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def localMersenneQuotient (M d : ℕ) : ℕ :=
+  2 ^ M / (2 ^ d - 1)
+/-- Descending local quotient weights with ranks `d,d+1,…,R`. Local copy of Erdos249257.BooleanMobiusGreedyReduction.localMersenneWeightsFrom, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def localMersenneWeightsFrom (M R : ℕ) : ℕ → List ℕ
+  | d =>
+      if h : d ≤ R then
+        localMersenneQuotient M d :: localMersenneWeightsFrom M R (d + 1)
+      else
+        []
+termination_by d => R + 1 - d
+decreasing_by omega
+/-- The complete lower quotient word on ranks `2,…,R`. Local copy of Erdos249257.BooleanMobiusGreedyReduction.localMersenneWeights, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def localMersenneWeights (M R : ℕ) : List ℕ :=
+  localMersenneWeightsFrom M R 2
+/-- Descending greedy subset for an integer capacity. Local copy of Erdos249257.HalfCylinderIntegerGreedy.integerGreedyBits, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def integerGreedyBits : List ℕ → ℕ → List Bool
+  | [], _ => []
+  | w :: ws, C =>
+      if w ≤ C then
+        true :: integerGreedyBits ws (C - w)
+      else
+        false :: integerGreedyBits ws C
+/-- Weighted sum of a Boolean word. The equal-length hypotheses below make the two fallback equations irrelevant. Local copy of Erdos249257.HalfCylinderIntegerGreedy.weightedBoolSum, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def weightedBoolSum : List ℕ → List Bool → ℕ
+  | w :: ws, true :: bs => w + weightedBoolSum ws bs
+  | _ :: ws, false :: bs => weightedBoolSum ws bs
+  | _, _ => 0
+/-- Local copy of Erdos249257.HalfCylinderIntegerGreedy.integerGreedyRemainder, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def integerGreedyRemainder (weights : List ℕ) (C : ℕ) : ℕ :=
+  C - weightedBoolSum weights (integerGreedyBits weights C)
+/-- Integral target obtained by scaling `1/21` to binary depth `M`. Local copy of Erdos249257.twentyOneQuotientTarget, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def twentyOneQuotientTarget (M : ℕ) : ℕ :=
+  2 ^ M / 21
+/-- The terminal scalar state of the same quotient-greedy row. Local copy of Erdos249257.twentyOneEvenQuotientGreedyRemainder, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def twentyOneEvenQuotientGreedyRemainder (R : ℕ) : ℕ :=
+  integerGreedyRemainder
+    (localMersenneWeights (2 * R) R)
+    (twentyOneQuotientTarget (2 * R))
+/-- Minimal asymptotic form of the quotient route. No fixed cap is built into the statement: the normalized deterministic defect (with only a linear support-cardinality allowance) must tend to zero along one unbounded sequence of rows. Local copy of Erdos249257.TwentyOneCofinalEvenQuotientGreedyDecay, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def TwentyOneCofinalEvenQuotientGreedyDecay : Prop :=
+  ∃ R : ℕ → ℕ,
+    Tendsto R atTop atTop ∧
+      (∀ k : ℕ, 2 ≤ R k) ∧
+      Tendsto
+        (fun k : ℕ =>
+          ((twentyOneEvenQuotientGreedyRemainder (R k) +
+              (2 * R k + 1) : ℕ) : ℝ) /
+            (2 : ℝ) ^ (2 * R k))
+        atTop (nhds 0)
+/-- States res:one-over-twenty-one-frontier from the short record for Erdős problem #257. Transported from Erdos249257.twentyOneCofinalEvenQuotientGreedyDecay_of_closedRows in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem twentyOneCofinalEvenQuotientGreedyDecay_of_closedRows
+    {R : ℕ → ℕ}
+    (hR : Tendsto R atTop atTop)
+    (hrow : ∀ k : ℕ,
+      2 ≤ R k ∧
+        twentyOneEvenQuotientGreedyRemainder (R k) ≤ 2 ^ (R k)) :
+    TwentyOneCofinalEvenQuotientGreedyDecay := by
+  sorry
+end PalomarCorpus.E257.PaperStatementsBA

@@ -1,0 +1,7 @@
+import Solutions.PalomarCorpus.E1041za
+
+#print axioms PalomarCorpus.E1041.PaperStatementsZA.cfa_arity_criterion
+#print axioms PalomarCorpus.E1041.PaperStatementsZA.cfa_constant_factor_path
+#print axioms PalomarCorpus.E1041.PaperStatementsZA.scaledLowCriticalFiveHalves_of_lowCritical
+#print axioms PalomarCorpus.E1041.PaperStatementsZA.scaledLowCritical_of_lowCritical
+#print axioms PalomarCorpus.E1041.PaperStatementsZA.separation_parent

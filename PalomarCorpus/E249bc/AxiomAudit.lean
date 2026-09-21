@@ -1,0 +1,4 @@
+import Solutions.PalomarCorpus.E249bc
+
+#print axioms PalomarCorpus.E249.PaperStatementsBC.carryShift_dvd_iff_tailDiff_integral
+#print axioms PalomarCorpus.E249.PaperStatementsBC.temperedCarry_eq_scaledTail_and_shift

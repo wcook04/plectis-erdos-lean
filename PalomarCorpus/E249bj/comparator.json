@@ -1,0 +1,13 @@
+{
+  "challenge_module": "PalomarCorpus.E249bj.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E249bj",
+  "theorem_names": [
+    "PalomarCorpus.E249.PaperStatementsBJ.rationalValue_integral_carry_and_rank_floor"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

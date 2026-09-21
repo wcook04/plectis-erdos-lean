@@ -1,0 +1,8 @@
+import Solutions.PalomarCorpus.E257bd
+
+#print axioms PalomarCorpus.E257.PaperStatementsBD.balancedPulseCoeff_injective
+#print axioms PalomarCorpus.E257.PaperStatementsBD.four_le_halfStripBound
+#print axioms PalomarCorpus.E257.PaperStatementsBD.paper_balanced_pulse_fanout_is_radius_succ
+#print axioms PalomarCorpus.E257.PaperStatementsBD.paper_balanced_pulse_fanout_unbounded_corrected
+#print axioms PalomarCorpus.E257.PaperStatementsBD.paper_pulse_family_finite_state_card
+#print axioms PalomarCorpus.E257.PaperStatementsBD.paper_pulse_family_no_autonomous_decoder

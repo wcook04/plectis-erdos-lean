@@ -1,0 +1,4 @@
+import Solutions.PalomarCorpus.E249ah
+
+#print axioms PalomarCorpus.E249.PaperStatementsAH.binaryCoeffSeries_rational_iff_exists_temperedBinaryOrbit
+#print axioms PalomarCorpus.E249.PaperStatementsAH.temperedBinaryOrbit_eq_scaledTail

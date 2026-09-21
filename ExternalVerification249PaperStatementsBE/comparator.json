@@ -1,0 +1,18 @@
+{
+  "challenge_module": "ExternalVerification249PaperStatementsBE.Challenge",
+  "solution_module": "Solutions.ExternalVerification249PaperStatementsBE",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249PaperStatementsBE.divisorChannels_sum_eq",
+    "Erdos249257.ExternalVerification249PaperStatementsBE.foreignComplementBound_paper",
+    "Erdos249257.ExternalVerification249PaperStatementsBE.projectedForeignDefect_paper",
+    "Erdos249257.ExternalVerification249PaperStatementsBE.residueKernel_increment_of_dvd",
+    "Erdos249257.ExternalVerification249PaperStatementsBE.residueOffset_of_dvd",
+    "Erdos249257.ExternalVerification249PaperStatementsBE.transportResidueKernel_eq_mobiusTermKernel"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

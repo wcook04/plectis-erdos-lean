@@ -1,0 +1,4 @@
+import Solutions.ExternalVerification249PaperStatementsAS
+
+#print axioms Erdos249257.ExternalVerification249PaperStatementsAS.cyclotomic_dvd_primeJump_new_fibre
+#print axioms Erdos249257.ExternalVerification249PaperStatementsAS.cyclotomic_dvd_primeJump_old_fibre

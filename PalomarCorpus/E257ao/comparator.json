@@ -1,0 +1,14 @@
+{
+  "challenge_module": "PalomarCorpus.E257ao.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257ao",
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStatementsAO.mixedPrimePowerLayerTwo_supportCoeffInt",
+    "PalomarCorpus.E257.PaperStatementsAO.mixedPrimePowerLayerTwo_twelve_fixture"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

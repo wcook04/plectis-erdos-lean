@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ExternalVerification243PaperStatementsB.Challenge",
+  "solution_module": "Solutions.ExternalVerification243PaperStatementsB",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification243PaperStatementsB.original_coordinate_inclusive_one",
+    "Erdos249257.ExternalVerification243PaperStatementsB.original_coordinate_inclusive_one_pointwise"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

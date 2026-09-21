@@ -1,0 +1,47 @@
+/- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
+import ErdosProblems.Erdos243.PaperCompleteR20.InclusiveOne
+
+/-!
+# Independent restatements for Erdős problem #243
+
+Each theorem below restates a refereed declaration of the substantive development in
+this repository, at public commit `f436a7ec0f7bf035828a7eec37fd29ae74d17d84` of
+https://github.com/wcook04/plectis-erdos. The definitions are local copies of the source definitions, so
+the statements elaborate against Mathlib alone. This module is a comparison interface
+over that development, not the development itself. The mathematics is developed in
+`ErdosProblems.Erdos243.PaperCompleteR20.InclusiveOne`.
+-/
+
+open Filter
+open Finset
+open scoped BigOperators
+open scoped Topology
+
+namespace Erdos249257.ExternalVerification243PaperStatementsB
+
+theorem original_coordinate_inclusive_one
+    (a : ℕ → ℕ) (ha : StrictMono a) (hpos : ∀ n, 0 < a n)
+    (p : ℤ) (q : ℕ) (hq : 0 < q)
+    (hs : HasSum (fun n => 1 / (a n : ℝ)) ((p : ℝ) / (q : ℝ)))
+    (hgrowth : Tendsto (fun n => (a (n + 1) : ℝ) / (a n : ℝ) ^ 2)
+      atTop (nhds 1))
+    (K ε : ℝ) (hK : 0 ≤ K) (hε : 0 < ε)
+    (hbound : ∃ N : ℕ, ∀ n, N ≤ n →
+      (a n : ℝ) ^ 2 / (a (n + 1) : ℝ) - 1 ≤
+        1 / (n : ℝ) + K / (n : ℝ) ^ (1 + ε)) :
+    ∃ N, ∀ n, N ≤ n →
+      (a (n + 1) : ℤ) = (a n : ℤ) ^ 2 - (a n : ℤ) + 1 := by
+  apply ErdosProblems.Erdos243.PaperCompleteR20.original_coordinate_inclusive_one <;> assumption
+
+theorem original_coordinate_inclusive_one_pointwise
+    (a : ℕ → ℕ) (ha : StrictMono a) (hpos : ∀ n, 0 < a n)
+    (p : ℤ) (q : ℕ) (hq : 0 < q)
+    (hs : HasSum (fun n => 1 / (a n : ℝ)) ((p : ℝ) / (q : ℝ)))
+    (hgrowth : Tendsto (fun n => (a (n + 1) : ℝ) / (a n : ℝ) ^ 2)
+      atTop (nhds 1))
+    (hbound : ∃ N : ℕ, ∀ n, N ≤ n →
+      (a n : ℝ) ^ 2 / (a (n + 1) : ℝ) - 1 ≤ 1 / (n : ℝ)) :
+    ∃ N, ∀ n, N ≤ n →
+      (a (n + 1) : ℤ) = (a n : ℤ) ^ 2 - (a n : ℤ) + 1 := @ErdosProblems.Erdos243.PaperCompleteR20.original_coordinate_inclusive_one_pointwise a ha hpos p q hq hs hgrowth hbound
+
+end Erdos249257.ExternalVerification243PaperStatementsB

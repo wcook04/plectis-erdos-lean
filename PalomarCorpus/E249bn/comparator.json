@@ -1,0 +1,16 @@
+{
+  "challenge_module": "PalomarCorpus.E249bn.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E249bn",
+  "theorem_names": [
+    "PalomarCorpus.E249.PaperStatementsBN.totient_convolution_weight_mul_zeta",
+    "PalomarCorpus.E249.PaperStatementsBN.totient_convolution_weight_not_periodic",
+    "PalomarCorpus.E249.PaperStatementsBN.totient_convolution_weight_prime",
+    "PalomarCorpus.E249.PaperStatementsBN.totient_convolution_weight_unbounded"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

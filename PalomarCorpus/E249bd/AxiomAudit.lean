@@ -1,0 +1,6 @@
+import Solutions.PalomarCorpus.E249bd
+
+#print axioms PalomarCorpus.E249.PaperStatementsBD.composite_dilation_divisor_count
+#print axioms PalomarCorpus.E249.PaperStatementsBD.composite_dilation_divisor_count_prime_support
+#print axioms PalomarCorpus.E249.PaperStatementsBD.lambert_support_series
+#print axioms PalomarCorpus.E249.PaperStatementsBD.lambert_support_series_restricted

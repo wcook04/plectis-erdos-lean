@@ -1,0 +1,16 @@
+{
+  "challenge_module": "ExternalVerification249PaperStatementsBD.Challenge",
+  "solution_module": "Solutions.ExternalVerification249PaperStatementsBD",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249PaperStatementsBD.composite_dilation_divisor_count",
+    "Erdos249257.ExternalVerification249PaperStatementsBD.composite_dilation_divisor_count_prime_support",
+    "Erdos249257.ExternalVerification249PaperStatementsBD.lambert_support_series",
+    "Erdos249257.ExternalVerification249PaperStatementsBD.lambert_support_series_restricted"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

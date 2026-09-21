@@ -1,0 +1,18 @@
+{
+  "challenge_module": "ExternalVerification257PaperStatementsBE.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStatementsBE",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStatementsBE.paper_carry_survivor_extinction",
+    "Erdos249257.ExternalVerification257PaperStatementsBE.paper_critical_dyadic_band_index_eq_top_of_le_two",
+    "Erdos249257.ExternalVerification257PaperStatementsBE.paper_critical_dyadic_band_index_unique",
+    "Erdos249257.ExternalVerification257PaperStatementsBE.paper_critical_dyadic_boundary_is_smallest",
+    "Erdos249257.ExternalVerification257PaperStatementsBE.paper_dyadic_band_escape_iff_single_test",
+    "Erdos249257.ExternalVerification257PaperStatementsBE.paper_periodLcm_is_prefix_lcm"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,16 @@
+{
+  "challenge_module": "PalomarCorpus.E249ac.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E249ac",
+  "theorem_names": [
+    "PalomarCorpus.E249.PaperStatementsAC.cyclotomic_dvd_mobiusNumeratorPolynomial_sub",
+    "PalomarCorpus.E249.PaperStatementsAC.jordanTotientTwo_eq_prod_primeFactors",
+    "PalomarCorpus.E249.PaperStatementsAC.mobiusNumeratorPolynomial_coeff",
+    "PalomarCorpus.E249.PaperStatementsAC.mobiusNumeratorPolynomial_coeff_pos"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

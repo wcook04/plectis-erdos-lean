@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification257PaperStatementsAZ.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStatementsAZ",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStatementsAZ.one_div_twenty_one_mem_mersenneAchievementSet_of_cofinalGreedyDecay"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,14 @@
+import Solutions.PalomarCorpus.E249ao
+
+#print axioms PalomarCorpus.E249.PaperStatementsAO.four_thirds_tsum_eighth_pow_tail
+#print axioms PalomarCorpus.E249.PaperStatementsAO.mersenneRemainderTail_le
+#print axioms PalomarCorpus.E249.PaperStatementsAO.mersenneRemainder_identity_and_bound
+#print axioms PalomarCorpus.E249.PaperStatementsAO.mersenne_dvd_of_dvd
+#print axioms PalomarCorpus.E249.PaperStatementsAO.one_sub_half_pow_ge
+#print axioms PalomarCorpus.E249.PaperStatementsAO.paperNumerator_coeff_eq_gcd_divisor_sum
+#print axioms PalomarCorpus.E249.PaperStatementsAO.paperNumerator_coeff_eq_zero
+#print axioms PalomarCorpus.E249.PaperStatementsAO.paperNumerator_coeff_pos
+#print axioms PalomarCorpus.E249.PaperStatementsAO.paperNumerator_eq_gcdWordForm
+#print axioms PalomarCorpus.E249.PaperStatementsAO.paperNumerator_eval_two
+#print axioms PalomarCorpus.E249.PaperStatementsAO.paperNumerator_eval_two_primeSubsetForm
+#print axioms PalomarCorpus.E249.PaperStatementsAO.tsum_eighth_pow_tail

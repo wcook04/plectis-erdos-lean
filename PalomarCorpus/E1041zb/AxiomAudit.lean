@@ -1,0 +1,3 @@
+import Solutions.PalomarCorpus.E1041zb
+
+#print axioms PalomarCorpus.E1041.PaperStatementsZB.subcritical_perimeter_path_paper

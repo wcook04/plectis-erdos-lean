@@ -1,0 +1,14 @@
+{
+  "challenge_module": "PalomarCorpus.E249bc.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E249bc",
+  "theorem_names": [
+    "PalomarCorpus.E249.PaperStatementsBC.carryShift_dvd_iff_tailDiff_integral",
+    "PalomarCorpus.E249.PaperStatementsBC.temperedCarry_eq_scaledTail_and_shift"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

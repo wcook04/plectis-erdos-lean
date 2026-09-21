@@ -1,0 +1,3 @@
+import Solutions.PalomarCorpus.E257bg
+
+#print axioms PalomarCorpus.E257.PaperStatementsBG.seamScaledRem_eq_tailGreedyRemainder

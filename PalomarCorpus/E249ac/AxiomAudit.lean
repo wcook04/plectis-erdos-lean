@@ -1,0 +1,6 @@
+import Solutions.PalomarCorpus.E249ac
+
+#print axioms PalomarCorpus.E249.PaperStatementsAC.cyclotomic_dvd_mobiusNumeratorPolynomial_sub
+#print axioms PalomarCorpus.E249.PaperStatementsAC.jordanTotientTwo_eq_prod_primeFactors
+#print axioms PalomarCorpus.E249.PaperStatementsAC.mobiusNumeratorPolynomial_coeff
+#print axioms PalomarCorpus.E249.PaperStatementsAC.mobiusNumeratorPolynomial_coeff_pos

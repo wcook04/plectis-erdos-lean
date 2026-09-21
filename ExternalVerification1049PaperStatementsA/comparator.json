@@ -1,0 +1,34 @@
+{
+  "challenge_module": "ExternalVerification1049PaperStatementsA.Challenge",
+  "solution_module": "Solutions.ExternalVerification1049PaperStatementsA",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1049PaperStatementsA.contour_enclosure",
+    "Erdos249257.ExternalVerification1049PaperStatementsA.four_rpow_mu_lt_thirtyOne",
+    "Erdos249257.ExternalVerification1049PaperStatementsA.printed_contour",
+    "Erdos249257.ExternalVerification1049PaperStatementsA.printed_contour_short",
+    "Erdos249257.ExternalVerification1049PaperStatementsA.printed_four_rpow_mu",
+    "Erdos249257.ExternalVerification1049PaperStatementsA.printed_mu",
+    "Erdos249257.ExternalVerification1049PaperStatementsA.tailLow_le_trigammaSeries",
+    "Erdos249257.ExternalVerification1049PaperStatementsA.trigammaSeries_le_tailHigh",
+    "Erdos249257.ExternalVerification1049PaperStatementsA.zudilinC0_enclosure",
+    "Erdos249257.ExternalVerification1049PaperStatementsA.zudilinJ_enclosure",
+    "Erdos249257.ExternalVerification1049PaperStatementsA.paperBvMu_eq",
+    "Erdos249257.ExternalVerification1049PaperStatementsA.printed_bvMu",
+    "Erdos249257.ExternalVerification1049PaperStatementsA.printed_bv_cutoff",
+    "Erdos249257.ExternalVerification1049PaperStatementsA.printed_four_rpow_bvMu",
+    "Erdos249257.ExternalVerification1049PaperStatementsA.printed_log_ratio",
+    "Erdos249257.ExternalVerification1049PaperStatementsA.inv_bvMu_eq",
+    "Erdos249257.ExternalVerification1049PaperStatementsA.thirtyoneFour_between_rpow",
+    "Erdos249257.ExternalVerification1049PaperStatementsA.thirtyoneFour_ratio_chain",
+    "Erdos249257.ExternalVerification1049PaperStatementsA.zudilinContour_eq_inv_mu",
+    "Erdos249257.ExternalVerification1049PaperStatementsA.zudilinMu_mul_zudilinContour",
+    "Erdos249257.ExternalVerification1049PaperStatementsA.zudilin_rpow_lt_iff_contourRegion",
+    "Erdos249257.ExternalVerification1049PaperStatementsA.omega_indicator"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

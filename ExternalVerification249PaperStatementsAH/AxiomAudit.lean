@@ -1,0 +1,4 @@
+import Solutions.ExternalVerification249PaperStatementsAH
+
+#print axioms Erdos249257.ExternalVerification249PaperStatementsAH.binaryCoeffSeries_rational_iff_exists_temperedBinaryOrbit
+#print axioms Erdos249257.ExternalVerification249PaperStatementsAH.temperedBinaryOrbit_eq_scaledTail

@@ -1,0 +1,18 @@
+{
+  "challenge_module": "ExternalVerification257PaperStatementsBD.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStatementsBD",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStatementsBD.balancedPulseCoeff_injective",
+    "Erdos249257.ExternalVerification257PaperStatementsBD.four_le_halfStripBound",
+    "Erdos249257.ExternalVerification257PaperStatementsBD.paper_balanced_pulse_fanout_is_radius_succ",
+    "Erdos249257.ExternalVerification257PaperStatementsBD.paper_balanced_pulse_fanout_unbounded_corrected",
+    "Erdos249257.ExternalVerification257PaperStatementsBD.paper_pulse_family_finite_state_card",
+    "Erdos249257.ExternalVerification257PaperStatementsBD.paper_pulse_family_no_autonomous_decoder"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

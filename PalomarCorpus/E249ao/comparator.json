@@ -1,0 +1,24 @@
+{
+  "challenge_module": "PalomarCorpus.E249ao.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E249ao",
+  "theorem_names": [
+    "PalomarCorpus.E249.PaperStatementsAO.four_thirds_tsum_eighth_pow_tail",
+    "PalomarCorpus.E249.PaperStatementsAO.mersenneRemainderTail_le",
+    "PalomarCorpus.E249.PaperStatementsAO.mersenneRemainder_identity_and_bound",
+    "PalomarCorpus.E249.PaperStatementsAO.mersenne_dvd_of_dvd",
+    "PalomarCorpus.E249.PaperStatementsAO.one_sub_half_pow_ge",
+    "PalomarCorpus.E249.PaperStatementsAO.paperNumerator_coeff_eq_gcd_divisor_sum",
+    "PalomarCorpus.E249.PaperStatementsAO.paperNumerator_coeff_eq_zero",
+    "PalomarCorpus.E249.PaperStatementsAO.paperNumerator_coeff_pos",
+    "PalomarCorpus.E249.PaperStatementsAO.paperNumerator_eq_gcdWordForm",
+    "PalomarCorpus.E249.PaperStatementsAO.paperNumerator_eval_two",
+    "PalomarCorpus.E249.PaperStatementsAO.paperNumerator_eval_two_primeSubsetForm",
+    "PalomarCorpus.E249.PaperStatementsAO.tsum_eighth_pow_tail"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

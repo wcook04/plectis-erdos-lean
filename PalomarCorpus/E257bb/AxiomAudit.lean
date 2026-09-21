@@ -1,0 +1,3 @@
+import Solutions.PalomarCorpus.E257bb
+
+#print axioms PalomarCorpus.E257.PaperStatementsBB.paper_general_repair_criteria

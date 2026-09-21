@@ -546,3 +546,347 @@ globs = ["ExternalVerification251PaperStatementsQ.+"]
 [[lean_lib]]
 name = "ExternalVerification251PaperStatementsR"
 globs = ["ExternalVerification251PaperStatementsR.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249PaperStatementsAC"
+globs = ["ExternalVerification249PaperStatementsAC.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249PaperStatementsAD"
+globs = ["ExternalVerification249PaperStatementsAD.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249PaperStatementsAE"
+globs = ["ExternalVerification249PaperStatementsAE.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249PaperStatementsAF"
+globs = ["ExternalVerification249PaperStatementsAF.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249PaperStatementsAG"
+globs = ["ExternalVerification249PaperStatementsAG.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249PaperStatementsAH"
+globs = ["ExternalVerification249PaperStatementsAH.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249PaperStatementsAI"
+globs = ["ExternalVerification249PaperStatementsAI.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249PaperStatementsAJ"
+globs = ["ExternalVerification249PaperStatementsAJ.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249PaperStatementsAK"
+globs = ["ExternalVerification249PaperStatementsAK.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249PaperStatementsAL"
+globs = ["ExternalVerification249PaperStatementsAL.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249PaperStatementsAM"
+globs = ["ExternalVerification249PaperStatementsAM.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249PaperStatementsAN"
+globs = ["ExternalVerification249PaperStatementsAN.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249PaperStatementsAO"
+globs = ["ExternalVerification249PaperStatementsAO.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249PaperStatementsAP"
+globs = ["ExternalVerification249PaperStatementsAP.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249PaperStatementsAQ"
+globs = ["ExternalVerification249PaperStatementsAQ.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249PaperStatementsAR"
+globs = ["ExternalVerification249PaperStatementsAR.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249PaperStatementsAS"
+globs = ["ExternalVerification249PaperStatementsAS.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249PaperStatementsAT"
+globs = ["ExternalVerification249PaperStatementsAT.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249PaperStatementsAU"
+globs = ["ExternalVerification249PaperStatementsAU.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249PaperStatementsAV"
+globs = ["ExternalVerification249PaperStatementsAV.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249PaperStatementsAW"
+globs = ["ExternalVerification249PaperStatementsAW.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249PaperStatementsAX"
+globs = ["ExternalVerification249PaperStatementsAX.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249PaperStatementsAY"
+globs = ["ExternalVerification249PaperStatementsAY.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249PaperStatementsAZ"
+globs = ["ExternalVerification249PaperStatementsAZ.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249PaperStatementsBA"
+globs = ["ExternalVerification249PaperStatementsBA.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249PaperStatementsBB"
+globs = ["ExternalVerification249PaperStatementsBB.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249PaperStatementsBC"
+globs = ["ExternalVerification249PaperStatementsBC.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249PaperStatementsBD"
+globs = ["ExternalVerification249PaperStatementsBD.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249PaperStatementsBE"
+globs = ["ExternalVerification249PaperStatementsBE.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249PaperStatementsBF"
+globs = ["ExternalVerification249PaperStatementsBF.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249PaperStatementsBG"
+globs = ["ExternalVerification249PaperStatementsBG.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249PaperStatementsBH"
+globs = ["ExternalVerification249PaperStatementsBH.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249PaperStatementsBI"
+globs = ["ExternalVerification249PaperStatementsBI.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249PaperStatementsBJ"
+globs = ["ExternalVerification249PaperStatementsBJ.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249PaperStatementsBK"
+globs = ["ExternalVerification249PaperStatementsBK.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249PaperStatementsBL"
+globs = ["ExternalVerification249PaperStatementsBL.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249PaperStatementsBM"
+globs = ["ExternalVerification249PaperStatementsBM.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249PaperStatementsBN"
+globs = ["ExternalVerification249PaperStatementsBN.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257PaperStatementsAA"
+globs = ["ExternalVerification257PaperStatementsAA.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257PaperStatementsAB"
+globs = ["ExternalVerification257PaperStatementsAB.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257PaperStatementsAC"
+globs = ["ExternalVerification257PaperStatementsAC.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257PaperStatementsAD"
+globs = ["ExternalVerification257PaperStatementsAD.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257PaperStatementsAE"
+globs = ["ExternalVerification257PaperStatementsAE.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257PaperStatementsAF"
+globs = ["ExternalVerification257PaperStatementsAF.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257PaperStatementsAG"
+globs = ["ExternalVerification257PaperStatementsAG.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257PaperStatementsAH"
+globs = ["ExternalVerification257PaperStatementsAH.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257PaperStatementsAI"
+globs = ["ExternalVerification257PaperStatementsAI.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257PaperStatementsAJ"
+globs = ["ExternalVerification257PaperStatementsAJ.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257PaperStatementsAK"
+globs = ["ExternalVerification257PaperStatementsAK.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257PaperStatementsAL"
+globs = ["ExternalVerification257PaperStatementsAL.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257PaperStatementsAM"
+globs = ["ExternalVerification257PaperStatementsAM.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257PaperStatementsAN"
+globs = ["ExternalVerification257PaperStatementsAN.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257PaperStatementsAO"
+globs = ["ExternalVerification257PaperStatementsAO.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257PaperStatementsAP"
+globs = ["ExternalVerification257PaperStatementsAP.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257PaperStatementsAQ"
+globs = ["ExternalVerification257PaperStatementsAQ.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257PaperStatementsAR"
+globs = ["ExternalVerification257PaperStatementsAR.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257PaperStatementsAS"
+globs = ["ExternalVerification257PaperStatementsAS.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257PaperStatementsAT"
+globs = ["ExternalVerification257PaperStatementsAT.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257PaperStatementsAU"
+globs = ["ExternalVerification257PaperStatementsAU.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257PaperStatementsAV"
+globs = ["ExternalVerification257PaperStatementsAV.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257PaperStatementsAW"
+globs = ["ExternalVerification257PaperStatementsAW.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257PaperStatementsAX"
+globs = ["ExternalVerification257PaperStatementsAX.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257PaperStatementsAY"
+globs = ["ExternalVerification257PaperStatementsAY.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257PaperStatementsAZ"
+globs = ["ExternalVerification257PaperStatementsAZ.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257PaperStatementsBA"
+globs = ["ExternalVerification257PaperStatementsBA.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257PaperStatementsBB"
+globs = ["ExternalVerification257PaperStatementsBB.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257PaperStatementsBC"
+globs = ["ExternalVerification257PaperStatementsBC.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257PaperStatementsBD"
+globs = ["ExternalVerification257PaperStatementsBD.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257PaperStatementsBE"
+globs = ["ExternalVerification257PaperStatementsBE.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257PaperStatementsBF"
+globs = ["ExternalVerification257PaperStatementsBF.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257PaperStatementsBG"
+globs = ["ExternalVerification257PaperStatementsBG.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1049PaperStatementsA"
+globs = ["ExternalVerification1049PaperStatementsA.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1049PaperStatementsB"
+globs = ["ExternalVerification1049PaperStatementsB.+"]
+
+[[lean_lib]]
+name = "ExternalVerification243PaperStatementsB"
+globs = ["ExternalVerification243PaperStatementsB.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1041PaperStatementsX"
+globs = ["ExternalVerification1041PaperStatementsX.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1041PaperStatementsY"
+globs = ["ExternalVerification1041PaperStatementsY.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1041PaperStatementsZ"
+globs = ["ExternalVerification1041PaperStatementsZ.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1041PaperStatementsZA"
+globs = ["ExternalVerification1041PaperStatementsZA.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1041PaperStatementsZB"
+globs = ["ExternalVerification1041PaperStatementsZB.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1049PaperStatementsX"
+globs = ["ExternalVerification1049PaperStatementsX.+"]
+
+[[lean_lib]]
+name = "ExternalVerification251PaperStatementsX"
+globs = ["ExternalVerification251PaperStatementsX.+"]
+
+[[lean_lib]]
+name = "ExternalVerification251PaperStatementsY"
+globs = ["ExternalVerification251PaperStatementsY.+"]
+
+[[lean_lib]]
+name = "ExternalVerification251PaperStatementsZ"
+globs = ["ExternalVerification251PaperStatementsZ.+"]
+
+[[lean_lib]]
+name = "ExternalVerification251PaperStatementsZA"
+globs = ["ExternalVerification251PaperStatementsZA.+"]
+
+[[lean_lib]]
+name = "ExternalVerification269PaperStatementsX"
+globs = ["ExternalVerification269PaperStatementsX.+"]
+
+[[lean_lib]]
+name = "ExternalVerification269PaperStatementsY"
+globs = ["ExternalVerification269PaperStatementsY.+"]

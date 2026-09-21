@@ -1,0 +1,13 @@
+{
+  "challenge_module": "PalomarCorpus.E249ap.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E249ap",
+  "theorem_names": [
+    "PalomarCorpus.E249.PaperStatementsAP.tsum_moebius_lambert_sq"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

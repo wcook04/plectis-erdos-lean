@@ -1,0 +1,17 @@
+{
+  "challenge_module": "ExternalVerification249PaperStatementsBA.Challenge",
+  "solution_module": "Solutions.ExternalVerification249PaperStatementsBA",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249PaperStatementsBA.alpha_divisor_sum_eq_totient",
+    "Erdos249257.ExternalVerification249PaperStatementsBA.forwardMultipleShift_least",
+    "Erdos249257.ExternalVerification249PaperStatementsBA.forwardMultiple_enumeration",
+    "Erdos249257.ExternalVerification249PaperStatementsBA.forwardMultiple_spec",
+    "Erdos249257.ExternalVerification249PaperStatementsBA.lambertValue_alpha_eq_totientSeries"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

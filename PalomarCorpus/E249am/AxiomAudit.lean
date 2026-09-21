@@ -1,0 +1,8 @@
+import Solutions.PalomarCorpus.E249am
+
+#print axioms PalomarCorpus.E249.PaperStatementsAM.cos_nonpos_of_quarterFarFromInt
+#print axioms PalomarCorpus.E249.PaperStatementsAM.irrational_totientSeries_of_digitChange_count
+#print axioms PalomarCorpus.E249.PaperStatementsAM.irrational_totientSeries_of_quarterFarPhase_count
+#print axioms PalomarCorpus.E249.PaperStatementsAM.irrational_totientSeries_of_quarterFarPhase_proportion
+#print axioms PalomarCorpus.E249.PaperStatementsAM.quarterFarFromInt_iff_binaryDigitAt_change
+#print axioms PalomarCorpus.E249.PaperStatementsAM.quarterFarFromInt_iff_floor_bounds

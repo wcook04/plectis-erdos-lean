@@ -1,0 +1,17 @@
+{
+  "challenge_module": "PalomarCorpus.E257ac.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257ac",
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStatementsAC.arithmetic_logarithmic_counterexample",
+    "PalomarCorpus.E257.PaperStatementsAC.dyadicBandEscape_iff_exists_critical",
+    "PalomarCorpus.E257.PaperStatementsAC.exists_criticalDyadicBandIndex",
+    "PalomarCorpus.E257.PaperStatementsAC.logarithmic_initial_interval",
+    "PalomarCorpus.E257.PaperStatementsAC.no_absolute_dyadic_kappaOne_constant"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

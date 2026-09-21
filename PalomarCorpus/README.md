@@ -4,7 +4,7 @@ Eight Palomar publication configurations at one repository and commit:
 `PalomarCorpus/E68`, `E243`, `E249`, `E251`, `E257`, `E269`, `E1041`, and `E1049`.
 A problem whose concatenated Challenge approaches the 1000-line ceiling is split at a
 band boundary into a sibling entry, which is checked exactly like its base entry and
-never replaces it: `PalomarCorpus/E68a`, `PalomarCorpus/E68b`, `PalomarCorpus/E68c`, `PalomarCorpus/E251a`, `PalomarCorpus/E251b`, `PalomarCorpus/E251c`, `PalomarCorpus/E251d`, `PalomarCorpus/E251e`, `PalomarCorpus/E251f`, `PalomarCorpus/E251g`, `PalomarCorpus/E251j`, `PalomarCorpus/E251k`, `PalomarCorpus/E251l`, `PalomarCorpus/E251n`, `PalomarCorpus/E251o`, `PalomarCorpus/E251p`, `PalomarCorpus/E251q`, `PalomarCorpus/E251r`.
+never replaces it: `PalomarCorpus/E68a`, `PalomarCorpus/E68b`, `PalomarCorpus/E68c`, `PalomarCorpus/E243b`, `PalomarCorpus/E251a`, `PalomarCorpus/E251b`, `PalomarCorpus/E251c`, `PalomarCorpus/E251d`, `PalomarCorpus/E251e`, `PalomarCorpus/E251f`, `PalomarCorpus/E251g`, `PalomarCorpus/E251j`, `PalomarCorpus/E251k`, `PalomarCorpus/E251l`, `PalomarCorpus/E251n`, `PalomarCorpus/E251o`, `PalomarCorpus/E251p`, `PalomarCorpus/E251q`, `PalomarCorpus/E251r`, `PalomarCorpus/E251x`, `PalomarCorpus/E251y`, `PalomarCorpus/E251z`, `PalomarCorpus/E269x`, `PalomarCorpus/E269y`, `PalomarCorpus/E1041x`, `PalomarCorpus/E1041y`, `PalomarCorpus/E1041z`, `PalomarCorpus/E1049a`, `PalomarCorpus/E1049b`, `PalomarCorpus/E1049x`, `PalomarCorpus/E249ac`, `PalomarCorpus/E249ad`, `PalomarCorpus/E249ae`, `PalomarCorpus/E249af`, `PalomarCorpus/E249ag`, `PalomarCorpus/E249ah`, `PalomarCorpus/E249ai`, `PalomarCorpus/E249aj`, `PalomarCorpus/E249ak`, `PalomarCorpus/E249al`, `PalomarCorpus/E249am`, `PalomarCorpus/E249an`, `PalomarCorpus/E249ao`, `PalomarCorpus/E249ap`, `PalomarCorpus/E249aq`, `PalomarCorpus/E249ar`, `PalomarCorpus/E249as`, `PalomarCorpus/E249at`, `PalomarCorpus/E249au`, `PalomarCorpus/E249av`, `PalomarCorpus/E249aw`, `PalomarCorpus/E249ax`, `PalomarCorpus/E249ay`, `PalomarCorpus/E249az`, `PalomarCorpus/E249ba`, `PalomarCorpus/E249bb`, `PalomarCorpus/E249bc`, `PalomarCorpus/E249bd`, `PalomarCorpus/E249be`, `PalomarCorpus/E249bf`, `PalomarCorpus/E249bg`, `PalomarCorpus/E249bh`, `PalomarCorpus/E249bi`, `PalomarCorpus/E249bj`, `PalomarCorpus/E249bk`, `PalomarCorpus/E249bl`, `PalomarCorpus/E249bm`, `PalomarCorpus/E249bn`, `PalomarCorpus/E251za`, `PalomarCorpus/E257aa`, `PalomarCorpus/E257ab`, `PalomarCorpus/E257ac`, `PalomarCorpus/E257ad`, `PalomarCorpus/E257ae`, `PalomarCorpus/E257af`, `PalomarCorpus/E257ag`, `PalomarCorpus/E257ah`, `PalomarCorpus/E257ai`, `PalomarCorpus/E257aj`, `PalomarCorpus/E257ak`, `PalomarCorpus/E257al`, `PalomarCorpus/E257am`, `PalomarCorpus/E257an`, `PalomarCorpus/E257ao`, `PalomarCorpus/E257ap`, `PalomarCorpus/E257aq`, `PalomarCorpus/E257ar`, `PalomarCorpus/E257as`, `PalomarCorpus/E257at`, `PalomarCorpus/E257au`, `PalomarCorpus/E257av`, `PalomarCorpus/E257aw`, `PalomarCorpus/E257ax`, `PalomarCorpus/E257ay`, `PalomarCorpus/E257az`, `PalomarCorpus/E257ba`, `PalomarCorpus/E257bb`, `PalomarCorpus/E257bc`, `PalomarCorpus/E257bd`, `PalomarCorpus/E257be`, `PalomarCorpus/E257bf`, `PalomarCorpus/E257bg`, `PalomarCorpus/E1041za`, `PalomarCorpus/E1041zb`.
 
 Family `ExternalVerification*` modules remain internal regression inventory.
 Parent Erdős problems remain open. The superseded flat `PalomarCorpus/comparator.json`
@@ -12,7 +12,7 @@ is not a publication entry.
 
 ## Selected Comparator theorems
 
-424 independently restated theorems across 122 families, partitioned by problem.
+1359 independently restated theorems across 208 families, partitioned by problem.
 
 ### ExternalVerification1041CriticalGeometry
 
@@ -52,6 +52,31 @@ is not a publication entry.
 
 - `PalomarCorpus.E1041.FirstMergeCriticalValueSeparation.firstMerge_exact_convenient_thresholds`
 - `PalomarCorpus.E1041.FirstMergeCriticalValueSeparation.firstMerge_length_lt_two_of_squared_bound`
+
+### ExternalVerification1041PaperStatementsX
+
+- `PalomarCorpus.E1041.PaperStatementsX.lobe_perimeter_gt`
+- `PalomarCorpus.E1041.PaperStatementsX.one_root_gamma_false`
+
+### ExternalVerification1041PaperStatementsY
+
+- `PalomarCorpus.E1041.PaperStatementsY.cfa_capacity_criterion`
+
+### ExternalVerification1041PaperStatementsZ
+
+- `PalomarCorpus.E1041.PaperStatementsZ.circle_slice_packing`
+
+### ExternalVerification1041PaperStatementsZA
+
+- `PalomarCorpus.E1041.PaperStatementsZA.cfa_arity_criterion`
+- `PalomarCorpus.E1041.PaperStatementsZA.cfa_constant_factor_path`
+- `PalomarCorpus.E1041.PaperStatementsZA.scaledLowCriticalFiveHalves_of_lowCritical`
+- `PalomarCorpus.E1041.PaperStatementsZA.scaledLowCritical_of_lowCritical`
+- `PalomarCorpus.E1041.PaperStatementsZA.separation_parent`
+
+### ExternalVerification1041PaperStatementsZB
+
+- `PalomarCorpus.E1041.PaperStatementsZB.subcritical_perimeter_path_paper`
 
 ### ExternalVerification1041QuarticQuotientFiber
 
@@ -113,6 +138,45 @@ is not a publication entry.
 - `PalomarCorpus.E1049.HermitePadeNoGo.rectangular_hp_threshold_eq_classical_iff`
 - `PalomarCorpus.E1049.HermitePadeNoGo.rectangular_hp_threshold_le_classical`
 
+### ExternalVerification1049PaperStatementsA
+
+- `PalomarCorpus.E1049.PaperStatementsA.contour_enclosure`
+- `PalomarCorpus.E1049.PaperStatementsA.four_rpow_mu_lt_thirtyOne`
+- `PalomarCorpus.E1049.PaperStatementsA.inv_bvMu_eq`
+- `PalomarCorpus.E1049.PaperStatementsA.omega_indicator`
+- `PalomarCorpus.E1049.PaperStatementsA.paperBvMu_eq`
+- `PalomarCorpus.E1049.PaperStatementsA.printed_bvMu`
+- `PalomarCorpus.E1049.PaperStatementsA.printed_bv_cutoff`
+- `PalomarCorpus.E1049.PaperStatementsA.printed_contour`
+- `PalomarCorpus.E1049.PaperStatementsA.printed_contour_short`
+- `PalomarCorpus.E1049.PaperStatementsA.printed_four_rpow_bvMu`
+- `PalomarCorpus.E1049.PaperStatementsA.printed_four_rpow_mu`
+- `PalomarCorpus.E1049.PaperStatementsA.printed_log_ratio`
+- `PalomarCorpus.E1049.PaperStatementsA.printed_mu`
+- `PalomarCorpus.E1049.PaperStatementsA.tailLow_le_trigammaSeries`
+- `PalomarCorpus.E1049.PaperStatementsA.thirtyoneFour_between_rpow`
+- `PalomarCorpus.E1049.PaperStatementsA.thirtyoneFour_ratio_chain`
+- `PalomarCorpus.E1049.PaperStatementsA.trigammaSeries_le_tailHigh`
+- `PalomarCorpus.E1049.PaperStatementsA.zudilinC0_enclosure`
+- `PalomarCorpus.E1049.PaperStatementsA.zudilinContour_eq_inv_mu`
+- `PalomarCorpus.E1049.PaperStatementsA.zudilinJ_enclosure`
+- `PalomarCorpus.E1049.PaperStatementsA.zudilinMu_mul_zudilinContour`
+- `PalomarCorpus.E1049.PaperStatementsA.zudilin_rpow_lt_iff_contourRegion`
+
+### ExternalVerification1049PaperStatementsB
+
+- `PalomarCorpus.E1049.PaperStatementsB.coordinatewiseCorridor_implies_pow_lt_linear`
+- `PalomarCorpus.E1049.PaperStatementsB.paperE_eq_rowExponent`
+- `PalomarCorpus.E1049.PaperStatementsB.paperRatio_agree`
+- `PalomarCorpus.E1049.PaperStatementsB.paperReciprocal_rec`
+- `PalomarCorpus.E1049.PaperStatementsB.paperReciprocal_zero`
+- `PalomarCorpus.E1049.PaperStatementsB.sevenHalves_archimedean_height_condition`
+- `PalomarCorpus.E1049.PaperStatementsB.three_mul_lt_two_pow_succ`
+
+### ExternalVerification1049PaperStatementsX
+
+- `PalomarCorpus.E1049.PaperStatementsX.no_finite_simultaneous_two_three_system`
+
 ### ExternalVerification1049PrimeSupportSelectors
 
 - `PalomarCorpus.E1049.PrimeSupportSelectors.integerLinearForm_rationalGap`
@@ -169,6 +233,11 @@ is not a publication entry.
 ### ExternalVerification243OriginalCoordinateBoundedDefect
 
 - `PalomarCorpus.E243.OriginalCoordinateBoundedDefect.original_coordinate_bounded_defect`
+
+### ExternalVerification243PaperStatementsB
+
+- `PalomarCorpus.E243.PaperStatementsB.original_coordinate_inclusive_one`
+- `PalomarCorpus.E243.PaperStatementsB.original_coordinate_inclusive_one_pointwise`
 
 ### ExternalVerification243PeriodicNegativeOrbit
 
@@ -284,6 +353,649 @@ is not a publication entry.
 - `PalomarCorpus.E249.MobiusMersenneLadderStructure.mobiusMersenneTheta_no_linearRecurrence`
 - `PalomarCorpus.E249.MobiusMersenneLadderStructure.mobiusMersenneTheta_no_linearRecurrence_of_eventually`
 - `PalomarCorpus.E249.MobiusMersenneLadderStructure.mobiusMersenneTheta_strict_logConcave`
+
+### ExternalVerification249PaperStatementsAC
+
+- `PalomarCorpus.E249.PaperStatementsAC.cyclotomic_dvd_mobiusNumeratorPolynomial_sub`
+- `PalomarCorpus.E249.PaperStatementsAC.jordanTotientTwo_eq_prod_primeFactors`
+- `PalomarCorpus.E249.PaperStatementsAC.mobiusNumeratorPolynomial_coeff`
+- `PalomarCorpus.E249.PaperStatementsAC.mobiusNumeratorPolynomial_coeff_pos`
+
+### ExternalVerification249PaperStatementsAD
+
+- `PalomarCorpus.E249.PaperStatementsAD.actualLcmTailDiff_shift_pos`
+- `PalomarCorpus.E249.PaperStatementsAD.actualLcm_integral_forces_topEdgeResidue`
+- `PalomarCorpus.E249.PaperStatementsAD.carryOrbit_eq_tail_diff`
+- `PalomarCorpus.E249.PaperStatementsAD.certifiedKill_all_upto_sixteen`
+- `PalomarCorpus.E249.PaperStatementsAD.certifiedKill_depth_floor`
+- `PalomarCorpus.E249.PaperStatementsAD.dtwWindowSeparatedPairs_iff_irrational_totient_series`
+- `PalomarCorpus.E249.PaperStatementsAD.dvd_periodLcm`
+- `PalomarCorpus.E249.PaperStatementsAD.eq_prime_pow_of_not_dvd_periodLcm`
+- `PalomarCorpus.E249.PaperStatementsAD.exists_certifiedKill_iff_tail_diff_notMem_int`
+- `PalomarCorpus.E249.PaperStatementsAD.irrational_totient_series_iff_all_tail_diffs_nonintegral`
+- `PalomarCorpus.E249.PaperStatementsAD.irrational_totient_series_iff_certificate_supply`
+- `PalomarCorpus.E249.PaperStatementsAD.irrational_totient_series_iff_lcm_diagonal_certificate_supply`
+- `PalomarCorpus.E249.PaperStatementsAD.irrational_totient_series_of_lcm_cone_nonintegrality_supply`
+- `PalomarCorpus.E249.PaperStatementsAD.irrational_totient_series_of_lcm_diagonal_nonintegrality_supply`
+- `PalomarCorpus.E249.PaperStatementsAD.periodLcm_diagonal_kill_iff_tail_diff_notMem_int`
+- `PalomarCorpus.E249.PaperStatementsAD.tail_diff_int_of_den_dvd`
+- `PalomarCorpus.E249.PaperStatementsAD.tail_diff_mem_int_iff_scaled_series_mem_int`
+- `PalomarCorpus.E249.PaperStatementsAD.tail_diff_notMem_int_of_certifiedKill`
+- `PalomarCorpus.E249.PaperStatementsAD.two_pow_mul_totient_series_eq`
+
+### ExternalVerification249PaperStatementsAE
+
+- `PalomarCorpus.E249.PaperStatementsAE.abs_mobiusSquareTail_le_paper`
+- `PalomarCorpus.E249.PaperStatementsAE.abs_moebius_cast_le_one`
+- `PalomarCorpus.E249.PaperStatementsAE.boundary_pair_at_one`
+- `PalomarCorpus.E249.PaperStatementsAE.bounded_isolated_pulse`
+- `PalomarCorpus.E249.PaperStatementsAE.card_coprime_antidiagonal`
+- `PalomarCorpus.E249.PaperStatementsAE.card_mul_sq_le_pairwise_energy`
+- `PalomarCorpus.E249.PaperStatementsAE.complementSummand_eq_phaseTerm`
+- `PalomarCorpus.E249.PaperStatementsAE.complementSummand_low_double_echo`
+- `PalomarCorpus.E249.PaperStatementsAE.discrepancy_prefix`
+- `PalomarCorpus.E249.PaperStatementsAE.divisibility_mass`
+- `PalomarCorpus.E249.PaperStatementsAE.divisorIndex_endpoint_behaviour`
+- `PalomarCorpus.E249.PaperStatementsAE.doubling_tempered_sequence_eq_zero`
+- `PalomarCorpus.E249.PaperStatementsAE.exact_denominator`
+- `PalomarCorpus.E249.PaperStatementsAE.gamma_le`
+- `PalomarCorpus.E249.PaperStatementsAE.gamma_not_separation`
+- `PalomarCorpus.E249.PaperStatementsAE.gamma_prefix`
+- `PalomarCorpus.E249.PaperStatementsAE.gcd_moment_identity_three_members`
+- `PalomarCorpus.E249.PaperStatementsAE.joint35_coefficient_moments`
+- `PalomarCorpus.E249.PaperStatementsAE.joint35_mobiusTermKernel_zero`
+- `PalomarCorpus.E249.PaperStatementsAE.lambertValue_eq_divisor_sum_series`
+- `PalomarCorpus.E249.PaperStatementsAE.lcmHeight_five_scaledMobiusShadow_den_exact`
+- `PalomarCorpus.E249.PaperStatementsAE.lcmHeight_upperHalf_product_dvd_den`
+- `PalomarCorpus.E249.PaperStatementsAE.mersenne_geometric_shift`
+- `PalomarCorpus.E249.PaperStatementsAE.mobiusTermKernel_affine_in_multiplier`
+- `PalomarCorpus.E249.PaperStatementsAE.mobiusTermKernel_moment_annihilation`
+- `PalomarCorpus.E249.PaperStatementsAE.no_certificate_after_prefix`
+- `PalomarCorpus.E249.PaperStatementsAE.no_uniform_prefix_rule`
+- `PalomarCorpus.E249.PaperStatementsAE.pair_divisibility_mass`
+- `PalomarCorpus.E249.PaperStatementsAE.periodic_freezing_integer_affine`
+- `PalomarCorpus.E249.PaperStatementsAE.pillaiP_eq_totient_mul_id`
+- `PalomarCorpus.E249.PaperStatementsAE.scaleExplicitShadow_eq_divisorChannels`
+- `PalomarCorpus.E249.PaperStatementsAE.signed_dyadic_clearing`
+- `PalomarCorpus.E249.PaperStatementsAE.signed_dyadic_sum_ne_zero`
+- `PalomarCorpus.E249.PaperStatementsAE.squarefreeKernel_eq_prod_primeFactors`
+- `PalomarCorpus.E249.PaperStatementsAE.stopping_probability_ge_third`
+- `PalomarCorpus.E249.PaperStatementsAE.stopping_transition_probabilities_sum_one`
+- `PalomarCorpus.E249.PaperStatementsAE.sum_divisorIndices_mobius`
+- `PalomarCorpus.E249.PaperStatementsAE.sum_divisors_moebius_div_eq_totient_div`
+- `PalomarCorpus.E249.PaperStatementsAE.sum_gcd_Icc_eq_pillaiP`
+- `PalomarCorpus.E249.PaperStatementsAE.totientDifference_doubling_seam`
+- `PalomarCorpus.E249.PaperStatementsAE.totientDifference_eq_divisorPart_add_complement`
+- `PalomarCorpus.E249.PaperStatementsAE.totientSeries_eq_half_add_moebius_sq`
+- `PalomarCorpus.E249.PaperStatementsAE.totientSeries_pnat_form`
+- `PalomarCorpus.E249.PaperStatementsAE.totient_eq_mobius_divisor_sum`
+- `PalomarCorpus.E249.PaperStatementsAE.totient_two_mul_even`
+- `PalomarCorpus.E249.PaperStatementsAE.totient_two_mul_odd`
+- `PalomarCorpus.E249.PaperStatementsAE.tsum_geometric_multiples`
+- `PalomarCorpus.E249.PaperStatementsAE.tsum_pos_pair_gcd_half_eq_totient_div_mersenne_sq`
+- `PalomarCorpus.E249.PaperStatementsAE.tsum_quarter_geometric`
+- `PalomarCorpus.E249.PaperStatementsAE.upperHalfChannel_product_dvd_den_of_coprime_scale`
+- `PalomarCorpus.E249.PaperStatementsAE.upperHalfChannel_product_dvd_den_of_scale_primeFactors_le`
+- `PalomarCorpus.E249.PaperStatementsAE.upper_half_product_denominator_bounds`
+
+### ExternalVerification249PaperStatementsAF
+
+- `PalomarCorpus.E249.PaperStatementsAF.mobiusMersenneTheta_two_eq_totient_offset`
+- `PalomarCorpus.E249.PaperStatementsAF.scaled_dyadic_sum_odd`
+
+### ExternalVerification249PaperStatementsAG
+
+- `PalomarCorpus.E249.PaperStatementsAG.exists_later_arbitrarily_many_separated_parityCoboundaryWeight_carry_pairs`
+- `PalomarCorpus.E249.PaperStatementsAG.exists_totientParity_arbitrarilyManySeparatedCarry_rational_countermodel`
+- `PalomarCorpus.E249.PaperStatementsAG.parityCoboundaryWeight_le_self`
+- `PalomarCorpus.E249.PaperStatementsAG.parityCoboundaryWeight_le_six`
+- `PalomarCorpus.E249.PaperStatementsAG.parityCoboundaryWeight_mod_two_eq_totient`
+- `PalomarCorpus.E249.PaperStatementsAG.tsum_parityCoboundaryWeight_eq_three_halves`
+
+### ExternalVerification249PaperStatementsAH
+
+- `PalomarCorpus.E249.PaperStatementsAH.binaryCoeffSeries_rational_iff_exists_temperedBinaryOrbit`
+- `PalomarCorpus.E249.PaperStatementsAH.temperedBinaryOrbit_eq_scaledTail`
+
+### ExternalVerification249PaperStatementsAI
+
+- `PalomarCorpus.E249.PaperStatementsAI.irrational_of_den_mul_abs_sub_tendsto_zero`
+- `PalomarCorpus.E249.PaperStatementsAI.irrational_of_int_mul_near_int`
+- `PalomarCorpus.E249.PaperStatementsAI.irrational_of_pow_mul_near_int`
+- `PalomarCorpus.E249.PaperStatementsAI.one_div_den_mul_den_le_abs_sub`
+- `PalomarCorpus.E249.PaperStatementsAI.totient_carry_residue_window_1_240_eq`
+- `PalomarCorpus.E249.PaperStatementsAI.totient_series_eq_half_add_moebius_mersenne_square`
+- `PalomarCorpus.E249.PaperStatementsAI.totient_series_eq_half_add_visible_coprime_pairs`
+- `PalomarCorpus.E249.PaperStatementsAI.tsum_moebius_div_two_pow_sub_one_sq_ne_int_div_of_den_le_39819823323350687661677887437915526`
+- `PalomarCorpus.E249.PaperStatementsAI.tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053`
+- `PalomarCorpus.E249.PaperStatementsAI.tsum_visible_coprime_pairs_eq_totient_series`
+- `PalomarCorpus.E249.PaperStatementsAI.tsum_visible_coprime_pairs_ne_int_div_of_den_le_39819823323350687661677887437915526`
+
+### ExternalVerification249PaperStatementsAJ
+
+- `PalomarCorpus.E249.PaperStatementsAJ.binaryCyclotomicLayer_eventual_instance`
+- `PalomarCorpus.E249.PaperStatementsAJ.binaryCyclotomic_allPrime_form_fails`
+- `PalomarCorpus.E249.PaperStatementsAJ.boundedDegreeOrderConsumer_unfolded`
+- `PalomarCorpus.E249.PaperStatementsAJ.boundedOrder_witness_iff_orderOf_le`
+- `PalomarCorpus.E249.PaperStatementsAJ.bracket_of_two_sided_separation`
+- `PalomarCorpus.E249.PaperStatementsAJ.card_visible_antidiagonal`
+- `PalomarCorpus.E249.PaperStatementsAJ.complementDenominator_dvd_scalar`
+- `PalomarCorpus.E249.PaperStatementsAJ.composite_dilation_defect_eq_zero_of_prime_support`
+- `PalomarCorpus.E249.PaperStatementsAJ.composite_dilation_defect_univ_six_one`
+- `PalomarCorpus.E249.PaperStatementsAJ.composite_dilation_defect_univ_six_one_card`
+- `PalomarCorpus.E249.PaperStatementsAJ.coprimeLattice_gcd_layer_total`
+- `PalomarCorpus.E249.PaperStatementsAJ.coprimeLattice_gcd_layer_total_eq_one_iff`
+- `PalomarCorpus.E249.PaperStatementsAJ.coprimeLattice_halfOpen_half_eq_series`
+- `PalomarCorpus.E249.PaperStatementsAJ.coprimeLattice_halfOpen_sum`
+- `PalomarCorpus.E249.PaperStatementsAJ.coprimeLattice_lambert_half_eq_one`
+- `PalomarCorpus.E249.PaperStatementsAJ.coprimeLattice_lambert_identity`
+- `PalomarCorpus.E249.PaperStatementsAJ.coprimeLattice_lambert_rational`
+- `PalomarCorpus.E249.PaperStatementsAJ.coprimeLattice_plain_half_eq_series_sub_half`
+- `PalomarCorpus.E249.PaperStatementsAJ.coprimeLattice_positive_sum`
+- `PalomarCorpus.E249.PaperStatementsAJ.coprimeLattice_removed_pair`
+- `PalomarCorpus.E249.PaperStatementsAJ.coprime_of_dvd_pow_sub_one`
+- `PalomarCorpus.E249.PaperStatementsAJ.cyclotomic_four_eval`
+- `PalomarCorpus.E249.PaperStatementsAJ.cyclotomic_four_two_pow_eq_cyclotomic_two`
+- `PalomarCorpus.E249.PaperStatementsAJ.cyclotomic_layer_prime_order_decomposition_paper`
+- `PalomarCorpus.E249.PaperStatementsAJ.cyclotomic_three_eval_two_not_dvd_doubling_chain`
+- `PalomarCorpus.E249.PaperStatementsAJ.cyclotomic_three_two_pow`
+- `PalomarCorpus.E249.PaperStatementsAJ.den_lower_bound_of_positive_error`
+- `PalomarCorpus.E249.PaperStatementsAJ.den_mul_abs_sub_ge_one_div_den`
+- `PalomarCorpus.E249.PaperStatementsAJ.denominator_bound_tendsto_atTop_iff`
+- `PalomarCorpus.E249.PaperStatementsAJ.doublingMap_iterate_apply`
+- `PalomarCorpus.E249.PaperStatementsAJ.dvd_pow_sub_one_iff_orderOf_dvd`
+- `PalomarCorpus.E249.PaperStatementsAJ.dyadicMixedGuard_iff_twoBitBand`
+- `PalomarCorpus.E249.PaperStatementsAJ.dyadicScale_unique_in_open_interval`
+- `PalomarCorpus.E249.PaperStatementsAJ.dyadic_prefix_denominator_bound_vacuous`
+- `PalomarCorpus.E249.PaperStatementsAJ.eventual_orderConsumer_conclusions`
+- `PalomarCorpus.E249.PaperStatementsAJ.exists_clean_cyclotomic_anchor_paper`
+- `PalomarCorpus.E249.PaperStatementsAJ.exists_prime_totient_shift_four_mul_congr_two_mod_four`
+- `PalomarCorpus.E249.PaperStatementsAJ.exists_rational_parityComparison`
+- `PalomarCorpus.E249.PaperStatementsAJ.extremal_order_curvature_ne_zero`
+- `PalomarCorpus.E249.PaperStatementsAJ.extremal_order_curvature_neg`
+- `PalomarCorpus.E249.PaperStatementsAJ.extremal_order_curvature_pos`
+- `PalomarCorpus.E249.PaperStatementsAJ.farey_gap_paper`
+- `PalomarCorpus.E249.PaperStatementsAJ.farey_window_1_240_exact_range`
+- `PalomarCorpus.E249.PaperStatementsAJ.farey_window_1_240_range_magnitude`
+- `PalomarCorpus.E249.PaperStatementsAJ.finite_carry_candidate_count`
+- `PalomarCorpus.E249.PaperStatementsAJ.gapCertificate_window_1_240`
+- `PalomarCorpus.E249.PaperStatementsAJ.gapCheck_window_1_240_first_failure_paper`
+- `PalomarCorpus.E249.PaperStatementsAJ.gapCheck_window_1_240_paper`
+- `PalomarCorpus.E249.PaperStatementsAJ.gapCheck_window_one_excludes`
+- `PalomarCorpus.E249.PaperStatementsAJ.gapFareyBound_window_1_240`
+- `PalomarCorpus.E249.PaperStatementsAJ.irrational_of_basePower_dilation`
+- `PalomarCorpus.E249.PaperStatementsAJ.irrational_of_den_mul_error_product_tendsto_zero`
+- `PalomarCorpus.E249.PaperStatementsAJ.irrational_of_den_mul_error_tendsto_zero`
+- `PalomarCorpus.E249.PaperStatementsAJ.irrational_of_dirichlet_gap`
+- `PalomarCorpus.E249.PaperStatementsAJ.irrational_of_near_integer_base_powers`
+- `PalomarCorpus.E249.PaperStatementsAJ.irrational_of_near_integer_multiples`
+- `PalomarCorpus.E249.PaperStatementsAJ.irrational_of_unbounded_window_one_gapCheck`
+- `PalomarCorpus.E249.PaperStatementsAJ.irrational_totientSeries_of_block_cosine_gap`
+- `PalomarCorpus.E249.PaperStatementsAJ.irrational_totientSeries_of_fareyGapExclusionUnbounded`
+- `PalomarCorpus.E249.PaperStatementsAJ.irrational_totientSeries_of_rational_separation`
+- `PalomarCorpus.E249.PaperStatementsAJ.mersenneLayer_orderConsumer_instance`
+- `PalomarCorpus.E249.PaperStatementsAJ.mersenneLayer_prime_divisor_order`
+- `PalomarCorpus.E249.PaperStatementsAJ.mersenneLayer_unbounded_prime_support`
+- `PalomarCorpus.E249.PaperStatementsAJ.moebius_three_values`
+- `PalomarCorpus.E249.PaperStatementsAJ.nine_tenths_lt_cos_pi_div_eight`
+- `PalomarCorpus.E249.PaperStatementsAJ.one_div_den_le_abs_int_combination`
+- `PalomarCorpus.E249.PaperStatementsAJ.one_div_den_mul_den_le_abs_diff`
+- `PalomarCorpus.E249.PaperStatementsAJ.orderConsumer_finite_prime_escape`
+- `PalomarCorpus.E249.PaperStatementsAJ.orderConsumer_index_lt_pow`
+- `PalomarCorpus.E249.PaperStatementsAJ.orderConsumer_unbounded_prime_divisors`
+- `PalomarCorpus.E249.PaperStatementsAJ.orderOf_two_mod_seven`
+- `PalomarCorpus.E249.PaperStatementsAJ.parityComparisonProperties_do_not_imply_irrational`
+- `PalomarCorpus.E249.PaperStatementsAJ.positive_antidiagonal_one`
+- `PalomarCorpus.E249.PaperStatementsAJ.positive_rational_difference_lower_bound`
+- `PalomarCorpus.E249.PaperStatementsAJ.primeJumpSharpRadius_formula`
+- `PalomarCorpus.E249.PaperStatementsAJ.primeJumpSharpRadius_lt_twoCellRadius`
+- `PalomarCorpus.E249.PaperStatementsAJ.primeJumpSharpRadius_saves_pH`
+- `PalomarCorpus.E249.PaperStatementsAJ.rational_cross_numerator_positive`
+- `PalomarCorpus.E249.PaperStatementsAJ.rational_difference_exact`
+- `PalomarCorpus.E249.PaperStatementsAJ.rational_error_denominator_bound`
+- `PalomarCorpus.E249.PaperStatementsAJ.rational_gap_lower_bound`
+- `PalomarCorpus.E249.PaperStatementsAJ.rough_integer_prime_count_and_totient_bound`
+- `PalomarCorpus.E249.PaperStatementsAJ.shortWindow_inequalities`
+- `PalomarCorpus.E249.PaperStatementsAJ.sum_divisors_totient_ne_totient`
+- `PalomarCorpus.E249.PaperStatementsAJ.three_not_dvd_two_pow`
+- `PalomarCorpus.E249.PaperStatementsAJ.totientBlock_concatenation`
+- `PalomarCorpus.E249.PaperStatementsAJ.totientBlock_doubling`
+- `PalomarCorpus.E249.PaperStatementsAJ.totientBlock_eq_paper_indexed_sum`
+
+### ExternalVerification249PaperStatementsAK
+
+- `PalomarCorpus.E249.PaperStatementsAK.cylinderMass_children_le`
+- `PalomarCorpus.E249.PaperStatementsAK.farey_gap`
+- `PalomarCorpus.E249.PaperStatementsAK.gap_check_window_1_240_first_failure`
+- `PalomarCorpus.E249.PaperStatementsAK.gap_check_window_1_240_le_79639646646701375323355774875831053`
+- `PalomarCorpus.E249.PaperStatementsAK.sternBrocotDepthMass_error`
+- `PalomarCorpus.E249.PaperStatementsAK.tendsto_sternBrocotDepthMass`
+- `PalomarCorpus.E249.PaperStatementsAK.totientSeries_ne_rat_of_den_dvd_two_pow_fourteen_mul_mersenne`
+- `PalomarCorpus.E249.PaperStatementsAK.totientSeries_rational_den_gt_fareyBound`
+- `PalomarCorpus.E249.PaperStatementsAK.totient_mul_eq_totient_mul_gcd_div_totient_gcd`
+- `PalomarCorpus.E249.PaperStatementsAK.totient_one_eq_one`
+- `PalomarCorpus.E249.PaperStatementsAK.totient_series_ne_int_div_of_small_denominator`
+- `PalomarCorpus.E249.PaperStatementsAK.totient_series_ne_reduced_fraction_of_small_denominator`
+- `PalomarCorpus.E249.PaperStatementsAK.totient_zero_eq_zero`
+- `PalomarCorpus.E249.PaperStatementsAK.tsum_gcd_layer_pos_coprime_half_eq_one`
+- `PalomarCorpus.E249.PaperStatementsAK.tsum_lambert_linear_weight_sq_pure`
+- `PalomarCorpus.E249.PaperStatementsAK.tsum_pos_coprime_inv_mersenne_eq_one`
+- `PalomarCorpus.E249.PaperStatementsAK.tsum_pos_coprime_pairs_eq_series_sub_half`
+- `PalomarCorpus.E249.PaperStatementsAK.tsum_pos_coprime_pairs_product_form`
+- `PalomarCorpus.E249.PaperStatementsAK.tsum_pos_pair_both_dvd_half_eq_inv_mersenne_sq`
+- `PalomarCorpus.E249.PaperStatementsAK.tsum_totient_div_mersenne_sq_eq_gcd_moment_series`
+- `PalomarCorpus.E249.PaperStatementsAK.tsum_totient_pow_shift`
+- `PalomarCorpus.E249.PaperStatementsAK.twoAdic_pulse_defining_congruence`
+- `PalomarCorpus.E249.PaperStatementsAK.twoAdic_pulse_error_bound`
+- `PalomarCorpus.E249.PaperStatementsAK.twoAtom_hankel_gap`
+- `PalomarCorpus.E249.PaperStatementsAK.twoAtom_strict_logConcave`
+- `PalomarCorpus.E249.PaperStatementsAK.two_point_sample_numerical_requirement`
+- `PalomarCorpus.E249.PaperStatementsAK.two_pow_odd_eq`
+- `PalomarCorpus.E249.PaperStatementsAK.unbounded_prime_divisors_of_escape_of_nontrivial`
+- `PalomarCorpus.E249.PaperStatementsAK.visible_antidiagonal_one`
+
+### ExternalVerification249PaperStatementsAL
+
+- `PalomarCorpus.E249.PaperStatementsAL.basePower_dilation_not_universal`
+- `PalomarCorpus.E249.PaperStatementsAL.digit_block`
+- `PalomarCorpus.E249.PaperStatementsAL.exists_irrational_basePower_bounded_away`
+- `PalomarCorpus.E249.PaperStatementsAL.fract_mem_Icc_of_no_three_equal`
+- `PalomarCorpus.E249.PaperStatementsAL.fract_two_pow_mul_xi_mem_Icc`
+- `PalomarCorpus.E249.PaperStatementsAL.irrational_tail_zero`
+- `PalomarCorpus.E249.PaperStatementsAL.irrational_xi`
+- `PalomarCorpus.E249.PaperStatementsAL.no_three_consecutive_equal`
+- `PalomarCorpus.E249.PaperStatementsAL.not_approaches_int`
+- `PalomarCorpus.E249.PaperStatementsAL.not_eventually_periodic`
+- `PalomarCorpus.E249.PaperStatementsAL.not_near_integer_along_powers_of_two`
+- `PalomarCorpus.E249.PaperStatementsAL.one_div_eight_le_abs_sub_int`
+- `PalomarCorpus.E249.PaperStatementsAL.one_div_eight_le_dist_xi`
+- `PalomarCorpus.E249.PaperStatementsAL.strict_lower_bound_needed`
+- `PalomarCorpus.E249.PaperStatementsAL.tail_mem_Icc`
+- `PalomarCorpus.E249.PaperStatementsAL.upper_bound_needed_for_every_q`
+
+### ExternalVerification249PaperStatementsAM
+
+- `PalomarCorpus.E249.PaperStatementsAM.cos_nonpos_of_quarterFarFromInt`
+- `PalomarCorpus.E249.PaperStatementsAM.irrational_totientSeries_of_digitChange_count`
+- `PalomarCorpus.E249.PaperStatementsAM.irrational_totientSeries_of_quarterFarPhase_count`
+- `PalomarCorpus.E249.PaperStatementsAM.irrational_totientSeries_of_quarterFarPhase_proportion`
+- `PalomarCorpus.E249.PaperStatementsAM.quarterFarFromInt_iff_binaryDigitAt_change`
+- `PalomarCorpus.E249.PaperStatementsAM.quarterFarFromInt_iff_floor_bounds`
+
+### ExternalVerification249PaperStatementsAN
+
+- `PalomarCorpus.E249.PaperStatementsAN.cos_pi_div_eight_gt`
+- `PalomarCorpus.E249.PaperStatementsAN.irrational_lacBeta`
+- `PalomarCorpus.E249.PaperStatementsAN.lacBeta_eq_factorial_series`
+- `PalomarCorpus.E249.PaperStatementsAN.lacCoef_bounds`
+- `PalomarCorpus.E249.PaperStatementsAN.lacunary_block_cos_gap`
+- `PalomarCorpus.E249.PaperStatementsAN.lacunary_block_norm_fails`
+
+### ExternalVerification249PaperStatementsAO
+
+- `PalomarCorpus.E249.PaperStatementsAO.four_thirds_tsum_eighth_pow_tail`
+- `PalomarCorpus.E249.PaperStatementsAO.mersenneRemainderTail_le`
+- `PalomarCorpus.E249.PaperStatementsAO.mersenneRemainder_identity_and_bound`
+- `PalomarCorpus.E249.PaperStatementsAO.mersenne_dvd_of_dvd`
+- `PalomarCorpus.E249.PaperStatementsAO.one_sub_half_pow_ge`
+- `PalomarCorpus.E249.PaperStatementsAO.paperNumerator_coeff_eq_gcd_divisor_sum`
+- `PalomarCorpus.E249.PaperStatementsAO.paperNumerator_coeff_eq_zero`
+- `PalomarCorpus.E249.PaperStatementsAO.paperNumerator_coeff_pos`
+- `PalomarCorpus.E249.PaperStatementsAO.paperNumerator_eq_gcdWordForm`
+- `PalomarCorpus.E249.PaperStatementsAO.paperNumerator_eval_two`
+- `PalomarCorpus.E249.PaperStatementsAO.paperNumerator_eval_two_primeSubsetForm`
+- `PalomarCorpus.E249.PaperStatementsAO.tsum_eighth_pow_tail`
+
+### ExternalVerification249PaperStatementsAP
+
+- `PalomarCorpus.E249.PaperStatementsAP.tsum_moebius_lambert_sq`
+
+### ExternalVerification249PaperStatementsAQ
+
+- `PalomarCorpus.E249.PaperStatementsAQ.cyclotomicValue_dvd_baseMobiusShadow_den`
+- `PalomarCorpus.E249.PaperStatementsAQ.mobiusNumeratorPolynomial_eval_two`
+- `PalomarCorpus.E249.PaperStatementsAQ.mobiusNumerator_gcd_cyclotomicValue`
+- `PalomarCorpus.E249.PaperStatementsAQ.mobiusNumerator_mod_cyclotomicEval`
+- `PalomarCorpus.E249.PaperStatementsAQ.numerator_eval_two_divisors`
+- `PalomarCorpus.E249.PaperStatementsAQ.paperNumeratorPolynomial_eq`
+- `PalomarCorpus.E249.PaperStatementsAQ.radical_decomposition`
+- `PalomarCorpus.E249.PaperStatementsAQ.sum_divisorIndices_radical_form`
+
+### ExternalVerification249PaperStatementsAR
+
+- `PalomarCorpus.E249.PaperStatementsAR.lcmHeight_scaledMobiusShadow_den_exact`
+
+### ExternalVerification249PaperStatementsAS
+
+- `PalomarCorpus.E249.PaperStatementsAS.cyclotomic_dvd_primeJump_new_fibre`
+- `PalomarCorpus.E249.PaperStatementsAS.cyclotomic_dvd_primeJump_old_fibre`
+
+### ExternalVerification249PaperStatementsAT
+
+- `PalomarCorpus.E249.PaperStatementsAT.abs_tail_diff_scaled_sub_window_le`
+- `PalomarCorpus.E249.PaperStatementsAT.actualLcmRawErrorRadius_tendsto_zero`
+- `PalomarCorpus.E249.PaperStatementsAT.actualLcmTailOrbit_eq_tail_difference`
+- `PalomarCorpus.E249.PaperStatementsAT.actualLcmTailOrbit_global_to_local`
+- `PalomarCorpus.E249.PaperStatementsAT.actualLcmTailOrbit_pos`
+- `PalomarCorpus.E249.PaperStatementsAT.actualLcm_corridor_pos`
+- `PalomarCorpus.E249.PaperStatementsAT.actualLcm_integral_forces_topEdgeResidue_paper`
+- `PalomarCorpus.E249.PaperStatementsAT.actualLcm_tailDiff_shift_pos_paper`
+- `PalomarCorpus.E249.PaperStatementsAT.blockNormCondition_unfolded`
+- `PalomarCorpus.E249.PaperStatementsAT.block_real_part_bound_of_subset_form`
+- `PalomarCorpus.E249.PaperStatementsAT.certificate_denominator_exclusion`
+- `PalomarCorpus.E249.PaperStatementsAT.certificate_logarithmic_depth`
+- `PalomarCorpus.E249.PaperStatementsAT.certifiedKill_diagonal_all_imported_through_t64`
+- `PalomarCorpus.E249.PaperStatementsAT.certifiedKill_diagonal_t64`
+- `PalomarCorpus.E249.PaperStatementsAT.certifiedKill_of_fullDepth_phase_separation`
+- `PalomarCorpus.E249.PaperStatementsAT.certifiedKill_of_halfModulus_residue`
+- `PalomarCorpus.E249.PaperStatementsAT.clean_lcm_ray_factorisation`
+- `PalomarCorpus.E249.PaperStatementsAT.commonCertificate_eight_shifts_basepoint_twelve`
+- `PalomarCorpus.E249.PaperStatementsAT.commonCertificate_sixteen_shifts_basepoint_fourteen`
+- `PalomarCorpus.E249.PaperStatementsAT.corridor_height_lt_letter`
+- `PalomarCorpus.E249.PaperStatementsAT.corridor_letter_pos`
+- `PalomarCorpus.E249.PaperStatementsAT.diagonal_certificate_unfolded`
+- `PalomarCorpus.E249.PaperStatementsAT.directed_certificate_example`
+- `PalomarCorpus.E249.PaperStatementsAT.directed_certificate_iff`
+- `PalomarCorpus.E249.PaperStatementsAT.dyadic_prefix_den_dvd`
+- `PalomarCorpus.E249.PaperStatementsAT.dyadic_prefix_tail_le`
+- `PalomarCorpus.E249.PaperStatementsAT.eventual_integral_tailDiff_twoAdic_half_pulse`
+- `PalomarCorpus.E249.PaperStatementsAT.eventual_tail_period_of_not_irrational`
+- `PalomarCorpus.E249.PaperStatementsAT.exists_certificate_of_first_harmonic_norm_bound`
+- `PalomarCorpus.E249.PaperStatementsAT.exists_certificate_of_first_harmonic_real_bound`
+- `PalomarCorpus.E249.PaperStatementsAT.exists_certifiedKill_iff_tail_diff_nonintegral`
+- `PalomarCorpus.E249.PaperStatementsAT.exists_certifiedKill_iff_twoBitResidueTest`
+- `PalomarCorpus.E249.PaperStatementsAT.exists_certifiedKill_of_block_norm_bound`
+- `PalomarCorpus.E249.PaperStatementsAT.exists_certifiedKill_of_block_real_part_bound`
+- `PalomarCorpus.E249.PaperStatementsAT.exists_certifiedKill_of_subset_real_part_bound`
+- `PalomarCorpus.E249.PaperStatementsAT.exists_growingShift_simultaneous_certificate_iff_irrational`
+- `PalomarCorpus.E249.PaperStatementsAT.exists_periodLcm_strict_jump_ge_paper`
+- `PalomarCorpus.E249.PaperStatementsAT.exists_prime_integral_tailDiff_half_pulse`
+- `PalomarCorpus.E249.PaperStatementsAT.exists_prime_twoAdic_half_pulse_window`
+- `PalomarCorpus.E249.PaperStatementsAT.exists_prime_twoAdic_pulse_block`
+- `PalomarCorpus.E249.PaperStatementsAT.exists_simultaneous_depth_of_irrational`
+- `PalomarCorpus.E249.PaperStatementsAT.exists_simultaneous_depth_succ_of_irrational`
+- `PalomarCorpus.E249.PaperStatementsAT.finite_carry_test_sound`
+- `PalomarCorpus.E249.PaperStatementsAT.finite_carry_true_orbit`
+- `PalomarCorpus.E249.PaperStatementsAT.first_harmonic_re_bound_of_norm_bound`
+- `PalomarCorpus.E249.PaperStatementsAT.fixedRank_cleanWindow_structure`
+- `PalomarCorpus.E249.PaperStatementsAT.fixed_depth_bounds_indices`
+- `PalomarCorpus.E249.PaperStatementsAT.four_tail_checked_instance`
+- `PalomarCorpus.E249.PaperStatementsAT.four_tail_combination_eq`
+- `PalomarCorpus.E249.PaperStatementsAT.four_tail_criterion_sound`
+- `PalomarCorpus.E249.PaperStatementsAT.four_tail_error_bound`
+- `PalomarCorpus.E249.PaperStatementsAT.four_tail_window_eq`
+- `PalomarCorpus.E249.PaperStatementsAT.integral_carry_strictly_between`
+- `PalomarCorpus.E249.PaperStatementsAT.integral_tail_forces_upper_endpoint_residue`
+- `PalomarCorpus.E249.PaperStatementsAT.irrational_iff_diagonal_orbit_nonintegrality`
+- `PalomarCorpus.E249.PaperStatementsAT.irrational_of_accumulated_halfModulus_supply`
+- `PalomarCorpus.E249.PaperStatementsAT.irrational_of_blockNormCondition`
+- `PalomarCorpus.E249.PaperStatementsAT.irrational_of_certificate_supply`
+- `PalomarCorpus.E249.PaperStatementsAT.irrational_of_diagonal_orbit_separation_supply`
+- `PalomarCorpus.E249.PaperStatementsAT.irrational_of_first_harmonic_norm_gap`
+- `PalomarCorpus.E249.PaperStatementsAT.irrational_of_four_tail_supply`
+- `PalomarCorpus.E249.PaperStatementsAT.irrational_of_logarithmicDepth_diagonal_supply`
+- `PalomarCorpus.E249.PaperStatementsAT.irrational_totientSeries_iff_cofinalDirectedLcmCertificateSupply`
+- `PalomarCorpus.E249.PaperStatementsAT.lcm_grid_flatness`
+- `PalomarCorpus.E249.PaperStatementsAT.lcm_grid_fractional_parts`
+- `PalomarCorpus.E249.PaperStatementsAT.lcm_grid_multiplier_positive`
+- `PalomarCorpus.E249.PaperStatementsAT.lcm_grid_supply_iff`
+- `PalomarCorpus.E249.PaperStatementsAT.prefix_fractional_part`
+- `PalomarCorpus.E249.PaperStatementsAT.short_lcm_window_nondivisor`
+- `PalomarCorpus.E249.PaperStatementsAT.totient_scaled_truncation_error`
+- `PalomarCorpus.E249.PaperStatementsAT.unclean_lcm_ray_counterexample`
+
+### ExternalVerification249PaperStatementsAU
+
+- `PalomarCorpus.E249.PaperStatementsAU.certifiedKill_101_300`
+- `PalomarCorpus.E249.PaperStatementsAU.certifiedKill_121_300`
+- `PalomarCorpus.E249.PaperStatementsAU.certifiedKill_125_300`
+- `PalomarCorpus.E249.PaperStatementsAU.certifiedKill_127_300`
+- `PalomarCorpus.E249.PaperStatementsAU.certifiedKill_128_300`
+- `PalomarCorpus.E249.PaperStatementsAU.certifiedKill_67_300`
+- `PalomarCorpus.E249.PaperStatementsAU.certifiedKill_81_300`
+- `PalomarCorpus.E249.PaperStatementsAU.certifiedKill_97_300`
+- `PalomarCorpus.E249.PaperStatementsAU.exists_diagonalKill_le_82`
+- `PalomarCorpus.E249.PaperStatementsAU.irrational_of_modFour_pulse_supply`
+- `PalomarCorpus.E249.PaperStatementsAU.irrational_of_period_multiple_certificate_supply`
+- `PalomarCorpus.E249.PaperStatementsAU.irrational_of_primeJumpSharp_supply`
+- `PalomarCorpus.E249.PaperStatementsAU.irrational_of_restrictedDepth_diagonal_supply`
+- `PalomarCorpus.E249.PaperStatementsAU.irrational_of_short_window_diagonal_supply`
+- `PalomarCorpus.E249.PaperStatementsAU.irrational_of_topEdgeResidueGapSupply`
+- `PalomarCorpus.E249.PaperStatementsAU.irrational_of_upper_endpoint_gap_supply`
+- `PalomarCorpus.E249.PaperStatementsAU.lcmRayArithmeticLetter_eq_totient_difference`
+- `PalomarCorpus.E249.PaperStatementsAU.lcmRay_divisor_clean_formula`
+- `PalomarCorpus.E249.PaperStatementsAU.lcmRay_divisor_denominators_pos`
+- `PalomarCorpus.E249.PaperStatementsAU.lcmRay_divisor_gcd_example`
+- `PalomarCorpus.E249.PaperStatementsAU.lcmRay_divisor_product_formula`
+- `PalomarCorpus.E249.PaperStatementsAU.lcmRay_nondivisor_literal`
+- `PalomarCorpus.E249.PaperStatementsAU.orbit_tail_diff_eq`
+- `PalomarCorpus.E249.PaperStatementsAU.orbit_tail_diff_firstChar_eq`
+- `PalomarCorpus.E249.PaperStatementsAU.orbit_tail_diff_fract_eq_doubling_orbit`
+- `PalomarCorpus.E249.PaperStatementsAU.orbit_tail_diff_sub_scaled_is_int`
+- `PalomarCorpus.E249.PaperStatementsAU.orbit_tail_recurrence`
+- `PalomarCorpus.E249.PaperStatementsAU.penultimate_shortWindow_difference_eq_half`
+- `PalomarCorpus.E249.PaperStatementsAU.periodLcm_four_eq_twelve`
+- `PalomarCorpus.E249.PaperStatementsAU.periodLcm_strict_jump_at_powerTwo_pred`
+- `PalomarCorpus.E249.PaperStatementsAU.periodLcm_strict_jump_at_prime_pred`
+- `PalomarCorpus.E249.PaperStatementsAU.periodLcm_zero_and_one_eq_one`
+- `PalomarCorpus.E249.PaperStatementsAU.periodMultipleKillSupply_iff_irrational`
+- `PalomarCorpus.E249.PaperStatementsAU.period_multiple_certificate_at_one`
+- `PalomarCorpus.E249.PaperStatementsAU.period_multiple_certificate_supply_iff`
+- `PalomarCorpus.E249.PaperStatementsAU.pointwise_completeness_supplies_some_depth`
+- `PalomarCorpus.E249.PaperStatementsAU.primeJumpTailCommutator_notMem_int_of_central_window`
+- `PalomarCorpus.E249.PaperStatementsAU.primeJumpTailCommutator_twelve_five_notMem_int`
+- `PalomarCorpus.E249.PaperStatementsAU.primeJump_witness_twelve_five_values`
+- `PalomarCorpus.E249.PaperStatementsAU.pulse_delta_of_divisor_data`
+- `PalomarCorpus.E249.PaperStatementsAU.rational_forces_four_tail_diagonals_integral`
+- `PalomarCorpus.E249.PaperStatementsAU.rational_forces_period_multiple_integrality`
+- `PalomarCorpus.E249.PaperStatementsAU.rational_forces_pulse_class_integrality`
+- `PalomarCorpus.E249.PaperStatementsAU.rational_tail_period_explicit_witnesses`
+- `PalomarCorpus.E249.PaperStatementsAU.real_part_bound_of_norm_bound`
+- `PalomarCorpus.E249.PaperStatementsAU.second_difference_cell_one_eight`
+- `PalomarCorpus.E249.PaperStatementsAU.second_difference_certificate_sound`
+- `PalomarCorpus.E249.PaperStatementsAU.second_difference_error_bound`
+- `PalomarCorpus.E249.PaperStatementsAU.shortWindowSupply_single_witness_six_ninetyThree`
+- `PalomarCorpus.E249.PaperStatementsAU.shortWindowSupply_through_six_paper`
+- `PalomarCorpus.E249.PaperStatementsAU.shortWindowSupply_witness_eq_t64_certificate`
+- `PalomarCorpus.E249.PaperStatementsAU.shortWindow_certificates_kill_omega_four_and_six`
+- `PalomarCorpus.E249.PaperStatementsAU.shortWindow_totient_difference_pos`
+- `PalomarCorpus.E249.PaperStatementsAU.short_window_diagonal_through_six`
+- `PalomarCorpus.E249.PaperStatementsAU.short_window_diagonal_witnesses`
+- `PalomarCorpus.E249.PaperStatementsAU.tail_diff_notMem_int_of_irrational`
+- `PalomarCorpus.E249.PaperStatementsAU.tendsto_actualLcmRawErrorRadius_atTop_nhds_zero`
+- `PalomarCorpus.E249.PaperStatementsAU.three_particular_equivalences`
+- `PalomarCorpus.E249.PaperStatementsAU.topEdgeResidueGap_forces_nonintegral`
+- `PalomarCorpus.E249.PaperStatementsAU.topEdgeResidueGap_orbit_nonintegral`
+- `PalomarCorpus.E249.PaperStatementsAU.topEdgeResidueGap_unfolded`
+- `PalomarCorpus.E249.PaperStatementsAU.totientTail_bounds`
+- `PalomarCorpus.E249.PaperStatementsAU.totientTail_le_add_two`
+- `PalomarCorpus.E249.PaperStatementsAU.twoAdic_pulse_construction_never_certifies`
+- `PalomarCorpus.E249.PaperStatementsAU.two_mul_totient_dvd_totient_second_difference`
+- `PalomarCorpus.E249.PaperStatementsAU.upper_endpoint_condition_iff`
+- `PalomarCorpus.E249.PaperStatementsAU.upper_endpoint_gap_nonintegral`
+- `PalomarCorpus.E249.PaperStatementsAU.weighted_shortWindow_band_iff_certifiedKill`
+- `PalomarCorpus.E249.PaperStatementsAU.weighted_shortWindow_sum_eq_windowDiscrepancy`
+- `PalomarCorpus.E249.PaperStatementsAU.windowDiscrepancy_diagonal_eq`
+- `PalomarCorpus.E249.PaperStatementsAU.windowFirstCos_unfolded`
+
+### ExternalVerification249PaperStatementsAV
+
+- `PalomarCorpus.E249.PaperStatementsAV.irrational_totient_series_of_lcm_cone_window_kill_supply`
+
+### ExternalVerification249PaperStatementsAW
+
+- `PalomarCorpus.E249.PaperStatementsAW.certificate_sound`
+- `PalomarCorpus.E249.PaperStatementsAW.exact_series`
+- `PalomarCorpus.E249.PaperStatementsAW.generic_tail_period`
+- `PalomarCorpus.E249.PaperStatementsAW.scaled_difference`
+- `PalomarCorpus.E249.PaperStatementsAW.scaled_tail_split`
+- `PalomarCorpus.E249.PaperStatementsAW.truncation_error_bound`
+- `PalomarCorpus.E249.PaperStatementsAW.value_cast`
+
+### ExternalVerification249PaperStatementsAX
+
+- `PalomarCorpus.E249.PaperStatementsAX.abs_actualLcmTailOrbit_sub_rawApprox_lt_explicit`
+- `PalomarCorpus.E249.PaperStatementsAX.abs_actualLcmTailOrbit_sub_rawApprox_lt_paper_form`
+- `PalomarCorpus.E249.PaperStatementsAX.abs_orbit_sub_rawApprox_lt`
+- `PalomarCorpus.E249.PaperStatementsAX.actualLcmRawApprox_isRat`
+- `PalomarCorpus.E249.PaperStatementsAX.canonicalAdjacentSuffixCentralSlack_paper_formula`
+- `PalomarCorpus.E249.PaperStatementsAX.corridor_escape_and_irrational_of_magnitude`
+- `PalomarCorpus.E249.PaperStatementsAX.endpoint_criterion_nonintegral`
+- `PalomarCorpus.E249.PaperStatementsAX.endpoint_identity`
+- `PalomarCorpus.E249.PaperStatementsAX.finite_grid_nonintegral_pair`
+- `PalomarCorpus.E249.PaperStatementsAX.finite_grid_supply_irrational`
+- `PalomarCorpus.E249.PaperStatementsAX.irrational_of_actualLcmOrbitSeparationSupply`
+- `PalomarCorpus.E249.PaperStatementsAX.irrational_of_lower_escape_supply`
+- `PalomarCorpus.E249.PaperStatementsAX.irrational_of_paperAdjacentSuffixMidbandSupply`
+- `PalomarCorpus.E249.PaperStatementsAX.irrational_of_powerTwo_postJump_slack_supply`
+- `PalomarCorpus.E249.PaperStatementsAX.irrational_of_terminalDominanceSupply`
+- `PalomarCorpus.E249.PaperStatementsAX.joint35ConeWindow_eq`
+- `PalomarCorpus.E249.PaperStatementsAX.joint35_nonintegral_of_separated_window`
+- `PalomarCorpus.E249.PaperStatementsAX.joint35_truncation_error`
+- `PalomarCorpus.E249.PaperStatementsAX.lcmHeight_eq_periodLcm`
+- `PalomarCorpus.E249.PaperStatementsAX.oddGuarded_depth_eq_prescribed`
+- `PalomarCorpus.E249.PaperStatementsAX.oddHalfCenteredLift_spec`
+- `PalomarCorpus.E249.PaperStatementsAX.paperAdjacentSuffixMidbandSupply_of_adjacentSuffixMidband`
+- `PalomarCorpus.E249.PaperStatementsAX.paperAdjacentSuffixMidbandSupply_of_flexibleActualTopEdgeMagnitude`
+- `PalomarCorpus.E249.PaperStatementsAX.paperAdjacentSuffixMidbandSupply_of_oddGuardTopEdgeHalfWordBand`
+- `PalomarCorpus.E249.PaperStatementsAX.paperGridNumerator_eq`
+- `PalomarCorpus.E249.PaperStatementsAX.paperTeChain_fifth_gives_nonintegrality`
+- `PalomarCorpus.E249.PaperStatementsAX.paperTeChain_first_four_imply_topEdgeSupply`
+- `PalomarCorpus.E249.PaperStatementsAX.paperTeChain_five_sufficient_for_irrationality`
+- `PalomarCorpus.E249.PaperStatementsAX.paperTeChain_item_one_unfolded`
+- `PalomarCorpus.E249.PaperStatementsAX.paperTeChain_relations`
+- `PalomarCorpus.E249.PaperStatementsAX.powerTwoActualLcmTopEdgeResidueGapSupply_of_paperAdjacentSuffixMidband`
+- `PalomarCorpus.E249.PaperStatementsAX.rawApprox_separation_of_orbit_separation`
+- `PalomarCorpus.E249.PaperStatementsAX.specified_euler_tail_period`
+- `PalomarCorpus.E249.PaperStatementsAX.sum_sq_dist_from_phase_one`
+- `PalomarCorpus.E249.PaperStatementsAX.tailDifference_eq_coefficient_mul_series`
+- `PalomarCorpus.E249.PaperStatementsAX.tailDifference_sub_rationalApproximation`
+- `PalomarCorpus.E249.PaperStatementsAX.teChain_item_five_unfolded`
+- `PalomarCorpus.E249.PaperStatementsAX.teChain_item_four_unfolded`
+- `PalomarCorpus.E249.PaperStatementsAX.teChain_item_three_unfolded`
+- `PalomarCorpus.E249.PaperStatementsAX.teChain_item_two_unfolded`
+- `PalomarCorpus.E249.PaperStatementsAX.te_chain_relations`
+- `PalomarCorpus.E249.PaperStatementsAX.terminalDominance_orbit_nonintegral`
+- `PalomarCorpus.E249.PaperStatementsAX.topEdgeResidueGap_or_of_paperAdjacentSuffixMidband`
+- `PalomarCorpus.E249.PaperStatementsAX.totientTail_enclosure`
+
+### ExternalVerification249PaperStatementsAY
+
+- `PalomarCorpus.E249.PaperStatementsAY.centeredLift_range`
+- `PalomarCorpus.E249.PaperStatementsAY.cylinderMass_eq_divisibility_mass_mul`
+- `PalomarCorpus.E249.PaperStatementsAY.cylinder_mediant_split`
+- `PalomarCorpus.E249.PaperStatementsAY.cylinder_root_values`
+- `PalomarCorpus.E249.PaperStatementsAY.exists_upperHalf_channel_paper`
+- `PalomarCorpus.E249.PaperStatementsAY.inversePhaseGauge_locks_row_and_preserves_minor`
+- `PalomarCorpus.E249.PaperStatementsAY.irrational_totient_iff_mobius_square`
+- `PalomarCorpus.E249.PaperStatementsAY.mobius_square_reduction`
+- `PalomarCorpus.E249.PaperStatementsAY.normalised_split_probabilities`
+- `PalomarCorpus.E249.PaperStatementsAY.upperHalfMersenneProduct_between_bounds`
+- `PalomarCorpus.E249.PaperStatementsAY.upperHalfPrimes_member_bounds`
+- `PalomarCorpus.E249.PaperStatementsAY.upperHalfPrimes_nonempty_paper`
+- `PalomarCorpus.E249.PaperStatementsAY.upperHalfPrimes_spec`
+
+### ExternalVerification249PaperStatementsAZ
+
+- `PalomarCorpus.E249.PaperStatementsAZ.affineBinaryOrbit_difference_and_reset`
+- `PalomarCorpus.E249.PaperStatementsAZ.balancedPulse_common_history`
+- `PalomarCorpus.E249.PaperStatementsAZ.balancedPulse_label_lower_bound`
+- `PalomarCorpus.E249.PaperStatementsAZ.balancedPulse_no_decoder_from_common_state`
+- `PalomarCorpus.E249.PaperStatementsAZ.balancedPulse_series`
+- `PalomarCorpus.E249.PaperStatementsAZ.balancedPulse_tail_at`
+
+### ExternalVerification249PaperStatementsBA
+
+- `PalomarCorpus.E249.PaperStatementsBA.alpha_divisor_sum_eq_totient`
+- `PalomarCorpus.E249.PaperStatementsBA.forwardMultipleShift_least`
+- `PalomarCorpus.E249.PaperStatementsBA.forwardMultiple_enumeration`
+- `PalomarCorpus.E249.PaperStatementsBA.forwardMultiple_spec`
+- `PalomarCorpus.E249.PaperStatementsBA.lambertValue_alpha_eq_totientSeries`
+
+### ExternalVerification249PaperStatementsBB
+
+- `PalomarCorpus.E249.PaperStatementsBB.canonicalTotientKernelFamily_entries`
+- `PalomarCorpus.E249.PaperStatementsBB.canonicalTotientKernelFamily_independent_card_and_span`
+- `PalomarCorpus.E249.PaperStatementsBB.canonical_family_basis_through_level`
+- `PalomarCorpus.E249.PaperStatementsBB.canonical_level_zero_channels`
+- `PalomarCorpus.E249.PaperStatementsBB.card_canonical_dyadic_index`
+- `PalomarCorpus.E249.PaperStatementsBB.completeLevelZeroTruncation_is_totient_and_rank_one`
+- `PalomarCorpus.E249.PaperStatementsBB.finrank_throughLevel_zero_eq_one`
+- `PalomarCorpus.E249.PaperStatementsBB.linearIndependent_canonical_dyadic_family`
+- `PalomarCorpus.E249.PaperStatementsBB.retainedSections_basis_and_rank`
+
+### ExternalVerification249PaperStatementsBC
+
+- `PalomarCorpus.E249.PaperStatementsBC.carryShift_dvd_iff_tailDiff_integral`
+- `PalomarCorpus.E249.PaperStatementsBC.temperedCarry_eq_scaledTail_and_shift`
+
+### ExternalVerification249PaperStatementsBD
+
+- `PalomarCorpus.E249.PaperStatementsBD.composite_dilation_divisor_count`
+- `PalomarCorpus.E249.PaperStatementsBD.composite_dilation_divisor_count_prime_support`
+- `PalomarCorpus.E249.PaperStatementsBD.lambert_support_series`
+- `PalomarCorpus.E249.PaperStatementsBD.lambert_support_series_restricted`
+
+### ExternalVerification249PaperStatementsBE
+
+- `PalomarCorpus.E249.PaperStatementsBE.divisorChannels_sum_eq`
+- `PalomarCorpus.E249.PaperStatementsBE.foreignComplementBound_paper`
+- `PalomarCorpus.E249.PaperStatementsBE.projectedForeignDefect_paper`
+- `PalomarCorpus.E249.PaperStatementsBE.residueKernel_increment_of_dvd`
+- `PalomarCorpus.E249.PaperStatementsBE.residueOffset_of_dvd`
+- `PalomarCorpus.E249.PaperStatementsBE.transportResidueKernel_eq_mobiusTermKernel`
+
+### ExternalVerification249PaperStatementsBF
+
+- `PalomarCorpus.E249.PaperStatementsBF.fiveQuarter_comparison_rational_with_carryRank_floor`
+
+### ExternalVerification249PaperStatementsBG
+
+- `PalomarCorpus.E249.PaperStatementsBG.abs_mobiusMersenneTheta_sub_prefix_le`
+- `PalomarCorpus.E249.PaperStatementsBG.mobiusMersenneTheta_ge_alpha`
+- `PalomarCorpus.E249.PaperStatementsBG.mobiusMersenneTheta_lt_one`
+- `PalomarCorpus.E249.PaperStatementsBG.mobiusMersenneTheta_one_and_two`
+- `PalomarCorpus.E249.PaperStatementsBG.positive_direct_sum_sub_theta_two_gt`
+- `PalomarCorpus.E249.PaperStatementsBG.primitive_form_abs_gt`
+- `PalomarCorpus.E249.PaperStatementsBG.rankOneSubrankQuotient_one_five_sub_theta_two_lt_one_div_fifteen`
+- `PalomarCorpus.E249.PaperStatementsBG.rankOneSubrankQuotient_sub_theta_two_gt`
+- `PalomarCorpus.E249.PaperStatementsBG.theta_hankel_det_neg`
+- `PalomarCorpus.E249.PaperStatementsBG.theta_hankel_two_neg`
+- `PalomarCorpus.E249.PaperStatementsBG.theta_strict_logConcave`
+
+### ExternalVerification249PaperStatementsBH
+
+- `PalomarCorpus.E249.PaperStatementsBH.no_generic_rationality_carryRank_ceiling`
+- `PalomarCorpus.E249.PaperStatementsBH.rationalControl_periodic_with_unbounded_carry_rank`
+- `PalomarCorpus.E249.PaperStatementsBH.rationality_forces_mod_period_and_unbounded_rank`
+- `PalomarCorpus.E249.PaperStatementsBH.rationality_gives_mod_period_and_unbounded_rank`
+
+### ExternalVerification249PaperStatementsBI
+
+- `PalomarCorpus.E249.PaperStatementsBI.rank_floor_and_false_proposed_carryRank_ceiling`
+
+### ExternalVerification249PaperStatementsBJ
+
+- `PalomarCorpus.E249.PaperStatementsBJ.rationalValue_integral_carry_and_rank_floor`
+
+### ExternalVerification249PaperStatementsBK
+
+- `PalomarCorpus.E249.PaperStatementsBK.tailDifference_not_integral_of_separation`
+
+### ExternalVerification249PaperStatementsBL
+
+- `PalomarCorpus.E249.PaperStatementsBL.tailOrbitFirstExp_re_eq`
+
+### ExternalVerification249PaperStatementsBM
+
+- `PalomarCorpus.E249.PaperStatementsBM.totientTail_eq_tsum_mobius_inversion`
+
+### ExternalVerification249PaperStatementsBN
+
+- `PalomarCorpus.E249.PaperStatementsBN.totient_convolution_weight_mul_zeta`
+- `PalomarCorpus.E249.PaperStatementsBN.totient_convolution_weight_not_periodic`
+- `PalomarCorpus.E249.PaperStatementsBN.totient_convolution_weight_prime`
+- `PalomarCorpus.E249.PaperStatementsBN.totient_convolution_weight_unbounded`
 
 ### ExternalVerification249PrefixTwoAdicExclusion
 
@@ -474,6 +1186,23 @@ is not a publication entry.
 
 - `PalomarCorpus.E251.PaperStatementsR.shifted_count_bound`
 
+### ExternalVerification251PaperStatementsX
+
+- `PalomarCorpus.E251.PaperStatementsX.long_joint_prime_gap_countermodel`
+
+### ExternalVerification251PaperStatementsY
+
+- `PalomarCorpus.E251.PaperStatementsY.prime_gap_equal_shift_zeroDensity`
+- `PalomarCorpus.E251.PaperStatementsY.prime_gap_two_window_sparse`
+
+### ExternalVerification251PaperStatementsZ
+
+- `PalomarCorpus.E251.PaperStatementsZ.short_joint_prime_gap_countermodel`
+
+### ExternalVerification251PaperStatementsZA
+
+- `PalomarCorpus.E251.PaperStatementsZA.nonconcentration_does_not_force_irrationality`
+
 ### ExternalVerification251PolynomialShiftCountermodel
 
 - `PalomarCorpus.E251.PolynomialShiftCountermodel.polynomialGapTailCountermodel`
@@ -567,6 +1296,461 @@ is not a publication entry.
 
 - `PalomarCorpus.E257.MixedWeightedCover.mixedSupportClaim`
 
+### ExternalVerification257PaperStatementsAA
+
+- `PalomarCorpus.E257.PaperStatementsAA.Psi_eq_of_residues_eq`
+- `PalomarCorpus.E257.PaperStatementsAA.card_divisors_sub_one`
+- `PalomarCorpus.E257.PaperStatementsAA.divisor_dvd_divInt_den`
+- `PalomarCorpus.E257.PaperStatementsAA.dvd_add_iLeast`
+- `PalomarCorpus.E257.PaperStatementsAA.geometric_term_eq_zero_of_lt_iLeast`
+- `PalomarCorpus.E257.PaperStatementsAA.iLeast_congr`
+- `PalomarCorpus.E257.PaperStatementsAA.iLeast_mem_Icc`
+- `PalomarCorpus.E257.PaperStatementsAA.largest_false_rank_algebra`
+- `PalomarCorpus.E257.PaperStatementsAA.linearDescender_eq_smul_eval`
+- `PalomarCorpus.E257.PaperStatementsAA.mCount_eq_zero_of_lt_iLeast`
+- `PalomarCorpus.E257.PaperStatementsAA.not_dvd_of_lt_iLeast`
+- `PalomarCorpus.E257.PaperStatementsAA.paper_bounded_double_or_recycle_countermodel`
+- `PalomarCorpus.E257.PaperStatementsAA.paper_centred_completion_of_fixed_precision`
+- `PalomarCorpus.E257.PaperStatementsAA.paper_dyadic_skip_test_iff`
+- `PalomarCorpus.E257.PaperStatementsAA.paper_exists_seeded_bounded_double_or_recycle_model`
+- `PalomarCorpus.E257.PaperStatementsAA.paper_half_lcm_horizon`
+- `PalomarCorpus.E257.PaperStatementsAA.paper_master_identity_floors`
+- `PalomarCorpus.E257.PaperStatementsAA.paper_mersenne_height`
+- `PalomarCorpus.E257.PaperStatementsAA.paper_mod_twelve_filter`
+- `PalomarCorpus.E257.PaperStatementsAA.paper_parity_excludes_finite_support`
+- `PalomarCorpus.E257.PaperStatementsAA.paper_relationInvariant_channels_det_eq_zero`
+- `PalomarCorpus.E257.PaperStatementsAA.paper_relationInvariant_channels_rank_le_one`
+- `PalomarCorpus.E257.PaperStatementsAA.paper_reverse_carry_word`
+- `PalomarCorpus.E257.PaperStatementsAA.paper_scalar_localization`
+- `PalomarCorpus.E257.PaperStatementsAA.paper_scalar_localization_size_bound`
+- `PalomarCorpus.E257.PaperStatementsAA.paper_scalar_localization_zero_degenerate`
+- `PalomarCorpus.E257.PaperStatementsAA.paper_sharp_gives_three_over_three_t_sub_one`
+- `PalomarCorpus.E257.PaperStatementsAA.paper_sharp_skip_safe_lb3`
+- `PalomarCorpus.E257.PaperStatementsAA.paper_sharp_strictly_weaker_realizable`
+- `PalomarCorpus.E257.PaperStatementsAA.paper_sharp_weaker_than_dyadic`
+- `PalomarCorpus.E257.PaperStatementsAA.paper_theoremA_crossing_bound_square_le`
+- `PalomarCorpus.E257.PaperStatementsAA.paper_three_channel_margin_identity`
+- `PalomarCorpus.E257.PaperStatementsAA.paper_two_channels_insufficient`
+- `PalomarCorpus.E257.PaperStatementsAA.paper_two_thirds_band`
+- `PalomarCorpus.E257.PaperStatementsAA.paper_witness_exclusion`
+- `PalomarCorpus.E257.PaperStatementsAA.primePowerLayer_comm`
+- `PalomarCorpus.E257.PaperStatementsAA.residue_condition_iff`
+- `PalomarCorpus.E257.PaperStatementsAA.residue_cutoff_reading_fails`
+- `PalomarCorpus.E257.PaperStatementsAA.reverse_carry_word_common_bound_sharp`
+- `PalomarCorpus.E257.PaperStatementsAA.skipSum_den_dvd_prod`
+- `PalomarCorpus.E257.PaperStatementsAA.sub_two_le_two_pow_sub_four`
+- `PalomarCorpus.E257.PaperStatementsAA.survivingDivisor_dvd_scaled_divInt_den`
+- `PalomarCorpus.E257.PaperStatementsAA.theta_eq_Psi`
+- `PalomarCorpus.E257.PaperStatementsAA.theta_eq_divisorResidueSum`
+- `PalomarCorpus.E257.PaperStatementsAA.theta_eq_geometricForm`
+- `PalomarCorpus.E257.PaperStatementsAA.theta_eq_tsum_divisorResidue`
+- `PalomarCorpus.E257.PaperStatementsAA.theta_eq_tsum_geometricForm`
+- `PalomarCorpus.E257.PaperStatementsAA.theta_one_one`
+- `PalomarCorpus.E257.PaperStatementsAA.theta_one_three`
+- `PalomarCorpus.E257.PaperStatementsAA.weighted_denominator_budget`
+
+### ExternalVerification257PaperStatementsAB
+
+- `PalomarCorpus.E257.PaperStatementsAB.relationInvariantLinearChannels_det_eq_zero`
+
+### ExternalVerification257PaperStatementsAC
+
+- `PalomarCorpus.E257.PaperStatementsAC.arithmetic_logarithmic_counterexample`
+- `PalomarCorpus.E257.PaperStatementsAC.dyadicBandEscape_iff_exists_critical`
+- `PalomarCorpus.E257.PaperStatementsAC.exists_criticalDyadicBandIndex`
+- `PalomarCorpus.E257.PaperStatementsAC.logarithmic_initial_interval`
+- `PalomarCorpus.E257.PaperStatementsAC.no_absolute_dyadic_kappaOne_constant`
+
+### ExternalVerification257PaperStatementsAD
+
+- `PalomarCorpus.E257.PaperStatementsAD.channelProduct_coprime_mobiusNumerator_of_one_le`
+- `PalomarCorpus.E257.PaperStatementsAD.exists_boolean_word_of_lt_two_pow`
+- `PalomarCorpus.E257.PaperStatementsAD.lcmHeight_scaledMobiusShadow_den_lower_bound`
+- `PalomarCorpus.E257.PaperStatementsAD.localMersenneQuotient_eq_geometric`
+- `PalomarCorpus.E257.PaperStatementsAD.localMersenneQuotient_eq_two_pow_sub_of_half_lt`
+- `PalomarCorpus.E257.PaperStatementsAD.localPrefixQuotient_succ`
+- `PalomarCorpus.E257.PaperStatementsAD.paperA_eq_mobiusNumerator`
+- `PalomarCorpus.E257.PaperStatementsAD.paperB_eq_baseMobiusShadow`
+- `PalomarCorpus.E257.PaperStatementsAD.paperB_eq_divInt_paperA`
+- `PalomarCorpus.E257.PaperStatementsAD.paper_channel_factor_gcd_eq_one`
+- `PalomarCorpus.E257.PaperStatementsAD.paper_channel_factors_pairwise_coprime`
+- `PalomarCorpus.E257.PaperStatementsAD.paper_consecutive_not_both_divisible`
+- `PalomarCorpus.E257.PaperStatementsAD.paper_dynamics`
+- `PalomarCorpus.E257.PaperStatementsAD.paper_finite_sum_inv_odd_den_odd`
+- `PalomarCorpus.E257.PaperStatementsAD.paper_finite_sum_inv_odd_ne_half`
+- `PalomarCorpus.E257.PaperStatementsAD.paper_greedySupport_greedy_rule`
+- `PalomarCorpus.E257.PaperStatementsAD.paper_greedySupport_isRowLower`
+- `PalomarCorpus.E257.PaperStatementsAD.paper_greedySupport_mem`
+- `PalomarCorpus.E257.PaperStatementsAD.paper_greedy_step`
+- `PalomarCorpus.E257.PaperStatementsAD.paper_isRowLower_unique`
+- `PalomarCorpus.E257.PaperStatementsAD.paper_isRowUpper_unique`
+- `PalomarCorpus.E257.PaperStatementsAD.paper_mersenne_channel_survival`
+- `PalomarCorpus.E257.PaperStatementsAD.paper_mersenne_channel_survival_of_coprime_scale`
+- `PalomarCorpus.E257.PaperStatementsAD.paper_rowLower_existsUnique`
+- `PalomarCorpus.E257.PaperStatementsAD.paper_rowPulse_eq_indicators`
+- `PalomarCorpus.E257.PaperStatementsAD.paper_rowQuotient_eq_weightSum`
+- `PalomarCorpus.E257.PaperStatementsAD.paper_rowTarget_eq`
+- `PalomarCorpus.E257.PaperStatementsAD.paper_rowUpper_existsUnique`
+- `PalomarCorpus.E257.PaperStatementsAD.paper_rowWeight_eq_floor`
+- `PalomarCorpus.E257.PaperStatementsAD.two_mem_of_exact_localMersenneQuotient`
+- `PalomarCorpus.E257.PaperStatementsAD.upperHalfChannel_survivorProduct_dvd_den_of_one_le`
+- `PalomarCorpus.E257.PaperStatementsAD.upperHalfMersenneProduct_lower_bound`
+
+### ExternalVerification257PaperStatementsAE
+
+- `PalomarCorpus.E257.PaperStatementsAE.affineBinaryOrbit_mod_twoPow_eq`
+- `PalomarCorpus.E257.PaperStatementsAE.balancedPulse_endpoint_fanout`
+- `PalomarCorpus.E257.PaperStatementsAE.balancedPulse_label_card_lower_bound`
+- `PalomarCorpus.E257.PaperStatementsAE.balancedPulse_no_autonomous_decoder`
+- `PalomarCorpus.E257.PaperStatementsAE.balancedPulse_weighted_pair`
+- `PalomarCorpus.E257.PaperStatementsAE.binaryCoeffSeries_rational_iff_exists_temperedBinaryOrbit`
+- `PalomarCorpus.E257.PaperStatementsAE.binaryCoeffTail_div_pow_tendsto_zero`
+- `PalomarCorpus.E257.PaperStatementsAE.binaryCoeffTail_le`
+- `PalomarCorpus.E257.PaperStatementsAE.binaryCoeffTail_nonneg`
+- `PalomarCorpus.E257.PaperStatementsAE.not_irrational_binaryCoeffSeries_iff_exists_temperedBinaryOrbit`
+- `PalomarCorpus.E257.PaperStatementsAE.temperedBinaryOrbit_eq_scaledTail`
+
+### ExternalVerification257PaperStatementsAF
+
+- `PalomarCorpus.E257.PaperStatementsAF.card_divisors_le_divisorSubpowerConst_mul_rpow`
+- `PalomarCorpus.E257.PaperStatementsAF.card_divisors_pow_le_divisorSubpowerConst_pow_mul`
+- `PalomarCorpus.E257.PaperStatementsAF.divInt_le_nextDyadic_iff_excess_nonpos`
+- `PalomarCorpus.E257.PaperStatementsAF.dyadicResidual_denominator_sandwich`
+
+### ExternalVerification257PaperStatementsAG
+
+- `PalomarCorpus.E257.PaperStatementsAG.coprime_base_den_finiteErdosSum`
+- `PalomarCorpus.E257.PaperStatementsAG.erdosSupportSeries_multiples_eq_pow_base_full_support`
+- `PalomarCorpus.E257.PaperStatementsAG.irrational_coeff_series_of_weighted_coeff_block_certificates`
+- `PalomarCorpus.E257.PaperStatementsAG.irrational_erdosSum_factorial_support`
+- `PalomarCorpus.E257.PaperStatementsAG.irrational_erdosSum_full_support`
+- `PalomarCorpus.E257.PaperStatementsAG.irrational_erdosSum_of_lcm_gap`
+- `PalomarCorpus.E257.PaperStatementsAG.irrational_erdosSum_two_pow_support`
+- `PalomarCorpus.E257.PaperStatementsAG.irrational_erdosSupportSeries_eventuallyPeriodic`
+- `PalomarCorpus.E257.PaperStatementsAG.irrational_erdosSupportSeries_multiples`
+- `PalomarCorpus.E257.PaperStatementsAG.irrational_erdosSupportSeries_odd`
+- `PalomarCorpus.E257.PaperStatementsAG.irrational_erdosSupportSeries_of_tail`
+- `PalomarCorpus.E257.PaperStatementsAG.irrational_erdosSupportSeries_pairwise_coprime`
+- `PalomarCorpus.E257.PaperStatementsAG.irrational_erdosSupportSeries_periodic`
+- `PalomarCorpus.E257.PaperStatementsAG.irrational_erdosSupportSeries_residueClass`
+- `PalomarCorpus.E257.PaperStatementsAG.irrational_erdosSupportSeries_tail_of_irrational`
+- `PalomarCorpus.E257.PaperStatementsAG.irrational_intWeightedErdosSeries_periodic_of_coeff_nonneg_of_frequently_ne_zero`
+- `PalomarCorpus.E257.PaperStatementsAG.irrational_intWeightedErdosSeries_periodic_of_coeff_nonpos_of_frequently_ne_zero`
+- `PalomarCorpus.E257.PaperStatementsAG.irrational_or_bpow_mul_eq_intCast_intWeightedErdosSeries_periodic`
+- `PalomarCorpus.E257.PaperStatementsAG.lcm_lt_den_finiteErdosSum`
+- `PalomarCorpus.E257.PaperStatementsAG.supportCoeff_le_card_divisors`
+- `PalomarCorpus.E257.PaperStatementsAG.supportCoeff_le_self`
+
+### ExternalVerification257PaperStatementsAH
+
+- `PalomarCorpus.E257.PaperStatementsAH.greedy_survives_of_mem_mersenneAchievementSet`
+- `PalomarCorpus.E257.PaperStatementsAH.halfTwoChannelCap_lt_mersenneTail`
+- `PalomarCorpus.E257.PaperStatementsAH.half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite`
+- `PalomarCorpus.E257.PaperStatementsAH.half_mem_mersenneAchievementSet_of_secondChannelSeparation`
+- `PalomarCorpus.E257.PaperStatementsAH.half_mem_mersenneAchievementSet_of_secondChannelSeparationRat_from_seven`
+- `PalomarCorpus.E257.PaperStatementsAH.half_mem_mersenneAchievementSet_of_skipped_dyadicCap`
+- `PalomarCorpus.E257.PaperStatementsAH.half_mem_mersenneAchievementSet_of_skipped_twoChannelCap`
+- `PalomarCorpus.E257.PaperStatementsAH.irrational_erdosBorweinMersenneConstant`
+- `PalomarCorpus.E257.PaperStatementsAH.mem_mersenneAchievementSet_iff_greedy_survival`
+- `PalomarCorpus.E257.PaperStatementsAH.mem_mersenneAchievementSet_of_greedySkippedSupport_infinite`
+- `PalomarCorpus.E257.PaperStatementsAH.mem_mersenneAchievementSet_of_greedy_survival`
+- `PalomarCorpus.E257.PaperStatementsAH.mersenneGap_pos`
+- `PalomarCorpus.E257.PaperStatementsAH.mersenneTail_eq_weight_add`
+- `PalomarCorpus.E257.PaperStatementsAH.mersenneTail_le_two_mul_weight`
+- `PalomarCorpus.E257.PaperStatementsAH.mersenneTail_lt_weight`
+- `PalomarCorpus.E257.PaperStatementsAH.two_mul_mersenneWeight_succ_lt`
+
+### ExternalVerification257PaperStatementsAI
+
+- `PalomarCorpus.E257.PaperStatementsAI.paper_forced_greedy_low_ranks`
+- `PalomarCorpus.E257.PaperStatementsAI.paper_forced_greedy_unique_support_and_criterion`
+- `PalomarCorpus.E257.PaperStatementsAI.paper_rung_finite_decision`
+
+### ExternalVerification257PaperStatementsAJ
+
+- `PalomarCorpus.E257.PaperStatementsAJ.tsum_moebius_div_two_pow_sub_one_eq_half`
+
+### ExternalVerification257PaperStatementsAK
+
+- `PalomarCorpus.E257.PaperStatementsAK.localMersenneHalfTarget_lower_word_eq_greedy_and_remainder_eq`
+- `PalomarCorpus.E257.PaperStatementsAK.localMersenneWeightsFrom_gapDominates`
+- `PalomarCorpus.E257.PaperStatementsAK.localMersenneWeights_gapDominates_even`
+- `PalomarCorpus.E257.PaperStatementsAK.localMersenneWeights_gapDominates_odd`
+- `PalomarCorpus.E257.PaperStatementsAK.paper_floor_quotient_geometric_sum`
+- `PalomarCorpus.E257.PaperStatementsAK.paper_next_floor_quotient`
+- `PalomarCorpus.E257.PaperStatementsAK.paper_next_floor_quotient_no_fixed_point`
+- `PalomarCorpus.E257.PaperStatementsAK.paper_next_quotient_sum`
+- `PalomarCorpus.E257.PaperStatementsAK.paper_repair_integer_eq_endpoint_defect`
+- `PalomarCorpus.E257.PaperStatementsAK.paper_signed_endpoint_defect_succ`
+- `PalomarCorpus.E257.PaperStatementsAK.paper_signed_endpoint_recurrence`
+- `PalomarCorpus.E257.PaperStatementsAK.paper_successor_remainders_fourteen_through_thirtyone`
+- `PalomarCorpus.E257.PaperStatementsAK.remainder_lt_gap_iff_eq_integerGreedyBits`
+
+### ExternalVerification257PaperStatementsAL
+
+- `PalomarCorpus.E257.PaperStatementsAL.finite_boolSupport_ne_half`
+- `PalomarCorpus.E257.PaperStatementsAL.half_of_cofinal_absolute_carry`
+- `PalomarCorpus.E257.PaperStatementsAL.infinite_support_half_of_mobiusCenteredHalfCarry_sqrtBound`
+- `PalomarCorpus.E257.PaperStatementsAL.integerHalfCarry_eq_scaled_residual_add_tail`
+- `PalomarCorpus.E257.PaperStatementsAL.paper_coeffTail_le_index_add_two`
+- `PalomarCorpus.E257.PaperStatementsAL.paper_cofiniteRightTail_ne_zero_centeredEndpoint`
+- `PalomarCorpus.E257.PaperStatementsAL.paper_relaxed_constant_six_every_depth`
+- `PalomarCorpus.E257.PaperStatementsAL.paper_square_depth_terminal_bound`
+- `PalomarCorpus.E257.PaperStatementsAL.paper_terminal_strip_forces_half_membership`
+- `PalomarCorpus.E257.PaperStatementsAL.paper_zero_run_le_eps_logb`
+- `PalomarCorpus.E257.PaperStatementsAL.paper_zero_run_le_of_mem`
+- `PalomarCorpus.E257.PaperStatementsAL.square_depth_witness`
+- `PalomarCorpus.E257.PaperStatementsAL.supportCoeff_boundaryPair_unitDrop_at_double`
+- `PalomarCorpus.E257.PaperStatementsAL.supportCoeff_extend_true_eq_false_add_one_at_double`
+- `PalomarCorpus.E257.PaperStatementsAL.supportCoeff_insert_divisor`
+
+### ExternalVerification257PaperStatementsAM
+
+- `PalomarCorpus.E257.PaperStatementsAM.abs_supportValue_sub_le_mersenneTail`
+- `PalomarCorpus.E257.PaperStatementsAM.approx_orbit_induction`
+- `PalomarCorpus.E257.PaperStatementsAM.certificate_of_existsFatalHalfGap`
+- `PalomarCorpus.E257.PaperStatementsAM.certifiedTailBound_cast`
+- `PalomarCorpus.E257.PaperStatementsAM.certifiedWordValue_cast`
+- `PalomarCorpus.E257.PaperStatementsAM.cofinalPositiveHalfGreedySkips_iff_half_mem`
+- `PalomarCorpus.E257.PaperStatementsAM.depth_prefix_interval_disjoint`
+- `PalomarCorpus.E257.PaperStatementsAM.existsFatalHalfGap_iff_exists_certificate`
+- `PalomarCorpus.E257.PaperStatementsAM.existsFatalHalfGap_of_certificate`
+- `PalomarCorpus.E257.PaperStatementsAM.fatal_absorbing`
+- `PalomarCorpus.E257.PaperStatementsAM.fatal_gap_endpoint_bounds`
+- `PalomarCorpus.E257.PaperStatementsAM.fatal_gap_excludes_every_representation`
+- `PalomarCorpus.E257.PaperStatementsAM.fatal_gap_within_prefix_interval`
+- `PalomarCorpus.E257.PaperStatementsAM.greedyHalf_mem_nextMersenneDyadicSliver_iff_excess`
+- `PalomarCorpus.E257.PaperStatementsAM.greedy_half_infinite_of_cofinalStripReturn`
+- `PalomarCorpus.E257.PaperStatementsAM.greedy_half_infinite_of_mobiusCenteredHalfCarry_sqrtBound`
+- `PalomarCorpus.E257.PaperStatementsAM.greedy_half_infinite_of_mobiusCenteredHalfCarry_upperBound`
+- `PalomarCorpus.E257.PaperStatementsAM.greedy_half_of_cofinal_upper_carry`
+- `PalomarCorpus.E257.PaperStatementsAM.greedy_mobiusCenteredHalfCarry_nonneg`
+- `PalomarCorpus.E257.PaperStatementsAM.half_mem_iff_every_actual_skip_survives`
+- `PalomarCorpus.E257.PaperStatementsAM.half_mem_mersenneAchievementSet_iff_no_existsFatalHalfGap`
+- `PalomarCorpus.E257.PaperStatementsAM.half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips`
+- `PalomarCorpus.E257.PaperStatementsAM.half_mem_mersenneAchievementSet_or_exists_fatal_gap`
+- `PalomarCorpus.E257.PaperStatementsAM.half_ne_coe_finset_add_mersenneTail`
+- `PalomarCorpus.E257.PaperStatementsAM.irrational_mersenneTail`
+- `PalomarCorpus.E257.PaperStatementsAM.mersenneGap_le`
+- `PalomarCorpus.E257.PaperStatementsAM.mersenneGap_tail_le`
+- `PalomarCorpus.E257.PaperStatementsAM.mersenneTail_eq_sum_add`
+- `PalomarCorpus.E257.PaperStatementsAM.mersenne_constant_decimal`
+- `PalomarCorpus.E257.PaperStatementsAM.mersenne_topology_quantitative`
+- `PalomarCorpus.E257.PaperStatementsAM.paper_achievement_geometry`
+- `PalomarCorpus.E257.PaperStatementsAM.paper_achievement_set_topology`
+- `PalomarCorpus.E257.PaperStatementsAM.paper_cpgs_equiv`
+- `PalomarCorpus.E257.PaperStatementsAM.paper_effective_horizon_test`
+- `PalomarCorpus.E257.PaperStatementsAM.paper_eta_eq_coeffTail_sub_carry`
+- `PalomarCorpus.E257.PaperStatementsAM.paper_eta_hasRationalValue`
+- `PalomarCorpus.E257.PaperStatementsAM.paper_eventual_nonnegative_margin_equivalence`
+- `PalomarCorpus.E257.PaperStatementsAM.paper_exact_mass_threshold`
+- `PalomarCorpus.E257.PaperStatementsAM.paper_frozen_margin_limit_pos_iff`
+- `PalomarCorpus.E257.PaperStatementsAM.paper_frozen_margin_normalised_monotone`
+- `PalomarCorpus.E257.PaperStatementsAM.paper_frozen_margin_normalised_tendsto`
+- `PalomarCorpus.E257.PaperStatementsAM.paper_frozen_margin_normalised_value`
+- `PalomarCorpus.E257.PaperStatementsAM.paper_greedyHalfRemainder_ne_dyadicCap`
+- `PalomarCorpus.E257.PaperStatementsAM.paper_greedy_survival`
+- `PalomarCorpus.E257.PaperStatementsAM.paper_halfGreedyPrefixSupport_eq_greedy_inter_Icc`
+- `PalomarCorpus.E257.PaperStatementsAM.paper_no_ties`
+- `PalomarCorpus.E257.PaperStatementsAM.paper_no_ties_skip`
+- `PalomarCorpus.E257.PaperStatementsAM.paper_no_ties_take`
+- `PalomarCorpus.E257.PaperStatementsAM.paper_one_orbit_stability`
+- `PalomarCorpus.E257.PaperStatementsAM.paper_one_sided_finite_decision_boundary`
+- `PalomarCorpus.E257.PaperStatementsAM.paper_sharp_fatal_gap`
+- `PalomarCorpus.E257.PaperStatementsAM.paper_sharp_skip_safe_actual_tail`
+- `PalomarCorpus.E257.PaperStatementsAM.paper_terminal_strip_equiv`
+- `PalomarCorpus.E257.PaperStatementsAM.paper_volume_supportedMersenneAchievementSet_dichotomy`
+- `PalomarCorpus.E257.PaperStatementsAM.perfect_supportedMersenneAchievementSet`
+- `PalomarCorpus.E257.PaperStatementsAM.positiveMersenneSupportValue_coe_finset_ne_half`
+- `PalomarCorpus.E257.PaperStatementsAM.row_constant_eq_tail`
+- `PalomarCorpus.E257.PaperStatementsAM.scaledMersenneWeight_cast`
+- `PalomarCorpus.E257.PaperStatementsAM.straddle_all_depths_iff_mem`
+- `PalomarCorpus.E257.PaperStatementsAM.straddle_limiting_support_inputs`
+- `PalomarCorpus.E257.PaperStatementsAM.summable_mersenneGap_shift`
+- `PalomarCorpus.E257.PaperStatementsAM.summable_mersenneGap_succ`
+- `PalomarCorpus.E257.PaperStatementsAM.supportedMersenneDigitValue_injective`
+- `PalomarCorpus.E257.PaperStatementsAM.tailGreedyRemainder_mersenne`
+- `PalomarCorpus.E257.PaperStatementsAM.tendsto_mersenneGap_tail_zero`
+- `PalomarCorpus.E257.PaperStatementsAM.volume_supportedMersenneAchievementSet_dichotomy`
+- `PalomarCorpus.E257.PaperStatementsAM.volume_supportedMersenneAchievementSet_eq_zero_of_compl_infinite`
+
+### ExternalVerification257PaperStatementsAN
+
+- `PalomarCorpus.E257.PaperStatementsAN.paper_endpoint_term_counts_divisors`
+- `PalomarCorpus.E257.PaperStatementsAN.paper_finiteErdosSum_den_odd`
+- `PalomarCorpus.E257.PaperStatementsAN.paper_finite_support_series_ne_half`
+- `PalomarCorpus.E257.PaperStatementsAN.paper_half_representing_support_is_infinite`
+- `PalomarCorpus.E257.PaperStatementsAN.supportCoeff_insert_eq_add_indicator`
+
+### ExternalVerification257PaperStatementsAO
+
+- `PalomarCorpus.E257.PaperStatementsAO.mixedPrimePowerLayerTwo_supportCoeffInt`
+- `PalomarCorpus.E257.PaperStatementsAO.mixedPrimePowerLayerTwo_twelve_fixture`
+
+### ExternalVerification257PaperStatementsAP
+
+- `PalomarCorpus.E257.PaperStatementsAP.lcmHeight_scaledMobiusShadow_den_exact`
+
+### ExternalVerification257PaperStatementsAQ
+
+- `PalomarCorpus.E257.PaperStatementsAQ.half_lt_tsum_negativeMobius`
+- `PalomarCorpus.E257.PaperStatementsAQ.paper_finite_support_and_onesided_certificate`
+- `PalomarCorpus.E257.PaperStatementsAQ.paper_first_positiveMobius_tail_term`
+- `PalomarCorpus.E257.PaperStatementsAQ.paper_mobius_support_overshoots_half`
+- `PalomarCorpus.E257.PaperStatementsAQ.tsum_negativeMobius_eq_half_add_positiveMobiusTail`
+
+### ExternalVerification257PaperStatementsAR
+
+- `PalomarCorpus.E257.PaperStatementsAR.abs_exactLocalMersenneRowValue_sub_half_le`
+- `PalomarCorpus.E257.PaperStatementsAR.abs_localMersennePrefixValue_sub_half_le`
+- `PalomarCorpus.E257.PaperStatementsAR.cofinalExactLocalMersenneHalfRows_of_criticalQuotientSupply`
+- `PalomarCorpus.E257.PaperStatementsAR.cofinalExactLocalMersenneHalfRows_of_positiveHalfGreedySkips`
+- `PalomarCorpus.E257.PaperStatementsAR.eq_halfGreedyPrefixSupport_of_critical_crossing`
+- `PalomarCorpus.E257.PaperStatementsAR.eventually_seamSupport_agrees`
+- `PalomarCorpus.E257.PaperStatementsAR.exactLocalMersenneHalfRow_of_positiveHalfGreedySkip`
+- `PalomarCorpus.E257.PaperStatementsAR.exactLocalMersenneHalfRow_two_mul_sub_two_of_skippedCoreSharpCapacity`
+- `PalomarCorpus.E257.PaperStatementsAR.exists_exactRowStrictUpperExtension_two_mul_sub_one_of_exact_below`
+- `PalomarCorpus.E257.PaperStatementsAR.exists_exactRowStrictUpperFill_of_skippedCoreSharpCapacity`
+- `PalomarCorpus.E257.PaperStatementsAR.exists_first_localMersenne_crossing`
+- `PalomarCorpus.E257.PaperStatementsAR.greedyHalfFrozenMargin_fullShell_eq_neg_seamRemainder_of_alignment`
+- `PalomarCorpus.E257.PaperStatementsAR.halfGreedySkippedCriticalQuotientSupply_of_precriticalSuffix`
+- `PalomarCorpus.E257.PaperStatementsAR.halfGreedySkippedPrecriticalSuffixSupply_iff_preTake`
+- `PalomarCorpus.E257.PaperStatementsAR.halfGreedy_precriticalSuffix_lt_iff_futureSkipCoverage`
+- `PalomarCorpus.E257.PaperStatementsAR.halfGreedy_precriticalSuffix_lt_of_future_skip_after_takenBlock`
+- `PalomarCorpus.E257.PaperStatementsAR.halfGreedy_precriticalSuffix_lt_of_next_skip`
+- `PalomarCorpus.E257.PaperStatementsAR.half_lt_upper_competitor_of_eventually_right`
+- `PalomarCorpus.E257.PaperStatementsAR.half_mem_mersenneAchievementSet_iff_cofinalTerminalFalse`
+- `PalomarCorpus.E257.PaperStatementsAR.half_mem_mersenneAchievementSet_iff_exists_unboundedSkippedRanksAlong`
+- `PalomarCorpus.E257.PaperStatementsAR.half_mem_mersenneAchievementSet_iff_not_seamGreedyEventuallyRight`
+- `PalomarCorpus.E257.PaperStatementsAR.half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse`
+- `PalomarCorpus.E257.PaperStatementsAR.half_mem_mersenneAchievementSet_of_cofinalExactLocalRows`
+- `PalomarCorpus.E257.PaperStatementsAR.half_mem_mersenneAchievementSet_of_criticalQuotientSupply`
+- `PalomarCorpus.E257.PaperStatementsAR.half_mem_mersenneAchievementSet_of_skippedFullShellNonnegative`
+- `PalomarCorpus.E257.PaperStatementsAR.half_mem_mersenneAchievementSet_of_skippedSeamEscape`
+- `PalomarCorpus.E257.PaperStatementsAR.localBinarySuffix_two_mul_sub_one_lt_upperWindow_of_exact_below`
+- `PalomarCorpus.E257.PaperStatementsAR.localBinarySuffix_two_mul_sub_two_lt_criticalCapacity_iff`
+- `PalomarCorpus.E257.PaperStatementsAR.localBinarySuffix_two_mul_sub_two_lt_criticalCapacity_iff_geometric`
+- `PalomarCorpus.E257.PaperStatementsAR.localBinarySuffix_two_mul_sub_two_lt_criticalCapacity_iff_geometricCore`
+- `PalomarCorpus.E257.PaperStatementsAR.paper_both_cofinal_statements_iff_half_membership`
+- `PalomarCorpus.E257.PaperStatementsAR.paper_capacity_band_exclusion`
+- `PalomarCorpus.E257.PaperStatementsAR.paper_critical_crossing_support_is_greedy_prefix`
+- `PalomarCorpus.E257.PaperStatementsAR.paper_exact_row_from_skipped_prefix`
+- `PalomarCorpus.E257.PaperStatementsAR.paper_finite_row_value_ne_half`
+- `PalomarCorpus.E257.PaperStatementsAR.paper_fractional_mass_bound_not_necessary`
+- `PalomarCorpus.E257.PaperStatementsAR.paper_fractional_mass_bound_suffices_for_sharp_capacity`
+- `PalomarCorpus.E257.PaperStatementsAR.paper_real_quotient_core`
+- `PalomarCorpus.E257.PaperStatementsAR.paper_real_quotient_margins`
+- `PalomarCorpus.E257.PaperStatementsAR.paper_seam_escape_forces_remainder_band`
+- `PalomarCorpus.E257.PaperStatementsAR.paper_seam_escape_implies_full_shell_nonnegative`
+- `PalomarCorpus.E257.PaperStatementsAR.paper_seam_escape_implies_half_membership`
+- `PalomarCorpus.E257.PaperStatementsAR.precriticalCrossingTax_of_futureThreshold`
+- `PalomarCorpus.E257.PaperStatementsAR.prefix_add_mersenneTail_lt_half_of_eventually_right`
+- `PalomarCorpus.E257.PaperStatementsAR.six_membership_conditions`
+- `PalomarCorpus.E257.PaperStatementsAR.skippedCoreCriticalQuotientSupply_iff_halfGreedySkipped`
+- `PalomarCorpus.E257.PaperStatementsAR.skippedSeamAlignmentZero_iff_skippedFullShellNonnegative`
+- `PalomarCorpus.E257.PaperStatementsAR.skipped_fullShell_neg_iff_alignment_and_seamRemainder_pos`
+- `PalomarCorpus.E257.PaperStatementsAR.unboundedTerminalFalse_iff_greedyMersenneSkippedSupport_infinite`
+
+### ExternalVerification257PaperStatementsAS
+
+- `PalomarCorpus.E257.PaperStatementsAS.paper_seam_limit_unconditional`
+- `PalomarCorpus.E257.PaperStatementsAS.paper_sharper_additive_estimate`
+- `PalomarCorpus.E257.PaperStatementsAS.paper_skipped_core_recycling_witness_bounded`
+- `PalomarCorpus.E257.PaperStatementsAS.paper_unconditional_bound_one_extra_bit`
+- `PalomarCorpus.E257.PaperStatementsAS.tendsto_seamGreedyFiniteValue_greedyHalfTargetValue`
+- `PalomarCorpus.E257.PaperStatementsAS.tendsto_seamGreedyNormalizedRemainder`
+
+### ExternalVerification257PaperStatementsAT
+
+- `PalomarCorpus.E257.PaperStatementsAT.binaryCoeffTail_supportCoeff_coe_finset_le_card`
+- `PalomarCorpus.E257.PaperStatementsAT.mobiusCenteredHalfCarry_add_two`
+- `PalomarCorpus.E257.PaperStatementsAT.mobiusCenteredHalfCarry_nonneg_of_supportSeries_lt_half`
+- `PalomarCorpus.E257.PaperStatementsAT.paper_exact_row_integerHalfCarry_eq_one`
+- `PalomarCorpus.E257.PaperStatementsAT.paper_integerHalfCarry_eq_two_pow_sub_localPrefixQuotient`
+- `PalomarCorpus.E257.PaperStatementsAT.paper_mobiusCenteredHalfCarry_add_two`
+- `PalomarCorpus.E257.PaperStatementsAT.paper_terminal_strip_witness_six`
+
+### ExternalVerification257PaperStatementsAU
+
+- `PalomarCorpus.E257.PaperStatementsAU.binaryCoeffTail_supportCoeff_le_two_sqrt_add_four`
+- `PalomarCorpus.E257.PaperStatementsAU.erdosSupportSeries_rational_iff_exists_temperedCarry`
+- `PalomarCorpus.E257.PaperStatementsAU.erdosSupportSeries_two_eq_binaryCoeffSeries`
+- `PalomarCorpus.E257.PaperStatementsAU.mobius_supportCoeff_boolean`
+- `PalomarCorpus.E257.PaperStatementsAU.mobius_supportCoeff_eq_one_iff`
+- `PalomarCorpus.E257.PaperStatementsAU.moebius_mul_supportCoeffAF`
+
+### ExternalVerification257PaperStatementsAV
+
+- `PalomarCorpus.E257.PaperStatementsAV.dyadic_support_fraction_reciprocalMass_diverges_or_gt_one`
+- `PalomarCorpus.E257.PaperStatementsAV.exists_unbounded_shifted_odd_tail_nat_state_of_support_fraction`
+- `PalomarCorpus.E257.PaperStatementsAV.irrational_erdosSupportSeries_of_summable_reciprocal`
+- `PalomarCorpus.E257.PaperStatementsAV.one_add_mul_card_le_two_mul_shifted_state`
+- `PalomarCorpus.E257.PaperStatementsAV.one_lt_reciprocalMass_of_dyadic_support_fraction_of_two_pos_mem`
+- `PalomarCorpus.E257.PaperStatementsAV.shifted_state_unbounded_of_infinite_support`
+
+### ExternalVerification257PaperStatementsAW
+
+- `PalomarCorpus.E257.PaperStatementsAW.half_mem_mersenneAchievementSet_iff_no_lastHalfGreedySkip`
+- `PalomarCorpus.E257.PaperStatementsAW.isLastHalfGreedySkip_iff_skip_and_fatal`
+
+### ExternalVerification257PaperStatementsAX
+
+- `PalomarCorpus.E257.PaperStatementsAX.largestSkipLateAt_fourteen`
+- `PalomarCorpus.E257.PaperStatementsAX.mem_seamGreedySupport_iff_scaled`
+- `PalomarCorpus.E257.PaperStatementsAX.paper_exact_row_double_or_recycle`
+- `PalomarCorpus.E257.PaperStatementsAX.paper_exact_row_example_six_and_eleven`
+- `PalomarCorpus.E257.PaperStatementsAX.paper_returning_endpoint_may_fail_to_grow`
+
+### ExternalVerification257PaperStatementsAY
+
+- `PalomarCorpus.E257.PaperStatementsAY.one_div_twenty_one_mem_iff_not_fatalAlignedBranch`
+- `PalomarCorpus.E257.PaperStatementsAY.twentyOneFatalAlignedBranch_eventually_affine_supercapacity`
+- `PalomarCorpus.E257.PaperStatementsAY.twentyOneFatalAlignedBranch_eventually_strict_supercapacity`
+
+### ExternalVerification257PaperStatementsAZ
+
+- `PalomarCorpus.E257.PaperStatementsAZ.one_div_twenty_one_mem_mersenneAchievementSet_of_cofinalGreedyDecay`
+
+### ExternalVerification257PaperStatementsBA
+
+- `PalomarCorpus.E257.PaperStatementsBA.twentyOneCofinalEvenQuotientGreedyDecay_of_closedRows`
+
+### ExternalVerification257PaperStatementsBB
+
+- `PalomarCorpus.E257.PaperStatementsBB.paper_general_repair_criteria`
+
+### ExternalVerification257PaperStatementsBC
+
+- `PalomarCorpus.E257.PaperStatementsBC.finitePrimeWeighted_fixedBase_hereditary`
+- `PalomarCorpus.E257.PaperStatementsBC.irrational_residueClass_positive_support`
+- `PalomarCorpus.E257.PaperStatementsBC.paper_terminalhalf`
+
+### ExternalVerification257PaperStatementsBD
+
+- `PalomarCorpus.E257.PaperStatementsBD.balancedPulseCoeff_injective`
+- `PalomarCorpus.E257.PaperStatementsBD.four_le_halfStripBound`
+- `PalomarCorpus.E257.PaperStatementsBD.paper_balanced_pulse_fanout_is_radius_succ`
+- `PalomarCorpus.E257.PaperStatementsBD.paper_balanced_pulse_fanout_unbounded_corrected`
+- `PalomarCorpus.E257.PaperStatementsBD.paper_pulse_family_finite_state_card`
+- `PalomarCorpus.E257.PaperStatementsBD.paper_pulse_family_no_autonomous_decoder`
+
+### ExternalVerification257PaperStatementsBE
+
+- `PalomarCorpus.E257.PaperStatementsBE.paper_carry_survivor_extinction`
+- `PalomarCorpus.E257.PaperStatementsBE.paper_critical_dyadic_band_index_eq_top_of_le_two`
+- `PalomarCorpus.E257.PaperStatementsBE.paper_critical_dyadic_band_index_unique`
+- `PalomarCorpus.E257.PaperStatementsBE.paper_critical_dyadic_boundary_is_smallest`
+- `PalomarCorpus.E257.PaperStatementsBE.paper_dyadic_band_escape_iff_single_test`
+- `PalomarCorpus.E257.PaperStatementsBE.paper_periodLcm_is_prefix_lcm`
+
+### ExternalVerification257PaperStatementsBF
+
+- `PalomarCorpus.E257.PaperStatementsBF.paper_squarefree_support_engine_ceiling`
+
+### ExternalVerification257PaperStatementsBG
+
+- `PalomarCorpus.E257.PaperStatementsBG.seamScaledRem_eq_tailGreedyRemainder`
+
 ### ExternalVerification257PositiveSkipEquivalence
 
 - `PalomarCorpus.E257.PositiveSkipEquivalence.cofinalPositiveHalfGreedySkips_iff_half_mem`
@@ -657,6 +1841,15 @@ is not a publication entry.
 - `PalomarCorpus.E269.IntegralBranchPinning.surviving_window_orbit_eq_true_state`
 - `PalomarCorpus.E269.IntegralBranchPinning.trueNormalizedState_eq_telescope`
 - `PalomarCorpus.E269.IntegralBranchPinning.trueNormalizedState_pinning`
+
+### ExternalVerification269PaperStatementsX
+
+- `PalomarCorpus.E269.PaperStatementsX.two_prime_sums_transcendental`
+- `PalomarCorpus.E269.PaperStatementsX.two_prime_transcendence`
+
+### ExternalVerification269PaperStatementsY
+
+- `PalomarCorpus.E269.PaperStatementsY.transcendental_heckeValue`
 
 ### ExternalVerification269ThreePrimeStructure
 

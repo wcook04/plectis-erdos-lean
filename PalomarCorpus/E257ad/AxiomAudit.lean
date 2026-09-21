@@ -1,0 +1,34 @@
+import Solutions.PalomarCorpus.E257ad
+
+#print axioms PalomarCorpus.E257.PaperStatementsAD.channelProduct_coprime_mobiusNumerator_of_one_le
+#print axioms PalomarCorpus.E257.PaperStatementsAD.exists_boolean_word_of_lt_two_pow
+#print axioms PalomarCorpus.E257.PaperStatementsAD.lcmHeight_scaledMobiusShadow_den_lower_bound
+#print axioms PalomarCorpus.E257.PaperStatementsAD.localMersenneQuotient_eq_geometric
+#print axioms PalomarCorpus.E257.PaperStatementsAD.localMersenneQuotient_eq_two_pow_sub_of_half_lt
+#print axioms PalomarCorpus.E257.PaperStatementsAD.localPrefixQuotient_succ
+#print axioms PalomarCorpus.E257.PaperStatementsAD.paperA_eq_mobiusNumerator
+#print axioms PalomarCorpus.E257.PaperStatementsAD.paperB_eq_baseMobiusShadow
+#print axioms PalomarCorpus.E257.PaperStatementsAD.paperB_eq_divInt_paperA
+#print axioms PalomarCorpus.E257.PaperStatementsAD.paper_channel_factor_gcd_eq_one
+#print axioms PalomarCorpus.E257.PaperStatementsAD.paper_channel_factors_pairwise_coprime
+#print axioms PalomarCorpus.E257.PaperStatementsAD.paper_consecutive_not_both_divisible
+#print axioms PalomarCorpus.E257.PaperStatementsAD.paper_dynamics
+#print axioms PalomarCorpus.E257.PaperStatementsAD.paper_finite_sum_inv_odd_den_odd
+#print axioms PalomarCorpus.E257.PaperStatementsAD.paper_finite_sum_inv_odd_ne_half
+#print axioms PalomarCorpus.E257.PaperStatementsAD.paper_greedySupport_greedy_rule
+#print axioms PalomarCorpus.E257.PaperStatementsAD.paper_greedySupport_isRowLower
+#print axioms PalomarCorpus.E257.PaperStatementsAD.paper_greedySupport_mem
+#print axioms PalomarCorpus.E257.PaperStatementsAD.paper_greedy_step
+#print axioms PalomarCorpus.E257.PaperStatementsAD.paper_isRowLower_unique
+#print axioms PalomarCorpus.E257.PaperStatementsAD.paper_isRowUpper_unique
+#print axioms PalomarCorpus.E257.PaperStatementsAD.paper_mersenne_channel_survival
+#print axioms PalomarCorpus.E257.PaperStatementsAD.paper_mersenne_channel_survival_of_coprime_scale
+#print axioms PalomarCorpus.E257.PaperStatementsAD.paper_rowLower_existsUnique
+#print axioms PalomarCorpus.E257.PaperStatementsAD.paper_rowPulse_eq_indicators
+#print axioms PalomarCorpus.E257.PaperStatementsAD.paper_rowQuotient_eq_weightSum
+#print axioms PalomarCorpus.E257.PaperStatementsAD.paper_rowTarget_eq
+#print axioms PalomarCorpus.E257.PaperStatementsAD.paper_rowUpper_existsUnique
+#print axioms PalomarCorpus.E257.PaperStatementsAD.paper_rowWeight_eq_floor
+#print axioms PalomarCorpus.E257.PaperStatementsAD.two_mem_of_exact_localMersenneQuotient
+#print axioms PalomarCorpus.E257.PaperStatementsAD.upperHalfChannel_survivorProduct_dvd_den_of_one_le
+#print axioms PalomarCorpus.E257.PaperStatementsAD.upperHalfMersenneProduct_lower_bound

@@ -1,0 +1,4 @@
+import Solutions.PalomarCorpus.E249as
+
+#print axioms PalomarCorpus.E249.PaperStatementsAS.cyclotomic_dvd_primeJump_new_fibre
+#print axioms PalomarCorpus.E249.PaperStatementsAS.cyclotomic_dvd_primeJump_old_fibre

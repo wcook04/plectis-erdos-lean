@@ -1,0 +1,13 @@
+{
+  "challenge_module": "PalomarCorpus.E257ab.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257ab",
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStatementsAB.relationInvariantLinearChannels_det_eq_zero"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

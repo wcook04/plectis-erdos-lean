@@ -1,0 +1,19 @@
+{
+  "challenge_module": "PalomarCorpus.E249aw.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E249aw",
+  "theorem_names": [
+    "PalomarCorpus.E249.PaperStatementsAW.certificate_sound",
+    "PalomarCorpus.E249.PaperStatementsAW.exact_series",
+    "PalomarCorpus.E249.PaperStatementsAW.generic_tail_period",
+    "PalomarCorpus.E249.PaperStatementsAW.scaled_difference",
+    "PalomarCorpus.E249.PaperStatementsAW.scaled_tail_split",
+    "PalomarCorpus.E249.PaperStatementsAW.truncation_error_bound",
+    "PalomarCorpus.E249.PaperStatementsAW.value_cast"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

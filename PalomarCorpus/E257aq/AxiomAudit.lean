@@ -1,0 +1,7 @@
+import Solutions.PalomarCorpus.E257aq
+
+#print axioms PalomarCorpus.E257.PaperStatementsAQ.half_lt_tsum_negativeMobius
+#print axioms PalomarCorpus.E257.PaperStatementsAQ.paper_finite_support_and_onesided_certificate
+#print axioms PalomarCorpus.E257.PaperStatementsAQ.paper_first_positiveMobius_tail_term
+#print axioms PalomarCorpus.E257.PaperStatementsAQ.paper_mobius_support_overshoots_half
+#print axioms PalomarCorpus.E257.PaperStatementsAQ.tsum_negativeMobius_eq_half_add_positiveMobiusTail
