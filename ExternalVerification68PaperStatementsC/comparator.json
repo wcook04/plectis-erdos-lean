@@ -1,0 +1,18 @@
+{
+  "challenge_module": "ExternalVerification68PaperStatementsC.Challenge",
+  "solution_module": "Solutions.ExternalVerification68PaperStatementsC",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification68PaperStatementsC.supported_breakpoint_escape",
+    "Erdos249257.ExternalVerification68PaperStatementsC.supported_first_band_cancellation",
+    "Erdos249257.ExternalVerification68PaperStatementsC.supported_integral_normal_form",
+    "Erdos249257.ExternalVerification68PaperStatementsC.supported_quotient_band",
+    "Erdos249257.ExternalVerification68PaperStatementsC.uniform_family_boundary",
+    "Erdos249257.ExternalVerification68PaperStatementsC.uniform_family_members"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -460,3 +460,15 @@ globs = ["ExternalVerification269FixedStartResidue.+"]
 [[lean_lib]]
 name = "ExternalVerification68FactorialGapBounds"
 globs = ["ExternalVerification68FactorialGapBounds.+"]
+
+[[lean_lib]]
+name = "ExternalVerification68PaperStatementsA"
+globs = ["ExternalVerification68PaperStatementsA.+"]
+
+[[lean_lib]]
+name = "ExternalVerification68PaperStatementsB"
+globs = ["ExternalVerification68PaperStatementsB.+"]
+
+[[lean_lib]]
+name = "ExternalVerification68PaperStatementsC"
+globs = ["ExternalVerification68PaperStatementsC.+"]

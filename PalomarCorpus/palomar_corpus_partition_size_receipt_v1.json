@@ -1,9 +1,9 @@
 {
   "schema": "palomar_corpus_size_receipt_v1",
-  "generated_at": "2026-09-20T22:45:42Z",
+  "generated_at": "2026-09-21T11:47:19Z",
   "public_root": ".",
   "path_base": "repository_root",
-  "git_head": "b3e6f0c32c348232fa28e7169bbed1d08e1d0b0d",
+  "git_head": "a1b3e6120ef3607ebf3bf8c1f3a5b812bbe35e77",
   "selected_families": [
     "ExternalVerification1041CriticalGeometry",
     "ExternalVerification1041CriticalValueMean",
@@ -105,12 +105,15 @@
     "ExternalVerification68MomentIdeal",
     "ExternalVerification68MovingFactorScaleSplit",
     "ExternalVerification68MultiplicativeSuccessorRigidity",
+    "ExternalVerification68PaperStatementsA",
+    "ExternalVerification68PaperStatementsB",
+    "ExternalVerification68PaperStatementsC",
     "ExternalVerification68PrimePole",
     "ExternalVerification68PrimeUnitTranslator",
     "ExternalVerification68ResidualIntegerClass",
     "ExternalVerification68StrictSuccessorCarry"
   ],
-  "selected_theorem_count": 366,
+  "selected_theorem_count": 388,
   "measurement": {
     "challenge_lines": 990,
     "challenge_bytes": 79441,
@@ -222,7 +225,7 @@
       "windowDiscrepancy",
       "windowForcing"
     ],
-    "problem_count": 8
+    "problem_count": 11
   },
   "stop_rule": "If a problem-level Challenge is over_hard_limit, do not submit, split entries, or drop selected theorems."
 }

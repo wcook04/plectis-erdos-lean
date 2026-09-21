@@ -1,0 +1,13 @@
+import Solutions.PalomarCorpus.E68a
+
+#print axioms PalomarCorpus.E68.PaperStatementsA.carry_characterisation
+#print axioms PalomarCorpus.E68.PaperStatementsA.cofinal_first_prime_occurrences
+#print axioms PalomarCorpus.E68.PaperStatementsA.companion_orbit
+#print axioms PalomarCorpus.E68.PaperStatementsA.companion_orbit_boundary
+#print axioms PalomarCorpus.E68.PaperStatementsA.divisor_channel_coordinates
+#print axioms PalomarCorpus.E68.PaperStatementsA.finite_channel_moment_certificate
+#print axioms PalomarCorpus.E68.PaperStatementsA.finite_channel_moment_certificate_eq
+#print axioms PalomarCorpus.E68.PaperStatementsA.global_complementary_criterion_nat
+#print axioms PalomarCorpus.E68.PaperStatementsA.global_complementary_criterion_prime
+#print axioms PalomarCorpus.E68.PaperStatementsA.lower_interval_criterion
+#print axioms PalomarCorpus.E68.PaperStatementsA.maximal_prime_power_survival

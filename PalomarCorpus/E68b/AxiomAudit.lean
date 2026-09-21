@@ -1,0 +1,7 @@
+import Solutions.PalomarCorpus.E68b
+
+#print axioms PalomarCorpus.E68.PaperStatementsB.prime_channel_corrector
+#print axioms PalomarCorpus.E68.PaperStatementsB.radius_no_eventual_ratio_upper
+#print axioms PalomarCorpus.E68.PaperStatementsB.radius_not_littleO
+#print axioms PalomarCorpus.E68.PaperStatementsB.square_subsequence_radius
+#print axioms PalomarCorpus.E68.PaperStatementsB.strict_successor_characterisation

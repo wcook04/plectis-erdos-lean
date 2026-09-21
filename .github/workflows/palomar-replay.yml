@@ -2,13 +2,21 @@
 # SPDX-License-Identifier: Apache-2.0
 name: Palomar Comparator replay
 
-# Replays Palomar's mechanical verification for the eight problem-level
-# publication entries under PalomarCorpus/E*/comparator.json with the same
-# pinned Comparator, lean4export, landrun and NanoDa revisions that the
-# PalomarSubmission verifier records (read from its submission.yml on
-# 2026-09-13). A green run here is our own evidence that the entries will pass
-# Palomar's mechanical stage; it is not a Palomar verdict, review, or
-# registration. All third-party actions are pinned by full commit SHA.
+# Replays Palomar's mechanical verification for every problem-level publication
+# entry under PalomarCorpus/E*/comparator.json with the same pinned Comparator,
+# lean4export, landrun and NanoDa revisions that the PalomarSubmission verifier
+# records (read from its submission.yml on 2026-09-13). A green run here is our
+# own evidence that the entries will pass Palomar's mechanical stage; it is not a
+# Palomar verdict, review, or registration. All third-party actions are pinned by
+# full commit SHA.
+#
+# The entry roster is discovered from the tree, so a band entry (E257a, E68a, ...)
+# is replayed the moment it exists, and one job runs per entry. One serial job
+# took 68 minutes for 366 theorems against a 350-minute ceiling; with the ported
+# exact endpoints and band entries a serial job would not fit, and a per-entry job
+# also builds only its own closure and keeps its verdict, log and receipt separate.
+# Each job writes a durable receipt JSON so a consumer can read the evidence
+# instead of transcribing it from logs.
 on:
   workflow_dispatch:
   push:
@@ -26,30 +34,25 @@ on:
 permissions:
   contents: read
 
+env:
+  COMPARATOR_REV: 575674928e239f5bc452aab72d1dd7b0f1326494
+  LEAN4EXPORT_REV: a3e35a584f59b390667db7269cd37fca8575e4bf
+  LANDRUN_REV: 811cfff51ceaf3d9843708aa6d22e9b84ccac8b4
+  NANODA_REV: 68d5ca9db226849b41a6fff59d796ff19d0a8840
+  # PalomarSubmission commit whose scripts/core_notation_audit.lean the render
+  # stage ran on this repository's E257 submission (run 34786515414).
+  RENDERER_REV: ef2fa1eadcb246c2346ddba39b52eaa53d4bb763
+
 jobs:
-  replay:
+  discover:
     runs-on: ubuntu-latest
-    timeout-minutes: 350
-    env:
-      COMPARATOR_REV: 575674928e239f5bc452aab72d1dd7b0f1326494
-      LEAN4EXPORT_REV: a3e35a584f59b390667db7269cd37fca8575e4bf
-      LANDRUN_REV: 811cfff51ceaf3d9843708aa6d22e9b84ccac8b4
-      NANODA_REV: 68d5ca9db226849b41a6fff59d796ff19d0a8840
-      # PalomarSubmission commit whose scripts/core_notation_audit.lean the render
-      # stage ran on this repository's E257 submission (run 34786515414).
-      RENDERER_REV: ef2fa1eadcb246c2346ddba39b52eaa53d4bb763
+    timeout-minutes: 10
+    outputs:
+      entries: ${{ steps.inventory.outputs.entries }}
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
-      - uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
-        with:
-          use-mathlib-cache: auto
-          build: false
-          test: false
-          lint: false
-      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
-        with:
-          go-version: '1.24'
       - name: Check the publication inventory and Challenge limits
+        id: inventory
         run: |
           set -euo pipefail
           python3 - <<'PY'
@@ -57,7 +60,7 @@ jobs:
           from pathlib import Path
           problems = (68, 243, 249, 251, 257, 269, 1041, 1049)
           # One Erdos problem is one entry. The submission slate's granularity_rule also
-          # allows a band entry (E269b, E269c, ...) when a concatenated Challenge would
+          # allows a band entry (E257a, E68a, ...) when a concatenated Challenge would
           # approach the 1000-line ceiling. Bands are optional and never replace a base
           # entry: the eight base entries stay mandatory and every directory present must
           # be a base or a band, so a stray directory still fails.
@@ -78,14 +81,37 @@ jobs:
               assert cfg["solution_module"] == f"Solutions.PalomarCorpus.{name}", entry
               assert cfg["theorem_names"] and set(cfg["permitted_axioms"]) <= {"propext", "Quot.sound", "Classical.choice"}, entry
               print(f"{name}: {len(cfg['theorem_names'])} theorems, {len(challenge)} bytes")
-          Path(os.environ["RUNNER_TEMP"], "palomar_entries.txt").write_text("\n".join(found) + "\n")
-          with open(os.environ["GITHUB_ENV"], "a") as handle:
-              handle.write(f"PALOMAR_ENTRIES={' '.join(found)}\n")
+          with open(os.environ["GITHUB_OUTPUT"], "a") as handle:
+              handle.write("entries=" + json.dumps(found) + "\n")
           PY
-      - name: Build the eight Challenges against Mathlib only
+
+  replay:
+    needs: discover
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    strategy:
+      fail-fast: false
+      matrix:
+        entry: ${{ fromJSON(needs.discover.outputs.entries) }}
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+      - uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
+        with:
+          use-mathlib-cache: auto
+          build: false
+          test: false
+          lint: false
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version: '1.24'
+      - name: Build this entry's Challenge against Mathlib only
         env:
           LEAN_NUM_THREADS: "2"
-        run: lake build PalomarCorpus
+        run: lake build "PalomarCorpus.${{ matrix.entry }}.Challenge"
+      - name: Build this entry's Solution
+        env:
+          LEAN_NUM_THREADS: "2"
+        run: lake build "Solutions.PalomarCorpus.${{ matrix.entry }}"
       - name: Build the pinned Comparator toolchain
         id: tools
         run: |
@@ -114,8 +140,10 @@ jobs:
           (cd "$RUNNER_TEMP/nanoda" && cargo build --release --locked --bin nanoda_bin)
           test -x "$RUNNER_TEMP/nanoda/target/release/nanoda_bin"
           echo "comparator_lean_toolchain=$(tr -d '\r\n' < "$RUNNER_TEMP/comparator/lean-toolchain")" >> "$GITHUB_OUTPUT"
-      - name: Run Comparator on each publication entry
+      - name: Run Comparator on this publication entry
         id: comparator
+        env:
+          ENTRY: ${{ matrix.entry }}
         run: |
           set +e
           export COMPARATOR_LANDRUN="$RUNNER_TEMP/landrun"
@@ -150,33 +178,39 @@ jobs:
               return 125
             fi
           }
-          failures=0
-          for e in $(cat "$RUNNER_TEMP/palomar_entries.txt"); do
-            run_comparator "PalomarCorpus/$e/comparator.json" > "artifacts/$e.log" 2>&1
-            process_rc=$?
-            rc=$process_rc
-            echo "$e process_exit=$process_rc"
-            grep -v '^Exporting' "artifacts/$e.log" | tail -n 20
-            # A green exit must carry both independent kernel verdicts, as Palomar's
-            # protected configuration forces NanoDa; a run that skipped a kernel is not green.
-            if [[ "$rc" -eq 0 ]] && ! grep -q '^nanoda kernel accepts the solution' "artifacts/$e.log"; then
-              echo "$e: exit 0 without a NanoDa acceptance line"; rc=90
-            fi
-            if [[ "$rc" -eq 0 ]] && ! grep -q '^Lean default kernel accepts the solution' "artifacts/$e.log"; then
-              echo "$e: exit 0 without a Lean kernel acceptance line"; rc=91
-            fi
-            # The per-entry verdict is published only after every guard has run, so a
-            # consumer reading exit_E<n> sees the same result the failure count uses;
-            # the raw process exit is kept separately as diagnostic evidence.
-            echo "$e exit=$rc"
-            echo "exit_$e=$rc" >> "$GITHUB_OUTPUT"
-            echo "process_exit_$e=$process_rc" >> "$GITHUB_OUTPUT"
-            [[ "$rc" -eq 0 ]] || failures=$((failures + 1))
-          done
-          echo "failures=$failures" >> "$GITHUB_OUTPUT"
+          e="$ENTRY"
+          run_comparator "PalomarCorpus/$e/comparator.json" > "artifacts/$e.log" 2>&1
+          process_rc=$?
+          rc=$process_rc
+          echo "$e process_exit=$process_rc"
+          grep -v '^Exporting' "artifacts/$e.log" | tail -n 20
+          # A green exit must carry both independent kernel verdicts, as Palomar's
+          # protected configuration forces NanoDa; a run that skipped a kernel is not green.
+          nanoda_line=false
+          lean_line=false
+          grep -q '^nanoda kernel accepts the solution' "artifacts/$e.log" && nanoda_line=true
+          grep -q '^Lean default kernel accepts the solution' "artifacts/$e.log" && lean_line=true
+          if [[ "$rc" -eq 0 && "$nanoda_line" != true ]]; then
+            echo "$e: exit 0 without a NanoDa acceptance line"; rc=90
+          fi
+          if [[ "$rc" -eq 0 && "$lean_line" != true ]]; then
+            echo "$e: exit 0 without a Lean kernel acceptance line"; rc=91
+          fi
+          # The verdict is published only after every guard has run, so a consumer
+          # reading exit sees the same result the failure count uses; the raw process
+          # exit is kept separately as diagnostic evidence.
+          echo "$e exit=$rc"
+          {
+            echo "exit=$rc"
+            echo "process_exit=$process_rc"
+            echo "nanoda_acceptance=$nanoda_line"
+            echo "lean_acceptance=$lean_line"
+          } >> "$GITHUB_OUTPUT"
           exit 0
-      - name: Replay Palomar's core-notation audit (render stage) on each entry
+      - name: Replay Palomar's core-notation audit (render stage) on this entry
         id: render_audit
+        env:
+          ENTRY: ${{ matrix.entry }}
         # Palomar renders an accepted Challenge before its automated review. The render
         # stage runs scripts/core_notation_audit.lean from PalomarSubmission at the
         # promoted renderer commit; the audit copies every constant reachable from a
@@ -188,26 +222,137 @@ jobs:
           mkdir -p artifacts
           curl --fail --silent --show-error -o "$RUNNER_TEMP/core_notation_audit.lean" \
             "https://raw.githubusercontent.com/PalomarRegistry/PalomarSubmission/$RENDERER_REV/scripts/core_notation_audit.lean" \
-            || { echo "render audit source unavailable at $RENDERER_REV"; exit 0; }
+            || { echo "render audit source unavailable at $RENDERER_REV"; echo "render_audit_exit=unavailable" >> "$GITHUB_OUTPUT"; exit 0; }
+          e="$ENTRY"
           echo "renderer_rev=$RENDERER_REV" > artifacts/render-audit-summary.txt
-          for e in $(cat "$RUNNER_TEMP/palomar_entries.txt"); do
-            cfg="PalomarCorpus/$e/comparator.json"
-            module=$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["challenge_module"])' "$cfg")
-            names=$(python3 -c 'import json,sys; print(" ".join("theorem " + t for t in json.load(open(sys.argv[1]))["theorem_names"]))' "$cfg")
-            timeout 20m lake env lean --run "$RUNNER_TEMP/core_notation_audit.lean" "$module" $names \
-              > "artifacts/render-audit-$e.log" 2>&1
-            rc=$?
-            echo "$e render_audit_exit=$rc" | tee -a artifacts/render-audit-summary.txt
-            [[ "$rc" -eq 0 ]] || head -c 600 "artifacts/render-audit-$e.log"
-            echo "render_audit_$e=$rc" >> "$GITHUB_OUTPUT"
-          done
+          cfg="PalomarCorpus/$e/comparator.json"
+          module=$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["challenge_module"])' "$cfg")
+          names=$(python3 -c 'import json,sys; print(" ".join("theorem " + t for t in json.load(open(sys.argv[1]))["theorem_names"]))' "$cfg")
+          timeout 20m lake env lean --run "$RUNNER_TEMP/core_notation_audit.lean" "$module" $names \
+            > "artifacts/render-audit-$e.log" 2>&1
+          rc=$?
+          echo "$e render_audit_exit=$rc" | tee -a artifacts/render-audit-summary.txt
+          [[ "$rc" -eq 0 ]] || head -c 600 "artifacts/render-audit-$e.log"
+          echo "render_audit_exit=$rc" >> "$GITHUB_OUTPUT"
           exit 0
+      - name: Write the durable replay receipt
+        if: always()
+        env:
+          ENTRY: ${{ matrix.entry }}
+          SANDBOX_MODE: ${{ steps.comparator.outputs.sandbox_mode }}
+          REPLAY_EXIT: ${{ steps.comparator.outputs.exit }}
+          REPLAY_PROCESS_EXIT: ${{ steps.comparator.outputs.process_exit }}
+          NANODA_ACCEPTANCE: ${{ steps.comparator.outputs.nanoda_acceptance }}
+          LEAN_ACCEPTANCE: ${{ steps.comparator.outputs.lean_acceptance }}
+          RENDER_AUDIT_EXIT: ${{ steps.render_audit.outputs.render_audit_exit }}
+          COMPARATOR_LEAN_TOOLCHAIN: ${{ steps.tools.outputs.comparator_lean_toolchain }}
+        # The receipt is the evidence surface a consumer copies. It recomputes the three
+        # entry digests at run time rather than trusting a recorded value, so a receipt
+        # can never describe a different tree from the one that was replayed.
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts
+          python3 - <<'PY'
+          import hashlib, json, os, time
+          from pathlib import Path
+          entry = os.environ["ENTRY"]
+          entry_dir = Path("PalomarCorpus") / entry
+          config = json.loads((entry_dir / "comparator.json").read_text())
+          def digest(name):
+              path = entry_dir / name
+              return hashlib.sha256(path.read_bytes()).hexdigest() if path.is_file() else None
+          def as_int(value):
+              try:
+                  return int(value)
+              except (TypeError, ValueError):
+                  return None
+          receipt = {
+              "schema": "palomar_replay_receipt_v1",
+              "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+              "entry": entry,
+              "github": {
+                  "sha": os.environ.get("GITHUB_SHA"),
+                  "ref": os.environ.get("GITHUB_REF"),
+                  "repository": os.environ.get("GITHUB_REPOSITORY"),
+                  "run_id": os.environ.get("GITHUB_RUN_ID"),
+                  "run_attempt": os.environ.get("GITHUB_RUN_ATTEMPT"),
+                  "workflow": os.environ.get("GITHUB_WORKFLOW"),
+              },
+              "lean_toolchain": Path("lean-toolchain").read_text().strip(),
+              "comparator_lean_toolchain": os.environ.get("COMPARATOR_LEAN_TOOLCHAIN") or None,
+              "tool_revisions": {
+                  "comparator": os.environ.get("COMPARATOR_REV"),
+                  "lean4export": os.environ.get("LEAN4EXPORT_REV"),
+                  "landrun": os.environ.get("LANDRUN_REV"),
+                  "nanoda": os.environ.get("NANODA_REV"),
+                  "renderer": os.environ.get("RENDERER_REV"),
+              },
+              "challenge_module": config.get("challenge_module"),
+              "solution_module": config.get("solution_module"),
+              "theorem_count": len(config.get("theorem_names") or []),
+              "theorem_names": config.get("theorem_names") or [],
+              "permitted_axioms": config.get("permitted_axioms") or [],
+              "entry_digests": {
+                  name: digest(name)
+                  for name in ("Challenge.lean", "comparator.json", "formalization.yaml")
+              },
+              "sandbox_mode": os.environ.get("SANDBOX_MODE"),
+              "exit": as_int(os.environ.get("REPLAY_EXIT")),
+              "process_exit": as_int(os.environ.get("REPLAY_PROCESS_EXIT")),
+              "kernel_acceptance": {
+                  "lean_default": os.environ.get("LEAN_ACCEPTANCE") == "true",
+                  "nanoda": os.environ.get("NANODA_ACCEPTANCE") == "true",
+              },
+              "render_audit_exit": as_int(os.environ.get("RENDER_AUDIT_EXIT")),
+              "not_established": [
+                  "Palomar mechanical verification",
+                  "Palomar editorial review",
+                  "Palomar registration",
+              ],
+          }
+          Path("artifacts", f"receipt-{entry}.json").write_text(
+              json.dumps(receipt, indent=2) + "\n", encoding="utf-8"
+          )
+          print(json.dumps({k: receipt[k] for k in ("entry", "exit", "sandbox_mode", "theorem_count", "entry_digests")}, indent=2))
+          PY
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
-          name: palomar-comparator-replay
+          name: palomar-comparator-replay-${{ matrix.entry }}
           path: artifacts/
-      - name: Enforce eight green Comparator replays
+      - name: Enforce a green Comparator replay for this entry
         run: |
           test '${{ steps.comparator.outputs.sandbox_mode }}' != unavailable
-          test '${{ steps.comparator.outputs.failures }}' = 0
+          test '${{ steps.comparator.outputs.exit }}' = 0
+
+  aggregate:
+    needs: [discover, replay]
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      # Every per-entry job publishes its own verdict, log and receipt artifact
+      # (`palomar-comparator-replay-<entry>`). This job is the single required check:
+      # a matrix result is `success` only when every entry job passed its own
+      # sandbox and both-kernel gates, so one failed entry fails the replay.
+      - name: Enforce a green replay for every discovered entry
+        env:
+          ENTRIES: ${{ needs.discover.outputs.entries }}
+          DISCOVER_RESULT: ${{ needs.discover.result }}
+          REPLAY_RESULT: ${{ needs.replay.result }}
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json, os, sys
+          expected = json.loads(os.environ.get("ENTRIES") or "[]")
+          discover = os.environ.get("DISCOVER_RESULT")
+          replay = os.environ.get("REPLAY_RESULT")
+          print(f"discovered entries: {expected}")
+          print(f"discover={discover} replay={replay}")
+          problems = (68, 243, 249, 251, 257, 269, 1041, 1049)
+          missing = [f"E{n}" for n in problems if f"E{n}" not in expected]
+          if discover != "success" or missing or replay != "success":
+              print(f"missing base entries: {missing}")
+              sys.exit(1)
+          print(f"all {len(expected)} entries replayed green")
+          PY

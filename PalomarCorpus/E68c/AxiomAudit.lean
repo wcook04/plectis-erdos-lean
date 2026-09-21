@@ -1,0 +1,8 @@
+import Solutions.PalomarCorpus.E68c
+
+#print axioms PalomarCorpus.E68.PaperStatementsC.supported_breakpoint_escape
+#print axioms PalomarCorpus.E68.PaperStatementsC.supported_first_band_cancellation
+#print axioms PalomarCorpus.E68.PaperStatementsC.supported_integral_normal_form
+#print axioms PalomarCorpus.E68.PaperStatementsC.supported_quotient_band
+#print axioms PalomarCorpus.E68.PaperStatementsC.uniform_family_boundary
+#print axioms PalomarCorpus.E68.PaperStatementsC.uniform_family_members
