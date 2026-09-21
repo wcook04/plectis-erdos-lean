@@ -16,6 +16,10 @@ name = "Erdos257PeriodNoncollapse"
 
 [[lean_lib]]
 name = "ErdosProblems"
+# The launch root plus the 21 Sep source-port aggregator. The aggregator is a second root so the
+# ported paper-bound source modules resolve as a build target without widening the launch closure;
+# it is deliberately not a default target, so CI's target list is unchanged.
+globs = ["ErdosProblems", "ErdosProblems.SourcePort20260921"]
 
 [[lean_lib]]
 name = "ExternalVerification68ChannelRadius"
