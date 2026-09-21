@@ -51,12 +51,15 @@ env:
 
 jobs:
   discover:
-    runs-on: ubuntu-latest
+    # Every job pins its image rather than tracking `ubuntu-latest`, so the October
+    # 2026 migration of that label cannot change the verification environment without
+    # a commit here. Run 35643815458 already ran on ubuntu-24.04.
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     outputs:
       entries: ${{ steps.inventory.outputs.entries }}
     steps:
-      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Check the publication inventory and Challenge limits
         id: inventory
         run: |
@@ -87,20 +90,32 @@ jobs:
               assert cfg["solution_module"] == f"Solutions.PalomarCorpus.{name}", entry
               assert cfg["theorem_names"] and set(cfg["permitted_axioms"]) <= {"propext", "Quot.sound", "Classical.choice"}, entry
               print(f"{name}: {len(cfg['theorem_names'])} theorems, {len(challenge)} bytes")
+          # One entry is one matrix job and GitHub caps a matrix at 256 jobs. At 144
+          # entries (run 35643815458) there is headroom, but the roster grows with the
+          # corpus, and a matrix that overflows the cap fails the run without naming the
+          # cause. Fail here instead, with the count, while the roster is still readable.
+          MATRIX_CAP = 256
+          assert len(found) <= MATRIX_CAP, (
+              f"{len(found)} entries exceeds the {MATRIX_CAP}-job matrix cap; "
+              "shard the replay job before adding more entries"
+          )
+          if len(found) > 200:
+              print(f"::warning::{len(found)} entries is within {MATRIX_CAP - len(found)} "
+                    "of the matrix cap; the replay job needs sharding")
           with open(os.environ["GITHUB_OUTPUT"], "a") as handle:
               handle.write("entries=" + json.dumps(found) + "\n")
           PY
 
   replay:
     needs: discover
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 180
     strategy:
       fail-fast: false
       matrix:
         entry: ${{ fromJSON(needs.discover.outputs.entries) }}
     steps:
-      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Install elan with retries
         # GitHub release downloads return 5xx under load; one 504 on the elan tarball
         # turned four entries red on 21 Sep 2026 with nothing wrong in the entries.
@@ -126,6 +141,14 @@ jobs:
       - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
         with:
           go-version: '1.24'
+          # Go is here only to `go build` landrun from a clone made later, in
+          # $RUNNER_TEMP, by the toolchain step. This repository has no Go module, so
+          # setup-go's default `cache: true` found no go.sum and printed
+          # "Restore cache failed: Dependencies file is not found ... Supported file
+          # pattern: go.mod" on all 144 jobs of run 35643815458. There is nothing here
+          # to cache and nothing to point `cache-dependency-path` at, so caching is off.
+          # Never add a go.mod to this repository to silence the warning.
+          cache: false
       - name: Build this entry's Challenge against Mathlib only
         env:
           LEAN_NUM_THREADS: "2"
@@ -360,11 +383,44 @@ jobs:
           )
           print(json.dumps({k: receipt[k] for k in ("entry", "exit", "sandbox_mode", "theorem_count", "entry_digests")}, indent=2))
           PY
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+      # Receipt delivery is retried once. On 21 Sep 2026 (run 35643815458) entry E243d
+      # compared green with both kernel acceptance lines, and the job still went red
+      # because `actions/upload-artifact` hit a non-retryable HTTP 403 at
+      # FinalizeArtifact. A transport fault on the evidence channel must not be read as
+      # a failed comparison. Note the guard semantics: under `continue-on-error`, the
+      # step's `conclusion` is reported as `success` while its `outcome` holds the real
+      # result, so every condition below reads `outcome`, never `conclusion`.
+      - name: Upload this entry's replay artifact
+        id: upload
         if: always()
+        continue-on-error: true
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: palomar-comparator-replay-${{ matrix.entry }}
           path: artifacts/
+      - name: Retry this entry's replay artifact upload once
+        id: upload_retry
+        if: always() && steps.upload.outcome == 'failure'
+        continue-on-error: true
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: palomar-comparator-replay-${{ matrix.entry }}
+          path: artifacts/
+          # The first attempt may have created the artifact before failing to finalise it.
+          overwrite: true
+      - name: Enforce that this entry's receipt was delivered
+        if: always()
+        env:
+          FIRST_OUTCOME: ${{ steps.upload.outcome }}
+          RETRY_OUTCOME: ${{ steps.upload_retry.outcome }}
+        run: |
+          set -euo pipefail
+          echo "upload outcome=${FIRST_OUTCOME:-unset} retry outcome=${RETRY_OUTCOME:-unset}"
+          if [[ "${FIRST_OUTCOME:-}" == success || "${RETRY_OUTCOME:-}" == success ]]; then
+            exit 0
+          fi
+          echo "both receipt uploads failed for ${{ matrix.entry }}; this entry has no durable evidence"
+          exit 1
       - name: Enforce a green Comparator replay for this entry
         run: |
           test '${{ steps.comparator.outputs.sandbox_mode }}' != unavailable
@@ -373,7 +429,7 @@ jobs:
   aggregate:
     needs: [discover, replay]
     if: always()
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
       # Every per-entry job publishes its own verdict, log and receipt artifact
