@@ -1,0 +1,4 @@
+import Solutions.PalomarCorpus.E251d
+
+#print axioms PalomarCorpus.E251.PaperStatementsD.signed_two_window_consequences
+#print axioms PalomarCorpus.E251.PaperStatementsD.signed_two_window_iff

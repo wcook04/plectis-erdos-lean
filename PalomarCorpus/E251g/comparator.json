@@ -1,0 +1,30 @@
+{
+  "challenge_module": "PalomarCorpus.E251g.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E251g",
+  "theorem_names": [
+    "PalomarCorpus.E251.PaperStatementsG.carryPartialSum_eq",
+    "PalomarCorpus.E251.PaperStatementsG.dyadicPartialSumQ_eq_start_add_differences",
+    "PalomarCorpus.E251.PaperStatementsG.infinite_prime_gap_identity",
+    "PalomarCorpus.E251.PaperStatementsG.irrational_realPrimeGapTail_zero_iff",
+    "PalomarCorpus.E251.PaperStatementsG.irrational_tsum_primeDyadicTerm_iff_primeGap",
+    "PalomarCorpus.E251.PaperStatementsG.irrationality_reformulation",
+    "PalomarCorpus.E251.PaperStatementsG.polynomial_countermodel",
+    "PalomarCorpus.E251.PaperStatementsG.prime0_dyadic_summation_by_parts",
+    "PalomarCorpus.E251.PaperStatementsG.prime_gaps_not_eventually_periodic",
+    "PalomarCorpus.E251.PaperStatementsG.rational_bounded_perturbation",
+    "PalomarCorpus.E251.PaperStatementsG.rational_small_pair_bundle",
+    "PalomarCorpus.E251.PaperStatementsG.rationality_classification",
+    "PalomarCorpus.E251.PaperStatementsG.realPrimeGapTail_eq_tsum_shifted_gaps",
+    "PalomarCorpus.E251.PaperStatementsG.realPrimeGapTail_recurrence",
+    "PalomarCorpus.E251.PaperStatementsG.realPrimeGapTail_zero",
+    "PalomarCorpus.E251.PaperStatementsG.real_signed_two_window",
+    "PalomarCorpus.E251.PaperStatementsG.real_small_pair_prime_endpoint",
+    "PalomarCorpus.E251.PaperStatementsG.tailShift_integral_totient_of_odd_den"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

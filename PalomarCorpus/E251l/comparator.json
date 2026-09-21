@@ -1,0 +1,13 @@
+{
+  "challenge_module": "PalomarCorpus.E251l.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E251l",
+  "theorem_names": [
+    "PalomarCorpus.E251.PaperStatementsL.actual_free_pair_criterion"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

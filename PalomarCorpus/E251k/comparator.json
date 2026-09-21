@@ -1,0 +1,13 @@
+{
+  "challenge_module": "PalomarCorpus.E251k.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E251k",
+  "theorem_names": [
+    "PalomarCorpus.E251.PaperStatementsK.sparse_nonconcentration"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,20 @@
+import Solutions.PalomarCorpus.E251g
+
+#print axioms PalomarCorpus.E251.PaperStatementsG.carryPartialSum_eq
+#print axioms PalomarCorpus.E251.PaperStatementsG.dyadicPartialSumQ_eq_start_add_differences
+#print axioms PalomarCorpus.E251.PaperStatementsG.infinite_prime_gap_identity
+#print axioms PalomarCorpus.E251.PaperStatementsG.irrational_realPrimeGapTail_zero_iff
+#print axioms PalomarCorpus.E251.PaperStatementsG.irrational_tsum_primeDyadicTerm_iff_primeGap
+#print axioms PalomarCorpus.E251.PaperStatementsG.irrationality_reformulation
+#print axioms PalomarCorpus.E251.PaperStatementsG.polynomial_countermodel
+#print axioms PalomarCorpus.E251.PaperStatementsG.prime0_dyadic_summation_by_parts
+#print axioms PalomarCorpus.E251.PaperStatementsG.prime_gaps_not_eventually_periodic
+#print axioms PalomarCorpus.E251.PaperStatementsG.rational_bounded_perturbation
+#print axioms PalomarCorpus.E251.PaperStatementsG.rational_small_pair_bundle
+#print axioms PalomarCorpus.E251.PaperStatementsG.rationality_classification
+#print axioms PalomarCorpus.E251.PaperStatementsG.realPrimeGapTail_eq_tsum_shifted_gaps
+#print axioms PalomarCorpus.E251.PaperStatementsG.realPrimeGapTail_recurrence
+#print axioms PalomarCorpus.E251.PaperStatementsG.realPrimeGapTail_zero
+#print axioms PalomarCorpus.E251.PaperStatementsG.real_signed_two_window
+#print axioms PalomarCorpus.E251.PaperStatementsG.real_small_pair_prime_endpoint
+#print axioms PalomarCorpus.E251.PaperStatementsG.tailShift_integral_totient_of_odd_den

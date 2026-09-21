@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification251PaperStatementsE.Challenge",
+  "solution_module": "Solutions.ExternalVerification251PaperStatementsE",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification251PaperStatementsE.bounded_recurring_values_countermodel"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

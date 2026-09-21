@@ -1,0 +1,3 @@
+import Solutions.PalomarCorpus.E251n
+
+#print axioms PalomarCorpus.E251.PaperStatementsN.cofinal_escape_of_finite_truncation

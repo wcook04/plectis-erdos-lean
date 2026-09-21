@@ -1,0 +1,3 @@
+import Solutions.PalomarCorpus.E251j
+
+#print axioms PalomarCorpus.E251.PaperStatementsJ.real_orbit_exact_den_and_shift

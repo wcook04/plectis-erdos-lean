@@ -1,0 +1,14 @@
+{
+  "challenge_module": "PalomarCorpus.E251d.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E251d",
+  "theorem_names": [
+    "PalomarCorpus.E251.PaperStatementsD.signed_two_window_consequences",
+    "PalomarCorpus.E251.PaperStatementsD.signed_two_window_iff"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

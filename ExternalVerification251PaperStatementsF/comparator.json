@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ExternalVerification251PaperStatementsF.Challenge",
+  "solution_module": "Solutions.ExternalVerification251PaperStatementsF",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification251PaperStatementsF.denominator_floor_decimal",
+    "Erdos249257.ExternalVerification251PaperStatementsF.finite_perturbation_stability"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

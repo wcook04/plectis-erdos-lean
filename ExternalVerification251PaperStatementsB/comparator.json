@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ExternalVerification251PaperStatementsB.Challenge",
+  "solution_module": "Solutions.ExternalVerification251PaperStatementsB",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification251PaperStatementsB.finite_separation_complete",
+    "Erdos249257.ExternalVerification251PaperStatementsB.one_tail_signed_certificate"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -4,7 +4,7 @@ Eight Palomar publication configurations at one repository and commit:
 `PalomarCorpus/E68`, `E243`, `E249`, `E251`, `E257`, `E269`, `E1041`, and `E1049`.
 A problem whose concatenated Challenge approaches the 1000-line ceiling is split at a
 band boundary into a sibling entry, which is checked exactly like its base entry and
-never replaces it: `PalomarCorpus/E68a`, `PalomarCorpus/E68b`, `PalomarCorpus/E68c`.
+never replaces it: `PalomarCorpus/E68a`, `PalomarCorpus/E68b`, `PalomarCorpus/E68c`, `PalomarCorpus/E251a`, `PalomarCorpus/E251b`, `PalomarCorpus/E251c`, `PalomarCorpus/E251d`, `PalomarCorpus/E251e`, `PalomarCorpus/E251f`, `PalomarCorpus/E251g`, `PalomarCorpus/E251j`, `PalomarCorpus/E251k`, `PalomarCorpus/E251l`, `PalomarCorpus/E251n`, `PalomarCorpus/E251o`, `PalomarCorpus/E251p`, `PalomarCorpus/E251q`, `PalomarCorpus/E251r`.
 
 Family `ExternalVerification*` modules remain internal regression inventory.
 Parent Erdős problems remain open. The superseded flat `PalomarCorpus/comparator.json`
@@ -12,7 +12,7 @@ is not a publication entry.
 
 ## Selected Comparator theorems
 
-388 independently restated theorems across 107 families, partitioned by problem.
+424 independently restated theorems across 122 families, partitioned by problem.
 
 ### ExternalVerification1041CriticalGeometry
 
@@ -392,6 +392,87 @@ is not a publication entry.
 - `PalomarCorpus.E251.LcmDiagonalCriterion.irrationalInitial_iff_nonintegral_on_schedule`
 - `PalomarCorpus.E251.LcmDiagonalCriterion.notIrrationalInitial_iff_exists_integral_positive_tailShift`
 - `PalomarCorpus.E251.LcmDiagonalCriterion.tailShiftIntegral_iff_orderOf_dvd`
+
+### ExternalVerification251PaperStatementsA
+
+- `PalomarCorpus.E251.PaperStatementsA.bounded_test_finite_coupling`
+- `PalomarCorpus.E251.PaperStatementsA.exists_logarithmic_recurring_values_countermodel`
+
+### ExternalVerification251PaperStatementsB
+
+- `PalomarCorpus.E251.PaperStatementsB.finite_separation_complete`
+- `PalomarCorpus.E251.PaperStatementsB.one_tail_signed_certificate`
+
+### ExternalVerification251PaperStatementsC
+
+- `PalomarCorpus.E251.PaperStatementsC.real_dyadic_orbit_eq_true_tail_iff`
+
+### ExternalVerification251PaperStatementsD
+
+- `PalomarCorpus.E251.PaperStatementsD.signed_two_window_consequences`
+- `PalomarCorpus.E251.PaperStatementsD.signed_two_window_iff`
+
+### ExternalVerification251PaperStatementsE
+
+- `PalomarCorpus.E251.PaperStatementsE.bounded_recurring_values_countermodel`
+
+### ExternalVerification251PaperStatementsF
+
+- `PalomarCorpus.E251.PaperStatementsF.denominator_floor_decimal`
+- `PalomarCorpus.E251.PaperStatementsF.finite_perturbation_stability`
+
+### ExternalVerification251PaperStatementsG
+
+- `PalomarCorpus.E251.PaperStatementsG.carryPartialSum_eq`
+- `PalomarCorpus.E251.PaperStatementsG.dyadicPartialSumQ_eq_start_add_differences`
+- `PalomarCorpus.E251.PaperStatementsG.infinite_prime_gap_identity`
+- `PalomarCorpus.E251.PaperStatementsG.irrational_realPrimeGapTail_zero_iff`
+- `PalomarCorpus.E251.PaperStatementsG.irrational_tsum_primeDyadicTerm_iff_primeGap`
+- `PalomarCorpus.E251.PaperStatementsG.irrationality_reformulation`
+- `PalomarCorpus.E251.PaperStatementsG.polynomial_countermodel`
+- `PalomarCorpus.E251.PaperStatementsG.prime0_dyadic_summation_by_parts`
+- `PalomarCorpus.E251.PaperStatementsG.prime_gaps_not_eventually_periodic`
+- `PalomarCorpus.E251.PaperStatementsG.rational_bounded_perturbation`
+- `PalomarCorpus.E251.PaperStatementsG.rational_small_pair_bundle`
+- `PalomarCorpus.E251.PaperStatementsG.rationality_classification`
+- `PalomarCorpus.E251.PaperStatementsG.realPrimeGapTail_eq_tsum_shifted_gaps`
+- `PalomarCorpus.E251.PaperStatementsG.realPrimeGapTail_recurrence`
+- `PalomarCorpus.E251.PaperStatementsG.realPrimeGapTail_zero`
+- `PalomarCorpus.E251.PaperStatementsG.real_signed_two_window`
+- `PalomarCorpus.E251.PaperStatementsG.real_small_pair_prime_endpoint`
+- `PalomarCorpus.E251.PaperStatementsG.tailShift_integral_totient_of_odd_den`
+
+### ExternalVerification251PaperStatementsJ
+
+- `PalomarCorpus.E251.PaperStatementsJ.real_orbit_exact_den_and_shift`
+
+### ExternalVerification251PaperStatementsK
+
+- `PalomarCorpus.E251.PaperStatementsK.sparse_nonconcentration`
+
+### ExternalVerification251PaperStatementsL
+
+- `PalomarCorpus.E251.PaperStatementsL.actual_free_pair_criterion`
+
+### ExternalVerification251PaperStatementsN
+
+- `PalomarCorpus.E251.PaperStatementsN.cofinal_escape_of_finite_truncation`
+
+### ExternalVerification251PaperStatementsO
+
+- `PalomarCorpus.E251.PaperStatementsO.explicit_remainder_certificate`
+
+### ExternalVerification251PaperStatementsP
+
+- `PalomarCorpus.E251.PaperStatementsP.finite_small_pair`
+
+### ExternalVerification251PaperStatementsQ
+
+- `PalomarCorpus.E251.PaperStatementsQ.irrational_prime_series_of_finite_truncation`
+
+### ExternalVerification251PaperStatementsR
+
+- `PalomarCorpus.E251.PaperStatementsR.shifted_count_bound`
 
 ### ExternalVerification251PolynomialShiftCountermodel
 

@@ -1,0 +1,13 @@
+{
+  "challenge_module": "PalomarCorpus.E251c.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E251c",
+  "theorem_names": [
+    "PalomarCorpus.E251.PaperStatementsC.real_dyadic_orbit_eq_true_tail_iff"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

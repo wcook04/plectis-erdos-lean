@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification251PaperStatementsJ.Challenge",
+  "solution_module": "Solutions.ExternalVerification251PaperStatementsJ",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification251PaperStatementsJ.real_orbit_exact_den_and_shift"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

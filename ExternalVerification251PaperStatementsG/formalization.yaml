@@ -1,0 +1,284 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: v0.4
+project:
+  name: 'Erdős #251: independent restatements of refereed paper-linked theorems'
+  description: >-
+    18 theorems of the substantive development for Erdős problem #251
+    restated against Mathlib alone and transported from the source declarations named
+    below. The substantive formalization lives in ErdosProblems.Erdos251.PaperCoreR7, ErdosProblems.Erdos251.PrimeGapDyadicTail, ErdosProblems.Erdos251.RealPrimeGapTail in this repository and at
+    public commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84 of https://github.com/wcook04/plectis-erdos. This entry is a comparison
+    interface over that development. 18 statements transport by direct term
+    application, which certifies definitional identity with the source statement;
+    0 transport through a tactic bridge, which certifies implication only. The
+    parent Erdős problem remains open.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - "11A25"
+  - "11B83"
+sources:
+- title: 'Erdős #251: paper-linked Lean development'
+  authors:
+  - Will Cook
+  id: https://github.com/wcook04/plectis-erdos
+  type: original-proof
+  relationship: other
+  note: >-
+    The source declarations this entry transports, at commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84.
+    Novelty is unassessed and the parent problem is not claimed as solved.
+  license: Apache-2.0
+  author_endorsement: participated
+- title: 'Erdős Problem #251'
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com/251
+  type: web discussion
+  relationship: background
+  note: The catalogue supplies the problem statement and references.
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+status:
+  scope: Independent restatements of 18 refereed declarations for Erdős problem #251.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 18
+  sorry_boundary: Only the trusted Challenge theorem bodies carry placeholders.
+  axiom_audit_status: pending fresh target-toolchain axiom audit
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  development_status: substantive
+  local_proof_provenance: ErdosProblems.Erdos251.PaperCoreR7, ErdosProblems.Erdos251.PrimeGapDyadicTail, ErdosProblems.Erdos251.RealPrimeGapTail in this repository, which is the same development published at https://github.com/wcook04/plectis-erdos commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+  canonical_claim_status: generated comparison interface over substantive Lean in this repository
+  main_results:
+  - declaration: Erdos249257.ExternalVerification251PaperStatementsG.infinite_prime_gap_identity
+    file: Solutions/ExternalVerification251PaperStatementsG.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification251PaperStatementsG/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification251PaperStatementsG.infinite_prime_gap_identity
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos251.PaperR7.infinite_prime_gap_identity
+    source_file: ErdosProblems/Erdos251/PaperCoreR7.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification251PaperStatementsG.irrationality_reformulation
+    file: Solutions/ExternalVerification251PaperStatementsG.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification251PaperStatementsG/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification251PaperStatementsG.irrationality_reformulation
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos251.PaperR7.irrationality_reformulation
+    source_file: ErdosProblems/Erdos251/PaperCoreR7.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification251PaperStatementsG.polynomial_countermodel
+    file: Solutions/ExternalVerification251PaperStatementsG.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification251PaperStatementsG/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification251PaperStatementsG.polynomial_countermodel
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos251.PaperR7.polynomial_countermodel
+    source_file: ErdosProblems/Erdos251/PaperCoreR7.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification251PaperStatementsG.prime_gaps_not_eventually_periodic
+    file: Solutions/ExternalVerification251PaperStatementsG.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification251PaperStatementsG/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification251PaperStatementsG.prime_gaps_not_eventually_periodic
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos251.PaperR7.prime_gaps_not_eventually_periodic
+    source_file: ErdosProblems/Erdos251/PaperCoreR7.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification251PaperStatementsG.rational_bounded_perturbation
+    file: Solutions/ExternalVerification251PaperStatementsG.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification251PaperStatementsG/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification251PaperStatementsG.rational_bounded_perturbation
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos251.PaperR7.rational_bounded_perturbation
+    source_file: ErdosProblems/Erdos251/PaperCoreR7.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification251PaperStatementsG.rational_small_pair_bundle
+    file: Solutions/ExternalVerification251PaperStatementsG.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification251PaperStatementsG/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification251PaperStatementsG.rational_small_pair_bundle
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos251.PaperR7.rational_small_pair_bundle
+    source_file: ErdosProblems/Erdos251/PaperCoreR7.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification251PaperStatementsG.rationality_classification
+    file: Solutions/ExternalVerification251PaperStatementsG.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification251PaperStatementsG/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification251PaperStatementsG.rationality_classification
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos251.PaperR7.rationality_classification
+    source_file: ErdosProblems/Erdos251/PaperCoreR7.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification251PaperStatementsG.real_signed_two_window
+    file: Solutions/ExternalVerification251PaperStatementsG.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification251PaperStatementsG/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification251PaperStatementsG.real_signed_two_window
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos251.PaperR7.real_signed_two_window
+    source_file: ErdosProblems/Erdos251/PaperCoreR7.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification251PaperStatementsG.real_small_pair_prime_endpoint
+    file: Solutions/ExternalVerification251PaperStatementsG.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification251PaperStatementsG/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification251PaperStatementsG.real_small_pair_prime_endpoint
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos251.PaperR7.real_small_pair_prime_endpoint
+    source_file: ErdosProblems/Erdos251/PaperCoreR7.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification251PaperStatementsG.carryPartialSum_eq
+    file: Solutions/ExternalVerification251PaperStatementsG.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification251PaperStatementsG/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification251PaperStatementsG.carryPartialSum_eq
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos251.carryPartialSum_eq
+    source_file: ErdosProblems/Erdos251/PrimeGapDyadicTail.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification251PaperStatementsG.dyadicPartialSumQ_eq_start_add_differences
+    file: Solutions/ExternalVerification251PaperStatementsG.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification251PaperStatementsG/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification251PaperStatementsG.dyadicPartialSumQ_eq_start_add_differences
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos251.dyadicPartialSumQ_eq_start_add_differences
+    source_file: ErdosProblems/Erdos251/PrimeGapDyadicTail.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification251PaperStatementsG.irrational_realPrimeGapTail_zero_iff
+    file: Solutions/ExternalVerification251PaperStatementsG.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification251PaperStatementsG/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification251PaperStatementsG.irrational_realPrimeGapTail_zero_iff
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos251.irrational_realPrimeGapTail_zero_iff
+    source_file: ErdosProblems/Erdos251/RealPrimeGapTail.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification251PaperStatementsG.irrational_tsum_primeDyadicTerm_iff_primeGap
+    file: Solutions/ExternalVerification251PaperStatementsG.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification251PaperStatementsG/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification251PaperStatementsG.irrational_tsum_primeDyadicTerm_iff_primeGap
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap
+    source_file: ErdosProblems/Erdos251/PrimeGapDyadicTail.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification251PaperStatementsG.prime0_dyadic_summation_by_parts
+    file: Solutions/ExternalVerification251PaperStatementsG.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification251PaperStatementsG/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification251PaperStatementsG.prime0_dyadic_summation_by_parts
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos251.prime0_dyadic_summation_by_parts
+    source_file: ErdosProblems/Erdos251/PrimeGapDyadicTail.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification251PaperStatementsG.realPrimeGapTail_eq_tsum_shifted_gaps
+    file: Solutions/ExternalVerification251PaperStatementsG.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification251PaperStatementsG/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification251PaperStatementsG.realPrimeGapTail_eq_tsum_shifted_gaps
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos251.realPrimeGapTail_eq_tsum_shifted_gaps
+    source_file: ErdosProblems/Erdos251/RealPrimeGapTail.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification251PaperStatementsG.realPrimeGapTail_recurrence
+    file: Solutions/ExternalVerification251PaperStatementsG.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification251PaperStatementsG/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification251PaperStatementsG.realPrimeGapTail_recurrence
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos251.realPrimeGapTail_recurrence
+    source_file: ErdosProblems/Erdos251/RealPrimeGapTail.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification251PaperStatementsG.realPrimeGapTail_zero
+    file: Solutions/ExternalVerification251PaperStatementsG.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification251PaperStatementsG/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification251PaperStatementsG.realPrimeGapTail_zero
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos251.realPrimeGapTail_zero
+    source_file: ErdosProblems/Erdos251/RealPrimeGapTail.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification251PaperStatementsG.tailShift_integral_totient_of_odd_den
+    file: Solutions/ExternalVerification251PaperStatementsG.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification251PaperStatementsG/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification251PaperStatementsG.tailShift_integral_totient_of_odd_den
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos251.tailShift_integral_totient_of_odd_den
+    source_file: ErdosProblems/Erdos251/PrimeGapDyadicTail.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+automation:
+  methods:
+  - method: agent
+    models:
+    - Anthropic Claude
+    framework: Lean 4 and Mathlib
+    tool_setup: Statement wrappers generated by tools/meta/formal_math/generate_statement_wrappers.py and elaborated before acceptance
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    Every statement was refereed against the paper in the coverage ledger before this
+    wrapper was generated. The transport proof is the fidelity evidence: a direct term
+    application certifies definitional identity with the refereed source statement.
+    No independent mathematical review outside the author is claimed.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

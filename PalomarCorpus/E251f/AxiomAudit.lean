@@ -1,0 +1,4 @@
+import Solutions.PalomarCorpus.E251f
+
+#print axioms PalomarCorpus.E251.PaperStatementsF.denominator_floor_decimal
+#print axioms PalomarCorpus.E251.PaperStatementsF.finite_perturbation_stability

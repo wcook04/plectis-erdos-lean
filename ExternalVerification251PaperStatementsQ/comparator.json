@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification251PaperStatementsQ.Challenge",
+  "solution_module": "Solutions.ExternalVerification251PaperStatementsQ",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification251PaperStatementsQ.irrational_prime_series_of_finite_truncation"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

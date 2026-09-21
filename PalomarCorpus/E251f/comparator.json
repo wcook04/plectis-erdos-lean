@@ -1,0 +1,14 @@
+{
+  "challenge_module": "PalomarCorpus.E251f.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E251f",
+  "theorem_names": [
+    "PalomarCorpus.E251.PaperStatementsF.denominator_floor_decimal",
+    "PalomarCorpus.E251.PaperStatementsF.finite_perturbation_stability"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ExternalVerification251PaperStatementsA.Challenge",
+  "solution_module": "Solutions.ExternalVerification251PaperStatementsA",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification251PaperStatementsA.bounded_test_finite_coupling",
+    "Erdos249257.ExternalVerification251PaperStatementsA.exists_logarithmic_recurring_values_countermodel"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

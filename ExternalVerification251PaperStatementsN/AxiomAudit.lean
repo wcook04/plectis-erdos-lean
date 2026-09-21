@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification251PaperStatementsN
+
+#print axioms Erdos249257.ExternalVerification251PaperStatementsN.cofinal_escape_of_finite_truncation

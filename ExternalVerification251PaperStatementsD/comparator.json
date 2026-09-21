@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ExternalVerification251PaperStatementsD.Challenge",
+  "solution_module": "Solutions.ExternalVerification251PaperStatementsD",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification251PaperStatementsD.signed_two_window_consequences",
+    "Erdos249257.ExternalVerification251PaperStatementsD.signed_two_window_iff"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

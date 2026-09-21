@@ -1,0 +1,3 @@
+import Solutions.PalomarCorpus.E251e
+
+#print axioms PalomarCorpus.E251.PaperStatementsE.bounded_recurring_values_countermodel
