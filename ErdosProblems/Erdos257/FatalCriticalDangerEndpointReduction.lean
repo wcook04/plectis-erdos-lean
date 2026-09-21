@@ -1,5 +1,7 @@
 import ErdosProblems.Erdos257.FatalBorrowMiddleScaleContradiction
 import Erdos257PeriodNoncollapse.HalfUpperResetCriticalBand
+import Erdos257PeriodNoncollapse.HalfCylinderMiddleCarryLowerBoundSupplement
+import Erdos257PeriodNoncollapse.HalfUpperResetCriticalBandSupplement
 
 /-!
 # Erdős #257: a critical danger is either early or endpoint-thin
