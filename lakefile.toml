@@ -11,6 +11,16 @@ name = "mathlib"
 scope = "leanprover-community"
 rev = "v4.30.0"
 
+# The shared machinery of the #249 and #257 programmes, copied verbatim from the paper repository
+# (`plectis-erdos`, `lean/Erdos249257`), where it is the library every downstream file imports. The
+# corpus used to carry its own copy of it under the `Erdos257PeriodNoncollapse` prefix; that prefix
+# now holds generated compatibility shims over this library, so the corpus carries the mathematics
+# once. The glob makes every module a build target, which is what lets the port be admitted in
+# dependency-ordered slices. Deliberately not a default target: CI's target list is unchanged.
+[[lean_lib]]
+name = "Erdos249257"
+globs = ["Erdos249257.*"]
+
 [[lean_lib]]
 name = "Erdos257PeriodNoncollapse"
 
