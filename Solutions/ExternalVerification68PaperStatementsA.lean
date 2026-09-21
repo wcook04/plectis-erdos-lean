@@ -54,7 +54,7 @@ noncomputable def factorialGapSeries : ℝ :=
 noncomputable def adjacentDifference (n : ℕ) : ℕ →₀ ℤ :=
   single (n - 1) (n : ℤ) - single n 1
 
-def channelWeight (i d : ℕ) : ℕ :=
+noncomputable def channelWeight (i d : ℕ) : ℕ :=
   i.factorial / (d.factorial ^ (i / d))
 
 noncomputable def isolatedChannelUnit (n : ℕ) : ℕ →₀ ℤ :=
@@ -69,7 +69,7 @@ noncomputable def isolatedChannelUnit (n : ℕ) : ℕ →₀ ℤ :=
 
 noncomputable def channelScalar (n : ℕ) : ℤ := isolatedChannelUnit n 1
 
-def IsScalarTailGcd (D G : ℕ) : Prop :=
+noncomputable def IsScalarTailGcd (D G : ℕ) : Prop :=
   ∀ b : ℕ, b ∣ G ↔ ∀ n : ℕ, D < n → (b : ℤ) ∣ channelScalar n
 
 noncomputable def channelBasisColumn (j : ℕ) : ℕ →₀ ℤ :=
@@ -87,16 +87,16 @@ noncomputable def facFloor (x : ℝ) (m : ℕ) : ℤ :=
 noncomputable def canonicalRemainder (x : ℝ) (m : ℕ) : ℝ :=
   (m.factorial : ℝ) * x - (facFloor x m : ℝ)
 
-def channelNumerator (lam : ℕ →₀ ℤ) (d : ℕ) : ℤ :=
+noncomputable def channelNumerator (lam : ℕ →₀ ℤ) (d : ℕ) : ℤ :=
   lam.sum fun i z => z * (channelWeight i d : ℤ)
 
-def pairwiseCollisionCore
+noncomputable def pairwiseCollisionCore
     {ι : Type*} [DecidableEq ι]
     (s : Finset ι) (d : ι → ℕ) : ℕ :=
   s.lcm fun i =>
     (s.erase i).lcm fun j => Nat.gcd (d i) (d j)
 
-def collisionCore
+noncomputable def collisionCore
     {ι : Type*} [DecidableEq ι]
     (base : ℕ) (s : Finset ι) (d : ι → ℕ) : ℕ :=
   Nat.lcm base (pairwiseCollisionCore s d)
@@ -111,66 +111,66 @@ noncomputable def compConstTerm (n : ℕ) : ℝ :=
 noncomputable def companionConstant : ℝ :=
   ∑' n : ℕ, compConstTerm n
 
-def projectedResidue (T Q : ℕ) : ℕ :=
+noncomputable def projectedResidue (T Q : ℕ) : ℕ :=
   T % Q
 
-def complementaryProjectedResidue (T Q : ℕ) : ℕ :=
+noncomputable def complementaryProjectedResidue (T Q : ℕ) : ℕ :=
   projectedResidue (Q - projectedResidue T Q) Q
 
-def endpointDenominatorLcm
+noncomputable def endpointDenominatorLcm
     {ι : Type*} [DecidableEq ι]
     (base : ℕ) (s : Finset ι) (d : ι → ℕ) : ℕ :=
   Nat.lcm base (s.lcm d)
 
-def endpointTailNumerator
+noncomputable def endpointTailNumerator
     {ι : Type*} [DecidableEq ι]
     (base : ℕ) (s : Finset ι) (d : ι → ℕ) : ℕ :=
   s.sum fun i => endpointDenominatorLcm base s d / d i
 
-def factorialBlockBase (p : ℕ) : ℕ :=
+noncomputable def factorialBlockBase (p : ℕ) : ℕ :=
   (p - 1).factorial
 
-def factorialBlockBudget (p : ℕ) : ℕ :=
+noncomputable def factorialBlockBudget (p : ℕ) : ℕ :=
   2 * p + 1
 
-def factorialGapDenominator (n : ℕ) : ℕ :=
+noncomputable def factorialGapDenominator (n : ℕ) : ℕ :=
   n.factorial - 1
 
-def factorialBlockIndices (p : ℕ) : Finset ℕ :=
+noncomputable def factorialBlockIndices (p : ℕ) : Finset ℕ :=
   Finset.Icc 2 (2 * p - 1)
 
-def factorialBlockEndpointLcm (p : ℕ) : ℕ :=
+noncomputable def factorialBlockEndpointLcm (p : ℕ) : ℕ :=
   endpointDenominatorLcm
     (factorialBlockBase p)
     (factorialBlockIndices p)
     factorialGapDenominator
 
-def privateQuotient
+noncomputable def privateQuotient
     {ι : Type*} [DecidableEq ι]
     (base : ℕ) (s : Finset ι) (d : ι → ℕ) (i : ι) : ℕ :=
   d i / Nat.gcd (d i) (collisionCore base s d)
 
-def privateModulus
+noncomputable def privateModulus
     {ι : Type*} [DecidableEq ι]
     (base : ℕ) (s : Finset ι) (d : ι → ℕ) : ℕ :=
   s.prod (privateQuotient base s d)
 
-def factorialBlockPrivateModulus (p : ℕ) : ℕ :=
+noncomputable def factorialBlockPrivateModulus (p : ℕ) : ℕ :=
   privateModulus
     (factorialBlockBase p)
     (factorialBlockIndices p)
     factorialGapDenominator
 
-def factorialBlockScale (p : ℕ) : ℕ :=
+noncomputable def factorialBlockScale (p : ℕ) : ℕ :=
   2 * p ^ 2 * (2 * p - 1).factorial
 
-def factorialBlockTailNumerator (p : ℕ) : ℕ :=
+noncomputable def factorialBlockTailNumerator (p : ℕ) : ℕ :=
   endpointTailNumerator
     (factorialBlockBase p)
     (factorialBlockIndices p)
     factorialGapDenominator
 
-def factorialGapPrefix (n : ℕ) : ℚ :=
+noncomputable def factorialGapPrefix (n : ℕ) : ℚ :=
   ∑ k ∈ Finset.Icc 2 n, 1 / ((k.factorial : ℚ) - 1)
 
 noncomputable def strictFacTop (x : ℝ) (n : ℕ) : ℤ :=
@@ -182,7 +182,7 @@ noncomputable def factorialGapPredecessorGap (m : ℕ) : ℝ :=
     ((m - 1).factorial : ℝ) *
       ((factorialGapPrefix (m - 1) : ℚ) : ℝ)
 
-def factorialGapPrefixLCM (n : ℕ) : ℕ :=
+noncomputable def factorialGapPrefixLCM (n : ℕ) : ℕ :=
   (Finset.Icc 2 n).lcm fun k => k.factorial - 1
 
 noncomputable def factorialGapScaledTail (m : ℕ) : ℝ :=
@@ -192,10 +192,10 @@ noncomputable def factorialGapStepCarry (m : ℕ) : ℤ :=
   -⌊1 + 1 / ((m.factorial : ℝ) - 1) -
       (m : ℝ) * factorialGapPredecessorGap m⌋
 
-def factorialMoment (lam : ℕ →₀ ℤ) : ℤ :=
+noncomputable def factorialMoment (lam : ℕ →₀ ℤ) : ℤ :=
   lam.sum fun i z => z * (i.factorial : ℤ)
 
-def strictFacTopRat (x : ℚ) (n : ℕ) : ℤ :=
+noncomputable def strictFacTopRat (x : ℚ) (n : ℕ) : ℤ :=
   ⌊(n.factorial : ℚ) * x⌋ + 1
 
 theorem carry_characterisation :

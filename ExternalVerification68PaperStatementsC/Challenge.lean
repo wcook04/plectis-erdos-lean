@@ -33,13 +33,13 @@ noncomputable def factorialGapTail (D : ℕ) : ℝ :=
 noncomputable def factorialGapSeries : ℝ :=
   factorialGapTail 1
 
-def channelWeight (i d : ℕ) : ℕ :=
+noncomputable def channelWeight (i d : ℕ) : ℕ :=
   i.factorial / (d.factorial ^ (i / d))
 
-def channelNumerator (lam : ℕ →₀ ℤ) (d : ℕ) : ℤ :=
+noncomputable def channelNumerator (lam : ℕ →₀ ℤ) (d : ℕ) : ℤ :=
   lam.sum fun i z => z * (channelWeight i d : ℤ)
 
-def factorialMoment (lam : ℕ →₀ ℤ) : ℤ :=
+noncomputable def factorialMoment (lam : ℕ →₀ ℤ) : ℤ :=
   lam.sum fun i z => z * (i.factorial : ℤ)
 
 noncomputable def shiftCompanionTerm (t : ℤ) (n : ℕ) : ℝ :=

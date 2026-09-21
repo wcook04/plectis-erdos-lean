@@ -21,10 +21,10 @@ open scoped BigOperators
 
 namespace Erdos249257.ExternalVerification68PaperStatementsB
 
-def channelLCM (D : ℕ) : ℕ :=
+noncomputable def channelLCM (D : ℕ) : ℕ :=
   (Finset.Icc 2 D).lcm (fun d => d.factorial - 1)
 
-def channelNumerator {ι : Type*} [Fintype ι]
+noncomputable def channelNumerator {ι : Type*} [Fintype ι]
     (coeff : ι → ℤ) (index : ι → ℕ) (d : ℕ) : ℤ :=
   ∑ j, coeff j * ((index j).factorial / d.factorial ^ (index j / d) : ℕ)
 
@@ -39,16 +39,16 @@ noncomputable def factorialGapTail (D : ℕ) : ℝ :=
 noncomputable def factorialGapSeries : ℝ :=
   factorialGapTail 1
 
-def factorialMoment {ι : Type*} [Fintype ι] (coeff : ι → ℤ) (index : ι → ℕ) : ℤ :=
+noncomputable def factorialMoment {ι : Type*} [Fintype ι] (coeff : ι → ℤ) (index : ι → ℕ) : ℤ :=
   ∑ j, coeff j * (index j).factorial
 
-def primeTranslatorCoeff (p : ℕ) : Fin 2 → ℤ :=
+noncomputable def primeTranslatorCoeff (p : ℕ) : Fin 2 → ℤ :=
   ![(p : ℤ), -1]
 
-def primeTranslatorIndex (p : ℕ) : Fin 2 → ℕ :=
+noncomputable def primeTranslatorIndex (p : ℕ) : Fin 2 → ℕ :=
   ![p - 1, p]
 
-def factorialGapPrefix (n : ℕ) : ℚ :=
+noncomputable def factorialGapPrefix (n : ℕ) : ℚ :=
   ∑ k ∈ Finset.Icc 2 n, 1 / ((k.factorial : ℚ) - 1)
 
 noncomputable def strictFacTop (x : ℝ) (n : ℕ) : ℤ :=
@@ -64,7 +64,7 @@ noncomputable def factorialGapStepCarry (m : ℕ) : ℤ :=
   -⌊1 + 1 / ((m.factorial : ℝ) - 1) -
       (m : ℝ) * factorialGapPredecessorGap m⌋
 
-def strictFacTopRat (x : ℚ) (n : ℕ) : ℤ :=
+noncomputable def strictFacTopRat (x : ℚ) (n : ℕ) : ℤ :=
   ⌊(n.factorial : ℚ) * x⌋ + 1
 
 /-- States long68:res:translator from the long record for Erdős problem #68. Transported from
