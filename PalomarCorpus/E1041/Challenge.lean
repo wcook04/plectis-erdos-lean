@@ -11,54 +11,44 @@ set_option autoImplicit false
 /-!
 # Palomar challenge for Erdős problem #1041
 
-Erdős problem #1041 asks whether a monic polynomial with all roots in the open
-unit disc must have two root occurrences joined by a curve of length below 2
-inside the open lemniscate `{|f| < 1}`. It is Problem 5 of Erdős, Herzog and
-Piranian (1958). It remains open; nothing below decides it. The 48
-declarations group by family.
+The degree-seven counterexample below formalises one instance of ani’s construction. Its roots are distinct and lie in the open
+unit disc, while every continuous path in the strict unit lemniscate between distinct roots has total variation greater than 2.
+The declaration concerns this precise total-variation formulation; it does not formalise the small-parameter family or a
+Hausdorff-measure comparison. Historical correspondence has not received independent human review.
 
-`CubicPath`: the complete degree-three case. For a monic cubic with all zeros
-in the open unit disc, two zeros are joined by an explicit two-segment path
-that is continuous, of bounded variation on `[0, 2]`, contained in `{|p| < 1}`,
-and of extended variation strictly below 2. Squarefreeness makes the selected
-zeros distinct. Pendyala (arXiv:2606.24875) proves degree four; priority for
-degree three is not adjudicated here. For translated cubic quotient fibres the
-same two-segment path, taken through the centre `h`, joins two distinct zeros
-of `z ↦ P ((z - h) ^ q)` inside `{|P ((z - h) ^ q)| < 1}` with extended
-variation below 2, for every monic cubic `P` and every `q ≥ 2` such that all
-zeros of that function lie in the open unit disc and two of them are distinct.
+`DegreeSevenCounterexample`: the exact existential polynomial and universal path obstruction. The remaining families record
+positive results under their own hypotheses; the counterexample does not change those statements.
 
-`SolvedFamilies`: the alternation kernel of the sharp collinear theorem, whose
-constant `C_n = 1 / (2^(n-1) cos^n(pi / (2n)))` is attained, as the companion paper records and no compared declaration states, by the endpoint
-normalised Chebyshev configuration; the finite two-tail selector for the sparse
-quintic `z^5 + a z^4 + b z + c`; and the safe origin spoke for three open-disc
-cubic roots. Affine normalisation, moment identification and path assembly are
-ordinary mathematics outside these statements.
+`CubicPath`: the complete degree-three case. For a monic cubic with all zeros in the open unit disc, two zeros are joined by an
+explicit two-segment path that is continuous, of bounded variation on `[0, 2]`, contained in `{|p| < 1}`, and of extended
+variation strictly below 2. Squarefreeness makes the selected zeros distinct. Pendyala (arXiv:2606.24875) proves degree four;
+priority for degree three is not adjudicated here. For translated cubic quotient fibres the same two-segment path, taken through
+the centre `h`, joins two distinct zeros of `z ↦ P ((z - h) ^ q)` inside `{|P ((z - h) ^ q)| < 1}` with extended variation below
+2, for every monic cubic `P` and every `q ≥ 2` such that all zeros of that function lie in the open unit disc and two of them are
+distinct.
 
-`CriticalGeometry`: at a critical point two root occurrences have total distance
-to it at most twice the geometric mean of the n distances, with a real-scalar
-budget read as bounding the two smallest by 2; and two exact configurations, a
-quintic whose unique nearest spoke escapes and a cubic whose every root-pair
-midpoint escapes, closing the straight-line routes. Curved connectors remain.
+`SolvedFamilies`: the alternation kernel of the sharp collinear theorem, whose constant `C_n = 1 / (2^(n-1) cos^n(pi / (2n)))` is
+attained, as the companion paper records and no compared declaration states, by the endpoint normalised Chebyshev configuration;
+the finite two-tail selector for the sparse quintic `z^5 + a z^4 + b z + c`; and the safe origin spoke for three open-disc cubic
+roots. Affine normalisation, moment identification and path assembly are ordinary mathematics outside these statements.
 
-`CriticalValueMean`: for a monic polynomial `p` of degree `n ≥ 2` with all zeros
-in a closed disc of radius `R ≥ 0`, the critical values satisfy
-`∑ ‖p c‖ ^ (2 / (n - 1)) ≤ (n - 1) R ^ (2 n / (n - 1))` and
-`∑ ‖p c‖ ^ (1 / n) ≤ (n - 1) R`, the sums running over the critical points
-with multiplicity.
+`CriticalGeometry`: at a critical point two root occurrences have total distance to it at most twice the geometric mean of the n
+distances, with a real-scalar budget read as bounding the two smallest by 2; and two exact configurations, a quintic whose unique
+nearest spoke escapes and a cubic whose every root-pair midpoint escapes, closing the straight-line routes. Curved connectors
+remain.
 
-`CyclicTrinomialFiber` and `TetranomialSpokes`: exact Abel factorisations at a
-root, with coefficient and signed-moment budgets forcing complete radial spokes
-inside the unit lemniscate. Distinct indices denote distinct root values only
-under injectivity.
+`CriticalValueMean`: for a monic polynomial `p` of degree `n ≥ 2` with all zeros in a closed disc of radius `R ≥ 0`, the critical
+values satisfy `∑ ‖p c‖ ^ (2 / (n - 1)) ≤ (n - 1) R ^ (2 n / (n - 1))` and `∑ ‖p c‖ ^ (1 / n) ≤ (n - 1) R`, the sums running over
+the critical points with multiplicity.
 
-`QuarticQuotientFiber`: the root-lift density comparison, the exact axis
-integral, and the powered endpoint budget below 2.
+`CyclicTrinomialFiber` and `TetranomialSpokes`: exact Abel factorisations at a root, with coefficient and signed-moment budgets
+forcing complete radial spokes inside the unit lemniscate. Distinct indices denote distinct root values only under injectivity.
 
-`FirstMergeCriticalValueSeparation`: exact thresholds for the coefficient
-`C(n, S) = (1 + S)^(2/n) log(S / (S - 1))` and the sign-free length consumer.
-The uniformisation, univalence, Bergman and Pólya inputs behind the analytic
-bound are ordinary mathematics.
+`QuarticQuotientFiber`: the root-lift density comparison, the exact axis integral, and the powered endpoint budget below 2.
+
+`FirstMergeCriticalValueSeparation`: exact thresholds for the coefficient `C(n, S) = (1 + S)^(2/n) log(S / (S - 1))` and the
+sign-free length consumer. The uniformisation, univalence, Bergman and Pólya inputs behind the analytic bound are ordinary
+mathematics.
 -/
 
 open Finset
@@ -66,6 +56,8 @@ open Polynomial Set
 open scoped BigOperators
 open Polynomial
 open scoped ComplexConjugate
+open scoped ENNReal
+open Polynomial Metric
 
 namespace PalomarCorpus.E1041.CriticalGeometry
 open Finset
@@ -264,6 +256,21 @@ theorem cyclicTrinomial_two_short_fiber_displacements {y₁ y₂ : ℂ}
     ‖y₁‖ + ‖y₂‖ < 2 := by
   sorry
 end PalomarCorpus.E1041.CyclicTrinomialFiber
+
+namespace PalomarCorpus.E1041.DegreeSevenCounterexample
+open scoped ENNReal
+open Polynomial Metric
+/-- There exists a monic complex polynomial p of degree seven whose roots all have modulus strictly below 1 and whose root multiset has no repetitions. For any two distinct roots and any map γ : ℝ → ℂ continuous on [0, 1], joining those roots and satisfying |p(γ(t))| < 1 throughout [0, 1], the extended total variation of γ on that interval is strictly greater than 2. This formalises one explicit instance of ani’s construction, including nonrectifiable paths; it does not assert the whole small-parameter family or a Hausdorff-measure formulation. -/
+theorem degreeSevenCounterexample :
+    ∃ (p : ℂ[X]), p.Monic ∧ p.natDegree = 7 ∧
+      (∀ z, p.IsRoot z → ‖z‖ < 1) ∧ p.roots.Nodup ∧
+      ∀ z₁ z₂, p.IsRoot z₁ → p.IsRoot z₂ → z₁ ≠ z₂ →
+        ∀ γ : ℝ → ℂ, ContinuousOn γ (Set.Icc 0 1) →
+          γ 0 = z₁ → γ 1 = z₂ →
+          (∀ τ ∈ Set.Icc (0 : ℝ) 1, ‖p.eval (γ τ)‖ < 1) →
+          (2 : ℝ≥0∞) < eVariationOn γ (Set.Icc 0 1) := by
+  sorry
+end PalomarCorpus.E1041.DegreeSevenCounterexample
 
 namespace PalomarCorpus.E1041.FirstMergeCriticalValueSeparation
 /-- The squared-length coefficient C(n, S) = (1 + S) ^ (2 / n) * log (S / (S - 1)) of the critical-value separation estimate, with the natural number n cast to a real in the exponent; the definition constrains neither n nor S. In the intended reading S is the normalised distance separating the remaining critical values from a simple saddle, and the ordinary analytic estimate of the companion paper bounds the squared length of the connector produced at that saddle by 4 * C(n, S). -/

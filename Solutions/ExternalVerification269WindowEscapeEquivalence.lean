@@ -5,6 +5,7 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos269.CofinalWindowEscapeEquivalence
+import ErdosProblems.Erdos269.PaperCompleteR20.OcticEscapeWhole
 
 namespace Erdos249257.ExternalVerification269WindowEscapeEquivalence
 
@@ -203,5 +204,44 @@ theorem exists_pow_gt_quadratic (c lo : ℕ) :
     ∃ len : ℕ, 0 < len ∧ c * (lo + len + 1) ^ 2 < 2 ^ len := by
   convert ErdosProblems.Erdos269.exists_pow_gt_quadratic c lo
   all_goals try rfl
+
+
+abbrev paperJumpIndex := ErdosProblems.Erdos269.PaperR7.paperJumpIndex
+abbrev carryMajorantQ := ErdosProblems.Erdos269.carryMajorantQ
+noncomputable abbrev longPaperCap := ErdosProblems.Erdos269.PaperR7.longPaperCap
+abbrev shortPaperCap := ErdosProblems.Erdos269.PaperCompleteR20.shortPaperCap
+
+-- In this family file the abbreviations make each cap definitionally equal to its source; in the
+-- generated problem-level adapter the Statement module supplies genuine copies of the jump index,
+-- the rational carry majorant and both caps, and the same `rfl` still transports them.
+lemma longPaperCap_fun_eq :
+    longPaperCap = ErdosProblems.Erdos269.PaperR7.longPaperCap :=
+  rfl
+
+lemma shortPaperCap_fun_eq :
+    shortPaperCap = ErdosProblems.Erdos269.PaperCompleteR20.shortPaperCap :=
+  rfl
+
+theorem octic_escape_whole :
+    (∀ G : ℕ → ℕ → ℕ,
+      (∀ B a, 0 < B → longPaperCap B a ≤ G B a) →
+      (∀ B, 0 < B → Filter.Tendsto
+        (fun a : ℕ => (G B a : ℝ) / (8 : ℝ) ^ a) Filter.atTop (nhds 0)) →
+      (CofinalLocalWindowEscape dyadicBlockBase235 dyadicOrderedBlockDigit235 G ↔
+        Irrational (dyadicShellTsumTailR235 0))) ∧
+    (∀ B : ℕ, Filter.Tendsto
+      (fun a : ℕ => (longPaperCap B a : ℝ) / (8 : ℝ) ^ a) Filter.atTop (nhds 0)) ∧
+    (∀ B a : ℕ, longPaperCap B a ≤ shortPaperCap B a) ∧
+    (∀ B : ℕ, Filter.Tendsto
+      (fun a : ℕ => (shortPaperCap B a : ℝ) / (8 : ℝ) ^ a) Filter.atTop (nhds 0)) ∧
+    (CofinalLocalWindowEscape dyadicBlockBase235 dyadicOrderedBlockDigit235 longPaperCap ↔
+      Irrational (dyadicShellTsumTailR235 0)) ∧
+    (CofinalLocalWindowEscape dyadicBlockBase235 dyadicOrderedBlockDigit235 shortPaperCap ↔
+      Irrational (dyadicShellTsumTailR235 0)) ∧
+    CofinalLocalWindowEscape dyadicBlockBase235 dyadicOrderedBlockDigit235 (fun _ _ => 0) := by
+  simpa only [ErdosProblems.Erdos269.PaperR7.paperSeries235_eq_shellTsum,
+    CofinalLocalWindowEscape_fun_eq, dyadicBlockBase235_fun_eq,
+    dyadicOrderedBlockDigit235_fun_eq, longPaperCap_fun_eq, shortPaperCap_fun_eq] using
+    ErdosProblems.Erdos269.PaperCompleteR20.octic_escape_whole
 
 end Erdos249257.ExternalVerification269WindowEscapeEquivalence

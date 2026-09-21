@@ -10,7 +10,9 @@
     "Erdos249257.ExternalVerification1041CriticalGeometry.nearestSpoke_unique_nearest_spoke_escapes",
     "Erdos249257.ExternalVerification1041CriticalGeometry.allStraightCubic_roots",
     "Erdos249257.ExternalVerification1041CriticalGeometry.allStraightCubic_roots_in_unitDisk",
-    "Erdos249257.ExternalVerification1041CriticalGeometry.allStraightCubic_every_pair_midpoint_escapes"
+    "Erdos249257.ExternalVerification1041CriticalGeometry.allStraightCubic_every_pair_midpoint_escapes",
+    "Erdos249257.ExternalVerification1041CriticalGeometry.newton_real_value_whole",
+    "Erdos249257.ExternalVerification1041CriticalGeometry.newton_real_endpoint_whole"
   ],
   "permitted_axioms": [
     "propext",

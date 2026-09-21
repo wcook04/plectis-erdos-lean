@@ -408,3 +408,55 @@ globs = ["Solutions.+"]
 
 [[lean_lib]]
 name = "PlectisSnapshot"
+
+[[lean_lib]]
+name = "ExternalVerification1041DegreeSevenCounterexample"
+globs = ["ExternalVerification1041DegreeSevenCounterexample.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1049RationalBaseRegion"
+globs = ["ExternalVerification1049RationalBaseRegion.+"]
+
+[[lean_lib]]
+name = "ExternalVerification243CompletePaperRecords"
+globs = ["ExternalVerification243CompletePaperRecords.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249CompleteKernelBases"
+globs = ["ExternalVerification249CompleteKernelBases.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249RankOneDenominator"
+globs = ["ExternalVerification249RankOneDenominator.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249RationalObservableClassification"
+globs = ["ExternalVerification249RationalObservableClassification.+"]
+
+[[lean_lib]]
+name = "ExternalVerification251ExactDenominatorFloors"
+globs = ["ExternalVerification251ExactDenominatorFloors.+"]
+
+[[lean_lib]]
+name = "ExternalVerification251PrimeGapNonperiodicity"
+globs = ["ExternalVerification251PrimeGapNonperiodicity.+"]
+
+[[lean_lib]]
+name = "ExternalVerification251UniformSparseRationalisation"
+globs = ["ExternalVerification251UniformSparseRationalisation.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257WeightedCloseReturn"
+globs = ["ExternalVerification257WeightedCloseReturn.+"]
+
+[[lean_lib]]
+name = "ExternalVerification269ExactDenominator"
+globs = ["ExternalVerification269ExactDenominator.+"]
+
+[[lean_lib]]
+name = "ExternalVerification269FixedStartResidue"
+globs = ["ExternalVerification269FixedStartResidue.+"]
+
+[[lean_lib]]
+name = "ExternalVerification68FactorialGapBounds"
+globs = ["ExternalVerification68FactorialGapBounds.+"]

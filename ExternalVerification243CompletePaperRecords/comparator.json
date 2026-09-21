@@ -1,0 +1,17 @@
+{
+  "challenge_module": "ExternalVerification243CompletePaperRecords.Challenge",
+  "solution_module": "Solutions.ExternalVerification243CompletePaperRecords",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification243CompletePaperRecords.fixed_offsets_periodic_lowerDensity",
+    "Erdos249257.ExternalVerification243CompletePaperRecords.canonical_weighted_record_excess",
+    "Erdos249257.ExternalVerification243CompletePaperRecords.arithmetic_weighted_record_dichotomy",
+    "Erdos249257.ExternalVerification243CompletePaperRecords.canonical_quantitative_record_dichotomy",
+    "Erdos249257.ExternalVerification243CompletePaperRecords.canonical_inclusive_logLog_criterion"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

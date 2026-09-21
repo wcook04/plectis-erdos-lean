@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ExternalVerification251UniformSparseRationalisation.Challenge",
+  "solution_module": "Solutions.ExternalVerification251UniformSparseRationalisation",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification251UniformSparseRationalisation.polylogarithmic_word_interval_uniform",
+    "Erdos249257.ExternalVerification251UniformSparseRationalisation.arbitrary_word_sparse_rationalisation_uniform"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

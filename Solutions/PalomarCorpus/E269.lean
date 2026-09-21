@@ -8,6 +8,8 @@ import Solutions.PalomarCorpus.E269.Statement
 import Solutions.PalomarCorpus.E269.ActualShellOrbit
 import Solutions.PalomarCorpus.E269.AllScaleLattice
 import Solutions.PalomarCorpus.E269.CarryMechanism
+import Solutions.PalomarCorpus.E269.ExactDenominator
+import Solutions.PalomarCorpus.E269.FixedStartResidue
 import Solutions.PalomarCorpus.E269.IntegralBranchPinning
 import Solutions.PalomarCorpus.E269.ThreePrimeStructure
 import Solutions.PalomarCorpus.E269.WindowEscapeEquivalence

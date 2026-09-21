@@ -21,6 +21,7 @@ environments. Generated from the Challenge; do not edit by hand.
 open Filter
 open scoped BigOperators
 open Finsupp
+open Filter Topology
 
 namespace PalomarCorpus.E68.Shared
 /-- The adjacent factorial difference `T n = n * e (n - 1) - e n`, the finitely supported integer vector with coefficient `n` at index `n - 1` and coefficient `-1` at index `n`, the subtraction `n - 1` taken in the natural numbers; for `n ≥ 1` its factorial moment vanishes because `n * (n - 1)! = n!`. -/
@@ -155,6 +156,12 @@ noncomputable def unitFactTerm (n : ℕ) : ℝ :=
 noncomputable def canonicalDigit (x : ℝ) (m : ℕ) : ℤ :=
   facFloor x m - (m : ℤ) * facFloor x (m - 1)
 end PalomarCorpus.E68.CompanionOrbitBoundary
+
+namespace PalomarCorpus.E68.FactorialGapBounds
+open Filter Topology
+open scoped BigOperators
+export PalomarCorpus.E68.Shared (channelLCM)
+end PalomarCorpus.E68.FactorialGapBounds
 
 namespace PalomarCorpus.E68.FiniteDenominator
 export PalomarCorpus.E68.Shared (factorialGapSeries)

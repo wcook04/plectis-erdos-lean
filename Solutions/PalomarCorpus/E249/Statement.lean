@@ -21,15 +21,26 @@ environments. Generated from the Challenge; do not edit by hand.
 open scoped BigOperators
 open Module
 open ArithmeticFunction
+open Filter Topology
 
 namespace PalomarCorpus.E249.Shared
 /-- Index type for the canonical duplicate-free family of dyadic totient sections through level `e`: a left index `i ∈ Fin 2` names the zero-residue channel `n ↦ φ(2 ^ i n)`, and a right index `⟨j, r⟩` with `j < e` and `r < 2 ^ j` names the odd residue `2 r + 1` at level `j + 1`, so the type has `2 ^ e + 1` elements. -/
 noncomputable abbrev TotientCanonicalIndex (e : ℕ) :=
   Fin 2 ⊕ Σ j : Fin e, Fin (2 ^ j.val)
+/-- All pairs of a dyadic level j and a residue below 2^j. -/
+noncomputable abbrev TotientDyadicKernelIndex := Σ j : ℕ, Fin (2 ^ j)
+/-- The dyadic kernel indices at levels zero through e, inclusive. -/
+noncomputable abbrev TotientKernelThroughLevelIndex (e : ℕ) :=
+  Σ j : Fin (e + 1), Fin (2 ^ j.val)
+/-- Two initial channels together with every odd-residue channel at a positive dyadic level. -/
+noncomputable abbrev TotientOddCoreIndex := Fin 2 ⊕ Σ j : ℕ, Fin (2 ^ j)
 /-- The atom of index `n` at rung `r` of the Möbius-Mersenne ladder, namely `μ(n + 1) / (2 ^ (n + 1) - 1) ^ r` with `μ` the Möbius function; the index is shifted so that `n = 0` carries the divisor `d = 1`. -/
 noncomputable def mobiusMersenneTerm (r n : ℕ) : ℝ :=
   ((moebius (n + 1) : ℤ) : ℝ) /
     (((2 : ℝ) ^ (n + 1) - 1) ^ r)
+/-- The finite sum of the Möbius–Mersenne terms at indices strictly below Y. -/
+noncomputable def mobiusMersennePrefix (Y r : ℕ) : ℝ :=
+  ∑ n ∈ Finset.range Y, mobiusMersenneTerm r n
 /-- The rung `Θ_r = ∑_{d ≥ 1} μ(d) / (2 ^ d - 1) ^ r` of the Möbius-Mersenne ladder, defined as the real sum of the atoms above. The divisor convolution `φ = μ * id` gives `Θ_2 = S - 1/2` for the binary totient series `S = ∑_{n ≥ 1} φ(n) / 2 ^ n`. At `r = 0` the family is not summable and the Lean sum takes its default value `0`; every compared theorem uses the ladder only at `r ≥ 1`. -/
 noncomputable def mobiusMersenneTheta (r : ℕ) : ℝ :=
   ∑' n : ℕ, mobiusMersenneTerm r n
@@ -46,6 +57,20 @@ noncomputable def canonicalTotientKernelFamily (e : ℕ) :
   | Sum.inl i => totientKernelSeq i.val 0
   | Sum.inr ⟨j, r⟩ =>
       totientKernelSeq (j.val + 1) (2 * r.val + 1)
+/-- Every dyadic subsequence n ↦ φ(2^j n + r), viewed as a rational-valued sequence. -/
+noncomputable def fullTotientKernelFamily : TotientDyadicKernelIndex → ℕ → ℚ
+  | ⟨j, r⟩ => totientKernelSeq j r.val
+/-- The two initial zero-residue channels and all odd-residue dyadic channels, as rational-valued sequences. -/
+noncomputable def oddCoreTotientKernelFamily : TotientOddCoreIndex → ℕ → ℚ
+  | Sum.inl i => totientKernelSeq i.val 0
+  | Sum.inr ⟨j, r⟩ => totientKernelSeq (j + 1) (2 * r.val + 1)
+/-- The family of rational-valued totient subsequences through dyadic level e. -/
+noncomputable def totientKernelThroughLevelFamily (e : ℕ) :
+    TotientKernelThroughLevelIndex e → ℕ → ℚ
+  | ⟨j, r⟩ => totientKernelSeq j.val r.val
+/-- The binary-weighted sum of the least nonnegative residues φ(n) modulo m. -/
+noncomputable def totientResidueValue (m : ℕ) : ℝ :=
+  ∑' n : ℕ, ((Nat.totient n % m : ℕ) : ℝ) / 2 ^ n
 /-- The binary totient tail `R_N = ∑_{j ≥ 1} φ(N + j) / 2 ^ j`, a real number satisfying `2 ^ N S = Φ_N + R_N`, where `S = ∑_{n ≥ 1} φ(n) / 2 ^ n` and `Φ_N = ∑_{n ≤ N} φ(n) 2 ^ (N - n)` is an integer. It obeys `0 < R_N ≤ N + 1` for `N ≥ 1`. -/
 noncomputable def totientTail (N : ℕ) : ℝ :=
   ∑' j : ℕ, (Nat.totient (N + 1 + j) : ℝ) / 2 ^ (j + 1)
@@ -167,27 +192,48 @@ noncomputable def CarrySectionsEventuallyPeriodicMod
     u (2 ^ j * n + r) ≡ u (2 ^ j * (n + h) + r) [ZMOD (v : ℤ)]
 end PalomarCorpus.E249.CarryRankFrontier
 
+namespace PalomarCorpus.E249.CompleteKernelBases
+open Filter Topology
+open scoped BigOperators
+export PalomarCorpus.E249.Shared (TotientCanonicalIndex TotientDyadicKernelIndex TotientKernelThroughLevelIndex TotientOddCoreIndex canonicalTotientKernelFamily fullTotientKernelFamily oddCoreTotientKernelFamily totientKernelSeq totientKernelThroughLevelFamily)
+/-- The rational-valued sequence n ↦ φ(k^j n + r). -/
+noncomputable def allBaseTotientKernelSeq (k j r : ℕ) : ℕ → ℚ := fun n =>
+  Nat.totient (k ^ j * n + r)
+/-- Two initial channels and, through level e, the channels whose residues are not divisible by k. -/
+noncomputable abbrev AllBaseCanonicalIndex (k e : ℕ) :=
+  Fin 2 ⊕ Σ j : Fin e, Fin (k ^ j.val) × Fin (k - 1)
+/-- The residue k times the selected quotient plus a selected nonzero remainder below k. -/
+noncomputable def allBaseCanonicalResidue (k : ℕ) {e : ℕ}
+    (x : Σ j : Fin e, Fin (k ^ j.val) × Fin (k - 1)) : ℕ :=
+  k * x.2.1.val + (x.2.2.val + 1)
+/-- The two initial zero-residue channels together with all selected residues not divisible by k through level e. -/
+noncomputable def allBaseCanonicalFamily (k e : ℕ) : AllBaseCanonicalIndex k e → ℕ → ℚ
+  | Sum.inl i => allBaseTotientKernelSeq k i.val 0
+  | Sum.inr x => allBaseTotientKernelSeq k (x.1.val + 1) (allBaseCanonicalResidue k x)
+/-- All base-k kernel indices at levels zero through e, inclusive. -/
+noncomputable abbrev AllBaseThroughLevelIndex (k e : ℕ) := Σ j : Fin (e + 1), Fin (k ^ j.val)
+/-- All rational-valued base-k totient subsequences through level e. -/
+noncomputable def allBaseThroughLevelFamily (k e : ℕ) : AllBaseThroughLevelIndex k e → ℕ → ℚ
+  | ⟨j, r⟩ => allBaseTotientKernelSeq k j.val r.val
+/-- The product of 1 − 1/p over primes p dividing k but not u. -/
+noncomputable def missingEulerProduct (k u : ℕ) : ℚ :=
+  ∏ p ∈ k.primeFactors.filter (fun p => ¬ p ∣ u), (1 - (p : ℚ)⁻¹)
+/-- The inclusion of the two initial and odd-residue channels into the full dyadic index set. -/
+noncomputable def fullRetainedChannel : TotientOddCoreIndex → TotientDyadicKernelIndex
+  | Sum.inl i => ⟨i.val, ⟨0, by positivity⟩⟩
+  | Sum.inr ⟨j, r⟩ => ⟨j + 1, ⟨2 * r.val + 1, by
+      have hr := r.isLt
+      rw [pow_succ]
+      omega⟩⟩
+/-- The space of finitely supported rational relations among all dyadic totient subsequences, defined as the kernel of their linear-combination map. -/
+noncomputable abbrev FullRelations := LinearMap.ker (Finsupp.linearCombination ℚ fullTotientKernelFamily)
+/-- The dyadic channels outside the retained initial and odd-residue channels. -/
+noncomputable abbrev FullOmitted := {i : TotientDyadicKernelIndex // i ∉ Set.range fullRetainedChannel}
+end PalomarCorpus.E249.CompleteKernelBases
+
 namespace PalomarCorpus.E249.DyadicTotientKernel
 open Module
-export PalomarCorpus.E249.Shared (TotientCanonicalIndex canonicalTotientKernelFamily totientKernelSeq)
-/-- Index type for every dyadic totient section at levels `0` through `e` before any reduction: the pairs `⟨j, r⟩` with `j ≤ e` and `r < 2 ^ j`, so the type has `1 + 2 + ⋯ + 2 ^ e` elements. -/
-noncomputable abbrev TotientKernelThroughLevelIndex (e : ℕ) :=
-  Σ j : Fin (e + 1), Fin (2 ^ j.val)
-/-- The complete unreduced family of dyadic totient sections through level `e`, sending `⟨j, r⟩` to `n ↦ φ(2 ^ j n + r)`. -/
-noncomputable def totientKernelThroughLevelFamily (e : ℕ) :
-    TotientKernelThroughLevelIndex e → ℕ → ℚ
-  | ⟨j, r⟩ => totientKernelSeq j.val r.val
-/-- Index type for the full dyadic kernel of Euler's totient: all pairs `⟨j, r⟩` with `j` a natural number and `r < 2 ^ j`. -/
-noncomputable abbrev TotientDyadicKernelIndex := Σ j : ℕ, Fin (2 ^ j)
-/-- The full dyadic kernel family of Euler's totient, sending `⟨j, r⟩` to `n ↦ φ(2 ^ j n + r)` at every level `j` and every residue `r < 2 ^ j`. -/
-noncomputable def fullTotientKernelFamily : TotientDyadicKernelIndex → ℕ → ℚ
-  | ⟨j, r⟩ => totientKernelSeq j r.val
-/-- Index type for the odd-core family: two zero-residue channels, together with the `2 ^ j` odd residues at each level `j + 1`. -/
-noncomputable abbrev TotientOddCoreIndex := Fin 2 ⊕ Σ j : ℕ, Fin (2 ^ j)
-/-- The odd-core family of dyadic totient sections: a left index `i ∈ Fin 2` gives `n ↦ φ(2 ^ i n)`, and a right index `⟨j, r⟩` gives `n ↦ φ(2 ^ (j + 1) n + 2 r + 1)`. -/
-noncomputable def oddCoreTotientKernelFamily : TotientOddCoreIndex → ℕ → ℚ
-  | Sum.inl i => totientKernelSeq i.val 0
-  | Sum.inr ⟨j, r⟩ => totientKernelSeq (j + 1) (2 * r.val + 1)
+export PalomarCorpus.E249.Shared (TotientCanonicalIndex TotientDyadicKernelIndex TotientKernelThroughLevelIndex TotientOddCoreIndex canonicalTotientKernelFamily fullTotientKernelFamily oddCoreTotientKernelFamily totientKernelSeq totientKernelThroughLevelFamily)
 end PalomarCorpus.E249.DyadicTotientKernel
 
 namespace PalomarCorpus.E249.FareyWindowExclusion
@@ -219,6 +265,9 @@ namespace PalomarCorpus.E249.MobiusMersenneLadderStructure
 open scoped BigOperators
 open ArithmeticFunction
 export PalomarCorpus.E249.Shared (mobiusMersenneTerm mobiusMersenneTheta)
+/-- The Möbius–Lambert sum with denominator 2^(rd) − 1 over positive integers d. -/
+noncomputable def mobiusMersenneLambertRung (r : ℕ) : ℝ :=
+  ∑' d : ℕ+, ((moebius (d : ℕ) : ℤ) : ℝ) / ((2 : ℝ) ^ (r * (d : ℕ)) - 1)
 end PalomarCorpus.E249.MobiusMersenneLadderStructure
 
 namespace PalomarCorpus.E249.PrefixTwoAdicExclusion
@@ -230,28 +279,36 @@ noncomputable def prefixTail (S : ℝ) (n : ℕ) : ℝ :=
   2 ^ n * S - (totientPrefix n : ℝ)
 end PalomarCorpus.E249.PrefixTwoAdicExclusion
 
+namespace PalomarCorpus.E249.RankOneDenominator
+open Filter Topology
+open scoped BigOperators
+open ArithmeticFunction
+export PalomarCorpus.E249.Shared (mobiusMersennePrefix mobiusMersenneTerm)
+end PalomarCorpus.E249.RankOneDenominator
+
 namespace PalomarCorpus.E249.RankOneSharpFloor
 open scoped BigOperators
 open ArithmeticFunction
-export PalomarCorpus.E249.Shared (mobiusMersenneTerm mobiusMersenneTheta)
-/-- The truncation `t_Y(r) = ∑_{d = 1}^{Y} μ(d) / (2 ^ d - 1) ^ r` of the Möbius-Mersenne rung `r` to its first `Y` atoms. -/
-noncomputable def mobiusMersennePrefix (Y r : ℕ) : ℝ :=
-  ∑ n ∈ Finset.range Y, mobiusMersenneTerm r n
+export PalomarCorpus.E249.Shared (mobiusMersennePrefix mobiusMersenneTerm mobiusMersenneTheta)
 /-- The quotient `Q(e, Y) = t_Y(e + 2) ^ 2 / t_Y(2 e + 2)` of Möbius-Mersenne prefixes, called the positive rank-one strict-subrank quotient in the surrounding development. The definition imposes neither positivity nor any admissibility condition: at `Y = 0` both prefixes are empty sums and the Lean division returns `0`. The theorems below restrict to `e ≥ 1` and `Y ≥ 4`. -/
 noncomputable def rankOneSubrankQuotient (e Y : ℕ) : ℝ :=
   mobiusMersennePrefix Y (e + 2) ^ 2 /
     mobiusMersennePrefix Y (2 * e + 2)
 end PalomarCorpus.E249.RankOneSharpFloor
 
+namespace PalomarCorpus.E249.RationalObservableClassification
+open Filter Topology
+open scoped BigOperators
+export PalomarCorpus.E249.Shared (totientResidueValue)
+end PalomarCorpus.E249.RationalObservableClassification
+
 namespace PalomarCorpus.E249.ResidueClassTotientSeries
+export PalomarCorpus.E249.Shared (totientResidueValue)
 /-- The binary value `∑_{n ≥ 0} a(n) / 2 ^ n` of an integer coefficient sequence `a`, with the terms cast from `ℤ` to `ℝ`. -/
 noncomputable def dyadicValue (a : ℕ → ℤ) : ℝ := ∑' n : ℕ, (a n : ℝ) / 2 ^ n
 /-- The binary value `∑_{n ≥ 0} f(φ(n) mod m) / 2 ^ n` of a fixed-resolution observable of the totient word, where `f` is an integer-valued letter map on residues and `m` is the fixed resolution. -/
 noncomputable def totientObservableValue (f : ℕ → ℤ) (m : ℕ) : ℝ :=
   ∑' n : ℕ, ((f (Nat.totient n % m) : ℤ) : ℝ) / 2 ^ n
-/-- The least-residue totient series `A_m = ∑_{n ≥ 0} (φ(n) mod m) / 2 ^ n`, using least nonnegative residues. -/
-noncomputable def totientResidueValue (m : ℕ) : ℝ :=
-  ∑' n : ℕ, ((Nat.totient n % m : ℕ) : ℝ) / 2 ^ n
 end PalomarCorpus.E249.ResidueClassTotientSeries
 
 namespace PalomarCorpus.E249.TermwiseDyadicVacuous

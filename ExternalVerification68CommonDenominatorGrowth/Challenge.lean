@@ -25,4 +25,13 @@ theorem common_denominator_growth_liminf :
           ((N : ℝ) ^ ((3 : ℝ) / 2) * Real.log (N : ℝ)) : ℝ) : EReal)) atTop := by
   sorry
 
+theorem asymptotic_radius_constant_liminf (M R : ℕ → ℕ)
+    (hH : ∃ T : ℕ, ∀ t : ℕ, T ≤ t →
+      0 < M t ∧ channelLCM (2 * t ^ 2) ∣ M t ∧
+      M t < (R t + 1).factorial - 1) :
+    (((16 : ℝ) / 9) : EReal) ≤
+      Filter.liminf (fun t : ℕ =>
+        ((((R t + 1 : ℕ) : ℝ) / (t : ℝ) ^ 3 : ℝ) : EReal)) atTop := by
+  sorry
+
 end Erdos249257.ExternalVerification68CommonDenominatorGrowth

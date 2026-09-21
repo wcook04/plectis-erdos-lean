@@ -172,16 +172,16 @@ status:
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
-  trusted_challenge_sorry_count: 47
-  sorry_boundary: The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E68/Challenge.lean; every Solution proof is complete.
-  axiom_audit_status: every compared theorem is printed with axioms propext, Quot.sound and Classical.choice only by scripts/check_axiom_budget.py --run-palomar, which the release gate runs on the built Solution environments
+  trusted_challenge_sorry_count: 50
+  sorry_boundary: The deliberate placeholders are the trusted Challenge theorem bodies; Solution proof terms are supplied, but fresh kernel, axiom-budget, Comparator and NanoDa validation is pending.
+  axiom_audit_status: pending fresh target-toolchain axiom audit; no checked status is claimed for this candidate
   permitted_axiom_budget:
   - propext
   - Quot.sound
   - Classical.choice
   development_status: substantive
   local_proof_provenance: the ErdosProblems.Erdos68 proof modules in this repository, imported by Solutions.PalomarCorpus.E68; the Solutions.ExternalVerification68* family modules are a regression mirror of the same proofs and are not imported by this configuration
-  canonical_claim_status: problem-level Comparator wrapper over substantive Lean in this repository
+  canonical_claim_status: candidate problem-level Comparator wrapper; fresh verification pending
 automation:
   methods:
   - method: manual
@@ -202,5 +202,6 @@ automation:
 review:
   status: self-assessed
   reviewers: []
-  notes: Every compared statement was checked declaration by declaration against the public problem note, the reasoning record for Erdős problem #68 at https://github.com/wcook04/plectis-erdos and the Lean sources in two automated passes run with Anthropic Claude on 2026-09-13 (an alignment review of each docstring against its Lean statement, then a simulated editorial review under Palomar's published prompts); the author applied every finding before publication and is responsible for the selection and the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
+  notes: >-
+    This candidate extends the existing problem-level entry with literal paper statements and proof transports reviewed against their source declarations. The September 19 additions require fresh Lean 4.30, axiom-budget, Comparator and NanoDa checks before acceptance. Earlier automated reviews apply only to their original statement selections. No external human referee report or Palomar service submission is claimed.
 acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

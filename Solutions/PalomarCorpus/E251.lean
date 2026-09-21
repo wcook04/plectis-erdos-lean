@@ -8,10 +8,13 @@ import Solutions.PalomarCorpus.E251.Statement
 import Solutions.PalomarCorpus.E251.ActualPrimeGapTail
 import Solutions.PalomarCorpus.E251.AffineCircularity
 import Solutions.PalomarCorpus.E251.AllResidueLogarithmicCountermodel
+import Solutions.PalomarCorpus.E251.ExactDenominatorFloors
 import Solutions.PalomarCorpus.E251.FreePairEquivalence
 import Solutions.PalomarCorpus.E251.KernelDenominatorFloor
 import Solutions.PalomarCorpus.E251.LcmDiagonalCriterion
 import Solutions.PalomarCorpus.E251.PolynomialShiftCountermodel
 import Solutions.PalomarCorpus.E251.PrimeGapIdentity
+import Solutions.PalomarCorpus.E251.PrimeGapNonperiodicity
 import Solutions.PalomarCorpus.E251.ShiftedFourPrimeCounting
 import Solutions.PalomarCorpus.E251.SparseRationalisation
+import Solutions.PalomarCorpus.E251.UniformSparseRationalisation

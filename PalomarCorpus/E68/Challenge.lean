@@ -50,6 +50,7 @@ and the explicit floors `2^39990 ≤ q`, `10^12040 < q`.
 open Filter
 open scoped BigOperators
 open Finsupp
+open Filter Topology
 
 namespace PalomarCorpus.E68.Shared
 /-- The adjacent factorial difference `T n = n * e (n - 1) - e n`, the finitely supported integer vector with coefficient `n` at index `n - 1` and coefficient `-1` at index `n`, the subtraction `n - 1` taken in the natural numbers; for `n ≥ 1` its factorial moment vanishes because `n * (n - 1)! = n!`. -/
@@ -259,6 +260,15 @@ theorem common_denominator_growth_liminf :
         ((Real.log (channelLCM N : ℝ) /
           ((N : ℝ) ^ ((3 : ℝ) / 2) * Real.log (N : ℝ)) : ℝ) : EReal)) atTop := by
   sorry
+/-- The companion radius-constant bound in the same literal extended real form: if a channel multiple sequence `M` and a radius sequence `R` eventually satisfy `0 < M t`, `channelLCM (2 * t^2) ∣ M t` and `M t < (R t + 1)! - 1`, then the coercion of `16/9` is at most the `liminf` at infinity of the extended real values of `(R t + 1) / t^3`; the hypotheses are the paper's, carried in the signature rather than assumed, and the extended real codomain allows an infinite lower limit with no boundedness hypothesis. -/
+theorem asymptotic_radius_constant_liminf (M R : ℕ → ℕ)
+    (hH : ∃ T : ℕ, ∀ t : ℕ, T ≤ t →
+      0 < M t ∧ channelLCM (2 * t ^ 2) ∣ M t ∧
+      M t < (R t + 1).factorial - 1) :
+    (((16 : ℝ) / 9) : EReal) ≤
+      Filter.liminf (fun t : ℕ =>
+        ((((R t + 1 : ℕ) : ℝ) / (t : ℝ) ^ 3 : ℝ) : EReal)) atTop := by
+  sorry
 end PalomarCorpus.E68.CommonDenominatorGrowth
 
 namespace PalomarCorpus.E68.CompanionOrbitBoundary
@@ -309,6 +319,27 @@ theorem tsum_unitFactTerm_eq_exp_one_sub_two :
     (∑' n : ℕ, unitFactTerm n) = Real.exp 1 - 2 := by
   sorry
 end PalomarCorpus.E68.CompanionOrbitBoundary
+
+namespace PalomarCorpus.E68.FactorialGapBounds
+open Filter Topology
+open scoped BigOperators
+export PalomarCorpus.E68.Shared (channelLCM)
+/-- For 2 ≤ m < n, the gcd of m! − 1 and n! − 1 divides and is at most the descending-factorial product minus one, which is strictly less than n^(n − m). -/
+theorem factorial_gap_gcd_exact
+    {m n : ℕ} (hm : 2 ≤ m) (hmn : m < n) :
+    let g := Nat.gcd (m.factorial - 1) (n.factorial - 1)
+    let Q := n.descFactorial (n - m)
+    g ∣ Q - 1 ∧ g ≤ Q - 1 ∧ Q - 1 < n ^ (n - m) := by
+  sorry
+/-- The sum of log(n! − 1) over the final k indices through D is at most log(channelLCM D) plus binomial(k + 1, 3) log D, for k < D. -/
+theorem factorialGapSegment_log_sum_le_channelLCM_add_choose
+    {D k : ℕ} (hkD : k < D) :
+    (∑ n ∈ Finset.Ico (D + 1 - k) (D + 1),
+      Real.log ((n.factorial - 1 : ℕ) : ℝ)) ≤
+      Real.log (channelLCM D : ℝ) +
+        (((k + 1).choose 3 : ℕ) : ℝ) * Real.log (D : ℝ) := by
+  sorry
+end PalomarCorpus.E68.FactorialGapBounds
 
 namespace PalomarCorpus.E68.FiniteDenominator
 export PalomarCorpus.E68.Shared (factorialGapSeries)

@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ExternalVerification68FactorialGapBounds.Challenge",
+  "solution_module": "Solutions.ExternalVerification68FactorialGapBounds",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification68FactorialGapBounds.factorial_gap_gcd_exact",
+    "Erdos249257.ExternalVerification68FactorialGapBounds.factorialGapSegment_log_sum_le_channelLCM_add_choose"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -964,3 +964,27 @@ noncomputable def StrengthenedPositiveCoverClaim : Prop :=
 theorem strengthenedPositiveCoverClaim : StrengthenedPositiveCoverClaim := by
   sorry
 end PalomarCorpus.E257.VariableExponentCover
+
+namespace PalomarCorpus.E257.WeightedCloseReturn
+open Filter Topology
+open scoped BigOperators
+export PalomarCorpus.E257.Shared (FinitePrimeWeighted erdosSupportSeries primeSetPart primeWeightedTerm)
+/-- For a positive divisor d, the radix atom b^(N mod d)/(b^d − 1); defined to be zero at d = 0. -/
+noncomputable def shiftedRadixAtom (b N d : ℕ) : ℝ :=
+  if d = 0 then 0
+  else (b : ℝ) ^ (N % d) / ((b : ℝ) ^ d - 1)
+/-- The shifted radix atom restricted by the indicator of the support A. -/
+noncomputable def shiftedRadixSupportAtom
+    (b : ℕ) (A : Set ℕ) (N d : ℕ) : ℝ :=
+  Set.indicator A (shiftedRadixAtom b N) d
+/-- The shifted support-atom sum minus the original support series. -/
+noncomputable def displacement (b : ℕ) (A : Set ℕ) (N : ℕ) : ℝ :=
+  (∑' d : ℕ, shiftedRadixSupportAtom b A N d) - erdosSupportSeries b A
+/-- An infinite positive support satisfying the finite-prime weighted condition has strictly positive displacements below every ε > 0 at arbitrarily large indices, for every base b ≥ 2. -/
+theorem weighted_displacement_cofinal_close_return
+    (b : ℕ) (E : Set ℕ) (hb : 2 ≤ b) (hE0 : 0 ∉ E)
+    (hE : FinitePrimeWeighted b E) (hInf : E.Infinite)
+    (ε : ℝ) (hε : 0 < ε) (N : ℕ) :
+    ∃ m : ℕ, N ≤ m ∧ 0 < displacement b E m ∧ displacement b E m < ε := by
+  sorry
+end PalomarCorpus.E257.WeightedCloseReturn

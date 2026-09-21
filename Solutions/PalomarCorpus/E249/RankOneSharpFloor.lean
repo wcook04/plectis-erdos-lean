@@ -11,7 +11,7 @@ open scoped BigOperators
 open ArithmeticFunction
 
 namespace PalomarCorpus.E249.RankOneSharpFloor
-export PalomarCorpus.E249.Shared (mobiusMersenneTerm mobiusMersenneTheta)
+export PalomarCorpus.E249.Shared (mobiusMersennePrefix mobiusMersenneTerm mobiusMersenneTheta)
 
 theorem rankOneSubrankQuotient_ge_one_five
     {e Y : ℕ} (he : 1 ≤ e) (hY : 4 ≤ Y) :

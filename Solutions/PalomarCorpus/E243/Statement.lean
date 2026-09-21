@@ -22,6 +22,7 @@ open Filter
 open scoped BigOperators
 open Finset
 open scoped Topology
+open Filter Topology
 
 namespace PalomarCorpus.E243.Shared
 /-- The centred reciprocal-tail error `D - (a - 1) * C` of an integer state, the integer measuring the failure of the identity `D = (a - 1) * C` that holds exactly on a Sylvester tail. -/
@@ -30,6 +31,16 @@ noncomputable def centeredState (a D C : ℤ) : ℤ :=
 /-- The prefix product `a 0 * a 1 * ... * a (n-1)` of the first `n` terms of a natural sequence, with the empty product `1` at `n = 0`. -/
 noncomputable def prefixProduct (a : ℕ → ℕ) (n : ℕ) : ℕ :=
   ∏ j ∈ Finset.range n, a j
+/-- The denominator q multiplied by the product of the first n terms of a. -/
+noncomputable def canonicalDenominator (a : ℕ → ℕ) (q n : ℕ) : ℕ :=
+  q * prefixProduct a n
+/-- The integer numerator obtained by clearing q times the prefix product from the first n terms of the reciprocal-series remainder. -/
+noncomputable def clearedIntegerNumerator (a : ℕ → ℕ) (p : ℤ) (q n : ℕ) : ℤ :=
+  p * (prefixProduct a n : ℤ) -
+    ∑ j ∈ Finset.range n, (q : ℤ) * (prefixProduct a n / a j : ℕ)
+/-- The natural-number projection of the cleared integer remainder numerator. -/
+noncomputable def canonicalNaturalNumerator (a : ℕ → ℕ) (p : ℤ) (q n : ℕ) : ℕ :=
+  (clearedIntegerNumerator a p q n).toNat
 /-- The running maximum `max_{k ≤ n} u k` of a natural-valued sequence, given by `runningMax u 0 = u 0` and `runningMax u (n+1) = max (runningMax u n) (u (n+1))`. -/
 noncomputable def runningMax (u : ℕ → ℕ) : ℕ → ℕ
   | 0 => u 0
@@ -45,6 +56,71 @@ end PalomarCorpus.E243.BoundedNegativePartRigidity
 
 namespace PalomarCorpus.E243.BoundedRiseReducedTail
 end PalomarCorpus.E243.BoundedRiseReducedTail
+
+namespace PalomarCorpus.E243.CompletePaperRecords
+open Filter Topology
+open scoped BigOperators
+export PalomarCorpus.E243.Shared (canonicalDenominator canonicalNaturalNumerator centeredState clearedIntegerNumerator prefixProduct runningMax sylvesterNext)
+/-- The elements of E strictly below X. -/
+noncomputable def exceptionFinset (E : Set ℕ) (X : ℕ) : Finset ℕ := by
+  classical
+  exact (Finset.range X).filter (fun n ↦ n ∈ E)
+/-- The number of elements of E strictly below X. -/
+noncomputable def exceptionCount (E : Set ℕ) (X : ℕ) : ℕ :=
+  (exceptionFinset E X).card
+/-- For every positive ε, the count below X is eventually at least (d − ε)X; this is the stated lower-density bound. -/
+noncomputable def LowerDensityAtLeast (E : Set ℕ) (d : ℝ) : Prop :=
+  ∀ ε : ℝ, 0 < ε → ∃ N : ℕ, ∀ X : ℕ, N ≤ X →
+    (d - ε) * (X : ℝ) ≤ (exceptionCount E X : ℝ)
+/-- The least common multiple of q and the first n digits of a, defined recursively. -/
+noncomputable def cumulativeDigitLcm (q : ℕ) (a : ℕ → ℕ) : ℕ → ℕ
+  | 0 => q
+  | n + 1 => Nat.lcm (cumulativeDigitLcm q a n) (a n)
+/-- The product of the successive gcd overlaps between each digit and the preceding cumulative least common multiple. -/
+noncomputable def cumulativeOverlapDebt (q : ℕ) (a : ℕ → ℕ) : ℕ → ℕ
+  | 0 => 1
+  | n + 1 =>
+      cumulativeOverlapDebt q a n *
+        Nat.gcd (cumulativeDigitLcm q a n) (a n)
+/-- The numerator C n divided in the natural numbers by its cumulative overlap debt. -/
+noncomputable def lcmLiftedNumerator (q : ℕ) (a C : ℕ → ℕ) (n : ℕ) : ℕ :=
+  C n / cumulativeOverlapDebt q a n
+/-- The signed discrepancy between the cumulative least common multiple and (a n − 1) times the lifted numerator. -/
+noncomputable def lcmLiftedDigit (q : ℕ) (a C : ℕ → ℕ) (n : ℕ) : ℤ :=
+  (cumulativeDigitLcm q a n : ℤ) -
+    ((a n : ℤ) - 1) * (lcmLiftedNumerator q a C n : ℤ)
+/-- The value at n + 1 strictly exceeds every value at an index at most n. -/
+noncomputable def IsStrictRecord (U : ℕ → ℕ) (n : ℕ) : Prop :=
+  ∀ j, j ≤ n → U j < U (n + 1)
+/-- The integrals from 1 to R exceed every real bound as R ranges over values at least 1. -/
+noncomputable def IntegralUnbounded (f : ℝ → ℝ) : Prop :=
+  ∀ M : ℝ, ∃ R : ℝ, 1 ≤ R ∧ M < ∫ t in (1 : ℝ)..R, f t
+/-- The overlap-corrected natural numerator of the rational reciprocal-series remainder. -/
+noncomputable def canonicalLcmNumerator (a : ℕ → ℕ) (p : ℤ) (q : ℕ) : ℕ → ℕ :=
+  lcmLiftedNumerator q a (canonicalNaturalNumerator a p q)
+/-- The signed discrepancy associated with the canonical overlap-corrected numerator. -/
+noncomputable def canonicalLcmDigit (a : ℕ → ℕ) (p : ℤ) (q : ℕ) : ℕ → ℤ :=
+  lcmLiftedDigit q a (canonicalNaturalNumerator a p q)
+/-- At a strict record, the negative digit excess beyond B, weighted by f at the preceding numerator; zero at other indices. -/
+noncomputable def paperRecordCharge (U : ℕ → ℕ) (V : ℕ → ℤ)
+    (B : ℕ) (f : ℝ → ℝ) (n : ℕ) : ℝ := by
+  classical
+  exact if IsStrictRecord U n then
+    ((max (-V n - (B : ℤ)) 0 : ℤ) : ℝ) * f (U n : ℝ)
+  else 0
+/-- The truncated base-two iterated logarithm log₂(log₂(max(4, x))). -/
+noncomputable def recordLogLog (x : ℝ) : ℝ :=
+  Real.log (Real.log (max 4 x) / Real.log 2) / Real.log 2
+/-- The increment of the running maximum divided by the truncated iterated logarithm of its preceding value. -/
+noncomputable def recordLogLogCharge (U : ℕ → ℕ) (n : ℕ) : ℝ :=
+  ((runningMax U (n + 1) - runningMax U n : ℕ) : ℝ) / recordLogLog (runningMax U n)
+/-- The extended-real limit superior of the normalized running-record increments. -/
+noncomputable def recordTheta (U : ℕ → ℕ) : EReal :=
+  limsup (fun n ↦ (recordLogLogCharge U n : EReal)) atTop
+/-- The nonnegative part of the negative error, divided by the truncated iterated logarithm of the numerator. -/
+noncomputable def negativeErrorLogLogCharge (U : ℕ → ℕ) (E : ℕ → ℤ) (n : ℕ) : ℝ :=
+  ((max (-E n) 0 : ℤ) : ℝ) / recordLogLog (U n)
+end PalomarCorpus.E243.CompletePaperRecords
 
 namespace PalomarCorpus.E243.OriginalCoordinateBoundedDefect
 open Filter
@@ -93,7 +169,7 @@ end PalomarCorpus.E243.SlowRiseBarrier
 namespace PalomarCorpus.E243.SummableNegativeMassRigidity
 open scoped BigOperators
 open Finset
-export PalomarCorpus.E243.Shared (centeredState prefixProduct sylvesterNext)
+export PalomarCorpus.E243.Shared (canonicalDenominator canonicalNaturalNumerator centeredState clearedIntegerNumerator prefixProduct sylvesterNext)
 /-- The product-cleared denominator update `D ↦ a * D` on the integers, one step of the recurrence `D (n+1) = a n * D n`. -/
 noncomputable def nextDenState (a D : ℤ) : ℤ :=
   a * D
@@ -104,16 +180,6 @@ noncomputable def nextTailState (a D C : ℤ) : ℤ :=
 noncomputable def negativeRelativeMass
     (C : ℕ → ℕ) (E : ℕ → ℤ) (n : ℕ) : ℝ :=
   (Int.natAbs (min (E n) 0) : ℝ) / C n
-/-- The cleared integer numerator `p * P n - ∑_{j < n} q * (P n / a j)` with `P n = ∏_{j < n} a j`, which is `q * P n` times the reciprocal tail `p / q - ∑_{j < n} 1 / a j`; the inner quotient is natural division and is exact for `j < n`. -/
-noncomputable def clearedIntegerNumerator (a : ℕ → ℕ) (p : ℤ) (q n : ℕ) : ℤ :=
-  p * (prefixProduct a n : ℤ) -
-    ∑ j ∈ Finset.range n, (q : ℤ) * (prefixProduct a n / a j : ℕ)
-/-- The canonical numerator state as a natural number, `Int.toNat` of the cleared integer numerator, hence equal to that integer when it is nonnegative and `0` otherwise. -/
-noncomputable def canonicalNaturalNumerator (a : ℕ → ℕ) (p : ℤ) (q n : ℕ) : ℕ :=
-  (clearedIntegerNumerator a p q n).toNat
-/-- The canonical cleared denominator `q * P n` with `P n = ∏_{j < n} a j`, the factor that clears the rational reciprocal sum `p / q` and every term of the preceding finite prefix. -/
-noncomputable def canonicalDenominator (a : ℕ → ℕ) (q n : ℕ) : ℕ :=
-  q * prefixProduct a n
 end PalomarCorpus.E243.SummableNegativeMassRigidity
 
 namespace PalomarCorpus.E243.WeightedRecordExcess

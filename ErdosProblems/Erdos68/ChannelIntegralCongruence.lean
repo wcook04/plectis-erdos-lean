@@ -1270,4 +1270,69 @@ theorem no_eventual_square_subsequence_three_halves_upper
 #print axioms square_subsequence_radius_three_halves_lower
 #print axioms no_eventual_square_subsequence_three_halves_upper
 
+
+
+/-! Additive exact paper correspondence, source commit c129ac97dcbc6a8218ba5f736aeb525c1652f8a5. -/
+theorem factorial_gap_gcd_exact
+    {m n : ℕ} (hm : 2 ≤ m) (hmn : m < n) :
+    let g := Nat.gcd (m.factorial - 1) (n.factorial - 1)
+    let Q := n.descFactorial (n - m)
+    g ∣ Q - 1 ∧ g ≤ Q - 1 ∧ Q - 1 < n ^ (n - m) := by
+  dsimp
+  have hkpos : 0 < n - m := Nat.sub_pos_of_lt hmn
+  have hk : n - m ≤ n := Nat.sub_le _ _
+  have hndvd : n ∣ n.descFactorial (n - m) :=
+    dvd_descFactorial_of_pos hkpos hk
+  have hnQ : n ≤ n.descFactorial (n - m) :=
+    Nat.le_of_dvd (Nat.descFactorial_pos.mpr hk) hndvd
+  have hQsubpos : 0 < n.descFactorial (n - m) - 1 := by
+    omega
+  have hdvd := gcd_factorial_sub_one_dvd_descFactorial_sub_one hmn
+  refine ⟨hdvd, Nat.le_of_dvd hQsubpos hdvd, ?_⟩
+  have hpow : n.descFactorial (n - m) ≤ n ^ (n - m) :=
+    Nat.descFactorial_le_pow _ _
+  omega
+
+theorem factorialGapFrom_prod_eq_prod_range (m k : ℕ) :
+    (factorialGapFrom m k).prod =
+      ∏ i ∈ Finset.range k, ((m + i).factorial - 1) := by
+  induction k generalizing m with
+  | zero => simp [factorialGapFrom]
+  | succ k ih =>
+      rw [factorialGapFrom, List.prod_cons, Finset.prod_range_succ']
+      simpa [Nat.add_assoc, Nat.add_comm, Nat.add_left_comm, Nat.mul_comm] using
+        congrArg (fun x => (m.factorial - 1) * x) (ih (m + 1))
+
+theorem factorialGapSegment_log_sum_le_channelLCM_add_choose
+    {D k : ℕ} (hkD : k < D) :
+    (∑ n ∈ Finset.Ico (D + 1 - k) (D + 1),
+      Real.log ((n.factorial - 1 : ℕ) : ℝ)) ≤
+      Real.log (channelLCM D : ℝ) +
+        (((k + 1).choose 3 : ℕ) : ℝ) * Real.log (D : ℝ) := by
+  have hDpos : (0 : ℝ) < D := by exact_mod_cast (show 0 < D by omega)
+  have hnat := factorialGapSegment_prod_le_channelLCM_mul_pow_choose hkD
+  have hbase : 2 ≤ D + 1 - k := by omega
+  have hpos := factorialGapFrom_prod_pos (k := k) hbase
+  have hcast : ((factorialGapSegment D k).prod : ℝ) ≤
+      (channelLCM D : ℝ) * (D : ℝ) ^ ((k + 1).choose 3) := by
+    exact_mod_cast hnat
+  have hlog := Real.log_le_log
+    (by exact_mod_cast hpos : (0 : ℝ) < (factorialGapSegment D k).prod) hcast
+  have hprod : ((factorialGapSegment D k).prod : ℝ) =
+      ∏ i ∈ Finset.range k, (((D + 1 - k + i).factorial - 1 : ℕ) : ℝ) := by
+    rw [factorialGapSegment, factorialGapFrom_prod_eq_prod_range, Nat.cast_prod]
+  rw [hprod, Real.log_prod (fun i _ => by
+    have hp : 0 < (D + 1 - k + i).factorial - 1 :=
+      Nat.sub_pos_of_lt (Nat.one_lt_factorial.mpr (by omega))
+    exact_mod_cast hp.ne'),
+    Real.log_mul (by exact_mod_cast (channelLCM_pos D).ne') (by positivity),
+    Real.log_pow] at hlog
+  rw [Finset.sum_Ico_eq_sum_range]
+  have hlen : D + 1 - (D + 1 - k) = k := by omega
+  simpa only [hlen] using hlog
+
+#print axioms factorial_gap_gcd_exact
+#print axioms factorialGapFrom_prod_eq_prod_range
+#print axioms factorialGapSegment_log_sum_le_channelLCM_add_choose
+
 end Erdos68

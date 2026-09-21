@@ -24,3 +24,4 @@ import Solutions.PalomarCorpus.E257.ScaledGreedyTrap
 import Solutions.PalomarCorpus.E257.TerminalScaledVanishing
 import Solutions.PalomarCorpus.E257.TwentyOneFatalBranch
 import Solutions.PalomarCorpus.E257.VariableExponentCover
+import Solutions.PalomarCorpus.E257.WeightedCloseReturn

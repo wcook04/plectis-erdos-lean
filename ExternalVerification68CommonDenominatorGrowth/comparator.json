@@ -3,7 +3,8 @@
   "solution_module": "Solutions.ExternalVerification68CommonDenominatorGrowth",
   "theorem_names": [
     "Erdos249257.ExternalVerification68CommonDenominatorGrowth.common_denominator_growth",
-    "Erdos249257.ExternalVerification68CommonDenominatorGrowth.common_denominator_growth_liminf"
+    "Erdos249257.ExternalVerification68CommonDenominatorGrowth.common_denominator_growth_liminf",
+    "Erdos249257.ExternalVerification68CommonDenominatorGrowth.asymptotic_radius_constant_liminf"
   ],
   "permitted_axioms": [
     "propext",

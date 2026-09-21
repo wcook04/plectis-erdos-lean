@@ -1,0 +1,15 @@
+{
+  "challenge_module": "ExternalVerification249CompleteKernelBases.Challenge",
+  "solution_module": "Solutions.ExternalVerification249CompleteKernelBases",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249CompleteKernelBases.displayed_all_base_kernel",
+    "Erdos249257.ExternalVerification249CompleteKernelBases.displayed_full_dyadic_basis",
+    "Erdos249257.ExternalVerification249CompleteKernelBases.displayed_canonical_and_full_dyadic"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

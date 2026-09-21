@@ -209,4 +209,88 @@ theorem growing_block_tests_bounded {α : Type*} (a b : ℕ → α) {β : ℝ}
 
 #print axioms growing_block_TV
 #print axioms growing_block_tests_uniform
+
+
+/-! Additive exact paper correspondence, source commit c129ac97dcbc6a8218ba5f736aeb525c1652f8a5. -/
+theorem blockTV_le_supportSlice {α : Type*} (a b : ℕ → α) (c : ℕ → ℕ)
+    (hchange : ∀ n, a n ≠ b n → n ∈ Set.range c) (X m : ℕ) :
+    blockTV a b X m ≤ (m : ℝ) * (supportSlice c X (X + m)).card / X :=
+  blockTV_le_finite_support a b X m _ (window_support a b c hchange X m)
+
+theorem polylog_block_bounds_uniform {α : Type*} {β : ℝ}
+    (hβ : 0 < β) (start : ℕ) :
+    ∃ C : ℝ, 0 < C ∧ ∃ X₀ : ℕ, ∀ a b : ℕ → α,
+      (∀ n, a n ≠ b n → n ∈ Set.range (centre (polylog β) start)) →
+      ∀ X m : ℕ, X₀ ≤ X → m ≤ X →
+      blockTV a b X m ≤ C * ((m : ℝ) / iterlog X) ∧
+      ∀ Φ : ℕ → (Fin m → α) → ℝ,
+        (∀ N ∈ Ico X (2 * X), |Φ N (fun i => a (N + i.val))| ≤ 1) →
+        (∀ N ∈ Ico X (2 * X), |Φ N (fun i => b (N + i.val))| ≤ 1) →
+        |testMean a X m Φ - testMean b X m Φ| ≤ 2 * C * ((m : ℝ) / iterlog X) := by
+  obtain ⟨C, hC, X₀, hX₀⟩ := polylog_extended_rate hβ start
+  refine ⟨C, hC, max 1 X₀, ?_⟩
+  intro a b hchange X m hX hm
+  have hX1 : 1 ≤ X := (le_max_left _ _).trans hX
+  have hXP : (0 : ℝ) < X := by exact_mod_cast (show 0 < X by omega)
+  have hDP := iterlog_pos hX1
+  let S := supportSlice (centre (polylog β) start) X (X + m)
+  have hcard : (S.card : ℝ) ≤ C * X / iterlog X :=
+    hX₀ X (X + m) ((le_max_right _ _).trans hX) (by omega)
+  have hbound : (m : ℝ) * S.card / X ≤ C * ((m : ℝ) / iterlog X) := by
+    calc
+      (m : ℝ) * S.card / X ≤ (m : ℝ) * (C * X / iterlog X) / X :=
+        div_le_div_of_nonneg_right (mul_le_mul_of_nonneg_left hcard (Nat.cast_nonneg _)) hXP.le
+      _ = C * ((m : ℝ) / iterlog X) := by field_simp [hXP.ne', hDP.ne']
+  have hS := window_support a b _ hchange X m
+  refine ⟨(blockTV_le_finite_support a b X m S hS).trans hbound, ?_⟩
+  intro Φ ha hb
+  have h := testMean_le_finite_support a b X m S hS Φ ha hb
+  calc
+    _ ≤ 2 * (m : ℝ) * S.card / X := h
+    _ = 2 * ((m : ℝ) * S.card / X) := by ring
+    _ ≤ 2 * (C * ((m : ℝ) / iterlog X)) := mul_le_mul_of_nonneg_left hbound (by norm_num)
+    _ = _ := by ring
+
+theorem small_blocks_shifted_iterlog (m : ℕ → ℕ)
+    (hm : Tendsto (fun X => (m X : ℝ) / Real.log (Real.log (X : ℝ)))
+      atTop (𝓝 0)) :
+    Tendsto (fun X => (m X : ℝ) / iterlog X) atTop (𝓝 0) := by
+  have hlog : Tendsto (fun X : ℕ => Real.log (Real.log (X : ℝ))) atTop atTop :=
+    Real.tendsto_log_atTop.comp
+      (Real.tendsto_log_atTop.comp tendsto_natCast_atTop_atTop)
+  have hpos : ∀ᶠ X : ℕ in atTop, 0 < Real.log (Real.log (X : ℝ)) :=
+    hlog.eventually (eventually_gt_atTop 0)
+  apply squeeze_zero' ?_ ?_ hm
+  · filter_upwards [eventually_ge_atTop (1 : ℕ)] with X hX
+    exact div_nonneg (Nat.cast_nonneg _) (iterlog_pos hX).le
+  · filter_upwards [hpos, eventually_ge_atTop (2 : ℕ)] with X hp hX
+    have hx : (1 : ℝ) < X := by exact_mod_cast (show 1 < X by omega)
+    have hinner : Real.log (X : ℝ) ≤ Real.log ((X : ℝ) + 3) :=
+      Real.log_le_log (by linarith) (by linarith)
+    have houter : Real.log (Real.log (X : ℝ)) ≤ iterlog X :=
+      Real.log_le_log (Real.log_pos hx) hinner
+    exact div_le_div_of_nonneg_left (Nat.cast_nonneg _) hp houter
+
+theorem growing_block_TV_uniform {α : Type*} {β : ℝ}
+    (hβ : 0 < β) (start : ℕ) (m : ℕ → ℕ)
+    (hm : Tendsto (fun X => (m X : ℝ) / iterlog X) atTop (𝓝 0)) :
+    ∀ η : ℝ, 0 < η → ∀ᶠ X : ℕ in atTop,
+      ∀ a b : ℕ → α,
+        (∀ n, a n ≠ b n → n ∈ Set.range (centre (polylog β) start)) →
+        blockTV a b X (m X) < η := by
+  obtain ⟨C, hC, X₀, hX₀⟩ := polylog_block_bounds_uniform (α := α) hβ start
+  have hu : Tendsto (fun X => C * ((m X : ℝ) / iterlog X)) atTop (𝓝 0) := by
+    simpa only [mul_zero] using hm.const_mul C
+  intro η hη
+  have hs := hu.eventually (gt_mem_nhds hη)
+  filter_upwards [hs, eventually_ge_atTop X₀, small_blocks_eventually_le_index m hm]
+    with X hηX hX hmX
+  intro a b hchange
+  exact ((hX₀ a b hchange X (m X) hX hmX).1).trans_lt hηX
+
+#print axioms blockTV_le_supportSlice
+#print axioms polylog_block_bounds_uniform
+#print axioms small_blocks_shifted_iterlog
+#print axioms growing_block_TV_uniform
+
 end ErdosProblems.Erdos251.PaperR11.GrowingBlocks

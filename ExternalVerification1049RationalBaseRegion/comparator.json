@@ -1,0 +1,19 @@
+{
+  "challenge_module": "ExternalVerification1049RationalBaseRegion.Challenge",
+  "solution_module": "Solutions.ExternalVerification1049RationalBaseRegion",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1049RationalBaseRegion.rational_base_region",
+    "Erdos249257.ExternalVerification1049RationalBaseRegion.thirtyone_four_powers",
+    "Erdos249257.ExternalVerification1049RationalBaseRegion.thirtyone_four",
+    "Erdos249257.ExternalVerification1049RationalBaseRegion.rational_base_measure",
+    "Erdos249257.ExternalVerification1049RationalBaseRegion.rational_base_power_measure",
+    "Erdos249257.ExternalVerification1049RationalBaseRegion.thirtyone_four_power_measure_lt_301",
+    "Erdos249257.ExternalVerification1049RationalBaseRegion.thirtyone_four_power_measure_lt_paper_fraction"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -10,7 +10,7 @@ import Solutions.PalomarCorpus.E249.Statement
 open Module
 
 namespace PalomarCorpus.E249.DyadicTotientKernel
-export PalomarCorpus.E249.Shared (TotientCanonicalIndex canonicalTotientKernelFamily totientKernelSeq)
+export PalomarCorpus.E249.Shared (TotientCanonicalIndex TotientDyadicKernelIndex TotientKernelThroughLevelIndex TotientOddCoreIndex canonicalTotientKernelFamily fullTotientKernelFamily oddCoreTotientKernelFamily totientKernelSeq totientKernelThroughLevelFamily)
 
 theorem dyadicTotientKernelOddCoreBasisAndFiniteRanks :
     LinearIndependent ℚ oddCoreTotientKernelFamily ∧

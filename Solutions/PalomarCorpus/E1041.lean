@@ -9,6 +9,7 @@ import Solutions.PalomarCorpus.E1041.CriticalGeometry
 import Solutions.PalomarCorpus.E1041.CriticalValueMean
 import Solutions.PalomarCorpus.E1041.CubicPath
 import Solutions.PalomarCorpus.E1041.CyclicTrinomialFiber
+import Solutions.PalomarCorpus.E1041.DegreeSevenCounterexample
 import Solutions.PalomarCorpus.E1041.FirstMergeCriticalValueSeparation
 import Solutions.PalomarCorpus.E1041.QuarticQuotientFiber
 import Solutions.PalomarCorpus.E1041.SolvedFamilies
