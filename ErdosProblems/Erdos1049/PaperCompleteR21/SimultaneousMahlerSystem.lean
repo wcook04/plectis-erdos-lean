@@ -294,8 +294,16 @@ theorem mahler_of_stable {k : ℕ} (hk : 1 ≤ k) (V : Submodule (RatFunc ℚ) �
       rw [h1, hPf i, Algebra.smul_def, Algebra.smul_def, map_mul]
     rw [← Fin.sum_univ_eq_sum_range
       (fun i => algebraMap ℚ[X] ℚ⸨X⸩ (p i) * subs (k ^ i) f) (d + 1)]
-    simp_rw [hstep]
-    rw [← Finset.smul_sum, hamb, smul_zero]
+    calc ∑ i : Fin (d + 1), algebraMap ℚ[X] ℚ⸨X⸩ (p (i : ℕ)) * subs (k ^ (i : ℕ)) f
+        = ∑ i : Fin (d + 1), algebraMap ℚ[X] (RatFunc ℚ) (b : ℚ[X]) •
+              (c i • subs (k ^ (i : ℕ)) f) := Finset.sum_congr rfl (fun i _ => hstep i)
+      _ = algebraMap ℚ[X] (RatFunc ℚ) (b : ℚ[X]) •
+            ∑ i : Fin (d + 1), c i • subs (k ^ (i : ℕ)) f := by
+          -- The `RatFunc ℚ`-action on `ℚ⸨X⸩` is the one carried by `RatFunc.liftAlgebra`, which
+          -- the `Finset.smul_sum` instance path does not meet syntactically on every Mathlib
+          -- pin; as a product in `ℚ⸨X⸩` the identity is `Finset.mul_sum` on both.
+          simp only [Algebra.smul_def, Finset.mul_sum]
+      _ = 0 := by rw [hamb, Algebra.smul_def, mul_zero]
   have hex : ∃ n, p n ≠ 0 := ⟨(i₀ : ℕ), hpi₀⟩
   have hjne : p (Nat.find hex) ≠ 0 := Nat.find_spec hex
   set j : ℕ := Nat.find hex with hj

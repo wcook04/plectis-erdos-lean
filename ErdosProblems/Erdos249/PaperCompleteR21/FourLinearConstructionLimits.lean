@@ -4,6 +4,7 @@ import Erdos249257.IncidenceQuotientHermitePade
 import Erdos249257.LcmFactorIdealPulseObstruction
 import Erdos249257.CertificateKernel
 import ErdosProblems.Erdos249.RankOneSubrankObstruction
+import Erdos249257.SignedQMomentObstruction
 
 /-! Paper-form restatement of `prop:b6` of the long #249 manuscript, "Four
 limits of particular linear constructions", together with the trailing
@@ -276,7 +277,13 @@ theorem b6_rankOneSubrankQuotient_sub_totientSeries_offset_gt
           ((ArithmeticFunction.moebius d : ℤ) : ℝ) / ((2 : ℝ) ^ d - 1) ^ (2 * e + 2)) -
         ((∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) - 1 / 2) := by
   have h := rankOneSubrankQuotient_sub_theta_two_gt he hY
-  rw [b6_mobiusMersenneTheta_two_eq_totientSeries_sub_half] at h
+  -- Corpus port: `rankOneSubrankQuotient_sub_theta_two_gt` lives on the fork root here, so `h`
+  -- names the fork's `mobiusMersenneTheta`; its value is the same totient offset.
+  have hθ : Erdos257PeriodNoncollapse.SignedQMomentObstruction.mobiusMersenneTheta 2
+      = (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) - 1 / 2 := by
+    rw [tsum_totient_div_pow_two_eq_pnat_half_pow]
+    exact Erdos257PeriodNoncollapse.SignedQMomentObstruction.mobiusMersenneTheta_two_eq_totient_offset
+  rw [hθ] at h
   unfold rankOneSubrankQuotient at h
   rwa [b6_mobiusMersennePrefix_eq_icc_sum Y (e + 2),
     b6_mobiusMersennePrefix_eq_icc_sum Y (2 * e + 2)] at h
