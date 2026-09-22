@@ -1,0 +1,5 @@
+import Solutions.ExternalVerification257PaperStructuresH
+
+#print axioms Erdos249257.ExternalVerification257PaperStructuresH.three_le_of_fatal_of_odd
+#print axioms Erdos249257.ExternalVerification257PaperStructuresH.two_le_of_fatal
+#print axioms Erdos249257.ExternalVerification257PaperStructuresH.unitNumerator_skipSafe

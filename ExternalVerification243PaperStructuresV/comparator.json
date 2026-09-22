@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ExternalVerification243PaperStructuresV.Challenge",
+  "solution_module": "Solutions.ExternalVerification243PaperStructuresV",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification243PaperStructuresV.canc_lt_of_amp_le",
+    "Erdos249257.ExternalVerification243PaperStructuresV.eventuallySylvester_of_amp_le"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

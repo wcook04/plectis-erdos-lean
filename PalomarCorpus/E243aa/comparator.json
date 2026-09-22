@@ -1,0 +1,13 @@
+{
+  "challenge_module": "PalomarCorpus.E243aa.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E243aa",
+  "theorem_names": [
+    "PalomarCorpus.E243.PaperStructuresAA.tail_multiplier_quadratic_lower"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

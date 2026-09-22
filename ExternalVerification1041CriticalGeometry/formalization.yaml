@@ -233,12 +233,4 @@ alignment:
     lean: Erdos249257.ExternalVerification1041CriticalGeometry.allStraightCubic_every_pair_midpoint_escapes
     module: ExternalVerification1041CriticalGeometry/Challenge.lean
     status: exact-explicit-private-definition-transport-pending-check
-  - source: ErdosProblems.Erdos1041.PaperCompleteR20.newton_real_value_whole
-    lean: Erdos249257.ExternalVerification1041CriticalGeometry.newton_real_value_whole
-    module: ExternalVerification1041CriticalGeometry/Challenge.lean
-    status: exact-transport-pending-check
-  - source: ErdosProblems.Erdos1041.PaperCompleteR20.newton_real_endpoint_whole
-    lean: Erdos249257.ExternalVerification1041CriticalGeometry.newton_real_endpoint_whole
-    module: ExternalVerification1041CriticalGeometry/Challenge.lean
-    status: exact-transport-pending-check
 acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification243PaperStructuresAA.Challenge",
+  "solution_module": "Solutions.ExternalVerification243PaperStructuresAA",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification243PaperStructuresAA.tail_multiplier_quadratic_lower"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

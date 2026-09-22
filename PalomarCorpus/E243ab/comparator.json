@@ -1,0 +1,16 @@
+{
+  "challenge_module": "PalomarCorpus.E243ab.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E243ab",
+  "theorem_names": [
+    "PalomarCorpus.E243.PaperStructuresAB.exactOrbit_unbounded_of_error_not_eventually_zero",
+    "PalomarCorpus.E243.PaperStructuresAB.exists_multiplier_ge_four",
+    "PalomarCorpus.E243.PaperStructuresAB.slowNegative_eventually_zero_and_sylvesterNext_unconditional",
+    "PalomarCorpus.E243.PaperStructuresAB.tail_binaryTower_lower"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

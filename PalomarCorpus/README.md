@@ -4,7 +4,7 @@ Eight Palomar publication configurations at one repository and commit:
 `PalomarCorpus/E68`, `E243`, `E249`, `E251`, `E257`, `E269`, `E1041`, and `E1049`.
 A problem whose concatenated Challenge approaches the 1000-line ceiling is split at a
 band boundary into a sibling entry, which is checked exactly like its base entry and
-never replaces it: `PalomarCorpus/E68a`, `PalomarCorpus/E68b`, `PalomarCorpus/E68c`, `PalomarCorpus/E68d`, `PalomarCorpus/E68e`, `PalomarCorpus/E243a`, `PalomarCorpus/E243b`, `PalomarCorpus/E243c`, `PalomarCorpus/E243d`, `PalomarCorpus/E243e`, `PalomarCorpus/E243f`, `PalomarCorpus/E243g`, `PalomarCorpus/E243h`, `PalomarCorpus/E243i`, `PalomarCorpus/E243j`, `PalomarCorpus/E243k`, `PalomarCorpus/E243l`, `PalomarCorpus/E243m`, `PalomarCorpus/E243n`, `PalomarCorpus/E243o`, `PalomarCorpus/E243p`, `PalomarCorpus/E243q`, `PalomarCorpus/E243r`, `PalomarCorpus/E243s`, `PalomarCorpus/E243t`, `PalomarCorpus/E243u`, `PalomarCorpus/E249a`, `PalomarCorpus/E249b`, `PalomarCorpus/E249c`, `PalomarCorpus/E249d`, `PalomarCorpus/E249e`, `PalomarCorpus/E249f`, `PalomarCorpus/E249g`, `PalomarCorpus/E249h`, `PalomarCorpus/E249i`, `PalomarCorpus/E249j`, `PalomarCorpus/E249k`, `PalomarCorpus/E249l`, `PalomarCorpus/E249m`, `PalomarCorpus/E249o`, `PalomarCorpus/E251a`, `PalomarCorpus/E251b`, `PalomarCorpus/E251c`, `PalomarCorpus/E251d`, `PalomarCorpus/E251e`, `PalomarCorpus/E251f`, `PalomarCorpus/E251g`, `PalomarCorpus/E251h`, `PalomarCorpus/E251i`, `PalomarCorpus/E251j`, `PalomarCorpus/E251k`, `PalomarCorpus/E251l`, `PalomarCorpus/E251m`, `PalomarCorpus/E251n`, `PalomarCorpus/E251o`, `PalomarCorpus/E251p`, `PalomarCorpus/E251q`, `PalomarCorpus/E251r`, `PalomarCorpus/E251x`, `PalomarCorpus/E251y`, `PalomarCorpus/E251z`, `PalomarCorpus/E257a`, `PalomarCorpus/E257b`, `PalomarCorpus/E257c`, `PalomarCorpus/E257d`, `PalomarCorpus/E257e`, `PalomarCorpus/E257f`, `PalomarCorpus/E257g`, `PalomarCorpus/E257i`, `PalomarCorpus/E257j`, `PalomarCorpus/E257k`, `PalomarCorpus/E257l`, `PalomarCorpus/E257m`, `PalomarCorpus/E257n`, `PalomarCorpus/E257o`, `PalomarCorpus/E257p`, `PalomarCorpus/E257q`, `PalomarCorpus/E257r`, `PalomarCorpus/E257w`, `PalomarCorpus/E269a`, `PalomarCorpus/E269b`, `PalomarCorpus/E269c`, `PalomarCorpus/E269d`, `PalomarCorpus/E269e`, `PalomarCorpus/E269f`, `PalomarCorpus/E269g`, `PalomarCorpus/E269x`, `PalomarCorpus/E269y`, `PalomarCorpus/E1041a`, `PalomarCorpus/E1041b`, `PalomarCorpus/E1041c`, `PalomarCorpus/E1041d`, `PalomarCorpus/E1041e`, `PalomarCorpus/E1041f`, `PalomarCorpus/E1041g`, `PalomarCorpus/E1041h`, `PalomarCorpus/E1041i`, `PalomarCorpus/E1041j`, `PalomarCorpus/E1041k`, `PalomarCorpus/E1041l`, `PalomarCorpus/E1041m`, `PalomarCorpus/E1041n`, `PalomarCorpus/E1041o`, `PalomarCorpus/E1041p`, `PalomarCorpus/E1041q`, `PalomarCorpus/E1041r`, `PalomarCorpus/E1041s`, `PalomarCorpus/E1041t`, `PalomarCorpus/E1041u`, `PalomarCorpus/E1041v`, `PalomarCorpus/E1041w`, `PalomarCorpus/E1041x`, `PalomarCorpus/E1041y`, `PalomarCorpus/E1041z`, `PalomarCorpus/E1049a`, `PalomarCorpus/E1049b`, `PalomarCorpus/E1049c`, `PalomarCorpus/E1049d`, `PalomarCorpus/E1049e`, `PalomarCorpus/E1049f`, `PalomarCorpus/E1049g`, `PalomarCorpus/E1049h`, `PalomarCorpus/E1049i`, `PalomarCorpus/E1049j`, `PalomarCorpus/E1049k`, `PalomarCorpus/E1049m`, `PalomarCorpus/E1049n`, `PalomarCorpus/E1049x`, `PalomarCorpus/E249ac`, `PalomarCorpus/E249ad`, `PalomarCorpus/E249ae`, `PalomarCorpus/E249af`, `PalomarCorpus/E249ag`, `PalomarCorpus/E249ah`, `PalomarCorpus/E249ai`, `PalomarCorpus/E249aj`, `PalomarCorpus/E249ak`, `PalomarCorpus/E249al`, `PalomarCorpus/E249am`, `PalomarCorpus/E249an`, `PalomarCorpus/E249ao`, `PalomarCorpus/E249ap`, `PalomarCorpus/E249aq`, `PalomarCorpus/E249ar`, `PalomarCorpus/E249as`, `PalomarCorpus/E249at`, `PalomarCorpus/E249au`, `PalomarCorpus/E249av`, `PalomarCorpus/E249aw`, `PalomarCorpus/E249ax`, `PalomarCorpus/E249ay`, `PalomarCorpus/E249az`, `PalomarCorpus/E249ba`, `PalomarCorpus/E249bb`, `PalomarCorpus/E249bc`, `PalomarCorpus/E249bd`, `PalomarCorpus/E249be`, `PalomarCorpus/E249bf`, `PalomarCorpus/E249bg`, `PalomarCorpus/E249bh`, `PalomarCorpus/E249bi`, `PalomarCorpus/E249bj`, `PalomarCorpus/E249bk`, `PalomarCorpus/E249bl`, `PalomarCorpus/E249bm`, `PalomarCorpus/E249bn`, `PalomarCorpus/E251za`, `PalomarCorpus/E257aa`, `PalomarCorpus/E257ab`, `PalomarCorpus/E257ac`, `PalomarCorpus/E257ad`, `PalomarCorpus/E257ae`, `PalomarCorpus/E257af`, `PalomarCorpus/E257ag`, `PalomarCorpus/E257ah`, `PalomarCorpus/E257ai`, `PalomarCorpus/E257aj`, `PalomarCorpus/E257ak`, `PalomarCorpus/E257al`, `PalomarCorpus/E257am`, `PalomarCorpus/E257an`, `PalomarCorpus/E257ao`, `PalomarCorpus/E257ap`, `PalomarCorpus/E257aq`, `PalomarCorpus/E257ar`, `PalomarCorpus/E257as`, `PalomarCorpus/E257at`, `PalomarCorpus/E257au`, `PalomarCorpus/E257av`, `PalomarCorpus/E257aw`, `PalomarCorpus/E257ax`, `PalomarCorpus/E257ay`, `PalomarCorpus/E257az`, `PalomarCorpus/E257ba`, `PalomarCorpus/E257bb`, `PalomarCorpus/E257bc`, `PalomarCorpus/E257bd`, `PalomarCorpus/E257be`, `PalomarCorpus/E257bf`, `PalomarCorpus/E257bg`, `PalomarCorpus/E257bo`, `PalomarCorpus/E1041aa`, `PalomarCorpus/E1041ab`, `PalomarCorpus/E1041ac`, `PalomarCorpus/E1041za`, `PalomarCorpus/E1041zb`.
+never replaces it: `PalomarCorpus/E68a`, `PalomarCorpus/E68b`, `PalomarCorpus/E68c`, `PalomarCorpus/E68e`, `PalomarCorpus/E243a`, `PalomarCorpus/E243b`, `PalomarCorpus/E243c`, `PalomarCorpus/E243d`, `PalomarCorpus/E243e`, `PalomarCorpus/E243f`, `PalomarCorpus/E243g`, `PalomarCorpus/E243h`, `PalomarCorpus/E243i`, `PalomarCorpus/E243j`, `PalomarCorpus/E243k`, `PalomarCorpus/E243l`, `PalomarCorpus/E243m`, `PalomarCorpus/E243n`, `PalomarCorpus/E243o`, `PalomarCorpus/E243p`, `PalomarCorpus/E243q`, `PalomarCorpus/E243r`, `PalomarCorpus/E243s`, `PalomarCorpus/E243t`, `PalomarCorpus/E243u`, `PalomarCorpus/E243v`, `PalomarCorpus/E243w`, `PalomarCorpus/E249a`, `PalomarCorpus/E249b`, `PalomarCorpus/E249c`, `PalomarCorpus/E249d`, `PalomarCorpus/E249e`, `PalomarCorpus/E249f`, `PalomarCorpus/E249g`, `PalomarCorpus/E249h`, `PalomarCorpus/E249i`, `PalomarCorpus/E249j`, `PalomarCorpus/E249k`, `PalomarCorpus/E249l`, `PalomarCorpus/E249m`, `PalomarCorpus/E249n`, `PalomarCorpus/E249o`, `PalomarCorpus/E249p`, `PalomarCorpus/E251a`, `PalomarCorpus/E251b`, `PalomarCorpus/E251c`, `PalomarCorpus/E251d`, `PalomarCorpus/E251e`, `PalomarCorpus/E251f`, `PalomarCorpus/E251g`, `PalomarCorpus/E251h`, `PalomarCorpus/E251i`, `PalomarCorpus/E251j`, `PalomarCorpus/E251k`, `PalomarCorpus/E251l`, `PalomarCorpus/E251m`, `PalomarCorpus/E251n`, `PalomarCorpus/E251o`, `PalomarCorpus/E251p`, `PalomarCorpus/E251q`, `PalomarCorpus/E251r`, `PalomarCorpus/E251x`, `PalomarCorpus/E251y`, `PalomarCorpus/E251z`, `PalomarCorpus/E257a`, `PalomarCorpus/E257b`, `PalomarCorpus/E257c`, `PalomarCorpus/E257d`, `PalomarCorpus/E257e`, `PalomarCorpus/E257f`, `PalomarCorpus/E257g`, `PalomarCorpus/E257h`, `PalomarCorpus/E257i`, `PalomarCorpus/E257j`, `PalomarCorpus/E257k`, `PalomarCorpus/E257l`, `PalomarCorpus/E257m`, `PalomarCorpus/E257n`, `PalomarCorpus/E257o`, `PalomarCorpus/E257p`, `PalomarCorpus/E257q`, `PalomarCorpus/E257r`, `PalomarCorpus/E257s`, `PalomarCorpus/E257t`, `PalomarCorpus/E257u`, `PalomarCorpus/E257v`, `PalomarCorpus/E257w`, `PalomarCorpus/E269a`, `PalomarCorpus/E269b`, `PalomarCorpus/E269c`, `PalomarCorpus/E269d`, `PalomarCorpus/E269e`, `PalomarCorpus/E269f`, `PalomarCorpus/E269g`, `PalomarCorpus/E269h`, `PalomarCorpus/E269x`, `PalomarCorpus/E269y`, `PalomarCorpus/E1041a`, `PalomarCorpus/E1041b`, `PalomarCorpus/E1041c`, `PalomarCorpus/E1041d`, `PalomarCorpus/E1041e`, `PalomarCorpus/E1041f`, `PalomarCorpus/E1041g`, `PalomarCorpus/E1041h`, `PalomarCorpus/E1041i`, `PalomarCorpus/E1041j`, `PalomarCorpus/E1041k`, `PalomarCorpus/E1041l`, `PalomarCorpus/E1041m`, `PalomarCorpus/E1041n`, `PalomarCorpus/E1041o`, `PalomarCorpus/E1041p`, `PalomarCorpus/E1041q`, `PalomarCorpus/E1041r`, `PalomarCorpus/E1041s`, `PalomarCorpus/E1041t`, `PalomarCorpus/E1041u`, `PalomarCorpus/E1041v`, `PalomarCorpus/E1041w`, `PalomarCorpus/E1041x`, `PalomarCorpus/E1041y`, `PalomarCorpus/E1041z`, `PalomarCorpus/E1049a`, `PalomarCorpus/E1049b`, `PalomarCorpus/E1049c`, `PalomarCorpus/E1049d`, `PalomarCorpus/E1049e`, `PalomarCorpus/E1049f`, `PalomarCorpus/E1049g`, `PalomarCorpus/E1049h`, `PalomarCorpus/E1049i`, `PalomarCorpus/E1049j`, `PalomarCorpus/E1049k`, `PalomarCorpus/E1049m`, `PalomarCorpus/E1049n`, `PalomarCorpus/E1049x`, `PalomarCorpus/E243aa`, `PalomarCorpus/E243ab`, `PalomarCorpus/E249ac`, `PalomarCorpus/E249ad`, `PalomarCorpus/E249ae`, `PalomarCorpus/E249af`, `PalomarCorpus/E249ag`, `PalomarCorpus/E249ah`, `PalomarCorpus/E249ai`, `PalomarCorpus/E249aj`, `PalomarCorpus/E249ak`, `PalomarCorpus/E249al`, `PalomarCorpus/E249am`, `PalomarCorpus/E249an`, `PalomarCorpus/E249ao`, `PalomarCorpus/E249ap`, `PalomarCorpus/E249aq`, `PalomarCorpus/E249ar`, `PalomarCorpus/E249as`, `PalomarCorpus/E249at`, `PalomarCorpus/E249au`, `PalomarCorpus/E249av`, `PalomarCorpus/E249aw`, `PalomarCorpus/E249ax`, `PalomarCorpus/E249ay`, `PalomarCorpus/E249az`, `PalomarCorpus/E249ba`, `PalomarCorpus/E249bb`, `PalomarCorpus/E249bc`, `PalomarCorpus/E249bd`, `PalomarCorpus/E249be`, `PalomarCorpus/E249bf`, `PalomarCorpus/E249bg`, `PalomarCorpus/E249bh`, `PalomarCorpus/E249bi`, `PalomarCorpus/E249bj`, `PalomarCorpus/E249bk`, `PalomarCorpus/E249bl`, `PalomarCorpus/E249bm`, `PalomarCorpus/E249bn`, `PalomarCorpus/E251za`, `PalomarCorpus/E257aa`, `PalomarCorpus/E257ab`, `PalomarCorpus/E257ac`, `PalomarCorpus/E257ad`, `PalomarCorpus/E257ae`, `PalomarCorpus/E257af`, `PalomarCorpus/E257ag`, `PalomarCorpus/E257ah`, `PalomarCorpus/E257ai`, `PalomarCorpus/E257aj`, `PalomarCorpus/E257ak`, `PalomarCorpus/E257al`, `PalomarCorpus/E257am`, `PalomarCorpus/E257an`, `PalomarCorpus/E257ao`, `PalomarCorpus/E257ap`, `PalomarCorpus/E257aq`, `PalomarCorpus/E257ar`, `PalomarCorpus/E257as`, `PalomarCorpus/E257at`, `PalomarCorpus/E257au`, `PalomarCorpus/E257av`, `PalomarCorpus/E257aw`, `PalomarCorpus/E257ax`, `PalomarCorpus/E257ay`, `PalomarCorpus/E257az`, `PalomarCorpus/E257ba`, `PalomarCorpus/E257bb`, `PalomarCorpus/E257bc`, `PalomarCorpus/E257bd`, `PalomarCorpus/E257be`, `PalomarCorpus/E257bf`, `PalomarCorpus/E257bg`, `PalomarCorpus/E257bo`, `PalomarCorpus/E1041aa`, `PalomarCorpus/E1041ab`, `PalomarCorpus/E1041ac`, `PalomarCorpus/E1041za`, `PalomarCorpus/E1041zb`.
 
 Family `ExternalVerification*` modules remain internal regression inventory.
 Parent Erdős problems remain open. The superseded flat `PalomarCorpus/comparator.json`
@@ -12,7 +12,7 @@ is not a publication entry.
 
 ## Selected Comparator theorems
 
-1615 independently restated theorems across 304 families, partitioned by problem.
+1640 independently restated theorems across 316 families, partitioned by problem.
 
 ### ExternalVerification1041CriticalGeometry
 
@@ -589,6 +589,17 @@ is not a publication entry.
 
 - `PalomarCorpus.E243.PaperStatementsS.original_coordinate_lcm_bounded_defect`
 
+### ExternalVerification243PaperStructuresAA
+
+- `PalomarCorpus.E243.PaperStructuresAA.tail_multiplier_quadratic_lower`
+
+### ExternalVerification243PaperStructuresAB
+
+- `PalomarCorpus.E243.PaperStructuresAB.exactOrbit_unbounded_of_error_not_eventually_zero`
+- `PalomarCorpus.E243.PaperStructuresAB.exists_multiplier_ge_four`
+- `PalomarCorpus.E243.PaperStructuresAB.slowNegative_eventually_zero_and_sylvesterNext_unconditional`
+- `PalomarCorpus.E243.PaperStructuresAB.tail_binaryTower_lower`
+
 ### ExternalVerification243PaperStructuresT
 
 - `PalomarCorpus.E243.PaperStructuresT.R_delta_sub_amp_tendsto_zero`
@@ -613,6 +624,15 @@ is not a publication entry.
 - `PalomarCorpus.E243.PaperStructuresU.oddPrimePower_supply`
 - `PalomarCorpus.E243.PaperStructuresU.oddPrimePower_supply_nat`
 - `PalomarCorpus.E243.PaperStructuresU.unitRecordIncrement_criterion`
+
+### ExternalVerification243PaperStructuresV
+
+- `PalomarCorpus.E243.PaperStructuresV.canc_lt_of_amp_le`
+- `PalomarCorpus.E243.PaperStructuresV.eventuallySylvester_of_amp_le`
+
+### ExternalVerification243PaperStructuresW
+
+- `PalomarCorpus.E243.PaperStructuresW.unitRecordIncrement_sylvesterNext`
 
 ### ExternalVerification243PeriodicNegativeOrbit
 
@@ -1427,6 +1447,17 @@ is not a publication entry.
 - `PalomarCorpus.E249.PaperStatementsO.b6_mobiusMersenne_rung_estimates`
 - `PalomarCorpus.E249.PaperStatementsO.rankOne_denominator_pos`
 
+### ExternalVerification249PaperStructuresN
+
+- `PalomarCorpus.E249.PaperStructuresN.certifiedKill_diagonal_t64`
+- `PalomarCorpus.E249.PaperStructuresN.certifiedKill_diagonal_t64_paper`
+- `PalomarCorpus.E249.PaperStructuresN.shortWindowSupply_single_witness_six_ninetyThree`
+- `PalomarCorpus.E249.PaperStructuresN.shortWindowSupply_witness_eq_t64_certificate`
+
+### ExternalVerification249PaperStructuresP
+
+- `PalomarCorpus.E249.PaperStructuresP.linearIndependent_of_separatedMinorCertificate`
+
 ### ExternalVerification249PrefixTwoAdicExclusion
 
 - `PalomarCorpus.E249.PrefixTwoAdicExclusion.oddPart_mul_prefixTail_eq_intCast`
@@ -2193,6 +2224,13 @@ is not a publication entry.
 
 - `PalomarCorpus.E257.PaperStructuresAW.paper_compatible_first_condition_gives_nonneg`
 
+### ExternalVerification257PaperStructuresAY
+
+- `PalomarCorpus.E257.PaperStructuresAY.localMersenneHalfTarget_lower_word_eq_greedy_and_remainder_eq`
+- `PalomarCorpus.E257.PaperStructuresAY.localMersenneWeightsFrom_gapDominates`
+- `PalomarCorpus.E257.PaperStructuresAY.localMersenneWeights_gapDominates_even`
+- `PalomarCorpus.E257.PaperStructuresAY.localMersenneWeights_gapDominates_odd`
+
 ### ExternalVerification257PaperStructuresBA
 
 - `PalomarCorpus.E257.PaperStructuresBA.exists_laterProtectedExactLocalMersenneRow`
@@ -2206,11 +2244,34 @@ is not a publication entry.
 
 - `PalomarCorpus.E257.PaperStructuresBO.arbitraryWeightMixedSupport_allBase_hereditary`
 
+### ExternalVerification257PaperStructuresH
+
+- `PalomarCorpus.E257.PaperStructuresH.three_le_of_fatal_of_odd`
+- `PalomarCorpus.E257.PaperStructuresH.two_le_of_fatal`
+- `PalomarCorpus.E257.PaperStructuresH.unitNumerator_skipSafe`
+
 ### ExternalVerification257PaperStructuresO
 
 - `PalomarCorpus.E257.PaperStructuresO.overlappingMidpointReturns_twoPow_le_realBound`
 - `PalomarCorpus.E257.PaperStructuresO.overlappingReverseCarryWords_carryDifference_eq_twoPow_mul_odd`
 - `PalomarCorpus.E257.PaperStructuresO.overlappingReverseCarryWords_twoPow_le_realBound`
+
+### ExternalVerification257PaperStructuresS
+
+- `PalomarCorpus.E257.PaperStructuresS.paper_one_sidedness`
+
+### ExternalVerification257PaperStructuresT
+
+- `PalomarCorpus.E257.PaperStructuresT.paper_compatible_rows_agree_with_limit`
+
+### ExternalVerification257PaperStructuresU
+
+- `PalomarCorpus.E257.PaperStructuresU.half_step_forced`
+- `PalomarCorpus.E257.PaperStructuresU.isStraddlePrefix_step_trichotomy`
+
+### ExternalVerification257PaperStructuresV
+
+- `PalomarCorpus.E257.PaperStructuresV.unitNumerator_skipSafe_actualTail`
 
 ### ExternalVerification257PaperStructuresW
 
@@ -2387,6 +2448,10 @@ is not a publication entry.
 
 - `PalomarCorpus.E269.PaperStatementsY.transcendental_heckeValue`
 
+### ExternalVerification269PaperStructuresH
+
+- `PalomarCorpus.E269.PaperStructuresH.rank_cutMatrix`
+
 ### ExternalVerification269ThreePrimeStructure
 
 - `PalomarCorpus.E269.ThreePrimeStructure.exists_uniform_nonsingular_threePrimeKernel_minor`
@@ -2510,10 +2575,6 @@ is not a publication entry.
 ### ExternalVerification68PaperStatementsE
 
 - `PalomarCorpus.E68.PaperStatementsE.product_lcm_pairwise_gcd`
-
-### ExternalVerification68PaperStructuresD
-
-- `PalomarCorpus.E68.PaperStructuresD.product_lcm_pairwise_gcd`
 
 ### ExternalVerification68PrimePole
 

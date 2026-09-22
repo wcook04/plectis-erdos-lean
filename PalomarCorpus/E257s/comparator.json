@@ -1,0 +1,13 @@
+{
+  "challenge_module": "PalomarCorpus.E257s.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257s",
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStructuresS.paper_one_sidedness"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

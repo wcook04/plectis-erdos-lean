@@ -1,0 +1,16 @@
+{
+  "challenge_module": "PalomarCorpus.E249n.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E249n",
+  "theorem_names": [
+    "PalomarCorpus.E249.PaperStructuresN.certifiedKill_diagonal_t64",
+    "PalomarCorpus.E249.PaperStructuresN.certifiedKill_diagonal_t64_paper",
+    "PalomarCorpus.E249.PaperStructuresN.shortWindowSupply_single_witness_six_ninetyThree",
+    "PalomarCorpus.E249.PaperStructuresN.shortWindowSupply_witness_eq_t64_certificate"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,16 @@
+{
+  "challenge_module": "ExternalVerification249PaperStructuresN.Challenge",
+  "solution_module": "Solutions.ExternalVerification249PaperStructuresN",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249PaperStructuresN.certifiedKill_diagonal_t64",
+    "Erdos249257.ExternalVerification249PaperStructuresN.certifiedKill_diagonal_t64_paper",
+    "Erdos249257.ExternalVerification249PaperStructuresN.shortWindowSupply_single_witness_six_ninetyThree",
+    "Erdos249257.ExternalVerification249PaperStructuresN.shortWindowSupply_witness_eq_t64_certificate"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

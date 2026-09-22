@@ -1,0 +1,16 @@
+{
+  "challenge_module": "PalomarCorpus.E257ay.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257ay",
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStructuresAY.localMersenneHalfTarget_lower_word_eq_greedy_and_remainder_eq",
+    "PalomarCorpus.E257.PaperStructuresAY.localMersenneWeightsFrom_gapDominates",
+    "PalomarCorpus.E257.PaperStructuresAY.localMersenneWeights_gapDominates_even",
+    "PalomarCorpus.E257.PaperStructuresAY.localMersenneWeights_gapDominates_odd"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

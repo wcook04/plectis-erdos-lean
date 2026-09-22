@@ -1,9 +1,9 @@
 {
   "schema": "palomar_corpus_size_receipt_v1",
-  "generated_at": "2026-09-22T00:15:20Z",
+  "generated_at": "2026-09-22T03:14:09Z",
   "public_root": ".",
   "path_base": "repository_root",
-  "git_head": "26c409791c8d2fd49b5422da5cbd31891399c94b",
+  "git_head": "17500de78da531d64b0a900f6232b826004d06a7",
   "selected_families": [
     "ExternalVerification1041CriticalGeometry",
     "ExternalVerification1041CriticalValueMean",
@@ -90,8 +90,12 @@
     "ExternalVerification243PaperStatementsQ",
     "ExternalVerification243PaperStatementsR",
     "ExternalVerification243PaperStatementsS",
+    "ExternalVerification243PaperStructuresAA",
+    "ExternalVerification243PaperStructuresAB",
     "ExternalVerification243PaperStructuresT",
     "ExternalVerification243PaperStructuresU",
+    "ExternalVerification243PaperStructuresV",
+    "ExternalVerification243PaperStructuresW",
     "ExternalVerification243PeriodicNegativeOrbit",
     "ExternalVerification243PrimitiveRecordRigidity",
     "ExternalVerification243ProtectedEpochEnergy",
@@ -160,6 +164,8 @@
     "ExternalVerification249PaperStatementsL",
     "ExternalVerification249PaperStatementsM",
     "ExternalVerification249PaperStatementsO",
+    "ExternalVerification249PaperStructuresN",
+    "ExternalVerification249PaperStructuresP",
     "ExternalVerification249PrefixTwoAdicExclusion",
     "ExternalVerification249RankOneDenominator",
     "ExternalVerification249RankOneSharpFloor",
@@ -259,10 +265,16 @@
     "ExternalVerification257PaperStatementsQ",
     "ExternalVerification257PaperStatementsR",
     "ExternalVerification257PaperStructuresAW",
+    "ExternalVerification257PaperStructuresAY",
     "ExternalVerification257PaperStructuresBA",
     "ExternalVerification257PaperStructuresBG",
     "ExternalVerification257PaperStructuresBO",
+    "ExternalVerification257PaperStructuresH",
     "ExternalVerification257PaperStructuresO",
+    "ExternalVerification257PaperStructuresS",
+    "ExternalVerification257PaperStructuresT",
+    "ExternalVerification257PaperStructuresU",
+    "ExternalVerification257PaperStructuresV",
     "ExternalVerification257PaperStructuresW",
     "ExternalVerification257PositiveSkipEquivalence",
     "ExternalVerification257RationalMembership",
@@ -288,6 +300,7 @@
     "ExternalVerification269PaperStatementsG",
     "ExternalVerification269PaperStatementsX",
     "ExternalVerification269PaperStatementsY",
+    "ExternalVerification269PaperStructuresH",
     "ExternalVerification269ThreePrimeStructure",
     "ExternalVerification269WindowEscapeEquivalence",
     "ExternalVerification68AdjacentUnitCarryWindow",
@@ -304,13 +317,12 @@
     "ExternalVerification68PaperStatementsB",
     "ExternalVerification68PaperStatementsC",
     "ExternalVerification68PaperStatementsE",
-    "ExternalVerification68PaperStructuresD",
     "ExternalVerification68PrimePole",
     "ExternalVerification68PrimeUnitTranslator",
     "ExternalVerification68ResidualIntegerClass",
     "ExternalVerification68StrictSuccessorCarry"
   ],
-  "selected_theorem_count": 1615,
+  "selected_theorem_count": 1640,
   "measurement": {
     "challenge_lines": 990,
     "challenge_bytes": 79441,
@@ -422,7 +434,7 @@
       "windowDiscrepancy",
       "windowForcing"
     ],
-    "problem_count": 208
+    "problem_count": 220
   },
   "stop_rule": "If a problem-level Challenge is over_hard_limit, do not submit, split entries, or drop selected theorems."
 }

@@ -1,0 +1,16 @@
+{
+  "challenge_module": "ExternalVerification243PaperStructuresAB.Challenge",
+  "solution_module": "Solutions.ExternalVerification243PaperStructuresAB",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification243PaperStructuresAB.exactOrbit_unbounded_of_error_not_eventually_zero",
+    "Erdos249257.ExternalVerification243PaperStructuresAB.exists_multiplier_ge_four",
+    "Erdos249257.ExternalVerification243PaperStructuresAB.slowNegative_eventually_zero_and_sylvesterNext_unconditional",
+    "Erdos249257.ExternalVerification243PaperStructuresAB.tail_binaryTower_lower"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

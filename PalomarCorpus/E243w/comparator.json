@@ -1,0 +1,13 @@
+{
+  "challenge_module": "PalomarCorpus.E243w.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E243w",
+  "theorem_names": [
+    "PalomarCorpus.E243.PaperStructuresW.unitRecordIncrement_sylvesterNext"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}
