@@ -1,3 +1,0 @@
-import Solutions.ExternalVerification68PaperStructuresD
-
-#print axioms Erdos249257.ExternalVerification68PaperStructuresD.product_lcm_pairwise_gcd
