@@ -11,12 +11,25 @@ name: Palomar Comparator replay
 # full commit SHA.
 #
 # The entry roster is discovered from the tree, so a band entry (E257a, E68a, ...)
-# is replayed the moment it exists, and one job runs per entry. One serial job
-# took 68 minutes for 366 theorems against a 350-minute ceiling; with the ported
-# exact endpoints and band entries a serial job would not fit, and a per-entry job
-# also builds only its own closure and keeps its verdict, log and receipt separate.
-# Each job writes a durable receipt JSON so a consumer can read the evidence
-# instead of transcribing it from logs.
+# is replayed the moment it exists. One serial job took 68 minutes for 366 theorems
+# against a 350-minute ceiling, so the replay fans out; but the unit of verification
+# and the unit of scheduling are not the same thing, and this workflow keeps them apart.
+#
+#   verification unit: one entry. It builds its own Challenge and Solution closure, is
+#     compared on its own, and writes its own durable receipt JSON, so a consumer reads
+#     the evidence instead of transcribing it from logs. No part of that result depends
+#     on which other entries shared the runner.
+#   scheduling unit: one shard of entries, composed by `discover` from measured per-entry
+#     durations. A shard exists only so the fixed setup cost — runner boot, checkout,
+#     elan, the Mathlib cache restore and the pinned Comparator/lean4export/landrun/NanoDa
+#     build, a median 2.6 min per job over the 144 jobs of run 35643815458 — is paid once
+#     per job instead of once per entry, and so the matrix stays far below GitHub's
+#     256-job cap as the corpus grows.
+#
+# A shard job is green only when every entry it promised produced a result file AND every
+# one of those compared green; the two are enforced by separate named steps, and
+# `aggregate` independently checks that every entry the plan promised delivered its own
+# green result. A green shard never stands in for its entries.
 on:
   workflow_dispatch:
   push:
@@ -58,6 +71,8 @@ jobs:
     timeout-minutes: 10
     outputs:
       entries: ${{ steps.inventory.outputs.entries }}
+      shards: ${{ steps.shards.outputs.shards }}
+      shard_count: ${{ steps.shards.outputs.shard_count }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Check the publication inventory and Challenge limits
@@ -90,21 +105,50 @@ jobs:
               assert cfg["solution_module"] == f"Solutions.PalomarCorpus.{name}", entry
               assert cfg["theorem_names"] and set(cfg["permitted_axioms"]) <= {"propext", "Quot.sound", "Classical.choice"}, entry
               print(f"{name}: {len(cfg['theorem_names'])} theorems, {len(challenge)} bytes")
-          # One entry is one matrix job and GitHub caps a matrix at 256 jobs. At 144
-          # entries (run 35643815458) there is headroom, but the roster grows with the
-          # corpus, and a matrix that overflows the cap fails the run without naming the
-          # cause. Fail here instead, with the count, while the roster is still readable.
+          # One shard is one matrix job and GitHub caps a matrix at 256 jobs. The replay is
+          # sharded, so the roster no longer maps one-to-one onto jobs, and the shard count
+          # is what the cap now binds; `scripts/palomar_replay_shard.py` holds the shard
+          # budget and its own copy of this cap. This assertion stays as the backstop for
+          # the entry population itself, so a corpus that could not be scheduled at all
+          # fails here, with the count, while the roster is still readable.
           MATRIX_CAP = 256
           assert len(found) <= MATRIX_CAP, (
               f"{len(found)} entries exceeds the {MATRIX_CAP}-job matrix cap; "
-              "shard the replay job before adding more entries"
+              "raise the shard budget in scripts/palomar_replay_shard.py before adding more"
           )
           if len(found) > 200:
               print(f"::warning::{len(found)} entries is within {MATRIX_CAP - len(found)} "
-                    "of the matrix cap; the replay job needs sharding")
+                    "of the matrix cap; check the shard budget")
           with open(os.environ["GITHUB_OUTPUT"], "a") as handle:
               handle.write("entries=" + json.dumps(found) + "\n")
           PY
+      - name: Compose the shards this run will schedule
+        id: shards
+        # The entry verification unit and the runner scheduling unit are separate. One entry
+        # is still verified on its own, by one shared code path, and writes its own result
+        # file; a shard is only how many of those the same runner carries, so the fixed
+        # setup (runner boot, checkout, elan, the Mathlib cache restore and the pinned
+        # Comparator/lean4export/landrun/NanoDa build — a median 2.6 min per job over the
+        # 144 replay jobs of run 35643815458) is paid once per shard instead of once per
+        # entry. Composition is by measured per-entry duration, so an unusually heavy entry
+        # is isolated rather than dragging a shard past its timeout.
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts
+          python3 scripts/palomar_replay_shard.py plan \
+            --corpus-root . \
+            --durations .github/replay_entry_durations.json \
+            --commit "$GITHUB_SHA" \
+            --out artifacts/shard-plan.json
+      - name: Upload the shard plan
+        # The plan is evidence, not scratch: it is the only record of which job promised
+        # which entry, and the reconciliation needs it to classify an entry whose shard
+        # delivered no artifact at all.
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: palomar-replay-shard-plan
+          path: artifacts/shard-plan.json
 
   replay:
     needs: discover
@@ -113,7 +157,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        entry: ${{ fromJSON(needs.discover.outputs.entries) }}
+        # One job per shard, not per entry. The matrix value is the shard id alone, so the
+        # job name stays `replay (shard-07)` and the reconciliation can map a job name back
+        # to a shard without parsing an entry list out of it.
+        shard: ${{ fromJSON(needs.discover.outputs.shards) }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Install elan with retries
@@ -149,16 +196,41 @@ jobs:
           # to cache and nothing to point `cache-dependency-path` at, so caching is off.
           # Never add a go.mod to this repository to silence the warning.
           cache: false
-      - name: Build this entry's Challenge against Mathlib only
+      - name: Rebuild this run's shard plan
+        # Recomputed rather than downloaded: the planner is deterministic over the checked-out
+        # tree and the committed durations sidecar, so the same commit always gives the same
+        # plan, and this avoids 36 artifact downloads. The assertion is the point — if the
+        # recomputed shard ids ever disagreed with the ones `discover` published, this shard
+        # would be executing a promise nobody made, so the job stops instead.
         env:
-          LEAN_NUM_THREADS: "2"
-        run: lake build "PalomarCorpus.${{ matrix.entry }}.Challenge"
-      - name: Build this entry's Solution
-        env:
-          LEAN_NUM_THREADS: "2"
-        run: lake build "Solutions.PalomarCorpus.${{ matrix.entry }}"
+          SHARDS: ${{ toJSON(fromJSON(needs.discover.outputs.shards)) }}
+          SHARD_ID: ${{ matrix.shard }}
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts
+          python3 scripts/palomar_replay_shard.py plan \
+            --corpus-root . \
+            --durations .github/replay_entry_durations.json \
+            --commit "$GITHUB_SHA" \
+            --out "$RUNNER_TEMP/shard-plan.json" > /dev/null
+          python3 - <<'PY'
+          import json, os, sys
+          plan = json.load(open(os.environ["RUNNER_TEMP"] + "/shard-plan.json"))
+          published = json.loads(os.environ["SHARDS"])
+          mine = os.environ["SHARD_ID"]
+          local = [shard["shard_id"] for shard in plan["shards"]]
+          if local != published:
+              print(f"::error::the recomputed shard plan disagrees with discover: "
+                    f"{len(local)} vs {len(published)} shards")
+              sys.exit(1)
+          entries = next(s["entries"] for s in plan["shards"] if s["shard_id"] == mine)
+          print(f"{mine} promises {len(entries)} entries: {' '.join(entries)}")
+          PY
       - name: Build the pinned Comparator toolchain
-        id: tools
+        # No `id:`. This step used to publish `comparator_lean_toolchain` as a step output
+        # that the receipt builder read through `env:`; the verification step now reads it
+        # from the clone's own `lean-toolchain`, so no per-entry field travels through a
+        # key that a later entry in the same shard could overwrite.
         run: |
           set -euo pipefail
           clone() {
@@ -205,184 +277,57 @@ jobs:
           fi
           (cd "$RUNNER_TEMP/nanoda" && cargo build --release --locked --bin nanoda_bin)
           test -x "$RUNNER_TEMP/nanoda/target/release/nanoda_bin"
-          echo "comparator_lean_toolchain=$(tr -d '\r\n' < "$RUNNER_TEMP/comparator/lean-toolchain")" >> "$GITHUB_OUTPUT"
-      - name: Run Comparator on this publication entry
-        id: comparator
-        env:
-          ENTRY: ${{ matrix.entry }}
+          # No step output. Each entry's result file records the Comparator's toolchain, and
+          # the verification step reads it from this clone's own `lean-toolchain`, so no
+          # per-entry field arrives through a key another entry could overwrite.
+      - name: Fetch Palomar's core-notation audit script
+        id: audit_source
+        # Palomar renders an accepted Challenge before its automated review. The render stage
+        # runs scripts/core_notation_audit.lean from PalomarSubmission at the promoted
+        # renderer commit; the audit copies every constant reachable from a theorem type into
+        # a trusted printing environment. The renderer this repository's E257 submission met
+        # also kernel-rechecked those copies, which is the defect PR 137 removed, so
+        # RENDERER_REV names the fixed commit. Fetching it is shard-level work — the script
+        # is the same for every entry — while replaying it stays per entry and stays
+        # non-gating: it reports, it never decides an entry.
         run: |
           set +e
-          export COMPARATOR_LANDRUN="$RUNNER_TEMP/landrun"
-          export COMPARATOR_LEAN4EXPORT="$RUNNER_TEMP/lean4export/.lake/build/bin/lean4export"
-          export COMPARATOR_NANODA="$RUNNER_TEMP/nanoda/target/release/nanoda_bin"
-          comparator="$RUNNER_TEMP/comparator/.lake/build/bin/comparator"
-          mkdir -p artifacts
-          systemctl --user show-environment > artifacts/systemd-user-preflight.log 2>&1
-          if [[ $? -eq 0 ]]; then
-            sandbox_mode=user-manager
-          elif sudo -n systemctl show-environment > artifacts/systemd-system-preflight.log 2>&1; then
-            sandbox_mode=system-manager-nonprivileged-unit
-          else
-            sandbox_mode=unavailable
-          fi
-          echo "sandbox_mode=$sandbox_mode" >> "$GITHUB_OUTPUT"
-          run_comparator() {
-            config="$1"
-            if [[ "$sandbox_mode" == user-manager ]]; then
-              timeout 45m systemd-run --property=RestrictAddressFamilies=~AF_UNIX --user --pipe \
-                -E PATH="$PATH" -E COMPARATOR_LANDRUN="$COMPARATOR_LANDRUN" -E COMPARATOR_NANODA="$COMPARATOR_NANODA" \
-                -E COMPARATOR_LEAN4EXPORT="$COMPARATOR_LEAN4EXPORT" \
-                --working-directory="$(pwd)" -- lake env "$comparator" "$config"
-            elif [[ "$sandbox_mode" == system-manager-nonprivileged-unit ]]; then
-              timeout 45m sudo -n systemd-run --property=RestrictAddressFamilies=~AF_UNIX \
-                --uid="$(id -un)" --gid="$(id -gn)" --pipe \
-                -E PATH="$PATH" -E COMPARATOR_LANDRUN="$COMPARATOR_LANDRUN" -E COMPARATOR_NANODA="$COMPARATOR_NANODA" \
-                -E COMPARATOR_LEAN4EXPORT="$COMPARATOR_LEAN4EXPORT" \
-                --working-directory="$(pwd)" -- lake env "$comparator" "$config"
-            else
-              printf '%s\n' "No usable systemd transient-unit manager; refusing an insecure fallback."
-              return 125
-            fi
-          }
-          e="$ENTRY"
-          run_comparator "PalomarCorpus/$e/comparator.json" > "artifacts/$e.log" 2>&1
-          process_rc=$?
-          rc=$process_rc
-          echo "$e process_exit=$process_rc"
-          grep -v '^Exporting' "artifacts/$e.log" | tail -n 20
-          # A green exit must carry both independent kernel verdicts, as Palomar's
-          # protected configuration forces NanoDa; a run that skipped a kernel is not green.
-          nanoda_line=false
-          lean_line=false
-          grep -q '^nanoda kernel accepts the solution' "artifacts/$e.log" && nanoda_line=true
-          grep -q '^Lean default kernel accepts the solution' "artifacts/$e.log" && lean_line=true
-          if [[ "$rc" -eq 0 && "$nanoda_line" != true ]]; then
-            echo "$e: exit 0 without a NanoDa acceptance line"; rc=90
-          fi
-          if [[ "$rc" -eq 0 && "$lean_line" != true ]]; then
-            echo "$e: exit 0 without a Lean kernel acceptance line"; rc=91
-          fi
-          # The verdict is published only after every guard has run, so a consumer
-          # reading exit sees the same result the failure count uses; the raw process
-          # exit is kept separately as diagnostic evidence.
-          echo "$e exit=$rc"
-          {
-            echo "exit=$rc"
-            echo "process_exit=$process_rc"
-            echo "nanoda_acceptance=$nanoda_line"
-            echo "lean_acceptance=$lean_line"
-          } >> "$GITHUB_OUTPUT"
-          exit 0
-      - name: Replay Palomar's core-notation audit (render stage) on this entry
-        id: render_audit
-        env:
-          ENTRY: ${{ matrix.entry }}
-        # Palomar renders an accepted Challenge before its automated review. The render
-        # stage runs scripts/core_notation_audit.lean from PalomarSubmission at the
-        # promoted renderer commit; the audit copies every constant reachable from a
-        # theorem type into a trusted printing environment. The renderer this repository's
-        # E257 submission met also kernel-rechecked those copies, which is the defect PR 137
-        # removed, so RENDERER_REV now names the fixed commit. Replaying it here shows
-        # whether that renderer can print each entry. The step reports and never gates the
-        # Comparator verdict.
-        run: |
-          set +e
-          mkdir -p artifacts
           curl --fail --silent --show-error -o "$RUNNER_TEMP/core_notation_audit.lean" \
-            "https://raw.githubusercontent.com/PalomarRegistry/PalomarSubmission/$RENDERER_REV/scripts/core_notation_audit.lean" \
-            || { echo "render audit source unavailable at $RENDERER_REV"; echo "render_audit_exit=unavailable" >> "$GITHUB_OUTPUT"; exit 0; }
-          e="$ENTRY"
-          echo "renderer_rev=$RENDERER_REV" > artifacts/render-audit-summary.txt
-          cfg="PalomarCorpus/$e/comparator.json"
-          module=$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["challenge_module"])' "$cfg")
-          names=$(python3 -c 'import json,sys; print(" ".join("theorem " + t for t in json.load(open(sys.argv[1]))["theorem_names"]))' "$cfg")
-          timeout 20m lake env lean --run "$RUNNER_TEMP/core_notation_audit.lean" "$module" $names \
-            > "artifacts/render-audit-$e.log" 2>&1
-          rc=$?
-          echo "$e render_audit_exit=$rc" | tee -a artifacts/render-audit-summary.txt
-          [[ "$rc" -eq 0 ]] || head -c 600 "artifacts/render-audit-$e.log"
-          echo "render_audit_exit=$rc" >> "$GITHUB_OUTPUT"
+            "https://raw.githubusercontent.com/PalomarRegistry/PalomarSubmission/$RENDERER_REV/scripts/core_notation_audit.lean"
+          if [[ $? -ne 0 ]]; then
+            echo "render audit source unavailable at $RENDERER_REV"
+            rm -f "$RUNNER_TEMP/core_notation_audit.lean"
+          fi
           exit 0
-      - name: Write the durable replay receipt
-        if: always()
-        env:
-          ENTRY: ${{ matrix.entry }}
-          SANDBOX_MODE: ${{ steps.comparator.outputs.sandbox_mode }}
-          REPLAY_EXIT: ${{ steps.comparator.outputs.exit }}
-          REPLAY_PROCESS_EXIT: ${{ steps.comparator.outputs.process_exit }}
-          NANODA_ACCEPTANCE: ${{ steps.comparator.outputs.nanoda_acceptance }}
-          LEAN_ACCEPTANCE: ${{ steps.comparator.outputs.lean_acceptance }}
-          RENDER_AUDIT_EXIT: ${{ steps.render_audit.outputs.render_audit_exit }}
-          COMPARATOR_LEAN_TOOLCHAIN: ${{ steps.tools.outputs.comparator_lean_toolchain }}
-        # The receipt is the evidence surface a consumer copies. It recomputes the three
-        # entry digests at run time rather than trusting a recorded value, so a receipt
-        # can never describe a different tree from the one that was replayed.
+      - name: Verify every entry promised to this shard
+        # The single step that carries this shard's mathematics. Every entry it verifies goes
+        # through the one shared code path in scripts/palomar_replay_shard.py and writes its
+        # own self-contained artifacts/receipt-<entry>.json: entry id, corpus commit,
+        # Challenge / comparator.json / formalization.yaml digests, the Solution digest,
+        # the Comparator exit and raw process exit, both kernel acceptance flags, the axiom
+        # audit outcome, and per-stage timings. Nothing about a result depends on which other
+        # entries shared this runner, and no per-entry state passes through $GITHUB_OUTPUT,
+        # so one entry cannot contaminate another's verdict the way a fixed step-output key
+        # would. The loop does not stop at the first failure; the manifest records what each
+        # entry did and the two enforcing steps below read it.
         run: |
           set -euo pipefail
           mkdir -p artifacts
-          python3 - <<'PY'
-          import hashlib, json, os, time
-          from pathlib import Path
-          entry = os.environ["ENTRY"]
-          entry_dir = Path("PalomarCorpus") / entry
-          config = json.loads((entry_dir / "comparator.json").read_text())
-          def digest(name):
-              path = entry_dir / name
-              return hashlib.sha256(path.read_bytes()).hexdigest() if path.is_file() else None
-          def as_int(value):
-              try:
-                  return int(value)
-              except (TypeError, ValueError):
-                  return None
-          receipt = {
-              "schema": "palomar_replay_receipt_v1",
-              "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
-              "entry": entry,
-              "github": {
-                  "sha": os.environ.get("GITHUB_SHA"),
-                  "ref": os.environ.get("GITHUB_REF"),
-                  "repository": os.environ.get("GITHUB_REPOSITORY"),
-                  "run_id": os.environ.get("GITHUB_RUN_ID"),
-                  "run_attempt": os.environ.get("GITHUB_RUN_ATTEMPT"),
-                  "workflow": os.environ.get("GITHUB_WORKFLOW"),
-              },
-              "lean_toolchain": Path("lean-toolchain").read_text().strip(),
-              "comparator_lean_toolchain": os.environ.get("COMPARATOR_LEAN_TOOLCHAIN") or None,
-              "tool_revisions": {
-                  "comparator": os.environ.get("COMPARATOR_REV"),
-                  "lean4export": os.environ.get("LEAN4EXPORT_REV"),
-                  "landrun": os.environ.get("LANDRUN_REV"),
-                  "nanoda": os.environ.get("NANODA_REV"),
-                  "renderer": os.environ.get("RENDERER_REV"),
-              },
-              "challenge_module": config.get("challenge_module"),
-              "solution_module": config.get("solution_module"),
-              "theorem_count": len(config.get("theorem_names") or []),
-              "theorem_names": config.get("theorem_names") or [],
-              "permitted_axioms": config.get("permitted_axioms") or [],
-              "entry_digests": {
-                  name: digest(name)
-                  for name in ("Challenge.lean", "comparator.json", "formalization.yaml")
-              },
-              "sandbox_mode": os.environ.get("SANDBOX_MODE"),
-              "exit": as_int(os.environ.get("REPLAY_EXIT")),
-              "process_exit": as_int(os.environ.get("REPLAY_PROCESS_EXIT")),
-              "kernel_acceptance": {
-                  "lean_default": os.environ.get("LEAN_ACCEPTANCE") == "true",
-                  "nanoda": os.environ.get("NANODA_ACCEPTANCE") == "true",
-              },
-              "render_audit_exit": as_int(os.environ.get("RENDER_AUDIT_EXIT")),
-              "not_established": [
-                  "Palomar mechanical verification",
-                  "Palomar editorial review",
-                  "Palomar registration",
-              ],
-          }
-          Path("artifacts", f"receipt-{entry}.json").write_text(
-              json.dumps(receipt, indent=2) + "\n", encoding="utf-8"
-          )
-          print(json.dumps({k: receipt[k] for k in ("entry", "exit", "sandbox_mode", "theorem_count", "entry_digests")}, indent=2))
-          PY
+          AUDIT=""
+          if [[ -f "$RUNNER_TEMP/core_notation_audit.lean" ]]; then
+            AUDIT="$RUNNER_TEMP/core_notation_audit.lean"
+          fi
+          python3 scripts/palomar_replay_shard.py run-shard \
+            --shard-id "${{ matrix.shard }}" \
+            --plan "$RUNNER_TEMP/shard-plan.json" \
+            --corpus-root . \
+            --out artifacts \
+            --comparator-bin "$RUNNER_TEMP/comparator/.lake/build/bin/comparator" \
+            --landrun "$RUNNER_TEMP/landrun" \
+            --lean4export "$RUNNER_TEMP/lean4export/.lake/build/bin/lean4export" \
+            --nanoda "$RUNNER_TEMP/nanoda/target/release/nanoda_bin" \
+            --comparator-toolchain-file "$RUNNER_TEMP/comparator/lean-toolchain" \
+            ${AUDIT:+--audit-script "$AUDIT"}
       # Receipt delivery is retried once. On 21 Sep 2026 (run 35643815458) entry E243d
       # compared green with both kernel acceptance lines, and the job still went red
       # because `actions/upload-artifact` hit a non-retryable HTTP 403 at
@@ -390,25 +335,29 @@ jobs:
       # a failed comparison. Note the guard semantics: under `continue-on-error`, the
       # step's `conclusion` is reported as `success` while its `outcome` holds the real
       # result, so every condition below reads `outcome`, never `conclusion`.
-      - name: Upload this entry's replay artifact
+      - name: Upload this shard's replay artifact
         id: upload
         if: always()
         continue-on-error: true
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: palomar-comparator-replay-${{ matrix.entry }}
+          # One artifact per shard, holding every promised entry's receipt-<entry>.json and
+          # its logs plus this shard's shard-manifest.json. The harvester selects receipt
+          # files by name and keys them on the `entry` field inside, so several receipts in
+          # one artifact ingest with no change to how a receipt is read.
+          name: palomar-comparator-replay-${{ matrix.shard }}
           path: artifacts/
-      - name: Retry this entry's replay artifact upload once
+      - name: Retry this shard's replay artifact upload once
         id: upload_retry
         if: always() && steps.upload.outcome == 'failure'
         continue-on-error: true
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: palomar-comparator-replay-${{ matrix.entry }}
+          name: palomar-comparator-replay-${{ matrix.shard }}
           path: artifacts/
           # The first attempt may have created the artifact before failing to finalise it.
           overwrite: true
-      - name: Enforce that this entry's receipt was delivered
+      - name: Enforce that this shard's receipts were delivered
         if: always()
         env:
           FIRST_OUTCOME: ${{ steps.upload.outcome }}
@@ -419,12 +368,23 @@ jobs:
           if [[ "${FIRST_OUTCOME:-}" == success || "${RETRY_OUTCOME:-}" == success ]]; then
             exit 0
           fi
-          echo "both receipt uploads failed for ${{ matrix.entry }}; this entry has no durable evidence"
+          echo "both receipt uploads failed for ${{ matrix.shard }}; every entry it promised has no durable evidence"
           exit 1
-      - name: Enforce a green Comparator replay for this entry
+      - name: Enforce a result file for every entry promised to this shard
+        # Completeness, asked apart from greenness on purpose. A shard that verified nine of
+        # its ten entries and lost the tenth is red here even when all nine passed, which is
+        # what stops a green shard from standing in for an entry it never produced. The
+        # reconciliation reads this step's conclusion by name for exactly that reason.
+        if: always()
         run: |
-          test '${{ steps.comparator.outputs.sandbox_mode }}' != unavailable
-          test '${{ steps.comparator.outputs.exit }}' = 0
+          set -euo pipefail
+          python3 scripts/palomar_replay_shard.py check-shard \
+            --manifest artifacts/shard-manifest.json --require complete
+      - name: Enforce a green Comparator replay for every entry in this shard
+        run: |
+          set -euo pipefail
+          python3 scripts/palomar_replay_shard.py check-shard \
+            --manifest artifacts/shard-manifest.json --require passed
 
   aggregate:
     needs: [discover, replay]
@@ -432,15 +392,32 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
-      # Every per-entry job publishes its own verdict, log and receipt artifact
-      # (`palomar-comparator-replay-<entry>`). This job is the single required check:
-      # a matrix result is `success` only when every entry job passed its own
-      # sandbox and both-kernel gates, so one failed entry fails the replay.
+      # Each shard job publishes one artifact (`palomar-comparator-replay-<shard-id>`)
+      # holding a receipt and logs for every entry it promised. This job is the single
+      # required check, and it now asks two independent questions rather than one:
+      #
+      #   1. did every shard job conclude green (the matrix result);
+      #   2. did every entry the plan promised actually deliver a green result file.
+      #
+      # The second question is the one a shard count cannot answer. A matrix of 36 green
+      # jobs says nothing about whether all 208 promised entries produced evidence, and
+      # sharding is only safe while that gap is closed here rather than assumed.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Download every shard's receipts and the shard plan
+        id: receipts
+        if: always()
+        continue-on-error: true
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          pattern: palomar-*
+          path: ci-artifacts
       - name: Enforce a green replay for every discovered entry
         env:
           ENTRIES: ${{ needs.discover.outputs.entries }}
+          SHARD_COUNT: ${{ needs.discover.outputs.shard_count }}
           DISCOVER_RESULT: ${{ needs.discover.result }}
           REPLAY_RESULT: ${{ needs.replay.result }}
+          DOWNLOAD_OUTCOME: ${{ steps.receipts.outcome }}
         run: |
           set -euo pipefail
           python3 - <<'PY'
@@ -448,8 +425,10 @@ jobs:
           expected = json.loads(os.environ.get("ENTRIES") or "[]")
           discover = os.environ.get("DISCOVER_RESULT")
           replay = os.environ.get("REPLAY_RESULT")
-          print(f"discovered entries: {expected}")
-          print(f"discover={discover} replay={replay}")
+          print(f"discovered entries: {len(expected)} over "
+                f"{os.environ.get('SHARD_COUNT')} shards")
+          print(f"discover={discover} replay={replay} "
+                f"download={os.environ.get('DOWNLOAD_OUTCOME')}")
           problems = (68, 243, 249, 251, 257, 269, 1041, 1049)
           missing = [f"E{n}" for n in problems if f"E{n}" not in expected]
           if discover != "success" or missing or replay != "success":
@@ -457,3 +436,21 @@ jobs:
               sys.exit(1)
           print(f"all {len(expected)} entries replayed green")
           PY
+      - name: Enforce that every promised entry delivered its own green result file
+        # Read the entry population, then ask what arrived — never the other way round.
+        # Counting artifacts against the receipts inside them compares a short delivery
+        # with itself, which is how a dropped entry read as a complete harvest on 21 Sep.
+        if: always()
+        env:
+          ENTRIES: ${{ needs.discover.outputs.entries }}
+        run: |
+          set -euo pipefail
+          plan=ci-artifacts/palomar-replay-shard-plan/shard-plan.json
+          if [[ ! -f "$plan" ]]; then
+            echo "::error::the shard plan artifact is absent, so no entry-level coverage can be checked"
+            exit 1
+          fi
+          python3 scripts/palomar_replay_shard.py check-run \
+            --plan "$plan" \
+            --receipts-dir ci-artifacts \
+            --expected-entries "$ENTRIES"
