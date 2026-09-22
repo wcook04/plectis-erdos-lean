@@ -1,0 +1,32 @@
+{
+  "challenge_module": "ExternalVerification257PaperStatementsN.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStatementsN",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStatementsN.approx_orbit_induction",
+    "Erdos249257.ExternalVerification257PaperStatementsN.fatal_absorbing",
+    "Erdos249257.ExternalVerification257PaperStatementsN.paper_cpgs_equiv",
+    "Erdos249257.ExternalVerification257PaperStatementsN.paper_effective_horizon_test",
+    "Erdos249257.ExternalVerification257PaperStatementsN.paper_eta_eq_coeffTail_sub_carry",
+    "Erdos249257.ExternalVerification257PaperStatementsN.paper_eta_hasRationalValue",
+    "Erdos249257.ExternalVerification257PaperStatementsN.paper_eventual_nonnegative_margin_equivalence",
+    "Erdos249257.ExternalVerification257PaperStatementsN.paper_frozen_margin_limit_pos_iff",
+    "Erdos249257.ExternalVerification257PaperStatementsN.paper_frozen_margin_normalised_monotone",
+    "Erdos249257.ExternalVerification257PaperStatementsN.paper_frozen_margin_normalised_tendsto",
+    "Erdos249257.ExternalVerification257PaperStatementsN.paper_frozen_margin_normalised_value",
+    "Erdos249257.ExternalVerification257PaperStatementsN.paper_greedyHalfRemainder_ne_dyadicCap",
+    "Erdos249257.ExternalVerification257PaperStatementsN.paper_halfGreedyPrefixSupport_eq_greedy_inter_Icc",
+    "Erdos249257.ExternalVerification257PaperStatementsN.paper_no_ties",
+    "Erdos249257.ExternalVerification257PaperStatementsN.paper_no_ties_skip",
+    "Erdos249257.ExternalVerification257PaperStatementsN.paper_no_ties_take",
+    "Erdos249257.ExternalVerification257PaperStatementsN.paper_one_orbit_stability",
+    "Erdos249257.ExternalVerification257PaperStatementsN.paper_one_sided_finite_decision_boundary",
+    "Erdos249257.ExternalVerification257PaperStatementsN.paper_terminal_strip_equiv",
+    "Erdos249257.ExternalVerification257PaperStatementsN.tailGreedyRemainder_mersenne"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

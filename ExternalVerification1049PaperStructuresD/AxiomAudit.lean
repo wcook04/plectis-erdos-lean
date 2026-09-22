@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification1049PaperStructuresD
+
+#print axioms Erdos249257.ExternalVerification1049PaperStructuresD.long_record_archcap

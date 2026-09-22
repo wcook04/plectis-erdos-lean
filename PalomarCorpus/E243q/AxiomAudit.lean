@@ -1,0 +1,9 @@
+import Solutions.PalomarCorpus.E243q
+
+#print axioms PalomarCorpus.E243.PaperStatementsQ.canonicalError_div_overlapDebt
+#print axioms PalomarCorpus.E243.PaperStatementsQ.digitProductScale_eq_canonicalDenominator
+#print axioms PalomarCorpus.E243.PaperStatementsQ.erdosStrausQuantity_ne_productDefect_ne_lcmShift
+#print axioms PalomarCorpus.E243.PaperStatementsQ.erdosStrausQuantity_sign
+#print axioms PalomarCorpus.E243.PaperStatementsQ.erdosStraus_lcm_includes_digit_not_denominator
+#print axioms PalomarCorpus.E243.PaperStatementsQ.overlapDebt_dvd_gcd
+#print axioms PalomarCorpus.E243.PaperStatementsQ.overlapDebt_mul_lcmClearedNumerator

@@ -1,0 +1,5 @@
+import Solutions.PalomarCorpus.E257o
+
+#print axioms PalomarCorpus.E257.PaperStructuresO.overlappingMidpointReturns_twoPow_le_realBound
+#print axioms PalomarCorpus.E257.PaperStructuresO.overlappingReverseCarryWords_carryDifference_eq_twoPow_mul_odd
+#print axioms PalomarCorpus.E257.PaperStructuresO.overlappingReverseCarryWords_twoPow_le_realBound

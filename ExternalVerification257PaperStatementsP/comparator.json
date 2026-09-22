@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ExternalVerification257PaperStatementsP.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStatementsP",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStatementsP.paper_carry_survivor_extinction",
+    "Erdos249257.ExternalVerification257PaperStatementsP.paper_periodLcm_is_prefix_lcm"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

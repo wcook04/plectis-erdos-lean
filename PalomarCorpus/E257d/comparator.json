@@ -1,0 +1,22 @@
+{
+  "challenge_module": "PalomarCorpus.E257d.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257d",
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStatementsD.cofinalPositiveHalfGreedySkips_iff_half_mem",
+    "PalomarCorpus.E257.PaperStatementsD.greedyHalf_mem_nextMersenneDyadicSliver_iff_excess",
+    "PalomarCorpus.E257.PaperStatementsD.greedy_half_infinite_of_cofinalStripReturn",
+    "PalomarCorpus.E257.PaperStatementsD.greedy_half_infinite_of_mobiusCenteredHalfCarry_sqrtBound",
+    "PalomarCorpus.E257.PaperStatementsD.greedy_half_infinite_of_mobiusCenteredHalfCarry_upperBound",
+    "PalomarCorpus.E257.PaperStatementsD.greedy_half_of_cofinal_upper_carry",
+    "PalomarCorpus.E257.PaperStatementsD.greedy_mobiusCenteredHalfCarry_nonneg",
+    "PalomarCorpus.E257.PaperStatementsD.half_mem_iff_every_actual_skip_survives",
+    "PalomarCorpus.E257.PaperStatementsD.half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips",
+    "PalomarCorpus.E257.PaperStatementsD.paper_greedy_survival"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

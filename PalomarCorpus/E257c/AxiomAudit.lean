@@ -1,0 +1,3 @@
+import Solutions.PalomarCorpus.E257c
+
+#print axioms PalomarCorpus.E257.PaperStatementsC.remainder_lt_gap_iff_eq_integerGreedyBits

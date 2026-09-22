@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification249PaperStatementsL
+
+#print axioms Erdos249257.ExternalVerification249PaperStatementsL.b6_retained_dyadic_sections_independent

@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification68PaperStatementsE.Challenge",
+  "solution_module": "Solutions.ExternalVerification68PaperStatementsE",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification68PaperStatementsE.product_lcm_pairwise_gcd"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification1049PaperStructuresD.Challenge",
+  "solution_module": "Solutions.ExternalVerification1049PaperStructuresD",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1049PaperStructuresD.long_record_archcap"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,13 @@
+{
+  "challenge_module": "PalomarCorpus.E243r.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E243r",
+  "theorem_names": [
+    "PalomarCorpus.E243.PaperStatementsR.recordTheta_le_of_slow_negative"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,22 @@
+{
+  "challenge_module": "ExternalVerification257PaperStatementsD.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStatementsD",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStatementsD.greedy_half_infinite_of_cofinalStripReturn",
+    "Erdos249257.ExternalVerification257PaperStatementsD.greedy_half_infinite_of_mobiusCenteredHalfCarry_sqrtBound",
+    "Erdos249257.ExternalVerification257PaperStatementsD.greedy_half_infinite_of_mobiusCenteredHalfCarry_upperBound",
+    "Erdos249257.ExternalVerification257PaperStatementsD.greedy_mobiusCenteredHalfCarry_nonneg",
+    "Erdos249257.ExternalVerification257PaperStatementsD.cofinalPositiveHalfGreedySkips_iff_half_mem",
+    "Erdos249257.ExternalVerification257PaperStatementsD.greedyHalf_mem_nextMersenneDyadicSliver_iff_excess",
+    "Erdos249257.ExternalVerification257PaperStatementsD.half_mem_iff_every_actual_skip_survives",
+    "Erdos249257.ExternalVerification257PaperStatementsD.half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips",
+    "Erdos249257.ExternalVerification257PaperStatementsD.greedy_half_of_cofinal_upper_carry",
+    "Erdos249257.ExternalVerification257PaperStatementsD.paper_greedy_survival"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

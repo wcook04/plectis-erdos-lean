@@ -1,0 +1,21 @@
+{
+  "challenge_module": "PalomarCorpus.E249g.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E249g",
+  "theorem_names": [
+    "PalomarCorpus.E249.PaperStatementsG.b6_adjugate_tail_cost_floor",
+    "PalomarCorpus.E249.PaperStatementsG.b6_compressed_adjoint_identity_impossible",
+    "PalomarCorpus.E249.PaperStatementsG.b6_rankOneSubrankQuotient_sub_totientSeries_offset_gt",
+    "PalomarCorpus.E249.PaperStatementsG.diagonalPincerCertificateScales_list",
+    "PalomarCorpus.E249.PaperStatementsG.diagonalPincerKillDepth_list",
+    "PalomarCorpus.E249.PaperStatementsG.historical_table_size_and_initial_depths",
+    "PalomarCorpus.E249.PaperStatementsG.sixteen_certificate_windows",
+    "PalomarCorpus.E249.PaperStatementsG.small_certificate_windows",
+    "PalomarCorpus.E249.PaperStatementsG.totientBlock_eq_paper_indexed_sum"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification257PaperStructuresBA.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStructuresBA",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStructuresBA.exists_laterProtectedExactLocalMersenneRow"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

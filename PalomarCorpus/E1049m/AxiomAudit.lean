@@ -1,0 +1,6 @@
+import Solutions.PalomarCorpus.E1049m
+
+#print axioms PalomarCorpus.E1049.PaperStatementsM.endpoint_residues
+#print axioms PalomarCorpus.E1049.PaperStatementsM.endpoint_scalar_content_exclusion
+#print axioms PalomarCorpus.E1049.PaperStatementsM.fourJet_paper_statement
+#print axioms PalomarCorpus.E1049.PaperStatementsM.rank_fortyone

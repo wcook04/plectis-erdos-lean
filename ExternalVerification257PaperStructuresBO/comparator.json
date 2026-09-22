@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification257PaperStructuresBO.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStructuresBO",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStructuresBO.arbitraryWeightMixedSupport_allBase_hereditary"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

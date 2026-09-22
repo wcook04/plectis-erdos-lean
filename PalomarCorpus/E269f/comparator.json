@@ -1,0 +1,17 @@
+{
+  "challenge_module": "PalomarCorpus.E269f.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E269f",
+  "theorem_names": [
+    "PalomarCorpus.E269.PaperStatementsF.firstClearingIndex_le_sufficient",
+    "PalomarCorpus.E269.PaperStatementsF.firstClearingIndex_minimal",
+    "PalomarCorpus.E269.PaperStatementsF.firstClearingIndex_spec",
+    "PalomarCorpus.E269.PaperStatementsF.long_window_growth",
+    "PalomarCorpus.E269.PaperStatementsF.scaled_state_is_integer_iff_firstClearingIndex_le"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

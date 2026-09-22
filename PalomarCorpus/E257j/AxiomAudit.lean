@@ -1,0 +1,4 @@
+import Solutions.PalomarCorpus.E257j
+
+#print axioms PalomarCorpus.E257.PaperStatementsJ.paper_forced_greedy_unique_support_and_criterion
+#print axioms PalomarCorpus.E257.PaperStatementsJ.paper_rung_finite_decision

@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification249PaperStatementsJ
+
+#print axioms Erdos249257.ExternalVerification249PaperStatementsJ.b6_mobiusMersenneTheta_two_eq_totientSeries_sub_half

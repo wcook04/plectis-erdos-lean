@@ -1,0 +1,3 @@
+import Solutions.PalomarCorpus.E257bo
+
+#print axioms PalomarCorpus.E257.PaperStructuresBO.arbitraryWeightMixedSupport_allBase_hereditary

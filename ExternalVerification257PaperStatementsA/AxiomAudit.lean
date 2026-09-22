@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification257PaperStatementsA
+
+#print axioms Erdos249257.ExternalVerification257PaperStatementsA.affineBinaryOrbit_mod_twoPow_eq

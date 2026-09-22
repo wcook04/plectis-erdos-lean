@@ -1,0 +1,13 @@
+{
+  "challenge_module": "PalomarCorpus.E251i.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E251i",
+  "theorem_names": [
+    "PalomarCorpus.E251.PaperStatementsI.local_target_interval"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

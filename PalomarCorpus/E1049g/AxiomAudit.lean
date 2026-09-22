@@ -1,0 +1,4 @@
+import Solutions.PalomarCorpus.E1049g
+
+#print axioms PalomarCorpus.E1049.PaperStatementsG.order_zudilinNormalizedHankelDet_all
+#print axioms PalomarCorpus.E1049.PaperStatementsG.thirtyoneFour_outside_bv_inside_contour

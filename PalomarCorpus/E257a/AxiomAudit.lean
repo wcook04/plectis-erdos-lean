@@ -1,0 +1,3 @@
+import Solutions.PalomarCorpus.E257a
+
+#print axioms PalomarCorpus.E257.PaperStatementsA.affineBinaryOrbit_mod_twoPow_eq

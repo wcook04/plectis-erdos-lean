@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ExternalVerification257PaperStatementsJ.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStatementsJ",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStatementsJ.paper_forced_greedy_unique_support_and_criterion",
+    "Erdos249257.ExternalVerification257PaperStatementsJ.paper_rung_finite_decision"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

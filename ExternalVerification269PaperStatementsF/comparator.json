@@ -1,0 +1,17 @@
+{
+  "challenge_module": "ExternalVerification269PaperStatementsF.Challenge",
+  "solution_module": "Solutions.ExternalVerification269PaperStatementsF",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification269PaperStatementsF.firstClearingIndex_le_sufficient",
+    "Erdos249257.ExternalVerification269PaperStatementsF.firstClearingIndex_minimal",
+    "Erdos249257.ExternalVerification269PaperStatementsF.firstClearingIndex_spec",
+    "Erdos249257.ExternalVerification269PaperStatementsF.scaled_state_is_integer_iff_firstClearingIndex_le",
+    "Erdos249257.ExternalVerification269PaperStatementsF.long_window_growth"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

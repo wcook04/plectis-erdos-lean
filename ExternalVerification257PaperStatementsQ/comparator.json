@@ -1,0 +1,15 @@
+{
+  "challenge_module": "ExternalVerification257PaperStatementsQ.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStatementsQ",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStatementsQ.paper_exact_row_integerHalfCarry_eq_one",
+    "Erdos249257.ExternalVerification257PaperStatementsQ.paper_integerHalfCarry_eq_two_pow_sub_localPrefixQuotient",
+    "Erdos249257.ExternalVerification257PaperStatementsQ.paper_mobiusCenteredHalfCarry_add_two"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

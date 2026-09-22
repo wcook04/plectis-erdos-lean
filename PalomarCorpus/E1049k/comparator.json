@@ -1,0 +1,16 @@
+{
+  "challenge_module": "PalomarCorpus.E1049k.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E1049k",
+  "theorem_names": [
+    "PalomarCorpus.E1049.PaperStatementsK.charge_ceilings",
+    "PalomarCorpus.E1049.PaperStatementsK.forcing_term",
+    "PalomarCorpus.E1049.PaperStatementsK.power_bracket",
+    "PalomarCorpus.E1049.PaperStatementsK.scalar_margin"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

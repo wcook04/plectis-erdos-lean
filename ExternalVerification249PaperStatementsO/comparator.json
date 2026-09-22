@@ -1,0 +1,15 @@
+{
+  "challenge_module": "ExternalVerification249PaperStatementsO.Challenge",
+  "solution_module": "Solutions.ExternalVerification249PaperStatementsO",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249PaperStatementsO.b6_mobiusMersennePrefix_eq_icc_sum",
+    "Erdos249257.ExternalVerification249PaperStatementsO.b6_mobiusMersenne_rung_estimates",
+    "Erdos249257.ExternalVerification249PaperStatementsO.rankOne_denominator_pos"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

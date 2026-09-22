@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ExternalVerification257PaperStructuresBG.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStructuresBG",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStructuresBG.paper_protected_row_crossing_beyond_cutoff",
+    "Erdos249257.ExternalVerification257PaperStructuresBG.paper_protected_row_endpoint_growth"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

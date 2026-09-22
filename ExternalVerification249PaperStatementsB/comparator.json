@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ExternalVerification249PaperStatementsB.Challenge",
+  "solution_module": "Solutions.ExternalVerification249PaperStatementsB",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249PaperStatementsB.sternBrocotDepthMass_error",
+    "Erdos249257.ExternalVerification249PaperStatementsB.tendsto_sternBrocotDepthMass"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

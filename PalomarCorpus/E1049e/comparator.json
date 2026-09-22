@@ -1,0 +1,19 @@
+{
+  "challenge_module": "PalomarCorpus.E1049e.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E1049e",
+  "theorem_names": [
+    "PalomarCorpus.E1049.PaperStatementsE.coordinatewiseCorridor_implies_pow_lt_linear",
+    "PalomarCorpus.E1049.PaperStatementsE.paperE_eq_rowExponent",
+    "PalomarCorpus.E1049.PaperStatementsE.paperRatio_agree",
+    "PalomarCorpus.E1049.PaperStatementsE.paperReciprocal_rec",
+    "PalomarCorpus.E1049.PaperStatementsE.paperReciprocal_zero",
+    "PalomarCorpus.E1049.PaperStatementsE.sevenHalves_archimedean_height_condition",
+    "PalomarCorpus.E1049.PaperStatementsE.three_mul_lt_two_pow_succ"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

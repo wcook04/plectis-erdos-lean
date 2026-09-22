@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification243PaperStatementsR
+
+#print axioms Erdos249257.ExternalVerification243PaperStatementsR.recordTheta_le_of_slow_negative

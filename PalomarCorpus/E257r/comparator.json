@@ -1,0 +1,13 @@
+{
+  "challenge_module": "PalomarCorpus.E257r.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257r",
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStatementsR.paper_finite_support_and_onesided_certificate"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

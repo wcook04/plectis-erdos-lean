@@ -1,0 +1,81 @@
+version: v0.4
+project:
+  name: 'Erdős problem #257: independently restated paper-linked theorems, band n'
+  description: >-
+    Erdős problem #257 remains open and no theorem in this entry decides it. The entry restates 20 theorems of the paper-linked Lean development for that problem against Mathlib alone, with every definition the statements mention copied into the Challenge. Each statement was bound to a paper statement in the coverage ledger before the wrapper was generated, and the corresponding source declaration is named in the declaration's own documentation. 20 of the transports are direct term applications, which certify that the restated statement is definitionally the refereed source statement; 0 go through a tactic bridge and certify implication. The substantive development is in this repository and at public commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84 of https://github.com/wcook04/plectis-erdos.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - "11A25"
+  - "11B83"
+sources:
+- title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: The compared theorems are independently restated Lean theorems proved in this repository and described in the eight public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos. They do not solve the parent Erdős problem.
+  license: Apache-2.0
+  author_endorsement: participated
+- title: Erdős Problems catalogue
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com
+  type: web discussion
+  relationship: background
+  note: Catalogue numbering and open status of the parent problem. Compared theorems are not claimed as a solution of that problem.
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+status:
+  scope: One publication Comparator configuration selecting the theorems named in the project description for Erdős problem #257; other paper-linked declarations for this problem that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected here. The sibling PalomarCorpus/E* entries cover the other seven problems at this commit.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 20
+  sorry_boundary: The deliberate placeholders are the trusted Challenge theorem bodies; Solution proof terms are supplied, but fresh kernel, axiom-budget, Comparator and NanoDa validation is pending.
+  axiom_audit_status: pending fresh target-toolchain axiom audit; no checked status is claimed for this candidate
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  development_status: substantive
+  local_proof_provenance: the ErdosProblems.Erdos257 proof modules in this repository, imported by Solutions.PalomarCorpus.E257n; the Solutions.ExternalVerification257* family modules are a regression mirror of the same proofs and are not imported by this configuration
+  canonical_claim_status: candidate problem-level Comparator wrapper; fresh verification pending
+automation:
+  methods:
+  - method: manual
+    models: []
+    framework: Mathematical interpretation and claim-boundary review
+    tool_setup: Human-directed scope and significance review
+  - method: agent
+    models:
+    - Anthropic Claude
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+    cost:
+      wall_time: not tracked
+      spend_usd: subscription-based
+      hardware: local machine
+      prompting_notes: n/a
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    Every statement in this entry was bound to a paper statement and refereed in the eight-paper coverage ledger before the wrapper was generated, and the transport proof was elaborated before the statement was accepted. Fresh kernel, axiom-budget, Comparator and NanoDa checks remain pending. No external human referee report is claimed.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

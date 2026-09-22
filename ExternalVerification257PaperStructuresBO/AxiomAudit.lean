@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification257PaperStructuresBO
+
+#print axioms Erdos249257.ExternalVerification257PaperStructuresBO.arbitraryWeightMixedSupport_allBase_hereditary

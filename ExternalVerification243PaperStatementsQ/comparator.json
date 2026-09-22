@@ -1,0 +1,19 @@
+{
+  "challenge_module": "ExternalVerification243PaperStatementsQ.Challenge",
+  "solution_module": "Solutions.ExternalVerification243PaperStatementsQ",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification243PaperStatementsQ.canonicalError_div_overlapDebt",
+    "Erdos249257.ExternalVerification243PaperStatementsQ.digitProductScale_eq_canonicalDenominator",
+    "Erdos249257.ExternalVerification243PaperStatementsQ.erdosStrausQuantity_ne_productDefect_ne_lcmShift",
+    "Erdos249257.ExternalVerification243PaperStatementsQ.erdosStrausQuantity_sign",
+    "Erdos249257.ExternalVerification243PaperStatementsQ.erdosStraus_lcm_includes_digit_not_denominator",
+    "Erdos249257.ExternalVerification243PaperStatementsQ.overlapDebt_dvd_gcd",
+    "Erdos249257.ExternalVerification243PaperStatementsQ.overlapDebt_mul_lcmClearedNumerator"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

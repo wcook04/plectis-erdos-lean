@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ExternalVerification257PaperStatementsG.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStatementsG",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStatementsG.half_mem_mersenneAchievementSet_iff_no_lastHalfGreedySkip",
+    "Erdos249257.ExternalVerification257PaperStatementsG.isLastHalfGreedySkip_iff_skip_and_fatal"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

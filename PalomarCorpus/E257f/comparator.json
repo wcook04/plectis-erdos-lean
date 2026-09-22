@@ -1,0 +1,22 @@
+{
+  "challenge_module": "PalomarCorpus.E257f.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257f",
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStatementsF.cofinalExactLocalMersenneHalfRows_of_positiveHalfGreedySkips",
+    "PalomarCorpus.E257.PaperStatementsF.eq_halfGreedyPrefixSupport_of_critical_crossing",
+    "PalomarCorpus.E257.PaperStatementsF.exactLocalMersenneHalfRow_of_positiveHalfGreedySkip",
+    "PalomarCorpus.E257.PaperStatementsF.halfGreedySkippedCriticalQuotientSupply_of_precriticalSuffix",
+    "PalomarCorpus.E257.PaperStatementsF.halfGreedySkippedPrecriticalSuffixSupply_iff_preTake",
+    "PalomarCorpus.E257.PaperStatementsF.halfGreedy_precriticalSuffix_lt_iff_futureSkipCoverage",
+    "PalomarCorpus.E257.PaperStatementsF.halfGreedy_precriticalSuffix_lt_of_future_skip_after_takenBlock",
+    "PalomarCorpus.E257.PaperStatementsF.halfGreedy_precriticalSuffix_lt_of_next_skip",
+    "PalomarCorpus.E257.PaperStatementsF.half_mem_mersenneAchievementSet_of_skippedFullShellNonnegative",
+    "PalomarCorpus.E257.PaperStatementsF.skippedCoreCriticalQuotientSupply_iff_halfGreedySkipped"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

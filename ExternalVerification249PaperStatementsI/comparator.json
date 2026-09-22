@@ -1,0 +1,22 @@
+{
+  "challenge_module": "ExternalVerification249PaperStatementsI.Challenge",
+  "solution_module": "Solutions.ExternalVerification249PaperStatementsI",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249PaperStatementsI.historical_table_and_complete_band",
+    "Erdos249257.ExternalVerification249PaperStatementsI.sixteen_certificates_and_exclusions",
+    "Erdos249257.ExternalVerification249PaperStatementsI.small_certificates_and_exclusions",
+    "Erdos249257.ExternalVerification249PaperStatementsI.b6_synthetic_sequence_prescribed_differences",
+    "Erdos249257.ExternalVerification249PaperStatementsI.b6_synthetic_shift_combinations_same_form",
+    "Erdos249257.ExternalVerification249PaperStatementsI.certifiedKill_diagonal_table",
+    "Erdos249257.ExternalVerification249PaperStatementsI.exists_diagonalKill_le_82_paper",
+    "Erdos249257.ExternalVerification249PaperStatementsI.exists_diagonalKill_on_table",
+    "Erdos249257.ExternalVerification249PaperStatementsI.irrational_of_logarithmicDepth_diagonal_supply",
+    "Erdos249257.ExternalVerification249PaperStatementsI.periodLcm_seventeen_window_data"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

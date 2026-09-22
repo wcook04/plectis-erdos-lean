@@ -1,0 +1,3 @@
+import Solutions.PalomarCorpus.E257aw
+
+#print axioms PalomarCorpus.E257.PaperStructuresAW.paper_compatible_first_condition_gives_nonneg

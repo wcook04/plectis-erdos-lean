@@ -1,0 +1,4 @@
+import Solutions.PalomarCorpus.E257i
+
+#print axioms PalomarCorpus.E257.PaperStatementsI.mobiusCenteredHalfCarry_add_two
+#print axioms PalomarCorpus.E257.PaperStatementsI.mobiusCenteredHalfCarry_nonneg_of_supportSeries_lt_half

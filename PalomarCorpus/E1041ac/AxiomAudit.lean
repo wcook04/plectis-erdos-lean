@@ -1,0 +1,5 @@
+import Solutions.PalomarCorpus.E1041ac
+
+#print axioms PalomarCorpus.E1041.PaperStatementsAC.circle_slice_packing
+#print axioms PalomarCorpus.E1041.PaperStatementsAC.circle_slice_packing_abstract
+#print axioms PalomarCorpus.E1041.PaperStatementsAC.dual_arity_floor_abstract

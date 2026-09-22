@@ -1,0 +1,13 @@
+{
+  "challenge_module": "PalomarCorpus.E249e.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E249e",
+  "theorem_names": [
+    "PalomarCorpus.E249.PaperStatementsE.fiveQuarter_comparison_rational_with_carryRank_floor"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

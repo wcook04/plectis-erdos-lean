@@ -1,0 +1,15 @@
+{
+  "challenge_module": "PalomarCorpus.E257k.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257k",
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStatementsK.paper_both_cofinal_statements_iff_half_membership",
+    "PalomarCorpus.E257.PaperStatementsK.paper_critical_crossing_support_is_greedy_prefix",
+    "PalomarCorpus.E257.PaperStatementsK.six_membership_conditions"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

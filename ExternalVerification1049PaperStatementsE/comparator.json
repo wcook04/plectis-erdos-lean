@@ -1,0 +1,19 @@
+{
+  "challenge_module": "ExternalVerification1049PaperStatementsE.Challenge",
+  "solution_module": "Solutions.ExternalVerification1049PaperStatementsE",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1049PaperStatementsE.paperE_eq_rowExponent",
+    "Erdos249257.ExternalVerification1049PaperStatementsE.paperRatio_agree",
+    "Erdos249257.ExternalVerification1049PaperStatementsE.paperReciprocal_rec",
+    "Erdos249257.ExternalVerification1049PaperStatementsE.paperReciprocal_zero",
+    "Erdos249257.ExternalVerification1049PaperStatementsE.coordinatewiseCorridor_implies_pow_lt_linear",
+    "Erdos249257.ExternalVerification1049PaperStatementsE.sevenHalves_archimedean_height_condition",
+    "Erdos249257.ExternalVerification1049PaperStatementsE.three_mul_lt_two_pow_succ"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

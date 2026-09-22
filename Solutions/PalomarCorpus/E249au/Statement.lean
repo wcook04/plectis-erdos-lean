@@ -38,6 +38,10 @@ noncomputable def ActualLcmTopEdgeResidueGap (a J K m : ℕ) : Prop :=
           (periodLcm (2 ^ a) + J) K % (2 : ℤ) ^ m ≤
         (2 : ℤ) ^ m -
           ((2 * periodLcm (2 ^ a) + J + K + 2 : ℕ) : ℤ)
+/-- Cofinal supply target for the genuinely non-vacuous one-sided actual-word gap. Local copy of Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.PowerTwoActualLcmTopEdgeResidueGapSupply, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def PowerTwoActualLcmTopEdgeResidueGapSupply : Prop :=
+  ∀ a₀ : ℕ, ∃ a K m : ℕ, a₀ ≤ a ∧ 8 ≤ a ∧
+    K + (a + 6) < 2 * 2 ^ a ∧ ActualLcmTopEdgeResidueGap a 0 K m
 /-- The LCM height used by the power-two endpoint at exponent `a`. Local copy of Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmHeight, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def actualLcmHeight (a : ℕ) : ℕ :=
   periodLcm (2 ^ a)
@@ -47,6 +51,24 @@ noncomputable def totientTail (N : ℕ) : ℝ :=
 /-- The actual LCM-diagonal tail orbit at exponent `a`. Local copy of Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmTailOrbit, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def actualLcmTailOrbit (a : ℕ) : ℝ :=
   totientTail (2 * actualLcmHeight a) - totientTail (actualLcmHeight a)
+/-- The integral correction for the primes shared by `j` and `x` in the totient of the product `j*x`. Local copy of Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.totientOverlapFactor, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def totientOverlapFactor (j x : ℕ) : ℕ :=
+  (Nat.totient j / Nat.totient (Nat.gcd j x)) * Nat.gcd j x
+/-- The quotient-scale letter attached to a divisor offset `j | H` on the actual diagonal. Its two overlap factors record exactly which saturated prime powers of `j` reappear in `H/j + 1` and `2*(H/j) + 1`. Local copy of Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.lcmDivisorRayLetter, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def lcmDivisorRayLetter (H j : ℕ) : ℤ :=
+  let a := H / j
+  ((totientOverlapFactor j (2 * a + 1) *
+      Nat.totient (2 * a + 1) : ℕ) : ℤ) -
+    ((totientOverlapFactor j (a + 1) *
+      Nat.totient (a + 1) : ℕ) : ℤ)
+/-- The window step `a_n = φ(n+h) - φ(n)` driving the carry recurrence. Local copy of Erdos249257.TotientTailPeriodKiller.deltaTotient, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def deltaTotient (h n : ℕ) : ℤ := (Nat.totient (n + h) : ℤ) - (Nat.totient n : ℤ)
+/-- Actual LCM-ray letter: divisor offsets use the exact quotient-scale formula, while nondivisor offsets retain the literal totient difference. Local copy of Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.lcmRayArithmeticLetter, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def lcmRayArithmeticLetter (t j : ℕ) : ℤ :=
+  if j ∣ periodLcm t then
+    lcmDivisorRayLetter (periodLcm t) j
+  else
+    deltaTotient (periodLcm t) (periodLcm t + j)
 /-- Predicate for a real quantity to be an integer. Local copy of Erdos249257.DiagonalPincerDecomposition.IsIntegralValue, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def IsIntegralValue (x : ℝ) : Prop := x ∈ Set.range ((↑) : ℤ → ℝ)
 /-- The diagonal tail difference `D(H) = R_(2H) - R_H`. Local copy of Erdos249257.PrimeJumpWindow.diagonalTailDifferenceAt, restated so the compared statements elaborate against Mathlib alone. -/
@@ -55,9 +77,6 @@ noncomputable def diagonalTailDifferenceAt (H : ℕ) : ℝ :=
 /-- Exact direct tail radius for the four-vertex commutator. Local copy of Erdos249257.PrimeJumpWindow.primeJumpSharpRadius, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def primeJumpSharpRadius (H p L : ℕ) : ℤ :=
   3 * p * H + (p + 1) * (L + 2)
-/-- The prime-jump commutator `J(H,p) = D(pH) - p D(H)`. Local copy of Erdos249257.PrimeJumpWindow.primeJumpTailCommutator, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def primeJumpTailCommutator (H p : ℕ) : ℝ :=
-  diagonalTailDifferenceAt (p * H) - p * diagonalTailDifferenceAt H
 /-- The depth-`L` window numerator `P_L(M) = Σ_{j<L} φ(M+1+j)·2^{L-1-j}`: the integer layer of `2^L·R_M`, exact up to the one-sided deep tail `0 ≤ 2^L·R_M - P_L(M) ≤ M+L+2`. Local copy of Erdos249257.TotientTailPeriodKiller.windowNumerator, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def windowNumerator (M L : ℕ) : ℕ :=
   ∑ j ∈ Finset.range L, Nat.totient (M + 1 + j) * 2 ^ (L - 1 - j)
@@ -67,6 +86,15 @@ noncomputable def primeJumpWindowCommutator (H p L : ℕ) : ℤ :=
     (windowNumerator (p * H) L : ℤ) -
     p * (windowNumerator (2 * H) L : ℤ) +
     p * (windowNumerator H L : ℤ)
+/-- Decidable direct consumer: the four-vertex window stays outside the sharp tail band around the integer lattice. Local copy of Erdos249257.PrimeJumpWindow.primeJumpSharpKill, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def primeJumpSharpKill (H p L : ℕ) : Prop :=
+  primeJumpSharpRadius H p L <
+      primeJumpWindowCommutator H p L % 2 ^ L ∧
+    primeJumpWindowCommutator H p L % 2 ^ L <
+      2 ^ L - primeJumpSharpRadius H p L
+/-- The prime-jump commutator `J(H,p) = D(pH) - p D(H)`. Local copy of Erdos249257.PrimeJumpWindow.primeJumpTailCommutator, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def primeJumpTailCommutator (H p : ℕ) : ℝ :=
+  diagonalTailDifferenceAt (p * H) - p * diagonalTailDifferenceAt H
 /-- The residue angle used by the first additive character. Local copy of Erdos249257.TotientTailPeriodKiller.windowFirstAngle, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def windowFirstAngle (h N L : ℕ) : ℝ :=
   2 * Real.pi *
@@ -91,6 +119,10 @@ noncomputable def DTWWindowSeparatedPairsAt (h : ℕ) : Prop :=
 /-- Fibre-free counted window-phase anti-concentration at every positive shift; neither primality nor a pivot factorization is part of the statement. Local copy of Erdos249257.TotientTailPeriodKiller.DTWWindowSeparatedPairs, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def DTWWindowSeparatedPairs : Prop :=
   ∀ h : ℕ, 0 < h → DTWWindowSeparatedPairsAt h
+/-- The integer carry orbit launched from candidate `d` at position `N`: `orbit 0 = d`, `orbit (i+1) = 2·orbit i - a_{N+i+1}`. If `D_h(N)` is the integer `d`, this orbit equals `D_h(N+i)` forever. Local copy of Erdos249257.TotientTailPeriodKiller.carryOrbit, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def carryOrbit (h N : ℕ) (d : ℤ) : ℕ → ℤ
+  | 0 => d
+  | i + 1 => 2 * carryOrbit h N d i - deltaTotient h (N + i + 1)
 /-- The decidable period-killer certificate: the residue of `A_{h,N,L}` modulo `2^L` avoids the radius-`(N+h+L+2)` neighbourhood of `0`. Local copy of Erdos249257.TotientTailPeriodKiller.certifiedKill, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def certifiedKill (h N L : ℕ) : Prop :=
   (N + h + L + 2 : ℤ) < windowDiscrepancy h N L % 2 ^ L ∧
@@ -102,8 +134,6 @@ noncomputable def windowDiscrepancy2 (h N L : ℕ) : ℤ :=
 noncomputable def certifiedRank2Kill (h N L : ℕ) : Prop :=
   (2 * ((N : ℤ) + 2 * h + L + 2)) < windowDiscrepancy2 h N L % 2 ^ L ∧
     windowDiscrepancy2 h N L % 2 ^ L < 2 ^ L - 2 * ((N : ℤ) + 2 * h + L + 2)
-/-- The window step `a_n = φ(n+h) - φ(n)` driving the carry recurrence. Local copy of Erdos249257.TotientTailPeriodKiller.deltaTotient, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def deltaTotient (h n : ℕ) : ℤ := (Nat.totient (n + h) : ℤ) - (Nat.totient n : ℤ)
 /-- The integer prefix `Φ_N = ∑_{n=0}^{N} φ(n)·2^{N-n}` of `2^N · S`. Local copy of Erdos249257.TotientTailPeriodKiller.totientPrefix, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def totientPrefix (N : ℕ) : ℕ :=
   ∑ n ∈ Finset.range (N + 1), Nat.totient n * 2 ^ (N - n)

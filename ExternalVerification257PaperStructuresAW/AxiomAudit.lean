@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification257PaperStructuresAW
+
+#print axioms Erdos249257.ExternalVerification257PaperStructuresAW.paper_compatible_first_condition_gives_nonneg

@@ -1,0 +1,14 @@
+{
+  "challenge_module": "PalomarCorpus.E257i.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257i",
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStatementsI.mobiusCenteredHalfCarry_add_two",
+    "PalomarCorpus.E257.PaperStatementsI.mobiusCenteredHalfCarry_nonneg_of_supportSeries_lt_half"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

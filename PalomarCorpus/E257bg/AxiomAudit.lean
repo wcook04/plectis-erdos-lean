@@ -1,0 +1,4 @@
+import Solutions.PalomarCorpus.E257bg
+
+#print axioms PalomarCorpus.E257.PaperStructuresBG.paper_protected_row_crossing_beyond_cutoff
+#print axioms PalomarCorpus.E257.PaperStructuresBG.paper_protected_row_endpoint_growth

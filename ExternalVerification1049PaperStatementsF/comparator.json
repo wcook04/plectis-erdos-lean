@@ -1,0 +1,15 @@
+{
+  "challenge_module": "ExternalVerification1049PaperStatementsF.Challenge",
+  "solution_module": "Solutions.ExternalVerification1049PaperStatementsF",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1049PaperStatementsF.bottomJet3_eq_zero_iff_dvd",
+    "Erdos249257.ExternalVerification1049PaperStatementsF.commonMultiplier_not_two_not_three_of_endpoint_units",
+    "Erdos249257.ExternalVerification1049PaperStatementsF.cyclotomicHomEval_isCoprime_mul"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

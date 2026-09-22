@@ -1,0 +1,15 @@
+{
+  "challenge_module": "PalomarCorpus.E1041ac.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E1041ac",
+  "theorem_names": [
+    "PalomarCorpus.E1041.PaperStatementsAC.circle_slice_packing",
+    "PalomarCorpus.E1041.PaperStatementsAC.circle_slice_packing_abstract",
+    "PalomarCorpus.E1041.PaperStatementsAC.dual_arity_floor_abstract"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

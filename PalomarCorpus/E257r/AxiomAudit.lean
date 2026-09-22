@@ -1,0 +1,3 @@
+import Solutions.PalomarCorpus.E257r
+
+#print axioms PalomarCorpus.E257.PaperStatementsR.paper_finite_support_and_onesided_certificate

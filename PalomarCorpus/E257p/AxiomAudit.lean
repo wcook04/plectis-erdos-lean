@@ -1,0 +1,4 @@
+import Solutions.PalomarCorpus.E257p
+
+#print axioms PalomarCorpus.E257.PaperStatementsP.paper_carry_survivor_extinction
+#print axioms PalomarCorpus.E257.PaperStatementsP.paper_periodLcm_is_prefix_lcm

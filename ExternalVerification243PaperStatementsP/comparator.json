@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification243PaperStatementsP.Challenge",
+  "solution_module": "Solutions.ExternalVerification243PaperStatementsP",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification243PaperStatementsP.scale_twelve_of_square_in_rootField"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

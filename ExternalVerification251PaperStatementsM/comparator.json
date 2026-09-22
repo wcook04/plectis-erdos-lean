@@ -1,0 +1,15 @@
+{
+  "challenge_module": "ExternalVerification251PaperStatementsM.Challenge",
+  "solution_module": "Solutions.ExternalVerification251PaperStatementsM",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification251PaperStatementsM.realTailShift_integral_add",
+    "Erdos249257.ExternalVerification251PaperStatementsM.affine_circularity_bundle",
+    "Erdos249257.ExternalVerification251PaperStatementsM.irrational_initial_iff_all_lcmDiagonal_nonintegral"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

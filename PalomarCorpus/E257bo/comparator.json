@@ -1,0 +1,13 @@
+{
+  "challenge_module": "PalomarCorpus.E257bo.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257bo",
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStructuresBO.arbitraryWeightMixedSupport_allBase_hereditary"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

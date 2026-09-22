@@ -1,0 +1,3 @@
+import Solutions.PalomarCorpus.E249k
+
+#print axioms PalomarCorpus.E249.PaperStatementsK.b6_mobius_incidence_unimodular_and_injective

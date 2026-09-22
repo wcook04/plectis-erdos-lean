@@ -1,0 +1,90 @@
+version: v0.4
+project:
+  name: 'Formal reductions for Erdős problem #68'
+  description: >-
+    A Comparator-checkable restatement of the paper-linked Lean theorems that
+    actually have proof coverage for Erdős problem #68. The compared
+    surface includes 1 independently stated declarations
+    (product_lcm_pairwise_gcd). The parent problem remains open. This repository
+    is the substantive formalization, not a thin wrapper around another public
+    repo. This entry is one of eight problem-level Palomar configurations at
+    the same repository and commit.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.NT
+  - math.CA
+  - math.CV
+  msc2020:
+  - "11A25"
+  - "11B83"
+  - "11B05"
+  - "30C10"
+sources:
+- title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: The compared theorems are independently restated Lean theorems proved in this repository and described in the eight public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos. They do not solve the parent Erdős problem.
+  license: Apache-2.0
+  author_endorsement: participated
+- title: Erdős Problems catalogue
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com
+  type: web discussion
+  relationship: background
+  note: Catalogue numbering and open status of the parent problem. Compared theorems are not claimed as a solution of that problem.
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+status:
+  scope: One publication Comparator configuration selecting the theorems named in the project description for Erdős problem #68; other paper-linked declarations for this problem that live only in the per-family ExternalVerification68* directories are internal regression inventory and are not selected here. The sibling PalomarCorpus/E* entries cover the other seven problems at this commit.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 1
+  sorry_boundary: The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E68d/Challenge.lean; every Solution proof is complete.
+  axiom_audit_status: every compared theorem is printed with axioms propext, Quot.sound and Classical.choice only by scripts/check_axiom_budget.py --run-palomar, which the release gate runs on the built Solution environments
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  development_status: substantive
+  local_proof_provenance: the ErdosProblems.Erdos68 proof modules in this repository, imported by Solutions.PalomarCorpus.E68d; the Solutions.ExternalVerification68* family modules are a regression mirror of the same proofs and are not imported by this configuration
+  canonical_claim_status: problem-level Comparator wrapper over substantive Lean in this repository
+automation:
+  methods:
+  - method: manual
+    models: []
+    framework: Mathematical interpretation and claim-boundary review
+    tool_setup: Human-directed scope and significance review
+  - method: agent
+    models:
+    - Anthropic Claude
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+    cost:
+      wall_time: not tracked
+      spend_usd: subscription-based
+      hardware: local machine
+      prompting_notes: n/a
+review:
+  status: self-assessed
+  reviewers: []
+  notes: Every compared statement was checked declaration by declaration against the public problem note, the reasoning record for Erdős problem #68 at https://github.com/wcook04/plectis-erdos and the Lean sources in two automated passes run with Anthropic Claude on 2026-09-13 (an alignment review of each docstring against its Lean statement, then a simulated editorial review under Palomar's published prompts); the author applied every finding before publication and is responsible for the selection and the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

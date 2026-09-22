@@ -1,0 +1,11 @@
+import Solutions.PalomarCorpus.E249a
+
+#print axioms PalomarCorpus.E249.PaperStatementsA.actualLcmTailDiff_shift_pos
+#print axioms PalomarCorpus.E249.PaperStatementsA.actualLcm_integral_forces_topEdgeResidue
+#print axioms PalomarCorpus.E249.PaperStatementsA.carryOrbit_eq_tail_diff
+#print axioms PalomarCorpus.E249.PaperStatementsA.dvd_periodLcm
+#print axioms PalomarCorpus.E249.PaperStatementsA.eq_prime_pow_of_not_dvd_periodLcm
+#print axioms PalomarCorpus.E249.PaperStatementsA.irrational_totient_series_iff_lcm_diagonal_certificate_supply
+#print axioms PalomarCorpus.E249.PaperStatementsA.irrational_totient_series_of_lcm_cone_nonintegrality_supply
+#print axioms PalomarCorpus.E249.PaperStatementsA.irrational_totient_series_of_lcm_diagonal_nonintegrality_supply
+#print axioms PalomarCorpus.E249.PaperStatementsA.periodLcm_diagonal_kill_iff_tail_diff_notMem_int

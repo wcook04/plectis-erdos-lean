@@ -1,0 +1,15 @@
+{
+  "challenge_module": "PalomarCorpus.E243m.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E243m",
+  "theorem_names": [
+    "PalomarCorpus.E243.PaperStatementsM.canonical_recordTheta_eq_zero_iff",
+    "PalomarCorpus.E243.PaperStatementsM.canonical_recordTheta_gt_one",
+    "PalomarCorpus.E243.PaperStatementsM.canonical_recordTheta_zero_or_gt_one"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

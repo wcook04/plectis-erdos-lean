@@ -1,0 +1,15 @@
+{
+  "challenge_module": "PalomarCorpus.E1049f.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E1049f",
+  "theorem_names": [
+    "PalomarCorpus.E1049.PaperStatementsF.bottomJet3_eq_zero_iff_dvd",
+    "PalomarCorpus.E1049.PaperStatementsF.commonMultiplier_not_two_not_three_of_endpoint_units",
+    "PalomarCorpus.E1049.PaperStatementsF.cyclotomicHomEval_isCoprime_mul"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

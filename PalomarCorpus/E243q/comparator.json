@@ -1,0 +1,19 @@
+{
+  "challenge_module": "PalomarCorpus.E243q.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E243q",
+  "theorem_names": [
+    "PalomarCorpus.E243.PaperStatementsQ.canonicalError_div_overlapDebt",
+    "PalomarCorpus.E243.PaperStatementsQ.digitProductScale_eq_canonicalDenominator",
+    "PalomarCorpus.E243.PaperStatementsQ.erdosStrausQuantity_ne_productDefect_ne_lcmShift",
+    "PalomarCorpus.E243.PaperStatementsQ.erdosStrausQuantity_sign",
+    "PalomarCorpus.E243.PaperStatementsQ.erdosStraus_lcm_includes_digit_not_denominator",
+    "PalomarCorpus.E243.PaperStatementsQ.overlapDebt_dvd_gcd",
+    "PalomarCorpus.E243.PaperStatementsQ.overlapDebt_mul_lcmClearedNumerator"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

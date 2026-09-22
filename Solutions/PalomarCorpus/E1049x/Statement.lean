@@ -32,6 +32,13 @@ open scoped Polynomial
 open scoped RatFunc
 open Filter
 open Topology
+/-- `max k 1`, as an integer. Using `max k 1` keeps the substitution below a total function of `k`; every statement about it carries `1 ≤ k`, where it is `k`. Local copy of ErdosProblems.Erdos1049.PaperCompleteR21.kpos, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def kpos (k : ℕ) : ℤ := ((max k 1 : ℕ) : ℤ)
+/-- Local copy of ErdosProblems.Erdos1049.PaperCompleteR21.kpos_pos, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def kpos_pos (k : ℕ) : 0 < kpos k := by
+  have h : 1 ≤ max k 1 := le_max_right k 1
+  have h' : (1 : ℤ) ≤ ((max k 1 : ℕ) : ℤ) := by exact_mod_cast h
+  exact lt_of_lt_of_le zero_lt_one h'
 /-- The substitution `z ↦ z ^ k` on `ℚ((z))`, as a ring homomorphism. Local copy of ErdosProblems.Erdos1049.PaperCompleteR21.subs, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def subs (k : ℕ) : ℚ⸨X⸩ →+* ℚ⸨X⸩ :=
   HahnSeries.embDomainRingHom (AddMonoidHom.mulLeft (kpos k))

@@ -1,0 +1,15 @@
+{
+  "challenge_module": "PalomarCorpus.E1049h.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E1049h",
+  "theorem_names": [
+    "PalomarCorpus.E1049.PaperStatementsH.all_row_initial",
+    "PalomarCorpus.E1049.PaperStatementsH.all_row_initial_dvd",
+    "PalomarCorpus.E1049.PaperStatementsH.all_row_initial_reciprocal"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

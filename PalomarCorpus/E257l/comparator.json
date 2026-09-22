@@ -1,0 +1,17 @@
+{
+  "challenge_module": "PalomarCorpus.E257l.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257l",
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStatementsL.paper_cofiniteRightTail_ne_zero_centeredEndpoint",
+    "PalomarCorpus.E257.PaperStatementsL.paper_relaxed_constant_six_every_depth",
+    "PalomarCorpus.E257.PaperStatementsL.paper_square_depth_terminal_bound",
+    "PalomarCorpus.E257.PaperStatementsL.paper_terminal_strip_forces_half_membership",
+    "PalomarCorpus.E257.PaperStatementsL.square_depth_witness"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

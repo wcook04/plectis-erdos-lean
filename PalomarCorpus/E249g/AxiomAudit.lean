@@ -1,0 +1,11 @@
+import Solutions.PalomarCorpus.E249g
+
+#print axioms PalomarCorpus.E249.PaperStatementsG.b6_adjugate_tail_cost_floor
+#print axioms PalomarCorpus.E249.PaperStatementsG.b6_compressed_adjoint_identity_impossible
+#print axioms PalomarCorpus.E249.PaperStatementsG.b6_rankOneSubrankQuotient_sub_totientSeries_offset_gt
+#print axioms PalomarCorpus.E249.PaperStatementsG.diagonalPincerCertificateScales_list
+#print axioms PalomarCorpus.E249.PaperStatementsG.diagonalPincerKillDepth_list
+#print axioms PalomarCorpus.E249.PaperStatementsG.historical_table_size_and_initial_depths
+#print axioms PalomarCorpus.E249.PaperStatementsG.sixteen_certificate_windows
+#print axioms PalomarCorpus.E249.PaperStatementsG.small_certificate_windows
+#print axioms PalomarCorpus.E249.PaperStatementsG.totientBlock_eq_paper_indexed_sum

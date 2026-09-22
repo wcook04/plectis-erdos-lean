@@ -1,0 +1,5 @@
+import Solutions.ExternalVerification243PaperStatementsM
+
+#print axioms Erdos249257.ExternalVerification243PaperStatementsM.canonical_recordTheta_eq_zero_iff
+#print axioms Erdos249257.ExternalVerification243PaperStatementsM.canonical_recordTheta_gt_one
+#print axioms Erdos249257.ExternalVerification243PaperStatementsM.canonical_recordTheta_zero_or_gt_one

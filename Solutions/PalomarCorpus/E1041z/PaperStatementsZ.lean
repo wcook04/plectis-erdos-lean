@@ -22,7 +22,6 @@ theorem circle_slice_packing {P : Type*} [PseudoMetricSpace P] (pt : ℝ → ℝ
     {D : ℝ} (hD : 0 < D)
     (hsep : ∀ i j : Fin k, i ≠ j → D ≤ dist (pt (d i) (θ i)) (pt (d j) (θ j)))
     {r : ℝ} (hr : 0 < r) :
-    ∑ j, sliceHalfAngle D (d j) r ≤ π := by
-  apply ErdosProblems.Erdos1041.PaperCompleteR21.circle_slice_packing <;> assumption
+    ∑ j, sliceHalfAngle D (d j) r ≤ π := @ErdosProblems.Erdos1041.PaperCompleteR21.circle_slice_packing P inferInstance pt hlaw k d θ hd D hD hsep r hr
 
 end PalomarCorpus.E1041.PaperStatementsZ

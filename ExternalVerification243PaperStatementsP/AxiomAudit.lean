@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification243PaperStatementsP
+
+#print axioms Erdos249257.ExternalVerification243PaperStatementsP.scale_twelve_of_square_in_rootField

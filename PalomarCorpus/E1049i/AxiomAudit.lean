@@ -1,0 +1,4 @@
+import Solutions.PalomarCorpus.E1049i
+
+#print axioms PalomarCorpus.E1049.PaperStatementsI.rational_base_measure_uniform
+#print axioms PalomarCorpus.E1049.PaperStatementsI.thirtyoneFour_power_measure_lt_301

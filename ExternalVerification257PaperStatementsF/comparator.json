@@ -1,0 +1,22 @@
+{
+  "challenge_module": "ExternalVerification257PaperStatementsF.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStatementsF",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStatementsF.cofinalExactLocalMersenneHalfRows_of_positiveHalfGreedySkips",
+    "Erdos249257.ExternalVerification257PaperStatementsF.eq_halfGreedyPrefixSupport_of_critical_crossing",
+    "Erdos249257.ExternalVerification257PaperStatementsF.exactLocalMersenneHalfRow_of_positiveHalfGreedySkip",
+    "Erdos249257.ExternalVerification257PaperStatementsF.halfGreedySkippedCriticalQuotientSupply_of_precriticalSuffix",
+    "Erdos249257.ExternalVerification257PaperStatementsF.halfGreedySkippedPrecriticalSuffixSupply_iff_preTake",
+    "Erdos249257.ExternalVerification257PaperStatementsF.halfGreedy_precriticalSuffix_lt_iff_futureSkipCoverage",
+    "Erdos249257.ExternalVerification257PaperStatementsF.halfGreedy_precriticalSuffix_lt_of_future_skip_after_takenBlock",
+    "Erdos249257.ExternalVerification257PaperStatementsF.halfGreedy_precriticalSuffix_lt_of_next_skip",
+    "Erdos249257.ExternalVerification257PaperStatementsF.half_mem_mersenneAchievementSet_of_skippedFullShellNonnegative",
+    "Erdos249257.ExternalVerification257PaperStatementsF.skippedCoreCriticalQuotientSupply_iff_halfGreedySkipped"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

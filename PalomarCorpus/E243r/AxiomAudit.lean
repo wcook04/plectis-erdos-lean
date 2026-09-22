@@ -1,0 +1,3 @@
+import Solutions.PalomarCorpus.E243r
+
+#print axioms PalomarCorpus.E243.PaperStatementsR.recordTheta_le_of_slow_negative

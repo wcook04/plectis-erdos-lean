@@ -1,0 +1,6 @@
+import Solutions.ExternalVerification1049PaperStatementsM
+
+#print axioms Erdos249257.ExternalVerification1049PaperStatementsM.endpoint_residues
+#print axioms Erdos249257.ExternalVerification1049PaperStatementsM.endpoint_scalar_content_exclusion
+#print axioms Erdos249257.ExternalVerification1049PaperStatementsM.fourJet_paper_statement
+#print axioms Erdos249257.ExternalVerification1049PaperStatementsM.rank_fortyone

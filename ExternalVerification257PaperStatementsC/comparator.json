@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification257PaperStatementsC.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStatementsC",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStatementsC.remainder_lt_gap_iff_eq_integerGreedyBits"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

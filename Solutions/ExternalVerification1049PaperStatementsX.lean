@@ -21,6 +21,13 @@ open Topology
 
 namespace Erdos249257.ExternalVerification1049PaperStatementsX
 
+noncomputable def kpos (k : ℕ) : ℤ := ((max k 1 : ℕ) : ℤ)
+
+noncomputable def kpos_pos (k : ℕ) : 0 < kpos k := by
+  have h : 1 ≤ max k 1 := le_max_right k 1
+  have h' : (1 : ℤ) ≤ ((max k 1 : ℕ) : ℤ) := by exact_mod_cast h
+  exact lt_of_lt_of_le zero_lt_one h'
+
 noncomputable def subs (k : ℕ) : ℚ⸨X⸩ →+* ℚ⸨X⸩ :=
   HahnSeries.embDomainRingHom (AddMonoidHom.mulLeft (kpos k))
     (fun _ _ h => mul_left_cancel₀ (kpos_pos k).ne' h)

@@ -1,0 +1,5 @@
+import Solutions.PalomarCorpus.E243m
+
+#print axioms PalomarCorpus.E243.PaperStatementsM.canonical_recordTheta_eq_zero_iff
+#print axioms PalomarCorpus.E243.PaperStatementsM.canonical_recordTheta_gt_one
+#print axioms PalomarCorpus.E243.PaperStatementsM.canonical_recordTheta_zero_or_gt_one

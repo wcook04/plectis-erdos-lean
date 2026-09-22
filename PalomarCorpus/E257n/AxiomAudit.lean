@@ -1,0 +1,22 @@
+import Solutions.PalomarCorpus.E257n
+
+#print axioms PalomarCorpus.E257.PaperStatementsN.approx_orbit_induction
+#print axioms PalomarCorpus.E257.PaperStatementsN.fatal_absorbing
+#print axioms PalomarCorpus.E257.PaperStatementsN.paper_cpgs_equiv
+#print axioms PalomarCorpus.E257.PaperStatementsN.paper_effective_horizon_test
+#print axioms PalomarCorpus.E257.PaperStatementsN.paper_eta_eq_coeffTail_sub_carry
+#print axioms PalomarCorpus.E257.PaperStatementsN.paper_eta_hasRationalValue
+#print axioms PalomarCorpus.E257.PaperStatementsN.paper_eventual_nonnegative_margin_equivalence
+#print axioms PalomarCorpus.E257.PaperStatementsN.paper_frozen_margin_limit_pos_iff
+#print axioms PalomarCorpus.E257.PaperStatementsN.paper_frozen_margin_normalised_monotone
+#print axioms PalomarCorpus.E257.PaperStatementsN.paper_frozen_margin_normalised_tendsto
+#print axioms PalomarCorpus.E257.PaperStatementsN.paper_frozen_margin_normalised_value
+#print axioms PalomarCorpus.E257.PaperStatementsN.paper_greedyHalfRemainder_ne_dyadicCap
+#print axioms PalomarCorpus.E257.PaperStatementsN.paper_halfGreedyPrefixSupport_eq_greedy_inter_Icc
+#print axioms PalomarCorpus.E257.PaperStatementsN.paper_no_ties
+#print axioms PalomarCorpus.E257.PaperStatementsN.paper_no_ties_skip
+#print axioms PalomarCorpus.E257.PaperStatementsN.paper_no_ties_take
+#print axioms PalomarCorpus.E257.PaperStatementsN.paper_one_orbit_stability
+#print axioms PalomarCorpus.E257.PaperStatementsN.paper_one_sided_finite_decision_boundary
+#print axioms PalomarCorpus.E257.PaperStatementsN.paper_terminal_strip_equiv
+#print axioms PalomarCorpus.E257.PaperStatementsN.tailGreedyRemainder_mersenne

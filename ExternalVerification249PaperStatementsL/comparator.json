@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification249PaperStatementsL.Challenge",
+  "solution_module": "Solutions.ExternalVerification249PaperStatementsL",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249PaperStatementsL.b6_retained_dyadic_sections_independent"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

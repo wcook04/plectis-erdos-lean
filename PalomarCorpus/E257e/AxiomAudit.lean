@@ -1,0 +1,5 @@
+import Solutions.PalomarCorpus.E257e
+
+#print axioms PalomarCorpus.E257.PaperStatementsE.half_of_cofinal_absolute_carry
+#print axioms PalomarCorpus.E257.PaperStatementsE.infinite_support_half_of_mobiusCenteredHalfCarry_sqrtBound
+#print axioms PalomarCorpus.E257.PaperStatementsE.integerHalfCarry_eq_scaled_residual_add_tail

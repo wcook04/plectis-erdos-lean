@@ -1,0 +1,3 @@
+import Solutions.PalomarCorpus.E243p
+
+#print axioms PalomarCorpus.E243.PaperStatementsP.scale_twelve_of_square_in_rootField

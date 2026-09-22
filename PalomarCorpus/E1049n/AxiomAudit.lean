@@ -1,0 +1,5 @@
+import Solutions.PalomarCorpus.E1049n
+
+#print axioms PalomarCorpus.E1049.PaperStatementsN.height_and_hankel_deficits
+#print axioms PalomarCorpus.E1049.PaperStatementsN.integer_scalar_content
+#print axioms PalomarCorpus.E1049.PaperStatementsN.pade_summand_bound_and_gap

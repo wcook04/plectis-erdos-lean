@@ -1,0 +1,13 @@
+{
+  "challenge_module": "PalomarCorpus.E68e.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E68e",
+  "theorem_names": [
+    "PalomarCorpus.E68.PaperStatementsE.product_lcm_pairwise_gcd"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,7 @@
+import Solutions.PalomarCorpus.E257l
+
+#print axioms PalomarCorpus.E257.PaperStatementsL.paper_cofiniteRightTail_ne_zero_centeredEndpoint
+#print axioms PalomarCorpus.E257.PaperStatementsL.paper_relaxed_constant_six_every_depth
+#print axioms PalomarCorpus.E257.PaperStatementsL.paper_square_depth_terminal_bound
+#print axioms PalomarCorpus.E257.PaperStatementsL.paper_terminal_strip_forces_half_membership
+#print axioms PalomarCorpus.E257.PaperStatementsL.square_depth_witness

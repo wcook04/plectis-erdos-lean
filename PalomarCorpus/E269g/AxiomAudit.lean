@@ -1,0 +1,6 @@
+import Solutions.PalomarCorpus.E269g
+
+#print axioms PalomarCorpus.E269.PaperStatementsG.conditional_denominator_reduction_real_bound
+#print axioms PalomarCorpus.E269.PaperStatementsG.exact_denominators_and_minimal_clearing
+#print axioms PalomarCorpus.E269.PaperStatementsG.long_no_bounded_length
+#print axioms PalomarCorpus.E269.PaperStatementsG.short_window_equivalence

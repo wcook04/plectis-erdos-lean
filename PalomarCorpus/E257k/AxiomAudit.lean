@@ -1,0 +1,5 @@
+import Solutions.PalomarCorpus.E257k
+
+#print axioms PalomarCorpus.E257.PaperStatementsK.paper_both_cofinal_statements_iff_half_membership
+#print axioms PalomarCorpus.E257.PaperStatementsK.paper_critical_crossing_support_is_greedy_prefix
+#print axioms PalomarCorpus.E257.PaperStatementsK.six_membership_conditions

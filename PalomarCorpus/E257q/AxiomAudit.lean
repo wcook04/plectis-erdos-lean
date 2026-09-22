@@ -1,0 +1,5 @@
+import Solutions.PalomarCorpus.E257q
+
+#print axioms PalomarCorpus.E257.PaperStatementsQ.paper_exact_row_integerHalfCarry_eq_one
+#print axioms PalomarCorpus.E257.PaperStatementsQ.paper_integerHalfCarry_eq_two_pow_sub_localPrefixQuotient
+#print axioms PalomarCorpus.E257.PaperStatementsQ.paper_mobiusCenteredHalfCarry_add_two

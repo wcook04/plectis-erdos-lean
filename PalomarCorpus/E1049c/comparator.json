@@ -1,0 +1,34 @@
+{
+  "challenge_module": "PalomarCorpus.E1049c.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E1049c",
+  "theorem_names": [
+    "PalomarCorpus.E1049.PaperStatementsC.contour_enclosure",
+    "PalomarCorpus.E1049.PaperStatementsC.four_rpow_mu_lt_thirtyOne",
+    "PalomarCorpus.E1049.PaperStatementsC.inv_bvMu_eq",
+    "PalomarCorpus.E1049.PaperStatementsC.omega_indicator",
+    "PalomarCorpus.E1049.PaperStatementsC.paperBvMu_eq",
+    "PalomarCorpus.E1049.PaperStatementsC.printed_bvMu",
+    "PalomarCorpus.E1049.PaperStatementsC.printed_bv_cutoff",
+    "PalomarCorpus.E1049.PaperStatementsC.printed_contour",
+    "PalomarCorpus.E1049.PaperStatementsC.printed_contour_short",
+    "PalomarCorpus.E1049.PaperStatementsC.printed_four_rpow_bvMu",
+    "PalomarCorpus.E1049.PaperStatementsC.printed_four_rpow_mu",
+    "PalomarCorpus.E1049.PaperStatementsC.printed_log_ratio",
+    "PalomarCorpus.E1049.PaperStatementsC.printed_mu",
+    "PalomarCorpus.E1049.PaperStatementsC.tailLow_le_trigammaSeries",
+    "PalomarCorpus.E1049.PaperStatementsC.thirtyoneFour_between_rpow",
+    "PalomarCorpus.E1049.PaperStatementsC.thirtyoneFour_ratio_chain",
+    "PalomarCorpus.E1049.PaperStatementsC.trigammaSeries_le_tailHigh",
+    "PalomarCorpus.E1049.PaperStatementsC.zudilinC0_enclosure",
+    "PalomarCorpus.E1049.PaperStatementsC.zudilinContour_eq_inv_mu",
+    "PalomarCorpus.E1049.PaperStatementsC.zudilinJ_enclosure",
+    "PalomarCorpus.E1049.PaperStatementsC.zudilinMu_mul_zudilinContour",
+    "PalomarCorpus.E1049.PaperStatementsC.zudilin_rpow_lt_iff_contourRegion"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}
