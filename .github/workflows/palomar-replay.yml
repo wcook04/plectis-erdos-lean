@@ -18,7 +18,14 @@ name: Palomar Comparator replay
 #   verification unit: one entry. It builds its own Challenge and Solution closure, is
 #     compared on its own, and writes its own durable receipt JSON, so a consumer reads
 #     the evidence instead of transcribing it from logs. No part of that result depends
-#     on which other entries shared the runner.
+#     on which other entries shared the runner. The Solution build starts from the newest
+#     cached corpus build, so Lake recompiles only modules whose inputs changed (61% of
+#     run 35715779405's 962 shard-minutes was every shard recompiling the same shared
+#     closure). The Challenge never comes from a cache: every compiled Challenge is
+#     deleted before verification, so each one is compiled from source in the job that
+#     compares it. Comparator is built to check an untrusted Solution against that
+#     Challenge and re-checks every proof with an independent kernel, so a cached output
+#     can neither change a statement nor stand in for a proof.
 #   scheduling unit: one shard of entries, composed by `discover` from measured per-entry
 #     durations. A shard exists only so the fixed setup cost — runner boot, checkout,
 #     elan, the Mathlib cache restore and the pinned Comparator/lean4export/landrun/NanoDa
@@ -185,6 +192,19 @@ jobs:
           build: false
           test: false
           lint: false
+      # Lean Convenience saves the whole corpus build under this key shape on every push
+      # to main and palomar/**; the newest one is restored here. A miss only means this
+      # shard compiles its entries' closures itself, exactly as before.
+      - name: Restore the newest corpus build
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: .lake/build
+          key: corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-${{ github.sha }}-convenience
+          restore-keys: |
+            corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-
+      - name: Compile every Challenge from source in this job
+        # The trusted side of every comparison is never taken from the cache.
+        run: rm -rf .lake/build/lib/lean/PalomarCorpus .lake/build/ir/PalomarCorpus
       - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
         with:
           go-version: '1.24'
