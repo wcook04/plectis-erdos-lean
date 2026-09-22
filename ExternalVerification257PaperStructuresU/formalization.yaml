@@ -68,11 +68,11 @@ status:
   local_proof_provenance: Erdos249257.GreedyAchievementSet, Erdos249257.HalfCutLocator in this repository, which is the same development published at https://github.com/wcook04/plectis-erdos commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84
   canonical_claim_status: generated comparison interface over substantive Lean in this repository
   main_results:
-  - declaration: Erdos249257.ExternalVerification257PaperStructuresU.half_step_forced
+  - declaration: Erdos249257.ExternalVerification257PaperStructuresU.IsStraddlePrefix.half_step_forced
     file: Solutions/ExternalVerification257PaperStructuresU.lean
     sorry_count: 0
     comparator_config: ExternalVerification257PaperStructuresU/comparator.json
-    comparator_declaration: Erdos249257.ExternalVerification257PaperStructuresU.half_step_forced
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStructuresU.IsStraddlePrefix.half_step_forced
     canonical_claim_status: source_transport_prepared_pending_release_validation
     novelty_status: unassessed
     source_declaration: Erdos249257.IsStraddlePrefix.half_step_forced

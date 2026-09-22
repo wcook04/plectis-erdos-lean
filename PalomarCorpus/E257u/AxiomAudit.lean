@@ -1,5 +1,4 @@
 import Solutions.PalomarCorpus.E257u
 
 #print axioms PalomarCorpus.E257.PaperStructuresU.IsStraddlePrefix.half_step_forced
-#print axioms PalomarCorpus.E257.PaperStructuresU.half_step_forced
 #print axioms PalomarCorpus.E257.PaperStructuresU.isStraddlePrefix_step_trichotomy

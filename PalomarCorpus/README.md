@@ -12,7 +12,7 @@ is not a publication entry.
 
 ## Selected Comparator theorems
 
-1641 independently restated theorems across 316 families, partitioned by problem.
+1640 independently restated theorems across 316 families, partitioned by problem.
 
 ### ExternalVerification1041CriticalGeometry
 
@@ -2267,7 +2267,6 @@ is not a publication entry.
 ### ExternalVerification257PaperStructuresU
 
 - `PalomarCorpus.E257.PaperStructuresU.IsStraddlePrefix.half_step_forced`
-- `PalomarCorpus.E257.PaperStructuresU.half_step_forced`
 - `PalomarCorpus.E257.PaperStructuresU.isStraddlePrefix_step_trichotomy`
 
 ### ExternalVerification257PaperStructuresV

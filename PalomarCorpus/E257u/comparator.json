@@ -3,7 +3,6 @@
   "solution_module": "Solutions.PalomarCorpus.E257u",
   "theorem_names": [
     "PalomarCorpus.E257.PaperStructuresU.IsStraddlePrefix.half_step_forced",
-    "PalomarCorpus.E257.PaperStructuresU.half_step_forced",
     "PalomarCorpus.E257.PaperStructuresU.isStraddlePrefix_step_trichotomy"
   ],
   "permitted_axioms": [
