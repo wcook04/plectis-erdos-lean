@@ -1,9 +1,9 @@
 {
   "schema": "palomar_corpus_size_receipt_v1",
-  "generated_at": "2026-09-22T03:14:09Z",
+  "generated_at": "2026-09-22T05:39:45Z",
   "public_root": ".",
   "path_base": "repository_root",
-  "git_head": "17500de78da531d64b0a900f6232b826004d06a7",
+  "git_head": "923460880a52704e64faea51eae656e2acbaff95",
   "selected_families": [
     "ExternalVerification1041CriticalGeometry",
     "ExternalVerification1041CriticalValueMean",
@@ -322,7 +322,7 @@
     "ExternalVerification68ResidualIntegerClass",
     "ExternalVerification68StrictSuccessorCarry"
   ],
-  "selected_theorem_count": 1640,
+  "selected_theorem_count": 1641,
   "measurement": {
     "challenge_lines": 990,
     "challenge_bytes": 79441,

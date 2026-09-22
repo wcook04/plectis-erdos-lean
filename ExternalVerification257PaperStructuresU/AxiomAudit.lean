@@ -1,4 +1,4 @@
 import Solutions.ExternalVerification257PaperStructuresU
 
-#print axioms Erdos249257.ExternalVerification257PaperStructuresU.half_step_forced
+#print axioms Erdos249257.ExternalVerification257PaperStructuresU.IsStraddlePrefix.half_step_forced
 #print axioms Erdos249257.ExternalVerification257PaperStructuresU.isStraddlePrefix_step_trichotomy
