@@ -1,0 +1,18 @@
+{
+  "challenge_module": "ExternalVerification257PaperStatementsAU.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStatementsAU",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStatementsAU.binaryCoeffTail_supportCoeff_le_two_sqrt_add_four",
+    "Erdos249257.ExternalVerification257PaperStatementsAU.erdosSupportSeries_rational_iff_exists_temperedCarry",
+    "Erdos249257.ExternalVerification257PaperStatementsAU.erdosSupportSeries_two_eq_binaryCoeffSeries",
+    "Erdos249257.ExternalVerification257PaperStatementsAU.mobius_supportCoeff_boolean",
+    "Erdos249257.ExternalVerification257PaperStatementsAU.mobius_supportCoeff_eq_one_iff",
+    "Erdos249257.ExternalVerification257PaperStatementsAU.moebius_mul_supportCoeffAF"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

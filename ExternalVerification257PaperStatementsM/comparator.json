@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification257PaperStatementsM.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStatementsM",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStatementsM.paper_general_repair_criteria"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

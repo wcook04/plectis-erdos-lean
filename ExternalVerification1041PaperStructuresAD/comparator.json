@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification1041PaperStructuresAD.Challenge",
+  "solution_module": "Solutions.ExternalVerification1041PaperStructuresAD",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041PaperStructuresAD.one_root_gamma_false_unconditional"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

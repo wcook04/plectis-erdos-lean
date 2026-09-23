@@ -1,0 +1,17 @@
+{
+  "challenge_module": "ExternalVerification257PaperStructuresAZ.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStructuresAZ",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStructuresAZ.paper_dynamics",
+    "Erdos249257.ExternalVerification257PaperStructuresAZ.paper_greedySupport_greedy_rule",
+    "Erdos249257.ExternalVerification257PaperStructuresAZ.paper_greedySupport_isRowLower",
+    "Erdos249257.ExternalVerification257PaperStructuresAZ.paper_greedySupport_mem",
+    "Erdos249257.ExternalVerification257PaperStructuresAZ.paper_greedy_step"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

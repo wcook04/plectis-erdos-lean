@@ -1,0 +1,12 @@
+import Solutions.PalomarCorpus.E251_05
+
+#print axioms PalomarCorpus.E251.PaperStatementsD.signed_two_window_consequences
+#print axioms PalomarCorpus.E251.PaperStatementsD.signed_two_window_iff
+#print axioms PalomarCorpus.E251.PaperStatementsG.irrational_realPrimeGapTail_zero_iff
+#print axioms PalomarCorpus.E251.PaperStatementsG.irrational_tsum_primeDyadicTerm_iff_primeGap
+#print axioms PalomarCorpus.E251.PaperStatementsG.realPrimeGapTail_eq_tsum_shifted_gaps
+#print axioms PalomarCorpus.E251.PaperStatementsG.realPrimeGapTail_recurrence
+#print axioms PalomarCorpus.E251.PaperStatementsG.realPrimeGapTail_zero
+#print axioms PalomarCorpus.E251.PaperStatementsJ.real_orbit_exact_den_and_shift
+#print axioms PalomarCorpus.E251.PaperStatementsQ.irrational_prime_series_of_finite_truncation
+#print axioms PalomarCorpus.E251.PaperStatementsZ.short_joint_prime_gap_countermodel

@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification1041PaperStatementsO
+
+#print axioms Erdos249257.ExternalVerification1041PaperStatementsO.critical_value_three_budgets

@@ -1,0 +1,15 @@
+{
+  "challenge_module": "ExternalVerification1041PaperStatementsAC.Challenge",
+  "solution_module": "Solutions.ExternalVerification1041PaperStatementsAC",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041PaperStatementsAC.circle_slice_packing",
+    "Erdos249257.ExternalVerification1041PaperStatementsAC.circle_slice_packing_abstract",
+    "Erdos249257.ExternalVerification1041PaperStatementsAC.dual_arity_floor_abstract"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

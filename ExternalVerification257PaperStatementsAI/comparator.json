@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification257PaperStatementsAI.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStatementsAI",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStatementsAI.paper_forced_greedy_low_ranks"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

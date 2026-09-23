@@ -1,0 +1,7 @@
+import Solutions.PalomarCorpus.E251_08
+
+#print axioms PalomarCorpus.E251.ShiftedFourPrimeCounting.separated_zeroDensity_of_quad_sieve
+#print axioms PalomarCorpus.E251.ShiftedFourPrimeCounting.shifted_count_bound
+#print axioms PalomarCorpus.E251.SparseRationalisation.arbitrary_word_sparse_rationalisation
+#print axioms PalomarCorpus.E251.SparseRationalisation.growing_block_TV
+#print axioms PalomarCorpus.E251.SparseRationalisation.polylogarithmic_word_interval

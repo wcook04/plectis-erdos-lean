@@ -1,0 +1,39 @@
+{
+  "challenge_module": "PalomarCorpus.E257_31.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257_31",
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStructuresBP.exists_seamWord_minimal_above",
+    "PalomarCorpus.E257.PaperStructuresBP.integerGreedyBits_length",
+    "PalomarCorpus.E257.PaperStructuresBP.paper_perturbed_separation_global_maximality",
+    "PalomarCorpus.E257.PaperStructuresBP.paper_perturbed_two_stage_is_global_maximum",
+    "PalomarCorpus.E257.PaperStructuresBP.paper_perturbed_weak_cap_counterexample",
+    "PalomarCorpus.E257.PaperStructuresBP.paper_successor_remainders_fourteen_through_thirtyone",
+    "PalomarCorpus.E257.PaperStructuresBP.paper_unsafe_middle_range_is_three_integers",
+    "PalomarCorpus.E257.PaperStructuresBP.paper_upper_branch_needs_no_exceptional_cell",
+    "PalomarCorpus.E257.PaperStructuresBP.seamAboveWord_minimal",
+    "PalomarCorpus.E257.PaperStructuresBP.seamAboveWord_strict",
+    "PalomarCorpus.E257.PaperStructuresBP.seamAdjacentCut_below_admissible",
+    "PalomarCorpus.E257.PaperStructuresBP.seamAdjacentCut_below_maximal",
+    "PalomarCorpus.E257.PaperStructuresBP.seamPerturbedFamily_gap_pos",
+    "PalomarCorpus.E257.PaperStructuresBP.seamPerturbedFamily_oldSum_injective",
+    "PalomarCorpus.E257.PaperStructuresBP.seamPerturbedFamily_pulseCap_lt_three_gap",
+    "PalomarCorpus.E257.PaperStructuresBP.seamPerturbedFamily_separated",
+    "PalomarCorpus.E257.PaperStructuresBP.seamWeights_length_eq",
+    "PalomarCorpus.E257.PaperStructuresBP.weakCapCut_above_minimal",
+    "PalomarCorpus.E257.PaperStructuresBP.weakCapCut_above_strict",
+    "PalomarCorpus.E257.PaperStructuresBP.weakCapCut_below_admissible",
+    "PalomarCorpus.E257.PaperStructuresBP.weakCapCut_below_maximal",
+    "PalomarCorpus.E257.PaperStructuresBP.weakCapFamily_gap_pos",
+    "PalomarCorpus.E257.PaperStructuresBP.weakCapFamily_oldSum_injective",
+    "PalomarCorpus.E257.PaperStructuresBP.weakCapFamily_pulseCap_lt_three_gap",
+    "PalomarCorpus.E257.PaperStructuresBP.weakCapFamily_pulse_le",
+    "PalomarCorpus.E257.PaperStructuresBP.weakCapFamily_separated",
+    "PalomarCorpus.E257.PaperStructuresBP.wordPulse_le"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

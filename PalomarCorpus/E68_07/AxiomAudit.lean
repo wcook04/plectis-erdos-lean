@@ -1,0 +1,7 @@
+import Solutions.PalomarCorpus.E68_07
+
+#print axioms PalomarCorpus.E68.FiniteDenominator.finite_denominator_exclusion
+#print axioms PalomarCorpus.E68.KempnerIndex.rational_denominator_not_dvd_fiftynine_factorial
+#print axioms PalomarCorpus.E68.KempnerIndex.rational_denominator_not_dvd_pred_factorial_of_nonunit_carry
+#print axioms PalomarCorpus.E68.MomentIdeal.attainable_moment_ideal
+#print axioms PalomarCorpus.E68.MomentIdeal.minimum_moment_content_one

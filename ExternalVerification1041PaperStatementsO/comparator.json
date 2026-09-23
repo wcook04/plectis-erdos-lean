@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification1041PaperStatementsO.Challenge",
+  "solution_module": "Solutions.ExternalVerification1041PaperStatementsO",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041PaperStatementsO.critical_value_three_budgets"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

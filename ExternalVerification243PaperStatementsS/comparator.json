@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification243PaperStatementsS.Challenge",
+  "solution_module": "Solutions.ExternalVerification243PaperStatementsS",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification243PaperStatementsS.original_coordinate_lcm_bounded_defect"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

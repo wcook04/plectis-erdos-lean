@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification257PaperStructuresT
+
+#print axioms Erdos249257.ExternalVerification257PaperStructuresT.paper_compatible_rows_agree_with_limit

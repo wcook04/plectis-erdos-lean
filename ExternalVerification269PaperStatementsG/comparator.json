@@ -1,0 +1,16 @@
+{
+  "challenge_module": "ExternalVerification269PaperStatementsG.Challenge",
+  "solution_module": "Solutions.ExternalVerification269PaperStatementsG",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification269PaperStatementsG.conditional_denominator_reduction_real_bound",
+    "Erdos249257.ExternalVerification269PaperStatementsG.exact_denominators_and_minimal_clearing",
+    "Erdos249257.ExternalVerification269PaperStatementsG.long_no_bounded_length",
+    "Erdos249257.ExternalVerification269PaperStatementsG.short_window_equivalence"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

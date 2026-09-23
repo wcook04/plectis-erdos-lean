@@ -1,0 +1,21 @@
+{
+  "challenge_module": "PalomarCorpus.E257_38.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257_38",
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStatementsAC.arithmetic_logarithmic_counterexample",
+    "PalomarCorpus.E257.PaperStatementsAC.logarithmic_initial_interval",
+    "PalomarCorpus.E257.PaperStatementsAC.no_absolute_dyadic_kappaOne_constant",
+    "PalomarCorpus.E257.PaperStatementsL.paper_relaxed_constant_six_every_depth",
+    "PalomarCorpus.E257.PaperStatementsN.paper_cpgs_equiv",
+    "PalomarCorpus.E257.PaperStatementsN.paper_terminal_strip_equiv",
+    "PalomarCorpus.E257.PaperStructuresBS.exists_support_paperCoverCost_ge",
+    "PalomarCorpus.E257.PaperStructuresBS.no_absolute_paperCoverCost_kappaOne_constant",
+    "PalomarCorpus.E257.PaperStructuresBS.sup_condExceedProb_le_paperCoverCost"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

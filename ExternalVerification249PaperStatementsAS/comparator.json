@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ExternalVerification249PaperStatementsAS.Challenge",
+  "solution_module": "Solutions.ExternalVerification249PaperStatementsAS",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249PaperStatementsAS.cyclotomic_dvd_primeJump_new_fibre",
+    "Erdos249257.ExternalVerification249PaperStatementsAS.cyclotomic_dvd_primeJump_old_fibre"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -144,7 +144,7 @@ status:
       and composite-residue syzygies are proved to lie in the relation module, but
       they are not proved to generate it, and that spanning claim is deliberately
       absent from the compared statement. The k^e + 1 formula is specific to the totient
-      and its n^q phi^m class; the receipt at state/formal_math/erdos249/all_base_multiplicative_kernel_rank_receipt.json
+      and its n^q phi^m class; a recorded rank computation
       shows sigma and tau reach rank 41 rather than 37 at k = 6, e = 2, so it does
       not generalise to multiplicative functions.'
     literature_dependencies:

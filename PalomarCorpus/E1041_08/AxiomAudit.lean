@@ -1,0 +1,11 @@
+import Solutions.PalomarCorpus.E1041_08
+
+#print axioms PalomarCorpus.E1041.SolvedFamilies.SharpCollinear.existsPeakLeComparisonBound
+#print axioms PalomarCorpus.E1041.SolvedFamilies.cubic_safeRootSpoke
+#print axioms PalomarCorpus.E1041.SolvedFamilies.primitiveQuintic_twoStrictTailEnergies
+#print axioms PalomarCorpus.E1041.TetranomialSpokes.exists_two_tails_norm_lt_one_of_exact_L2_budget
+#print axioms PalomarCorpus.E1041.TetranomialSpokes.exists_two_tetranomialRoot_safeSpokes_of_moment_coeff_budget
+#print axioms PalomarCorpus.E1041.TetranomialSpokes.sum_normSq_const_add_mul
+#print axioms PalomarCorpus.E1041.TetranomialSpokes.tetranomialRoot_spoke_factorization
+#print axioms PalomarCorpus.E1041.TetranomialSpokes.tetranomialRoot_spoke_norm_lt_one_of_lowCoeffBudget
+#print axioms PalomarCorpus.E1041.TetranomialSpokes.tetranomialRoot_spoke_norm_lt_one_of_rootBudget

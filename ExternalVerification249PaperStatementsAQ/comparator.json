@@ -1,0 +1,20 @@
+{
+  "challenge_module": "ExternalVerification249PaperStatementsAQ.Challenge",
+  "solution_module": "Solutions.ExternalVerification249PaperStatementsAQ",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249PaperStatementsAQ.cyclotomicValue_dvd_baseMobiusShadow_den",
+    "Erdos249257.ExternalVerification249PaperStatementsAQ.mobiusNumerator_gcd_cyclotomicValue",
+    "Erdos249257.ExternalVerification249PaperStatementsAQ.mobiusNumerator_mod_cyclotomicEval",
+    "Erdos249257.ExternalVerification249PaperStatementsAQ.mobiusNumeratorPolynomial_eval_two",
+    "Erdos249257.ExternalVerification249PaperStatementsAQ.numerator_eval_two_divisors",
+    "Erdos249257.ExternalVerification249PaperStatementsAQ.radical_decomposition",
+    "Erdos249257.ExternalVerification249PaperStatementsAQ.paperNumeratorPolynomial_eq",
+    "Erdos249257.ExternalVerification249PaperStatementsAQ.sum_divisorIndices_radical_form"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,292 @@
+/-
+Copyright (c) 2026 Will Cook. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Will Cook
+-/
+
+import Mathlib
+
+set_option autoImplicit false
+
+/-!
+# Erdős #249, record section 6.3: consequences (part 1 of 3)
+
+Each theorem below restates, against Mathlib alone, a theorem of the Lean development
+for Erdős problem #249, in the order the papers state them. The definitions a statement
+uses are copied in, and each declaration's documentation names the paper statement and
+the source declaration it comes from. Erdős problem #249 remains open, and no theorem in
+this entry decides it.
+-/
+
+open Finset
+open scoped BigOperators
+
+namespace PalomarCorpus.E249_11.Shared
+/-- The universal period `lcm(1, 2, ..., t)`, given recursively by `periodLcm 0 = 1` and `periodLcm (t + 1) = lcm (periodLcm t) (t + 1)`. -/
+noncomputable def periodLcm : ℕ → ℕ
+  | 0 => 1
+  | t + 1 => Nat.lcm (periodLcm t) (t + 1)
+/-- The paper's prescribed index `q_a = ⌊(⌊log₂ H⌋ + 10)/2⌋`, so that `2q_a + 1` is the least odd integer at least `⌊log₂ H⌋ + 10`. Local copy of ErdosProblems.Erdos249.PaperCompleteR21.prescribedOddIndex, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def prescribedOddIndex (a : ℕ) : ℕ := (Nat.log2 (periodLcm (2 ^ a)) + 10) / 2
+/-- The binary totient tail `R_N = ∑_{j ≥ 1} φ(N + j) / 2 ^ j`, a real number satisfying `2 ^ N S = Φ_N + R_N`, where `S = ∑_{n ≥ 1} φ(n) / 2 ^ n` and `Φ_N = ∑_{n ≤ N} φ(n) 2 ^ (N - n)` is an integer. It obeys `0 < R_N ≤ N + 1` for `N ≥ 1`. -/
+noncomputable def totientTail (N : ℕ) : ℝ :=
+  ∑' j : ℕ, (Nat.totient (N + 1 + j) : ℝ) / 2 ^ (j + 1)
+/-- The signed binary discrepancy `D_{h,N,L} = ∑_{j < L} (φ(N + h + 1 + j) - φ(N + 1 + j)) 2 ^ (L - 1 - j)` between two length-`L` totient windows separated by the shift `h`, an integer satisfying `|2 ^ L (R_{N + h} - R_N) - D_{h,N,L}| ≤ N + h + L + 2`. -/
+noncomputable def windowDiscrepancy (h N L : ℕ) : ℤ :=
+  ∑ j ∈ Finset.range L,
+    ((Nat.totient (N + h + 1 + j) : ℤ) - (Nat.totient (N + 1 + j) : ℤ)) * 2 ^ (L - 1 - j)
+/-- A one-sided actual-word gap which excludes the positive top-edge carry. Unlike total staircase annihilation, this condition merely asks the final `m`-bit residue to lie at or below the complement of the directed carry strip. By `windowDiscrepancy_emod_two_pow_eq_terminal`, it is a condition on the last `m` actual arithmetic letters alone. Local copy of Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.ActualLcmTopEdgeResidueGap, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def ActualLcmTopEdgeResidueGap (a J K m : ℕ) : Prop :=
+  m ≤ K ∧
+    ((2 * periodLcm (2 ^ a) + J + K + 2 : ℕ) : ℤ) < (2 : ℤ) ^ m ∧
+      windowDiscrepancy (periodLcm (2 ^ a))
+          (periodLcm (2 ^ a) + J) K % (2 : ℤ) ^ m ≤
+        (2 : ℤ) ^ m -
+          ((2 * periodLcm (2 ^ a) + J + K + 2 : ℕ) : ℤ)
+/-- The decidable period-killer certificate: the residue of `A_{h,N,L}` modulo `2^L` avoids the radius-`(N+h+L+2)` neighbourhood of `0`. Local copy of Erdos249257.TotientTailPeriodKiller.certifiedKill, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def certifiedKill (h N L : ℕ) : Prop :=
+  (N + h + L + 2 : ℤ) < windowDiscrepancy h N L % 2 ^ L ∧
+    windowDiscrepancy h N L % 2 ^ L < 2 ^ L - (N + h + L + 2)
+end PalomarCorpus.E249_11.Shared
+
+namespace PalomarCorpus.E249.PaperStatementsAT
+open Finset
+export PalomarCorpus.E249_11.Shared (certifiedKill periodLcm prescribedOddIndex totientTail windowDiscrepancy)
+/-- States prop:AR-07 from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.diagonal_certificate_unfolded in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem diagonal_certificate_unfolded (a L : ℕ) :
+    certifiedKill (periodLcm (2 ^ a)) (periodLcm (2 ^ a)) L ↔
+      (((2 * periodLcm (2 ^ a) + L + 2 : ℕ) : ℤ) <
+          windowDiscrepancy (periodLcm (2 ^ a)) (periodLcm (2 ^ a)) L % 2 ^ L ∧
+        windowDiscrepancy (periodLcm (2 ^ a)) (periodLcm (2 ^ a)) L % 2 ^ L <
+          2 ^ L - ((2 * periodLcm (2 ^ a) + L + 2 : ℕ) : ℤ)) := by
+  sorry
+/-- States prop:TE-04 from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.integral_tail_forces_upper_endpoint_residue in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem integral_tail_forces_upper_endpoint_residue {a J K : ℕ} (ha : 8 ≤ a)
+    (hshort : J + K + (a + 6) < 2 * 2 ^ a)
+    (hroom : ((2 * periodLcm (2 ^ a) + J + K + 2 : ℕ) : ℤ) < (2 : ℤ) ^ K)
+    {d : ℤ}
+    (hd : (d : ℝ) =
+      totientTail (2 * periodLcm (2 ^ a) + J) - totientTail (periodLcm (2 ^ a) + J)) :
+    (2 : ℤ) ^ K - ((2 * periodLcm (2 ^ a) + J + K + 2 : ℕ) : ℤ) <
+        windowDiscrepancy (periodLcm (2 ^ a)) (periodLcm (2 ^ a) + J) K % (2 : ℤ) ^ K ∧
+      windowDiscrepancy (periodLcm (2 ^ a)) (periodLcm (2 ^ a) + J) K % (2 : ℤ) ^ K <
+        (2 : ℤ) ^ K := by
+  sorry
+/-- States prop:NI-01 from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.irrational_iff_diagonal_orbit_nonintegrality in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem irrational_iff_diagonal_orbit_nonintegrality :
+    Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) ↔
+      ∀ a₀ : ℕ, ∃ a, a₀ ≤ a ∧
+        totientTail (2 * periodLcm (2 ^ a)) - totientTail (periodLcm (2 ^ a)) ∉
+          Set.range ((↑) : ℤ → ℝ) := by
+  sorry
+/-- States prop:SEP-03 from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_diagonal_orbit_separation_supply in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem irrational_of_diagonal_orbit_separation_supply
+    (hsupply : ∀ a₀ : ℕ, ∃ a : ℕ, max 2 a₀ ≤ a ∧ ∀ z : ℤ,
+      (1 : ℝ) / 32 +
+          ((2 * periodLcm (2 ^ a) + 2 * prescribedOddIndex a + 3 : ℕ) : ℝ) /
+            (2 : ℝ) ^ (2 * prescribedOddIndex a + 1) ≤
+        |(totientTail (2 * periodLcm (2 ^ a)) - totientTail (periodLcm (2 ^ a))) - (z : ℝ)|) :
+    Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) := by
+  sorry
+end PalomarCorpus.E249.PaperStatementsAT
+
+namespace PalomarCorpus.E249.PaperStatementsAU
+open Finset
+export PalomarCorpus.E249_11.Shared (ActualLcmTopEdgeResidueGap certifiedKill periodLcm totientTail windowDiscrepancy)
+/-- States prop:AR-07 from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_short_window_diagonal_supply in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem irrational_of_short_window_diagonal_supply
+    (hsupply : ∀ a₀ : ℕ, ∃ a L : ℕ, a₀ ≤ a ∧ L < 2 * 2 ^ a ∧
+      certifiedKill (periodLcm (2 ^ a)) (periodLcm (2 ^ a)) L) :
+    Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) := by
+  sorry
+/-- States prop:TE-04 from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_upper_endpoint_gap_supply in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem irrational_of_upper_endpoint_gap_supply
+    (hsupply : ∀ a₀ : ℕ, ∃ a K m : ℕ, a₀ ≤ a ∧ 8 ≤ a ∧
+      K + (a + 6) < 2 * 2 ^ a ∧ ActualLcmTopEdgeResidueGap a 0 K m) :
+    Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) := by
+  sorry
+/-- States prop:AR-07 from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.pointwise_completeness_supplies_some_depth in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem pointwise_completeness_supplies_some_depth (h N : ℕ)
+    (hnon : totientTail (N + h) - totientTail N ∉ Set.range ((↑) : ℤ → ℝ)) :
+    ∃ L : ℕ, certifiedKill h N L := by
+  sorry
+/-- States prop:TE-04 from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.upper_endpoint_condition_iff in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem upper_endpoint_condition_iff (a J K m : ℕ) :
+    ActualLcmTopEdgeResidueGap a J K m ↔
+      (m ≤ K ∧
+        ((2 * periodLcm (2 ^ a) + J + K + 2 : ℕ) : ℤ) < (2 : ℤ) ^ m ∧
+        windowDiscrepancy (periodLcm (2 ^ a)) (periodLcm (2 ^ a) + J) K % (2 : ℤ) ^ m ≤
+          (2 : ℤ) ^ m - ((2 * periodLcm (2 ^ a) + J + K + 2 : ℕ) : ℤ)) := by
+  sorry
+/-- States prop:TE-04 from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.upper_endpoint_gap_nonintegral in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem upper_endpoint_gap_nonintegral {a J K m : ℕ} (ha : 8 ≤ a)
+    (hshort : J + K + (a + 6) < 2 * 2 ^ a)
+    (hgap : ActualLcmTopEdgeResidueGap a J K m) :
+    totientTail (2 * periodLcm (2 ^ a) + J) - totientTail (periodLcm (2 ^ a) + J) ∉
+      Set.range ((↑) : ℤ → ℝ) := by
+  sorry
+end PalomarCorpus.E249.PaperStatementsAU
+
+namespace PalomarCorpus.E249.PaperStatementsAX
+open scoped BigOperators
+open Finset
+export PalomarCorpus.E249_11.Shared (ActualLcmTopEdgeResidueGap periodLcm prescribedOddIndex totientTail windowDiscrepancy)
+/-- The canonical adjacent-suffix depth: ten guard bits beyond the binary scale of the LCM height. At this depth the analytic width budget is automatic; the only remaining arithmetic input is centrality of the adjacent residue. Local copy of Erdos249257.DiagonalFreshLossBridge.canonicalAdjacentSuffixDepth, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def canonicalAdjacentSuffixDepth (t : ℕ) : ℕ :=
+  Nat.log2 (periodLcm t) + 10
+/-- Make the canonical adjacent-suffix depth odd by spending at most one additional guard bit. Local copy of Erdos249257.DiagonalFreshLossBridge.oddGuardedCanonicalAdjacentSuffixDepth, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def oddGuardedCanonicalAdjacentSuffixDepth (t : ℕ) : ℕ :=
+  let m := canonicalAdjacentSuffixDepth t
+  if Even m then m + 1 else m
+/-- The signed diagonal window increment `φ(2·H_t+s) − φ(H_t+s)` at offset `s`. Local copy of Erdos249257.DiagonalFreshLossBridge.diagonalWindowIncrement, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def diagonalWindowIncrement (t s : ℕ) : ℤ :=
+  (Nat.totient (2 * periodLcm t + s) : ℤ) -
+    (Nat.totient (periodLcm t + s) : ℤ)
+/-- Unreduced integer block underlying the adjacent suffix displacement. It is the exact target-specific scalar evaluated by the canonical jump probe. Local copy of Erdos249257.DiagonalFreshLossBridge.diagonalAdjacentSuffixRawBlock, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def diagonalAdjacentSuffixRawBlock (t J m : ℕ) : ℤ :=
+  (∑ r ∈ Finset.range m,
+      diagonalWindowIncrement t (J + 1 + r) * 2 ^ (m - 1 - r)) +
+    diagonalWindowIncrement t (J + m + 1)
+/-- Canonical centered representative, with the positive midpoint selected in the tie case. Local copy of Erdos249257.DiagonalFreshLossBridge.actualCenteredLift, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def actualCenteredLift (A M : ℤ) : ℤ :=
+  let r := A % M
+  if r ≤ M / 2 then r else r - M
+/-- Actual centered half-state at power-two odd rank `q`. Local copy of Erdos249257.DiagonalFreshLossBridge.actualOddHalfCenteredLift, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def actualOddHalfCenteredLift (a q : ℕ) : ℤ :=
+  actualCenteredLift
+    (diagonalAdjacentSuffixRawBlock (2 ^ a) 0 (2 * q + 1) / 2)
+    ((4 : ℤ) ^ q)
+/-- Cofinal actual-state form of the exact top-edge half-word producer. Local copy of Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.PowerTwoActualFinalTopEdgeMagnitudeSupply, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def PowerTwoActualFinalTopEdgeMagnitudeSupply : Prop :=
+  ∀ a₀ : ℕ, ∃ a q : ℕ, max 14 a₀ ≤ a ∧
+    oddGuardedCanonicalAdjacentSuffixDepth (2 ^ a) = 2 * q + 1 ∧
+    ((periodLcm (2 ^ a) + q + 2 : ℕ) : ℤ) ≤
+      |actualOddHalfCenteredLift a q|
+/-- The LCM height used by the power-two endpoint at exponent `a`. Local copy of Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmHeight, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def actualLcmHeight (a : ℕ) : ℕ :=
+  periodLcm (2 ^ a)
+/-- The actual LCM-diagonal tail orbit at exponent `a`. Local copy of Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmTailOrbit, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def actualLcmTailOrbit (a : ℕ) : ℝ :=
+  totientTail (2 * actualLcmHeight a) - totientTail (actualLcmHeight a)
+/-- Cofinal non-integrality of the actual power-two LCM-diagonal tail orbit. Local copy of Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.PowerTwoActualLcmOrbitNonintegralitySupply, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def PowerTwoActualLcmOrbitNonintegralitySupply : Prop :=
+  ∀ a₀ : ℕ, ∃ a, a₀ ≤ a ∧
+    actualLcmTailOrbit a ∉ Set.range ((↑) : ℤ → ℝ)
+/-- Cofinal supply target for the genuinely non-vacuous one-sided actual-word gap. Local copy of Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.PowerTwoActualLcmTopEdgeResidueGapSupply, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def PowerTwoActualLcmTopEdgeResidueGapSupply : Prop :=
+  ∀ a₀ : ℕ, ∃ a K m : ℕ, a₀ ≤ a ∧ 8 ≤ a ∧
+    K + (a + 6) < 2 * 2 ^ a ∧ ActualLcmTopEdgeResidueGap a 0 K m
+/-- The depth-`L` window numerator `P_L(M) = Σ_{j<L} φ(M+1+j)·2^{L-1-j}`: the integer layer of `2^L·R_M`, exact up to the one-sided deep tail `0 ≤ 2^L·R_M - P_L(M) ≤ M+L+2`. Local copy of Erdos249257.TotientTailPeriodKiller.windowNumerator, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def windowNumerator (M L : ℕ) : ℕ :=
+  ∑ j ∈ Finset.range L, Nat.totient (M + 1 + j) * 2 ^ (L - 1 - j)
+/-- The depth-`m` binary residue of the diagonal window suffix that starts after the cut `J`: the last `m` bits of the depth-`(J + m)` diagonal window, computed from the translated windows alone. Local copy of Erdos249257.DiagonalFreshLossBridge.diagonalSuffixResidue, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def diagonalSuffixResidue (t J m : ℕ) : ℤ :=
+  ((windowNumerator (2 * periodLcm t + J) m : ℤ) -
+    (windowNumerator (periodLcm t + J) m : ℤ)) % 2 ^ m
+/-- The canonical modular displacement from the suffix at cut `J` to the suffix at cut `J + 1`. Local copy of Erdos249257.DiagonalFreshLossBridge.diagonalAdjacentSuffixResidue, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def diagonalAdjacentSuffixResidue (t J m : ℕ) : ℤ :=
+  (diagonalSuffixResidue t (J + 1) m -
+    diagonalSuffixResidue t J m) % 2 ^ m
+/-- The exact cofinal arithmetic socket exposed by one-sided adjacent-gap geometry. At depth `m`, the adjacent suffix displacement avoids only the two individual upper-edge arcs. The buffer is stated for the larger candidate depth `m + 1`, so either branch produced below remains inside the actual-LCM sign corridor. Local copy of Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.PowerTwoAdjacentSuffixMidbandSupply, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def PowerTwoAdjacentSuffixMidbandSupply : Prop :=
+  ∀ a₀ : ℕ, ∃ a m : ℕ, a₀ ≤ a ∧ 8 ≤ a ∧
+    m + 1 + (a + 6) < 2 * 2 ^ a ∧
+    ((2 * periodLcm (2 ^ a) + m + 3 : ℕ) : ℤ) < (2 : ℤ) ^ m ∧
+    ((2 * periodLcm (2 ^ a) + m + 2 : ℕ) : ℤ) ≤
+      diagonalAdjacentSuffixResidue (2 ^ a) 0 m ∧
+    diagonalAdjacentSuffixResidue (2 ^ a) 0 m ≤
+      (2 : ℤ) ^ m -
+        ((2 * periodLcm (2 ^ a) + m + 3 : ℕ) : ℤ)
+/-- Cofinal supply of odd ranks whose centered state escapes the exact open terminal/carry corridor forced by an integral actual-LCM orbit. Local copy of Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.PowerTwoFlexibleActualTerminalCarryCorridorEscapeSupply, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def PowerTwoFlexibleActualTerminalCarryCorridorEscapeSupply : Prop :=
+  ∀ a₀ : ℕ, ∃ a q : ℕ, a₀ ≤ a ∧ 8 ≤ a ∧
+    2 * q + 1 + 1 + (a + 6) < 2 * 2 ^ a ∧
+    2 * ((periodLcm (2 ^ a) + q + 2 : ℕ) : ℤ) ≤ (4 : ℤ) ^ q ∧
+    (2 * actualOddHalfCenteredLift a q ≤
+        diagonalWindowIncrement (2 ^ a) (2 * q + 1 + 1) -
+          ((2 * periodLcm (2 ^ a) + (2 * q + 1) + 2 : ℕ) : ℤ) ∨
+      diagonalWindowIncrement (2 ^ a) (2 * q + 1 + 1) ≤
+        2 * actualOddHalfCenteredLift a q)
+/-- Cofinal one-sided producer exposed by the exact terminal/carry identity. Unlike the two-sided magnitude target, it only asks the centered state to dominate half of the final literal arithmetic letter. Local copy of Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.PowerTwoFlexibleActualTerminalDominanceSupply, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def PowerTwoFlexibleActualTerminalDominanceSupply : Prop :=
+  ∀ a₀ : ℕ, ∃ a q : ℕ, a₀ ≤ a ∧ 8 ≤ a ∧
+    2 * q + 1 + 1 + (a + 6) < 2 * 2 ^ a ∧
+    2 * ((periodLcm (2 ^ a) + q + 2 : ℕ) : ℤ) ≤ (4 : ℤ) ^ q ∧
+    diagonalWindowIncrement (2 ^ a) (2 * q + 1 + 1) ≤
+      2 * actualOddHalfCenteredLift a q
+/-- Strictly weaker cofinal producer: the witness may use any odd rank whose exact top-edge threshold fits the half-cell and whose adjacent depth remains inside the actual-LCM sign corridor. Local copy of Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.PowerTwoFlexibleActualTopEdgeMagnitudeSupply, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def PowerTwoFlexibleActualTopEdgeMagnitudeSupply : Prop :=
+  ∀ a₀ : ℕ, ∃ a q : ℕ, a₀ ≤ a ∧ 8 ≤ a ∧
+    2 * q + 1 + 1 + (a + 6) < 2 * 2 ^ a ∧
+    2 * ((periodLcm (2 ^ a) + q + 2 : ℕ) : ℤ) ≤ (4 : ℤ) ^ q ∧
+    ((periodLcm (2 ^ a) + q + 2 : ℕ) : ℤ) ≤
+      |actualOddHalfCenteredLift a q|
+/-- The exact inherited contribution at a reduced offset across a power-of-two LCM jump. Even reduced offsets double; odd reduced offsets are copied unchanged. Local copy of Erdos249257.DiagonalFreshLossBridge.powerTwoInheritedIncrement, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def powerTwoInheritedIncrement (a r : ℕ) : ℤ :=
+  if Even r then
+    2 * diagonalWindowIncrement (2 ^ a - 1) r
+  else
+    diagonalWindowIncrement (2 ^ a - 1) r
+/-- The odd post-jump offset not reconstructed by the even-offset seam. The name records its role in the cocycle, not an arithmetic independence claim. Local copy of Erdos249257.DiagonalFreshLossBridge.powerTwoFreshOddIncrement, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def powerTwoFreshOddIncrement (a q : ℕ) : ℤ :=
+  diagonalWindowIncrement (2 ^ a) (2 * q + 1)
+/-- The signed correction in one odd-depth/base-four power-of-two step. Local copy of Erdos249257.DiagonalFreshLossBridge.powerTwoOddDepthCorrection, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def powerTwoOddDepthCorrection (a n : ℕ) : ℤ :=
+  powerTwoFreshOddIncrement a (n + 1) -
+    2 * powerTwoInheritedIncrement a (n + 1) +
+    powerTwoInheritedIncrement a (n + 2)
+/-- The integral half-correction cocycle. Local copy of Erdos249257.DiagonalFreshLossBridge.powerTwoOddHalfCorrectionWord, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def powerTwoOddHalfCorrectionWord (a : ℕ) : ℕ → ℤ
+  | 0 => 0
+  | q + 1 =>
+      4 * powerTwoOddHalfCorrectionWord a q +
+        powerTwoOddDepthCorrection a q / 2
+/-- Odd-depth half-word form of the one-sided top-edge producer. If `m = 2q+1`, the adjacent suffix residue is twice the half-word residue, and both directed edge widths divide by two to the same exact threshold `periodLcm (2^a) + q + 2`. This is substantially weaker than the older fixed `1/32` central band. Local copy of Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.PowerTwoOddGuardTopEdgeHalfWordBandSupply, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def PowerTwoOddGuardTopEdgeHalfWordBandSupply : Prop :=
+  ∀ a₀ : ℕ, ∃ a q : ℕ, max 14 a₀ ≤ a ∧
+    oddGuardedCanonicalAdjacentSuffixDepth (2 ^ a) = 2 * q + 1 ∧
+    ((periodLcm (2 ^ a) + q + 2 : ℕ) : ℤ) ≤
+      powerTwoOddHalfCorrectionWord a q % (4 : ℤ) ^ q ∧
+    powerTwoOddHalfCorrectionWord a q % (4 : ℤ) ^ q ≤
+      (4 : ℤ) ^ q -
+        ((periodLcm (2 ^ a) + q + 2 : ℕ) : ℤ)
+/-- States prop:SEP-03 from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.abs_orbit_sub_rawApprox_lt in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem abs_orbit_sub_rawApprox_lt (a q : ℕ) :
+    |(totientTail (2 * periodLcm (2 ^ a)) - totientTail (periodLcm (2 ^ a))) -
+        ((windowDiscrepancy (periodLcm (2 ^ a)) (periodLcm (2 ^ a)) (2 * q + 1) +
+            diagonalWindowIncrement (2 ^ a) (2 * q + 2) : ℤ) : ℝ) / (2 : ℝ) ^ (2 * q + 1)| <
+      ((2 * periodLcm (2 ^ a) + 2 * q + 3 : ℕ) : ℝ) / (2 : ℝ) ^ (2 * q + 1) := by
+  sorry
+/-- States prop:SEP-03 from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.oddGuarded_depth_eq_prescribed in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem oddGuarded_depth_eq_prescribed (a : ℕ) :
+    oddGuardedCanonicalAdjacentSuffixDepth (2 ^ a) = 2 * prescribedOddIndex a + 1 := by
+  sorry
+/-- States prop:SEP-03 from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.rawApprox_separation_of_orbit_separation in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem rawApprox_separation_of_orbit_separation {a q : ℕ}
+    (hsep : ∀ z : ℤ,
+      (1 : ℝ) / 32 + ((2 * periodLcm (2 ^ a) + 2 * q + 3 : ℕ) : ℝ) / (2 : ℝ) ^ (2 * q + 1) ≤
+        |(totientTail (2 * periodLcm (2 ^ a)) - totientTail (periodLcm (2 ^ a))) - (z : ℝ)|)
+    (z : ℤ) :
+    (1 : ℝ) / 32 <
+      |((windowDiscrepancy (periodLcm (2 ^ a)) (periodLcm (2 ^ a)) (2 * q + 1) +
+            diagonalWindowIncrement (2 ^ a) (2 * q + 2) : ℤ) : ℝ) / (2 : ℝ) ^ (2 * q + 1) -
+        (z : ℝ)| := by
+  sorry
+/-- States prop:TE-05 from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.te_chain_relations in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem te_chain_relations :
+    (PowerTwoOddGuardTopEdgeHalfWordBandSupply ↔
+        PowerTwoActualFinalTopEdgeMagnitudeSupply) ∧
+      (PowerTwoActualFinalTopEdgeMagnitudeSupply →
+        PowerTwoFlexibleActualTopEdgeMagnitudeSupply) ∧
+      (PowerTwoFlexibleActualTopEdgeMagnitudeSupply →
+        PowerTwoAdjacentSuffixMidbandSupply) ∧
+      (PowerTwoAdjacentSuffixMidbandSupply →
+        PowerTwoActualLcmTopEdgeResidueGapSupply) ∧
+      (PowerTwoFlexibleActualTerminalDominanceSupply →
+        PowerTwoFlexibleActualTerminalCarryCorridorEscapeSupply) ∧
+      (PowerTwoFlexibleActualTopEdgeMagnitudeSupply →
+        PowerTwoFlexibleActualTerminalCarryCorridorEscapeSupply) ∧
+      (PowerTwoFlexibleActualTerminalCarryCorridorEscapeSupply →
+        PowerTwoActualLcmOrbitNonintegralitySupply) := by
+  sorry
+end PalomarCorpus.E249.PaperStatementsAX

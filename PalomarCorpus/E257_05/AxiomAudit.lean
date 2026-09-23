@@ -1,0 +1,16 @@
+import Solutions.PalomarCorpus.E257_05
+
+#print axioms PalomarCorpus.E257.PaperStatementsAA.paper_master_identity_floors
+#print axioms PalomarCorpus.E257.PaperStatementsAG.irrational_erdosSum_full_support
+#print axioms PalomarCorpus.E257.PaperStatementsAG.irrational_erdosSupportSeries_eventuallyPeriodic
+#print axioms PalomarCorpus.E257.PaperStatementsAG.irrational_erdosSupportSeries_odd
+#print axioms PalomarCorpus.E257.PaperStatementsAG.irrational_erdosSupportSeries_periodic
+#print axioms PalomarCorpus.E257.PaperStatementsAM.mersenne_constant_decimal
+#print axioms PalomarCorpus.E257.PaperStatementsAM.mersenne_topology_quantitative
+#print axioms PalomarCorpus.E257.PaperStatementsAM.row_constant_eq_tail
+#print axioms PalomarCorpus.E257.PaperStatementsAR.paper_real_quotient_core
+#print axioms PalomarCorpus.E257.PaperStatementsAR.paper_real_quotient_margins
+#print axioms PalomarCorpus.E257.PaperStatementsB.greedy_survives_of_mem_mersenneAchievementSet
+#print axioms PalomarCorpus.E257.PaperStatementsB.mem_mersenneAchievementSet_iff_greedy_survival
+#print axioms PalomarCorpus.E257.PaperStatementsB.mem_mersenneAchievementSet_of_greedy_survival
+#print axioms PalomarCorpus.E257.PaperStatementsBC.irrational_residueClass_positive_support

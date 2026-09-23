@@ -1,0 +1,7 @@
+import Solutions.PalomarCorpus.E257_34
+
+#print axioms PalomarCorpus.E257.PaperStatementsAM.paper_volume_supportedMersenneAchievementSet_dichotomy
+#print axioms PalomarCorpus.E257.PaperStatementsBD.four_le_halfStripBound
+#print axioms PalomarCorpus.E257.PaperStatementsQ.paper_mobiusCenteredHalfCarry_add_two
+#print axioms PalomarCorpus.E257.PaperStructuresBR.paper_feedback_row_total_dichotomy
+#print axioms PalomarCorpus.E257.PaperStructuresBT.paper_shared_prefix_family_contains_strip_witness

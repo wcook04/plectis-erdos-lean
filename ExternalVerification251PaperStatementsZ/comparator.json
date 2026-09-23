@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification251PaperStatementsZ.Challenge",
+  "solution_module": "Solutions.ExternalVerification251PaperStatementsZ",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification251PaperStatementsZ.short_joint_prime_gap_countermodel"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

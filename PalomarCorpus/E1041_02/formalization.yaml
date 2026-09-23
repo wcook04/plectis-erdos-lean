@@ -1,0 +1,204 @@
+version: v0.4
+project:
+  name: 'Erdős #1041, record sections 4 to 7; the cubic path family: a path estimate from area and boundary length; degree three; collinear roots and two sparse polynomial families'
+  description: >-
+    This entry states 6 theorems that the long record for Erdős problem #1041 states in sections 4 (a path estimate from area and boundary length), 5 (degree three) and 7 (collinear roots and two sparse polynomial families): the theorem “a uniform path bound at level 2μ” (section 4), as cfa_constant_factor_path; the corollary “a criterion using the number of roots at the first merger” (section 4), as cfa_arity_criterion; the corollary “a criterion using component capacity” (section 4), as cfa_capacity_criterion; the theorem “a path from a subcritical perimeter bound” (section 4), as subcritical_perimeter_path_paper; the theorem “the cubic case” (section 5), as cubic_paper_complete; the theorem “a cubic composed with a power map” (section 7.3), as complete_translated_cubic_quotient_fibres.
+
+    It also states 1 theorem of the cubic path development of the Lean formalisation of Erdős problem #1041, to which no paper statement is bound. monic_cubic_connector: The same degree-three theorem with the cubic given by monicity and degree in place of a root list: for monic p of natural degree 3 every zero of which has modulus strictly below 1, there are zeros a and b of p and a hub c such that hub a c b is continuous, has bounded variation on Icc 0 2, satisfies ‖p.eval (hub a c b t)‖ < 1 for every t in Icc 0 2, and has extended variation strictly below ENNReal.ofReal 2; a second existential gives some curve γ continuous on Icc 0 2 with γ 0 = a, γ 2 = b and the same bounds, without asserting that γ is that hub path.
+
+    cfa_constant_factor_path assumes the named input CFAPathConstruction as a hypothesis: for every monic complex polynomial f of degree n ≥ 3 with root enumeration z whose least modulus at a critical point is μ > 0, and all r with 0 < r < 1 and λ > 1, there is k ≥ 2 such that two zero occurrences of f are joined inside the open sublevel set {|f| < λμ} by a continuous path of length at most the paper's bracket (CF) at (n, k, λ, r) times μ^(1/n). This is the paper's own constant-factor construction, whose proof uses Pólya's area inequality, the Koebe distortion theorem and the coarea formula; this repository does not formalise it.
+
+    cfa_arity_criterion assumes the named input CFAArityConstruction as a hypothesis: when μ > 0, at least one of three cases holds: μ ≤ 1/2 and k₀ ≥ 17, μ ≤ 1/4 and k₀ ≥ 12, or μ ≤ 1/8 and k₀ ≥ 10, and in that case two zero occurrences of f are joined inside {|f| < 1} by a continuous path of length at most √(2/k₀) times √2 r/(1 - r)² + √(log(λ/r)) + π/√(log λ), with (λ, r) equal to (2, 13/100), (4, 3/25) or (8, 11/100) respectively. This is the paper's own arity construction, the constant-factor construction specialised to the first-merge component; this repository does not formalise it.
+
+    cfa_capacity_criterion assumes the named input CFACapacityConstruction as a hypothesis: two zero occurrences of f are joined inside {|f| < 1} by a continuous path of length at most √(2/k₀) times √2 (1/20)/(1 - 1/20)² + κ(√(log 40) + π/√(log 2)), where κ is the paper's capacity ratio of the component of {|f| < 2μ} containing the first-merge critical point. This is the paper's own capacity construction, which reruns the averaging proof with the area-capacity inequality on that component; this repository does not formalise it, and the pinned Mathlib has no logarithmic capacity.
+
+    subcritical_perimeter_path_paper assumes the named input SubcriticalSplitExists as a hypothesis: there are distinct roots a and b of the polynomial and sets U_a and U_b containing them whose frontiers share a point, each frontier of one-dimensional Hausdorff measure at most β μ^(1/n), and each set joining every interior point to every frontier point inside {|p| ≤ μ} by a path of length at most half its perimeter. It packages classical results that this repository does not formalise: the component-wise Riemann-Hurwitz count of Ebenfelt, Khavinson and Shapiro (Contemporary Mathematics 553, 2011, Proposition 2.1), the continuous extension of an inverse branch at a critical point, lower semicontinuity of length under uniform convergence, and the Jordan curve theorem.
+
+    4 are derived from the source declaration by a short tactic proof, which certifies implication.
+
+    Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
+
+    A degree-seven counterexample due to ani, formalised in this corpus, refutes the total-variation formulation of Erdős problem #1041; the theorems in this entry keep their stated hypotheses.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.CV
+  - math.CA
+  msc2020:
+  - "30C10"
+  - "30C15"
+  - "31A15"
+  - "26C10"
+sources:
+- title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: "The compared theorems are independently restated Lean theorems proved in this repository and described in the public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos."
+  license: Apache-2.0
+  author_endorsement: participated
+- title: "Metric properties of polynomials"
+  authors:
+  - "Paul Erdős"
+  - "Fritz Herzog"
+  - "George Piranian"
+  id: "10.1007/BF02790232"
+  type: "paper"
+  relationship: "background"
+  note: "Poses the root-to-root connection question as Problem 5 on page 139, which is the parent problem of this entry; no theorem compared here is taken from it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "A Degree-Four Lemniscate Path Theorem"
+  authors:
+  - "V. S. Pendyala"
+  id: "arXiv:2606.24875"
+  type: "paper"
+  relationship: "background"
+  note: "Settles the degree-four case of the parent problem unconditionally by a radial-arm argument from the centre of the smallest disc containing the four zeros, and is the directly comparable adjacent result. The spoke declarations here are origin spokes for sparse coefficient families and a three-point origin-spoke selector; that mechanism is shared with this paper and no priority is claimed for it. The degree-three theorem compared here was proved without this paper and takes no statement, constant, or argument from it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "On the length of lemniscates"
+  authors:
+  - "Alexandre Eremenko"
+  - "Walter Hayman"
+  id: "arXiv:0805.2295"
+  type: "paper"
+  relationship: "background"
+  note: "Bounds the total length of the level set |p| = 1 by 9.173 times the degree and shows an extremal level set is connected; that is a different metric quantity and supplies no internal root-to-root connector, so nothing here uses it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Beitrag zur Verallgemeinerung des Verzerrungssatzes auf mehrfach zusammenhängende Gebiete"
+  authors:
+  - "George Pólya"
+  type: "paper"
+  relationship: "background"
+  note: "The absolute area-capacity inequality behind the ordinary analytic estimate whose squared connector bound the first-merge threshold declarations consume; those declarations check only the numerical coefficient and its sign-free consumer, and the area argument itself is not formalised here."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Some inequalities for polynomials and rational functions associated with lemniscates"
+  authors:
+  - "Vladimir N. Dubinin"
+  id: "10.1007/s10958-013-1432-4"
+  type: "paper"
+  relationship: "background"
+  note: "A neighbouring relative-area inequality of Pólya type, recorded in the companion bibliography for completeness; its text was not obtained, its covering hypothesis and relative-area conclusion are used by no declaration here, and no claim rests on it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Two-dimensional shapes and lemniscates"
+  authors:
+  - "Peter Ebenfelt"
+  - "Dmitry Khavinson"
+  - "Harold S. Shapiro"
+  id: "10.1090/conm/553/10931"
+  type: "paper"
+  relationship: "background"
+  note: "Proposition 2.1 is the named input SubcriticalSplitExists, which the compared theorems that name it assume as a hypothesis; this repository does not formalise it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: Erdős Problems catalogue
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com
+  type: web discussion
+  relationship: background
+  note: "Catalogue numbering and status of the parent problem."
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+related_formalizations:
+- id: "https://github.com/google-deepmind/formal-conjectures/blob/f776d2f2039351b00737ffcafb9d7d7666e1d9af/FormalConjectures/ErdosProblems/1041.lean"
+  title: "FormalConjectures.ErdosProblems.1041"
+  relationship: "independent"
+  note: "States the open parent problem and the Erdős, Herzog and Piranian connected-component lemma; it is statement-level prior art for the formalisation, it supplies no proof authority, and every declaration compared here was stated independently of it."
+status:
+  scope: "One Comparator configuration selecting the 7 theorems listed in PalomarCorpus/E1041_02/comparator.json, from the Lean development for Erdős problem #1041. The problem's theorems are packed, in the order the papers state them, into the 8 entries PalomarCorpus/E1041_01 to PalomarCorpus/E1041_08, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification1041* directories are internal regression inventory and are not selected."
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 7
+  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E1041_02/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
+  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: "PalomarCorpus.E1041.CubicPath.complete_translated_cubic_quotient_fibres"
+    file: "Solutions/PalomarCorpus/E1041_02/CubicPath.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_02/comparator.json"
+  - declaration: "PalomarCorpus.E1041.CubicPath.cubic_paper_complete"
+    file: "Solutions/PalomarCorpus/E1041_02/CubicPath.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_02/comparator.json"
+  - declaration: "PalomarCorpus.E1041.CubicPath.monic_cubic_connector"
+    file: "Solutions/PalomarCorpus/E1041_02/CubicPath.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_02/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsY.cfa_capacity_criterion"
+    file: "Solutions/PalomarCorpus/E1041_02/PaperStatementsY.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_02/comparator.json"
+    literature_dependencies:
+    - statement: "CFACapacityConstruction: two zero occurrences of f are joined inside {|f| < 1} by a continuous path of length at most √(2/k₀) times √2 (1/20)/(1 - 1/20)² + κ(√(log 40) + π/√(log 2)), where κ is the paper's capacity ratio of the component of {|f| < 2μ} containing the first-merge critical point"
+      source: "Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsZA.cfa_arity_criterion"
+    file: "Solutions/PalomarCorpus/E1041_02/PaperStatementsZA.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_02/comparator.json"
+    literature_dependencies:
+    - statement: "CFAArityConstruction: when μ > 0, at least one of three cases holds: μ ≤ 1/2 and k₀ ≥ 17, μ ≤ 1/4 and k₀ ≥ 12, or μ ≤ 1/8 and k₀ ≥ 10, and in that case two zero occurrences of f are joined inside {|f| < 1} by a continuous path of length at most √(2/k₀) times √2 r/(1 - r)² + √(log(λ/r)) + π/√(log λ), with (λ, r) equal to (2, 13/100), (4, 3/25) or (8, 11/100) respectively"
+      source: "Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsZA.cfa_constant_factor_path"
+    file: "Solutions/PalomarCorpus/E1041_02/PaperStatementsZA.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_02/comparator.json"
+    literature_dependencies:
+    - statement: "CFAPathConstruction: for every monic complex polynomial f of degree n ≥ 3 with root enumeration z whose least modulus at a critical point is μ > 0, and all r with 0 < r < 1 and λ > 1, there is k ≥ 2 such that two zero occurrences of f are joined inside the open sublevel set {|f| < λμ} by a continuous path of length at most the paper's bracket (CF) at (n, k, λ, r) times μ^(1/n)"
+      source: "Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsZB.subcritical_perimeter_path_paper"
+    file: "Solutions/PalomarCorpus/E1041_02/PaperStatementsZB.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_02/comparator.json"
+    literature_dependencies:
+    - statement: "SubcriticalSplitExists: there are distinct roots a and b of the polynomial and sets U_a and U_b containing them whose frontiers share a point, each frontier of one-dimensional Hausdorff measure at most β μ^(1/n), and each set joining every interior point to every frontier point inside {|p| ≤ μ} by a path of length at most half its perimeter"
+      source: "Two-dimensional shapes and lemniscates"
+  development_status: substantive
+  local_proof_provenance: "the proof modules ErdosProblems.Erdos1041 in this repository, imported by Solutions.PalomarCorpus.E1041_02; the Solutions.ExternalVerification1041* family modules are a regression mirror of the same proofs and are not imported by this configuration"
+  canonical_claim_status: "problem-level Comparator entry over substantive Lean in this repository"
+automation:
+  methods:
+  - method: manual
+    models: []
+    framework: Mathematical interpretation and claim-boundary review
+    tool_setup: Human-directed scope and significance review
+  - method: agent
+    models:
+    - Anthropic Claude
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+    cost:
+      wall_time: not tracked
+      spend_usd: subscription-based
+      hardware: local machine
+      prompting_notes: n/a
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    The statements from the hand-written families were checked declaration by declaration against the public problem notes, the reasoning records and the Lean sources in automated review passes run with Anthropic Claude and OpenAI Codex. Every generated restatement was bound to a paper statement and refereed in the eight-paper coverage ledger before its wrapper was generated, and its transport proof was elaborated before the statement was accepted. The author selected the statements and is responsible for the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

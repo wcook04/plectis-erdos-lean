@@ -1,0 +1,15 @@
+{
+  "challenge_module": "PalomarCorpus.E249_28.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E249_28",
+  "theorem_names": [
+    "PalomarCorpus.E249.PaperStatementsAJ.bracket_of_two_sided_separation",
+    "PalomarCorpus.E249.PaperStatementsAT.certifiedKill_of_fullDepth_phase_separation",
+    "PalomarCorpus.E249.PaperStructuresQ.prop_dickman"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

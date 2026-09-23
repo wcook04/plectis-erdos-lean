@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification243PaperStatementsH
+
+#print axioms Erdos249257.ExternalVerification243PaperStatementsH.cancellationFree_curvature_square

@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification251PaperStatementsC.Challenge",
+  "solution_module": "Solutions.ExternalVerification251PaperStatementsC",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification251PaperStatementsC.real_dyadic_orbit_eq_true_tail_iff"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

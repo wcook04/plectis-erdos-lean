@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification243PaperStatementsG
+
+#print axioms Erdos249257.ExternalVerification243PaperStatementsG.regular_rate_extraction

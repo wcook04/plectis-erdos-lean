@@ -16,9 +16,9 @@ project:
 
 palomar_qualification:
   status: "candidate_pending_public_identity_and_terminal_comparator_gates"
-  selected_project: "formal_math/erdos257_period_noncollapse"
-  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification269CarryMechanism/comparator.json"
-  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification269CarryMechanism/formalization.yaml"
+  selected_project: "."
+  comparator_config: "ExternalVerification269CarryMechanism/comparator.json"
+  formalization_metadata: "ExternalVerification269CarryMechanism/formalization.yaml"
   challenge_dependency_boundary: "Mathlib_only"
   replay_status: "focused_lean_passed_terminal_positive_and_deliberate_negative_pair_pending"
   research_interest_status: "plausible_note_grade_conditional_extinction_family"

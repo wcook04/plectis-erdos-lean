@@ -1,0 +1,8 @@
+import Solutions.PalomarCorpus.E257_32
+
+#print axioms PalomarCorpus.E257.PaperStatementsAL.supportCoeff_boundaryPair_unitDrop_at_double
+#print axioms PalomarCorpus.E257.PaperStatementsAL.supportCoeff_insert_divisor
+#print axioms PalomarCorpus.E257.PaperStructuresBU.prefixChoice_eq_below
+#print axioms PalomarCorpus.E257.PaperStructuresO.overlappingMidpointReturns_twoPow_le_realBound
+#print axioms PalomarCorpus.E257.PaperStructuresO.overlappingReverseCarryWords_carryDifference_eq_twoPow_mul_odd
+#print axioms PalomarCorpus.E257.PaperStructuresO.overlappingReverseCarryWords_twoPow_le_realBound

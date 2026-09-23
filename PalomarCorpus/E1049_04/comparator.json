@@ -1,0 +1,22 @@
+{
+  "challenge_module": "PalomarCorpus.E1049_04.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E1049_04",
+  "theorem_names": [
+    "PalomarCorpus.E1049.PaperStatementsB.paperE_eq_rowExponent",
+    "PalomarCorpus.E1049.PaperStatementsB.paperRatio_agree",
+    "PalomarCorpus.E1049.PaperStatementsB.paperReciprocal_rec",
+    "PalomarCorpus.E1049.PaperStatementsB.paperReciprocal_zero",
+    "PalomarCorpus.E1049.PaperStatementsG.order_zudilinNormalizedHankelDet_all",
+    "PalomarCorpus.E1049.PaperStatementsH.all_row_initial",
+    "PalomarCorpus.E1049.PaperStatementsH.all_row_initial_dvd",
+    "PalomarCorpus.E1049.PaperStatementsH.all_row_initial_reciprocal",
+    "PalomarCorpus.E1049.PaperStatementsN.integer_scalar_content",
+    "PalomarCorpus.E1049.PaperStructuresO.coefficientPencil_finitePencil"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

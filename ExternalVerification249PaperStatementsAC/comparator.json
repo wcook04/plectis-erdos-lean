@@ -1,0 +1,16 @@
+{
+  "challenge_module": "ExternalVerification249PaperStatementsAC.Challenge",
+  "solution_module": "Solutions.ExternalVerification249PaperStatementsAC",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249PaperStatementsAC.cyclotomic_dvd_mobiusNumeratorPolynomial_sub",
+    "Erdos249257.ExternalVerification249PaperStatementsAC.jordanTotientTwo_eq_prod_primeFactors",
+    "Erdos249257.ExternalVerification249PaperStatementsAC.mobiusNumeratorPolynomial_coeff",
+    "Erdos249257.ExternalVerification249PaperStatementsAC.mobiusNumeratorPolynomial_coeff_pos"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

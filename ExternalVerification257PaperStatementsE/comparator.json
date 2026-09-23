@@ -1,0 +1,15 @@
+{
+  "challenge_module": "ExternalVerification257PaperStatementsE.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStatementsE",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStatementsE.infinite_support_half_of_mobiusCenteredHalfCarry_sqrtBound",
+    "Erdos249257.ExternalVerification257PaperStatementsE.integerHalfCarry_eq_scaled_residual_add_tail",
+    "Erdos249257.ExternalVerification257PaperStatementsE.half_of_cofinal_absolute_carry"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

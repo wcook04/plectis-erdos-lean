@@ -1,0 +1,31 @@
+{
+  "challenge_module": "ExternalVerification257PaperStructuresBN.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStructuresBN",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStructuresBN.seamUpperResetDyadicBandEscape_through_thirty",
+    "Erdos249257.ExternalVerification257PaperStructuresBN.paper_final_middle_cell_at_least_neg_two",
+    "Erdos249257.ExternalVerification257PaperStructuresBN.paper_final_middle_cell_ne_neg_three",
+    "Erdos249257.ExternalVerification257PaperStructuresBN.paper_final_middle_cell_remaining_cells",
+    "Erdos249257.ExternalVerification257PaperStructuresBN.paper_perturbed_nextRemainder_three_branches",
+    "Erdos249257.ExternalVerification257PaperStructuresBN.paper_perturbed_order_preservation",
+    "Erdos249257.ExternalVerification257PaperStructuresBN.paper_perturbed_prefixChoice_maximal",
+    "Erdos249257.ExternalVerification257PaperStructuresBN.seamPerturbedFamily_gap_pos",
+    "Erdos249257.ExternalVerification257PaperStructuresBN.seamPerturbedFamily_oldSum_injective",
+    "Erdos249257.ExternalVerification257PaperStructuresBN.seamPerturbedFamily_separated",
+    "Erdos249257.ExternalVerification257PaperStructuresBN.seamPerturbedFamily_pulseCap_lt_three_gap",
+    "Erdos249257.ExternalVerification257PaperStructuresBN.wordPulse_le",
+    "Erdos249257.ExternalVerification257PaperStructuresBN.exists_seamWord_minimal_above",
+    "Erdos249257.ExternalVerification257PaperStructuresBN.integerGreedyBits_length",
+    "Erdos249257.ExternalVerification257PaperStructuresBN.seamAboveWord_minimal",
+    "Erdos249257.ExternalVerification257PaperStructuresBN.seamAboveWord_strict",
+    "Erdos249257.ExternalVerification257PaperStructuresBN.seamWeights_length_eq",
+    "Erdos249257.ExternalVerification257PaperStructuresBN.seamAdjacentCut_below_admissible",
+    "Erdos249257.ExternalVerification257PaperStructuresBN.seamAdjacentCut_below_maximal"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -5,6 +5,7 @@ import Erdos257PeriodNoncollapse.BooleanMobiusExactTransition
 import Erdos257PeriodNoncollapse.HalfCylinderFullShellSeamBridge
 import Erdos257PeriodNoncollapse.HalfCylinderFloorErrorReset
 import Mathlib.NumberTheory.Real.Irrational
+import Erdos257PeriodNoncollapse.BooleanMobiusCofinalExactRowsSupplement
 
 /-!
 # Erdős #257: the rational-half counterexample frontier

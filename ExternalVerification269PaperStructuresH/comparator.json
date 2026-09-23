@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification269PaperStructuresH.Challenge",
+  "solution_module": "Solutions.ExternalVerification269PaperStructuresH",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification269PaperStructuresH.rank_cutMatrix"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

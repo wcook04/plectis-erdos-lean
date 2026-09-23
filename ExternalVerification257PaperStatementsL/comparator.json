@@ -1,0 +1,17 @@
+{
+  "challenge_module": "ExternalVerification257PaperStatementsL.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStatementsL",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStatementsL.square_depth_witness",
+    "Erdos249257.ExternalVerification257PaperStatementsL.paper_cofiniteRightTail_ne_zero_centeredEndpoint",
+    "Erdos249257.ExternalVerification257PaperStatementsL.paper_relaxed_constant_six_every_depth",
+    "Erdos249257.ExternalVerification257PaperStatementsL.paper_square_depth_terminal_bound",
+    "Erdos249257.ExternalVerification257PaperStatementsL.paper_terminal_strip_forces_half_membership"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,5 @@
+import Solutions.ExternalVerification1049PaperStatementsH
+
+#print axioms Erdos249257.ExternalVerification1049PaperStatementsH.all_row_initial
+#print axioms Erdos249257.ExternalVerification1049PaperStatementsH.all_row_initial_dvd
+#print axioms Erdos249257.ExternalVerification1049PaperStatementsH.all_row_initial_reciprocal

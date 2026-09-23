@@ -1,0 +1,21 @@
+{
+  "challenge_module": "ExternalVerification249PaperStatementsG.Challenge",
+  "solution_module": "Solutions.ExternalVerification249PaperStatementsG",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249PaperStatementsG.historical_table_size_and_initial_depths",
+    "Erdos249257.ExternalVerification249PaperStatementsG.sixteen_certificate_windows",
+    "Erdos249257.ExternalVerification249PaperStatementsG.small_certificate_windows",
+    "Erdos249257.ExternalVerification249PaperStatementsG.b6_adjugate_tail_cost_floor",
+    "Erdos249257.ExternalVerification249PaperStatementsG.b6_compressed_adjoint_identity_impossible",
+    "Erdos249257.ExternalVerification249PaperStatementsG.b6_rankOneSubrankQuotient_sub_totientSeries_offset_gt",
+    "Erdos249257.ExternalVerification249PaperStatementsG.diagonalPincerCertificateScales_list",
+    "Erdos249257.ExternalVerification249PaperStatementsG.diagonalPincerKillDepth_list",
+    "Erdos249257.ExternalVerification249PaperStatementsG.totientBlock_eq_paper_indexed_sum"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

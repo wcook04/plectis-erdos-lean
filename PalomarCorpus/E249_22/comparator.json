@@ -1,0 +1,27 @@
+{
+  "challenge_module": "PalomarCorpus.E249_22.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E249_22",
+  "theorem_names": [
+    "PalomarCorpus.E249.PaperStatementsAT.actualLcm_corridor_pos",
+    "PalomarCorpus.E249.PaperStatementsAT.corridor_height_lt_letter",
+    "PalomarCorpus.E249.PaperStatementsAT.corridor_letter_pos",
+    "PalomarCorpus.E249.PaperStatementsAU.irrational_of_topEdgeResidueGapSupply",
+    "PalomarCorpus.E249.PaperStatementsAU.topEdgeResidueGap_forces_nonintegral",
+    "PalomarCorpus.E249.PaperStatementsAU.topEdgeResidueGap_orbit_nonintegral",
+    "PalomarCorpus.E249.PaperStatementsAU.topEdgeResidueGap_unfolded",
+    "PalomarCorpus.E249.PaperStatementsAX.irrational_of_paperAdjacentSuffixMidbandSupply",
+    "PalomarCorpus.E249.PaperStatementsAX.paperAdjacentSuffixMidbandSupply_of_adjacentSuffixMidband",
+    "PalomarCorpus.E249.PaperStatementsAX.paperAdjacentSuffixMidbandSupply_of_flexibleActualTopEdgeMagnitude",
+    "PalomarCorpus.E249.PaperStatementsAX.paperAdjacentSuffixMidbandSupply_of_oddGuardTopEdgeHalfWordBand",
+    "PalomarCorpus.E249.PaperStatementsAX.paperTeChain_fifth_gives_nonintegrality",
+    "PalomarCorpus.E249.PaperStatementsAX.paperTeChain_first_four_imply_topEdgeSupply",
+    "PalomarCorpus.E249.PaperStatementsAX.paperTeChain_five_sufficient_for_irrationality",
+    "PalomarCorpus.E249.PaperStatementsAX.paperTeChain_item_one_unfolded"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

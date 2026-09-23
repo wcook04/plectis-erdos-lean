@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification257PaperStructuresV.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStructuresV",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStructuresV.unitNumerator_skipSafe_actualTail"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

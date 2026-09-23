@@ -1,0 +1,4 @@
+import Solutions.ExternalVerification1041PaperStatementsAA
+
+#print axioms Erdos249257.ExternalVerification1041PaperStatementsAA.all_degree_monic_trinomials_whole
+#print axioms Erdos249257.ExternalVerification1041PaperStatementsAA.complete_trinomial

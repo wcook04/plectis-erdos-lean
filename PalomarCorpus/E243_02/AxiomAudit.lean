@@ -1,0 +1,17 @@
+import Solutions.PalomarCorpus.E243_02
+
+#print axioms PalomarCorpus.E243.CompletePaperRecords.arithmetic_weighted_record_dichotomy
+#print axioms PalomarCorpus.E243.CompletePaperRecords.canonical_weighted_record_excess
+#print axioms PalomarCorpus.E243.PaperStatementsA.centeredState_zero_absorbing
+#print axioms PalomarCorpus.E243.PaperStatementsA.nextTailState_eq_sub_centered
+#print axioms PalomarCorpus.E243.PaperStatementsA.primePower_persists
+#print axioms PalomarCorpus.E243.PaperStatementsA.reduced_denominator_valuation_le_max
+#print axioms PalomarCorpus.E243.PaperStatementsA.reduced_denominator_valuation_strict_loss
+#print axioms PalomarCorpus.E243.PaperStatementsA.reduced_denominator_valuation_transition
+#print axioms PalomarCorpus.E243.PaperStatementsA.reduced_second_order_int
+#print axioms PalomarCorpus.E243.PaperStatementsA.state_scale
+#print axioms PalomarCorpus.E243.PaperStatementsA.sylvesterDefect_mul_nextTailState
+#print axioms PalomarCorpus.E243.PaperStatementsA.sylvesterNext_eq_of_centered_zero
+#print axioms PalomarCorpus.E243.PaperStatementsA.sylvesterNext_eventually_of_centered_zero
+#print axioms PalomarCorpus.E243.PaperStatementsA.unit_word_saturates_old_modulus
+#print axioms PalomarCorpus.E243.PaperStatementsH.cancellationFree_curvature_square

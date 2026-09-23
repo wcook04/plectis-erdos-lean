@@ -1,0 +1,4 @@
+import Solutions.ExternalVerification1041PaperStatementsX
+
+#print axioms Erdos249257.ExternalVerification1041PaperStatementsX.lobe_perimeter_gt
+#print axioms Erdos249257.ExternalVerification1041PaperStatementsX.one_root_gamma_false

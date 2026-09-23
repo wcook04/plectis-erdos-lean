@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification249PaperStatementsK
+
+#print axioms Erdos249257.ExternalVerification249PaperStatementsK.b6_mobius_incidence_unimodular_and_injective

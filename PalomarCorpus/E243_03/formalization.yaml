@@ -1,0 +1,232 @@
+version: v0.4
+project:
+  name: 'Erdős #243, record sections 7.1 to 7.2: how fast the running maximum must increase; bounds that allow for cancellation and earlier decreases'
+  description: >-
+    This entry states 15 theorems that the long record for Erdős problem #243 states in sections 7.1 (how fast the running maximum must increase) and 7.2 (bounds that allow for cancellation and earlier decreases): the theorem “increments of the running maximum” (section 7.1), as canonical_quantitative_record_dichotomy, canonical_recordTheta_eq_zero_iff, canonical_recordTheta_gt_one and canonical_recordTheta_zero_or_gt_one; the corollary “the double-logarithmic bound” (section 7.1), as canonical_inclusive_logLog_criterion and canonical_negativeError_limsup_gt_one; the theorem “bounds allowing for previous decreases” (section 7.2), as R_delta_sub_amp_tendsto_zero, Rdelta_bddAbove_iff_amp, amp_bddAbove_iff_sylvester, coprimeMultiplier_cofinal, delta_negPart_comparison, largePrime_coprimeMultiplier, primeBlock_supply, recordAmplified and canc_lt_of_amp_le.
+
+    13 are derived from the source declaration by a short tactic proof, which certifies implication.
+
+    Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
+
+    Erdős problem #243 remains open, and no theorem in this entry decides it.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.NT
+  - math.DS
+  msc2020:
+  - "11J72"
+  - "11D68"
+  - "11B37"
+  - "11B83"
+  - "11A05"
+sources:
+- title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: "The compared theorems are independently restated Lean theorems proved in this repository and described in the public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos."
+  license: Apache-2.0
+  author_endorsement: participated
+- title: "On the irrationality of certain Ahmes series"
+  authors:
+  - "Paul Erdős"
+  - "Ernst G. Straus"
+  id: "https://users.renyi.hu/~p_erdos/1964-19.pdf"
+  type: "paper"
+  relationship: "background"
+  note: "Theorem 3, page 132, gives the classical criterion that a counterexample has positive limit superior for lcm(a 1, ..., a n) / a (n+1) times (a (n+1) ^ 2 / a (n+2) - 1), whose growth factor sits one index later than the product defect compared here; no proof, lemma or formal statement is taken from it, and the present bounded-defect criterion needs only a finite upper bound in place of a nonpositive limit superior, for a prefix-product quantity at index n where their Theorem 3 bounds an lcm-scale quantity at index n + 1."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Irrationality of the reciprocal sum of doubly exponential sequences"
+  authors:
+  - "Junnosuke Koizumi"
+  id: "arXiv:2504.05933"
+  type: "paper"
+  relationship: "background"
+  note: "Supplies the cleared coordinates in which the integer-state theorems are read, and the eventually nonnegative case of the conclusion in Proposition 1(2), which Koizumi attributes to Badea; the bounded-negative-part and summable-mass theorems here are stated and proved independently of that source, and no analytic bridge from this article is formalised in the Challenge."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "A theorem on irrationality of infinite series and applications"
+  authors:
+  - "Catalin Badea"
+  id: "https://matwbn.icm.edu.pl/ksiazki/aa/aa63/aa6342.pdf"
+  type: "paper"
+  relationship: "background"
+  note: "Gives the positive-term irrationality criterion and the rationality-forces-equality companion that stand behind the eventually nonnegative case; its positive-term hypotheses do not cover the mixed-sign integer states studied here, and nothing in the Challenge recovers its statements."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Irrationality of fast converging series of rational numbers"
+  authors:
+  - "Daniel Duverney"
+  id: "https://www.ms.u-tokyo.ac.jp/journal/pdf/jms080206.pdf"
+  type: "paper"
+  relationship: "background"
+  note: "Corollary 3.2 settles a signed form of the problem under convergence of the series of growth defects, a hypothesis assumed nowhere in this entry; no result here is derived from it and no comparison of priority is made."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "On several irrationality problems for Ahmes series"
+  authors:
+  - "Vjekoslav Kovač"
+  - "Terence Tao"
+  id: "arXiv:2406.17593"
+  type: "paper"
+  relationship: "background"
+  note: "Calibrates the growth hypothesis by recording that the classical sufficient condition for irrationality is sharp for doubly exponential sequences; the article resolves other Erdős and Graham problems on Ahmes series and does not treat problem 243, so nothing here rests on it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Old and New Problems and Results in Combinatorial Number Theory, page 64"
+  authors:
+  - "Paul Erdős"
+  - "Ronald L. Graham"
+  id: "https://mathweb.ucsd.edu/~ronspubs/80_11_number_theory.pdf"
+  type: "book"
+  relationship: "background"
+  note: "The original published statement of the question; it supplies the problem and its attribution only, and no proof content."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Erdős Problem #243"
+  authors:
+  - "Thomas F. Bloom"
+  id: "https://www.erdosproblems.com/243"
+  type: "web discussion"
+  relationship: "background"
+  note: "The catalogue supplies the problem numbering, the standing references and the open status; no theorem in the Challenge is attributed to the catalogue, and the catalogue entry records its status as the site owner's present assessment."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Prime-Support Rigidity and Primitive Pseudo-Greedy Dynamics: Partial Progress on Erdős Problem #243"
+  authors:
+  - "Idriss Olivier Bado"
+  id: "https://doi.org/10.13140/RG.2.2.36612.08325"
+  type: "paper"
+  relationship: "background"
+  note: "An author-posted preprint whose Theorem 5.1 assumes two-sided bounded errors, a hypothesis strictly stronger than the one-sided bound used here; it is recorded as part of the literature search, it has not been independently validated for this entry, and no statement here depends on it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: Erdős Problems catalogue
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com
+  type: web discussion
+  relationship: background
+  note: "Catalogue numbering and status of the parent problem."
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+related_formalizations:
+- id: "https://github.com/google-deepmind/formal-conjectures/blob/f776d2f2039351b00737ffcafb9d7d7666e1d9af/FormalConjectures/ErdosProblems/243.lean"
+  title: "FormalConjectures.ErdosProblems.243"
+  relationship: "independent"
+  note: "A mathematically equivalent Lean statement of the problem, up to its zero-based indexing, whose proof ends in sorry; it is statement-level prior art for the formalisation, it supplies no proof authority, and every declaration compared here was stated independently of it."
+status:
+  scope: "One Comparator configuration selecting the 15 theorems listed in PalomarCorpus/E243_03/comparator.json, from the Lean development for Erdős problem #243. The problem's theorems are packed, in the order the papers state them, into the 11 entries PalomarCorpus/E243_01 to PalomarCorpus/E243_11, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification243* directories are internal regression inventory and are not selected."
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 15
+  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E243_03/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
+  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: "PalomarCorpus.E243.CompletePaperRecords.canonical_inclusive_logLog_criterion"
+    file: "Solutions/PalomarCorpus/E243_03/CompletePaperRecords.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E243_03/comparator.json"
+  - declaration: "PalomarCorpus.E243.CompletePaperRecords.canonical_quantitative_record_dichotomy"
+    file: "Solutions/PalomarCorpus/E243_03/CompletePaperRecords.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E243_03/comparator.json"
+  - declaration: "PalomarCorpus.E243.PaperStatementsI.canonical_negativeError_limsup_gt_one"
+    file: "Solutions/PalomarCorpus/E243_03/PaperStatementsI.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E243_03/comparator.json"
+  - declaration: "PalomarCorpus.E243.PaperStatementsM.canonical_recordTheta_eq_zero_iff"
+    file: "Solutions/PalomarCorpus/E243_03/PaperStatementsM.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E243_03/comparator.json"
+  - declaration: "PalomarCorpus.E243.PaperStatementsM.canonical_recordTheta_gt_one"
+    file: "Solutions/PalomarCorpus/E243_03/PaperStatementsM.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E243_03/comparator.json"
+  - declaration: "PalomarCorpus.E243.PaperStatementsM.canonical_recordTheta_zero_or_gt_one"
+    file: "Solutions/PalomarCorpus/E243_03/PaperStatementsM.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E243_03/comparator.json"
+  - declaration: "PalomarCorpus.E243.PaperStructuresT.R_delta_sub_amp_tendsto_zero"
+    file: "Solutions/PalomarCorpus/E243_03/PaperStructuresT.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E243_03/comparator.json"
+  - declaration: "PalomarCorpus.E243.PaperStructuresT.Rdelta_bddAbove_iff_amp"
+    file: "Solutions/PalomarCorpus/E243_03/PaperStructuresT.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E243_03/comparator.json"
+  - declaration: "PalomarCorpus.E243.PaperStructuresT.amp_bddAbove_iff_sylvester"
+    file: "Solutions/PalomarCorpus/E243_03/PaperStructuresT.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E243_03/comparator.json"
+  - declaration: "PalomarCorpus.E243.PaperStructuresT.coprimeMultiplier_cofinal"
+    file: "Solutions/PalomarCorpus/E243_03/PaperStructuresT.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E243_03/comparator.json"
+  - declaration: "PalomarCorpus.E243.PaperStructuresT.delta_negPart_comparison"
+    file: "Solutions/PalomarCorpus/E243_03/PaperStructuresT.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E243_03/comparator.json"
+  - declaration: "PalomarCorpus.E243.PaperStructuresT.largePrime_coprimeMultiplier"
+    file: "Solutions/PalomarCorpus/E243_03/PaperStructuresT.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E243_03/comparator.json"
+  - declaration: "PalomarCorpus.E243.PaperStructuresT.primeBlock_supply"
+    file: "Solutions/PalomarCorpus/E243_03/PaperStructuresT.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E243_03/comparator.json"
+  - declaration: "PalomarCorpus.E243.PaperStructuresT.recordAmplified"
+    file: "Solutions/PalomarCorpus/E243_03/PaperStructuresT.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E243_03/comparator.json"
+  - declaration: "PalomarCorpus.E243.PaperStructuresV.canc_lt_of_amp_le"
+    file: "Solutions/PalomarCorpus/E243_03/PaperStructuresV.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E243_03/comparator.json"
+  development_status: substantive
+  local_proof_provenance: "the proof modules ErdosProblems.Erdos243 in this repository, imported by Solutions.PalomarCorpus.E243_03; the Solutions.ExternalVerification243* family modules are a regression mirror of the same proofs and are not imported by this configuration"
+  canonical_claim_status: "problem-level Comparator entry over substantive Lean in this repository"
+automation:
+  methods:
+  - method: manual
+    models: []
+    framework: Mathematical interpretation and claim-boundary review
+    tool_setup: Human-directed scope and significance review
+  - method: agent
+    models:
+    - Anthropic Claude
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+    cost:
+      wall_time: not tracked
+      spend_usd: subscription-based
+      hardware: local machine
+      prompting_notes: n/a
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    The statements from the hand-written families were checked declaration by declaration against the public problem notes, the reasoning records and the Lean sources in automated review passes run with Anthropic Claude and OpenAI Codex. Every generated restatement was bound to a paper statement and refereed in the eight-paper coverage ledger before its wrapper was generated, and its transport proof was elaborated before the statement was accepted. The author selected the statements and is responsible for the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

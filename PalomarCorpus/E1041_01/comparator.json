@@ -1,0 +1,26 @@
+{
+  "challenge_module": "PalomarCorpus.E1041_01.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E1041_01",
+  "theorem_names": [
+    "PalomarCorpus.E1041.PaperStatementsA.erdos1041_ani_degree_seven",
+    "PalomarCorpus.E1041.PaperStatementsAA.all_degree_monic_trinomials_whole",
+    "PalomarCorpus.E1041.PaperStatementsAA.complete_trinomial",
+    "PalomarCorpus.E1041.PaperStatementsAC.circle_slice_packing",
+    "PalomarCorpus.E1041.PaperStatementsAC.circle_slice_packing_abstract",
+    "PalomarCorpus.E1041.PaperStatementsAC.dual_arity_floor_abstract",
+    "PalomarCorpus.E1041.PaperStatementsC.cosh_dist_polar",
+    "PalomarCorpus.E1041.PaperStatementsC.dist_polar_I",
+    "PalomarCorpus.E1041.PaperStatementsC.exists_polar",
+    "PalomarCorpus.E1041.PaperStatementsC.polar_zero_zero",
+    "PalomarCorpus.E1041.PaperStatementsH.all_spokes",
+    "PalomarCorpus.E1041.PaperStatementsZ.circle_slice_packing",
+    "PalomarCorpus.E1041.PaperStatementsZA.scaledLowCriticalFiveHalves_of_lowCritical",
+    "PalomarCorpus.E1041.PaperStatementsZA.scaledLowCritical_of_lowCritical"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

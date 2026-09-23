@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification249PaperStatementsE.Challenge",
+  "solution_module": "Solutions.ExternalVerification249PaperStatementsE",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249PaperStatementsE.fiveQuarter_comparison_rational_with_carryRank_floor"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

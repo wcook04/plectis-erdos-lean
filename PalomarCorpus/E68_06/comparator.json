@@ -1,0 +1,28 @@
+{
+  "challenge_module": "PalomarCorpus.E68_06.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E68_06",
+  "theorem_names": [
+    "PalomarCorpus.E68.AdjacentUnitCarryWindow.adjacentUnitCarryWindowDen_eq_twoStep_den",
+    "PalomarCorpus.E68.AdjacentUnitCarryWindow.adjacentUnitCarryWindowOffset_eq_twoStep_factorization",
+    "PalomarCorpus.E68.AdjacentUnitCarryWindow.consecutive_unit_carries_iff_positive_offset_le_den",
+    "PalomarCorpus.E68.AdjacentUnitCarryWindow.twoStep_den_mul_transitionNormalizers",
+    "PalomarCorpus.E68.ChannelRadius.no_eventual_square_subsequence_cubic_upper",
+    "PalomarCorpus.E68.ChannelRadius.no_eventual_square_subsequence_three_halves_upper",
+    "PalomarCorpus.E68.ChannelRadius.not_isLittleO_square_subsequence_radius",
+    "PalomarCorpus.E68.ChannelRadius.sharp_radius_satisfies_square_log_constraint",
+    "PalomarCorpus.E68.ChannelRadius.square_subsequence_radius_cubic_lower",
+    "PalomarCorpus.E68.ChannelRadius.square_subsequence_radius_three_halves_lower",
+    "PalomarCorpus.E68.CommonDenominatorGrowth.asymptotic_radius_constant_liminf",
+    "PalomarCorpus.E68.CommonDenominatorGrowth.common_denominator_growth",
+    "PalomarCorpus.E68.CompanionOrbitBoundary.companionOrbitBoundary_factorialGapSeries",
+    "PalomarCorpus.E68.CompanionOrbitBoundary.companionOrbitBoundary_genericShift",
+    "PalomarCorpus.E68.CompanionOrbitBoundary.companionOrbitBoundary_strictSuccessorCarry",
+    "PalomarCorpus.E68.CompanionOrbitBoundary.tsum_unitFactTerm_eq_exp_one_sub_two"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification257PaperStructuresS.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStructuresS",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStructuresS.paper_one_sidedness"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,9 @@
+import Solutions.PalomarCorpus.E68_03
+
+#print axioms PalomarCorpus.E68.PaperStatementsB.radius_no_eventual_ratio_upper
+#print axioms PalomarCorpus.E68.PaperStatementsB.radius_not_littleO
+#print axioms PalomarCorpus.E68.PaperStatementsB.square_subsequence_radius
+#print axioms PalomarCorpus.E68.ResidualIntegerClass.equal_moment_residual_integer_difference
+#print axioms PalomarCorpus.E68.ResidualIntegerClass.residual_transparency
+#print axioms PalomarCorpus.E68.ResidualIntegerClass.summable_fullResidual
+#print axioms PalomarCorpus.E68.ResidualIntegerClass.zero_moment_residual_integral

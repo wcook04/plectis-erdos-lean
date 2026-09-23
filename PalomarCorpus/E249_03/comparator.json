@@ -1,0 +1,28 @@
+{
+  "challenge_module": "PalomarCorpus.E249_03.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E249_03",
+  "theorem_names": [
+    "PalomarCorpus.E249.PaperStatementsAK.twoAdic_pulse_defining_congruence",
+    "PalomarCorpus.E249.PaperStatementsAK.twoAdic_pulse_error_bound",
+    "PalomarCorpus.E249.PaperStatementsAK.two_point_sample_numerical_requirement",
+    "PalomarCorpus.E249.PaperStatementsAU.three_particular_equivalences",
+    "PalomarCorpus.E249.PaperStatementsAU.twoAdic_pulse_construction_never_certifies",
+    "PalomarCorpus.E249.PaperStatementsAZ.balancedPulse_common_history",
+    "PalomarCorpus.E249.PaperStatementsAZ.balancedPulse_label_lower_bound",
+    "PalomarCorpus.E249.PaperStatementsAZ.balancedPulse_no_decoder_from_common_state",
+    "PalomarCorpus.E249.PaperStatementsAZ.balancedPulse_series",
+    "PalomarCorpus.E249.PaperStatementsAZ.balancedPulse_tail_at",
+    "PalomarCorpus.E249.PaperStatementsD.affineBinaryOrbit_difference_and_reset",
+    "PalomarCorpus.E249.PaperStatementsG.b6_adjugate_tail_cost_floor",
+    "PalomarCorpus.E249.PaperStatementsG.b6_compressed_adjoint_identity_impossible",
+    "PalomarCorpus.E249.PaperStatementsG.b6_rankOneSubrankQuotient_sub_totientSeries_offset_gt",
+    "PalomarCorpus.E249.PaperStatementsI.b6_synthetic_sequence_prescribed_differences",
+    "PalomarCorpus.E249.PaperStatementsI.b6_synthetic_shift_combinations_same_form"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

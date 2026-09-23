@@ -1,0 +1,24 @@
+{
+  "challenge_module": "PalomarCorpus.E269_09.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E269_09",
+  "theorem_names": [
+    "PalomarCorpus.E269.ActualShellOrbit.actual_dyadicShellOrbit_recurrence_and_escape",
+    "PalomarCorpus.E269.AllScaleLattice.dyadicShellTsumTailR235_eq_range_add",
+    "PalomarCorpus.E269.AllScaleLattice.exists_normalizedTailState_collision_of_value_eq_rat",
+    "PalomarCorpus.E269.AllScaleLattice.heightNormalizer235_mul_windowMass_eq_int",
+    "PalomarCorpus.E269.AllScaleLattice.qsmul_normalizedTailState_eq_int_of_value_eq_rat",
+    "PalomarCorpus.E269.AllScaleLattice.smoothHeight_mul_prime_dvd_boundaryHeight",
+    "PalomarCorpus.E269.AllScaleLattice.two_mul_heightNormalizer235",
+    "PalomarCorpus.E269.CarryMechanism.carryLift_blockDefect",
+    "PalomarCorpus.E269.CarryMechanism.carry_eq_residueDigit_add_coboundary",
+    "PalomarCorpus.E269.CarryMechanism.no_carryLift_of_errorBound_below_twoPow",
+    "PalomarCorpus.E269.CarryMechanism.no_unitAccurateLift_with_twoAnchors_and_firstTwoBlockNull",
+    "PalomarCorpus.E269.CarryMechanism.perturbation_eq_zero_of_blockNull_twoAnchors"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

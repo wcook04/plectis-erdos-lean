@@ -1,0 +1,18 @@
+{
+  "challenge_module": "ExternalVerification249PaperStatementsAM.Challenge",
+  "solution_module": "Solutions.ExternalVerification249PaperStatementsAM",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249PaperStatementsAM.cos_nonpos_of_quarterFarFromInt",
+    "Erdos249257.ExternalVerification249PaperStatementsAM.irrational_totientSeries_of_digitChange_count",
+    "Erdos249257.ExternalVerification249PaperStatementsAM.irrational_totientSeries_of_quarterFarPhase_count",
+    "Erdos249257.ExternalVerification249PaperStatementsAM.irrational_totientSeries_of_quarterFarPhase_proportion",
+    "Erdos249257.ExternalVerification249PaperStatementsAM.quarterFarFromInt_iff_binaryDigitAt_change",
+    "Erdos249257.ExternalVerification249PaperStatementsAM.quarterFarFromInt_iff_floor_bounds"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

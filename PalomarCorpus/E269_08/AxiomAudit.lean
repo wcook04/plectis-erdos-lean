@@ -1,0 +1,8 @@
+import Solutions.PalomarCorpus.E269_08
+
+#print axioms PalomarCorpus.E269.PaperStatementsA.admissible_modular_minors
+#print axioms PalomarCorpus.E269.PaperStatementsC.dyadic_alphabet_whole
+#print axioms PalomarCorpus.E269.PaperStatementsC.paper_finite_endpoint_obstruction
+#print axioms PalomarCorpus.E269.PaperStatementsC.short_actual_orbit
+#print axioms PalomarCorpus.E269.PaperStatementsC.short_fixed_split_bridge
+#print axioms PalomarCorpus.E269.PaperStatementsG.short_window_equivalence

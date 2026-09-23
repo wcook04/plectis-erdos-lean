@@ -2,13 +2,42 @@
 # SPDX-License-Identifier: Apache-2.0
 name: Palomar Comparator replay
 
-# Replays Palomar's mechanical verification for the eight problem-level
-# publication entries under PalomarCorpus/E*/comparator.json with the same
-# pinned Comparator, lean4export, landrun and NanoDa revisions that the
-# PalomarSubmission verifier records (read from its submission.yml on
-# 2026-09-13). A green run here is our own evidence that the entries will pass
-# Palomar's mechanical stage; it is not a Palomar verdict, review, or
-# registration. All third-party actions are pinned by full commit SHA.
+# Replays Palomar's mechanical verification for every publication entry under
+# PalomarCorpus/E*/comparator.json with the same pinned Comparator,
+# lean4export, landrun and NanoDa revisions that the PalomarSubmission verifier
+# records (read from its submission.yml on 2026-09-13). A green run here is our
+# own evidence that the entries will pass Palomar's mechanical stage; it is not a
+# Palomar verdict, review, or registration. All third-party actions are pinned by
+# full commit SHA.
+#
+# The entry roster (PalomarCorpus/E<problem>_<NN>, in the order the papers state the
+# theorems) is discovered from the tree through scripts/palomar_entry_names.py, so an
+# entry is replayed the moment it exists. One serial job took 68 minutes for 366 theorems
+# against a 350-minute ceiling, so the replay fans out; but the unit of verification
+# and the unit of scheduling are not the same thing, and this workflow keeps them apart.
+#
+#   verification unit: one entry. It builds its own Challenge and Solution closure, is
+#     compared on its own, and writes its own durable receipt JSON, so a consumer reads
+#     the evidence instead of transcribing it from logs. No part of that result depends
+#     on which other entries shared the runner. The Solution build starts from the newest
+#     cached corpus build, so Lake recompiles only modules whose inputs changed (61% of
+#     run 35715779405's 962 shard-minutes was every shard recompiling the same shared
+#     closure). The Challenge never comes from a cache: every compiled Challenge is
+#     deleted before verification, so each one is compiled from source in the job that
+#     compares it. Comparator is built to check an untrusted Solution against that
+#     Challenge and re-checks every proof with an independent kernel, so a cached output
+#     can neither change a statement nor stand in for a proof.
+#   scheduling unit: one shard of entries, composed by `discover` from measured per-entry
+#     durations. A shard exists only so the fixed setup cost — runner boot, checkout,
+#     elan, the Mathlib cache restore and the pinned Comparator/lean4export/landrun/NanoDa
+#     build, a median 2.6 min per job over the 144 jobs of run 35643815458 — is paid once
+#     per job instead of once per entry, and so the matrix stays far below GitHub's
+#     256-job cap as the corpus grows.
+#
+# A shard job is green only when every entry it promised produced a result file AND every
+# one of those compared green; the two are enforced by separate named steps, and
+# `aggregate` independently checks that every entry the plan promised delivered its own
+# green result. A green shard never stands in for its entries.
 on:
   workflow_dispatch:
   push:
@@ -26,47 +55,48 @@ on:
 permissions:
   contents: read
 
+env:
+  COMPARATOR_REV: 575674928e239f5bc452aab72d1dd7b0f1326494
+  LEAN4EXPORT_REV: a3e35a584f59b390667db7269cd37fca8575e4bf
+  LANDRUN_REV: 811cfff51ceaf3d9843708aa6d22e9b84ccac8b4
+  NANODA_REV: 68d5ca9db226849b41a6fff59d796ff19d0a8840
+  # PalomarSubmission commit whose scripts/core_notation_audit.lean this replay fetches.
+  # ef2fa1eadcb246c2346ddba39b52eaa53d4bb763 is the renderer the render stage ran on this
+  # repository's E257 submission (run 34786515414); it kernel-rechecks the audit's type
+  # proxies, which is the defect that settled that submission as verification-error and
+  # which exits non-zero on most entries here. PalomarSubmission PR 137 removed the
+  # recheck; 32eb98553246ed62b120594297c2b31878a8e53b is its merge commit on main, two
+  # commits ahead of the old pin and carrying the fixed audit script. The render stage
+  # stays non-gating either way: it reports, it does not decide an entry.
+  RENDERER_REV: 32eb98553246ed62b120594297c2b31878a8e53b
+
 jobs:
-  replay:
-    runs-on: ubuntu-latest
-    timeout-minutes: 350
-    env:
-      COMPARATOR_REV: 575674928e239f5bc452aab72d1dd7b0f1326494
-      LEAN4EXPORT_REV: a3e35a584f59b390667db7269cd37fca8575e4bf
-      LANDRUN_REV: 811cfff51ceaf3d9843708aa6d22e9b84ccac8b4
-      NANODA_REV: 68d5ca9db226849b41a6fff59d796ff19d0a8840
-      # PalomarSubmission commit whose scripts/core_notation_audit.lean the render
-      # stage ran on this repository's E257 submission (run 34786515414).
-      RENDERER_REV: ef2fa1eadcb246c2346ddba39b52eaa53d4bb763
+  discover:
+    # Every job pins its image rather than tracking `ubuntu-latest`, so the October
+    # 2026 migration of that label cannot change the verification environment without
+    # a commit here. Run 35643815458 already ran on ubuntu-24.04.
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    outputs:
+      entries: ${{ steps.inventory.outputs.entries }}
+      shards: ${{ steps.shards.outputs.shards }}
+      shard_count: ${{ steps.shards.outputs.shard_count }}
     steps:
-      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
-      - uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
-        with:
-          use-mathlib-cache: auto
-          build: false
-          test: false
-          lint: false
-      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
-        with:
-          go-version: '1.24'
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Check the publication inventory and Challenge limits
+        id: inventory
         run: |
           set -euo pipefail
           python3 - <<'PY'
-          import json, os, re
+          import json, os, re, sys
           from pathlib import Path
-          problems = (68, 243, 249, 251, 257, 269, 1041, 1049)
-          # One Erdos problem is one entry. The submission slate's granularity_rule also
-          # allows a band entry (E269b, E269c, ...) when a concatenated Challenge would
-          # approach the 1000-line ceiling. Bands are optional and never replace a base
-          # entry: the eight base entries stay mandatory and every directory present must
-          # be a base or a band, so a stray directory still fails.
-          entry_re = re.compile(r"^E(?:" + "|".join(str(n) for n in problems) + r")[a-z]?$")
-          found = sorted(p.parent.name for p in Path("PalomarCorpus").glob("E*/comparator.json"))
-          stray = [name for name in found if not entry_re.match(name)]
-          assert not stray, f"unrecognised PalomarCorpus entries: {stray}"
-          missing = [f"E{n}" for n in problems if f"E{n}" not in found]
-          assert not missing, f"missing base PalomarCorpus entries: {missing}"
+          # The entries are PalomarCorpus/E<problem>_<NN>, each problem's theorems in the
+          # order its papers state them. scripts/palomar_entry_names.py is the one rule every
+          # discovery path here reads: a stray directory, a gap in a problem's numbering, a
+          # problem with no entry, or a mixture with retired E<n>/band names fails the run.
+          sys.path.insert(0, "scripts")
+          from palomar_entry_names import discover
+          found = discover(".")
           for name in found:
               entry = Path("PalomarCorpus") / name
               cfg = json.loads((entry / "comparator.json").read_text())
@@ -78,31 +108,181 @@ jobs:
               assert cfg["solution_module"] == f"Solutions.PalomarCorpus.{name}", entry
               assert cfg["theorem_names"] and set(cfg["permitted_axioms"]) <= {"propext", "Quot.sound", "Classical.choice"}, entry
               print(f"{name}: {len(cfg['theorem_names'])} theorems, {len(challenge)} bytes")
-          Path(os.environ["RUNNER_TEMP"], "palomar_entries.txt").write_text("\n".join(found) + "\n")
-          with open(os.environ["GITHUB_ENV"], "a") as handle:
-              handle.write(f"PALOMAR_ENTRIES={' '.join(found)}\n")
+          # One shard is one matrix job and GitHub caps a matrix at 256 jobs. The replay is
+          # sharded, so the roster no longer maps one-to-one onto jobs, and the shard count
+          # is what the cap now binds; `scripts/palomar_replay_shard.py` holds the shard
+          # budget and its own copy of this cap. This assertion stays as the backstop for
+          # the entry population itself, so a corpus that could not be scheduled at all
+          # fails here, with the count, while the roster is still readable.
+          MATRIX_CAP = 256
+          assert len(found) <= MATRIX_CAP, (
+              f"{len(found)} entries exceeds the {MATRIX_CAP}-job matrix cap; "
+              "raise the shard budget in scripts/palomar_replay_shard.py before adding more"
+          )
+          if len(found) > 200:
+              print(f"::warning::{len(found)} entries is within {MATRIX_CAP - len(found)} "
+                    "of the matrix cap; check the shard budget")
+          with open(os.environ["GITHUB_OUTPUT"], "a") as handle:
+              handle.write("entries=" + json.dumps(found) + "\n")
           PY
-      - name: Build the eight Challenges against Mathlib only
-        env:
-          LEAN_NUM_THREADS: "2"
-        run: lake build PalomarCorpus
-      - name: Build the pinned Comparator toolchain
-        id: tools
+      - name: Compose the shards this run will schedule
+        id: shards
+        # The entry verification unit and the runner scheduling unit are separate. One entry
+        # is still verified on its own, by one shared code path, and writes its own result
+        # file; a shard is only how many of those the same runner carries, so the fixed
+        # setup (runner boot, checkout, elan, the Mathlib cache restore and the pinned
+        # Comparator/lean4export/landrun/NanoDa build — a median 2.6 min per job over the
+        # 144 replay jobs of run 35643815458) is paid once per shard instead of once per
+        # entry. Composition is by measured per-entry duration, so an unusually heavy entry
+        # is isolated rather than dragging a shard past its timeout.
         run: |
           set -euo pipefail
-          git clone --filter=blob:none https://github.com/leanprover/comparator.git "$RUNNER_TEMP/comparator"
+          mkdir -p artifacts
+          python3 scripts/palomar_replay_shard.py plan \
+            --corpus-root . \
+            --durations .github/replay_entry_durations.json \
+            --commit "$GITHUB_SHA" \
+            --out artifacts/shard-plan.json
+      - name: Upload the shard plan
+        # The plan is evidence, not scratch: it is the only record of which job promised
+        # which entry, and the reconciliation needs it to classify an entry whose shard
+        # delivered no artifact at all.
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: palomar-replay-shard-plan
+          path: artifacts/shard-plan.json
+
+  replay:
+    needs: discover
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    strategy:
+      fail-fast: false
+      matrix:
+        # One job per shard, not per entry. The matrix value is the shard id alone, so the
+        # job name stays `replay (shard-07)` and the reconciliation can map a job name back
+        # to a shard without parsing an entry list out of it.
+        shard: ${{ fromJSON(needs.discover.outputs.shards) }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Install elan with retries
+        # GitHub release downloads return 5xx under load; one 504 on the elan tarball
+        # turned four entries red on 21 Sep 2026 with nothing wrong in the entries.
+        run: |
+          set -euo pipefail
+          for attempt in 1 2 3 4 5; do
+            if curl --retry 5 --retry-all-errors --retry-delay 10 -sSfL \
+                 https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh \
+                 -o "$RUNNER_TEMP/elan-init.sh" \
+               && sh "$RUNNER_TEMP/elan-init.sh" -y --default-toolchain none; then
+              break
+            fi
+            if [ "$attempt" = 5 ]; then exit 1; fi
+            sleep $((attempt * 20))
+          done
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
+        with:
+          use-mathlib-cache: auto
+          build: false
+          test: false
+          lint: false
+      # Lean Convenience saves the whole corpus build under this key shape on every push
+      # to main and palomar/**; the newest one is restored here. A miss only means this
+      # shard compiles its entries' closures itself, exactly as before.
+      - name: Restore the newest corpus build
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: .lake/build
+          key: corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-${{ github.sha }}-convenience
+          restore-keys: |
+            corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-
+      - name: Compile every Challenge from source in this job
+        # The trusted side of every comparison is never taken from the cache.
+        run: rm -rf .lake/build/lib/lean/PalomarCorpus .lake/build/ir/PalomarCorpus
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version: '1.24'
+          # Go is here only to `go build` landrun from a clone made later, in
+          # $RUNNER_TEMP, by the toolchain step. This repository has no Go module, so
+          # setup-go's default `cache: true` found no go.sum and printed
+          # "Restore cache failed: Dependencies file is not found ... Supported file
+          # pattern: go.mod" on all 144 jobs of run 35643815458. There is nothing here
+          # to cache and nothing to point `cache-dependency-path` at, so caching is off.
+          # Never add a go.mod to this repository to silence the warning.
+          cache: false
+      - name: Rebuild this run's shard plan
+        # Recomputed rather than downloaded: the planner is deterministic over the checked-out
+        # tree and the committed durations sidecar, so the same commit always gives the same
+        # plan, and this avoids 36 artifact downloads. The assertion is the point — if the
+        # recomputed shard ids ever disagreed with the ones `discover` published, this shard
+        # would be executing a promise nobody made, so the job stops instead.
+        env:
+          SHARDS: ${{ toJSON(fromJSON(needs.discover.outputs.shards)) }}
+          SHARD_ID: ${{ matrix.shard }}
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts
+          python3 scripts/palomar_replay_shard.py plan \
+            --corpus-root . \
+            --durations .github/replay_entry_durations.json \
+            --commit "$GITHUB_SHA" \
+            --out "$RUNNER_TEMP/shard-plan.json" > /dev/null
+          python3 - <<'PY'
+          import json, os, sys
+          plan = json.load(open(os.environ["RUNNER_TEMP"] + "/shard-plan.json"))
+          published = json.loads(os.environ["SHARDS"])
+          mine = os.environ["SHARD_ID"]
+          local = [shard["shard_id"] for shard in plan["shards"]]
+          if local != published:
+              print(f"::error::the recomputed shard plan disagrees with discover: "
+                    f"{len(local)} vs {len(published)} shards")
+              sys.exit(1)
+          entries = next(s["entries"] for s in plan["shards"] if s["shard_id"] == mine)
+          print(f"{mine} promises {len(entries)} entries: {' '.join(entries)}")
+          PY
+      - name: Build the pinned Comparator toolchain
+        # No `id:`. This step used to publish `comparator_lean_toolchain` as a step output
+        # that the receipt builder read through `env:`; the verification step now reads it
+        # from the clone's own `lean-toolchain`, so no per-entry field travels through a
+        # key that a later entry in the same shard could overwrite.
+        run: |
+          set -euo pipefail
+          clone() {
+            # retry a clone: a transient 5xx from GitHub must not fail the entry
+            for attempt in 1 2 3 4; do
+              rm -rf "$2"
+              if git clone --filter=blob:none "$1" "$2"; then return 0; fi
+              sleep $((attempt * 15))
+            done
+            return 1
+          }
+          toolchain() {
+            # elan downloads a toolchain on first use; a failed download from
+            # releases.lean-lang.org must be retried, not reported as a red entry
+            for attempt in 1 2 3 4 5; do
+              if elan toolchain list | grep -Fq "${1#*:}"; then return 0; fi
+              if elan toolchain install "$1"; then return 0; fi
+              sleep $((attempt * 20))
+            done
+            return 1
+          }
+          clone https://github.com/leanprover/comparator.git "$RUNNER_TEMP/comparator"
           git -C "$RUNNER_TEMP/comparator" checkout --detach "$COMPARATOR_REV"
           test "$(git -C "$RUNNER_TEMP/comparator" rev-parse HEAD)" = "$COMPARATOR_REV"
+          toolchain "$(tr -d '\r\n' < "$RUNNER_TEMP/comparator/lean-toolchain")"
           (cd "$RUNNER_TEMP/comparator" && lake build comparator)
-          git clone --filter=blob:none https://github.com/leanprover/lean4export.git "$RUNNER_TEMP/lean4export"
+          clone https://github.com/leanprover/lean4export.git "$RUNNER_TEMP/lean4export"
           git -C "$RUNNER_TEMP/lean4export" checkout --detach "$LEAN4EXPORT_REV"
           test "$(git -C "$RUNNER_TEMP/lean4export" rev-parse HEAD)" = "$LEAN4EXPORT_REV"
+          toolchain "$(tr -d '\r\n' < lean-toolchain)"
           (cd "$RUNNER_TEMP/lean4export" && ELAN_TOOLCHAIN="$(tr -d '\r\n' < lean-toolchain)" lake build lean4export)
-          git clone --filter=blob:none https://github.com/zouuup/landrun.git "$RUNNER_TEMP/landrun-src"
+          clone https://github.com/zouuup/landrun.git "$RUNNER_TEMP/landrun-src"
           git -C "$RUNNER_TEMP/landrun-src" checkout --detach "$LANDRUN_REV"
           test "$(git -C "$RUNNER_TEMP/landrun-src" rev-parse HEAD)" = "$LANDRUN_REV"
           (cd "$RUNNER_TEMP/landrun-src" && go build -o "$RUNNER_TEMP/landrun" cmd/landrun/main.go)
-          git clone --filter=blob:none https://github.com/robsimmons/nanoda_lib.git "$RUNNER_TEMP/nanoda"
+          clone https://github.com/robsimmons/nanoda_lib.git "$RUNNER_TEMP/nanoda"
           git -C "$RUNNER_TEMP/nanoda" checkout --detach "$NANODA_REV"
           test "$(git -C "$RUNNER_TEMP/nanoda" rev-parse HEAD)" = "$NANODA_REV"
           export PATH="$HOME/.cargo/bin:/usr/local/bin:/usr/bin:/bin"
@@ -113,101 +293,184 @@ jobs:
           fi
           (cd "$RUNNER_TEMP/nanoda" && cargo build --release --locked --bin nanoda_bin)
           test -x "$RUNNER_TEMP/nanoda/target/release/nanoda_bin"
-          echo "comparator_lean_toolchain=$(tr -d '\r\n' < "$RUNNER_TEMP/comparator/lean-toolchain")" >> "$GITHUB_OUTPUT"
-      - name: Run Comparator on each publication entry
-        id: comparator
+          # No step output. Each entry's result file records the Comparator's toolchain, and
+          # the verification step reads it from this clone's own `lean-toolchain`, so no
+          # per-entry field arrives through a key another entry could overwrite.
+      - name: Fetch Palomar's core-notation audit script
+        id: audit_source
+        # Palomar renders an accepted Challenge before its automated review. The render stage
+        # runs scripts/core_notation_audit.lean from PalomarSubmission at the promoted
+        # renderer commit; the audit copies every constant reachable from a theorem type into
+        # a trusted printing environment. The renderer this repository's E257 submission met
+        # also kernel-rechecked those copies, which is the defect PR 137 removed, so
+        # RENDERER_REV names the fixed commit. Fetching it is shard-level work — the script
+        # is the same for every entry — while replaying it stays per entry and stays
+        # non-gating: it reports, it never decides an entry.
         run: |
           set +e
-          export COMPARATOR_LANDRUN="$RUNNER_TEMP/landrun"
-          export COMPARATOR_LEAN4EXPORT="$RUNNER_TEMP/lean4export/.lake/build/bin/lean4export"
-          export COMPARATOR_NANODA="$RUNNER_TEMP/nanoda/target/release/nanoda_bin"
-          comparator="$RUNNER_TEMP/comparator/.lake/build/bin/comparator"
-          mkdir -p artifacts
-          systemctl --user show-environment > artifacts/systemd-user-preflight.log 2>&1
-          if [[ $? -eq 0 ]]; then
-            sandbox_mode=user-manager
-          elif sudo -n systemctl show-environment > artifacts/systemd-system-preflight.log 2>&1; then
-            sandbox_mode=system-manager-nonprivileged-unit
-          else
-            sandbox_mode=unavailable
-          fi
-          echo "sandbox_mode=$sandbox_mode" >> "$GITHUB_OUTPUT"
-          run_comparator() {
-            config="$1"
-            if [[ "$sandbox_mode" == user-manager ]]; then
-              timeout 45m systemd-run --property=RestrictAddressFamilies=~AF_UNIX --user --pipe \
-                -E PATH="$PATH" -E COMPARATOR_LANDRUN="$COMPARATOR_LANDRUN" -E COMPARATOR_NANODA="$COMPARATOR_NANODA" \
-                -E COMPARATOR_LEAN4EXPORT="$COMPARATOR_LEAN4EXPORT" \
-                --working-directory="$(pwd)" -- lake env "$comparator" "$config"
-            elif [[ "$sandbox_mode" == system-manager-nonprivileged-unit ]]; then
-              timeout 45m sudo -n systemd-run --property=RestrictAddressFamilies=~AF_UNIX \
-                --uid="$(id -un)" --gid="$(id -gn)" --pipe \
-                -E PATH="$PATH" -E COMPARATOR_LANDRUN="$COMPARATOR_LANDRUN" -E COMPARATOR_NANODA="$COMPARATOR_NANODA" \
-                -E COMPARATOR_LEAN4EXPORT="$COMPARATOR_LEAN4EXPORT" \
-                --working-directory="$(pwd)" -- lake env "$comparator" "$config"
-            else
-              printf '%s\n' "No usable systemd transient-unit manager; refusing an insecure fallback."
-              return 125
-            fi
-          }
-          failures=0
-          for e in $(cat "$RUNNER_TEMP/palomar_entries.txt"); do
-            run_comparator "PalomarCorpus/$e/comparator.json" > "artifacts/$e.log" 2>&1
-            process_rc=$?
-            rc=$process_rc
-            echo "$e process_exit=$process_rc"
-            grep -v '^Exporting' "artifacts/$e.log" | tail -n 20
-            # A green exit must carry both independent kernel verdicts, as Palomar's
-            # protected configuration forces NanoDa; a run that skipped a kernel is not green.
-            if [[ "$rc" -eq 0 ]] && ! grep -q '^nanoda kernel accepts the solution' "artifacts/$e.log"; then
-              echo "$e: exit 0 without a NanoDa acceptance line"; rc=90
-            fi
-            if [[ "$rc" -eq 0 ]] && ! grep -q '^Lean default kernel accepts the solution' "artifacts/$e.log"; then
-              echo "$e: exit 0 without a Lean kernel acceptance line"; rc=91
-            fi
-            # The per-entry verdict is published only after every guard has run, so a
-            # consumer reading exit_E<n> sees the same result the failure count uses;
-            # the raw process exit is kept separately as diagnostic evidence.
-            echo "$e exit=$rc"
-            echo "exit_$e=$rc" >> "$GITHUB_OUTPUT"
-            echo "process_exit_$e=$process_rc" >> "$GITHUB_OUTPUT"
-            [[ "$rc" -eq 0 ]] || failures=$((failures + 1))
-          done
-          echo "failures=$failures" >> "$GITHUB_OUTPUT"
-          exit 0
-      - name: Replay Palomar's core-notation audit (render stage) on each entry
-        id: render_audit
-        # Palomar renders an accepted Challenge before its automated review. The render
-        # stage runs scripts/core_notation_audit.lean from PalomarSubmission at the
-        # promoted renderer commit; the audit copies every constant reachable from a
-        # theorem type into a trusted printing environment and, at RENDERER_REV,
-        # kernel-rechecks the copies. Replaying it here shows whether that renderer can
-        # print each entry. The step reports and never gates the Comparator verdict.
-        run: |
-          set +e
-          mkdir -p artifacts
           curl --fail --silent --show-error -o "$RUNNER_TEMP/core_notation_audit.lean" \
-            "https://raw.githubusercontent.com/PalomarRegistry/PalomarSubmission/$RENDERER_REV/scripts/core_notation_audit.lean" \
-            || { echo "render audit source unavailable at $RENDERER_REV"; exit 0; }
-          echo "renderer_rev=$RENDERER_REV" > artifacts/render-audit-summary.txt
-          for e in $(cat "$RUNNER_TEMP/palomar_entries.txt"); do
-            cfg="PalomarCorpus/$e/comparator.json"
-            module=$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["challenge_module"])' "$cfg")
-            names=$(python3 -c 'import json,sys; print(" ".join("theorem " + t for t in json.load(open(sys.argv[1]))["theorem_names"]))' "$cfg")
-            timeout 20m lake env lean --run "$RUNNER_TEMP/core_notation_audit.lean" "$module" $names \
-              > "artifacts/render-audit-$e.log" 2>&1
-            rc=$?
-            echo "$e render_audit_exit=$rc" | tee -a artifacts/render-audit-summary.txt
-            [[ "$rc" -eq 0 ]] || head -c 600 "artifacts/render-audit-$e.log"
-            echo "render_audit_$e=$rc" >> "$GITHUB_OUTPUT"
-          done
+            "https://raw.githubusercontent.com/PalomarRegistry/PalomarSubmission/$RENDERER_REV/scripts/core_notation_audit.lean"
+          if [[ $? -ne 0 ]]; then
+            echo "render audit source unavailable at $RENDERER_REV"
+            rm -f "$RUNNER_TEMP/core_notation_audit.lean"
+          fi
           exit 0
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
-        if: always()
-        with:
-          name: palomar-comparator-replay
-          path: artifacts/
-      - name: Enforce eight green Comparator replays
+      - name: Verify every entry promised to this shard
+        # The single step that carries this shard's mathematics. Every entry it verifies goes
+        # through the one shared code path in scripts/palomar_replay_shard.py and writes its
+        # own self-contained artifacts/receipt-<entry>.json: entry id, corpus commit,
+        # Challenge / comparator.json / formalization.yaml digests, the Solution digest,
+        # the Comparator exit and raw process exit, both kernel acceptance flags, the axiom
+        # audit outcome, and per-stage timings. Nothing about a result depends on which other
+        # entries shared this runner, and no per-entry state passes through $GITHUB_OUTPUT,
+        # so one entry cannot contaminate another's verdict the way a fixed step-output key
+        # would. The loop does not stop at the first failure; the manifest records what each
+        # entry did and the two enforcing steps below read it.
         run: |
-          test '${{ steps.comparator.outputs.sandbox_mode }}' != unavailable
-          test '${{ steps.comparator.outputs.failures }}' = 0
+          set -euo pipefail
+          mkdir -p artifacts
+          AUDIT=""
+          if [[ -f "$RUNNER_TEMP/core_notation_audit.lean" ]]; then
+            AUDIT="$RUNNER_TEMP/core_notation_audit.lean"
+          fi
+          python3 scripts/palomar_replay_shard.py run-shard \
+            --shard-id "${{ matrix.shard }}" \
+            --plan "$RUNNER_TEMP/shard-plan.json" \
+            --corpus-root . \
+            --out artifacts \
+            --comparator-bin "$RUNNER_TEMP/comparator/.lake/build/bin/comparator" \
+            --landrun "$RUNNER_TEMP/landrun" \
+            --lean4export "$RUNNER_TEMP/lean4export/.lake/build/bin/lean4export" \
+            --nanoda "$RUNNER_TEMP/nanoda/target/release/nanoda_bin" \
+            --comparator-toolchain-file "$RUNNER_TEMP/comparator/lean-toolchain" \
+            ${AUDIT:+--audit-script "$AUDIT"}
+      # Receipt delivery is retried once. On 21 Sep 2026 (run 35643815458) entry E243d
+      # compared green with both kernel acceptance lines, and the job still went red
+      # because `actions/upload-artifact` hit a non-retryable HTTP 403 at
+      # FinalizeArtifact. A transport fault on the evidence channel must not be read as
+      # a failed comparison. Note the guard semantics: under `continue-on-error`, the
+      # step's `conclusion` is reported as `success` while its `outcome` holds the real
+      # result, so every condition below reads `outcome`, never `conclusion`.
+      - name: Upload this shard's replay artifact
+        id: upload
+        if: always()
+        continue-on-error: true
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          # One artifact per shard, holding every promised entry's receipt-<entry>.json and
+          # its logs plus this shard's shard-manifest.json. The harvester selects receipt
+          # files by name and keys them on the `entry` field inside, so several receipts in
+          # one artifact ingest with no change to how a receipt is read.
+          name: palomar-comparator-replay-${{ matrix.shard }}
+          path: artifacts/
+      - name: Retry this shard's replay artifact upload once
+        id: upload_retry
+        if: always() && steps.upload.outcome == 'failure'
+        continue-on-error: true
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: palomar-comparator-replay-${{ matrix.shard }}
+          path: artifacts/
+          # The first attempt may have created the artifact before failing to finalise it.
+          overwrite: true
+      - name: Enforce that this shard's receipts were delivered
+        if: always()
+        env:
+          FIRST_OUTCOME: ${{ steps.upload.outcome }}
+          RETRY_OUTCOME: ${{ steps.upload_retry.outcome }}
+        run: |
+          set -euo pipefail
+          echo "upload outcome=${FIRST_OUTCOME:-unset} retry outcome=${RETRY_OUTCOME:-unset}"
+          if [[ "${FIRST_OUTCOME:-}" == success || "${RETRY_OUTCOME:-}" == success ]]; then
+            exit 0
+          fi
+          echo "both receipt uploads failed for ${{ matrix.shard }}; every entry it promised has no durable evidence"
+          exit 1
+      - name: Enforce a result file for every entry promised to this shard
+        # Completeness, asked apart from greenness on purpose. A shard that verified nine of
+        # its ten entries and lost the tenth is red here even when all nine passed, which is
+        # what stops a green shard from standing in for an entry it never produced. The
+        # reconciliation reads this step's conclusion by name for exactly that reason.
+        if: always()
+        run: |
+          set -euo pipefail
+          python3 scripts/palomar_replay_shard.py check-shard \
+            --manifest artifacts/shard-manifest.json --require complete
+      - name: Enforce a green Comparator replay for every entry in this shard
+        run: |
+          set -euo pipefail
+          python3 scripts/palomar_replay_shard.py check-shard \
+            --manifest artifacts/shard-manifest.json --require passed
+
+  aggregate:
+    needs: [discover, replay]
+    if: always()
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      # Each shard job publishes one artifact (`palomar-comparator-replay-<shard-id>`)
+      # holding a receipt and logs for every entry it promised. This job is the single
+      # required check, and it now asks two independent questions rather than one:
+      #
+      #   1. did every shard job conclude green (the matrix result);
+      #   2. did every entry the plan promised actually deliver a green result file.
+      #
+      # The second question is the one a shard count cannot answer. A matrix of 36 green
+      # jobs says nothing about whether all 208 promised entries produced evidence, and
+      # sharding is only safe while that gap is closed here rather than assumed.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Download every shard's receipts and the shard plan
+        id: receipts
+        if: always()
+        continue-on-error: true
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          pattern: palomar-*
+          path: ci-artifacts
+      - name: Enforce a green replay for every discovered entry
+        env:
+          ENTRIES: ${{ needs.discover.outputs.entries }}
+          SHARD_COUNT: ${{ needs.discover.outputs.shard_count }}
+          DISCOVER_RESULT: ${{ needs.discover.result }}
+          REPLAY_RESULT: ${{ needs.replay.result }}
+          DOWNLOAD_OUTCOME: ${{ steps.receipts.outcome }}
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json, os, sys
+          expected = json.loads(os.environ.get("ENTRIES") or "[]")
+          discover = os.environ.get("DISCOVER_RESULT")
+          replay = os.environ.get("REPLAY_RESULT")
+          print(f"discovered entries: {len(expected)} over "
+                f"{os.environ.get('SHARD_COUNT')} shards")
+          print(f"discover={discover} replay={replay} "
+                f"download={os.environ.get('DOWNLOAD_OUTCOME')}")
+          sys.path.insert(0, "scripts")
+          from palomar_entry_names import check_entry_names
+          try:
+              layout = check_entry_names(expected)
+          except ValueError as error:
+              print(f"the discovered entry set is not a publication layout: {error}")
+              sys.exit(1)
+          if discover != "success" or replay != "success":
+              sys.exit(1)
+          print(f"all {len(expected)} entries ({layout}) replayed green")
+          PY
+      - name: Enforce that every promised entry delivered its own green result file
+        # Read the entry population, then ask what arrived — never the other way round.
+        # Counting artifacts against the receipts inside them compares a short delivery
+        # with itself, which is how a dropped entry read as a complete harvest on 21 Sep.
+        if: always()
+        env:
+          ENTRIES: ${{ needs.discover.outputs.entries }}
+        run: |
+          set -euo pipefail
+          plan=ci-artifacts/palomar-replay-shard-plan/shard-plan.json
+          if [[ ! -f "$plan" ]]; then
+            echo "::error::the shard plan artifact is absent, so no entry-level coverage can be checked"
+            exit 1
+          fi
+          python3 scripts/palomar_replay_shard.py check-run \
+            --plan "$plan" \
+            --receipts-dir ci-artifacts \
+            --expected-entries "$ENTRIES"

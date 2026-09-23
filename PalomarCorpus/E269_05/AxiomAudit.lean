@@ -1,0 +1,9 @@
+import Solutions.PalomarCorpus.E269_05
+
+#print axioms PalomarCorpus.E269.FixedStartResidue.eventually_fixedStartResidue_eq_tail_of_integral
+#print axioms PalomarCorpus.E269.FixedStartResidue.eventually_fixedStartResidue_formula
+#print axioms PalomarCorpus.E269.FixedStartResidue.fixedStartResidue_ratio_tendsto
+#print axioms PalomarCorpus.E269.PaperStatementsB.no_bounded_positive_int_state_of_leastPositiveResidue
+#print axioms PalomarCorpus.E269.PaperStatementsC.actual_sharp_tail_bound
+#print axioms PalomarCorpus.E269.PaperStatementsC.paper_pinning_and_eight_scale_rigidity
+#print axioms PalomarCorpus.E269.PaperStatementsG.exact_denominators_and_minimal_clearing

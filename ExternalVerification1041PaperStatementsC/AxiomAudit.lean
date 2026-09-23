@@ -1,0 +1,6 @@
+import Solutions.ExternalVerification1041PaperStatementsC
+
+#print axioms Erdos249257.ExternalVerification1041PaperStatementsC.cosh_dist_polar
+#print axioms Erdos249257.ExternalVerification1041PaperStatementsC.dist_polar_I
+#print axioms Erdos249257.ExternalVerification1041PaperStatementsC.exists_polar
+#print axioms Erdos249257.ExternalVerification1041PaperStatementsC.polar_zero_zero

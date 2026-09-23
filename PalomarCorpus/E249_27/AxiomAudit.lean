@@ -1,0 +1,22 @@
+import Solutions.PalomarCorpus.E249_27
+
+#print axioms PalomarCorpus.E249.PaperStatementsAJ.doublingMap_iterate_apply
+#print axioms PalomarCorpus.E249.PaperStatementsAJ.irrational_totientSeries_of_block_cosine_gap
+#print axioms PalomarCorpus.E249.PaperStatementsAM.cos_nonpos_of_quarterFarFromInt
+#print axioms PalomarCorpus.E249.PaperStatementsAM.irrational_totientSeries_of_digitChange_count
+#print axioms PalomarCorpus.E249.PaperStatementsAM.irrational_totientSeries_of_quarterFarPhase_count
+#print axioms PalomarCorpus.E249.PaperStatementsAM.irrational_totientSeries_of_quarterFarPhase_proportion
+#print axioms PalomarCorpus.E249.PaperStatementsAM.quarterFarFromInt_iff_binaryDigitAt_change
+#print axioms PalomarCorpus.E249.PaperStatementsAM.quarterFarFromInt_iff_floor_bounds
+#print axioms PalomarCorpus.E249.PaperStatementsAN.cos_pi_div_eight_gt
+#print axioms PalomarCorpus.E249.PaperStatementsAN.irrational_lacBeta
+#print axioms PalomarCorpus.E249.PaperStatementsAN.lacBeta_eq_factorial_series
+#print axioms PalomarCorpus.E249.PaperStatementsAN.lacCoef_bounds
+#print axioms PalomarCorpus.E249.PaperStatementsAN.lacunary_block_cos_gap
+#print axioms PalomarCorpus.E249.PaperStatementsAN.lacunary_block_norm_fails
+#print axioms PalomarCorpus.E249.PaperStatementsAU.orbit_tail_diff_eq
+#print axioms PalomarCorpus.E249.PaperStatementsAU.orbit_tail_diff_firstChar_eq
+#print axioms PalomarCorpus.E249.PaperStatementsAU.orbit_tail_diff_fract_eq_doubling_orbit
+#print axioms PalomarCorpus.E249.PaperStatementsAU.orbit_tail_diff_sub_scaled_is_int
+#print axioms PalomarCorpus.E249.PaperStatementsAU.orbit_tail_recurrence
+#print axioms PalomarCorpus.E249.PaperStatementsBL.tailOrbitFirstExp_re_eq

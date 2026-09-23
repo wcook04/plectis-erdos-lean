@@ -1,0 +1,4 @@
+import Solutions.ExternalVerification251PaperStatementsD
+
+#print axioms Erdos249257.ExternalVerification251PaperStatementsD.signed_two_window_consequences
+#print axioms Erdos249257.ExternalVerification251PaperStatementsD.signed_two_window_iff

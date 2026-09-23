@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification257PaperStructuresBQ.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStructuresBQ",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStructuresBQ.twentyOneCofinalEvenQuotientGreedyDecay_of_closedRows"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

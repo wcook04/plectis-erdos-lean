@@ -1,0 +1,4 @@
+import Solutions.ExternalVerification249PaperStatementsB
+
+#print axioms Erdos249257.ExternalVerification249PaperStatementsB.sternBrocotDepthMass_error
+#print axioms Erdos249257.ExternalVerification249PaperStatementsB.tendsto_sternBrocotDepthMass

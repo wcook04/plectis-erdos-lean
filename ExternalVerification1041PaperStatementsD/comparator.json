@@ -1,0 +1,19 @@
+{
+  "challenge_module": "ExternalVerification1041PaperStatementsD.Challenge",
+  "solution_module": "Solutions.ExternalVerification1041PaperStatementsD",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041PaperStatementsD.binomial_chord_decisive_step",
+    "Erdos249257.ExternalVerification1041PaperStatementsD.binomial_chord_maximum",
+    "Erdos249257.ExternalVerification1041PaperStatementsD.binomial_chords_above_threshold",
+    "Erdos249257.ExternalVerification1041PaperStatementsD.binomial_chords_at_threshold",
+    "Erdos249257.ExternalVerification1041PaperStatementsD.binomial_chords_below_threshold",
+    "Erdos249257.ExternalVerification1041PaperStatementsD.binomial_chords_path",
+    "Erdos249257.ExternalVerification1041PaperStatementsD.binomial_inner_chord_maximal"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

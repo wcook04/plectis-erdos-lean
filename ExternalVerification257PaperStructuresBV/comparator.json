@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification257PaperStructuresBV.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStructuresBV",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStructuresBV.seamScaledRem_eq_tailGreedyRemainder"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,16 @@
+{
+  "challenge_module": "ExternalVerification257PaperStatementsAF.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStatementsAF",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStatementsAF.card_divisors_le_divisorSubpowerConst_mul_rpow",
+    "Erdos249257.ExternalVerification257PaperStatementsAF.card_divisors_pow_le_divisorSubpowerConst_pow_mul",
+    "Erdos249257.ExternalVerification257PaperStatementsAF.divInt_le_nextDyadic_iff_excess_nonpos",
+    "Erdos249257.ExternalVerification257PaperStatementsAF.dyadicResidual_denominator_sandwich"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,15 @@
+{
+  "challenge_module": "ExternalVerification257PaperStructuresO.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStructuresO",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStructuresO.overlappingMidpointReturns_twoPow_le_realBound",
+    "Erdos249257.ExternalVerification257PaperStructuresO.overlappingReverseCarryWords_carryDifference_eq_twoPow_mul_odd",
+    "Erdos249257.ExternalVerification257PaperStructuresO.overlappingReverseCarryWords_twoPow_le_realBound"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

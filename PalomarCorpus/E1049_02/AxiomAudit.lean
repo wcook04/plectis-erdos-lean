@@ -1,0 +1,6 @@
+import Solutions.PalomarCorpus.E1049_02
+
+#print axioms PalomarCorpus.E1049.ArchimedeanCap.cleared_below_square_not_tendsto_zero
+#print axioms PalomarCorpus.E1049.PaperStructuresD.long_record_archcap
+#print axioms PalomarCorpus.E1049.PaperStructuresQ.exists_quadratic_source_height_bound
+#print axioms PalomarCorpus.E1049.PaperStructuresQ.maxPairHeight_source_eq

@@ -1,0 +1,5 @@
+import Solutions.ExternalVerification1049PaperStatementsN
+
+#print axioms Erdos249257.ExternalVerification1049PaperStatementsN.height_and_hankel_deficits
+#print axioms Erdos249257.ExternalVerification1049PaperStatementsN.integer_scalar_content
+#print axioms Erdos249257.ExternalVerification1049PaperStatementsN.pade_summand_bound_and_gap

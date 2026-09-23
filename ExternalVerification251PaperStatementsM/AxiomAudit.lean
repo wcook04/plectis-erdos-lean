@@ -1,0 +1,5 @@
+import Solutions.ExternalVerification251PaperStatementsM
+
+#print axioms Erdos249257.ExternalVerification251PaperStatementsM.affine_circularity_bundle
+#print axioms Erdos249257.ExternalVerification251PaperStatementsM.irrational_initial_iff_all_lcmDiagonal_nonintegral
+#print axioms Erdos249257.ExternalVerification251PaperStatementsM.realTailShift_integral_add

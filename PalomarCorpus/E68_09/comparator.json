@@ -1,0 +1,24 @@
+{
+  "challenge_module": "PalomarCorpus.E68_09.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E68_09",
+  "theorem_names": [
+    "PalomarCorpus.E68.MultiplicativeSuccessorRigidity.eventually_dvd_gapSuccessor_of_not_irrational",
+    "PalomarCorpus.E68.MultiplicativeSuccessorRigidity.irrational_factorialGapSeries_of_cofinal_not_dvd_gapSuccessor",
+    "PalomarCorpus.E68.MultiplicativeSuccessorRigidity.irrational_factorialGapSeries_of_cofinal_odd_gapSuccessor",
+    "PalomarCorpus.E68.MultiplicativeSuccessorRigidity.not_eventually_odd_gapSuccessor_of_not_irrational",
+    "PalomarCorpus.E68.PrimePole.factorialGapPrefixLCMNumerator_mod_prime",
+    "PalomarCorpus.E68.PrimeUnitTranslator.channelResidual_appendPrimeTranslator",
+    "PalomarCorpus.E68.PrimeUnitTranslator.exists_remote_factorialGrid_primeTranslator_reduction",
+    "PalomarCorpus.E68.PrimeUnitTranslator.primeTranslator_channelResidual_eq_one",
+    "PalomarCorpus.E68.PrimeUnitTranslator.primeTranslator_channel_at_prime",
+    "PalomarCorpus.E68.PrimeUnitTranslator.primeTranslator_channel_zero_of_lt_p",
+    "PalomarCorpus.E68.PrimeUnitTranslator.primeTranslator_channel_zero_of_p_lt",
+    "PalomarCorpus.E68.PrimeUnitTranslator.primeTranslator_moment_zero"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification249PaperStatementsJ.Challenge",
+  "solution_module": "Solutions.ExternalVerification249PaperStatementsJ",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249PaperStatementsJ.b6_mobiusMersenneTheta_two_eq_totientSeries_sub_half"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

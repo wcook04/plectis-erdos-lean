@@ -1,0 +1,4 @@
+import Solutions.ExternalVerification243PaperStructuresAD
+
+#print axioms Erdos249257.ExternalVerification243PaperStructuresAD.minus_one_forbidden_word
+#print axioms Erdos249257.ExternalVerification243PaperStructuresAD.plus_one_forbidden_word

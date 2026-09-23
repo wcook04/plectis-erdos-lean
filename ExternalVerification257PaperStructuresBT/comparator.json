@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification257PaperStructuresBT.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStructuresBT",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStructuresBT.paper_shared_prefix_family_contains_strip_witness"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

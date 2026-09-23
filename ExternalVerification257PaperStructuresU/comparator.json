@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ExternalVerification257PaperStructuresU.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStructuresU",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStructuresU.IsStraddlePrefix.half_step_forced",
+    "Erdos249257.ExternalVerification257PaperStructuresU.isStraddlePrefix_step_trichotomy"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -16,9 +16,9 @@ project:
 
 palomar_qualification:
   status: "candidate_focused_kernel_and_axiom_audit_passed_pending_public_pin_and_terminal_replay"
-  selected_project: "formal_math/erdos257_period_noncollapse"
-  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification257TwentyOneFatalBranch/comparator.json"
-  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification257TwentyOneFatalBranch/formalization.yaml"
+  selected_project: "."
+  comparator_config: "ExternalVerification257TwentyOneFatalBranch/comparator.json"
+  formalization_metadata: "ExternalVerification257TwentyOneFatalBranch/formalization.yaml"
   repository_scope: "public_pinned_snapshot_not_yet_prepared"
   challenge_lines: 212
   challenge_bytes: 7473

@@ -1,0 +1,143 @@
+version: v0.4
+project:
+  name: 'Erdős #1041, record sections 7 to 10: collinear roots and two sparse polynomial families; further families and counterexamples to proposed proof steps; the Newton value equation'
+  description: >-
+    This entry states 13 theorems that the long record for Erdős problem #1041 states in sections 7 (collinear roots and two sparse polynomial families), 8 (further families and counterexamples to proposed proof steps), 9 (the Newton value equation) and 10 (arguments, not moduli): the theorem “a consequence of three moment identities” (section 7.2), as primitiveInterior_exists_two_tailEnergy_lt_one; the theorem “a quintic with two missing coefficients” (section 7.2), as primitive_quintic_two_tail, primitive_quintic_two_tail_of_polynomial, tail_le_one_and_eq_iff_of_leading_zero, tail_norm_of_leading_zero and two_tails_closedDisc_of_ne_zero; the theorem “a contained radial segment for a cubic” (section 7.3), as cubic_has_safe_root_spoke; the theorem “a mean bound for critical values”, as critical_value_three_budgets and critical_value_three_budgets_sharp; the lemma “reflected-derivative bound”, as reflected_critical_value; the theorem “value equation” (section 9), as newton_real_value_whole; the corollary “ray separation” (section 9), as newton_real_endpoint_whole; the theorem “ray-collision locus” (section 10), as translated_samePositiveRay_parameterization.
+
+    12 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 1 is derived from the source declaration by a short tactic proof, which certifies implication.
+
+    Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
+
+    A degree-seven counterexample due to ani, formalised in this corpus, refutes the total-variation formulation of Erdős problem #1041; the theorems in this entry keep their stated hypotheses.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.CV
+  - math.CA
+  msc2020:
+  - "30C10"
+  - "30C15"
+  - "31A15"
+  - "26C10"
+sources:
+- title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: "The compared theorems are independently restated Lean theorems proved in this repository and described in the public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos."
+  license: Apache-2.0
+  author_endorsement: participated
+- title: Erdős Problems catalogue
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com
+  type: web discussion
+  relationship: background
+  note: "Catalogue numbering and status of the parent problem."
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+status:
+  scope: "One Comparator configuration selecting the 13 theorems listed in PalomarCorpus/E1041_04/comparator.json, from the Lean development for Erdős problem #1041. The problem's theorems are packed, in the order the papers state them, into the 8 entries PalomarCorpus/E1041_01 to PalomarCorpus/E1041_08, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification1041* directories are internal regression inventory and are not selected."
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 13
+  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E1041_04/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
+  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: "PalomarCorpus.E1041.PaperStatementsJ.cubic_has_safe_root_spoke"
+    file: "Solutions/PalomarCorpus/E1041_04/PaperStatementsJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_04/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsM.primitiveInterior_exists_two_tailEnergy_lt_one"
+    file: "Solutions/PalomarCorpus/E1041_04/PaperStatementsM.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_04/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsN.translated_samePositiveRay_parameterization"
+    file: "Solutions/PalomarCorpus/E1041_04/PaperStatementsN.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_04/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsO.critical_value_three_budgets"
+    file: "Solutions/PalomarCorpus/E1041_04/PaperStatementsO.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_04/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsP.critical_value_three_budgets_sharp"
+    file: "Solutions/PalomarCorpus/E1041_04/PaperStatementsP.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_04/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsQ.newton_real_endpoint_whole"
+    file: "Solutions/PalomarCorpus/E1041_04/PaperStatementsQ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_04/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsQ.newton_real_value_whole"
+    file: "Solutions/PalomarCorpus/E1041_04/PaperStatementsQ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_04/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsU.primitive_quintic_two_tail"
+    file: "Solutions/PalomarCorpus/E1041_04/PaperStatementsU.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_04/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsU.primitive_quintic_two_tail_of_polynomial"
+    file: "Solutions/PalomarCorpus/E1041_04/PaperStatementsU.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_04/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsV.tail_le_one_and_eq_iff_of_leading_zero"
+    file: "Solutions/PalomarCorpus/E1041_04/PaperStatementsV.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_04/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsV.tail_norm_of_leading_zero"
+    file: "Solutions/PalomarCorpus/E1041_04/PaperStatementsV.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_04/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsV.two_tails_closedDisc_of_ne_zero"
+    file: "Solutions/PalomarCorpus/E1041_04/PaperStatementsV.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_04/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsW.reflected_critical_value"
+    file: "Solutions/PalomarCorpus/E1041_04/PaperStatementsW.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_04/comparator.json"
+  development_status: substantive
+  local_proof_provenance: "the proof modules ErdosProblems.Erdos1041 in this repository, imported by Solutions.PalomarCorpus.E1041_04; the Solutions.ExternalVerification1041* family modules are a regression mirror of the same proofs and are not imported by this configuration"
+  canonical_claim_status: "problem-level Comparator entry over substantive Lean in this repository"
+automation:
+  methods:
+  - method: manual
+    models: []
+    framework: Mathematical interpretation and claim-boundary review
+    tool_setup: Human-directed scope and significance review
+  - method: agent
+    models:
+    - Anthropic Claude
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+    cost:
+      wall_time: not tracked
+      spend_usd: subscription-based
+      hardware: local machine
+      prompting_notes: n/a
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    Every generated restatement was bound to a paper statement and refereed in the eight-paper coverage ledger before its wrapper was generated, and its transport proof was elaborated before the statement was accepted. The author selected the statements and is responsible for the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

@@ -1,0 +1,4 @@
+import Solutions.PalomarCorpus.E249_13
+
+#print axioms PalomarCorpus.E249.PaperStatementsE.fiveQuarter_comparison_rational_with_carryRank_floor
+#print axioms PalomarCorpus.E249.PaperStatementsF.rank_floor_and_false_proposed_carryRank_ceiling

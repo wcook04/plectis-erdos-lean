@@ -1,0 +1,26 @@
+{
+  "challenge_module": "PalomarCorpus.E257_06.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257_06",
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStatementsAD.paper_consecutive_not_both_divisible",
+    "PalomarCorpus.E257.PaperStatementsAD.paper_isRowLower_unique",
+    "PalomarCorpus.E257.PaperStatementsAD.paper_isRowUpper_unique",
+    "PalomarCorpus.E257.PaperStatementsAD.paper_rowLower_existsUnique",
+    "PalomarCorpus.E257.PaperStatementsAD.paper_rowPulse_eq_indicators",
+    "PalomarCorpus.E257.PaperStatementsAD.paper_rowQuotient_eq_weightSum",
+    "PalomarCorpus.E257.PaperStatementsAD.paper_rowTarget_eq",
+    "PalomarCorpus.E257.PaperStatementsAD.paper_rowUpper_existsUnique",
+    "PalomarCorpus.E257.PaperStatementsAD.paper_rowWeight_eq_floor",
+    "PalomarCorpus.E257.PaperStructuresAZ.paper_dynamics",
+    "PalomarCorpus.E257.PaperStructuresAZ.paper_greedySupport_greedy_rule",
+    "PalomarCorpus.E257.PaperStructuresAZ.paper_greedySupport_isRowLower",
+    "PalomarCorpus.E257.PaperStructuresAZ.paper_greedySupport_mem",
+    "PalomarCorpus.E257.PaperStructuresAZ.paper_greedy_step"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

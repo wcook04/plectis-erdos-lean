@@ -1,0 +1,16 @@
+{
+  "challenge_module": "ExternalVerification243PaperStatementsD.Challenge",
+  "solution_module": "Solutions.ExternalVerification243PaperStatementsD",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification243PaperStatementsD.energy_window_real_bound",
+    "Erdos249257.ExternalVerification243PaperStatementsD.exists_avoiding_in_window",
+    "Erdos249257.ExternalVerification243PaperStatementsD.exists_slow_rise_avoiding_sequence",
+    "Erdos249257.ExternalVerification243PaperStatementsD.exists_sparse_prime_coprime_sequence"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,25 @@
+{
+  "challenge_module": "PalomarCorpus.E269_02.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E269_02",
+  "theorem_names": [
+    "PalomarCorpus.E269.PaperStatementsA.dyadicBlockBase235_cases",
+    "PalomarCorpus.E269.PaperStatementsA.dyadicBlockBase235_mem_interval",
+    "PalomarCorpus.E269.PaperStatementsA.dyadicInternalPower_exponent_unique",
+    "PalomarCorpus.E269.PaperStatementsA.exists_dyadicInternalPower_iff_log_succ",
+    "PalomarCorpus.E269.PaperStatementsA.log_dyadic_succ_eq_of_no_internalPower",
+    "PalomarCorpus.E269.PaperStatementsA.paper_two_by_two_fixture",
+    "PalomarCorpus.E269.PaperStatementsA.paper_uniform_rank_and_nonseparation",
+    "PalomarCorpus.E269.PaperStatementsA.radix_eq_height_ratio",
+    "PalomarCorpus.E269.PaperStatementsA.threePrimeHeight_dyadicBlock_succ",
+    "PalomarCorpus.E269.PaperStatementsB.real_two_prime_separation",
+    "PalomarCorpus.E269.PaperStatementsC.long_actual_orbit",
+    "PalomarCorpus.E269.PaperStatementsE.uniform_rank_complete",
+    "PalomarCorpus.E269.PaperStructuresH.rank_cutMatrix"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

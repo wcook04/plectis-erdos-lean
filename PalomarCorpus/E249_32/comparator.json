@@ -1,0 +1,31 @@
+{
+  "challenge_module": "PalomarCorpus.E249_32.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E249_32",
+  "theorem_names": [
+    "PalomarCorpus.E249.CarryRankFrontier.carryShift_dvd_iff_tailDiff_mem_int",
+    "PalomarCorpus.E249.CarryRankFrontier.finrank_canonicalCarryKernel_ge_of_certificate",
+    "PalomarCorpus.E249.CarryRankFrontier.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank",
+    "PalomarCorpus.E249.CarryRankFrontier.not_irrational_totientSeries_implies_unbounded_carryRank_unconditional",
+    "PalomarCorpus.E249.CarryRankFrontier.totient_carryKernel_diff",
+    "PalomarCorpus.E249.DyadicTotientKernel.dyadicTotientKernelOddCoreBasisAndFiniteRanks",
+    "PalomarCorpus.E249.FareyWindowExclusion.farey_int_exclusion",
+    "PalomarCorpus.E249.FullDepthRayAmplifier.apFullDepthEscape_iff_irrational",
+    "PalomarCorpus.E249.FullDepthRayAmplifier.cofinalFullDepthKillSupply_iff_irrational",
+    "PalomarCorpus.E249.FullDepthRayAmplifier.cofinalFullDepthKillSupply_iff_periodMultipleKillSupply",
+    "PalomarCorpus.E249.FullDepthRayAmplifier.eventually_twoSyndetic_fullDepthKillMultipliers_of_seed",
+    "PalomarCorpus.E249.FullDepthRayAmplifier.exists_fullDepthKill_on_ray_iff_shift_notMem_int",
+    "PalomarCorpus.E249.MobiusMersenneLadderStructure.lambertRung_shifted_hankelDet_eq_zero",
+    "PalomarCorpus.E249.MobiusMersenneLadderStructure.mobiusMersenneLambertRung_eq",
+    "PalomarCorpus.E249.MobiusMersenneLadderStructure.mobiusMersenneTheta_hankel_two_neg",
+    "PalomarCorpus.E249.MobiusMersenneLadderStructure.mobiusMersenneTheta_ne_mobiusMersenneLambertRung",
+    "PalomarCorpus.E249.MobiusMersenneLadderStructure.mobiusMersenneTheta_no_linearRecurrence",
+    "PalomarCorpus.E249.MobiusMersenneLadderStructure.mobiusMersenneTheta_no_linearRecurrence_of_eventually",
+    "PalomarCorpus.E249.MobiusMersenneLadderStructure.mobiusMersenneTheta_strict_logConcave"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

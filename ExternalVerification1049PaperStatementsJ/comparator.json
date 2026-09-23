@@ -1,0 +1,16 @@
+{
+  "challenge_module": "ExternalVerification1049PaperStatementsJ.Challenge",
+  "solution_module": "Solutions.ExternalVerification1049PaperStatementsJ",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1049PaperStatementsJ.rational_base_threshold",
+    "Erdos249257.ExternalVerification1049PaperStatementsJ.rational_base_threshold_log",
+    "Erdos249257.ExternalVerification1049PaperStatementsJ.thirtyoneFour_irrational",
+    "Erdos249257.ExternalVerification1049PaperStatementsJ.thirtyoneFour_pow_irrational"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

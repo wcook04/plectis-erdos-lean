@@ -1,0 +1,17 @@
+{
+  "challenge_module": "PalomarCorpus.E1049_08.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E1049_08",
+  "theorem_names": [
+    "PalomarCorpus.E1049.RationalBaseBarrier.twoPow_le_rationalBaseForcingNat",
+    "PalomarCorpus.E1049.RationalBaseRegion.rational_base_measure",
+    "PalomarCorpus.E1049.RationalBaseRegion.rational_base_region",
+    "PalomarCorpus.E1049.RationalBaseRegion.thirtyone_four",
+    "PalomarCorpus.E1049.RationalBaseRegion.thirtyone_four_power_measure_lt_paper_fraction"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

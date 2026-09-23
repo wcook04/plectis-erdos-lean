@@ -1,0 +1,15 @@
+{
+  "challenge_module": "ExternalVerification243PaperStatementsM.Challenge",
+  "solution_module": "Solutions.ExternalVerification243PaperStatementsM",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification243PaperStatementsM.canonical_recordTheta_eq_zero_iff",
+    "Erdos249257.ExternalVerification243PaperStatementsM.canonical_recordTheta_gt_one",
+    "Erdos249257.ExternalVerification243PaperStatementsM.canonical_recordTheta_zero_or_gt_one"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

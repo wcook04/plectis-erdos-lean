@@ -1,0 +1,11 @@
+import Solutions.PalomarCorpus.E68_01
+
+#print axioms PalomarCorpus.E68.CommonDenominatorGrowth.common_denominator_growth_liminf
+#print axioms PalomarCorpus.E68.FactorialGapBounds.factorialGapSegment_log_sum_le_channelLCM_add_choose
+#print axioms PalomarCorpus.E68.FactorialGapBounds.factorial_gap_gcd_exact
+#print axioms PalomarCorpus.E68.PaperStatementsA.cofinal_first_prime_occurrences
+#print axioms PalomarCorpus.E68.PaperStatementsA.companion_orbit
+#print axioms PalomarCorpus.E68.PaperStatementsA.lower_interval_criterion
+#print axioms PalomarCorpus.E68.PaperStatementsA.maximal_prime_power_survival
+#print axioms PalomarCorpus.E68.PaperStatementsB.strict_successor_characterisation
+#print axioms PalomarCorpus.E68.PaperStatementsE.product_lcm_pairwise_gcd

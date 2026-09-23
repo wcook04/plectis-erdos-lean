@@ -1,0 +1,15 @@
+{
+  "challenge_module": "ExternalVerification243PaperStatementsK.Challenge",
+  "solution_module": "Solutions.ExternalVerification243PaperStatementsK",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification243PaperStatementsK.epoch_energy_named_crossing_set",
+    "Erdos249257.ExternalVerification243PaperStatementsK.forcedOrbit_survives_iff_of_factorial_modEq",
+    "Erdos249257.ExternalVerification243PaperStatementsK.forcedSurvives_iff_of_modEq_factorial"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,23 @@
+{
+  "challenge_module": "PalomarCorpus.E269_10.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E269_10",
+  "theorem_names": [
+    "PalomarCorpus.E269.IntegralBranchPinning.integral_state_upward_closed",
+    "PalomarCorpus.E269.IntegralBranchPinning.surviving_window_orbit_eq_true_state",
+    "PalomarCorpus.E269.IntegralBranchPinning.trueNormalizedState_eq_telescope",
+    "PalomarCorpus.E269.IntegralBranchPinning.trueNormalizedState_pinning",
+    "PalomarCorpus.E269.ThreePrimeStructure.exists_uniform_nonsingular_threePrimeKernel_minor",
+    "PalomarCorpus.E269.ThreePrimeStructure.kernel_235_minor_eq_neg_one_fifteen",
+    "PalomarCorpus.E269.ThreePrimeStructure.smoothExponentShell_card_quadratic",
+    "PalomarCorpus.E269.ThreePrimeStructure.smoothPrefixLcm_eq_threePrimeHeight",
+    "PalomarCorpus.E269.ThreePrimeStructure.threePrimeKernelQ_eq_of_sameLogCell",
+    "PalomarCorpus.E269.ThreePrimeStructure.threePrimeKernel_infiniteRank_and_noFiniteSeparation",
+    "PalomarCorpus.E269.ThreePrimeStructure.threePrimePositiveJumpSet_card"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

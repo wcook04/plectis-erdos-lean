@@ -1,0 +1,13 @@
+import Solutions.PalomarCorpus.E1041_05
+
+#print axioms PalomarCorpus.E1041.PaperStatementsB.exists_two_nearest_roots_of_polynomial_critical
+#print axioms PalomarCorpus.E1041.PaperStatementsB.two_nearest_roots_of_polynomial_critical
+#print axioms PalomarCorpus.E1041.PaperStatementsG.complete_straight_path_obstructions
+#print axioms PalomarCorpus.E1041.PaperStatementsK.exists_two_roots_dist_sum_le_two_mul_geomMean
+#print axioms PalomarCorpus.E1041.PaperStatementsQ.complete_sep_or_counterexample
+#print axioms PalomarCorpus.E1041.PaperStatementsR.sextic_spoke_counterexample_whole
+#print axioms PalomarCorpus.E1041.PaperStatementsU.complete_primitive_quintic
+#print axioms PalomarCorpus.E1041.PaperStatementsX.lobe_perimeter_gt
+#print axioms PalomarCorpus.E1041.PaperStatementsX.one_root_gamma_false
+#print axioms PalomarCorpus.E1041.PaperStatementsZA.separation_parent
+#print axioms PalomarCorpus.E1041.PaperStructuresAD.one_root_gamma_false_unconditional

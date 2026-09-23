@@ -1,0 +1,25 @@
+{
+  "challenge_module": "PalomarCorpus.E257_41.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257_41",
+  "theorem_names": [
+    "PalomarCorpus.E257.FairCoding.fairCoding_pushforward_eq_volume_restrict",
+    "PalomarCorpus.E257.FairCoding.fairCoding_rational_values_null",
+    "PalomarCorpus.E257.FairCoding.measurePreserving_fairCoding",
+    "PalomarCorpus.E257.FinitePeriodNoncollapse.finite_period_noncollapse_rat_den",
+    "PalomarCorpus.E257.FourNinthsRepairWindows.exists_repair_in_sqrt_window",
+    "PalomarCorpus.E257.FourNinthsRepairWindows.four_ninths_mem_iff_repairCofinal",
+    "PalomarCorpus.E257.FourNinthsRepairWindows.four_ninths_mem_iff_repair_sqrt_windows",
+    "PalomarCorpus.E257.FourNinthsRepairWindows.four_ninths_not_mem_of_strict_sqrt_window",
+    "PalomarCorpus.E257.GeneralRepairCriterion.mem_iff_greedyBinaryDefect_cofinal_repairs",
+    "PalomarCorpus.E257.GeneralRepairCriterion.mem_iff_greedyBinaryDefect_sqrt_windows",
+    "PalomarCorpus.E257.LiteralWeightedCover.exists_weighted_not_strengthened_host",
+    "PalomarCorpus.E257.LiteralWeightedCover.exists_weighted_obstruction_with_mixed_heredity",
+    "PalomarCorpus.E257.PositiveSkipEquivalence.greedyMersenneRemainderRat_half_pos"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

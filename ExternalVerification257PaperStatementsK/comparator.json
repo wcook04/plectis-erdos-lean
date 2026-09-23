@@ -1,0 +1,15 @@
+{
+  "challenge_module": "ExternalVerification257PaperStatementsK.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStatementsK",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStatementsK.six_membership_conditions",
+    "Erdos249257.ExternalVerification257PaperStatementsK.paper_both_cofinal_statements_iff_half_membership",
+    "Erdos249257.ExternalVerification257PaperStatementsK.paper_critical_crossing_support_is_greedy_prefix"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

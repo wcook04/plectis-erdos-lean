@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification243PaperStatementsJ
+
+#print axioms Erdos249257.ExternalVerification243PaperStatementsJ.real_lowerDensityZero_iff_exists_admissible_real_weight

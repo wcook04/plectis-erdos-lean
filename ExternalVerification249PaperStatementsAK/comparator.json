@@ -1,0 +1,39 @@
+{
+  "challenge_module": "ExternalVerification249PaperStatementsAK.Challenge",
+  "solution_module": "Solutions.ExternalVerification249PaperStatementsAK",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249PaperStatementsAK.totientSeries_ne_rat_of_den_dvd_two_pow_fourteen_mul_mersenne",
+    "Erdos249257.ExternalVerification249PaperStatementsAK.totientSeries_rational_den_gt_fareyBound",
+    "Erdos249257.ExternalVerification249PaperStatementsAK.totient_mul_eq_totient_mul_gcd_div_totient_gcd",
+    "Erdos249257.ExternalVerification249PaperStatementsAK.totient_one_eq_one",
+    "Erdos249257.ExternalVerification249PaperStatementsAK.totient_series_ne_int_div_of_small_denominator",
+    "Erdos249257.ExternalVerification249PaperStatementsAK.totient_series_ne_reduced_fraction_of_small_denominator",
+    "Erdos249257.ExternalVerification249PaperStatementsAK.totient_zero_eq_zero",
+    "Erdos249257.ExternalVerification249PaperStatementsAK.tsum_pos_coprime_pairs_eq_series_sub_half",
+    "Erdos249257.ExternalVerification249PaperStatementsAK.tsum_pos_coprime_pairs_product_form",
+    "Erdos249257.ExternalVerification249PaperStatementsAK.tsum_totient_pow_shift",
+    "Erdos249257.ExternalVerification249PaperStatementsAK.twoAdic_pulse_defining_congruence",
+    "Erdos249257.ExternalVerification249PaperStatementsAK.twoAdic_pulse_error_bound",
+    "Erdos249257.ExternalVerification249PaperStatementsAK.twoAtom_hankel_gap",
+    "Erdos249257.ExternalVerification249PaperStatementsAK.twoAtom_strict_logConcave",
+    "Erdos249257.ExternalVerification249PaperStatementsAK.two_point_sample_numerical_requirement",
+    "Erdos249257.ExternalVerification249PaperStatementsAK.two_pow_odd_eq",
+    "Erdos249257.ExternalVerification249PaperStatementsAK.unbounded_prime_divisors_of_escape_of_nontrivial",
+    "Erdos249257.ExternalVerification249PaperStatementsAK.visible_antidiagonal_one",
+    "Erdos249257.ExternalVerification249PaperStatementsAK.farey_gap",
+    "Erdos249257.ExternalVerification249PaperStatementsAK.gap_check_window_1_240_first_failure",
+    "Erdos249257.ExternalVerification249PaperStatementsAK.gap_check_window_1_240_le_79639646646701375323355774875831053",
+    "Erdos249257.ExternalVerification249PaperStatementsAK.cylinderMass_children_le",
+    "Erdos249257.ExternalVerification249PaperStatementsAK.tsum_lambert_linear_weight_sq_pure",
+    "Erdos249257.ExternalVerification249PaperStatementsAK.tsum_pos_coprime_inv_mersenne_eq_one",
+    "Erdos249257.ExternalVerification249PaperStatementsAK.tsum_pos_pair_both_dvd_half_eq_inv_mersenne_sq",
+    "Erdos249257.ExternalVerification249PaperStatementsAK.tsum_totient_div_mersenne_sq_eq_gcd_moment_series",
+    "Erdos249257.ExternalVerification249PaperStatementsAK.tsum_gcd_layer_pos_coprime_half_eq_one"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

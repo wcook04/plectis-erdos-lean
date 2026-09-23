@@ -1,0 +1,9 @@
+import Solutions.PalomarCorpus.E257_03
+
+#print axioms PalomarCorpus.E257.PaperStatementsAE.binaryCoeffTail_nonneg
+#print axioms PalomarCorpus.E257.PaperStatementsAU.binaryCoeffTail_supportCoeff_le_two_sqrt_add_four
+#print axioms PalomarCorpus.E257.PaperStatementsD.greedy_half_of_cofinal_upper_carry
+#print axioms PalomarCorpus.E257.PaperStatementsE.half_of_cofinal_absolute_carry
+#print axioms PalomarCorpus.E257.PaperStatementsE.integerHalfCarry_eq_scaled_residual_add_tail
+#print axioms PalomarCorpus.E257.PaperStatementsK.six_membership_conditions
+#print axioms PalomarCorpus.E257.PaperStatementsL.square_depth_witness

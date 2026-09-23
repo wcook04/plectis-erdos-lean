@@ -1,0 +1,25 @@
+{
+  "challenge_module": "PalomarCorpus.E1041_04.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E1041_04",
+  "theorem_names": [
+    "PalomarCorpus.E1041.PaperStatementsJ.cubic_has_safe_root_spoke",
+    "PalomarCorpus.E1041.PaperStatementsM.primitiveInterior_exists_two_tailEnergy_lt_one",
+    "PalomarCorpus.E1041.PaperStatementsN.translated_samePositiveRay_parameterization",
+    "PalomarCorpus.E1041.PaperStatementsO.critical_value_three_budgets",
+    "PalomarCorpus.E1041.PaperStatementsP.critical_value_three_budgets_sharp",
+    "PalomarCorpus.E1041.PaperStatementsQ.newton_real_endpoint_whole",
+    "PalomarCorpus.E1041.PaperStatementsQ.newton_real_value_whole",
+    "PalomarCorpus.E1041.PaperStatementsU.primitive_quintic_two_tail",
+    "PalomarCorpus.E1041.PaperStatementsU.primitive_quintic_two_tail_of_polynomial",
+    "PalomarCorpus.E1041.PaperStatementsV.tail_le_one_and_eq_iff_of_leading_zero",
+    "PalomarCorpus.E1041.PaperStatementsV.tail_norm_of_leading_zero",
+    "PalomarCorpus.E1041.PaperStatementsV.two_tails_closedDisc_of_ne_zero",
+    "PalomarCorpus.E1041.PaperStatementsW.reflected_critical_value"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

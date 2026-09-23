@@ -1,0 +1,12 @@
+import Solutions.PalomarCorpus.E1049_04
+
+#print axioms PalomarCorpus.E1049.PaperStatementsB.paperE_eq_rowExponent
+#print axioms PalomarCorpus.E1049.PaperStatementsB.paperRatio_agree
+#print axioms PalomarCorpus.E1049.PaperStatementsB.paperReciprocal_rec
+#print axioms PalomarCorpus.E1049.PaperStatementsB.paperReciprocal_zero
+#print axioms PalomarCorpus.E1049.PaperStatementsG.order_zudilinNormalizedHankelDet_all
+#print axioms PalomarCorpus.E1049.PaperStatementsH.all_row_initial
+#print axioms PalomarCorpus.E1049.PaperStatementsH.all_row_initial_dvd
+#print axioms PalomarCorpus.E1049.PaperStatementsH.all_row_initial_reciprocal
+#print axioms PalomarCorpus.E1049.PaperStatementsN.integer_scalar_content
+#print axioms PalomarCorpus.E1049.PaperStructuresO.coefficientPencil_finitePencil

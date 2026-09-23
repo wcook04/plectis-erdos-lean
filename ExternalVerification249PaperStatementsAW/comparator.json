@@ -1,0 +1,19 @@
+{
+  "challenge_module": "ExternalVerification249PaperStatementsAW.Challenge",
+  "solution_module": "Solutions.ExternalVerification249PaperStatementsAW",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249PaperStatementsAW.exact_series",
+    "Erdos249257.ExternalVerification249PaperStatementsAW.value_cast",
+    "Erdos249257.ExternalVerification249PaperStatementsAW.certificate_sound",
+    "Erdos249257.ExternalVerification249PaperStatementsAW.generic_tail_period",
+    "Erdos249257.ExternalVerification249PaperStatementsAW.scaled_difference",
+    "Erdos249257.ExternalVerification249PaperStatementsAW.scaled_tail_split",
+    "Erdos249257.ExternalVerification249PaperStatementsAW.truncation_error_bound"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

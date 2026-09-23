@@ -1,0 +1,6 @@
+import Solutions.ExternalVerification1049PaperStatementsK
+
+#print axioms Erdos249257.ExternalVerification1049PaperStatementsK.charge_ceilings
+#print axioms Erdos249257.ExternalVerification1049PaperStatementsK.forcing_term
+#print axioms Erdos249257.ExternalVerification1049PaperStatementsK.power_bracket
+#print axioms Erdos249257.ExternalVerification1049PaperStatementsK.scalar_margin

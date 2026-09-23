@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification249PaperStatementsM
+
+#print axioms Erdos249257.ExternalVerification249PaperStatementsM.fullDepth_amplification

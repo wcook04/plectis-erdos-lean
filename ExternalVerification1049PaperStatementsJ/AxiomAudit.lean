@@ -1,0 +1,6 @@
+import Solutions.ExternalVerification1049PaperStatementsJ
+
+#print axioms Erdos249257.ExternalVerification1049PaperStatementsJ.rational_base_threshold
+#print axioms Erdos249257.ExternalVerification1049PaperStatementsJ.rational_base_threshold_log
+#print axioms Erdos249257.ExternalVerification1049PaperStatementsJ.thirtyoneFour_irrational
+#print axioms Erdos249257.ExternalVerification1049PaperStatementsJ.thirtyoneFour_pow_irrational

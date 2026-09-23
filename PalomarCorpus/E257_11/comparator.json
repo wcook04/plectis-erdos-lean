@@ -1,0 +1,20 @@
+{
+  "challenge_module": "PalomarCorpus.E257_11.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257_11",
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStatementsAM.straddle_all_depths_iff_mem",
+    "PalomarCorpus.E257.PaperStatementsAM.straddle_limiting_support_inputs",
+    "PalomarCorpus.E257.PaperStatementsAT.binaryCoeffTail_supportCoeff_coe_finset_le_card",
+    "PalomarCorpus.E257.PaperStatementsB.half_mem_mersenneAchievementSet_of_secondChannelSeparation",
+    "PalomarCorpus.E257.PaperStatementsB.half_mem_mersenneAchievementSet_of_secondChannelSeparationRat_from_seven",
+    "PalomarCorpus.E257.PaperStatementsB.half_mem_mersenneAchievementSet_of_skipped_dyadicCap",
+    "PalomarCorpus.E257.PaperStatementsB.half_mem_mersenneAchievementSet_of_skipped_twoChannelCap",
+    "PalomarCorpus.E257.PaperStructuresBV.seamScaledRem_eq_tailGreedyRemainder"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,294 @@
+version: v0.4
+project:
+  name: 'Erdős #251, the actual prime gap tail, affine circularity and all residue logarithmic countermodel families'
+  description: >-
+    This entry states 20 theorems of the actual prime gap tail, affine circularity, all residue logarithmic countermodel, free pair equivalence, kernel denominator floor and lcm diagonal criterion developments of the Lean formalisation of Erdős problem #251, to which no paper statement is bound. exists_rationalPrimeGapTailState_representation_of_not_irrational: Hypothesis: the sum of the prime-gap dyadic series fails to be irrational. rationalPrimeGapTailState_recurrence: For every rational `S`, with no rationality hypothesis on the series, the states `rationalPrimeGapTailState S` satisfy the dyadic tail recurrence whose digits are the actual consecutive prime gaps cast into the integers, that is `T (N + 1) = 2 * T N - g (N + 1)` at every index. rationalPrimeGapTailShift_eventuallyIntegral: For every rational `S` there exist a positive shift length `h` and a threshold `N₀` such that `tailShift (rationalPrimeGapTailState S) h N` is an integer at every index `N` at least `N₀`. rationalPrimeGapTail_has_positive_shift_not_eventually_small: For every rational `S` there exists a positive shift length `h` for which no threshold makes `tailShift (rationalPrimeGapTailState S) h N` lie strictly between -1 and 1 at every later index; non-periodicity of the actual prime gaps drives the denominator-selected integral shift out of the open unit interval infinitely often. adjacent_small_mismatch_iff_signed_two_window: Exact normal form for the adjacent unit-window event. cofinal_affinePowTwo_escape_iff_not_eventuallyIntegral: Route closure for the affine cylinder test. cofinal_blockResidue_escape_iff_not_eventuallyIntegral: Route closure for the fixed-lattice test. exists_every_residue_logarithmic_countermodel: Synthetic countermodel: there are integer sequences `digit`, `carry` and `position` with `position n = 3 + digit 1 + . irrational_primeGap_tsum_iff_cofinalFreePairNonintegral: Erdős problem 251 in free-pair form: the consecutive-prime-gap dyadic series is irrational exactly when its complete scaled real tails satisfy the free-pair criterion, that for every positive modulus and every threshold two indices beyond the threshold and congruent modulo that modulus have a non-integral difference of tails. irrational_initial_iff_cofinalFreePairNonintegral: For every real orbit `T` obeying the dyadic tail recurrence with integer digits `g`, the initial value `T 0` is irrational exactly when `T` satisfies the free-pair criterion. cofinalFreePairNonintegral_iff_cofinalNonintegralTailShifts: For every real orbit obeying the dyadic tail recurrence with integer digits, the free-pair criterion with free offset and the fixed-offset cofinal criterion are equivalent. exists_free_pair_lattice: Every rational orbit obeying the dyadic tail recurrence with integer digits has a threshold `N₀` and a positive modulus `t` such that for all indices `N` and `M` at least `N₀` the difference `T M - T N` is an integer exactly when `N` and `M` are congruent modulo `t`. free_pair_integral_iff_modEq: Supporting lemma identifying the modulus of that lattice: if the rational orbit obeys the dyadic tail recurrence with integer digits and the reduced denominator of `T N₀` is odd, then for indices `N` and `M` at least `N₀` the difference `T M - T N` is an integer exactly when `N` and `M` are congruent modulo the multiplicative order of 2 in the integers modulo that denominator. primeGapRealTail_recurrence: The complete scaled real tails of the prime-gap dyadic series obey the dyadic tail recurrence whose digits are the actual consecutive prime gaps cast into the integers. primeGapRealTail_zero: The tail at index 0 equals `2 * S - 1`, where `S` is the sum of the prime-gap dyadic series, so `S` and that tail have the same rationality status. cert_10000: The Lean kernel re-runs the trial-division sieve over the integers below 10000 and decides that the six conditions of `certCheck` hold for the recorded certificate constants. den_bound_of_certCheck: Hypotheses: the truncation index satisfies `9 <= c`, and `certCheck c u v u' v' X` is true. kernel_denominator_floor: Every representation of the normalised prime dyadic series as `a / b` with an integer `a` and a positive natural `b` has `b` at least `2 ^ 589`, a bound exceeding `10 ^ 177`. kernel_denominator_floor_primeGap: The same floor `2 ^ 589` for every representation `a / b`, with `a` an integer and `b` a positive natural number, of the consecutive-prime-gap dyadic series, whose value is 2 less than the prime series. notIrrationalInitial_iff_exists_integral_positive_tailShift: For every real orbit obeying the dyadic tail recurrence with integer digits, the initial value `T 0` fails to be irrational exactly when some positive shift length `h` and some index `N` make `T (N + h) - T N` an integer.
+
+    Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
+
+    Erdős problem #251 remains open, and no theorem in this entry decides it.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - "11J72"
+  - "11N05"
+  - "11N36"
+  - "11A41"
+  - "11B83"
+  - "11Y16"
+  - "68V20"
+sources:
+- title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: "The compared theorems are independently restated Lean theorems proved in this repository and described in the public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos."
+  license: Apache-2.0
+  author_endorsement: participated
+- title: "Sur certaines séries à valeur irrationnelle"
+  authors:
+  - "Paul Erdős"
+  id: "10.5169/seals-34629"
+  type: "paper"
+  relationship: "background"
+  note: "States the dyadic prime series as unproved on page 94, which is the origin of the parent problem; the irrationality theorem printed alongside it is for a factorial-denominator family and is not used by any declaration here."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Old and New Problems and Results in Combinatorial Number Theory"
+  authors:
+  - "Paul Erdős"
+  - "Ronald L. Graham"
+  type: "book"
+  relationship: "background"
+  note: "Restates the dyadic prime series question on page 62; nothing in this entry is taken from the monograph beyond the problem statement."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "On the irrationality of certain series: problems and results"
+  authors:
+  - "Paul Erdős"
+  id: "10.1017/CBO9780511897184.009"
+  type: "paper"
+  relationship: "background"
+  note: "Repeats the problem on page 103 inside the wider irrationality-of-series programme that identifies the audience for this entry; no proof technique is taken from it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "On the largest prime factors of n and n+1"
+  authors:
+  - "Paul Erdős"
+  - "Carl Pomerance"
+  id: "10.1007/BF01818569"
+  type: "paper"
+  relationship: "background"
+  note: "Section 7 proves a dyadic irrationality theorem for bounded digits recording comparisons of largest prime factors; the prime numerators and prime gaps treated here are unbounded, so that theorem is context and supplies no step of any proof in this entry."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Erdős Problem #251 problem page and comment thread"
+  authors:
+  - "Thomas F. Bloom"
+  id: "https://www.erdosproblems.com/251"
+  type: "web discussion"
+  relationship: "background"
+  note: "Supplies the catalogue statement and open status, and carries the summation-by-parts identity between the prime series and the prime-gap series posted by Terence Tao on 7 October 2025, which is checked in this entry with no priority claimed; the compared theorems are not attributed to the catalogue."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "On the Erdős problem #251"
+  authors:
+  - "V. Kovač"
+  id: "https://web.math.pmf.unizg.hr/~vjekovac/files/Erdos_problem_251.pdf"
+  type: "other"
+  relationship: "background"
+  note: "Refutes by a telescoping construction the adjacent variable-denominator conjecture printed under the same catalogue number, and leaves the fixed-denominator question of this entry undecided; the quadratic countermodel here uses a construction of the same species and claims no priority over it. The note records a language model run orchestrated by the named author."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "On several irrationality problems for Ahmes series"
+  authors:
+  - "V. Kovač"
+  - "Terence Tao"
+  id: "10.1007/s10474-025-01528-0"
+  type: "paper"
+  relationship: "background"
+  note: "Recent work on irrationality of series with prescribed denominators, which locates the research area of this entry; no lemma of that paper is used in any declaration here."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "The irrationality of some number theoretical series"
+  authors:
+  - "Jan-Christoph Schlage-Puchta"
+  id: "arXiv:1105.1451"
+  type: "paper"
+  relationship: "background"
+  note: "The nearest located neighbour for the tail criteria recorded here, with no antecedent located: its Theorem 2 treats base-b digit strings that concatenate the representations of a slowly growing integer sequence, and its Theorem 3 gives linear independence over the rationals for series of prime powers over factorials. Its Lemma 4, a Selberg-sieve density-zero statement for polynomial relations among consecutive prime gaps, is used in the companion reasoning record; the compared declarations that need it carry it as the named hypothesis SchlagePuchtaLemma4 and do not formalise it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Bounded gaps between primes"
+  authors:
+  - "Yitang Zhang"
+  id: "10.4007/annals.2014.179.3.7"
+  type: "paper"
+  relationship: "background"
+  note: "Theorem 1 produces infinitely many bounded consecutive-prime gaps; it is recorded to mark the boundary, because it supplies no joint dyadic distribution of a block of consecutive gap differences and is used by no declaration here."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Small gaps between primes"
+  authors:
+  - "James Maynard"
+  id: "10.4007/annals.2015.181.1.7"
+  type: "paper"
+  relationship: "background"
+  note: "it bounds the lower limit of p(n+m) - p(n) for every fixed m and gives the explicit bound 600 for consecutive gaps; both are context for the open boundary and neither is used by any declaration here."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Long gaps between primes"
+  authors:
+  - "Kevin Ford"
+  - "Ben Green"
+  - "Sergei Konyagin"
+  - "James Maynard"
+  - "Terence Tao"
+  id: "10.1090/jams/876"
+  type: "paper"
+  relationship: "background"
+  note: "Theorem 1 on page 66 gives an effective lower bound for the largest single consecutive-prime gap below a threshold; unboundedness of the gaps is all that the non-periodicity argument here needs, and this stronger theorem supplies no residue-sensitive block estimate used by any declaration."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "A conditional proof of the irrationality of the dyadic prime series under a uniform Hardy-Littlewood prime-tuples conjecture, with a Lean formalisation of the conditional argument, posted in 2026 to the Erdős Problem #251 discussion"
+  authors:
+  - "J. Land"
+  id: "https://github.com/beetree/math_erdos_251"
+  type: "web discussion"
+  relationship: "background"
+  note: "Posted 5 September 2026 on the Erdős Problems discussion thread for #251 with the linked repository; Conjecture 1 there is the large-x form of Conjecture 1.3 of V. Kuperberg. As recorded in the public reasoning record for this problem, Land's argument assumes Kuperberg's uniform Hardy-Littlewood prime-tuples conjecture, constructs weighted prime-gap tails, and comes with a Lean formalisation of that conditional argument. The declarations compared here were proved independently of it and do not use, extend or contradict his conditional theorem; those that are conditional carry the prime number theorem or Schlage-Puchta's Lemma 4 as named hypotheses, none assumes Kuperberg's conjecture, and the parent problem remains open."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: Erdős Problems catalogue
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com
+  type: web discussion
+  relationship: background
+  note: "Catalogue numbering and status of the parent problem."
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+related_formalizations:
+- id: "https://github.com/google-deepmind/formal-conjectures/blob/f776d2f2039351b00737ffcafb9d7d7666e1d9af/FormalConjectures/ErdosProblems/251.lean"
+  title: "FormalConjectures.ErdosProblems.251"
+  relationship: "independent"
+  note: "An earlier Lean statement of the parent problem whose proof ends in sorry; it is statement-level prior art for the formalisation, it supplies no proof authority, and every declaration compared here was stated independently of it."
+- id: "https://github.com/beetree/math_erdos_251"
+  title: "J. Land's Lean formalisation of a conditional proof of irrationality (5 September 2026)"
+  relationship: "independent"
+  note: "Formalises Land's argument, which is conditional on Kuperberg's uniform prime-tuples conjecture; announced with the proof on the problem's discussion thread. The declarations compared here are unconditional and were stated independently of it."
+status:
+  scope: "One Comparator configuration selecting the 20 theorems listed in PalomarCorpus/E251_06/comparator.json, from the Lean development for Erdős problem #251. The problem's theorems are packed, in the order the papers state them, into the 8 entries PalomarCorpus/E251_01 to PalomarCorpus/E251_08, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification251* directories are internal regression inventory and are not selected."
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 20
+  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E251_06/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
+  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: "PalomarCorpus.E251.ActualPrimeGapTail.exists_rationalPrimeGapTailState_representation_of_not_irrational"
+    file: "Solutions/PalomarCorpus/E251_06/ActualPrimeGapTail.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E251_06/comparator.json"
+  - declaration: "PalomarCorpus.E251.ActualPrimeGapTail.rationalPrimeGapTailShift_eventuallyIntegral"
+    file: "Solutions/PalomarCorpus/E251_06/ActualPrimeGapTail.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E251_06/comparator.json"
+  - declaration: "PalomarCorpus.E251.ActualPrimeGapTail.rationalPrimeGapTailState_recurrence"
+    file: "Solutions/PalomarCorpus/E251_06/ActualPrimeGapTail.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E251_06/comparator.json"
+  - declaration: "PalomarCorpus.E251.ActualPrimeGapTail.rationalPrimeGapTail_has_positive_shift_not_eventually_small"
+    file: "Solutions/PalomarCorpus/E251_06/ActualPrimeGapTail.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E251_06/comparator.json"
+  - declaration: "PalomarCorpus.E251.AffineCircularity.adjacent_small_mismatch_iff_signed_two_window"
+    file: "Solutions/PalomarCorpus/E251_06/AffineCircularity.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E251_06/comparator.json"
+  - declaration: "PalomarCorpus.E251.AffineCircularity.cofinal_affinePowTwo_escape_iff_not_eventuallyIntegral"
+    file: "Solutions/PalomarCorpus/E251_06/AffineCircularity.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E251_06/comparator.json"
+  - declaration: "PalomarCorpus.E251.AffineCircularity.cofinal_blockResidue_escape_iff_not_eventuallyIntegral"
+    file: "Solutions/PalomarCorpus/E251_06/AffineCircularity.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E251_06/comparator.json"
+  - declaration: "PalomarCorpus.E251.AllResidueLogarithmicCountermodel.exists_every_residue_logarithmic_countermodel"
+    file: "Solutions/PalomarCorpus/E251_06/AllResidueLogarithmicCountermodel.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E251_06/comparator.json"
+  - declaration: "PalomarCorpus.E251.FreePairEquivalence.cofinalFreePairNonintegral_iff_cofinalNonintegralTailShifts"
+    file: "Solutions/PalomarCorpus/E251_06/FreePairEquivalence.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E251_06/comparator.json"
+  - declaration: "PalomarCorpus.E251.FreePairEquivalence.exists_free_pair_lattice"
+    file: "Solutions/PalomarCorpus/E251_06/FreePairEquivalence.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E251_06/comparator.json"
+  - declaration: "PalomarCorpus.E251.FreePairEquivalence.free_pair_integral_iff_modEq"
+    file: "Solutions/PalomarCorpus/E251_06/FreePairEquivalence.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E251_06/comparator.json"
+  - declaration: "PalomarCorpus.E251.FreePairEquivalence.irrational_initial_iff_cofinalFreePairNonintegral"
+    file: "Solutions/PalomarCorpus/E251_06/FreePairEquivalence.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E251_06/comparator.json"
+  - declaration: "PalomarCorpus.E251.FreePairEquivalence.irrational_primeGap_tsum_iff_cofinalFreePairNonintegral"
+    file: "Solutions/PalomarCorpus/E251_06/FreePairEquivalence.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E251_06/comparator.json"
+  - declaration: "PalomarCorpus.E251.FreePairEquivalence.primeGapRealTail_recurrence"
+    file: "Solutions/PalomarCorpus/E251_06/FreePairEquivalence.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E251_06/comparator.json"
+  - declaration: "PalomarCorpus.E251.FreePairEquivalence.primeGapRealTail_zero"
+    file: "Solutions/PalomarCorpus/E251_06/FreePairEquivalence.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E251_06/comparator.json"
+  - declaration: "PalomarCorpus.E251.KernelDenominatorFloor.cert_10000"
+    file: "Solutions/PalomarCorpus/E251_06/KernelDenominatorFloor.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E251_06/comparator.json"
+  - declaration: "PalomarCorpus.E251.KernelDenominatorFloor.den_bound_of_certCheck"
+    file: "Solutions/PalomarCorpus/E251_06/KernelDenominatorFloor.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E251_06/comparator.json"
+  - declaration: "PalomarCorpus.E251.KernelDenominatorFloor.kernel_denominator_floor"
+    file: "Solutions/PalomarCorpus/E251_06/KernelDenominatorFloor.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E251_06/comparator.json"
+  - declaration: "PalomarCorpus.E251.KernelDenominatorFloor.kernel_denominator_floor_primeGap"
+    file: "Solutions/PalomarCorpus/E251_06/KernelDenominatorFloor.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E251_06/comparator.json"
+  - declaration: "PalomarCorpus.E251.LcmDiagonalCriterion.notIrrationalInitial_iff_exists_integral_positive_tailShift"
+    file: "Solutions/PalomarCorpus/E251_06/LcmDiagonalCriterion.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E251_06/comparator.json"
+  development_status: substantive
+  local_proof_provenance: "the proof modules ErdosProblems.Erdos251 in this repository, imported by Solutions.PalomarCorpus.E251_06; the Solutions.ExternalVerification251* family modules are a regression mirror of the same proofs and are not imported by this configuration"
+  canonical_claim_status: "problem-level Comparator entry over substantive Lean in this repository"
+automation:
+  methods:
+  - method: manual
+    models: []
+    framework: Mathematical interpretation and claim-boundary review
+    tool_setup: Human-directed scope and significance review
+  - method: agent
+    models:
+    - Anthropic Claude
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+    cost:
+      wall_time: not tracked
+      spend_usd: subscription-based
+      hardware: local machine
+      prompting_notes: n/a
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    The statements from the hand-written families were checked declaration by declaration against the public problem notes, the reasoning records and the Lean sources in automated review passes run with Anthropic Claude and OpenAI Codex. The author selected the statements and is responsible for the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

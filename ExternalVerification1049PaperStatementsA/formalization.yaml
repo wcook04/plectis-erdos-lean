@@ -1,0 +1,328 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: v0.4
+project:
+  name: 'Erdős #1049: independent restatements of refereed paper-linked theorems'
+  description: >-
+    22 theorems of the substantive development for Erdős problem #1049
+    restated against Mathlib alone and transported from the source declarations named
+    below. The substantive formalization lives in ErdosProblems.Erdos1049.PaperCompleteR21.PrintedContourConstants, ErdosProblems.Erdos1049.PaperCompleteR21.PrintedLogConstants, ErdosProblems.Erdos1049.PaperCompleteR21.RationalBaseThreshold, ErdosProblems.Erdos1049.PaperOmegaIndicatorR7, ErdosProblems.Erdos1049.RationalBaseContour in this repository and at
+    public commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84 of https://github.com/wcook04/plectis-erdos. This entry is a comparison
+    interface over that development. 22 statements transport by direct term
+    application, which certifies definitional identity with the source statement;
+    0 transport through a tactic bridge, which certifies implication only. The
+    parent Erdős problem remains open.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - "11A25"
+  - "11B83"
+sources:
+- title: 'Erdős #1049: paper-linked Lean development'
+  authors:
+  - Will Cook
+  id: https://github.com/wcook04/plectis-erdos
+  type: original-proof
+  relationship: other
+  note: >-
+    The source declarations this entry transports, at commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84.
+    Novelty is unassessed and the parent problem is not claimed as solved.
+  license: Apache-2.0
+  author_endorsement: participated
+- title: 'Erdős Problem #1049'
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com/1049
+  type: web discussion
+  relationship: background
+  note: The catalogue supplies the problem statement and references.
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+status:
+  scope: Independent restatements of 22 refereed declarations for Erdős problem #1049.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 22
+  sorry_boundary: Only the trusted Challenge theorem bodies carry placeholders.
+  axiom_audit_status: pending fresh target-toolchain axiom audit
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  development_status: substantive
+  local_proof_provenance: ErdosProblems.Erdos1049.PaperCompleteR21.PrintedContourConstants, ErdosProblems.Erdos1049.PaperCompleteR21.PrintedLogConstants, ErdosProblems.Erdos1049.PaperCompleteR21.RationalBaseThreshold, ErdosProblems.Erdos1049.PaperOmegaIndicatorR7, ErdosProblems.Erdos1049.RationalBaseContour in this repository, which is the same development published at https://github.com/wcook04/plectis-erdos commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+  canonical_claim_status: generated comparison interface over substantive Lean in this repository
+  main_results:
+  - declaration: Erdos249257.ExternalVerification1049PaperStatementsA.contour_enclosure
+    file: Solutions/ExternalVerification1049PaperStatementsA.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification1049PaperStatementsA/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification1049PaperStatementsA.contour_enclosure
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos1049.PaperCompleteR21.PrintedContour.contour_enclosure
+    source_file: ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification1049PaperStatementsA.four_rpow_mu_lt_thirtyOne
+    file: Solutions/ExternalVerification1049PaperStatementsA.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification1049PaperStatementsA/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification1049PaperStatementsA.four_rpow_mu_lt_thirtyOne
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos1049.PaperCompleteR21.PrintedContour.four_rpow_mu_lt_thirtyOne
+    source_file: ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification1049PaperStatementsA.printed_contour
+    file: Solutions/ExternalVerification1049PaperStatementsA.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification1049PaperStatementsA/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification1049PaperStatementsA.printed_contour
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos1049.PaperCompleteR21.PrintedContour.printed_contour
+    source_file: ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification1049PaperStatementsA.printed_contour_short
+    file: Solutions/ExternalVerification1049PaperStatementsA.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification1049PaperStatementsA/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification1049PaperStatementsA.printed_contour_short
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos1049.PaperCompleteR21.PrintedContour.printed_contour_short
+    source_file: ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification1049PaperStatementsA.printed_four_rpow_mu
+    file: Solutions/ExternalVerification1049PaperStatementsA.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification1049PaperStatementsA/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification1049PaperStatementsA.printed_four_rpow_mu
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos1049.PaperCompleteR21.PrintedContour.printed_four_rpow_mu
+    source_file: ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification1049PaperStatementsA.printed_mu
+    file: Solutions/ExternalVerification1049PaperStatementsA.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification1049PaperStatementsA/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification1049PaperStatementsA.printed_mu
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos1049.PaperCompleteR21.PrintedContour.printed_mu
+    source_file: ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification1049PaperStatementsA.tailLow_le_trigammaSeries
+    file: Solutions/ExternalVerification1049PaperStatementsA.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification1049PaperStatementsA/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification1049PaperStatementsA.tailLow_le_trigammaSeries
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos1049.PaperCompleteR21.PrintedContour.tailLow_le_trigammaSeries
+    source_file: ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification1049PaperStatementsA.trigammaSeries_le_tailHigh
+    file: Solutions/ExternalVerification1049PaperStatementsA.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification1049PaperStatementsA/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification1049PaperStatementsA.trigammaSeries_le_tailHigh
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos1049.PaperCompleteR21.PrintedContour.trigammaSeries_le_tailHigh
+    source_file: ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification1049PaperStatementsA.zudilinC0_enclosure
+    file: Solutions/ExternalVerification1049PaperStatementsA.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification1049PaperStatementsA/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification1049PaperStatementsA.zudilinC0_enclosure
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos1049.PaperCompleteR21.PrintedContour.zudilinC0_enclosure
+    source_file: ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification1049PaperStatementsA.zudilinJ_enclosure
+    file: Solutions/ExternalVerification1049PaperStatementsA.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification1049PaperStatementsA/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification1049PaperStatementsA.zudilinJ_enclosure
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos1049.PaperCompleteR21.PrintedContour.zudilinJ_enclosure
+    source_file: ErdosProblems/Erdos1049/PaperCompleteR21/PrintedContourConstants.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification1049PaperStatementsA.paperBvMu_eq
+    file: Solutions/ExternalVerification1049PaperStatementsA.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification1049PaperStatementsA/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification1049PaperStatementsA.paperBvMu_eq
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos1049.PaperCompleteR21.PrintedLogs.paperBvMu_eq
+    source_file: ErdosProblems/Erdos1049/PaperCompleteR21/PrintedLogConstants.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification1049PaperStatementsA.printed_bvMu
+    file: Solutions/ExternalVerification1049PaperStatementsA.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification1049PaperStatementsA/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification1049PaperStatementsA.printed_bvMu
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos1049.PaperCompleteR21.PrintedLogs.printed_bvMu
+    source_file: ErdosProblems/Erdos1049/PaperCompleteR21/PrintedLogConstants.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification1049PaperStatementsA.printed_bv_cutoff
+    file: Solutions/ExternalVerification1049PaperStatementsA.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification1049PaperStatementsA/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification1049PaperStatementsA.printed_bv_cutoff
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos1049.PaperCompleteR21.PrintedLogs.printed_bv_cutoff
+    source_file: ErdosProblems/Erdos1049/PaperCompleteR21/PrintedLogConstants.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification1049PaperStatementsA.printed_four_rpow_bvMu
+    file: Solutions/ExternalVerification1049PaperStatementsA.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification1049PaperStatementsA/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification1049PaperStatementsA.printed_four_rpow_bvMu
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos1049.PaperCompleteR21.PrintedLogs.printed_four_rpow_bvMu
+    source_file: ErdosProblems/Erdos1049/PaperCompleteR21/PrintedLogConstants.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification1049PaperStatementsA.printed_log_ratio
+    file: Solutions/ExternalVerification1049PaperStatementsA.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification1049PaperStatementsA/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification1049PaperStatementsA.printed_log_ratio
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos1049.PaperCompleteR21.PrintedLogs.printed_log_ratio
+    source_file: ErdosProblems/Erdos1049/PaperCompleteR21/PrintedLogConstants.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification1049PaperStatementsA.inv_bvMu_eq
+    file: Solutions/ExternalVerification1049PaperStatementsA.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification1049PaperStatementsA/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification1049PaperStatementsA.inv_bvMu_eq
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos1049.PaperCompleteR21.inv_bvMu_eq
+    source_file: ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification1049PaperStatementsA.thirtyoneFour_between_rpow
+    file: Solutions/ExternalVerification1049PaperStatementsA.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification1049PaperStatementsA/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification1049PaperStatementsA.thirtyoneFour_between_rpow
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos1049.PaperCompleteR21.thirtyoneFour_between_rpow
+    source_file: ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification1049PaperStatementsA.thirtyoneFour_ratio_chain
+    file: Solutions/ExternalVerification1049PaperStatementsA.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification1049PaperStatementsA/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification1049PaperStatementsA.thirtyoneFour_ratio_chain
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos1049.PaperCompleteR21.thirtyoneFour_ratio_chain
+    source_file: ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification1049PaperStatementsA.zudilinContour_eq_inv_mu
+    file: Solutions/ExternalVerification1049PaperStatementsA.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification1049PaperStatementsA/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification1049PaperStatementsA.zudilinContour_eq_inv_mu
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos1049.PaperCompleteR21.zudilinContour_eq_inv_mu
+    source_file: ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification1049PaperStatementsA.zudilinMu_mul_zudilinContour
+    file: Solutions/ExternalVerification1049PaperStatementsA.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification1049PaperStatementsA/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification1049PaperStatementsA.zudilinMu_mul_zudilinContour
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos1049.PaperCompleteR21.zudilinMu_mul_zudilinContour
+    source_file: ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification1049PaperStatementsA.zudilin_rpow_lt_iff_contourRegion
+    file: Solutions/ExternalVerification1049PaperStatementsA.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification1049PaperStatementsA/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification1049PaperStatementsA.zudilin_rpow_lt_iff_contourRegion
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos1049.PaperCompleteR21.zudilin_rpow_lt_iff_contourRegion
+    source_file: ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification1049PaperStatementsA.omega_indicator
+    file: Solutions/ExternalVerification1049PaperStatementsA.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification1049PaperStatementsA/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification1049PaperStatementsA.omega_indicator
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos1049.PaperR7.omega_indicator
+    source_file: ErdosProblems/Erdos1049/PaperOmegaIndicatorR7.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+automation:
+  methods:
+  - method: agent
+    models:
+    - Anthropic Claude
+    framework: Lean 4 and Mathlib
+    tool_setup: Statement wrappers generated mechanically from the refereed paper statements and elaborated before acceptance
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    Every statement was refereed against the paper in the coverage ledger before this
+    wrapper was generated. The transport proof is the fidelity evidence: a direct term
+    application certifies definitional identity with the refereed source statement.
+    No independent mathematical review outside the author is claimed.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

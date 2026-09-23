@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ExternalVerification249PaperStatementsBC.Challenge",
+  "solution_module": "Solutions.ExternalVerification249PaperStatementsBC",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249PaperStatementsBC.carryShift_dvd_iff_tailDiff_integral",
+    "Erdos249257.ExternalVerification249PaperStatementsBC.temperedCarry_eq_scaledTail_and_shift"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,17 @@
+{
+  "challenge_module": "ExternalVerification68PaperStatementsB.Challenge",
+  "solution_module": "Solutions.ExternalVerification68PaperStatementsB",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification68PaperStatementsB.prime_channel_corrector",
+    "Erdos249257.ExternalVerification68PaperStatementsB.radius_no_eventual_ratio_upper",
+    "Erdos249257.ExternalVerification68PaperStatementsB.radius_not_littleO",
+    "Erdos249257.ExternalVerification68PaperStatementsB.square_subsequence_radius",
+    "Erdos249257.ExternalVerification68PaperStatementsB.strict_successor_characterisation"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

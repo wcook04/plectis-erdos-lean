@@ -1,0 +1,35 @@
+{
+  "challenge_module": "PalomarCorpus.E249_25.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E249_25",
+  "theorem_names": [
+    "PalomarCorpus.E249.PaperStatementsAJ.den_mul_abs_sub_ge_one_div_den",
+    "PalomarCorpus.E249.PaperStatementsAJ.irrational_totientSeries_of_rational_separation",
+    "PalomarCorpus.E249.PaperStatementsAJ.primeJumpSharpRadius_formula",
+    "PalomarCorpus.E249.PaperStatementsAJ.primeJumpSharpRadius_lt_twoCellRadius",
+    "PalomarCorpus.E249.PaperStatementsAJ.primeJumpSharpRadius_saves_pH",
+    "PalomarCorpus.E249.PaperStatementsAU.irrational_of_primeJumpSharp_supply",
+    "PalomarCorpus.E249.PaperStatementsAU.periodLcm_four_eq_twelve",
+    "PalomarCorpus.E249.PaperStatementsAU.periodLcm_strict_jump_at_prime_pred",
+    "PalomarCorpus.E249.PaperStatementsAU.periodLcm_zero_and_one_eq_one",
+    "PalomarCorpus.E249.PaperStatementsAU.primeJumpTailCommutator_notMem_int_of_central_window",
+    "PalomarCorpus.E249.PaperStatementsAU.primeJumpTailCommutator_twelve_five_notMem_int",
+    "PalomarCorpus.E249.PaperStatementsAU.primeJump_witness_twelve_five_values",
+    "PalomarCorpus.E249.PaperStatementsAX.canonicalAdjacentSuffixCentralSlack_paper_formula",
+    "PalomarCorpus.E249.PaperStatementsAX.irrational_of_powerTwo_postJump_slack_supply",
+    "PalomarCorpus.E249.PaperStatementsAX.lcmHeight_eq_periodLcm",
+    "PalomarCorpus.E249.PaperStatementsAY.exists_upperHalf_channel_paper",
+    "PalomarCorpus.E249.PaperStatementsAY.upperHalfMersenneProduct_between_bounds",
+    "PalomarCorpus.E249.PaperStatementsAY.upperHalfPrimes_member_bounds",
+    "PalomarCorpus.E249.PaperStatementsAY.upperHalfPrimes_nonempty_paper",
+    "PalomarCorpus.E249.PaperStatementsAY.upperHalfPrimes_spec",
+    "PalomarCorpus.E249.PaperStatementsBB.canonicalTotientKernelFamily_entries",
+    "PalomarCorpus.E249.PaperStatementsBB.completeLevelZeroTruncation_is_totient_and_rank_one",
+    "PalomarCorpus.E249.PaperStatementsBB.retainedSections_basis_and_rank"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

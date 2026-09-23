@@ -1,0 +1,139 @@
+version: v0.4
+project:
+  name: 'Erdős #257, record section 6.1: conditional membership tests (part 4 of 5)'
+  description: >-
+    This entry states 11 theorems that the long record for Erdős problem #257 states in section 6.1 (conditional membership tests): the theorem “Möbius-centred carry nonnegativity below 1/2” (section 6.1), as mobiusCenteredHalfCarry_nonneg_of_supportSeries_lt_half; the theorem “A square-root bound on the greedy carry” (section 6.1), as greedy_half_infinite_of_mobiusCenteredHalfCarry_sqrtBound, greedy_mobiusCenteredHalfCarry_nonneg and infinite_support_half_of_mobiusCenteredHalfCarry_sqrtBound; the theorem “Equivalent sign and vanishing conditions” (section 6.1), as half_mem_mersenneAchievementSet_of_skippedFullShellNonnegative, half_mem_mersenneAchievementSet_of_skippedSeamEscape and skippedSeamAlignmentZero_iff_skippedFullShellNonnegative; the theorem “Pairwise-coprime support irrationality, Erdős 1968” (section 6.1), as irrational_erdosSupportSeries_pairwise_coprime; the theorem “Irrationality from divisible coefficient blocks” (section 6.1), as irrational_coeff_series_of_weighted_coeff_block_certificates; the theorem “Irrationality from a gap beyond the preceding least common multiple” (section 6.1), as irrational_erdosSum_of_lcm_gap; the theorem “Factorial-support and 2^k-support instances” (section 6.1), as irrational_erdosSum_factorial_support.
+
+    4 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 7 are derived from the source declaration by a short tactic proof, which certifies implication.
+
+    Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
+
+    Erdős problem #257 remains open, and no theorem in this entry decides it.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.NT
+  - math.CA
+  - math.DS
+  msc2020:
+  - "11J72"
+  - "11A25"
+  - "11A07"
+  - "11B37"
+  - "11B83"
+  - "28A80"
+  - "11K16"
+sources:
+- title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: "The compared theorems are independently restated Lean theorems proved in this repository and described in the public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos."
+  license: Apache-2.0
+  author_endorsement: participated
+- title: Erdős Problems catalogue
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com
+  type: web discussion
+  relationship: background
+  note: "Catalogue numbering and status of the parent problem."
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+status:
+  scope: "One Comparator configuration selecting the 11 theorems listed in PalomarCorpus/E257_13/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 43 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_43, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 11
+  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E257_13/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
+  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: "PalomarCorpus.E257.PaperStatementsAG.irrational_coeff_series_of_weighted_coeff_block_certificates"
+    file: "Solutions/PalomarCorpus/E257_13/PaperStatementsAG.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_13/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAG.irrational_erdosSum_factorial_support"
+    file: "Solutions/PalomarCorpus/E257_13/PaperStatementsAG.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_13/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAG.irrational_erdosSum_of_lcm_gap"
+    file: "Solutions/PalomarCorpus/E257_13/PaperStatementsAG.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_13/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAG.irrational_erdosSupportSeries_pairwise_coprime"
+    file: "Solutions/PalomarCorpus/E257_13/PaperStatementsAG.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_13/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsD.greedy_half_infinite_of_mobiusCenteredHalfCarry_sqrtBound"
+    file: "Solutions/PalomarCorpus/E257_13/PaperStatementsD.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_13/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsD.greedy_mobiusCenteredHalfCarry_nonneg"
+    file: "Solutions/PalomarCorpus/E257_13/PaperStatementsD.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_13/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsE.infinite_support_half_of_mobiusCenteredHalfCarry_sqrtBound"
+    file: "Solutions/PalomarCorpus/E257_13/PaperStatementsE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_13/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsF.half_mem_mersenneAchievementSet_of_skippedFullShellNonnegative"
+    file: "Solutions/PalomarCorpus/E257_13/PaperStatementsF.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_13/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsI.mobiusCenteredHalfCarry_nonneg_of_supportSeries_lt_half"
+    file: "Solutions/PalomarCorpus/E257_13/PaperStatementsI.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_13/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBJ.half_mem_mersenneAchievementSet_of_skippedSeamEscape"
+    file: "Solutions/PalomarCorpus/E257_13/PaperStructuresBJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_13/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBJ.skippedSeamAlignmentZero_iff_skippedFullShellNonnegative"
+    file: "Solutions/PalomarCorpus/E257_13/PaperStructuresBJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_13/comparator.json"
+  development_status: substantive
+  local_proof_provenance: "the proof modules Erdos249257, ErdosProblems.Erdos257 in this repository, imported by Solutions.PalomarCorpus.E257_13; the Solutions.ExternalVerification257* family modules are a regression mirror of the same proofs and are not imported by this configuration"
+  canonical_claim_status: "problem-level Comparator entry over substantive Lean in this repository"
+automation:
+  methods:
+  - method: manual
+    models: []
+    framework: Mathematical interpretation and claim-boundary review
+    tool_setup: Human-directed scope and significance review
+  - method: agent
+    models:
+    - Anthropic Claude
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+    cost:
+      wall_time: not tracked
+      spend_usd: subscription-based
+      hardware: local machine
+      prompting_notes: n/a
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    Every generated restatement was bound to a paper statement and refereed in the eight-paper coverage ledger before its wrapper was generated, and its transport proof was elaborated before the statement was accepted. The author selected the statements and is responsible for the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

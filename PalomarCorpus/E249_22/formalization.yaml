@@ -1,0 +1,151 @@
+version: v0.4
+project:
+  name: 'Erdős #249, record sections 9.3.1 to 9.3.2: positivity and the remaining residue inequality; an exact endpoint identity'
+  description: >-
+    This entry states 15 theorems that the long record for Erdős problem #249 states in sections 9.3.1 (positivity and the remaining residue inequality) and 9.3.2 (an exact endpoint identity): the theorem labelled statement:sha256:f1520b262b31fe4b136f140f7a811f92f2d8398ab99dfda36cf2c46892e72f6a (section 9.3.1), as actualLcm_corridor_pos, corridor_height_lt_letter and corridor_letter_pos; the theorem “The proved implications” (section 9.3.2), as irrational_of_topEdgeResidueGapSupply, topEdgeResidueGap_forces_nonintegral, topEdgeResidueGap_orbit_nonintegral and topEdgeResidueGap_unfolded; the proposition “Five sufficient conditions” (section 9.3.2), as irrational_of_paperAdjacentSuffixMidbandSupply, paperAdjacentSuffixMidbandSupply_of_adjacentSuffixMidband, paperAdjacentSuffixMidbandSupply_of_flexibleActualTopEdgeMagnitude, paperAdjacentSuffixMidbandSupply_of_oddGuardTopEdgeHalfWordBand, paperTeChain_fifth_gives_nonintegrality, paperTeChain_first_four_imply_topEdgeSupply, paperTeChain_five_sufficient_for_irrationality and paperTeChain_item_one_unfolded.
+
+    15 are derived from the source declaration by a short tactic proof, which certifies implication.
+
+    Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
+
+    Erdős problem #249 remains open, and no theorem in this entry decides it.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - "11J72"
+  - "11A25"
+  - "11B83"
+  - "11J82"
+  - "11Y60"
+sources:
+- title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: "The compared theorems are independently restated Lean theorems proved in this repository and described in the public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos."
+  license: Apache-2.0
+  author_endorsement: participated
+- title: Erdős Problems catalogue
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com
+  type: web discussion
+  relationship: background
+  note: "Catalogue numbering and status of the parent problem."
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+status:
+  scope: "One Comparator configuration selecting the 15 theorems listed in PalomarCorpus/E249_22/comparator.json, from the Lean development for Erdős problem #249. The problem's theorems are packed, in the order the papers state them, into the 33 entries PalomarCorpus/E249_01 to PalomarCorpus/E249_33, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification249* directories are internal regression inventory and are not selected."
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 15
+  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E249_22/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
+  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: "PalomarCorpus.E249.PaperStatementsAT.actualLcm_corridor_pos"
+    file: "Solutions/PalomarCorpus/E249_22/PaperStatementsAT.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_22/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAT.corridor_height_lt_letter"
+    file: "Solutions/PalomarCorpus/E249_22/PaperStatementsAT.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_22/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAT.corridor_letter_pos"
+    file: "Solutions/PalomarCorpus/E249_22/PaperStatementsAT.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_22/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAU.irrational_of_topEdgeResidueGapSupply"
+    file: "Solutions/PalomarCorpus/E249_22/PaperStatementsAU.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_22/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAU.topEdgeResidueGap_forces_nonintegral"
+    file: "Solutions/PalomarCorpus/E249_22/PaperStatementsAU.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_22/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAU.topEdgeResidueGap_orbit_nonintegral"
+    file: "Solutions/PalomarCorpus/E249_22/PaperStatementsAU.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_22/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAU.topEdgeResidueGap_unfolded"
+    file: "Solutions/PalomarCorpus/E249_22/PaperStatementsAU.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_22/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAX.irrational_of_paperAdjacentSuffixMidbandSupply"
+    file: "Solutions/PalomarCorpus/E249_22/PaperStatementsAX.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_22/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAX.paperAdjacentSuffixMidbandSupply_of_adjacentSuffixMidband"
+    file: "Solutions/PalomarCorpus/E249_22/PaperStatementsAX.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_22/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAX.paperAdjacentSuffixMidbandSupply_of_flexibleActualTopEdgeMagnitude"
+    file: "Solutions/PalomarCorpus/E249_22/PaperStatementsAX.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_22/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAX.paperAdjacentSuffixMidbandSupply_of_oddGuardTopEdgeHalfWordBand"
+    file: "Solutions/PalomarCorpus/E249_22/PaperStatementsAX.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_22/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAX.paperTeChain_fifth_gives_nonintegrality"
+    file: "Solutions/PalomarCorpus/E249_22/PaperStatementsAX.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_22/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAX.paperTeChain_first_four_imply_topEdgeSupply"
+    file: "Solutions/PalomarCorpus/E249_22/PaperStatementsAX.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_22/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAX.paperTeChain_five_sufficient_for_irrationality"
+    file: "Solutions/PalomarCorpus/E249_22/PaperStatementsAX.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_22/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAX.paperTeChain_item_one_unfolded"
+    file: "Solutions/PalomarCorpus/E249_22/PaperStatementsAX.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_22/comparator.json"
+  development_status: substantive
+  local_proof_provenance: "the proof modules Erdos249257, ErdosProblems.Erdos249, ErdosProblems.Skip in this repository, imported by Solutions.PalomarCorpus.E249_22; the Solutions.ExternalVerification249* family modules are a regression mirror of the same proofs and are not imported by this configuration"
+  canonical_claim_status: "problem-level Comparator entry over substantive Lean in this repository"
+automation:
+  methods:
+  - method: manual
+    models: []
+    framework: Mathematical interpretation and claim-boundary review
+    tool_setup: Human-directed scope and significance review
+  - method: agent
+    models:
+    - Anthropic Claude
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+    cost:
+      wall_time: not tracked
+      spend_usd: subscription-based
+      hardware: local machine
+      prompting_notes: n/a
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    Every generated restatement was bound to a paper statement and refereed in the eight-paper coverage ledger before its wrapper was generated, and its transport proof was elaborated before the statement was accepted. The author selected the statements and is responsible for the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

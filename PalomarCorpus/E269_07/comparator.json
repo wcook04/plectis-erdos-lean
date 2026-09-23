@@ -1,0 +1,18 @@
+{
+  "challenge_module": "PalomarCorpus.E269_07.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E269_07",
+  "theorem_names": [
+    "PalomarCorpus.E269.CarryMechanism.no_positive_reducedCarry_of_cofinalLocalWindowEscape",
+    "PalomarCorpus.E269.PaperStatementsA.actual_cubic_no_crossing_strips",
+    "PalomarCorpus.E269.PaperStatementsA.actual_weighted_strip_decomposition",
+    "PalomarCorpus.E269.PaperStatementsA.fixed_base_recoding_whole",
+    "PalomarCorpus.E269.PaperStatementsC.allReducedTailsNonintegral_iff",
+    "PalomarCorpus.E269.PaperStatementsG.conditional_denominator_reduction_real_bound"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

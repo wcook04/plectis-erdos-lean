@@ -1,0 +1,17 @@
+import Solutions.PalomarCorpus.E257_25
+
+#print axioms PalomarCorpus.E257.PaperStructuresBK.exists_seamWord_minimal_above
+#print axioms PalomarCorpus.E257.PaperStructuresBK.half_mem_mersenneAchievementSet_of_resetSqrtEscape
+#print axioms PalomarCorpus.E257.PaperStructuresBK.integerGreedyBits_length
+#print axioms PalomarCorpus.E257.PaperStructuresBK.paper_seam_escape_forces_remainder_band
+#print axioms PalomarCorpus.E257.PaperStructuresBK.paper_seam_escape_implies_full_shell_nonnegative
+#print axioms PalomarCorpus.E257.PaperStructuresBK.seamAboveWord_minimal
+#print axioms PalomarCorpus.E257.PaperStructuresBK.seamAboveWord_strict
+#print axioms PalomarCorpus.E257.PaperStructuresBK.seamAdjacentCut_below_admissible
+#print axioms PalomarCorpus.E257.PaperStructuresBK.seamAdjacentCut_below_maximal
+#print axioms PalomarCorpus.E257.PaperStructuresBK.seamPerturbedFamily_gap_pos
+#print axioms PalomarCorpus.E257.PaperStructuresBK.seamPerturbedFamily_oldSum_injective
+#print axioms PalomarCorpus.E257.PaperStructuresBK.seamPerturbedFamily_pulseCap_lt_three_gap
+#print axioms PalomarCorpus.E257.PaperStructuresBK.seamPerturbedFamily_separated
+#print axioms PalomarCorpus.E257.PaperStructuresBK.seamWeights_length_eq
+#print axioms PalomarCorpus.E257.PaperStructuresBK.wordPulse_le

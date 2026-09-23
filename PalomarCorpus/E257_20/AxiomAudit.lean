@@ -1,0 +1,17 @@
+import Solutions.PalomarCorpus.E257_20
+
+#print axioms PalomarCorpus.E257.PaperStatementsAA.linearDescender_eq_smul_eval
+#print axioms PalomarCorpus.E257.PaperStatementsAA.paper_reverse_carry_word
+#print axioms PalomarCorpus.E257.PaperStatementsAA.paper_two_thirds_band
+#print axioms PalomarCorpus.E257.PaperStatementsAA.reverse_carry_word_common_bound_sharp
+#print axioms PalomarCorpus.E257.PaperStatementsAB.relationInvariantLinearChannels_det_eq_zero
+#print axioms PalomarCorpus.E257.PaperStatementsAC.dyadicBandEscape_iff_exists_critical
+#print axioms PalomarCorpus.E257.PaperStatementsAC.exists_criticalDyadicBandIndex
+#print axioms PalomarCorpus.E257.PaperStatementsAH.mersenneGap_pos
+#print axioms PalomarCorpus.E257.PaperStatementsAL.supportCoeff_extend_true_eq_false_add_one_at_double
+#print axioms PalomarCorpus.E257.PaperStatementsAM.mersenneGap_tail_le
+#print axioms PalomarCorpus.E257.PaperStatementsAM.paper_sharp_fatal_gap
+#print axioms PalomarCorpus.E257.PaperStatementsAM.summable_mersenneGap_succ
+#print axioms PalomarCorpus.E257.PaperStatementsAM.tendsto_mersenneGap_tail_zero
+#print axioms PalomarCorpus.E257.PaperStatementsAN.supportCoeff_insert_eq_add_indicator
+#print axioms PalomarCorpus.E257.PaperStatementsI.mobiusCenteredHalfCarry_add_two

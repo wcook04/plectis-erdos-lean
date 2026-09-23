@@ -1,0 +1,215 @@
+version: v0.4
+project:
+  name: 'Erdős #249, record sections 9.3.4 to 9.3.10: separation of a rational approximation; the short-window examples through exponent 6; the diagonal certificate table'
+  description: >-
+    This entry states 31 theorems that the long record for Erdős problem #249 states in sections 9.3.4 (separation of a rational approximation), 9.3.5 (the short-window examples through exponent 6), 9.3.6 (the diagonal certificate table), 9.3.7 (one common certificate for sixteen shifts), 9.3.8 (the fixed Farey bound), 9.3.9 (a two-adic congruence that does not give a certificate) and 9.3.10 (the residue margin at an LCM jump): the theorem labelled statement:sha256:81919f6b5144c8fd4e4c5b741e55d8038955f8aaf108726dcc447e19d25e1b4e (section 9.3.4), as irrational_of_actualLcmOrbitSeparationSupply; the theorem labelled statement:sha256:d6f45a571aaeba3ad880ff5a95fd49653af8be9ea6b058bcd1947e1d5aba42e0 (section 9.3.5), as shortWindowSupply_through_six_paper, shortWindowSupply_single_witness_six_ninetyThree and shortWindowSupply_witness_eq_t64_certificate; the theorem labelled statement:sha256:c48e72cdf4757ab27d78c3ef9487d431ffa261de0d8e9cc9f0bbe447cb3eb3b2 (section 9.3.6), as diagonalPincerCertificateScales_list, diagonalPincerKillDepth_list, certifiedKill_diagonal_table, exists_diagonalKill_le_82_paper, exists_diagonalKill_on_table, periodLcm_seventeen_window_data and certifiedKill_diagonal_t64_paper; the proposition “A sufficient extension” (section 9.3.6), as irrational_of_restrictedDepth_diagonal_supply and irrational_of_logarithmicDepth_diagonal_supply; the theorem labelled statement:sha256:55434545e6306b9a7a70078f69c698579695f4f62cc6bfd1ea06f03b530262ee (section 9.3.7), as totientSeries_ne_rat_of_den_dvd_two_pow_fourteen_mul_mersenne, commonCertificate_eight_shifts_basepoint_twelve and commonCertificate_sixteen_shifts_basepoint_fourteen; the proposition “Simultaneous certificates with unrestricted depth” (section 9.3.7), as exists_growingShift_simultaneous_certificate_iff_irrational, exists_simultaneous_depth_of_irrational and exists_simultaneous_depth_succ_of_irrational; the theorem labelled statement:sha256:e0088a4173ef2a466ef68cf0d9cf821ce4e1697029ef410e077339bfa1ba36ad (section 9.3.8), as farey_gap_paper, gapCheck_window_1_240_first_failure_paper, gapCheck_window_1_240_paper and totientSeries_rational_den_gt_fareyBound; the proposition “A sufficient extension” (section 9.3.8), as gapCheck_window_one_excludes and irrational_of_unbounded_window_one_gapCheck; the theorem labelled statement:sha256:e5201e0f943c8678b14d940b4eeb5bcbe6dc7a4189a7a829d820f5d72f496d3f (section 9.3.9), as eventual_integral_tailDiff_twoAdic_half_pulse and exists_prime_twoAdic_half_pulse_window; the proposition “A sufficient accumulated-residue condition” (section 9.3.9), as certifiedKill_of_halfModulus_residue and irrational_of_accumulated_halfModulus_supply; the theorem “Arbitrarily large prime-power LCM jumps” (section 9.3.10), as exists_periodLcm_strict_jump_ge_paper and periodLcm_strict_jump_at_powerTwo_pred.
+
+    19 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 12 are derived from the source declaration by a short tactic proof, which certifies implication.
+
+    Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
+
+    Erdős problem #249 remains open, and no theorem in this entry decides it.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - "11J72"
+  - "11A25"
+  - "11B83"
+  - "11J82"
+  - "11Y60"
+sources:
+- title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: "The compared theorems are independently restated Lean theorems proved in this repository and described in the public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos."
+  license: Apache-2.0
+  author_endorsement: participated
+- title: Erdős Problems catalogue
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com
+  type: web discussion
+  relationship: background
+  note: "Catalogue numbering and status of the parent problem."
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+status:
+  scope: "One Comparator configuration selecting the 31 theorems listed in PalomarCorpus/E249_24/comparator.json, from the Lean development for Erdős problem #249. The problem's theorems are packed, in the order the papers state them, into the 33 entries PalomarCorpus/E249_01 to PalomarCorpus/E249_33, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification249* directories are internal regression inventory and are not selected."
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 31
+  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E249_24/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
+  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.farey_gap_paper"
+    file: "Solutions/PalomarCorpus/E249_24/PaperStatementsAJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_24/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.gapCheck_window_1_240_first_failure_paper"
+    file: "Solutions/PalomarCorpus/E249_24/PaperStatementsAJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_24/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.gapCheck_window_1_240_paper"
+    file: "Solutions/PalomarCorpus/E249_24/PaperStatementsAJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_24/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.gapCheck_window_one_excludes"
+    file: "Solutions/PalomarCorpus/E249_24/PaperStatementsAJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_24/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.irrational_of_unbounded_window_one_gapCheck"
+    file: "Solutions/PalomarCorpus/E249_24/PaperStatementsAJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_24/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAK.totientSeries_ne_rat_of_den_dvd_two_pow_fourteen_mul_mersenne"
+    file: "Solutions/PalomarCorpus/E249_24/PaperStatementsAK.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_24/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAK.totientSeries_rational_den_gt_fareyBound"
+    file: "Solutions/PalomarCorpus/E249_24/PaperStatementsAK.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_24/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAT.certifiedKill_of_halfModulus_residue"
+    file: "Solutions/PalomarCorpus/E249_24/PaperStatementsAT.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_24/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAT.commonCertificate_eight_shifts_basepoint_twelve"
+    file: "Solutions/PalomarCorpus/E249_24/PaperStatementsAT.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_24/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAT.commonCertificate_sixteen_shifts_basepoint_fourteen"
+    file: "Solutions/PalomarCorpus/E249_24/PaperStatementsAT.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_24/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAT.eventual_integral_tailDiff_twoAdic_half_pulse"
+    file: "Solutions/PalomarCorpus/E249_24/PaperStatementsAT.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_24/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAT.exists_growingShift_simultaneous_certificate_iff_irrational"
+    file: "Solutions/PalomarCorpus/E249_24/PaperStatementsAT.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_24/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAT.exists_periodLcm_strict_jump_ge_paper"
+    file: "Solutions/PalomarCorpus/E249_24/PaperStatementsAT.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_24/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAT.exists_prime_twoAdic_half_pulse_window"
+    file: "Solutions/PalomarCorpus/E249_24/PaperStatementsAT.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_24/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAT.exists_simultaneous_depth_of_irrational"
+    file: "Solutions/PalomarCorpus/E249_24/PaperStatementsAT.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_24/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAT.exists_simultaneous_depth_succ_of_irrational"
+    file: "Solutions/PalomarCorpus/E249_24/PaperStatementsAT.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_24/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAT.irrational_of_accumulated_halfModulus_supply"
+    file: "Solutions/PalomarCorpus/E249_24/PaperStatementsAT.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_24/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAU.irrational_of_restrictedDepth_diagonal_supply"
+    file: "Solutions/PalomarCorpus/E249_24/PaperStatementsAU.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_24/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAU.periodLcm_strict_jump_at_powerTwo_pred"
+    file: "Solutions/PalomarCorpus/E249_24/PaperStatementsAU.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_24/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAU.shortWindowSupply_through_six_paper"
+    file: "Solutions/PalomarCorpus/E249_24/PaperStatementsAU.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_24/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAX.irrational_of_actualLcmOrbitSeparationSupply"
+    file: "Solutions/PalomarCorpus/E249_24/PaperStatementsAX.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_24/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsG.diagonalPincerCertificateScales_list"
+    file: "Solutions/PalomarCorpus/E249_24/PaperStatementsG.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_24/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsG.diagonalPincerKillDepth_list"
+    file: "Solutions/PalomarCorpus/E249_24/PaperStatementsG.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_24/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsI.certifiedKill_diagonal_table"
+    file: "Solutions/PalomarCorpus/E249_24/PaperStatementsI.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_24/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsI.exists_diagonalKill_le_82_paper"
+    file: "Solutions/PalomarCorpus/E249_24/PaperStatementsI.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_24/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsI.exists_diagonalKill_on_table"
+    file: "Solutions/PalomarCorpus/E249_24/PaperStatementsI.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_24/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsI.irrational_of_logarithmicDepth_diagonal_supply"
+    file: "Solutions/PalomarCorpus/E249_24/PaperStatementsI.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_24/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsI.periodLcm_seventeen_window_data"
+    file: "Solutions/PalomarCorpus/E249_24/PaperStatementsI.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_24/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStructuresN.certifiedKill_diagonal_t64_paper"
+    file: "Solutions/PalomarCorpus/E249_24/PaperStructuresN.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_24/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStructuresN.shortWindowSupply_single_witness_six_ninetyThree"
+    file: "Solutions/PalomarCorpus/E249_24/PaperStructuresN.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_24/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStructuresN.shortWindowSupply_witness_eq_t64_certificate"
+    file: "Solutions/PalomarCorpus/E249_24/PaperStructuresN.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_24/comparator.json"
+  development_status: substantive
+  local_proof_provenance: "the proof modules Erdos249257, ErdosProblems.Erdos249, ErdosProblems.Skip in this repository, imported by Solutions.PalomarCorpus.E249_24; the Solutions.ExternalVerification249* family modules are a regression mirror of the same proofs and are not imported by this configuration"
+  canonical_claim_status: "problem-level Comparator entry over substantive Lean in this repository"
+automation:
+  methods:
+  - method: manual
+    models: []
+    framework: Mathematical interpretation and claim-boundary review
+    tool_setup: Human-directed scope and significance review
+  - method: agent
+    models:
+    - Anthropic Claude
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+    cost:
+      wall_time: not tracked
+      spend_usd: subscription-based
+      hardware: local machine
+      prompting_notes: n/a
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    Every generated restatement was bound to a paper statement and refereed in the eight-paper coverage ledger before its wrapper was generated, and its transport proof was elaborated before the statement was accepted. The author selected the statements and is responsible for the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

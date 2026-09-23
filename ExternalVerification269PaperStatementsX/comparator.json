@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ExternalVerification269PaperStatementsX.Challenge",
+  "solution_module": "Solutions.ExternalVerification269PaperStatementsX",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification269PaperStatementsX.two_prime_sums_transcendental",
+    "Erdos249257.ExternalVerification269PaperStatementsX.two_prime_transcendence"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

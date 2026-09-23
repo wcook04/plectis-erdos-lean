@@ -1,0 +1,39 @@
+{
+  "challenge_module": "ExternalVerification257PaperStatementsAD.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStatementsAD",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStatementsAD.lcmHeight_scaledMobiusShadow_den_lower_bound",
+    "Erdos249257.ExternalVerification257PaperStatementsAD.upperHalfMersenneProduct_lower_bound",
+    "Erdos249257.ExternalVerification257PaperStatementsAD.exists_boolean_word_of_lt_two_pow",
+    "Erdos249257.ExternalVerification257PaperStatementsAD.localMersenneQuotient_eq_geometric",
+    "Erdos249257.ExternalVerification257PaperStatementsAD.localMersenneQuotient_eq_two_pow_sub_of_half_lt",
+    "Erdos249257.ExternalVerification257PaperStatementsAD.localPrefixQuotient_succ",
+    "Erdos249257.ExternalVerification257PaperStatementsAD.two_mem_of_exact_localMersenneQuotient",
+    "Erdos249257.ExternalVerification257PaperStatementsAD.channelProduct_coprime_mobiusNumerator_of_one_le",
+    "Erdos249257.ExternalVerification257PaperStatementsAD.paperA_eq_mobiusNumerator",
+    "Erdos249257.ExternalVerification257PaperStatementsAD.paperB_eq_baseMobiusShadow",
+    "Erdos249257.ExternalVerification257PaperStatementsAD.paperB_eq_divInt_paperA",
+    "Erdos249257.ExternalVerification257PaperStatementsAD.paper_channel_factor_gcd_eq_one",
+    "Erdos249257.ExternalVerification257PaperStatementsAD.paper_channel_factors_pairwise_coprime",
+    "Erdos249257.ExternalVerification257PaperStatementsAD.paper_consecutive_not_both_divisible",
+    "Erdos249257.ExternalVerification257PaperStatementsAD.paper_finite_sum_inv_odd_den_odd",
+    "Erdos249257.ExternalVerification257PaperStatementsAD.paper_finite_sum_inv_odd_ne_half",
+    "Erdos249257.ExternalVerification257PaperStatementsAD.paper_isRowLower_unique",
+    "Erdos249257.ExternalVerification257PaperStatementsAD.paper_isRowUpper_unique",
+    "Erdos249257.ExternalVerification257PaperStatementsAD.paper_mersenne_channel_survival",
+    "Erdos249257.ExternalVerification257PaperStatementsAD.paper_mersenne_channel_survival_of_coprime_scale",
+    "Erdos249257.ExternalVerification257PaperStatementsAD.paper_rowLower_existsUnique",
+    "Erdos249257.ExternalVerification257PaperStatementsAD.paper_rowPulse_eq_indicators",
+    "Erdos249257.ExternalVerification257PaperStatementsAD.paper_rowQuotient_eq_weightSum",
+    "Erdos249257.ExternalVerification257PaperStatementsAD.paper_rowTarget_eq",
+    "Erdos249257.ExternalVerification257PaperStatementsAD.paper_rowUpper_existsUnique",
+    "Erdos249257.ExternalVerification257PaperStatementsAD.paper_rowWeight_eq_floor",
+    "Erdos249257.ExternalVerification257PaperStatementsAD.upperHalfChannel_survivorProduct_dvd_den_of_one_le"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

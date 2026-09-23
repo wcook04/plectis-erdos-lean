@@ -1,0 +1,7 @@
+import Solutions.PalomarCorpus.E1049_08
+
+#print axioms PalomarCorpus.E1049.RationalBaseBarrier.twoPow_le_rationalBaseForcingNat
+#print axioms PalomarCorpus.E1049.RationalBaseRegion.rational_base_measure
+#print axioms PalomarCorpus.E1049.RationalBaseRegion.rational_base_region
+#print axioms PalomarCorpus.E1049.RationalBaseRegion.thirtyone_four
+#print axioms PalomarCorpus.E1049.RationalBaseRegion.thirtyone_four_power_measure_lt_paper_fraction

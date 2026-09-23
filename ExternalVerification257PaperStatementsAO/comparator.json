@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ExternalVerification257PaperStatementsAO.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStatementsAO",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStatementsAO.mixedPrimePowerLayerTwo_supportCoeffInt",
+    "Erdos249257.ExternalVerification257PaperStatementsAO.mixedPrimePowerLayerTwo_twelve_fixture"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

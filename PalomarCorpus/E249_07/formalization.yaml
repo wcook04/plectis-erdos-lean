@@ -1,0 +1,203 @@
+version: v0.4
+project:
+  name: 'Erdős #249, record section 6.2.1: initial implications (part 1 of 2)'
+  description: >-
+    This entry states 28 theorems that the long record for Erdős problem #249 states in section 6.2.1 (initial implications): the proposition “An irrationality criterion from near integers” (section 6.2.1), as strict_lower_bound_needed, tail_mem_Icc and upper_bound_needed_for_every_q; the proposition “A nonzero evaluation minor gives independence” (section 6.2.1), as linearIndependent_of_separatedMinorCertificate; the proposition “The gap between distinct rational numbers” (section 6.2.1), as positive_rational_difference_lower_bound, rational_cross_numerator_positive, rational_difference_exact and rational_error_denominator_bound; the proposition “The Möbius identity for S” (section 6.2.1), as totient_series_eq_half_add_moebius_mersenne_square and tsum_moebius_lambert_sq; the corollary “An equivalent irrationality question” (section 6.2.1), as irrational_totient_iff_moebius_square; the proposition “The weight of pairs divisible by a fixed integer” (section 6.2.1), as pair_divisibility_mass and tsum_geometric_multiples; the proposition “The sum over coprime directions” (section 6.2.1), as tsum_pos_coprime_inv_mersenne_eq_one; the proposition “A Stern-Brocot recursion with stopping” (section 6.2.1), as divisibility_mass, stopping_probability_ge_third, stopping_transition_probabilities_sum_one, cylinderMass_eq_divisibility_mass_mul, cylinder_mediant_split, cylinder_root_values and normalised_split_probabilities; the proposition “Convergence with an explicit error” (section 6.2.1), as cylinderMass_children_le, sternBrocotDepthMass_error and tendsto_sternBrocotDepthMass; the proposition “A numerator polynomial and its coefficients” (section 6.2.1), as mobiusNumeratorPolynomial_coeff and mobiusNumeratorPolynomial_coeff_pos; the proposition “Evaluation at two” (section 6.2.1), as numerator_eval_two_divisors; the proposition “Decomposition by the radical” (section 6.2.1), as radical_decomposition.
+
+    25 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 3 are derived from the source declaration by a short tactic proof, which certifies implication.
+
+    Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
+
+    Erdős problem #249 remains open, and no theorem in this entry decides it.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - "11J72"
+  - "11A25"
+  - "11B83"
+  - "11J82"
+  - "11Y60"
+sources:
+- title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: "The compared theorems are independently restated Lean theorems proved in this repository and described in the public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos."
+  license: Apache-2.0
+  author_endorsement: participated
+- title: Erdős Problems catalogue
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com
+  type: web discussion
+  relationship: background
+  note: "Catalogue numbering and status of the parent problem."
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+status:
+  scope: "One Comparator configuration selecting the 28 theorems listed in PalomarCorpus/E249_07/comparator.json, from the Lean development for Erdős problem #249. The problem's theorems are packed, in the order the papers state them, into the 33 entries PalomarCorpus/E249_01 to PalomarCorpus/E249_33, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification249* directories are internal regression inventory and are not selected."
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 28
+  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E249_07/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
+  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: "PalomarCorpus.E249.PaperStatementsAC.mobiusNumeratorPolynomial_coeff"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAC.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_07/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAC.mobiusNumeratorPolynomial_coeff_pos"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAC.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_07/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.divisibility_mass"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_07/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.pair_divisibility_mass"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_07/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.stopping_probability_ge_third"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_07/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.stopping_transition_probabilities_sum_one"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_07/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.tsum_geometric_multiples"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_07/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAI.totient_series_eq_half_add_moebius_mersenne_square"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAI.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_07/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.positive_rational_difference_lower_bound"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_07/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.rational_cross_numerator_positive"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_07/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.rational_difference_exact"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_07/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.rational_error_denominator_bound"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_07/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAK.cylinderMass_children_le"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAK.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_07/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAK.tsum_pos_coprime_inv_mersenne_eq_one"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAK.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_07/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAL.strict_lower_bound_needed"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAL.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_07/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAL.tail_mem_Icc"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAL.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_07/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAL.upper_bound_needed_for_every_q"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAL.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_07/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAP.tsum_moebius_lambert_sq"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAP.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_07/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAQ.numerator_eval_two_divisors"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAQ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_07/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAQ.radical_decomposition"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAQ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_07/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAY.cylinderMass_eq_divisibility_mass_mul"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAY.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_07/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAY.cylinder_mediant_split"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAY.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_07/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAY.cylinder_root_values"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAY.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_07/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAY.normalised_split_probabilities"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAY.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_07/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsB.sternBrocotDepthMass_error"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsB.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_07/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsB.tendsto_sternBrocotDepthMass"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsB.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_07/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsH.irrational_totient_iff_moebius_square"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsH.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_07/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStructuresP.linearIndependent_of_separatedMinorCertificate"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStructuresP.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_07/comparator.json"
+  development_status: substantive
+  local_proof_provenance: "the proof modules Erdos249257, ErdosProblems.Erdos249 in this repository, imported by Solutions.PalomarCorpus.E249_07; the Solutions.ExternalVerification249* family modules are a regression mirror of the same proofs and are not imported by this configuration"
+  canonical_claim_status: "problem-level Comparator entry over substantive Lean in this repository"
+automation:
+  methods:
+  - method: manual
+    models: []
+    framework: Mathematical interpretation and claim-boundary review
+    tool_setup: Human-directed scope and significance review
+  - method: agent
+    models:
+    - Anthropic Claude
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+    cost:
+      wall_time: not tracked
+      spend_usd: subscription-based
+      hardware: local machine
+      prompting_notes: n/a
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    Every generated restatement was bound to a paper statement and refereed in the eight-paper coverage ledger before its wrapper was generated, and its transport proof was elaborated before the statement was accepted. The author selected the statements and is responsible for the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

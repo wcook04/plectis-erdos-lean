@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ExternalVerification249PaperStatementsAH.Challenge",
+  "solution_module": "Solutions.ExternalVerification249PaperStatementsAH",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249PaperStatementsAH.binaryCoeffSeries_rational_iff_exists_temperedBinaryOrbit",
+    "Erdos249257.ExternalVerification249PaperStatementsAH.temperedBinaryOrbit_eq_scaledTail"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

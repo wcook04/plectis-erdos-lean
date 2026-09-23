@@ -1,0 +1,10 @@
+import Solutions.PalomarCorpus.E257_39
+
+#print axioms PalomarCorpus.E257.PaperStatementsAG.coprime_base_den_finiteErdosSum
+#print axioms PalomarCorpus.E257.PaperStatementsAG.lcm_lt_den_finiteErdosSum
+#print axioms PalomarCorpus.E257.PaperStatementsAV.irrational_erdosSupportSeries_of_summable_reciprocal
+#print axioms PalomarCorpus.E257.PaperStatementsBC.finitePrimeWeighted_fixedBase_hereditary
+#print axioms PalomarCorpus.E257.PaperStatementsBC.paper_terminalhalf
+#print axioms PalomarCorpus.E257.PaperStatementsM.paper_general_repair_criteria
+#print axioms PalomarCorpus.E257.PaperStructuresBM.one_div_twenty_one_mem_mersenneAchievementSet_of_cofinalGreedyDecay
+#print axioms PalomarCorpus.E257.PaperStructuresBQ.twentyOneCofinalEvenQuotientGreedyDecay_of_closedRows

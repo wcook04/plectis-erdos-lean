@@ -1,0 +1,8 @@
+import Solutions.PalomarCorpus.E68_05
+
+#print axioms PalomarCorpus.E68.PaperStatementsA.carry_characterisation
+#print axioms PalomarCorpus.E68.PaperStatementsA.companion_orbit_boundary
+#print axioms PalomarCorpus.E68.PaperStatementsA.divisor_channel_coordinates
+#print axioms PalomarCorpus.E68.PaperStatementsA.finite_channel_moment_certificate
+#print axioms PalomarCorpus.E68.PaperStatementsA.finite_channel_moment_certificate_eq
+#print axioms PalomarCorpus.E68.PaperStatementsA.global_complementary_criterion_nat

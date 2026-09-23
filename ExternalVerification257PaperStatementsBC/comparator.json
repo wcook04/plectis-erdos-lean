@@ -1,0 +1,15 @@
+{
+  "challenge_module": "ExternalVerification257PaperStatementsBC.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStatementsBC",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStatementsBC.paper_terminalhalf",
+    "Erdos249257.ExternalVerification257PaperStatementsBC.irrational_residueClass_positive_support",
+    "Erdos249257.ExternalVerification257PaperStatementsBC.finitePrimeWeighted_fixedBase_hereditary"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

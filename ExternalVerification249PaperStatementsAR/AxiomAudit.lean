@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification249PaperStatementsAR
+
+#print axioms Erdos249257.ExternalVerification249PaperStatementsAR.lcmHeight_scaledMobiusShadow_den_exact

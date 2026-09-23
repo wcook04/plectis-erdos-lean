@@ -1,0 +1,4 @@
+import Solutions.PalomarCorpus.E257_18
+
+#print axioms PalomarCorpus.E257.PaperStatementsAA.largest_false_rank_algebra
+#print axioms PalomarCorpus.E257.PaperStatementsG.isLastHalfGreedySkip_iff_skip_and_fatal

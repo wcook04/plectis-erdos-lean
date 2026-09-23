@@ -1,0 +1,17 @@
+{
+  "challenge_module": "PalomarCorpus.E251_08.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E251_08",
+  "theorem_names": [
+    "PalomarCorpus.E251.ShiftedFourPrimeCounting.separated_zeroDensity_of_quad_sieve",
+    "PalomarCorpus.E251.ShiftedFourPrimeCounting.shifted_count_bound",
+    "PalomarCorpus.E251.SparseRationalisation.arbitrary_word_sparse_rationalisation",
+    "PalomarCorpus.E251.SparseRationalisation.growing_block_TV",
+    "PalomarCorpus.E251.SparseRationalisation.polylogarithmic_word_interval"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

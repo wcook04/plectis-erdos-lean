@@ -1,0 +1,22 @@
+{
+  "challenge_module": "ExternalVerification249PaperStatementsAD.Challenge",
+  "solution_module": "Solutions.ExternalVerification249PaperStatementsAD",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249PaperStatementsAD.certifiedKill_all_upto_sixteen",
+    "Erdos249257.ExternalVerification249PaperStatementsAD.certifiedKill_depth_floor",
+    "Erdos249257.ExternalVerification249PaperStatementsAD.dtwWindowSeparatedPairs_iff_irrational_totient_series",
+    "Erdos249257.ExternalVerification249PaperStatementsAD.exists_certifiedKill_iff_tail_diff_notMem_int",
+    "Erdos249257.ExternalVerification249PaperStatementsAD.irrational_totient_series_iff_all_tail_diffs_nonintegral",
+    "Erdos249257.ExternalVerification249PaperStatementsAD.irrational_totient_series_iff_certificate_supply",
+    "Erdos249257.ExternalVerification249PaperStatementsAD.tail_diff_int_of_den_dvd",
+    "Erdos249257.ExternalVerification249PaperStatementsAD.tail_diff_mem_int_iff_scaled_series_mem_int",
+    "Erdos249257.ExternalVerification249PaperStatementsAD.tail_diff_notMem_int_of_certifiedKill",
+    "Erdos249257.ExternalVerification249PaperStatementsAD.two_pow_mul_totient_series_eq"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,21 @@
+{
+  "challenge_module": "ExternalVerification257PaperStatementsB.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStatementsB",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStatementsB.greedy_survives_of_mem_mersenneAchievementSet",
+    "Erdos249257.ExternalVerification257PaperStatementsB.half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite",
+    "Erdos249257.ExternalVerification257PaperStatementsB.half_mem_mersenneAchievementSet_of_secondChannelSeparation",
+    "Erdos249257.ExternalVerification257PaperStatementsB.half_mem_mersenneAchievementSet_of_secondChannelSeparationRat_from_seven",
+    "Erdos249257.ExternalVerification257PaperStatementsB.half_mem_mersenneAchievementSet_of_skipped_dyadicCap",
+    "Erdos249257.ExternalVerification257PaperStatementsB.half_mem_mersenneAchievementSet_of_skipped_twoChannelCap",
+    "Erdos249257.ExternalVerification257PaperStatementsB.mem_mersenneAchievementSet_iff_greedy_survival",
+    "Erdos249257.ExternalVerification257PaperStatementsB.mem_mersenneAchievementSet_of_greedySkippedSupport_infinite",
+    "Erdos249257.ExternalVerification257PaperStatementsB.mem_mersenneAchievementSet_of_greedy_survival"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

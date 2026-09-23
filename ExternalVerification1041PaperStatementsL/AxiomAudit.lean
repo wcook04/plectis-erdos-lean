@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification1041PaperStatementsL
+
+#print axioms Erdos249257.ExternalVerification1041PaperStatementsL.geometric_row_mean_closed_disc_le

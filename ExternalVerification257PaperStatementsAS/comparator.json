@@ -1,0 +1,15 @@
+{
+  "challenge_module": "ExternalVerification257PaperStatementsAS.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStatementsAS",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStatementsAS.paper_sharper_additive_estimate",
+    "Erdos249257.ExternalVerification257PaperStatementsAS.paper_skipped_core_recycling_witness_bounded",
+    "Erdos249257.ExternalVerification257PaperStatementsAS.paper_unconditional_bound_one_extra_bit"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

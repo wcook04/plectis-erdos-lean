@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification1041PaperStatementsZB
+
+#print axioms Erdos249257.ExternalVerification1041PaperStatementsZB.subcritical_perimeter_path_paper

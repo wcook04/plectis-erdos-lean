@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ExternalVerification1041PaperStatementsAA.Challenge",
+  "solution_module": "Solutions.ExternalVerification1041PaperStatementsAA",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041PaperStatementsAA.complete_trinomial",
+    "Erdos249257.ExternalVerification1041PaperStatementsAA.all_degree_monic_trinomials_whole"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

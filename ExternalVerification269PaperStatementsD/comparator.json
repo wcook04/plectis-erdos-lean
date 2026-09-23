@@ -1,0 +1,19 @@
+{
+  "challenge_module": "ExternalVerification269PaperStatementsD.Challenge",
+  "solution_module": "Solutions.ExternalVerification269PaperStatementsD",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification269PaperStatementsD.realPrefixLcm_eq_of_sameLogCell",
+    "Erdos249257.ExternalVerification269PaperStatementsD.realPrefixLcm_jump_first",
+    "Erdos249257.ExternalVerification269PaperStatementsD.realPrefixLcm_jump_second",
+    "Erdos249257.ExternalVerification269PaperStatementsD.realPrefixLcm_jump_third",
+    "Erdos249257.ExternalVerification269PaperStatementsD.realSmoothExponentShell_bounds",
+    "Erdos249257.ExternalVerification269PaperStatementsD.running_lcm_real_cutoff_exact",
+    "Erdos249257.ExternalVerification269PaperStatementsD.threePrimeKernelQ_eq_of_sameRealLogCell"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

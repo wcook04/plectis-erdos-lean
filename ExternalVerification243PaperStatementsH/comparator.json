@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification243PaperStatementsH.Challenge",
+  "solution_module": "Solutions.ExternalVerification243PaperStatementsH",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification243PaperStatementsH.cancellationFree_curvature_square"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

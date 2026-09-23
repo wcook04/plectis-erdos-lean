@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification1041PaperStatementsY
+
+#print axioms Erdos249257.ExternalVerification1041PaperStatementsY.cfa_capacity_criterion

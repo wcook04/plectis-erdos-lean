@@ -1,0 +1,16 @@
+import Solutions.PalomarCorpus.E243_06
+
+#print axioms PalomarCorpus.E243.OriginalCoordinateBoundedDefect.original_coordinate_bounded_defect
+#print axioms PalomarCorpus.E243.PaperStatementsB.original_coordinate_inclusive_one
+#print axioms PalomarCorpus.E243.PaperStatementsB.original_coordinate_inclusive_one_pointwise
+#print axioms PalomarCorpus.E243.PaperStatementsF.original_coordinate_strict_one
+#print axioms PalomarCorpus.E243.PaperStatementsL.original_coordinate_slow_growth_defect
+#print axioms PalomarCorpus.E243.PaperStatementsL.prefix_ratio_le_canonicalNumerator
+#print axioms PalomarCorpus.E243.PaperStatementsR.recordTheta_le_of_slow_negative
+#print axioms PalomarCorpus.E243.PaperStructuresAA.tail_multiplier_quadratic_lower
+#print axioms PalomarCorpus.E243.PaperStructuresAB.exactOrbit_unbounded_of_error_not_eventually_zero
+#print axioms PalomarCorpus.E243.PaperStructuresAB.exists_multiplier_ge_four
+#print axioms PalomarCorpus.E243.PaperStructuresAB.slowNegative_eventually_zero_and_sylvesterNext_unconditional
+#print axioms PalomarCorpus.E243.PaperStructuresAB.tail_binaryTower_lower
+#print axioms PalomarCorpus.E243.PaperStructuresAE.exactOrbit_one_le_recordTheta
+#print axioms PalomarCorpus.E243.PaperStructuresAE.exactOrbit_recordTheta_gt_one

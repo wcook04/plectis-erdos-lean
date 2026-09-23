@@ -1,0 +1,126 @@
+/- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
+import Mathlib
+
+set_option autoImplicit false
+
+/-!
+# Independent restatements for Erdős problem #257
+
+Each theorem below restates a refereed declaration of the substantive development in
+this repository, at public commit `f436a7ec0f7bf035828a7eec37fd29ae74d17d84` of
+https://github.com/wcook04/plectis-erdos. The definitions are local copies of the source definitions, so
+the statements elaborate against Mathlib alone. This module is a comparison interface
+over that development, not the development itself. The mathematics is developed in
+`Erdos249257.HalfUpperResetCriticalBand`,
+`ErdosProblems.Erdos257.CoverIndependentPeriodicMean`,
+`ErdosProblems.Erdos257.PaperCompleteR21.ArithmeticCounterexampleAssembly`,
+`ErdosProblems.Erdos257.PaperCompleteR21.ArithmeticCoverLowerBound`,
+`ErdosProblems.Erdos257.PaperCompleteR21.LogarithmicInitialInterval`,
+`ErdosProblems.Erdos257.PaperCompleteR8.FiniteMeans`,
+`ErdosProblems.Erdos257.PaperCompleteR8.KernelRecurrence`.
+-/
+
+open Finset
+
+namespace Erdos249257.ExternalVerification257PaperStatementsAC
+
+noncomputable def CriticalDyadicBandIndex (d E j : ℕ) : Prop :=
+  j ≤ d ∧
+    E ≤ 2 ^ (d - j + 1) ∧
+      (j = d ∨ 2 ^ (d - (j + 1) + 1) < E)
+
+noncomputable def DyadicBandEscape (d E : ℕ) : Prop :=
+  ∀ j : ℕ, j ≤ d →
+    2 ^ (d - j + 1) < E ∨ E + 2 * (d + j) ≤ 2 ^ (d - j + 1)
+
+noncomputable def progressionMean (L T : ℕ) (f : ℕ → ℝ) : ℝ :=
+  (∑ m ∈ Finset.range T, f ((m + 1) * L)) / (T : ℝ)
+
+noncomputable def kernelWeight (B : ℝ) (d n : ℕ) : ℝ :=
+  B ^ (n % d) / (B ^ d - 1)
+
+noncomputable def framePotential (F : Finset ℕ) (N : ℕ) : ℝ :=
+  ∑ a ∈ F, kernelWeight 2 a N
+
+noncomputable def exceedInd (F : Finset ℕ) (N : ℕ) : ℝ := if 1 < framePotential F N then 1 else 0
+
+noncomputable def condExceedProb (F : Finset ℕ) (ℓ : ℕ) : ℝ :=
+  progressionMean ℓ (F.lcm id / ℓ) (exceedInd F)
+
+noncomputable def frameLcm (F : Finset ℕ) : ℕ := F.lcm id
+
+noncomputable def incidenceCount (F : Finset ℕ) (n : ℕ) : ℕ := (F.filter (fun a => a ∣ n)).card
+
+noncomputable def divisorMajorantCost (D : Finset ℕ) (c : ℕ → ℝ) : ℝ :=
+  ∑ d ∈ D, c d / d
+
+noncomputable def logMajorantCosts (F : Finset ℕ) (t : ℝ) : Set ℝ :=
+  {K : ℝ | ∃ c : ℕ → ℝ, (∀ d, 0 ≤ c d) ∧
+    (∀ s ∈ (frameLcm F).divisors,
+        Real.log (1 + (incidenceCount F s : ℝ) / t) ≤ ∑ d ∈ s.divisors, c d) ∧
+    K = divisorMajorantCost (frameLcm F).divisors c}
+
+noncomputable def kappaOne (F : Finset ℕ) (t : ℝ) : ℝ := sInf (logMajorantCosts F t)
+
+noncomputable def dyadicMean (L R M : ℕ) (f : ℕ → ℝ) : ℝ :=
+  (∑ j ∈ Finset.Ico R (R + M), progressionMean L (2 ^ j) f) / (M : ℝ)
+
+/-- States thm:critical-dyadic-band from the long record for Erdős problem #257. Transported
+from Erdos249257.HalfUpperResetCriticalBand.dyadicBandEscape_iff_exists_critical in the
+substantive development, whose statement was refereed against the paper in the coverage
+ledger. -/
+theorem dyadicBandEscape_iff_exists_critical
+    {d E : ℕ} (hE : E ≤ 2 ^ (d + 1)) :
+    DyadicBandEscape d E ↔
+      ∃ j : ℕ, CriticalDyadicBandIndex d E j ∧
+        E + 2 * (d + j) ≤ 2 ^ (d - j + 1) := by
+  sorry
+
+/-- States thm:critical-dyadic-band from the long record for Erdős problem #257. Transported
+from Erdos249257.HalfUpperResetCriticalBand.exists_criticalDyadicBandIndex in the
+substantive development, whose statement was refereed against the paper in the coverage
+ledger. -/
+theorem exists_criticalDyadicBandIndex
+    {d E : ℕ} (hE : E ≤ 2 ^ (d + 1)) :
+    ∃ j : ℕ, CriticalDyadicBandIndex d E j := by
+  sorry
+
+/-- States thm:257-logarithmic-counterexample from the long record for Erdős problem #257.
+Transported from
+ErdosProblems.Erdos257.PaperCompleteR21.arithmetic_logarithmic_counterexample in the
+substantive development, whose statement was refereed against the paper in the coverage
+ledger. -/
+theorem arithmetic_logarithmic_counterexample (H : ℕ) (hH : 2 ≤ H) (A₀ : ℝ) (hA₀ : 0 ≤ A₀) :
+    ∃ (L : ℕ) (F : Finset ℕ),
+      0 < L ∧ Squarefree L ∧ F.Nonempty ∧ (0 : ℕ) ∉ F ∧
+      (∀ a ∈ F, 0 < a ∧ Squarefree a) ∧
+      (∀ a ∈ F, max (L : ℝ) A₀ < (a : ℝ)) ∧
+      L ∣ F.lcm id ∧
+      kappaOne F 1 ≤ 30 * Real.log 2 / (H : ℝ) ∧
+      1 - Real.exp (-1) ≤ condExceedProb F L ∧
+      ∃ R : ℕ, 1 / 2 < dyadicMean L R L (exceedInd F) := by
+  sorry
+
+/-- States prop:257-logarithmic-initial-interval from the long record for Erdős problem #257.
+Transported from ErdosProblems.Erdos257.PaperCompleteR21.logarithmic_initial_interval in the
+substantive development, whose statement was refereed against the paper in the coverage
+ledger. -/
+theorem logarithmic_initial_interval (F : Finset ℕ) (hFne : F.Nonempty) (hF : 0 ∉ F)
+    (X : ℕ) (hX : 1 ≤ X) (t : ℝ) (ht : 0 < t) (ht1 : t ≤ 1) :
+    ((((Finset.Icc 1 X).filter (fun N => t < framePotential F N)).card : ℝ)) / (X : ℝ)
+      ≤ 2 / Real.log (4 / 3 : ℝ) * kappaOne F t := by
+  sorry
+
+/-- States thm:257-logarithmic-counterexample from the long record for Erdős problem #257.
+Transported from
+ErdosProblems.Erdos257.PaperCompleteR21.no_absolute_dyadic_kappaOne_constant in the
+substantive development, whose statement was refereed against the paper in the coverage
+ledger. -/
+theorem no_absolute_dyadic_kappaOne_constant :
+    ¬ ∃ C : ℝ, ∀ (F : Finset ℕ), F.Nonempty → (0 : ℕ) ∉ F →
+      ∀ (L M : ℕ), 0 < L → 0 < M → ∀ (R : ℕ) (t : ℝ), 0 < t → t ≤ 1 →
+        dyadicMean L R M (fun N => if t < framePotential F N then (1 : ℝ) else 0)
+          ≤ C * (1 + (L : ℝ) / (M : ℝ)) * kappaOne F t := by
+  sorry
+
+end Erdos249257.ExternalVerification257PaperStatementsAC

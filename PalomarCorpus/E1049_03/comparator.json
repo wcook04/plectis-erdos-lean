@@ -1,0 +1,30 @@
+{
+  "challenge_module": "PalomarCorpus.E1049_03.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E1049_03",
+  "theorem_names": [
+    "PalomarCorpus.E1049.AdelicHeightBridge.coeff_zudilinNormalizedHankelDet_all_rat",
+    "PalomarCorpus.E1049.AdelicHeightBridge.exists_distinct_binary_selectors_same_fourJet_of_power_certificate",
+    "PalomarCorpus.E1049.AdelicHeightBridge.exists_distinct_binary_selectors_same_fourJet_of_rank_41",
+    "PalomarCorpus.E1049.AdelicHeightBridge.exists_ne_map_eq_map_ne_of_card_mul_lt",
+    "PalomarCorpus.E1049.AdelicHeightBridge.fourJet_card_gt_two_pow_of_rank_41",
+    "PalomarCorpus.E1049.AdelicHeightBridge.threeHalves_hankelChargeThreshold_lt_eightFortyOne",
+    "PalomarCorpus.E1049.AdelicHeightBridge.threeHalves_rectangular_hp_gap_gt_threeThirteenths",
+    "PalomarCorpus.E1049.AdelicHeightBridge.threePow_fortyOne_lt_twoPow_sixtyFive",
+    "PalomarCorpus.E1049.AdelicHeightBridge.three_two_scalar_margin_lt_explicit",
+    "PalomarCorpus.E1049.AdelicHeightBridge.twoPow_sixtyFour_lt_threePow_fortyOne",
+    "PalomarCorpus.E1049.AdelicHeightBridge.zudilinScalarContent_cannot_meet_required_charge",
+    "PalomarCorpus.E1049.AdelicHeightBridge.zudilinScalarPlusBorder_cannot_meet_required_charge",
+    "PalomarCorpus.E1049.AdelicHeightBridge.zudilinSharpHankelOrderAndCoeff_algebraicAssembly",
+    "PalomarCorpus.E1049.AdelicHeightBridge.zudilinSharpHankelOrderAndCoeff_all",
+    "PalomarCorpus.E1049.AdelicHeightBridge.zudilin_firstTransformedRow_initialMonomial",
+    "PalomarCorpus.E1049.PaperStatementsK.charge_ceilings",
+    "PalomarCorpus.E1049.PaperStatementsK.power_bracket",
+    "PalomarCorpus.E1049.PaperStatementsN.height_and_hankel_deficits"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

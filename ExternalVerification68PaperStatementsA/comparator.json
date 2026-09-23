@@ -1,0 +1,23 @@
+{
+  "challenge_module": "ExternalVerification68PaperStatementsA.Challenge",
+  "solution_module": "Solutions.ExternalVerification68PaperStatementsA",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification68PaperStatementsA.carry_characterisation",
+    "Erdos249257.ExternalVerification68PaperStatementsA.cofinal_first_prime_occurrences",
+    "Erdos249257.ExternalVerification68PaperStatementsA.companion_orbit",
+    "Erdos249257.ExternalVerification68PaperStatementsA.companion_orbit_boundary",
+    "Erdos249257.ExternalVerification68PaperStatementsA.divisor_channel_coordinates",
+    "Erdos249257.ExternalVerification68PaperStatementsA.finite_channel_moment_certificate",
+    "Erdos249257.ExternalVerification68PaperStatementsA.finite_channel_moment_certificate_eq",
+    "Erdos249257.ExternalVerification68PaperStatementsA.global_complementary_criterion_nat",
+    "Erdos249257.ExternalVerification68PaperStatementsA.global_complementary_criterion_prime",
+    "Erdos249257.ExternalVerification68PaperStatementsA.lower_interval_criterion",
+    "Erdos249257.ExternalVerification68PaperStatementsA.maximal_prime_power_survival"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

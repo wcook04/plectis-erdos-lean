@@ -1,0 +1,21 @@
+{
+  "challenge_module": "PalomarCorpus.E249_31.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E249_31",
+  "theorem_names": [
+    "PalomarCorpus.E249.ActualLcmOrbit.actualLcmTailOrbit_eq_scaled_totientSeries_sub_prefix",
+    "PalomarCorpus.E249.ActualLcmOrbit.irrational_totientSeries_iff_actualLcmOrbitNonintegralitySupply",
+    "PalomarCorpus.E249.BinaryCyclotomicAnchors.binaryCyclotomicAnchoredKillSupply_iff_irrational",
+    "PalomarCorpus.E249.BinaryCyclotomicAnchors.binaryCyclotomicLayer_unboundedPrimeDivisorSupply",
+    "PalomarCorpus.E249.BinaryCyclotomicAnchors.exists_clean_binaryCyclotomicAnchor",
+    "PalomarCorpus.E249.BinaryCyclotomicAnchors.exists_unbounded_binaryCyclotomicSupport_with_periodLock_of_not_irrational",
+    "PalomarCorpus.E249.CanonicalMersenneFrontier.fullMersenneBlockResidue_succ",
+    "PalomarCorpus.E249.CanonicalMersenneFrontier.fullMersenneCanonicalBasepointResidueGapSupply_iff_irrational",
+    "PalomarCorpus.E249.CanonicalMersenneFrontier.fullMersenneCenteredResidueGapSupply_of_canonicalBasepoint"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

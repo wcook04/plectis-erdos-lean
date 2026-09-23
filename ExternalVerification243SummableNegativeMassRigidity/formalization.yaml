@@ -12,9 +12,9 @@ project:
   - Will Cook
 palomar_qualification:
   status: candidate_pending_mechanical_gates
-  selected_project: formal_math/erdos257_period_noncollapse
-  comparator_config: formal_math/erdos257_period_noncollapse/ExternalVerification243SummableNegativeMassRigidity/comparator.json
-  formalization_metadata: formal_math/erdos257_period_noncollapse/ExternalVerification243SummableNegativeMassRigidity/formalization.yaml
+  selected_project: "."
+  comparator_config: ExternalVerification243SummableNegativeMassRigidity/comparator.json
+  formalization_metadata: ExternalVerification243SummableNegativeMassRigidity/formalization.yaml
   repository_scope: private_source_not_yet_pinned_in_public_repository
   challenge_dependency_boundary: Mathlib_only
   replay_status: terminal_positive_and_deliberate_negative_pair_pending_supported_runner

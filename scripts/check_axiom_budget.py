@@ -37,9 +37,13 @@ import sys
 import tempfile
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+import palomar_entry_names  # noqa: E402
+
 REPO_ROOT = Path(__file__).resolve().parent.parent
 ENTRY_PREFIX = "ExternalVerification"
-PALOMAR_PROBLEMS = (68, 243, 249, 251, 257, 269, 1041, 1049)
+PALOMAR_PROBLEMS = palomar_entry_names.PROBLEMS
 
 # 'Namespace.decl' depends on axioms: [a, b, c]
 # Lean wraps a long axiom list over several lines, so the list may span newlines.
@@ -74,12 +78,17 @@ def parse_log(text: str) -> dict[str, set[str]]:
 
 
 def entries(*, palomar: bool = False) -> list[str]:
+    """The publication entries (with ``palomar``), else the family directories.
+
+    The publication set is every ``PalomarCorpus/E*`` configuration, checked as a whole by
+    ``scripts/palomar_entry_names.py``: the paper-order ``E<problem>_<NN>`` entries, or in a
+    retired tree the eight problem entries with their bands. It used to be exactly the eight
+    problem entries, so no band, and no entry since the paper-order re-pack, was ever audited.
+    """
     if palomar:
-        expected = {f"E{number}" for number in PALOMAR_PROBLEMS}
-        found = {path.parent.name for path in (REPO_ROOT / "PalomarCorpus").glob("E*/comparator.json")}
-        if found != expected or (REPO_ROOT / "PalomarCorpus/comparator.json").exists():
-            raise ValueError("publication must contain exactly the eight problem-level configurations")
-        return [f"PalomarCorpus/E{number}" for number in PALOMAR_PROBLEMS]
+        if (REPO_ROOT / "PalomarCorpus/comparator.json").exists():
+            raise ValueError("the superseded flat PalomarCorpus/comparator.json is present")
+        return [f"PalomarCorpus/{name}" for name in palomar_entry_names.discover(REPO_ROOT)]
     return sorted(
         p.name for p in REPO_ROOT.iterdir() if p.is_dir() and p.name.startswith(ENTRY_PREFIX)
     )
@@ -158,7 +167,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--log", help="build log to read (- for stdin)")
     parser.add_argument("--run-palomar", action="store_true",
-                        help="run fresh axiom audits of the eight built publication Solution environments")
+                        help="run fresh axiom audits of every built publication entry's Solution environment")
     parser.add_argument("--expect-commit", help="fail unless HEAD is this commit")
     parser.add_argument("--json", action="store_true", help="emit the report as JSON")
     args = parser.parse_args()

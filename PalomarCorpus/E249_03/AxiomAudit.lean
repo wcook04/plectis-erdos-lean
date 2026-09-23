@@ -1,0 +1,18 @@
+import Solutions.PalomarCorpus.E249_03
+
+#print axioms PalomarCorpus.E249.PaperStatementsAK.twoAdic_pulse_defining_congruence
+#print axioms PalomarCorpus.E249.PaperStatementsAK.twoAdic_pulse_error_bound
+#print axioms PalomarCorpus.E249.PaperStatementsAK.two_point_sample_numerical_requirement
+#print axioms PalomarCorpus.E249.PaperStatementsAU.three_particular_equivalences
+#print axioms PalomarCorpus.E249.PaperStatementsAU.twoAdic_pulse_construction_never_certifies
+#print axioms PalomarCorpus.E249.PaperStatementsAZ.balancedPulse_common_history
+#print axioms PalomarCorpus.E249.PaperStatementsAZ.balancedPulse_label_lower_bound
+#print axioms PalomarCorpus.E249.PaperStatementsAZ.balancedPulse_no_decoder_from_common_state
+#print axioms PalomarCorpus.E249.PaperStatementsAZ.balancedPulse_series
+#print axioms PalomarCorpus.E249.PaperStatementsAZ.balancedPulse_tail_at
+#print axioms PalomarCorpus.E249.PaperStatementsD.affineBinaryOrbit_difference_and_reset
+#print axioms PalomarCorpus.E249.PaperStatementsG.b6_adjugate_tail_cost_floor
+#print axioms PalomarCorpus.E249.PaperStatementsG.b6_compressed_adjoint_identity_impossible
+#print axioms PalomarCorpus.E249.PaperStatementsG.b6_rankOneSubrankQuotient_sub_totientSeries_offset_gt
+#print axioms PalomarCorpus.E249.PaperStatementsI.b6_synthetic_sequence_prescribed_differences
+#print axioms PalomarCorpus.E249.PaperStatementsI.b6_synthetic_shift_combinations_same_form

@@ -1,0 +1,658 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: v0.4
+project:
+  name: 'Erdős #249: independent restatements of refereed paper-linked theorems'
+  description: >-
+    52 theorems of the substantive development for Erdős problem #249
+    restated against Mathlib alone and transported from the source declarations named
+    below. The substantive formalization lives in Erdos249257.DiagonalFreshLossBridge, Erdos249257.FullTargetPrimeAdjunctionNoGo, Erdos249257.MersenneShadowCyclotomicNoncollapse, Erdos249257.MersenneShadowDenominatorGrowth, Erdos249257.RadicalMobiusShadow, ErdosProblems.Erdos249.PaperCompleteR20.DenominatorBounds, ErdosProblems.Erdos249.PaperCompleteR20.FinitePrefixCountermodel, ErdosProblems.Erdos249.PaperCompleteR20.FinitePrefixCountermodelEndpoint, ErdosProblems.Erdos249.PaperCompleteR20.GenericTailCertificates, ErdosProblems.Erdos249.PaperCompleteR20.PeriodicIntegerAffine, ErdosProblems.Erdos249.PaperCompleteR20.SignedDyadicClearing, ErdosProblems.Erdos249.PaperCompleteR21.AffineDivisorAnnihilation, ErdosProblems.Erdos249.PaperCompleteR21.DivisorChannelSplitAndSeamDoubling, ErdosProblems.Erdos249.PaperCompleteR21.LambertDivisorTransform, ErdosProblems.Erdos249.PaperCompleteR21.PhaseEnergyAndForeignResidueProjection, ErdosProblems.Erdos249.PaperCompleteR21.PillaiGcdExpectation, ErdosProblems.Erdos249.PaperCompleteR21.SquaredMersenneDivisorIdentities, ErdosProblems.Erdos249.PaperCompleteR21.SternBrocotStoppingRecursion, ErdosProblems.Erdos249.PaperCompleteR21.TemperedOrbitAndSquaredMersenneTail, ErdosProblems.Erdos249.PaperCompleteR7.PeriodicAndPulse in this repository and at
+    public commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84 of https://github.com/wcook04/plectis-erdos. This entry is a comparison
+    interface over that development. 47 statements transport by direct term
+    application, which certifies definitional identity with the source statement;
+    5 transport through a tactic bridge, which certifies implication only. The
+    parent Erdős problem remains open.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - "11A25"
+  - "11B83"
+sources:
+- title: 'Erdős #249: paper-linked Lean development'
+  authors:
+  - Will Cook
+  id: https://github.com/wcook04/plectis-erdos
+  type: original-proof
+  relationship: other
+  note: >-
+    The source declarations this entry transports, at commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84.
+    Novelty is unassessed and the parent problem is not claimed as solved.
+  license: Apache-2.0
+  author_endorsement: participated
+- title: 'Erdős Problem #249'
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com/249
+  type: web discussion
+  relationship: background
+  note: The catalogue supplies the problem statement and references.
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+status:
+  scope: Independent restatements of 52 refereed declarations for Erdős problem #249.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 52
+  sorry_boundary: Only the trusted Challenge theorem bodies carry placeholders.
+  axiom_audit_status: pending fresh target-toolchain axiom audit
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  development_status: substantive
+  local_proof_provenance: Erdos249257.DiagonalFreshLossBridge, Erdos249257.FullTargetPrimeAdjunctionNoGo, Erdos249257.MersenneShadowCyclotomicNoncollapse, Erdos249257.MersenneShadowDenominatorGrowth, Erdos249257.RadicalMobiusShadow, ErdosProblems.Erdos249.PaperCompleteR20.DenominatorBounds, ErdosProblems.Erdos249.PaperCompleteR20.FinitePrefixCountermodel, ErdosProblems.Erdos249.PaperCompleteR20.FinitePrefixCountermodelEndpoint, ErdosProblems.Erdos249.PaperCompleteR20.GenericTailCertificates, ErdosProblems.Erdos249.PaperCompleteR20.PeriodicIntegerAffine, ErdosProblems.Erdos249.PaperCompleteR20.SignedDyadicClearing, ErdosProblems.Erdos249.PaperCompleteR21.AffineDivisorAnnihilation, ErdosProblems.Erdos249.PaperCompleteR21.DivisorChannelSplitAndSeamDoubling, ErdosProblems.Erdos249.PaperCompleteR21.LambertDivisorTransform, ErdosProblems.Erdos249.PaperCompleteR21.PhaseEnergyAndForeignResidueProjection, ErdosProblems.Erdos249.PaperCompleteR21.PillaiGcdExpectation, ErdosProblems.Erdos249.PaperCompleteR21.SquaredMersenneDivisorIdentities, ErdosProblems.Erdos249.PaperCompleteR21.SternBrocotStoppingRecursion, ErdosProblems.Erdos249.PaperCompleteR21.TemperedOrbitAndSquaredMersenneTail, ErdosProblems.Erdos249.PaperCompleteR7.PeriodicAndPulse in this repository, which is the same development published at https://github.com/wcook04/plectis-erdos commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+  canonical_claim_status: generated comparison interface over substantive Lean in this repository
+  main_results:
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.lcmHeight_upperHalf_product_dvd_den
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.lcmHeight_upperHalf_product_dvd_den
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: Erdos249257.MersenneShadowCyclotomicNoncollapse.lcmHeight_upperHalf_product_dvd_den
+    source_file: Erdos249257/MersenneShadowCyclotomicNoncollapse.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.upperHalfChannel_product_dvd_den_of_coprime_scale
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.upperHalfChannel_product_dvd_den_of_coprime_scale
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: Erdos249257.MersenneShadowCyclotomicNoncollapse.upperHalfChannel_product_dvd_den_of_coprime_scale
+    source_file: Erdos249257/MersenneShadowCyclotomicNoncollapse.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.upperHalfChannel_product_dvd_den_of_scale_primeFactors_le
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.upperHalfChannel_product_dvd_den_of_scale_primeFactors_le
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: Erdos249257.MersenneShadowCyclotomicNoncollapse.upperHalfChannel_product_dvd_den_of_scale_primeFactors_le
+    source_file: Erdos249257/MersenneShadowCyclotomicNoncollapse.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.lcmHeight_five_scaledMobiusShadow_den_exact
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.lcmHeight_five_scaledMobiusShadow_den_exact
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: Erdos249257.MersenneShadowDenominatorGrowth.lcmHeight_five_scaledMobiusShadow_den_exact
+    source_file: Erdos249257/MersenneShadowDenominatorGrowth.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.discrepancy_prefix
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.discrepancy_prefix
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR20.FinitePrefixCountermodel.discrepancy_prefix
+    source_file: ErdosProblems/Erdos249/PaperCompleteR20/FinitePrefixCountermodel.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.exact_denominator
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.exact_denominator
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR20.FinitePrefixCountermodel.exact_denominator
+    source_file: ErdosProblems/Erdos249/PaperCompleteR20/FinitePrefixCountermodelEndpoint.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.gamma_le
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.gamma_le
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR20.FinitePrefixCountermodel.gamma_le
+    source_file: ErdosProblems/Erdos249/PaperCompleteR20/FinitePrefixCountermodel.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.gamma_not_separation
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.gamma_not_separation
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR20.FinitePrefixCountermodel.gamma_not_separation
+    source_file: ErdosProblems/Erdos249/PaperCompleteR20/FinitePrefixCountermodelEndpoint.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.gamma_prefix
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.gamma_prefix
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR20.FinitePrefixCountermodel.gamma_prefix
+    source_file: ErdosProblems/Erdos249/PaperCompleteR20/FinitePrefixCountermodel.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.no_certificate_after_prefix
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.no_certificate_after_prefix
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR20.FinitePrefixCountermodel.no_certificate_after_prefix
+    source_file: ErdosProblems/Erdos249/PaperCompleteR20/FinitePrefixCountermodelEndpoint.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.no_uniform_prefix_rule
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.no_uniform_prefix_rule
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR20.FinitePrefixCountermodel.no_uniform_prefix_rule
+    source_file: ErdosProblems/Erdos249/PaperCompleteR20/FinitePrefixCountermodelEndpoint.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.periodic_freezing_integer_affine
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.periodic_freezing_integer_affine
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR20.periodic_freezing_integer_affine
+    source_file: ErdosProblems/Erdos249/PaperCompleteR20/PeriodicIntegerAffine.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: derived
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.signed_dyadic_clearing
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.signed_dyadic_clearing
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR20.signed_dyadic_clearing
+    source_file: ErdosProblems/Erdos249/PaperCompleteR20/SignedDyadicClearing.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: derived
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.signed_dyadic_sum_ne_zero
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.signed_dyadic_sum_ne_zero
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR20.signed_dyadic_sum_ne_zero
+    source_file: ErdosProblems/Erdos249/PaperCompleteR20/SignedDyadicClearing.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: derived
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.upper_half_product_denominator_bounds
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.upper_half_product_denominator_bounds
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR20.upper_half_product_denominator_bounds
+    source_file: ErdosProblems/Erdos249/PaperCompleteR20/DenominatorBounds.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.abs_mobiusSquareTail_le_paper
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.abs_mobiusSquareTail_le_paper
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.abs_mobiusSquareTail_le_paper
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/TemperedOrbitAndSquaredMersenneTail.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.abs_moebius_cast_le_one
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.abs_moebius_cast_le_one
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.abs_moebius_cast_le_one
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/TemperedOrbitAndSquaredMersenneTail.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.boundary_pair_at_one
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.boundary_pair_at_one
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.boundary_pair_at_one
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/PhaseEnergyAndForeignResidueProjection.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.card_coprime_antidiagonal
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.card_coprime_antidiagonal
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.card_coprime_antidiagonal
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/PhaseEnergyAndForeignResidueProjection.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.card_mul_sq_le_pairwise_energy
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.card_mul_sq_le_pairwise_energy
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.card_mul_sq_le_pairwise_energy
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/PhaseEnergyAndForeignResidueProjection.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: derived
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.complementSummand_eq_phaseTerm
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.complementSummand_eq_phaseTerm
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.complementSummand_eq_phaseTerm
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/DivisorChannelSplitAndSeamDoubling.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.complementSummand_low_double_echo
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.complementSummand_low_double_echo
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.complementSummand_low_double_echo
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/DivisorChannelSplitAndSeamDoubling.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.divisibility_mass
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.divisibility_mass
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.divisibility_mass
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/SternBrocotStoppingRecursion.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.divisorIndex_endpoint_behaviour
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.divisorIndex_endpoint_behaviour
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.divisorIndex_endpoint_behaviour
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/DivisorChannelSplitAndSeamDoubling.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.doubling_tempered_sequence_eq_zero
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.doubling_tempered_sequence_eq_zero
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.doubling_tempered_sequence_eq_zero
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/TemperedOrbitAndSquaredMersenneTail.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.gcd_moment_identity_three_members
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.gcd_moment_identity_three_members
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.gcd_moment_identity_three_members
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/PillaiGcdExpectation.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.joint35_coefficient_moments
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.joint35_coefficient_moments
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.joint35_coefficient_moments
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/AffineDivisorAnnihilation.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.joint35_mobiusTermKernel_zero
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.joint35_mobiusTermKernel_zero
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.joint35_mobiusTermKernel_zero
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/AffineDivisorAnnihilation.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.lambertValue_eq_divisor_sum_series
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.lambertValue_eq_divisor_sum_series
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.lambertValue_eq_divisor_sum_series
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/LambertDivisorTransform.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.mersenne_geometric_shift
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.mersenne_geometric_shift
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.mersenne_geometric_shift
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/TemperedOrbitAndSquaredMersenneTail.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.mobiusTermKernel_affine_in_multiplier
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.mobiusTermKernel_affine_in_multiplier
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.mobiusTermKernel_affine_in_multiplier
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/AffineDivisorAnnihilation.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.mobiusTermKernel_moment_annihilation
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.mobiusTermKernel_moment_annihilation
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.mobiusTermKernel_moment_annihilation
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/AffineDivisorAnnihilation.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: derived
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.pair_divisibility_mass
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.pair_divisibility_mass
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.pair_divisibility_mass
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/SquaredMersenneDivisorIdentities.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.pillaiP_eq_totient_mul_id
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.pillaiP_eq_totient_mul_id
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.pillaiP_eq_totient_mul_id
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/PillaiGcdExpectation.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.scaleExplicitShadow_eq_divisorChannels
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.scaleExplicitShadow_eq_divisorChannels
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.scaleExplicitShadow_eq_divisorChannels
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/PhaseEnergyAndForeignResidueProjection.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.squarefreeKernel_eq_prod_primeFactors
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.squarefreeKernel_eq_prod_primeFactors
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.squarefreeKernel_eq_prod_primeFactors
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/DivisorChannelSplitAndSeamDoubling.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.stopping_probability_ge_third
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.stopping_probability_ge_third
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.stopping_probability_ge_third
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/SternBrocotStoppingRecursion.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.stopping_transition_probabilities_sum_one
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.stopping_transition_probabilities_sum_one
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.stopping_transition_probabilities_sum_one
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/SternBrocotStoppingRecursion.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.sum_divisorIndices_mobius
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.sum_divisorIndices_mobius
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.sum_divisorIndices_mobius
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/DivisorChannelSplitAndSeamDoubling.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.sum_divisors_moebius_div_eq_totient_div
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.sum_divisors_moebius_div_eq_totient_div
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.sum_divisors_moebius_div_eq_totient_div
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/DivisorChannelSplitAndSeamDoubling.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.sum_gcd_Icc_eq_pillaiP
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.sum_gcd_Icc_eq_pillaiP
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.sum_gcd_Icc_eq_pillaiP
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/PillaiGcdExpectation.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.totientDifference_doubling_seam
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.totientDifference_doubling_seam
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.totientDifference_doubling_seam
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/DivisorChannelSplitAndSeamDoubling.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.totientDifference_eq_divisorPart_add_complement
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.totientDifference_eq_divisorPart_add_complement
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.totientDifference_eq_divisorPart_add_complement
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/DivisorChannelSplitAndSeamDoubling.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.totientSeries_eq_half_add_moebius_sq
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.totientSeries_eq_half_add_moebius_sq
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.totientSeries_eq_half_add_moebius_sq
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/TemperedOrbitAndSquaredMersenneTail.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.totientSeries_pnat_form
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.totientSeries_pnat_form
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.totientSeries_pnat_form
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/TemperedOrbitAndSquaredMersenneTail.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.totient_eq_mobius_divisor_sum
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.totient_eq_mobius_divisor_sum
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.totient_eq_mobius_divisor_sum
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/DivisorChannelSplitAndSeamDoubling.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.totient_two_mul_even
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.totient_two_mul_even
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.totient_two_mul_even
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/DivisorChannelSplitAndSeamDoubling.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.totient_two_mul_odd
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.totient_two_mul_odd
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.totient_two_mul_odd
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/DivisorChannelSplitAndSeamDoubling.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.tsum_geometric_multiples
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.tsum_geometric_multiples
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.tsum_geometric_multiples
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/SquaredMersenneDivisorIdentities.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.tsum_pos_pair_gcd_half_eq_totient_div_mersenne_sq
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.tsum_pos_pair_gcd_half_eq_totient_div_mersenne_sq
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.tsum_pos_pair_gcd_half_eq_totient_div_mersenne_sq
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/PillaiGcdExpectation.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.tsum_quarter_geometric
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.tsum_quarter_geometric
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.tsum_quarter_geometric
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/TemperedOrbitAndSquaredMersenneTail.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAE.bounded_isolated_pulse
+    file: Solutions/ExternalVerification249PaperStatementsAE.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAE/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAE.bounded_isolated_pulse
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR7.bounded_isolated_pulse
+    source_file: ErdosProblems/Erdos249/PaperCompleteR7/PeriodicAndPulse.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+automation:
+  methods:
+  - method: agent
+    models:
+    - Anthropic Claude
+    framework: Lean 4 and Mathlib
+    tool_setup: Statement wrappers generated mechanically from the refereed paper statements and elaborated before acceptance
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    Every statement was refereed against the paper in the coverage ledger before this
+    wrapper was generated. The transport proof is the fidelity evidence: a direct term
+    application certifies definitional identity with the refereed source statement.
+    No independent mathematical review outside the author is claimed.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

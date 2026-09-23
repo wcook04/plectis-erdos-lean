@@ -1,0 +1,16 @@
+import Solutions.PalomarCorpus.E257_36
+
+#print axioms PalomarCorpus.E257.PaperStatementsAA.paper_mersenne_height
+#print axioms PalomarCorpus.E257.PaperStatementsAA.paper_scalar_localization
+#print axioms PalomarCorpus.E257.PaperStatementsAA.paper_scalar_localization_size_bound
+#print axioms PalomarCorpus.E257.PaperStatementsAA.paper_scalar_localization_zero_degenerate
+#print axioms PalomarCorpus.E257.PaperStatementsAQ.paper_first_positiveMobius_tail_term
+#print axioms PalomarCorpus.E257.PaperStatementsAQ.paper_mobius_support_overshoots_half
+#print axioms PalomarCorpus.E257.PaperStatementsBD.balancedPulseCoeff_injective
+#print axioms PalomarCorpus.E257.PaperStatementsBD.paper_balanced_pulse_fanout_is_radius_succ
+#print axioms PalomarCorpus.E257.PaperStatementsBD.paper_balanced_pulse_fanout_unbounded_corrected
+#print axioms PalomarCorpus.E257.PaperStatementsBD.paper_pulse_family_finite_state_card
+#print axioms PalomarCorpus.E257.PaperStatementsBD.paper_pulse_family_no_autonomous_decoder
+#print axioms PalomarCorpus.E257.PaperStatementsP.paper_carry_survivor_extinction
+#print axioms PalomarCorpus.E257.PaperStatementsP.paper_periodLcm_is_prefix_lcm
+#print axioms PalomarCorpus.E257.PaperStatementsR.paper_finite_support_and_onesided_certificate

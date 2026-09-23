@@ -1,0 +1,12 @@
+import Solutions.PalomarCorpus.E251_03
+
+#print axioms PalomarCorpus.E251.PaperStatementsA.exists_logarithmic_recurring_values_countermodel
+#print axioms PalomarCorpus.E251.PaperStatementsF.finite_perturbation_stability
+#print axioms PalomarCorpus.E251.PaperStatementsG.carryPartialSum_eq
+#print axioms PalomarCorpus.E251.PaperStatementsG.polynomial_countermodel
+#print axioms PalomarCorpus.E251.PaperStatementsK.sparse_nonconcentration
+#print axioms PalomarCorpus.E251.PaperStatementsR.shifted_count_bound
+#print axioms PalomarCorpus.E251.PaperStatementsX.long_joint_prime_gap_countermodel
+#print axioms PalomarCorpus.E251.PaperStatementsY.prime_gap_equal_shift_zeroDensity
+#print axioms PalomarCorpus.E251.PaperStatementsY.prime_gap_two_window_sparse
+#print axioms PalomarCorpus.E251.PaperStatementsZA.nonconcentration_does_not_force_irrationality

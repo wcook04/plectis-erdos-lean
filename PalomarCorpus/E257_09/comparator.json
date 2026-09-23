@@ -1,0 +1,13 @@
+{
+  "challenge_module": "PalomarCorpus.E257_09.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257_09",
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStructuresBJ.eventually_seamSupport_agrees"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

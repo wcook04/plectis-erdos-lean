@@ -1,5 +1,7 @@
 import ErdosProblems.Erdos257.FatalBorrowPositiveResidualPacket
 import Erdos257PeriodNoncollapse.HalfResetSqrtEscapeScaleProducers
+import Erdos257PeriodNoncollapse.HalfCylinderMiddleCarryLowerBoundSupplement
+import Erdos257PeriodNoncollapse.HalfUpperResetCriticalBandSupplement
 
 /-!
 # Erdős #257: fatal borrows collide with the middle reset scale

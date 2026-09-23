@@ -1,0 +1,17 @@
+import Solutions.PalomarCorpus.E243_03
+
+#print axioms PalomarCorpus.E243.CompletePaperRecords.canonical_inclusive_logLog_criterion
+#print axioms PalomarCorpus.E243.CompletePaperRecords.canonical_quantitative_record_dichotomy
+#print axioms PalomarCorpus.E243.PaperStatementsI.canonical_negativeError_limsup_gt_one
+#print axioms PalomarCorpus.E243.PaperStatementsM.canonical_recordTheta_eq_zero_iff
+#print axioms PalomarCorpus.E243.PaperStatementsM.canonical_recordTheta_gt_one
+#print axioms PalomarCorpus.E243.PaperStatementsM.canonical_recordTheta_zero_or_gt_one
+#print axioms PalomarCorpus.E243.PaperStructuresT.R_delta_sub_amp_tendsto_zero
+#print axioms PalomarCorpus.E243.PaperStructuresT.Rdelta_bddAbove_iff_amp
+#print axioms PalomarCorpus.E243.PaperStructuresT.amp_bddAbove_iff_sylvester
+#print axioms PalomarCorpus.E243.PaperStructuresT.coprimeMultiplier_cofinal
+#print axioms PalomarCorpus.E243.PaperStructuresT.delta_negPart_comparison
+#print axioms PalomarCorpus.E243.PaperStructuresT.largePrime_coprimeMultiplier
+#print axioms PalomarCorpus.E243.PaperStructuresT.primeBlock_supply
+#print axioms PalomarCorpus.E243.PaperStructuresT.recordAmplified
+#print axioms PalomarCorpus.E243.PaperStructuresV.canc_lt_of_amp_le

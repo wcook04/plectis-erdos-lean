@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ExternalVerification1041PaperStatementsX.Challenge",
+  "solution_module": "Solutions.ExternalVerification1041PaperStatementsX",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041PaperStatementsX.lobe_perimeter_gt",
+    "Erdos249257.ExternalVerification1041PaperStatementsX.one_root_gamma_false"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

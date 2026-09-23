@@ -1,0 +1,262 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: v0.4
+project:
+  name: 'Erdős #249: independent restatements of refereed paper-linked theorems'
+  description: >-
+    16 theorems of the substantive development for Erdős problem #249
+    restated against Mathlib alone and transported from the source declarations named
+    below. The substantive formalization lives in ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinaryDilationCountermodel in this repository and at
+    public commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84 of https://github.com/wcook04/plectis-erdos. This entry is a comparison
+    interface over that development. 15 statements transport by direct term
+    application, which certifies definitional identity with the source statement;
+    1 transport through a tactic bridge, which certifies implication only. The
+    parent Erdős problem remains open.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - "11A25"
+  - "11B83"
+sources:
+- title: 'Erdős #249: paper-linked Lean development'
+  authors:
+  - Will Cook
+  id: https://github.com/wcook04/plectis-erdos
+  type: original-proof
+  relationship: other
+  note: >-
+    The source declarations this entry transports, at commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84.
+    Novelty is unassessed and the parent problem is not claimed as solved.
+  license: Apache-2.0
+  author_endorsement: participated
+- title: 'Erdős Problem #249'
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com/249
+  type: web discussion
+  relationship: background
+  note: The catalogue supplies the problem statement and references.
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+status:
+  scope: Independent restatements of 16 refereed declarations for Erdős problem #249.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 16
+  sorry_boundary: Only the trusted Challenge theorem bodies carry placeholders.
+  axiom_audit_status: pending fresh target-toolchain axiom audit
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  development_status: substantive
+  local_proof_provenance: ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinaryDilationCountermodel in this repository, which is the same development published at https://github.com/wcook04/plectis-erdos commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+  canonical_claim_status: generated comparison interface over substantive Lean in this repository
+  main_results:
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAL.basePower_dilation_not_universal
+    file: Solutions/ExternalVerification249PaperStatementsAL.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAL/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAL.basePower_dilation_not_universal
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.basePower_dilation_not_universal
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/SquareBlockBinaryDilationCountermodel.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAL.digit_block
+    file: Solutions/ExternalVerification249PaperStatementsAL.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAL/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAL.digit_block
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.digit_block
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/SquareBlockBinaryDilationCountermodel.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAL.exists_irrational_basePower_bounded_away
+    file: Solutions/ExternalVerification249PaperStatementsAL.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAL/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAL.exists_irrational_basePower_bounded_away
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.exists_irrational_basePower_bounded_away
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/SquareBlockBinaryDilationCountermodel.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAL.fract_mem_Icc_of_no_three_equal
+    file: Solutions/ExternalVerification249PaperStatementsAL.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAL/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAL.fract_mem_Icc_of_no_three_equal
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.fract_mem_Icc_of_no_three_equal
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/SquareBlockBinaryDilationCountermodel.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAL.fract_two_pow_mul_xi_mem_Icc
+    file: Solutions/ExternalVerification249PaperStatementsAL.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAL/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAL.fract_two_pow_mul_xi_mem_Icc
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.fract_two_pow_mul_xi_mem_Icc
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/SquareBlockBinaryDilationCountermodel.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAL.irrational_tail_zero
+    file: Solutions/ExternalVerification249PaperStatementsAL.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAL/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAL.irrational_tail_zero
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.irrational_tail_zero
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/SquareBlockBinaryDilationCountermodel.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAL.irrational_xi
+    file: Solutions/ExternalVerification249PaperStatementsAL.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAL/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAL.irrational_xi
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.irrational_xi
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/SquareBlockBinaryDilationCountermodel.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAL.no_three_consecutive_equal
+    file: Solutions/ExternalVerification249PaperStatementsAL.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAL/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAL.no_three_consecutive_equal
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.no_three_consecutive_equal
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/SquareBlockBinaryDilationCountermodel.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAL.not_approaches_int
+    file: Solutions/ExternalVerification249PaperStatementsAL.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAL/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAL.not_approaches_int
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.not_approaches_int
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/SquareBlockBinaryDilationCountermodel.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: derived
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAL.not_eventually_periodic
+    file: Solutions/ExternalVerification249PaperStatementsAL.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAL/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAL.not_eventually_periodic
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.not_eventually_periodic
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/SquareBlockBinaryDilationCountermodel.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAL.not_near_integer_along_powers_of_two
+    file: Solutions/ExternalVerification249PaperStatementsAL.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAL/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAL.not_near_integer_along_powers_of_two
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.not_near_integer_along_powers_of_two
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/SquareBlockBinaryDilationCountermodel.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAL.one_div_eight_le_abs_sub_int
+    file: Solutions/ExternalVerification249PaperStatementsAL.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAL/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAL.one_div_eight_le_abs_sub_int
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.one_div_eight_le_abs_sub_int
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/SquareBlockBinaryDilationCountermodel.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAL.one_div_eight_le_dist_xi
+    file: Solutions/ExternalVerification249PaperStatementsAL.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAL/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAL.one_div_eight_le_dist_xi
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.one_div_eight_le_dist_xi
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/SquareBlockBinaryDilationCountermodel.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAL.strict_lower_bound_needed
+    file: Solutions/ExternalVerification249PaperStatementsAL.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAL/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAL.strict_lower_bound_needed
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.strict_lower_bound_needed
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/SquareBlockBinaryDilationCountermodel.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAL.tail_mem_Icc
+    file: Solutions/ExternalVerification249PaperStatementsAL.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAL/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAL.tail_mem_Icc
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.tail_mem_Icc
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/SquareBlockBinaryDilationCountermodel.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAL.upper_bound_needed_for_every_q
+    file: Solutions/ExternalVerification249PaperStatementsAL.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAL/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAL.upper_bound_needed_for_every_q
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.upper_bound_needed_for_every_q
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/SquareBlockBinaryDilationCountermodel.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+automation:
+  methods:
+  - method: agent
+    models:
+    - Anthropic Claude
+    framework: Lean 4 and Mathlib
+    tool_setup: Statement wrappers generated mechanically from the refereed paper statements and elaborated before acceptance
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    Every statement was refereed against the paper in the coverage ledger before this
+    wrapper was generated. The transport proof is the fidelity evidence: a direct term
+    application certifies definitional identity with the refereed source statement.
+    No independent mathematical review outside the author is claimed.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

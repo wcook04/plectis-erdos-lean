@@ -1,0 +1,151 @@
+version: v0.4
+project:
+  name: 'Erdős #251, note sections 1 to 4: introduction; the prime series and its actual tails; integral shifts: an exact algebraic classification'
+  description: >-
+    This entry states 10 theorems that only the short note for Erdős problem #251 states, in sections 1 (introduction), 2 (the prime series and its actual tails), 3 (integral shifts: an exact algebraic classification) and 4 (a local certificate and the missing prime input): the corollary “a rational sum with the stated prime-gap statistics” (section 1), as short_joint_prime_gap_countermodel; the theorem “prime-to-gap identity” (section 2), as irrational_realPrimeGapTail_zero_iff, irrational_tsum_primeDyadicTerm_iff_primeGap, realPrimeGapTail_eq_tsum_shifted_gaps, realPrimeGapTail_recurrence and realPrimeGapTail_zero; the theorem “exact rationality classification” (section 3), as real_orbit_exact_den_and_shift; the proposition “two consecutive differences of absolute value less than one” (section 4), as signed_two_window_consequences and signed_two_window_iff; the proposition “finite separation criterion” (section 4.1), as irrational_prime_series_of_finite_truncation.
+
+    short_joint_prime_gap_countermodel assumes the named input PrimeNumberTheorem as a hypothesis: the prime number theorem in the form p_n / (n log n) → 1, where p_n is the n-th prime counted from p_0 = 2. This is the prime number theorem of Hadamard and de la Vallée Poussin (1896); it enters as a hypothesis and this repository does not prove it.
+
+    short_joint_prime_gap_countermodel assumes the named input SchlagePuchtaLemma4 as a hypothesis: for every k and every nonzero polynomial F in k + 1 variables with integer coefficients, the indices n with F(g_n, g_(n+1), ..., g_(n+k)) = 0 form a set of natural density zero, where g_n = p_(n+1) - p_n is the n-th gap between consecutive primes. This is Lemma 4 of Schlage-Puchta (Acta Arithmetica 126, 2007), proved there with Selberg's sieve; it is a published result that this repository does not formalise.
+
+    7 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 3 are derived from the source declaration by a short tactic proof, which certifies implication.
+
+    Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
+
+    Erdős problem #251 remains open, and no theorem in this entry decides it.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - "11J72"
+  - "11N05"
+  - "11N36"
+  - "11A41"
+  - "11B83"
+  - "11Y16"
+  - "68V20"
+sources:
+- title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: "The compared theorems are independently restated Lean theorems proved in this repository and described in the public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos."
+  license: Apache-2.0
+  author_endorsement: participated
+- title: "The irrationality of some number theoretical series"
+  authors:
+  - "Jan-Christoph Schlage-Puchta"
+  id: "10.4064/aa126-4-1"
+  type: "paper"
+  relationship: "background"
+  note: "Lemma 4 is the named input SchlagePuchtaLemma4, which the compared theorems that name it assume as a hypothesis; this repository does not formalise it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: Erdős Problems catalogue
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com
+  type: web discussion
+  relationship: background
+  note: "Catalogue numbering and status of the parent problem."
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+status:
+  scope: "One Comparator configuration selecting the 10 theorems listed in PalomarCorpus/E251_05/comparator.json, from the Lean development for Erdős problem #251. The problem's theorems are packed, in the order the papers state them, into the 8 entries PalomarCorpus/E251_01 to PalomarCorpus/E251_08, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification251* directories are internal regression inventory and are not selected."
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 10
+  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E251_05/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
+  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: "PalomarCorpus.E251.PaperStatementsD.signed_two_window_consequences"
+    file: "Solutions/PalomarCorpus/E251_05/PaperStatementsD.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E251_05/comparator.json"
+  - declaration: "PalomarCorpus.E251.PaperStatementsD.signed_two_window_iff"
+    file: "Solutions/PalomarCorpus/E251_05/PaperStatementsD.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E251_05/comparator.json"
+  - declaration: "PalomarCorpus.E251.PaperStatementsG.irrational_realPrimeGapTail_zero_iff"
+    file: "Solutions/PalomarCorpus/E251_05/PaperStatementsG.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E251_05/comparator.json"
+  - declaration: "PalomarCorpus.E251.PaperStatementsG.irrational_tsum_primeDyadicTerm_iff_primeGap"
+    file: "Solutions/PalomarCorpus/E251_05/PaperStatementsG.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E251_05/comparator.json"
+  - declaration: "PalomarCorpus.E251.PaperStatementsG.realPrimeGapTail_eq_tsum_shifted_gaps"
+    file: "Solutions/PalomarCorpus/E251_05/PaperStatementsG.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E251_05/comparator.json"
+  - declaration: "PalomarCorpus.E251.PaperStatementsG.realPrimeGapTail_recurrence"
+    file: "Solutions/PalomarCorpus/E251_05/PaperStatementsG.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E251_05/comparator.json"
+  - declaration: "PalomarCorpus.E251.PaperStatementsG.realPrimeGapTail_zero"
+    file: "Solutions/PalomarCorpus/E251_05/PaperStatementsG.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E251_05/comparator.json"
+  - declaration: "PalomarCorpus.E251.PaperStatementsJ.real_orbit_exact_den_and_shift"
+    file: "Solutions/PalomarCorpus/E251_05/PaperStatementsJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E251_05/comparator.json"
+  - declaration: "PalomarCorpus.E251.PaperStatementsQ.irrational_prime_series_of_finite_truncation"
+    file: "Solutions/PalomarCorpus/E251_05/PaperStatementsQ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E251_05/comparator.json"
+  - declaration: "PalomarCorpus.E251.PaperStatementsZ.short_joint_prime_gap_countermodel"
+    file: "Solutions/PalomarCorpus/E251_05/PaperStatementsZ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E251_05/comparator.json"
+    literature_dependencies:
+    - statement: "PrimeNumberTheorem: the prime number theorem in the form p_n / (n log n) → 1, where p_n is the n-th prime counted from p_0 = 2"
+      source: "Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems"
+    - statement: "SchlagePuchtaLemma4: for every k and every nonzero polynomial F in k + 1 variables with integer coefficients, the indices n with F(g_n, g_(n+1), ..., g_(n+k)) = 0 form a set of natural density zero, where g_n = p_(n+1) - p_n is the n-th gap between consecutive primes"
+      source: "The irrationality of some number theoretical series"
+  development_status: substantive
+  local_proof_provenance: "the proof modules ErdosProblems.Erdos251 in this repository, imported by Solutions.PalomarCorpus.E251_05; the Solutions.ExternalVerification251* family modules are a regression mirror of the same proofs and are not imported by this configuration"
+  canonical_claim_status: "problem-level Comparator entry over substantive Lean in this repository"
+automation:
+  methods:
+  - method: manual
+    models: []
+    framework: Mathematical interpretation and claim-boundary review
+    tool_setup: Human-directed scope and significance review
+  - method: agent
+    models:
+    - Anthropic Claude
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+    cost:
+      wall_time: not tracked
+      spend_usd: subscription-based
+      hardware: local machine
+      prompting_notes: n/a
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    Every generated restatement was bound to a paper statement and refereed in the eight-paper coverage ledger before its wrapper was generated, and its transport proof was elaborated before the statement was accepted. The author selected the statements and is responsible for the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

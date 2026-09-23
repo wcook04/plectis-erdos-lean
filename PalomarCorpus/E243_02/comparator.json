@@ -1,0 +1,27 @@
+{
+  "challenge_module": "PalomarCorpus.E243_02.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E243_02",
+  "theorem_names": [
+    "PalomarCorpus.E243.CompletePaperRecords.arithmetic_weighted_record_dichotomy",
+    "PalomarCorpus.E243.CompletePaperRecords.canonical_weighted_record_excess",
+    "PalomarCorpus.E243.PaperStatementsA.centeredState_zero_absorbing",
+    "PalomarCorpus.E243.PaperStatementsA.nextTailState_eq_sub_centered",
+    "PalomarCorpus.E243.PaperStatementsA.primePower_persists",
+    "PalomarCorpus.E243.PaperStatementsA.reduced_denominator_valuation_le_max",
+    "PalomarCorpus.E243.PaperStatementsA.reduced_denominator_valuation_strict_loss",
+    "PalomarCorpus.E243.PaperStatementsA.reduced_denominator_valuation_transition",
+    "PalomarCorpus.E243.PaperStatementsA.reduced_second_order_int",
+    "PalomarCorpus.E243.PaperStatementsA.state_scale",
+    "PalomarCorpus.E243.PaperStatementsA.sylvesterDefect_mul_nextTailState",
+    "PalomarCorpus.E243.PaperStatementsA.sylvesterNext_eq_of_centered_zero",
+    "PalomarCorpus.E243.PaperStatementsA.sylvesterNext_eventually_of_centered_zero",
+    "PalomarCorpus.E243.PaperStatementsA.unit_word_saturates_old_modulus",
+    "PalomarCorpus.E243.PaperStatementsH.cancellationFree_curvature_square"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

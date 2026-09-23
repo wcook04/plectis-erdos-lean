@@ -15,9 +15,9 @@ project:
 
 palomar_qualification:
   status: "candidate_focused_lean_gate_passed"
-  selected_project: "formal_math/erdos257_period_noncollapse"
-  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification257TerminalScaledVanishing/comparator.json"
-  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification257TerminalScaledVanishing/formalization.yaml"
+  selected_project: "."
+  comparator_config: "ExternalVerification257TerminalScaledVanishing/comparator.json"
+  formalization_metadata: "ExternalVerification257TerminalScaledVanishing/formalization.yaml"
   repository_scope: "private_package_not_yet_pinned_in_public_repository"
   challenge_dependency_boundary: "Mathlib_only"
   replay_status: "focused_four_file_lean_green_exact_axiom_trio_supported_macos_entrypoint_typed_exit_75_systemd_unavailable_terminal_comparator_pair_pending_linux_runner"
@@ -34,27 +34,6 @@ palomar_qualification:
 classification:
   arxiv: ["math.NT"]
   msc2020: ["11J72", "11A25"]
-
-editorial_assessment:
-  plectis_signal:
-    score: 96
-    band: "summit"
-    components:
-      theorem_closure: 25
-      parent_problem_proximity: 25
-      mechanism_depth: 19
-      hypothesis_sharpness: 13
-      consequence_reach: 14
-    scale: "0 is the weakest coherent family still worth Comparator admission; 100 is the strongest direct contribution in the current portfolio"
-    authority_boundary: >-
-      Portfolio-relative editorial reading priority only, not proof authority,
-      novelty, Comparator replay, Palomar acceptance, mechanical readiness, or
-      submission authorization.
-    rationale: >-
-      The theorem reaches an exact infinite-support rational counterexample and
-      negates the universal parent assertion from the weakest sequential
-      terminal-only producer currently formalized. Its hypothesis remains open,
-      which keeps it below the unconditional reciprocal-support theorem.
 
 sources:
   - title: "Terminal scaled-vanishing counterexample endpoint for Erdős Problem 257"

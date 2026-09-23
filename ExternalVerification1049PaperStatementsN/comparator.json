@@ -1,0 +1,15 @@
+{
+  "challenge_module": "ExternalVerification1049PaperStatementsN.Challenge",
+  "solution_module": "Solutions.ExternalVerification1049PaperStatementsN",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1049PaperStatementsN.height_and_hankel_deficits",
+    "Erdos249257.ExternalVerification1049PaperStatementsN.integer_scalar_content",
+    "Erdos249257.ExternalVerification1049PaperStatementsN.pade_summand_bound_and_gap"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

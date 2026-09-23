@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ExternalVerification1049PaperStatementsI.Challenge",
+  "solution_module": "Solutions.ExternalVerification1049PaperStatementsI",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1049PaperStatementsI.rational_base_measure_uniform",
+    "Erdos249257.ExternalVerification1049PaperStatementsI.thirtyoneFour_power_measure_lt_301"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

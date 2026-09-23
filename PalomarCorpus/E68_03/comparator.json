@@ -1,0 +1,19 @@
+{
+  "challenge_module": "PalomarCorpus.E68_03.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E68_03",
+  "theorem_names": [
+    "PalomarCorpus.E68.PaperStatementsB.radius_no_eventual_ratio_upper",
+    "PalomarCorpus.E68.PaperStatementsB.radius_not_littleO",
+    "PalomarCorpus.E68.PaperStatementsB.square_subsequence_radius",
+    "PalomarCorpus.E68.ResidualIntegerClass.equal_moment_residual_integer_difference",
+    "PalomarCorpus.E68.ResidualIntegerClass.residual_transparency",
+    "PalomarCorpus.E68.ResidualIntegerClass.summable_fullResidual",
+    "PalomarCorpus.E68.ResidualIntegerClass.zero_moment_residual_integral"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

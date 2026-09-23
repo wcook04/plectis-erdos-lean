@@ -1,0 +1,27 @@
+{
+  "challenge_module": "PalomarCorpus.E257_33.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257_33",
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStatementsAA.paper_bounded_double_or_recycle_countermodel",
+    "PalomarCorpus.E257.PaperStatementsAA.paper_exists_seeded_bounded_double_or_recycle_model",
+    "PalomarCorpus.E257.PaperStatementsAA.paper_relationInvariant_channels_det_eq_zero",
+    "PalomarCorpus.E257.PaperStatementsAA.paper_relationInvariant_channels_rank_le_one",
+    "PalomarCorpus.E257.PaperStatementsAR.paper_finite_row_value_ne_half",
+    "PalomarCorpus.E257.PaperStatementsAR.paper_fractional_mass_bound_not_necessary",
+    "PalomarCorpus.E257.PaperStatementsAR.paper_fractional_mass_bound_suffices_for_sharp_capacity",
+    "PalomarCorpus.E257.PaperStatementsAS.paper_skipped_core_recycling_witness_bounded",
+    "PalomarCorpus.E257.PaperStatementsAX.paper_exact_row_double_or_recycle",
+    "PalomarCorpus.E257.PaperStatementsAX.paper_exact_row_example_six_and_eleven",
+    "PalomarCorpus.E257.PaperStatementsAX.paper_returning_endpoint_may_fail_to_grow",
+    "PalomarCorpus.E257.PaperStatementsK.paper_critical_crossing_support_is_greedy_prefix",
+    "PalomarCorpus.E257.PaperStatementsL.paper_cofiniteRightTail_ne_zero_centeredEndpoint",
+    "PalomarCorpus.E257.PaperStructuresBG.paper_protected_row_crossing_beyond_cutoff",
+    "PalomarCorpus.E257.PaperStructuresBG.paper_protected_row_endpoint_growth"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

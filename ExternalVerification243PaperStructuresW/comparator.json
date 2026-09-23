@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification243PaperStructuresW.Challenge",
+  "solution_module": "Solutions.ExternalVerification243PaperStructuresW",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification243PaperStructuresW.unitRecordIncrement_sylvesterNext"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

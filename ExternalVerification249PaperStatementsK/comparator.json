@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification249PaperStatementsK.Challenge",
+  "solution_module": "Solutions.ExternalVerification249PaperStatementsK",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249PaperStatementsK.b6_mobius_incidence_unimodular_and_injective"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

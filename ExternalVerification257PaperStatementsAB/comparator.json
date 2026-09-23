@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification257PaperStatementsAB.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStatementsAB",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStatementsAB.relationInvariantLinearChannels_det_eq_zero"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

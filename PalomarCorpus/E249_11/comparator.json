@@ -1,0 +1,25 @@
+{
+  "challenge_module": "PalomarCorpus.E249_11.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E249_11",
+  "theorem_names": [
+    "PalomarCorpus.E249.PaperStatementsAT.diagonal_certificate_unfolded",
+    "PalomarCorpus.E249.PaperStatementsAT.integral_tail_forces_upper_endpoint_residue",
+    "PalomarCorpus.E249.PaperStatementsAT.irrational_iff_diagonal_orbit_nonintegrality",
+    "PalomarCorpus.E249.PaperStatementsAT.irrational_of_diagonal_orbit_separation_supply",
+    "PalomarCorpus.E249.PaperStatementsAU.irrational_of_short_window_diagonal_supply",
+    "PalomarCorpus.E249.PaperStatementsAU.irrational_of_upper_endpoint_gap_supply",
+    "PalomarCorpus.E249.PaperStatementsAU.pointwise_completeness_supplies_some_depth",
+    "PalomarCorpus.E249.PaperStatementsAU.upper_endpoint_condition_iff",
+    "PalomarCorpus.E249.PaperStatementsAU.upper_endpoint_gap_nonintegral",
+    "PalomarCorpus.E249.PaperStatementsAX.abs_orbit_sub_rawApprox_lt",
+    "PalomarCorpus.E249.PaperStatementsAX.oddGuarded_depth_eq_prescribed",
+    "PalomarCorpus.E249.PaperStatementsAX.rawApprox_separation_of_orbit_separation",
+    "PalomarCorpus.E249.PaperStatementsAX.te_chain_relations"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

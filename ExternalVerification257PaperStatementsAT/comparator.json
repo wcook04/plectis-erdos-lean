@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ExternalVerification257PaperStatementsAT.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStatementsAT",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStatementsAT.binaryCoeffTail_supportCoeff_coe_finset_le_card",
+    "Erdos249257.ExternalVerification257PaperStatementsAT.paper_terminal_strip_witness_six"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,27 @@
+{
+  "challenge_module": "PalomarCorpus.E249_23.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E249_23",
+  "theorem_names": [
+    "PalomarCorpus.E249.PaperStatementsAK.two_pow_odd_eq",
+    "PalomarCorpus.E249.PaperStatementsAT.actualLcmRawErrorRadius_tendsto_zero",
+    "PalomarCorpus.E249.PaperStatementsAX.abs_actualLcmTailOrbit_sub_rawApprox_lt_paper_form",
+    "PalomarCorpus.E249.PaperStatementsAX.actualLcmRawApprox_isRat",
+    "PalomarCorpus.E249.PaperStatementsAX.corridor_escape_and_irrational_of_magnitude",
+    "PalomarCorpus.E249.PaperStatementsAX.irrational_of_lower_escape_supply",
+    "PalomarCorpus.E249.PaperStatementsAX.irrational_of_terminalDominanceSupply",
+    "PalomarCorpus.E249.PaperStatementsAX.paperTeChain_relations",
+    "PalomarCorpus.E249.PaperStatementsAX.powerTwoActualLcmTopEdgeResidueGapSupply_of_paperAdjacentSuffixMidband",
+    "PalomarCorpus.E249.PaperStatementsAX.teChain_item_five_unfolded",
+    "PalomarCorpus.E249.PaperStatementsAX.teChain_item_four_unfolded",
+    "PalomarCorpus.E249.PaperStatementsAX.teChain_item_three_unfolded",
+    "PalomarCorpus.E249.PaperStatementsAX.teChain_item_two_unfolded",
+    "PalomarCorpus.E249.PaperStatementsAX.terminalDominance_orbit_nonintegral",
+    "PalomarCorpus.E249.PaperStatementsAX.topEdgeResidueGap_or_of_paperAdjacentSuffixMidband"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,16 @@
+{
+  "challenge_module": "ExternalVerification1049PaperStatementsK.Challenge",
+  "solution_module": "Solutions.ExternalVerification1049PaperStatementsK",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1049PaperStatementsK.charge_ceilings",
+    "Erdos249257.ExternalVerification1049PaperStatementsK.forcing_term",
+    "Erdos249257.ExternalVerification1049PaperStatementsK.power_bracket",
+    "Erdos249257.ExternalVerification1049PaperStatementsK.scalar_margin"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

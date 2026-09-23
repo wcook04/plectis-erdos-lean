@@ -1,0 +1,18 @@
+{
+  "challenge_module": "PalomarCorpus.E269_08.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E269_08",
+  "theorem_names": [
+    "PalomarCorpus.E269.PaperStatementsA.admissible_modular_minors",
+    "PalomarCorpus.E269.PaperStatementsC.dyadic_alphabet_whole",
+    "PalomarCorpus.E269.PaperStatementsC.paper_finite_endpoint_obstruction",
+    "PalomarCorpus.E269.PaperStatementsC.short_actual_orbit",
+    "PalomarCorpus.E269.PaperStatementsC.short_fixed_split_bridge",
+    "PalomarCorpus.E269.PaperStatementsG.short_window_equivalence"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

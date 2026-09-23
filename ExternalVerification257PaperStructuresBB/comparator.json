@@ -1,0 +1,30 @@
+{
+  "challenge_module": "ExternalVerification257PaperStructuresBB.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStructuresBB",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStructuresBB.SeamTwoSidedDyadicCellEscape.twoSided",
+    "Erdos249257.ExternalVerification257PaperStructuresBB.largestSkipLateAt_fourteen",
+    "Erdos249257.ExternalVerification257PaperStructuresBB.seamGreedy_terminal_false_iff_upperOrMiddle",
+    "Erdos249257.ExternalVerification257PaperStructuresBB.seamUpperBranch_remainder_add_resetCharge_eq",
+    "Erdos249257.ExternalVerification257PaperStructuresBB.mem_seamGreedySupport_iff_scaled",
+    "Erdos249257.ExternalVerification257PaperStructuresBB.paperResetSqrtEscape_iff_square",
+    "Erdos249257.ExternalVerification257PaperStructuresBB.seamPerturbedFamily_gap_pos",
+    "Erdos249257.ExternalVerification257PaperStructuresBB.seamPerturbedFamily_oldSum_injective",
+    "Erdos249257.ExternalVerification257PaperStructuresBB.seamPerturbedFamily_separated",
+    "Erdos249257.ExternalVerification257PaperStructuresBB.seamPerturbedFamily_pulseCap_lt_three_gap",
+    "Erdos249257.ExternalVerification257PaperStructuresBB.wordPulse_le",
+    "Erdos249257.ExternalVerification257PaperStructuresBB.exists_seamWord_minimal_above",
+    "Erdos249257.ExternalVerification257PaperStructuresBB.integerGreedyBits_length",
+    "Erdos249257.ExternalVerification257PaperStructuresBB.seamAboveWord_minimal",
+    "Erdos249257.ExternalVerification257PaperStructuresBB.seamAboveWord_strict",
+    "Erdos249257.ExternalVerification257PaperStructuresBB.seamWeights_length_eq",
+    "Erdos249257.ExternalVerification257PaperStructuresBB.seamAdjacentCut_below_admissible",
+    "Erdos249257.ExternalVerification257PaperStructuresBB.seamAdjacentCut_below_maximal"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -16,9 +16,9 @@ project:
 
 palomar_qualification:
   status: "candidate_focused_kernel_audit_passed_public_pin_and_terminal_replay_pending"
-  selected_project: "formal_math/erdos257_period_noncollapse"
-  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification249CarryRankFrontier/comparator.json"
-  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification249CarryRankFrontier/formalization.yaml"
+  selected_project: "."
+  comparator_config: "ExternalVerification249CarryRankFrontier/comparator.json"
+  formalization_metadata: "ExternalVerification249CarryRankFrontier/formalization.yaml"
   repository_scope: "public_pinned_snapshot_not_yet_prepared"
   challenge_lines: 144
   challenge_bytes: 5543
@@ -33,19 +33,6 @@ palomar_qualification:
 classification:
   arxiv: ["math.NT", "math.RA"]
   msc2020: ["11J72", "11C20"]
-
-editorial_assessment:
-  plectis_signal:
-    score: 91
-    band: "summit"
-    components:
-      theorem_closure: 23
-      parent_problem_proximity: 21
-      mechanism_depth: 19
-      hypothesis_sharpness: 15
-      consequence_reach: 13
-    scale: "0 is the weakest coherent family still worth Comparator admission; 100 is the strongest direct contribution in the current portfolio"
-    authority_boundary: "portfolio-relative editorial judgment, not proof authority, novelty, Palomar acceptance, mechanical readiness, or submission authorization"
 
 sources:
   - title: "Erdős Problems #249"

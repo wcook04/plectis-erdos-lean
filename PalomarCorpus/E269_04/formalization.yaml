@@ -1,0 +1,172 @@
+version: v0.4
+project:
+  name: 'Erdős #269, record section 6: bounding the tails and clearing a rational denominator'
+  description: >-
+    This entry states 6 theorems that the long record for Erdős problem #269 states in section 6 (bounding the tails and clearing a rational denominator): the proposition “exact denominators and minimal clearing” (section 6), as exact_denominators_and_threshold_clearing, clearingCondition_iff_max, firstClearingIndex_le_sufficient, firstClearingIndex_minimal, firstClearingIndex_spec and scaled_state_is_integer_iff_firstClearingIndex_le.
+
+    5 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement.
+
+    Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
+
+    Erdős problem #269 remains open, and no theorem in this entry decides it.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.NT
+  - math.DS
+  msc2020:
+  - "11J72"
+  - "11B83"
+  - "11A05"
+  - "11A07"
+  - "15A03"
+sources:
+- title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: "The compared theorems are independently restated Lean theorems proved in this repository and described in the public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos."
+  license: Apache-2.0
+  author_endorsement: participated
+- title: "Old and New Problems and Results in Combinatorial Number Theory"
+  authors:
+  - "Paul Erdős"
+  - "Ronald L. Graham"
+  id: "https://mathweb.ucsd.edu/~ronspubs/80_11_number_theory.pdf"
+  type: "book"
+  relationship: "background"
+  note: "Page 65 states the irrationality question for the reciprocal sum of running least common multiples, including the finite prime set case treated here; no theorem of this entry is taken from it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "On the irrationality of certain series: problems and results"
+  authors:
+  - "Paul Erdős"
+  id: "10.1017/CBO9780511897184.009"
+  type: "paper"
+  relationship: "background"
+  note: "Page 106 restates the question among Erdős's irrationality problems; it supplies the problem statement only, and no proof used here."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Letter to the Editor, Fibonacci Quarterly 12 (1974), no. 4, page 335"
+  authors:
+  - "Paul Erdős"
+  id: "https://www.fq.math.ca/Scanned/12-4/letter.pdf"
+  type: "paper"
+  relationship: "background"
+  note: "Poses the full series as a conjecture and asserts irrationality after retaining only the distinct running least common multiple values; that de-duplicated variant is not treated by any compared declaration."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Comment on Erdős Problem #269, erdosproblems.com forum thread 269, 26 June 2026"
+  authors:
+  - "Steve Fan"
+  id: "https://www.erdosproblems.com/forum/thread/269"
+  type: "web discussion"
+  relationship: "background"
+  note: "Gives the running least common multiple factorisation identity for an arbitrary finite prime set, the two-prime factorisation of the repeated sum with its Hecke-Mahler reduction and transcendence conclusion, and the remark that the argument does not appear to extend to three or more primes. The identity smoothPrefixLcm_eq_threePrimeHeight formalises his identity at three primes and is not claimed as new; the compared two-prime theorems state the transcendence conclusion with the Bugeaud-Laurent theorem as a named hypothesis, and no priority over this comment is claimed."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Transcendence and continued fraction expansion of values of Hecke-Mahler series, Acta Arithmetica 209 (2023), 59-90"
+  authors:
+  - "Yann Bugeaud"
+  - "Michel Laurent"
+  id: "10.4064/aa220323-18-1"
+  type: "paper"
+  relationship: "background"
+  note: "Theorem 1.1 supplies the transcendence of the Hecke-Mahler value behind the two-prime comparison; the compared two-prime theorems assume it as the named hypothesis BugeaudLaurentTranscendence and do not formalise it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Arithmetic properties of certain functions in several variables III, Bulletin of the Australian Mathematical Society 16 (1977), 15-47"
+  authors:
+  - "John H. Loxton"
+  - "Alfred J. van der Poorten"
+  type: "paper"
+  relationship: "background"
+  note: "Obtains the zero-shift case of the transcendence theorem used for the two-prime comparison; the compared two-prime theorems assume that case through the named hypothesis BugeaudLaurentTranscendence and do not formalise it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: Erdős Problems catalogue
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com
+  type: web discussion
+  relationship: background
+  note: "Catalogue numbering and status of the parent problem."
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+status:
+  scope: "One Comparator configuration selecting the 6 theorems listed in PalomarCorpus/E269_04/comparator.json, from the Lean development for Erdős problem #269. The problem's theorems are packed, in the order the papers state them, into the 11 entries PalomarCorpus/E269_01 to PalomarCorpus/E269_11, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification269* directories are internal regression inventory and are not selected."
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 6
+  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E269_04/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
+  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: "PalomarCorpus.E269.ExactDenominator.exact_denominators_and_threshold_clearing"
+    file: "Solutions/PalomarCorpus/E269_04/ExactDenominator.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E269_04/comparator.json"
+  - declaration: "PalomarCorpus.E269.PaperStatementsA.clearingCondition_iff_max"
+    file: "Solutions/PalomarCorpus/E269_04/PaperStatementsA.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E269_04/comparator.json"
+  - declaration: "PalomarCorpus.E269.PaperStatementsF.firstClearingIndex_le_sufficient"
+    file: "Solutions/PalomarCorpus/E269_04/PaperStatementsF.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E269_04/comparator.json"
+  - declaration: "PalomarCorpus.E269.PaperStatementsF.firstClearingIndex_minimal"
+    file: "Solutions/PalomarCorpus/E269_04/PaperStatementsF.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E269_04/comparator.json"
+  - declaration: "PalomarCorpus.E269.PaperStatementsF.firstClearingIndex_spec"
+    file: "Solutions/PalomarCorpus/E269_04/PaperStatementsF.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E269_04/comparator.json"
+  - declaration: "PalomarCorpus.E269.PaperStatementsF.scaled_state_is_integer_iff_firstClearingIndex_le"
+    file: "Solutions/PalomarCorpus/E269_04/PaperStatementsF.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E269_04/comparator.json"
+  development_status: substantive
+  local_proof_provenance: "the proof modules ErdosProblems.Erdos269 in this repository, imported by Solutions.PalomarCorpus.E269_04; the Solutions.ExternalVerification269* family modules are a regression mirror of the same proofs and are not imported by this configuration"
+  canonical_claim_status: "problem-level Comparator entry over substantive Lean in this repository"
+automation:
+  methods:
+  - method: manual
+    models: []
+    framework: Mathematical interpretation and claim-boundary review
+    tool_setup: Human-directed scope and significance review
+  - method: agent
+    models:
+    - Anthropic Claude
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+    cost:
+      wall_time: not tracked
+      spend_usd: subscription-based
+      hardware: local machine
+      prompting_notes: n/a
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    The statements from the hand-written families were checked declaration by declaration against the public problem notes, the reasoning records and the Lean sources in automated review passes run with Anthropic Claude and OpenAI Codex. Every generated restatement was bound to a paper statement and refereed in the eight-paper coverage ledger before its wrapper was generated, and its transport proof was elaborated before the statement was accepted. The author selected the statements and is responsible for the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

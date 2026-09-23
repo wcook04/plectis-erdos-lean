@@ -1,0 +1,15 @@
+{
+  "challenge_module": "ExternalVerification257PaperStructuresH.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStructuresH",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStructuresH.three_le_of_fatal_of_odd",
+    "Erdos249257.ExternalVerification257PaperStructuresH.two_le_of_fatal",
+    "Erdos249257.ExternalVerification257PaperStructuresH.unitNumerator_skipSafe"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

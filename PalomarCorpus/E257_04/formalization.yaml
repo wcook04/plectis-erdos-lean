@@ -1,0 +1,159 @@
+version: v0.4
+project:
+  name: 'Erdős #257, record sections 2.4 to 2.5: the size of the required error bounds; what finite certificates decide'
+  description: >-
+    This entry states 16 theorems that the long record for Erdős problem #257 states in sections 2.4 (the size of the required error bounds) and 2.5 (what finite certificates decide): the proposition “Limits of the specified local summaries” (section 2.4), as affineBinaryOrbit_mod_twoPow_eq, paper_centred_completion_of_fixed_precision, balancedPulse_endpoint_fanout, balancedPulse_label_card_lower_bound, balancedPulse_no_autonomous_decoder and balancedPulse_weighted_pair; the proposition “Weighted denominator budget” (section 2.4), as skipSum_den_dvd_prod and weighted_denominator_budget; the theorem “One-sidedness” (section 2.5), as certificate_of_existsFatalHalfGap, certifiedTailBound_cast, certifiedWordValue_cast, existsFatalHalfGap_iff_exists_certificate, existsFatalHalfGap_of_certificate, mersenneTail_eq_sum_add, scaledMersenneWeight_cast and paper_one_sidedness.
+
+    12 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 4 are derived from the source declaration by a short tactic proof, which certifies implication.
+
+    Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
+
+    Erdős problem #257 remains open, and no theorem in this entry decides it.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.NT
+  - math.CA
+  - math.DS
+  msc2020:
+  - "11J72"
+  - "11A25"
+  - "11A07"
+  - "11B37"
+  - "11B83"
+  - "28A80"
+  - "11K16"
+sources:
+- title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: "The compared theorems are independently restated Lean theorems proved in this repository and described in the public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos."
+  license: Apache-2.0
+  author_endorsement: participated
+- title: Erdős Problems catalogue
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com
+  type: web discussion
+  relationship: background
+  note: "Catalogue numbering and status of the parent problem."
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+status:
+  scope: "One Comparator configuration selecting the 16 theorems listed in PalomarCorpus/E257_04/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 43 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_43, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 16
+  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E257_04/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
+  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: "PalomarCorpus.E257.PaperStatementsA.affineBinaryOrbit_mod_twoPow_eq"
+    file: "Solutions/PalomarCorpus/E257_04/PaperStatementsA.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_04/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAA.paper_centred_completion_of_fixed_precision"
+    file: "Solutions/PalomarCorpus/E257_04/PaperStatementsAA.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_04/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAA.skipSum_den_dvd_prod"
+    file: "Solutions/PalomarCorpus/E257_04/PaperStatementsAA.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_04/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAA.weighted_denominator_budget"
+    file: "Solutions/PalomarCorpus/E257_04/PaperStatementsAA.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_04/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAE.balancedPulse_endpoint_fanout"
+    file: "Solutions/PalomarCorpus/E257_04/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_04/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAE.balancedPulse_label_card_lower_bound"
+    file: "Solutions/PalomarCorpus/E257_04/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_04/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAE.balancedPulse_no_autonomous_decoder"
+    file: "Solutions/PalomarCorpus/E257_04/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_04/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAE.balancedPulse_weighted_pair"
+    file: "Solutions/PalomarCorpus/E257_04/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_04/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAM.certificate_of_existsFatalHalfGap"
+    file: "Solutions/PalomarCorpus/E257_04/PaperStatementsAM.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_04/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAM.certifiedTailBound_cast"
+    file: "Solutions/PalomarCorpus/E257_04/PaperStatementsAM.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_04/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAM.certifiedWordValue_cast"
+    file: "Solutions/PalomarCorpus/E257_04/PaperStatementsAM.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_04/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAM.existsFatalHalfGap_iff_exists_certificate"
+    file: "Solutions/PalomarCorpus/E257_04/PaperStatementsAM.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_04/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAM.existsFatalHalfGap_of_certificate"
+    file: "Solutions/PalomarCorpus/E257_04/PaperStatementsAM.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_04/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAM.mersenneTail_eq_sum_add"
+    file: "Solutions/PalomarCorpus/E257_04/PaperStatementsAM.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_04/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAM.scaledMersenneWeight_cast"
+    file: "Solutions/PalomarCorpus/E257_04/PaperStatementsAM.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_04/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStructuresS.paper_one_sidedness"
+    file: "Solutions/PalomarCorpus/E257_04/PaperStructuresS.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_04/comparator.json"
+  development_status: substantive
+  local_proof_provenance: "the proof modules Erdos249257, ErdosProblems.Erdos257 in this repository, imported by Solutions.PalomarCorpus.E257_04; the Solutions.ExternalVerification257* family modules are a regression mirror of the same proofs and are not imported by this configuration"
+  canonical_claim_status: "problem-level Comparator entry over substantive Lean in this repository"
+automation:
+  methods:
+  - method: manual
+    models: []
+    framework: Mathematical interpretation and claim-boundary review
+    tool_setup: Human-directed scope and significance review
+  - method: agent
+    models:
+    - Anthropic Claude
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+    cost:
+      wall_time: not tracked
+      spend_usd: subscription-based
+      hardware: local machine
+      prompting_notes: n/a
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    Every generated restatement was bound to a paper statement and refereed in the eight-paper coverage ledger before its wrapper was generated, and its transport proof was elaborated before the statement was accepted. The author selected the statements and is responsible for the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

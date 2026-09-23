@@ -1,0 +1,166 @@
+version: v0.4
+project:
+  name: 'Erdős #1041, record sections 1 to 3: the historical question; trinomials; a small least critical value'
+  description: >-
+    This entry states 14 theorems that the long record for Erdős problem #1041 states in sections 1 (the historical question), 2 (trinomials) and 3 (a small least critical value): the statement labelled res:ani-degree-seven-counterexample-long (section 1), as erdos1041_ani_degree_seven; the theorem “trinomial root connections” (section 2), as complete_trinomial, all_degree_monic_trinomials_whole and all_spokes; the corollary “scale-free form” (section 3), as scaledLowCritical_of_lowCritical; the lemma “circle-slice packing” (section 3), as circle_slice_packing, circle_slice_packing_abstract, cosh_dist_polar, dist_polar_I, exists_polar, polar_zero_zero and circle_slice_packing; the theorem “a lower bound for the number of roots” (section 3), as dual_arity_floor_abstract; the corollary “scaled low-critical connection” (section 3), as scaledLowCriticalFiveHalves_of_lowCritical.
+
+    scaledLowCritical_of_lowCritical and scaledLowCriticalFiveHalves_of_lowCritical assume the named input LowCriticalThirteenTwentyFifths as a hypothesis: every monic squarefree complex polynomial p of degree at least 2 whose least modulus at a critical point is at most 13/25 has two distinct roots joined by a continuous path of total variation less than 2 on which |p| < 1. This is the paper's own theorem on low critical values, whose proof uses the Riemann mapping theorem, the Bergman kernel, a hyperbolic packing argument, the coarea formula and Pólya's inequality; this repository does not formalise it.
+
+    circle_slice_packing_abstract, circle_slice_packing and dual_arity_floor_abstract assume the named input cosh_dist_polar as a hypothesis: the point map pt into a pseudometric space satisfies cosh d(pt(d₁, θ₁), pt(d₂, θ₂)) = cosh d₁ cosh d₂ - sinh d₁ sinh d₂ cos(θ₁ - θ₂) for all real d₁, θ₁, d₂, θ₂. The theorem holds for every pseudometric space and point map with this property; in the hyperbolic plane, in geodesic polar coordinates, the property is the classical hyperbolic law of cosines, which this entry does not prove.
+
+    13 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 1 is derived from the source declaration by a short tactic proof, which certifies implication.
+
+    Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
+
+    A degree-seven counterexample due to ani, formalised in this corpus, refutes the total-variation formulation of Erdős problem #1041; the theorems in this entry keep their stated hypotheses.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.CV
+  - math.CA
+  msc2020:
+  - "30C10"
+  - "30C15"
+  - "31A15"
+  - "26C10"
+sources:
+- title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: "The compared theorems are independently restated Lean theorems proved in this repository and described in the public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos."
+  license: Apache-2.0
+  author_endorsement: participated
+- title: Erdős Problems catalogue
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com
+  type: web discussion
+  relationship: background
+  note: "Catalogue numbering and status of the parent problem."
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+status:
+  scope: "One Comparator configuration selecting the 14 theorems listed in PalomarCorpus/E1041_01/comparator.json, from the Lean development for Erdős problem #1041. The problem's theorems are packed, in the order the papers state them, into the 8 entries PalomarCorpus/E1041_01 to PalomarCorpus/E1041_08, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification1041* directories are internal regression inventory and are not selected."
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 14
+  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E1041_01/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
+  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: "PalomarCorpus.E1041.PaperStatementsA.erdos1041_ani_degree_seven"
+    file: "Solutions/PalomarCorpus/E1041_01/PaperStatementsA.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_01/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsAA.all_degree_monic_trinomials_whole"
+    file: "Solutions/PalomarCorpus/E1041_01/PaperStatementsAA.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_01/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsAA.complete_trinomial"
+    file: "Solutions/PalomarCorpus/E1041_01/PaperStatementsAA.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_01/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsAC.circle_slice_packing"
+    file: "Solutions/PalomarCorpus/E1041_01/PaperStatementsAC.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_01/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsAC.circle_slice_packing_abstract"
+    file: "Solutions/PalomarCorpus/E1041_01/PaperStatementsAC.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_01/comparator.json"
+    literature_dependencies:
+    - statement: "cosh_dist_polar: the point map pt into a pseudometric space satisfies cosh d(pt(d₁, θ₁), pt(d₂, θ₂)) = cosh d₁ cosh d₂ - sinh d₁ sinh d₂ cos(θ₁ - θ₂) for all real d₁, θ₁, d₂, θ₂"
+      source: "Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsAC.dual_arity_floor_abstract"
+    file: "Solutions/PalomarCorpus/E1041_01/PaperStatementsAC.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_01/comparator.json"
+    literature_dependencies:
+    - statement: "cosh_dist_polar: the point map pt into a pseudometric space satisfies cosh d(pt(d₁, θ₁), pt(d₂, θ₂)) = cosh d₁ cosh d₂ - sinh d₁ sinh d₂ cos(θ₁ - θ₂) for all real d₁, θ₁, d₂, θ₂"
+      source: "Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsC.cosh_dist_polar"
+    file: "Solutions/PalomarCorpus/E1041_01/PaperStatementsC.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_01/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsC.dist_polar_I"
+    file: "Solutions/PalomarCorpus/E1041_01/PaperStatementsC.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_01/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsC.exists_polar"
+    file: "Solutions/PalomarCorpus/E1041_01/PaperStatementsC.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_01/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsC.polar_zero_zero"
+    file: "Solutions/PalomarCorpus/E1041_01/PaperStatementsC.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_01/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsH.all_spokes"
+    file: "Solutions/PalomarCorpus/E1041_01/PaperStatementsH.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_01/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsZ.circle_slice_packing"
+    file: "Solutions/PalomarCorpus/E1041_01/PaperStatementsZ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_01/comparator.json"
+    literature_dependencies:
+    - statement: "cosh_dist_polar: the point map pt into a pseudometric space satisfies cosh d(pt(d₁, θ₁), pt(d₂, θ₂)) = cosh d₁ cosh d₂ - sinh d₁ sinh d₂ cos(θ₁ - θ₂) for all real d₁, θ₁, d₂, θ₂"
+      source: "Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsZA.scaledLowCriticalFiveHalves_of_lowCritical"
+    file: "Solutions/PalomarCorpus/E1041_01/PaperStatementsZA.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_01/comparator.json"
+    literature_dependencies:
+    - statement: "LowCriticalThirteenTwentyFifths: every monic squarefree complex polynomial p of degree at least 2 whose least modulus at a critical point is at most 13/25 has two distinct roots joined by a continuous path of total variation less than 2 on which |p| < 1"
+      source: "Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsZA.scaledLowCritical_of_lowCritical"
+    file: "Solutions/PalomarCorpus/E1041_01/PaperStatementsZA.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_01/comparator.json"
+    literature_dependencies:
+    - statement: "LowCriticalThirteenTwentyFifths: every monic squarefree complex polynomial p of degree at least 2 whose least modulus at a critical point is at most 13/25 has two distinct roots joined by a continuous path of total variation less than 2 on which |p| < 1"
+      source: "Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems"
+  development_status: substantive
+  local_proof_provenance: "the proof modules ErdosProblems.Erdos1041 in this repository, imported by Solutions.PalomarCorpus.E1041_01; the Solutions.ExternalVerification1041* family modules are a regression mirror of the same proofs and are not imported by this configuration"
+  canonical_claim_status: "problem-level Comparator entry over substantive Lean in this repository"
+automation:
+  methods:
+  - method: manual
+    models: []
+    framework: Mathematical interpretation and claim-boundary review
+    tool_setup: Human-directed scope and significance review
+  - method: agent
+    models:
+    - Anthropic Claude
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+    cost:
+      wall_time: not tracked
+      spend_usd: subscription-based
+      hardware: local machine
+      prompting_notes: n/a
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    Every generated restatement was bound to a paper statement and refereed in the eight-paper coverage ledger before its wrapper was generated, and its transport proof was elaborated before the statement was accepted. The author selected the statements and is responsible for the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

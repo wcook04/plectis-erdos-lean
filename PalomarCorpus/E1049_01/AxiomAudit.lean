@@ -1,0 +1,27 @@
+import Solutions.PalomarCorpus.E1049_01
+
+#print axioms PalomarCorpus.E1049.PaperStatementsA.contour_enclosure
+#print axioms PalomarCorpus.E1049.PaperStatementsA.four_rpow_mu_lt_thirtyOne
+#print axioms PalomarCorpus.E1049.PaperStatementsA.inv_bvMu_eq
+#print axioms PalomarCorpus.E1049.PaperStatementsA.omega_indicator
+#print axioms PalomarCorpus.E1049.PaperStatementsA.paperBvMu_eq
+#print axioms PalomarCorpus.E1049.PaperStatementsA.printed_bvMu
+#print axioms PalomarCorpus.E1049.PaperStatementsA.printed_bv_cutoff
+#print axioms PalomarCorpus.E1049.PaperStatementsA.printed_contour
+#print axioms PalomarCorpus.E1049.PaperStatementsA.printed_four_rpow_bvMu
+#print axioms PalomarCorpus.E1049.PaperStatementsA.printed_four_rpow_mu
+#print axioms PalomarCorpus.E1049.PaperStatementsA.printed_log_ratio
+#print axioms PalomarCorpus.E1049.PaperStatementsA.thirtyoneFour_between_rpow
+#print axioms PalomarCorpus.E1049.PaperStatementsA.thirtyoneFour_ratio_chain
+#print axioms PalomarCorpus.E1049.PaperStatementsA.zudilinC0_enclosure
+#print axioms PalomarCorpus.E1049.PaperStatementsA.zudilinJ_enclosure
+#print axioms PalomarCorpus.E1049.PaperStatementsA.zudilin_rpow_lt_iff_contourRegion
+#print axioms PalomarCorpus.E1049.PaperStatementsG.thirtyoneFour_outside_bv_inside_contour
+#print axioms PalomarCorpus.E1049.PaperStatementsI.rational_base_measure_uniform
+#print axioms PalomarCorpus.E1049.PaperStatementsI.thirtyoneFour_power_measure_lt_301
+#print axioms PalomarCorpus.E1049.PaperStatementsJ.rational_base_threshold
+#print axioms PalomarCorpus.E1049.PaperStatementsJ.rational_base_threshold_log
+#print axioms PalomarCorpus.E1049.PaperStatementsJ.thirtyoneFour_irrational
+#print axioms PalomarCorpus.E1049.PaperStatementsJ.thirtyoneFour_pow_irrational
+#print axioms PalomarCorpus.E1049.RationalBaseRegion.rational_base_power_measure
+#print axioms PalomarCorpus.E1049.RationalBaseRegion.thirtyone_four_power_measure_lt_301

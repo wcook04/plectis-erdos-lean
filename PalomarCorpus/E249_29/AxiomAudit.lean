@@ -1,0 +1,7 @@
+import Solutions.PalomarCorpus.E249_29
+
+#print axioms PalomarCorpus.E249.CompleteKernelBases.displayed_all_base_kernel
+#print axioms PalomarCorpus.E249.CompleteKernelBases.displayed_full_dyadic_basis
+#print axioms PalomarCorpus.E249.TotientKernelBasis.allBaseTotientKernelBasisRankAndRelationDimension
+#print axioms PalomarCorpus.E249.TotientKernelBasis.allSlopeAffineTotientFormsLinearIndependent
+#print axioms PalomarCorpus.E249.TotientKernelBasis.displayed_integral_normal_form

@@ -1,0 +1,26 @@
+{
+  "challenge_module": "PalomarCorpus.E257_36.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257_36",
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStatementsAA.paper_mersenne_height",
+    "PalomarCorpus.E257.PaperStatementsAA.paper_scalar_localization",
+    "PalomarCorpus.E257.PaperStatementsAA.paper_scalar_localization_size_bound",
+    "PalomarCorpus.E257.PaperStatementsAA.paper_scalar_localization_zero_degenerate",
+    "PalomarCorpus.E257.PaperStatementsAQ.paper_first_positiveMobius_tail_term",
+    "PalomarCorpus.E257.PaperStatementsAQ.paper_mobius_support_overshoots_half",
+    "PalomarCorpus.E257.PaperStatementsBD.balancedPulseCoeff_injective",
+    "PalomarCorpus.E257.PaperStatementsBD.paper_balanced_pulse_fanout_is_radius_succ",
+    "PalomarCorpus.E257.PaperStatementsBD.paper_balanced_pulse_fanout_unbounded_corrected",
+    "PalomarCorpus.E257.PaperStatementsBD.paper_pulse_family_finite_state_card",
+    "PalomarCorpus.E257.PaperStatementsBD.paper_pulse_family_no_autonomous_decoder",
+    "PalomarCorpus.E257.PaperStatementsP.paper_carry_survivor_extinction",
+    "PalomarCorpus.E257.PaperStatementsP.paper_periodLcm_is_prefix_lcm",
+    "PalomarCorpus.E257.PaperStatementsR.paper_finite_support_and_onesided_certificate"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

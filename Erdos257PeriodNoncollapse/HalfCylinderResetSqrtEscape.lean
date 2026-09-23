@@ -1,5 +1,6 @@
 import Erdos257PeriodNoncollapse.HalfUpperResetCriticalBand
 import Erdos257PeriodNoncollapse.HalfCylinderLargestSkipInduction
+import Erdos257PeriodNoncollapse.HalfUpperResetCriticalBandSupplement
 
 /-!
 # Reset square-root escape and the largest-skip crossing

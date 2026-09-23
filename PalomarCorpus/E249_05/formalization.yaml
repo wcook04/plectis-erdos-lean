@@ -1,0 +1,248 @@
+version: v0.4
+project:
+  name: 'Erdős #249, record sections 5 to 6: series identities and finite exclusions; detailed statements'
+  description: >-
+    This entry states 20 theorems that the long record for Erdős problem #249 states in sections 5 (series identities and finite exclusions) and 6 (detailed statements): the proposition “The squared-Lambert identity” (section 5.6), as tsum_lambert_linear_weight_sq_pure; the proposition “The gcd-moment identity” (section 5.6), as gcd_moment_identity_three_members, pillaiP_eq_totient_mul_id, sum_gcd_Icc_eq_pillaiP, tsum_pos_pair_gcd_half_eq_totient_div_mersenne_sq and tsum_totient_div_mersenne_sq_eq_gcd_moment_series; the theorem “Rationality gives an eventual tail period” (section 6.1), as specified_euler_tail_period; the theorem “Independence of the retained dyadic sections” (section 6.1), as displayed_canonical_and_full_dyadic; the proposition “Denominator divisibility forces tail integrality” (section 6.1), as tail_diff_int_of_den_dvd; the proposition “A cyclotomic factor remains after cancellation” (section 6.1), as cyclotomicValue_dvd_baseMobiusShadow_den, mobiusNumerator_gcd_cyclotomicValue and mobiusNumeratorPolynomial_eval_two; the proposition “Primes in the upper half remain after cancellation” (section 6.1), as lcmHeight_upperHalf_product_dvd_den, upperHalfChannel_product_dvd_den_of_coprime_scale and upperHalfChannel_product_dvd_den_of_scale_primeFactors_le; the proposition “A lower bound for the reduced denominator” (section 6.1), as upper_half_product_denominator_bounds; the proposition “The exact reduced denominator” (section 6.1), as lcmHeight_five_scaledMobiusShadow_den_exact and lcmHeight_scaledMobiusShadow_den_exact; the proposition “Nonvanishing of a signed dyadic sum” (section 6.1), as signed_dyadic_clearing and signed_dyadic_sum_ne_zero.
+
+    17 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 2 are derived from the source declaration by a short tactic proof, which certifies implication.
+
+    Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
+
+    Erdős problem #249 remains open, and no theorem in this entry decides it.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - "11J72"
+  - "11A25"
+  - "11B83"
+  - "11J82"
+  - "11Y60"
+sources:
+- title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: "The compared theorems are independently restated Lean theorems proved in this repository and described in the public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos."
+  license: Apache-2.0
+  author_endorsement: participated
+- title: "Old and New Problems and Results in Combinatorial Number Theory"
+  authors:
+  - "Paul Erdős"
+  - "Ronald L. Graham"
+  type: "book"
+  relationship: "background"
+  note: "Page 61 poses the question whether the sum of phi(n)/2^n is irrational; only the problem statement is taken from this source."
+  license: "unknown"
+  author_endorsement: "n/a"
+- title: "On arithmetical properties of Lambert series"
+  authors:
+  - "Paul Erdős"
+  type: "paper"
+  relationship: "background"
+  note: "Journal of the Indian Mathematical Society 12 (1948). Supplies the isolated digit-block separation mechanism reused by the residue-class irrationality theorems; no statement about the sum of phi(n)/2^n is taken from it."
+  license: "unknown"
+  author_endorsement: "n/a"
+- title: "Simultaneous inequalities among values of the Euler phi-function"
+  authors:
+  - "Greg Martin"
+  id: "arXiv:math/0603053"
+  type: "paper"
+  relationship: "background"
+  note: "Theorem 1 already implies the all-slope affine independence conclusion stated here, which is therefore not claimed as new; the exact rank formula, canonical index, basis and relation-module dimension are not taken from this source."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "(Non)Automaticity of number theoretic functions"
+  authors:
+  - "Michael Coons"
+  id: "doi:10.5802/jtnb.718"
+  type: "paper"
+  relationship: "background"
+  note: "Journal de Théorie des Nombres de Bordeaux 22 (2010), 339-352, Theorem 3.2 owns non-k-regularity of Euler's totient, equivalently infinite dimensionality of the full kernel span; that statement is not claimed here and the exact bounded-depth rank and normal form are not taken from it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "The ring of k-regular sequences"
+  authors:
+  - "Jean-Paul Allouche"
+  - "Jeffrey Shallit"
+  id: "doi:10.1016/0304-3975(92)90001-V"
+  type: "paper"
+  relationship: "background"
+  note: "Theoretical Computer Science 98 (1992), 163-197 introduces k-regular sequences and the k-kernel, the notion the rank and basis theorems are stated about; no result is taken from it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Answer 1211557 to: An infinite sum based on the mod-parity of Euler's totient function"
+  authors:
+  - "Erick Wong"
+  id: "https://math.stackexchange.com/a/1211557"
+  type: "web discussion"
+  relationship: "background"
+  note: "Proves least-residue irrationality when the denominator base and the modulus are the same integer k > 2, dated 29 March 2015; the theorems here fix base two, vary the modulus, and classify the dyadic observables, and that classification is not taken from this source."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Comment on Erdős Problem #249, 16 May 2026"
+  authors:
+  - "Steve Fan"
+  id: "https://www.erdosproblems.com/forum/thread/249"
+  type: "web discussion"
+  relationship: "background"
+  note: "Records the divisor-convolution identity giving the sum of phi(n)/2^n as 1/2 plus the sum of mu(n)/(2^n - 1)^2, which names the constant Theta_2 used by the rank-one floor theorems; those theorems are not taken from this source. The comment cannot be confirmed beyond the linked discussion thread."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Modular functions and transcendence questions"
+  authors:
+  - "Yuri V. Nesterenko"
+  id: "doi:10.1070/SM1996v187n09ABEH000158"
+  type: "paper"
+  relationship: "background"
+  note: "Sbornik: Mathematics 187 (1996), 1319-1348. Its algebraic independence theorem for the Ramanujan functions makes the companion divisor-sum series transcendental at q = 1/2; it is cited only as context for the totient problem and supplies nothing to any theorem compared here."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: Erdős Problems catalogue
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com
+  type: web discussion
+  relationship: background
+  note: "Catalogue numbering and status of the parent problem."
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+related_formalizations:
+- id: "https://github.com/google-deepmind/formal-conjectures/blob/f776d2f2039351b00737ffcafb9d7d7666e1d9af/FormalConjectures/ErdosProblems/249.lean"
+  title: "FormalConjectures.ErdosProblems.249"
+  relationship: "independent"
+  note: "An open-problem entry recording the same question as `answer(sorry) ↔ Irrational (∑' n : ℕ, φ n / 2 ^ n)`, with both the answer placeholder and the proof left as sorry. It is statement-level prior art for the formalisation of the target, it supplies no proof authority, and every declaration compared here was stated independently of it."
+status:
+  scope: "One Comparator configuration selecting the 20 theorems listed in PalomarCorpus/E249_05/comparator.json, from the Lean development for Erdős problem #249. The problem's theorems are packed, in the order the papers state them, into the 33 entries PalomarCorpus/E249_01 to PalomarCorpus/E249_33, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification249* directories are internal regression inventory and are not selected."
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 20
+  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E249_05/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
+  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: "PalomarCorpus.E249.CompleteKernelBases.displayed_canonical_and_full_dyadic"
+    file: "Solutions/PalomarCorpus/E249_05/CompleteKernelBases.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_05/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAD.tail_diff_int_of_den_dvd"
+    file: "Solutions/PalomarCorpus/E249_05/PaperStatementsAD.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_05/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.gcd_moment_identity_three_members"
+    file: "Solutions/PalomarCorpus/E249_05/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_05/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.lcmHeight_five_scaledMobiusShadow_den_exact"
+    file: "Solutions/PalomarCorpus/E249_05/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_05/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.lcmHeight_upperHalf_product_dvd_den"
+    file: "Solutions/PalomarCorpus/E249_05/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_05/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.pillaiP_eq_totient_mul_id"
+    file: "Solutions/PalomarCorpus/E249_05/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_05/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.signed_dyadic_clearing"
+    file: "Solutions/PalomarCorpus/E249_05/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_05/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.signed_dyadic_sum_ne_zero"
+    file: "Solutions/PalomarCorpus/E249_05/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_05/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.sum_gcd_Icc_eq_pillaiP"
+    file: "Solutions/PalomarCorpus/E249_05/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_05/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.tsum_pos_pair_gcd_half_eq_totient_div_mersenne_sq"
+    file: "Solutions/PalomarCorpus/E249_05/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_05/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.upperHalfChannel_product_dvd_den_of_coprime_scale"
+    file: "Solutions/PalomarCorpus/E249_05/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_05/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.upperHalfChannel_product_dvd_den_of_scale_primeFactors_le"
+    file: "Solutions/PalomarCorpus/E249_05/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_05/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.upper_half_product_denominator_bounds"
+    file: "Solutions/PalomarCorpus/E249_05/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_05/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAK.tsum_lambert_linear_weight_sq_pure"
+    file: "Solutions/PalomarCorpus/E249_05/PaperStatementsAK.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_05/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAK.tsum_totient_div_mersenne_sq_eq_gcd_moment_series"
+    file: "Solutions/PalomarCorpus/E249_05/PaperStatementsAK.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_05/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAQ.cyclotomicValue_dvd_baseMobiusShadow_den"
+    file: "Solutions/PalomarCorpus/E249_05/PaperStatementsAQ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_05/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAQ.mobiusNumeratorPolynomial_eval_two"
+    file: "Solutions/PalomarCorpus/E249_05/PaperStatementsAQ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_05/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAQ.mobiusNumerator_gcd_cyclotomicValue"
+    file: "Solutions/PalomarCorpus/E249_05/PaperStatementsAQ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_05/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAR.lcmHeight_scaledMobiusShadow_den_exact"
+    file: "Solutions/PalomarCorpus/E249_05/PaperStatementsAR.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_05/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAX.specified_euler_tail_period"
+    file: "Solutions/PalomarCorpus/E249_05/PaperStatementsAX.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_05/comparator.json"
+  development_status: substantive
+  local_proof_provenance: "the proof modules Erdos249257, ErdosProblems.Erdos249 in this repository, imported by Solutions.PalomarCorpus.E249_05; the Solutions.ExternalVerification249* family modules are a regression mirror of the same proofs and are not imported by this configuration"
+  canonical_claim_status: "problem-level Comparator entry over substantive Lean in this repository"
+automation:
+  methods:
+  - method: manual
+    models: []
+    framework: Mathematical interpretation and claim-boundary review
+    tool_setup: Human-directed scope and significance review
+  - method: agent
+    models:
+    - Anthropic Claude
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+    cost:
+      wall_time: not tracked
+      spend_usd: subscription-based
+      hardware: local machine
+      prompting_notes: n/a
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    The statements from the hand-written families were checked declaration by declaration against the public problem notes, the reasoning records and the Lean sources in automated review passes run with Anthropic Claude and OpenAI Codex. Every generated restatement was bound to a paper statement and refereed in the eight-paper coverage ledger before its wrapper was generated, and its transport proof was elaborated before the statement was accepted. The author selected the statements and is responsible for the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

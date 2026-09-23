@@ -1,0 +1,3 @@
+import Solutions.PalomarCorpus.E257_09
+
+#print axioms PalomarCorpus.E257.PaperStructuresBJ.eventually_seamSupport_agrees

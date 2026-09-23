@@ -11,11 +11,18 @@ permissions:
 
 jobs:
   check:
-    runs-on: ubuntu-latest
+    # Pinned rather than tracking `ubuntu-latest`, so the October 2026 migration of
+    # that label cannot change the release environment without a commit here.
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Test release enumeration and snapshot scanning
         run: python3 scripts/test_release_tools.py
+      - name: Test the replay's entry verification unit and shard scheduler
+        # The decisive assertion inside is that a single-entry shard and an N-entry shard
+        # write byte-identical result files for the same entry, which is the only reason
+        # the sharded replay may be trusted to say what per-entry jobs said.
+        run: python3 scripts/test_palomar_replay_shard.py
       - name: Build the declared release manifest
         run: >-
           python3 scripts/build_release_manifest.py

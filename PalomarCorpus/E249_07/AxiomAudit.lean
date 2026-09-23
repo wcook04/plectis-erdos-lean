@@ -1,0 +1,30 @@
+import Solutions.PalomarCorpus.E249_07
+
+#print axioms PalomarCorpus.E249.PaperStatementsAC.mobiusNumeratorPolynomial_coeff
+#print axioms PalomarCorpus.E249.PaperStatementsAC.mobiusNumeratorPolynomial_coeff_pos
+#print axioms PalomarCorpus.E249.PaperStatementsAE.divisibility_mass
+#print axioms PalomarCorpus.E249.PaperStatementsAE.pair_divisibility_mass
+#print axioms PalomarCorpus.E249.PaperStatementsAE.stopping_probability_ge_third
+#print axioms PalomarCorpus.E249.PaperStatementsAE.stopping_transition_probabilities_sum_one
+#print axioms PalomarCorpus.E249.PaperStatementsAE.tsum_geometric_multiples
+#print axioms PalomarCorpus.E249.PaperStatementsAI.totient_series_eq_half_add_moebius_mersenne_square
+#print axioms PalomarCorpus.E249.PaperStatementsAJ.positive_rational_difference_lower_bound
+#print axioms PalomarCorpus.E249.PaperStatementsAJ.rational_cross_numerator_positive
+#print axioms PalomarCorpus.E249.PaperStatementsAJ.rational_difference_exact
+#print axioms PalomarCorpus.E249.PaperStatementsAJ.rational_error_denominator_bound
+#print axioms PalomarCorpus.E249.PaperStatementsAK.cylinderMass_children_le
+#print axioms PalomarCorpus.E249.PaperStatementsAK.tsum_pos_coprime_inv_mersenne_eq_one
+#print axioms PalomarCorpus.E249.PaperStatementsAL.strict_lower_bound_needed
+#print axioms PalomarCorpus.E249.PaperStatementsAL.tail_mem_Icc
+#print axioms PalomarCorpus.E249.PaperStatementsAL.upper_bound_needed_for_every_q
+#print axioms PalomarCorpus.E249.PaperStatementsAP.tsum_moebius_lambert_sq
+#print axioms PalomarCorpus.E249.PaperStatementsAQ.numerator_eval_two_divisors
+#print axioms PalomarCorpus.E249.PaperStatementsAQ.radical_decomposition
+#print axioms PalomarCorpus.E249.PaperStatementsAY.cylinderMass_eq_divisibility_mass_mul
+#print axioms PalomarCorpus.E249.PaperStatementsAY.cylinder_mediant_split
+#print axioms PalomarCorpus.E249.PaperStatementsAY.cylinder_root_values
+#print axioms PalomarCorpus.E249.PaperStatementsAY.normalised_split_probabilities
+#print axioms PalomarCorpus.E249.PaperStatementsB.sternBrocotDepthMass_error
+#print axioms PalomarCorpus.E249.PaperStatementsB.tendsto_sternBrocotDepthMass
+#print axioms PalomarCorpus.E249.PaperStatementsH.irrational_totient_iff_moebius_square
+#print axioms PalomarCorpus.E249.PaperStructuresP.linearIndependent_of_separatedMinorCertificate

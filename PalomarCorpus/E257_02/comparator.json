@@ -1,0 +1,20 @@
+{
+  "challenge_module": "PalomarCorpus.E257_02.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257_02",
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStatementsAM.paper_achievement_geometry",
+    "PalomarCorpus.E257.PaperStatementsAM.perfect_supportedMersenneAchievementSet",
+    "PalomarCorpus.E257.PaperStatementsAM.supportedMersenneDigitValue_injective",
+    "PalomarCorpus.E257.PaperStatementsAM.volume_supportedMersenneAchievementSet_dichotomy",
+    "PalomarCorpus.E257.PaperStatementsAM.volume_supportedMersenneAchievementSet_eq_zero_of_compl_infinite",
+    "PalomarCorpus.E257.PaperStatementsC.remainder_lt_gap_iff_eq_integerGreedyBits",
+    "PalomarCorpus.E257.PaperStatementsD.paper_greedy_survival",
+    "PalomarCorpus.E257.PaperStatementsF.eq_halfGreedyPrefixSupport_of_critical_crossing"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

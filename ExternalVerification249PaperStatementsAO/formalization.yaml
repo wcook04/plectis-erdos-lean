@@ -1,0 +1,218 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: v0.4
+project:
+  name: 'Erdős #249: independent restatements of refereed paper-linked theorems'
+  description: >-
+    12 theorems of the substantive development for Erdős problem #249
+    restated against Mathlib alone and transported from the source declarations named
+    below. The substantive formalization lives in ErdosProblems.Erdos249.PaperCompleteR21.NumeratorPolynomialAndMersenneRemainder in this repository and at
+    public commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84 of https://github.com/wcook04/plectis-erdos. This entry is a comparison
+    interface over that development. 12 statements transport by direct term
+    application, which certifies definitional identity with the source statement;
+    0 transport through a tactic bridge, which certifies implication only. The
+    parent Erdős problem remains open.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - "11A25"
+  - "11B83"
+sources:
+- title: 'Erdős #249: paper-linked Lean development'
+  authors:
+  - Will Cook
+  id: https://github.com/wcook04/plectis-erdos
+  type: original-proof
+  relationship: other
+  note: >-
+    The source declarations this entry transports, at commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84.
+    Novelty is unassessed and the parent problem is not claimed as solved.
+  license: Apache-2.0
+  author_endorsement: participated
+- title: 'Erdős Problem #249'
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com/249
+  type: web discussion
+  relationship: background
+  note: The catalogue supplies the problem statement and references.
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+status:
+  scope: Independent restatements of 12 refereed declarations for Erdős problem #249.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 12
+  sorry_boundary: Only the trusted Challenge theorem bodies carry placeholders.
+  axiom_audit_status: pending fresh target-toolchain axiom audit
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  development_status: substantive
+  local_proof_provenance: ErdosProblems.Erdos249.PaperCompleteR21.NumeratorPolynomialAndMersenneRemainder in this repository, which is the same development published at https://github.com/wcook04/plectis-erdos commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+  canonical_claim_status: generated comparison interface over substantive Lean in this repository
+  main_results:
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAO.four_thirds_tsum_eighth_pow_tail
+    file: Solutions/ExternalVerification249PaperStatementsAO.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAO/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAO.four_thirds_tsum_eighth_pow_tail
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.four_thirds_tsum_eighth_pow_tail
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/NumeratorPolynomialAndMersenneRemainder.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAO.mersenneRemainderTail_le
+    file: Solutions/ExternalVerification249PaperStatementsAO.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAO/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAO.mersenneRemainderTail_le
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.mersenneRemainderTail_le
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/NumeratorPolynomialAndMersenneRemainder.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAO.mersenneRemainder_identity_and_bound
+    file: Solutions/ExternalVerification249PaperStatementsAO.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAO/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAO.mersenneRemainder_identity_and_bound
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.mersenneRemainder_identity_and_bound
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/NumeratorPolynomialAndMersenneRemainder.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAO.mersenne_dvd_of_dvd
+    file: Solutions/ExternalVerification249PaperStatementsAO.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAO/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAO.mersenne_dvd_of_dvd
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.mersenne_dvd_of_dvd
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/NumeratorPolynomialAndMersenneRemainder.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAO.one_sub_half_pow_ge
+    file: Solutions/ExternalVerification249PaperStatementsAO.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAO/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAO.one_sub_half_pow_ge
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.one_sub_half_pow_ge
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/NumeratorPolynomialAndMersenneRemainder.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAO.paperNumerator_coeff_eq_gcd_divisor_sum
+    file: Solutions/ExternalVerification249PaperStatementsAO.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAO/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAO.paperNumerator_coeff_eq_gcd_divisor_sum
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.paperNumerator_coeff_eq_gcd_divisor_sum
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/NumeratorPolynomialAndMersenneRemainder.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAO.paperNumerator_coeff_eq_zero
+    file: Solutions/ExternalVerification249PaperStatementsAO.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAO/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAO.paperNumerator_coeff_eq_zero
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.paperNumerator_coeff_eq_zero
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/NumeratorPolynomialAndMersenneRemainder.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAO.paperNumerator_coeff_pos
+    file: Solutions/ExternalVerification249PaperStatementsAO.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAO/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAO.paperNumerator_coeff_pos
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.paperNumerator_coeff_pos
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/NumeratorPolynomialAndMersenneRemainder.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAO.paperNumerator_eq_gcdWordForm
+    file: Solutions/ExternalVerification249PaperStatementsAO.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAO/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAO.paperNumerator_eq_gcdWordForm
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.paperNumerator_eq_gcdWordForm
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/NumeratorPolynomialAndMersenneRemainder.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAO.paperNumerator_eval_two
+    file: Solutions/ExternalVerification249PaperStatementsAO.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAO/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAO.paperNumerator_eval_two
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.paperNumerator_eval_two
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/NumeratorPolynomialAndMersenneRemainder.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAO.paperNumerator_eval_two_primeSubsetForm
+    file: Solutions/ExternalVerification249PaperStatementsAO.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAO/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAO.paperNumerator_eval_two_primeSubsetForm
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.paperNumerator_eval_two_primeSubsetForm
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/NumeratorPolynomialAndMersenneRemainder.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification249PaperStatementsAO.tsum_eighth_pow_tail
+    file: Solutions/ExternalVerification249PaperStatementsAO.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249PaperStatementsAO/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification249PaperStatementsAO.tsum_eighth_pow_tail
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.tsum_eighth_pow_tail
+    source_file: ErdosProblems/Erdos249/PaperCompleteR21/NumeratorPolynomialAndMersenneRemainder.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+automation:
+  methods:
+  - method: agent
+    models:
+    - Anthropic Claude
+    framework: Lean 4 and Mathlib
+    tool_setup: Statement wrappers generated mechanically from the refereed paper statements and elaborated before acceptance
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    Every statement was refereed against the paper in the coverage ledger before this
+    wrapper was generated. The transport proof is the fidelity evidence: a direct term
+    application certifies definitional identity with the refereed source statement.
+    No independent mathematical review outside the author is claimed.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

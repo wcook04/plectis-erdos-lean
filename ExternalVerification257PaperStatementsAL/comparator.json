@@ -1,0 +1,19 @@
+{
+  "challenge_module": "ExternalVerification257PaperStatementsAL.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStatementsAL",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStatementsAL.finite_boolSupport_ne_half",
+    "Erdos249257.ExternalVerification257PaperStatementsAL.supportCoeff_insert_divisor",
+    "Erdos249257.ExternalVerification257PaperStatementsAL.supportCoeff_boundaryPair_unitDrop_at_double",
+    "Erdos249257.ExternalVerification257PaperStatementsAL.supportCoeff_extend_true_eq_false_add_one_at_double",
+    "Erdos249257.ExternalVerification257PaperStatementsAL.paper_coeffTail_le_index_add_two",
+    "Erdos249257.ExternalVerification257PaperStatementsAL.paper_zero_run_le_eps_logb",
+    "Erdos249257.ExternalVerification257PaperStatementsAL.paper_zero_run_le_of_mem"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

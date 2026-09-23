@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification1049PaperStatementsX.Challenge",
+  "solution_module": "Solutions.ExternalVerification1049PaperStatementsX",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1049PaperStatementsX.no_finite_simultaneous_two_three_system"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

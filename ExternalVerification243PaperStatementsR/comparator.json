@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification243PaperStatementsR.Challenge",
+  "solution_module": "Solutions.ExternalVerification243PaperStatementsR",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification243PaperStatementsR.recordTheta_le_of_slow_negative"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

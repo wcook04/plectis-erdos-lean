@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ExternalVerification1049PaperStructuresQ.Challenge",
+  "solution_module": "Solutions.ExternalVerification1049PaperStructuresQ",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1049PaperStructuresQ.exists_quadratic_source_height_bound",
+    "Erdos249257.ExternalVerification1049PaperStructuresQ.maxPairHeight_source_eq"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

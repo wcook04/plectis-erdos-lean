@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification1049PaperStructuresP.Challenge",
+  "solution_module": "Solutions.ExternalVerification1049PaperStructuresP",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1049PaperStructuresP.exists_small_real_escape_of_conditional_multiplicity"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

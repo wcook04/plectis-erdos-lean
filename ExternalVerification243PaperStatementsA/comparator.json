@@ -1,0 +1,42 @@
+{
+  "challenge_module": "ExternalVerification243PaperStatementsA.Challenge",
+  "solution_module": "Solutions.ExternalVerification243PaperStatementsA",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification243PaperStatementsA.primitive_zero_density_paper_multiplier_lemma",
+    "Erdos249257.ExternalVerification243PaperStatementsA.primePower_persists",
+    "Erdos249257.ExternalVerification243PaperStatementsA.cubic_profile_gcd_stabilisation_and_primitive_shape",
+    "Erdos249257.ExternalVerification243PaperStatementsA.exists_shiftedBlock_consecutiveMultiples",
+    "Erdos249257.ExternalVerification243PaperStatementsA.mem_barrierIdx_iff",
+    "Erdos249257.ExternalVerification243PaperStatementsA.no_boundedRise_coprimeToEarlierModuli",
+    "Erdos249257.ExternalVerification243PaperStatementsA.no_constantNegative_shapeEquation",
+    "Erdos249257.ExternalVerification243PaperStatementsA.no_eventuallyConstantNegative_shapeEquation",
+    "Erdos249257.ExternalVerification243PaperStatementsA.no_periodicNegative_shapeEquation",
+    "Erdos249257.ExternalVerification243PaperStatementsA.reduced_denominator_valuation_le_max",
+    "Erdos249257.ExternalVerification243PaperStatementsA.reduced_denominator_valuation_strict_loss",
+    "Erdos249257.ExternalVerification243PaperStatementsA.reduced_denominator_valuation_transition",
+    "Erdos249257.ExternalVerification243PaperStatementsA.unit_word_saturates_old_modulus",
+    "Erdos249257.ExternalVerification243PaperStatementsA.absorption_and_descent",
+    "Erdos249257.ExternalVerification243PaperStatementsA.bounded_negative_endpoint_eventual_multiplier",
+    "Erdos249257.ExternalVerification243PaperStatementsA.error_identities",
+    "Erdos249257.ExternalVerification243PaperStatementsA.gcd_stabilises_and_reduces",
+    "Erdos249257.ExternalVerification243PaperStatementsA.natural_sylvester_of_eventual_zero",
+    "Erdos249257.ExternalVerification243PaperStatementsA.persistent_coprimality",
+    "Erdos249257.ExternalVerification243PaperStatementsA.reduced_second_order_int",
+    "Erdos249257.ExternalVerification243PaperStatementsA.state_scale",
+    "Erdos249257.ExternalVerification243PaperStatementsA.boundedNegativePart_sylvesterNext_eventually",
+    "Erdos249257.ExternalVerification243PaperStatementsA.centeredState_eventually_zero",
+    "Erdos249257.ExternalVerification243PaperStatementsA.centeredState_zero_absorbing",
+    "Erdos249257.ExternalVerification243PaperStatementsA.eventuallyBoundedNegativePart_eventually_zero",
+    "Erdos249257.ExternalVerification243PaperStatementsA.exists_shifted_consecutiveMultiples",
+    "Erdos249257.ExternalVerification243PaperStatementsA.nextTailState_eq_sub_centered",
+    "Erdos249257.ExternalVerification243PaperStatementsA.sylvesterDefect_mul_nextTailState",
+    "Erdos249257.ExternalVerification243PaperStatementsA.sylvesterNext_eq_of_centered_zero",
+    "Erdos249257.ExternalVerification243PaperStatementsA.sylvesterNext_eventually_of_centered_zero"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

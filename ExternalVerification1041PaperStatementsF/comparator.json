@@ -1,0 +1,20 @@
+{
+  "challenge_module": "ExternalVerification1041PaperStatementsF.Challenge",
+  "solution_module": "Solutions.ExternalVerification1041PaperStatementsF",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041PaperStatementsF.exists_mergerIntegral_lt",
+    "Erdos249257.ExternalVerification1041PaperStatementsF.mergerIntegral_eq_mul_phi",
+    "Erdos249257.ExternalVerification1041PaperStatementsF.orliczKernel_continuous",
+    "Erdos249257.ExternalVerification1041PaperStatementsF.orliczKernel_tendsto_zero",
+    "Erdos249257.ExternalVerification1041PaperStatementsF.orlicz_currency",
+    "Erdos249257.ExternalVerification1041PaperStatementsF.phi_div_tendsto_zero",
+    "Erdos249257.ExternalVerification1041PaperStatementsF.phi_strictConvexOn",
+    "Erdos249257.ExternalVerification1041PaperStatementsF.phi_strictMonoOn"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

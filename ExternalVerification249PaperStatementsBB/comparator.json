@@ -1,0 +1,21 @@
+{
+  "challenge_module": "ExternalVerification249PaperStatementsBB.Challenge",
+  "solution_module": "Solutions.ExternalVerification249PaperStatementsBB",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249PaperStatementsBB.canonicalTotientKernelFamily_entries",
+    "Erdos249257.ExternalVerification249PaperStatementsBB.canonicalTotientKernelFamily_independent_card_and_span",
+    "Erdos249257.ExternalVerification249PaperStatementsBB.canonical_family_basis_through_level",
+    "Erdos249257.ExternalVerification249PaperStatementsBB.canonical_level_zero_channels",
+    "Erdos249257.ExternalVerification249PaperStatementsBB.card_canonical_dyadic_index",
+    "Erdos249257.ExternalVerification249PaperStatementsBB.completeLevelZeroTruncation_is_totient_and_rank_one",
+    "Erdos249257.ExternalVerification249PaperStatementsBB.finrank_throughLevel_zero_eq_one",
+    "Erdos249257.ExternalVerification249PaperStatementsBB.linearIndependent_canonical_dyadic_family",
+    "Erdos249257.ExternalVerification249PaperStatementsBB.retainedSections_basis_and_rank"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

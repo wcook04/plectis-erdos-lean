@@ -1,0 +1,18 @@
+{
+  "challenge_module": "ExternalVerification249PaperStatementsAG.Challenge",
+  "solution_module": "Solutions.ExternalVerification249PaperStatementsAG",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249PaperStatementsAG.exists_later_arbitrarily_many_separated_parityCoboundaryWeight_carry_pairs",
+    "Erdos249257.ExternalVerification249PaperStatementsAG.exists_totientParity_arbitrarilyManySeparatedCarry_rational_countermodel",
+    "Erdos249257.ExternalVerification249PaperStatementsAG.parityCoboundaryWeight_le_self",
+    "Erdos249257.ExternalVerification249PaperStatementsAG.parityCoboundaryWeight_le_six",
+    "Erdos249257.ExternalVerification249PaperStatementsAG.parityCoboundaryWeight_mod_two_eq_totient",
+    "Erdos249257.ExternalVerification249PaperStatementsAG.tsum_parityCoboundaryWeight_eq_three_halves"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

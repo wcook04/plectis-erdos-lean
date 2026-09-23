@@ -1,0 +1,16 @@
+{
+  "challenge_module": "ExternalVerification257PaperStructuresAY.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStructuresAY",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStructuresAY.localMersenneHalfTarget_lower_word_eq_greedy_and_remainder_eq",
+    "Erdos249257.ExternalVerification257PaperStructuresAY.localMersenneWeightsFrom_gapDominates",
+    "Erdos249257.ExternalVerification257PaperStructuresAY.localMersenneWeights_gapDominates_even",
+    "Erdos249257.ExternalVerification257PaperStructuresAY.localMersenneWeights_gapDominates_odd"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

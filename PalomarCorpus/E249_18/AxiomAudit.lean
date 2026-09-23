@@ -1,0 +1,30 @@
+import Solutions.PalomarCorpus.E249_18
+
+#print axioms PalomarCorpus.E249.PaperStatementsAE.boundary_pair_at_one
+#print axioms PalomarCorpus.E249.PaperStatementsAE.card_coprime_antidiagonal
+#print axioms PalomarCorpus.E249.PaperStatementsAE.card_mul_sq_le_pairwise_energy
+#print axioms PalomarCorpus.E249.PaperStatementsAE.scaleExplicitShadow_eq_divisorChannels
+#print axioms PalomarCorpus.E249.PaperStatementsAJ.coprimeLattice_gcd_layer_total
+#print axioms PalomarCorpus.E249.PaperStatementsAJ.coprimeLattice_gcd_layer_total_eq_one_iff
+#print axioms PalomarCorpus.E249.PaperStatementsAJ.coprimeLattice_halfOpen_half_eq_series
+#print axioms PalomarCorpus.E249.PaperStatementsAJ.coprimeLattice_halfOpen_sum
+#print axioms PalomarCorpus.E249.PaperStatementsAJ.coprimeLattice_lambert_half_eq_one
+#print axioms PalomarCorpus.E249.PaperStatementsAJ.coprimeLattice_lambert_identity
+#print axioms PalomarCorpus.E249.PaperStatementsAJ.coprimeLattice_lambert_rational
+#print axioms PalomarCorpus.E249.PaperStatementsAJ.coprimeLattice_positive_sum
+#print axioms PalomarCorpus.E249.PaperStatementsAJ.coprimeLattice_removed_pair
+#print axioms PalomarCorpus.E249.PaperStatementsAK.tsum_totient_pow_shift
+#print axioms PalomarCorpus.E249.PaperStatementsAO.four_thirds_tsum_eighth_pow_tail
+#print axioms PalomarCorpus.E249.PaperStatementsAO.mersenneRemainderTail_le
+#print axioms PalomarCorpus.E249.PaperStatementsAO.mersenneRemainder_identity_and_bound
+#print axioms PalomarCorpus.E249.PaperStatementsAO.one_sub_half_pow_ge
+#print axioms PalomarCorpus.E249.PaperStatementsAO.paperNumerator_eval_two
+#print axioms PalomarCorpus.E249.PaperStatementsAO.paperNumerator_eval_two_primeSubsetForm
+#print axioms PalomarCorpus.E249.PaperStatementsAO.tsum_eighth_pow_tail
+#print axioms PalomarCorpus.E249.PaperStatementsAX.sum_sq_dist_from_phase_one
+#print axioms PalomarCorpus.E249.PaperStatementsBE.divisorChannels_sum_eq
+#print axioms PalomarCorpus.E249.PaperStatementsBE.foreignComplementBound_paper
+#print axioms PalomarCorpus.E249.PaperStatementsBE.projectedForeignDefect_paper
+#print axioms PalomarCorpus.E249.PaperStatementsBE.residueKernel_increment_of_dvd
+#print axioms PalomarCorpus.E249.PaperStatementsBE.residueOffset_of_dvd
+#print axioms PalomarCorpus.E249.PaperStatementsBK.tailDifference_not_integral_of_separation

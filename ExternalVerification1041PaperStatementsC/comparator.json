@@ -1,0 +1,16 @@
+{
+  "challenge_module": "ExternalVerification1041PaperStatementsC.Challenge",
+  "solution_module": "Solutions.ExternalVerification1041PaperStatementsC",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041PaperStatementsC.cosh_dist_polar",
+    "Erdos249257.ExternalVerification1041PaperStatementsC.dist_polar_I",
+    "Erdos249257.ExternalVerification1041PaperStatementsC.exists_polar",
+    "Erdos249257.ExternalVerification1041PaperStatementsC.polar_zero_zero"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

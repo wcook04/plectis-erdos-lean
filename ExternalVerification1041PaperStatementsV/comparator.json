@@ -1,0 +1,15 @@
+{
+  "challenge_module": "ExternalVerification1041PaperStatementsV.Challenge",
+  "solution_module": "Solutions.ExternalVerification1041PaperStatementsV",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041PaperStatementsV.tail_le_one_and_eq_iff_of_leading_zero",
+    "Erdos249257.ExternalVerification1041PaperStatementsV.tail_norm_of_leading_zero",
+    "Erdos249257.ExternalVerification1041PaperStatementsV.two_tails_closedDisc_of_ne_zero"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

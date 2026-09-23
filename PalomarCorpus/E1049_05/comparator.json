@@ -1,0 +1,28 @@
+{
+  "challenge_module": "PalomarCorpus.E1049_05.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E1049_05",
+  "theorem_names": [
+    "PalomarCorpus.E1049.PaperStatementsB.coordinatewiseCorridor_implies_pow_lt_linear",
+    "PalomarCorpus.E1049.PaperStatementsB.sevenHalves_archimedean_height_condition",
+    "PalomarCorpus.E1049.PaperStatementsB.three_mul_lt_two_pow_succ",
+    "PalomarCorpus.E1049.PaperStatementsF.commonMultiplier_not_two_not_three_of_endpoint_units",
+    "PalomarCorpus.E1049.PaperStatementsF.cyclotomicHomEval_isCoprime_mul",
+    "PalomarCorpus.E1049.PaperStatementsK.forcing_term",
+    "PalomarCorpus.E1049.PaperStatementsK.scalar_margin",
+    "PalomarCorpus.E1049.PaperStatementsM.endpoint_residues",
+    "PalomarCorpus.E1049.PaperStatementsM.endpoint_scalar_content_exclusion",
+    "PalomarCorpus.E1049.PaperStatementsM.fourJet_paper_statement",
+    "PalomarCorpus.E1049.PaperStatementsM.rank_fortyone",
+    "PalomarCorpus.E1049.PaperStatementsN.pade_summand_bound_and_gap",
+    "PalomarCorpus.E1049.PaperStatementsX.no_finite_simultaneous_two_three_system",
+    "PalomarCorpus.E1049.PaperStructuresL.no_finite_simultaneous_two_three_system_unconditional",
+    "PalomarCorpus.E1049.RationalBaseBarrier.rationalBaseClearedTailQ_succ",
+    "PalomarCorpus.E1049.RationalBaseBarrier.threeHalves_no_coordinatewiseCorridor"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

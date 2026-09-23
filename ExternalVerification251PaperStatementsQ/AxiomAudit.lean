@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification251PaperStatementsQ
+
+#print axioms Erdos249257.ExternalVerification251PaperStatementsQ.irrational_prime_series_of_finite_truncation

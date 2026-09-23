@@ -1,0 +1,27 @@
+{
+  "challenge_module": "PalomarCorpus.E249_02.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E249_02",
+  "theorem_names": [
+    "PalomarCorpus.E249.PaperStatementsAE.discrepancy_prefix",
+    "PalomarCorpus.E249.PaperStatementsAE.exact_denominator",
+    "PalomarCorpus.E249.PaperStatementsAE.gamma_le",
+    "PalomarCorpus.E249.PaperStatementsAE.gamma_not_separation",
+    "PalomarCorpus.E249.PaperStatementsAE.gamma_prefix",
+    "PalomarCorpus.E249.PaperStatementsAE.no_certificate_after_prefix",
+    "PalomarCorpus.E249.PaperStatementsAE.no_uniform_prefix_rule",
+    "PalomarCorpus.E249.PaperStatementsAG.tsum_parityCoboundaryWeight_eq_three_halves",
+    "PalomarCorpus.E249.PaperStatementsAW.certificate_sound",
+    "PalomarCorpus.E249.PaperStatementsAW.exact_series",
+    "PalomarCorpus.E249.PaperStatementsAW.generic_tail_period",
+    "PalomarCorpus.E249.PaperStatementsAW.scaled_difference",
+    "PalomarCorpus.E249.PaperStatementsAW.scaled_tail_split",
+    "PalomarCorpus.E249.PaperStatementsAW.truncation_error_bound",
+    "PalomarCorpus.E249.PaperStatementsAW.value_cast"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

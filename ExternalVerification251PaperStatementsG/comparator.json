@@ -1,0 +1,30 @@
+{
+  "challenge_module": "ExternalVerification251PaperStatementsG.Challenge",
+  "solution_module": "Solutions.ExternalVerification251PaperStatementsG",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification251PaperStatementsG.infinite_prime_gap_identity",
+    "Erdos249257.ExternalVerification251PaperStatementsG.irrationality_reformulation",
+    "Erdos249257.ExternalVerification251PaperStatementsG.polynomial_countermodel",
+    "Erdos249257.ExternalVerification251PaperStatementsG.prime_gaps_not_eventually_periodic",
+    "Erdos249257.ExternalVerification251PaperStatementsG.rational_bounded_perturbation",
+    "Erdos249257.ExternalVerification251PaperStatementsG.rational_small_pair_bundle",
+    "Erdos249257.ExternalVerification251PaperStatementsG.rationality_classification",
+    "Erdos249257.ExternalVerification251PaperStatementsG.real_signed_two_window",
+    "Erdos249257.ExternalVerification251PaperStatementsG.real_small_pair_prime_endpoint",
+    "Erdos249257.ExternalVerification251PaperStatementsG.carryPartialSum_eq",
+    "Erdos249257.ExternalVerification251PaperStatementsG.dyadicPartialSumQ_eq_start_add_differences",
+    "Erdos249257.ExternalVerification251PaperStatementsG.irrational_realPrimeGapTail_zero_iff",
+    "Erdos249257.ExternalVerification251PaperStatementsG.irrational_tsum_primeDyadicTerm_iff_primeGap",
+    "Erdos249257.ExternalVerification251PaperStatementsG.prime0_dyadic_summation_by_parts",
+    "Erdos249257.ExternalVerification251PaperStatementsG.realPrimeGapTail_eq_tsum_shifted_gaps",
+    "Erdos249257.ExternalVerification251PaperStatementsG.realPrimeGapTail_recurrence",
+    "Erdos249257.ExternalVerification251PaperStatementsG.realPrimeGapTail_zero",
+    "Erdos249257.ExternalVerification251PaperStatementsG.tailShift_integral_totient_of_odd_den"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,35 @@
+{
+  "challenge_module": "PalomarCorpus.E257_30.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257_30",
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStatementsAA.paper_dyadic_skip_test_iff",
+    "PalomarCorpus.E257.PaperStatementsAA.paper_sharp_gives_three_over_three_t_sub_one",
+    "PalomarCorpus.E257.PaperStatementsAA.paper_sharp_skip_safe_lb3",
+    "PalomarCorpus.E257.PaperStatementsAA.paper_sharp_strictly_weaker_realizable",
+    "PalomarCorpus.E257.PaperStatementsAA.paper_sharp_weaker_than_dyadic",
+    "PalomarCorpus.E257.PaperStatementsAA.paper_three_channel_margin_identity",
+    "PalomarCorpus.E257.PaperStatementsAA.paper_two_channels_insufficient",
+    "PalomarCorpus.E257.PaperStatementsAF.card_divisors_le_divisorSubpowerConst_mul_rpow",
+    "PalomarCorpus.E257.PaperStatementsAF.card_divisors_pow_le_divisorSubpowerConst_pow_mul",
+    "PalomarCorpus.E257.PaperStatementsAL.paper_zero_run_le_eps_logb",
+    "PalomarCorpus.E257.PaperStatementsAL.paper_zero_run_le_of_mem",
+    "PalomarCorpus.E257.PaperStatementsAM.mersenneGap_le",
+    "PalomarCorpus.E257.PaperStatementsAM.paper_exact_mass_threshold",
+    "PalomarCorpus.E257.PaperStatementsAM.paper_sharp_skip_safe_actual_tail",
+    "PalomarCorpus.E257.PaperStatementsAM.summable_mersenneGap_shift",
+    "PalomarCorpus.E257.PaperStatementsAO.mixedPrimePowerLayerTwo_twelve_fixture",
+    "PalomarCorpus.E257.PaperStatementsAR.exists_first_localMersenne_crossing",
+    "PalomarCorpus.E257.PaperStatementsAV.one_add_mul_card_le_two_mul_shifted_state",
+    "PalomarCorpus.E257.PaperStatementsAV.shifted_state_unbounded_of_infinite_support",
+    "PalomarCorpus.E257.PaperStructuresH.three_le_of_fatal_of_odd",
+    "PalomarCorpus.E257.PaperStructuresH.two_le_of_fatal",
+    "PalomarCorpus.E257.PaperStructuresH.unitNumerator_skipSafe",
+    "PalomarCorpus.E257.PaperStructuresV.unitNumerator_skipSafe_actualTail"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,15 @@
+import Solutions.PalomarCorpus.E269_02
+
+#print axioms PalomarCorpus.E269.PaperStatementsA.dyadicBlockBase235_cases
+#print axioms PalomarCorpus.E269.PaperStatementsA.dyadicBlockBase235_mem_interval
+#print axioms PalomarCorpus.E269.PaperStatementsA.dyadicInternalPower_exponent_unique
+#print axioms PalomarCorpus.E269.PaperStatementsA.exists_dyadicInternalPower_iff_log_succ
+#print axioms PalomarCorpus.E269.PaperStatementsA.log_dyadic_succ_eq_of_no_internalPower
+#print axioms PalomarCorpus.E269.PaperStatementsA.paper_two_by_two_fixture
+#print axioms PalomarCorpus.E269.PaperStatementsA.paper_uniform_rank_and_nonseparation
+#print axioms PalomarCorpus.E269.PaperStatementsA.radix_eq_height_ratio
+#print axioms PalomarCorpus.E269.PaperStatementsA.threePrimeHeight_dyadicBlock_succ
+#print axioms PalomarCorpus.E269.PaperStatementsB.real_two_prime_separation
+#print axioms PalomarCorpus.E269.PaperStatementsC.long_actual_orbit
+#print axioms PalomarCorpus.E269.PaperStatementsE.uniform_rank_complete
+#print axioms PalomarCorpus.E269.PaperStructuresH.rank_cutMatrix

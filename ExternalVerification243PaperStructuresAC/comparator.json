@@ -1,0 +1,16 @@
+{
+  "challenge_module": "ExternalVerification243PaperStructuresAC.Challenge",
+  "solution_module": "Solutions.ExternalVerification243PaperStructuresAC",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification243PaperStructuresAC.cubic_exclusion_unconditional",
+    "Erdos249257.ExternalVerification243PaperStructuresAC.cubic_rate_irrationality_unconditional",
+    "Erdos249257.ExternalVerification243PaperStructuresAC.squareSpecialisation",
+    "Erdos249257.ExternalVerification243PaperStructuresAC.transport_square_unconditional"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

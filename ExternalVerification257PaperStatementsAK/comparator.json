@@ -1,0 +1,19 @@
+{
+  "challenge_module": "ExternalVerification257PaperStatementsAK.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStatementsAK",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStatementsAK.paper_floor_quotient_geometric_sum",
+    "Erdos249257.ExternalVerification257PaperStatementsAK.paper_next_floor_quotient",
+    "Erdos249257.ExternalVerification257PaperStatementsAK.paper_next_floor_quotient_no_fixed_point",
+    "Erdos249257.ExternalVerification257PaperStatementsAK.paper_next_quotient_sum",
+    "Erdos249257.ExternalVerification257PaperStatementsAK.paper_repair_integer_eq_endpoint_defect",
+    "Erdos249257.ExternalVerification257PaperStatementsAK.paper_signed_endpoint_defect_succ",
+    "Erdos249257.ExternalVerification257PaperStatementsAK.paper_signed_endpoint_recurrence"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

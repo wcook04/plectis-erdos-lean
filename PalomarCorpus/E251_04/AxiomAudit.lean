@@ -1,0 +1,8 @@
+import Solutions.PalomarCorpus.E251_04
+
+#print axioms PalomarCorpus.E251.PaperStatementsB.finite_separation_complete
+#print axioms PalomarCorpus.E251.PaperStatementsE.bounded_recurring_values_countermodel
+#print axioms PalomarCorpus.E251.PaperStatementsG.tailShift_integral_totient_of_odd_den
+#print axioms PalomarCorpus.E251.PaperStatementsM.affine_circularity_bundle
+#print axioms PalomarCorpus.E251.PaperStatementsM.realTailShift_integral_add
+#print axioms PalomarCorpus.E251.PaperStatementsN.cofinal_escape_of_finite_truncation

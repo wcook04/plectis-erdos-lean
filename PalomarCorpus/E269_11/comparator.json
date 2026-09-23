@@ -1,0 +1,21 @@
+{
+  "challenge_module": "PalomarCorpus.E269_11.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E269_11",
+  "theorem_names": [
+    "PalomarCorpus.E269.WindowEscapeEquivalence.actualCofinalLocalWindowEscape_iff",
+    "PalomarCorpus.E269.WindowEscapeEquivalence.actualCofinalLocalWindowEscape_iff_irrational_value",
+    "PalomarCorpus.E269.WindowEscapeEquivalence.cofinalLocalWindowEscape_of_irrational",
+    "PalomarCorpus.E269.WindowEscapeEquivalence.cofinalLocalWindowEscape_of_irrational_of_quadratic",
+    "PalomarCorpus.E269.WindowEscapeEquivalence.exists_pow_gt_quadratic",
+    "PalomarCorpus.E269.WindowEscapeEquivalence.exists_reducedCarry_of_value_eq_rat",
+    "PalomarCorpus.E269.WindowEscapeEquivalence.near_integer_of_residue_le_general",
+    "PalomarCorpus.E269.WindowEscapeEquivalence.octic_escape_whole",
+    "PalomarCorpus.E269.WindowEscapeEquivalence.trueNormalizedState_window"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

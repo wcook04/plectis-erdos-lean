@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification257PaperStructuresBR.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStructuresBR",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStructuresBR.paper_feedback_row_total_dichotomy"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

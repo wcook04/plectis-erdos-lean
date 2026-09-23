@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification249PaperStructuresQ
+
+#print axioms Erdos249257.ExternalVerification249PaperStructuresQ.prop_dickman

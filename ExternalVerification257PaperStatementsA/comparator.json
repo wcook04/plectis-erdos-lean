@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification257PaperStatementsA.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStatementsA",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStatementsA.affineBinaryOrbit_mod_twoPow_eq"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

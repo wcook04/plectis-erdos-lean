@@ -23,16 +23,23 @@ root selected. Each `PalomarCorpus/E{n}/Challenge.lean` imports only Mathlib and
 selected theorems with documented definitions; `Solutions.PalomarCorpus.E{n}` supplies the
 proofs. The parent problems remain open; no entry claims a solution of one.
 
-| Entry | Theorems | Registry title | Palomar status |
-|---|---:|---|---|
-| [`E68`](PalomarCorpus/E68/) | 47 | Erdős problem #68: a three-halves lower growth bound for the common denominators lcm(n! - 1), with multiplicative successor rigidity, exact carry reformulations, and channel route closures for the series sum of 1/(n! - 1) | not yet submitted |
-| [`E243`](PalomarCorpus/E243/) | 28 | Erdős problem #243: a bounded product defect in the original coordinates, or an eventually bounded negative part of the cleared error, forces the Sylvester recurrence, with unconditional exclusions and exact record criteria | not yet submitted |
-| [`E249`](PalomarCorpus/E249/) | 55 | Erdős problem #249: rationality of the binary totient series would force one integral carry with unbounded dyadic section rank and a uniform eventual period, with the exact all-base totient kernel basis and unconditional irrationality of every residue-class totient series at modulus at least three | not yet submitted |
-| [`E251`](PalomarCorpus/E251/) | 37 | Erdős problem #251: shifted prime-gap coincidences reduce to an explicit four-prime count, with exact tail-shift criteria, a kernel-decided denominator floor, and rational countermodels to coarse gap hypotheses | not yet submitted |
-| [`E257`](PalomarCorpus/E257/) | 50 | Erdős problem #257: all base irrationality of the reciprocal Mersenne subseries for every infinite reciprocal summable support, with weighted mass and positive cover extensions, achievement set geometry, and exact greedy membership criteria | submitted 13 September 2026 at `52f29ad1` (submission `impkvgnxmpb7`); mechanical verification passed ([run 34784800531](https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/34784800531)); Palomar's render stage then failed three times on renderer `ef2fa1ea` (a known renderer defect, [PalomarSubmission #134](https://github.com/PalomarRegistry/PalomarSubmission/issues/134), fix proposed in [PR 137](https://github.com/PalomarRegistry/PalomarSubmission/pull/137)) and the submission settled as `verification-error` on 14 September 2026, Palomar's own text being "Palomar could not complete mechanical verification"; a new submission at the same commit follows the repair |
-| [`E269`](PalomarCorpus/E269/) | 33 | Erdős problem #269 at three primes: the reciprocal running-LCM kernel has nonsingular minors of every order and no finite separated representation, with the exact affine shell orbit of the {2,3,5} series and a window criterion equivalent to its irrationality | not yet submitted |
-| [`E1041`](PalomarCorpus/E1041/) | 33 | Erdős problem #1041 on short connections inside polynomial lemniscates: a complete degree-three connector, the sharp collinear Chebyshev constant, critical-point proximity with two exact straight-path obstructions, and complete root spokes for sparse families | not yet submitted |
-| [`E1049`](PalomarCorpus/E1049/) | 42 | Erdős problem #1049: an Archimedean one-half cap on base-uniform polynomial approximation to Lambert values, with sharp Hermite-Padé and adelic height exclusions at the base 3/2 | not yet submitted |
+<!-- palomar-entry-table:begin (generated; do not edit by hand) -->
+The Palomar entries are packed in the order the papers state their theorems; [`PalomarCorpus/README.md`](PalomarCorpus/README.md) lists every entry with its theorem count and title.
+
+| Problem | Entries | Theorems |
+|---|---|---:|
+| #68 | `E68_01` to `E68_10` | 73 |
+| #243 | `E243_01` to `E243_11` | 140 |
+| #249 | `E249_01` to `E249_33` | 621 |
+| #251 | `E251_01` to `E251_08` | 87 |
+| #257 | `E257_01` to `E257_43` | 537 |
+| #269 | `E269_01` to `E269_11` | 92 |
+| #1041 | `E1041_01` to `E1041_08` | 105 |
+| #1049 | `E1049_01` to `E1049_08` | 110 |
+| Total | 132 entries | 1765 |
+
+The problem-level entry `E257` of the previous layout was submitted to Palomar on 13 September 2026 at commit `52f29ad1` (submission `impkvgnxmpb7`). Its mechanical verification passed ([run 34784800531](https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/34784800531)); Palomar's render stage then failed on a known renderer defect ([PalomarSubmission #134](https://github.com/PalomarRegistry/PalomarSubmission/issues/134)), and the submission settled as `verification-error` on 14 September 2026. No entry of the present layout has been submitted.
+<!-- palomar-entry-table:end -->
 
 The workflow [`palomar-replay.yml`](.github/workflows/palomar-replay.yml) replays Palomar's
 mechanical stage on Linux with the verifier's pinned Comparator, lean4export, landrun and

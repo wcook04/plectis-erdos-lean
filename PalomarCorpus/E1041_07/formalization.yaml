@@ -1,0 +1,237 @@
+version: v0.4
+project:
+  name: 'Erdős #1041, the critical geometry, cyclic trinomial fiber and degree seven counterexample families'
+  description: >-
+    This entry states 21 theorems of the critical geometry, cyclic trinomial fiber, degree seven counterexample, first merge critical value separation and quartic quotient fiber developments of the Lean formalisation of Erdős problem #1041, to which no paper statement is bound. criticalGeometricMean_twoRootProximity: For n at least 2, complex points z 0 through z (n-1) and a point c differing from every z k, if the reciprocals (c - z k)⁻¹ sum to zero, so that c is a critical point of the monic polynomial with those root occurrences, and r is the positive real with r ^ n equal to the product of the distances ‖c - z k‖, then two distinct indices i and j satisfy ‖c - z i‖ + ‖c - z j‖ ≤ 2 * r: some two root occurrences have total distance at most twice the geometric mean of all n root distances. criticalDiskInverseBalance_twoRootProximity: A real-scalar inequality in N, t, δ and e with no polynomial, root or critical point in its statement: for reals N ≥ 2, t < 1 and 0 < δ ≤ e with δ ≤ 1, e ≤ 1 + t, e ≤ (N - 1) * δ and N ≤ (1 - t ^ 2) * (1 / δ ^ 2 + (N - 1) / e ^ 2), the sum δ + e is at most 2. criticalDiskInverseBalance_twoRootProximity_strict: The same real-scalar hypotheses as criticalDiskInverseBalance_twoRootProximity with e ≤ 1 + t strengthened to e < 1 + t, which upgrades the conclusion from δ + e ≤ 2 to δ + e < 2; like that declaration it names no polynomial. nearestSpoke_reciprocal_balance: The reciprocals of the five listed roots sum to zero, so the origin is a critical point of the monic quintic whose roots are exactly those five points. nearestSpoke_unique_nearest_normSq: Every index k other than 0 satisfies Complex.normSq (root 0) < Complex.normSq (root k), so the real root a is the strictly unique nearest root to the critical point at the origin; squared moduli are used so that the exact certificate involves no square root. nearestSpoke_unique_nearest_spoke_escapes: Exact rational inequality stating that a displayed product of four positive rationals exceeds 1. allStraightCubic_roots: Each of the three listed points is a zero of that monic cubic. allStraightCubic_roots_in_unitDisk: Each of the three listed roots has modulus strictly less than 1, so this cubic satisfies the open-unit-disc hypothesis of the parent problem. allStraightCubic_every_pair_midpoint_escapes: For every pair of distinct indices i and j the midpoint (root i + root j) / 2 has cubic value of modulus strictly greater than 1, so for this cubic no straight segment between two roots stays inside the open unit lemniscate. trinomialRoot_spoke_factorization: Exact identity eliminating the middle coefficient of a trinomial at one of its roots: if w satisfies w ^ m + a * w ^ r + c = 0 then for every real u the value of z ↦ z ^ m + a * z ^ r + c at the point u * w equals (1 - u ^ r) * c - (u ^ r - u ^ m) * w ^ m, with the real coefficients cast into the complex numbers. trinomialRoot_spoke_norm_le_constant: If r ≤ m, w is a root of z ^ m + a * z ^ r + c with ‖w‖ ^ m ≤ ‖c‖, and u lies in [0, 1], then the trinomial has modulus at most ‖c‖ at the point u * w, so the whole spoke from the origin to such a root lies in the closed sublevel set of the constant term, that is in {|f| ≤ |f 0|}. trinomialRoot_spoke_norm_lt_one: Strict unit-lemniscate form of the preceding bound: adding ‖c‖ < 1 to the hypotheses r ≤ m, w a root of z ^ m + a * z ^ r + c, ‖w‖ ^ m ≤ ‖c‖ and u in [0, 1] gives modulus strictly below 1 at u * w, so the whole spoke of such a root lies in the open unit lemniscate. trinomialRoot_spoke_norm_lt_one_of_norm_lt_one: The form reaching every root of the trinomial: for 1 ≤ r ≤ m, a root w of z ^ m + a * z ^ r + c with ‖w‖ < 1, a constant term with ‖c‖ < 1, and u in [0, 1], the trinomial has modulus strictly below 1 at u * w. cyclicTrinomial_two_short_fiber_displacements: Supporting metric step for the fibre assembly: two complex numbers of modulus strictly below 1 have moduli summing to strictly less than 2, which is the length threshold of the parent problem. degreeSevenCounterexample: There exists a monic complex polynomial p of degree seven whose roots all have modulus strictly below 1 and whose root multiset has no repetitions. firstMerge_exact_convenient_thresholds: Three exact all-degree threshold regimes stated as one conjunction: C(n, 4) < 1 for every natural n at least 3, C(n, 3) < 1 for every n at least 4, and C(n, 2) < 1 for every n at least 6. firstMerge_length_lt_two_of_squared_bound: Numerical consumer of the thresholds: for any natural n and any reals S and length, if length ^ 2 ≤ 4 * C(n, S) and C(n, S) < 1, then length < 2. rootLift_kernel_le_axis: Elementary real inequality: for reals alpha ≤ 1 and x > 0 and any real d, the power (√(d ^ 2 + x ^ 2)) ^ (alpha - 1) is at most x ^ (alpha - 1), the exponent being nonpositive while √(d ^ 2 + x ^ 2) is at least x. rootLift_axis_integral: Elementary exact integral: for reals alpha > 0 and A ≥ 0, alpha times the interval integral of x ^ (alpha - 1) over [0, A] equals A ^ alpha, with real exponents throughout. rootLift_endpoint_budget_lt_two: For a real exponent alpha > 0 and endpoint moduli a and b in [0, 1), the powered budget a ^ alpha + b ^ alpha is strictly less than 2, which is the length threshold of the parent problem. rootLift_length_lt_two_of_le_endpoint_budget: Consumer of the endpoint budget: any real length bounded by a ^ alpha + b ^ alpha, with alpha > 0 and a, b in [0, 1), is strictly less than 2, with no sign hypothesis on length.
+
+    Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
+
+    A degree-seven counterexample due to ani, formalised in this corpus, refutes the total-variation formulation of Erdős problem #1041; the theorems in this entry keep their stated hypotheses.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.CV
+  - math.CA
+  msc2020:
+  - "30C10"
+  - "30C15"
+  - "31A15"
+  - "26C10"
+sources:
+- title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
+  authors:
+  - Will Cook
+  id: https://github.com/wcook04/plectis-erdos
+  type: other
+  relationship: background
+  note: >-
+    The public problem notes and reasoning records describe the compared theorems and their relationship to the literature. The degree-seven result formalises one instance of ani’s construction, credited below; the remaining compared theorems retain their stated positive or conditional scope. This degree-seven instance refutes the universal total-variation formulation, while independent human review of its correspondence with historical wording or a Hausdorff-measure formulation remains unrecorded.
+  license: Apache-2.0
+  author_endorsement: participated
+- title: "Degree-seven counterexample in the discussion of Erdős problem 1041"
+  authors:
+  - "ani"
+  id: "https://www.erdosproblems.com/forum/thread/1041"
+  type: "web discussion"
+  relationship: "formalizes"
+  note: "The degree-seven total-variation counterexample is due to ani. The compared theorem formalises one explicit polynomial instance, not the whole small-parameter family; no mathematical priority is claimed for the formalization."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Metric properties of polynomials"
+  authors:
+  - "Paul Erdős"
+  - "Fritz Herzog"
+  - "George Piranian"
+  id: "10.1007/BF02790232"
+  type: "paper"
+  relationship: "background"
+  note: "Poses the root-to-root connection question as Problem 5 on page 139, which is the parent problem of this entry; no theorem compared here is taken from it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "A Degree-Four Lemniscate Path Theorem"
+  authors:
+  - "V. S. Pendyala"
+  id: "arXiv:2606.24875"
+  type: "paper"
+  relationship: "background"
+  note: "Settles the degree-four case of the parent problem unconditionally by a radial-arm argument from the centre of the smallest disc containing the four zeros, and is the directly comparable adjacent result. The spoke declarations here are origin spokes for sparse coefficient families and a three-point origin-spoke selector; that mechanism is shared with this paper and no priority is claimed for it. The degree-three theorem compared here was proved without this paper and takes no statement, constant, or argument from it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "On the length of lemniscates"
+  authors:
+  - "Alexandre Eremenko"
+  - "Walter Hayman"
+  id: "arXiv:0805.2295"
+  type: "paper"
+  relationship: "background"
+  note: "Bounds the total length of the level set |p| = 1 by 9.173 times the degree and shows an extremal level set is connected; that is a different metric quantity and supplies no internal root-to-root connector, so nothing here uses it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Beitrag zur Verallgemeinerung des Verzerrungssatzes auf mehrfach zusammenhängende Gebiete"
+  authors:
+  - "George Pólya"
+  type: "paper"
+  relationship: "background"
+  note: "The absolute area-capacity inequality behind the ordinary analytic estimate whose squared connector bound the first-merge threshold declarations consume; those declarations check only the numerical coefficient and its sign-free consumer, and the area argument itself is not formalised here."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Some inequalities for polynomials and rational functions associated with lemniscates"
+  authors:
+  - "Vladimir N. Dubinin"
+  id: "10.1007/s10958-013-1432-4"
+  type: "paper"
+  relationship: "background"
+  note: "A neighbouring relative-area inequality of Pólya type, recorded in the companion bibliography for completeness; its text was not obtained, its covering hypothesis and relative-area conclusion are used by no declaration here, and no claim rests on it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: Erdős Problems catalogue
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com
+  type: web discussion
+  relationship: background
+  note: >-
+    Catalogue numbering and historical context for problem 1041. The compared degree-seven result provides one counterexample to the universal total-variation formulation; it does not supply independent human review of historical correspondence or a Hausdorff-measure formulation.
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+related_formalizations:
+- id: "https://github.com/google-deepmind/formal-conjectures/blob/f776d2f2039351b00737ffcafb9d7d7666e1d9af/FormalConjectures/ErdosProblems/1041.lean"
+  title: "FormalConjectures.ErdosProblems.1041"
+  relationship: "independent"
+  note: "States the open parent problem and the Erdős, Herzog and Piranian connected-component lemma; it is statement-level prior art for the formalisation, it supplies no proof authority, and every declaration compared here was stated independently of it."
+status:
+  scope: "One Comparator configuration selecting the 21 theorems listed in PalomarCorpus/E1041_07/comparator.json, from the Lean development for Erdős problem #1041. The problem's theorems are packed, in the order the papers state them, into the 8 entries PalomarCorpus/E1041_01 to PalomarCorpus/E1041_08, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification1041* directories are internal regression inventory and are not selected."
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 21
+  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E1041_07/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
+  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: "PalomarCorpus.E1041.CriticalGeometry.allStraightCubic_every_pair_midpoint_escapes"
+    file: "Solutions/PalomarCorpus/E1041_07/CriticalGeometry.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_07/comparator.json"
+  - declaration: "PalomarCorpus.E1041.CriticalGeometry.allStraightCubic_roots"
+    file: "Solutions/PalomarCorpus/E1041_07/CriticalGeometry.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_07/comparator.json"
+  - declaration: "PalomarCorpus.E1041.CriticalGeometry.allStraightCubic_roots_in_unitDisk"
+    file: "Solutions/PalomarCorpus/E1041_07/CriticalGeometry.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_07/comparator.json"
+  - declaration: "PalomarCorpus.E1041.CriticalGeometry.criticalDiskInverseBalance_twoRootProximity"
+    file: "Solutions/PalomarCorpus/E1041_07/CriticalGeometry.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_07/comparator.json"
+  - declaration: "PalomarCorpus.E1041.CriticalGeometry.criticalDiskInverseBalance_twoRootProximity_strict"
+    file: "Solutions/PalomarCorpus/E1041_07/CriticalGeometry.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_07/comparator.json"
+  - declaration: "PalomarCorpus.E1041.CriticalGeometry.criticalGeometricMean_twoRootProximity"
+    file: "Solutions/PalomarCorpus/E1041_07/CriticalGeometry.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_07/comparator.json"
+  - declaration: "PalomarCorpus.E1041.CriticalGeometry.nearestSpoke_reciprocal_balance"
+    file: "Solutions/PalomarCorpus/E1041_07/CriticalGeometry.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_07/comparator.json"
+  - declaration: "PalomarCorpus.E1041.CriticalGeometry.nearestSpoke_unique_nearest_normSq"
+    file: "Solutions/PalomarCorpus/E1041_07/CriticalGeometry.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_07/comparator.json"
+  - declaration: "PalomarCorpus.E1041.CriticalGeometry.nearestSpoke_unique_nearest_spoke_escapes"
+    file: "Solutions/PalomarCorpus/E1041_07/CriticalGeometry.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_07/comparator.json"
+  - declaration: "PalomarCorpus.E1041.CyclicTrinomialFiber.cyclicTrinomial_two_short_fiber_displacements"
+    file: "Solutions/PalomarCorpus/E1041_07/CyclicTrinomialFiber.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_07/comparator.json"
+  - declaration: "PalomarCorpus.E1041.CyclicTrinomialFiber.trinomialRoot_spoke_factorization"
+    file: "Solutions/PalomarCorpus/E1041_07/CyclicTrinomialFiber.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_07/comparator.json"
+  - declaration: "PalomarCorpus.E1041.CyclicTrinomialFiber.trinomialRoot_spoke_norm_le_constant"
+    file: "Solutions/PalomarCorpus/E1041_07/CyclicTrinomialFiber.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_07/comparator.json"
+  - declaration: "PalomarCorpus.E1041.CyclicTrinomialFiber.trinomialRoot_spoke_norm_lt_one"
+    file: "Solutions/PalomarCorpus/E1041_07/CyclicTrinomialFiber.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_07/comparator.json"
+  - declaration: "PalomarCorpus.E1041.CyclicTrinomialFiber.trinomialRoot_spoke_norm_lt_one_of_norm_lt_one"
+    file: "Solutions/PalomarCorpus/E1041_07/CyclicTrinomialFiber.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_07/comparator.json"
+  - declaration: "PalomarCorpus.E1041.DegreeSevenCounterexample.degreeSevenCounterexample"
+    file: "Solutions/PalomarCorpus/E1041_07/DegreeSevenCounterexample.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_07/comparator.json"
+  - declaration: "PalomarCorpus.E1041.FirstMergeCriticalValueSeparation.firstMerge_exact_convenient_thresholds"
+    file: "Solutions/PalomarCorpus/E1041_07/FirstMergeCriticalValueSeparation.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_07/comparator.json"
+  - declaration: "PalomarCorpus.E1041.FirstMergeCriticalValueSeparation.firstMerge_length_lt_two_of_squared_bound"
+    file: "Solutions/PalomarCorpus/E1041_07/FirstMergeCriticalValueSeparation.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_07/comparator.json"
+  - declaration: "PalomarCorpus.E1041.QuarticQuotientFiber.rootLift_axis_integral"
+    file: "Solutions/PalomarCorpus/E1041_07/QuarticQuotientFiber.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_07/comparator.json"
+  - declaration: "PalomarCorpus.E1041.QuarticQuotientFiber.rootLift_endpoint_budget_lt_two"
+    file: "Solutions/PalomarCorpus/E1041_07/QuarticQuotientFiber.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_07/comparator.json"
+  - declaration: "PalomarCorpus.E1041.QuarticQuotientFiber.rootLift_kernel_le_axis"
+    file: "Solutions/PalomarCorpus/E1041_07/QuarticQuotientFiber.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_07/comparator.json"
+  - declaration: "PalomarCorpus.E1041.QuarticQuotientFiber.rootLift_length_lt_two_of_le_endpoint_budget"
+    file: "Solutions/PalomarCorpus/E1041_07/QuarticQuotientFiber.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_07/comparator.json"
+  development_status: substantive
+  local_proof_provenance: "the proof modules ErdosProblems.Erdos1041 in this repository, imported by Solutions.PalomarCorpus.E1041_07; the Solutions.ExternalVerification1041* family modules are a regression mirror of the same proofs and are not imported by this configuration"
+  canonical_claim_status: "problem-level Comparator entry over substantive Lean in this repository"
+automation:
+  methods:
+  - method: manual
+    models: []
+    framework: Mathematical interpretation and claim-boundary review
+    tool_setup: Human-directed scope and significance review
+  - method: agent
+    models:
+    - Anthropic Claude
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+    cost:
+      wall_time: not tracked
+      spend_usd: subscription-based
+      hardware: local machine
+      prompting_notes: n/a
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    The statements from the hand-written families were checked declaration by declaration against the public problem notes, the reasoning records and the Lean sources in automated review passes run with Anthropic Claude and OpenAI Codex. The author selected the statements and is responsible for the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

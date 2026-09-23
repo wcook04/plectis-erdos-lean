@@ -1,0 +1,191 @@
+version: v0.4
+project:
+  name: 'Erdős #257: one-step quotient identities; bounds for the remaining binary positions; doubling the endpoint'
+  description: >-
+    This entry states 24 theorems that the long record for Erdős problem #257 states in sections the unnumbered section one-step quotient identities, the unnumbered section bounds for the remaining binary positions, the unnumbered section doubling the endpoint, the unnumbered section approximation error and finite denominators and the unnumbered section uniqueness for gap-dominated finite weights: the theorem “The next floor quotient”, as paper_floor_quotient_geometric_sum, paper_next_floor_quotient, paper_next_floor_quotient_no_fixed_point and paper_next_quotient_sum; the theorem “The next quotient sum”, as localPrefixQuotient_succ; the theorem “The signed endpoint recurrence”, as paper_repair_integer_eq_endpoint_defect, paper_signed_endpoint_defect_succ, paper_signed_endpoint_recurrence and paper_endpoint_term_counts_divisors; the theorem “Equivalent forms of the sharper bound”, as localBinarySuffix_two_mul_sub_two_lt_criticalCapacity_iff; the theorem “An unconditional bound with one extra bit”, as paper_capacity_band_exclusion, paper_sharper_additive_estimate and paper_unconditional_bound_one_extra_bit; the theorem “The binary bound after doubling”, as exists_exactRowStrictUpperExtension_two_mul_sub_one_of_exact_below and localBinarySuffix_two_mul_sub_one_lt_upperWindow_of_exact_below; the proposition “Every exact sum contains exponent two”, as two_mem_of_exact_localMersenneQuotient; the proposition “Error in the finite subseries value”, as abs_localMersennePrefixValue_sub_half_le; the proposition “No finite support has value one half”, as paper_finite_sum_inv_odd_den_odd, paper_finite_sum_inv_odd_ne_half, paper_finiteErdosSum_den_odd, paper_finite_support_series_ne_half and paper_half_representing_support_is_infinite; the proposition “Gap domination of the integer weights”, as localMersenneWeightsFrom_gapDominates and localMersenneWeights_gapDominates_even.
+
+    20 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 4 are derived from the source declaration by a short tactic proof, which certifies implication.
+
+    Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
+
+    Erdős problem #257 remains open, and no theorem in this entry decides it.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.NT
+  - math.CA
+  - math.DS
+  msc2020:
+  - "11J72"
+  - "11A25"
+  - "11A07"
+  - "11B37"
+  - "11B83"
+  - "28A80"
+  - "11K16"
+sources:
+- title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: "The compared theorems are independently restated Lean theorems proved in this repository and described in the public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos."
+  license: Apache-2.0
+  author_endorsement: participated
+- title: Erdős Problems catalogue
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com
+  type: web discussion
+  relationship: background
+  note: "Catalogue numbering and status of the parent problem."
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+status:
+  scope: "One Comparator configuration selecting the 24 theorems listed in PalomarCorpus/E257_28/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 43 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_43, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 24
+  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E257_28/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
+  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: "PalomarCorpus.E257.PaperStatementsAD.localPrefixQuotient_succ"
+    file: "Solutions/PalomarCorpus/E257_28/PaperStatementsAD.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_28/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAD.paper_finite_sum_inv_odd_den_odd"
+    file: "Solutions/PalomarCorpus/E257_28/PaperStatementsAD.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_28/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAD.paper_finite_sum_inv_odd_ne_half"
+    file: "Solutions/PalomarCorpus/E257_28/PaperStatementsAD.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_28/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAD.two_mem_of_exact_localMersenneQuotient"
+    file: "Solutions/PalomarCorpus/E257_28/PaperStatementsAD.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_28/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAK.paper_floor_quotient_geometric_sum"
+    file: "Solutions/PalomarCorpus/E257_28/PaperStatementsAK.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_28/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAK.paper_next_floor_quotient"
+    file: "Solutions/PalomarCorpus/E257_28/PaperStatementsAK.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_28/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAK.paper_next_floor_quotient_no_fixed_point"
+    file: "Solutions/PalomarCorpus/E257_28/PaperStatementsAK.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_28/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAK.paper_next_quotient_sum"
+    file: "Solutions/PalomarCorpus/E257_28/PaperStatementsAK.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_28/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAK.paper_repair_integer_eq_endpoint_defect"
+    file: "Solutions/PalomarCorpus/E257_28/PaperStatementsAK.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_28/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAK.paper_signed_endpoint_defect_succ"
+    file: "Solutions/PalomarCorpus/E257_28/PaperStatementsAK.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_28/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAK.paper_signed_endpoint_recurrence"
+    file: "Solutions/PalomarCorpus/E257_28/PaperStatementsAK.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_28/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAN.paper_endpoint_term_counts_divisors"
+    file: "Solutions/PalomarCorpus/E257_28/PaperStatementsAN.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_28/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAN.paper_finiteErdosSum_den_odd"
+    file: "Solutions/PalomarCorpus/E257_28/PaperStatementsAN.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_28/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAN.paper_finite_support_series_ne_half"
+    file: "Solutions/PalomarCorpus/E257_28/PaperStatementsAN.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_28/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAN.paper_half_representing_support_is_infinite"
+    file: "Solutions/PalomarCorpus/E257_28/PaperStatementsAN.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_28/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAR.abs_localMersennePrefixValue_sub_half_le"
+    file: "Solutions/PalomarCorpus/E257_28/PaperStatementsAR.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_28/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAR.exists_exactRowStrictUpperExtension_two_mul_sub_one_of_exact_below"
+    file: "Solutions/PalomarCorpus/E257_28/PaperStatementsAR.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_28/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAR.localBinarySuffix_two_mul_sub_one_lt_upperWindow_of_exact_below"
+    file: "Solutions/PalomarCorpus/E257_28/PaperStatementsAR.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_28/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAR.localBinarySuffix_two_mul_sub_two_lt_criticalCapacity_iff"
+    file: "Solutions/PalomarCorpus/E257_28/PaperStatementsAR.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_28/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAR.paper_capacity_band_exclusion"
+    file: "Solutions/PalomarCorpus/E257_28/PaperStatementsAR.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_28/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAS.paper_sharper_additive_estimate"
+    file: "Solutions/PalomarCorpus/E257_28/PaperStatementsAS.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_28/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAS.paper_unconditional_bound_one_extra_bit"
+    file: "Solutions/PalomarCorpus/E257_28/PaperStatementsAS.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_28/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStructuresAY.localMersenneWeightsFrom_gapDominates"
+    file: "Solutions/PalomarCorpus/E257_28/PaperStructuresAY.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_28/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStructuresAY.localMersenneWeights_gapDominates_even"
+    file: "Solutions/PalomarCorpus/E257_28/PaperStructuresAY.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_28/comparator.json"
+  development_status: substantive
+  local_proof_provenance: "the proof modules Erdos249257, ErdosProblems.Erdos257 in this repository, imported by Solutions.PalomarCorpus.E257_28; the Solutions.ExternalVerification257* family modules are a regression mirror of the same proofs and are not imported by this configuration"
+  canonical_claim_status: "problem-level Comparator entry over substantive Lean in this repository"
+automation:
+  methods:
+  - method: manual
+    models: []
+    framework: Mathematical interpretation and claim-boundary review
+    tool_setup: Human-directed scope and significance review
+  - method: agent
+    models:
+    - Anthropic Claude
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+    cost:
+      wall_time: not tracked
+      spend_usd: subscription-based
+      hardware: local machine
+      prompting_notes: n/a
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    Every generated restatement was bound to a paper statement and refereed in the eight-paper coverage ledger before its wrapper was generated, and its transport proof was elaborated before the statement was accepted. The author selected the statements and is responsible for the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

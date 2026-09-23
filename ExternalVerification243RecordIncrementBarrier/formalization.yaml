@@ -75,8 +75,7 @@ status:
     canonical_claim_status: source_proved_wrapper_pending_focused_check
     local_proof_provenance: Source theorem `recordIncrementOne_sylvesterNext_eventually`
       in ErdosProblems/Erdos243/RecordIncrementBarrier.lean, kernel-checked this session
-      (module SHA-256 928ef7a15562a2f6290355f543dcc570517fde536b6cad416cfa4e7b80958e26,
-      see state/formal_math/type_b_return_batches/erdos243_20260905_weighted_record_octuple_returns_02/work/desk_L1_lean_receipt.json);
+      (module SHA-256 928ef7a15562a2f6290355f543dcc570517fde536b6cad416cfa4e7b80958e26);
       not yet committed to git history.
     novelty_status: unassessed
     contribution_class: conditional true-record-increment rigidity

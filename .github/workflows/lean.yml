@@ -4,18 +4,45 @@ name: Lean Convenience
 
 # Developer convenience workflow only. This is not a release gate.
 on:
-  push:
+  workflow_dispatch:
   pull_request:
+  # Other branches build through their pull request, so one push does not
+  # start the same build twice.
+  push:
+    branches: [main, 'palomar/**']
 
 permissions:
   contents: read
 
+# A push supersedes the previous one on the same ref. This workflow is not a
+# release gate, so an in-flight run for an older commit is cancelled. The
+# Comparator replay deliberately has no such rule: its runs produce the
+# per-entry receipts a consumer harvests.
+concurrency:
+  group: lean-convenience-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
-    runs-on: ubuntu-latest
+    # Pinned rather than `ubuntu-latest`, so the October 2026 migration of that
+    # label cannot change the build environment without a commit here.
+    runs-on: ubuntu-24.04
+    # A cold one-thread build of the whole default-target closure took 3h53m
+    # (run 35715779415); the 6h hosted-runner ceiling bounds a runaway.
+    timeout-minutes: 330
     steps:
-      - uses: actions/checkout@v4
-      - uses: leanprover/lean-action@v1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      # Every run used to rebuild the whole project from nothing. The newest
+      # corpus build is restored first, so Lake rebuilds only modules whose
+      # inputs changed.
+      - name: Restore the corpus build
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: .lake/build
+          key: corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-${{ github.sha }}-convenience
+          restore-keys: |
+            corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-
+      - uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
         with:
           use-mathlib-cache: auto
           build: false
@@ -37,3 +64,12 @@ jobs:
               print(f"=== lake build {target} ===", flush=True)
               subprocess.run(["lake", "build", target], check=True)
           PY
+      # Saved even when the build fails or is cancelled: Lake treats a module
+      # as built only once its trace is written after its outputs, so a
+      # partial build is a valid head start for the next run.
+      - name: Save the corpus build
+        if: always()
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: .lake/build
+          key: corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-${{ github.sha }}-convenience

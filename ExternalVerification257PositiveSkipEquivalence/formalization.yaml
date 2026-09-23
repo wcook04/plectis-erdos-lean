@@ -13,9 +13,9 @@ project:
 
 palomar_qualification:
   status: "candidate_pending_mechanical_gates"
-  selected_project: "formal_math/erdos257_period_noncollapse"
-  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification257PositiveSkipEquivalence/comparator.json"
-  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification257PositiveSkipEquivalence/formalization.yaml"
+  selected_project: "."
+  comparator_config: "ExternalVerification257PositiveSkipEquivalence/comparator.json"
+  formalization_metadata: "ExternalVerification257PositiveSkipEquivalence/formalization.yaml"
   repository_scope: "private_source_committed_public_checkpoint_pending"
   challenge_dependency_boundary: "Mathlib_only"
   replay_status: "focused_lean_deferred_exit_75_low_disk"

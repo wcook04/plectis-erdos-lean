@@ -1,0 +1,14 @@
+import Solutions.PalomarCorpus.E1041_03
+
+#print axioms PalomarCorpus.E1041.PaperStatementsE.collinearDiameterBound_sharpConstant
+#print axioms PalomarCorpus.E1041.PaperStatementsE.exists_collinear_factorisation
+#print axioms PalomarCorpus.E1041.PaperStatementsE.sharpConstant_le_of_collinearDiameterBound
+#print axioms PalomarCorpus.E1041.PaperStatementsE.sharp_collinear_root_diameter
+#print axioms PalomarCorpus.E1041.PaperStatementsE.sharp_collinear_root_diameter_monic
+#print axioms PalomarCorpus.E1041.PaperStatementsI.exists_peak_le_comparisonBound
+#print axioms PalomarCorpus.E1041.PaperStatementsS.chebyshev_configuration_attains
+#print axioms PalomarCorpus.E1041.PaperStatementsS.exists_gap_le_comparisonBound
+#print axioms PalomarCorpus.E1041.PaperStatementsS.monicScaledChebyshev_eq_prod
+#print axioms PalomarCorpus.E1041.PaperStatementsS.sharp_collinear_equality_attained
+#print axioms PalomarCorpus.E1041.PaperStatementsT.collinear_erdos_1041
+#print axioms PalomarCorpus.E1041.PaperStatementsT.collinear_erdos_1041_monic

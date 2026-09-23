@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification251PaperStatementsN.Challenge",
+  "solution_module": "Solutions.ExternalVerification251PaperStatementsN",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification251PaperStatementsN.cofinal_escape_of_finite_truncation"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

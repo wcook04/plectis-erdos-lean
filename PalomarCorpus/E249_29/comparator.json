@@ -1,0 +1,17 @@
+{
+  "challenge_module": "PalomarCorpus.E249_29.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E249_29",
+  "theorem_names": [
+    "PalomarCorpus.E249.CompleteKernelBases.displayed_all_base_kernel",
+    "PalomarCorpus.E249.CompleteKernelBases.displayed_full_dyadic_basis",
+    "PalomarCorpus.E249.TotientKernelBasis.allBaseTotientKernelBasisRankAndRelationDimension",
+    "PalomarCorpus.E249.TotientKernelBasis.allSlopeAffineTotientFormsLinearIndependent",
+    "PalomarCorpus.E249.TotientKernelBasis.displayed_integral_normal_form"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

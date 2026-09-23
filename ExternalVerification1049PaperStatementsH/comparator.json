@@ -1,0 +1,15 @@
+{
+  "challenge_module": "ExternalVerification1049PaperStatementsH.Challenge",
+  "solution_module": "Solutions.ExternalVerification1049PaperStatementsH",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1049PaperStatementsH.all_row_initial",
+    "Erdos249257.ExternalVerification1049PaperStatementsH.all_row_initial_dvd",
+    "Erdos249257.ExternalVerification1049PaperStatementsH.all_row_initial_reciprocal"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

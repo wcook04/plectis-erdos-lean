@@ -1,0 +1,199 @@
+/- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
+import Mathlib
+
+set_option autoImplicit false
+
+/-!
+# Independent restatements for Erdős problem #249
+
+Each theorem below restates a refereed declaration of the substantive development in
+this repository, at public commit `f436a7ec0f7bf035828a7eec37fd29ae74d17d84` of
+https://github.com/wcook04/plectis-erdos. The definitions are local copies of the source definitions, so
+the statements elaborate against Mathlib alone. This module is a comparison interface
+over that development, not the development itself. The mathematics is developed in
+`Erdos249257.DiagonalFreshLossBridge`, `Erdos249257.FullTargetPrimeAdjunctionNoGo`,
+`Erdos249257.GcdMomentCalculus`, `Erdos249257.MersenneShadowCyclotomicNoncollapse`,
+`Erdos249257.RadicalMobiusShadow`, `Erdos249257.ResidualGaugeObstruction`,
+`ErdosProblems.Erdos249.PaperCompleteR20.MobiusSquareReduction`,
+`ErdosProblems.Erdos249.PaperCompleteR21.PrimeJumpWitnessAndMersenneChannels`,
+`ErdosProblems.Erdos249.PaperCompleteR21.ScalarLocalisationAndInversePhaseGauge`,
+`ErdosProblems.Erdos249.PaperCompleteR21.SternBrocotStoppingRecursion`,
+`ErdosProblems.Erdos249.PaperCompleteR21.TopEdgeStaircaseConditions`.
+-/
+
+open scoped BigOperators
+
+namespace Erdos249257.ExternalVerification249PaperStatementsAY
+
+noncomputable def actualCenteredLift (A M : ℤ) : ℤ :=
+  let r := A % M
+  if r ≤ M / 2 then r else r - M
+
+noncomputable def totientSeries : ℝ :=
+  ∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n
+
+noncomputable def lcmHeight (t : ℕ) : ℕ :=
+  (Finset.Icc 1 t).lcm (fun n ↦ n)
+
+noncomputable def upperHalfPrimes (t : ℕ) : Finset ℕ :=
+  (Finset.Ioc (t / 2) t).filter Nat.Prime
+
+noncomputable def mersenne (n : ℕ) : ℕ := 2 ^ n - 1
+
+noncomputable def mobiusNumerator (r : ℕ) : ℤ :=
+  ∑ s ∈ r.primeFactors.powerset,
+    (-1 : ℤ) ^ s.card *
+      ((r / s.prod id : ℕ) : ℤ) *
+        (((mersenne r) / (mersenne (s.prod id)) : ℕ) : ℤ)
+
+noncomputable def baseMobiusShadow (r : ℕ) : ℚ :=
+  Rat.divInt (mobiusNumerator r) (mersenne r : ℤ)
+
+noncomputable def squarefreeKernel (n : ℕ) : ℕ := ∏ p ∈ n.primeFactors, p
+
+noncomputable def numericMobiusShadow (H : ℕ) : ℚ :=
+  baseMobiusShadow (squarefreeKernel H) / (squarefreeKernel H : ℚ)
+
+noncomputable def phasePowerMatrix
+    {d : ℕ} (e : Fin d → ℕ) (z : Fin d → ℂ) :
+    Matrix (Fin d) (Fin d) ℂ :=
+  fun i j ↦ z j ^ e i
+
+noncomputable def cylinderMass (a b : ℕ+) : ℝ :=
+  1 / (((2 : ℝ) ^ (a : ℕ) - 1) * ((2 : ℝ) ^ (b : ℕ) - 1))
+
+/-- States prop:mobsq from the long record for Erdős problem #249. Transported from
+ErdosProblems.Erdos249.PaperCompleteR20.irrational_totient_iff_mobius_square in the
+substantive development, whose statement was refereed against the paper in the coverage
+ledger. -/
+theorem irrational_totient_iff_mobius_square :
+    Irrational totientSeries ↔
+      Irrational (∑' d : ℕ+, (ArithmeticFunction.moebius (d : ℕ) : ℝ) /
+        ((2 : ℝ) ^ (d : ℕ) - 1) ^ 2) := by
+  sorry
+
+/-- States prop:mobsq from the long record for Erdős problem #249. Transported from
+ErdosProblems.Erdos249.PaperCompleteR20.mobius_square_reduction in the substantive
+development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem mobius_square_reduction :
+    totientSeries = (1 : ℝ) / 2 +
+      ∑' d : ℕ+, (ArithmeticFunction.moebius (d : ℕ) : ℝ) /
+        ((2 : ℝ) ^ (d : ℕ) - 1) ^ 2 := by
+  sorry
+
+/-- States prop:TE-06 from the long record for Erdős problem #249. Transported from
+ErdosProblems.Erdos249.PaperCompleteR21.centeredLift_range in the substantive development,
+whose statement was refereed against the paper in the coverage ledger. -/
+theorem centeredLift_range {A M : ℤ} (hM : 0 < M) :
+    -M < 2 * actualCenteredLift A M ∧ 2 * actualCenteredLift A M ≤ M := by
+  sorry
+
+/-- States catalogue:mob:a9a from the long record for Erdős problem #249. Transported from
+ErdosProblems.Erdos249.PaperCompleteR21.cylinderMass_eq_divisibility_mass_mul in the
+substantive development, whose statement was refereed against the paper in the coverage
+ledger. -/
+theorem cylinderMass_eq_divisibility_mass_mul (a b : ℕ+) :
+    cylinderMass a b
+      = (∑' k : ℕ, if 0 < k ∧ (a : ℕ) ∣ k then ((1 : ℝ) / 2) ^ k else 0)
+        * (∑' k : ℕ, if 0 < k ∧ (b : ℕ) ∣ k then ((1 : ℝ) / 2) ^ k else 0) := by
+  sorry
+
+/-- States catalogue:mob:a9a from the long record for Erdős problem #249. Transported from
+ErdosProblems.Erdos249.PaperCompleteR21.cylinder_mediant_split in the substantive
+development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem cylinder_mediant_split (a b : ℕ+) :
+    cylinderMass a b
+      = 1 / ((2 : ℝ) ^ ((a : ℕ) + (b : ℕ)) - 1)
+        + cylinderMass (a + b) b + cylinderMass a (a + b) := by
+  sorry
+
+/-- States catalogue:mob:a9a from the long record for Erdős problem #249. Transported from
+ErdosProblems.Erdos249.PaperCompleteR21.cylinder_root_values in the substantive development,
+whose statement was refereed against the paper in the coverage ledger. -/
+theorem cylinder_root_values :
+    cylinderMass 1 1 = 1 ∧
+      1 / ((2 : ℝ) ^ (((1 : ℕ+) : ℕ) + ((1 : ℕ+) : ℕ)) - 1) = 1 / 3 ∧
+      cylinderMass (1 + 1) 1 = 1 / 3 ∧ cylinderMass 1 (1 + 1) = 1 / 3 := by
+  sorry
+
+/-- States the paper statement it is bound to from the long record for Erdős problem #249.
+Transported from ErdosProblems.Erdos249.PaperCompleteR21.exists_upperHalf_channel_paper in
+the substantive development, whose statement was refereed against the paper in the coverage
+ledger. -/
+theorem exists_upperHalf_channel_paper {t : ℕ} (ht : 5 ≤ t) :
+    ∃ p ∈ upperHalfPrimes t,
+      2 ^ (t / 2) ≤ mersenne p ∧
+      mersenne p < 2 ^ t ∧
+      mersenne p ∣
+        ((lcmHeight t : ℚ) *
+          numericMobiusShadow (lcmHeight t)).den := by
+  sorry
+
+/-- States the paper statement it is bound to from the long record for Erdős problem #249.
+Transported from
+ErdosProblems.Erdos249.PaperCompleteR21.inversePhaseGauge_locks_row_and_preserves_minor in
+the substantive development, whose statement was refereed against the paper in the coverage
+ledger. -/
+theorem inversePhaseGauge_locks_row_and_preserves_minor
+    {d : ℕ} (_hd : 1 ≤ d) (e : Fin d → ℕ) (z : Fin d → ℂ)
+    (hz : ∀ j, z j ≠ 0) (i₀ : Fin d) (hi₀ : e i₀ = 1) :
+    (∀ j, (phasePowerMatrix e z * Matrix.diagonal (fun j => (z j)⁻¹)) i₀ j = 1) ∧
+      Matrix.det (phasePowerMatrix e z * Matrix.diagonal (fun j => (z j)⁻¹))
+          = Matrix.det (phasePowerMatrix e z) * ∏ j, (z j)⁻¹ ∧
+      (Matrix.det (phasePowerMatrix e z) ≠ 0 →
+        Matrix.det (phasePowerMatrix e z * Matrix.diagonal (fun j => (z j)⁻¹)) ≠ 0) ∧
+      ((∀ j, ‖z j‖ = 1) →
+        ‖Matrix.det (phasePowerMatrix e z * Matrix.diagonal (fun j => (z j)⁻¹))‖
+          = ‖Matrix.det (phasePowerMatrix e z)‖) := by
+  sorry
+
+/-- States catalogue:mob:a9a from the long record for Erdős problem #249. Transported from
+ErdosProblems.Erdos249.PaperCompleteR21.normalised_split_probabilities in the substantive
+development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem normalised_split_probabilities (a b : ℕ+) :
+    (1 / ((2 : ℝ) ^ ((a : ℕ) + (b : ℕ)) - 1)) / cylinderMass a b
+        = ((2 : ℝ) ^ (a : ℕ) - 1) * ((2 : ℝ) ^ (b : ℕ) - 1)
+          / ((2 : ℝ) ^ ((a : ℕ) + (b : ℕ)) - 1)
+      ∧ cylinderMass (a + b) b / cylinderMass a b
+        = ((2 : ℝ) ^ (a : ℕ) - 1) / ((2 : ℝ) ^ ((a : ℕ) + (b : ℕ)) - 1)
+      ∧ cylinderMass a (a + b) / cylinderMass a b
+        = ((2 : ℝ) ^ (b : ℕ) - 1) / ((2 : ℝ) ^ ((a : ℕ) + (b : ℕ)) - 1) := by
+  sorry
+
+/-- States the paper statement it is bound to from the long record for Erdős problem #249.
+Transported from
+ErdosProblems.Erdos249.PaperCompleteR21.upperHalfMersenneProduct_between_bounds in the
+substantive development, whose statement was refereed against the paper in the coverage
+ledger. -/
+theorem upperHalfMersenneProduct_between_bounds {t : ℕ} (ht : 5 ≤ t) :
+    2 ^ (t / 2) ≤ ∏ p ∈ upperHalfPrimes t, mersenne p ∧
+      (∏ p ∈ upperHalfPrimes t, mersenne p) ≤
+        ((lcmHeight t : ℚ) *
+          numericMobiusShadow (lcmHeight t)).den := by
+  sorry
+
+/-- States the paper statement it is bound to from the long record for Erdős problem #249.
+Transported from ErdosProblems.Erdos249.PaperCompleteR21.upperHalfPrimes_member_bounds in
+the substantive development, whose statement was refereed against the paper in the coverage
+ledger. -/
+theorem upperHalfPrimes_member_bounds {t p : ℕ} (hp : p ∈ upperHalfPrimes t) :
+    t / 2 ≤ p - 1 ∧ p ≤ t := by
+  sorry
+
+/-- States the paper statement it is bound to from the long record for Erdős problem #249.
+Transported from ErdosProblems.Erdos249.PaperCompleteR21.upperHalfPrimes_nonempty_paper in
+the substantive development, whose statement was refereed against the paper in the coverage
+ledger. -/
+theorem upperHalfPrimes_nonempty_paper {t : ℕ} (ht : 2 ≤ t) :
+    (upperHalfPrimes t).Nonempty := by
+  sorry
+
+/-- States the paper statement it is bound to from the long record for Erdős problem #249.
+Transported from ErdosProblems.Erdos249.PaperCompleteR21.upperHalfPrimes_spec in the
+substantive development, whose statement was refereed against the paper in the coverage
+ledger. -/
+theorem upperHalfPrimes_spec (t : ℕ) :
+    upperHalfPrimes t = (Finset.Ioc (t / 2) t).filter Nat.Prime := by
+  sorry
+
+end Erdos249257.ExternalVerification249PaperStatementsAY

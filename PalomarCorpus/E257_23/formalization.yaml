@@ -1,0 +1,155 @@
+version: v0.4
+project:
+  name: 'Erdős #257: a quotient bound at a crossing; filling the remaining binary positions; reducing the dyadic-boundary checks'
+  description: >-
+    This entry states 15 theorems that the long record for Erdős problem #257 states in sections the unnumbered section a quotient bound at a crossing, the unnumbered section filling the remaining binary positions and the unnumbered section reducing the dyadic-boundary checks: the theorem “Two consecutive skips”, as halfGreedySkippedCriticalQuotientSupply_of_precriticalSuffix, halfGreedySkippedPrecriticalSuffixSupply_iff_preTake and halfGreedy_precriticalSuffix_lt_of_next_skip; the theorem “A later skip after a selected block”, as sub_two_le_two_pow_sub_four, precriticalCrossingTax_of_futureThreshold and halfGreedy_precriticalSuffix_lt_of_future_skip_after_takenBlock; the theorem “Filling the remaining binary positions”, as exists_exactRowStrictUpperFill_of_skippedCoreSharpCapacity; the theorem “An exact sum at depth 2c-2”, as exactLocalMersenneHalfRow_two_mul_sub_two_of_skippedCoreSharpCapacity; the proposition “Quotients in the upper half of the index range”, as exists_boolean_word_of_lt_two_pow and localMersenneQuotient_eq_two_pow_sub_of_half_lt; the theorem “A finite sum from a skipped prefix”, as paper_exact_row_from_skipped_prefix; the theorem “Testing one nearest dyadic boundary”, as paper_critical_dyadic_band_index_eq_top_of_le_two, paper_critical_dyadic_band_index_unique, paper_critical_dyadic_boundary_is_smallest and paper_dyadic_band_escape_iff_single_test.
+
+    11 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 4 are derived from the source declaration by a short tactic proof, which certifies implication.
+
+    Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
+
+    Erdős problem #257 remains open, and no theorem in this entry decides it.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.NT
+  - math.CA
+  - math.DS
+  msc2020:
+  - "11J72"
+  - "11A25"
+  - "11A07"
+  - "11B37"
+  - "11B83"
+  - "28A80"
+  - "11K16"
+sources:
+- title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: "The compared theorems are independently restated Lean theorems proved in this repository and described in the public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos."
+  license: Apache-2.0
+  author_endorsement: participated
+- title: Erdős Problems catalogue
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com
+  type: web discussion
+  relationship: background
+  note: "Catalogue numbering and status of the parent problem."
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+status:
+  scope: "One Comparator configuration selecting the 15 theorems listed in PalomarCorpus/E257_23/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 43 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_43, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 15
+  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E257_23/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
+  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: "PalomarCorpus.E257.PaperStatementsAA.sub_two_le_two_pow_sub_four"
+    file: "Solutions/PalomarCorpus/E257_23/PaperStatementsAA.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_23/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAD.exists_boolean_word_of_lt_two_pow"
+    file: "Solutions/PalomarCorpus/E257_23/PaperStatementsAD.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_23/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAD.localMersenneQuotient_eq_two_pow_sub_of_half_lt"
+    file: "Solutions/PalomarCorpus/E257_23/PaperStatementsAD.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_23/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAR.exactLocalMersenneHalfRow_two_mul_sub_two_of_skippedCoreSharpCapacity"
+    file: "Solutions/PalomarCorpus/E257_23/PaperStatementsAR.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_23/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAR.exists_exactRowStrictUpperFill_of_skippedCoreSharpCapacity"
+    file: "Solutions/PalomarCorpus/E257_23/PaperStatementsAR.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_23/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAR.paper_exact_row_from_skipped_prefix"
+    file: "Solutions/PalomarCorpus/E257_23/PaperStatementsAR.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_23/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAR.precriticalCrossingTax_of_futureThreshold"
+    file: "Solutions/PalomarCorpus/E257_23/PaperStatementsAR.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_23/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsBE.paper_critical_dyadic_band_index_eq_top_of_le_two"
+    file: "Solutions/PalomarCorpus/E257_23/PaperStatementsBE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_23/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsBE.paper_critical_dyadic_band_index_unique"
+    file: "Solutions/PalomarCorpus/E257_23/PaperStatementsBE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_23/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsBE.paper_critical_dyadic_boundary_is_smallest"
+    file: "Solutions/PalomarCorpus/E257_23/PaperStatementsBE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_23/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsBE.paper_dyadic_band_escape_iff_single_test"
+    file: "Solutions/PalomarCorpus/E257_23/PaperStatementsBE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_23/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsF.halfGreedySkippedCriticalQuotientSupply_of_precriticalSuffix"
+    file: "Solutions/PalomarCorpus/E257_23/PaperStatementsF.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_23/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsF.halfGreedySkippedPrecriticalSuffixSupply_iff_preTake"
+    file: "Solutions/PalomarCorpus/E257_23/PaperStatementsF.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_23/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsF.halfGreedy_precriticalSuffix_lt_of_future_skip_after_takenBlock"
+    file: "Solutions/PalomarCorpus/E257_23/PaperStatementsF.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_23/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsF.halfGreedy_precriticalSuffix_lt_of_next_skip"
+    file: "Solutions/PalomarCorpus/E257_23/PaperStatementsF.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_23/comparator.json"
+  development_status: substantive
+  local_proof_provenance: "the proof modules Erdos249257, ErdosProblems.Erdos257 in this repository, imported by Solutions.PalomarCorpus.E257_23; the Solutions.ExternalVerification257* family modules are a regression mirror of the same proofs and are not imported by this configuration"
+  canonical_claim_status: "problem-level Comparator entry over substantive Lean in this repository"
+automation:
+  methods:
+  - method: manual
+    models: []
+    framework: Mathematical interpretation and claim-boundary review
+    tool_setup: Human-directed scope and significance review
+  - method: agent
+    models:
+    - Anthropic Claude
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+    cost:
+      wall_time: not tracked
+      spend_usd: subscription-based
+      hardware: local machine
+      prompting_notes: n/a
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    Every generated restatement was bound to a paper statement and refereed in the eight-paper coverage ledger before its wrapper was generated, and its transport proof was elaborated before the statement was accepted. The author selected the statements and is responsible for the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

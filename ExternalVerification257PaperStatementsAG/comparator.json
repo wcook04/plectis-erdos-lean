@@ -1,0 +1,33 @@
+{
+  "challenge_module": "ExternalVerification257PaperStatementsAG.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStatementsAG",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStatementsAG.coprime_base_den_finiteErdosSum",
+    "Erdos249257.ExternalVerification257PaperStatementsAG.erdosSupportSeries_multiples_eq_pow_base_full_support",
+    "Erdos249257.ExternalVerification257PaperStatementsAG.irrational_coeff_series_of_weighted_coeff_block_certificates",
+    "Erdos249257.ExternalVerification257PaperStatementsAG.irrational_erdosSum_factorial_support",
+    "Erdos249257.ExternalVerification257PaperStatementsAG.irrational_erdosSum_full_support",
+    "Erdos249257.ExternalVerification257PaperStatementsAG.irrational_erdosSum_of_lcm_gap",
+    "Erdos249257.ExternalVerification257PaperStatementsAG.irrational_erdosSum_two_pow_support",
+    "Erdos249257.ExternalVerification257PaperStatementsAG.irrational_erdosSupportSeries_eventuallyPeriodic",
+    "Erdos249257.ExternalVerification257PaperStatementsAG.irrational_erdosSupportSeries_multiples",
+    "Erdos249257.ExternalVerification257PaperStatementsAG.irrational_erdosSupportSeries_odd",
+    "Erdos249257.ExternalVerification257PaperStatementsAG.irrational_erdosSupportSeries_of_tail",
+    "Erdos249257.ExternalVerification257PaperStatementsAG.irrational_erdosSupportSeries_pairwise_coprime",
+    "Erdos249257.ExternalVerification257PaperStatementsAG.irrational_erdosSupportSeries_periodic",
+    "Erdos249257.ExternalVerification257PaperStatementsAG.irrational_erdosSupportSeries_residueClass",
+    "Erdos249257.ExternalVerification257PaperStatementsAG.irrational_erdosSupportSeries_tail_of_irrational",
+    "Erdos249257.ExternalVerification257PaperStatementsAG.irrational_intWeightedErdosSeries_periodic_of_coeff_nonneg_of_frequently_ne_zero",
+    "Erdos249257.ExternalVerification257PaperStatementsAG.irrational_intWeightedErdosSeries_periodic_of_coeff_nonpos_of_frequently_ne_zero",
+    "Erdos249257.ExternalVerification257PaperStatementsAG.irrational_or_bpow_mul_eq_intCast_intWeightedErdosSeries_periodic",
+    "Erdos249257.ExternalVerification257PaperStatementsAG.lcm_lt_den_finiteErdosSum",
+    "Erdos249257.ExternalVerification257PaperStatementsAG.supportCoeff_le_card_divisors",
+    "Erdos249257.ExternalVerification257PaperStatementsAG.supportCoeff_le_self"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

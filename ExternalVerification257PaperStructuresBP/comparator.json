@@ -1,0 +1,39 @@
+{
+  "challenge_module": "ExternalVerification257PaperStructuresBP.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStructuresBP",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStructuresBP.paper_perturbed_separation_global_maximality",
+    "Erdos249257.ExternalVerification257PaperStructuresBP.paper_perturbed_two_stage_is_global_maximum",
+    "Erdos249257.ExternalVerification257PaperStructuresBP.paper_perturbed_weak_cap_counterexample",
+    "Erdos249257.ExternalVerification257PaperStructuresBP.paper_successor_remainders_fourteen_through_thirtyone",
+    "Erdos249257.ExternalVerification257PaperStructuresBP.paper_unsafe_middle_range_is_three_integers",
+    "Erdos249257.ExternalVerification257PaperStructuresBP.paper_upper_branch_needs_no_exceptional_cell",
+    "Erdos249257.ExternalVerification257PaperStructuresBP.seamPerturbedFamily_gap_pos",
+    "Erdos249257.ExternalVerification257PaperStructuresBP.seamPerturbedFamily_oldSum_injective",
+    "Erdos249257.ExternalVerification257PaperStructuresBP.seamPerturbedFamily_separated",
+    "Erdos249257.ExternalVerification257PaperStructuresBP.seamPerturbedFamily_pulseCap_lt_three_gap",
+    "Erdos249257.ExternalVerification257PaperStructuresBP.wordPulse_le",
+    "Erdos249257.ExternalVerification257PaperStructuresBP.exists_seamWord_minimal_above",
+    "Erdos249257.ExternalVerification257PaperStructuresBP.integerGreedyBits_length",
+    "Erdos249257.ExternalVerification257PaperStructuresBP.seamAboveWord_minimal",
+    "Erdos249257.ExternalVerification257PaperStructuresBP.seamAboveWord_strict",
+    "Erdos249257.ExternalVerification257PaperStructuresBP.seamWeights_length_eq",
+    "Erdos249257.ExternalVerification257PaperStructuresBP.seamAdjacentCut_below_admissible",
+    "Erdos249257.ExternalVerification257PaperStructuresBP.seamAdjacentCut_below_maximal",
+    "Erdos249257.ExternalVerification257PaperStructuresBP.weakCapFamily_gap_pos",
+    "Erdos249257.ExternalVerification257PaperStructuresBP.weakCapFamily_pulse_le",
+    "Erdos249257.ExternalVerification257PaperStructuresBP.weakCapFamily_oldSum_injective",
+    "Erdos249257.ExternalVerification257PaperStructuresBP.weakCapFamily_separated",
+    "Erdos249257.ExternalVerification257PaperStructuresBP.weakCapFamily_pulseCap_lt_three_gap",
+    "Erdos249257.ExternalVerification257PaperStructuresBP.weakCapCut_below_admissible",
+    "Erdos249257.ExternalVerification257PaperStructuresBP.weakCapCut_below_maximal",
+    "Erdos249257.ExternalVerification257PaperStructuresBP.weakCapCut_above_strict",
+    "Erdos249257.ExternalVerification257PaperStructuresBP.weakCapCut_above_minimal"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

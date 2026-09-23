@@ -1,0 +1,4 @@
+import Solutions.ExternalVerification257PaperStatementsG
+
+#print axioms Erdos249257.ExternalVerification257PaperStatementsG.half_mem_mersenneAchievementSet_iff_no_lastHalfGreedySkip
+#print axioms Erdos249257.ExternalVerification257PaperStatementsG.isLastHalfGreedySkip_iff_skip_and_fatal

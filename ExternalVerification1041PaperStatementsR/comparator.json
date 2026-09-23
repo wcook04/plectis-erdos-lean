@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification1041PaperStatementsR.Challenge",
+  "solution_module": "Solutions.ExternalVerification1041PaperStatementsR",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041PaperStatementsR.sextic_spoke_counterexample_whole"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -20,9 +20,9 @@ project:
 
 palomar_qualification:
   status: "candidate_pending_mechanical_gates"
-  selected_project: "formal_math/erdos257_period_noncollapse"
-  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification68StrictSuccessorCarry/comparator.json"
-  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification68StrictSuccessorCarry/formalization.yaml"
+  selected_project: "."
+  comparator_config: "ExternalVerification68StrictSuccessorCarry/comparator.json"
+  formalization_metadata: "ExternalVerification68StrictSuccessorCarry/formalization.yaml"
   repository_scope: "private_source_not_yet_pinned_in_public_repository"
   challenge_dependency_boundary: "Mathlib_only"
   replay_status: "current_macos_host_exit_75_systemd_boundary_unavailable_terminal_pair_pending_supported_runner"
@@ -41,30 +41,6 @@ palomar_qualification:
 classification:
   arxiv: ["math.NT"]
   msc2020: ["11J72", "11A05"]
-
-editorial_assessment:
-  plectis_signal:
-    score: 20
-    band: "conditional"
-    components:
-      theorem_closure: 5
-      parent_problem_proximity: 5
-      mechanism_depth: 4
-      hypothesis_sharpness: 3
-      consequence_reach: 3
-    scale: "0 is the weakest coherent family still worth Comparator admission; 100 is the strongest direct contribution in the current portfolio"
-    authority_boundary: >-
-      Portfolio-relative editorial reading priority only, not proof authority,
-      novelty, Comparator replay, Palomar acceptance, mechanical readiness,
-      or submission authorization.
-    rationale: >-
-      The lead theorem is an exact fixed-constant factorial-orbit equivalence
-      immediately beneath the parent irrationality problem. It identifies the
-      exceptional residue in both directions and is paired with the independent
-      exact strict-successor/divisibility coordinate.
-  presentation_order:
-    - "fixed_companion_orbit_rationality_boundary"
-    - "strict_successor_carry_complete_characterization"
 
 sources:
   - title: "Exact companion-orbit and strict-successor characterizations for Erdős Problem 68"

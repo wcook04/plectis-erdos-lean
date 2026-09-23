@@ -1,0 +1,22 @@
+{
+  "challenge_module": "ExternalVerification257PaperStatementsAE.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStatementsAE",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStatementsAE.balancedPulse_endpoint_fanout",
+    "Erdos249257.ExternalVerification257PaperStatementsAE.balancedPulse_label_card_lower_bound",
+    "Erdos249257.ExternalVerification257PaperStatementsAE.balancedPulse_no_autonomous_decoder",
+    "Erdos249257.ExternalVerification257PaperStatementsAE.balancedPulse_weighted_pair",
+    "Erdos249257.ExternalVerification257PaperStatementsAE.binaryCoeffSeries_rational_iff_exists_temperedBinaryOrbit",
+    "Erdos249257.ExternalVerification257PaperStatementsAE.binaryCoeffTail_div_pow_tendsto_zero",
+    "Erdos249257.ExternalVerification257PaperStatementsAE.binaryCoeffTail_le",
+    "Erdos249257.ExternalVerification257PaperStatementsAE.binaryCoeffTail_nonneg",
+    "Erdos249257.ExternalVerification257PaperStatementsAE.not_irrational_binaryCoeffSeries_iff_exists_temperedBinaryOrbit",
+    "Erdos249257.ExternalVerification257PaperStatementsAE.temperedBinaryOrbit_eq_scaledTail"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

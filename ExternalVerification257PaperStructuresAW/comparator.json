@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification257PaperStructuresAW.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStructuresAW",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStructuresAW.paper_compatible_first_condition_gives_nonneg"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

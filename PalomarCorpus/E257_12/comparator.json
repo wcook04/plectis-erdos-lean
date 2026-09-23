@@ -1,0 +1,31 @@
+{
+  "challenge_module": "PalomarCorpus.E257_12.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257_12",
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStructuresBN.exists_seamWord_minimal_above",
+    "PalomarCorpus.E257.PaperStructuresBN.integerGreedyBits_length",
+    "PalomarCorpus.E257.PaperStructuresBN.paper_final_middle_cell_at_least_neg_two",
+    "PalomarCorpus.E257.PaperStructuresBN.paper_final_middle_cell_ne_neg_three",
+    "PalomarCorpus.E257.PaperStructuresBN.paper_final_middle_cell_remaining_cells",
+    "PalomarCorpus.E257.PaperStructuresBN.paper_perturbed_nextRemainder_three_branches",
+    "PalomarCorpus.E257.PaperStructuresBN.paper_perturbed_order_preservation",
+    "PalomarCorpus.E257.PaperStructuresBN.paper_perturbed_prefixChoice_maximal",
+    "PalomarCorpus.E257.PaperStructuresBN.seamAboveWord_minimal",
+    "PalomarCorpus.E257.PaperStructuresBN.seamAboveWord_strict",
+    "PalomarCorpus.E257.PaperStructuresBN.seamAdjacentCut_below_admissible",
+    "PalomarCorpus.E257.PaperStructuresBN.seamAdjacentCut_below_maximal",
+    "PalomarCorpus.E257.PaperStructuresBN.seamPerturbedFamily_gap_pos",
+    "PalomarCorpus.E257.PaperStructuresBN.seamPerturbedFamily_oldSum_injective",
+    "PalomarCorpus.E257.PaperStructuresBN.seamPerturbedFamily_pulseCap_lt_three_gap",
+    "PalomarCorpus.E257.PaperStructuresBN.seamPerturbedFamily_separated",
+    "PalomarCorpus.E257.PaperStructuresBN.seamUpperResetDyadicBandEscape_through_thirty",
+    "PalomarCorpus.E257.PaperStructuresBN.seamWeights_length_eq",
+    "PalomarCorpus.E257.PaperStructuresBN.wordPulse_le"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

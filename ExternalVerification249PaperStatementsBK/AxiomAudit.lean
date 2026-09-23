@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification249PaperStatementsBK
+
+#print axioms Erdos249257.ExternalVerification249PaperStatementsBK.tailDifference_not_integral_of_separation

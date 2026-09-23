@@ -1,0 +1,15 @@
+import Solutions.PalomarCorpus.E243_01
+
+#print axioms PalomarCorpus.E243.CompletePaperRecords.fixed_offsets_periodic_lowerDensity
+#print axioms PalomarCorpus.E243.PaperStatementsA.cubic_profile_gcd_stabilisation_and_primitive_shape
+#print axioms PalomarCorpus.E243.PaperStatementsA.primitive_zero_density_paper_multiplier_lemma
+#print axioms PalomarCorpus.E243.PaperStatementsG.regular_rate_extraction
+#print axioms PalomarCorpus.E243.PaperStatementsL.canonical_tail_ratio_quantitative
+#print axioms PalomarCorpus.E243.PaperStatementsN.regular_rate_extraction_cubic
+#print axioms PalomarCorpus.E243.PaperStatementsP.scale_twelve_of_square_in_rootField
+#print axioms PalomarCorpus.E243.PaperStructuresAC.cubic_exclusion_unconditional
+#print axioms PalomarCorpus.E243.PaperStructuresAC.cubic_rate_irrationality_unconditional
+#print axioms PalomarCorpus.E243.PaperStructuresAC.squareSpecialisation
+#print axioms PalomarCorpus.E243.PaperStructuresAC.transport_square_unconditional
+#print axioms PalomarCorpus.E243.PaperStructuresAD.minus_one_forbidden_word
+#print axioms PalomarCorpus.E243.PaperStructuresAD.plus_one_forbidden_word

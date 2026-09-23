@@ -1,0 +1,4 @@
+import Solutions.ExternalVerification251PaperStatementsA
+
+#print axioms Erdos249257.ExternalVerification251PaperStatementsA.bounded_test_finite_coupling
+#print axioms Erdos249257.ExternalVerification251PaperStatementsA.exists_logarithmic_recurring_values_countermodel

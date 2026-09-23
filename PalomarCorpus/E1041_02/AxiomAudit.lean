@@ -1,0 +1,9 @@
+import Solutions.PalomarCorpus.E1041_02
+
+#print axioms PalomarCorpus.E1041.CubicPath.complete_translated_cubic_quotient_fibres
+#print axioms PalomarCorpus.E1041.CubicPath.cubic_paper_complete
+#print axioms PalomarCorpus.E1041.CubicPath.monic_cubic_connector
+#print axioms PalomarCorpus.E1041.PaperStatementsY.cfa_capacity_criterion
+#print axioms PalomarCorpus.E1041.PaperStatementsZA.cfa_arity_criterion
+#print axioms PalomarCorpus.E1041.PaperStatementsZA.cfa_constant_factor_path
+#print axioms PalomarCorpus.E1041.PaperStatementsZB.subcritical_perimeter_path_paper

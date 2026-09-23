@@ -1,0 +1,32 @@
+{
+  "challenge_module": "PalomarCorpus.E249_05.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E249_05",
+  "theorem_names": [
+    "PalomarCorpus.E249.CompleteKernelBases.displayed_canonical_and_full_dyadic",
+    "PalomarCorpus.E249.PaperStatementsAD.tail_diff_int_of_den_dvd",
+    "PalomarCorpus.E249.PaperStatementsAE.gcd_moment_identity_three_members",
+    "PalomarCorpus.E249.PaperStatementsAE.lcmHeight_five_scaledMobiusShadow_den_exact",
+    "PalomarCorpus.E249.PaperStatementsAE.lcmHeight_upperHalf_product_dvd_den",
+    "PalomarCorpus.E249.PaperStatementsAE.pillaiP_eq_totient_mul_id",
+    "PalomarCorpus.E249.PaperStatementsAE.signed_dyadic_clearing",
+    "PalomarCorpus.E249.PaperStatementsAE.signed_dyadic_sum_ne_zero",
+    "PalomarCorpus.E249.PaperStatementsAE.sum_gcd_Icc_eq_pillaiP",
+    "PalomarCorpus.E249.PaperStatementsAE.tsum_pos_pair_gcd_half_eq_totient_div_mersenne_sq",
+    "PalomarCorpus.E249.PaperStatementsAE.upperHalfChannel_product_dvd_den_of_coprime_scale",
+    "PalomarCorpus.E249.PaperStatementsAE.upperHalfChannel_product_dvd_den_of_scale_primeFactors_le",
+    "PalomarCorpus.E249.PaperStatementsAE.upper_half_product_denominator_bounds",
+    "PalomarCorpus.E249.PaperStatementsAK.tsum_lambert_linear_weight_sq_pure",
+    "PalomarCorpus.E249.PaperStatementsAK.tsum_totient_div_mersenne_sq_eq_gcd_moment_series",
+    "PalomarCorpus.E249.PaperStatementsAQ.cyclotomicValue_dvd_baseMobiusShadow_den",
+    "PalomarCorpus.E249.PaperStatementsAQ.mobiusNumeratorPolynomial_eval_two",
+    "PalomarCorpus.E249.PaperStatementsAQ.mobiusNumerator_gcd_cyclotomicValue",
+    "PalomarCorpus.E249.PaperStatementsAR.lcmHeight_scaledMobiusShadow_den_exact",
+    "PalomarCorpus.E249.PaperStatementsAX.specified_euler_tail_period"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

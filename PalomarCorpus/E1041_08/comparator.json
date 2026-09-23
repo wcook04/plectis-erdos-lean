@@ -1,0 +1,21 @@
+{
+  "challenge_module": "PalomarCorpus.E1041_08.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E1041_08",
+  "theorem_names": [
+    "PalomarCorpus.E1041.SolvedFamilies.SharpCollinear.existsPeakLeComparisonBound",
+    "PalomarCorpus.E1041.SolvedFamilies.cubic_safeRootSpoke",
+    "PalomarCorpus.E1041.SolvedFamilies.primitiveQuintic_twoStrictTailEnergies",
+    "PalomarCorpus.E1041.TetranomialSpokes.exists_two_tails_norm_lt_one_of_exact_L2_budget",
+    "PalomarCorpus.E1041.TetranomialSpokes.exists_two_tetranomialRoot_safeSpokes_of_moment_coeff_budget",
+    "PalomarCorpus.E1041.TetranomialSpokes.sum_normSq_const_add_mul",
+    "PalomarCorpus.E1041.TetranomialSpokes.tetranomialRoot_spoke_factorization",
+    "PalomarCorpus.E1041.TetranomialSpokes.tetranomialRoot_spoke_norm_lt_one_of_lowCoeffBudget",
+    "PalomarCorpus.E1041.TetranomialSpokes.tetranomialRoot_spoke_norm_lt_one_of_rootBudget"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}
