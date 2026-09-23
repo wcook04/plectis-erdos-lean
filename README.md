@@ -11,8 +11,10 @@ compare it with the paper cited in `formalization.yaml`.
 
 The first release selects the following configurations from the full checking
 corpus. Each configuration names a finite list of statements; it does not
-certify every claim in the linked paper. The first official full preflight is
-for **E257_01**. The remaining entries are disabled in the
+certify every claim in the linked paper. The first official full preflight, for **E257_01**, was
+[rejected before proof execution](docs/palomar-release-v1/preflight-35917059793.json):
+this corpus uses Lean 4.30.0 and the pinned current verifier requires at least
+4.35.0-rc2. A supported-toolchain candidate and new exact-input run are required. The remaining entries are disabled in the
 [release selection](.github/palomar-release-selection-v1.json) while their
 scope and exact-input checks are prepared.
 
