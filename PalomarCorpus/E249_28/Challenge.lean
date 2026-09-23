@@ -43,7 +43,7 @@ noncomputable def pivotSupplier (X L s N : ℕ) : Prop :=
   p.Prime ∧ m * p = pivotArgument N L s ∧ 0 < m ∧
     m ≤ Nat.sqrt X / 2 ∧ 2 * Nat.sqrt X < p
 /-- Local definition instDecidablePivotSupplier, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable instance instDecidablePivotSupplier (X L s N : ℕ) : Decidable (pivotSupplier X L s N) := by
+noncomputable scoped instance instDecidablePivotSupplier (X L s N : ℕ) : Decidable (pivotSupplier X L s N) := by
   unfold pivotSupplier
   infer_instance
 /-- Local definition pivotSupplierBases, copied so the compared statements of this entry elaborate against Mathlib alone. -/
@@ -81,7 +81,7 @@ noncomputable def dickmanCut (X t : ℕ) : ℝ :=
 noncomputable def exists_admissibleDepth (h s X : ℕ) : ∃ L, AdmissibleDepth h s X L :=
   ⟨_, admissibleDepth_witness h s X⟩
 /-- Local definition instDecidablePredNatAdmissibleDepth, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable instance instDecidablePredNatAdmissibleDepth (h s X : ℕ) : DecidablePred (AdmissibleDepth h s X) := fun L => by
+noncomputable scoped instance instDecidablePredNatAdmissibleDepth (h s X : ℕ) : DecidablePred (AdmissibleDepth h s X) := fun L => by
   unfold AdmissibleDepth; infer_instance
 /-- Local definition minimalDepth, copied so the compared statements of this entry elaborate against Mathlib alone. -/
 noncomputable def minimalDepth (h s X : ℕ) : ℕ := Nat.find (exists_admissibleDepth h s X)

@@ -102,6 +102,8 @@ theorem bottomJet3_eq_zero_iff_dvd (R W : ℕ) (P : Polynomial ℤ) :
 end PalomarCorpus.E1049.PaperStatementsF
 
 namespace PalomarCorpus.E1049.PaperStructuresP
+/-- Local definition instDecidableEqReal_erdosProblems, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable scoped instance instDecidableEqReal_erdosProblems : DecidableEq ℝ := Classical.decEq ℝ
 /-- States res:boundedfibre from the short record for Erdős problem #1049. Transported from ErdosProblems.Erdos1049.exists_small_real_escape_of_conditional_multiplicity in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem exists_small_real_escape_of_conditional_multiplicity
     {α β ι : Type*}

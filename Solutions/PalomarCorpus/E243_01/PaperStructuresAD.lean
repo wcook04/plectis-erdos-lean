@@ -14,8 +14,6 @@ import Solutions.PalomarCorpus.E243_01.Statement
 namespace PalomarCorpus.E243.PaperStructuresAD
 export PalomarCorpus.E243_01.Shared (LowerDensityAtLeast exceptionCount exceptionFinset)
 
-noncomputable instance instFactPrimeOfNatNat_erdosProblems : Fact (Nat.Prime 7) := ⟨by decide⟩
-
 theorem minus_one_forbidden_word (a u v : ℕ → ℤ) (T : ℕ)
     (hnum : ∀ j, T ≤ j → u (j + 1) + v j = a j * u j)
     (hden : ∀ j, T ≤ j → v (j + 1) = a j * v j) :

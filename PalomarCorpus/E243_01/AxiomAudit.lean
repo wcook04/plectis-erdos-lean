@@ -2,9 +2,7 @@ import Solutions.PalomarCorpus.E243_01
 
 #print axioms PalomarCorpus.E243.CompletePaperRecords.fixed_offsets_periodic_lowerDensity
 #print axioms PalomarCorpus.E243.PaperStatementsA.cubic_profile_gcd_stabilisation_and_primitive_shape
-#print axioms PalomarCorpus.E243.PaperStatementsA.nextTailState_eq_sub_centered
 #print axioms PalomarCorpus.E243.PaperStatementsA.primitive_zero_density_paper_multiplier_lemma
-#print axioms PalomarCorpus.E243.PaperStatementsA.state_scale
 #print axioms PalomarCorpus.E243.PaperStatementsG.regular_rate_extraction
 #print axioms PalomarCorpus.E243.PaperStatementsL.canonical_tail_ratio_quantitative
 #print axioms PalomarCorpus.E243.PaperStatementsN.regular_rate_extraction_cubic

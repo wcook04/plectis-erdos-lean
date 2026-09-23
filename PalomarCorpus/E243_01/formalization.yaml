@@ -1,10 +1,10 @@
 version: v0.4
 project:
-  name: 'Erdős #243, record sections 2 to 4: irrationality at the cubic rate; integer numerators, denominators and errors'
+  name: 'Erdős #243, record section 2: irrationality at the cubic rate; reduction under the zero lower-density assumption; a square condition from three consecutive numerators'
   description: >-
-    This entry states 15 theorems that the long record for Erdős problem #243 states in sections 2 (irrationality at the cubic rate) and 4 (integer numerators, denominators and errors): the theorem “cubic-rate irrationality” (section 2), as cubic_rate_irrationality_unconditional; the theorem “rising-factorial cubic exclusion” (section 2), as cubic_exclusion_unconditional; the lemma “periodic obstruction principle” (section 2.1), as fixed_offsets_periodic_lowerDensity; the lemma “gcd stabilisation and the primitive shape” (section 2.1), as cubic_profile_gcd_stabilisation_and_primitive_shape; the lemma “the multiplier supply, and the reducible case” (section 2.1), as primitive_zero_density_paper_multiplier_lemma; the lemma “square specialisation” (section 2.2), as squareSpecialisation; the proposition “the square forced by the numerator recurrence” (section 2.2), as transport_square_unconditional; the lemma “classification of the scales” (section 2.3), as scale_twelve_of_square_in_rootField; the lemma “the two forbidden words” (section 2.4), as minus_one_forbidden_word and plus_one_forbidden_word; the lemma “integer extraction at a regular rate” (section 2.5), as regular_rate_extraction and regular_rate_extraction_cubic; the lemma “the tail ratio reads the growth defect” (section 2.5), as canonical_tail_ratio_quantitative; the proposition “update law” (section 4), as nextTailState_eq_sub_centered; the proposition “scaling the numerator and denominator” (section 4), as state_scale.
+    This entry states 13 theorems that the long record for Erdős problem #243 states in sections 2 (irrationality at the cubic rate), 2.1 (reduction under the zero lower-density assumption), 2.2 (a square condition from three consecutive numerators), 2.3 (the square condition forces m=12), 2.4 (the two remaining cubics fail modulo seven) and 2.5 (from an asymptotic ratio to an exact polynomial): the theorem “cubic-rate irrationality” (section 2), as cubic_rate_irrationality_unconditional; the theorem “rising-factorial cubic exclusion” (section 2), as cubic_exclusion_unconditional; the lemma “periodic obstruction principle” (section 2.1), as fixed_offsets_periodic_lowerDensity; the lemma “gcd stabilisation and the primitive shape” (section 2.1), as cubic_profile_gcd_stabilisation_and_primitive_shape; the lemma “the multiplier supply, and the reducible case” (section 2.1), as primitive_zero_density_paper_multiplier_lemma; the lemma “square specialisation” (section 2.2), as squareSpecialisation; the proposition “the square forced by the numerator recurrence” (section 2.2), as transport_square_unconditional; the lemma “classification of the scales” (section 2.3), as scale_twelve_of_square_in_rootField; the lemma “the two forbidden words” (section 2.4), as minus_one_forbidden_word and plus_one_forbidden_word; the lemma “integer extraction at a regular rate” (section 2.5), as regular_rate_extraction and regular_rate_extraction_cubic; the lemma “the tail ratio reads the growth defect” (section 2.5), as canonical_tail_ratio_quantitative.
 
-    13 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 1 is derived from the source declaration by a short tactic proof, which certifies implication.
+    11 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 1 is derived from the source declaration by a short tactic proof, which certifies implication.
 
     Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
 
@@ -132,11 +132,11 @@ related_formalizations:
   relationship: "independent"
   note: "A mathematically equivalent Lean statement of the problem, up to its zero-based indexing, whose proof ends in sorry; it is statement-level prior art for the formalisation, it supplies no proof authority, and every declaration compared here was stated independently of it."
 status:
-  scope: "One Comparator configuration selecting the 15 theorems listed in PalomarCorpus/E243_01/comparator.json, from the Lean development for Erdős problem #243. The problem's theorems are packed, in the order the papers state them, into the 11 entries PalomarCorpus/E243_01 to PalomarCorpus/E243_11, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification243* directories are internal regression inventory and are not selected."
+  scope: "One Comparator configuration selecting the 13 theorems listed in PalomarCorpus/E243_01/comparator.json, from the Lean development for Erdős problem #243. The problem's theorems are packed, in the order the papers state them, into the 11 entries PalomarCorpus/E243_01 to PalomarCorpus/E243_11, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification243* directories are internal regression inventory and are not selected."
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
-  trusted_challenge_sorry_count: 15
+  trusted_challenge_sorry_count: 13
   sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E243_01/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
   axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
   permitted_axiom_budget:
@@ -152,15 +152,7 @@ status:
     file: "Solutions/PalomarCorpus/E243_01/PaperStatementsA.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E243_01/comparator.json"
-  - declaration: "PalomarCorpus.E243.PaperStatementsA.nextTailState_eq_sub_centered"
-    file: "Solutions/PalomarCorpus/E243_01/PaperStatementsA.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E243_01/comparator.json"
   - declaration: "PalomarCorpus.E243.PaperStatementsA.primitive_zero_density_paper_multiplier_lemma"
-    file: "Solutions/PalomarCorpus/E243_01/PaperStatementsA.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E243_01/comparator.json"
-  - declaration: "PalomarCorpus.E243.PaperStatementsA.state_scale"
     file: "Solutions/PalomarCorpus/E243_01/PaperStatementsA.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E243_01/comparator.json"

@@ -18,8 +18,8 @@ The entries restate the theorems of the Lean development for each problem in the
 | [`E68_08`](E68_08/) | 6 | Erdős #68, the moving factor scale split and multiplicative successor rigidity families |
 | [`E68_09`](E68_09/) | 12 | Erdős #68, the multiplicative successor rigidity, prime pole and prime unit translator families |
 | [`E68_10`](E68_10/) | 2 | Erdős #68, the strict successor carry family |
-| [`E243_01`](E243_01/) | 15 | Erdős #243, record sections 2 to 4: irrationality at the cubic rate; integer numerators, denominators and errors |
-| [`E243_02`](E243_02/) | 13 | Erdős #243, record sections 5 to 7: when a zero error forces the Sylvester recurrence; a criterion using new maxima of an LCM numerator; new maxima of reduced numerators |
+| [`E243_01`](E243_01/) | 13 | Erdős #243, record section 2: irrationality at the cubic rate; reduction under the zero lower-density assumption; a square condition from three consecutive numerators |
+| [`E243_02`](E243_02/) | 15 | Erdős #243, record sections 4 to 7: integer numerators, denominators and errors; when a zero error forces the Sylvester recurrence; a criterion using new maxima of an LCM numerator |
 | [`E243_03`](E243_03/) | 15 | Erdős #243, record sections 7.1 to 7.2: how fast the running maximum must increase; bounds that allow for cancellation and earlier decreases |
 | [`E243_04`](E243_04/) | 8 | Erdős #243, record section 7.2: bounds that allow for cancellation and earlier decreases |
 | [`E243_05`](E243_05/) | 8 | Erdős #243, record section 7.3: counting jumps before a prime power can be lost |

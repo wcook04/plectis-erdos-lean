@@ -238,9 +238,14 @@ def build_plan(
             "sharding; the cap assertion in the discover job is the backstop for this"
         )
     durations = load_durations(durations_path)
+    # An entry with an extended Comparator budget is costed at that budget at least, so it
+    # gets a shard of its own and cannot carry a shard of ordinary entries past the job limit.
+    entry_seconds = dict(durations["entry_seconds"])
+    for name, seconds in budgeted_entry_seconds(corpus_root, population).items():
+        entry_seconds[name] = max(entry_seconds.get(name, 0.0), seconds)
     shards = plan_shards(
         population,
-        entry_seconds=durations["entry_seconds"],
+        entry_seconds=entry_seconds,
         default_seconds=durations["default_seconds"],
         target_seconds=target_seconds,
         max_shards=max_shards,
@@ -343,6 +348,51 @@ def solution_digest(corpus_root: Path, entry: str) -> dict[str, Any]:
     return {"files": files, "sha256": rollup.hexdigest() if files else None}
 
 
+#: Comparator's wall-clock budget for one entry, as the single-entry workflow ran it.
+COMPARATOR_TIMEOUT_MINUTES = 45
+
+#: Compared theorems whose Comparator run is known to need more than that budget, keyed by the
+#: theorem (so a re-pack that renames its entry keeps the budget) with the measurement that set
+#: it. An entry stating one of them gets the largest budget among its theorems and a shard of
+#: its own; nothing else about its verification changes: the same Comparator, the same two
+#: kernels, the same permitted axioms, the same result file.
+COMPARATOR_BUDGETS: dict[str, dict[str, Any]] = {
+    "PalomarCorpus.E1049.PaperStructuresO.coefficientPencil_finitePencil": {
+        "minutes": 90,
+        "measured": (
+            "Replay 35840809568 (23 Sep 2026), entry E1049_04: the Comparator ran export, the "
+            "nanoda kernel and the Lean default kernel to 'Your solution is okay!' but finished "
+            "after 3097 s against the 2700 s budget, so `timeout` reported 124. The finite "
+            "pencil's proof rests on a kernel certificate (`cert_facts`, `decide +kernel` over "
+            "a Bareiss elimination at T = 2^certK) that both kernels evaluate again; the nine "
+            "other theorems of that entry compared in minutes in earlier runs."
+        ),
+    },
+}
+
+
+def comparator_budget_minutes(theorem_names: Sequence[str]) -> int:
+    """The Comparator budget, in minutes, for an entry stating these theorems."""
+    return max([COMPARATOR_TIMEOUT_MINUTES] + [
+        int(COMPARATOR_BUDGETS[name]["minutes"]) for name in theorem_names if name in COMPARATOR_BUDGETS
+    ])
+
+
+def budgeted_entry_seconds(corpus_root: Path, entries: Sequence[str]) -> dict[str, float]:
+    """Entry -> its extended Comparator budget in seconds, for the entries that have one."""
+    found: dict[str, float] = {}
+    for entry in entries:
+        path = Path(corpus_root) / "PalomarCorpus" / entry / "comparator.json"
+        try:
+            names = json.loads(path.read_text(encoding="utf-8")).get("theorem_names") or []
+        except (OSError, json.JSONDecodeError):
+            continue
+        minutes = comparator_budget_minutes(names)
+        if minutes > COMPARATOR_TIMEOUT_MINUTES:
+            found[entry] = float(minutes * 60)
+    return found
+
+
 def comparator_argv(
     *,
     sandbox_mode: str,
@@ -355,7 +405,7 @@ def comparator_argv(
     lean4export: str,
     user: str | None = None,
     group: str | None = None,
-    timeout: str = "45m",
+    timeout: str = f"{COMPARATOR_TIMEOUT_MINUTES}m",
 ) -> list[str] | None:
     """The exact command the replay runs, or None when no sandbox manager is usable.
 
@@ -490,11 +540,12 @@ def verify_entry(
     result_file = out_dir / f"receipt-{entry}.json"
     stages: list[dict[str, Any]] = []
 
-    def record(stage: str, outcome: dict[str, Any]) -> int:
+    def record(stage: str, outcome: dict[str, Any], **extra: Any) -> int:
         stages.append({
             "stage": stage,
             "returncode": outcome.get("returncode"),
             "seconds": outcome.get("seconds"),
+            **extra,
         })
         return int(outcome.get("returncode") or 0)
 
@@ -535,6 +586,7 @@ def verify_entry(
         failure_stage = STAGE_SOLUTION
 
     if failure_stage is None:
+        budget_minutes = comparator_budget_minutes(theorem_names)
         argv = comparator_argv(
             sandbox_mode=str(context.get("sandbox_mode")),
             config=f"PalomarCorpus/{entry}/comparator.json",
@@ -546,13 +598,14 @@ def verify_entry(
             lean4export=str(context.get("lean4export") or ""),
             user=context.get("user"),
             group=context.get("group"),
+            timeout=f"{budget_minutes}m",
         )
         log_path = out_dir / f"{entry}.log"
         outcome = runner(STAGE_COMPARATOR, argv, log_path=log_path)
         if argv is None:
             _write_text(log_path, "No usable systemd transient-unit manager; "
                                   "refusing an insecure fallback.\n")
-        process_rc = record(STAGE_COMPARATOR, outcome)
+        process_rc = record(STAGE_COMPARATOR, outcome, budget_seconds=budget_minutes * 60)
         log_text = outcome.get("log")
         if log_text is None:
             log_text = log_path.read_text(encoding="utf-8", errors="replace") \

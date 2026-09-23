@@ -11,8 +11,6 @@ import Solutions.PalomarCorpus.E1049_06.Statement
 
 namespace PalomarCorpus.E1049.PaperStructuresP
 
-noncomputable instance instDecidableEqReal_erdosProblems : DecidableEq ℝ := Classical.decEq ℝ
-
 theorem exists_small_real_escape_of_conditional_multiplicity
     {α β ι : Type*}
     [Fintype α] [Fintype β] [Fintype ι]

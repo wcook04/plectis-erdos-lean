@@ -1,10 +1,10 @@
 version: v0.4
 project:
-  name: 'Erdős #243, record sections 5 to 7: when a zero error forces the Sylvester recurrence; a criterion using new maxima of an LCM numerator; new maxima of reduced numerators'
+  name: 'Erdős #243, record sections 4 to 7: integer numerators, denominators and errors; when a zero error forces the Sylvester recurrence; a criterion using new maxima of an LCM numerator'
   description: >-
-    This entry states 13 theorems that the long record for Erdős problem #243 states in sections 5 (when a zero error forces the Sylvester recurrence), 6 (a criterion using new maxima of an LCM numerator) and 7 (new maxima of reduced numerators): the theorem “defect identity” (section 5), as sylvesterDefect_mul_nextTailState; the theorem “two vanishing errors force the step” (section 5), as sylvesterNext_eq_of_centered_zero; the theorem “eliminating the denominator from two steps” (section 5.1), as reduced_second_order_int; the theorem “a square identity without cancellation” (section 5.1), as cancellationFree_curvature_square; the lemma “saturation modulo an old denominator” (section 5.1), as unit_word_saturates_old_modulus; the theorem “sequence form” (section 5.1), as sylvesterNext_eventually_of_centered_zero; the theorem “zero is absorbing” (section 5.1), as centeredState_zero_absorbing; the theorem “boundedness and a weighted sum over new maxima” (section 6), as arithmetic_weighted_record_dichotomy; the theorem “a convergent weighted sum over new maxima” (section 6), as canonical_weighted_record_excess; the lemma “the denominator valuation transition” (section 7), as reduced_denominator_valuation_le_max, reduced_denominator_valuation_strict_loss and reduced_denominator_valuation_transition; the corollary “persistence of a prime power” (section 7), as primePower_persists.
+    This entry states 15 theorems that the long record for Erdős problem #243 states in sections 4 (integer numerators, denominators and errors), 5 (when a zero error forces the Sylvester recurrence), 6 (a criterion using new maxima of an LCM numerator) and 7 (new maxima of reduced numerators): the proposition “update law” (section 4), as nextTailState_eq_sub_centered; the proposition “scaling the numerator and denominator” (section 4), as state_scale; the theorem “defect identity” (section 5), as sylvesterDefect_mul_nextTailState; the theorem “two vanishing errors force the step” (section 5), as sylvesterNext_eq_of_centered_zero; the theorem “eliminating the denominator from two steps” (section 5.1), as reduced_second_order_int; the theorem “a square identity without cancellation” (section 5.1), as cancellationFree_curvature_square; the lemma “saturation modulo an old denominator” (section 5.1), as unit_word_saturates_old_modulus; the theorem “sequence form” (section 5.1), as sylvesterNext_eventually_of_centered_zero; the theorem “zero is absorbing” (section 5.1), as centeredState_zero_absorbing; the theorem “boundedness and a weighted sum over new maxima” (section 6), as arithmetic_weighted_record_dichotomy; the theorem “a convergent weighted sum over new maxima” (section 6), as canonical_weighted_record_excess; the lemma “the denominator valuation transition” (section 7), as reduced_denominator_valuation_le_max, reduced_denominator_valuation_strict_loss and reduced_denominator_valuation_transition; the corollary “persistence of a prime power” (section 7), as primePower_persists.
 
-    11 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement.
+    13 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement.
 
     Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
 
@@ -132,11 +132,11 @@ related_formalizations:
   relationship: "independent"
   note: "A mathematically equivalent Lean statement of the problem, up to its zero-based indexing, whose proof ends in sorry; it is statement-level prior art for the formalisation, it supplies no proof authority, and every declaration compared here was stated independently of it."
 status:
-  scope: "One Comparator configuration selecting the 13 theorems listed in PalomarCorpus/E243_02/comparator.json, from the Lean development for Erdős problem #243. The problem's theorems are packed, in the order the papers state them, into the 11 entries PalomarCorpus/E243_01 to PalomarCorpus/E243_11, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification243* directories are internal regression inventory and are not selected."
+  scope: "One Comparator configuration selecting the 15 theorems listed in PalomarCorpus/E243_02/comparator.json, from the Lean development for Erdős problem #243. The problem's theorems are packed, in the order the papers state them, into the 11 entries PalomarCorpus/E243_01 to PalomarCorpus/E243_11, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification243* directories are internal regression inventory and are not selected."
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
-  trusted_challenge_sorry_count: 13
+  trusted_challenge_sorry_count: 15
   sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E243_02/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
   axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
   permitted_axiom_budget:
@@ -153,6 +153,10 @@ status:
     sorry_count: 0
     comparator_config: "PalomarCorpus/E243_02/comparator.json"
   - declaration: "PalomarCorpus.E243.PaperStatementsA.centeredState_zero_absorbing"
+    file: "Solutions/PalomarCorpus/E243_02/PaperStatementsA.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E243_02/comparator.json"
+  - declaration: "PalomarCorpus.E243.PaperStatementsA.nextTailState_eq_sub_centered"
     file: "Solutions/PalomarCorpus/E243_02/PaperStatementsA.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E243_02/comparator.json"
@@ -173,6 +177,10 @@ status:
     sorry_count: 0
     comparator_config: "PalomarCorpus/E243_02/comparator.json"
   - declaration: "PalomarCorpus.E243.PaperStatementsA.reduced_second_order_int"
+    file: "Solutions/PalomarCorpus/E243_02/PaperStatementsA.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E243_02/comparator.json"
+  - declaration: "PalomarCorpus.E243.PaperStatementsA.state_scale"
     file: "Solutions/PalomarCorpus/E243_02/PaperStatementsA.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E243_02/comparator.json"

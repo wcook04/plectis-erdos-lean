@@ -9,7 +9,7 @@ import Mathlib
 set_option autoImplicit false
 
 /-!
-# Erdős #243, record sections 2 to 4: irrationality at the cubic rate; integer numerators, denominators and errors
+# Erdős #243, record section 2: irrationality at the cubic rate; reduction under the zero lower-density assumption; a square condition from three consecutive numerators
 
 Each theorem below restates, against Mathlib alone, a theorem of the Lean development
 for Erdős problem #243, in the order the papers state them. The definitions a statement
@@ -119,15 +119,6 @@ export PalomarCorpus.E243_01.Shared (ZeroLowerDensity exceptionCount exceptionFi
 noncomputable def rationalBinomialCubic (m c : ℚ) : Polynomial ℚ :=
   Polynomial.C (m / 6) * Polynomial.X * (Polynomial.X + 1) *
     (Polynomial.X + 2) + Polynomial.C c
-/-- Centering at the Sylvester tail: `Eₙ = Dₙ - (aₙ - 1) Cₙ`. Local copy of ErdosProblems.Erdos243.centeredState, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def centeredState (a D C : ℤ) : ℤ :=
-  D - (a - 1) * C
-/-- Product-cleared denominator update `Dₙ₊₁ = aₙ Dₙ`. Local copy of ErdosProblems.Erdos243.nextDenState, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def nextDenState (a D : ℤ) : ℤ :=
-  a * D
-/-- Product-cleared reciprocal-tail update `Cₙ₊₁ = aₙ Cₙ - Dₙ`. Local copy of ErdosProblems.Erdos243.nextTailState, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def nextTailState (a D C : ℤ) : ℤ :=
-  a * C - D
 /-- States long243:res:reduciblecase from the long record for Erdős problem #243. Transported from ErdosProblems.Erdos243.PaperCompleteR11.primitive_zero_density_paper_multiplier_lemma in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem primitive_zero_density_paper_multiplier_lemma
     (a u v : ℕ → ℕ) (m c : ℤ) (T : ℕ) (hm : 0 < m)
@@ -166,16 +157,6 @@ theorem cubic_profile_gcd_stabilisation_and_primitive_shape
             Nat.Coprime (C n / g) (C (n + 1) / g) ∧
             0 < C n / g ∧ 0 < D n / g) := by
   sorry
-/-- States long243:res:scale from the long record for Erdős problem #243. Transported from ErdosProblems.Erdos243.PaperCompleteR7.state_scale in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem state_scale (s a D C : ℤ) :
-    nextDenState a (s * D) = s * nextDenState a D ∧
-    nextTailState a (s * D) (s * C) = s * nextTailState a D C ∧
-    centeredState a (s * D) (s * C) = s * centeredState a D C := by
-  sorry
-/-- States long243:res:update from the long record for Erdős problem #243. Transported from ErdosProblems.Erdos243.nextTailState_eq_sub_centered in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem nextTailState_eq_sub_centered (a D C : ℤ) :
-    nextTailState a D C = C - centeredState a D C := by
-  sorry
 end PalomarCorpus.E243.PaperStatementsA
 
 namespace PalomarCorpus.E243.PaperStatementsP
@@ -204,6 +185,8 @@ export PalomarCorpus.E243_01.Shared (LowerDensityAtLeast exceptionCount exceptio
 /-- Local definition cubicTwelveProfile, copied so the compared statements of this entry elaborate against Mathlib alone. -/
 noncomputable def cubicTwelveProfile (c : ℤ) (n : ℕ) : ℤ :=
   2 * (n : ℤ) * ((n : ℤ) + 1) * ((n : ℤ) + 2) + c
+/-- Local definition instFactPrimeOfNatNat_erdosProblems, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable scoped instance instFactPrimeOfNatNat_erdosProblems : Fact (Nat.Prime 7) := ⟨by decide⟩
 /-- States long243:res:modseven from the long record for Erdős problem #243. Transported from ErdosProblems.Erdos243.PaperCompleteR20.minus_one_forbidden_word in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem minus_one_forbidden_word (a u v : ℕ → ℤ) (T : ℕ)
     (hnum : ∀ j, T ≤ j → u (j + 1) + v j = a j * u j)

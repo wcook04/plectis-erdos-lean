@@ -9,7 +9,7 @@ import Mathlib
 set_option autoImplicit false
 
 /-!
-# Erdős #243, record sections 5 to 7: when a zero error forces the Sylvester recurrence; a criterion using new maxima of an LCM numerator; new maxima of reduced numerators
+# Erdős #243, record sections 4 to 7: integer numerators, denominators and errors; when a zero error forces the Sylvester recurrence; a criterion using new maxima of an LCM numerator
 
 Each theorem below restates, against Mathlib alone, a theorem of the Lean development
 for Erdős problem #243, in the order the papers state them. The definitions a statement
@@ -108,6 +108,12 @@ theorem reduced_second_order_int
     a ^ 2 * u + h * hNext * uNextNext =
       h * (a + aNext) * uNext := by
   sorry
+/-- States long243:res:scale from the long record for Erdős problem #243. Transported from ErdosProblems.Erdos243.PaperCompleteR7.state_scale in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem state_scale (s a D C : ℤ) :
+    nextDenState a (s * D) = s * nextDenState a D ∧
+    nextTailState a (s * D) (s * C) = s * nextTailState a D C ∧
+    centeredState a (s * D) (s * C) = s * centeredState a D C := by
+  sorry
 /-- States long243:res:absorb from the long record for Erdős problem #243. Transported from ErdosProblems.Erdos243.centeredState_zero_absorbing in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem centeredState_zero_absorbing
     (a C D : ℕ → ℕ) (E : ℕ → ℤ)
@@ -117,6 +123,10 @@ theorem centeredState_zero_absorbing
     (hcentered : ∀ n, Int.natAbs (E n) < C n)
     (n : ℕ) (hzero : E n = 0) :
     E (n + 1) = 0 := by
+  sorry
+/-- States long243:res:update from the long record for Erdős problem #243. Transported from ErdosProblems.Erdos243.nextTailState_eq_sub_centered in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem nextTailState_eq_sub_centered (a D C : ℤ) :
+    nextTailState a D C = C - centeredState a D C := by
   sorry
 /-- States long243:res:defect from the long record for Erdős problem #243. Transported from ErdosProblems.Erdos243.sylvesterDefect_mul_nextTailState in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem sylvesterDefect_mul_nextTailState

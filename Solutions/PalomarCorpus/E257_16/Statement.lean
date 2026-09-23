@@ -5,6 +5,18 @@ Authors: Will Cook
 -/
 
 import Mathlib
+import Erdos249257.CertificateKernel
+import Erdos249257.DyadicPrefixCompression
+import Erdos249257.GenericTailOrbitRigidity
+import Erdos249257.GreedyAchievementSet
+import Erdos249257.HalfCarryReachability
+import Erdos249257.HalfCylinderConcreteSeamAdapter
+import Erdos249257.HalfCylinderFatalGapRightTail
+import Erdos249257.HalfCylinderFiniteShadow
+import Erdos249257.HalfCylinderFloorErrorReset
+import Erdos249257.HalfCylinderFullShellSeamBridge
+import Erdos249257.HalfCylinderIntegerGreedy
+import Erdos249257.HalfCylinderSkippedEndpointClassifier
 
 set_option autoImplicit false
 
@@ -12,10 +24,12 @@ set_option autoImplicit false
 # Statement environment for Palomar entry E257_16
 
 Every non-theorem declaration of `PalomarCorpus/E257_16/Challenge.lean`, verbatim and in
-the same order, elaborated against Mathlib alone. The Solution modules import this file
-instead of re-declaring or aliasing the definitions, so every constant that Comparator
-walks from a compared theorem statement is byte-identical in the Challenge and Solution
-environments. Generated from the Challenge; do not edit by hand.
+the same order, together with the proof obligations those declarations name, each stated
+verbatim from the Challenge and proved in place from the source development that this file
+imports for those proofs. The Solution modules import this file instead of re-declaring or
+aliasing the definitions, so every constant that Comparator walks from a compared theorem
+statement is elaborated from the same text in the same module as in the Challenge.
+Generated from the Challenge; do not edit by hand.
 -/
 
 open Set
@@ -95,6 +109,24 @@ noncomputable def truncatedMersenneWeight (s d : ℕ) : ℕ :=
 noncomputable def wordWeightSum (s : ℕ) (b : ℕ → Bool) : ℕ :=
   ∑ i ∈ Finset.range (s - 2),
     if b (i + 2) then truncatedMersenneWeight s (i + 2) else 0
+/-- Proof obligation `gap_pos` of the local copy of Erdos249257.HalfCylinderIntegerGreedy.seamPerturbedFamily, stated with that definition's own parameter and field values. The definition names this theorem for the field, and the Solution proves it with the source definition's own field. -/
+theorem seamPerturbedFamily_gap_pos (s : ℕ) (hs : 3 ≤ s) :
+    let gap : ℕ := 2 ^ (s + 1);
+    0 < gap := (@Erdos249257.HalfCylinderIntegerGreedy.seamPerturbedFamily s hs).gap_pos
+/-- Proof obligation `oldSum_injective` of the local copy of Erdos249257.HalfCylinderIntegerGreedy.seamPerturbedFamily, stated with that definition's own parameter and field values. The definition names this theorem for the field, and the Solution proves it with the source definition's own field. -/
+theorem seamPerturbedFamily_oldSum_injective (s : ℕ) (hs : 3 ≤ s) :
+    let oldSum : (SeamRowWord s) → ℕ := fun b => wordWeightSum s b.toNatWord;
+    Function.Injective oldSum := (@Erdos249257.HalfCylinderIntegerGreedy.seamPerturbedFamily s hs).oldSum_injective
+/-- Proof obligation `separated` of the local copy of Erdos249257.HalfCylinderIntegerGreedy.seamPerturbedFamily, stated with that definition's own parameter and field values. The definition names this theorem for the field, and the Solution proves it with the source definition's own field. -/
+theorem seamPerturbedFamily_separated (s : ℕ) (hs : 3 ≤ s) :
+    let oldSum : (SeamRowWord s) → ℕ := fun b => wordWeightSum s b.toNatWord;
+    let gap : ℕ := 2 ^ (s + 1);
+    ∀ {x y}, oldSum x < oldSum y → oldSum x + gap ≤ oldSum y := (@Erdos249257.HalfCylinderIntegerGreedy.seamPerturbedFamily s hs).separated
+/-- Proof obligation `pulseCap_lt_three_gap` of the local copy of Erdos249257.HalfCylinderIntegerGreedy.seamPerturbedFamily, stated with that definition's own parameter and field values. The definition names this theorem for the field, and the Solution proves it with the source definition's own field. -/
+theorem seamPerturbedFamily_pulseCap_lt_three_gap (s : ℕ) (hs : 3 ≤ s) :
+    let gap : ℕ := 2 ^ (s + 1);
+    let pulseCap : ℕ := 2 * (s - 2);
+    pulseCap < 3 * gap := (@Erdos249257.HalfCylinderIntegerGreedy.seamPerturbedFamily s hs).pulseCap_lt_three_gap
 /-- The quotient pulse contributed by rank d between consecutive seam rows at row s, namely 1 if d divides 2s+2, plus twice 1 if d divides 2s+1, and 0 for the nondividing cases. -/
 noncomputable def rowPulse (s d : ℕ) : ℕ :=
   (if d ∣ 2 * s + 2 then 1 else 0) +
@@ -103,9 +135,35 @@ noncomputable def rowPulse (s d : ℕ) : ℕ :=
 noncomputable def wordPulse (s : ℕ) (b : ℕ → Bool) : ℕ :=
   ∑ i ∈ Finset.range (s - 2),
     if b (i + 2) then rowPulse s (i + 2) else 0
+/-- Statement of Erdos249257.HalfCylinderIntegerGreedy.wordPulse_le, which a copied definition cites. It is carried as a statement so that its proof stays in the source development, and the Solution proves it by applying the source lemma. -/
+theorem wordPulse_le (s : ℕ) (b : ℕ → Bool) :
+    wordPulse s b ≤ 2 * (s - 2) := @Erdos249257.HalfCylinderIntegerGreedy.wordPulse_le s b
+/-- Local definition seamPerturbedFamily, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def seamPerturbedFamily (s : ℕ) (hs : 3 ≤ s) :
+    PerturbedFamily (SeamRowWord s) where
+  oldSum b := wordWeightSum s b.toNatWord
+  pulse b := wordPulse s b.toNatWord
+  gap := 2 ^ (s + 1)
+  pulseCap := 2 * (s - 2)
+  gap_pos := @seamPerturbedFamily_gap_pos s hs
+  pulse_le b := wordPulse_le s b.toNatWord
+  oldSum_injective := @seamPerturbedFamily_oldSum_injective s hs
+  separated := @seamPerturbedFamily_separated s hs
+  pulseCap_lt_three_gap := @seamPerturbedFamily_pulseCap_lt_three_gap s hs
 /-- The integer capacity of the seam subset sum problem at row s, namely 2 raised to the exponent 2s minus 1, less 2 to the power s; both the exponent subtraction and the outer subtraction are truncated natural subtraction, so the value is 0 at s = 0 and at s = 1. -/
 noncomputable def seamSubsetTarget (s : ℕ) : ℕ :=
   2 ^ (2 * s - 1) - 2 ^ s
+/-- Statement of Erdos249257.HalfCylinderIntegerGreedy.exists_seamWord_minimal_above, which a copied definition cites. It is carried as a statement so that its proof stays in the source development, and the Solution proves it by applying the source lemma. -/
+theorem exists_seamWord_minimal_above
+    {s : ℕ} (hs : 5 ≤ s) :
+    ∃ a : SeamRowWord s,
+      seamSubsetTarget s <
+          (seamPerturbedFamily s (by omega)).oldSum a ∧
+        ∀ x : SeamRowWord s,
+          seamSubsetTarget s <
+              (seamPerturbedFamily s (by omega)).oldSum x →
+            (seamPerturbedFamily s (by omega)).oldSum a ≤
+              (seamPerturbedFamily s (by omega)).oldSum x := @Erdos249257.HalfCylinderIntegerGreedy.exists_seamWord_minimal_above s hs
 /-- The greedy Boolean word for an integer subset sum problem: given a list of weights in the order presented and a capacity, take a weight when it is at most the current capacity and subtract it, otherwise skip it and keep the capacity. -/
 noncomputable def integerGreedyBits : List ℕ → ℕ → List Bool
   | [], _ => []
@@ -114,6 +172,11 @@ noncomputable def integerGreedyBits : List ℕ → ℕ → List Bool
         true :: integerGreedyBits ws (C - w)
       else
         false :: integerGreedyBits ws C
+/-- Statement of Erdos249257.HalfCylinderIntegerGreedy.integerGreedyBits_length, which a copied definition cites. It is carried as a statement so that its proof stays in the source development, and the Solution proves it by applying the source lemma. -/
+theorem integerGreedyBits_length (weights : List ℕ) (C : ℕ) :
+    (integerGreedyBits weights C).length = weights.length := by
+  set_option smartUnfolding false in
+  with_unfolding_all exact @Erdos249257.HalfCylinderIntegerGreedy.integerGreedyBits_length weights C
 /-- The total weight selected by a Boolean word, namely the sum of those weights whose corresponding entry of the word is true, with the recursion stopping at the end of either list. -/
 noncomputable def weightedBoolSum : List ℕ → List Bool → ℕ
   | w :: ws, true :: bs => w + weightedBoolSum ws bs
@@ -122,6 +185,22 @@ noncomputable def weightedBoolSum : List ℕ → List Bool → ℕ
 /-- The capacity left unpaid after the greedy Boolean word has been applied to a weight list, namely the capacity minus the weight it selects. -/
 noncomputable def integerGreedyRemainder (weights : List ℕ) (C : ℕ) : ℕ :=
   C - weightedBoolSum weights (integerGreedyBits weights C)
+/-- Local definition seamAboveWord, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def seamAboveWord (s : ℕ) (hs : 5 ≤ s) :
+    SeamRowWord s :=
+  Classical.choose (exists_seamWord_minimal_above hs)
+/-- Statement of Erdos249257.HalfCylinderIntegerGreedy.seamAboveWord_minimal, which a copied definition cites. It is carried as a statement so that its proof stays in the source development, and the Solution proves it by applying the source lemma. -/
+theorem seamAboveWord_minimal
+    {s : ℕ} (hs : 5 ≤ s) (x : SeamRowWord s)
+    (hx : seamSubsetTarget s <
+      (seamPerturbedFamily s (by omega)).oldSum x) :
+    (seamPerturbedFamily s (by omega)).oldSum (seamAboveWord s hs) ≤
+      (seamPerturbedFamily s (by omega)).oldSum x := @Erdos249257.HalfCylinderIntegerGreedy.seamAboveWord_minimal s hs x hx
+/-- Statement of Erdos249257.HalfCylinderIntegerGreedy.seamAboveWord_strict, which a copied definition cites. It is carried as a statement so that its proof stays in the source development, and the Solution proves it by applying the source lemma. -/
+theorem seamAboveWord_strict
+    {s : ℕ} (hs : 5 ≤ s) :
+    seamSubsetTarget s <
+      (seamPerturbedFamily s (by omega)).oldSum (seamAboveWord s hs) := @Erdos249257.HalfCylinderIntegerGreedy.seamAboveWord_strict s hs
 /-- The list of truncated Mersenne weights at seam row s for the ranks from the given starting index up to s minus 1, in increasing rank order. -/
 noncomputable def seamWeightsFrom (s : ℕ) : ℕ → List ℕ
   | d =>
@@ -134,6 +213,42 @@ decreasing_by omega
 /-- The seam weight list at row s, namely the truncated Mersenne weights for ranks 2 up to s minus 1. -/
 noncomputable def seamWeights (s : ℕ) : List ℕ :=
   seamWeightsFrom s 2
+/-- Statement of Erdos249257.HalfCylinderIntegerGreedy.seamWeights_length_eq, which a copied definition cites. It is carried as a statement so that its proof stays in the source development, and the Solution proves it by applying the source lemma. -/
+theorem seamWeights_length_eq (s : ℕ) :
+    (seamWeights s).length = s - 2 := by
+  set_option smartUnfolding false in
+  with_unfolding_all exact @Erdos249257.HalfCylinderIntegerGreedy.seamWeights_length_eq s
+/-- Local definition seamGreedyWord, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def seamGreedyWord (s : ℕ) : SeamRowWord s :=
+  SeamRowWord.ofList
+    (integerGreedyBits (seamWeights s) (seamSubsetTarget s))
+    (by rw [integerGreedyBits_length, seamWeights_length_eq])
+/-- Proof obligation `below_admissible` of the local copy of Erdos249257.HalfCylinderIntegerGreedy.seamAdjacentCut, stated with that definition's own parameter and field values. The definition names this theorem for the field, and the Solution proves it with the source definition's own field. -/
+theorem seamAdjacentCut_below_admissible (s : ℕ) (hs : 5 ≤ s) :
+    let F := (seamPerturbedFamily s (by omega));
+    let C := (seamSubsetTarget s);
+    let below := seamGreedyWord s;
+    F.oldSum below ≤ C := by
+  set_option smartUnfolding false in
+  with_unfolding_all exact (@Erdos249257.HalfCylinderIntegerGreedy.seamAdjacentCut s hs).below_admissible
+/-- Proof obligation `below_maximal` of the local copy of Erdos249257.HalfCylinderIntegerGreedy.seamAdjacentCut, stated with that definition's own parameter and field values. The definition names this theorem for the field, and the Solution proves it with the source definition's own field. -/
+theorem seamAdjacentCut_below_maximal (s : ℕ) (hs : 5 ≤ s) :
+    let F := (seamPerturbedFamily s (by omega));
+    let C := (seamSubsetTarget s);
+    let below := seamGreedyWord s;
+    ∀ x, F.oldSum x ≤ C → F.oldSum x ≤ F.oldSum below := by
+  set_option smartUnfolding false in
+  with_unfolding_all exact (@Erdos249257.HalfCylinderIntegerGreedy.seamAdjacentCut s hs).below_maximal
+/-- The adjacent cut view at seam row s, for s at least 5: its proposition field states that the first s minus 2 bits of the greedy word at row s+1 differ from the greedy word at row s, and its numeric field is the pulse below the seam at row s. -/
+noncomputable def seamAdjacentCut (s : ℕ) (hs : 5 ≤ s) :
+    (seamPerturbedFamily s (by omega)).AdjacentCut
+      (seamSubsetTarget s) where
+  below := seamGreedyWord s
+  above := seamAboveWord s hs
+  below_admissible := @seamAdjacentCut_below_admissible s hs
+  below_maximal := @seamAdjacentCut_below_maximal s hs
+  above_strict := seamAboveWord_strict hs
+  above_minimal := seamAboveWord_minimal hs
 /-- The greedy remainder of the seam subset sum problem at row s, namely the seam capacity minus the total weight selected greedily from the seam weight list. -/
 noncomputable def seamIntegerGreedyRemainder (s : ℕ) : ℕ :=
   integerGreedyRemainder (seamWeights s) (seamSubsetTarget s)

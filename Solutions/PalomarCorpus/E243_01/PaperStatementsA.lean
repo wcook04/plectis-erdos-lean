@@ -28,6 +28,15 @@ export PalomarCorpus.E243_01.Shared (ZeroLowerDensity exceptionCount exceptionFi
 
 noncomputable def barrierIdx (Q : ℕ) : Finset ℕ := Finset.Icc ((Q + 4) / 8) ((Q - 2) / 4)
 
+noncomputable def centeredState (a D C : ℤ) : ℤ :=
+  D - (a - 1) * C
+
+noncomputable def nextDenState (a D : ℤ) : ℤ :=
+  a * D
+
+noncomputable def nextTailState (a D C : ℤ) : ℤ :=
+  a * C - D
+
 noncomputable def sylvesterNext (a : ℤ) : ℤ :=
   a ^ 2 - a + 1
 

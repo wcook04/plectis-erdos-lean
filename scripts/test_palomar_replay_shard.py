@@ -254,6 +254,57 @@ def test_the_comparator_command_is_the_one_the_single_entry_workflow_ran():
     assert shard.comparator_argv(sandbox_mode="unavailable", **common) is None
 
 
+FINITE_PENCIL = "PalomarCorpus.E1049.PaperStructuresO.coefficientPencil_finitePencil"
+
+
+def _state_theorem(corpus: Path, entry: str, name: str) -> None:
+    config = corpus / "PalomarCorpus" / entry / "comparator.json"
+    payload = json.loads(config.read_text(encoding="utf-8"))
+    payload["theorem_names"] = sorted(payload["theorem_names"] + [name])
+    config.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+
+
+def test_an_entry_stating_a_budgeted_theorem_gets_its_budget_and_nothing_else_changes():
+    # Replay 35840809568: E1049_04's Comparator reached 'Your solution is okay!' after 3097 s,
+    # past the 45-minute budget, because both kernels re-evaluate the finite pencil's kernel
+    # certificate. The budget follows the theorem, not the entry name.
+    assert shard.comparator_budget_minutes(["PalomarCorpus.E68.A.x"]) == 45
+    assert shard.comparator_budget_minutes(["PalomarCorpus.E68.A.x", FINITE_PENCIL]) == 90
+    seen: dict[str, list[str]] = {}
+
+    def runner(stage, argv, *, log_path=None, env=None):
+        if stage == shard.STAGE_COMPARATOR:
+            entry = next(part.split("/")[1] for part in argv if part.startswith("PalomarCorpus/"))
+            seen[entry] = argv
+        return fake_runner({})(stage, argv, log_path=log_path, env=env)
+
+    with tempfile.TemporaryDirectory() as tmp:
+        corpus = make_corpus(Path(tmp) / "corpus", {"E1049_04": 2, "E1049_05": 2})
+        _state_theorem(corpus, "E1049_04", FINITE_PENCIL)
+        out = Path(tmp) / "out"
+        shard.run_shard("shard-01", ["E1049_04", "E1049_05"], corpus_root=corpus, out_dir=out,
+                        runner=runner, context=context(), now=clock)
+        assert seen["E1049_04"][:2] == ["timeout", "90m"]
+        assert seen["E1049_05"][:2] == ["timeout", "45m"]
+        stages = {row["stage"]: row for row in json.loads((out / "receipt-E1049_04.json").read_text())["stages"]}
+        assert stages[shard.STAGE_COMPARATOR]["budget_seconds"] == 5400
+        ordinary = json.loads((out / "receipt-E1049_05.json").read_text())["stages"]
+        assert [row.get("budget_seconds") for row in ordinary if row["stage"] == shard.STAGE_COMPARATOR] == [2700]
+        # Same command otherwise: the budget is the only difference.
+        assert seen["E1049_04"][2:] == [part.replace("E1049_05", "E1049_04") for part in seen["E1049_05"][2:]]
+
+
+def test_a_budgeted_entry_gets_a_shard_of_its_own():
+    with tempfile.TemporaryDirectory() as tmp:
+        entries = [f"E1049_0{i}" for i in range(1, 9)]
+        corpus = make_corpus(Path(tmp) / "corpus", {name: 1 for name in entries})
+        _state_theorem(corpus, "E1049_04", FINITE_PENCIL)
+        plan = shard.build_plan(corpus, durations_path=None, entries=entries, now=clock)
+        isolated = [row["entries"] for row in plan["shards"] if row["isolated"]]
+        assert isolated == [["E1049_04"]]
+        assert shard.budgeted_entry_seconds(corpus, plan["entries"]) == {"E1049_04": 5400.0}
+
+
 def test_the_render_audit_command_repeats_the_theorem_keyword_per_name():
     argv = shard.render_audit_argv(audit_script="/t/a.lean", module="PalomarCorpus.E68.Challenge",
                                    theorem_names=["a", "b"])

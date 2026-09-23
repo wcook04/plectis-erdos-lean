@@ -72,4 +72,6 @@ noncomputable def bottomJet3 (R W : ℕ) (P : Polynomial ℤ) : ZMod (3 ^ R) :=
 end PalomarCorpus.E1049.PaperStatementsF
 
 namespace PalomarCorpus.E1049.PaperStructuresP
+/-- Local definition instDecidableEqReal_erdosProblems, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable scoped instance instDecidableEqReal_erdosProblems : DecidableEq ℝ := Classical.decEq ℝ
 end PalomarCorpus.E1049.PaperStructuresP

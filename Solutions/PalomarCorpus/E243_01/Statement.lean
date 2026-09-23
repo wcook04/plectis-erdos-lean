@@ -73,15 +73,6 @@ export PalomarCorpus.E243_01.Shared (ZeroLowerDensity exceptionCount exceptionFi
 noncomputable def rationalBinomialCubic (m c : ℚ) : Polynomial ℚ :=
   Polynomial.C (m / 6) * Polynomial.X * (Polynomial.X + 1) *
     (Polynomial.X + 2) + Polynomial.C c
-/-- Centering at the Sylvester tail: `Eₙ = Dₙ - (aₙ - 1) Cₙ`. Local copy of ErdosProblems.Erdos243.centeredState, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def centeredState (a D C : ℤ) : ℤ :=
-  D - (a - 1) * C
-/-- Product-cleared denominator update `Dₙ₊₁ = aₙ Dₙ`. Local copy of ErdosProblems.Erdos243.nextDenState, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def nextDenState (a D : ℤ) : ℤ :=
-  a * D
-/-- Product-cleared reciprocal-tail update `Cₙ₊₁ = aₙ Cₙ - Dₙ`. Local copy of ErdosProblems.Erdos243.nextTailState, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def nextTailState (a D C : ℤ) : ℤ :=
-  a * C - D
 end PalomarCorpus.E243.PaperStatementsA
 
 namespace PalomarCorpus.E243.PaperStatementsP
@@ -96,6 +87,8 @@ export PalomarCorpus.E243_01.Shared (LowerDensityAtLeast exceptionCount exceptio
 /-- Local definition cubicTwelveProfile, copied so the compared statements of this entry elaborate against Mathlib alone. -/
 noncomputable def cubicTwelveProfile (c : ℤ) (n : ℕ) : ℤ :=
   2 * (n : ℤ) * ((n : ℤ) + 1) * ((n : ℤ) + 2) + c
+/-- Local definition instFactPrimeOfNatNat_erdosProblems, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable scoped instance instFactPrimeOfNatNat_erdosProblems : Fact (Nat.Prime 7) := ⟨by decide⟩
 end PalomarCorpus.E243.PaperStructuresAD
 
 namespace PalomarCorpus.E243.PaperStatementsG
