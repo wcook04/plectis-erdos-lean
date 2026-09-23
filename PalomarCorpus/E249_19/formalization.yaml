@@ -1,0 +1,187 @@
+version: v0.4
+project:
+  name: 'Erdős #249, record sections 6.6.9 to 6.6.13: coprime-pair sums; the single-parameter diagonal condition; prime divisors of Mersenne factors and finite exclusions'
+  description: >-
+    This entry states 24 theorems that the long record for Erdős problem #249 states in sections 6.6.9 (coprime-pair sums), 6.6.10 (the single-parameter diagonal condition), 6.6.11 (prime divisors of Mersenne factors and finite exclusions), 6.6.12 (a sufficient hypothesis for unbounded prime support) and 6.6.13 (the lower bound for rank-one quotients): the theorem “The classical coprime-pair Lambert identity” (section 6.6.9), as coprimeLattice_plain_half_eq_series_sub_half; the theorem “Nondivisors in a short LCM window” (section 6.6.10), as dvd_periodLcm and short_lcm_window_nondivisor; the theorem “Unbounded prime support in Mersenne factors” (section 6.6.11), as mersenneLayer_prime_divisor_order and mersenneLayer_unbounded_prime_support; the theorem “A prime satisfying the stated cyclotomic conditions” (section 6.6.11), as cyclotomic_layer_prime_order_decomposition_paper and exists_clean_cyclotomic_anchor_paper; the theorem “A sufficient order hypothesis for unbounded prime support” (section 6.6.12), as binaryCyclotomicLayer_eventual_instance, binaryCyclotomic_allPrime_form_fails, boundedDegreeOrderConsumer_unfolded, boundedOrder_witness_iff_orderOf_le, coprime_of_dvd_pow_sub_one, dvd_pow_sub_one_iff_orderOf_dvd, eventual_orderConsumer_conclusions, mersenneLayer_orderConsumer_instance, orderConsumer_finite_prime_escape, orderConsumer_index_lt_pow, orderConsumer_unbounded_prime_divisors and unbounded_prime_divisors_of_escape_of_nontrivial; the theorem “A uniform positive gap for rank-one quotients” (section 6.6.13), as mobiusMersenneTheta_two_eq_totient_offset, abs_mobiusMersenneTheta_sub_prefix_le, mobiusMersenneTheta_ge_alpha, mobiusMersenneTheta_lt_one and rankOneSubrankQuotient_sub_theta_two_gt.
+
+    20 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 4 are derived from the source declaration by a short tactic proof, which certifies implication.
+
+    Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
+
+    Erdős problem #249 remains open, and no theorem in this entry decides it.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - "11J72"
+  - "11A25"
+  - "11B83"
+  - "11J82"
+  - "11Y60"
+sources:
+- title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: "The compared theorems are independently restated Lean theorems proved in this repository and described in the public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos."
+  license: Apache-2.0
+  author_endorsement: participated
+- title: Erdős Problems catalogue
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com
+  type: web discussion
+  relationship: background
+  note: "Catalogue numbering and status of the parent problem."
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+status:
+  scope: "One Comparator configuration selecting the 24 theorems listed in PalomarCorpus/E249_19/comparator.json, from the Lean development for Erdős problem #249. The problem's theorems are packed, in the order the papers state them, into the 33 entries PalomarCorpus/E249_01 to PalomarCorpus/E249_33, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification249* directories are internal regression inventory and are not selected."
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 24
+  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E249_19/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
+  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: "PalomarCorpus.E249.PaperStatementsA.dvd_periodLcm"
+    file: "Solutions/PalomarCorpus/E249_19/PaperStatementsA.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_19/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAF.mobiusMersenneTheta_two_eq_totient_offset"
+    file: "Solutions/PalomarCorpus/E249_19/PaperStatementsAF.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_19/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.binaryCyclotomicLayer_eventual_instance"
+    file: "Solutions/PalomarCorpus/E249_19/PaperStatementsAJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_19/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.binaryCyclotomic_allPrime_form_fails"
+    file: "Solutions/PalomarCorpus/E249_19/PaperStatementsAJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_19/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.boundedDegreeOrderConsumer_unfolded"
+    file: "Solutions/PalomarCorpus/E249_19/PaperStatementsAJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_19/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.boundedOrder_witness_iff_orderOf_le"
+    file: "Solutions/PalomarCorpus/E249_19/PaperStatementsAJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_19/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.coprimeLattice_plain_half_eq_series_sub_half"
+    file: "Solutions/PalomarCorpus/E249_19/PaperStatementsAJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_19/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.coprime_of_dvd_pow_sub_one"
+    file: "Solutions/PalomarCorpus/E249_19/PaperStatementsAJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_19/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.cyclotomic_layer_prime_order_decomposition_paper"
+    file: "Solutions/PalomarCorpus/E249_19/PaperStatementsAJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_19/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.dvd_pow_sub_one_iff_orderOf_dvd"
+    file: "Solutions/PalomarCorpus/E249_19/PaperStatementsAJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_19/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.eventual_orderConsumer_conclusions"
+    file: "Solutions/PalomarCorpus/E249_19/PaperStatementsAJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_19/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.exists_clean_cyclotomic_anchor_paper"
+    file: "Solutions/PalomarCorpus/E249_19/PaperStatementsAJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_19/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.mersenneLayer_orderConsumer_instance"
+    file: "Solutions/PalomarCorpus/E249_19/PaperStatementsAJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_19/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.mersenneLayer_prime_divisor_order"
+    file: "Solutions/PalomarCorpus/E249_19/PaperStatementsAJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_19/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.mersenneLayer_unbounded_prime_support"
+    file: "Solutions/PalomarCorpus/E249_19/PaperStatementsAJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_19/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.orderConsumer_finite_prime_escape"
+    file: "Solutions/PalomarCorpus/E249_19/PaperStatementsAJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_19/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.orderConsumer_index_lt_pow"
+    file: "Solutions/PalomarCorpus/E249_19/PaperStatementsAJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_19/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.orderConsumer_unbounded_prime_divisors"
+    file: "Solutions/PalomarCorpus/E249_19/PaperStatementsAJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_19/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAK.unbounded_prime_divisors_of_escape_of_nontrivial"
+    file: "Solutions/PalomarCorpus/E249_19/PaperStatementsAK.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_19/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAT.short_lcm_window_nondivisor"
+    file: "Solutions/PalomarCorpus/E249_19/PaperStatementsAT.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_19/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsBG.abs_mobiusMersenneTheta_sub_prefix_le"
+    file: "Solutions/PalomarCorpus/E249_19/PaperStatementsBG.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_19/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsBG.mobiusMersenneTheta_ge_alpha"
+    file: "Solutions/PalomarCorpus/E249_19/PaperStatementsBG.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_19/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsBG.mobiusMersenneTheta_lt_one"
+    file: "Solutions/PalomarCorpus/E249_19/PaperStatementsBG.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_19/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsBG.rankOneSubrankQuotient_sub_theta_two_gt"
+    file: "Solutions/PalomarCorpus/E249_19/PaperStatementsBG.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_19/comparator.json"
+  development_status: substantive
+  local_proof_provenance: "the proof modules Erdos249257, ErdosProblems.Erdos249 in this repository, imported by Solutions.PalomarCorpus.E249_19; the Solutions.ExternalVerification249* family modules are a regression mirror of the same proofs and are not imported by this configuration"
+  canonical_claim_status: "problem-level Comparator entry over substantive Lean in this repository"
+automation:
+  methods:
+  - method: manual
+    models: []
+    framework: Mathematical interpretation and claim-boundary review
+    tool_setup: Human-directed scope and significance review
+  - method: agent
+    models:
+    - Anthropic Claude
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+    cost:
+      wall_time: not tracked
+      spend_usd: subscription-based
+      hardware: local machine
+      prompting_notes: n/a
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    Every generated restatement was bound to a paper statement and refereed in the eight-paper coverage ledger before its wrapper was generated, and its transport proof was elaborated before the statement was accepted. The author selected the statements and is responsible for the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

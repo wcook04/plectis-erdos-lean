@@ -41,6 +41,7 @@ import math
 import os
 import re
 import subprocess
+import sys
 import time
 from pathlib import Path
 from typing import Any, Callable, Iterable, Sequence
@@ -53,8 +54,15 @@ DURATIONS_SCHEMA = "palomar_replay_entry_durations_v1"
 #: additive and no existing field changes meaning.
 RECEIPT_SCHEMA = "palomar_replay_receipt_v1"
 
-PROBLEMS = (68, 243, 249, 251, 257, 269, 1041, 1049)
-ENTRY_RE = re.compile(r"^E(?:" + "|".join(str(n) for n in PROBLEMS) + r")[a-z]{0,2}$")
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+import palomar_entry_names as entry_names  # noqa: E402
+
+PROBLEMS = entry_names.PROBLEMS
+#: Either layout's entry name; `discover_entries` checks the set as a whole.
+ENTRY_RE = re.compile(
+    entry_names.PAPER_ORDER_RE.pattern + "|" + entry_names.PROBLEM_BAND_RE.pattern
+)
 
 #: GitHub refuses a matrix larger than this, and it fails the run without naming the cause.
 MATRIX_CAP = 256
@@ -88,15 +96,12 @@ NOT_ESTABLISHED = [
 
 
 def discover_entries(corpus_root: Path) -> list[str]:
-    """Every publication entry in the tree, by the same rule the workflow's inventory uses."""
-    found = sorted(
-        path.parent.name
-        for path in Path(corpus_root, "PalomarCorpus").glob("E*/comparator.json")
-    )
-    stray = [name for name in found if not ENTRY_RE.match(name)]
-    if stray:
-        raise SystemExit(f"unrecognised PalomarCorpus entries: {stray}")
-    return found
+    """Every publication entry in the tree, by the same rule the workflow's inventory uses
+    (`scripts/palomar_entry_names.py`)."""
+    try:
+        return sorted(entry_names.discover(corpus_root))
+    except ValueError as error:
+        raise SystemExit(str(error)) from error
 
 
 def load_durations(path: Path | None) -> dict[str, Any]:

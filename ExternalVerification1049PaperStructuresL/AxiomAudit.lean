@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification1049PaperStructuresL
+
+#print axioms Erdos249257.ExternalVerification1049PaperStructuresL.no_finite_simultaneous_two_three_system_unconditional

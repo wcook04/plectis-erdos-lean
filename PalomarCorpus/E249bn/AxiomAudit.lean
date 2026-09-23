@@ -1,6 +1,0 @@
-import Solutions.PalomarCorpus.E249bn
-
-#print axioms PalomarCorpus.E249.PaperStatementsBN.totient_convolution_weight_mul_zeta
-#print axioms PalomarCorpus.E249.PaperStatementsBN.totient_convolution_weight_not_periodic
-#print axioms PalomarCorpus.E249.PaperStatementsBN.totient_convolution_weight_prime
-#print axioms PalomarCorpus.E249.PaperStatementsBN.totient_convolution_weight_unbounded

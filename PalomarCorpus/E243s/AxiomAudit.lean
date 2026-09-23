@@ -1,3 +1,0 @@
-import Solutions.PalomarCorpus.E243s
-
-#print axioms PalomarCorpus.E243.PaperStatementsS.original_coordinate_lcm_bounded_defect

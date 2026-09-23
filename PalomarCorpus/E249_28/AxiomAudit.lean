@@ -1,0 +1,5 @@
+import Solutions.PalomarCorpus.E249_28
+
+#print axioms PalomarCorpus.E249.PaperStatementsAJ.bracket_of_two_sided_separation
+#print axioms PalomarCorpus.E249.PaperStatementsAT.certifiedKill_of_fullDepth_phase_separation
+#print axioms PalomarCorpus.E249.PaperStructuresQ.prop_dickman

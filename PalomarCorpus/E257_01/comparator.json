@@ -1,0 +1,17 @@
+{
+  "challenge_module": "PalomarCorpus.E257_01.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257_01",
+  "theorem_names": [
+    "PalomarCorpus.E257.DivisibilityWeightedSupport.divisibilityWeightedClaim",
+    "PalomarCorpus.E257.MixedWeightedCover.mixedSupportClaim",
+    "PalomarCorpus.E257.PaperStructuresBO.arbitraryWeightMixedSupport_allBase_hereditary",
+    "PalomarCorpus.E257.VariableExponentCover.strengthenedPositiveCoverClaim",
+    "PalomarCorpus.E257.WeightedCloseReturn.weighted_displacement_cofinal_close_return"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,7 @@
+import Solutions.PalomarCorpus.E257_01
+
+#print axioms PalomarCorpus.E257.DivisibilityWeightedSupport.divisibilityWeightedClaim
+#print axioms PalomarCorpus.E257.MixedWeightedCover.mixedSupportClaim
+#print axioms PalomarCorpus.E257.PaperStructuresBO.arbitraryWeightMixedSupport_allBase_hereditary
+#print axioms PalomarCorpus.E257.VariableExponentCover.strengthenedPositiveCoverClaim
+#print axioms PalomarCorpus.E257.WeightedCloseReturn.weighted_displacement_cofinal_close_return

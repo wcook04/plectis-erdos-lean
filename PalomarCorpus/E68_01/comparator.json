@@ -1,0 +1,21 @@
+{
+  "challenge_module": "PalomarCorpus.E68_01.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E68_01",
+  "theorem_names": [
+    "PalomarCorpus.E68.CommonDenominatorGrowth.common_denominator_growth_liminf",
+    "PalomarCorpus.E68.FactorialGapBounds.factorialGapSegment_log_sum_le_channelLCM_add_choose",
+    "PalomarCorpus.E68.FactorialGapBounds.factorial_gap_gcd_exact",
+    "PalomarCorpus.E68.PaperStatementsA.cofinal_first_prime_occurrences",
+    "PalomarCorpus.E68.PaperStatementsA.companion_orbit",
+    "PalomarCorpus.E68.PaperStatementsA.lower_interval_criterion",
+    "PalomarCorpus.E68.PaperStatementsA.maximal_prime_power_survival",
+    "PalomarCorpus.E68.PaperStatementsB.strict_successor_characterisation",
+    "PalomarCorpus.E68.PaperStatementsE.product_lcm_pairwise_gcd"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

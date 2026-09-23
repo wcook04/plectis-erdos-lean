@@ -1,0 +1,28 @@
+{
+  "challenge_module": "PalomarCorpus.E257_04.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257_04",
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStatementsA.affineBinaryOrbit_mod_twoPow_eq",
+    "PalomarCorpus.E257.PaperStatementsAA.paper_centred_completion_of_fixed_precision",
+    "PalomarCorpus.E257.PaperStatementsAA.skipSum_den_dvd_prod",
+    "PalomarCorpus.E257.PaperStatementsAA.weighted_denominator_budget",
+    "PalomarCorpus.E257.PaperStatementsAE.balancedPulse_endpoint_fanout",
+    "PalomarCorpus.E257.PaperStatementsAE.balancedPulse_label_card_lower_bound",
+    "PalomarCorpus.E257.PaperStatementsAE.balancedPulse_no_autonomous_decoder",
+    "PalomarCorpus.E257.PaperStatementsAE.balancedPulse_weighted_pair",
+    "PalomarCorpus.E257.PaperStatementsAM.certificate_of_existsFatalHalfGap",
+    "PalomarCorpus.E257.PaperStatementsAM.certifiedTailBound_cast",
+    "PalomarCorpus.E257.PaperStatementsAM.certifiedWordValue_cast",
+    "PalomarCorpus.E257.PaperStatementsAM.existsFatalHalfGap_iff_exists_certificate",
+    "PalomarCorpus.E257.PaperStatementsAM.existsFatalHalfGap_of_certificate",
+    "PalomarCorpus.E257.PaperStatementsAM.mersenneTail_eq_sum_add",
+    "PalomarCorpus.E257.PaperStatementsAM.scaledMersenneWeight_cast",
+    "PalomarCorpus.E257.PaperStructuresS.paper_one_sidedness"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,3 +1,0 @@
-import Solutions.PalomarCorpus.E257ba
-
-#print axioms PalomarCorpus.E257.PaperStructuresBA.exists_laterProtectedExactLocalMersenneRow

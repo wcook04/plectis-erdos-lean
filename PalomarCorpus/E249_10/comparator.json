@@ -1,0 +1,27 @@
+{
+  "challenge_module": "PalomarCorpus.E249_10.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E249_10",
+  "theorem_names": [
+    "PalomarCorpus.E249.PaperStatementsAJ.nine_tenths_lt_cos_pi_div_eight",
+    "PalomarCorpus.E249.PaperStatementsAT.exists_certificate_of_first_harmonic_norm_bound",
+    "PalomarCorpus.E249.PaperStatementsAT.exists_certificate_of_first_harmonic_real_bound",
+    "PalomarCorpus.E249.PaperStatementsAT.finite_carry_true_orbit",
+    "PalomarCorpus.E249.PaperStatementsAT.first_harmonic_re_bound_of_norm_bound",
+    "PalomarCorpus.E249.PaperStatementsAT.four_tail_checked_instance",
+    "PalomarCorpus.E249.PaperStatementsAT.four_tail_combination_eq",
+    "PalomarCorpus.E249.PaperStatementsAT.four_tail_criterion_sound",
+    "PalomarCorpus.E249.PaperStatementsAT.four_tail_error_bound",
+    "PalomarCorpus.E249.PaperStatementsAT.four_tail_window_eq",
+    "PalomarCorpus.E249.PaperStatementsAT.irrational_of_first_harmonic_norm_gap",
+    "PalomarCorpus.E249.PaperStatementsAT.irrational_of_four_tail_supply",
+    "PalomarCorpus.E249.PaperStatementsAU.rational_forces_four_tail_diagonals_integral",
+    "PalomarCorpus.E249.PaperStatementsAU.totientTail_bounds",
+    "PalomarCorpus.E249.PaperStatementsAU.windowDiscrepancy_diagonal_eq"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

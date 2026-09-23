@@ -12,9 +12,9 @@ project:
 
 palomar_qualification:
   status: "candidate_pending_mechanical_gates"
-  selected_project: "formal_math/erdos257_period_noncollapse"
-  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification251AffineCircularity/comparator.json"
-  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification251AffineCircularity/formalization.yaml"
+  selected_project: "."
+  comparator_config: "ExternalVerification251AffineCircularity/comparator.json"
+  formalization_metadata: "ExternalVerification251AffineCircularity/formalization.yaml"
   repository_scope: "private_source_not_yet_pinned_in_public_repository"
   challenge_dependency_boundary: "Mathlib_only"
   replay_status: "focused_lean_deferred_typed_low_disk_exit_75"

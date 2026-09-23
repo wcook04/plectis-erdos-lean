@@ -1,0 +1,31 @@
+{
+  "challenge_module": "PalomarCorpus.E249_21.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E249_21",
+  "theorem_names": [
+    "PalomarCorpus.E249.PaperStatementsAJ.cyclotomic_four_eval",
+    "PalomarCorpus.E249.PaperStatementsAJ.cyclotomic_four_two_pow_eq_cyclotomic_two",
+    "PalomarCorpus.E249.PaperStatementsAJ.cyclotomic_three_eval_two_not_dvd_doubling_chain",
+    "PalomarCorpus.E249.PaperStatementsAJ.cyclotomic_three_two_pow",
+    "PalomarCorpus.E249.PaperStatementsAJ.orderOf_two_mod_seven",
+    "PalomarCorpus.E249.PaperStatementsAJ.three_not_dvd_two_pow",
+    "PalomarCorpus.E249.PaperStatementsAJ.totientBlock_concatenation",
+    "PalomarCorpus.E249.PaperStatementsAJ.totientBlock_doubling",
+    "PalomarCorpus.E249.PaperStatementsAT.blockNormCondition_unfolded",
+    "PalomarCorpus.E249.PaperStatementsAT.block_real_part_bound_of_subset_form",
+    "PalomarCorpus.E249.PaperStatementsAT.exists_certifiedKill_of_block_norm_bound",
+    "PalomarCorpus.E249.PaperStatementsAT.exists_certifiedKill_of_block_real_part_bound",
+    "PalomarCorpus.E249.PaperStatementsAT.exists_certifiedKill_of_subset_real_part_bound",
+    "PalomarCorpus.E249.PaperStatementsAT.irrational_of_blockNormCondition",
+    "PalomarCorpus.E249.PaperStatementsAU.real_part_bound_of_norm_bound",
+    "PalomarCorpus.E249.PaperStatementsAU.windowFirstCos_unfolded",
+    "PalomarCorpus.E249.PaperStatementsBG.positive_direct_sum_sub_theta_two_gt",
+    "PalomarCorpus.E249.PaperStatementsBG.primitive_form_abs_gt",
+    "PalomarCorpus.E249.PaperStatementsG.totientBlock_eq_paper_indexed_sum"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

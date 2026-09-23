@@ -1,0 +1,139 @@
+version: v0.4
+project:
+  name: 'Erdős #1041, record section 7.1: collinear roots and Chebyshev comparison'
+  description: >-
+    This entry states 12 theorems that the long record for Erdős problem #1041 states in section 7.1 (collinear roots and Chebyshev comparison): the theorem “Chebyshev comparison” (section 7.1), as exists_peak_le_comparisonBound; the theorem “a sharp bound for collinear roots” (section 7.1), as collinearDiameterBound_sharpConstant, exists_collinear_factorisation, sharpConstant_le_of_collinearDiameterBound, sharp_collinear_root_diameter, sharp_collinear_root_diameter_monic, chebyshev_configuration_attains, exists_gap_le_comparisonBound, monicScaledChebyshev_eq_prod and sharp_collinear_equality_attained; the corollary “collinear Erdős case” (section 7.1), as collinear_erdos_1041 and collinear_erdos_1041_monic.
+
+    12 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement.
+
+    Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
+
+    A degree-seven counterexample due to ani, formalised in this corpus, refutes the total-variation formulation of Erdős problem #1041; the theorems in this entry keep their stated hypotheses.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.CV
+  - math.CA
+  msc2020:
+  - "30C10"
+  - "30C15"
+  - "31A15"
+  - "26C10"
+sources:
+- title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: "The compared theorems are independently restated Lean theorems proved in this repository and described in the public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos."
+  license: Apache-2.0
+  author_endorsement: participated
+- title: Erdős Problems catalogue
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com
+  type: web discussion
+  relationship: background
+  note: "Catalogue numbering and status of the parent problem."
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+status:
+  scope: "One Comparator configuration selecting the 12 theorems listed in PalomarCorpus/E1041_03/comparator.json, from the Lean development for Erdős problem #1041. The problem's theorems are packed, in the order the papers state them, into the 8 entries PalomarCorpus/E1041_01 to PalomarCorpus/E1041_08, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification1041* directories are internal regression inventory and are not selected."
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 12
+  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E1041_03/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
+  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: "PalomarCorpus.E1041.PaperStatementsE.collinearDiameterBound_sharpConstant"
+    file: "Solutions/PalomarCorpus/E1041_03/PaperStatementsE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_03/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsE.exists_collinear_factorisation"
+    file: "Solutions/PalomarCorpus/E1041_03/PaperStatementsE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_03/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsE.sharpConstant_le_of_collinearDiameterBound"
+    file: "Solutions/PalomarCorpus/E1041_03/PaperStatementsE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_03/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsE.sharp_collinear_root_diameter"
+    file: "Solutions/PalomarCorpus/E1041_03/PaperStatementsE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_03/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsE.sharp_collinear_root_diameter_monic"
+    file: "Solutions/PalomarCorpus/E1041_03/PaperStatementsE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_03/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsI.exists_peak_le_comparisonBound"
+    file: "Solutions/PalomarCorpus/E1041_03/PaperStatementsI.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_03/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsS.chebyshev_configuration_attains"
+    file: "Solutions/PalomarCorpus/E1041_03/PaperStatementsS.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_03/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsS.exists_gap_le_comparisonBound"
+    file: "Solutions/PalomarCorpus/E1041_03/PaperStatementsS.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_03/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsS.monicScaledChebyshev_eq_prod"
+    file: "Solutions/PalomarCorpus/E1041_03/PaperStatementsS.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_03/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsS.sharp_collinear_equality_attained"
+    file: "Solutions/PalomarCorpus/E1041_03/PaperStatementsS.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_03/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsT.collinear_erdos_1041"
+    file: "Solutions/PalomarCorpus/E1041_03/PaperStatementsT.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_03/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsT.collinear_erdos_1041_monic"
+    file: "Solutions/PalomarCorpus/E1041_03/PaperStatementsT.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_03/comparator.json"
+  development_status: substantive
+  local_proof_provenance: "the proof modules ErdosProblems.Erdos1041 in this repository, imported by Solutions.PalomarCorpus.E1041_03; the Solutions.ExternalVerification1041* family modules are a regression mirror of the same proofs and are not imported by this configuration"
+  canonical_claim_status: "problem-level Comparator entry over substantive Lean in this repository"
+automation:
+  methods:
+  - method: manual
+    models: []
+    framework: Mathematical interpretation and claim-boundary review
+    tool_setup: Human-directed scope and significance review
+  - method: agent
+    models:
+    - Anthropic Claude
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+    cost:
+      wall_time: not tracked
+      spend_usd: subscription-based
+      hardware: local machine
+      prompting_notes: n/a
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    Every generated restatement was bound to a paper statement and refereed in the eight-paper coverage ledger before its wrapper was generated, and its transport proof was elaborated before the statement was accepted. The author selected the statements and is responsible for the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

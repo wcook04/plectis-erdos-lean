@@ -1,0 +1,31 @@
+{
+  "challenge_module": "PalomarCorpus.E249_12.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E249_12",
+  "theorem_names": [
+    "PalomarCorpus.E249.PaperStatementsAJ.extremal_order_curvature_ne_zero",
+    "PalomarCorpus.E249.PaperStatementsAJ.extremal_order_curvature_neg",
+    "PalomarCorpus.E249.PaperStatementsAJ.extremal_order_curvature_pos",
+    "PalomarCorpus.E249.PaperStatementsAJ.gapCertificate_window_1_240",
+    "PalomarCorpus.E249.PaperStatementsAJ.gapFareyBound_window_1_240",
+    "PalomarCorpus.E249.PaperStatementsAJ.irrational_totientSeries_of_fareyGapExclusionUnbounded",
+    "PalomarCorpus.E249.PaperStatementsAT.directed_certificate_example",
+    "PalomarCorpus.E249.PaperStatementsAT.directed_certificate_iff",
+    "PalomarCorpus.E249.PaperStatementsAT.integral_carry_strictly_between",
+    "PalomarCorpus.E249.PaperStatementsAU.irrational_of_modFour_pulse_supply",
+    "PalomarCorpus.E249.PaperStatementsAU.rational_forces_pulse_class_integrality",
+    "PalomarCorpus.E249.PaperStatementsAU.short_window_diagonal_through_six",
+    "PalomarCorpus.E249.PaperStatementsAU.short_window_diagonal_witnesses",
+    "PalomarCorpus.E249.PaperStatementsAX.endpoint_criterion_nonintegral",
+    "PalomarCorpus.E249.PaperStatementsAX.endpoint_identity",
+    "PalomarCorpus.E249.PaperStatementsAX.oddHalfCenteredLift_spec",
+    "PalomarCorpus.E249.PaperStatementsAY.centeredLift_range",
+    "PalomarCorpus.E249.PaperStatementsBH.no_generic_rationality_carryRank_ceiling",
+    "PalomarCorpus.E249.PaperStatementsC.irrational_totient_series_of_lcm_cone_window_kill_supply"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

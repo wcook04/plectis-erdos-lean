@@ -1,0 +1,19 @@
+{
+  "challenge_module": "PalomarCorpus.E269_05.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E269_05",
+  "theorem_names": [
+    "PalomarCorpus.E269.FixedStartResidue.eventually_fixedStartResidue_eq_tail_of_integral",
+    "PalomarCorpus.E269.FixedStartResidue.eventually_fixedStartResidue_formula",
+    "PalomarCorpus.E269.FixedStartResidue.fixedStartResidue_ratio_tendsto",
+    "PalomarCorpus.E269.PaperStatementsB.no_bounded_positive_int_state_of_leastPositiveResidue",
+    "PalomarCorpus.E269.PaperStatementsC.actual_sharp_tail_bound",
+    "PalomarCorpus.E269.PaperStatementsC.paper_pinning_and_eight_scale_rigidity",
+    "PalomarCorpus.E269.PaperStatementsG.exact_denominators_and_minimal_clearing"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

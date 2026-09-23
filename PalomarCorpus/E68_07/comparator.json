@@ -1,0 +1,17 @@
+{
+  "challenge_module": "PalomarCorpus.E68_07.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E68_07",
+  "theorem_names": [
+    "PalomarCorpus.E68.FiniteDenominator.finite_denominator_exclusion",
+    "PalomarCorpus.E68.KempnerIndex.rational_denominator_not_dvd_fiftynine_factorial",
+    "PalomarCorpus.E68.KempnerIndex.rational_denominator_not_dvd_pred_factorial_of_nonunit_carry",
+    "PalomarCorpus.E68.MomentIdeal.attainable_moment_ideal",
+    "PalomarCorpus.E68.MomentIdeal.minimum_moment_content_one"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

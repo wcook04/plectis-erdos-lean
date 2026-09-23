@@ -1,3 +1,0 @@
-import Solutions.PalomarCorpus.E249d
-
-#print axioms PalomarCorpus.E249.PaperStatementsD.affineBinaryOrbit_difference_and_reset

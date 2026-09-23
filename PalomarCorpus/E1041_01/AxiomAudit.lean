@@ -1,0 +1,16 @@
+import Solutions.PalomarCorpus.E1041_01
+
+#print axioms PalomarCorpus.E1041.PaperStatementsA.erdos1041_ani_degree_seven
+#print axioms PalomarCorpus.E1041.PaperStatementsAA.all_degree_monic_trinomials_whole
+#print axioms PalomarCorpus.E1041.PaperStatementsAA.complete_trinomial
+#print axioms PalomarCorpus.E1041.PaperStatementsAC.circle_slice_packing
+#print axioms PalomarCorpus.E1041.PaperStatementsAC.circle_slice_packing_abstract
+#print axioms PalomarCorpus.E1041.PaperStatementsAC.dual_arity_floor_abstract
+#print axioms PalomarCorpus.E1041.PaperStatementsC.cosh_dist_polar
+#print axioms PalomarCorpus.E1041.PaperStatementsC.dist_polar_I
+#print axioms PalomarCorpus.E1041.PaperStatementsC.exists_polar
+#print axioms PalomarCorpus.E1041.PaperStatementsC.polar_zero_zero
+#print axioms PalomarCorpus.E1041.PaperStatementsH.all_spokes
+#print axioms PalomarCorpus.E1041.PaperStatementsZ.circle_slice_packing
+#print axioms PalomarCorpus.E1041.PaperStatementsZA.scaledLowCriticalFiveHalves_of_lowCritical
+#print axioms PalomarCorpus.E1041.PaperStatementsZA.scaledLowCritical_of_lowCritical

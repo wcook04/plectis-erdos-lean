@@ -1,3 +1,0 @@
-import Solutions.PalomarCorpus.E249bj
-
-#print axioms PalomarCorpus.E249.PaperStatementsBJ.rationalValue_integral_carry_and_rank_floor

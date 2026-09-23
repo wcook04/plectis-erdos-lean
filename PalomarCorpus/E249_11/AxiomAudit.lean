@@ -1,0 +1,15 @@
+import Solutions.PalomarCorpus.E249_11
+
+#print axioms PalomarCorpus.E249.PaperStatementsAT.diagonal_certificate_unfolded
+#print axioms PalomarCorpus.E249.PaperStatementsAT.integral_tail_forces_upper_endpoint_residue
+#print axioms PalomarCorpus.E249.PaperStatementsAT.irrational_iff_diagonal_orbit_nonintegrality
+#print axioms PalomarCorpus.E249.PaperStatementsAT.irrational_of_diagonal_orbit_separation_supply
+#print axioms PalomarCorpus.E249.PaperStatementsAU.irrational_of_short_window_diagonal_supply
+#print axioms PalomarCorpus.E249.PaperStatementsAU.irrational_of_upper_endpoint_gap_supply
+#print axioms PalomarCorpus.E249.PaperStatementsAU.pointwise_completeness_supplies_some_depth
+#print axioms PalomarCorpus.E249.PaperStatementsAU.upper_endpoint_condition_iff
+#print axioms PalomarCorpus.E249.PaperStatementsAU.upper_endpoint_gap_nonintegral
+#print axioms PalomarCorpus.E249.PaperStatementsAX.abs_orbit_sub_rawApprox_lt
+#print axioms PalomarCorpus.E249.PaperStatementsAX.oddGuarded_depth_eq_prescribed
+#print axioms PalomarCorpus.E249.PaperStatementsAX.rawApprox_separation_of_orbit_separation
+#print axioms PalomarCorpus.E249.PaperStatementsAX.te_chain_relations

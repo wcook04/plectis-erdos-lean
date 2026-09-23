@@ -1,0 +1,14 @@
+{
+  "challenge_module": "PalomarCorpus.E257_07.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257_07",
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStatementsAM.abs_supportValue_sub_le_mersenneTail",
+    "PalomarCorpus.E257.PaperStatementsN.fatal_absorbing"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

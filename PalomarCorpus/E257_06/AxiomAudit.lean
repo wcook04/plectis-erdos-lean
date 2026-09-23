@@ -1,0 +1,16 @@
+import Solutions.PalomarCorpus.E257_06
+
+#print axioms PalomarCorpus.E257.PaperStatementsAD.paper_consecutive_not_both_divisible
+#print axioms PalomarCorpus.E257.PaperStatementsAD.paper_isRowLower_unique
+#print axioms PalomarCorpus.E257.PaperStatementsAD.paper_isRowUpper_unique
+#print axioms PalomarCorpus.E257.PaperStatementsAD.paper_rowLower_existsUnique
+#print axioms PalomarCorpus.E257.PaperStatementsAD.paper_rowPulse_eq_indicators
+#print axioms PalomarCorpus.E257.PaperStatementsAD.paper_rowQuotient_eq_weightSum
+#print axioms PalomarCorpus.E257.PaperStatementsAD.paper_rowTarget_eq
+#print axioms PalomarCorpus.E257.PaperStatementsAD.paper_rowUpper_existsUnique
+#print axioms PalomarCorpus.E257.PaperStatementsAD.paper_rowWeight_eq_floor
+#print axioms PalomarCorpus.E257.PaperStructuresAZ.paper_dynamics
+#print axioms PalomarCorpus.E257.PaperStructuresAZ.paper_greedySupport_greedy_rule
+#print axioms PalomarCorpus.E257.PaperStructuresAZ.paper_greedySupport_isRowLower
+#print axioms PalomarCorpus.E257.PaperStructuresAZ.paper_greedySupport_mem
+#print axioms PalomarCorpus.E257.PaperStructuresAZ.paper_greedy_step

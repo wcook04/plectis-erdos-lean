@@ -1,0 +1,17 @@
+import Solutions.PalomarCorpus.E249_10
+
+#print axioms PalomarCorpus.E249.PaperStatementsAJ.nine_tenths_lt_cos_pi_div_eight
+#print axioms PalomarCorpus.E249.PaperStatementsAT.exists_certificate_of_first_harmonic_norm_bound
+#print axioms PalomarCorpus.E249.PaperStatementsAT.exists_certificate_of_first_harmonic_real_bound
+#print axioms PalomarCorpus.E249.PaperStatementsAT.finite_carry_true_orbit
+#print axioms PalomarCorpus.E249.PaperStatementsAT.first_harmonic_re_bound_of_norm_bound
+#print axioms PalomarCorpus.E249.PaperStatementsAT.four_tail_checked_instance
+#print axioms PalomarCorpus.E249.PaperStatementsAT.four_tail_combination_eq
+#print axioms PalomarCorpus.E249.PaperStatementsAT.four_tail_criterion_sound
+#print axioms PalomarCorpus.E249.PaperStatementsAT.four_tail_error_bound
+#print axioms PalomarCorpus.E249.PaperStatementsAT.four_tail_window_eq
+#print axioms PalomarCorpus.E249.PaperStatementsAT.irrational_of_first_harmonic_norm_gap
+#print axioms PalomarCorpus.E249.PaperStatementsAT.irrational_of_four_tail_supply
+#print axioms PalomarCorpus.E249.PaperStatementsAU.rational_forces_four_tail_diagonals_integral
+#print axioms PalomarCorpus.E249.PaperStatementsAU.totientTail_bounds
+#print axioms PalomarCorpus.E249.PaperStatementsAU.windowDiscrepancy_diagonal_eq

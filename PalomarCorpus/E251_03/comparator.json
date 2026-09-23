@@ -1,0 +1,22 @@
+{
+  "challenge_module": "PalomarCorpus.E251_03.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E251_03",
+  "theorem_names": [
+    "PalomarCorpus.E251.PaperStatementsA.exists_logarithmic_recurring_values_countermodel",
+    "PalomarCorpus.E251.PaperStatementsF.finite_perturbation_stability",
+    "PalomarCorpus.E251.PaperStatementsG.carryPartialSum_eq",
+    "PalomarCorpus.E251.PaperStatementsG.polynomial_countermodel",
+    "PalomarCorpus.E251.PaperStatementsK.sparse_nonconcentration",
+    "PalomarCorpus.E251.PaperStatementsR.shifted_count_bound",
+    "PalomarCorpus.E251.PaperStatementsX.long_joint_prime_gap_countermodel",
+    "PalomarCorpus.E251.PaperStatementsY.prime_gap_equal_shift_zeroDensity",
+    "PalomarCorpus.E251.PaperStatementsY.prime_gap_two_window_sparse",
+    "PalomarCorpus.E251.PaperStatementsZA.nonconcentration_does_not_force_irrationality"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

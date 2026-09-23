@@ -1,0 +1,23 @@
+{
+  "challenge_module": "PalomarCorpus.E257_13.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257_13",
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStatementsAG.irrational_coeff_series_of_weighted_coeff_block_certificates",
+    "PalomarCorpus.E257.PaperStatementsAG.irrational_erdosSum_factorial_support",
+    "PalomarCorpus.E257.PaperStatementsAG.irrational_erdosSum_of_lcm_gap",
+    "PalomarCorpus.E257.PaperStatementsAG.irrational_erdosSupportSeries_pairwise_coprime",
+    "PalomarCorpus.E257.PaperStatementsD.greedy_half_infinite_of_mobiusCenteredHalfCarry_sqrtBound",
+    "PalomarCorpus.E257.PaperStatementsD.greedy_mobiusCenteredHalfCarry_nonneg",
+    "PalomarCorpus.E257.PaperStatementsE.infinite_support_half_of_mobiusCenteredHalfCarry_sqrtBound",
+    "PalomarCorpus.E257.PaperStatementsF.half_mem_mersenneAchievementSet_of_skippedFullShellNonnegative",
+    "PalomarCorpus.E257.PaperStatementsI.mobiusCenteredHalfCarry_nonneg_of_supportSeries_lt_half",
+    "PalomarCorpus.E257.PaperStructuresBJ.half_mem_mersenneAchievementSet_of_skippedSeamEscape",
+    "PalomarCorpus.E257.PaperStructuresBJ.skippedSeamAlignmentZero_iff_skippedFullShellNonnegative"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

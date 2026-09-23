@@ -1,0 +1,23 @@
+{
+  "challenge_module": "PalomarCorpus.E1041_05.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E1041_05",
+  "theorem_names": [
+    "PalomarCorpus.E1041.PaperStatementsB.exists_two_nearest_roots_of_polynomial_critical",
+    "PalomarCorpus.E1041.PaperStatementsB.two_nearest_roots_of_polynomial_critical",
+    "PalomarCorpus.E1041.PaperStatementsG.complete_straight_path_obstructions",
+    "PalomarCorpus.E1041.PaperStatementsK.exists_two_roots_dist_sum_le_two_mul_geomMean",
+    "PalomarCorpus.E1041.PaperStatementsQ.complete_sep_or_counterexample",
+    "PalomarCorpus.E1041.PaperStatementsR.sextic_spoke_counterexample_whole",
+    "PalomarCorpus.E1041.PaperStatementsU.complete_primitive_quintic",
+    "PalomarCorpus.E1041.PaperStatementsX.lobe_perimeter_gt",
+    "PalomarCorpus.E1041.PaperStatementsX.one_root_gamma_false",
+    "PalomarCorpus.E1041.PaperStatementsZA.separation_parent",
+    "PalomarCorpus.E1041.PaperStructuresAD.one_root_gamma_false_unconditional"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

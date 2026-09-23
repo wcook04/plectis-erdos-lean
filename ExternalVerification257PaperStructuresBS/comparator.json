@@ -1,0 +1,15 @@
+{
+  "challenge_module": "ExternalVerification257PaperStructuresBS.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStructuresBS",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStructuresBS.exists_support_paperCoverCost_ge",
+    "Erdos249257.ExternalVerification257PaperStructuresBS.no_absolute_paperCoverCost_kappaOne_constant",
+    "Erdos249257.ExternalVerification257PaperStructuresBS.sup_condExceedProb_le_paperCoverCost"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

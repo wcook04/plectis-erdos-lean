@@ -2,16 +2,17 @@
 # SPDX-License-Identifier: Apache-2.0
 name: Palomar Comparator replay
 
-# Replays Palomar's mechanical verification for every problem-level publication
-# entry under PalomarCorpus/E*/comparator.json with the same pinned Comparator,
+# Replays Palomar's mechanical verification for every publication entry under
+# PalomarCorpus/E*/comparator.json with the same pinned Comparator,
 # lean4export, landrun and NanoDa revisions that the PalomarSubmission verifier
 # records (read from its submission.yml on 2026-09-13). A green run here is our
 # own evidence that the entries will pass Palomar's mechanical stage; it is not a
 # Palomar verdict, review, or registration. All third-party actions are pinned by
 # full commit SHA.
 #
-# The entry roster is discovered from the tree, so a band entry (E257a, E68a, ...)
-# is replayed the moment it exists. One serial job took 68 minutes for 366 theorems
+# The entry roster (PalomarCorpus/E<problem>_<NN>, in the order the papers state the
+# theorems) is discovered from the tree through scripts/palomar_entry_names.py, so an
+# entry is replayed the moment it exists. One serial job took 68 minutes for 366 theorems
 # against a 350-minute ceiling, so the replay fans out; but the unit of verification
 # and the unit of scheduling are not the same thing, and this workflow keeps them apart.
 #
@@ -87,20 +88,15 @@ jobs:
         run: |
           set -euo pipefail
           python3 - <<'PY'
-          import json, os, re
+          import json, os, re, sys
           from pathlib import Path
-          problems = (68, 243, 249, 251, 257, 269, 1041, 1049)
-          # One Erdos problem is one entry. The submission slate's granularity_rule also
-          # allows a band entry (E257a, E68a, ...) when a concatenated Challenge would
-          # approach the 1000-line ceiling. Bands are optional and never replace a base
-          # entry: the eight base entries stay mandatory and every directory present must
-          # be a base or a band, so a stray directory still fails.
-          entry_re = re.compile(r"^E(?:" + "|".join(str(n) for n in problems) + r")[a-z]{0,2}$")
-          found = sorted(p.parent.name for p in Path("PalomarCorpus").glob("E*/comparator.json"))
-          stray = [name for name in found if not entry_re.match(name)]
-          assert not stray, f"unrecognised PalomarCorpus entries: {stray}"
-          missing = [f"E{n}" for n in problems if f"E{n}" not in found]
-          assert not missing, f"missing base PalomarCorpus entries: {missing}"
+          # The entries are PalomarCorpus/E<problem>_<NN>, each problem's theorems in the
+          # order its papers state them. scripts/palomar_entry_names.py is the one rule every
+          # discovery path here reads: a stray directory, a gap in a problem's numbering, a
+          # problem with no entry, or a mixture with retired E<n>/band names fails the run.
+          sys.path.insert(0, "scripts")
+          from palomar_entry_names import discover
+          found = discover(".")
           for name in found:
               entry = Path("PalomarCorpus") / name
               cfg = json.loads((entry / "comparator.json").read_text())
@@ -449,12 +445,16 @@ jobs:
                 f"{os.environ.get('SHARD_COUNT')} shards")
           print(f"discover={discover} replay={replay} "
                 f"download={os.environ.get('DOWNLOAD_OUTCOME')}")
-          problems = (68, 243, 249, 251, 257, 269, 1041, 1049)
-          missing = [f"E{n}" for n in problems if f"E{n}" not in expected]
-          if discover != "success" or missing or replay != "success":
-              print(f"missing base entries: {missing}")
+          sys.path.insert(0, "scripts")
+          from palomar_entry_names import check_entry_names
+          try:
+              layout = check_entry_names(expected)
+          except ValueError as error:
+              print(f"the discovered entry set is not a publication layout: {error}")
               sys.exit(1)
-          print(f"all {len(expected)} entries replayed green")
+          if discover != "success" or replay != "success":
+              sys.exit(1)
+          print(f"all {len(expected)} entries ({layout}) replayed green")
           PY
       - name: Enforce that every promised entry delivered its own green result file
         # Read the entry population, then ask what arrived — never the other way round.

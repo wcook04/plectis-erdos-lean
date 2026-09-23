@@ -1,0 +1,37 @@
+{
+  "challenge_module": "PalomarCorpus.E1049_01.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E1049_01",
+  "theorem_names": [
+    "PalomarCorpus.E1049.PaperStatementsA.contour_enclosure",
+    "PalomarCorpus.E1049.PaperStatementsA.four_rpow_mu_lt_thirtyOne",
+    "PalomarCorpus.E1049.PaperStatementsA.inv_bvMu_eq",
+    "PalomarCorpus.E1049.PaperStatementsA.omega_indicator",
+    "PalomarCorpus.E1049.PaperStatementsA.paperBvMu_eq",
+    "PalomarCorpus.E1049.PaperStatementsA.printed_bvMu",
+    "PalomarCorpus.E1049.PaperStatementsA.printed_bv_cutoff",
+    "PalomarCorpus.E1049.PaperStatementsA.printed_contour",
+    "PalomarCorpus.E1049.PaperStatementsA.printed_four_rpow_bvMu",
+    "PalomarCorpus.E1049.PaperStatementsA.printed_four_rpow_mu",
+    "PalomarCorpus.E1049.PaperStatementsA.printed_log_ratio",
+    "PalomarCorpus.E1049.PaperStatementsA.thirtyoneFour_between_rpow",
+    "PalomarCorpus.E1049.PaperStatementsA.thirtyoneFour_ratio_chain",
+    "PalomarCorpus.E1049.PaperStatementsA.zudilinC0_enclosure",
+    "PalomarCorpus.E1049.PaperStatementsA.zudilinJ_enclosure",
+    "PalomarCorpus.E1049.PaperStatementsA.zudilin_rpow_lt_iff_contourRegion",
+    "PalomarCorpus.E1049.PaperStatementsG.thirtyoneFour_outside_bv_inside_contour",
+    "PalomarCorpus.E1049.PaperStatementsI.rational_base_measure_uniform",
+    "PalomarCorpus.E1049.PaperStatementsI.thirtyoneFour_power_measure_lt_301",
+    "PalomarCorpus.E1049.PaperStatementsJ.rational_base_threshold",
+    "PalomarCorpus.E1049.PaperStatementsJ.rational_base_threshold_log",
+    "PalomarCorpus.E1049.PaperStatementsJ.thirtyoneFour_irrational",
+    "PalomarCorpus.E1049.PaperStatementsJ.thirtyoneFour_pow_irrational",
+    "PalomarCorpus.E1049.RationalBaseRegion.rational_base_power_measure",
+    "PalomarCorpus.E1049.RationalBaseRegion.thirtyone_four_power_measure_lt_301"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,3 +1,0 @@
-import Solutions.PalomarCorpus.E1041n
-
-#print axioms PalomarCorpus.E1041.PaperStatementsN.translated_samePositiveRay_parameterization

@@ -1,0 +1,4 @@
+import Solutions.PalomarCorpus.E257_07
+
+#print axioms PalomarCorpus.E257.PaperStatementsAM.abs_supportValue_sub_le_mersenneTail
+#print axioms PalomarCorpus.E257.PaperStatementsN.fatal_absorbing

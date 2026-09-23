@@ -1,0 +1,43 @@
+{
+  "challenge_module": "PalomarCorpus.E249_24.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E249_24",
+  "theorem_names": [
+    "PalomarCorpus.E249.PaperStatementsAJ.farey_gap_paper",
+    "PalomarCorpus.E249.PaperStatementsAJ.gapCheck_window_1_240_first_failure_paper",
+    "PalomarCorpus.E249.PaperStatementsAJ.gapCheck_window_1_240_paper",
+    "PalomarCorpus.E249.PaperStatementsAJ.gapCheck_window_one_excludes",
+    "PalomarCorpus.E249.PaperStatementsAJ.irrational_of_unbounded_window_one_gapCheck",
+    "PalomarCorpus.E249.PaperStatementsAK.totientSeries_ne_rat_of_den_dvd_two_pow_fourteen_mul_mersenne",
+    "PalomarCorpus.E249.PaperStatementsAK.totientSeries_rational_den_gt_fareyBound",
+    "PalomarCorpus.E249.PaperStatementsAT.certifiedKill_of_halfModulus_residue",
+    "PalomarCorpus.E249.PaperStatementsAT.commonCertificate_eight_shifts_basepoint_twelve",
+    "PalomarCorpus.E249.PaperStatementsAT.commonCertificate_sixteen_shifts_basepoint_fourteen",
+    "PalomarCorpus.E249.PaperStatementsAT.eventual_integral_tailDiff_twoAdic_half_pulse",
+    "PalomarCorpus.E249.PaperStatementsAT.exists_growingShift_simultaneous_certificate_iff_irrational",
+    "PalomarCorpus.E249.PaperStatementsAT.exists_periodLcm_strict_jump_ge_paper",
+    "PalomarCorpus.E249.PaperStatementsAT.exists_prime_twoAdic_half_pulse_window",
+    "PalomarCorpus.E249.PaperStatementsAT.exists_simultaneous_depth_of_irrational",
+    "PalomarCorpus.E249.PaperStatementsAT.exists_simultaneous_depth_succ_of_irrational",
+    "PalomarCorpus.E249.PaperStatementsAT.irrational_of_accumulated_halfModulus_supply",
+    "PalomarCorpus.E249.PaperStatementsAU.irrational_of_restrictedDepth_diagonal_supply",
+    "PalomarCorpus.E249.PaperStatementsAU.periodLcm_strict_jump_at_powerTwo_pred",
+    "PalomarCorpus.E249.PaperStatementsAU.shortWindowSupply_through_six_paper",
+    "PalomarCorpus.E249.PaperStatementsAX.irrational_of_actualLcmOrbitSeparationSupply",
+    "PalomarCorpus.E249.PaperStatementsG.diagonalPincerCertificateScales_list",
+    "PalomarCorpus.E249.PaperStatementsG.diagonalPincerKillDepth_list",
+    "PalomarCorpus.E249.PaperStatementsI.certifiedKill_diagonal_table",
+    "PalomarCorpus.E249.PaperStatementsI.exists_diagonalKill_le_82_paper",
+    "PalomarCorpus.E249.PaperStatementsI.exists_diagonalKill_on_table",
+    "PalomarCorpus.E249.PaperStatementsI.irrational_of_logarithmicDepth_diagonal_supply",
+    "PalomarCorpus.E249.PaperStatementsI.periodLcm_seventeen_window_data",
+    "PalomarCorpus.E249.PaperStructuresN.certifiedKill_diagonal_t64_paper",
+    "PalomarCorpus.E249.PaperStructuresN.shortWindowSupply_single_witness_six_ninetyThree",
+    "PalomarCorpus.E249.PaperStructuresN.shortWindowSupply_witness_eq_t64_certificate"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

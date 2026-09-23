@@ -1,0 +1,18 @@
+{
+  "challenge_module": "PalomarCorpus.E257_32.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257_32",
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStatementsAL.supportCoeff_boundaryPair_unitDrop_at_double",
+    "PalomarCorpus.E257.PaperStatementsAL.supportCoeff_insert_divisor",
+    "PalomarCorpus.E257.PaperStructuresBU.prefixChoice_eq_below",
+    "PalomarCorpus.E257.PaperStructuresO.overlappingMidpointReturns_twoPow_le_realBound",
+    "PalomarCorpus.E257.PaperStructuresO.overlappingReverseCarryWords_carryDifference_eq_twoPow_mul_odd",
+    "PalomarCorpus.E257.PaperStructuresO.overlappingReverseCarryWords_twoPow_le_realBound"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

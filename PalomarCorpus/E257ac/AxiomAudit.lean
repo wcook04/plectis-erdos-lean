@@ -1,7 +1,0 @@
-import Solutions.PalomarCorpus.E257ac
-
-#print axioms PalomarCorpus.E257.PaperStatementsAC.arithmetic_logarithmic_counterexample
-#print axioms PalomarCorpus.E257.PaperStatementsAC.dyadicBandEscape_iff_exists_critical
-#print axioms PalomarCorpus.E257.PaperStatementsAC.exists_criticalDyadicBandIndex
-#print axioms PalomarCorpus.E257.PaperStatementsAC.logarithmic_initial_interval
-#print axioms PalomarCorpus.E257.PaperStatementsAC.no_absolute_dyadic_kappaOne_constant

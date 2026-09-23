@@ -1,0 +1,17 @@
+import Solutions.PalomarCorpus.E249_23
+
+#print axioms PalomarCorpus.E249.PaperStatementsAK.two_pow_odd_eq
+#print axioms PalomarCorpus.E249.PaperStatementsAT.actualLcmRawErrorRadius_tendsto_zero
+#print axioms PalomarCorpus.E249.PaperStatementsAX.abs_actualLcmTailOrbit_sub_rawApprox_lt_paper_form
+#print axioms PalomarCorpus.E249.PaperStatementsAX.actualLcmRawApprox_isRat
+#print axioms PalomarCorpus.E249.PaperStatementsAX.corridor_escape_and_irrational_of_magnitude
+#print axioms PalomarCorpus.E249.PaperStatementsAX.irrational_of_lower_escape_supply
+#print axioms PalomarCorpus.E249.PaperStatementsAX.irrational_of_terminalDominanceSupply
+#print axioms PalomarCorpus.E249.PaperStatementsAX.paperTeChain_relations
+#print axioms PalomarCorpus.E249.PaperStatementsAX.powerTwoActualLcmTopEdgeResidueGapSupply_of_paperAdjacentSuffixMidband
+#print axioms PalomarCorpus.E249.PaperStatementsAX.teChain_item_five_unfolded
+#print axioms PalomarCorpus.E249.PaperStatementsAX.teChain_item_four_unfolded
+#print axioms PalomarCorpus.E249.PaperStatementsAX.teChain_item_three_unfolded
+#print axioms PalomarCorpus.E249.PaperStatementsAX.teChain_item_two_unfolded
+#print axioms PalomarCorpus.E249.PaperStatementsAX.terminalDominance_orbit_nonintegral
+#print axioms PalomarCorpus.E249.PaperStatementsAX.topEdgeResidueGap_or_of_paperAdjacentSuffixMidband

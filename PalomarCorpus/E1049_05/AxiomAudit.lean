@@ -1,0 +1,18 @@
+import Solutions.PalomarCorpus.E1049_05
+
+#print axioms PalomarCorpus.E1049.PaperStatementsB.coordinatewiseCorridor_implies_pow_lt_linear
+#print axioms PalomarCorpus.E1049.PaperStatementsB.sevenHalves_archimedean_height_condition
+#print axioms PalomarCorpus.E1049.PaperStatementsB.three_mul_lt_two_pow_succ
+#print axioms PalomarCorpus.E1049.PaperStatementsF.commonMultiplier_not_two_not_three_of_endpoint_units
+#print axioms PalomarCorpus.E1049.PaperStatementsF.cyclotomicHomEval_isCoprime_mul
+#print axioms PalomarCorpus.E1049.PaperStatementsK.forcing_term
+#print axioms PalomarCorpus.E1049.PaperStatementsK.scalar_margin
+#print axioms PalomarCorpus.E1049.PaperStatementsM.endpoint_residues
+#print axioms PalomarCorpus.E1049.PaperStatementsM.endpoint_scalar_content_exclusion
+#print axioms PalomarCorpus.E1049.PaperStatementsM.fourJet_paper_statement
+#print axioms PalomarCorpus.E1049.PaperStatementsM.rank_fortyone
+#print axioms PalomarCorpus.E1049.PaperStatementsN.pade_summand_bound_and_gap
+#print axioms PalomarCorpus.E1049.PaperStatementsX.no_finite_simultaneous_two_three_system
+#print axioms PalomarCorpus.E1049.PaperStructuresL.no_finite_simultaneous_two_three_system_unconditional
+#print axioms PalomarCorpus.E1049.RationalBaseBarrier.rationalBaseClearedTailQ_succ
+#print axioms PalomarCorpus.E1049.RationalBaseBarrier.threeHalves_no_coordinatewiseCorridor

@@ -1,7 +1,0 @@
-import Solutions.PalomarCorpus.E257an
-
-#print axioms PalomarCorpus.E257.PaperStatementsAN.paper_endpoint_term_counts_divisors
-#print axioms PalomarCorpus.E257.PaperStatementsAN.paper_finiteErdosSum_den_odd
-#print axioms PalomarCorpus.E257.PaperStatementsAN.paper_finite_support_series_ne_half
-#print axioms PalomarCorpus.E257.PaperStatementsAN.paper_half_representing_support_is_infinite
-#print axioms PalomarCorpus.E257.PaperStatementsAN.supportCoeff_insert_eq_add_indicator

@@ -1,0 +1,34 @@
+{
+  "challenge_module": "PalomarCorpus.E249_08.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E249_08",
+  "theorem_names": [
+    "PalomarCorpus.E249.PaperStatementsAC.cyclotomic_dvd_mobiusNumeratorPolynomial_sub",
+    "PalomarCorpus.E249.PaperStatementsAC.jordanTotientTwo_eq_prod_primeFactors",
+    "PalomarCorpus.E249.PaperStatementsAE.joint35_coefficient_moments",
+    "PalomarCorpus.E249.PaperStatementsAE.joint35_mobiusTermKernel_zero",
+    "PalomarCorpus.E249.PaperStatementsAE.lambertValue_eq_divisor_sum_series",
+    "PalomarCorpus.E249.PaperStatementsAE.mobiusTermKernel_affine_in_multiplier",
+    "PalomarCorpus.E249.PaperStatementsAE.mobiusTermKernel_moment_annihilation",
+    "PalomarCorpus.E249.PaperStatementsAJ.composite_dilation_defect_eq_zero_of_prime_support",
+    "PalomarCorpus.E249.PaperStatementsAJ.composite_dilation_defect_univ_six_one",
+    "PalomarCorpus.E249.PaperStatementsAJ.composite_dilation_defect_univ_six_one_card",
+    "PalomarCorpus.E249.PaperStatementsAJ.sum_divisors_totient_ne_totient",
+    "PalomarCorpus.E249.PaperStatementsAQ.mobiusNumerator_mod_cyclotomicEval",
+    "PalomarCorpus.E249.PaperStatementsAS.cyclotomic_dvd_primeJump_new_fibre",
+    "PalomarCorpus.E249.PaperStatementsAS.cyclotomic_dvd_primeJump_old_fibre",
+    "PalomarCorpus.E249.PaperStatementsAX.joint35ConeWindow_eq",
+    "PalomarCorpus.E249.PaperStatementsAX.joint35_nonintegral_of_separated_window",
+    "PalomarCorpus.E249.PaperStatementsAX.joint35_truncation_error",
+    "PalomarCorpus.E249.PaperStatementsAX.totientTail_enclosure",
+    "PalomarCorpus.E249.PaperStatementsBA.alpha_divisor_sum_eq_totient",
+    "PalomarCorpus.E249.PaperStatementsBA.lambertValue_alpha_eq_totientSeries",
+    "PalomarCorpus.E249.PaperStatementsBD.composite_dilation_divisor_count",
+    "PalomarCorpus.E249.PaperStatementsBE.transportResidueKernel_eq_mobiusTermKernel"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

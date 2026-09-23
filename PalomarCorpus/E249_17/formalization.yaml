@@ -1,0 +1,223 @@
+version: v0.4
+project:
+  name: 'Erdős #249, record sections 6.6.1 to 6.6.5: log-concavity of the Möbius-weighted series; integer recurrences and rational binary series; rational approximation with a squared-Mersenne remainder'
+  description: >-
+    This entry states 33 theorems that the long record for Erdős problem #249 states in sections 6.6.1 (log-concavity of the Möbius-weighted series), 6.6.2 (integer recurrences and rational binary series), 6.6.3 (rational approximation with a squared-Mersenne remainder), 6.6.4 (divisor terms and their complement) and 6.6.5 (a numerator polynomial with explicit positive coefficients): the theorem “The values at exponents one and two” (section 6.6.1), as mobiusMersenneTheta_one_and_two; the theorem “The first two summands give a positive Hankel gap” (section 6.6.1), as twoAtom_hankel_gap and twoAtom_strict_logConcave; the theorem “Strict log-concavity for all integer r≥1” (section 6.6.1), as theta_hankel_det_neg, theta_hankel_two_neg and theta_strict_logConcave; the proposition “Uniqueness under the growth condition” (section 6.6.2), as doubling_tempered_sequence_eq_zero; the proposition “An exact rational approximation formula” (section 6.6.3), as totientSeries_eq_half_add_moebius_sq, totientSeries_pnat_form, tailDifference_eq_coefficient_mul_series and tailDifference_sub_rationalApproximation; the proposition “A geometric tail bound” (section 6.6.3), as abs_mobiusSquareTail_le_paper, abs_moebius_cast_le_one, mersenne_geometric_shift and tsum_quarter_geometric; the proposition “The sum over divisor indices” (section 6.6.4), as squarefreeKernel_eq_prod_primeFactors, sum_divisorIndices_mobius, sum_divisors_moebius_div_eq_totient_div and sum_divisorIndices_radical_form; the proposition “The divisor sum and its complement” (section 6.6.4), as complementSummand_eq_phaseTerm, divisorIndex_endpoint_behaviour, totientDifference_eq_divisorPart_add_complement and totient_eq_mobius_divisor_sum; the theorem “Doubling the full totient difference” (section 6.6.4), as totientDifference_doubling_seam, totient_two_mul_even and totient_two_mul_odd; the proposition “A doubling identity for two portions of the sum” (section 6.6.4), as complementSummand_low_double_echo; the theorem “Positive coefficients of the numerator polynomial” (section 6.6.5), as paperNumerator_coeff_eq_gcd_divisor_sum, paperNumerator_coeff_eq_zero, paperNumerator_coeff_pos, paperNumerator_eq_gcdWordForm and paperNumeratorPolynomial_eq; the corollary labelled statement:sha256:1aba8ef26e7606ffeb744eeb5281561279d804bd6a828bd921e42781105432b2 (section 6.6.5), as mersenne_dvd_of_dvd.
+
+    33 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement.
+
+    Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
+
+    Erdős problem #249 remains open, and no theorem in this entry decides it.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - "11J72"
+  - "11A25"
+  - "11B83"
+  - "11J82"
+  - "11Y60"
+sources:
+- title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: "The compared theorems are independently restated Lean theorems proved in this repository and described in the public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos."
+  license: Apache-2.0
+  author_endorsement: participated
+- title: Erdős Problems catalogue
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com
+  type: web discussion
+  relationship: background
+  note: "Catalogue numbering and status of the parent problem."
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+status:
+  scope: "One Comparator configuration selecting the 33 theorems listed in PalomarCorpus/E249_17/comparator.json, from the Lean development for Erdős problem #249. The problem's theorems are packed, in the order the papers state them, into the 33 entries PalomarCorpus/E249_01 to PalomarCorpus/E249_33, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification249* directories are internal regression inventory and are not selected."
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 33
+  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E249_17/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
+  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.abs_mobiusSquareTail_le_paper"
+    file: "Solutions/PalomarCorpus/E249_17/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_17/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.abs_moebius_cast_le_one"
+    file: "Solutions/PalomarCorpus/E249_17/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_17/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.complementSummand_eq_phaseTerm"
+    file: "Solutions/PalomarCorpus/E249_17/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_17/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.complementSummand_low_double_echo"
+    file: "Solutions/PalomarCorpus/E249_17/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_17/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.divisorIndex_endpoint_behaviour"
+    file: "Solutions/PalomarCorpus/E249_17/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_17/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.doubling_tempered_sequence_eq_zero"
+    file: "Solutions/PalomarCorpus/E249_17/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_17/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.mersenne_geometric_shift"
+    file: "Solutions/PalomarCorpus/E249_17/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_17/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.squarefreeKernel_eq_prod_primeFactors"
+    file: "Solutions/PalomarCorpus/E249_17/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_17/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.sum_divisorIndices_mobius"
+    file: "Solutions/PalomarCorpus/E249_17/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_17/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.sum_divisors_moebius_div_eq_totient_div"
+    file: "Solutions/PalomarCorpus/E249_17/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_17/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.totientDifference_doubling_seam"
+    file: "Solutions/PalomarCorpus/E249_17/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_17/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.totientDifference_eq_divisorPart_add_complement"
+    file: "Solutions/PalomarCorpus/E249_17/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_17/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.totientSeries_eq_half_add_moebius_sq"
+    file: "Solutions/PalomarCorpus/E249_17/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_17/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.totientSeries_pnat_form"
+    file: "Solutions/PalomarCorpus/E249_17/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_17/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.totient_eq_mobius_divisor_sum"
+    file: "Solutions/PalomarCorpus/E249_17/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_17/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.totient_two_mul_even"
+    file: "Solutions/PalomarCorpus/E249_17/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_17/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.totient_two_mul_odd"
+    file: "Solutions/PalomarCorpus/E249_17/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_17/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.tsum_quarter_geometric"
+    file: "Solutions/PalomarCorpus/E249_17/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_17/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAK.twoAtom_hankel_gap"
+    file: "Solutions/PalomarCorpus/E249_17/PaperStatementsAK.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_17/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAK.twoAtom_strict_logConcave"
+    file: "Solutions/PalomarCorpus/E249_17/PaperStatementsAK.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_17/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAO.mersenne_dvd_of_dvd"
+    file: "Solutions/PalomarCorpus/E249_17/PaperStatementsAO.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_17/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAO.paperNumerator_coeff_eq_gcd_divisor_sum"
+    file: "Solutions/PalomarCorpus/E249_17/PaperStatementsAO.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_17/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAO.paperNumerator_coeff_eq_zero"
+    file: "Solutions/PalomarCorpus/E249_17/PaperStatementsAO.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_17/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAO.paperNumerator_coeff_pos"
+    file: "Solutions/PalomarCorpus/E249_17/PaperStatementsAO.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_17/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAO.paperNumerator_eq_gcdWordForm"
+    file: "Solutions/PalomarCorpus/E249_17/PaperStatementsAO.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_17/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAQ.paperNumeratorPolynomial_eq"
+    file: "Solutions/PalomarCorpus/E249_17/PaperStatementsAQ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_17/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAQ.sum_divisorIndices_radical_form"
+    file: "Solutions/PalomarCorpus/E249_17/PaperStatementsAQ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_17/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAX.tailDifference_eq_coefficient_mul_series"
+    file: "Solutions/PalomarCorpus/E249_17/PaperStatementsAX.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_17/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAX.tailDifference_sub_rationalApproximation"
+    file: "Solutions/PalomarCorpus/E249_17/PaperStatementsAX.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_17/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsBG.mobiusMersenneTheta_one_and_two"
+    file: "Solutions/PalomarCorpus/E249_17/PaperStatementsBG.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_17/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsBG.theta_hankel_det_neg"
+    file: "Solutions/PalomarCorpus/E249_17/PaperStatementsBG.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_17/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsBG.theta_hankel_two_neg"
+    file: "Solutions/PalomarCorpus/E249_17/PaperStatementsBG.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_17/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsBG.theta_strict_logConcave"
+    file: "Solutions/PalomarCorpus/E249_17/PaperStatementsBG.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_17/comparator.json"
+  development_status: substantive
+  local_proof_provenance: "the proof modules Erdos249257, ErdosProblems.Erdos249 in this repository, imported by Solutions.PalomarCorpus.E249_17; the Solutions.ExternalVerification249* family modules are a regression mirror of the same proofs and are not imported by this configuration"
+  canonical_claim_status: "problem-level Comparator entry over substantive Lean in this repository"
+automation:
+  methods:
+  - method: manual
+    models: []
+    framework: Mathematical interpretation and claim-boundary review
+    tool_setup: Human-directed scope and significance review
+  - method: agent
+    models:
+    - Anthropic Claude
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+    cost:
+      wall_time: not tracked
+      spend_usd: subscription-based
+      hardware: local machine
+      prompting_notes: n/a
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    Every generated restatement was bound to a paper statement and refereed in the eight-paper coverage ledger before its wrapper was generated, and its transport proof was elaborated before the statement was accepted. The author selected the statements and is responsible for the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

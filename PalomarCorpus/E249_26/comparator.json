@@ -1,0 +1,22 @@
+{
+  "challenge_module": "PalomarCorpus.E249_26.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E249_26",
+  "theorem_names": [
+    "PalomarCorpus.E249.PaperStatementsAG.exists_later_arbitrarily_many_separated_parityCoboundaryWeight_carry_pairs",
+    "PalomarCorpus.E249.PaperStatementsAG.parityCoboundaryWeight_le_self",
+    "PalomarCorpus.E249.PaperStatementsAG.parityCoboundaryWeight_le_six",
+    "PalomarCorpus.E249.PaperStatementsAG.parityCoboundaryWeight_mod_two_eq_totient",
+    "PalomarCorpus.E249.PaperStatementsAJ.complementDenominator_dvd_scalar",
+    "PalomarCorpus.E249.PaperStatementsAY.inversePhaseGauge_locks_row_and_preserves_minor",
+    "PalomarCorpus.E249.PaperStatementsBB.canonicalTotientKernelFamily_independent_card_and_span",
+    "PalomarCorpus.E249.PaperStatementsBH.rationalControl_periodic_with_unbounded_carry_rank",
+    "PalomarCorpus.E249.PaperStatementsBH.rationality_gives_mod_period_and_unbounded_rank",
+    "PalomarCorpus.E249.PaperStatementsBJ.rationalValue_integral_carry_and_rank_floor"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

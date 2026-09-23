@@ -1,0 +1,21 @@
+import Solutions.PalomarCorpus.E249_21
+
+#print axioms PalomarCorpus.E249.PaperStatementsAJ.cyclotomic_four_eval
+#print axioms PalomarCorpus.E249.PaperStatementsAJ.cyclotomic_four_two_pow_eq_cyclotomic_two
+#print axioms PalomarCorpus.E249.PaperStatementsAJ.cyclotomic_three_eval_two_not_dvd_doubling_chain
+#print axioms PalomarCorpus.E249.PaperStatementsAJ.cyclotomic_three_two_pow
+#print axioms PalomarCorpus.E249.PaperStatementsAJ.orderOf_two_mod_seven
+#print axioms PalomarCorpus.E249.PaperStatementsAJ.three_not_dvd_two_pow
+#print axioms PalomarCorpus.E249.PaperStatementsAJ.totientBlock_concatenation
+#print axioms PalomarCorpus.E249.PaperStatementsAJ.totientBlock_doubling
+#print axioms PalomarCorpus.E249.PaperStatementsAT.blockNormCondition_unfolded
+#print axioms PalomarCorpus.E249.PaperStatementsAT.block_real_part_bound_of_subset_form
+#print axioms PalomarCorpus.E249.PaperStatementsAT.exists_certifiedKill_of_block_norm_bound
+#print axioms PalomarCorpus.E249.PaperStatementsAT.exists_certifiedKill_of_block_real_part_bound
+#print axioms PalomarCorpus.E249.PaperStatementsAT.exists_certifiedKill_of_subset_real_part_bound
+#print axioms PalomarCorpus.E249.PaperStatementsAT.irrational_of_blockNormCondition
+#print axioms PalomarCorpus.E249.PaperStatementsAU.real_part_bound_of_norm_bound
+#print axioms PalomarCorpus.E249.PaperStatementsAU.windowFirstCos_unfolded
+#print axioms PalomarCorpus.E249.PaperStatementsBG.positive_direct_sum_sub_theta_two_gt
+#print axioms PalomarCorpus.E249.PaperStatementsBG.primitive_form_abs_gt
+#print axioms PalomarCorpus.E249.PaperStatementsG.totientBlock_eq_paper_indexed_sum

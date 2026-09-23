@@ -1,3 +1,0 @@
-import Solutions.PalomarCorpus.E257bf
-
-#print axioms PalomarCorpus.E257.PaperStatementsBF.paper_squarefree_support_engine_ceiling

@@ -1,3 +1,0 @@
-import Solutions.PalomarCorpus.E257t
-
-#print axioms PalomarCorpus.E257.PaperStructuresT.paper_compatible_rows_agree_with_limit

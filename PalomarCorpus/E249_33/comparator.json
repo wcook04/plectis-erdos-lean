@@ -1,0 +1,39 @@
+{
+  "challenge_module": "PalomarCorpus.E249_33.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E249_33",
+  "theorem_names": [
+    "PalomarCorpus.E249.PrefixTwoAdicExclusion.oddPart_mul_prefixTail_eq_intCast",
+    "PalomarCorpus.E249.PrefixTwoAdicExclusion.prefix_twoAdic_denominator_exclusion",
+    "PalomarCorpus.E249.PrefixTwoAdicExclusion.prefix_twoAdic_denominator_lower_bound",
+    "PalomarCorpus.E249.PrefixTwoAdicExclusion.prefix_twoAdic_odd_denominator_floor",
+    "PalomarCorpus.E249.PrefixTwoAdicExclusion.totientPrefix_eq_corpusForm",
+    "PalomarCorpus.E249.PrefixTwoAdicExclusion.totientPrefix_succ",
+    "PalomarCorpus.E249.RankOneSharpFloor.not_forall_rankOneSubrankQuotient_sub_theta_two_gt_one_div_fifteen",
+    "PalomarCorpus.E249.RankOneSharpFloor.primitive_form_abs_gt_twentyOne_div_threeTwenty",
+    "PalomarCorpus.E249.RankOneSharpFloor.rankOneSubrankQuotient_ge_one_five",
+    "PalomarCorpus.E249.RankOneSharpFloor.rankOneSubrankQuotient_sub_theta_two_gt_one_div_sixteen",
+    "PalomarCorpus.E249.RationalObservableClassification.rational_zmod_observable_iff",
+    "PalomarCorpus.E249.RationalObservableClassification.residue_series_sharp_range",
+    "PalomarCorpus.E249.RationalObservableClassification.zmod_observable_value",
+    "PalomarCorpus.E249.ResidueClassTotientSeries.fixed_resolution_observable_irrational",
+    "PalomarCorpus.E249.ResidueClassTotientSeries.irrational_dyadicValue_of_pulses",
+    "PalomarCorpus.E249.ResidueClassTotientSeries.irrational_totientObservable",
+    "PalomarCorpus.E249.ResidueClassTotientSeries.isolated_pulse_separation",
+    "PalomarCorpus.E249.ResidueClassTotientSeries.residue_series_irrational",
+    "PalomarCorpus.E249.ResidueClassTotientSeries.two_sided_prime_isolation",
+    "PalomarCorpus.E249.TermwiseDyadicVacuous.termwise_dyadic_window_vacuous",
+    "PalomarCorpus.E249.TotientAffineModeEscape.not_eventuallyAffine_pureDyadicEndpointError",
+    "PalomarCorpus.E249.TotientRigidity.even_law_and_eventual_congruence_forces_totient",
+    "PalomarCorpus.E249.TotientRigidity.one_prime_law_and_little_o_forces_totient",
+    "PalomarCorpus.E249.TotientRigidity.totient_prime_mul_of_dvd",
+    "PalomarCorpus.E249.TotientRigidity.totient_prime_mul_of_not_dvd",
+    "PalomarCorpus.E249.TotientRigidity.totient_two_mul_of_even",
+    "PalomarCorpus.E249.TotientRigidity.totient_two_mul_of_odd"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

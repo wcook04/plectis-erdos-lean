@@ -1,0 +1,23 @@
+{
+  "challenge_module": "PalomarCorpus.E251_01.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E251_01",
+  "theorem_names": [
+    "PalomarCorpus.E251.PaperStatementsA.bounded_test_finite_coupling",
+    "PalomarCorpus.E251.PaperStatementsC.real_dyadic_orbit_eq_true_tail_iff",
+    "PalomarCorpus.E251.PaperStatementsG.dyadicPartialSumQ_eq_start_add_differences",
+    "PalomarCorpus.E251.PaperStatementsG.infinite_prime_gap_identity",
+    "PalomarCorpus.E251.PaperStatementsG.irrationality_reformulation",
+    "PalomarCorpus.E251.PaperStatementsG.prime0_dyadic_summation_by_parts",
+    "PalomarCorpus.E251.PaperStatementsG.rationality_classification",
+    "PalomarCorpus.E251.PaperStatementsH.real_block_identity",
+    "PalomarCorpus.E251.PaperStatementsI.local_target_interval",
+    "PalomarCorpus.E251.UniformSparseRationalisation.arbitrary_word_sparse_rationalisation_uniform",
+    "PalomarCorpus.E251.UniformSparseRationalisation.polylogarithmic_word_interval_uniform"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

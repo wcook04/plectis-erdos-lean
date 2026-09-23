@@ -1,0 +1,40 @@
+{
+  "challenge_module": "PalomarCorpus.E249_18.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E249_18",
+  "theorem_names": [
+    "PalomarCorpus.E249.PaperStatementsAE.boundary_pair_at_one",
+    "PalomarCorpus.E249.PaperStatementsAE.card_coprime_antidiagonal",
+    "PalomarCorpus.E249.PaperStatementsAE.card_mul_sq_le_pairwise_energy",
+    "PalomarCorpus.E249.PaperStatementsAE.scaleExplicitShadow_eq_divisorChannels",
+    "PalomarCorpus.E249.PaperStatementsAJ.coprimeLattice_gcd_layer_total",
+    "PalomarCorpus.E249.PaperStatementsAJ.coprimeLattice_gcd_layer_total_eq_one_iff",
+    "PalomarCorpus.E249.PaperStatementsAJ.coprimeLattice_halfOpen_half_eq_series",
+    "PalomarCorpus.E249.PaperStatementsAJ.coprimeLattice_halfOpen_sum",
+    "PalomarCorpus.E249.PaperStatementsAJ.coprimeLattice_lambert_half_eq_one",
+    "PalomarCorpus.E249.PaperStatementsAJ.coprimeLattice_lambert_identity",
+    "PalomarCorpus.E249.PaperStatementsAJ.coprimeLattice_lambert_rational",
+    "PalomarCorpus.E249.PaperStatementsAJ.coprimeLattice_positive_sum",
+    "PalomarCorpus.E249.PaperStatementsAJ.coprimeLattice_removed_pair",
+    "PalomarCorpus.E249.PaperStatementsAK.tsum_totient_pow_shift",
+    "PalomarCorpus.E249.PaperStatementsAO.four_thirds_tsum_eighth_pow_tail",
+    "PalomarCorpus.E249.PaperStatementsAO.mersenneRemainderTail_le",
+    "PalomarCorpus.E249.PaperStatementsAO.mersenneRemainder_identity_and_bound",
+    "PalomarCorpus.E249.PaperStatementsAO.one_sub_half_pow_ge",
+    "PalomarCorpus.E249.PaperStatementsAO.paperNumerator_eval_two",
+    "PalomarCorpus.E249.PaperStatementsAO.paperNumerator_eval_two_primeSubsetForm",
+    "PalomarCorpus.E249.PaperStatementsAO.tsum_eighth_pow_tail",
+    "PalomarCorpus.E249.PaperStatementsAX.sum_sq_dist_from_phase_one",
+    "PalomarCorpus.E249.PaperStatementsBE.divisorChannels_sum_eq",
+    "PalomarCorpus.E249.PaperStatementsBE.foreignComplementBound_paper",
+    "PalomarCorpus.E249.PaperStatementsBE.projectedForeignDefect_paper",
+    "PalomarCorpus.E249.PaperStatementsBE.residueKernel_increment_of_dvd",
+    "PalomarCorpus.E249.PaperStatementsBE.residueOffset_of_dvd",
+    "PalomarCorpus.E249.PaperStatementsBK.tailDifference_not_integral_of_separation"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

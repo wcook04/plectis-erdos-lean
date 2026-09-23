@@ -1,4 +1,0 @@
-import Solutions.PalomarCorpus.E1041t
-
-#print axioms PalomarCorpus.E1041.PaperStatementsT.collinear_erdos_1041
-#print axioms PalomarCorpus.E1041.PaperStatementsT.collinear_erdos_1041_monic

@@ -1,6 +1,0 @@
-import Solutions.PalomarCorpus.E1049j
-
-#print axioms PalomarCorpus.E1049.PaperStatementsJ.rational_base_threshold
-#print axioms PalomarCorpus.E1049.PaperStatementsJ.rational_base_threshold_log
-#print axioms PalomarCorpus.E1049.PaperStatementsJ.thirtyoneFour_irrational
-#print axioms PalomarCorpus.E1049.PaperStatementsJ.thirtyoneFour_pow_irrational

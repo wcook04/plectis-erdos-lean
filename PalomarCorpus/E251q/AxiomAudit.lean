@@ -1,3 +1,0 @@
-import Solutions.PalomarCorpus.E251q
-
-#print axioms PalomarCorpus.E251.PaperStatementsQ.irrational_prime_series_of_finite_truncation

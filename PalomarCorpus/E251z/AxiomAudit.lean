@@ -1,3 +1,0 @@
-import Solutions.PalomarCorpus.E251z
-
-#print axioms PalomarCorpus.E251.PaperStatementsZ.short_joint_prime_gap_countermodel

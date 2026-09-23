@@ -1,0 +1,25 @@
+{
+  "challenge_module": "PalomarCorpus.E251_07.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E251_07",
+  "theorem_names": [
+    "PalomarCorpus.E251.LcmDiagonalCriterion.irrationalInitial_iff_allLcmDiagonal_nonintegral",
+    "PalomarCorpus.E251.LcmDiagonalCriterion.irrationalInitial_iff_cofinalNonintegralTailShifts",
+    "PalomarCorpus.E251.LcmDiagonalCriterion.irrationalInitial_iff_nonintegral_on_schedule",
+    "PalomarCorpus.E251.LcmDiagonalCriterion.tailShiftIntegral_iff_orderOf_dvd",
+    "PalomarCorpus.E251.PolynomialShiftCountermodel.polynomialGapTailCountermodel",
+    "PalomarCorpus.E251.PrimeGapIdentity.prime0_le_polynomial",
+    "PalomarCorpus.E251.PrimeGapIdentity.primeDisplayedSeries_eq_four_add_two_primeGapSeries",
+    "PalomarCorpus.E251.PrimeGapIdentity.primeDisplayedSeries_irrational_iff_primeGapSeries",
+    "PalomarCorpus.E251.PrimeGapIdentity.primeGapSeries_summable",
+    "PalomarCorpus.E251.PrimeGapIdentity.primeSeries_eq_two_add_primeGapSeries",
+    "PalomarCorpus.E251.PrimeGapIdentity.primeSeries_irrational_iff_primeGapSeries",
+    "PalomarCorpus.E251.PrimeGapIdentity.primeSeries_summable",
+    "PalomarCorpus.E251.PrimeGapNonperiodicity.primeGap0_not_eventually_periodic"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

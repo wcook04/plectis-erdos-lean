@@ -1,4 +1,0 @@
-import Solutions.PalomarCorpus.E251y
-
-#print axioms PalomarCorpus.E251.PaperStatementsY.prime_gap_equal_shift_zeroDensity
-#print axioms PalomarCorpus.E251.PaperStatementsY.prime_gap_two_window_sparse

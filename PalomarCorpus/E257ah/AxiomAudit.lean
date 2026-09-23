@@ -1,9 +1,0 @@
-import Solutions.PalomarCorpus.E257ah
-
-#print axioms PalomarCorpus.E257.PaperStatementsAH.halfTwoChannelCap_lt_mersenneTail
-#print axioms PalomarCorpus.E257.PaperStatementsAH.irrational_erdosBorweinMersenneConstant
-#print axioms PalomarCorpus.E257.PaperStatementsAH.mersenneGap_pos
-#print axioms PalomarCorpus.E257.PaperStatementsAH.mersenneTail_eq_weight_add
-#print axioms PalomarCorpus.E257.PaperStatementsAH.mersenneTail_le_two_mul_weight
-#print axioms PalomarCorpus.E257.PaperStatementsAH.mersenneTail_lt_weight
-#print axioms PalomarCorpus.E257.PaperStatementsAH.two_mul_mersenneWeight_succ_lt

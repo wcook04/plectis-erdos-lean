@@ -1,0 +1,11 @@
+/-
+Copyright (c) 2026 Will Cook. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Will Cook
+-/
+import Mathlib
+import Solutions.PalomarCorpus.E1041_03.Statement
+import Solutions.PalomarCorpus.E1041_03.PaperStatementsE
+import Solutions.PalomarCorpus.E1041_03.PaperStatementsI
+import Solutions.PalomarCorpus.E1041_03.PaperStatementsS
+import Solutions.PalomarCorpus.E1041_03.PaperStatementsT

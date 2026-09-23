@@ -1,9 +1,0 @@
-import Solutions.PalomarCorpus.E1049b
-
-#print axioms PalomarCorpus.E1049.PaperStatementsB.coordinatewiseCorridor_implies_pow_lt_linear
-#print axioms PalomarCorpus.E1049.PaperStatementsB.paperE_eq_rowExponent
-#print axioms PalomarCorpus.E1049.PaperStatementsB.paperRatio_agree
-#print axioms PalomarCorpus.E1049.PaperStatementsB.paperReciprocal_rec
-#print axioms PalomarCorpus.E1049.PaperStatementsB.paperReciprocal_zero
-#print axioms PalomarCorpus.E1049.PaperStatementsB.sevenHalves_archimedean_height_condition
-#print axioms PalomarCorpus.E1049.PaperStatementsB.three_mul_lt_two_pow_succ

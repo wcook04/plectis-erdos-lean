@@ -1,0 +1,175 @@
+version: v0.4
+project:
+  name: 'Erdős #249, record section 6.4: further exact identities (part 1 of 3)'
+  description: >-
+    This entry states 21 theorems that the long record for Erdős problem #249 states in section 6.4 (further exact identities): the proposition “The exact totient difference on an LCM progression” (section 6.4), as totient_mul_eq_totient_mul_gcd_div_totient_gcd, lcmRayArithmeticLetter_eq_totient_difference, lcmRay_divisor_clean_formula, lcmRay_divisor_denominators_pos, lcmRay_divisor_gcd_example, lcmRay_divisor_product_formula and lcmRay_nondivisor_literal; the proposition “A lower bound for the totient of a rough integer” (section 6.4), as rough_integer_prime_count_and_totient_bound; the proposition “Positivity of the short-window differences” (section 6.4), as shortWindow_totient_difference_pos; the proposition “The accumulated sum is the discrepancy” (section 6.4), as weighted_shortWindow_band_iff_certifiedKill and weighted_shortWindow_sum_eq_windowDiscrepancy; the proposition “A global-to-local identity” (section 6.4), as actualLcmTailOrbit_global_to_local; the proposition “A rational approximation with an error bound” (section 6.4), as tendsto_actualLcmRawErrorRadius_atTop_nhds_zero and abs_actualLcmTailOrbit_sub_rawApprox_lt_explicit; the proposition “Unconditional positivity” (section 6.4), as actualLcmTailOrbit_pos and actualLcm_tailDiff_shift_pos_paper; the proposition “The residue forced by integrality” (section 6.4), as actualLcm_integral_forces_topEdgeResidue_paper; the proposition “The penultimate term of a partial divisibility pattern” (section 6.4), as dyadicScale_unique_in_open_interval and penultimate_shortWindow_difference_eq_half; the proposition “An equivalent test using two residue bits” (section 6.4), as dyadicMixedGuard_iff_twoBitBand and exists_certifiedKill_iff_twoBitResidueTest.
+
+    5 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 16 are derived from the source declaration by a short tactic proof, which certifies implication.
+
+    Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
+
+    Erdős problem #249 remains open, and no theorem in this entry decides it.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - "11J72"
+  - "11A25"
+  - "11B83"
+  - "11J82"
+  - "11Y60"
+sources:
+- title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: "The compared theorems are independently restated Lean theorems proved in this repository and described in the public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos."
+  license: Apache-2.0
+  author_endorsement: participated
+- title: Erdős Problems catalogue
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com
+  type: web discussion
+  relationship: background
+  note: "Catalogue numbering and status of the parent problem."
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+status:
+  scope: "One Comparator configuration selecting the 21 theorems listed in PalomarCorpus/E249_14/comparator.json, from the Lean development for Erdős problem #249. The problem's theorems are packed, in the order the papers state them, into the 33 entries PalomarCorpus/E249_01 to PalomarCorpus/E249_33, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification249* directories are internal regression inventory and are not selected."
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 21
+  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E249_14/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
+  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.dyadicMixedGuard_iff_twoBitBand"
+    file: "Solutions/PalomarCorpus/E249_14/PaperStatementsAJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_14/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.dyadicScale_unique_in_open_interval"
+    file: "Solutions/PalomarCorpus/E249_14/PaperStatementsAJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_14/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.rough_integer_prime_count_and_totient_bound"
+    file: "Solutions/PalomarCorpus/E249_14/PaperStatementsAJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_14/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAK.totient_mul_eq_totient_mul_gcd_div_totient_gcd"
+    file: "Solutions/PalomarCorpus/E249_14/PaperStatementsAK.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_14/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAT.actualLcmTailOrbit_global_to_local"
+    file: "Solutions/PalomarCorpus/E249_14/PaperStatementsAT.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_14/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAT.actualLcmTailOrbit_pos"
+    file: "Solutions/PalomarCorpus/E249_14/PaperStatementsAT.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_14/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAT.actualLcm_integral_forces_topEdgeResidue_paper"
+    file: "Solutions/PalomarCorpus/E249_14/PaperStatementsAT.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_14/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAT.actualLcm_tailDiff_shift_pos_paper"
+    file: "Solutions/PalomarCorpus/E249_14/PaperStatementsAT.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_14/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAT.exists_certifiedKill_iff_twoBitResidueTest"
+    file: "Solutions/PalomarCorpus/E249_14/PaperStatementsAT.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_14/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAU.lcmRayArithmeticLetter_eq_totient_difference"
+    file: "Solutions/PalomarCorpus/E249_14/PaperStatementsAU.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_14/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAU.lcmRay_divisor_clean_formula"
+    file: "Solutions/PalomarCorpus/E249_14/PaperStatementsAU.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_14/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAU.lcmRay_divisor_denominators_pos"
+    file: "Solutions/PalomarCorpus/E249_14/PaperStatementsAU.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_14/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAU.lcmRay_divisor_gcd_example"
+    file: "Solutions/PalomarCorpus/E249_14/PaperStatementsAU.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_14/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAU.lcmRay_divisor_product_formula"
+    file: "Solutions/PalomarCorpus/E249_14/PaperStatementsAU.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_14/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAU.lcmRay_nondivisor_literal"
+    file: "Solutions/PalomarCorpus/E249_14/PaperStatementsAU.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_14/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAU.penultimate_shortWindow_difference_eq_half"
+    file: "Solutions/PalomarCorpus/E249_14/PaperStatementsAU.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_14/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAU.shortWindow_totient_difference_pos"
+    file: "Solutions/PalomarCorpus/E249_14/PaperStatementsAU.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_14/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAU.tendsto_actualLcmRawErrorRadius_atTop_nhds_zero"
+    file: "Solutions/PalomarCorpus/E249_14/PaperStatementsAU.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_14/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAU.weighted_shortWindow_band_iff_certifiedKill"
+    file: "Solutions/PalomarCorpus/E249_14/PaperStatementsAU.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_14/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAU.weighted_shortWindow_sum_eq_windowDiscrepancy"
+    file: "Solutions/PalomarCorpus/E249_14/PaperStatementsAU.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_14/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAX.abs_actualLcmTailOrbit_sub_rawApprox_lt_explicit"
+    file: "Solutions/PalomarCorpus/E249_14/PaperStatementsAX.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_14/comparator.json"
+  development_status: substantive
+  local_proof_provenance: "the proof modules Erdos249257, ErdosProblems.Erdos249, ErdosProblems.Skip in this repository, imported by Solutions.PalomarCorpus.E249_14; the Solutions.ExternalVerification249* family modules are a regression mirror of the same proofs and are not imported by this configuration"
+  canonical_claim_status: "problem-level Comparator entry over substantive Lean in this repository"
+automation:
+  methods:
+  - method: manual
+    models: []
+    framework: Mathematical interpretation and claim-boundary review
+    tool_setup: Human-directed scope and significance review
+  - method: agent
+    models:
+    - Anthropic Claude
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+    cost:
+      wall_time: not tracked
+      spend_usd: subscription-based
+      hardware: local machine
+      prompting_notes: n/a
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    Every generated restatement was bound to a paper statement and refereed in the eight-paper coverage ledger before its wrapper was generated, and its transport proof was elaborated before the statement was accepted. The author selected the statements and is responsible for the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

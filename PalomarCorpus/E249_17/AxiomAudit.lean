@@ -1,0 +1,35 @@
+import Solutions.PalomarCorpus.E249_17
+
+#print axioms PalomarCorpus.E249.PaperStatementsAE.abs_mobiusSquareTail_le_paper
+#print axioms PalomarCorpus.E249.PaperStatementsAE.abs_moebius_cast_le_one
+#print axioms PalomarCorpus.E249.PaperStatementsAE.complementSummand_eq_phaseTerm
+#print axioms PalomarCorpus.E249.PaperStatementsAE.complementSummand_low_double_echo
+#print axioms PalomarCorpus.E249.PaperStatementsAE.divisorIndex_endpoint_behaviour
+#print axioms PalomarCorpus.E249.PaperStatementsAE.doubling_tempered_sequence_eq_zero
+#print axioms PalomarCorpus.E249.PaperStatementsAE.mersenne_geometric_shift
+#print axioms PalomarCorpus.E249.PaperStatementsAE.squarefreeKernel_eq_prod_primeFactors
+#print axioms PalomarCorpus.E249.PaperStatementsAE.sum_divisorIndices_mobius
+#print axioms PalomarCorpus.E249.PaperStatementsAE.sum_divisors_moebius_div_eq_totient_div
+#print axioms PalomarCorpus.E249.PaperStatementsAE.totientDifference_doubling_seam
+#print axioms PalomarCorpus.E249.PaperStatementsAE.totientDifference_eq_divisorPart_add_complement
+#print axioms PalomarCorpus.E249.PaperStatementsAE.totientSeries_eq_half_add_moebius_sq
+#print axioms PalomarCorpus.E249.PaperStatementsAE.totientSeries_pnat_form
+#print axioms PalomarCorpus.E249.PaperStatementsAE.totient_eq_mobius_divisor_sum
+#print axioms PalomarCorpus.E249.PaperStatementsAE.totient_two_mul_even
+#print axioms PalomarCorpus.E249.PaperStatementsAE.totient_two_mul_odd
+#print axioms PalomarCorpus.E249.PaperStatementsAE.tsum_quarter_geometric
+#print axioms PalomarCorpus.E249.PaperStatementsAK.twoAtom_hankel_gap
+#print axioms PalomarCorpus.E249.PaperStatementsAK.twoAtom_strict_logConcave
+#print axioms PalomarCorpus.E249.PaperStatementsAO.mersenne_dvd_of_dvd
+#print axioms PalomarCorpus.E249.PaperStatementsAO.paperNumerator_coeff_eq_gcd_divisor_sum
+#print axioms PalomarCorpus.E249.PaperStatementsAO.paperNumerator_coeff_eq_zero
+#print axioms PalomarCorpus.E249.PaperStatementsAO.paperNumerator_coeff_pos
+#print axioms PalomarCorpus.E249.PaperStatementsAO.paperNumerator_eq_gcdWordForm
+#print axioms PalomarCorpus.E249.PaperStatementsAQ.paperNumeratorPolynomial_eq
+#print axioms PalomarCorpus.E249.PaperStatementsAQ.sum_divisorIndices_radical_form
+#print axioms PalomarCorpus.E249.PaperStatementsAX.tailDifference_eq_coefficient_mul_series
+#print axioms PalomarCorpus.E249.PaperStatementsAX.tailDifference_sub_rationalApproximation
+#print axioms PalomarCorpus.E249.PaperStatementsBG.mobiusMersenneTheta_one_and_two
+#print axioms PalomarCorpus.E249.PaperStatementsBG.theta_hankel_det_neg
+#print axioms PalomarCorpus.E249.PaperStatementsBG.theta_hankel_two_neg
+#print axioms PalomarCorpus.E249.PaperStatementsBG.theta_strict_logConcave

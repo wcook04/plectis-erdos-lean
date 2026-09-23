@@ -1,6 +1,0 @@
-import Solutions.PalomarCorpus.E257af
-
-#print axioms PalomarCorpus.E257.PaperStatementsAF.card_divisors_le_divisorSubpowerConst_mul_rpow
-#print axioms PalomarCorpus.E257.PaperStatementsAF.card_divisors_pow_le_divisorSubpowerConst_pow_mul
-#print axioms PalomarCorpus.E257.PaperStatementsAF.divInt_le_nextDyadic_iff_excess_nonpos
-#print axioms PalomarCorpus.E257.PaperStatementsAF.dyadicResidual_denominator_sandwich

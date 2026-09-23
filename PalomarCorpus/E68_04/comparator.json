@@ -1,0 +1,13 @@
+{
+  "challenge_module": "PalomarCorpus.E68_04.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E68_04",
+  "theorem_names": [
+    "PalomarCorpus.E68.PaperStatementsB.prime_channel_corrector"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

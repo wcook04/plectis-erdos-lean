@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification257PaperStructuresBW.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStructuresBW",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStructuresBW.paper_seam_escape_implies_half_membership"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

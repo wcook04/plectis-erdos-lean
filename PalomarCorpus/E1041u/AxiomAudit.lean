@@ -1,5 +1,0 @@
-import Solutions.PalomarCorpus.E1041u
-
-#print axioms PalomarCorpus.E1041.PaperStatementsU.complete_primitive_quintic
-#print axioms PalomarCorpus.E1041.PaperStatementsU.primitive_quintic_two_tail
-#print axioms PalomarCorpus.E1041.PaperStatementsU.primitive_quintic_two_tail_of_polynomial

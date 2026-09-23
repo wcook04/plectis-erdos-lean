@@ -1,0 +1,11 @@
+import Solutions.PalomarCorpus.E1049_06
+
+#print axioms PalomarCorpus.E1049.PaperStatementsA.printed_contour_short
+#print axioms PalomarCorpus.E1049.PaperStatementsA.printed_mu
+#print axioms PalomarCorpus.E1049.PaperStatementsA.tailLow_le_trigammaSeries
+#print axioms PalomarCorpus.E1049.PaperStatementsA.trigammaSeries_le_tailHigh
+#print axioms PalomarCorpus.E1049.PaperStatementsA.zudilinContour_eq_inv_mu
+#print axioms PalomarCorpus.E1049.PaperStatementsA.zudilinMu_mul_zudilinContour
+#print axioms PalomarCorpus.E1049.PaperStatementsF.bottomJet3_eq_zero_iff_dvd
+#print axioms PalomarCorpus.E1049.PaperStructuresP.exists_small_real_escape_of_conditional_multiplicity
+#print axioms PalomarCorpus.E1049.RationalBaseRegion.thirtyone_four_powers

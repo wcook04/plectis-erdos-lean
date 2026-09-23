@@ -1,4 +1,0 @@
-import Solutions.PalomarCorpus.E1041b
-
-#print axioms PalomarCorpus.E1041.PaperStatementsB.exists_two_nearest_roots_of_polynomial_critical
-#print axioms PalomarCorpus.E1041.PaperStatementsB.two_nearest_roots_of_polynomial_critical

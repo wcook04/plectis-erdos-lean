@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification257PaperStructuresBT
+
+#print axioms Erdos249257.ExternalVerification257PaperStructuresBT.paper_shared_prefix_family_contains_strip_witness

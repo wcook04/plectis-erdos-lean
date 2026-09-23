@@ -1,0 +1,9 @@
+import Solutions.PalomarCorpus.E243_09
+
+#print axioms PalomarCorpus.E243.PaperStatementsA.absorption_and_descent
+#print axioms PalomarCorpus.E243.PaperStatementsA.bounded_negative_endpoint_eventual_multiplier
+#print axioms PalomarCorpus.E243.PaperStatementsA.error_identities
+#print axioms PalomarCorpus.E243.PaperStatementsA.exists_shifted_consecutiveMultiples
+#print axioms PalomarCorpus.E243.PaperStatementsA.natural_sylvester_of_eventual_zero
+#print axioms PalomarCorpus.E243.PaperStatementsJ.real_lowerDensityZero_iff_exists_admissible_real_weight
+#print axioms PalomarCorpus.E243.PaperStatementsS.original_coordinate_lcm_bounded_defect

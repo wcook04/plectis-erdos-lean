@@ -1,0 +1,131 @@
+version: v0.4
+project:
+  name: 'Erdős #249, record sections 9 to 10: index of unproved conditions; counterexamples to proposed deductions'
+  description: >-
+    This entry states 10 theorems that the long record for Erdős problem #249 states in sections 9 (index of unproved conditions) and 10 (counterexamples to proposed deductions): the theorem labelled statement:sha256:88636df414ec77f88567cd90a7c9d7f2754d3fa91943994bcd5619f94058c22c (section 9.3.13), as rationalValue_integral_carry_and_rank_floor; the proposition “An additional hypothesis for a totient-specific rank argument” (section 9.3.13), as rationalControl_periodic_with_unbounded_carry_rank and rationality_gives_mod_period_and_unbounded_rank; the proposition “A rational series preserving totient parity and the stated separation properties” (section 10.2), as exists_later_arbitrarily_many_separated_parityCoboundaryWeight_carry_pairs, parityCoboundaryWeight_le_self, parityCoboundaryWeight_le_six and parityCoboundaryWeight_mod_two_eq_totient; the lemma “Complement divisibility after multiplication” (section 10.4), as complementDenominator_dvd_scalar; the proposition “A nonzero minor survives inverse-phase column weights” (section 10.6), as inversePhaseGauge_locks_row_and_preserves_minor; the theorem “Exact dyadic rank and infinite-dimensionality” (section 10.8), as canonicalTotientKernelFamily_independent_card_and_span.
+
+    9 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 1 is derived from the source declaration by a short tactic proof, which certifies implication.
+
+    Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
+
+    Erdős problem #249 remains open, and no theorem in this entry decides it.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - "11J72"
+  - "11A25"
+  - "11B83"
+  - "11J82"
+  - "11Y60"
+sources:
+- title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: "The compared theorems are independently restated Lean theorems proved in this repository and described in the public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos."
+  license: Apache-2.0
+  author_endorsement: participated
+- title: Erdős Problems catalogue
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com
+  type: web discussion
+  relationship: background
+  note: "Catalogue numbering and status of the parent problem."
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+status:
+  scope: "One Comparator configuration selecting the 10 theorems listed in PalomarCorpus/E249_26/comparator.json, from the Lean development for Erdős problem #249. The problem's theorems are packed, in the order the papers state them, into the 33 entries PalomarCorpus/E249_01 to PalomarCorpus/E249_33, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification249* directories are internal regression inventory and are not selected."
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 10
+  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E249_26/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
+  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: "PalomarCorpus.E249.PaperStatementsAG.exists_later_arbitrarily_many_separated_parityCoboundaryWeight_carry_pairs"
+    file: "Solutions/PalomarCorpus/E249_26/PaperStatementsAG.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_26/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAG.parityCoboundaryWeight_le_self"
+    file: "Solutions/PalomarCorpus/E249_26/PaperStatementsAG.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_26/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAG.parityCoboundaryWeight_le_six"
+    file: "Solutions/PalomarCorpus/E249_26/PaperStatementsAG.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_26/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAG.parityCoboundaryWeight_mod_two_eq_totient"
+    file: "Solutions/PalomarCorpus/E249_26/PaperStatementsAG.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_26/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.complementDenominator_dvd_scalar"
+    file: "Solutions/PalomarCorpus/E249_26/PaperStatementsAJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_26/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAY.inversePhaseGauge_locks_row_and_preserves_minor"
+    file: "Solutions/PalomarCorpus/E249_26/PaperStatementsAY.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_26/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsBB.canonicalTotientKernelFamily_independent_card_and_span"
+    file: "Solutions/PalomarCorpus/E249_26/PaperStatementsBB.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_26/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsBH.rationalControl_periodic_with_unbounded_carry_rank"
+    file: "Solutions/PalomarCorpus/E249_26/PaperStatementsBH.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_26/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsBH.rationality_gives_mod_period_and_unbounded_rank"
+    file: "Solutions/PalomarCorpus/E249_26/PaperStatementsBH.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_26/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsBJ.rationalValue_integral_carry_and_rank_floor"
+    file: "Solutions/PalomarCorpus/E249_26/PaperStatementsBJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_26/comparator.json"
+  development_status: substantive
+  local_proof_provenance: "the proof modules Erdos249257, ErdosProblems.Erdos249 in this repository, imported by Solutions.PalomarCorpus.E249_26; the Solutions.ExternalVerification249* family modules are a regression mirror of the same proofs and are not imported by this configuration"
+  canonical_claim_status: "problem-level Comparator entry over substantive Lean in this repository"
+automation:
+  methods:
+  - method: manual
+    models: []
+    framework: Mathematical interpretation and claim-boundary review
+    tool_setup: Human-directed scope and significance review
+  - method: agent
+    models:
+    - Anthropic Claude
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+    cost:
+      wall_time: not tracked
+      spend_usd: subscription-based
+      hardware: local machine
+      prompting_notes: n/a
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    Every generated restatement was bound to a paper statement and refereed in the eight-paper coverage ledger before its wrapper was generated, and its transport proof was elaborated before the statement was accepted. The author selected the statements and is responsible for the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

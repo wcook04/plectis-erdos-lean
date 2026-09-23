@@ -1,0 +1,11 @@
+import Solutions.PalomarCorpus.E269_11
+
+#print axioms PalomarCorpus.E269.WindowEscapeEquivalence.actualCofinalLocalWindowEscape_iff
+#print axioms PalomarCorpus.E269.WindowEscapeEquivalence.actualCofinalLocalWindowEscape_iff_irrational_value
+#print axioms PalomarCorpus.E269.WindowEscapeEquivalence.cofinalLocalWindowEscape_of_irrational
+#print axioms PalomarCorpus.E269.WindowEscapeEquivalence.cofinalLocalWindowEscape_of_irrational_of_quadratic
+#print axioms PalomarCorpus.E269.WindowEscapeEquivalence.exists_pow_gt_quadratic
+#print axioms PalomarCorpus.E269.WindowEscapeEquivalence.exists_reducedCarry_of_value_eq_rat
+#print axioms PalomarCorpus.E269.WindowEscapeEquivalence.near_integer_of_residue_le_general
+#print axioms PalomarCorpus.E269.WindowEscapeEquivalence.octic_escape_whole
+#print axioms PalomarCorpus.E269.WindowEscapeEquivalence.trueNormalizedState_window

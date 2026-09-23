@@ -1,4 +1,0 @@
-import Solutions.PalomarCorpus.E249af
-
-#print axioms PalomarCorpus.E249.PaperStatementsAF.mobiusMersenneTheta_two_eq_totient_offset
-#print axioms PalomarCorpus.E249.PaperStatementsAF.scaled_dyadic_sum_odd

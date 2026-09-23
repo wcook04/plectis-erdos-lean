@@ -1,7 +1,0 @@
-import Solutions.PalomarCorpus.E269f
-
-#print axioms PalomarCorpus.E269.PaperStatementsF.firstClearingIndex_le_sufficient
-#print axioms PalomarCorpus.E269.PaperStatementsF.firstClearingIndex_minimal
-#print axioms PalomarCorpus.E269.PaperStatementsF.firstClearingIndex_spec
-#print axioms PalomarCorpus.E269.PaperStatementsF.long_window_growth
-#print axioms PalomarCorpus.E269.PaperStatementsF.scaled_state_is_integer_iff_firstClearingIndex_le

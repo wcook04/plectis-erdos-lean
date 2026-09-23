@@ -1,0 +1,274 @@
+version: v0.4
+project:
+  name: 'Erdős #249, the prefix two adic exclusion, rank one sharp floor and rational observable classification families'
+  description: >-
+    This entry states 27 theorems of the prefix two adic exclusion, rank one sharp floor, rational observable classification, residue class totient series, termwise dyadic vacuous, totient affine mode escape and totient rigidity developments of the Lean formalisation of Erdős problem #249, to which no paper statement is bound. totientPrefix_succ: Supporting recurrence: `P_{n + 1} = 2 P_n + φ(n + 1)`. totientPrefix_eq_corpusForm: Supporting identity: `P_n = ∑_{i ≤ n} φ(i) 2 ^ (n - i)`, the form used elsewhere in this file and in the shared namespace; the two agree because `φ(0) = 0`. oddPart_mul_prefixTail_eq_intCast: Supporting integrality: if `S = a / (2 ^ c v)` with `v > 0` and `c ≤ n`, then `v · prefixTail S n` is the integer `2 ^ (n - c) a - v P_n`. prefix_twoAdic_denominator_exclusion: Finite exclusion step: if `S = a / (2 ^ c v)` with `v` odd and positive, the local tail `R_n` is positive, `c + t ≤ n`, and `2 ^ t` divides `P_n`, then `2 ^ t ≤ v R_n`. prefix_twoAdic_denominator_lower_bound: The same finite exclusion with the tail bound inserted as a hypothesis: if `S = a / (2 ^ c v)` with `v` odd and positive, the local tail satisfies `0 < R_n ≤ n + 2`, `c + t ≤ n`, and `2 ^ t` divides `P_n`, then `2 ^ t ≤ v (n + 2)`. prefix_twoAdic_odd_denominator_floor: The same finite exclusion read as a floor on the odd part of the denominator: if `S = a / (2 ^ c v)` with `v` odd and positive, `0 < R_n ≤ n + 2`, `c + t ≤ n`, and `2 ^ t` divides `P_n`, then `2 ^ t / (n + 2) ≤ v`. rankOneSubrankQuotient_ge_one_five: Sharp minimum: on the admissible range `e ≥ 1` and `Y ≥ 4`, `Q(1, 5) ≤ Q(e, Y)`, so the five-atom first-depth kernel minimises the quotient. rankOneSubrankQuotient_sub_theta_two_gt_one_div_sixteen: The same separation stated with the unit-fraction floor `1 / 16`, valid on the whole admissible range `e ≥ 1`, `Y ≥ 4`. not_forall_rankOneSubrankQuotient_sub_theta_two_gt_one_div_fifteen: Sharpness of the unit-fraction floor: the universally quantified bound `Q(e, Y) - Θ_2 > 1 / 15` over the admissible range is false, so `1 / 16` is the largest unit fraction that works. primitive_form_abs_gt_twentyOne_div_threeTwenty: Rational linear-form obstruction: if an admissible quotient satisfies `Q(e, Y) = p / q` with `q ≥ 1`, then `|q Θ_2 - p| > 21 q / 320`. rational_zmod_observable_iff: For k ≥ 1, a rational-valued observable on residues modulo 2^k has a rational binary-weighted totient sum exactly when it is constant on the even residues. zmod_observable_value: If the observable equals c on the even residues modulo 2^k, its binary-weighted totient sum is 3f(1)/4 + c/4. residue_series_sharp_range: The totient residue series is irrational for every modulus at least three; its values at moduli one and two are respectively zero and three quarters. isolated_pulse_separation: Quantitative Diophantine core: let `a` be an integer sequence with `|a n| ≤ C`, let `q ≥ 1` satisfy `2 q C < 2 ^ L`, and suppose `a (N + 1 + L) = t` with `t ≠ 0` while `a (N + 1 + i) = 0` for every `i ≤ 2 L` with `i ≠ L`. irrational_dyadicValue_of_pulses: Number-theory-free irrationality criterion: a bounded integer coefficient sequence whose support carries arbitrarily long two-sided isolated pulses has irrational binary value. two_sided_prime_isolation: Arithmetic supply: for `m ≥ 2` and any residue `r` with `r + 1` coprime to `m`, and for any `L` and `N`, there is a prime `p` with `p > N`, `p > L + 1`, `φ(p) ≡ r` modulo `m`, and `m` dividing both `φ(p - j)` and `φ(p + j)` for every `0 < j ≤ L`. irrational_totientObservable: Unconditional irrationality for fixed-resolution observables: if `m ≥ 2`, the letter map `f` vanishes at residue `0`, and some residue `r < m` with `r + 1` coprime to `m` has `f r ≠ 0`, then `∑_n f(φ(n) mod m) / 2 ^ n` is irrational. fixed_resolution_observable_irrational: Dyadic resolution case: at resolution `m = 2 ^ k` with `k ≥ 1`, every integer-valued letter map that vanishes at residue `0` and is nonzero at some even residue `r < 2 ^ k` has irrational binary value. residue_series_irrational: Headline unconditional consequence: for every `m ≥ 3` the least-residue totient series `A_m = ∑_n (φ(n) mod m) / 2 ^ n` is irrational. termwise_dyadic_window_vacuous: Route closure: whenever `t ≥ 1`, `N + t ≥ 2`, `v ≥ 1` and `2 ^ t` divides `φ(N + t)`, one has `2 ^ t ≤ v (N + t + 2)`. not_eventuallyAffine_pureDyadicEndpointError: Unconditional route closure: for every basepoint `c` and every fixed quotient `k`, the endpoint error is not eventually affine in the height. totient_prime_mul_of_dvd: Supporting identity: `φ(p n) = p φ(n)` for a prime `p` dividing `n`, stated over `ℤ`. totient_prime_mul_of_not_dvd: Supporting identity: `φ(p n) = (p - 1) φ(n)` for a prime `p` not dividing `n`, stated over `ℤ`. totient_two_mul_of_odd: Supporting identity: `φ(2 m) = φ(m)` for odd `m`, stated over `ℕ`. totient_two_mul_of_even: Supporting identity: `φ(2 m) = 2 φ(m)` for even `m`, stated over `ℕ`; the degenerate case `m = 0` is included and both sides are `0`. one_prime_law_and_little_o_forces_totient: Rigidity route closure: let `p` be prime and let `g : ℕ → ℤ` obey the exact `p` laws `g(p n) = (p - 1) g(n)` when `p` does not divide `n` and `g(p n) = p g(n)` when `p` divides `n`, for every `n ≥ 1`, and suppose that for every `ε > 0` the bound `|g(n) - φ(n)| ≤ ε n` holds for all large `n`. even_law_and_eventual_congruence_forces_totient: Rigidity route closure: let `g : ℕ → ℤ` satisfy `g(2 m) = g(m)` for odd `m ≥ 1` and `g(2 m) = 2 g(m)` for even `m ≥ 2`, and suppose that for every `q ≥ 1` the congruence `q ∣ g(n) - φ(n)` holds for all sufficiently large `n`.
+
+    Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
+
+    Erdős problem #249 remains open, and no theorem in this entry decides it.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - "11J72"
+  - "11A25"
+  - "11B83"
+  - "11J82"
+  - "11Y60"
+sources:
+- title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: "The compared theorems are independently restated Lean theorems proved in this repository and described in the public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos."
+  license: Apache-2.0
+  author_endorsement: participated
+- title: "Old and New Problems and Results in Combinatorial Number Theory"
+  authors:
+  - "Paul Erdős"
+  - "Ronald L. Graham"
+  type: "book"
+  relationship: "background"
+  note: "Page 61 poses the question whether the sum of phi(n)/2^n is irrational; only the problem statement is taken from this source."
+  license: "unknown"
+  author_endorsement: "n/a"
+- title: "On arithmetical properties of Lambert series"
+  authors:
+  - "Paul Erdős"
+  type: "paper"
+  relationship: "background"
+  note: "Journal of the Indian Mathematical Society 12 (1948). Supplies the isolated digit-block separation mechanism reused by the residue-class irrationality theorems; no statement about the sum of phi(n)/2^n is taken from it."
+  license: "unknown"
+  author_endorsement: "n/a"
+- title: "Simultaneous inequalities among values of the Euler phi-function"
+  authors:
+  - "Greg Martin"
+  id: "arXiv:math/0603053"
+  type: "paper"
+  relationship: "background"
+  note: "Theorem 1 already implies the all-slope affine independence conclusion stated here, which is therefore not claimed as new; the exact rank formula, canonical index, basis and relation-module dimension are not taken from this source."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "(Non)Automaticity of number theoretic functions"
+  authors:
+  - "Michael Coons"
+  id: "doi:10.5802/jtnb.718"
+  type: "paper"
+  relationship: "background"
+  note: "Journal de Théorie des Nombres de Bordeaux 22 (2010), 339-352, Theorem 3.2 owns non-k-regularity of Euler's totient, equivalently infinite dimensionality of the full kernel span; that statement is not claimed here and the exact bounded-depth rank and normal form are not taken from it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "The ring of k-regular sequences"
+  authors:
+  - "Jean-Paul Allouche"
+  - "Jeffrey Shallit"
+  id: "doi:10.1016/0304-3975(92)90001-V"
+  type: "paper"
+  relationship: "background"
+  note: "Theoretical Computer Science 98 (1992), 163-197 introduces k-regular sequences and the k-kernel, the notion the rank and basis theorems are stated about; no result is taken from it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Answer 1211557 to: An infinite sum based on the mod-parity of Euler's totient function"
+  authors:
+  - "Erick Wong"
+  id: "https://math.stackexchange.com/a/1211557"
+  type: "web discussion"
+  relationship: "background"
+  note: "Proves least-residue irrationality when the denominator base and the modulus are the same integer k > 2, dated 29 March 2015; the theorems here fix base two, vary the modulus, and classify the dyadic observables, and that classification is not taken from this source."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Comment on Erdős Problem #249, 16 May 2026"
+  authors:
+  - "Steve Fan"
+  id: "https://www.erdosproblems.com/forum/thread/249"
+  type: "web discussion"
+  relationship: "background"
+  note: "Records the divisor-convolution identity giving the sum of phi(n)/2^n as 1/2 plus the sum of mu(n)/(2^n - 1)^2, which names the constant Theta_2 used by the rank-one floor theorems; those theorems are not taken from this source. The comment cannot be confirmed beyond the linked discussion thread."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Modular functions and transcendence questions"
+  authors:
+  - "Yuri V. Nesterenko"
+  id: "doi:10.1070/SM1996v187n09ABEH000158"
+  type: "paper"
+  relationship: "background"
+  note: "Sbornik: Mathematics 187 (1996), 1319-1348. Its algebraic independence theorem for the Ramanujan functions makes the companion divisor-sum series transcendental at q = 1/2; it is cited only as context for the totient problem and supplies nothing to any theorem compared here."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: Erdős Problems catalogue
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com
+  type: web discussion
+  relationship: background
+  note: "Catalogue numbering and status of the parent problem."
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+related_formalizations:
+- id: "https://github.com/google-deepmind/formal-conjectures/blob/f776d2f2039351b00737ffcafb9d7d7666e1d9af/FormalConjectures/ErdosProblems/249.lean"
+  title: "FormalConjectures.ErdosProblems.249"
+  relationship: "independent"
+  note: "An open-problem entry recording the same question as `answer(sorry) ↔ Irrational (∑' n : ℕ, φ n / 2 ^ n)`, with both the answer placeholder and the proof left as sorry. It is statement-level prior art for the formalisation of the target, it supplies no proof authority, and every declaration compared here was stated independently of it."
+status:
+  scope: "One Comparator configuration selecting the 27 theorems listed in PalomarCorpus/E249_33/comparator.json, from the Lean development for Erdős problem #249. The problem's theorems are packed, in the order the papers state them, into the 33 entries PalomarCorpus/E249_01 to PalomarCorpus/E249_33, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification249* directories are internal regression inventory and are not selected."
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 27
+  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E249_33/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
+  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: "PalomarCorpus.E249.PrefixTwoAdicExclusion.oddPart_mul_prefixTail_eq_intCast"
+    file: "Solutions/PalomarCorpus/E249_33/PrefixTwoAdicExclusion.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_33/comparator.json"
+  - declaration: "PalomarCorpus.E249.PrefixTwoAdicExclusion.prefix_twoAdic_denominator_exclusion"
+    file: "Solutions/PalomarCorpus/E249_33/PrefixTwoAdicExclusion.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_33/comparator.json"
+  - declaration: "PalomarCorpus.E249.PrefixTwoAdicExclusion.prefix_twoAdic_denominator_lower_bound"
+    file: "Solutions/PalomarCorpus/E249_33/PrefixTwoAdicExclusion.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_33/comparator.json"
+  - declaration: "PalomarCorpus.E249.PrefixTwoAdicExclusion.prefix_twoAdic_odd_denominator_floor"
+    file: "Solutions/PalomarCorpus/E249_33/PrefixTwoAdicExclusion.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_33/comparator.json"
+  - declaration: "PalomarCorpus.E249.PrefixTwoAdicExclusion.totientPrefix_eq_corpusForm"
+    file: "Solutions/PalomarCorpus/E249_33/PrefixTwoAdicExclusion.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_33/comparator.json"
+  - declaration: "PalomarCorpus.E249.PrefixTwoAdicExclusion.totientPrefix_succ"
+    file: "Solutions/PalomarCorpus/E249_33/PrefixTwoAdicExclusion.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_33/comparator.json"
+  - declaration: "PalomarCorpus.E249.RankOneSharpFloor.not_forall_rankOneSubrankQuotient_sub_theta_two_gt_one_div_fifteen"
+    file: "Solutions/PalomarCorpus/E249_33/RankOneSharpFloor.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_33/comparator.json"
+  - declaration: "PalomarCorpus.E249.RankOneSharpFloor.primitive_form_abs_gt_twentyOne_div_threeTwenty"
+    file: "Solutions/PalomarCorpus/E249_33/RankOneSharpFloor.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_33/comparator.json"
+  - declaration: "PalomarCorpus.E249.RankOneSharpFloor.rankOneSubrankQuotient_ge_one_five"
+    file: "Solutions/PalomarCorpus/E249_33/RankOneSharpFloor.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_33/comparator.json"
+  - declaration: "PalomarCorpus.E249.RankOneSharpFloor.rankOneSubrankQuotient_sub_theta_two_gt_one_div_sixteen"
+    file: "Solutions/PalomarCorpus/E249_33/RankOneSharpFloor.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_33/comparator.json"
+  - declaration: "PalomarCorpus.E249.RationalObservableClassification.rational_zmod_observable_iff"
+    file: "Solutions/PalomarCorpus/E249_33/RationalObservableClassification.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_33/comparator.json"
+  - declaration: "PalomarCorpus.E249.RationalObservableClassification.residue_series_sharp_range"
+    file: "Solutions/PalomarCorpus/E249_33/RationalObservableClassification.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_33/comparator.json"
+  - declaration: "PalomarCorpus.E249.RationalObservableClassification.zmod_observable_value"
+    file: "Solutions/PalomarCorpus/E249_33/RationalObservableClassification.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_33/comparator.json"
+  - declaration: "PalomarCorpus.E249.ResidueClassTotientSeries.fixed_resolution_observable_irrational"
+    file: "Solutions/PalomarCorpus/E249_33/ResidueClassTotientSeries.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_33/comparator.json"
+  - declaration: "PalomarCorpus.E249.ResidueClassTotientSeries.irrational_dyadicValue_of_pulses"
+    file: "Solutions/PalomarCorpus/E249_33/ResidueClassTotientSeries.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_33/comparator.json"
+  - declaration: "PalomarCorpus.E249.ResidueClassTotientSeries.irrational_totientObservable"
+    file: "Solutions/PalomarCorpus/E249_33/ResidueClassTotientSeries.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_33/comparator.json"
+  - declaration: "PalomarCorpus.E249.ResidueClassTotientSeries.isolated_pulse_separation"
+    file: "Solutions/PalomarCorpus/E249_33/ResidueClassTotientSeries.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_33/comparator.json"
+  - declaration: "PalomarCorpus.E249.ResidueClassTotientSeries.residue_series_irrational"
+    file: "Solutions/PalomarCorpus/E249_33/ResidueClassTotientSeries.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_33/comparator.json"
+  - declaration: "PalomarCorpus.E249.ResidueClassTotientSeries.two_sided_prime_isolation"
+    file: "Solutions/PalomarCorpus/E249_33/ResidueClassTotientSeries.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_33/comparator.json"
+  - declaration: "PalomarCorpus.E249.TermwiseDyadicVacuous.termwise_dyadic_window_vacuous"
+    file: "Solutions/PalomarCorpus/E249_33/TermwiseDyadicVacuous.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_33/comparator.json"
+  - declaration: "PalomarCorpus.E249.TotientAffineModeEscape.not_eventuallyAffine_pureDyadicEndpointError"
+    file: "Solutions/PalomarCorpus/E249_33/TotientAffineModeEscape.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_33/comparator.json"
+  - declaration: "PalomarCorpus.E249.TotientRigidity.even_law_and_eventual_congruence_forces_totient"
+    file: "Solutions/PalomarCorpus/E249_33/TotientRigidity.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_33/comparator.json"
+  - declaration: "PalomarCorpus.E249.TotientRigidity.one_prime_law_and_little_o_forces_totient"
+    file: "Solutions/PalomarCorpus/E249_33/TotientRigidity.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_33/comparator.json"
+  - declaration: "PalomarCorpus.E249.TotientRigidity.totient_prime_mul_of_dvd"
+    file: "Solutions/PalomarCorpus/E249_33/TotientRigidity.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_33/comparator.json"
+  - declaration: "PalomarCorpus.E249.TotientRigidity.totient_prime_mul_of_not_dvd"
+    file: "Solutions/PalomarCorpus/E249_33/TotientRigidity.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_33/comparator.json"
+  - declaration: "PalomarCorpus.E249.TotientRigidity.totient_two_mul_of_even"
+    file: "Solutions/PalomarCorpus/E249_33/TotientRigidity.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_33/comparator.json"
+  - declaration: "PalomarCorpus.E249.TotientRigidity.totient_two_mul_of_odd"
+    file: "Solutions/PalomarCorpus/E249_33/TotientRigidity.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_33/comparator.json"
+  development_status: substantive
+  local_proof_provenance: "the proof modules ErdosProblems.Erdos249 in this repository, imported by Solutions.PalomarCorpus.E249_33; the Solutions.ExternalVerification249* family modules are a regression mirror of the same proofs and are not imported by this configuration"
+  canonical_claim_status: "problem-level Comparator entry over substantive Lean in this repository"
+automation:
+  methods:
+  - method: manual
+    models: []
+    framework: Mathematical interpretation and claim-boundary review
+    tool_setup: Human-directed scope and significance review
+  - method: agent
+    models:
+    - Anthropic Claude
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+    cost:
+      wall_time: not tracked
+      spend_usd: subscription-based
+      hardware: local machine
+      prompting_notes: n/a
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    The statements from the hand-written families were checked declaration by declaration against the public problem notes, the reasoning records and the Lean sources in automated review passes run with Anthropic Claude and OpenAI Codex. The author selected the statements and is responsible for the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

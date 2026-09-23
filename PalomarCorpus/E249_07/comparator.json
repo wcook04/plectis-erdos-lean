@@ -1,0 +1,40 @@
+{
+  "challenge_module": "PalomarCorpus.E249_07.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E249_07",
+  "theorem_names": [
+    "PalomarCorpus.E249.PaperStatementsAC.mobiusNumeratorPolynomial_coeff",
+    "PalomarCorpus.E249.PaperStatementsAC.mobiusNumeratorPolynomial_coeff_pos",
+    "PalomarCorpus.E249.PaperStatementsAE.divisibility_mass",
+    "PalomarCorpus.E249.PaperStatementsAE.pair_divisibility_mass",
+    "PalomarCorpus.E249.PaperStatementsAE.stopping_probability_ge_third",
+    "PalomarCorpus.E249.PaperStatementsAE.stopping_transition_probabilities_sum_one",
+    "PalomarCorpus.E249.PaperStatementsAE.tsum_geometric_multiples",
+    "PalomarCorpus.E249.PaperStatementsAI.totient_series_eq_half_add_moebius_mersenne_square",
+    "PalomarCorpus.E249.PaperStatementsAJ.positive_rational_difference_lower_bound",
+    "PalomarCorpus.E249.PaperStatementsAJ.rational_cross_numerator_positive",
+    "PalomarCorpus.E249.PaperStatementsAJ.rational_difference_exact",
+    "PalomarCorpus.E249.PaperStatementsAJ.rational_error_denominator_bound",
+    "PalomarCorpus.E249.PaperStatementsAK.cylinderMass_children_le",
+    "PalomarCorpus.E249.PaperStatementsAK.tsum_pos_coprime_inv_mersenne_eq_one",
+    "PalomarCorpus.E249.PaperStatementsAL.strict_lower_bound_needed",
+    "PalomarCorpus.E249.PaperStatementsAL.tail_mem_Icc",
+    "PalomarCorpus.E249.PaperStatementsAL.upper_bound_needed_for_every_q",
+    "PalomarCorpus.E249.PaperStatementsAP.tsum_moebius_lambert_sq",
+    "PalomarCorpus.E249.PaperStatementsAQ.numerator_eval_two_divisors",
+    "PalomarCorpus.E249.PaperStatementsAQ.radical_decomposition",
+    "PalomarCorpus.E249.PaperStatementsAY.cylinderMass_eq_divisibility_mass_mul",
+    "PalomarCorpus.E249.PaperStatementsAY.cylinder_mediant_split",
+    "PalomarCorpus.E249.PaperStatementsAY.cylinder_root_values",
+    "PalomarCorpus.E249.PaperStatementsAY.normalised_split_probabilities",
+    "PalomarCorpus.E249.PaperStatementsB.sternBrocotDepthMass_error",
+    "PalomarCorpus.E249.PaperStatementsB.tendsto_sternBrocotDepthMass",
+    "PalomarCorpus.E249.PaperStatementsH.irrational_totient_iff_moebius_square",
+    "PalomarCorpus.E249.PaperStructuresP.linearIndependent_of_separatedMinorCertificate"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

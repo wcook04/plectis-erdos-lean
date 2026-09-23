@@ -1,0 +1,155 @@
+version: v0.4
+project:
+  name: 'Erdős #249, record section 2.3: limits of specific reductions and estimates'
+  description: >-
+    This entry states 16 theorems that the long record for Erdős problem #249 states in section 2.3 (limits of specific reductions and estimates): the proposition “Three particular equivalences” (section 2.3), as two_point_sample_numerical_requirement and three_particular_equivalences; the proposition “Failure of a specified two-adic congruence construction” (section 2.3), as twoAdic_pulse_defining_congruence, twoAdic_pulse_error_bound and twoAdic_pulse_construction_never_certifies; the proposition “Information lost by specific carry descriptions” (section 2.3), as balancedPulse_common_history, balancedPulse_label_lower_bound, balancedPulse_no_decoder_from_common_state, balancedPulse_series, balancedPulse_tail_at and affineBinaryOrbit_difference_and_reset; the proposition “Four limits of particular linear constructions” (section 2.3), as b6_adjugate_tail_cost_floor, b6_compressed_adjoint_identity_impossible, b6_rankOneSubrankQuotient_sub_totientSeries_offset_gt, b6_synthetic_sequence_prescribed_differences and b6_synthetic_shift_combinations_same_form.
+
+    12 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 4 are derived from the source declaration by a short tactic proof, which certifies implication.
+
+    Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
+
+    Erdős problem #249 remains open, and no theorem in this entry decides it.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - "11J72"
+  - "11A25"
+  - "11B83"
+  - "11J82"
+  - "11Y60"
+sources:
+- title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: "The compared theorems are independently restated Lean theorems proved in this repository and described in the public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos."
+  license: Apache-2.0
+  author_endorsement: participated
+- title: Erdős Problems catalogue
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com
+  type: web discussion
+  relationship: background
+  note: "Catalogue numbering and status of the parent problem."
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+status:
+  scope: "One Comparator configuration selecting the 16 theorems listed in PalomarCorpus/E249_03/comparator.json, from the Lean development for Erdős problem #249. The problem's theorems are packed, in the order the papers state them, into the 33 entries PalomarCorpus/E249_01 to PalomarCorpus/E249_33, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification249* directories are internal regression inventory and are not selected."
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 16
+  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E249_03/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
+  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: "PalomarCorpus.E249.PaperStatementsAK.twoAdic_pulse_defining_congruence"
+    file: "Solutions/PalomarCorpus/E249_03/PaperStatementsAK.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_03/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAK.twoAdic_pulse_error_bound"
+    file: "Solutions/PalomarCorpus/E249_03/PaperStatementsAK.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_03/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAK.two_point_sample_numerical_requirement"
+    file: "Solutions/PalomarCorpus/E249_03/PaperStatementsAK.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_03/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAU.three_particular_equivalences"
+    file: "Solutions/PalomarCorpus/E249_03/PaperStatementsAU.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_03/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAU.twoAdic_pulse_construction_never_certifies"
+    file: "Solutions/PalomarCorpus/E249_03/PaperStatementsAU.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_03/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAZ.balancedPulse_common_history"
+    file: "Solutions/PalomarCorpus/E249_03/PaperStatementsAZ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_03/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAZ.balancedPulse_label_lower_bound"
+    file: "Solutions/PalomarCorpus/E249_03/PaperStatementsAZ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_03/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAZ.balancedPulse_no_decoder_from_common_state"
+    file: "Solutions/PalomarCorpus/E249_03/PaperStatementsAZ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_03/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAZ.balancedPulse_series"
+    file: "Solutions/PalomarCorpus/E249_03/PaperStatementsAZ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_03/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAZ.balancedPulse_tail_at"
+    file: "Solutions/PalomarCorpus/E249_03/PaperStatementsAZ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_03/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsD.affineBinaryOrbit_difference_and_reset"
+    file: "Solutions/PalomarCorpus/E249_03/PaperStatementsD.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_03/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsG.b6_adjugate_tail_cost_floor"
+    file: "Solutions/PalomarCorpus/E249_03/PaperStatementsG.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_03/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsG.b6_compressed_adjoint_identity_impossible"
+    file: "Solutions/PalomarCorpus/E249_03/PaperStatementsG.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_03/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsG.b6_rankOneSubrankQuotient_sub_totientSeries_offset_gt"
+    file: "Solutions/PalomarCorpus/E249_03/PaperStatementsG.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_03/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsI.b6_synthetic_sequence_prescribed_differences"
+    file: "Solutions/PalomarCorpus/E249_03/PaperStatementsI.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_03/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsI.b6_synthetic_shift_combinations_same_form"
+    file: "Solutions/PalomarCorpus/E249_03/PaperStatementsI.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_03/comparator.json"
+  development_status: substantive
+  local_proof_provenance: "the proof modules Erdos249257, ErdosProblems.Erdos249, ErdosProblems.Skip in this repository, imported by Solutions.PalomarCorpus.E249_03; the Solutions.ExternalVerification249* family modules are a regression mirror of the same proofs and are not imported by this configuration"
+  canonical_claim_status: "problem-level Comparator entry over substantive Lean in this repository"
+automation:
+  methods:
+  - method: manual
+    models: []
+    framework: Mathematical interpretation and claim-boundary review
+    tool_setup: Human-directed scope and significance review
+  - method: agent
+    models:
+    - Anthropic Claude
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+    cost:
+      wall_time: not tracked
+      spend_usd: subscription-based
+      hardware: local machine
+      prompting_notes: n/a
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    Every generated restatement was bound to a paper statement and refereed in the eight-paper coverage ledger before its wrapper was generated, and its transport proof was elaborated before the statement was accepted. The author selected the statements and is responsible for the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

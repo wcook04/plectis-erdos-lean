@@ -1,0 +1,10 @@
+import Solutions.PalomarCorpus.E243_04
+
+#print axioms PalomarCorpus.E243.PaperStructuresT.R_le_of_u_le
+#print axioms PalomarCorpus.E243.PaperStructuresT.criticalRate
+#print axioms PalomarCorpus.E243.PaperStructuresT.criticalRate_counterexample
+#print axioms PalomarCorpus.E243.PaperStructuresU.oddPrimePower_supply
+#print axioms PalomarCorpus.E243.PaperStructuresU.oddPrimePower_supply_nat
+#print axioms PalomarCorpus.E243.PaperStructuresU.unitRecordIncrement_criterion
+#print axioms PalomarCorpus.E243.PaperStructuresV.eventuallySylvester_of_amp_le
+#print axioms PalomarCorpus.E243.PaperStructuresW.unitRecordIncrement_sylvesterNext

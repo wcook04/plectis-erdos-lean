@@ -1,0 +1,21 @@
+import Solutions.PalomarCorpus.E257_37
+
+#print axioms PalomarCorpus.E257.PaperStatementsAA.Psi_eq_of_residues_eq
+#print axioms PalomarCorpus.E257.PaperStatementsAA.card_divisors_sub_one
+#print axioms PalomarCorpus.E257.PaperStatementsAA.dvd_add_iLeast
+#print axioms PalomarCorpus.E257.PaperStatementsAA.geometric_term_eq_zero_of_lt_iLeast
+#print axioms PalomarCorpus.E257.PaperStatementsAA.iLeast_congr
+#print axioms PalomarCorpus.E257.PaperStatementsAA.iLeast_mem_Icc
+#print axioms PalomarCorpus.E257.PaperStatementsAA.mCount_eq_zero_of_lt_iLeast
+#print axioms PalomarCorpus.E257.PaperStatementsAA.not_dvd_of_lt_iLeast
+#print axioms PalomarCorpus.E257.PaperStatementsAA.residue_condition_iff
+#print axioms PalomarCorpus.E257.PaperStatementsAA.residue_cutoff_reading_fails
+#print axioms PalomarCorpus.E257.PaperStatementsAA.theta_eq_Psi
+#print axioms PalomarCorpus.E257.PaperStatementsAA.theta_eq_divisorResidueSum
+#print axioms PalomarCorpus.E257.PaperStatementsAA.theta_eq_geometricForm
+#print axioms PalomarCorpus.E257.PaperStatementsAA.theta_eq_tsum_divisorResidue
+#print axioms PalomarCorpus.E257.PaperStatementsAA.theta_eq_tsum_geometricForm
+#print axioms PalomarCorpus.E257.PaperStatementsAA.theta_one_one
+#print axioms PalomarCorpus.E257.PaperStatementsAA.theta_one_three
+#print axioms PalomarCorpus.E257.PaperStatementsBF.paper_squarefree_support_engine_ceiling
+#print axioms PalomarCorpus.E257.PaperStatementsL.paper_square_depth_terminal_bound

@@ -1,0 +1,13 @@
+import Solutions.PalomarCorpus.E269_10
+
+#print axioms PalomarCorpus.E269.IntegralBranchPinning.integral_state_upward_closed
+#print axioms PalomarCorpus.E269.IntegralBranchPinning.surviving_window_orbit_eq_true_state
+#print axioms PalomarCorpus.E269.IntegralBranchPinning.trueNormalizedState_eq_telescope
+#print axioms PalomarCorpus.E269.IntegralBranchPinning.trueNormalizedState_pinning
+#print axioms PalomarCorpus.E269.ThreePrimeStructure.exists_uniform_nonsingular_threePrimeKernel_minor
+#print axioms PalomarCorpus.E269.ThreePrimeStructure.kernel_235_minor_eq_neg_one_fifteen
+#print axioms PalomarCorpus.E269.ThreePrimeStructure.smoothExponentShell_card_quadratic
+#print axioms PalomarCorpus.E269.ThreePrimeStructure.smoothPrefixLcm_eq_threePrimeHeight
+#print axioms PalomarCorpus.E269.ThreePrimeStructure.threePrimeKernelQ_eq_of_sameLogCell
+#print axioms PalomarCorpus.E269.ThreePrimeStructure.threePrimeKernel_infiniteRank_and_noFiniteSeparation
+#print axioms PalomarCorpus.E269.ThreePrimeStructure.threePrimePositiveJumpSet_card

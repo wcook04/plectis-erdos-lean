@@ -1,4 +1,0 @@
-import Solutions.PalomarCorpus.E249b
-
-#print axioms PalomarCorpus.E249.PaperStatementsB.sternBrocotDepthMass_error
-#print axioms PalomarCorpus.E249.PaperStatementsB.tendsto_sternBrocotDepthMass

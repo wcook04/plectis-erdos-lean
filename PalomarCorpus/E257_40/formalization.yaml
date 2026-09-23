@@ -1,0 +1,198 @@
+version: v0.4
+project:
+  name: 'Erdős #257, the achievement set geometry, actual upper successor and Boolean Mobius carry families'
+  description: >-
+    This entry states 11 theorems of the achievement set geometry, actual upper successor, Boolean Mobius carry and dyadic observation summability developments of the Lean formalisation of Erdős problem #257, to which no paper statement is bound. volume_supportedMersenneAchievementSet_eq_zero_of_rat_value: Rational fibre measure no go: if 0 is not in J and the value coded by J, that is the sum over m in J of 1 divided by 2 to the power m minus 1, equals a rational number q, then the supported achievement set of J has Lebesgue measure zero. supportedMersenneAchievementSet_geometry_and_volume: Complete geometry and Lebesgue measure classification, for every set J of allowed digit positions and with no hypothesis on J: the supported coding map is injective, its range is compact and nowhere dense, the range is perfect whenever J is infinite, and one of two mutually exclusive cases holds for the measure, which is valued in the extended nonnegative reals; either the complement of J is a finite set F and the measure is the inverse of 2 raised to the cardinality of F, or the complement of J is infinite and the measure is 0. actualUpperRightPacketLinearEscape_iff_successorLinearEscape: The terminal packet lower envelope and the pulse free successor lower envelope are equivalent as propositions. actualUpperSuccessorLinearEscape_completeCounterexample: Conditional on the pulse free successor lower envelope holding, there is an infinite set A of natural numbers whose base two series with terms 1 divided by 2 to the power a minus 1 equals exactly one half, and the universal irrationality assertion of the parent problem is therefore false. exists_booleanMobiusCarry_of_support_fraction: If A does not contain 0, contains some positive element, and its base two support series equals p divided by q for an integer p and a positive natural q, then there is an integer sequence U carrying a Boolean Moebius carry certificate for p over q whose Moebius transform selects exactly the set A. support_fraction_of_booleanMobiusCarry: Converse direction: from a Boolean Moebius carry certificate for p over q with q positive, the support selected by the Moebius transform of the carry quotient omits 0 and its base two support series equals exactly p divided by q. reconstructsSupport: Full reconstruction from a Boolean Moebius carry certificate with q positive: the selected support omits 0, the carry quotient coincides with the divisor incidence arithmetic function of that support, the sequence U is a tempered binary carry orbit for those coefficients at modulus q, the Moebius transform selects exactly that support, and its base two support series equals p divided by q. exists_normalized_support_fraction_iff_exists_booleanMobiusCarry: Existence level equivalence for a positive natural q: a normalised nonempty support with base two value exactly p divided by q exists if and only if a Boolean Moebius carry certificate for p over q exists. dyadic_supportObservationMass_sum_le: Explicit majorant: if alpha is nonnegative on A and the conductor weighted terms of A are summable, then for every finite set J of dyadic levels and every natural Q, the sum over j in J of 2 to the power minus j times the observation mass up to Q times 2 to the power j is at most 2 Q times the total conductor weighted mass. summable_dyadic_supportObservationMass: Under the same nonnegativity and conductor weighted summability hypotheses, and for every natural Q, the sequence indexed by the dyadic level j whose term is 2 to the power minus j times the observation mass up to Q times 2 to the power j is summable. tendsto_dyadic_supportObservationMass_mean: Under the same nonnegativity and conductor weighted summability hypotheses, and for every natural Q, the sliding window mean over the dyadic levels from M to 2M minus 1 of 2 to the power minus j times the observation mass up to Q times 2 to the power j, divided by M, tends to 0 as M tends to infinity.
+
+    Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
+
+    Erdős problem #257 remains open, and no theorem in this entry decides it.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.NT
+  - math.CA
+  - math.DS
+  msc2020:
+  - "11J72"
+  - "11A25"
+  - "11A07"
+  - "11B37"
+  - "11B83"
+  - "28A80"
+  - "11K16"
+sources:
+- title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: "The compared theorems are independently restated Lean theorems proved in this repository and described in the public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos."
+  license: Apache-2.0
+  author_endorsement: participated
+- title: "On arithmetical properties of Lambert series"
+  authors:
+  - "Paul Erdos"
+  type: "paper"
+  relationship: "background"
+  note: "J. Indian Math. Soc. 12 (1948), 63-66. Source of the classical irrationality of the full support value at every integer base, which is the historical starting point for the problem. That classical result is the analytic input to the forward implication of the rational membership criterion compared here, since finitely many greedy omissions would write the full support value as a rational plus a finite rational Mersenne sum. No statement compared in this entry is Erdős's, and no priority over him is claimed."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Refinement of the Chowla-Erdős method and linear independence of certain Lambert series"
+  authors:
+  - "Daniel Duverney"
+  - "Yohei Tachiya"
+  id: "https://doi.org/10.1515/forum-2018-0299"
+  type: "paper"
+  relationship: "background"
+  note: "Forum Math. 31 (2019), no. 6, 1557-1566. Corollary 1.2 and Example 1.1 give irrationality and linear independence for the squarefree support at every base 2^j with j at least 1. That family is prior art and is credited to these authors; no theorem compared in this entry is derived from it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Quantitative correlations and some problems on prime factors of consecutive integers"
+  authors:
+  - "Terence Tao"
+  - "Joni Teravainen"
+  id: "arXiv:2512.01739"
+  type: "paper"
+  relationship: "background"
+  note: "Theorem 1.3 proves irrationality of the prime support value at base two, with the extension to other integer bases and to prime power supports stated as remarks. That case is prior art and is credited to these authors; no theorem compared in this entry uses their correlation input."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "On several irrationality problems for Ahmes series"
+  authors:
+  - "Vjekoslav Kovac"
+  - "Terence Tao"
+  id: "https://doi.org/10.1007/s10474-025-01528-0"
+  type: "paper"
+  relationship: "background"
+  note: "Acta Math. Hungar. 175 (2025), 572-608. Remark 4.1 records the strict tail inequality and the resulting Cantor structure of the fixed base achievement set, which is the classical context for the geometry compared here. The exact Lebesgue measure dichotomy and the rational fibre null theorem are not taken from this source."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "On the set of partial sums of an infinite series"
+  authors:
+  - "Soichi Kakeya"
+  id: "https://doi.org/10.11429/ptmps1907.7.14_250"
+  type: "paper"
+  relationship: "background"
+  note: "Tokyo Sugaku-Buturigakkwai Kizi Dai 2 Ki 7 (1914), no. 14, 250-251. Kakeya proves that the subsum set of an absolutely convergent series is perfect and states the interval filling criterion and the nowhere density assertion. Perfectness and nowhere density in AchievementSetGeometry are classical in this sense; the exact measure dichotomy is not taken from this source."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "On an incomplete argument of Erdős on the irrationality of Lambert series"
+  authors:
+  - "J. Vandehey"
+  id: "arXiv:1206.0340"
+  type: "paper"
+  relationship: "background"
+  note: "Completes a different unprinted Erdős argument: irrationality of the divisor-function Lambert series at negative integer bases, with bounded nonzero integer weights. It does not treat subsums over a support, so it neither anticipates nor overlaps the reciprocal summable theorem compared here; it is cited as the nearest published completion of an Erdős gap in this circle."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: Erdős Problems catalogue
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com
+  type: web discussion
+  relationship: background
+  note: "Catalogue numbering and status of the parent problem."
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+related_formalizations:
+- id: "https://github.com/google-deepmind/formal-conjectures/blob/f776d2f2039351b00737ffcafb9d7d7666e1d9af/FormalConjectures/ErdosProblems/257.lean"
+  title: "FormalConjectures.ErdosProblems.257"
+  relationship: "independent"
+  note: "States the open parent problem (erdos_257, proof sorry), proves the Lambert identity tsum_top_eq, and states the Erdős 1948 full-support irrationality as the variant tsum_top with proof sorry. It is statement-level prior art; no theorem compared here is derived from it, and the theorem irrational_erdosBorwein_series elsewhere in this repository proves the statement that tsum_top leaves open."
+status:
+  scope: "One Comparator configuration selecting the 11 theorems listed in PalomarCorpus/E257_40/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 43 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_43, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 11
+  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E257_40/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
+  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: "PalomarCorpus.E257.AchievementSetGeometry.supportedMersenneAchievementSet_geometry_and_volume"
+    file: "Solutions/PalomarCorpus/E257_40/AchievementSetGeometry.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_40/comparator.json"
+  - declaration: "PalomarCorpus.E257.AchievementSetGeometry.volume_supportedMersenneAchievementSet_eq_zero_of_rat_value"
+    file: "Solutions/PalomarCorpus/E257_40/AchievementSetGeometry.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_40/comparator.json"
+  - declaration: "PalomarCorpus.E257.ActualUpperSuccessor.actualUpperRightPacketLinearEscape_iff_successorLinearEscape"
+    file: "Solutions/PalomarCorpus/E257_40/ActualUpperSuccessor.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_40/comparator.json"
+  - declaration: "PalomarCorpus.E257.ActualUpperSuccessor.actualUpperSuccessorLinearEscape_completeCounterexample"
+    file: "Solutions/PalomarCorpus/E257_40/ActualUpperSuccessor.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_40/comparator.json"
+  - declaration: "PalomarCorpus.E257.BooleanMobiusCarry.BooleanMobiusCarryCertificate.reconstructsSupport"
+    file: "Solutions/PalomarCorpus/E257_40/BooleanMobiusCarry.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_40/comparator.json"
+  - declaration: "PalomarCorpus.E257.BooleanMobiusCarry.exists_booleanMobiusCarry_of_support_fraction"
+    file: "Solutions/PalomarCorpus/E257_40/BooleanMobiusCarry.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_40/comparator.json"
+  - declaration: "PalomarCorpus.E257.BooleanMobiusCarry.exists_normalized_support_fraction_iff_exists_booleanMobiusCarry"
+    file: "Solutions/PalomarCorpus/E257_40/BooleanMobiusCarry.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_40/comparator.json"
+  - declaration: "PalomarCorpus.E257.BooleanMobiusCarry.support_fraction_of_booleanMobiusCarry"
+    file: "Solutions/PalomarCorpus/E257_40/BooleanMobiusCarry.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_40/comparator.json"
+  - declaration: "PalomarCorpus.E257.DyadicObservationSummability.dyadic_supportObservationMass_sum_le"
+    file: "Solutions/PalomarCorpus/E257_40/DyadicObservationSummability.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_40/comparator.json"
+  - declaration: "PalomarCorpus.E257.DyadicObservationSummability.summable_dyadic_supportObservationMass"
+    file: "Solutions/PalomarCorpus/E257_40/DyadicObservationSummability.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_40/comparator.json"
+  - declaration: "PalomarCorpus.E257.DyadicObservationSummability.tendsto_dyadic_supportObservationMass_mean"
+    file: "Solutions/PalomarCorpus/E257_40/DyadicObservationSummability.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_40/comparator.json"
+  development_status: substantive
+  local_proof_provenance: "the proof modules Erdos257PeriodNoncollapse, ErdosProblems.Erdos257 in this repository, imported by Solutions.PalomarCorpus.E257_40; the Solutions.ExternalVerification257* family modules are a regression mirror of the same proofs and are not imported by this configuration"
+  canonical_claim_status: "problem-level Comparator entry over substantive Lean in this repository"
+automation:
+  methods:
+  - method: manual
+    models: []
+    framework: Mathematical interpretation and claim-boundary review
+    tool_setup: Human-directed scope and significance review
+  - method: agent
+    models:
+    - Anthropic Claude
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+    cost:
+      wall_time: not tracked
+      spend_usd: subscription-based
+      hardware: local machine
+      prompting_notes: n/a
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    The statements from the hand-written families were checked declaration by declaration against the public problem notes, the reasoning records and the Lean sources in automated review passes run with Anthropic Claude and OpenAI Codex. The author selected the statements and is responsible for the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

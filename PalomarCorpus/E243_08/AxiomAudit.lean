@@ -1,0 +1,16 @@
+import Solutions.PalomarCorpus.E243_08
+
+#print axioms PalomarCorpus.E243.PaperStatementsA.boundedNegativePart_sylvesterNext_eventually
+#print axioms PalomarCorpus.E243.PaperStatementsA.eventuallyBoundedNegativePart_eventually_zero
+#print axioms PalomarCorpus.E243.PaperStatementsA.exists_shiftedBlock_consecutiveMultiples
+#print axioms PalomarCorpus.E243.PaperStatementsA.gcd_stabilises_and_reduces
+#print axioms PalomarCorpus.E243.PaperStatementsA.no_boundedRise_coprimeToEarlierModuli
+#print axioms PalomarCorpus.E243.PaperStatementsA.no_periodicNegative_shapeEquation
+#print axioms PalomarCorpus.E243.PaperStatementsA.persistent_coprimality
+#print axioms PalomarCorpus.E243.PaperStatementsD.exists_sparse_prime_coprime_sequence
+#print axioms PalomarCorpus.E243.PaperStatementsI.maximal_gap_limsup_eq_inv_sigma
+#print axioms PalomarCorpus.E243.PaperStatementsK.forcedOrbit_survives_iff_of_factorial_modEq
+#print axioms PalomarCorpus.E243.PaperStatementsK.forcedSurvives_iff_of_modEq_factorial
+#print axioms PalomarCorpus.E243.PaperStatementsL.canonical_frontier
+#print axioms PalomarCorpus.E243.PaperStatementsL.finite_negative_mass_paper
+#print axioms PalomarCorpus.E243.PaperStatementsO.sparse_gcd_changes

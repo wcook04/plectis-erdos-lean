@@ -1,3 +1,0 @@
-import Solutions.PalomarCorpus.E249bk
-
-#print axioms PalomarCorpus.E249.PaperStatementsBK.tailDifference_not_integral_of_separation

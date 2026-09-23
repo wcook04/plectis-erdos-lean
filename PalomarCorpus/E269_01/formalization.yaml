@@ -1,0 +1,211 @@
+version: v0.4
+project:
+  name: 'Erdős #269, record sections 1 to 2: the problem, and what is settled; the finite geometry of the running value'
+  description: >-
+    This entry states 13 theorems that the long record for Erdős problem #269 states in sections 1 (the problem, and what is settled) and 2 (the finite geometry of the running value): the theorem “two-prime transcendence” (section 1), as two_prime_sums_transcendental, two_prime_transcendence and transcendental_heckeValue; the theorem “the running least common multiple” (section 2), as running_lcm_real_cutoff_exact; the proposition “constancy and jump ratios” (section 2), as realPrefixLcm_eq_of_sameLogCell, realPrefixLcm_jump_first, realPrefixLcm_jump_second, realPrefixLcm_jump_third and threePrimeKernelQ_eq_of_sameRealLogCell; the proposition “jump count” (section 2), as paper_jump_count; the proposition “grouping equal heights” (section 2), as finiteSmoothKernelSum_groupedByHeight; the lemma “uniqueness in a short interval” (section 2), as exponent_unique_real_base_short_interval; the proposition “counting a shell by two coordinates” (section 2), as realSmoothExponentShell_bounds.
+
+    two_prime_sums_transcendental, two_prime_transcendence and transcendental_heckeValue assume the named input BugeaudLaurentTranscendence as a hypothesis: for every irrational θ with 0 < θ < 1 and all nonzero real algebraic numbers β and α with |β| < 1 and |β| |α|^θ < 1, the Hecke-Mahler series F_θ(β, α), the sum over n ≥ 1 and 1 ≤ k ≤ ⌊nθ⌋ of β^n α^k, is transcendental. This is Theorem 1.1 of Bugeaud and Laurent (Acta Arithmetica 209, 2023) in the case ρ = 0, which is due to Loxton and van der Poorten (Bulletin of the Australian Mathematical Society 16, 1977); it is a published theorem that this repository does not formalise.
+
+    12 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement.
+
+    Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
+
+    Erdős problem #269 remains open, and no theorem in this entry decides it.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.NT
+  - math.DS
+  msc2020:
+  - "11J72"
+  - "11B83"
+  - "11A05"
+  - "11A07"
+  - "15A03"
+sources:
+- title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: "The compared theorems are independently restated Lean theorems proved in this repository and described in the public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos."
+  license: Apache-2.0
+  author_endorsement: participated
+- title: "Old and New Problems and Results in Combinatorial Number Theory"
+  authors:
+  - "Paul Erdős"
+  - "Ronald L. Graham"
+  id: "https://mathweb.ucsd.edu/~ronspubs/80_11_number_theory.pdf"
+  type: "book"
+  relationship: "background"
+  note: "Page 65 states the irrationality question for the reciprocal sum of running least common multiples, including the finite prime set case treated here; no theorem of this entry is taken from it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "On the irrationality of certain series: problems and results"
+  authors:
+  - "Paul Erdős"
+  id: "10.1017/CBO9780511897184.009"
+  type: "paper"
+  relationship: "background"
+  note: "Page 106 restates the question among Erdős's irrationality problems; it supplies the problem statement only, and no proof used here."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Letter to the Editor, Fibonacci Quarterly 12 (1974), no. 4, page 335"
+  authors:
+  - "Paul Erdős"
+  id: "https://www.fq.math.ca/Scanned/12-4/letter.pdf"
+  type: "paper"
+  relationship: "background"
+  note: "Poses the full series as a conjecture and asserts irrationality after retaining only the distinct running least common multiple values; that de-duplicated variant is not treated by any compared declaration."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Comment on Erdős Problem #269, erdosproblems.com forum thread 269, 26 June 2026"
+  authors:
+  - "Steve Fan"
+  id: "https://www.erdosproblems.com/forum/thread/269"
+  type: "web discussion"
+  relationship: "background"
+  note: "Gives the running least common multiple factorisation identity for an arbitrary finite prime set, the two-prime factorisation of the repeated sum with its Hecke-Mahler reduction and transcendence conclusion, and the remark that the argument does not appear to extend to three or more primes. The identity smoothPrefixLcm_eq_threePrimeHeight formalises his identity at three primes and is not claimed as new; the compared two-prime theorems state the transcendence conclusion with the Bugeaud-Laurent theorem as a named hypothesis, and no priority over this comment is claimed."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Transcendence and continued fraction expansion of values of Hecke-Mahler series, Acta Arithmetica 209 (2023), 59-90"
+  authors:
+  - "Yann Bugeaud"
+  - "Michel Laurent"
+  id: "10.4064/aa220323-18-1"
+  type: "paper"
+  relationship: "background"
+  note: "Theorem 1.1 supplies the transcendence of the Hecke-Mahler value behind the two-prime comparison; the compared two-prime theorems assume it as the named hypothesis BugeaudLaurentTranscendence and do not formalise it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Arithmetic properties of certain functions in several variables III, Bulletin of the Australian Mathematical Society 16 (1977), 15-47"
+  authors:
+  - "John H. Loxton"
+  - "Alfred J. van der Poorten"
+  type: "paper"
+  relationship: "background"
+  note: "Obtains the zero-shift case of the transcendence theorem used for the two-prime comparison; the compared two-prime theorems assume that case through the named hypothesis BugeaudLaurentTranscendence and do not formalise it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: Erdős Problems catalogue
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com
+  type: web discussion
+  relationship: background
+  note: "Catalogue numbering and status of the parent problem."
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+status:
+  scope: "One Comparator configuration selecting the 13 theorems listed in PalomarCorpus/E269_01/comparator.json, from the Lean development for Erdős problem #269. The problem's theorems are packed, in the order the papers state them, into the 11 entries PalomarCorpus/E269_01 to PalomarCorpus/E269_11, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification269* directories are internal regression inventory and are not selected."
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 13
+  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E269_01/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
+  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: "PalomarCorpus.E269.PaperStatementsA.paper_jump_count"
+    file: "Solutions/PalomarCorpus/E269_01/PaperStatementsA.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E269_01/comparator.json"
+  - declaration: "PalomarCorpus.E269.PaperStatementsB.exponent_unique_real_base_short_interval"
+    file: "Solutions/PalomarCorpus/E269_01/PaperStatementsB.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E269_01/comparator.json"
+  - declaration: "PalomarCorpus.E269.PaperStatementsD.realPrefixLcm_eq_of_sameLogCell"
+    file: "Solutions/PalomarCorpus/E269_01/PaperStatementsD.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E269_01/comparator.json"
+  - declaration: "PalomarCorpus.E269.PaperStatementsD.realPrefixLcm_jump_first"
+    file: "Solutions/PalomarCorpus/E269_01/PaperStatementsD.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E269_01/comparator.json"
+  - declaration: "PalomarCorpus.E269.PaperStatementsD.realPrefixLcm_jump_second"
+    file: "Solutions/PalomarCorpus/E269_01/PaperStatementsD.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E269_01/comparator.json"
+  - declaration: "PalomarCorpus.E269.PaperStatementsD.realPrefixLcm_jump_third"
+    file: "Solutions/PalomarCorpus/E269_01/PaperStatementsD.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E269_01/comparator.json"
+  - declaration: "PalomarCorpus.E269.PaperStatementsD.realSmoothExponentShell_bounds"
+    file: "Solutions/PalomarCorpus/E269_01/PaperStatementsD.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E269_01/comparator.json"
+  - declaration: "PalomarCorpus.E269.PaperStatementsD.running_lcm_real_cutoff_exact"
+    file: "Solutions/PalomarCorpus/E269_01/PaperStatementsD.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E269_01/comparator.json"
+  - declaration: "PalomarCorpus.E269.PaperStatementsD.threePrimeKernelQ_eq_of_sameRealLogCell"
+    file: "Solutions/PalomarCorpus/E269_01/PaperStatementsD.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E269_01/comparator.json"
+  - declaration: "PalomarCorpus.E269.PaperStatementsX.two_prime_sums_transcendental"
+    file: "Solutions/PalomarCorpus/E269_01/PaperStatementsX.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E269_01/comparator.json"
+    literature_dependencies:
+    - statement: "BugeaudLaurentTranscendence: for every irrational θ with 0 < θ < 1 and all nonzero real algebraic numbers β and α with |β| < 1 and |β| |α|^θ < 1, the Hecke-Mahler series F_θ(β, α), the sum over n ≥ 1 and 1 ≤ k ≤ ⌊nθ⌋ of β^n α^k, is transcendental"
+      source: "Transcendence and continued fraction expansion of values of Hecke-Mahler series"
+  - declaration: "PalomarCorpus.E269.PaperStatementsX.two_prime_transcendence"
+    file: "Solutions/PalomarCorpus/E269_01/PaperStatementsX.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E269_01/comparator.json"
+    literature_dependencies:
+    - statement: "BugeaudLaurentTranscendence: for every irrational θ with 0 < θ < 1 and all nonzero real algebraic numbers β and α with |β| < 1 and |β| |α|^θ < 1, the Hecke-Mahler series F_θ(β, α), the sum over n ≥ 1 and 1 ≤ k ≤ ⌊nθ⌋ of β^n α^k, is transcendental"
+      source: "Transcendence and continued fraction expansion of values of Hecke-Mahler series"
+  - declaration: "PalomarCorpus.E269.PaperStatementsY.transcendental_heckeValue"
+    file: "Solutions/PalomarCorpus/E269_01/PaperStatementsY.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E269_01/comparator.json"
+    literature_dependencies:
+    - statement: "BugeaudLaurentTranscendence: for every irrational θ with 0 < θ < 1 and all nonzero real algebraic numbers β and α with |β| < 1 and |β| |α|^θ < 1, the Hecke-Mahler series F_θ(β, α), the sum over n ≥ 1 and 1 ≤ k ≤ ⌊nθ⌋ of β^n α^k, is transcendental"
+      source: "Transcendence and continued fraction expansion of values of Hecke-Mahler series"
+  - declaration: "PalomarCorpus.E269.ThreePrimeStructure.finiteSmoothKernelSum_groupedByHeight"
+    file: "Solutions/PalomarCorpus/E269_01/ThreePrimeStructure.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E269_01/comparator.json"
+  development_status: substantive
+  local_proof_provenance: "the proof modules ErdosProblems.Erdos269 in this repository, imported by Solutions.PalomarCorpus.E269_01; the Solutions.ExternalVerification269* family modules are a regression mirror of the same proofs and are not imported by this configuration"
+  canonical_claim_status: "problem-level Comparator entry over substantive Lean in this repository"
+automation:
+  methods:
+  - method: manual
+    models: []
+    framework: Mathematical interpretation and claim-boundary review
+    tool_setup: Human-directed scope and significance review
+  - method: agent
+    models:
+    - Anthropic Claude
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+    cost:
+      wall_time: not tracked
+      spend_usd: subscription-based
+      hardware: local machine
+      prompting_notes: n/a
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    The statements from the hand-written families were checked declaration by declaration against the public problem notes, the reasoning records and the Lean sources in automated review passes run with Anthropic Claude and OpenAI Codex. Every generated restatement was bound to a paper statement and refereed in the eight-paper coverage ledger before its wrapper was generated, and its transport proof was elaborated before the statement was accepted. The author selected the statements and is responsible for the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

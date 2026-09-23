@@ -1,0 +1,4 @@
+import Solutions.PalomarCorpus.E68_10
+
+#print axioms PalomarCorpus.E68.StrictSuccessorCarry.companionOrbit_completeCharacterization
+#print axioms PalomarCorpus.E68.StrictSuccessorCarry.strictSuccessorCarry_completeCharacterization

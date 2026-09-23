@@ -1,0 +1,27 @@
+{
+  "challenge_module": "PalomarCorpus.E257_17.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257_17",
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStatementsAH.halfTwoChannelCap_lt_mersenneTail",
+    "PalomarCorpus.E257.PaperStatementsAH.mersenneTail_eq_weight_add",
+    "PalomarCorpus.E257.PaperStatementsAH.mersenneTail_le_two_mul_weight",
+    "PalomarCorpus.E257.PaperStatementsAH.mersenneTail_lt_weight",
+    "PalomarCorpus.E257.PaperStatementsAH.two_mul_mersenneWeight_succ_lt",
+    "PalomarCorpus.E257.PaperStatementsAM.depth_prefix_interval_disjoint",
+    "PalomarCorpus.E257.PaperStatementsAM.fatal_gap_endpoint_bounds",
+    "PalomarCorpus.E257.PaperStatementsAM.fatal_gap_excludes_every_representation",
+    "PalomarCorpus.E257.PaperStatementsAM.fatal_gap_within_prefix_interval",
+    "PalomarCorpus.E257.PaperStatementsAM.half_ne_coe_finset_add_mersenneTail",
+    "PalomarCorpus.E257.PaperStatementsAM.positiveMersenneSupportValue_coe_finset_ne_half",
+    "PalomarCorpus.E257.PaperStatementsD.half_mem_iff_every_actual_skip_survives",
+    "PalomarCorpus.E257.PaperStructuresBJ.prefix_add_mersenneTail_lt_half_of_eventually_right",
+    "PalomarCorpus.E257.PaperStructuresU.IsStraddlePrefix.half_step_forced",
+    "PalomarCorpus.E257.PaperStructuresU.isStraddlePrefix_step_trichotomy"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,4 +1,0 @@
-import Solutions.PalomarCorpus.E257at
-
-#print axioms PalomarCorpus.E257.PaperStatementsAT.binaryCoeffTail_supportCoeff_coe_finset_le_card
-#print axioms PalomarCorpus.E257.PaperStatementsAT.paper_terminal_strip_witness_six

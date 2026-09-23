@@ -1,4 +1,0 @@
-import Solutions.PalomarCorpus.E257ao
-
-#print axioms PalomarCorpus.E257.PaperStatementsAO.mixedPrimePowerLayerTwo_supportCoeffInt
-#print axioms PalomarCorpus.E257.PaperStatementsAO.mixedPrimePowerLayerTwo_twelve_fixture

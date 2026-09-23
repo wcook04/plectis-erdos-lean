@@ -1,0 +1,8 @@
+import Solutions.PalomarCorpus.E269_04
+
+#print axioms PalomarCorpus.E269.ExactDenominator.exact_denominators_and_threshold_clearing
+#print axioms PalomarCorpus.E269.PaperStatementsA.clearingCondition_iff_max
+#print axioms PalomarCorpus.E269.PaperStatementsF.firstClearingIndex_le_sufficient
+#print axioms PalomarCorpus.E269.PaperStatementsF.firstClearingIndex_minimal
+#print axioms PalomarCorpus.E269.PaperStatementsF.firstClearingIndex_spec
+#print axioms PalomarCorpus.E269.PaperStatementsF.scaled_state_is_integer_iff_firstClearingIndex_le

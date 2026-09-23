@@ -1,5 +1,0 @@
-import Solutions.PalomarCorpus.E243k
-
-#print axioms PalomarCorpus.E243.PaperStatementsK.epoch_energy_named_crossing_set
-#print axioms PalomarCorpus.E243.PaperStatementsK.forcedOrbit_survives_iff_of_factorial_modEq
-#print axioms PalomarCorpus.E243.PaperStatementsK.forcedSurvives_iff_of_modEq_factorial

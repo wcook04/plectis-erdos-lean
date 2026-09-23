@@ -1,9 +1,0 @@
-import Solutions.PalomarCorpus.E257ak
-
-#print axioms PalomarCorpus.E257.PaperStatementsAK.paper_floor_quotient_geometric_sum
-#print axioms PalomarCorpus.E257.PaperStatementsAK.paper_next_floor_quotient
-#print axioms PalomarCorpus.E257.PaperStatementsAK.paper_next_floor_quotient_no_fixed_point
-#print axioms PalomarCorpus.E257.PaperStatementsAK.paper_next_quotient_sum
-#print axioms PalomarCorpus.E257.PaperStatementsAK.paper_repair_integer_eq_endpoint_defect
-#print axioms PalomarCorpus.E257.PaperStatementsAK.paper_signed_endpoint_defect_succ
-#print axioms PalomarCorpus.E257.PaperStatementsAK.paper_signed_endpoint_recurrence

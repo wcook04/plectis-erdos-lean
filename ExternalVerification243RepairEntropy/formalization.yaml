@@ -16,9 +16,9 @@ project:
 
 palomar_qualification:
   status: "candidate_pending_mechanical_gates"
-  selected_project: "formal_math/erdos257_period_noncollapse"
-  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification243RepairEntropy/comparator.json"
-  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification243RepairEntropy/formalization.yaml"
+  selected_project: "."
+  comparator_config: "ExternalVerification243RepairEntropy/comparator.json"
+  formalization_metadata: "ExternalVerification243RepairEntropy/formalization.yaml"
   repository_scope: "public_source_commit_c55323931665f57dcf4600a674696e2ee10042bc"
   challenge_dependency_boundary: "Mathlib_only"
   replay_status: "positive_and_deliberate_negative_pair_pending_supported_runner"

@@ -1,0 +1,167 @@
+version: v0.4
+project:
+  name: 'Erdős #1049, the rational base barrier and rational base region families'
+  description: >-
+    This entry states 5 theorems of the rational base barrier and rational base region developments of the Lean formalisation of Erdős problem #1049, to which no paper statement is bound. twoPow_le_rationalBaseForcingNat: For a genuine rational base, meaning denominator s >= 2, together with B >= 1 and coeff(N+1) >= 1, the forcing term is at least 2^(N+1). rational_base_region: For natural a>b>0 in the exact contour region, the literal Lambert value F(a/b) is irrational. thirtyone_four: The Lambert value F(31/4) is irrational. rational_base_measure: On the strict contour region for natural a>b>0, bounds the irrationality exponent of F(a/b) by the displayed exact rational-base expression. thirtyone_four_power_measure_lt_paper_fraction: For every positive natural r, the irrationality exponent of F((31/4)^r) is strictly less than the paper fraction 2981509/9909.
+
+    Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
+
+    Erdős problem #1049 remains open, and no theorem in this entry decides it.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.NT
+  - math.CA
+  msc2020:
+  - "11J72"
+  - "11J82"
+  - "11J13"
+  - "11J17"
+  - "33D15"
+  - "41A21"
+sources:
+- title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
+  authors:
+  - Will Cook
+  id: https://github.com/wcook04/plectis-erdos
+  type: other
+  relationship: background
+  note: "The public problem notes and reasoning records that describe the compared theorems and their relationship to the literature. A compared theorem re-proves, formalises or adapts a result of the source marked with a substantive relationship below; the remaining compared theorems are proved in this repository, and no priority is claimed for them beyond the checked proofs."
+  license: Apache-2.0
+  author_endorsement: participated
+- title: "On the irrationality of certain series: problems and results"
+  authors:
+  - "Paul Erdős"
+  id: "doi:10.1017/CBO9780511897184.009"
+  type: "paper"
+  relationship: "background"
+  note: "Poses the irrationality question for the Lambert value at rational bases (pages 102 to 109); no theorem in this entry is taken from it and none answers the question it poses."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Arithmetical investigations of a certain infinite product"
+  authors:
+  - "Peter Bundschuh"
+  - "Keijo Väänänen"
+  id: "https://numdam.org/item/CM_1994__91_2_175_0.pdf"
+  type: "paper"
+  relationship: "background"
+  note: "Compositio Math. 91 (1994), 175-199; Theorem 2 in the alpha = -1 case supplies the published height cutoff 1/2 - 1/pi^2 for rational bases. Only that elementary parameter inequality is written down here; their analytic irrationality theorem is not internalised or used."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Heine's basic transform and a permutation group for q-harmonic series"
+  authors:
+  - "Wadim Zudilin"
+  id: "doi:10.4064/aa111-2-4"
+  type: "paper"
+  relationship: "adapts"
+  note: "Acta Arith. 111 (2004), 153-164; the rational-base construction and its parameter constants follow the Heine-transform and permutation-group architecture of this paper. The repository constructs the polynomial source, nonzero remainder and rates within Lean for the strict rational-base contour; no cited analytic conclusion is imported as an axiom. This attribution does not claim novelty of the underlying construction."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "On the irrationality of generalized q-logarithm"
+  authors:
+  - "Wadim Zudilin"
+  id: "arXiv:1601.02688"
+  type: "paper"
+  relationship: "background"
+  note: "Res. Number Theory 2 (2016), Art. 15; Section 4 (pages 6 and 7) proves the order inequality for the normalised Hankel determinant, and a remark in Section 2 (page 4) announces a rational-base extension with an unspecified computable constant. The normalised moments and the Hankel determinant restated here are Zudilin's construction; the compared statements give the order and coefficient of the first transformed row and the order and leading coefficient of the determinant at every rank, and no result of the paper is assumed."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Little q-Legendre polynomials and irrationality of certain Lambert series"
+  authors:
+  - "Walter Van Assche"
+  id: "doi:10.1023/A:1012930828917"
+  type: "paper"
+  relationship: "background"
+  note: "Ramanujan J. 5 (2001), 295-310; recovers the integer-base irrationality exponent 2 pi^2/(pi^2 - 2) by little q-Legendre Pade approximants and supplies the scalar outward-evaluation architecture that the wider project measures. Nothing from it is assumed or formalised, and no declaration in this entry refers to its approximants."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "À propos de la série sum x^n/(q^n - 1)"
+  authors:
+  - "Daniel Duverney"
+  id: "https://numdam.org/item/JTNB_1996__8_1_173_0.pdf"
+  type: "paper"
+  relationship: "background"
+  note: "J. Théor. Nombres Bordeaux 8 (1996), 173-181; Theorem 2 gives a rational-base irrationality region for this same series, showing that rational bases were already in the literature. No statement here is taken from it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: Erdős Problems catalogue
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com
+  type: web discussion
+  relationship: background
+  note: "Catalogue numbering and status of the parent problem."
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+status:
+  scope: "One Comparator configuration selecting the 5 theorems listed in PalomarCorpus/E1049_08/comparator.json, from the Lean development for Erdős problem #1049. The problem's theorems are packed, in the order the papers state them, into the 8 entries PalomarCorpus/E1049_01 to PalomarCorpus/E1049_08, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification1049* directories are internal regression inventory and are not selected."
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 5
+  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E1049_08/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
+  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: "PalomarCorpus.E1049.RationalBaseBarrier.twoPow_le_rationalBaseForcingNat"
+    file: "Solutions/PalomarCorpus/E1049_08/RationalBaseBarrier.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1049_08/comparator.json"
+  - declaration: "PalomarCorpus.E1049.RationalBaseRegion.rational_base_measure"
+    file: "Solutions/PalomarCorpus/E1049_08/RationalBaseRegion.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1049_08/comparator.json"
+  - declaration: "PalomarCorpus.E1049.RationalBaseRegion.rational_base_region"
+    file: "Solutions/PalomarCorpus/E1049_08/RationalBaseRegion.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1049_08/comparator.json"
+  - declaration: "PalomarCorpus.E1049.RationalBaseRegion.thirtyone_four"
+    file: "Solutions/PalomarCorpus/E1049_08/RationalBaseRegion.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1049_08/comparator.json"
+  - declaration: "PalomarCorpus.E1049.RationalBaseRegion.thirtyone_four_power_measure_lt_paper_fraction"
+    file: "Solutions/PalomarCorpus/E1049_08/RationalBaseRegion.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1049_08/comparator.json"
+  development_status: substantive
+  local_proof_provenance: "the proof modules ErdosProblems.Erdos1049 in this repository, imported by Solutions.PalomarCorpus.E1049_08; the Solutions.ExternalVerification1049* family modules are a regression mirror of the same proofs and are not imported by this configuration"
+  canonical_claim_status: "problem-level Comparator entry over substantive Lean in this repository"
+automation:
+  methods:
+  - method: manual
+    models: []
+    framework: Mathematical interpretation and claim-boundary review
+    tool_setup: Human-directed scope and significance review
+  - method: agent
+    models:
+    - Anthropic Claude
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+    cost:
+      wall_time: not tracked
+      spend_usd: subscription-based
+      hardware: local machine
+      prompting_notes: n/a
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    The statements from the hand-written families were checked declaration by declaration against the public problem notes, the reasoning records and the Lean sources in automated review passes run with Anthropic Claude and OpenAI Codex. The author selected the statements and is responsible for the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

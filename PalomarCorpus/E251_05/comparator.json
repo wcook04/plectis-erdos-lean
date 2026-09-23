@@ -1,0 +1,22 @@
+{
+  "challenge_module": "PalomarCorpus.E251_05.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E251_05",
+  "theorem_names": [
+    "PalomarCorpus.E251.PaperStatementsD.signed_two_window_consequences",
+    "PalomarCorpus.E251.PaperStatementsD.signed_two_window_iff",
+    "PalomarCorpus.E251.PaperStatementsG.irrational_realPrimeGapTail_zero_iff",
+    "PalomarCorpus.E251.PaperStatementsG.irrational_tsum_primeDyadicTerm_iff_primeGap",
+    "PalomarCorpus.E251.PaperStatementsG.realPrimeGapTail_eq_tsum_shifted_gaps",
+    "PalomarCorpus.E251.PaperStatementsG.realPrimeGapTail_recurrence",
+    "PalomarCorpus.E251.PaperStatementsG.realPrimeGapTail_zero",
+    "PalomarCorpus.E251.PaperStatementsJ.real_orbit_exact_den_and_shift",
+    "PalomarCorpus.E251.PaperStatementsQ.irrational_prime_series_of_finite_truncation",
+    "PalomarCorpus.E251.PaperStatementsZ.short_joint_prime_gap_countermodel"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

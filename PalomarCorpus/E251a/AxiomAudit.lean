@@ -1,4 +1,0 @@
-import Solutions.PalomarCorpus.E251a
-
-#print axioms PalomarCorpus.E251.PaperStatementsA.bounded_test_finite_coupling
-#print axioms PalomarCorpus.E251.PaperStatementsA.exists_logarithmic_recurring_values_countermodel

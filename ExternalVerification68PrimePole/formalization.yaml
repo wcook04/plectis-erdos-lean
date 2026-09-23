@@ -12,9 +12,9 @@ project:
 
 palomar_qualification:
   status: "supporting_entry_pending_mechanical_gates"
-  selected_project: "formal_math/erdos257_period_noncollapse"
-  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification68PrimePole/comparator.json"
-  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification68PrimePole/formalization.yaml"
+  selected_project: "."
+  comparator_config: "ExternalVerification68PrimePole/comparator.json"
+  formalization_metadata: "ExternalVerification68PrimePole/formalization.yaml"
   repository_scope: "public_source_and_authoritative_paper_present_exact_identity_to_pin"
   challenge_dependency_boundary: "Mathlib_only"
   replay_status: "terminal_positive_and_deliberate_negative_pending"

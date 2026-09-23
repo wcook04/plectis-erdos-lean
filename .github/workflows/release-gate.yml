@@ -47,7 +47,7 @@ jobs:
               print(f"=== lake build {target} ===", flush=True)
               subprocess.run(["lake", "build", target], check=True)
           PY
-      - name: Audit the eight publication Solution environments
+      - name: Audit every publication entry's Solution environment
         run: |
           mkdir -p artifacts
           python3 scripts/check_axiom_budget.py --run-palomar --json > artifacts/palomar-axiom-audit.json

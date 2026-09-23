@@ -14,18 +14,34 @@ import check_axiom_budget as axioms
 
 
 class ReleaseToolsTests(unittest.TestCase):
-    def test_publication_inventory_requires_all_eight_and_no_ninth(self):
+    def test_publication_inventory_is_every_paper_order_entry_and_refuses_a_stray(self):
         with tempfile.TemporaryDirectory() as tmp, patch.object(axioms, "REPO_ROOT", Path(tmp)):
             root = Path(tmp)
             for number in axioms.PALOMAR_PROBLEMS:
-                entry = root / f"PalomarCorpus/E{number}"
-                entry.mkdir(parents=True)
-                (entry / "comparator.json").write_text("{}")
-            self.assertEqual(len(axioms.entries(palomar=True)), 8)
-            extra = root / "PalomarCorpus/E70"
+                for index in (1, 2):
+                    entry = root / f"PalomarCorpus/E{number}_{index:02d}"
+                    entry.mkdir(parents=True)
+                    (entry / "comparator.json").write_text("{}")
+            found = axioms.entries(palomar=True)
+            self.assertEqual(len(found), 16)
+            self.assertEqual(found[:3], ["PalomarCorpus/E68_01", "PalomarCorpus/E68_02", "PalomarCorpus/E243_01"])
+            extra = root / "PalomarCorpus/E70_01"
             extra.mkdir()
             (extra / "comparator.json").write_text("{}")
-            with self.assertRaisesRegex(ValueError, "exactly the eight"):
+            with self.assertRaisesRegex(ValueError, "unrecognised"):
+                axioms.entries(palomar=True)
+
+    def test_publication_inventory_still_reads_a_problem_and_band_tree(self):
+        with tempfile.TemporaryDirectory() as tmp, patch.object(axioms, "REPO_ROOT", Path(tmp)):
+            root = Path(tmp)
+            for name in [f"E{number}" for number in axioms.PALOMAR_PROBLEMS] + ["E257a"]:
+                entry = root / f"PalomarCorpus/{name}"
+                entry.mkdir(parents=True)
+                (entry / "comparator.json").write_text("{}")
+            # Bands were never audited while the inventory demanded exactly the eight.
+            self.assertIn("PalomarCorpus/E257a", axioms.entries(palomar=True))
+            (root / "PalomarCorpus/comparator.json").write_text("{}")
+            with self.assertRaisesRegex(ValueError, "flat"):
                 axioms.entries(palomar=True)
 
     def test_publication_audit_rejects_candidate_local_challenge_import(self):

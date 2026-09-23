@@ -1,4 +1,0 @@
-import Solutions.PalomarCorpus.E243i
-
-#print axioms PalomarCorpus.E243.PaperStatementsI.canonical_negativeError_limsup_gt_one
-#print axioms PalomarCorpus.E243.PaperStatementsI.maximal_gap_limsup_eq_inv_sigma

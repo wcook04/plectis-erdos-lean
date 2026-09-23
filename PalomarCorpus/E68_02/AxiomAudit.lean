@@ -1,0 +1,11 @@
+import Solutions.PalomarCorpus.E68_02
+
+#print axioms PalomarCorpus.E68.MomentIdeal.exact_moment_ideal_with_primitive_attainment
+#print axioms PalomarCorpus.E68.MomentIdeal.minimumMoment_independent_prime
+#print axioms PalomarCorpus.E68.PaperStatementsA.global_complementary_criterion_prime
+#print axioms PalomarCorpus.E68.PaperStatementsC.supported_breakpoint_escape
+#print axioms PalomarCorpus.E68.PaperStatementsC.supported_first_band_cancellation
+#print axioms PalomarCorpus.E68.PaperStatementsC.supported_integral_normal_form
+#print axioms PalomarCorpus.E68.PaperStatementsC.supported_quotient_band
+#print axioms PalomarCorpus.E68.PaperStatementsC.uniform_family_boundary
+#print axioms PalomarCorpus.E68.PaperStatementsC.uniform_family_members

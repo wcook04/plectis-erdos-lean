@@ -1,0 +1,140 @@
+version: v0.4
+project:
+  name: 'Erdős #1041, note sections 1 to 7: monic trinomials, in every degree; critical proximity and straight-path obstructions; solved polynomial families'
+  description: >-
+    This entry states 11 theorems that only the short note for Erdős problem #1041 states, in sections 1 (monic trinomials, in every degree), 4 (critical proximity and straight-path obstructions), 5 (solved polynomial families), 6 (critical-value separation in every degree) and 7 (three limits of the sufficient conditions): the proposition “failure of a prescribed radial segment” (section 1), as sextic_spoke_counterexample_whole; the theorem “a geometric-mean bound for distances to a critical point” (section 4), as exists_two_roots_dist_sum_le_two_mul_geomMean; the corollary “two nearest roots” (section 4), as exists_two_nearest_roots_of_polynomial_critical and two_nearest_roots_of_polynomial_critical; the proposition “two counterexamples to straight-path assertions” (section 4), as complete_straight_path_obstructions; the theorem “quintics with two missing coefficients” (section 5.2), as complete_primitive_quintic; the corollary “a sufficient condition for a length-2 path” (section 6), as separation_parent; the proposition “failure of two critical-value criteria to cover all polynomials” (section 7), as complete_sep_or_counterexample; the proposition “a counterexample to the proposed one-root perimeter bound” (section 7), as lobe_perimeter_gt, one_root_gamma_false and one_root_gamma_false_unconditional.
+
+    separation_parent assumes the named input CriticalValueSeparationTheorem as a hypothesis: for a monic complex polynomial f of degree n ≥ 3, a simple critical point c with v = f(c) ≠ 0, a centre w₀ in [0, 1] and S > max(w₀, 1 - w₀) such that every other critical point d satisfies |f(d)/v - w₀| ≥ S, two distinct roots of f are joined inside {|f| ≤ |v|} by a path whose squared length is at most 2|v|^(2/n) (S/(n - 1))^(2/n) log((S² + S + w₀(1 - w₀))/(S² - S + w₀(1 - w₀))). This is the paper's own critical-value separation theorem; this repository does not formalise it.
+
+    10 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 1 is derived from the source declaration by a short tactic proof, which certifies implication.
+
+    Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
+
+    A degree-seven counterexample due to ani, formalised in this corpus, refutes the total-variation formulation of Erdős problem #1041; the theorems in this entry keep their stated hypotheses.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.CV
+  - math.CA
+  msc2020:
+  - "30C10"
+  - "30C15"
+  - "31A15"
+  - "26C10"
+sources:
+- title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: "The compared theorems are independently restated Lean theorems proved in this repository and described in the public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos."
+  license: Apache-2.0
+  author_endorsement: participated
+- title: Erdős Problems catalogue
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com
+  type: web discussion
+  relationship: background
+  note: "Catalogue numbering and status of the parent problem."
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+status:
+  scope: "One Comparator configuration selecting the 11 theorems listed in PalomarCorpus/E1041_05/comparator.json, from the Lean development for Erdős problem #1041. The problem's theorems are packed, in the order the papers state them, into the 8 entries PalomarCorpus/E1041_01 to PalomarCorpus/E1041_08, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification1041* directories are internal regression inventory and are not selected."
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 11
+  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E1041_05/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
+  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: "PalomarCorpus.E1041.PaperStatementsB.exists_two_nearest_roots_of_polynomial_critical"
+    file: "Solutions/PalomarCorpus/E1041_05/PaperStatementsB.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_05/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsB.two_nearest_roots_of_polynomial_critical"
+    file: "Solutions/PalomarCorpus/E1041_05/PaperStatementsB.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_05/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsG.complete_straight_path_obstructions"
+    file: "Solutions/PalomarCorpus/E1041_05/PaperStatementsG.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_05/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsK.exists_two_roots_dist_sum_le_two_mul_geomMean"
+    file: "Solutions/PalomarCorpus/E1041_05/PaperStatementsK.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_05/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsQ.complete_sep_or_counterexample"
+    file: "Solutions/PalomarCorpus/E1041_05/PaperStatementsQ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_05/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsR.sextic_spoke_counterexample_whole"
+    file: "Solutions/PalomarCorpus/E1041_05/PaperStatementsR.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_05/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsU.complete_primitive_quintic"
+    file: "Solutions/PalomarCorpus/E1041_05/PaperStatementsU.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_05/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsX.lobe_perimeter_gt"
+    file: "Solutions/PalomarCorpus/E1041_05/PaperStatementsX.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_05/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsX.one_root_gamma_false"
+    file: "Solutions/PalomarCorpus/E1041_05/PaperStatementsX.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_05/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsZA.separation_parent"
+    file: "Solutions/PalomarCorpus/E1041_05/PaperStatementsZA.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_05/comparator.json"
+    literature_dependencies:
+    - statement: "CriticalValueSeparationTheorem: for a monic complex polynomial f of degree n ≥ 3, a simple critical point c with v = f(c) ≠ 0, a centre w₀ in [0, 1] and S > max(w₀, 1 - w₀) such that every other critical point d satisfies |f(d)/v - w₀| ≥ S, two distinct roots of f are joined inside {|f| ≤ |v|} by a path whose squared length is at most 2|v|^(2/n) (S/(n - 1))^(2/n) log((S² + S + w₀(1 - w₀))/(S² - S + w₀(1 - w₀)))"
+      source: "Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems"
+  - declaration: "PalomarCorpus.E1041.PaperStructuresAD.one_root_gamma_false_unconditional"
+    file: "Solutions/PalomarCorpus/E1041_05/PaperStructuresAD.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_05/comparator.json"
+  development_status: substantive
+  local_proof_provenance: "the proof modules ErdosProblems.Erdos1041 in this repository, imported by Solutions.PalomarCorpus.E1041_05; the Solutions.ExternalVerification1041* family modules are a regression mirror of the same proofs and are not imported by this configuration"
+  canonical_claim_status: "problem-level Comparator entry over substantive Lean in this repository"
+automation:
+  methods:
+  - method: manual
+    models: []
+    framework: Mathematical interpretation and claim-boundary review
+    tool_setup: Human-directed scope and significance review
+  - method: agent
+    models:
+    - Anthropic Claude
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+    cost:
+      wall_time: not tracked
+      spend_usd: subscription-based
+      hardware: local machine
+      prompting_notes: n/a
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    Every generated restatement was bound to a paper statement and refereed in the eight-paper coverage ledger before its wrapper was generated, and its transport proof was elaborated before the statement was accepted. The author selected the statements and is responsible for the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

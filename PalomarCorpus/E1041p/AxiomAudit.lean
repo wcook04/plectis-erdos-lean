@@ -1,3 +1,0 @@
-import Solutions.PalomarCorpus.E1041p
-
-#print axioms PalomarCorpus.E1041.PaperStatementsP.critical_value_three_budgets_sharp

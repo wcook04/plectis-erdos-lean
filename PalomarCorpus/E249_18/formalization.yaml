@@ -1,0 +1,203 @@
+version: v0.4
+project:
+  name: 'Erdős #249, record sections 6.6.5 to 6.6.9: a numerator polynomial with explicit positive coefficients; exact dyadic comparisons and tail bounds; squared distances between complex phases'
+  description: >-
+    This entry states 28 theorems that the long record for Erdős problem #249 states in sections 6.6.5 (a numerator polynomial with explicit positive coefficients), 6.6.6 (exact dyadic comparisons and tail bounds), 6.6.7 (squared distances between complex phases), 6.6.8 (approximating the nondivisor terms) and 6.6.9 (coprime-pair sums): the corollary labelled statement:sha256:1aba8ef26e7606ffeb744eeb5281561279d804bd6a828bd921e42781105432b2 (section 6.6.5), as paperNumerator_eval_two and paperNumerator_eval_two_primeSubsetForm; the proposition “The geometric remainder bound” (section 6.6.6), as four_thirds_tsum_eighth_pow_tail, mersenneRemainderTail_le, mersenneRemainder_identity_and_bound, one_sub_half_pow_ge and tsum_eighth_pow_tail; the proposition “Squared distance from the phase one” (section 6.6.7), as sum_sq_dist_from_phase_one; the lemma “Squared-distance bound for separated pairs” (section 6.6.7), as card_mul_sq_le_pairwise_energy; the proposition “The finite divisor sum” (section 6.6.8), as scaleExplicitShadow_eq_divisorChannels, divisorChannels_sum_eq, residueKernel_increment_of_dvd and residueOffset_of_dvd; the proposition “Separation larger than the error implies exclusion” (section 6.6.8), as foreignComplementBound_paper, projectedForeignDefect_paper and tailDifference_not_integral_of_separation; the theorem “Coprime-pair counting and the totient” (section 6.6.9), as boundary_pair_at_one and card_coprime_antidiagonal; the proposition “Two lattice sums” (section 6.6.9), as coprimeLattice_gcd_layer_total, coprimeLattice_gcd_layer_total_eq_one_iff, coprimeLattice_halfOpen_sum, coprimeLattice_positive_sum, coprimeLattice_removed_pair and tsum_totient_pow_shift; the theorem “The classical coprime-pair Lambert identity” (section 6.6.9), as coprimeLattice_halfOpen_half_eq_series, coprimeLattice_lambert_half_eq_one, coprimeLattice_lambert_identity and coprimeLattice_lambert_rational.
+
+    27 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 1 is derived from the source declaration by a short tactic proof, which certifies implication.
+
+    Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
+
+    Erdős problem #249 remains open, and no theorem in this entry decides it.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - "11J72"
+  - "11A25"
+  - "11B83"
+  - "11J82"
+  - "11Y60"
+sources:
+- title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: "The compared theorems are independently restated Lean theorems proved in this repository and described in the public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos."
+  license: Apache-2.0
+  author_endorsement: participated
+- title: Erdős Problems catalogue
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com
+  type: web discussion
+  relationship: background
+  note: "Catalogue numbering and status of the parent problem."
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+status:
+  scope: "One Comparator configuration selecting the 28 theorems listed in PalomarCorpus/E249_18/comparator.json, from the Lean development for Erdős problem #249. The problem's theorems are packed, in the order the papers state them, into the 33 entries PalomarCorpus/E249_01 to PalomarCorpus/E249_33, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification249* directories are internal regression inventory and are not selected."
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 28
+  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E249_18/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
+  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.boundary_pair_at_one"
+    file: "Solutions/PalomarCorpus/E249_18/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_18/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.card_coprime_antidiagonal"
+    file: "Solutions/PalomarCorpus/E249_18/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_18/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.card_mul_sq_le_pairwise_energy"
+    file: "Solutions/PalomarCorpus/E249_18/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_18/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.scaleExplicitShadow_eq_divisorChannels"
+    file: "Solutions/PalomarCorpus/E249_18/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_18/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.coprimeLattice_gcd_layer_total"
+    file: "Solutions/PalomarCorpus/E249_18/PaperStatementsAJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_18/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.coprimeLattice_gcd_layer_total_eq_one_iff"
+    file: "Solutions/PalomarCorpus/E249_18/PaperStatementsAJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_18/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.coprimeLattice_halfOpen_half_eq_series"
+    file: "Solutions/PalomarCorpus/E249_18/PaperStatementsAJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_18/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.coprimeLattice_halfOpen_sum"
+    file: "Solutions/PalomarCorpus/E249_18/PaperStatementsAJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_18/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.coprimeLattice_lambert_half_eq_one"
+    file: "Solutions/PalomarCorpus/E249_18/PaperStatementsAJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_18/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.coprimeLattice_lambert_identity"
+    file: "Solutions/PalomarCorpus/E249_18/PaperStatementsAJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_18/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.coprimeLattice_lambert_rational"
+    file: "Solutions/PalomarCorpus/E249_18/PaperStatementsAJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_18/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.coprimeLattice_positive_sum"
+    file: "Solutions/PalomarCorpus/E249_18/PaperStatementsAJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_18/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.coprimeLattice_removed_pair"
+    file: "Solutions/PalomarCorpus/E249_18/PaperStatementsAJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_18/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAK.tsum_totient_pow_shift"
+    file: "Solutions/PalomarCorpus/E249_18/PaperStatementsAK.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_18/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAO.four_thirds_tsum_eighth_pow_tail"
+    file: "Solutions/PalomarCorpus/E249_18/PaperStatementsAO.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_18/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAO.mersenneRemainderTail_le"
+    file: "Solutions/PalomarCorpus/E249_18/PaperStatementsAO.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_18/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAO.mersenneRemainder_identity_and_bound"
+    file: "Solutions/PalomarCorpus/E249_18/PaperStatementsAO.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_18/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAO.one_sub_half_pow_ge"
+    file: "Solutions/PalomarCorpus/E249_18/PaperStatementsAO.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_18/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAO.paperNumerator_eval_two"
+    file: "Solutions/PalomarCorpus/E249_18/PaperStatementsAO.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_18/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAO.paperNumerator_eval_two_primeSubsetForm"
+    file: "Solutions/PalomarCorpus/E249_18/PaperStatementsAO.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_18/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAO.tsum_eighth_pow_tail"
+    file: "Solutions/PalomarCorpus/E249_18/PaperStatementsAO.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_18/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAX.sum_sq_dist_from_phase_one"
+    file: "Solutions/PalomarCorpus/E249_18/PaperStatementsAX.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_18/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsBE.divisorChannels_sum_eq"
+    file: "Solutions/PalomarCorpus/E249_18/PaperStatementsBE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_18/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsBE.foreignComplementBound_paper"
+    file: "Solutions/PalomarCorpus/E249_18/PaperStatementsBE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_18/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsBE.projectedForeignDefect_paper"
+    file: "Solutions/PalomarCorpus/E249_18/PaperStatementsBE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_18/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsBE.residueKernel_increment_of_dvd"
+    file: "Solutions/PalomarCorpus/E249_18/PaperStatementsBE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_18/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsBE.residueOffset_of_dvd"
+    file: "Solutions/PalomarCorpus/E249_18/PaperStatementsBE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_18/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsBK.tailDifference_not_integral_of_separation"
+    file: "Solutions/PalomarCorpus/E249_18/PaperStatementsBK.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_18/comparator.json"
+  development_status: substantive
+  local_proof_provenance: "the proof modules Erdos249257, ErdosProblems.Erdos249 in this repository, imported by Solutions.PalomarCorpus.E249_18; the Solutions.ExternalVerification249* family modules are a regression mirror of the same proofs and are not imported by this configuration"
+  canonical_claim_status: "problem-level Comparator entry over substantive Lean in this repository"
+automation:
+  methods:
+  - method: manual
+    models: []
+    framework: Mathematical interpretation and claim-boundary review
+    tool_setup: Human-directed scope and significance review
+  - method: agent
+    models:
+    - Anthropic Claude
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+    cost:
+      wall_time: not tracked
+      spend_usd: subscription-based
+      hardware: local machine
+      prompting_notes: n/a
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    Every generated restatement was bound to a paper statement and refereed in the eight-paper coverage ledger before its wrapper was generated, and its transport proof was elaborated before the statement was accepted. The author selected the statements and is responsible for the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

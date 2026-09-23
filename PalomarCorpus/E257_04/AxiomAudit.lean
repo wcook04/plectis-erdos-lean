@@ -1,0 +1,18 @@
+import Solutions.PalomarCorpus.E257_04
+
+#print axioms PalomarCorpus.E257.PaperStatementsA.affineBinaryOrbit_mod_twoPow_eq
+#print axioms PalomarCorpus.E257.PaperStatementsAA.paper_centred_completion_of_fixed_precision
+#print axioms PalomarCorpus.E257.PaperStatementsAA.skipSum_den_dvd_prod
+#print axioms PalomarCorpus.E257.PaperStatementsAA.weighted_denominator_budget
+#print axioms PalomarCorpus.E257.PaperStatementsAE.balancedPulse_endpoint_fanout
+#print axioms PalomarCorpus.E257.PaperStatementsAE.balancedPulse_label_card_lower_bound
+#print axioms PalomarCorpus.E257.PaperStatementsAE.balancedPulse_no_autonomous_decoder
+#print axioms PalomarCorpus.E257.PaperStatementsAE.balancedPulse_weighted_pair
+#print axioms PalomarCorpus.E257.PaperStatementsAM.certificate_of_existsFatalHalfGap
+#print axioms PalomarCorpus.E257.PaperStatementsAM.certifiedTailBound_cast
+#print axioms PalomarCorpus.E257.PaperStatementsAM.certifiedWordValue_cast
+#print axioms PalomarCorpus.E257.PaperStatementsAM.existsFatalHalfGap_iff_exists_certificate
+#print axioms PalomarCorpus.E257.PaperStatementsAM.existsFatalHalfGap_of_certificate
+#print axioms PalomarCorpus.E257.PaperStatementsAM.mersenneTail_eq_sum_add
+#print axioms PalomarCorpus.E257.PaperStatementsAM.scaledMersenneWeight_cast
+#print axioms PalomarCorpus.E257.PaperStructuresS.paper_one_sidedness

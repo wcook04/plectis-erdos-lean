@@ -1,3 +1,0 @@
-import Solutions.PalomarCorpus.E243j
-
-#print axioms PalomarCorpus.E243.PaperStatementsJ.real_lowerDensityZero_iff_exists_admissible_real_weight

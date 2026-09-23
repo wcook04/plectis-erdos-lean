@@ -1,5 +1,0 @@
-import Solutions.PalomarCorpus.E257as
-
-#print axioms PalomarCorpus.E257.PaperStatementsAS.paper_sharper_additive_estimate
-#print axioms PalomarCorpus.E257.PaperStatementsAS.paper_skipped_core_recycling_witness_bounded
-#print axioms PalomarCorpus.E257.PaperStatementsAS.paper_unconditional_bound_one_extra_bit

@@ -1,5 +1,0 @@
-import Solutions.PalomarCorpus.E1049f
-
-#print axioms PalomarCorpus.E1049.PaperStatementsF.bottomJet3_eq_zero_iff_dvd
-#print axioms PalomarCorpus.E1049.PaperStatementsF.commonMultiplier_not_two_not_three_of_endpoint_units
-#print axioms PalomarCorpus.E1049.PaperStatementsF.cyclotomicHomEval_isCoprime_mul

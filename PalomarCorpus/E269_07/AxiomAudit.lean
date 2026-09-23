@@ -1,0 +1,8 @@
+import Solutions.PalomarCorpus.E269_07
+
+#print axioms PalomarCorpus.E269.CarryMechanism.no_positive_reducedCarry_of_cofinalLocalWindowEscape
+#print axioms PalomarCorpus.E269.PaperStatementsA.actual_cubic_no_crossing_strips
+#print axioms PalomarCorpus.E269.PaperStatementsA.actual_weighted_strip_decomposition
+#print axioms PalomarCorpus.E269.PaperStatementsA.fixed_base_recoding_whole
+#print axioms PalomarCorpus.E269.PaperStatementsC.allReducedTailsNonintegral_iff
+#print axioms PalomarCorpus.E269.PaperStatementsG.conditional_denominator_reduction_real_bound

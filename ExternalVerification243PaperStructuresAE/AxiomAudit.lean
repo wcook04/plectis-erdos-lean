@@ -1,0 +1,4 @@
+import Solutions.ExternalVerification243PaperStructuresAE
+
+#print axioms Erdos249257.ExternalVerification243PaperStructuresAE.exactOrbit_one_le_recordTheta
+#print axioms Erdos249257.ExternalVerification243PaperStructuresAE.exactOrbit_recordTheta_gt_one

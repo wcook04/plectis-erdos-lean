@@ -1,3 +1,0 @@
-import Solutions.PalomarCorpus.E251za
-
-#print axioms PalomarCorpus.E251.PaperStatementsZA.nonconcentration_does_not_force_irrationality

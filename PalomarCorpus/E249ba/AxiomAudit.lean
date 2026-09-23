@@ -1,7 +1,0 @@
-import Solutions.PalomarCorpus.E249ba
-
-#print axioms PalomarCorpus.E249.PaperStatementsBA.alpha_divisor_sum_eq_totient
-#print axioms PalomarCorpus.E249.PaperStatementsBA.forwardMultipleShift_least
-#print axioms PalomarCorpus.E249.PaperStatementsBA.forwardMultiple_enumeration
-#print axioms PalomarCorpus.E249.PaperStatementsBA.forwardMultiple_spec
-#print axioms PalomarCorpus.E249.PaperStatementsBA.lambertValue_alpha_eq_totientSeries

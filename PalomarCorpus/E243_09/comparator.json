@@ -1,0 +1,19 @@
+{
+  "challenge_module": "PalomarCorpus.E243_09.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E243_09",
+  "theorem_names": [
+    "PalomarCorpus.E243.PaperStatementsA.absorption_and_descent",
+    "PalomarCorpus.E243.PaperStatementsA.bounded_negative_endpoint_eventual_multiplier",
+    "PalomarCorpus.E243.PaperStatementsA.error_identities",
+    "PalomarCorpus.E243.PaperStatementsA.exists_shifted_consecutiveMultiples",
+    "PalomarCorpus.E243.PaperStatementsA.natural_sylvester_of_eventual_zero",
+    "PalomarCorpus.E243.PaperStatementsJ.real_lowerDensityZero_iff_exists_admissible_real_weight",
+    "PalomarCorpus.E243.PaperStatementsS.original_coordinate_lcm_bounded_defect"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

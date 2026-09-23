@@ -1,3 +1,0 @@
-import Solutions.PalomarCorpus.E249l
-
-#print axioms PalomarCorpus.E249.PaperStatementsL.b6_retained_dyadic_sections_independent

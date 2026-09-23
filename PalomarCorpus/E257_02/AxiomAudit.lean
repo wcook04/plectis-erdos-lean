@@ -1,0 +1,10 @@
+import Solutions.PalomarCorpus.E257_02
+
+#print axioms PalomarCorpus.E257.PaperStatementsAM.paper_achievement_geometry
+#print axioms PalomarCorpus.E257.PaperStatementsAM.perfect_supportedMersenneAchievementSet
+#print axioms PalomarCorpus.E257.PaperStatementsAM.supportedMersenneDigitValue_injective
+#print axioms PalomarCorpus.E257.PaperStatementsAM.volume_supportedMersenneAchievementSet_dichotomy
+#print axioms PalomarCorpus.E257.PaperStatementsAM.volume_supportedMersenneAchievementSet_eq_zero_of_compl_infinite
+#print axioms PalomarCorpus.E257.PaperStatementsC.remainder_lt_gap_iff_eq_integerGreedyBits
+#print axioms PalomarCorpus.E257.PaperStatementsD.paper_greedy_survival
+#print axioms PalomarCorpus.E257.PaperStatementsF.eq_halfGreedyPrefixSupport_of_critical_crossing

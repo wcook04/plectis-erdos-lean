@@ -1,0 +1,25 @@
+{
+  "challenge_module": "PalomarCorpus.E243_11.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E243_11",
+  "theorem_names": [
+    "PalomarCorpus.E243.RecordAmplifiedCancellationVisibility.recordAmplified_error_after_cancellation",
+    "PalomarCorpus.E243.RecordIncrementBarrier.recordIncrementOne_sylvesterNext_eventually",
+    "PalomarCorpus.E243.RepairEntropy.eventually_recoveryPayment_eq_one_of_fixedLength",
+    "PalomarCorpus.E243.RepairEntropy.repairedFamily_recovery_energy_divisionFree",
+    "PalomarCorpus.E243.RepairEntropy.repaired_card_bound_of_independent",
+    "PalomarCorpus.E243.SaturatedSquareTransport.legendre_defect_forces_nonsquare_content",
+    "PalomarCorpus.E243.SaturatedSquareTransport.saturated_square_transport_raw",
+    "PalomarCorpus.E243.SlowRiseBarrier.no_slowRise_reducedTail",
+    "PalomarCorpus.E243.SummableNegativeMassRigidity.canonical_finite_negative_mass",
+    "PalomarCorpus.E243.SummableNegativeMassRigidity.finite_negative_mass_scalar",
+    "PalomarCorpus.E243.SummableNegativeMassRigidity.summableNegativeMass_completeRigidity",
+    "PalomarCorpus.E243.WeightedRecordExcess.weighted_growth_record_excess",
+    "PalomarCorpus.E243.WeightedRecordExcess.weighted_record_excess"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

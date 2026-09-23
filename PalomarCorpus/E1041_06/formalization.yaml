@@ -1,0 +1,215 @@
+version: v0.4
+project:
+  name: 'Erdős #1041, note sections 13 to 16: two chord constructions for binomials; a Poisson identity for critical-value means; a nonlinear integral for component mergers'
+  description: >-
+    This entry states 18 theorems that only the short note for Erdős problem #1041 states, in sections 13 (two chord constructions for binomials), 15 (a Poisson identity for critical-value means) and 16 (a nonlinear integral for component mergers): the theorem “complementary binomial chords” (section 13), as binomial_chord_decisive_step, binomial_chord_maximum, binomial_chords_above_threshold, binomial_chords_at_threshold, binomial_chords_below_threshold, binomial_chords_path and binomial_inner_chord_maximal; the theorem “a weighted inequality for points in a disc” (section 15), as paper_weighted_free_point and geometric_row_mean_closed_disc_le; the theorem “critical-value mean in every degree” (section 15), as paper_critical_value_mean; the theorem “the relation between two merger-scale integrals” (section 16), as exists_mergerIntegral_lt, mergerIntegral_eq_mul_phi, orliczKernel_continuous, orliczKernel_tendsto_zero, orlicz_currency, phi_div_tendsto_zero, phi_strictConvexOn and phi_strictMonoOn.
+
+    16 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 1 is derived from the source declaration by a short tactic proof, which certifies implication.
+
+    Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
+
+    A degree-seven counterexample due to ani, formalised in this corpus, refutes the total-variation formulation of Erdős problem #1041; the theorems in this entry keep their stated hypotheses.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.CV
+  - math.CA
+  msc2020:
+  - "30C10"
+  - "30C15"
+  - "31A15"
+  - "26C10"
+sources:
+- title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: "The compared theorems are independently restated Lean theorems proved in this repository and described in the public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos."
+  license: Apache-2.0
+  author_endorsement: participated
+- title: "Metric properties of polynomials"
+  authors:
+  - "Paul Erdős"
+  - "Fritz Herzog"
+  - "George Piranian"
+  id: "10.1007/BF02790232"
+  type: "paper"
+  relationship: "background"
+  note: "Poses the root-to-root connection question as Problem 5 on page 139, which is the parent problem of this entry; no theorem compared here is taken from it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "A Degree-Four Lemniscate Path Theorem"
+  authors:
+  - "V. S. Pendyala"
+  id: "arXiv:2606.24875"
+  type: "paper"
+  relationship: "background"
+  note: "Settles the degree-four case of the parent problem unconditionally by a radial-arm argument from the centre of the smallest disc containing the four zeros, and is the directly comparable adjacent result. The spoke declarations here are origin spokes for sparse coefficient families and a three-point origin-spoke selector; that mechanism is shared with this paper and no priority is claimed for it. The degree-three theorem compared here was proved without this paper and takes no statement, constant, or argument from it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "On the length of lemniscates"
+  authors:
+  - "Alexandre Eremenko"
+  - "Walter Hayman"
+  id: "arXiv:0805.2295"
+  type: "paper"
+  relationship: "background"
+  note: "Bounds the total length of the level set |p| = 1 by 9.173 times the degree and shows an extremal level set is connected; that is a different metric quantity and supplies no internal root-to-root connector, so nothing here uses it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Beitrag zur Verallgemeinerung des Verzerrungssatzes auf mehrfach zusammenhängende Gebiete"
+  authors:
+  - "George Pólya"
+  type: "paper"
+  relationship: "background"
+  note: "The absolute area-capacity inequality behind the ordinary analytic estimate whose squared connector bound the first-merge threshold declarations consume; those declarations check only the numerical coefficient and its sign-free consumer, and the area argument itself is not formalised here."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Some inequalities for polynomials and rational functions associated with lemniscates"
+  authors:
+  - "Vladimir N. Dubinin"
+  id: "10.1007/s10958-013-1432-4"
+  type: "paper"
+  relationship: "background"
+  note: "A neighbouring relative-area inequality of Pólya type, recorded in the companion bibliography for completeness; its text was not obtained, its covering hypothesis and relative-area conclusion are used by no declaration here, and no claim rests on it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: Erdős Problems catalogue
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com
+  type: web discussion
+  relationship: background
+  note: "Catalogue numbering and status of the parent problem."
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+related_formalizations:
+- id: "https://github.com/google-deepmind/formal-conjectures/blob/f776d2f2039351b00737ffcafb9d7d7666e1d9af/FormalConjectures/ErdosProblems/1041.lean"
+  title: "FormalConjectures.ErdosProblems.1041"
+  relationship: "independent"
+  note: "States the open parent problem and the Erdős, Herzog and Piranian connected-component lemma; it is statement-level prior art for the formalisation, it supplies no proof authority, and every declaration compared here was stated independently of it."
+status:
+  scope: "One Comparator configuration selecting the 18 theorems listed in PalomarCorpus/E1041_06/comparator.json, from the Lean development for Erdős problem #1041. The problem's theorems are packed, in the order the papers state them, into the 8 entries PalomarCorpus/E1041_01 to PalomarCorpus/E1041_08, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification1041* directories are internal regression inventory and are not selected."
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 18
+  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E1041_06/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
+  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: "PalomarCorpus.E1041.CriticalValueMean.paper_critical_value_mean"
+    file: "Solutions/PalomarCorpus/E1041_06/CriticalValueMean.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_06/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsAB.paper_weighted_free_point"
+    file: "Solutions/PalomarCorpus/E1041_06/PaperStatementsAB.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_06/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsD.binomial_chord_decisive_step"
+    file: "Solutions/PalomarCorpus/E1041_06/PaperStatementsD.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_06/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsD.binomial_chord_maximum"
+    file: "Solutions/PalomarCorpus/E1041_06/PaperStatementsD.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_06/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsD.binomial_chords_above_threshold"
+    file: "Solutions/PalomarCorpus/E1041_06/PaperStatementsD.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_06/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsD.binomial_chords_at_threshold"
+    file: "Solutions/PalomarCorpus/E1041_06/PaperStatementsD.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_06/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsD.binomial_chords_below_threshold"
+    file: "Solutions/PalomarCorpus/E1041_06/PaperStatementsD.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_06/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsD.binomial_chords_path"
+    file: "Solutions/PalomarCorpus/E1041_06/PaperStatementsD.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_06/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsD.binomial_inner_chord_maximal"
+    file: "Solutions/PalomarCorpus/E1041_06/PaperStatementsD.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_06/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsF.exists_mergerIntegral_lt"
+    file: "Solutions/PalomarCorpus/E1041_06/PaperStatementsF.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_06/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsF.mergerIntegral_eq_mul_phi"
+    file: "Solutions/PalomarCorpus/E1041_06/PaperStatementsF.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_06/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsF.orliczKernel_continuous"
+    file: "Solutions/PalomarCorpus/E1041_06/PaperStatementsF.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_06/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsF.orliczKernel_tendsto_zero"
+    file: "Solutions/PalomarCorpus/E1041_06/PaperStatementsF.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_06/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsF.orlicz_currency"
+    file: "Solutions/PalomarCorpus/E1041_06/PaperStatementsF.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_06/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsF.phi_div_tendsto_zero"
+    file: "Solutions/PalomarCorpus/E1041_06/PaperStatementsF.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_06/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsF.phi_strictConvexOn"
+    file: "Solutions/PalomarCorpus/E1041_06/PaperStatementsF.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_06/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsF.phi_strictMonoOn"
+    file: "Solutions/PalomarCorpus/E1041_06/PaperStatementsF.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_06/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsL.geometric_row_mean_closed_disc_le"
+    file: "Solutions/PalomarCorpus/E1041_06/PaperStatementsL.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_06/comparator.json"
+  development_status: substantive
+  local_proof_provenance: "the proof modules ErdosProblems.Erdos1041 in this repository, imported by Solutions.PalomarCorpus.E1041_06; the Solutions.ExternalVerification1041* family modules are a regression mirror of the same proofs and are not imported by this configuration"
+  canonical_claim_status: "problem-level Comparator entry over substantive Lean in this repository"
+automation:
+  methods:
+  - method: manual
+    models: []
+    framework: Mathematical interpretation and claim-boundary review
+    tool_setup: Human-directed scope and significance review
+  - method: agent
+    models:
+    - Anthropic Claude
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+    cost:
+      wall_time: not tracked
+      spend_usd: subscription-based
+      hardware: local machine
+      prompting_notes: n/a
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    The statements from the hand-written families were checked declaration by declaration against the public problem notes, the reasoning records and the Lean sources in automated review passes run with Anthropic Claude and OpenAI Codex. Every generated restatement was bound to a paper statement and refereed in the eight-paper coverage ledger before its wrapper was generated, and its transport proof was elaborated before the statement was accepted. The author selected the statements and is responsible for the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

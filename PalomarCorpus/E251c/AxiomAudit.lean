@@ -1,3 +1,0 @@
-import Solutions.PalomarCorpus.E251c
-
-#print axioms PalomarCorpus.E251.PaperStatementsC.real_dyadic_orbit_eq_true_tail_iff

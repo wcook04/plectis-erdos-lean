@@ -1,0 +1,26 @@
+{
+  "challenge_module": "PalomarCorpus.E257_21.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257_21",
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStatementsAA.divisor_dvd_divInt_den",
+    "PalomarCorpus.E257.PaperStatementsAA.primePowerLayer_comm",
+    "PalomarCorpus.E257.PaperStatementsAA.survivingDivisor_dvd_scaled_divInt_den",
+    "PalomarCorpus.E257.PaperStatementsAE.binaryCoeffSeries_rational_iff_exists_temperedBinaryOrbit",
+    "PalomarCorpus.E257.PaperStatementsAE.temperedBinaryOrbit_eq_scaledTail",
+    "PalomarCorpus.E257.PaperStatementsAF.divInt_le_nextDyadic_iff_excess_nonpos",
+    "PalomarCorpus.E257.PaperStatementsAF.dyadicResidual_denominator_sandwich",
+    "PalomarCorpus.E257.PaperStatementsAG.irrational_erdosSupportSeries_of_tail",
+    "PalomarCorpus.E257.PaperStatementsAG.irrational_erdosSupportSeries_tail_of_irrational",
+    "PalomarCorpus.E257.PaperStatementsAM.half_mem_mersenneAchievementSet_iff_no_existsFatalHalfGap",
+    "PalomarCorpus.E257.PaperStatementsAM.half_mem_mersenneAchievementSet_or_exists_fatal_gap",
+    "PalomarCorpus.E257.PaperStatementsAM.paper_achievement_set_topology",
+    "PalomarCorpus.E257.PaperStatementsAO.mixedPrimePowerLayerTwo_supportCoeffInt",
+    "PalomarCorpus.E257.PaperStatementsD.greedyHalf_mem_nextMersenneDyadicSliver_iff_excess"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification1041PaperStructuresAD
+
+#print axioms Erdos249257.ExternalVerification1041PaperStructuresAD.one_root_gamma_false_unconditional

@@ -1,0 +1,17 @@
+{
+  "challenge_module": "PalomarCorpus.E257_34.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257_34",
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStatementsAM.paper_volume_supportedMersenneAchievementSet_dichotomy",
+    "PalomarCorpus.E257.PaperStatementsBD.four_le_halfStripBound",
+    "PalomarCorpus.E257.PaperStatementsQ.paper_mobiusCenteredHalfCarry_add_two",
+    "PalomarCorpus.E257.PaperStructuresBR.paper_feedback_row_total_dichotomy",
+    "PalomarCorpus.E257.PaperStructuresBT.paper_shared_prefix_family_contains_strip_witness"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

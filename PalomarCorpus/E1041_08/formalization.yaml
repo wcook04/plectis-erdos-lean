@@ -1,0 +1,177 @@
+version: v0.4
+project:
+  name: 'Erdős #1041, the solved families and tetranomial spokes families'
+  description: >-
+    This entry states 9 theorems of the solved families and tetranomial spokes developments of the Lean formalisation of Erdős problem #1041, to which no paper statement is bound. cubic_safeRootSpoke: For complex r, s, v of modulus strictly below 1, at least one of three statements holds, the first being that for every real t in [0, 1] the product (t * r - r) * (t * r - s) * (t * r - v) has modulus at most 1. primitiveQuintic_twoStrictTailEnergies: Finite real selector for the sparse quintic z ^ 5 + a z ^ 4 + b z + c: given a real r with 0 < r < 2 and five pairs (x k, s k) with 0 ≤ s k ≤ 1 and x k ^ 2 ≤ s k satisfying the three rotated Newton moment equations, the sum of the x k equal to -r, the sum of 2 x k ^ 2 - s k equal to r ^ 2, and the sum of 4 x k ^ 3 - 3 s k x k equal to -r ^ 3, at least one of the ten unordered index pairs has both tail energies s ^ 4 * (s + r ^ 2 + 2 r x) strictly below 1. existsPeakLeComparisonBound: Alternation kernel of the sharp collinear theorem: if p is a real monic polynomial of degree m + 2 with p (-1) = 0 and p 1 = 0, and c is a strictly increasing family of m + 1 nodes with -1 < c 0, c (Fin.last m) < 1 and |c i| ≤ 1 for every i, whose values alternate in sign in the sense that p (c i) * p (c (i+1)) < 0 for every consecutive pair, then some node satisfies |p (c i)| ≤ comparisonBound (m + 2). tetranomialRoot_spoke_factorization: Exact Abel identity at a root of a centred tetranomial: if w satisfies w ^ m + a * w ^ r + b * w ^ s + c = 0 then for every real u the value of z ↦ z ^ m + a z ^ r + b z ^ s + c at the point u * w equals (1 - u ^ s) * c - (u ^ s - u ^ r) * (a * w ^ r + w ^ m) - (u ^ r - u ^ m) * w ^ m, with the real coefficients cast into the complex numbers. tetranomialRoot_spoke_norm_lt_one_of_rootBudget: Root-dependent budget: for 1 ≤ s ≤ r ≤ m, a root w of z ^ m + a z ^ r + b z ^ s + c with ‖w‖ < 1 and ‖c‖ < 1 satisfying ‖c‖ + ‖b‖ * ‖w‖ ^ s < 1, and every real u in [0, 1], the tetranomial has modulus strictly below 1 at u * w. tetranomialRoot_spoke_norm_lt_one_of_lowCoeffBudget: Coefficient-only corollary of the same conclusion, with the root-dependent budget replaced by ‖b‖ + ‖c‖ ≤ 1 under the same hypotheses 1 ≤ s ≤ r ≤ m, w a root of z ^ m + a z ^ r + b z ^ s + c, ‖w‖ < 1, ‖c‖ < 1 and u in [0, 1]: the complete spoke of every such root lies in the open unit lemniscate, again with a unrestricted. sum_normSq_const_add_mul: Exact energy identity for a finite family: for a Finset S, a family v of complex numbers indexed by its type, and complex b and c, the sum over i in S of Complex.normSq (c + b * v i) equals the cardinality of S, cast to a real, times Complex.normSq c, plus Complex.normSq b times the sum of Complex.normSq (v i), plus twice the real part of conj c * b * (the sum of the v i). exists_two_tails_norm_lt_one_of_exact_L2_budget: Pigeonhole consequence of that identity: if S has at least two elements and the energy on the right of the identity is strictly less than the cardinality of S, cast to a real, minus 1, then there are two distinct indices i and j in S with ‖c + b * v i‖ < 1 and ‖c + b * v j‖ < 1. exists_two_tetranomialRoot_safeSpokes_of_moment_coeff_budget: Indexed-root form: for a Finset S with at least two elements, a family w with every w i, i in S, a root of z ^ m + a z ^ r + b z ^ s + c of modulus below 1, exponents 1 ≤ s ≤ r ≤ m, ‖c‖ < 1, signed moment equal to the sum of the w i ^ s over S, and coefficient budget card S * (Complex.normSq b + Complex.normSq c) + 2 * (conj c * b * moment).re < card S - 1, there are two distinct indices i and j in S whose complete spokes u ↦ u * w i and u ↦ u * w j, for u in [0, 1], keep the tetranomial strictly below modulus 1.
+
+    Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
+
+    A degree-seven counterexample due to ani, formalised in this corpus, refutes the total-variation formulation of Erdős problem #1041; the theorems in this entry keep their stated hypotheses.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.CV
+  - math.CA
+  msc2020:
+  - "30C10"
+  - "30C15"
+  - "31A15"
+  - "26C10"
+sources:
+- title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: "The compared theorems are independently restated Lean theorems proved in this repository and described in the public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos."
+  license: Apache-2.0
+  author_endorsement: participated
+- title: "Metric properties of polynomials"
+  authors:
+  - "Paul Erdős"
+  - "Fritz Herzog"
+  - "George Piranian"
+  id: "10.1007/BF02790232"
+  type: "paper"
+  relationship: "background"
+  note: "Poses the root-to-root connection question as Problem 5 on page 139, which is the parent problem of this entry; no theorem compared here is taken from it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "A Degree-Four Lemniscate Path Theorem"
+  authors:
+  - "V. S. Pendyala"
+  id: "arXiv:2606.24875"
+  type: "paper"
+  relationship: "background"
+  note: "Settles the degree-four case of the parent problem unconditionally by a radial-arm argument from the centre of the smallest disc containing the four zeros, and is the directly comparable adjacent result. The spoke declarations here are origin spokes for sparse coefficient families and a three-point origin-spoke selector; that mechanism is shared with this paper and no priority is claimed for it. The degree-three theorem compared here was proved without this paper and takes no statement, constant, or argument from it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "On the length of lemniscates"
+  authors:
+  - "Alexandre Eremenko"
+  - "Walter Hayman"
+  id: "arXiv:0805.2295"
+  type: "paper"
+  relationship: "background"
+  note: "Bounds the total length of the level set |p| = 1 by 9.173 times the degree and shows an extremal level set is connected; that is a different metric quantity and supplies no internal root-to-root connector, so nothing here uses it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Beitrag zur Verallgemeinerung des Verzerrungssatzes auf mehrfach zusammenhängende Gebiete"
+  authors:
+  - "George Pólya"
+  type: "paper"
+  relationship: "background"
+  note: "The absolute area-capacity inequality behind the ordinary analytic estimate whose squared connector bound the first-merge threshold declarations consume; those declarations check only the numerical coefficient and its sign-free consumer, and the area argument itself is not formalised here."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Some inequalities for polynomials and rational functions associated with lemniscates"
+  authors:
+  - "Vladimir N. Dubinin"
+  id: "10.1007/s10958-013-1432-4"
+  type: "paper"
+  relationship: "background"
+  note: "A neighbouring relative-area inequality of Pólya type, recorded in the companion bibliography for completeness; its text was not obtained, its covering hypothesis and relative-area conclusion are used by no declaration here, and no claim rests on it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: Erdős Problems catalogue
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com
+  type: web discussion
+  relationship: background
+  note: "Catalogue numbering and status of the parent problem."
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+related_formalizations:
+- id: "https://github.com/google-deepmind/formal-conjectures/blob/f776d2f2039351b00737ffcafb9d7d7666e1d9af/FormalConjectures/ErdosProblems/1041.lean"
+  title: "FormalConjectures.ErdosProblems.1041"
+  relationship: "independent"
+  note: "States the open parent problem and the Erdős, Herzog and Piranian connected-component lemma; it is statement-level prior art for the formalisation, it supplies no proof authority, and every declaration compared here was stated independently of it."
+status:
+  scope: "One Comparator configuration selecting the 9 theorems listed in PalomarCorpus/E1041_08/comparator.json, from the Lean development for Erdős problem #1041. The problem's theorems are packed, in the order the papers state them, into the 8 entries PalomarCorpus/E1041_01 to PalomarCorpus/E1041_08, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification1041* directories are internal regression inventory and are not selected."
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 9
+  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E1041_08/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
+  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: "PalomarCorpus.E1041.SolvedFamilies.SharpCollinear.existsPeakLeComparisonBound"
+    file: "Solutions/PalomarCorpus/E1041_08/SolvedFamilies.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_08/comparator.json"
+  - declaration: "PalomarCorpus.E1041.SolvedFamilies.cubic_safeRootSpoke"
+    file: "Solutions/PalomarCorpus/E1041_08/SolvedFamilies.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_08/comparator.json"
+  - declaration: "PalomarCorpus.E1041.SolvedFamilies.primitiveQuintic_twoStrictTailEnergies"
+    file: "Solutions/PalomarCorpus/E1041_08/SolvedFamilies.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_08/comparator.json"
+  - declaration: "PalomarCorpus.E1041.TetranomialSpokes.exists_two_tails_norm_lt_one_of_exact_L2_budget"
+    file: "Solutions/PalomarCorpus/E1041_08/TetranomialSpokes.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_08/comparator.json"
+  - declaration: "PalomarCorpus.E1041.TetranomialSpokes.exists_two_tetranomialRoot_safeSpokes_of_moment_coeff_budget"
+    file: "Solutions/PalomarCorpus/E1041_08/TetranomialSpokes.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_08/comparator.json"
+  - declaration: "PalomarCorpus.E1041.TetranomialSpokes.sum_normSq_const_add_mul"
+    file: "Solutions/PalomarCorpus/E1041_08/TetranomialSpokes.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_08/comparator.json"
+  - declaration: "PalomarCorpus.E1041.TetranomialSpokes.tetranomialRoot_spoke_factorization"
+    file: "Solutions/PalomarCorpus/E1041_08/TetranomialSpokes.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_08/comparator.json"
+  - declaration: "PalomarCorpus.E1041.TetranomialSpokes.tetranomialRoot_spoke_norm_lt_one_of_lowCoeffBudget"
+    file: "Solutions/PalomarCorpus/E1041_08/TetranomialSpokes.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_08/comparator.json"
+  - declaration: "PalomarCorpus.E1041.TetranomialSpokes.tetranomialRoot_spoke_norm_lt_one_of_rootBudget"
+    file: "Solutions/PalomarCorpus/E1041_08/TetranomialSpokes.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_08/comparator.json"
+  development_status: substantive
+  local_proof_provenance: "the proof modules ErdosProblems.Erdos1041 in this repository, imported by Solutions.PalomarCorpus.E1041_08; the Solutions.ExternalVerification1041* family modules are a regression mirror of the same proofs and are not imported by this configuration"
+  canonical_claim_status: "problem-level Comparator entry over substantive Lean in this repository"
+automation:
+  methods:
+  - method: manual
+    models: []
+    framework: Mathematical interpretation and claim-boundary review
+    tool_setup: Human-directed scope and significance review
+  - method: agent
+    models:
+    - Anthropic Claude
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+    cost:
+      wall_time: not tracked
+      spend_usd: subscription-based
+      hardware: local machine
+      prompting_notes: n/a
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    The statements from the hand-written families were checked declaration by declaration against the public problem notes, the reasoning records and the Lean sources in automated review passes run with Anthropic Claude and OpenAI Codex. The author selected the statements and is responsible for the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

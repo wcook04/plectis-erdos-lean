@@ -1,4 +1,0 @@
-import Solutions.PalomarCorpus.E251b
-
-#print axioms PalomarCorpus.E251.PaperStatementsB.finite_separation_complete
-#print axioms PalomarCorpus.E251.PaperStatementsB.one_tail_signed_certificate

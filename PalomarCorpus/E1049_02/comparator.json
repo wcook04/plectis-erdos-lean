@@ -1,0 +1,16 @@
+{
+  "challenge_module": "PalomarCorpus.E1049_02.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E1049_02",
+  "theorem_names": [
+    "PalomarCorpus.E1049.ArchimedeanCap.cleared_below_square_not_tendsto_zero",
+    "PalomarCorpus.E1049.PaperStructuresD.long_record_archcap",
+    "PalomarCorpus.E1049.PaperStructuresQ.exists_quadratic_source_height_bound",
+    "PalomarCorpus.E1049.PaperStructuresQ.maxPairHeight_source_eq"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

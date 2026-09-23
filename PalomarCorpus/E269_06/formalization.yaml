@@ -1,0 +1,104 @@
+version: v0.4
+project:
+  name: 'Erdős #269, record sections 7 to 9: a residue criterion and the bounds it allows; the remaining arithmetic questions'
+  description: >-
+    This entry states 3 theorems that the long record for Erdős problem #269 states in sections 7 (a residue criterion and the bounds it allows) and 9 (the remaining arithmetic questions): the proposition “growth of the window product” (section 7.1), as long_window_growth; the corollary “a fixed maximum length cannot cover arbitrarily late starts” (section 7.1), as long_no_bounded_length; the lemma “weighted shifts preserve the actual value” (section 9.1), as weighted_shift_whole.
+
+    3 are derived from the source declaration by a short tactic proof, which certifies implication.
+
+    Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
+
+    Erdős problem #269 remains open, and no theorem in this entry decides it.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.NT
+  - math.DS
+  msc2020:
+  - "11J72"
+  - "11B83"
+  - "11A05"
+  - "11A07"
+  - "15A03"
+sources:
+- title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: "The compared theorems are independently restated Lean theorems proved in this repository and described in the public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos."
+  license: Apache-2.0
+  author_endorsement: participated
+- title: Erdős Problems catalogue
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com
+  type: web discussion
+  relationship: background
+  note: "Catalogue numbering and status of the parent problem."
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+status:
+  scope: "One Comparator configuration selecting the 3 theorems listed in PalomarCorpus/E269_06/comparator.json, from the Lean development for Erdős problem #269. The problem's theorems are packed, in the order the papers state them, into the 11 entries PalomarCorpus/E269_01 to PalomarCorpus/E269_11, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification269* directories are internal regression inventory and are not selected."
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 3
+  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E269_06/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
+  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: "PalomarCorpus.E269.PaperStatementsA.weighted_shift_whole"
+    file: "Solutions/PalomarCorpus/E269_06/PaperStatementsA.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E269_06/comparator.json"
+  - declaration: "PalomarCorpus.E269.PaperStatementsF.long_window_growth"
+    file: "Solutions/PalomarCorpus/E269_06/PaperStatementsF.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E269_06/comparator.json"
+  - declaration: "PalomarCorpus.E269.PaperStatementsG.long_no_bounded_length"
+    file: "Solutions/PalomarCorpus/E269_06/PaperStatementsG.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E269_06/comparator.json"
+  development_status: substantive
+  local_proof_provenance: "the proof modules ErdosProblems.Erdos269 in this repository, imported by Solutions.PalomarCorpus.E269_06; the Solutions.ExternalVerification269* family modules are a regression mirror of the same proofs and are not imported by this configuration"
+  canonical_claim_status: "problem-level Comparator entry over substantive Lean in this repository"
+automation:
+  methods:
+  - method: manual
+    models: []
+    framework: Mathematical interpretation and claim-boundary review
+    tool_setup: Human-directed scope and significance review
+  - method: agent
+    models:
+    - Anthropic Claude
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+    cost:
+      wall_time: not tracked
+      spend_usd: subscription-based
+      hardware: local machine
+      prompting_notes: n/a
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    Every generated restatement was bound to a paper statement and refereed in the eight-paper coverage ledger before its wrapper was generated, and its transport proof was elaborated before the statement was accepted. The author selected the statements and is responsible for the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

@@ -1,0 +1,26 @@
+{
+  "challenge_module": "PalomarCorpus.E243_08.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E243_08",
+  "theorem_names": [
+    "PalomarCorpus.E243.PaperStatementsA.boundedNegativePart_sylvesterNext_eventually",
+    "PalomarCorpus.E243.PaperStatementsA.eventuallyBoundedNegativePart_eventually_zero",
+    "PalomarCorpus.E243.PaperStatementsA.exists_shiftedBlock_consecutiveMultiples",
+    "PalomarCorpus.E243.PaperStatementsA.gcd_stabilises_and_reduces",
+    "PalomarCorpus.E243.PaperStatementsA.no_boundedRise_coprimeToEarlierModuli",
+    "PalomarCorpus.E243.PaperStatementsA.no_periodicNegative_shapeEquation",
+    "PalomarCorpus.E243.PaperStatementsA.persistent_coprimality",
+    "PalomarCorpus.E243.PaperStatementsD.exists_sparse_prime_coprime_sequence",
+    "PalomarCorpus.E243.PaperStatementsI.maximal_gap_limsup_eq_inv_sigma",
+    "PalomarCorpus.E243.PaperStatementsK.forcedOrbit_survives_iff_of_factorial_modEq",
+    "PalomarCorpus.E243.PaperStatementsK.forcedSurvives_iff_of_modEq_factorial",
+    "PalomarCorpus.E243.PaperStatementsL.canonical_frontier",
+    "PalomarCorpus.E243.PaperStatementsL.finite_negative_mass_paper",
+    "PalomarCorpus.E243.PaperStatementsO.sparse_gcd_changes"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

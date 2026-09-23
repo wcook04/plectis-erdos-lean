@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification1049PaperStructuresO
+
+#print axioms Erdos249257.ExternalVerification1049PaperStructuresO.coefficientPencil_finitePencil

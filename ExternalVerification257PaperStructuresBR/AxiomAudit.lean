@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification257PaperStructuresBR
+
+#print axioms Erdos249257.ExternalVerification257PaperStructuresBR.paper_feedback_row_total_dichotomy

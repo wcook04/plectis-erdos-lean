@@ -1,0 +1,16 @@
+import Solutions.PalomarCorpus.E257_19
+
+#print axioms PalomarCorpus.E257.PaperStructuresBH.exists_seamWord_minimal_above
+#print axioms PalomarCorpus.E257.PaperStructuresBH.integerGreedyBits_length
+#print axioms PalomarCorpus.E257.PaperStructuresBH.paper_compatible_finite_row_conditions
+#print axioms PalomarCorpus.E257.PaperStructuresBH.paper_largest_false_rank_algebra
+#print axioms PalomarCorpus.E257.PaperStructuresBH.seamAboveWord_minimal
+#print axioms PalomarCorpus.E257.PaperStructuresBH.seamAboveWord_strict
+#print axioms PalomarCorpus.E257.PaperStructuresBH.seamAdjacentCut_below_admissible
+#print axioms PalomarCorpus.E257.PaperStructuresBH.seamAdjacentCut_below_maximal
+#print axioms PalomarCorpus.E257.PaperStructuresBH.seamPerturbedFamily_gap_pos
+#print axioms PalomarCorpus.E257.PaperStructuresBH.seamPerturbedFamily_oldSum_injective
+#print axioms PalomarCorpus.E257.PaperStructuresBH.seamPerturbedFamily_pulseCap_lt_three_gap
+#print axioms PalomarCorpus.E257.PaperStructuresBH.seamPerturbedFamily_separated
+#print axioms PalomarCorpus.E257.PaperStructuresBH.seamWeights_length_eq
+#print axioms PalomarCorpus.E257.PaperStructuresBH.wordPulse_le

@@ -1,3 +1,0 @@
-import Solutions.PalomarCorpus.E249p
-
-#print axioms PalomarCorpus.E249.PaperStructuresP.linearIndependent_of_separatedMinorCertificate

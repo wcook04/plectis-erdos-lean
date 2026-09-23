@@ -1,0 +1,25 @@
+import Solutions.PalomarCorpus.E257_30
+
+#print axioms PalomarCorpus.E257.PaperStatementsAA.paper_dyadic_skip_test_iff
+#print axioms PalomarCorpus.E257.PaperStatementsAA.paper_sharp_gives_three_over_three_t_sub_one
+#print axioms PalomarCorpus.E257.PaperStatementsAA.paper_sharp_skip_safe_lb3
+#print axioms PalomarCorpus.E257.PaperStatementsAA.paper_sharp_strictly_weaker_realizable
+#print axioms PalomarCorpus.E257.PaperStatementsAA.paper_sharp_weaker_than_dyadic
+#print axioms PalomarCorpus.E257.PaperStatementsAA.paper_three_channel_margin_identity
+#print axioms PalomarCorpus.E257.PaperStatementsAA.paper_two_channels_insufficient
+#print axioms PalomarCorpus.E257.PaperStatementsAF.card_divisors_le_divisorSubpowerConst_mul_rpow
+#print axioms PalomarCorpus.E257.PaperStatementsAF.card_divisors_pow_le_divisorSubpowerConst_pow_mul
+#print axioms PalomarCorpus.E257.PaperStatementsAL.paper_zero_run_le_eps_logb
+#print axioms PalomarCorpus.E257.PaperStatementsAL.paper_zero_run_le_of_mem
+#print axioms PalomarCorpus.E257.PaperStatementsAM.mersenneGap_le
+#print axioms PalomarCorpus.E257.PaperStatementsAM.paper_exact_mass_threshold
+#print axioms PalomarCorpus.E257.PaperStatementsAM.paper_sharp_skip_safe_actual_tail
+#print axioms PalomarCorpus.E257.PaperStatementsAM.summable_mersenneGap_shift
+#print axioms PalomarCorpus.E257.PaperStatementsAO.mixedPrimePowerLayerTwo_twelve_fixture
+#print axioms PalomarCorpus.E257.PaperStatementsAR.exists_first_localMersenne_crossing
+#print axioms PalomarCorpus.E257.PaperStatementsAV.one_add_mul_card_le_two_mul_shifted_state
+#print axioms PalomarCorpus.E257.PaperStatementsAV.shifted_state_unbounded_of_infinite_support
+#print axioms PalomarCorpus.E257.PaperStructuresH.three_le_of_fatal_of_odd
+#print axioms PalomarCorpus.E257.PaperStructuresH.two_le_of_fatal
+#print axioms PalomarCorpus.E257.PaperStructuresH.unitNumerator_skipSafe
+#print axioms PalomarCorpus.E257.PaperStructuresV.unitNumerator_skipSafe_actualTail

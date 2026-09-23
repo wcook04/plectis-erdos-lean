@@ -13,9 +13,9 @@ project:
 
 palomar_qualification:
   status: "expanded_candidate_pending_focused_revalidation_terminal_comparator_replay_and_public_identity"
-  selected_project: "formal_math/erdos257_period_noncollapse"
-  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification269AllScaleLattice/comparator.json"
-  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification269AllScaleLattice/formalization.yaml"
+  selected_project: "."
+  comparator_config: "ExternalVerification269AllScaleLattice/comparator.json"
+  formalization_metadata: "ExternalVerification269AllScaleLattice/formalization.yaml"
   repository_scope: "private_source_not_yet_pinned_in_public_repository"
   challenge_dependency_boundary: "Mathlib_only"
   replay_status: "original_five_endpoints_focused_checked_new_prime_power_endpoint_pending_focused_revalidation"

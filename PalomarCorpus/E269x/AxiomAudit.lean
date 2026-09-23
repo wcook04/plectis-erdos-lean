@@ -1,4 +1,0 @@
-import Solutions.PalomarCorpus.E269x
-
-#print axioms PalomarCorpus.E269.PaperStatementsX.two_prime_sums_transcendental
-#print axioms PalomarCorpus.E269.PaperStatementsX.two_prime_transcendence

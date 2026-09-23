@@ -1,0 +1,20 @@
+import Solutions.PalomarCorpus.E1041_06
+
+#print axioms PalomarCorpus.E1041.CriticalValueMean.paper_critical_value_mean
+#print axioms PalomarCorpus.E1041.PaperStatementsAB.paper_weighted_free_point
+#print axioms PalomarCorpus.E1041.PaperStatementsD.binomial_chord_decisive_step
+#print axioms PalomarCorpus.E1041.PaperStatementsD.binomial_chord_maximum
+#print axioms PalomarCorpus.E1041.PaperStatementsD.binomial_chords_above_threshold
+#print axioms PalomarCorpus.E1041.PaperStatementsD.binomial_chords_at_threshold
+#print axioms PalomarCorpus.E1041.PaperStatementsD.binomial_chords_below_threshold
+#print axioms PalomarCorpus.E1041.PaperStatementsD.binomial_chords_path
+#print axioms PalomarCorpus.E1041.PaperStatementsD.binomial_inner_chord_maximal
+#print axioms PalomarCorpus.E1041.PaperStatementsF.exists_mergerIntegral_lt
+#print axioms PalomarCorpus.E1041.PaperStatementsF.mergerIntegral_eq_mul_phi
+#print axioms PalomarCorpus.E1041.PaperStatementsF.orliczKernel_continuous
+#print axioms PalomarCorpus.E1041.PaperStatementsF.orliczKernel_tendsto_zero
+#print axioms PalomarCorpus.E1041.PaperStatementsF.orlicz_currency
+#print axioms PalomarCorpus.E1041.PaperStatementsF.phi_div_tendsto_zero
+#print axioms PalomarCorpus.E1041.PaperStatementsF.phi_strictConvexOn
+#print axioms PalomarCorpus.E1041.PaperStatementsF.phi_strictMonoOn
+#print axioms PalomarCorpus.E1041.PaperStatementsL.geometric_row_mean_closed_disc_le

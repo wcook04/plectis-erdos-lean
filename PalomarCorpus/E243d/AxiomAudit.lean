@@ -1,6 +1,0 @@
-import Solutions.PalomarCorpus.E243d
-
-#print axioms PalomarCorpus.E243.PaperStatementsD.energy_window_real_bound
-#print axioms PalomarCorpus.E243.PaperStatementsD.exists_avoiding_in_window
-#print axioms PalomarCorpus.E243.PaperStatementsD.exists_slow_rise_avoiding_sequence
-#print axioms PalomarCorpus.E243.PaperStatementsD.exists_sparse_prime_coprime_sequence

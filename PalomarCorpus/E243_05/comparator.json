@@ -1,0 +1,20 @@
+{
+  "challenge_module": "PalomarCorpus.E243_05.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E243_05",
+  "theorem_names": [
+    "PalomarCorpus.E243.PaperStatementsA.mem_barrierIdx_iff",
+    "PalomarCorpus.E243.PaperStatementsD.energy_window_real_bound",
+    "PalomarCorpus.E243.PaperStatementsK.epoch_energy_named_crossing_set",
+    "PalomarCorpus.E243.PaperStructuresU.energySqrt_summable_iff",
+    "PalomarCorpus.E243.PaperStructuresU.energy_criterion",
+    "PalomarCorpus.E243.PaperStructuresU.energy_le_two_energySqrt",
+    "PalomarCorpus.E243.PaperStructuresU.energy_summable_iff",
+    "PalomarCorpus.E243.PaperStructuresU.exists_late_energy_window"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

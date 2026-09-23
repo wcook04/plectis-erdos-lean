@@ -1,3 +1,0 @@
-import Solutions.PalomarCorpus.E1041m
-
-#print axioms PalomarCorpus.E1041.PaperStatementsM.primitiveInterior_exists_two_tailEnergy_lt_one

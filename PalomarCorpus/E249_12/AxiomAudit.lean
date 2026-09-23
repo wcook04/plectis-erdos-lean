@@ -1,0 +1,21 @@
+import Solutions.PalomarCorpus.E249_12
+
+#print axioms PalomarCorpus.E249.PaperStatementsAJ.extremal_order_curvature_ne_zero
+#print axioms PalomarCorpus.E249.PaperStatementsAJ.extremal_order_curvature_neg
+#print axioms PalomarCorpus.E249.PaperStatementsAJ.extremal_order_curvature_pos
+#print axioms PalomarCorpus.E249.PaperStatementsAJ.gapCertificate_window_1_240
+#print axioms PalomarCorpus.E249.PaperStatementsAJ.gapFareyBound_window_1_240
+#print axioms PalomarCorpus.E249.PaperStatementsAJ.irrational_totientSeries_of_fareyGapExclusionUnbounded
+#print axioms PalomarCorpus.E249.PaperStatementsAT.directed_certificate_example
+#print axioms PalomarCorpus.E249.PaperStatementsAT.directed_certificate_iff
+#print axioms PalomarCorpus.E249.PaperStatementsAT.integral_carry_strictly_between
+#print axioms PalomarCorpus.E249.PaperStatementsAU.irrational_of_modFour_pulse_supply
+#print axioms PalomarCorpus.E249.PaperStatementsAU.rational_forces_pulse_class_integrality
+#print axioms PalomarCorpus.E249.PaperStatementsAU.short_window_diagonal_through_six
+#print axioms PalomarCorpus.E249.PaperStatementsAU.short_window_diagonal_witnesses
+#print axioms PalomarCorpus.E249.PaperStatementsAX.endpoint_criterion_nonintegral
+#print axioms PalomarCorpus.E249.PaperStatementsAX.endpoint_identity
+#print axioms PalomarCorpus.E249.PaperStatementsAX.oddHalfCenteredLift_spec
+#print axioms PalomarCorpus.E249.PaperStatementsAY.centeredLift_range
+#print axioms PalomarCorpus.E249.PaperStatementsBH.no_generic_rationality_carryRank_ceiling
+#print axioms PalomarCorpus.E249.PaperStatementsC.irrational_totient_series_of_lcm_cone_window_kill_supply

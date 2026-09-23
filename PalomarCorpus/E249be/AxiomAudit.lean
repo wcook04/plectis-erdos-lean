@@ -1,8 +1,0 @@
-import Solutions.PalomarCorpus.E249be
-
-#print axioms PalomarCorpus.E249.PaperStatementsBE.divisorChannels_sum_eq
-#print axioms PalomarCorpus.E249.PaperStatementsBE.foreignComplementBound_paper
-#print axioms PalomarCorpus.E249.PaperStatementsBE.projectedForeignDefect_paper
-#print axioms PalomarCorpus.E249.PaperStatementsBE.residueKernel_increment_of_dvd
-#print axioms PalomarCorpus.E249.PaperStatementsBE.residueOffset_of_dvd
-#print axioms PalomarCorpus.E249.PaperStatementsBE.transportResidueKernel_eq_mobiusTermKernel

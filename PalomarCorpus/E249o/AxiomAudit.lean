@@ -1,5 +1,0 @@
-import Solutions.PalomarCorpus.E249o
-
-#print axioms PalomarCorpus.E249.PaperStatementsO.b6_mobiusMersennePrefix_eq_icc_sum
-#print axioms PalomarCorpus.E249.PaperStatementsO.b6_mobiusMersenne_rung_estimates
-#print axioms PalomarCorpus.E249.PaperStatementsO.rankOne_denominator_pos

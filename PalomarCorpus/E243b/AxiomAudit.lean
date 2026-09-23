@@ -1,4 +1,0 @@
-import Solutions.PalomarCorpus.E243b
-
-#print axioms PalomarCorpus.E243.PaperStatementsB.original_coordinate_inclusive_one
-#print axioms PalomarCorpus.E243.PaperStatementsB.original_coordinate_inclusive_one_pointwise

@@ -1,0 +1,11 @@
+import Solutions.PalomarCorpus.E249_30
+
+#print axioms PalomarCorpus.E249.PaperStatementsAE.bounded_isolated_pulse
+#print axioms PalomarCorpus.E249.PaperStatementsAE.periodic_freezing_integer_affine
+#print axioms PalomarCorpus.E249.PaperStatementsBG.rankOneSubrankQuotient_one_five_sub_theta_two_lt_one_div_fifteen
+#print axioms PalomarCorpus.E249.PaperStatementsM.fullDepth_amplification
+#print axioms PalomarCorpus.E249.RankOneDenominator.rankOne_denominator_pos
+#print axioms PalomarCorpus.E249.RankOneSharpFloor.positive_direct_sum_sub_theta_two_gt_twentyOne_div_threeTwenty
+#print axioms PalomarCorpus.E249.RankOneSharpFloor.rankOneSubrankQuotient_eq_one_five_iff
+#print axioms PalomarCorpus.E249.RankOneSharpFloor.rankOneSubrankQuotient_sub_theta_two_gt_twentyOne_div_threeTwenty
+#print axioms PalomarCorpus.E249.RationalObservableClassification.short_note_residue_theorem

@@ -1,0 +1,8 @@
+import Solutions.PalomarCorpus.E269_03
+
+#print axioms PalomarCorpus.E269.PaperStatementsA.literal_triangle_whole
+#print axioms PalomarCorpus.E269.PaperStatementsC.actual_tail_rank_bound
+#print axioms PalomarCorpus.E269.PaperStatementsC.longPaperCap_le_three_squareR11
+#print axioms PalomarCorpus.E269.PaperStatementsC.long_all_scale_lattice_exact
+#print axioms PalomarCorpus.E269.PaperStatementsC.long_fixed_split_bridgeR11
+#print axioms PalomarCorpus.E269.PaperStatementsC.scaled_integer_or_cofinal_separation

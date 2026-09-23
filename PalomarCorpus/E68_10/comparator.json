@@ -1,0 +1,14 @@
+{
+  "challenge_module": "PalomarCorpus.E68_10.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E68_10",
+  "theorem_names": [
+    "PalomarCorpus.E68.StrictSuccessorCarry.companionOrbit_completeCharacterization",
+    "PalomarCorpus.E68.StrictSuccessorCarry.strictSuccessorCarry_completeCharacterization"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

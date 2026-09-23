@@ -1,3 +1,0 @@
-import Solutions.PalomarCorpus.E257aj
-
-#print axioms PalomarCorpus.E257.PaperStatementsAJ.tsum_moebius_div_two_pow_sub_one_eq_half

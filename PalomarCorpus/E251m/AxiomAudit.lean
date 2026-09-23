@@ -1,5 +1,0 @@
-import Solutions.PalomarCorpus.E251m
-
-#print axioms PalomarCorpus.E251.PaperStatementsM.affine_circularity_bundle
-#print axioms PalomarCorpus.E251.PaperStatementsM.irrational_initial_iff_all_lcmDiagonal_nonintegral
-#print axioms PalomarCorpus.E251.PaperStatementsM.realTailShift_integral_add

@@ -1,0 +1,10 @@
+import Solutions.PalomarCorpus.E243_05
+
+#print axioms PalomarCorpus.E243.PaperStatementsA.mem_barrierIdx_iff
+#print axioms PalomarCorpus.E243.PaperStatementsD.energy_window_real_bound
+#print axioms PalomarCorpus.E243.PaperStatementsK.epoch_energy_named_crossing_set
+#print axioms PalomarCorpus.E243.PaperStructuresU.energySqrt_summable_iff
+#print axioms PalomarCorpus.E243.PaperStructuresU.energy_criterion
+#print axioms PalomarCorpus.E243.PaperStructuresU.energy_le_two_energySqrt
+#print axioms PalomarCorpus.E243.PaperStructuresU.energy_summable_iff
+#print axioms PalomarCorpus.E243.PaperStructuresU.exists_late_energy_window

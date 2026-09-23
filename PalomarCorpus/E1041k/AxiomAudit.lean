@@ -1,3 +1,0 @@
-import Solutions.PalomarCorpus.E1041k
-
-#print axioms PalomarCorpus.E1041.PaperStatementsK.exists_two_roots_dist_sum_le_two_mul_geomMean

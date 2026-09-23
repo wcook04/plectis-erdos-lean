@@ -1,0 +1,18 @@
+{
+  "challenge_module": "PalomarCorpus.E68_08.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E68_08",
+  "theorem_names": [
+    "PalomarCorpus.E68.MovingFactorScaleSplit.fixedOwnerPair_eventually_absorbed",
+    "PalomarCorpus.E68.MovingFactorScaleSplit.movingPrivateFactorScaleSplit_implies_irrational",
+    "PalomarCorpus.E68.MovingFactorScaleSplit.splitFactorNormalizedCollision_implies_irrational",
+    "PalomarCorpus.E68.MultiplicativeSuccessorRigidity.factorial_mul_gapSuccessor_eq_of_eventually_dvd",
+    "PalomarCorpus.E68.MultiplicativeSuccessorRigidity.gapSuccessor_dvd_of_eventually_dvd",
+    "PalomarCorpus.E68.MultiplicativeSuccessorRigidity.gapSuccessor_eq_mul_pred_of_dvd"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

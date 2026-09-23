@@ -1,0 +1,33 @@
+{
+  "challenge_module": "PalomarCorpus.E1041_07.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E1041_07",
+  "theorem_names": [
+    "PalomarCorpus.E1041.CriticalGeometry.allStraightCubic_every_pair_midpoint_escapes",
+    "PalomarCorpus.E1041.CriticalGeometry.allStraightCubic_roots",
+    "PalomarCorpus.E1041.CriticalGeometry.allStraightCubic_roots_in_unitDisk",
+    "PalomarCorpus.E1041.CriticalGeometry.criticalDiskInverseBalance_twoRootProximity",
+    "PalomarCorpus.E1041.CriticalGeometry.criticalDiskInverseBalance_twoRootProximity_strict",
+    "PalomarCorpus.E1041.CriticalGeometry.criticalGeometricMean_twoRootProximity",
+    "PalomarCorpus.E1041.CriticalGeometry.nearestSpoke_reciprocal_balance",
+    "PalomarCorpus.E1041.CriticalGeometry.nearestSpoke_unique_nearest_normSq",
+    "PalomarCorpus.E1041.CriticalGeometry.nearestSpoke_unique_nearest_spoke_escapes",
+    "PalomarCorpus.E1041.CyclicTrinomialFiber.cyclicTrinomial_two_short_fiber_displacements",
+    "PalomarCorpus.E1041.CyclicTrinomialFiber.trinomialRoot_spoke_factorization",
+    "PalomarCorpus.E1041.CyclicTrinomialFiber.trinomialRoot_spoke_norm_le_constant",
+    "PalomarCorpus.E1041.CyclicTrinomialFiber.trinomialRoot_spoke_norm_lt_one",
+    "PalomarCorpus.E1041.CyclicTrinomialFiber.trinomialRoot_spoke_norm_lt_one_of_norm_lt_one",
+    "PalomarCorpus.E1041.DegreeSevenCounterexample.degreeSevenCounterexample",
+    "PalomarCorpus.E1041.FirstMergeCriticalValueSeparation.firstMerge_exact_convenient_thresholds",
+    "PalomarCorpus.E1041.FirstMergeCriticalValueSeparation.firstMerge_length_lt_two_of_squared_bound",
+    "PalomarCorpus.E1041.QuarticQuotientFiber.rootLift_axis_integral",
+    "PalomarCorpus.E1041.QuarticQuotientFiber.rootLift_endpoint_budget_lt_two",
+    "PalomarCorpus.E1041.QuarticQuotientFiber.rootLift_kernel_le_axis",
+    "PalomarCorpus.E1041.QuarticQuotientFiber.rootLift_length_lt_two_of_le_endpoint_budget"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

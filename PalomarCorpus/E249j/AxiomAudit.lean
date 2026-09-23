@@ -1,3 +1,0 @@
-import Solutions.PalomarCorpus.E249j
-
-#print axioms PalomarCorpus.E249.PaperStatementsJ.b6_mobiusMersenneTheta_two_eq_totientSeries_sub_half

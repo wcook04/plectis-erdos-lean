@@ -14,7 +14,7 @@ project:
 
 palomar_qualification:
   status: "prepared_local_only"
-  selected_project: "formal_math/erdos257_period_noncollapse"
+  selected_project: "."
   comparator_config: "ExternalVerification257MixedWeightedCover/comparator.json"
   challenge_dependency_boundary: "Mathlib_only"
   replay_status: "not_run_for_this_entry"

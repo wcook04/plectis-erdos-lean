@@ -1,0 +1,29 @@
+import Solutions.PalomarCorpus.E257_31
+
+#print axioms PalomarCorpus.E257.PaperStructuresBP.exists_seamWord_minimal_above
+#print axioms PalomarCorpus.E257.PaperStructuresBP.integerGreedyBits_length
+#print axioms PalomarCorpus.E257.PaperStructuresBP.paper_perturbed_separation_global_maximality
+#print axioms PalomarCorpus.E257.PaperStructuresBP.paper_perturbed_two_stage_is_global_maximum
+#print axioms PalomarCorpus.E257.PaperStructuresBP.paper_perturbed_weak_cap_counterexample
+#print axioms PalomarCorpus.E257.PaperStructuresBP.paper_successor_remainders_fourteen_through_thirtyone
+#print axioms PalomarCorpus.E257.PaperStructuresBP.paper_unsafe_middle_range_is_three_integers
+#print axioms PalomarCorpus.E257.PaperStructuresBP.paper_upper_branch_needs_no_exceptional_cell
+#print axioms PalomarCorpus.E257.PaperStructuresBP.seamAboveWord_minimal
+#print axioms PalomarCorpus.E257.PaperStructuresBP.seamAboveWord_strict
+#print axioms PalomarCorpus.E257.PaperStructuresBP.seamAdjacentCut_below_admissible
+#print axioms PalomarCorpus.E257.PaperStructuresBP.seamAdjacentCut_below_maximal
+#print axioms PalomarCorpus.E257.PaperStructuresBP.seamPerturbedFamily_gap_pos
+#print axioms PalomarCorpus.E257.PaperStructuresBP.seamPerturbedFamily_oldSum_injective
+#print axioms PalomarCorpus.E257.PaperStructuresBP.seamPerturbedFamily_pulseCap_lt_three_gap
+#print axioms PalomarCorpus.E257.PaperStructuresBP.seamPerturbedFamily_separated
+#print axioms PalomarCorpus.E257.PaperStructuresBP.seamWeights_length_eq
+#print axioms PalomarCorpus.E257.PaperStructuresBP.weakCapCut_above_minimal
+#print axioms PalomarCorpus.E257.PaperStructuresBP.weakCapCut_above_strict
+#print axioms PalomarCorpus.E257.PaperStructuresBP.weakCapCut_below_admissible
+#print axioms PalomarCorpus.E257.PaperStructuresBP.weakCapCut_below_maximal
+#print axioms PalomarCorpus.E257.PaperStructuresBP.weakCapFamily_gap_pos
+#print axioms PalomarCorpus.E257.PaperStructuresBP.weakCapFamily_oldSum_injective
+#print axioms PalomarCorpus.E257.PaperStructuresBP.weakCapFamily_pulseCap_lt_three_gap
+#print axioms PalomarCorpus.E257.PaperStructuresBP.weakCapFamily_pulse_le
+#print axioms PalomarCorpus.E257.PaperStructuresBP.weakCapFamily_separated
+#print axioms PalomarCorpus.E257.PaperStructuresBP.wordPulse_le

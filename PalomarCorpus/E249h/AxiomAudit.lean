@@ -1,3 +1,0 @@
-import Solutions.PalomarCorpus.E249h
-
-#print axioms PalomarCorpus.E249.PaperStatementsH.irrational_totient_iff_moebius_square

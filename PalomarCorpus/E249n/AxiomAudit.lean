@@ -1,6 +1,0 @@
-import Solutions.PalomarCorpus.E249n
-
-#print axioms PalomarCorpus.E249.PaperStructuresN.certifiedKill_diagonal_t64
-#print axioms PalomarCorpus.E249.PaperStructuresN.certifiedKill_diagonal_t64_paper
-#print axioms PalomarCorpus.E249.PaperStructuresN.shortWindowSupply_single_witness_six_ninetyThree
-#print axioms PalomarCorpus.E249.PaperStructuresN.shortWindowSupply_witness_eq_t64_certificate

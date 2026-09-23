@@ -1,3 +1,0 @@
-import Solutions.PalomarCorpus.E1041i
-
-#print axioms PalomarCorpus.E1041.PaperStatementsI.exists_peak_le_comparisonBound

@@ -1,0 +1,13 @@
+import Solutions.PalomarCorpus.E251_01
+
+#print axioms PalomarCorpus.E251.PaperStatementsA.bounded_test_finite_coupling
+#print axioms PalomarCorpus.E251.PaperStatementsC.real_dyadic_orbit_eq_true_tail_iff
+#print axioms PalomarCorpus.E251.PaperStatementsG.dyadicPartialSumQ_eq_start_add_differences
+#print axioms PalomarCorpus.E251.PaperStatementsG.infinite_prime_gap_identity
+#print axioms PalomarCorpus.E251.PaperStatementsG.irrationality_reformulation
+#print axioms PalomarCorpus.E251.PaperStatementsG.prime0_dyadic_summation_by_parts
+#print axioms PalomarCorpus.E251.PaperStatementsG.rationality_classification
+#print axioms PalomarCorpus.E251.PaperStatementsH.real_block_identity
+#print axioms PalomarCorpus.E251.PaperStatementsI.local_target_interval
+#print axioms PalomarCorpus.E251.UniformSparseRationalisation.arbitrary_word_sparse_rationalisation_uniform
+#print axioms PalomarCorpus.E251.UniformSparseRationalisation.polylogarithmic_word_interval_uniform

@@ -1,5 +1,0 @@
-import Solutions.PalomarCorpus.E269b
-
-#print axioms PalomarCorpus.E269.PaperStatementsB.exponent_unique_real_base_short_interval
-#print axioms PalomarCorpus.E269.PaperStatementsB.no_bounded_positive_int_state_of_leastPositiveResidue
-#print axioms PalomarCorpus.E269.PaperStatementsB.real_two_prime_separation

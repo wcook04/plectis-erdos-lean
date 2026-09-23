@@ -1,3 +1,0 @@
-import Solutions.PalomarCorpus.E257ab
-
-#print axioms PalomarCorpus.E257.PaperStatementsAB.relationInvariantLinearChannels_det_eq_zero

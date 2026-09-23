@@ -1,0 +1,32 @@
+{
+  "challenge_module": "PalomarCorpus.E251_06.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E251_06",
+  "theorem_names": [
+    "PalomarCorpus.E251.ActualPrimeGapTail.exists_rationalPrimeGapTailState_representation_of_not_irrational",
+    "PalomarCorpus.E251.ActualPrimeGapTail.rationalPrimeGapTailShift_eventuallyIntegral",
+    "PalomarCorpus.E251.ActualPrimeGapTail.rationalPrimeGapTailState_recurrence",
+    "PalomarCorpus.E251.ActualPrimeGapTail.rationalPrimeGapTail_has_positive_shift_not_eventually_small",
+    "PalomarCorpus.E251.AffineCircularity.adjacent_small_mismatch_iff_signed_two_window",
+    "PalomarCorpus.E251.AffineCircularity.cofinal_affinePowTwo_escape_iff_not_eventuallyIntegral",
+    "PalomarCorpus.E251.AffineCircularity.cofinal_blockResidue_escape_iff_not_eventuallyIntegral",
+    "PalomarCorpus.E251.AllResidueLogarithmicCountermodel.exists_every_residue_logarithmic_countermodel",
+    "PalomarCorpus.E251.FreePairEquivalence.cofinalFreePairNonintegral_iff_cofinalNonintegralTailShifts",
+    "PalomarCorpus.E251.FreePairEquivalence.exists_free_pair_lattice",
+    "PalomarCorpus.E251.FreePairEquivalence.free_pair_integral_iff_modEq",
+    "PalomarCorpus.E251.FreePairEquivalence.irrational_initial_iff_cofinalFreePairNonintegral",
+    "PalomarCorpus.E251.FreePairEquivalence.irrational_primeGap_tsum_iff_cofinalFreePairNonintegral",
+    "PalomarCorpus.E251.FreePairEquivalence.primeGapRealTail_recurrence",
+    "PalomarCorpus.E251.FreePairEquivalence.primeGapRealTail_zero",
+    "PalomarCorpus.E251.KernelDenominatorFloor.cert_10000",
+    "PalomarCorpus.E251.KernelDenominatorFloor.den_bound_of_certCheck",
+    "PalomarCorpus.E251.KernelDenominatorFloor.kernel_denominator_floor",
+    "PalomarCorpus.E251.KernelDenominatorFloor.kernel_denominator_floor_primeGap",
+    "PalomarCorpus.E251.LcmDiagonalCriterion.notIrrationalInitial_iff_exists_integral_positive_tailShift"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

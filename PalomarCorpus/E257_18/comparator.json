@@ -1,0 +1,14 @@
+{
+  "challenge_module": "PalomarCorpus.E257_18.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257_18",
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStatementsAA.largest_false_rank_algebra",
+    "PalomarCorpus.E257.PaperStatementsG.isLastHalfGreedySkip_iff_skip_and_fatal"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

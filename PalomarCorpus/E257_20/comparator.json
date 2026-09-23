@@ -1,0 +1,27 @@
+{
+  "challenge_module": "PalomarCorpus.E257_20.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257_20",
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStatementsAA.linearDescender_eq_smul_eval",
+    "PalomarCorpus.E257.PaperStatementsAA.paper_reverse_carry_word",
+    "PalomarCorpus.E257.PaperStatementsAA.paper_two_thirds_band",
+    "PalomarCorpus.E257.PaperStatementsAA.reverse_carry_word_common_bound_sharp",
+    "PalomarCorpus.E257.PaperStatementsAB.relationInvariantLinearChannels_det_eq_zero",
+    "PalomarCorpus.E257.PaperStatementsAC.dyadicBandEscape_iff_exists_critical",
+    "PalomarCorpus.E257.PaperStatementsAC.exists_criticalDyadicBandIndex",
+    "PalomarCorpus.E257.PaperStatementsAH.mersenneGap_pos",
+    "PalomarCorpus.E257.PaperStatementsAL.supportCoeff_extend_true_eq_false_add_one_at_double",
+    "PalomarCorpus.E257.PaperStatementsAM.mersenneGap_tail_le",
+    "PalomarCorpus.E257.PaperStatementsAM.paper_sharp_fatal_gap",
+    "PalomarCorpus.E257.PaperStatementsAM.summable_mersenneGap_succ",
+    "PalomarCorpus.E257.PaperStatementsAM.tendsto_mersenneGap_tail_zero",
+    "PalomarCorpus.E257.PaperStatementsAN.supportCoeff_insert_eq_add_indicator",
+    "PalomarCorpus.E257.PaperStatementsI.mobiusCenteredHalfCarry_add_two"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

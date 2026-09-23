@@ -1,0 +1,25 @@
+{
+  "challenge_module": "PalomarCorpus.E269_01.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E269_01",
+  "theorem_names": [
+    "PalomarCorpus.E269.PaperStatementsA.paper_jump_count",
+    "PalomarCorpus.E269.PaperStatementsB.exponent_unique_real_base_short_interval",
+    "PalomarCorpus.E269.PaperStatementsD.realPrefixLcm_eq_of_sameLogCell",
+    "PalomarCorpus.E269.PaperStatementsD.realPrefixLcm_jump_first",
+    "PalomarCorpus.E269.PaperStatementsD.realPrefixLcm_jump_second",
+    "PalomarCorpus.E269.PaperStatementsD.realPrefixLcm_jump_third",
+    "PalomarCorpus.E269.PaperStatementsD.realSmoothExponentShell_bounds",
+    "PalomarCorpus.E269.PaperStatementsD.running_lcm_real_cutoff_exact",
+    "PalomarCorpus.E269.PaperStatementsD.threePrimeKernelQ_eq_of_sameRealLogCell",
+    "PalomarCorpus.E269.PaperStatementsX.two_prime_sums_transcendental",
+    "PalomarCorpus.E269.PaperStatementsX.two_prime_transcendence",
+    "PalomarCorpus.E269.PaperStatementsY.transcendental_heckeValue",
+    "PalomarCorpus.E269.ThreePrimeStructure.finiteSmoothKernelSum_groupedByHeight"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

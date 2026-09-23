@@ -1,0 +1,127 @@
+version: v0.4
+project:
+  name: 'Erdős #257, note sections 1 to 9: introduction and main results; finite-support denominator periods; greedy membership and an integer recurrence'
+  description: >-
+    This entry states 8 theorems that only the short note for Erdős problem #257 states, in sections 1 (introduction and main results), 4 (finite-support denominator periods), 8 (greedy membership and an integer recurrence) and 9 (further questions): the theorem “a weighted condition on the support” (section 1), as finitePrimeWeighted_fixedBase_hereditary; the theorem “reciprocal-summable supports” (section 1), as irrational_erdosSupportSeries_of_summable_reciprocal; the theorem “the exact denominator period” (section 4), as coprime_base_den_finiteErdosSum and lcm_lt_den_finiteErdosSum; the theorem “membership and nonincreasing integer remainders” (section 8), as paper_general_repair_criteria; the theorem “integer-quotient tests for 1/21” (section 9), as one_div_twenty_one_mem_mersenneAchievementSet_of_cofinalGreedyDecay and twentyOneCofinalEvenQuotientGreedyDecay_of_closedRows; the theorem “finite approximations with vanishing scaled error” (section 9), as paper_terminalhalf.
+
+    5 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 3 are derived from the source declaration by a short tactic proof, which certifies implication.
+
+    Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
+
+    Erdős problem #257 remains open, and no theorem in this entry decides it.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.NT
+  - math.CA
+  - math.DS
+  msc2020:
+  - "11J72"
+  - "11A25"
+  - "11A07"
+  - "11B37"
+  - "11B83"
+  - "28A80"
+  - "11K16"
+sources:
+- title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: "The compared theorems are independently restated Lean theorems proved in this repository and described in the public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos."
+  license: Apache-2.0
+  author_endorsement: participated
+- title: Erdős Problems catalogue
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com
+  type: web discussion
+  relationship: background
+  note: "Catalogue numbering and status of the parent problem."
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+status:
+  scope: "One Comparator configuration selecting the 8 theorems listed in PalomarCorpus/E257_39/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 43 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_43, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 8
+  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E257_39/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
+  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: "PalomarCorpus.E257.PaperStatementsAG.coprime_base_den_finiteErdosSum"
+    file: "Solutions/PalomarCorpus/E257_39/PaperStatementsAG.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_39/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAG.lcm_lt_den_finiteErdosSum"
+    file: "Solutions/PalomarCorpus/E257_39/PaperStatementsAG.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_39/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAV.irrational_erdosSupportSeries_of_summable_reciprocal"
+    file: "Solutions/PalomarCorpus/E257_39/PaperStatementsAV.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_39/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsBC.finitePrimeWeighted_fixedBase_hereditary"
+    file: "Solutions/PalomarCorpus/E257_39/PaperStatementsBC.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_39/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsBC.paper_terminalhalf"
+    file: "Solutions/PalomarCorpus/E257_39/PaperStatementsBC.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_39/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsM.paper_general_repair_criteria"
+    file: "Solutions/PalomarCorpus/E257_39/PaperStatementsM.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_39/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBM.one_div_twenty_one_mem_mersenneAchievementSet_of_cofinalGreedyDecay"
+    file: "Solutions/PalomarCorpus/E257_39/PaperStructuresBM.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_39/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBQ.twentyOneCofinalEvenQuotientGreedyDecay_of_closedRows"
+    file: "Solutions/PalomarCorpus/E257_39/PaperStructuresBQ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_39/comparator.json"
+  development_status: substantive
+  local_proof_provenance: "the proof modules Erdos249257, ErdosProblems.Erdos257 in this repository, imported by Solutions.PalomarCorpus.E257_39; the Solutions.ExternalVerification257* family modules are a regression mirror of the same proofs and are not imported by this configuration"
+  canonical_claim_status: "problem-level Comparator entry over substantive Lean in this repository"
+automation:
+  methods:
+  - method: manual
+    models: []
+    framework: Mathematical interpretation and claim-boundary review
+    tool_setup: Human-directed scope and significance review
+  - method: agent
+    models:
+    - Anthropic Claude
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+    cost:
+      wall_time: not tracked
+      spend_usd: subscription-based
+      hardware: local machine
+      prompting_notes: n/a
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    Every generated restatement was bound to a paper statement and refereed in the eight-paper coverage ledger before its wrapper was generated, and its transport proof was elaborated before the statement was accepted. The author selected the statements and is responsible for the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

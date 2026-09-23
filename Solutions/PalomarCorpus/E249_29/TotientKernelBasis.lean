@@ -1,0 +1,78 @@
+/-
+Copyright (c) 2026 Will Cook. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Will Cook
+-/
+import Mathlib
+import Erdos257PeriodNoncollapse.AllBaseTotientKernel
+import ErdosProblems.Erdos249.PaperCompleteR8.KernelRelationBasis
+import Solutions.PalomarCorpus.E249_29.Statement
+
+open Module
+
+namespace PalomarCorpus.E249.TotientKernelBasis
+
+theorem allSlopeAffineTotientFormsLinearIndependent
+    {ι : Type*} [Fintype ι] [DecidableEq ι]
+    (a b : ι → ℕ) (ha : ∀ i, 0 < a i) (hb : ∀ i, 0 < b i)
+    (hcross : ∀ i j, i ≠ j → a i * b j ≠ a j * b i) :
+    LinearIndependent ℚ (fun (i : ι) (n : ℕ) => (Nat.totient (a i * n + b i) : ℚ)) :=
+  Erdos257PeriodNoncollapse.linearIndependent_totientAffineForms a b ha hb hcross
+
+theorem kernelSeq_eq (k j r : ℕ) :
+    kernelSeq k j r = Erdos257PeriodNoncollapse.allBaseTotientKernelSeq k j r := rfl
+
+theorem canonicalResidue_eq (k : ℕ) {e : ℕ}
+    (x : Σ j : Fin e, Fin (k ^ j.val) × Fin (k - 1)) :
+    canonicalResidue k x = Erdos257PeriodNoncollapse.allBaseCanonicalResidue k x := rfl
+
+theorem canonicalFamily_eq (k e : ℕ) :
+    canonicalFamily k e = Erdos257PeriodNoncollapse.allBaseCanonicalFamily k e := by
+  funext i
+  cases i with
+  | inl i => rfl
+  | inr x => rfl
+
+theorem throughLevelFamily_eq (k e : ℕ) :
+    throughLevelFamily k e = Erdos257PeriodNoncollapse.allBaseThroughLevelFamily k e := by
+  funext x
+  rcases x with ⟨j, r⟩
+  rfl
+
+theorem relationMap_eq (k e : ℕ) :
+    relationMap k e = Erdos257PeriodNoncollapse.allBaseRelationMap k e := by
+  simp only [relationMap, Erdos257PeriodNoncollapse.allBaseRelationMap,
+    throughLevelFamily_eq]
+
+theorem allBaseTotientKernelBasisRankAndRelationDimension
+    (k e : ℕ) (hk : 2 ≤ k) (he : 1 ≤ e) :
+    LinearIndependent ℚ (canonicalFamily k e) ∧
+      Submodule.span ℚ (Set.range (throughLevelFamily k e)) =
+        Submodule.span ℚ (Set.range (canonicalFamily k e)) ∧
+      Nonempty (Basis (CanonicalIndex k e) ℚ
+        (Submodule.span ℚ (Set.range (throughLevelFamily k e)))) ∧
+      finrank ℚ (Submodule.span ℚ (Set.range (throughLevelFamily k e))) =
+        k ^ e + 1 ∧
+      finrank ℚ (LinearMap.ker (relationMap k e)) =
+        ∑ j ∈ Finset.Ico 1 e, k ^ j := by
+  rw [canonicalFamily_eq, throughLevelFamily_eq, relationMap_eq]
+  exact ⟨Erdos257PeriodNoncollapse.linearIndependent_allBaseCanonicalFamily k e hk,
+    Erdos257PeriodNoncollapse.span_allBaseThroughLevelFamily_eq k e hk he,
+    ⟨Erdos257PeriodNoncollapse.allBaseTotientKernelBasis k e hk he⟩,
+    Erdos257PeriodNoncollapse.finrank_allBaseThroughLevelFamily_eq k e hk he,
+    Erdos257PeriodNoncollapse.finrank_allBaseRelationModule_eq k e hk he⟩
+
+set_option smartUnfolding false in
+theorem displayed_integral_normal_form (k e : ℕ) (hk : 2 ≤ k) (he : 1 ≤ e) :
+    (∃ c : Basis (CanonicalIndex k e) ℤ (IntegralChannelSpan k e),
+      ∀ i, (c i : ℕ → ℚ) = canonicalFamily k e i) ∧
+    (∃ b : Basis (OmittedIntegralChannel k e hk he) ℤ (IntegralRelations k e),
+      ∀ o, ∃ j : CanonicalIndex k e, ∃ a : ℕ,
+        throughLevelFamily k e o.val = (a : ℤ) • canonicalFamily k e j ∧
+        (b o : ThroughLevelIndex k e →₀ ℤ) =
+          Finsupp.single o.val 1 - Finsupp.single (retainedChannel k e hk he j) (a : ℤ)) ∧
+    finrank ℤ (IntegralRelations k e) =
+      ∑ j ∈ Finset.range (e - 1), k ^ (j + 1) :=
+  ErdosProblems.Erdos249.PaperCompleteR8.displayed_integral_normal_form k e hk he
+
+end PalomarCorpus.E249.TotientKernelBasis

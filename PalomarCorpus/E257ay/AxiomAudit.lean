@@ -1,6 +1,0 @@
-import Solutions.PalomarCorpus.E257ay
-
-#print axioms PalomarCorpus.E257.PaperStructuresAY.localMersenneHalfTarget_lower_word_eq_greedy_and_remainder_eq
-#print axioms PalomarCorpus.E257.PaperStructuresAY.localMersenneWeightsFrom_gapDominates
-#print axioms PalomarCorpus.E257.PaperStructuresAY.localMersenneWeights_gapDominates_even
-#print axioms PalomarCorpus.E257.PaperStructuresAY.localMersenneWeights_gapDominates_odd

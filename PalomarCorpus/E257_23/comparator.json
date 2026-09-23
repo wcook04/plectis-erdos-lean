@@ -1,0 +1,27 @@
+{
+  "challenge_module": "PalomarCorpus.E257_23.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257_23",
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStatementsAA.sub_two_le_two_pow_sub_four",
+    "PalomarCorpus.E257.PaperStatementsAD.exists_boolean_word_of_lt_two_pow",
+    "PalomarCorpus.E257.PaperStatementsAD.localMersenneQuotient_eq_two_pow_sub_of_half_lt",
+    "PalomarCorpus.E257.PaperStatementsAR.exactLocalMersenneHalfRow_two_mul_sub_two_of_skippedCoreSharpCapacity",
+    "PalomarCorpus.E257.PaperStatementsAR.exists_exactRowStrictUpperFill_of_skippedCoreSharpCapacity",
+    "PalomarCorpus.E257.PaperStatementsAR.paper_exact_row_from_skipped_prefix",
+    "PalomarCorpus.E257.PaperStatementsAR.precriticalCrossingTax_of_futureThreshold",
+    "PalomarCorpus.E257.PaperStatementsBE.paper_critical_dyadic_band_index_eq_top_of_le_two",
+    "PalomarCorpus.E257.PaperStatementsBE.paper_critical_dyadic_band_index_unique",
+    "PalomarCorpus.E257.PaperStatementsBE.paper_critical_dyadic_boundary_is_smallest",
+    "PalomarCorpus.E257.PaperStatementsBE.paper_dyadic_band_escape_iff_single_test",
+    "PalomarCorpus.E257.PaperStatementsF.halfGreedySkippedCriticalQuotientSupply_of_precriticalSuffix",
+    "PalomarCorpus.E257.PaperStatementsF.halfGreedySkippedPrecriticalSuffixSupply_iff_preTake",
+    "PalomarCorpus.E257.PaperStatementsF.halfGreedy_precriticalSuffix_lt_of_future_skip_after_takenBlock",
+    "PalomarCorpus.E257.PaperStatementsF.halfGreedy_precriticalSuffix_lt_of_next_skip"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

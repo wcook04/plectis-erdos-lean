@@ -1,0 +1,18 @@
+{
+  "challenge_module": "PalomarCorpus.E68_05.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E68_05",
+  "theorem_names": [
+    "PalomarCorpus.E68.PaperStatementsA.carry_characterisation",
+    "PalomarCorpus.E68.PaperStatementsA.companion_orbit_boundary",
+    "PalomarCorpus.E68.PaperStatementsA.divisor_channel_coordinates",
+    "PalomarCorpus.E68.PaperStatementsA.finite_channel_moment_certificate",
+    "PalomarCorpus.E68.PaperStatementsA.finite_channel_moment_certificate_eq",
+    "PalomarCorpus.E68.PaperStatementsA.global_complementary_criterion_nat"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

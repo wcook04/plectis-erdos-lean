@@ -1,3 +1,0 @@
-import Solutions.PalomarCorpus.E249bm
-
-#print axioms PalomarCorpus.E249.PaperStatementsBM.totientTail_eq_tsum_mobius_inversion

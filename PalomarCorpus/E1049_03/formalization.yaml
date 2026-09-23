@@ -1,0 +1,213 @@
+version: v0.4
+project:
+  name: 'Erdős #1049, record sections 3 to 5; the adelic height bridge family: power comparisons and Hankel determinants; congruences after evaluation at 3/2'
+  description: >-
+    This entry states 5 theorems that the long record for Erdős problem #1049 states in sections 3 (power comparisons and Hankel determinants) and 5 (congruences after evaluation at 3/2): the theorem “sharp power bracket” (section 3), as power_bracket; the corollary “gaps between the stated logarithmic thresholds” (section 3), as height_and_hankel_deficits; the theorem “bounds for two proposed degree savings” (section 3), as charge_ceilings; the theorem “the first nonzero term at every rank” (section 3.1), as coeff_zudilinNormalizedHankelDet_all_rat; the theorem “equal residues with different values” (section 5), as exists_ne_map_eq_map_ne_of_card_mul_lt.
+
+    It also states 13 theorems of the adelic height bridge development of the Lean formalisation of Erdős problem #1049, to which no paper statement is bound. zudilin_firstTransformedRow_initialMonomial: For every column index l, the entry of the first transformed row in that column has power series order exactly l + 1, the order being pinned to that finite value in the extended naturals, and coefficient exactly -6 in that degree, so its initial monomial is -6 q^(l+1). zudilinSharpHankelOrderAndCoeff_algebraicAssembly: Two division-free closed forms for the assembled Hankel data: six times the sum over j < N of j^2 equals N(N-1)(2N-1), and 2^N times the product over j < N of (j+1)^2 (j+2)/2 equals (N!)^2 (N+1)!. zudilinSharpHankelOrderAndCoeff_all: For every natural N, the normalised Hankel determinant of rank N has power series order equal to the sum over j < N of j^2, which is N(N-1)(2N-1)/6, pinned to that finite value in the extended naturals, and its coefficient in that degree equals the product over j < N of (j+1)^2 (j+2)/2. threePow_fortyOne_lt_twoPow_sixtyFive: The exact integer comparison 3^41 < 2^65, equivalently log 3 / log 2 < 65/41. twoPow_sixtyFour_lt_threePow_fortyOne: The exact integer comparison 2^64 < 3^41, the lower half of the same bracket. threeHalves_rectangular_hp_gap_gt_threeThirteenths: For every rho >= 0 and every sigma >= 1 + rho, that is over the whole admissible rectangular exponent cone, the model threshold falls short of log 2 / log 3 by more than 3/13. threeHalves_hankelChargeThreshold_lt_eightFortyOne: The real inequality (log 3 / log 2 - 1)/3 < 8/41, a consequence of 3^41 < 2^65. zudilinScalarContent_cannot_meet_required_charge: For integers N > 0 and extractedDegree at most N^3 - N, which is the ceiling for the scalar content of the cubic Hankel determinant, one has 41 extractedDegree < 39 (4N^3 - 3N^2). zudilinScalarPlusBorder_cannot_meet_required_charge: The same comparison with the larger ceiling: for integers N >= 2 and extractedDegree at most 2N^3 - N, which covers scalar content together with the forced first-order residual border, one still has 41 extractedDegree < 39 (4N^3 - 3N^2). three_two_scalar_margin_lt_explicit: For real C0 > 0 and C1 with 2 C0 <= C1, the balance C0 log 3 - C1 log 2 is strictly below -(17/41) C0 log 2. exists_distinct_binary_selectors_same_fourJet_of_power_certificate: Let forms be any n pairs of integer polynomials, let W be any width, let T > 0, and let 3^p < 2^q be any integer power certificate. exists_distinct_binary_selectors_same_fourJet_of_rank_41: The specialisation of the previous theorem at p = 41 and q = 65: for T > 0 and any family of n >= 130T + 2S pairs of integer polynomials, two distinct Boolean selectors have the same four-jet signature sum at bottom depth 41T and top depth S. fourJet_card_gt_two_pow_of_rank_41: For every S, the number 2^(129 + 2S) is strictly smaller than the cardinality of the four-jet signature group at bottom depth 41 and top depth S.
+
+    3 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement.
+
+    Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
+
+    Erdős problem #1049 remains open, and no theorem in this entry decides it.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.NT
+  - math.CA
+  msc2020:
+  - "11J72"
+  - "11J82"
+  - "11J13"
+  - "11J17"
+  - "33D15"
+  - "41A21"
+sources:
+- title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: "The compared theorems are independently restated Lean theorems proved in this repository and described in the public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos."
+  license: Apache-2.0
+  author_endorsement: participated
+- title: "On the irrationality of certain series: problems and results"
+  authors:
+  - "Paul Erdős"
+  id: "doi:10.1017/CBO9780511897184.009"
+  type: "paper"
+  relationship: "background"
+  note: "Poses the irrationality question for the Lambert value at rational bases (pages 102 to 109); no theorem in this entry is taken from it and none answers the question it poses."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Arithmetical investigations of a certain infinite product"
+  authors:
+  - "Peter Bundschuh"
+  - "Keijo Väänänen"
+  id: "https://numdam.org/item/CM_1994__91_2_175_0.pdf"
+  type: "paper"
+  relationship: "background"
+  note: "Compositio Math. 91 (1994), 175-199; Theorem 2 in the alpha = -1 case supplies the published height cutoff 1/2 - 1/pi^2 for rational bases. Only that elementary parameter inequality is written down here; their analytic irrationality theorem is not internalised or used."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "On the irrationality of generalized q-logarithm"
+  authors:
+  - "Wadim Zudilin"
+  id: "arXiv:1601.02688"
+  type: "paper"
+  relationship: "background"
+  note: "Res. Number Theory 2 (2016), Art. 15; Section 4 (pages 6 and 7) proves the order inequality for the normalised Hankel determinant, and a remark in Section 2 (page 4) announces a rational-base extension with an unspecified computable constant. The normalised moments and the Hankel determinant restated here are Zudilin's construction; the compared statements give the order and coefficient of the first transformed row and the order and leading coefficient of the determinant at every rank, and no result of the paper is assumed."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Little q-Legendre polynomials and irrationality of certain Lambert series"
+  authors:
+  - "Walter Van Assche"
+  id: "doi:10.1023/A:1012930828917"
+  type: "paper"
+  relationship: "background"
+  note: "Ramanujan J. 5 (2001), 295-310; recovers the integer-base irrationality exponent 2 pi^2/(pi^2 - 2) by little q-Legendre Pade approximants and supplies the scalar outward-evaluation architecture that the wider project measures. Nothing from it is assumed or formalised, and no declaration in this entry refers to its approximants."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "À propos de la série sum x^n/(q^n - 1)"
+  authors:
+  - "Daniel Duverney"
+  id: "https://numdam.org/item/JTNB_1996__8_1_173_0.pdf"
+  type: "paper"
+  relationship: "background"
+  note: "J. Théor. Nombres Bordeaux 8 (1996), 173-181; Theorem 2 gives a rational-base irrationality region for this same series, showing that rational bases were already in the literature. No statement here is taken from it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: Erdős Problems catalogue
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com
+  type: web discussion
+  relationship: background
+  note: "Catalogue numbering and status of the parent problem."
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+status:
+  scope: "One Comparator configuration selecting the 18 theorems listed in PalomarCorpus/E1049_03/comparator.json, from the Lean development for Erdős problem #1049. The problem's theorems are packed, in the order the papers state them, into the 8 entries PalomarCorpus/E1049_01 to PalomarCorpus/E1049_08, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification1049* directories are internal regression inventory and are not selected."
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 18
+  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E1049_03/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
+  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: "PalomarCorpus.E1049.AdelicHeightBridge.coeff_zudilinNormalizedHankelDet_all_rat"
+    file: "Solutions/PalomarCorpus/E1049_03/AdelicHeightBridge.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1049_03/comparator.json"
+  - declaration: "PalomarCorpus.E1049.AdelicHeightBridge.exists_distinct_binary_selectors_same_fourJet_of_power_certificate"
+    file: "Solutions/PalomarCorpus/E1049_03/AdelicHeightBridge.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1049_03/comparator.json"
+  - declaration: "PalomarCorpus.E1049.AdelicHeightBridge.exists_distinct_binary_selectors_same_fourJet_of_rank_41"
+    file: "Solutions/PalomarCorpus/E1049_03/AdelicHeightBridge.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1049_03/comparator.json"
+  - declaration: "PalomarCorpus.E1049.AdelicHeightBridge.exists_ne_map_eq_map_ne_of_card_mul_lt"
+    file: "Solutions/PalomarCorpus/E1049_03/AdelicHeightBridge.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1049_03/comparator.json"
+  - declaration: "PalomarCorpus.E1049.AdelicHeightBridge.fourJet_card_gt_two_pow_of_rank_41"
+    file: "Solutions/PalomarCorpus/E1049_03/AdelicHeightBridge.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1049_03/comparator.json"
+  - declaration: "PalomarCorpus.E1049.AdelicHeightBridge.threeHalves_hankelChargeThreshold_lt_eightFortyOne"
+    file: "Solutions/PalomarCorpus/E1049_03/AdelicHeightBridge.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1049_03/comparator.json"
+  - declaration: "PalomarCorpus.E1049.AdelicHeightBridge.threeHalves_rectangular_hp_gap_gt_threeThirteenths"
+    file: "Solutions/PalomarCorpus/E1049_03/AdelicHeightBridge.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1049_03/comparator.json"
+  - declaration: "PalomarCorpus.E1049.AdelicHeightBridge.threePow_fortyOne_lt_twoPow_sixtyFive"
+    file: "Solutions/PalomarCorpus/E1049_03/AdelicHeightBridge.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1049_03/comparator.json"
+  - declaration: "PalomarCorpus.E1049.AdelicHeightBridge.three_two_scalar_margin_lt_explicit"
+    file: "Solutions/PalomarCorpus/E1049_03/AdelicHeightBridge.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1049_03/comparator.json"
+  - declaration: "PalomarCorpus.E1049.AdelicHeightBridge.twoPow_sixtyFour_lt_threePow_fortyOne"
+    file: "Solutions/PalomarCorpus/E1049_03/AdelicHeightBridge.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1049_03/comparator.json"
+  - declaration: "PalomarCorpus.E1049.AdelicHeightBridge.zudilinScalarContent_cannot_meet_required_charge"
+    file: "Solutions/PalomarCorpus/E1049_03/AdelicHeightBridge.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1049_03/comparator.json"
+  - declaration: "PalomarCorpus.E1049.AdelicHeightBridge.zudilinScalarPlusBorder_cannot_meet_required_charge"
+    file: "Solutions/PalomarCorpus/E1049_03/AdelicHeightBridge.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1049_03/comparator.json"
+  - declaration: "PalomarCorpus.E1049.AdelicHeightBridge.zudilinSharpHankelOrderAndCoeff_algebraicAssembly"
+    file: "Solutions/PalomarCorpus/E1049_03/AdelicHeightBridge.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1049_03/comparator.json"
+  - declaration: "PalomarCorpus.E1049.AdelicHeightBridge.zudilinSharpHankelOrderAndCoeff_all"
+    file: "Solutions/PalomarCorpus/E1049_03/AdelicHeightBridge.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1049_03/comparator.json"
+  - declaration: "PalomarCorpus.E1049.AdelicHeightBridge.zudilin_firstTransformedRow_initialMonomial"
+    file: "Solutions/PalomarCorpus/E1049_03/AdelicHeightBridge.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1049_03/comparator.json"
+  - declaration: "PalomarCorpus.E1049.PaperStatementsK.charge_ceilings"
+    file: "Solutions/PalomarCorpus/E1049_03/PaperStatementsK.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1049_03/comparator.json"
+  - declaration: "PalomarCorpus.E1049.PaperStatementsK.power_bracket"
+    file: "Solutions/PalomarCorpus/E1049_03/PaperStatementsK.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1049_03/comparator.json"
+  - declaration: "PalomarCorpus.E1049.PaperStatementsN.height_and_hankel_deficits"
+    file: "Solutions/PalomarCorpus/E1049_03/PaperStatementsN.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1049_03/comparator.json"
+  development_status: substantive
+  local_proof_provenance: "the proof modules ErdosProblems.Erdos1049 in this repository, imported by Solutions.PalomarCorpus.E1049_03; the Solutions.ExternalVerification1049* family modules are a regression mirror of the same proofs and are not imported by this configuration"
+  canonical_claim_status: "problem-level Comparator entry over substantive Lean in this repository"
+automation:
+  methods:
+  - method: manual
+    models: []
+    framework: Mathematical interpretation and claim-boundary review
+    tool_setup: Human-directed scope and significance review
+  - method: agent
+    models:
+    - Anthropic Claude
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+    cost:
+      wall_time: not tracked
+      spend_usd: subscription-based
+      hardware: local machine
+      prompting_notes: n/a
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    The statements from the hand-written families were checked declaration by declaration against the public problem notes, the reasoning records and the Lean sources in automated review passes run with Anthropic Claude and OpenAI Codex. Every generated restatement was bound to a paper statement and refereed in the eight-paper coverage ledger before its wrapper was generated, and its transport proof was elaborated before the statement was accepted. The author selected the statements and is responsible for the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

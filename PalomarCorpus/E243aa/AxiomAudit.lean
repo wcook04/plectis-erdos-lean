@@ -1,3 +1,0 @@
-import Solutions.PalomarCorpus.E243aa
-
-#print axioms PalomarCorpus.E243.PaperStructuresAA.tail_multiplier_quadratic_lower

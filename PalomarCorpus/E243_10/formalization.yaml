@@ -1,0 +1,234 @@
+version: v0.4
+project:
+  name: 'Erdős #243, the bounded negative part rigidity, bounded rise reduced tail and periodic negative orbit families'
+  description: >-
+    This entry states 16 theorems of the bounded negative part rigidity, bounded rise reduced tail, periodic negative orbit, primitive record rigidity and protected epoch energy developments of the Lean formalisation of Erdős problem #243, to which no paper statement is bound. boundedNegativePart_completeRigidity: Principal integer-state theorem: for natural sequences with `a n > 1` and `C n > 0` obeying the exact cleared dynamics `C (n+1) + D n = a n * C n` and `D (n+1) = a n * D n`, with centred error `E n = D n - (a n - 1) * C n` taken in the integers, if `E` has an eventually bounded negative part, meaning `-B ≤ E n` for all `n` past some index, and satisfies division-free normalised vanishing, meaning that for every scale `K` one eventually has `K * |E n| < C n` in the naturals, then `E n = 0` from some index onward and `a (n+1) = a n ^ 2 - a n + 1` in the integers from some index onward. no_boundedRise_of_tailAvoidance: An unbounded natural sequence cannot have bounded upward increments while avoiding every earlier modulus in a pairwise coprime tail of moduli greater than one. no_boundedRise_reducedTail: Unconditional exclusion: there is no reduced exact tail of naturals with `a n > 1` for every `n`, `u n` coprime to `v n` for every `n`, `u (n+1) + v n = a n * u n`, `v (n+1) = a n * v n`, a fixed `B > 0` with `u (n+1) ≤ u n + B` at every index, and `u n → ∞`. no_eventuallyBoundedRise_reducedTail: The reduced numerator of a reciprocal-tail recurrence cannot tend to infinity while having eventually bounded upward increments. no_phasePrimitivePeriodicNegative_orbit: Unconditional exclusion of a phase-primitive periodic negative-error orbit: for natural sequences with `a n ≥ 2`, `0 < e n < a n`, `D (n+1) = a n * D n`, `C (n+1) = C n + e n`, the shape equation `D n + e n = (a n - 1) * C n`, a period `h > 0` with `e (n+h) = e n`, a positive drift `C (n+h) = C n + M` with `M > 0`, and the primitivity condition that no prime dividing `M` divides both `C 0` and every value of `e`, the hypotheses are contradictory. no_periodicNegative_orbit: The same exclusion at an arbitrary common scale, with the primitivity condition removed: for natural sequences with `a n ≥ 2`, `0 < e n < a n`, `D (n+1) = a n * D n`, `C (n+1) = C n + e n`, `D n + e n = (a n - 1) * C n`, period `h > 0` and positive drift `C (n+h) = C n + M` with `M > 0`, the hypotheses are contradictory. no_eventuallyPeriodicNegative_orbit: Eventual form of the periodic exclusion, with every hypothesis imposed only from an offset `N`: `a n ≥ 2` for `n ≥ N`, `0 < e (N+n) < a (N+n)` for every `n`, `D (n+1) = a n * D n`, `C (n+1) = C n + e n` and `D n + e n = (a n - 1) * C n` for `n ≥ N`, `e (N+n+h) = e (N+n)` with `h > 0`, and `C (N+n+h) = C (N+n) + M` with `M > 0`. primitive_valuation_no_drop: Supporting lemma on one primitive step with arbitrary cancellation: given `w + v = a * u`, `w = hc * u'` and `a * v = hc * v'` with `u` coprime to `v`, `v > 0` and `w > 0`, a prime power `p ^ l` dividing `v` still divides the next denominator `v'` as soon as the raw numerator satisfies `w < p ^ (l+1)`. protectedPrimePower_persists: Supporting lemma: along a primitive orbit with arbitrary cancellation from index `s`, satisfying `w n + v n = a n * u n`, `w n = hc n * u (n+1)`, `a n * v n = hc n * v (n+1)`, `u n` coprime to `v n`, `v n > 0`, `w n > 0` and the slow bound `2 * w n ≤ 3 * u n`, if `p` is prime with `p ^ l ∣ v s` and the height `H` obeys `3 * H < 2 * p ^ (l+1)`, then `p ^ l ∣ v n` at every index `n ≥ s` whose strictly earlier window `s ≤ k < n` keeps `u k < H`. odd_record_cut: Supporting lemma, the odd cut: under the same primitive-orbit hypotheses from `s` with the slow bound `2 * w n ≤ 3 * u n`, a prime `p`, an exponent `l ≥ 1`, an odd height `H` divisible by `p` with `runningMax u s < H` and `3 * H < 2 * p ^ (l+1)`, `p ^ l ∣ v s`, and every record-setting step from `s` onward rising by at most `2`, the numerator satisfies `u n < H` for every `n ≥ s`. exists_oddMultiple_trapHeight: Supporting lemma: for an odd `p ≥ 2`, an exponent `l ≥ 1` and a bound `R` with `3 * R < p ^ l`, there exists an odd multiple `H` of `p` with `R < H` and `3 * H < 2 * p ^ (l+1)`, so a large odd power `p ^ l` always supplies a trap height above the current record and below the protection ceiling. numerator_bounded_of_oddPrimePower: Supporting lemma combining the trap height with the odd cut: for a primitive orbit from `s` with arbitrary cancellation, meaning `w n + v n = a n * u n`, `w n = hc n * u (n+1)`, `a n * v n = hc n * v (n+1)`, `v n > 0`, `w n > 0` and `u n` coprime to `v n` at every `n ≥ s`, with the slow bound `2 * w n ≤ 3 * u n`, every record-setting step rising by at most `2`, an odd prime `p`, an exponent `l ≥ 1`, `p ^ l ∣ v s` and `3 * runningMax u s < p ^ l`, the numerator is bounded: there is an `H` with `u n < H` for every `n ≥ s`. centeredZero_forces_unit: Supporting lemma: at a primitive step with `u` coprime to `v`, `w + v = a * u` and `w = hc * u'`, a vanishing centred error `v - (a - 1) * u = 0` in the integers forces `u = 1`, `w = 1`, `hc = 1` and `u' = 1`, so the tail sits in its unit normal form with no cancellation at that step. sylvesterStep_of_centeredZero_pair: Supporting lemma: at a primitive step with `u` coprime to `v`, `w + v = a * u`, `w = hc * u'` and `a * v = hc * v'`, if both centred errors vanish, that is `v - (a - 1) * u = 0` and `v' - (a' - 1) * u' = 0` in the integers, then the two multipliers satisfy `a' = a ^ 2 - a + 1`. recordRiseTwo_sylvesterNext_eventually: Rigidity for the class of tails whose record-setting steps rise by at most two: along a reduced reciprocal tail from index `N` with arbitrary cancellation, obeying `w n + v n = a n * u n`, `w n = hc n * u (n+1)`, `a n * v n = hc n * v (n+1)`, `v n > 0`, `w n > 0` and `u n` coprime to `v n`, with centred error `e n = v n - (a n - 1) * u n` satisfying `2 * |e n| < u n` and division-free normalised vanishing at every scale, if every record-setting step rises by at most `2` and odd prime powers `p ^ l`, `l ≥ 1`, with `p ^ l ∣ v s` and `3 * runningMax u s < p ^ l` recur at arbitrarily late `s`, then `a (n+1) = a n ^ 2 - a n + 1` from some index onward. protected_epoch_energy_integer: Protected-epoch record energy: for an odd prime `p`, an exponent `l ≥ 1` and a primitive orbit from `s` with arbitrary cancellation, `u n` coprime to `v n`, `v n > 0`, `w n > 0`, `w n + v n = a n * u n`, `w n = hc n * u (n+1)`, `a n * v n = hc n * v (n+1)` and the slow bound `2 * w n ≤ 3 * u n`, if `Q = p ^ l` divides `v s` with `Q ≥ 16` and `4 * runningMax u s < p * Q`, and `s < τ` with `p * Q ≤ 2 * u τ`, then there is a finite set `J` of indices in `[s, τ)`, each a global record step with `hc n = 1` and jump `u n + 3 ≤ u (n+1)`, such that `p * Q ≤ (8 * p + 8) * J.card + 4 * ∑_{n ∈ J} (u (n+1) - u n - 2) + 8 * p`, the inner subtraction being natural subtraction.
+
+    Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
+
+    Erdős problem #243 remains open, and no theorem in this entry decides it.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.NT
+  - math.DS
+  msc2020:
+  - "11J72"
+  - "11D68"
+  - "11B37"
+  - "11B83"
+  - "11A05"
+sources:
+- title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: "The compared theorems are independently restated Lean theorems proved in this repository and described in the public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos."
+  license: Apache-2.0
+  author_endorsement: participated
+- title: "On the irrationality of certain Ahmes series"
+  authors:
+  - "Paul Erdős"
+  - "Ernst G. Straus"
+  id: "https://users.renyi.hu/~p_erdos/1964-19.pdf"
+  type: "paper"
+  relationship: "background"
+  note: "Theorem 3, page 132, gives the classical criterion that a counterexample has positive limit superior for lcm(a 1, ..., a n) / a (n+1) times (a (n+1) ^ 2 / a (n+2) - 1), whose growth factor sits one index later than the product defect compared here; no proof, lemma or formal statement is taken from it, and the present bounded-defect criterion needs only a finite upper bound in place of a nonpositive limit superior, for a prefix-product quantity at index n where their Theorem 3 bounds an lcm-scale quantity at index n + 1."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Irrationality of the reciprocal sum of doubly exponential sequences"
+  authors:
+  - "Junnosuke Koizumi"
+  id: "arXiv:2504.05933"
+  type: "paper"
+  relationship: "background"
+  note: "Supplies the cleared coordinates in which the integer-state theorems are read, and the eventually nonnegative case of the conclusion in Proposition 1(2), which Koizumi attributes to Badea; the bounded-negative-part and summable-mass theorems here are stated and proved independently of that source, and no analytic bridge from this article is formalised in the Challenge."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "A theorem on irrationality of infinite series and applications"
+  authors:
+  - "Catalin Badea"
+  id: "https://matwbn.icm.edu.pl/ksiazki/aa/aa63/aa6342.pdf"
+  type: "paper"
+  relationship: "background"
+  note: "Gives the positive-term irrationality criterion and the rationality-forces-equality companion that stand behind the eventually nonnegative case; its positive-term hypotheses do not cover the mixed-sign integer states studied here, and nothing in the Challenge recovers its statements."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Irrationality of fast converging series of rational numbers"
+  authors:
+  - "Daniel Duverney"
+  id: "https://www.ms.u-tokyo.ac.jp/journal/pdf/jms080206.pdf"
+  type: "paper"
+  relationship: "background"
+  note: "Corollary 3.2 settles a signed form of the problem under convergence of the series of growth defects, a hypothesis assumed nowhere in this entry; no result here is derived from it and no comparison of priority is made."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "On several irrationality problems for Ahmes series"
+  authors:
+  - "Vjekoslav Kovač"
+  - "Terence Tao"
+  id: "arXiv:2406.17593"
+  type: "paper"
+  relationship: "background"
+  note: "Calibrates the growth hypothesis by recording that the classical sufficient condition for irrationality is sharp for doubly exponential sequences; the article resolves other Erdős and Graham problems on Ahmes series and does not treat problem 243, so nothing here rests on it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Old and New Problems and Results in Combinatorial Number Theory, page 64"
+  authors:
+  - "Paul Erdős"
+  - "Ronald L. Graham"
+  id: "https://mathweb.ucsd.edu/~ronspubs/80_11_number_theory.pdf"
+  type: "book"
+  relationship: "background"
+  note: "The original published statement of the question; it supplies the problem and its attribution only, and no proof content."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Erdős Problem #243"
+  authors:
+  - "Thomas F. Bloom"
+  id: "https://www.erdosproblems.com/243"
+  type: "web discussion"
+  relationship: "background"
+  note: "The catalogue supplies the problem numbering, the standing references and the open status; no theorem in the Challenge is attributed to the catalogue, and the catalogue entry records its status as the site owner's present assessment."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Prime-Support Rigidity and Primitive Pseudo-Greedy Dynamics: Partial Progress on Erdős Problem #243"
+  authors:
+  - "Idriss Olivier Bado"
+  id: "https://doi.org/10.13140/RG.2.2.36612.08325"
+  type: "paper"
+  relationship: "background"
+  note: "An author-posted preprint whose Theorem 5.1 assumes two-sided bounded errors, a hypothesis strictly stronger than the one-sided bound used here; it is recorded as part of the literature search, it has not been independently validated for this entry, and no statement here depends on it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: Erdős Problems catalogue
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com
+  type: web discussion
+  relationship: background
+  note: "Catalogue numbering and status of the parent problem."
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+related_formalizations:
+- id: "https://github.com/google-deepmind/formal-conjectures/blob/f776d2f2039351b00737ffcafb9d7d7666e1d9af/FormalConjectures/ErdosProblems/243.lean"
+  title: "FormalConjectures.ErdosProblems.243"
+  relationship: "independent"
+  note: "A mathematically equivalent Lean statement of the problem, up to its zero-based indexing, whose proof ends in sorry; it is statement-level prior art for the formalisation, it supplies no proof authority, and every declaration compared here was stated independently of it."
+status:
+  scope: "One Comparator configuration selecting the 16 theorems listed in PalomarCorpus/E243_10/comparator.json, from the Lean development for Erdős problem #243. The problem's theorems are packed, in the order the papers state them, into the 11 entries PalomarCorpus/E243_01 to PalomarCorpus/E243_11, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification243* directories are internal regression inventory and are not selected."
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 16
+  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E243_10/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
+  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: "PalomarCorpus.E243.BoundedNegativePartRigidity.boundedNegativePart_completeRigidity"
+    file: "Solutions/PalomarCorpus/E243_10/BoundedNegativePartRigidity.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E243_10/comparator.json"
+  - declaration: "PalomarCorpus.E243.BoundedRiseReducedTail.no_boundedRise_of_tailAvoidance"
+    file: "Solutions/PalomarCorpus/E243_10/BoundedRiseReducedTail.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E243_10/comparator.json"
+  - declaration: "PalomarCorpus.E243.BoundedRiseReducedTail.no_boundedRise_reducedTail"
+    file: "Solutions/PalomarCorpus/E243_10/BoundedRiseReducedTail.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E243_10/comparator.json"
+  - declaration: "PalomarCorpus.E243.BoundedRiseReducedTail.no_eventuallyBoundedRise_reducedTail"
+    file: "Solutions/PalomarCorpus/E243_10/BoundedRiseReducedTail.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E243_10/comparator.json"
+  - declaration: "PalomarCorpus.E243.PeriodicNegativeOrbit.no_eventuallyPeriodicNegative_orbit"
+    file: "Solutions/PalomarCorpus/E243_10/PeriodicNegativeOrbit.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E243_10/comparator.json"
+  - declaration: "PalomarCorpus.E243.PeriodicNegativeOrbit.no_periodicNegative_orbit"
+    file: "Solutions/PalomarCorpus/E243_10/PeriodicNegativeOrbit.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E243_10/comparator.json"
+  - declaration: "PalomarCorpus.E243.PeriodicNegativeOrbit.no_phasePrimitivePeriodicNegative_orbit"
+    file: "Solutions/PalomarCorpus/E243_10/PeriodicNegativeOrbit.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E243_10/comparator.json"
+  - declaration: "PalomarCorpus.E243.PrimitiveRecordRigidity.centeredZero_forces_unit"
+    file: "Solutions/PalomarCorpus/E243_10/PrimitiveRecordRigidity.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E243_10/comparator.json"
+  - declaration: "PalomarCorpus.E243.PrimitiveRecordRigidity.exists_oddMultiple_trapHeight"
+    file: "Solutions/PalomarCorpus/E243_10/PrimitiveRecordRigidity.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E243_10/comparator.json"
+  - declaration: "PalomarCorpus.E243.PrimitiveRecordRigidity.numerator_bounded_of_oddPrimePower"
+    file: "Solutions/PalomarCorpus/E243_10/PrimitiveRecordRigidity.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E243_10/comparator.json"
+  - declaration: "PalomarCorpus.E243.PrimitiveRecordRigidity.odd_record_cut"
+    file: "Solutions/PalomarCorpus/E243_10/PrimitiveRecordRigidity.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E243_10/comparator.json"
+  - declaration: "PalomarCorpus.E243.PrimitiveRecordRigidity.primitive_valuation_no_drop"
+    file: "Solutions/PalomarCorpus/E243_10/PrimitiveRecordRigidity.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E243_10/comparator.json"
+  - declaration: "PalomarCorpus.E243.PrimitiveRecordRigidity.protectedPrimePower_persists"
+    file: "Solutions/PalomarCorpus/E243_10/PrimitiveRecordRigidity.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E243_10/comparator.json"
+  - declaration: "PalomarCorpus.E243.PrimitiveRecordRigidity.recordRiseTwo_sylvesterNext_eventually"
+    file: "Solutions/PalomarCorpus/E243_10/PrimitiveRecordRigidity.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E243_10/comparator.json"
+  - declaration: "PalomarCorpus.E243.PrimitiveRecordRigidity.sylvesterStep_of_centeredZero_pair"
+    file: "Solutions/PalomarCorpus/E243_10/PrimitiveRecordRigidity.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E243_10/comparator.json"
+  - declaration: "PalomarCorpus.E243.ProtectedEpochEnergy.protected_epoch_energy_integer"
+    file: "Solutions/PalomarCorpus/E243_10/ProtectedEpochEnergy.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E243_10/comparator.json"
+  development_status: substantive
+  local_proof_provenance: "the proof modules ErdosProblems.Erdos243 in this repository, imported by Solutions.PalomarCorpus.E243_10; the Solutions.ExternalVerification243* family modules are a regression mirror of the same proofs and are not imported by this configuration"
+  canonical_claim_status: "problem-level Comparator entry over substantive Lean in this repository"
+automation:
+  methods:
+  - method: manual
+    models: []
+    framework: Mathematical interpretation and claim-boundary review
+    tool_setup: Human-directed scope and significance review
+  - method: agent
+    models:
+    - Anthropic Claude
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+    cost:
+      wall_time: not tracked
+      spend_usd: subscription-based
+      hardware: local machine
+      prompting_notes: n/a
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    The statements from the hand-written families were checked declaration by declaration against the public problem notes, the reasoning records and the Lean sources in automated review passes run with Anthropic Claude and OpenAI Codex. The author selected the statements and is responsible for the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

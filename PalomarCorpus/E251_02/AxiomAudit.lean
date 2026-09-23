@@ -1,0 +1,14 @@
+import Solutions.PalomarCorpus.E251_02
+
+#print axioms PalomarCorpus.E251.ExactDenominatorFloors.denominator_floor_both
+#print axioms PalomarCorpus.E251.PaperStatementsB.one_tail_signed_certificate
+#print axioms PalomarCorpus.E251.PaperStatementsF.denominator_floor_decimal
+#print axioms PalomarCorpus.E251.PaperStatementsG.prime_gaps_not_eventually_periodic
+#print axioms PalomarCorpus.E251.PaperStatementsG.rational_bounded_perturbation
+#print axioms PalomarCorpus.E251.PaperStatementsG.rational_small_pair_bundle
+#print axioms PalomarCorpus.E251.PaperStatementsG.real_signed_two_window
+#print axioms PalomarCorpus.E251.PaperStatementsG.real_small_pair_prime_endpoint
+#print axioms PalomarCorpus.E251.PaperStatementsL.actual_free_pair_criterion
+#print axioms PalomarCorpus.E251.PaperStatementsM.irrational_initial_iff_all_lcmDiagonal_nonintegral
+#print axioms PalomarCorpus.E251.PaperStatementsO.explicit_remainder_certificate
+#print axioms PalomarCorpus.E251.PaperStatementsP.finite_small_pair

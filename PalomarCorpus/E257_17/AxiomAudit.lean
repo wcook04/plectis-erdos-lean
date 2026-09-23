@@ -1,0 +1,17 @@
+import Solutions.PalomarCorpus.E257_17
+
+#print axioms PalomarCorpus.E257.PaperStatementsAH.halfTwoChannelCap_lt_mersenneTail
+#print axioms PalomarCorpus.E257.PaperStatementsAH.mersenneTail_eq_weight_add
+#print axioms PalomarCorpus.E257.PaperStatementsAH.mersenneTail_le_two_mul_weight
+#print axioms PalomarCorpus.E257.PaperStatementsAH.mersenneTail_lt_weight
+#print axioms PalomarCorpus.E257.PaperStatementsAH.two_mul_mersenneWeight_succ_lt
+#print axioms PalomarCorpus.E257.PaperStatementsAM.depth_prefix_interval_disjoint
+#print axioms PalomarCorpus.E257.PaperStatementsAM.fatal_gap_endpoint_bounds
+#print axioms PalomarCorpus.E257.PaperStatementsAM.fatal_gap_excludes_every_representation
+#print axioms PalomarCorpus.E257.PaperStatementsAM.fatal_gap_within_prefix_interval
+#print axioms PalomarCorpus.E257.PaperStatementsAM.half_ne_coe_finset_add_mersenneTail
+#print axioms PalomarCorpus.E257.PaperStatementsAM.positiveMersenneSupportValue_coe_finset_ne_half
+#print axioms PalomarCorpus.E257.PaperStatementsD.half_mem_iff_every_actual_skip_survives
+#print axioms PalomarCorpus.E257.PaperStructuresBJ.prefix_add_mersenneTail_lt_half_of_eventually_right
+#print axioms PalomarCorpus.E257.PaperStructuresU.IsStraddlePrefix.half_step_forced
+#print axioms PalomarCorpus.E257.PaperStructuresU.isStraddlePrefix_step_trichotomy

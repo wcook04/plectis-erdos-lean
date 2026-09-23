@@ -1,9 +1,0 @@
-import Solutions.PalomarCorpus.E257al
-
-#print axioms PalomarCorpus.E257.PaperStatementsAL.finite_boolSupport_ne_half
-#print axioms PalomarCorpus.E257.PaperStatementsAL.paper_coeffTail_le_index_add_two
-#print axioms PalomarCorpus.E257.PaperStatementsAL.paper_zero_run_le_eps_logb
-#print axioms PalomarCorpus.E257.PaperStatementsAL.paper_zero_run_le_of_mem
-#print axioms PalomarCorpus.E257.PaperStatementsAL.supportCoeff_boundaryPair_unitDrop_at_double
-#print axioms PalomarCorpus.E257.PaperStatementsAL.supportCoeff_extend_true_eq_false_add_one_at_double
-#print axioms PalomarCorpus.E257.PaperStatementsAL.supportCoeff_insert_divisor

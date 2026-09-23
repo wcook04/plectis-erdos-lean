@@ -1,6 +1,0 @@
-import Solutions.PalomarCorpus.E243ab
-
-#print axioms PalomarCorpus.E243.PaperStructuresAB.exactOrbit_unbounded_of_error_not_eventually_zero
-#print axioms PalomarCorpus.E243.PaperStructuresAB.exists_multiplier_ge_four
-#print axioms PalomarCorpus.E243.PaperStructuresAB.slowNegative_eventually_zero_and_sylvesterNext_unconditional
-#print axioms PalomarCorpus.E243.PaperStructuresAB.tail_binaryTower_lower
