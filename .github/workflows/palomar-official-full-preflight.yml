@@ -10,6 +10,9 @@ on:
     paths:
       - .github/workflows/palomar-official-full-preflight.yml
       - .github/palomar-release-selection-v1.json
+      - lean-toolchain
+      - lakefile.toml
+      - lake-manifest.json
       - PalomarCorpus/E257_01/comparator.json
       - PalomarCorpus/E257_01/formalization.yaml
   workflow_dispatch:

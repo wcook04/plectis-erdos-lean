@@ -9,7 +9,7 @@ pp.unicode.fun = true
 [[require]]
 name = "mathlib"
 scope = "leanprover-community"
-rev = "v4.30.0"
+rev = "v4.35.0-rc2"
 
 # The shared machinery of the #249 and #257 programmes, copied verbatim from the paper repository
 # (`plectis-erdos`, `lean/Erdos249257`), where it is the library every downstream file imports. The
