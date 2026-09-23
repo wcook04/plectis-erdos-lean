@@ -58,6 +58,10 @@ noncomputable def ofSource
 theorem PositiveCoverData.host_toSource (C : PositiveCoverData) :
     C.host = (toSource C).host := rfl
 
+theorem PositiveCoverData.host_ofSource
+    (C : ErdosProblems.Erdos257.PaperCompleteR7.PositiveCoverData) :
+    (ofSource C).host = C.host := rfl
+
 theorem PositiveCoverData.cost_toSource (C : PositiveCoverData) :
     C.cost = (toSource C).cost := rfl
 
@@ -86,7 +90,7 @@ theorem HasStrengthenedPositiveCover_iff (A : Set ℕ) :
   · rintro ⟨C, hA, hC⟩
     refine ⟨ofSource C, ?_,
       (PositiveCoverData.StrengthenedCostSummable_ofSource C).mpr hC⟩
-    simpa [PositiveCoverData.host] using hA
+    simpa [PositiveCoverData.host_ofSource] using hA
 
 theorem MixedSupportClaim_eq :
     MixedSupportClaim ↔ ErdosProblems.Erdos257.PaperCompleteR7.MixedSupportClaim := by
