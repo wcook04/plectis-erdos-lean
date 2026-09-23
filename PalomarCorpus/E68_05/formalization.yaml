@@ -1,14 +1,11 @@
 version: v0.4
 project:
-  name: 'Erdős #68, note sections 1 to A: the denominator exclusions; integer vectors for cancelling weighted sums; comparing the tail with the distance to an integer'
-  description: >-
-    This entry states 6 theorems that only the short note for Erdős problem #68 states, in sections 1 (the denominator exclusions), 2 (integer vectors for cancelling weighted sums), 5 (comparing the tail with the distance to an integer) and A (a criterion using the factorial digits of S-e+2): the theorem “exact carry characterisation” (section 1), as carry_characterisation; the theorem “an integer basis with prescribed weighted sums” (section 2), as divisor_channel_coordinates; the theorem “a finite formula for the gcd” (section 2.1), as finite_channel_moment_certificate and finite_channel_moment_certificate_eq; the proposition “a sufficient tail inequality” (section 5), as global_complementary_criterion_nat; the theorem “rationality and factorial residues” (section A), as companion_orbit_boundary.
-
-    5 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 1 is derived from the source declaration by a short tactic proof, which certifies implication.
-
-    Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
-
-    Erdős problem #68 remains open, and no theorem in this entry decides it.
+  name: Carry and divisor-channel criteria for the factorial-minus-one reciprocal series
+  description: For the reciprocal series with denominators n! - 1, the selected Lean theorems give an
+    exact carry characterization of rationality, divisor-channel coordinates, and a finite gcd moment
+    certificate. Companion-orbit and complementary tail criteria are included with their stated hypotheses.
+    These structural results do not certify the paper's large computed denominator exclusions or resolve
+    the irrationality question.
   authors:
   - Will Cook
   license: Apache-2.0
@@ -20,19 +17,36 @@ classification:
   arxiv:
   - math.NT
   msc2020:
-  - "11J72"
-  - "11A05"
-  - "11B65"
-  - "11A07"
-  - "11J70"
+  - 11J72
+  - 11A05
 sources:
 - title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
   authors:
   - Will Cook
   type: original-proof
   relationship: other
-  note: "The compared theorems are independently restated Lean theorems proved in this repository and described in the public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos."
+  note: Will Cook directed AI-assisted research and formalization. Sources and exact statement boundaries
+    are listed here; no independent human proof audit or priority adjudication is asserted.
   license: Apache-2.0
+  author_endorsement: participated
+- title: Two incomparable denominator exclusions for the sum of reciprocals of n! - 1
+  authors:
+  - Will Cook
+  id: https://github.com/wcook04/plectis-erdos/blob/147f3f1da400a84dcb3013ea6cef75dc8f382b09/paper/68/erdos-68-factorial-denominator-irrationality.pdf
+  type: paper
+  relationship: background
+  note: paper describing selected structural theorems and separate computations. Only the statements named
+    by this entry are selected.
+  license: unknown
+  author_endorsement: participated
+- title: Complete reasoning record for Erdős problem 68
+  authors:
+  - Will Cook
+  id: https://github.com/wcook04/plectis-erdos/blob/147f3f1da400a84dcb3013ea6cef75dc8f382b09/paper/68/erdos68-factorial-reasoning-surface.pdf
+  type: paper
+  relationship: background
+  note: proof and computation record. Only the statements named by this entry are selected.
+  license: unknown
   author_endorsement: participated
 - title: Erdős Problems catalogue
   authors:
@@ -40,7 +54,7 @@ sources:
   id: https://www.erdosproblems.com
   type: web discussion
   relationship: background
-  note: "Catalogue numbering and status of the parent problem."
+  note: The selected entry does not decide the unrestricted Erdős problem.
   license: unknown
   author_endorsement: not-contacted
 - title: Mathlib
@@ -51,45 +65,54 @@ sources:
   license: Apache-2.0
   author_endorsement: n/a
 status:
-  scope: "One Comparator configuration selecting the 6 theorems listed in PalomarCorpus/E68_05/comparator.json, from the Lean development for Erdős problem #68. The problem's theorems are packed, in the order the papers state them, into the 10 entries PalomarCorpus/E68_01 to PalomarCorpus/E68_10, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification68* directories are internal regression inventory and are not selected."
+  scope: 'One Comparator configuration selecting the 6 theorems listed in PalomarCorpus/E68_05/comparator.json,
+    from the Lean development for Erdős problem #68. The problem''s theorems are packed, in the order
+    the papers state them, into the 10 entries PalomarCorpus/E68_01 to PalomarCorpus/E68_10, and each
+    theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification68*
+    directories are internal regression inventory and are not selected.'
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
   trusted_challenge_sorry_count: 6
-  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E68_05/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
-  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
+  sorry_boundary: The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E68_05/Challenge.lean,
+    and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution
+    bytes has been recorded.
+  axiom_audit_status: The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit
+    of this entry has been recorded.
   permitted_axiom_budget:
   - propext
   - Quot.sound
   - Classical.choice
   main_results:
-  - declaration: "PalomarCorpus.E68.PaperStatementsA.carry_characterisation"
-    file: "Solutions/PalomarCorpus/E68_05/PaperStatementsA.lean"
+  - declaration: PalomarCorpus.E68.PaperStatementsA.carry_characterisation
+    file: Solutions/PalomarCorpus/E68_05/PaperStatementsA.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E68_05/comparator.json"
-  - declaration: "PalomarCorpus.E68.PaperStatementsA.companion_orbit_boundary"
-    file: "Solutions/PalomarCorpus/E68_05/PaperStatementsA.lean"
+    comparator_config: PalomarCorpus/E68_05/comparator.json
+  - declaration: PalomarCorpus.E68.PaperStatementsA.companion_orbit_boundary
+    file: Solutions/PalomarCorpus/E68_05/PaperStatementsA.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E68_05/comparator.json"
-  - declaration: "PalomarCorpus.E68.PaperStatementsA.divisor_channel_coordinates"
-    file: "Solutions/PalomarCorpus/E68_05/PaperStatementsA.lean"
+    comparator_config: PalomarCorpus/E68_05/comparator.json
+  - declaration: PalomarCorpus.E68.PaperStatementsA.divisor_channel_coordinates
+    file: Solutions/PalomarCorpus/E68_05/PaperStatementsA.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E68_05/comparator.json"
-  - declaration: "PalomarCorpus.E68.PaperStatementsA.finite_channel_moment_certificate"
-    file: "Solutions/PalomarCorpus/E68_05/PaperStatementsA.lean"
+    comparator_config: PalomarCorpus/E68_05/comparator.json
+  - declaration: PalomarCorpus.E68.PaperStatementsA.finite_channel_moment_certificate
+    file: Solutions/PalomarCorpus/E68_05/PaperStatementsA.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E68_05/comparator.json"
-  - declaration: "PalomarCorpus.E68.PaperStatementsA.finite_channel_moment_certificate_eq"
-    file: "Solutions/PalomarCorpus/E68_05/PaperStatementsA.lean"
+    comparator_config: PalomarCorpus/E68_05/comparator.json
+  - declaration: PalomarCorpus.E68.PaperStatementsA.finite_channel_moment_certificate_eq
+    file: Solutions/PalomarCorpus/E68_05/PaperStatementsA.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E68_05/comparator.json"
-  - declaration: "PalomarCorpus.E68.PaperStatementsA.global_complementary_criterion_nat"
-    file: "Solutions/PalomarCorpus/E68_05/PaperStatementsA.lean"
+    comparator_config: PalomarCorpus/E68_05/comparator.json
+  - declaration: PalomarCorpus.E68.PaperStatementsA.global_complementary_criterion_nat
+    file: Solutions/PalomarCorpus/E68_05/PaperStatementsA.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E68_05/comparator.json"
+    comparator_config: PalomarCorpus/E68_05/comparator.json
   development_status: substantive
-  local_proof_provenance: "the proof modules ErdosProblems.Erdos68 in this repository, imported by Solutions.PalomarCorpus.E68_05; the Solutions.ExternalVerification68* family modules are a regression mirror of the same proofs and are not imported by this configuration"
-  canonical_claim_status: "problem-level Comparator entry over substantive Lean in this repository"
+  local_proof_provenance: the proof modules ErdosProblems.Erdos68 in this repository, imported by Solutions.PalomarCorpus.E68_05;
+    the Solutions.ExternalVerification68* family modules are a regression mirror of the same proofs and
+    are not imported by this configuration
+  canonical_claim_status: problem-level Comparator entry over substantive Lean in this repository
 automation:
   methods:
   - method: manual
@@ -110,6 +133,10 @@ automation:
 review:
   status: self-assessed
   reviewers: []
-  notes: >-
-    Every generated restatement was bound to a paper statement and refereed in the eight-paper coverage ledger before its wrapper was generated, and its transport proof was elaborated before the statement was accepted. The author selected the statements and is responsible for the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
+  notes: Review the six selected theorem statements and their Solution axioms. The paper reports a full
+    GMP carry census through m = 300000 and a continued-fraction enclosure, but says the original full
+    executable and payload were not supplied or authenticated in that prose revision. The general Lean
+    carry and moment theorems are not certificates of those particular computed values. No official full
+    preflight or independent editorial review is asserted.
 acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.
+related_formalizations: []

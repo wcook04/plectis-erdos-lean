@@ -1,14 +1,16 @@
 version: v0.4
 project:
-  name: 'Erdős #251, record sections 2 to 5: sparse congruence-preserving perturbations; summation by parts, with the endpoint retained; the tail recurrence and the exact criteria'
-  description: >-
-    This entry states 11 theorems that the long record for Erdős problem #251 states in sections 2 (sparse congruence-preserving perturbations), 4 (summation by parts, with the endpoint retained) and 5 (the tail recurrence and the exact criteria): the theorem “sparse changes preserving congruences” (section 2), as bounded_test_finite_coupling, polylogarithmic_word_interval_uniform and arbitrary_word_sparse_rationalisation_uniform; the corollary “target intervals arbitrarily close to the original sum” (section 2), as local_target_interval; the proposition “finite summation by parts” (section 4), as dyadicPartialSumQ_eq_start_add_differences; the theorem “prime-gap reformulation” (section 4), as prime0_dyadic_summation_by_parts; the theorem “infinite prime-gap identity” (section 4.1), as infinite_prime_gap_identity; the corollary “exact irrationality reformulation” (section 4.1), as irrationality_reformulation; the theorem “block identity” (section 5), as real_block_identity; the theorem “exact rationality classification” (section 5), as rationality_classification; the lemma “the boundary condition identifying a true tail” (section 5), as real_dyadic_orbit_eq_true_tail_iff.
-
-    6 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 3 are derived from the source declaration by a short tactic proof, which certifies implication.
-
-    Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
-
-    Erdős problem #251 remains open, and no theorem in this entry decides it.
+  name: Uniform sparse rationalisation of dyadic series
+  description: Given any convergent dyadic series with nonnegative integer coefficients, any finite prefix
+    and any eventually unbounded correction allowance, one common permitted set of upper Banach density
+    zero supports nonnegative integer corrections realising every target in a nondegenerate interval above
+    the original sum. Each fixed modulus eventually divides both corrections and cumulative corrections
+    beyond a cutoff independent of the target. With polylogarithmic allowance, the selected theorem also
+    bounds support in dyadic windows and preserves empirical block distributions in total variation for
+    lengths o(log log X), uniformly in the target. The entry additionally states exact prime-to-gap summation
+    identities and tail rationality criteria. It does not select the prime-gap joint countermodel, which
+    in the paper uses named outside inputs, and makes no claim that corrected cumulative positions are
+    prime or that the original prime series is irrational.
   authors:
   - Will Cook
   license: Apache-2.0
@@ -20,143 +22,61 @@ classification:
   arxiv:
   - math.NT
   msc2020:
-  - "11J72"
-  - "11N05"
-  - "11N36"
-  - "11A41"
-  - "11B83"
-  - "11Y16"
-  - "68V20"
+  - 11J72
+  - 11B83
+  - 11A41
 sources:
 - title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
   authors:
   - Will Cook
-  type: original-proof
-  relationship: other
-  note: "The compared theorems are independently restated Lean theorems proved in this repository and described in the public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos."
+  id: https://github.com/wcook04/plectis-erdos
+  type: other
+  relationship: background
+  note: The selected Lean declarations formalise the general sparse correction construction and exact
+    dyadic-tail identities in the linked papers. The prime-gap identity is an explicit proof of a previously
+    noted reduction. The conditional prime-gap statistical application is outside this configuration;
+    no unproved named input is silently discharged.
   license: Apache-2.0
   author_endorsement: participated
-- title: "Sur certaines séries à valeur irrationnelle"
+- title: Sparse Congruence-Preserving Perturbations of Dyadic Series
   authors:
-  - "Paul Erdős"
-  id: "10.5169/seals-34629"
-  type: "paper"
-  relationship: "background"
-  note: "States the dyadic prime series as unproved on page 94, which is the origin of the parent problem; the irrationality theorem printed alongside it is for a factorial-denominator family and is not used by any declaration here."
-  license: "unknown"
-  author_endorsement: "not-contacted"
-- title: "Old and New Problems and Results in Combinatorial Number Theory"
+  - Will Cook
+  id: https://github.com/wcook04/plectis-erdos/blob/147f3f1da400a84dcb3013ea6cef75dc8f382b09/paper/251/erdos-251-prime-gap-dyadic-series.pdf
+  type: paper
+  relationship: formalizes
+  note: Proposition on sparse rationalisation and the exact tail identities are selected. Its prime-gap
+    joint countermodel is conditional on named outside inputs and lies outside this configuration.
+  license: unknown
+  author_endorsement: participated
+- title: 'Prime-Gap Dyadic Series: Perturbations, Exact Criteria and Certificates'
   authors:
-  - "Paul Erdős"
-  - "Ronald L. Graham"
-  type: "book"
-  relationship: "background"
-  note: "Restates the dyadic prime series question on page 62; nothing in this entry is taken from the monograph beyond the problem statement."
-  license: "unknown"
-  author_endorsement: "not-contacted"
-- title: "On the irrationality of certain series: problems and results"
+  - Will Cook
+  id: https://github.com/wcook04/plectis-erdos/blob/147f3f1da400a84dcb3013ea6cef75dc8f382b09/paper/251/erdos251-prime-gap-reasoning-surface.pdf
+  type: paper
+  relationship: formalizes
+  note: Provides the uniform sparse construction and exact tail criteria; later prime-gap application
+    results are not all selected here.
+  license: unknown
+  author_endorsement: participated
+- title: 'Erdős Problem #251 problem page and comment thread'
   authors:
-  - "Paul Erdős"
-  id: "10.1017/CBO9780511897184.009"
-  type: "paper"
-  relationship: "background"
-  note: "Repeats the problem on page 103 inside the wider irrationality-of-series programme that identifies the audience for this entry; no proof technique is taken from it."
-  license: "unknown"
-  author_endorsement: "not-contacted"
-- title: "On the largest prime factors of n and n+1"
-  authors:
-  - "Paul Erdős"
-  - "Carl Pomerance"
-  id: "10.1007/BF01818569"
-  type: "paper"
-  relationship: "background"
-  note: "Section 7 proves a dyadic irrationality theorem for bounded digits recording comparisons of largest prime factors; the prime numerators and prime gaps treated here are unbounded, so that theorem is context and supplies no step of any proof in this entry."
-  license: "unknown"
-  author_endorsement: "not-contacted"
-- title: "Erdős Problem #251 problem page and comment thread"
-  authors:
-  - "Thomas F. Bloom"
-  id: "https://www.erdosproblems.com/251"
-  type: "web discussion"
-  relationship: "background"
-  note: "Supplies the catalogue statement and open status, and carries the summation-by-parts identity between the prime series and the prime-gap series posted by Terence Tao on 7 October 2025, which is checked in this entry with no priority claimed; the compared theorems are not attributed to the catalogue."
-  license: "unknown"
-  author_endorsement: "not-contacted"
-- title: "On the Erdős problem #251"
-  authors:
-  - "V. Kovač"
-  id: "https://web.math.pmf.unizg.hr/~vjekovac/files/Erdos_problem_251.pdf"
-  type: "other"
-  relationship: "background"
-  note: "Refutes by a telescoping construction the adjacent variable-denominator conjecture printed under the same catalogue number, and leaves the fixed-denominator question of this entry undecided; the quadratic countermodel here uses a construction of the same species and claims no priority over it. The note records a language model run orchestrated by the named author."
-  license: "unknown"
-  author_endorsement: "not-contacted"
-- title: "On several irrationality problems for Ahmes series"
-  authors:
-  - "V. Kovač"
-  - "Terence Tao"
-  id: "10.1007/s10474-025-01528-0"
-  type: "paper"
-  relationship: "background"
-  note: "Recent work on irrationality of series with prescribed denominators, which locates the research area of this entry; no lemma of that paper is used in any declaration here."
-  license: "unknown"
-  author_endorsement: "not-contacted"
-- title: "The irrationality of some number theoretical series"
-  authors:
-  - "Jan-Christoph Schlage-Puchta"
-  id: "arXiv:1105.1451"
-  type: "paper"
-  relationship: "background"
-  note: "The nearest located neighbour for the tail criteria recorded here, with no antecedent located: its Theorem 2 treats base-b digit strings that concatenate the representations of a slowly growing integer sequence, and its Theorem 3 gives linear independence over the rationals for series of prime powers over factorials. Its Lemma 4, a Selberg-sieve density-zero statement for polynomial relations among consecutive prime gaps, is used in the companion reasoning record; the compared declarations that need it carry it as the named hypothesis SchlagePuchtaLemma4 and do not formalise it."
-  license: "unknown"
-  author_endorsement: "not-contacted"
-- title: "Bounded gaps between primes"
-  authors:
-  - "Yitang Zhang"
-  id: "10.4007/annals.2014.179.3.7"
-  type: "paper"
-  relationship: "background"
-  note: "Theorem 1 produces infinitely many bounded consecutive-prime gaps; it is recorded to mark the boundary, because it supplies no joint dyadic distribution of a block of consecutive gap differences and is used by no declaration here."
-  license: "unknown"
-  author_endorsement: "not-contacted"
-- title: "Small gaps between primes"
-  authors:
-  - "James Maynard"
-  id: "10.4007/annals.2015.181.1.7"
-  type: "paper"
-  relationship: "background"
-  note: "it bounds the lower limit of p(n+m) - p(n) for every fixed m and gives the explicit bound 600 for consecutive gaps; both are context for the open boundary and neither is used by any declaration here."
-  license: "unknown"
-  author_endorsement: "not-contacted"
-- title: "Long gaps between primes"
-  authors:
-  - "Kevin Ford"
-  - "Ben Green"
-  - "Sergei Konyagin"
-  - "James Maynard"
-  - "Terence Tao"
-  id: "10.1090/jams/876"
-  type: "paper"
-  relationship: "background"
-  note: "Theorem 1 on page 66 gives an effective lower bound for the largest single consecutive-prime gap below a threshold; unboundedness of the gaps is all that the non-periodicity argument here needs, and this stronger theorem supplies no residue-sensitive block estimate used by any declaration."
-  license: "unknown"
-  author_endorsement: "not-contacted"
-- title: "A conditional proof of the irrationality of the dyadic prime series under a uniform Hardy-Littlewood prime-tuples conjecture, with a Lean formalisation of the conditional argument, posted in 2026 to the Erdős Problem #251 discussion"
-  authors:
-  - "J. Land"
-  id: "https://github.com/beetree/math_erdos_251"
-  type: "web discussion"
-  relationship: "background"
-  note: "Posted 5 September 2026 on the Erdős Problems discussion thread for #251 with the linked repository; Conjecture 1 there is the large-x form of Conjecture 1.3 of V. Kuperberg. As recorded in the public reasoning record for this problem, Land's argument assumes Kuperberg's uniform Hardy-Littlewood prime-tuples conjecture, constructs weighted prime-gap tails, and comes with a Lean formalisation of that conditional argument. The declarations compared here were proved independently of it and do not use, extend or contradict his conditional theorem; those that are conditional carry the prime number theorem or Schlage-Puchta's Lemma 4 as named hypotheses, none assumes Kuperberg's conjecture, and the parent problem remains open."
-  license: "unknown"
-  author_endorsement: "not-contacted"
+  - Thomas F. Bloom
+  - Terence Tao
+  id: https://www.erdosproblems.com/251
+  type: web discussion
+  relationship: background
+  note: The problem page records the open question; Tao noted the prime-to-gap summation-by-parts reduction
+    on 7 October 2025. The selected identity is not claimed as a new method.
+  license: unknown
+  author_endorsement: not-contacted
 - title: Erdős Problems catalogue
   authors:
   - Thomas F. Bloom
   id: https://www.erdosproblems.com
   type: web discussion
   relationship: background
-  note: "Catalogue numbering and status of the parent problem."
+  note: The catalogue asks whether the dyadic prime series is irrational. This entry proves a general
+    sparse perturbation obstruction and exact reformulations; it does not answer that question.
   license: unknown
   author_endorsement: not-contacted
 - title: Mathlib
@@ -167,74 +87,87 @@ sources:
   license: Apache-2.0
   author_endorsement: n/a
 related_formalizations:
-- id: "https://github.com/google-deepmind/formal-conjectures/blob/f776d2f2039351b00737ffcafb9d7d7666e1d9af/FormalConjectures/ErdosProblems/251.lean"
-  title: "FormalConjectures.ErdosProblems.251"
-  relationship: "independent"
-  note: "An earlier Lean statement of the parent problem whose proof ends in sorry; it is statement-level prior art for the formalisation, it supplies no proof authority, and every declaration compared here was stated independently of it."
-- id: "https://github.com/beetree/math_erdos_251"
-  title: "J. Land's Lean formalisation of a conditional proof of irrationality (5 September 2026)"
-  relationship: "independent"
-  note: "Formalises Land's argument, which is conditional on Kuperberg's uniform prime-tuples conjecture; announced with the proof on the problem's discussion thread. The declarations compared here are unconditional and were stated independently of it."
+- id: https://github.com/google-deepmind/formal-conjectures/blob/f776d2f2039351b00737ffcafb9d7d7666e1d9af/FormalConjectures/ErdosProblems/251.lean
+  title: FormalConjectures.ErdosProblems.251
+  relationship: independent
+  note: An earlier Lean statement of the parent problem whose proof ends in sorry; it is statement-level
+    prior art for the formalisation, it supplies no proof authority, and every declaration compared here
+    was stated independently of it.
+- id: https://github.com/beetree/math_erdos_251
+  title: J. Land's Lean formalisation of a conditional proof of irrationality (5 September 2026)
+  relationship: independent
+  note: Formalises Land's argument, which is conditional on Kuperberg's uniform prime-tuples conjecture;
+    announced with the proof on the problem's discussion thread. The declarations compared here are unconditional
+    and were stated independently of it.
 status:
-  scope: "One Comparator configuration selecting the 11 theorems listed in PalomarCorpus/E251_01/comparator.json, from the Lean development for Erdős problem #251. The problem's theorems are packed, in the order the papers state them, into the 8 entries PalomarCorpus/E251_01 to PalomarCorpus/E251_08, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification251* directories are internal regression inventory and are not selected."
+  scope: 'One Comparator configuration selecting the 11 theorems listed in PalomarCorpus/E251_01/comparator.json,
+    from the Lean development for Erdős problem #251. The problem''s theorems are packed, in the order
+    the papers state them, into the 8 entries PalomarCorpus/E251_01 to PalomarCorpus/E251_08, and each
+    theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification251*
+    directories are internal regression inventory and are not selected.'
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
   trusted_challenge_sorry_count: 11
-  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E251_01/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
-  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
+  sorry_boundary: The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E251_01/Challenge.lean,
+    and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution
+    bytes has been recorded.
+  axiom_audit_status: The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit
+    of this entry has been recorded.
   permitted_axiom_budget:
   - propext
   - Quot.sound
   - Classical.choice
   main_results:
-  - declaration: "PalomarCorpus.E251.PaperStatementsA.bounded_test_finite_coupling"
-    file: "Solutions/PalomarCorpus/E251_01/PaperStatementsA.lean"
+  - declaration: PalomarCorpus.E251.PaperStatementsA.bounded_test_finite_coupling
+    file: Solutions/PalomarCorpus/E251_01/PaperStatementsA.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E251_01/comparator.json"
-  - declaration: "PalomarCorpus.E251.PaperStatementsC.real_dyadic_orbit_eq_true_tail_iff"
-    file: "Solutions/PalomarCorpus/E251_01/PaperStatementsC.lean"
+    comparator_config: PalomarCorpus/E251_01/comparator.json
+  - declaration: PalomarCorpus.E251.PaperStatementsC.real_dyadic_orbit_eq_true_tail_iff
+    file: Solutions/PalomarCorpus/E251_01/PaperStatementsC.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E251_01/comparator.json"
-  - declaration: "PalomarCorpus.E251.PaperStatementsG.dyadicPartialSumQ_eq_start_add_differences"
-    file: "Solutions/PalomarCorpus/E251_01/PaperStatementsG.lean"
+    comparator_config: PalomarCorpus/E251_01/comparator.json
+  - declaration: PalomarCorpus.E251.PaperStatementsG.dyadicPartialSumQ_eq_start_add_differences
+    file: Solutions/PalomarCorpus/E251_01/PaperStatementsG.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E251_01/comparator.json"
-  - declaration: "PalomarCorpus.E251.PaperStatementsG.infinite_prime_gap_identity"
-    file: "Solutions/PalomarCorpus/E251_01/PaperStatementsG.lean"
+    comparator_config: PalomarCorpus/E251_01/comparator.json
+  - declaration: PalomarCorpus.E251.PaperStatementsG.infinite_prime_gap_identity
+    file: Solutions/PalomarCorpus/E251_01/PaperStatementsG.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E251_01/comparator.json"
-  - declaration: "PalomarCorpus.E251.PaperStatementsG.irrationality_reformulation"
-    file: "Solutions/PalomarCorpus/E251_01/PaperStatementsG.lean"
+    comparator_config: PalomarCorpus/E251_01/comparator.json
+  - declaration: PalomarCorpus.E251.PaperStatementsG.irrationality_reformulation
+    file: Solutions/PalomarCorpus/E251_01/PaperStatementsG.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E251_01/comparator.json"
-  - declaration: "PalomarCorpus.E251.PaperStatementsG.prime0_dyadic_summation_by_parts"
-    file: "Solutions/PalomarCorpus/E251_01/PaperStatementsG.lean"
+    comparator_config: PalomarCorpus/E251_01/comparator.json
+  - declaration: PalomarCorpus.E251.PaperStatementsG.prime0_dyadic_summation_by_parts
+    file: Solutions/PalomarCorpus/E251_01/PaperStatementsG.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E251_01/comparator.json"
-  - declaration: "PalomarCorpus.E251.PaperStatementsG.rationality_classification"
-    file: "Solutions/PalomarCorpus/E251_01/PaperStatementsG.lean"
+    comparator_config: PalomarCorpus/E251_01/comparator.json
+  - declaration: PalomarCorpus.E251.PaperStatementsG.rationality_classification
+    file: Solutions/PalomarCorpus/E251_01/PaperStatementsG.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E251_01/comparator.json"
-  - declaration: "PalomarCorpus.E251.PaperStatementsH.real_block_identity"
-    file: "Solutions/PalomarCorpus/E251_01/PaperStatementsH.lean"
+    comparator_config: PalomarCorpus/E251_01/comparator.json
+  - declaration: PalomarCorpus.E251.PaperStatementsH.real_block_identity
+    file: Solutions/PalomarCorpus/E251_01/PaperStatementsH.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E251_01/comparator.json"
-  - declaration: "PalomarCorpus.E251.PaperStatementsI.local_target_interval"
-    file: "Solutions/PalomarCorpus/E251_01/PaperStatementsI.lean"
+    comparator_config: PalomarCorpus/E251_01/comparator.json
+  - declaration: PalomarCorpus.E251.PaperStatementsI.local_target_interval
+    file: Solutions/PalomarCorpus/E251_01/PaperStatementsI.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E251_01/comparator.json"
-  - declaration: "PalomarCorpus.E251.UniformSparseRationalisation.arbitrary_word_sparse_rationalisation_uniform"
-    file: "Solutions/PalomarCorpus/E251_01/UniformSparseRationalisation.lean"
+    comparator_config: PalomarCorpus/E251_01/comparator.json
+  - declaration: PalomarCorpus.E251.UniformSparseRationalisation.arbitrary_word_sparse_rationalisation_uniform
+    file: Solutions/PalomarCorpus/E251_01/UniformSparseRationalisation.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E251_01/comparator.json"
-  - declaration: "PalomarCorpus.E251.UniformSparseRationalisation.polylogarithmic_word_interval_uniform"
-    file: "Solutions/PalomarCorpus/E251_01/UniformSparseRationalisation.lean"
+    comparator_config: PalomarCorpus/E251_01/comparator.json
+  - declaration: PalomarCorpus.E251.UniformSparseRationalisation.polylogarithmic_word_interval_uniform
+    file: Solutions/PalomarCorpus/E251_01/UniformSparseRationalisation.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E251_01/comparator.json"
+    comparator_config: PalomarCorpus/E251_01/comparator.json
   development_status: substantive
-  local_proof_provenance: "the proof modules ErdosProblems.Erdos251 in this repository, imported by Solutions.PalomarCorpus.E251_01; the Solutions.ExternalVerification251* family modules are a regression mirror of the same proofs and are not imported by this configuration"
-  canonical_claim_status: "problem-level Comparator entry over substantive Lean in this repository"
+  local_proof_provenance: the proof modules ErdosProblems.Erdos251 in this repository, imported by Solutions.PalomarCorpus.E251_01;
+    the Solutions.ExternalVerification251* family modules are a regression mirror of the same proofs and
+    are not imported by this configuration
+  canonical_claim_status: problem-level Comparator entry over substantive Lean in this repository
 automation:
   methods:
   - method: manual
@@ -255,6 +188,9 @@ automation:
 review:
   status: self-assessed
   reviewers: []
-  notes: >-
-    The statements from the hand-written families were checked declaration by declaration against the public problem notes, the reasoning records and the Lean sources in automated review passes run with Anthropic Claude and OpenAI Codex. Every generated restatement was bound to a paper statement and refereed in the eight-paper coverage ledger before its wrapper was generated, and its transport proof was elaborated before the statement was accepted. The author selected the statements and is responsible for the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
+  notes: The author selected the declarations and remains responsible for their mathematical claims. The
+    selected Challenge and Solution sources were inspected locally at Comparator commit a2faa350b45ae08d0e70f5a6ec54943018f8c2b3.
+    This editorial pass is not an independent proof audit, a fresh two-kernel Comparator report, an official
+    Palomar full preflight, external peer review, or registration; verification fields must be set from
+    separate exact-input receipts.
 acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

@@ -1,14 +1,17 @@
 version: v0.4
 project:
-  name: 'Erdős #269, record sections 4 to 5: why the third prime prevents finite separation; the recurrence for tails between powers of two'
-  description: >-
-    This entry states 13 theorems that the long record for Erdős problem #269 states in sections 4 (why the third prime prevents finite separation) and 5 (the recurrence for tails between powers of two): the proposition “two generators separate” (section 4), as real_two_prime_separation; the proposition “non-separability at 2,3,5” (section 4), as paper_two_by_two_fixture; the theorem “no finite separation of the kernel” (section 4), as paper_uniform_rank_and_nonseparation; the proposition “rank of threshold columns” (section 4), as rank_cutMatrix; the theorem “distance from matrices of finite separated rank” (section 4.1), as uniform_rank_complete; the proposition “four possible bases” (section 5), as radix_eq_height_ratio, dyadicBlockBase235_cases, dyadicBlockBase235_mem_interval, dyadicInternalPower_exponent_unique, exists_dyadicInternalPower_iff_log_succ, log_dyadic_succ_eq_of_no_internalPower and threePrimeHeight_dyadicBlock_succ; the theorem “the tail recurrence” (section 5), as long_actual_orbit.
-
-    13 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement.
-
-    Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
-
-    Erdős problem #269 remains open, and no theorem in this entry decides it.
+  name: Infinite rank of the three-prime running-LCM kernel
+  description: For pairwise distinct primes p, q and r, the three-prime reciprocal running-LCM kernel
+    has nonzero square minors of every order, with row and column indices chosen independently of the
+    third exponent. Consequently it admits no finite rational separated representation. The selected entry
+    also proves an exact rank formula for threshold-column matrices, an explicit two-by-two example at
+    2,3,5, separation in the two-prime comparison, and the four-base dyadic recurrence for the actual
+    2,3,5 sum. A uniform finite-rank approximation statement concerns the rescaled carry matrix. The stronger
+    unit-determinant modular minors are in E269_08 and are outside this configuration. Infinite kernel
+    rank does not prove irrationality of the running-LCM series. In the selected rank theorem the determinants
+    remain nonzero for every fixed third exponent k using the same injective row and column maps. The
+    distance theorem concerns a rescaled real carry matrix and is not an approximation lower bound for
+    the original summable kernel.
   authors:
   - Will Cook
   license: Apache-2.0
@@ -19,29 +22,60 @@ repository:
 classification:
   arxiv:
   - math.NT
-  - math.DS
   msc2020:
-  - "11J72"
-  - "11B83"
-  - "11A05"
-  - "11A07"
-  - "15A03"
+  - 11B83
+  - 15A03
+  - 11J72
 sources:
 - title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
   authors:
   - Will Cook
-  type: original-proof
-  relationship: other
-  note: "The compared theorems are independently restated Lean theorems proved in this repository and described in the public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos."
+  id: https://github.com/wcook04/plectis-erdos
+  type: other
+  relationship: background
+  note: The selected Lean theorems formalise the three-prime rank and actual dyadic recurrence arguments
+    in the linked papers. Fan’s earlier two-prime factorisation is credited as the comparison case. The
+    modular-minor strengthening, residue criteria and irrationality question are outside this single configuration.
   license: Apache-2.0
   author_endorsement: participated
+- title: No Finite Separable Representation at Three Prime Generators
+  authors:
+  - Will Cook
+  id: https://github.com/wcook04/plectis-erdos/blob/147f3f1da400a84dcb3013ea6cef75dc8f382b09/paper/269/erdos-269-three-prime-running-lcm.pdf
+  type: paper
+  relationship: formalizes
+  note: The no-finite-separation theorem, threshold rank and actual dyadic recurrence are selected. The
+    modular-minor corollary and later residue criteria in the same paper are outside this configuration.
+  license: unknown
+  author_endorsement: participated
+- title: 'The Three-Prime Running LCM: Kernel Rank and Tail Arithmetic'
+  authors:
+  - Will Cook
+  id: https://github.com/wcook04/plectis-erdos/blob/147f3f1da400a84dcb3013ea6cef75dc8f382b09/paper/269/erdos269-running-lcm-reasoning-surface.pdf
+  type: paper
+  relationship: formalizes
+  note: Gives the three-prime rank mechanism and actual-orbit calculations. Only declarations named by
+    E269_02 are selected.
+  license: unknown
+  author_endorsement: participated
+- title: 'Erdős Problem #269 discussion: two-prime separation'
+  authors:
+  - Steve Fan
+  id: https://www.erdosproblems.com/forum/thread/269#post-7218
+  type: web discussion
+  relationship: background
+  note: Fan’s 26 June 2026 post gives the repeated two-prime factorisation used for comparison. Credit
+    it as prior work; the selected three-prime infinite-rank theorem is separate.
+  license: unknown
+  author_endorsement: not-contacted
 - title: Erdős Problems catalogue
   authors:
   - Thomas F. Bloom
   id: https://www.erdosproblems.com
   type: web discussion
   relationship: background
-  note: "Catalogue numbering and status of the parent problem."
+  note: The catalogue states the running-LCM irrationality question. The selected kernel nonseparation
+    result is structural and does not decide the arithmetic nature of the sum.
   license: unknown
   author_endorsement: not-contacted
 - title: Mathlib
@@ -52,73 +86,82 @@ sources:
   license: Apache-2.0
   author_endorsement: n/a
 status:
-  scope: "One Comparator configuration selecting the 13 theorems listed in PalomarCorpus/E269_02/comparator.json, from the Lean development for Erdős problem #269. The problem's theorems are packed, in the order the papers state them, into the 11 entries PalomarCorpus/E269_01 to PalomarCorpus/E269_11, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification269* directories are internal regression inventory and are not selected."
+  scope: 'One Comparator configuration selecting the 13 theorems listed in PalomarCorpus/E269_02/comparator.json,
+    from the Lean development for Erdős problem #269. The problem''s theorems are packed, in the order
+    the papers state them, into the 11 entries PalomarCorpus/E269_01 to PalomarCorpus/E269_11, and each
+    theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification269*
+    directories are internal regression inventory and are not selected.'
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
   trusted_challenge_sorry_count: 13
-  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E269_02/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
-  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
+  sorry_boundary: The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E269_02/Challenge.lean,
+    and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution
+    bytes has been recorded.
+  axiom_audit_status: The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit
+    of this entry has been recorded.
   permitted_axiom_budget:
   - propext
   - Quot.sound
   - Classical.choice
   main_results:
-  - declaration: "PalomarCorpus.E269.PaperStatementsA.dyadicBlockBase235_cases"
-    file: "Solutions/PalomarCorpus/E269_02/PaperStatementsA.lean"
+  - declaration: PalomarCorpus.E269.PaperStatementsA.dyadicBlockBase235_cases
+    file: Solutions/PalomarCorpus/E269_02/PaperStatementsA.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E269_02/comparator.json"
-  - declaration: "PalomarCorpus.E269.PaperStatementsA.dyadicBlockBase235_mem_interval"
-    file: "Solutions/PalomarCorpus/E269_02/PaperStatementsA.lean"
+    comparator_config: PalomarCorpus/E269_02/comparator.json
+  - declaration: PalomarCorpus.E269.PaperStatementsA.dyadicBlockBase235_mem_interval
+    file: Solutions/PalomarCorpus/E269_02/PaperStatementsA.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E269_02/comparator.json"
-  - declaration: "PalomarCorpus.E269.PaperStatementsA.dyadicInternalPower_exponent_unique"
-    file: "Solutions/PalomarCorpus/E269_02/PaperStatementsA.lean"
+    comparator_config: PalomarCorpus/E269_02/comparator.json
+  - declaration: PalomarCorpus.E269.PaperStatementsA.dyadicInternalPower_exponent_unique
+    file: Solutions/PalomarCorpus/E269_02/PaperStatementsA.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E269_02/comparator.json"
-  - declaration: "PalomarCorpus.E269.PaperStatementsA.exists_dyadicInternalPower_iff_log_succ"
-    file: "Solutions/PalomarCorpus/E269_02/PaperStatementsA.lean"
+    comparator_config: PalomarCorpus/E269_02/comparator.json
+  - declaration: PalomarCorpus.E269.PaperStatementsA.exists_dyadicInternalPower_iff_log_succ
+    file: Solutions/PalomarCorpus/E269_02/PaperStatementsA.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E269_02/comparator.json"
-  - declaration: "PalomarCorpus.E269.PaperStatementsA.log_dyadic_succ_eq_of_no_internalPower"
-    file: "Solutions/PalomarCorpus/E269_02/PaperStatementsA.lean"
+    comparator_config: PalomarCorpus/E269_02/comparator.json
+  - declaration: PalomarCorpus.E269.PaperStatementsA.log_dyadic_succ_eq_of_no_internalPower
+    file: Solutions/PalomarCorpus/E269_02/PaperStatementsA.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E269_02/comparator.json"
-  - declaration: "PalomarCorpus.E269.PaperStatementsA.paper_two_by_two_fixture"
-    file: "Solutions/PalomarCorpus/E269_02/PaperStatementsA.lean"
+    comparator_config: PalomarCorpus/E269_02/comparator.json
+  - declaration: PalomarCorpus.E269.PaperStatementsA.paper_two_by_two_fixture
+    file: Solutions/PalomarCorpus/E269_02/PaperStatementsA.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E269_02/comparator.json"
-  - declaration: "PalomarCorpus.E269.PaperStatementsA.paper_uniform_rank_and_nonseparation"
-    file: "Solutions/PalomarCorpus/E269_02/PaperStatementsA.lean"
+    comparator_config: PalomarCorpus/E269_02/comparator.json
+  - declaration: PalomarCorpus.E269.PaperStatementsA.paper_uniform_rank_and_nonseparation
+    file: Solutions/PalomarCorpus/E269_02/PaperStatementsA.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E269_02/comparator.json"
-  - declaration: "PalomarCorpus.E269.PaperStatementsA.radix_eq_height_ratio"
-    file: "Solutions/PalomarCorpus/E269_02/PaperStatementsA.lean"
+    comparator_config: PalomarCorpus/E269_02/comparator.json
+  - declaration: PalomarCorpus.E269.PaperStatementsA.radix_eq_height_ratio
+    file: Solutions/PalomarCorpus/E269_02/PaperStatementsA.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E269_02/comparator.json"
-  - declaration: "PalomarCorpus.E269.PaperStatementsA.threePrimeHeight_dyadicBlock_succ"
-    file: "Solutions/PalomarCorpus/E269_02/PaperStatementsA.lean"
+    comparator_config: PalomarCorpus/E269_02/comparator.json
+  - declaration: PalomarCorpus.E269.PaperStatementsA.threePrimeHeight_dyadicBlock_succ
+    file: Solutions/PalomarCorpus/E269_02/PaperStatementsA.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E269_02/comparator.json"
-  - declaration: "PalomarCorpus.E269.PaperStatementsB.real_two_prime_separation"
-    file: "Solutions/PalomarCorpus/E269_02/PaperStatementsB.lean"
+    comparator_config: PalomarCorpus/E269_02/comparator.json
+  - declaration: PalomarCorpus.E269.PaperStatementsB.real_two_prime_separation
+    file: Solutions/PalomarCorpus/E269_02/PaperStatementsB.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E269_02/comparator.json"
-  - declaration: "PalomarCorpus.E269.PaperStatementsC.long_actual_orbit"
-    file: "Solutions/PalomarCorpus/E269_02/PaperStatementsC.lean"
+    comparator_config: PalomarCorpus/E269_02/comparator.json
+  - declaration: PalomarCorpus.E269.PaperStatementsC.long_actual_orbit
+    file: Solutions/PalomarCorpus/E269_02/PaperStatementsC.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E269_02/comparator.json"
-  - declaration: "PalomarCorpus.E269.PaperStatementsE.uniform_rank_complete"
-    file: "Solutions/PalomarCorpus/E269_02/PaperStatementsE.lean"
+    comparator_config: PalomarCorpus/E269_02/comparator.json
+  - declaration: PalomarCorpus.E269.PaperStatementsE.uniform_rank_complete
+    file: Solutions/PalomarCorpus/E269_02/PaperStatementsE.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E269_02/comparator.json"
-  - declaration: "PalomarCorpus.E269.PaperStructuresH.rank_cutMatrix"
-    file: "Solutions/PalomarCorpus/E269_02/PaperStructuresH.lean"
+    comparator_config: PalomarCorpus/E269_02/comparator.json
+  - declaration: PalomarCorpus.E269.PaperStructuresH.rank_cutMatrix
+    file: Solutions/PalomarCorpus/E269_02/PaperStructuresH.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E269_02/comparator.json"
+    comparator_config: PalomarCorpus/E269_02/comparator.json
   development_status: substantive
-  local_proof_provenance: "the proof modules ErdosProblems.Erdos269 in this repository, imported by Solutions.PalomarCorpus.E269_02; the Solutions.ExternalVerification269* family modules are a regression mirror of the same proofs and are not imported by this configuration"
-  canonical_claim_status: "problem-level Comparator entry over substantive Lean in this repository"
+  local_proof_provenance: the proof modules ErdosProblems.Erdos269 in this repository, imported by Solutions.PalomarCorpus.E269_02;
+    the Solutions.ExternalVerification269* family modules are a regression mirror of the same proofs and
+    are not imported by this configuration
+  canonical_claim_status: problem-level Comparator entry over substantive Lean in this repository
 automation:
   methods:
   - method: manual
@@ -139,6 +182,9 @@ automation:
 review:
   status: self-assessed
   reviewers: []
-  notes: >-
-    Every generated restatement was bound to a paper statement and refereed in the eight-paper coverage ledger before its wrapper was generated, and its transport proof was elaborated before the statement was accepted. The author selected the statements and is responsible for the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
+  notes: The author selected the declarations and remains responsible for their mathematical claims. The
+    selected Challenge and Solution sources were inspected locally at Comparator commit a2faa350b45ae08d0e70f5a6ec54943018f8c2b3.
+    This editorial pass is not an independent proof audit, a fresh two-kernel Comparator report, an official
+    Palomar full preflight, external peer review, or registration; verification fields must be set from
+    separate exact-input receipts.
 acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

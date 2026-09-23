@@ -1,14 +1,16 @@
 version: v0.4
 project:
-  name: 'Erdős #249, note section 1; the totient kernel basis family: a basis and all its relations; proof of the basis theorem'
-  description: >-
-    This entry states 3 theorems that only the short note for Erdős problem #249 states, in sections 1 (a basis and all its relations) and 1.1 (proof of the basis theorem): the theorem “A basis through each finite level” (section 1), as displayed_all_base_kernel; the corollary “Dyadic basis” (section 1.1), as displayed_full_dyadic_basis; the corollary “Integral coordinates and all integral relations” (section 1.1), as displayed_integral_normal_form.
-
-    It also states 2 theorems of the totient kernel basis development of the Lean formalisation of Erdős problem #249, to which no paper statement is bound. allSlopeAffineTotientFormsLinearIndependent: All-slope affine independence: for a finite index type and affine forms `a i · n + b i` with `a i > 0` and `b i > 0` that are pairwise non-proportional, meaning `a i · b j ≠ a j · b i` whenever `i ≠ j`, the sequences `n ↦ φ(a i n + b i)` are linearly independent over `ℚ`. allBaseTotientKernelBasisRankAndRelationDimension: Unconditional all-base structure theorem: for every base `k ≥ 2` and depth `e ≥ 1`, the canonical family is `ℚ`-linearly independent, it spans the same subspace as the complete unreduced family through level `e`, that span therefore carries a basis indexed by the canonical index, its `finrank` is exactly `k ^ e + 1`, and the relation module has `finrank` exactly `∑_{1 ≤ j < e} k ^ j`.
-
-    Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
-
-    Erdős problem #249 remains open, and no theorem in this entry decides it.
+  name: All-base bases and integral relations for the totient kernel
+  description: For every integer base k at least two and depth e at least one, the rational span of the
+    sections n ↦ φ(k^j n+r) through level e has dimension k^e+1. An explicit retained family is a basis,
+    every omitted section is an integer multiple of a retained section, and these reductions form a basis
+    for all integral relations, with rank Σ_(1≤j<e) k^j. The entry also gives the full dyadic basis and
+    an affine independence theorem. The retained positive residues satisfy k ∤ r, a weaker condition than
+    gcd(k,r)=1. Martin’s earlier theorem already implies affine independence, and Coons proved non-k-regularity;
+    the exact finite-level basis and integral normal form are the contribution here. This configuration
+    does not prove irrationality of Σ φ(n)2^(-n). The retained family includes φ(n), φ(kn), and all positive
+    residues r with k ∤ r at every level through e. The integral relations are indexed by omitted channels,
+    each with coefficient one at its own channel, which supplies uniqueness over Z.
   authors:
   - Will Cook
   license: Apache-2.0
@@ -20,99 +22,78 @@ classification:
   arxiv:
   - math.NT
   msc2020:
-  - "11J72"
-  - "11A25"
-  - "11B83"
-  - "11J82"
-  - "11Y60"
+  - 11A25
+  - 11B83
 sources:
 - title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
   authors:
   - Will Cook
-  type: original-proof
-  relationship: other
-  note: "The compared theorems are independently restated Lean theorems proved in this repository and described in the public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos."
+  id: https://github.com/wcook04/plectis-erdos
+  type: other
+  relationship: background
+  note: The selected Lean declarations formalise the exact all-base basis, finite-level rank, dyadic specialisation
+    and integral relation normal form proved in the linked short paper. The affine independence declaration
+    is prior in substance to Martin’s Theorem 1, and Coons owns earlier non-regularity; neither is presented
+    as the new result.
   license: Apache-2.0
   author_endorsement: participated
-- title: "Old and New Problems and Results in Combinatorial Number Theory"
+- title: Bases and Integral Relations for the k-Kernel of Euler’s Totient
   authors:
-  - "Paul Erdős"
-  - "Ronald L. Graham"
-  type: "book"
-  relationship: "background"
-  note: "Page 61 poses the question whether the sum of phi(n)/2^n is irrational; only the problem statement is taken from this source."
-  license: "unknown"
-  author_endorsement: "n/a"
-- title: "On arithmetical properties of Lambert series"
+  - Will Cook
+  id: https://github.com/wcook04/plectis-erdos/blob/147f3f1da400a84dcb3013ea6cef75dc8f382b09/paper/249/erdos-249-binary-totient-series.pdf
+  type: paper
+  relationship: formalizes
+  note: Theorem 1 and the integral normal-form corollary are the two principal paper statements selected
+    here; the same note contains other results outside this configuration.
+  license: unknown
+  author_endorsement: participated
+- title: The Binary Totient Series
   authors:
-  - "Paul Erdős"
-  type: "paper"
-  relationship: "background"
-  note: "Journal of the Indian Mathematical Society 12 (1948). Supplies the isolated digit-block separation mechanism reused by the residue-class irrationality theorems; no statement about the sum of phi(n)/2^n is taken from it."
-  license: "unknown"
-  author_endorsement: "n/a"
-- title: "Simultaneous inequalities among values of the Euler phi-function"
+  - Will Cook
+  id: https://github.com/wcook04/plectis-erdos/blob/147f3f1da400a84dcb3013ea6cef75dc8f382b09/paper/249/erdos249-totient-reasoning-surface.pdf
+  type: paper
+  relationship: background
+  note: Gives the wider totient-series programme; this selection is only the basis and relations unit.
+  license: unknown
+  author_endorsement: participated
+- title: Simultaneous inequalities among values of the Euler phi-function
   authors:
-  - "Greg Martin"
-  id: "arXiv:math/0603053"
-  type: "paper"
-  relationship: "background"
-  note: "Theorem 1 already implies the all-slope affine independence conclusion stated here, which is therefore not claimed as new; the exact rank formula, canonical index, basis and relation-module dimension are not taken from this source."
-  license: "unknown"
-  author_endorsement: "not-contacted"
-- title: "(Non)Automaticity of number theoretic functions"
+  - Greg Martin
+  id: arXiv:math/0603053
+  type: paper
+  relationship: background
+  note: Theorem 1 already implies the affine linear-independence statement; no priority is claimed for
+    that selected supporting declaration.
+  license: unknown
+  author_endorsement: not-contacted
+- title: (Non)Automaticity of number theoretic functions
   authors:
-  - "Michael Coons"
-  id: "doi:10.5802/jtnb.718"
-  type: "paper"
-  relationship: "background"
-  note: "Journal de Théorie des Nombres de Bordeaux 22 (2010), 339-352, Theorem 3.2 owns non-k-regularity of Euler's totient, equivalently infinite dimensionality of the full kernel span; that statement is not claimed here and the exact bounded-depth rank and normal form are not taken from it."
-  license: "unknown"
-  author_endorsement: "not-contacted"
-- title: "The ring of k-regular sequences"
+  - Michael Coons
+  id: doi:10.5802/jtnb.718
+  type: paper
+  relationship: background
+  note: Theorem 3.2 gives prior non-k-regularity of Euler’s totient. It does not give the exact finite-level
+    basis or integral relation normal form.
+  license: unknown
+  author_endorsement: not-contacted
+- title: Multiplicative functions and k-automatic sequences
   authors:
-  - "Jean-Paul Allouche"
-  - "Jeffrey Shallit"
-  id: "doi:10.1016/0304-3975(92)90001-V"
-  type: "paper"
-  relationship: "background"
-  note: "Theoretical Computer Science 98 (1992), 163-197 introduces k-regular sequences and the k-kernel, the notion the rank and basis theorems are stated about; no result is taken from it."
-  license: "unknown"
-  author_endorsement: "not-contacted"
-- title: "Answer 1211557 to: An infinite sum based on the mod-parity of Euler's totient function"
-  authors:
-  - "Erick Wong"
-  id: "https://math.stackexchange.com/a/1211557"
-  type: "web discussion"
-  relationship: "background"
-  note: "Proves least-residue irrationality when the denominator base and the modulus are the same integer k > 2, dated 29 March 2015; the theorems here fix base two, vary the modulus, and classify the dyadic observables, and that classification is not taken from this source."
-  license: "unknown"
-  author_endorsement: "not-contacted"
-- title: "Comment on Erdős Problem #249, 16 May 2026"
-  authors:
-  - "Steve Fan"
-  id: "https://www.erdosproblems.com/forum/thread/249"
-  type: "web discussion"
-  relationship: "background"
-  note: "Records the divisor-convolution identity giving the sum of phi(n)/2^n as 1/2 plus the sum of mu(n)/(2^n - 1)^2, which names the constant Theta_2 used by the rank-one floor theorems; those theorems are not taken from this source. The comment cannot be confirmed beyond the linked discussion thread."
-  license: "unknown"
-  author_endorsement: "not-contacted"
-- title: "Modular functions and transcendence questions"
-  authors:
-  - "Yuri V. Nesterenko"
-  id: "doi:10.1070/SM1996v187n09ABEH000158"
-  type: "paper"
-  relationship: "background"
-  note: "Sbornik: Mathematics 187 (1996), 1319-1348. Its algebraic independence theorem for the Ramanujan functions makes the companion divisor-sum series transcendental at q = 1/2; it is cited only as context for the totient problem and supplies nothing to any theorem compared here."
-  license: "unknown"
-  author_endorsement: "not-contacted"
+  - S. Yazdani
+  id: https://www.numdam.org/item/JTNB_2001__13_2_651_0/
+  type: paper
+  relationship: background
+  note: Theorem 2 and its proof use CRT and Dirichlet separation for kernel sections, credited there to
+    Shallit. The selected exact finite-level basis and integral normal form require further work.
+  license: unknown
+  author_endorsement: not-contacted
 - title: Erdős Problems catalogue
   authors:
   - Thomas F. Bloom
   id: https://www.erdosproblems.com
   type: web discussion
   relationship: background
-  note: "Catalogue numbering and status of the parent problem."
+  note: The catalogue records the open irrationality question for the dyadic totient series. The selected
+    kernel structure does not decide it.
   license: unknown
   author_endorsement: not-contacted
 - title: Mathlib
@@ -123,46 +104,58 @@ sources:
   license: Apache-2.0
   author_endorsement: n/a
 related_formalizations:
-- id: "https://github.com/google-deepmind/formal-conjectures/blob/f776d2f2039351b00737ffcafb9d7d7666e1d9af/FormalConjectures/ErdosProblems/249.lean"
-  title: "FormalConjectures.ErdosProblems.249"
-  relationship: "independent"
-  note: "An open-problem entry recording the same question as `answer(sorry) ↔ Irrational (∑' n : ℕ, φ n / 2 ^ n)`, with both the answer placeholder and the proof left as sorry. It is statement-level prior art for the formalisation of the target, it supplies no proof authority, and every declaration compared here was stated independently of it."
+- id: https://github.com/google-deepmind/formal-conjectures/blob/f776d2f2039351b00737ffcafb9d7d7666e1d9af/FormalConjectures/ErdosProblems/249.lean
+  title: FormalConjectures.ErdosProblems.249
+  relationship: independent
+  note: 'An open-problem entry recording the same question as `answer(sorry) ↔ Irrational (∑'' n : ℕ,
+    φ n / 2 ^ n)`, with both the answer placeholder and the proof left as sorry. It is statement-level
+    prior art for the formalisation of the target, it supplies no proof authority, and every declaration
+    compared here was stated independently of it.'
 status:
-  scope: "One Comparator configuration selecting the 5 theorems listed in PalomarCorpus/E249_29/comparator.json, from the Lean development for Erdős problem #249. The problem's theorems are packed, in the order the papers state them, into the 33 entries PalomarCorpus/E249_01 to PalomarCorpus/E249_33, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification249* directories are internal regression inventory and are not selected."
+  scope: 'One Comparator configuration selecting the 5 theorems listed in PalomarCorpus/E249_29/comparator.json,
+    from the Lean development for Erdős problem #249. The problem''s theorems are packed, in the order
+    the papers state them, into the 33 entries PalomarCorpus/E249_01 to PalomarCorpus/E249_33, and each
+    theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification249*
+    directories are internal regression inventory and are not selected.'
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
   trusted_challenge_sorry_count: 5
-  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E249_29/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
-  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
+  sorry_boundary: The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E249_29/Challenge.lean,
+    and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution
+    bytes has been recorded.
+  axiom_audit_status: The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit
+    of this entry has been recorded.
   permitted_axiom_budget:
   - propext
   - Quot.sound
   - Classical.choice
   main_results:
-  - declaration: "PalomarCorpus.E249.CompleteKernelBases.displayed_all_base_kernel"
-    file: "Solutions/PalomarCorpus/E249_29/CompleteKernelBases.lean"
+  - declaration: PalomarCorpus.E249.CompleteKernelBases.displayed_all_base_kernel
+    file: Solutions/PalomarCorpus/E249_29/CompleteKernelBases.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E249_29/comparator.json"
-  - declaration: "PalomarCorpus.E249.CompleteKernelBases.displayed_full_dyadic_basis"
-    file: "Solutions/PalomarCorpus/E249_29/CompleteKernelBases.lean"
+    comparator_config: PalomarCorpus/E249_29/comparator.json
+  - declaration: PalomarCorpus.E249.CompleteKernelBases.displayed_full_dyadic_basis
+    file: Solutions/PalomarCorpus/E249_29/CompleteKernelBases.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E249_29/comparator.json"
-  - declaration: "PalomarCorpus.E249.TotientKernelBasis.allBaseTotientKernelBasisRankAndRelationDimension"
-    file: "Solutions/PalomarCorpus/E249_29/TotientKernelBasis.lean"
+    comparator_config: PalomarCorpus/E249_29/comparator.json
+  - declaration: PalomarCorpus.E249.TotientKernelBasis.allBaseTotientKernelBasisRankAndRelationDimension
+    file: Solutions/PalomarCorpus/E249_29/TotientKernelBasis.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E249_29/comparator.json"
-  - declaration: "PalomarCorpus.E249.TotientKernelBasis.allSlopeAffineTotientFormsLinearIndependent"
-    file: "Solutions/PalomarCorpus/E249_29/TotientKernelBasis.lean"
+    comparator_config: PalomarCorpus/E249_29/comparator.json
+  - declaration: PalomarCorpus.E249.TotientKernelBasis.allSlopeAffineTotientFormsLinearIndependent
+    file: Solutions/PalomarCorpus/E249_29/TotientKernelBasis.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E249_29/comparator.json"
-  - declaration: "PalomarCorpus.E249.TotientKernelBasis.displayed_integral_normal_form"
-    file: "Solutions/PalomarCorpus/E249_29/TotientKernelBasis.lean"
+    comparator_config: PalomarCorpus/E249_29/comparator.json
+  - declaration: PalomarCorpus.E249.TotientKernelBasis.displayed_integral_normal_form
+    file: Solutions/PalomarCorpus/E249_29/TotientKernelBasis.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E249_29/comparator.json"
+    comparator_config: PalomarCorpus/E249_29/comparator.json
   development_status: substantive
-  local_proof_provenance: "the proof modules Erdos257PeriodNoncollapse, ErdosProblems.Erdos249 in this repository, imported by Solutions.PalomarCorpus.E249_29; the Solutions.ExternalVerification249* family modules are a regression mirror of the same proofs and are not imported by this configuration"
-  canonical_claim_status: "problem-level Comparator entry over substantive Lean in this repository"
+  local_proof_provenance: the proof modules Erdos257PeriodNoncollapse, ErdosProblems.Erdos249 in this
+    repository, imported by Solutions.PalomarCorpus.E249_29; the Solutions.ExternalVerification249* family
+    modules are a regression mirror of the same proofs and are not imported by this configuration
+  canonical_claim_status: problem-level Comparator entry over substantive Lean in this repository
 automation:
   methods:
   - method: manual
@@ -183,6 +176,9 @@ automation:
 review:
   status: self-assessed
   reviewers: []
-  notes: >-
-    The statements from the hand-written families were checked declaration by declaration against the public problem notes, the reasoning records and the Lean sources in automated review passes run with Anthropic Claude and OpenAI Codex. The author selected the statements and is responsible for the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
+  notes: The author selected the declarations and remains responsible for their mathematical claims. The
+    selected Challenge and Solution sources were inspected locally at Comparator commit a2faa350b45ae08d0e70f5a6ec54943018f8c2b3.
+    This editorial pass is not an independent proof audit, a fresh two-kernel Comparator report, an official
+    Palomar full preflight, external peer review, or registration; verification fields must be set from
+    separate exact-input receipts.
 acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.
