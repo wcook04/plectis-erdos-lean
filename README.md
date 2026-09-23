@@ -16,7 +16,7 @@ certify every claim in the linked paper. The first official full preflight, for 
 that candidate used Lean 4.30.0 and the pinned current verifier requires at least
 4.35.0-rc2. The [upgraded candidate](https://github.com/wcook04/plectis-erdos-lean/commit/216567506f823f1e47b209f9443ae8e5f0fdec8b)
 uses the matching Lean and Mathlib 4.35.0-rc2 release; its
-[mechanical preflight](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35918585547) reached Solution compilation and found two compatibility errors in the #257 dependency chain. Their repair is in progress; verification has not passed. The remaining entries are disabled in the
+[first supported-toolchain preflight](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35918585547) reached Solution compilation and found two compatibility errors in the #257 dependency chain. After those repairs, the [next report](docs/palomar-release-v1/preflight-35919764874.json) confirmed those modules compile and found three further compatibility failures. The current candidate repairs the reported integer-division, matrix-determinant and antidiagonal API uses without changing theorem statements; official elaboration remains pending. The remaining entries are disabled in the
 [release selection](.github/palomar-release-selection-v1.json) while their
 scope and exact-input checks are prepared.
 
