@@ -5,7 +5,6 @@ Authors: Will Cook
 -/
 import Mathlib
 import Solutions.PalomarCorpus.E257_40.Statement
-import Solutions.PalomarCorpus.E257_40.AchievementSetGeometry
-import Solutions.PalomarCorpus.E257_40.ActualUpperSuccessor
-import Solutions.PalomarCorpus.E257_40.BooleanMobiusCarry
-import Solutions.PalomarCorpus.E257_40.DyadicObservationSummability
+import Solutions.PalomarCorpus.E257_40.PaperStatementsAL
+import Solutions.PalomarCorpus.E257_40.PaperStructuresBU
+import Solutions.PalomarCorpus.E257_40.PaperStructuresO

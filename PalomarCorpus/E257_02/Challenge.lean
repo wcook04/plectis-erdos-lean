@@ -29,6 +29,14 @@ namespace PalomarCorpus.E257_02.Shared
 /-- The real Mersenne weight 1 divided by 2 to the power n minus 1; at n = 0 the value is 0 because division by zero is zero here. -/
 noncomputable def mersenneWeight (n : ℕ) : ℝ :=
   1 / ((2 : ℝ) ^ n - 1)
+/-- Real greedy residual after processing exponents `1, ..., n`. Local copy of Erdos249257.greedyMersenneRemainder, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def greedyMersenneRemainder (x : ℝ) : ℕ → ℝ
+  | 0 => x
+  | n + 1 =>
+      if mersenneWeight (n + 1) ≤ greedyMersenneRemainder x n then
+        greedyMersenneRemainder x n - mersenneWeight (n + 1)
+      else
+        greedyMersenneRemainder x n
 /-- The Mersenne tail beyond rank n, namely the sum over k at least 0 of the Mersenne weight at n+k+1. -/
 noncomputable def mersenneTail (n : ℕ) : ℝ :=
   ∑' k : ℕ, mersenneWeight (n + k + 1)
@@ -107,15 +115,7 @@ open Set
 open Topology
 open scoped ENNReal
 open MeasureTheory
-export PalomarCorpus.E257_02.Shared (erdosBorweinMersenneConstant mersenneAchievementSet mersenneTail mersenneWeight positiveMersenneSupportValue)
-/-- Real greedy residual after processing exponents `1, ..., n`. Local copy of Erdos249257.greedyMersenneRemainder, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def greedyMersenneRemainder (x : ℝ) : ℕ → ℝ
-  | 0 => x
-  | n + 1 =>
-      if mersenneWeight (n + 1) ≤ greedyMersenneRemainder x n then
-        greedyMersenneRemainder x n - mersenneWeight (n + 1)
-      else
-        greedyMersenneRemainder x n
+export PalomarCorpus.E257_02.Shared (erdosBorweinMersenneConstant greedyMersenneRemainder mersenneAchievementSet mersenneTail mersenneWeight positiveMersenneSupportValue)
 /-- Literal finite internal gap over a positive finite prefix. Local copy of ErdosProblems.Erdos257.PaperCompleteR20.InternalMersenneGap, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def InternalMersenneGap (x : ℝ) : Prop :=
   ∃ (D : Finset ℕ) (m : ℕ), 1 ≤ m ∧
@@ -205,3 +205,29 @@ theorem eq_halfGreedyPrefixSupport_of_critical_crossing
     D = halfGreedyPrefixSupport (c - 1) := by
   sorry
 end PalomarCorpus.E257.PaperStatementsF
+
+namespace PalomarCorpus.E257.PaperStructuresCA
+open Filter
+open Set
+open Topology
+open scoped ENNReal
+open MeasureTheory
+export PalomarCorpus.E257_02.Shared (greedyMersenneRemainder mersenneTail mersenneWeight positiveMersenneSupportValue)
+/-- **Packet §4.** A finite support word certified to straddle the target at depth `d`: the coded value is at most `t` and the value plus the complete unresolved tail mass still reaches `t`. This is deliberately *weaker* than the `HalfPrefixForcingChain.interval_trapped` containment condition: overlap of the correction image with the cylinder, not containment inside it. Local copy of Erdos249257.IsStraddlePrefix, restated so the compared statements elaborate against Mathlib alone. -/
+structure IsStraddlePrefix (t : ℝ) (u : Finset ℕ) (d : ℕ) : Prop where
+  mem_bounds : ∀ n ∈ u, 0 < n ∧ n ≤ d
+  value_le : positiveMersenneSupportValue (↑u : Set ℕ) ≤ t
+  le_value_add_tail :
+    t ≤ positiveMersenneSupportValue (↑u : Set ℕ) + mersenneTail d
+/-- The set of ranks selected by the greedy Mersenne rule on x, namely the positive m for which the weight at m is at most the greedy remainder after rank m minus 1. -/
+noncomputable def greedyMersenneSupport (x : ℝ) : Set ℕ :=
+  {m : ℕ | m ≠ 0 ∧
+    mersenneWeight m ≤ greedyMersenneRemainder x (m - 1)}
+/-- States lem:straddle-agrees-greedy, prop:canon from the long record for Erdős problem #257. Transported from Erdos249257.IsStraddlePrefix.half_agrees_greedy in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem IsStraddlePrefix.half_agrees_greedy
+    {u : Finset ℕ} {d : ℕ}
+    (hu : IsStraddlePrefix (1 / 2 : ℝ) u d) :
+    ∀ n : ℕ, 0 < n → n ≤ d →
+      (n ∈ u ↔ n ∈ greedyMersenneSupport (1 / 2 : ℝ)) := by
+  sorry
+end PalomarCorpus.E257.PaperStructuresCA

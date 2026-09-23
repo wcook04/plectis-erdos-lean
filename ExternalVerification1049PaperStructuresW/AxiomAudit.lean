@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification1049PaperStructuresW
+
+#print axioms Erdos249257.ExternalVerification1049PaperStructuresW.geometric_universality

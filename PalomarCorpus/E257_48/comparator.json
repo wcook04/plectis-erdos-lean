@@ -1,0 +1,13 @@
+{
+  "challenge_module": "PalomarCorpus.E257_48.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257_48",
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStructuresCB.exists_infinite_positive_support_half_of_cofinalCylinderStages"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

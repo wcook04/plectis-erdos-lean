@@ -1,10 +1,10 @@
 version: v0.4
 project:
-  name: 'Erdős #257: general identities for perturbed greedy recurrences'
+  name: 'Erdős #257: nonnegativity of the omitted-tail margin; square-root bounds for half-carries'
   description: >-
-    This entry states 6 theorems that the long record for Erdős problem #257 states in section the unnumbered section general identities for perturbed greedy recurrences: the theorem “A general perturbed greedy recurrence”, as prefixChoice_eq_below; the theorem “Spacing of compatible reverse-carry words”, as overlappingMidpointReturns_twoPow_le_realBound, overlappingReverseCarryWords_carryDifference_eq_twoPow_mul_odd and overlappingReverseCarryWords_twoPow_le_realBound; the proposition “Changing one support bit at a doubled rank”, as supportCoeff_insert_divisor and supportCoeff_boundaryPair_unitDrop_at_double.
+    This entry states 8 theorems that the long record for Erdős problem #257 states in sections the unnumbered section nonnegativity of the omitted-tail margin and the unnumbered section square-root bounds for half-carries: the theorem “A sufficient lower bound for the integer remainder”, as paper_seam_escape_implies_half_membership; the theorem “A square-root carry bound implies half-membership”, as greedy_half_infinite_of_mobiusCenteredHalfCarry_upperBound; the theorem “Terminal bounds at unbounded depths”, as paper_terminal_strip_witness_six, paper_both_cofinal_statements_iff_half_membership, paper_terminal_strip_forces_half_membership, paper_exact_row_integerHalfCarry_eq_one and paper_integerHalfCarry_eq_two_pow_sub_localPrefixQuotient; the theorem “Cofinal returns of the greedy carry”, as greedy_half_infinite_of_cofinalStripReturn.
 
-    5 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 1 is derived from the source declaration by a short tactic proof, which certifies implication.
+    1 of the restated theorems is proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 7 are derived from the source declaration by a short tactic proof, which certifies implication.
 
     Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
 
@@ -55,11 +55,11 @@ sources:
   license: Apache-2.0
   author_endorsement: n/a
 status:
-  scope: "One Comparator configuration selecting the 6 theorems listed in PalomarCorpus/E257_32/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 43 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_43, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
+  scope: "One Comparator configuration selecting the 8 theorems listed in PalomarCorpus/E257_32/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 52 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_52, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
-  trusted_challenge_sorry_count: 6
+  trusted_challenge_sorry_count: 8
   sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E257_32/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
   axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
   permitted_axiom_budget:
@@ -67,28 +67,36 @@ status:
   - Quot.sound
   - Classical.choice
   main_results:
-  - declaration: "PalomarCorpus.E257.PaperStatementsAL.supportCoeff_boundaryPair_unitDrop_at_double"
-    file: "Solutions/PalomarCorpus/E257_32/PaperStatementsAL.lean"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAT.paper_terminal_strip_witness_six"
+    file: "Solutions/PalomarCorpus/E257_32/PaperStatementsAT.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_32/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAL.supportCoeff_insert_divisor"
-    file: "Solutions/PalomarCorpus/E257_32/PaperStatementsAL.lean"
+  - declaration: "PalomarCorpus.E257.PaperStatementsD.greedy_half_infinite_of_cofinalStripReturn"
+    file: "Solutions/PalomarCorpus/E257_32/PaperStatementsD.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_32/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBU.prefixChoice_eq_below"
-    file: "Solutions/PalomarCorpus/E257_32/PaperStructuresBU.lean"
+  - declaration: "PalomarCorpus.E257.PaperStatementsD.greedy_half_infinite_of_mobiusCenteredHalfCarry_upperBound"
+    file: "Solutions/PalomarCorpus/E257_32/PaperStatementsD.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_32/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresO.overlappingMidpointReturns_twoPow_le_realBound"
-    file: "Solutions/PalomarCorpus/E257_32/PaperStructuresO.lean"
+  - declaration: "PalomarCorpus.E257.PaperStatementsK.paper_both_cofinal_statements_iff_half_membership"
+    file: "Solutions/PalomarCorpus/E257_32/PaperStatementsK.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_32/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresO.overlappingReverseCarryWords_carryDifference_eq_twoPow_mul_odd"
-    file: "Solutions/PalomarCorpus/E257_32/PaperStructuresO.lean"
+  - declaration: "PalomarCorpus.E257.PaperStatementsL.paper_terminal_strip_forces_half_membership"
+    file: "Solutions/PalomarCorpus/E257_32/PaperStatementsL.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_32/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresO.overlappingReverseCarryWords_twoPow_le_realBound"
-    file: "Solutions/PalomarCorpus/E257_32/PaperStructuresO.lean"
+  - declaration: "PalomarCorpus.E257.PaperStatementsQ.paper_exact_row_integerHalfCarry_eq_one"
+    file: "Solutions/PalomarCorpus/E257_32/PaperStatementsQ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_32/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsQ.paper_integerHalfCarry_eq_two_pow_sub_localPrefixQuotient"
+    file: "Solutions/PalomarCorpus/E257_32/PaperStatementsQ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_32/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBW.paper_seam_escape_implies_half_membership"
+    file: "Solutions/PalomarCorpus/E257_32/PaperStructuresBW.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_32/comparator.json"
   development_status: substantive

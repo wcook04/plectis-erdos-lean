@@ -6,9 +6,4 @@ Authors: Will Cook
 import Mathlib
 import Solutions.PalomarCorpus.E257_21.Statement
 import Solutions.PalomarCorpus.E257_21.PaperStatementsAA
-import Solutions.PalomarCorpus.E257_21.PaperStatementsAE
-import Solutions.PalomarCorpus.E257_21.PaperStatementsAF
-import Solutions.PalomarCorpus.E257_21.PaperStatementsAG
-import Solutions.PalomarCorpus.E257_21.PaperStatementsAM
-import Solutions.PalomarCorpus.E257_21.PaperStatementsAO
-import Solutions.PalomarCorpus.E257_21.PaperStatementsD
+import Solutions.PalomarCorpus.E257_21.PaperStatementsG

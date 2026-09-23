@@ -9,7 +9,7 @@ import Mathlib
 set_option autoImplicit false
 
 /-!
-# Erdős #257, record sections 6 to 10: detailed results and their hypotheses; hypothesis-specific obstructions (part 2 of 2)
+# Erdős #257, record sections 6 to 9: detailed results and their hypotheses; which hypotheses remain unproved (part 3 of 4)
 
 Each theorem below restates, against Mathlib alone, a theorem of the Lean development
 for Erdős problem #257, in the order the papers state them. The definitions a statement
@@ -21,9 +21,43 @@ and no theorem in this entry decides it.
 -/
 
 open scoped BigOperators
+open scoped ENNReal
+open Filter
+open Set
+open MeasureTheory
+open Topology
 
-namespace PalomarCorpus.E257.PaperStructuresBP
+namespace PalomarCorpus.E257.PaperStructuresBK
 open scoped BigOperators
+open scoped ENNReal
+open Filter
+open Set
+open MeasureTheory
+open Topology
+/-- The discrete square-root strip used by the half-carry search. Local copy of Erdos249257.HalfCarryReachability.halfStripBound, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def halfStripBound (n : ℕ) : ℕ :=
+  2 * Nat.sqrt n + 4
+/-- The binary affine orbit driven by an integer sequence a from an initial value, defined by orbit 0 equal to the initial value and orbit (n+1) equal to twice orbit n minus a at n+1. -/
+noncomputable def affineBinaryOrbit (a : ℕ → ℤ) (u0 : ℤ) : ℕ → ℤ
+  | 0 => u0
+  | n + 1 => 2 * affineBinaryOrbit a u0 n - a (n + 1)
+/-- **The support coefficient** `f_A(n) = #{d ∣ n : d ∈ A}`, the Dirichlet incidence `1_A * 1` of a support set `A ⊆ ℕ`. This is the coefficient in which Erdős #257 is actually stated: `∑_{a∈A} 1/(b^a - 1) = ∑_n f_A(n)/b^n`. Full support gives `f_ℕ = τ`; primes give `ω`; prime powers give `Ω`. Local copy of Erdos249257.supportCoeff, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def supportCoeff (A : Set ℕ) (n : ℕ) : ℕ :=
+  letI := Classical.decPred fun d : ℕ => d ∈ A
+  (n.divisors.filter fun d => d ∈ A).card
+/-- The integer half carry attached to a support A, namely the binary affine orbit started at 1 and driven by the divisor incidence coefficients of A shifted by one, so that the orbit at n+1 is twice the orbit at n minus the number of divisors of n+2 lying in A; the shift and the recursion index compose, so the coefficient consumed at step n+1 is the one at n+2. -/
+noncomputable def integerHalfCarry (A : Set ℕ) : ℕ → ℤ :=
+  affineBinaryOrbit (fun n : ℕ ↦ (supportCoeff A (n + 1) : ℤ)) 1
+/-- The canonical integer half carry measured relative to the signed Möbius solution. Index `N` corresponds to the packet's state `e_{N+1}`. Local copy of Erdos249257.HalfCarryReachability.mobiusCenteredHalfCarry, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def mobiusCenteredHalfCarry (A : Set ℕ) (N : ℕ) : ℤ :=
+  integerHalfCarry A N - 1
+/-- Integer numerator of the frozen coefficient window. The recurrence uses the binary weights `2^(J-i)` without division. Local copy of Erdos249257.HalfCylinderFiniteShadow.finiteCoeffWindowNumerator, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def finiteCoeffWindowNumerator
+    (A : Set ℕ) (n : ℕ) : ℕ → ℕ
+  | 0 => 0
+  | J + 1 =>
+      2 * finiteCoeffWindowNumerator A n J +
+        supportCoeff A (n + J + 1)
 /-- Local definition PerturbedFamily, copied so the compared statements of this entry elaborate against Mathlib alone. -/
 structure PerturbedFamily (α : Type*) where
   oldSum : α → ℕ
@@ -48,28 +82,15 @@ structure PerturbedFamily.AdjacentCut {α : Type*} (F : PerturbedFamily α) (C :
 noncomputable def PerturbedFamily.AdjacentCut.abovePulse {α : Type*} {F : PerturbedFamily α} {C : ℕ} (K : F.AdjacentCut C) : ℕ := F.pulse K.above
 /-- Local definition belowPulse, copied so the compared statements of this entry elaborate against Mathlib alone. -/
 noncomputable def PerturbedFamily.AdjacentCut.belowPulse {α : Type*} {F : PerturbedFamily α} {C : ℕ} (K : F.AdjacentCut C) : ℕ := F.pulse K.below
-/-- Local definition newCapacity, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def PerturbedFamily.AdjacentCut.newCapacity {α : Type*} {F : PerturbedFamily α} {C : ℕ} (_K : F.AdjacentCut C) : ℕ := 4 * C + F.gap
 /-- Local definition overshoot, copied so the compared statements of this entry elaborate against Mathlib alone. -/
 noncomputable def PerturbedFamily.AdjacentCut.overshoot {α : Type*} {F : PerturbedFamily α} {C : ℕ} (K : F.AdjacentCut C) : ℕ := F.oldSum K.above - C
+/-- Local definition remainder, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def PerturbedFamily.AdjacentCut.remainder {α : Type*} {F : PerturbedFamily α} {C : ℕ} (K : F.AdjacentCut C) : ℕ := C - F.oldSum K.below
 /-- Local definition successorCarries, copied so the compared statements of this entry elaborate against Mathlib alone. -/
 noncomputable def PerturbedFamily.AdjacentCut.successorCarries {α : Type*} {F : PerturbedFamily α} {C : ℕ} (K : F.AdjacentCut C) : Prop :=
   4 * K.overshoot + K.abovePulse ≤ F.gap
-/-- Local definition prefixChoice, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def PerturbedFamily.AdjacentCut.prefixChoice {α : Type*} {F : PerturbedFamily α} {C : ℕ} (K : F.AdjacentCut C) [Decidable K.successorCarries] : α :=
-  if K.successorCarries then K.above else K.below
-/-- Local definition remainder, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def PerturbedFamily.AdjacentCut.remainder {α : Type*} {F : PerturbedFamily α} {C : ℕ} (K : F.AdjacentCut C) : ℕ := C - F.oldSum K.below
-/-- Local definition prefixRemainder, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def PerturbedFamily.AdjacentCut.prefixRemainder {α : Type*} {F : PerturbedFamily α} {C : ℕ} (K : F.AdjacentCut C) [Decidable K.successorCarries] : ℕ :=
-  if K.successorCarries then
-    F.gap - (4 * K.overshoot + K.abovePulse)
-  else
-    4 * K.remainder + F.gap - K.belowPulse
 /-- Local definition terminalWeight, copied so the compared statements of this entry elaborate against Mathlib alone. -/
 noncomputable def PerturbedFamily.AdjacentCut.terminalWeight {α : Type*} {F : PerturbedFamily α} {C : ℕ} (_K : F.AdjacentCut C) : ℕ := 2 * F.gap + 4
-/-- Local definition newSum, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def PerturbedFamily.newSum {α : Type*} (F : PerturbedFamily α) (x : α) : ℕ := 4 * F.oldSum x + F.pulse x
 /-- Local definition SeamRowWord, copied so the compared statements of this entry elaborate against Mathlib alone. -/
 noncomputable abbrev SeamRowWord (s : ℕ) := Fin (s - 2) → Bool
 /-- Local definition ofList, copied so the compared statements of this entry elaborate against Mathlib alone. -/
@@ -233,164 +254,90 @@ noncomputable def seamAdjacentCut (s : ℕ) (hs : 5 ≤ s) :
 /-- The greedy remainder of the seam subset sum problem at row s, namely the seam capacity minus the total weight selected greedily from the seam weight list. -/
 noncomputable def seamIntegerGreedyRemainder (s : ℕ) : ℕ :=
   integerGreedyRemainder (seamWeights s) (seamSubsetTarget s)
-/-- Local definition weakCapPulse, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def weakCapPulse : Fin 3 → ℕ := fun i => if (i : ℕ) = 1 then 3 else 0
-/-- Proof obligation `gap_pos` of the local copy of ErdosProblems.Erdos257.PaperCompleteR21.weakCapFamily, stated with that definition's own parameter and field values. The definition names this theorem for the field, and the Solution proves it with the source definition's own field. -/
-theorem weakCapFamily_gap_pos :
-    let gap : ℕ := 2;
-    0 < gap := by
+/-- The real Mersenne weight 1 divided by 2 to the power n minus 1; at n = 0 the value is 0 because division by zero is zero here. -/
+noncomputable def mersenneWeight (n : ℕ) : ℝ :=
+  1 / ((2 : ℝ) ^ n - 1)
+/-- The remainder left by the greedy Mersenne rule applied to a nonnegative real x through rank n: it starts at x and, at each rank n+1, subtracts the weight 1 divided by 2 to the power n+1 minus 1 exactly when that weight is at most the current remainder. -/
+noncomputable def greedyMersenneRemainder (x : ℝ) : ℕ → ℝ
+  | 0 => x
+  | n + 1 =>
+      if mersenneWeight (n + 1) ≤ greedyMersenneRemainder x n then
+        greedyMersenneRemainder x n - mersenneWeight (n + 1)
+      else
+        greedyMersenneRemainder x n
+/-- The rational Mersenne weight 1 divided by 2 to the power n minus 1, taken in the rationals; at n = 0 the value is 0. -/
+noncomputable def mersenneWeightRat (n : ℕ) : ℚ :=
+  1 / ((2 : ℚ) ^ n - 1)
+/-- The rational greedy Mersenne remainder of a rational target x through rank n, computed exactly in the rationals: it starts at x and at each rank n+1 subtracts the rational weight 1 divided by 2 to the power n+1 minus 1 exactly when that weight is at most the current remainder. -/
+noncomputable def greedyMersenneRemainderRat (x : ℚ) : ℕ → ℚ
+  | 0 => x
+  | n + 1 =>
+      if mersenneWeightRat (n + 1) ≤ greedyMersenneRemainderRat x n then
+        greedyMersenneRemainderRat x n - mersenneWeightRat (n + 1)
+      else
+        greedyMersenneRemainderRat x n
+/-- Positive exponents selected through a finite exact-rational greedy run. Local copy of Erdos249257.greedyMersennePrefixRat, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def greedyMersennePrefixRat (x : ℚ) (n : ℕ) : Finset ℕ :=
+  (((Finset.range n).filter fun k =>
+      mersenneWeightRat (k + 1) ≤ greedyMersenneRemainderRat x k).image
+    fun k => k + 1)
+/-- Local copy of Erdos249257.halfGreedyPrefixSupport, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def halfGreedyPrefixSupport (n : ℕ) : Finset ℕ :=
+  greedyMersennePrefixRat (1 / 2 : ℚ) n
+/-- Signed frozen-prefix margin. Its nonnegativity says that the first `J` future divisor-incidence rows cover the centered carry at depth `k`. Local copy of Erdos249257.greedyHalfFrozenMargin, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def greedyHalfFrozenMargin (k J : ℕ) : ℤ :=
+  (finiteCoeffWindowNumerator
+      (↑(halfGreedyPrefixSupport k) : Set ℕ) (k + 1) J : ℤ) -
+    (2 : ℤ) ^ J *
+      mobiusCenteredHalfCarry
+        (↑(halfGreedyPrefixSupport k) : Set ℕ) k
+/-- Direct full-shell sign socket. It asks only that the actual frozen margin has already crossed by the full-shell horizon at every genuine skipped rank; no seam or abstract adjacent-cut coordinate remains in the hypothesis. Local copy of Erdos249257.HalfGreedySkippedFullShellNonnegative, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def HalfGreedySkippedFullShellNonnegative : Prop :=
+  ∀ n : ℕ, 3 ≤ n →
+    (¬ mersenneWeight n ≤
+      greedyMersenneRemainder (1 / 2 : ℝ) (n - 1)) →
+    0 ≤ greedyHalfFrozenMargin (n - 1) n
+/-- Local definition SeamGreedyUpperOrMiddleAt, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def SeamGreedyUpperOrMiddleAt (s : ℕ) (hs : 5 ≤ s) : Prop :=
+  (seamAdjacentCut s hs).successorCarries ∨
+    (¬ (seamAdjacentCut s hs).successorCarries ∧
+      4 * (seamAdjacentCut s hs).remainder +
+            (seamPerturbedFamily s (by omega)).gap -
+            (seamAdjacentCut s hs).belowPulse <
+        (seamAdjacentCut s hs).terminalWeight)
+/-- The real number coded by a set A of exponents, namely the sum over a in A with a at least 1 of 1 divided by 2 to the power a minus 1; the indexing runs over k and evaluates the indicator at k+1, so only positive exponents contribute. -/
+noncomputable def positiveMersenneSupportValue (A : Set ℕ) : ℝ :=
+  ∑' k : ℕ, Set.indicator A mersenneWeight (k + 1)
+/-- The base two Mersenne achievement set, namely the set of reals of the form sum over a in A of 1 divided by 2 to the power a minus 1, taken over all sets A of positive exponents; equivalently the set of all subsums of the series with terms 1 divided by 2 to the power n minus 1 for n at least 1. -/
+noncomputable def mersenneAchievementSet : Set ℝ :=
+  {x : ℝ | ∃ A : Set ℕ, 0 ∉ A ∧ x = positiveMersenneSupportValue A}
+/-- Local definition seamResetDeviation, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def seamResetDeviation (r : ℕ) : ℤ :=
+  (seamIntegerGreedyRemainder (r + 1) : ℤ) -
+    ((2 ^ (r + 1) : ℕ) : ℤ)
+/-- Local definition SeamResetSqrtEscape, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def SeamResetSqrtEscape : Prop :=
+  ∀ (r : ℕ) (hr5 : 5 ≤ r), 10 ≤ r →
+    SeamGreedyUpperOrMiddleAt r hr5 →
+      ((2 ^ (r + 5) : ℕ) : ℤ) < seamResetDeviation r ^ 2
+/-- States the paper statement it is bound to from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.half_mem_mersenneAchievementSet_of_resetSqrtEscape in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem half_mem_mersenneAchievementSet_of_resetSqrtEscape
+    (hsqrt : SeamResetSqrtEscape) :
+    (1 / 2 : ℝ) ∈ mersenneAchievementSet := by
   sorry
-/-- Proof obligation `pulse_le` of the local copy of ErdosProblems.Erdos257.PaperCompleteR21.weakCapFamily, stated with that definition's own parameter and field values. The definition names this theorem for the field, and the Solution proves it with the source definition's own field. -/
-theorem weakCapFamily_pulse_le :
-    let pulse : (Fin 3) → ℕ := weakCapPulse;
-    let pulseCap : ℕ := 3;
-    ∀ x, pulse x ≤ pulseCap := by
+/-- States record:257bm-c15 from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_seam_escape_forces_remainder_band in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem paper_seam_escape_forces_remainder_band
+    {n : ℕ} (hn : 3 ≤ n)
+    (hskip : ¬ mersenneWeight n ≤ greedyMersenneRemainder (1 / 2 : ℝ) (n - 1))
+    (hneg : greedyHalfFrozenMargin (n - 1) n < 0) :
+    1 ≤ seamIntegerGreedyRemainder n ∧
+      seamIntegerGreedyRemainder n ≤ halfStripBound (2 * n) := by
   sorry
-/-- Local definition weakCapOldSum, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def weakCapOldSum : Fin 3 → ℕ := fun i => 2 * (i : ℕ)
-/-- Proof obligation `oldSum_injective` of the local copy of ErdosProblems.Erdos257.PaperCompleteR21.weakCapFamily, stated with that definition's own parameter and field values. The definition names this theorem for the field, and the Solution proves it with the source definition's own field. -/
-theorem weakCapFamily_oldSum_injective :
-    let oldSum : (Fin 3) → ℕ := weakCapOldSum;
-    Function.Injective oldSum := by
+/-- States record:257bm-c15 from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_seam_escape_implies_full_shell_nonnegative in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem paper_seam_escape_implies_full_shell_nonnegative
+    (hescape : ∀ n : ℕ, 3 ≤ n →
+      (¬ mersenneWeight n ≤ greedyMersenneRemainder (1 / 2 : ℝ) (n - 1)) →
+      halfStripBound (2 * n) < seamIntegerGreedyRemainder n) :
+    HalfGreedySkippedFullShellNonnegative := by
   sorry
-/-- Proof obligation `separated` of the local copy of ErdosProblems.Erdos257.PaperCompleteR21.weakCapFamily, stated with that definition's own parameter and field values. The definition names this theorem for the field, and the Solution proves it with the source definition's own field. -/
-theorem weakCapFamily_separated :
-    let oldSum : (Fin 3) → ℕ := weakCapOldSum;
-    let gap : ℕ := 2;
-    ∀ {x y}, oldSum x < oldSum y → oldSum x + gap ≤ oldSum y := by
-  sorry
-/-- Proof obligation `pulseCap_lt_three_gap` of the local copy of ErdosProblems.Erdos257.PaperCompleteR21.weakCapFamily, stated with that definition's own parameter and field values. The definition names this theorem for the field, and the Solution proves it with the source definition's own field. -/
-theorem weakCapFamily_pulseCap_lt_three_gap :
-    let gap : ℕ := 2;
-    let pulseCap : ℕ := 3;
-    pulseCap < 3 * gap := by
-  sorry
-/-- Local definition weakCapFamily, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def weakCapFamily : PerturbedFamily (Fin 3) where
-  oldSum := weakCapOldSum
-  pulse := weakCapPulse
-  gap := 2
-  pulseCap := 3
-  gap_pos := @weakCapFamily_gap_pos
-  pulse_le := @weakCapFamily_pulse_le
-  oldSum_injective := @weakCapFamily_oldSum_injective
-  separated := @weakCapFamily_separated
-  pulseCap_lt_three_gap := @weakCapFamily_pulseCap_lt_three_gap
-/-- Proof obligation `below_admissible` of the local copy of ErdosProblems.Erdos257.PaperCompleteR21.weakCapCut, stated with that definition's own parameter and field values. The definition names this theorem for the field, and the Solution proves it with the source definition's own field. -/
-theorem weakCapCut_below_admissible :
-    let F := weakCapFamily;
-    let C := 2;
-    let below := 1;
-    F.oldSum below ≤ C := by
-  sorry
-/-- Proof obligation `below_maximal` of the local copy of ErdosProblems.Erdos257.PaperCompleteR21.weakCapCut, stated with that definition's own parameter and field values. The definition names this theorem for the field, and the Solution proves it with the source definition's own field. -/
-theorem weakCapCut_below_maximal :
-    let F := weakCapFamily;
-    let C := 2;
-    let below := 1;
-    ∀ x, F.oldSum x ≤ C → F.oldSum x ≤ F.oldSum below := by
-  sorry
-/-- Proof obligation `above_strict` of the local copy of ErdosProblems.Erdos257.PaperCompleteR21.weakCapCut, stated with that definition's own parameter and field values. The definition names this theorem for the field, and the Solution proves it with the source definition's own field. -/
-theorem weakCapCut_above_strict :
-    let F := weakCapFamily;
-    let C := 2;
-    let above := 2;
-    C < F.oldSum above := by
-  sorry
-/-- Proof obligation `above_minimal` of the local copy of ErdosProblems.Erdos257.PaperCompleteR21.weakCapCut, stated with that definition's own parameter and field values. The definition names this theorem for the field, and the Solution proves it with the source definition's own field. -/
-theorem weakCapCut_above_minimal :
-    let F := weakCapFamily;
-    let C := 2;
-    let above := 2;
-    ∀ x, C < F.oldSum x → F.oldSum above ≤ F.oldSum x := by
-  sorry
-/-- Local definition weakCapCut, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def weakCapCut : weakCapFamily.AdjacentCut 2 where
-  below := 1
-  above := 2
-  below_admissible := @weakCapCut_below_admissible
-  below_maximal := @weakCapCut_below_maximal
-  above_strict := @weakCapCut_above_strict
-  above_minimal := @weakCapCut_above_minimal
-/-- States record:257bm-i15 from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_perturbed_separation_global_maximality in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem paper_perturbed_separation_global_maximality {α : Type*} (F : PerturbedFamily α)
-    {C : ℕ} (K : F.AdjacentCut C) [Decidable K.successorCarries]
-    (hsep : K.terminalWeight ≤ 4 * F.gap - F.pulseCap)
-    {x : α} (hx : F.oldSum x < F.oldSum K.prefixChoice) :
-    F.newSum x + K.terminalWeight ≤ F.newSum K.prefixChoice := by
-  sorry
-/-- States record:257bm-i15 from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_perturbed_two_stage_is_global_maximum in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem paper_perturbed_two_stage_is_global_maximum {α : Type*} (F : PerturbedFamily α)
-    {C : ℕ} (K : F.AdjacentCut C) [Decidable K.successorCarries]
-    (hcap : F.pulseCap < F.gap)
-    (hsep : K.terminalWeight ≤ 4 * F.gap - F.pulseCap) :
-    F.newSum K.prefixChoice +
-          (if K.terminalWeight ≤ K.prefixRemainder then K.terminalWeight
-            else 0) ≤ K.newCapacity ∧
-      (∀ x : α, F.newSum x ≤ K.newCapacity →
-        F.newSum x ≤
-          F.newSum K.prefixChoice +
-            (if K.terminalWeight ≤ K.prefixRemainder then K.terminalWeight
-              else 0)) ∧
-      (∀ x : α, F.newSum x + K.terminalWeight ≤ K.newCapacity →
-        F.newSum x + K.terminalWeight ≤
-          F.newSum K.prefixChoice +
-            (if K.terminalWeight ≤ K.prefixRemainder then K.terminalWeight
-              else 0)) := by
-  sorry
-/-- States record:257bm-i15 from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_perturbed_weak_cap_counterexample in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem paper_perturbed_weak_cap_counterexample :
-    ¬ weakCapFamily.pulseCap < weakCapFamily.gap ∧
-      weakCapFamily.pulseCap < 3 * weakCapFamily.gap ∧
-      ¬ weakCapCut.successorCarries ∧
-      weakCapCut.newCapacity = 10 ∧
-      weakCapFamily.newSum weakCapCut.below = 11 ∧
-      ¬ weakCapFamily.newSum weakCapCut.below ≤ weakCapCut.newCapacity ∧
-      weakCapFamily.newSum (0 : Fin 3) ≤ weakCapCut.newCapacity := by
-  sorry
-/-- States record:257bm-i14 from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_successor_remainders_fourteen_through_thirtyone in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem paper_successor_remainders_fourteen_through_thirtyone :
-    seamIntegerGreedyRemainder 14 = 392 ∧
-      seamIntegerGreedyRemainder 15 = 34333 ∧
-      seamIntegerGreedyRemainder 16 = 71791 ∧
-      seamIntegerGreedyRemainder 17 = 156085 ∧
-      seamIntegerGreedyRemainder 18 = 362187 ∧
-      seamIntegerGreedyRemainder 19 = 924455 ∧
-      seamIntegerGreedyRemainder 20 = 549353 ∧
-      seamIntegerGreedyRemainder 21 = 100251 ∧
-      seamIntegerGreedyRemainder 22 = 4595307 ∧
-      seamIntegerGreedyRemainder 23 = 9992613 ∧
-      seamIntegerGreedyRemainder 24 = 23193229 ∧
-      seamIntegerGreedyRemainder 25 = 59218477 ∧
-      seamIntegerGreedyRemainder 26 = 35546625 ∧
-      seamIntegerGreedyRemainder 27 = 7968765 ∧
-      seamIntegerGreedyRemainder 28 = 300310513 ∧
-      seamIntegerGreedyRemainder 29 = 664371133 ∧
-      seamIntegerGreedyRemainder 30 = 1583742700 ∧
-      seamIntegerGreedyRemainder 31 = 4187487147 := by
-  sorry
-/-- States the paper statement it is bound to from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_unsafe_middle_range_is_three_integers in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem paper_unsafe_middle_range_is_three_integers {s : ℕ} (hs : 5 ≤ s) :
-    ¬ (4 * ((seamAdjacentCut s hs).remainder : ℤ) -
-            ((seamAdjacentCut s hs).belowPulse : ℤ) - 4 ≤ -4 ∨
-          0 ≤ 4 * ((seamAdjacentCut s hs).remainder : ℤ) -
-            ((seamAdjacentCut s hs).belowPulse : ℤ) - 4) ↔
-      4 * ((seamAdjacentCut s hs).remainder : ℤ) -
-            ((seamAdjacentCut s hs).belowPulse : ℤ) - 4 = -3 ∨
-        4 * ((seamAdjacentCut s hs).remainder : ℤ) -
-              ((seamAdjacentCut s hs).belowPulse : ℤ) - 4 = -2 ∨
-          4 * ((seamAdjacentCut s hs).remainder : ℤ) -
-              ((seamAdjacentCut s hs).belowPulse : ℤ) - 4 = -1 := by
-  sorry
-/-- States prop:upper-unconditional from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_upper_branch_needs_no_exceptional_cell in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem paper_upper_branch_needs_no_exceptional_cell {s : ℕ} (hs : 5 ≤ s)
-    (hcarry : (seamAdjacentCut s hs).successorCarries) :
-    seamIntegerGreedyRemainder (s + 1) ≤ 2 ^ (s + 1) ∧
-      0 ≤ 4 * (seamAdjacentCut s hs).overshoot +
-            (seamAdjacentCut s hs).abovePulse ∧
-      seamIntegerGreedyRemainder (s + 1) +
-          (4 * (seamAdjacentCut s hs).overshoot +
-            (seamAdjacentCut s hs).abovePulse) =
-        2 ^ (s + 1) := by
-  sorry
-end PalomarCorpus.E257.PaperStructuresBP
+end PalomarCorpus.E257.PaperStructuresBK

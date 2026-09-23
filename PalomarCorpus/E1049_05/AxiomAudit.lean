@@ -12,7 +12,6 @@ import Solutions.PalomarCorpus.E1049_05
 #print axioms PalomarCorpus.E1049.PaperStatementsM.fourJet_paper_statement
 #print axioms PalomarCorpus.E1049.PaperStatementsM.rank_fortyone
 #print axioms PalomarCorpus.E1049.PaperStatementsN.pade_summand_bound_and_gap
-#print axioms PalomarCorpus.E1049.PaperStatementsX.no_finite_simultaneous_two_three_system
-#print axioms PalomarCorpus.E1049.PaperStructuresL.no_finite_simultaneous_two_three_system_unconditional
+#print axioms PalomarCorpus.E1049.PaperStatementsT.plucker_paper_statement
 #print axioms PalomarCorpus.E1049.RationalBaseBarrier.rationalBaseClearedTailQ_succ
 #print axioms PalomarCorpus.E1049.RationalBaseBarrier.threeHalves_no_coordinatewiseCorridor

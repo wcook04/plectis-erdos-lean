@@ -5,4 +5,8 @@ Authors: Will Cook
 -/
 import Mathlib
 import Solutions.PalomarCorpus.E257_43.Statement
-import Solutions.PalomarCorpus.E257_43.TwentyOneFatalBranch
+import Solutions.PalomarCorpus.E257_43.PaperStatementsAA
+import Solutions.PalomarCorpus.E257_43.PaperStatementsAI
+import Solutions.PalomarCorpus.E257_43.PaperStatementsAM
+import Solutions.PalomarCorpus.E257_43.PaperStatementsJ
+import Solutions.PalomarCorpus.E257_43.PaperStatementsN

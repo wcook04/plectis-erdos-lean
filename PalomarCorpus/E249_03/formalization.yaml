@@ -2,7 +2,7 @@ version: v0.4
 project:
   name: 'Erdős #249, record section 2.3: limits of specific reductions and estimates'
   description: >-
-    This entry states 16 theorems that the long record for Erdős problem #249 states in section 2.3 (limits of specific reductions and estimates): the proposition “Three particular equivalences” (section 2.3), as two_point_sample_numerical_requirement and three_particular_equivalences; the proposition “Failure of a specified two-adic congruence construction” (section 2.3), as twoAdic_pulse_defining_congruence, twoAdic_pulse_error_bound and twoAdic_pulse_construction_never_certifies; the proposition “Information lost by specific carry descriptions” (section 2.3), as balancedPulse_common_history, balancedPulse_label_lower_bound, balancedPulse_no_decoder_from_common_state, balancedPulse_series, balancedPulse_tail_at and affineBinaryOrbit_difference_and_reset; the proposition “Four limits of particular linear constructions” (section 2.3), as b6_adjugate_tail_cost_floor, b6_compressed_adjoint_identity_impossible, b6_rankOneSubrankQuotient_sub_totientSeries_offset_gt, b6_synthetic_sequence_prescribed_differences and b6_synthetic_shift_combinations_same_form.
+    This entry states 16 theorems that the long record for Erdős problem #249 states in section 2.3 (limits of specific reductions and estimates): the proposition “Three particular equivalences” (section 2.3), as two_point_sample_numerical_requirement and three_particular_equivalences; the proposition “Failure of a specified two-adic congruence construction” (section 2.3), as twoAdic_pulse_defining_congruence, twoAdic_pulse_error_bound and twoAdic_pulse_construction_never_certifies; the proposition “Information lost by specific carry descriptions” (section 2.3), as balancedPulse_common_history, balancedPulse_label_lower_bound, balancedPulse_no_decoder_from_common_state, balancedPulse_series, balancedPulse_tail_at, affineBinaryOrbit_difference_and_reset and fixed_precision_carry_completion; the proposition “Four limits of particular linear constructions” (section 2.3), as b6_adjugate_tail_cost_floor, b6_compressed_adjoint_identity_impossible, b6_rankOneSubrankQuotient_sub_totientSeries_offset_gt and b6_synthetic_sequence_prescribed_differences.
 
     12 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 4 are derived from the source declaration by a short tactic proof, which certifies implication.
 
@@ -123,8 +123,8 @@ status:
     file: "Solutions/PalomarCorpus/E249_03/PaperStatementsI.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E249_03/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsI.b6_synthetic_shift_combinations_same_form"
-    file: "Solutions/PalomarCorpus/E249_03/PaperStatementsI.lean"
+  - declaration: "PalomarCorpus.E249.PaperStructuresR.fixed_precision_carry_completion"
+    file: "Solutions/PalomarCorpus/E249_03/PaperStructuresR.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E249_03/comparator.json"
   development_status: substantive

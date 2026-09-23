@@ -44,7 +44,7 @@ open Finset
 /- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
 
 namespace PalomarCorpus.E249.PaperStatementsAU
-export PalomarCorpus.E249_10.Shared (periodLcm totientTail windowDiscrepancy windowNumerator)
+export PalomarCorpus.E249_10.Shared (certifiedKill periodLcm totientTail windowDiscrepancy windowNumerator)
 
 noncomputable def ActualLcmTopEdgeResidueGap (a J K m : ℕ) : Prop :=
   m ≤ K ∧
@@ -132,17 +132,6 @@ noncomputable def DTWWindowSeparatedPairs : Prop :=
 noncomputable def carryOrbit (h N : ℕ) (d : ℤ) : ℕ → ℤ
   | 0 => d
   | i + 1 => 2 * carryOrbit h N d i - deltaTotient h (N + i + 1)
-
-noncomputable def certifiedKill (h N L : ℕ) : Prop :=
-  (N + h + L + 2 : ℤ) < windowDiscrepancy h N L % 2 ^ L ∧
-    windowDiscrepancy h N L % 2 ^ L < 2 ^ L - (N + h + L + 2)
-
-noncomputable def windowDiscrepancy2 (h N L : ℕ) : ℤ :=
-  windowDiscrepancy h (N + h) L - windowDiscrepancy h N L
-
-noncomputable def certifiedRank2Kill (h N L : ℕ) : Prop :=
-  (2 * ((N : ℤ) + 2 * h + L + 2)) < windowDiscrepancy2 h N L % 2 ^ L ∧
-    windowDiscrepancy2 h N L % 2 ^ L < 2 ^ L - 2 * ((N : ℤ) + 2 * h + L + 2)
 
 noncomputable def totientPrefix (N : ℕ) : ℕ :=
   ∑ n ∈ Finset.range (N + 1), Nat.totient n * 2 ^ (N - n)

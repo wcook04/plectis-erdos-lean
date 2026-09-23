@@ -1,0 +1,23 @@
+{
+  "challenge_module": "PalomarCorpus.E257_49.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257_49",
+  "theorem_names": [
+    "PalomarCorpus.E257.AchievementSetGeometry.supportedMersenneAchievementSet_geometry_and_volume",
+    "PalomarCorpus.E257.AchievementSetGeometry.volume_supportedMersenneAchievementSet_eq_zero_of_rat_value",
+    "PalomarCorpus.E257.ActualUpperSuccessor.actualUpperRightPacketLinearEscape_iff_successorLinearEscape",
+    "PalomarCorpus.E257.ActualUpperSuccessor.actualUpperSuccessorLinearEscape_completeCounterexample",
+    "PalomarCorpus.E257.BooleanMobiusCarry.BooleanMobiusCarryCertificate.reconstructsSupport",
+    "PalomarCorpus.E257.BooleanMobiusCarry.exists_booleanMobiusCarry_of_support_fraction",
+    "PalomarCorpus.E257.BooleanMobiusCarry.exists_normalized_support_fraction_iff_exists_booleanMobiusCarry",
+    "PalomarCorpus.E257.BooleanMobiusCarry.support_fraction_of_booleanMobiusCarry",
+    "PalomarCorpus.E257.DyadicObservationSummability.dyadic_supportObservationMass_sum_le",
+    "PalomarCorpus.E257.DyadicObservationSummability.summable_dyadic_supportObservationMass",
+    "PalomarCorpus.E257.DyadicObservationSummability.tendsto_dyadic_supportObservationMass_mean"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

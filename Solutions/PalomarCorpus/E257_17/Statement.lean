@@ -18,176 +18,57 @@ walks from a compared theorem statement is byte-identical in the Challenge and S
 environments. Generated from the Challenge; do not edit by hand.
 -/
 
-open Set
 open Filter
+open Topology
 open scoped BigOperators
-open scoped ENNReal
-open MeasureTheory
-open Topology
 
-namespace PalomarCorpus.E257_17.Shared
-/-- The real Mersenne weight 1 divided by 2 to the power n minus 1; at n = 0 the value is 0 because division by zero is zero here. -/
-noncomputable def mersenneWeight (n : ℕ) : ℝ :=
-  1 / ((2 : ℝ) ^ n - 1)
-/-- The Mersenne tail beyond rank n, namely the sum over k at least 0 of the Mersenne weight at n+k+1. -/
-noncomputable def mersenneTail (n : ℕ) : ℝ :=
-  ∑' k : ℕ, mersenneWeight (n + k + 1)
-/-- The real number coded by a set A of exponents, namely the sum over a in A with a at least 1 of 1 divided by 2 to the power a minus 1; the indexing runs over k and evaluates the indicator at k+1, so only positive exponents contribute. -/
-noncomputable def positiveMersenneSupportValue (A : Set ℕ) : ℝ :=
-  ∑' k : ℕ, Set.indicator A mersenneWeight (k + 1)
-end PalomarCorpus.E257_17.Shared
-
-namespace PalomarCorpus.E257.PaperStructuresBJ
-open Set
+namespace PalomarCorpus.E257.PaperStatementsAG
 open Filter
+open Topology
+/-- **The Erdős #257 support series** `∑_{a ∈ A} 1/(b^a - 1)`, as an indicator series over ℕ. The `a = 0` term is `1/(1-1) = 0` under real division-by-zero conventions, so supports containing `0` contribute nothing spurious. Local copy of Erdos249257.erdosSupportSeries, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def erdosSupportSeries (b : ℕ) (A : Set ℕ) : ℝ :=
+  ∑' a : ℕ, Set.indicator A (fun a => (1 : ℝ) / ((b : ℝ) ^ a - 1)) a
+/-- **The signed weighted divisor coefficient** `∑_{d ∣ n} w d` for an integer weight `w : ℕ → ℤ`, the Dirichlet incidence `w * 1` with signs. At a Nat weight (cast) this is `weightedCoeff`. Local copy of Erdos249257.intWeightedCoeff, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def intWeightedCoeff (w : ℕ → ℤ) (n : ℕ) : ℤ :=
+  ∑ d ∈ n.divisors, w d
+/-- **The signed weighted Erdős series** `∑_a w(a)/(b^a - 1)` for an integer weight. The `a = 0` term is junk-safe (`w(0)/0 = 0`). At a cast Nat weight this is `weightedErdosSeries`; mixed-sign rational coefficient series reduce to it by clearing denominators. Local copy of Erdos249257.intWeightedErdosSeries, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def intWeightedErdosSeries (b : ℕ) (w : ℕ → ℤ) : ℝ :=
+  ∑' a : ℕ, ((w a : ℤ) : ℝ) / ((b : ℝ) ^ a - 1)
+end PalomarCorpus.E257.PaperStatementsAG
+
+namespace PalomarCorpus.E257.PaperStatementsAD
 open scoped BigOperators
-open scoped ENNReal
-open MeasureTheory
-open Topology
-export PalomarCorpus.E257_17.Shared (mersenneTail mersenneWeight positiveMersenneSupportValue)
-/-- Local definition SeamRowWord, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable abbrev SeamRowWord (s : ℕ) := Fin (s - 2) → Bool
-/-- Local definition extend, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def SeamRowWord.extend {s : ℕ} (b : SeamRowWord s) (beta : Bool) :
-    SeamRowWord (s + 1) :=
-  fun i => if h : (i : ℕ) < s - 2 then b ⟨i, h⟩ else beta
-/-- Local definition ofList, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def ofList {s : ℕ} (bits : List Bool) (hlen : bits.length = s - 2) :
-    SeamRowWord s :=
-  fun i => bits.get (Fin.cast hlen.symm i)
-/-- The greedy Boolean word for an integer subset sum problem: given a list of weights in the order presented and a capacity, take a weight when it is at most the current capacity and subtract it, otherwise skip it and keep the capacity. -/
-noncomputable def integerGreedyBits : List ℕ → ℕ → List Bool
-  | [], _ => []
-  | w :: ws, C =>
-      if w ≤ C then
-        true :: integerGreedyBits ws (C - w)
-      else
-        false :: integerGreedyBits ws C
-/-- Local definition integerGreedyBits_length, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def integerGreedyBits_length (weights : List ℕ) (C : ℕ) :
-    (integerGreedyBits weights C).length = weights.length := by
-  induction weights generalizing C with
-  | nil => simp [integerGreedyBits]
-  | cons w ws ih =>
-      simp only [integerGreedyBits]
-      split <;> simp [ih]
-/-- The integer capacity of the seam subset sum problem at row s, namely 2 raised to the exponent 2s minus 1, less 2 to the power s; both the exponent subtraction and the outer subtraction are truncated natural subtraction, so the value is 0 at s = 0 and at s = 1. -/
-noncomputable def seamSubsetTarget (s : ℕ) : ℕ :=
-  2 ^ (2 * s - 1) - 2 ^ s
-/-- The truncated integer Mersenne weight at seam row s and rank d, namely the natural number quotient of 4 to the power s by 2 to the power d minus 1; at d = 0 the divisor is 0 and the value is 0. -/
-noncomputable def truncatedMersenneWeight (s d : ℕ) : ℕ :=
-  4 ^ s / (2 ^ d - 1)
-/-- The list of truncated Mersenne weights at seam row s for the ranks from the given starting index up to s minus 1, in increasing rank order. -/
-noncomputable def seamWeightsFrom (s : ℕ) : ℕ → List ℕ
-  | d =>
-      if h : d < s then
-        truncatedMersenneWeight s d :: seamWeightsFrom s (d + 1)
-      else
-        []
-termination_by d => s - d
-decreasing_by omega
-/-- The seam weight list at row s, namely the truncated Mersenne weights for ranks 2 up to s minus 1. -/
-noncomputable def seamWeights (s : ℕ) : List ℕ :=
-  seamWeightsFrom s 2
-/-- Local definition seamWeightsFrom_eq_cons, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def seamWeightsFrom_eq_cons {s d : ℕ} (h : d < s) :
-    seamWeightsFrom s d =
-      truncatedMersenneWeight s d :: seamWeightsFrom s (d + 1) := by
-  rw [seamWeightsFrom]
-  simp [h]
-/-- Local definition seamWeightsFrom_eq_nil, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def seamWeightsFrom_eq_nil {s d : ℕ} (h : s ≤ d) :
-    seamWeightsFrom s d = [] := by
-  rw [seamWeightsFrom]
-  simp [Nat.not_lt.mpr h]
-/-- Local definition seamWeightsFrom_length_eq, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def seamWeightsFrom_length_eq (s d : ℕ) :
-    (seamWeightsFrom s d).length = s - d := by
-  by_cases hds : d < s
-  · rw [seamWeightsFrom_eq_cons hds, List.length_cons,
-      seamWeightsFrom_length_eq s (d + 1)]
-    omega
-  · rw [seamWeightsFrom_eq_nil (by omega)]
-    simp
-    omega
-termination_by s - d
-decreasing_by omega
-/-- Local definition seamWeights_length_eq, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def seamWeights_length_eq (s : ℕ) :
-    (seamWeights s).length = s - 2 := by
-  unfold seamWeights
-  exact seamWeightsFrom_length_eq s 2
-/-- Local definition seamGreedyWord, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def seamGreedyWord (s : ℕ) : SeamRowWord s :=
-  ofList
-    (integerGreedyBits (seamWeights s) (seamSubsetTarget s))
-    (by rw [integerGreedyBits_length, seamWeights_length_eq])
-/-- Local definition seamWordSupport, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def seamWordSupport {s : ℕ} (b : SeamRowWord s) : Finset ℕ :=
-  ((Finset.univ : Finset (Fin (s - 2))).filter (fun i => b i = true)).image
-    (fun i : Fin (s - 2) => (i : ℕ) + 2)
-end PalomarCorpus.E257.PaperStructuresBJ
-
-namespace PalomarCorpus.E257.PaperStatementsAH
-open scoped ENNReal
-open Filter
-open Set
-open MeasureTheory
-open Topology
-export PalomarCorpus.E257_17.Shared (mersenneTail mersenneWeight)
-/-- The first two geometric channels of the Mersenne tail. This cap is strictly weaker than the dyadic cap while still lying below the full tail. Local copy of Erdos249257.halfTwoChannelCap, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def halfTwoChannelCap (n : ℕ) : ℝ :=
-  ((1 : ℝ) / 2) ^ n
-    + (1 / 3 : ℝ) * ((1 : ℝ) / 4) ^ n
-end PalomarCorpus.E257.PaperStatementsAH
-
-namespace PalomarCorpus.E257.PaperStructuresU
-open Filter
-open Set
-open Topology
-open scoped ENNReal
-open MeasureTheory
-export PalomarCorpus.E257_17.Shared (mersenneTail mersenneWeight positiveMersenneSupportValue)
-/-- **Packet §4.** A finite support word certified to straddle the target at depth `d`: the coded value is at most `t` and the value plus the complete unresolved tail mass still reaches `t`. This is deliberately *weaker* than the `HalfPrefixForcingChain.interval_trapped` containment condition: overlap of the correction image with the cylinder, not containment inside it. Local copy of Erdos249257.IsStraddlePrefix, restated so the compared statements elaborate against Mathlib alone. -/
-structure IsStraddlePrefix (t : ℝ) (u : Finset ℕ) (d : ℕ) : Prop where
-  mem_bounds : ∀ n ∈ u, 0 < n ∧ n ≤ d
-  value_le : positiveMersenneSupportValue (↑u : Set ℕ) ≤ t
-  le_value_add_tail :
-    t ≤ positiveMersenneSupportValue (↑u : Set ℕ) + mersenneTail d
-end PalomarCorpus.E257.PaperStructuresU
-
-namespace PalomarCorpus.E257.PaperStatementsAM
-open Filter
-open Set
-open Topology
-open scoped ENNReal
-open MeasureTheory
-export PalomarCorpus.E257_17.Shared (mersenneTail mersenneWeight positiveMersenneSupportValue)
-end PalomarCorpus.E257.PaperStatementsAM
-
-namespace PalomarCorpus.E257.PaperStatementsD
-open Filter
-open Set
-open Topology
-open scoped ENNReal
-open MeasureTheory
-export PalomarCorpus.E257_17.Shared (mersenneTail mersenneWeight positiveMersenneSupportValue)
-/-- Real greedy residual after processing exponents `1, ..., n`. Local copy of Erdos249257.greedyMersenneRemainder, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def greedyMersenneRemainder (x : ℝ) : ℕ → ℝ
-  | 0 => x
-  | n + 1 =>
-      if mersenneWeight (n + 1) ≤ greedyMersenneRemainder x n then
-        greedyMersenneRemainder x n - mersenneWeight (n + 1)
-      else
-        greedyMersenneRemainder x n
-/-- The set of positive exponents selected by the real greedy recursion. Local copy of Erdos249257.greedyMersenneSupport, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def greedyMersenneSupport (x : ℝ) : Set ℕ :=
-  {m : ℕ | m ≠ 0 ∧
-    mersenneWeight m ≤ greedyMersenneRemainder x (m - 1)}
-/-- The positive exponents omitted by the real greedy recursion. Local copy of Erdos249257.greedyMersenneSkippedSupport, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def greedyMersenneSkippedSupport (x : ℝ) : Set ℕ :=
-  {m : ℕ | m ≠ 0 ∧ m ∉ greedyMersenneSupport x}
-/-- The Mersenne achievement set, with the analytically invisible zero bit normalized away. Local copy of Erdos249257.mersenneAchievementSet, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def mersenneAchievementSet : Set ℝ :=
-  {x : ℝ | ∃ A : Set ℕ, 0 ∉ A ∧ x = positiveMersenneSupportValue A}
-end PalomarCorpus.E257.PaperStatementsD
+/-- `Hₜ = lcm(1, ..., t)`. The interval avoids inserting zero into the finite LCM. Local copy of Erdos249257.MersenneShadowCyclotomicNoncollapse.lcmHeight, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def lcmHeight (t : ℕ) : ℕ :=
+  (Finset.Icc 1 t).lcm (fun n ↦ n)
+/-- Prime indices in the development's upper half `(t/2, t]`. Local copy of Erdos249257.MersenneShadowCyclotomicNoncollapse.upperHalfPrimes, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def upperHalfPrimes (t : ℕ) : Finset ℕ :=
+  (Finset.Ioc (t / 2) t).filter Nat.Prime
+/-- The Mersenne denominator at exponent `n`. Local copy of Erdos249257.RadicalMobiusShadow.mersenne, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def mersenne (n : ℕ) : ℕ := 2 ^ n - 1
+/-- The integral numerator, written as its squarefree-divisor expansion. For `s ⊆ primeFactors(r)`, put `d = ∏ p ∈ s, p`. Then the summand is `(-1)^|s| (r/d) ((2^r-1)/(2^d-1))`. This is exactly the nonzero part of `Σ_{d ∣ r} μ(d) (r/d) ((2^r-1)/(2^d-1))`: nonsquarefree divisors have Möbius coefficient zero. The subset form makes that finite support explicit and keeps the definition executable without factoring irrelevant divisors. Local copy of Erdos249257.RadicalMobiusShadow.mobiusNumerator, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def mobiusNumerator (r : ℕ) : ℤ :=
+  ∑ s ∈ r.primeFactors.powerset,
+    (-1 : ℤ) ^ s.card *
+      ((r / s.prod id : ℕ) : ℤ) *
+        (((mersenne r) / (mersenne (s.prod id)) : ℕ) : ℤ)
+/-- The unscaled radical shadow `B(r) = M_r / (2^r - 1)`. Local copy of Erdos249257.RadicalMobiusShadow.baseMobiusShadow, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def baseMobiusShadow (r : ℕ) : ℚ :=
+  Rat.divInt (mobiusNumerator r) (mersenne r : ℤ)
+/-- The squarefree kernel used by the numeric shadow: the product of the distinct prime factors of `n`. For `n = 0` this convention gives `1`; all development-facing scaling theorems assume `0 < n`. Local copy of Erdos249257.RadicalMobiusShadow.squarefreeKernel, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def squarefreeKernel (n : ℕ) : ℕ := ∏ p ∈ n.primeFactors, p
+/-- The numeric shadow at an arbitrary scale. By construction it only sees the distinct prime factors of `H`. Local copy of Erdos249257.RadicalMobiusShadow.numericMobiusShadow, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def numericMobiusShadow (H : ℕ) : ℚ :=
+  baseMobiusShadow (squarefreeKernel H) / (squarefreeKernel H : ℚ)
+/-- The paper's integral Möbius numerator `A_r = ∑_{d ∣ r} μ(d) (r/d) (M_r / M_d)`. Local copy of ErdosProblems.Erdos257.PaperCompleteR21.paperA, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def paperA (r : ℕ) : ℤ :=
+  ∑ d ∈ r.divisors,
+    ArithmeticFunction.moebius d * (((r / d : ℕ)) : ℤ) *
+      (((mersenne r /
+        mersenne d : ℕ)) : ℤ)
+/-- The paper's finite rational sum `B(r) = ∑_{d ∣ r} μ(d)(r/d) / (2^d - 1)`. Local copy of ErdosProblems.Erdos257.PaperCompleteR21.paperB, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def paperB (r : ℕ) : ℚ :=
+  ∑ d ∈ r.divisors,
+    ((ArithmeticFunction.moebius d : ℤ) : ℚ) * ((r : ℚ) / (d : ℚ)) /
+      ((2 : ℚ) ^ d - 1)
+end PalomarCorpus.E257.PaperStatementsAD

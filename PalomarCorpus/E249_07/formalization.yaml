@@ -2,9 +2,9 @@ version: v0.4
 project:
   name: 'Erdős #249, record section 6.2.1: initial implications (part 1 of 2)'
   description: >-
-    This entry states 28 theorems that the long record for Erdős problem #249 states in section 6.2.1 (initial implications): the proposition “An irrationality criterion from near integers” (section 6.2.1), as strict_lower_bound_needed, tail_mem_Icc and upper_bound_needed_for_every_q; the proposition “A nonzero evaluation minor gives independence” (section 6.2.1), as linearIndependent_of_separatedMinorCertificate; the proposition “The gap between distinct rational numbers” (section 6.2.1), as positive_rational_difference_lower_bound, rational_cross_numerator_positive, rational_difference_exact and rational_error_denominator_bound; the proposition “The Möbius identity for S” (section 6.2.1), as totient_series_eq_half_add_moebius_mersenne_square and tsum_moebius_lambert_sq; the corollary “An equivalent irrationality question” (section 6.2.1), as irrational_totient_iff_moebius_square; the proposition “The weight of pairs divisible by a fixed integer” (section 6.2.1), as pair_divisibility_mass and tsum_geometric_multiples; the proposition “The sum over coprime directions” (section 6.2.1), as tsum_pos_coprime_inv_mersenne_eq_one; the proposition “A Stern-Brocot recursion with stopping” (section 6.2.1), as divisibility_mass, stopping_probability_ge_third, stopping_transition_probabilities_sum_one, cylinderMass_eq_divisibility_mass_mul, cylinder_mediant_split, cylinder_root_values and normalised_split_probabilities; the proposition “Convergence with an explicit error” (section 6.2.1), as cylinderMass_children_le, sternBrocotDepthMass_error and tendsto_sternBrocotDepthMass; the proposition “A numerator polynomial and its coefficients” (section 6.2.1), as mobiusNumeratorPolynomial_coeff and mobiusNumeratorPolynomial_coeff_pos; the proposition “Evaluation at two” (section 6.2.1), as numerator_eval_two_divisors; the proposition “Decomposition by the radical” (section 6.2.1), as radical_decomposition.
+    This entry states 40 theorems that the long record for Erdős problem #249 states in section 6.2.1 (initial implications): the proposition “The prefix-tail identity” (section 6.2.1), as tail_diff_mem_int_iff_scaled_series_mem_int and prefix_fractional_part; the lemma “The necessary depth inequality” (section 6.2.1), as certifiedKill_depth_floor, certificate_logarithmic_depth and fixed_depth_bounds_indices; the proposition “A certificate implies nonintegrality” (section 6.2.1), as tail_diff_notMem_int_of_certifiedKill and totient_scaled_truncation_error; the theorem “Nonintegrality gives a certificate at some depth” (section 6.2.1), as exists_certifiedKill_iff_tail_diff_notMem_int; the proposition “An irrationality criterion from rational approximations” (section 6.2.1), as irrational_of_den_mul_abs_sub_tendsto_zero; the proposition “An irrationality criterion from near integers” (section 6.2.1), as irrational_of_int_mul_near_int, irrational_of_pow_mul_near_int, irrational_of_near_integer_base_powers, irrational_of_near_integer_multiples, one_div_den_le_abs_int_combination, digit_block, exists_irrational_basePower_bounded_away, fract_mem_Icc_of_no_three_equal, fract_two_pow_mul_xi_mem_Icc, irrational_tail_zero, irrational_xi, no_three_consecutive_equal, not_approaches_int, not_eventually_periodic, not_near_integer_along_powers_of_two, one_div_eight_le_abs_sub_int, one_div_eight_le_dist_xi, strict_lower_bound_needed, tail_mem_Icc and upper_bound_needed_for_every_q; the proposition “A nonzero evaluation minor gives independence” (section 6.2.1), as linearIndependent_of_separatedMinorCertificate; the proposition “The gap between distinct rational numbers” (section 6.2.1), as positive_rational_difference_lower_bound, rational_cross_numerator_positive, rational_difference_exact and rational_error_denominator_bound; the proposition “The Möbius identity for S” (section 6.2.1), as totient_series_eq_half_add_moebius_mersenne_square and tsum_moebius_lambert_sq; the corollary “An equivalent irrationality question” (section 6.2.1), as irrational_totient_iff_moebius_square; the proposition “The weight of pairs divisible by a fixed integer” (section 6.2.1), as pair_divisibility_mass and tsum_geometric_multiples; the proposition “The sum over coprime directions” (section 6.2.1), as tsum_pos_coprime_inv_mersenne_eq_one.
 
-    25 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 3 are derived from the source declaration by a short tactic proof, which certifies implication.
+    34 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 6 are derived from the source declaration by a short tactic proof, which certifies implication.
 
     Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
 
@@ -51,11 +51,11 @@ sources:
   license: Apache-2.0
   author_endorsement: n/a
 status:
-  scope: "One Comparator configuration selecting the 28 theorems listed in PalomarCorpus/E249_07/comparator.json, from the Lean development for Erdős problem #249. The problem's theorems are packed, in the order the papers state them, into the 33 entries PalomarCorpus/E249_01 to PalomarCorpus/E249_33, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification249* directories are internal regression inventory and are not selected."
+  scope: "One Comparator configuration selecting the 40 theorems listed in PalomarCorpus/E249_07/comparator.json, from the Lean development for Erdős problem #249. The problem's theorems are packed, in the order the papers state them, into the 33 entries PalomarCorpus/E249_01 to PalomarCorpus/E249_33, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification249* directories are internal regression inventory and are not selected."
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
-  trusted_challenge_sorry_count: 28
+  trusted_challenge_sorry_count: 40
   sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E249_07/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
   axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
   permitted_axiom_budget:
@@ -63,27 +63,23 @@ status:
   - Quot.sound
   - Classical.choice
   main_results:
-  - declaration: "PalomarCorpus.E249.PaperStatementsAC.mobiusNumeratorPolynomial_coeff"
-    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAC.lean"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAD.certifiedKill_depth_floor"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAD.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E249_07/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAC.mobiusNumeratorPolynomial_coeff_pos"
-    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAC.lean"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAD.exists_certifiedKill_iff_tail_diff_notMem_int"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAD.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E249_07/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAE.divisibility_mass"
-    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAE.lean"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAD.tail_diff_mem_int_iff_scaled_series_mem_int"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAD.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_07/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAD.tail_diff_notMem_int_of_certifiedKill"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAD.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E249_07/comparator.json"
   - declaration: "PalomarCorpus.E249.PaperStatementsAE.pair_divisibility_mass"
-    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAE.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E249_07/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAE.stopping_probability_ge_third"
-    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAE.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E249_07/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAE.stopping_transition_probabilities_sum_one"
     file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAE.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E249_07/comparator.json"
@@ -91,8 +87,32 @@ status:
     file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAE.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E249_07/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAI.irrational_of_den_mul_abs_sub_tendsto_zero"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAI.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_07/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAI.irrational_of_int_mul_near_int"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAI.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_07/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAI.irrational_of_pow_mul_near_int"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAI.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_07/comparator.json"
   - declaration: "PalomarCorpus.E249.PaperStatementsAI.totient_series_eq_half_add_moebius_mersenne_square"
     file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAI.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_07/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.irrational_of_near_integer_base_powers"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_07/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.irrational_of_near_integer_multiples"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_07/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.one_div_den_le_abs_int_combination"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAJ.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E249_07/comparator.json"
   - declaration: "PalomarCorpus.E249.PaperStatementsAJ.positive_rational_difference_lower_bound"
@@ -111,12 +131,56 @@ status:
     file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAJ.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E249_07/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAK.cylinderMass_children_le"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAK.tsum_pos_coprime_inv_mersenne_eq_one"
     file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAK.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E249_07/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAK.tsum_pos_coprime_inv_mersenne_eq_one"
-    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAK.lean"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAL.digit_block"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAL.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_07/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAL.exists_irrational_basePower_bounded_away"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAL.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_07/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAL.fract_mem_Icc_of_no_three_equal"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAL.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_07/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAL.fract_two_pow_mul_xi_mem_Icc"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAL.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_07/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAL.irrational_tail_zero"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAL.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_07/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAL.irrational_xi"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAL.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_07/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAL.no_three_consecutive_equal"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAL.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_07/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAL.not_approaches_int"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAL.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_07/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAL.not_eventually_periodic"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAL.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_07/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAL.not_near_integer_along_powers_of_two"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAL.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_07/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAL.one_div_eight_le_abs_sub_int"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAL.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_07/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAL.one_div_eight_le_dist_xi"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAL.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E249_07/comparator.json"
   - declaration: "PalomarCorpus.E249.PaperStatementsAL.strict_lower_bound_needed"
@@ -135,36 +199,20 @@ status:
     file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAP.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E249_07/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAQ.numerator_eval_two_divisors"
-    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAQ.lean"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAT.certificate_logarithmic_depth"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAT.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E249_07/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAQ.radical_decomposition"
-    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAQ.lean"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAT.fixed_depth_bounds_indices"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAT.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E249_07/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAY.cylinderMass_eq_divisibility_mass_mul"
-    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAY.lean"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAT.prefix_fractional_part"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAT.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E249_07/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAY.cylinder_mediant_split"
-    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAY.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E249_07/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAY.cylinder_root_values"
-    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAY.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E249_07/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAY.normalised_split_probabilities"
-    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAY.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E249_07/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsB.sternBrocotDepthMass_error"
-    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsB.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E249_07/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsB.tendsto_sternBrocotDepthMass"
-    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsB.lean"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAT.totient_scaled_truncation_error"
+    file: "Solutions/PalomarCorpus/E249_07/PaperStatementsAT.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E249_07/comparator.json"
   - declaration: "PalomarCorpus.E249.PaperStatementsH.irrational_totient_iff_moebius_square"

@@ -10,6 +10,5 @@ import Solutions.PalomarCorpus.E1049_05.PaperStatementsF
 import Solutions.PalomarCorpus.E1049_05.PaperStatementsK
 import Solutions.PalomarCorpus.E1049_05.PaperStatementsM
 import Solutions.PalomarCorpus.E1049_05.PaperStatementsN
-import Solutions.PalomarCorpus.E1049_05.PaperStatementsX
-import Solutions.PalomarCorpus.E1049_05.PaperStructuresL
+import Solutions.PalomarCorpus.E1049_05.PaperStatementsT
 import Solutions.PalomarCorpus.E1049_05.RationalBaseBarrier

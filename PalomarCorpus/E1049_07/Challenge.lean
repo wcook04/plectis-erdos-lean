@@ -9,7 +9,7 @@ import Mathlib
 set_option autoImplicit false
 
 /-!
-# Erdős #1049, the Archimedean cap, Bezout Plucker jets and Hermite Pade no go families
+# Erdős #1049, note sections 2 to 4: a region of rational bases at which F is irrational; supplementary arithmetic at 3/2
 
 Each theorem below restates, against Mathlib alone, a theorem of the Lean development
 for Erdős problem #1049, in the order the papers state them. The definitions a statement
@@ -18,234 +18,155 @@ the source declaration it comes from. Erdős problem #1049 remains open, and no 
 in this entry decides it.
 -/
 
-open Filter Asymptotics
-open scoped Topology
 open scoped BigOperators
 open Filter
-
-namespace PalomarCorpus.E1049.ArchimedeanCap
-open Filter Asymptotics
+open Asymptotics
 open scoped Topology
-/-- The declared clearing width of the n-th approximation pair: the larger of the degrees of the polynomials U n and V n, as a natural number. Under the Mathlib convention the zero polynomial has degree zero. -/
-noncomputable def width (U V : ℕ → Polynomial ℤ) (n : ℕ) : ℕ := max (U n).natDegree (V n).natDegree
-/-- The l^1 coefficient norm of an integer polynomial, the sum over its support of the absolute values of its coefficients, returned as a real number; the zero polynomial has empty support and height 0. -/
-noncomputable def height (P : Polynomial ℤ) : ℝ := ∑ i ∈ P.support, |(P.coeff i : ℝ)|
-/-- The remainder U_n(x) F(x) - V_n(x) of the n-th pair at the real point x, the polynomials being evaluated through the canonical ring map from the integers to the reals. Here F is an arbitrary real function supplied as a parameter rather than a fixed Lambert series. -/
-noncomputable def remainder (U V : ℕ → Polynomial ℤ) (F : ℝ → ℝ) (x : ℝ) (n : ℕ) : ℝ :=
-  (U n).eval₂ (Int.castRingHom ℝ) x * F x - (V n).eval₂ (Int.castRingHom ℝ) x
-/-- Archimedean cap. Let U, V be sequences of integer polynomials, F any real function, and fix sigma > 0, delta > 0, h >= 0 not depending on the evaluation point. Assume for each eps > 0 that the width is eventually at most (delta + eps) n^2 and the logarithm of the larger l^1 coefficient norm eventually at most (h + eps) n^2; that at each real x > 1 the remainder is eventually nonzero; and that at each real x > 1 the quantity log |remainder| + sigma n^2 log x is o(n^2). Then sigma/(sigma + delta) <= 1/2, and for all naturals 1 <= b < a with log b / log a < sigma/(sigma + delta) the forms b^(width n) times the remainder at a/b tend to zero. -/
-theorem archimedean_cap (U V : ℕ → Polynomial ℤ) (F : ℝ → ℝ) (σ δ h : ℝ)
-    (hσ : 0 < σ) (hδ : 0 < δ) (hh : 0 ≤ h)
-    (hdeg : ∀ ε : ℝ, 0 < ε → ∀ᶠ n in atTop, (width U V n : ℝ) ≤ (δ + ε) * (n : ℝ)^2)
-    (hheight : ∀ ε : ℝ, 0 < ε → ∀ᶠ n in atTop,
-      Real.log (max (height (U n)) (height (V n))) ≤ (h + ε) * (n : ℝ)^2)
-    (hne : ∀ x : ℝ, 1 < x → ∀ᶠ n in atTop, remainder U V F x n ≠ 0)
-    (hrate : ∀ x : ℝ, 1 < x →
-      (fun n => Real.log |remainder U V F x n| - (-σ * Real.log x) * (n : ℝ)^2)
-        =o[atTop] (fun n : ℕ => (n : ℝ)^2)) :
+open Polynomial
+
+namespace PalomarCorpus.E1049.PaperStatementsA
+/-- `C₁ = (α₀+α₁+α₂)β - (α₁²+α₂²+β²)/2 = 1091/2`, Zudilin's (25). Local copy of ErdosProblems.Erdos1049.zudilinC1, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def zudilinC1 : ℝ := 1091 / 2
+/-- The series representation of the trigamma function. Only this series is used; the identification with `d²/dx² log Γ` is classical and not needed. Local copy of ErdosProblems.Erdos1049.trigammaSeries, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def trigammaSeries (x : ℝ) : ℝ := ∑' k : ℕ, 1 / ((k : ℝ) + x) ^ 2
+/-- One interval's contribution `ψ₁(u) - ψ₁(v)`. Local copy of ErdosProblems.Erdos1049.zudilinJTerm, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def zudilinJTerm (u v : ℝ) : ℝ := trigammaSeries u - trigammaSeries v
+/-- `J = ∫₀¹ ω(x) d(-ψ'(x))` over the thirteen intervals on which `ω = 1` (Zudilin 2004, end of Section 5), written as the trigamma series. Local copy of ErdosProblems.Erdos1049.zudilinJ, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def zudilinJ : ℝ :=
+  zudilinJTerm (1 / 14) (1 / 12) + zudilinJTerm (1 / 7) (1 / 6) +
+    zudilinJTerm (3 / 14) (1 / 4) + zudilinJTerm (2 / 7) (1 / 3) +
+    zudilinJTerm (5 / 14) (2 / 5) + zudilinJTerm (3 / 7) (7 / 15) +
+    zudilinJTerm (1 / 2) (8 / 15) + zudilinJTerm (4 / 7) (3 / 5) +
+    zudilinJTerm (9 / 14) (2 / 3) + zudilinJTerm (5 / 7) (11 / 15) +
+    zudilinJTerm (11 / 14) (4 / 5) + zudilinJTerm (6 / 7) (13 / 15) +
+    zudilinJTerm (13 / 14) (14 / 15)
+/-- `C₀ = α₁²/2 + α₀α₁ + (β-α₂)(α₂-α₁) - (3/π²)(m² - J)` with `m = 15`, Zudilin's (26). Local copy of ErdosProblems.Erdos1049.zudilinC0, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def zudilinC0 : ℝ := 266 - 3 / Real.pi ^ 2 * (225 - zudilinJ)
+/-- `μ = C₁/C₀`, the irrationality-exponent constant printed in the theorem. Local copy of ErdosProblems.Erdos1049.PaperCompleteR21.PrintedContour.paperMu, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def paperMu : ℝ := zudilinC1 / zudilinC0
+/-- Numerator of the Euler-Maclaurin tail over `2310 x¹¹`. Local copy of ErdosProblems.Erdos1049.PaperCompleteR21.PrintedContour.tailNum, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def tailNum (x : ℝ) : ℝ :=
+  2310 * x ^ 10 + 1155 * x ^ 9 + 385 * x ^ 8 - 77 * x ^ 6 + 55 * x ^ 4 - 77 * x ^ 2
+/-- `tailLow x + 5/(66x¹¹)`. Local copy of ErdosProblems.Erdos1049.PaperCompleteR21.PrintedContour.tailHigh, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def tailHigh (x : ℝ) : ℝ := (tailNum x + 175) / (2310 * x ^ 11)
+/-- `1/x + 1/(2x²) + 1/(6x³) - 1/(30x⁵) + 1/(42x⁷) - 1/(30x⁹)`. Local copy of ErdosProblems.Erdos1049.PaperCompleteR21.PrintedContour.tailLow, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def tailLow (x : ℝ) : ℝ := tailNum x / (2310 * x ^ 11)
+/-- `μ = C₁/C₀`, the reciprocal of the contour `θ* = C₀/C₁`. Local copy of ErdosProblems.Erdos1049.PaperCompleteR21.zudilinMu, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def zudilinMu : ℝ := zudilinC1 / zudilinC0
+/-- The rational-base threshold `θ* = C₀/C₁ = 1/μ`, where `μ = C₁/C₀` is the irrationality-exponent bound of Zudilin's Theorem 1. Local copy of ErdosProblems.Erdos1049.zudilinContour, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def zudilinContour : ℝ := zudilinC0 / zudilinC1
+/-- States res:rational-base-threshold from the short record for Erdős problem #1049. Transported from ErdosProblems.Erdos1049.PaperCompleteR21.PrintedContour.printed_contour_short in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem printed_contour_short :
+    (4056830213840605 : ℝ) / 10 ^ 16 < zudilinContour ∧
+      zudilinContour < (4056830213840606 : ℝ) / 10 ^ 16 := by
+  sorry
+/-- States res:rational-base-threshold from the short record for Erdős problem #1049. Transported from ErdosProblems.Erdos1049.PaperCompleteR21.PrintedContour.printed_mu in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem printed_mu :
+    (24649786835749750 : ℝ) / 10 ^ 16 < paperMu ∧
+      paperMu < (24649786835749751 : ℝ) / 10 ^ 16 := by
+  sorry
+/-- States res:rational-base-threshold from the short record for Erdős problem #1049. Transported from ErdosProblems.Erdos1049.PaperCompleteR21.PrintedContour.tailLow_le_trigammaSeries in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem tailLow_le_trigammaSeries {x : ℝ} (hx : 1 ≤ x) : tailLow x ≤ trigammaSeries x := by
+  sorry
+/-- States res:rational-base-threshold from the short record for Erdős problem #1049. Transported from ErdosProblems.Erdos1049.PaperCompleteR21.PrintedContour.trigammaSeries_le_tailHigh in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem trigammaSeries_le_tailHigh {x : ℝ} (hx : 1 ≤ x) : trigammaSeries x ≤ tailHigh x := by
+  sorry
+/-- States res:rational-base-threshold from the short record for Erdős problem #1049. Transported from ErdosProblems.Erdos1049.PaperCompleteR21.zudilinContour_eq_inv_mu in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem zudilinContour_eq_inv_mu : zudilinContour = 1 / zudilinMu := by
+  sorry
+/-- States res:rational-base-threshold from the short record for Erdős problem #1049. Transported from ErdosProblems.Erdos1049.PaperCompleteR21.zudilinMu_mul_zudilinContour in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem zudilinMu_mul_zudilinContour : zudilinMu * zudilinContour = 1 := by
+  sorry
+end PalomarCorpus.E1049.PaperStatementsA
+
+namespace PalomarCorpus.E1049.RationalBaseRegion
+open scoped BigOperators
+/-- The real Lambert series F(x)=sum over n at least 1 of 1/(x^n-1), with Lean tsum conventions outside its convergence domain; the irrationality theorems use x>1. -/
+noncomputable def paperLambert (x : ℝ) : ℝ :=
+  ∑' n : ℕ, 1 / (x ^ (n + 1) - 1)
+/-- The Lambert value at every positive integral power of 31/4 is irrational, by the constructed-source contour theorem. -/
+theorem thirtyone_four_powers (r : ℕ) (hr : 0 < r) :
+    Irrational (paperLambert (((31 : ℝ) / 4) ^ r)) := by
+  sorry
+end PalomarCorpus.E1049.RationalBaseRegion
+
+namespace PalomarCorpus.E1049.PaperStructuresR
+open Filter
+open Asymptotics
+open scoped Topology
+open scoped BigOperators
+/-- Local definition coeffL1, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def coeffL1 (P : Polynomial ℤ) : ℝ :=
+  ∑ i ∈ P.support, |(P.coeff i : ℝ)|
+/-- Local copy of ErdosProblems.Erdos1049.PaperR9.pairWidth, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def pairWidth (U V : ℕ → Polynomial ℤ) (n : ℕ) : ℕ :=
+  max (U n).natDegree (V n).natDegree
+/-- Local copy of ErdosProblems.Erdos1049.PaperR9.polynomialRemainder, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def polynomialRemainder (U V : ℕ → Polynomial ℤ)
+    (F : ℝ → ℝ) (x : ℝ) (n : ℕ) : ℝ :=
+  (U n).eval₂ (Int.castRingHom ℝ) x * F x -
+    (V n).eval₂ (Int.castRingHom ℝ) x
+/-- Local definition pairHeight, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def pairHeight (U V : ℕ → Polynomial ℤ) (n : ℕ) : ℝ :=
+  max (coeffL1 (U n)) (coeffL1 (V n))
+/-- The scale is a real square, avoiding truncated natural subtraction. Local copy of ErdosProblems.Erdos1049.PaperR9.sqScale, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def sqScale (n : ℕ) : ℝ := (n : ℝ) ^ 2
+/-- Upper quadratic rate, with an arbitrary additive epsilon in the rate. Local copy of ErdosProblems.Erdos1049.PaperR9.QuadUpper, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def QuadUpper (f : ℕ → ℝ) (a : ℝ) : Prop :=
+  ∀ ε : ℝ, 0 < ε → ∀ᶠ n in atTop, f n ≤ (a + ε) * sqScale n
+/-- Exact two-sided logarithmic asymptotic; nonvanishing is supplied separately. Local copy of ErdosProblems.Erdos1049.PaperR9.QuadLogRate, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def QuadLogRate (f : ℕ → ℝ) (a : ℝ) : Prop :=
+  (fun n => Real.log |f n| - a * sqScale n) =o[atTop] sqScale
+/-- Local definition CapHypotheses, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+structure CapHypotheses (U V : ℕ → Polynomial ℤ) (F : ℝ → ℝ)
+    (σ δ h : ℝ) : Prop where
+  sigma_pos : 0 < σ
+  delta_pos : 0 < δ
+  height_nonneg : 0 ≤ h
+  degree_upper : QuadUpper (fun n => (pairWidth U V n : ℝ)) δ
+  height_upper : QuadUpper (fun n => Real.log (pairHeight U V n)) h
+  nonzero : ∀ x : ℝ, 1 < x → ∀ᶠ n in atTop, polynomialRemainder U V F x n ≠ 0
+  remainder_rate : ∀ x : ℝ, 1 < x →
+    QuadLogRate (polynomialRemainder U V F x) (-σ * Real.log x)
+/-- States res:archimedean-cap from the short record for Erdős problem #1049. Transported from ErdosProblems.Erdos1049.PaperR9.short_note_archimedean_cap in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem short_note_archimedean_cap (U V : ℕ → Polynomial ℤ) (F : ℝ → ℝ)
+    (σ δ h : ℝ) (H : CapHypotheses U V F σ δ h) :
     σ / (σ + δ) ≤ (1 : ℝ) / 2 ∧
     ∀ a b : ℕ, 1 ≤ b → b < a →
       Real.log b / Real.log a < σ / (σ + δ) →
-      Tendsto (fun n => (b : ℝ) ^ width U V n * remainder U V F ((a : ℝ) / b) n)
-        atTop (𝓝 0) := by
+      Tendsto (fun n => (b : ℝ) ^ pairWidth U V n *
+        polynomialRemainder U V F ((a : ℝ) / b) n) atTop (𝓝 0) := by
   sorry
-end PalomarCorpus.E1049.ArchimedeanCap
+end PalomarCorpus.E1049.PaperStructuresR
 
-namespace PalomarCorpus.E1049.BezoutPluckerJets
-open scoped BigOperators
-/-- Let w be a family of pairs in a commutative ring R, indexed by any type, and let a and b in R be coprime in the Bezout sense. If the anchor minor a (w i).2 - b (w i).1 vanishes for every index i, then every pairwise minor (w i).1 (w j).2 - (w i).2 (w j).1 vanishes: the whole family lies on the single line cut out by the anchor. -/
-theorem anchor_det_zero_forces_all_det_zero {R : Type*} [CommRing R]
-    {ι : Type*} (w : ι → R × R) {a b : R}
-    (hab : IsCoprime a b) (hdet : ∀ i, a * (w i).2 - b * (w i).1 = 0) :
-    ∀ i j, (w i).1 * (w j).2 - (w i).2 * (w j).1 = 0 := by
+namespace PalomarCorpus.E1049.PaperStatementsF
+open Polynomial
+/-- Integer homogeneous evaluation of an integral polynomial at `(3,2)`, using the declared ambient width `W`. Local copy of ErdosProblems.Erdos1049.homEvalThreeTwo, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def homEvalThreeTwo (W : ℕ) (P : Polynomial ℤ) : ℤ :=
+  ∑ i ∈ Finset.range (W + 1), P.coeff i * 3 ^ i * 2 ^ (W - i)
+/-- The bottom `3`-adic endpoint jet of depth `R`. Local copy of ErdosProblems.Erdos1049.bottomJet3, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def bottomJet3 (R W : ℕ) (P : Polynomial ℤ) : ZMod (3 ^ R) :=
+  homEvalThreeTwo W P
+/-- States res:bottomjet from the short record for Erdős problem #1049. Transported from ErdosProblems.Erdos1049.bottomJet3_eq_zero_iff_dvd in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem bottomJet3_eq_zero_iff_dvd (R W : ℕ) (P : Polynomial ℤ) :
+    bottomJet3 R W P = 0 ↔ ((3 ^ R : ℕ) : ℤ) ∣ homEvalThreeTwo W P := by
   sorry
-/-- Under the hypotheses above with R and the index type both finite, if the cardinality of R is smaller than 2 raised to the number of indices, then two distinct Boolean selectors have the same selected row sum in R times R. The minor collapse confines the selector sums to one copy of R, so the collision threshold is the cardinality of R rather than its square. -/
-theorem binary_row_collision_of_anchor_det_zero
-    {R ι : Type*} [CommRing R] [Fintype R] [Fintype ι]
-    (w : ι → R × R) {a b : R}
-    (hab : IsCoprime a b) (hdet : ∀ i, a * (w i).2 - b * (w i).1 = 0)
-    (hcard : Fintype.card R < 2 ^ Fintype.card ι) :
-    ∃ s t : ι → Bool, s ≠ t ∧
-      (∑ i, if s i then w i else 0) = ∑ i, if t i then w i else 0 := by
-  sorry
-/-- For a sequence of pairs in a commutative ring whose second coordinates are all units, vanishing of every adjacent minor implies vanishing of every pairwise minor. This is the sequential form of the previous propagation, with a unit coordinate in place of the coprime anchor. -/
-theorem adjacent_det_zero_forces_all_det_zero {R : Type*} [CommRing R]
-    (w : ℕ → R × R) (hunit : ∀ n, IsUnit (w n).2)
-    (hadj : ∀ n, (w n).1 * (w (n + 1)).2 - (w n).2 * (w (n + 1)).1 = 0) :
-    ∀ i j, (w i).1 * (w j).2 - (w i).2 * (w j).1 = 0 := by
-  sorry
-/-- At the modulus 2^S 3^R with R > 0, let w be a sequence of pairs of residues whose second coordinates are units and whose adjacent minors all vanish. Then for every k >= S + 2R there are two distinct Boolean selectors on k indices with equal selected row sums. The collapse halves the ambient two-coordinate threshold 2S + 4R to S + 2R. The vanishing of every adjacent minor is a hypothesis and is not established here for any actual approximation family. -/
-theorem zmod_binary_tail_collision_of_two_three_depth {R S k : ℕ}
-    [NeZero (2 ^ S * 3 ^ R)]
-    (w : ℕ → ZMod (2 ^ S * 3 ^ R) × ZMod (2 ^ S * 3 ^ R))
-    (hunit : ∀ n, IsUnit (w n).2)
-    (hadj : ∀ n, (w n).1 * (w (n + 1)).2 - (w n).2 * (w (n + 1)).1 = 0)
-    (hR : 0 < R) (hrank : S + 2 * R ≤ k) :
-    ∃ s t : Fin k → Bool, s ≠ t ∧
-      (∑ i, if s i then w i else 0) = ∑ i, if t i then w i else 0 := by
-  sorry
-end PalomarCorpus.E1049.BezoutPluckerJets
+end PalomarCorpus.E1049.PaperStatementsF
 
-namespace PalomarCorpus.E1049.HermitePadeNoGo
-/-- The decay exponent (1 + rho^2)/2 + sigma of that model: the normalised rate at which the remainder of the two-function approximation shrinks, in the two real parameters rho and sigma. Reading rho as the rectangularity parameter of the multi-index and sigma as the degree parameter is an interpretation; the statements below use only the formula and the admissible region rho >= 0, sigma >= 1 + rho. -/
-noncomputable def hpDecay (rho sigma : ℝ) : ℝ :=
-  (1 + rho ^ 2) / 2 + sigma
-/-- The height exponent (1 + rho)^2/2 + sigma (1 + rho) of that model: the normalised logarithmic cost of clearing denominators, at the same parameters rho and sigma. -/
-noncomputable def hpHeight (rho sigma : ℝ) : ℝ :=
-  (1 + rho) ^ 2 / 2 + sigma * (1 + rho)
-/-- The cyclotomic saving exponent 3 sigma^2 / pi^2 of the rectangular two-function Hermite-Pade exponent model: the normalised logarithmic size of the common cyclotomic factor removable from a pair of approximation polynomials at model parameter sigma, the constant 3/pi^2 being the mean density in the summatory totient estimate. Reading sigma as a degree parameter is an interpretation, and no statement here uses it. -/
-noncomputable def hpCyclotomicSaving (sigma : ℝ) : ℝ :=
-  3 * sigma ^ 2 / Real.pi ^ 2
-/-- Rational-base height threshold associated with the explicit exponent model above. Local copy of ErdosProblems.Erdos1049.hpThreshold, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def hpThreshold (rho sigma : ℝ) : ℝ :=
-  (hpDecay rho sigma - hpCyclotomicSaving sigma) /
-    (hpHeight rho sigma + hpDecay rho sigma)
-/-- The denominator-cleared comparison functional (pi^2 + 2) hpDecay - 6 sigma^2 - (pi^2 - 2) hpHeight, whose sign decides whether the rectangular two-function threshold of the model exceeds the classical one-function threshold 1/2 - 1/pi^2. -/
-noncomputable def hpClearedGap (rho sigma : ℝ) : ℝ :=
-  (Real.pi ^ 2 + 2) * hpDecay rho sigma - 6 * sigma ^ 2 -
-    (Real.pi ^ 2 - 2) * hpHeight rho sigma
-/-- Exact polynomial identity after the substitution sigma = 1 + rho + u: the cleared gap equals -pi^2 rho^2 - pi^2 rho u - 2 pi^2 rho - 2 rho^2 - 10 rho u - 4 rho - 6 u^2 - 8 u. The identity holds for all real rho and u; on rho >= 0 and u >= 0 every term is nonpositive. Supporting identity for the two comparison theorems below. -/
-theorem hpClearedGap_expansion (rho u : ℝ) :
-    hpClearedGap rho (1 + rho + u) =
-      -Real.pi ^ 2 * rho ^ 2 - Real.pi ^ 2 * rho * u -
-        2 * Real.pi ^ 2 * rho - 2 * rho ^ 2 - 10 * rho * u -
-        4 * rho - 6 * u ^ 2 - 8 * u := by
+namespace PalomarCorpus.E1049.PaperStructuresP
+/-- Local definition instDecidableEqReal_erdosProblems, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable scoped instance instDecidableEqReal_erdosProblems : DecidableEq ℝ := Classical.decEq ℝ
+/-- States res:boundedfibre from the short record for Erdős problem #1049. Transported from ErdosProblems.Erdos1049.exists_small_real_escape_of_conditional_multiplicity in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem exists_small_real_escape_of_conditional_multiplicity
+    {α β ι : Type*}
+    [Fintype α] [Fintype β] [Fintype ι]
+    [DecidableEq α] [DecidableEq β] [DecidableEq ι]
+    (f : α → β) (g : α → ℝ) (bin : α → ι) (k : ℕ) (δ : ℝ)
+    (hg : ∀ x : α,
+      (Finset.univ.filter fun y => f y = f x ∧ g y = g x).card ≤ k)
+    (hdiam : ∀ x y : α, bin x = bin y → |g x - g y| < δ)
+    (hcard : (Fintype.card β * Fintype.card ι) * k < Fintype.card α) :
+    ∃ x y : α, x ≠ y ∧ f x = f y ∧
+      0 < |g x - g y| ∧ |g x - g y| < δ := by
   sorry
-/-- On the admissible region rho >= 0 and sigma >= 1 + rho the cleared comparison functional is nonpositive. Supporting lemma for the threshold comparison. -/
-theorem hpClearedGap_nonpos (rho sigma : ℝ)
-    (hrho : 0 ≤ rho) (hsigma : 1 + rho ≤ sigma) :
-    hpClearedGap rho sigma ≤ 0 := by
-  sorry
-/-- On that same admissible region the cleared comparison functional vanishes if and only if rho = 0 and sigma = 1, the classical one-function endpoint. Supporting lemma for the sharpness statement. -/
-theorem hpClearedGap_eq_zero_iff (rho sigma : ℝ)
-    (hrho : 0 ≤ rho) (hsigma : 1 + rho ≤ sigma) :
-    hpClearedGap rho sigma = 0 ↔ rho = 0 ∧ sigma = 1 := by
-  sorry
-/-- Over the whole admissible cone rho >= 0 and sigma >= 1 + rho, the rectangular two-function threshold of this explicit exponent model is at most 1/2 - 1/pi^2 = 0.398678816..., the classical one-function value. No admissible choice of exponents in the model improves on the classical threshold. The theorem is about this exponent model only: it constructs no approximants and proves no irrationality statement. -/
-theorem rectangular_hp_threshold_le_classical (rho sigma : ℝ)
-    (hrho : 0 ≤ rho) (hsigma : 1 + rho ≤ sigma) :
-    hpThreshold rho sigma ≤ 1 / 2 - 1 / Real.pi ^ 2 := by
-  sorry
-/-- On the same cone the threshold equals 1/2 - 1/pi^2 if and only if rho = 0 and sigma = 1. The previous bound is therefore sharp and its equality locus is that single point. -/
-theorem rectangular_hp_threshold_eq_classical_iff (rho sigma : ℝ)
-    (hrho : 0 ≤ rho) (hsigma : 1 + rho ≤ sigma) :
-    hpThreshold rho sigma = 1 / 2 - 1 / Real.pi ^ 2 ↔
-      rho = 0 ∧ sigma = 1 := by
-  sorry
-end PalomarCorpus.E1049.HermitePadeNoGo
-
-namespace PalomarCorpus.E1049.PrimeSupportSelectors
-open Filter
-/-- At a rational target a/q with q > 0, two integral rows whose exterior determinant A_1 B_2 - A_2 B_1 is nonzero cannot both have remainder below 1/q: at least one of |B_1 (a/q) - A_1| and |B_2 (a/q) - A_2| is at least 1/q. Nonvanishing of the determinant is the only hypothesis on the rows; no primality, no denominator support condition and no coprimality of a and q is assumed. -/
-theorem twoSelector_rationalGap
-    (a q A₁ B₁ A₂ B₂ : ℤ) (hq : 0 < q)
-    (hdet : A₁ * B₂ - A₂ * B₁ ≠ 0) :
-    (1 : ℝ) / q ≤
-        |(B₁ : ℝ) * ((a : ℝ) / (q : ℝ)) - (A₁ : ℝ)| ∨
-      (1 : ℝ) / q ≤
-        |(B₂ : ℝ) * ((a : ℝ) / (q : ℝ)) - (A₂ : ℝ)| := by
-  sorry
-/-- At a rational target a/q with q > 0, an integral linear form B (a/q) - A that does not vanish has absolute value at least 1/q. Nonvanishing of the form is the only hypothesis; no primality, no denominator support condition and no coprimality of a and q is assumed. -/
-theorem integerLinearForm_rationalGap
-    (a q A B : ℤ) (hq : 0 < q)
-    (hne : (B : ℝ) * ((a : ℝ) / (q : ℝ)) - (A : ℝ) ≠ 0) :
-    (1 : ℝ) / q ≤
-      |(B : ℝ) * ((a : ℝ) / (q : ℝ)) - (A : ℝ)| := by
-  sorry
-/-- For sequences of integral rows whose exterior determinant is nonzero at every index, the two real linear forms B_1 (a/q) - A_1 and B_2 (a/q) - A_2 cannot both tend to zero at a rational target a/q with q > 0. No such pair of selectors jointly witnesses vanishing at a rational point. -/
-theorem rationalTwoSelector_notBothTendstoZero
-    (a q : ℤ) (hq : 0 < q)
-    (A₁ B₁ A₂ B₂ : ℕ → ℤ)
-    (hdet : ∀ n, A₁ n * B₂ n - A₂ n * B₁ n ≠ 0) :
-    ¬(Tendsto
-        (fun n ↦ (B₁ n : ℝ) * ((a : ℝ) / (q : ℝ)) - (A₁ n : ℝ))
-        atTop (nhds 0) ∧
-      Tendsto
-        (fun n ↦ (B₂ n : ℝ) * ((a : ℝ) / (q : ℝ)) - (A₂ n : ℝ))
-        atTop (nhds 0)) := by
-  sorry
-/-- If two real linear forms at a common real target F have remainders |B_1 F - A_1| and |B_2 F - A_2| at most eps, then their exterior determinant satisfies |A_1 B_2 - A_2 B_1| <= eps (|B_1| + |B_2|), so joint decay is paid for in determinant size. The statement is about real data and uses no change of basis, no integrality and no coefficient-height hypothesis. -/
-theorem twoSelector_detHeightDecay_tradeoff
-    (A₁ B₁ A₂ B₂ F ε : ℝ)
-    (h₁ : |B₁ * F - A₁| ≤ ε) (h₂ : |B₂ * F - A₂| ≤ ε) :
-    |A₁ * B₂ - A₂ * B₁| ≤ ε * (|B₁| + |B₂|) := by
-  sorry
-/-- If a real two by two recombination with |u z - v w| = 1 and all four entries bounded in absolute value by H makes both recombined remainders at most eps >= 0 at a common real target F, then the original exterior determinant satisfies |A_1 B_2 - A_2 B_1| <= 2 H eps (|B_1| + |B_2|). Joint decay reached through a bounded change of basis is still paid for in determinant size; integer unimodular recombination is a special case. -/
-theorem twoSelector_unimodularHeightDecay_tradeoff
-    (A₁ B₁ A₂ B₂ u v w z F H ε : ℝ)
-    (hunimod : |u * z - v * w| = 1)
-    (hε : 0 ≤ ε)
-    (hu : |u| ≤ H) (hv : |v| ≤ H) (hw : |w| ≤ H) (hz : |z| ≤ H)
-    (h₁ : |(u * B₁ + v * B₂) * F - (u * A₁ + v * A₂)| ≤ ε)
-    (h₂ : |(w * B₁ + z * B₂) * F - (w * A₁ + z * A₂)| ≤ ε) :
-    |A₁ * B₂ - A₂ * B₁| ≤
-      2 * H * ε * (|B₁| + |B₂|) := by
-  sorry
-/-- Let ell be prime, let q > 0 with ell not dividing q, let ell divide both B_1 and B_2, and let ell^2 not divide A_1 B_2 - A_2 B_1. Then at least one of the two rows has the full gap 1/q at the target a/q. This is the arithmetic-facing specialisation of the two-row gap: the hypothesis on ell^2 already forces the determinant to be nonzero, and the prime data records the divisibility interface an approximation family would have to supply. -/
-theorem primeSupportedTwoSelector_rationalGap
-    {ell : ℕ} (hell : ell.Prime)
-    (a q A₁ B₁ A₂ B₂ : ℤ) (hq : 0 < q)
-    (hellq : ¬ (ell : ℤ) ∣ q)
-    (hellB₁ : (ell : ℤ) ∣ B₁)
-    (hellB₂ : (ell : ℤ) ∣ B₂)
-    (hdet : ¬ (ell : ℤ) ^ 2 ∣ A₁ * B₂ - A₂ * B₁) :
-    (1 : ℝ) / q ≤
-        |(B₁ : ℝ) * ((a : ℝ) / (q : ℝ)) - (A₁ : ℝ)| ∨
-      (1 : ℝ) / q ≤
-        |(B₂ : ℝ) * ((a : ℝ) / (q : ℝ)) - (A₂ : ℝ)| := by
-  sorry
-/-- Let ell be prime with ell dividing B, ell not dividing A, and ell not dividing q > 0. Then |B (a/q) - A| >= 1/q. The prime data certifies the nonvanishing that the unconditional one-row gap takes as a hypothesis. -/
-theorem primeSupportedOneRow_rationalGap
-    {ell : ℕ} (hell : ell.Prime)
-    (a q A B : ℤ) (hq : 0 < q)
-    (hellB : (ell : ℤ) ∣ B)
-    (hellA : ¬ (ell : ℤ) ∣ A)
-    (hellq : ¬ (ell : ℤ) ∣ q) :
-    (1 : ℝ) / q ≤
-      |(B : ℝ) * ((a : ℝ) / (q : ℝ)) - (A : ℝ)| := by
-  sorry
-/-- The same conclusion |B (a/q) - A| >= 1/q under prime-power support: ell prime, r nonzero, ell^r dividing B, ell not dividing A, and ell not dividing q > 0. A single copy of ell already suffices for the conclusion; the stronger hypothesis is retained so that a tail exponent can be passed through unchanged. -/
-theorem primePowerSupportedOneRow_rationalGap
-    {ell r : ℕ} (hell : ell.Prime) (hr : r ≠ 0)
-    (a q A B : ℤ) (hq : 0 < q)
-    (hellPowB : (ell : ℤ) ^ r ∣ B)
-    (hellA : ¬ (ell : ℤ) ∣ A)
-    (hellq : ¬ (ell : ℤ) ∣ q) :
-    (1 : ℝ) / q ≤
-      |(B : ℝ) * ((a : ℝ) / (q : ℝ)) - (A : ℝ)| := by
-  sorry
-/-- If the second coordinate of each of k pairs of residues modulo N vanishes, then N < 2^k already forces two distinct Boolean selectors with equal selected sums in both coordinates. With one coordinate identically zero the pigeonhole only has to see the other, so the threshold is N rather than N^2. -/
-theorem zeroDenominatorCoordinates_binaryCollision
-    {N k : ℕ} [NeZero N]
-    (w : Fin k → ZMod N × ZMod N)
-    (hzero : ∀ i, (w i).2 = 0)
-    (hcard : N < 2 ^ k) :
-    ∃ s t : Fin k → Bool, s ≠ t ∧
-      (∑ i, if s i then w i else 0) = ∑ i, if t i then w i else 0 := by
-  sorry
-end PalomarCorpus.E1049.PrimeSupportSelectors
-
-namespace PalomarCorpus.E1049.PublishedHeightRegions
-/-- The parameter region log b / log a < 1/2 - 1/pi^2 of the published Bundschuh-Vaananen criterion, written for a reduced rational base a/b, the definition itself imposing no coprimality, positivity or ordering on a and b. This records only the elementary parameter inequality; their analytic irrationality theorem is not internalised, so membership is applicability of a method rather than an irrationality statement. -/
-noncomputable def BundschuhVaananenHeightRegion (a b : ℕ) : Prop :=
-  Real.log b / Real.log a < 1 / 2 - 1 / Real.pi ^ 2
-/-- The parameter region log b / log a < 81/200 for a reduced rational base a/b, the definition itself imposing no coprimality, positivity or ordering on a and b. This threshold is defined here as an elementary sub-boundary of the region reached by the project's separate ordinary rational-base theorem; it is not a published criterion and carries no analytic hypothesis. -/
-noncomputable def ZudilinHeightRegion (a b : ℕ) : Prop :=
-  Real.log b / Real.log a < (81 : ℝ) / 200
-/-- The exact integer comparison 3^81 < 2^200, the verified numerical fact that places the base 3/2 beyond the 81/200 threshold. -/
-theorem threeHalves_zudilin_power_obstruction :
-    3 ^ 81 < 2 ^ 200 := by
-  sorry
-/-- The real inequality 81/200 < log 2 / log 3, obtained by taking logarithms in the integer comparison above. -/
-theorem eightyOneTwoHundredths_lt_threeHalves_log_ratio :
-    (81 : ℝ) / 200 < Real.log 2 / Real.log 3 := by
-  sorry
-/-- The base 3/2 does not satisfy log 2 / log 3 < 81/200, so it lies outside the region defined above. This is a boundary of method applicability; it proves neither rationality nor irrationality of the corresponding Lambert value. -/
-theorem threeHalves_outside_zudilinHeightRegion :
-    ¬ ZudilinHeightRegion 3 2 := by
-  sorry
-/-- The base 3/2 also lies outside the Bundschuh-Vaananen region, since 1/2 - 1/pi^2 = 0.398678816... is below 81/200 and log 2 / log 3 = 0.63092975... already exceeds the larger threshold. Inapplicability of that published criterion proves neither rationality nor irrationality. -/
-theorem threeHalves_outside_bundschuhVaananenHeightRegion :
-    ¬ BundschuhVaananenHeightRegion 3 2 := by
-  sorry
-end PalomarCorpus.E1049.PublishedHeightRegions
+end PalomarCorpus.E1049.PaperStructuresP

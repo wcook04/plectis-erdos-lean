@@ -1,0 +1,32 @@
+{
+  "challenge_module": "PalomarCorpus.E1049_09.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E1049_09",
+  "theorem_names": [
+    "PalomarCorpus.E1049.PaperStructuresV.tail_prefix_lattice",
+    "PalomarCorpus.E1049.PaperStructuresW.geometric_universality",
+    "PalomarCorpus.E1049.PrimeSupportSelectors.integerLinearForm_rationalGap",
+    "PalomarCorpus.E1049.PrimeSupportSelectors.primePowerSupportedOneRow_rationalGap",
+    "PalomarCorpus.E1049.PrimeSupportSelectors.primeSupportedOneRow_rationalGap",
+    "PalomarCorpus.E1049.PrimeSupportSelectors.primeSupportedTwoSelector_rationalGap",
+    "PalomarCorpus.E1049.PrimeSupportSelectors.rationalTwoSelector_notBothTendstoZero",
+    "PalomarCorpus.E1049.PrimeSupportSelectors.twoSelector_detHeightDecay_tradeoff",
+    "PalomarCorpus.E1049.PrimeSupportSelectors.twoSelector_rationalGap",
+    "PalomarCorpus.E1049.PrimeSupportSelectors.twoSelector_unimodularHeightDecay_tradeoff",
+    "PalomarCorpus.E1049.PrimeSupportSelectors.zeroDenominatorCoordinates_binaryCollision",
+    "PalomarCorpus.E1049.PublishedHeightRegions.eightyOneTwoHundredths_lt_threeHalves_log_ratio",
+    "PalomarCorpus.E1049.PublishedHeightRegions.threeHalves_outside_bundschuhVaananenHeightRegion",
+    "PalomarCorpus.E1049.PublishedHeightRegions.threeHalves_outside_zudilinHeightRegion",
+    "PalomarCorpus.E1049.PublishedHeightRegions.threeHalves_zudilin_power_obstruction",
+    "PalomarCorpus.E1049.RationalBaseBarrier.twoPow_le_rationalBaseForcingNat",
+    "PalomarCorpus.E1049.RationalBaseRegion.rational_base_measure",
+    "PalomarCorpus.E1049.RationalBaseRegion.rational_base_region",
+    "PalomarCorpus.E1049.RationalBaseRegion.thirtyone_four",
+    "PalomarCorpus.E1049.RationalBaseRegion.thirtyone_four_power_measure_lt_paper_fraction"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

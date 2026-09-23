@@ -1,0 +1,4 @@
+import Solutions.ExternalVerification1041PaperStatementsAE
+
+#print axioms Erdos249257.ExternalVerification1041PaperStatementsAE.erdos1041_hausdorff_answer_false
+#print axioms Erdos249257.ExternalVerification1041PaperStatementsAE.erdos1041_hausdorff_negation

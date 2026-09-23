@@ -18,118 +18,125 @@ walks from a compared theorem statement is byte-identical in the Challenge and S
 environments. Generated from the Challenge; do not edit by hand.
 -/
 
-open ArithmeticFunction
-open Filter
 open Set
-open Topology
-open scoped ArithmeticFunction.Omega
+open Filter
+open scoped BigOperators
 open scoped ENNReal
 open MeasureTheory
-open scoped BigOperators
+open Topology
 
-namespace PalomarCorpus.E257_30.Shared
-/-- The three-channel Lambert lower bound for the Mersenne tail `T (k + 1)`. `T (k + 1) = ∑_{v ≥ 1} 2 ^ (-k * v) / (2 ^ v - 1)`; truncating that expansion after `v = 3` gives this rational function of `t = 2 ^ k`, namely `1/t + 1/(3 * t ^ 2) + 1/(7 * t ^ 3)` (equivalently `1 / 2 ^ k + 1 / (3 * 4 ^ k) + 1 / (7 * 8 ^ k)`). Local copy of Erdos249257.HalfGreedyFatalGap.mersenneTailLB3, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def mersenneTailLB3 (k : ℕ) : ℝ :=
-  1 / 2 ^ k + 1 / (3 * (2 ^ k) ^ 2) + 1 / (7 * (2 ^ k) ^ 3)
-/-- The real Mersenne weight 1 divided by 2 to the power n minus 1; at n = 0 the value is 0 because division by zero is zero here. -/
-noncomputable def mersenneWeight (n : ℕ) : ℝ :=
-  1 / ((2 : ℝ) ^ n - 1)
-/-- The Mersenne tail beyond rank n, namely the sum over k at least 0 of the Mersenne weight at n+k+1. -/
-noncomputable def mersenneTail (n : ℕ) : ℝ :=
-  ∑' k : ℕ, mersenneWeight (n + k + 1)
+namespace PalomarCorpus.E257.PaperStructuresBJ
+open Set
+open Filter
+open scoped BigOperators
+open scoped ENNReal
+open MeasureTheory
+open Topology
+/-- The binary affine orbit driven by an integer sequence a from an initial value, defined by orbit 0 equal to the initial value and orbit (n+1) equal to twice orbit n minus a at n+1. -/
+noncomputable def affineBinaryOrbit (a : ℕ → ℤ) (u0 : ℤ) : ℕ → ℤ
+  | 0 => u0
+  | n + 1 => 2 * affineBinaryOrbit a u0 n - a (n + 1)
 /-- **The support coefficient** `f_A(n) = #{d ∣ n : d ∈ A}`, the Dirichlet incidence `1_A * 1` of a support set `A ⊆ ℕ`. This is the coefficient in which Erdős #257 is actually stated: `∑_{a∈A} 1/(b^a - 1) = ∑_n f_A(n)/b^n`. Full support gives `f_ℕ = τ`; primes give `ω`; prime powers give `Ω`. Local copy of Erdos249257.supportCoeff, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def supportCoeff (A : Set ℕ) (n : ℕ) : ℕ :=
   letI := Classical.decPred fun d : ℕ => d ∈ A
   (n.divisors.filter fun d => d ∈ A).card
-end PalomarCorpus.E257_30.Shared
-
-namespace PalomarCorpus.E257.PaperStatementsAV
-open ArithmeticFunction
-open Filter
-open Set
-open Topology
-export PalomarCorpus.E257_30.Shared (supportCoeff)
-end PalomarCorpus.E257.PaperStatementsAV
-
-namespace PalomarCorpus.E257.PaperStatementsAL
-open Filter
-open Set
-open Topology
-export PalomarCorpus.E257_30.Shared (supportCoeff)
-/-- `f` vanishes at the `h` positive offsets after `N`, namely `N + 1, ..., N + h`. Local copy of Erdos249257.CoeffZeroWindow, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def CoeffZeroWindow (f : ℕ → ℕ) (N h : ℕ) : Prop :=
-  ∀ j : ℕ, j < h → f (N + j + 1) = 0
-/-- `supportCoeff A` vanishes on the `h` positive indices immediately after `N`, namely `N + 1, ..., N + h`. Local copy of Erdos249257.SupportCoeffZeroWindow, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def SupportCoeffZeroWindow (A : Set ℕ) (N h : ℕ) : Prop :=
-  CoeffZeroWindow (supportCoeff A) N h
-/-- **The Erdős #257 support series** `∑_{a ∈ A} 1/(b^a - 1)`, as an indicator series over ℕ. The `a = 0` term is `1/(1-1) = 0` under real division-by-zero conventions, so supports containing `0` contribute nothing spurious. Local copy of Erdos249257.erdosSupportSeries, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def erdosSupportSeries (b : ℕ) (A : Set ℕ) : ℝ :=
-  ∑' a : ℕ, Set.indicator A (fun a => (1 : ℝ) / ((b : ℝ) ^ a - 1)) a
-end PalomarCorpus.E257.PaperStatementsAL
-
-namespace PalomarCorpus.E257.PaperStatementsAF
-open Set
-/-- Completely explicit constant for the fixed-`k` divisor bound. Local copy of Erdos249257.divisorSubpowerConst, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def divisorSubpowerConst (k : ℕ) : ℕ := k ^ (2 ^ k)
-end PalomarCorpus.E257.PaperStatementsAF
-
-namespace PalomarCorpus.E257.PaperStatementsAO
-open Filter
-open Topology
-open scoped ArithmeticFunction.Omega
-export PalomarCorpus.E257_30.Shared (supportCoeff)
-/-- The signed coefficient layer between exact `p`-adic levels `e-1` and `e`. Local copy of Erdos249257.MaximalOmegaLayer.primePowerLayer, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def primePowerLayer (p e : ℕ) (g : ℕ → ℤ) (n : ℕ) : ℤ :=
-  g (p ^ e * n) - g (p ^ (e - 1) * n)
-/-- The two-signature mixed layer. Further list-level iteration can use this as its checked algebraic step without committing to a factorization API. Local copy of Erdos249257.MaximalOmegaLayer.mixedPrimePowerLayerTwo, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def mixedPrimePowerLayerTwo
-    (p e q f : ℕ) (g : ℕ → ℤ) (n : ℕ) : ℤ :=
-  primePowerLayer q f (primePowerLayer p e g) n
-/-- Integer-valued packaging of the support divisor-count coefficient. Local copy of Erdos249257.SupportDilationDifferences.supportCoeffInt, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def supportCoeffInt (A : Set ℕ) (n : ℕ) : ℤ :=
-  supportCoeff A n
-end PalomarCorpus.E257.PaperStatementsAO
-
-namespace PalomarCorpus.E257.PaperStatementsAR
-open Filter
-open Set
-open scoped ENNReal
-open MeasureTheory
-open Topology
-open scoped BigOperators
-/-- The exact rational Mersenne weight `1 / (2^n - 1)`. Its meaningful support indices are positive; at index zero Lean's division convention gives zero. Local copy of Erdos249257.mersenneWeightRat, restated so the compared statements elaborate against Mathlib alone. -/
+/-- The integer half carry attached to a support A, namely the binary affine orbit started at 1 and driven by the divisor incidence coefficients of A shifted by one, so that the orbit at n+1 is twice the orbit at n minus the number of divisors of n+2 lying in A; the shift and the recursion index compose, so the coefficient consumed at step n+1 is the one at n+2. -/
+noncomputable def integerHalfCarry (A : Set ℕ) : ℕ → ℤ :=
+  affineBinaryOrbit (fun n : ℕ ↦ (supportCoeff A (n + 1) : ℤ)) 1
+/-- The canonical integer half carry measured relative to the signed Möbius solution. Index `N` corresponds to the packet's state `e_{N+1}`. Local copy of Erdos249257.HalfCarryReachability.mobiusCenteredHalfCarry, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def mobiusCenteredHalfCarry (A : Set ℕ) (N : ℕ) : ℤ :=
+  integerHalfCarry A N - 1
+/-- Integer numerator of the frozen coefficient window. The recurrence uses the binary weights `2^(J-i)` without division. Local copy of Erdos249257.HalfCylinderFiniteShadow.finiteCoeffWindowNumerator, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def finiteCoeffWindowNumerator
+    (A : Set ℕ) (n : ℕ) : ℕ → ℕ
+  | 0 => 0
+  | J + 1 =>
+      2 * finiteCoeffWindowNumerator A n J +
+        supportCoeff A (n + J + 1)
+/-- The greedy Boolean word for an integer subset sum problem: given a list of weights in the order presented and a capacity, take a weight when it is at most the current capacity and subtract it, otherwise skip it and keep the capacity. -/
+noncomputable def integerGreedyBits : List ℕ → ℕ → List Bool
+  | [], _ => []
+  | w :: ws, C =>
+      if w ≤ C then
+        true :: integerGreedyBits ws (C - w)
+      else
+        false :: integerGreedyBits ws C
+/-- The total weight selected by a Boolean word, namely the sum of those weights whose corresponding entry of the word is true, with the recursion stopping at the end of either list. -/
+noncomputable def weightedBoolSum : List ℕ → List Bool → ℕ
+  | w :: ws, true :: bs => w + weightedBoolSum ws bs
+  | _ :: ws, false :: bs => weightedBoolSum ws bs
+  | _, _ => 0
+/-- The capacity left unpaid after the greedy Boolean word has been applied to a weight list, namely the capacity minus the weight it selects. -/
+noncomputable def integerGreedyRemainder (weights : List ℕ) (C : ℕ) : ℕ :=
+  C - weightedBoolSum weights (integerGreedyBits weights C)
+/-- The integer capacity of the seam subset sum problem at row s, namely 2 raised to the exponent 2s minus 1, less 2 to the power s; both the exponent subtraction and the outer subtraction are truncated natural subtraction, so the value is 0 at s = 0 and at s = 1. -/
+noncomputable def seamSubsetTarget (s : ℕ) : ℕ :=
+  2 ^ (2 * s - 1) - 2 ^ s
+/-- The truncated integer Mersenne weight at seam row s and rank d, namely the natural number quotient of 4 to the power s by 2 to the power d minus 1; at d = 0 the divisor is 0 and the value is 0. -/
+noncomputable def truncatedMersenneWeight (s d : ℕ) : ℕ :=
+  4 ^ s / (2 ^ d - 1)
+/-- The list of truncated Mersenne weights at seam row s for the ranks from the given starting index up to s minus 1, in increasing rank order. -/
+noncomputable def seamWeightsFrom (s : ℕ) : ℕ → List ℕ
+  | d =>
+      if h : d < s then
+        truncatedMersenneWeight s d :: seamWeightsFrom s (d + 1)
+      else
+        []
+termination_by d => s - d
+decreasing_by omega
+/-- The seam weight list at row s, namely the truncated Mersenne weights for ranks 2 up to s minus 1. -/
+noncomputable def seamWeights (s : ℕ) : List ℕ :=
+  seamWeightsFrom s 2
+/-- The greedy remainder of the seam subset sum problem at row s, namely the seam capacity minus the total weight selected greedily from the seam weight list. -/
+noncomputable def seamIntegerGreedyRemainder (s : ℕ) : ℕ :=
+  integerGreedyRemainder (seamWeights s) (seamSubsetTarget s)
+/-- Local definition stemBitsFrom, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def stemBitsFrom (s : ℕ) (P : Finset ℕ) : ℕ → List Bool
+  | d =>
+      if h : d < s then
+        decide (d ∈ P) :: stemBitsFrom s P (d + 1)
+      else
+        []
+termination_by d => s - d
+decreasing_by omega
+/-- Local definition stemBits, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def stemBits (s : ℕ) (P : Finset ℕ) : List Bool :=
+  stemBitsFrom s P 2
+/-- The real Mersenne weight 1 divided by 2 to the power n minus 1; at n = 0 the value is 0 because division by zero is zero here. -/
+noncomputable def mersenneWeight (n : ℕ) : ℝ :=
+  1 / ((2 : ℝ) ^ n - 1)
+/-- The remainder left by the greedy Mersenne rule applied to a nonnegative real x through rank n: it starts at x and, at each rank n+1, subtracts the weight 1 divided by 2 to the power n+1 minus 1 exactly when that weight is at most the current remainder. -/
+noncomputable def greedyMersenneRemainder (x : ℝ) : ℕ → ℝ
+  | 0 => x
+  | n + 1 =>
+      if mersenneWeight (n + 1) ≤ greedyMersenneRemainder x n then
+        greedyMersenneRemainder x n - mersenneWeight (n + 1)
+      else
+        greedyMersenneRemainder x n
+/-- The rational Mersenne weight 1 divided by 2 to the power n minus 1, taken in the rationals; at n = 0 the value is 0. -/
 noncomputable def mersenneWeightRat (n : ℕ) : ℚ :=
   1 / ((2 : ℚ) ^ n - 1)
-/-- The exact finite Mersenne value of a Boolean lower support. Local copy of Erdos249257.localMersennePrefixValue, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def localMersennePrefixValue (D : Finset ℕ) : ℚ :=
-  ∑ d ∈ D, mersenneWeightRat d
-end PalomarCorpus.E257.PaperStatementsAR
-
-namespace PalomarCorpus.E257.PaperStatementsAM
-open Filter
-open Set
-open Topology
-open scoped ENNReal
-open MeasureTheory
-export PalomarCorpus.E257_30.Shared (mersenneTail mersenneWeight)
-/-- The positive gap between one Mersenne weight and the tail after it. Local copy of Erdos249257.mersenneGap, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def mersenneGap (n : ℕ) : ℝ :=
-  mersenneWeight n - mersenneTail n
-end PalomarCorpus.E257.PaperStatementsAM
-
-namespace PalomarCorpus.E257.PaperStatementsAA
-export PalomarCorpus.E257_30.Shared (mersenneTailLB3)
-end PalomarCorpus.E257.PaperStatementsAA
-
-namespace PalomarCorpus.E257.PaperStructuresH
-export PalomarCorpus.E257_30.Shared (mersenneTailLB3)
-end PalomarCorpus.E257.PaperStructuresH
-
-namespace PalomarCorpus.E257.PaperStructuresV
-open scoped ENNReal
-open Filter
-open Set
-open MeasureTheory
-open Topology
-export PalomarCorpus.E257_30.Shared (mersenneTail mersenneWeight)
-end PalomarCorpus.E257.PaperStructuresV
+/-- The rational greedy Mersenne remainder of a rational target x through rank n, computed exactly in the rationals: it starts at x and at each rank n+1 subtracts the rational weight 1 divided by 2 to the power n+1 minus 1 exactly when that weight is at most the current remainder. -/
+noncomputable def greedyMersenneRemainderRat (x : ℚ) : ℕ → ℚ
+  | 0 => x
+  | n + 1 =>
+      if mersenneWeightRat (n + 1) ≤ greedyMersenneRemainderRat x n then
+        greedyMersenneRemainderRat x n - mersenneWeightRat (n + 1)
+      else
+        greedyMersenneRemainderRat x n
+/-- Positive exponents selected through a finite exact-rational greedy run. Local copy of Erdos249257.greedyMersennePrefixRat, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def greedyMersennePrefixRat (x : ℚ) (n : ℕ) : Finset ℕ :=
+  (((Finset.range n).filter fun k =>
+      mersenneWeightRat (k + 1) ≤ greedyMersenneRemainderRat x k).image
+    fun k => k + 1)
+/-- Local copy of Erdos249257.halfGreedyPrefixSupport, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def halfGreedyPrefixSupport (n : ℕ) : Finset ℕ :=
+  greedyMersennePrefixRat (1 / 2 : ℚ) n
+/-- Signed frozen-prefix margin. Its nonnegativity says that the first `J` future divisor-incidence rows cover the centered carry at depth `k`. Local copy of Erdos249257.greedyHalfFrozenMargin, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def greedyHalfFrozenMargin (k J : ℕ) : ℤ :=
+  (finiteCoeffWindowNumerator
+      (↑(halfGreedyPrefixSupport k) : Set ℕ) (k + 1) J : ℤ) -
+    (2 : ℤ) ^ J *
+      mobiusCenteredHalfCarry
+        (↑(halfGreedyPrefixSupport k) : Set ℕ) k
+end PalomarCorpus.E257.PaperStructuresBJ

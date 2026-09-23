@@ -2,9 +2,15 @@
   "challenge_module": "PalomarCorpus.E249_10.Challenge",
   "solution_module": "Solutions.PalomarCorpus.E249_10",
   "theorem_names": [
+    "PalomarCorpus.E249.PaperStatementsA.irrational_totient_series_of_lcm_diagonal_nonintegrality_supply",
+    "PalomarCorpus.E249.PaperStatementsA.periodLcm_diagonal_kill_iff_tail_diff_notMem_int",
+    "PalomarCorpus.E249.PaperStatementsAD.irrational_totient_series_iff_all_tail_diffs_nonintegral",
+    "PalomarCorpus.E249.PaperStatementsAJ.finite_carry_candidate_count",
     "PalomarCorpus.E249.PaperStatementsAJ.nine_tenths_lt_cos_pi_div_eight",
+    "PalomarCorpus.E249.PaperStatementsAT.abs_tail_diff_scaled_sub_window_le",
     "PalomarCorpus.E249.PaperStatementsAT.exists_certificate_of_first_harmonic_norm_bound",
     "PalomarCorpus.E249.PaperStatementsAT.exists_certificate_of_first_harmonic_real_bound",
+    "PalomarCorpus.E249.PaperStatementsAT.finite_carry_test_sound",
     "PalomarCorpus.E249.PaperStatementsAT.finite_carry_true_orbit",
     "PalomarCorpus.E249.PaperStatementsAT.first_harmonic_re_bound_of_norm_bound",
     "PalomarCorpus.E249.PaperStatementsAT.four_tail_checked_instance",
@@ -15,8 +21,14 @@
     "PalomarCorpus.E249.PaperStatementsAT.irrational_of_first_harmonic_norm_gap",
     "PalomarCorpus.E249.PaperStatementsAT.irrational_of_four_tail_supply",
     "PalomarCorpus.E249.PaperStatementsAU.rational_forces_four_tail_diagonals_integral",
+    "PalomarCorpus.E249.PaperStatementsAU.second_difference_cell_one_eight",
+    "PalomarCorpus.E249.PaperStatementsAU.second_difference_certificate_sound",
+    "PalomarCorpus.E249.PaperStatementsAU.second_difference_error_bound",
     "PalomarCorpus.E249.PaperStatementsAU.totientTail_bounds",
-    "PalomarCorpus.E249.PaperStatementsAU.windowDiscrepancy_diagonal_eq"
+    "PalomarCorpus.E249.PaperStatementsAU.windowDiscrepancy_diagonal_eq",
+    "PalomarCorpus.E249.PaperStatementsAX.finite_grid_nonintegral_pair",
+    "PalomarCorpus.E249.PaperStatementsAX.finite_grid_supply_irrational",
+    "PalomarCorpus.E249.PaperStatementsAX.paperGridNumerator_eq"
   ],
   "permitted_axioms": [
     "propext",

@@ -39,12 +39,7 @@ import Solutions.PalomarCorpus.E249_09.Statement
 /- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
 
 namespace PalomarCorpus.E249.PaperStatementsAJ
-
-noncomputable def compositeDilationDefect (A : Set ℕ) (a x : ℕ) : ℕ :=
-  by
-    classical
-    exact ((a * x).divisors.filter fun d =>
-      d ∈ A ∧ ¬ d ∣ x ∧ d ≠ a).card
+export PalomarCorpus.E249_09.Shared (compositeDilationDefect)
 
 noncomputable def primeJumpSharpRadius (H p L : ℕ) : ℤ :=
   3 * p * H + (p + 1) * (L + 2)

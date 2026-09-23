@@ -9,7 +9,7 @@ import Mathlib
 set_option autoImplicit false
 
 /-!
-# Erdős #1049, the rational base barrier and rational base region families
+# Erdős #1049, the Archimedean cap, Bezout Plucker jets and Hermite Pade no go families
 
 Each theorem below restates, against Mathlib alone, a theorem of the Lean development
 for Erdős problem #1049, in the order the papers state them. The definitions a statement
@@ -18,82 +18,220 @@ the source declaration it comes from. Erdős problem #1049 remains open, and no 
 in this entry decides it.
 -/
 
+open Filter Asymptotics
+open scoped Topology
 open scoped BigOperators
+open Filter
+open Finset
+open Topology
+open Matrix
+open scoped Classical
+open PowerSeries
+open scoped PowerSeries.WithPiTopology
 
-namespace PalomarCorpus.E1049.RationalBaseBarrier
-open scoped BigOperators
-/-- The natural number B coeff(N+1) s^(N+1): the magnitude of the forcing term that the cleared-tail recurrence leaves behind at step N, for natural data. -/
-noncomputable def rationalBaseForcingNat
-    (s B : ℕ) (coeff : ℕ → ℕ) (N : ℕ) : ℕ :=
-  B * coeff (N + 1) * s ^ (N + 1)
-/-- For a genuine rational base, meaning denominator s >= 2, together with B >= 1 and coeff(N+1) >= 1, the forcing term is at least 2^(N+1). The hypothesis s >= 2 is what separates a rational base from an integer base, where the factor s^(N+1) is 1 and the classical coordinatewise argument survives. -/
-theorem twoPow_le_rationalBaseForcingNat
-    {s B : ℕ} {coeff : ℕ → ℕ} {N : ℕ}
-    (hs : 2 ≤ s) (hB : 1 ≤ B) (hc : 1 ≤ coeff (N + 1)) :
-    2 ^ (N + 1) ≤ rationalBaseForcingNat s B coeff N := by
-  sorry
-end PalomarCorpus.E1049.RationalBaseBarrier
+namespace PalomarCorpus.E1049_08.Shared
+/-- Local definition leadC, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def leadC (N : ℕ) : ℝ := ((N.factorial : ℝ) ^ 2 * ((N + 1).factorial : ℝ)) / 2 ^ N
+/-- Local definition qPochhammerFinite, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def qPochhammerFinite (a q : ℝ) (n : ℕ) : ℝ :=
+  ∏ k ∈ Finset.range n, (1 - a * q ^ k)
+/-- Local definition actualMomentTerm, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def actualMomentTerm (q : ℝ) (m t : ℕ) : ℝ :=
+  q ^ ((m + 1) * t) * (qPochhammerFinite q q m) ^ 3 *
+    qPochhammerFinite (q ^ (t + 1)) q m /
+      qPochhammerFinite (q ^ (m + t + 1)) q (m + 1)
+/-- Local definition actualMoment, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def actualMoment (q : ℝ) (m : ℕ) : ℝ :=
+  ∑' t : ℕ, actualMomentTerm q m t
+/-- Local definition actualMomentHankel, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def actualMomentHankel (q : ℝ) (N : ℕ) : Matrix (Fin N) (Fin N) ℝ :=
+  fun i j => actualMoment q (i.val + j.val)
+/-- Local definition qPochhammerInfinity, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def qPochhammerInfinity (a q : ℝ) : ℝ :=
+  Real.exp (∑' k : ℕ, Real.log (1 - a * q ^ k))
+end PalomarCorpus.E1049_08.Shared
 
-namespace PalomarCorpus.E1049.RationalBaseRegion
+namespace PalomarCorpus.E1049.ArchimedeanCap
+open Filter Asymptotics
+open scoped Topology
+/-- The declared clearing width of the n-th approximation pair: the larger of the degrees of the polynomials U n and V n, as a natural number. Under the Mathlib convention the zero polynomial has degree zero. -/
+noncomputable def width (U V : ℕ → Polynomial ℤ) (n : ℕ) : ℕ := max (U n).natDegree (V n).natDegree
+/-- The l^1 coefficient norm of an integer polynomial, the sum over its support of the absolute values of its coefficients, returned as a real number; the zero polynomial has empty support and height 0. -/
+noncomputable def height (P : Polynomial ℤ) : ℝ := ∑ i ∈ P.support, |(P.coeff i : ℝ)|
+/-- The remainder U_n(x) F(x) - V_n(x) of the n-th pair at the real point x, the polynomials being evaluated through the canonical ring map from the integers to the reals. Here F is an arbitrary real function supplied as a parameter rather than a fixed Lambert series. -/
+noncomputable def remainder (U V : ℕ → Polynomial ℤ) (F : ℝ → ℝ) (x : ℝ) (n : ℕ) : ℝ :=
+  (U n).eval₂ (Int.castRingHom ℝ) x * F x - (V n).eval₂ (Int.castRingHom ℝ) x
+/-- Archimedean cap. Let U, V be sequences of integer polynomials, F any real function, and fix sigma > 0, delta > 0, h >= 0 not depending on the evaluation point. Assume for each eps > 0 that the width is eventually at most (delta + eps) n^2 and the logarithm of the larger l^1 coefficient norm eventually at most (h + eps) n^2; that at each real x > 1 the remainder is eventually nonzero; and that at each real x > 1 the quantity log |remainder| + sigma n^2 log x is o(n^2). Then sigma/(sigma + delta) <= 1/2, and for all naturals 1 <= b < a with log b / log a < sigma/(sigma + delta) the forms b^(width n) times the remainder at a/b tend to zero. -/
+theorem archimedean_cap (U V : ℕ → Polynomial ℤ) (F : ℝ → ℝ) (σ δ h : ℝ)
+    (hσ : 0 < σ) (hδ : 0 < δ) (hh : 0 ≤ h)
+    (hdeg : ∀ ε : ℝ, 0 < ε → ∀ᶠ n in atTop, (width U V n : ℝ) ≤ (δ + ε) * (n : ℝ)^2)
+    (hheight : ∀ ε : ℝ, 0 < ε → ∀ᶠ n in atTop,
+      Real.log (max (height (U n)) (height (V n))) ≤ (h + ε) * (n : ℝ)^2)
+    (hne : ∀ x : ℝ, 1 < x → ∀ᶠ n in atTop, remainder U V F x n ≠ 0)
+    (hrate : ∀ x : ℝ, 1 < x →
+      (fun n => Real.log |remainder U V F x n| - (-σ * Real.log x) * (n : ℝ)^2)
+        =o[atTop] (fun n : ℕ => (n : ℝ)^2)) :
+    σ / (σ + δ) ≤ (1 : ℝ) / 2 ∧
+    ∀ a b : ℕ, 1 ≤ b → b < a →
+      Real.log b / Real.log a < σ / (σ + δ) →
+      Tendsto (fun n => (b : ℝ) ^ width U V n * remainder U V F ((a : ℝ) / b) n)
+        atTop (𝓝 0) := by
+  sorry
+end PalomarCorpus.E1049.ArchimedeanCap
+
+namespace PalomarCorpus.E1049.BezoutPluckerJets
 open scoped BigOperators
-/-- The real Lambert series F(x)=sum over n at least 1 of 1/(x^n-1), with Lean tsum conventions outside its convergence domain; the irrationality theorems use x>1. -/
-noncomputable def paperLambert (x : ℝ) : ℝ :=
-  ∑' n : ℕ, 1 / (x ^ (n + 1) - 1)
-/-- The real series sum over k at least zero of 1/(k+x)^2, used at the positive rational arguments in the contour constant. -/
-noncomputable def trigammaSeries (x : ℝ) : ℝ :=
-  ∑' k : ℕ, 1 / ((k : ℝ) + x) ^ 2
-/-- The difference of two trigamma-series values used in the exact contour constant. -/
-noncomputable def zudilinJTerm (u v : ℝ) : ℝ :=
-  trigammaSeries u - trigammaSeries v
-/-- The displayed sum of thirteen trigamma differences at the rational endpoints of the Zudilin parameter intervals. -/
-noncomputable def zudilinJ : ℝ :=
-  zudilinJTerm (1 / 14) (1 / 12) + zudilinJTerm (1 / 7) (1 / 6) +
-    zudilinJTerm (3 / 14) (1 / 4) + zudilinJTerm (2 / 7) (1 / 3) +
-    zudilinJTerm (5 / 14) (2 / 5) + zudilinJTerm (3 / 7) (7 / 15) +
-    zudilinJTerm (1 / 2) (8 / 15) + zudilinJTerm (4 / 7) (3 / 5) +
-    zudilinJTerm (9 / 14) (2 / 3) + zudilinJTerm (5 / 7) (11 / 15) +
-    zudilinJTerm (11 / 14) (4 / 5) + zudilinJTerm (6 / 7) (13 / 15) +
-    zudilinJTerm (13 / 14) (14 / 15)
-/-- The exact homogeneous width-rate constant 1091/2 in the constructed approximation family. -/
-noncomputable def zudilinC1 : ℝ := 1091 / 2
-/-- The exact cancellation constant 266-(3/pi^2)(225-J), with J given by the thirteen displayed trigamma differences. -/
-noncomputable def zudilinC0 : ℝ := 266 - 3 / Real.pi ^ 2 * (225 - zudilinJ)
-/-- The exact contour C0/C1 controlling rational-base decay after homogeneous denominator clearing. -/
-noncomputable def zudilinContour : ℝ := zudilinC0 / zudilinC1
-/-- The strict inequality log(b)/log(a)<C0/C1; the result separately requires natural a>b>0. -/
-noncomputable def ZudilinContourRegion (a b : ℕ) : Prop :=
-  Real.log b / Real.log a < zudilinContour
-/-- Reduced integer-numerator, positive-natural-denominator rational approximants to xi with error strictly below q^(-nu). -/
-noncomputable def reducedApproximationPairs (ξ ν : ℝ) : Set (ℤ × ℕ) :=
-  {r | 0 < r.2 ∧ Nat.Coprime r.1.natAbs r.2 ∧
-    |ξ - (r.1 : ℝ) / (r.2 : ℝ)| < (r.2 : ℝ) ^ (-ν)}
-/-- The real exponents admitting infinitely many reduced rational approximants at the stated strict error bound. -/
-noncomputable def approximationExponents (ξ : ℝ) : Set ℝ :=
-  {ν | (reducedApproximationPairs ξ ν).Infinite}
-/-- The supremum of approximation exponents for the real target; the theorem applies it to the irrational Lambert values supplied by the same construction. -/
-noncomputable def irrationalityExponent (ξ : ℝ) : ℝ :=
-  sSup (approximationExponents ξ)
-/-- The exact exponent bound (1-log(b)/log(a))/(C0/C1-log(b)/log(a)), with positive denominator on the strict contour region. -/
-noncomputable def rationalBaseMeasureBound (a b : ℕ) : ℝ :=
-  (1 - Real.log b / Real.log a) /
-    (zudilinContour - Real.log b / Real.log a)
-/-- For natural a>b>0 in the exact contour region, the literal Lambert value F(a/b) is irrational. The proof supplies the integer forms, positive remainder and decay internally, with no source-supply hypothesis. -/
-theorem rational_base_region (a b : ℕ) (hb : 0 < b) (hab : b < a)
-    (hr : ZudilinContourRegion a b) :
-    Irrational (paperLambert ((a : ℝ) / b)) := by
+/-- Let w be a family of pairs in a commutative ring R, indexed by any type, and let a and b in R be coprime in the Bezout sense. If the anchor minor a (w i).2 - b (w i).1 vanishes for every index i, then every pairwise minor (w i).1 (w j).2 - (w i).2 (w j).1 vanishes: the whole family lies on the single line cut out by the anchor. -/
+theorem anchor_det_zero_forces_all_det_zero {R : Type*} [CommRing R]
+    {ι : Type*} (w : ι → R × R) {a b : R}
+    (hab : IsCoprime a b) (hdet : ∀ i, a * (w i).2 - b * (w i).1 = 0) :
+    ∀ i j, (w i).1 * (w j).2 - (w i).2 * (w j).1 = 0 := by
   sorry
-/-- The Lambert value F(31/4) is irrational. -/
-theorem thirtyone_four : Irrational (paperLambert ((31 : ℝ) / 4)) := by
+/-- Under the hypotheses above with R and the index type both finite, if the cardinality of R is smaller than 2 raised to the number of indices, then two distinct Boolean selectors have the same selected row sum in R times R. The minor collapse confines the selector sums to one copy of R, so the collision threshold is the cardinality of R rather than its square. -/
+theorem binary_row_collision_of_anchor_det_zero
+    {R ι : Type*} [CommRing R] [Fintype R] [Fintype ι]
+    (w : ι → R × R) {a b : R}
+    (hab : IsCoprime a b) (hdet : ∀ i, a * (w i).2 - b * (w i).1 = 0)
+    (hcard : Fintype.card R < 2 ^ Fintype.card ι) :
+    ∃ s t : ι → Bool, s ≠ t ∧
+      (∑ i, if s i then w i else 0) = ∑ i, if t i then w i else 0 := by
   sorry
-/-- On the strict contour region for natural a>b>0, bounds the irrationality exponent of F(a/b) by the displayed exact rational-base expression. -/
-theorem rational_base_measure (a b : ℕ) (hb : 0 < b) (hab : b < a)
-    (hr : ZudilinContourRegion a b) :
-    irrationalityExponent (paperLambert ((a : ℝ) / b)) ≤
-      rationalBaseMeasureBound a b := by
+/-- For a sequence of pairs in a commutative ring whose second coordinates are all units, vanishing of every adjacent minor implies vanishing of every pairwise minor. This is the sequential form of the previous propagation, with a unit coordinate in place of the coprime anchor. -/
+theorem adjacent_det_zero_forces_all_det_zero {R : Type*} [CommRing R]
+    (w : ℕ → R × R) (hunit : ∀ n, IsUnit (w n).2)
+    (hadj : ∀ n, (w n).1 * (w (n + 1)).2 - (w n).2 * (w (n + 1)).1 = 0) :
+    ∀ i j, (w i).1 * (w j).2 - (w i).2 * (w j).1 = 0 := by
   sorry
-/-- For every positive natural r, the irrationality exponent of F((31/4)^r) is strictly less than the paper fraction 2981509/9909. -/
-theorem thirtyone_four_power_measure_lt_paper_fraction (r : ℕ) (hr : 0 < r) :
-    irrationalityExponent (paperLambert (((31 : ℝ) / 4) ^ r)) <
-      (2981509 : ℝ) / 9909 := by
+/-- At the modulus 2^S 3^R with R > 0, let w be a sequence of pairs of residues whose second coordinates are units and whose adjacent minors all vanish. Then for every k >= S + 2R there are two distinct Boolean selectors on k indices with equal selected row sums. The collapse halves the ambient two-coordinate threshold 2S + 4R to S + 2R. The vanishing of every adjacent minor is a hypothesis and is not established here for any actual approximation family. -/
+theorem zmod_binary_tail_collision_of_two_three_depth {R S k : ℕ}
+    [NeZero (2 ^ S * 3 ^ R)]
+    (w : ℕ → ZMod (2 ^ S * 3 ^ R) × ZMod (2 ^ S * 3 ^ R))
+    (hunit : ∀ n, IsUnit (w n).2)
+    (hadj : ∀ n, (w n).1 * (w (n + 1)).2 - (w n).2 * (w (n + 1)).1 = 0)
+    (hR : 0 < R) (hrank : S + 2 * R ≤ k) :
+    ∃ s t : Fin k → Bool, s ≠ t ∧
+      (∑ i, if s i then w i else 0) = ∑ i, if t i then w i else 0 := by
   sorry
-end PalomarCorpus.E1049.RationalBaseRegion
+end PalomarCorpus.E1049.BezoutPluckerJets
+
+namespace PalomarCorpus.E1049.HermitePadeNoGo
+/-- The decay exponent (1 + rho^2)/2 + sigma of that model: the normalised rate at which the remainder of the two-function approximation shrinks, in the two real parameters rho and sigma. Reading rho as the rectangularity parameter of the multi-index and sigma as the degree parameter is an interpretation; the statements below use only the formula and the admissible region rho >= 0, sigma >= 1 + rho. -/
+noncomputable def hpDecay (rho sigma : ℝ) : ℝ :=
+  (1 + rho ^ 2) / 2 + sigma
+/-- The height exponent (1 + rho)^2/2 + sigma (1 + rho) of that model: the normalised logarithmic cost of clearing denominators, at the same parameters rho and sigma. -/
+noncomputable def hpHeight (rho sigma : ℝ) : ℝ :=
+  (1 + rho) ^ 2 / 2 + sigma * (1 + rho)
+/-- The cyclotomic saving exponent 3 sigma^2 / pi^2 of the rectangular two-function Hermite-Pade exponent model: the normalised logarithmic size of the common cyclotomic factor removable from a pair of approximation polynomials at model parameter sigma, the constant 3/pi^2 being the mean density in the summatory totient estimate. Reading sigma as a degree parameter is an interpretation, and no statement here uses it. -/
+noncomputable def hpCyclotomicSaving (sigma : ℝ) : ℝ :=
+  3 * sigma ^ 2 / Real.pi ^ 2
+/-- Rational-base height threshold associated with the explicit exponent model above. Local copy of ErdosProblems.Erdos1049.hpThreshold, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def hpThreshold (rho sigma : ℝ) : ℝ :=
+  (hpDecay rho sigma - hpCyclotomicSaving sigma) /
+    (hpHeight rho sigma + hpDecay rho sigma)
+/-- The denominator-cleared comparison functional (pi^2 + 2) hpDecay - 6 sigma^2 - (pi^2 - 2) hpHeight, whose sign decides whether the rectangular two-function threshold of the model exceeds the classical one-function threshold 1/2 - 1/pi^2. -/
+noncomputable def hpClearedGap (rho sigma : ℝ) : ℝ :=
+  (Real.pi ^ 2 + 2) * hpDecay rho sigma - 6 * sigma ^ 2 -
+    (Real.pi ^ 2 - 2) * hpHeight rho sigma
+/-- Exact polynomial identity after the substitution sigma = 1 + rho + u: the cleared gap equals -pi^2 rho^2 - pi^2 rho u - 2 pi^2 rho - 2 rho^2 - 10 rho u - 4 rho - 6 u^2 - 8 u. The identity holds for all real rho and u; on rho >= 0 and u >= 0 every term is nonpositive. Supporting identity for the two comparison theorems below. -/
+theorem hpClearedGap_expansion (rho u : ℝ) :
+    hpClearedGap rho (1 + rho + u) =
+      -Real.pi ^ 2 * rho ^ 2 - Real.pi ^ 2 * rho * u -
+        2 * Real.pi ^ 2 * rho - 2 * rho ^ 2 - 10 * rho * u -
+        4 * rho - 6 * u ^ 2 - 8 * u := by
+  sorry
+/-- On the admissible region rho >= 0 and sigma >= 1 + rho the cleared comparison functional is nonpositive. Supporting lemma for the threshold comparison. -/
+theorem hpClearedGap_nonpos (rho sigma : ℝ)
+    (hrho : 0 ≤ rho) (hsigma : 1 + rho ≤ sigma) :
+    hpClearedGap rho sigma ≤ 0 := by
+  sorry
+/-- On that same admissible region the cleared comparison functional vanishes if and only if rho = 0 and sigma = 1, the classical one-function endpoint. Supporting lemma for the sharpness statement. -/
+theorem hpClearedGap_eq_zero_iff (rho sigma : ℝ)
+    (hrho : 0 ≤ rho) (hsigma : 1 + rho ≤ sigma) :
+    hpClearedGap rho sigma = 0 ↔ rho = 0 ∧ sigma = 1 := by
+  sorry
+/-- Over the whole admissible cone rho >= 0 and sigma >= 1 + rho, the rectangular two-function threshold of this explicit exponent model is at most 1/2 - 1/pi^2 = 0.398678816..., the classical one-function value. No admissible choice of exponents in the model improves on the classical threshold. The theorem is about this exponent model only: it constructs no approximants and proves no irrationality statement. -/
+theorem rectangular_hp_threshold_le_classical (rho sigma : ℝ)
+    (hrho : 0 ≤ rho) (hsigma : 1 + rho ≤ sigma) :
+    hpThreshold rho sigma ≤ 1 / 2 - 1 / Real.pi ^ 2 := by
+  sorry
+/-- On the same cone the threshold equals 1/2 - 1/pi^2 if and only if rho = 0 and sigma = 1. The previous bound is therefore sharp and its equality locus is that single point. -/
+theorem rectangular_hp_threshold_eq_classical_iff (rho sigma : ℝ)
+    (hrho : 0 ≤ rho) (hsigma : 1 + rho ≤ sigma) :
+    hpThreshold rho sigma = 1 / 2 - 1 / Real.pi ^ 2 ↔
+      rho = 0 ∧ sigma = 1 := by
+  sorry
+end PalomarCorpus.E1049.HermitePadeNoGo
+
+namespace PalomarCorpus.E1049.PaperStatementsU
+open Filter
+open Finset
+open scoped Topology
+open scoped BigOperators
+open Topology
+export PalomarCorpus.E1049_08.Shared (actualMoment actualMomentHankel actualMomentTerm leadC qPochhammerFinite qPochhammerInfinity)
+/-- Local definition lambertTerm, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def lambertTerm {K : Type*} [NormedField K] (z : K) (n : ℕ) : K :=
+  z ^ n / (1 - z ^ n)
+/-- Local definition lambert, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def lambert {K : Type*} [NormedField K] (z : K) : K :=
+  ∑' n : ℕ, lambertTerm z n
+/-- States res:sharp-fixed-base from the short record for Erdős problem #1049. Transported from ErdosProblems.Erdos1049.PaperCompleteR21.SharpFixedBase.sharp_fixed_base_exists in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem sharp_fixed_base_exists {q : ℝ} (hq0 : 0 < q) (hq1 : q < 1) :
+    ∃ K : ℝ, 0 < K ∧
+      Tendsto (fun N : ℕ => (actualMomentHankel q N).det /
+        (K * leadC N * q ^ (N * (N - 1) * (2 * N - 1) / 6) *
+          qPochhammerInfinity q q ^ (2 * N) *
+          (N : ℝ) ^ (-8 * lambert q))) atTop (𝓝 1) := by
+  sorry
+end PalomarCorpus.E1049.PaperStatementsU
+
+namespace PalomarCorpus.E1049.PaperStructuresAB
+open Filter
+open Finset
+open scoped Topology
+open scoped BigOperators
+open Matrix
+open scoped Classical
+open PowerSeries
+open scoped PowerSeries.WithPiTopology
+export PalomarCorpus.E1049_08.Shared (actualMoment actualMomentHankel actualMomentTerm leadC qPochhammerFinite qPochhammerInfinity)
+/-- Local definition gramM, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def gramM (q : ℝ) : ℝ := ∏' d : ℕ, ((1 - q ^ (d + 1)) ^ (d + 1))⁻¹
+/-- Local definition cK, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def cK (k : ℕ) : ℝ := ((k : ℝ) + 1) ^ 2 * ((k : ℝ) + 2) / 2
+/-- Local definition lambertL, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def lambertL (q : ℝ) : ℝ := ∑' r : ℕ, q ^ (r + 1) / (1 - q ^ (r + 1))
+/-- Local definition orderB, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def orderB (N : ℕ) : ℕ := ∑ j ∈ range N, j ^ 2
+/-- Local definition sharpFactor, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def sharpFactor (q : ℝ) (γ : ℕ → ℝ) (k : ℕ) : ℝ :=
+  qPochhammerInfinity q q ^ 4 * γ k / cK k * Real.exp (8 * lambertL q / ((k : ℝ) + 1))
+/-- Local definition sharpA, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def sharpA (q : ℝ) (γ : ℕ → ℝ) : ℝ :=
+  Real.exp (-8 * Real.eulerMascheroniConstant * lambertL q) * ∏' k : ℕ, sharpFactor q γ k
+/-- Local definition sharpK, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def sharpK (q : ℝ) (γ : ℕ → ℝ) : ℝ := sharpA q γ * gramM q ^ 3
+/-- Local definition actualGeneratingTerm, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def actualGeneratingTerm (q w : ℝ) (t : ℕ) : ℝ :=
+  w ^ t / qPochhammerFinite q q t *
+    qPochhammerInfinity (q ^ t * w ^ 2) q /
+      (qPochhammerInfinity (q ^ t * w) q) ^ 2
+/-- Local definition actualGeneratingFunction, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def actualGeneratingFunction (q w : ℝ) : ℝ :=
+  (∑' t : ℕ, actualGeneratingTerm q w t) /
+    (qPochhammerInfinity w q) ^ 3
+/-- States long1049:thm:sharp-fixed-base from the long record for Erdős problem #1049. Transported from ErdosProblems.Erdos1049.PaperCompleteR21.SharpFixedBase.sharp_fixed_base in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem sharp_fixed_base {q : ℝ} (hq0 : 0 < q) (hq1 : q < 1) (γ : ℕ → ℝ)
+    (hγ : ∀ w : ℝ, 0 ≤ w → w < 1 →
+      HasSum (fun k => γ k * w ^ k) (actualGeneratingFunction q w)) :
+    HasProd (sharpFactor q γ) (∏' k : ℕ, sharpFactor q γ k) ∧
+    0 < sharpA q γ ∧
+    Tendsto (fun N : ℕ => (actualMomentHankel q N).det /
+        (sharpK q γ * leadC N * q ^ orderB N * qPochhammerInfinity q q ^ (2 * N) *
+          (N : ℝ) ^ (-8 * lambertL q))) atTop (𝓝 1) ∧
+    Tendsto (fun N : ℕ => Real.log (actualMomentHankel q N).det -
+        ((orderB N : ℝ) * Real.log q + Real.log (leadC N) +
+          2 * (N : ℝ) * Real.log (qPochhammerInfinity q q) - 8 * lambertL q * Real.log N +
+          Real.log (sharpK q γ))) atTop (𝓝 0) := by
+  sorry
+end PalomarCorpus.E1049.PaperStructuresAB

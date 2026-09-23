@@ -1,0 +1,11 @@
+import Solutions.PalomarCorpus.E257_46
+
+#print axioms PalomarCorpus.E257.PaperStatementsAC.arithmetic_logarithmic_counterexample
+#print axioms PalomarCorpus.E257.PaperStatementsAC.logarithmic_initial_interval
+#print axioms PalomarCorpus.E257.PaperStatementsAC.no_absolute_dyadic_kappaOne_constant
+#print axioms PalomarCorpus.E257.PaperStatementsL.paper_relaxed_constant_six_every_depth
+#print axioms PalomarCorpus.E257.PaperStatementsN.paper_cpgs_equiv
+#print axioms PalomarCorpus.E257.PaperStatementsN.paper_terminal_strip_equiv
+#print axioms PalomarCorpus.E257.PaperStructuresBS.exists_support_paperCoverCost_ge
+#print axioms PalomarCorpus.E257.PaperStructuresBS.no_absolute_paperCoverCost_kappaOne_constant
+#print axioms PalomarCorpus.E257.PaperStructuresBS.sup_condExceedProb_le_paperCoverCost

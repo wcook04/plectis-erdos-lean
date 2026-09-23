@@ -22,12 +22,12 @@ formalised in this corpus, refutes the total-variation formulation of Erdős pro
 open scoped ENNReal
 open Polynomial
 open Metric
+open MeasureTheory
+open scoped ComplexConjugate
 open Set
 open scoped NNReal
-open scoped ComplexConjugate
 open scoped BigOperators
 open Real
-open MeasureTheory
 open scoped UpperHalfPlane
 
 namespace PalomarCorpus.E1041_01.Shared
@@ -69,6 +69,32 @@ theorem erdos1041_ani_degree_seven :
           (2 : ℝ≥0∞) < eVariationOn γ (Set.Icc 0 1) := by
   sorry
 end PalomarCorpus.E1041.PaperStatementsA
+
+namespace PalomarCorpus.E1041.PaperStatementsAE
+open scoped ENNReal
+open MeasureTheory
+open Polynomial
+open Metric
+open scoped ComplexConjugate
+/-- Local definition s, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def s : ℚ := 1 / 10 ^ 6
+/-- Local definition fcLength, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def fcLength (s : Set ℂ) : ℝ≥0∞ := μH[1] s
+/-- States res:ani-degree-seven-counterexample, res:ani-degree-seven-counterexample-long from the long record and the short record for Erdős problem #1041. Transported from Erdos1041.Counterexample.erdos1041_hausdorff_answer_false in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem erdos1041_hausdorff_answer_false :
+    False ↔ ∀ (n : ℕ) (f : ℂ[X]), n ≥ 2 → f.natDegree = n → f.Monic →
+      f.rootSet ℂ ⊆ Metric.ball 0 1 →
+      ∃ (z₁ z₂ : ℂ) (h : ({z₁, z₂} : Multiset ℂ) ≤ f.roots) (γ : Path z₁ z₂),
+        Set.range γ ⊆ { z : ℂ | ‖f.eval z‖ < 1 } ∧ fcLength (Set.range γ) < 2 := by
+  sorry
+/-- States res:ani-degree-seven-counterexample, res:ani-degree-seven-counterexample-long from the long record and the short record for Erdős problem #1041. Transported from Erdos1041.Counterexample.erdos1041_hausdorff_negation in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem erdos1041_hausdorff_negation :
+    ¬ ∀ (n : ℕ) (f : ℂ[X]), n ≥ 2 → f.natDegree = n → f.Monic →
+      f.rootSet ℂ ⊆ Metric.ball 0 1 →
+      ∃ (z₁ z₂ : ℂ) (h : ({z₁, z₂} : Multiset ℂ) ≤ f.roots) (γ : Path z₁ z₂),
+        Set.range γ ⊆ { z : ℂ | ‖f.eval z‖ < 1 } ∧ fcLength (Set.range γ) < 2 := by
+  sorry
+end PalomarCorpus.E1041.PaperStatementsAE
 
 namespace PalomarCorpus.E1041.PaperStatementsAA
 open Set

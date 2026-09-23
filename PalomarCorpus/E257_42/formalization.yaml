@@ -1,8 +1,10 @@
 version: v0.4
 project:
-  name: 'Erdős #257, the rational membership, rational tail rigidity and reciprocal support families'
+  name: 'Erdős #257, record sections 6.5 to 6.6: obstructions and countermodels; further finite and conditional results'
   description: >-
-    This entry states 14 theorems of the rational membership, rational tail rigidity, reciprocal support, scaled greedy trap and terminal scaled vanishing developments of the Lean formalisation of Erdős problem #257, to which no paper statement is bound. greedyMersenneSkippedSupport_infinite_iff_cofinal_skips: For every real x, the set of positive ranks skipped by the greedy Mersenne rule on x is infinite if and only if for every K there is an n at least K at which the weight at n+1 exceeds the greedy remainder after rank n. infinite_greedyMersenneSkippedSupport_of_rat_mem: If a rational q belongs to the base two Mersenne achievement set, then the greedy Mersenne rule on q skips infinitely many positive ranks. rat_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite: For every nonnegative rational q, membership of q in the base two Mersenne achievement set is equivalent to the greedy Mersenne rule on q skipping infinitely many positive ranks. rat_mem_mersenneAchievementSet_iff_cofinal_greedy_skips: For every nonnegative rational q, membership of q in the base two Mersenne achievement set is equivalent to the greedy rule skipping at arbitrarily late ranks, that is to the condition that for every K some n at least K has the weight at n+1 exceeding the greedy remainder after rank n. supportCoeffZeroWindow_length_le_eps_logb_add: Necessary condition under rationality: if A contains a positive element, v is positive, and the base two support series of A equals p divided by 2 to the power c times v, then for every positive epsilon there is a nonnegative constant B such that every zero window of the divisor incidence coefficients beginning at c+N has length at most B plus epsilon times the base two logarithm of N+1. one_div_oddOrder_le_reciprocalMass_of_support_fraction: Necessary condition under rationality: if A contains a positive element, its reciprocal support terms are summable, v is odd and greater than 1, the natural truncation of p is coprime to v, and the base two support series of A equals p divided by 2 to the power c times v, then the reciprocal mass of A is at least the reciprocal of the multiplicative order of 2 modulo v. irrational_supportPowerSeries_of_summable_reciprocal: Principal theorem of this entry: for every integer base b at least 2 and every infinite set A of natural numbers whose reciprocal support terms are summable, the series with terms 1 divided by b to the power a minus 1, summed over a in A, is irrational. scaledGreedyRemainder_tendsto_atTop_of_not_mem: If x is nonnegative and does not belong to the base two Mersenne achievement set, then its scaled greedy remainder tends to infinity. mem_mersenneAchievementSet_iff_scaledRemainder_cofinallyBounded: For every nonnegative real x, membership in the base two Mersenne achievement set is equivalent to the existence of one bounded cofinal subsequence of the scaled greedy remainder. mersenneAchievementSet_eq_scaledGreedyTrap: The base two Mersenne achievement set is exactly the set of nonnegative reals whose scaled greedy remainder stays strictly below the universal barrier 2 at every scale. rat_mem_mersenneAchievementSet_iff_scaledLowerBranchCofinally: For every nonnegative rational q, membership in the base two Mersenne achievement set is equivalent to cofinal crossing of the moving lower separatrix, that is to twice the scaled greedy remainder falling strictly below the rescaled Mersenne weight at the next rank, at arbitrarily late scales. one_div_twentyOne_mem_iff_scaledLowerBranchCofinally: The instance of the rational lower separatrix criterion at the target one over twenty one: membership of one over twenty one in the base two Mersenne achievement set is equivalent to cofinal crossing of the moving lower separatrix for that target. one_div_twentyOne_mem_iff_scaledRemainder_cofinallyBounded: The instance of the cofinal boundedness criterion at the target one over twenty one: membership of one over twenty one in the base two Mersenne achievement set is equivalent to the scaled greedy remainder for that target having one bounded cofinal subsequence. terminalScaledVanishing_completeCounterexample: Conditional on a terminal scaled vanishing sequence existing, there is an infinite set A of natural numbers whose base two series with terms 1 divided by 2 to the power a minus 1 equals exactly one half, and the universal irrationality assertion of the parent problem is therefore false.
+    This entry states 9 theorems that the long record for Erdős problem #257 states in sections 6.5 (obstructions and countermodels) and 6.6 (further finite and conditional results): the theorem “Excluding the cell with value minus three” (section 6.5), as paper_mobiusCenteredHalfCarry_add_two; the proposition labelled statement:sha256:e465fe9eaeafe6d44b51c8428f570863388dfdec3d9a8398bbee93c6682b15b2 (section 6.6.2), as four_le_halfStripBound, paper_feedback_row_total_dichotomy, paper_shared_prefix_family_contains_strip_witness, halfTerminalOnlyStripWitness_of_feedbackAdvance, halfTerminalOnlyStripWitness_of_inStripTwoSheetStage_via_carries_three_four, paper_shared_prefix_family_strip_witness_after_feedback_all_depths and paper_shared_prefix_family_strip_witness_after_feedback_of_all_depths; the proposition “Exact Lebesgue-measure dichotomy” (section 6.6.6), as paper_volume_supportedMersenneAchievementSet_dichotomy.
+
+    2 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 7 are derived from the source declaration by a short tactic proof, which certifies implication.
 
     Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
 
@@ -31,77 +33,11 @@ sources:
 - title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
   authors:
   - Will Cook
-  id: https://github.com/wcook04/plectis-erdos
-  type: other
-  relationship: background
-  note: "The public problem notes and reasoning records that describe the compared theorems and their relationship to the literature. A compared theorem re-proves, formalises or adapts a result of the source marked with a substantive relationship below; the remaining compared theorems are proved in this repository, and no priority is claimed for them beyond the checked proofs."
+  type: original-proof
+  relationship: other
+  note: "The compared theorems are independently restated Lean theorems proved in this repository and described in the public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos."
   license: Apache-2.0
   author_endorsement: participated
-- title: "On the irrationality of certain series"
-  authors:
-  - "Paul Erdos"
-  id: "https://users.renyi.hu/~p_erdos/1969-09.pdf"
-  type: "paper"
-  relationship: "independently-proves"
-  note: "The Mathematics Student 36 (1968, issued 1969), 222-226. The printed theorem on p. 222 gives irrationality for pairwise coprime supports with convergent reciprocal sum at every integer base at least 2, and Erdős states there that pairwise coprimality can be removed by a longer argument that he does not print. ReciprocalSupport.irrational_supportPowerSeries_of_summable_reciprocal is that stated extension, proved independently; no priority over Erdős and no identification with his omitted argument is taken from this source."
-  license: "unknown"
-  author_endorsement: "not-contacted"
-- title: "On arithmetical properties of Lambert series"
-  authors:
-  - "Paul Erdos"
-  type: "paper"
-  relationship: "background"
-  note: "J. Indian Math. Soc. 12 (1948), 63-66. Source of the classical irrationality of the full support value at every integer base, which is the historical starting point for the problem. That classical result is the analytic input to the forward implication of the rational membership criterion compared here, since finitely many greedy omissions would write the full support value as a rational plus a finite rational Mersenne sum. No statement compared in this entry is Erdős's, and no priority over him is claimed."
-  license: "unknown"
-  author_endorsement: "not-contacted"
-- title: "Refinement of the Chowla-Erdős method and linear independence of certain Lambert series"
-  authors:
-  - "Daniel Duverney"
-  - "Yohei Tachiya"
-  id: "https://doi.org/10.1515/forum-2018-0299"
-  type: "paper"
-  relationship: "background"
-  note: "Forum Math. 31 (2019), no. 6, 1557-1566. Corollary 1.2 and Example 1.1 give irrationality and linear independence for the squarefree support at every base 2^j with j at least 1. That family is prior art and is credited to these authors; no theorem compared in this entry is derived from it."
-  license: "unknown"
-  author_endorsement: "not-contacted"
-- title: "Quantitative correlations and some problems on prime factors of consecutive integers"
-  authors:
-  - "Terence Tao"
-  - "Joni Teravainen"
-  id: "arXiv:2512.01739"
-  type: "paper"
-  relationship: "background"
-  note: "Theorem 1.3 proves irrationality of the prime support value at base two, with the extension to other integer bases and to prime power supports stated as remarks. That case is prior art and is credited to these authors; no theorem compared in this entry uses their correlation input."
-  license: "unknown"
-  author_endorsement: "not-contacted"
-- title: "On several irrationality problems for Ahmes series"
-  authors:
-  - "Vjekoslav Kovac"
-  - "Terence Tao"
-  id: "https://doi.org/10.1007/s10474-025-01528-0"
-  type: "paper"
-  relationship: "background"
-  note: "Acta Math. Hungar. 175 (2025), 572-608. Remark 4.1 records the strict tail inequality and the resulting Cantor structure of the fixed base achievement set, which is the classical context for the geometry compared here. The exact Lebesgue measure dichotomy and the rational fibre null theorem are not taken from this source."
-  license: "unknown"
-  author_endorsement: "not-contacted"
-- title: "On the set of partial sums of an infinite series"
-  authors:
-  - "Soichi Kakeya"
-  id: "https://doi.org/10.11429/ptmps1907.7.14_250"
-  type: "paper"
-  relationship: "background"
-  note: "Tokyo Sugaku-Buturigakkwai Kizi Dai 2 Ki 7 (1914), no. 14, 250-251. Kakeya proves that the subsum set of an absolutely convergent series is perfect and states the interval filling criterion and the nowhere density assertion. Perfectness and nowhere density in AchievementSetGeometry are classical in this sense; the exact measure dichotomy is not taken from this source."
-  license: "unknown"
-  author_endorsement: "not-contacted"
-- title: "On an incomplete argument of Erdős on the irrationality of Lambert series"
-  authors:
-  - "J. Vandehey"
-  id: "arXiv:1206.0340"
-  type: "paper"
-  relationship: "background"
-  note: "Completes a different unprinted Erdős argument: irrationality of the divisor-function Lambert series at negative integer bases, with bounded nonzero integer weights. It does not treat subsums over a support, so it neither anticipates nor overlaps the reciprocal summable theorem compared here; it is cited as the nearest published completion of an Erdős gap in this circle."
-  license: "unknown"
-  author_endorsement: "not-contacted"
 - title: Erdős Problems catalogue
   authors:
   - Thomas F. Bloom
@@ -118,17 +54,12 @@ sources:
   relationship: background
   license: Apache-2.0
   author_endorsement: n/a
-related_formalizations:
-- id: "https://github.com/google-deepmind/formal-conjectures/blob/f776d2f2039351b00737ffcafb9d7d7666e1d9af/FormalConjectures/ErdosProblems/257.lean"
-  title: "FormalConjectures.ErdosProblems.257"
-  relationship: "independent"
-  note: "States the open parent problem (erdos_257, proof sorry), proves the Lambert identity tsum_top_eq, and states the Erdős 1948 full-support irrationality as the variant tsum_top with proof sorry. It is statement-level prior art; no theorem compared here is derived from it, and the theorem irrational_erdosBorwein_series elsewhere in this repository proves the statement that tsum_top leaves open."
 status:
-  scope: "One Comparator configuration selecting the 14 theorems listed in PalomarCorpus/E257_42/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 43 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_43, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
+  scope: "One Comparator configuration selecting the 9 theorems listed in PalomarCorpus/E257_42/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 52 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_52, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
-  trusted_challenge_sorry_count: 14
+  trusted_challenge_sorry_count: 9
   sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E257_42/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
   axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
   permitted_axiom_budget:
@@ -136,64 +67,44 @@ status:
   - Quot.sound
   - Classical.choice
   main_results:
-  - declaration: "PalomarCorpus.E257.RationalMembership.greedyMersenneSkippedSupport_infinite_iff_cofinal_skips"
-    file: "Solutions/PalomarCorpus/E257_42/RationalMembership.lean"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAM.paper_volume_supportedMersenneAchievementSet_dichotomy"
+    file: "Solutions/PalomarCorpus/E257_42/PaperStatementsAM.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_42/comparator.json"
-  - declaration: "PalomarCorpus.E257.RationalMembership.infinite_greedyMersenneSkippedSupport_of_rat_mem"
-    file: "Solutions/PalomarCorpus/E257_42/RationalMembership.lean"
+  - declaration: "PalomarCorpus.E257.PaperStatementsBD.four_le_halfStripBound"
+    file: "Solutions/PalomarCorpus/E257_42/PaperStatementsBD.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_42/comparator.json"
-  - declaration: "PalomarCorpus.E257.RationalMembership.rat_mem_mersenneAchievementSet_iff_cofinal_greedy_skips"
-    file: "Solutions/PalomarCorpus/E257_42/RationalMembership.lean"
+  - declaration: "PalomarCorpus.E257.PaperStatementsQ.paper_mobiusCenteredHalfCarry_add_two"
+    file: "Solutions/PalomarCorpus/E257_42/PaperStatementsQ.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_42/comparator.json"
-  - declaration: "PalomarCorpus.E257.RationalMembership.rat_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite"
-    file: "Solutions/PalomarCorpus/E257_42/RationalMembership.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBR.paper_feedback_row_total_dichotomy"
+    file: "Solutions/PalomarCorpus/E257_42/PaperStructuresBR.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_42/comparator.json"
-  - declaration: "PalomarCorpus.E257.RationalTailRigidity.one_div_oddOrder_le_reciprocalMass_of_support_fraction"
-    file: "Solutions/PalomarCorpus/E257_42/RationalTailRigidity.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBT.paper_shared_prefix_family_contains_strip_witness"
+    file: "Solutions/PalomarCorpus/E257_42/PaperStructuresBT.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_42/comparator.json"
-  - declaration: "PalomarCorpus.E257.RationalTailRigidity.supportCoeffZeroWindow_length_le_eps_logb_add"
-    file: "Solutions/PalomarCorpus/E257_42/RationalTailRigidity.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresCB.halfTerminalOnlyStripWitness_of_feedbackAdvance"
+    file: "Solutions/PalomarCorpus/E257_42/PaperStructuresCB.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_42/comparator.json"
-  - declaration: "PalomarCorpus.E257.ReciprocalSupport.irrational_supportPowerSeries_of_summable_reciprocal"
-    file: "Solutions/PalomarCorpus/E257_42/ReciprocalSupport.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresCB.halfTerminalOnlyStripWitness_of_inStripTwoSheetStage_via_carries_three_four"
+    file: "Solutions/PalomarCorpus/E257_42/PaperStructuresCB.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_42/comparator.json"
-  - declaration: "PalomarCorpus.E257.ScaledGreedyTrap.mem_mersenneAchievementSet_iff_scaledRemainder_cofinallyBounded"
-    file: "Solutions/PalomarCorpus/E257_42/ScaledGreedyTrap.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresCB.paper_shared_prefix_family_strip_witness_after_feedback_all_depths"
+    file: "Solutions/PalomarCorpus/E257_42/PaperStructuresCB.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_42/comparator.json"
-  - declaration: "PalomarCorpus.E257.ScaledGreedyTrap.mersenneAchievementSet_eq_scaledGreedyTrap"
-    file: "Solutions/PalomarCorpus/E257_42/ScaledGreedyTrap.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_42/comparator.json"
-  - declaration: "PalomarCorpus.E257.ScaledGreedyTrap.one_div_twentyOne_mem_iff_scaledLowerBranchCofinally"
-    file: "Solutions/PalomarCorpus/E257_42/ScaledGreedyTrap.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_42/comparator.json"
-  - declaration: "PalomarCorpus.E257.ScaledGreedyTrap.one_div_twentyOne_mem_iff_scaledRemainder_cofinallyBounded"
-    file: "Solutions/PalomarCorpus/E257_42/ScaledGreedyTrap.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_42/comparator.json"
-  - declaration: "PalomarCorpus.E257.ScaledGreedyTrap.rat_mem_mersenneAchievementSet_iff_scaledLowerBranchCofinally"
-    file: "Solutions/PalomarCorpus/E257_42/ScaledGreedyTrap.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_42/comparator.json"
-  - declaration: "PalomarCorpus.E257.ScaledGreedyTrap.scaledGreedyRemainder_tendsto_atTop_of_not_mem"
-    file: "Solutions/PalomarCorpus/E257_42/ScaledGreedyTrap.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_42/comparator.json"
-  - declaration: "PalomarCorpus.E257.TerminalScaledVanishing.terminalScaledVanishing_completeCounterexample"
-    file: "Solutions/PalomarCorpus/E257_42/TerminalScaledVanishing.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresCB.paper_shared_prefix_family_strip_witness_after_feedback_of_all_depths"
+    file: "Solutions/PalomarCorpus/E257_42/PaperStructuresCB.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_42/comparator.json"
   development_status: substantive
-  local_proof_provenance: "the proof modules Erdos257PeriodNoncollapse, ErdosProblems.Erdos257 in this repository, imported by Solutions.PalomarCorpus.E257_42; the Solutions.ExternalVerification257* family modules are a regression mirror of the same proofs and are not imported by this configuration"
+  local_proof_provenance: "the proof modules Erdos249257, ErdosProblems.Erdos257 in this repository, imported by Solutions.PalomarCorpus.E257_42; the Solutions.ExternalVerification257* family modules are a regression mirror of the same proofs and are not imported by this configuration"
   canonical_claim_status: "problem-level Comparator entry over substantive Lean in this repository"
 automation:
   methods:
@@ -216,5 +127,5 @@ review:
   status: self-assessed
   reviewers: []
   notes: >-
-    The statements from the hand-written families were checked declaration by declaration against the public problem notes, the reasoning records and the Lean sources in automated review passes run with Anthropic Claude and OpenAI Codex. The author selected the statements and is responsible for the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
+    Every generated restatement was bound to a paper statement and refereed in the eight-paper coverage ledger before its wrapper was generated, and its transport proof was elaborated before the statement was accepted. The author selected the statements and is responsible for the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
 acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

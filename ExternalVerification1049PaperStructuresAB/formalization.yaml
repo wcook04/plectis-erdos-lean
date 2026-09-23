@@ -1,0 +1,97 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: v0.4
+project:
+  name: 'Erdős #1049: independent restatements of refereed paper-linked theorems'
+  description: >-
+    1 theorems of the substantive development for Erdős problem #1049
+    restated against Mathlib alone and transported from the source declarations named
+    below. The substantive formalization lives in ErdosProblems.Erdos1049.ActualMomentGeneratingR12, ErdosProblems.Erdos1049.ActualPositiveMeasureR16, ErdosProblems.Erdos1049.PaperCompleteR21.GeometricUniversality, ErdosProblems.Erdos1049.PaperCompleteR21.RogersFactorisationAnalytic, ErdosProblems.Erdos1049.PaperCompleteR21.SharpFixedBase, ErdosProblems.Erdos1049.QProductBoundsR10 in this repository and at
+    public commit 6917e15ec4abc2623512254da93221e446eeb707 of https://github.com/wcook04/plectis-erdos. This entry is a comparison
+    interface over that development. 1 statements transport by direct term
+    application, which certifies definitional identity with the source statement;
+    0 transport through a tactic bridge, which certifies implication only. The
+    parent Erdős problem remains open.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - "11A25"
+  - "11B83"
+sources:
+- title: 'Erdős #1049: paper-linked Lean development'
+  authors:
+  - Will Cook
+  id: https://github.com/wcook04/plectis-erdos
+  type: original-proof
+  relationship: other
+  note: >-
+    The source declarations this entry transports, at commit 6917e15ec4abc2623512254da93221e446eeb707.
+    Novelty is unassessed and the parent problem is not claimed as solved.
+  license: Apache-2.0
+  author_endorsement: participated
+- title: 'Erdős Problem #1049'
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com/1049
+  type: web discussion
+  relationship: background
+  note: The catalogue supplies the problem statement and references.
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+status:
+  scope: Independent restatements of 1 refereed declarations for Erdős problem #1049.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 1
+  sorry_boundary: Only the trusted Challenge theorem bodies carry placeholders.
+  axiom_audit_status: pending fresh target-toolchain axiom audit
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  development_status: substantive
+  local_proof_provenance: ErdosProblems.Erdos1049.ActualMomentGeneratingR12, ErdosProblems.Erdos1049.ActualPositiveMeasureR16, ErdosProblems.Erdos1049.PaperCompleteR21.GeometricUniversality, ErdosProblems.Erdos1049.PaperCompleteR21.RogersFactorisationAnalytic, ErdosProblems.Erdos1049.PaperCompleteR21.SharpFixedBase, ErdosProblems.Erdos1049.QProductBoundsR10 in this repository, which is the same development published at https://github.com/wcook04/plectis-erdos commit 6917e15ec4abc2623512254da93221e446eeb707
+  canonical_claim_status: generated comparison interface over substantive Lean in this repository
+  main_results:
+  - declaration: Erdos249257.ExternalVerification1049PaperStructuresAB.sharp_fixed_base
+    file: Solutions/ExternalVerification1049PaperStructuresAB.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification1049PaperStructuresAB/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification1049PaperStructuresAB.sharp_fixed_base
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos1049.PaperCompleteR21.SharpFixedBase.sharp_fixed_base
+    source_file: ErdosProblems/Erdos1049/PaperCompleteR21/SharpFixedBase.lean
+    source_commit: 6917e15ec4abc2623512254da93221e446eeb707
+    transport: definitional
+automation:
+  methods:
+  - method: agent
+    models:
+    - Anthropic Claude
+    framework: Lean 4 and Mathlib
+    tool_setup: Statement wrappers generated mechanically from the refereed paper statements and elaborated before acceptance
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    Every statement was refereed against the paper in the coverage ledger before this
+    wrapper was generated. The transport proof is the fidelity evidence: a direct term
+    application certifies definitional identity with the refereed source statement.
+    No independent mathematical review outside the author is claimed.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

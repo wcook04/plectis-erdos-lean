@@ -31,12 +31,7 @@ open scoped BigOperators
 /- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
 
 namespace PalomarCorpus.E257.PaperStatementsAR
-export PalomarCorpus.E257_28.Shared (localBinarySuffix localMersennePrefixValue localMersenneQuotient localPrefixQuotient mersenneWeightRat)
-
-noncomputable def ExactLocalMersenneHalfRow (n : ℕ) : Prop :=
-  ∃ D : Finset ℕ,
-    (∀ d ∈ D, 2 ≤ d ∧ d ≤ n) ∧
-      localPrefixQuotient D n = 2 ^ (n - 1) - 1
+export PalomarCorpus.E257_28.Shared (localBinarySuffix localMersenneQuotient localPrefixQuotient mersenneWeightRat)
 
 noncomputable def CofinalExactLocalMersenneHalfRows : Prop :=
   ∀ N : ℕ, ∃ n : ℕ, N ≤ n ∧ ExactLocalMersenneHalfRow n
@@ -64,12 +59,6 @@ noncomputable def erdosBorweinMersenneConstant : ℝ :=
 
 noncomputable def exactLocalMersenneRowValue (D : Finset ℕ) : ℝ :=
   ((localMersennePrefixValue D : ℚ) : ℝ)
-
-noncomputable def localMersenneFraction (M d : ℕ) : ℚ :=
-  ((2 ^ (M % d) : ℕ) : ℚ) / ((2 ^ d - 1 : ℕ) : ℚ)
-
-noncomputable def localFractionMass (D : Finset ℕ) (M : ℕ) : ℚ :=
-  ∑ d ∈ D, localMersenneFraction M d
 
 noncomputable def localMersenneGeometricQuotient (M d : ℕ) : ℕ :=
   2 ^ (M % d) * ∑ j ∈ Finset.range (M / d), (2 ^ d) ^ j

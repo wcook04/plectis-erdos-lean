@@ -29,10 +29,7 @@ open MeasureTheory
 /- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
 
 namespace PalomarCorpus.E257.PaperStatementsAM
-export PalomarCorpus.E257_20.Shared (mersenneGap mersenneTail mersenneWeight)
-
-noncomputable def positiveMersenneSupportValue (A : Set ℕ) : ℝ :=
-  ∑' k : ℕ, Set.indicator A mersenneWeight (k + 1)
+export PalomarCorpus.E257_20.Shared (mersenneTail mersenneWeight positiveMersenneSupportValue)
 
 noncomputable def ExistsFatalHalfGap : Prop :=
   ∃ (u : Finset ℕ) (d : ℕ), (∀ n ∈ u, 0 < n ∧ n ≤ d) ∧
@@ -49,6 +46,9 @@ noncomputable def mersenneAchievementSet : Set ℝ :=
 
 noncomputable def mersenneDigitTerm (k : ℕ) (b : ℕ → Fin 2) : ℝ :=
   ((b k : ℕ) : ℝ) * mersenneWeight (k + 1)
+
+noncomputable def mersenneGap (n : ℕ) : ℝ :=
+  mersenneWeight n - mersenneTail n
 
 noncomputable def positiveMersenneDigitValue (b : ℕ → Fin 2) : ℝ :=
   ∑' k : ℕ, mersenneDigitTerm k b

@@ -12,13 +12,13 @@ The entries restate the theorems of the Lean development for each problem in the
 | [`E68_02`](E68_02/) | 9 | Erdős #68, record sections 3 to 5: rationality and the next integer above a scaled partial sum; a sufficient comparison between the tail and an integer gap; what can be achieved by cancelling finitely many weighted sums |
 | [`E68_03`](E68_03/) | 7 | Erdős #68, record section 5.1: all solutions and their remainders modulo integers (part 1 of 2) |
 | [`E68_04`](E68_04/) | 1 | Erdős #68, record section 5.1: all solutions and their remainders modulo integers (part 2 of 2) |
-| [`E68_05`](E68_05/) | 6 | Erdős #68, note sections 1 to A: the denominator exclusions; integer vectors for cancelling weighted sums; comparing the tail with the distance to an integer |
+| [`E68_05`](E68_05/) | 6 | Carry and divisor-channel criteria for the factorial-minus-one reciprocal series |
 | [`E68_06`](E68_06/) | 16 | Erdős #68, the adjacent unit carry window, channel radius and common denominator growth families |
 | [`E68_07`](E68_07/) | 5 | Erdős #68, the finite denominator, Kempner index and moment ideal families |
 | [`E68_08`](E68_08/) | 6 | Erdős #68, the moving factor scale split and multiplicative successor rigidity families |
 | [`E68_09`](E68_09/) | 12 | Erdős #68, the multiplicative successor rigidity, prime pole and prime unit translator families |
 | [`E68_10`](E68_10/) | 2 | Erdős #68, the strict successor carry family |
-| [`E243_01`](E243_01/) | 13 | Erdős #243, record section 2: irrationality at the cubic rate; reduction under the zero lower-density assumption; a square condition from three consecutive numerators |
+| [`E243_01`](E243_01/) | 13 | Cubic-rate irrationality for reciprocal sums |
 | [`E243_02`](E243_02/) | 15 | Erdős #243, record sections 4 to 7: integer numerators, denominators and errors; when a zero error forces the Sylvester recurrence; a criterion using new maxima of an LCM numerator |
 | [`E243_03`](E243_03/) | 15 | Erdős #243, record sections 7.1 to 7.2: how fast the running maximum must increase; bounds that allow for cancellation and earlier decreases |
 | [`E243_04`](E243_04/) | 8 | Erdős #243, record section 7.2: bounds that allow for cancellation and earlier decreases |
@@ -32,13 +32,13 @@ The entries restate the theorems of the Lean development for each problem in the
 | [`E249_01`](E249_01/) | 23 | Erdős #249, record section 1.1: unconditional results |
 | [`E249_02`](E249_02/) | 15 | Erdős #249, record sections 1 to 2: totient sections and tail differences; rational comparison sequences |
 | [`E249_03`](E249_03/) | 16 | Erdős #249, record section 2.3: limits of specific reductions and estimates |
-| [`E249_04`](E249_04/) | 20 | Erdős #249, record sections 2 to 5: rational comparison sequences; series identities and finite exclusions |
+| [`E249_04`](E249_04/) | 18 | Erdős #249, record sections 2 to 5: rational comparison sequences; series identities and finite exclusions |
 | [`E249_05`](E249_05/) | 20 | Erdős #249, record sections 5 to 6: series identities and finite exclusions; detailed statements |
-| [`E249_06`](E249_06/) | 33 | Erdős #249, record sections 6.1 to 6.2: unconditional structure and finite examples; definitions and elementary identities |
-| [`E249_07`](E249_07/) | 28 | Erdős #249, record section 6.2.1: initial implications (part 1 of 2) |
-| [`E249_08`](E249_08/) | 22 | Erdős #249, record section 6.2.1: initial implications (part 2 of 2) |
-| [`E249_09`](E249_09/) | 32 | Erdős #249, record sections 6.2.1 to 6.2.2: initial implications; equivalent quantified certificate conditions |
-| [`E249_10`](E249_10/) | 15 | Erdős #249, record section 6.2.2: equivalent quantified certificate conditions |
+| [`E249_06`](E249_06/) | 10 | Erdős #249, record section 6.1: unconditional structure and finite examples |
+| [`E249_07`](E249_07/) | 40 | Erdős #249, record section 6.2.1: initial implications (part 1 of 2) |
+| [`E249_08`](E249_08/) | 26 | Erdős #249, record section 6.2.1: initial implications (part 2 of 2) |
+| [`E249_09`](E249_09/) | 30 | Erdős #249, record sections 6.2.1 to 6.2.2: initial implications; equivalent quantified certificate conditions |
+| [`E249_10`](E249_10/) | 27 | Erdős #249, record section 6.2.2: equivalent quantified certificate conditions |
 | [`E249_11`](E249_11/) | 13 | Erdős #249, record section 6.3: consequences (part 1 of 3) |
 | [`E249_12`](E249_12/) | 19 | Erdős #249, record section 6.3: consequences (part 2 of 3) |
 | [`E249_13`](E249_13/) | 2 | Erdős #249, record section 6.3: consequences (part 3 of 3) |
@@ -57,12 +57,12 @@ The entries restate the theorems of the Lean development for each problem in the
 | [`E249_26`](E249_26/) | 10 | Erdős #249, record sections 9 to 10: index of unproved conditions; counterexamples to proposed deductions |
 | [`E249_27`](E249_27/) | 20 | Erdős #249, record sections 12.1 to 12.2: the doubling identity; the full-block exponential-sum estimate |
 | [`E249_28`](E249_28/) | 3 | Erdős #249, record sections 12.3 to 12.5: the four-term decomposition; depth equal to a period multiple |
-| [`E249_29`](E249_29/) | 5 | Erdős #249, note section 1; the totient kernel basis family: a basis and all its relations; proof of the basis theorem |
+| [`E249_29`](E249_29/) | 5 | All-base bases and integral relations for the totient kernel |
 | [`E249_30`](E249_30/) | 9 | Erdős #249, note sections 1 to 4: a basis and all its relations; bounded residues and rationality; tail differences and finite residue tests |
 | [`E249_31`](E249_31/) | 9 | Erdős #249, the actual lcm orbit, binary cyclotomic anchors and canonical Mersenne frontier families |
 | [`E249_32`](E249_32/) | 19 | Erdős #249, the carry rank frontier, dyadic totient kernel and Farey window exclusion families |
 | [`E249_33`](E249_33/) | 27 | Erdős #249, the prefix two adic exclusion, rank one sharp floor and rational observable classification families |
-| [`E251_01`](E251_01/) | 11 | Erdős #251, record sections 2 to 5: sparse congruence-preserving perturbations; summation by parts, with the endpoint retained; the tail recurrence and the exact criteria |
+| [`E251_01`](E251_01/) | 11 | Uniform sparse rationalisation of dyadic series |
 | [`E251_02`](E251_02/) | 12 | Erdős #251, record sections 5 to 8: the tail recurrence and the exact criteria; a local certificate, and one actual pair; two lower bounds on a possible rational denominator |
 | [`E251_03`](E251_03/) | 10 | Erdős #251, record sections 8.2 to 8.6: algebraic nonconcentration survives the rationalising perturbation; the two-window event has density zero; recurring gap values differing by two do not suffice |
 | [`E251_04`](E251_04/) | 6 | Erdős #251, record sections D to E: further criteria, examples and computational details; arithmetic-progression reformulations of integrality |
@@ -70,51 +70,60 @@ The entries restate the theorems of the Lean development for each problem in the
 | [`E251_06`](E251_06/) | 20 | Erdős #251, the actual prime gap tail, affine circularity and all residue logarithmic countermodel families |
 | [`E251_07`](E251_07/) | 13 | Erdős #251, the lcm diagonal criterion, polynomial shift countermodel and prime gap identity families |
 | [`E251_08`](E251_08/) | 5 | Erdős #251, the shifted four prime counting and sparse rationalisation families |
-| [`E257_01`](E257_01/) | 5 | Erdős #257, record sections 1.2 to 1.5: a weighted condition on the support; positive divisor majorants; combining the two support criteria |
-| [`E257_02`](E257_02/) | 8 | Erdős #257, record sections 1 to 2: support criteria and their proofs; limitations of the recorded methods |
+| [`E257_01`](E257_01/) | 5 | Weighted support criteria for reciprocal Mersenne subseries |
+| [`E257_02`](E257_02/) | 9 | Erdős #257, record sections 1 to 2: support criteria and their proofs; limitations of the recorded methods |
 | [`E257_03`](E257_03/) | 7 | Erdős #257, record section 2.3: equivalent formulations of half-membership |
 | [`E257_04`](E257_04/) | 16 | Erdős #257, record sections 2.4 to 2.5: the size of the required error bounds; what finite certificates decide |
 | [`E257_05`](E257_05/) | 14 | Erdős #257, record sections 5.2 to 5.5: what is proved; integer quotients and their remainder identity; a real-valued form of the quotient identity |
-| [`E257_06`](E257_06/) | 14 | Erdős #257, record section 5.6: dynamics |
-| [`E257_07`](E257_07/) | 2 | Erdős #257, record section 6.1: conditional membership tests (part 1 of 5) |
-| [`E257_08`](E257_08/) | 18 | Erdős #257, record sections 6 to 9: detailed results and their hypotheses; which hypotheses remain unproved (part 1 of 3) |
-| [`E257_09`](E257_09/) | 1 | Erdős #257, record section 6.1: conditional membership tests (part 2 of 5) |
-| [`E257_10`](E257_10/) | 17 | Erdős #257, record sections 6 to 9: detailed results and their hypotheses; which hypotheses remain unproved (part 2 of 3) |
-| [`E257_11`](E257_11/) | 8 | Erdős #257, record section 6.1: conditional membership tests (part 3 of 5) |
-| [`E257_12`](E257_12/) | 19 | Erdős #257, record sections 6 to 10: detailed results and their hypotheses; hypothesis-specific obstructions (part 1 of 2) |
-| [`E257_13`](E257_13/) | 11 | Erdős #257, record section 6.1: conditional membership tests (part 4 of 5) |
-| [`E257_14`](E257_14/) | 18 | Erdős #257, record section 6.1: conditional membership tests (part 5 of 5) |
-| [`E257_15`](E257_15/) | 11 | Erdős #257, record section 6.2: exact identities and reductions (part 1 of 5) |
-| [`E257_16`](E257_16/) | 15 | Erdős #257, record sections 6.2 to 6.3: exact identities and reductions; consequence theorems (part 1 of 2) |
-| [`E257_17`](E257_17/) | 15 | Erdős #257, record section 6.2: exact identities and reductions (part 2 of 5) |
-| [`E257_18`](E257_18/) | 2 | Erdős #257, record section 6.2: exact identities and reductions (part 3 of 5) |
-| [`E257_19`](E257_19/) | 14 | Erdős #257, record sections 6.2 to 6.3: exact identities and reductions; consequence theorems (part 2 of 2) |
-| [`E257_20`](E257_20/) | 15 | Erdős #257, record section 6.2: exact identities and reductions (part 4 of 5) |
-| [`E257_21`](E257_21/) | 14 | Erdős #257, record section 6.2: exact identities and reductions (part 5 of 5) |
-| [`E257_22`](E257_22/) | 14 | Erdős #257: two implications yielding half-membership; compatible finite approximations; a quotient bound at a crossing |
-| [`E257_23`](E257_23/) | 15 | Erdős #257: a quotient bound at a crossing; filling the remaining binary positions; reducing the dyadic-boundary checks |
-| [`E257_24`](E257_24/) | 1 | Erdős #257: nonnegativity of the omitted-tail margin |
-| [`E257_25`](E257_25/) | 15 | Erdős #257, record sections 6 to 9: detailed results and their hypotheses; which hypotheses remain unproved (part 3 of 3) |
-| [`E257_26`](E257_26/) | 8 | Erdős #257: nonnegativity of the omitted-tail margin; square-root bounds for half-carries |
-| [`E257_27`](E257_27/) | 13 | Erdős #257: square-root bounds for half-carries; a margin at an unspecified later horizon; equivalent conditions for infinitely many greedy skips |
-| [`E257_28`](E257_28/) | 24 | Erdős #257: one-step quotient identities; bounds for the remaining binary positions; doubling the endpoint |
-| [`E257_29`](E257_29/) | 18 | Erdős #257: uniqueness for gap-dominated finite weights; a geometric form of the quotient condition; bounds for a general coefficient sequence |
-| [`E257_30`](E257_30/) | 23 | Erdős #257: restrictions on a support with rational value; the first crossing of the half-value; gap lengths and the measure of their union |
-| [`E257_31`](E257_31/) | 27 | Erdős #257, record sections 6 to 10: detailed results and their hypotheses; hypothesis-specific obstructions (part 2 of 2) |
-| [`E257_32`](E257_32/) | 6 | Erdős #257: general identities for perturbed greedy recurrences |
-| [`E257_33`](E257_33/) | 15 | Erdős #257, record section 6.5: obstructions and countermodels |
-| [`E257_34`](E257_34/) | 5 | Erdős #257, record sections 6.5 to 6.6: obstructions and countermodels; further finite and conditional results |
-| [`E257_35`](E257_35/) | 16 | Erdős #257, record sections 8 to 9: approximations to the greedy orbit; which hypotheses remain unproved |
-| [`E257_36`](E257_36/) | 14 | Erdős #257, record sections 10.3 to 10.4: related counterexamples and restrictions; the scalar-localisation height obstruction |
-| [`E257_37`](E257_37/) | 19 | Erdős #257, record sections 11.1 to 11.5: reset bounds and finite weighted divisor sums; equivalent carry conditions at perfect-square depths; sparse and dense supports under the certificate criterion |
-| [`E257_38`](E257_38/) | 9 | Erdős #257, record sections 12 to 13: what is open, stated exactly; logarithmic cost under arithmetic sampling |
-| [`E257_39`](E257_39/) | 8 | Erdős #257, note sections 1 to 9: introduction and main results; finite-support denominator periods; greedy membership and an integer recurrence |
-| [`E257_40`](E257_40/) | 11 | Erdős #257, the achievement set geometry, actual upper successor and Boolean Mobius carry families |
-| [`E257_41`](E257_41/) | 13 | Erdős #257, the fair coding, finite period noncollapse and four ninths repair windows families |
-| [`E257_42`](E257_42/) | 14 | Erdős #257, the rational membership, rational tail rigidity and reciprocal support families |
-| [`E257_43`](E257_43/) | 5 | Erdős #257, the twenty one fatal branch family |
+| [`E257_06`](E257_06/) | 14 | Erdős #257, record section 5.6: dynamics (part 1 of 2) |
+| [`E257_07`](E257_07/) | 7 | Erdős #257, record section 5.6: dynamics (part 2 of 2) |
+| [`E257_08`](E257_08/) | 2 | Erdős #257, record section 6.1: conditional membership tests (part 1 of 6) |
+| [`E257_09`](E257_09/) | 18 | Erdős #257, record sections 6 to 9: detailed results and their hypotheses; which hypotheses remain unproved (part 1 of 4) |
+| [`E257_10`](E257_10/) | 1 | Erdős #257, record section 6.1: conditional membership tests (part 2 of 6) |
+| [`E257_11`](E257_11/) | 17 | Erdős #257, record sections 6 to 9: detailed results and their hypotheses; which hypotheses remain unproved (part 2 of 4) |
+| [`E257_12`](E257_12/) | 7 | Erdős #257, record section 6.1: conditional membership tests (part 3 of 6) |
+| [`E257_13`](E257_13/) | 18 | Erdős #257, record sections 6.1 to 6.2: conditional membership tests; exact identities and reductions |
+| [`E257_14`](E257_14/) | 15 | Erdős #257, record section 6.1: conditional membership tests (part 4 of 6) |
+| [`E257_15`](E257_15/) | 19 | Erdős #257, record sections 6 to 10: detailed results and their hypotheses; hypothesis-specific obstructions (part 1 of 3) |
+| [`E257_16`](E257_16/) | 11 | Erdős #257, record section 6.1: conditional membership tests (part 5 of 6) |
+| [`E257_17`](E257_17/) | 18 | Erdős #257, record section 6.1: conditional membership tests (part 6 of 6) |
+| [`E257_18`](E257_18/) | 11 | Erdős #257, record section 6.2: exact identities and reductions (part 1 of 6) |
+| [`E257_19`](E257_19/) | 15 | Erdős #257, record sections 6.2 to 6.3: exact identities and reductions; consequence theorems (part 1 of 2) |
+| [`E257_20`](E257_20/) | 15 | Erdős #257, record section 6.2: exact identities and reductions (part 2 of 6) |
+| [`E257_21`](E257_21/) | 2 | Erdős #257, record section 6.2: exact identities and reductions (part 3 of 6) |
+| [`E257_22`](E257_22/) | 14 | Erdős #257, record sections 6.2 to 6.3: exact identities and reductions; consequence theorems (part 2 of 2) |
+| [`E257_23`](E257_23/) | 16 | Erdős #257, record sections 6 to 10: detailed results and their hypotheses; hypothesis-specific obstructions (part 2 of 3) |
+| [`E257_24`](E257_24/) | 14 | Erdős #257, record section 6.2: exact identities and reductions (part 4 of 6) |
+| [`E257_25`](E257_25/) | 17 | Erdős #257, record section 6.2: exact identities and reductions (part 5 of 6) |
+| [`E257_26`](E257_26/) | 9 | Erdős #257, record section 6.2: exact identities and reductions (part 6 of 6) |
+| [`E257_27`](E257_27/) | 14 | Erdős #257: two implications yielding half-membership; compatible finite approximations; a quotient bound at a crossing |
+| [`E257_28`](E257_28/) | 15 | Erdős #257: a quotient bound at a crossing; filling the remaining binary positions; reducing the dyadic-boundary checks |
+| [`E257_29`](E257_29/) | 13 | Erdős #257, the paper structures BY family: reducing the dyadic-boundary checks |
+| [`E257_30`](E257_30/) | 1 | Erdős #257: nonnegativity of the omitted-tail margin |
+| [`E257_31`](E257_31/) | 15 | Erdős #257, record sections 6 to 9: detailed results and their hypotheses; which hypotheses remain unproved (part 3 of 4) |
+| [`E257_32`](E257_32/) | 8 | Erdős #257: nonnegativity of the omitted-tail margin; square-root bounds for half-carries |
+| [`E257_33`](E257_33/) | 13 | Erdős #257: square-root bounds for half-carries; a margin at an unspecified later horizon; equivalent conditions for infinitely many greedy skips |
+| [`E257_34`](E257_34/) | 24 | Erdős #257: one-step quotient identities; bounds for the remaining binary positions; doubling the endpoint |
+| [`E257_35`](E257_35/) | 18 | Erdős #257: uniqueness for gap-dominated finite weights; a geometric form of the quotient condition; bounds for a general coefficient sequence |
+| [`E257_36`](E257_36/) | 23 | Erdős #257: restrictions on a support with rational value; the first crossing of the half-value; gap lengths and the measure of their union |
+| [`E257_37`](E257_37/) | 15 | Erdős #257, record sections 6 to 9: detailed results and their hypotheses; which hypotheses remain unproved (part 4 of 4) |
+| [`E257_38`](E257_38/) | 27 | Erdős #257, record sections 6 to 10: detailed results and their hypotheses; hypothesis-specific obstructions (part 3 of 3) |
+| [`E257_39`](E257_39/) | 14 | Erdős #257, record sections 6.4 to 6.5: invariants; obstructions and countermodels |
+| [`E257_40`](E257_40/) | 6 | Erdős #257: general identities for perturbed greedy recurrences |
+| [`E257_41`](E257_41/) | 15 | Erdős #257, record section 6.5: obstructions and countermodels |
+| [`E257_42`](E257_42/) | 9 | Erdős #257, record sections 6.5 to 6.6: obstructions and countermodels; further finite and conditional results |
+| [`E257_43`](E257_43/) | 16 | Erdős #257, record sections 8 to 9: approximations to the greedy orbit; which hypotheses remain unproved |
+| [`E257_44`](E257_44/) | 14 | Erdős #257, record sections 10.3 to 10.4: related counterexamples and restrictions; the scalar-localisation height obstruction |
+| [`E257_45`](E257_45/) | 19 | Erdős #257, record sections 11.1 to 11.5: reset bounds and finite weighted divisor sums; equivalent carry conditions at perfect-square depths; sparse and dense supports under the certificate criterion |
+| [`E257_46`](E257_46/) | 9 | Erdős #257, record sections 12 to 13: what is open, stated exactly; logarithmic cost under arithmetic sampling |
+| [`E257_47`](E257_47/) | 8 | Erdős #257, note sections 1 to 9: introduction and main results; finite-support denominator periods; greedy membership and an integer recurrence |
+| [`E257_48`](E257_48/) | 1 | Erdős #257, note section 9: further questions |
+| [`E257_49`](E257_49/) | 11 | Erdős #257, the achievement set geometry, actual upper successor and Boolean Mobius carry families |
+| [`E257_50`](E257_50/) | 13 | Erdős #257, the fair coding, finite period noncollapse and four ninths repair windows families |
+| [`E257_51`](E257_51/) | 14 | Erdős #257, the rational membership, rational tail rigidity and reciprocal support families |
+| [`E257_52`](E257_52/) | 5 | Erdős #257, the twenty one fatal branch family |
 | [`E269_01`](E269_01/) | 13 | Erdős #269, record sections 1 to 2: the problem, and what is settled; the finite geometry of the running value |
-| [`E269_02`](E269_02/) | 13 | Erdős #269, record sections 4 to 5: why the third prime prevents finite separation; the recurrence for tails between powers of two |
+| [`E269_02`](E269_02/) | 13 | Infinite rank of the three-prime running-LCM kernel |
 | [`E269_03`](E269_03/) | 6 | Erdős #269, record sections 5 to 6: the recurrence for tails between powers of two; bounding the tails and clearing a rational denominator |
 | [`E269_04`](E269_04/) | 6 | Erdős #269, record section 6: bounding the tails and clearing a rational denominator |
 | [`E269_05`](E269_05/) | 7 | Erdős #269, record sections 6 to 7: bounding the tails and clearing a rational denominator; a residue criterion and the bounds it allows |
@@ -124,7 +133,7 @@ The entries restate the theorems of the Lean development for each problem in the
 | [`E269_09`](E269_09/) | 12 | Erdős #269, the actual shell orbit, all scale lattice and carry mechanism families |
 | [`E269_10`](E269_10/) | 11 | Erdős #269, the integral branch pinning and three prime structure families |
 | [`E269_11`](E269_11/) | 9 | Erdős #269, the window escape equivalence family |
-| [`E1041_01`](E1041_01/) | 14 | Erdős #1041, record sections 1 to 3: the historical question; trinomials; a small least critical value |
+| [`E1041_01`](E1041_01/) | 16 | Erdős #1041, record sections 1 to 3: the historical question; trinomials; a small least critical value |
 | [`E1041_02`](E1041_02/) | 7 | Erdős #1041, record sections 4 to 7; the cubic path family: a path estimate from area and boundary length; degree three; collinear roots and two sparse polynomial families |
 | [`E1041_03`](E1041_03/) | 12 | Erdős #1041, record section 7.1: collinear roots and Chebyshev comparison |
 | [`E1041_04`](E1041_04/) | 13 | Erdős #1041, record sections 7 to 10: collinear roots and two sparse polynomial families; further families and counterexamples to proposed proof steps; the Newton value equation |
@@ -132,14 +141,15 @@ The entries restate the theorems of the Lean development for each problem in the
 | [`E1041_06`](E1041_06/) | 18 | Erdős #1041, note sections 13 to 16: two chord constructions for binomials; a Poisson identity for critical-value means; a nonlinear integral for component mergers |
 | [`E1041_07`](E1041_07/) | 21 | Erdős #1041, the critical geometry, cyclic trinomial fiber and degree seven counterexample families |
 | [`E1041_08`](E1041_08/) | 9 | Erdős #1041, the solved families and tetranomial spokes families |
-| [`E1049_01`](E1049_01/) | 25 | Erdős #1049, record section 2: the region b^ mu < a and the base 31/4; positive linear forms with integer coefficients |
+| [`E1049_01`](E1049_01/) | 25 | An explicit rational-base irrationality region for Zudilin's Lambert series |
 | [`E1049_02`](E1049_02/) | 4 | Erdős #1049, record section 2.6: proofs, earlier work and limitations |
 | [`E1049_03`](E1049_03/) | 18 | Erdős #1049, record sections 3 to 5; the adelic height bridge family: power comparisons and Hankel determinants; congruences after evaluation at 3/2 |
 | [`E1049_04`](E1049_04/) | 10 | Erdős #1049, record sections 3 to 4: power comparisons and Hankel determinants; rescaling integer rows |
-| [`E1049_05`](E1049_05/) | 16 | Erdős #1049, record sections 5 to 10: congruences after evaluation at 3/2; failure of the stated clearing conditions at 3/2; successive scaled remainders |
-| [`E1049_06`](E1049_06/) | 9 | Erdős #1049, note sections 2 to 4: a region of rational bases at which F is irrational; supplementary arithmetic at 3/2 |
-| [`E1049_07`](E1049_07/) | 23 | Erdős #1049, the Archimedean cap, Bezout Plucker jets and Hermite Pade no go families |
-| [`E1049_08`](E1049_08/) | 5 | Erdős #1049, the rational base barrier and rational base region families |
+| [`E1049_05`](E1049_05/) | 15 | Erdős #1049, record sections 5 to 9: congruences after evaluation at 3/2; failure of the stated clearing conditions at 3/2; successive scaled remainders |
+| [`E1049_06`](E1049_06/) | 2 | Erdős #1049, record section 10.3: a restriction on Mahler functional equations |
+| [`E1049_07`](E1049_07/) | 10 | Erdős #1049, note sections 2 to 4: a region of rational bases at which F is irrational; supplementary arithmetic at 3/2 |
+| [`E1049_08`](E1049_08/) | 12 | Erdős #1049, the Archimedean cap, Bezout Plucker jets and Hermite Pade no go families |
+| [`E1049_09`](E1049_09/) | 20 | Erdős #1049, the paper structures v, paper structures w and prime support selectors families |
 
 ## Theorems per problem
 
@@ -147,13 +157,13 @@ The entries restate the theorems of the Lean development for each problem in the
 |---|---:|---:|
 | #68 | 10 | 73 |
 | #243 | 11 | 140 |
-| #249 | 33 | 621 |
+| #249 | 33 | 622 |
 | #251 | 8 | 87 |
-| #257 | 43 | 537 |
+| #257 | 52 | 651 |
 | #269 | 11 | 92 |
-| #1041 | 8 | 105 |
-| #1049 | 8 | 110 |
-| Total | 132 | 1765 |
+| #1041 | 8 | 107 |
+| #1049 | 9 | 116 |
+| Total | 142 | 1888 |
 
 ## Paper-linked required Lean claims
 

@@ -25,7 +25,6 @@ import Solutions.PalomarCorpus.E249_07.Statement
 /- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
 
 namespace PalomarCorpus.E249.PaperStatementsAK
-export PalomarCorpus.E249_07.Shared (cylinderMass)
 
 noncomputable def FinitePrimeSupportEscape (C : ℕ → ℕ) (m : ℕ) : Prop :=
   ∀ S : Finset ℕ, ∃ Q₀ : ℕ, ∀ q : ℕ,
@@ -35,6 +34,9 @@ noncomputable def FinitePrimeSupportEscape (C : ℕ → ℕ) (m : ℕ) : Prop :=
 noncomputable def IsFirstGapFailure (V K H qstar : ℕ) : Prop :=
   (∀ q : ℕ, 0 < q → q < qstar → (q * V) % 2 ^ K + q * H < 2 ^ K) ∧
     ¬ ((qstar * V) % 2 ^ K + qstar * H < 2 ^ K)
+
+noncomputable def cylinderMass (a b : ℕ+) : ℝ :=
+  1 / (((2 : ℝ) ^ (a : ℕ) - 1) * ((2 : ℝ) ^ (b : ℕ) - 1))
 
 theorem totientSeries_ne_rat_of_den_dvd_two_pow_fourteen_mul_mersenne
     (r : ℚ) (h : ℕ) (h1 : 1 ≤ h) (h16 : h ≤ 16)

@@ -5,9 +5,10 @@ Authors: Will Cook
 -/
 import Mathlib
 import Solutions.PalomarCorpus.E257_41.Statement
-import Solutions.PalomarCorpus.E257_41.FairCoding
-import Solutions.PalomarCorpus.E257_41.FinitePeriodNoncollapse
-import Solutions.PalomarCorpus.E257_41.FourNinthsRepairWindows
-import Solutions.PalomarCorpus.E257_41.GeneralRepairCriterion
-import Solutions.PalomarCorpus.E257_41.LiteralWeightedCover
-import Solutions.PalomarCorpus.E257_41.PositiveSkipEquivalence
+import Solutions.PalomarCorpus.E257_41.PaperStatementsAA
+import Solutions.PalomarCorpus.E257_41.PaperStatementsAR
+import Solutions.PalomarCorpus.E257_41.PaperStatementsAS
+import Solutions.PalomarCorpus.E257_41.PaperStatementsAX
+import Solutions.PalomarCorpus.E257_41.PaperStatementsK
+import Solutions.PalomarCorpus.E257_41.PaperStatementsL
+import Solutions.PalomarCorpus.E257_41.PaperStructuresBG

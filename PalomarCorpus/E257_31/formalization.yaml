@@ -1,12 +1,12 @@
 version: v0.4
 project:
-  name: 'Erdős #257, record sections 6 to 10: detailed results and their hypotheses; hypothesis-specific obstructions (part 2 of 2)'
+  name: 'Erdős #257, record sections 6 to 9: detailed results and their hypotheses; which hypotheses remain unproved (part 3 of 4)'
   description: >-
-    This entry states 6 theorems that the long record for Erdős problem #257 states in sections 6 (detailed results and their hypotheses) and 10 (hypothesis-specific obstructions): the proposition “A finite band check for 13≤ d≤30”, as paper_successor_remainders_fourteen_through_thirtyone; the theorem “A general perturbed greedy recurrence”, as paper_perturbed_separation_global_maximality, paper_perturbed_two_stage_is_global_maximum and paper_perturbed_weak_cap_counterexample; the proposition “The unsafe middle range is exactly three integers” (section 6.6.1), as paper_unsafe_middle_range_is_three_integers; the proposition “The upper (carries) successor needs no exceptional-cell exclusion” (section 10.2), as paper_upper_branch_needs_no_exceptional_cell.
+    This entry states 3 theorems that the long record for Erdős problem #257 states in sections 6 (detailed results and their hypotheses) and 9 (which hypotheses remain unproved): the theorem “A sufficient lower bound for the integer remainder”, as paper_seam_escape_forces_remainder_band and paper_seam_escape_implies_full_shell_nonnegative; the theorem “A: a sufficient lower bound at every reset” (section 9.6), as half_mem_mersenneAchievementSet_of_resetSqrtEscape.
 
-    It also states 21 proof obligations of the definitions copied into it: seamPerturbedFamily_gap_pos, seamPerturbedFamily_oldSum_injective, seamPerturbedFamily_separated, seamPerturbedFamily_pulseCap_lt_three_gap, wordPulse_le, exists_seamWord_minimal_above, integerGreedyBits_length, seamAboveWord_minimal, seamAboveWord_strict, seamWeights_length_eq, seamAdjacentCut_below_admissible, seamAdjacentCut_below_maximal, weakCapFamily_gap_pos, weakCapFamily_pulse_le, weakCapFamily_oldSum_injective, weakCapFamily_separated, weakCapFamily_pulseCap_lt_three_gap, weakCapCut_below_admissible, weakCapCut_below_maximal, weakCapCut_above_strict and weakCapCut_above_minimal. Each is a lemma or a proof field that one of those definitions names, and its documentation names the source it is stated from. The papers state none of them, and the Solution proves each from the source development.
+    It also states 12 proof obligations of the definitions copied into it: seamPerturbedFamily_gap_pos, seamPerturbedFamily_oldSum_injective, seamPerturbedFamily_separated, seamPerturbedFamily_pulseCap_lt_three_gap, wordPulse_le, exists_seamWord_minimal_above, integerGreedyBits_length, seamAboveWord_minimal, seamAboveWord_strict, seamWeights_length_eq, seamAdjacentCut_below_admissible and seamAdjacentCut_below_maximal. Each is a lemma or a proof field that one of those definitions names, and its documentation names the source it is stated from. The papers state none of them, and the Solution proves each from the source development.
 
-    7 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 20 are derived from the source declaration by a short tactic proof, which certifies implication.
+    6 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 9 are derived from the source declaration by a short tactic proof, which certifies implication.
 
     Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
 
@@ -57,11 +57,11 @@ sources:
   license: Apache-2.0
   author_endorsement: n/a
 status:
-  scope: "One Comparator configuration selecting the 27 theorems listed in PalomarCorpus/E257_31/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 43 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_43, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
+  scope: "One Comparator configuration selecting the 15 theorems listed in PalomarCorpus/E257_31/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 52 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_52, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
-  trusted_challenge_sorry_count: 27
+  trusted_challenge_sorry_count: 15
   sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E257_31/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
   axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
   permitted_axiom_budget:
@@ -69,112 +69,64 @@ status:
   - Quot.sound
   - Classical.choice
   main_results:
-  - declaration: "PalomarCorpus.E257.PaperStructuresBP.exists_seamWord_minimal_above"
-    file: "Solutions/PalomarCorpus/E257_31/PaperStructuresBP.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBK.exists_seamWord_minimal_above"
+    file: "Solutions/PalomarCorpus/E257_31/PaperStructuresBK.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_31/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBP.integerGreedyBits_length"
-    file: "Solutions/PalomarCorpus/E257_31/PaperStructuresBP.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBK.half_mem_mersenneAchievementSet_of_resetSqrtEscape"
+    file: "Solutions/PalomarCorpus/E257_31/PaperStructuresBK.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_31/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBP.paper_perturbed_separation_global_maximality"
-    file: "Solutions/PalomarCorpus/E257_31/PaperStructuresBP.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBK.integerGreedyBits_length"
+    file: "Solutions/PalomarCorpus/E257_31/PaperStructuresBK.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_31/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBP.paper_perturbed_two_stage_is_global_maximum"
-    file: "Solutions/PalomarCorpus/E257_31/PaperStructuresBP.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBK.paper_seam_escape_forces_remainder_band"
+    file: "Solutions/PalomarCorpus/E257_31/PaperStructuresBK.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_31/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBP.paper_perturbed_weak_cap_counterexample"
-    file: "Solutions/PalomarCorpus/E257_31/PaperStructuresBP.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBK.paper_seam_escape_implies_full_shell_nonnegative"
+    file: "Solutions/PalomarCorpus/E257_31/PaperStructuresBK.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_31/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBP.paper_successor_remainders_fourteen_through_thirtyone"
-    file: "Solutions/PalomarCorpus/E257_31/PaperStructuresBP.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBK.seamAboveWord_minimal"
+    file: "Solutions/PalomarCorpus/E257_31/PaperStructuresBK.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_31/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBP.paper_unsafe_middle_range_is_three_integers"
-    file: "Solutions/PalomarCorpus/E257_31/PaperStructuresBP.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBK.seamAboveWord_strict"
+    file: "Solutions/PalomarCorpus/E257_31/PaperStructuresBK.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_31/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBP.paper_upper_branch_needs_no_exceptional_cell"
-    file: "Solutions/PalomarCorpus/E257_31/PaperStructuresBP.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBK.seamAdjacentCut_below_admissible"
+    file: "Solutions/PalomarCorpus/E257_31/PaperStructuresBK.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_31/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBP.seamAboveWord_minimal"
-    file: "Solutions/PalomarCorpus/E257_31/PaperStructuresBP.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBK.seamAdjacentCut_below_maximal"
+    file: "Solutions/PalomarCorpus/E257_31/PaperStructuresBK.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_31/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBP.seamAboveWord_strict"
-    file: "Solutions/PalomarCorpus/E257_31/PaperStructuresBP.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBK.seamPerturbedFamily_gap_pos"
+    file: "Solutions/PalomarCorpus/E257_31/PaperStructuresBK.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_31/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBP.seamAdjacentCut_below_admissible"
-    file: "Solutions/PalomarCorpus/E257_31/PaperStructuresBP.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBK.seamPerturbedFamily_oldSum_injective"
+    file: "Solutions/PalomarCorpus/E257_31/PaperStructuresBK.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_31/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBP.seamAdjacentCut_below_maximal"
-    file: "Solutions/PalomarCorpus/E257_31/PaperStructuresBP.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBK.seamPerturbedFamily_pulseCap_lt_three_gap"
+    file: "Solutions/PalomarCorpus/E257_31/PaperStructuresBK.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_31/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBP.seamPerturbedFamily_gap_pos"
-    file: "Solutions/PalomarCorpus/E257_31/PaperStructuresBP.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBK.seamPerturbedFamily_separated"
+    file: "Solutions/PalomarCorpus/E257_31/PaperStructuresBK.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_31/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBP.seamPerturbedFamily_oldSum_injective"
-    file: "Solutions/PalomarCorpus/E257_31/PaperStructuresBP.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBK.seamWeights_length_eq"
+    file: "Solutions/PalomarCorpus/E257_31/PaperStructuresBK.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_31/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBP.seamPerturbedFamily_pulseCap_lt_three_gap"
-    file: "Solutions/PalomarCorpus/E257_31/PaperStructuresBP.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_31/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBP.seamPerturbedFamily_separated"
-    file: "Solutions/PalomarCorpus/E257_31/PaperStructuresBP.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_31/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBP.seamWeights_length_eq"
-    file: "Solutions/PalomarCorpus/E257_31/PaperStructuresBP.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_31/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBP.weakCapCut_above_minimal"
-    file: "Solutions/PalomarCorpus/E257_31/PaperStructuresBP.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_31/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBP.weakCapCut_above_strict"
-    file: "Solutions/PalomarCorpus/E257_31/PaperStructuresBP.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_31/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBP.weakCapCut_below_admissible"
-    file: "Solutions/PalomarCorpus/E257_31/PaperStructuresBP.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_31/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBP.weakCapCut_below_maximal"
-    file: "Solutions/PalomarCorpus/E257_31/PaperStructuresBP.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_31/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBP.weakCapFamily_gap_pos"
-    file: "Solutions/PalomarCorpus/E257_31/PaperStructuresBP.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_31/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBP.weakCapFamily_oldSum_injective"
-    file: "Solutions/PalomarCorpus/E257_31/PaperStructuresBP.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_31/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBP.weakCapFamily_pulseCap_lt_three_gap"
-    file: "Solutions/PalomarCorpus/E257_31/PaperStructuresBP.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_31/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBP.weakCapFamily_pulse_le"
-    file: "Solutions/PalomarCorpus/E257_31/PaperStructuresBP.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_31/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBP.weakCapFamily_separated"
-    file: "Solutions/PalomarCorpus/E257_31/PaperStructuresBP.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_31/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBP.wordPulse_le"
-    file: "Solutions/PalomarCorpus/E257_31/PaperStructuresBP.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBK.wordPulse_le"
+    file: "Solutions/PalomarCorpus/E257_31/PaperStructuresBK.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_31/comparator.json"
   development_status: substantive

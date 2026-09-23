@@ -1,3 +1,16 @@
 import Solutions.PalomarCorpus.E257_24
 
-#print axioms PalomarCorpus.E257.PaperStructuresBJ.skipped_fullShell_neg_iff_alignment_and_seamRemainder_pos
+#print axioms PalomarCorpus.E257.PaperStatementsI.mobiusCenteredHalfCarry_add_two
+#print axioms PalomarCorpus.E257.PaperStructuresCC.exists_seamWord_minimal_above
+#print axioms PalomarCorpus.E257.PaperStructuresCC.finalMiddleCell_neg_three_not_last
+#print axioms PalomarCorpus.E257.PaperStructuresCC.integerGreedyBits_length
+#print axioms PalomarCorpus.E257.PaperStructuresCC.seamAboveWord_minimal
+#print axioms PalomarCorpus.E257.PaperStructuresCC.seamAboveWord_strict
+#print axioms PalomarCorpus.E257.PaperStructuresCC.seamAdjacentCut_below_admissible
+#print axioms PalomarCorpus.E257.PaperStructuresCC.seamAdjacentCut_below_maximal
+#print axioms PalomarCorpus.E257.PaperStructuresCC.seamPerturbedFamily_gap_pos
+#print axioms PalomarCorpus.E257.PaperStructuresCC.seamPerturbedFamily_oldSum_injective
+#print axioms PalomarCorpus.E257.PaperStructuresCC.seamPerturbedFamily_pulseCap_lt_three_gap
+#print axioms PalomarCorpus.E257.PaperStructuresCC.seamPerturbedFamily_separated
+#print axioms PalomarCorpus.E257.PaperStructuresCC.seamWeights_length_eq
+#print axioms PalomarCorpus.E257.PaperStructuresCC.wordPulse_le

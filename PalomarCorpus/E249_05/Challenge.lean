@@ -25,9 +25,6 @@ open scoped ArithmeticFunction.Moebius
 open scoped Polynomial
 
 namespace PalomarCorpus.E249_05.Shared
-/-- `Hₜ = lcm(1, ..., t)`. The interval avoids inserting zero into the finite LCM. Local copy of Erdos249257.MersenneShadowCyclotomicNoncollapse.lcmHeight, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def lcmHeight (t : ℕ) : ℕ :=
-  (Finset.Icc 1 t).lcm (fun n ↦ n)
 /-- The Mersenne denominator at exponent `n`. Local copy of Erdos249257.RadicalMobiusShadow.mersenne, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def mersenne (n : ℕ) : ℕ := 2 ^ n - 1
 /-- The integral numerator, written as its squarefree-divisor expansion. For `s ⊆ primeFactors(r)`, put `d = ∏ p ∈ s, p`. Then the summand is `(-1)^|s| (r/d) ((2^r-1)/(2^d-1))`. This is exactly the nonzero part of `Σ_{d ∣ r} μ(d) (r/d) ((2^r-1)/(2^d-1))`: nonsquarefree divisors have Möbius coefficient zero. The subset form makes that finite support explicit and keeps the definition executable without factoring irrelevant divisors. Local copy of Erdos249257.RadicalMobiusShadow.mobiusNumerator, restated so the compared statements elaborate against Mathlib alone. -/
@@ -39,15 +36,37 @@ noncomputable def mobiusNumerator (r : ℕ) : ℤ :=
 /-- The unscaled radical shadow `B(r) = M_r / (2^r - 1)`. Local copy of Erdos249257.RadicalMobiusShadow.baseMobiusShadow, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def baseMobiusShadow (r : ℕ) : ℚ :=
   Rat.divInt (mobiusNumerator r) (mersenne r : ℤ)
-/-- The squarefree kernel used by the numeric shadow: the product of the distinct prime factors of `n`. For `n = 0` this convention gives `1`; all development-facing scaling theorems assume `0 < n`. Local copy of Erdos249257.RadicalMobiusShadow.squarefreeKernel, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def squarefreeKernel (n : ℕ) : ℕ := ∏ p ∈ n.primeFactors, p
-/-- The numeric shadow at an arbitrary scale. By construction it only sees the distinct prime factors of `H`. Local copy of Erdos249257.RadicalMobiusShadow.numericMobiusShadow, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def numericMobiusShadow (H : ℕ) : ℚ :=
-  baseMobiusShadow (squarefreeKernel H) / (squarefreeKernel H : ℚ)
 /-- The binary totient tail `R_N = ∑_{j ≥ 1} φ(N + j) / 2 ^ j`, a real number satisfying `2 ^ N S = Φ_N + R_N`, where `S = ∑_{n ≥ 1} φ(n) / 2 ^ n` and `Φ_N = ∑_{n ≤ N} φ(n) 2 ^ (N - n)` is an integer. It obeys `0 < R_N ≤ N + 1` for `N ≥ 1`. -/
 noncomputable def totientTail (N : ℕ) : ℝ :=
   ∑' j : ℕ, (Nat.totient (N + 1 + j) : ℝ) / 2 ^ (j + 1)
 end PalomarCorpus.E249_05.Shared
+
+namespace PalomarCorpus.E249.PaperStatementsAJ
+/-- States prop:mobsq from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR20.moebius_three_values in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem moebius_three_values (d : ℕ) :
+    ArithmeticFunction.moebius d = -1 ∨ ArithmeticFunction.moebius d = 0 ∨
+      ArithmeticFunction.moebius d = 1 := by
+  sorry
+end PalomarCorpus.E249.PaperStatementsAJ
+
+namespace PalomarCorpus.E249.PaperStatementsAY
+open scoped BigOperators
+/-- The #249 constant, named locally for the generic-scale transport. Local copy of Erdos249257.FullTargetPrimeAdjunctionNoGo.totientSeries, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def totientSeries : ℝ :=
+  ∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n
+/-- States prop:mobsq from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR20.irrational_totient_iff_mobius_square in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem irrational_totient_iff_mobius_square :
+    Irrational totientSeries ↔
+      Irrational (∑' d : ℕ+, (ArithmeticFunction.moebius (d : ℕ) : ℝ) /
+        ((2 : ℝ) ^ (d : ℕ) - 1) ^ 2) := by
+  sorry
+/-- States prop:mobsq from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR20.mobius_square_reduction in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem mobius_square_reduction :
+    totientSeries = (1 : ℝ) / 2 +
+      ∑' d : ℕ+, (ArithmeticFunction.moebius (d : ℕ) : ℝ) /
+        ((2 : ℝ) ^ (d : ℕ) - 1) ^ 2 := by
+  sorry
+end PalomarCorpus.E249.PaperStatementsAY
 
 namespace PalomarCorpus.E249.PaperStatementsAK
 /-- States catalogue:mob:a2, prop:lambertengine from the long record for Erdős problem #249. Transported from GcdMomentCalculus.tsum_lambert_linear_weight_sq_pure in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
@@ -69,7 +88,15 @@ end PalomarCorpus.E249.PaperStatementsAK
 
 namespace PalomarCorpus.E249.PaperStatementsAE
 open scoped BigOperators
-export PalomarCorpus.E249_05.Shared (baseMobiusShadow lcmHeight mersenne mobiusNumerator numericMobiusShadow squarefreeKernel)
+export PalomarCorpus.E249_05.Shared (baseMobiusShadow mersenne mobiusNumerator)
+/-- The squarefree kernel used by the numeric shadow: the product of the distinct prime factors of `n`. For `n = 0` this convention gives `1`; all development-facing scaling theorems assume `0 < n`. Local copy of Erdos249257.RadicalMobiusShadow.squarefreeKernel, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def squarefreeKernel (n : ℕ) : ℕ := ∏ p ∈ n.primeFactors, p
+/-- The numeric shadow at an arbitrary scale. By construction it only sees the distinct prime factors of `H`. Local copy of Erdos249257.RadicalMobiusShadow.numericMobiusShadow, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def numericMobiusShadow (H : ℕ) : ℚ :=
+  baseMobiusShadow (squarefreeKernel H) / (squarefreeKernel H : ℚ)
+/-- `Hₜ = lcm(1, ..., t)`. The interval avoids inserting zero into the finite LCM. Local copy of Erdos249257.MersenneShadowCyclotomicNoncollapse.lcmHeight, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def lcmHeight (t : ℕ) : ℕ :=
+  (Finset.Icc 1 t).lcm (fun n ↦ n)
 /-- Prime indices in the development's upper half `(t/2, t]`. Local copy of Erdos249257.MersenneShadowCyclotomicNoncollapse.upperHalfPrimes, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def upperHalfPrimes (t : ℕ) : Finset ℕ :=
   (Finset.Ioc (t / 2) t).filter Nat.Prime
@@ -112,20 +139,6 @@ theorem lcmHeight_five_scaledMobiusShadow_den_exact :
     ((lcmHeight 5 : ℚ) *
         numericMobiusShadow (lcmHeight 5)).den =
       mersenne 30 / 3 := by
-  sorry
-/-- States catalogue:mob:d3 from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR20.signed_dyadic_clearing in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem signed_dyadic_clearing {α : Type*} (s : Finset α)
-    (u : α → ℤ) (e : α → ℕ) (m : α)
-    (hmax : ∀ i ∈ s, i ≠ m → e i < e m) :
-    (2 : ℚ) ^ e m * (∑ i ∈ s, (u i : ℚ) / 2 ^ e i) =
-      ((∑ i ∈ s, u i * (2 : ℤ) ^ (e m - e i) : ℤ) : ℚ) := by
-  sorry
-/-- States catalogue:mob:d3 from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR20.signed_dyadic_sum_ne_zero in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem signed_dyadic_sum_ne_zero {α : Type*} (s : Finset α)
-    (u : α → ℤ) (e : α → ℕ) (m : α) (hm : m ∈ s)
-    (hu : ¬ Even (u m))
-    (hmax : ∀ i ∈ s, i ≠ m → e i < e m) :
-    (∑ i ∈ s, (u i : ℚ) / 2 ^ e i) ≠ 0 := by
   sorry
 /-- States catalogue:mob:b7a from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR20.upper_half_product_denominator_bounds in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem upper_half_product_denominator_bounds {t : ℕ} (ht : 5 ≤ t) :
@@ -274,27 +287,3 @@ theorem mobiusNumeratorPolynomial_eval_two {r : ℕ} (hr : Squarefree r) :
       mobiusNumerator r := by
   sorry
 end PalomarCorpus.E249.PaperStatementsAQ
-
-namespace PalomarCorpus.E249.PaperStatementsAR
-open scoped BigOperators
-open scoped Polynomial
-export PalomarCorpus.E249_05.Shared (baseMobiusShadow lcmHeight mersenne mobiusNumerator numericMobiusShadow squarefreeKernel)
-/-- The scalar contributed by the odd prime factors of `r`. Local copy of Erdos249257.CyclicTensorMobiusShadow.oddJordanScalar, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def oddJordanScalar (r : ℕ) : ℤ :=
-  ∏ q ∈ r.primeFactors.filter (fun q => q ≠ 2), ((q : ℤ) ^ 2 - 1)
-/-- `rₜ = rad(Hₜ)` using the canonical T6 squarefree kernel. Local copy of Erdos249257.MersenneShadowCyclotomicNoncollapse.lcmRadical, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def lcmRadical (t : ℕ) : ℕ :=
-  squarefreeKernel (lcmHeight t)
-/-- `hₜ = Hₜ / rₜ`, the scale multiplying the radical shadow. Local copy of Erdos249257.MersenneShadowCyclotomicNoncollapse.lcmScale, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def lcmScale (t : ℕ) : ℕ :=
-  lcmHeight t / lcmRadical t
-/-- States catalogue:mob:b7b from the long record for Erdős problem #249. Transported from Erdos249257.MersenneShadowDenominatorGrowth.lcmHeight_scaledMobiusShadow_den_exact in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem lcmHeight_scaledMobiusShadow_den_exact (t : ℕ) :
-    ((lcmHeight t : ℚ) *
-        numericMobiusShadow (lcmHeight t)).den =
-      mersenne (lcmRadical t) /
-        Nat.gcd (mersenne (lcmRadical t))
-          (lcmScale t *
-            (oddJordanScalar (lcmRadical t)).natAbs) := by
-  sorry
-end PalomarCorpus.E249.PaperStatementsAR

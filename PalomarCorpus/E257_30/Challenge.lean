@@ -9,7 +9,7 @@ import Mathlib
 set_option autoImplicit false
 
 /-!
-# Erdős #257: restrictions on a support with rational value; the first crossing of the half-value; gap lengths and the measure of their union
+# Erdős #257: nonnegativity of the omitted-tail margin
 
 Each theorem below restates, against Mathlib alone, a theorem of the Lean development
 for Erdős problem #257, in the order the papers state them. The definitions a statement
@@ -18,271 +18,135 @@ the source declaration it comes from. Erdős problem #257 remains open, and no t
 this entry decides it.
 -/
 
-open ArithmeticFunction
-open Filter
 open Set
-open Topology
-open scoped ArithmeticFunction.Omega
+open Filter
+open scoped BigOperators
 open scoped ENNReal
 open MeasureTheory
-open scoped BigOperators
+open Topology
 
-namespace PalomarCorpus.E257_30.Shared
-/-- The three-channel Lambert lower bound for the Mersenne tail `T (k + 1)`. `T (k + 1) = ∑_{v ≥ 1} 2 ^ (-k * v) / (2 ^ v - 1)`; truncating that expansion after `v = 3` gives this rational function of `t = 2 ^ k`, namely `1/t + 1/(3 * t ^ 2) + 1/(7 * t ^ 3)` (equivalently `1 / 2 ^ k + 1 / (3 * 4 ^ k) + 1 / (7 * 8 ^ k)`). Local copy of Erdos249257.HalfGreedyFatalGap.mersenneTailLB3, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def mersenneTailLB3 (k : ℕ) : ℝ :=
-  1 / 2 ^ k + 1 / (3 * (2 ^ k) ^ 2) + 1 / (7 * (2 ^ k) ^ 3)
-/-- The real Mersenne weight 1 divided by 2 to the power n minus 1; at n = 0 the value is 0 because division by zero is zero here. -/
-noncomputable def mersenneWeight (n : ℕ) : ℝ :=
-  1 / ((2 : ℝ) ^ n - 1)
-/-- The Mersenne tail beyond rank n, namely the sum over k at least 0 of the Mersenne weight at n+k+1. -/
-noncomputable def mersenneTail (n : ℕ) : ℝ :=
-  ∑' k : ℕ, mersenneWeight (n + k + 1)
+namespace PalomarCorpus.E257.PaperStructuresBJ
+open Set
+open Filter
+open scoped BigOperators
+open scoped ENNReal
+open MeasureTheory
+open Topology
+/-- The binary affine orbit driven by an integer sequence a from an initial value, defined by orbit 0 equal to the initial value and orbit (n+1) equal to twice orbit n minus a at n+1. -/
+noncomputable def affineBinaryOrbit (a : ℕ → ℤ) (u0 : ℤ) : ℕ → ℤ
+  | 0 => u0
+  | n + 1 => 2 * affineBinaryOrbit a u0 n - a (n + 1)
 /-- **The support coefficient** `f_A(n) = #{d ∣ n : d ∈ A}`, the Dirichlet incidence `1_A * 1` of a support set `A ⊆ ℕ`. This is the coefficient in which Erdős #257 is actually stated: `∑_{a∈A} 1/(b^a - 1) = ∑_n f_A(n)/b^n`. Full support gives `f_ℕ = τ`; primes give `ω`; prime powers give `Ω`. Local copy of Erdos249257.supportCoeff, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def supportCoeff (A : Set ℕ) (n : ℕ) : ℕ :=
   letI := Classical.decPred fun d : ℕ => d ∈ A
   (n.divisors.filter fun d => d ∈ A).card
-end PalomarCorpus.E257_30.Shared
-
-namespace PalomarCorpus.E257.PaperStatementsAV
-open ArithmeticFunction
-open Filter
-open Set
-open Topology
-export PalomarCorpus.E257_30.Shared (supportCoeff)
-/-- States record:257rig-i3 from the long record for Erdős problem #257. Transported from Erdos249257.one_add_mul_card_le_two_mul_shifted_state in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem one_add_mul_card_le_two_mul_shifted_state
-    (A : Set ℕ) (F : Finset ℕ) (c v L : ℕ) (u : ℕ → ℕ)
-    (hcL : c < L) (hpos : ∀ n : ℕ, 0 < u n)
-    (hrec : ∀ n : ℕ,
-      u (n + 1) + v * supportCoeff A (c + n + 1) = 2 * u n)
-    (hFA : ∀ a ∈ F, a ∈ A) (hFdvd : ∀ a ∈ F, a ∣ L) :
-    1 + v * F.card ≤ 2 * u (L - c - 1) := by
-  sorry
-/-- States record:257rig-i3 from the long record for Erdős problem #257. Transported from Erdos249257.shifted_state_unbounded_of_infinite_support in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem shifted_state_unbounded_of_infinite_support
-    (A : Set ℕ) (hAinf : A.Infinite) (c v : ℕ) (hv : 0 < v)
-    (u : ℕ → ℕ) (hpos : ∀ n : ℕ, 0 < u n)
-    (hrec : ∀ n : ℕ,
-      u (n + 1) + v * supportCoeff A (c + n + 1) = 2 * u n) :
-    ∀ B : ℕ, ∃ n : ℕ, B < u n := by
-  sorry
-end PalomarCorpus.E257.PaperStatementsAV
-
-namespace PalomarCorpus.E257.PaperStatementsAL
-open Filter
-open Set
-open Topology
-export PalomarCorpus.E257_30.Shared (supportCoeff)
-/-- `f` vanishes at the `h` positive offsets after `N`, namely `N + 1, ..., N + h`. Local copy of Erdos249257.CoeffZeroWindow, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def CoeffZeroWindow (f : ℕ → ℕ) (N h : ℕ) : Prop :=
-  ∀ j : ℕ, j < h → f (N + j + 1) = 0
-/-- `supportCoeff A` vanishes on the `h` positive indices immediately after `N`, namely `N + 1, ..., N + h`. Local copy of Erdos249257.SupportCoeffZeroWindow, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def SupportCoeffZeroWindow (A : Set ℕ) (N h : ℕ) : Prop :=
-  CoeffZeroWindow (supportCoeff A) N h
-/-- **The Erdős #257 support series** `∑_{a ∈ A} 1/(b^a - 1)`, as an indicator series over ℕ. The `a = 0` term is `1/(1-1) = 0` under real division-by-zero conventions, so supports containing `0` contribute nothing spurious. Local copy of Erdos249257.erdosSupportSeries, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def erdosSupportSeries (b : ℕ) (A : Set ℕ) : ℝ :=
-  ∑' a : ℕ, Set.indicator A (fun a => (1 : ℝ) / ((b : ℝ) ^ a - 1)) a
-/-- States record:257rig-i4a from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_zero_run_le_eps_logb in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem paper_zero_run_le_eps_logb
-    (A : Set ℕ) (hinf : A.Infinite) (hzero : 0 ∉ A)
-    (p : ℤ) (c v : ℕ) (hv : 0 < v) (_hvodd : Odd v)
-    (hvalue : erdosSupportSeries 2 A = (p : ℝ) / ((2 ^ c * v : ℕ) : ℝ))
-    (ε : ℝ) (hε : 0 < ε) :
-    ∃ B : ℝ, 0 ≤ B ∧
-      ∀ N h : ℕ, 1 ≤ N →
-        SupportCoeffZeroWindow A (c + N) h →
-        (h : ℝ) ≤ ε * Real.logb 2 (N : ℝ) + B := by
-  sorry
-/-- States record:257rig-i4a from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_zero_run_le_of_mem in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem paper_zero_run_le_of_mem
-    (A : Set ℕ) {a : ℕ} (hapos : 0 < a) (haA : a ∈ A) {N h : ℕ}
-    (hwindow : SupportCoeffZeroWindow A N h) :
-    h ≤ a - 1 := by
-  sorry
-end PalomarCorpus.E257.PaperStatementsAL
-
-namespace PalomarCorpus.E257.PaperStatementsAF
-open Set
-/-- Completely explicit constant for the fixed-`k` divisor bound. Local copy of Erdos249257.divisorSubpowerConst, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def divisorSubpowerConst (k : ℕ) : ℕ := k ^ (2 ^ k)
-/-- States record:257rig-i4b from the long record for Erdős problem #257. Transported from Erdos249257.card_divisors_le_divisorSubpowerConst_mul_rpow in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem card_divisors_le_divisorSubpowerConst_mul_rpow
-    (n k : ℕ) (hk : 1 ≤ k) :
-    (n.divisors.card : ℝ) ≤
-      (divisorSubpowerConst k : ℝ) *
-        (n : ℝ) ^ ((k : ℝ)⁻¹) := by
-  sorry
-/-- States record:257rig-i4b from the long record for Erdős problem #257. Transported from Erdos249257.card_divisors_pow_le_divisorSubpowerConst_pow_mul in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem card_divisors_pow_le_divisorSubpowerConst_pow_mul
-    (n k : ℕ) (hn : 0 < n) (hk : 1 ≤ k) :
-    n.divisors.card ^ k ≤ divisorSubpowerConst k ^ k * n := by
-  sorry
-end PalomarCorpus.E257.PaperStatementsAF
-
-namespace PalomarCorpus.E257.PaperStatementsAO
-open Filter
-open Topology
-open scoped ArithmeticFunction.Omega
-export PalomarCorpus.E257_30.Shared (supportCoeff)
-/-- The signed coefficient layer between exact `p`-adic levels `e-1` and `e`. Local copy of Erdos249257.MaximalOmegaLayer.primePowerLayer, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def primePowerLayer (p e : ℕ) (g : ℕ → ℤ) (n : ℕ) : ℤ :=
-  g (p ^ e * n) - g (p ^ (e - 1) * n)
-/-- The two-signature mixed layer. Further list-level iteration can use this as its checked algebraic step without committing to a factorization API. Local copy of Erdos249257.MaximalOmegaLayer.mixedPrimePowerLayerTwo, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def mixedPrimePowerLayerTwo
-    (p e q f : ℕ) (g : ℕ → ℤ) (n : ℕ) : ℤ :=
-  primePowerLayer q f (primePowerLayer p e g) n
-/-- Integer-valued packaging of the support divisor-count coefficient. Local copy of Erdos249257.SupportDilationDifferences.supportCoeffInt, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def supportCoeffInt (A : Set ℕ) (n : ℕ) : ℤ :=
-  supportCoeff A n
-/-- States record:257rig-i5 from the long record for Erdős problem #257. Transported from Erdos249257.MaximalOmegaLayer.mixedPrimePowerLayerTwo_twelve_fixture in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem mixedPrimePowerLayerTwo_twelve_fixture :
-    mixedPrimePowerLayerTwo 2 2 3 1
-      (supportCoeffInt ({12} : Set ℕ)) 1 = 1 := by
-  sorry
-end PalomarCorpus.E257.PaperStatementsAO
-
-namespace PalomarCorpus.E257.PaperStatementsAR
-open Filter
-open Set
-open scoped ENNReal
-open MeasureTheory
-open Topology
-open scoped BigOperators
-/-- The exact rational Mersenne weight `1 / (2^n - 1)`. Its meaningful support indices are positive; at index zero Lean's division convention gives zero. Local copy of Erdos249257.mersenneWeightRat, restated so the compared statements elaborate against Mathlib alone. -/
+/-- The integer half carry attached to a support A, namely the binary affine orbit started at 1 and driven by the divisor incidence coefficients of A shifted by one, so that the orbit at n+1 is twice the orbit at n minus the number of divisors of n+2 lying in A; the shift and the recursion index compose, so the coefficient consumed at step n+1 is the one at n+2. -/
+noncomputable def integerHalfCarry (A : Set ℕ) : ℕ → ℤ :=
+  affineBinaryOrbit (fun n : ℕ ↦ (supportCoeff A (n + 1) : ℤ)) 1
+/-- The canonical integer half carry measured relative to the signed Möbius solution. Index `N` corresponds to the packet's state `e_{N+1}`. Local copy of Erdos249257.HalfCarryReachability.mobiusCenteredHalfCarry, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def mobiusCenteredHalfCarry (A : Set ℕ) (N : ℕ) : ℤ :=
+  integerHalfCarry A N - 1
+/-- Integer numerator of the frozen coefficient window. The recurrence uses the binary weights `2^(J-i)` without division. Local copy of Erdos249257.HalfCylinderFiniteShadow.finiteCoeffWindowNumerator, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def finiteCoeffWindowNumerator
+    (A : Set ℕ) (n : ℕ) : ℕ → ℕ
+  | 0 => 0
+  | J + 1 =>
+      2 * finiteCoeffWindowNumerator A n J +
+        supportCoeff A (n + J + 1)
+/-- The greedy Boolean word for an integer subset sum problem: given a list of weights in the order presented and a capacity, take a weight when it is at most the current capacity and subtract it, otherwise skip it and keep the capacity. -/
+noncomputable def integerGreedyBits : List ℕ → ℕ → List Bool
+  | [], _ => []
+  | w :: ws, C =>
+      if w ≤ C then
+        true :: integerGreedyBits ws (C - w)
+      else
+        false :: integerGreedyBits ws C
+/-- The total weight selected by a Boolean word, namely the sum of those weights whose corresponding entry of the word is true, with the recursion stopping at the end of either list. -/
+noncomputable def weightedBoolSum : List ℕ → List Bool → ℕ
+  | w :: ws, true :: bs => w + weightedBoolSum ws bs
+  | _ :: ws, false :: bs => weightedBoolSum ws bs
+  | _, _ => 0
+/-- The capacity left unpaid after the greedy Boolean word has been applied to a weight list, namely the capacity minus the weight it selects. -/
+noncomputable def integerGreedyRemainder (weights : List ℕ) (C : ℕ) : ℕ :=
+  C - weightedBoolSum weights (integerGreedyBits weights C)
+/-- The integer capacity of the seam subset sum problem at row s, namely 2 raised to the exponent 2s minus 1, less 2 to the power s; both the exponent subtraction and the outer subtraction are truncated natural subtraction, so the value is 0 at s = 0 and at s = 1. -/
+noncomputable def seamSubsetTarget (s : ℕ) : ℕ :=
+  2 ^ (2 * s - 1) - 2 ^ s
+/-- The truncated integer Mersenne weight at seam row s and rank d, namely the natural number quotient of 4 to the power s by 2 to the power d minus 1; at d = 0 the divisor is 0 and the value is 0. -/
+noncomputable def truncatedMersenneWeight (s d : ℕ) : ℕ :=
+  4 ^ s / (2 ^ d - 1)
+/-- The list of truncated Mersenne weights at seam row s for the ranks from the given starting index up to s minus 1, in increasing rank order. -/
+noncomputable def seamWeightsFrom (s : ℕ) : ℕ → List ℕ
+  | d =>
+      if h : d < s then
+        truncatedMersenneWeight s d :: seamWeightsFrom s (d + 1)
+      else
+        []
+termination_by d => s - d
+decreasing_by omega
+/-- The seam weight list at row s, namely the truncated Mersenne weights for ranks 2 up to s minus 1. -/
+noncomputable def seamWeights (s : ℕ) : List ℕ :=
+  seamWeightsFrom s 2
+/-- The greedy remainder of the seam subset sum problem at row s, namely the seam capacity minus the total weight selected greedily from the seam weight list. -/
+noncomputable def seamIntegerGreedyRemainder (s : ℕ) : ℕ :=
+  integerGreedyRemainder (seamWeights s) (seamSubsetTarget s)
+/-- Local definition stemBitsFrom, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def stemBitsFrom (s : ℕ) (P : Finset ℕ) : ℕ → List Bool
+  | d =>
+      if h : d < s then
+        decide (d ∈ P) :: stemBitsFrom s P (d + 1)
+      else
+        []
+termination_by d => s - d
+decreasing_by omega
+/-- Local definition stemBits, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def stemBits (s : ℕ) (P : Finset ℕ) : List Bool :=
+  stemBitsFrom s P 2
+/-- The real Mersenne weight 1 divided by 2 to the power n minus 1; at n = 0 the value is 0 because division by zero is zero here. -/
+noncomputable def mersenneWeight (n : ℕ) : ℝ :=
+  1 / ((2 : ℝ) ^ n - 1)
+/-- The remainder left by the greedy Mersenne rule applied to a nonnegative real x through rank n: it starts at x and, at each rank n+1, subtracts the weight 1 divided by 2 to the power n+1 minus 1 exactly when that weight is at most the current remainder. -/
+noncomputable def greedyMersenneRemainder (x : ℝ) : ℕ → ℝ
+  | 0 => x
+  | n + 1 =>
+      if mersenneWeight (n + 1) ≤ greedyMersenneRemainder x n then
+        greedyMersenneRemainder x n - mersenneWeight (n + 1)
+      else
+        greedyMersenneRemainder x n
+/-- The rational Mersenne weight 1 divided by 2 to the power n minus 1, taken in the rationals; at n = 0 the value is 0. -/
 noncomputable def mersenneWeightRat (n : ℕ) : ℚ :=
   1 / ((2 : ℚ) ^ n - 1)
-/-- The exact finite Mersenne value of a Boolean lower support. Local copy of Erdos249257.localMersennePrefixValue, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def localMersennePrefixValue (D : Finset ℕ) : ℚ :=
-  ∑ d ∈ D, mersenneWeightRat d
-/-- States record:257bm-i-cross2 from the long record for Erdős problem #257. Transported from Erdos249257.exists_first_localMersenne_crossing in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem exists_first_localMersenne_crossing
-    {E : Finset ℕ}
-    (hE : ∀ d ∈ E, 2 ≤ d)
-    (habove : (1 / 2 : ℚ) < localMersennePrefixValue E) :
-    ∃ c : ℕ,
-      c ∈ E ∧
-      4 ≤ c ∧
-      localMersennePrefixValue (E.filter fun d ↦ d < c) < (1 / 2 : ℚ) ∧
-      (1 / 2 : ℚ) <
-        localMersennePrefixValue (insert c (E.filter fun d ↦ d < c)) := by
+/-- The rational greedy Mersenne remainder of a rational target x through rank n, computed exactly in the rationals: it starts at x and at each rank n+1 subtracts the rational weight 1 divided by 2 to the power n+1 minus 1 exactly when that weight is at most the current remainder. -/
+noncomputable def greedyMersenneRemainderRat (x : ℚ) : ℕ → ℚ
+  | 0 => x
+  | n + 1 =>
+      if mersenneWeightRat (n + 1) ≤ greedyMersenneRemainderRat x n then
+        greedyMersenneRemainderRat x n - mersenneWeightRat (n + 1)
+      else
+        greedyMersenneRemainderRat x n
+/-- Positive exponents selected through a finite exact-rational greedy run. Local copy of Erdos249257.greedyMersennePrefixRat, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def greedyMersennePrefixRat (x : ℚ) (n : ℕ) : Finset ℕ :=
+  (((Finset.range n).filter fun k =>
+      mersenneWeightRat (k + 1) ≤ greedyMersenneRemainderRat x k).image
+    fun k => k + 1)
+/-- Local copy of Erdos249257.halfGreedyPrefixSupport, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def halfGreedyPrefixSupport (n : ℕ) : Finset ℕ :=
+  greedyMersennePrefixRat (1 / 2 : ℚ) n
+/-- Signed frozen-prefix margin. Its nonnegativity says that the first `J` future divisor-incidence rows cover the centered carry at depth `k`. Local copy of Erdos249257.greedyHalfFrozenMargin, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def greedyHalfFrozenMargin (k J : ℕ) : ℤ :=
+  (finiteCoeffWindowNumerator
+      (↑(halfGreedyPrefixSupport k) : Set ℕ) (k + 1) J : ℤ) -
+    (2 : ℤ) ^ J *
+      mobiusCenteredHalfCarry
+        (↑(halfGreedyPrefixSupport k) : Set ℕ) k
+/-- States record:257bm-c14 from the long record for Erdős problem #257. Transported from Erdos249257.skipped_fullShell_neg_iff_alignment_and_seamRemainder_pos in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem skipped_fullShell_neg_iff_alignment_and_seamRemainder_pos
+    (n : ℕ) (hn : 3 ≤ n)
+    (hskip : ¬ mersenneWeight n ≤
+      greedyMersenneRemainder (1 / 2 : ℝ) (n - 1)) :
+    greedyHalfFrozenMargin (n - 1) n < 0 ↔
+      stemBits n (halfGreedyPrefixSupport (n - 1)) =
+          integerGreedyBits (seamWeights n) (seamSubsetTarget n) ∧
+        1 ≤ seamIntegerGreedyRemainder n := by
   sorry
-end PalomarCorpus.E257.PaperStatementsAR
-
-namespace PalomarCorpus.E257.PaperStatementsAM
-open Filter
-open Set
-open Topology
-open scoped ENNReal
-open MeasureTheory
-export PalomarCorpus.E257_30.Shared (mersenneTail mersenneWeight)
-/-- The positive gap between one Mersenne weight and the tail after it. Local copy of Erdos249257.mersenneGap, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def mersenneGap (n : ℕ) : ℝ :=
-  mersenneWeight n - mersenneTail n
-/-- States record:257hg-i2 from the long record for Erdős problem #257. Transported from Erdos249257.mersenneGap_le in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem mersenneGap_le {n : ℕ} (hn : 0 < n) :
-    mersenneGap n ≤ (2 / 3 : ℝ) * ((1 : ℝ) / 4) ^ n + 3 * ((1 : ℝ) / 8) ^ n := by
-  sorry
-/-- States record:257hg-i2 from the long record for Erdős problem #257. Transported from Erdos249257.summable_mersenneGap_shift in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem summable_mersenneGap_shift (N : ℕ) :
-    Summable (fun k : ℕ => mersenneGap (N + k + 1)) := by
-  sorry
-/-- States record:257hg-i4 from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_exact_mass_threshold in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem paper_exact_mass_threshold {k u L a : ℕ}
-    (hk : 1 ≤ k) (hu : 0 < u) (ha : 0 < a)
-    (hdecomp : 2 ^ k * u + a = 2 * L + u) :
-    ((u : ℝ) / (2 * L) ≤ mersenneTail k ↔
-        (mersenneTail k)⁻¹ - ((2 : ℝ) ^ k - 1) ≤ (a : ℝ) / u) ∧
-      0 < (mersenneTail k)⁻¹ - ((2 : ℝ) ^ k - 1) ∧
-      (mersenneTail k)⁻¹ - ((2 : ℝ) ^ k - 1) < 2 / 3 := by
-  sorry
-/-- States record:257hg-i4 from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_sharp_skip_safe_actual_tail in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem paper_sharp_skip_safe_actual_tail {k u L a : ℕ}
-    (hk : 1 ≤ k) (hu : 0 < u) (ha : 0 < a)
-    (hdecomp : 2 ^ k * u + a = 2 * L + u)
-    (hsharp : 2 * u ≤ 3 * a) :
-    (u : ℝ) / (2 * L) < mersenneTail k := by
-  sorry
-end PalomarCorpus.E257.PaperStatementsAM
-
-namespace PalomarCorpus.E257.PaperStatementsAA
-export PalomarCorpus.E257_30.Shared (mersenneTailLB3)
-/-- States record:257hg-i4 from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_dyadic_skip_test_iff in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem paper_dyadic_skip_test_iff {k u L a : ℕ}
-    (hk : 1 ≤ k) (hu : 0 < u) (ha : 0 < a)
-    (hdecomp : 2 ^ k * u + a = 2 * L + u) :
-    ((u : ℝ) / (2 * L) ≤ 1 / 2 ^ k) ↔ u ≤ a := by
-  sorry
-/-- States record:257hg-i4 from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_sharp_gives_three_over_three_t_sub_one in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem paper_sharp_gives_three_over_three_t_sub_one {k u L a : ℕ}
-    (hk : 1 ≤ k) (hu : 0 < u) (ha : 0 < a)
-    (hdecomp : 2 ^ k * u + a = 2 * L + u) (hsharp : 2 * u ≤ 3 * a) :
-    (u : ℝ) / (2 * L) ≤ 3 / (3 * (2 : ℝ) ^ k - 1) := by
-  sorry
-/-- States record:257hg-i4 from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_sharp_skip_safe_lb3 in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem paper_sharp_skip_safe_lb3 {k u L a : ℕ}
-    (hk : 1 ≤ k) (hu : 0 < u) (ha : 0 < a)
-    (hdecomp : 2 ^ k * u + a = 2 * L + u)
-    (hsharp : 2 * u ≤ 3 * a) :
-    (u : ℝ) / (2 * L) < mersenneTailLB3 k := by
-  sorry
-/-- States record:257hg-i4 from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_sharp_strictly_weaker_realizable in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem paper_sharp_strictly_weaker_realizable :
-    ∃ k u L a : ℕ, 1 ≤ k ∧ 0 < u ∧ 0 < a ∧
-      2 ^ k * u + a = 2 * L + u ∧ 2 * u ≤ 3 * a ∧ ¬ u ≤ a := by
-  sorry
-/-- States record:257hg-i4 from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_sharp_weaker_than_dyadic in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem paper_sharp_weaker_than_dyadic {u a : ℕ} (h : u ≤ a) : 2 * u ≤ 3 * a := by
-  sorry
-/-- States record:257hg-i4 from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_three_channel_margin_identity in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem paper_three_channel_margin_identity {t : ℝ} (ht : 2 ≤ t) :
-    (1 / t + 1 / (3 * t ^ 2) + 1 / (7 * t ^ 3)) - 3 / (3 * t - 1) =
-        (2 * t - 3) / (21 * t ^ 3 * (3 * t - 1)) ∧
-      0 < (2 * t - 3) / (21 * t ^ 3 * (3 * t - 1)) := by
-  sorry
-/-- States record:257hg-i4 from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_two_channels_insufficient in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem paper_two_channels_insufficient :
-    1 / (2 : ℝ) + 1 / (3 * (2 : ℝ) ^ 2) < 3 / (3 * (2 : ℝ) - 1) := by
-  sorry
-end PalomarCorpus.E257.PaperStatementsAA
-
-namespace PalomarCorpus.E257.PaperStructuresH
-export PalomarCorpus.E257_30.Shared (mersenneTailLB3)
-/-- States record:257hg-i5 from the long record for Erdős problem #257. Transported from Erdos249257.HalfGreedyFatalGap.three_le_of_fatal_of_odd in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem three_le_of_fatal_of_odd {k u L a : ℕ}
-    (hk : 1 ≤ k) (hu : 0 < u) (ha : 0 < a) (hodd : Odd u)
-    (hdecomp : 2 ^ k * u + a = 2 * L + u)
-    (T : ℝ) (hT : mersenneTailLB3 k ≤ T)
-    (hfatal : T < (u : ℝ) / (2 * L)) :
-    3 ≤ u := by
-  sorry
-/-- States record:257hg-i5 from the long record for Erdős problem #257. Transported from Erdos249257.HalfGreedyFatalGap.two_le_of_fatal in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem two_le_of_fatal {k u L a : ℕ}
-    (hk : 1 ≤ k) (hu : 0 < u) (ha : 0 < a)
-    (hdecomp : 2 ^ k * u + a = 2 * L + u)
-    (T : ℝ) (hT : mersenneTailLB3 k ≤ T)
-    (hfatal : T < (u : ℝ) / (2 * L)) :
-    2 ≤ u := by
-  sorry
-/-- States record:257hg-i5 from the long record for Erdős problem #257. Transported from Erdos249257.HalfGreedyFatalGap.unitNumerator_skipSafe in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem unitNumerator_skipSafe {k u L a : ℕ}
-    (hk : 1 ≤ k) (ha : 0 < a)
-    (hdecomp : 2 ^ k * 1 + a = 2 * L + 1) :
-    (1 : ℝ) / (2 * L) < mersenneTailLB3 k := by
-  sorry
-end PalomarCorpus.E257.PaperStructuresH
-
-namespace PalomarCorpus.E257.PaperStructuresV
-open scoped ENNReal
-open Filter
-open Set
-open MeasureTheory
-open Topology
-export PalomarCorpus.E257_30.Shared (mersenneTail mersenneWeight)
-/-- States record:257hg-i5 from the long record for Erdős problem #257. Transported from Erdos249257.HalfGreedyFatalGap.unitNumerator_skipSafe_actualTail in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem unitNumerator_skipSafe_actualTail {k u L a : ℕ}
-    {k L a : ℕ}
-    (hk : 1 ≤ k) (ha : 0 < a)
-    (hdecomp : 2 ^ k * 1 + a = 2 * L + 1) :
-    (1 : ℝ) / (2 * L) < mersenneTail k := by
-  sorry
-end PalomarCorpus.E257.PaperStructuresV
+end PalomarCorpus.E257.PaperStructuresBJ

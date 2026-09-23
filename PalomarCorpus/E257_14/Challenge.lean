@@ -9,183 +9,281 @@ import Mathlib
 set_option autoImplicit false
 
 /-!
-# Erdős #257, record section 6.1: conditional membership tests (part 5 of 5)
+# Erdős #257, record section 6.1: conditional membership tests (part 4 of 6)
 
 Each theorem below restates, against Mathlib alone, a theorem of the Lean development
 for Erdős problem #257, in the order the papers state them. The definitions a statement
 uses are copied in, and each declaration's documentation names the paper statement and
-the source declaration it comes from. Erdős problem #257 remains open, and no theorem in
-this entry decides it.
+the source declaration it comes from. Some theorems below are lemmas or proof fields
+that the copied definitions name, and their documentation says so; the papers state none
+of them, and the Solution proves each from the source. Erdős problem #257 remains open,
+and no theorem in this entry decides it.
 -/
 
+open Set
 open Filter
-open Topology
 open scoped BigOperators
+open Topology
 
-namespace PalomarCorpus.E257.PaperStatementsAG
+namespace PalomarCorpus.E257_14.Shared
+/-- The binary tail of a coefficient sequence c beyond scale N, namely the sum over j at least 0 of c at N+j+1 divided by 2 to the power j+1. -/
+noncomputable def binaryCoeffTail (c : ℕ → ℕ) (N : ℕ) : ℝ :=
+  ∑' j : ℕ, (c (N + j + 1) : ℝ) / (2 : ℝ) ^ (j + 1)
+/-- **The support coefficient** `f_A(n) = #{d ∣ n : d ∈ A}`, the Dirichlet incidence `1_A * 1` of a support set `A ⊆ ℕ`. This is the coefficient in which Erdős #257 is actually stated: `∑_{a∈A} 1/(b^a - 1) = ∑_n f_A(n)/b^n`. Full support gives `f_ℕ = τ`; primes give `ω`; prime powers give `Ω`. Local copy of Erdos249257.supportCoeff, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def supportCoeff (A : Set ℕ) (n : ℕ) : ℕ :=
+  letI := Classical.decPred fun d : ℕ => d ∈ A
+  (n.divisors.filter fun d => d ∈ A).card
+end PalomarCorpus.E257_14.Shared
+
+namespace PalomarCorpus.E257.PaperStatementsAT
+open Set
 open Filter
-open Topology
-/-- **The Erdős #257 support series** `∑_{a ∈ A} 1/(b^a - 1)`, as an indicator series over ℕ. The `a = 0` term is `1/(1-1) = 0` under real division-by-zero conventions, so supports containing `0` contribute nothing spurious. Local copy of Erdos249257.erdosSupportSeries, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def erdosSupportSeries (b : ℕ) (A : Set ℕ) : ℝ :=
-  ∑' a : ℕ, Set.indicator A (fun a => (1 : ℝ) / ((b : ℝ) ^ a - 1)) a
-/-- **The signed weighted divisor coefficient** `∑_{d ∣ n} w d` for an integer weight `w : ℕ → ℤ`, the Dirichlet incidence `w * 1` with signs. At a Nat weight (cast) this is `weightedCoeff`. Local copy of Erdos249257.intWeightedCoeff, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def intWeightedCoeff (w : ℕ → ℤ) (n : ℕ) : ℤ :=
-  ∑ d ∈ n.divisors, w d
-/-- **The signed weighted Erdős series** `∑_a w(a)/(b^a - 1)` for an integer weight. The `a = 0` term is junk-safe (`w(0)/0 = 0`). At a cast Nat weight this is `weightedErdosSeries`; mixed-sign rational coefficient series reduce to it by clearing denominators. Local copy of Erdos249257.intWeightedErdosSeries, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def intWeightedErdosSeries (b : ℕ) (w : ℕ → ℤ) : ℝ :=
-  ∑' a : ℕ, ((w a : ℤ) : ℝ) / ((b : ℝ) ^ a - 1)
-/-- States thm:multiples-support from the long record for Erdős problem #257. Transported from Erdos249257.erdosSupportSeries_multiples_eq_pow_base_full_support in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem erdosSupportSeries_multiples_eq_pow_base_full_support
-    (b d : ℕ) (hb : 2 ≤ b) (hd : 1 ≤ d) :
-    erdosSupportSeries b {n : ℕ | d ∣ n}
-      = ∑' k : ℕ, (1 : ℝ) / (((b : ℝ) ^ d) ^ (k + 1) - 1) := by
-  sorry
-/-- States thm:factorial-twopow-support from the long record for Erdős problem #257. Transported from Erdos249257.irrational_erdosSum_two_pow_support in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem irrational_erdosSum_two_pow_support (b : ℕ) (hb : 2 ≤ b) :
-    Irrational (∑' k, (1 : ℝ) / ((b : ℝ) ^ (2 ^ k) - 1)) := by
-  sorry
-/-- States thm:multiples-support from the long record for Erdős problem #257. Transported from Erdos249257.irrational_erdosSupportSeries_multiples in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem irrational_erdosSupportSeries_multiples (b d : ℕ) (hb : 2 ≤ b) (hd : 1 ≤ d) :
-    Irrational (erdosSupportSeries b {n : ℕ | d ∣ n}) := by
-  sorry
-/-- States thm:residue-odd from the long record for Erdős problem #257. Transported from Erdos249257.irrational_erdosSupportSeries_residueClass in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem irrational_erdosSupportSeries_residueClass
-    (b m c : ℕ) (hb : 2 ≤ b) (hm : 0 < m) :
-    Irrational (erdosSupportSeries b {n : ℕ | n % m = c % m}) := by
-  sorry
-/-- States thm:signed-periodic from the long record for Erdős problem #257. Transported from Erdos249257.irrational_intWeightedErdosSeries_periodic_of_coeff_nonneg_of_frequently_ne_zero in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem irrational_intWeightedErdosSeries_periodic_of_coeff_nonneg_of_frequently_ne_zero
-    (b m : ℕ) (w : ℕ → ℤ) (hb : 2 ≤ b) (hm : 0 < m)
-    (hper : ∀ n : ℕ, w (n + m) = w n)
-    (hc0 : ∀ n : ℕ, 0 < n → 0 ≤ intWeightedCoeff w n)
-    (hne : ∀ N : ℕ, ∃ n : ℕ, N < n ∧ intWeightedCoeff w n ≠ 0) :
-    Irrational (intWeightedErdosSeries b w) := by
-  sorry
-/-- States thm:signed-periodic from the long record for Erdős problem #257. Transported from Erdos249257.irrational_intWeightedErdosSeries_periodic_of_coeff_nonpos_of_frequently_ne_zero in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem irrational_intWeightedErdosSeries_periodic_of_coeff_nonpos_of_frequently_ne_zero
-    (b m : ℕ) (w : ℕ → ℤ) (hb : 2 ≤ b) (hm : 0 < m)
-    (hper : ∀ n : ℕ, w (n + m) = w n)
-    (hc0 : ∀ n : ℕ, 0 < n → intWeightedCoeff w n ≤ 0)
-    (hne : ∀ N : ℕ, ∃ n : ℕ, N < n ∧ intWeightedCoeff w n ≠ 0) :
-    Irrational (intWeightedErdosSeries b w) := by
-  sorry
-/-- States thm:signed-periodic from the long record for Erdős problem #257. Transported from Erdos249257.irrational_or_bpow_mul_eq_intCast_intWeightedErdosSeries_periodic in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem irrational_or_bpow_mul_eq_intCast_intWeightedErdosSeries_periodic
-    (b m : ℕ) (w : ℕ → ℤ) (hb : 2 ≤ b) (hm : 0 < m)
-    (hper : ∀ n : ℕ, w (n + m) = w n) :
-    Irrational (intWeightedErdosSeries b w)
-      ∨ ∃ (k : ℕ) (z : ℤ), (b : ℝ) ^ k * intWeightedErdosSeries b w = (z : ℝ) := by
-  sorry
-end PalomarCorpus.E257.PaperStatementsAG
-
-namespace PalomarCorpus.E257.PaperStatementsAD
 open scoped BigOperators
-/-- `Hₜ = lcm(1, ..., t)`. The interval avoids inserting zero into the finite LCM. Local copy of Erdos249257.MersenneShadowCyclotomicNoncollapse.lcmHeight, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def lcmHeight (t : ℕ) : ℕ :=
-  (Finset.Icc 1 t).lcm (fun n ↦ n)
-/-- Prime indices in the development's upper half `(t/2, t]`. Local copy of Erdos249257.MersenneShadowCyclotomicNoncollapse.upperHalfPrimes, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def upperHalfPrimes (t : ℕ) : Finset ℕ :=
-  (Finset.Ioc (t / 2) t).filter Nat.Prime
-/-- The Mersenne denominator at exponent `n`. Local copy of Erdos249257.RadicalMobiusShadow.mersenne, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def mersenne (n : ℕ) : ℕ := 2 ^ n - 1
-/-- The integral numerator, written as its squarefree-divisor expansion. For `s ⊆ primeFactors(r)`, put `d = ∏ p ∈ s, p`. Then the summand is `(-1)^|s| (r/d) ((2^r-1)/(2^d-1))`. This is exactly the nonzero part of `Σ_{d ∣ r} μ(d) (r/d) ((2^r-1)/(2^d-1))`: nonsquarefree divisors have Möbius coefficient zero. The subset form makes that finite support explicit and keeps the definition executable without factoring irrelevant divisors. Local copy of Erdos249257.RadicalMobiusShadow.mobiusNumerator, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def mobiusNumerator (r : ℕ) : ℤ :=
-  ∑ s ∈ r.primeFactors.powerset,
-    (-1 : ℤ) ^ s.card *
-      ((r / s.prod id : ℕ) : ℤ) *
-        (((mersenne r) / (mersenne (s.prod id)) : ℕ) : ℤ)
-/-- The unscaled radical shadow `B(r) = M_r / (2^r - 1)`. Local copy of Erdos249257.RadicalMobiusShadow.baseMobiusShadow, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def baseMobiusShadow (r : ℕ) : ℚ :=
-  Rat.divInt (mobiusNumerator r) (mersenne r : ℤ)
-/-- The squarefree kernel used by the numeric shadow: the product of the distinct prime factors of `n`. For `n = 0` this convention gives `1`; all development-facing scaling theorems assume `0 < n`. Local copy of Erdos249257.RadicalMobiusShadow.squarefreeKernel, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def squarefreeKernel (n : ℕ) : ℕ := ∏ p ∈ n.primeFactors, p
-/-- The numeric shadow at an arbitrary scale. By construction it only sees the distinct prime factors of `H`. Local copy of Erdos249257.RadicalMobiusShadow.numericMobiusShadow, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def numericMobiusShadow (H : ℕ) : ℚ :=
-  baseMobiusShadow (squarefreeKernel H) / (squarefreeKernel H : ℚ)
-/-- The paper's integral Möbius numerator `A_r = ∑_{d ∣ r} μ(d) (r/d) (M_r / M_d)`. Local copy of ErdosProblems.Erdos257.PaperCompleteR21.paperA, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def paperA (r : ℕ) : ℤ :=
-  ∑ d ∈ r.divisors,
-    ArithmeticFunction.moebius d * (((r / d : ℕ)) : ℤ) *
-      (((mersenne r /
-        mersenne d : ℕ)) : ℤ)
-/-- The paper's finite rational sum `B(r) = ∑_{d ∣ r} μ(d)(r/d) / (2^d - 1)`. Local copy of ErdosProblems.Erdos257.PaperCompleteR21.paperB, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def paperB (r : ℕ) : ℚ :=
-  ∑ d ∈ r.divisors,
-    ((ArithmeticFunction.moebius d : ℤ) : ℚ) * ((r : ℚ) / (d : ℚ)) /
-      ((2 : ℚ) ^ d - 1)
-/-- States thm:mersenne-channel-growth from the long record for Erdős problem #257. Transported from Erdos249257.MersenneShadowDenominatorGrowth.lcmHeight_scaledMobiusShadow_den_lower_bound in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem lcmHeight_scaledMobiusShadow_den_lower_bound
-    {t : ℕ} (ht : 5 ≤ t) :
-    2 ^ (t / 2) ≤
-      ((lcmHeight t : ℚ) *
-        numericMobiusShadow (lcmHeight t)).den := by
+open Topology
+export PalomarCorpus.E257_14.Shared (binaryCoeffTail supportCoeff)
+/-- States thm:middle-allright-defect from the long record for Erdős problem #257. Transported from Erdos249257.binaryCoeffTail_supportCoeff_coe_finset_le_card in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem binaryCoeffTail_supportCoeff_coe_finset_le_card
+    (F : Finset ℕ) (N : ℕ) :
+    binaryCoeffTail (supportCoeff (↑F : Set ℕ)) N ≤ (F.card : ℝ) := by
   sorry
-/-- States thm:mersenne-channel-growth from the long record for Erdős problem #257. Transported from Erdos249257.MersenneShadowDenominatorGrowth.upperHalfMersenneProduct_lower_bound in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem upperHalfMersenneProduct_lower_bound {t : ℕ} (ht : 5 ≤ t) :
-    2 ^ (t / 2) ≤
-      ∏ p ∈ upperHalfPrimes t, mersenne p := by
+end PalomarCorpus.E257.PaperStatementsAT
+
+namespace PalomarCorpus.E257.PaperStructuresCE
+open Set
+open Filter
+open scoped BigOperators
+open Topology
+export PalomarCorpus.E257_14.Shared (binaryCoeffTail supportCoeff)
+/-- Local definition PerturbedFamily, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+structure PerturbedFamily (α : Type*) where
+  oldSum : α → ℕ
+  pulse : α → ℕ
+  gap : ℕ
+  pulseCap : ℕ
+  gap_pos : 0 < gap
+  pulse_le : ∀ x, pulse x ≤ pulseCap
+  oldSum_injective : Function.Injective oldSum
+  separated : ∀ {x y}, oldSum x < oldSum y →
+    oldSum x + gap ≤ oldSum y
+  pulseCap_lt_three_gap : pulseCap < 3 * gap
+/-- Local definition AdjacentCut, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+structure PerturbedFamily.AdjacentCut {α : Type*} (F : PerturbedFamily α) (C : ℕ) where
+  below : α
+  above : α
+  below_admissible : F.oldSum below ≤ C
+  below_maximal : ∀ x, F.oldSum x ≤ C → F.oldSum x ≤ F.oldSum below
+  above_strict : C < F.oldSum above
+  above_minimal : ∀ x, C < F.oldSum x → F.oldSum above ≤ F.oldSum x
+/-- Local definition abovePulse, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def PerturbedFamily.AdjacentCut.abovePulse {α : Type*} {F : PerturbedFamily α} {C : ℕ} (K : F.AdjacentCut C) : ℕ := F.pulse K.above
+/-- Local definition belowPulse, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def PerturbedFamily.AdjacentCut.belowPulse {α : Type*} {F : PerturbedFamily α} {C : ℕ} (K : F.AdjacentCut C) : ℕ := F.pulse K.below
+/-- Local definition overshoot, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def PerturbedFamily.AdjacentCut.overshoot {α : Type*} {F : PerturbedFamily α} {C : ℕ} (K : F.AdjacentCut C) : ℕ := F.oldSum K.above - C
+/-- Local definition remainder, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def PerturbedFamily.AdjacentCut.remainder {α : Type*} {F : PerturbedFamily α} {C : ℕ} (K : F.AdjacentCut C) : ℕ := C - F.oldSum K.below
+/-- Local definition successorCarries, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def PerturbedFamily.AdjacentCut.successorCarries {α : Type*} {F : PerturbedFamily α} {C : ℕ} (K : F.AdjacentCut C) : Prop :=
+  4 * K.overshoot + K.abovePulse ≤ F.gap
+/-- Local definition terminalWeight, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def PerturbedFamily.AdjacentCut.terminalWeight {α : Type*} {F : PerturbedFamily α} {C : ℕ} (_K : F.AdjacentCut C) : ℕ := 2 * F.gap + 4
+/-- Local definition SeamRowWord, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable abbrev SeamRowWord (s : ℕ) := Fin (s - 2) → Bool
+/-- Local definition extend, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def SeamRowWord.extend {s : ℕ} (b : SeamRowWord s) (beta : Bool) :
+    SeamRowWord (s + 1) :=
+  fun i => if h : (i : ℕ) < s - 2 then b ⟨i, h⟩ else beta
+/-- Local definition ofList, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def SeamRowWord.ofList {s : ℕ} (bits : List Bool) (hlen : bits.length = s - 2) :
+    SeamRowWord s :=
+  fun i => bits.get (Fin.cast hlen.symm i)
+/-- Local definition toNatWord, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def SeamRowWord.toNatWord {s : ℕ} (b : SeamRowWord s) : ℕ → Bool :=
+  fun d => if h : 2 ≤ d ∧ d < s then b ⟨d - 2, by omega⟩ else false
+/-- The exact integer weight contributed at seam rank `s` by selecting a proper divisor rank `d < s`. Local copy of Erdos249257.HalfCylinderIntegerGreedy.truncatedMersenneWeight, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def truncatedMersenneWeight (s d : ℕ) : ℕ :=
+  4 ^ s / (2 ^ d - 1)
+/-- Local definition wordWeightSum, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def wordWeightSum (s : ℕ) (b : ℕ → Bool) : ℕ :=
+  ∑ i ∈ Finset.range (s - 2),
+    if b (i + 2) then truncatedMersenneWeight s (i + 2) else 0
+/-- Proof obligation `gap_pos` of the local copy of Erdos249257.HalfCylinderIntegerGreedy.seamPerturbedFamily, stated with that definition's own parameter and field values. The definition names this theorem for the field, and the Solution proves it with the source definition's own field. -/
+theorem seamPerturbedFamily_gap_pos (s : ℕ) (hs : 3 ≤ s) :
+    let gap : ℕ := 2 ^ (s + 1);
+    0 < gap := by
   sorry
-/-- States thm:mersenne-channel-survival from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.channelProduct_coprime_mobiusNumerator_of_one_le in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem channelProduct_coprime_mobiusNumerator_of_one_le
-    {P : Finset ℕ} {t r : ℕ} (hr : Squarefree r)
-    (hprime : ∀ p ∈ P, p.Prime) (hpr : ∀ p ∈ P, p ∣ r)
-    (hupper : ∀ p ∈ P, t < 2 * p)
-    (hcut : ∀ q : ℕ, q.Prime → q ∣ r → q ≤ t) :
-    Nat.Coprime (∏ p ∈ P, mersenne p)
-      (mobiusNumerator r).natAbs := by
+/-- Proof obligation `oldSum_injective` of the local copy of Erdos249257.HalfCylinderIntegerGreedy.seamPerturbedFamily, stated with that definition's own parameter and field values. The definition names this theorem for the field, and the Solution proves it with the source definition's own field. -/
+theorem seamPerturbedFamily_oldSum_injective (s : ℕ) (hs : 3 ≤ s) :
+    let oldSum : (SeamRowWord s) → ℕ := fun b => wordWeightSum s b.toNatWord;
+    Function.Injective oldSum := by
   sorry
-/-- States thm:mersenne-channel-survival from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paperA_eq_mobiusNumerator in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem paperA_eq_mobiusNumerator {r : ℕ} (hr : Squarefree r) :
-    paperA r = mobiusNumerator r := by
+/-- Proof obligation `separated` of the local copy of Erdos249257.HalfCylinderIntegerGreedy.seamPerturbedFamily, stated with that definition's own parameter and field values. The definition names this theorem for the field, and the Solution proves it with the source definition's own field. -/
+theorem seamPerturbedFamily_separated (s : ℕ) (hs : 3 ≤ s) :
+    let oldSum : (SeamRowWord s) → ℕ := fun b => wordWeightSum s b.toNatWord;
+    let gap : ℕ := 2 ^ (s + 1);
+    ∀ {x y}, oldSum x < oldSum y → oldSum x + gap ≤ oldSum y := by
   sorry
-/-- States thm:mersenne-channel-survival from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paperB_eq_baseMobiusShadow in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem paperB_eq_baseMobiusShadow {r : ℕ} (hr : Squarefree r) :
-    paperB r = baseMobiusShadow r := by
+/-- Proof obligation `pulseCap_lt_three_gap` of the local copy of Erdos249257.HalfCylinderIntegerGreedy.seamPerturbedFamily, stated with that definition's own parameter and field values. The definition names this theorem for the field, and the Solution proves it with the source definition's own field. -/
+theorem seamPerturbedFamily_pulseCap_lt_three_gap (s : ℕ) (hs : 3 ≤ s) :
+    let gap : ℕ := 2 ^ (s + 1);
+    let pulseCap : ℕ := 2 * (s - 2);
+    pulseCap < 3 * gap := by
   sorry
-/-- States thm:mersenne-channel-survival from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paperB_eq_divInt_paperA in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem paperB_eq_divInt_paperA {r : ℕ} (hr : Squarefree r) :
-    paperB r = Rat.divInt (paperA r) (mersenne r : ℤ) := by
+/-- The quotient pulse contributed by rank d between consecutive seam rows at row s, namely 1 if d divides 2s+2, plus twice 1 if d divides 2s+1, and 0 for the nondividing cases. -/
+noncomputable def rowPulse (s d : ℕ) : ℕ :=
+  (if d ∣ 2 * s + 2 then 1 else 0) +
+    2 * (if d ∣ 2 * s + 1 then 1 else 0)
+/-- Local definition wordPulse, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def wordPulse (s : ℕ) (b : ℕ → Bool) : ℕ :=
+  ∑ i ∈ Finset.range (s - 2),
+    if b (i + 2) then rowPulse s (i + 2) else 0
+/-- Statement of Erdos249257.HalfCylinderIntegerGreedy.wordPulse_le, which a copied definition cites. It is carried as a statement so that its proof stays in the source development, and the Solution proves it by applying the source lemma. -/
+theorem wordPulse_le (s : ℕ) (b : ℕ → Bool) :
+    wordPulse s b ≤ 2 * (s - 2) := by
   sorry
-/-- States thm:mersenne-channel-survival from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_channel_factor_gcd_eq_one in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem paper_channel_factor_gcd_eq_one
-    {p q : ℕ} (hp : p.Prime) (hq : q.Prime) (hpq : p ≠ q) :
-    Nat.gcd (2 ^ p - 1) (2 ^ q - 1) = 2 ^ Nat.gcd p q - 1 ∧
-      Nat.gcd (2 ^ p - 1) (2 ^ q - 1) = 1 := by
+/-- Local definition seamPerturbedFamily, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def seamPerturbedFamily (s : ℕ) (hs : 3 ≤ s) :
+    PerturbedFamily (SeamRowWord s) where
+  oldSum b := wordWeightSum s b.toNatWord
+  pulse b := wordPulse s b.toNatWord
+  gap := 2 ^ (s + 1)
+  pulseCap := 2 * (s - 2)
+  gap_pos := @seamPerturbedFamily_gap_pos s hs
+  pulse_le b := wordPulse_le s b.toNatWord
+  oldSum_injective := @seamPerturbedFamily_oldSum_injective s hs
+  separated := @seamPerturbedFamily_separated s hs
+  pulseCap_lt_three_gap := @seamPerturbedFamily_pulseCap_lt_three_gap s hs
+/-- The integer capacity of the seam subset sum problem at row s, namely 2 raised to the exponent 2s minus 1, less 2 to the power s; both the exponent subtraction and the outer subtraction are truncated natural subtraction, so the value is 0 at s = 0 and at s = 1. -/
+noncomputable def seamSubsetTarget (s : ℕ) : ℕ :=
+  2 ^ (2 * s - 1) - 2 ^ s
+/-- Statement of Erdos249257.HalfCylinderIntegerGreedy.exists_seamWord_minimal_above, which a copied definition cites. It is carried as a statement so that its proof stays in the source development, and the Solution proves it by applying the source lemma. -/
+theorem exists_seamWord_minimal_above
+    {s : ℕ} (hs : 5 ≤ s) :
+    ∃ a : SeamRowWord s,
+      seamSubsetTarget s <
+          (seamPerturbedFamily s (by omega)).oldSum a ∧
+        ∀ x : SeamRowWord s,
+          seamSubsetTarget s <
+              (seamPerturbedFamily s (by omega)).oldSum x →
+            (seamPerturbedFamily s (by omega)).oldSum a ≤
+              (seamPerturbedFamily s (by omega)).oldSum x := by
   sorry
-/-- States thm:mersenne-channel-survival from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_channel_factors_pairwise_coprime in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem paper_channel_factors_pairwise_coprime
-    {P : Finset ℕ} (hprime : ∀ p ∈ P, p.Prime) :
-    (P : Set ℕ).Pairwise fun p q => Nat.Coprime (2 ^ p - 1) (2 ^ q - 1) := by
+/-- Descending greedy subset for an integer capacity. Local copy of Erdos249257.HalfCylinderIntegerGreedy.integerGreedyBits, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def integerGreedyBits : List ℕ → ℕ → List Bool
+  | [], _ => []
+  | w :: ws, C =>
+      if w ≤ C then
+        true :: integerGreedyBits ws (C - w)
+      else
+        false :: integerGreedyBits ws C
+/-- Statement of Erdos249257.HalfCylinderIntegerGreedy.integerGreedyBits_length, which a copied definition cites. It is carried as a statement so that its proof stays in the source development, and the Solution proves it by applying the source lemma. -/
+theorem integerGreedyBits_length (weights : List ℕ) (C : ℕ) :
+    (integerGreedyBits weights C).length = weights.length := by
   sorry
-/-- States thm:mersenne-channel-survival from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_mersenne_channel_survival in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem paper_mersenne_channel_survival
-    (P : Finset ℕ) {t h r : ℕ}
-    (ht : 1 ≤ t) (hh : 1 ≤ h) (hr1 : 1 ≤ r) (hrsf : Squarefree r)
-    (hcut : ∀ q : ℕ, q.Prime → q ∣ r → q ≤ t)
-    (hprime : ∀ p ∈ P, p.Prime) (hpr : ∀ p ∈ P, p ∣ r)
-    (hupper : ∀ p ∈ P, t < 2 * p) :
-    (∏ p ∈ P, (2 ^ p - 1)) / Nat.gcd (∏ p ∈ P, (2 ^ p - 1)) h ∣
-      ((h : ℚ) * paperB r).den := by
+/-- Local definition seamAboveWord, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def seamAboveWord (s : ℕ) (hs : 5 ≤ s) :
+    SeamRowWord s :=
+  Classical.choose (exists_seamWord_minimal_above hs)
+/-- Statement of Erdos249257.HalfCylinderIntegerGreedy.seamAboveWord_minimal, which a copied definition cites. It is carried as a statement so that its proof stays in the source development, and the Solution proves it by applying the source lemma. -/
+theorem seamAboveWord_minimal
+    {s : ℕ} (hs : 5 ≤ s) (x : SeamRowWord s)
+    (hx : seamSubsetTarget s <
+      (seamPerturbedFamily s (by omega)).oldSum x) :
+    (seamPerturbedFamily s (by omega)).oldSum (seamAboveWord s hs) ≤
+      (seamPerturbedFamily s (by omega)).oldSum x := by
   sorry
-/-- States thm:mersenne-channel-survival from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_mersenne_channel_survival_of_coprime_scale in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem paper_mersenne_channel_survival_of_coprime_scale
-    (P : Finset ℕ) {t h r : ℕ}
-    (ht : 1 ≤ t) (hh : 1 ≤ h) (hr1 : 1 ≤ r) (hrsf : Squarefree r)
-    (hcut : ∀ q : ℕ, q.Prime → q ∣ r → q ≤ t)
-    (hprime : ∀ p ∈ P, p.Prime) (hpr : ∀ p ∈ P, p ∣ r)
-    (hupper : ∀ p ∈ P, t < 2 * p)
-    (hscale : Nat.gcd (∏ p ∈ P, (2 ^ p - 1)) h = 1) :
-    (∏ p ∈ P, (2 ^ p - 1)) ∣ ((h : ℚ) * paperB r).den := by
+/-- Statement of Erdos249257.HalfCylinderIntegerGreedy.seamAboveWord_strict, which a copied definition cites. It is carried as a statement so that its proof stays in the source development, and the Solution proves it by applying the source lemma. -/
+theorem seamAboveWord_strict
+    {s : ℕ} (hs : 5 ≤ s) :
+    seamSubsetTarget s <
+      (seamPerturbedFamily s (by omega)).oldSum (seamAboveWord s hs) := by
   sorry
-/-- States thm:mersenne-channel-survival from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.upperHalfChannel_survivorProduct_dvd_den_of_one_le in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem upperHalfChannel_survivorProduct_dvd_den_of_one_le
-    (P : Finset ℕ) {t r h : ℕ} (hr : Squarefree r)
-    (hprime : ∀ p ∈ P, p.Prime) (hpr : ∀ p ∈ P, p ∣ r)
-    (hupper : ∀ p ∈ P, t < 2 * p)
-    (hcut : ∀ q : ℕ, q.Prime → q ∣ r → q ≤ t) :
-    (∏ p ∈ P, mersenne p) /
-        Nat.gcd (∏ p ∈ P, mersenne p) h ∣
-      (Rat.divInt ((h : ℤ) * mobiusNumerator r)
-        (mersenne r : ℤ)).den := by
+/-- The list of truncated Mersenne weights at seam row s for the ranks from the given starting index up to s minus 1, in increasing rank order. -/
+noncomputable def seamWeightsFrom (s : ℕ) : ℕ → List ℕ
+  | d =>
+      if h : d < s then
+        truncatedMersenneWeight s d :: seamWeightsFrom s (d + 1)
+      else
+        []
+termination_by d => s - d
+decreasing_by omega
+/-- The seam weight list at row s, namely the truncated Mersenne weights for ranks 2 up to s minus 1. -/
+noncomputable def seamWeights (s : ℕ) : List ℕ :=
+  seamWeightsFrom s 2
+/-- Statement of Erdos249257.HalfCylinderIntegerGreedy.seamWeights_length_eq, which a copied definition cites. It is carried as a statement so that its proof stays in the source development, and the Solution proves it by applying the source lemma. -/
+theorem seamWeights_length_eq (s : ℕ) :
+    (seamWeights s).length = s - 2 := by
   sorry
-end PalomarCorpus.E257.PaperStatementsAD
+/-- Local definition seamGreedyWord, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def seamGreedyWord (s : ℕ) : SeamRowWord s :=
+  SeamRowWord.ofList
+    (integerGreedyBits (seamWeights s) (seamSubsetTarget s))
+    (by rw [integerGreedyBits_length, seamWeights_length_eq])
+/-- Proof obligation `below_admissible` of the local copy of Erdos249257.HalfCylinderIntegerGreedy.seamAdjacentCut, stated with that definition's own parameter and field values. The definition names this theorem for the field, and the Solution proves it with the source definition's own field. -/
+theorem seamAdjacentCut_below_admissible (s : ℕ) (hs : 5 ≤ s) :
+    let F := (seamPerturbedFamily s (by omega));
+    let C := (seamSubsetTarget s);
+    let below := seamGreedyWord s;
+    F.oldSum below ≤ C := by
+  sorry
+/-- Proof obligation `below_maximal` of the local copy of Erdos249257.HalfCylinderIntegerGreedy.seamAdjacentCut, stated with that definition's own parameter and field values. The definition names this theorem for the field, and the Solution proves it with the source definition's own field. -/
+theorem seamAdjacentCut_below_maximal (s : ℕ) (hs : 5 ≤ s) :
+    let F := (seamPerturbedFamily s (by omega));
+    let C := (seamSubsetTarget s);
+    let below := seamGreedyWord s;
+    ∀ x, F.oldSum x ≤ C → F.oldSum x ≤ F.oldSum below := by
+  sorry
+/-- The adjacent cut view at seam row s, for s at least 5: its proposition field states that the first s minus 2 bits of the greedy word at row s+1 differ from the greedy word at row s, and its numeric field is the pulse below the seam at row s. -/
+noncomputable def seamAdjacentCut (s : ℕ) (hs : 5 ≤ s) :
+    (seamPerturbedFamily s (by omega)).AdjacentCut
+      (seamSubsetTarget s) where
+  below := seamGreedyWord s
+  above := seamAboveWord s hs
+  below_admissible := @seamAdjacentCut_below_admissible s hs
+  below_maximal := @seamAdjacentCut_below_maximal s hs
+  above_strict := seamAboveWord_strict hs
+  above_minimal := seamAboveWord_minimal hs
+/-- The binary affine orbit driven by an integer sequence a from an initial value, defined by orbit 0 equal to the initial value and orbit (n+1) equal to twice orbit n minus a at n+1. -/
+noncomputable def affineBinaryOrbit (a : ℕ → ℤ) (u0 : ℤ) : ℕ → ℤ
+  | 0 => u0
+  | n + 1 => 2 * affineBinaryOrbit a u0 n - a (n + 1)
+/-- Local definition producerCarry, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def producerCarry (A : Set ℕ) (d : ℕ) : ℤ :=
+  affineBinaryOrbit
+    (fun n : ℕ ↦ (supportCoeff A (n + 1) : ℤ)) 1 (2 * d + 1)
+/-- Local definition seamWordSupport, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def seamWordSupport {s : ℕ} (b : SeamRowWord s) : Finset ℕ :=
+  ((Finset.univ : Finset (Fin (s - 2))).filter (fun i => b i = true)).image
+    (fun i : Fin (s - 2) => (i : ℕ) + 2)
+/-- States thm:middle-allright-defect from the long record for Erdős problem #257. Transported from Erdos249257.middleProducer_allRight_forces_carry_lt_tail in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem middleProducer_allRight_forces_carry_lt_tail
+    (D : ℕ) (hD13 : 13 ≤ D)
+    (hncarry : ¬ (seamAdjacentCut D (by omega)).successorCarries)
+    (hmiddle :
+      4 * (seamAdjacentCut D (by omega)).remainder +
+            (seamPerturbedFamily D (by omega)).gap -
+            (seamAdjacentCut D (by omega)).belowPulse <
+          (seamAdjacentCut D (by omega)).terminalWeight)
+    (hright : ∀ s : ℕ, D + 1 ≤ s →
+      seamGreedyWord (s + 1) = (seamGreedyWord s).extend true) :
+    (producerCarry
+        (insert D
+          (↑(seamWordSupport
+            (seamAdjacentCut D (by omega)).below) : Set ℕ)) D : ℝ) <
+      binaryCoeffTail
+        (supportCoeff
+          (insert D
+            (↑(seamWordSupport
+              (seamAdjacentCut D (by omega)).below) : Set ℕ)))
+        (2 * D + 2) := by
+  sorry
+/-- States thm:middle-allright-defect from the long record for Erdős problem #257. Transported from Erdos249257.producerCarry_insert_seamBelowSupport_eq_middleCoordinate in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem producerCarry_insert_seamBelowSupport_eq_middleCoordinate
+    (s : ℕ) (hs : 5 ≤ s) :
+    producerCarry
+        (insert s
+          (↑(seamWordSupport (seamAdjacentCut s hs).below) : Set ℕ)) s =
+      4 * ((seamAdjacentCut s hs).remainder : ℤ) -
+        ((seamAdjacentCut s hs).belowPulse : ℤ) - 4 := by
+  sorry
+end PalomarCorpus.E257.PaperStructuresCE

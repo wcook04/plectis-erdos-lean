@@ -1,8 +1,14 @@
 import Solutions.PalomarCorpus.E249_10
 
+#print axioms PalomarCorpus.E249.PaperStatementsA.irrational_totient_series_of_lcm_diagonal_nonintegrality_supply
+#print axioms PalomarCorpus.E249.PaperStatementsA.periodLcm_diagonal_kill_iff_tail_diff_notMem_int
+#print axioms PalomarCorpus.E249.PaperStatementsAD.irrational_totient_series_iff_all_tail_diffs_nonintegral
+#print axioms PalomarCorpus.E249.PaperStatementsAJ.finite_carry_candidate_count
 #print axioms PalomarCorpus.E249.PaperStatementsAJ.nine_tenths_lt_cos_pi_div_eight
+#print axioms PalomarCorpus.E249.PaperStatementsAT.abs_tail_diff_scaled_sub_window_le
 #print axioms PalomarCorpus.E249.PaperStatementsAT.exists_certificate_of_first_harmonic_norm_bound
 #print axioms PalomarCorpus.E249.PaperStatementsAT.exists_certificate_of_first_harmonic_real_bound
+#print axioms PalomarCorpus.E249.PaperStatementsAT.finite_carry_test_sound
 #print axioms PalomarCorpus.E249.PaperStatementsAT.finite_carry_true_orbit
 #print axioms PalomarCorpus.E249.PaperStatementsAT.first_harmonic_re_bound_of_norm_bound
 #print axioms PalomarCorpus.E249.PaperStatementsAT.four_tail_checked_instance
@@ -13,5 +19,11 @@ import Solutions.PalomarCorpus.E249_10
 #print axioms PalomarCorpus.E249.PaperStatementsAT.irrational_of_first_harmonic_norm_gap
 #print axioms PalomarCorpus.E249.PaperStatementsAT.irrational_of_four_tail_supply
 #print axioms PalomarCorpus.E249.PaperStatementsAU.rational_forces_four_tail_diagonals_integral
+#print axioms PalomarCorpus.E249.PaperStatementsAU.second_difference_cell_one_eight
+#print axioms PalomarCorpus.E249.PaperStatementsAU.second_difference_certificate_sound
+#print axioms PalomarCorpus.E249.PaperStatementsAU.second_difference_error_bound
 #print axioms PalomarCorpus.E249.PaperStatementsAU.totientTail_bounds
 #print axioms PalomarCorpus.E249.PaperStatementsAU.windowDiscrepancy_diagonal_eq
+#print axioms PalomarCorpus.E249.PaperStatementsAX.finite_grid_nonintegral_pair
+#print axioms PalomarCorpus.E249.PaperStatementsAX.finite_grid_supply_irrational
+#print axioms PalomarCorpus.E249.PaperStatementsAX.paperGridNumerator_eq

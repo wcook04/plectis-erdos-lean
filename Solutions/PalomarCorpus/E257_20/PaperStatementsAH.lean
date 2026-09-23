@@ -16,14 +16,13 @@ open Topology
 /- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
 
 namespace PalomarCorpus.E257.PaperStatementsAH
-export PalomarCorpus.E257_20.Shared (mersenneGap mersenneTail mersenneWeight)
+export PalomarCorpus.E257_20.Shared (mersenneTail mersenneWeight)
 
 noncomputable def erdosBorweinMersenneConstant : ℝ :=
   mersenneTail 0
 
-noncomputable def halfTwoChannelCap (n : ℕ) : ℝ :=
-  ((1 : ℝ) / 2) ^ n
-    + (1 / 3 : ℝ) * ((1 : ℝ) / 4) ^ n
+noncomputable def mersenneGap (n : ℕ) : ℝ :=
+  mersenneWeight n - mersenneTail n
 
 theorem halfTwoChannelCap_lt_mersenneTail (n : ℕ) :
     halfTwoChannelCap n < mersenneTail n := @Erdos249257.halfTwoChannelCap_lt_mersenneTail n

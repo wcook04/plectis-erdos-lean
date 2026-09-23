@@ -22,7 +22,7 @@ open scoped BigOperators
 /- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
 
 namespace PalomarCorpus.E257.PaperStatementsAD
-export PalomarCorpus.E257_28.Shared (endpointDivisorContribution localMersenneQuotient localPrefixQuotient)
+export PalomarCorpus.E257_28.Shared (localMersenneQuotient)
 
 noncomputable def rowPulse (s d : ℕ) : ℕ :=
   (if d ∣ 2 * s + 2 then 1 else 0) +
@@ -56,8 +56,14 @@ noncomputable def squarefreeKernel (n : ℕ) : ℕ := ∏ p ∈ n.primeFactors, 
 noncomputable def numericMobiusShadow (H : ℕ) : ℚ :=
   baseMobiusShadow (squarefreeKernel H) / (squarefreeKernel H : ℚ)
 
+noncomputable def endpointDivisorContribution (D : Finset ℕ) (n : ℕ) : ℕ :=
+  (D.filter fun d ↦ d ∣ n).card
+
 noncomputable def localMersenneGeometricQuotient (M d : ℕ) : ℕ :=
   2 ^ (M % d) * ∑ j ∈ Finset.range (M / d), (2 ^ d) ^ j
+
+noncomputable def localPrefixQuotient (D : Finset ℕ) (M : ℕ) : ℕ :=
+  ∑ d ∈ D, localMersenneQuotient M d
 
 noncomputable def IsRowLower (n : ℕ) (D : Finset ℕ) : Prop :=
   D ⊆ Finset.Ico 2 n ∧

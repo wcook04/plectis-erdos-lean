@@ -1,14 +1,10 @@
 version: v0.4
 project:
-  name: 'Erdős #68, note sections 1 to A: the denominator exclusions; integer vectors for cancelling weighted sums; comparing the tail with the distance to an integer'
+  name: 'Carry and divisor-channel criteria for the factorial-minus-one reciprocal series'
   description: >-
-    This entry states 6 theorems that only the short note for Erdős problem #68 states, in sections 1 (the denominator exclusions), 2 (integer vectors for cancelling weighted sums), 5 (comparing the tail with the distance to an integer) and A (a criterion using the factorial digits of S-e+2): the theorem “exact carry characterisation” (section 1), as carry_characterisation; the theorem “an integer basis with prescribed weighted sums” (section 2), as divisor_channel_coordinates; the theorem “a finite formula for the gcd” (section 2.1), as finite_channel_moment_certificate and finite_channel_moment_certificate_eq; the proposition “a sufficient tail inequality” (section 5), as global_complementary_criterion_nat; the theorem “rationality and factorial residues” (section A), as companion_orbit_boundary.
+    For the reciprocal series with denominators n! - 1, the selected Lean theorems give an exact carry characterization of rationality, divisor-channel coordinates, and a finite gcd moment certificate. Companion-orbit and complementary tail criteria are included with their stated hypotheses. These structural results do not certify the paper's large computed denominator exclusions or resolve the irrationality question.
 
-    5 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 1 is derived from the source declaration by a short tactic proof, which certifies implication.
-
-    Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
-
-    Erdős problem #68 remains open, and no theorem in this entry decides it.
+    To state them, the Challenge copies 37 declarations of the source development: factorialGapTailTerm, factorialGapTail, factorialGapSeries, adjacentDifference, channelWeight, isolatedChannelUnit, channelScalar, IsScalarTailGcd, channelBasisColumn, channelSynthesis, finiteScalarGcd, facFloor, channelNumerator, pairwiseCollisionCore, collisionCore, compConstTerm, companionConstant, projectedResidue, complementaryProjectedResidue, endpointDenominatorLcm, endpointTailNumerator, factorialBlockBase, factorialBlockBudget, factorialGapDenominator, factorialBlockIndices, factorialBlockEndpointLcm, privateQuotient, privateModulus, factorialBlockPrivateModulus, factorialBlockScale, factorialBlockTailNumerator, factorialGapPrefix, strictFacTop, factorialGapPredecessorGap, factorialGapStepCarry, factorialMoment and strictFacTopRat.
   authors:
   - Will Cook
   license: Apache-2.0
@@ -22,25 +18,42 @@ classification:
   msc2020:
   - "11J72"
   - "11A05"
-  - "11B65"
-  - "11A07"
-  - "11J70"
 sources:
 - title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
   authors:
   - Will Cook
   type: original-proof
   relationship: other
-  note: "The compared theorems are independently restated Lean theorems proved in this repository and described in the public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos."
+  note: >-
+    Will Cook directed AI-assisted research and formalization. Sources and exact statement boundaries are listed here; no independent human proof audit or priority adjudication is asserted.
   license: Apache-2.0
   author_endorsement: participated
+- title: "Two incomparable denominator exclusions for the sum of reciprocals of n! - 1"
+  authors:
+  - "Will Cook"
+  id: "https://github.com/wcook04/plectis-erdos/blob/147f3f1da400a84dcb3013ea6cef75dc8f382b09/paper/68/erdos-68-factorial-denominator-irrationality.pdf"
+  type: "paper"
+  relationship: "background"
+  note: "paper describing selected structural theorems and separate computations. Only the statements named by this entry are selected."
+  license: "unknown"
+  author_endorsement: "participated"
+- title: "Complete reasoning record for Erdős problem 68"
+  authors:
+  - "Will Cook"
+  id: "https://github.com/wcook04/plectis-erdos/blob/147f3f1da400a84dcb3013ea6cef75dc8f382b09/paper/68/erdos68-factorial-reasoning-surface.pdf"
+  type: "paper"
+  relationship: "background"
+  note: "proof and computation record. Only the statements named by this entry are selected."
+  license: "unknown"
+  author_endorsement: "participated"
 - title: Erdős Problems catalogue
   authors:
   - Thomas F. Bloom
   id: https://www.erdosproblems.com
   type: web discussion
   relationship: background
-  note: "Catalogue numbering and status of the parent problem."
+  note: >-
+    The selected entry does not decide the unrestricted Erdős problem.
   license: unknown
   author_endorsement: not-contacted
 - title: Mathlib
@@ -111,5 +124,5 @@ review:
   status: self-assessed
   reviewers: []
   notes: >-
-    Every generated restatement was bound to a paper statement and refereed in the eight-paper coverage ledger before its wrapper was generated, and its transport proof was elaborated before the statement was accepted. The author selected the statements and is responsible for the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
+    Review the six selected theorem statements and their Solution axioms. The paper reports a full GMP carry census through m = 300000 and a continued-fraction enclosure, but says the original full executable and payload were not supplied or authenticated in that prose revision. The general Lean carry and moment theorems are not certificates of those particular computed values. No official full preflight or independent editorial review is asserted.
 acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

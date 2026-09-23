@@ -2,11 +2,18 @@
   "challenge_module": "PalomarCorpus.E1049_08.Challenge",
   "solution_module": "Solutions.PalomarCorpus.E1049_08",
   "theorem_names": [
-    "PalomarCorpus.E1049.RationalBaseBarrier.twoPow_le_rationalBaseForcingNat",
-    "PalomarCorpus.E1049.RationalBaseRegion.rational_base_measure",
-    "PalomarCorpus.E1049.RationalBaseRegion.rational_base_region",
-    "PalomarCorpus.E1049.RationalBaseRegion.thirtyone_four",
-    "PalomarCorpus.E1049.RationalBaseRegion.thirtyone_four_power_measure_lt_paper_fraction"
+    "PalomarCorpus.E1049.ArchimedeanCap.archimedean_cap",
+    "PalomarCorpus.E1049.BezoutPluckerJets.adjacent_det_zero_forces_all_det_zero",
+    "PalomarCorpus.E1049.BezoutPluckerJets.anchor_det_zero_forces_all_det_zero",
+    "PalomarCorpus.E1049.BezoutPluckerJets.binary_row_collision_of_anchor_det_zero",
+    "PalomarCorpus.E1049.BezoutPluckerJets.zmod_binary_tail_collision_of_two_three_depth",
+    "PalomarCorpus.E1049.HermitePadeNoGo.hpClearedGap_eq_zero_iff",
+    "PalomarCorpus.E1049.HermitePadeNoGo.hpClearedGap_expansion",
+    "PalomarCorpus.E1049.HermitePadeNoGo.hpClearedGap_nonpos",
+    "PalomarCorpus.E1049.HermitePadeNoGo.rectangular_hp_threshold_eq_classical_iff",
+    "PalomarCorpus.E1049.HermitePadeNoGo.rectangular_hp_threshold_le_classical",
+    "PalomarCorpus.E1049.PaperStatementsU.sharp_fixed_base_exists",
+    "PalomarCorpus.E1049.PaperStructuresAB.sharp_fixed_base"
   ],
   "permitted_axioms": [
     "propext",

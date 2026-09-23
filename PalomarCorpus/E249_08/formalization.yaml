@@ -2,9 +2,9 @@ version: v0.4
 project:
   name: 'Erdős #249, record section 6.2.1: initial implications (part 2 of 2)'
   description: >-
-    This entry states 22 theorems that the long record for Erdős problem #249 states in section 6.2.1 (initial implications): the proposition “A cyclotomic congruence” (section 6.2.1), as cyclotomic_dvd_mobiusNumeratorPolynomial_sub, jordanTotientTwo_eq_prod_primeFactors and mobiusNumerator_mod_cyclotomicEval; the proposition “Adjoining a prime: new divisors” (section 6.2.1), as cyclotomic_dvd_primeJump_new_fibre; the proposition “Adjoining a prime: existing divisors” (section 6.2.1), as cyclotomic_dvd_primeJump_old_fibre; the proposition “Lambert-series identities” (section 6.2.1), as lambertValue_eq_divisor_sum_series, alpha_divisor_sum_eq_totient and lambertValue_alpha_eq_totientSeries; the proposition “An affine combination annihilates the specified divisor terms” (section 6.2.1), as joint35_coefficient_moments, joint35_mobiusTermKernel_zero, mobiusTermKernel_affine_in_multiplier, mobiusTermKernel_moment_annihilation, joint35ConeWindow_eq, joint35_nonintegral_of_separated_window, joint35_truncation_error, totientTail_enclosure and transportResidueKernel_eq_mobiusTermKernel; the proposition “The error under composite dilation” (section 6.2.1), as composite_dilation_defect_eq_zero_of_prime_support, composite_dilation_defect_univ_six_one, composite_dilation_defect_univ_six_one_card, sum_divisors_totient_ne_totient and composite_dilation_divisor_count.
+    This entry states 26 theorems that the long record for Erdős problem #249 states in section 6.2.1 (initial implications): the proposition “A Stern-Brocot recursion with stopping” (section 6.2.1), as divisibility_mass, stopping_probability_ge_third, stopping_transition_probabilities_sum_one, cylinderMass_eq_divisibility_mass_mul, cylinder_mediant_split, cylinder_root_values and normalised_split_probabilities; the proposition “Convergence with an explicit error” (section 6.2.1), as cylinderMass_children_le, sternBrocotDepthMass_error and tendsto_sternBrocotDepthMass; the proposition “A numerator polynomial and its coefficients” (section 6.2.1), as mobiusNumeratorPolynomial_coeff and mobiusNumeratorPolynomial_coeff_pos; the proposition “Evaluation at two” (section 6.2.1), as numerator_eval_two_divisors; the proposition “Decomposition by the radical” (section 6.2.1), as radical_decomposition; the proposition “A cyclotomic congruence” (section 6.2.1), as cyclotomic_dvd_mobiusNumeratorPolynomial_sub, jordanTotientTwo_eq_prod_primeFactors and mobiusNumerator_mod_cyclotomicEval; the proposition “Adjoining a prime: new divisors” (section 6.2.1), as cyclotomic_dvd_primeJump_new_fibre; the proposition “Adjoining a prime: existing divisors” (section 6.2.1), as cyclotomic_dvd_primeJump_old_fibre; the proposition “Lambert-series identities” (section 6.2.1), as lambertValue_eq_divisor_sum_series, alpha_divisor_sum_eq_totient and lambertValue_alpha_eq_totientSeries; the proposition “An affine combination annihilates the specified divisor terms” (section 6.2.1), as joint35_coefficient_moments, joint35_mobiusTermKernel_zero, mobiusTermKernel_affine_in_multiplier and mobiusTermKernel_moment_annihilation.
 
-    21 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 1 is derived from the source declaration by a short tactic proof, which certifies implication.
+    23 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 3 are derived from the source declaration by a short tactic proof, which certifies implication.
 
     Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
 
@@ -51,11 +51,11 @@ sources:
   license: Apache-2.0
   author_endorsement: n/a
 status:
-  scope: "One Comparator configuration selecting the 22 theorems listed in PalomarCorpus/E249_08/comparator.json, from the Lean development for Erdős problem #249. The problem's theorems are packed, in the order the papers state them, into the 33 entries PalomarCorpus/E249_01 to PalomarCorpus/E249_33, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification249* directories are internal regression inventory and are not selected."
+  scope: "One Comparator configuration selecting the 26 theorems listed in PalomarCorpus/E249_08/comparator.json, from the Lean development for Erdős problem #249. The problem's theorems are packed, in the order the papers state them, into the 33 entries PalomarCorpus/E249_01 to PalomarCorpus/E249_33, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification249* directories are internal regression inventory and are not selected."
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
-  trusted_challenge_sorry_count: 22
+  trusted_challenge_sorry_count: 26
   sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E249_08/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
   axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
   permitted_axiom_budget:
@@ -69,6 +69,18 @@ status:
     comparator_config: "PalomarCorpus/E249_08/comparator.json"
   - declaration: "PalomarCorpus.E249.PaperStatementsAC.jordanTotientTwo_eq_prod_primeFactors"
     file: "Solutions/PalomarCorpus/E249_08/PaperStatementsAC.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_08/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAC.mobiusNumeratorPolynomial_coeff"
+    file: "Solutions/PalomarCorpus/E249_08/PaperStatementsAC.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_08/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAC.mobiusNumeratorPolynomial_coeff_pos"
+    file: "Solutions/PalomarCorpus/E249_08/PaperStatementsAC.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_08/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.divisibility_mass"
+    file: "Solutions/PalomarCorpus/E249_08/PaperStatementsAE.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E249_08/comparator.json"
   - declaration: "PalomarCorpus.E249.PaperStatementsAE.joint35_coefficient_moments"
@@ -91,23 +103,27 @@ status:
     file: "Solutions/PalomarCorpus/E249_08/PaperStatementsAE.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E249_08/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.composite_dilation_defect_eq_zero_of_prime_support"
-    file: "Solutions/PalomarCorpus/E249_08/PaperStatementsAJ.lean"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.stopping_probability_ge_third"
+    file: "Solutions/PalomarCorpus/E249_08/PaperStatementsAE.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E249_08/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.composite_dilation_defect_univ_six_one"
-    file: "Solutions/PalomarCorpus/E249_08/PaperStatementsAJ.lean"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.stopping_transition_probabilities_sum_one"
+    file: "Solutions/PalomarCorpus/E249_08/PaperStatementsAE.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E249_08/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.composite_dilation_defect_univ_six_one_card"
-    file: "Solutions/PalomarCorpus/E249_08/PaperStatementsAJ.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E249_08/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.sum_divisors_totient_ne_totient"
-    file: "Solutions/PalomarCorpus/E249_08/PaperStatementsAJ.lean"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAK.cylinderMass_children_le"
+    file: "Solutions/PalomarCorpus/E249_08/PaperStatementsAK.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E249_08/comparator.json"
   - declaration: "PalomarCorpus.E249.PaperStatementsAQ.mobiusNumerator_mod_cyclotomicEval"
+    file: "Solutions/PalomarCorpus/E249_08/PaperStatementsAQ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_08/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAQ.numerator_eval_two_divisors"
+    file: "Solutions/PalomarCorpus/E249_08/PaperStatementsAQ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_08/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAQ.radical_decomposition"
     file: "Solutions/PalomarCorpus/E249_08/PaperStatementsAQ.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E249_08/comparator.json"
@@ -119,20 +135,28 @@ status:
     file: "Solutions/PalomarCorpus/E249_08/PaperStatementsAS.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E249_08/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAX.joint35ConeWindow_eq"
-    file: "Solutions/PalomarCorpus/E249_08/PaperStatementsAX.lean"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAY.cylinderMass_eq_divisibility_mass_mul"
+    file: "Solutions/PalomarCorpus/E249_08/PaperStatementsAY.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E249_08/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAX.joint35_nonintegral_of_separated_window"
-    file: "Solutions/PalomarCorpus/E249_08/PaperStatementsAX.lean"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAY.cylinder_mediant_split"
+    file: "Solutions/PalomarCorpus/E249_08/PaperStatementsAY.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E249_08/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAX.joint35_truncation_error"
-    file: "Solutions/PalomarCorpus/E249_08/PaperStatementsAX.lean"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAY.cylinder_root_values"
+    file: "Solutions/PalomarCorpus/E249_08/PaperStatementsAY.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E249_08/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAX.totientTail_enclosure"
-    file: "Solutions/PalomarCorpus/E249_08/PaperStatementsAX.lean"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAY.normalised_split_probabilities"
+    file: "Solutions/PalomarCorpus/E249_08/PaperStatementsAY.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_08/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsB.sternBrocotDepthMass_error"
+    file: "Solutions/PalomarCorpus/E249_08/PaperStatementsB.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_08/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsB.tendsto_sternBrocotDepthMass"
+    file: "Solutions/PalomarCorpus/E249_08/PaperStatementsB.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E249_08/comparator.json"
   - declaration: "PalomarCorpus.E249.PaperStatementsBA.alpha_divisor_sum_eq_totient"
@@ -141,14 +165,6 @@ status:
     comparator_config: "PalomarCorpus/E249_08/comparator.json"
   - declaration: "PalomarCorpus.E249.PaperStatementsBA.lambertValue_alpha_eq_totientSeries"
     file: "Solutions/PalomarCorpus/E249_08/PaperStatementsBA.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E249_08/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsBD.composite_dilation_divisor_count"
-    file: "Solutions/PalomarCorpus/E249_08/PaperStatementsBD.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E249_08/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsBE.transportResidueKernel_eq_mobiusTermKernel"
-    file: "Solutions/PalomarCorpus/E249_08/PaperStatementsBE.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E249_08/comparator.json"
   development_status: substantive

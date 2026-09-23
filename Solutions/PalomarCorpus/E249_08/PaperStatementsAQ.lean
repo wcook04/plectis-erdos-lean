@@ -20,29 +20,13 @@ open scoped Polynomial
 /- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
 
 namespace PalomarCorpus.E249.PaperStatementsAQ
-export PalomarCorpus.E249_08.Shared (jordanTotientTwo)
+export PalomarCorpus.E249_08.Shared (jordanTotientTwo mobiusNumeratorPolynomial spacedRepunit)
 
 noncomputable def cyclotomicValue (m : ℕ) : ℕ :=
   (cyclotomicEval m).natAbs
 
-noncomputable def baseMobiusShadow (r : ℕ) : ℚ :=
-  Rat.divInt (mobiusNumerator r) (mersenne r : ℤ)
-
-noncomputable def squarefreeKernel (n : ℕ) : ℕ := ∏ p ∈ n.primeFactors, p
-
-noncomputable def numericMobiusShadow (H : ℕ) : ℚ :=
-  baseMobiusShadow (squarefreeKernel H) / (squarefreeKernel H : ℚ)
-
 noncomputable def gcdWordCoeff (r k : ℕ) : ℕ :=
   (r / r.gcd k) * (r.gcd k).totient
-
-noncomputable def spacedRepunit (d q : ℕ) : ℤ[X] :=
-  ∑ j ∈ Finset.range q, Polynomial.monomial (d * j) 1
-
-noncomputable def mobiusNumeratorPolynomial (r : ℕ) : ℤ[X] :=
-  ∑ d ∈ r.divisors,
-    Polynomial.C (ArithmeticFunction.moebius d * (((r / d : ℕ) : ℤ))) *
-      spacedRepunit d (r / d)
 
 noncomputable def paperNumeratorPolynomial (r : ℕ) : Polynomial ℤ :=
   ∑ d ∈ r.divisors,

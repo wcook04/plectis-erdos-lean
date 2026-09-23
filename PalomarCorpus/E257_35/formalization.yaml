@@ -1,10 +1,10 @@
 version: v0.4
 project:
-  name: 'Erdős #257, record sections 8 to 9: approximations to the greedy orbit; which hypotheses remain unproved'
+  name: 'Erdős #257: uniqueness for gap-dominated finite weights; a geometric form of the quotient condition; bounds for a general coefficient sequence'
   description: >-
-    This entry states 16 theorems that the long record for Erdős problem #257 states in sections 8 (approximations to the greedy orbit) and 9 (which hypotheses remain unproved): the proposition “Stability of each fixed greedy prefix”, as approx_orbit_induction, paper_one_orbit_stability and tailGreedyRemainder_mersenne; the lemma “No-ties lemma”, as irrational_mersenneTail, paper_no_ties, paper_no_ties_skip and paper_no_ties_take; the lemma “Forced greedy”, as paper_forced_greedy_low_ranks and paper_forced_greedy_unique_support_and_criterion; the lemma “Parity forces infinite support”, as paper_parity_excludes_finite_support; the theorem “Witness exclusion”, as paper_witness_exclusion; the corollary “Half-LCM horizon”, as paper_half_lcm_horizon; the lemma “Mod-12 filter, J≥7”, as paper_mod_twelve_filter; the theorem “Finite decision procedure”, as paper_rung_finite_decision; the theorem “A: a sufficient lower bound at every reset” (section 9.6), as paper_theoremA_crossing_bound_square_le; the theorem “C; the one-sided finite decision boundary” (section 9.6), as paper_one_sided_finite_decision_boundary.
+    This entry states 18 theorems that the long record for Erdős problem #257 states in sections the unnumbered section uniqueness for gap-dominated finite weights, the unnumbered section a geometric form of the quotient condition, the unnumbered section bounds for a general coefficient sequence and the unnumbered section restrictions on a support with rational value: the proposition “Gap domination of the integer weights”, as localMersenneWeights_gapDominates_odd; the proposition “Uniqueness of the finite greedy representation”, as localMersenneHalfTarget_lower_word_eq_greedy_and_remainder_eq; the theorem “A division-free form of the binary bound”, as localMersenneQuotient_eq_geometric, localBinarySuffix_two_mul_sub_two_lt_criticalCapacity_iff_geometric and localBinarySuffix_two_mul_sub_two_lt_criticalCapacity_iff_geometricCore; the theorem “An upper bound for a binary coefficient tail”, as binaryCoeffTail_div_pow_tendsto_zero and binaryCoeffTail_le; the theorem “Rationality through an integer recurrence”, as not_irrational_binaryCoeffSeries_iff_exists_temperedBinaryOrbit; the theorem “Möbius inversion of the divisor counts”, as mobius_supportCoeff_boolean, mobius_supportCoeff_eq_one_iff and moebius_mul_supportCoeffAF; the theorem “The support series as a coefficient series”, as supportCoeff_le_card_divisors, supportCoeff_le_self, erdosSupportSeries_rational_iff_exists_temperedCarry and erdosSupportSeries_two_eq_binaryCoeffSeries; the theorem “A restriction on dyadic rational values”, as dyadic_support_fraction_reciprocalMass_diverges_or_gt_one and one_lt_reciprocalMass_of_dyadic_support_fraction_of_two_pos_mem; the theorem “Unboundedness of a positive shifted recurrence”, as exists_unbounded_shifted_odd_tail_nat_state_of_support_fraction.
 
-    7 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 9 are derived from the source declaration by a short tactic proof, which certifies implication.
+    16 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 2 are derived from the source declaration by a short tactic proof, which certifies implication.
 
     Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
 
@@ -55,11 +55,11 @@ sources:
   license: Apache-2.0
   author_endorsement: n/a
 status:
-  scope: "One Comparator configuration selecting the 16 theorems listed in PalomarCorpus/E257_35/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 43 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_43, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
+  scope: "One Comparator configuration selecting the 18 theorems listed in PalomarCorpus/E257_35/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 52 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_52, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
-  trusted_challenge_sorry_count: 16
+  trusted_challenge_sorry_count: 18
   sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E257_35/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
   axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
   permitted_axiom_budget:
@@ -67,68 +67,76 @@ status:
   - Quot.sound
   - Classical.choice
   main_results:
-  - declaration: "PalomarCorpus.E257.PaperStatementsAA.paper_half_lcm_horizon"
-    file: "Solutions/PalomarCorpus/E257_35/PaperStatementsAA.lean"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAD.localMersenneQuotient_eq_geometric"
+    file: "Solutions/PalomarCorpus/E257_35/PaperStatementsAD.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_35/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAA.paper_mod_twelve_filter"
-    file: "Solutions/PalomarCorpus/E257_35/PaperStatementsAA.lean"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAE.binaryCoeffTail_div_pow_tendsto_zero"
+    file: "Solutions/PalomarCorpus/E257_35/PaperStatementsAE.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_35/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAA.paper_parity_excludes_finite_support"
-    file: "Solutions/PalomarCorpus/E257_35/PaperStatementsAA.lean"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAE.binaryCoeffTail_le"
+    file: "Solutions/PalomarCorpus/E257_35/PaperStatementsAE.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_35/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAA.paper_theoremA_crossing_bound_square_le"
-    file: "Solutions/PalomarCorpus/E257_35/PaperStatementsAA.lean"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAE.not_irrational_binaryCoeffSeries_iff_exists_temperedBinaryOrbit"
+    file: "Solutions/PalomarCorpus/E257_35/PaperStatementsAE.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_35/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAA.paper_witness_exclusion"
-    file: "Solutions/PalomarCorpus/E257_35/PaperStatementsAA.lean"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAG.supportCoeff_le_card_divisors"
+    file: "Solutions/PalomarCorpus/E257_35/PaperStatementsAG.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_35/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAI.paper_forced_greedy_low_ranks"
-    file: "Solutions/PalomarCorpus/E257_35/PaperStatementsAI.lean"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAG.supportCoeff_le_self"
+    file: "Solutions/PalomarCorpus/E257_35/PaperStatementsAG.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_35/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAM.irrational_mersenneTail"
-    file: "Solutions/PalomarCorpus/E257_35/PaperStatementsAM.lean"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAR.localBinarySuffix_two_mul_sub_two_lt_criticalCapacity_iff_geometric"
+    file: "Solutions/PalomarCorpus/E257_35/PaperStatementsAR.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_35/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsJ.paper_forced_greedy_unique_support_and_criterion"
-    file: "Solutions/PalomarCorpus/E257_35/PaperStatementsJ.lean"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAR.localBinarySuffix_two_mul_sub_two_lt_criticalCapacity_iff_geometricCore"
+    file: "Solutions/PalomarCorpus/E257_35/PaperStatementsAR.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_35/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsJ.paper_rung_finite_decision"
-    file: "Solutions/PalomarCorpus/E257_35/PaperStatementsJ.lean"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAU.erdosSupportSeries_rational_iff_exists_temperedCarry"
+    file: "Solutions/PalomarCorpus/E257_35/PaperStatementsAU.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_35/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsN.approx_orbit_induction"
-    file: "Solutions/PalomarCorpus/E257_35/PaperStatementsN.lean"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAU.erdosSupportSeries_two_eq_binaryCoeffSeries"
+    file: "Solutions/PalomarCorpus/E257_35/PaperStatementsAU.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_35/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsN.paper_no_ties"
-    file: "Solutions/PalomarCorpus/E257_35/PaperStatementsN.lean"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAU.mobius_supportCoeff_boolean"
+    file: "Solutions/PalomarCorpus/E257_35/PaperStatementsAU.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_35/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsN.paper_no_ties_skip"
-    file: "Solutions/PalomarCorpus/E257_35/PaperStatementsN.lean"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAU.mobius_supportCoeff_eq_one_iff"
+    file: "Solutions/PalomarCorpus/E257_35/PaperStatementsAU.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_35/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsN.paper_no_ties_take"
-    file: "Solutions/PalomarCorpus/E257_35/PaperStatementsN.lean"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAU.moebius_mul_supportCoeffAF"
+    file: "Solutions/PalomarCorpus/E257_35/PaperStatementsAU.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_35/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsN.paper_one_orbit_stability"
-    file: "Solutions/PalomarCorpus/E257_35/PaperStatementsN.lean"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAV.dyadic_support_fraction_reciprocalMass_diverges_or_gt_one"
+    file: "Solutions/PalomarCorpus/E257_35/PaperStatementsAV.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_35/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsN.paper_one_sided_finite_decision_boundary"
-    file: "Solutions/PalomarCorpus/E257_35/PaperStatementsN.lean"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAV.exists_unbounded_shifted_odd_tail_nat_state_of_support_fraction"
+    file: "Solutions/PalomarCorpus/E257_35/PaperStatementsAV.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_35/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsN.tailGreedyRemainder_mersenne"
-    file: "Solutions/PalomarCorpus/E257_35/PaperStatementsN.lean"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAV.one_lt_reciprocalMass_of_dyadic_support_fraction_of_two_pos_mem"
+    file: "Solutions/PalomarCorpus/E257_35/PaperStatementsAV.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_35/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStructuresAY.localMersenneHalfTarget_lower_word_eq_greedy_and_remainder_eq"
+    file: "Solutions/PalomarCorpus/E257_35/PaperStructuresAY.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_35/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStructuresAY.localMersenneWeights_gapDominates_odd"
+    file: "Solutions/PalomarCorpus/E257_35/PaperStructuresAY.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_35/comparator.json"
   development_status: substantive

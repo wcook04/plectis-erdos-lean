@@ -1,10 +1,12 @@
 version: v0.4
 project:
-  name: 'Erdős #257: uniqueness for gap-dominated finite weights; a geometric form of the quotient condition; bounds for a general coefficient sequence'
+  name: 'Erdős #257, the paper structures BY family: reducing the dyadic-boundary checks'
   description: >-
-    This entry states 18 theorems that the long record for Erdős problem #257 states in sections the unnumbered section uniqueness for gap-dominated finite weights, the unnumbered section a geometric form of the quotient condition, the unnumbered section bounds for a general coefficient sequence and the unnumbered section restrictions on a support with rational value: the proposition “Gap domination of the integer weights”, as localMersenneWeights_gapDominates_odd; the proposition “Uniqueness of the finite greedy representation”, as localMersenneHalfTarget_lower_word_eq_greedy_and_remainder_eq; the theorem “A division-free form of the binary bound”, as localMersenneQuotient_eq_geometric, localBinarySuffix_two_mul_sub_two_lt_criticalCapacity_iff_geometric and localBinarySuffix_two_mul_sub_two_lt_criticalCapacity_iff_geometricCore; the theorem “An upper bound for a binary coefficient tail”, as binaryCoeffTail_div_pow_tendsto_zero and binaryCoeffTail_le; the theorem “Rationality through an integer recurrence”, as not_irrational_binaryCoeffSeries_iff_exists_temperedBinaryOrbit; the theorem “Möbius inversion of the divisor counts”, as mobius_supportCoeff_boolean, mobius_supportCoeff_eq_one_iff and moebius_mul_supportCoeffAF; the theorem “The support series as a coefficient series”, as supportCoeff_le_card_divisors, supportCoeff_le_self, erdosSupportSeries_rational_iff_exists_temperedCarry and erdosSupportSeries_two_eq_binaryCoeffSeries; the theorem “A restriction on dyadic rational values”, as dyadic_support_fraction_reciprocalMass_diverges_or_gt_one and one_lt_reciprocalMass_of_dyadic_support_fraction_of_two_pos_mem; the theorem “Unboundedness of a positive shifted recurrence”, as exists_unbounded_shifted_odd_tail_nat_state_of_support_fraction.
+    This entry states 1 theorem that the long record for Erdős problem #257 states in section the unnumbered section reducing the dyadic-boundary checks: the proposition “An upper bound for the reset expression”, as seamUpperResetCharge_le.
 
-    16 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 2 are derived from the source declaration by a short tactic proof, which certifies implication.
+    It also states 12 proof obligations of the definitions copied into it: seamPerturbedFamily_gap_pos, seamPerturbedFamily_oldSum_injective, seamPerturbedFamily_separated, seamPerturbedFamily_pulseCap_lt_three_gap, wordPulse_le, exists_seamWord_minimal_above, integerGreedyBits_length, seamAboveWord_minimal, seamAboveWord_strict, seamWeights_length_eq, seamAdjacentCut_below_admissible and seamAdjacentCut_below_maximal. Each is a lemma or a proof field that one of those definitions names, and its documentation names the source it is stated from. The papers state none of them, and the Solution proves each from the source development.
+
+    7 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 6 are derived from the source declaration by a short tactic proof, which certifies implication.
 
     Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
 
@@ -55,11 +57,11 @@ sources:
   license: Apache-2.0
   author_endorsement: n/a
 status:
-  scope: "One Comparator configuration selecting the 18 theorems listed in PalomarCorpus/E257_29/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 43 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_43, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
+  scope: "One Comparator configuration selecting the 13 theorems listed in PalomarCorpus/E257_29/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 52 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_52, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
-  trusted_challenge_sorry_count: 18
+  trusted_challenge_sorry_count: 13
   sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E257_29/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
   axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
   permitted_axiom_budget:
@@ -67,80 +69,60 @@ status:
   - Quot.sound
   - Classical.choice
   main_results:
-  - declaration: "PalomarCorpus.E257.PaperStatementsAD.localMersenneQuotient_eq_geometric"
-    file: "Solutions/PalomarCorpus/E257_29/PaperStatementsAD.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBY.exists_seamWord_minimal_above"
+    file: "Solutions/PalomarCorpus/E257_29/PaperStructuresBY.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_29/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAE.binaryCoeffTail_div_pow_tendsto_zero"
-    file: "Solutions/PalomarCorpus/E257_29/PaperStatementsAE.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBY.integerGreedyBits_length"
+    file: "Solutions/PalomarCorpus/E257_29/PaperStructuresBY.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_29/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAE.binaryCoeffTail_le"
-    file: "Solutions/PalomarCorpus/E257_29/PaperStatementsAE.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBY.seamAboveWord_minimal"
+    file: "Solutions/PalomarCorpus/E257_29/PaperStructuresBY.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_29/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAE.not_irrational_binaryCoeffSeries_iff_exists_temperedBinaryOrbit"
-    file: "Solutions/PalomarCorpus/E257_29/PaperStatementsAE.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBY.seamAboveWord_strict"
+    file: "Solutions/PalomarCorpus/E257_29/PaperStructuresBY.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_29/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAG.supportCoeff_le_card_divisors"
-    file: "Solutions/PalomarCorpus/E257_29/PaperStatementsAG.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBY.seamAdjacentCut_below_admissible"
+    file: "Solutions/PalomarCorpus/E257_29/PaperStructuresBY.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_29/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAG.supportCoeff_le_self"
-    file: "Solutions/PalomarCorpus/E257_29/PaperStatementsAG.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBY.seamAdjacentCut_below_maximal"
+    file: "Solutions/PalomarCorpus/E257_29/PaperStructuresBY.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_29/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAR.localBinarySuffix_two_mul_sub_two_lt_criticalCapacity_iff_geometric"
-    file: "Solutions/PalomarCorpus/E257_29/PaperStatementsAR.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBY.seamPerturbedFamily_gap_pos"
+    file: "Solutions/PalomarCorpus/E257_29/PaperStructuresBY.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_29/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAR.localBinarySuffix_two_mul_sub_two_lt_criticalCapacity_iff_geometricCore"
-    file: "Solutions/PalomarCorpus/E257_29/PaperStatementsAR.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBY.seamPerturbedFamily_oldSum_injective"
+    file: "Solutions/PalomarCorpus/E257_29/PaperStructuresBY.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_29/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAU.erdosSupportSeries_rational_iff_exists_temperedCarry"
-    file: "Solutions/PalomarCorpus/E257_29/PaperStatementsAU.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBY.seamPerturbedFamily_pulseCap_lt_three_gap"
+    file: "Solutions/PalomarCorpus/E257_29/PaperStructuresBY.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_29/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAU.erdosSupportSeries_two_eq_binaryCoeffSeries"
-    file: "Solutions/PalomarCorpus/E257_29/PaperStatementsAU.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBY.seamPerturbedFamily_separated"
+    file: "Solutions/PalomarCorpus/E257_29/PaperStructuresBY.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_29/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAU.mobius_supportCoeff_boolean"
-    file: "Solutions/PalomarCorpus/E257_29/PaperStatementsAU.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBY.seamUpperResetCharge_le"
+    file: "Solutions/PalomarCorpus/E257_29/PaperStructuresBY.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_29/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAU.mobius_supportCoeff_eq_one_iff"
-    file: "Solutions/PalomarCorpus/E257_29/PaperStatementsAU.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBY.seamWeights_length_eq"
+    file: "Solutions/PalomarCorpus/E257_29/PaperStructuresBY.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_29/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAU.moebius_mul_supportCoeffAF"
-    file: "Solutions/PalomarCorpus/E257_29/PaperStatementsAU.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_29/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAV.dyadic_support_fraction_reciprocalMass_diverges_or_gt_one"
-    file: "Solutions/PalomarCorpus/E257_29/PaperStatementsAV.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_29/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAV.exists_unbounded_shifted_odd_tail_nat_state_of_support_fraction"
-    file: "Solutions/PalomarCorpus/E257_29/PaperStatementsAV.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_29/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAV.one_lt_reciprocalMass_of_dyadic_support_fraction_of_two_pos_mem"
-    file: "Solutions/PalomarCorpus/E257_29/PaperStatementsAV.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_29/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresAY.localMersenneHalfTarget_lower_word_eq_greedy_and_remainder_eq"
-    file: "Solutions/PalomarCorpus/E257_29/PaperStructuresAY.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_29/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresAY.localMersenneWeights_gapDominates_odd"
-    file: "Solutions/PalomarCorpus/E257_29/PaperStructuresAY.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBY.wordPulse_le"
+    file: "Solutions/PalomarCorpus/E257_29/PaperStructuresBY.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_29/comparator.json"
   development_status: substantive
-  local_proof_provenance: "the proof modules Erdos249257, ErdosProblems.Erdos257 in this repository, imported by Solutions.PalomarCorpus.E257_29; the Solutions.ExternalVerification257* family modules are a regression mirror of the same proofs and are not imported by this configuration"
+  local_proof_provenance: "the proof modules Erdos249257 in this repository, imported by Solutions.PalomarCorpus.E257_29; the Solutions.ExternalVerification257* family modules are a regression mirror of the same proofs and are not imported by this configuration"
   canonical_claim_status: "problem-level Comparator entry over substantive Lean in this repository"
 automation:
   methods:
@@ -163,5 +145,5 @@ review:
   status: self-assessed
   reviewers: []
   notes: >-
-    Every generated restatement was bound to a paper statement and refereed in the eight-paper coverage ledger before its wrapper was generated, and its transport proof was elaborated before the statement was accepted. The author selected the statements and is responsible for the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
+    Every generated restatement of a paper statement was bound to that statement and refereed in the eight-paper coverage ledger before its wrapper was generated, and its transport proof was elaborated before the statement was accepted. The proof obligations of the copied definitions are stated from the source development and proved from it; no paper statement binds them, so none was refereed. The author selected the statements and is responsible for the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
 acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

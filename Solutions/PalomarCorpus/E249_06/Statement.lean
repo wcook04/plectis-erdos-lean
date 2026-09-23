@@ -19,12 +19,10 @@ environments. Generated from the Challenge; do not edit by hand.
 -/
 
 open scoped BigOperators
+open scoped Polynomial
 open Matrix
 open ArithmeticFunction
 open Finset
-open Filter
-open Topology
-open Classical
 
 namespace PalomarCorpus.E249_06.Shared
 /-- Local copy of Erdos249257.TotientTailPeriodKiller.diagonalPincerCertificateScalesThroughT64, restated so the compared statements elaborate against Mathlib alone. -/
@@ -60,18 +58,44 @@ noncomputable def diagonalPincerKillDepthThroughT64 : ℕ → ℕ
   | 61 => 94
   | 64 => 93
   | _ => 0
-/-- The binary totient tail `R_N = ∑_{j ≥ 1} φ(N + j) / 2 ^ j`, a real number satisfying `2 ^ N S = Φ_N + R_N`, where `S = ∑_{n ≥ 1} φ(n) / 2 ^ n` and `Φ_N = ∑_{n ≤ N} φ(n) 2 ^ (N - n)` is an integer. It obeys `0 < R_N ≤ N + 1` for `N ≥ 1`. -/
-noncomputable def totientTail (N : ℕ) : ℝ :=
-  ∑' j : ℕ, (Nat.totient (N + 1 + j) : ℝ) / 2 ^ (j + 1)
-/-- The signed binary discrepancy `D_{h,N,L} = ∑_{j < L} (φ(N + h + 1 + j) - φ(N + 1 + j)) 2 ^ (L - 1 - j)` between two length-`L` totient windows separated by the shift `h`, an integer satisfying `|2 ^ L (R_{N + h} - R_N) - D_{h,N,L}| ≤ N + h + L + 2`. -/
-noncomputable def windowDiscrepancy (h N L : ℕ) : ℤ :=
-  ∑ j ∈ Finset.range L,
-    ((Nat.totient (N + h + 1 + j) : ℤ) - (Nat.totient (N + 1 + j) : ℤ)) * 2 ^ (L - 1 - j)
-/-- The decidable period-killer certificate: the residue of `A_{h,N,L}` modulo `2^L` avoids the radius-`(N+h+L+2)` neighbourhood of `0`. Local copy of Erdos249257.TotientTailPeriodKiller.certifiedKill, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def certifiedKill (h N L : ℕ) : Prop :=
-  (N + h + L + 2 : ℤ) < windowDiscrepancy h N L % 2 ^ L ∧
-    windowDiscrepancy h N L % 2 ^ L < 2 ^ L - (N + h + L + 2)
 end PalomarCorpus.E249_06.Shared
+
+namespace PalomarCorpus.E249.PaperStatementsAR
+open scoped BigOperators
+open scoped Polynomial
+/-- The scalar contributed by the odd prime factors of `r`. Local copy of Erdos249257.CyclicTensorMobiusShadow.oddJordanScalar, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def oddJordanScalar (r : ℕ) : ℤ :=
+  ∏ q ∈ r.primeFactors.filter (fun q => q ≠ 2), ((q : ℤ) ^ 2 - 1)
+/-- `Hₜ = lcm(1, ..., t)`. The interval avoids inserting zero into the finite LCM. Local copy of Erdos249257.MersenneShadowCyclotomicNoncollapse.lcmHeight, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def lcmHeight (t : ℕ) : ℕ :=
+  (Finset.Icc 1 t).lcm (fun n ↦ n)
+/-- The squarefree kernel used by the numeric shadow: the product of the distinct prime factors of `n`. For `n = 0` this convention gives `1`; all development-facing scaling theorems assume `0 < n`. Local copy of Erdos249257.RadicalMobiusShadow.squarefreeKernel, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def squarefreeKernel (n : ℕ) : ℕ := ∏ p ∈ n.primeFactors, p
+/-- `rₜ = rad(Hₜ)` using the canonical T6 squarefree kernel. Local copy of Erdos249257.MersenneShadowCyclotomicNoncollapse.lcmRadical, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def lcmRadical (t : ℕ) : ℕ :=
+  squarefreeKernel (lcmHeight t)
+/-- `hₜ = Hₜ / rₜ`, the scale multiplying the radical shadow. Local copy of Erdos249257.MersenneShadowCyclotomicNoncollapse.lcmScale, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def lcmScale (t : ℕ) : ℕ :=
+  lcmHeight t / lcmRadical t
+/-- The Mersenne denominator at exponent `n`. Local copy of Erdos249257.RadicalMobiusShadow.mersenne, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def mersenne (n : ℕ) : ℕ := 2 ^ n - 1
+/-- The integral numerator, written as its squarefree-divisor expansion. For `s ⊆ primeFactors(r)`, put `d = ∏ p ∈ s, p`. Then the summand is `(-1)^|s| (r/d) ((2^r-1)/(2^d-1))`. This is exactly the nonzero part of `Σ_{d ∣ r} μ(d) (r/d) ((2^r-1)/(2^d-1))`: nonsquarefree divisors have Möbius coefficient zero. The subset form makes that finite support explicit and keeps the definition executable without factoring irrelevant divisors. Local copy of Erdos249257.RadicalMobiusShadow.mobiusNumerator, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def mobiusNumerator (r : ℕ) : ℤ :=
+  ∑ s ∈ r.primeFactors.powerset,
+    (-1 : ℤ) ^ s.card *
+      ((r / s.prod id : ℕ) : ℤ) *
+        (((mersenne r) / (mersenne (s.prod id)) : ℕ) : ℤ)
+/-- The unscaled radical shadow `B(r) = M_r / (2^r - 1)`. Local copy of Erdos249257.RadicalMobiusShadow.baseMobiusShadow, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def baseMobiusShadow (r : ℕ) : ℚ :=
+  Rat.divInt (mobiusNumerator r) (mersenne r : ℤ)
+/-- The numeric shadow at an arbitrary scale. By construction it only sees the distinct prime factors of `H`. Local copy of Erdos249257.RadicalMobiusShadow.numericMobiusShadow, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def numericMobiusShadow (H : ℕ) : ℚ :=
+  baseMobiusShadow (squarefreeKernel H) / (squarefreeKernel H : ℚ)
+end PalomarCorpus.E249.PaperStatementsAR
+
+namespace PalomarCorpus.E249.PaperStatementsAE
+open scoped BigOperators
+end PalomarCorpus.E249.PaperStatementsAE
 
 namespace PalomarCorpus.E249.PaperStatementsAF
 open scoped BigOperators
@@ -90,38 +114,17 @@ end PalomarCorpus.E249.PaperStatementsG
 
 namespace PalomarCorpus.E249.PaperStatementsI
 open Finset
-export PalomarCorpus.E249_06.Shared (certifiedKill diagonalPincerCertificateScalesThroughT64 diagonalPincerKillDepthThroughT64 windowDiscrepancy)
+export PalomarCorpus.E249_06.Shared (diagonalPincerCertificateScalesThroughT64 diagonalPincerKillDepthThroughT64)
+/-- The signed binary discrepancy `D_{h,N,L} = ∑_{j < L} (φ(N + h + 1 + j) - φ(N + 1 + j)) 2 ^ (L - 1 - j)` between two length-`L` totient windows separated by the shift `h`, an integer satisfying `|2 ^ L (R_{N + h} - R_N) - D_{h,N,L}| ≤ N + h + L + 2`. -/
+noncomputable def windowDiscrepancy (h N L : ℕ) : ℤ :=
+  ∑ j ∈ Finset.range L,
+    ((Nat.totient (N + h + 1 + j) : ℤ) - (Nat.totient (N + 1 + j) : ℤ)) * 2 ^ (L - 1 - j)
+/-- The decidable period-killer certificate: the residue of `A_{h,N,L}` modulo `2^L` avoids the radius-`(N+h+L+2)` neighbourhood of `0`. Local copy of Erdos249257.TotientTailPeriodKiller.certifiedKill, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def certifiedKill (h N L : ℕ) : Prop :=
+  (N + h + L + 2 : ℤ) < windowDiscrepancy h N L % 2 ^ L ∧
+    windowDiscrepancy h N L % 2 ^ L < 2 ^ L - (N + h + L + 2)
 /-- `periodLcm t = lcm(1, …, t)`: the universal period at scale `t`. Every primitive period `h₀ ≤ t` divides it. Local copy of Erdos249257.TotientTailPeriodKiller.periodLcm, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def periodLcm : ℕ → ℕ
   | 0 => 1
   | t + 1 => Nat.lcm (periodLcm t) (t + 1)
 end PalomarCorpus.E249.PaperStatementsI
-
-namespace PalomarCorpus.E249.PaperStatementsAD
-open Finset
-export PalomarCorpus.E249_06.Shared (certifiedKill totientTail windowDiscrepancy)
-end PalomarCorpus.E249.PaperStatementsAD
-
-namespace PalomarCorpus.E249.PaperStatementsAT
-open Finset
-export PalomarCorpus.E249_06.Shared (certifiedKill totientTail windowDiscrepancy)
-end PalomarCorpus.E249.PaperStatementsAT
-
-namespace PalomarCorpus.E249.PaperStatementsAI
-open Filter
-open Topology
-end PalomarCorpus.E249.PaperStatementsAI
-
-namespace PalomarCorpus.E249.PaperStatementsAJ
-end PalomarCorpus.E249.PaperStatementsAJ
-
-namespace PalomarCorpus.E249.PaperStatementsAL
-open Classical
-/-- **The paper's binary example.** Reading the expansion two digits at a time, the block with index `k ≥ 1` is `10` when `k` is a perfect square and `01` otherwise. Position `n` sits inside the block with index `n / 2 + 1`, and is that block's first digit exactly when `n` is even. Local copy of ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.digit, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def digit (n : ℕ) : ℕ :=
-  if IsSquare (n / 2 + 1) ↔ n % 2 = 0 then 1 else 0
-/-- The real number whose binary digits, read from position `n` on, are `d n, d (n+1), d (n+2), …`. For `n = 0` this is the number itself; for general `n` it is the tail left after `n` binary shifts. Local copy of ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.tail, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def tail (d : ℕ → ℕ) (n : ℕ) : ℝ := ∑' k : ℕ, (d (n + k) : ℝ) / 2 ^ (k + 1)
-/-- **ξ**, the number of the paper's binary example. Local copy of ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.xi, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def xi : ℝ := tail digit 0
-end PalomarCorpus.E249.PaperStatementsAL

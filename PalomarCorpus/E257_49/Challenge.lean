@@ -1,0 +1,297 @@
+/-
+Copyright (c) 2026 Will Cook. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Will Cook
+-/
+
+import Mathlib
+
+set_option autoImplicit false
+
+/-!
+# Erdős #257, the achievement set geometry, actual upper successor and Boolean Mobius carry families
+
+Each theorem below restates, against Mathlib alone, a theorem of the Lean development
+for Erdős problem #257, in the order the papers state them. The definitions a statement
+uses are copied in, and each declaration's documentation names the paper statement and
+the source declaration it comes from. Erdős problem #257 remains open, and no theorem in
+this entry decides it.
+-/
+
+open scoped ENNReal
+open Set MeasureTheory
+open Set
+open scoped BigOperators
+open ArithmeticFunction Filter Set
+open scoped ArithmeticFunction.Moebius
+open Filter Topology
+
+namespace PalomarCorpus.E257_49.Shared
+/-- The base b reciprocal power subseries supported on A, namely the sum over a in A of 1 divided by b to the power a minus 1, written as an unconditional sum of the indicator of A; the exponent a = 0 contributes 0 because division by zero is zero here, so membership of 0 in A does not change the value. -/
+noncomputable def erdosSupportSeries (b : ℕ) (A : Set ℕ) : ℝ :=
+  ∑' a : ℕ, Set.indicator A
+    (fun a => (1 : ℝ) / ((b : ℝ) ^ a - 1)) a
+end PalomarCorpus.E257_49.Shared
+
+namespace PalomarCorpus.E257.AchievementSetGeometry
+open scoped ENNReal
+open Set MeasureTheory
+/-- The real Mersenne weight 1 divided by 2 to the power n minus 1; at n = 0 the value is 0 because division by zero is zero here. -/
+noncomputable def mersenneWeight (n : ℕ) : ℝ :=
+  1 / ((2 : ℝ) ^ n - 1)
+/-- The contribution of the k th binary digit of a digit string b, namely the value of that digit, 0 or 1, times the Mersenne weight at k+1. -/
+noncomputable def mersenneDigitTerm (k : ℕ) (b : ℕ → Fin 2) : ℝ :=
+  ((b k : ℕ) : ℝ) * mersenneWeight (k + 1)
+/-- The real value coded by a binary digit string b, namely the sum over k at least 0 of the k th digit times the Mersenne weight at k+1. -/
+noncomputable def positiveMersenneDigitValue (b : ℕ → Fin 2) : ℝ :=
+  ∑' k : ℕ, mersenneDigitTerm k b
+/-- The real number coded by a set A of exponents, namely the sum over a in A with a at least 1 of 1 divided by 2 to the power a minus 1; the indexing runs over k and evaluates the indicator at k+1, so only positive exponents contribute. -/
+noncomputable def positiveMersenneSupportValue (A : Set ℕ) : ℝ :=
+  ∑' k : ℕ, Set.indicator A mersenneWeight (k + 1)
+/-- The subtype of binary digit strings that vanish outside a prescribed set J of allowed digit positions. -/
+noncomputable def SupportedMersenneDigits (J : Set ℕ) :=
+  {b : ℕ → Fin 2 // ∀ k, k ∉ J → b k = 0}
+/-- The coding map on digit strings supported in J, sending such a string to the real number it codes. -/
+noncomputable def supportedMersenneDigitValue
+    (J : Set ℕ) (b : SupportedMersenneDigits J) : ℝ :=
+  positiveMersenneDigitValue b.1
+/-- The supported Mersenne achievement set of J, namely the range of the coding map on binary digit strings vanishing outside J; it is the set of subsums of the Mersenne series that use only the digit positions in J. -/
+noncomputable def supportedMersenneAchievementSet (J : Set ℕ) : Set ℝ :=
+  Set.range (supportedMersenneDigitValue J)
+/-- Rational fibre measure no go: if 0 is not in J and the value coded by J, that is the sum over m in J of 1 divided by 2 to the power m minus 1, equals a rational number q, then the supported achievement set of J has Lebesgue measure zero. In the hypothesis J indexes exponents and in the conclusion it indexes digit positions. The theorem excludes positive measure selection over a rational fibre; it excludes no individual point and proves no irrationality. -/
+theorem volume_supportedMersenneAchievementSet_eq_zero_of_rat_value
+    {J : Set ℕ} (hJ0 : 0 ∉ J) {q : ℚ}
+    (hvalue : positiveMersenneSupportValue J = (q : ℝ)) :
+    volume (supportedMersenneAchievementSet J) = 0 := by
+  sorry
+/-- Complete geometry and Lebesgue measure classification, for every set J of allowed digit positions and with no hypothesis on J: the supported coding map is injective, its range is compact and nowhere dense, the range is perfect whenever J is infinite, and one of two mutually exclusive cases holds for the measure, which is valued in the extended nonnegative reals; either the complement of J is a finite set F and the measure is the inverse of 2 raised to the cardinality of F, or the complement of J is infinite and the measure is 0. -/
+theorem supportedMersenneAchievementSet_geometry_and_volume (J : Set ℕ) :
+    Function.Injective (supportedMersenneDigitValue J) ∧
+      IsCompact (supportedMersenneAchievementSet J) ∧
+      IsNowhereDense (supportedMersenneAchievementSet J) ∧
+      (J.Infinite → Perfect (supportedMersenneAchievementSet J)) ∧
+      ((∃ F : Finset ℕ,
+          J = (↑F : Set ℕ)ᶜ ∧
+            volume (supportedMersenneAchievementSet J) =
+              ((2 : ℝ≥0∞) ^ F.card)⁻¹) ∨
+        (Jᶜ.Infinite ∧
+          volume (supportedMersenneAchievementSet J) = 0)) := by
+  sorry
+end PalomarCorpus.E257.AchievementSetGeometry
+
+namespace PalomarCorpus.E257.ActualUpperSuccessor
+open Set
+open scoped BigOperators
+export PalomarCorpus.E257_49.Shared (erdosSupportSeries)
+/-- The truncated integer Mersenne weight at seam row s and rank d, namely the natural number quotient of 4 to the power s by 2 to the power d minus 1; at d = 0 the divisor is 0 and the value is 0. -/
+noncomputable def truncatedMersenneWeight (s d : ℕ) : ℕ :=
+  4 ^ s / (2 ^ d - 1)
+/-- The integer capacity of the seam subset sum problem at row s, namely 2 raised to the exponent 2s minus 1, less 2 to the power s; both the exponent subtraction and the outer subtraction are truncated natural subtraction, so the value is 0 at s = 0 and at s = 1. -/
+noncomputable def seamSubsetTarget (s : ℕ) : ℕ :=
+  2 ^ (2 * s - 1) - 2 ^ s
+/-- The list of truncated Mersenne weights at seam row s for the ranks from the given starting index up to s minus 1, in increasing rank order. -/
+noncomputable def seamWeightsFrom (s : ℕ) : ℕ → List ℕ
+  | d =>
+      if h : d < s then
+        truncatedMersenneWeight s d :: seamWeightsFrom s (d + 1)
+      else
+        []
+termination_by d => s - d
+decreasing_by omega
+/-- The seam weight list at row s, namely the truncated Mersenne weights for ranks 2 up to s minus 1. -/
+noncomputable def seamWeights (s : ℕ) : List ℕ := seamWeightsFrom s 2
+/-- The total weight selected by a Boolean word, namely the sum of the weights at the positions where the word is true; positions beyond the shorter of the two lists contribute nothing. -/
+noncomputable def weightedBoolSum : List ℕ → List Bool → ℕ
+  | [], _ => 0
+  | _, [] => 0
+  | w :: ws, b :: bs => (if b then w else 0) + weightedBoolSum ws bs
+/-- The greedy Boolean word for an integer subset sum problem: given a list of weights in the order presented and a capacity, take a weight when it is at most the current capacity and subtract it, otherwise skip it and keep the capacity. -/
+noncomputable def integerGreedyBits : List ℕ → ℕ → List Bool
+  | [], _ => []
+  | w :: ws, C =>
+      if w ≤ C then
+        true :: integerGreedyBits ws (C - w)
+      else
+        false :: integerGreedyBits ws C
+/-- The capacity left unpaid after the greedy Boolean word has been applied to a weight list, namely the capacity minus the weight it selects. -/
+noncomputable def integerGreedyRemainder (weights : List ℕ) (C : ℕ) : ℕ :=
+  C - weightedBoolSum weights (integerGreedyBits weights C)
+/-- The greedy remainder of the seam subset sum problem at row s, namely the seam capacity minus the total weight selected greedily from the seam weight list. -/
+noncomputable def seamIntegerGreedyRemainder (s : ℕ) : ℕ :=
+  integerGreedyRemainder (seamWeights s) (seamSubsetTarget s)
+/-- The quotient pulse contributed by rank d between consecutive seam rows at row s, namely 1 if d divides 2s+2, plus twice 1 if d divides 2s+1, and 0 for the nondividing cases. -/
+noncomputable def rowPulse (s d : ℕ) : ℕ :=
+  (if d ∣ 2 * s + 2 then 1 else 0) +
+    2 * (if d ∣ 2 * s + 1 then 1 else 0)
+/-- The greedy Boolean word produced by the seam weight list at row s against the seam capacity at row s. -/
+noncomputable def seamGreedyBits (s : ℕ) : List Bool :=
+  integerGreedyBits (seamWeights s) (seamSubsetTarget s)
+/-- The greedy bit at rank d of the seam word at row s, read at list position d minus 2 with truncated natural subtraction, so the ranks 0, 1 and 2 all read position 0, and with value false when that position lies outside the word. -/
+noncomputable def seamGreedyBit (s d : ℕ) : Bool :=
+  (seamGreedyBits s).getD (d - 2) false
+/-- The total pulse carried by the selected ranks below the seam at row s, namely the sum of the row pulse over the ranks from 2 to s minus 1 whose greedy bit is true; the index range is s minus 2 in truncated natural subtraction, so the sum is empty and the value is 0 when s is at most 2. -/
+noncomputable def seamBelowPulse (s : ℕ) : ℕ :=
+  ∑ i ∈ Finset.range (s - 2),
+    if seamGreedyBit s (i + 2) then rowPulse s (i + 2) else 0
+/-- A two field record used for an adjacent seam cut, with a proposition field successorCarries and a natural number field belowPulse. The structure imposes no relation between the two fields; seamAdjacentCut supplies the values they carry. -/
+structure SeamAdjacentCutView where
+  successorCarries : Prop
+  belowPulse : ℕ
+/-- The adjacent cut view at seam row s, for s at least 5: its proposition field states that the first s minus 2 bits of the greedy word at row s+1 differ from the greedy word at row s, and its numeric field is the pulse below the seam at row s. -/
+noncomputable def seamAdjacentCut (s : ℕ) (_hs : 5 ≤ s) : SeamAdjacentCutView where
+  successorCarries :=
+    (seamGreedyBits (s + 1)).take (s - 2) ≠ seamGreedyBits s
+  belowPulse := seamBelowPulse s
+/-- The charge accumulated along a realised right run driven by a pulse sequence, defined by charge 0 = 0 and charge (k+1) = 4 times charge k, plus the pulse at k, plus 4. -/
+noncomputable def affineRightRunCharge (pulse : ℕ → ℕ) : ℕ → ℕ
+  | 0 => 0
+  | k + 1 => 4 * affineRightRunCharge pulse k + pulse k + 4
+/-- The terminal packet lower envelope, named as a proposition: for all d and k with 5 at most d, needed to form the adjacent cut, with 13 at most d and k at most d, if the adjacent cut at d has a changed successor prefix and if at every step q below k the right run recurrence holds, that is the seam greedy remainder at d+q+2 plus 2 to the power d+q+2 plus the pulse below the seam at row d+q+1 plus 4 equals 4 times the seam greedy remainder at d+q+1, then 4 to the power k times 2 times the sum of d and k is at most the seam greedy remainder at d+k+1 plus the affine right run charge built from the pulses below the seam at the rows d+q+1. This names a hypothesis and asserts nothing. -/
+noncomputable def SeamActualUpperRightPacketLinearEscape : Prop :=
+  ∀ (d k : ℕ) (hd5 : 5 ≤ d), 13 ≤ d → k ≤ d →
+    (seamAdjacentCut d hd5).successorCarries →
+    (∀ q : ℕ, q < k →
+      seamIntegerGreedyRemainder (d + q + 2) +
+          2 ^ (d + q + 2) +
+          (seamAdjacentCut (d + q + 1) (by omega)).belowPulse + 4 =
+        4 * seamIntegerGreedyRemainder (d + q + 1)) →
+    4 ^ k * (2 * (d + k)) ≤
+      seamIntegerGreedyRemainder (d + k + 1) +
+        affineRightRunCharge
+          (fun q ↦
+            (seamAdjacentCut (d + q + 1) (by omega)).belowPulse) k
+/-- The pulse free successor lower envelope, named as a proposition: under the same bounds on d and k, the same changed successor prefix and the same right run recurrence below k, the quantity 2 to the power d+1 less 2 raised to the exponent d minus k plus 1, then increased by 2 times the sum of d and k, is at most the seam greedy remainder at d+1. Both subtractions are truncated natural subtraction, and k at most d keeps the subtracted power at most the leading one. This names a hypothesis and asserts nothing. -/
+noncomputable def SeamActualUpperSuccessorLinearEscape : Prop :=
+  ∀ (d k : ℕ) (hd5 : 5 ≤ d), 13 ≤ d → k ≤ d →
+    (seamAdjacentCut d hd5).successorCarries →
+    (∀ q : ℕ, q < k →
+      seamIntegerGreedyRemainder (d + q + 2) +
+          2 ^ (d + q + 2) +
+          (seamAdjacentCut (d + q + 1) (by omega)).belowPulse + 4 =
+        4 * seamIntegerGreedyRemainder (d + q + 1)) →
+    2 ^ (d + 1) - 2 ^ (d - k + 1) + 2 * (d + k) ≤
+      seamIntegerGreedyRemainder (d + 1)
+/-- The terminal packet lower envelope and the pulse free successor lower envelope are equivalent as propositions. This is an exact reformulation of one hypothesis as another; it proves neither. -/
+theorem actualUpperRightPacketLinearEscape_iff_successorLinearEscape :
+    SeamActualUpperRightPacketLinearEscape ↔
+      SeamActualUpperSuccessorLinearEscape := by
+  sorry
+/-- The universal assertion of the parent problem, named as a proposition so that conditional theorems can refer to it: for every infinite set A of natural numbers the base two series with terms 1 divided by 2 to the power a minus 1, summed over a in A, is irrational. Nothing in this development asserts this proposition. -/
+noncomputable def UniversalMersenneSubseriesIrrationality : Prop :=
+  ∀ A : Set ℕ, A.Infinite → Irrational (erdosSupportSeries 2 A)
+/-- Conditional on the pulse free successor lower envelope holding, there is an infinite set A of natural numbers whose base two series with terms 1 divided by 2 to the power a minus 1 equals exactly one half, and the universal irrationality assertion of the parent problem is therefore false. The hypothesis is not constructed anywhere in this development, so this is a conditional implication and the parent problem remains open. -/
+theorem actualUpperSuccessorLinearEscape_completeCounterexample
+    (hescape : SeamActualUpperSuccessorLinearEscape) :
+    (∃ A : Set ℕ, A.Infinite ∧
+      erdosSupportSeries 2 A = (1 : ℝ) / 2) ∧
+    ¬ UniversalMersenneSubseriesIrrationality := by
+  sorry
+end PalomarCorpus.E257.ActualUpperSuccessor
+
+namespace PalomarCorpus.E257.BooleanMobiusCarry
+open ArithmeticFunction Filter Set
+open scoped ArithmeticFunction.Moebius
+export PalomarCorpus.E257_49.Shared (erdosSupportSeries)
+/-- **The support coefficient** `f_A(n) = #{d ∣ n : d ∈ A}`, the Dirichlet incidence `1_A * 1` of a support set `A ⊆ ℕ`. This is the coefficient in which Erdős #257 is actually stated: `∑_{a∈A} 1/(b^a - 1) = ∑_n f_A(n)/b^n`. Full support gives `f_ℕ = τ`; primes give `ω`; prime powers give `Ω`. Local copy of Erdos249257.supportCoeff, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def supportCoeff (A : Set ℕ) (n : ℕ) : ℕ :=
+  letI := Classical.decPred fun d : ℕ => d ∈ A
+  (n.divisors.filter fun d => d ∈ A).card
+/-- The tempered binary carry orbit condition for an integer sequence u attached to a coefficient sequence c and a natural number v, with no positivity imposed on v: the exact recurrence u (N+1) = 2 u N minus v times c (N+1) holds for every N, and u N divided by 2 to the power N tends to 0. -/
+noncomputable def IsTemperedBinaryOrbit (c : ℕ → ℕ) (v : ℕ) (u : ℕ → ℤ) : Prop :=
+  (∀ N : ℕ,
+      u (N + 1) = 2 * u N - ((v * c (N + 1) : ℕ) : ℤ)) ∧
+    Tendsto (fun N : ℕ ↦ (u N : ℝ) / (2 : ℝ) ^ N) atTop (nhds 0)
+/-- The divisor incidence coefficient of A viewed as an integer valued arithmetic function, with value 0 at 0. -/
+noncomputable def supportCoeffAF (A : Set ℕ) : ArithmeticFunction ℤ :=
+  ⟨fun n ↦ (supportCoeff A n : ℤ), by simp [supportCoeff]⟩
+/-- The positive support selected by the Dirichlet Moebius transform of an arithmetic function f, namely the set of n at least 1 at which the convolution of the Moebius function with f takes the value 1. -/
+noncomputable def booleanMobiusSupport (f : ArithmeticFunction ℤ) : Set ℕ :=
+  {n : ℕ | 0 < n ∧ (ArithmeticFunction.moebius * f) n = 1}
+/-- The normalised integer carry quotient of a sequence U at modulus q, namely 0 at n = 0 and otherwise the Lean integer quotient of the difference 2 * U (n-1) - U n by q. Lean integer division is Euclidean, so this is the exact quotient when q divides that difference, it rounds toward minus infinity for q at least 1 when q does not divide it, and it is 0 when q = 0. The certificates below impose that divisibility, so on their domain the value is the exact quotient. -/
+noncomputable def carryQuotient (q : ℕ) (U : ℕ → ℤ) (n : ℕ) : ℤ :=
+  if n = 0 then 0 else (2 * U (n - 1) - U n) / (q : ℤ)
+/-- The carry quotient viewed as an integer valued arithmetic function. -/
+noncomputable def carryQuotientAF (q : ℕ) (U : ℕ → ℤ) : ArithmeticFunction ℤ :=
+  ⟨carryQuotient q U, by simp [carryQuotient]⟩
+/-- A Boolean Moebius carry certificate for a rational p over q and an integer sequence U: U starts at p, every term is strictly positive, U at N is at most q multiplied by the sum of 2 times the real square root of N and 4, q divides 2 * U N - U (N+1) for every N, and the Dirichlet convolution of the Moebius function with the carry quotient takes only the values 0 and 1 at every positive argument. -/
+structure BooleanMobiusCarryCertificate
+    (p : ℤ) (q : ℕ) (U : ℕ → ℤ) : Prop where
+  initial : U 0 = p
+  positive : ∀ N : ℕ, 0 < U N
+  sqrtBound : ∀ N : ℕ, (U N : ℝ) ≤
+    (q : ℝ) * (2 * Real.sqrt (N : ℝ) + 4)
+  divisible : ∀ N : ℕ, (q : ℤ) ∣ 2 * U N - U (N + 1)
+  mobiusBoolean : ∀ n : ℕ, 0 < n →
+    (ArithmeticFunction.moebius * carryQuotientAF q U) n = 0 ∨
+      (ArithmeticFunction.moebius * carryQuotientAF q U) n = 1
+/-- If A does not contain 0, contains some positive element, and its base two support series equals p divided by q for an integer p and a positive natural q, then there is an integer sequence U carrying a Boolean Moebius carry certificate for p over q whose Moebius transform selects exactly the set A. -/
+theorem exists_booleanMobiusCarry_of_support_fraction
+    (A : Set ℕ) (hzero : 0 ∉ A)
+    (hpos : ∃ a : ℕ, 0 < a ∧ a ∈ A)
+    (p : ℤ) (q : ℕ) (hq : 0 < q)
+    (hvalue : erdosSupportSeries 2 A = (p : ℝ) / (q : ℝ)) :
+    ∃ U : ℕ → ℤ, BooleanMobiusCarryCertificate p q U ∧
+      {n : ℕ |
+        (ArithmeticFunction.moebius * carryQuotientAF q U) n = 1} = A := by
+  sorry
+/-- Converse direction: from a Boolean Moebius carry certificate for p over q with q positive, the support selected by the Moebius transform of the carry quotient omits 0 and its base two support series equals exactly p divided by q. -/
+theorem support_fraction_of_booleanMobiusCarry
+    (p : ℤ) (q : ℕ) (hq : 0 < q) (U : ℕ → ℤ)
+    (cert : BooleanMobiusCarryCertificate p q U) :
+    let A := booleanMobiusSupport (carryQuotientAF q U)
+    0 ∉ A ∧ erdosSupportSeries 2 A = (p : ℝ) / (q : ℝ) := by
+  sorry
+/-- Full reconstruction from a Boolean Moebius carry certificate with q positive: the selected support omits 0, the carry quotient coincides with the divisor incidence arithmetic function of that support, the sequence U is a tempered binary carry orbit for those coefficients at modulus q, the Moebius transform selects exactly that support, and its base two support series equals p divided by q. -/
+theorem BooleanMobiusCarryCertificate.reconstructsSupport
+    {p : ℤ} {q : ℕ} {U : ℕ → ℤ} (hq : 0 < q)
+    (cert : BooleanMobiusCarryCertificate p q U) :
+    let A := booleanMobiusSupport (carryQuotientAF q U)
+    0 ∉ A ∧
+      carryQuotientAF q U = supportCoeffAF A ∧
+      IsTemperedBinaryOrbit (supportCoeff A) q U ∧
+      {n : ℕ |
+        (ArithmeticFunction.moebius * carryQuotientAF q U) n = 1} = A ∧
+      erdosSupportSeries 2 A = (p : ℝ) / (q : ℝ) := by
+  sorry
+/-- Existence level equivalence for a positive natural q: a normalised nonempty support with base two value exactly p divided by q exists if and only if a Boolean Moebius carry certificate for p over q exists. This is an exact characterisation of rational valued supports; it excludes no rational value, and the reconstructed support is not required to be infinite. -/
+theorem exists_normalized_support_fraction_iff_exists_booleanMobiusCarry
+    (p : ℤ) (q : ℕ) (hq : 0 < q) :
+    (∃ A : Set ℕ, 0 ∉ A ∧ (∃ a : ℕ, 0 < a ∧ a ∈ A) ∧
+        erdosSupportSeries 2 A = (p : ℝ) / (q : ℝ)) ↔
+      ∃ U : ℕ → ℤ, BooleanMobiusCarryCertificate p q U := by
+  sorry
+end PalomarCorpus.E257.BooleanMobiusCarry
+
+namespace PalomarCorpus.E257.DyadicObservationSummability
+open Filter Topology
+/-- The observation mass of A with weights alpha up to scale R, namely the sum of alpha a over the positive elements a of A that are at most R. -/
+noncomputable def supportObservationMass (A : Set ℕ) (α : ℕ → ℝ) (R : ℕ) : ℝ := by
+  classical
+  exact ∑ a ∈ (Finset.range (R + 1)).filter (fun a => 0 < a ∧ a ∈ A), α a
+/-- The conductor weighted observation term at a, namely alpha a divided by a when a is positive and lies in A, and 0 otherwise. -/
+noncomputable def weightedObservationTerm (A : Set ℕ) (α : ℕ → ℝ) (a : ℕ) : ℝ := by
+  classical
+  exact if 0 < a ∧ a ∈ A then α a / a else 0
+/-- Explicit majorant: if alpha is nonnegative on A and the conductor weighted terms of A are summable, then for every finite set J of dyadic levels and every natural Q, the sum over j in J of 2 to the power minus j times the observation mass up to Q times 2 to the power j is at most 2 Q times the total conductor weighted mass. Dyadic averaging estimate for weighted observation masses; no compared theorem here consumes it. -/
+theorem dyadic_supportObservationMass_sum_le (A : Set ℕ) (α : ℕ → ℝ)
+    (hα : ∀ a ∈ A, 0 ≤ α a)
+    (hs : Summable (weightedObservationTerm A α)) (J : Finset ℕ) (Q : ℕ) :
+    (∑ j ∈ J, (1 / 2 : ℝ) ^ j * supportObservationMass A α (Q * 2 ^ j)) ≤
+      2 * (Q : ℝ) * ∑' a : ℕ, weightedObservationTerm A α a := by
+  sorry
+/-- Under the same nonnegativity and conductor weighted summability hypotheses, and for every natural Q, the sequence indexed by the dyadic level j whose term is 2 to the power minus j times the observation mass up to Q times 2 to the power j is summable. Dyadic averaging estimate for weighted observation masses; no compared theorem here consumes it. -/
+theorem summable_dyadic_supportObservationMass (A : Set ℕ) (α : ℕ → ℝ)
+    (hα : ∀ a ∈ A, 0 ≤ α a)
+    (hs : Summable (weightedObservationTerm A α)) (Q : ℕ) :
+    Summable (fun j : ℕ => (1 / 2 : ℝ) ^ j *
+      supportObservationMass A α (Q * 2 ^ j)) := by
+  sorry
+/-- Under the same nonnegativity and conductor weighted summability hypotheses, and for every natural Q, the sliding window mean over the dyadic levels from M to 2M minus 1 of 2 to the power minus j times the observation mass up to Q times 2 to the power j, divided by M, tends to 0 as M tends to infinity. Dyadic averaging estimate for weighted observation masses; no compared theorem here consumes it. -/
+theorem tendsto_dyadic_supportObservationMass_mean (A : Set ℕ) (α : ℕ → ℝ)
+    (hα : ∀ a ∈ A, 0 ≤ α a)
+    (hs : Summable (weightedObservationTerm A α)) (Q : ℕ) :
+    Tendsto (fun M : ℕ =>
+      (∑ j ∈ Finset.Ico M (2 * M), (1 / 2 : ℝ) ^ j *
+        supportObservationMass A α (Q * 2 ^ j)) / M) atTop (nhds 0) := by
+  sorry
+end PalomarCorpus.E257.DyadicObservationSummability

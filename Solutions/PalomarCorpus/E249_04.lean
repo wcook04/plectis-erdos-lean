@@ -9,7 +9,7 @@ import Solutions.PalomarCorpus.E249_04.PaperStatementsAD
 import Solutions.PalomarCorpus.E249_04.PaperStatementsAI
 import Solutions.PalomarCorpus.E249_04.PaperStatementsAJ
 import Solutions.PalomarCorpus.E249_04.PaperStatementsAK
-import Solutions.PalomarCorpus.E249_04.PaperStatementsAY
+import Solutions.PalomarCorpus.E249_04.PaperStatementsI
 import Solutions.PalomarCorpus.E249_04.PaperStatementsJ
 import Solutions.PalomarCorpus.E249_04.PaperStatementsK
 import Solutions.PalomarCorpus.E249_04.PaperStatementsL

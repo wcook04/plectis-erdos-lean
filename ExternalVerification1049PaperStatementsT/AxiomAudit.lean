@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification1049PaperStatementsT
+
+#print axioms Erdos249257.ExternalVerification1049PaperStatementsT.plucker_paper_statement

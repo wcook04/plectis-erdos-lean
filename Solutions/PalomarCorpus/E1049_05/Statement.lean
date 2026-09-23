@@ -20,12 +20,7 @@ environments. Generated from the Challenge; do not edit by hand.
 
 open scoped BigOperators
 open Polynomial
-open scoped LaurentSeries
-open scoped PowerSeries
-open scoped Polynomial
-open scoped RatFunc
-open Filter
-open Topology
+universe u
 
 namespace PalomarCorpus.E1049_05.Shared
 /-- The finite arithmetic core of one coordinatewise clearing scheme at the base a/b: the conjunction of a > 0, Q > 0, 0 < digit <= N + K, the divisibility a^K dividing Q times digit, and the tail inequality Q b^(N+K+1) < a^(K+1). Here Q is the accumulated clearing factor and digit the coefficient being cleared, while N and K are the two window parameters: K is the exponent of a in the divisibility and K + 1 its exponent in the tail inequality, N + K bounds digit, and N + K + 1 is the exponent of b. The bound digit <= N + K is the only property of that coefficient used. -/
@@ -34,25 +29,9 @@ noncomputable def CoordinatewiseCorridor
   0 < a ∧ 0 < Q ∧ 0 < digit ∧ digit ≤ N + K ∧
     a ^ K ∣ Q * digit ∧
     Q * b ^ (N + K + 1) < a ^ (K + 1)
-/-- `ℒ(z) = ∑_{n ≥ 1} zⁿ/(1 - zⁿ) = ∑_{n ≥ 1} τ(n) zⁿ`, the divisor generating series, as a formal Laurent series over `ℚ`. Local copy of ErdosProblems.Erdos1049.PaperCompleteR21.divisorLambert, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def divisorLambert : ℚ⸨X⸩ :=
-  HahnSeries.ofPowerSeries ℤ ℚ (PowerSeries.mk fun n => (n.divisors.card : ℚ))
 /-- The homogeneous evaluation H_W(P) = sum over 0 <= i <= W of (coefficient of X^i in P) times 3^i times 2^(W - i), an integer attached to an integer polynomial P and a declared width W; it equals 2^W P(3/2) when the degree of P is at most W. It is linear in P. Coefficients of P in degrees above W are discarded, so the value depends on the declared width and not on P alone. -/
 noncomputable def homEvalThreeTwo (W : ℕ) (P : Polynomial ℤ) : ℤ :=
   ∑ i ∈ Finset.range (W + 1), P.coeff i * 3 ^ i * 2 ^ (W - i)
-/-- `max k 1`, as an integer. Using `max k 1` keeps the substitution below a total function of `k`; every statement about it carries `1 ≤ k`, where it is `k`. Local copy of ErdosProblems.Erdos1049.PaperCompleteR21.kpos, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def kpos (k : ℕ) : ℤ := ((max k 1 : ℕ) : ℤ)
-/-- Local copy of ErdosProblems.Erdos1049.PaperCompleteR21.kpos_pos, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def kpos_pos (k : ℕ) : 0 < kpos k := by
-  have h : 1 ≤ max k 1 := le_max_right k 1
-  have h' : (1 : ℤ) ≤ ((max k 1 : ℕ) : ℤ) := by exact_mod_cast h
-  exact lt_of_lt_of_le zero_lt_one h'
-/-- The substitution `z ↦ z ^ k` on `ℚ((z))`, as a ring homomorphism. Local copy of ErdosProblems.Erdos1049.PaperCompleteR21.subs, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def subs (k : ℕ) : ℚ⸨X⸩ →+* ℚ⸨X⸩ :=
-  HahnSeries.embDomainRingHom (AddMonoidHom.mulLeft (kpos k))
-    (fun _ _ h => mul_left_cancel₀ (kpos_pos k).ne' h)
-    (fun _ _ => ⟨fun h => le_of_mul_le_mul_left h (kpos_pos k),
-      fun h => mul_le_mul_of_nonneg_left h (kpos_pos k).le⟩)
 end PalomarCorpus.E1049_05.Shared
 
 namespace PalomarCorpus.E1049.PaperStatementsM
@@ -104,6 +83,10 @@ noncomputable def homEval (a b W : ℕ) (P : Polynomial ℤ) : ℤ :=
   ∑ i ∈ Finset.range (W + 1), P.coeff i * a ^ i * b ^ (W - i)
 end PalomarCorpus.E1049.PaperStatementsF
 
+namespace PalomarCorpus.E1049.PaperStatementsT
+open scoped BigOperators
+end PalomarCorpus.E1049.PaperStatementsT
+
 namespace PalomarCorpus.E1049.PaperStatementsK
 open scoped BigOperators
 /-- Natural-valued magnitude of the forcing term in the cleared recurrence. Local copy of ErdosProblems.Erdos1049.rationalBaseForcingNat, restated so the compared statements elaborate against Mathlib alone. -/
@@ -144,32 +127,3 @@ noncomputable def rationalPadeQMaxDenExpTwice (n m : ℤ) : ℤ :=
   let j := n - m - 1
   2 * (n * n - n) + j * j + 2 * j * m + j - m * m + 3 * m
 end PalomarCorpus.E1049.PaperStatementsN
-
-namespace PalomarCorpus.E1049.PaperStatementsX
-open scoped LaurentSeries
-open scoped PowerSeries
-open scoped Polynomial
-open scoped RatFunc
-open Filter
-open Topology
-export PalomarCorpus.E1049_05.Shared (divisorLambert kpos kpos_pos subs)
-/-- `f` satisfies a `k`-Mahler functional equation: there are polynomials `p 0, …, p d` over `ℚ` with `p 0 ≠ 0` and `∑_{i ≤ d} pᵢ(z) · f(z^{k^i}) = 0`. The nonvanishing of the coefficient of the *unshifted* function is part of the definition, as in Adamczewski-Bell; the paper's proof is written exactly to produce it. Local copy of ErdosProblems.Erdos1049.PaperCompleteR21.IsMahler, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def IsMahler (k : ℕ) (f : ℚ⸨X⸩) : Prop :=
-  ∃ (d : ℕ) (p : ℕ → ℚ[X]), p 0 ≠ 0 ∧
-    ∑ i ∈ Finset.range (d + 1), algebraMap ℚ[X] ℚ⸨X⸩ (p i) * subs (k ^ i) f = 0
-/-- The theorem of Adamczewski and Bell [Thm. 1.1, p. 6], as a hypothesis: for multiplicatively independent `k, l ≥ 2`, a Laurent series over `ℚ` that is both `k`-Mahler and `l`-Mahler is a rational function. This is the only external input; it is proved neither here nor in Mathlib. Local copy of ErdosProblems.Erdos1049.PaperCompleteR21.AdamczewskiBell, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def AdamczewskiBell : Prop :=
-  ∀ k l : ℕ, 2 ≤ k → 2 ≤ l → (∀ a b : ℕ, k ^ a = l ^ b → a = 0 ∧ b = 0) →
-    ∀ f : ℚ⸨X⸩, IsMahler k f → IsMahler l f →
-      f ∈ Set.range (algebraMap (RatFunc ℚ) ℚ⸨X⸩)
-end PalomarCorpus.E1049.PaperStatementsX
-
-namespace PalomarCorpus.E1049.PaperStructuresL
-open scoped LaurentSeries
-open scoped PowerSeries
-open scoped Polynomial
-open scoped RatFunc
-open Filter
-open Topology
-export PalomarCorpus.E1049_05.Shared (divisorLambert kpos kpos_pos subs)
-end PalomarCorpus.E1049.PaperStructuresL

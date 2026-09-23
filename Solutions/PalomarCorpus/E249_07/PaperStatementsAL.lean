@@ -13,11 +13,6 @@ open Classical
 
 namespace PalomarCorpus.E249.PaperStatementsAL
 
-noncomputable def digit (n : ℕ) : ℕ :=
-  if IsSquare (n / 2 + 1) ↔ n % 2 = 0 then 1 else 0
-
-noncomputable def xi : ℝ := tail digit 0
-
 theorem basePower_dilation_not_universal :
     ∃ x : ℝ, Irrational x ∧ ∃ b₀ : ℕ, 2 ≤ b₀ ∧
       ¬ ∀ Q : ℤ, 1 ≤ Q → ∃ (n : ℕ) (z : ℤ),

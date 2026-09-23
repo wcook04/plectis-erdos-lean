@@ -1,7 +1,14 @@
 import Solutions.PalomarCorpus.E1049_08
 
-#print axioms PalomarCorpus.E1049.RationalBaseBarrier.twoPow_le_rationalBaseForcingNat
-#print axioms PalomarCorpus.E1049.RationalBaseRegion.rational_base_measure
-#print axioms PalomarCorpus.E1049.RationalBaseRegion.rational_base_region
-#print axioms PalomarCorpus.E1049.RationalBaseRegion.thirtyone_four
-#print axioms PalomarCorpus.E1049.RationalBaseRegion.thirtyone_four_power_measure_lt_paper_fraction
+#print axioms PalomarCorpus.E1049.ArchimedeanCap.archimedean_cap
+#print axioms PalomarCorpus.E1049.BezoutPluckerJets.adjacent_det_zero_forces_all_det_zero
+#print axioms PalomarCorpus.E1049.BezoutPluckerJets.anchor_det_zero_forces_all_det_zero
+#print axioms PalomarCorpus.E1049.BezoutPluckerJets.binary_row_collision_of_anchor_det_zero
+#print axioms PalomarCorpus.E1049.BezoutPluckerJets.zmod_binary_tail_collision_of_two_three_depth
+#print axioms PalomarCorpus.E1049.HermitePadeNoGo.hpClearedGap_eq_zero_iff
+#print axioms PalomarCorpus.E1049.HermitePadeNoGo.hpClearedGap_expansion
+#print axioms PalomarCorpus.E1049.HermitePadeNoGo.hpClearedGap_nonpos
+#print axioms PalomarCorpus.E1049.HermitePadeNoGo.rectangular_hp_threshold_eq_classical_iff
+#print axioms PalomarCorpus.E1049.HermitePadeNoGo.rectangular_hp_threshold_le_classical
+#print axioms PalomarCorpus.E1049.PaperStatementsU.sharp_fixed_base_exists
+#print axioms PalomarCorpus.E1049.PaperStructuresAB.sharp_fixed_base

@@ -1,10 +1,10 @@
 version: v0.4
 project:
-  name: 'Erdős #249, record sections 6.1 to 6.2: unconditional structure and finite examples; definitions and elementary identities'
+  name: 'Erdős #249, record section 6.1: unconditional structure and finite examples'
   description: >-
-    This entry states 33 theorems that the long record for Erdős problem #249 states in sections 6.1 (unconditional structure and finite examples) and 6.2 (definitions and elementary identities): the proposition “Nonvanishing of a signed dyadic sum” (section 6.1), as scaled_dyadic_sum_odd; the proposition “Small certificates” (section 6.1), as small_certificate_windows and small_certificates_and_exclusions; the proposition “A common certificate for sixteen shifts” (section 6.1), as sixteen_certificate_windows and sixteen_certificates_and_exclusions; the proposition “Historical diagonal examples and the complete band through 82” (section 6.1), as historical_table_size_and_initial_depths and historical_table_and_complete_band; the proposition “The prefix-tail identity” (section 6.2.1), as tail_diff_mem_int_iff_scaled_series_mem_int and prefix_fractional_part; the lemma “The necessary depth inequality” (section 6.2.1), as certifiedKill_depth_floor, certificate_logarithmic_depth and fixed_depth_bounds_indices; the proposition “A certificate implies nonintegrality” (section 6.2.1), as tail_diff_notMem_int_of_certifiedKill and totient_scaled_truncation_error; the theorem “Nonintegrality gives a certificate at some depth” (section 6.2.1), as exists_certifiedKill_iff_tail_diff_notMem_int; the proposition “An irrationality criterion from rational approximations” (section 6.2.1), as irrational_of_den_mul_abs_sub_tendsto_zero; the proposition “An irrationality criterion from near integers” (section 6.2.1), as irrational_of_int_mul_near_int, irrational_of_pow_mul_near_int, irrational_of_near_integer_base_powers, irrational_of_near_integer_multiples, one_div_den_le_abs_int_combination, digit_block, exists_irrational_basePower_bounded_away, fract_mem_Icc_of_no_three_equal, fract_two_pow_mul_xi_mem_Icc, irrational_tail_zero, irrational_xi, no_three_consecutive_equal, not_approaches_int, not_eventually_periodic, not_near_integer_along_powers_of_two, one_div_eight_le_abs_sub_int and one_div_eight_le_dist_xi.
+    This entry states 10 theorems that the long record for Erdős problem #249 states in section 6.1 (unconditional structure and finite examples): the proposition “The exact reduced denominator” (section 6.1), as lcmHeight_scaledMobiusShadow_den_exact; the proposition “Nonvanishing of a signed dyadic sum” (section 6.1), as signed_dyadic_clearing, signed_dyadic_sum_ne_zero and scaled_dyadic_sum_odd; the proposition “Small certificates” (section 6.1), as small_certificate_windows and small_certificates_and_exclusions; the proposition “A common certificate for sixteen shifts” (section 6.1), as sixteen_certificate_windows and sixteen_certificates_and_exclusions; the proposition “Historical diagonal examples and the complete band through 82” (section 6.1), as historical_table_size_and_initial_depths and historical_table_and_complete_band.
 
-    26 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 7 are derived from the source declaration by a short tactic proof, which certifies implication.
+    6 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 4 are derived from the source declaration by a short tactic proof, which certifies implication.
 
     Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
 
@@ -51,11 +51,11 @@ sources:
   license: Apache-2.0
   author_endorsement: n/a
 status:
-  scope: "One Comparator configuration selecting the 33 theorems listed in PalomarCorpus/E249_06/comparator.json, from the Lean development for Erdős problem #249. The problem's theorems are packed, in the order the papers state them, into the 33 entries PalomarCorpus/E249_01 to PalomarCorpus/E249_33, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification249* directories are internal regression inventory and are not selected."
+  scope: "One Comparator configuration selecting the 10 theorems listed in PalomarCorpus/E249_06/comparator.json, from the Lean development for Erdős problem #249. The problem's theorems are packed, in the order the papers state them, into the 33 entries PalomarCorpus/E249_01 to PalomarCorpus/E249_33, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification249* directories are internal regression inventory and are not selected."
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
-  trusted_challenge_sorry_count: 33
+  trusted_challenge_sorry_count: 10
   sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E249_06/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
   axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
   permitted_axiom_budget:
@@ -63,112 +63,20 @@ status:
   - Quot.sound
   - Classical.choice
   main_results:
-  - declaration: "PalomarCorpus.E249.PaperStatementsAD.certifiedKill_depth_floor"
-    file: "Solutions/PalomarCorpus/E249_06/PaperStatementsAD.lean"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.signed_dyadic_clearing"
+    file: "Solutions/PalomarCorpus/E249_06/PaperStatementsAE.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E249_06/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAD.exists_certifiedKill_iff_tail_diff_notMem_int"
-    file: "Solutions/PalomarCorpus/E249_06/PaperStatementsAD.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E249_06/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAD.tail_diff_mem_int_iff_scaled_series_mem_int"
-    file: "Solutions/PalomarCorpus/E249_06/PaperStatementsAD.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E249_06/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAD.tail_diff_notMem_int_of_certifiedKill"
-    file: "Solutions/PalomarCorpus/E249_06/PaperStatementsAD.lean"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.signed_dyadic_sum_ne_zero"
+    file: "Solutions/PalomarCorpus/E249_06/PaperStatementsAE.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E249_06/comparator.json"
   - declaration: "PalomarCorpus.E249.PaperStatementsAF.scaled_dyadic_sum_odd"
     file: "Solutions/PalomarCorpus/E249_06/PaperStatementsAF.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E249_06/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAI.irrational_of_den_mul_abs_sub_tendsto_zero"
-    file: "Solutions/PalomarCorpus/E249_06/PaperStatementsAI.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E249_06/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAI.irrational_of_int_mul_near_int"
-    file: "Solutions/PalomarCorpus/E249_06/PaperStatementsAI.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E249_06/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAI.irrational_of_pow_mul_near_int"
-    file: "Solutions/PalomarCorpus/E249_06/PaperStatementsAI.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E249_06/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.irrational_of_near_integer_base_powers"
-    file: "Solutions/PalomarCorpus/E249_06/PaperStatementsAJ.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E249_06/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.irrational_of_near_integer_multiples"
-    file: "Solutions/PalomarCorpus/E249_06/PaperStatementsAJ.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E249_06/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.one_div_den_le_abs_int_combination"
-    file: "Solutions/PalomarCorpus/E249_06/PaperStatementsAJ.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E249_06/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAL.digit_block"
-    file: "Solutions/PalomarCorpus/E249_06/PaperStatementsAL.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E249_06/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAL.exists_irrational_basePower_bounded_away"
-    file: "Solutions/PalomarCorpus/E249_06/PaperStatementsAL.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E249_06/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAL.fract_mem_Icc_of_no_three_equal"
-    file: "Solutions/PalomarCorpus/E249_06/PaperStatementsAL.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E249_06/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAL.fract_two_pow_mul_xi_mem_Icc"
-    file: "Solutions/PalomarCorpus/E249_06/PaperStatementsAL.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E249_06/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAL.irrational_tail_zero"
-    file: "Solutions/PalomarCorpus/E249_06/PaperStatementsAL.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E249_06/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAL.irrational_xi"
-    file: "Solutions/PalomarCorpus/E249_06/PaperStatementsAL.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E249_06/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAL.no_three_consecutive_equal"
-    file: "Solutions/PalomarCorpus/E249_06/PaperStatementsAL.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E249_06/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAL.not_approaches_int"
-    file: "Solutions/PalomarCorpus/E249_06/PaperStatementsAL.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E249_06/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAL.not_eventually_periodic"
-    file: "Solutions/PalomarCorpus/E249_06/PaperStatementsAL.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E249_06/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAL.not_near_integer_along_powers_of_two"
-    file: "Solutions/PalomarCorpus/E249_06/PaperStatementsAL.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E249_06/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAL.one_div_eight_le_abs_sub_int"
-    file: "Solutions/PalomarCorpus/E249_06/PaperStatementsAL.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E249_06/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAL.one_div_eight_le_dist_xi"
-    file: "Solutions/PalomarCorpus/E249_06/PaperStatementsAL.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E249_06/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAT.certificate_logarithmic_depth"
-    file: "Solutions/PalomarCorpus/E249_06/PaperStatementsAT.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E249_06/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAT.fixed_depth_bounds_indices"
-    file: "Solutions/PalomarCorpus/E249_06/PaperStatementsAT.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E249_06/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAT.prefix_fractional_part"
-    file: "Solutions/PalomarCorpus/E249_06/PaperStatementsAT.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E249_06/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAT.totient_scaled_truncation_error"
-    file: "Solutions/PalomarCorpus/E249_06/PaperStatementsAT.lean"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAR.lcmHeight_scaledMobiusShadow_den_exact"
+    file: "Solutions/PalomarCorpus/E249_06/PaperStatementsAR.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E249_06/comparator.json"
   - declaration: "PalomarCorpus.E249.PaperStatementsG.historical_table_size_and_initial_depths"

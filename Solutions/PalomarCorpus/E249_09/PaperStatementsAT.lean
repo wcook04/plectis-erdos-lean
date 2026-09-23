@@ -72,6 +72,8 @@ noncomputable def lcmDivisorRayLetter (H j : ℕ) : ℤ :=
     ((totientOverlapFactor j (a + 1) *
       Nat.totient (a + 1) : ℕ) : ℤ)
 
+noncomputable def deltaTotient (h n : ℕ) : ℤ := (Nat.totient (n + h) : ℤ) - (Nat.totient n : ℤ)
+
 noncomputable def lcmRayArithmeticLetter (t j : ℕ) : ℤ :=
   if j ∣ periodLcm t then
     lcmDivisorRayLetter (periodLcm t) j
@@ -107,6 +109,10 @@ noncomputable def DTWFirstHarmonicNormGap : Prop :=
     16 * (2 * X + h + L + 2) ≤ 2 ^ L ∧
     ‖∑ N ∈ Finset.Ico X (2 * X), windowFirstExp h N L‖
       ≤ (21 / 25 : ℝ) * X
+
+noncomputable def carryOrbit (h N : ℕ) (d : ℤ) : ℕ → ℤ
+  | 0 => d
+  | i + 1 => 2 * carryOrbit h N d i - deltaTotient h (N + i + 1)
 
 noncomputable def diagonalPincerCertificateScalesThroughT64 : List ℕ := [1, 2, 3, 4, 5, 7, 8, 9, 11, 13, 16, 17, 19, 23, 25, 27, 29, 31, 32, 37, 41, 43, 47, 49, 53, 59, 61, 64]
 

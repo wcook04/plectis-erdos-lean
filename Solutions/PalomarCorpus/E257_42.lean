@@ -5,8 +5,9 @@ Authors: Will Cook
 -/
 import Mathlib
 import Solutions.PalomarCorpus.E257_42.Statement
-import Solutions.PalomarCorpus.E257_42.RationalMembership
-import Solutions.PalomarCorpus.E257_42.RationalTailRigidity
-import Solutions.PalomarCorpus.E257_42.ReciprocalSupport
-import Solutions.PalomarCorpus.E257_42.ScaledGreedyTrap
-import Solutions.PalomarCorpus.E257_42.TerminalScaledVanishing
+import Solutions.PalomarCorpus.E257_42.PaperStatementsAM
+import Solutions.PalomarCorpus.E257_42.PaperStatementsBD
+import Solutions.PalomarCorpus.E257_42.PaperStatementsQ
+import Solutions.PalomarCorpus.E257_42.PaperStructuresBR
+import Solutions.PalomarCorpus.E257_42.PaperStructuresBT
+import Solutions.PalomarCorpus.E257_42.PaperStructuresCB

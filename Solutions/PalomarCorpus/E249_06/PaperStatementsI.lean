@@ -20,7 +20,7 @@ open Finset
 /- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
 
 namespace PalomarCorpus.E249.PaperStatementsI
-export PalomarCorpus.E249_06.Shared (certifiedKill diagonalPincerCertificateScalesThroughT64 diagonalPincerKillDepthThroughT64 windowDiscrepancy)
+export PalomarCorpus.E249_06.Shared (diagonalPincerCertificateScalesThroughT64 diagonalPincerKillDepthThroughT64)
 
 noncomputable def deltaTotient (h n : ℕ) : ℤ := (Nat.totient (n + h) : ℤ) - (Nat.totient n : ℤ)
 

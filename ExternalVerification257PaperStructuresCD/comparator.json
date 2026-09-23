@@ -1,0 +1,30 @@
+{
+  "challenge_module": "ExternalVerification257PaperStructuresCD.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStructuresCD",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStructuresCD.half_mem_mersenneAchievementSet_iff_unboundedUpperOrMiddle",
+    "Erdos249257.ExternalVerification257PaperStructuresCD.half_mem_mersenneAchievementSet_of_largestSkipLateStepSocket",
+    "Erdos249257.ExternalVerification257PaperStructuresCD.half_mem_mersenneAchievementSet_of_middleProducerCardEscape",
+    "Erdos249257.ExternalVerification257PaperStructuresCD.half_mem_mersenneAchievementSet_of_middleProducerRowEscape",
+    "Erdos249257.ExternalVerification257PaperStructuresCD.half_mem_mersenneAchievementSet_of_upperResetDyadicBandEscape",
+    "Erdos249257.ExternalVerification257PaperStructuresCD.middleProducer_allRight_forces_rational_skip",
+    "Erdos249257.ExternalVerification257PaperStructuresCD.seamPerturbedFamily_gap_pos",
+    "Erdos249257.ExternalVerification257PaperStructuresCD.seamPerturbedFamily_oldSum_injective",
+    "Erdos249257.ExternalVerification257PaperStructuresCD.seamPerturbedFamily_separated",
+    "Erdos249257.ExternalVerification257PaperStructuresCD.seamPerturbedFamily_pulseCap_lt_three_gap",
+    "Erdos249257.ExternalVerification257PaperStructuresCD.wordPulse_le",
+    "Erdos249257.ExternalVerification257PaperStructuresCD.exists_seamWord_minimal_above",
+    "Erdos249257.ExternalVerification257PaperStructuresCD.integerGreedyBits_length",
+    "Erdos249257.ExternalVerification257PaperStructuresCD.seamAboveWord_minimal",
+    "Erdos249257.ExternalVerification257PaperStructuresCD.seamAboveWord_strict",
+    "Erdos249257.ExternalVerification257PaperStructuresCD.seamWeights_length_eq",
+    "Erdos249257.ExternalVerification257PaperStructuresCD.seamAdjacentCut_below_admissible",
+    "Erdos249257.ExternalVerification257PaperStructuresCD.seamAdjacentCut_below_maximal"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

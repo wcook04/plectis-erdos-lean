@@ -1,0 +1,243 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: v0.4
+project:
+  name: 'Erdős #257: independent restatements of refereed paper-linked theorems'
+  description: >-
+    3 theorems of the substantive development for Erdős problem #257
+    restated against Mathlib alone and transported from the source declarations named
+    below. The substantive formalization lives in Erdos249257.HalfCylinderConcreteSeamAdapter, Erdos249257.HalfCylinderFloorErrorReset, Erdos249257.HalfCylinderHalfMembershipClassification, Erdos249257.HalfCylinderIntegerGreedy, Erdos249257.HalfCylinderLargestSkipGap, Erdos249257.HalfCylinderMiddleCarryLowerBound, ErdosProblems.Erdos257.PaperCompleteR21.DyadicBandAndTwoSidedBounds, ErdosProblems.Erdos257.PaperCompleteR21.ResetSqrtEscapeHalfMembership, ErdosProblems.Erdos257.PaperCompleteR21.UpperResetBandCertificate in this repository and at
+    public commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84 of https://github.com/wcook04/plectis-erdos. This entry is a comparison
+    interface over that development. 3 statements transport by direct term
+    application, which certifies definitional identity with the source statement;
+    0 transport through a tactic bridge, which certifies implication only. The
+    parent Erdős problem remains open.
+    12 further compared theorems are proof obligations of copied
+    definitions, listed below with the definition or lemma they are lifted from; they are
+    not paper statements, and each is proved from the source.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - "11A25"
+  - "11B83"
+sources:
+- title: 'Erdős #257: paper-linked Lean development'
+  authors:
+  - Will Cook
+  id: https://github.com/wcook04/plectis-erdos
+  type: original-proof
+  relationship: other
+  note: >-
+    The source declarations this entry transports, at commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84.
+    Novelty is unassessed and the parent problem is not claimed as solved.
+  license: Apache-2.0
+  author_endorsement: participated
+- title: 'Erdős Problem #257'
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com/257
+  type: web discussion
+  relationship: background
+  note: The catalogue supplies the problem statement and references.
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+status:
+  scope: Independent restatements of 3 refereed declarations for Erdős problem #257, with 12 lifted proof obligations of copied definitions.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 15
+  sorry_boundary: Only the trusted Challenge theorem bodies carry placeholders.
+  axiom_audit_status: pending fresh target-toolchain axiom audit
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  development_status: substantive
+  local_proof_provenance: Erdos249257.HalfCylinderConcreteSeamAdapter, Erdos249257.HalfCylinderFloorErrorReset, Erdos249257.HalfCylinderHalfMembershipClassification, Erdos249257.HalfCylinderIntegerGreedy, Erdos249257.HalfCylinderLargestSkipGap, Erdos249257.HalfCylinderMiddleCarryLowerBound, ErdosProblems.Erdos257.PaperCompleteR21.DyadicBandAndTwoSidedBounds, ErdosProblems.Erdos257.PaperCompleteR21.ResetSqrtEscapeHalfMembership, ErdosProblems.Erdos257.PaperCompleteR21.UpperResetBandCertificate in this repository, which is the same development published at https://github.com/wcook04/plectis-erdos commit f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+  canonical_claim_status: generated comparison interface over substantive Lean in this repository
+  main_results:
+  - declaration: Erdos249257.ExternalVerification257PaperStructuresCG.paper_theoremA_right_branch_forces_small_deviation
+    file: Solutions/ExternalVerification257PaperStructuresCG.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStructuresCG/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStructuresCG.paper_theoremA_right_branch_forces_small_deviation
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.paper_theoremA_right_branch_forces_small_deviation
+    source_file: ErdosProblems/Erdos257/PaperCompleteR21/ResetSqrtEscapeHalfMembership.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStructuresCG.paper_two_sided_dyadic_bound
+    file: Solutions/ExternalVerification257PaperStructuresCG.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStructuresCG/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStructuresCG.paper_two_sided_dyadic_bound
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.paper_two_sided_dyadic_bound
+    source_file: ErdosProblems/Erdos257/PaperCompleteR21/DyadicBandAndTwoSidedBounds.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStructuresCG.paper_universal_band_condition_unfolded
+    file: Solutions/ExternalVerification257PaperStructuresCG.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStructuresCG/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStructuresCG.paper_universal_band_condition_unfolded
+    canonical_claim_status: source_transport_prepared_pending_release_validation
+    novelty_status: unassessed
+    source_declaration: ErdosProblems.Erdos257.PaperCompleteR21.paper_universal_band_condition_unfolded
+    source_file: ErdosProblems/Erdos257/PaperCompleteR21/UpperResetBandCertificate.lean
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStructuresCG.seamPerturbedFamily_gap_pos
+    file: Solutions/ExternalVerification257PaperStructuresCG.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStructuresCG/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStructuresCG.seamPerturbedFamily_gap_pos
+    canonical_claim_status: lifted_proof_obligation_of_a_copied_definition
+    novelty_status: unassessed
+    lifted_from: Erdos249257.HalfCylinderIntegerGreedy.seamPerturbedFamily field gap_pos
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStructuresCG.seamPerturbedFamily_oldSum_injective
+    file: Solutions/ExternalVerification257PaperStructuresCG.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStructuresCG/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStructuresCG.seamPerturbedFamily_oldSum_injective
+    canonical_claim_status: lifted_proof_obligation_of_a_copied_definition
+    novelty_status: unassessed
+    lifted_from: Erdos249257.HalfCylinderIntegerGreedy.seamPerturbedFamily field oldSum_injective
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStructuresCG.seamPerturbedFamily_separated
+    file: Solutions/ExternalVerification257PaperStructuresCG.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStructuresCG/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStructuresCG.seamPerturbedFamily_separated
+    canonical_claim_status: lifted_proof_obligation_of_a_copied_definition
+    novelty_status: unassessed
+    lifted_from: Erdos249257.HalfCylinderIntegerGreedy.seamPerturbedFamily field separated
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStructuresCG.seamPerturbedFamily_pulseCap_lt_three_gap
+    file: Solutions/ExternalVerification257PaperStructuresCG.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStructuresCG/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStructuresCG.seamPerturbedFamily_pulseCap_lt_three_gap
+    canonical_claim_status: lifted_proof_obligation_of_a_copied_definition
+    novelty_status: unassessed
+    lifted_from: Erdos249257.HalfCylinderIntegerGreedy.seamPerturbedFamily field pulseCap_lt_three_gap
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStructuresCG.wordPulse_le
+    file: Solutions/ExternalVerification257PaperStructuresCG.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStructuresCG/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStructuresCG.wordPulse_le
+    canonical_claim_status: lifted_proof_obligation_of_a_copied_definition
+    novelty_status: unassessed
+    lifted_from: Erdos249257.HalfCylinderIntegerGreedy.wordPulse_le
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStructuresCG.exists_seamWord_minimal_above
+    file: Solutions/ExternalVerification257PaperStructuresCG.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStructuresCG/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStructuresCG.exists_seamWord_minimal_above
+    canonical_claim_status: lifted_proof_obligation_of_a_copied_definition
+    novelty_status: unassessed
+    lifted_from: Erdos249257.HalfCylinderIntegerGreedy.exists_seamWord_minimal_above
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStructuresCG.integerGreedyBits_length
+    file: Solutions/ExternalVerification257PaperStructuresCG.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStructuresCG/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStructuresCG.integerGreedyBits_length
+    canonical_claim_status: lifted_proof_obligation_of_a_copied_definition
+    novelty_status: unassessed
+    lifted_from: Erdos249257.HalfCylinderIntegerGreedy.integerGreedyBits_length
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStructuresCG.seamAboveWord_minimal
+    file: Solutions/ExternalVerification257PaperStructuresCG.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStructuresCG/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStructuresCG.seamAboveWord_minimal
+    canonical_claim_status: lifted_proof_obligation_of_a_copied_definition
+    novelty_status: unassessed
+    lifted_from: Erdos249257.HalfCylinderIntegerGreedy.seamAboveWord_minimal
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStructuresCG.seamAboveWord_strict
+    file: Solutions/ExternalVerification257PaperStructuresCG.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStructuresCG/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStructuresCG.seamAboveWord_strict
+    canonical_claim_status: lifted_proof_obligation_of_a_copied_definition
+    novelty_status: unassessed
+    lifted_from: Erdos249257.HalfCylinderIntegerGreedy.seamAboveWord_strict
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStructuresCG.seamWeights_length_eq
+    file: Solutions/ExternalVerification257PaperStructuresCG.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStructuresCG/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStructuresCG.seamWeights_length_eq
+    canonical_claim_status: lifted_proof_obligation_of_a_copied_definition
+    novelty_status: unassessed
+    lifted_from: Erdos249257.HalfCylinderIntegerGreedy.seamWeights_length_eq
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStructuresCG.seamAdjacentCut_below_admissible
+    file: Solutions/ExternalVerification257PaperStructuresCG.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStructuresCG/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStructuresCG.seamAdjacentCut_below_admissible
+    canonical_claim_status: lifted_proof_obligation_of_a_copied_definition
+    novelty_status: unassessed
+    lifted_from: Erdos249257.HalfCylinderIntegerGreedy.seamAdjacentCut field below_admissible
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+  - declaration: Erdos249257.ExternalVerification257PaperStructuresCG.seamAdjacentCut_below_maximal
+    file: Solutions/ExternalVerification257PaperStructuresCG.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification257PaperStructuresCG/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification257PaperStructuresCG.seamAdjacentCut_below_maximal
+    canonical_claim_status: lifted_proof_obligation_of_a_copied_definition
+    novelty_status: unassessed
+    lifted_from: Erdos249257.HalfCylinderIntegerGreedy.seamAdjacentCut field below_maximal
+    source_commit: f436a7ec0f7bf035828a7eec37fd29ae74d17d84
+    transport: definitional
+automation:
+  methods:
+  - method: agent
+    models:
+    - Anthropic Claude
+    framework: Lean 4 and Mathlib
+    tool_setup: Statement wrappers generated mechanically from the refereed paper statements and elaborated before acceptance
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    Every restated statement was refereed against the paper in the coverage ledger before
+    this wrapper was generated; the lifted proof obligations were not, since they are not
+    paper statements. The transport proof is the fidelity evidence: a direct term
+    application certifies definitional identity with the refereed source statement.
+    No independent mathematical review outside the author is claimed.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

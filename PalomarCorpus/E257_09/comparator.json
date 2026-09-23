@@ -2,7 +2,24 @@
   "challenge_module": "PalomarCorpus.E257_09.Challenge",
   "solution_module": "Solutions.PalomarCorpus.E257_09",
   "theorem_names": [
-    "PalomarCorpus.E257.PaperStructuresBJ.eventually_seamSupport_agrees"
+    "PalomarCorpus.E257.PaperStructuresBB.SeamTwoSidedDyadicCellEscape.twoSided",
+    "PalomarCorpus.E257.PaperStructuresBB.exists_seamWord_minimal_above",
+    "PalomarCorpus.E257.PaperStructuresBB.integerGreedyBits_length",
+    "PalomarCorpus.E257.PaperStructuresBB.largestSkipLateAt_fourteen",
+    "PalomarCorpus.E257.PaperStructuresBB.mem_seamGreedySupport_iff_scaled",
+    "PalomarCorpus.E257.PaperStructuresBB.paperResetSqrtEscape_iff_square",
+    "PalomarCorpus.E257.PaperStructuresBB.seamAboveWord_minimal",
+    "PalomarCorpus.E257.PaperStructuresBB.seamAboveWord_strict",
+    "PalomarCorpus.E257.PaperStructuresBB.seamAdjacentCut_below_admissible",
+    "PalomarCorpus.E257.PaperStructuresBB.seamAdjacentCut_below_maximal",
+    "PalomarCorpus.E257.PaperStructuresBB.seamGreedy_terminal_false_iff_upperOrMiddle",
+    "PalomarCorpus.E257.PaperStructuresBB.seamPerturbedFamily_gap_pos",
+    "PalomarCorpus.E257.PaperStructuresBB.seamPerturbedFamily_oldSum_injective",
+    "PalomarCorpus.E257.PaperStructuresBB.seamPerturbedFamily_pulseCap_lt_three_gap",
+    "PalomarCorpus.E257.PaperStructuresBB.seamPerturbedFamily_separated",
+    "PalomarCorpus.E257.PaperStructuresBB.seamUpperBranch_remainder_add_resetCharge_eq",
+    "PalomarCorpus.E257.PaperStructuresBB.seamWeights_length_eq",
+    "PalomarCorpus.E257.PaperStructuresBB.wordPulse_le"
   ],
   "permitted_axioms": [
     "propext",

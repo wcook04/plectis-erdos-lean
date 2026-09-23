@@ -5,15 +5,18 @@ Authors: Will Cook
 -/
 
 import Mathlib
-import Erdos249257.BooleanMobiusGlobalRepair
-import Erdos249257.BooleanMobiusLocalRepair
+import Erdos249257.CertificateKernel
+import Erdos249257.DyadicPrefixCompression
+import Erdos249257.GenericTailOrbitRigidity
+import Erdos249257.GreedyAchievementSet
+import Erdos249257.HalfCarryReachability
 import Erdos249257.HalfCylinderConcreteSeamAdapter
+import Erdos249257.HalfCylinderFatalGapRightTail
+import Erdos249257.HalfCylinderFiniteShadow
 import Erdos249257.HalfCylinderFloorErrorReset
-import Erdos249257.HalfCylinderHalfMembershipClassification
+import Erdos249257.HalfCylinderFullShellSeamBridge
 import Erdos249257.HalfCylinderIntegerGreedy
-import Erdos249257.HalfCylinderLargestSkipGap
-import ErdosProblems.Erdos257.PaperCompleteR21.CompatibleFiniteRowFamily
-import ErdosProblems.Erdos257.PaperCompleteR21.SeamRowGapAndCarry
+import Erdos249257.HalfCylinderSkippedEndpointClassifier
 
 set_option autoImplicit false
 
@@ -29,77 +32,41 @@ statement is elaborated from the same text in the same module as in the Challeng
 Generated from the Challenge; do not edit by hand.
 -/
 
-open Filter
 open Set
+open Filter
 open scoped BigOperators
+open Topology
+open scoped ENNReal
+open MeasureTheory
 
-namespace PalomarCorpus.E257.PaperStructuresBH
-open Filter
+namespace PalomarCorpus.E257.PaperStructuresBI
 open Set
+open Filter
 open scoped BigOperators
-/-- Structural part of an endpoint-by-endpoint repair trajectory. The arithmetic producer receipts are separated into `GlobalBooleanMobiusRepairFeasible` below. Local copy of Erdos249257.BooleanMobiusGlobalRepairTrajectory, restated so the compared statements elaborate against Mathlib alone. -/
-structure BooleanMobiusGlobalRepairTrajectory where
-  bit : ℕ → ℕ → Bool
-  frozen_step : ∀ {n d : ℕ}, 2 * d ≤ n → bit (n + 1) d = bit n d
-/-- Local definition signedDyadicValue, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def signedDyadicValue : List ℤ → ℤ
-  | [] => 0
-  | z :: zs => z + 2 * signedDyadicValue zs
-/-- The finite Boolean support displayed by row `n`. Coordinates zero and one are normalized away at the definition boundary. Local copy of Erdos249257.globalRepairStageSupport, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def globalRepairStageSupport (bit : ℕ → ℕ → Bool) (n : ℕ) : Finset ℕ :=
-  (Finset.Icc 2 n).filter fun d ↦ bit n d = true
-/-- Local definition upperSuffixWord, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def upperSuffixWord (a : ℕ → ℕ) (R M : ℕ) : List ℕ :=
-  List.map (fun i ↦ a (M - i)) (List.range (M - R))
-/-- Local definition globalRepairUpperWord, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def globalRepairUpperWord
-    (T : BooleanMobiusGlobalRepairTrajectory) (n : ℕ) : List ℕ :=
-  upperSuffixWord
-    (fun d ↦ if T.bit n d = true then 1 else 0) (n / 2) n
-/-- The part of row `n` which is already frozen before its upper-half rewrite. Local copy of Erdos249257.globalRepairLowerSupport, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def globalRepairLowerSupport (bit : ℕ → ℕ → Bool) (n : ℕ) : Finset ℕ :=
-  (globalRepairStageSupport bit n).filter fun d ↦ d ≤ n / 2
-/-- The local integer Mersenne quotient at binary scale M and rank d, namely the natural number quotient of 2 to the power M by 2 to the power d minus 1; at d = 0 the divisor is 0 and the value is 0. -/
-noncomputable def localMersenneQuotient (M d : ℕ) : ℕ :=
-  2 ^ M / (2 ^ d - 1)
-/-- The total local quotient carried by a finite set D of ranks at binary scale M, namely the sum over d in D of the local Mersenne quotient at M and d. -/
-noncomputable def localPrefixQuotient (D : Finset ℕ) (M : ℕ) : ℕ :=
-  ∑ d ∈ D, localMersenneQuotient M d
-/-- Local definition upperHalfRepairLength, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def upperHalfRepairLength (n : ℕ) : ℕ :=
-  n - n / 2
-/-- The divisor incidence of a finite set D of ranks at n, namely the number of members of D that divide n. -/
-noncomputable def endpointDivisorContribution (D : Finset ℕ) (n : ℕ) : ℕ :=
-  (D.filter fun d ↦ d ∣ n).card
-/-- The carry left after reading the nonterminating binary expansion of `2⁻ᵏ` through place `M` and subtracting the quotient contributions of `D`. The theorem below proves that the truncating natural subtraction is honest in the endpoint situation where it is used. Local copy of Erdos249257.localBinarySuffix, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def localBinarySuffix (D : Finset ℕ) (k M : ℕ) : ℕ :=
-  2 ^ (M - k) - localPrefixQuotient D M - 1
-/-- Local definition GlobalEndpointExponentialBound, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def GlobalEndpointExponentialBound
-    (T : BooleanMobiusGlobalRepairTrajectory) : Prop :=
-  ∀ n : ℕ, 2 ≤ n →
-    let D := globalRepairLowerSupport T.bit n
-    2 ^ (endpointDivisorContribution D n - 1) - 1 ≤
-      localBinarySuffix D 1 (n - 1)
-/-- The next signed Boolean--Möbius coefficient supplied by the binary carry recurrence. Local copy of Erdos249257.localRepairInteger, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def localRepairInteger (D : Finset ℕ) (k n : ℕ) : ℤ :=
-  2 * (localBinarySuffix D k (n - 1) : ℤ) + 1 -
-    (endpointDivisorContribution D n : ℤ)
-/-- Local definition GlobalBooleanMobiusRepairFeasible, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def GlobalBooleanMobiusRepairFeasible
-    (T : BooleanMobiusGlobalRepairTrajectory) : Prop :=
-  GlobalEndpointExponentialBound T ∧
-  (∀ n : ℕ, 2 ≤ n →
-    let D := globalRepairLowerSupport T.bit n
-    signedDyadicValue
-        (List.map (fun b : ℕ ↦ (b : ℤ)) (globalRepairUpperWord T n)) =
-      localRepairInteger D 1 n) ∧
-  (∀ n : ℕ, 2 ≤ n →
-    let D := globalRepairLowerSupport T.bit n
-    localRepairInteger D 1 n < (2 ^ upperHalfRepairLength n : ℕ)) ∧
-  (∀ n : ℕ, 2 ≤ n →
-    localPrefixQuotient (globalRepairStageSupport T.bit n) n =
-      2 ^ (n - 1) - 1)
+open Topology
+open scoped ENNReal
+open MeasureTheory
+/-- The binary affine orbit driven by an integer sequence a from an initial value, defined by orbit 0 equal to the initial value and orbit (n+1) equal to twice orbit n minus a at n+1. -/
+noncomputable def affineBinaryOrbit (a : ℕ → ℤ) (u0 : ℤ) : ℕ → ℤ
+  | 0 => u0
+  | n + 1 => 2 * affineBinaryOrbit a u0 n - a (n + 1)
+/-- **The support coefficient** `f_A(n) = #{d ∣ n : d ∈ A}`, the Dirichlet incidence `1_A * 1` of a support set `A ⊆ ℕ`. This is the coefficient in which Erdős #257 is actually stated: `∑_{a∈A} 1/(b^a - 1) = ∑_n f_A(n)/b^n`. Full support gives `f_ℕ = τ`; primes give `ω`; prime powers give `Ω`. Local copy of Erdos249257.supportCoeff, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def supportCoeff (A : Set ℕ) (n : ℕ) : ℕ :=
+  letI := Classical.decPred fun d : ℕ => d ∈ A
+  (n.divisors.filter fun d => d ∈ A).card
+/-- The integer half carry attached to a support A, namely the binary affine orbit started at 1 and driven by the divisor incidence coefficients of A shifted by one, so that the orbit at n+1 is twice the orbit at n minus the number of divisors of n+2 lying in A; the shift and the recursion index compose, so the coefficient consumed at step n+1 is the one at n+2. -/
+noncomputable def integerHalfCarry (A : Set ℕ) : ℕ → ℤ :=
+  affineBinaryOrbit (fun n : ℕ ↦ (supportCoeff A (n + 1) : ℤ)) 1
+/-- The canonical integer half carry measured relative to the signed Möbius solution. Index `N` corresponds to the packet's state `e_{N+1}`. Local copy of Erdos249257.HalfCarryReachability.mobiusCenteredHalfCarry, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def mobiusCenteredHalfCarry (A : Set ℕ) (N : ℕ) : ℤ :=
+  integerHalfCarry A N - 1
+/-- Integer numerator of the frozen coefficient window. The recurrence uses the binary weights `2^(J-i)` without division. Local copy of Erdos249257.HalfCylinderFiniteShadow.finiteCoeffWindowNumerator, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def finiteCoeffWindowNumerator
+    (A : Set ℕ) (n : ℕ) : ℕ → ℕ
+  | 0 => 0
+  | J + 1 =>
+      2 * finiteCoeffWindowNumerator A n J +
+        supportCoeff A (n + J + 1)
 /-- Local definition PerturbedFamily, copied so the compared statements of this entry elaborate against Mathlib alone. -/
 structure PerturbedFamily (α : Type*) where
   oldSum : α → ℕ
@@ -120,21 +87,14 @@ structure PerturbedFamily.AdjacentCut {α : Type*} (F : PerturbedFamily α) (C :
   below_maximal : ∀ x, F.oldSum x ≤ C → F.oldSum x ≤ F.oldSum below
   above_strict : C < F.oldSum above
   above_minimal : ∀ x, C < F.oldSum x → F.oldSum above ≤ F.oldSum x
-/-- Local definition abovePulse, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def PerturbedFamily.AdjacentCut.abovePulse {α : Type*} {F : PerturbedFamily α} {C : ℕ} (K : F.AdjacentCut C) : ℕ := F.pulse K.above
-/-- Local definition belowPulse, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def PerturbedFamily.AdjacentCut.belowPulse {α : Type*} {F : PerturbedFamily α} {C : ℕ} (K : F.AdjacentCut C) : ℕ := F.pulse K.below
 /-- Local definition overshoot, copied so the compared statements of this entry elaborate against Mathlib alone. -/
 noncomputable def PerturbedFamily.AdjacentCut.overshoot {α : Type*} {F : PerturbedFamily α} {C : ℕ} (K : F.AdjacentCut C) : ℕ := F.oldSum K.above - C
-/-- Local definition remainder, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def PerturbedFamily.AdjacentCut.remainder {α : Type*} {F : PerturbedFamily α} {C : ℕ} (K : F.AdjacentCut C) : ℕ := C - F.oldSum K.below
-/-- Local definition successorCarries, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def PerturbedFamily.AdjacentCut.successorCarries {α : Type*} {F : PerturbedFamily α} {C : ℕ} (K : F.AdjacentCut C) : Prop :=
-  4 * K.overshoot + K.abovePulse ≤ F.gap
-/-- Local definition terminalWeight, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def PerturbedFamily.AdjacentCut.terminalWeight {α : Type*} {F : PerturbedFamily α} {C : ℕ} (_K : F.AdjacentCut C) : ℕ := 2 * F.gap + 4
 /-- Local definition SeamRowWord, copied so the compared statements of this entry elaborate against Mathlib alone. -/
 noncomputable abbrev SeamRowWord (s : ℕ) := Fin (s - 2) → Bool
+/-- Local definition extend, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def SeamRowWord.extend {s : ℕ} (b : SeamRowWord s) (beta : Bool) :
+    SeamRowWord (s + 1) :=
+  fun i => if h : (i : ℕ) < s - 2 then b ⟨i, h⟩ else beta
 /-- Local definition ofList, copied so the compared statements of this entry elaborate against Mathlib alone. -/
 noncomputable def SeamRowWord.ofList {s : ℕ} (bits : List Bool) (hlen : bits.length = s - 2) :
     SeamRowWord s :=
@@ -217,6 +177,14 @@ theorem integerGreedyBits_length (weights : List ℕ) (C : ℕ) :
     (integerGreedyBits weights C).length = weights.length := by
   set_option smartUnfolding false in
   with_unfolding_all exact @Erdos249257.HalfCylinderIntegerGreedy.integerGreedyBits_length weights C
+/-- The total weight selected by a Boolean word, namely the sum of those weights whose corresponding entry of the word is true, with the recursion stopping at the end of either list. -/
+noncomputable def weightedBoolSum : List ℕ → List Bool → ℕ
+  | w :: ws, true :: bs => w + weightedBoolSum ws bs
+  | _ :: ws, false :: bs => weightedBoolSum ws bs
+  | _, _ => 0
+/-- The capacity left unpaid after the greedy Boolean word has been applied to a weight list, namely the capacity minus the weight it selects. -/
+noncomputable def integerGreedyRemainder (weights : List ℕ) (C : ℕ) : ℕ :=
+  C - weightedBoolSum weights (integerGreedyBits weights C)
 /-- Local definition seamAboveWord, copied so the compared statements of this entry elaborate against Mathlib alone. -/
 noncomputable def seamAboveWord (s : ℕ) (hs : 5 ≤ s) :
     SeamRowWord s :=
@@ -281,24 +249,66 @@ noncomputable def seamAdjacentCut (s : ℕ) (hs : 5 ≤ s) :
   below_maximal := @seamAdjacentCut_below_maximal s hs
   above_strict := seamAboveWord_strict hs
   above_minimal := seamAboveWord_minimal hs
+/-- The greedy remainder of the seam subset sum problem at row s, namely the seam capacity minus the total weight selected greedily from the seam weight list. -/
+noncomputable def seamIntegerGreedyRemainder (s : ℕ) : ℕ :=
+  integerGreedyRemainder (seamWeights s) (seamSubsetTarget s)
+/-- Local definition stemBitsFrom, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def stemBitsFrom (s : ℕ) (P : Finset ℕ) : ℕ → List Bool
+  | d =>
+      if h : d < s then
+        decide (d ∈ P) :: stemBitsFrom s P (d + 1)
+      else
+        []
+termination_by d => s - d
+decreasing_by omega
+/-- Local definition stemBits, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def stemBits (s : ℕ) (P : Finset ℕ) : List Bool :=
+  stemBitsFrom s P 2
+/-- The rational Mersenne weight 1 divided by 2 to the power n minus 1, taken in the rationals; at n = 0 the value is 0. -/
+noncomputable def mersenneWeightRat (n : ℕ) : ℚ :=
+  1 / ((2 : ℚ) ^ n - 1)
+/-- The rational greedy Mersenne remainder of a rational target x through rank n, computed exactly in the rationals: it starts at x and at each rank n+1 subtracts the rational weight 1 divided by 2 to the power n+1 minus 1 exactly when that weight is at most the current remainder. -/
+noncomputable def greedyMersenneRemainderRat (x : ℚ) : ℕ → ℚ
+  | 0 => x
+  | n + 1 =>
+      if mersenneWeightRat (n + 1) ≤ greedyMersenneRemainderRat x n then
+        greedyMersenneRemainderRat x n - mersenneWeightRat (n + 1)
+      else
+        greedyMersenneRemainderRat x n
+/-- Positive exponents selected through a finite exact-rational greedy run. Local copy of Erdos249257.greedyMersennePrefixRat, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def greedyMersennePrefixRat (x : ℚ) (n : ℕ) : Finset ℕ :=
+  (((Finset.range n).filter fun k =>
+      mersenneWeightRat (k + 1) ≤ greedyMersenneRemainderRat x k).image
+    fun k => k + 1)
+/-- Local copy of Erdos249257.halfGreedyPrefixSupport, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def halfGreedyPrefixSupport (n : ℕ) : Finset ℕ :=
+  greedyMersennePrefixRat (1 / 2 : ℚ) n
+/-- Signed frozen-prefix margin. Its nonnegativity says that the first `J` future divisor-incidence rows cover the centered carry at depth `k`. Local copy of Erdos249257.greedyHalfFrozenMargin, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def greedyHalfFrozenMargin (k J : ℕ) : ℤ :=
+  (finiteCoeffWindowNumerator
+      (↑(halfGreedyPrefixSupport k) : Set ℕ) (k + 1) J : ℤ) -
+    (2 : ℤ) ^ J *
+      mobiusCenteredHalfCarry
+        (↑(halfGreedyPrefixSupport k) : Set ℕ) k
+/-- The real Mersenne weight 1 divided by 2 to the power n minus 1; at n = 0 the value is 0 because division by zero is zero here. -/
+noncomputable def mersenneWeight (n : ℕ) : ℝ :=
+  1 / ((2 : ℝ) ^ n - 1)
+/-- The remainder left by the greedy Mersenne rule applied to a nonnegative real x through rank n: it starts at x and, at each rank n+1, subtracts the weight 1 divided by 2 to the power n+1 minus 1 exactly when that weight is at most the current remainder. -/
+noncomputable def greedyMersenneRemainder (x : ℝ) : ℕ → ℝ
+  | 0 => x
+  | n + 1 =>
+      if mersenneWeight (n + 1) ≤ greedyMersenneRemainder x n then
+        greedyMersenneRemainder x n - mersenneWeight (n + 1)
+      else
+        greedyMersenneRemainder x n
+/-- Local definition halfActualSeamWord, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def halfActualSeamWord (s : ℕ) : SeamRowWord s :=
+  fun i => decide ((i : ℕ) + 2 ∈ halfGreedyPrefixSupport (s - 1))
+/-- The real number coded by a set A of exponents, namely the sum over a in A with a at least 1 of 1 divided by 2 to the power a minus 1; the indexing runs over k and evaluates the indicator at k+1, so only positive exponents contribute. -/
+noncomputable def positiveMersenneSupportValue (A : Set ℕ) : ℝ :=
+  ∑' k : ℕ, Set.indicator A mersenneWeight (k + 1)
 /-- Local definition seamWordSupport, copied so the compared statements of this entry elaborate against Mathlib alone. -/
 noncomputable def seamWordSupport {s : ℕ} (b : SeamRowWord s) : Finset ℕ :=
   ((Finset.univ : Finset (Fin (s - 2))).filter (fun i => b i = true)).image
     (fun i : Fin (s - 2) => (i : ℕ) + 2)
-/-- Local definition IsLargestFalseRank, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def IsLargestFalseRank {s : ℕ} (b : SeamRowWord s) (d : ℕ) : Prop :=
-  2 ≤ d ∧ d < s ∧
-    d ∉ seamWordSupport b ∧
-      ∀ e : ℕ, d < e → e < s → e ∈ seamWordSupport b
-/-- Local definition SeamGreedyUpperOrMiddleAt, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def SeamGreedyUpperOrMiddleAt (s : ℕ) (hs : 5 ≤ s) : Prop :=
-  (seamAdjacentCut s hs).successorCarries ∨
-    (¬ (seamAdjacentCut s hs).successorCarries ∧
-      4 * (seamAdjacentCut s hs).remainder +
-            (seamPerturbedFamily s (by omega)).gap -
-            (seamAdjacentCut s hs).belowPulse <
-        (seamAdjacentCut s hs).terminalWeight)
-/-- The paper's row-weight functional `W_s(E) = ∑_{e ∈ E} ⌊4^s/(2^e − 1)⌋`. Local copy of ErdosProblems.Erdos257.PaperCompleteR21.rowWeightSum, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def rowWeightSum (s : ℕ) (E : Finset ℕ) : ℤ :=
-  ∑ e ∈ E, ⌊(4 : ℝ) ^ s / ((2 : ℝ) ^ e - 1)⌋
-end PalomarCorpus.E257.PaperStructuresBH
+end PalomarCorpus.E257.PaperStructuresBI

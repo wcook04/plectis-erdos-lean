@@ -1,16 +1,17 @@
 import Solutions.PalomarCorpus.E257_19
 
-#print axioms PalomarCorpus.E257.PaperStructuresBH.exists_seamWord_minimal_above
-#print axioms PalomarCorpus.E257.PaperStructuresBH.integerGreedyBits_length
-#print axioms PalomarCorpus.E257.PaperStructuresBH.paper_compatible_finite_row_conditions
-#print axioms PalomarCorpus.E257.PaperStructuresBH.paper_largest_false_rank_algebra
-#print axioms PalomarCorpus.E257.PaperStructuresBH.seamAboveWord_minimal
-#print axioms PalomarCorpus.E257.PaperStructuresBH.seamAboveWord_strict
-#print axioms PalomarCorpus.E257.PaperStructuresBH.seamAdjacentCut_below_admissible
-#print axioms PalomarCorpus.E257.PaperStructuresBH.seamAdjacentCut_below_maximal
-#print axioms PalomarCorpus.E257.PaperStructuresBH.seamPerturbedFamily_gap_pos
-#print axioms PalomarCorpus.E257.PaperStructuresBH.seamPerturbedFamily_oldSum_injective
-#print axioms PalomarCorpus.E257.PaperStructuresBH.seamPerturbedFamily_pulseCap_lt_three_gap
-#print axioms PalomarCorpus.E257.PaperStructuresBH.seamPerturbedFamily_separated
-#print axioms PalomarCorpus.E257.PaperStructuresBH.seamWeights_length_eq
-#print axioms PalomarCorpus.E257.PaperStructuresBH.wordPulse_le
+#print axioms PalomarCorpus.E257.PaperStructuresBI.exists_seamWord_minimal_above
+#print axioms PalomarCorpus.E257.PaperStructuresBI.greedyHalfFrozenMargin_fullShell_eq_neg_seamRemainder_of_alignment
+#print axioms PalomarCorpus.E257.PaperStructuresBI.halfGreedy_skipped_endpoint_trichotomy
+#print axioms PalomarCorpus.E257.PaperStructuresBI.half_lt_upper_competitor_of_eventually_right
+#print axioms PalomarCorpus.E257.PaperStructuresBI.integerGreedyBits_length
+#print axioms PalomarCorpus.E257.PaperStructuresBI.seamAboveWord_minimal
+#print axioms PalomarCorpus.E257.PaperStructuresBI.seamAboveWord_strict
+#print axioms PalomarCorpus.E257.PaperStructuresBI.seamAdjacentCut_below_admissible
+#print axioms PalomarCorpus.E257.PaperStructuresBI.seamAdjacentCut_below_maximal
+#print axioms PalomarCorpus.E257.PaperStructuresBI.seamPerturbedFamily_gap_pos
+#print axioms PalomarCorpus.E257.PaperStructuresBI.seamPerturbedFamily_oldSum_injective
+#print axioms PalomarCorpus.E257.PaperStructuresBI.seamPerturbedFamily_pulseCap_lt_three_gap
+#print axioms PalomarCorpus.E257.PaperStructuresBI.seamPerturbedFamily_separated
+#print axioms PalomarCorpus.E257.PaperStructuresBI.seamWeights_length_eq
+#print axioms PalomarCorpus.E257.PaperStructuresBI.wordPulse_le

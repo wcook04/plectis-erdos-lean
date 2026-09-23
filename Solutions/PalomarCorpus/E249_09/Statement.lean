@@ -18,13 +18,20 @@ walks from a compared theorem statement is byte-identical in the Challenge and S
 environments. Generated from the Challenge; do not edit by hand.
 -/
 
+open scoped BigOperators
+open Finset
+open scoped ArithmeticFunction.Moebius
 open Filter
 open Topology
 open ArithmeticFunction
-open Finset
-open scoped BigOperators
 
 namespace PalomarCorpus.E249_09.Shared
+/-- Support divisors created by multiplication by `a`, excluding the distinguished divisor `a` itself. Local copy of Erdos249257.CompositeDilationDefect.compositeDilationDefect, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def compositeDilationDefect (A : Set ℕ) (a x : ℕ) : ℕ :=
+  by
+    classical
+    exact ((a * x).divisors.filter fun d =>
+      d ∈ A ∧ ¬ d ∣ x ∧ d ≠ a).card
 /-- The universal period `lcm(1, 2, ..., t)`, given recursively by `periodLcm 0 = 1` and `periodLcm (t + 1) = lcm (periodLcm t) (t + 1)`. -/
 noncomputable def periodLcm : ℕ → ℕ
   | 0 => 1
@@ -42,9 +49,42 @@ noncomputable def certifiedKill (h N L : ℕ) : Prop :=
     windowDiscrepancy h N L % 2 ^ L < 2 ^ L - (N + h + L + 2)
 end PalomarCorpus.E249_09.Shared
 
+namespace PalomarCorpus.E249.PaperStatementsAX
+open scoped BigOperators
+open Finset
+export PalomarCorpus.E249_09.Shared (totientTail windowDiscrepancy)
+/-- The integer window obtained from the three cone differences based at `H`. Local copy of Erdos249257.JointExponentTransport.joint35ConeWindow, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def joint35ConeWindow (H L : ℕ) : ℤ :=
+  windowDiscrepancy (14 * H) H L -
+    3 * windowDiscrepancy (2 * H) H L -
+    2 * windowDiscrepancy (4 * H) H L
+end PalomarCorpus.E249.PaperStatementsAX
+
+namespace PalomarCorpus.E249.PaperStatementsBE
+open scoped BigOperators
+open scoped ArithmeticFunction.Moebius
+/-- Least positive shift sending `N` to a multiple of `d`. Local copy of Erdos249257.ExponentOnlyTransport.transportResidueOffset, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def transportResidueOffset (d N : ℕ) : ℕ := d - N % d
+/-- Exact Möbius residue kernel, stated locally so this disjoint transport owner can be validated independently of adjacent projection files. Local copy of Erdos249257.ExponentOnlyTransport.transportResidueKernel, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def transportResidueKernel (d N : ℕ) : ℝ :=
+  ((ArithmeticFunction.moebius d : ℤ) : ℝ) *
+    (2 : ℝ) ^ (d - transportResidueOffset d N) *
+      (((N + transportResidueOffset d N : ℕ) : ℝ) /
+          ((d : ℝ) * ((2 : ℝ) ^ d - 1)) +
+        1 / (((2 : ℝ) ^ d - 1) ^ 2))
+/-- The manuscript's `K_d(N) = N/(d(2ᵈ-1)) + 2ᵈ/(2ᵈ-1)²`, the `d`th term of the Möbius expansion of `R_N` with its sign `μ(d)` removed. Local copy of ErdosProblems.Erdos249.PaperCompleteR21.mobiusTermKernel, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def mobiusTermKernel (d N : ℕ) : ℝ :=
+  (N : ℝ) / ((d : ℝ) * ((2 : ℝ) ^ d - 1)) + (2 : ℝ) ^ d / (((2 : ℝ) ^ d - 1) ^ 2)
+end PalomarCorpus.E249.PaperStatementsBE
+
+namespace PalomarCorpus.E249.PaperStatementsAJ
+export PalomarCorpus.E249_09.Shared (compositeDilationDefect)
+end PalomarCorpus.E249.PaperStatementsAJ
+
 namespace PalomarCorpus.E249.PaperStatementsBD
 open Filter
 open Topology
+export PalomarCorpus.E249_09.Shared (compositeDilationDefect)
 /-- **The support coefficient** `f_A(n) = #{d ∣ n : d ∈ A}`, the Dirichlet incidence `1_A * 1` of a support set `A ⊆ ℕ`. This is the coefficient in which Erdős #257 is actually stated: `∑_{a∈A} 1/(b^a - 1) = ∑_n f_A(n)/b^n`. Full support gives `f_ℕ = τ`; primes give `ω`; prime powers give `Ω`. Local copy of Erdos249257.supportCoeff, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def supportCoeff (A : Set ℕ) (n : ℕ) : ℕ :=
   letI := Classical.decPred fun d : ℕ => d ∈ A
@@ -63,52 +103,14 @@ end PalomarCorpus.E249.PaperStatementsBN
 namespace PalomarCorpus.E249.PaperStatementsAU
 open Finset
 export PalomarCorpus.E249_09.Shared (certifiedKill totientTail windowDiscrepancy)
-/-- Second-difference window discrepancy `A₂ = A(h, N+h, L) - A(h, N, L)`: the depth-`L` truncation of `2^L·((R_{N+2h} - R_{N+h}) - (R_{N+h} - R_N))`. Local copy of Erdos249257.TotientTailPeriodKiller.windowDiscrepancy2, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def windowDiscrepancy2 (h N L : ℕ) : ℤ :=
-  windowDiscrepancy h (N + h) L - windowDiscrepancy h N L
-/-- The decidable rank-2 certificate: the residue of `A₂` modulo `2^L` avoids the radius-`2(N+2h+L+2)` neighbourhood of `0`. The doubled radius pays for two window truncations; in exchange the second difference cancels the whole `H·C` clean shadow on the lcm cone. Local copy of Erdos249257.TotientTailPeriodKiller.certifiedRank2Kill, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def certifiedRank2Kill (h N L : ℕ) : Prop :=
-  (2 * ((N : ℤ) + 2 * h + L + 2)) < windowDiscrepancy2 h N L % 2 ^ L ∧
-    windowDiscrepancy2 h N L % 2 ^ L < 2 ^ L - 2 * ((N : ℤ) + 2 * h + L + 2)
 end PalomarCorpus.E249.PaperStatementsAU
 
 namespace PalomarCorpus.E249.PaperStatementsA
 open Finset
-export PalomarCorpus.E249_09.Shared (certifiedKill periodLcm totientTail windowDiscrepancy)
+export PalomarCorpus.E249_09.Shared (periodLcm totientTail)
 end PalomarCorpus.E249.PaperStatementsA
 
 namespace PalomarCorpus.E249.PaperStatementsAT
 open Finset
 export PalomarCorpus.E249_09.Shared (certifiedKill periodLcm totientTail windowDiscrepancy)
-/-- The window step `a_n = φ(n+h) - φ(n)` driving the carry recurrence. Local copy of Erdos249257.TotientTailPeriodKiller.deltaTotient, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def deltaTotient (h n : ℕ) : ℤ := (Nat.totient (n + h) : ℤ) - (Nat.totient n : ℤ)
-/-- The integer carry orbit launched from candidate `d` at position `N`: `orbit 0 = d`, `orbit (i+1) = 2·orbit i - a_{N+i+1}`. If `D_h(N)` is the integer `d`, this orbit equals `D_h(N+i)` forever. Local copy of Erdos249257.TotientTailPeriodKiller.carryOrbit, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def carryOrbit (h N : ℕ) (d : ℤ) : ℕ → ℤ
-  | 0 => d
-  | i + 1 => 2 * carryOrbit h N d i - deltaTotient h (N + i + 1)
 end PalomarCorpus.E249.PaperStatementsAT
-
-namespace PalomarCorpus.E249.PaperStatementsAD
-open Finset
-export PalomarCorpus.E249_09.Shared (totientTail)
-end PalomarCorpus.E249.PaperStatementsAD
-
-namespace PalomarCorpus.E249.PaperStatementsAX
-open scoped BigOperators
-open Finset
-export PalomarCorpus.E249_09.Shared (periodLcm totientTail)
-/-- The depth-`L` window numerator `P_L(M) = Σ_{j<L} φ(M+1+j)·2^{L-1-j}`: the integer layer of `2^L·R_M`, exact up to the one-sided deep tail `0 ≤ 2^L·R_M - P_L(M) ≤ M+L+2`. Local copy of Erdos249257.TotientTailPeriodKiller.windowNumerator, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def windowNumerator (M L : ℕ) : ℕ :=
-  ∑ j ∈ Finset.range L, Nat.totient (M + 1 + j) * 2 ^ (L - 1 - j)
-/-- Local copy of ErdosProblems.Erdos249.PaperCompleteR20.paperGridNumerator, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def paperGridNumerator (H L q : ℕ) : ℕ :=
-  ∑ j ∈ Finset.Icc 1 L, Nat.totient (q * H + j) * 2 ^ (L - j)
-/-- Local copy of ErdosProblems.Erdos249.PaperCompleteR20.paperGridCertificate, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def paperGridCertificate (H L : ℕ) (Q : Finset ℕ) : Prop :=
-  ∀ qi ∈ Q, ∃ qj ∈ Q,
-    (qj * H + L + 2 : ℤ) <
-      ((paperGridNumerator H L qi : ℤ) - paperGridNumerator H L qj) % 2 ^ L
-end PalomarCorpus.E249.PaperStatementsAX
-
-namespace PalomarCorpus.E249.PaperStatementsAJ
-end PalomarCorpus.E249.PaperStatementsAJ

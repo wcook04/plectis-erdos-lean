@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification249PaperStructuresR.Challenge",
+  "solution_module": "Solutions.ExternalVerification249PaperStructuresR",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249PaperStructuresR.fixed_precision_carry_completion"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

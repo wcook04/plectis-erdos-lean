@@ -9,7 +9,7 @@ import Mathlib
 set_option autoImplicit false
 
 /-!
-# Erdős #257: one-step quotient identities; bounds for the remaining binary positions; doubling the endpoint
+# Erdős #257: a quotient bound at a crossing; filling the remaining binary positions; reducing the dyadic-boundary checks
 
 Each theorem below restates, against Mathlib alone, a theorem of the Lean development
 for Erdős problem #257, in the order the papers state them. The definitions a statement
@@ -18,17 +18,15 @@ the source declaration it comes from. Erdős problem #257 remains open, and no t
 this entry decides it.
 -/
 
+open Set
 open scoped BigOperators
 open Filter
-open Topology
-open Set
 open scoped ENNReal
 open MeasureTheory
+open Topology
+open Finset
 
 namespace PalomarCorpus.E257_28.Shared
-/-- The divisor incidence of a finite set D of ranks at n, namely the number of members of D that divide n. -/
-noncomputable def endpointDivisorContribution (D : Finset ℕ) (n : ℕ) : ℕ :=
-  (D.filter fun d ↦ d ∣ n).card
 /-- The local integer Mersenne quotient at binary scale M and rank d, namely the natural number quotient of 2 to the power M by 2 to the power d minus 1; at d = 0 the divisor is 0 and the value is 0. -/
 noncomputable def localMersenneQuotient (M d : ℕ) : ℕ :=
   2 ^ M / (2 ^ d - 1)
@@ -41,133 +39,102 @@ noncomputable def localBinarySuffix (D : Finset ℕ) (k M : ℕ) : ℕ :=
 /-- The rational Mersenne weight 1 divided by 2 to the power n minus 1, taken in the rationals; at n = 0 the value is 0. -/
 noncomputable def mersenneWeightRat (n : ℕ) : ℚ :=
   1 / ((2 : ℚ) ^ n - 1)
-/-- The exact finite Mersenne value of a Boolean lower support. Local copy of Erdos249257.localMersennePrefixValue, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def localMersennePrefixValue (D : Finset ℕ) : ℚ :=
-  ∑ d ∈ D, mersenneWeightRat d
 end PalomarCorpus.E257_28.Shared
 
-namespace PalomarCorpus.E257.PaperStatementsAK
-open scoped BigOperators
-export PalomarCorpus.E257_28.Shared (endpointDivisorContribution localBinarySuffix localMersenneQuotient localPrefixQuotient)
-/-- The integer target corresponding to the dyadic value immediately below `1/2` at endpoint scale `2^M`. Local copy of Erdos249257.halfEndpointTarget, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def halfEndpointTarget (M : ℕ) : ℕ :=
-  2 ^ (M - 1) - 1
-/-- The signed finite-row defect from the integer immediately below one half. Unlike `localBinarySuffix`, this definition never truncates subtraction. Local copy of Erdos249257.localEndpointDefect, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def localEndpointDefect (D : Finset ℕ) (M : ℕ) : ℤ :=
-  (halfEndpointTarget M : ℤ) - (localPrefixQuotient D M : ℤ)
-/-- The next signed Boolean--Möbius coefficient supplied by the binary carry recurrence. Local copy of Erdos249257.localRepairInteger, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def localRepairInteger (D : Finset ℕ) (k n : ℕ) : ℤ :=
-  2 * (localBinarySuffix D k (n - 1) : ℤ) + 1 -
-    (endpointDivisorContribution D n : ℤ)
-/-- States record:257bm-i1a from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_floor_quotient_geometric_sum in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem paper_floor_quotient_geometric_sum {M d : ℕ} (hd : 2 ≤ d) :
-    localMersenneQuotient M d = ∑ j ∈ Finset.Icc 1 (M / d), 2 ^ (M - j * d) := by
-  sorry
-/-- States record:257bm-i1a from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_next_floor_quotient in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem paper_next_floor_quotient {M d : ℕ} (hd : 2 ≤ d) :
-    localMersenneQuotient (M + 1) d =
-      2 * localMersenneQuotient M d + (if d ∣ M + 1 then 1 else 0) := by
-  sorry
-/-- States record:257bm-i1a from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_next_floor_quotient_no_fixed_point in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem paper_next_floor_quotient_no_fixed_point {M d : ℕ} (hd : 2 ≤ d)
-    (hfix : localMersenneQuotient (M + 1) d = localMersenneQuotient M d) :
-    localMersenneQuotient M d = 0 ∧ localMersenneQuotient (M + 1) d = 0 := by
-  sorry
-/-- States record:257bm-i1a from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_next_quotient_sum in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem paper_next_quotient_sum {D : Finset ℕ} {M : ℕ}
-    (hD : ∀ d ∈ D, 2 ≤ d) :
-    localPrefixQuotient D (M + 1) =
-      2 * localPrefixQuotient D M + endpointDivisorContribution D (M + 1) := by
-  sorry
-/-- States record:257bm-i1c from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_repair_integer_eq_endpoint_defect in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem paper_repair_integer_eq_endpoint_defect {D : Finset ℕ} {M : ℕ}
-    (hM : 1 ≤ M) (hD : ∀ d ∈ D, 2 ≤ d)
-    (hbelow : localPrefixQuotient D M ≤ halfEndpointTarget M) :
-    localRepairInteger D 1 (M + 1) = localEndpointDefect D (M + 1) := by
-  sorry
-/-- States record:257bm-i1c from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_signed_endpoint_defect_succ in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem paper_signed_endpoint_defect_succ {D : Finset ℕ} {M : ℕ}
-    (hM : 1 ≤ M) (hD : ∀ d ∈ D, 2 ≤ d) :
-    localEndpointDefect D (M + 1) =
-      2 * localEndpointDefect D M + 1 -
-        (endpointDivisorContribution D (M + 1) : ℤ) := by
-  sorry
-/-- States record:257bm-i1c from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_signed_endpoint_recurrence in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem paper_signed_endpoint_recurrence (D : Finset ℕ) (k n : ℕ) :
-    localRepairInteger D k n =
-      2 * (localBinarySuffix D k (n - 1) : ℤ) + 1 -
-        (endpointDivisorContribution D n : ℤ) := by
-  sorry
-end PalomarCorpus.E257.PaperStatementsAK
-
-namespace PalomarCorpus.E257.PaperStatementsAD
-open scoped BigOperators
-export PalomarCorpus.E257_28.Shared (endpointDivisorContribution localMersenneQuotient localPrefixQuotient)
-/-- States record:257bm-i1b from the long record for Erdős problem #257. Transported from Erdos249257.localPrefixQuotient_succ in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem localPrefixQuotient_succ
-    {D : Finset ℕ} {M : ℕ}
-    (hD : ∀ d ∈ D, 2 ≤ d) :
-    localPrefixQuotient D (M + 1) =
-      2 * localPrefixQuotient D M +
-        endpointDivisorContribution D (M + 1) := by
-  sorry
-/-- States record:257bm-i-rank2 from the long record for Erdős problem #257. Transported from Erdos249257.two_mem_of_exact_localMersenneQuotient in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem two_mem_of_exact_localMersenneQuotient
-    {D : Finset ℕ} {n : ℕ}
-    (hn : 3 ≤ n)
-    (hD : ∀ d ∈ D, 2 ≤ d ∧ d ≤ n)
-    (hquot : localPrefixQuotient D n = 2 ^ (n - 1) - 1) :
-    2 ∈ D := by
-  sorry
-/-- States record:257bm-i10 from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_finite_sum_inv_odd_den_odd in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem paper_finite_sum_inv_odd_den_odd {ι : Type*} (s : Finset ι) (f : ι → ℤ)
-    (hodd : ∀ i ∈ s, Odd (f i)) :
-    Odd (∑ i ∈ s, (1 : ℚ) / ((f i : ℤ) : ℚ)).den := by
-  sorry
-/-- States record:257bm-i10 from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_finite_sum_inv_odd_ne_half in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem paper_finite_sum_inv_odd_ne_half {ι : Type*} (s : Finset ι) (f : ι → ℤ)
-    (hodd : ∀ i ∈ s, Odd (f i)) :
-    (∑ i ∈ s, (1 : ℚ) / ((f i : ℤ) : ℚ)) ≠ (1 : ℚ) / 2 := by
-  sorry
-end PalomarCorpus.E257.PaperStatementsAD
-
-namespace PalomarCorpus.E257.PaperStatementsAN
+namespace PalomarCorpus.E257.PaperStatementsF
+open Set
 open scoped BigOperators
 open Filter
+open scoped ENNReal
+open MeasureTheory
 open Topology
-export PalomarCorpus.E257_28.Shared (endpointDivisorContribution)
-/-- **The Erdős #257 support series** `∑_{a ∈ A} 1/(b^a - 1)`, as an indicator series over ℕ. The `a = 0` term is `1/(1-1) = 0` under real division-by-zero conventions, so supports containing `0` contribute nothing spurious. Local copy of Erdos249257.erdosSupportSeries, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def erdosSupportSeries (b : ℕ) (A : Set ℕ) : ℝ :=
-  ∑' a : ℕ, Set.indicator A (fun a => (1 : ℝ) / ((b : ℝ) ^ a - 1)) a
-/-- The finite Erdős partial sum `∑_{n ∈ F} 1 / (b ^ n - 1)` as a rational number, stated with subtraction in `ℚ` so the statement reads exactly like the mathematical series. Local copy of Erdos249257.finiteErdosSum, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def finiteErdosSum (F : Finset Nat) (b : Nat) : Rat :=
-  ∑ n ∈ F, 1 / ((b : Rat) ^ n - 1)
-/-- **The support coefficient** `f_A(n) = #{d ∣ n : d ∈ A}`, the Dirichlet incidence `1_A * 1` of a support set `A ⊆ ℕ`. This is the coefficient in which Erdős #257 is actually stated: `∑_{a∈A} 1/(b^a - 1) = ∑_n f_A(n)/b^n`. Full support gives `f_ℕ = τ`; primes give `ω`; prime powers give `Ω`. Local copy of Erdos249257.supportCoeff, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def supportCoeff (A : Set ℕ) (n : ℕ) : ℕ :=
-  letI := Classical.decPred fun d : ℕ => d ∈ A
-  (n.divisors.filter fun d => d ∈ A).card
-/-- States record:257bm-i1c from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_endpoint_term_counts_divisors in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem paper_endpoint_term_counts_divisors {D : Finset ℕ} {n : ℕ}
-    (hn : 0 < n) :
-    endpointDivisorContribution D n = (D.filter fun d ↦ d ∣ n).card ∧
-      endpointDivisorContribution D n = supportCoeff (↑D : Set ℕ) n := by
+export PalomarCorpus.E257_28.Shared (localBinarySuffix localMersenneQuotient localPrefixQuotient mersenneWeightRat)
+/-- Exact rational version of the greedy residual. Local copy of Erdos249257.greedyMersenneRemainderRat, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def greedyMersenneRemainderRat (x : ℚ) : ℕ → ℚ
+  | 0 => x
+  | n + 1 =>
+      if mersenneWeightRat (n + 1) ≤ greedyMersenneRemainderRat x n then
+        greedyMersenneRemainderRat x n - mersenneWeightRat (n + 1)
+      else
+        greedyMersenneRemainderRat x n
+/-- Positive exponents selected through a finite exact-rational greedy run. Local copy of Erdos249257.greedyMersennePrefixRat, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def greedyMersennePrefixRat (x : ℚ) (n : ℕ) : Finset ℕ :=
+  (((Finset.range n).filter fun k =>
+      mersenneWeightRat (k + 1) ≤ greedyMersenneRemainderRat x k).image
+    fun k => k + 1)
+/-- Local copy of Erdos249257.halfGreedyPrefixSupport, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def halfGreedyPrefixSupport (n : ℕ) : Finset ℕ :=
+  greedyMersennePrefixRat (1 / 2 : ℚ) n
+/-- The genuinely residual part of the predecessor supply: only a skipped rank immediately before an actual take is exposed. Consecutive skipped ranks have a uniform finite-lookahead proof below. Local copy of Erdos249257.HalfGreedyPreTakePrecriticalSuffixSupply, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def HalfGreedyPreTakePrecriticalSuffixSupply : Prop :=
+  ∀ c : ℕ,
+    6 ≤ c →
+    greedyMersenneRemainderRat (1 / 2 : ℚ) (c - 1) <
+      mersenneWeightRat c →
+    mersenneWeightRat (c + 1) ≤
+      greedyMersenneRemainderRat (1 / 2 : ℚ) c →
+    localBinarySuffix (halfGreedyPrefixSupport (c - 1)) 1 (2 * c - 3) <
+      2 ^ (c - 3)
+/-- The minimal actual-orbit form of the socket: the quotient lower bound is required only when rank `c` is genuinely skipped by the rational half-greedy orbit. Local copy of Erdos249257.HalfGreedySkippedCriticalQuotientSupply, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def HalfGreedySkippedCriticalQuotientSupply : Prop :=
+  ∀ c : ℕ,
+    4 ≤ c →
+    greedyMersenneRemainderRat (1 / 2 : ℚ) (c - 1) <
+      mersenneWeightRat c →
+    2 ^ ((2 * c - 2) - 1) ≤
+      localPrefixQuotient
+        (insert c (halfGreedyPrefixSupport (c - 1))) (2 * c - 2)
+/-- A one-row-earlier form of the actual skipped-rank socket. At endpoint `2c-3` the relevant binary suffix has half the critical capacity. Local copy of Erdos249257.HalfGreedySkippedPrecriticalSuffixSupply, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def HalfGreedySkippedPrecriticalSuffixSupply : Prop :=
+  ∀ c : ℕ,
+    4 ≤ c →
+    greedyMersenneRemainderRat (1 / 2 : ℚ) (c - 1) <
+      mersenneWeightRat c →
+    localBinarySuffix (halfGreedyPrefixSupport (c - 1)) 1 (2 * c - 3) <
+      2 ^ (c - 3)
+/-- States record:257bm-c6a from the long record for Erdős problem #257. Transported from Erdos249257.halfGreedySkippedCriticalQuotientSupply_of_precriticalSuffix in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem halfGreedySkippedCriticalQuotientSupply_of_precriticalSuffix
+    (hpre : HalfGreedySkippedPrecriticalSuffixSupply) :
+    HalfGreedySkippedCriticalQuotientSupply := by
   sorry
-/-- States record:257bm-i10 from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_finiteErdosSum_den_odd in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem paper_finiteErdosSum_den_odd (F : Finset ℕ) (h0 : 0 ∉ F) :
-    Odd (finiteErdosSum F 2).den := by
+/-- States record:257bm-c6a from the long record for Erdős problem #257. Transported from Erdos249257.halfGreedySkippedPrecriticalSuffixSupply_iff_preTake in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem halfGreedySkippedPrecriticalSuffixSupply_iff_preTake :
+    HalfGreedySkippedPrecriticalSuffixSupply ↔
+      HalfGreedyPreTakePrecriticalSuffixSupply := by
   sorry
-/-- States record:257bm-i10 from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_finite_support_series_ne_half in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem paper_finite_support_series_ne_half
-    (A : Set ℕ) (hfinite : A.Finite) (hzero : 0 ∉ A) :
-    erdosSupportSeries 2 A ≠ (1 : ℝ) / 2 := by
+/-- States record:257bm-c6b from the long record for Erdős problem #257. Transported from Erdos249257.halfGreedy_precriticalSuffix_lt_of_future_skip_after_takenBlock in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem halfGreedy_precriticalSuffix_lt_of_future_skip_after_takenBlock
+    {c t : ℕ} (hc : 4 ≤ c) (htPos : 0 < t) (ht : t ≤ c - 3)
+    (hskip : greedyMersenneRemainderRat (1 / 2 : ℚ) (c - 1) <
+      mersenneWeightRat c)
+    (htake : ∀ j ∈ Finset.range (t - 1),
+      mersenneWeightRat (c + j + 1) ≤
+        greedyMersenneRemainderRat (1 / 2 : ℚ) (c + j))
+    (hfuture : greedyMersenneRemainderRat (1 / 2 : ℚ) (c + t - 1) <
+      mersenneWeightRat (c + t))
+    (hroom : c - 2 ≤ 2 ^ (c - t - 3)) :
+    localBinarySuffix (halfGreedyPrefixSupport (c - 1)) 1 (2 * c - 3) <
+      2 ^ (c - 3) := by
   sorry
-/-- States record:257bm-i10 from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_half_representing_support_is_infinite in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem paper_half_representing_support_is_infinite
-    (A : Set ℕ) (hzero : 0 ∉ A)
-    (hvalue : erdosSupportSeries 2 A = (1 : ℝ) / 2) :
-    A.Infinite := by
+/-- States record:257bm-c6a from the long record for Erdős problem #257. Transported from Erdos249257.halfGreedy_precriticalSuffix_lt_of_next_skip in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem halfGreedy_precriticalSuffix_lt_of_next_skip
+    {c : ℕ} (hc : 6 ≤ c)
+    (hskip : greedyMersenneRemainderRat (1 / 2 : ℚ) (c - 1) <
+      mersenneWeightRat c)
+    (hnext : greedyMersenneRemainderRat (1 / 2 : ℚ) c <
+      mersenneWeightRat (c + 1)) :
+    localBinarySuffix (halfGreedyPrefixSupport (c - 1)) 1 (2 * c - 3) <
+      2 ^ (c - 3) := by
   sorry
-end PalomarCorpus.E257.PaperStatementsAN
+end PalomarCorpus.E257.PaperStatementsF
+
+namespace PalomarCorpus.E257.PaperStatementsAA
+/-- States record:257bm-c6b from the long record for Erdős problem #257. Transported from Erdos249257.sub_two_le_two_pow_sub_four in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem sub_two_le_two_pow_sub_four
+    {c : ℕ} (hc : 6 ≤ c) :
+    c - 2 ≤ 2 ^ (c - 4) := by
+  sorry
+end PalomarCorpus.E257.PaperStatementsAA
 
 namespace PalomarCorpus.E257.PaperStatementsAR
 open Filter
@@ -176,122 +143,120 @@ open scoped ENNReal
 open MeasureTheory
 open Topology
 open scoped BigOperators
-export PalomarCorpus.E257_28.Shared (localBinarySuffix localMersennePrefixValue localMersenneQuotient localPrefixQuotient mersenneWeightRat)
-/-- States record:257bm-i9 from the long record for Erdős problem #257. Transported from Erdos249257.abs_localMersennePrefixValue_sub_half_le in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem abs_localMersennePrefixValue_sub_half_le
-    {D : Finset ℕ} {n : ℕ} (hn : 2 ≤ n)
-    (hD : ∀ d ∈ D, 2 ≤ d ∧ d ≤ n)
-    (hquot : localPrefixQuotient D n = 2 ^ (n - 1) - 1) :
-    |((localMersennePrefixValue D : ℚ) : ℝ) - (1 : ℝ) / 2| ≤
-      ((n + 1 : ℕ) : ℝ) / (2 : ℝ) ^ n := by
-  sorry
-/-- States record:257bm-i7 from the long record for Erdős problem #257. Transported from Erdos249257.exists_exactRowStrictUpperExtension_two_mul_sub_one_of_exact_below in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem exists_exactRowStrictUpperExtension_two_mul_sub_one_of_exact_below
-    {D : Finset ℕ} {n : ℕ}
-    (hn : 6 ≤ n)
-    (hD : ∀ d ∈ D, 2 ≤ d ∧ d ≤ n)
-    (htwo : 2 ∈ D)
-    (hquot : localPrefixQuotient D n = 2 ^ (n - 1) - 1)
-    (hbelow : localMersennePrefixValue D < (1 / 2 : ℚ)) :
-    ∃ E : Finset ℕ,
-      D ⊆ E ∧
-      (∀ d ∈ E, d ∉ D → n < d) ∧
-      2 ∈ E ∧
-      (∀ d ∈ E, 2 ≤ d ∧ d ≤ 2 * n - 1) ∧
-      localPrefixQuotient E (2 * n - 1) =
-        2 ^ ((2 * n - 1) - 1) - 1 := by
-  sorry
-/-- States record:257bm-i7 from the long record for Erdős problem #257. Transported from Erdos249257.localBinarySuffix_two_mul_sub_one_lt_upperWindow_of_exact_below in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem localBinarySuffix_two_mul_sub_one_lt_upperWindow_of_exact_below
-    {D : Finset ℕ} {n : ℕ}
-    (hn : 6 ≤ n)
-    (hD : ∀ d ∈ D, 2 ≤ d ∧ d ≤ n)
-    (htwo : 2 ∈ D)
-    (hquot : localPrefixQuotient D n = 2 ^ (n - 1) - 1)
-    (hbelow : localMersennePrefixValue D < (1 / 2 : ℚ)) :
-    localBinarySuffix D 1 (2 * n - 1) < 2 ^ (n - 1) := by
-  sorry
-/-- States record:257bm-i5 from the long record for Erdős problem #257. Transported from Erdos249257.localBinarySuffix_two_mul_sub_two_lt_criticalCapacity_iff in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem localBinarySuffix_two_mul_sub_two_lt_criticalCapacity_iff
+export PalomarCorpus.E257_28.Shared (localBinarySuffix localMersenneQuotient localPrefixQuotient mersenneWeightRat)
+/-- An exact finite Boolean quotient row at endpoint `n`. Local copy of Erdos249257.ExactLocalMersenneHalfRow, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def ExactLocalMersenneHalfRow (n : ℕ) : Prop :=
+  ∃ D : Finset ℕ,
+    (∀ d ∈ D, 2 ≤ d ∧ d ≤ n) ∧
+      localPrefixQuotient D n = 2 ^ (n - 1) - 1
+/-- The exact finite Mersenne value of a Boolean lower support. Local copy of Erdos249257.localMersennePrefixValue, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def localMersennePrefixValue (D : Finset ℕ) : ℚ :=
+  ∑ d ∈ D, mersenneWeightRat d
+/-- The source-current fractional part of `2^M / (2^d - 1)` for `d ≥ 2`. The exponent is reduced modulo `d` before the division. Local copy of Erdos249257.localMersenneFraction, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def localMersenneFraction (M d : ℕ) : ℚ :=
+  ((2 ^ (M % d) : ℕ) : ℚ) / ((2 ^ d - 1 : ℕ) : ℚ)
+/-- Sum of the corresponding fractional contributions. Local copy of Erdos249257.localFractionMass, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def localFractionMass (D : Finset ℕ) (M : ℕ) : ℚ :=
+  ∑ d ∈ D, localMersenneFraction M d
+/-- States record:257bm-c8 from the long record for Erdős problem #257. Transported from Erdos249257.exactLocalMersenneHalfRow_two_mul_sub_two_of_skippedCoreSharpCapacity in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem exactLocalMersenneHalfRow_two_mul_sub_two_of_skippedCoreSharpCapacity
     {D : Finset ℕ} {c : ℕ}
     (hc : 4 ≤ c)
     (hD : ∀ d ∈ D, 2 ≤ d ∧ d < c)
-    (hbelow : localMersennePrefixValue D < (1 / 2 : ℚ)) :
-    localBinarySuffix D 1 (2 * c - 2) < 2 ^ (c - 2) ↔
-      2 ^ ((2 * c - 2) - 1) ≤
-        localPrefixQuotient (insert c D) (2 * c - 2) := by
+    (hbelow : localMersennePrefixValue D < (1 / 2 : ℚ))
+    (hsharp : localBinarySuffix D 1 (2 * c - 2) < 2 ^ (c - 2)) :
+    ExactLocalMersenneHalfRow (2 * c - 2) := by
   sorry
-/-- States record:257bm-i6 from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_capacity_band_exclusion in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem paper_capacity_band_exclusion {D : Finset ℕ} {c : ℕ}
+/-- States record:257bm-c7 from the long record for Erdős problem #257. Transported from Erdos249257.exists_exactRowStrictUpperFill_of_skippedCoreSharpCapacity in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem exists_exactRowStrictUpperFill_of_skippedCoreSharpCapacity
+    {D : Finset ℕ} {c : ℕ}
+    (hc : 4 ≤ c)
+    (hD : ∀ d ∈ D, 2 ≤ d ∧ d < c)
+    (hbelow : localMersennePrefixValue D < (1 / 2 : ℚ))
+    (hsharp : localBinarySuffix D 1 (2 * c - 2) < 2 ^ (c - 2)) :
+    ∃ E : Finset ℕ,
+      D ⊆ E ∧
+      (∀ d ∈ E, d ∉ D → c < d) ∧
+      (∀ d ∈ E, 2 ≤ d ∧ d ≤ 2 * c - 2) ∧
+      localPrefixQuotient E (2 * c - 2) =
+        2 ^ ((2 * c - 2) - 1) - 1 := by
+  sorry
+/-- States record:257bm-c6b from the long record for Erdős problem #257. Transported from Erdos249257.precriticalCrossingTax_of_futureThreshold in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem precriticalCrossingTax_of_futureThreshold
+    {D : Finset ℕ} {c t : ℕ}
+    (hc : 4 ≤ c)
+    (ht : t ≤ c - 3)
+    (hD : ∀ d ∈ D, 2 ≤ d ∧ d < c)
+    (hres :
+      (1 / 2 : ℚ) - localMersennePrefixValue D <
+        ∑ j ∈ Finset.range t, mersenneWeightRat (c + j + 1))
+    (hroom : c - 2 ≤ 2 ^ (c - t - 3)) :
+    localFractionMass (insert c D) (2 * c - 3) - 1 <
+      (2 : ℚ) ^ (2 * c - 3) *
+        (localMersennePrefixValue (insert c D) - (1 / 2 : ℚ)) := by
+  sorry
+/-- States record:257bm-c10 from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_exact_row_from_skipped_prefix in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem paper_exact_row_from_skipped_prefix {D : Finset ℕ} {c : ℕ}
     (hc : 4 ≤ c) (hD : ∀ d ∈ D, 2 ≤ d ∧ d < c)
     (hbelow : localMersennePrefixValue D < (1 / 2 : ℚ))
     (hskip : (1 / 2 : ℚ) - localMersennePrefixValue D <
       mersenneWeightRat c) :
-    D.card ≤ c - 2 ∧ c - 2 ≤ 2 ^ (c - 2) ∧
-      (Finset.Icc (2 ^ (c - 2)) (2 ^ (c - 2) + (c - 3))).card = c - 2 ∧
-      (localBinarySuffix D 1 (2 * c - 2) ∉
-          Finset.Icc (2 ^ (c - 2)) (2 ^ (c - 2) + (c - 3)) →
-        localBinarySuffix D 1 (2 * c - 2) < 2 ^ (c - 2)) := by
+    ∃ E : Finset ℕ,
+      D ⊆ E ∧
+      (∀ d ∈ E, 2 ≤ d ∧ d ≤ 2 * c - 2) ∧
+      localPrefixQuotient E (2 * c - 2) = 2 ^ (2 * c - 3) - 1 := by
   sorry
 end PalomarCorpus.E257.PaperStatementsAR
 
-namespace PalomarCorpus.E257.PaperStatementsAS
-open scoped BigOperators
-open scoped ENNReal
-open Filter
-open Set
-open MeasureTheory
-open Topology
-export PalomarCorpus.E257_28.Shared (localBinarySuffix localMersennePrefixValue localMersenneQuotient localPrefixQuotient mersenneWeightRat)
-/-- States record:257bm-i6 from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_sharper_additive_estimate in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem paper_sharper_additive_estimate {D : Finset ℕ} {c : ℕ}
-    (hc : 4 ≤ c) (hD : ∀ d ∈ D, 2 ≤ d ∧ d < c)
-    (hbelow : localMersennePrefixValue D < (1 / 2 : ℚ))
-    (hskip : (1 / 2 : ℚ) - localMersennePrefixValue D <
-      mersenneWeightRat c) :
-    localBinarySuffix D 1 (2 * c - 2) < 2 ^ (c - 2) + D.card := by
-  sorry
-/-- States record:257bm-i6 from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_unconditional_bound_one_extra_bit in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem paper_unconditional_bound_one_extra_bit {D : Finset ℕ} {c : ℕ}
-    (hc : 4 ≤ c) (hD : ∀ d ∈ D, 2 ≤ d ∧ d < c)
-    (hbelow : localMersennePrefixValue D < (1 / 2 : ℚ))
-    (hskip : (1 / 2 : ℚ) - localMersennePrefixValue D <
-      mersenneWeightRat c) :
-    localBinarySuffix D 1 (2 * c - 2) < 2 ^ (c - 1) ∧ D.card ≤ c - 2 := by
-  sorry
-end PalomarCorpus.E257.PaperStatementsAS
-
-namespace PalomarCorpus.E257.PaperStructuresAY
+namespace PalomarCorpus.E257.PaperStatementsAD
 open scoped BigOperators
 export PalomarCorpus.E257_28.Shared (localMersenneQuotient)
-/-- Descending local quotient weights with ranks `d,d+1,…,R`. Local copy of Erdos249257.BooleanMobiusGreedyReduction.localMersenneWeightsFrom, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def localMersenneWeightsFrom (M R : ℕ) : ℕ → List ℕ
-  | d =>
-      if h : d ≤ R then
-        localMersenneQuotient M d :: localMersenneWeightsFrom M R (d + 1)
-      else
-        []
-termination_by d => R + 1 - d
-decreasing_by omega
-/-- The complete lower quotient word on ranks `2,…,R`. Local copy of Erdos249257.BooleanMobiusGreedyReduction.localMersenneWeights, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def localMersenneWeights (M R : ℕ) : List ℕ :=
-  localMersenneWeightsFrom M R 2
-/-- Number of binary suffix values available after a truncation at depth `M`, when ranks through `R` have already been fixed. Local copy of Erdos249257.BooleanMobiusGreedyReduction.lowerBinaryWindow, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def lowerBinaryWindow (M R : ℕ) : ℕ :=
-  2 ^ (M - R)
-/-- Every head exceeds the sum of its complete tail by at least `gap`. Local copy of Erdos249257.HalfCylinderIntegerGreedy.GapDominates, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def GapDominates (gap : ℕ) : List ℕ → Prop
-  | [] => True
-  | w :: ws => gap + ws.sum ≤ w ∧ GapDominates gap ws
-/-- States record:257bm-i11b from the long record for Erdős problem #257. Transported from Erdos249257.BooleanMobiusGreedyReduction.localMersenneWeightsFrom_gapDominates in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem localMersenneWeightsFrom_gapDominates
-    {M R d : ℕ} (hRM : R ≤ M) (hd : 1 ≤ d) :
-    GapDominates (lowerBinaryWindow M R)
-      (localMersenneWeightsFrom M R d) := by
+/-- States record:257bm-c9 from the long record for Erdős problem #257. Transported from Erdos249257.exists_boolean_word_of_lt_two_pow in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem exists_boolean_word_of_lt_two_pow
+    {V L : ℕ} (hV : V < 2 ^ L) :
+    ∃ y : List ℕ,
+      y.length = L ∧
+      (∀ b ∈ y, b = 0 ∨ b = 1) ∧
+      Nat.ofDigits 2 y = V := by
   sorry
-/-- States record:257bm-i11b from the long record for Erdős problem #257. Transported from Erdos249257.BooleanMobiusGreedyReduction.localMersenneWeights_gapDominates_even in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem localMersenneWeights_gapDominates_even
-    (R : ℕ) (hR : 1 ≤ R) :
-    GapDominates (2 ^ (R - 1)) (localMersenneWeights (2 * R - 1) R) := by
+/-- States record:257bm-c9 from the long record for Erdős problem #257. Transported from Erdos249257.localMersenneQuotient_eq_two_pow_sub_of_half_lt in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem localMersenneQuotient_eq_two_pow_sub_of_half_lt
+    {M d : ℕ} (hd2 : 2 ≤ d) (hhalf : M / 2 < d) (hdM : d ≤ M) :
+    localMersenneQuotient M d = 2 ^ (M - d) := by
   sorry
-end PalomarCorpus.E257.PaperStructuresAY
+end PalomarCorpus.E257.PaperStatementsAD
+
+namespace PalomarCorpus.E257.PaperStatementsBE
+open Finset
+/-- `j` indexes the smallest power `2^(d-j+1)` that is still at least `E`. The final disjunction handles the last index, where there is no next power in the band family. Local copy of Erdos249257.HalfUpperResetCriticalBand.CriticalDyadicBandIndex, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def CriticalDyadicBandIndex (d E j : ℕ) : Prop :=
+  j ≤ d ∧
+    E ≤ 2 ^ (d - j + 1) ∧
+      (j = d ∨ 2 ^ (d - (j + 1) + 1) < E)
+/-- Avoidance of every width-`2(d+j)` interval immediately below the dyadic power indexed by `j`. Local copy of Erdos249257.HalfUpperResetCriticalBand.DyadicBandEscape, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def DyadicBandEscape (d E : ℕ) : Prop :=
+  ∀ j : ℕ, j ≤ d →
+    2 ^ (d - j + 1) < E ∨ E + 2 * (d + j) ≤ 2 ^ (d - j + 1)
+/-- States record:257bm-c11 from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_critical_dyadic_band_index_eq_top_of_le_two in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem paper_critical_dyadic_band_index_eq_top_of_le_two {d E j : ℕ}
+    (hE : E ≤ 2) (hj : CriticalDyadicBandIndex d E j) :
+    j = d := by
+  sorry
+/-- States record:257bm-c11 from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_critical_dyadic_band_index_unique in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem paper_critical_dyadic_band_index_unique {d E : ℕ}
+    (hE : E ≤ 2 ^ (d + 1)) :
+    ∃! j : ℕ, CriticalDyadicBandIndex d E j := by
+  sorry
+/-- States record:257bm-c11 from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_critical_dyadic_boundary_is_smallest in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem paper_critical_dyadic_boundary_is_smallest {d E j : ℕ}
+    (hj : CriticalDyadicBandIndex d E j) :
+    E ≤ 2 ^ (d - j + 1) ∧
+      ∀ i : ℕ, i ≤ d → E ≤ 2 ^ (d - i + 1) →
+        (2 : ℕ) ^ (d - j + 1) ≤ 2 ^ (d - i + 1) := by
+  sorry
+/-- States record:257bm-c11 from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_dyadic_band_escape_iff_single_test in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem paper_dyadic_band_escape_iff_single_test {d E j : ℕ}
+    (hj : CriticalDyadicBandIndex d E j) :
+    DyadicBandEscape d E ↔ E + 2 * (d + j) ≤ 2 ^ (d - j + 1) := by
+  sorry
+end PalomarCorpus.E257.PaperStatementsBE

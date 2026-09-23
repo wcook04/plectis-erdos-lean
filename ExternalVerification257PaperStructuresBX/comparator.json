@@ -1,0 +1,19 @@
+{
+  "challenge_module": "ExternalVerification257PaperStructuresBX.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStructuresBX",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStructuresBX.paper_upperSupport_isRowUpper",
+    "Erdos249257.ExternalVerification257PaperStructuresBX.seamPerturbedFamily_gap_pos",
+    "Erdos249257.ExternalVerification257PaperStructuresBX.seamPerturbedFamily_oldSum_injective",
+    "Erdos249257.ExternalVerification257PaperStructuresBX.seamPerturbedFamily_separated",
+    "Erdos249257.ExternalVerification257PaperStructuresBX.seamPerturbedFamily_pulseCap_lt_three_gap",
+    "Erdos249257.ExternalVerification257PaperStructuresBX.wordPulse_le",
+    "Erdos249257.ExternalVerification257PaperStructuresBX.exists_seamWord_minimal_above"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

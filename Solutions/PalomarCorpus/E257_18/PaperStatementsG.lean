@@ -20,12 +20,13 @@ open scoped Classical
 /- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
 
 namespace PalomarCorpus.E257.PaperStatementsG
+export PalomarCorpus.E257_18.Shared (greedyMersenneRemainder greedyMersenneSkippedSupport greedyMersenneSupport mersenneAchievementSet mersenneWeight positiveMersenneSupportValue)
 
-noncomputable def positiveMersenneSupportValue (A : Set ℕ) : ℝ :=
-  ∑' k : ℕ, Set.indicator A mersenneWeight (k + 1)
+noncomputable def mersenneTail (n : ℕ) : ℝ :=
+  ∑' k : ℕ, mersenneWeight (n + k + 1)
 
-noncomputable def mersenneAchievementSet : Set ℝ :=
-  {x : ℝ | ∃ A : Set ℕ, 0 ∉ A ∧ x = positiveMersenneSupportValue A}
+noncomputable def GreedyMersenneFatalAt (x : ℝ) (n : ℕ) : Prop :=
+  mersenneTail n < greedyMersenneRemainder x n
 
 theorem half_mem_mersenneAchievementSet_iff_no_lastHalfGreedySkip :
     (1 / 2 : ℝ) ∈ mersenneAchievementSet ↔

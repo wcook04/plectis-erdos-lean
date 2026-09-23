@@ -8,3 +8,4 @@ import Solutions.PalomarCorpus.E257_02
 #print axioms PalomarCorpus.E257.PaperStatementsC.remainder_lt_gap_iff_eq_integerGreedyBits
 #print axioms PalomarCorpus.E257.PaperStatementsD.paper_greedy_survival
 #print axioms PalomarCorpus.E257.PaperStatementsF.eq_halfGreedyPrefixSupport_of_critical_crossing
+#print axioms PalomarCorpus.E257.PaperStructuresCA.IsStraddlePrefix.half_agrees_greedy
