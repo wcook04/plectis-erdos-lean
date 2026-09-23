@@ -84,64 +84,6 @@ theorem seamUpperResetDyadicBandEscape_through_thirty
               (seamAdjacentCut d hd5).abovePulse + 2 * (d + j) ≤
           2 ^ (d - j + 1) := @Erdos249257.seamUpperResetDyadicBandEscape_through_thirty d hd13 hd30 hd5 hcarry
 
-theorem paper_final_middle_cell_at_least_neg_two
-    (D : ℕ) (hD13 : 13 ≤ D)
-    (hncarry : ¬ (seamAdjacentCut D (by omega)).successorCarries)
-    (hmiddle :
-      4 * (seamAdjacentCut D (by omega)).remainder +
-            (seamPerturbedFamily D (by omega)).gap -
-            (seamAdjacentCut D (by omega)).belowPulse <
-          (seamAdjacentCut D (by omega)).terminalWeight)
-    (hright : ∀ s : ℕ, D + 1 ≤ s →
-      seamGreedyWord (s + 1) = (seamGreedyWord s).extend true) :
-    (seamAdjacentCut D (by omega)).belowPulse + 2 ≤
-        4 * (seamAdjacentCut D (by omega)).remainder ∧
-      (-2 : ℤ) ≤ 4 * ((seamAdjacentCut D (by omega)).remainder : ℤ) -
-          ((seamAdjacentCut D (by omega)).belowPulse : ℤ) - 4 ∧
-      ∀ c : ℤ, c ≤ -3 →
-        4 * ((seamAdjacentCut D (by omega)).remainder : ℤ) -
-            ((seamAdjacentCut D (by omega)).belowPulse : ℤ) - 4 ≠ c := by
-  set_option smartUnfolding false in
-  with_unfolding_all exact @ErdosProblems.Erdos257.PaperCompleteR21.paper_final_middle_cell_at_least_neg_two D hD13 hncarry hmiddle hright
-
-theorem paper_final_middle_cell_ne_neg_three
-    (D : ℕ) (hD13 : 13 ≤ D)
-    (hncarry : ¬ (seamAdjacentCut D (by omega)).successorCarries)
-    (hmiddle :
-      4 * (seamAdjacentCut D (by omega)).remainder +
-            (seamPerturbedFamily D (by omega)).gap -
-            (seamAdjacentCut D (by omega)).belowPulse <
-          (seamAdjacentCut D (by omega)).terminalWeight)
-    (hright : ∀ s : ℕ, D + 1 ≤ s →
-      seamGreedyWord (s + 1) = (seamGreedyWord s).extend true) :
-    4 * ((seamAdjacentCut D (by omega)).remainder : ℤ) -
-        ((seamAdjacentCut D (by omega)).belowPulse : ℤ) - 4 ≠ -3 := by
-  set_option smartUnfolding false in
-  with_unfolding_all exact @ErdosProblems.Erdos257.PaperCompleteR21.paper_final_middle_cell_ne_neg_three D hD13 hncarry hmiddle hright
-
-theorem paper_final_middle_cell_remaining_cells
-    (D : ℕ) (hD13 : 13 ≤ D)
-    (hncarry : ¬ (seamAdjacentCut D (by omega)).successorCarries)
-    (hmiddle :
-      4 * (seamAdjacentCut D (by omega)).remainder +
-            (seamPerturbedFamily D (by omega)).gap -
-            (seamAdjacentCut D (by omega)).belowPulse <
-          (seamAdjacentCut D (by omega)).terminalWeight)
-    (hright : ∀ s : ℕ, D + 1 ≤ s →
-      seamGreedyWord (s + 1) = (seamGreedyWord s).extend true) :
-    (4 * ((seamAdjacentCut D (by omega)).remainder : ℤ) -
-            ((seamAdjacentCut D (by omega)).belowPulse : ℤ) - 4 = -3 ∨
-          4 * ((seamAdjacentCut D (by omega)).remainder : ℤ) -
-              ((seamAdjacentCut D (by omega)).belowPulse : ℤ) - 4 = -2 ∨
-            4 * ((seamAdjacentCut D (by omega)).remainder : ℤ) -
-                ((seamAdjacentCut D (by omega)).belowPulse : ℤ) - 4 = -1) →
-      4 * ((seamAdjacentCut D (by omega)).remainder : ℤ) -
-              ((seamAdjacentCut D (by omega)).belowPulse : ℤ) - 4 = -2 ∨
-        4 * ((seamAdjacentCut D (by omega)).remainder : ℤ) -
-            ((seamAdjacentCut D (by omega)).belowPulse : ℤ) - 4 = -1 := by
-  set_option smartUnfolding false in
-  with_unfolding_all exact @ErdosProblems.Erdos257.PaperCompleteR21.paper_final_middle_cell_remaining_cells D hD13 hncarry hmiddle hright
-
 theorem paper_perturbed_nextRemainder_three_branches {α : Type*} (F : PerturbedFamily α)
     {C : ℕ} (K : F.AdjacentCut C) [Decidable K.successorCarries] :
     K.terminalWeight = 2 * F.gap + 4 ∧

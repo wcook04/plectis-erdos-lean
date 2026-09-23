@@ -18,12 +18,16 @@ set_option autoImplicit false
 # Statement environment for Palomar entry E257_12
 
 Every non-theorem declaration of `PalomarCorpus/E257_12/Challenge.lean`, verbatim and in
-the same order, together with the proof obligations those declarations name, each stated
-verbatim from the Challenge and proved in place from the source development that this file
-imports for those proofs. The Solution modules import this file instead of re-declaring or
-aliasing the definitions, so every constant that Comparator walks from a compared theorem
-statement is elaborated from the same text in the same module as in the Challenge.
-Generated from the Challenge; do not edit by hand.
+the same order, together with the Challenge theorems that have to be elaborated here: the
+proof obligations those declarations name, and the compared theorems whose statements run a
+tactic that stores its proof as an auxiliary theorem (`omega` does). Lean reuses such an
+auxiliary, by the type it proves, only within one module, so these statements name the same
+auxiliaries here as in the Challenge. Each is stated verbatim at its place in the Challenge
+and proved in place from the source development that this file imports for those proofs.
+The Solution modules import this file instead of re-declaring or aliasing the definitions,
+so every constant that Comparator walks from a compared theorem statement is elaborated from
+the same text in the same module as in the Challenge. Generated from the Challenge; do not
+edit by hand.
 -/
 
 open scoped BigOperators
@@ -234,4 +238,62 @@ noncomputable def seamAdjacentCut (s : ℕ) (hs : 5 ≤ s) :
   below_maximal := @seamAdjacentCut_below_maximal s hs
   above_strict := seamAboveWord_strict hs
   above_minimal := seamAboveWord_minimal hs
+/-- States thm:cd-neg3-impossible from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_final_middle_cell_at_least_neg_two in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem paper_final_middle_cell_at_least_neg_two
+    (D : ℕ) (hD13 : 13 ≤ D)
+    (hncarry : ¬ (seamAdjacentCut D (by omega)).successorCarries)
+    (hmiddle :
+      4 * (seamAdjacentCut D (by omega)).remainder +
+            (seamPerturbedFamily D (by omega)).gap -
+            (seamAdjacentCut D (by omega)).belowPulse <
+          (seamAdjacentCut D (by omega)).terminalWeight)
+    (hright : ∀ s : ℕ, D + 1 ≤ s →
+      seamGreedyWord (s + 1) = (seamGreedyWord s).extend true) :
+    (seamAdjacentCut D (by omega)).belowPulse + 2 ≤
+        4 * (seamAdjacentCut D (by omega)).remainder ∧
+      (-2 : ℤ) ≤ 4 * ((seamAdjacentCut D (by omega)).remainder : ℤ) -
+          ((seamAdjacentCut D (by omega)).belowPulse : ℤ) - 4 ∧
+      ∀ c : ℤ, c ≤ -3 →
+        4 * ((seamAdjacentCut D (by omega)).remainder : ℤ) -
+            ((seamAdjacentCut D (by omega)).belowPulse : ℤ) - 4 ≠ c := by
+  set_option smartUnfolding false in
+  with_unfolding_all exact @ErdosProblems.Erdos257.PaperCompleteR21.paper_final_middle_cell_at_least_neg_two D hD13 hncarry hmiddle hright
+/-- States record:257hg-k12 from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_final_middle_cell_ne_neg_three in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem paper_final_middle_cell_ne_neg_three
+    (D : ℕ) (hD13 : 13 ≤ D)
+    (hncarry : ¬ (seamAdjacentCut D (by omega)).successorCarries)
+    (hmiddle :
+      4 * (seamAdjacentCut D (by omega)).remainder +
+            (seamPerturbedFamily D (by omega)).gap -
+            (seamAdjacentCut D (by omega)).belowPulse <
+          (seamAdjacentCut D (by omega)).terminalWeight)
+    (hright : ∀ s : ℕ, D + 1 ≤ s →
+      seamGreedyWord (s + 1) = (seamGreedyWord s).extend true) :
+    4 * ((seamAdjacentCut D (by omega)).remainder : ℤ) -
+        ((seamAdjacentCut D (by omega)).belowPulse : ℤ) - 4 ≠ -3 := by
+  set_option smartUnfolding false in
+  with_unfolding_all exact @ErdosProblems.Erdos257.PaperCompleteR21.paper_final_middle_cell_ne_neg_three D hD13 hncarry hmiddle hright
+/-- States cor:cd-remaining from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_final_middle_cell_remaining_cells in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem paper_final_middle_cell_remaining_cells
+    (D : ℕ) (hD13 : 13 ≤ D)
+    (hncarry : ¬ (seamAdjacentCut D (by omega)).successorCarries)
+    (hmiddle :
+      4 * (seamAdjacentCut D (by omega)).remainder +
+            (seamPerturbedFamily D (by omega)).gap -
+            (seamAdjacentCut D (by omega)).belowPulse <
+          (seamAdjacentCut D (by omega)).terminalWeight)
+    (hright : ∀ s : ℕ, D + 1 ≤ s →
+      seamGreedyWord (s + 1) = (seamGreedyWord s).extend true) :
+    (4 * ((seamAdjacentCut D (by omega)).remainder : ℤ) -
+            ((seamAdjacentCut D (by omega)).belowPulse : ℤ) - 4 = -3 ∨
+          4 * ((seamAdjacentCut D (by omega)).remainder : ℤ) -
+              ((seamAdjacentCut D (by omega)).belowPulse : ℤ) - 4 = -2 ∨
+            4 * ((seamAdjacentCut D (by omega)).remainder : ℤ) -
+                ((seamAdjacentCut D (by omega)).belowPulse : ℤ) - 4 = -1) →
+      4 * ((seamAdjacentCut D (by omega)).remainder : ℤ) -
+              ((seamAdjacentCut D (by omega)).belowPulse : ℤ) - 4 = -2 ∨
+        4 * ((seamAdjacentCut D (by omega)).remainder : ℤ) -
+            ((seamAdjacentCut D (by omega)).belowPulse : ℤ) - 4 = -1 := by
+  set_option smartUnfolding false in
+  with_unfolding_all exact @ErdosProblems.Erdos257.PaperCompleteR21.paper_final_middle_cell_remaining_cells D hD13 hncarry hmiddle hright
 end PalomarCorpus.E257.PaperStructuresBN

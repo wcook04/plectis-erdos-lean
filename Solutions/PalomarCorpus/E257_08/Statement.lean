@@ -22,12 +22,16 @@ set_option autoImplicit false
 # Statement environment for Palomar entry E257_08
 
 Every non-theorem declaration of `PalomarCorpus/E257_08/Challenge.lean`, verbatim and in
-the same order, together with the proof obligations those declarations name, each stated
-verbatim from the Challenge and proved in place from the source development that this file
-imports for those proofs. The Solution modules import this file instead of re-declaring or
-aliasing the definitions, so every constant that Comparator walks from a compared theorem
-statement is elaborated from the same text in the same module as in the Challenge.
-Generated from the Challenge; do not edit by hand.
+the same order, together with the Challenge theorems that have to be elaborated here: the
+proof obligations those declarations name, and the compared theorems whose statements run a
+tactic that stores its proof as an auxiliary theorem (`omega` does). Lean reuses such an
+auxiliary, by the type it proves, only within one module, so these statements name the same
+auxiliaries here as in the Challenge. Each is stated verbatim at its place in the Challenge
+and proved in place from the source development that this file imports for those proofs.
+The Solution modules import this file instead of re-declaring or aliasing the definitions,
+so every constant that Comparator walks from a compared theorem statement is elaborated from
+the same text in the same module as in the Challenge. Generated from the Challenge; do not
+edit by hand.
 -/
 
 open Set
@@ -304,4 +308,12 @@ noncomputable def tailGreedyRemainder (t : ℝ) (v : ℕ → ℝ) : ℕ → ℝ
       if v (m + 1 + 1) ≤ tailGreedyRemainder t v m then
         tailGreedyRemainder t v m - v (m + 1 + 1)
       else tailGreedyRemainder t v m
+/-- States lem:seam-upper-or-middle, thm:largest-skip-late from the long record for Erdős problem #257. Transported from Erdos249257.seamGreedy_terminal_false_iff_upperOrMiddle in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem seamGreedy_terminal_false_iff_upperOrMiddle
+    (s : ℕ) (hs : 5 ≤ s) :
+    SeamRowWord.terminal (by omega)
+        (seamGreedyWord (s + 1)) = false ↔
+      SeamGreedyUpperOrMiddleAt s hs := by
+  set_option smartUnfolding false in
+  with_unfolding_all exact @Erdos249257.seamGreedy_terminal_false_iff_upperOrMiddle s hs
 end PalomarCorpus.E257.PaperStructuresBB

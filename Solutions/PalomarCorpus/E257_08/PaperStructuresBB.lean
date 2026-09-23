@@ -90,14 +90,6 @@ theorem largestSkipLateAt_fourteen : LargestSkipLateAt 14 := by
   set_option smartUnfolding false in
   with_unfolding_all exact @Erdos249257.largestSkipLateAt_fourteen
 
-theorem seamGreedy_terminal_false_iff_upperOrMiddle
-    (s : ℕ) (hs : 5 ≤ s) :
-    SeamRowWord.terminal (by omega)
-        (seamGreedyWord (s + 1)) = false ↔
-      SeamGreedyUpperOrMiddleAt s hs := by
-  set_option smartUnfolding false in
-  with_unfolding_all exact @Erdos249257.seamGreedy_terminal_false_iff_upperOrMiddle s hs
-
 theorem seamUpperBranch_remainder_add_resetCharge_eq
     {d : ℕ} (hd5 : 5 ≤ d)
     (hcarry : (seamAdjacentCut d hd5).successorCarries) :
