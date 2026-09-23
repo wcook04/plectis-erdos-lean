@@ -21,7 +21,6 @@ open Topology
 /- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
 
 namespace PalomarCorpus.E1049.PaperStatementsU
-export PalomarCorpus.E1049_08.Shared (actualMoment actualMomentHankel actualMomentTerm leadC qPochhammerFinite qPochhammerInfinity)
 
 theorem sharp_fixed_base_exists {q : ℝ} (hq0 : 0 < q) (hq1 : q < 1) :
     ∃ K : ℝ, 0 < K ∧

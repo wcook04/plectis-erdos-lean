@@ -5,7 +5,7 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos1049.ZudilinHeightRegion
-import Solutions.PalomarCorpus.E1049_09.Statement
+import Solutions.PalomarCorpus.E1049_10.Statement
 
 namespace PalomarCorpus.E1049.PublishedHeightRegions
 

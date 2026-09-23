@@ -9,4 +9,3 @@ import Solutions.PalomarCorpus.E1049_08.ArchimedeanCap
 import Solutions.PalomarCorpus.E1049_08.BezoutPluckerJets
 import Solutions.PalomarCorpus.E1049_08.HermitePadeNoGo
 import Solutions.PalomarCorpus.E1049_08.PaperStatementsU
-import Solutions.PalomarCorpus.E1049_08.PaperStructuresAB

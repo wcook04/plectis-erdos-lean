@@ -12,8 +12,7 @@
     "PalomarCorpus.E1049.HermitePadeNoGo.hpClearedGap_nonpos",
     "PalomarCorpus.E1049.HermitePadeNoGo.rectangular_hp_threshold_eq_classical_iff",
     "PalomarCorpus.E1049.HermitePadeNoGo.rectangular_hp_threshold_le_classical",
-    "PalomarCorpus.E1049.PaperStatementsU.sharp_fixed_base_exists",
-    "PalomarCorpus.E1049.PaperStructuresAB.sharp_fixed_base"
+    "PalomarCorpus.E1049.PaperStatementsU.sharp_fixed_base_exists"
   ],
   "permitted_axioms": [
     "propext",

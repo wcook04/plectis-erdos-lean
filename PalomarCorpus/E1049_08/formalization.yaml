@@ -2,9 +2,9 @@ version: v0.4
 project:
   name: 'Erdős #1049, the Archimedean cap, Bezout Plucker jets and Hermite Pade no go families'
   description: >-
-    This entry states 12 theorems of the Archimedean cap, Bezout Plucker jets, Hermite Pade no go, paper statements u and paper structures AB developments of the Lean formalisation of Erdős problem #1049, to which no paper statement is bound. archimedean_cap: Archimedean cap. anchor_det_zero_forces_all_det_zero: Let w be a family of pairs in a commutative ring R, indexed by any type, and let a and b in R be coprime in the Bezout sense. binary_row_collision_of_anchor_det_zero: Under the hypotheses above with R and the index type both finite, if the cardinality of R is smaller than 2 raised to the number of indices, then two distinct Boolean selectors have the same selected row sum in R times R. adjacent_det_zero_forces_all_det_zero: For a sequence of pairs in a commutative ring whose second coordinates are all units, vanishing of every adjacent minor implies vanishing of every pairwise minor. zmod_binary_tail_collision_of_two_three_depth: At the modulus 2^S 3^R with R > 0, let w be a sequence of pairs of residues whose second coordinates are units and whose adjacent minors all vanish. hpClearedGap_expansion: Exact polynomial identity after the substitution sigma = 1 + rho + u: the cleared gap equals -pi^2 rho^2 - pi^2 rho u - 2 pi^2 rho - 2 rho^2 - 10 rho u - 4 rho - 6 u^2 - 8 u. hpClearedGap_nonpos: On the admissible region rho >= 0 and sigma >= 1 + rho the cleared comparison functional is nonpositive. hpClearedGap_eq_zero_iff: On that same admissible region the cleared comparison functional vanishes if and only if rho = 0 and sigma = 1, the classical one-function endpoint. rectangular_hp_threshold_le_classical: Over the whole admissible cone rho >= 0 and sigma >= 1 + rho, the rectangular two-function threshold of this explicit exponent model is at most 1/2 - 1/pi^2 = 0.398678816..., the classical one-function value. rectangular_hp_threshold_eq_classical_iff: On the same cone the threshold equals 1/2 - 1/pi^2 if and only if rho = 0 and sigma = 1. sharp_fixed_base_exists: States res:sharp-fixed-base from the short record for Erdős problem #1049. sharp_fixed_base: States long1049:thm:sharp-fixed-base from the long record for Erdős problem #1049.
+    This entry states 11 theorems of the Archimedean cap, Bezout Plucker jets, Hermite Pade no go and paper statements u developments of the Lean formalisation of Erdős problem #1049, to which no paper statement is bound. archimedean_cap: Archimedean cap. anchor_det_zero_forces_all_det_zero: Let w be a family of pairs in a commutative ring R, indexed by any type, and let a and b in R be coprime in the Bezout sense. binary_row_collision_of_anchor_det_zero: Under the hypotheses above with R and the index type both finite, if the cardinality of R is smaller than 2 raised to the number of indices, then two distinct Boolean selectors have the same selected row sum in R times R. adjacent_det_zero_forces_all_det_zero: For a sequence of pairs in a commutative ring whose second coordinates are all units, vanishing of every adjacent minor implies vanishing of every pairwise minor. zmod_binary_tail_collision_of_two_three_depth: At the modulus 2^S 3^R with R > 0, let w be a sequence of pairs of residues whose second coordinates are units and whose adjacent minors all vanish. hpClearedGap_expansion: Exact polynomial identity after the substitution sigma = 1 + rho + u: the cleared gap equals -pi^2 rho^2 - pi^2 rho u - 2 pi^2 rho - 2 rho^2 - 10 rho u - 4 rho - 6 u^2 - 8 u. hpClearedGap_nonpos: On the admissible region rho >= 0 and sigma >= 1 + rho the cleared comparison functional is nonpositive. hpClearedGap_eq_zero_iff: On that same admissible region the cleared comparison functional vanishes if and only if rho = 0 and sigma = 1, the classical one-function endpoint. rectangular_hp_threshold_le_classical: Over the whole admissible cone rho >= 0 and sigma >= 1 + rho, the rectangular two-function threshold of this explicit exponent model is at most 1/2 - 1/pi^2 = 0.398678816..., the classical one-function value. rectangular_hp_threshold_eq_classical_iff: On the same cone the threshold equals 1/2 - 1/pi^2 if and only if rho = 0 and sigma = 1. sharp_fixed_base_exists: States res:sharp-fixed-base from the short record for Erdős problem #1049.
 
-    2 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement.
+    1 of the restated theorems is proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement.
 
     Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
 
@@ -99,11 +99,11 @@ sources:
   license: Apache-2.0
   author_endorsement: n/a
 status:
-  scope: "One Comparator configuration selecting the 12 theorems listed in PalomarCorpus/E1049_08/comparator.json, from the Lean development for Erdős problem #1049. The problem's theorems are packed, in the order the papers state them, into the 9 entries PalomarCorpus/E1049_01 to PalomarCorpus/E1049_09, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification1049* directories are internal regression inventory and are not selected."
+  scope: "One Comparator configuration selecting the 11 theorems listed in PalomarCorpus/E1049_08/comparator.json, from the Lean development for Erdős problem #1049. The problem's theorems are packed, in the order the papers state them, into the 10 entries PalomarCorpus/E1049_01 to PalomarCorpus/E1049_10, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification1049* directories are internal regression inventory and are not selected."
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
-  trusted_challenge_sorry_count: 12
+  trusted_challenge_sorry_count: 11
   sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E1049_08/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
   axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
   permitted_axiom_budget:
@@ -153,10 +153,6 @@ status:
     comparator_config: "PalomarCorpus/E1049_08/comparator.json"
   - declaration: "PalomarCorpus.E1049.PaperStatementsU.sharp_fixed_base_exists"
     file: "Solutions/PalomarCorpus/E1049_08/PaperStatementsU.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E1049_08/comparator.json"
-  - declaration: "PalomarCorpus.E1049.PaperStructuresAB.sharp_fixed_base"
-    file: "Solutions/PalomarCorpus/E1049_08/PaperStructuresAB.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E1049_08/comparator.json"
   development_status: substantive

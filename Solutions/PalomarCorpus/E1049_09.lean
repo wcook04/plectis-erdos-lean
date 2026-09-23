@@ -5,9 +5,7 @@ Authors: Will Cook
 -/
 import Mathlib
 import Solutions.PalomarCorpus.E1049_09.Statement
+import Solutions.PalomarCorpus.E1049_09.PaperStructuresAA
+import Solutions.PalomarCorpus.E1049_09.PaperStructuresAB
 import Solutions.PalomarCorpus.E1049_09.PaperStructuresV
 import Solutions.PalomarCorpus.E1049_09.PaperStructuresW
-import Solutions.PalomarCorpus.E1049_09.PrimeSupportSelectors
-import Solutions.PalomarCorpus.E1049_09.PublishedHeightRegions
-import Solutions.PalomarCorpus.E1049_09.RationalBaseBarrier
-import Solutions.PalomarCorpus.E1049_09.RationalBaseRegion

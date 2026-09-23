@@ -99,7 +99,7 @@ sources:
   license: Apache-2.0
   author_endorsement: n/a
 status:
-  scope: "One Comparator configuration selecting the 4 theorems listed in PalomarCorpus/E1049_02/comparator.json, from the Lean development for Erdős problem #1049. The problem's theorems are packed, in the order the papers state them, into the 9 entries PalomarCorpus/E1049_01 to PalomarCorpus/E1049_09, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification1049* directories are internal regression inventory and are not selected."
+  scope: "One Comparator configuration selecting the 4 theorems listed in PalomarCorpus/E1049_02/comparator.json, from the Lean development for Erdős problem #1049. The problem's theorems are packed, in the order the papers state them, into the 10 entries PalomarCorpus/E1049_01 to PalomarCorpus/E1049_10, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification1049* directories are internal regression inventory and are not selected."
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0

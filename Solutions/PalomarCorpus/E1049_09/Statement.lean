@@ -18,12 +18,124 @@ walks from a compared theorem statement is byte-identical in the Challenge and S
 environments. Generated from the Challenge; do not edit by hand.
 -/
 
+open PowerSeries
 open Finset
 open Filter
+open scoped Topology
+open scoped PowerSeries.WithPiTopology
+open scoped BigOperators
 open Matrix
+open scoped Classical
+
+namespace PalomarCorpus.E1049_09.Shared
+/-- Local definition cK, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def cK (k : ℕ) : ℝ := ((k : ℝ) + 1) ^ 2 * ((k : ℝ) + 2) / 2
+/-- Local definition gramM, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def gramM (q : ℝ) : ℝ := ∏' d : ℕ, ((1 - q ^ (d + 1)) ^ (d + 1))⁻¹
+/-- Local definition qPochhammerFinite, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def qPochhammerFinite (a q : ℝ) (n : ℕ) : ℝ :=
+  ∏ k ∈ Finset.range n, (1 - a * q ^ k)
+/-- Local definition qPochhammerInfinity, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def qPochhammerInfinity (a q : ℝ) : ℝ :=
+  Real.exp (∑' k : ℕ, Real.log (1 - a * q ^ k))
+/-- Local definition actualGeneratingTerm, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def actualGeneratingTerm (q w : ℝ) (t : ℕ) : ℝ :=
+  w ^ t / qPochhammerFinite q q t *
+    qPochhammerInfinity (q ^ t * w ^ 2) q /
+      (qPochhammerInfinity (q ^ t * w) q) ^ 2
+/-- Local definition actualGeneratingFunction, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def actualGeneratingFunction (q w : ℝ) : ℝ :=
+  (∑' t : ℕ, actualGeneratingTerm q w t) /
+    (qPochhammerInfinity w q) ^ 3
+end PalomarCorpus.E1049_09.Shared
+
+namespace PalomarCorpus.E1049.PaperStructuresAA
+open PowerSeries
+open Finset
+open Filter
+open scoped Topology
+open scoped PowerSeries.WithPiTopology
+open scoped BigOperators
+export PalomarCorpus.E1049_09.Shared (actualGeneratingFunction actualGeneratingTerm cK qPochhammerFinite qPochhammerInfinity)
+/-- Local definition BW, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable abbrev BW := PowerSeries (PowerSeries ℚ)
+/-- Local definition qPochhammer, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def qPochhammer {R : Type*} [CommRing R] (q z : R) : ℕ → R
+  | 0 => 1
+  | n + 1 => qPochhammer q z n * (1 - z * q ^ n)
+/-- Local definition qq, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable abbrev qq : PowerSeries ℚ := PowerSeries.X
+/-- Local definition qfac, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def qfac (n : ℕ) : PowerSeries ℚ := qPochhammer qq qq n
+/-- Local definition qPochInf, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def qPochInf (x : BW) : BW := ∏' i : ℕ, (1 - x * C (qq ^ i))
+/-- Local definition ww, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable abbrev ww : BW := PowerSeries.X
+/-- Local definition momentGenFun, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def momentGenFun : BW :=
+  Ring.inverse (qPochInf ww ^ 3) *
+    ∑' t : ℕ, ww ^ t * C (qfac t)⁻¹ *
+      (qPochInf (C (qq ^ t) * ww ^ 2) * Ring.inverse (qPochInf (C (qq ^ t) * ww) ^ 2))
+/-- Local definition momentWeight, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def momentWeight (k : ℕ) : PowerSeries ℚ := coeff k momentGenFun
+/-- Local definition realRogersR, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def realRogersR (r k : ℕ) (q : ℝ) : ℝ :=
+  ∑ n ∈ Finset.Nat.antidiagonalTuple r k, qPochhammerFinite q q k / ∏ j, qPochhammerFinite q q (n j)
+/-- Local definition gaussBinom, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def gaussBinom {R : Type*} [CommRing R] (q : R) : ℕ → ℕ → R
+  | 0, 0 => 1
+  | 0, Nat.succ _ => 0
+  | Nat.succ _, 0 => 1
+  | n + 1, k + 1 =>
+      gaussBinom q n (k + 1) +
+        if k ≤ n then q ^ (n - k) * gaussBinom q n k else 0
+/-- Local definition rogersPoly2, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def rogersPoly2 (k : ℕ) : Polynomial ℤ := ∑ i ∈ range (k + 1), gaussBinom Polynomial.X k i
+/-- Local definition rogersPoly3, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def rogersPoly3 (k : ℕ) : Polynomial ℤ :=
+  ∑ p ∈ antidiagonal k, ∑ q ∈ antidiagonal p.2,
+    gaussBinom Polynomial.X k p.1 * gaussBinom Polynomial.X p.2 q.1
+/-- Local definition rogersR, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def rogersR (r k : ℕ) : PowerSeries ℚ :=
+  ∑ n ∈ Finset.Nat.antidiagonalTuple r k, qfac k * (∏ j, qfac (n j))⁻¹
+end PalomarCorpus.E1049.PaperStructuresAA
+
+namespace PalomarCorpus.E1049.PaperStructuresAB
+open Filter
+open Finset
 open scoped Topology
 open scoped BigOperators
+open Matrix
 open scoped Classical
+open PowerSeries
+open scoped PowerSeries.WithPiTopology
+export PalomarCorpus.E1049_09.Shared (actualGeneratingFunction actualGeneratingTerm cK gramM qPochhammerFinite qPochhammerInfinity)
+/-- Local definition lambertL, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def lambertL (q : ℝ) : ℝ := ∑' r : ℕ, q ^ (r + 1) / (1 - q ^ (r + 1))
+/-- Local definition leadC, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def leadC (N : ℕ) : ℝ := ((N.factorial : ℝ) ^ 2 * ((N + 1).factorial : ℝ)) / 2 ^ N
+/-- Local definition orderB, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def orderB (N : ℕ) : ℕ := ∑ j ∈ range N, j ^ 2
+/-- Local definition sharpFactor, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def sharpFactor (q : ℝ) (γ : ℕ → ℝ) (k : ℕ) : ℝ :=
+  qPochhammerInfinity q q ^ 4 * γ k / cK k * Real.exp (8 * lambertL q / ((k : ℝ) + 1))
+/-- Local definition sharpA, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def sharpA (q : ℝ) (γ : ℕ → ℝ) : ℝ :=
+  Real.exp (-8 * Real.eulerMascheroniConstant * lambertL q) * ∏' k : ℕ, sharpFactor q γ k
+/-- Local definition sharpK, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def sharpK (q : ℝ) (γ : ℕ → ℝ) : ℝ := sharpA q γ * gramM q ^ 3
+/-- Local definition actualMomentTerm, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def actualMomentTerm (q : ℝ) (m t : ℕ) : ℝ :=
+  q ^ ((m + 1) * t) * (qPochhammerFinite q q m) ^ 3 *
+    qPochhammerFinite (q ^ (t + 1)) q m /
+      qPochhammerFinite (q ^ (m + t + 1)) q (m + 1)
+/-- Local definition actualMoment, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def actualMoment (q : ℝ) (m : ℕ) : ℝ :=
+  ∑' t : ℕ, actualMomentTerm q m t
+/-- Local definition actualMomentHankel, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def actualMomentHankel (q : ℝ) (N : ℕ) : Matrix (Fin N) (Fin N) ℝ :=
+  fun i j => actualMoment q (i.val + j.val)
+end PalomarCorpus.E1049.PaperStructuresAB
 
 namespace PalomarCorpus.E1049.PaperStructuresV
 open Finset
@@ -52,80 +164,10 @@ open Matrix
 open scoped Topology
 open scoped BigOperators
 open scoped Classical
+export PalomarCorpus.E1049_09.Shared (gramM qPochhammerInfinity)
 /-- Local definition geomMoment, copied so the compared statements of this entry elaborate against Mathlib alone. -/
 noncomputable def geomMoment (q : ℝ) (a : ℕ → ℝ) (m : ℕ) : ℝ := ∑' k : ℕ, a k * q ^ ((m + 1) * k)
 /-- Local definition geomHankelDet, copied so the compared statements of this entry elaborate against Mathlib alone. -/
 noncomputable def geomHankelDet (q : ℝ) (a : ℕ → ℝ) (N : ℕ) : ℝ :=
   (Matrix.of fun i j : Fin N => geomMoment q a (i.val + j.val)).det
-/-- Local definition gramM, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def gramM (q : ℝ) : ℝ := ∏' d : ℕ, ((1 - q ^ (d + 1)) ^ (d + 1))⁻¹
-/-- Local definition qPochhammerInfinity, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def qPochhammerInfinity (a q : ℝ) : ℝ :=
-  Real.exp (∑' k : ℕ, Real.log (1 - a * q ^ k))
 end PalomarCorpus.E1049.PaperStructuresW
-
-namespace PalomarCorpus.E1049.PrimeSupportSelectors
-open Filter
-end PalomarCorpus.E1049.PrimeSupportSelectors
-
-namespace PalomarCorpus.E1049.PublishedHeightRegions
-/-- The parameter region log b / log a < 1/2 - 1/pi^2 of the published Bundschuh-Vaananen criterion, written for a reduced rational base a/b, the definition itself imposing no coprimality, positivity or ordering on a and b. This records only the elementary parameter inequality; their analytic irrationality theorem is not internalised, so membership is applicability of a method rather than an irrationality statement. -/
-noncomputable def BundschuhVaananenHeightRegion (a b : ℕ) : Prop :=
-  Real.log b / Real.log a < 1 / 2 - 1 / Real.pi ^ 2
-/-- The parameter region log b / log a < 81/200 for a reduced rational base a/b, the definition itself imposing no coprimality, positivity or ordering on a and b. This threshold is defined here as an elementary sub-boundary of the region reached by the project's separate ordinary rational-base theorem; it is not a published criterion and carries no analytic hypothesis. -/
-noncomputable def ZudilinHeightRegion (a b : ℕ) : Prop :=
-  Real.log b / Real.log a < (81 : ℝ) / 200
-end PalomarCorpus.E1049.PublishedHeightRegions
-
-namespace PalomarCorpus.E1049.RationalBaseBarrier
-open scoped BigOperators
-/-- The natural number B coeff(N+1) s^(N+1): the magnitude of the forcing term that the cleared-tail recurrence leaves behind at step N, for natural data. -/
-noncomputable def rationalBaseForcingNat
-    (s B : ℕ) (coeff : ℕ → ℕ) (N : ℕ) : ℕ :=
-  B * coeff (N + 1) * s ^ (N + 1)
-end PalomarCorpus.E1049.RationalBaseBarrier
-
-namespace PalomarCorpus.E1049.RationalBaseRegion
-open scoped BigOperators
-/-- The real Lambert series F(x)=sum over n at least 1 of 1/(x^n-1), with Lean tsum conventions outside its convergence domain; the irrationality theorems use x>1. -/
-noncomputable def paperLambert (x : ℝ) : ℝ :=
-  ∑' n : ℕ, 1 / (x ^ (n + 1) - 1)
-/-- The real series sum over k at least zero of 1/(k+x)^2, used at the positive rational arguments in the contour constant. -/
-noncomputable def trigammaSeries (x : ℝ) : ℝ :=
-  ∑' k : ℕ, 1 / ((k : ℝ) + x) ^ 2
-/-- The difference of two trigamma-series values used in the exact contour constant. -/
-noncomputable def zudilinJTerm (u v : ℝ) : ℝ :=
-  trigammaSeries u - trigammaSeries v
-/-- The displayed sum of thirteen trigamma differences at the rational endpoints of the Zudilin parameter intervals. -/
-noncomputable def zudilinJ : ℝ :=
-  zudilinJTerm (1 / 14) (1 / 12) + zudilinJTerm (1 / 7) (1 / 6) +
-    zudilinJTerm (3 / 14) (1 / 4) + zudilinJTerm (2 / 7) (1 / 3) +
-    zudilinJTerm (5 / 14) (2 / 5) + zudilinJTerm (3 / 7) (7 / 15) +
-    zudilinJTerm (1 / 2) (8 / 15) + zudilinJTerm (4 / 7) (3 / 5) +
-    zudilinJTerm (9 / 14) (2 / 3) + zudilinJTerm (5 / 7) (11 / 15) +
-    zudilinJTerm (11 / 14) (4 / 5) + zudilinJTerm (6 / 7) (13 / 15) +
-    zudilinJTerm (13 / 14) (14 / 15)
-/-- The exact homogeneous width-rate constant 1091/2 in the constructed approximation family. -/
-noncomputable def zudilinC1 : ℝ := 1091 / 2
-/-- The exact cancellation constant 266-(3/pi^2)(225-J), with J given by the thirteen displayed trigamma differences. -/
-noncomputable def zudilinC0 : ℝ := 266 - 3 / Real.pi ^ 2 * (225 - zudilinJ)
-/-- The exact contour C0/C1 controlling rational-base decay after homogeneous denominator clearing. -/
-noncomputable def zudilinContour : ℝ := zudilinC0 / zudilinC1
-/-- The strict inequality log(b)/log(a)<C0/C1; the result separately requires natural a>b>0. -/
-noncomputable def ZudilinContourRegion (a b : ℕ) : Prop :=
-  Real.log b / Real.log a < zudilinContour
-/-- Reduced integer-numerator, positive-natural-denominator rational approximants to xi with error strictly below q^(-nu). -/
-noncomputable def reducedApproximationPairs (ξ ν : ℝ) : Set (ℤ × ℕ) :=
-  {r | 0 < r.2 ∧ Nat.Coprime r.1.natAbs r.2 ∧
-    |ξ - (r.1 : ℝ) / (r.2 : ℝ)| < (r.2 : ℝ) ^ (-ν)}
-/-- The real exponents admitting infinitely many reduced rational approximants at the stated strict error bound. -/
-noncomputable def approximationExponents (ξ : ℝ) : Set ℝ :=
-  {ν | (reducedApproximationPairs ξ ν).Infinite}
-/-- The supremum of approximation exponents for the real target; the theorem applies it to the irrational Lambert values supplied by the same construction. -/
-noncomputable def irrationalityExponent (ξ : ℝ) : ℝ :=
-  sSup (approximationExponents ξ)
-/-- The exact exponent bound (1-log(b)/log(a))/(C0/C1-log(b)/log(a)), with positive denominator on the strict contour region. -/
-noncomputable def rationalBaseMeasureBound (a b : ℕ) : ℝ :=
-  (1 - Real.log b / Real.log a) /
-    (zudilinContour - Real.log b / Real.log a)
-end PalomarCorpus.E1049.RationalBaseRegion

@@ -5,7 +5,7 @@ Authors: Will Cook
 -/
 import ErdosProblems.Erdos1049.PaperR17.SourceConsumers
 import Mathlib
-import Solutions.PalomarCorpus.E1049_09.Statement
+import Solutions.PalomarCorpus.E1049_10.Statement
 
 open scoped BigOperators
 

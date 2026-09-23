@@ -24,32 +24,6 @@ open scoped BigOperators
 open Filter
 open Finset
 open Topology
-open Matrix
-open scoped Classical
-open PowerSeries
-open scoped PowerSeries.WithPiTopology
-
-namespace PalomarCorpus.E1049_08.Shared
-/-- Local definition leadC, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def leadC (N : ℕ) : ℝ := ((N.factorial : ℝ) ^ 2 * ((N + 1).factorial : ℝ)) / 2 ^ N
-/-- Local definition qPochhammerFinite, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def qPochhammerFinite (a q : ℝ) (n : ℕ) : ℝ :=
-  ∏ k ∈ Finset.range n, (1 - a * q ^ k)
-/-- Local definition actualMomentTerm, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def actualMomentTerm (q : ℝ) (m t : ℕ) : ℝ :=
-  q ^ ((m + 1) * t) * (qPochhammerFinite q q m) ^ 3 *
-    qPochhammerFinite (q ^ (t + 1)) q m /
-      qPochhammerFinite (q ^ (m + t + 1)) q (m + 1)
-/-- Local definition actualMoment, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def actualMoment (q : ℝ) (m : ℕ) : ℝ :=
-  ∑' t : ℕ, actualMomentTerm q m t
-/-- Local definition actualMomentHankel, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def actualMomentHankel (q : ℝ) (N : ℕ) : Matrix (Fin N) (Fin N) ℝ :=
-  fun i j => actualMoment q (i.val + j.val)
-/-- Local definition qPochhammerInfinity, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def qPochhammerInfinity (a q : ℝ) : ℝ :=
-  Real.exp (∑' k : ℕ, Real.log (1 - a * q ^ k))
-end PalomarCorpus.E1049_08.Shared
 
 namespace PalomarCorpus.E1049.ArchimedeanCap
 open Filter Asymptotics
@@ -168,7 +142,25 @@ open Finset
 open scoped Topology
 open scoped BigOperators
 open Topology
-export PalomarCorpus.E1049_08.Shared (actualMoment actualMomentHankel actualMomentTerm leadC qPochhammerFinite qPochhammerInfinity)
+/-- Local definition leadC, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def leadC (N : ℕ) : ℝ := ((N.factorial : ℝ) ^ 2 * ((N + 1).factorial : ℝ)) / 2 ^ N
+/-- Local definition qPochhammerFinite, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def qPochhammerFinite (a q : ℝ) (n : ℕ) : ℝ :=
+  ∏ k ∈ Finset.range n, (1 - a * q ^ k)
+/-- Local definition qPochhammerInfinity, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def qPochhammerInfinity (a q : ℝ) : ℝ :=
+  Real.exp (∑' k : ℕ, Real.log (1 - a * q ^ k))
+/-- Local definition actualMomentTerm, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def actualMomentTerm (q : ℝ) (m t : ℕ) : ℝ :=
+  q ^ ((m + 1) * t) * (qPochhammerFinite q q m) ^ 3 *
+    qPochhammerFinite (q ^ (t + 1)) q m /
+      qPochhammerFinite (q ^ (m + t + 1)) q (m + 1)
+/-- Local definition actualMoment, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def actualMoment (q : ℝ) (m : ℕ) : ℝ :=
+  ∑' t : ℕ, actualMomentTerm q m t
+/-- Local definition actualMomentHankel, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def actualMomentHankel (q : ℝ) (N : ℕ) : Matrix (Fin N) (Fin N) ℝ :=
+  fun i j => actualMoment q (i.val + j.val)
 /-- Local definition lambertTerm, copied so the compared statements of this entry elaborate against Mathlib alone. -/
 noncomputable def lambertTerm {K : Type*} [NormedField K] (z : K) (n : ℕ) : K :=
   z ^ n / (1 - z ^ n)
@@ -184,54 +176,3 @@ theorem sharp_fixed_base_exists {q : ℝ} (hq0 : 0 < q) (hq1 : q < 1) :
           (N : ℝ) ^ (-8 * lambert q))) atTop (𝓝 1) := by
   sorry
 end PalomarCorpus.E1049.PaperStatementsU
-
-namespace PalomarCorpus.E1049.PaperStructuresAB
-open Filter
-open Finset
-open scoped Topology
-open scoped BigOperators
-open Matrix
-open scoped Classical
-open PowerSeries
-open scoped PowerSeries.WithPiTopology
-export PalomarCorpus.E1049_08.Shared (actualMoment actualMomentHankel actualMomentTerm leadC qPochhammerFinite qPochhammerInfinity)
-/-- Local definition gramM, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def gramM (q : ℝ) : ℝ := ∏' d : ℕ, ((1 - q ^ (d + 1)) ^ (d + 1))⁻¹
-/-- Local definition cK, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def cK (k : ℕ) : ℝ := ((k : ℝ) + 1) ^ 2 * ((k : ℝ) + 2) / 2
-/-- Local definition lambertL, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def lambertL (q : ℝ) : ℝ := ∑' r : ℕ, q ^ (r + 1) / (1 - q ^ (r + 1))
-/-- Local definition orderB, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def orderB (N : ℕ) : ℕ := ∑ j ∈ range N, j ^ 2
-/-- Local definition sharpFactor, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def sharpFactor (q : ℝ) (γ : ℕ → ℝ) (k : ℕ) : ℝ :=
-  qPochhammerInfinity q q ^ 4 * γ k / cK k * Real.exp (8 * lambertL q / ((k : ℝ) + 1))
-/-- Local definition sharpA, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def sharpA (q : ℝ) (γ : ℕ → ℝ) : ℝ :=
-  Real.exp (-8 * Real.eulerMascheroniConstant * lambertL q) * ∏' k : ℕ, sharpFactor q γ k
-/-- Local definition sharpK, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def sharpK (q : ℝ) (γ : ℕ → ℝ) : ℝ := sharpA q γ * gramM q ^ 3
-/-- Local definition actualGeneratingTerm, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def actualGeneratingTerm (q w : ℝ) (t : ℕ) : ℝ :=
-  w ^ t / qPochhammerFinite q q t *
-    qPochhammerInfinity (q ^ t * w ^ 2) q /
-      (qPochhammerInfinity (q ^ t * w) q) ^ 2
-/-- Local definition actualGeneratingFunction, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def actualGeneratingFunction (q w : ℝ) : ℝ :=
-  (∑' t : ℕ, actualGeneratingTerm q w t) /
-    (qPochhammerInfinity w q) ^ 3
-/-- States long1049:thm:sharp-fixed-base from the long record for Erdős problem #1049. Transported from ErdosProblems.Erdos1049.PaperCompleteR21.SharpFixedBase.sharp_fixed_base in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem sharp_fixed_base {q : ℝ} (hq0 : 0 < q) (hq1 : q < 1) (γ : ℕ → ℝ)
-    (hγ : ∀ w : ℝ, 0 ≤ w → w < 1 →
-      HasSum (fun k => γ k * w ^ k) (actualGeneratingFunction q w)) :
-    HasProd (sharpFactor q γ) (∏' k : ℕ, sharpFactor q γ k) ∧
-    0 < sharpA q γ ∧
-    Tendsto (fun N : ℕ => (actualMomentHankel q N).det /
-        (sharpK q γ * leadC N * q ^ orderB N * qPochhammerInfinity q q ^ (2 * N) *
-          (N : ℝ) ^ (-8 * lambertL q))) atTop (𝓝 1) ∧
-    Tendsto (fun N : ℕ => Real.log (actualMomentHankel q N).det -
-        ((orderB N : ℝ) * Real.log q + Real.log (leadC N) +
-          2 * (N : ℝ) * Real.log (qPochhammerInfinity q q) - 8 * lambertL q * Real.log N +
-          Real.log (sharpK q γ))) atTop (𝓝 0) := by
-  sorry
-end PalomarCorpus.E1049.PaperStructuresAB

@@ -1,9 +1,9 @@
 {
   "schema": "palomar_corpus_size_receipt_v1",
-  "generated_at": "2026-09-23T20:49:24Z",
+  "generated_at": "2026-09-23T21:55:02Z",
   "public_root": ".",
   "path_base": "repository_root",
-  "git_head": "a2faa350b45ae08d0e70f5a6ec54943018f8c2b3",
+  "git_head": "c455fb5db2b7b4be19e3c92ca83d4da759463d18",
   "selected_families": [
     "ExternalVerification1041CriticalGeometry",
     "ExternalVerification1041CriticalValueMean",
@@ -64,6 +64,7 @@
     "ExternalVerification1049PaperStatementsT",
     "ExternalVerification1049PaperStatementsU",
     "ExternalVerification1049PaperStatementsX",
+    "ExternalVerification1049PaperStructuresAA",
     "ExternalVerification1049PaperStructuresAB",
     "ExternalVerification1049PaperStructuresD",
     "ExternalVerification1049PaperStructuresL",
@@ -361,7 +362,7 @@
     "ExternalVerification68ResidualIntegerClass",
     "ExternalVerification68StrictSuccessorCarry"
   ],
-  "selected_theorem_count": 1888,
+  "selected_theorem_count": 1889,
   "measurement": {
     "challenge_lines": 396,
     "challenge_bytes": 27542,
@@ -425,11 +426,10 @@
       "ZeroLowerDensity",
       "ZudilinContourRegion",
       "actualCenteredLift",
+      "actualGeneratingFunction",
+      "actualGeneratingTerm",
       "actualLcmHeight",
       "actualLcmTailOrbit",
-      "actualMoment",
-      "actualMomentHankel",
-      "actualMomentTerm",
       "actualWindowBase",
       "affineBinaryOrbit",
       "approximationExponents",
@@ -437,6 +437,7 @@
       "binaryCoeffPrefixNumerator",
       "binaryCoeffSeries",
       "binaryCoeffTail",
+      "cK",
       "canonicalCarryKernelFamily",
       "canonicalCorrection",
       "canonicalDenominator",
@@ -506,6 +507,7 @@
       "framePotential",
       "gamma",
       "globalRepairStageSupport",
+      "gramM",
       "greedyHalfFrozenMargin",
       "greedyMersennePrefixRat",
       "greedyMersenneRemainder",
@@ -534,7 +536,6 @@
       "kpos_pos",
       "lambertValue",
       "lcmHeight",
-      "leadC",
       "leastPositiveResidue",
       "lobeComponent",
       "lobePolynomial",
@@ -662,7 +663,7 @@
       "zudilinJTerm",
       "zudilinMu"
     ],
-    "problem_count": 142
+    "problem_count": 143
   },
   "stop_rule": "If any entry's Challenge is over_hard_limit, do not submit it and do not drop selected theorems; re-run the paper-order packer, which keeps every entry within the preferred review surface."
 }

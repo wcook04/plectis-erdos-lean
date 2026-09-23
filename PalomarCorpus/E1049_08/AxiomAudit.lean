@@ -11,4 +11,3 @@ import Solutions.PalomarCorpus.E1049_08
 #print axioms PalomarCorpus.E1049.HermitePadeNoGo.rectangular_hp_threshold_eq_classical_iff
 #print axioms PalomarCorpus.E1049.HermitePadeNoGo.rectangular_hp_threshold_le_classical
 #print axioms PalomarCorpus.E1049.PaperStatementsU.sharp_fixed_base_exists
-#print axioms PalomarCorpus.E1049.PaperStructuresAB.sharp_fixed_base

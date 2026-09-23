@@ -1,10 +1,14 @@
 version: v0.4
 project:
-  name: 'Weighted support criteria for reciprocal Mersenne subseries'
+  name: 'Erdős #257, record sections 1.2 to 1.5: a weighted condition on the support; positive divisor majorants; combining the two support criteria'
   description: >-
-    For an infinite set A of positive integers and an integer base b at least 2, consider the reciprocal Mersenne subseries X_A(b) = sum over a in A of 1/(b^a - 1). For a finite nonempty set P of primes, write h_P(a) for the P-part of a. The principal theorem proves irrationality when sum over a in A of h_P(a)/(a*(b^h_P(a) - 1)) converges. The base-two condition implies irrationality at every integer base at least 2 for every infinite subset of the host support. This is a sufficient support criterion, not a solution of the universal Erdős problem. It includes reciprocal-summable supports; the paper credits Erdős for that earlier stated all-base criterion and makes no identification with his suggested weakenings.
+    This entry states 5 theorems that the long record for Erdős problem #257 states in sections 1.2 (a weighted condition on the support), 1.4 (positive divisor majorants) and 1.5 (combining the two support criteria): the theorem “A weighted summability criterion” (section 1.2), as divisibilityWeightedClaim and weighted_displacement_cofinal_close_return; the theorem “A summable family of divisor majorants” (section 1.4), as strengthenedPositiveCoverClaim; the theorem “mixed weighted and cover supports” (section 1.5), as mixedSupportClaim and arbitraryWeightMixedSupport_allBase_hereditary.
 
-    The five selected statements also give cofinally arbitrarily small positive weighted displacements, a strengthened positive divisor-cover criterion, and two common-average mixed-support extensions, one using an arbitrary positive weight budget. The proof averages displacements along multiples of a finite divisibility modulus, with another average controlling incomplete periods. Rationality would instead separate every positive displacement from zero. These extensions retain their explicit cover, summability, positivity and infinite-subset assumptions. Full support and all odd exponents are outside the weighted criterion; failure of the criterion is not a rationality assertion. The paper's achievement-set geometry, rational-membership tests and finite-denominator results are outside this registration. This entry supplies independently stated Challenge declarations and matching Lean proofs, with links to the complete paper and reasoning record; it makes no claim of independent human peer review or a novelty verdict.
+    1 of the restated theorems is proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement.
+
+    Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
+
+    Erdős problem #257 remains open, and no theorem in this entry decides it.
   authors:
   - Will Cook
   license: Apache-2.0
@@ -15,44 +19,79 @@ repository:
 classification:
   arxiv:
   - math.NT
+  - math.CA
+  - math.DS
   msc2020:
   - "11J72"
+  - "11A25"
+  - "11A07"
+  - "11B37"
   - "11B83"
+  - "28A80"
+  - "11K16"
 sources:
 - title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
   authors:
   - Will Cook
   type: original-proof
   relationship: other
-  note: >-
-    The selected weighted-support, displacement and divisor-cover theorems are proved in the Lean modules of this repository and explained in the two immutable paper sources below. The earlier reciprocal-summable assertion is credited to Erdős. No novelty priority or resolution of the unrestricted parent problem is asserted by this metadata.
+  note: "The compared theorems are independently restated Lean theorems proved in this repository and described in the public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos."
   license: Apache-2.0
   author_endorsement: participated
-- title: "Weighted Support Criteria for Reciprocal Mersenne Subseries"
+- title: "On arithmetical properties of Lambert series"
   authors:
-  - "Will Cook"
-  id: "https://github.com/wcook04/plectis-erdos/blob/147f3f1da400a84dcb3013ea6cef75dc8f382b09/paper/257/erdos-257-mersenne-support-subseries.pdf"
+  - "Paul Erdos"
   type: "paper"
   relationship: "background"
-  note: "Immutable short paper, especially res:weighted-support and the positive-cover and mixed-support extensions. Only the five declarations listed in this configuration are selected; the rest of the paper is not thereby registered."
-  license: "CC-BY-4.0"
-  author_endorsement: "participated"
-- title: "Reciprocal Mersenne Subseries — complete reasoning record"
+  note: "J. Indian Math. Soc. 12 (1948), 63-66. Source of the classical irrationality of the full support value at every integer base, which is the historical starting point for the problem. That classical result is the analytic input to the forward implication of the rational membership criterion compared here, since finitely many greedy omissions would write the full support value as a rational plus a finite rational Mersenne sum. No statement compared in this entry is Erdős's, and no priority over him is claimed."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Refinement of the Chowla-Erdős method and linear independence of certain Lambert series"
   authors:
-  - "Will Cook"
-  id: "https://github.com/wcook04/plectis-erdos/blob/147f3f1da400a84dcb3013ea6cef75dc8f382b09/paper/257/erdos257-mersenne-reasoning-surface.pdf"
+  - "Daniel Duverney"
+  - "Yohei Tachiya"
+  id: "https://doi.org/10.1515/forum-2018-0299"
   type: "paper"
   relationship: "background"
-  note: "Complete reasoning record and proof context for the selected weighted-support and cover results; supplementary geometry and membership results are outside this entry."
-  license: "CC-BY-4.0"
-  author_endorsement: "participated"
-- title: "On the irrationality of certain series"
+  note: "Forum Math. 31 (2019), no. 6, 1557-1566. Corollary 1.2 and Example 1.1 give irrationality and linear independence for the squarefree support at every base 2^j with j at least 1. That family is prior art and is credited to these authors; no theorem compared in this entry is derived from it."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "Quantitative correlations and some problems on prime factors of consecutive integers"
   authors:
-  - "Paul Erdős"
-  id: "https://users.renyi.hu/~p_erdos/1969-09.pdf"
+  - "Terence Tao"
+  - "Joni Teravainen"
+  id: "arXiv:2512.01739"
   type: "paper"
   relationship: "background"
-  note: "Math. Student 36 (1968), 222–226 (issued 1969), especially p. 222. Erdős stated the reciprocal-summable all-integer-base criterion after proving the coprime case and discussed possible weakenings. That prior statement is credited; the selected weighted and cover criteria are not presented as a new discovery of the reciprocal-summable case."
+  note: "Theorem 1.3 proves irrationality of the prime support value at base two, with the extension to other integer bases and to prime power supports stated as remarks. That case is prior art and is credited to these authors; no theorem compared in this entry uses their correlation input."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "On several irrationality problems for Ahmes series"
+  authors:
+  - "Vjekoslav Kovac"
+  - "Terence Tao"
+  id: "https://doi.org/10.1007/s10474-025-01528-0"
+  type: "paper"
+  relationship: "background"
+  note: "Acta Math. Hungar. 175 (2025), 572-608. Remark 4.1 records the strict tail inequality and the resulting Cantor structure of the fixed base achievement set, which is the classical context for the geometry compared here. The exact Lebesgue measure dichotomy and the rational fibre null theorem are not taken from this source."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "On the set of partial sums of an infinite series"
+  authors:
+  - "Soichi Kakeya"
+  id: "https://doi.org/10.11429/ptmps1907.7.14_250"
+  type: "paper"
+  relationship: "background"
+  note: "Tokyo Sugaku-Buturigakkwai Kizi Dai 2 Ki 7 (1914), no. 14, 250-251. Kakeya proves that the subsum set of an absolutely convergent series is perfect and states the interval filling criterion and the nowhere density assertion. Perfectness and nowhere density in AchievementSetGeometry are classical in this sense; the exact measure dichotomy is not taken from this source."
+  license: "unknown"
+  author_endorsement: "not-contacted"
+- title: "On an incomplete argument of Erdős on the irrationality of Lambert series"
+  authors:
+  - "J. Vandehey"
+  id: "arXiv:1206.0340"
+  type: "paper"
+  relationship: "background"
+  note: "Completes a different unprinted Erdős argument: irrationality of the divisor-function Lambert series at negative integer bases, with bounded nonzero integer weights. It does not treat subsums over a support, so it neither anticipates nor overlaps the reciprocal summable theorem compared here; it is cited as the nearest published completion of an Erdős gap in this circle."
   license: "unknown"
   author_endorsement: "not-contacted"
 - title: Erdős Problems catalogue
@@ -61,8 +100,7 @@ sources:
   id: https://www.erdosproblems.com
   type: web discussion
   relationship: background
-  note: >-
-    Problem 257 identifies the unrestricted infinite-support question. This entry proves sufficient weighted and cover conditions and does not answer that unrestricted question.
+  note: "Catalogue numbering and status of the parent problem."
   license: unknown
   author_endorsement: not-contacted
 - title: Mathlib
@@ -72,6 +110,11 @@ sources:
   relationship: background
   license: Apache-2.0
   author_endorsement: n/a
+related_formalizations:
+- id: "https://github.com/google-deepmind/formal-conjectures/blob/f776d2f2039351b00737ffcafb9d7d7666e1d9af/FormalConjectures/ErdosProblems/257.lean"
+  title: "FormalConjectures.ErdosProblems.257"
+  relationship: "independent"
+  note: "States the open parent problem (erdos_257, proof sorry), proves the Lambert identity tsum_top_eq, and states the Erdős 1948 full-support irrationality as the variant tsum_top with proof sorry. It is statement-level prior art; no theorem compared here is derived from it, and the theorem irrational_erdosBorwein_series elsewhere in this repository proves the statement that tsum_top leaves open."
 status:
   scope: "One Comparator configuration selecting the 5 theorems listed in PalomarCorpus/E257_01/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 52 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_52, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
   sorry_count: 0
@@ -129,5 +172,5 @@ review:
   status: self-assessed
   reviewers: []
   notes: >-
-    Release preparation inspected the five selected Challenge statements, their definitions, the corresponding Solution transports and their paper scope using OpenAI Codex. The mathematical Challenge, Solution and configuration bytes are unchanged from the successful repository Comparator replay at a2faa350b45ae08d0e70f5a6ec54943018f8c2b3. This metadata revision is not an official Palomar full-preflight result or an independent novelty assessment. Will Cook directed the research infrastructure and release selection; AI agents performed substantial research, formalization and drafting. No independent human referee report for this entry is recorded.
+    The statements from the hand-written families were checked declaration by declaration against the public problem notes, the reasoning records and the Lean sources in automated review passes run with Anthropic Claude and OpenAI Codex. Every generated restatement was bound to a paper statement and refereed in the eight-paper coverage ledger before its wrapper was generated, and its transport proof was elaborated before the statement was accepted. The author selected the statements and is responsible for the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
 acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

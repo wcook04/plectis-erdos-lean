@@ -10,7 +10,7 @@ import ErdosProblems.Erdos1049.PaperCompleteR21.GeometricUniversality
 import ErdosProblems.Erdos1049.PaperCompleteR21.RogersFactorisationAnalytic
 import ErdosProblems.Erdos1049.PaperCompleteR21.SharpFixedBase
 import ErdosProblems.Erdos1049.QProductBoundsR10
-import Solutions.PalomarCorpus.E1049_08.Statement
+import Solutions.PalomarCorpus.E1049_09.Statement
 
 open Filter
 open Finset
@@ -24,7 +24,7 @@ open scoped PowerSeries.WithPiTopology
 /- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
 
 namespace PalomarCorpus.E1049.PaperStructuresAB
-export PalomarCorpus.E1049_08.Shared (actualMoment actualMomentHankel actualMomentTerm leadC qPochhammerFinite qPochhammerInfinity)
+export PalomarCorpus.E1049_09.Shared (actualGeneratingFunction actualGeneratingTerm cK gramM qPochhammerFinite qPochhammerInfinity)
 
 theorem sharp_fixed_base {q : ℝ} (hq0 : 0 < q) (hq1 : q < 1) (γ : ℕ → ℝ)
     (hγ : ∀ w : ℝ, 0 ≤ w → w < 1 →

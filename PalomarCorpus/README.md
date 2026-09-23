@@ -12,13 +12,13 @@ The entries restate the theorems of the Lean development for each problem in the
 | [`E68_02`](E68_02/) | 9 | Erdős #68, record sections 3 to 5: rationality and the next integer above a scaled partial sum; a sufficient comparison between the tail and an integer gap; what can be achieved by cancelling finitely many weighted sums |
 | [`E68_03`](E68_03/) | 7 | Erdős #68, record section 5.1: all solutions and their remainders modulo integers (part 1 of 2) |
 | [`E68_04`](E68_04/) | 1 | Erdős #68, record section 5.1: all solutions and their remainders modulo integers (part 2 of 2) |
-| [`E68_05`](E68_05/) | 6 | Carry and divisor-channel criteria for the factorial-minus-one reciprocal series |
+| [`E68_05`](E68_05/) | 6 | Erdős #68, note sections 1 to A: the denominator exclusions; integer vectors for cancelling weighted sums; comparing the tail with the distance to an integer |
 | [`E68_06`](E68_06/) | 16 | Erdős #68, the adjacent unit carry window, channel radius and common denominator growth families |
 | [`E68_07`](E68_07/) | 5 | Erdős #68, the finite denominator, Kempner index and moment ideal families |
 | [`E68_08`](E68_08/) | 6 | Erdős #68, the moving factor scale split and multiplicative successor rigidity families |
 | [`E68_09`](E68_09/) | 12 | Erdős #68, the multiplicative successor rigidity, prime pole and prime unit translator families |
 | [`E68_10`](E68_10/) | 2 | Erdős #68, the strict successor carry family |
-| [`E243_01`](E243_01/) | 13 | Cubic-rate irrationality for reciprocal sums |
+| [`E243_01`](E243_01/) | 13 | Erdős #243, record section 2: irrationality at the cubic rate; reduction under the zero lower-density assumption; a square condition from three consecutive numerators |
 | [`E243_02`](E243_02/) | 15 | Erdős #243, record sections 4 to 7: integer numerators, denominators and errors; when a zero error forces the Sylvester recurrence; a criterion using new maxima of an LCM numerator |
 | [`E243_03`](E243_03/) | 15 | Erdős #243, record sections 7.1 to 7.2: how fast the running maximum must increase; bounds that allow for cancellation and earlier decreases |
 | [`E243_04`](E243_04/) | 8 | Erdős #243, record section 7.2: bounds that allow for cancellation and earlier decreases |
@@ -57,12 +57,12 @@ The entries restate the theorems of the Lean development for each problem in the
 | [`E249_26`](E249_26/) | 10 | Erdős #249, record sections 9 to 10: index of unproved conditions; counterexamples to proposed deductions |
 | [`E249_27`](E249_27/) | 20 | Erdős #249, record sections 12.1 to 12.2: the doubling identity; the full-block exponential-sum estimate |
 | [`E249_28`](E249_28/) | 3 | Erdős #249, record sections 12.3 to 12.5: the four-term decomposition; depth equal to a period multiple |
-| [`E249_29`](E249_29/) | 5 | All-base bases and integral relations for the totient kernel |
+| [`E249_29`](E249_29/) | 5 | Erdős #249, note section 1; the totient kernel basis family: a basis and all its relations; proof of the basis theorem |
 | [`E249_30`](E249_30/) | 9 | Erdős #249, note sections 1 to 4: a basis and all its relations; bounded residues and rationality; tail differences and finite residue tests |
 | [`E249_31`](E249_31/) | 9 | Erdős #249, the actual lcm orbit, binary cyclotomic anchors and canonical Mersenne frontier families |
 | [`E249_32`](E249_32/) | 19 | Erdős #249, the carry rank frontier, dyadic totient kernel and Farey window exclusion families |
 | [`E249_33`](E249_33/) | 27 | Erdős #249, the prefix two adic exclusion, rank one sharp floor and rational observable classification families |
-| [`E251_01`](E251_01/) | 11 | Uniform sparse rationalisation of dyadic series |
+| [`E251_01`](E251_01/) | 11 | Erdős #251, record sections 2 to 5: sparse congruence-preserving perturbations; summation by parts, with the endpoint retained; the tail recurrence and the exact criteria |
 | [`E251_02`](E251_02/) | 12 | Erdős #251, record sections 5 to 8: the tail recurrence and the exact criteria; a local certificate, and one actual pair; two lower bounds on a possible rational denominator |
 | [`E251_03`](E251_03/) | 10 | Erdős #251, record sections 8.2 to 8.6: algebraic nonconcentration survives the rationalising perturbation; the two-window event has density zero; recurring gap values differing by two do not suffice |
 | [`E251_04`](E251_04/) | 6 | Erdős #251, record sections D to E: further criteria, examples and computational details; arithmetic-progression reformulations of integrality |
@@ -70,7 +70,7 @@ The entries restate the theorems of the Lean development for each problem in the
 | [`E251_06`](E251_06/) | 20 | Erdős #251, the actual prime gap tail, affine circularity and all residue logarithmic countermodel families |
 | [`E251_07`](E251_07/) | 13 | Erdős #251, the lcm diagonal criterion, polynomial shift countermodel and prime gap identity families |
 | [`E251_08`](E251_08/) | 5 | Erdős #251, the shifted four prime counting and sparse rationalisation families |
-| [`E257_01`](E257_01/) | 5 | Weighted support criteria for reciprocal Mersenne subseries |
+| [`E257_01`](E257_01/) | 5 | Erdős #257, record sections 1.2 to 1.5: a weighted condition on the support; positive divisor majorants; combining the two support criteria |
 | [`E257_02`](E257_02/) | 9 | Erdős #257, record sections 1 to 2: support criteria and their proofs; limitations of the recorded methods |
 | [`E257_03`](E257_03/) | 7 | Erdős #257, record section 2.3: equivalent formulations of half-membership |
 | [`E257_04`](E257_04/) | 16 | Erdős #257, record sections 2.4 to 2.5: the size of the required error bounds; what finite certificates decide |
@@ -123,7 +123,7 @@ The entries restate the theorems of the Lean development for each problem in the
 | [`E257_51`](E257_51/) | 14 | Erdős #257, the rational membership, rational tail rigidity and reciprocal support families |
 | [`E257_52`](E257_52/) | 5 | Erdős #257, the twenty one fatal branch family |
 | [`E269_01`](E269_01/) | 13 | Erdős #269, record sections 1 to 2: the problem, and what is settled; the finite geometry of the running value |
-| [`E269_02`](E269_02/) | 13 | Infinite rank of the three-prime running-LCM kernel |
+| [`E269_02`](E269_02/) | 13 | Erdős #269, record sections 4 to 5: why the third prime prevents finite separation; the recurrence for tails between powers of two |
 | [`E269_03`](E269_03/) | 6 | Erdős #269, record sections 5 to 6: the recurrence for tails between powers of two; bounding the tails and clearing a rational denominator |
 | [`E269_04`](E269_04/) | 6 | Erdős #269, record section 6: bounding the tails and clearing a rational denominator |
 | [`E269_05`](E269_05/) | 7 | Erdős #269, record sections 6 to 7: bounding the tails and clearing a rational denominator; a residue criterion and the bounds it allows |
@@ -141,15 +141,16 @@ The entries restate the theorems of the Lean development for each problem in the
 | [`E1041_06`](E1041_06/) | 18 | Erdős #1041, note sections 13 to 16: two chord constructions for binomials; a Poisson identity for critical-value means; a nonlinear integral for component mergers |
 | [`E1041_07`](E1041_07/) | 21 | Erdős #1041, the critical geometry, cyclic trinomial fiber and degree seven counterexample families |
 | [`E1041_08`](E1041_08/) | 9 | Erdős #1041, the solved families and tetranomial spokes families |
-| [`E1049_01`](E1049_01/) | 25 | An explicit rational-base irrationality region for Zudilin's Lambert series |
+| [`E1049_01`](E1049_01/) | 25 | Erdős #1049, record section 2: the region b^ mu < a and the base 31/4; positive linear forms with integer coefficients |
 | [`E1049_02`](E1049_02/) | 4 | Erdős #1049, record section 2.6: proofs, earlier work and limitations |
 | [`E1049_03`](E1049_03/) | 18 | Erdős #1049, record sections 3 to 5; the adelic height bridge family: power comparisons and Hankel determinants; congruences after evaluation at 3/2 |
 | [`E1049_04`](E1049_04/) | 10 | Erdős #1049, record sections 3 to 4: power comparisons and Hankel determinants; rescaling integer rows |
 | [`E1049_05`](E1049_05/) | 15 | Erdős #1049, record sections 5 to 9: congruences after evaluation at 3/2; failure of the stated clearing conditions at 3/2; successive scaled remainders |
 | [`E1049_06`](E1049_06/) | 2 | Erdős #1049, record section 10.3: a restriction on Mahler functional equations |
 | [`E1049_07`](E1049_07/) | 10 | Erdős #1049, note sections 2 to 4: a region of rational bases at which F is irrational; supplementary arithmetic at 3/2 |
-| [`E1049_08`](E1049_08/) | 12 | Erdős #1049, the Archimedean cap, Bezout Plucker jets and Hermite Pade no go families |
-| [`E1049_09`](E1049_09/) | 20 | Erdős #1049, the paper structures v, paper structures w and prime support selectors families |
+| [`E1049_08`](E1049_08/) | 11 | Erdős #1049, the Archimedean cap, Bezout Plucker jets and Hermite Pade no go families |
+| [`E1049_09`](E1049_09/) | 4 | Erdős #1049, the paper structures AA, paper structures AB and paper structures v families |
+| [`E1049_10`](E1049_10/) | 18 | Erdős #1049, the prime support selectors, published height regions and rational base barrier families |
 
 ## Theorems per problem
 
@@ -162,8 +163,8 @@ The entries restate the theorems of the Lean development for each problem in the
 | #257 | 52 | 651 |
 | #269 | 11 | 92 |
 | #1041 | 8 | 107 |
-| #1049 | 9 | 116 |
-| Total | 142 | 1888 |
+| #1049 | 10 | 117 |
+| Total | 143 | 1889 |
 
 ## Paper-linked required Lean claims
 

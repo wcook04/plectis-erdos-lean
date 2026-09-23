@@ -18,6 +18,7 @@ open scoped Classical
 /- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
 
 namespace PalomarCorpus.E1049.PaperStructuresW
+export PalomarCorpus.E1049_09.Shared (gramM qPochhammerInfinity)
 
 theorem geometric_universality {N : ℕ} {q : ℝ} (hq0 : 0 < q) (hq1 : q < 1)
     {a : ℕ → ℝ} (ha : ∀ k, 0 < a k) {C κ : ℝ}
