@@ -13,8 +13,10 @@ The first release selects the following configurations from the full checking
 corpus. Each configuration names a finite list of statements; it does not
 certify every claim in the linked paper. The first official full preflight, for **E257_01**, was
 [rejected before proof execution](docs/palomar-release-v1/preflight-35917059793.json):
-this corpus uses Lean 4.30.0 and the pinned current verifier requires at least
-4.35.0-rc2. A supported-toolchain candidate and new exact-input run are required. The remaining entries are disabled in the
+that candidate used Lean 4.30.0 and the pinned current verifier requires at least
+4.35.0-rc2. The [upgraded candidate](https://github.com/wcook04/plectis-erdos-lean/commit/216567506f823f1e47b209f9443ae8e5f0fdec8b)
+uses the matching Lean and Mathlib 4.35.0-rc2 release; its
+[mechanical preflight](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35918585547) reached Solution compilation and found two compatibility errors in the #257 dependency chain. Their repair is in progress; verification has not passed. The remaining entries are disabled in the
 [release selection](.github/palomar-release-selection-v1.json) while their
 scope and exact-input checks are prepared.
 
@@ -27,7 +29,7 @@ scope and exact-input checks are prepared.
 | [E269_02](PalomarCorpus/E269_02/formalization.yaml) | Uniform kernel rank and nonseparation | Modular-minor strengthenings are outside this entry; the parent irrationality question remains open. |
 | [E1049_01](PalomarCorpus/E1049_01/formalization.yaml) | An explicit rational-base irrationality region, including 31/4 and its positive powers | The region excludes 3/2; later sharp fixed-base and Hankel results are outside this entry. |
 | [E68_05](PalomarCorpus/E68_05/formalization.yaml) | Carry, divisor-channel and finite-moment criteria | Structural scope awaiting selection approval; the two large numerical denominator exclusions are not certified here. |
-| [E1041_01](PalomarCorpus/E1041_01/formalization.yaml) | Ani's degree-seven construction and the all-degree trinomial case | Held for the exact Hausdorff interface repair. The current configuration checks the older total-variation claim; it cannot yet certify the newer path-image statement. |
+| [E1041_01](PalomarCorpus/E1041_01/formalization.yaml) | Ani's degree-seven construction and the all-degree trinomial case | Seventeen statements now selected, including three exact Hausdorff endpoints; supported-toolchain elaboration and mechanical verification remain pending. Named-input low-critical-value wrappers retain their hypotheses. |
 
 The [paper-scope appendix](docs/palomar-release-v1/eight_paper_coverage_appendix.md) accounts for every labelled paper row and links to the machine-readable dispositions.
 
@@ -41,11 +43,12 @@ an independent human proof audit of every statement.
 ## Verification and registry status
 
 The [official full-preflight workflow](.github/workflows/palomar-official-full-preflight.yml)
-calls Palomar's complete reusable workflow at a pinned revision, in `full`
-mode, for one selected configuration and the exact candidate commit. Inspect
-its report for the mechanical, rendering and editorial outcomes. A local
-preflight does not create a Palomar submission or registration, and registration
-is not a peer-review or novelty verdict.
+calls Palomar's complete mechanical verifier at a pinned revision, in `full`
+mode, for one selected configuration and the exact candidate commit. Rendering
+and editorial review are later, separate registry stages; this report does not
+establish their outcomes. A caller-run preflight does not create a Palomar
+submission or registration, and registration is not a peer-review or novelty
+verdict.
 
 The [mechanical replay workflow](.github/workflows/palomar-replay.yml) is a
 separate regression check. Its successful runs do not establish that the
@@ -69,16 +72,16 @@ The Palomar entries are packed in the order the papers state their theorems; [`P
 | #251 | `E251_01` to `E251_08` | 87 |
 | #257 | `E257_01` to `E257_43` | 537 |
 | #269 | `E269_01` to `E269_11` | 92 |
-| #1041 | `E1041_01` to `E1041_08` | 105 |
+| #1041 | `E1041_01` to `E1041_08` | 108 |
 | #1049 | `E1049_01` to `E1049_08` | 110 |
-| Total | 132 entries | 1765 |
+| Total | 132 entries | 1768 |
 
 The problem-level entry `E257` of the previous layout was submitted to Palomar on 13 September 2026 at commit `52f29ad1` (submission `impkvgnxmpb7`). Its mechanical verification passed ([run 34784800531](https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/34784800531)); Palomar's render stage then failed on a known renderer defect ([PalomarSubmission #134](https://github.com/PalomarRegistry/PalomarSubmission/issues/134)), and the submission settled as `verification-error` on 14 September 2026. No entry of the present layout has been submitted.
 <!-- palomar-entry-table:end -->
 
 The generated inventory above records the earlier E257 submission separately.
 The renderer fix merged upstream after that attempt; the selected release
-still requires its own exact-input full reports. The 1,765 configured names
+still requires its own exact-input full reports. The 1,768 configured names (1,765 in the baseline plus three Hausdorff endpoints)
 are a different count from labelled rows in the papers.
 
 ## Source-family catalogue

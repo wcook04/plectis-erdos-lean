@@ -6,6 +6,9 @@ import Solutions.PalomarCorpus.E1041_01
 #print axioms PalomarCorpus.E1041.PaperStatementsAC.circle_slice_packing
 #print axioms PalomarCorpus.E1041.PaperStatementsAC.circle_slice_packing_abstract
 #print axioms PalomarCorpus.E1041.PaperStatementsAC.dual_arity_floor_abstract
+#print axioms PalomarCorpus.E1041.PaperStatementsAE.erdos1041_counterexample_hausdorff
+#print axioms PalomarCorpus.E1041.PaperStatementsAE.erdos1041_hausdorff_answer_false
+#print axioms PalomarCorpus.E1041.PaperStatementsAE.erdos1041_hausdorff_negation
 #print axioms PalomarCorpus.E1041.PaperStatementsC.cosh_dist_polar
 #print axioms PalomarCorpus.E1041.PaperStatementsC.dist_polar_I
 #print axioms PalomarCorpus.E1041.PaperStatementsC.exists_polar

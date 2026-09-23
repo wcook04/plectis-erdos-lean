@@ -1,5 +1,7 @@
 # Appendix: what the eight selected configurations cover
 
+The baseline audit below predates the current #1041 extension. The generated `E1041_01` now adds three exact Hausdorff endpoints, retaining all fourteen earlier declarations. This changes the configured-name inventory from 1,765 to 1,768 and the selected slate from 92 to 95 names. Those additions still require supported-toolchain elaboration and mechanical verification; the historical row dispositions below are preserved as dated evidence.
+
 This appendix reads `docs/paper_lean_coverage.json` at paper commit `147f3f1da400a84dcb3013ea6cef75dc8f382b09` against the exact eight configurations named in `paper_row_dispositions.json` at Comparator corpus commit `a2faa350b45ae08d0e70f5a6ec54943018f8c2b3`. It is a source-to-paper editorial map. It is not an exact-input official Palomar full preflight, registry review, or registration certificate. Historical `compared` fields in the ledger belong to earlier corpus comparisons and do not change that boundary.
 
 | Problem | Selected configuration | Short / long paper rows | Mapped selected claims | Critical outside boundary |
