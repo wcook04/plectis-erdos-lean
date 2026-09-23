@@ -21,7 +21,17 @@ theorem weighted_displacement_cofinal_close_return
     (hE : FinitePrimeWeighted b E) (hInf : E.Infinite)
     (ε : ℝ) (hε : 0 < ε) (N : ℕ) :
     ∃ m : ℕ, N ≤ m ∧ 0 < displacement b E m ∧ displacement b E m < ε := by
-  simpa only [erdosSupportSeries, primeSetPart, primeWeightedTerm, FinitePrimeWeighted, shiftedRadixAtom, shiftedRadixSupportAtom, displacement, Erdos257PeriodNoncollapse.erdosSupportSeries, Erdos257PeriodNoncollapse.shiftedRadixAtom, Erdos257PeriodNoncollapse.shiftedRadixSupportAtom, ErdosProblems.Erdos257.PaperCompleteR7.primeSetPart, ErdosProblems.Erdos257.PaperCompleteR7.primeWeightedTerm, ErdosProblems.Erdos257.PaperCompleteR7.FinitePrimeWeighted, ErdosProblems.Erdos257.PaperCompleteR7.displacement] using
+  have hAtom (m : ℕ) :
+      Erdos249257.shiftedRadixAtom b m = shiftedRadixAtom b m := by
+    rfl
+  simpa only [erdosSupportSeries, primeSetPart, primeWeightedTerm,
+    FinitePrimeWeighted, shiftedRadixSupportAtom, displacement,
+    Erdos257PeriodNoncollapse.erdosSupportSeries,
+    Erdos257PeriodNoncollapse.shiftedRadixSupportAtom,
+    ErdosProblems.Erdos257.PaperCompleteR7.primeSetPart,
+    ErdosProblems.Erdos257.PaperCompleteR7.primeWeightedTerm,
+    ErdosProblems.Erdos257.PaperCompleteR7.FinitePrimeWeighted,
+    ErdosProblems.Erdos257.PaperCompleteR7.displacement, hAtom] using
     ErdosProblems.Erdos257.PaperCompleteR8.weighted_displacement_cofinal_close_return b E hb hE0 hE hInf ε hε N
 
 end PalomarCorpus.E257.WeightedCloseReturn
