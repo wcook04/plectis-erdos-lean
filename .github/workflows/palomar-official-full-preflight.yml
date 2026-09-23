@@ -1,12 +1,16 @@
-# One selected candidate per run. This calls Palomar's complete reusable verifier;
-# the report is predictive and carries no registry submission or registration state.
+# One selected candidate per run. Branch pushes check E257_01; a tag under
+# palomar-preflight-v1/<entry>/<full-source-sha> checks one tag-enabled entry.
+# This calls Palomar's complete reusable verifier; the report is predictive
+# and carries no registry submission or registration state.
 name: Palomar official full preflight
 
 on:
   # A new workflow is runnable on this release branch before it reaches main.
-  # The selector names one enabled entry; its first value is E257_01.
+  # The selector names one automatic branch-push entry, E257_01. Tag pushes
+  # select one separately gated entry at the exact tagged source commit.
   push:
     branches: [codex/palomar-paper-release-v1]
+    tags: ['palomar-preflight-v1/**']
     paths:
       - .github/workflows/palomar-official-full-preflight.yml
       - .github/palomar-release-selection-v1.json
@@ -54,6 +58,7 @@ jobs:
         id: validate
         env:
           EVENT_NAME: ${{ github.event_name }}
+          EVENT_REF: ${{ github.ref }}
           EVENT_SHA: ${{ github.sha }}
           SOURCE_COMMIT_INPUT: ${{ inputs.source_commit }}
           ENTRY_INPUT: ${{ inputs.entry }}
@@ -78,7 +83,25 @@ jobs:
               raise SystemExit("source_commit must equal the checked-out workflow ref")
 
           selection = json.loads(Path(".github/palomar-release-selection-v1.json").read_text())
-          entry = selection.get("push_preflight_entry") if os.environ["EVENT_NAME"] == "push" else os.environ["ENTRY_INPUT"]
+          event_name = os.environ["EVENT_NAME"]
+          event_ref = os.environ["EVENT_REF"]
+          tag_push = event_name == "push" and event_ref.startswith("refs/tags/")
+          if tag_push:
+              tag = re.fullmatch(
+                  r"refs/tags/palomar-preflight-v1/(E[0-9]+_[0-9]{2})/([0-9a-f]{40})",
+                  event_ref,
+              )
+              if tag is None or tag.group(2) != source:
+                  raise SystemExit("tag must name one entry and the exact candidate full SHA")
+              entry = tag.group(1)
+          elif event_name == "push":
+              if event_ref != "refs/heads/codex/palomar-paper-release-v1":
+                  raise SystemExit("unexpected branch push ref")
+              entry = selection.get("push_preflight_entry")
+          elif event_name == "workflow_dispatch":
+              entry = os.environ["ENTRY_INPUT"]
+          else:
+              raise SystemExit("unsupported preflight trigger")
           expected_entries = (
               "E257_01", "E249_29", "E243_01", "E251_01", "E269_02",
               "E1049_01", "E68_05", "E1041_01",
@@ -101,7 +124,7 @@ jobs:
           if not isinstance(rows, list) or len(rows) != 8 or not all(isinstance(row, dict) for row in rows) or tuple(row.get("entry") for row in rows) != expected_entries:
               raise SystemExit("release selection must contain the exact eight-entry slate")
           for row in rows:
-              if set(row) != {"entry", "comparator_config_path", "metadata_path", "preflight_enabled"}:
+              if set(row) != {"entry", "comparator_config_path", "metadata_path", "preflight_enabled", "tag_preflight_enabled"}:
                   raise SystemExit(f"release entry has unexpected fields: {row['entry']}")
               name = row["entry"]
               if row.get("comparator_config_path") != f"PalomarCorpus/{name}/comparator.json":
@@ -114,11 +137,17 @@ jobs:
                       raise SystemExit(f"missing or symlinked {key}: {path}")
               if type(row.get("preflight_enabled")) is not bool:
                   raise SystemExit(f"preflight gate missing for {name}")
+              if type(row.get("tag_preflight_enabled")) is not bool:
+                  raise SystemExit(f"tag preflight gate missing for {name}")
           enabled = [row["entry"] for row in rows if row["preflight_enabled"]]
           if enabled != [selection.get("push_preflight_entry")]:
               raise SystemExit("exactly the selected push entry must be enabled")
           selected = next((row for row in rows if row["entry"] == entry), None)
-          if selected is None or not selected["preflight_enabled"]:
+          if selected is None:
+              raise SystemExit(f"unknown preflight entry: {entry}")
+          if tag_push and not selected["tag_preflight_enabled"]:
+              raise SystemExit(f"tag preflight is not enabled for {entry}")
+          if not tag_push and not selected["preflight_enabled"]:
               raise SystemExit(f"preflight is not enabled for {entry}")
           options = {
               "authorization_relationship": "I am a responsible author or maintainer",

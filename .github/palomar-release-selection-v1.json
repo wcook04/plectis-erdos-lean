@@ -16,49 +16,57 @@
       "entry": "E257_01",
       "comparator_config_path": "PalomarCorpus/E257_01/comparator.json",
       "metadata_path": "PalomarCorpus/E257_01/formalization.yaml",
-      "preflight_enabled": true
+      "preflight_enabled": true,
+      "tag_preflight_enabled": true
     },
     {
       "entry": "E249_29",
       "comparator_config_path": "PalomarCorpus/E249_29/comparator.json",
       "metadata_path": "PalomarCorpus/E249_29/formalization.yaml",
-      "preflight_enabled": false
+      "preflight_enabled": false,
+      "tag_preflight_enabled": true
     },
     {
       "entry": "E243_01",
       "comparator_config_path": "PalomarCorpus/E243_01/comparator.json",
       "metadata_path": "PalomarCorpus/E243_01/formalization.yaml",
-      "preflight_enabled": false
+      "preflight_enabled": false,
+      "tag_preflight_enabled": true
     },
     {
       "entry": "E251_01",
       "comparator_config_path": "PalomarCorpus/E251_01/comparator.json",
       "metadata_path": "PalomarCorpus/E251_01/formalization.yaml",
-      "preflight_enabled": false
+      "preflight_enabled": false,
+      "tag_preflight_enabled": true
     },
     {
       "entry": "E269_02",
       "comparator_config_path": "PalomarCorpus/E269_02/comparator.json",
       "metadata_path": "PalomarCorpus/E269_02/formalization.yaml",
-      "preflight_enabled": false
+      "preflight_enabled": false,
+      "tag_preflight_enabled": true
     },
     {
       "entry": "E1049_01",
       "comparator_config_path": "PalomarCorpus/E1049_01/comparator.json",
       "metadata_path": "PalomarCorpus/E1049_01/formalization.yaml",
-      "preflight_enabled": false
+      "preflight_enabled": false,
+      "tag_preflight_enabled": true
     },
     {
       "entry": "E68_05",
       "comparator_config_path": "PalomarCorpus/E68_05/comparator.json",
       "metadata_path": "PalomarCorpus/E68_05/formalization.yaml",
-      "preflight_enabled": false
+      "preflight_enabled": false,
+      "tag_preflight_enabled": false
     },
     {
       "entry": "E1041_01",
       "comparator_config_path": "PalomarCorpus/E1041_01/comparator.json",
       "metadata_path": "PalomarCorpus/E1041_01/formalization.yaml",
-      "preflight_enabled": false
+      "preflight_enabled": false,
+      "tag_preflight_enabled": true
     }
   ]
 }
