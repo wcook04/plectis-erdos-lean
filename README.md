@@ -27,6 +27,8 @@ scope and exact-input checks are prepared.
 | [E68_05](PalomarCorpus/E68_05/formalization.yaml) | Carry, divisor-channel and finite-moment criteria | Structural scope awaiting selection approval; the two large numerical denominator exclusions are not certified here. |
 | [E1041_01](PalomarCorpus/E1041_01/formalization.yaml) | Ani's degree-seven construction and the all-degree trinomial case | Held for the exact Hausdorff interface repair. The current configuration checks the older total-variation claim; it cannot yet certify the newer path-image statement. |
 
+The [paper-scope appendix](docs/palomar-release-v1/eight_paper_coverage_appendix.md) accounts for every labelled paper row and links to the machine-readable dispositions.
+
 The metadata records source credit and limitations. In particular, ani owns
 the #1041 counterexample construction; Erdős's original series results,
 Martin's affine-independence theorem, Coons's non-regularity result and
