@@ -12,8 +12,6 @@ universe u
 
 /- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
 
-universe u
-
 namespace PalomarCorpus.E1049.PaperStatementsT
 
 theorem plucker_paper_statement :
