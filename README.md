@@ -4,8 +4,9 @@
 
 This repository contains Lean proofs and explicit theorem interfaces associated
 with eight Erdős problems. A reader can inspect each selected statement in its
-`Challenge.lean`, follow the corresponding proof through `Solution.lean`, and
-compare it with the paper cited in `formalization.yaml`.
+`Challenge.lean`, follow the corresponding declaration through the entry’s
+`Solution.lean` and its imported proof modules, and compare it with the paper
+cited in `formalization.yaml`.
 
 ## Selected Palomar release
 
@@ -16,7 +17,7 @@ certify every claim in the linked paper. The first official full preflight, for 
 that candidate used Lean 4.30.0 and the pinned current verifier requires at least
 4.35.0-rc2. The [upgraded candidate](https://github.com/wcook04/plectis-erdos-lean/commit/216567506f823f1e47b209f9443ae8e5f0fdec8b)
 uses the matching Lean and Mathlib 4.35.0-rc2 release; its
-[first supported-toolchain preflight](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35918585547) reached Solution compilation and found two compatibility errors in the #257 dependency chain. After those repairs, the [next report](docs/palomar-release-v1/preflight-35919764874.json) confirmed those modules compile and found three further compatibility failures. The current candidate repairs the reported integer-division, matrix-determinant and antidiagonal API uses without changing theorem statements; official elaboration remains pending. The remaining entries are disabled in the
+[first supported-toolchain preflight](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35918585547) reached Solution compilation and found two compatibility errors in the #257 dependency chain. After those repairs, the [next report](docs/palomar-release-v1/preflight-35919764874.json) confirmed those modules compile and found three further compatibility failures. Those fixes compiled in the [following exact report](docs/palomar-release-v1/preflight-35921237794.json), which then found a divisibility-instance mismatch in the shared `CertificateKernel` proof module. This is a failed mechanical verification; a statement-preserving repair is in progress. The remaining entries are disabled in the
 [release selection](.github/palomar-release-selection-v1.json) while their
 scope and exact-input checks are prepared.
 
@@ -38,7 +39,11 @@ the #1041 counterexample construction; Erdős's original series results,
 Martin's affine-independence theorem, Coons's non-regularity result and
 Zudilin's architecture retain their attribution in the relevant entries.
 Will directs the AI-assisted research and formalisation. This does not imply
-an independent human proof audit of every statement.
+an independent human proof audit of every statement. For #1041,
+[Formal Conjectures PR #6505](https://github.com/google-deepmind/formal-conjectures/pull/6505)
+merged the exact `answer(False)` statement and links the external formal proof.
+Ani supplied the degree-seven counterexample; the upstream statement and link
+do not independently settle its correspondence with the historical wording.
 
 ## Verification and registry status
 
