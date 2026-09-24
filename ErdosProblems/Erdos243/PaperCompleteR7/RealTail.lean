@@ -26,7 +26,7 @@ noncomputable def realTail (t : ℕ → ℝ) (n : ℕ) : ℝ :=
 theorem realTail_step (t : ℕ → ℝ) (ht : Summable t) (n : ℕ) :
     realTail t n = t n + realTail t (n + 1) := by
   have hs : Summable (fun k : ℕ ↦ t (k + n)) := (summable_nat_add_iff n).mpr ht
-  simpa only [realTail, Nat.zero_add, Nat.add_assoc, Nat.add_left_comm,
+  simpa only [realTail, Nat.zero_add, Nat.add_zero, Nat.add_assoc, Nat.add_left_comm,
     Nat.add_comm] using hs.tsum_eq_zero_add
 
 theorem realTail_nonneg (t : ℕ → ℝ) (hpos : ∀ n, 0 ≤ t n) (n : ℕ) :
@@ -183,7 +183,13 @@ theorem scaled_reciprocal_tail_ratio_tendsto_one
   have hlim' : Tendsto (fun n ↦
       ((a n : ℝ) ^ 2 / (a (n + 1) : ℝ)) * (realTail t (n + 1) / t (n + 1)) /
         (realTail t n / t n)) atTop (nhds 1) := by
-    simpa only [one_mul, div_one, Function.comp_apply] using hlim
+    have hlim0 : Tendsto (fun n ↦
+        ((a n : ℝ) ^ 2 / (a (n + 1) : ℝ)) * (realTail t (n + 1) / t (n + 1)) /
+          (realTail t n / t n)) atTop (nhds (1 * 1 / 1)) := by
+      apply hlim.congr'
+      exact Filter.Eventually.of_forall fun n ↦ by
+        simp only [Pi.div_apply, Function.comp_apply]
+    simpa only [one_mul, div_one] using hlim0
   apply hlim'.congr'
   exact Filter.Eventually.of_forall fun n ↦ by
     have h0 : (a n : ℝ) ≠ 0 := by exact_mod_cast (hpos n).ne'
