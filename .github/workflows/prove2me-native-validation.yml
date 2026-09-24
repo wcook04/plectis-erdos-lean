@@ -22,7 +22,7 @@ jobs:
     timeout-minutes: 355
     env:
       LEAN_NUM_THREADS: '1'
-      P2M_BUNDLE_SHA256: 'b6f3d1bf632dcb8caa771ac7b1d8195ffc6af1b4d4ab2420c7600e84ed1a091e'
+      P2M_BUNDLE_SHA256: '1ccb357b9e474bb5b5bb869157f8567943710ac670883dd31abdac67e86c024c'
       P2M_SOURCE_COMMIT: '4fe59e0191169606942baae0949365070b7f419c'
       P2M_ROOT: 'ErdosProblems.Erdos243.PaperCompleteR21.SquareSpecialisationUnconditional'
     steps:
