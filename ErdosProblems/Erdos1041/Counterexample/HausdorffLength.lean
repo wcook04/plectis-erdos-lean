@@ -66,7 +66,7 @@ theorem bottleneck_preconnected_not_both_roots (p : Polynomial ℂ) (cc : ℂ)
     (hb₁ : b₁ ∈ S) (hb₂ : b₂ ∈ S) : False := by
   letI : SimplyConnectedSpace (bottleneckSlitBase (p.eval cc)) :=
     bottleneckSlitBase_simplyConnected (p.eval cc) hv
-  letI : LocPathConnectedSpace (bottleneckSlitBase (p.eval cc)) :=
+  letI : LocallyPathConnectedSpace (bottleneckSlitBase (p.eval cc)) :=
     bottleneckSlitBase_locPathConnected (p.eval cc) hv
   letI : PreconnectedSpace S := Subtype.preconnectedSpace hS
   let g : S → bottleneckSlitDomain p cc := fun x => ⟨x.1, hSD x.2⟩
