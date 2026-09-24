@@ -3,10 +3,10 @@
 name: Prove2Me Pinned Extraction
 
 # A new workflow cannot receive workflow_dispatch until it exists on main.
-# The dedicated-branch push reads the reviewed request.json (initially #257 full extraction).
+# The dedicated-branch push reads the reviewed request.json (#243 full extraction).
 on:
   push:
-    branches: [codex/prove2me-remote-extraction-20260924]
+    branches: [codex/prove2me-remote-extraction-243-20260924]
     paths:
       - .github/workflows/prove2me-pinned-extraction.yml
       - .github/prove2me-extraction/**
