@@ -97,10 +97,10 @@ status:
   proof_corpus_sorry_count: 0
   trusted_challenge_sorry_count: 17
   sorry_boundary: The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E1041_01/Challenge.lean,
-    and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution
-    bytes has been recorded.
-  axiom_audit_status: The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit
-    of this entry has been recorded.
+    and the Solution modules contain no sorry. Comparator and kernel outcomes are commit-specific and
+    are recorded separately from this source metadata.
+  axiom_audit_status: The permitted axioms are propext, Quot.sound and Classical.choice. Axiom-audit outcomes
+    are commit-specific and belong in separate receipts; this source field is not an audit receipt.
   permitted_axiom_budget:
   - propext
   - Quot.sound
@@ -222,7 +222,7 @@ review:
   status: self-assessed
   reviewers: []
   notes: The seventeen-name generated interface has been inspected and the owner regeneration check passes.
-    Elaboration and complete mechanical preflight at the supported Lean4.35.0-rc2 candidate are pending.
+    Exact-commit elaboration and complete mechanical preflight outcomes are recorded in separate reports.
     The older total-variation theorem is not used as a substitute for the three new Hausdorff endpoints.
     Named-input low-critical-value wrappers remain conditional. No independent human proof audit, registry
     editorial approval or registration is asserted.

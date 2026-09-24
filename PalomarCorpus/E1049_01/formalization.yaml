@@ -98,10 +98,10 @@ status:
   proof_corpus_sorry_count: 0
   trusted_challenge_sorry_count: 25
   sorry_boundary: The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E1049_01/Challenge.lean,
-    and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution
-    bytes has been recorded.
-  axiom_audit_status: The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit
-    of this entry has been recorded.
+    and the Solution modules contain no sorry. Comparator and kernel outcomes are commit-specific and
+    are recorded separately from this source metadata.
+  axiom_audit_status: The permitted axioms are propext, Quot.sound and Classical.choice. Axiom-audit outcomes
+    are commit-specific and belong in separate receipts; this source field is not an audit receipt.
   permitted_axiom_budget:
   - propext
   - Quot.sound
@@ -235,7 +235,7 @@ review:
   notes: Lead with rational_base_threshold and rational_base_threshold_log, not printed decimal enclosures.
     Preserve a > b >= 1, coprimality as stated, and the strict b^μ < a or logarithmic threshold. The source
     comments say coprimality matches the paper but is unused by the proof. Credit Zudilin's architecture
-    and prior rational-base literature without a novelty claim for that architecture. No official full
-    preflight or independent editorial review is asserted.
+    and prior rational-base literature without a novelty claim for that architecture. Exact-commit mechanical
+    outcomes are recorded in separate reports; no independent editorial review or registration is asserted.
 acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.
 related_formalizations: []
