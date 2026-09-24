@@ -62,12 +62,15 @@ jobs:
         shell: bash
         run: |
           mkdir -p output
+          pinned_lean="$(cd cache && elan which lean)"
+          test -f "$pinned_lean"
+          test ! -L "$pinned_lean"
           python3 control/.github/prove2me-native-validation/transport.py run-pending \
             --bundle "$GITHUB_WORKSPACE/control/.github/prove2me-native-validation/input-243.zip" \
             --bundle-sha256 "$P2M_BUNDLE_SHA256" \
             --source-checkout "$GITHUB_WORKSPACE/source" \
             --cache-checkout "$GITHUB_WORKSPACE/cache" \
-            --lean-binary "$(elan which lean)" \
+            --lean-binary "$pinned_lean" \
             --out "$GITHUB_WORKSPACE/output/validation" \
             --max-load 10 --timeout-seconds 1800 \
             2>&1 | tee output/validation-console.log
