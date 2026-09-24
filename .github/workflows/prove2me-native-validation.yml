@@ -22,7 +22,7 @@ jobs:
     timeout-minutes: 355
     env:
       LEAN_NUM_THREADS: '1'
-      P2M_BUNDLE_SHA256: '92bd30038b5ba681a4c1044cef8d981d2b29c1ccdfb492cc9fb50df3cfc1a2ef'
+      P2M_BUNDLE_SHA256: '460879e58f53a76ded12103509706f68ca3cc82a3ed0e1af943106673e304181'
       P2M_SOURCE_COMMIT: 'c93c2e4dd86a2e317e0cb650ea244fee1afd59c2'
       P2M_ROOT_1: 'ErdosProblems.Erdos257.PaperCompleteR8.AnalyticSeparationReturn'
       P2M_ROOT_2: 'ErdosProblems.Erdos257.PaperCompleteR8.WeightedHereditaryClaim'
