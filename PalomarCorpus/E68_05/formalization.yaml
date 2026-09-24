@@ -1,11 +1,13 @@
 version: v0.4
 project:
-  name: Carry and divisor-channel criteria for the factorial-minus-one reciprocal series
-  description: For the reciprocal series with denominators n! - 1, the selected Lean theorems give an
-    exact carry characterization of rationality, divisor-channel coordinates, and a finite gcd moment
-    certificate. Companion-orbit and complementary tail criteria are included with their stated hypotheses.
-    These structural results do not certify the paper's large computed denominator exclusions or resolve
-    the irrationality question.
+  name: Finite divisor-channel gcd and carry criteria for the factorial-minus-one series
+  description: For the reciprocal series with denominators n! - 1, the selected Lean theorems give integral
+    divisor-channel coordinates and a finite tail-gcd certificate. For D at least 2 and a prime p with
+    D/2 < p <= D, the certificate computes the gcd of all scalar channel coefficients beyond D from the
+    finite interval ending at H = D(2p-1) < 2D^2. The entry also gives exact carry and companion-orbit
+    rationality criteria and a sufficient complementary-tail condition with its stated cofinal hypothesis.
+    These six structural statements do not select the separate three-halves LCM-growth theorem, certify
+    the paper's large computed denominator exclusions, or resolve the irrationality question.
   authors:
   - Will Cook
   license: Apache-2.0
@@ -23,8 +25,9 @@ sources:
 - title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
   authors:
   - Will Cook
-  type: original-proof
-  relationship: other
+  id: https://github.com/wcook04/plectis-erdos
+  type: other
+  relationship: background
   note: Will Cook directed AI-assisted research and formalization. Sources and exact statement boundaries
     are listed here; no independent human proof audit or priority adjudication is asserted.
   license: Apache-2.0
@@ -34,9 +37,10 @@ sources:
   - Will Cook
   id: https://github.com/wcook04/plectis-erdos/blob/147f3f1da400a84dcb3013ea6cef75dc8f382b09/paper/68/erdos-68-factorial-denominator-irrationality.pdf
   type: paper
-  relationship: background
-  note: paper describing selected structural theorems and separate computations. Only the statements named
-    by this entry are selected.
+  relationship: formalizes
+  note: The Lean entry formalizes the paper's selected structural carry, divisor-channel, finite-gcd,
+    and conditional-tail statements. The paper's separate large numerical denominator exclusions are outside
+    this Comparator configuration.
   license: unknown
   author_endorsement: participated
 - title: Complete reasoning record for Erdős problem 68
@@ -44,8 +48,9 @@ sources:
   - Will Cook
   id: https://github.com/wcook04/plectis-erdos/blob/147f3f1da400a84dcb3013ea6cef75dc8f382b09/paper/68/erdos68-factorial-reasoning-surface.pdf
   type: paper
-  relationship: background
-  note: proof and computation record. Only the statements named by this entry are selected.
+  relationship: formalizes
+  note: Detailed proof and computation record for the selected structural statements; other computations
+    and claims are outside this configuration.
   license: unknown
   author_endorsement: participated
 - title: Erdős Problems catalogue
@@ -75,10 +80,10 @@ status:
   proof_corpus_sorry_count: 0
   trusted_challenge_sorry_count: 6
   sorry_boundary: The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E68_05/Challenge.lean,
-    and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution
-    bytes has been recorded.
-  axiom_audit_status: The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit
-    of this entry has been recorded.
+    and the Solution modules contain no sorry. Comparator and kernel outcomes are commit-specific and
+    are recorded separately from this source metadata.
+  axiom_audit_status: The permitted axioms are propext, Quot.sound and Classical.choice. Axiom-audit outcomes
+    are commit-specific and belong in separate receipts; this source field is not an audit receipt.
   permitted_axiom_budget:
   - propext
   - Quot.sound
@@ -133,10 +138,9 @@ automation:
 review:
   status: self-assessed
   reviewers: []
-  notes: Review the six selected theorem statements and their Solution axioms. The paper reports a full
-    GMP carry census through m = 300000 and a continued-fraction enclosure, but says the original full
-    executable and payload were not supplied or authenticated in that prose revision. The general Lean
-    carry and moment theorems are not certificates of those particular computed values. No official full
-    preflight or independent editorial review is asserted.
+  notes: The six selected statements concern the structural divisor-channel and carry results only. The
+    paper's large numerical denominator exclusions and the separate three-halves LCM-growth theorem are
+    outside this Comparator configuration. Exact-commit mechanical outcomes belong in separate reports;
+    no independent editorial review or registration is asserted.
 acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.
 related_formalizations: []
