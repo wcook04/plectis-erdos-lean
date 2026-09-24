@@ -225,8 +225,7 @@ theorem summable_primeDyadicTerm_of_polynomial_growth
         (fun n : ℕ =>
           (((1 + n : ℕ) : ℝ) ^ k) *
             ((1 / 2 : ℝ) ^ (1 + n))) := by
-    simpa only [Function.comp_apply] using
-      hpoly.comp_injective (add_right_injective 1)
+    simpa only [Nat.add_comm] using (summable_nat_add_iff 1).mpr hpoly
   have hmajor :
       Summable
         (fun n : ℕ =>
@@ -386,8 +385,7 @@ theorem summable_primeGapDyadicTerm_of_summable_primeDyadicTerm
     (hprime : Summable primeDyadicTerm) :
     Summable primeGapDyadicTerm := by
   have hshift : Summable (fun n => primeDyadicTerm (n + 1)) := by
-    simpa [Nat.add_comm] using
-      hprime.comp_injective (add_left_injective 1)
+    exact (summable_nat_add_iff 1).mpr hprime
   exact ((hshift.mul_left 2).sub hprime).congr fun n =>
     (primeGapDyadicTerm_eq n).symm
 
@@ -406,8 +404,7 @@ theorem tsum_primeDyadicTerm_eq_two_add_primeGap
     (∑' n : ℕ, primeDyadicTerm n) =
       2 + ∑' n : ℕ, primeGapDyadicTerm n := by
   have hshift : Summable (fun n => primeDyadicTerm (n + 1)) := by
-    simpa [Nat.add_comm] using
-      hprime.comp_injective (add_left_injective 1)
+    exact (summable_nat_add_iff 1).mpr hprime
   have hsplit := hprime.sum_add_tsum_nat_add 1
   have hshiftSum :
       (∑' n : ℕ, primeDyadicTerm (n + 1)) =
