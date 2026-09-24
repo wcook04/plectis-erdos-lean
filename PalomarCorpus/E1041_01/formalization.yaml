@@ -27,21 +27,24 @@ sources:
 - title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
   authors:
   - Will Cook
-  type: original-proof
-  relationship: other
-  note: The exact Hausdorff proof source is copied byte-for-byte from public paper commit147f3f1da400a84dcb3013ea6cef75dc8f382b09.
-    The new interface adds the preconnected-set endpoint and two exact path-image formulations while retaining
-    the fourteen earlier declarations.
+  id: https://github.com/wcook04/plectis-erdos
+  type: other
+  relationship: background
+  note: The Hausdorff Lean proof source is copied byte-for-byte from the Lean files at pinned public research-repository
+    commit 147f3f1da400a84dcb3013ea6cef75dc8f382b09. This interface adds preconnected-set and exact path-image
+    endpoints. It adapts ani's one-polynomial construction; no priority over that construction is claimed.
   license: Apache-2.0
   author_endorsement: participated
 - title: Erdős problem 1041 forum post by ani
   authors:
   - ani
   id: https://www.erdosproblems.com/forum/thread/1041#post-8861
-  type: other
-  relationship: background
-  note: ani supplied the original counterexample construction; Will Cook directed AI-assisted formalization.
-    The source is cited for its specific mathematical contribution, not as evidence of review.
+  type: web discussion
+  relationship: adapts
+  note: ani supplied the degree-seven polynomial and counterexample. This entry formalizes that one-polynomial
+    construction and strengthens its obstruction to preconnected-set Hausdorff measure and exact path-image
+    negation; it does not formalize ani's reported parameter family. Will Cook directed AI-assisted formalization;
+    no review or endorsement by ani is claimed.
   license: unknown
   author_endorsement: not-contacted
 - title: Lemniscate paths, a degree-seven counterexample, and trinomial cases
@@ -49,9 +52,10 @@ sources:
   - Will Cook
   id: https://github.com/wcook04/plectis-erdos/blob/147f3f1da400a84dcb3013ea6cef75dc8f382b09/paper/1041/erdos-1041-lemniscate-newton-flow.pdf
   type: paper
-  relationship: background
-  note: ani supplied the original counterexample construction; Will Cook directed AI-assisted formalization.
-    The source is cited for its specific mathematical contribution, not as evidence of review.
+  relationship: formalizes
+  note: Selected Lean declarations formalize the paper's one-polynomial Hausdorff and all-degree trinomial
+    results. The scaled low-critical-value statements retain a named hypothesis for the paper's unformalized
+    analytic theorem. The paper credits ani's construction; citation does not imply independent review.
   license: unknown
   author_endorsement: participated
 - title: Complete reasoning record for Erdős problem 1041
@@ -59,9 +63,10 @@ sources:
   - Will Cook
   id: https://github.com/wcook04/plectis-erdos/blob/147f3f1da400a84dcb3013ea6cef75dc8f382b09/paper/1041/erdos1041-lemniscate-reasoning-surface.pdf
   type: paper
-  relationship: background
-  note: ani supplied the original counterexample construction; Will Cook directed AI-assisted formalization.
-    The source is cited for its specific mathematical contribution, not as evidence of review.
+  relationship: formalizes
+  note: The selected Lean declarations formalize corresponding statements in this complete reasoning record,
+    subject to the named hypotheses stated in metadata. The record credits ani's original degree-seven
+    construction; citation does not imply independent review.
   license: unknown
   author_endorsement: participated
 - title: Erdős Problems catalogue

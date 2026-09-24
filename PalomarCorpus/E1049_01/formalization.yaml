@@ -23,10 +23,13 @@ sources:
 - title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
   authors:
   - Will Cook
-  type: original-proof
-  relationship: other
-  note: Will Cook directed AI-assisted research and formalization. Sources and exact statement boundaries
-    are listed here; no independent human proof audit or priority adjudication is asserted.
+  id: https://github.com/wcook04/plectis-erdos
+  type: other
+  relationship: background
+  note: Will Cook directed AI-assisted formalization of the selected rational-base theorem and supporting
+    constants and measure bounds. This entry formalizes the cited short paper and reasoning record and
+    adapts Zudilin's 2004 construction to rational bases. No independent human proof audit or priority
+    adjudication is asserted.
   license: Apache-2.0
   author_endorsement: participated
 - title: Zudilin's forms at rational bases and exact normalised Hankel order
@@ -34,9 +37,9 @@ sources:
   - Will Cook
   id: https://github.com/wcook04/plectis-erdos/blob/147f3f1da400a84dcb3013ea6cef75dc8f382b09/paper/1049/erdos-1049-rational-base-lambert.pdf
   type: paper
-  relationship: background
-  note: paper describing selected region and nonselected later results. Only the statements named by this
-    entry are selected.
+  relationship: formalizes
+  note: The selected Lean statements formalize this paper's rational-base region, 31/4 powers, and measure
+    bounds; the later sharp fixed-base asymptotic and Hankel results are outside this configuration.
   license: unknown
   author_endorsement: participated
 - title: Complete reasoning record for Erdős problem 1049
@@ -44,8 +47,9 @@ sources:
   - Will Cook
   id: https://github.com/wcook04/plectis-erdos/blob/147f3f1da400a84dcb3013ea6cef75dc8f382b09/paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf
   type: paper
-  relationship: background
-  note: proof and prior art record. Only the statements named by this entry are selected.
+  relationship: formalizes
+  note: This proof and prior-art record states the selected rational-base region and supporting results;
+    only the statements named by this entry are selected.
   license: unknown
   author_endorsement: participated
 - title: Heine's basic transform and a permutation group for q-harmonic series
@@ -53,8 +57,9 @@ sources:
   - Wadim Zudilin
   id: doi:10.4064/aa111-2-4
   type: paper
-  relationship: background
-  note: construction adapted. Only the statements named by this entry are selected.
+  relationship: adapts
+  note: His 2004 linear forms, parameter ratios, cyclotomic cancellation, and constants are adapted to
+    the rational-base sufficient condition proved here. His paper does not state that rational-base result.
   license: unknown
   author_endorsement: not-contacted
 - title: À propos de la série sum x^n/(q^n - 1)
