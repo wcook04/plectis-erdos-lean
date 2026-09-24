@@ -108,10 +108,10 @@ status:
   proof_corpus_sorry_count: 0
   trusted_challenge_sorry_count: 5
   sorry_boundary: The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E257_01/Challenge.lean,
-    and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution
-    bytes has been recorded.
-  axiom_audit_status: The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit
-    of this entry has been recorded.
+    and the Solution modules contain no sorry. Comparator and kernel outcomes are commit-specific and
+    are recorded separately from this source metadata.
+  axiom_audit_status: The permitted axioms are propext, Quot.sound and Classical.choice. Axiom-audit outcomes
+    are commit-specific and belong in separate receipts; this source field is not an audit receipt.
   permitted_axiom_budget:
   - propext
   - Quot.sound
@@ -162,11 +162,11 @@ automation:
 review:
   status: self-assessed
   reviewers: []
-  notes: Release preparation inspected the five selected Challenge statements, their definitions, the
-    corresponding Solution transports and their paper scope using OpenAI Codex. The mathematical Challenge,
-    Solution and configuration bytes are unchanged from the successful repository Comparator replay at
-    a2faa350b45ae08d0e70f5a6ec54943018f8c2b3. This metadata revision is not an official Palomar full-preflight
-    result or an independent novelty assessment. Will Cook directed the research infrastructure and release
-    selection; AI agents performed substantial research, formalization and drafting. No independent human
-    referee report for this entry is recorded.
+  notes: Release scope review of the five selected Challenge statements and their paper context was AI-assisted,
+    not independent human peer review. The selected Challenge statements and five-declaration comparator
+    selection are retained. Solution proofs and dependencies received statement-preserving compatibility
+    repairs for Lean 4.35. Exact-commit verification outcomes are recorded separately in mechanical reports,
+    not in this source description. Will Cook directed the research infrastructure and release selection;
+    AI agents performed substantial research, formalization and drafting. No independent human referee
+    report or novelty assessment for this entry is asserted.
 acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.
