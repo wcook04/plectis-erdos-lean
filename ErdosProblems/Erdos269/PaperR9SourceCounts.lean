@@ -154,7 +154,6 @@ theorem pairCountExact_correct {q r x : ℕ} (hq : 1 < q) (hr : 1 < r) :
   have hpow : q ^ i ≤ x - 1 := Nat.pow_le_of_le_log (by omega)
     (Nat.lt_succ_iff.mp (mem_range.mp hi))
   have hQ : 0 < (x - 1) / q ^ i := Nat.div_pos hpow (by positivity)
-  dsimp only
   rw [if_neg hQ.ne']
 
 /-- Decrease a certified upper power until it is the largest power below N.
