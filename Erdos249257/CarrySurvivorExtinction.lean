@@ -394,7 +394,7 @@ lemma carryOrbit_eq_tail_diff {h N : ℕ} {d : ℤ}
     (hd : (d : ℝ) = totientTail (N + h) - totientTail N) (i : ℕ) :
     (carryOrbit h N d i : ℝ) = totientTail (N + i + h) - totientTail (N + i) := by
   induction i with
-  | zero => simpa using hd
+  | zero => simpa only [carryOrbit, Nat.add_zero] using hd
   | succ i ih =>
       have hrec := tail_diff_succ h (N + i)
       have hstep : carryOrbit h N d (i + 1)

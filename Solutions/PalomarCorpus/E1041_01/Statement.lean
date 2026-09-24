@@ -21,6 +21,7 @@ environments. Generated from the Challenge; do not edit by hand.
 open scoped ENNReal
 open Polynomial
 open Metric
+open MeasureTheory Polynomial Metric
 open Set
 open scoped NNReal
 open scoped ComplexConjugate
@@ -58,6 +59,13 @@ open scoped ENNReal
 open Polynomial
 open Metric
 end PalomarCorpus.E1041.PaperStatementsA
+
+namespace PalomarCorpus.E1041.PaperStatementsAE
+open scoped ENNReal
+open MeasureTheory Polynomial Metric
+/-- Local definition fcLength, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def fcLength (s : Set ℂ) : ℝ≥0∞ := μH[1] s
+end PalomarCorpus.E1041.PaperStatementsAE
 
 namespace PalomarCorpus.E1041.PaperStatementsAA
 open Set

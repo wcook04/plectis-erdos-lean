@@ -68,7 +68,7 @@ theorem cubic_over_denominator_tendsto_zero
       atTop (nhds 1) := by
     have hh : Tendsto (fun n : ℕ => 1 + ((n + 1 : ℕ) : ℝ)⁻¹)
         atTop (nhds 1) := by
-      simpa only [add_zero] using
+      simpa only [add_zero, Function.comp_apply] using
         (tendsto_const_nhds (x := (1 : ℝ))).add hninv
     apply hh.congr'
     filter_upwards [] with n
@@ -155,7 +155,7 @@ theorem rational_reciprocal_sum_cubic_rate_gives_positive_eventual_cubic
   simpa only [Int.cast_natCast] using
     (literal_ratio_error_gives_positive_rational_eventual_cubic
       (fun n => (canonicalNaturalNumerator a p q n : ℤ))
-      (fun n => by dsimp only; exact_mod_cast hCpos n)
+      (fun n => by exact_mod_cast hCpos n)
       (by simpa only [Int.cast_natCast] using
         canonical_numerator_cubic_ratio_error a ha hpos p q hq hs hrate))
 

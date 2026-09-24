@@ -122,7 +122,9 @@ theorem bounded_column_space (A : ℕ → ℕ → ℝ) (hA : FiniteSeparatedRank
     change ‖col j‖ ≤ M
     -- Mathlib/Topology/ContinuousMap/Bounded/Normed.lean: norm_le.
     exact (BoundedContinuousFunction.norm_le hM).mpr
-      (fun i => by simpa only [Real.norm_eq_abs] using hbound i j)
+      (fun i => by
+        change |A i j| ≤ M
+        exact hbound i j)
 
 /-- The actual carry is bounded by one. -/
 theorem realCarryMatrix_abs_le_one {p q r : ℕ}
@@ -209,7 +211,7 @@ theorem finite_rank_uniform_error_lower {p q r : ℕ}
     -- Mathlib/Topology/ContinuousMap/Bounded/Basic.lean: dist_coe_le_dist.
     have h := BoundedContinuousFunction.dist_coe_le_dist
       (f := (v (J j) : BoundedColumn)) (g := (v (J k) : BoundedColumn)) i
-    simpa only [hv, Real.dist_eq] using h
+    simpa only [hv, Real.dist_eq, Subtype.dist_eq] using h
   have htriangle :
       |realCarryMatrix p q r i (J j) - realCarryMatrix p q r i (J k)| ≤
         |realCarryMatrix p q r i (J j) - A i (J j)| +

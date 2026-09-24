@@ -809,7 +809,7 @@ theorem exists_unique_zero_of_newton_contraction
     · apply LipschitzWith.of_dist_le_mul
       intro x y
       have := hlip x.val x.property y.val y.property
-      simpa [step, Set.MapsTo.restrict, Subtype.dist_eq, dist_eq_norm] using this
+      simpa [step, Set.MapsTo.restrict, Subtype.map, Subtype.dist_eq, dist_eq_norm] using this
   obtain ⟨z, hz, hfixed, _, _⟩ :=
     hc.exists_fixedPoint' hcomplete hmaps hx₀ (edist_ne_top _ _)
   have hzroot : p z = 0 := by

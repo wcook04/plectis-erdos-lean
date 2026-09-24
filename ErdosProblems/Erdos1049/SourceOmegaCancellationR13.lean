@@ -191,6 +191,7 @@ theorem actual_B_cyclotomic_dvd (n ell : ℕ) (hell : 0 < ell)
     (mul_eq_zero.mp hzero).resolve_left (pow_ne_zero _ hq)
   rw [cyclotomic_eq_minpoly hp hell]
   apply minpoly.isIntegrallyClosed_dvd (hp.isIntegral hell)
+  change (sourceBWithoutMonomial n).eval₂ (algebraMap ℤ ℂ) q = 0 at hb
   simpa only [aeval_def] using hb
 
 lemma coprime_finset_product_right {R : Type*} [CommSemiring R]

@@ -1,27 +1,68 @@
 # Plectis Erdős Lean
 
-### 38 Lean-verified theorem families across eight open Erdős problems
+**Will Cook · human-directed, AI-assisted mathematical research and formalisation · Lean 4 / Mathlib**
 
-**Will Cook · human-led, AI-assisted mathematical research and formalisation · Lean 4 / Mathlib**
+This repository contains Lean proofs and explicit theorem interfaces associated
+with eight Erdős problems. A reader can inspect each selected statement in its
+`Challenge.lean`, follow the corresponding declaration through the entry’s
+`Solution.lean` and its imported proof modules, and compare it with the paper
+cited in `formalization.yaml`.
 
-Lead results: irrationality for every reciprocal-summable support and every integer base (Erdős #257); kernel-decided denominator floor for the prime-gap dyadic series (Erdős #251); irrationality of fixed-resolution observables of the totient word (Erdős #249); the cofinal local-window escape is equivalent to irrationality of the three-prime running-LCM value (Erdős #269); explicit cubic radius floor for simultaneous factorial channel cancellation (Erdős #68); the rational-base contour of Zudilin's (14,12,14;27) forms (Erdős #1049); bounded-negative-part rigidity for reciprocal-tail dynamics (Erdős #243); global two-root critical proximity and exact straight-line obstructions (Erdős #1041).
+## Selected Palomar release
 
-Each entry states an exact theorem, proves it in Lean against Mathlib, prints the axioms
-it depends on, and records its mathematical consequence, its proof boundary and the
-remaining open step. The unrestricted parent problems remain open; this repository does
-not close any of them.
+The first release selects the following configurations from the full checking
+corpus. Each configuration names a finite list of statements; it does not
+certify every claim in the linked paper. The first official full preflight, for **E257_01**, was
+[rejected before proof execution](docs/palomar-release-v1/preflight-35917059793.json):
+that candidate used Lean 4.30.0 and the pinned current verifier requires at least
+4.35.0-rc2. The [upgraded candidate](https://github.com/wcook04/plectis-erdos-lean/commit/216567506f823f1e47b209f9443ae8e5f0fdec8b)
+uses the matching Lean and Mathlib 4.35.0-rc2 release; its
+[first supported-toolchain preflight](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35918585547) reached Solution compilation and found two compatibility errors in the #257 dependency chain. After those repairs, the [next report](docs/palomar-release-v1/preflight-35919764874.json) confirmed those modules compile and found three further compatibility failures. Those fixes compiled in the [following exact report](docs/palomar-release-v1/preflight-35921237794.json), which then found a divisibility-instance mismatch in the shared `CertificateKernel` proof module. The [latest report](docs/palomar-release-v1/preflight-35924908067.json) narrowed the remaining mismatch to `id m` versus `m` in ten proof terms. Mechanical verification has not passed; a statement-preserving repair is in progress. The [release selection](.github/palomar-release-selection-v1.json) keeps automatic branch checks on E257_01 and separately permits exact-commit preflight tags for the other ready entries. E68_05 remains disabled pending its scope decision.
 
-Problems covered: #68, #243, #249, #251, #257, #269, #1041, #1049.
+| Entry | Selected mathematical unit | Boundary |
+|---|---|---|
+| [E257_01](PalomarCorpus/E257_01/formalization.yaml) | Weighted support criteria for reciprocal Mersenne subseries, including the all-base hereditary criterion | Five selected declarations; other claims of the papers are outside this entry. |
+| [E249_29](PalomarCorpus/E249_29/formalization.yaml) | All-base bases and integral relations for the totient kernel | Exact kernel structure; does not decide irrationality of the dyadic totient series. |
+| [E243_01](PalomarCorpus/E243_01/formalization.yaml) | Cubic-rate irrationality for reciprocal-tail series | The bounded-increment theorem in the paper is a separate result. |
+| [E251_01](PalomarCorpus/E251_01/formalization.yaml) | Sparse perturbations preserving congruences | The conditional prime-gap application is outside this entry. |
+| [E269_02](PalomarCorpus/E269_02/formalization.yaml) | Uniform kernel rank and nonseparation | Modular-minor strengthenings are outside this entry; the parent irrationality question remains open. |
+| [E1049_01](PalomarCorpus/E1049_01/formalization.yaml) | An explicit rational-base irrationality region, including 31/4 and its positive powers | The region excludes 3/2; later sharp fixed-base and Hankel results are outside this entry. |
+| [E68_05](PalomarCorpus/E68_05/formalization.yaml) | Carry, divisor-channel and finite-moment criteria | Structural scope awaiting selection approval; the two large numerical denominator exclusions are not certified here. |
+| [E1041_01](PalomarCorpus/E1041_01/formalization.yaml) | Ani's degree-seven construction and the all-degree trinomial case | Seventeen statements now selected, including three exact Hausdorff endpoints; supported-toolchain elaboration and mechanical verification remain pending. Named-input low-critical-value wrappers retain their hypotheses. |
 
-## Palomar publication surface
+The [paper-scope appendix](docs/palomar-release-v1/eight_paper_coverage_appendix.md) accounts for every labelled paper row and links to the machine-readable dispositions.
 
-Palomar (https://palomar-registry.org) registers machine-checked Lean proofs after an
-independent mechanical verification (Comparator, kernel replay through NanoDa) and an
-automated editorial review. This repository publishes eight problem-level entries, one
-Comparator configuration per Erdős problem, all at the same commit, with the Lake project
-root selected. Each `PalomarCorpus/E{n}/Challenge.lean` imports only Mathlib and states the
-selected theorems with documented definitions; `Solutions.PalomarCorpus.E{n}` supplies the
-proofs. The parent problems remain open; no entry claims a solution of one.
+The metadata records source credit and limitations. In particular, ani owns
+the #1041 counterexample construction; Erdős's original series results,
+Martin's affine-independence theorem, Coons's non-regularity result and
+Zudilin's architecture retain their attribution in the relevant entries.
+Will directs the AI-assisted research and formalisation. This does not imply
+an independent human proof audit of every statement. For #1041,
+[Formal Conjectures PR #6505](https://github.com/google-deepmind/formal-conjectures/pull/6505)
+merged the exact `answer(False)` statement and links the external formal proof.
+Ani supplied the degree-seven counterexample; the upstream statement and link
+do not independently settle its correspondence with the historical wording.
+
+## Verification and registry status
+
+The [official full-preflight workflow](.github/workflows/palomar-official-full-preflight.yml)
+calls Palomar's complete mechanical verifier at a pinned revision, in `full`
+mode, for one selected configuration and the exact candidate commit. Rendering
+and editorial review are later, separate registry stages; this report does not
+establish their outcomes. A caller-run preflight does not create a Palomar
+submission or registration, and registration is not a peer-review or novelty
+verdict.
+
+The [mechanical replay workflow](.github/workflows/palomar-replay.yml) is a
+separate regression check. Its successful runs do not establish that the
+current candidate has passed Palomar's full pipeline. Axiom audits distinguish
+intentional placeholders in Challenge specifications from the proof-bearing
+Solution dependency closure.
+
+## Full checking inventory
+
+The complete corpus remains available for regression checks and precise
+statement lookup. It is not a queue of registry submissions.
 
 <!-- palomar-entry-table:begin (generated; do not edit by hand) -->
 The Palomar entries are packed in the order the papers state their theorems; [`PalomarCorpus/README.md`](PalomarCorpus/README.md) lists every entry with its theorem count and title.
@@ -34,32 +75,24 @@ The Palomar entries are packed in the order the papers state their theorems; [`P
 | #251 | `E251_01` to `E251_08` | 87 |
 | #257 | `E257_01` to `E257_43` | 537 |
 | #269 | `E269_01` to `E269_11` | 92 |
-| #1041 | `E1041_01` to `E1041_08` | 105 |
+| #1041 | `E1041_01` to `E1041_08` | 108 |
 | #1049 | `E1049_01` to `E1049_08` | 110 |
-| Total | 132 entries | 1765 |
+| Total | 132 entries | 1768 |
 
 The problem-level entry `E257` of the previous layout was submitted to Palomar on 13 September 2026 at commit `52f29ad1` (submission `impkvgnxmpb7`). Its mechanical verification passed ([run 34784800531](https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/34784800531)); Palomar's render stage then failed on a known renderer defect ([PalomarSubmission #134](https://github.com/PalomarRegistry/PalomarSubmission/issues/134)), and the submission settled as `verification-error` on 14 September 2026. No entry of the present layout has been submitted.
 <!-- palomar-entry-table:end -->
 
-The workflow [`palomar-replay.yml`](.github/workflows/palomar-replay.yml) replays Palomar's
-mechanical stage on Linux with the verifier's pinned Comparator, lean4export, landrun and
-NanoDa revisions, and the release gate prints the axioms of every selected theorem
-(`scripts/check_axiom_budget.py --run-palomar`). A green replay is our own evidence, not a
-Palomar verdict; the status column records what Palomar itself has done with each entry.
-The same workflow replays Palomar's render-stage core-notation audit at the pinned renderer
-commit as a report-only step. At `ef2fa1ea` that audit rejects seven of the eight entries: it
-kernel-rechecks copied theorem types in an environment where every Mathlib definition is opaque,
-so `FunLike`, `SmallCategory` and instance diamonds fail. The E257 render (run 34786515414) failed
-this way after mechanical verification passed; [PalomarSubmission pull request 137](https://github.com/PalomarRegistry/PalomarSubmission/pull/137) carries the fix, under which all
-eight entries print, and the E257 review waits on it.
-Family `ExternalVerification*` directories are internal regression inventory, not registry entries.
+The generated inventory above records the earlier E257 submission separately.
+The renderer fix merged upstream after that attempt; the selected release
+still requires its own exact-input full reports. The 1,768 configured names (1,765 in the baseline plus three Hausdorff endpoints)
+are a different count from labelled rows in the papers.
 
-## Start here
+## Source-family catalogue
 
-The per-problem sections below describe the `ExternalVerification*` family entries, the
-internal regression inventory, and each names its own configuration. The Palomar entries
-are the eight `PalomarCorpus/E{n}` configurations listed above; their theorem counts are
-larger and are the counts a registry submission names.
+The following descriptions cover the `ExternalVerification*` source families.
+They give additional context and their own exact configurations. For the
+selected release, use the entries and scope boundaries above; do not treat
+this larger catalogue as its submission list.
 
 ### Erdős #257: irrationality for every reciprocal-summable support and every integer base
 

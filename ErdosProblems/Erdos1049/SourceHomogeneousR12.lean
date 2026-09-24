@@ -147,7 +147,7 @@ theorem X_power_dvd_cancel_constant_one (c p : ℤ[X]) (m : ℕ)
           rw [coeff_mul, Finset.sum_eq_single (0, d)]
           · simp [hc]
           · rintro ⟨i, j⟩ hij hne
-            have hsum : i + j = d := Finset.mem_antidiagonal.mp hij
+            have hsum : i + j = d := Finset.HasAntidiagonal.mem_antidiagonal.mp hij
             have hjlt : j < d := by
               by_contra hh
               have hi0 : i = 0 := by omega
@@ -155,7 +155,7 @@ theorem X_power_dvd_cancel_constant_one (c p : ℤ[X]) (m : ℕ)
               exact hne (by simp [hi0, hjd])
             rw [ih j hjlt (by omega), mul_zero]
           · intro hnot
-            exact (hnot (Finset.mem_antidiagonal.mpr (by omega))).elim
+            exact (hnot (Finset.HasAntidiagonal.mem_antidiagonal.mpr (by omega))).elim
         rw [← hprod]
         exact hz d hd
   exact hcoeff

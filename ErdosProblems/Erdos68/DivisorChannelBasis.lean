@@ -525,14 +525,14 @@ theorem twelve_channelLCM_dvd_factorialMoment_of_channels_zero
 
 /-- Isolated one-channel basis vector, `U_n = T_n - ∑_{d | n, 2 ≤ d < n} W_{d,n} U_d`. -/
 noncomputable def isolatedChannelUnit (n : ℕ) : ℕ →₀ ℤ :=
-  n.strongRecOn' fun n rec =>
+  Nat.strongRec (fun n rec =>
     if n ≤ 1 then 0
     else
       adjacentDifference n -
         ∑ d ∈ (Finset.Ico 2 n).attach,
           if d.1 ∣ n then
             (channelWeight n d.1 : ℤ) • rec d.1 (Finset.mem_Ico.mp d.2).2
-          else 0
+          else 0) n
 
 theorem isolatedChannelUnit_eq (n : ℕ) :
     isolatedChannelUnit n =
@@ -544,7 +544,7 @@ theorem isolatedChannelUnit_eq (n : ℕ) :
               (channelWeight n d.1 : ℤ) • isolatedChannelUnit d.1
             else 0 := by
   unfold isolatedChannelUnit
-  rw [Nat.strongRecOn'_beta]
+  rw [Nat.strongRec_eq]
 
 theorem isolatedChannelUnit_of_le_one {n : ℕ} (hn : n ≤ 1) :
     isolatedChannelUnit n = 0 := by

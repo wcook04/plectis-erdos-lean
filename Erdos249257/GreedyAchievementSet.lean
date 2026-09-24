@@ -194,7 +194,10 @@ theorem tendsto_mersenneTail_zero :
     Tendsto mersenneTail atTop (nhds 0) := by
   have h := tendsto_sum_nat_add (fun k : ℕ => mersenneWeight (k + 1))
   have hshift := h.comp (tendsto_add_atTop_nat 0)
-  simpa [mersenneTail, Nat.add_assoc, Nat.add_comm, Nat.add_left_comm] using hshift
+  change Tendsto (fun n : ℕ => ∑' k : ℕ, mersenneWeight (n + k + 1))
+    atTop (nhds 0)
+  simpa only [Function.comp_def, Nat.add_zero, Nat.add_assoc, Nat.add_comm,
+    Nat.add_left_comm] using hshift
 
 /-! ## Quantitative gap asymptotic -/
 
@@ -2132,7 +2135,7 @@ theorem tendsto_mersenneForcedReturnThreshold (m : ℕ) :
   have hcorr : Tendsto (fun J : ℕ => mersenneCorrectionTail (m + J))
       atTop (nhds 0) := by
     have h := tendsto_mersenneCorrectionTail_zero.comp (tendsto_add_atTop_nat m)
-    simpa [Nat.add_comm] using h
+    simpa only [Function.comp_def, Nat.add_comm] using h
   have heq : (fun J : ℕ => mersenneForcedReturnThreshold m J) =
       (fun J : ℕ => mersenneTail m - mersenneCorrectionTail (m + J)) := by
     funext J

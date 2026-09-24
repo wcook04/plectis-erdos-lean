@@ -1,14 +1,10 @@
 version: v0.4
 project:
-  name: 'Erdős #1049, record section 2: the region b^ mu < a and the base 31/4; positive linear forms with integer coefficients'
-  description: >-
-    This entry states 25 theorems that the long record for Erdős problem #1049 states in sections 2 (the region b^ mu < a and the base 31/4) and 2.4 (positive linear forms with integer coefficients): the lemma “the weight is an indicator” (section 2), as omega_indicator; the theorem “rational-base region” (section 2), as contour_enclosure, printed_contour, zudilinC0_enclosure, zudilinJ_enclosure, zudilin_rpow_lt_iff_contourRegion, rational_base_threshold and rational_base_threshold_log; the theorem “the base 31/4 outside the Bundschuh-Väänänen region” (section 2.4), as four_rpow_mu_lt_thirtyOne, printed_four_rpow_mu, paperBvMu_eq, printed_bvMu, printed_bv_cutoff, printed_four_rpow_bvMu, printed_log_ratio, inv_bvMu_eq, thirtyoneFour_between_rpow, thirtyoneFour_ratio_chain, thirtyoneFour_outside_bv_inside_contour, thirtyoneFour_irrational and thirtyoneFour_pow_irrational; the corollary “an irrationality measure uniform over powers” (section 2.4), as rational_base_measure_uniform, thirtyoneFour_power_measure_lt_301, rational_base_power_measure and thirtyone_four_power_measure_lt_301.
-
-    22 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 1 is derived from the source declaration by a short tactic proof, which certifies implication.
-
-    Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
-
-    Erdős problem #1049 remains open, and no theorem in this entry decides it.
+  name: An explicit rational-base irrationality region for Zudilin's Lambert series
+  description: For coprime integers a > b >= 1 satisfying b^μ < a, equivalently log b / log a < θ*, the
+    selected Lean theorems prove irrationality of F(a/b). They include the base 31/4 and every positive
+    integer power, plus associated irrationality-measure bounds. The region excludes 3/2. This configuration
+    does not select the paper's later sharp fixed-base asymptotic or all-rank Hankel results.
   authors:
   - Will Cook
   license: Apache-2.0
@@ -19,14 +15,10 @@ repository:
 classification:
   arxiv:
   - math.NT
-  - math.CA
   msc2020:
-  - "11J72"
-  - "11J82"
-  - "11J13"
-  - "11J17"
-  - "33D15"
-  - "41A21"
+  - 11J72
+  - 11J82
+  - 33D15
 sources:
 - title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
   authors:
@@ -34,71 +26,58 @@ sources:
   id: https://github.com/wcook04/plectis-erdos
   type: other
   relationship: background
-  note: "The public problem notes and reasoning records that describe the compared theorems and their relationship to the literature. A compared theorem re-proves, formalises or adapts a result of the source marked with a substantive relationship below; the remaining compared theorems are proved in this repository, and no priority is claimed for them beyond the checked proofs."
+  note: Will Cook directed AI-assisted formalization of the selected rational-base theorem and supporting
+    constants and measure bounds. This entry formalizes the cited short paper and reasoning record and
+    adapts Zudilin's 2004 construction to rational bases. No independent human proof audit or priority
+    adjudication is asserted.
   license: Apache-2.0
   author_endorsement: participated
-- title: "On the irrationality of certain series: problems and results"
+- title: Zudilin's forms at rational bases and exact normalised Hankel order
   authors:
-  - "Paul Erdős"
-  id: "doi:10.1017/CBO9780511897184.009"
-  type: "paper"
-  relationship: "background"
-  note: "Poses the irrationality question for the Lambert value at rational bases (pages 102 to 109); no theorem in this entry is taken from it and none answers the question it poses."
-  license: "unknown"
-  author_endorsement: "not-contacted"
-- title: "Arithmetical investigations of a certain infinite product"
+  - Will Cook
+  id: https://github.com/wcook04/plectis-erdos/blob/147f3f1da400a84dcb3013ea6cef75dc8f382b09/paper/1049/erdos-1049-rational-base-lambert.pdf
+  type: paper
+  relationship: formalizes
+  note: The selected Lean statements formalize this paper's rational-base region, 31/4 powers, and measure
+    bounds; the later sharp fixed-base asymptotic and Hankel results are outside this configuration.
+  license: unknown
+  author_endorsement: participated
+- title: Complete reasoning record for Erdős problem 1049
   authors:
-  - "Peter Bundschuh"
-  - "Keijo Väänänen"
-  id: "https://numdam.org/item/CM_1994__91_2_175_0.pdf"
-  type: "paper"
-  relationship: "background"
-  note: "Compositio Math. 91 (1994), 175-199; Theorem 2 in the alpha = -1 case supplies the published height cutoff 1/2 - 1/pi^2 for rational bases. Only that elementary parameter inequality is written down here; their analytic irrationality theorem is not internalised or used."
-  license: "unknown"
-  author_endorsement: "not-contacted"
-- title: "Heine's basic transform and a permutation group for q-harmonic series"
+  - Will Cook
+  id: https://github.com/wcook04/plectis-erdos/blob/147f3f1da400a84dcb3013ea6cef75dc8f382b09/paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf
+  type: paper
+  relationship: formalizes
+  note: This proof and prior-art record states the selected rational-base region and supporting results;
+    only the statements named by this entry are selected.
+  license: unknown
+  author_endorsement: participated
+- title: Heine's basic transform and a permutation group for q-harmonic series
   authors:
-  - "Wadim Zudilin"
-  id: "doi:10.4064/aa111-2-4"
-  type: "paper"
-  relationship: "adapts"
-  note: "Acta Arith. 111 (2004), 153-164; the rational-base construction and its parameter constants follow the Heine-transform and permutation-group architecture of this paper. The repository constructs the polynomial source, nonzero remainder and rates within Lean for the strict rational-base contour; no cited analytic conclusion is imported as an axiom. This attribution does not claim novelty of the underlying construction."
-  license: "unknown"
-  author_endorsement: "not-contacted"
-- title: "On the irrationality of generalized q-logarithm"
+  - Wadim Zudilin
+  id: doi:10.4064/aa111-2-4
+  type: paper
+  relationship: adapts
+  note: His 2004 linear forms, parameter ratios, cyclotomic cancellation, and constants are adapted to
+    the rational-base sufficient condition proved here. His paper does not state that rational-base result.
+  license: unknown
+  author_endorsement: not-contacted
+- title: À propos de la série sum x^n/(q^n - 1)
   authors:
-  - "Wadim Zudilin"
-  id: "arXiv:1601.02688"
-  type: "paper"
-  relationship: "background"
-  note: "Res. Number Theory 2 (2016), Art. 15; Section 4 (pages 6 and 7) proves the order inequality for the normalised Hankel determinant, and a remark in Section 2 (page 4) announces a rational-base extension with an unspecified computable constant. The normalised moments and the Hankel determinant restated here are Zudilin's construction; the compared statements give the order and coefficient of the first transformed row and the order and leading coefficient of the determinant at every rank, and no result of the paper is assumed."
-  license: "unknown"
-  author_endorsement: "not-contacted"
-- title: "Little q-Legendre polynomials and irrationality of certain Lambert series"
-  authors:
-  - "Walter Van Assche"
-  id: "doi:10.1023/A:1012930828917"
-  type: "paper"
-  relationship: "background"
-  note: "Ramanujan J. 5 (2001), 295-310; recovers the integer-base irrationality exponent 2 pi^2/(pi^2 - 2) by little q-Legendre Pade approximants and supplies the scalar outward-evaluation architecture that the wider project measures. Nothing from it is assumed or formalised, and no declaration in this entry refers to its approximants."
-  license: "unknown"
-  author_endorsement: "not-contacted"
-- title: "À propos de la série sum x^n/(q^n - 1)"
-  authors:
-  - "Daniel Duverney"
-  id: "https://numdam.org/item/JTNB_1996__8_1_173_0.pdf"
-  type: "paper"
-  relationship: "background"
-  note: "J. Théor. Nombres Bordeaux 8 (1996), 173-181; Theorem 2 gives a rational-base irrationality region for this same series, showing that rational bases were already in the literature. No statement here is taken from it."
-  license: "unknown"
-  author_endorsement: "not-contacted"
+  - Daniel Duverney
+  id: https://numdam.org/item/JTNB_1996__8_1_173_0.pdf
+  type: paper
+  relationship: background
+  note: prior rational base region. Only the statements named by this entry are selected.
+  license: unknown
+  author_endorsement: not-contacted
 - title: Erdős Problems catalogue
   authors:
   - Thomas F. Bloom
   id: https://www.erdosproblems.com
   type: web discussion
   relationship: background
-  note: "Catalogue numbering and status of the parent problem."
+  note: The selected entry does not decide the unrestricted Erdős problem.
   license: unknown
   author_endorsement: not-contacted
 - title: Mathlib
@@ -109,121 +88,130 @@ sources:
   license: Apache-2.0
   author_endorsement: n/a
 status:
-  scope: "One Comparator configuration selecting the 25 theorems listed in PalomarCorpus/E1049_01/comparator.json, from the Lean development for Erdős problem #1049. The problem's theorems are packed, in the order the papers state them, into the 8 entries PalomarCorpus/E1049_01 to PalomarCorpus/E1049_08, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification1049* directories are internal regression inventory and are not selected."
+  scope: 'One Comparator configuration selecting the 25 theorems listed in PalomarCorpus/E1049_01/comparator.json,
+    from the Lean development for Erdős problem #1049. The problem''s theorems are packed, in the order
+    the papers state them, into the 8 entries PalomarCorpus/E1049_01 to PalomarCorpus/E1049_08, and each
+    theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification1049*
+    directories are internal regression inventory and are not selected.'
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
   trusted_challenge_sorry_count: 25
-  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E1049_01/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
-  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
+  sorry_boundary: The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E1049_01/Challenge.lean,
+    and the Solution modules contain no sorry. Comparator and kernel outcomes are commit-specific and
+    are recorded separately from this source metadata.
+  axiom_audit_status: The permitted axioms are propext, Quot.sound and Classical.choice. Axiom-audit outcomes
+    are commit-specific and belong in separate receipts; this source field is not an audit receipt.
   permitted_axiom_budget:
   - propext
   - Quot.sound
   - Classical.choice
   main_results:
-  - declaration: "PalomarCorpus.E1049.PaperStatementsA.contour_enclosure"
-    file: "Solutions/PalomarCorpus/E1049_01/PaperStatementsA.lean"
+  - declaration: PalomarCorpus.E1049.PaperStatementsA.contour_enclosure
+    file: Solutions/PalomarCorpus/E1049_01/PaperStatementsA.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E1049_01/comparator.json"
-  - declaration: "PalomarCorpus.E1049.PaperStatementsA.four_rpow_mu_lt_thirtyOne"
-    file: "Solutions/PalomarCorpus/E1049_01/PaperStatementsA.lean"
+    comparator_config: PalomarCorpus/E1049_01/comparator.json
+  - declaration: PalomarCorpus.E1049.PaperStatementsA.four_rpow_mu_lt_thirtyOne
+    file: Solutions/PalomarCorpus/E1049_01/PaperStatementsA.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E1049_01/comparator.json"
-  - declaration: "PalomarCorpus.E1049.PaperStatementsA.inv_bvMu_eq"
-    file: "Solutions/PalomarCorpus/E1049_01/PaperStatementsA.lean"
+    comparator_config: PalomarCorpus/E1049_01/comparator.json
+  - declaration: PalomarCorpus.E1049.PaperStatementsA.inv_bvMu_eq
+    file: Solutions/PalomarCorpus/E1049_01/PaperStatementsA.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E1049_01/comparator.json"
-  - declaration: "PalomarCorpus.E1049.PaperStatementsA.omega_indicator"
-    file: "Solutions/PalomarCorpus/E1049_01/PaperStatementsA.lean"
+    comparator_config: PalomarCorpus/E1049_01/comparator.json
+  - declaration: PalomarCorpus.E1049.PaperStatementsA.omega_indicator
+    file: Solutions/PalomarCorpus/E1049_01/PaperStatementsA.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E1049_01/comparator.json"
-  - declaration: "PalomarCorpus.E1049.PaperStatementsA.paperBvMu_eq"
-    file: "Solutions/PalomarCorpus/E1049_01/PaperStatementsA.lean"
+    comparator_config: PalomarCorpus/E1049_01/comparator.json
+  - declaration: PalomarCorpus.E1049.PaperStatementsA.paperBvMu_eq
+    file: Solutions/PalomarCorpus/E1049_01/PaperStatementsA.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E1049_01/comparator.json"
-  - declaration: "PalomarCorpus.E1049.PaperStatementsA.printed_bvMu"
-    file: "Solutions/PalomarCorpus/E1049_01/PaperStatementsA.lean"
+    comparator_config: PalomarCorpus/E1049_01/comparator.json
+  - declaration: PalomarCorpus.E1049.PaperStatementsA.printed_bvMu
+    file: Solutions/PalomarCorpus/E1049_01/PaperStatementsA.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E1049_01/comparator.json"
-  - declaration: "PalomarCorpus.E1049.PaperStatementsA.printed_bv_cutoff"
-    file: "Solutions/PalomarCorpus/E1049_01/PaperStatementsA.lean"
+    comparator_config: PalomarCorpus/E1049_01/comparator.json
+  - declaration: PalomarCorpus.E1049.PaperStatementsA.printed_bv_cutoff
+    file: Solutions/PalomarCorpus/E1049_01/PaperStatementsA.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E1049_01/comparator.json"
-  - declaration: "PalomarCorpus.E1049.PaperStatementsA.printed_contour"
-    file: "Solutions/PalomarCorpus/E1049_01/PaperStatementsA.lean"
+    comparator_config: PalomarCorpus/E1049_01/comparator.json
+  - declaration: PalomarCorpus.E1049.PaperStatementsA.printed_contour
+    file: Solutions/PalomarCorpus/E1049_01/PaperStatementsA.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E1049_01/comparator.json"
-  - declaration: "PalomarCorpus.E1049.PaperStatementsA.printed_four_rpow_bvMu"
-    file: "Solutions/PalomarCorpus/E1049_01/PaperStatementsA.lean"
+    comparator_config: PalomarCorpus/E1049_01/comparator.json
+  - declaration: PalomarCorpus.E1049.PaperStatementsA.printed_four_rpow_bvMu
+    file: Solutions/PalomarCorpus/E1049_01/PaperStatementsA.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E1049_01/comparator.json"
-  - declaration: "PalomarCorpus.E1049.PaperStatementsA.printed_four_rpow_mu"
-    file: "Solutions/PalomarCorpus/E1049_01/PaperStatementsA.lean"
+    comparator_config: PalomarCorpus/E1049_01/comparator.json
+  - declaration: PalomarCorpus.E1049.PaperStatementsA.printed_four_rpow_mu
+    file: Solutions/PalomarCorpus/E1049_01/PaperStatementsA.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E1049_01/comparator.json"
-  - declaration: "PalomarCorpus.E1049.PaperStatementsA.printed_log_ratio"
-    file: "Solutions/PalomarCorpus/E1049_01/PaperStatementsA.lean"
+    comparator_config: PalomarCorpus/E1049_01/comparator.json
+  - declaration: PalomarCorpus.E1049.PaperStatementsA.printed_log_ratio
+    file: Solutions/PalomarCorpus/E1049_01/PaperStatementsA.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E1049_01/comparator.json"
-  - declaration: "PalomarCorpus.E1049.PaperStatementsA.thirtyoneFour_between_rpow"
-    file: "Solutions/PalomarCorpus/E1049_01/PaperStatementsA.lean"
+    comparator_config: PalomarCorpus/E1049_01/comparator.json
+  - declaration: PalomarCorpus.E1049.PaperStatementsA.thirtyoneFour_between_rpow
+    file: Solutions/PalomarCorpus/E1049_01/PaperStatementsA.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E1049_01/comparator.json"
-  - declaration: "PalomarCorpus.E1049.PaperStatementsA.thirtyoneFour_ratio_chain"
-    file: "Solutions/PalomarCorpus/E1049_01/PaperStatementsA.lean"
+    comparator_config: PalomarCorpus/E1049_01/comparator.json
+  - declaration: PalomarCorpus.E1049.PaperStatementsA.thirtyoneFour_ratio_chain
+    file: Solutions/PalomarCorpus/E1049_01/PaperStatementsA.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E1049_01/comparator.json"
-  - declaration: "PalomarCorpus.E1049.PaperStatementsA.zudilinC0_enclosure"
-    file: "Solutions/PalomarCorpus/E1049_01/PaperStatementsA.lean"
+    comparator_config: PalomarCorpus/E1049_01/comparator.json
+  - declaration: PalomarCorpus.E1049.PaperStatementsA.zudilinC0_enclosure
+    file: Solutions/PalomarCorpus/E1049_01/PaperStatementsA.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E1049_01/comparator.json"
-  - declaration: "PalomarCorpus.E1049.PaperStatementsA.zudilinJ_enclosure"
-    file: "Solutions/PalomarCorpus/E1049_01/PaperStatementsA.lean"
+    comparator_config: PalomarCorpus/E1049_01/comparator.json
+  - declaration: PalomarCorpus.E1049.PaperStatementsA.zudilinJ_enclosure
+    file: Solutions/PalomarCorpus/E1049_01/PaperStatementsA.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E1049_01/comparator.json"
-  - declaration: "PalomarCorpus.E1049.PaperStatementsA.zudilin_rpow_lt_iff_contourRegion"
-    file: "Solutions/PalomarCorpus/E1049_01/PaperStatementsA.lean"
+    comparator_config: PalomarCorpus/E1049_01/comparator.json
+  - declaration: PalomarCorpus.E1049.PaperStatementsA.zudilin_rpow_lt_iff_contourRegion
+    file: Solutions/PalomarCorpus/E1049_01/PaperStatementsA.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E1049_01/comparator.json"
-  - declaration: "PalomarCorpus.E1049.PaperStatementsG.thirtyoneFour_outside_bv_inside_contour"
-    file: "Solutions/PalomarCorpus/E1049_01/PaperStatementsG.lean"
+    comparator_config: PalomarCorpus/E1049_01/comparator.json
+  - declaration: PalomarCorpus.E1049.PaperStatementsG.thirtyoneFour_outside_bv_inside_contour
+    file: Solutions/PalomarCorpus/E1049_01/PaperStatementsG.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E1049_01/comparator.json"
-  - declaration: "PalomarCorpus.E1049.PaperStatementsI.rational_base_measure_uniform"
-    file: "Solutions/PalomarCorpus/E1049_01/PaperStatementsI.lean"
+    comparator_config: PalomarCorpus/E1049_01/comparator.json
+  - declaration: PalomarCorpus.E1049.PaperStatementsI.rational_base_measure_uniform
+    file: Solutions/PalomarCorpus/E1049_01/PaperStatementsI.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E1049_01/comparator.json"
-  - declaration: "PalomarCorpus.E1049.PaperStatementsI.thirtyoneFour_power_measure_lt_301"
-    file: "Solutions/PalomarCorpus/E1049_01/PaperStatementsI.lean"
+    comparator_config: PalomarCorpus/E1049_01/comparator.json
+  - declaration: PalomarCorpus.E1049.PaperStatementsI.thirtyoneFour_power_measure_lt_301
+    file: Solutions/PalomarCorpus/E1049_01/PaperStatementsI.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E1049_01/comparator.json"
-  - declaration: "PalomarCorpus.E1049.PaperStatementsJ.rational_base_threshold"
-    file: "Solutions/PalomarCorpus/E1049_01/PaperStatementsJ.lean"
+    comparator_config: PalomarCorpus/E1049_01/comparator.json
+  - declaration: PalomarCorpus.E1049.PaperStatementsJ.rational_base_threshold
+    file: Solutions/PalomarCorpus/E1049_01/PaperStatementsJ.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E1049_01/comparator.json"
-  - declaration: "PalomarCorpus.E1049.PaperStatementsJ.rational_base_threshold_log"
-    file: "Solutions/PalomarCorpus/E1049_01/PaperStatementsJ.lean"
+    comparator_config: PalomarCorpus/E1049_01/comparator.json
+  - declaration: PalomarCorpus.E1049.PaperStatementsJ.rational_base_threshold_log
+    file: Solutions/PalomarCorpus/E1049_01/PaperStatementsJ.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E1049_01/comparator.json"
-  - declaration: "PalomarCorpus.E1049.PaperStatementsJ.thirtyoneFour_irrational"
-    file: "Solutions/PalomarCorpus/E1049_01/PaperStatementsJ.lean"
+    comparator_config: PalomarCorpus/E1049_01/comparator.json
+  - declaration: PalomarCorpus.E1049.PaperStatementsJ.thirtyoneFour_irrational
+    file: Solutions/PalomarCorpus/E1049_01/PaperStatementsJ.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E1049_01/comparator.json"
-  - declaration: "PalomarCorpus.E1049.PaperStatementsJ.thirtyoneFour_pow_irrational"
-    file: "Solutions/PalomarCorpus/E1049_01/PaperStatementsJ.lean"
+    comparator_config: PalomarCorpus/E1049_01/comparator.json
+  - declaration: PalomarCorpus.E1049.PaperStatementsJ.thirtyoneFour_pow_irrational
+    file: Solutions/PalomarCorpus/E1049_01/PaperStatementsJ.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E1049_01/comparator.json"
-  - declaration: "PalomarCorpus.E1049.RationalBaseRegion.rational_base_power_measure"
-    file: "Solutions/PalomarCorpus/E1049_01/RationalBaseRegion.lean"
+    comparator_config: PalomarCorpus/E1049_01/comparator.json
+  - declaration: PalomarCorpus.E1049.RationalBaseRegion.rational_base_power_measure
+    file: Solutions/PalomarCorpus/E1049_01/RationalBaseRegion.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E1049_01/comparator.json"
-  - declaration: "PalomarCorpus.E1049.RationalBaseRegion.thirtyone_four_power_measure_lt_301"
-    file: "Solutions/PalomarCorpus/E1049_01/RationalBaseRegion.lean"
+    comparator_config: PalomarCorpus/E1049_01/comparator.json
+  - declaration: PalomarCorpus.E1049.RationalBaseRegion.thirtyone_four_power_measure_lt_301
+    file: Solutions/PalomarCorpus/E1049_01/RationalBaseRegion.lean
     sorry_count: 0
-    comparator_config: "PalomarCorpus/E1049_01/comparator.json"
+    comparator_config: PalomarCorpus/E1049_01/comparator.json
   development_status: substantive
-  local_proof_provenance: "the proof modules ErdosProblems.Erdos1049 in this repository, imported by Solutions.PalomarCorpus.E1049_01; the Solutions.ExternalVerification1049* family modules are a regression mirror of the same proofs and are not imported by this configuration"
-  canonical_claim_status: "problem-level Comparator entry over substantive Lean in this repository"
+  local_proof_provenance: the proof modules ErdosProblems.Erdos1049 in this repository, imported by Solutions.PalomarCorpus.E1049_01;
+    the Solutions.ExternalVerification1049* family modules are a regression mirror of the same proofs
+    and are not imported by this configuration
+  canonical_claim_status: problem-level Comparator entry over substantive Lean in this repository
 automation:
   methods:
   - method: manual
@@ -244,6 +232,10 @@ automation:
 review:
   status: self-assessed
   reviewers: []
-  notes: >-
-    The statements from the hand-written families were checked declaration by declaration against the public problem notes, the reasoning records and the Lean sources in automated review passes run with Anthropic Claude and OpenAI Codex. Every generated restatement was bound to a paper statement and refereed in the eight-paper coverage ledger before its wrapper was generated, and its transport proof was elaborated before the statement was accepted. The author selected the statements and is responsible for the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
+  notes: Lead with rational_base_threshold and rational_base_threshold_log, not printed decimal enclosures.
+    Preserve a > b >= 1, coprimality as stated, and the strict b^μ < a or logarithmic threshold. The source
+    comments say coprimality matches the paper but is unused by the proof. Credit Zudilin's architecture
+    and prior rational-base literature without a novelty claim for that architecture. Exact-commit mechanical
+    outcomes are recorded in separate reports; no independent editorial review or registration is asserted.
 acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.
+related_formalizations: []

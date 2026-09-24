@@ -99,7 +99,7 @@ lemma cyclotomic_complex_circle_le (N j : ℕ) (hj0 : 0 < j) (hj : j ≤ N)
   rw [cyclotomic_complex_moebius R z hR hz j hj0, norm_prod]
   calc
     _ ≤ ∏ x ∈ j.divisorsAntidiagonal, cyclotomicCircleBase N R := by
-      apply prod_le_prod (fun x hx => norm_nonneg _)
+      apply prod_le_prod₀ (fun x hx => norm_nonneg _)
       intro x hx
       have hd := Nat.snd_mem_divisors_of_mem_antidiagonal hx
       exact cyclotomic_moebius_factor_le N x.2 x.1 (Nat.pos_of_mem_divisors hd)
@@ -118,7 +118,7 @@ theorem actual_complement_complex_circle_le (n : ℕ) (R : ℝ) (z : ℂ)
   simp only [sourceComplement, map_prod, norm_prod]
   calc
     _ ≤ ∏ j ∈ Icc 1 (15 * n), cyclotomicCircleBase (15 * n) R ^ j.divisors.card := by
-      apply prod_le_prod (fun j hj => norm_nonneg _)
+      apply prod_le_prod₀ (fun j hj => norm_nonneg _)
       intro j hj
       split_ifs with hw
       · exact cyclotomic_complex_circle_le (15 * n) j (mem_Icc.mp hj).1
