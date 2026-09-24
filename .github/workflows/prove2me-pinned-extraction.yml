@@ -1,0 +1,82 @@
+# SPDX-FileCopyrightText: 2026 Will Cook
+# SPDX-License-Identifier: Apache-2.0
+name: Prove2Me Pinned Extraction
+
+# A new workflow cannot receive workflow_dispatch until it exists on main.
+# The dedicated-branch push reads the reviewed request.json (initially #257 full extraction).
+on:
+  push:
+    branches: [codex/prove2me-remote-extraction-20260924]
+    paths:
+      - .github/workflows/prove2me-pinned-extraction.yml
+      - .github/prove2me-extraction/**
+
+permissions:
+  contents: read
+
+concurrency:
+  group: prove2me-extraction-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  extract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 330
+    env:
+      LEAN_NUM_THREADS: '1'
+    steps:
+      - name: Check out reviewed control files
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          path: control
+          persist-credentials: false
+      - name: Select audited source and phase
+        id: selected
+        run: python3 control/.github/prove2me-extraction/run.py select
+      - name: Check out exact public source commit
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ steps.selected.outputs.source_commit }}
+          path: source
+          persist-credentials: false
+      - name: Verify source and prepare official extractors
+        env:
+          P2M_PROBLEM: ${{ steps.selected.outputs.problem }}
+        run: python3 control/.github/prove2me-extraction/run.py prepare --problem "$P2M_PROBLEM" --source source --out output
+      - name: Restore compatible compiled corpus cache
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: source/.lake/build
+          key: prove2me-extract-${{ runner.os }}-${{ runner.arch }}-${{ github.sha }}
+          restore-keys: |
+            corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('source/lean-toolchain') }}-${{ hashFiles('source/lake-manifest.json') }}-
+      - name: Install pinned Lean and Mathlib cache
+        uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
+        with:
+          lake-package-directory: source
+          use-mathlib-cache: 'true'
+          use-github-cache: 'false'
+          build: 'false'
+          test: 'false'
+          lint: 'false'
+      - name: Build only selected import roots
+        env:
+          P2M_PROBLEM: ${{ steps.selected.outputs.problem }}
+        run: python3 control/.github/prove2me-extraction/run.py build --problem "$P2M_PROBLEM" --source source --out output
+      - name: Extract and check declaration graph
+        env:
+          P2M_PROBLEM: ${{ steps.selected.outputs.problem }}
+        run: python3 control/.github/prove2me-extraction/run.py stage1 --problem "$P2M_PROBLEM" --source source --out output
+      - name: Extract source positions for audited import closure
+        if: ${{ steps.selected.outputs.stage == 'full' }}
+        env:
+          P2M_PROBLEM: ${{ steps.selected.outputs.problem }}
+        run: python3 control/.github/prove2me-extraction/run.py stage2 --problem "$P2M_PROBLEM" --source source --out output
+      - name: Preserve logs and extraction receipts
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: prove2me-${{ steps.selected.outputs.problem }}-${{ steps.selected.outputs.stage }}-${{ github.run_id }}
+          path: output/
+          if-no-files-found: warn
+          retention-days: 7
