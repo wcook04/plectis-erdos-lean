@@ -1,9 +1,9 @@
 {
   "schema": "palomar_corpus_size_receipt_v1",
-  "generated_at": "2026-09-23T23:09:28Z",
+  "generated_at": "2026-09-24T04:31:47Z",
   "public_root": ".",
   "path_base": "repository_root",
-  "git_head": "f160df475486826477fd9cf1e19055ba08e7c35b",
+  "git_head": "39e1586d160a0ed8882f81514a89bba679415f67",
   "selected_families": [
     "ExternalVerification1041CriticalGeometry",
     "ExternalVerification1041CriticalValueMean",
