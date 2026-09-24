@@ -6,7 +6,7 @@ This appendix reads `docs/paper_lean_coverage.json` at paper commit `147f3f1da40
 
 | Problem | Selected configuration | Short / long paper rows | Mapped selected claims | Critical outside boundary |
 | --- | --- | ---: | ---: | --- |
-| #68 | `E68_05` | 6 / 18 | 5 | Structural carry and moment statements only; the large computed denominator exclusions have no selected endpoint certificate. Structural-only release scope still needs Will's acceptance. |
+| #68 | `E68_05` | 6 / 18 | 5 | The release-preparation scope selects six structural carry, divisor-channel and finite-gcd statements. The large computed denominator exclusions and separate three-halves LCM-growth theorem are outside this configuration. Exact-commit verification and registry state are recorded separately. |
 | #243 | `E243_01` | 18 / 52 | 11, plus 1 pending paper row | Cubic-rate irrationality is selected; the separate bounded-increment Sylvester criterion is outside. The square-specialisation paper row is historically marked Comparator pending. |
 | #249 | `E249_29` | 8 / 195 | 3 | All-base basis and integral relations are selected. Other carry, residue, denominator and Möbius results remain outside this registration. |
 | #251 | `E251_01` | 9 / 36 | 12 | General sparse construction and exact dyadic identities are selected; the named-input prime-gap joint application is outside. Corrected positions are not asserted prime. |

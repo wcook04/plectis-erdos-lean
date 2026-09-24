@@ -59,7 +59,7 @@
       "comparator_config_path": "PalomarCorpus/E68_05/comparator.json",
       "metadata_path": "PalomarCorpus/E68_05/formalization.yaml",
       "preflight_enabled": false,
-      "tag_preflight_enabled": false
+      "tag_preflight_enabled": true
     },
     {
       "entry": "E1041_01",
