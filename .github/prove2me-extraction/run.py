@@ -235,11 +235,16 @@ def stage2(source: Path, out: Path, case: dict) -> None:
         error = target / (row["module"] + ".stderr.log")
         command = ["lake", "env", "lean", "--run", "extract_sketch_info.lean",
                    str(relative)]
-        print("Stage 2", relative, flush=True)
+        # The 886,933-byte CertificateKernel source reached the original 300 s
+        # cap on run 36004062630, after Stage 1 had passed. Keep the longer
+        # allowance specific to that reviewed source; other modules retain the
+        # shorter failure bound.
+        timeout = 1800 if row["module"] == "Erdos249257.CertificateKernel" else 300
+        print("Stage 2", relative, f"timeout={timeout}s", flush=True)
         with output.open("w") as stdout, error.open("w") as stderr:
             try:
                 result = subprocess.run(command, cwd=source, stdout=stdout,
-                                        stderr=stderr, timeout=300, check=False,
+                                        stderr=stderr, timeout=timeout, check=False,
                                         env={**os.environ, "LEAN_NUM_THREADS": "1"})
             except subprocess.TimeoutExpired as exc:
                 raise RuntimeError(f"Stage 2 timed out on {relative}") from exc
