@@ -1,0 +1,81 @@
+# SPDX-FileCopyrightText: 2026 Will Cook
+# SPDX-License-Identifier: Apache-2.0
+name: Prove2Me Pinned Native Validation 243
+
+on:
+  push:
+    branches: [codex/prove2me-remote-extraction-243-20260924]
+    paths:
+      - .github/workflows/prove2me-native-validation.yml
+      - .github/prove2me-native-validation/**
+
+permissions:
+  contents: read
+
+concurrency:
+  group: prove2me-native-validation-243-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 355
+    env:
+      LEAN_NUM_THREADS: '1'
+      P2M_BUNDLE_SHA256: 'a57665dd174394bd80663de9ce1e1928344b58e0866a74feb3d7298a8e22e6ef'
+      P2M_SOURCE_COMMIT: '4fe59e0191169606942baae0949365070b7f419c'
+      P2M_ROOT: 'ErdosProblems.Erdos243.PaperCompleteR21.SquareSpecialisationUnconditional'
+    steps:
+      - name: Check out reviewed control files
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          path: control
+          persist-credentials: false
+      - name: Check out exact source commit
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ env.P2M_SOURCE_COMMIT }}
+          path: source
+          persist-credentials: false
+      - name: Check out separate cache source commit
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ env.P2M_SOURCE_COMMIT }}
+          path: cache
+          persist-credentials: false
+      - name: Install pinned Lean and compiled Mathlib
+        uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
+        with:
+          lake-package-directory: cache
+          use-mathlib-cache: 'true'
+          use-github-cache: 'false'
+          build: 'false'
+          test: 'false'
+          lint: 'false'
+      - name: Build complete reviewed source closure
+        shell: bash
+        run: |
+          mkdir -p output
+          cd cache
+          lake build "$P2M_ROOT" 2>&1 | tee ../output/source-cache-build.log
+      - name: Validate exact generated native actions
+        shell: bash
+        run: |
+          mkdir -p output
+          python3 control/.github/prove2me-native-validation/transport.py run-pending \
+            --bundle "$GITHUB_WORKSPACE/control/.github/prove2me-native-validation/input-243.zip" \
+            --bundle-sha256 "$P2M_BUNDLE_SHA256" \
+            --source-checkout "$GITHUB_WORKSPACE/source" \
+            --cache-checkout "$GITHUB_WORKSPACE/cache" \
+            --lean-binary "$(elan which lean)" \
+            --out "$GITHUB_WORKSPACE/output/validation" \
+            --max-load 10 --timeout-seconds 1800 \
+            2>&1 | tee output/validation-console.log
+      - name: Preserve validation and failure evidence
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: prove2me-native-243-${{ github.run_id }}
+          path: output/
+          if-no-files-found: warn
+          retention-days: 7
