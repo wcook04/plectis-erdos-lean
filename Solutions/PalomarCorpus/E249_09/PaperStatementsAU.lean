@@ -140,6 +140,13 @@ noncomputable def carryOrbit (h N : ℕ) (d : ℤ) : ℕ → ℤ
   | 0 => d
   | i + 1 => 2 * carryOrbit h N d i - deltaTotient h (N + i + 1)
 
+noncomputable def windowDiscrepancy2 (h N L : ℕ) : ℤ :=
+  windowDiscrepancy h (N + h) L - windowDiscrepancy h N L
+
+noncomputable def certifiedRank2Kill (h N L : ℕ) : Prop :=
+  (2 * ((N : ℤ) + 2 * h + L + 2)) < windowDiscrepancy2 h N L % 2 ^ L ∧
+    windowDiscrepancy2 h N L % 2 ^ L < 2 ^ L - 2 * ((N : ℤ) + 2 * h + L + 2)
+
 noncomputable def totientPrefix (N : ℕ) : ℕ :=
   ∑ n ∈ Finset.range (N + 1), Nat.totient n * 2 ^ (N - n)
 

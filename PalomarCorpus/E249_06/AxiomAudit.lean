@@ -1,32 +1,9 @@
 import Solutions.PalomarCorpus.E249_06
 
-#print axioms PalomarCorpus.E249.PaperStatementsAD.certifiedKill_depth_floor
-#print axioms PalomarCorpus.E249.PaperStatementsAD.exists_certifiedKill_iff_tail_diff_notMem_int
-#print axioms PalomarCorpus.E249.PaperStatementsAD.tail_diff_mem_int_iff_scaled_series_mem_int
-#print axioms PalomarCorpus.E249.PaperStatementsAD.tail_diff_notMem_int_of_certifiedKill
+#print axioms PalomarCorpus.E249.PaperStatementsAE.signed_dyadic_clearing
+#print axioms PalomarCorpus.E249.PaperStatementsAE.signed_dyadic_sum_ne_zero
 #print axioms PalomarCorpus.E249.PaperStatementsAF.scaled_dyadic_sum_odd
-#print axioms PalomarCorpus.E249.PaperStatementsAI.irrational_of_den_mul_abs_sub_tendsto_zero
-#print axioms PalomarCorpus.E249.PaperStatementsAI.irrational_of_int_mul_near_int
-#print axioms PalomarCorpus.E249.PaperStatementsAI.irrational_of_pow_mul_near_int
-#print axioms PalomarCorpus.E249.PaperStatementsAJ.irrational_of_near_integer_base_powers
-#print axioms PalomarCorpus.E249.PaperStatementsAJ.irrational_of_near_integer_multiples
-#print axioms PalomarCorpus.E249.PaperStatementsAJ.one_div_den_le_abs_int_combination
-#print axioms PalomarCorpus.E249.PaperStatementsAL.digit_block
-#print axioms PalomarCorpus.E249.PaperStatementsAL.exists_irrational_basePower_bounded_away
-#print axioms PalomarCorpus.E249.PaperStatementsAL.fract_mem_Icc_of_no_three_equal
-#print axioms PalomarCorpus.E249.PaperStatementsAL.fract_two_pow_mul_xi_mem_Icc
-#print axioms PalomarCorpus.E249.PaperStatementsAL.irrational_tail_zero
-#print axioms PalomarCorpus.E249.PaperStatementsAL.irrational_xi
-#print axioms PalomarCorpus.E249.PaperStatementsAL.no_three_consecutive_equal
-#print axioms PalomarCorpus.E249.PaperStatementsAL.not_approaches_int
-#print axioms PalomarCorpus.E249.PaperStatementsAL.not_eventually_periodic
-#print axioms PalomarCorpus.E249.PaperStatementsAL.not_near_integer_along_powers_of_two
-#print axioms PalomarCorpus.E249.PaperStatementsAL.one_div_eight_le_abs_sub_int
-#print axioms PalomarCorpus.E249.PaperStatementsAL.one_div_eight_le_dist_xi
-#print axioms PalomarCorpus.E249.PaperStatementsAT.certificate_logarithmic_depth
-#print axioms PalomarCorpus.E249.PaperStatementsAT.fixed_depth_bounds_indices
-#print axioms PalomarCorpus.E249.PaperStatementsAT.prefix_fractional_part
-#print axioms PalomarCorpus.E249.PaperStatementsAT.totient_scaled_truncation_error
+#print axioms PalomarCorpus.E249.PaperStatementsAR.lcmHeight_scaledMobiusShadow_den_exact
 #print axioms PalomarCorpus.E249.PaperStatementsG.historical_table_size_and_initial_depths
 #print axioms PalomarCorpus.E249.PaperStatementsG.sixteen_certificate_windows
 #print axioms PalomarCorpus.E249.PaperStatementsG.small_certificate_windows

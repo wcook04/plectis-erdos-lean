@@ -9,7 +9,7 @@ import Mathlib
 set_option autoImplicit false
 
 /-!
-# Erdős #257, record section 6.2: exact identities and reductions (part 2 of 5)
+# Erdős #257, record section 6.1: conditional membership tests (part 6 of 6)
 
 Each theorem below restates, against Mathlib alone, a theorem of the Lean development
 for Erdős problem #257, in the order the papers state them. The definitions a statement
@@ -18,281 +18,174 @@ the source declaration it comes from. Erdős problem #257 remains open, and no t
 this entry decides it.
 -/
 
-open Set
 open Filter
+open Topology
 open scoped BigOperators
-open scoped ENNReal
-open MeasureTheory
-open Topology
 
-namespace PalomarCorpus.E257_17.Shared
-/-- The real Mersenne weight 1 divided by 2 to the power n minus 1; at n = 0 the value is 0 because division by zero is zero here. -/
-noncomputable def mersenneWeight (n : ℕ) : ℝ :=
-  1 / ((2 : ℝ) ^ n - 1)
-/-- The Mersenne tail beyond rank n, namely the sum over k at least 0 of the Mersenne weight at n+k+1. -/
-noncomputable def mersenneTail (n : ℕ) : ℝ :=
-  ∑' k : ℕ, mersenneWeight (n + k + 1)
-/-- The real number coded by a set A of exponents, namely the sum over a in A with a at least 1 of 1 divided by 2 to the power a minus 1; the indexing runs over k and evaluates the indicator at k+1, so only positive exponents contribute. -/
-noncomputable def positiveMersenneSupportValue (A : Set ℕ) : ℝ :=
-  ∑' k : ℕ, Set.indicator A mersenneWeight (k + 1)
-end PalomarCorpus.E257_17.Shared
-
-namespace PalomarCorpus.E257.PaperStructuresBJ
-open Set
+namespace PalomarCorpus.E257.PaperStatementsAG
 open Filter
+open Topology
+/-- **The Erdős #257 support series** `∑_{a ∈ A} 1/(b^a - 1)`, as an indicator series over ℕ. The `a = 0` term is `1/(1-1) = 0` under real division-by-zero conventions, so supports containing `0` contribute nothing spurious. Local copy of Erdos249257.erdosSupportSeries, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def erdosSupportSeries (b : ℕ) (A : Set ℕ) : ℝ :=
+  ∑' a : ℕ, Set.indicator A (fun a => (1 : ℝ) / ((b : ℝ) ^ a - 1)) a
+/-- **The signed weighted divisor coefficient** `∑_{d ∣ n} w d` for an integer weight `w : ℕ → ℤ`, the Dirichlet incidence `w * 1` with signs. At a Nat weight (cast) this is `weightedCoeff`. Local copy of Erdos249257.intWeightedCoeff, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def intWeightedCoeff (w : ℕ → ℤ) (n : ℕ) : ℤ :=
+  ∑ d ∈ n.divisors, w d
+/-- **The signed weighted Erdős series** `∑_a w(a)/(b^a - 1)` for an integer weight. The `a = 0` term is junk-safe (`w(0)/0 = 0`). At a cast Nat weight this is `weightedErdosSeries`; mixed-sign rational coefficient series reduce to it by clearing denominators. Local copy of Erdos249257.intWeightedErdosSeries, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def intWeightedErdosSeries (b : ℕ) (w : ℕ → ℤ) : ℝ :=
+  ∑' a : ℕ, ((w a : ℤ) : ℝ) / ((b : ℝ) ^ a - 1)
+/-- States thm:multiples-support from the long record for Erdős problem #257. Transported from Erdos249257.erdosSupportSeries_multiples_eq_pow_base_full_support in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem erdosSupportSeries_multiples_eq_pow_base_full_support
+    (b d : ℕ) (hb : 2 ≤ b) (hd : 1 ≤ d) :
+    erdosSupportSeries b {n : ℕ | d ∣ n}
+      = ∑' k : ℕ, (1 : ℝ) / (((b : ℝ) ^ d) ^ (k + 1) - 1) := by
+  sorry
+/-- States thm:factorial-twopow-support from the long record for Erdős problem #257. Transported from Erdos249257.irrational_erdosSum_two_pow_support in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem irrational_erdosSum_two_pow_support (b : ℕ) (hb : 2 ≤ b) :
+    Irrational (∑' k, (1 : ℝ) / ((b : ℝ) ^ (2 ^ k) - 1)) := by
+  sorry
+/-- States thm:multiples-support from the long record for Erdős problem #257. Transported from Erdos249257.irrational_erdosSupportSeries_multiples in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem irrational_erdosSupportSeries_multiples (b d : ℕ) (hb : 2 ≤ b) (hd : 1 ≤ d) :
+    Irrational (erdosSupportSeries b {n : ℕ | d ∣ n}) := by
+  sorry
+/-- States thm:residue-odd from the long record for Erdős problem #257. Transported from Erdos249257.irrational_erdosSupportSeries_residueClass in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem irrational_erdosSupportSeries_residueClass
+    (b m c : ℕ) (hb : 2 ≤ b) (hm : 0 < m) :
+    Irrational (erdosSupportSeries b {n : ℕ | n % m = c % m}) := by
+  sorry
+/-- States thm:signed-periodic from the long record for Erdős problem #257. Transported from Erdos249257.irrational_intWeightedErdosSeries_periodic_of_coeff_nonneg_of_frequently_ne_zero in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem irrational_intWeightedErdosSeries_periodic_of_coeff_nonneg_of_frequently_ne_zero
+    (b m : ℕ) (w : ℕ → ℤ) (hb : 2 ≤ b) (hm : 0 < m)
+    (hper : ∀ n : ℕ, w (n + m) = w n)
+    (hc0 : ∀ n : ℕ, 0 < n → 0 ≤ intWeightedCoeff w n)
+    (hne : ∀ N : ℕ, ∃ n : ℕ, N < n ∧ intWeightedCoeff w n ≠ 0) :
+    Irrational (intWeightedErdosSeries b w) := by
+  sorry
+/-- States thm:signed-periodic from the long record for Erdős problem #257. Transported from Erdos249257.irrational_intWeightedErdosSeries_periodic_of_coeff_nonpos_of_frequently_ne_zero in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem irrational_intWeightedErdosSeries_periodic_of_coeff_nonpos_of_frequently_ne_zero
+    (b m : ℕ) (w : ℕ → ℤ) (hb : 2 ≤ b) (hm : 0 < m)
+    (hper : ∀ n : ℕ, w (n + m) = w n)
+    (hc0 : ∀ n : ℕ, 0 < n → intWeightedCoeff w n ≤ 0)
+    (hne : ∀ N : ℕ, ∃ n : ℕ, N < n ∧ intWeightedCoeff w n ≠ 0) :
+    Irrational (intWeightedErdosSeries b w) := by
+  sorry
+/-- States thm:signed-periodic from the long record for Erdős problem #257. Transported from Erdos249257.irrational_or_bpow_mul_eq_intCast_intWeightedErdosSeries_periodic in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem irrational_or_bpow_mul_eq_intCast_intWeightedErdosSeries_periodic
+    (b m : ℕ) (w : ℕ → ℤ) (hb : 2 ≤ b) (hm : 0 < m)
+    (hper : ∀ n : ℕ, w (n + m) = w n) :
+    Irrational (intWeightedErdosSeries b w)
+      ∨ ∃ (k : ℕ) (z : ℤ), (b : ℝ) ^ k * intWeightedErdosSeries b w = (z : ℝ) := by
+  sorry
+end PalomarCorpus.E257.PaperStatementsAG
+
+namespace PalomarCorpus.E257.PaperStatementsAD
 open scoped BigOperators
-open scoped ENNReal
-open MeasureTheory
-open Topology
-export PalomarCorpus.E257_17.Shared (mersenneTail mersenneWeight positiveMersenneSupportValue)
-/-- Local definition SeamRowWord, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable abbrev SeamRowWord (s : ℕ) := Fin (s - 2) → Bool
-/-- Local definition extend, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def SeamRowWord.extend {s : ℕ} (b : SeamRowWord s) (beta : Bool) :
-    SeamRowWord (s + 1) :=
-  fun i => if h : (i : ℕ) < s - 2 then b ⟨i, h⟩ else beta
-/-- Local definition ofList, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def ofList {s : ℕ} (bits : List Bool) (hlen : bits.length = s - 2) :
-    SeamRowWord s :=
-  fun i => bits.get (Fin.cast hlen.symm i)
-/-- The greedy Boolean word for an integer subset sum problem: given a list of weights in the order presented and a capacity, take a weight when it is at most the current capacity and subtract it, otherwise skip it and keep the capacity. -/
-noncomputable def integerGreedyBits : List ℕ → ℕ → List Bool
-  | [], _ => []
-  | w :: ws, C =>
-      if w ≤ C then
-        true :: integerGreedyBits ws (C - w)
-      else
-        false :: integerGreedyBits ws C
-/-- Local definition integerGreedyBits_length, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def integerGreedyBits_length (weights : List ℕ) (C : ℕ) :
-    (integerGreedyBits weights C).length = weights.length := by
-  induction weights generalizing C with
-  | nil => simp [integerGreedyBits]
-  | cons w ws ih =>
-      simp only [integerGreedyBits]
-      split <;> simp [ih]
-/-- The integer capacity of the seam subset sum problem at row s, namely 2 raised to the exponent 2s minus 1, less 2 to the power s; both the exponent subtraction and the outer subtraction are truncated natural subtraction, so the value is 0 at s = 0 and at s = 1. -/
-noncomputable def seamSubsetTarget (s : ℕ) : ℕ :=
-  2 ^ (2 * s - 1) - 2 ^ s
-/-- The truncated integer Mersenne weight at seam row s and rank d, namely the natural number quotient of 4 to the power s by 2 to the power d minus 1; at d = 0 the divisor is 0 and the value is 0. -/
-noncomputable def truncatedMersenneWeight (s d : ℕ) : ℕ :=
-  4 ^ s / (2 ^ d - 1)
-/-- The list of truncated Mersenne weights at seam row s for the ranks from the given starting index up to s minus 1, in increasing rank order. -/
-noncomputable def seamWeightsFrom (s : ℕ) : ℕ → List ℕ
-  | d =>
-      if h : d < s then
-        truncatedMersenneWeight s d :: seamWeightsFrom s (d + 1)
-      else
-        []
-termination_by d => s - d
-decreasing_by omega
-/-- The seam weight list at row s, namely the truncated Mersenne weights for ranks 2 up to s minus 1. -/
-noncomputable def seamWeights (s : ℕ) : List ℕ :=
-  seamWeightsFrom s 2
-/-- Local definition seamWeightsFrom_eq_cons, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def seamWeightsFrom_eq_cons {s d : ℕ} (h : d < s) :
-    seamWeightsFrom s d =
-      truncatedMersenneWeight s d :: seamWeightsFrom s (d + 1) := by
-  rw [seamWeightsFrom]
-  simp [h]
-/-- Local definition seamWeightsFrom_eq_nil, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def seamWeightsFrom_eq_nil {s d : ℕ} (h : s ≤ d) :
-    seamWeightsFrom s d = [] := by
-  rw [seamWeightsFrom]
-  simp [Nat.not_lt.mpr h]
-/-- Local definition seamWeightsFrom_length_eq, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def seamWeightsFrom_length_eq (s d : ℕ) :
-    (seamWeightsFrom s d).length = s - d := by
-  by_cases hds : d < s
-  · rw [seamWeightsFrom_eq_cons hds, List.length_cons,
-      seamWeightsFrom_length_eq s (d + 1)]
-    omega
-  · rw [seamWeightsFrom_eq_nil (by omega)]
-    simp
-    omega
-termination_by s - d
-decreasing_by omega
-/-- Local definition seamWeights_length_eq, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def seamWeights_length_eq (s : ℕ) :
-    (seamWeights s).length = s - 2 := by
-  unfold seamWeights
-  exact seamWeightsFrom_length_eq s 2
-/-- Local definition seamGreedyWord, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def seamGreedyWord (s : ℕ) : SeamRowWord s :=
-  ofList
-    (integerGreedyBits (seamWeights s) (seamSubsetTarget s))
-    (by rw [integerGreedyBits_length, seamWeights_length_eq])
-/-- Local definition seamWordSupport, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def seamWordSupport {s : ℕ} (b : SeamRowWord s) : Finset ℕ :=
-  ((Finset.univ : Finset (Fin (s - 2))).filter (fun i => b i = true)).image
-    (fun i : Fin (s - 2) => (i : ℕ) + 2)
-/-- States lem:eventually-right-impossible from the long record for Erdős problem #257. Transported from Erdos249257.prefix_add_mersenneTail_lt_half_of_eventually_right in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem prefix_add_mersenneTail_lt_half_of_eventually_right
-    {S D : ℕ} {u : Finset ℕ}
-    (hS5 : 5 ≤ S) (hDS : D < S)
-    (hu : ∀ e ∈ u, 2 ≤ e ∧ e < D)
-    (hright : ∀ s : ℕ, S ≤ s →
-      seamGreedyWord (s + 1) = (seamGreedyWord s).extend true)
-    (hbase : seamWordSupport (seamGreedyWord S) =
-      u ∪ Finset.Ico (D + 1) S) :
-    positiveMersenneSupportValue (↑u : Set ℕ) + mersenneTail D <
-      (1 / 2 : ℝ) := by
+/-- `Hₜ = lcm(1, ..., t)`. The interval avoids inserting zero into the finite LCM. Local copy of Erdos249257.MersenneShadowCyclotomicNoncollapse.lcmHeight, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def lcmHeight (t : ℕ) : ℕ :=
+  (Finset.Icc 1 t).lcm (fun n ↦ n)
+/-- Prime indices in the development's upper half `(t/2, t]`. Local copy of Erdos249257.MersenneShadowCyclotomicNoncollapse.upperHalfPrimes, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def upperHalfPrimes (t : ℕ) : Finset ℕ :=
+  (Finset.Ioc (t / 2) t).filter Nat.Prime
+/-- The Mersenne denominator at exponent `n`. Local copy of Erdos249257.RadicalMobiusShadow.mersenne, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def mersenne (n : ℕ) : ℕ := 2 ^ n - 1
+/-- The integral numerator, written as its squarefree-divisor expansion. For `s ⊆ primeFactors(r)`, put `d = ∏ p ∈ s, p`. Then the summand is `(-1)^|s| (r/d) ((2^r-1)/(2^d-1))`. This is exactly the nonzero part of `Σ_{d ∣ r} μ(d) (r/d) ((2^r-1)/(2^d-1))`: nonsquarefree divisors have Möbius coefficient zero. The subset form makes that finite support explicit and keeps the definition executable without factoring irrelevant divisors. Local copy of Erdos249257.RadicalMobiusShadow.mobiusNumerator, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def mobiusNumerator (r : ℕ) : ℤ :=
+  ∑ s ∈ r.primeFactors.powerset,
+    (-1 : ℤ) ^ s.card *
+      ((r / s.prod id : ℕ) : ℤ) *
+        (((mersenne r) / (mersenne (s.prod id)) : ℕ) : ℤ)
+/-- The unscaled radical shadow `B(r) = M_r / (2^r - 1)`. Local copy of Erdos249257.RadicalMobiusShadow.baseMobiusShadow, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def baseMobiusShadow (r : ℕ) : ℚ :=
+  Rat.divInt (mobiusNumerator r) (mersenne r : ℤ)
+/-- The squarefree kernel used by the numeric shadow: the product of the distinct prime factors of `n`. For `n = 0` this convention gives `1`; all development-facing scaling theorems assume `0 < n`. Local copy of Erdos249257.RadicalMobiusShadow.squarefreeKernel, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def squarefreeKernel (n : ℕ) : ℕ := ∏ p ∈ n.primeFactors, p
+/-- The numeric shadow at an arbitrary scale. By construction it only sees the distinct prime factors of `H`. Local copy of Erdos249257.RadicalMobiusShadow.numericMobiusShadow, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def numericMobiusShadow (H : ℕ) : ℚ :=
+  baseMobiusShadow (squarefreeKernel H) / (squarefreeKernel H : ℚ)
+/-- The paper's integral Möbius numerator `A_r = ∑_{d ∣ r} μ(d) (r/d) (M_r / M_d)`. Local copy of ErdosProblems.Erdos257.PaperCompleteR21.paperA, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def paperA (r : ℕ) : ℤ :=
+  ∑ d ∈ r.divisors,
+    ArithmeticFunction.moebius d * (((r / d : ℕ)) : ℤ) *
+      (((mersenne r /
+        mersenne d : ℕ)) : ℤ)
+/-- The paper's finite rational sum `B(r) = ∑_{d ∣ r} μ(d)(r/d) / (2^d - 1)`. Local copy of ErdosProblems.Erdos257.PaperCompleteR21.paperB, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def paperB (r : ℕ) : ℚ :=
+  ∑ d ∈ r.divisors,
+    ((ArithmeticFunction.moebius d : ℤ) : ℚ) * ((r : ℚ) / (d : ℚ)) /
+      ((2 : ℚ) ^ d - 1)
+/-- States thm:mersenne-channel-growth from the long record for Erdős problem #257. Transported from Erdos249257.MersenneShadowDenominatorGrowth.lcmHeight_scaledMobiusShadow_den_lower_bound in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem lcmHeight_scaledMobiusShadow_den_lower_bound
+    {t : ℕ} (ht : 5 ≤ t) :
+    2 ^ (t / 2) ≤
+      ((lcmHeight t : ℚ) *
+        numericMobiusShadow (lcmHeight t)).den := by
   sorry
-end PalomarCorpus.E257.PaperStructuresBJ
-
-namespace PalomarCorpus.E257.PaperStatementsAH
-open scoped ENNReal
-open Filter
-open Set
-open MeasureTheory
-open Topology
-export PalomarCorpus.E257_17.Shared (mersenneTail mersenneWeight)
-/-- The first two geometric channels of the Mersenne tail. This cap is strictly weaker than the dyadic cap while still lying below the full tail. Local copy of Erdos249257.halfTwoChannelCap, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def halfTwoChannelCap (n : ℕ) : ℝ :=
-  ((1 : ℝ) / 2) ^ n
-    + (1 / 3 : ℝ) * ((1 : ℝ) / 4) ^ n
-/-- States lem:mersenne-tail-weight from the long record for Erdős problem #257. Transported from Erdos249257.halfTwoChannelCap_lt_mersenneTail in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem halfTwoChannelCap_lt_mersenneTail (n : ℕ) :
-    halfTwoChannelCap n < mersenneTail n := by
+/-- States thm:mersenne-channel-growth from the long record for Erdős problem #257. Transported from Erdos249257.MersenneShadowDenominatorGrowth.upperHalfMersenneProduct_lower_bound in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem upperHalfMersenneProduct_lower_bound {t : ℕ} (ht : 5 ≤ t) :
+    2 ^ (t / 2) ≤
+      ∏ p ∈ upperHalfPrimes t, mersenne p := by
   sorry
-/-- States lem:mersenne-tail-weight from the long record for Erdős problem #257. Transported from Erdos249257.mersenneTail_eq_weight_add in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem mersenneTail_eq_weight_add (n : ℕ) :
-    mersenneTail n = mersenneWeight (n + 1) + mersenneTail (n + 1) := by
+/-- States thm:mersenne-channel-survival from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.channelProduct_coprime_mobiusNumerator_of_one_le in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem channelProduct_coprime_mobiusNumerator_of_one_le
+    {P : Finset ℕ} {t r : ℕ} (hr : Squarefree r)
+    (hprime : ∀ p ∈ P, p.Prime) (hpr : ∀ p ∈ P, p ∣ r)
+    (hupper : ∀ p ∈ P, t < 2 * p)
+    (hcut : ∀ q : ℕ, q.Prime → q ∣ r → q ≤ t) :
+    Nat.Coprime (∏ p ∈ P, mersenne p)
+      (mobiusNumerator r).natAbs := by
   sorry
-/-- States lem:mersenne-tail-weight from the long record for Erdős problem #257. Transported from Erdos249257.mersenneTail_le_two_mul_weight in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem mersenneTail_le_two_mul_weight (n : ℕ) :
-    mersenneTail n ≤ 2 * mersenneWeight (n + 1) := by
+/-- States thm:mersenne-channel-survival from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paperA_eq_mobiusNumerator in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem paperA_eq_mobiusNumerator {r : ℕ} (hr : Squarefree r) :
+    paperA r = mobiusNumerator r := by
   sorry
-/-- States lem:mersenne-tail-weight from the long record for Erdős problem #257. Transported from Erdos249257.mersenneTail_lt_weight in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem mersenneTail_lt_weight {n : ℕ} (hn : 0 < n) :
-    mersenneTail n < mersenneWeight n := by
+/-- States thm:mersenne-channel-survival from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paperB_eq_baseMobiusShadow in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem paperB_eq_baseMobiusShadow {r : ℕ} (hr : Squarefree r) :
+    paperB r = baseMobiusShadow r := by
   sorry
-/-- States lem:mersenne-tail-weight from the long record for Erdős problem #257. Transported from Erdos249257.two_mul_mersenneWeight_succ_lt in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem two_mul_mersenneWeight_succ_lt {n : ℕ} (hn : 0 < n) :
-    2 * mersenneWeight (n + 1) < mersenneWeight n := by
+/-- States thm:mersenne-channel-survival from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paperB_eq_divInt_paperA in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem paperB_eq_divInt_paperA {r : ℕ} (hr : Squarefree r) :
+    paperB r = Rat.divInt (paperA r) (mersenne r : ℤ) := by
   sorry
-end PalomarCorpus.E257.PaperStatementsAH
-
-namespace PalomarCorpus.E257.PaperStructuresU
-open Filter
-open Set
-open Topology
-open scoped ENNReal
-open MeasureTheory
-export PalomarCorpus.E257_17.Shared (mersenneTail mersenneWeight positiveMersenneSupportValue)
-/-- **Packet §4.** A finite support word certified to straddle the target at depth `d`: the coded value is at most `t` and the value plus the complete unresolved tail mass still reaches `t`. This is deliberately *weaker* than the `HalfPrefixForcingChain.interval_trapped` containment condition: overlap of the correction image with the cylinder, not containment inside it. Local copy of Erdos249257.IsStraddlePrefix, restated so the compared statements elaborate against Mathlib alone. -/
-structure IsStraddlePrefix (t : ℝ) (u : Finset ℕ) (d : ℕ) : Prop where
-  mem_bounds : ∀ n ∈ u, 0 < n ∧ n ≤ d
-  value_le : positiveMersenneSupportValue (↑u : Set ℕ) ≤ t
-  le_value_add_tail :
-    t ≤ positiveMersenneSupportValue (↑u : Set ℕ) + mersenneTail d
-/-- States lem:rank-step-trichotomy from the long record for Erdős problem #257. Transported from Erdos249257.IsStraddlePrefix.half_step_forced in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem IsStraddlePrefix.half_step_forced {u : Finset ℕ} {d : ℕ}
-    (hu : IsStraddlePrefix (1 / 2 : ℝ) u d) :
-    (IsStraddlePrefix (1 / 2 : ℝ) u (d + 1) ∧
-        ¬ IsStraddlePrefix (1 / 2 : ℝ) (insert (d + 1) u) (d + 1)) ∨
-      (IsStraddlePrefix (1 / 2 : ℝ) (insert (d + 1) u) (d + 1) ∧
-          ¬ IsStraddlePrefix (1 / 2 : ℝ) u (d + 1)) ∨
-        (positiveMersenneSupportValue (↑u : Set ℕ) + mersenneTail (d + 1)
-            < 1 / 2 ∧
-          (1 / 2 : ℝ) < positiveMersenneSupportValue (↑u : Set ℕ)
-            + mersenneWeight (d + 1)) := by
+/-- States thm:mersenne-channel-survival from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_channel_factor_gcd_eq_one in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem paper_channel_factor_gcd_eq_one
+    {p q : ℕ} (hp : p.Prime) (hq : q.Prime) (hpq : p ≠ q) :
+    Nat.gcd (2 ^ p - 1) (2 ^ q - 1) = 2 ^ Nat.gcd p q - 1 ∧
+      Nat.gcd (2 ^ p - 1) (2 ^ q - 1) = 1 := by
   sorry
-/-- States lem:rank-step-trichotomy from the long record for Erdős problem #257. Transported from Erdos249257.isStraddlePrefix_step_trichotomy in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem isStraddlePrefix_step_trichotomy {t : ℝ} {u : Finset ℕ} {d : ℕ}
-    (hu : IsStraddlePrefix t u d) :
-    IsStraddlePrefix t u (d + 1) ∨
-      IsStraddlePrefix t (insert (d + 1) u) (d + 1) ∨
-        (positiveMersenneSupportValue (↑u : Set ℕ) + mersenneTail (d + 1) < t ∧
-          t < positiveMersenneSupportValue (↑u : Set ℕ)
-              + mersenneWeight (d + 1)) := by
+/-- States thm:mersenne-channel-survival from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_channel_factors_pairwise_coprime in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem paper_channel_factors_pairwise_coprime
+    {P : Finset ℕ} (hprime : ∀ p ∈ P, p.Prime) :
+    (P : Set ℕ).Pairwise fun p q => Nat.Coprime (2 ^ p - 1) (2 ^ q - 1) := by
   sorry
-end PalomarCorpus.E257.PaperStructuresU
-
-namespace PalomarCorpus.E257.PaperStatementsAM
-open Filter
-open Set
-open Topology
-open scoped ENNReal
-open MeasureTheory
-export PalomarCorpus.E257_17.Shared (mersenneTail mersenneWeight positiveMersenneSupportValue)
-/-- States lem:half-endpoint-kills from the long record for Erdős problem #257. Transported from Erdos249257.half_ne_coe_finset_add_mersenneTail in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem half_ne_coe_finset_add_mersenneTail
-    (u : Finset ℕ) (d : ℕ) :
-    positiveMersenneSupportValue (↑u : Set ℕ) + mersenneTail d
-      ≠ (1 / 2 : ℝ) := by
+/-- States thm:mersenne-channel-survival from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_mersenne_channel_survival in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem paper_mersenne_channel_survival
+    (P : Finset ℕ) {t h r : ℕ}
+    (ht : 1 ≤ t) (hh : 1 ≤ h) (hr1 : 1 ≤ r) (hrsf : Squarefree r)
+    (hcut : ∀ q : ℕ, q.Prime → q ∣ r → q ≤ t)
+    (hprime : ∀ p ∈ P, p.Prime) (hpr : ∀ p ∈ P, p ∣ r)
+    (hupper : ∀ p ∈ P, t < 2 * p) :
+    (∏ p ∈ P, (2 ^ p - 1)) / Nat.gcd (∏ p ∈ P, (2 ^ p - 1)) h ∣
+      ((h : ℚ) * paperB r).den := by
   sorry
-/-- States lem:half-endpoint-kills from the long record for Erdős problem #257. Transported from Erdos249257.positiveMersenneSupportValue_coe_finset_ne_half in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem positiveMersenneSupportValue_coe_finset_ne_half
-    {u : Finset ℕ} (h0 : 0 ∉ u) :
-    positiveMersenneSupportValue (↑u : Set ℕ) ≠ (1 / 2 : ℝ) := by
+/-- States thm:mersenne-channel-survival from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_mersenne_channel_survival_of_coprime_scale in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem paper_mersenne_channel_survival_of_coprime_scale
+    (P : Finset ℕ) {t h r : ℕ}
+    (ht : 1 ≤ t) (hh : 1 ≤ h) (hr1 : 1 ≤ r) (hrsf : Squarefree r)
+    (hcut : ∀ q : ℕ, q.Prime → q ∣ r → q ≤ t)
+    (hprime : ∀ p ∈ P, p.Prime) (hpr : ∀ p ∈ P, p ∣ r)
+    (hupper : ∀ p ∈ P, t < 2 * p)
+    (hscale : Nat.gcd (∏ p ∈ P, (2 ^ p - 1)) h = 1) :
+    (∏ p ∈ P, (2 ^ p - 1)) ∣ ((h : ℚ) * paperB r).den := by
   sorry
-/-- States lem:fatal-gap-exclusion from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.depth_prefix_interval_disjoint in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem depth_prefix_interval_disjoint {t : ℝ} {u v : Finset ℕ} {d : ℕ}
-    (hu : ∀ n ∈ u, 0 < n ∧ n ≤ d) (hv : ∀ n ∈ v, 0 < n ∧ n ≤ d)
-    (hut : positiveMersenneSupportValue (↑u : Set ℕ) ≤ t ∧
-      t ≤ positiveMersenneSupportValue (↑u : Set ℕ) + mersenneTail d)
-    (hvt : positiveMersenneSupportValue (↑v : Set ℕ) ≤ t ∧
-      t ≤ positiveMersenneSupportValue (↑v : Set ℕ) + mersenneTail d) :
-    u = v := by
+/-- States thm:mersenne-channel-survival from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.upperHalfChannel_survivorProduct_dvd_den_of_one_le in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem upperHalfChannel_survivorProduct_dvd_den_of_one_le
+    (P : Finset ℕ) {t r h : ℕ} (hr : Squarefree r)
+    (hprime : ∀ p ∈ P, p.Prime) (hpr : ∀ p ∈ P, p ∣ r)
+    (hupper : ∀ p ∈ P, t < 2 * p)
+    (hcut : ∀ q : ℕ, q.Prime → q ∣ r → q ≤ t) :
+    (∏ p ∈ P, mersenne p) /
+        Nat.gcd (∏ p ∈ P, mersenne p) h ∣
+      (Rat.divInt ((h : ℤ) * mobiusNumerator r)
+        (mersenne r : ℤ)).den := by
   sorry
-/-- States lem:fatal-gap-exclusion from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.fatal_gap_endpoint_bounds in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem fatal_gap_endpoint_bounds {A : Set ℕ} {u : Finset ℕ} {d : ℕ}
-    (hu : ∀ n ∈ u, 0 < n ∧ n ≤ d)
-    (hagree : ∀ n : ℕ, 0 < n → n ≤ d → (n ∈ A ↔ n ∈ u)) :
-    (d + 1 ∉ A →
-        positiveMersenneSupportValue A
-          ≤ positiveMersenneSupportValue (↑u : Set ℕ) + mersenneTail (d + 1)) ∧
-      (d + 1 ∈ A →
-        positiveMersenneSupportValue (↑u : Set ℕ) + mersenneWeight (d + 1)
-          ≤ positiveMersenneSupportValue A) := by
-  sorry
-/-- States lem:fatal-gap-exclusion from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.fatal_gap_excludes_every_representation in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem fatal_gap_excludes_every_representation {t : ℝ} {u : Finset ℕ} {d : ℕ}
-    (hu : ∀ n ∈ u, 0 < n ∧ n ≤ d)
-    (hlo : positiveMersenneSupportValue (↑u : Set ℕ) + mersenneTail (d + 1) < t)
-    (hhi : t < positiveMersenneSupportValue (↑u : Set ℕ) + mersenneWeight (d + 1)) :
-    ∀ A : Set ℕ, 0 ∉ A → positiveMersenneSupportValue A ≠ t := by
-  sorry
-/-- States lem:fatal-gap-exclusion from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.fatal_gap_within_prefix_interval in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem fatal_gap_within_prefix_interval {t : ℝ} {u : Finset ℕ} {d : ℕ}
-    (hlo : positiveMersenneSupportValue (↑u : Set ℕ) + mersenneTail (d + 1) < t)
-    (hhi : t < positiveMersenneSupportValue (↑u : Set ℕ) + mersenneWeight (d + 1)) :
-    positiveMersenneSupportValue (↑u : Set ℕ) ≤ t ∧
-      t ≤ positiveMersenneSupportValue (↑u : Set ℕ) + mersenneTail d := by
-  sorry
-end PalomarCorpus.E257.PaperStatementsAM
-
-namespace PalomarCorpus.E257.PaperStatementsD
-open Filter
-open Set
-open Topology
-open scoped ENNReal
-open MeasureTheory
-export PalomarCorpus.E257_17.Shared (mersenneTail mersenneWeight positiveMersenneSupportValue)
-/-- Real greedy residual after processing exponents `1, ..., n`. Local copy of Erdos249257.greedyMersenneRemainder, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def greedyMersenneRemainder (x : ℝ) : ℕ → ℝ
-  | 0 => x
-  | n + 1 =>
-      if mersenneWeight (n + 1) ≤ greedyMersenneRemainder x n then
-        greedyMersenneRemainder x n - mersenneWeight (n + 1)
-      else
-        greedyMersenneRemainder x n
-/-- The set of positive exponents selected by the real greedy recursion. Local copy of Erdos249257.greedyMersenneSupport, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def greedyMersenneSupport (x : ℝ) : Set ℕ :=
-  {m : ℕ | m ≠ 0 ∧
-    mersenneWeight m ≤ greedyMersenneRemainder x (m - 1)}
-/-- The positive exponents omitted by the real greedy recursion. Local copy of Erdos249257.greedyMersenneSkippedSupport, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def greedyMersenneSkippedSupport (x : ℝ) : Set ℕ :=
-  {m : ℕ | m ≠ 0 ∧ m ∉ greedyMersenneSupport x}
-/-- The Mersenne achievement set, with the analytically invisible zero bit normalized away. Local copy of Erdos249257.mersenneAchievementSet, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def mersenneAchievementSet : Set ℝ :=
-  {x : ℝ | ∃ A : Set ℕ, 0 ∉ A ∧ x = positiveMersenneSupportValue A}
-/-- States thm:last-skip-iff-fatal from the long record for Erdős problem #257. Transported from Erdos249257.half_mem_iff_every_actual_skip_survives in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem half_mem_iff_every_actual_skip_survives :
-    (1 / 2 : ℝ) ∈ mersenneAchievementSet ↔
-      ∀ M : ℕ,
-        M ∈ greedyMersenneSkippedSupport (1 / 2 : ℝ) →
-          greedyMersenneRemainder (1 / 2 : ℝ) M ≤ mersenneTail M := by
-  sorry
-end PalomarCorpus.E257.PaperStatementsD
+end PalomarCorpus.E257.PaperStatementsAD

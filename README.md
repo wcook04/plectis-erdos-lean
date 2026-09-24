@@ -30,13 +30,13 @@ The Palomar entries are packed in the order the papers state their theorems; [`P
 |---|---|---:|
 | #68 | `E68_01` to `E68_10` | 73 |
 | #243 | `E243_01` to `E243_11` | 140 |
-| #249 | `E249_01` to `E249_33` | 621 |
+| #249 | `E249_01` to `E249_33` | 622 |
 | #251 | `E251_01` to `E251_08` | 87 |
-| #257 | `E257_01` to `E257_43` | 537 |
+| #257 | `E257_01` to `E257_52` | 651 |
 | #269 | `E269_01` to `E269_11` | 92 |
-| #1041 | `E1041_01` to `E1041_08` | 105 |
-| #1049 | `E1049_01` to `E1049_08` | 110 |
-| Total | 132 entries | 1765 |
+| #1041 | `E1041_01` to `E1041_08` | 107 |
+| #1049 | `E1049_01` to `E1049_10` | 117 |
+| Total | 143 entries | 1889 |
 
 The problem-level entry `E257` of the previous layout was submitted to Palomar on 13 September 2026 at commit `52f29ad1` (submission `impkvgnxmpb7`). Its mechanical verification passed ([run 34784800531](https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/34784800531)); Palomar's render stage then failed on a known renderer defect ([PalomarSubmission #134](https://github.com/PalomarRegistry/PalomarSubmission/issues/134)), and the submission settled as `verification-error` on 14 September 2026. No entry of the present layout has been submitted.
 <!-- palomar-entry-table:end -->

@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification1049PaperStructuresV
+
+#print axioms Erdos249257.ExternalVerification1049PaperStructuresV.tail_prefix_lattice

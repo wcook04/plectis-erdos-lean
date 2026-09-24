@@ -15,4 +15,4 @@ import Solutions.PalomarCorpus.E249_03
 #print axioms PalomarCorpus.E249.PaperStatementsG.b6_compressed_adjoint_identity_impossible
 #print axioms PalomarCorpus.E249.PaperStatementsG.b6_rankOneSubrankQuotient_sub_totientSeries_offset_gt
 #print axioms PalomarCorpus.E249.PaperStatementsI.b6_synthetic_sequence_prescribed_differences
-#print axioms PalomarCorpus.E249.PaperStatementsI.b6_synthetic_shift_combinations_same_form
+#print axioms PalomarCorpus.E249.PaperStructuresR.fixed_precision_carry_completion

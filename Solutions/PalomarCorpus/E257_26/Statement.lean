@@ -20,100 +20,19 @@ environments. Generated from the Challenge; do not edit by hand.
 
 open Filter
 open Set
-open scoped BigOperators
+open Topology
 open scoped ENNReal
 open MeasureTheory
-open Topology
+open scoped ArithmeticFunction.Omega
 
 namespace PalomarCorpus.E257_26.Shared
-/-- The binary affine orbit driven by an integer sequence a from an initial value, defined by orbit 0 equal to the initial value and orbit (n+1) equal to twice orbit n minus a at n+1. -/
-noncomputable def affineBinaryOrbit (a : ℕ → ℤ) (u0 : ℤ) : ℕ → ℤ
-  | 0 => u0
-  | n + 1 => 2 * affineBinaryOrbit a u0 n - a (n + 1)
-/-- The base b reciprocal power subseries supported on A, namely the sum over a in A of 1 divided by b to the power a minus 1, written as an unconditional sum of the indicator of A; the exponent a = 0 contributes 0 because division by zero is zero here, so membership of 0 in A does not change the value. -/
-noncomputable def erdosSupportSeries (b : ℕ) (A : Set ℕ) : ℝ :=
-  ∑' a : ℕ, Set.indicator A (fun a => (1 : ℝ) / ((b : ℝ) ^ a - 1)) a
-/-- The discrete square-root strip used by the half-carry search. Local copy of Erdos249257.HalfCarryReachability.halfStripBound, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def halfStripBound (n : ℕ) : ℕ :=
-  2 * Nat.sqrt n + 4
-/-- The local integer Mersenne quotient at binary scale M and rank d, namely the natural number quotient of 2 to the power M by 2 to the power d minus 1; at d = 0 the divisor is 0 and the value is 0. -/
-noncomputable def localMersenneQuotient (M d : ℕ) : ℕ :=
-  2 ^ M / (2 ^ d - 1)
-/-- The total local quotient carried by a finite set D of ranks at binary scale M, namely the sum over d in D of the local Mersenne quotient at M and d. -/
-noncomputable def localPrefixQuotient (D : Finset ℕ) (M : ℕ) : ℕ :=
-  ∑ d ∈ D, localMersenneQuotient M d
 /-- The real Mersenne weight 1 divided by 2 to the power n minus 1; at n = 0 the value is 0 because division by zero is zero here. -/
 noncomputable def mersenneWeight (n : ℕ) : ℝ :=
   1 / ((2 : ℝ) ^ n - 1)
-/-- The remainder left by the greedy Mersenne rule applied to a nonnegative real x through rank n: it starts at x and, at each rank n+1, subtracts the weight 1 divided by 2 to the power n+1 minus 1 exactly when that weight is at most the current remainder. -/
-noncomputable def greedyMersenneRemainder (x : ℝ) : ℕ → ℝ
-  | 0 => x
-  | n + 1 =>
-      if mersenneWeight (n + 1) ≤ greedyMersenneRemainder x n then
-        greedyMersenneRemainder x n - mersenneWeight (n + 1)
-      else
-        greedyMersenneRemainder x n
-/-- The real number coded by a set A of exponents, namely the sum over a in A with a at least 1 of 1 divided by 2 to the power a minus 1; the indexing runs over k and evaluates the indicator at k+1, so only positive exponents contribute. -/
-noncomputable def positiveMersenneSupportValue (A : Set ℕ) : ℝ :=
-  ∑' k : ℕ, Set.indicator A mersenneWeight (k + 1)
-/-- The base two Mersenne achievement set, namely the set of reals of the form sum over a in A of 1 divided by 2 to the power a minus 1, taken over all sets A of positive exponents; equivalently the set of all subsums of the series with terms 1 divided by 2 to the power n minus 1 for n at least 1. -/
-noncomputable def mersenneAchievementSet : Set ℝ :=
-  {x : ℝ | ∃ A : Set ℕ, 0 ∉ A ∧ x = positiveMersenneSupportValue A}
-/-- **The support coefficient** `f_A(n) = #{d ∣ n : d ∈ A}`, the Dirichlet incidence `1_A * 1` of a support set `A ⊆ ℕ`. This is the coefficient in which Erdős #257 is actually stated: `∑_{a∈A} 1/(b^a - 1) = ∑_n f_A(n)/b^n`. Full support gives `f_ℕ = τ`; primes give `ω`; prime powers give `Ω`. Local copy of Erdos249257.supportCoeff, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def supportCoeff (A : Set ℕ) (n : ℕ) : ℕ :=
-  letI := Classical.decPred fun d : ℕ => d ∈ A
-  (n.divisors.filter fun d => d ∈ A).card
-/-- The integer half carry attached to a support A, namely the binary affine orbit started at 1 and driven by the divisor incidence coefficients of A shifted by one, so that the orbit at n+1 is twice the orbit at n minus the number of divisors of n+2 lying in A; the shift and the recursion index compose, so the coefficient consumed at step n+1 is the one at n+2. -/
-noncomputable def integerHalfCarry (A : Set ℕ) : ℕ → ℤ :=
-  affineBinaryOrbit (fun n : ℕ ↦ (supportCoeff A (n + 1) : ℤ)) 1
+/-- The signed coefficient layer between exact `p`-adic levels `e-1` and `e`. Local copy of Erdos249257.MaximalOmegaLayer.primePowerLayer, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def primePowerLayer (p e : ℕ) (g : ℕ → ℤ) (n : ℕ) : ℤ :=
+  g (p ^ e * n) - g (p ^ (e - 1) * n)
 end PalomarCorpus.E257_26.Shared
-
-namespace PalomarCorpus.E257.PaperStructuresBW
-open Filter
-open Set
-open scoped BigOperators
-open scoped ENNReal
-open MeasureTheory
-open Topology
-export PalomarCorpus.E257_26.Shared (greedyMersenneRemainder halfStripBound mersenneAchievementSet mersenneWeight positiveMersenneSupportValue)
-/-- The greedy Boolean word for an integer subset sum problem: given a list of weights in the order presented and a capacity, take a weight when it is at most the current capacity and subtract it, otherwise skip it and keep the capacity. -/
-noncomputable def integerGreedyBits : List ℕ → ℕ → List Bool
-  | [], _ => []
-  | w :: ws, C =>
-      if w ≤ C then
-        true :: integerGreedyBits ws (C - w)
-      else
-        false :: integerGreedyBits ws C
-/-- The total weight selected by a Boolean word, namely the sum of those weights whose corresponding entry of the word is true, with the recursion stopping at the end of either list. -/
-noncomputable def weightedBoolSum : List ℕ → List Bool → ℕ
-  | w :: ws, true :: bs => w + weightedBoolSum ws bs
-  | _ :: ws, false :: bs => weightedBoolSum ws bs
-  | _, _ => 0
-/-- The capacity left unpaid after the greedy Boolean word has been applied to a weight list, namely the capacity minus the weight it selects. -/
-noncomputable def integerGreedyRemainder (weights : List ℕ) (C : ℕ) : ℕ :=
-  C - weightedBoolSum weights (integerGreedyBits weights C)
-/-- The integer capacity of the seam subset sum problem at row s, namely 2 raised to the exponent 2s minus 1, less 2 to the power s; both the exponent subtraction and the outer subtraction are truncated natural subtraction, so the value is 0 at s = 0 and at s = 1. -/
-noncomputable def seamSubsetTarget (s : ℕ) : ℕ :=
-  2 ^ (2 * s - 1) - 2 ^ s
-/-- The truncated integer Mersenne weight at seam row s and rank d, namely the natural number quotient of 4 to the power s by 2 to the power d minus 1; at d = 0 the divisor is 0 and the value is 0. -/
-noncomputable def truncatedMersenneWeight (s d : ℕ) : ℕ :=
-  4 ^ s / (2 ^ d - 1)
-/-- The list of truncated Mersenne weights at seam row s for the ranks from the given starting index up to s minus 1, in increasing rank order. -/
-noncomputable def seamWeightsFrom (s : ℕ) : ℕ → List ℕ
-  | d =>
-      if h : d < s then
-        truncatedMersenneWeight s d :: seamWeightsFrom s (d + 1)
-      else
-        []
-termination_by d => s - d
-decreasing_by omega
-/-- The seam weight list at row s, namely the truncated Mersenne weights for ranks 2 up to s minus 1. -/
-noncomputable def seamWeights (s : ℕ) : List ℕ :=
-  seamWeightsFrom s 2
-/-- The greedy remainder of the seam subset sum problem at row s, namely the seam capacity minus the total weight selected greedily from the seam weight list. -/
-noncomputable def seamIntegerGreedyRemainder (s : ℕ) : ℕ :=
-  integerGreedyRemainder (seamWeights s) (seamSubsetTarget s)
-end PalomarCorpus.E257.PaperStructuresBW
 
 namespace PalomarCorpus.E257.PaperStatementsD
 open Filter
@@ -121,73 +40,119 @@ open Set
 open Topology
 open scoped ENNReal
 open MeasureTheory
-export PalomarCorpus.E257_26.Shared (affineBinaryOrbit erdosSupportSeries greedyMersenneRemainder halfStripBound integerHalfCarry mersenneWeight supportCoeff)
-/-- The set of positive exponents selected by the real greedy recursion. Local copy of Erdos249257.greedyMersenneSupport, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def greedyMersenneSupport (x : ℝ) : Set ℕ :=
-  {m : ℕ | m ≠ 0 ∧
-    mersenneWeight m ≤ greedyMersenneRemainder x (m - 1)}
-/-- The actual greedy half carry returns to the square-root strip beyond every requested index. This is weaker than an all-level strip bound. Local copy of Erdos249257.HalfCarryReachability.GreedyHalfCarryCofinalStripReturn, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def GreedyHalfCarryCofinalStripReturn : Prop :=
-  ∀ N : ℕ, ∃ M : ℕ, N ≤ M ∧
-    integerHalfCarry (greedyMersenneSupport (1 / 2 : ℝ)) M ≤
-      (halfStripBound (M + 1) : ℤ)
-/-- The canonical integer half carry measured relative to the signed Möbius solution. Index `N` corresponds to the packet's state `e_{N+1}`. Local copy of Erdos249257.HalfCarryReachability.mobiusCenteredHalfCarry, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def mobiusCenteredHalfCarry (A : Set ℕ) (N : ℕ) : ℤ :=
-  integerHalfCarry A N - 1
+export PalomarCorpus.E257_26.Shared (mersenneWeight)
+/-- The exact rational Mersenne weight `1 / (2^n - 1)`. Its meaningful support indices are positive; at index zero Lean's division convention gives zero. Local copy of Erdos249257.mersenneWeightRat, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def mersenneWeightRat (n : ℕ) : ℚ :=
+  1 / ((2 : ℚ) ^ n - 1)
+/-- Exact rational version of the greedy residual. Local copy of Erdos249257.greedyMersenneRemainderRat, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def greedyMersenneRemainderRat (x : ℚ) : ℕ → ℚ
+  | 0 => x
+  | n + 1 =>
+      if mersenneWeightRat (n + 1) ≤ greedyMersenneRemainderRat x n then
+        greedyMersenneRemainderRat x n - mersenneWeightRat (n + 1)
+      else
+        greedyMersenneRemainderRat x n
+/-- Real greedy residual after processing exponents `1, ..., n`. Local copy of Erdos249257.greedyMersenneRemainder, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def greedyMersenneRemainder (x : ℝ) : ℕ → ℝ
+  | 0 => x
+  | n + 1 =>
+      if mersenneWeight (n + 1) ≤ greedyMersenneRemainder x n then
+        greedyMersenneRemainder x n - mersenneWeight (n + 1)
+      else
+        greedyMersenneRemainder x n
+/-- The finite Erdős partial sum `∑_{n ∈ F} 1 / (b ^ n - 1)` as a rational number, stated with subtraction in `ℚ` so the statement reads exactly like the mathematical series. Local copy of Erdos249257.finiteErdosSum, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def finiteErdosSum (F : Finset Nat) (b : Nat) : Rat :=
+  ∑ n ∈ F, 1 / ((b : Rat) ^ n - 1)
+/-- Positive exponents selected through a finite exact-rational greedy run. Local copy of Erdos249257.greedyMersennePrefixRat, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def greedyMersennePrefixRat (x : ℚ) (n : ℕ) : Finset ℕ :=
+  (((Finset.range n).filter fun k =>
+      mersenneWeightRat (k + 1) ≤ greedyMersenneRemainderRat x k).image
+    fun k => k + 1)
+/-- The first geometric channel of the Mersenne tail. Local copy of Erdos249257.halfDyadicCap, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def halfDyadicCap (n : ℕ) : ℝ :=
+  ((1 : ℝ) / 2) ^ n
+/-- For a displayed residual `p / (2L)`, the integer numerator of its excess above the next dyadic point `2^-(n+1)`. Indeed, `p/(2L) - 2^-(n+1) = E/(2^(n+1)L)`. Keeping `E` integral makes the unresolved skipped-branch comparison an exact Diophantine inequality rather than a real-valued phase estimate. Local copy of Erdos249257.nextDyadicExcessIntNumerator, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def nextDyadicExcessIntNumerator (p : ℤ) (n L : ℕ) : ℤ :=
+  ((2 ^ n : ℕ) : ℤ) * p - (L : ℤ)
+/-- The exact finite greedy prefix used to display the half residual. Local copy of Erdos249257.halfGreedyPrefixRat, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def halfGreedyPrefixRat (n : ℕ) : ℚ :=
+  finiteErdosSum (greedyMersennePrefixRat (1 / 2 : ℚ) n) 2
+/-- The inherited odd denominator of the exact finite greedy prefix. Local copy of Erdos249257.halfGreedyPrefixDenominator, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def halfGreedyPrefixDenominator (n : ℕ) : ℕ :=
+  (halfGreedyPrefixRat n).den
+/-- Displayed numerator `p_n` in `r_n = p_n / (2 * halfGreedyPrefixDenominator n)`. Local copy of Erdos249257.halfGreedyResidualDisplayedNumerator, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def halfGreedyResidualDisplayedNumerator (n : ℕ) : ℤ :=
+  (halfGreedyPrefixDenominator n : ℤ) -
+    2 * (halfGreedyPrefixRat n).num
+/-- The actual greedy half-orbit specialization of the integral excess numerator. At level `n`, it measures excess above `2^-(n+1)`. Local copy of Erdos249257.halfGreedyNextDyadicExcessNumerator, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def halfGreedyNextDyadicExcessNumerator (n : ℕ) : ℤ :=
+  nextDyadicExcessIntNumerator
+    (halfGreedyResidualDisplayedNumerator n) n
+    (halfGreedyPrefixDenominator n)
 end PalomarCorpus.E257.PaperStatementsD
 
-namespace PalomarCorpus.E257.PaperStatementsAT
+namespace PalomarCorpus.E257.PaperStatementsAF
 open Set
-open Filter
-open scoped BigOperators
-open Topology
-export PalomarCorpus.E257_26.Shared (affineBinaryOrbit halfStripBound integerHalfCarry localMersenneQuotient localPrefixQuotient supportCoeff)
-end PalomarCorpus.E257.PaperStatementsAT
+/-- Numerator left after subtracting a reduced finite prefix `r / D` from a dyadic rational `p / 2^c`. The transport theorem below assumes the subtraction is nonnegative, so natural subtraction is exact. Local copy of Erdos249257.dyadicResidualNumerator, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def dyadicResidualNumerator (p r c D : ℕ) : ℕ :=
+  p * D - 2 ^ c * r
+/-- The displayed residual rational before its remaining power-of-two cancellation is normalized by `Rat`. Local copy of Erdos249257.dyadicResidualRat, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def dyadicResidualRat (p r c D : ℕ) : ℚ :=
+  (dyadicResidualNumerator p r c D : ℚ) / (2 ^ c * D : ℕ)
+end PalomarCorpus.E257.PaperStatementsAF
 
-namespace PalomarCorpus.E257.PaperStatementsK
-open scoped BigOperators
+namespace PalomarCorpus.E257.PaperStatementsAA
+export PalomarCorpus.E257_26.Shared (primePowerLayer)
+end PalomarCorpus.E257.PaperStatementsAA
+
+namespace PalomarCorpus.E257.PaperStatementsAO
+open Filter
+open Topology
+open scoped ArithmeticFunction.Omega
+export PalomarCorpus.E257_26.Shared (primePowerLayer)
+/-- The two-signature mixed layer. Further list-level iteration can use this as its checked algebraic step without committing to a factorization API. Local copy of Erdos249257.MaximalOmegaLayer.mixedPrimePowerLayerTwo, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def mixedPrimePowerLayerTwo
+    (p e q f : ℕ) (g : ℕ → ℤ) (n : ℕ) : ℤ :=
+  primePowerLayer q f (primePowerLayer p e g) n
+/-- **The support coefficient** `f_A(n) = #{d ∣ n : d ∈ A}`, the Dirichlet incidence `1_A * 1` of a support set `A ⊆ ℕ`. This is the coefficient in which Erdős #257 is actually stated: `∑_{a∈A} 1/(b^a - 1) = ∑_n f_A(n)/b^n`. Full support gives `f_ℕ = τ`; primes give `ω`; prime powers give `Ω`. Local copy of Erdos249257.supportCoeff, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def supportCoeff (A : Set ℕ) (n : ℕ) : ℕ :=
+  letI := Classical.decPred fun d : ℕ => d ∈ A
+  (n.divisors.filter fun d => d ∈ A).card
+/-- Integer-valued packaging of the support divisor-count coefficient. Local copy of Erdos249257.SupportDilationDifferences.supportCoeffInt, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def supportCoeffInt (A : Set ℕ) (n : ℕ) : ℤ :=
+  supportCoeff A n
+/-- Support elements with exact `p`-adic exponent `e`, after removing the prime-power layer. Local copy of Erdos249257.SupportSunflowerDichotomy.exactPrimePowerPullback, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def exactPrimePowerPullback (p e : ℕ) (A : Set ℕ) : Set ℕ :=
+  {d | d.Coprime p ∧ p ^ e * d ∈ A}
+end PalomarCorpus.E257.PaperStatementsAO
+
+namespace PalomarCorpus.E257.PaperStatementsAM
 open Filter
 open Set
+open Topology
 open scoped ENNReal
 open MeasureTheory
-open Topology
-export PalomarCorpus.E257_26.Shared (affineBinaryOrbit halfStripBound integerHalfCarry localMersenneQuotient localPrefixQuotient mersenneAchievementSet mersenneWeight positiveMersenneSupportValue supportCoeff)
-/-- An exact finite Boolean quotient row at endpoint `n`. Local copy of Erdos249257.ExactLocalMersenneHalfRow, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def ExactLocalMersenneHalfRow (n : ℕ) : Prop :=
-  ∃ D : Finset ℕ,
-    (∀ d ∈ D, 2 ≤ d ∧ d ≤ n) ∧
-      localPrefixQuotient D n = 2 ^ (n - 1) - 1
-/-- Exact Boolean quotient rows occur at arbitrarily large endpoints. No compatibility is imposed between the witnesses at different endpoints. Local copy of Erdos249257.CofinalExactLocalMersenneHalfRows, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def CofinalExactLocalMersenneHalfRows : Prop :=
-  ∀ N : ℕ, ∃ n : ℕ, N ≤ n ∧ ExactLocalMersenneHalfRow n
-/-- A Boolean support word through exponent `N`. Index zero is retained so restriction is literal; admissibility forces exponents zero and one off. Local copy of Erdos249257.HalfCarryReachability.HalfWord, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable abbrev HalfWord (N : ℕ) := Fin (N + 1) → Bool
-/-- The set represented by a finite Boolean word. Local copy of Erdos249257.HalfCarryReachability.wordSupport, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def wordSupport {N : ℕ} (a : HalfWord N) : Set ℕ :=
-  {n | ∃ h : n < N + 1, a ⟨n, h⟩ = true}
-/-- A normalized finite word whose *terminal* integer half-carry is in the discrete square-root strip. There is deliberately no all-prefix admissibility hypothesis here. Local copy of Erdos249257.HalfCarryReachability.HalfTerminalOnlyStripWitness, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def HalfTerminalOnlyStripWitness (M : ℕ) : Prop :=
-  ∃ a : HalfWord M,
-    a ⟨0, Nat.zero_lt_succ M⟩ = false ∧
-    (∀ h : 1 < M + 1, a ⟨1, h⟩ = false) ∧
-    |(integerHalfCarry (wordSupport a) (M - 1) : ℝ)| ≤
-      (halfStripBound M : ℝ)
-/-- Terminal-only square-root-strip witnesses exist at cofinally many depths. The `max N 1` guard makes the terminal index `M - 1` line up with the scaled-residual identity at exponent `M`. Local copy of Erdos249257.HalfCarryReachability.HalfCarryCofinalTerminalOnlyStrip, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def HalfCarryCofinalTerminalOnlyStrip : Prop :=
-  ∀ N : ℕ, ∃ M : ℕ, max N 1 ≤ M ∧ HalfTerminalOnlyStripWitness M
-end PalomarCorpus.E257.PaperStatementsK
-
-namespace PalomarCorpus.E257.PaperStatementsL
-open Filter
-open Set
-open Topology
-export PalomarCorpus.E257_26.Shared (affineBinaryOrbit erdosSupportSeries halfStripBound integerHalfCarry supportCoeff)
-end PalomarCorpus.E257.PaperStatementsL
-
-namespace PalomarCorpus.E257.PaperStatementsQ
-open Filter
-open Set
-open Topology
-open scoped BigOperators
-export PalomarCorpus.E257_26.Shared (affineBinaryOrbit integerHalfCarry localMersenneQuotient localPrefixQuotient supportCoeff)
-end PalomarCorpus.E257.PaperStatementsQ
+export PalomarCorpus.E257_26.Shared (mersenneWeight)
+/-- The value coded by a set of positive exponents. The sequence index is zero-based while the exponent supplied to the weight is `k+1`. Local copy of Erdos249257.positiveMersenneSupportValue, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def positiveMersenneSupportValue (A : Set ℕ) : ℝ :=
+  ∑' k : ℕ, Set.indicator A mersenneWeight (k + 1)
+/-- The remaining mass after processing exponents `1, ..., n`. Local copy of Erdos249257.mersenneTail, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def mersenneTail (n : ℕ) : ℝ :=
+  ∑' k : ℕ, mersenneWeight (n + k + 1)
+/-- A finite half-gap witness in the cut-locator coordinates. Local copy of Erdos249257.ExistsFatalHalfGap, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def ExistsFatalHalfGap : Prop :=
+  ∃ (u : Finset ℕ) (d : ℕ), (∀ n ∈ u, 0 < n ∧ n ≤ d) ∧
+    positiveMersenneSupportValue (↑u : Set ℕ) + mersenneTail (d + 1)
+      < 1 / 2 ∧
+    (1 / 2 : ℝ) < positiveMersenneSupportValue (↑u : Set ℕ)
+      + mersenneWeight (d + 1)
+/-- The Mersenne achievement set, with the analytically invisible zero bit normalized away. Local copy of Erdos249257.mersenneAchievementSet, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def mersenneAchievementSet : Set ℝ :=
+  {x : ℝ | ∃ A : Set ℕ, 0 ∉ A ∧ x = positiveMersenneSupportValue A}
+/-- One term of the binary coding of the achievement set. Local copy of Erdos249257.mersenneDigitTerm, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def mersenneDigitTerm (k : ℕ) (b : ℕ → Fin 2) : ℝ :=
+  ((b k : ℕ) : ℝ) * mersenneWeight (k + 1)
+/-- The support value coded by a binary sequence. Local copy of Erdos249257.positiveMersenneDigitValue, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def positiveMersenneDigitValue (b : ℕ → Fin 2) : ℝ :=
+  ∑' k : ℕ, mersenneDigitTerm k b
+end PalomarCorpus.E257.PaperStatementsAM

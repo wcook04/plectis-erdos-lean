@@ -25,7 +25,7 @@ open MeasureTheory
 /- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
 
 namespace PalomarCorpus.E257.PaperStatementsD
-export PalomarCorpus.E257_02.Shared (erdosBorweinMersenneConstant mersenneAchievementSet mersenneTail mersenneWeight positiveMersenneSupportValue)
+export PalomarCorpus.E257_02.Shared (erdosBorweinMersenneConstant greedyMersenneRemainder mersenneAchievementSet mersenneTail mersenneWeight positiveMersenneSupportValue)
 
 noncomputable def mersenneWeightRat (n : ℕ) : ℚ :=
   1 / ((2 : ℚ) ^ n - 1)

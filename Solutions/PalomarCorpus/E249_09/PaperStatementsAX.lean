@@ -34,11 +34,11 @@ open Finset
 /- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
 
 namespace PalomarCorpus.E249.PaperStatementsAX
-export PalomarCorpus.E249_09.Shared (periodLcm totientTail)
+export PalomarCorpus.E249_09.Shared (totientTail windowDiscrepancy)
 
-noncomputable def windowDiscrepancy (h N L : ℕ) : ℤ :=
-  ∑ j ∈ Finset.range L,
-    ((Nat.totient (N + h + 1 + j) : ℤ) - (Nat.totient (N + 1 + j) : ℤ)) * 2 ^ (L - 1 - j)
+noncomputable def periodLcm : ℕ → ℕ
+  | 0 => 1
+  | t + 1 => Nat.lcm (periodLcm t) (t + 1)
 
 noncomputable def ActualLcmTopEdgeResidueGap (a J K m : ℕ) : Prop :=
   m ≤ K ∧
@@ -103,6 +103,9 @@ noncomputable def PowerTwoActualLcmOrbitSeparationSupply : Prop :=
 noncomputable def PowerTwoActualLcmTopEdgeResidueGapSupply : Prop :=
   ∀ a₀ : ℕ, ∃ a K m : ℕ, a₀ ≤ a ∧ 8 ≤ a ∧
     K + (a + 6) < 2 * 2 ^ a ∧ ActualLcmTopEdgeResidueGap a 0 K m
+
+noncomputable def windowNumerator (M L : ℕ) : ℕ :=
+  ∑ j ∈ Finset.range L, Nat.totient (M + 1 + j) * 2 ^ (L - 1 - j)
 
 noncomputable def diagonalSuffixResidue (t J m : ℕ) : ℤ :=
   ((windowNumerator (2 * periodLcm t + J) m : ℤ) -
@@ -184,11 +187,6 @@ noncomputable def canonicalAdjacentSuffixCentralSlack (t : ℕ) : ℤ :=
   let d := diagonalAdjacentSuffixResidue t 0 m
   min (d - 2 ^ (m - 5)) ((2 ^ m - 2 ^ (m - 5)) - d)
 
-noncomputable def joint35ConeWindow (H L : ℕ) : ℤ :=
-  windowDiscrepancy (14 * H) H L -
-    3 * windowDiscrepancy (2 * H) H L -
-    2 * windowDiscrepancy (4 * H) H L
-
 noncomputable def lcmHeight (t : ℕ) : ℕ :=
   (Finset.Icc 1 t).lcm (fun n ↦ n)
 
@@ -208,6 +206,14 @@ noncomputable def windowFirstAngle (h N L : ℕ) : ℝ :=
 
 noncomputable def windowFirstExp (h N L : ℕ) : ℂ :=
   Complex.exp ((windowFirstAngle h N L : ℂ) * Complex.I)
+
+noncomputable def paperGridNumerator (H L q : ℕ) : ℕ :=
+  ∑ j ∈ Finset.Icc 1 L, Nat.totient (q * H + j) * 2 ^ (L - j)
+
+noncomputable def paperGridCertificate (H L : ℕ) (Q : Finset ℕ) : Prop :=
+  ∀ qi ∈ Q, ∃ qj ∈ Q,
+    (qj * H + L + 2 : ℤ) <
+      ((paperGridNumerator H L qi : ℤ) - paperGridNumerator H L qj) % 2 ^ L
 
 noncomputable def PaperAdjacentSuffixMidbandSupply : Prop :=
   ∀ a₀ : ℕ, ∃ a m : ℕ, a₀ ≤ a ∧ 8 ≤ a ∧

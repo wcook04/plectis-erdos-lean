@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification1049PaperStructuresR
+
+#print axioms Erdos249257.ExternalVerification1049PaperStructuresR.short_note_archimedean_cap

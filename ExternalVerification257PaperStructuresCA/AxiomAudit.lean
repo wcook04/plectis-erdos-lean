@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification257PaperStructuresCA
+
+#print axioms Erdos249257.ExternalVerification257PaperStructuresCA.IsStraddlePrefix.half_agrees_greedy

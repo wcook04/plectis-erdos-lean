@@ -1,0 +1,20 @@
+{
+  "challenge_module": "PalomarCorpus.E257_47.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257_47",
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStatementsAG.coprime_base_den_finiteErdosSum",
+    "PalomarCorpus.E257.PaperStatementsAG.lcm_lt_den_finiteErdosSum",
+    "PalomarCorpus.E257.PaperStatementsAV.irrational_erdosSupportSeries_of_summable_reciprocal",
+    "PalomarCorpus.E257.PaperStatementsBC.finitePrimeWeighted_fixedBase_hereditary",
+    "PalomarCorpus.E257.PaperStatementsBC.paper_terminalhalf",
+    "PalomarCorpus.E257.PaperStatementsM.paper_general_repair_criteria",
+    "PalomarCorpus.E257.PaperStructuresBM.one_div_twenty_one_mem_mersenneAchievementSet_of_cofinalGreedyDecay",
+    "PalomarCorpus.E257.PaperStructuresBQ.twentyOneCofinalEvenQuotientGreedyDecay_of_closedRows"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -21,12 +21,12 @@ environments. Generated from the Challenge; do not edit by hand.
 open scoped ENNReal
 open Polynomial
 open Metric
+open MeasureTheory
+open scoped ComplexConjugate
 open Set
 open scoped NNReal
-open scoped ComplexConjugate
 open scoped BigOperators
 open Real
-open MeasureTheory
 open scoped UpperHalfPlane
 
 namespace PalomarCorpus.E1041_01.Shared
@@ -58,6 +58,18 @@ open scoped ENNReal
 open Polynomial
 open Metric
 end PalomarCorpus.E1041.PaperStatementsA
+
+namespace PalomarCorpus.E1041.PaperStatementsAE
+open scoped ENNReal
+open MeasureTheory
+open Polynomial
+open Metric
+open scoped ComplexConjugate
+/-- Local definition s, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def s : ℚ := 1 / 10 ^ 6
+/-- Local definition fcLength, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def fcLength (s : Set ℂ) : ℝ≥0∞ := μH[1] s
+end PalomarCorpus.E1041.PaperStatementsAE
 
 namespace PalomarCorpus.E1041.PaperStatementsAA
 open Set

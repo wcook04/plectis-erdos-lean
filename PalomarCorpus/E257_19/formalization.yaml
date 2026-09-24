@@ -1,12 +1,12 @@
 version: v0.4
 project:
-  name: 'Erdős #257, record sections 6.2 to 6.3: exact identities and reductions; consequence theorems (part 2 of 2)'
+  name: 'Erdős #257, record sections 6.2 to 6.3: exact identities and reductions; consequence theorems (part 1 of 2)'
   description: >-
-    This entry states 2 theorems that the long record for Erdős problem #257 states in sections 6.2 (exact identities and reductions) and 6.3 (consequence theorems): the lemma “The exact gap at the largest omitted rank” (section 6.2), as paper_largest_false_rank_algebra; the theorem “A compatible family of finite supports”, as paper_compatible_finite_row_conditions.
+    This entry states 3 theorems that the long record for Erdős problem #257 states in sections 6.2 (exact identities and reductions) and 6.3 (consequence theorems): the lemma “The values on either side of an eventual right continuation” (section 6.2), as half_lt_upper_competitor_of_eventually_right; the lemma “The signed position of a skipped greedy prefix” (section 6.2), as halfGreedy_skipped_endpoint_trichotomy; the theorem “An equivalent vanishing condition”, as greedyHalfFrozenMargin_fullShell_eq_neg_seamRemainder_of_alignment.
 
     It also states 12 proof obligations of the definitions copied into it: seamPerturbedFamily_gap_pos, seamPerturbedFamily_oldSum_injective, seamPerturbedFamily_separated, seamPerturbedFamily_pulseCap_lt_three_gap, wordPulse_le, exists_seamWord_minimal_above, integerGreedyBits_length, seamAboveWord_minimal, seamAboveWord_strict, seamWeights_length_eq, seamAdjacentCut_below_admissible and seamAdjacentCut_below_maximal. Each is a lemma or a proof field that one of those definitions names, and its documentation names the source it is stated from. The papers state none of them, and the Solution proves each from the source development.
 
-    6 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 8 are derived from the source declaration by a short tactic proof, which certifies implication.
+    6 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 9 are derived from the source declaration by a short tactic proof, which certifies implication.
 
     Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
 
@@ -57,11 +57,11 @@ sources:
   license: Apache-2.0
   author_endorsement: n/a
 status:
-  scope: "One Comparator configuration selecting the 14 theorems listed in PalomarCorpus/E257_19/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 43 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_43, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
+  scope: "One Comparator configuration selecting the 15 theorems listed in PalomarCorpus/E257_19/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 52 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_52, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
-  trusted_challenge_sorry_count: 14
+  trusted_challenge_sorry_count: 15
   sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E257_19/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
   axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
   permitted_axiom_budget:
@@ -69,64 +69,68 @@ status:
   - Quot.sound
   - Classical.choice
   main_results:
-  - declaration: "PalomarCorpus.E257.PaperStructuresBH.exists_seamWord_minimal_above"
-    file: "Solutions/PalomarCorpus/E257_19/PaperStructuresBH.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBI.exists_seamWord_minimal_above"
+    file: "Solutions/PalomarCorpus/E257_19/PaperStructuresBI.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_19/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBH.integerGreedyBits_length"
-    file: "Solutions/PalomarCorpus/E257_19/PaperStructuresBH.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBI.greedyHalfFrozenMargin_fullShell_eq_neg_seamRemainder_of_alignment"
+    file: "Solutions/PalomarCorpus/E257_19/PaperStructuresBI.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_19/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBH.paper_compatible_finite_row_conditions"
-    file: "Solutions/PalomarCorpus/E257_19/PaperStructuresBH.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBI.halfGreedy_skipped_endpoint_trichotomy"
+    file: "Solutions/PalomarCorpus/E257_19/PaperStructuresBI.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_19/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBH.paper_largest_false_rank_algebra"
-    file: "Solutions/PalomarCorpus/E257_19/PaperStructuresBH.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBI.half_lt_upper_competitor_of_eventually_right"
+    file: "Solutions/PalomarCorpus/E257_19/PaperStructuresBI.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_19/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBH.seamAboveWord_minimal"
-    file: "Solutions/PalomarCorpus/E257_19/PaperStructuresBH.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBI.integerGreedyBits_length"
+    file: "Solutions/PalomarCorpus/E257_19/PaperStructuresBI.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_19/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBH.seamAboveWord_strict"
-    file: "Solutions/PalomarCorpus/E257_19/PaperStructuresBH.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBI.seamAboveWord_minimal"
+    file: "Solutions/PalomarCorpus/E257_19/PaperStructuresBI.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_19/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBH.seamAdjacentCut_below_admissible"
-    file: "Solutions/PalomarCorpus/E257_19/PaperStructuresBH.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBI.seamAboveWord_strict"
+    file: "Solutions/PalomarCorpus/E257_19/PaperStructuresBI.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_19/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBH.seamAdjacentCut_below_maximal"
-    file: "Solutions/PalomarCorpus/E257_19/PaperStructuresBH.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBI.seamAdjacentCut_below_admissible"
+    file: "Solutions/PalomarCorpus/E257_19/PaperStructuresBI.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_19/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBH.seamPerturbedFamily_gap_pos"
-    file: "Solutions/PalomarCorpus/E257_19/PaperStructuresBH.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBI.seamAdjacentCut_below_maximal"
+    file: "Solutions/PalomarCorpus/E257_19/PaperStructuresBI.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_19/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBH.seamPerturbedFamily_oldSum_injective"
-    file: "Solutions/PalomarCorpus/E257_19/PaperStructuresBH.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBI.seamPerturbedFamily_gap_pos"
+    file: "Solutions/PalomarCorpus/E257_19/PaperStructuresBI.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_19/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBH.seamPerturbedFamily_pulseCap_lt_three_gap"
-    file: "Solutions/PalomarCorpus/E257_19/PaperStructuresBH.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBI.seamPerturbedFamily_oldSum_injective"
+    file: "Solutions/PalomarCorpus/E257_19/PaperStructuresBI.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_19/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBH.seamPerturbedFamily_separated"
-    file: "Solutions/PalomarCorpus/E257_19/PaperStructuresBH.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBI.seamPerturbedFamily_pulseCap_lt_three_gap"
+    file: "Solutions/PalomarCorpus/E257_19/PaperStructuresBI.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_19/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBH.seamWeights_length_eq"
-    file: "Solutions/PalomarCorpus/E257_19/PaperStructuresBH.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBI.seamPerturbedFamily_separated"
+    file: "Solutions/PalomarCorpus/E257_19/PaperStructuresBI.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_19/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBH.wordPulse_le"
-    file: "Solutions/PalomarCorpus/E257_19/PaperStructuresBH.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBI.seamWeights_length_eq"
+    file: "Solutions/PalomarCorpus/E257_19/PaperStructuresBI.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_19/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBI.wordPulse_le"
+    file: "Solutions/PalomarCorpus/E257_19/PaperStructuresBI.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_19/comparator.json"
   development_status: substantive
-  local_proof_provenance: "the proof modules Erdos249257, ErdosProblems.Erdos257 in this repository, imported by Solutions.PalomarCorpus.E257_19; the Solutions.ExternalVerification257* family modules are a regression mirror of the same proofs and are not imported by this configuration"
+  local_proof_provenance: "the proof modules Erdos249257 in this repository, imported by Solutions.PalomarCorpus.E257_19; the Solutions.ExternalVerification257* family modules are a regression mirror of the same proofs and are not imported by this configuration"
   canonical_claim_status: "problem-level Comparator entry over substantive Lean in this repository"
 automation:
   methods:

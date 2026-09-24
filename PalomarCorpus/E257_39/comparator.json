@@ -2,14 +2,20 @@
   "challenge_module": "PalomarCorpus.E257_39.Challenge",
   "solution_module": "Solutions.PalomarCorpus.E257_39",
   "theorem_names": [
-    "PalomarCorpus.E257.PaperStatementsAG.coprime_base_den_finiteErdosSum",
-    "PalomarCorpus.E257.PaperStatementsAG.lcm_lt_den_finiteErdosSum",
-    "PalomarCorpus.E257.PaperStatementsAV.irrational_erdosSupportSeries_of_summable_reciprocal",
-    "PalomarCorpus.E257.PaperStatementsBC.finitePrimeWeighted_fixedBase_hereditary",
-    "PalomarCorpus.E257.PaperStatementsBC.paper_terminalhalf",
-    "PalomarCorpus.E257.PaperStatementsM.paper_general_repair_criteria",
-    "PalomarCorpus.E257.PaperStructuresBM.one_div_twenty_one_mem_mersenneAchievementSet_of_cofinalGreedyDecay",
-    "PalomarCorpus.E257.PaperStructuresBQ.twentyOneCofinalEvenQuotientGreedyDecay_of_closedRows"
+    "PalomarCorpus.E257.PaperStructuresCF.exists_seamWord_minimal_above",
+    "PalomarCorpus.E257.PaperStructuresCF.integerGreedyBits_length",
+    "PalomarCorpus.E257.PaperStructuresCF.paper_final_middle_cell_remaining_negative_values",
+    "PalomarCorpus.E257.PaperStructuresCF.paper_finite_band_check_thirteen_to_thirty",
+    "PalomarCorpus.E257.PaperStructuresCF.seamAboveWord_minimal",
+    "PalomarCorpus.E257.PaperStructuresCF.seamAboveWord_strict",
+    "PalomarCorpus.E257.PaperStructuresCF.seamAdjacentCut_below_admissible",
+    "PalomarCorpus.E257.PaperStructuresCF.seamAdjacentCut_below_maximal",
+    "PalomarCorpus.E257.PaperStructuresCF.seamPerturbedFamily_gap_pos",
+    "PalomarCorpus.E257.PaperStructuresCF.seamPerturbedFamily_oldSum_injective",
+    "PalomarCorpus.E257.PaperStructuresCF.seamPerturbedFamily_pulseCap_lt_three_gap",
+    "PalomarCorpus.E257.PaperStructuresCF.seamPerturbedFamily_separated",
+    "PalomarCorpus.E257.PaperStructuresCF.seamWeights_length_eq",
+    "PalomarCorpus.E257.PaperStructuresCF.wordPulse_le"
   ],
   "permitted_axioms": [
     "propext",

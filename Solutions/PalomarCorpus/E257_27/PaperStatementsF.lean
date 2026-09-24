@@ -27,22 +27,21 @@ open Topology
 /- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
 
 namespace PalomarCorpus.E257.PaperStatementsF
-export PalomarCorpus.E257_27.Shared (affineBinaryOrbit greedyMersennePrefixRat greedyMersenneRemainder greedyMersenneRemainderRat greedyMersenneSupport halfGreedyPrefixSupport integerHalfCarry mersenneWeight mersenneWeightRat mobiusCenteredHalfCarry supportCoeff)
+export PalomarCorpus.E257_27.Shared (CofinalExactLocalMersenneHalfRows CofinalPositiveHalfGreedySkips ExactLocalMersenneHalfRow SkippedCoreCriticalQuotientSupply greedyMersenneRemainderRat localMersennePrefixValue localMersenneQuotient localPrefixQuotient mersenneWeightRat)
 
-noncomputable def ExactLocalMersenneHalfRow (n : ℕ) : Prop :=
-  ∃ D : Finset ℕ,
-    (∀ d ∈ D, 2 ≤ d ∧ d ≤ n) ∧
-      localPrefixQuotient D n = 2 ^ (n - 1) - 1
+noncomputable def affineBinaryOrbit (a : ℕ → ℤ) (u0 : ℤ) : ℕ → ℤ
+  | 0 => u0
+  | n + 1 => 2 * affineBinaryOrbit a u0 n - a (n + 1)
 
-noncomputable def CofinalExactLocalMersenneHalfRows : Prop :=
-  ∀ N : ℕ, ∃ n : ℕ, N ≤ n ∧ ExactLocalMersenneHalfRow n
+noncomputable def supportCoeff (A : Set ℕ) (n : ℕ) : ℕ :=
+  letI := Classical.decPred fun d : ℕ => d ∈ A
+  (n.divisors.filter fun d => d ∈ A).card
 
-noncomputable def CofinalPositiveHalfGreedySkips : Prop :=
-  ∀ N : ℕ, ∃ c : ℕ,
-    max N 4 ≤ c ∧
-      0 < greedyMersenneRemainderRat (1 / 2 : ℚ) (c - 1) ∧
-      greedyMersenneRemainderRat (1 / 2 : ℚ) (c - 1) <
-        mersenneWeightRat c
+noncomputable def integerHalfCarry (A : Set ℕ) : ℕ → ℤ :=
+  affineBinaryOrbit (fun n : ℕ ↦ (supportCoeff A (n + 1) : ℤ)) 1
+
+noncomputable def mobiusCenteredHalfCarry (A : Set ℕ) (N : ℕ) : ℤ :=
+  integerHalfCarry A N - 1
 
 noncomputable def finiteCoeffWindowNumerator
     (A : Set ℕ) (n : ℕ) : ℕ → ℕ
@@ -50,6 +49,18 @@ noncomputable def finiteCoeffWindowNumerator
   | J + 1 =>
       2 * finiteCoeffWindowNumerator A n J +
         supportCoeff A (n + J + 1)
+
+noncomputable def futureSkipCapacity
+    (A : Set ℕ) (n : ℕ) : ℕ → ℕ
+  | 0 => 0
+  | J + 1 =>
+      2 * futureSkipCapacity A n J +
+        (by
+          classical
+          exact if n + J + 1 ∈ A then 0 else 1)
+
+noncomputable def localBinarySuffix (D : Finset ℕ) (k M : ℕ) : ℕ :=
+  2 ^ (M - k) - localPrefixQuotient D M - 1
 
 noncomputable def HalfGreedyPreTakePrecriticalSuffixSupply : Prop :=
   ∀ c : ℕ,
@@ -61,14 +72,16 @@ noncomputable def HalfGreedyPreTakePrecriticalSuffixSupply : Prop :=
     localBinarySuffix (halfGreedyPrefixSupport (c - 1)) 1 (2 * c - 3) <
       2 ^ (c - 3)
 
-noncomputable def HalfGreedySkippedCriticalQuotientSupply : Prop :=
-  ∀ c : ℕ,
-    4 ≤ c →
-    greedyMersenneRemainderRat (1 / 2 : ℚ) (c - 1) <
-      mersenneWeightRat c →
-    2 ^ ((2 * c - 2) - 1) ≤
-      localPrefixQuotient
-        (insert c (halfGreedyPrefixSupport (c - 1))) (2 * c - 2)
+noncomputable def mersenneWeight (n : ℕ) : ℝ :=
+  1 / ((2 : ℝ) ^ n - 1)
+
+noncomputable def greedyMersenneRemainder (x : ℝ) : ℕ → ℝ
+  | 0 => x
+  | n + 1 =>
+      if mersenneWeight (n + 1) ≤ greedyMersenneRemainder x n then
+        greedyMersenneRemainder x n - mersenneWeight (n + 1)
+      else
+        greedyMersenneRemainder x n
 
 noncomputable def greedyHalfFrozenMargin (k J : ℕ) : ℤ :=
   (finiteCoeffWindowNumerator
@@ -91,17 +104,9 @@ noncomputable def HalfGreedySkippedPrecriticalSuffixSupply : Prop :=
     localBinarySuffix (halfGreedyPrefixSupport (c - 1)) 1 (2 * c - 3) <
       2 ^ (c - 3)
 
-noncomputable def localMersennePrefixValue (D : Finset ℕ) : ℚ :=
-  ∑ d ∈ D, mersenneWeightRat d
-
-noncomputable def SkippedCoreCriticalQuotientSupply : Prop :=
-  ∀ (D : Finset ℕ) (c : ℕ),
-    4 ≤ c →
-    (∀ d ∈ D, 2 ≤ d ∧ d < c) →
-    localMersennePrefixValue D < (1 / 2 : ℚ) →
-    (1 / 2 : ℚ) - localMersennePrefixValue D < mersenneWeightRat c →
-    2 ^ ((2 * c - 2) - 1) ≤
-      localPrefixQuotient (insert c D) (2 * c - 2)
+noncomputable def greedyMersenneSupport (x : ℝ) : Set ℕ :=
+  {m : ℕ | m ≠ 0 ∧
+    mersenneWeight m ≤ greedyMersenneRemainder x (m - 1)}
 
 noncomputable def positiveMersenneSupportValue (A : Set ℕ) : ℝ :=
   ∑' k : ℕ, Set.indicator A mersenneWeight (k + 1)

@@ -1,10 +1,10 @@
 version: v0.4
 project:
-  name: 'Erdős #1049, record sections 5 to 10: congruences after evaluation at 3/2; failure of the stated clearing conditions at 3/2; successive scaled remainders'
+  name: 'Erdős #1049, record sections 5 to 9: congruences after evaluation at 3/2; failure of the stated clearing conditions at 3/2; successive scaled remainders'
   description: >-
-    This entry states 16 theorems that the long record for Erdős problem #1049 states in sections 5 (congruences after evaluation at 3/2), 6 (failure of the stated clearing conditions at 3/2), 7 (successive scaled remainders), 8 (the height criterion at 7/2), 9 (a denominator-exponent model for Padé-type forms) and 10 (complements and further questions): the theorem “endpoint residues” (section 5), as endpoint_residues; the proposition “common divisor” (section 5), as commonMultiplier_not_two_not_three_of_endpoint_units; the corollary “limits of rescaling and common-divisor cancellation at 3/2” (section 5), as endpoint_scalar_content_exclusion; the proposition “coprimality of homogenised cyclotomic values” (section 5), as cyclotomicHomEval_isCoprime_mul; the theorem “equal residues for two subset sums” (section 5), as fourJet_paper_statement; the corollary “the exact count at depth 41” (section 5), as rank_fortyone; the theorem “a restriction on the two scalar exponents” (section 5), as scalar_margin; the theorem “a necessary inequality for clearing” (section 6), as coordinatewiseCorridor_implies_pow_lt_linear; the proposition labelled long1049:res:exp (section 6), as three_mul_lt_two_pow_succ; the theorem “failure of the stated clearing conditions at 3/2” (section 6), as threeHalves_no_coordinatewiseCorridor; the theorem “recurrence for the scaled remainder” (section 7), as rationalBaseClearedTailQ_succ; the theorem “the forcing term” (section 7), as forcing_term; the theorem “the 7/2 height condition” (section 8), as sevenHalves_archimedean_height_condition; the proposition “exponent model: summand bound and exact gap” (section 9), as pade_summand_bound_and_gap; the proposition “no finite simultaneous 2/3-system” (section 10.3), as no_finite_simultaneous_two_three_system and no_finite_simultaneous_two_three_system_unconditional.
+    This entry states 15 theorems that the long record for Erdős problem #1049 states in sections 5 (congruences after evaluation at 3/2), 6 (failure of the stated clearing conditions at 3/2), 7 (successive scaled remainders), 8 (the height criterion at 7/2) and 9 (a denominator-exponent model for Padé-type forms): the theorem “endpoint residues” (section 5), as endpoint_residues; the proposition “common divisor” (section 5), as commonMultiplier_not_two_not_three_of_endpoint_units; the corollary “limits of rescaling and common-divisor cancellation at 3/2” (section 5), as endpoint_scalar_content_exclusion; the proposition “coprimality of homogenised cyclotomic values” (section 5), as cyclotomicHomEval_isCoprime_mul; the theorem “equal residues for two subset sums” (section 5), as fourJet_paper_statement; the corollary “the exact count at depth 41” (section 5), as rank_fortyone; the theorem “vanishing minors and a residue count” (section 5), as plucker_paper_statement; the theorem “a restriction on the two scalar exponents” (section 5), as scalar_margin; the theorem “a necessary inequality for clearing” (section 6), as coordinatewiseCorridor_implies_pow_lt_linear; the proposition labelled long1049:res:exp (section 6), as three_mul_lt_two_pow_succ; the theorem “failure of the stated clearing conditions at 3/2” (section 6), as threeHalves_no_coordinatewiseCorridor; the theorem “recurrence for the scaled remainder” (section 7), as rationalBaseClearedTailQ_succ; the theorem “the forcing term” (section 7), as forcing_term; the theorem “the 7/2 height condition” (section 8), as sevenHalves_archimedean_height_condition; the proposition “exponent model: summand bound and exact gap” (section 9), as pade_summand_bound_and_gap.
 
-    14 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement.
+    13 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement.
 
     Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
 
@@ -99,11 +99,11 @@ sources:
   license: Apache-2.0
   author_endorsement: n/a
 status:
-  scope: "One Comparator configuration selecting the 16 theorems listed in PalomarCorpus/E1049_05/comparator.json, from the Lean development for Erdős problem #1049. The problem's theorems are packed, in the order the papers state them, into the 8 entries PalomarCorpus/E1049_01 to PalomarCorpus/E1049_08, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification1049* directories are internal regression inventory and are not selected."
+  scope: "One Comparator configuration selecting the 15 theorems listed in PalomarCorpus/E1049_05/comparator.json, from the Lean development for Erdős problem #1049. The problem's theorems are packed, in the order the papers state them, into the 10 entries PalomarCorpus/E1049_01 to PalomarCorpus/E1049_10, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification1049* directories are internal regression inventory and are not selected."
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
-  trusted_challenge_sorry_count: 16
+  trusted_challenge_sorry_count: 15
   sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E1049_05/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
   axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
   permitted_axiom_budget:
@@ -159,12 +159,8 @@ status:
     file: "Solutions/PalomarCorpus/E1049_05/PaperStatementsN.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E1049_05/comparator.json"
-  - declaration: "PalomarCorpus.E1049.PaperStatementsX.no_finite_simultaneous_two_three_system"
-    file: "Solutions/PalomarCorpus/E1049_05/PaperStatementsX.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E1049_05/comparator.json"
-  - declaration: "PalomarCorpus.E1049.PaperStructuresL.no_finite_simultaneous_two_three_system_unconditional"
-    file: "Solutions/PalomarCorpus/E1049_05/PaperStructuresL.lean"
+  - declaration: "PalomarCorpus.E1049.PaperStatementsT.plucker_paper_statement"
+    file: "Solutions/PalomarCorpus/E1049_05/PaperStatementsT.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E1049_05/comparator.json"
   - declaration: "PalomarCorpus.E1049.RationalBaseBarrier.rationalBaseClearedTailQ_succ"

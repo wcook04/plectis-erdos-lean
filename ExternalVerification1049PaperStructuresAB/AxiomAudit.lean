@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification1049PaperStructuresAB
+
+#print axioms Erdos249257.ExternalVerification1049PaperStructuresAB.sharp_fixed_base

@@ -9,3 +9,4 @@ import Solutions.PalomarCorpus.E257_02.PaperStatementsAM
 import Solutions.PalomarCorpus.E257_02.PaperStatementsC
 import Solutions.PalomarCorpus.E257_02.PaperStatementsD
 import Solutions.PalomarCorpus.E257_02.PaperStatementsF
+import Solutions.PalomarCorpus.E257_02.PaperStructuresCA

@@ -18,123 +18,156 @@ walks from a compared theorem statement is byte-identical in the Challenge and S
 environments. Generated from the Challenge; do not edit by hand.
 -/
 
-open scoped ENNReal
+open scoped BigOperators
 open Filter
 open Set
+open scoped ENNReal
 open MeasureTheory
 open Topology
-open Classical
+open ArithmeticFunction
+open scoped ArithmeticFunction.Moebius
 
 namespace PalomarCorpus.E257_35.Shared
-/-- The real Mersenne weight 1 divided by 2 to the power n minus 1; at n = 0 the value is 0 because division by zero is zero here. -/
-noncomputable def mersenneWeight (n : ℕ) : ℝ :=
-  1 / ((2 : ℝ) ^ n - 1)
-/-- The Mersenne tail beyond rank n, namely the sum over k at least 0 of the Mersenne weight at n+k+1. -/
-noncomputable def mersenneTail (n : ℕ) : ℝ :=
-  ∑' k : ℕ, mersenneWeight (n + k + 1)
-/-- The manuscript's `T_{n+1}^{(J)} = ∑_{q=1}^{J} 2^{-qn}/(2^q-1)`. Local copy of ErdosProblems.Erdos257.PaperCompleteR21.rungTail, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def rungTail (J n : ℕ) : ℝ :=
-  ∑ q ∈ Finset.Icc 1 J, (1 : ℝ) / (2 ^ (q * n) * (2 ^ q - 1))
-/-- The manuscript's `w_n^{(J)} = ∑_{q=1}^{J} 2^{-qn}`. Local copy of ErdosProblems.Erdos257.PaperCompleteR21.rungWeight, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def rungWeight (J n : ℕ) : ℝ :=
-  ∑ q ∈ Finset.Icc 1 J, (1 : ℝ) / 2 ^ (q * n)
-/-- The greedy residual just before rank `n` is examined; `rungRem J 0 = 1/2`. Local copy of ErdosProblems.Erdos257.PaperCompleteR21.rungRem, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def rungRem (J : ℕ) : ℕ → ℝ
-  | 0 => 1 / 2
-  | n + 1 => if rungWeight J n ≤ rungRem J n then rungRem J n - rungWeight J n else rungRem J n
-/-- The greedy support: the ranks the greedy rule takes. Local copy of ErdosProblems.Erdos257.PaperCompleteR21.rungGreedySupport, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def rungGreedySupport (J : ℕ) : Set ℕ := {n | rungWeight J n ≤ rungRem J n}
+/-- The exact integer recurrence together with the subexponential boundary `u(N) = o(2^N)`, expressed as convergence of the quotient. Local copy of Erdos249257.IsTemperedBinaryOrbit, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def IsTemperedBinaryOrbit (c : ℕ → ℕ) (v : ℕ) (u : ℕ → ℤ) : Prop :=
+  (∀ N : ℕ,
+      u (N + 1) = 2 * u N - ((v * c (N + 1) : ℕ) : ℤ)) ∧
+    Tendsto (fun N : ℕ ↦ (u N : ℝ) / (2 : ℝ) ^ N) atTop (nhds 0)
+/-- The binary coefficient series `X_c = ∑_{n≥1} c(n)/2^n`. Local copy of Erdos249257.binaryCoeffSeries, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def binaryCoeffSeries (c : ℕ → ℕ) : ℝ :=
+  ∑' n : ℕ, (c (n + 1) : ℝ) / (2 : ℝ) ^ (n + 1)
+/-- The binary tail of a coefficient sequence c beyond scale N, namely the sum over j at least 0 of c at N+j+1 divided by 2 to the power j+1. -/
+noncomputable def binaryCoeffTail (c : ℕ → ℕ) (N : ℕ) : ℝ :=
+  ∑' j : ℕ, (c (N + j + 1) : ℝ) / (2 : ℝ) ^ (j + 1)
+/-- The base b reciprocal power subseries supported on A, namely the sum over a in A of 1 divided by b to the power a minus 1, written as an unconditional sum of the indicator of A; the exponent a = 0 contributes 0 because division by zero is zero here, so membership of 0 in A does not change the value. -/
+noncomputable def erdosSupportSeries (b : ℕ) (A : Set ℕ) : ℝ :=
+  ∑' a : ℕ, Set.indicator A (fun a => (1 : ℝ) / ((b : ℝ) ^ a - 1)) a
+/-- The quotient of one scaled Mersenne weight written without division: a shift by the Euclidean remainder times a finite geometric word. Local copy of Erdos249257.localMersenneGeometricQuotient, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def localMersenneGeometricQuotient (M d : ℕ) : ℕ :=
+  2 ^ (M % d) * ∑ j ∈ Finset.range (M / d), (2 ^ d) ^ j
+/-- The integral part of `2^M / (2^d - 1)`. Local copy of Erdos249257.localMersenneQuotient, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def localMersenneQuotient (M d : ℕ) : ℕ :=
+  2 ^ M / (2 ^ d - 1)
+/-- **The support coefficient** `f_A(n) = #{d ∣ n : d ∈ A}`, the Dirichlet incidence `1_A * 1` of a support set `A ⊆ ℕ`. This is the coefficient in which Erdős #257 is actually stated: `∑_{a∈A} 1/(b^a - 1) = ∑_n f_A(n)/b^n`. Full support gives `f_ℕ = τ`; primes give `ω`; prime powers give `Ω`. Local copy of Erdos249257.supportCoeff, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def supportCoeff (A : Set ℕ) (n : ℕ) : ℕ :=
+  letI := Classical.decPred fun d : ℕ => d ∈ A
+  (n.divisors.filter fun d => d ∈ A).card
 end PalomarCorpus.E257_35.Shared
 
-namespace PalomarCorpus.E257.PaperStatementsN
-open scoped ENNReal
-open Filter
-open Set
-open MeasureTheory
-open Topology
-export PalomarCorpus.E257_35.Shared (mersenneTail mersenneWeight)
-/-- Real greedy residual after processing exponents `1, ..., n`. Local copy of Erdos249257.greedyMersenneRemainder, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def greedyMersenneRemainder (x : ℝ) : ℕ → ℝ
-  | 0 => x
-  | n + 1 =>
-      if mersenneWeight (n + 1) ≤ greedyMersenneRemainder x n then
-        greedyMersenneRemainder x n - mersenneWeight (n + 1)
+namespace PalomarCorpus.E257.PaperStructuresAY
+open scoped BigOperators
+export PalomarCorpus.E257_35.Shared (localMersenneQuotient)
+/-- Descending local quotient weights with ranks `d,d+1,…,R`. Local copy of Erdos249257.BooleanMobiusGreedyReduction.localMersenneWeightsFrom, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def localMersenneWeightsFrom (M R : ℕ) : ℕ → List ℕ
+  | d =>
+      if h : d ≤ R then
+        localMersenneQuotient M d :: localMersenneWeightsFrom M R (d + 1)
       else
-        greedyMersenneRemainder x n
-/-- The value coded by a set of positive exponents. The sequence index is zero-based while the exponent supplied to the weight is `k+1`. Local copy of Erdos249257.positiveMersenneSupportValue, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def positiveMersenneSupportValue (A : Set ℕ) : ℝ :=
-  ∑' k : ℕ, Set.indicator A mersenneWeight (k + 1)
-/-- The Mersenne achievement set, with the analytically invisible zero bit normalized away. Local copy of Erdos249257.mersenneAchievementSet, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def mersenneAchievementSet : Set ℝ :=
-  {x : ℝ | ∃ A : Set ℕ, 0 ∉ A ∧ x = positiveMersenneSupportValue A}
-/-- The greedy rule applied to an arbitrary target `t` and an arbitrary weight system `v`, in increasing order of rank, starting at rank `2`. `tailGreedyRemainder t v m` is the residual after the ranks `2, …, m + 1`, so the decision at rank `n ≥ 2` is `v n ≤ tailGreedyRemainder t v (n - 2)`. Local copy of ErdosProblems.Erdos257.PaperCompleteR21.tailGreedyRemainder, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def tailGreedyRemainder (t : ℝ) (v : ℕ → ℝ) : ℕ → ℝ
-  | 0 => t
-  | m + 1 =>
-      if v (m + 1 + 1) ≤ tailGreedyRemainder t v m then
-        tailGreedyRemainder t v m - v (m + 1 + 1)
-      else tailGreedyRemainder t v m
-end PalomarCorpus.E257.PaperStatementsN
+        []
+termination_by d => R + 1 - d
+decreasing_by omega
+/-- The complete lower quotient word on ranks `2,…,R`. Local copy of Erdos249257.BooleanMobiusGreedyReduction.localMersenneWeights, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def localMersenneWeights (M R : ℕ) : List ℕ :=
+  localMersenneWeightsFrom M R 2
+/-- Number of binary suffix values available after a truncation at depth `M`, when ranks through `R` have already been fixed. Local copy of Erdos249257.BooleanMobiusGreedyReduction.lowerBinaryWindow, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def lowerBinaryWindow (M R : ℕ) : ℕ :=
+  2 ^ (M - R)
+/-- Every head exceeds the sum of its complete tail by at least `gap`. Local copy of Erdos249257.HalfCylinderIntegerGreedy.GapDominates, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def GapDominates (gap : ℕ) : List ℕ → Prop
+  | [] => True
+  | w :: ws => gap + ws.sum ≤ w ∧ GapDominates gap ws
+/-- Descending greedy subset for an integer capacity. Local copy of Erdos249257.HalfCylinderIntegerGreedy.integerGreedyBits, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def integerGreedyBits : List ℕ → ℕ → List Bool
+  | [], _ => []
+  | w :: ws, C =>
+      if w ≤ C then
+        true :: integerGreedyBits ws (C - w)
+      else
+        false :: integerGreedyBits ws C
+/-- Weighted sum of a Boolean word. The equal-length hypotheses below make the two fallback equations irrelevant. Local copy of Erdos249257.HalfCylinderIntegerGreedy.weightedBoolSum, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def weightedBoolSum : List ℕ → List Bool → ℕ
+  | w :: ws, true :: bs => w + weightedBoolSum ws bs
+  | _ :: ws, false :: bs => weightedBoolSum ws bs
+  | _, _ => 0
+/-- Local copy of Erdos249257.HalfCylinderIntegerGreedy.integerGreedyRemainder, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def integerGreedyRemainder (weights : List ℕ) (C : ℕ) : ℕ :=
+  C - weightedBoolSum weights (integerGreedyBits weights C)
+end PalomarCorpus.E257.PaperStructuresAY
 
-namespace PalomarCorpus.E257.PaperStatementsAM
+namespace PalomarCorpus.E257.PaperStatementsAD
+open scoped BigOperators
+export PalomarCorpus.E257_35.Shared (localMersenneGeometricQuotient localMersenneQuotient)
+end PalomarCorpus.E257.PaperStatementsAD
+
+namespace PalomarCorpus.E257.PaperStatementsAR
+open Filter
+open Set
+open scoped ENNReal
+open MeasureTheory
+open Topology
+open scoped BigOperators
+export PalomarCorpus.E257_35.Shared (localMersenneGeometricQuotient localMersenneQuotient)
+/-- Sum of the integral quotient contributions of a finite Boolean support. Local copy of Erdos249257.localPrefixQuotient, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def localPrefixQuotient (D : Finset ℕ) (M : ℕ) : ℕ :=
+  ∑ d ∈ D, localMersenneQuotient M d
+/-- The exact rational Mersenne weight `1 / (2^n - 1)`. Its meaningful support indices are positive; at index zero Lean's division convention gives zero. Local copy of Erdos249257.mersenneWeightRat, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def mersenneWeightRat (n : ℕ) : ℚ :=
+  1 / ((2 : ℚ) ^ n - 1)
+/-- The exact finite Mersenne value of a Boolean lower support. Local copy of Erdos249257.localMersennePrefixValue, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def localMersennePrefixValue (D : Finset ℕ) : ℚ :=
+  ∑ d ∈ D, mersenneWeightRat d
+/-- The carry left after reading the nonterminating binary expansion of `2⁻ᵏ` through place `M` and subtracting the quotient contributions of `D`. The theorem below proves that the truncating natural subtraction is honest in the endpoint situation where it is used. Local copy of Erdos249257.localBinarySuffix, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def localBinarySuffix (D : Finset ℕ) (k M : ℕ) : ℕ :=
+  2 ^ (M - k) - localPrefixQuotient D M - 1
+/-- The corresponding geometric normal form of a finite prefix quotient. Local copy of Erdos249257.localGeometricPrefixQuotient, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def localGeometricPrefixQuotient (D : Finset ℕ) (M : ℕ) : ℕ :=
+  ∑ d ∈ D, localMersenneGeometricQuotient M d
+end PalomarCorpus.E257.PaperStatementsAR
+
+namespace PalomarCorpus.E257.PaperStatementsAE
+open Filter
+open Set
+export PalomarCorpus.E257_35.Shared (IsTemperedBinaryOrbit binaryCoeffSeries binaryCoeffTail)
+end PalomarCorpus.E257.PaperStatementsAE
+
+namespace PalomarCorpus.E257.PaperStatementsAU
+open ArithmeticFunction
+open Filter
+open Set
+open scoped ArithmeticFunction.Moebius
+open Topology
+export PalomarCorpus.E257_35.Shared (IsTemperedBinaryOrbit binaryCoeffSeries erdosSupportSeries supportCoeff)
+/-- A real number represented by an integer numerator and a positive natural denominator. This is the explicit positive-denominator form of membership in `ℚ`; it keeps the carry multiplier visible in theorem statements. Local copy of Erdos249257.HasRationalValue, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def HasRationalValue (x : ℝ) : Prop :=
+  ∃ p : ℤ, ∃ v : ℕ, 0 < v ∧ x = (p : ℝ) / (v : ℝ)
+/-- The positive-index integer indicator of a support. Arithmetic functions must vanish at zero, which is also the correct normalization for the Lambert coefficient calculus. Local copy of Erdos249257.positiveSupportBit, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def positiveSupportBit (A : Set ℕ) (n : ℕ) : ℤ :=
+  letI := Classical.propDecidable (0 < n ∧ n ∈ A)
+  if 0 < n ∧ n ∈ A then 1 else 0
+/-- `positiveSupportBit` packaged as an integer-valued arithmetic function. Local copy of Erdos249257.positiveSupportBitAF, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def positiveSupportBitAF (A : Set ℕ) : ArithmeticFunction ℤ :=
+  ⟨positiveSupportBit A, by simp [positiveSupportBit]⟩
+/-- The support divisor-count coefficient, cast to an integer-valued arithmetic function. Local copy of Erdos249257.supportCoeffAF, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def supportCoeffAF (A : Set ℕ) : ArithmeticFunction ℤ :=
+  ⟨fun n ↦ (supportCoeff A n : ℤ), by simp [supportCoeff]⟩
+end PalomarCorpus.E257.PaperStatementsAU
+
+namespace PalomarCorpus.E257.PaperStatementsAG
+open Filter
+open Topology
+export PalomarCorpus.E257_35.Shared (supportCoeff)
+end PalomarCorpus.E257.PaperStatementsAG
+
+namespace PalomarCorpus.E257.PaperStatementsAV
+open ArithmeticFunction
 open Filter
 open Set
 open Topology
-open scoped ENNReal
-open MeasureTheory
-export PalomarCorpus.E257_35.Shared (mersenneTail mersenneWeight)
-end PalomarCorpus.E257.PaperStatementsAM
-
-namespace PalomarCorpus.E257.PaperStatementsAI
-open Filter
-open Topology
-open Classical
-export PalomarCorpus.E257_35.Shared (rungGreedySupport rungRem rungTail rungWeight)
-end PalomarCorpus.E257.PaperStatementsAI
-
-namespace PalomarCorpus.E257.PaperStatementsJ
-open Filter
-open Topology
-open Classical
-export PalomarCorpus.E257_35.Shared (rungGreedySupport rungRem rungTail rungWeight)
-/-- The mass that the support `A` puts at rank `n`: this is `Set.indicator A (rungWeight J)`, so `∑' n, rungSupportWeight J A n` is the manuscript's `∑_{n ∈ A} w_n^{(J)}`. Local copy of ErdosProblems.Erdos257.PaperCompleteR21.rungSupportWeight, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def rungSupportWeight (J : ℕ) (A : Set ℕ) (n : ℕ) : ℝ :=
-  if n ∈ A then rungWeight J n else 0
-/-- The manuscript's `HalfRung(J)`: some `A ⊆ {2,3,…}` has `∑_{n ∈ A} w_n^{(J)} = 1/2`. Local copy of ErdosProblems.Erdos257.PaperCompleteR21.HalfRung, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def HalfRung (J : ℕ) : Prop :=
-  ∃ A : Set ℕ, (∀ n ∈ A, 2 ≤ n) ∧ ∑' n : ℕ, rungSupportWeight J A n = 1 / 2
-/-- The manuscript's misalignment mass `μ_J(M) = ∑_{q=2}^{J} 2^{M mod q}/(2^q-1)`. Local copy of ErdosProblems.Erdos257.PaperCompleteR21.rungMisalign, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def rungMisalign (J M : ℕ) : ℝ :=
-  ∑ q ∈ Finset.Icc 2 J, (2 : ℝ) ^ (M % q) / (2 ^ q - 1)
-/-- A rank `n` is **bad** for `J` when no `M ∈ [n, 2n-2]` passes the witness test `μ_J(M) ≤ 11/15`. Local copy of ErdosProblems.Erdos257.PaperCompleteR21.RungBad, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def RungBad (J n : ℕ) : Prop :=
-  ∀ M : ℕ, n ≤ M → M + 2 ≤ 2 * n → ¬ (rungMisalign J M ≤ 11 / 15)
-/-- Rank `n` is **fatal** when the residual sits strictly inside the gap `(T_{n+1}^{(J)}, w_n^{(J)})`, which no later tail can repair. Local copy of ErdosProblems.Erdos257.PaperCompleteR21.RungFatal, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def RungFatal (J n : ℕ) : Prop :=
-  rungTail J n < rungRem J n ∧ rungRem J n < rungWeight J n
-/-- The manuscript's `L_J = lcm(2,3,…,J)`. Local copy of ErdosProblems.Erdos257.PaperCompleteR21.rungLcm, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def rungLcm (J : ℕ) : ℕ := (Finset.Icc 2 J).lcm id
-/-- The bad ranks inside the manuscript's finite window `[4, L_J/2]`. Local copy of ErdosProblems.Erdos257.PaperCompleteR21.rungBadFinset, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def rungBadFinset (J : ℕ) : Finset ℕ :=
-  (Finset.Icc 4 (rungLcm J / 2)).filter (fun n => RungBad J n)
-/-- The manuscript's `B(J) = max(bad ∪ {3})`. Local copy of ErdosProblems.Erdos257.PaperCompleteR21.rungDecisionHorizon, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def rungDecisionHorizon (J : ℕ) : ℕ :=
-  (insert 3 (rungBadFinset J)).max' ⟨3, Finset.mem_insert_self 3 _⟩
-end PalomarCorpus.E257.PaperStatementsJ
-
-namespace PalomarCorpus.E257.PaperStatementsAA
-/-- The manuscript's misalignment mass `μ_J(M) = ∑_{q=2}^{J} 2^{M mod q}/(2^q-1)`. Local copy of ErdosProblems.Erdos257.PaperCompleteR21.misalignMass, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def misalignMass (J M : ℕ) : ℝ :=
-  ∑ q ∈ Finset.Icc 2 J, (2 : ℝ) ^ (M % q) / (2 ^ q - 1)
-/-- The manuscript's `B(r) = 2^⌊(r+4)/2⌋ + 2r + 3`: a division-free integer envelope for a reset which can feed a right branch at the two-thirds crossing of its largest false rank. Local copy of ErdosProblems.Erdos257.PaperCompleteR21.resetCrossingBound, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def resetCrossingBound (r : ℕ) : ℕ :=
-  2 ^ ((r + 4) / 2) + 2 * r + 3
-/-- The manuscript's `L_J = lcm(2,3,…,J)`. Local copy of ErdosProblems.Erdos257.PaperCompleteR21.truncLcm, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def truncLcm (J : ℕ) : ℕ := (Finset.Icc 2 J).lcm id
-/-- The manuscript's `T_{n+1}^{(J)} = ∑_{q=1}^{J} 2^{-qn}/(2^q-1)`. Local copy of ErdosProblems.Erdos257.PaperCompleteR21.truncTail, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def truncTail (J n : ℕ) : ℝ :=
-  ∑ q ∈ Finset.Icc 1 J, (1 : ℝ) / (2 ^ (q * n) * (2 ^ q - 1))
-/-- The manuscript's `w_n^{(J)} = ∑_{q=1}^{J} 2^{-qn}`. Local copy of ErdosProblems.Erdos257.PaperCompleteR21.truncWeight, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def truncWeight (J n : ℕ) : ℝ :=
-  ∑ q ∈ Finset.Icc 1 J, (1 : ℝ) / 2 ^ (q * n)
-end PalomarCorpus.E257.PaperStatementsAA
+export PalomarCorpus.E257_35.Shared (binaryCoeffTail erdosSupportSeries supportCoeff)
+/-- The reciprocal summand of a support, with exponent zero harmlessly normalized to zero by real division. Local copy of Erdos249257.reciprocalSupportTerm, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def reciprocalSupportTerm (A : Set ℕ) (a : ℕ) : ℝ :=
+  Set.indicator A (fun a : ℕ => (1 : ℝ) / (a : ℝ)) a
+/-- The reciprocal mass `ρ(A) = ∑_{a∈A} 1/a`. Local copy of Erdos249257.reciprocalMass, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def reciprocalMass (A : Set ℕ) : ℝ :=
+  ∑' a : ℕ, reciprocalSupportTerm A a
+end PalomarCorpus.E257.PaperStatementsAV

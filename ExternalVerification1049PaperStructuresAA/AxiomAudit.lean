@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification1049PaperStructuresAA
+
+#print axioms Erdos249257.ExternalVerification1049PaperStructuresAA.rogers_factorisation_proposition

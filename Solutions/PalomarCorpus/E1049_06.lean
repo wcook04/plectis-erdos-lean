@@ -5,7 +5,5 @@ Authors: Will Cook
 -/
 import Mathlib
 import Solutions.PalomarCorpus.E1049_06.Statement
-import Solutions.PalomarCorpus.E1049_06.PaperStatementsA
-import Solutions.PalomarCorpus.E1049_06.PaperStatementsF
-import Solutions.PalomarCorpus.E1049_06.PaperStructuresP
-import Solutions.PalomarCorpus.E1049_06.RationalBaseRegion
+import Solutions.PalomarCorpus.E1049_06.PaperStatementsX
+import Solutions.PalomarCorpus.E1049_06.PaperStructuresL

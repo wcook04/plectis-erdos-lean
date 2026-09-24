@@ -79,6 +79,27 @@ noncomputable def diagonalPincerKillDepthThroughT64 : ℕ → ℕ
   | 64 => 93
   | _ => 0
 
+noncomputable def dyadicClearedPrefix (a : ℕ → ℤ) (n : ℕ) : ℕ → ℤ
+  | 0 => 0
+  | L + 1 => 2 * dyadicClearedPrefix a n L + a (n + L)
+
+noncomputable def shiftLinearCombination : List (ℕ × ℤ) → (ℕ → ℤ) → (ℕ → ℤ)
+  | [], _ => fun _ => 0
+  | (h, q) :: terms, f => fun n =>
+      q * f (n + h) + shiftLinearCombination terms f n
+
+noncomputable def lcmAnchorShiftPolynomialLetter
+    (t : ℕ) (terms : List (ℕ × ℤ)) : ℕ → ℤ :=
+  shiftLinearCombination terms (lcmAnchorPulseLetter t)
+
+noncomputable def lcmAnchorShiftPolynomialState
+    (t : ℕ) (terms : List (ℕ × ℤ)) : ℕ → ℤ :=
+  shiftLinearCombination terms (lcmAnchorPulseState t)
+
+noncomputable def shiftLinearWeight : List (ℕ × ℤ) → ℤ
+  | [] => 0
+  | (_, q) :: terms => |q| + shiftLinearWeight terms
+
 theorem historical_table_and_complete_band :
     (∀ t ∈ diagonalPincerCertificateScalesThroughT64,
       certifiedKill (periodLcm t) (periodLcm t) (diagonalPincerKillDepthThroughT64 t)) ∧

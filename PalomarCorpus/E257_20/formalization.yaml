@@ -1,10 +1,10 @@
 version: v0.4
 project:
-  name: 'Erdős #257, record section 6.2: exact identities and reductions (part 4 of 5)'
+  name: 'Erdős #257, record section 6.2: exact identities and reductions (part 2 of 6)'
   description: >-
-    This entry states 15 theorems that the long record for Erdős problem #257 states in section 6.2 (exact identities and reductions): the theorem “Reduction to the nearest dyadic boundary” (section 6.2), as dyadicBandEscape_iff_exists_critical and exists_criticalDyadicBandIndex; the theorem “Excluding minus three at a final middle transition” (section 6.2), as mobiusCenteredHalfCarry_add_two; the lemma “Spacing of reverse-carry words” (section 6.2), as paper_reverse_carry_word and reverse_carry_word_common_bound_sharp; the lemma “Linear functionals factoring through one value” (section 6.2), as linearDescender_eq_smul_eval and relationInvariantLinearChannels_det_eq_zero; the theorem “Two-thirds band: exact localisation of post-take skip-unsafety” (section 6.2), as paper_two_thirds_band; the theorem “A weaker sufficient test against the remaining tail” (section 6.2), as paper_sharp_fatal_gap; the lemma “Summability of one gap length per level” (section 6.2), as mersenneGap_pos, mersenneGap_tail_le, summable_mersenneGap_succ and tendsto_mersenneGap_tail_zero; the lemma “The effect of adding one divisor” (section 6.2), as supportCoeff_extend_true_eq_false_add_one_at_double and supportCoeff_insert_eq_add_indicator.
+    This entry states 15 theorems that the long record for Erdős problem #257 states in section 6.2 (exact identities and reductions): the lemma “The values on either side of an eventual right continuation” (section 6.2), as prefix_add_mersenneTail_lt_half_of_eventually_right; the lemma “Each Mersenne weight exceeds its remaining tail” (section 6.2), as halfTwoChannelCap_lt_mersenneTail, mersenneTail_eq_weight_add, mersenneTail_le_two_mul_weight, mersenneTail_lt_weight and two_mul_mersenneWeight_succ_lt; the lemma “The two next-prefix intervals and their gap” (section 6.2), as half_step_forced and isStraddlePrefix_step_trichotomy; the lemma “A greedy gap excludes every representation” (section 6.2), as depth_prefix_interval_disjoint, fatal_gap_endpoint_bounds, fatal_gap_excludes_every_representation and fatal_gap_within_prefix_interval; the lemma “No finite Mersenne sum equals one half” (section 6.2), as half_ne_coe_finset_add_mersenneTail and positiveMersenneSupportValue_coe_finset_ne_half; the theorem “Last-skip iff local fatality: a pointwise criterion” (section 6.2), as half_mem_iff_every_actual_skip_survives.
 
-    12 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 3 are derived from the source declaration by a short tactic proof, which certifies implication.
+    11 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 4 are derived from the source declaration by a short tactic proof, which certifies implication.
 
     Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
 
@@ -55,7 +55,7 @@ sources:
   license: Apache-2.0
   author_endorsement: n/a
 status:
-  scope: "One Comparator configuration selecting the 15 theorems listed in PalomarCorpus/E257_20/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 43 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_43, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
+  scope: "One Comparator configuration selecting the 15 theorems listed in PalomarCorpus/E257_20/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 52 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_52, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
@@ -67,64 +67,64 @@ status:
   - Quot.sound
   - Classical.choice
   main_results:
-  - declaration: "PalomarCorpus.E257.PaperStatementsAA.linearDescender_eq_smul_eval"
-    file: "Solutions/PalomarCorpus/E257_20/PaperStatementsAA.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_20/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAA.paper_reverse_carry_word"
-    file: "Solutions/PalomarCorpus/E257_20/PaperStatementsAA.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_20/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAA.paper_two_thirds_band"
-    file: "Solutions/PalomarCorpus/E257_20/PaperStatementsAA.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_20/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAA.reverse_carry_word_common_bound_sharp"
-    file: "Solutions/PalomarCorpus/E257_20/PaperStatementsAA.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_20/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAB.relationInvariantLinearChannels_det_eq_zero"
-    file: "Solutions/PalomarCorpus/E257_20/PaperStatementsAB.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_20/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAC.dyadicBandEscape_iff_exists_critical"
-    file: "Solutions/PalomarCorpus/E257_20/PaperStatementsAC.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_20/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAC.exists_criticalDyadicBandIndex"
-    file: "Solutions/PalomarCorpus/E257_20/PaperStatementsAC.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_20/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAH.mersenneGap_pos"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAH.halfTwoChannelCap_lt_mersenneTail"
     file: "Solutions/PalomarCorpus/E257_20/PaperStatementsAH.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_20/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAL.supportCoeff_extend_true_eq_false_add_one_at_double"
-    file: "Solutions/PalomarCorpus/E257_20/PaperStatementsAL.lean"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAH.mersenneTail_eq_weight_add"
+    file: "Solutions/PalomarCorpus/E257_20/PaperStatementsAH.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_20/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAM.mersenneGap_tail_le"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAH.mersenneTail_le_two_mul_weight"
+    file: "Solutions/PalomarCorpus/E257_20/PaperStatementsAH.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_20/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAH.mersenneTail_lt_weight"
+    file: "Solutions/PalomarCorpus/E257_20/PaperStatementsAH.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_20/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAH.two_mul_mersenneWeight_succ_lt"
+    file: "Solutions/PalomarCorpus/E257_20/PaperStatementsAH.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_20/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAM.depth_prefix_interval_disjoint"
     file: "Solutions/PalomarCorpus/E257_20/PaperStatementsAM.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_20/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAM.paper_sharp_fatal_gap"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAM.fatal_gap_endpoint_bounds"
     file: "Solutions/PalomarCorpus/E257_20/PaperStatementsAM.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_20/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAM.summable_mersenneGap_succ"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAM.fatal_gap_excludes_every_representation"
     file: "Solutions/PalomarCorpus/E257_20/PaperStatementsAM.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_20/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAM.tendsto_mersenneGap_tail_zero"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAM.fatal_gap_within_prefix_interval"
     file: "Solutions/PalomarCorpus/E257_20/PaperStatementsAM.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_20/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAN.supportCoeff_insert_eq_add_indicator"
-    file: "Solutions/PalomarCorpus/E257_20/PaperStatementsAN.lean"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAM.half_ne_coe_finset_add_mersenneTail"
+    file: "Solutions/PalomarCorpus/E257_20/PaperStatementsAM.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_20/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsI.mobiusCenteredHalfCarry_add_two"
-    file: "Solutions/PalomarCorpus/E257_20/PaperStatementsI.lean"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAM.positiveMersenneSupportValue_coe_finset_ne_half"
+    file: "Solutions/PalomarCorpus/E257_20/PaperStatementsAM.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_20/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsD.half_mem_iff_every_actual_skip_survives"
+    file: "Solutions/PalomarCorpus/E257_20/PaperStatementsD.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_20/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBJ.prefix_add_mersenneTail_lt_half_of_eventually_right"
+    file: "Solutions/PalomarCorpus/E257_20/PaperStructuresBJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_20/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStructuresU.IsStraddlePrefix.half_step_forced"
+    file: "Solutions/PalomarCorpus/E257_20/PaperStructuresU.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_20/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStructuresU.isStraddlePrefix_step_trichotomy"
+    file: "Solutions/PalomarCorpus/E257_20/PaperStructuresU.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_20/comparator.json"
   development_status: substantive

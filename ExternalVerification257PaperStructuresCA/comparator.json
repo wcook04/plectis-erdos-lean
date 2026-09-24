@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification257PaperStructuresCA.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStructuresCA",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStructuresCA.IsStraddlePrefix.half_agrees_greedy"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

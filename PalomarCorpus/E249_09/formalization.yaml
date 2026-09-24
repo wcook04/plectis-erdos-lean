@@ -2,9 +2,9 @@ version: v0.4
 project:
   name: 'Erdős #249, record sections 6.2.1 to 6.2.2: initial implications; equivalent quantified certificate conditions'
   description: >-
-    This entry states 32 theorems that the long record for Erdős problem #249 states in sections 6.2.1 (initial implications) and 6.2.2 (equivalent quantified certificate conditions): the proposition “The error under composite dilation” (section 6.2.1), as composite_dilation_divisor_count_prime_support, lambert_support_series, lambert_support_series_restricted, totient_convolution_weight_mul_zeta, totient_convolution_weight_not_periodic, totient_convolution_weight_prime and totient_convolution_weight_unbounded; the theorem “It suffices to use multiples of a period” (section 6.2.2), as irrational_of_period_multiple_certificate_supply, period_multiple_certificate_at_one, period_multiple_certificate_supply_iff and rational_forces_period_multiple_integrality; the lemma “Nondivisors in a short LCM window” (section 6.2.2), as eq_prime_pow_of_not_dvd_periodLcm; the proposition “Totient factorisation on an LCM progression” (section 6.2.2), as clean_lcm_ray_factorisation and unclean_lcm_ray_counterexample; the theorem “Rationality forces tail integrality on an LCM grid” (section 6.2.2), as certificate_denominator_exclusion, lcm_grid_flatness, lcm_grid_fractional_parts and lcm_grid_supply_iff; the theorem “A sufficient nonintegrality condition on the grid” (section 6.2.2), as lcm_grid_multiplier_positive; the corollary “Equivalent conditions stated without certificates” (section 6.2.2), as irrational_totient_series_of_lcm_cone_nonintegrality_supply, irrational_totient_series_of_lcm_diagonal_nonintegrality_supply, periodLcm_diagonal_kill_iff_tail_diff_notMem_int and irrational_totient_series_iff_all_tail_diffs_nonintegral; the proposition “Soundness of a second-difference certificate” (section 6.2.2), as abs_tail_diff_scaled_sub_window_le, second_difference_cell_one_eight, second_difference_certificate_sound and second_difference_error_bound; the theorem “A finite-grid condition gives a nonintegral pair” (section 6.2.2), as finite_grid_nonintegral_pair and paperGridNumerator_eq; the theorem “A sufficient quantified finite-grid condition” (section 6.2.2), as finite_grid_supply_irrational; the proposition “A finite carry test implies nonintegrality” (section 6.2.2), as finite_carry_candidate_count and finite_carry_test_sound.
+    This entry states 30 theorems that the long record for Erdős problem #249 states in sections 6.2.1 (initial implications) and 6.2.2 (equivalent quantified certificate conditions): the proposition “An affine combination annihilates the specified divisor terms” (section 6.2.1), as joint35ConeWindow_eq, joint35_nonintegral_of_separated_window, joint35_truncation_error, totientTail_enclosure and transportResidueKernel_eq_mobiusTermKernel; the proposition “The error under composite dilation” (section 6.2.1), as composite_dilation_defect_eq_zero_of_prime_support, composite_dilation_defect_univ_six_one, composite_dilation_defect_univ_six_one_card, sum_divisors_totient_ne_totient, composite_dilation_divisor_count, composite_dilation_divisor_count_prime_support, lambert_support_series, lambert_support_series_restricted, totient_convolution_weight_mul_zeta, totient_convolution_weight_not_periodic, totient_convolution_weight_prime and totient_convolution_weight_unbounded; the theorem “It suffices to use multiples of a period” (section 6.2.2), as irrational_of_period_multiple_certificate_supply, period_multiple_certificate_at_one, period_multiple_certificate_supply_iff and rational_forces_period_multiple_integrality; the lemma “Nondivisors in a short LCM window” (section 6.2.2), as eq_prime_pow_of_not_dvd_periodLcm; the proposition “Totient factorisation on an LCM progression” (section 6.2.2), as clean_lcm_ray_factorisation and unclean_lcm_ray_counterexample; the theorem “Rationality forces tail integrality on an LCM grid” (section 6.2.2), as certificate_denominator_exclusion, lcm_grid_flatness, lcm_grid_fractional_parts and lcm_grid_supply_iff; the theorem “A sufficient nonintegrality condition on the grid” (section 6.2.2), as lcm_grid_multiplier_positive; the corollary “Equivalent conditions stated without certificates” (section 6.2.2), as irrational_totient_series_of_lcm_cone_nonintegrality_supply.
 
-    21 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 11 are derived from the source declaration by a short tactic proof, which certifies implication.
+    23 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 7 are derived from the source declaration by a short tactic proof, which certifies implication.
 
     Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
 
@@ -51,11 +51,11 @@ sources:
   license: Apache-2.0
   author_endorsement: n/a
 status:
-  scope: "One Comparator configuration selecting the 32 theorems listed in PalomarCorpus/E249_09/comparator.json, from the Lean development for Erdős problem #249. The problem's theorems are packed, in the order the papers state them, into the 33 entries PalomarCorpus/E249_01 to PalomarCorpus/E249_33, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification249* directories are internal regression inventory and are not selected."
+  scope: "One Comparator configuration selecting the 30 theorems listed in PalomarCorpus/E249_09/comparator.json, from the Lean development for Erdős problem #249. The problem's theorems are packed, in the order the papers state them, into the 33 entries PalomarCorpus/E249_01 to PalomarCorpus/E249_33, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification249* directories are internal regression inventory and are not selected."
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
-  trusted_challenge_sorry_count: 32
+  trusted_challenge_sorry_count: 30
   sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E249_09/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
   axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
   permitted_axiom_budget:
@@ -71,24 +71,20 @@ status:
     file: "Solutions/PalomarCorpus/E249_09/PaperStatementsA.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E249_09/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsA.irrational_totient_series_of_lcm_diagonal_nonintegrality_supply"
-    file: "Solutions/PalomarCorpus/E249_09/PaperStatementsA.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E249_09/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsA.periodLcm_diagonal_kill_iff_tail_diff_notMem_int"
-    file: "Solutions/PalomarCorpus/E249_09/PaperStatementsA.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E249_09/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAD.irrational_totient_series_iff_all_tail_diffs_nonintegral"
-    file: "Solutions/PalomarCorpus/E249_09/PaperStatementsAD.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E249_09/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.finite_carry_candidate_count"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.composite_dilation_defect_eq_zero_of_prime_support"
     file: "Solutions/PalomarCorpus/E249_09/PaperStatementsAJ.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E249_09/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAT.abs_tail_diff_scaled_sub_window_le"
-    file: "Solutions/PalomarCorpus/E249_09/PaperStatementsAT.lean"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.composite_dilation_defect_univ_six_one"
+    file: "Solutions/PalomarCorpus/E249_09/PaperStatementsAJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_09/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.composite_dilation_defect_univ_six_one_card"
+    file: "Solutions/PalomarCorpus/E249_09/PaperStatementsAJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_09/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.sum_divisors_totient_ne_totient"
+    file: "Solutions/PalomarCorpus/E249_09/PaperStatementsAJ.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E249_09/comparator.json"
   - declaration: "PalomarCorpus.E249.PaperStatementsAT.certificate_denominator_exclusion"
@@ -96,10 +92,6 @@ status:
     sorry_count: 0
     comparator_config: "PalomarCorpus/E249_09/comparator.json"
   - declaration: "PalomarCorpus.E249.PaperStatementsAT.clean_lcm_ray_factorisation"
-    file: "Solutions/PalomarCorpus/E249_09/PaperStatementsAT.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E249_09/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAT.finite_carry_test_sound"
     file: "Solutions/PalomarCorpus/E249_09/PaperStatementsAT.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E249_09/comparator.json"
@@ -139,28 +131,24 @@ status:
     file: "Solutions/PalomarCorpus/E249_09/PaperStatementsAU.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E249_09/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAU.second_difference_cell_one_eight"
-    file: "Solutions/PalomarCorpus/E249_09/PaperStatementsAU.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E249_09/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAU.second_difference_certificate_sound"
-    file: "Solutions/PalomarCorpus/E249_09/PaperStatementsAU.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E249_09/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAU.second_difference_error_bound"
-    file: "Solutions/PalomarCorpus/E249_09/PaperStatementsAU.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E249_09/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAX.finite_grid_nonintegral_pair"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAX.joint35ConeWindow_eq"
     file: "Solutions/PalomarCorpus/E249_09/PaperStatementsAX.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E249_09/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAX.finite_grid_supply_irrational"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAX.joint35_nonintegral_of_separated_window"
     file: "Solutions/PalomarCorpus/E249_09/PaperStatementsAX.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E249_09/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAX.paperGridNumerator_eq"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAX.joint35_truncation_error"
     file: "Solutions/PalomarCorpus/E249_09/PaperStatementsAX.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_09/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAX.totientTail_enclosure"
+    file: "Solutions/PalomarCorpus/E249_09/PaperStatementsAX.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_09/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsBD.composite_dilation_divisor_count"
+    file: "Solutions/PalomarCorpus/E249_09/PaperStatementsBD.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E249_09/comparator.json"
   - declaration: "PalomarCorpus.E249.PaperStatementsBD.composite_dilation_divisor_count_prime_support"
@@ -173,6 +161,10 @@ status:
     comparator_config: "PalomarCorpus/E249_09/comparator.json"
   - declaration: "PalomarCorpus.E249.PaperStatementsBD.lambert_support_series_restricted"
     file: "Solutions/PalomarCorpus/E249_09/PaperStatementsBD.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_09/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsBE.transportResidueKernel_eq_mobiusTermKernel"
+    file: "Solutions/PalomarCorpus/E249_09/PaperStatementsBE.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E249_09/comparator.json"
   - declaration: "PalomarCorpus.E249.PaperStatementsBN.totient_convolution_weight_mul_zeta"

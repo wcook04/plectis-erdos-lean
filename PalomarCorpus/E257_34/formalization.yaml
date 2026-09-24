@@ -1,10 +1,10 @@
 version: v0.4
 project:
-  name: 'Erdős #257, record sections 6.5 to 6.6: obstructions and countermodels; further finite and conditional results'
+  name: 'Erdős #257: one-step quotient identities; bounds for the remaining binary positions; doubling the endpoint'
   description: >-
-    This entry states 5 theorems that the long record for Erdős problem #257 states in sections 6.5 (obstructions and countermodels) and 6.6 (further finite and conditional results): the theorem “Excluding the cell with value minus three” (section 6.5), as paper_mobiusCenteredHalfCarry_add_two; the proposition labelled statement:sha256:e465fe9eaeafe6d44b51c8428f570863388dfdec3d9a8398bbee93c6682b15b2 (section 6.6.2), as four_le_halfStripBound, paper_feedback_row_total_dichotomy and paper_shared_prefix_family_contains_strip_witness; the proposition “Exact Lebesgue-measure dichotomy” (section 6.6.6), as paper_volume_supportedMersenneAchievementSet_dichotomy.
+    This entry states 24 theorems that the long record for Erdős problem #257 states in sections the unnumbered section one-step quotient identities, the unnumbered section bounds for the remaining binary positions, the unnumbered section doubling the endpoint, the unnumbered section approximation error and finite denominators and the unnumbered section uniqueness for gap-dominated finite weights: the theorem “The next floor quotient”, as paper_floor_quotient_geometric_sum, paper_next_floor_quotient, paper_next_floor_quotient_no_fixed_point and paper_next_quotient_sum; the theorem “The next quotient sum”, as localPrefixQuotient_succ; the theorem “The signed endpoint recurrence”, as paper_repair_integer_eq_endpoint_defect, paper_signed_endpoint_defect_succ, paper_signed_endpoint_recurrence and paper_endpoint_term_counts_divisors; the theorem “Equivalent forms of the sharper bound”, as localBinarySuffix_two_mul_sub_two_lt_criticalCapacity_iff; the theorem “An unconditional bound with one extra bit”, as paper_capacity_band_exclusion, paper_sharper_additive_estimate and paper_unconditional_bound_one_extra_bit; the theorem “The binary bound after doubling”, as exists_exactRowStrictUpperExtension_two_mul_sub_one_of_exact_below and localBinarySuffix_two_mul_sub_one_lt_upperWindow_of_exact_below; the proposition “Every exact sum contains exponent two”, as two_mem_of_exact_localMersenneQuotient; the proposition “Error in the finite subseries value”, as abs_localMersennePrefixValue_sub_half_le; the proposition “No finite support has value one half”, as paper_finite_sum_inv_odd_den_odd, paper_finite_sum_inv_odd_ne_half, paper_finiteErdosSum_den_odd, paper_finite_support_series_ne_half and paper_half_representing_support_is_infinite; the proposition “Gap domination of the integer weights”, as localMersenneWeightsFrom_gapDominates and localMersenneWeights_gapDominates_even.
 
-    2 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 3 are derived from the source declaration by a short tactic proof, which certifies implication.
+    20 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 4 are derived from the source declaration by a short tactic proof, which certifies implication.
 
     Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
 
@@ -55,11 +55,11 @@ sources:
   license: Apache-2.0
   author_endorsement: n/a
 status:
-  scope: "One Comparator configuration selecting the 5 theorems listed in PalomarCorpus/E257_34/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 43 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_43, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
+  scope: "One Comparator configuration selecting the 24 theorems listed in PalomarCorpus/E257_34/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 52 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_52, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
-  trusted_challenge_sorry_count: 5
+  trusted_challenge_sorry_count: 24
   sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E257_34/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
   axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
   permitted_axiom_budget:
@@ -67,24 +67,100 @@ status:
   - Quot.sound
   - Classical.choice
   main_results:
-  - declaration: "PalomarCorpus.E257.PaperStatementsAM.paper_volume_supportedMersenneAchievementSet_dichotomy"
-    file: "Solutions/PalomarCorpus/E257_34/PaperStatementsAM.lean"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAD.localPrefixQuotient_succ"
+    file: "Solutions/PalomarCorpus/E257_34/PaperStatementsAD.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_34/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsBD.four_le_halfStripBound"
-    file: "Solutions/PalomarCorpus/E257_34/PaperStatementsBD.lean"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAD.paper_finite_sum_inv_odd_den_odd"
+    file: "Solutions/PalomarCorpus/E257_34/PaperStatementsAD.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_34/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsQ.paper_mobiusCenteredHalfCarry_add_two"
-    file: "Solutions/PalomarCorpus/E257_34/PaperStatementsQ.lean"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAD.paper_finite_sum_inv_odd_ne_half"
+    file: "Solutions/PalomarCorpus/E257_34/PaperStatementsAD.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_34/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBR.paper_feedback_row_total_dichotomy"
-    file: "Solutions/PalomarCorpus/E257_34/PaperStructuresBR.lean"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAD.two_mem_of_exact_localMersenneQuotient"
+    file: "Solutions/PalomarCorpus/E257_34/PaperStatementsAD.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_34/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBT.paper_shared_prefix_family_contains_strip_witness"
-    file: "Solutions/PalomarCorpus/E257_34/PaperStructuresBT.lean"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAK.paper_floor_quotient_geometric_sum"
+    file: "Solutions/PalomarCorpus/E257_34/PaperStatementsAK.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_34/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAK.paper_next_floor_quotient"
+    file: "Solutions/PalomarCorpus/E257_34/PaperStatementsAK.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_34/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAK.paper_next_floor_quotient_no_fixed_point"
+    file: "Solutions/PalomarCorpus/E257_34/PaperStatementsAK.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_34/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAK.paper_next_quotient_sum"
+    file: "Solutions/PalomarCorpus/E257_34/PaperStatementsAK.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_34/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAK.paper_repair_integer_eq_endpoint_defect"
+    file: "Solutions/PalomarCorpus/E257_34/PaperStatementsAK.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_34/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAK.paper_signed_endpoint_defect_succ"
+    file: "Solutions/PalomarCorpus/E257_34/PaperStatementsAK.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_34/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAK.paper_signed_endpoint_recurrence"
+    file: "Solutions/PalomarCorpus/E257_34/PaperStatementsAK.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_34/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAN.paper_endpoint_term_counts_divisors"
+    file: "Solutions/PalomarCorpus/E257_34/PaperStatementsAN.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_34/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAN.paper_finiteErdosSum_den_odd"
+    file: "Solutions/PalomarCorpus/E257_34/PaperStatementsAN.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_34/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAN.paper_finite_support_series_ne_half"
+    file: "Solutions/PalomarCorpus/E257_34/PaperStatementsAN.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_34/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAN.paper_half_representing_support_is_infinite"
+    file: "Solutions/PalomarCorpus/E257_34/PaperStatementsAN.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_34/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAR.abs_localMersennePrefixValue_sub_half_le"
+    file: "Solutions/PalomarCorpus/E257_34/PaperStatementsAR.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_34/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAR.exists_exactRowStrictUpperExtension_two_mul_sub_one_of_exact_below"
+    file: "Solutions/PalomarCorpus/E257_34/PaperStatementsAR.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_34/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAR.localBinarySuffix_two_mul_sub_one_lt_upperWindow_of_exact_below"
+    file: "Solutions/PalomarCorpus/E257_34/PaperStatementsAR.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_34/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAR.localBinarySuffix_two_mul_sub_two_lt_criticalCapacity_iff"
+    file: "Solutions/PalomarCorpus/E257_34/PaperStatementsAR.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_34/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAR.paper_capacity_band_exclusion"
+    file: "Solutions/PalomarCorpus/E257_34/PaperStatementsAR.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_34/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAS.paper_sharper_additive_estimate"
+    file: "Solutions/PalomarCorpus/E257_34/PaperStatementsAS.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_34/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAS.paper_unconditional_bound_one_extra_bit"
+    file: "Solutions/PalomarCorpus/E257_34/PaperStatementsAS.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_34/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStructuresAY.localMersenneWeightsFrom_gapDominates"
+    file: "Solutions/PalomarCorpus/E257_34/PaperStructuresAY.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_34/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStructuresAY.localMersenneWeights_gapDominates_even"
+    file: "Solutions/PalomarCorpus/E257_34/PaperStructuresAY.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_34/comparator.json"
   development_status: substantive

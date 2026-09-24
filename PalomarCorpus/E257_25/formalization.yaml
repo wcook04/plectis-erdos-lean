@@ -1,12 +1,10 @@
 version: v0.4
 project:
-  name: 'Erdős #257, record sections 6 to 9: detailed results and their hypotheses; which hypotheses remain unproved (part 3 of 3)'
+  name: 'Erdős #257, record section 6.2: exact identities and reductions (part 5 of 6)'
   description: >-
-    This entry states 3 theorems that the long record for Erdős problem #257 states in sections 6 (detailed results and their hypotheses) and 9 (which hypotheses remain unproved): the theorem “A sufficient lower bound for the integer remainder”, as paper_seam_escape_forces_remainder_band and paper_seam_escape_implies_full_shell_nonnegative; the theorem “A: a sufficient lower bound at every reset” (section 9.6), as half_mem_mersenneAchievementSet_of_resetSqrtEscape.
+    This entry states 17 theorems that the long record for Erdős problem #257 states in section 6.2 (exact identities and reductions): the lemma “Spacing of reverse-carry words” (section 6.2), as paper_reverse_carry_word and reverse_carry_word_common_bound_sharp; the lemma “Linear functionals factoring through one value” (section 6.2), as linearDescender_eq_smul_eval and relationInvariantLinearChannels_det_eq_zero; the theorem “Two-thirds band: exact localisation of post-take skip-unsafety” (section 6.2), as paper_two_thirds_band; the theorem “A weaker sufficient test against the remaining tail” (section 6.2), as paper_sharp_fatal_gap; the lemma “Summability of one gap length per level” (section 6.2), as mersenneGap_pos, mersenneGap_tail_le, summable_mersenneGap_succ and tendsto_mersenneGap_tail_zero; the lemma “The effect of adding one divisor” (section 6.2), as supportCoeff_extend_true_eq_false_add_one_at_double and supportCoeff_insert_eq_add_indicator; the theorem “Uniqueness of an integer recurrence with a vanishing scaled limit” (section 6.2), as binaryCoeffSeries_rational_iff_exists_temperedBinaryOrbit and temperedBinaryOrbit_eq_scaledTail; the lemma “Changing finitely many support elements” (section 6.2), as irrational_erdosSupportSeries_of_tail and irrational_erdosSupportSeries_tail_of_irrational; the lemma “An integer test for the interval between the dyadic and Mersenne weights” (section 6.2), as divInt_le_nextDyadic_iff_excess_nonpos.
 
-    It also states 12 proof obligations of the definitions copied into it: seamPerturbedFamily_gap_pos, seamPerturbedFamily_oldSum_injective, seamPerturbedFamily_separated, seamPerturbedFamily_pulseCap_lt_three_gap, wordPulse_le, exists_seamWord_minimal_above, integerGreedyBits_length, seamAboveWord_minimal, seamAboveWord_strict, seamWeights_length_eq, seamAdjacentCut_below_admissible and seamAdjacentCut_below_maximal. Each is a lemma or a proof field that one of those definitions names, and its documentation names the source it is stated from. The papers state none of them, and the Solution proves each from the source development.
-
-    6 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 9 are derived from the source declaration by a short tactic proof, which certifies implication.
+    15 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 2 are derived from the source declaration by a short tactic proof, which certifies implication.
 
     Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
 
@@ -57,11 +55,11 @@ sources:
   license: Apache-2.0
   author_endorsement: n/a
 status:
-  scope: "One Comparator configuration selecting the 15 theorems listed in PalomarCorpus/E257_25/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 43 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_43, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
+  scope: "One Comparator configuration selecting the 17 theorems listed in PalomarCorpus/E257_25/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 52 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_52, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
-  trusted_challenge_sorry_count: 15
+  trusted_challenge_sorry_count: 17
   sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E257_25/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
   axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
   permitted_axiom_budget:
@@ -69,64 +67,72 @@ status:
   - Quot.sound
   - Classical.choice
   main_results:
-  - declaration: "PalomarCorpus.E257.PaperStructuresBK.exists_seamWord_minimal_above"
-    file: "Solutions/PalomarCorpus/E257_25/PaperStructuresBK.lean"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAA.linearDescender_eq_smul_eval"
+    file: "Solutions/PalomarCorpus/E257_25/PaperStatementsAA.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_25/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBK.half_mem_mersenneAchievementSet_of_resetSqrtEscape"
-    file: "Solutions/PalomarCorpus/E257_25/PaperStructuresBK.lean"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAA.paper_reverse_carry_word"
+    file: "Solutions/PalomarCorpus/E257_25/PaperStatementsAA.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_25/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBK.integerGreedyBits_length"
-    file: "Solutions/PalomarCorpus/E257_25/PaperStructuresBK.lean"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAA.paper_two_thirds_band"
+    file: "Solutions/PalomarCorpus/E257_25/PaperStatementsAA.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_25/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBK.paper_seam_escape_forces_remainder_band"
-    file: "Solutions/PalomarCorpus/E257_25/PaperStructuresBK.lean"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAA.reverse_carry_word_common_bound_sharp"
+    file: "Solutions/PalomarCorpus/E257_25/PaperStatementsAA.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_25/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBK.paper_seam_escape_implies_full_shell_nonnegative"
-    file: "Solutions/PalomarCorpus/E257_25/PaperStructuresBK.lean"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAB.relationInvariantLinearChannels_det_eq_zero"
+    file: "Solutions/PalomarCorpus/E257_25/PaperStatementsAB.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_25/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBK.seamAboveWord_minimal"
-    file: "Solutions/PalomarCorpus/E257_25/PaperStructuresBK.lean"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAE.binaryCoeffSeries_rational_iff_exists_temperedBinaryOrbit"
+    file: "Solutions/PalomarCorpus/E257_25/PaperStatementsAE.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_25/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBK.seamAboveWord_strict"
-    file: "Solutions/PalomarCorpus/E257_25/PaperStructuresBK.lean"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAE.temperedBinaryOrbit_eq_scaledTail"
+    file: "Solutions/PalomarCorpus/E257_25/PaperStatementsAE.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_25/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBK.seamAdjacentCut_below_admissible"
-    file: "Solutions/PalomarCorpus/E257_25/PaperStructuresBK.lean"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAF.divInt_le_nextDyadic_iff_excess_nonpos"
+    file: "Solutions/PalomarCorpus/E257_25/PaperStatementsAF.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_25/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBK.seamAdjacentCut_below_maximal"
-    file: "Solutions/PalomarCorpus/E257_25/PaperStructuresBK.lean"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAG.irrational_erdosSupportSeries_of_tail"
+    file: "Solutions/PalomarCorpus/E257_25/PaperStatementsAG.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_25/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBK.seamPerturbedFamily_gap_pos"
-    file: "Solutions/PalomarCorpus/E257_25/PaperStructuresBK.lean"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAG.irrational_erdosSupportSeries_tail_of_irrational"
+    file: "Solutions/PalomarCorpus/E257_25/PaperStatementsAG.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_25/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBK.seamPerturbedFamily_oldSum_injective"
-    file: "Solutions/PalomarCorpus/E257_25/PaperStructuresBK.lean"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAH.mersenneGap_pos"
+    file: "Solutions/PalomarCorpus/E257_25/PaperStatementsAH.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_25/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBK.seamPerturbedFamily_pulseCap_lt_three_gap"
-    file: "Solutions/PalomarCorpus/E257_25/PaperStructuresBK.lean"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAL.supportCoeff_extend_true_eq_false_add_one_at_double"
+    file: "Solutions/PalomarCorpus/E257_25/PaperStatementsAL.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_25/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBK.seamPerturbedFamily_separated"
-    file: "Solutions/PalomarCorpus/E257_25/PaperStructuresBK.lean"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAM.mersenneGap_tail_le"
+    file: "Solutions/PalomarCorpus/E257_25/PaperStatementsAM.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_25/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBK.seamWeights_length_eq"
-    file: "Solutions/PalomarCorpus/E257_25/PaperStructuresBK.lean"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAM.paper_sharp_fatal_gap"
+    file: "Solutions/PalomarCorpus/E257_25/PaperStatementsAM.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_25/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBK.wordPulse_le"
-    file: "Solutions/PalomarCorpus/E257_25/PaperStructuresBK.lean"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAM.summable_mersenneGap_succ"
+    file: "Solutions/PalomarCorpus/E257_25/PaperStatementsAM.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_25/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAM.tendsto_mersenneGap_tail_zero"
+    file: "Solutions/PalomarCorpus/E257_25/PaperStatementsAM.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_25/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAN.supportCoeff_insert_eq_add_indicator"
+    file: "Solutions/PalomarCorpus/E257_25/PaperStatementsAN.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_25/comparator.json"
   development_status: substantive
@@ -153,5 +159,5 @@ review:
   status: self-assessed
   reviewers: []
   notes: >-
-    Every generated restatement of a paper statement was bound to that statement and refereed in the eight-paper coverage ledger before its wrapper was generated, and its transport proof was elaborated before the statement was accepted. The proof obligations of the copied definitions are stated from the source development and proved from it; no paper statement binds them, so none was refereed. The author selected the statements and is responsible for the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
+    Every generated restatement was bound to a paper statement and refereed in the eight-paper coverage ledger before its wrapper was generated, and its transport proof was elaborated before the statement was accepted. The author selected the statements and is responsible for the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
 acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

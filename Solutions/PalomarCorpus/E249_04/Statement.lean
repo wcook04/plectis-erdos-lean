@@ -18,11 +18,11 @@ walks from a compared theorem statement is byte-identical in the Challenge and S
 environments. Generated from the Challenge; do not edit by hand.
 -/
 
+open Finset
 open scoped BigOperators
 open Matrix
 open ArithmeticFunction
 open Module
-open Finset
 open Filter
 open Topology
 
@@ -35,6 +35,50 @@ noncomputable def mobiusMersenneTerm (r n : ℕ) : ℝ :=
 noncomputable def mobiusMersenneTheta (r : ℕ) : ℝ :=
   ∑' n : ℕ, mobiusMersenneTerm r n
 end PalomarCorpus.E249_04.Shared
+
+namespace PalomarCorpus.E249.PaperStatementsI
+open Finset
+/-- The depth-`L` cleared binary prefix, accumulated from left to right. Equivalently this is `∑ j < L, a (n+j) * 2^(L-1-j)`. Local copy of Erdos249257.TotientTailPeriodKiller.dyadicClearedPrefix, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def dyadicClearedPrefix (a : ℕ → ℤ) (n : ℕ) : ℕ → ℤ
+  | 0 => 0
+  | L + 1 => 2 * dyadicClearedPrefix a n L + a (n + L)
+/-- `periodLcm t = lcm(1, …, t)`: the universal period at scale `t`. Every primitive period `h₀ ≤ t` divides it. Local copy of Erdos249257.TotientTailPeriodKiller.periodLcm, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def periodLcm : ℕ → ℕ
+  | 0 => 1
+  | t + 1 => Nat.lcm (periodLcm t) (t + 1)
+/-- State anchors corresponding to the exact whole-ray letters at `q * periodLcm t`, for `2 ≤ q < t`. Local copy of Erdos249257.TotientTailPeriodKiller.lcmAnchorStates, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def lcmAnchorStates (t : ℕ) : Finset ℕ :=
+  (Finset.Ico 2 t).image (fun q => (q - 1) * periodLcm t)
+/-- A state which is `-A` on a finite anchor set and zero elsewhere. Local copy of Erdos249257.TotientTailPeriodKiller.sparsePulseState, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def sparsePulseState (A : ℤ) (S : Finset ℕ) (k : ℕ) : ℤ :=
+  if k ∈ S then -A else 0
+/-- The zero-based forcing letter determined by `c_{i+1} = 2c_i - a_i`. Local copy of Erdos249257.TotientTailPeriodKiller.sparsePulseLetter, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def sparsePulseLetter (A : ℤ) (S : Finset ℕ) (i : ℕ) : ℤ :=
+  2 * sparsePulseState A S i - sparsePulseState A S (i + 1)
+/-- The LCM pulse forcing word. Local copy of Erdos249257.TotientTailPeriodKiller.lcmAnchorPulseLetter, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def lcmAnchorPulseLetter (t i : ℕ) : ℤ :=
+  sparsePulseLetter (Nat.totient (periodLcm t) : ℤ) (lcmAnchorStates t) i
+/-- The LCM pulse state with amplitude `φ(periodLcm t)`. Local copy of Erdos249257.TotientTailPeriodKiller.lcmAnchorPulseState, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def lcmAnchorPulseState (t k : ℕ) : ℤ :=
+  sparsePulseState (Nat.totient (periodLcm t) : ℤ) (lcmAnchorStates t) k
+/-- Evaluation of a finite integer shift polynomial on a sequence. A term `(h, q)` contributes `q * f(n+h)`. Local copy of Erdos249257.TotientTailPeriodKiller.shiftLinearCombination, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def shiftLinearCombination : List (ℕ × ℤ) → (ℕ → ℤ) → (ℕ → ℤ)
+  | [], _ => fun _ => 0
+  | (h, q) :: terms, f => fun n =>
+      q * f (n + h) + shiftLinearCombination terms f n
+/-- Pulse letters transformed by the same shift polynomial. Local copy of Erdos249257.TotientTailPeriodKiller.lcmAnchorShiftPolynomialLetter, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def lcmAnchorShiftPolynomialLetter
+    (t : ℕ) (terms : List (ℕ × ℤ)) : ℕ → ℤ :=
+  shiftLinearCombination terms (lcmAnchorPulseLetter t)
+/-- Pulse state transformed by an arbitrary finite integer shift polynomial. Local copy of Erdos249257.TotientTailPeriodKiller.lcmAnchorShiftPolynomialState, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def lcmAnchorShiftPolynomialState
+    (t : ℕ) (terms : List (ℕ × ℤ)) : ℕ → ℤ :=
+  shiftLinearCombination terms (lcmAnchorPulseState t)
+/-- The `ℓ1` weight of a finite shift polynomial. Local copy of Erdos249257.TotientTailPeriodKiller.shiftLinearWeight, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def shiftLinearWeight : List (ℕ × ℤ) → ℤ
+  | [] => 0
+  | (_, q) :: terms => |q| + shiftLinearWeight terms
+end PalomarCorpus.E249.PaperStatementsI
 
 namespace PalomarCorpus.E249.PaperStatementsJ
 open scoped BigOperators
@@ -111,10 +155,3 @@ namespace PalomarCorpus.E249.PaperStatementsAI
 open Filter
 open Topology
 end PalomarCorpus.E249.PaperStatementsAI
-
-namespace PalomarCorpus.E249.PaperStatementsAY
-open scoped BigOperators
-/-- The #249 constant, named locally for the generic-scale transport. Local copy of Erdos249257.FullTargetPrimeAdjunctionNoGo.totientSeries, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def totientSeries : ℝ :=
-  ∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n
-end PalomarCorpus.E249.PaperStatementsAY

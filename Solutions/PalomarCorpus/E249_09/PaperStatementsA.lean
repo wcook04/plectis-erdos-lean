@@ -16,13 +16,21 @@ open Finset
 /- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
 
 namespace PalomarCorpus.E249.PaperStatementsA
-export PalomarCorpus.E249_09.Shared (certifiedKill periodLcm totientTail windowDiscrepancy)
+export PalomarCorpus.E249_09.Shared (periodLcm totientTail)
 
 noncomputable def deltaTotient (h n : ℕ) : ℤ := (Nat.totient (n + h) : ℤ) - (Nat.totient n : ℤ)
 
 noncomputable def carryOrbit (h N : ℕ) (d : ℤ) : ℕ → ℤ
   | 0 => d
   | i + 1 => 2 * carryOrbit h N d i - deltaTotient h (N + i + 1)
+
+noncomputable def windowDiscrepancy (h N L : ℕ) : ℤ :=
+  ∑ j ∈ Finset.range L,
+    ((Nat.totient (N + h + 1 + j) : ℤ) - (Nat.totient (N + 1 + j) : ℤ)) * 2 ^ (L - 1 - j)
+
+noncomputable def certifiedKill (h N L : ℕ) : Prop :=
+  (N + h + L + 2 : ℤ) < windowDiscrepancy h N L % 2 ^ L ∧
+    windowDiscrepancy h N L % 2 ^ L < 2 ^ L - (N + h + L + 2)
 
 theorem actualLcmTailDiff_shift_pos
     {a J : ℕ} (ha : 8 ≤ a)

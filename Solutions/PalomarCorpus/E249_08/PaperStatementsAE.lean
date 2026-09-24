@@ -31,7 +31,7 @@ open scoped BigOperators
 /- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
 
 namespace PalomarCorpus.E249.PaperStatementsAE
-export PalomarCorpus.E249_08.Shared (lambertValue mobiusTermKernel)
+export PalomarCorpus.E249_08.Shared (lambertValue)
 
 noncomputable def foreignChannelPhaseTerm (d H s : ℕ) : ℤ :=
   if d ∣ 2 * H + s then

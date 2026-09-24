@@ -27,10 +27,12 @@ import Solutions.PalomarCorpus.E257_21.Statement
 /- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
 
 namespace PalomarCorpus.E257.PaperStatementsAA
-export PalomarCorpus.E257_21.Shared (primePowerLayer)
 
 noncomputable def mersenneTailLB3 (k : ℕ) : ℝ :=
   1 / 2 ^ k + 1 / (3 * (2 ^ k) ^ 2) + 1 / (7 * (2 ^ k) ^ 3)
+
+noncomputable def primePowerLayer (p e : ℕ) (g : ℕ → ℤ) (n : ℕ) : ℤ :=
+  g (p ^ e * n) - g (p ^ (e - 1) * n)
 
 noncomputable def boundedDoubleOrRecycleModel (n : ℕ) : Prop := n = 6
 
@@ -49,9 +51,6 @@ noncomputable def misalignMass (J M : ℕ) : ℝ :=
 
 noncomputable def resetCrossingBound (r : ℕ) : ℕ :=
   2 ^ ((r + 4) / 2) + 2 * r + 3
-
-noncomputable def rowWeightSum (s : ℕ) (E : Finset ℕ) : ℤ :=
-  ∑ e ∈ E, ⌊(4 : ℝ) ^ s / ((2 : ℝ) ^ e - 1)⌋
 
 noncomputable def skipSum (S : Finset ℕ) : ℚ := ∑ d ∈ S, 1 / ((2 : ℚ) ^ d - 1)
 

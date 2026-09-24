@@ -17,9 +17,6 @@ open scoped Polynomial
 namespace PalomarCorpus.E249.PaperStatementsAC
 export PalomarCorpus.E249_08.Shared (jordanTotientTwo mobiusNumeratorPolynomial spacedRepunit)
 
-noncomputable def gcdWordCoeff (r k : ℕ) : ℕ :=
-  (r / r.gcd k) * (r.gcd k).totient
-
 theorem cyclotomic_dvd_mobiusNumeratorPolynomial_sub
     {r m : ℕ} (hr : Squarefree r) (hm : m ∣ r) :
     Polynomial.cyclotomic m ℤ ∣

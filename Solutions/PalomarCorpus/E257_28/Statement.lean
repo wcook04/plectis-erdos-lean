@@ -18,17 +18,15 @@ walks from a compared theorem statement is byte-identical in the Challenge and S
 environments. Generated from the Challenge; do not edit by hand.
 -/
 
+open Set
 open scoped BigOperators
 open Filter
-open Topology
-open Set
 open scoped ENNReal
 open MeasureTheory
+open Topology
+open Finset
 
 namespace PalomarCorpus.E257_28.Shared
-/-- The divisor incidence of a finite set D of ranks at n, namely the number of members of D that divide n. -/
-noncomputable def endpointDivisorContribution (D : Finset ℕ) (n : ℕ) : ℕ :=
-  (D.filter fun d ↦ d ∣ n).card
 /-- The local integer Mersenne quotient at binary scale M and rank d, namely the natural number quotient of 2 to the power M by 2 to the power d minus 1; at d = 0 the divisor is 0 and the value is 0. -/
 noncomputable def localMersenneQuotient (M d : ℕ) : ℕ :=
   2 ^ M / (2 ^ d - 1)
@@ -41,47 +39,63 @@ noncomputable def localBinarySuffix (D : Finset ℕ) (k M : ℕ) : ℕ :=
 /-- The rational Mersenne weight 1 divided by 2 to the power n minus 1, taken in the rationals; at n = 0 the value is 0. -/
 noncomputable def mersenneWeightRat (n : ℕ) : ℚ :=
   1 / ((2 : ℚ) ^ n - 1)
-/-- The exact finite Mersenne value of a Boolean lower support. Local copy of Erdos249257.localMersennePrefixValue, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def localMersennePrefixValue (D : Finset ℕ) : ℚ :=
-  ∑ d ∈ D, mersenneWeightRat d
 end PalomarCorpus.E257_28.Shared
 
-namespace PalomarCorpus.E257.PaperStatementsAK
-open scoped BigOperators
-export PalomarCorpus.E257_28.Shared (endpointDivisorContribution localBinarySuffix localMersenneQuotient localPrefixQuotient)
-/-- The integer target corresponding to the dyadic value immediately below `1/2` at endpoint scale `2^M`. Local copy of Erdos249257.halfEndpointTarget, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def halfEndpointTarget (M : ℕ) : ℕ :=
-  2 ^ (M - 1) - 1
-/-- The signed finite-row defect from the integer immediately below one half. Unlike `localBinarySuffix`, this definition never truncates subtraction. Local copy of Erdos249257.localEndpointDefect, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def localEndpointDefect (D : Finset ℕ) (M : ℕ) : ℤ :=
-  (halfEndpointTarget M : ℤ) - (localPrefixQuotient D M : ℤ)
-/-- The next signed Boolean--Möbius coefficient supplied by the binary carry recurrence. Local copy of Erdos249257.localRepairInteger, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def localRepairInteger (D : Finset ℕ) (k n : ℕ) : ℤ :=
-  2 * (localBinarySuffix D k (n - 1) : ℤ) + 1 -
-    (endpointDivisorContribution D n : ℤ)
-end PalomarCorpus.E257.PaperStatementsAK
-
-namespace PalomarCorpus.E257.PaperStatementsAD
-open scoped BigOperators
-export PalomarCorpus.E257_28.Shared (endpointDivisorContribution localMersenneQuotient localPrefixQuotient)
-end PalomarCorpus.E257.PaperStatementsAD
-
-namespace PalomarCorpus.E257.PaperStatementsAN
+namespace PalomarCorpus.E257.PaperStatementsF
+open Set
 open scoped BigOperators
 open Filter
+open scoped ENNReal
+open MeasureTheory
 open Topology
-export PalomarCorpus.E257_28.Shared (endpointDivisorContribution)
-/-- **The Erdős #257 support series** `∑_{a ∈ A} 1/(b^a - 1)`, as an indicator series over ℕ. The `a = 0` term is `1/(1-1) = 0` under real division-by-zero conventions, so supports containing `0` contribute nothing spurious. Local copy of Erdos249257.erdosSupportSeries, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def erdosSupportSeries (b : ℕ) (A : Set ℕ) : ℝ :=
-  ∑' a : ℕ, Set.indicator A (fun a => (1 : ℝ) / ((b : ℝ) ^ a - 1)) a
-/-- The finite Erdős partial sum `∑_{n ∈ F} 1 / (b ^ n - 1)` as a rational number, stated with subtraction in `ℚ` so the statement reads exactly like the mathematical series. Local copy of Erdos249257.finiteErdosSum, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def finiteErdosSum (F : Finset Nat) (b : Nat) : Rat :=
-  ∑ n ∈ F, 1 / ((b : Rat) ^ n - 1)
-/-- **The support coefficient** `f_A(n) = #{d ∣ n : d ∈ A}`, the Dirichlet incidence `1_A * 1` of a support set `A ⊆ ℕ`. This is the coefficient in which Erdős #257 is actually stated: `∑_{a∈A} 1/(b^a - 1) = ∑_n f_A(n)/b^n`. Full support gives `f_ℕ = τ`; primes give `ω`; prime powers give `Ω`. Local copy of Erdos249257.supportCoeff, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def supportCoeff (A : Set ℕ) (n : ℕ) : ℕ :=
-  letI := Classical.decPred fun d : ℕ => d ∈ A
-  (n.divisors.filter fun d => d ∈ A).card
-end PalomarCorpus.E257.PaperStatementsAN
+export PalomarCorpus.E257_28.Shared (localBinarySuffix localMersenneQuotient localPrefixQuotient mersenneWeightRat)
+/-- Exact rational version of the greedy residual. Local copy of Erdos249257.greedyMersenneRemainderRat, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def greedyMersenneRemainderRat (x : ℚ) : ℕ → ℚ
+  | 0 => x
+  | n + 1 =>
+      if mersenneWeightRat (n + 1) ≤ greedyMersenneRemainderRat x n then
+        greedyMersenneRemainderRat x n - mersenneWeightRat (n + 1)
+      else
+        greedyMersenneRemainderRat x n
+/-- Positive exponents selected through a finite exact-rational greedy run. Local copy of Erdos249257.greedyMersennePrefixRat, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def greedyMersennePrefixRat (x : ℚ) (n : ℕ) : Finset ℕ :=
+  (((Finset.range n).filter fun k =>
+      mersenneWeightRat (k + 1) ≤ greedyMersenneRemainderRat x k).image
+    fun k => k + 1)
+/-- Local copy of Erdos249257.halfGreedyPrefixSupport, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def halfGreedyPrefixSupport (n : ℕ) : Finset ℕ :=
+  greedyMersennePrefixRat (1 / 2 : ℚ) n
+/-- The genuinely residual part of the predecessor supply: only a skipped rank immediately before an actual take is exposed. Consecutive skipped ranks have a uniform finite-lookahead proof below. Local copy of Erdos249257.HalfGreedyPreTakePrecriticalSuffixSupply, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def HalfGreedyPreTakePrecriticalSuffixSupply : Prop :=
+  ∀ c : ℕ,
+    6 ≤ c →
+    greedyMersenneRemainderRat (1 / 2 : ℚ) (c - 1) <
+      mersenneWeightRat c →
+    mersenneWeightRat (c + 1) ≤
+      greedyMersenneRemainderRat (1 / 2 : ℚ) c →
+    localBinarySuffix (halfGreedyPrefixSupport (c - 1)) 1 (2 * c - 3) <
+      2 ^ (c - 3)
+/-- The minimal actual-orbit form of the socket: the quotient lower bound is required only when rank `c` is genuinely skipped by the rational half-greedy orbit. Local copy of Erdos249257.HalfGreedySkippedCriticalQuotientSupply, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def HalfGreedySkippedCriticalQuotientSupply : Prop :=
+  ∀ c : ℕ,
+    4 ≤ c →
+    greedyMersenneRemainderRat (1 / 2 : ℚ) (c - 1) <
+      mersenneWeightRat c →
+    2 ^ ((2 * c - 2) - 1) ≤
+      localPrefixQuotient
+        (insert c (halfGreedyPrefixSupport (c - 1))) (2 * c - 2)
+/-- A one-row-earlier form of the actual skipped-rank socket. At endpoint `2c-3` the relevant binary suffix has half the critical capacity. Local copy of Erdos249257.HalfGreedySkippedPrecriticalSuffixSupply, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def HalfGreedySkippedPrecriticalSuffixSupply : Prop :=
+  ∀ c : ℕ,
+    4 ≤ c →
+    greedyMersenneRemainderRat (1 / 2 : ℚ) (c - 1) <
+      mersenneWeightRat c →
+    localBinarySuffix (halfGreedyPrefixSupport (c - 1)) 1 (2 * c - 3) <
+      2 ^ (c - 3)
+end PalomarCorpus.E257.PaperStatementsF
+
+namespace PalomarCorpus.E257.PaperStatementsAA
+end PalomarCorpus.E257.PaperStatementsAA
 
 namespace PalomarCorpus.E257.PaperStatementsAR
 open Filter
@@ -90,39 +104,37 @@ open scoped ENNReal
 open MeasureTheory
 open Topology
 open scoped BigOperators
-export PalomarCorpus.E257_28.Shared (localBinarySuffix localMersennePrefixValue localMersenneQuotient localPrefixQuotient mersenneWeightRat)
+export PalomarCorpus.E257_28.Shared (localBinarySuffix localMersenneQuotient localPrefixQuotient mersenneWeightRat)
+/-- An exact finite Boolean quotient row at endpoint `n`. Local copy of Erdos249257.ExactLocalMersenneHalfRow, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def ExactLocalMersenneHalfRow (n : ℕ) : Prop :=
+  ∃ D : Finset ℕ,
+    (∀ d ∈ D, 2 ≤ d ∧ d ≤ n) ∧
+      localPrefixQuotient D n = 2 ^ (n - 1) - 1
+/-- The exact finite Mersenne value of a Boolean lower support. Local copy of Erdos249257.localMersennePrefixValue, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def localMersennePrefixValue (D : Finset ℕ) : ℚ :=
+  ∑ d ∈ D, mersenneWeightRat d
+/-- The source-current fractional part of `2^M / (2^d - 1)` for `d ≥ 2`. The exponent is reduced modulo `d` before the division. Local copy of Erdos249257.localMersenneFraction, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def localMersenneFraction (M d : ℕ) : ℚ :=
+  ((2 ^ (M % d) : ℕ) : ℚ) / ((2 ^ d - 1 : ℕ) : ℚ)
+/-- Sum of the corresponding fractional contributions. Local copy of Erdos249257.localFractionMass, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def localFractionMass (D : Finset ℕ) (M : ℕ) : ℚ :=
+  ∑ d ∈ D, localMersenneFraction M d
 end PalomarCorpus.E257.PaperStatementsAR
 
-namespace PalomarCorpus.E257.PaperStatementsAS
-open scoped BigOperators
-open scoped ENNReal
-open Filter
-open Set
-open MeasureTheory
-open Topology
-export PalomarCorpus.E257_28.Shared (localBinarySuffix localMersennePrefixValue localMersenneQuotient localPrefixQuotient mersenneWeightRat)
-end PalomarCorpus.E257.PaperStatementsAS
-
-namespace PalomarCorpus.E257.PaperStructuresAY
+namespace PalomarCorpus.E257.PaperStatementsAD
 open scoped BigOperators
 export PalomarCorpus.E257_28.Shared (localMersenneQuotient)
-/-- Descending local quotient weights with ranks `d,d+1,…,R`. Local copy of Erdos249257.BooleanMobiusGreedyReduction.localMersenneWeightsFrom, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def localMersenneWeightsFrom (M R : ℕ) : ℕ → List ℕ
-  | d =>
-      if h : d ≤ R then
-        localMersenneQuotient M d :: localMersenneWeightsFrom M R (d + 1)
-      else
-        []
-termination_by d => R + 1 - d
-decreasing_by omega
-/-- The complete lower quotient word on ranks `2,…,R`. Local copy of Erdos249257.BooleanMobiusGreedyReduction.localMersenneWeights, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def localMersenneWeights (M R : ℕ) : List ℕ :=
-  localMersenneWeightsFrom M R 2
-/-- Number of binary suffix values available after a truncation at depth `M`, when ranks through `R` have already been fixed. Local copy of Erdos249257.BooleanMobiusGreedyReduction.lowerBinaryWindow, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def lowerBinaryWindow (M R : ℕ) : ℕ :=
-  2 ^ (M - R)
-/-- Every head exceeds the sum of its complete tail by at least `gap`. Local copy of Erdos249257.HalfCylinderIntegerGreedy.GapDominates, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def GapDominates (gap : ℕ) : List ℕ → Prop
-  | [] => True
-  | w :: ws => gap + ws.sum ≤ w ∧ GapDominates gap ws
-end PalomarCorpus.E257.PaperStructuresAY
+end PalomarCorpus.E257.PaperStatementsAD
+
+namespace PalomarCorpus.E257.PaperStatementsBE
+open Finset
+/-- `j` indexes the smallest power `2^(d-j+1)` that is still at least `E`. The final disjunction handles the last index, where there is no next power in the band family. Local copy of Erdos249257.HalfUpperResetCriticalBand.CriticalDyadicBandIndex, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def CriticalDyadicBandIndex (d E j : ℕ) : Prop :=
+  j ≤ d ∧
+    E ≤ 2 ^ (d - j + 1) ∧
+      (j = d ∨ 2 ^ (d - (j + 1) + 1) < E)
+/-- Avoidance of every width-`2(d+j)` interval immediately below the dyadic power indexed by `j`. Local copy of Erdos249257.HalfUpperResetCriticalBand.DyadicBandEscape, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def DyadicBandEscape (d E : ℕ) : Prop :=
+  ∀ j : ℕ, j ≤ d →
+    2 ^ (d - j + 1) < E ∨ E + 2 * (d + j) ≤ 2 ^ (d - j + 1)
+end PalomarCorpus.E257.PaperStatementsBE

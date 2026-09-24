@@ -1,0 +1,50 @@
+/-
+Copyright (c) 2026 Will Cook. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Will Cook
+-/
+import Mathlib
+import Erdos249257.BooleanMobiusGlobalRepair
+import Erdos249257.BooleanMobiusLocalRepair
+import ErdosProblems.Erdos257.PaperCompleteR21.CompatibleFiniteRowFamily
+import Solutions.PalomarCorpus.E257_27.Statement
+
+open Filter
+open Set
+open scoped BigOperators
+
+/- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
+
+namespace PalomarCorpus.E257.PaperStructuresAW
+export PalomarCorpus.E257_27.Shared (BooleanMobiusGlobalRepairTrajectory globalRepairStageSupport localMersenneQuotient localPrefixQuotient)
+
+/-- The copied structure `BooleanMobiusGlobalRepairTrajectory` and its source `Erdos249257.BooleanMobiusGlobalRepairTrajectory` carry the same
+fields, so each converts into the other field by field. -/
+noncomputable def BooleanMobiusGlobalRepairTrajectory_transport_toSrc (x : BooleanMobiusGlobalRepairTrajectory) :
+    Erdos249257.BooleanMobiusGlobalRepairTrajectory :=
+  ⟨x.bit, x.frozen_step⟩
+
+/-- The inverse of `BooleanMobiusGlobalRepairTrajectory_transport_toSrc`. -/
+noncomputable def BooleanMobiusGlobalRepairTrajectory_transport_ofSrc (x : Erdos249257.BooleanMobiusGlobalRepairTrajectory) :
+    BooleanMobiusGlobalRepairTrajectory :=
+  ⟨x.bit, x.frozen_step⟩
+
+@[simp] theorem BooleanMobiusGlobalRepairTrajectory_transport_toSrc_bit
+    (x : BooleanMobiusGlobalRepairTrajectory) :
+    (BooleanMobiusGlobalRepairTrajectory_transport_toSrc x).bit = x.bit := rfl
+
+@[simp] theorem BooleanMobiusGlobalRepairTrajectory_transport_ofSrc_bit
+    (x : Erdos249257.BooleanMobiusGlobalRepairTrajectory) :
+    (BooleanMobiusGlobalRepairTrajectory_transport_ofSrc x).bit = x.bit := rfl
+
+theorem paper_compatible_first_condition_gives_nonneg
+    (T : BooleanMobiusGlobalRepairTrajectory)
+    (hbound : ∀ n : ℕ, 2 ≤ n →
+      2 ^ (endpointDivisorContribution (globalRepairLowerSupport T.bit n) n - 1)
+          - 1 ≤
+        localBinarySuffix (globalRepairLowerSupport T.bit n) 1 (n - 1))
+    {n : ℕ} (hn : 2 ≤ n) :
+    0 ≤ localRepairInteger (globalRepairLowerSupport T.bit n) 1 n := by
+  simpa only [BooleanMobiusGlobalRepairTrajectory_transport_toSrc_bit] using @ErdosProblems.Erdos257.PaperCompleteR21.paper_compatible_first_condition_gives_nonneg (BooleanMobiusGlobalRepairTrajectory_transport_toSrc T) hbound n hn
+
+end PalomarCorpus.E257.PaperStructuresAW

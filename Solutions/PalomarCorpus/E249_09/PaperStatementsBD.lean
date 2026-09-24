@@ -15,12 +15,7 @@ open Topology
 /- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
 
 namespace PalomarCorpus.E249.PaperStatementsBD
-
-noncomputable def compositeDilationDefect (A : Set ℕ) (a x : ℕ) : ℕ :=
-  by
-    classical
-    exact ((a * x).divisors.filter fun d =>
-      d ∈ A ∧ ¬ d ∣ x ∧ d ≠ a).card
+export PalomarCorpus.E249_09.Shared (compositeDilationDefect)
 
 theorem composite_dilation_divisor_count (A : Set ℕ) {a x : ℕ}
     (ha : a ∈ A) (ha1 : 1 ≤ a) (hx1 : 1 ≤ x) :

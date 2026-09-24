@@ -173,6 +173,35 @@ theorem affineBinaryOrbit_difference_and_reset (a : ℕ → ℤ) (u0 v0 : ℤ) (
   sorry
 end PalomarCorpus.E249.PaperStatementsD
 
+namespace PalomarCorpus.E249.PaperStructuresR
+/-- Local definition VUSymbol, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+structure VUSymbol where
+  valuation : ℕ
+  unit : ℤ
+/-- Local definition VUCompatible, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def VUCompatible (u : ℕ) (σ : VUSymbol) (c : ℤ) : Prop :=
+  Odd σ.unit ∧
+    ∃ z : ℤ,
+      c = (2 : ℤ) ^ σ.valuation * (σ.unit + (2 : ℤ) ^ u * z)
+/-- Local definition VUOrbit, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+inductive VUOrbit (u : ℕ) : ℤ → List VUSymbol → List ℤ → Prop
+  | nil (e : ℤ) : VUOrbit u e [] []
+  | cons (e c e' : ℤ) (σ : VUSymbol) (symbols : List VUSymbol)
+      (states : List ℤ) (hcompat : VUCompatible u σ c)
+      (hstep : e' = 2 * e + c) (htail : VUOrbit u e' symbols states) :
+      VUOrbit u e (σ :: symbols) (e' :: states)
+/-- Local definition vuRadius, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def vuRadius (u : ℕ) (σ : VUSymbol) : ℤ :=
+  (2 : ℤ) ^ (σ.valuation + u - 1)
+/-- States prop:b5 from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.fixed_precision_carry_completion in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem fixed_precision_carry_completion (u : ℕ) (hu : 0 < u)
+    (symbols : List VUSymbol) (hodd : ∀ σ ∈ symbols, Odd σ.unit) (e : ℤ) :
+    ∃ states : List ℤ,
+      VUOrbit u e symbols states ∧
+      List.Forall₂ (fun σ e' => |e'| ≤ vuRadius u σ) symbols states := by
+  sorry
+end PalomarCorpus.E249.PaperStructuresR
+
 namespace PalomarCorpus.E249.PaperStatementsG
 /-- The crude two-tail cost attached to an inverse/adjugate row. Recovering `φ(x)` as `2 R_(x-1) - R_x` and applying `R_M ≤ M+2` termwise gives the factor `2(x+1) + (x+2)`. Local copy of Erdos249257.totientAdjugateTailCost, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def totientAdjugateTailCost
@@ -210,10 +239,6 @@ namespace PalomarCorpus.E249.PaperStatementsI
 open Finset
 /-- The window step `a_n = φ(n+h) - φ(n)` driving the carry recurrence. Local copy of Erdos249257.TotientTailPeriodKiller.deltaTotient, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def deltaTotient (h n : ℕ) : ℤ := (Nat.totient (n + h) : ℤ) - (Nat.totient n : ℤ)
-/-- The depth-`L` cleared binary prefix, accumulated from left to right. Equivalently this is `∑ j < L, a (n+j) * 2^(L-1-j)`. Local copy of Erdos249257.TotientTailPeriodKiller.dyadicClearedPrefix, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def dyadicClearedPrefix (a : ℕ → ℤ) (n : ℕ) : ℕ → ℤ
-  | 0 => 0
-  | L + 1 => 2 * dyadicClearedPrefix a n L + a (n + L)
 /-- `periodLcm t = lcm(1, …, t)`: the universal period at scale `t`. Every primitive period `h₀ ≤ t` divides it. Local copy of Erdos249257.TotientTailPeriodKiller.periodLcm, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def periodLcm : ℕ → ℕ
   | 0 => 1
@@ -233,23 +258,6 @@ noncomputable def lcmAnchorPulseLetter (t i : ℕ) : ℤ :=
 /-- The LCM pulse state with amplitude `φ(periodLcm t)`. Local copy of Erdos249257.TotientTailPeriodKiller.lcmAnchorPulseState, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def lcmAnchorPulseState (t k : ℕ) : ℤ :=
   sparsePulseState (Nat.totient (periodLcm t) : ℤ) (lcmAnchorStates t) k
-/-- Evaluation of a finite integer shift polynomial on a sequence. A term `(h, q)` contributes `q * f(n+h)`. Local copy of Erdos249257.TotientTailPeriodKiller.shiftLinearCombination, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def shiftLinearCombination : List (ℕ × ℤ) → (ℕ → ℤ) → (ℕ → ℤ)
-  | [], _ => fun _ => 0
-  | (h, q) :: terms, f => fun n =>
-      q * f (n + h) + shiftLinearCombination terms f n
-/-- Pulse letters transformed by the same shift polynomial. Local copy of Erdos249257.TotientTailPeriodKiller.lcmAnchorShiftPolynomialLetter, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def lcmAnchorShiftPolynomialLetter
-    (t : ℕ) (terms : List (ℕ × ℤ)) : ℕ → ℤ :=
-  shiftLinearCombination terms (lcmAnchorPulseLetter t)
-/-- Pulse state transformed by an arbitrary finite integer shift polynomial. Local copy of Erdos249257.TotientTailPeriodKiller.lcmAnchorShiftPolynomialState, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def lcmAnchorShiftPolynomialState
-    (t : ℕ) (terms : List (ℕ × ℤ)) : ℕ → ℤ :=
-  shiftLinearCombination terms (lcmAnchorPulseState t)
-/-- The `ℓ1` weight of a finite shift polynomial. Local copy of Erdos249257.TotientTailPeriodKiller.shiftLinearWeight, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def shiftLinearWeight : List (ℕ × ℤ) → ℤ
-  | [] => 0
-  | (_, q) :: terms => |q| + shiftLinearWeight terms
 /-- States prop:b6 from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.b6_synthetic_sequence_prescribed_differences in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem b6_synthetic_sequence_prescribed_differences {t : ℕ} (ht : 3 ≤ t) :
     (∀ k : ℕ, k ∈ lcmAnchorStates t →
@@ -264,27 +272,5 @@ theorem b6_synthetic_sequence_prescribed_differences {t : ℕ} (ht : 3 ≤ t) :
               = (Nat.totient (periodLcm t) : ℤ)
             ∧ lcmAnchorPulseLetter t ((q - 1) * periodLcm t - 1)
               = deltaTotient (periodLcm t) (q * periodLcm t) := by
-  sorry
-/-- States prop:b6 from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.b6_synthetic_shift_combinations_same_form in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem b6_synthetic_shift_combinations_same_form
-    (t : ℕ) (terms : List (ℕ × ℤ)) :
-    (∀ i : ℕ,
-        lcmAnchorShiftPolynomialState t terms i =
-          shiftLinearCombination terms (lcmAnchorPulseState t) i)
-      ∧ (∀ i : ℕ,
-          lcmAnchorShiftPolynomialLetter t terms i =
-            shiftLinearCombination terms (lcmAnchorPulseLetter t) i)
-      ∧ (∀ i : ℕ,
-          lcmAnchorShiftPolynomialLetter t terms i =
-            2 * lcmAnchorShiftPolynomialState t terms i -
-              lcmAnchorShiftPolynomialState t terms (i + 1))
-      ∧ (∀ n L : ℕ,
-          dyadicClearedPrefix (lcmAnchorShiftPolynomialLetter t terms) n L =
-            (2 : ℤ) ^ L * lcmAnchorShiftPolynomialState t terms n -
-              lcmAnchorShiftPolynomialState t terms (n + L))
-      ∧ (∀ i : ℕ, |lcmAnchorShiftPolynomialState t terms i| ≤
-          shiftLinearWeight terms * (Nat.totient (periodLcm t) : ℤ))
-      ∧ (∀ i : ℕ, |lcmAnchorShiftPolynomialLetter t terms i| ≤
-          shiftLinearWeight terms * (2 * (Nat.totient (periodLcm t) : ℤ))) := by
   sorry
 end PalomarCorpus.E249.PaperStatementsI

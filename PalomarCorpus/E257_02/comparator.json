@@ -9,7 +9,8 @@
     "PalomarCorpus.E257.PaperStatementsAM.volume_supportedMersenneAchievementSet_eq_zero_of_compl_infinite",
     "PalomarCorpus.E257.PaperStatementsC.remainder_lt_gap_iff_eq_integerGreedyBits",
     "PalomarCorpus.E257.PaperStatementsD.paper_greedy_survival",
-    "PalomarCorpus.E257.PaperStatementsF.eq_halfGreedyPrefixSupport_of_critical_crossing"
+    "PalomarCorpus.E257.PaperStatementsF.eq_halfGreedyPrefixSupport_of_critical_crossing",
+    "PalomarCorpus.E257.PaperStructuresCA.IsStraddlePrefix.half_agrees_greedy"
   ],
   "permitted_axioms": [
     "propext",

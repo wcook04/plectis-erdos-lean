@@ -1,19 +1,3 @@
 import Solutions.PalomarCorpus.E257_10
 
-#print axioms PalomarCorpus.E257.PaperStructuresBL.exists_seamWord_minimal_above
-#print axioms PalomarCorpus.E257.PaperStructuresBL.integerGreedyBits_length
-#print axioms PalomarCorpus.E257.PaperStructuresBL.paper_seam_limit_unconditional
-#print axioms PalomarCorpus.E257.PaperStructuresBL.paper_theoremA_half_membership
-#print axioms PalomarCorpus.E257.PaperStructuresBL.paper_universal_band_condition_would_close_half
-#print axioms PalomarCorpus.E257.PaperStructuresBL.seamAboveWord_minimal
-#print axioms PalomarCorpus.E257.PaperStructuresBL.seamAboveWord_strict
-#print axioms PalomarCorpus.E257.PaperStructuresBL.seamAdjacentCut_below_admissible
-#print axioms PalomarCorpus.E257.PaperStructuresBL.seamAdjacentCut_below_maximal
-#print axioms PalomarCorpus.E257.PaperStructuresBL.seamPerturbedFamily_gap_pos
-#print axioms PalomarCorpus.E257.PaperStructuresBL.seamPerturbedFamily_oldSum_injective
-#print axioms PalomarCorpus.E257.PaperStructuresBL.seamPerturbedFamily_pulseCap_lt_three_gap
-#print axioms PalomarCorpus.E257.PaperStructuresBL.seamPerturbedFamily_separated
-#print axioms PalomarCorpus.E257.PaperStructuresBL.seamWeights_length_eq
-#print axioms PalomarCorpus.E257.PaperStructuresBL.tendsto_seamGreedyFiniteValue_greedyHalfTargetValue
-#print axioms PalomarCorpus.E257.PaperStructuresBL.tendsto_seamGreedyNormalizedRemainder
-#print axioms PalomarCorpus.E257.PaperStructuresBL.wordPulse_le
+#print axioms PalomarCorpus.E257.PaperStructuresBJ.eventually_seamSupport_agrees

@@ -2,9 +2,9 @@ version: v0.4
 project:
   name: 'Erdős #249, record sections 5 to 6: series identities and finite exclusions; detailed statements'
   description: >-
-    This entry states 20 theorems that the long record for Erdős problem #249 states in sections 5 (series identities and finite exclusions) and 6 (detailed statements): the proposition “The squared-Lambert identity” (section 5.6), as tsum_lambert_linear_weight_sq_pure; the proposition “The gcd-moment identity” (section 5.6), as gcd_moment_identity_three_members, pillaiP_eq_totient_mul_id, sum_gcd_Icc_eq_pillaiP, tsum_pos_pair_gcd_half_eq_totient_div_mersenne_sq and tsum_totient_div_mersenne_sq_eq_gcd_moment_series; the theorem “Rationality gives an eventual tail period” (section 6.1), as specified_euler_tail_period; the theorem “Independence of the retained dyadic sections” (section 6.1), as displayed_canonical_and_full_dyadic; the proposition “Denominator divisibility forces tail integrality” (section 6.1), as tail_diff_int_of_den_dvd; the proposition “A cyclotomic factor remains after cancellation” (section 6.1), as cyclotomicValue_dvd_baseMobiusShadow_den, mobiusNumerator_gcd_cyclotomicValue and mobiusNumeratorPolynomial_eval_two; the proposition “Primes in the upper half remain after cancellation” (section 6.1), as lcmHeight_upperHalf_product_dvd_den, upperHalfChannel_product_dvd_den_of_coprime_scale and upperHalfChannel_product_dvd_den_of_scale_primeFactors_le; the proposition “A lower bound for the reduced denominator” (section 6.1), as upper_half_product_denominator_bounds; the proposition “The exact reduced denominator” (section 6.1), as lcmHeight_five_scaledMobiusShadow_den_exact and lcmHeight_scaledMobiusShadow_den_exact; the proposition “Nonvanishing of a signed dyadic sum” (section 6.1), as signed_dyadic_clearing and signed_dyadic_sum_ne_zero.
+    This entry states 20 theorems that the long record for Erdős problem #249 states in sections 5 (series identities and finite exclusions) and 6 (detailed statements): the proposition “Möbius-square reduction” (section 5.5), as moebius_three_values, irrational_totient_iff_mobius_square and mobius_square_reduction; the proposition “The squared-Lambert identity” (section 5.6), as tsum_lambert_linear_weight_sq_pure; the proposition “The gcd-moment identity” (section 5.6), as gcd_moment_identity_three_members, pillaiP_eq_totient_mul_id, sum_gcd_Icc_eq_pillaiP, tsum_pos_pair_gcd_half_eq_totient_div_mersenne_sq and tsum_totient_div_mersenne_sq_eq_gcd_moment_series; the theorem “Rationality gives an eventual tail period” (section 6.1), as specified_euler_tail_period; the theorem “Independence of the retained dyadic sections” (section 6.1), as displayed_canonical_and_full_dyadic; the proposition “Denominator divisibility forces tail integrality” (section 6.1), as tail_diff_int_of_den_dvd; the proposition “A cyclotomic factor remains after cancellation” (section 6.1), as cyclotomicValue_dvd_baseMobiusShadow_den, mobiusNumerator_gcd_cyclotomicValue and mobiusNumeratorPolynomial_eval_two; the proposition “Primes in the upper half remain after cancellation” (section 6.1), as lcmHeight_upperHalf_product_dvd_den, upperHalfChannel_product_dvd_den_of_coprime_scale and upperHalfChannel_product_dvd_den_of_scale_primeFactors_le; the proposition “A lower bound for the reduced denominator” (section 6.1), as upper_half_product_denominator_bounds; the proposition “The exact reduced denominator” (section 6.1), as lcmHeight_five_scaledMobiusShadow_den_exact.
 
-    17 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 2 are derived from the source declaration by a short tactic proof, which certifies implication.
+    19 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement.
 
     Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
 
@@ -164,14 +164,6 @@ status:
     file: "Solutions/PalomarCorpus/E249_05/PaperStatementsAE.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E249_05/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAE.signed_dyadic_clearing"
-    file: "Solutions/PalomarCorpus/E249_05/PaperStatementsAE.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E249_05/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAE.signed_dyadic_sum_ne_zero"
-    file: "Solutions/PalomarCorpus/E249_05/PaperStatementsAE.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E249_05/comparator.json"
   - declaration: "PalomarCorpus.E249.PaperStatementsAE.sum_gcd_Icc_eq_pillaiP"
     file: "Solutions/PalomarCorpus/E249_05/PaperStatementsAE.lean"
     sorry_count: 0
@@ -190,6 +182,10 @@ status:
     comparator_config: "PalomarCorpus/E249_05/comparator.json"
   - declaration: "PalomarCorpus.E249.PaperStatementsAE.upper_half_product_denominator_bounds"
     file: "Solutions/PalomarCorpus/E249_05/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_05/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAJ.moebius_three_values"
+    file: "Solutions/PalomarCorpus/E249_05/PaperStatementsAJ.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E249_05/comparator.json"
   - declaration: "PalomarCorpus.E249.PaperStatementsAK.tsum_lambert_linear_weight_sq_pure"
@@ -212,12 +208,16 @@ status:
     file: "Solutions/PalomarCorpus/E249_05/PaperStatementsAQ.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E249_05/comparator.json"
-  - declaration: "PalomarCorpus.E249.PaperStatementsAR.lcmHeight_scaledMobiusShadow_den_exact"
-    file: "Solutions/PalomarCorpus/E249_05/PaperStatementsAR.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E249_05/comparator.json"
   - declaration: "PalomarCorpus.E249.PaperStatementsAX.specified_euler_tail_period"
     file: "Solutions/PalomarCorpus/E249_05/PaperStatementsAX.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_05/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAY.irrational_totient_iff_mobius_square"
+    file: "Solutions/PalomarCorpus/E249_05/PaperStatementsAY.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E249_05/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAY.mobius_square_reduction"
+    file: "Solutions/PalomarCorpus/E249_05/PaperStatementsAY.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E249_05/comparator.json"
   development_status: substantive

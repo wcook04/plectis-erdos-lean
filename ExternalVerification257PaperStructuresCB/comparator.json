@@ -1,0 +1,17 @@
+{
+  "challenge_module": "ExternalVerification257PaperStructuresCB.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStructuresCB",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStructuresCB.exists_infinite_positive_support_half_of_cofinalCylinderStages",
+    "Erdos249257.ExternalVerification257PaperStructuresCB.halfTerminalOnlyStripWitness_of_feedbackAdvance",
+    "Erdos249257.ExternalVerification257PaperStructuresCB.halfTerminalOnlyStripWitness_of_inStripTwoSheetStage_via_carries_three_four",
+    "Erdos249257.ExternalVerification257PaperStructuresCB.paper_shared_prefix_family_strip_witness_after_feedback_all_depths",
+    "Erdos249257.ExternalVerification257PaperStructuresCB.paper_shared_prefix_family_strip_witness_after_feedback_of_all_depths"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

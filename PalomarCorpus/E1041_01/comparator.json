@@ -8,6 +8,8 @@
     "PalomarCorpus.E1041.PaperStatementsAC.circle_slice_packing",
     "PalomarCorpus.E1041.PaperStatementsAC.circle_slice_packing_abstract",
     "PalomarCorpus.E1041.PaperStatementsAC.dual_arity_floor_abstract",
+    "PalomarCorpus.E1041.PaperStatementsAE.erdos1041_hausdorff_answer_false",
+    "PalomarCorpus.E1041.PaperStatementsAE.erdos1041_hausdorff_negation",
     "PalomarCorpus.E1041.PaperStatementsC.cosh_dist_polar",
     "PalomarCorpus.E1041.PaperStatementsC.dist_polar_I",
     "PalomarCorpus.E1041.PaperStatementsC.exists_polar",

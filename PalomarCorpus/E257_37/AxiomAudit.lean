@@ -1,21 +1,17 @@
 import Solutions.PalomarCorpus.E257_37
 
-#print axioms PalomarCorpus.E257.PaperStatementsAA.Psi_eq_of_residues_eq
-#print axioms PalomarCorpus.E257.PaperStatementsAA.card_divisors_sub_one
-#print axioms PalomarCorpus.E257.PaperStatementsAA.dvd_add_iLeast
-#print axioms PalomarCorpus.E257.PaperStatementsAA.geometric_term_eq_zero_of_lt_iLeast
-#print axioms PalomarCorpus.E257.PaperStatementsAA.iLeast_congr
-#print axioms PalomarCorpus.E257.PaperStatementsAA.iLeast_mem_Icc
-#print axioms PalomarCorpus.E257.PaperStatementsAA.mCount_eq_zero_of_lt_iLeast
-#print axioms PalomarCorpus.E257.PaperStatementsAA.not_dvd_of_lt_iLeast
-#print axioms PalomarCorpus.E257.PaperStatementsAA.residue_condition_iff
-#print axioms PalomarCorpus.E257.PaperStatementsAA.residue_cutoff_reading_fails
-#print axioms PalomarCorpus.E257.PaperStatementsAA.theta_eq_Psi
-#print axioms PalomarCorpus.E257.PaperStatementsAA.theta_eq_divisorResidueSum
-#print axioms PalomarCorpus.E257.PaperStatementsAA.theta_eq_geometricForm
-#print axioms PalomarCorpus.E257.PaperStatementsAA.theta_eq_tsum_divisorResidue
-#print axioms PalomarCorpus.E257.PaperStatementsAA.theta_eq_tsum_geometricForm
-#print axioms PalomarCorpus.E257.PaperStatementsAA.theta_one_one
-#print axioms PalomarCorpus.E257.PaperStatementsAA.theta_one_three
-#print axioms PalomarCorpus.E257.PaperStatementsBF.paper_squarefree_support_engine_ceiling
-#print axioms PalomarCorpus.E257.PaperStatementsL.paper_square_depth_terminal_bound
+#print axioms PalomarCorpus.E257.PaperStructuresCG.exists_seamWord_minimal_above
+#print axioms PalomarCorpus.E257.PaperStructuresCG.integerGreedyBits_length
+#print axioms PalomarCorpus.E257.PaperStructuresCG.paper_theoremA_right_branch_forces_small_deviation
+#print axioms PalomarCorpus.E257.PaperStructuresCG.paper_two_sided_dyadic_bound
+#print axioms PalomarCorpus.E257.PaperStructuresCG.paper_universal_band_condition_unfolded
+#print axioms PalomarCorpus.E257.PaperStructuresCG.seamAboveWord_minimal
+#print axioms PalomarCorpus.E257.PaperStructuresCG.seamAboveWord_strict
+#print axioms PalomarCorpus.E257.PaperStructuresCG.seamAdjacentCut_below_admissible
+#print axioms PalomarCorpus.E257.PaperStructuresCG.seamAdjacentCut_below_maximal
+#print axioms PalomarCorpus.E257.PaperStructuresCG.seamPerturbedFamily_gap_pos
+#print axioms PalomarCorpus.E257.PaperStructuresCG.seamPerturbedFamily_oldSum_injective
+#print axioms PalomarCorpus.E257.PaperStructuresCG.seamPerturbedFamily_pulseCap_lt_three_gap
+#print axioms PalomarCorpus.E257.PaperStructuresCG.seamPerturbedFamily_separated
+#print axioms PalomarCorpus.E257.PaperStructuresCG.seamWeights_length_eq
+#print axioms PalomarCorpus.E257.PaperStructuresCG.wordPulse_le

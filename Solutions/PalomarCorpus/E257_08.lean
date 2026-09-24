@@ -5,4 +5,5 @@ Authors: Will Cook
 -/
 import Mathlib
 import Solutions.PalomarCorpus.E257_08.Statement
-import Solutions.PalomarCorpus.E257_08.PaperStructuresBB
+import Solutions.PalomarCorpus.E257_08.PaperStatementsAM
+import Solutions.PalomarCorpus.E257_08.PaperStatementsN

@@ -5,6 +5,9 @@ Authors: Will Cook
 -/
 
 import Mathlib
+import Erdos249257.HalfCylinderConcreteSeamAdapter
+import Erdos249257.HalfCylinderIntegerGreedy
+import Erdos249257.HalfUpperResetCriticalBand
 
 set_option autoImplicit false
 
@@ -12,70 +15,118 @@ set_option autoImplicit false
 # Statement environment for Palomar entry E257_29
 
 Every non-theorem declaration of `PalomarCorpus/E257_29/Challenge.lean`, verbatim and in
-the same order, elaborated against Mathlib alone. The Solution modules import this file
-instead of re-declaring or aliasing the definitions, so every constant that Comparator
-walks from a compared theorem statement is byte-identical in the Challenge and Solution
-environments. Generated from the Challenge; do not edit by hand.
+the same order, together with the proof obligations those declarations name, each stated
+verbatim from the Challenge and proved in place from the source development that this file
+imports for those proofs. The Solution modules import this file instead of re-declaring or
+aliasing the definitions, so every constant that Comparator walks from a compared theorem
+statement is elaborated from the same text in the same module as in the Challenge.
+Generated from the Challenge; do not edit by hand.
 -/
 
+open Finset
 open scoped BigOperators
-open Filter
-open Set
-open scoped ENNReal
-open MeasureTheory
-open Topology
-open ArithmeticFunction
-open scoped ArithmeticFunction.Moebius
 
-namespace PalomarCorpus.E257_29.Shared
-/-- The tempered binary carry orbit condition for an integer sequence u attached to a coefficient sequence c and a natural number v, with no positivity imposed on v: the exact recurrence u (N+1) = 2 u N minus v times c (N+1) holds for every N, and u N divided by 2 to the power N tends to 0. -/
-noncomputable def IsTemperedBinaryOrbit (c : ℕ → ℕ) (v : ℕ) (u : ℕ → ℤ) : Prop :=
-  (∀ N : ℕ,
-      u (N + 1) = 2 * u N - ((v * c (N + 1) : ℕ) : ℤ)) ∧
-    Tendsto (fun N : ℕ ↦ (u N : ℝ) / (2 : ℝ) ^ N) atTop (nhds 0)
-/-- The binary coefficient series `X_c = ∑_{n≥1} c(n)/2^n`. Local copy of Erdos249257.binaryCoeffSeries, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def binaryCoeffSeries (c : ℕ → ℕ) : ℝ :=
-  ∑' n : ℕ, (c (n + 1) : ℝ) / (2 : ℝ) ^ (n + 1)
-/-- The binary tail of a coefficient sequence c beyond scale N, namely the sum over j at least 0 of c at N+j+1 divided by 2 to the power j+1. -/
-noncomputable def binaryCoeffTail (c : ℕ → ℕ) (N : ℕ) : ℝ :=
-  ∑' j : ℕ, (c (N + j + 1) : ℝ) / (2 : ℝ) ^ (j + 1)
-/-- The base b reciprocal power subseries supported on A, namely the sum over a in A of 1 divided by b to the power a minus 1, written as an unconditional sum of the indicator of A; the exponent a = 0 contributes 0 because division by zero is zero here, so membership of 0 in A does not change the value. -/
-noncomputable def erdosSupportSeries (b : ℕ) (A : Set ℕ) : ℝ :=
-  ∑' a : ℕ, Set.indicator A (fun a => (1 : ℝ) / ((b : ℝ) ^ a - 1)) a
-/-- The quotient of one scaled Mersenne weight written without division: a shift by the Euclidean remainder times a finite geometric word. Local copy of Erdos249257.localMersenneGeometricQuotient, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def localMersenneGeometricQuotient (M d : ℕ) : ℕ :=
-  2 ^ (M % d) * ∑ j ∈ Finset.range (M / d), (2 ^ d) ^ j
-/-- The local integer Mersenne quotient at binary scale M and rank d, namely the natural number quotient of 2 to the power M by 2 to the power d minus 1; at d = 0 the divisor is 0 and the value is 0. -/
-noncomputable def localMersenneQuotient (M d : ℕ) : ℕ :=
-  2 ^ M / (2 ^ d - 1)
-/-- **The support coefficient** `f_A(n) = #{d ∣ n : d ∈ A}`, the Dirichlet incidence `1_A * 1` of a support set `A ⊆ ℕ`. This is the coefficient in which Erdős #257 is actually stated: `∑_{a∈A} 1/(b^a - 1) = ∑_n f_A(n)/b^n`. Full support gives `f_ℕ = τ`; primes give `ω`; prime powers give `Ω`. Local copy of Erdos249257.supportCoeff, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def supportCoeff (A : Set ℕ) (n : ℕ) : ℕ :=
-  letI := Classical.decPred fun d : ℕ => d ∈ A
-  (n.divisors.filter fun d => d ∈ A).card
-end PalomarCorpus.E257_29.Shared
-
-namespace PalomarCorpus.E257.PaperStructuresAY
+namespace PalomarCorpus.E257.PaperStructuresBY
+open Finset
 open scoped BigOperators
-export PalomarCorpus.E257_29.Shared (localMersenneQuotient)
-/-- Descending local quotient weights with ranks `d,d+1,…,R`. Local copy of Erdos249257.BooleanMobiusGreedyReduction.localMersenneWeightsFrom, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def localMersenneWeightsFrom (M R : ℕ) : ℕ → List ℕ
-  | d =>
-      if h : d ≤ R then
-        localMersenneQuotient M d :: localMersenneWeightsFrom M R (d + 1)
-      else
-        []
-termination_by d => R + 1 - d
-decreasing_by omega
-/-- The complete lower quotient word on ranks `2,…,R`. Local copy of Erdos249257.BooleanMobiusGreedyReduction.localMersenneWeights, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def localMersenneWeights (M R : ℕ) : List ℕ :=
-  localMersenneWeightsFrom M R 2
-/-- Number of binary suffix values available after a truncation at depth `M`, when ranks through `R` have already been fixed. Local copy of Erdos249257.BooleanMobiusGreedyReduction.lowerBinaryWindow, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def lowerBinaryWindow (M R : ℕ) : ℕ :=
-  2 ^ (M - R)
-/-- Every head exceeds the sum of its complete tail by at least `gap`. Local copy of Erdos249257.HalfCylinderIntegerGreedy.GapDominates, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def GapDominates (gap : ℕ) : List ℕ → Prop
-  | [] => True
-  | w :: ws => gap + ws.sum ≤ w ∧ GapDominates gap ws
+/-- Local definition PerturbedFamily, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+structure PerturbedFamily (α : Type*) where
+  oldSum : α → ℕ
+  pulse : α → ℕ
+  gap : ℕ
+  pulseCap : ℕ
+  gap_pos : 0 < gap
+  pulse_le : ∀ x, pulse x ≤ pulseCap
+  oldSum_injective : Function.Injective oldSum
+  separated : ∀ {x y}, oldSum x < oldSum y →
+    oldSum x + gap ≤ oldSum y
+  pulseCap_lt_three_gap : pulseCap < 3 * gap
+/-- Local definition AdjacentCut, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+structure PerturbedFamily.AdjacentCut {α : Type*} (F : PerturbedFamily α) (C : ℕ) where
+  below : α
+  above : α
+  below_admissible : F.oldSum below ≤ C
+  below_maximal : ∀ x, F.oldSum x ≤ C → F.oldSum x ≤ F.oldSum below
+  above_strict : C < F.oldSum above
+  above_minimal : ∀ x, C < F.oldSum x → F.oldSum above ≤ F.oldSum x
+/-- Local definition abovePulse, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def PerturbedFamily.AdjacentCut.abovePulse {α : Type*} {F : PerturbedFamily α} {C : ℕ} (K : F.AdjacentCut C) : ℕ := F.pulse K.above
+/-- Local definition overshoot, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def PerturbedFamily.AdjacentCut.overshoot {α : Type*} {F : PerturbedFamily α} {C : ℕ} (K : F.AdjacentCut C) : ℕ := F.oldSum K.above - C
+/-- Local definition successorCarries, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def PerturbedFamily.AdjacentCut.successorCarries {α : Type*} {F : PerturbedFamily α} {C : ℕ} (K : F.AdjacentCut C) : Prop :=
+  4 * K.overshoot + K.abovePulse ≤ F.gap
+/-- Local definition SeamRowWord, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable abbrev SeamRowWord (s : ℕ) := Fin (s - 2) → Bool
+/-- Local definition ofList, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def SeamRowWord.ofList {s : ℕ} (bits : List Bool) (hlen : bits.length = s - 2) :
+    SeamRowWord s :=
+  fun i => bits.get (Fin.cast hlen.symm i)
+/-- Local definition toNatWord, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def SeamRowWord.toNatWord {s : ℕ} (b : SeamRowWord s) : ℕ → Bool :=
+  fun d => if h : 2 ≤ d ∧ d < s then b ⟨d - 2, by omega⟩ else false
+/-- The exact integer weight contributed at seam rank `s` by selecting a proper divisor rank `d < s`. Local copy of Erdos249257.HalfCylinderIntegerGreedy.truncatedMersenneWeight, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def truncatedMersenneWeight (s d : ℕ) : ℕ :=
+  4 ^ s / (2 ^ d - 1)
+/-- Local definition wordWeightSum, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def wordWeightSum (s : ℕ) (b : ℕ → Bool) : ℕ :=
+  ∑ i ∈ Finset.range (s - 2),
+    if b (i + 2) then truncatedMersenneWeight s (i + 2) else 0
+/-- Proof obligation `gap_pos` of the local copy of Erdos249257.HalfCylinderIntegerGreedy.seamPerturbedFamily, stated with that definition's own parameter and field values. The definition names this theorem for the field, and the Solution proves it with the source definition's own field. -/
+theorem seamPerturbedFamily_gap_pos (s : ℕ) (hs : 3 ≤ s) :
+    let gap : ℕ := 2 ^ (s + 1);
+    0 < gap := (@Erdos249257.HalfCylinderIntegerGreedy.seamPerturbedFamily s hs).gap_pos
+/-- Proof obligation `oldSum_injective` of the local copy of Erdos249257.HalfCylinderIntegerGreedy.seamPerturbedFamily, stated with that definition's own parameter and field values. The definition names this theorem for the field, and the Solution proves it with the source definition's own field. -/
+theorem seamPerturbedFamily_oldSum_injective (s : ℕ) (hs : 3 ≤ s) :
+    let oldSum : (SeamRowWord s) → ℕ := fun b => wordWeightSum s b.toNatWord;
+    Function.Injective oldSum := (@Erdos249257.HalfCylinderIntegerGreedy.seamPerturbedFamily s hs).oldSum_injective
+/-- Proof obligation `separated` of the local copy of Erdos249257.HalfCylinderIntegerGreedy.seamPerturbedFamily, stated with that definition's own parameter and field values. The definition names this theorem for the field, and the Solution proves it with the source definition's own field. -/
+theorem seamPerturbedFamily_separated (s : ℕ) (hs : 3 ≤ s) :
+    let oldSum : (SeamRowWord s) → ℕ := fun b => wordWeightSum s b.toNatWord;
+    let gap : ℕ := 2 ^ (s + 1);
+    ∀ {x y}, oldSum x < oldSum y → oldSum x + gap ≤ oldSum y := (@Erdos249257.HalfCylinderIntegerGreedy.seamPerturbedFamily s hs).separated
+/-- Proof obligation `pulseCap_lt_three_gap` of the local copy of Erdos249257.HalfCylinderIntegerGreedy.seamPerturbedFamily, stated with that definition's own parameter and field values. The definition names this theorem for the field, and the Solution proves it with the source definition's own field. -/
+theorem seamPerturbedFamily_pulseCap_lt_three_gap (s : ℕ) (hs : 3 ≤ s) :
+    let gap : ℕ := 2 ^ (s + 1);
+    let pulseCap : ℕ := 2 * (s - 2);
+    pulseCap < 3 * gap := (@Erdos249257.HalfCylinderIntegerGreedy.seamPerturbedFamily s hs).pulseCap_lt_three_gap
+/-- The quotient pulse contributed by rank d between consecutive seam rows at row s, namely 1 if d divides 2s+2, plus twice 1 if d divides 2s+1, and 0 for the nondividing cases. -/
+noncomputable def rowPulse (s d : ℕ) : ℕ :=
+  (if d ∣ 2 * s + 2 then 1 else 0) +
+    2 * (if d ∣ 2 * s + 1 then 1 else 0)
+/-- Local definition wordPulse, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def wordPulse (s : ℕ) (b : ℕ → Bool) : ℕ :=
+  ∑ i ∈ Finset.range (s - 2),
+    if b (i + 2) then rowPulse s (i + 2) else 0
+/-- Statement of Erdos249257.HalfCylinderIntegerGreedy.wordPulse_le, which a copied definition cites. It is carried as a statement so that its proof stays in the source development, and the Solution proves it by applying the source lemma. -/
+theorem wordPulse_le (s : ℕ) (b : ℕ → Bool) :
+    wordPulse s b ≤ 2 * (s - 2) := @Erdos249257.HalfCylinderIntegerGreedy.wordPulse_le s b
+/-- Local definition seamPerturbedFamily, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def seamPerturbedFamily (s : ℕ) (hs : 3 ≤ s) :
+    PerturbedFamily (SeamRowWord s) where
+  oldSum b := wordWeightSum s b.toNatWord
+  pulse b := wordPulse s b.toNatWord
+  gap := 2 ^ (s + 1)
+  pulseCap := 2 * (s - 2)
+  gap_pos := @seamPerturbedFamily_gap_pos s hs
+  pulse_le b := wordPulse_le s b.toNatWord
+  oldSum_injective := @seamPerturbedFamily_oldSum_injective s hs
+  separated := @seamPerturbedFamily_separated s hs
+  pulseCap_lt_three_gap := @seamPerturbedFamily_pulseCap_lt_three_gap s hs
+/-- The integer capacity of the seam subset sum problem at row s, namely 2 raised to the exponent 2s minus 1, less 2 to the power s; both the exponent subtraction and the outer subtraction are truncated natural subtraction, so the value is 0 at s = 0 and at s = 1. -/
+noncomputable def seamSubsetTarget (s : ℕ) : ℕ :=
+  2 ^ (2 * s - 1) - 2 ^ s
+/-- Statement of Erdos249257.HalfCylinderIntegerGreedy.exists_seamWord_minimal_above, which a copied definition cites. It is carried as a statement so that its proof stays in the source development, and the Solution proves it by applying the source lemma. -/
+theorem exists_seamWord_minimal_above
+    {s : ℕ} (hs : 5 ≤ s) :
+    ∃ a : SeamRowWord s,
+      seamSubsetTarget s <
+          (seamPerturbedFamily s (by omega)).oldSum a ∧
+        ∀ x : SeamRowWord s,
+          seamSubsetTarget s <
+              (seamPerturbedFamily s (by omega)).oldSum x →
+            (seamPerturbedFamily s (by omega)).oldSum a ≤
+              (seamPerturbedFamily s (by omega)).oldSum x := @Erdos249257.HalfCylinderIntegerGreedy.exists_seamWord_minimal_above s hs
 /-- Descending greedy subset for an integer capacity. Local copy of Erdos249257.HalfCylinderIntegerGreedy.integerGreedyBits, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def integerGreedyBits : List ℕ → ℕ → List Bool
   | [], _ => []
@@ -84,90 +135,77 @@ noncomputable def integerGreedyBits : List ℕ → ℕ → List Bool
         true :: integerGreedyBits ws (C - w)
       else
         false :: integerGreedyBits ws C
-/-- Weighted sum of a Boolean word. The equal-length hypotheses below make the two fallback equations irrelevant. Local copy of Erdos249257.HalfCylinderIntegerGreedy.weightedBoolSum, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def weightedBoolSum : List ℕ → List Bool → ℕ
-  | w :: ws, true :: bs => w + weightedBoolSum ws bs
-  | _ :: ws, false :: bs => weightedBoolSum ws bs
-  | _, _ => 0
-/-- Local copy of Erdos249257.HalfCylinderIntegerGreedy.integerGreedyRemainder, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def integerGreedyRemainder (weights : List ℕ) (C : ℕ) : ℕ :=
-  C - weightedBoolSum weights (integerGreedyBits weights C)
-end PalomarCorpus.E257.PaperStructuresAY
-
-namespace PalomarCorpus.E257.PaperStatementsAD
-open scoped BigOperators
-export PalomarCorpus.E257_29.Shared (localMersenneGeometricQuotient localMersenneQuotient)
-end PalomarCorpus.E257.PaperStatementsAD
-
-namespace PalomarCorpus.E257.PaperStatementsAR
-open Filter
-open Set
-open scoped ENNReal
-open MeasureTheory
-open Topology
-open scoped BigOperators
-export PalomarCorpus.E257_29.Shared (localMersenneGeometricQuotient localMersenneQuotient)
-/-- Sum of the integral quotient contributions of a finite Boolean support. Local copy of Erdos249257.localPrefixQuotient, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def localPrefixQuotient (D : Finset ℕ) (M : ℕ) : ℕ :=
-  ∑ d ∈ D, localMersenneQuotient M d
-/-- The exact rational Mersenne weight `1 / (2^n - 1)`. Its meaningful support indices are positive; at index zero Lean's division convention gives zero. Local copy of Erdos249257.mersenneWeightRat, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def mersenneWeightRat (n : ℕ) : ℚ :=
-  1 / ((2 : ℚ) ^ n - 1)
-/-- The exact finite Mersenne value of a Boolean lower support. Local copy of Erdos249257.localMersennePrefixValue, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def localMersennePrefixValue (D : Finset ℕ) : ℚ :=
-  ∑ d ∈ D, mersenneWeightRat d
-/-- The carry left after reading the nonterminating binary expansion of `2⁻ᵏ` through place `M` and subtracting the quotient contributions of `D`. The theorem below proves that the truncating natural subtraction is honest in the endpoint situation where it is used. Local copy of Erdos249257.localBinarySuffix, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def localBinarySuffix (D : Finset ℕ) (k M : ℕ) : ℕ :=
-  2 ^ (M - k) - localPrefixQuotient D M - 1
-/-- The corresponding geometric normal form of a finite prefix quotient. Local copy of Erdos249257.localGeometricPrefixQuotient, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def localGeometricPrefixQuotient (D : Finset ℕ) (M : ℕ) : ℕ :=
-  ∑ d ∈ D, localMersenneGeometricQuotient M d
-end PalomarCorpus.E257.PaperStatementsAR
-
-namespace PalomarCorpus.E257.PaperStatementsAE
-open Filter
-open Set
-export PalomarCorpus.E257_29.Shared (IsTemperedBinaryOrbit binaryCoeffSeries binaryCoeffTail)
-end PalomarCorpus.E257.PaperStatementsAE
-
-namespace PalomarCorpus.E257.PaperStatementsAU
-open ArithmeticFunction
-open Filter
-open Set
-open scoped ArithmeticFunction.Moebius
-open Topology
-export PalomarCorpus.E257_29.Shared (IsTemperedBinaryOrbit binaryCoeffSeries erdosSupportSeries supportCoeff)
-/-- A real number represented by an integer numerator and a positive natural denominator. This is the explicit positive-denominator form of membership in `ℚ`; it keeps the carry multiplier visible in theorem statements. Local copy of Erdos249257.HasRationalValue, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def HasRationalValue (x : ℝ) : Prop :=
-  ∃ p : ℤ, ∃ v : ℕ, 0 < v ∧ x = (p : ℝ) / (v : ℝ)
-/-- The positive-index integer indicator of a support. Arithmetic functions must vanish at zero, which is also the correct normalization for the Lambert coefficient calculus. Local copy of Erdos249257.positiveSupportBit, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def positiveSupportBit (A : Set ℕ) (n : ℕ) : ℤ :=
-  letI := Classical.propDecidable (0 < n ∧ n ∈ A)
-  if 0 < n ∧ n ∈ A then 1 else 0
-/-- `positiveSupportBit` packaged as an integer-valued arithmetic function. Local copy of Erdos249257.positiveSupportBitAF, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def positiveSupportBitAF (A : Set ℕ) : ArithmeticFunction ℤ :=
-  ⟨positiveSupportBit A, by simp [positiveSupportBit]⟩
-/-- The support divisor-count coefficient, cast to an integer-valued arithmetic function. Local copy of Erdos249257.supportCoeffAF, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def supportCoeffAF (A : Set ℕ) : ArithmeticFunction ℤ :=
-  ⟨fun n ↦ (supportCoeff A n : ℤ), by simp [supportCoeff]⟩
-end PalomarCorpus.E257.PaperStatementsAU
-
-namespace PalomarCorpus.E257.PaperStatementsAG
-open Filter
-open Topology
-export PalomarCorpus.E257_29.Shared (supportCoeff)
-end PalomarCorpus.E257.PaperStatementsAG
-
-namespace PalomarCorpus.E257.PaperStatementsAV
-open ArithmeticFunction
-open Filter
-open Set
-open Topology
-export PalomarCorpus.E257_29.Shared (binaryCoeffTail erdosSupportSeries supportCoeff)
-/-- The reciprocal summand of a support, with exponent zero harmlessly normalized to zero by real division. Local copy of Erdos249257.reciprocalSupportTerm, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def reciprocalSupportTerm (A : Set ℕ) (a : ℕ) : ℝ :=
-  Set.indicator A (fun a : ℕ => (1 : ℝ) / (a : ℝ)) a
-/-- The reciprocal mass `ρ(A) = ∑_{a∈A} 1/a`. Local copy of Erdos249257.reciprocalMass, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def reciprocalMass (A : Set ℕ) : ℝ :=
-  ∑' a : ℕ, reciprocalSupportTerm A a
-end PalomarCorpus.E257.PaperStatementsAV
+/-- Statement of Erdos249257.HalfCylinderIntegerGreedy.integerGreedyBits_length, which a copied definition cites. It is carried as a statement so that its proof stays in the source development, and the Solution proves it by applying the source lemma. -/
+theorem integerGreedyBits_length (weights : List ℕ) (C : ℕ) :
+    (integerGreedyBits weights C).length = weights.length := by
+  set_option smartUnfolding false in
+  with_unfolding_all exact @Erdos249257.HalfCylinderIntegerGreedy.integerGreedyBits_length weights C
+/-- Local definition seamAboveWord, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def seamAboveWord (s : ℕ) (hs : 5 ≤ s) :
+    SeamRowWord s :=
+  Classical.choose (exists_seamWord_minimal_above hs)
+/-- Statement of Erdos249257.HalfCylinderIntegerGreedy.seamAboveWord_minimal, which a copied definition cites. It is carried as a statement so that its proof stays in the source development, and the Solution proves it by applying the source lemma. -/
+theorem seamAboveWord_minimal
+    {s : ℕ} (hs : 5 ≤ s) (x : SeamRowWord s)
+    (hx : seamSubsetTarget s <
+      (seamPerturbedFamily s (by omega)).oldSum x) :
+    (seamPerturbedFamily s (by omega)).oldSum (seamAboveWord s hs) ≤
+      (seamPerturbedFamily s (by omega)).oldSum x := @Erdos249257.HalfCylinderIntegerGreedy.seamAboveWord_minimal s hs x hx
+/-- Statement of Erdos249257.HalfCylinderIntegerGreedy.seamAboveWord_strict, which a copied definition cites. It is carried as a statement so that its proof stays in the source development, and the Solution proves it by applying the source lemma. -/
+theorem seamAboveWord_strict
+    {s : ℕ} (hs : 5 ≤ s) :
+    seamSubsetTarget s <
+      (seamPerturbedFamily s (by omega)).oldSum (seamAboveWord s hs) := @Erdos249257.HalfCylinderIntegerGreedy.seamAboveWord_strict s hs
+/-- The list of truncated Mersenne weights at seam row s for the ranks from the given starting index up to s minus 1, in increasing rank order. -/
+noncomputable def seamWeightsFrom (s : ℕ) : ℕ → List ℕ
+  | d =>
+      if h : d < s then
+        truncatedMersenneWeight s d :: seamWeightsFrom s (d + 1)
+      else
+        []
+termination_by d => s - d
+decreasing_by omega
+/-- The seam weight list at row s, namely the truncated Mersenne weights for ranks 2 up to s minus 1. -/
+noncomputable def seamWeights (s : ℕ) : List ℕ :=
+  seamWeightsFrom s 2
+/-- Statement of Erdos249257.HalfCylinderIntegerGreedy.seamWeights_length_eq, which a copied definition cites. It is carried as a statement so that its proof stays in the source development, and the Solution proves it by applying the source lemma. -/
+theorem seamWeights_length_eq (s : ℕ) :
+    (seamWeights s).length = s - 2 := by
+  set_option smartUnfolding false in
+  with_unfolding_all exact @Erdos249257.HalfCylinderIntegerGreedy.seamWeights_length_eq s
+/-- Local definition seamGreedyWord, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def seamGreedyWord (s : ℕ) : SeamRowWord s :=
+  SeamRowWord.ofList
+    (integerGreedyBits (seamWeights s) (seamSubsetTarget s))
+    (by rw [integerGreedyBits_length, seamWeights_length_eq])
+/-- Proof obligation `below_admissible` of the local copy of Erdos249257.HalfCylinderIntegerGreedy.seamAdjacentCut, stated with that definition's own parameter and field values. The definition names this theorem for the field, and the Solution proves it with the source definition's own field. -/
+theorem seamAdjacentCut_below_admissible (s : ℕ) (hs : 5 ≤ s) :
+    let F := (seamPerturbedFamily s (by omega));
+    let C := (seamSubsetTarget s);
+    let below := seamGreedyWord s;
+    F.oldSum below ≤ C := by
+  set_option smartUnfolding false in
+  with_unfolding_all exact (@Erdos249257.HalfCylinderIntegerGreedy.seamAdjacentCut s hs).below_admissible
+/-- Proof obligation `below_maximal` of the local copy of Erdos249257.HalfCylinderIntegerGreedy.seamAdjacentCut, stated with that definition's own parameter and field values. The definition names this theorem for the field, and the Solution proves it with the source definition's own field. -/
+theorem seamAdjacentCut_below_maximal (s : ℕ) (hs : 5 ≤ s) :
+    let F := (seamPerturbedFamily s (by omega));
+    let C := (seamSubsetTarget s);
+    let below := seamGreedyWord s;
+    ∀ x, F.oldSum x ≤ C → F.oldSum x ≤ F.oldSum below := by
+  set_option smartUnfolding false in
+  with_unfolding_all exact (@Erdos249257.HalfCylinderIntegerGreedy.seamAdjacentCut s hs).below_maximal
+/-- The adjacent cut view at seam row s, for s at least 5: its proposition field states that the first s minus 2 bits of the greedy word at row s+1 differ from the greedy word at row s, and its numeric field is the pulse below the seam at row s. -/
+noncomputable def seamAdjacentCut (s : ℕ) (hs : 5 ≤ s) :
+    (seamPerturbedFamily s (by omega)).AdjacentCut
+      (seamSubsetTarget s) where
+  below := seamGreedyWord s
+  above := seamAboveWord s hs
+  below_admissible := @seamAdjacentCut_below_admissible s hs
+  below_maximal := @seamAdjacentCut_below_maximal s hs
+  above_strict := seamAboveWord_strict hs
+  above_minimal := seamAboveWord_minimal hs
+/-- Local definition seamUpperResetCharge, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def seamUpperResetCharge (d : ℕ) (hd5 : 5 ≤ d) : ℕ :=
+  4 * (seamAdjacentCut d hd5).overshoot +
+    (seamAdjacentCut d hd5).abovePulse
+end PalomarCorpus.E257.PaperStructuresBY

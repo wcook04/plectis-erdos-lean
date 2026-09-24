@@ -5,8 +5,8 @@ Authors: Will Cook
 -/
 import Mathlib
 import Solutions.PalomarCorpus.E1049_07.Statement
-import Solutions.PalomarCorpus.E1049_07.ArchimedeanCap
-import Solutions.PalomarCorpus.E1049_07.BezoutPluckerJets
-import Solutions.PalomarCorpus.E1049_07.HermitePadeNoGo
-import Solutions.PalomarCorpus.E1049_07.PrimeSupportSelectors
-import Solutions.PalomarCorpus.E1049_07.PublishedHeightRegions
+import Solutions.PalomarCorpus.E1049_07.PaperStatementsA
+import Solutions.PalomarCorpus.E1049_07.PaperStatementsF
+import Solutions.PalomarCorpus.E1049_07.PaperStructuresP
+import Solutions.PalomarCorpus.E1049_07.PaperStructuresR
+import Solutions.PalomarCorpus.E1049_07.RationalBaseRegion

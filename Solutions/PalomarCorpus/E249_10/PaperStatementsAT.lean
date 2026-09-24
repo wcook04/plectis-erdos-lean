@@ -41,7 +41,7 @@ open Finset
 /- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
 
 namespace PalomarCorpus.E249.PaperStatementsAT
-export PalomarCorpus.E249_10.Shared (periodLcm totientTail windowDiscrepancy windowNumerator)
+export PalomarCorpus.E249_10.Shared (certifiedKill periodLcm totientTail windowDiscrepancy windowNumerator)
 
 noncomputable def directedCertifiedKill (h N L : ℕ) : Prop :=
   (N + L + 2 : ℤ) ≤ windowDiscrepancy h N L % (2 : ℤ) ^ L ∧

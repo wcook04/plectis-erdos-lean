@@ -1,0 +1,6 @@
+import Solutions.PalomarCorpus.E1049_09
+
+#print axioms PalomarCorpus.E1049.PaperStructuresAA.rogers_factorisation_proposition
+#print axioms PalomarCorpus.E1049.PaperStructuresAB.sharp_fixed_base
+#print axioms PalomarCorpus.E1049.PaperStructuresV.tail_prefix_lattice
+#print axioms PalomarCorpus.E1049.PaperStructuresW.geometric_universality

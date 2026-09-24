@@ -1,10 +1,10 @@
 version: v0.4
 project:
-  name: 'Erdős #257: restrictions on a support with rational value; the first crossing of the half-value; gap lengths and the measure of their union'
+  name: 'Erdős #257: nonnegativity of the omitted-tail margin'
   description: >-
-    This entry states 23 theorems that the long record for Erdős problem #257 states in sections the unnumbered section restrictions on a support with rational value, the unnumbered section the first crossing of the half-value, the unnumbered section gap lengths and the measure of their union and the unnumbered section a sufficient test for a safe skip: the theorem “Unboundedness of a positive shifted recurrence”, as one_add_mul_card_le_two_mul_shifted_state and shifted_state_unbounded_of_infinite_support; the theorem “Bounds for intervals with zero divisor counts”, as paper_zero_run_le_eps_logb and paper_zero_run_le_of_mem; the proposition “A subpower bound for divisor counts”, as card_divisors_le_divisorSubpowerConst_mul_rpow and card_divisors_pow_le_divisorSubpowerConst_pow_mul; the proposition “Two distinct prime-power differences commute”, as mixedPrimePowerLayerTwo_twelve_fixture; the theorem “Existence of a first crossing”, as exists_first_localMersenne_crossing; the theorem “The unweighted sum of remaining gap lengths”, as mersenneGap_le and summable_mersenneGap_shift; the theorem “A sufficient inequality for a safe skip”, as paper_dyadic_skip_test_iff, paper_sharp_gives_three_over_three_t_sub_one, paper_sharp_skip_safe_lb3, paper_sharp_strictly_weaker_realizable, paper_sharp_weaker_than_dyadic, paper_three_channel_margin_identity, paper_two_channels_insufficient, paper_exact_mass_threshold and paper_sharp_skip_safe_actual_tail; the proposition “Two unconditional safety cases”, as three_le_of_fatal_of_odd, two_le_of_fatal, unitNumerator_skipSafe and unitNumerator_skipSafe_actualTail.
+    This entry states 1 theorem that the long record for Erdős problem #257 states in section the unnumbered section nonnegativity of the omitted-tail margin: the theorem “An equivalent vanishing condition”, as skipped_fullShell_neg_iff_alignment_and_seamRemainder_pos.
 
-    20 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 3 are derived from the source declaration by a short tactic proof, which certifies implication.
+    1 is derived from the source declaration by a short tactic proof, which certifies implication.
 
     Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
 
@@ -55,11 +55,11 @@ sources:
   license: Apache-2.0
   author_endorsement: n/a
 status:
-  scope: "One Comparator configuration selecting the 23 theorems listed in PalomarCorpus/E257_30/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 43 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_43, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
+  scope: "One Comparator configuration selecting the 1 theorems listed in PalomarCorpus/E257_30/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 52 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_52, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
-  trusted_challenge_sorry_count: 23
+  trusted_challenge_sorry_count: 1
   sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E257_30/Challenge.lean, and the Solution modules contain no sorry. No Comparator replay of this entry's Challenge and Solution bytes has been recorded."
   axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. No axiom audit of this entry has been recorded."
   permitted_axiom_budget:
@@ -67,96 +67,8 @@ status:
   - Quot.sound
   - Classical.choice
   main_results:
-  - declaration: "PalomarCorpus.E257.PaperStatementsAA.paper_dyadic_skip_test_iff"
-    file: "Solutions/PalomarCorpus/E257_30/PaperStatementsAA.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_30/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAA.paper_sharp_gives_three_over_three_t_sub_one"
-    file: "Solutions/PalomarCorpus/E257_30/PaperStatementsAA.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_30/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAA.paper_sharp_skip_safe_lb3"
-    file: "Solutions/PalomarCorpus/E257_30/PaperStatementsAA.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_30/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAA.paper_sharp_strictly_weaker_realizable"
-    file: "Solutions/PalomarCorpus/E257_30/PaperStatementsAA.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_30/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAA.paper_sharp_weaker_than_dyadic"
-    file: "Solutions/PalomarCorpus/E257_30/PaperStatementsAA.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_30/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAA.paper_three_channel_margin_identity"
-    file: "Solutions/PalomarCorpus/E257_30/PaperStatementsAA.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_30/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAA.paper_two_channels_insufficient"
-    file: "Solutions/PalomarCorpus/E257_30/PaperStatementsAA.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_30/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAF.card_divisors_le_divisorSubpowerConst_mul_rpow"
-    file: "Solutions/PalomarCorpus/E257_30/PaperStatementsAF.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_30/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAF.card_divisors_pow_le_divisorSubpowerConst_pow_mul"
-    file: "Solutions/PalomarCorpus/E257_30/PaperStatementsAF.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_30/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAL.paper_zero_run_le_eps_logb"
-    file: "Solutions/PalomarCorpus/E257_30/PaperStatementsAL.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_30/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAL.paper_zero_run_le_of_mem"
-    file: "Solutions/PalomarCorpus/E257_30/PaperStatementsAL.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_30/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAM.mersenneGap_le"
-    file: "Solutions/PalomarCorpus/E257_30/PaperStatementsAM.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_30/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAM.paper_exact_mass_threshold"
-    file: "Solutions/PalomarCorpus/E257_30/PaperStatementsAM.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_30/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAM.paper_sharp_skip_safe_actual_tail"
-    file: "Solutions/PalomarCorpus/E257_30/PaperStatementsAM.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_30/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAM.summable_mersenneGap_shift"
-    file: "Solutions/PalomarCorpus/E257_30/PaperStatementsAM.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_30/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAO.mixedPrimePowerLayerTwo_twelve_fixture"
-    file: "Solutions/PalomarCorpus/E257_30/PaperStatementsAO.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_30/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAR.exists_first_localMersenne_crossing"
-    file: "Solutions/PalomarCorpus/E257_30/PaperStatementsAR.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_30/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAV.one_add_mul_card_le_two_mul_shifted_state"
-    file: "Solutions/PalomarCorpus/E257_30/PaperStatementsAV.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_30/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAV.shifted_state_unbounded_of_infinite_support"
-    file: "Solutions/PalomarCorpus/E257_30/PaperStatementsAV.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_30/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresH.three_le_of_fatal_of_odd"
-    file: "Solutions/PalomarCorpus/E257_30/PaperStructuresH.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_30/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresH.two_le_of_fatal"
-    file: "Solutions/PalomarCorpus/E257_30/PaperStructuresH.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_30/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresH.unitNumerator_skipSafe"
-    file: "Solutions/PalomarCorpus/E257_30/PaperStructuresH.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_30/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresV.unitNumerator_skipSafe_actualTail"
-    file: "Solutions/PalomarCorpus/E257_30/PaperStructuresV.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBJ.skipped_fullShell_neg_iff_alignment_and_seamRemainder_pos"
+    file: "Solutions/PalomarCorpus/E257_30/PaperStructuresBJ.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_30/comparator.json"
   development_status: substantive

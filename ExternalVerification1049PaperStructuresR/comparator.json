@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification1049PaperStructuresR.Challenge",
+  "solution_module": "Solutions.ExternalVerification1049PaperStructuresR",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1049PaperStructuresR.short_note_archimedean_cap"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

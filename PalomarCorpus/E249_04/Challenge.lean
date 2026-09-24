@@ -18,11 +18,11 @@ the source declaration it comes from. Erdős problem #249 remains open, and no t
 this entry decides it.
 -/
 
+open Finset
 open scoped BigOperators
 open Matrix
 open ArithmeticFunction
 open Module
-open Finset
 open Filter
 open Topology
 
@@ -35,6 +35,72 @@ noncomputable def mobiusMersenneTerm (r n : ℕ) : ℝ :=
 noncomputable def mobiusMersenneTheta (r : ℕ) : ℝ :=
   ∑' n : ℕ, mobiusMersenneTerm r n
 end PalomarCorpus.E249_04.Shared
+
+namespace PalomarCorpus.E249.PaperStatementsI
+open Finset
+/-- The depth-`L` cleared binary prefix, accumulated from left to right. Equivalently this is `∑ j < L, a (n+j) * 2^(L-1-j)`. Local copy of Erdos249257.TotientTailPeriodKiller.dyadicClearedPrefix, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def dyadicClearedPrefix (a : ℕ → ℤ) (n : ℕ) : ℕ → ℤ
+  | 0 => 0
+  | L + 1 => 2 * dyadicClearedPrefix a n L + a (n + L)
+/-- `periodLcm t = lcm(1, …, t)`: the universal period at scale `t`. Every primitive period `h₀ ≤ t` divides it. Local copy of Erdos249257.TotientTailPeriodKiller.periodLcm, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def periodLcm : ℕ → ℕ
+  | 0 => 1
+  | t + 1 => Nat.lcm (periodLcm t) (t + 1)
+/-- State anchors corresponding to the exact whole-ray letters at `q * periodLcm t`, for `2 ≤ q < t`. Local copy of Erdos249257.TotientTailPeriodKiller.lcmAnchorStates, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def lcmAnchorStates (t : ℕ) : Finset ℕ :=
+  (Finset.Ico 2 t).image (fun q => (q - 1) * periodLcm t)
+/-- A state which is `-A` on a finite anchor set and zero elsewhere. Local copy of Erdos249257.TotientTailPeriodKiller.sparsePulseState, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def sparsePulseState (A : ℤ) (S : Finset ℕ) (k : ℕ) : ℤ :=
+  if k ∈ S then -A else 0
+/-- The zero-based forcing letter determined by `c_{i+1} = 2c_i - a_i`. Local copy of Erdos249257.TotientTailPeriodKiller.sparsePulseLetter, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def sparsePulseLetter (A : ℤ) (S : Finset ℕ) (i : ℕ) : ℤ :=
+  2 * sparsePulseState A S i - sparsePulseState A S (i + 1)
+/-- The LCM pulse forcing word. Local copy of Erdos249257.TotientTailPeriodKiller.lcmAnchorPulseLetter, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def lcmAnchorPulseLetter (t i : ℕ) : ℤ :=
+  sparsePulseLetter (Nat.totient (periodLcm t) : ℤ) (lcmAnchorStates t) i
+/-- The LCM pulse state with amplitude `φ(periodLcm t)`. Local copy of Erdos249257.TotientTailPeriodKiller.lcmAnchorPulseState, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def lcmAnchorPulseState (t k : ℕ) : ℤ :=
+  sparsePulseState (Nat.totient (periodLcm t) : ℤ) (lcmAnchorStates t) k
+/-- Evaluation of a finite integer shift polynomial on a sequence. A term `(h, q)` contributes `q * f(n+h)`. Local copy of Erdos249257.TotientTailPeriodKiller.shiftLinearCombination, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def shiftLinearCombination : List (ℕ × ℤ) → (ℕ → ℤ) → (ℕ → ℤ)
+  | [], _ => fun _ => 0
+  | (h, q) :: terms, f => fun n =>
+      q * f (n + h) + shiftLinearCombination terms f n
+/-- Pulse letters transformed by the same shift polynomial. Local copy of Erdos249257.TotientTailPeriodKiller.lcmAnchorShiftPolynomialLetter, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def lcmAnchorShiftPolynomialLetter
+    (t : ℕ) (terms : List (ℕ × ℤ)) : ℕ → ℤ :=
+  shiftLinearCombination terms (lcmAnchorPulseLetter t)
+/-- Pulse state transformed by an arbitrary finite integer shift polynomial. Local copy of Erdos249257.TotientTailPeriodKiller.lcmAnchorShiftPolynomialState, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def lcmAnchorShiftPolynomialState
+    (t : ℕ) (terms : List (ℕ × ℤ)) : ℕ → ℤ :=
+  shiftLinearCombination terms (lcmAnchorPulseState t)
+/-- The `ℓ1` weight of a finite shift polynomial. Local copy of Erdos249257.TotientTailPeriodKiller.shiftLinearWeight, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def shiftLinearWeight : List (ℕ × ℤ) → ℤ
+  | [] => 0
+  | (_, q) :: terms => |q| + shiftLinearWeight terms
+/-- States prop:b6 from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.b6_synthetic_shift_combinations_same_form in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem b6_synthetic_shift_combinations_same_form
+    (t : ℕ) (terms : List (ℕ × ℤ)) :
+    (∀ i : ℕ,
+        lcmAnchorShiftPolynomialState t terms i =
+          shiftLinearCombination terms (lcmAnchorPulseState t) i)
+      ∧ (∀ i : ℕ,
+          lcmAnchorShiftPolynomialLetter t terms i =
+            shiftLinearCombination terms (lcmAnchorPulseLetter t) i)
+      ∧ (∀ i : ℕ,
+          lcmAnchorShiftPolynomialLetter t terms i =
+            2 * lcmAnchorShiftPolynomialState t terms i -
+              lcmAnchorShiftPolynomialState t terms (i + 1))
+      ∧ (∀ n L : ℕ,
+          dyadicClearedPrefix (lcmAnchorShiftPolynomialLetter t terms) n L =
+            (2 : ℤ) ^ L * lcmAnchorShiftPolynomialState t terms n -
+              lcmAnchorShiftPolynomialState t terms (n + L))
+      ∧ (∀ i : ℕ, |lcmAnchorShiftPolynomialState t terms i| ≤
+          shiftLinearWeight terms * (Nat.totient (periodLcm t) : ℤ))
+      ∧ (∀ i : ℕ, |lcmAnchorShiftPolynomialLetter t terms i| ≤
+          shiftLinearWeight terms * (2 * (Nat.totient (periodLcm t) : ℤ))) := by
+  sorry
+end PalomarCorpus.E249.PaperStatementsI
 
 namespace PalomarCorpus.E249.PaperStatementsJ
 open scoped BigOperators
@@ -130,11 +196,6 @@ noncomputable def ParityComparisonProperties (c : ℕ → ℕ) : Prop :=
         2 ^ (k + i + 3) + G < 2 ^ (k + i + 4) ∧
         c (2 ^ (k + i + 3)) = 6 ∧ c (2 ^ (k + i + 3) + 1) = 0) ∧
     (¬ ∃ p N : ℕ, 0 < p ∧ ∀ n : ℕ, N ≤ n → c (n + p) = c n)
-/-- States prop:mobsq from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR20.moebius_three_values in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem moebius_three_values (d : ℕ) :
-    ArithmeticFunction.moebius d = -1 ∨ ArithmeticFunction.moebius d = 0 ∨
-      ArithmeticFunction.moebius d = 1 := by
-  sorry
 /-- States prop:b7 from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.exists_rational_parityComparison in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem exists_rational_parityComparison :
     ∃ c : ℕ → ℕ, ParityComparisonProperties c ∧
@@ -226,22 +287,3 @@ theorem tsum_visible_coprime_pairs_ne_int_div_of_den_le_398198233233506876616778
         ≠ (a : ℝ) / (d : ℝ) := by
   sorry
 end PalomarCorpus.E249.PaperStatementsAI
-
-namespace PalomarCorpus.E249.PaperStatementsAY
-open scoped BigOperators
-/-- The #249 constant, named locally for the generic-scale transport. Local copy of Erdos249257.FullTargetPrimeAdjunctionNoGo.totientSeries, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def totientSeries : ℝ :=
-  ∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n
-/-- States prop:mobsq from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR20.irrational_totient_iff_mobius_square in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem irrational_totient_iff_mobius_square :
-    Irrational totientSeries ↔
-      Irrational (∑' d : ℕ+, (ArithmeticFunction.moebius (d : ℕ) : ℝ) /
-        ((2 : ℝ) ^ (d : ℕ) - 1) ^ 2) := by
-  sorry
-/-- States prop:mobsq from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR20.mobius_square_reduction in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem mobius_square_reduction :
-    totientSeries = (1 : ℝ) / 2 +
-      ∑' d : ℕ+, (ArithmeticFunction.moebius (d : ℕ) : ℝ) /
-        ((2 : ℝ) ^ (d : ℕ) - 1) ^ 2 := by
-  sorry
-end PalomarCorpus.E249.PaperStatementsAY

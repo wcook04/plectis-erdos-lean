@@ -2,7 +2,20 @@
   "challenge_module": "PalomarCorpus.E257_24.Challenge",
   "solution_module": "Solutions.PalomarCorpus.E257_24",
   "theorem_names": [
-    "PalomarCorpus.E257.PaperStructuresBJ.skipped_fullShell_neg_iff_alignment_and_seamRemainder_pos"
+    "PalomarCorpus.E257.PaperStatementsI.mobiusCenteredHalfCarry_add_two",
+    "PalomarCorpus.E257.PaperStructuresCC.exists_seamWord_minimal_above",
+    "PalomarCorpus.E257.PaperStructuresCC.finalMiddleCell_neg_three_not_last",
+    "PalomarCorpus.E257.PaperStructuresCC.integerGreedyBits_length",
+    "PalomarCorpus.E257.PaperStructuresCC.seamAboveWord_minimal",
+    "PalomarCorpus.E257.PaperStructuresCC.seamAboveWord_strict",
+    "PalomarCorpus.E257.PaperStructuresCC.seamAdjacentCut_below_admissible",
+    "PalomarCorpus.E257.PaperStructuresCC.seamAdjacentCut_below_maximal",
+    "PalomarCorpus.E257.PaperStructuresCC.seamPerturbedFamily_gap_pos",
+    "PalomarCorpus.E257.PaperStructuresCC.seamPerturbedFamily_oldSum_injective",
+    "PalomarCorpus.E257.PaperStructuresCC.seamPerturbedFamily_pulseCap_lt_three_gap",
+    "PalomarCorpus.E257.PaperStructuresCC.seamPerturbedFamily_separated",
+    "PalomarCorpus.E257.PaperStructuresCC.seamWeights_length_eq",
+    "PalomarCorpus.E257.PaperStructuresCC.wordPulse_le"
   ],
   "permitted_axioms": [
     "propext",

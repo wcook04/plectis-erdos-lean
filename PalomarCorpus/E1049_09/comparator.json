@@ -1,0 +1,16 @@
+{
+  "challenge_module": "PalomarCorpus.E1049_09.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E1049_09",
+  "theorem_names": [
+    "PalomarCorpus.E1049.PaperStructuresAA.rogers_factorisation_proposition",
+    "PalomarCorpus.E1049.PaperStructuresAB.sharp_fixed_base",
+    "PalomarCorpus.E1049.PaperStructuresV.tail_prefix_lattice",
+    "PalomarCorpus.E1049.PaperStructuresW.geometric_universality"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

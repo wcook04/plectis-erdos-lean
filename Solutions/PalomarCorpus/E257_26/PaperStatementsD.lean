@@ -25,18 +25,7 @@ open MeasureTheory
 /- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
 
 namespace PalomarCorpus.E257.PaperStatementsD
-export PalomarCorpus.E257_26.Shared (affineBinaryOrbit erdosSupportSeries greedyMersenneRemainder halfStripBound integerHalfCarry mersenneWeight supportCoeff)
-
-noncomputable def mersenneWeightRat (n : ℕ) : ℚ :=
-  1 / ((2 : ℚ) ^ n - 1)
-
-noncomputable def greedyMersenneRemainderRat (x : ℚ) : ℕ → ℚ
-  | 0 => x
-  | n + 1 =>
-      if mersenneWeightRat (n + 1) ≤ greedyMersenneRemainderRat x n then
-        greedyMersenneRemainderRat x n - mersenneWeightRat (n + 1)
-      else
-        greedyMersenneRemainderRat x n
+export PalomarCorpus.E257_26.Shared (mersenneWeight)
 
 noncomputable def CofinalPositiveHalfGreedySkips : Prop :=
   ∀ N : ℕ, ∃ c : ℕ,
@@ -45,43 +34,43 @@ noncomputable def CofinalPositiveHalfGreedySkips : Prop :=
       greedyMersenneRemainderRat (1 / 2 : ℚ) (c - 1) <
         mersenneWeightRat c
 
+noncomputable def halfStripBound (n : ℕ) : ℕ :=
+  2 * Nat.sqrt n + 4
+
+noncomputable def affineBinaryOrbit (a : ℕ → ℤ) (u0 : ℤ) : ℕ → ℤ
+  | 0 => u0
+  | n + 1 => 2 * affineBinaryOrbit a u0 n - a (n + 1)
+
+noncomputable def supportCoeff (A : Set ℕ) (n : ℕ) : ℕ :=
+  letI := Classical.decPred fun d : ℕ => d ∈ A
+  (n.divisors.filter fun d => d ∈ A).card
+
+noncomputable def integerHalfCarry (A : Set ℕ) : ℕ → ℤ :=
+  affineBinaryOrbit (fun n : ℕ ↦ (supportCoeff A (n + 1) : ℤ)) 1
+
+noncomputable def greedyMersenneSupport (x : ℝ) : Set ℕ :=
+  {m : ℕ | m ≠ 0 ∧
+    mersenneWeight m ≤ greedyMersenneRemainder x (m - 1)}
+
+noncomputable def GreedyHalfCarryCofinalStripReturn : Prop :=
+  ∀ N : ℕ, ∃ M : ℕ, N ≤ M ∧
+    integerHalfCarry (greedyMersenneSupport (1 / 2 : ℝ)) M ≤
+      (halfStripBound (M + 1) : ℤ)
+
+noncomputable def mobiusCenteredHalfCarry (A : Set ℕ) (N : ℕ) : ℤ :=
+  integerHalfCarry A N - 1
+
 noncomputable def mersenneTail (n : ℕ) : ℝ :=
   ∑' k : ℕ, mersenneWeight (n + k + 1)
 
 noncomputable def erdosBorweinMersenneConstant : ℝ :=
   mersenneTail 0
 
-noncomputable def finiteErdosSum (F : Finset Nat) (b : Nat) : Rat :=
-  ∑ n ∈ F, 1 / ((b : Rat) ^ n - 1)
-
-noncomputable def greedyMersennePrefixRat (x : ℚ) (n : ℕ) : Finset ℕ :=
-  (((Finset.range n).filter fun k =>
-      mersenneWeightRat (k + 1) ≤ greedyMersenneRemainderRat x k).image
-    fun k => k + 1)
+noncomputable def erdosSupportSeries (b : ℕ) (A : Set ℕ) : ℝ :=
+  ∑' a : ℕ, Set.indicator A (fun a => (1 : ℝ) / ((b : ℝ) ^ a - 1)) a
 
 noncomputable def greedyMersenneSkippedSupport (x : ℝ) : Set ℕ :=
   {m : ℕ | m ≠ 0 ∧ m ∉ greedyMersenneSupport x}
-
-noncomputable def halfDyadicCap (n : ℕ) : ℝ :=
-  ((1 : ℝ) / 2) ^ n
-
-noncomputable def nextDyadicExcessIntNumerator (p : ℤ) (n L : ℕ) : ℤ :=
-  ((2 ^ n : ℕ) : ℤ) * p - (L : ℤ)
-
-noncomputable def halfGreedyPrefixRat (n : ℕ) : ℚ :=
-  finiteErdosSum (greedyMersennePrefixRat (1 / 2 : ℚ) n) 2
-
-noncomputable def halfGreedyPrefixDenominator (n : ℕ) : ℕ :=
-  (halfGreedyPrefixRat n).den
-
-noncomputable def halfGreedyResidualDisplayedNumerator (n : ℕ) : ℤ :=
-  (halfGreedyPrefixDenominator n : ℤ) -
-    2 * (halfGreedyPrefixRat n).num
-
-noncomputable def halfGreedyNextDyadicExcessNumerator (n : ℕ) : ℤ :=
-  nextDyadicExcessIntNumerator
-    (halfGreedyResidualDisplayedNumerator n) n
-    (halfGreedyPrefixDenominator n)
 
 noncomputable def positiveMersenneSupportValue (A : Set ℕ) : ℝ :=
   ∑' k : ℕ, Set.indicator A mersenneWeight (k + 1)

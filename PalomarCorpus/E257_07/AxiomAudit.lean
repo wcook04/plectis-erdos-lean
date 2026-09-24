@@ -1,4 +1,9 @@
 import Solutions.PalomarCorpus.E257_07
 
-#print axioms PalomarCorpus.E257.PaperStatementsAM.abs_supportValue_sub_le_mersenneTail
-#print axioms PalomarCorpus.E257.PaperStatementsN.fatal_absorbing
+#print axioms PalomarCorpus.E257.PaperStructuresBX.exists_seamWord_minimal_above
+#print axioms PalomarCorpus.E257.PaperStructuresBX.paper_upperSupport_isRowUpper
+#print axioms PalomarCorpus.E257.PaperStructuresBX.seamPerturbedFamily_gap_pos
+#print axioms PalomarCorpus.E257.PaperStructuresBX.seamPerturbedFamily_oldSum_injective
+#print axioms PalomarCorpus.E257.PaperStructuresBX.seamPerturbedFamily_pulseCap_lt_three_gap
+#print axioms PalomarCorpus.E257.PaperStructuresBX.seamPerturbedFamily_separated
+#print axioms PalomarCorpus.E257.PaperStructuresBX.wordPulse_le

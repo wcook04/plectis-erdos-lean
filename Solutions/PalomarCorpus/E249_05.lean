@@ -8,7 +8,8 @@ import Solutions.PalomarCorpus.E249_05.Statement
 import Solutions.PalomarCorpus.E249_05.CompleteKernelBases
 import Solutions.PalomarCorpus.E249_05.PaperStatementsAD
 import Solutions.PalomarCorpus.E249_05.PaperStatementsAE
+import Solutions.PalomarCorpus.E249_05.PaperStatementsAJ
 import Solutions.PalomarCorpus.E249_05.PaperStatementsAK
 import Solutions.PalomarCorpus.E249_05.PaperStatementsAQ
-import Solutions.PalomarCorpus.E249_05.PaperStatementsAR
 import Solutions.PalomarCorpus.E249_05.PaperStatementsAX
+import Solutions.PalomarCorpus.E249_05.PaperStatementsAY

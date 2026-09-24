@@ -23,7 +23,6 @@ open Topology
 /- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
 
 namespace PalomarCorpus.E257.PaperStatementsAL
-export PalomarCorpus.E257_27.Shared (binaryCoeffTail supportCoeff)
 
 noncomputable def CoeffZeroWindow (f : ℕ → ℕ) (N h : ℕ) : Prop :=
   ∀ j : ℕ, j < h → f (N + j + 1) = 0
@@ -36,11 +35,15 @@ noncomputable def wordSupport {N : ℕ} (a : HalfWord N) : Set ℕ :=
 noncomputable def extendHalfWord {N : ℕ} (a : HalfWord N) (β : Bool) : HalfWord (N + 1) :=
   Fin.lastCases β a
 
+noncomputable def supportCoeff (A : Set ℕ) (n : ℕ) : ℕ :=
+  letI := Classical.decPred fun d : ℕ => d ∈ A
+  (n.divisors.filter fun d => d ∈ A).card
+
 noncomputable def SupportCoeffZeroWindow (A : Set ℕ) (N h : ℕ) : Prop :=
   CoeffZeroWindow (supportCoeff A) N h
 
-noncomputable def erdosSupportSeries (b : ℕ) (A : Set ℕ) : ℝ :=
-  ∑' a : ℕ, Set.indicator A (fun a => (1 : ℝ) / ((b : ℝ) ^ a - 1)) a
+noncomputable def binaryCoeffTail (c : ℕ → ℕ) (N : ℕ) : ℝ :=
+  ∑' j : ℕ, (c (N + j + 1) : ℝ) / (2 : ℝ) ^ (j + 1)
 
 theorem finite_boolSupport_ne_half
     (A : Set ℕ) (hfinite : A.Finite) (hzero : 0 ∉ A) :

@@ -2,15 +2,8 @@
   "challenge_module": "PalomarCorpus.E1049_06.Challenge",
   "solution_module": "Solutions.PalomarCorpus.E1049_06",
   "theorem_names": [
-    "PalomarCorpus.E1049.PaperStatementsA.printed_contour_short",
-    "PalomarCorpus.E1049.PaperStatementsA.printed_mu",
-    "PalomarCorpus.E1049.PaperStatementsA.tailLow_le_trigammaSeries",
-    "PalomarCorpus.E1049.PaperStatementsA.trigammaSeries_le_tailHigh",
-    "PalomarCorpus.E1049.PaperStatementsA.zudilinContour_eq_inv_mu",
-    "PalomarCorpus.E1049.PaperStatementsA.zudilinMu_mul_zudilinContour",
-    "PalomarCorpus.E1049.PaperStatementsF.bottomJet3_eq_zero_iff_dvd",
-    "PalomarCorpus.E1049.PaperStructuresP.exists_small_real_escape_of_conditional_multiplicity",
-    "PalomarCorpus.E1049.RationalBaseRegion.thirtyone_four_powers"
+    "PalomarCorpus.E1049.PaperStatementsX.no_finite_simultaneous_two_three_system",
+    "PalomarCorpus.E1049.PaperStructuresL.no_finite_simultaneous_two_three_system_unconditional"
   ],
   "permitted_axioms": [
     "propext",

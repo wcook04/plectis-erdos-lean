@@ -1,17 +1,17 @@
 import Solutions.PalomarCorpus.E257_20
 
-#print axioms PalomarCorpus.E257.PaperStatementsAA.linearDescender_eq_smul_eval
-#print axioms PalomarCorpus.E257.PaperStatementsAA.paper_reverse_carry_word
-#print axioms PalomarCorpus.E257.PaperStatementsAA.paper_two_thirds_band
-#print axioms PalomarCorpus.E257.PaperStatementsAA.reverse_carry_word_common_bound_sharp
-#print axioms PalomarCorpus.E257.PaperStatementsAB.relationInvariantLinearChannels_det_eq_zero
-#print axioms PalomarCorpus.E257.PaperStatementsAC.dyadicBandEscape_iff_exists_critical
-#print axioms PalomarCorpus.E257.PaperStatementsAC.exists_criticalDyadicBandIndex
-#print axioms PalomarCorpus.E257.PaperStatementsAH.mersenneGap_pos
-#print axioms PalomarCorpus.E257.PaperStatementsAL.supportCoeff_extend_true_eq_false_add_one_at_double
-#print axioms PalomarCorpus.E257.PaperStatementsAM.mersenneGap_tail_le
-#print axioms PalomarCorpus.E257.PaperStatementsAM.paper_sharp_fatal_gap
-#print axioms PalomarCorpus.E257.PaperStatementsAM.summable_mersenneGap_succ
-#print axioms PalomarCorpus.E257.PaperStatementsAM.tendsto_mersenneGap_tail_zero
-#print axioms PalomarCorpus.E257.PaperStatementsAN.supportCoeff_insert_eq_add_indicator
-#print axioms PalomarCorpus.E257.PaperStatementsI.mobiusCenteredHalfCarry_add_two
+#print axioms PalomarCorpus.E257.PaperStatementsAH.halfTwoChannelCap_lt_mersenneTail
+#print axioms PalomarCorpus.E257.PaperStatementsAH.mersenneTail_eq_weight_add
+#print axioms PalomarCorpus.E257.PaperStatementsAH.mersenneTail_le_two_mul_weight
+#print axioms PalomarCorpus.E257.PaperStatementsAH.mersenneTail_lt_weight
+#print axioms PalomarCorpus.E257.PaperStatementsAH.two_mul_mersenneWeight_succ_lt
+#print axioms PalomarCorpus.E257.PaperStatementsAM.depth_prefix_interval_disjoint
+#print axioms PalomarCorpus.E257.PaperStatementsAM.fatal_gap_endpoint_bounds
+#print axioms PalomarCorpus.E257.PaperStatementsAM.fatal_gap_excludes_every_representation
+#print axioms PalomarCorpus.E257.PaperStatementsAM.fatal_gap_within_prefix_interval
+#print axioms PalomarCorpus.E257.PaperStatementsAM.half_ne_coe_finset_add_mersenneTail
+#print axioms PalomarCorpus.E257.PaperStatementsAM.positiveMersenneSupportValue_coe_finset_ne_half
+#print axioms PalomarCorpus.E257.PaperStatementsD.half_mem_iff_every_actual_skip_survives
+#print axioms PalomarCorpus.E257.PaperStructuresBJ.prefix_add_mersenneTail_lt_half_of_eventually_right
+#print axioms PalomarCorpus.E257.PaperStructuresU.IsStraddlePrefix.half_step_forced
+#print axioms PalomarCorpus.E257.PaperStructuresU.isStraddlePrefix_step_trichotomy

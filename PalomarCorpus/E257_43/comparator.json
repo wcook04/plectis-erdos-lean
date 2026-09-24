@@ -2,11 +2,22 @@
   "challenge_module": "PalomarCorpus.E257_43.Challenge",
   "solution_module": "Solutions.PalomarCorpus.E257_43",
   "theorem_names": [
-    "PalomarCorpus.E257.TwentyOneFatalBranch.one_div_twenty_one_mem_iff_not_fatalAlignedBranch",
-    "PalomarCorpus.E257.TwentyOneFatalBranch.one_div_twenty_one_mem_mersenneAchievementSet_of_closedLowerStates",
-    "PalomarCorpus.E257.TwentyOneFatalBranch.twentyOneClosedRow_forces_quotientGreedy",
-    "PalomarCorpus.E257.TwentyOneFatalBranch.twentyOneFatalAlignedBranch_eventually_affine_supercapacity",
-    "PalomarCorpus.E257.TwentyOneFatalBranch.twentyOneFatalAlignedBranch_eventually_strict_supercapacity"
+    "PalomarCorpus.E257.PaperStatementsAA.paper_half_lcm_horizon",
+    "PalomarCorpus.E257.PaperStatementsAA.paper_mod_twelve_filter",
+    "PalomarCorpus.E257.PaperStatementsAA.paper_parity_excludes_finite_support",
+    "PalomarCorpus.E257.PaperStatementsAA.paper_theoremA_crossing_bound_square_le",
+    "PalomarCorpus.E257.PaperStatementsAA.paper_witness_exclusion",
+    "PalomarCorpus.E257.PaperStatementsAI.paper_forced_greedy_low_ranks",
+    "PalomarCorpus.E257.PaperStatementsAM.irrational_mersenneTail",
+    "PalomarCorpus.E257.PaperStatementsJ.paper_forced_greedy_unique_support_and_criterion",
+    "PalomarCorpus.E257.PaperStatementsJ.paper_rung_finite_decision",
+    "PalomarCorpus.E257.PaperStatementsN.approx_orbit_induction",
+    "PalomarCorpus.E257.PaperStatementsN.paper_no_ties",
+    "PalomarCorpus.E257.PaperStatementsN.paper_no_ties_skip",
+    "PalomarCorpus.E257.PaperStatementsN.paper_no_ties_take",
+    "PalomarCorpus.E257.PaperStatementsN.paper_one_orbit_stability",
+    "PalomarCorpus.E257.PaperStatementsN.paper_one_sided_finite_decision_boundary",
+    "PalomarCorpus.E257.PaperStatementsN.tailGreedyRemainder_mersenne"
   ],
   "permitted_axioms": [
     "propext",
