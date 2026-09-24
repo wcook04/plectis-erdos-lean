@@ -44,8 +44,7 @@ theorem trig_small (x : ℝ) (hlo : 3 / 14 ≤ x) (hhi : x ≤ 1 / 4) :
     1 / 5 ≤ Real.sin x ∧ Real.sin x ≤ 1 / 4 ∧
       31 / 32 ≤ Real.cos x ∧ Real.cos x ≤ 1 := by
   have hx : 0 < x := by linarith
-  have hx1 : x ≤ 1 := by linarith
-  have hs := Real.sin_gt_sub_cube hx hx1
+  have hs := Real.sin_gt_sub_cube hx
   have hc := Real.one_sub_sq_div_two_le_cos (x := x)
   have h2 := pow_le_pow_left₀ hx.le hhi 2
   have h3 := pow_le_pow_left₀ hx.le hhi 3
@@ -57,8 +56,7 @@ theorem trig_medium (x : ℝ) (hlo : 3 / 7 ≤ x) (hhi : x ≤ 1 / 2) :
     1 / 3 ≤ Real.sin x ∧ Real.sin x ≤ 1 / 2 ∧
       7 / 8 ≤ Real.cos x ∧ Real.cos x ≤ 1 := by
   have hx : 0 < x := by linarith
-  have hx1 : x ≤ 1 := by linarith
-  have hs := Real.sin_gt_sub_cube hx hx1
+  have hs := Real.sin_gt_sub_cube hx
   have hc := Real.one_sub_sq_div_two_le_cos (x := x)
   have h2 := pow_le_pow_left₀ hx.le hhi 2
   have h3 := pow_le_pow_left₀ hx.le hhi 3
@@ -69,7 +67,7 @@ theorem trig_medium (x : ℝ) (hlo : 3 / 7 ≤ x) (hhi : x ≤ 1 / 2) :
 theorem trig_large (x : ℝ) (hlo : 6 / 7 ≤ x) (hhi : x ≤ 1) :
     1 / 2 ≤ Real.sin x ∧ 1 / 2 ≤ Real.cos x := by
   have hx : 0 < x := by linarith
-  have hs := Real.sin_gt_sub_cube hx hhi
+  have hs := Real.sin_gt_sub_cube hx
   have hc := Real.one_sub_sq_div_two_le_cos (x := x)
   have h2 : x ^ 2 ≤ 1 := by nlinarith
   have h3 : x ^ 3 ≤ 1 := by nlinarith
