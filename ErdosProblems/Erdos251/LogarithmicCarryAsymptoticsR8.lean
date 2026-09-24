@@ -173,7 +173,7 @@ theorem baselineSum_bounds (n : ℕ) :
   rw [sum_log_successors] at h1
   simp only [Finset.sum_add_distrib, sum_log_successors, Finset.sum_const,
     Finset.card_range, nsmul_eq_mul] at h2
-  exact ⟨h1, by simpa only [mul_comm] using h2⟩
+  exact ⟨h1, by simpa only [baselineSum, mul_comm] using h2⟩
 
 /-- A coarse factorial bound is sufficient; no sharp Stirling error is used. -/
 theorem log_factorial_bounds (n : ℕ) (hn : 1 ≤ n) :
