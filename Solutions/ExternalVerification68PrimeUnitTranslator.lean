@@ -174,17 +174,6 @@ theorem exists_remote_factorialGrid_primeTranslator_reduction
               (factorialGridIndex n (B + 1))) p z)
           (appendPrimeTranslatorIndex
             (factorialGridIndex n (B + 1)) p)| ≤ (1 : ℝ) / 2 := by
-  simpa [factorialMoment, channelNumerator, primeTranslatorCoeff,
-    primeTranslatorIndex, channelResidual, channelResidualTerm,
-    appendPrimeTranslatorCoeff, appendPrimeTranslatorIndex,
-    augmentedChannelMomentMatrix, cramerChannelKernelCoeff,
-    factorialGridScale, factorialGridIndex,
-    Erdos68.factorialMoment, Erdos68.channelNumerator,
-    Erdos68.primeTranslatorCoeff, Erdos68.primeTranslatorIndex,
-    Erdos68.channelResidual, Erdos68.channelResidualTerm,
-    Erdos68.appendPrimeTranslatorCoeff, Erdos68.appendPrimeTranslatorIndex,
-    Erdos68.augmentedChannelMomentMatrix, Erdos68.cramerChannelKernelCoeff,
-    Erdos68.factorialGridScale, Erdos68.factorialGridIndex] using
-    Erdos68.exists_remote_factorialGrid_primeTranslator_reduction n B
+  exact Erdos68.exists_remote_factorialGrid_primeTranslator_reduction n B
 
 end Erdos249257.ExternalVerification68PrimeUnitTranslator
