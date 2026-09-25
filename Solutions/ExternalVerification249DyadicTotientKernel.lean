@@ -56,27 +56,12 @@ theorem dyadicTotientKernelOddCoreBasisAndFiniteRanks :
             (Submodule.span ℚ
               (Set.range (totientKernelThroughLevelFamily e))) = 2 ^ e + 1 := by
   refine ⟨?_, ?_, ?_⟩
-  · simpa [oddCoreTotientKernelFamily, totientKernelSeq,
-      Erdos257PeriodNoncollapse.oddCoreTotientKernelFamily,
-      Erdos257PeriodNoncollapse.totientKernelSeq] using
-      Erdos257PeriodNoncollapse.linearIndependent_oddCoreTotientKernelFamily
-  · simpa [fullTotientKernelFamily, oddCoreTotientKernelFamily,
-      totientKernelSeq, Erdos257PeriodNoncollapse.fullTotientKernelFamily,
-      Erdos257PeriodNoncollapse.oddCoreTotientKernelFamily,
-      Erdos257PeriodNoncollapse.totientKernelSeq] using
-      Erdos257PeriodNoncollapse.span_range_fullTotientKernel_eq_span_range_oddCore
+  · exact Erdos257PeriodNoncollapse.linearIndependent_oddCoreTotientKernelFamily
+  · exact Erdos257PeriodNoncollapse.span_range_fullTotientKernel_eq_span_range_oddCore
   · intro e he
     constructor
-    · simpa [totientKernelThroughLevelFamily,
-        canonicalTotientKernelFamily, totientKernelSeq,
-        Erdos257PeriodNoncollapse.totientKernelThroughLevelFamily,
-        Erdos257PeriodNoncollapse.canonicalTotientKernelFamily,
-        Erdos257PeriodNoncollapse.totientKernelSeq] using
-        Erdos257PeriodNoncollapse.span_totientKernelThroughLevelFamily_eq_canonical
-          e he
-    · simpa [totientKernelThroughLevelFamily, totientKernelSeq,
-        Erdos257PeriodNoncollapse.totientKernelThroughLevelFamily,
-        Erdos257PeriodNoncollapse.totientKernelSeq] using
-        Erdos257PeriodNoncollapse.finrank_totientKernelThroughLevelFamily_eq e he
+    · exact Erdos257PeriodNoncollapse.span_totientKernelThroughLevelFamily_eq_canonical
+        e he
+    · exact Erdos257PeriodNoncollapse.finrank_totientKernelThroughLevelFamily_eq e he
 
 end Erdos249257.ExternalVerification249DyadicTotientKernel
