@@ -31,16 +31,23 @@ theorem det_mul_rectangular
     (M : Matrix ι κ R) (N : Matrix κ ι R) :
     Matrix.det (M * N) =
       ∑ p : ι → κ, Matrix.det (fun i j ↦ M i (p j)) * ∏ i, N (p i) i := by
-  simp only [Matrix.det_apply', Matrix.mul_apply, Finset.prod_univ_sum,
-    Finset.mul_sum, Fintype.piFinset_univ]
-  rw [Finset.sum_comm]
-  congr 1
-  funext p
-  rw [Finset.sum_mul]
-  congr 1
-  funext σ
-  rw [Finset.prod_mul_distrib]
-  ring
+  calc
+    Matrix.det (M * N) =
+        ∑ p : ι → κ, ∑ σ : Equiv.Perm ι,
+          (((Equiv.Perm.sign σ : ℤ) : R) *
+            ∏ i, M (σ i) (p i) * N (p i) i) := by
+      simp only [Matrix.det_apply', Matrix.mul_apply, Finset.prod_univ_sum,
+        Finset.mul_sum, Fintype.piFinset_univ]
+      rw [Finset.sum_comm]
+    _ = _ := by
+      apply Finset.sum_congr rfl
+      intro p _
+      have hdet := Matrix.det_apply' (fun i j ↦ M i (p j))
+      rw [hdet, Finset.sum_mul]
+      apply Finset.sum_congr rfl
+      intro σ _
+      rw [Finset.prod_mul_distrib]
+      ring
 
 /-- A finite signed moment matrix on an arbitrary finite atom type.  Here `w`
 is the full atom mass (for the target application, `w N = a N * x N`). -/
