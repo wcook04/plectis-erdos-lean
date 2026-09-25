@@ -151,12 +151,17 @@ def main() -> int:
             args.out_dir.mkdir(parents=True, exist_ok=True)
             receipt_path = args.out_dir / 'audit-receipt.json'
             payload_path = args.out_dir / 'palomar-axiom-audit.json'
+            diagnostics_path = args.out_dir / 'diagnostics.log'
             receipt = {'schema': AUDIT_SCHEMA, 'status': 'running', 'source': plan['source'],
                        'plan_sha256': plan['plan_sha256'], 'payload_sha256': None}
             save_report(receipt_path, receipt)
             with payload_path.open('w', encoding='utf-8') as output:
                 result = subprocess.run([sys.executable, 'scripts/check_axiom_budget.py',
-                                         '--run-palomar', '--json'], stdout=output, check=False)
+                                         '--run-palomar', '--json'], stdout=output,
+                                        stderr=subprocess.PIPE, text=True, check=False)
+            diagnostics_path.write_text(result.stderr, encoding='utf-8')
+            if result.stderr:
+                print(result.stderr, file=sys.stderr, end='')
             try:
                 json.loads(payload_path.read_text(encoding='utf-8'))
                 valid_json = True
@@ -165,6 +170,7 @@ def main() -> int:
             receipt['status'] = 'pass' if result.returncode == 0 and valid_json else 'fail'
             receipt['returncode'] = result.returncode
             receipt['payload_sha256'] = file_digest(payload_path)
+            receipt['diagnostics_sha256'] = file_digest(diagnostics_path)
             save_report(receipt_path, receipt)
             return 0 if receipt['status'] == 'pass' else 1
         issues = check_coverage(plan, args.artifacts)

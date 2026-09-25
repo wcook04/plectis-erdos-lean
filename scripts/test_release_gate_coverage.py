@@ -6,6 +6,9 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
+import subprocess
+import sys
 
 import release_gate_coverage as gate
 
@@ -83,6 +86,20 @@ class ReleaseGateCoverageTests(unittest.TestCase):
         issues = gate.check_coverage(self.plan, self.artifacts)
         self.assertIn('target population mismatch: targets-2', issues)
         self.assertIn('missing or invalid publication axiom audit', issues)
+
+    def test_failed_audit_keeps_diagnostics_in_artifact(self):
+        out_dir = self.artifacts / 'audit'
+        argv = ['release_gate_coverage.py', 'audit', '--plan', 'unused',
+                '--out-dir', str(out_dir)]
+        failed = subprocess.CompletedProcess([], 1, stderr='E68 proof failure\n')
+        with patch.object(sys, 'argv', argv), patch.object(gate, 'load_plan', return_value=self.plan), \
+                patch.object(gate.subprocess, 'run', return_value=failed):
+            self.assertEqual(gate.main(), 1)
+        receipt = json.loads((out_dir / 'audit-receipt.json').read_text())
+        diagnostics = (out_dir / 'diagnostics.log').read_bytes()
+        self.assertEqual(receipt['status'], 'fail')
+        self.assertEqual(diagnostics, b'E68 proof failure\n')
+        self.assertEqual(receipt['diagnostics_sha256'], hashlib.sha256(diagnostics).hexdigest())
 
 
 if __name__ == '__main__':
