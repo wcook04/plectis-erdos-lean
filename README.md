@@ -15,13 +15,22 @@ Problems covered: #68, #243, #249, #251, #257, #269, #1041, #1049.
 
 ## Palomar publication surface
 
-Palomar (https://palomar-registry.org) registers machine-checked Lean proofs after an
-independent mechanical verification (Comparator, kernel replay through NanoDa) and an
-automated editorial review. This repository publishes eight problem-level entries, one
-Comparator configuration per Erdős problem, all at the same commit, with the Lake project
-root selected. Each `PalomarCorpus/E{n}/Challenge.lean` imports only Mathlib and states the
-selected theorems with documented definitions; `Solutions.PalomarCorpus.E{n}` supplies the
-proofs. The parent problems remain open; no entry claims a solution of one.
+Palomar (https://palomar-registry.org) checks Lean proofs with Comparator and independent
+kernel replay before editorial review. `PalomarCorpus/` is the live paper-order checking
+inventory. At this `main` commit it contains 143 entries and 1,889 selected theorem names,
+as counted below. Each entry has its own Comparator configuration; its Challenge states
+the selected theorems against Mathlib, and its Solution supplies the proofs.
+
+The finite release is a separate selection of eight configurations and 95 theorem names
+at three pinned source commits. `E257_01` uses `b85ed30805188eb4390a686b111294b24363418e`;
+six entries (`E249_29`, `E243_01`, `E251_01`, `E269_02`, `E1049_01`, `E1041_01`) use
+`6bc4913c4ca42ac48829ad2d89985f8516361cb5` in [draft release PR #5](https://github.com/wcook04/plectis-erdos-lean/pull/5);
+and `E68_05` uses `dc779af057dbab4224ac4f0cc101384f340fabc2`, whose
+[caller-side preflight passed](https://github.com/wcook04/plectis-erdos-lean/actions/runs/36019608937).
+Caller-side full preflights passed for those eight exact configurations and commits.
+Those passes do not certify the whole live inventory. Current `main` uses Lean 4.30.0;
+the pinned release snapshots use Lean 4.35.0-rc2. No entry claims to solve an
+unrestricted parent problem.
 
 <!-- palomar-entry-table:begin (generated; do not edit by hand) -->
 The Palomar entries are packed in the order the papers state their theorems; [`PalomarCorpus/README.md`](PalomarCorpus/README.md) lists every entry with its theorem count and title.
@@ -38,28 +47,21 @@ The Palomar entries are packed in the order the papers state their theorems; [`P
 | #1049 | `E1049_01` to `E1049_10` | 117 |
 | Total | 143 entries | 1889 |
 
-The problem-level entry `E257` of the previous layout was submitted to Palomar on 13 September 2026 at commit `52f29ad1` (submission `impkvgnxmpb7`). Its mechanical verification passed ([run 34784800531](https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/34784800531)); Palomar's render stage then failed on a known renderer defect ([PalomarSubmission #134](https://github.com/PalomarRegistry/PalomarSubmission/issues/134)), and the submission settled as `verification-error` on 14 September 2026. No entry of the present layout has been submitted.
+The former problem-level `E257` submission at commit `52f29ad1` settled as `verification-error` on 14 September 2026 after a renderer failure ([PalomarSubmission #134](https://github.com/PalomarRegistry/PalomarSubmission/issues/134)). In the paper-order layout, `E257_01` at commit `b85ed30805188eb4390a686b111294b24363418e` passed [caller-side preflight](https://github.com/wcook04/plectis-erdos-lean/actions/runs/36007327582) and [Palomar's mechanical verification](https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/36009433226). Its editorial review reached `review-ready`, and a registration request for that review was accepted on 24 September 2026. At the last successful status check, 25 September 2026 at 00:28 UTC, no registered ID, version, or public URL had been confirmed. The other selected entries have their own preparation evidence; this paragraph makes no registration claim for them.
 <!-- palomar-entry-table:end -->
 
-The workflow [`palomar-replay.yml`](.github/workflows/palomar-replay.yml) replays Palomar's
-mechanical stage on Linux with the verifier's pinned Comparator, lean4export, landrun and
-NanoDa revisions, and the release gate prints the axioms of every selected theorem
-(`scripts/check_axiom_budget.py --run-palomar`). A green replay is our own evidence, not a
-Palomar verdict; the status column records what Palomar itself has done with each entry.
-The same workflow replays Palomar's render-stage core-notation audit at the pinned renderer
-commit as a report-only step. At `ef2fa1ea` that audit rejects seven of the eight entries: it
-kernel-rechecks copied theorem types in an environment where every Mathlib definition is opaque,
-so `FunLike`, `SmallCategory` and instance diamonds fail. The E257 render (run 34786515414) failed
-this way after mechanical verification passed; [PalomarSubmission pull request 137](https://github.com/PalomarRegistry/PalomarSubmission/pull/137) carries the fix, under which all
-eight entries print, and the E257 review waits on it.
-Family `ExternalVerification*` directories are internal regression inventory, not registry entries.
+The workflow [`palomar-replay.yml`](.github/workflows/palomar-replay.yml) and
+`scripts/check_axiom_budget.py --run-palomar` provide caller-side checks for the source
+commit they run on. A passing caller replay is separate from a Palomar verification or
+registration. The former problem-level E257 submission and the current `E257_01` outcome
+are distinguished below. The `ExternalVerification*` directories are regression and
+development entries, separate from `PalomarCorpus/`.
 
 ## Start here
 
-The per-problem sections below describe the `ExternalVerification*` family entries, the
-internal regression inventory, and each names its own configuration. The Palomar entries
-are the eight `PalomarCorpus/E{n}` configurations listed above; their theorem counts are
-larger and are the counts a registry submission names.
+The per-problem sections below introduce selected `ExternalVerification*` family checks.
+The table above counts the current Palomar corpus; a registry submission names one
+configuration and one exact source commit.
 
 ### Erdős #257: irrationality for every reciprocal-summable support and every integer base
 
@@ -67,7 +69,7 @@ For every integer base b at least two and every infinite set A of exponents whos
 
 Boundary. The compared result states that every infinite reciprocal-summable support A gives an irrational reciprocal-power subseries at every integer base at least two. The zero exponent is normalized to zero by real division. No pairwise-coprimality, periodicity, density, or powerful-support hypothesis is assumed. Challenge.lean contains the deliberate Comparator specification sorry; the proof-bearing Solution.lean and its imported source theorem are sorry-free. The atom comparison and close-return producer are subordinate proof mechanisms rather than extra results.
 
-Source: [`ExternalVerification257ReciprocalSupport/`](ExternalVerification257ReciprocalSupport/), configuration `ExternalVerification257ReciprocalSupport/comparator.json`. One declaration is compared in that family entry; the Palomar entry [`PalomarCorpus/E257`](PalomarCorpus/E257/) compares the same theorem together with 49 others.
+Source: [`ExternalVerification257ReciprocalSupport/`](ExternalVerification257ReciprocalSupport/), configuration `ExternalVerification257ReciprocalSupport/comparator.json`. One declaration is compared in that family entry; the live paper-order entry [`PalomarCorpus/E257_51`](PalomarCorpus/E257_51/) selects it with thirteen other names.
 
 ### Erdős #251: kernel-decided denominator floor for the prime-gap dyadic series
 
@@ -115,7 +117,7 @@ Clearing denominators in the rational case of Erdős Problem 243 produces an exa
 
 Boundary. In the `ExternalVerification243BoundedNegativePartRigidity` entry, one compared theorem packages eventual zero centred defect and the eventual exact Sylvester recurrence under the bounded-negative hypotheses, and its Challenge.lean has one intentional Comparator specification sorry. Its Solution.lean and the imported source are sorry-free.
 
-Source: [`ExternalVerification243BoundedNegativePartRigidity/`](ExternalVerification243BoundedNegativePartRigidity/), configuration `ExternalVerification243BoundedNegativePartRigidity/comparator.json`. One theorem is compared in that family entry; the Palomar entry [`PalomarCorpus/E243`](PalomarCorpus/E243/) compares the same theorem together with 27 others.
+Source: [`ExternalVerification243BoundedNegativePartRigidity/`](ExternalVerification243BoundedNegativePartRigidity/), configuration `ExternalVerification243BoundedNegativePartRigidity/comparator.json`. One theorem is compared in that family entry; the live paper-order entry [`PalomarCorpus/E243_10`](PalomarCorpus/E243_10/) selects it with fifteen other names.
 
 ### Erdős #1041: global two-root critical proximity and exact straight-line obstructions
 
@@ -125,7 +127,7 @@ Boundary. Nine compared theorems expose the scale-sensitive critical metric sele
 
 Source: [`ExternalVerification1041CriticalGeometry/`](ExternalVerification1041CriticalGeometry/), configuration `ExternalVerification1041CriticalGeometry/comparator.json`.
 
-## Every entry in this release
+## Featured regression families
 
 | Problem | Result | Entry |
 | --- | --- | --- |
@@ -170,17 +172,17 @@ Source: [`ExternalVerification1041CriticalGeometry/`](ExternalVerification1041Cr
 
 ## Reading an entry
 
-A Palomar entry `PalomarCorpus/E{n}` is four files: `Challenge.lean`, `comparator.json`
-and `formalization.yaml` in its directory, and its Solution `Solutions/PalomarCorpus/E{n}.lean`
-with the adapters under `Solutions/PalomarCorpus/E{n}/`. Among the adapters,
+A paper-order Palomar entry `PalomarCorpus/E<problem>_<NN>` has `Challenge.lean`,
+`AxiomAudit.lean`, `comparator.json` and `formalization.yaml` in its directory, and
+its Solution `Solutions/PalomarCorpus/E<problem>_<NN>.lean` with adapters under the
+matching Solution directory. Among the adapters,
 `Statement.lean` is the Challenge minus its theorems, generated from it and compiled
 against Mathlib alone; the other adapters import it instead of re-declaring any
 definition, so the constants Comparator walks from each compared statement are the
 same on both sides. Its axiom audit is supplied by
 `scripts/check_axiom_budget.py --run-palomar`, which the release gate runs. The per-problem
-sections above and the table below describe the `ExternalVerification*` family entries, the
-internal regression inventory; their theorem counts are not the counts of the
-`PalomarCorpus/E{n}` configurations.
+sections above and the family table describe `ExternalVerification*` entries; their
+theorem counts are separate from the paper-order Palomar entries.
 
 Each `ExternalVerification*` entry is five files: four in its directory and its Solution under `Solutions/`.
 
