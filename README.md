@@ -180,7 +180,14 @@ matching Solution directory. Among the adapters,
 against Mathlib alone; the other adapters import it instead of re-declaring any
 definition, so the constants Comparator walks from each compared statement are the
 same on both sides. Its axiom audit is supplied by
-`scripts/check_axiom_budget.py --run-palomar`, which the release gate runs. The per-problem
+`scripts/check_axiom_budget.py --run-palomar`, which the release gate runs. The
+audit rebuilds each Solution import closure with Lake before checking axioms. On
+failure, the `release-axiom-audit` CI artifact keeps `diagnostics.log` alongside
+its source-bound failure receipt, so proof errors remain available while the
+other release shards are still running. When a Solution adapter's copied
+statement is definitionally equal to its source theorem, use direct `exact`
+transport: unfolding recursive definitions in a broad `simpa` can leave
+deprecated recursor aliases in incompatible normal forms. The per-problem
 sections above and the family table describe `ExternalVerification*` entries; their
 theorem counts are separate from the paper-order Palomar entries.
 
