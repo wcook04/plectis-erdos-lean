@@ -670,7 +670,7 @@ theorem integral_tailDiff_has_endpointSurvivor
     omega
   · have hreset := carryOrbit_modEq_neg_windowDiscrepancy h N d L
     have hneg := hreset.neg
-    simpa using hneg
+    simpa only [Int.ModEq, neg_neg] using hneg
 
 /-! ## Exact infinite carry-lock classification -/
 
@@ -713,7 +713,7 @@ theorem tail_diff_mem_int_of_boundedTailCarry
     omega
   · have hreset := carryOrbit_modEq_neg_windowDiscrepancy h N d L
     have hneg := hreset.neg
-    simpa using hneg
+    simpa only [Int.ModEq, neg_neg] using hneg
 
 /-- **Exact edge-lock classification.**  A shifted totient-tail difference is
 an integer iff some integer launch of the affine carry recurrence remains
@@ -786,7 +786,7 @@ theorem tail_diff_notMem_int_of_directedCertifiedKill
   let r : ℤ := windowDiscrepancy h N L % P
   have hymod : y % P = r := by
     have hneg := hzmod.neg
-    simpa [y, P, r] using hneg
+    simpa only [Int.ModEq, neg_neg, y, P, r] using hneg
   have hbounds := tail_diff_directed_bounds h (N + L)
   rw [← hz] at hbounds
   have hzlo : -(N + L + 2 : ℤ) < z := by

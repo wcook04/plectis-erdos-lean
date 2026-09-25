@@ -14,16 +14,8 @@ theorem finite_period_noncollapse_rat_den
     (hF : F.Nonempty) (h0 : 0 ∉ F) (hb : 2 ≤ b) :
     ∃ hcop : Nat.Coprime b (finiteErdosSum F b).den,
       orderOf (ZMod.unitOfCoprime b hcop) = F.lcm id := by
-  have hcop : Nat.Coprime b (finiteErdosSum F b).den := by
-    simpa [finiteErdosSum,
-      Erdos257PeriodNoncollapse.finiteErdosSum] using
-      Erdos257PeriodNoncollapse.coprime_base_den_finiteErdosSum
-        F b h0 hb
-  refine ⟨hcop, ?_⟩
-  simpa [finiteErdosSum,
-      Erdos257PeriodNoncollapse.finiteErdosSum] using
-      Erdos257PeriodNoncollapse.finite_period_noncollapse_rat_den
-        F b hF h0 hb
+  exact ⟨Erdos257PeriodNoncollapse.coprime_base_den_finiteErdosSum F b h0 hb,
+    Erdos257PeriodNoncollapse.finite_period_noncollapse_rat_den F b hF h0 hb⟩
 
 theorem lcm_lt_den_finiteErdosSum
     (F : Finset ℕ) (b : ℕ)
