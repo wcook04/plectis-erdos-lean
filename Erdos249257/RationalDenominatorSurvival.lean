@@ -58,7 +58,7 @@ theorem survivingDivisor_dvd_scaled_divInt_den
   have hCga : Nat.Coprime (C / g) a.natAbs := hcop.of_dvd_left hCgC
   have hCgnum :
       Nat.Coprime (C / g) (((h / g : ℕ) : ℤ) * a).natAbs := by
-    simpa [Int.natAbs_mul] using hCghg.mul_right hCga
+    simpa only [Int.natAbs_mul, Int.natAbs_natCast] using hCghg.mul_right hCga
   have hhEq : (h : ℤ) = (g : ℤ) * ((h / g : ℕ) : ℤ) := by
     exact_mod_cast (Nat.mul_div_cancel' hgh).symm
   have hDEq : (D : ℤ) = (g : ℤ) * ((D / g : ℕ) : ℤ) := by

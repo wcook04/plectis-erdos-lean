@@ -257,7 +257,7 @@ private theorem subgroupSum_mul_prime_at_prime
 private theorem subgroupSum_mul_cyclicModulus
     {a p : ℕ} (hp : p.Prime) :
     subgroupSum (p * a) p * cyclicModulus a = cyclicModulus (p * a) := by
-  simpa [hp.ne_zero] using
+  simpa [cyclicModulus, hp.ne_zero] using
     (subgroupSum_mul_X_pow_sub_one (r := p * a) (q := p)
       (dvd_mul_right p a))
 

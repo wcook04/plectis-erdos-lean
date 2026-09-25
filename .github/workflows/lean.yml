@@ -32,6 +32,8 @@ jobs:
     timeout-minutes: 330
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Test sequential target reporting
+        run: python3 -m unittest discover -s scripts -p 'test_build_launch_targets.py' -v
       # Every run used to rebuild the whole project from nothing. The newest
       # corpus build is restored first, so Lake rebuilds only modules whose
       # inputs changed.
@@ -49,21 +51,7 @@ jobs:
       - name: Build launch entries sequentially
         env:
           LEAN_NUM_THREADS: "1"
-        run: |
-          set -euo pipefail
-          python3 - <<'PY'
-          import re
-          import subprocess
-
-          text = open("lakefile.toml", encoding="utf-8").read()
-          match = re.search(r'defaultTargets\s*=\s*\[(.*?)\]', text, re.S)
-          if not match:
-              raise SystemExit("defaultTargets not found in lakefile.toml")
-          targets = re.findall(r'"([^"]+)"', match.group(1))
-          for target in targets:
-              print(f"=== lake build {target} ===", flush=True)
-              subprocess.run(["lake", "build", target], check=True)
-          PY
+        run: python3 scripts/build_launch_targets.py
       # Saved even when the build fails or is cancelled: Lake treats a module
       # as built only once its trace is written after its outputs, so a
       # partial build is a valid head start for the next run.

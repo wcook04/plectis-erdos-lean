@@ -35,7 +35,7 @@ theorem sum_le_card_sub_one_add_prod
         have hP0 : 0 ≤ ∏ i ∈ S, x i :=
           Finset.prod_nonneg fun i hi => hx0 i (Finset.mem_insert_of_mem hi)
         have hP1 : ∏ i ∈ S, x i ≤ 1 :=
-          Finset.prod_le_one
+          Finset.prod_le_one₀
             (fun i hi => hx0 i (Finset.mem_insert_of_mem hi))
             (fun i hi => hx1 i (Finset.mem_insert_of_mem hi))
         have hxa0 : 0 ≤ x a := hx0 a (Finset.mem_insert_self _ _)
