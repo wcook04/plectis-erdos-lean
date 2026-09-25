@@ -39,12 +39,15 @@ def save_report(path: Path, report: dict) -> None:
 
 
 def build_targets(targets: Sequence[str], report_path: Path,
-                  run: Callable = subprocess.run) -> int:
+                  run: Callable = subprocess.run,
+                  metadata: dict | None = None) -> int:
     if not targets:
         raise ValueError('refusing an empty target replay')
     rows = [{'target': target, 'status': 'not-attempted', 'returncode': None}
             for target in targets]
     report = {'schema_version': 1, 'status': 'running', 'targets': rows}
+    if metadata is not None:
+        report['release_gate'] = metadata
     save_report(report_path, report)
     interrupted = False
     for row in rows:

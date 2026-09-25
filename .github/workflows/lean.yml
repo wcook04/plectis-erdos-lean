@@ -52,6 +52,13 @@ jobs:
         env:
           LEAN_NUM_THREADS: "1"
         run: python3 scripts/build_launch_targets.py
+      - name: Preserve the incremental target report
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: lean-convenience-target-report
+          path: .lake/convenience-target-report.json
+          if-no-files-found: warn
       # Saved even when the build fails or is cancelled: Lake treats a module
       # as built only once its trace is written after its outputs, so a
       # partial build is a valid head start for the next run.

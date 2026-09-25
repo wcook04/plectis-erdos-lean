@@ -14,6 +14,12 @@ import check_axiom_budget as axioms
 
 
 class ReleaseToolsTests(unittest.TestCase):
+    def test_release_gate_rejects_an_unpinned_added_action(self):
+        pinned = 'actions/checkout@' + 'a' * 40
+        workflow = f'      - uses: {pinned}\n      - uses: actions/download-artifact@v4\n'
+        self.assertEqual(snapshot._unpinned_workflow_actions(workflow),
+                         (2, ['actions/download-artifact@v4']))
+
     def test_publication_inventory_is_every_paper_order_entry_and_refuses_a_stray(self):
         with tempfile.TemporaryDirectory() as tmp, patch.object(axioms, "REPO_ROOT", Path(tmp)):
             root = Path(tmp)
