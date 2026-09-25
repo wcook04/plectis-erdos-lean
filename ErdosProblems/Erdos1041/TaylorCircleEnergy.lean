@@ -70,7 +70,7 @@ theorem hasSum_cauchy_circle_product {g : ℂ → ℂ} {R : ℝ≥0}
     have hgz : HasSum (fun n : ℕ => a n * z ^ n) (g z) :=
       hasSum_cauchy_on_unit_circle hg hR hz'
     have hcgz : HasSum (fun n : ℕ => conj (a n * z ^ n)) (conj (g z)) := by
-      simpa only [Complex.conjCLE_apply] using
+      simpa using
         Complex.conjCLE.toContinuousLinearMap.hasSum hgz
     have hn : Summable (fun n : ℕ => ‖a n * z ^ n‖) := by
       simpa only [norm_mul, norm_pow, hz1, one_pow, mul_one] using ha

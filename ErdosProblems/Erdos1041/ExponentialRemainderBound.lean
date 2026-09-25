@@ -38,7 +38,8 @@ theorem exp_eq_one_add_add_sq_remainder (t : ℝ) :
   let F : ℝ → ℝ := fun s => ((t * (1 - s) + 1) * Real.exp (s * t)) / t ^ 2
   have hF (s : ℝ) : HasDerivAt F ((1 - s) * Real.exp (s * t)) s := by
     have hp : HasDerivAt (fun x : ℝ => t * (1 - x) + 1) (-t) s := by
-      convert (((hasDerivAt_const s 1).sub (hasDerivAt_id s)).const_mul t).add_const 1 using 1 <;> ring
+      convert (((hasDerivAt_const s 1).sub (hasDerivAt_id s)).const_mul t).add_const 1 using 1 <;>
+        (try funext x) <;> simp [Pi.sub_apply] <;> ring
     have he : HasDerivAt (fun x : ℝ => Real.exp (x * t)) (Real.exp (s * t) * t) s := by
       simpa using ((hasDerivAt_id s).mul_const t).exp
     convert ((hp.mul he).div_const (t ^ 2)) using 1 <;>

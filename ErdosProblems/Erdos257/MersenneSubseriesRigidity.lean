@@ -255,6 +255,8 @@ theorem supportedMersenneAchievementSet_insert
         simpa [c, Function.update, hik] using b.2 i hiJ
       refine ⟨⟨c, hc⟩, ?_⟩
       have h := positiveMersenneDigitValue_update b.1 k 1
+      change positiveMersenneDigitValue c =
+        mersenneWeight (k + 1) + positiveMersenneDigitValue b.1
       simpa [c, hbk] using h
 
 /-- The two faces in the one-coordinate split are disjoint.  This is exactly
