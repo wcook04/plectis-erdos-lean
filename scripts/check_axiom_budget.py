@@ -17,13 +17,15 @@ entry's declared budget.
 Exit 0 when every compared declaration was printed and no printed axiom is
 outside its budget. Exit 1 otherwise, naming what is missing or over budget.
 
-The evidence is the log. This script does not run Lean, and a log from a
+For ``--log``, the evidence is the log. This mode does not run Lean, and a log from a
 different commit proves nothing about this one. ``--expect-commit`` checks
 that the *checkout* whose comparator.json files are read is the commit you
 mean; it cannot establish which commit produced a supplied log, so a
 ``--log`` report carries ``source_binding.mode = "log_only"`` and names the
-checkout it was parsed in. Only ``--run-palomar`` binds the audit to the
-source bytes it actually ran on.
+checkout it was parsed in. ``--run-palomar`` uses ``lake lean`` on each audit
+file, so Lake builds its Solution import closure from the current checkout
+before Lean queries the axioms. Its before/after source fingerprint also
+rejects a checkout changed during the audit.
 """
 
 from __future__ import annotations
@@ -128,7 +130,7 @@ def source_identity() -> dict:
 
 
 def run_palomar_audits(entry_paths: list[str]) -> tuple[str, dict]:
-    """Inspect each built Solution environment separately from its Challenge."""
+    """Build and inspect each Solution environment separately from its Challenge."""
     before = source_identity()
     outputs = []
     seen = set()
@@ -153,7 +155,10 @@ def run_palomar_audits(entry_paths: list[str]) -> tuple[str, dict]:
             audit = Path(directory) / f"{problem}.lean"
             audit.write_text("import " + config["solution_module"] + "\n\n"
                              + "\n".join("#print axioms " + name for name in names) + "\n")
-            result = subprocess.run(["lake", "env", "lean", str(audit)], cwd=REPO_ROOT,
+            # `lake env lean` only imports whatever .olean is already present.
+            # `lake lean` first builds this file's imports, including the current
+            # Solution proof, so a cold or stale cache cannot supply the verdict.
+            result = subprocess.run(["lake", "lean", str(audit)], cwd=REPO_ROOT,
                                     text=True, capture_output=True, timeout=600)
             if result.returncode:
                 raise RuntimeError(f"Solution audit failed for {entry}:\n{result.stdout}\n{result.stderr}")
