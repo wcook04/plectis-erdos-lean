@@ -661,7 +661,17 @@ theorem sin_enclosure {x lo hi : ℝ} (h0 : 0 ≤ lo) (hlo : lo ≤ x) (hhi : x 
   have h3 : x ^ 3 ≤ hi ^ 3 := pow_le_pow_left₀ hx0 hhi 3
   have h3' : lo ^ 3 ≤ x ^ 3 := pow_le_pow_left₀ h0 hlo 3
   have h4 : x ^ 4 ≤ hi ^ 4 := pow_le_pow_left₀ hx0 hhi 4
-  exact ⟨by nlinarith [hb.1], by nlinarith [hb.2]⟩
+  have h5 : x ^ 5 ≤ hi ^ 4 := by
+    calc
+      x ^ 5 = x ^ 4 * x := by ring
+      _ ≤ x ^ 4 * 1 := mul_le_mul_of_nonneg_left (le_trans hhi h1) (pow_nonneg hx0 4)
+      _ = x ^ 4 := by ring
+      _ ≤ hi ^ 4 := h4
+  have herror : x ^ 5 / 100 ≤ hi ^ 4 * (5 / 96) := by
+    have hhi4 : 0 ≤ hi ^ 4 := pow_nonneg (le_trans hx0 hhi) 4
+    nlinarith only [h5, hhi4]
+  exact ⟨by linarith only [hb.1, herror, h3, hlo],
+    by linarith only [hb.2, herror, h3', hhi]⟩
 
 theorem pi_div7_lo : (3141592 / 7000000 : ℝ) ≤ Real.pi / 7 := by
   have h := Real.pi_gt_d6

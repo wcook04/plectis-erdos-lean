@@ -1,6 +1,7 @@
 import Erdos249257.BooleanMobiusCarry
 import Mathlib.Analysis.Normed.Group.Tannery
 import Mathlib.Analysis.Asymptotics.SpecificAsymptotics
+import Mathlib.Data.ZMod.Units
 
 /-!
 # Rational support, doubling residues, and reciprocal mass
@@ -105,7 +106,7 @@ theorem doublingResidue_add_period
     doublingResidue p v (n + h) = doublingResidue p v n := by
   have hmod := hperiod.2.mul_left (p * 2 ^ n)
   unfold doublingResidue
-  simpa [pow_add, mul_assoc] using hmod
+  simpa [Nat.ModEq, pow_add, mul_assoc] using hmod
 
 /-- Shifting the tail index multiplies the starting numerator by the same
 power of two. -/
@@ -1785,7 +1786,8 @@ theorem tendsto_cesaroMean_shift
     Tendsto (cesaroMean (fun n : ℕ => x (c + n))) atTop (nhds limit) := by
   have hshift :
       Tendsto (fun N : ℕ => cesaroMean x (c + N)) atTop (nhds limit) := by
-    simpa [add_comm] using hlimit.comp (tendsto_add_atTop_nat c)
+    simpa only [Function.comp_def, Nat.add_comm] using
+      hlimit.comp (tendsto_add_atTop_nat c)
   have hratio :
       Tendsto (fun N : ℕ => ((c + N : ℕ) : ℝ) / (N : ℝ))
         atTop (nhds 1) := by

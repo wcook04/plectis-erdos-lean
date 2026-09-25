@@ -106,7 +106,18 @@ theorem paper_two_by_two_fixture :
     threePrimeKernelQ 2 3 5 1 1 0 = 1 / 60 ∧
     (Matrix.det (fun i j : Fin 2 => threePrimeKernelQ 2 3 5 i j 0)) = -(1 / 15 : ℚ) ∧
     (Matrix.det (fun i j : Fin 2 => threePrimeKernelQ 2 3 5 i j 0)) ≠ 0 := by
-  norm_num [Matrix.det_fin_two, threePrimeKernelQ, threePrimeHeight, smooth3Val]
+  have hdet : (Matrix.det (fun i j : Fin 2 => threePrimeKernelQ 2 3 5 i j 0)) =
+      -(1 / 15 : ℚ) := by
+    calc
+      _ = -1 / 15 := kernel_235_minor2_eq_neg_one_fifteen
+      _ = -(1 / 15 : ℚ) := by ring
+  refine ⟨?_, ?_, ?_, ?_, hdet, ?_⟩
+  · norm_num [threePrimeKernelQ, threePrimeHeight, smooth3Val]
+  · norm_num [threePrimeKernelQ, threePrimeHeight, smooth3Val]
+  · norm_num [threePrimeKernelQ, threePrimeHeight, smooth3Val]
+  · norm_num [threePrimeKernelQ, threePrimeHeight, smooth3Val]
+  · rw [hdet]
+    norm_num
 
 /-- Supplemental displayed `res:cube`: both inequalities, for arbitrary bases > 1. -/
 theorem paper_cubic_height_bounds {p q r x : ℕ}

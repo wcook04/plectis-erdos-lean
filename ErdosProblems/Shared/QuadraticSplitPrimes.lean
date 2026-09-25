@@ -35,6 +35,10 @@ open NumberField Polynomial
 
 variable {K M : Type*} [Field K] [NumberField K] [Field M] [NumberField M] [Algebra K M]
 
+private instance infinite_ringOfIntegers (L : Type*) [Field L] [NumberField L] :
+    Infinite (𝓞 L) :=
+  Infinite.of_injective (fun n : ℕ => (n : 𝓞 L)) Nat.cast_injective
+
 /-! ### The quadratic extension `M = K(γ)` -/
 
 omit [NumberField K] [NumberField M] in

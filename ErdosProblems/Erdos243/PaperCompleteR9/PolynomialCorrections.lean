@@ -95,10 +95,12 @@ theorem bad_four_step_block
     (congrArg (Int.castRingHom (ZMod 7)) (hagree 3 (by decide))).trans hc3
   have hs (j : ℕ) (hj : T ≤ j) :
       (u (j + 1) : ZMod 7) + (v j : ZMod 7) = (a j : ZMod 7) * (u j : ZMod 7) := by
-    simpa only [map_add, map_mul] using congrArg (Int.castRingHom (ZMod 7)) (hnum j hj)
+    simpa only [Int.cast_add, Int.cast_mul] using
+      congrArg (fun z : ℤ => (z : ZMod 7)) (hnum j hj)
   have hd (j : ℕ) (hj : T ≤ j) :
       (v (j + 1) : ZMod 7) = (a j : ZMod 7) * (v j : ZMod 7) := by
-    simpa only [map_mul] using congrArg (Int.castRingHom (ZMod 7)) (hden j hj)
+    simpa only [Int.cast_mul] using
+      congrArg (fun z : ℤ => (z : ZMod 7)) (hden j hj)
   have hs0 := hs n hn
   have hs1 := hs (n + 1) (by omega)
   have hs2 := hs (n + 2) (by omega)

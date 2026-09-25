@@ -32,8 +32,7 @@ theorem realPrimeGapTail_eq_tsum_shifted_gaps (N : ℕ) :
     realPrimeGapTail N =
       ∑' k : ℕ, (primeGap0 (N + k + 1) : ℝ) / 2 ^ (k + 1) := by
   have hshift : Summable (fun k => primeGapDyadicTerm (k + (N + 1))) := by
-    simpa [Nat.add_comm] using
-      summable_primeGapDyadicTerm.comp_injective (add_left_injective (N + 1))
+    exact (summable_nat_add_iff (N + 1)).mpr summable_primeGapDyadicTerm
   rw [realPrimeGapTail_eq_scaled_tsum, ← (hshift.hasSum.mul_left (2 ^ (N + 1))).tsum_eq]
   apply tsum_congr
   intro k

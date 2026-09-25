@@ -1090,7 +1090,7 @@ theorem privateQuotient_lcm_eq_privateModulus
       privateModulus base s d := by
   unfold privateModulus
   apply Finset.lcm_eq_prod
-  simpa [privateQuotient, Function.onFun] using
+  exact
     (collisionCore_privateQuotients_pairwise_coprime
       (base := base) (s := s) (d := d) hpos)
 
@@ -1510,7 +1510,7 @@ theorem privateModulus_eq_lcm_div_gcd_collisionCore
       s.lcm d /
         Nat.gcd (s.lcm d) (collisionCore base s d) := by
   rw [← privateQuotient_lcm_eq_privateModulus hpos]
-  simpa [privateQuotient] using
+  exact
     (finset_lcm_div_gcd_right_distrib
       (C := collisionCore base s d)
       (collisionCore_pos hbase hpos) hpos)
@@ -1857,7 +1857,7 @@ theorem projectedResidue_eq_complementary_of_add_modEq_zero
       Z ≡ Q - T % Q [MOD Q] :=
     Nat.ModEq.add_right_cancel' T
       (hmod.trans hcomplement.symm)
-  simpa [projectedResidue, complementaryProjectedResidue] using hZT
+  exact hZT
 
 /-- Least nonnegative private-modulus residue of the displayed endpoint
 numerator.  Under a nontrivial private modulus, coprimality makes it the

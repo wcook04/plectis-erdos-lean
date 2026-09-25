@@ -9,7 +9,7 @@ pp.unicode.fun = true
 [[require]]
 name = "mathlib"
 scope = "leanprover-community"
-rev = "v4.30.0"
+rev = "v4.35.0-rc2"
 
 # The shared machinery of the #249 and #257 programmes, copied verbatim from the paper repository
 # (`plectis-erdos`, `lean/Erdos249257`), where it is the library every downstream file imports. The
@@ -29,7 +29,7 @@ name = "ErdosProblems"
 # The launch root plus the 21 Sep source-port aggregator. The aggregator is a second root so the
 # ported paper-bound source modules resolve as a build target without widening the launch closure;
 # it is deliberately not a default target, so CI's target list is unchanged.
-globs = ["ErdosProblems", "ErdosProblems.SourcePort20260921"]
+globs = ["ErdosProblems", "ErdosProblems.SourcePort20260921", "ErdosProblems.Erdos1041.Counterexample.HausdorffLength"]
 
 [[lean_lib]]
 name = "ExternalVerification68ChannelRadius"
@@ -1270,6 +1270,10 @@ globs = ["ExternalVerification249PaperStatementsO.+"]
 [[lean_lib]]
 name = "ExternalVerification1041PaperStatementsAC"
 globs = ["ExternalVerification1041PaperStatementsAC.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1041PaperStatementsAE"
+globs = ["ExternalVerification1041PaperStatementsAE.+"]
 
 [[lean_lib]]
 name = "ExternalVerification243PaperStructuresV"

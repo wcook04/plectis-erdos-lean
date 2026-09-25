@@ -82,7 +82,7 @@ theorem risingPow_pos {x : ℝ} (hx : 0 < x) (d : ℕ) : 0 < risingPow d x := by
 theorem pow_le_risingPow {x : ℝ} (hx : 0 ≤ x) (d : ℕ) : x ^ d ≤ risingPow d x := by
   have h : x ^ d = ∏ _i ∈ Finset.range d, x := by simp
   rw [h, risingPow]
-  apply Finset.prod_le_prod
+  apply Finset.prod_le_prod₀
   · intro i _; exact hx
   · intro i _; simp
 
@@ -90,7 +90,7 @@ theorem risingPow_le_pow {x : ℝ} (hx : 0 ≤ x) (d : ℕ) :
     risingPow d x ≤ (x + (d : ℝ)) ^ d := by
   have h : (x + (d : ℝ)) ^ d = ∏ _i ∈ Finset.range d, (x + (d : ℝ)) := by simp
   rw [h, risingPow]
-  apply Finset.prod_le_prod
+  apply Finset.prod_le_prod₀
   · intro i _; positivity
   · intro i hi
     simp only [Finset.mem_range] at hi
@@ -117,7 +117,7 @@ theorem rateModel_succ (l : ℝ) (n : ℕ) :
 theorem one_le_rateModel {l : ℝ} (hl : 0 ≤ l) (n : ℕ) : 1 ≤ rateModel l n := by
   calc (1 : ℝ) = ∏ _k ∈ Finset.Ico 1 n, (1 : ℝ) := Finset.prod_const_one.symm
     _ ≤ ∏ k ∈ Finset.Ico 1 n, (1 + l / (k : ℝ)) := by
-        apply Finset.prod_le_prod
+        apply Finset.prod_le_prod₀
         · intro i _; norm_num
         · intro k hk
           simp only [Finset.mem_Ico] at hk
