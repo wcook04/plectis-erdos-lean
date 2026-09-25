@@ -128,7 +128,7 @@ theorem freePointSum_le_of_dominated {m : ℕ} (hm : 0 < m) (c : Fin m → ℂ) 
     have h1 : (∏ k, ‖1 - (starRingEnd ℂ) (c j) * c k‖) ^ ((m : ℝ)⁻¹)
         ≤ (∏ k, (1 - x j * x k)) ^ ((m : ℝ)⁻¹) := by
       refine Real.rpow_le_rpow (Finset.prod_nonneg fun k _ => norm_nonneg _) ?_ (by positivity)
-      exact Finset.prod_le_prod (fun k _ => norm_nonneg _) (fun k _ => hdom j k)
+      exact Finset.prod_le_prod₀ (fun k _ => norm_nonneg _) (fun k _ => hdom j k)
     have h2 := geom_mean_le_arith_mean hm (fun k => 1 - x j * x k) (fun k => hnn j k)
     have h3 : (m : ℝ)⁻¹ * ∑ k, (1 - x j * x k) = 1 - x j * xb := by
       rw [Finset.sum_sub_distrib, Finset.sum_const, Finset.card_univ, Fintype.card_fin,
@@ -178,7 +178,7 @@ theorem prod_le_one_of_centred {m : ℕ} (x : Fin m → ℝ) (hx : ∀ j, |x j| 
     have := mul_le_one_of_abs_le_one (hx j) (hx k); linarith
   have hstep : ∏ k ∈ Finset.univ.erase j, (1 - x j * x k)
       ≤ ∏ k ∈ Finset.univ.erase j, Real.exp (-(x j * x k)) := by
-    refine Finset.prod_le_prod (fun k _ => hnn k) (fun k _ => ?_)
+    refine Finset.prod_le_prod₀ (fun k _ => hnn k) (fun k _ => ?_)
     have := Real.add_one_le_exp (-(x j * x k))
     linarith
   have hlin : ∑ k ∈ Finset.univ.erase j, (-(x j * x k))
