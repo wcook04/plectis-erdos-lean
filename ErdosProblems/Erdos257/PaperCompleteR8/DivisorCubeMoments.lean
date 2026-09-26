@@ -169,7 +169,7 @@ theorem cubeProductCost_exp_lower (q : ℕ) (P : Finset ℕ) (z : ℝ)
     ring
   rw [he] at hprod
   have h := mul_le_mul_of_nonneg_left hprod (one_div_nonneg.mpr (Nat.cast_nonneg q))
-  simpa [cubeProductCost, div_eq_mul_inv, mul_comm] using h
+  simpa [cubeProductCost, div_eq_mul_inv, mul_comm] using! h
 
 /-- A polynomial lower bound avoids any unproved asymptotic comparison. -/
 theorem cubeProductCost_quadratic_lower (q : ℕ) (P : Finset ℕ) (z : ℝ)
