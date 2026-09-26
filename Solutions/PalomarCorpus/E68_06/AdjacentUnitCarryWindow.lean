@@ -75,13 +75,13 @@ lemma windowOffset_source_eq (m : ℕ) :
 theorem consecutive_unit_carries_iff_positive_offset_le_den {m : ℕ} (hm : 3 ≤ m) :
     (stepCarry m = 1 ∧ stepCarry (m + 1) = 1) ↔
       0 < windowOffset m ∧ windowOffset m ≤ windowDen m := by
-  simpa only [stepCarry_source_eq, windowOffset_source_eq, windowDen_source_eq] using
+  simpa only [stepCarry_source_eq, windowOffset_source_eq, windowDen_source_eq] using!
     ErdosProblems.Erdos68.consecutive_unit_carries_iff_positive_offset_le_den hm
 
 theorem twoStep_den_mul_transitionNormalizers {m : ℕ} (hm : 3 ≤ m) :
     (predecessorScaled (m + 2)).den * transitionNormalizer (m + 1) * transitionNormalizer m =
       (predecessorScaled m).den * (m.factorial - 1) * ((m + 1).factorial - 1) := by
-  simpa only [predecessorScaled_source_eq, transitionNormalizer_source_eq] using
+  simpa only [predecessorScaled_source_eq, transitionNormalizer_source_eq] using!
     ErdosProblems.Erdos68.twoStep_den_mul_transitionNormalizers hm
 
 theorem adjacentUnitCarryWindowDen_eq_twoStep_den {m : ℕ} (hm : 3 ≤ m) :
@@ -89,7 +89,7 @@ theorem adjacentUnitCarryWindowDen_eq_twoStep_den {m : ℕ} (hm : 3 ≤ m) :
       ((predecessorScaled (m + 2)).den : ℤ) * transitionNormalizer (m + 1) *
         transitionNormalizer m := by
   simpa only [windowDen_source_eq, predecessorScaled_source_eq,
-    transitionNormalizer_source_eq] using
+    transitionNormalizer_source_eq] using!
     ErdosProblems.Erdos68.adjacentUnitCarryWindowDen_eq_twoStep_den hm
 
 theorem adjacentUnitCarryWindowOffset_eq_twoStep_factorization {m : ℕ} (hm : 3 ≤ m) :
@@ -98,7 +98,7 @@ theorem adjacentUnitCarryWindowOffset_eq_twoStep_factorization {m : ℕ} (hm : 3
         windowDen m *
           (((m + 1 : ℕ) : ℤ) * stepCarry m + stepCarry (m + 1) - (m + 2 : ℤ)) := by
   simpa only [windowOffset_source_eq, predecessorNumerator_source_eq,
-    transitionNormalizer_source_eq, windowDen_source_eq, stepCarry_source_eq] using
+    transitionNormalizer_source_eq, windowDen_source_eq, stepCarry_source_eq] using!
     ErdosProblems.Erdos68.adjacentUnitCarryWindowOffset_eq_twoStep_factorization hm
 
 end PalomarCorpus.E68.AdjacentUnitCarryWindow

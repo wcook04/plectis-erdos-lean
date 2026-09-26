@@ -53,13 +53,13 @@ theorem recordIncrementOne_sylvesterNext_eventually
       ErdosProblems.Erdos243.runningMax u (n + 1)
         ≤ ErdosProblems.Erdos243.runningMax u n + 1 := by
     intro n hn
-    simpa [runningMax_eq] using hinc n hn
+    simpa [runningMax_eq] using! hinc n hn
   have hsupply' : ∀ M, ∃ s, M ≤ s ∧ ∃ p l, p.Prime ∧ 1 ≤ l ∧
       p ^ l ∣ v s ∧ ErdosProblems.Erdos243.runningMax u s + 3 ≤ p ^ l := by
     intro M
     obtain ⟨s, hMs, p, l, hp, hl, hpl, hbig⟩ := hsupply M
-    exact ⟨s, hMs, p, l, hp, hl, hpl, by simpa [runningMax_eq] using hbig⟩
-  simpa [sylvesterNext, ErdosProblems.Erdos243.sylvesterNext] using
+    exact ⟨s, hMs, p, l, hp, hl, hpl, by simpa [runningMax_eq] using! hbig⟩
+  simpa [sylvesterNext, ErdosProblems.Erdos243.sylvesterNext] using!
     ErdosProblems.Erdos243.recordIncrementOne_sylvesterNext_eventually
       a u v w hc e N hvpos hred hw hwpos hnum hden he hcentre hvanish hinc' hsupply'
 

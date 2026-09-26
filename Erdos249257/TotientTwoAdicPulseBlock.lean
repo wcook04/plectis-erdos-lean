@@ -136,12 +136,12 @@ theorem exists_prime_totient_twoAdic_pulse_divisors
         have hodd : Odd (1 + 2 ^ (K - 1)) := by
           rw [Nat.odd_iff, show K - 1 = (K - 2) + 1 by omega, pow_succ]
           simp
-        simpa [residue, modulus, T] using hodd.coprime_two_right.pow_right K
+        simpa [residue, modulus, T] using! hodd.coprime_two_right.pow_right K
     | some x =>
         have hb := hresidue_bounds x
         have hnot : ¬ q x ∣ residue (some x) :=
           Nat.not_dvd_of_pos_of_lt hb.1 hb.2
-        simpa [modulus] using
+        simpa [modulus] using!
           (((hq x).1.coprime_iff_not_dvd).2 hnot).symm
   let crt := Nat.chineseRemainderOfFinset residue modulus Finset.univ
     (fun x _ => hmodulus_ne x) hmodulus_pairwise
@@ -156,7 +156,7 @@ theorem exists_prime_totient_twoAdic_pulse_divisors
     rw [Nat.coprime_prod_right_iff]
     intro x _
     rw [Nat.coprime_iff_gcd_eq_one, (hcrt x).gcd_eq]
-    simpa [Nat.coprime_iff_gcd_eq_one] using hresidue_coprime x
+    simpa [Nat.coprime_iff_gcd_eq_one] using! hresidue_coprime x
   obtain ⟨p, hpBound, hp, hpmod⟩ :=
     Nat.forall_exists_prime_gt_and_modEq (max B (H + K))
       (q := Q) (a := crt.val) hQ_ne hcrt_coprime_Q
@@ -166,17 +166,17 @@ theorem exists_prime_totient_twoAdic_pulse_divisors
   have hpLocal (x : Option κ) : p ≡ residue x [MOD modulus x] :=
     (hpmod.of_dvd (hmodulus_dvd_Q x)).trans (hcrt x)
   have hpTwo : p ≡ 1 + 2 ^ (K - 1) [MOD 2 ^ K] := by
-    simpa [residue, modulus, T] using hpLocal none
+    simpa [residue, modulus, T] using! hpLocal none
   let top : κ := Sum.inl ()
   have htopDvd : q top ∣ p + H := by
     have hm := (hpLocal (some top)).add_right H
     have hqH : H ≤ q top := by have := hqHK top; omega
     have hm0 : p + H ≡ 0 [MOD q top] := by
-      simpa [top, modulus, residue, Nat.ModEq, Nat.sub_add_cancel hqH] using hm
+      simpa [top, modulus, residue, Nat.ModEq, Nat.sub_add_cancel hqH] using! hm
     exact Nat.modEq_zero_iff_dvd.mp hm0
   have htopTot : 2 ^ K ∣ Nat.totient (p + H) := by
     exact twoPow_dvd_totient_of_prime_modEq_one_dvd
-      (hq top).1 (by simpa [T] using (hq top).2.1) htopDvd
+      (hq top).1 (by simpa [T] using! (hq top).2.1) htopDvd
   refine ⟨p, hpB, hpHK, hp, hpTwo, htopTot, ?_⟩
   intro j hj1 hjK
   let i : Fin (K - 1) := ⟨j - 1, by omega⟩
@@ -186,7 +186,7 @@ theorem exists_prime_totient_twoAdic_pulse_divisors
   have hjp : j ≤ p := by omega
   have hleftDvd : q left ∣ p - j := by
     have hm : p ≡ j [MOD q left] := by
-      simpa [left, modulus, residue, hi] using hpLocal (some left)
+      simpa [left, modulus, residue, hi] using! hpLocal (some left)
     exact (Nat.modEq_iff_dvd' hjp).mp hm.symm
   have hrightDvd : q right ∣ p - j + H := by
     have hm := (hpLocal (some right)).add_right H
@@ -195,15 +195,15 @@ theorem exists_prime_totient_twoAdic_pulse_divisors
       omega
     have hmj : p + H ≡ j [MOD q right] := by
       simpa [right, modulus, residue, hi, Nat.ModEq,
-        Nat.sub_add_cancel hsum] using hm
+        Nat.sub_add_cancel hsum] using! hm
     have hdvd : q right ∣ p + H - j :=
       (Nat.modEq_iff_dvd' (by omega : j ≤ p + H)).mp hmj.symm
     simpa [show p - j + H = p + H - j by omega] using hdvd
   constructor
   · exact twoPow_dvd_totient_of_prime_modEq_one_dvd
-      (hq left).1 (by simpa [T] using (hq left).2.1) hleftDvd
+      (hq left).1 (by simpa [T] using! (hq left).2.1) hleftDvd
   · exact twoPow_dvd_totient_of_prime_modEq_one_dvd
-      (hq right).1 (by simpa [T] using (hq right).2.1) hrightDvd
+      (hq right).1 (by simpa [T] using! (hq right).2.1) hrightDvd
 
 /-- The divisor producer rewritten as the desired `deltaTotient` pulse block:
 the preceding `K-1` letters vanish modulo `2^K`, while the terminal prime
@@ -219,19 +219,19 @@ theorem exists_prime_deltaTotient_twoAdic_pulseBlock
   have hpPred : p - 1 ≡ 2 ^ (K - 1) [MOD 2 ^ K] := by
     have hsub := hpTwo.sub hp.one_le (by simp : 1 ≤ 1 + 2 ^ (K - 1))
       (Nat.ModEq.refl 1)
-    simpa using hsub
+    simpa using! hsub
   have hpTotNat : Nat.totient p ≡ 2 ^ (K - 1) [MOD 2 ^ K] := by
-    simpa [Nat.totient_prime hp] using hpPred
+    simpa [Nat.totient_prime hp] using! hpPred
   have hpTotInt :
       (Nat.totient p : ℤ) ≡ (2 : ℤ) ^ (K - 1) [ZMOD (2 : ℤ) ^ K] := by
-    simpa using Int.natCast_modEq_iff.mpr hpTotNat
+    simpa using! Int.natCast_modEq_iff.mpr hpTotNat
   have htopInt :
       (Nat.totient (p + H) : ℤ) ≡ 0 [ZMOD (2 : ℤ) ^ K] := by
     apply Int.modEq_zero_iff_dvd.mpr
     exact_mod_cast htop
   have hterminalNeg :
       deltaTotient H p ≡ -(2 : ℤ) ^ (K - 1) [ZMOD (2 : ℤ) ^ K] := by
-    simpa [deltaTotient] using htopInt.sub hpTotInt
+    simpa [deltaTotient] using! htopInt.sub hpTotInt
   refine ⟨p, hpB, hpHK, hp,
     hterminalNeg.trans (neg_twoPow_pred_modEq_self (by omega)), ?_⟩
   intro j hj1 hjK
@@ -241,7 +241,7 @@ theorem exists_prime_deltaTotient_twoAdic_pulseBlock
   have htopjInt : (2 : ℤ) ^ K ∣ (Nat.totient (p - j + H) : ℤ) := by
     exact_mod_cast htopj
   apply Int.modEq_zero_iff_dvd.mpr
-  simpa [deltaTotient] using dvd_sub htopjInt hbotInt
+  simpa [deltaTotient] using! dvd_sub htopjInt hbotInt
 
 /-- A discrepancy word vanishes modulo `P` when every letter in the word
 vanishes modulo `P`. -/
@@ -255,7 +255,7 @@ theorem windowDiscrepancy_modEq_zero_of_delta_zero
       rw [windowDiscrepancy_succ]
       have hprefix := ih (fun i hi => hzero i (Nat.lt_succ_of_lt hi))
       have hlast := hzero L (Nat.lt_succ_self L)
-      simpa using (hprefix.mul_left 2).add hlast
+      simpa using! (hprefix.mul_left 2).add hlast
 
 /-- A zero prefix followed by a half-turn pulse makes the entire length-`K`
 discrepancy word a half-turn modulo `2^K`. -/
@@ -314,7 +314,7 @@ theorem integral_tailDiff_modEq_half_of_twoAdic_pulse
   let z := carryOrbit H (p - K) d K
   have hz : (z : ℝ) = totientTail (p + H) - totientTail p := by
     dsimp [z]
-    simpa [Nat.sub_add_cancel hpK] using carryOrbit_eq_tail_diff hd K
+    simpa [Nat.sub_add_cancel hpK] using! carryOrbit_eq_tail_diff hd K
   have hreset := carryOrbit_modEq_neg_windowDiscrepancy H (p - K) d K
   have hwindow :=
     windowDiscrepancy_modEq_half_of_twoAdic_pulse hK hpK hterminal hzero

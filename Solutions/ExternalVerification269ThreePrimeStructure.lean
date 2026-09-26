@@ -76,12 +76,12 @@ theorem threePrimeKernelQ_eq_of_sameLogCell
       (ErdosProblems.Erdos269.smooth3Val p q r i' j' k') := by
     simpa [SameThreePrimeLogCell, smooth3Val,
       ErdosProblems.Erdos269.SameThreePrimeLogCell,
-      ErdosProblems.Erdos269.smooth3Val] using hcell
+      ErdosProblems.Erdos269.smooth3Val] using! hcell
   simpa [SameThreePrimeLogCell, smooth3Val, threePrimeHeight,
     threePrimeKernelQ, ErdosProblems.Erdos269.SameThreePrimeLogCell,
     ErdosProblems.Erdos269.smooth3Val,
     ErdosProblems.Erdos269.threePrimeHeight,
-    ErdosProblems.Erdos269.threePrimeKernelQ] using
+    ErdosProblems.Erdos269.threePrimeKernelQ] using!
     ErdosProblems.Erdos269.threePrimeKernelQ_eq_of_sameLogCell hcell'
 
 theorem threePrimePositiveJumpSet_card
@@ -90,7 +90,7 @@ theorem threePrimePositiveJumpSet_card
     (threePrimePositiveJumpSet p q r count).card = 3 * count := by
   simpa [threePrimePositiveJumpSet, positivePrimePowers,
     ErdosProblems.Erdos269.threePrimePositiveJumpSet,
-    ErdosProblems.Erdos269.positivePrimePowers] using
+    ErdosProblems.Erdos269.positivePrimePowers] using!
     ErdosProblems.Erdos269.threePrimePositiveJumpSet_card
       hp hq hr hpq hpr hqr
 
@@ -122,7 +122,7 @@ theorem kernel_235_minor_eq_neg_one_fifteen :
   simpa [threePrimeKernelQ, threePrimeHeight, smooth3Val,
     ErdosProblems.Erdos269.threePrimeKernelQ,
     ErdosProblems.Erdos269.threePrimeHeight,
-    ErdosProblems.Erdos269.smooth3Val] using
+    ErdosProblems.Erdos269.smooth3Val] using!
     ErdosProblems.Erdos269.kernel_235_minor_eq_neg_one_fifteen
 
 def NoIntegerOrbit (α : ℝ) : Prop :=
@@ -142,7 +142,7 @@ theorem exists_uniform_nonsingular_threePrimeKernel_minor
   simpa [threePrimeKernelQ, threePrimeHeight, smooth3Val,
     ErdosProblems.Erdos269.threePrimeKernelQ,
     ErdosProblems.Erdos269.threePrimeHeight,
-    ErdosProblems.Erdos269.smooth3Val] using
+    ErdosProblems.Erdos269.smooth3Val] using!
     ErdosProblems.Erdos269.exists_uniform_nonsingular_threePrimeKernel_minor
       hp hq hr hα' hβ' n
 
@@ -165,14 +165,14 @@ theorem threePrimeKernel_infiniteRank_and_noFiniteSeparation
     simpa [threePrimeKernelQ, threePrimeHeight, smooth3Val,
       ErdosProblems.Erdos269.threePrimeKernelQ,
       ErdosProblems.Erdos269.threePrimeHeight,
-      ErdosProblems.Erdos269.smooth3Val] using
+      ErdosProblems.Erdos269.smooth3Val] using!
       ErdosProblems.Erdos269.exists_uniform_nonsingular_threePrimeKernel_minor_of_prime
         hp hq hr hpr hqr n
   · intro d
     simpa [threePrimeKernelQ, threePrimeHeight, smooth3Val,
       ErdosProblems.Erdos269.threePrimeKernelQ,
       ErdosProblems.Erdos269.threePrimeHeight,
-      ErdosProblems.Erdos269.smooth3Val] using
+      ErdosProblems.Erdos269.smooth3Val] using!
       ErdosProblems.Erdos269.not_finite_separable_threePrimeKernel
         hp hq hr hpr hqr d
 

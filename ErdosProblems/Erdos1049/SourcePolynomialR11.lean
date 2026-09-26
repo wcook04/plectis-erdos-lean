@@ -59,7 +59,7 @@ lemma twice_choose_two_int (s : ℕ) :
   | zero => norm_num
   | succ s ih =>
       have hchoose : (s + 1).choose 2 = s + s.choose 2 := by
-        simpa using (Nat.choose_succ_succ s 1)
+        simpa using! (Nat.choose_succ_succ s 1)
       rw [hchoose]
       push_cast
       nlinarith
@@ -102,13 +102,13 @@ No period-one property is assumed. -/
 theorem omegaWeight_fract (x : ℝ) :
     PaperR7.omegaWeight (Int.fract x) = PaperR7.omegaWeight x := by
   have h12 : ⌊(12 : ℝ) * Int.fract x⌋ = ⌊(12 : ℝ) * x⌋ - 12 * ⌊x⌋ := by
-    simpa using floor_mul_fract x 12
+    simpa using! floor_mul_fract x 12
   have h13 : ⌊(13 : ℝ) * Int.fract x⌋ = ⌊(13 : ℝ) * x⌋ - 13 * ⌊x⌋ := by
-    simpa using floor_mul_fract x 13
+    simpa using! floor_mul_fract x 13
   have h14 : ⌊(14 : ℝ) * Int.fract x⌋ = ⌊(14 : ℝ) * x⌋ - 14 * ⌊x⌋ := by
-    simpa using floor_mul_fract x 14
+    simpa using! floor_mul_fract x 14
   have h15 : ⌊(15 : ℝ) * Int.fract x⌋ = ⌊(15 : ℝ) * x⌋ - 15 * ⌊x⌋ := by
-    simpa using floor_mul_fract x 15
+    simpa using! floor_mul_fract x 15
   unfold PaperR7.omegaWeight
   rw [h12, h13, h14, h15]
   congr 2 <;> ring
@@ -117,7 +117,7 @@ theorem omegaWeight_zero_or_one (x : ℝ) :
     PaperR7.omegaWeight x = 0 ∨ PaperR7.omegaWeight x = 1 := by
   have h := (PaperR7.omega_indicator (Int.fract x)
     (Int.fract_nonneg x) (Int.fract_lt_one x)).1
-  simpa only [omegaWeight_fract] using h
+  simpa only [omegaWeight_fract] using! h
 
 theorem omegaWeight_int (z : ℤ) : PaperR7.omegaWeight (z : ℝ) = 0 := by
   rw [← omegaWeight_fract, Int.fract_intCast]
@@ -133,7 +133,7 @@ lemma sourceWeight_zero_or_one (n l : ℕ) :
 /-- The l=1 factor in Ω is exactly 1, as required by the paper's product
 starting at l=2. -/
 lemma sourceWeight_one (n : ℕ) : sourceWeight n 1 = 0 := by
-  simpa [sourceWeight] using omegaWeight_int (n : ℤ)
+  simpa [sourceWeight] using! omegaWeight_int (n : ℤ)
 
 noncomputable def sourceD (n : ℕ) : ℤ[X] :=
   ∏ l ∈ Finset.Icc 1 (15 * n), cyclotomic l ℤ

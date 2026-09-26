@@ -29,14 +29,14 @@ theorem hasSum_taylor_diagonal_circle (a b : ℕ → ℂ)
     calc
       _ = (a n * conj (b m)) *
           circleAverage (fun z : ℂ => z ^ n * conj (z ^ m)) 0 1 := by
-        simpa only [smul_eq_mul, mul_assoc] using
+        simpa only [smul_eq_mul, mul_assoc] using!
           (circleAverage_fun_smul (a := a n * conj (b m))
             (f := fun z : ℂ => z ^ n * conj (z ^ m)) (c := 0) (R := 1))
       _ = _ := by rw [circleAverage_monomial_conj]; split_ifs <;> simp
   simp_rw [hterm] at hs
   apply hs.prod_fiberwise
   intro n
-  simpa using (hasSum_single n (fun m hm => by simp [Ne.symm hm]) :
+  simpa using! (hasSum_single n (fun m hm => by simp [Ne.symm hm]) :
     HasSum (fun m => if n = m then a n * conj (b m) else 0)
       (if n = n then a n * conj (b n) else 0))
 
@@ -65,17 +65,17 @@ theorem hasSum_cauchy_circle_product {g : ℂ → ℂ} {R : ℝ≥0}
       circleAverage (fun z => g z * conj (g z)) 0 1 := by
     apply circleAverage_congr_sphere
     intro z hz
-    have hz' : z ∈ sphere (0 : ℂ) 1 := by simpa using hz
-    have hz1 : ‖z‖ = 1 := by simpa [mem_sphere, dist_eq_norm] using hz'
+    have hz' : z ∈ sphere (0 : ℂ) 1 := by simpa using! hz
+    have hz1 : ‖z‖ = 1 := by simpa [mem_sphere, dist_eq_norm] using! hz'
     have hgz : HasSum (fun n : ℕ => a n * z ^ n) (g z) :=
       hasSum_cauchy_on_unit_circle hg hR hz'
     have hcgz : HasSum (fun n : ℕ => conj (a n * z ^ n)) (conj (g z)) := by
-      simpa using
+      simpa using!
         Complex.conjCLE.toContinuousLinearMap.hasSum hgz
     have hn : Summable (fun n : ℕ => ‖a n * z ^ n‖) := by
-      simpa only [norm_mul, norm_pow, hz1, one_pow, mul_one] using ha
+      simpa only [norm_mul, norm_pow, hz1, one_pow, mul_one] using! ha
     have hcn : Summable (fun n : ℕ => ‖conj (a n * z ^ n)‖) := by
-      simpa only [Complex.norm_conj] using hn
+      simpa only [Complex.norm_conj] using! hn
     have hp : HasSum
         (fun q : ℕ × ℕ => (a q.1 * z ^ q.1) * conj (a q.2 * z ^ q.2))
         (g z * conj (g z)) :=
@@ -102,15 +102,15 @@ theorem hasSum_cauchy_circle_norm_sq {g : ℂ → ℂ} {R : ℝ≥0}
     apply hg.continuousOn.mono
     intro z hz
     apply subset_closure
-    have hz1 : ‖z‖ = 1 := by simpa [mem_sphere, dist_eq_norm] using hz
-    simpa [mem_ball, dist_eq_norm, hz1] using
+    have hz1 : ‖z‖ = 1 := by simpa [mem_sphere, dist_eq_norm] using! hz
+    simpa [mem_ball, dist_eq_norm, hz1] using!
       (show (1 : ℝ) < R by exact_mod_cast hR)
   have hi : CircleIntegrable (fun z => g z * conj (g z)) 0 1 :=
     ContinuousOn.circleIntegrable (by norm_num) (hc.mul (Complex.continuous_conj.comp_continuousOn hc))
   have h := Complex.reCLM.hasSum (hasSum_cauchy_circle_product hg hR)
   rw [← Complex.reCLM.circleAverage_comp_comm hi] at h
   simpa only [Function.comp_def, Complex.reCLM_apply, Complex.mul_conj,
-    Complex.ofReal_re, Complex.normSq_eq_norm_sq] using h
+    Complex.ofReal_re, Complex.normSq_eq_norm_sq] using! h
 
 end ErdosProblems.Erdos1041
 end

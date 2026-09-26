@@ -27,7 +27,7 @@ lemma rational_base_gt_one (a b : ℕ) (hb : 0 < b) (hab : b < a) :
     1 < (a : ℝ) / b := by
   have hbR : (0 : ℝ) < b := by exact_mod_cast hb
   apply (lt_div_iff₀ hbR).2
-  simpa only [one_mul] using (show (b : ℝ) < a by exact_mod_cast hab)
+  simpa only [one_mul] using! (show (b : ℝ) < a by exact_mod_cast hab)
 
 lemma sourceU_le_width (n : ℕ) :
     (sourceU n).natDegree ≤ pairWidth sourceU sourceV n := le_max_left _ _
@@ -102,7 +102,7 @@ theorem actual_cancelled_supply (a b : ℕ) (hb : 0 < b) (hab : b < a)
   · exact Eventually.of_forall (fun n => (actual_remainder_posR16 _ hp n).ne')
   · have h := (cleared_error_rate a b hb hab).exp_upper.tendsto_zero
       (neg_neg_of_pos hd)
-    simpa only [cleared_error_identity a b _ hb, sourceRemainderR16, polynomialRemainder] using h
+    simpa only [cleared_error_identity a b _ hb, sourceRemainderR16, polynomialRemainder] using! h
 
 /-- Closes exactly the R7 obligation named in the old paper coverage ledger. -/
 theorem actual_contour_source_supply : ContourSourceSupply := by
@@ -119,7 +119,7 @@ theorem thirtyone_four_powers (r : ℕ) (hr : 0 < r) :
   thirtyone_four_powers_of_source_supply actual_contour_source_supply r hr
 
 theorem thirtyone_four : Irrational (paperLambert ((31 : ℝ) / 4)) := by
-  simpa using thirtyone_four_powers 1 (by norm_num)
+  simpa using! thirtyone_four_powers 1 (by norm_num)
 
 lemma coefficientRate_nonneg (a b : ℕ) (hb : 0 < b) (hab : b < a) :
     0 ≤ coefficientRate a := by
@@ -133,9 +133,9 @@ lemma source_measure_quotient (a b : ℕ) (hb : 0 < b) (hab : b < a)
   have hla : 0 < Real.log (a : ℝ) := Real.log_pos (by exact_mod_cast ha)
   have hd : 0 < decayRate a b := (region_iff_positive_decay a b hb hab).mp hr
   have hd' : 0 < zudilinC0 * Real.log a - zudilinC1 * Real.log b := by
-    simpa only [decayRate, supplier_C0_eq, supplier_C1_eq] using hd
+    simpa only [decayRate, supplier_C0_eq, supplier_C1_eq] using! hd
   simpa only [coefficientRate, decayRate, supplier_delta_eq,
-    supplier_C0_eq, supplier_C1_eq] using rate_quotient_eq_contour a b hla hd'
+    supplier_C0_eq, supplier_C1_eq] using! rate_quotient_eq_contour a b hla hd'
 
 /-- Quantified rational separation, before taking a supremum of exponents. -/
 theorem rational_base_approximation_upper (a b : ℕ) (hb : 0 < b) (hab : b < a)
@@ -171,7 +171,7 @@ theorem rational_base_power_measure (a b r : ℕ) (hb : 0 < b) (hab : b < a)
   have h := rational_base_measure (a ^ r) (b ^ r) (Nat.pow_pos hb)
     (Nat.pow_lt_pow_left hab hr.ne') (zudilinContourRegion_pow a b r hr hregion)
   rw [rationalBaseMeasureBound_pow a b r hr] at h
-  simpa only [Nat.cast_pow, div_pow] using h
+  simpa only [Nat.cast_pow, div_pow] using! h
 
 theorem thirtyone_four_power_measure_lt_301 (r : ℕ) (hr : 0 < r) :
     irrationalityExponent (paperLambert (((31 : ℝ) / 4) ^ r)) < 301 :=

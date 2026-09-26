@@ -67,7 +67,7 @@ theorem real_floor_ratio_liminf_zero_iff (A : ℕ → ℝ≥0∞) :
       (by isBoundedDefault)).mp (le_of_eq hnat) ε hε
     obtain ⟨N, hN, hsmall⟩ := Filter.frequently_atTop.mp hfreq ⌈X⌉₊
     refine ⟨(N : ℝ), (Nat.le_ceil X).trans (by exact_mod_cast hN), ?_⟩
-    simpa only [Nat.floor_natCast, ENNReal.ofReal_natCast] using hsmall
+    simpa only [Nat.floor_natCast, ENNReal.ofReal_natCast] using! hsmall
 
 def RealPrefixLowerDensityZero (u : ℕ → ℕ) (w : ℕ → ℝ≥0∞) : Prop :=
   Filter.liminf (fun X : ℝ => realCutoffPrefixMass u w X / ENNReal.ofReal X) atTop = 0

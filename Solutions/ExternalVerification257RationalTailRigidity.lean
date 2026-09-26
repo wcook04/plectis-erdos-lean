@@ -51,11 +51,11 @@ theorem exists_unbounded_shifted_odd_tail_nat_state_of_support_fraction
   simpa [supportCoeff, erdosSupportSeries, binaryCoeffTail,
     Erdos257PeriodNoncollapse.supportCoeff,
     Erdos257PeriodNoncollapse.erdosSupportSeries,
-    Erdos257PeriodNoncollapse.binaryCoeffTail] using
+    Erdos257PeriodNoncollapse.binaryCoeffTail] using!
       Erdos257PeriodNoncollapse.exists_unbounded_shifted_odd_tail_nat_state_of_support_fraction
         A hAinf p c v hv (by
           simpa [erdosSupportSeries,
-            Erdos257PeriodNoncollapse.erdosSupportSeries] using hvalue)
+            Erdos257PeriodNoncollapse.erdosSupportSeries] using! hvalue)
 
 theorem supportCoeffZeroWindow_length_le_eps_logb_add
     (A : Set ℕ) (hA : ∃ a : ℕ, 0 < a ∧ a ∈ A)
@@ -72,11 +72,11 @@ theorem supportCoeffZeroWindow_length_le_eps_logb_add
     Erdos257PeriodNoncollapse.SupportCoeffZeroWindow,
     Erdos257PeriodNoncollapse.CoeffZeroWindow,
     Erdos257PeriodNoncollapse.supportCoeff,
-    Erdos257PeriodNoncollapse.erdosSupportSeries] using
+    Erdos257PeriodNoncollapse.erdosSupportSeries] using!
       Erdos257PeriodNoncollapse.supportCoeffZeroWindow_length_le_eps_logb_add
         A hA p c v hv (by
           simpa [erdosSupportSeries,
-            Erdos257PeriodNoncollapse.erdosSupportSeries] using hvalue) ε hε
+            Erdos257PeriodNoncollapse.erdosSupportSeries] using! hvalue) ε hε
 
 theorem one_div_oddOrder_le_reciprocalMass_of_support_fraction
     (A : Set ℕ) (hA : ∃ a : ℕ, 0 < a ∧ a ∈ A)

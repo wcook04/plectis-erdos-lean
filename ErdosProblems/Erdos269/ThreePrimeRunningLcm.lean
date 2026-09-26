@@ -92,7 +92,7 @@ theorem pureFirst_mem_smoothPrefixExponents
     exact Finset.mem_product.mpr
       ⟨Finset.mem_range.mpr (Nat.zero_lt_succ _),
         Finset.mem_range.mpr (Nat.zero_lt_succ _)⟩
-  · simpa [smooth3Val] using Nat.pow_log_le_self p hx
+  · simpa [smooth3Val] using! Nat.pow_log_le_self p hx
 
 /-- The pure `q` height component occurs in the actual prefix. -/
 theorem pureSecond_mem_smoothPrefixExponents
@@ -105,7 +105,7 @@ theorem pureSecond_mem_smoothPrefixExponents
     exact Finset.mem_product.mpr
       ⟨Finset.mem_range.mpr (Nat.lt_succ_self _),
         Finset.mem_range.mpr (Nat.zero_lt_succ _)⟩
-  · simpa [smooth3Val] using Nat.pow_log_le_self q hx
+  · simpa [smooth3Val] using! Nat.pow_log_le_self q hx
 
 /-- The pure `r` height component occurs in the actual prefix. -/
 theorem pureThird_mem_smoothPrefixExponents
@@ -118,7 +118,7 @@ theorem pureThird_mem_smoothPrefixExponents
     exact Finset.mem_product.mpr
       ⟨Finset.mem_range.mpr (Nat.zero_lt_succ _),
         Finset.mem_range.mpr (Nat.lt_succ_self _)⟩
-  · simpa [smooth3Val] using Nat.pow_log_le_self r hx
+  · simpa [smooth3Val] using! Nat.pow_log_le_self r hx
 
 /-- Exact running-LCM identity for three pairwise-distinct primes. -/
 theorem smoothPrefixLcm_eq_threePrimeHeight
@@ -127,17 +127,17 @@ theorem smoothPrefixLcm_eq_threePrimeHeight
     smoothPrefixLcm p q r x = threePrimeHeight p q r x := by
   apply Nat.dvd_antisymm (smoothPrefixLcm_dvd_threePrimeHeight p q r x)
   have hpDvd : p ^ Nat.log p x ∣ smoothPrefixLcm p q r x := by
-    simpa [smoothPrefixLcm, smooth3Val] using
+    simpa [smoothPrefixLcm, smooth3Val] using!
       (Finset.dvd_lcm
         (f := fun e : ℕ × ℕ × ℕ => smooth3Val p q r e.1 e.2.1 e.2.2)
         (pureFirst_mem_smoothPrefixExponents (p := p) (q := q) (r := r) hx))
   have hqDvd : q ^ Nat.log q x ∣ smoothPrefixLcm p q r x := by
-    simpa [smoothPrefixLcm, smooth3Val] using
+    simpa [smoothPrefixLcm, smooth3Val] using!
       (Finset.dvd_lcm
         (f := fun e : ℕ × ℕ × ℕ => smooth3Val p q r e.1 e.2.1 e.2.2)
         (pureSecond_mem_smoothPrefixExponents (p := p) (q := q) (r := r) hx))
   have hrDvd : r ^ Nat.log r x ∣ smoothPrefixLcm p q r x := by
-    simpa [smoothPrefixLcm, smooth3Val] using
+    simpa [smoothPrefixLcm, smooth3Val] using!
       (Finset.dvd_lcm
         (f := fun e : ℕ × ℕ × ℕ => smooth3Val p q r e.1 e.2.1 e.2.2)
         (pureThird_mem_smoothPrefixExponents (p := p) (q := q) (r := r) hx))
@@ -451,7 +451,7 @@ theorem threePrimeHeight_le_cube
 @[simp] theorem kernel_235_two :
     threePrimeKernelQ 2 3 5 1 0 0 = 1 / 2 := by
   have h2 : Nat.log 2 2 = 1 := by
-    simpa using Nat.log_pow (b := 2) (by norm_num : 1 < 2) 1
+    simpa using! Nat.log_pow (b := 2) (by norm_num : 1 < 2) 1
   have h3 : Nat.log 3 2 = 0 := Nat.log_of_lt (by norm_num)
   have h5 : Nat.log 5 2 = 0 := Nat.log_of_lt (by norm_num)
   norm_num [threePrimeKernelQ, threePrimeHeight, smooth3Val, h2, h3, h5]
@@ -461,7 +461,7 @@ theorem threePrimeHeight_le_cube
   have h2 : Nat.log 2 3 = 1 :=
     Nat.log_eq_of_pow_le_of_lt_pow (by norm_num) (by norm_num)
   have h3 : Nat.log 3 3 = 1 := by
-    simpa using Nat.log_pow (b := 3) (by norm_num : 1 < 3) 1
+    simpa using! Nat.log_pow (b := 3) (by norm_num : 1 < 3) 1
   have h5 : Nat.log 5 3 = 0 := Nat.log_of_lt (by norm_num)
   norm_num [threePrimeKernelQ, threePrimeHeight, smooth3Val, h2, h3, h5]
 
@@ -569,17 +569,17 @@ theorem smoothExponentShell_card_le_dropFirst
       rcases hproj with ⟨rfl, rfl⟩
       simp only [smoothExponentShell, Finset.mem_filter] at he₁ he₂
       have ha₁Lo : lo ≤ p ^ a₁ * (q ^ b₁ * r ^ c₁) := by
-        simpa [smooth3Val, mul_assoc] using he₁.2.1
+        simpa [smooth3Val, mul_assoc] using! he₁.2.1
       have ha₁Hi : p ^ a₁ * (q ^ b₁ * r ^ c₁) < hi := by
-        simpa [smooth3Val, mul_assoc] using he₁.2.2
+        simpa [smooth3Val, mul_assoc] using! he₁.2.2
       have ha₂Lo : lo ≤ p ^ a₂ * (q ^ b₁ * r ^ c₁) := by
-        simpa [smooth3Val, mul_assoc] using he₂.2.1
+        simpa [smooth3Val, mul_assoc] using! he₂.2.1
       have ha₂Hi : p ^ a₂ * (q ^ b₁ * r ^ c₁) < hi := by
-        simpa [smooth3Val, mul_assoc] using he₂.2.2
+        simpa [smooth3Val, mul_assoc] using! he₂.2.2
       have ha : a₁ = a₂ := exponent_unique_in_short_interval hpPos hwidth
         ha₁Lo ha₁Hi ha₂Lo ha₂Hi
       simp [ha]
-  simpa [target] using hcard
+  simpa [target] using! hcard
 
 /-- The symmetric projection needed when the third height is the largest:
 fixing the first two exponents leaves at most one exponent of the third base. -/
@@ -611,17 +611,17 @@ theorem smoothExponentShell_card_le_dropThird
       rcases hproj with ⟨rfl, rfl⟩
       simp only [smoothExponentShell, Finset.mem_filter] at he₁ he₂
       have hc₁Lo : lo ≤ r ^ c₁ * (p ^ a₁ * q ^ b₁) := by
-        simpa [smooth3Val, mul_assoc, mul_comm, mul_left_comm] using he₁.2.1
+        simpa [smooth3Val, mul_assoc, mul_comm, mul_left_comm] using! he₁.2.1
       have hc₁Hi : r ^ c₁ * (p ^ a₁ * q ^ b₁) < hi := by
-        simpa [smooth3Val, mul_assoc, mul_comm, mul_left_comm] using he₁.2.2
+        simpa [smooth3Val, mul_assoc, mul_comm, mul_left_comm] using! he₁.2.2
       have hc₂Lo : lo ≤ r ^ c₂ * (p ^ a₁ * q ^ b₁) := by
-        simpa [smooth3Val, mul_assoc, mul_comm, mul_left_comm] using he₂.2.1
+        simpa [smooth3Val, mul_assoc, mul_comm, mul_left_comm] using! he₂.2.1
       have hc₂Hi : r ^ c₂ * (p ^ a₁ * q ^ b₁) < hi := by
-        simpa [smooth3Val, mul_assoc, mul_comm, mul_left_comm] using he₂.2.2
+        simpa [smooth3Val, mul_assoc, mul_comm, mul_left_comm] using! he₂.2.2
       have hc : c₁ = c₂ := exponent_unique_in_short_interval hrPos hwidth
         hc₁Lo hc₁Hi hc₂Lo hc₂Hi
       simp [hc]
-  simpa [target] using hcard
+  simpa [target] using! hcard
 
 /-- If `a ≤ b ≤ c` and the three heights sum to `j`, then the product of
 the two smaller shifted heights satisfies the clean quadratic estimate used
@@ -674,14 +674,14 @@ theorem dyadicInternalPower_exponent_unique
   have hpPos : 0 < p := by omega
   have hwidth : 2 ^ (a + 1) ≤ p * 2 ^ a := by
     rw [pow_succ]
-    simpa [mul_comm] using Nat.mul_le_mul_right (2 ^ a) hp
+    simpa [mul_comm] using! Nat.mul_le_mul_right (2 ^ a) hp
   apply exponent_unique_in_short_interval
     (base := p) (lo := 2 ^ a) (hi := 2 ^ (a + 1)) (weight := 1)
     hpPos hwidth
-  · simpa using Nat.le_of_lt he.1
-  · simpa using he.2
-  · simpa using Nat.le_of_lt hf.1
-  · simpa using hf.2
+  · simpa using! Nat.le_of_lt he.1
+  · simpa using! he.2
+  · simpa using! Nat.le_of_lt hf.1
+  · simpa using! hf.2
 
 /-- Across one dyadic block, a logarithm in any base at least two increases
 by at most one. -/
@@ -715,7 +715,7 @@ theorem exists_dyadicInternalPower_iff_log_succ
     let e := Nat.log p (2 ^ (a + 1))
     refine ⟨e, ?_, ?_⟩
     · dsimp [e]
-      simpa only [Nat.succ_eq_add_one, hStep] using
+      simpa only [Nat.succ_eq_add_one, hStep] using!
         Nat.lt_pow_succ_log_self hpOne (2 ^ a)
     · dsimp [e]
       have hLe :
@@ -726,7 +726,7 @@ theorem exists_dyadicInternalPower_iff_log_succ
         even_two.pow_of_ne_zero (by omega)
       have hNe : p ^ Nat.log p (2 ^ (a + 1)) ≠ 2 ^ (a + 1) := by
         intro hEq
-        exact (Nat.not_even_iff_odd.mpr hOdd) (by simpa [hEq] using hEven)
+        exact (Nat.not_even_iff_odd.mpr hOdd) (by simpa [hEq] using! hEven)
       exact lt_of_le_of_ne hLe hNe
 
 /-- If no odd-base power occurs inside a dyadic block, the corresponding
@@ -837,7 +837,7 @@ theorem smoothPrefixLcm235_dyadicBlock_succ (a : ℕ) :
 @[simp] theorem dyadicBlockBase235_zero : dyadicBlockBase235 0 = 2 := by
   have h := threePrimeHeight_dyadicBlock_succ 0
   have h2 : Nat.log 2 2 = 1 := by
-    simpa using Nat.log_pow (b := 2) (by norm_num : 1 < 2) 1
+    simpa using! Nat.log_pow (b := 2) (by norm_num : 1 < 2) 1
   have h3 : Nat.log 3 2 = 0 := Nat.log_of_lt (by norm_num)
   have h5 : Nat.log 5 2 = 0 := Nat.log_of_lt (by norm_num)
   norm_num [threePrimeHeight, h2, h3, h5] at h ⊢
@@ -847,11 +847,11 @@ theorem smoothPrefixLcm235_dyadicBlock_succ (a : ℕ) :
 @[simp] theorem dyadicBlockBase235_one : dyadicBlockBase235 1 = 6 := by
   have h := threePrimeHeight_dyadicBlock_succ 1
   have h2two : Nat.log 2 2 = 1 := by
-    simpa using Nat.log_pow (b := 2) (by norm_num : 1 < 2) 1
+    simpa using! Nat.log_pow (b := 2) (by norm_num : 1 < 2) 1
   have h3two : Nat.log 3 2 = 0 := Nat.log_of_lt (by norm_num)
   have h5two : Nat.log 5 2 = 0 := Nat.log_of_lt (by norm_num)
   have h2four : Nat.log 2 4 = 2 := by
-    simpa using Nat.log_pow (b := 2) (by norm_num : 1 < 2) 2
+    simpa using! Nat.log_pow (b := 2) (by norm_num : 1 < 2) 2
   have h3four : Nat.log 3 4 = 1 :=
     Nat.log_eq_of_pow_le_of_lt_pow (by norm_num) (by norm_num)
   have h5four : Nat.log 5 4 = 0 := Nat.log_of_lt (by norm_num)
@@ -863,12 +863,12 @@ theorem smoothPrefixLcm235_dyadicBlock_succ (a : ℕ) :
 @[simp] theorem dyadicBlockBase235_two : dyadicBlockBase235 2 = 10 := by
   have h := threePrimeHeight_dyadicBlock_succ 2
   have h2four : Nat.log 2 4 = 2 := by
-    simpa using Nat.log_pow (b := 2) (by norm_num : 1 < 2) 2
+    simpa using! Nat.log_pow (b := 2) (by norm_num : 1 < 2) 2
   have h3four : Nat.log 3 4 = 1 :=
     Nat.log_eq_of_pow_le_of_lt_pow (by norm_num) (by norm_num)
   have h5four : Nat.log 5 4 = 0 := Nat.log_of_lt (by norm_num)
   have h2eight : Nat.log 2 8 = 3 := by
-    simpa using Nat.log_pow (b := 2) (by norm_num : 1 < 2) 3
+    simpa using! Nat.log_pow (b := 2) (by norm_num : 1 < 2) 3
   have h3eight : Nat.log 3 8 = 1 :=
     Nat.log_eq_of_pow_le_of_lt_pow (by norm_num) (by norm_num)
   have h5eight : Nat.log 5 8 = 1 :=
@@ -881,13 +881,13 @@ theorem smoothPrefixLcm235_dyadicBlock_succ (a : ℕ) :
 @[simp] theorem dyadicBlockBase235_four : dyadicBlockBase235 4 = 30 := by
   have h := threePrimeHeight_dyadicBlock_succ 4
   have h2sixteen : Nat.log 2 16 = 4 := by
-    simpa using Nat.log_pow (b := 2) (by norm_num : 1 < 2) 4
+    simpa using! Nat.log_pow (b := 2) (by norm_num : 1 < 2) 4
   have h3sixteen : Nat.log 3 16 = 2 :=
     Nat.log_eq_of_pow_le_of_lt_pow (by norm_num) (by norm_num)
   have h5sixteen : Nat.log 5 16 = 1 :=
     Nat.log_eq_of_pow_le_of_lt_pow (by norm_num) (by norm_num)
   have h2thirtytwo : Nat.log 2 32 = 5 := by
-    simpa using Nat.log_pow (b := 2) (by norm_num : 1 < 2) 5
+    simpa using! Nat.log_pow (b := 2) (by norm_num : 1 < 2) 5
   have h3thirtytwo : Nat.log 3 32 = 3 :=
     Nat.log_eq_of_pow_le_of_lt_pow (by norm_num) (by norm_num)
   have h5thirtytwo : Nat.log 5 32 = 2 :=

@@ -200,7 +200,7 @@ theorem dyadicTail_pulse (hC : ∀ n, |(a n : ℝ)| ≤ C) {N L : ℕ} {t : ℤ}
 
 private theorem abs_le_abs_add_abs (X Y : ℝ) : |X| ≤ |X + Y| + |Y| := by
   have h := abs_add_le (X + Y) (-Y)
-  simpa using h
+  simpa using! h
 
 private theorem abs_int_add_ge (M : ℤ) {x : ℝ} (hx : |x| < 1 / 2) : |x| ≤ |(M : ℝ) + x| := by
   rcases eq_or_ne M 0 with h | h

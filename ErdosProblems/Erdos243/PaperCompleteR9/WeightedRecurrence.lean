@@ -48,7 +48,7 @@ theorem coefficient_recurrence_of_record_bound
     (U n : ℤ) (U (n + 1) : ℤ) (lcmOverlap q a n : ℤ)
   · exact_mod_cast (Nat.ne_of_gt (hU n))
   · exact_mod_cast overlap_times_next_lcm q a n
-  · simpa only [hzero n hn, sub_zero] using hstep n
+  · simpa only [hzero n hn, sub_zero] using! hstep n
   · have h := herror n
     rw [hzero n hn] at h
     omega

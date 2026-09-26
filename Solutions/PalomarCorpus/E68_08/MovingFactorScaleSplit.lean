@@ -61,7 +61,7 @@ theorem movingPrivateFactorScaleSplit_implies_irrational
           ErdosProblems.Erdos68.factorialBlockBudget] using! hcert)
   simpa [factorialGapSeries, _root_.Erdos68.factorialGapSeries,
     _root_.Erdos68.factorialGapTail,
-    _root_.Erdos68.factorialGapTailTerm] using hsource
+    _root_.Erdos68.factorialGapTailTerm] using! hsource
 
 theorem splitFactorNormalizedCollision_implies_irrational
     (hcert :
@@ -115,7 +115,7 @@ theorem splitFactorNormalizedCollision_implies_irrational
           ErdosProblems.Erdos68.factorialBlockBudget] using! hcert)
   simpa [factorialGapSeries, _root_.Erdos68.factorialGapSeries,
     _root_.Erdos68.factorialGapTail,
-    _root_.Erdos68.factorialGapTailTerm] using hsource
+    _root_.Erdos68.factorialGapTailTerm] using! hsource
 
 theorem fixedOwnerPair_eventually_absorbed
     {p i j : ℕ}
@@ -135,7 +135,7 @@ theorem fixedOwnerPair_eventually_absorbed
     ErdosProblems.Erdos68.pairwiseCollisionCore,
     ErdosProblems.Erdos68.collisionCore,
     ErdosProblems.Erdos68.privateQuotient,
-    ErdosProblems.Erdos68.factorialBlockPrivateQuotient] using
+    ErdosProblems.Erdos68.factorialBlockPrivateQuotient] using!
       ErdosProblems.Erdos68.factorialBlockFixedPairPrivateQuotients_eq_one
         hi hj hlt
 

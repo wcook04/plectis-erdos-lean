@@ -49,7 +49,7 @@ theorem even_law_and_eventual_congruence_forces_totient
       (q : ℤ) ∣ totientDefect g n)
     {n : ℕ} (hn : 1 ≤ n) :
     g n = (Nat.totient n : ℤ) := by
-  simpa [totientDefect, ErdosProblems.Erdos249.totientDefect] using
+  simpa [totientDefect, ErdosProblems.Erdos249.totientDefect] using!
     ErdosProblems.Erdos249.even_law_and_eventual_congruence_forces_totient
       hodd heven hcong hn
 

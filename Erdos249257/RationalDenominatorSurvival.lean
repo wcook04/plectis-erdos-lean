@@ -28,9 +28,9 @@ theorem divisor_dvd_divInt_den
   have hcop_c : Nat.Coprime m c.natAbs := hcop.of_dvd_right hc_dvd
   have hD_abs : D = c.natAbs * q.den := by
     have h := congrArg Int.natAbs hDc
-    simpa [Int.natAbs_mul] using h
+    simpa [Int.natAbs_mul] using! h
   have hmprod : m ∣ c.natAbs * q.den := by
-    simpa [← hD_abs] using hmD
+    simpa [← hD_abs] using! hmD
   exact (hcop_c.dvd_mul_left).mp hmprod
 
 /-- Scaling can cancel the part `gcd C h`, but no further part of `C` when
@@ -52,13 +52,13 @@ theorem survivingDivisor_dvd_scaled_divInt_den
     rw [Nat.dvd_div_iff_mul_dvd hgD, Nat.mul_div_cancel' hgC]
     exact hCD
   have hCghg : Nat.Coprime (C / g) (h / g) := by
-    simpa [g] using Nat.coprime_div_gcd_div_gcd
+    simpa [g] using! Nat.coprime_div_gcd_div_gcd
       (Nat.gcd_pos_of_pos_left h hCpos)
   have hCgC : C / g ∣ C := Nat.div_dvd_of_dvd hgC
   have hCga : Nat.Coprime (C / g) a.natAbs := hcop.of_dvd_left hCgC
   have hCgnum :
       Nat.Coprime (C / g) (((h / g : ℕ) : ℤ) * a).natAbs := by
-    simpa only [Int.natAbs_mul, Int.natAbs_natCast] using hCghg.mul_right hCga
+    simpa only [Int.natAbs_mul, Int.natAbs_natCast] using! hCghg.mul_right hCga
   have hhEq : (h : ℤ) = (g : ℤ) * ((h / g : ℕ) : ℤ) := by
     exact_mod_cast (Nat.mul_div_cancel' hgh).symm
   have hDEq : (D : ℤ) = (g : ℤ) * ((D / g : ℕ) : ℤ) := by
@@ -72,7 +72,7 @@ theorem survivingDivisor_dvd_scaled_divInt_den
     rw [hhEq, hDEq]
     ring
   rw [hrat]
-  simpa [g] using divisor_dvd_divInt_den hDdivpos hCDdiv hCgnum
+  simpa [g] using! divisor_dvd_divInt_den hDdivpos hCDdiv hCgnum
 
 /-! Small executable regressions for the cancellation boundary. -/
 
@@ -94,12 +94,12 @@ example : 24 / Nat.gcd 24 6 = 4 ∧ (Rat.divInt 6 72).den = 12 := by
   norm_num [Rat.divInt]
 
 example {C : ℕ} (h : Nat.Coprime C 0) : C = 1 := by
-  simpa using h
+  simpa using! h
 
 example {a : ℤ} {D C h : ℕ} (hD : 0 < D) (hCD : C ∣ D)
     (hCa : Nat.Coprime C a.natAbs) (hCh : Nat.Coprime C h) :
     C ∣ (Rat.divInt ((h : ℤ) * a) (D : ℤ)).den := by
-  simpa [hCh.gcd_eq_one] using
+  simpa [hCh.gcd_eq_one] using!
     survivingDivisor_dvd_scaled_divInt_den (h := h) hD hCD hCa
 
 end Erdos249257.RationalDenominatorSurvival

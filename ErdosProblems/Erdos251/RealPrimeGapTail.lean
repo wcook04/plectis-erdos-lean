@@ -63,9 +63,9 @@ theorem irrational_realPrimeGapTail_zero_iff :
     Irrational (realPrimeGapTail 0) ↔
       Irrational (∑' n : ℕ, primeGapDyadicTerm n) := by
   rw [realPrimeGapTail_zero]
-  simpa using
+  simpa using!
     (irrational_sub_natCast_iff (x := 2 * ∑' n : ℕ, primeGapDyadicTerm n) (n := 1)).trans
-      (by simpa using
+      (by simpa using!
         (irrational_natCast_mul_iff (n := 2) (x := ∑' n : ℕ, primeGapDyadicTerm n)))
 
 /-- Cofinal escape now refers to the actual real prime-gap tail. -/

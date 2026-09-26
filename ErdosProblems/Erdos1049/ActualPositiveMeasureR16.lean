@@ -36,7 +36,7 @@ lemma momentAlpha_bounds {q : ℝ} (hq0 : 0 < q) (hq1 : q < 1) (t : ℕ) :
 
 lemma momentBeta_bounds {q : ℝ} (hq0 : 0 < q) (hq1 : q < 1) (t : ℕ) :
     0 ≤ momentBeta q t ∧ momentBeta q t ≤ 1 := by
-  simpa [momentBeta, momentAlpha] using momentAlpha_bounds hq0 hq1 (t + 1)
+  simpa [momentBeta, momentAlpha] using! momentAlpha_bounds hq0 hq1 (t + 1)
 
 lemma momentAlpha_sq {q : ℝ} (hq0 : 0 ≤ q) (t : ℕ) :
     momentAlpha q t ^ 2 = q ^ t := by
@@ -116,10 +116,10 @@ lemma positiveSum_euler {q a w : ℝ}
   have haw1 : a * w ≤ 1 := by
     calc
       a * w ≤ 1 * w := mul_le_mul_of_nonneg_right ha1 hw0
-      _ ≤ 1 := by simpa using hw1
+      _ ≤ 1 := by simpa using! hw1
   refine ⟨coeffScale_nonneg (eulerCoeff_nonneg hq0 hq1) ha0, ?_⟩
   have hs := (eulerCoeff_weighted_summable hq0 hq1 haw0 haw1).hasSum
-  simpa only [coeffEval, coeffScale, mul_pow, mul_assoc] using hs
+  simpa only [coeffEval, coeffScale, mul_pow, mul_assoc] using! hs
 
 lemma positiveSum_scaledInverse {q a w : ℝ}
     (hq0 : 0 ≤ q) (hq1 : q < 1) (ha0 : 0 ≤ a) (ha1 : a ≤ 1)
@@ -128,11 +128,11 @@ lemma positiveSum_scaledInverse {q a w : ℝ}
       (qPochhammerInfinity (a * w) q)⁻¹ := by
   have haw0 := mul_nonneg ha0 hw0
   have haw1 : a * w < 1 := by
-    have h : a * w ≤ w := by simpa using mul_le_mul_of_nonneg_right ha1 hw0
+    have h : a * w ≤ w := by simpa using! mul_le_mul_of_nonneg_right ha1 hw0
     exact h.trans_lt hw1
   have h := positiveSum_inverse hq0 hq1 haw0 haw1
   refine ⟨coeffScale_nonneg h.nonneg ha0, ?_⟩
-  simpa only [coeffScale, mul_pow, mul_assoc] using h.sum
+  simpa only [coeffScale, mul_pow, mul_assoc] using! h.sum
 
 private lemma assemble_zero_row_value {P R E F T : ℝ} (hP : P ≠ 0)
     (h : R / P * E * F = T / P ^ 2) :
@@ -171,12 +171,12 @@ theorem momentRowCoeff_positiveSum {q w : ℝ}
         have hscale : coeffScale (eulerCoeff q) 1 = eulerCoeff q := by
           funext n
           simp [coeffScale]
-        simpa [hscale] using hE1
+        simpa [hscale] using! hE1
       have h := (((((hH.conv hH hw0).conv hH hw0).conv hR hw0).conv hE hw0).conv hEr hw0)
       refine ⟨h.nonneg, ?_⟩
       have hp := pairedEulerRatio_identity (a := 1) (b := Real.sqrt q)
         (by norm_num) (by norm_num) hr.1 hr.2.le hq0.le hq1 hw0 hw1
-        (by simpa using Real.sq_sqrt hq0.le)
+        (by simpa using! Real.sq_sqrt hq0.le)
       have hR1 : coeffEval (qBinomialRatioCoeff 1 q) w = 1 := by
         rw [qBinomialRatio_eval (by norm_num) (by norm_num) hq0.le hq1 hw0 hw1]
         simp [(qPochhammerInfinity_pos w q).ne']
@@ -185,7 +185,7 @@ theorem momentRowCoeff_positiveSum {q w : ℝ}
       have hv := assemble_zero_row_value (qPochhammerInfinity_pos w q).ne' hp
       have hsum := h.sum
       rw [hv] at hsum
-      simpa only [momentRowCoeff, pow_zero, one_mul] using hsum
+      simpa only [momentRowCoeff, pow_zero, one_mul] using! hsum
   | succ t =>
       have ha := momentAlpha_bounds hq0 hq1 (t + 1)
       have hb := momentBeta_bounds hq0 hq1 (t + 1)
@@ -207,7 +207,7 @@ theorem momentRowCoeff_positiveSum {q w : ℝ}
         (qPochhammerInfinity_pos (q ^ (t + 1) * w) q).ne' hp
       have hsum := h.sum
       rw [hv] at hsum
-      simpa only [momentRowCoeff] using hsum
+      simpa only [momentRowCoeff] using! hsum
 
 lemma momentRowCoeff_nonneg {q : ℝ} (hq0 : 0 < q) (hq1 : q < 1) (t k : ℕ) :
     0 ≤ momentRowCoeff q t k :=
@@ -257,7 +257,7 @@ theorem one_le_actualGamma {q : ℝ} (hq0 : 0 < q) (hq1 : q < 1) (k : ℕ) :
       div_nonneg (momentRowCoeff_nonneg hq0 hq1 p.1 p.2)
         (qPochhammerFinite_pos hq0.le hq1 hq0.le hq1.le p.1).le) hz
   have hrow : momentRowCoeff q 0 k ≤ actualGamma q k := by
-    simpa only [qPochhammerFinite_zero, div_one] using h
+    simpa only [qPochhammerFinite_zero, div_one] using! h
   exact ((inverseQCoeff_bounds hq0.le hq1 k).1.trans
     (inverseQCoeff_le_zeroRow hq0 hq1 k)).trans hrow
 
@@ -278,14 +278,14 @@ lemma actualGeneratingTerm_bound {q w : ℝ}
     qPochhammerInfinity_le_finite hq0.le hq1 hq0.le hq1 t
   have hqt : q ^ t ≤ 1 := pow_le_one₀ hq0.le hq1.le
   have harg0 := mul_nonneg (pow_nonneg hq0.le t) hw0
-  have harg : q ^ t * w ≤ w := by simpa using mul_le_mul_of_nonneg_right hqt hw0
+  have harg : q ^ t * w ≤ w := by simpa using! mul_le_mul_of_nonneg_right hqt hw0
   have hd := qPochhammerInfinity_antitone_arg harg0 harg hw1 hq0.le hq1
   have hw20 := sq_nonneg w
   have hw21 : w ^ 2 < 1 := by nlinarith
   have hnum0 := mul_nonneg (pow_nonneg hq0.le t) hw20
   have hnum1 : q ^ t * w ^ 2 < 1 := by
     have h : q ^ t * w ^ 2 ≤ w ^ 2 := by
-      simpa using mul_le_mul_of_nonneg_right hqt hw20
+      simpa using! mul_le_mul_of_nonneg_right hqt hw20
     exact h.trans_lt hw21
   have hn := qPochhammerInfinity_le_one hnum0 hnum1 hq0.le hq1
   have hP := qPochhammerInfinity_pos q q
@@ -305,7 +305,7 @@ lemma actualGeneratingTerm_bound {q w : ℝ}
     _ ≤ w ^ t / (qPochhammerFinite q q t *
         (qPochhammerInfinity (q ^ t * w) q) ^ 2) := by
       apply div_le_div_of_nonneg_right _ (mul_nonneg hPt.le (sq_nonneg _))
-      simpa using mul_le_mul_of_nonneg_left hn (pow_nonneg hw0 t)
+      simpa using! mul_le_mul_of_nonneg_left hn (pow_nonneg hw0 t)
     _ ≤ _ := div_le_div_of_nonneg_left (pow_nonneg hw0 t)
       (mul_pos hP (sq_pos_of_pos hW)) hden
 
@@ -396,7 +396,7 @@ lemma actualAtomWeight_pos {q : ℝ} (hq0 : 0 < q) (hq1 : q < 1) (k : ℕ) :
 
 lemma actualAtomWeight_summable {q : ℝ} (hq0 : 0 < q) (hq1 : q < 1) :
     Summable (actualAtomWeight q) := by
-  simpa only [pow_zero, mul_one] using (actualMoment_hasSum_atoms hq0 hq1 0).summable
+  simpa only [pow_zero, mul_one] using! (actualMoment_hasSum_atoms hq0 hq1 0).summable
 
 theorem actualMoment_eq_discreteMoment {q : ℝ}
     (hq0 : 0 < q) (hq1 : q < 1) (m : ℕ) :

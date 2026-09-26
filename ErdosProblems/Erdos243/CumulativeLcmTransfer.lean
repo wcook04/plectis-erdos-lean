@@ -377,7 +377,7 @@ theorem lcmNonFreshCount_sublinear_of_subexponential
     exact hraised.trans_lt (hN n hn)
   have hexponent : lcmNonFreshCount q a n * K < n :=
     (Nat.pow_lt_pow_iff_right (by omega)).mp hpowerLt
-  simpa [Nat.mul_comm] using hexponent
+  simpa [Nat.mul_comm] using! hexponent
 
 /-- Exact-orbit specialisation: normalised centred-state vanishing forces the
 LCM-non-fresh count to be sublinear.  This composes the keystone budget with

@@ -67,13 +67,13 @@ theorem primitive_pair_profile_hit (u : ℕ → ℕ) (P : ℕ → ℤ) (n d : �
     intro i hi
     by_contra hh
     exact hbad ⟨i, hi, hh⟩
-  have ha0 : (u n : ℤ) = P n := by simpa using ha 0 (by decide)
+  have ha0 : (u n : ℤ) = P n := by simpa using! ha 0 (by decide)
   rw [← ha0] at h0
   rw [← ha 1 (by decide)] at h1
   have hu0 : d ∣ u n := by exact_mod_cast h0
   have hu1 : d ∣ u (n + 1) := by exact_mod_cast h1
   have hdu : d ∣ 1 := by
-    simpa only [hcop.gcd_eq_one] using Nat.dvd_gcd hu0 hu1
+    simpa only [hcop.gcd_eq_one] using! Nat.dvd_gcd hu0 hu1
   have := Nat.dvd_one.mp hdu
   omega
 

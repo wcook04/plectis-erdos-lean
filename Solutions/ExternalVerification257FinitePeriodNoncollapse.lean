@@ -33,7 +33,7 @@ theorem lcm_lt_den_finiteErdosSum
     (h2 : 2 ≤ F.lcm id) :
     F.lcm id < (finiteErdosSum F b).den := by
   simpa [finiteErdosSum,
-      Erdos257PeriodNoncollapse.finiteErdosSum] using
+      Erdos257PeriodNoncollapse.finiteErdosSum] using!
       Erdos257PeriodNoncollapse.lcm_lt_den_finiteErdosSum
         F b hF h0 hb h2
 

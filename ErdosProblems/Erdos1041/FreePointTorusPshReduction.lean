@@ -65,7 +65,7 @@ theorem fp_exponent_bridge (m : ℕ) (y : Fin m → ℝ)
     (hsum : ∑ i, y i ≤ (m : ℝ)) :
     ∑ i, y i ^ ((m : ℝ) / (m + 1)) ≤ (m : ℝ) := by
   have hq := fp_exponent_mem_unit_interval m
-  simpa using
-    (sum_rpow_le_card_of_sum_le_card hq.1 hq.2 y hy (by simpa using hsum))
+  simpa using!
+    (sum_rpow_le_card_of_sum_le_card hq.1 hq.2 y hy (by simpa using! hsum))
 
 end ErdosProblems.Erdos1041.FreePointTorusPshReduction

@@ -46,7 +46,7 @@ theorem tendsto_halfStripBound_succ_div_pow_zero :
       atTop (nhds 0) := by
   have hN : Tendsto (fun N : ℕ ↦ (N : ℝ) / (2 : ℝ) ^ N)
       atTop (nhds 0) := by
-    simpa using tendsto_pow_const_div_const_pow_of_one_lt 1
+    simpa using! tendsto_pow_const_div_const_pow_of_one_lt 1
       (by norm_num : (1 : ℝ) < 2)
   have hOne : Tendsto (fun N : ℕ ↦ (1 : ℝ) / (2 : ℝ) ^ N)
       atTop (nhds 0) :=
@@ -94,9 +94,9 @@ theorem greedy_integerHalfCarry_scaled_tendsto_zero_of_cofinalStripReturn
   let b : ℕ → ℝ := fun N ↦
     (halfStripBound (N + 1) : ℝ) / (2 : ℝ) ^ N
   have hanti : Antitone f := by
-    simpa [f, G] using scaled_integerHalfCarry_antitone G
+    simpa [f, G] using! scaled_integerHalfCarry_antitone G
   have hb : Tendsto b atTop (nhds 0) := by
-    simpa [b] using tendsto_halfStripBound_succ_div_pow_zero
+    simpa [b] using! tendsto_halfStripBound_succ_div_pow_zero
   have hnonneg : ∀ N : ℕ, 0 ≤ f N := by
     intro N
     have hcenter := greedy_mobiusCenteredHalfCarry_nonneg N
@@ -116,14 +116,14 @@ theorem greedy_integerHalfCarry_scaled_tendsto_zero_of_cofinalStripReturn
   have hbM : b M < ε := by
     have hdist := hN₀ M hN₀M
     have hbnonneg : 0 ≤ b M := by positivity
-    simpa [Real.dist_eq, abs_of_nonneg hbnonneg] using hdist
+    simpa [Real.dist_eq, abs_of_nonneg hbnonneg] using! hdist
   refine ⟨M, ?_⟩
   intro N hMN
   have hfN : f N < ε := lt_of_le_of_lt
     ((hanti hMN).trans hMf) hbM
   have hfnonneg := hnonneg N
   change dist (f N) 0 < ε
-  simpa [Real.dist_eq, abs_of_nonneg hfnonneg] using hfN
+  simpa [Real.dist_eq, abs_of_nonneg hfnonneg] using! hfN
 
 /-- Cofinal returns to the square-root strip already give an infinite
 canonical greedy support with exact Mersenne support-series value `1/2`. -/

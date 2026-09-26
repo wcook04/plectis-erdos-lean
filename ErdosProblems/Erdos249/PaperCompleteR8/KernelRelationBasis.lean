@@ -145,7 +145,7 @@ private theorem channel_count_split (k d : ℕ) :
   | succ d ih =>
       have ht : (∑ j ∈ Finset.range (d + 1 + 2), k ^ j) =
           (∑ j ∈ Finset.range (d + 2), k ^ j) + k ^ (d + 2) := by
-        simpa only [Nat.add_assoc] using
+        simpa only [Nat.add_assoc] using!
           (Finset.sum_range_succ (fun j => k ^ j) (d + 2))
       have hm : (∑ j ∈ Finset.range (d + 1), k ^ (j + 1)) =
           (∑ j ∈ Finset.range d, k ^ (j + 1)) + k ^ (d + 1) :=
@@ -272,7 +272,7 @@ theorem integral_maximal_power_reduction (k j t u : ℕ) (hk : 2 ≤ k)
   ext n
   have hn := congrFun h n
   simpa only [Pi.smul_apply, smul_eq_mul, zsmul_eq_mul,
-    Int.cast_natCast] using hn
+    Int.cast_natCast] using! hn
 
 
 /-- A positive residue not divisible by the base names a retained channel.
@@ -314,7 +314,7 @@ theorem scalar_canonical_reduction (k e : ℕ) (hk : 2 ≤ k) :
   induction j with
   | zero =>
       intro hje r hr
-      have hr0 : r = 0 := by simpa only [pow_zero, Nat.lt_one_iff] using hr
+      have hr0 : r = 0 := by simpa only [pow_zero, Nat.lt_one_iff] using! hr
       subst r
       exact ⟨Sum.inl 0, 1, (one_smul ℤ _).symm⟩
   | succ j ih =>

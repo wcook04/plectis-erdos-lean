@@ -142,7 +142,7 @@ theorem paper_cubic_height_bounds {p q r x : ℕ}
     apply (div_lt_iff₀ hden).mpr
     have hR : (x : ℝ) ^ 3 < ((p : ℝ) * q * r) *
         (threePrimeHeight p q r x : ℝ) := by exact_mod_cast hnat
-    simpa [mul_comm] using hR
+    simpa [mul_comm] using! hR
   · exact_mod_cast threePrimeHeight_le_cube p q r x hx
 
 /-- Short-note residue consumer with the ordinary integer upper bound. -/
@@ -197,7 +197,7 @@ theorem paper_pinning_and_rigidity :
   refine ⟨?_, ?_, ?_⟩
   · intro a
     refine ⟨?_, trueNormalizedState_pos a⟩
-    simpa only [add_div] using trueNormalizedState_pinning a
+    simpa only [add_div] using! trueNormalizedState_pinning a
   · intro a z hz
     exact integral_state_upward_closed hz
   · intro width A y _ hrec hwin hwidth hvanish

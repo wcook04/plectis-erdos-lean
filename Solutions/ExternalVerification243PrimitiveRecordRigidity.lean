@@ -80,12 +80,12 @@ theorem odd_record_cut
     (hrec : ∀ n, s ≤ n → runningMax u n < u (n + 1) → u (n + 1) ≤ u n + 2) :
     ∀ n, s ≤ n → u n < H := by
   have hRs' : ErdosProblems.Erdos243.runningMax u s < H := by
-    simpa [runningMax_eq] using hRs
+    simpa [runningMax_eq] using! hRs
   have hrec' : ∀ n, s ≤ n →
       ErdosProblems.Erdos243.runningMax u n < u (n + 1) →
         u (n + 1) ≤ u n + 2 := by
     intro n hn h
-    exact hrec n hn (by simpa [runningMax_eq] using h)
+    exact hrec n hn (by simpa [runningMax_eq] using! h)
   exact ErdosProblems.Erdos243.odd_record_cut
     a u v w hc p l s H hp hl hHodd hpH hred hvpos hw hwpos hnum hden
     hslow hheight hprot hRs' hrec'
@@ -113,12 +113,12 @@ theorem numerator_bounded_of_oddPrimePower
     (hrec : ∀ n, s ≤ n → runningMax u n < u (n + 1) → u (n + 1) ≤ u n + 2) :
     ∃ H, ∀ n, s ≤ n → u n < H := by
   have hbig' : 3 * ErdosProblems.Erdos243.runningMax u s < p ^ l := by
-    simpa [runningMax_eq] using hbig
+    simpa [runningMax_eq] using! hbig
   have hrec' : ∀ n, s ≤ n →
       ErdosProblems.Erdos243.runningMax u n < u (n + 1) →
         u (n + 1) ≤ u n + 2 := by
     intro n hn h
-    exact hrec n hn (by simpa [runningMax_eq] using h)
+    exact hrec n hn (by simpa [runningMax_eq] using! h)
   exact ErdosProblems.Erdos243.numerator_bounded_of_oddPrimePower
     a u v w hc p l s hp hpodd hl hred hvpos hw hwpos hnum hden hslow
     hprot hbig' hrec'
@@ -141,7 +141,7 @@ theorem sylvesterStep_of_centeredZero_pair
     (hzero : (v : ℤ) - ((a : ℤ) - 1) * (u : ℤ) = 0)
     (hzero' : (v' : ℤ) - ((a' : ℤ) - 1) * (u' : ℤ) = 0) :
     (a' : ℤ) = sylvesterNext (a : ℤ) := by
-  simpa [sylvesterNext, ErdosProblems.Erdos243.sylvesterNext] using
+  simpa [sylvesterNext, ErdosProblems.Erdos243.sylvesterNext] using!
     ErdosProblems.Erdos243.sylvesterStep_of_centeredZero_pair
       hcop hq hnum hden hzero hzero'
 
@@ -164,13 +164,13 @@ theorem recordRiseTwo_sylvesterNext_eventually
       ErdosProblems.Erdos243.runningMax u n < u (n + 1) →
         u (n + 1) ≤ u n + 2 := by
     intro n hn h
-    exact hrec n hn (by simpa [runningMax_eq] using h)
+    exact hrec n hn (by simpa [runningMax_eq] using! h)
   have hsupply' : ∀ M, ∃ s, M ≤ s ∧ ∃ p l, p.Prime ∧ Odd p ∧ 1 ≤ l ∧
       p ^ l ∣ v s ∧ 3 * ErdosProblems.Erdos243.runningMax u s < p ^ l := by
     intro M
     obtain ⟨s, hMs, p, l, hp, hpodd, hl, hpl, hbig⟩ := hsupply M
-    exact ⟨s, hMs, p, l, hp, hpodd, hl, hpl, by simpa [runningMax_eq] using hbig⟩
-  simpa [sylvesterNext, ErdosProblems.Erdos243.sylvesterNext] using
+    exact ⟨s, hMs, p, l, hp, hpodd, hl, hpl, by simpa [runningMax_eq] using! hbig⟩
+  simpa [sylvesterNext, ErdosProblems.Erdos243.sylvesterNext] using!
     ErdosProblems.Erdos243.recordRiseTwo_sylvesterNext_eventually
       a u v w hc e N hvpos hred hw hwpos hnum hden he hcentre hvanish
       hrec' hsupply'
