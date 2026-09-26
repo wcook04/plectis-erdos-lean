@@ -1,0 +1,110 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: v0.4
+project:
+  name: 'Erdős #251: the paper denominator exclusion at 2^39997'
+  description: >-
+    If either the prime series sum p_n/2^(n+1) or the prime-gap series
+    sum (p_(n+1)-p_n)/2^(n+1) equals a/b with a an integer and b a positive
+    natural number, then 2^39997 <= b and 10^12040 < b. Here p_n is the
+    zero-based enumeration of the primes. The proof transports the paper's
+    exact endpoint through a finite certificate with 80,200 primes below
+    1,023,068. Two Farey neighbours strictly enclose the analytic interval;
+    their determinant is one, so every rational in that interval has
+    denominator at least the sum of their denominators. The certificate's
+    stronger bounds 2^40062 and 10^12059 imply the printed bounds. This is a
+    finite denominator exclusion, compatible with rationality of both series.
+    It does not decide Erdős Problem 251 or give an irrationality measure.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - "11A41"
+  - "11J72"
+  - "11Y16"
+sources:
+- title: 'Erdős #251: prime-gap dyadic series, long paper and large certificate'
+  authors:
+  - Will Cook
+  id: https://github.com/wcook04/plectis-erdos/tree/7f3dbf0947c387335ffd392b689eea5721017d84
+  type: original-proof
+  relationship: other
+  note: >-
+    The paper obligation long251:res:cfexclusion and its source theorem
+    ErdosProblems.Erdos251.PaperR7.LargeCertificate.denominator_floor_both.
+    source-transport.json records every local source module in its import closure.
+  license: Apache-2.0
+  author_endorsement: participated
+- title: 'Erdős Problem #251'
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com/251
+  type: web discussion
+  relationship: background
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+status:
+  scope: One exact paper endpoint for either series and the printed denominator bounds.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 1
+  sorry_boundary: Only the trusted Challenge theorem body carries a placeholder.
+  axiom_audit_status: pending fresh target-toolchain build and axiom audit
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  development_status: substantive
+  canonical_claim_status: source_transport_prepared_pending_target_toolchain_replay
+  local_proof_provenance: ErdosProblems/Erdos251/PaperLargeCertificateR7.lean
+  main_results:
+  - declaration: Erdos249257.ExternalVerification251LargeDenominatorFloor.denominator_floor_both
+    file: Erdos251LargeCertificateSolution.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification251LargeDenominatorFloor/comparator.json
+    comparator_declaration: Erdos249257.ExternalVerification251LargeDenominatorFloor.denominator_floor_both
+    source_declaration: ErdosProblems.Erdos251.PaperR7.LargeCertificate.denominator_floor_both
+    source_file: ErdosProblems/Erdos251/PaperLargeCertificateR7.lean
+    source_commit: 7f3dbf0947c387335ffd392b689eea5721017d84
+    canonical_claim_status: source_transport_prepared_pending_target_toolchain_replay
+    transport: definitional
+    novelty_status: unassessed
+    boundary: >-
+      Neither series is proved irrational. A finite lower bound on a rational
+      representation's denominator is compatible with rationality.
+automation:
+  methods:
+  - method: agent
+    models:
+    - OpenAI GPT-6 Sol
+    framework: Lean 4 and Mathlib
+    tool_setup: Exact source transport and independent integer certificate replay; fresh Lean and Comparator replay pending.
+fidelity:
+  divergences: >-
+    The Challenge independently redeclares the four series definitions against
+    Mathlib alone. The Solution applies the exact source declaration. The source
+    closure is byte-identical to the pinned paper repository; the target uses
+    Lean 4.30.0 rather than the source pin's 4.29.1, so acceptance requires a
+    fresh build, axiom audit, Comparator check and independent kernel replay.
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    An independent Python sieve and Horner fold reproduced the 80,200-prime
+    prefix, both strict enclosing inequalities, determinant one and both
+    stronger floors. These arithmetic checks do not replace Lean or Comparator
+    verification. No external mathematical review or Palomar acceptance is claimed.

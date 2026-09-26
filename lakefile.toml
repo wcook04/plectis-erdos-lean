@@ -1426,3 +1426,11 @@ globs = ["ExternalVerification1049PaperStructuresP.+"]
 [[lean_lib]]
 name = "ExternalVerification1049PaperStructuresQ"
 globs = ["ExternalVerification1049PaperStructuresQ.+"]
+
+# The 250-block #251 certificate is an explicit replay target, outside defaultTargets.
+[[lean_lib]]
+name = "ExternalVerification251LargeDenominatorFloor"
+globs = ["ExternalVerification251LargeDenominatorFloor.+"]
+
+[[lean_lib]]
+name = "Erdos251LargeCertificateSolution"
