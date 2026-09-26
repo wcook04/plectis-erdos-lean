@@ -105,8 +105,7 @@ theorem paper_no_ties_take (n : ℕ) :
     finiteErdosSum_den_odd (insert (n + 1) (greedyMersennePrefixRat (1 / 2 : ℚ) n)) h0
   rw [hinsert] at hodd
   obtain ⟨k, hk⟩ := hodd
-  norm_num at hk
-  omega
+  norm_num at hk <;> omega
 
 /-- Long `lem:no-ties`, skip-safety boundary (irrationality).  The residual
 after a finite Boolean prefix is rational, while every tail `T_{k+1}` is

@@ -140,7 +140,7 @@ theorem actualLcm_integral_forces_topEdgeResidue_paper {a J K : ℕ} (ha : 8 ≤
   · linarith
   · refine ⟨windowDiscrepancy (periodLcm (2 ^ a)) (periodLcm (2 ^ a) + J) K
       / (2 : ℤ) ^ K + 1, ?_⟩
-    have hdm := Int.emod_add_ediv
+    have hdm := Int.emod_add_mul_ediv
       (windowDiscrepancy (periodLcm (2 ^ a)) (periodLcm (2 ^ a) + J) K)
       ((2 : ℤ) ^ K)
     rw [h1] at hdm
