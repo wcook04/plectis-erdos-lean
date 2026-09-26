@@ -1426,3 +1426,7 @@ globs = ["ExternalVerification1049PaperStructuresP.+"]
 [[lean_lib]]
 name = "ExternalVerification1049PaperStructuresQ"
 globs = ["ExternalVerification1049PaperStructuresQ.+"]
+
+[[lean_lib]]
+name = "ExternalVerification243PaperStatementsAF"
+globs = ["ExternalVerification243PaperStatementsAF.+"]
