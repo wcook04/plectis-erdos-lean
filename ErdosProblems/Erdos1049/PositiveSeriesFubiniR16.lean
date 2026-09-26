@@ -58,7 +58,7 @@ antidiagonals. This is the generic diagonal identity behind the gamma series. -/
 lemma hasSum_antidiagonal {f : ℕ × ℕ → ℝ} (hf : Summable f) :
     HasSum (fun n : ℕ => ∑ p ∈ Finset.HasAntidiagonal.antidiagonal n, f p) (∑' p, f p) := by
   classical
-  let e := (Finset.sigmaAntidiagonalEquivProd :
+  let e := (Finset.HasAntidiagonal.sigmaAntidiagonalEquivProd :
     (Σ n : ℕ, ↥(Finset.HasAntidiagonal.antidiagonal n)) ≃ ℕ × ℕ)
   have hs : Summable (fun p : Σ n : ℕ, ↥(Finset.HasAntidiagonal.antidiagonal n) => f p.2.val) := by
     exact e.summable_iff.mpr hf

@@ -936,7 +936,6 @@ lemma phi1_kappa_le (hq0 : 0 < q) (hq1 : q < 1) {μ : ℕ → ℕ} (hμ : Antito
       · rw [prod_inv_distrib, prod_pow]
         have hprod : ∏ i ∈ Iio j, (1 - q ^ ((j : ℕ) - (i : ℕ))) = qPochhammerFinite q q j := by
           have e := prod_Iio_fin j (fun m => 1 - q ^ ((j : ℕ) - m))
-          simp only at e
           rw [e, prod_range_one_sub_pow_sub]
         rw [hprod]
         have h1 := PaperR10.qPochhammerInfinity_le_finite hq0.le hq1 hq0.le hq1 j
