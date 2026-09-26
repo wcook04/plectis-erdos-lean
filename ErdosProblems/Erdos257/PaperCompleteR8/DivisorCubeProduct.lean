@@ -230,7 +230,7 @@ theorem cubeProductCost_le_exp (q : ℕ) (P : Finset ℕ) (z : ℝ) (hz : 0 ≤ 
     cubeProductCost q P z ≤ Real.exp (z * primeReciprocalMass P) / (q : ℝ) := by
   have hprod : (∏ p ∈ P, (1 + z / (p : ℝ))) ≤
       ∏ p ∈ P, Real.exp (z / (p : ℝ)) := by
-    apply Finset.prod_le_prod
+    apply Finset.prod_le_prod₀
     · intro p hp; positivity
     · intro p hp; simpa [add_comm] using! Real.add_one_le_exp (z / (p : ℝ))
   have hexp : (∏ p ∈ P, Real.exp (z / (p : ℝ))) =
