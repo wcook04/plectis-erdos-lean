@@ -1882,8 +1882,7 @@ theorem cofinal_large_prime_factorialGap_denominator_anchors
     have hgapPos : 0 < m.factorial - 1 := by
       have hfacLower : (2 : ℕ).factorial ≤ m.factorial :=
         Nat.factorial_le hm2
-      norm_num at hfacLower
-      omega
+      norm_num at hfacLower <;> omega
     have hqLe : q ≤ m.factorial - 1 :=
       Nat.le_of_dvd hgapPos hqHit
     omega
@@ -1926,8 +1925,7 @@ theorem cofinal_large_prime_factorialGap_two_step_denominator_anchors
     have hgapPos : 0 < m.factorial - 1 := by
       have hfacLower : (2 : ℕ).factorial ≤ m.factorial :=
         Nat.factorial_le hm2
-      norm_num at hfacLower
-      omega
+      norm_num at hfacLower <;> omega
     have hqLe : q ≤ m.factorial - 1 :=
       Nat.le_of_dvd hgapPos hqHit
     omega
@@ -1977,8 +1975,7 @@ theorem cofinal_largePrefixPrivateModulus_two_step_crt_anchors
     have hgapPos : 0 < m.factorial - 1 := by
       have hfacLower : (2 : ℕ).factorial ≤ m.factorial :=
         Nat.factorial_le hm2
-      norm_num at hfacLower
-      omega
+      norm_num at hfacLower <;> omega
     have hqLe : q ≤ m.factorial - 1 :=
       Nat.le_of_dvd hgapPos hqHit
     omega

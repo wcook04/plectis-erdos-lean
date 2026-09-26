@@ -141,7 +141,8 @@ theorem orderOf_b2_mod540525526767270388528448873_eq_105_from_emittedCertificate
       change (((ZMod.unitOfCoprime 2 hcop : (ZMod 540525526767270388528448873)ˣ) :
           ZMod 540525526767270388528448873) ^ 105) =
         (1 : ZMod 540525526767270388528448873)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
