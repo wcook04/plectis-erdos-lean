@@ -71,6 +71,28 @@ class ReleaseToolsTests(unittest.TestCase):
             self.assertEqual(saved["outcomes"][0]["status"], "invalid")
             self.assertIn("only Mathlib", saved["outcomes"][0]["error"])
 
+    def test_late_duplicate_identity_aborts_before_any_build(self):
+        with tempfile.TemporaryDirectory() as tmp, patch.object(axioms, "REPO_ROOT", Path(tmp)), \
+                patch.object(axioms, "source_identity", return_value={"commit": "test"}):
+            paths = ["PalomarCorpus/E68", "PalomarCorpus/E243"]
+            for path in paths:
+                root = Path(tmp) / path
+                root.mkdir(parents=True)
+                problem = root.name
+                (root / "Challenge.lean").write_text("import Mathlib\n")
+                (root / "comparator.json").write_text(json.dumps({
+                    "challenge_module": f"PalomarCorpus.{problem}.Challenge",
+                    "solution_module": f"Solutions.PalomarCorpus.{problem}",
+                    "theorem_names": ["Same.selected_theorem"],
+                }))
+            progress = Path(tmp) / "audit-progress.json"
+            with patch.object(axioms.subprocess, "run") as runner, \
+                    self.assertRaisesRegex(ValueError, "duplicated selected"):
+                axioms.run_palomar_audits(paths, progress)
+            runner.assert_not_called()
+            self.assertEqual([row["status"] for row in json.loads(progress.read_text())["outcomes"]],
+                             ["not_attempted", "invalid"])
+
     def test_publication_audit_continues_after_an_early_build_failure(self):
         with tempfile.TemporaryDirectory() as tmp, patch.object(axioms, "REPO_ROOT", Path(tmp)), \
                 patch.object(axioms, "source_identity", return_value={"commit": "test", "source_file_count": 0,
