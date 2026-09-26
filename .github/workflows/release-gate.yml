@@ -53,22 +53,32 @@ jobs:
         with:
           name: release-gate-plan
           path: artifacts
-      - name: Restore an available source-compatible corpus build
+      # Each shard restores and saves its own corpus build. Before this, the
+      # gate only restored: the one workflow that saved a corpus build (Lean
+      # Convenience) is cancelled by every new push, and lean-action saved a
+      # 2.5 GB .lake copy per commit that evicted everything else from the
+      # 10 GB cache, so Solutions and PalomarCorpus rebuilt cold every run
+      # and hit the job timeout (PR #10, 26 Sep 2026).
+      - name: Restore this shard's newest corpus build
         uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: .lake/build
-          key: corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-${{ github.sha }}-release
+          key: corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-release-${{ matrix.shard }}-${{ github.sha }}
           restore-keys: |
+            corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-release-${{ matrix.shard }}-
             corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-
       - uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
         with:
           use-mathlib-cache: auto
+          use-github-cache: false
           build: false
           test: false
           lint: false
       - name: Build every target promised by this shard
+        # Leaves the job time to save the partial build below.
+        timeout-minutes: 270
         env:
-          LEAN_NUM_THREADS: "1"
+          LEAN_NUM_THREADS: "2"
           RELEASE_HEARTBEAT_SECONDS: "300"
           RELEASE_MODULE_BUDGET_SECONDS: "3600"
         run: >-
@@ -83,9 +93,23 @@ jobs:
           name: release-target-${{ matrix.shard }}
           path: artifacts/report.json
           if-no-files-found: error
+      # Saved even when the build fails, times out or is cancelled: Lake
+      # treats a module as built only once its trace is written after its
+      # outputs, so a partial build is a valid head start for the next run.
+      - name: Save this shard's corpus build
+        if: always()
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: .lake/build
+          key: corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-release-${{ matrix.shard }}-${{ github.sha }}
 
+  # The audit runs after the shards and starts from the Solutions shard's
+  # saved build. Run in parallel it repeated the same cold build with
+  # unbounded Lean threads, and its runner was shut down at 93 minutes
+  # (run 36205344986).
   audit:
-    needs: plan
+    needs: [plan, build]
+    if: ${{ !cancelled() && needs.plan.result == 'success' }}
     runs-on: ubuntu-24.04
     timeout-minutes: 300
     steps:
@@ -94,20 +118,24 @@ jobs:
         with:
           name: release-gate-plan
           path: artifacts
-      - name: Restore an available source-compatible corpus build
+      - name: Restore the Solutions shard's corpus build
         uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: .lake/build
-          key: corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-${{ github.sha }}-release
+          key: corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-release-Solutions-${{ github.sha }}
           restore-keys: |
+            corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-release-Solutions-
             corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-
       - uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
         with:
           use-mathlib-cache: auto
+          use-github-cache: false
           build: false
           test: false
           lint: false
       - name: Audit every publication entry's Solution environment
+        env:
+          LEAN_NUM_THREADS: "2"
         run: >-
           python3 scripts/release_gate_coverage.py audit
           --plan artifacts/plan.json

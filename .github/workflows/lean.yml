@@ -46,11 +46,12 @@ jobs:
             corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-
       - uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
         with:
+          use-github-cache: false
           use-mathlib-cache: auto
           build: false
       - name: Build launch entries sequentially
         env:
-          LEAN_NUM_THREADS: "1"
+          LEAN_NUM_THREADS: "2"
           RELEASE_HEARTBEAT_SECONDS: "300"
           RELEASE_MODULE_BUDGET_SECONDS: "3600"
         run: python3 scripts/build_launch_targets.py
