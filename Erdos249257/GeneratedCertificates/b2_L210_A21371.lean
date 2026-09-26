@@ -28,26 +28,13 @@ theorem concrete_generated_b2_F210_A21371_factorization_support_cases
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b2_F210_A21371_p2_prime_witness :
     PrimeComponentWitness 210 21371 2 2 3 := by
+  have hquot : primeComponentQuotient 2 210 2 = 40564819207303340847894502572033 := by decide
   refine ⟨(by decide : Nat.Prime 3), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 210 2 = 40564819207303340847894502572033 := by decide
-    rw [hquot]
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 210 2 = 40564819207303340847894502572033 := by decide
-    rw [hquot]
-    have hfactor : (40564819207303340847894502572033 : Nat).factorization 3 = 2 := by
-      rw [show (40564819207303340847894502572033 : Nat) = 3 ^ 2 * 4507202134144815649766055841337 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      change (3 ^ 2 : Nat).factorization 3 + (4507202134144815649766055841337 : Nat).factorization 3 = 2
-      have hleft : (3 ^ 2 : Nat).factorization 3 = 2 :=
-        Nat.factorization_pow_self (by decide : Nat.Prime 3)
-      have hright : (4507202134144815649766055841337 : Nat).factorization 3 = 0 :=
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 3 ∣ 4507202134144815649766055841337)
-      rw [hleft, hright]
-    rw [hfactor]
-    have hA_factor : (21371 : Nat).factorization 3 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 3 ∣ 21371)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 3 ∣ 21371)]
+    exact Nat.Prime.factorization_pos_of_dvd (by decide : Nat.Prime 3)
+      (by decide) (by decide)
 
 theorem concrete_generated_b2_F210_A21371_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 210 21371 2 2 := by
@@ -56,24 +43,13 @@ theorem concrete_generated_b2_F210_A21371_p2_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b2_F210_A21371_p3_prime_witness :
     PrimeComponentWitness 210 21371 2 3 3 := by
+  have hquot : primeComponentQuotient 2 210 3 = 1393796574908163946347162983661240005427201 := by decide
   refine ⟨(by decide : Nat.Prime 3), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 210 3 = 1393796574908163946347162983661240005427201 := by decide
-    rw [hquot]
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 210 3 = 1393796574908163946347162983661240005427201 := by decide
-    rw [hquot]
-    have hfactor : (1393796574908163946347162983661240005427201 : Nat).factorization 3 = 1 := by
-      rw [show (1393796574908163946347162983661240005427201 : Nat) = 3 * 464598858302721315449054327887080001809067 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 3),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 3 ∣ 464598858302721315449054327887080001809067),
-      ]
-    rw [hfactor]
-    have hA_factor : (21371 : Nat).factorization 3 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 3 ∣ 21371)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 3 ∣ 21371)]
+    exact Nat.Prime.factorization_pos_of_dvd (by decide : Nat.Prime 3)
+      (by decide) (by decide)
 
 theorem concrete_generated_b2_F210_A21371_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 210 21371 2 3 := by
@@ -82,24 +58,13 @@ theorem concrete_generated_b2_F210_A21371_p3_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b2_F210_A21371_p5_prime_witness :
     PrimeComponentWitness 210 21371 2 5 11 := by
+  have hquot : primeComponentQuotient 2 210 5 = 374144419156796217651873571134047410522241514864641 := by decide
   refine ⟨(by decide : Nat.Prime 11), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 210 5 = 374144419156796217651873571134047410522241514864641 := by decide
-    rw [hquot]
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 210 5 = 374144419156796217651873571134047410522241514864641 := by decide
-    rw [hquot]
-    have hfactor : (374144419156796217651873571134047410522241514864641 : Nat).factorization 11 = 1 := by
-      rw [show (374144419156796217651873571134047410522241514864641 : Nat) = 11 * 34013129014254201604715779194004310047476501351331 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 11),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 11 ∣ 34013129014254201604715779194004310047476501351331),
-      ]
-    rw [hfactor]
-    have hA_factor : (21371 : Nat).factorization 11 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 11 ∣ 21371)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 11 ∣ 21371)]
+    exact Nat.Prime.factorization_pos_of_dvd (by decide : Nat.Prime 11)
+      (by decide) (by decide)
 
 theorem concrete_generated_b2_F210_A21371_p5_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 210 21371 2 5 := by
@@ -108,24 +73,13 @@ theorem concrete_generated_b2_F210_A21371_p5_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b2_F210_A21371_p7_prime_witness :
     PrimeComponentWitness 210 21371 2 7 127 := by
+  have hquot : primeComponentQuotient 2 210 7 = 1532495542293136552393534905231451066410343099426406401 := by decide
   refine ⟨(by decide : Nat.Prime 127), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 210 7 = 1532495542293136552393534905231451066410343099426406401 := by decide
-    rw [hquot]
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 210 7 = 1532495542293136552393534905231451066410343099426406401 := by decide
-    rw [hquot]
-    have hfactor : (1532495542293136552393534905231451066410343099426406401 : Nat).factorization 127 = 1 := by
-      rw [show (1532495542293136552393534905231451066410343099426406401 : Nat) = 127 * 12066894033804224821996337836468118633152307869499263 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 127),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 127 ∣ 12066894033804224821996337836468118633152307869499263),
-      ]
-    rw [hfactor]
-    have hA_factor : (21371 : Nat).factorization 127 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 127 ∣ 21371)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 127 ∣ 21371)]
+    exact Nat.Prime.factorization_pos_of_dvd (by decide : Nat.Prime 127)
+      (by decide) (by decide)
 
 theorem concrete_generated_b2_F210_A21371_p7_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 210 21371 2 7 := by
