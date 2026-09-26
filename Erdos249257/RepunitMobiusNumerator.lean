@@ -333,8 +333,7 @@ theorem sum_divisors_moebius_ratio_eq_baseMobiusShadow {r : ℕ}
         (RadicalMobiusShadow.mobiusNumerator r : ℚ) := by
     have hnumZ := congrArg (fun z : ℤ => (z : ℚ))
       (divisor_mobiusNumerator_eq_subset hr)
-    push_cast at hnumZ
-    convert hnumZ using 1 <;> simp
+    simpa only [Int.cast_sum, Int.cast_mul, Int.cast_natCast] using hnumZ
   rw [RadicalMobiusShadow.baseMobiusShadow, Rat.divInt_eq_div,
     ← hnum, Finset.sum_div]
   apply Finset.sum_congr rfl

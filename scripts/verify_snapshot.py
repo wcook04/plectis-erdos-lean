@@ -153,6 +153,12 @@ def _private_text_findings(root: Path) -> list[dict[str, str]]:
     return findings
 
 
+def _unpinned_workflow_actions(workflow: str) -> tuple[int, list[str]]:
+    actions = re.findall(r"^\s*-\s*uses:\s*([^\s#]+)", workflow, re.M)
+    return len(actions), [action for action in actions
+                          if not re.fullmatch(r"[^@\s]+@[0-9a-f]{40}", action)]
+
+
 def verify(root: Path) -> dict[str, Any]:
     failures: list[dict[str, Any]] = []
     blockers: list[dict[str, Any]] = []
@@ -302,9 +308,10 @@ def verify(root: Path) -> dict[str, Any]:
 
     try:
         workflow = (root / ".github" / "workflows" / "release-gate.yml").read_text(encoding="utf-8")
-        pins = re.findall(r"uses: [^@\s]+@([0-9a-f]{40})", workflow)
-        if len(pins) != 2:
-            failures.append({"kind": "release_gate_workflow_not_full_sha_pinned", "pin_count": len(pins)})
+        action_count, unpinned = _unpinned_workflow_actions(workflow)
+        if not action_count or unpinned:
+            failures.append({"kind": "release_gate_workflow_not_full_sha_pinned",
+                             "action_count": action_count, "unpinned": unpinned})
     except FileNotFoundError:
         pass
 

@@ -51,7 +51,7 @@ theorem exceptional_mul_prod_le_add_sum_sub_one
       have hza1 : 1 ≤ z a := hz1 a (Finset.mem_insert_self _ _)
       have hza0 : 0 ≤ z a := le_trans (by norm_num) hza1
       have hprodS1 : 1 ≤ ∏ i ∈ S, z i := by
-        exact Finset.one_le_prod
+        exact Finset.one_le_prod₀
           (fun i hi => hz1 i (Finset.mem_insert_of_mem hi))
       have hya0 : 0 ≤ y * z a := mul_nonneg hy0 hza0
       have htotal' : (y * z a) * ∏ i ∈ S, z i ≤ 1 := by
@@ -170,7 +170,7 @@ theorem exists_two_lt_one_of_sum_lt_card_sub_one_add_product_bonus
     have hprodErase : ∏ j ∈ S.erase i, x j ≤ M ^ (S.erase i).card := by
       calc
         ∏ j ∈ S.erase i, x j ≤ ∏ _j ∈ S.erase i, M := by
-          exact Finset.prod_le_prod
+          exact Finset.prod_le_prod₀
             (fun j hj => hx0 j (Finset.mem_of_mem_erase hj))
             (fun j hj => hxM j (Finset.mem_of_mem_erase hj))
         _ = M ^ (S.erase i).card := by simp

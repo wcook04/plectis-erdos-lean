@@ -44,13 +44,8 @@ theorem smoothPrefixLcm_eq_threePrimeHeight
     {p q r x : ℕ} (hp : p.Prime) (hq : q.Prime) (hr : r.Prime)
     (hpq : p ≠ q) (hpr : p ≠ r) (hqr : q ≠ r) (hx : x ≠ 0) :
     smoothPrefixLcm p q r x = threePrimeHeight p q r x := by
-  simpa [smoothPrefixLcm, smoothPrefixExponents, smooth3Val,
-    threePrimeHeight, ErdosProblems.Erdos269.smoothPrefixLcm,
-    ErdosProblems.Erdos269.smoothPrefixExponents,
-    ErdosProblems.Erdos269.smooth3Val,
-    ErdosProblems.Erdos269.threePrimeHeight] using
-    ErdosProblems.Erdos269.smoothPrefixLcm_eq_threePrimeHeight
-      hp hq hr hpq hpr hqr hx
+  exact ErdosProblems.Erdos269.smoothPrefixLcm_eq_threePrimeHeight
+    hp hq hr hpq hpr hqr hx
 
 theorem threePrimeKernelQ_eq_of_sameLogCell
     {p q r i j k i' j' k' : ℕ}
@@ -87,16 +82,8 @@ theorem finiteSmoothKernelSum_groupedByHeight
       threePrimeKernelQ p q r e.1 e.2.1 e.2.2) =
       ∑ H ∈ (smoothExponentBox hp hq hr).image (smoothPointHeight p q r),
         (smoothHeightFiber p q r hp hq hr H).card • ((H : ℚ)⁻¹) := by
-  simpa [smoothExponentBox, smoothPointHeight, smoothHeightFiber,
-    smooth3Val, threePrimeHeight, threePrimeKernelQ,
-    ErdosProblems.Erdos269.smoothExponentBox,
-    ErdosProblems.Erdos269.smoothPointHeight,
-    ErdosProblems.Erdos269.smoothHeightFiber,
-    ErdosProblems.Erdos269.smooth3Val,
-    ErdosProblems.Erdos269.threePrimeHeight,
-    ErdosProblems.Erdos269.threePrimeKernelQ] using
-    ErdosProblems.Erdos269.finiteSmoothKernelSum_groupedByHeight
-      p q r hp hq hr
+  exact ErdosProblems.Erdos269.finiteSmoothKernelSum_groupedByHeight
+    p q r hp hq hr
 
 theorem smoothExponentShell_card_quadratic
     {p q r lo hi hp hq hr j : ℕ}
@@ -105,11 +92,8 @@ theorem smoothExponentShell_card_quadratic
     (hsum : hp + hq + hr = j) :
     9 * (smoothExponentShell p q r lo hi hp hq hr).card ≤
       (j + 3) ^ 2 := by
-  simpa [smoothExponentShell, smooth3Val,
-    ErdosProblems.Erdos269.smoothExponentShell,
-    ErdosProblems.Erdos269.smooth3Val] using
-    ErdosProblems.Erdos269.smoothExponentShell_card_quadratic
-      hrPos hwidth hpq hqr hsum
+  exact ErdosProblems.Erdos269.smoothExponentShell_card_quadratic
+    hrPos hwidth hpq hqr hsum
 
 theorem kernel_235_minor_eq_neg_one_fifteen :
     threePrimeKernelQ 2 3 5 0 0 0 *

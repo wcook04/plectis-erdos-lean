@@ -296,7 +296,7 @@ theorem adjacentUnitCarryWindowOffset_eq_twoStep_factorization
   have hdenFactor : V₁ * G₀ = V₀ * F := by
     have hcast := congrArg (fun x : ℕ => (x : ℤ)) hdenFactorNat
     simpa only [V₀, V₁, F, G₀, Nat.cast_mul,
-      Nat.cast_sub hfacOne] using hcast
+      Nat.cast_sub hfacOne, Nat.cast_one] using hcast
   change U₁ * G₀ = M * U₀ * F - V₀ - b₀ * V₀ * F at hrecM
   simp only [Nat.cast_add, Nat.cast_one] at hrecNext
   change

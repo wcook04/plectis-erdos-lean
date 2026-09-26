@@ -19,28 +19,7 @@ noncomputable def coefficientContent (f : ℕ →₀ ℤ) : ℕ :=
 theorem attainable_moment_ideal {D p : ℕ} (hD : 2 ≤ D)
     (hp : p.Prime) (hDp : D / 2 < p) (hpD : p ≤ D) (m : ℤ) :
     AttainsMoment D m ↔ minimumMoment D p ∣ m := by
-  simpa [channelWeight, channelNumerator, factorialMoment, channelLCM,
-    adjacentDifference, isolatedChannelUnit, channelScalar, finiteScalarGcd,
-    channelBasisColumn, channelSynthesis, kernelCoordinates, canonicalKernel,
-    kernelOne, Admissible, LowChannels, AttainsMoment, minimumMoment,
-    PrimitiveVector, coefficientContent, ErdosProblems.Erdos68.channelWeight,
-    ErdosProblems.Erdos68.channelNumerator, ErdosProblems.Erdos68.factorialMoment,
-    ErdosProblems.Erdos68.channelLCM, ErdosProblems.Erdos68.adjacentDifference,
-    ErdosProblems.Erdos68.isolatedChannelUnit,
-    ErdosProblems.Erdos68.PaperComplete.channelScalar,
-    ErdosProblems.Erdos68.PaperComplete.finiteScalarGcd,
-    ErdosProblems.Erdos68.PaperComplete.channelBasisColumn,
-    ErdosProblems.Erdos68.PaperComplete.channelSynthesis,
-    ErdosProblems.Erdos68.PaperComplete.kernelCoordinates,
-    ErdosProblems.Erdos68.PaperComplete.canonicalKernel,
-    ErdosProblems.Erdos68.PaperComplete.kernelOne,
-    ErdosProblems.Erdos68.PaperComplete.Admissible,
-    ErdosProblems.Erdos68.PaperComplete.LowChannels,
-    ErdosProblems.Erdos68.PaperComplete.AttainsMoment,
-    ErdosProblems.Erdos68.PaperComplete.minimumMoment,
-    ErdosProblems.Erdos68.PaperComplete.PrimitiveVector,
-    ErdosProblems.Erdos68.PaperComplete.coefficientContent] using
-    ErdosProblems.Erdos68.PaperComplete.attainable_moment_ideal hD hp hDp hpD m
+  exact ErdosProblems.Erdos68.PaperComplete.attainable_moment_ideal hD hp hDp hpD m
 
 theorem exact_moment_ideal_with_primitive_attainment {D p : ℕ} (hD : 2 ≤ D)
     (hp : p.Prime) (hDp : D / 2 < p) (hpD : p ≤ D) :
@@ -48,83 +27,18 @@ theorem exact_moment_ideal_with_primitive_attainment {D p : ℕ} (hD : 2 ≤ D)
     (∀ m : ℤ, AttainsMoment D m ↔ minimumMoment D p ∣ m) ∧
     ∃ f : ℕ →₀ ℤ, Admissible f ∧ LowChannels D f ∧
       factorialMoment f = minimumMoment D p ∧ PrimitiveVector f := by
-  simpa [channelWeight, channelNumerator, factorialMoment, channelLCM,
-    adjacentDifference, isolatedChannelUnit, channelScalar, finiteScalarGcd,
-    channelBasisColumn, channelSynthesis, kernelCoordinates, canonicalKernel,
-    kernelOne, Admissible, LowChannels, AttainsMoment, minimumMoment,
-    PrimitiveVector, coefficientContent, ErdosProblems.Erdos68.channelWeight,
-    ErdosProblems.Erdos68.channelNumerator, ErdosProblems.Erdos68.factorialMoment,
-    ErdosProblems.Erdos68.channelLCM, ErdosProblems.Erdos68.adjacentDifference,
-    ErdosProblems.Erdos68.isolatedChannelUnit,
-    ErdosProblems.Erdos68.PaperComplete.channelScalar,
-    ErdosProblems.Erdos68.PaperComplete.finiteScalarGcd,
-    ErdosProblems.Erdos68.PaperComplete.channelBasisColumn,
-    ErdosProblems.Erdos68.PaperComplete.channelSynthesis,
-    ErdosProblems.Erdos68.PaperComplete.kernelCoordinates,
-    ErdosProblems.Erdos68.PaperComplete.canonicalKernel,
-    ErdosProblems.Erdos68.PaperComplete.kernelOne,
-    ErdosProblems.Erdos68.PaperComplete.Admissible,
-    ErdosProblems.Erdos68.PaperComplete.LowChannels,
-    ErdosProblems.Erdos68.PaperComplete.AttainsMoment,
-    ErdosProblems.Erdos68.PaperComplete.minimumMoment,
-    ErdosProblems.Erdos68.PaperComplete.PrimitiveVector,
-    ErdosProblems.Erdos68.PaperComplete.coefficientContent] using
-    ErdosProblems.Erdos68.PaperComplete.exact_moment_ideal_with_primitive_attainment
-      hD hp hDp hpD
+  exact ErdosProblems.Erdos68.PaperComplete.exact_moment_ideal_with_primitive_attainment hD hp hDp hpD
 
 theorem minimum_moment_content_one {D p : ℕ} (hD : 2 ≤ D)
     (hp : p.Prime) (hDp : D / 2 < p) (hpD : p ≤ D) :
     ∃ f : ℕ →₀ ℤ, Admissible f ∧ LowChannels D f ∧
       factorialMoment f = minimumMoment D p ∧ coefficientContent f = 1 := by
-  simpa [channelWeight, channelNumerator, factorialMoment, channelLCM,
-    adjacentDifference, isolatedChannelUnit, channelScalar, finiteScalarGcd,
-    channelBasisColumn, channelSynthesis, kernelCoordinates, canonicalKernel,
-    kernelOne, Admissible, LowChannels, AttainsMoment, minimumMoment,
-    PrimitiveVector, coefficientContent, ErdosProblems.Erdos68.channelWeight,
-    ErdosProblems.Erdos68.channelNumerator, ErdosProblems.Erdos68.factorialMoment,
-    ErdosProblems.Erdos68.channelLCM, ErdosProblems.Erdos68.adjacentDifference,
-    ErdosProblems.Erdos68.isolatedChannelUnit,
-    ErdosProblems.Erdos68.PaperComplete.channelScalar,
-    ErdosProblems.Erdos68.PaperComplete.finiteScalarGcd,
-    ErdosProblems.Erdos68.PaperComplete.channelBasisColumn,
-    ErdosProblems.Erdos68.PaperComplete.channelSynthesis,
-    ErdosProblems.Erdos68.PaperComplete.kernelCoordinates,
-    ErdosProblems.Erdos68.PaperComplete.canonicalKernel,
-    ErdosProblems.Erdos68.PaperComplete.kernelOne,
-    ErdosProblems.Erdos68.PaperComplete.Admissible,
-    ErdosProblems.Erdos68.PaperComplete.LowChannels,
-    ErdosProblems.Erdos68.PaperComplete.AttainsMoment,
-    ErdosProblems.Erdos68.PaperComplete.minimumMoment,
-    ErdosProblems.Erdos68.PaperComplete.PrimitiveVector,
-    ErdosProblems.Erdos68.PaperComplete.coefficientContent] using
-    ErdosProblems.Erdos68.PaperComplete.minimum_moment_content_one hD hp hDp hpD
+  exact ErdosProblems.Erdos68.PaperComplete.minimum_moment_content_one hD hp hDp hpD
 
 theorem minimumMoment_independent_prime {D p q : ℕ} (hD : 2 ≤ D)
     (hp : p.Prime) (hDp : D / 2 < p) (hpD : p ≤ D)
     (hq : q.Prime) (hDq : D / 2 < q) (hqD : q ≤ D) :
     minimumMoment D p = minimumMoment D q := by
-  simpa [channelWeight, channelNumerator, factorialMoment, channelLCM,
-    adjacentDifference, isolatedChannelUnit, channelScalar, finiteScalarGcd,
-    channelBasisColumn, channelSynthesis, kernelCoordinates, canonicalKernel,
-    kernelOne, Admissible, LowChannels, AttainsMoment, minimumMoment,
-    PrimitiveVector, coefficientContent, ErdosProblems.Erdos68.channelWeight,
-    ErdosProblems.Erdos68.channelNumerator, ErdosProblems.Erdos68.factorialMoment,
-    ErdosProblems.Erdos68.channelLCM, ErdosProblems.Erdos68.adjacentDifference,
-    ErdosProblems.Erdos68.isolatedChannelUnit,
-    ErdosProblems.Erdos68.PaperComplete.channelScalar,
-    ErdosProblems.Erdos68.PaperComplete.finiteScalarGcd,
-    ErdosProblems.Erdos68.PaperComplete.channelBasisColumn,
-    ErdosProblems.Erdos68.PaperComplete.channelSynthesis,
-    ErdosProblems.Erdos68.PaperComplete.kernelCoordinates,
-    ErdosProblems.Erdos68.PaperComplete.canonicalKernel,
-    ErdosProblems.Erdos68.PaperComplete.kernelOne,
-    ErdosProblems.Erdos68.PaperComplete.Admissible,
-    ErdosProblems.Erdos68.PaperComplete.LowChannels,
-    ErdosProblems.Erdos68.PaperComplete.AttainsMoment,
-    ErdosProblems.Erdos68.PaperComplete.minimumMoment,
-    ErdosProblems.Erdos68.PaperComplete.PrimitiveVector,
-    ErdosProblems.Erdos68.PaperComplete.coefficientContent] using
-    ErdosProblems.Erdos68.PaperComplete.minimumMoment_independent_prime
-      hD hp hDp hpD hq hDq hqD
+  exact ErdosProblems.Erdos68.PaperComplete.minimumMoment_independent_prime hD hp hDp hpD hq hDq hqD
 
 end PalomarCorpus.E68.MomentIdeal

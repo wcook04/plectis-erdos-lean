@@ -320,8 +320,8 @@ private theorem sum_divisors_moebius_mul_div_real (n : ℕ+) :
       (Nat.totient (n : ℕ) : ℝ) := by
   have h := congrArg (fun z : ℤ => (z : ℝ))
     (sum_divisors_moebius_mul_div (n : ℕ) n.pos)
-  push_cast at h
-  simpa using h
+  simp only [Int.cast_sum, Int.cast_mul, Int.cast_natCast] at h
+  exact h
 
 /-- The absolutely summable product family whose product indices lie strictly
 past `N`. -/

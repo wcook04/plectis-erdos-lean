@@ -2,57 +2,136 @@
 # SPDX-License-Identifier: Apache-2.0
 name: Lean Release Gate
 
-# Release-gate workflow. All third-party actions are pinned by full commit SHA.
+# Every launch target and the publication audit must produce a source-bound receipt.
 on:
   workflow_dispatch:
   pull_request:
     branches: [main]
-  # A release is cut by pushing a tag, and until this trigger existed the gate had
-  # never run on one: pull_request and workflow_dispatch alone meant a tag could be
-  # published with only the convenience workflow behind it.
   push:
     tags: ['v*']
 
 permissions:
   contents: read
 
+# A newer push to the same pull request supersedes the older gate run.
+concurrency:
+  group: release-gate-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
-  build:
-    # Pinned rather than tracking `ubuntu-latest`, so the October 2026 migration of
-    # that label cannot change the release environment without a commit here.
+  plan:
     runs-on: ubuntu-24.04
+    outputs:
+      shards: ${{ steps.coverage.outputs.shards }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Resolve the exact launch-target population
+        id: coverage
+        run: >-
+          python3 scripts/release_gate_coverage.py plan
+          --out artifacts/plan.json
+          --github-output "$GITHUB_OUTPUT"
+      - name: Preserve the promised population
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: release-gate-plan
+          path: artifacts/plan.json
+          if-no-files-found: error
+
+  build:
+    needs: plan
+    runs-on: ubuntu-24.04
+    timeout-minutes: 300
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: ${{ fromJSON(needs.plan.outputs.shards) }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: release-gate-plan
+          path: artifacts
+      - name: Restore an available source-compatible corpus build
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: .lake/build
+          key: corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-${{ github.sha }}-release
+          restore-keys: |
+            corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-
       - uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
         with:
           use-mathlib-cache: auto
           build: false
           test: false
           lint: false
-      - name: Build launch entries sequentially
+      - name: Build every target promised by this shard
         env:
           LEAN_NUM_THREADS: "1"
-        run: |
-          set -euo pipefail
-          python3 - <<'PY'
-          import re
-          import subprocess
-
-          text = open("lakefile.toml", encoding="utf-8").read()
-          match = re.search(r'defaultTargets\s*=\s*\[(.*?)\]', text, re.S)
-          if not match:
-              raise SystemExit("defaultTargets not found in lakefile.toml")
-          targets = re.findall(r'"([^"]+)"', match.group(1))
-          for target in targets:
-              print(f"=== lake build {target} ===", flush=True)
-              subprocess.run(["lake", "build", target], check=True)
-          PY
-      - name: Audit every publication entry's Solution environment
-        run: |
-          mkdir -p artifacts
-          python3 scripts/check_axiom_budget.py --run-palomar --json > artifacts/palomar-axiom-audit.json
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+          RELEASE_HEARTBEAT_SECONDS: "300"
+          RELEASE_MODULE_BUDGET_SECONDS: "3600"
+        run: >-
+          python3 scripts/release_gate_coverage.py run-shard
+          --plan artifacts/plan.json
+          --shard-id "${{ matrix.shard }}"
+          --report artifacts/report.json
+      - name: Preserve incremental results, including failures
         if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: palomar-publication-audit
-          path: artifacts/palomar-axiom-audit.json
+          name: release-target-${{ matrix.shard }}
+          path: artifacts/report.json
+          if-no-files-found: error
+
+  audit:
+    needs: plan
+    runs-on: ubuntu-24.04
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: release-gate-plan
+          path: artifacts
+      - name: Restore an available source-compatible corpus build
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: .lake/build
+          key: corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-${{ github.sha }}-release
+          restore-keys: |
+            corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-
+      - uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
+        with:
+          use-mathlib-cache: auto
+          build: false
+          test: false
+          lint: false
+      - name: Audit every publication entry's Solution environment
+        run: >-
+          python3 scripts/release_gate_coverage.py audit
+          --plan artifacts/plan.json
+          --out-dir artifacts/audit
+      - name: Preserve the publication audit, including failures
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: release-axiom-audit
+          path: artifacts/audit/
+          if-no-files-found: error
+
+  reconcile:
+    needs: [plan, build, audit]
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          path: ci-artifacts
+      - name: Require every source-bound target and audit receipt
+        if: always()
+        run: >-
+          python3 scripts/release_gate_coverage.py check-run
+          --plan ci-artifacts/release-gate-plan/plan.json
+          --artifacts ci-artifacts

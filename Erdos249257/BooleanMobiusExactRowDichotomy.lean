@@ -40,8 +40,7 @@ theorem exactLocalMersenneHalfRow_double_or_recycle
     have hodd := finiteErdosSum_den_odd D hzero
     rw [← localMersennePrefixValue_eq_finiteErdosSum, heq] at hodd
     obtain ⟨k, hk⟩ := hodd
-    norm_num at hk
-    omega
+    norm_num at hk <;> omega
   rcases lt_or_gt_of_ne hne with hbelow | habove
   · exact Or.inl
       (exactLocalMersenneHalfRow_two_mul_sub_one_of_exact_below

@@ -461,7 +461,10 @@ theorem integerHalfCarry_union_Ioi_eq_producerCarry_add_four
       show 2 * D + 2 = 2 * D + 2 by rfl,
       hBfinal, hAfinal, htwoDOne]
     omega
-  simpa [B, A, producerCarry] using hfinal
+  first
+  | (simpa [B, A, producerCarry] using hfinal; done)
+  | (simp only [B, A, producerCarry]; exact hfinal)
+  | (simpa [B, A, producerCarry, integerHalfCarry] using hfinal; done)
 
 /-- Centring subtracts the common Möbius baseline unit, so the carry-four
 swap becomes the promised three-cell translation. -/

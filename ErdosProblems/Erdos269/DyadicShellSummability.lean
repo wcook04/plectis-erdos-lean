@@ -146,8 +146,7 @@ theorem summable_dyadicShellMassR235 : Summable dyadicShellMassR235 := by
   have hshift : Summable
       (fun n : ℕ => (((n + 1 : ℕ) : ℝ) ^ 2) *
         (1 / 2 : ℝ) ^ (n + 1)) := by
-    simpa only [Function.comp_apply, Nat.add_comm] using
-      hpoly.comp_injective (add_right_injective 1)
+    exact (summable_nat_add_iff 1).mpr hpoly
   have hmajor : Summable
       (fun n : ℕ => 30 * ((((n + 1 : ℕ) : ℝ) ^ 2) *
         (1 / 2 : ℝ) ^ (n + 1))) := hshift.mul_left 30

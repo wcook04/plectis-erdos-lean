@@ -28,7 +28,7 @@ theorem reducedDenominator_factorization_eq_iff
   have hsub : L.factorization p - (B.gcd L).factorization p =
       L.factorization p ↔ (B.gcd L).factorization p = 0 := by omega
   rw [hsub]
-  simp [Nat.factorization_eq_zero_iff, hg.ne', hp, Nat.dvd_gcd_iff, hpL]
+  simp [Nat.factorization_eq_zero_iff, hg.ne', hp, hp.ne_one, Nat.dvd_gcd_iff, hpL]
 
 /-- The denominator of the actual rational quotient is the common denominator
 divided by the numerator's gcd with it. -/

@@ -67,33 +67,16 @@ theorem one_div_oddOrder_le_reciprocalMass_of_support_fraction
     (hvalue : erdosSupportSeries 2 A =
       (p : ℝ) / ((2 ^ c * v : ℕ) : ℝ)) :
     (1 : ℝ) / (oddDoublingOrder v hvodd : ℝ) ≤ reciprocalMass A := by
-  simpa [reciprocalSupportTerm, reciprocalMass, oddDoublingOrder,
-    erdosSupportSeries,
-    Erdos257PeriodNoncollapse.reciprocalSupportTerm,
-    Erdos257PeriodNoncollapse.reciprocalMass,
-    Erdos257PeriodNoncollapse.oddDoublingOrder,
-    Erdos257PeriodNoncollapse.erdosSupportSeries] using
-      Erdos257PeriodNoncollapse.one_div_oddOrder_le_reciprocalMass_of_support_fraction
-        A hA (by
-          simpa [reciprocalSupportTerm,
-            Erdos257PeriodNoncollapse.reciprocalSupportTerm] using hsum)
-        p c hv hvodd hpv (by
-          simpa [erdosSupportSeries,
-            Erdos257PeriodNoncollapse.erdosSupportSeries] using hvalue)
+  exact Erdos257PeriodNoncollapse.one_div_oddOrder_le_reciprocalMass_of_support_fraction
+    A hA hsum p c hv hvodd hpv hvalue
 
 theorem dyadic_support_fraction_reciprocalMass_diverges_or_gt_one
     (A : Set ℕ) (hAinf : A.Infinite) (p : ℤ) (c : ℕ)
     (hvalue : erdosSupportSeries 2 A =
       (p : ℝ) / ((2 ^ c : ℕ) : ℝ)) :
     ¬ Summable (reciprocalSupportTerm A) ∨ 1 < reciprocalMass A := by
-  simpa [reciprocalSupportTerm, reciprocalMass, erdosSupportSeries,
-    Erdos257PeriodNoncollapse.reciprocalSupportTerm,
-    Erdos257PeriodNoncollapse.reciprocalMass,
-    Erdos257PeriodNoncollapse.erdosSupportSeries] using
-      Erdos257PeriodNoncollapse.dyadic_support_fraction_reciprocalMass_diverges_or_gt_one
-        A hAinf p c (by
-          simpa [erdosSupportSeries,
-            Erdos257PeriodNoncollapse.erdosSupportSeries] using hvalue)
+  exact Erdos257PeriodNoncollapse.dyadic_support_fraction_reciprocalMass_diverges_or_gt_one
+    A hAinf p c hvalue
 
 end
 

@@ -44,8 +44,7 @@ theorem paper_finite_row_value_ne_half {D : Finset ℕ} (h0 : 0 ∉ D) :
   have hodd := finiteErdosSum_den_odd D h0
   rw [← localMersennePrefixValue_eq_finiteErdosSum, heq] at hodd
   obtain ⟨k, hk⟩ := hodd
-  norm_num at hk
-  omega
+  norm_num at hk <;> omega
 
 /-- Long `record:257bm-k-dich`, the worked example at `n = 6`.  The support
 `{2,3,6}` is an exact row at depth `6`; `{2,3,6,7,11}` is an exact row at

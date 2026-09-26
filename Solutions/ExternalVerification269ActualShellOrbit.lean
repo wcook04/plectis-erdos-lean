@@ -94,57 +94,10 @@ theorem actual_dyadicShellOrbit_recurrence_and_escape :
             (dyadicNormalizedTailStateR235 dyadicShellTsumTailR235 a)
             ((1 : ℝ) / 31)) := by
   refine ⟨?_, ?_, ?_⟩
-  · simpa [dyadicShellMassR235, dyadicShellMassQ235,
-      dyadicSmoothShell235, strictSmoothShell, strictSmoothExponents,
-      threePrimeHeight, smooth3Val,
-      ErdosProblems.Erdos269.dyadicShellMassR235,
-      ErdosProblems.Erdos269.dyadicShellMassQ235,
-      ErdosProblems.Erdos269.dyadicSmoothShell235,
-      ErdosProblems.Erdos269.strictSmoothShell,
-      ErdosProblems.Erdos269.strictSmoothExponents,
-      ErdosProblems.Erdos269.threePrimeHeight,
-      ErdosProblems.Erdos269.smooth3Val] using
-      ErdosProblems.Erdos269.summable_dyadicShellMassR235
+  · exact ErdosProblems.Erdos269.summable_dyadicShellMassR235
   · intro a
-    simpa [dyadicNormalizedTailStateR235, dyadicShellTsumTailR235,
-      dyadicShellMassR235, dyadicShellMassQ235, dyadicBlockBase235,
-      DyadicInternalPower, dyadicOrderedBlockDigit235,
-      dyadicBeforeThresholdCount235, dyadicSmoothShell235,
-      strictSmoothShell, strictSmoothExponents, threePrimeHeight, smooth3Val,
-      ErdosProblems.Erdos269.dyadicNormalizedTailStateR235,
-      ErdosProblems.Erdos269.dyadicShellTsumTailR235,
-      ErdosProblems.Erdos269.dyadicShellMassR235,
-      ErdosProblems.Erdos269.dyadicShellMassQ235,
-      ErdosProblems.Erdos269.dyadicBlockBase235,
-      ErdosProblems.Erdos269.DyadicInternalPower,
-      ErdosProblems.Erdos269.dyadicOrderedBlockDigit235,
-      ErdosProblems.Erdos269.dyadicBeforeThresholdCount235,
-      ErdosProblems.Erdos269.dyadicSmoothShell235,
-      ErdosProblems.Erdos269.strictSmoothShell,
-      ErdosProblems.Erdos269.strictSmoothExponents,
-      ErdosProblems.Erdos269.threePrimeHeight,
-      ErdosProblems.Erdos269.smooth3Val] using
-      ErdosProblems.Erdos269.dyadicNormalizedShellTsumTailR235_succ a
-  · simpa [FarFromIntegers, dyadicNormalizedTailStateR235,
-      dyadicShellTsumTailR235, dyadicShellMassR235, dyadicShellMassQ235,
-      dyadicBlockBase235, DyadicInternalPower, dyadicOrderedBlockDigit235,
-      dyadicBeforeThresholdCount235, dyadicSmoothShell235,
-      strictSmoothShell, strictSmoothExponents, threePrimeHeight, smooth3Val,
-      ErdosProblems.Erdos269.FarFromIntegers,
-      ErdosProblems.Erdos269.dyadicNormalizedTailStateR235,
-      ErdosProblems.Erdos269.dyadicShellTsumTailR235,
-      ErdosProblems.Erdos269.dyadicShellMassR235,
-      ErdosProblems.Erdos269.dyadicShellMassQ235,
-      ErdosProblems.Erdos269.dyadicBlockBase235,
-      ErdosProblems.Erdos269.DyadicInternalPower,
-      ErdosProblems.Erdos269.dyadicOrderedBlockDigit235,
-      ErdosProblems.Erdos269.dyadicBeforeThresholdCount235,
-      ErdosProblems.Erdos269.dyadicSmoothShell235,
-      ErdosProblems.Erdos269.strictSmoothShell,
-      ErdosProblems.Erdos269.strictSmoothExponents,
-      ErdosProblems.Erdos269.threePrimeHeight,
-      ErdosProblems.Erdos269.smooth3Val] using
-      ErdosProblems.Erdos269.dyadicShellTsumTail_integer_or_cofinal_far
+    exact ErdosProblems.Erdos269.dyadicNormalizedShellTsumTailR235_succ a
+  · exact ErdosProblems.Erdos269.dyadicShellTsumTail_integer_or_cofinal_far
 
 end
 

@@ -32,6 +32,8 @@ jobs:
     timeout-minutes: 330
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Test sequential target reporting
+        run: python3 -m unittest discover -s scripts -p 'test_build_launch_targets.py' -v
       # Every run used to rebuild the whole project from nothing. The newest
       # corpus build is restored first, so Lake rebuilds only modules whose
       # inputs changed.
@@ -49,21 +51,16 @@ jobs:
       - name: Build launch entries sequentially
         env:
           LEAN_NUM_THREADS: "1"
-        run: |
-          set -euo pipefail
-          python3 - <<'PY'
-          import re
-          import subprocess
-
-          text = open("lakefile.toml", encoding="utf-8").read()
-          match = re.search(r'defaultTargets\s*=\s*\[(.*?)\]', text, re.S)
-          if not match:
-              raise SystemExit("defaultTargets not found in lakefile.toml")
-          targets = re.findall(r'"([^"]+)"', match.group(1))
-          for target in targets:
-              print(f"=== lake build {target} ===", flush=True)
-              subprocess.run(["lake", "build", target], check=True)
-          PY
+          RELEASE_HEARTBEAT_SECONDS: "300"
+          RELEASE_MODULE_BUDGET_SECONDS: "3600"
+        run: python3 scripts/build_launch_targets.py
+      - name: Preserve the incremental target report
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: lean-convenience-target-report
+          path: .lake/convenience-target-report.json
+          if-no-files-found: warn
       # Saved even when the build fails or is cancelled: Lake treats a module
       # as built only once its trace is written after its outputs, so a
       # partial build is a valid head start for the next run.

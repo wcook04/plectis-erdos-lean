@@ -4470,6 +4470,16 @@ exactly when the selected exponent divides `m`) supplies the
 statement follows for the *actual* numerator `A = ∑ (b ^ L - 1) / (b ^ n - 1)`
 conditional only on witness supply for the multiple-free rows. -/
 
+-- `Finset.dvd_lcm` uses semigroup divisibility, while the arithmetic lemmas
+-- below use Nat divisibility. Both carry the same multiplier witness.
+private theorem nat_dvd_finset_lcm_id {F : Finset Nat} {m : Nat} (hm : m ∈ F) :
+    m ∣ F.lcm id := by
+  have h : @Dvd.dvd Nat (semigroupDvd (α := Nat)) (id m) (F.lcm id) :=
+    Finset.dvd_lcm (f := id) hm
+  rcases h with ⟨c, hc⟩
+  change F.lcm id = m * c at hc
+  exact ⟨c, hc⟩
+
 theorem exists_lcm_factorization_le_row
     (F : Finset Nat) (hF : F.Nonempty) (h0 : 0 ∉ F) (p : Nat) :
     ∃ n ∈ F, (F.lcm id).factorization p ≤ n.factorization p := by
@@ -4524,7 +4534,8 @@ theorem exists_canonical_witness_selector_row
   have hn0a : (F.lcm id).factorization p ≤ (S.max' hS_ne).factorization p :=
     (Finset.mem_filter.mp hn0S).2
   have hn0a' : (S.max' hS_ne).factorization p ≤ (F.lcm id).factorization p :=
-    factorization_le_of_dvd_ne_zero hL0 (by simpa using Finset.dvd_lcm hn0F)
+    factorization_le_of_dvd_ne_zero hL0
+      (nat_dvd_finset_lcm_id hn0F)
   refine ⟨S.max' hS_ne, hn0F, le_antisymm hn0a' hn0a, ?_⟩
   intro m hmF hdvd
   have hm0 : m ≠ 0 := fun h => h0 (h ▸ hmF)
@@ -4595,14 +4606,14 @@ theorem exact_order_witness_supplies_PrimeComponentWitness
   have hden_dvd : ∀ m ∈ F, b ^ m - 1 ∣ b ^ L - 1 := by
     intro m hmF
     exact Nat.pow_sub_one_dvd_pow_sub_one b
-      (by simpa [hL_eq] using Finset.dvd_lcm hmF)
+      (by simpa [hL_eq] using nat_dvd_finset_lcm_id hmF)
   have hT_pos : ∀ m ∈ F, 0 < (b ^ L - 1) / (b ^ m - 1) := fun m hmF =>
     Nat.div_pos (Nat.le_of_dvd hB_pos (hden_dvd m hmF)) (hden_pos m hmF)
   have hT_val : ∀ m ∈ F, ((b ^ L - 1) / (b ^ m - 1)).factorization q
       = (b ^ L - 1).factorization q - (b ^ m - 1).factorization q := by
     intro m hmF
     exact pow_sub_one_component_factorization
-      (by simpa [hL_eq] using Finset.dvd_lcm hmF)
+      (by simpa [hL_eq] using nat_dvd_finset_lcm_id hmF)
       (hT_pos m hmF).ne'
       (hden_pos m hmF).ne'
   have hbn0 : b ^ n - 1 ≠ 0 := (hden_pos n hnF).ne'
@@ -4705,7 +4716,7 @@ theorem finite_period_noncollapse_from_exact_order_witness_supply
     exact Nat.div_pos
       (Nat.le_of_dvd hBL_pos
         (Nat.pow_sub_one_dvd_pow_sub_one b
-          (by simpa [hL_eq] using Finset.dvd_lcm hmF)))
+          (by simpa [hL_eq] using nat_dvd_finset_lcm_id hmF)))
       hden_pos
   have hQpos : 0 < Q := by
     rw [hQ]
@@ -5153,7 +5164,7 @@ theorem finiteErdosSum_eq_commonNumerator_div_commonDenominator
   rw [Finset.sum_mul, Nat.cast_sum]
   refine Finset.sum_congr rfl fun n hn => ?_
   have hn0 : n ≠ 0 := fun h => h0 (h ▸ hn)
-  have hn_dvd : n ∣ F.lcm id := by simpa using Finset.dvd_lcm hn
+  have hn_dvd : n ∣ F.lcm id := nat_dvd_finset_lcm_id hn
   have hdvd : b ^ n - 1 ∣ b ^ F.lcm id - 1 :=
     Nat.pow_sub_one_dvd_pow_sub_one b hn_dvd
   have hterm_pos : 0 < b ^ n - 1 := pow_sub_one_pos_of_ne_zero b n hb hn0
@@ -5299,7 +5310,7 @@ theorem lcm_Icc_lt_den_erdosPartialSum
   have h2mem : (2 : Nat) ∈ Finset.Icc 1 N :=
     Finset.mem_Icc.mpr ⟨by omega, hN⟩
   have h2dvd : (2 : Nat) ∣ (Finset.Icc 1 N).lcm id := by
-    simpa using Finset.dvd_lcm h2mem
+    exact nat_dvd_finset_lcm_id h2mem
   have hlcm_ne : (Finset.Icc 1 N).lcm id ≠ 0 :=
     lcm_ne_zero_of_zero_not_mem _ h0
   have h2 : 2 ≤ (Finset.Icc 1 N).lcm id :=
@@ -6010,7 +6021,7 @@ theorem lcm_image_factorial_succ (k : ℕ) (hk : 1 ≤ k) :
       apply Finset.mem_image.mpr
       exact ⟨k - 1, Finset.mem_range.mpr (by omega), by
         rw [Nat.sub_add_cancel hk]⟩
-    simpa using Finset.dvd_lcm hmem
+    exact nat_dvd_finset_lcm_id hmem
 
 /-- lcm of the two-power support prefix `{2^0, …, 2^(k-1)}` is `2^(k-1)`. -/
 theorem lcm_image_two_pow (k : ℕ) (hk : 1 ≤ k) :
@@ -6025,7 +6036,7 @@ theorem lcm_image_two_pow (k : ℕ) (hk : 1 ≤ k) :
         ∈ (Finset.range k).image (fun i => 2 ^ i) := by
       apply Finset.mem_image.mpr
       exact ⟨k - 1, Finset.mem_range.mpr (by omega), rfl⟩
-    simpa using Finset.dvd_lcm hmem
+    exact nat_dvd_finset_lcm_id hmem
 
 /-- **First infinite-support instance: factorial support.**  For every base
 `b ≥ 2`, the infinite series `∑_{k≥0} 1 / (b ^ (k+1)! - 1)` is irrational.
@@ -6282,9 +6293,9 @@ theorem lcm_gap_hypothesis_fails_full_support :
     have hmem2 : k ∈ (Finset.range k).image (fun i => i + 1) :=
       Finset.mem_image.mpr ⟨k - 1, Finset.mem_range.mpr (by omega), by omega⟩
     have hd1 : (k - 1) ∣ ((Finset.range k).image (fun i => i + 1)).lcm id := by
-      simpa using Finset.dvd_lcm hmem1
+      exact nat_dvd_finset_lcm_id hmem1
     have hd2 : k ∣ ((Finset.range k).image (fun i => i + 1)).lcm id := by
-      simpa using Finset.dvd_lcm hmem2
+      exact nat_dvd_finset_lcm_id hmem2
     have hco : Nat.Coprime (k - 1) k := by
       have hk1 : k - 1 + 1 = k := by omega
       have hmod : k % (k - 1) = 1 := by

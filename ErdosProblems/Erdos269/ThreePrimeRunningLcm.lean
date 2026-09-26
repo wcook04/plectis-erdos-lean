@@ -892,8 +892,10 @@ theorem smoothPrefixLcm235_dyadicBlock_succ (a : ℕ) :
     Nat.log_eq_of_pow_le_of_lt_pow (by norm_num) (by norm_num)
   have h5thirtytwo : Nat.log 5 32 = 2 :=
     Nat.log_eq_of_pow_le_of_lt_pow (by norm_num) (by norm_num)
-  norm_num [threePrimeHeight, h2sixteen, h3sixteen, h5sixteen,
-    h2thirtytwo, h3thirtytwo, h5thirtytwo] at h ⊢
+  change threePrimeHeight 2 3 5 32 =
+    dyadicBlockBase235 4 * threePrimeHeight 2 3 5 16 at h
+  simp only [threePrimeHeight, h2sixteen, h3sixteen, h5sixteen,
+    h2thirtytwo, h3thirtytwo, h5thirtytwo] at h
   omega
 
 /-! ## Exact rank-two certificate -/

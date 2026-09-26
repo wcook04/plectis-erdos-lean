@@ -118,7 +118,7 @@ theorem hasSum_succ_sq_mul_geometric {r : ℝ} (hr : |r| < 1) :
   refine hcomb.congr_fun ?_
   intro n
   have hc2 : ((n + 2).choose 2 : ℝ) * 2 = ((n + 2 : ℕ) : ℝ) * ((n + 1 : ℕ) : ℝ) := by
-    have h := Nat.succ_mul_choose_eq (n + 1) 1
+    have h := Nat.add_one_mul_choose_eq (n + 1) 1
     rw [Nat.choose_one_right] at h
     have h' : (n + 2) * (n + 1) = (n + 2).choose 2 * 2 := by simpa using h
     exact_mod_cast h'.symm
