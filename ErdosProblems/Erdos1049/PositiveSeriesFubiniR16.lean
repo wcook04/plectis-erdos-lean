@@ -56,16 +56,16 @@ lemma tsum_product_eq_rows {ι κ : Type*} {f : ι → κ → ℝ}
 /-- Regroup an actually summable product-indexed series by its finite natural
 antidiagonals. This is the generic diagonal identity behind the gamma series. -/
 lemma hasSum_antidiagonal {f : ℕ × ℕ → ℝ} (hf : Summable f) :
-    HasSum (fun n : ℕ => ∑ p ∈ Finset.antidiagonal n, f p) (∑' p, f p) := by
+    HasSum (fun n : ℕ => ∑ p ∈ Finset.HasAntidiagonal.antidiagonal n, f p) (∑' p, f p) := by
   classical
   let e := (Finset.sigmaAntidiagonalEquivProd :
-    (Σ n : ℕ, ↥(Finset.antidiagonal n)) ≃ ℕ × ℕ)
-  have hs : Summable (fun p : Σ n : ℕ, ↥(Finset.antidiagonal n) => f p.2.val) := by
+    (Σ n : ℕ, ↥(Finset.HasAntidiagonal.antidiagonal n)) ≃ ℕ × ℕ)
+  have hs : Summable (fun p : Σ n : ℕ, ↥(Finset.HasAntidiagonal.antidiagonal n) => f p.2.val) := by
     exact e.summable_iff.mpr hf
-  have hs' : Summable (fun n : ℕ => ∑' p : ↥(Finset.antidiagonal n), f p.val) :=
+  have hs' : Summable (fun n : ℕ => ∑' p : ↥(Finset.HasAntidiagonal.antidiagonal n), f p.val) :=
     hs.sigma' (fun n => (hasSum_fintype _).summable)
   have he : (∑' p : ℕ × ℕ, f p) =
-      ∑' n : ℕ, ∑' p : ↥(Finset.antidiagonal n), f p.val := by
+      ∑' n : ℕ, ∑' p : ↥(Finset.HasAntidiagonal.antidiagonal n), f p.val := by
     rw [← e.tsum_eq f]
     exact hs.tsum_sigma' (fun n => (hasSum_fintype _).summable)
   rw [he]

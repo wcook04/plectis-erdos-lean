@@ -119,7 +119,7 @@ lemma tsum_evalTerm_poly (p : ℚ[X]) (z : ℂ) :
 
 lemma evalTerm_mul_poly (p : ℚ[X]) (f : ℚ⟦X⟧) (z : ℂ) (n : ℕ) :
     evalTerm ((p : ℚ⟦X⟧) * f) z n
-      = ∑ kl ∈ Finset.antidiagonal n, evalTerm (p : ℚ⟦X⟧) z kl.1 * evalTerm f z kl.2 := by
+      = ∑ kl ∈ Finset.HasAntidiagonal.antidiagonal n, evalTerm (p : ℚ⟦X⟧) z kl.1 * evalTerm f z kl.2 := by
   simp only [evalTerm, PowerSeries.coeff_mul, Rat.cast_sum, Rat.cast_mul, Finset.sum_mul]
   refine Finset.sum_congr rfl fun kl hkl => ?_
   rw [Finset.mem_antidiagonal] at hkl

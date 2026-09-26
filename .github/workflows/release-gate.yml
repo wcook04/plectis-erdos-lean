@@ -102,6 +102,18 @@ jobs:
         with:
           path: .lake/build
           key: corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-release-${{ matrix.shard }}-${{ github.sha }}
+      # The Actions cache cannot be downloaded outside a workflow. Publishing
+      # the widest shard's compiled library lets a developer check a single
+      # failing file locally against exactly the modules CI built, instead of
+      # rebuilding the corpus first. Short retention: it is a working copy.
+      - name: Publish the compiled library for local single-file checks
+        if: ${{ always() && matrix.shard == 'Solutions' }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: compiled-library-${{ matrix.shard }}
+          path: .lake/build/lib/lean
+          retention-days: 3
+          if-no-files-found: warn
 
   # The audit runs after the shards and starts from the Solutions shard's
   # saved build. Run in parallel it repeated the same cold build with

@@ -1,5 +1,6 @@
 -- Generated direct-prime emitted certificate aggregate.
 import Erdos249257.CertificateKernel
+import Mathlib.Tactic.NormNum.Prime
 import Erdos249257.GeneratedCertificates.b10_L6_A11
 import Erdos249257.GeneratedCertificates.b2_L210_A21371
 import Erdos249257.GeneratedCertificates.b2_L105_A75047
@@ -11,24 +12,13 @@ namespace Erdos249257
 
 theorem concrete_generated_b2_F10_A31_p2_prime_witness :
     PrimeComponentWitness 10 31 2 2 3 := by
-  refine ⟨(by decide : Nat.Prime 3), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 10 2 = 33 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 2 10 2 = 33 := by decide
+  have hq : Nat.Prime 3 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 10 2 = 33 := by decide
-    rw [hquot]
-    have hfactor : (33 : Nat).factorization 3 = 1 := by
-      rw [show (33 : Nat) = 3 * 11 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 3),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 3 ∣ 11),
-      ]
-    rw [hfactor]
-    have hA_factor : (31 : Nat).factorization 3 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 3 ∣ 31)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 3 ∣ 31)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F10_A31_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 10 31 2 2 := by
@@ -36,24 +26,13 @@ theorem concrete_generated_b2_F10_A31_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b2_F10_A31_p5_prime_witness :
     PrimeComponentWitness 10 31 2 5 11 := by
-  refine ⟨(by decide : Nat.Prime 11), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 10 5 = 341 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 2 10 5 = 341 := by decide
+  have hq : Nat.Prime 11 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 10 5 = 341 := by decide
-    rw [hquot]
-    have hfactor : (341 : Nat).factorization 11 = 1 := by
-      rw [show (341 : Nat) = 11 * 31 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 11),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 11 ∣ 31),
-      ]
-    rw [hfactor]
-    have hA_factor : (31 : Nat).factorization 11 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 11 ∣ 31)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 11 ∣ 31)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F10_A31_p5_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 10 31 2 5 := by
@@ -87,7 +66,8 @@ theorem orderOf_b2_mod33_eq_10_from_emittedCertificate_denNorm :
       apply Units.ext
       change (((ZMod.unitOfCoprime 2 hcop : (ZMod 33)ˣ) : ZMod 33) ^ 10) =
         (1 : ZMod 33)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -103,24 +83,13 @@ theorem orderOf_b2_mod33_eq_10_from_emittedCertificate_denNorm :
 
 theorem concrete_generated_b2_F10_A3_p2_prime_witness :
     PrimeComponentWitness 10 3 2 2 11 := by
-  refine ⟨(by decide : Nat.Prime 11), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 10 2 = 33 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 2 10 2 = 33 := by decide
+  have hq : Nat.Prime 11 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 10 2 = 33 := by decide
-    rw [hquot]
-    have hfactor : (33 : Nat).factorization 11 = 1 := by
-      rw [show (33 : Nat) = 11 * 3 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 11),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 11 ∣ 3),
-      ]
-    rw [hfactor]
-    have hA_factor : (3 : Nat).factorization 11 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 11 ∣ 3)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 11 ∣ 3)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F10_A3_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 10 3 2 2 := by
@@ -128,24 +97,13 @@ theorem concrete_generated_b2_F10_A3_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b2_F10_A3_p5_prime_witness :
     PrimeComponentWitness 10 3 2 5 11 := by
-  refine ⟨(by decide : Nat.Prime 11), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 10 5 = 341 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 2 10 5 = 341 := by decide
+  have hq : Nat.Prime 11 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 10 5 = 341 := by decide
-    rw [hquot]
-    have hfactor : (341 : Nat).factorization 11 = 1 := by
-      rw [show (341 : Nat) = 11 * 31 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 11),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 11 ∣ 31),
-      ]
-    rw [hfactor]
-    have hA_factor : (3 : Nat).factorization 11 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 11 ∣ 3)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 11 ∣ 3)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F10_A3_p5_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 10 3 2 5 := by
@@ -179,7 +137,8 @@ theorem orderOf_b2_mod341_eq_10_from_emittedCertificate_denNorm :
       apply Units.ext
       change (((ZMod.unitOfCoprime 2 hcop : (ZMod 341)ˣ) : ZMod 341) ^ 10) =
         (1 : ZMod 341)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -195,24 +154,13 @@ theorem orderOf_b2_mod341_eq_10_from_emittedCertificate_denNorm :
 
 theorem concrete_generated_b2_F30_A9_p2_prime_witness :
     PrimeComponentWitness 30 9 2 2 11 := by
-  refine ⟨(by decide : Nat.Prime 11), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 30 2 = 32769 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 2 30 2 = 32769 := by decide
+  have hq : Nat.Prime 11 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 30 2 = 32769 := by decide
-    rw [hquot]
-    have hfactor : (32769 : Nat).factorization 11 = 1 := by
-      rw [show (32769 : Nat) = 11 * 2979 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 11),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 11 ∣ 2979),
-      ]
-    rw [hfactor]
-    have hA_factor : (9 : Nat).factorization 11 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 11 ∣ 9)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 11 ∣ 9)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F30_A9_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 30 9 2 2 := by
@@ -220,24 +168,13 @@ theorem concrete_generated_b2_F30_A9_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b2_F30_A9_p3_prime_witness :
     PrimeComponentWitness 30 9 2 3 7 := by
-  refine ⟨(by decide : Nat.Prime 7), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 30 3 = 1049601 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 2 30 3 = 1049601 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 30 3 = 1049601 := by decide
-    rw [hquot]
-    have hfactor : (1049601 : Nat).factorization 7 = 1 := by
-      rw [show (1049601 : Nat) = 7 * 149943 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 7),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 149943),
-      ]
-    rw [hfactor]
-    have hA_factor : (9 : Nat).factorization 7 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 9)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 9)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F30_A9_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 30 9 2 3 := by
@@ -245,24 +182,13 @@ theorem concrete_generated_b2_F30_A9_p3_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b2_F30_A9_p5_prime_witness :
     PrimeComponentWitness 30 9 2 5 11 := by
-  refine ⟨(by decide : Nat.Prime 11), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 30 5 = 17043521 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 2 30 5 = 17043521 := by decide
+  have hq : Nat.Prime 11 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 30 5 = 17043521 := by decide
-    rw [hquot]
-    have hfactor : (17043521 : Nat).factorization 11 = 1 := by
-      rw [show (17043521 : Nat) = 11 * 1549411 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 11),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 11 ∣ 1549411),
-      ]
-    rw [hfactor]
-    have hA_factor : (9 : Nat).factorization 11 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 11 ∣ 9)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 11 ∣ 9)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F30_A9_p5_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 30 9 2 5 := by
@@ -300,7 +226,8 @@ theorem orderOf_b2_mod119304647_eq_30_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 2 hcop : (ZMod 119304647)ˣ) :
           ZMod 119304647) ^ 30) =
         (1 : ZMod 119304647)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -317,24 +244,13 @@ theorem orderOf_b2_mod119304647_eq_30_from_emittedCertificate_denNorm :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b2_F30_A99_p2_prime_witness :
     PrimeComponentWitness 30 99 2 2 331 := by
-  refine ⟨(by decide : Nat.Prime 331), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 30 2 = 32769 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 2 30 2 = 32769 := by decide
+  have hq : Nat.Prime 331 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 30 2 = 32769 := by decide
-    rw [hquot]
-    have hfactor : (32769 : Nat).factorization 331 = 1 := by
-      rw [show (32769 : Nat) = 331 * 99 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 331),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 331 ∣ 99),
-      ]
-    rw [hfactor]
-    have hA_factor : (99 : Nat).factorization 331 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 331 ∣ 99)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 331 ∣ 99)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F30_A99_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 30 99 2 2 := by
@@ -342,24 +258,13 @@ theorem concrete_generated_b2_F30_A99_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b2_F30_A99_p3_prime_witness :
     PrimeComponentWitness 30 99 2 3 7 := by
-  refine ⟨(by decide : Nat.Prime 7), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 30 3 = 1049601 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 2 30 3 = 1049601 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 30 3 = 1049601 := by decide
-    rw [hquot]
-    have hfactor : (1049601 : Nat).factorization 7 = 1 := by
-      rw [show (1049601 : Nat) = 7 * 149943 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 7),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 149943),
-      ]
-    rw [hfactor]
-    have hA_factor : (99 : Nat).factorization 7 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 99)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 99)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F30_A99_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 30 99 2 3 := by
@@ -367,24 +272,13 @@ theorem concrete_generated_b2_F30_A99_p3_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b2_F30_A99_p5_prime_witness :
     PrimeComponentWitness 30 99 2 5 31 := by
-  refine ⟨(by decide : Nat.Prime 31), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 30 5 = 17043521 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 2 30 5 = 17043521 := by decide
+  have hq : Nat.Prime 31 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 30 5 = 17043521 := by decide
-    rw [hquot]
-    have hfactor : (17043521 : Nat).factorization 31 = 1 := by
-      rw [show (17043521 : Nat) = 31 * 549791 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 31),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 31 ∣ 549791),
-      ]
-    rw [hfactor]
-    have hA_factor : (99 : Nat).factorization 31 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 31 ∣ 99)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 31 ∣ 99)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F30_A99_p5_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 30 99 2 5 := by
@@ -422,7 +316,8 @@ theorem orderOf_b2_mod10845877_eq_30_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 2 hcop : (ZMod 10845877)ˣ) :
           ZMod 10845877) ^ 30) =
         (1 : ZMod 10845877)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -463,24 +358,13 @@ theorem concrete_generated_b2_F14_factorization_support_cases
 
 theorem concrete_generated_b2_F14_A3_p2_prime_witness :
     PrimeComponentWitness 14 3 2 2 43 := by
-  refine ⟨(by decide : Nat.Prime 43), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 14 2 = 129 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 2 14 2 = 129 := by decide
+  have hq : Nat.Prime 43 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 14 2 = 129 := by decide
-    rw [hquot]
-    have hfactor : (129 : Nat).factorization 43 = 1 := by
-      rw [show (129 : Nat) = 43 * 3 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 43),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 43 ∣ 3),
-      ]
-    rw [hfactor]
-    have hA_factor : (3 : Nat).factorization 43 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 43 ∣ 3)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 43 ∣ 3)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F14_A3_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 14 3 2 2 := by
@@ -488,24 +372,13 @@ theorem concrete_generated_b2_F14_A3_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b2_F14_A3_p7_prime_witness :
     PrimeComponentWitness 14 3 2 7 127 := by
-  refine ⟨(by decide : Nat.Prime 127), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 14 7 = 5461 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 2 14 7 = 5461 := by decide
+  have hq : Nat.Prime 127 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 14 7 = 5461 := by decide
-    rw [hquot]
-    have hfactor : (5461 : Nat).factorization 127 = 1 := by
-      rw [show (5461 : Nat) = 127 * 43 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 127),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 127 ∣ 43),
-      ]
-    rw [hfactor]
-    have hA_factor : (3 : Nat).factorization 127 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 127 ∣ 3)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 127 ∣ 3)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F14_A3_p7_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 14 3 2 7 := by
@@ -539,7 +412,8 @@ theorem orderOf_b2_mod5461_eq_14_from_emittedCertificate_denNorm :
       apply Units.ext
       change (((ZMod.unitOfCoprime 2 hcop : (ZMod 5461)ˣ) : ZMod 5461) ^ 14) =
         (1 : ZMod 5461)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -578,24 +452,13 @@ theorem concrete_generated_b2_F12_factorization_support_cases
 
 theorem concrete_generated_b2_F12_A9_p2_prime_witness :
     PrimeComponentWitness 12 9 2 2 5 := by
-  refine ⟨(by decide : Nat.Prime 5), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 12 2 = 65 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 2 12 2 = 65 := by decide
+  have hq : Nat.Prime 5 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 12 2 = 65 := by decide
-    rw [hquot]
-    have hfactor : (65 : Nat).factorization 5 = 1 := by
-      rw [show (65 : Nat) = 5 * 13 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 5),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 13),
-      ]
-    rw [hfactor]
-    have hA_factor : (9 : Nat).factorization 5 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 9)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 9)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F12_A9_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 9 2 2 := by
@@ -603,24 +466,13 @@ theorem concrete_generated_b2_F12_A9_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b2_F12_A9_p3_prime_witness :
     PrimeComponentWitness 12 9 2 3 7 := by
-  refine ⟨(by decide : Nat.Prime 7), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 12 3 = 273 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 2 12 3 = 273 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 12 3 = 273 := by decide
-    rw [hquot]
-    have hfactor : (273 : Nat).factorization 7 = 1 := by
-      rw [show (273 : Nat) = 7 * 39 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 7),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 39),
-      ]
-    rw [hfactor]
-    have hA_factor : (9 : Nat).factorization 7 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 9)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 9)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F12_A9_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 9 2 3 := by
@@ -654,7 +506,8 @@ theorem orderOf_b2_mod455_eq_12_from_emittedCertificate_denNorm :
       apply Units.ext
       change (((ZMod.unitOfCoprime 2 hcop : (ZMod 455)ˣ) : ZMod 455) ^ 12) =
         (1 : ZMod 455)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -696,24 +549,13 @@ theorem concrete_generated_b2_F15_factorization_support_cases
 
 theorem concrete_generated_b2_F15_A7_p3_prime_witness :
     PrimeComponentWitness 15 7 2 3 151 := by
-  refine ⟨(by decide : Nat.Prime 151), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 15 3 = 1057 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 2 15 3 = 1057 := by decide
+  have hq : Nat.Prime 151 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 15 3 = 1057 := by decide
-    rw [hquot]
-    have hfactor : (1057 : Nat).factorization 151 = 1 := by
-      rw [show (1057 : Nat) = 151 * 7 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 151),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 151 ∣ 7),
-      ]
-    rw [hfactor]
-    have hA_factor : (7 : Nat).factorization 151 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 151 ∣ 7)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 151 ∣ 7)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F15_A7_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 15 7 2 3 := by
@@ -721,24 +563,13 @@ theorem concrete_generated_b2_F15_A7_p3_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b2_F15_A7_p5_prime_witness :
     PrimeComponentWitness 15 7 2 5 31 := by
-  refine ⟨(by decide : Nat.Prime 31), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 15 5 = 4681 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 2 15 5 = 4681 := by decide
+  have hq : Nat.Prime 31 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 15 5 = 4681 := by decide
-    rw [hquot]
-    have hfactor : (4681 : Nat).factorization 31 = 1 := by
-      rw [show (4681 : Nat) = 31 * 151 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 31),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 31 ∣ 151),
-      ]
-    rw [hfactor]
-    have hA_factor : (7 : Nat).factorization 31 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 31 ∣ 7)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 31 ∣ 7)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F15_A7_p5_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 15 7 2 5 := by
@@ -772,7 +603,8 @@ theorem orderOf_b2_mod4681_eq_15_from_emittedCertificate_denNorm :
       apply Units.ext
       change (((ZMod.unitOfCoprime 2 hcop : (ZMod 4681)ˣ) : ZMod 4681) ^ 15) =
         (1 : ZMod 4681)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -847,24 +679,13 @@ theorem concrete_generated_b2_F21_A7_p3_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b2_F21_A7_p7_prime_witness :
     PrimeComponentWitness 21 7 2 7 127 := by
-  refine ⟨(by decide : Nat.Prime 127), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 21 7 = 299593 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 2 21 7 = 299593 := by decide
+  have hq : Nat.Prime 127 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 21 7 = 299593 := by decide
-    rw [hquot]
-    have hfactor : (299593 : Nat).factorization 127 = 1 := by
-      rw [show (299593 : Nat) = 127 * 2359 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 127),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 127 ∣ 2359),
-      ]
-    rw [hfactor]
-    have hA_factor : (7 : Nat).factorization 127 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 127 ∣ 7)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 127 ∣ 7)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F21_A7_p7_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 21 7 2 7 := by
@@ -898,7 +719,8 @@ theorem orderOf_b2_mod299593_eq_21_from_emittedCertificate_denNorm :
       apply Units.ext
       change (((ZMod.unitOfCoprime 2 hcop : (ZMod 299593)ˣ) : ZMod 299593) ^ 21) =
         (1 : ZMod 299593)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -958,24 +780,13 @@ theorem concrete_generated_b2_F33_A23_factorization_support_cases
 
 theorem concrete_generated_b2_F33_A23_p3_prime_witness :
     PrimeComponentWitness 33 23 2 3 7 := by
-  refine ⟨(by decide : Nat.Prime 7), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 33 3 = 4196353 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 2 33 3 = 4196353 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 33 3 = 4196353 := by decide
-    rw [hquot]
-    have hfactor : (4196353 : Nat).factorization 7 = 1 := by
-      rw [show (4196353 : Nat) = 7 * 599479 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 7),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 599479),
-      ]
-    rw [hfactor]
-    have hA_factor : (23 : Nat).factorization 7 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 23)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 23)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F33_A23_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 33 23 2 3 := by
@@ -983,24 +794,13 @@ theorem concrete_generated_b2_F33_A23_p3_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b2_F33_A23_p11_prime_witness :
     PrimeComponentWitness 33 23 2 11 89 := by
-  refine ⟨(by decide : Nat.Prime 89), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 33 11 = 1227133513 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 2 33 11 = 1227133513 := by decide
+  have hq : Nat.Prime 89 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 33 11 = 1227133513 := by decide
-    rw [hquot]
-    have hfactor : (1227133513 : Nat).factorization 89 = 1 := by
-      rw [show (1227133513 : Nat) = 89 * 13788017 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 89),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 89 ∣ 13788017),
-      ]
-    rw [hfactor]
-    have hA_factor : (23 : Nat).factorization 89 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 89 ∣ 23)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 89 ∣ 23)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F33_A23_p11_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 33 23 2 11 := by
@@ -1035,7 +835,8 @@ theorem orderOf_b2_mod373475417_eq_33_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 2 hcop : (ZMod 373475417)ˣ) :
           ZMod 373475417) ^ 33) =
         (1 : ZMod 373475417)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -1095,799 +896,13 @@ theorem concrete_generated_b2_F33_A14329_factorization_support_cases
 
 theorem concrete_generated_b2_F33_A14329_p3_prime_witness :
     PrimeComponentWitness 33 14329 2 3 599479 := by
-  have hq_prime : Nat.Prime 599479 := by
-    rw [Nat.prime_def_le_sqrt]
-    constructor
-    · decide
-    · intro m hm_ge hm_le hdiv
-      have hm_le774 : m ≤ 774 := by
-        have hsqrt_lt : Nat.sqrt 599479 < 775 :=
-          (Nat.sqrt_lt'.2 (by decide : 599479 < 775 ^ 2))
-        exact Nat.le_of_lt_succ (lt_of_le_of_lt hm_le hsqrt_lt)
-      interval_cases m
-      · exact (by decide : ¬ 2 ∣ 599479) hdiv
-      · exact (by decide : ¬ 3 ∣ 599479) hdiv
-      · exact (by decide : ¬ 4 ∣ 599479) hdiv
-      · exact (by decide : ¬ 5 ∣ 599479) hdiv
-      · exact (by decide : ¬ 6 ∣ 599479) hdiv
-      · exact (by decide : ¬ 7 ∣ 599479) hdiv
-      · exact (by decide : ¬ 8 ∣ 599479) hdiv
-      · exact (by decide : ¬ 9 ∣ 599479) hdiv
-      · exact (by decide : ¬ 10 ∣ 599479) hdiv
-      · exact (by decide : ¬ 11 ∣ 599479) hdiv
-      · exact (by decide : ¬ 12 ∣ 599479) hdiv
-      · exact (by decide : ¬ 13 ∣ 599479) hdiv
-      · exact (by decide : ¬ 14 ∣ 599479) hdiv
-      · exact (by decide : ¬ 15 ∣ 599479) hdiv
-      · exact (by decide : ¬ 16 ∣ 599479) hdiv
-      · exact (by decide : ¬ 17 ∣ 599479) hdiv
-      · exact (by decide : ¬ 18 ∣ 599479) hdiv
-      · exact (by decide : ¬ 19 ∣ 599479) hdiv
-      · exact (by decide : ¬ 20 ∣ 599479) hdiv
-      · exact (by decide : ¬ 21 ∣ 599479) hdiv
-      · exact (by decide : ¬ 22 ∣ 599479) hdiv
-      · exact (by decide : ¬ 23 ∣ 599479) hdiv
-      · exact (by decide : ¬ 24 ∣ 599479) hdiv
-      · exact (by decide : ¬ 25 ∣ 599479) hdiv
-      · exact (by decide : ¬ 26 ∣ 599479) hdiv
-      · exact (by decide : ¬ 27 ∣ 599479) hdiv
-      · exact (by decide : ¬ 28 ∣ 599479) hdiv
-      · exact (by decide : ¬ 29 ∣ 599479) hdiv
-      · exact (by decide : ¬ 30 ∣ 599479) hdiv
-      · exact (by decide : ¬ 31 ∣ 599479) hdiv
-      · exact (by decide : ¬ 32 ∣ 599479) hdiv
-      · exact (by decide : ¬ 33 ∣ 599479) hdiv
-      · exact (by decide : ¬ 34 ∣ 599479) hdiv
-      · exact (by decide : ¬ 35 ∣ 599479) hdiv
-      · exact (by decide : ¬ 36 ∣ 599479) hdiv
-      · exact (by decide : ¬ 37 ∣ 599479) hdiv
-      · exact (by decide : ¬ 38 ∣ 599479) hdiv
-      · exact (by decide : ¬ 39 ∣ 599479) hdiv
-      · exact (by decide : ¬ 40 ∣ 599479) hdiv
-      · exact (by decide : ¬ 41 ∣ 599479) hdiv
-      · exact (by decide : ¬ 42 ∣ 599479) hdiv
-      · exact (by decide : ¬ 43 ∣ 599479) hdiv
-      · exact (by decide : ¬ 44 ∣ 599479) hdiv
-      · exact (by decide : ¬ 45 ∣ 599479) hdiv
-      · exact (by decide : ¬ 46 ∣ 599479) hdiv
-      · exact (by decide : ¬ 47 ∣ 599479) hdiv
-      · exact (by decide : ¬ 48 ∣ 599479) hdiv
-      · exact (by decide : ¬ 49 ∣ 599479) hdiv
-      · exact (by decide : ¬ 50 ∣ 599479) hdiv
-      · exact (by decide : ¬ 51 ∣ 599479) hdiv
-      · exact (by decide : ¬ 52 ∣ 599479) hdiv
-      · exact (by decide : ¬ 53 ∣ 599479) hdiv
-      · exact (by decide : ¬ 54 ∣ 599479) hdiv
-      · exact (by decide : ¬ 55 ∣ 599479) hdiv
-      · exact (by decide : ¬ 56 ∣ 599479) hdiv
-      · exact (by decide : ¬ 57 ∣ 599479) hdiv
-      · exact (by decide : ¬ 58 ∣ 599479) hdiv
-      · exact (by decide : ¬ 59 ∣ 599479) hdiv
-      · exact (by decide : ¬ 60 ∣ 599479) hdiv
-      · exact (by decide : ¬ 61 ∣ 599479) hdiv
-      · exact (by decide : ¬ 62 ∣ 599479) hdiv
-      · exact (by decide : ¬ 63 ∣ 599479) hdiv
-      · exact (by decide : ¬ 64 ∣ 599479) hdiv
-      · exact (by decide : ¬ 65 ∣ 599479) hdiv
-      · exact (by decide : ¬ 66 ∣ 599479) hdiv
-      · exact (by decide : ¬ 67 ∣ 599479) hdiv
-      · exact (by decide : ¬ 68 ∣ 599479) hdiv
-      · exact (by decide : ¬ 69 ∣ 599479) hdiv
-      · exact (by decide : ¬ 70 ∣ 599479) hdiv
-      · exact (by decide : ¬ 71 ∣ 599479) hdiv
-      · exact (by decide : ¬ 72 ∣ 599479) hdiv
-      · exact (by decide : ¬ 73 ∣ 599479) hdiv
-      · exact (by decide : ¬ 74 ∣ 599479) hdiv
-      · exact (by decide : ¬ 75 ∣ 599479) hdiv
-      · exact (by decide : ¬ 76 ∣ 599479) hdiv
-      · exact (by decide : ¬ 77 ∣ 599479) hdiv
-      · exact (by decide : ¬ 78 ∣ 599479) hdiv
-      · exact (by decide : ¬ 79 ∣ 599479) hdiv
-      · exact (by decide : ¬ 80 ∣ 599479) hdiv
-      · exact (by decide : ¬ 81 ∣ 599479) hdiv
-      · exact (by decide : ¬ 82 ∣ 599479) hdiv
-      · exact (by decide : ¬ 83 ∣ 599479) hdiv
-      · exact (by decide : ¬ 84 ∣ 599479) hdiv
-      · exact (by decide : ¬ 85 ∣ 599479) hdiv
-      · exact (by decide : ¬ 86 ∣ 599479) hdiv
-      · exact (by decide : ¬ 87 ∣ 599479) hdiv
-      · exact (by decide : ¬ 88 ∣ 599479) hdiv
-      · exact (by decide : ¬ 89 ∣ 599479) hdiv
-      · exact (by decide : ¬ 90 ∣ 599479) hdiv
-      · exact (by decide : ¬ 91 ∣ 599479) hdiv
-      · exact (by decide : ¬ 92 ∣ 599479) hdiv
-      · exact (by decide : ¬ 93 ∣ 599479) hdiv
-      · exact (by decide : ¬ 94 ∣ 599479) hdiv
-      · exact (by decide : ¬ 95 ∣ 599479) hdiv
-      · exact (by decide : ¬ 96 ∣ 599479) hdiv
-      · exact (by decide : ¬ 97 ∣ 599479) hdiv
-      · exact (by decide : ¬ 98 ∣ 599479) hdiv
-      · exact (by decide : ¬ 99 ∣ 599479) hdiv
-      · exact (by decide : ¬ 100 ∣ 599479) hdiv
-      · exact (by decide : ¬ 101 ∣ 599479) hdiv
-      · exact (by decide : ¬ 102 ∣ 599479) hdiv
-      · exact (by decide : ¬ 103 ∣ 599479) hdiv
-      · exact (by decide : ¬ 104 ∣ 599479) hdiv
-      · exact (by decide : ¬ 105 ∣ 599479) hdiv
-      · exact (by decide : ¬ 106 ∣ 599479) hdiv
-      · exact (by decide : ¬ 107 ∣ 599479) hdiv
-      · exact (by decide : ¬ 108 ∣ 599479) hdiv
-      · exact (by decide : ¬ 109 ∣ 599479) hdiv
-      · exact (by decide : ¬ 110 ∣ 599479) hdiv
-      · exact (by decide : ¬ 111 ∣ 599479) hdiv
-      · exact (by decide : ¬ 112 ∣ 599479) hdiv
-      · exact (by decide : ¬ 113 ∣ 599479) hdiv
-      · exact (by decide : ¬ 114 ∣ 599479) hdiv
-      · exact (by decide : ¬ 115 ∣ 599479) hdiv
-      · exact (by decide : ¬ 116 ∣ 599479) hdiv
-      · exact (by decide : ¬ 117 ∣ 599479) hdiv
-      · exact (by decide : ¬ 118 ∣ 599479) hdiv
-      · exact (by decide : ¬ 119 ∣ 599479) hdiv
-      · exact (by decide : ¬ 120 ∣ 599479) hdiv
-      · exact (by decide : ¬ 121 ∣ 599479) hdiv
-      · exact (by decide : ¬ 122 ∣ 599479) hdiv
-      · exact (by decide : ¬ 123 ∣ 599479) hdiv
-      · exact (by decide : ¬ 124 ∣ 599479) hdiv
-      · exact (by decide : ¬ 125 ∣ 599479) hdiv
-      · exact (by decide : ¬ 126 ∣ 599479) hdiv
-      · exact (by decide : ¬ 127 ∣ 599479) hdiv
-      · exact (by decide : ¬ 128 ∣ 599479) hdiv
-      · exact (by decide : ¬ 129 ∣ 599479) hdiv
-      · exact (by decide : ¬ 130 ∣ 599479) hdiv
-      · exact (by decide : ¬ 131 ∣ 599479) hdiv
-      · exact (by decide : ¬ 132 ∣ 599479) hdiv
-      · exact (by decide : ¬ 133 ∣ 599479) hdiv
-      · exact (by decide : ¬ 134 ∣ 599479) hdiv
-      · exact (by decide : ¬ 135 ∣ 599479) hdiv
-      · exact (by decide : ¬ 136 ∣ 599479) hdiv
-      · exact (by decide : ¬ 137 ∣ 599479) hdiv
-      · exact (by decide : ¬ 138 ∣ 599479) hdiv
-      · exact (by decide : ¬ 139 ∣ 599479) hdiv
-      · exact (by decide : ¬ 140 ∣ 599479) hdiv
-      · exact (by decide : ¬ 141 ∣ 599479) hdiv
-      · exact (by decide : ¬ 142 ∣ 599479) hdiv
-      · exact (by decide : ¬ 143 ∣ 599479) hdiv
-      · exact (by decide : ¬ 144 ∣ 599479) hdiv
-      · exact (by decide : ¬ 145 ∣ 599479) hdiv
-      · exact (by decide : ¬ 146 ∣ 599479) hdiv
-      · exact (by decide : ¬ 147 ∣ 599479) hdiv
-      · exact (by decide : ¬ 148 ∣ 599479) hdiv
-      · exact (by decide : ¬ 149 ∣ 599479) hdiv
-      · exact (by decide : ¬ 150 ∣ 599479) hdiv
-      · exact (by decide : ¬ 151 ∣ 599479) hdiv
-      · exact (by decide : ¬ 152 ∣ 599479) hdiv
-      · exact (by decide : ¬ 153 ∣ 599479) hdiv
-      · exact (by decide : ¬ 154 ∣ 599479) hdiv
-      · exact (by decide : ¬ 155 ∣ 599479) hdiv
-      · exact (by decide : ¬ 156 ∣ 599479) hdiv
-      · exact (by decide : ¬ 157 ∣ 599479) hdiv
-      · exact (by decide : ¬ 158 ∣ 599479) hdiv
-      · exact (by decide : ¬ 159 ∣ 599479) hdiv
-      · exact (by decide : ¬ 160 ∣ 599479) hdiv
-      · exact (by decide : ¬ 161 ∣ 599479) hdiv
-      · exact (by decide : ¬ 162 ∣ 599479) hdiv
-      · exact (by decide : ¬ 163 ∣ 599479) hdiv
-      · exact (by decide : ¬ 164 ∣ 599479) hdiv
-      · exact (by decide : ¬ 165 ∣ 599479) hdiv
-      · exact (by decide : ¬ 166 ∣ 599479) hdiv
-      · exact (by decide : ¬ 167 ∣ 599479) hdiv
-      · exact (by decide : ¬ 168 ∣ 599479) hdiv
-      · exact (by decide : ¬ 169 ∣ 599479) hdiv
-      · exact (by decide : ¬ 170 ∣ 599479) hdiv
-      · exact (by decide : ¬ 171 ∣ 599479) hdiv
-      · exact (by decide : ¬ 172 ∣ 599479) hdiv
-      · exact (by decide : ¬ 173 ∣ 599479) hdiv
-      · exact (by decide : ¬ 174 ∣ 599479) hdiv
-      · exact (by decide : ¬ 175 ∣ 599479) hdiv
-      · exact (by decide : ¬ 176 ∣ 599479) hdiv
-      · exact (by decide : ¬ 177 ∣ 599479) hdiv
-      · exact (by decide : ¬ 178 ∣ 599479) hdiv
-      · exact (by decide : ¬ 179 ∣ 599479) hdiv
-      · exact (by decide : ¬ 180 ∣ 599479) hdiv
-      · exact (by decide : ¬ 181 ∣ 599479) hdiv
-      · exact (by decide : ¬ 182 ∣ 599479) hdiv
-      · exact (by decide : ¬ 183 ∣ 599479) hdiv
-      · exact (by decide : ¬ 184 ∣ 599479) hdiv
-      · exact (by decide : ¬ 185 ∣ 599479) hdiv
-      · exact (by decide : ¬ 186 ∣ 599479) hdiv
-      · exact (by decide : ¬ 187 ∣ 599479) hdiv
-      · exact (by decide : ¬ 188 ∣ 599479) hdiv
-      · exact (by decide : ¬ 189 ∣ 599479) hdiv
-      · exact (by decide : ¬ 190 ∣ 599479) hdiv
-      · exact (by decide : ¬ 191 ∣ 599479) hdiv
-      · exact (by decide : ¬ 192 ∣ 599479) hdiv
-      · exact (by decide : ¬ 193 ∣ 599479) hdiv
-      · exact (by decide : ¬ 194 ∣ 599479) hdiv
-      · exact (by decide : ¬ 195 ∣ 599479) hdiv
-      · exact (by decide : ¬ 196 ∣ 599479) hdiv
-      · exact (by decide : ¬ 197 ∣ 599479) hdiv
-      · exact (by decide : ¬ 198 ∣ 599479) hdiv
-      · exact (by decide : ¬ 199 ∣ 599479) hdiv
-      · exact (by decide : ¬ 200 ∣ 599479) hdiv
-      · exact (by decide : ¬ 201 ∣ 599479) hdiv
-      · exact (by decide : ¬ 202 ∣ 599479) hdiv
-      · exact (by decide : ¬ 203 ∣ 599479) hdiv
-      · exact (by decide : ¬ 204 ∣ 599479) hdiv
-      · exact (by decide : ¬ 205 ∣ 599479) hdiv
-      · exact (by decide : ¬ 206 ∣ 599479) hdiv
-      · exact (by decide : ¬ 207 ∣ 599479) hdiv
-      · exact (by decide : ¬ 208 ∣ 599479) hdiv
-      · exact (by decide : ¬ 209 ∣ 599479) hdiv
-      · exact (by decide : ¬ 210 ∣ 599479) hdiv
-      · exact (by decide : ¬ 211 ∣ 599479) hdiv
-      · exact (by decide : ¬ 212 ∣ 599479) hdiv
-      · exact (by decide : ¬ 213 ∣ 599479) hdiv
-      · exact (by decide : ¬ 214 ∣ 599479) hdiv
-      · exact (by decide : ¬ 215 ∣ 599479) hdiv
-      · exact (by decide : ¬ 216 ∣ 599479) hdiv
-      · exact (by decide : ¬ 217 ∣ 599479) hdiv
-      · exact (by decide : ¬ 218 ∣ 599479) hdiv
-      · exact (by decide : ¬ 219 ∣ 599479) hdiv
-      · exact (by decide : ¬ 220 ∣ 599479) hdiv
-      · exact (by decide : ¬ 221 ∣ 599479) hdiv
-      · exact (by decide : ¬ 222 ∣ 599479) hdiv
-      · exact (by decide : ¬ 223 ∣ 599479) hdiv
-      · exact (by decide : ¬ 224 ∣ 599479) hdiv
-      · exact (by decide : ¬ 225 ∣ 599479) hdiv
-      · exact (by decide : ¬ 226 ∣ 599479) hdiv
-      · exact (by decide : ¬ 227 ∣ 599479) hdiv
-      · exact (by decide : ¬ 228 ∣ 599479) hdiv
-      · exact (by decide : ¬ 229 ∣ 599479) hdiv
-      · exact (by decide : ¬ 230 ∣ 599479) hdiv
-      · exact (by decide : ¬ 231 ∣ 599479) hdiv
-      · exact (by decide : ¬ 232 ∣ 599479) hdiv
-      · exact (by decide : ¬ 233 ∣ 599479) hdiv
-      · exact (by decide : ¬ 234 ∣ 599479) hdiv
-      · exact (by decide : ¬ 235 ∣ 599479) hdiv
-      · exact (by decide : ¬ 236 ∣ 599479) hdiv
-      · exact (by decide : ¬ 237 ∣ 599479) hdiv
-      · exact (by decide : ¬ 238 ∣ 599479) hdiv
-      · exact (by decide : ¬ 239 ∣ 599479) hdiv
-      · exact (by decide : ¬ 240 ∣ 599479) hdiv
-      · exact (by decide : ¬ 241 ∣ 599479) hdiv
-      · exact (by decide : ¬ 242 ∣ 599479) hdiv
-      · exact (by decide : ¬ 243 ∣ 599479) hdiv
-      · exact (by decide : ¬ 244 ∣ 599479) hdiv
-      · exact (by decide : ¬ 245 ∣ 599479) hdiv
-      · exact (by decide : ¬ 246 ∣ 599479) hdiv
-      · exact (by decide : ¬ 247 ∣ 599479) hdiv
-      · exact (by decide : ¬ 248 ∣ 599479) hdiv
-      · exact (by decide : ¬ 249 ∣ 599479) hdiv
-      · exact (by decide : ¬ 250 ∣ 599479) hdiv
-      · exact (by decide : ¬ 251 ∣ 599479) hdiv
-      · exact (by decide : ¬ 252 ∣ 599479) hdiv
-      · exact (by decide : ¬ 253 ∣ 599479) hdiv
-      · exact (by decide : ¬ 254 ∣ 599479) hdiv
-      · exact (by decide : ¬ 255 ∣ 599479) hdiv
-      · exact (by decide : ¬ 256 ∣ 599479) hdiv
-      · exact (by decide : ¬ 257 ∣ 599479) hdiv
-      · exact (by decide : ¬ 258 ∣ 599479) hdiv
-      · exact (by decide : ¬ 259 ∣ 599479) hdiv
-      · exact (by decide : ¬ 260 ∣ 599479) hdiv
-      · exact (by decide : ¬ 261 ∣ 599479) hdiv
-      · exact (by decide : ¬ 262 ∣ 599479) hdiv
-      · exact (by decide : ¬ 263 ∣ 599479) hdiv
-      · exact (by decide : ¬ 264 ∣ 599479) hdiv
-      · exact (by decide : ¬ 265 ∣ 599479) hdiv
-      · exact (by decide : ¬ 266 ∣ 599479) hdiv
-      · exact (by decide : ¬ 267 ∣ 599479) hdiv
-      · exact (by decide : ¬ 268 ∣ 599479) hdiv
-      · exact (by decide : ¬ 269 ∣ 599479) hdiv
-      · exact (by decide : ¬ 270 ∣ 599479) hdiv
-      · exact (by decide : ¬ 271 ∣ 599479) hdiv
-      · exact (by decide : ¬ 272 ∣ 599479) hdiv
-      · exact (by decide : ¬ 273 ∣ 599479) hdiv
-      · exact (by decide : ¬ 274 ∣ 599479) hdiv
-      · exact (by decide : ¬ 275 ∣ 599479) hdiv
-      · exact (by decide : ¬ 276 ∣ 599479) hdiv
-      · exact (by decide : ¬ 277 ∣ 599479) hdiv
-      · exact (by decide : ¬ 278 ∣ 599479) hdiv
-      · exact (by decide : ¬ 279 ∣ 599479) hdiv
-      · exact (by decide : ¬ 280 ∣ 599479) hdiv
-      · exact (by decide : ¬ 281 ∣ 599479) hdiv
-      · exact (by decide : ¬ 282 ∣ 599479) hdiv
-      · exact (by decide : ¬ 283 ∣ 599479) hdiv
-      · exact (by decide : ¬ 284 ∣ 599479) hdiv
-      · exact (by decide : ¬ 285 ∣ 599479) hdiv
-      · exact (by decide : ¬ 286 ∣ 599479) hdiv
-      · exact (by decide : ¬ 287 ∣ 599479) hdiv
-      · exact (by decide : ¬ 288 ∣ 599479) hdiv
-      · exact (by decide : ¬ 289 ∣ 599479) hdiv
-      · exact (by decide : ¬ 290 ∣ 599479) hdiv
-      · exact (by decide : ¬ 291 ∣ 599479) hdiv
-      · exact (by decide : ¬ 292 ∣ 599479) hdiv
-      · exact (by decide : ¬ 293 ∣ 599479) hdiv
-      · exact (by decide : ¬ 294 ∣ 599479) hdiv
-      · exact (by decide : ¬ 295 ∣ 599479) hdiv
-      · exact (by decide : ¬ 296 ∣ 599479) hdiv
-      · exact (by decide : ¬ 297 ∣ 599479) hdiv
-      · exact (by decide : ¬ 298 ∣ 599479) hdiv
-      · exact (by decide : ¬ 299 ∣ 599479) hdiv
-      · exact (by decide : ¬ 300 ∣ 599479) hdiv
-      · exact (by decide : ¬ 301 ∣ 599479) hdiv
-      · exact (by decide : ¬ 302 ∣ 599479) hdiv
-      · exact (by decide : ¬ 303 ∣ 599479) hdiv
-      · exact (by decide : ¬ 304 ∣ 599479) hdiv
-      · exact (by decide : ¬ 305 ∣ 599479) hdiv
-      · exact (by decide : ¬ 306 ∣ 599479) hdiv
-      · exact (by decide : ¬ 307 ∣ 599479) hdiv
-      · exact (by decide : ¬ 308 ∣ 599479) hdiv
-      · exact (by decide : ¬ 309 ∣ 599479) hdiv
-      · exact (by decide : ¬ 310 ∣ 599479) hdiv
-      · exact (by decide : ¬ 311 ∣ 599479) hdiv
-      · exact (by decide : ¬ 312 ∣ 599479) hdiv
-      · exact (by decide : ¬ 313 ∣ 599479) hdiv
-      · exact (by decide : ¬ 314 ∣ 599479) hdiv
-      · exact (by decide : ¬ 315 ∣ 599479) hdiv
-      · exact (by decide : ¬ 316 ∣ 599479) hdiv
-      · exact (by decide : ¬ 317 ∣ 599479) hdiv
-      · exact (by decide : ¬ 318 ∣ 599479) hdiv
-      · exact (by decide : ¬ 319 ∣ 599479) hdiv
-      · exact (by decide : ¬ 320 ∣ 599479) hdiv
-      · exact (by decide : ¬ 321 ∣ 599479) hdiv
-      · exact (by decide : ¬ 322 ∣ 599479) hdiv
-      · exact (by decide : ¬ 323 ∣ 599479) hdiv
-      · exact (by decide : ¬ 324 ∣ 599479) hdiv
-      · exact (by decide : ¬ 325 ∣ 599479) hdiv
-      · exact (by decide : ¬ 326 ∣ 599479) hdiv
-      · exact (by decide : ¬ 327 ∣ 599479) hdiv
-      · exact (by decide : ¬ 328 ∣ 599479) hdiv
-      · exact (by decide : ¬ 329 ∣ 599479) hdiv
-      · exact (by decide : ¬ 330 ∣ 599479) hdiv
-      · exact (by decide : ¬ 331 ∣ 599479) hdiv
-      · exact (by decide : ¬ 332 ∣ 599479) hdiv
-      · exact (by decide : ¬ 333 ∣ 599479) hdiv
-      · exact (by decide : ¬ 334 ∣ 599479) hdiv
-      · exact (by decide : ¬ 335 ∣ 599479) hdiv
-      · exact (by decide : ¬ 336 ∣ 599479) hdiv
-      · exact (by decide : ¬ 337 ∣ 599479) hdiv
-      · exact (by decide : ¬ 338 ∣ 599479) hdiv
-      · exact (by decide : ¬ 339 ∣ 599479) hdiv
-      · exact (by decide : ¬ 340 ∣ 599479) hdiv
-      · exact (by decide : ¬ 341 ∣ 599479) hdiv
-      · exact (by decide : ¬ 342 ∣ 599479) hdiv
-      · exact (by decide : ¬ 343 ∣ 599479) hdiv
-      · exact (by decide : ¬ 344 ∣ 599479) hdiv
-      · exact (by decide : ¬ 345 ∣ 599479) hdiv
-      · exact (by decide : ¬ 346 ∣ 599479) hdiv
-      · exact (by decide : ¬ 347 ∣ 599479) hdiv
-      · exact (by decide : ¬ 348 ∣ 599479) hdiv
-      · exact (by decide : ¬ 349 ∣ 599479) hdiv
-      · exact (by decide : ¬ 350 ∣ 599479) hdiv
-      · exact (by decide : ¬ 351 ∣ 599479) hdiv
-      · exact (by decide : ¬ 352 ∣ 599479) hdiv
-      · exact (by decide : ¬ 353 ∣ 599479) hdiv
-      · exact (by decide : ¬ 354 ∣ 599479) hdiv
-      · exact (by decide : ¬ 355 ∣ 599479) hdiv
-      · exact (by decide : ¬ 356 ∣ 599479) hdiv
-      · exact (by decide : ¬ 357 ∣ 599479) hdiv
-      · exact (by decide : ¬ 358 ∣ 599479) hdiv
-      · exact (by decide : ¬ 359 ∣ 599479) hdiv
-      · exact (by decide : ¬ 360 ∣ 599479) hdiv
-      · exact (by decide : ¬ 361 ∣ 599479) hdiv
-      · exact (by decide : ¬ 362 ∣ 599479) hdiv
-      · exact (by decide : ¬ 363 ∣ 599479) hdiv
-      · exact (by decide : ¬ 364 ∣ 599479) hdiv
-      · exact (by decide : ¬ 365 ∣ 599479) hdiv
-      · exact (by decide : ¬ 366 ∣ 599479) hdiv
-      · exact (by decide : ¬ 367 ∣ 599479) hdiv
-      · exact (by decide : ¬ 368 ∣ 599479) hdiv
-      · exact (by decide : ¬ 369 ∣ 599479) hdiv
-      · exact (by decide : ¬ 370 ∣ 599479) hdiv
-      · exact (by decide : ¬ 371 ∣ 599479) hdiv
-      · exact (by decide : ¬ 372 ∣ 599479) hdiv
-      · exact (by decide : ¬ 373 ∣ 599479) hdiv
-      · exact (by decide : ¬ 374 ∣ 599479) hdiv
-      · exact (by decide : ¬ 375 ∣ 599479) hdiv
-      · exact (by decide : ¬ 376 ∣ 599479) hdiv
-      · exact (by decide : ¬ 377 ∣ 599479) hdiv
-      · exact (by decide : ¬ 378 ∣ 599479) hdiv
-      · exact (by decide : ¬ 379 ∣ 599479) hdiv
-      · exact (by decide : ¬ 380 ∣ 599479) hdiv
-      · exact (by decide : ¬ 381 ∣ 599479) hdiv
-      · exact (by decide : ¬ 382 ∣ 599479) hdiv
-      · exact (by decide : ¬ 383 ∣ 599479) hdiv
-      · exact (by decide : ¬ 384 ∣ 599479) hdiv
-      · exact (by decide : ¬ 385 ∣ 599479) hdiv
-      · exact (by decide : ¬ 386 ∣ 599479) hdiv
-      · exact (by decide : ¬ 387 ∣ 599479) hdiv
-      · exact (by decide : ¬ 388 ∣ 599479) hdiv
-      · exact (by decide : ¬ 389 ∣ 599479) hdiv
-      · exact (by decide : ¬ 390 ∣ 599479) hdiv
-      · exact (by decide : ¬ 391 ∣ 599479) hdiv
-      · exact (by decide : ¬ 392 ∣ 599479) hdiv
-      · exact (by decide : ¬ 393 ∣ 599479) hdiv
-      · exact (by decide : ¬ 394 ∣ 599479) hdiv
-      · exact (by decide : ¬ 395 ∣ 599479) hdiv
-      · exact (by decide : ¬ 396 ∣ 599479) hdiv
-      · exact (by decide : ¬ 397 ∣ 599479) hdiv
-      · exact (by decide : ¬ 398 ∣ 599479) hdiv
-      · exact (by decide : ¬ 399 ∣ 599479) hdiv
-      · exact (by decide : ¬ 400 ∣ 599479) hdiv
-      · exact (by decide : ¬ 401 ∣ 599479) hdiv
-      · exact (by decide : ¬ 402 ∣ 599479) hdiv
-      · exact (by decide : ¬ 403 ∣ 599479) hdiv
-      · exact (by decide : ¬ 404 ∣ 599479) hdiv
-      · exact (by decide : ¬ 405 ∣ 599479) hdiv
-      · exact (by decide : ¬ 406 ∣ 599479) hdiv
-      · exact (by decide : ¬ 407 ∣ 599479) hdiv
-      · exact (by decide : ¬ 408 ∣ 599479) hdiv
-      · exact (by decide : ¬ 409 ∣ 599479) hdiv
-      · exact (by decide : ¬ 410 ∣ 599479) hdiv
-      · exact (by decide : ¬ 411 ∣ 599479) hdiv
-      · exact (by decide : ¬ 412 ∣ 599479) hdiv
-      · exact (by decide : ¬ 413 ∣ 599479) hdiv
-      · exact (by decide : ¬ 414 ∣ 599479) hdiv
-      · exact (by decide : ¬ 415 ∣ 599479) hdiv
-      · exact (by decide : ¬ 416 ∣ 599479) hdiv
-      · exact (by decide : ¬ 417 ∣ 599479) hdiv
-      · exact (by decide : ¬ 418 ∣ 599479) hdiv
-      · exact (by decide : ¬ 419 ∣ 599479) hdiv
-      · exact (by decide : ¬ 420 ∣ 599479) hdiv
-      · exact (by decide : ¬ 421 ∣ 599479) hdiv
-      · exact (by decide : ¬ 422 ∣ 599479) hdiv
-      · exact (by decide : ¬ 423 ∣ 599479) hdiv
-      · exact (by decide : ¬ 424 ∣ 599479) hdiv
-      · exact (by decide : ¬ 425 ∣ 599479) hdiv
-      · exact (by decide : ¬ 426 ∣ 599479) hdiv
-      · exact (by decide : ¬ 427 ∣ 599479) hdiv
-      · exact (by decide : ¬ 428 ∣ 599479) hdiv
-      · exact (by decide : ¬ 429 ∣ 599479) hdiv
-      · exact (by decide : ¬ 430 ∣ 599479) hdiv
-      · exact (by decide : ¬ 431 ∣ 599479) hdiv
-      · exact (by decide : ¬ 432 ∣ 599479) hdiv
-      · exact (by decide : ¬ 433 ∣ 599479) hdiv
-      · exact (by decide : ¬ 434 ∣ 599479) hdiv
-      · exact (by decide : ¬ 435 ∣ 599479) hdiv
-      · exact (by decide : ¬ 436 ∣ 599479) hdiv
-      · exact (by decide : ¬ 437 ∣ 599479) hdiv
-      · exact (by decide : ¬ 438 ∣ 599479) hdiv
-      · exact (by decide : ¬ 439 ∣ 599479) hdiv
-      · exact (by decide : ¬ 440 ∣ 599479) hdiv
-      · exact (by decide : ¬ 441 ∣ 599479) hdiv
-      · exact (by decide : ¬ 442 ∣ 599479) hdiv
-      · exact (by decide : ¬ 443 ∣ 599479) hdiv
-      · exact (by decide : ¬ 444 ∣ 599479) hdiv
-      · exact (by decide : ¬ 445 ∣ 599479) hdiv
-      · exact (by decide : ¬ 446 ∣ 599479) hdiv
-      · exact (by decide : ¬ 447 ∣ 599479) hdiv
-      · exact (by decide : ¬ 448 ∣ 599479) hdiv
-      · exact (by decide : ¬ 449 ∣ 599479) hdiv
-      · exact (by decide : ¬ 450 ∣ 599479) hdiv
-      · exact (by decide : ¬ 451 ∣ 599479) hdiv
-      · exact (by decide : ¬ 452 ∣ 599479) hdiv
-      · exact (by decide : ¬ 453 ∣ 599479) hdiv
-      · exact (by decide : ¬ 454 ∣ 599479) hdiv
-      · exact (by decide : ¬ 455 ∣ 599479) hdiv
-      · exact (by decide : ¬ 456 ∣ 599479) hdiv
-      · exact (by decide : ¬ 457 ∣ 599479) hdiv
-      · exact (by decide : ¬ 458 ∣ 599479) hdiv
-      · exact (by decide : ¬ 459 ∣ 599479) hdiv
-      · exact (by decide : ¬ 460 ∣ 599479) hdiv
-      · exact (by decide : ¬ 461 ∣ 599479) hdiv
-      · exact (by decide : ¬ 462 ∣ 599479) hdiv
-      · exact (by decide : ¬ 463 ∣ 599479) hdiv
-      · exact (by decide : ¬ 464 ∣ 599479) hdiv
-      · exact (by decide : ¬ 465 ∣ 599479) hdiv
-      · exact (by decide : ¬ 466 ∣ 599479) hdiv
-      · exact (by decide : ¬ 467 ∣ 599479) hdiv
-      · exact (by decide : ¬ 468 ∣ 599479) hdiv
-      · exact (by decide : ¬ 469 ∣ 599479) hdiv
-      · exact (by decide : ¬ 470 ∣ 599479) hdiv
-      · exact (by decide : ¬ 471 ∣ 599479) hdiv
-      · exact (by decide : ¬ 472 ∣ 599479) hdiv
-      · exact (by decide : ¬ 473 ∣ 599479) hdiv
-      · exact (by decide : ¬ 474 ∣ 599479) hdiv
-      · exact (by decide : ¬ 475 ∣ 599479) hdiv
-      · exact (by decide : ¬ 476 ∣ 599479) hdiv
-      · exact (by decide : ¬ 477 ∣ 599479) hdiv
-      · exact (by decide : ¬ 478 ∣ 599479) hdiv
-      · exact (by decide : ¬ 479 ∣ 599479) hdiv
-      · exact (by decide : ¬ 480 ∣ 599479) hdiv
-      · exact (by decide : ¬ 481 ∣ 599479) hdiv
-      · exact (by decide : ¬ 482 ∣ 599479) hdiv
-      · exact (by decide : ¬ 483 ∣ 599479) hdiv
-      · exact (by decide : ¬ 484 ∣ 599479) hdiv
-      · exact (by decide : ¬ 485 ∣ 599479) hdiv
-      · exact (by decide : ¬ 486 ∣ 599479) hdiv
-      · exact (by decide : ¬ 487 ∣ 599479) hdiv
-      · exact (by decide : ¬ 488 ∣ 599479) hdiv
-      · exact (by decide : ¬ 489 ∣ 599479) hdiv
-      · exact (by decide : ¬ 490 ∣ 599479) hdiv
-      · exact (by decide : ¬ 491 ∣ 599479) hdiv
-      · exact (by decide : ¬ 492 ∣ 599479) hdiv
-      · exact (by decide : ¬ 493 ∣ 599479) hdiv
-      · exact (by decide : ¬ 494 ∣ 599479) hdiv
-      · exact (by decide : ¬ 495 ∣ 599479) hdiv
-      · exact (by decide : ¬ 496 ∣ 599479) hdiv
-      · exact (by decide : ¬ 497 ∣ 599479) hdiv
-      · exact (by decide : ¬ 498 ∣ 599479) hdiv
-      · exact (by decide : ¬ 499 ∣ 599479) hdiv
-      · exact (by decide : ¬ 500 ∣ 599479) hdiv
-      · exact (by decide : ¬ 501 ∣ 599479) hdiv
-      · exact (by decide : ¬ 502 ∣ 599479) hdiv
-      · exact (by decide : ¬ 503 ∣ 599479) hdiv
-      · exact (by decide : ¬ 504 ∣ 599479) hdiv
-      · exact (by decide : ¬ 505 ∣ 599479) hdiv
-      · exact (by decide : ¬ 506 ∣ 599479) hdiv
-      · exact (by decide : ¬ 507 ∣ 599479) hdiv
-      · exact (by decide : ¬ 508 ∣ 599479) hdiv
-      · exact (by decide : ¬ 509 ∣ 599479) hdiv
-      · exact (by decide : ¬ 510 ∣ 599479) hdiv
-      · exact (by decide : ¬ 511 ∣ 599479) hdiv
-      · exact (by decide : ¬ 512 ∣ 599479) hdiv
-      · exact (by decide : ¬ 513 ∣ 599479) hdiv
-      · exact (by decide : ¬ 514 ∣ 599479) hdiv
-      · exact (by decide : ¬ 515 ∣ 599479) hdiv
-      · exact (by decide : ¬ 516 ∣ 599479) hdiv
-      · exact (by decide : ¬ 517 ∣ 599479) hdiv
-      · exact (by decide : ¬ 518 ∣ 599479) hdiv
-      · exact (by decide : ¬ 519 ∣ 599479) hdiv
-      · exact (by decide : ¬ 520 ∣ 599479) hdiv
-      · exact (by decide : ¬ 521 ∣ 599479) hdiv
-      · exact (by decide : ¬ 522 ∣ 599479) hdiv
-      · exact (by decide : ¬ 523 ∣ 599479) hdiv
-      · exact (by decide : ¬ 524 ∣ 599479) hdiv
-      · exact (by decide : ¬ 525 ∣ 599479) hdiv
-      · exact (by decide : ¬ 526 ∣ 599479) hdiv
-      · exact (by decide : ¬ 527 ∣ 599479) hdiv
-      · exact (by decide : ¬ 528 ∣ 599479) hdiv
-      · exact (by decide : ¬ 529 ∣ 599479) hdiv
-      · exact (by decide : ¬ 530 ∣ 599479) hdiv
-      · exact (by decide : ¬ 531 ∣ 599479) hdiv
-      · exact (by decide : ¬ 532 ∣ 599479) hdiv
-      · exact (by decide : ¬ 533 ∣ 599479) hdiv
-      · exact (by decide : ¬ 534 ∣ 599479) hdiv
-      · exact (by decide : ¬ 535 ∣ 599479) hdiv
-      · exact (by decide : ¬ 536 ∣ 599479) hdiv
-      · exact (by decide : ¬ 537 ∣ 599479) hdiv
-      · exact (by decide : ¬ 538 ∣ 599479) hdiv
-      · exact (by decide : ¬ 539 ∣ 599479) hdiv
-      · exact (by decide : ¬ 540 ∣ 599479) hdiv
-      · exact (by decide : ¬ 541 ∣ 599479) hdiv
-      · exact (by decide : ¬ 542 ∣ 599479) hdiv
-      · exact (by decide : ¬ 543 ∣ 599479) hdiv
-      · exact (by decide : ¬ 544 ∣ 599479) hdiv
-      · exact (by decide : ¬ 545 ∣ 599479) hdiv
-      · exact (by decide : ¬ 546 ∣ 599479) hdiv
-      · exact (by decide : ¬ 547 ∣ 599479) hdiv
-      · exact (by decide : ¬ 548 ∣ 599479) hdiv
-      · exact (by decide : ¬ 549 ∣ 599479) hdiv
-      · exact (by decide : ¬ 550 ∣ 599479) hdiv
-      · exact (by decide : ¬ 551 ∣ 599479) hdiv
-      · exact (by decide : ¬ 552 ∣ 599479) hdiv
-      · exact (by decide : ¬ 553 ∣ 599479) hdiv
-      · exact (by decide : ¬ 554 ∣ 599479) hdiv
-      · exact (by decide : ¬ 555 ∣ 599479) hdiv
-      · exact (by decide : ¬ 556 ∣ 599479) hdiv
-      · exact (by decide : ¬ 557 ∣ 599479) hdiv
-      · exact (by decide : ¬ 558 ∣ 599479) hdiv
-      · exact (by decide : ¬ 559 ∣ 599479) hdiv
-      · exact (by decide : ¬ 560 ∣ 599479) hdiv
-      · exact (by decide : ¬ 561 ∣ 599479) hdiv
-      · exact (by decide : ¬ 562 ∣ 599479) hdiv
-      · exact (by decide : ¬ 563 ∣ 599479) hdiv
-      · exact (by decide : ¬ 564 ∣ 599479) hdiv
-      · exact (by decide : ¬ 565 ∣ 599479) hdiv
-      · exact (by decide : ¬ 566 ∣ 599479) hdiv
-      · exact (by decide : ¬ 567 ∣ 599479) hdiv
-      · exact (by decide : ¬ 568 ∣ 599479) hdiv
-      · exact (by decide : ¬ 569 ∣ 599479) hdiv
-      · exact (by decide : ¬ 570 ∣ 599479) hdiv
-      · exact (by decide : ¬ 571 ∣ 599479) hdiv
-      · exact (by decide : ¬ 572 ∣ 599479) hdiv
-      · exact (by decide : ¬ 573 ∣ 599479) hdiv
-      · exact (by decide : ¬ 574 ∣ 599479) hdiv
-      · exact (by decide : ¬ 575 ∣ 599479) hdiv
-      · exact (by decide : ¬ 576 ∣ 599479) hdiv
-      · exact (by decide : ¬ 577 ∣ 599479) hdiv
-      · exact (by decide : ¬ 578 ∣ 599479) hdiv
-      · exact (by decide : ¬ 579 ∣ 599479) hdiv
-      · exact (by decide : ¬ 580 ∣ 599479) hdiv
-      · exact (by decide : ¬ 581 ∣ 599479) hdiv
-      · exact (by decide : ¬ 582 ∣ 599479) hdiv
-      · exact (by decide : ¬ 583 ∣ 599479) hdiv
-      · exact (by decide : ¬ 584 ∣ 599479) hdiv
-      · exact (by decide : ¬ 585 ∣ 599479) hdiv
-      · exact (by decide : ¬ 586 ∣ 599479) hdiv
-      · exact (by decide : ¬ 587 ∣ 599479) hdiv
-      · exact (by decide : ¬ 588 ∣ 599479) hdiv
-      · exact (by decide : ¬ 589 ∣ 599479) hdiv
-      · exact (by decide : ¬ 590 ∣ 599479) hdiv
-      · exact (by decide : ¬ 591 ∣ 599479) hdiv
-      · exact (by decide : ¬ 592 ∣ 599479) hdiv
-      · exact (by decide : ¬ 593 ∣ 599479) hdiv
-      · exact (by decide : ¬ 594 ∣ 599479) hdiv
-      · exact (by decide : ¬ 595 ∣ 599479) hdiv
-      · exact (by decide : ¬ 596 ∣ 599479) hdiv
-      · exact (by decide : ¬ 597 ∣ 599479) hdiv
-      · exact (by decide : ¬ 598 ∣ 599479) hdiv
-      · exact (by decide : ¬ 599 ∣ 599479) hdiv
-      · exact (by decide : ¬ 600 ∣ 599479) hdiv
-      · exact (by decide : ¬ 601 ∣ 599479) hdiv
-      · exact (by decide : ¬ 602 ∣ 599479) hdiv
-      · exact (by decide : ¬ 603 ∣ 599479) hdiv
-      · exact (by decide : ¬ 604 ∣ 599479) hdiv
-      · exact (by decide : ¬ 605 ∣ 599479) hdiv
-      · exact (by decide : ¬ 606 ∣ 599479) hdiv
-      · exact (by decide : ¬ 607 ∣ 599479) hdiv
-      · exact (by decide : ¬ 608 ∣ 599479) hdiv
-      · exact (by decide : ¬ 609 ∣ 599479) hdiv
-      · exact (by decide : ¬ 610 ∣ 599479) hdiv
-      · exact (by decide : ¬ 611 ∣ 599479) hdiv
-      · exact (by decide : ¬ 612 ∣ 599479) hdiv
-      · exact (by decide : ¬ 613 ∣ 599479) hdiv
-      · exact (by decide : ¬ 614 ∣ 599479) hdiv
-      · exact (by decide : ¬ 615 ∣ 599479) hdiv
-      · exact (by decide : ¬ 616 ∣ 599479) hdiv
-      · exact (by decide : ¬ 617 ∣ 599479) hdiv
-      · exact (by decide : ¬ 618 ∣ 599479) hdiv
-      · exact (by decide : ¬ 619 ∣ 599479) hdiv
-      · exact (by decide : ¬ 620 ∣ 599479) hdiv
-      · exact (by decide : ¬ 621 ∣ 599479) hdiv
-      · exact (by decide : ¬ 622 ∣ 599479) hdiv
-      · exact (by decide : ¬ 623 ∣ 599479) hdiv
-      · exact (by decide : ¬ 624 ∣ 599479) hdiv
-      · exact (by decide : ¬ 625 ∣ 599479) hdiv
-      · exact (by decide : ¬ 626 ∣ 599479) hdiv
-      · exact (by decide : ¬ 627 ∣ 599479) hdiv
-      · exact (by decide : ¬ 628 ∣ 599479) hdiv
-      · exact (by decide : ¬ 629 ∣ 599479) hdiv
-      · exact (by decide : ¬ 630 ∣ 599479) hdiv
-      · exact (by decide : ¬ 631 ∣ 599479) hdiv
-      · exact (by decide : ¬ 632 ∣ 599479) hdiv
-      · exact (by decide : ¬ 633 ∣ 599479) hdiv
-      · exact (by decide : ¬ 634 ∣ 599479) hdiv
-      · exact (by decide : ¬ 635 ∣ 599479) hdiv
-      · exact (by decide : ¬ 636 ∣ 599479) hdiv
-      · exact (by decide : ¬ 637 ∣ 599479) hdiv
-      · exact (by decide : ¬ 638 ∣ 599479) hdiv
-      · exact (by decide : ¬ 639 ∣ 599479) hdiv
-      · exact (by decide : ¬ 640 ∣ 599479) hdiv
-      · exact (by decide : ¬ 641 ∣ 599479) hdiv
-      · exact (by decide : ¬ 642 ∣ 599479) hdiv
-      · exact (by decide : ¬ 643 ∣ 599479) hdiv
-      · exact (by decide : ¬ 644 ∣ 599479) hdiv
-      · exact (by decide : ¬ 645 ∣ 599479) hdiv
-      · exact (by decide : ¬ 646 ∣ 599479) hdiv
-      · exact (by decide : ¬ 647 ∣ 599479) hdiv
-      · exact (by decide : ¬ 648 ∣ 599479) hdiv
-      · exact (by decide : ¬ 649 ∣ 599479) hdiv
-      · exact (by decide : ¬ 650 ∣ 599479) hdiv
-      · exact (by decide : ¬ 651 ∣ 599479) hdiv
-      · exact (by decide : ¬ 652 ∣ 599479) hdiv
-      · exact (by decide : ¬ 653 ∣ 599479) hdiv
-      · exact (by decide : ¬ 654 ∣ 599479) hdiv
-      · exact (by decide : ¬ 655 ∣ 599479) hdiv
-      · exact (by decide : ¬ 656 ∣ 599479) hdiv
-      · exact (by decide : ¬ 657 ∣ 599479) hdiv
-      · exact (by decide : ¬ 658 ∣ 599479) hdiv
-      · exact (by decide : ¬ 659 ∣ 599479) hdiv
-      · exact (by decide : ¬ 660 ∣ 599479) hdiv
-      · exact (by decide : ¬ 661 ∣ 599479) hdiv
-      · exact (by decide : ¬ 662 ∣ 599479) hdiv
-      · exact (by decide : ¬ 663 ∣ 599479) hdiv
-      · exact (by decide : ¬ 664 ∣ 599479) hdiv
-      · exact (by decide : ¬ 665 ∣ 599479) hdiv
-      · exact (by decide : ¬ 666 ∣ 599479) hdiv
-      · exact (by decide : ¬ 667 ∣ 599479) hdiv
-      · exact (by decide : ¬ 668 ∣ 599479) hdiv
-      · exact (by decide : ¬ 669 ∣ 599479) hdiv
-      · exact (by decide : ¬ 670 ∣ 599479) hdiv
-      · exact (by decide : ¬ 671 ∣ 599479) hdiv
-      · exact (by decide : ¬ 672 ∣ 599479) hdiv
-      · exact (by decide : ¬ 673 ∣ 599479) hdiv
-      · exact (by decide : ¬ 674 ∣ 599479) hdiv
-      · exact (by decide : ¬ 675 ∣ 599479) hdiv
-      · exact (by decide : ¬ 676 ∣ 599479) hdiv
-      · exact (by decide : ¬ 677 ∣ 599479) hdiv
-      · exact (by decide : ¬ 678 ∣ 599479) hdiv
-      · exact (by decide : ¬ 679 ∣ 599479) hdiv
-      · exact (by decide : ¬ 680 ∣ 599479) hdiv
-      · exact (by decide : ¬ 681 ∣ 599479) hdiv
-      · exact (by decide : ¬ 682 ∣ 599479) hdiv
-      · exact (by decide : ¬ 683 ∣ 599479) hdiv
-      · exact (by decide : ¬ 684 ∣ 599479) hdiv
-      · exact (by decide : ¬ 685 ∣ 599479) hdiv
-      · exact (by decide : ¬ 686 ∣ 599479) hdiv
-      · exact (by decide : ¬ 687 ∣ 599479) hdiv
-      · exact (by decide : ¬ 688 ∣ 599479) hdiv
-      · exact (by decide : ¬ 689 ∣ 599479) hdiv
-      · exact (by decide : ¬ 690 ∣ 599479) hdiv
-      · exact (by decide : ¬ 691 ∣ 599479) hdiv
-      · exact (by decide : ¬ 692 ∣ 599479) hdiv
-      · exact (by decide : ¬ 693 ∣ 599479) hdiv
-      · exact (by decide : ¬ 694 ∣ 599479) hdiv
-      · exact (by decide : ¬ 695 ∣ 599479) hdiv
-      · exact (by decide : ¬ 696 ∣ 599479) hdiv
-      · exact (by decide : ¬ 697 ∣ 599479) hdiv
-      · exact (by decide : ¬ 698 ∣ 599479) hdiv
-      · exact (by decide : ¬ 699 ∣ 599479) hdiv
-      · exact (by decide : ¬ 700 ∣ 599479) hdiv
-      · exact (by decide : ¬ 701 ∣ 599479) hdiv
-      · exact (by decide : ¬ 702 ∣ 599479) hdiv
-      · exact (by decide : ¬ 703 ∣ 599479) hdiv
-      · exact (by decide : ¬ 704 ∣ 599479) hdiv
-      · exact (by decide : ¬ 705 ∣ 599479) hdiv
-      · exact (by decide : ¬ 706 ∣ 599479) hdiv
-      · exact (by decide : ¬ 707 ∣ 599479) hdiv
-      · exact (by decide : ¬ 708 ∣ 599479) hdiv
-      · exact (by decide : ¬ 709 ∣ 599479) hdiv
-      · exact (by decide : ¬ 710 ∣ 599479) hdiv
-      · exact (by decide : ¬ 711 ∣ 599479) hdiv
-      · exact (by decide : ¬ 712 ∣ 599479) hdiv
-      · exact (by decide : ¬ 713 ∣ 599479) hdiv
-      · exact (by decide : ¬ 714 ∣ 599479) hdiv
-      · exact (by decide : ¬ 715 ∣ 599479) hdiv
-      · exact (by decide : ¬ 716 ∣ 599479) hdiv
-      · exact (by decide : ¬ 717 ∣ 599479) hdiv
-      · exact (by decide : ¬ 718 ∣ 599479) hdiv
-      · exact (by decide : ¬ 719 ∣ 599479) hdiv
-      · exact (by decide : ¬ 720 ∣ 599479) hdiv
-      · exact (by decide : ¬ 721 ∣ 599479) hdiv
-      · exact (by decide : ¬ 722 ∣ 599479) hdiv
-      · exact (by decide : ¬ 723 ∣ 599479) hdiv
-      · exact (by decide : ¬ 724 ∣ 599479) hdiv
-      · exact (by decide : ¬ 725 ∣ 599479) hdiv
-      · exact (by decide : ¬ 726 ∣ 599479) hdiv
-      · exact (by decide : ¬ 727 ∣ 599479) hdiv
-      · exact (by decide : ¬ 728 ∣ 599479) hdiv
-      · exact (by decide : ¬ 729 ∣ 599479) hdiv
-      · exact (by decide : ¬ 730 ∣ 599479) hdiv
-      · exact (by decide : ¬ 731 ∣ 599479) hdiv
-      · exact (by decide : ¬ 732 ∣ 599479) hdiv
-      · exact (by decide : ¬ 733 ∣ 599479) hdiv
-      · exact (by decide : ¬ 734 ∣ 599479) hdiv
-      · exact (by decide : ¬ 735 ∣ 599479) hdiv
-      · exact (by decide : ¬ 736 ∣ 599479) hdiv
-      · exact (by decide : ¬ 737 ∣ 599479) hdiv
-      · exact (by decide : ¬ 738 ∣ 599479) hdiv
-      · exact (by decide : ¬ 739 ∣ 599479) hdiv
-      · exact (by decide : ¬ 740 ∣ 599479) hdiv
-      · exact (by decide : ¬ 741 ∣ 599479) hdiv
-      · exact (by decide : ¬ 742 ∣ 599479) hdiv
-      · exact (by decide : ¬ 743 ∣ 599479) hdiv
-      · exact (by decide : ¬ 744 ∣ 599479) hdiv
-      · exact (by decide : ¬ 745 ∣ 599479) hdiv
-      · exact (by decide : ¬ 746 ∣ 599479) hdiv
-      · exact (by decide : ¬ 747 ∣ 599479) hdiv
-      · exact (by decide : ¬ 748 ∣ 599479) hdiv
-      · exact (by decide : ¬ 749 ∣ 599479) hdiv
-      · exact (by decide : ¬ 750 ∣ 599479) hdiv
-      · exact (by decide : ¬ 751 ∣ 599479) hdiv
-      · exact (by decide : ¬ 752 ∣ 599479) hdiv
-      · exact (by decide : ¬ 753 ∣ 599479) hdiv
-      · exact (by decide : ¬ 754 ∣ 599479) hdiv
-      · exact (by decide : ¬ 755 ∣ 599479) hdiv
-      · exact (by decide : ¬ 756 ∣ 599479) hdiv
-      · exact (by decide : ¬ 757 ∣ 599479) hdiv
-      · exact (by decide : ¬ 758 ∣ 599479) hdiv
-      · exact (by decide : ¬ 759 ∣ 599479) hdiv
-      · exact (by decide : ¬ 760 ∣ 599479) hdiv
-      · exact (by decide : ¬ 761 ∣ 599479) hdiv
-      · exact (by decide : ¬ 762 ∣ 599479) hdiv
-      · exact (by decide : ¬ 763 ∣ 599479) hdiv
-      · exact (by decide : ¬ 764 ∣ 599479) hdiv
-      · exact (by decide : ¬ 765 ∣ 599479) hdiv
-      · exact (by decide : ¬ 766 ∣ 599479) hdiv
-      · exact (by decide : ¬ 767 ∣ 599479) hdiv
-      · exact (by decide : ¬ 768 ∣ 599479) hdiv
-      · exact (by decide : ¬ 769 ∣ 599479) hdiv
-      · exact (by decide : ¬ 770 ∣ 599479) hdiv
-      · exact (by decide : ¬ 771 ∣ 599479) hdiv
-      · exact (by decide : ¬ 772 ∣ 599479) hdiv
-      · exact (by decide : ¬ 773 ∣ 599479) hdiv
-      · exact (by decide : ¬ 774 ∣ 599479) hdiv
-  have hA_factor : (14329 : Nat).factorization 599479 = 0 :=
-    Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 599479 ∣ 14329)
-  exact primeComponentWitness_of_prime_power_cofactor
-    33 14329 2 3 599479 4196353 1 7 0
-    hq_prime
-    (by decide)
-    (by decide)
-    (by decide)
-    hA_factor
-    (by decide)
+  have hquot : primeComponentQuotient 2 33 3 = 4196353 := by decide
+  have hq : Nat.Prime 599479 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 599479 ∣ 14329)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F33_A14329_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 33 14329 2 3 := by
@@ -1895,799 +910,13 @@ theorem concrete_generated_b2_F33_A14329_p3_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b2_F33_A14329_p11_prime_witness :
     PrimeComponentWitness 33 14329 2 11 599479 := by
-  have hq_prime : Nat.Prime 599479 := by
-    rw [Nat.prime_def_le_sqrt]
-    constructor
-    · decide
-    · intro m hm_ge hm_le hdiv
-      have hm_le774 : m ≤ 774 := by
-        have hsqrt_lt : Nat.sqrt 599479 < 775 :=
-          (Nat.sqrt_lt'.2 (by decide : 599479 < 775 ^ 2))
-        exact Nat.le_of_lt_succ (lt_of_le_of_lt hm_le hsqrt_lt)
-      interval_cases m
-      · exact (by decide : ¬ 2 ∣ 599479) hdiv
-      · exact (by decide : ¬ 3 ∣ 599479) hdiv
-      · exact (by decide : ¬ 4 ∣ 599479) hdiv
-      · exact (by decide : ¬ 5 ∣ 599479) hdiv
-      · exact (by decide : ¬ 6 ∣ 599479) hdiv
-      · exact (by decide : ¬ 7 ∣ 599479) hdiv
-      · exact (by decide : ¬ 8 ∣ 599479) hdiv
-      · exact (by decide : ¬ 9 ∣ 599479) hdiv
-      · exact (by decide : ¬ 10 ∣ 599479) hdiv
-      · exact (by decide : ¬ 11 ∣ 599479) hdiv
-      · exact (by decide : ¬ 12 ∣ 599479) hdiv
-      · exact (by decide : ¬ 13 ∣ 599479) hdiv
-      · exact (by decide : ¬ 14 ∣ 599479) hdiv
-      · exact (by decide : ¬ 15 ∣ 599479) hdiv
-      · exact (by decide : ¬ 16 ∣ 599479) hdiv
-      · exact (by decide : ¬ 17 ∣ 599479) hdiv
-      · exact (by decide : ¬ 18 ∣ 599479) hdiv
-      · exact (by decide : ¬ 19 ∣ 599479) hdiv
-      · exact (by decide : ¬ 20 ∣ 599479) hdiv
-      · exact (by decide : ¬ 21 ∣ 599479) hdiv
-      · exact (by decide : ¬ 22 ∣ 599479) hdiv
-      · exact (by decide : ¬ 23 ∣ 599479) hdiv
-      · exact (by decide : ¬ 24 ∣ 599479) hdiv
-      · exact (by decide : ¬ 25 ∣ 599479) hdiv
-      · exact (by decide : ¬ 26 ∣ 599479) hdiv
-      · exact (by decide : ¬ 27 ∣ 599479) hdiv
-      · exact (by decide : ¬ 28 ∣ 599479) hdiv
-      · exact (by decide : ¬ 29 ∣ 599479) hdiv
-      · exact (by decide : ¬ 30 ∣ 599479) hdiv
-      · exact (by decide : ¬ 31 ∣ 599479) hdiv
-      · exact (by decide : ¬ 32 ∣ 599479) hdiv
-      · exact (by decide : ¬ 33 ∣ 599479) hdiv
-      · exact (by decide : ¬ 34 ∣ 599479) hdiv
-      · exact (by decide : ¬ 35 ∣ 599479) hdiv
-      · exact (by decide : ¬ 36 ∣ 599479) hdiv
-      · exact (by decide : ¬ 37 ∣ 599479) hdiv
-      · exact (by decide : ¬ 38 ∣ 599479) hdiv
-      · exact (by decide : ¬ 39 ∣ 599479) hdiv
-      · exact (by decide : ¬ 40 ∣ 599479) hdiv
-      · exact (by decide : ¬ 41 ∣ 599479) hdiv
-      · exact (by decide : ¬ 42 ∣ 599479) hdiv
-      · exact (by decide : ¬ 43 ∣ 599479) hdiv
-      · exact (by decide : ¬ 44 ∣ 599479) hdiv
-      · exact (by decide : ¬ 45 ∣ 599479) hdiv
-      · exact (by decide : ¬ 46 ∣ 599479) hdiv
-      · exact (by decide : ¬ 47 ∣ 599479) hdiv
-      · exact (by decide : ¬ 48 ∣ 599479) hdiv
-      · exact (by decide : ¬ 49 ∣ 599479) hdiv
-      · exact (by decide : ¬ 50 ∣ 599479) hdiv
-      · exact (by decide : ¬ 51 ∣ 599479) hdiv
-      · exact (by decide : ¬ 52 ∣ 599479) hdiv
-      · exact (by decide : ¬ 53 ∣ 599479) hdiv
-      · exact (by decide : ¬ 54 ∣ 599479) hdiv
-      · exact (by decide : ¬ 55 ∣ 599479) hdiv
-      · exact (by decide : ¬ 56 ∣ 599479) hdiv
-      · exact (by decide : ¬ 57 ∣ 599479) hdiv
-      · exact (by decide : ¬ 58 ∣ 599479) hdiv
-      · exact (by decide : ¬ 59 ∣ 599479) hdiv
-      · exact (by decide : ¬ 60 ∣ 599479) hdiv
-      · exact (by decide : ¬ 61 ∣ 599479) hdiv
-      · exact (by decide : ¬ 62 ∣ 599479) hdiv
-      · exact (by decide : ¬ 63 ∣ 599479) hdiv
-      · exact (by decide : ¬ 64 ∣ 599479) hdiv
-      · exact (by decide : ¬ 65 ∣ 599479) hdiv
-      · exact (by decide : ¬ 66 ∣ 599479) hdiv
-      · exact (by decide : ¬ 67 ∣ 599479) hdiv
-      · exact (by decide : ¬ 68 ∣ 599479) hdiv
-      · exact (by decide : ¬ 69 ∣ 599479) hdiv
-      · exact (by decide : ¬ 70 ∣ 599479) hdiv
-      · exact (by decide : ¬ 71 ∣ 599479) hdiv
-      · exact (by decide : ¬ 72 ∣ 599479) hdiv
-      · exact (by decide : ¬ 73 ∣ 599479) hdiv
-      · exact (by decide : ¬ 74 ∣ 599479) hdiv
-      · exact (by decide : ¬ 75 ∣ 599479) hdiv
-      · exact (by decide : ¬ 76 ∣ 599479) hdiv
-      · exact (by decide : ¬ 77 ∣ 599479) hdiv
-      · exact (by decide : ¬ 78 ∣ 599479) hdiv
-      · exact (by decide : ¬ 79 ∣ 599479) hdiv
-      · exact (by decide : ¬ 80 ∣ 599479) hdiv
-      · exact (by decide : ¬ 81 ∣ 599479) hdiv
-      · exact (by decide : ¬ 82 ∣ 599479) hdiv
-      · exact (by decide : ¬ 83 ∣ 599479) hdiv
-      · exact (by decide : ¬ 84 ∣ 599479) hdiv
-      · exact (by decide : ¬ 85 ∣ 599479) hdiv
-      · exact (by decide : ¬ 86 ∣ 599479) hdiv
-      · exact (by decide : ¬ 87 ∣ 599479) hdiv
-      · exact (by decide : ¬ 88 ∣ 599479) hdiv
-      · exact (by decide : ¬ 89 ∣ 599479) hdiv
-      · exact (by decide : ¬ 90 ∣ 599479) hdiv
-      · exact (by decide : ¬ 91 ∣ 599479) hdiv
-      · exact (by decide : ¬ 92 ∣ 599479) hdiv
-      · exact (by decide : ¬ 93 ∣ 599479) hdiv
-      · exact (by decide : ¬ 94 ∣ 599479) hdiv
-      · exact (by decide : ¬ 95 ∣ 599479) hdiv
-      · exact (by decide : ¬ 96 ∣ 599479) hdiv
-      · exact (by decide : ¬ 97 ∣ 599479) hdiv
-      · exact (by decide : ¬ 98 ∣ 599479) hdiv
-      · exact (by decide : ¬ 99 ∣ 599479) hdiv
-      · exact (by decide : ¬ 100 ∣ 599479) hdiv
-      · exact (by decide : ¬ 101 ∣ 599479) hdiv
-      · exact (by decide : ¬ 102 ∣ 599479) hdiv
-      · exact (by decide : ¬ 103 ∣ 599479) hdiv
-      · exact (by decide : ¬ 104 ∣ 599479) hdiv
-      · exact (by decide : ¬ 105 ∣ 599479) hdiv
-      · exact (by decide : ¬ 106 ∣ 599479) hdiv
-      · exact (by decide : ¬ 107 ∣ 599479) hdiv
-      · exact (by decide : ¬ 108 ∣ 599479) hdiv
-      · exact (by decide : ¬ 109 ∣ 599479) hdiv
-      · exact (by decide : ¬ 110 ∣ 599479) hdiv
-      · exact (by decide : ¬ 111 ∣ 599479) hdiv
-      · exact (by decide : ¬ 112 ∣ 599479) hdiv
-      · exact (by decide : ¬ 113 ∣ 599479) hdiv
-      · exact (by decide : ¬ 114 ∣ 599479) hdiv
-      · exact (by decide : ¬ 115 ∣ 599479) hdiv
-      · exact (by decide : ¬ 116 ∣ 599479) hdiv
-      · exact (by decide : ¬ 117 ∣ 599479) hdiv
-      · exact (by decide : ¬ 118 ∣ 599479) hdiv
-      · exact (by decide : ¬ 119 ∣ 599479) hdiv
-      · exact (by decide : ¬ 120 ∣ 599479) hdiv
-      · exact (by decide : ¬ 121 ∣ 599479) hdiv
-      · exact (by decide : ¬ 122 ∣ 599479) hdiv
-      · exact (by decide : ¬ 123 ∣ 599479) hdiv
-      · exact (by decide : ¬ 124 ∣ 599479) hdiv
-      · exact (by decide : ¬ 125 ∣ 599479) hdiv
-      · exact (by decide : ¬ 126 ∣ 599479) hdiv
-      · exact (by decide : ¬ 127 ∣ 599479) hdiv
-      · exact (by decide : ¬ 128 ∣ 599479) hdiv
-      · exact (by decide : ¬ 129 ∣ 599479) hdiv
-      · exact (by decide : ¬ 130 ∣ 599479) hdiv
-      · exact (by decide : ¬ 131 ∣ 599479) hdiv
-      · exact (by decide : ¬ 132 ∣ 599479) hdiv
-      · exact (by decide : ¬ 133 ∣ 599479) hdiv
-      · exact (by decide : ¬ 134 ∣ 599479) hdiv
-      · exact (by decide : ¬ 135 ∣ 599479) hdiv
-      · exact (by decide : ¬ 136 ∣ 599479) hdiv
-      · exact (by decide : ¬ 137 ∣ 599479) hdiv
-      · exact (by decide : ¬ 138 ∣ 599479) hdiv
-      · exact (by decide : ¬ 139 ∣ 599479) hdiv
-      · exact (by decide : ¬ 140 ∣ 599479) hdiv
-      · exact (by decide : ¬ 141 ∣ 599479) hdiv
-      · exact (by decide : ¬ 142 ∣ 599479) hdiv
-      · exact (by decide : ¬ 143 ∣ 599479) hdiv
-      · exact (by decide : ¬ 144 ∣ 599479) hdiv
-      · exact (by decide : ¬ 145 ∣ 599479) hdiv
-      · exact (by decide : ¬ 146 ∣ 599479) hdiv
-      · exact (by decide : ¬ 147 ∣ 599479) hdiv
-      · exact (by decide : ¬ 148 ∣ 599479) hdiv
-      · exact (by decide : ¬ 149 ∣ 599479) hdiv
-      · exact (by decide : ¬ 150 ∣ 599479) hdiv
-      · exact (by decide : ¬ 151 ∣ 599479) hdiv
-      · exact (by decide : ¬ 152 ∣ 599479) hdiv
-      · exact (by decide : ¬ 153 ∣ 599479) hdiv
-      · exact (by decide : ¬ 154 ∣ 599479) hdiv
-      · exact (by decide : ¬ 155 ∣ 599479) hdiv
-      · exact (by decide : ¬ 156 ∣ 599479) hdiv
-      · exact (by decide : ¬ 157 ∣ 599479) hdiv
-      · exact (by decide : ¬ 158 ∣ 599479) hdiv
-      · exact (by decide : ¬ 159 ∣ 599479) hdiv
-      · exact (by decide : ¬ 160 ∣ 599479) hdiv
-      · exact (by decide : ¬ 161 ∣ 599479) hdiv
-      · exact (by decide : ¬ 162 ∣ 599479) hdiv
-      · exact (by decide : ¬ 163 ∣ 599479) hdiv
-      · exact (by decide : ¬ 164 ∣ 599479) hdiv
-      · exact (by decide : ¬ 165 ∣ 599479) hdiv
-      · exact (by decide : ¬ 166 ∣ 599479) hdiv
-      · exact (by decide : ¬ 167 ∣ 599479) hdiv
-      · exact (by decide : ¬ 168 ∣ 599479) hdiv
-      · exact (by decide : ¬ 169 ∣ 599479) hdiv
-      · exact (by decide : ¬ 170 ∣ 599479) hdiv
-      · exact (by decide : ¬ 171 ∣ 599479) hdiv
-      · exact (by decide : ¬ 172 ∣ 599479) hdiv
-      · exact (by decide : ¬ 173 ∣ 599479) hdiv
-      · exact (by decide : ¬ 174 ∣ 599479) hdiv
-      · exact (by decide : ¬ 175 ∣ 599479) hdiv
-      · exact (by decide : ¬ 176 ∣ 599479) hdiv
-      · exact (by decide : ¬ 177 ∣ 599479) hdiv
-      · exact (by decide : ¬ 178 ∣ 599479) hdiv
-      · exact (by decide : ¬ 179 ∣ 599479) hdiv
-      · exact (by decide : ¬ 180 ∣ 599479) hdiv
-      · exact (by decide : ¬ 181 ∣ 599479) hdiv
-      · exact (by decide : ¬ 182 ∣ 599479) hdiv
-      · exact (by decide : ¬ 183 ∣ 599479) hdiv
-      · exact (by decide : ¬ 184 ∣ 599479) hdiv
-      · exact (by decide : ¬ 185 ∣ 599479) hdiv
-      · exact (by decide : ¬ 186 ∣ 599479) hdiv
-      · exact (by decide : ¬ 187 ∣ 599479) hdiv
-      · exact (by decide : ¬ 188 ∣ 599479) hdiv
-      · exact (by decide : ¬ 189 ∣ 599479) hdiv
-      · exact (by decide : ¬ 190 ∣ 599479) hdiv
-      · exact (by decide : ¬ 191 ∣ 599479) hdiv
-      · exact (by decide : ¬ 192 ∣ 599479) hdiv
-      · exact (by decide : ¬ 193 ∣ 599479) hdiv
-      · exact (by decide : ¬ 194 ∣ 599479) hdiv
-      · exact (by decide : ¬ 195 ∣ 599479) hdiv
-      · exact (by decide : ¬ 196 ∣ 599479) hdiv
-      · exact (by decide : ¬ 197 ∣ 599479) hdiv
-      · exact (by decide : ¬ 198 ∣ 599479) hdiv
-      · exact (by decide : ¬ 199 ∣ 599479) hdiv
-      · exact (by decide : ¬ 200 ∣ 599479) hdiv
-      · exact (by decide : ¬ 201 ∣ 599479) hdiv
-      · exact (by decide : ¬ 202 ∣ 599479) hdiv
-      · exact (by decide : ¬ 203 ∣ 599479) hdiv
-      · exact (by decide : ¬ 204 ∣ 599479) hdiv
-      · exact (by decide : ¬ 205 ∣ 599479) hdiv
-      · exact (by decide : ¬ 206 ∣ 599479) hdiv
-      · exact (by decide : ¬ 207 ∣ 599479) hdiv
-      · exact (by decide : ¬ 208 ∣ 599479) hdiv
-      · exact (by decide : ¬ 209 ∣ 599479) hdiv
-      · exact (by decide : ¬ 210 ∣ 599479) hdiv
-      · exact (by decide : ¬ 211 ∣ 599479) hdiv
-      · exact (by decide : ¬ 212 ∣ 599479) hdiv
-      · exact (by decide : ¬ 213 ∣ 599479) hdiv
-      · exact (by decide : ¬ 214 ∣ 599479) hdiv
-      · exact (by decide : ¬ 215 ∣ 599479) hdiv
-      · exact (by decide : ¬ 216 ∣ 599479) hdiv
-      · exact (by decide : ¬ 217 ∣ 599479) hdiv
-      · exact (by decide : ¬ 218 ∣ 599479) hdiv
-      · exact (by decide : ¬ 219 ∣ 599479) hdiv
-      · exact (by decide : ¬ 220 ∣ 599479) hdiv
-      · exact (by decide : ¬ 221 ∣ 599479) hdiv
-      · exact (by decide : ¬ 222 ∣ 599479) hdiv
-      · exact (by decide : ¬ 223 ∣ 599479) hdiv
-      · exact (by decide : ¬ 224 ∣ 599479) hdiv
-      · exact (by decide : ¬ 225 ∣ 599479) hdiv
-      · exact (by decide : ¬ 226 ∣ 599479) hdiv
-      · exact (by decide : ¬ 227 ∣ 599479) hdiv
-      · exact (by decide : ¬ 228 ∣ 599479) hdiv
-      · exact (by decide : ¬ 229 ∣ 599479) hdiv
-      · exact (by decide : ¬ 230 ∣ 599479) hdiv
-      · exact (by decide : ¬ 231 ∣ 599479) hdiv
-      · exact (by decide : ¬ 232 ∣ 599479) hdiv
-      · exact (by decide : ¬ 233 ∣ 599479) hdiv
-      · exact (by decide : ¬ 234 ∣ 599479) hdiv
-      · exact (by decide : ¬ 235 ∣ 599479) hdiv
-      · exact (by decide : ¬ 236 ∣ 599479) hdiv
-      · exact (by decide : ¬ 237 ∣ 599479) hdiv
-      · exact (by decide : ¬ 238 ∣ 599479) hdiv
-      · exact (by decide : ¬ 239 ∣ 599479) hdiv
-      · exact (by decide : ¬ 240 ∣ 599479) hdiv
-      · exact (by decide : ¬ 241 ∣ 599479) hdiv
-      · exact (by decide : ¬ 242 ∣ 599479) hdiv
-      · exact (by decide : ¬ 243 ∣ 599479) hdiv
-      · exact (by decide : ¬ 244 ∣ 599479) hdiv
-      · exact (by decide : ¬ 245 ∣ 599479) hdiv
-      · exact (by decide : ¬ 246 ∣ 599479) hdiv
-      · exact (by decide : ¬ 247 ∣ 599479) hdiv
-      · exact (by decide : ¬ 248 ∣ 599479) hdiv
-      · exact (by decide : ¬ 249 ∣ 599479) hdiv
-      · exact (by decide : ¬ 250 ∣ 599479) hdiv
-      · exact (by decide : ¬ 251 ∣ 599479) hdiv
-      · exact (by decide : ¬ 252 ∣ 599479) hdiv
-      · exact (by decide : ¬ 253 ∣ 599479) hdiv
-      · exact (by decide : ¬ 254 ∣ 599479) hdiv
-      · exact (by decide : ¬ 255 ∣ 599479) hdiv
-      · exact (by decide : ¬ 256 ∣ 599479) hdiv
-      · exact (by decide : ¬ 257 ∣ 599479) hdiv
-      · exact (by decide : ¬ 258 ∣ 599479) hdiv
-      · exact (by decide : ¬ 259 ∣ 599479) hdiv
-      · exact (by decide : ¬ 260 ∣ 599479) hdiv
-      · exact (by decide : ¬ 261 ∣ 599479) hdiv
-      · exact (by decide : ¬ 262 ∣ 599479) hdiv
-      · exact (by decide : ¬ 263 ∣ 599479) hdiv
-      · exact (by decide : ¬ 264 ∣ 599479) hdiv
-      · exact (by decide : ¬ 265 ∣ 599479) hdiv
-      · exact (by decide : ¬ 266 ∣ 599479) hdiv
-      · exact (by decide : ¬ 267 ∣ 599479) hdiv
-      · exact (by decide : ¬ 268 ∣ 599479) hdiv
-      · exact (by decide : ¬ 269 ∣ 599479) hdiv
-      · exact (by decide : ¬ 270 ∣ 599479) hdiv
-      · exact (by decide : ¬ 271 ∣ 599479) hdiv
-      · exact (by decide : ¬ 272 ∣ 599479) hdiv
-      · exact (by decide : ¬ 273 ∣ 599479) hdiv
-      · exact (by decide : ¬ 274 ∣ 599479) hdiv
-      · exact (by decide : ¬ 275 ∣ 599479) hdiv
-      · exact (by decide : ¬ 276 ∣ 599479) hdiv
-      · exact (by decide : ¬ 277 ∣ 599479) hdiv
-      · exact (by decide : ¬ 278 ∣ 599479) hdiv
-      · exact (by decide : ¬ 279 ∣ 599479) hdiv
-      · exact (by decide : ¬ 280 ∣ 599479) hdiv
-      · exact (by decide : ¬ 281 ∣ 599479) hdiv
-      · exact (by decide : ¬ 282 ∣ 599479) hdiv
-      · exact (by decide : ¬ 283 ∣ 599479) hdiv
-      · exact (by decide : ¬ 284 ∣ 599479) hdiv
-      · exact (by decide : ¬ 285 ∣ 599479) hdiv
-      · exact (by decide : ¬ 286 ∣ 599479) hdiv
-      · exact (by decide : ¬ 287 ∣ 599479) hdiv
-      · exact (by decide : ¬ 288 ∣ 599479) hdiv
-      · exact (by decide : ¬ 289 ∣ 599479) hdiv
-      · exact (by decide : ¬ 290 ∣ 599479) hdiv
-      · exact (by decide : ¬ 291 ∣ 599479) hdiv
-      · exact (by decide : ¬ 292 ∣ 599479) hdiv
-      · exact (by decide : ¬ 293 ∣ 599479) hdiv
-      · exact (by decide : ¬ 294 ∣ 599479) hdiv
-      · exact (by decide : ¬ 295 ∣ 599479) hdiv
-      · exact (by decide : ¬ 296 ∣ 599479) hdiv
-      · exact (by decide : ¬ 297 ∣ 599479) hdiv
-      · exact (by decide : ¬ 298 ∣ 599479) hdiv
-      · exact (by decide : ¬ 299 ∣ 599479) hdiv
-      · exact (by decide : ¬ 300 ∣ 599479) hdiv
-      · exact (by decide : ¬ 301 ∣ 599479) hdiv
-      · exact (by decide : ¬ 302 ∣ 599479) hdiv
-      · exact (by decide : ¬ 303 ∣ 599479) hdiv
-      · exact (by decide : ¬ 304 ∣ 599479) hdiv
-      · exact (by decide : ¬ 305 ∣ 599479) hdiv
-      · exact (by decide : ¬ 306 ∣ 599479) hdiv
-      · exact (by decide : ¬ 307 ∣ 599479) hdiv
-      · exact (by decide : ¬ 308 ∣ 599479) hdiv
-      · exact (by decide : ¬ 309 ∣ 599479) hdiv
-      · exact (by decide : ¬ 310 ∣ 599479) hdiv
-      · exact (by decide : ¬ 311 ∣ 599479) hdiv
-      · exact (by decide : ¬ 312 ∣ 599479) hdiv
-      · exact (by decide : ¬ 313 ∣ 599479) hdiv
-      · exact (by decide : ¬ 314 ∣ 599479) hdiv
-      · exact (by decide : ¬ 315 ∣ 599479) hdiv
-      · exact (by decide : ¬ 316 ∣ 599479) hdiv
-      · exact (by decide : ¬ 317 ∣ 599479) hdiv
-      · exact (by decide : ¬ 318 ∣ 599479) hdiv
-      · exact (by decide : ¬ 319 ∣ 599479) hdiv
-      · exact (by decide : ¬ 320 ∣ 599479) hdiv
-      · exact (by decide : ¬ 321 ∣ 599479) hdiv
-      · exact (by decide : ¬ 322 ∣ 599479) hdiv
-      · exact (by decide : ¬ 323 ∣ 599479) hdiv
-      · exact (by decide : ¬ 324 ∣ 599479) hdiv
-      · exact (by decide : ¬ 325 ∣ 599479) hdiv
-      · exact (by decide : ¬ 326 ∣ 599479) hdiv
-      · exact (by decide : ¬ 327 ∣ 599479) hdiv
-      · exact (by decide : ¬ 328 ∣ 599479) hdiv
-      · exact (by decide : ¬ 329 ∣ 599479) hdiv
-      · exact (by decide : ¬ 330 ∣ 599479) hdiv
-      · exact (by decide : ¬ 331 ∣ 599479) hdiv
-      · exact (by decide : ¬ 332 ∣ 599479) hdiv
-      · exact (by decide : ¬ 333 ∣ 599479) hdiv
-      · exact (by decide : ¬ 334 ∣ 599479) hdiv
-      · exact (by decide : ¬ 335 ∣ 599479) hdiv
-      · exact (by decide : ¬ 336 ∣ 599479) hdiv
-      · exact (by decide : ¬ 337 ∣ 599479) hdiv
-      · exact (by decide : ¬ 338 ∣ 599479) hdiv
-      · exact (by decide : ¬ 339 ∣ 599479) hdiv
-      · exact (by decide : ¬ 340 ∣ 599479) hdiv
-      · exact (by decide : ¬ 341 ∣ 599479) hdiv
-      · exact (by decide : ¬ 342 ∣ 599479) hdiv
-      · exact (by decide : ¬ 343 ∣ 599479) hdiv
-      · exact (by decide : ¬ 344 ∣ 599479) hdiv
-      · exact (by decide : ¬ 345 ∣ 599479) hdiv
-      · exact (by decide : ¬ 346 ∣ 599479) hdiv
-      · exact (by decide : ¬ 347 ∣ 599479) hdiv
-      · exact (by decide : ¬ 348 ∣ 599479) hdiv
-      · exact (by decide : ¬ 349 ∣ 599479) hdiv
-      · exact (by decide : ¬ 350 ∣ 599479) hdiv
-      · exact (by decide : ¬ 351 ∣ 599479) hdiv
-      · exact (by decide : ¬ 352 ∣ 599479) hdiv
-      · exact (by decide : ¬ 353 ∣ 599479) hdiv
-      · exact (by decide : ¬ 354 ∣ 599479) hdiv
-      · exact (by decide : ¬ 355 ∣ 599479) hdiv
-      · exact (by decide : ¬ 356 ∣ 599479) hdiv
-      · exact (by decide : ¬ 357 ∣ 599479) hdiv
-      · exact (by decide : ¬ 358 ∣ 599479) hdiv
-      · exact (by decide : ¬ 359 ∣ 599479) hdiv
-      · exact (by decide : ¬ 360 ∣ 599479) hdiv
-      · exact (by decide : ¬ 361 ∣ 599479) hdiv
-      · exact (by decide : ¬ 362 ∣ 599479) hdiv
-      · exact (by decide : ¬ 363 ∣ 599479) hdiv
-      · exact (by decide : ¬ 364 ∣ 599479) hdiv
-      · exact (by decide : ¬ 365 ∣ 599479) hdiv
-      · exact (by decide : ¬ 366 ∣ 599479) hdiv
-      · exact (by decide : ¬ 367 ∣ 599479) hdiv
-      · exact (by decide : ¬ 368 ∣ 599479) hdiv
-      · exact (by decide : ¬ 369 ∣ 599479) hdiv
-      · exact (by decide : ¬ 370 ∣ 599479) hdiv
-      · exact (by decide : ¬ 371 ∣ 599479) hdiv
-      · exact (by decide : ¬ 372 ∣ 599479) hdiv
-      · exact (by decide : ¬ 373 ∣ 599479) hdiv
-      · exact (by decide : ¬ 374 ∣ 599479) hdiv
-      · exact (by decide : ¬ 375 ∣ 599479) hdiv
-      · exact (by decide : ¬ 376 ∣ 599479) hdiv
-      · exact (by decide : ¬ 377 ∣ 599479) hdiv
-      · exact (by decide : ¬ 378 ∣ 599479) hdiv
-      · exact (by decide : ¬ 379 ∣ 599479) hdiv
-      · exact (by decide : ¬ 380 ∣ 599479) hdiv
-      · exact (by decide : ¬ 381 ∣ 599479) hdiv
-      · exact (by decide : ¬ 382 ∣ 599479) hdiv
-      · exact (by decide : ¬ 383 ∣ 599479) hdiv
-      · exact (by decide : ¬ 384 ∣ 599479) hdiv
-      · exact (by decide : ¬ 385 ∣ 599479) hdiv
-      · exact (by decide : ¬ 386 ∣ 599479) hdiv
-      · exact (by decide : ¬ 387 ∣ 599479) hdiv
-      · exact (by decide : ¬ 388 ∣ 599479) hdiv
-      · exact (by decide : ¬ 389 ∣ 599479) hdiv
-      · exact (by decide : ¬ 390 ∣ 599479) hdiv
-      · exact (by decide : ¬ 391 ∣ 599479) hdiv
-      · exact (by decide : ¬ 392 ∣ 599479) hdiv
-      · exact (by decide : ¬ 393 ∣ 599479) hdiv
-      · exact (by decide : ¬ 394 ∣ 599479) hdiv
-      · exact (by decide : ¬ 395 ∣ 599479) hdiv
-      · exact (by decide : ¬ 396 ∣ 599479) hdiv
-      · exact (by decide : ¬ 397 ∣ 599479) hdiv
-      · exact (by decide : ¬ 398 ∣ 599479) hdiv
-      · exact (by decide : ¬ 399 ∣ 599479) hdiv
-      · exact (by decide : ¬ 400 ∣ 599479) hdiv
-      · exact (by decide : ¬ 401 ∣ 599479) hdiv
-      · exact (by decide : ¬ 402 ∣ 599479) hdiv
-      · exact (by decide : ¬ 403 ∣ 599479) hdiv
-      · exact (by decide : ¬ 404 ∣ 599479) hdiv
-      · exact (by decide : ¬ 405 ∣ 599479) hdiv
-      · exact (by decide : ¬ 406 ∣ 599479) hdiv
-      · exact (by decide : ¬ 407 ∣ 599479) hdiv
-      · exact (by decide : ¬ 408 ∣ 599479) hdiv
-      · exact (by decide : ¬ 409 ∣ 599479) hdiv
-      · exact (by decide : ¬ 410 ∣ 599479) hdiv
-      · exact (by decide : ¬ 411 ∣ 599479) hdiv
-      · exact (by decide : ¬ 412 ∣ 599479) hdiv
-      · exact (by decide : ¬ 413 ∣ 599479) hdiv
-      · exact (by decide : ¬ 414 ∣ 599479) hdiv
-      · exact (by decide : ¬ 415 ∣ 599479) hdiv
-      · exact (by decide : ¬ 416 ∣ 599479) hdiv
-      · exact (by decide : ¬ 417 ∣ 599479) hdiv
-      · exact (by decide : ¬ 418 ∣ 599479) hdiv
-      · exact (by decide : ¬ 419 ∣ 599479) hdiv
-      · exact (by decide : ¬ 420 ∣ 599479) hdiv
-      · exact (by decide : ¬ 421 ∣ 599479) hdiv
-      · exact (by decide : ¬ 422 ∣ 599479) hdiv
-      · exact (by decide : ¬ 423 ∣ 599479) hdiv
-      · exact (by decide : ¬ 424 ∣ 599479) hdiv
-      · exact (by decide : ¬ 425 ∣ 599479) hdiv
-      · exact (by decide : ¬ 426 ∣ 599479) hdiv
-      · exact (by decide : ¬ 427 ∣ 599479) hdiv
-      · exact (by decide : ¬ 428 ∣ 599479) hdiv
-      · exact (by decide : ¬ 429 ∣ 599479) hdiv
-      · exact (by decide : ¬ 430 ∣ 599479) hdiv
-      · exact (by decide : ¬ 431 ∣ 599479) hdiv
-      · exact (by decide : ¬ 432 ∣ 599479) hdiv
-      · exact (by decide : ¬ 433 ∣ 599479) hdiv
-      · exact (by decide : ¬ 434 ∣ 599479) hdiv
-      · exact (by decide : ¬ 435 ∣ 599479) hdiv
-      · exact (by decide : ¬ 436 ∣ 599479) hdiv
-      · exact (by decide : ¬ 437 ∣ 599479) hdiv
-      · exact (by decide : ¬ 438 ∣ 599479) hdiv
-      · exact (by decide : ¬ 439 ∣ 599479) hdiv
-      · exact (by decide : ¬ 440 ∣ 599479) hdiv
-      · exact (by decide : ¬ 441 ∣ 599479) hdiv
-      · exact (by decide : ¬ 442 ∣ 599479) hdiv
-      · exact (by decide : ¬ 443 ∣ 599479) hdiv
-      · exact (by decide : ¬ 444 ∣ 599479) hdiv
-      · exact (by decide : ¬ 445 ∣ 599479) hdiv
-      · exact (by decide : ¬ 446 ∣ 599479) hdiv
-      · exact (by decide : ¬ 447 ∣ 599479) hdiv
-      · exact (by decide : ¬ 448 ∣ 599479) hdiv
-      · exact (by decide : ¬ 449 ∣ 599479) hdiv
-      · exact (by decide : ¬ 450 ∣ 599479) hdiv
-      · exact (by decide : ¬ 451 ∣ 599479) hdiv
-      · exact (by decide : ¬ 452 ∣ 599479) hdiv
-      · exact (by decide : ¬ 453 ∣ 599479) hdiv
-      · exact (by decide : ¬ 454 ∣ 599479) hdiv
-      · exact (by decide : ¬ 455 ∣ 599479) hdiv
-      · exact (by decide : ¬ 456 ∣ 599479) hdiv
-      · exact (by decide : ¬ 457 ∣ 599479) hdiv
-      · exact (by decide : ¬ 458 ∣ 599479) hdiv
-      · exact (by decide : ¬ 459 ∣ 599479) hdiv
-      · exact (by decide : ¬ 460 ∣ 599479) hdiv
-      · exact (by decide : ¬ 461 ∣ 599479) hdiv
-      · exact (by decide : ¬ 462 ∣ 599479) hdiv
-      · exact (by decide : ¬ 463 ∣ 599479) hdiv
-      · exact (by decide : ¬ 464 ∣ 599479) hdiv
-      · exact (by decide : ¬ 465 ∣ 599479) hdiv
-      · exact (by decide : ¬ 466 ∣ 599479) hdiv
-      · exact (by decide : ¬ 467 ∣ 599479) hdiv
-      · exact (by decide : ¬ 468 ∣ 599479) hdiv
-      · exact (by decide : ¬ 469 ∣ 599479) hdiv
-      · exact (by decide : ¬ 470 ∣ 599479) hdiv
-      · exact (by decide : ¬ 471 ∣ 599479) hdiv
-      · exact (by decide : ¬ 472 ∣ 599479) hdiv
-      · exact (by decide : ¬ 473 ∣ 599479) hdiv
-      · exact (by decide : ¬ 474 ∣ 599479) hdiv
-      · exact (by decide : ¬ 475 ∣ 599479) hdiv
-      · exact (by decide : ¬ 476 ∣ 599479) hdiv
-      · exact (by decide : ¬ 477 ∣ 599479) hdiv
-      · exact (by decide : ¬ 478 ∣ 599479) hdiv
-      · exact (by decide : ¬ 479 ∣ 599479) hdiv
-      · exact (by decide : ¬ 480 ∣ 599479) hdiv
-      · exact (by decide : ¬ 481 ∣ 599479) hdiv
-      · exact (by decide : ¬ 482 ∣ 599479) hdiv
-      · exact (by decide : ¬ 483 ∣ 599479) hdiv
-      · exact (by decide : ¬ 484 ∣ 599479) hdiv
-      · exact (by decide : ¬ 485 ∣ 599479) hdiv
-      · exact (by decide : ¬ 486 ∣ 599479) hdiv
-      · exact (by decide : ¬ 487 ∣ 599479) hdiv
-      · exact (by decide : ¬ 488 ∣ 599479) hdiv
-      · exact (by decide : ¬ 489 ∣ 599479) hdiv
-      · exact (by decide : ¬ 490 ∣ 599479) hdiv
-      · exact (by decide : ¬ 491 ∣ 599479) hdiv
-      · exact (by decide : ¬ 492 ∣ 599479) hdiv
-      · exact (by decide : ¬ 493 ∣ 599479) hdiv
-      · exact (by decide : ¬ 494 ∣ 599479) hdiv
-      · exact (by decide : ¬ 495 ∣ 599479) hdiv
-      · exact (by decide : ¬ 496 ∣ 599479) hdiv
-      · exact (by decide : ¬ 497 ∣ 599479) hdiv
-      · exact (by decide : ¬ 498 ∣ 599479) hdiv
-      · exact (by decide : ¬ 499 ∣ 599479) hdiv
-      · exact (by decide : ¬ 500 ∣ 599479) hdiv
-      · exact (by decide : ¬ 501 ∣ 599479) hdiv
-      · exact (by decide : ¬ 502 ∣ 599479) hdiv
-      · exact (by decide : ¬ 503 ∣ 599479) hdiv
-      · exact (by decide : ¬ 504 ∣ 599479) hdiv
-      · exact (by decide : ¬ 505 ∣ 599479) hdiv
-      · exact (by decide : ¬ 506 ∣ 599479) hdiv
-      · exact (by decide : ¬ 507 ∣ 599479) hdiv
-      · exact (by decide : ¬ 508 ∣ 599479) hdiv
-      · exact (by decide : ¬ 509 ∣ 599479) hdiv
-      · exact (by decide : ¬ 510 ∣ 599479) hdiv
-      · exact (by decide : ¬ 511 ∣ 599479) hdiv
-      · exact (by decide : ¬ 512 ∣ 599479) hdiv
-      · exact (by decide : ¬ 513 ∣ 599479) hdiv
-      · exact (by decide : ¬ 514 ∣ 599479) hdiv
-      · exact (by decide : ¬ 515 ∣ 599479) hdiv
-      · exact (by decide : ¬ 516 ∣ 599479) hdiv
-      · exact (by decide : ¬ 517 ∣ 599479) hdiv
-      · exact (by decide : ¬ 518 ∣ 599479) hdiv
-      · exact (by decide : ¬ 519 ∣ 599479) hdiv
-      · exact (by decide : ¬ 520 ∣ 599479) hdiv
-      · exact (by decide : ¬ 521 ∣ 599479) hdiv
-      · exact (by decide : ¬ 522 ∣ 599479) hdiv
-      · exact (by decide : ¬ 523 ∣ 599479) hdiv
-      · exact (by decide : ¬ 524 ∣ 599479) hdiv
-      · exact (by decide : ¬ 525 ∣ 599479) hdiv
-      · exact (by decide : ¬ 526 ∣ 599479) hdiv
-      · exact (by decide : ¬ 527 ∣ 599479) hdiv
-      · exact (by decide : ¬ 528 ∣ 599479) hdiv
-      · exact (by decide : ¬ 529 ∣ 599479) hdiv
-      · exact (by decide : ¬ 530 ∣ 599479) hdiv
-      · exact (by decide : ¬ 531 ∣ 599479) hdiv
-      · exact (by decide : ¬ 532 ∣ 599479) hdiv
-      · exact (by decide : ¬ 533 ∣ 599479) hdiv
-      · exact (by decide : ¬ 534 ∣ 599479) hdiv
-      · exact (by decide : ¬ 535 ∣ 599479) hdiv
-      · exact (by decide : ¬ 536 ∣ 599479) hdiv
-      · exact (by decide : ¬ 537 ∣ 599479) hdiv
-      · exact (by decide : ¬ 538 ∣ 599479) hdiv
-      · exact (by decide : ¬ 539 ∣ 599479) hdiv
-      · exact (by decide : ¬ 540 ∣ 599479) hdiv
-      · exact (by decide : ¬ 541 ∣ 599479) hdiv
-      · exact (by decide : ¬ 542 ∣ 599479) hdiv
-      · exact (by decide : ¬ 543 ∣ 599479) hdiv
-      · exact (by decide : ¬ 544 ∣ 599479) hdiv
-      · exact (by decide : ¬ 545 ∣ 599479) hdiv
-      · exact (by decide : ¬ 546 ∣ 599479) hdiv
-      · exact (by decide : ¬ 547 ∣ 599479) hdiv
-      · exact (by decide : ¬ 548 ∣ 599479) hdiv
-      · exact (by decide : ¬ 549 ∣ 599479) hdiv
-      · exact (by decide : ¬ 550 ∣ 599479) hdiv
-      · exact (by decide : ¬ 551 ∣ 599479) hdiv
-      · exact (by decide : ¬ 552 ∣ 599479) hdiv
-      · exact (by decide : ¬ 553 ∣ 599479) hdiv
-      · exact (by decide : ¬ 554 ∣ 599479) hdiv
-      · exact (by decide : ¬ 555 ∣ 599479) hdiv
-      · exact (by decide : ¬ 556 ∣ 599479) hdiv
-      · exact (by decide : ¬ 557 ∣ 599479) hdiv
-      · exact (by decide : ¬ 558 ∣ 599479) hdiv
-      · exact (by decide : ¬ 559 ∣ 599479) hdiv
-      · exact (by decide : ¬ 560 ∣ 599479) hdiv
-      · exact (by decide : ¬ 561 ∣ 599479) hdiv
-      · exact (by decide : ¬ 562 ∣ 599479) hdiv
-      · exact (by decide : ¬ 563 ∣ 599479) hdiv
-      · exact (by decide : ¬ 564 ∣ 599479) hdiv
-      · exact (by decide : ¬ 565 ∣ 599479) hdiv
-      · exact (by decide : ¬ 566 ∣ 599479) hdiv
-      · exact (by decide : ¬ 567 ∣ 599479) hdiv
-      · exact (by decide : ¬ 568 ∣ 599479) hdiv
-      · exact (by decide : ¬ 569 ∣ 599479) hdiv
-      · exact (by decide : ¬ 570 ∣ 599479) hdiv
-      · exact (by decide : ¬ 571 ∣ 599479) hdiv
-      · exact (by decide : ¬ 572 ∣ 599479) hdiv
-      · exact (by decide : ¬ 573 ∣ 599479) hdiv
-      · exact (by decide : ¬ 574 ∣ 599479) hdiv
-      · exact (by decide : ¬ 575 ∣ 599479) hdiv
-      · exact (by decide : ¬ 576 ∣ 599479) hdiv
-      · exact (by decide : ¬ 577 ∣ 599479) hdiv
-      · exact (by decide : ¬ 578 ∣ 599479) hdiv
-      · exact (by decide : ¬ 579 ∣ 599479) hdiv
-      · exact (by decide : ¬ 580 ∣ 599479) hdiv
-      · exact (by decide : ¬ 581 ∣ 599479) hdiv
-      · exact (by decide : ¬ 582 ∣ 599479) hdiv
-      · exact (by decide : ¬ 583 ∣ 599479) hdiv
-      · exact (by decide : ¬ 584 ∣ 599479) hdiv
-      · exact (by decide : ¬ 585 ∣ 599479) hdiv
-      · exact (by decide : ¬ 586 ∣ 599479) hdiv
-      · exact (by decide : ¬ 587 ∣ 599479) hdiv
-      · exact (by decide : ¬ 588 ∣ 599479) hdiv
-      · exact (by decide : ¬ 589 ∣ 599479) hdiv
-      · exact (by decide : ¬ 590 ∣ 599479) hdiv
-      · exact (by decide : ¬ 591 ∣ 599479) hdiv
-      · exact (by decide : ¬ 592 ∣ 599479) hdiv
-      · exact (by decide : ¬ 593 ∣ 599479) hdiv
-      · exact (by decide : ¬ 594 ∣ 599479) hdiv
-      · exact (by decide : ¬ 595 ∣ 599479) hdiv
-      · exact (by decide : ¬ 596 ∣ 599479) hdiv
-      · exact (by decide : ¬ 597 ∣ 599479) hdiv
-      · exact (by decide : ¬ 598 ∣ 599479) hdiv
-      · exact (by decide : ¬ 599 ∣ 599479) hdiv
-      · exact (by decide : ¬ 600 ∣ 599479) hdiv
-      · exact (by decide : ¬ 601 ∣ 599479) hdiv
-      · exact (by decide : ¬ 602 ∣ 599479) hdiv
-      · exact (by decide : ¬ 603 ∣ 599479) hdiv
-      · exact (by decide : ¬ 604 ∣ 599479) hdiv
-      · exact (by decide : ¬ 605 ∣ 599479) hdiv
-      · exact (by decide : ¬ 606 ∣ 599479) hdiv
-      · exact (by decide : ¬ 607 ∣ 599479) hdiv
-      · exact (by decide : ¬ 608 ∣ 599479) hdiv
-      · exact (by decide : ¬ 609 ∣ 599479) hdiv
-      · exact (by decide : ¬ 610 ∣ 599479) hdiv
-      · exact (by decide : ¬ 611 ∣ 599479) hdiv
-      · exact (by decide : ¬ 612 ∣ 599479) hdiv
-      · exact (by decide : ¬ 613 ∣ 599479) hdiv
-      · exact (by decide : ¬ 614 ∣ 599479) hdiv
-      · exact (by decide : ¬ 615 ∣ 599479) hdiv
-      · exact (by decide : ¬ 616 ∣ 599479) hdiv
-      · exact (by decide : ¬ 617 ∣ 599479) hdiv
-      · exact (by decide : ¬ 618 ∣ 599479) hdiv
-      · exact (by decide : ¬ 619 ∣ 599479) hdiv
-      · exact (by decide : ¬ 620 ∣ 599479) hdiv
-      · exact (by decide : ¬ 621 ∣ 599479) hdiv
-      · exact (by decide : ¬ 622 ∣ 599479) hdiv
-      · exact (by decide : ¬ 623 ∣ 599479) hdiv
-      · exact (by decide : ¬ 624 ∣ 599479) hdiv
-      · exact (by decide : ¬ 625 ∣ 599479) hdiv
-      · exact (by decide : ¬ 626 ∣ 599479) hdiv
-      · exact (by decide : ¬ 627 ∣ 599479) hdiv
-      · exact (by decide : ¬ 628 ∣ 599479) hdiv
-      · exact (by decide : ¬ 629 ∣ 599479) hdiv
-      · exact (by decide : ¬ 630 ∣ 599479) hdiv
-      · exact (by decide : ¬ 631 ∣ 599479) hdiv
-      · exact (by decide : ¬ 632 ∣ 599479) hdiv
-      · exact (by decide : ¬ 633 ∣ 599479) hdiv
-      · exact (by decide : ¬ 634 ∣ 599479) hdiv
-      · exact (by decide : ¬ 635 ∣ 599479) hdiv
-      · exact (by decide : ¬ 636 ∣ 599479) hdiv
-      · exact (by decide : ¬ 637 ∣ 599479) hdiv
-      · exact (by decide : ¬ 638 ∣ 599479) hdiv
-      · exact (by decide : ¬ 639 ∣ 599479) hdiv
-      · exact (by decide : ¬ 640 ∣ 599479) hdiv
-      · exact (by decide : ¬ 641 ∣ 599479) hdiv
-      · exact (by decide : ¬ 642 ∣ 599479) hdiv
-      · exact (by decide : ¬ 643 ∣ 599479) hdiv
-      · exact (by decide : ¬ 644 ∣ 599479) hdiv
-      · exact (by decide : ¬ 645 ∣ 599479) hdiv
-      · exact (by decide : ¬ 646 ∣ 599479) hdiv
-      · exact (by decide : ¬ 647 ∣ 599479) hdiv
-      · exact (by decide : ¬ 648 ∣ 599479) hdiv
-      · exact (by decide : ¬ 649 ∣ 599479) hdiv
-      · exact (by decide : ¬ 650 ∣ 599479) hdiv
-      · exact (by decide : ¬ 651 ∣ 599479) hdiv
-      · exact (by decide : ¬ 652 ∣ 599479) hdiv
-      · exact (by decide : ¬ 653 ∣ 599479) hdiv
-      · exact (by decide : ¬ 654 ∣ 599479) hdiv
-      · exact (by decide : ¬ 655 ∣ 599479) hdiv
-      · exact (by decide : ¬ 656 ∣ 599479) hdiv
-      · exact (by decide : ¬ 657 ∣ 599479) hdiv
-      · exact (by decide : ¬ 658 ∣ 599479) hdiv
-      · exact (by decide : ¬ 659 ∣ 599479) hdiv
-      · exact (by decide : ¬ 660 ∣ 599479) hdiv
-      · exact (by decide : ¬ 661 ∣ 599479) hdiv
-      · exact (by decide : ¬ 662 ∣ 599479) hdiv
-      · exact (by decide : ¬ 663 ∣ 599479) hdiv
-      · exact (by decide : ¬ 664 ∣ 599479) hdiv
-      · exact (by decide : ¬ 665 ∣ 599479) hdiv
-      · exact (by decide : ¬ 666 ∣ 599479) hdiv
-      · exact (by decide : ¬ 667 ∣ 599479) hdiv
-      · exact (by decide : ¬ 668 ∣ 599479) hdiv
-      · exact (by decide : ¬ 669 ∣ 599479) hdiv
-      · exact (by decide : ¬ 670 ∣ 599479) hdiv
-      · exact (by decide : ¬ 671 ∣ 599479) hdiv
-      · exact (by decide : ¬ 672 ∣ 599479) hdiv
-      · exact (by decide : ¬ 673 ∣ 599479) hdiv
-      · exact (by decide : ¬ 674 ∣ 599479) hdiv
-      · exact (by decide : ¬ 675 ∣ 599479) hdiv
-      · exact (by decide : ¬ 676 ∣ 599479) hdiv
-      · exact (by decide : ¬ 677 ∣ 599479) hdiv
-      · exact (by decide : ¬ 678 ∣ 599479) hdiv
-      · exact (by decide : ¬ 679 ∣ 599479) hdiv
-      · exact (by decide : ¬ 680 ∣ 599479) hdiv
-      · exact (by decide : ¬ 681 ∣ 599479) hdiv
-      · exact (by decide : ¬ 682 ∣ 599479) hdiv
-      · exact (by decide : ¬ 683 ∣ 599479) hdiv
-      · exact (by decide : ¬ 684 ∣ 599479) hdiv
-      · exact (by decide : ¬ 685 ∣ 599479) hdiv
-      · exact (by decide : ¬ 686 ∣ 599479) hdiv
-      · exact (by decide : ¬ 687 ∣ 599479) hdiv
-      · exact (by decide : ¬ 688 ∣ 599479) hdiv
-      · exact (by decide : ¬ 689 ∣ 599479) hdiv
-      · exact (by decide : ¬ 690 ∣ 599479) hdiv
-      · exact (by decide : ¬ 691 ∣ 599479) hdiv
-      · exact (by decide : ¬ 692 ∣ 599479) hdiv
-      · exact (by decide : ¬ 693 ∣ 599479) hdiv
-      · exact (by decide : ¬ 694 ∣ 599479) hdiv
-      · exact (by decide : ¬ 695 ∣ 599479) hdiv
-      · exact (by decide : ¬ 696 ∣ 599479) hdiv
-      · exact (by decide : ¬ 697 ∣ 599479) hdiv
-      · exact (by decide : ¬ 698 ∣ 599479) hdiv
-      · exact (by decide : ¬ 699 ∣ 599479) hdiv
-      · exact (by decide : ¬ 700 ∣ 599479) hdiv
-      · exact (by decide : ¬ 701 ∣ 599479) hdiv
-      · exact (by decide : ¬ 702 ∣ 599479) hdiv
-      · exact (by decide : ¬ 703 ∣ 599479) hdiv
-      · exact (by decide : ¬ 704 ∣ 599479) hdiv
-      · exact (by decide : ¬ 705 ∣ 599479) hdiv
-      · exact (by decide : ¬ 706 ∣ 599479) hdiv
-      · exact (by decide : ¬ 707 ∣ 599479) hdiv
-      · exact (by decide : ¬ 708 ∣ 599479) hdiv
-      · exact (by decide : ¬ 709 ∣ 599479) hdiv
-      · exact (by decide : ¬ 710 ∣ 599479) hdiv
-      · exact (by decide : ¬ 711 ∣ 599479) hdiv
-      · exact (by decide : ¬ 712 ∣ 599479) hdiv
-      · exact (by decide : ¬ 713 ∣ 599479) hdiv
-      · exact (by decide : ¬ 714 ∣ 599479) hdiv
-      · exact (by decide : ¬ 715 ∣ 599479) hdiv
-      · exact (by decide : ¬ 716 ∣ 599479) hdiv
-      · exact (by decide : ¬ 717 ∣ 599479) hdiv
-      · exact (by decide : ¬ 718 ∣ 599479) hdiv
-      · exact (by decide : ¬ 719 ∣ 599479) hdiv
-      · exact (by decide : ¬ 720 ∣ 599479) hdiv
-      · exact (by decide : ¬ 721 ∣ 599479) hdiv
-      · exact (by decide : ¬ 722 ∣ 599479) hdiv
-      · exact (by decide : ¬ 723 ∣ 599479) hdiv
-      · exact (by decide : ¬ 724 ∣ 599479) hdiv
-      · exact (by decide : ¬ 725 ∣ 599479) hdiv
-      · exact (by decide : ¬ 726 ∣ 599479) hdiv
-      · exact (by decide : ¬ 727 ∣ 599479) hdiv
-      · exact (by decide : ¬ 728 ∣ 599479) hdiv
-      · exact (by decide : ¬ 729 ∣ 599479) hdiv
-      · exact (by decide : ¬ 730 ∣ 599479) hdiv
-      · exact (by decide : ¬ 731 ∣ 599479) hdiv
-      · exact (by decide : ¬ 732 ∣ 599479) hdiv
-      · exact (by decide : ¬ 733 ∣ 599479) hdiv
-      · exact (by decide : ¬ 734 ∣ 599479) hdiv
-      · exact (by decide : ¬ 735 ∣ 599479) hdiv
-      · exact (by decide : ¬ 736 ∣ 599479) hdiv
-      · exact (by decide : ¬ 737 ∣ 599479) hdiv
-      · exact (by decide : ¬ 738 ∣ 599479) hdiv
-      · exact (by decide : ¬ 739 ∣ 599479) hdiv
-      · exact (by decide : ¬ 740 ∣ 599479) hdiv
-      · exact (by decide : ¬ 741 ∣ 599479) hdiv
-      · exact (by decide : ¬ 742 ∣ 599479) hdiv
-      · exact (by decide : ¬ 743 ∣ 599479) hdiv
-      · exact (by decide : ¬ 744 ∣ 599479) hdiv
-      · exact (by decide : ¬ 745 ∣ 599479) hdiv
-      · exact (by decide : ¬ 746 ∣ 599479) hdiv
-      · exact (by decide : ¬ 747 ∣ 599479) hdiv
-      · exact (by decide : ¬ 748 ∣ 599479) hdiv
-      · exact (by decide : ¬ 749 ∣ 599479) hdiv
-      · exact (by decide : ¬ 750 ∣ 599479) hdiv
-      · exact (by decide : ¬ 751 ∣ 599479) hdiv
-      · exact (by decide : ¬ 752 ∣ 599479) hdiv
-      · exact (by decide : ¬ 753 ∣ 599479) hdiv
-      · exact (by decide : ¬ 754 ∣ 599479) hdiv
-      · exact (by decide : ¬ 755 ∣ 599479) hdiv
-      · exact (by decide : ¬ 756 ∣ 599479) hdiv
-      · exact (by decide : ¬ 757 ∣ 599479) hdiv
-      · exact (by decide : ¬ 758 ∣ 599479) hdiv
-      · exact (by decide : ¬ 759 ∣ 599479) hdiv
-      · exact (by decide : ¬ 760 ∣ 599479) hdiv
-      · exact (by decide : ¬ 761 ∣ 599479) hdiv
-      · exact (by decide : ¬ 762 ∣ 599479) hdiv
-      · exact (by decide : ¬ 763 ∣ 599479) hdiv
-      · exact (by decide : ¬ 764 ∣ 599479) hdiv
-      · exact (by decide : ¬ 765 ∣ 599479) hdiv
-      · exact (by decide : ¬ 766 ∣ 599479) hdiv
-      · exact (by decide : ¬ 767 ∣ 599479) hdiv
-      · exact (by decide : ¬ 768 ∣ 599479) hdiv
-      · exact (by decide : ¬ 769 ∣ 599479) hdiv
-      · exact (by decide : ¬ 770 ∣ 599479) hdiv
-      · exact (by decide : ¬ 771 ∣ 599479) hdiv
-      · exact (by decide : ¬ 772 ∣ 599479) hdiv
-      · exact (by decide : ¬ 773 ∣ 599479) hdiv
-      · exact (by decide : ¬ 774 ∣ 599479) hdiv
-  have hA_factor : (14329 : Nat).factorization 599479 = 0 :=
-    Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 599479 ∣ 14329)
-  exact primeComponentWitness_of_prime_power_cofactor
-    33 14329 2 11 599479 1227133513 1 2047 0
-    hq_prime
-    (by decide)
-    (by decide)
-    (by decide)
-    hA_factor
-    (by decide)
+  have hquot : primeComponentQuotient 2 33 11 = 1227133513 := by decide
+  have hq : Nat.Prime 599479 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 599479 ∣ 14329)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F33_A14329_p11_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 33 14329 2 11 := by
@@ -2721,7 +950,8 @@ theorem orderOf_b2_mod599479_eq_33_from_emittedCertificate_denNorm :
       apply Units.ext
       change (((ZMod.unitOfCoprime 2 hcop : (ZMod 599479)ˣ) : ZMod 599479) ^ 33) =
         (1 : ZMod 599479)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -2781,799 +1011,13 @@ theorem concrete_generated_b2_F33_A161_factorization_support_cases
 
 theorem concrete_generated_b2_F33_A161_p3_prime_witness :
     PrimeComponentWitness 33 161 2 3 599479 := by
-  have hq_prime : Nat.Prime 599479 := by
-    rw [Nat.prime_def_le_sqrt]
-    constructor
-    · decide
-    · intro m hm_ge hm_le hdiv
-      have hm_le774 : m ≤ 774 := by
-        have hsqrt_lt : Nat.sqrt 599479 < 775 :=
-          (Nat.sqrt_lt'.2 (by decide : 599479 < 775 ^ 2))
-        exact Nat.le_of_lt_succ (lt_of_le_of_lt hm_le hsqrt_lt)
-      interval_cases m
-      · exact (by decide : ¬ 2 ∣ 599479) hdiv
-      · exact (by decide : ¬ 3 ∣ 599479) hdiv
-      · exact (by decide : ¬ 4 ∣ 599479) hdiv
-      · exact (by decide : ¬ 5 ∣ 599479) hdiv
-      · exact (by decide : ¬ 6 ∣ 599479) hdiv
-      · exact (by decide : ¬ 7 ∣ 599479) hdiv
-      · exact (by decide : ¬ 8 ∣ 599479) hdiv
-      · exact (by decide : ¬ 9 ∣ 599479) hdiv
-      · exact (by decide : ¬ 10 ∣ 599479) hdiv
-      · exact (by decide : ¬ 11 ∣ 599479) hdiv
-      · exact (by decide : ¬ 12 ∣ 599479) hdiv
-      · exact (by decide : ¬ 13 ∣ 599479) hdiv
-      · exact (by decide : ¬ 14 ∣ 599479) hdiv
-      · exact (by decide : ¬ 15 ∣ 599479) hdiv
-      · exact (by decide : ¬ 16 ∣ 599479) hdiv
-      · exact (by decide : ¬ 17 ∣ 599479) hdiv
-      · exact (by decide : ¬ 18 ∣ 599479) hdiv
-      · exact (by decide : ¬ 19 ∣ 599479) hdiv
-      · exact (by decide : ¬ 20 ∣ 599479) hdiv
-      · exact (by decide : ¬ 21 ∣ 599479) hdiv
-      · exact (by decide : ¬ 22 ∣ 599479) hdiv
-      · exact (by decide : ¬ 23 ∣ 599479) hdiv
-      · exact (by decide : ¬ 24 ∣ 599479) hdiv
-      · exact (by decide : ¬ 25 ∣ 599479) hdiv
-      · exact (by decide : ¬ 26 ∣ 599479) hdiv
-      · exact (by decide : ¬ 27 ∣ 599479) hdiv
-      · exact (by decide : ¬ 28 ∣ 599479) hdiv
-      · exact (by decide : ¬ 29 ∣ 599479) hdiv
-      · exact (by decide : ¬ 30 ∣ 599479) hdiv
-      · exact (by decide : ¬ 31 ∣ 599479) hdiv
-      · exact (by decide : ¬ 32 ∣ 599479) hdiv
-      · exact (by decide : ¬ 33 ∣ 599479) hdiv
-      · exact (by decide : ¬ 34 ∣ 599479) hdiv
-      · exact (by decide : ¬ 35 ∣ 599479) hdiv
-      · exact (by decide : ¬ 36 ∣ 599479) hdiv
-      · exact (by decide : ¬ 37 ∣ 599479) hdiv
-      · exact (by decide : ¬ 38 ∣ 599479) hdiv
-      · exact (by decide : ¬ 39 ∣ 599479) hdiv
-      · exact (by decide : ¬ 40 ∣ 599479) hdiv
-      · exact (by decide : ¬ 41 ∣ 599479) hdiv
-      · exact (by decide : ¬ 42 ∣ 599479) hdiv
-      · exact (by decide : ¬ 43 ∣ 599479) hdiv
-      · exact (by decide : ¬ 44 ∣ 599479) hdiv
-      · exact (by decide : ¬ 45 ∣ 599479) hdiv
-      · exact (by decide : ¬ 46 ∣ 599479) hdiv
-      · exact (by decide : ¬ 47 ∣ 599479) hdiv
-      · exact (by decide : ¬ 48 ∣ 599479) hdiv
-      · exact (by decide : ¬ 49 ∣ 599479) hdiv
-      · exact (by decide : ¬ 50 ∣ 599479) hdiv
-      · exact (by decide : ¬ 51 ∣ 599479) hdiv
-      · exact (by decide : ¬ 52 ∣ 599479) hdiv
-      · exact (by decide : ¬ 53 ∣ 599479) hdiv
-      · exact (by decide : ¬ 54 ∣ 599479) hdiv
-      · exact (by decide : ¬ 55 ∣ 599479) hdiv
-      · exact (by decide : ¬ 56 ∣ 599479) hdiv
-      · exact (by decide : ¬ 57 ∣ 599479) hdiv
-      · exact (by decide : ¬ 58 ∣ 599479) hdiv
-      · exact (by decide : ¬ 59 ∣ 599479) hdiv
-      · exact (by decide : ¬ 60 ∣ 599479) hdiv
-      · exact (by decide : ¬ 61 ∣ 599479) hdiv
-      · exact (by decide : ¬ 62 ∣ 599479) hdiv
-      · exact (by decide : ¬ 63 ∣ 599479) hdiv
-      · exact (by decide : ¬ 64 ∣ 599479) hdiv
-      · exact (by decide : ¬ 65 ∣ 599479) hdiv
-      · exact (by decide : ¬ 66 ∣ 599479) hdiv
-      · exact (by decide : ¬ 67 ∣ 599479) hdiv
-      · exact (by decide : ¬ 68 ∣ 599479) hdiv
-      · exact (by decide : ¬ 69 ∣ 599479) hdiv
-      · exact (by decide : ¬ 70 ∣ 599479) hdiv
-      · exact (by decide : ¬ 71 ∣ 599479) hdiv
-      · exact (by decide : ¬ 72 ∣ 599479) hdiv
-      · exact (by decide : ¬ 73 ∣ 599479) hdiv
-      · exact (by decide : ¬ 74 ∣ 599479) hdiv
-      · exact (by decide : ¬ 75 ∣ 599479) hdiv
-      · exact (by decide : ¬ 76 ∣ 599479) hdiv
-      · exact (by decide : ¬ 77 ∣ 599479) hdiv
-      · exact (by decide : ¬ 78 ∣ 599479) hdiv
-      · exact (by decide : ¬ 79 ∣ 599479) hdiv
-      · exact (by decide : ¬ 80 ∣ 599479) hdiv
-      · exact (by decide : ¬ 81 ∣ 599479) hdiv
-      · exact (by decide : ¬ 82 ∣ 599479) hdiv
-      · exact (by decide : ¬ 83 ∣ 599479) hdiv
-      · exact (by decide : ¬ 84 ∣ 599479) hdiv
-      · exact (by decide : ¬ 85 ∣ 599479) hdiv
-      · exact (by decide : ¬ 86 ∣ 599479) hdiv
-      · exact (by decide : ¬ 87 ∣ 599479) hdiv
-      · exact (by decide : ¬ 88 ∣ 599479) hdiv
-      · exact (by decide : ¬ 89 ∣ 599479) hdiv
-      · exact (by decide : ¬ 90 ∣ 599479) hdiv
-      · exact (by decide : ¬ 91 ∣ 599479) hdiv
-      · exact (by decide : ¬ 92 ∣ 599479) hdiv
-      · exact (by decide : ¬ 93 ∣ 599479) hdiv
-      · exact (by decide : ¬ 94 ∣ 599479) hdiv
-      · exact (by decide : ¬ 95 ∣ 599479) hdiv
-      · exact (by decide : ¬ 96 ∣ 599479) hdiv
-      · exact (by decide : ¬ 97 ∣ 599479) hdiv
-      · exact (by decide : ¬ 98 ∣ 599479) hdiv
-      · exact (by decide : ¬ 99 ∣ 599479) hdiv
-      · exact (by decide : ¬ 100 ∣ 599479) hdiv
-      · exact (by decide : ¬ 101 ∣ 599479) hdiv
-      · exact (by decide : ¬ 102 ∣ 599479) hdiv
-      · exact (by decide : ¬ 103 ∣ 599479) hdiv
-      · exact (by decide : ¬ 104 ∣ 599479) hdiv
-      · exact (by decide : ¬ 105 ∣ 599479) hdiv
-      · exact (by decide : ¬ 106 ∣ 599479) hdiv
-      · exact (by decide : ¬ 107 ∣ 599479) hdiv
-      · exact (by decide : ¬ 108 ∣ 599479) hdiv
-      · exact (by decide : ¬ 109 ∣ 599479) hdiv
-      · exact (by decide : ¬ 110 ∣ 599479) hdiv
-      · exact (by decide : ¬ 111 ∣ 599479) hdiv
-      · exact (by decide : ¬ 112 ∣ 599479) hdiv
-      · exact (by decide : ¬ 113 ∣ 599479) hdiv
-      · exact (by decide : ¬ 114 ∣ 599479) hdiv
-      · exact (by decide : ¬ 115 ∣ 599479) hdiv
-      · exact (by decide : ¬ 116 ∣ 599479) hdiv
-      · exact (by decide : ¬ 117 ∣ 599479) hdiv
-      · exact (by decide : ¬ 118 ∣ 599479) hdiv
-      · exact (by decide : ¬ 119 ∣ 599479) hdiv
-      · exact (by decide : ¬ 120 ∣ 599479) hdiv
-      · exact (by decide : ¬ 121 ∣ 599479) hdiv
-      · exact (by decide : ¬ 122 ∣ 599479) hdiv
-      · exact (by decide : ¬ 123 ∣ 599479) hdiv
-      · exact (by decide : ¬ 124 ∣ 599479) hdiv
-      · exact (by decide : ¬ 125 ∣ 599479) hdiv
-      · exact (by decide : ¬ 126 ∣ 599479) hdiv
-      · exact (by decide : ¬ 127 ∣ 599479) hdiv
-      · exact (by decide : ¬ 128 ∣ 599479) hdiv
-      · exact (by decide : ¬ 129 ∣ 599479) hdiv
-      · exact (by decide : ¬ 130 ∣ 599479) hdiv
-      · exact (by decide : ¬ 131 ∣ 599479) hdiv
-      · exact (by decide : ¬ 132 ∣ 599479) hdiv
-      · exact (by decide : ¬ 133 ∣ 599479) hdiv
-      · exact (by decide : ¬ 134 ∣ 599479) hdiv
-      · exact (by decide : ¬ 135 ∣ 599479) hdiv
-      · exact (by decide : ¬ 136 ∣ 599479) hdiv
-      · exact (by decide : ¬ 137 ∣ 599479) hdiv
-      · exact (by decide : ¬ 138 ∣ 599479) hdiv
-      · exact (by decide : ¬ 139 ∣ 599479) hdiv
-      · exact (by decide : ¬ 140 ∣ 599479) hdiv
-      · exact (by decide : ¬ 141 ∣ 599479) hdiv
-      · exact (by decide : ¬ 142 ∣ 599479) hdiv
-      · exact (by decide : ¬ 143 ∣ 599479) hdiv
-      · exact (by decide : ¬ 144 ∣ 599479) hdiv
-      · exact (by decide : ¬ 145 ∣ 599479) hdiv
-      · exact (by decide : ¬ 146 ∣ 599479) hdiv
-      · exact (by decide : ¬ 147 ∣ 599479) hdiv
-      · exact (by decide : ¬ 148 ∣ 599479) hdiv
-      · exact (by decide : ¬ 149 ∣ 599479) hdiv
-      · exact (by decide : ¬ 150 ∣ 599479) hdiv
-      · exact (by decide : ¬ 151 ∣ 599479) hdiv
-      · exact (by decide : ¬ 152 ∣ 599479) hdiv
-      · exact (by decide : ¬ 153 ∣ 599479) hdiv
-      · exact (by decide : ¬ 154 ∣ 599479) hdiv
-      · exact (by decide : ¬ 155 ∣ 599479) hdiv
-      · exact (by decide : ¬ 156 ∣ 599479) hdiv
-      · exact (by decide : ¬ 157 ∣ 599479) hdiv
-      · exact (by decide : ¬ 158 ∣ 599479) hdiv
-      · exact (by decide : ¬ 159 ∣ 599479) hdiv
-      · exact (by decide : ¬ 160 ∣ 599479) hdiv
-      · exact (by decide : ¬ 161 ∣ 599479) hdiv
-      · exact (by decide : ¬ 162 ∣ 599479) hdiv
-      · exact (by decide : ¬ 163 ∣ 599479) hdiv
-      · exact (by decide : ¬ 164 ∣ 599479) hdiv
-      · exact (by decide : ¬ 165 ∣ 599479) hdiv
-      · exact (by decide : ¬ 166 ∣ 599479) hdiv
-      · exact (by decide : ¬ 167 ∣ 599479) hdiv
-      · exact (by decide : ¬ 168 ∣ 599479) hdiv
-      · exact (by decide : ¬ 169 ∣ 599479) hdiv
-      · exact (by decide : ¬ 170 ∣ 599479) hdiv
-      · exact (by decide : ¬ 171 ∣ 599479) hdiv
-      · exact (by decide : ¬ 172 ∣ 599479) hdiv
-      · exact (by decide : ¬ 173 ∣ 599479) hdiv
-      · exact (by decide : ¬ 174 ∣ 599479) hdiv
-      · exact (by decide : ¬ 175 ∣ 599479) hdiv
-      · exact (by decide : ¬ 176 ∣ 599479) hdiv
-      · exact (by decide : ¬ 177 ∣ 599479) hdiv
-      · exact (by decide : ¬ 178 ∣ 599479) hdiv
-      · exact (by decide : ¬ 179 ∣ 599479) hdiv
-      · exact (by decide : ¬ 180 ∣ 599479) hdiv
-      · exact (by decide : ¬ 181 ∣ 599479) hdiv
-      · exact (by decide : ¬ 182 ∣ 599479) hdiv
-      · exact (by decide : ¬ 183 ∣ 599479) hdiv
-      · exact (by decide : ¬ 184 ∣ 599479) hdiv
-      · exact (by decide : ¬ 185 ∣ 599479) hdiv
-      · exact (by decide : ¬ 186 ∣ 599479) hdiv
-      · exact (by decide : ¬ 187 ∣ 599479) hdiv
-      · exact (by decide : ¬ 188 ∣ 599479) hdiv
-      · exact (by decide : ¬ 189 ∣ 599479) hdiv
-      · exact (by decide : ¬ 190 ∣ 599479) hdiv
-      · exact (by decide : ¬ 191 ∣ 599479) hdiv
-      · exact (by decide : ¬ 192 ∣ 599479) hdiv
-      · exact (by decide : ¬ 193 ∣ 599479) hdiv
-      · exact (by decide : ¬ 194 ∣ 599479) hdiv
-      · exact (by decide : ¬ 195 ∣ 599479) hdiv
-      · exact (by decide : ¬ 196 ∣ 599479) hdiv
-      · exact (by decide : ¬ 197 ∣ 599479) hdiv
-      · exact (by decide : ¬ 198 ∣ 599479) hdiv
-      · exact (by decide : ¬ 199 ∣ 599479) hdiv
-      · exact (by decide : ¬ 200 ∣ 599479) hdiv
-      · exact (by decide : ¬ 201 ∣ 599479) hdiv
-      · exact (by decide : ¬ 202 ∣ 599479) hdiv
-      · exact (by decide : ¬ 203 ∣ 599479) hdiv
-      · exact (by decide : ¬ 204 ∣ 599479) hdiv
-      · exact (by decide : ¬ 205 ∣ 599479) hdiv
-      · exact (by decide : ¬ 206 ∣ 599479) hdiv
-      · exact (by decide : ¬ 207 ∣ 599479) hdiv
-      · exact (by decide : ¬ 208 ∣ 599479) hdiv
-      · exact (by decide : ¬ 209 ∣ 599479) hdiv
-      · exact (by decide : ¬ 210 ∣ 599479) hdiv
-      · exact (by decide : ¬ 211 ∣ 599479) hdiv
-      · exact (by decide : ¬ 212 ∣ 599479) hdiv
-      · exact (by decide : ¬ 213 ∣ 599479) hdiv
-      · exact (by decide : ¬ 214 ∣ 599479) hdiv
-      · exact (by decide : ¬ 215 ∣ 599479) hdiv
-      · exact (by decide : ¬ 216 ∣ 599479) hdiv
-      · exact (by decide : ¬ 217 ∣ 599479) hdiv
-      · exact (by decide : ¬ 218 ∣ 599479) hdiv
-      · exact (by decide : ¬ 219 ∣ 599479) hdiv
-      · exact (by decide : ¬ 220 ∣ 599479) hdiv
-      · exact (by decide : ¬ 221 ∣ 599479) hdiv
-      · exact (by decide : ¬ 222 ∣ 599479) hdiv
-      · exact (by decide : ¬ 223 ∣ 599479) hdiv
-      · exact (by decide : ¬ 224 ∣ 599479) hdiv
-      · exact (by decide : ¬ 225 ∣ 599479) hdiv
-      · exact (by decide : ¬ 226 ∣ 599479) hdiv
-      · exact (by decide : ¬ 227 ∣ 599479) hdiv
-      · exact (by decide : ¬ 228 ∣ 599479) hdiv
-      · exact (by decide : ¬ 229 ∣ 599479) hdiv
-      · exact (by decide : ¬ 230 ∣ 599479) hdiv
-      · exact (by decide : ¬ 231 ∣ 599479) hdiv
-      · exact (by decide : ¬ 232 ∣ 599479) hdiv
-      · exact (by decide : ¬ 233 ∣ 599479) hdiv
-      · exact (by decide : ¬ 234 ∣ 599479) hdiv
-      · exact (by decide : ¬ 235 ∣ 599479) hdiv
-      · exact (by decide : ¬ 236 ∣ 599479) hdiv
-      · exact (by decide : ¬ 237 ∣ 599479) hdiv
-      · exact (by decide : ¬ 238 ∣ 599479) hdiv
-      · exact (by decide : ¬ 239 ∣ 599479) hdiv
-      · exact (by decide : ¬ 240 ∣ 599479) hdiv
-      · exact (by decide : ¬ 241 ∣ 599479) hdiv
-      · exact (by decide : ¬ 242 ∣ 599479) hdiv
-      · exact (by decide : ¬ 243 ∣ 599479) hdiv
-      · exact (by decide : ¬ 244 ∣ 599479) hdiv
-      · exact (by decide : ¬ 245 ∣ 599479) hdiv
-      · exact (by decide : ¬ 246 ∣ 599479) hdiv
-      · exact (by decide : ¬ 247 ∣ 599479) hdiv
-      · exact (by decide : ¬ 248 ∣ 599479) hdiv
-      · exact (by decide : ¬ 249 ∣ 599479) hdiv
-      · exact (by decide : ¬ 250 ∣ 599479) hdiv
-      · exact (by decide : ¬ 251 ∣ 599479) hdiv
-      · exact (by decide : ¬ 252 ∣ 599479) hdiv
-      · exact (by decide : ¬ 253 ∣ 599479) hdiv
-      · exact (by decide : ¬ 254 ∣ 599479) hdiv
-      · exact (by decide : ¬ 255 ∣ 599479) hdiv
-      · exact (by decide : ¬ 256 ∣ 599479) hdiv
-      · exact (by decide : ¬ 257 ∣ 599479) hdiv
-      · exact (by decide : ¬ 258 ∣ 599479) hdiv
-      · exact (by decide : ¬ 259 ∣ 599479) hdiv
-      · exact (by decide : ¬ 260 ∣ 599479) hdiv
-      · exact (by decide : ¬ 261 ∣ 599479) hdiv
-      · exact (by decide : ¬ 262 ∣ 599479) hdiv
-      · exact (by decide : ¬ 263 ∣ 599479) hdiv
-      · exact (by decide : ¬ 264 ∣ 599479) hdiv
-      · exact (by decide : ¬ 265 ∣ 599479) hdiv
-      · exact (by decide : ¬ 266 ∣ 599479) hdiv
-      · exact (by decide : ¬ 267 ∣ 599479) hdiv
-      · exact (by decide : ¬ 268 ∣ 599479) hdiv
-      · exact (by decide : ¬ 269 ∣ 599479) hdiv
-      · exact (by decide : ¬ 270 ∣ 599479) hdiv
-      · exact (by decide : ¬ 271 ∣ 599479) hdiv
-      · exact (by decide : ¬ 272 ∣ 599479) hdiv
-      · exact (by decide : ¬ 273 ∣ 599479) hdiv
-      · exact (by decide : ¬ 274 ∣ 599479) hdiv
-      · exact (by decide : ¬ 275 ∣ 599479) hdiv
-      · exact (by decide : ¬ 276 ∣ 599479) hdiv
-      · exact (by decide : ¬ 277 ∣ 599479) hdiv
-      · exact (by decide : ¬ 278 ∣ 599479) hdiv
-      · exact (by decide : ¬ 279 ∣ 599479) hdiv
-      · exact (by decide : ¬ 280 ∣ 599479) hdiv
-      · exact (by decide : ¬ 281 ∣ 599479) hdiv
-      · exact (by decide : ¬ 282 ∣ 599479) hdiv
-      · exact (by decide : ¬ 283 ∣ 599479) hdiv
-      · exact (by decide : ¬ 284 ∣ 599479) hdiv
-      · exact (by decide : ¬ 285 ∣ 599479) hdiv
-      · exact (by decide : ¬ 286 ∣ 599479) hdiv
-      · exact (by decide : ¬ 287 ∣ 599479) hdiv
-      · exact (by decide : ¬ 288 ∣ 599479) hdiv
-      · exact (by decide : ¬ 289 ∣ 599479) hdiv
-      · exact (by decide : ¬ 290 ∣ 599479) hdiv
-      · exact (by decide : ¬ 291 ∣ 599479) hdiv
-      · exact (by decide : ¬ 292 ∣ 599479) hdiv
-      · exact (by decide : ¬ 293 ∣ 599479) hdiv
-      · exact (by decide : ¬ 294 ∣ 599479) hdiv
-      · exact (by decide : ¬ 295 ∣ 599479) hdiv
-      · exact (by decide : ¬ 296 ∣ 599479) hdiv
-      · exact (by decide : ¬ 297 ∣ 599479) hdiv
-      · exact (by decide : ¬ 298 ∣ 599479) hdiv
-      · exact (by decide : ¬ 299 ∣ 599479) hdiv
-      · exact (by decide : ¬ 300 ∣ 599479) hdiv
-      · exact (by decide : ¬ 301 ∣ 599479) hdiv
-      · exact (by decide : ¬ 302 ∣ 599479) hdiv
-      · exact (by decide : ¬ 303 ∣ 599479) hdiv
-      · exact (by decide : ¬ 304 ∣ 599479) hdiv
-      · exact (by decide : ¬ 305 ∣ 599479) hdiv
-      · exact (by decide : ¬ 306 ∣ 599479) hdiv
-      · exact (by decide : ¬ 307 ∣ 599479) hdiv
-      · exact (by decide : ¬ 308 ∣ 599479) hdiv
-      · exact (by decide : ¬ 309 ∣ 599479) hdiv
-      · exact (by decide : ¬ 310 ∣ 599479) hdiv
-      · exact (by decide : ¬ 311 ∣ 599479) hdiv
-      · exact (by decide : ¬ 312 ∣ 599479) hdiv
-      · exact (by decide : ¬ 313 ∣ 599479) hdiv
-      · exact (by decide : ¬ 314 ∣ 599479) hdiv
-      · exact (by decide : ¬ 315 ∣ 599479) hdiv
-      · exact (by decide : ¬ 316 ∣ 599479) hdiv
-      · exact (by decide : ¬ 317 ∣ 599479) hdiv
-      · exact (by decide : ¬ 318 ∣ 599479) hdiv
-      · exact (by decide : ¬ 319 ∣ 599479) hdiv
-      · exact (by decide : ¬ 320 ∣ 599479) hdiv
-      · exact (by decide : ¬ 321 ∣ 599479) hdiv
-      · exact (by decide : ¬ 322 ∣ 599479) hdiv
-      · exact (by decide : ¬ 323 ∣ 599479) hdiv
-      · exact (by decide : ¬ 324 ∣ 599479) hdiv
-      · exact (by decide : ¬ 325 ∣ 599479) hdiv
-      · exact (by decide : ¬ 326 ∣ 599479) hdiv
-      · exact (by decide : ¬ 327 ∣ 599479) hdiv
-      · exact (by decide : ¬ 328 ∣ 599479) hdiv
-      · exact (by decide : ¬ 329 ∣ 599479) hdiv
-      · exact (by decide : ¬ 330 ∣ 599479) hdiv
-      · exact (by decide : ¬ 331 ∣ 599479) hdiv
-      · exact (by decide : ¬ 332 ∣ 599479) hdiv
-      · exact (by decide : ¬ 333 ∣ 599479) hdiv
-      · exact (by decide : ¬ 334 ∣ 599479) hdiv
-      · exact (by decide : ¬ 335 ∣ 599479) hdiv
-      · exact (by decide : ¬ 336 ∣ 599479) hdiv
-      · exact (by decide : ¬ 337 ∣ 599479) hdiv
-      · exact (by decide : ¬ 338 ∣ 599479) hdiv
-      · exact (by decide : ¬ 339 ∣ 599479) hdiv
-      · exact (by decide : ¬ 340 ∣ 599479) hdiv
-      · exact (by decide : ¬ 341 ∣ 599479) hdiv
-      · exact (by decide : ¬ 342 ∣ 599479) hdiv
-      · exact (by decide : ¬ 343 ∣ 599479) hdiv
-      · exact (by decide : ¬ 344 ∣ 599479) hdiv
-      · exact (by decide : ¬ 345 ∣ 599479) hdiv
-      · exact (by decide : ¬ 346 ∣ 599479) hdiv
-      · exact (by decide : ¬ 347 ∣ 599479) hdiv
-      · exact (by decide : ¬ 348 ∣ 599479) hdiv
-      · exact (by decide : ¬ 349 ∣ 599479) hdiv
-      · exact (by decide : ¬ 350 ∣ 599479) hdiv
-      · exact (by decide : ¬ 351 ∣ 599479) hdiv
-      · exact (by decide : ¬ 352 ∣ 599479) hdiv
-      · exact (by decide : ¬ 353 ∣ 599479) hdiv
-      · exact (by decide : ¬ 354 ∣ 599479) hdiv
-      · exact (by decide : ¬ 355 ∣ 599479) hdiv
-      · exact (by decide : ¬ 356 ∣ 599479) hdiv
-      · exact (by decide : ¬ 357 ∣ 599479) hdiv
-      · exact (by decide : ¬ 358 ∣ 599479) hdiv
-      · exact (by decide : ¬ 359 ∣ 599479) hdiv
-      · exact (by decide : ¬ 360 ∣ 599479) hdiv
-      · exact (by decide : ¬ 361 ∣ 599479) hdiv
-      · exact (by decide : ¬ 362 ∣ 599479) hdiv
-      · exact (by decide : ¬ 363 ∣ 599479) hdiv
-      · exact (by decide : ¬ 364 ∣ 599479) hdiv
-      · exact (by decide : ¬ 365 ∣ 599479) hdiv
-      · exact (by decide : ¬ 366 ∣ 599479) hdiv
-      · exact (by decide : ¬ 367 ∣ 599479) hdiv
-      · exact (by decide : ¬ 368 ∣ 599479) hdiv
-      · exact (by decide : ¬ 369 ∣ 599479) hdiv
-      · exact (by decide : ¬ 370 ∣ 599479) hdiv
-      · exact (by decide : ¬ 371 ∣ 599479) hdiv
-      · exact (by decide : ¬ 372 ∣ 599479) hdiv
-      · exact (by decide : ¬ 373 ∣ 599479) hdiv
-      · exact (by decide : ¬ 374 ∣ 599479) hdiv
-      · exact (by decide : ¬ 375 ∣ 599479) hdiv
-      · exact (by decide : ¬ 376 ∣ 599479) hdiv
-      · exact (by decide : ¬ 377 ∣ 599479) hdiv
-      · exact (by decide : ¬ 378 ∣ 599479) hdiv
-      · exact (by decide : ¬ 379 ∣ 599479) hdiv
-      · exact (by decide : ¬ 380 ∣ 599479) hdiv
-      · exact (by decide : ¬ 381 ∣ 599479) hdiv
-      · exact (by decide : ¬ 382 ∣ 599479) hdiv
-      · exact (by decide : ¬ 383 ∣ 599479) hdiv
-      · exact (by decide : ¬ 384 ∣ 599479) hdiv
-      · exact (by decide : ¬ 385 ∣ 599479) hdiv
-      · exact (by decide : ¬ 386 ∣ 599479) hdiv
-      · exact (by decide : ¬ 387 ∣ 599479) hdiv
-      · exact (by decide : ¬ 388 ∣ 599479) hdiv
-      · exact (by decide : ¬ 389 ∣ 599479) hdiv
-      · exact (by decide : ¬ 390 ∣ 599479) hdiv
-      · exact (by decide : ¬ 391 ∣ 599479) hdiv
-      · exact (by decide : ¬ 392 ∣ 599479) hdiv
-      · exact (by decide : ¬ 393 ∣ 599479) hdiv
-      · exact (by decide : ¬ 394 ∣ 599479) hdiv
-      · exact (by decide : ¬ 395 ∣ 599479) hdiv
-      · exact (by decide : ¬ 396 ∣ 599479) hdiv
-      · exact (by decide : ¬ 397 ∣ 599479) hdiv
-      · exact (by decide : ¬ 398 ∣ 599479) hdiv
-      · exact (by decide : ¬ 399 ∣ 599479) hdiv
-      · exact (by decide : ¬ 400 ∣ 599479) hdiv
-      · exact (by decide : ¬ 401 ∣ 599479) hdiv
-      · exact (by decide : ¬ 402 ∣ 599479) hdiv
-      · exact (by decide : ¬ 403 ∣ 599479) hdiv
-      · exact (by decide : ¬ 404 ∣ 599479) hdiv
-      · exact (by decide : ¬ 405 ∣ 599479) hdiv
-      · exact (by decide : ¬ 406 ∣ 599479) hdiv
-      · exact (by decide : ¬ 407 ∣ 599479) hdiv
-      · exact (by decide : ¬ 408 ∣ 599479) hdiv
-      · exact (by decide : ¬ 409 ∣ 599479) hdiv
-      · exact (by decide : ¬ 410 ∣ 599479) hdiv
-      · exact (by decide : ¬ 411 ∣ 599479) hdiv
-      · exact (by decide : ¬ 412 ∣ 599479) hdiv
-      · exact (by decide : ¬ 413 ∣ 599479) hdiv
-      · exact (by decide : ¬ 414 ∣ 599479) hdiv
-      · exact (by decide : ¬ 415 ∣ 599479) hdiv
-      · exact (by decide : ¬ 416 ∣ 599479) hdiv
-      · exact (by decide : ¬ 417 ∣ 599479) hdiv
-      · exact (by decide : ¬ 418 ∣ 599479) hdiv
-      · exact (by decide : ¬ 419 ∣ 599479) hdiv
-      · exact (by decide : ¬ 420 ∣ 599479) hdiv
-      · exact (by decide : ¬ 421 ∣ 599479) hdiv
-      · exact (by decide : ¬ 422 ∣ 599479) hdiv
-      · exact (by decide : ¬ 423 ∣ 599479) hdiv
-      · exact (by decide : ¬ 424 ∣ 599479) hdiv
-      · exact (by decide : ¬ 425 ∣ 599479) hdiv
-      · exact (by decide : ¬ 426 ∣ 599479) hdiv
-      · exact (by decide : ¬ 427 ∣ 599479) hdiv
-      · exact (by decide : ¬ 428 ∣ 599479) hdiv
-      · exact (by decide : ¬ 429 ∣ 599479) hdiv
-      · exact (by decide : ¬ 430 ∣ 599479) hdiv
-      · exact (by decide : ¬ 431 ∣ 599479) hdiv
-      · exact (by decide : ¬ 432 ∣ 599479) hdiv
-      · exact (by decide : ¬ 433 ∣ 599479) hdiv
-      · exact (by decide : ¬ 434 ∣ 599479) hdiv
-      · exact (by decide : ¬ 435 ∣ 599479) hdiv
-      · exact (by decide : ¬ 436 ∣ 599479) hdiv
-      · exact (by decide : ¬ 437 ∣ 599479) hdiv
-      · exact (by decide : ¬ 438 ∣ 599479) hdiv
-      · exact (by decide : ¬ 439 ∣ 599479) hdiv
-      · exact (by decide : ¬ 440 ∣ 599479) hdiv
-      · exact (by decide : ¬ 441 ∣ 599479) hdiv
-      · exact (by decide : ¬ 442 ∣ 599479) hdiv
-      · exact (by decide : ¬ 443 ∣ 599479) hdiv
-      · exact (by decide : ¬ 444 ∣ 599479) hdiv
-      · exact (by decide : ¬ 445 ∣ 599479) hdiv
-      · exact (by decide : ¬ 446 ∣ 599479) hdiv
-      · exact (by decide : ¬ 447 ∣ 599479) hdiv
-      · exact (by decide : ¬ 448 ∣ 599479) hdiv
-      · exact (by decide : ¬ 449 ∣ 599479) hdiv
-      · exact (by decide : ¬ 450 ∣ 599479) hdiv
-      · exact (by decide : ¬ 451 ∣ 599479) hdiv
-      · exact (by decide : ¬ 452 ∣ 599479) hdiv
-      · exact (by decide : ¬ 453 ∣ 599479) hdiv
-      · exact (by decide : ¬ 454 ∣ 599479) hdiv
-      · exact (by decide : ¬ 455 ∣ 599479) hdiv
-      · exact (by decide : ¬ 456 ∣ 599479) hdiv
-      · exact (by decide : ¬ 457 ∣ 599479) hdiv
-      · exact (by decide : ¬ 458 ∣ 599479) hdiv
-      · exact (by decide : ¬ 459 ∣ 599479) hdiv
-      · exact (by decide : ¬ 460 ∣ 599479) hdiv
-      · exact (by decide : ¬ 461 ∣ 599479) hdiv
-      · exact (by decide : ¬ 462 ∣ 599479) hdiv
-      · exact (by decide : ¬ 463 ∣ 599479) hdiv
-      · exact (by decide : ¬ 464 ∣ 599479) hdiv
-      · exact (by decide : ¬ 465 ∣ 599479) hdiv
-      · exact (by decide : ¬ 466 ∣ 599479) hdiv
-      · exact (by decide : ¬ 467 ∣ 599479) hdiv
-      · exact (by decide : ¬ 468 ∣ 599479) hdiv
-      · exact (by decide : ¬ 469 ∣ 599479) hdiv
-      · exact (by decide : ¬ 470 ∣ 599479) hdiv
-      · exact (by decide : ¬ 471 ∣ 599479) hdiv
-      · exact (by decide : ¬ 472 ∣ 599479) hdiv
-      · exact (by decide : ¬ 473 ∣ 599479) hdiv
-      · exact (by decide : ¬ 474 ∣ 599479) hdiv
-      · exact (by decide : ¬ 475 ∣ 599479) hdiv
-      · exact (by decide : ¬ 476 ∣ 599479) hdiv
-      · exact (by decide : ¬ 477 ∣ 599479) hdiv
-      · exact (by decide : ¬ 478 ∣ 599479) hdiv
-      · exact (by decide : ¬ 479 ∣ 599479) hdiv
-      · exact (by decide : ¬ 480 ∣ 599479) hdiv
-      · exact (by decide : ¬ 481 ∣ 599479) hdiv
-      · exact (by decide : ¬ 482 ∣ 599479) hdiv
-      · exact (by decide : ¬ 483 ∣ 599479) hdiv
-      · exact (by decide : ¬ 484 ∣ 599479) hdiv
-      · exact (by decide : ¬ 485 ∣ 599479) hdiv
-      · exact (by decide : ¬ 486 ∣ 599479) hdiv
-      · exact (by decide : ¬ 487 ∣ 599479) hdiv
-      · exact (by decide : ¬ 488 ∣ 599479) hdiv
-      · exact (by decide : ¬ 489 ∣ 599479) hdiv
-      · exact (by decide : ¬ 490 ∣ 599479) hdiv
-      · exact (by decide : ¬ 491 ∣ 599479) hdiv
-      · exact (by decide : ¬ 492 ∣ 599479) hdiv
-      · exact (by decide : ¬ 493 ∣ 599479) hdiv
-      · exact (by decide : ¬ 494 ∣ 599479) hdiv
-      · exact (by decide : ¬ 495 ∣ 599479) hdiv
-      · exact (by decide : ¬ 496 ∣ 599479) hdiv
-      · exact (by decide : ¬ 497 ∣ 599479) hdiv
-      · exact (by decide : ¬ 498 ∣ 599479) hdiv
-      · exact (by decide : ¬ 499 ∣ 599479) hdiv
-      · exact (by decide : ¬ 500 ∣ 599479) hdiv
-      · exact (by decide : ¬ 501 ∣ 599479) hdiv
-      · exact (by decide : ¬ 502 ∣ 599479) hdiv
-      · exact (by decide : ¬ 503 ∣ 599479) hdiv
-      · exact (by decide : ¬ 504 ∣ 599479) hdiv
-      · exact (by decide : ¬ 505 ∣ 599479) hdiv
-      · exact (by decide : ¬ 506 ∣ 599479) hdiv
-      · exact (by decide : ¬ 507 ∣ 599479) hdiv
-      · exact (by decide : ¬ 508 ∣ 599479) hdiv
-      · exact (by decide : ¬ 509 ∣ 599479) hdiv
-      · exact (by decide : ¬ 510 ∣ 599479) hdiv
-      · exact (by decide : ¬ 511 ∣ 599479) hdiv
-      · exact (by decide : ¬ 512 ∣ 599479) hdiv
-      · exact (by decide : ¬ 513 ∣ 599479) hdiv
-      · exact (by decide : ¬ 514 ∣ 599479) hdiv
-      · exact (by decide : ¬ 515 ∣ 599479) hdiv
-      · exact (by decide : ¬ 516 ∣ 599479) hdiv
-      · exact (by decide : ¬ 517 ∣ 599479) hdiv
-      · exact (by decide : ¬ 518 ∣ 599479) hdiv
-      · exact (by decide : ¬ 519 ∣ 599479) hdiv
-      · exact (by decide : ¬ 520 ∣ 599479) hdiv
-      · exact (by decide : ¬ 521 ∣ 599479) hdiv
-      · exact (by decide : ¬ 522 ∣ 599479) hdiv
-      · exact (by decide : ¬ 523 ∣ 599479) hdiv
-      · exact (by decide : ¬ 524 ∣ 599479) hdiv
-      · exact (by decide : ¬ 525 ∣ 599479) hdiv
-      · exact (by decide : ¬ 526 ∣ 599479) hdiv
-      · exact (by decide : ¬ 527 ∣ 599479) hdiv
-      · exact (by decide : ¬ 528 ∣ 599479) hdiv
-      · exact (by decide : ¬ 529 ∣ 599479) hdiv
-      · exact (by decide : ¬ 530 ∣ 599479) hdiv
-      · exact (by decide : ¬ 531 ∣ 599479) hdiv
-      · exact (by decide : ¬ 532 ∣ 599479) hdiv
-      · exact (by decide : ¬ 533 ∣ 599479) hdiv
-      · exact (by decide : ¬ 534 ∣ 599479) hdiv
-      · exact (by decide : ¬ 535 ∣ 599479) hdiv
-      · exact (by decide : ¬ 536 ∣ 599479) hdiv
-      · exact (by decide : ¬ 537 ∣ 599479) hdiv
-      · exact (by decide : ¬ 538 ∣ 599479) hdiv
-      · exact (by decide : ¬ 539 ∣ 599479) hdiv
-      · exact (by decide : ¬ 540 ∣ 599479) hdiv
-      · exact (by decide : ¬ 541 ∣ 599479) hdiv
-      · exact (by decide : ¬ 542 ∣ 599479) hdiv
-      · exact (by decide : ¬ 543 ∣ 599479) hdiv
-      · exact (by decide : ¬ 544 ∣ 599479) hdiv
-      · exact (by decide : ¬ 545 ∣ 599479) hdiv
-      · exact (by decide : ¬ 546 ∣ 599479) hdiv
-      · exact (by decide : ¬ 547 ∣ 599479) hdiv
-      · exact (by decide : ¬ 548 ∣ 599479) hdiv
-      · exact (by decide : ¬ 549 ∣ 599479) hdiv
-      · exact (by decide : ¬ 550 ∣ 599479) hdiv
-      · exact (by decide : ¬ 551 ∣ 599479) hdiv
-      · exact (by decide : ¬ 552 ∣ 599479) hdiv
-      · exact (by decide : ¬ 553 ∣ 599479) hdiv
-      · exact (by decide : ¬ 554 ∣ 599479) hdiv
-      · exact (by decide : ¬ 555 ∣ 599479) hdiv
-      · exact (by decide : ¬ 556 ∣ 599479) hdiv
-      · exact (by decide : ¬ 557 ∣ 599479) hdiv
-      · exact (by decide : ¬ 558 ∣ 599479) hdiv
-      · exact (by decide : ¬ 559 ∣ 599479) hdiv
-      · exact (by decide : ¬ 560 ∣ 599479) hdiv
-      · exact (by decide : ¬ 561 ∣ 599479) hdiv
-      · exact (by decide : ¬ 562 ∣ 599479) hdiv
-      · exact (by decide : ¬ 563 ∣ 599479) hdiv
-      · exact (by decide : ¬ 564 ∣ 599479) hdiv
-      · exact (by decide : ¬ 565 ∣ 599479) hdiv
-      · exact (by decide : ¬ 566 ∣ 599479) hdiv
-      · exact (by decide : ¬ 567 ∣ 599479) hdiv
-      · exact (by decide : ¬ 568 ∣ 599479) hdiv
-      · exact (by decide : ¬ 569 ∣ 599479) hdiv
-      · exact (by decide : ¬ 570 ∣ 599479) hdiv
-      · exact (by decide : ¬ 571 ∣ 599479) hdiv
-      · exact (by decide : ¬ 572 ∣ 599479) hdiv
-      · exact (by decide : ¬ 573 ∣ 599479) hdiv
-      · exact (by decide : ¬ 574 ∣ 599479) hdiv
-      · exact (by decide : ¬ 575 ∣ 599479) hdiv
-      · exact (by decide : ¬ 576 ∣ 599479) hdiv
-      · exact (by decide : ¬ 577 ∣ 599479) hdiv
-      · exact (by decide : ¬ 578 ∣ 599479) hdiv
-      · exact (by decide : ¬ 579 ∣ 599479) hdiv
-      · exact (by decide : ¬ 580 ∣ 599479) hdiv
-      · exact (by decide : ¬ 581 ∣ 599479) hdiv
-      · exact (by decide : ¬ 582 ∣ 599479) hdiv
-      · exact (by decide : ¬ 583 ∣ 599479) hdiv
-      · exact (by decide : ¬ 584 ∣ 599479) hdiv
-      · exact (by decide : ¬ 585 ∣ 599479) hdiv
-      · exact (by decide : ¬ 586 ∣ 599479) hdiv
-      · exact (by decide : ¬ 587 ∣ 599479) hdiv
-      · exact (by decide : ¬ 588 ∣ 599479) hdiv
-      · exact (by decide : ¬ 589 ∣ 599479) hdiv
-      · exact (by decide : ¬ 590 ∣ 599479) hdiv
-      · exact (by decide : ¬ 591 ∣ 599479) hdiv
-      · exact (by decide : ¬ 592 ∣ 599479) hdiv
-      · exact (by decide : ¬ 593 ∣ 599479) hdiv
-      · exact (by decide : ¬ 594 ∣ 599479) hdiv
-      · exact (by decide : ¬ 595 ∣ 599479) hdiv
-      · exact (by decide : ¬ 596 ∣ 599479) hdiv
-      · exact (by decide : ¬ 597 ∣ 599479) hdiv
-      · exact (by decide : ¬ 598 ∣ 599479) hdiv
-      · exact (by decide : ¬ 599 ∣ 599479) hdiv
-      · exact (by decide : ¬ 600 ∣ 599479) hdiv
-      · exact (by decide : ¬ 601 ∣ 599479) hdiv
-      · exact (by decide : ¬ 602 ∣ 599479) hdiv
-      · exact (by decide : ¬ 603 ∣ 599479) hdiv
-      · exact (by decide : ¬ 604 ∣ 599479) hdiv
-      · exact (by decide : ¬ 605 ∣ 599479) hdiv
-      · exact (by decide : ¬ 606 ∣ 599479) hdiv
-      · exact (by decide : ¬ 607 ∣ 599479) hdiv
-      · exact (by decide : ¬ 608 ∣ 599479) hdiv
-      · exact (by decide : ¬ 609 ∣ 599479) hdiv
-      · exact (by decide : ¬ 610 ∣ 599479) hdiv
-      · exact (by decide : ¬ 611 ∣ 599479) hdiv
-      · exact (by decide : ¬ 612 ∣ 599479) hdiv
-      · exact (by decide : ¬ 613 ∣ 599479) hdiv
-      · exact (by decide : ¬ 614 ∣ 599479) hdiv
-      · exact (by decide : ¬ 615 ∣ 599479) hdiv
-      · exact (by decide : ¬ 616 ∣ 599479) hdiv
-      · exact (by decide : ¬ 617 ∣ 599479) hdiv
-      · exact (by decide : ¬ 618 ∣ 599479) hdiv
-      · exact (by decide : ¬ 619 ∣ 599479) hdiv
-      · exact (by decide : ¬ 620 ∣ 599479) hdiv
-      · exact (by decide : ¬ 621 ∣ 599479) hdiv
-      · exact (by decide : ¬ 622 ∣ 599479) hdiv
-      · exact (by decide : ¬ 623 ∣ 599479) hdiv
-      · exact (by decide : ¬ 624 ∣ 599479) hdiv
-      · exact (by decide : ¬ 625 ∣ 599479) hdiv
-      · exact (by decide : ¬ 626 ∣ 599479) hdiv
-      · exact (by decide : ¬ 627 ∣ 599479) hdiv
-      · exact (by decide : ¬ 628 ∣ 599479) hdiv
-      · exact (by decide : ¬ 629 ∣ 599479) hdiv
-      · exact (by decide : ¬ 630 ∣ 599479) hdiv
-      · exact (by decide : ¬ 631 ∣ 599479) hdiv
-      · exact (by decide : ¬ 632 ∣ 599479) hdiv
-      · exact (by decide : ¬ 633 ∣ 599479) hdiv
-      · exact (by decide : ¬ 634 ∣ 599479) hdiv
-      · exact (by decide : ¬ 635 ∣ 599479) hdiv
-      · exact (by decide : ¬ 636 ∣ 599479) hdiv
-      · exact (by decide : ¬ 637 ∣ 599479) hdiv
-      · exact (by decide : ¬ 638 ∣ 599479) hdiv
-      · exact (by decide : ¬ 639 ∣ 599479) hdiv
-      · exact (by decide : ¬ 640 ∣ 599479) hdiv
-      · exact (by decide : ¬ 641 ∣ 599479) hdiv
-      · exact (by decide : ¬ 642 ∣ 599479) hdiv
-      · exact (by decide : ¬ 643 ∣ 599479) hdiv
-      · exact (by decide : ¬ 644 ∣ 599479) hdiv
-      · exact (by decide : ¬ 645 ∣ 599479) hdiv
-      · exact (by decide : ¬ 646 ∣ 599479) hdiv
-      · exact (by decide : ¬ 647 ∣ 599479) hdiv
-      · exact (by decide : ¬ 648 ∣ 599479) hdiv
-      · exact (by decide : ¬ 649 ∣ 599479) hdiv
-      · exact (by decide : ¬ 650 ∣ 599479) hdiv
-      · exact (by decide : ¬ 651 ∣ 599479) hdiv
-      · exact (by decide : ¬ 652 ∣ 599479) hdiv
-      · exact (by decide : ¬ 653 ∣ 599479) hdiv
-      · exact (by decide : ¬ 654 ∣ 599479) hdiv
-      · exact (by decide : ¬ 655 ∣ 599479) hdiv
-      · exact (by decide : ¬ 656 ∣ 599479) hdiv
-      · exact (by decide : ¬ 657 ∣ 599479) hdiv
-      · exact (by decide : ¬ 658 ∣ 599479) hdiv
-      · exact (by decide : ¬ 659 ∣ 599479) hdiv
-      · exact (by decide : ¬ 660 ∣ 599479) hdiv
-      · exact (by decide : ¬ 661 ∣ 599479) hdiv
-      · exact (by decide : ¬ 662 ∣ 599479) hdiv
-      · exact (by decide : ¬ 663 ∣ 599479) hdiv
-      · exact (by decide : ¬ 664 ∣ 599479) hdiv
-      · exact (by decide : ¬ 665 ∣ 599479) hdiv
-      · exact (by decide : ¬ 666 ∣ 599479) hdiv
-      · exact (by decide : ¬ 667 ∣ 599479) hdiv
-      · exact (by decide : ¬ 668 ∣ 599479) hdiv
-      · exact (by decide : ¬ 669 ∣ 599479) hdiv
-      · exact (by decide : ¬ 670 ∣ 599479) hdiv
-      · exact (by decide : ¬ 671 ∣ 599479) hdiv
-      · exact (by decide : ¬ 672 ∣ 599479) hdiv
-      · exact (by decide : ¬ 673 ∣ 599479) hdiv
-      · exact (by decide : ¬ 674 ∣ 599479) hdiv
-      · exact (by decide : ¬ 675 ∣ 599479) hdiv
-      · exact (by decide : ¬ 676 ∣ 599479) hdiv
-      · exact (by decide : ¬ 677 ∣ 599479) hdiv
-      · exact (by decide : ¬ 678 ∣ 599479) hdiv
-      · exact (by decide : ¬ 679 ∣ 599479) hdiv
-      · exact (by decide : ¬ 680 ∣ 599479) hdiv
-      · exact (by decide : ¬ 681 ∣ 599479) hdiv
-      · exact (by decide : ¬ 682 ∣ 599479) hdiv
-      · exact (by decide : ¬ 683 ∣ 599479) hdiv
-      · exact (by decide : ¬ 684 ∣ 599479) hdiv
-      · exact (by decide : ¬ 685 ∣ 599479) hdiv
-      · exact (by decide : ¬ 686 ∣ 599479) hdiv
-      · exact (by decide : ¬ 687 ∣ 599479) hdiv
-      · exact (by decide : ¬ 688 ∣ 599479) hdiv
-      · exact (by decide : ¬ 689 ∣ 599479) hdiv
-      · exact (by decide : ¬ 690 ∣ 599479) hdiv
-      · exact (by decide : ¬ 691 ∣ 599479) hdiv
-      · exact (by decide : ¬ 692 ∣ 599479) hdiv
-      · exact (by decide : ¬ 693 ∣ 599479) hdiv
-      · exact (by decide : ¬ 694 ∣ 599479) hdiv
-      · exact (by decide : ¬ 695 ∣ 599479) hdiv
-      · exact (by decide : ¬ 696 ∣ 599479) hdiv
-      · exact (by decide : ¬ 697 ∣ 599479) hdiv
-      · exact (by decide : ¬ 698 ∣ 599479) hdiv
-      · exact (by decide : ¬ 699 ∣ 599479) hdiv
-      · exact (by decide : ¬ 700 ∣ 599479) hdiv
-      · exact (by decide : ¬ 701 ∣ 599479) hdiv
-      · exact (by decide : ¬ 702 ∣ 599479) hdiv
-      · exact (by decide : ¬ 703 ∣ 599479) hdiv
-      · exact (by decide : ¬ 704 ∣ 599479) hdiv
-      · exact (by decide : ¬ 705 ∣ 599479) hdiv
-      · exact (by decide : ¬ 706 ∣ 599479) hdiv
-      · exact (by decide : ¬ 707 ∣ 599479) hdiv
-      · exact (by decide : ¬ 708 ∣ 599479) hdiv
-      · exact (by decide : ¬ 709 ∣ 599479) hdiv
-      · exact (by decide : ¬ 710 ∣ 599479) hdiv
-      · exact (by decide : ¬ 711 ∣ 599479) hdiv
-      · exact (by decide : ¬ 712 ∣ 599479) hdiv
-      · exact (by decide : ¬ 713 ∣ 599479) hdiv
-      · exact (by decide : ¬ 714 ∣ 599479) hdiv
-      · exact (by decide : ¬ 715 ∣ 599479) hdiv
-      · exact (by decide : ¬ 716 ∣ 599479) hdiv
-      · exact (by decide : ¬ 717 ∣ 599479) hdiv
-      · exact (by decide : ¬ 718 ∣ 599479) hdiv
-      · exact (by decide : ¬ 719 ∣ 599479) hdiv
-      · exact (by decide : ¬ 720 ∣ 599479) hdiv
-      · exact (by decide : ¬ 721 ∣ 599479) hdiv
-      · exact (by decide : ¬ 722 ∣ 599479) hdiv
-      · exact (by decide : ¬ 723 ∣ 599479) hdiv
-      · exact (by decide : ¬ 724 ∣ 599479) hdiv
-      · exact (by decide : ¬ 725 ∣ 599479) hdiv
-      · exact (by decide : ¬ 726 ∣ 599479) hdiv
-      · exact (by decide : ¬ 727 ∣ 599479) hdiv
-      · exact (by decide : ¬ 728 ∣ 599479) hdiv
-      · exact (by decide : ¬ 729 ∣ 599479) hdiv
-      · exact (by decide : ¬ 730 ∣ 599479) hdiv
-      · exact (by decide : ¬ 731 ∣ 599479) hdiv
-      · exact (by decide : ¬ 732 ∣ 599479) hdiv
-      · exact (by decide : ¬ 733 ∣ 599479) hdiv
-      · exact (by decide : ¬ 734 ∣ 599479) hdiv
-      · exact (by decide : ¬ 735 ∣ 599479) hdiv
-      · exact (by decide : ¬ 736 ∣ 599479) hdiv
-      · exact (by decide : ¬ 737 ∣ 599479) hdiv
-      · exact (by decide : ¬ 738 ∣ 599479) hdiv
-      · exact (by decide : ¬ 739 ∣ 599479) hdiv
-      · exact (by decide : ¬ 740 ∣ 599479) hdiv
-      · exact (by decide : ¬ 741 ∣ 599479) hdiv
-      · exact (by decide : ¬ 742 ∣ 599479) hdiv
-      · exact (by decide : ¬ 743 ∣ 599479) hdiv
-      · exact (by decide : ¬ 744 ∣ 599479) hdiv
-      · exact (by decide : ¬ 745 ∣ 599479) hdiv
-      · exact (by decide : ¬ 746 ∣ 599479) hdiv
-      · exact (by decide : ¬ 747 ∣ 599479) hdiv
-      · exact (by decide : ¬ 748 ∣ 599479) hdiv
-      · exact (by decide : ¬ 749 ∣ 599479) hdiv
-      · exact (by decide : ¬ 750 ∣ 599479) hdiv
-      · exact (by decide : ¬ 751 ∣ 599479) hdiv
-      · exact (by decide : ¬ 752 ∣ 599479) hdiv
-      · exact (by decide : ¬ 753 ∣ 599479) hdiv
-      · exact (by decide : ¬ 754 ∣ 599479) hdiv
-      · exact (by decide : ¬ 755 ∣ 599479) hdiv
-      · exact (by decide : ¬ 756 ∣ 599479) hdiv
-      · exact (by decide : ¬ 757 ∣ 599479) hdiv
-      · exact (by decide : ¬ 758 ∣ 599479) hdiv
-      · exact (by decide : ¬ 759 ∣ 599479) hdiv
-      · exact (by decide : ¬ 760 ∣ 599479) hdiv
-      · exact (by decide : ¬ 761 ∣ 599479) hdiv
-      · exact (by decide : ¬ 762 ∣ 599479) hdiv
-      · exact (by decide : ¬ 763 ∣ 599479) hdiv
-      · exact (by decide : ¬ 764 ∣ 599479) hdiv
-      · exact (by decide : ¬ 765 ∣ 599479) hdiv
-      · exact (by decide : ¬ 766 ∣ 599479) hdiv
-      · exact (by decide : ¬ 767 ∣ 599479) hdiv
-      · exact (by decide : ¬ 768 ∣ 599479) hdiv
-      · exact (by decide : ¬ 769 ∣ 599479) hdiv
-      · exact (by decide : ¬ 770 ∣ 599479) hdiv
-      · exact (by decide : ¬ 771 ∣ 599479) hdiv
-      · exact (by decide : ¬ 772 ∣ 599479) hdiv
-      · exact (by decide : ¬ 773 ∣ 599479) hdiv
-      · exact (by decide : ¬ 774 ∣ 599479) hdiv
-  have hA_factor : (161 : Nat).factorization 599479 = 0 :=
-    Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 599479 ∣ 161)
-  exact primeComponentWitness_of_prime_power_cofactor
-    33 161 2 3 599479 4196353 1 7 0
-    hq_prime
-    (by decide)
-    (by decide)
-    (by decide)
-    hA_factor
-    (by decide)
+  have hquot : primeComponentQuotient 2 33 3 = 4196353 := by decide
+  have hq : Nat.Prime 599479 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 599479 ∣ 161)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F33_A161_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 33 161 2 3 := by
@@ -3581,24 +1025,13 @@ theorem concrete_generated_b2_F33_A161_p3_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b2_F33_A161_p11_prime_witness :
     PrimeComponentWitness 33 161 2 11 89 := by
-  refine ⟨(by decide : Nat.Prime 89), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 33 11 = 1227133513 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 2 33 11 = 1227133513 := by decide
+  have hq : Nat.Prime 89 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 33 11 = 1227133513 := by decide
-    rw [hquot]
-    have hfactor : (1227133513 : Nat).factorization 89 = 1 := by
-      rw [show (1227133513 : Nat) = 89 * 13788017 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 89),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 89 ∣ 13788017),
-      ]
-    rw [hfactor]
-    have hA_factor : (161 : Nat).factorization 89 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 89 ∣ 161)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 89 ∣ 161)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F33_A161_p11_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 33 161 2 11 := by
@@ -3633,7 +1066,8 @@ theorem orderOf_b2_mod53353631_eq_33_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 2 hcop : (ZMod 53353631)ˣ) :
           ZMod 53353631) ^ 33) =
         (1 : ZMod 53353631)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -3693,24 +1127,13 @@ theorem concrete_generated_b2_F33_A2047_factorization_support_cases
 
 theorem concrete_generated_b2_F33_A2047_p3_prime_witness :
     PrimeComponentWitness 33 2047 2 3 7 := by
-  refine ⟨(by decide : Nat.Prime 7), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 33 3 = 4196353 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 2 33 3 = 4196353 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 33 3 = 4196353 := by decide
-    rw [hquot]
-    have hfactor : (4196353 : Nat).factorization 7 = 1 := by
-      rw [show (4196353 : Nat) = 7 * 599479 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 7),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 599479),
-      ]
-    rw [hfactor]
-    have hA_factor : (2047 : Nat).factorization 7 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 2047)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 2047)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F33_A2047_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 33 2047 2 3 := by
@@ -3718,799 +1141,13 @@ theorem concrete_generated_b2_F33_A2047_p3_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b2_F33_A2047_p11_prime_witness :
     PrimeComponentWitness 33 2047 2 11 599479 := by
-  have hq_prime : Nat.Prime 599479 := by
-    rw [Nat.prime_def_le_sqrt]
-    constructor
-    · decide
-    · intro m hm_ge hm_le hdiv
-      have hm_le774 : m ≤ 774 := by
-        have hsqrt_lt : Nat.sqrt 599479 < 775 :=
-          (Nat.sqrt_lt'.2 (by decide : 599479 < 775 ^ 2))
-        exact Nat.le_of_lt_succ (lt_of_le_of_lt hm_le hsqrt_lt)
-      interval_cases m
-      · exact (by decide : ¬ 2 ∣ 599479) hdiv
-      · exact (by decide : ¬ 3 ∣ 599479) hdiv
-      · exact (by decide : ¬ 4 ∣ 599479) hdiv
-      · exact (by decide : ¬ 5 ∣ 599479) hdiv
-      · exact (by decide : ¬ 6 ∣ 599479) hdiv
-      · exact (by decide : ¬ 7 ∣ 599479) hdiv
-      · exact (by decide : ¬ 8 ∣ 599479) hdiv
-      · exact (by decide : ¬ 9 ∣ 599479) hdiv
-      · exact (by decide : ¬ 10 ∣ 599479) hdiv
-      · exact (by decide : ¬ 11 ∣ 599479) hdiv
-      · exact (by decide : ¬ 12 ∣ 599479) hdiv
-      · exact (by decide : ¬ 13 ∣ 599479) hdiv
-      · exact (by decide : ¬ 14 ∣ 599479) hdiv
-      · exact (by decide : ¬ 15 ∣ 599479) hdiv
-      · exact (by decide : ¬ 16 ∣ 599479) hdiv
-      · exact (by decide : ¬ 17 ∣ 599479) hdiv
-      · exact (by decide : ¬ 18 ∣ 599479) hdiv
-      · exact (by decide : ¬ 19 ∣ 599479) hdiv
-      · exact (by decide : ¬ 20 ∣ 599479) hdiv
-      · exact (by decide : ¬ 21 ∣ 599479) hdiv
-      · exact (by decide : ¬ 22 ∣ 599479) hdiv
-      · exact (by decide : ¬ 23 ∣ 599479) hdiv
-      · exact (by decide : ¬ 24 ∣ 599479) hdiv
-      · exact (by decide : ¬ 25 ∣ 599479) hdiv
-      · exact (by decide : ¬ 26 ∣ 599479) hdiv
-      · exact (by decide : ¬ 27 ∣ 599479) hdiv
-      · exact (by decide : ¬ 28 ∣ 599479) hdiv
-      · exact (by decide : ¬ 29 ∣ 599479) hdiv
-      · exact (by decide : ¬ 30 ∣ 599479) hdiv
-      · exact (by decide : ¬ 31 ∣ 599479) hdiv
-      · exact (by decide : ¬ 32 ∣ 599479) hdiv
-      · exact (by decide : ¬ 33 ∣ 599479) hdiv
-      · exact (by decide : ¬ 34 ∣ 599479) hdiv
-      · exact (by decide : ¬ 35 ∣ 599479) hdiv
-      · exact (by decide : ¬ 36 ∣ 599479) hdiv
-      · exact (by decide : ¬ 37 ∣ 599479) hdiv
-      · exact (by decide : ¬ 38 ∣ 599479) hdiv
-      · exact (by decide : ¬ 39 ∣ 599479) hdiv
-      · exact (by decide : ¬ 40 ∣ 599479) hdiv
-      · exact (by decide : ¬ 41 ∣ 599479) hdiv
-      · exact (by decide : ¬ 42 ∣ 599479) hdiv
-      · exact (by decide : ¬ 43 ∣ 599479) hdiv
-      · exact (by decide : ¬ 44 ∣ 599479) hdiv
-      · exact (by decide : ¬ 45 ∣ 599479) hdiv
-      · exact (by decide : ¬ 46 ∣ 599479) hdiv
-      · exact (by decide : ¬ 47 ∣ 599479) hdiv
-      · exact (by decide : ¬ 48 ∣ 599479) hdiv
-      · exact (by decide : ¬ 49 ∣ 599479) hdiv
-      · exact (by decide : ¬ 50 ∣ 599479) hdiv
-      · exact (by decide : ¬ 51 ∣ 599479) hdiv
-      · exact (by decide : ¬ 52 ∣ 599479) hdiv
-      · exact (by decide : ¬ 53 ∣ 599479) hdiv
-      · exact (by decide : ¬ 54 ∣ 599479) hdiv
-      · exact (by decide : ¬ 55 ∣ 599479) hdiv
-      · exact (by decide : ¬ 56 ∣ 599479) hdiv
-      · exact (by decide : ¬ 57 ∣ 599479) hdiv
-      · exact (by decide : ¬ 58 ∣ 599479) hdiv
-      · exact (by decide : ¬ 59 ∣ 599479) hdiv
-      · exact (by decide : ¬ 60 ∣ 599479) hdiv
-      · exact (by decide : ¬ 61 ∣ 599479) hdiv
-      · exact (by decide : ¬ 62 ∣ 599479) hdiv
-      · exact (by decide : ¬ 63 ∣ 599479) hdiv
-      · exact (by decide : ¬ 64 ∣ 599479) hdiv
-      · exact (by decide : ¬ 65 ∣ 599479) hdiv
-      · exact (by decide : ¬ 66 ∣ 599479) hdiv
-      · exact (by decide : ¬ 67 ∣ 599479) hdiv
-      · exact (by decide : ¬ 68 ∣ 599479) hdiv
-      · exact (by decide : ¬ 69 ∣ 599479) hdiv
-      · exact (by decide : ¬ 70 ∣ 599479) hdiv
-      · exact (by decide : ¬ 71 ∣ 599479) hdiv
-      · exact (by decide : ¬ 72 ∣ 599479) hdiv
-      · exact (by decide : ¬ 73 ∣ 599479) hdiv
-      · exact (by decide : ¬ 74 ∣ 599479) hdiv
-      · exact (by decide : ¬ 75 ∣ 599479) hdiv
-      · exact (by decide : ¬ 76 ∣ 599479) hdiv
-      · exact (by decide : ¬ 77 ∣ 599479) hdiv
-      · exact (by decide : ¬ 78 ∣ 599479) hdiv
-      · exact (by decide : ¬ 79 ∣ 599479) hdiv
-      · exact (by decide : ¬ 80 ∣ 599479) hdiv
-      · exact (by decide : ¬ 81 ∣ 599479) hdiv
-      · exact (by decide : ¬ 82 ∣ 599479) hdiv
-      · exact (by decide : ¬ 83 ∣ 599479) hdiv
-      · exact (by decide : ¬ 84 ∣ 599479) hdiv
-      · exact (by decide : ¬ 85 ∣ 599479) hdiv
-      · exact (by decide : ¬ 86 ∣ 599479) hdiv
-      · exact (by decide : ¬ 87 ∣ 599479) hdiv
-      · exact (by decide : ¬ 88 ∣ 599479) hdiv
-      · exact (by decide : ¬ 89 ∣ 599479) hdiv
-      · exact (by decide : ¬ 90 ∣ 599479) hdiv
-      · exact (by decide : ¬ 91 ∣ 599479) hdiv
-      · exact (by decide : ¬ 92 ∣ 599479) hdiv
-      · exact (by decide : ¬ 93 ∣ 599479) hdiv
-      · exact (by decide : ¬ 94 ∣ 599479) hdiv
-      · exact (by decide : ¬ 95 ∣ 599479) hdiv
-      · exact (by decide : ¬ 96 ∣ 599479) hdiv
-      · exact (by decide : ¬ 97 ∣ 599479) hdiv
-      · exact (by decide : ¬ 98 ∣ 599479) hdiv
-      · exact (by decide : ¬ 99 ∣ 599479) hdiv
-      · exact (by decide : ¬ 100 ∣ 599479) hdiv
-      · exact (by decide : ¬ 101 ∣ 599479) hdiv
-      · exact (by decide : ¬ 102 ∣ 599479) hdiv
-      · exact (by decide : ¬ 103 ∣ 599479) hdiv
-      · exact (by decide : ¬ 104 ∣ 599479) hdiv
-      · exact (by decide : ¬ 105 ∣ 599479) hdiv
-      · exact (by decide : ¬ 106 ∣ 599479) hdiv
-      · exact (by decide : ¬ 107 ∣ 599479) hdiv
-      · exact (by decide : ¬ 108 ∣ 599479) hdiv
-      · exact (by decide : ¬ 109 ∣ 599479) hdiv
-      · exact (by decide : ¬ 110 ∣ 599479) hdiv
-      · exact (by decide : ¬ 111 ∣ 599479) hdiv
-      · exact (by decide : ¬ 112 ∣ 599479) hdiv
-      · exact (by decide : ¬ 113 ∣ 599479) hdiv
-      · exact (by decide : ¬ 114 ∣ 599479) hdiv
-      · exact (by decide : ¬ 115 ∣ 599479) hdiv
-      · exact (by decide : ¬ 116 ∣ 599479) hdiv
-      · exact (by decide : ¬ 117 ∣ 599479) hdiv
-      · exact (by decide : ¬ 118 ∣ 599479) hdiv
-      · exact (by decide : ¬ 119 ∣ 599479) hdiv
-      · exact (by decide : ¬ 120 ∣ 599479) hdiv
-      · exact (by decide : ¬ 121 ∣ 599479) hdiv
-      · exact (by decide : ¬ 122 ∣ 599479) hdiv
-      · exact (by decide : ¬ 123 ∣ 599479) hdiv
-      · exact (by decide : ¬ 124 ∣ 599479) hdiv
-      · exact (by decide : ¬ 125 ∣ 599479) hdiv
-      · exact (by decide : ¬ 126 ∣ 599479) hdiv
-      · exact (by decide : ¬ 127 ∣ 599479) hdiv
-      · exact (by decide : ¬ 128 ∣ 599479) hdiv
-      · exact (by decide : ¬ 129 ∣ 599479) hdiv
-      · exact (by decide : ¬ 130 ∣ 599479) hdiv
-      · exact (by decide : ¬ 131 ∣ 599479) hdiv
-      · exact (by decide : ¬ 132 ∣ 599479) hdiv
-      · exact (by decide : ¬ 133 ∣ 599479) hdiv
-      · exact (by decide : ¬ 134 ∣ 599479) hdiv
-      · exact (by decide : ¬ 135 ∣ 599479) hdiv
-      · exact (by decide : ¬ 136 ∣ 599479) hdiv
-      · exact (by decide : ¬ 137 ∣ 599479) hdiv
-      · exact (by decide : ¬ 138 ∣ 599479) hdiv
-      · exact (by decide : ¬ 139 ∣ 599479) hdiv
-      · exact (by decide : ¬ 140 ∣ 599479) hdiv
-      · exact (by decide : ¬ 141 ∣ 599479) hdiv
-      · exact (by decide : ¬ 142 ∣ 599479) hdiv
-      · exact (by decide : ¬ 143 ∣ 599479) hdiv
-      · exact (by decide : ¬ 144 ∣ 599479) hdiv
-      · exact (by decide : ¬ 145 ∣ 599479) hdiv
-      · exact (by decide : ¬ 146 ∣ 599479) hdiv
-      · exact (by decide : ¬ 147 ∣ 599479) hdiv
-      · exact (by decide : ¬ 148 ∣ 599479) hdiv
-      · exact (by decide : ¬ 149 ∣ 599479) hdiv
-      · exact (by decide : ¬ 150 ∣ 599479) hdiv
-      · exact (by decide : ¬ 151 ∣ 599479) hdiv
-      · exact (by decide : ¬ 152 ∣ 599479) hdiv
-      · exact (by decide : ¬ 153 ∣ 599479) hdiv
-      · exact (by decide : ¬ 154 ∣ 599479) hdiv
-      · exact (by decide : ¬ 155 ∣ 599479) hdiv
-      · exact (by decide : ¬ 156 ∣ 599479) hdiv
-      · exact (by decide : ¬ 157 ∣ 599479) hdiv
-      · exact (by decide : ¬ 158 ∣ 599479) hdiv
-      · exact (by decide : ¬ 159 ∣ 599479) hdiv
-      · exact (by decide : ¬ 160 ∣ 599479) hdiv
-      · exact (by decide : ¬ 161 ∣ 599479) hdiv
-      · exact (by decide : ¬ 162 ∣ 599479) hdiv
-      · exact (by decide : ¬ 163 ∣ 599479) hdiv
-      · exact (by decide : ¬ 164 ∣ 599479) hdiv
-      · exact (by decide : ¬ 165 ∣ 599479) hdiv
-      · exact (by decide : ¬ 166 ∣ 599479) hdiv
-      · exact (by decide : ¬ 167 ∣ 599479) hdiv
-      · exact (by decide : ¬ 168 ∣ 599479) hdiv
-      · exact (by decide : ¬ 169 ∣ 599479) hdiv
-      · exact (by decide : ¬ 170 ∣ 599479) hdiv
-      · exact (by decide : ¬ 171 ∣ 599479) hdiv
-      · exact (by decide : ¬ 172 ∣ 599479) hdiv
-      · exact (by decide : ¬ 173 ∣ 599479) hdiv
-      · exact (by decide : ¬ 174 ∣ 599479) hdiv
-      · exact (by decide : ¬ 175 ∣ 599479) hdiv
-      · exact (by decide : ¬ 176 ∣ 599479) hdiv
-      · exact (by decide : ¬ 177 ∣ 599479) hdiv
-      · exact (by decide : ¬ 178 ∣ 599479) hdiv
-      · exact (by decide : ¬ 179 ∣ 599479) hdiv
-      · exact (by decide : ¬ 180 ∣ 599479) hdiv
-      · exact (by decide : ¬ 181 ∣ 599479) hdiv
-      · exact (by decide : ¬ 182 ∣ 599479) hdiv
-      · exact (by decide : ¬ 183 ∣ 599479) hdiv
-      · exact (by decide : ¬ 184 ∣ 599479) hdiv
-      · exact (by decide : ¬ 185 ∣ 599479) hdiv
-      · exact (by decide : ¬ 186 ∣ 599479) hdiv
-      · exact (by decide : ¬ 187 ∣ 599479) hdiv
-      · exact (by decide : ¬ 188 ∣ 599479) hdiv
-      · exact (by decide : ¬ 189 ∣ 599479) hdiv
-      · exact (by decide : ¬ 190 ∣ 599479) hdiv
-      · exact (by decide : ¬ 191 ∣ 599479) hdiv
-      · exact (by decide : ¬ 192 ∣ 599479) hdiv
-      · exact (by decide : ¬ 193 ∣ 599479) hdiv
-      · exact (by decide : ¬ 194 ∣ 599479) hdiv
-      · exact (by decide : ¬ 195 ∣ 599479) hdiv
-      · exact (by decide : ¬ 196 ∣ 599479) hdiv
-      · exact (by decide : ¬ 197 ∣ 599479) hdiv
-      · exact (by decide : ¬ 198 ∣ 599479) hdiv
-      · exact (by decide : ¬ 199 ∣ 599479) hdiv
-      · exact (by decide : ¬ 200 ∣ 599479) hdiv
-      · exact (by decide : ¬ 201 ∣ 599479) hdiv
-      · exact (by decide : ¬ 202 ∣ 599479) hdiv
-      · exact (by decide : ¬ 203 ∣ 599479) hdiv
-      · exact (by decide : ¬ 204 ∣ 599479) hdiv
-      · exact (by decide : ¬ 205 ∣ 599479) hdiv
-      · exact (by decide : ¬ 206 ∣ 599479) hdiv
-      · exact (by decide : ¬ 207 ∣ 599479) hdiv
-      · exact (by decide : ¬ 208 ∣ 599479) hdiv
-      · exact (by decide : ¬ 209 ∣ 599479) hdiv
-      · exact (by decide : ¬ 210 ∣ 599479) hdiv
-      · exact (by decide : ¬ 211 ∣ 599479) hdiv
-      · exact (by decide : ¬ 212 ∣ 599479) hdiv
-      · exact (by decide : ¬ 213 ∣ 599479) hdiv
-      · exact (by decide : ¬ 214 ∣ 599479) hdiv
-      · exact (by decide : ¬ 215 ∣ 599479) hdiv
-      · exact (by decide : ¬ 216 ∣ 599479) hdiv
-      · exact (by decide : ¬ 217 ∣ 599479) hdiv
-      · exact (by decide : ¬ 218 ∣ 599479) hdiv
-      · exact (by decide : ¬ 219 ∣ 599479) hdiv
-      · exact (by decide : ¬ 220 ∣ 599479) hdiv
-      · exact (by decide : ¬ 221 ∣ 599479) hdiv
-      · exact (by decide : ¬ 222 ∣ 599479) hdiv
-      · exact (by decide : ¬ 223 ∣ 599479) hdiv
-      · exact (by decide : ¬ 224 ∣ 599479) hdiv
-      · exact (by decide : ¬ 225 ∣ 599479) hdiv
-      · exact (by decide : ¬ 226 ∣ 599479) hdiv
-      · exact (by decide : ¬ 227 ∣ 599479) hdiv
-      · exact (by decide : ¬ 228 ∣ 599479) hdiv
-      · exact (by decide : ¬ 229 ∣ 599479) hdiv
-      · exact (by decide : ¬ 230 ∣ 599479) hdiv
-      · exact (by decide : ¬ 231 ∣ 599479) hdiv
-      · exact (by decide : ¬ 232 ∣ 599479) hdiv
-      · exact (by decide : ¬ 233 ∣ 599479) hdiv
-      · exact (by decide : ¬ 234 ∣ 599479) hdiv
-      · exact (by decide : ¬ 235 ∣ 599479) hdiv
-      · exact (by decide : ¬ 236 ∣ 599479) hdiv
-      · exact (by decide : ¬ 237 ∣ 599479) hdiv
-      · exact (by decide : ¬ 238 ∣ 599479) hdiv
-      · exact (by decide : ¬ 239 ∣ 599479) hdiv
-      · exact (by decide : ¬ 240 ∣ 599479) hdiv
-      · exact (by decide : ¬ 241 ∣ 599479) hdiv
-      · exact (by decide : ¬ 242 ∣ 599479) hdiv
-      · exact (by decide : ¬ 243 ∣ 599479) hdiv
-      · exact (by decide : ¬ 244 ∣ 599479) hdiv
-      · exact (by decide : ¬ 245 ∣ 599479) hdiv
-      · exact (by decide : ¬ 246 ∣ 599479) hdiv
-      · exact (by decide : ¬ 247 ∣ 599479) hdiv
-      · exact (by decide : ¬ 248 ∣ 599479) hdiv
-      · exact (by decide : ¬ 249 ∣ 599479) hdiv
-      · exact (by decide : ¬ 250 ∣ 599479) hdiv
-      · exact (by decide : ¬ 251 ∣ 599479) hdiv
-      · exact (by decide : ¬ 252 ∣ 599479) hdiv
-      · exact (by decide : ¬ 253 ∣ 599479) hdiv
-      · exact (by decide : ¬ 254 ∣ 599479) hdiv
-      · exact (by decide : ¬ 255 ∣ 599479) hdiv
-      · exact (by decide : ¬ 256 ∣ 599479) hdiv
-      · exact (by decide : ¬ 257 ∣ 599479) hdiv
-      · exact (by decide : ¬ 258 ∣ 599479) hdiv
-      · exact (by decide : ¬ 259 ∣ 599479) hdiv
-      · exact (by decide : ¬ 260 ∣ 599479) hdiv
-      · exact (by decide : ¬ 261 ∣ 599479) hdiv
-      · exact (by decide : ¬ 262 ∣ 599479) hdiv
-      · exact (by decide : ¬ 263 ∣ 599479) hdiv
-      · exact (by decide : ¬ 264 ∣ 599479) hdiv
-      · exact (by decide : ¬ 265 ∣ 599479) hdiv
-      · exact (by decide : ¬ 266 ∣ 599479) hdiv
-      · exact (by decide : ¬ 267 ∣ 599479) hdiv
-      · exact (by decide : ¬ 268 ∣ 599479) hdiv
-      · exact (by decide : ¬ 269 ∣ 599479) hdiv
-      · exact (by decide : ¬ 270 ∣ 599479) hdiv
-      · exact (by decide : ¬ 271 ∣ 599479) hdiv
-      · exact (by decide : ¬ 272 ∣ 599479) hdiv
-      · exact (by decide : ¬ 273 ∣ 599479) hdiv
-      · exact (by decide : ¬ 274 ∣ 599479) hdiv
-      · exact (by decide : ¬ 275 ∣ 599479) hdiv
-      · exact (by decide : ¬ 276 ∣ 599479) hdiv
-      · exact (by decide : ¬ 277 ∣ 599479) hdiv
-      · exact (by decide : ¬ 278 ∣ 599479) hdiv
-      · exact (by decide : ¬ 279 ∣ 599479) hdiv
-      · exact (by decide : ¬ 280 ∣ 599479) hdiv
-      · exact (by decide : ¬ 281 ∣ 599479) hdiv
-      · exact (by decide : ¬ 282 ∣ 599479) hdiv
-      · exact (by decide : ¬ 283 ∣ 599479) hdiv
-      · exact (by decide : ¬ 284 ∣ 599479) hdiv
-      · exact (by decide : ¬ 285 ∣ 599479) hdiv
-      · exact (by decide : ¬ 286 ∣ 599479) hdiv
-      · exact (by decide : ¬ 287 ∣ 599479) hdiv
-      · exact (by decide : ¬ 288 ∣ 599479) hdiv
-      · exact (by decide : ¬ 289 ∣ 599479) hdiv
-      · exact (by decide : ¬ 290 ∣ 599479) hdiv
-      · exact (by decide : ¬ 291 ∣ 599479) hdiv
-      · exact (by decide : ¬ 292 ∣ 599479) hdiv
-      · exact (by decide : ¬ 293 ∣ 599479) hdiv
-      · exact (by decide : ¬ 294 ∣ 599479) hdiv
-      · exact (by decide : ¬ 295 ∣ 599479) hdiv
-      · exact (by decide : ¬ 296 ∣ 599479) hdiv
-      · exact (by decide : ¬ 297 ∣ 599479) hdiv
-      · exact (by decide : ¬ 298 ∣ 599479) hdiv
-      · exact (by decide : ¬ 299 ∣ 599479) hdiv
-      · exact (by decide : ¬ 300 ∣ 599479) hdiv
-      · exact (by decide : ¬ 301 ∣ 599479) hdiv
-      · exact (by decide : ¬ 302 ∣ 599479) hdiv
-      · exact (by decide : ¬ 303 ∣ 599479) hdiv
-      · exact (by decide : ¬ 304 ∣ 599479) hdiv
-      · exact (by decide : ¬ 305 ∣ 599479) hdiv
-      · exact (by decide : ¬ 306 ∣ 599479) hdiv
-      · exact (by decide : ¬ 307 ∣ 599479) hdiv
-      · exact (by decide : ¬ 308 ∣ 599479) hdiv
-      · exact (by decide : ¬ 309 ∣ 599479) hdiv
-      · exact (by decide : ¬ 310 ∣ 599479) hdiv
-      · exact (by decide : ¬ 311 ∣ 599479) hdiv
-      · exact (by decide : ¬ 312 ∣ 599479) hdiv
-      · exact (by decide : ¬ 313 ∣ 599479) hdiv
-      · exact (by decide : ¬ 314 ∣ 599479) hdiv
-      · exact (by decide : ¬ 315 ∣ 599479) hdiv
-      · exact (by decide : ¬ 316 ∣ 599479) hdiv
-      · exact (by decide : ¬ 317 ∣ 599479) hdiv
-      · exact (by decide : ¬ 318 ∣ 599479) hdiv
-      · exact (by decide : ¬ 319 ∣ 599479) hdiv
-      · exact (by decide : ¬ 320 ∣ 599479) hdiv
-      · exact (by decide : ¬ 321 ∣ 599479) hdiv
-      · exact (by decide : ¬ 322 ∣ 599479) hdiv
-      · exact (by decide : ¬ 323 ∣ 599479) hdiv
-      · exact (by decide : ¬ 324 ∣ 599479) hdiv
-      · exact (by decide : ¬ 325 ∣ 599479) hdiv
-      · exact (by decide : ¬ 326 ∣ 599479) hdiv
-      · exact (by decide : ¬ 327 ∣ 599479) hdiv
-      · exact (by decide : ¬ 328 ∣ 599479) hdiv
-      · exact (by decide : ¬ 329 ∣ 599479) hdiv
-      · exact (by decide : ¬ 330 ∣ 599479) hdiv
-      · exact (by decide : ¬ 331 ∣ 599479) hdiv
-      · exact (by decide : ¬ 332 ∣ 599479) hdiv
-      · exact (by decide : ¬ 333 ∣ 599479) hdiv
-      · exact (by decide : ¬ 334 ∣ 599479) hdiv
-      · exact (by decide : ¬ 335 ∣ 599479) hdiv
-      · exact (by decide : ¬ 336 ∣ 599479) hdiv
-      · exact (by decide : ¬ 337 ∣ 599479) hdiv
-      · exact (by decide : ¬ 338 ∣ 599479) hdiv
-      · exact (by decide : ¬ 339 ∣ 599479) hdiv
-      · exact (by decide : ¬ 340 ∣ 599479) hdiv
-      · exact (by decide : ¬ 341 ∣ 599479) hdiv
-      · exact (by decide : ¬ 342 ∣ 599479) hdiv
-      · exact (by decide : ¬ 343 ∣ 599479) hdiv
-      · exact (by decide : ¬ 344 ∣ 599479) hdiv
-      · exact (by decide : ¬ 345 ∣ 599479) hdiv
-      · exact (by decide : ¬ 346 ∣ 599479) hdiv
-      · exact (by decide : ¬ 347 ∣ 599479) hdiv
-      · exact (by decide : ¬ 348 ∣ 599479) hdiv
-      · exact (by decide : ¬ 349 ∣ 599479) hdiv
-      · exact (by decide : ¬ 350 ∣ 599479) hdiv
-      · exact (by decide : ¬ 351 ∣ 599479) hdiv
-      · exact (by decide : ¬ 352 ∣ 599479) hdiv
-      · exact (by decide : ¬ 353 ∣ 599479) hdiv
-      · exact (by decide : ¬ 354 ∣ 599479) hdiv
-      · exact (by decide : ¬ 355 ∣ 599479) hdiv
-      · exact (by decide : ¬ 356 ∣ 599479) hdiv
-      · exact (by decide : ¬ 357 ∣ 599479) hdiv
-      · exact (by decide : ¬ 358 ∣ 599479) hdiv
-      · exact (by decide : ¬ 359 ∣ 599479) hdiv
-      · exact (by decide : ¬ 360 ∣ 599479) hdiv
-      · exact (by decide : ¬ 361 ∣ 599479) hdiv
-      · exact (by decide : ¬ 362 ∣ 599479) hdiv
-      · exact (by decide : ¬ 363 ∣ 599479) hdiv
-      · exact (by decide : ¬ 364 ∣ 599479) hdiv
-      · exact (by decide : ¬ 365 ∣ 599479) hdiv
-      · exact (by decide : ¬ 366 ∣ 599479) hdiv
-      · exact (by decide : ¬ 367 ∣ 599479) hdiv
-      · exact (by decide : ¬ 368 ∣ 599479) hdiv
-      · exact (by decide : ¬ 369 ∣ 599479) hdiv
-      · exact (by decide : ¬ 370 ∣ 599479) hdiv
-      · exact (by decide : ¬ 371 ∣ 599479) hdiv
-      · exact (by decide : ¬ 372 ∣ 599479) hdiv
-      · exact (by decide : ¬ 373 ∣ 599479) hdiv
-      · exact (by decide : ¬ 374 ∣ 599479) hdiv
-      · exact (by decide : ¬ 375 ∣ 599479) hdiv
-      · exact (by decide : ¬ 376 ∣ 599479) hdiv
-      · exact (by decide : ¬ 377 ∣ 599479) hdiv
-      · exact (by decide : ¬ 378 ∣ 599479) hdiv
-      · exact (by decide : ¬ 379 ∣ 599479) hdiv
-      · exact (by decide : ¬ 380 ∣ 599479) hdiv
-      · exact (by decide : ¬ 381 ∣ 599479) hdiv
-      · exact (by decide : ¬ 382 ∣ 599479) hdiv
-      · exact (by decide : ¬ 383 ∣ 599479) hdiv
-      · exact (by decide : ¬ 384 ∣ 599479) hdiv
-      · exact (by decide : ¬ 385 ∣ 599479) hdiv
-      · exact (by decide : ¬ 386 ∣ 599479) hdiv
-      · exact (by decide : ¬ 387 ∣ 599479) hdiv
-      · exact (by decide : ¬ 388 ∣ 599479) hdiv
-      · exact (by decide : ¬ 389 ∣ 599479) hdiv
-      · exact (by decide : ¬ 390 ∣ 599479) hdiv
-      · exact (by decide : ¬ 391 ∣ 599479) hdiv
-      · exact (by decide : ¬ 392 ∣ 599479) hdiv
-      · exact (by decide : ¬ 393 ∣ 599479) hdiv
-      · exact (by decide : ¬ 394 ∣ 599479) hdiv
-      · exact (by decide : ¬ 395 ∣ 599479) hdiv
-      · exact (by decide : ¬ 396 ∣ 599479) hdiv
-      · exact (by decide : ¬ 397 ∣ 599479) hdiv
-      · exact (by decide : ¬ 398 ∣ 599479) hdiv
-      · exact (by decide : ¬ 399 ∣ 599479) hdiv
-      · exact (by decide : ¬ 400 ∣ 599479) hdiv
-      · exact (by decide : ¬ 401 ∣ 599479) hdiv
-      · exact (by decide : ¬ 402 ∣ 599479) hdiv
-      · exact (by decide : ¬ 403 ∣ 599479) hdiv
-      · exact (by decide : ¬ 404 ∣ 599479) hdiv
-      · exact (by decide : ¬ 405 ∣ 599479) hdiv
-      · exact (by decide : ¬ 406 ∣ 599479) hdiv
-      · exact (by decide : ¬ 407 ∣ 599479) hdiv
-      · exact (by decide : ¬ 408 ∣ 599479) hdiv
-      · exact (by decide : ¬ 409 ∣ 599479) hdiv
-      · exact (by decide : ¬ 410 ∣ 599479) hdiv
-      · exact (by decide : ¬ 411 ∣ 599479) hdiv
-      · exact (by decide : ¬ 412 ∣ 599479) hdiv
-      · exact (by decide : ¬ 413 ∣ 599479) hdiv
-      · exact (by decide : ¬ 414 ∣ 599479) hdiv
-      · exact (by decide : ¬ 415 ∣ 599479) hdiv
-      · exact (by decide : ¬ 416 ∣ 599479) hdiv
-      · exact (by decide : ¬ 417 ∣ 599479) hdiv
-      · exact (by decide : ¬ 418 ∣ 599479) hdiv
-      · exact (by decide : ¬ 419 ∣ 599479) hdiv
-      · exact (by decide : ¬ 420 ∣ 599479) hdiv
-      · exact (by decide : ¬ 421 ∣ 599479) hdiv
-      · exact (by decide : ¬ 422 ∣ 599479) hdiv
-      · exact (by decide : ¬ 423 ∣ 599479) hdiv
-      · exact (by decide : ¬ 424 ∣ 599479) hdiv
-      · exact (by decide : ¬ 425 ∣ 599479) hdiv
-      · exact (by decide : ¬ 426 ∣ 599479) hdiv
-      · exact (by decide : ¬ 427 ∣ 599479) hdiv
-      · exact (by decide : ¬ 428 ∣ 599479) hdiv
-      · exact (by decide : ¬ 429 ∣ 599479) hdiv
-      · exact (by decide : ¬ 430 ∣ 599479) hdiv
-      · exact (by decide : ¬ 431 ∣ 599479) hdiv
-      · exact (by decide : ¬ 432 ∣ 599479) hdiv
-      · exact (by decide : ¬ 433 ∣ 599479) hdiv
-      · exact (by decide : ¬ 434 ∣ 599479) hdiv
-      · exact (by decide : ¬ 435 ∣ 599479) hdiv
-      · exact (by decide : ¬ 436 ∣ 599479) hdiv
-      · exact (by decide : ¬ 437 ∣ 599479) hdiv
-      · exact (by decide : ¬ 438 ∣ 599479) hdiv
-      · exact (by decide : ¬ 439 ∣ 599479) hdiv
-      · exact (by decide : ¬ 440 ∣ 599479) hdiv
-      · exact (by decide : ¬ 441 ∣ 599479) hdiv
-      · exact (by decide : ¬ 442 ∣ 599479) hdiv
-      · exact (by decide : ¬ 443 ∣ 599479) hdiv
-      · exact (by decide : ¬ 444 ∣ 599479) hdiv
-      · exact (by decide : ¬ 445 ∣ 599479) hdiv
-      · exact (by decide : ¬ 446 ∣ 599479) hdiv
-      · exact (by decide : ¬ 447 ∣ 599479) hdiv
-      · exact (by decide : ¬ 448 ∣ 599479) hdiv
-      · exact (by decide : ¬ 449 ∣ 599479) hdiv
-      · exact (by decide : ¬ 450 ∣ 599479) hdiv
-      · exact (by decide : ¬ 451 ∣ 599479) hdiv
-      · exact (by decide : ¬ 452 ∣ 599479) hdiv
-      · exact (by decide : ¬ 453 ∣ 599479) hdiv
-      · exact (by decide : ¬ 454 ∣ 599479) hdiv
-      · exact (by decide : ¬ 455 ∣ 599479) hdiv
-      · exact (by decide : ¬ 456 ∣ 599479) hdiv
-      · exact (by decide : ¬ 457 ∣ 599479) hdiv
-      · exact (by decide : ¬ 458 ∣ 599479) hdiv
-      · exact (by decide : ¬ 459 ∣ 599479) hdiv
-      · exact (by decide : ¬ 460 ∣ 599479) hdiv
-      · exact (by decide : ¬ 461 ∣ 599479) hdiv
-      · exact (by decide : ¬ 462 ∣ 599479) hdiv
-      · exact (by decide : ¬ 463 ∣ 599479) hdiv
-      · exact (by decide : ¬ 464 ∣ 599479) hdiv
-      · exact (by decide : ¬ 465 ∣ 599479) hdiv
-      · exact (by decide : ¬ 466 ∣ 599479) hdiv
-      · exact (by decide : ¬ 467 ∣ 599479) hdiv
-      · exact (by decide : ¬ 468 ∣ 599479) hdiv
-      · exact (by decide : ¬ 469 ∣ 599479) hdiv
-      · exact (by decide : ¬ 470 ∣ 599479) hdiv
-      · exact (by decide : ¬ 471 ∣ 599479) hdiv
-      · exact (by decide : ¬ 472 ∣ 599479) hdiv
-      · exact (by decide : ¬ 473 ∣ 599479) hdiv
-      · exact (by decide : ¬ 474 ∣ 599479) hdiv
-      · exact (by decide : ¬ 475 ∣ 599479) hdiv
-      · exact (by decide : ¬ 476 ∣ 599479) hdiv
-      · exact (by decide : ¬ 477 ∣ 599479) hdiv
-      · exact (by decide : ¬ 478 ∣ 599479) hdiv
-      · exact (by decide : ¬ 479 ∣ 599479) hdiv
-      · exact (by decide : ¬ 480 ∣ 599479) hdiv
-      · exact (by decide : ¬ 481 ∣ 599479) hdiv
-      · exact (by decide : ¬ 482 ∣ 599479) hdiv
-      · exact (by decide : ¬ 483 ∣ 599479) hdiv
-      · exact (by decide : ¬ 484 ∣ 599479) hdiv
-      · exact (by decide : ¬ 485 ∣ 599479) hdiv
-      · exact (by decide : ¬ 486 ∣ 599479) hdiv
-      · exact (by decide : ¬ 487 ∣ 599479) hdiv
-      · exact (by decide : ¬ 488 ∣ 599479) hdiv
-      · exact (by decide : ¬ 489 ∣ 599479) hdiv
-      · exact (by decide : ¬ 490 ∣ 599479) hdiv
-      · exact (by decide : ¬ 491 ∣ 599479) hdiv
-      · exact (by decide : ¬ 492 ∣ 599479) hdiv
-      · exact (by decide : ¬ 493 ∣ 599479) hdiv
-      · exact (by decide : ¬ 494 ∣ 599479) hdiv
-      · exact (by decide : ¬ 495 ∣ 599479) hdiv
-      · exact (by decide : ¬ 496 ∣ 599479) hdiv
-      · exact (by decide : ¬ 497 ∣ 599479) hdiv
-      · exact (by decide : ¬ 498 ∣ 599479) hdiv
-      · exact (by decide : ¬ 499 ∣ 599479) hdiv
-      · exact (by decide : ¬ 500 ∣ 599479) hdiv
-      · exact (by decide : ¬ 501 ∣ 599479) hdiv
-      · exact (by decide : ¬ 502 ∣ 599479) hdiv
-      · exact (by decide : ¬ 503 ∣ 599479) hdiv
-      · exact (by decide : ¬ 504 ∣ 599479) hdiv
-      · exact (by decide : ¬ 505 ∣ 599479) hdiv
-      · exact (by decide : ¬ 506 ∣ 599479) hdiv
-      · exact (by decide : ¬ 507 ∣ 599479) hdiv
-      · exact (by decide : ¬ 508 ∣ 599479) hdiv
-      · exact (by decide : ¬ 509 ∣ 599479) hdiv
-      · exact (by decide : ¬ 510 ∣ 599479) hdiv
-      · exact (by decide : ¬ 511 ∣ 599479) hdiv
-      · exact (by decide : ¬ 512 ∣ 599479) hdiv
-      · exact (by decide : ¬ 513 ∣ 599479) hdiv
-      · exact (by decide : ¬ 514 ∣ 599479) hdiv
-      · exact (by decide : ¬ 515 ∣ 599479) hdiv
-      · exact (by decide : ¬ 516 ∣ 599479) hdiv
-      · exact (by decide : ¬ 517 ∣ 599479) hdiv
-      · exact (by decide : ¬ 518 ∣ 599479) hdiv
-      · exact (by decide : ¬ 519 ∣ 599479) hdiv
-      · exact (by decide : ¬ 520 ∣ 599479) hdiv
-      · exact (by decide : ¬ 521 ∣ 599479) hdiv
-      · exact (by decide : ¬ 522 ∣ 599479) hdiv
-      · exact (by decide : ¬ 523 ∣ 599479) hdiv
-      · exact (by decide : ¬ 524 ∣ 599479) hdiv
-      · exact (by decide : ¬ 525 ∣ 599479) hdiv
-      · exact (by decide : ¬ 526 ∣ 599479) hdiv
-      · exact (by decide : ¬ 527 ∣ 599479) hdiv
-      · exact (by decide : ¬ 528 ∣ 599479) hdiv
-      · exact (by decide : ¬ 529 ∣ 599479) hdiv
-      · exact (by decide : ¬ 530 ∣ 599479) hdiv
-      · exact (by decide : ¬ 531 ∣ 599479) hdiv
-      · exact (by decide : ¬ 532 ∣ 599479) hdiv
-      · exact (by decide : ¬ 533 ∣ 599479) hdiv
-      · exact (by decide : ¬ 534 ∣ 599479) hdiv
-      · exact (by decide : ¬ 535 ∣ 599479) hdiv
-      · exact (by decide : ¬ 536 ∣ 599479) hdiv
-      · exact (by decide : ¬ 537 ∣ 599479) hdiv
-      · exact (by decide : ¬ 538 ∣ 599479) hdiv
-      · exact (by decide : ¬ 539 ∣ 599479) hdiv
-      · exact (by decide : ¬ 540 ∣ 599479) hdiv
-      · exact (by decide : ¬ 541 ∣ 599479) hdiv
-      · exact (by decide : ¬ 542 ∣ 599479) hdiv
-      · exact (by decide : ¬ 543 ∣ 599479) hdiv
-      · exact (by decide : ¬ 544 ∣ 599479) hdiv
-      · exact (by decide : ¬ 545 ∣ 599479) hdiv
-      · exact (by decide : ¬ 546 ∣ 599479) hdiv
-      · exact (by decide : ¬ 547 ∣ 599479) hdiv
-      · exact (by decide : ¬ 548 ∣ 599479) hdiv
-      · exact (by decide : ¬ 549 ∣ 599479) hdiv
-      · exact (by decide : ¬ 550 ∣ 599479) hdiv
-      · exact (by decide : ¬ 551 ∣ 599479) hdiv
-      · exact (by decide : ¬ 552 ∣ 599479) hdiv
-      · exact (by decide : ¬ 553 ∣ 599479) hdiv
-      · exact (by decide : ¬ 554 ∣ 599479) hdiv
-      · exact (by decide : ¬ 555 ∣ 599479) hdiv
-      · exact (by decide : ¬ 556 ∣ 599479) hdiv
-      · exact (by decide : ¬ 557 ∣ 599479) hdiv
-      · exact (by decide : ¬ 558 ∣ 599479) hdiv
-      · exact (by decide : ¬ 559 ∣ 599479) hdiv
-      · exact (by decide : ¬ 560 ∣ 599479) hdiv
-      · exact (by decide : ¬ 561 ∣ 599479) hdiv
-      · exact (by decide : ¬ 562 ∣ 599479) hdiv
-      · exact (by decide : ¬ 563 ∣ 599479) hdiv
-      · exact (by decide : ¬ 564 ∣ 599479) hdiv
-      · exact (by decide : ¬ 565 ∣ 599479) hdiv
-      · exact (by decide : ¬ 566 ∣ 599479) hdiv
-      · exact (by decide : ¬ 567 ∣ 599479) hdiv
-      · exact (by decide : ¬ 568 ∣ 599479) hdiv
-      · exact (by decide : ¬ 569 ∣ 599479) hdiv
-      · exact (by decide : ¬ 570 ∣ 599479) hdiv
-      · exact (by decide : ¬ 571 ∣ 599479) hdiv
-      · exact (by decide : ¬ 572 ∣ 599479) hdiv
-      · exact (by decide : ¬ 573 ∣ 599479) hdiv
-      · exact (by decide : ¬ 574 ∣ 599479) hdiv
-      · exact (by decide : ¬ 575 ∣ 599479) hdiv
-      · exact (by decide : ¬ 576 ∣ 599479) hdiv
-      · exact (by decide : ¬ 577 ∣ 599479) hdiv
-      · exact (by decide : ¬ 578 ∣ 599479) hdiv
-      · exact (by decide : ¬ 579 ∣ 599479) hdiv
-      · exact (by decide : ¬ 580 ∣ 599479) hdiv
-      · exact (by decide : ¬ 581 ∣ 599479) hdiv
-      · exact (by decide : ¬ 582 ∣ 599479) hdiv
-      · exact (by decide : ¬ 583 ∣ 599479) hdiv
-      · exact (by decide : ¬ 584 ∣ 599479) hdiv
-      · exact (by decide : ¬ 585 ∣ 599479) hdiv
-      · exact (by decide : ¬ 586 ∣ 599479) hdiv
-      · exact (by decide : ¬ 587 ∣ 599479) hdiv
-      · exact (by decide : ¬ 588 ∣ 599479) hdiv
-      · exact (by decide : ¬ 589 ∣ 599479) hdiv
-      · exact (by decide : ¬ 590 ∣ 599479) hdiv
-      · exact (by decide : ¬ 591 ∣ 599479) hdiv
-      · exact (by decide : ¬ 592 ∣ 599479) hdiv
-      · exact (by decide : ¬ 593 ∣ 599479) hdiv
-      · exact (by decide : ¬ 594 ∣ 599479) hdiv
-      · exact (by decide : ¬ 595 ∣ 599479) hdiv
-      · exact (by decide : ¬ 596 ∣ 599479) hdiv
-      · exact (by decide : ¬ 597 ∣ 599479) hdiv
-      · exact (by decide : ¬ 598 ∣ 599479) hdiv
-      · exact (by decide : ¬ 599 ∣ 599479) hdiv
-      · exact (by decide : ¬ 600 ∣ 599479) hdiv
-      · exact (by decide : ¬ 601 ∣ 599479) hdiv
-      · exact (by decide : ¬ 602 ∣ 599479) hdiv
-      · exact (by decide : ¬ 603 ∣ 599479) hdiv
-      · exact (by decide : ¬ 604 ∣ 599479) hdiv
-      · exact (by decide : ¬ 605 ∣ 599479) hdiv
-      · exact (by decide : ¬ 606 ∣ 599479) hdiv
-      · exact (by decide : ¬ 607 ∣ 599479) hdiv
-      · exact (by decide : ¬ 608 ∣ 599479) hdiv
-      · exact (by decide : ¬ 609 ∣ 599479) hdiv
-      · exact (by decide : ¬ 610 ∣ 599479) hdiv
-      · exact (by decide : ¬ 611 ∣ 599479) hdiv
-      · exact (by decide : ¬ 612 ∣ 599479) hdiv
-      · exact (by decide : ¬ 613 ∣ 599479) hdiv
-      · exact (by decide : ¬ 614 ∣ 599479) hdiv
-      · exact (by decide : ¬ 615 ∣ 599479) hdiv
-      · exact (by decide : ¬ 616 ∣ 599479) hdiv
-      · exact (by decide : ¬ 617 ∣ 599479) hdiv
-      · exact (by decide : ¬ 618 ∣ 599479) hdiv
-      · exact (by decide : ¬ 619 ∣ 599479) hdiv
-      · exact (by decide : ¬ 620 ∣ 599479) hdiv
-      · exact (by decide : ¬ 621 ∣ 599479) hdiv
-      · exact (by decide : ¬ 622 ∣ 599479) hdiv
-      · exact (by decide : ¬ 623 ∣ 599479) hdiv
-      · exact (by decide : ¬ 624 ∣ 599479) hdiv
-      · exact (by decide : ¬ 625 ∣ 599479) hdiv
-      · exact (by decide : ¬ 626 ∣ 599479) hdiv
-      · exact (by decide : ¬ 627 ∣ 599479) hdiv
-      · exact (by decide : ¬ 628 ∣ 599479) hdiv
-      · exact (by decide : ¬ 629 ∣ 599479) hdiv
-      · exact (by decide : ¬ 630 ∣ 599479) hdiv
-      · exact (by decide : ¬ 631 ∣ 599479) hdiv
-      · exact (by decide : ¬ 632 ∣ 599479) hdiv
-      · exact (by decide : ¬ 633 ∣ 599479) hdiv
-      · exact (by decide : ¬ 634 ∣ 599479) hdiv
-      · exact (by decide : ¬ 635 ∣ 599479) hdiv
-      · exact (by decide : ¬ 636 ∣ 599479) hdiv
-      · exact (by decide : ¬ 637 ∣ 599479) hdiv
-      · exact (by decide : ¬ 638 ∣ 599479) hdiv
-      · exact (by decide : ¬ 639 ∣ 599479) hdiv
-      · exact (by decide : ¬ 640 ∣ 599479) hdiv
-      · exact (by decide : ¬ 641 ∣ 599479) hdiv
-      · exact (by decide : ¬ 642 ∣ 599479) hdiv
-      · exact (by decide : ¬ 643 ∣ 599479) hdiv
-      · exact (by decide : ¬ 644 ∣ 599479) hdiv
-      · exact (by decide : ¬ 645 ∣ 599479) hdiv
-      · exact (by decide : ¬ 646 ∣ 599479) hdiv
-      · exact (by decide : ¬ 647 ∣ 599479) hdiv
-      · exact (by decide : ¬ 648 ∣ 599479) hdiv
-      · exact (by decide : ¬ 649 ∣ 599479) hdiv
-      · exact (by decide : ¬ 650 ∣ 599479) hdiv
-      · exact (by decide : ¬ 651 ∣ 599479) hdiv
-      · exact (by decide : ¬ 652 ∣ 599479) hdiv
-      · exact (by decide : ¬ 653 ∣ 599479) hdiv
-      · exact (by decide : ¬ 654 ∣ 599479) hdiv
-      · exact (by decide : ¬ 655 ∣ 599479) hdiv
-      · exact (by decide : ¬ 656 ∣ 599479) hdiv
-      · exact (by decide : ¬ 657 ∣ 599479) hdiv
-      · exact (by decide : ¬ 658 ∣ 599479) hdiv
-      · exact (by decide : ¬ 659 ∣ 599479) hdiv
-      · exact (by decide : ¬ 660 ∣ 599479) hdiv
-      · exact (by decide : ¬ 661 ∣ 599479) hdiv
-      · exact (by decide : ¬ 662 ∣ 599479) hdiv
-      · exact (by decide : ¬ 663 ∣ 599479) hdiv
-      · exact (by decide : ¬ 664 ∣ 599479) hdiv
-      · exact (by decide : ¬ 665 ∣ 599479) hdiv
-      · exact (by decide : ¬ 666 ∣ 599479) hdiv
-      · exact (by decide : ¬ 667 ∣ 599479) hdiv
-      · exact (by decide : ¬ 668 ∣ 599479) hdiv
-      · exact (by decide : ¬ 669 ∣ 599479) hdiv
-      · exact (by decide : ¬ 670 ∣ 599479) hdiv
-      · exact (by decide : ¬ 671 ∣ 599479) hdiv
-      · exact (by decide : ¬ 672 ∣ 599479) hdiv
-      · exact (by decide : ¬ 673 ∣ 599479) hdiv
-      · exact (by decide : ¬ 674 ∣ 599479) hdiv
-      · exact (by decide : ¬ 675 ∣ 599479) hdiv
-      · exact (by decide : ¬ 676 ∣ 599479) hdiv
-      · exact (by decide : ¬ 677 ∣ 599479) hdiv
-      · exact (by decide : ¬ 678 ∣ 599479) hdiv
-      · exact (by decide : ¬ 679 ∣ 599479) hdiv
-      · exact (by decide : ¬ 680 ∣ 599479) hdiv
-      · exact (by decide : ¬ 681 ∣ 599479) hdiv
-      · exact (by decide : ¬ 682 ∣ 599479) hdiv
-      · exact (by decide : ¬ 683 ∣ 599479) hdiv
-      · exact (by decide : ¬ 684 ∣ 599479) hdiv
-      · exact (by decide : ¬ 685 ∣ 599479) hdiv
-      · exact (by decide : ¬ 686 ∣ 599479) hdiv
-      · exact (by decide : ¬ 687 ∣ 599479) hdiv
-      · exact (by decide : ¬ 688 ∣ 599479) hdiv
-      · exact (by decide : ¬ 689 ∣ 599479) hdiv
-      · exact (by decide : ¬ 690 ∣ 599479) hdiv
-      · exact (by decide : ¬ 691 ∣ 599479) hdiv
-      · exact (by decide : ¬ 692 ∣ 599479) hdiv
-      · exact (by decide : ¬ 693 ∣ 599479) hdiv
-      · exact (by decide : ¬ 694 ∣ 599479) hdiv
-      · exact (by decide : ¬ 695 ∣ 599479) hdiv
-      · exact (by decide : ¬ 696 ∣ 599479) hdiv
-      · exact (by decide : ¬ 697 ∣ 599479) hdiv
-      · exact (by decide : ¬ 698 ∣ 599479) hdiv
-      · exact (by decide : ¬ 699 ∣ 599479) hdiv
-      · exact (by decide : ¬ 700 ∣ 599479) hdiv
-      · exact (by decide : ¬ 701 ∣ 599479) hdiv
-      · exact (by decide : ¬ 702 ∣ 599479) hdiv
-      · exact (by decide : ¬ 703 ∣ 599479) hdiv
-      · exact (by decide : ¬ 704 ∣ 599479) hdiv
-      · exact (by decide : ¬ 705 ∣ 599479) hdiv
-      · exact (by decide : ¬ 706 ∣ 599479) hdiv
-      · exact (by decide : ¬ 707 ∣ 599479) hdiv
-      · exact (by decide : ¬ 708 ∣ 599479) hdiv
-      · exact (by decide : ¬ 709 ∣ 599479) hdiv
-      · exact (by decide : ¬ 710 ∣ 599479) hdiv
-      · exact (by decide : ¬ 711 ∣ 599479) hdiv
-      · exact (by decide : ¬ 712 ∣ 599479) hdiv
-      · exact (by decide : ¬ 713 ∣ 599479) hdiv
-      · exact (by decide : ¬ 714 ∣ 599479) hdiv
-      · exact (by decide : ¬ 715 ∣ 599479) hdiv
-      · exact (by decide : ¬ 716 ∣ 599479) hdiv
-      · exact (by decide : ¬ 717 ∣ 599479) hdiv
-      · exact (by decide : ¬ 718 ∣ 599479) hdiv
-      · exact (by decide : ¬ 719 ∣ 599479) hdiv
-      · exact (by decide : ¬ 720 ∣ 599479) hdiv
-      · exact (by decide : ¬ 721 ∣ 599479) hdiv
-      · exact (by decide : ¬ 722 ∣ 599479) hdiv
-      · exact (by decide : ¬ 723 ∣ 599479) hdiv
-      · exact (by decide : ¬ 724 ∣ 599479) hdiv
-      · exact (by decide : ¬ 725 ∣ 599479) hdiv
-      · exact (by decide : ¬ 726 ∣ 599479) hdiv
-      · exact (by decide : ¬ 727 ∣ 599479) hdiv
-      · exact (by decide : ¬ 728 ∣ 599479) hdiv
-      · exact (by decide : ¬ 729 ∣ 599479) hdiv
-      · exact (by decide : ¬ 730 ∣ 599479) hdiv
-      · exact (by decide : ¬ 731 ∣ 599479) hdiv
-      · exact (by decide : ¬ 732 ∣ 599479) hdiv
-      · exact (by decide : ¬ 733 ∣ 599479) hdiv
-      · exact (by decide : ¬ 734 ∣ 599479) hdiv
-      · exact (by decide : ¬ 735 ∣ 599479) hdiv
-      · exact (by decide : ¬ 736 ∣ 599479) hdiv
-      · exact (by decide : ¬ 737 ∣ 599479) hdiv
-      · exact (by decide : ¬ 738 ∣ 599479) hdiv
-      · exact (by decide : ¬ 739 ∣ 599479) hdiv
-      · exact (by decide : ¬ 740 ∣ 599479) hdiv
-      · exact (by decide : ¬ 741 ∣ 599479) hdiv
-      · exact (by decide : ¬ 742 ∣ 599479) hdiv
-      · exact (by decide : ¬ 743 ∣ 599479) hdiv
-      · exact (by decide : ¬ 744 ∣ 599479) hdiv
-      · exact (by decide : ¬ 745 ∣ 599479) hdiv
-      · exact (by decide : ¬ 746 ∣ 599479) hdiv
-      · exact (by decide : ¬ 747 ∣ 599479) hdiv
-      · exact (by decide : ¬ 748 ∣ 599479) hdiv
-      · exact (by decide : ¬ 749 ∣ 599479) hdiv
-      · exact (by decide : ¬ 750 ∣ 599479) hdiv
-      · exact (by decide : ¬ 751 ∣ 599479) hdiv
-      · exact (by decide : ¬ 752 ∣ 599479) hdiv
-      · exact (by decide : ¬ 753 ∣ 599479) hdiv
-      · exact (by decide : ¬ 754 ∣ 599479) hdiv
-      · exact (by decide : ¬ 755 ∣ 599479) hdiv
-      · exact (by decide : ¬ 756 ∣ 599479) hdiv
-      · exact (by decide : ¬ 757 ∣ 599479) hdiv
-      · exact (by decide : ¬ 758 ∣ 599479) hdiv
-      · exact (by decide : ¬ 759 ∣ 599479) hdiv
-      · exact (by decide : ¬ 760 ∣ 599479) hdiv
-      · exact (by decide : ¬ 761 ∣ 599479) hdiv
-      · exact (by decide : ¬ 762 ∣ 599479) hdiv
-      · exact (by decide : ¬ 763 ∣ 599479) hdiv
-      · exact (by decide : ¬ 764 ∣ 599479) hdiv
-      · exact (by decide : ¬ 765 ∣ 599479) hdiv
-      · exact (by decide : ¬ 766 ∣ 599479) hdiv
-      · exact (by decide : ¬ 767 ∣ 599479) hdiv
-      · exact (by decide : ¬ 768 ∣ 599479) hdiv
-      · exact (by decide : ¬ 769 ∣ 599479) hdiv
-      · exact (by decide : ¬ 770 ∣ 599479) hdiv
-      · exact (by decide : ¬ 771 ∣ 599479) hdiv
-      · exact (by decide : ¬ 772 ∣ 599479) hdiv
-      · exact (by decide : ¬ 773 ∣ 599479) hdiv
-      · exact (by decide : ¬ 774 ∣ 599479) hdiv
-  have hA_factor : (2047 : Nat).factorization 599479 = 0 :=
-    Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 599479 ∣ 2047)
-  exact primeComponentWitness_of_prime_power_cofactor
-    33 2047 2 11 599479 1227133513 1 2047 0
-    hq_prime
-    (by decide)
-    (by decide)
-    (by decide)
-    hA_factor
-    (by decide)
+  have hquot : primeComponentQuotient 2 33 11 = 1227133513 := by decide
+  have hq : Nat.Prime 599479 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 599479 ∣ 2047)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F33_A2047_p11_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 33 2047 2 11 := by
@@ -4545,7 +1182,8 @@ theorem orderOf_b2_mod4196353_eq_33_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 2 hcop : (ZMod 4196353)ˣ) :
           ZMod 4196353) ^ 33) =
         (1 : ZMod 4196353)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -4605,799 +1243,13 @@ theorem concrete_generated_b2_F33_A7_factorization_support_cases
 
 theorem concrete_generated_b2_F33_A7_p3_prime_witness :
     PrimeComponentWitness 33 7 2 3 599479 := by
-  have hq_prime : Nat.Prime 599479 := by
-    rw [Nat.prime_def_le_sqrt]
-    constructor
-    · decide
-    · intro m hm_ge hm_le hdiv
-      have hm_le774 : m ≤ 774 := by
-        have hsqrt_lt : Nat.sqrt 599479 < 775 :=
-          (Nat.sqrt_lt'.2 (by decide : 599479 < 775 ^ 2))
-        exact Nat.le_of_lt_succ (lt_of_le_of_lt hm_le hsqrt_lt)
-      interval_cases m
-      · exact (by decide : ¬ 2 ∣ 599479) hdiv
-      · exact (by decide : ¬ 3 ∣ 599479) hdiv
-      · exact (by decide : ¬ 4 ∣ 599479) hdiv
-      · exact (by decide : ¬ 5 ∣ 599479) hdiv
-      · exact (by decide : ¬ 6 ∣ 599479) hdiv
-      · exact (by decide : ¬ 7 ∣ 599479) hdiv
-      · exact (by decide : ¬ 8 ∣ 599479) hdiv
-      · exact (by decide : ¬ 9 ∣ 599479) hdiv
-      · exact (by decide : ¬ 10 ∣ 599479) hdiv
-      · exact (by decide : ¬ 11 ∣ 599479) hdiv
-      · exact (by decide : ¬ 12 ∣ 599479) hdiv
-      · exact (by decide : ¬ 13 ∣ 599479) hdiv
-      · exact (by decide : ¬ 14 ∣ 599479) hdiv
-      · exact (by decide : ¬ 15 ∣ 599479) hdiv
-      · exact (by decide : ¬ 16 ∣ 599479) hdiv
-      · exact (by decide : ¬ 17 ∣ 599479) hdiv
-      · exact (by decide : ¬ 18 ∣ 599479) hdiv
-      · exact (by decide : ¬ 19 ∣ 599479) hdiv
-      · exact (by decide : ¬ 20 ∣ 599479) hdiv
-      · exact (by decide : ¬ 21 ∣ 599479) hdiv
-      · exact (by decide : ¬ 22 ∣ 599479) hdiv
-      · exact (by decide : ¬ 23 ∣ 599479) hdiv
-      · exact (by decide : ¬ 24 ∣ 599479) hdiv
-      · exact (by decide : ¬ 25 ∣ 599479) hdiv
-      · exact (by decide : ¬ 26 ∣ 599479) hdiv
-      · exact (by decide : ¬ 27 ∣ 599479) hdiv
-      · exact (by decide : ¬ 28 ∣ 599479) hdiv
-      · exact (by decide : ¬ 29 ∣ 599479) hdiv
-      · exact (by decide : ¬ 30 ∣ 599479) hdiv
-      · exact (by decide : ¬ 31 ∣ 599479) hdiv
-      · exact (by decide : ¬ 32 ∣ 599479) hdiv
-      · exact (by decide : ¬ 33 ∣ 599479) hdiv
-      · exact (by decide : ¬ 34 ∣ 599479) hdiv
-      · exact (by decide : ¬ 35 ∣ 599479) hdiv
-      · exact (by decide : ¬ 36 ∣ 599479) hdiv
-      · exact (by decide : ¬ 37 ∣ 599479) hdiv
-      · exact (by decide : ¬ 38 ∣ 599479) hdiv
-      · exact (by decide : ¬ 39 ∣ 599479) hdiv
-      · exact (by decide : ¬ 40 ∣ 599479) hdiv
-      · exact (by decide : ¬ 41 ∣ 599479) hdiv
-      · exact (by decide : ¬ 42 ∣ 599479) hdiv
-      · exact (by decide : ¬ 43 ∣ 599479) hdiv
-      · exact (by decide : ¬ 44 ∣ 599479) hdiv
-      · exact (by decide : ¬ 45 ∣ 599479) hdiv
-      · exact (by decide : ¬ 46 ∣ 599479) hdiv
-      · exact (by decide : ¬ 47 ∣ 599479) hdiv
-      · exact (by decide : ¬ 48 ∣ 599479) hdiv
-      · exact (by decide : ¬ 49 ∣ 599479) hdiv
-      · exact (by decide : ¬ 50 ∣ 599479) hdiv
-      · exact (by decide : ¬ 51 ∣ 599479) hdiv
-      · exact (by decide : ¬ 52 ∣ 599479) hdiv
-      · exact (by decide : ¬ 53 ∣ 599479) hdiv
-      · exact (by decide : ¬ 54 ∣ 599479) hdiv
-      · exact (by decide : ¬ 55 ∣ 599479) hdiv
-      · exact (by decide : ¬ 56 ∣ 599479) hdiv
-      · exact (by decide : ¬ 57 ∣ 599479) hdiv
-      · exact (by decide : ¬ 58 ∣ 599479) hdiv
-      · exact (by decide : ¬ 59 ∣ 599479) hdiv
-      · exact (by decide : ¬ 60 ∣ 599479) hdiv
-      · exact (by decide : ¬ 61 ∣ 599479) hdiv
-      · exact (by decide : ¬ 62 ∣ 599479) hdiv
-      · exact (by decide : ¬ 63 ∣ 599479) hdiv
-      · exact (by decide : ¬ 64 ∣ 599479) hdiv
-      · exact (by decide : ¬ 65 ∣ 599479) hdiv
-      · exact (by decide : ¬ 66 ∣ 599479) hdiv
-      · exact (by decide : ¬ 67 ∣ 599479) hdiv
-      · exact (by decide : ¬ 68 ∣ 599479) hdiv
-      · exact (by decide : ¬ 69 ∣ 599479) hdiv
-      · exact (by decide : ¬ 70 ∣ 599479) hdiv
-      · exact (by decide : ¬ 71 ∣ 599479) hdiv
-      · exact (by decide : ¬ 72 ∣ 599479) hdiv
-      · exact (by decide : ¬ 73 ∣ 599479) hdiv
-      · exact (by decide : ¬ 74 ∣ 599479) hdiv
-      · exact (by decide : ¬ 75 ∣ 599479) hdiv
-      · exact (by decide : ¬ 76 ∣ 599479) hdiv
-      · exact (by decide : ¬ 77 ∣ 599479) hdiv
-      · exact (by decide : ¬ 78 ∣ 599479) hdiv
-      · exact (by decide : ¬ 79 ∣ 599479) hdiv
-      · exact (by decide : ¬ 80 ∣ 599479) hdiv
-      · exact (by decide : ¬ 81 ∣ 599479) hdiv
-      · exact (by decide : ¬ 82 ∣ 599479) hdiv
-      · exact (by decide : ¬ 83 ∣ 599479) hdiv
-      · exact (by decide : ¬ 84 ∣ 599479) hdiv
-      · exact (by decide : ¬ 85 ∣ 599479) hdiv
-      · exact (by decide : ¬ 86 ∣ 599479) hdiv
-      · exact (by decide : ¬ 87 ∣ 599479) hdiv
-      · exact (by decide : ¬ 88 ∣ 599479) hdiv
-      · exact (by decide : ¬ 89 ∣ 599479) hdiv
-      · exact (by decide : ¬ 90 ∣ 599479) hdiv
-      · exact (by decide : ¬ 91 ∣ 599479) hdiv
-      · exact (by decide : ¬ 92 ∣ 599479) hdiv
-      · exact (by decide : ¬ 93 ∣ 599479) hdiv
-      · exact (by decide : ¬ 94 ∣ 599479) hdiv
-      · exact (by decide : ¬ 95 ∣ 599479) hdiv
-      · exact (by decide : ¬ 96 ∣ 599479) hdiv
-      · exact (by decide : ¬ 97 ∣ 599479) hdiv
-      · exact (by decide : ¬ 98 ∣ 599479) hdiv
-      · exact (by decide : ¬ 99 ∣ 599479) hdiv
-      · exact (by decide : ¬ 100 ∣ 599479) hdiv
-      · exact (by decide : ¬ 101 ∣ 599479) hdiv
-      · exact (by decide : ¬ 102 ∣ 599479) hdiv
-      · exact (by decide : ¬ 103 ∣ 599479) hdiv
-      · exact (by decide : ¬ 104 ∣ 599479) hdiv
-      · exact (by decide : ¬ 105 ∣ 599479) hdiv
-      · exact (by decide : ¬ 106 ∣ 599479) hdiv
-      · exact (by decide : ¬ 107 ∣ 599479) hdiv
-      · exact (by decide : ¬ 108 ∣ 599479) hdiv
-      · exact (by decide : ¬ 109 ∣ 599479) hdiv
-      · exact (by decide : ¬ 110 ∣ 599479) hdiv
-      · exact (by decide : ¬ 111 ∣ 599479) hdiv
-      · exact (by decide : ¬ 112 ∣ 599479) hdiv
-      · exact (by decide : ¬ 113 ∣ 599479) hdiv
-      · exact (by decide : ¬ 114 ∣ 599479) hdiv
-      · exact (by decide : ¬ 115 ∣ 599479) hdiv
-      · exact (by decide : ¬ 116 ∣ 599479) hdiv
-      · exact (by decide : ¬ 117 ∣ 599479) hdiv
-      · exact (by decide : ¬ 118 ∣ 599479) hdiv
-      · exact (by decide : ¬ 119 ∣ 599479) hdiv
-      · exact (by decide : ¬ 120 ∣ 599479) hdiv
-      · exact (by decide : ¬ 121 ∣ 599479) hdiv
-      · exact (by decide : ¬ 122 ∣ 599479) hdiv
-      · exact (by decide : ¬ 123 ∣ 599479) hdiv
-      · exact (by decide : ¬ 124 ∣ 599479) hdiv
-      · exact (by decide : ¬ 125 ∣ 599479) hdiv
-      · exact (by decide : ¬ 126 ∣ 599479) hdiv
-      · exact (by decide : ¬ 127 ∣ 599479) hdiv
-      · exact (by decide : ¬ 128 ∣ 599479) hdiv
-      · exact (by decide : ¬ 129 ∣ 599479) hdiv
-      · exact (by decide : ¬ 130 ∣ 599479) hdiv
-      · exact (by decide : ¬ 131 ∣ 599479) hdiv
-      · exact (by decide : ¬ 132 ∣ 599479) hdiv
-      · exact (by decide : ¬ 133 ∣ 599479) hdiv
-      · exact (by decide : ¬ 134 ∣ 599479) hdiv
-      · exact (by decide : ¬ 135 ∣ 599479) hdiv
-      · exact (by decide : ¬ 136 ∣ 599479) hdiv
-      · exact (by decide : ¬ 137 ∣ 599479) hdiv
-      · exact (by decide : ¬ 138 ∣ 599479) hdiv
-      · exact (by decide : ¬ 139 ∣ 599479) hdiv
-      · exact (by decide : ¬ 140 ∣ 599479) hdiv
-      · exact (by decide : ¬ 141 ∣ 599479) hdiv
-      · exact (by decide : ¬ 142 ∣ 599479) hdiv
-      · exact (by decide : ¬ 143 ∣ 599479) hdiv
-      · exact (by decide : ¬ 144 ∣ 599479) hdiv
-      · exact (by decide : ¬ 145 ∣ 599479) hdiv
-      · exact (by decide : ¬ 146 ∣ 599479) hdiv
-      · exact (by decide : ¬ 147 ∣ 599479) hdiv
-      · exact (by decide : ¬ 148 ∣ 599479) hdiv
-      · exact (by decide : ¬ 149 ∣ 599479) hdiv
-      · exact (by decide : ¬ 150 ∣ 599479) hdiv
-      · exact (by decide : ¬ 151 ∣ 599479) hdiv
-      · exact (by decide : ¬ 152 ∣ 599479) hdiv
-      · exact (by decide : ¬ 153 ∣ 599479) hdiv
-      · exact (by decide : ¬ 154 ∣ 599479) hdiv
-      · exact (by decide : ¬ 155 ∣ 599479) hdiv
-      · exact (by decide : ¬ 156 ∣ 599479) hdiv
-      · exact (by decide : ¬ 157 ∣ 599479) hdiv
-      · exact (by decide : ¬ 158 ∣ 599479) hdiv
-      · exact (by decide : ¬ 159 ∣ 599479) hdiv
-      · exact (by decide : ¬ 160 ∣ 599479) hdiv
-      · exact (by decide : ¬ 161 ∣ 599479) hdiv
-      · exact (by decide : ¬ 162 ∣ 599479) hdiv
-      · exact (by decide : ¬ 163 ∣ 599479) hdiv
-      · exact (by decide : ¬ 164 ∣ 599479) hdiv
-      · exact (by decide : ¬ 165 ∣ 599479) hdiv
-      · exact (by decide : ¬ 166 ∣ 599479) hdiv
-      · exact (by decide : ¬ 167 ∣ 599479) hdiv
-      · exact (by decide : ¬ 168 ∣ 599479) hdiv
-      · exact (by decide : ¬ 169 ∣ 599479) hdiv
-      · exact (by decide : ¬ 170 ∣ 599479) hdiv
-      · exact (by decide : ¬ 171 ∣ 599479) hdiv
-      · exact (by decide : ¬ 172 ∣ 599479) hdiv
-      · exact (by decide : ¬ 173 ∣ 599479) hdiv
-      · exact (by decide : ¬ 174 ∣ 599479) hdiv
-      · exact (by decide : ¬ 175 ∣ 599479) hdiv
-      · exact (by decide : ¬ 176 ∣ 599479) hdiv
-      · exact (by decide : ¬ 177 ∣ 599479) hdiv
-      · exact (by decide : ¬ 178 ∣ 599479) hdiv
-      · exact (by decide : ¬ 179 ∣ 599479) hdiv
-      · exact (by decide : ¬ 180 ∣ 599479) hdiv
-      · exact (by decide : ¬ 181 ∣ 599479) hdiv
-      · exact (by decide : ¬ 182 ∣ 599479) hdiv
-      · exact (by decide : ¬ 183 ∣ 599479) hdiv
-      · exact (by decide : ¬ 184 ∣ 599479) hdiv
-      · exact (by decide : ¬ 185 ∣ 599479) hdiv
-      · exact (by decide : ¬ 186 ∣ 599479) hdiv
-      · exact (by decide : ¬ 187 ∣ 599479) hdiv
-      · exact (by decide : ¬ 188 ∣ 599479) hdiv
-      · exact (by decide : ¬ 189 ∣ 599479) hdiv
-      · exact (by decide : ¬ 190 ∣ 599479) hdiv
-      · exact (by decide : ¬ 191 ∣ 599479) hdiv
-      · exact (by decide : ¬ 192 ∣ 599479) hdiv
-      · exact (by decide : ¬ 193 ∣ 599479) hdiv
-      · exact (by decide : ¬ 194 ∣ 599479) hdiv
-      · exact (by decide : ¬ 195 ∣ 599479) hdiv
-      · exact (by decide : ¬ 196 ∣ 599479) hdiv
-      · exact (by decide : ¬ 197 ∣ 599479) hdiv
-      · exact (by decide : ¬ 198 ∣ 599479) hdiv
-      · exact (by decide : ¬ 199 ∣ 599479) hdiv
-      · exact (by decide : ¬ 200 ∣ 599479) hdiv
-      · exact (by decide : ¬ 201 ∣ 599479) hdiv
-      · exact (by decide : ¬ 202 ∣ 599479) hdiv
-      · exact (by decide : ¬ 203 ∣ 599479) hdiv
-      · exact (by decide : ¬ 204 ∣ 599479) hdiv
-      · exact (by decide : ¬ 205 ∣ 599479) hdiv
-      · exact (by decide : ¬ 206 ∣ 599479) hdiv
-      · exact (by decide : ¬ 207 ∣ 599479) hdiv
-      · exact (by decide : ¬ 208 ∣ 599479) hdiv
-      · exact (by decide : ¬ 209 ∣ 599479) hdiv
-      · exact (by decide : ¬ 210 ∣ 599479) hdiv
-      · exact (by decide : ¬ 211 ∣ 599479) hdiv
-      · exact (by decide : ¬ 212 ∣ 599479) hdiv
-      · exact (by decide : ¬ 213 ∣ 599479) hdiv
-      · exact (by decide : ¬ 214 ∣ 599479) hdiv
-      · exact (by decide : ¬ 215 ∣ 599479) hdiv
-      · exact (by decide : ¬ 216 ∣ 599479) hdiv
-      · exact (by decide : ¬ 217 ∣ 599479) hdiv
-      · exact (by decide : ¬ 218 ∣ 599479) hdiv
-      · exact (by decide : ¬ 219 ∣ 599479) hdiv
-      · exact (by decide : ¬ 220 ∣ 599479) hdiv
-      · exact (by decide : ¬ 221 ∣ 599479) hdiv
-      · exact (by decide : ¬ 222 ∣ 599479) hdiv
-      · exact (by decide : ¬ 223 ∣ 599479) hdiv
-      · exact (by decide : ¬ 224 ∣ 599479) hdiv
-      · exact (by decide : ¬ 225 ∣ 599479) hdiv
-      · exact (by decide : ¬ 226 ∣ 599479) hdiv
-      · exact (by decide : ¬ 227 ∣ 599479) hdiv
-      · exact (by decide : ¬ 228 ∣ 599479) hdiv
-      · exact (by decide : ¬ 229 ∣ 599479) hdiv
-      · exact (by decide : ¬ 230 ∣ 599479) hdiv
-      · exact (by decide : ¬ 231 ∣ 599479) hdiv
-      · exact (by decide : ¬ 232 ∣ 599479) hdiv
-      · exact (by decide : ¬ 233 ∣ 599479) hdiv
-      · exact (by decide : ¬ 234 ∣ 599479) hdiv
-      · exact (by decide : ¬ 235 ∣ 599479) hdiv
-      · exact (by decide : ¬ 236 ∣ 599479) hdiv
-      · exact (by decide : ¬ 237 ∣ 599479) hdiv
-      · exact (by decide : ¬ 238 ∣ 599479) hdiv
-      · exact (by decide : ¬ 239 ∣ 599479) hdiv
-      · exact (by decide : ¬ 240 ∣ 599479) hdiv
-      · exact (by decide : ¬ 241 ∣ 599479) hdiv
-      · exact (by decide : ¬ 242 ∣ 599479) hdiv
-      · exact (by decide : ¬ 243 ∣ 599479) hdiv
-      · exact (by decide : ¬ 244 ∣ 599479) hdiv
-      · exact (by decide : ¬ 245 ∣ 599479) hdiv
-      · exact (by decide : ¬ 246 ∣ 599479) hdiv
-      · exact (by decide : ¬ 247 ∣ 599479) hdiv
-      · exact (by decide : ¬ 248 ∣ 599479) hdiv
-      · exact (by decide : ¬ 249 ∣ 599479) hdiv
-      · exact (by decide : ¬ 250 ∣ 599479) hdiv
-      · exact (by decide : ¬ 251 ∣ 599479) hdiv
-      · exact (by decide : ¬ 252 ∣ 599479) hdiv
-      · exact (by decide : ¬ 253 ∣ 599479) hdiv
-      · exact (by decide : ¬ 254 ∣ 599479) hdiv
-      · exact (by decide : ¬ 255 ∣ 599479) hdiv
-      · exact (by decide : ¬ 256 ∣ 599479) hdiv
-      · exact (by decide : ¬ 257 ∣ 599479) hdiv
-      · exact (by decide : ¬ 258 ∣ 599479) hdiv
-      · exact (by decide : ¬ 259 ∣ 599479) hdiv
-      · exact (by decide : ¬ 260 ∣ 599479) hdiv
-      · exact (by decide : ¬ 261 ∣ 599479) hdiv
-      · exact (by decide : ¬ 262 ∣ 599479) hdiv
-      · exact (by decide : ¬ 263 ∣ 599479) hdiv
-      · exact (by decide : ¬ 264 ∣ 599479) hdiv
-      · exact (by decide : ¬ 265 ∣ 599479) hdiv
-      · exact (by decide : ¬ 266 ∣ 599479) hdiv
-      · exact (by decide : ¬ 267 ∣ 599479) hdiv
-      · exact (by decide : ¬ 268 ∣ 599479) hdiv
-      · exact (by decide : ¬ 269 ∣ 599479) hdiv
-      · exact (by decide : ¬ 270 ∣ 599479) hdiv
-      · exact (by decide : ¬ 271 ∣ 599479) hdiv
-      · exact (by decide : ¬ 272 ∣ 599479) hdiv
-      · exact (by decide : ¬ 273 ∣ 599479) hdiv
-      · exact (by decide : ¬ 274 ∣ 599479) hdiv
-      · exact (by decide : ¬ 275 ∣ 599479) hdiv
-      · exact (by decide : ¬ 276 ∣ 599479) hdiv
-      · exact (by decide : ¬ 277 ∣ 599479) hdiv
-      · exact (by decide : ¬ 278 ∣ 599479) hdiv
-      · exact (by decide : ¬ 279 ∣ 599479) hdiv
-      · exact (by decide : ¬ 280 ∣ 599479) hdiv
-      · exact (by decide : ¬ 281 ∣ 599479) hdiv
-      · exact (by decide : ¬ 282 ∣ 599479) hdiv
-      · exact (by decide : ¬ 283 ∣ 599479) hdiv
-      · exact (by decide : ¬ 284 ∣ 599479) hdiv
-      · exact (by decide : ¬ 285 ∣ 599479) hdiv
-      · exact (by decide : ¬ 286 ∣ 599479) hdiv
-      · exact (by decide : ¬ 287 ∣ 599479) hdiv
-      · exact (by decide : ¬ 288 ∣ 599479) hdiv
-      · exact (by decide : ¬ 289 ∣ 599479) hdiv
-      · exact (by decide : ¬ 290 ∣ 599479) hdiv
-      · exact (by decide : ¬ 291 ∣ 599479) hdiv
-      · exact (by decide : ¬ 292 ∣ 599479) hdiv
-      · exact (by decide : ¬ 293 ∣ 599479) hdiv
-      · exact (by decide : ¬ 294 ∣ 599479) hdiv
-      · exact (by decide : ¬ 295 ∣ 599479) hdiv
-      · exact (by decide : ¬ 296 ∣ 599479) hdiv
-      · exact (by decide : ¬ 297 ∣ 599479) hdiv
-      · exact (by decide : ¬ 298 ∣ 599479) hdiv
-      · exact (by decide : ¬ 299 ∣ 599479) hdiv
-      · exact (by decide : ¬ 300 ∣ 599479) hdiv
-      · exact (by decide : ¬ 301 ∣ 599479) hdiv
-      · exact (by decide : ¬ 302 ∣ 599479) hdiv
-      · exact (by decide : ¬ 303 ∣ 599479) hdiv
-      · exact (by decide : ¬ 304 ∣ 599479) hdiv
-      · exact (by decide : ¬ 305 ∣ 599479) hdiv
-      · exact (by decide : ¬ 306 ∣ 599479) hdiv
-      · exact (by decide : ¬ 307 ∣ 599479) hdiv
-      · exact (by decide : ¬ 308 ∣ 599479) hdiv
-      · exact (by decide : ¬ 309 ∣ 599479) hdiv
-      · exact (by decide : ¬ 310 ∣ 599479) hdiv
-      · exact (by decide : ¬ 311 ∣ 599479) hdiv
-      · exact (by decide : ¬ 312 ∣ 599479) hdiv
-      · exact (by decide : ¬ 313 ∣ 599479) hdiv
-      · exact (by decide : ¬ 314 ∣ 599479) hdiv
-      · exact (by decide : ¬ 315 ∣ 599479) hdiv
-      · exact (by decide : ¬ 316 ∣ 599479) hdiv
-      · exact (by decide : ¬ 317 ∣ 599479) hdiv
-      · exact (by decide : ¬ 318 ∣ 599479) hdiv
-      · exact (by decide : ¬ 319 ∣ 599479) hdiv
-      · exact (by decide : ¬ 320 ∣ 599479) hdiv
-      · exact (by decide : ¬ 321 ∣ 599479) hdiv
-      · exact (by decide : ¬ 322 ∣ 599479) hdiv
-      · exact (by decide : ¬ 323 ∣ 599479) hdiv
-      · exact (by decide : ¬ 324 ∣ 599479) hdiv
-      · exact (by decide : ¬ 325 ∣ 599479) hdiv
-      · exact (by decide : ¬ 326 ∣ 599479) hdiv
-      · exact (by decide : ¬ 327 ∣ 599479) hdiv
-      · exact (by decide : ¬ 328 ∣ 599479) hdiv
-      · exact (by decide : ¬ 329 ∣ 599479) hdiv
-      · exact (by decide : ¬ 330 ∣ 599479) hdiv
-      · exact (by decide : ¬ 331 ∣ 599479) hdiv
-      · exact (by decide : ¬ 332 ∣ 599479) hdiv
-      · exact (by decide : ¬ 333 ∣ 599479) hdiv
-      · exact (by decide : ¬ 334 ∣ 599479) hdiv
-      · exact (by decide : ¬ 335 ∣ 599479) hdiv
-      · exact (by decide : ¬ 336 ∣ 599479) hdiv
-      · exact (by decide : ¬ 337 ∣ 599479) hdiv
-      · exact (by decide : ¬ 338 ∣ 599479) hdiv
-      · exact (by decide : ¬ 339 ∣ 599479) hdiv
-      · exact (by decide : ¬ 340 ∣ 599479) hdiv
-      · exact (by decide : ¬ 341 ∣ 599479) hdiv
-      · exact (by decide : ¬ 342 ∣ 599479) hdiv
-      · exact (by decide : ¬ 343 ∣ 599479) hdiv
-      · exact (by decide : ¬ 344 ∣ 599479) hdiv
-      · exact (by decide : ¬ 345 ∣ 599479) hdiv
-      · exact (by decide : ¬ 346 ∣ 599479) hdiv
-      · exact (by decide : ¬ 347 ∣ 599479) hdiv
-      · exact (by decide : ¬ 348 ∣ 599479) hdiv
-      · exact (by decide : ¬ 349 ∣ 599479) hdiv
-      · exact (by decide : ¬ 350 ∣ 599479) hdiv
-      · exact (by decide : ¬ 351 ∣ 599479) hdiv
-      · exact (by decide : ¬ 352 ∣ 599479) hdiv
-      · exact (by decide : ¬ 353 ∣ 599479) hdiv
-      · exact (by decide : ¬ 354 ∣ 599479) hdiv
-      · exact (by decide : ¬ 355 ∣ 599479) hdiv
-      · exact (by decide : ¬ 356 ∣ 599479) hdiv
-      · exact (by decide : ¬ 357 ∣ 599479) hdiv
-      · exact (by decide : ¬ 358 ∣ 599479) hdiv
-      · exact (by decide : ¬ 359 ∣ 599479) hdiv
-      · exact (by decide : ¬ 360 ∣ 599479) hdiv
-      · exact (by decide : ¬ 361 ∣ 599479) hdiv
-      · exact (by decide : ¬ 362 ∣ 599479) hdiv
-      · exact (by decide : ¬ 363 ∣ 599479) hdiv
-      · exact (by decide : ¬ 364 ∣ 599479) hdiv
-      · exact (by decide : ¬ 365 ∣ 599479) hdiv
-      · exact (by decide : ¬ 366 ∣ 599479) hdiv
-      · exact (by decide : ¬ 367 ∣ 599479) hdiv
-      · exact (by decide : ¬ 368 ∣ 599479) hdiv
-      · exact (by decide : ¬ 369 ∣ 599479) hdiv
-      · exact (by decide : ¬ 370 ∣ 599479) hdiv
-      · exact (by decide : ¬ 371 ∣ 599479) hdiv
-      · exact (by decide : ¬ 372 ∣ 599479) hdiv
-      · exact (by decide : ¬ 373 ∣ 599479) hdiv
-      · exact (by decide : ¬ 374 ∣ 599479) hdiv
-      · exact (by decide : ¬ 375 ∣ 599479) hdiv
-      · exact (by decide : ¬ 376 ∣ 599479) hdiv
-      · exact (by decide : ¬ 377 ∣ 599479) hdiv
-      · exact (by decide : ¬ 378 ∣ 599479) hdiv
-      · exact (by decide : ¬ 379 ∣ 599479) hdiv
-      · exact (by decide : ¬ 380 ∣ 599479) hdiv
-      · exact (by decide : ¬ 381 ∣ 599479) hdiv
-      · exact (by decide : ¬ 382 ∣ 599479) hdiv
-      · exact (by decide : ¬ 383 ∣ 599479) hdiv
-      · exact (by decide : ¬ 384 ∣ 599479) hdiv
-      · exact (by decide : ¬ 385 ∣ 599479) hdiv
-      · exact (by decide : ¬ 386 ∣ 599479) hdiv
-      · exact (by decide : ¬ 387 ∣ 599479) hdiv
-      · exact (by decide : ¬ 388 ∣ 599479) hdiv
-      · exact (by decide : ¬ 389 ∣ 599479) hdiv
-      · exact (by decide : ¬ 390 ∣ 599479) hdiv
-      · exact (by decide : ¬ 391 ∣ 599479) hdiv
-      · exact (by decide : ¬ 392 ∣ 599479) hdiv
-      · exact (by decide : ¬ 393 ∣ 599479) hdiv
-      · exact (by decide : ¬ 394 ∣ 599479) hdiv
-      · exact (by decide : ¬ 395 ∣ 599479) hdiv
-      · exact (by decide : ¬ 396 ∣ 599479) hdiv
-      · exact (by decide : ¬ 397 ∣ 599479) hdiv
-      · exact (by decide : ¬ 398 ∣ 599479) hdiv
-      · exact (by decide : ¬ 399 ∣ 599479) hdiv
-      · exact (by decide : ¬ 400 ∣ 599479) hdiv
-      · exact (by decide : ¬ 401 ∣ 599479) hdiv
-      · exact (by decide : ¬ 402 ∣ 599479) hdiv
-      · exact (by decide : ¬ 403 ∣ 599479) hdiv
-      · exact (by decide : ¬ 404 ∣ 599479) hdiv
-      · exact (by decide : ¬ 405 ∣ 599479) hdiv
-      · exact (by decide : ¬ 406 ∣ 599479) hdiv
-      · exact (by decide : ¬ 407 ∣ 599479) hdiv
-      · exact (by decide : ¬ 408 ∣ 599479) hdiv
-      · exact (by decide : ¬ 409 ∣ 599479) hdiv
-      · exact (by decide : ¬ 410 ∣ 599479) hdiv
-      · exact (by decide : ¬ 411 ∣ 599479) hdiv
-      · exact (by decide : ¬ 412 ∣ 599479) hdiv
-      · exact (by decide : ¬ 413 ∣ 599479) hdiv
-      · exact (by decide : ¬ 414 ∣ 599479) hdiv
-      · exact (by decide : ¬ 415 ∣ 599479) hdiv
-      · exact (by decide : ¬ 416 ∣ 599479) hdiv
-      · exact (by decide : ¬ 417 ∣ 599479) hdiv
-      · exact (by decide : ¬ 418 ∣ 599479) hdiv
-      · exact (by decide : ¬ 419 ∣ 599479) hdiv
-      · exact (by decide : ¬ 420 ∣ 599479) hdiv
-      · exact (by decide : ¬ 421 ∣ 599479) hdiv
-      · exact (by decide : ¬ 422 ∣ 599479) hdiv
-      · exact (by decide : ¬ 423 ∣ 599479) hdiv
-      · exact (by decide : ¬ 424 ∣ 599479) hdiv
-      · exact (by decide : ¬ 425 ∣ 599479) hdiv
-      · exact (by decide : ¬ 426 ∣ 599479) hdiv
-      · exact (by decide : ¬ 427 ∣ 599479) hdiv
-      · exact (by decide : ¬ 428 ∣ 599479) hdiv
-      · exact (by decide : ¬ 429 ∣ 599479) hdiv
-      · exact (by decide : ¬ 430 ∣ 599479) hdiv
-      · exact (by decide : ¬ 431 ∣ 599479) hdiv
-      · exact (by decide : ¬ 432 ∣ 599479) hdiv
-      · exact (by decide : ¬ 433 ∣ 599479) hdiv
-      · exact (by decide : ¬ 434 ∣ 599479) hdiv
-      · exact (by decide : ¬ 435 ∣ 599479) hdiv
-      · exact (by decide : ¬ 436 ∣ 599479) hdiv
-      · exact (by decide : ¬ 437 ∣ 599479) hdiv
-      · exact (by decide : ¬ 438 ∣ 599479) hdiv
-      · exact (by decide : ¬ 439 ∣ 599479) hdiv
-      · exact (by decide : ¬ 440 ∣ 599479) hdiv
-      · exact (by decide : ¬ 441 ∣ 599479) hdiv
-      · exact (by decide : ¬ 442 ∣ 599479) hdiv
-      · exact (by decide : ¬ 443 ∣ 599479) hdiv
-      · exact (by decide : ¬ 444 ∣ 599479) hdiv
-      · exact (by decide : ¬ 445 ∣ 599479) hdiv
-      · exact (by decide : ¬ 446 ∣ 599479) hdiv
-      · exact (by decide : ¬ 447 ∣ 599479) hdiv
-      · exact (by decide : ¬ 448 ∣ 599479) hdiv
-      · exact (by decide : ¬ 449 ∣ 599479) hdiv
-      · exact (by decide : ¬ 450 ∣ 599479) hdiv
-      · exact (by decide : ¬ 451 ∣ 599479) hdiv
-      · exact (by decide : ¬ 452 ∣ 599479) hdiv
-      · exact (by decide : ¬ 453 ∣ 599479) hdiv
-      · exact (by decide : ¬ 454 ∣ 599479) hdiv
-      · exact (by decide : ¬ 455 ∣ 599479) hdiv
-      · exact (by decide : ¬ 456 ∣ 599479) hdiv
-      · exact (by decide : ¬ 457 ∣ 599479) hdiv
-      · exact (by decide : ¬ 458 ∣ 599479) hdiv
-      · exact (by decide : ¬ 459 ∣ 599479) hdiv
-      · exact (by decide : ¬ 460 ∣ 599479) hdiv
-      · exact (by decide : ¬ 461 ∣ 599479) hdiv
-      · exact (by decide : ¬ 462 ∣ 599479) hdiv
-      · exact (by decide : ¬ 463 ∣ 599479) hdiv
-      · exact (by decide : ¬ 464 ∣ 599479) hdiv
-      · exact (by decide : ¬ 465 ∣ 599479) hdiv
-      · exact (by decide : ¬ 466 ∣ 599479) hdiv
-      · exact (by decide : ¬ 467 ∣ 599479) hdiv
-      · exact (by decide : ¬ 468 ∣ 599479) hdiv
-      · exact (by decide : ¬ 469 ∣ 599479) hdiv
-      · exact (by decide : ¬ 470 ∣ 599479) hdiv
-      · exact (by decide : ¬ 471 ∣ 599479) hdiv
-      · exact (by decide : ¬ 472 ∣ 599479) hdiv
-      · exact (by decide : ¬ 473 ∣ 599479) hdiv
-      · exact (by decide : ¬ 474 ∣ 599479) hdiv
-      · exact (by decide : ¬ 475 ∣ 599479) hdiv
-      · exact (by decide : ¬ 476 ∣ 599479) hdiv
-      · exact (by decide : ¬ 477 ∣ 599479) hdiv
-      · exact (by decide : ¬ 478 ∣ 599479) hdiv
-      · exact (by decide : ¬ 479 ∣ 599479) hdiv
-      · exact (by decide : ¬ 480 ∣ 599479) hdiv
-      · exact (by decide : ¬ 481 ∣ 599479) hdiv
-      · exact (by decide : ¬ 482 ∣ 599479) hdiv
-      · exact (by decide : ¬ 483 ∣ 599479) hdiv
-      · exact (by decide : ¬ 484 ∣ 599479) hdiv
-      · exact (by decide : ¬ 485 ∣ 599479) hdiv
-      · exact (by decide : ¬ 486 ∣ 599479) hdiv
-      · exact (by decide : ¬ 487 ∣ 599479) hdiv
-      · exact (by decide : ¬ 488 ∣ 599479) hdiv
-      · exact (by decide : ¬ 489 ∣ 599479) hdiv
-      · exact (by decide : ¬ 490 ∣ 599479) hdiv
-      · exact (by decide : ¬ 491 ∣ 599479) hdiv
-      · exact (by decide : ¬ 492 ∣ 599479) hdiv
-      · exact (by decide : ¬ 493 ∣ 599479) hdiv
-      · exact (by decide : ¬ 494 ∣ 599479) hdiv
-      · exact (by decide : ¬ 495 ∣ 599479) hdiv
-      · exact (by decide : ¬ 496 ∣ 599479) hdiv
-      · exact (by decide : ¬ 497 ∣ 599479) hdiv
-      · exact (by decide : ¬ 498 ∣ 599479) hdiv
-      · exact (by decide : ¬ 499 ∣ 599479) hdiv
-      · exact (by decide : ¬ 500 ∣ 599479) hdiv
-      · exact (by decide : ¬ 501 ∣ 599479) hdiv
-      · exact (by decide : ¬ 502 ∣ 599479) hdiv
-      · exact (by decide : ¬ 503 ∣ 599479) hdiv
-      · exact (by decide : ¬ 504 ∣ 599479) hdiv
-      · exact (by decide : ¬ 505 ∣ 599479) hdiv
-      · exact (by decide : ¬ 506 ∣ 599479) hdiv
-      · exact (by decide : ¬ 507 ∣ 599479) hdiv
-      · exact (by decide : ¬ 508 ∣ 599479) hdiv
-      · exact (by decide : ¬ 509 ∣ 599479) hdiv
-      · exact (by decide : ¬ 510 ∣ 599479) hdiv
-      · exact (by decide : ¬ 511 ∣ 599479) hdiv
-      · exact (by decide : ¬ 512 ∣ 599479) hdiv
-      · exact (by decide : ¬ 513 ∣ 599479) hdiv
-      · exact (by decide : ¬ 514 ∣ 599479) hdiv
-      · exact (by decide : ¬ 515 ∣ 599479) hdiv
-      · exact (by decide : ¬ 516 ∣ 599479) hdiv
-      · exact (by decide : ¬ 517 ∣ 599479) hdiv
-      · exact (by decide : ¬ 518 ∣ 599479) hdiv
-      · exact (by decide : ¬ 519 ∣ 599479) hdiv
-      · exact (by decide : ¬ 520 ∣ 599479) hdiv
-      · exact (by decide : ¬ 521 ∣ 599479) hdiv
-      · exact (by decide : ¬ 522 ∣ 599479) hdiv
-      · exact (by decide : ¬ 523 ∣ 599479) hdiv
-      · exact (by decide : ¬ 524 ∣ 599479) hdiv
-      · exact (by decide : ¬ 525 ∣ 599479) hdiv
-      · exact (by decide : ¬ 526 ∣ 599479) hdiv
-      · exact (by decide : ¬ 527 ∣ 599479) hdiv
-      · exact (by decide : ¬ 528 ∣ 599479) hdiv
-      · exact (by decide : ¬ 529 ∣ 599479) hdiv
-      · exact (by decide : ¬ 530 ∣ 599479) hdiv
-      · exact (by decide : ¬ 531 ∣ 599479) hdiv
-      · exact (by decide : ¬ 532 ∣ 599479) hdiv
-      · exact (by decide : ¬ 533 ∣ 599479) hdiv
-      · exact (by decide : ¬ 534 ∣ 599479) hdiv
-      · exact (by decide : ¬ 535 ∣ 599479) hdiv
-      · exact (by decide : ¬ 536 ∣ 599479) hdiv
-      · exact (by decide : ¬ 537 ∣ 599479) hdiv
-      · exact (by decide : ¬ 538 ∣ 599479) hdiv
-      · exact (by decide : ¬ 539 ∣ 599479) hdiv
-      · exact (by decide : ¬ 540 ∣ 599479) hdiv
-      · exact (by decide : ¬ 541 ∣ 599479) hdiv
-      · exact (by decide : ¬ 542 ∣ 599479) hdiv
-      · exact (by decide : ¬ 543 ∣ 599479) hdiv
-      · exact (by decide : ¬ 544 ∣ 599479) hdiv
-      · exact (by decide : ¬ 545 ∣ 599479) hdiv
-      · exact (by decide : ¬ 546 ∣ 599479) hdiv
-      · exact (by decide : ¬ 547 ∣ 599479) hdiv
-      · exact (by decide : ¬ 548 ∣ 599479) hdiv
-      · exact (by decide : ¬ 549 ∣ 599479) hdiv
-      · exact (by decide : ¬ 550 ∣ 599479) hdiv
-      · exact (by decide : ¬ 551 ∣ 599479) hdiv
-      · exact (by decide : ¬ 552 ∣ 599479) hdiv
-      · exact (by decide : ¬ 553 ∣ 599479) hdiv
-      · exact (by decide : ¬ 554 ∣ 599479) hdiv
-      · exact (by decide : ¬ 555 ∣ 599479) hdiv
-      · exact (by decide : ¬ 556 ∣ 599479) hdiv
-      · exact (by decide : ¬ 557 ∣ 599479) hdiv
-      · exact (by decide : ¬ 558 ∣ 599479) hdiv
-      · exact (by decide : ¬ 559 ∣ 599479) hdiv
-      · exact (by decide : ¬ 560 ∣ 599479) hdiv
-      · exact (by decide : ¬ 561 ∣ 599479) hdiv
-      · exact (by decide : ¬ 562 ∣ 599479) hdiv
-      · exact (by decide : ¬ 563 ∣ 599479) hdiv
-      · exact (by decide : ¬ 564 ∣ 599479) hdiv
-      · exact (by decide : ¬ 565 ∣ 599479) hdiv
-      · exact (by decide : ¬ 566 ∣ 599479) hdiv
-      · exact (by decide : ¬ 567 ∣ 599479) hdiv
-      · exact (by decide : ¬ 568 ∣ 599479) hdiv
-      · exact (by decide : ¬ 569 ∣ 599479) hdiv
-      · exact (by decide : ¬ 570 ∣ 599479) hdiv
-      · exact (by decide : ¬ 571 ∣ 599479) hdiv
-      · exact (by decide : ¬ 572 ∣ 599479) hdiv
-      · exact (by decide : ¬ 573 ∣ 599479) hdiv
-      · exact (by decide : ¬ 574 ∣ 599479) hdiv
-      · exact (by decide : ¬ 575 ∣ 599479) hdiv
-      · exact (by decide : ¬ 576 ∣ 599479) hdiv
-      · exact (by decide : ¬ 577 ∣ 599479) hdiv
-      · exact (by decide : ¬ 578 ∣ 599479) hdiv
-      · exact (by decide : ¬ 579 ∣ 599479) hdiv
-      · exact (by decide : ¬ 580 ∣ 599479) hdiv
-      · exact (by decide : ¬ 581 ∣ 599479) hdiv
-      · exact (by decide : ¬ 582 ∣ 599479) hdiv
-      · exact (by decide : ¬ 583 ∣ 599479) hdiv
-      · exact (by decide : ¬ 584 ∣ 599479) hdiv
-      · exact (by decide : ¬ 585 ∣ 599479) hdiv
-      · exact (by decide : ¬ 586 ∣ 599479) hdiv
-      · exact (by decide : ¬ 587 ∣ 599479) hdiv
-      · exact (by decide : ¬ 588 ∣ 599479) hdiv
-      · exact (by decide : ¬ 589 ∣ 599479) hdiv
-      · exact (by decide : ¬ 590 ∣ 599479) hdiv
-      · exact (by decide : ¬ 591 ∣ 599479) hdiv
-      · exact (by decide : ¬ 592 ∣ 599479) hdiv
-      · exact (by decide : ¬ 593 ∣ 599479) hdiv
-      · exact (by decide : ¬ 594 ∣ 599479) hdiv
-      · exact (by decide : ¬ 595 ∣ 599479) hdiv
-      · exact (by decide : ¬ 596 ∣ 599479) hdiv
-      · exact (by decide : ¬ 597 ∣ 599479) hdiv
-      · exact (by decide : ¬ 598 ∣ 599479) hdiv
-      · exact (by decide : ¬ 599 ∣ 599479) hdiv
-      · exact (by decide : ¬ 600 ∣ 599479) hdiv
-      · exact (by decide : ¬ 601 ∣ 599479) hdiv
-      · exact (by decide : ¬ 602 ∣ 599479) hdiv
-      · exact (by decide : ¬ 603 ∣ 599479) hdiv
-      · exact (by decide : ¬ 604 ∣ 599479) hdiv
-      · exact (by decide : ¬ 605 ∣ 599479) hdiv
-      · exact (by decide : ¬ 606 ∣ 599479) hdiv
-      · exact (by decide : ¬ 607 ∣ 599479) hdiv
-      · exact (by decide : ¬ 608 ∣ 599479) hdiv
-      · exact (by decide : ¬ 609 ∣ 599479) hdiv
-      · exact (by decide : ¬ 610 ∣ 599479) hdiv
-      · exact (by decide : ¬ 611 ∣ 599479) hdiv
-      · exact (by decide : ¬ 612 ∣ 599479) hdiv
-      · exact (by decide : ¬ 613 ∣ 599479) hdiv
-      · exact (by decide : ¬ 614 ∣ 599479) hdiv
-      · exact (by decide : ¬ 615 ∣ 599479) hdiv
-      · exact (by decide : ¬ 616 ∣ 599479) hdiv
-      · exact (by decide : ¬ 617 ∣ 599479) hdiv
-      · exact (by decide : ¬ 618 ∣ 599479) hdiv
-      · exact (by decide : ¬ 619 ∣ 599479) hdiv
-      · exact (by decide : ¬ 620 ∣ 599479) hdiv
-      · exact (by decide : ¬ 621 ∣ 599479) hdiv
-      · exact (by decide : ¬ 622 ∣ 599479) hdiv
-      · exact (by decide : ¬ 623 ∣ 599479) hdiv
-      · exact (by decide : ¬ 624 ∣ 599479) hdiv
-      · exact (by decide : ¬ 625 ∣ 599479) hdiv
-      · exact (by decide : ¬ 626 ∣ 599479) hdiv
-      · exact (by decide : ¬ 627 ∣ 599479) hdiv
-      · exact (by decide : ¬ 628 ∣ 599479) hdiv
-      · exact (by decide : ¬ 629 ∣ 599479) hdiv
-      · exact (by decide : ¬ 630 ∣ 599479) hdiv
-      · exact (by decide : ¬ 631 ∣ 599479) hdiv
-      · exact (by decide : ¬ 632 ∣ 599479) hdiv
-      · exact (by decide : ¬ 633 ∣ 599479) hdiv
-      · exact (by decide : ¬ 634 ∣ 599479) hdiv
-      · exact (by decide : ¬ 635 ∣ 599479) hdiv
-      · exact (by decide : ¬ 636 ∣ 599479) hdiv
-      · exact (by decide : ¬ 637 ∣ 599479) hdiv
-      · exact (by decide : ¬ 638 ∣ 599479) hdiv
-      · exact (by decide : ¬ 639 ∣ 599479) hdiv
-      · exact (by decide : ¬ 640 ∣ 599479) hdiv
-      · exact (by decide : ¬ 641 ∣ 599479) hdiv
-      · exact (by decide : ¬ 642 ∣ 599479) hdiv
-      · exact (by decide : ¬ 643 ∣ 599479) hdiv
-      · exact (by decide : ¬ 644 ∣ 599479) hdiv
-      · exact (by decide : ¬ 645 ∣ 599479) hdiv
-      · exact (by decide : ¬ 646 ∣ 599479) hdiv
-      · exact (by decide : ¬ 647 ∣ 599479) hdiv
-      · exact (by decide : ¬ 648 ∣ 599479) hdiv
-      · exact (by decide : ¬ 649 ∣ 599479) hdiv
-      · exact (by decide : ¬ 650 ∣ 599479) hdiv
-      · exact (by decide : ¬ 651 ∣ 599479) hdiv
-      · exact (by decide : ¬ 652 ∣ 599479) hdiv
-      · exact (by decide : ¬ 653 ∣ 599479) hdiv
-      · exact (by decide : ¬ 654 ∣ 599479) hdiv
-      · exact (by decide : ¬ 655 ∣ 599479) hdiv
-      · exact (by decide : ¬ 656 ∣ 599479) hdiv
-      · exact (by decide : ¬ 657 ∣ 599479) hdiv
-      · exact (by decide : ¬ 658 ∣ 599479) hdiv
-      · exact (by decide : ¬ 659 ∣ 599479) hdiv
-      · exact (by decide : ¬ 660 ∣ 599479) hdiv
-      · exact (by decide : ¬ 661 ∣ 599479) hdiv
-      · exact (by decide : ¬ 662 ∣ 599479) hdiv
-      · exact (by decide : ¬ 663 ∣ 599479) hdiv
-      · exact (by decide : ¬ 664 ∣ 599479) hdiv
-      · exact (by decide : ¬ 665 ∣ 599479) hdiv
-      · exact (by decide : ¬ 666 ∣ 599479) hdiv
-      · exact (by decide : ¬ 667 ∣ 599479) hdiv
-      · exact (by decide : ¬ 668 ∣ 599479) hdiv
-      · exact (by decide : ¬ 669 ∣ 599479) hdiv
-      · exact (by decide : ¬ 670 ∣ 599479) hdiv
-      · exact (by decide : ¬ 671 ∣ 599479) hdiv
-      · exact (by decide : ¬ 672 ∣ 599479) hdiv
-      · exact (by decide : ¬ 673 ∣ 599479) hdiv
-      · exact (by decide : ¬ 674 ∣ 599479) hdiv
-      · exact (by decide : ¬ 675 ∣ 599479) hdiv
-      · exact (by decide : ¬ 676 ∣ 599479) hdiv
-      · exact (by decide : ¬ 677 ∣ 599479) hdiv
-      · exact (by decide : ¬ 678 ∣ 599479) hdiv
-      · exact (by decide : ¬ 679 ∣ 599479) hdiv
-      · exact (by decide : ¬ 680 ∣ 599479) hdiv
-      · exact (by decide : ¬ 681 ∣ 599479) hdiv
-      · exact (by decide : ¬ 682 ∣ 599479) hdiv
-      · exact (by decide : ¬ 683 ∣ 599479) hdiv
-      · exact (by decide : ¬ 684 ∣ 599479) hdiv
-      · exact (by decide : ¬ 685 ∣ 599479) hdiv
-      · exact (by decide : ¬ 686 ∣ 599479) hdiv
-      · exact (by decide : ¬ 687 ∣ 599479) hdiv
-      · exact (by decide : ¬ 688 ∣ 599479) hdiv
-      · exact (by decide : ¬ 689 ∣ 599479) hdiv
-      · exact (by decide : ¬ 690 ∣ 599479) hdiv
-      · exact (by decide : ¬ 691 ∣ 599479) hdiv
-      · exact (by decide : ¬ 692 ∣ 599479) hdiv
-      · exact (by decide : ¬ 693 ∣ 599479) hdiv
-      · exact (by decide : ¬ 694 ∣ 599479) hdiv
-      · exact (by decide : ¬ 695 ∣ 599479) hdiv
-      · exact (by decide : ¬ 696 ∣ 599479) hdiv
-      · exact (by decide : ¬ 697 ∣ 599479) hdiv
-      · exact (by decide : ¬ 698 ∣ 599479) hdiv
-      · exact (by decide : ¬ 699 ∣ 599479) hdiv
-      · exact (by decide : ¬ 700 ∣ 599479) hdiv
-      · exact (by decide : ¬ 701 ∣ 599479) hdiv
-      · exact (by decide : ¬ 702 ∣ 599479) hdiv
-      · exact (by decide : ¬ 703 ∣ 599479) hdiv
-      · exact (by decide : ¬ 704 ∣ 599479) hdiv
-      · exact (by decide : ¬ 705 ∣ 599479) hdiv
-      · exact (by decide : ¬ 706 ∣ 599479) hdiv
-      · exact (by decide : ¬ 707 ∣ 599479) hdiv
-      · exact (by decide : ¬ 708 ∣ 599479) hdiv
-      · exact (by decide : ¬ 709 ∣ 599479) hdiv
-      · exact (by decide : ¬ 710 ∣ 599479) hdiv
-      · exact (by decide : ¬ 711 ∣ 599479) hdiv
-      · exact (by decide : ¬ 712 ∣ 599479) hdiv
-      · exact (by decide : ¬ 713 ∣ 599479) hdiv
-      · exact (by decide : ¬ 714 ∣ 599479) hdiv
-      · exact (by decide : ¬ 715 ∣ 599479) hdiv
-      · exact (by decide : ¬ 716 ∣ 599479) hdiv
-      · exact (by decide : ¬ 717 ∣ 599479) hdiv
-      · exact (by decide : ¬ 718 ∣ 599479) hdiv
-      · exact (by decide : ¬ 719 ∣ 599479) hdiv
-      · exact (by decide : ¬ 720 ∣ 599479) hdiv
-      · exact (by decide : ¬ 721 ∣ 599479) hdiv
-      · exact (by decide : ¬ 722 ∣ 599479) hdiv
-      · exact (by decide : ¬ 723 ∣ 599479) hdiv
-      · exact (by decide : ¬ 724 ∣ 599479) hdiv
-      · exact (by decide : ¬ 725 ∣ 599479) hdiv
-      · exact (by decide : ¬ 726 ∣ 599479) hdiv
-      · exact (by decide : ¬ 727 ∣ 599479) hdiv
-      · exact (by decide : ¬ 728 ∣ 599479) hdiv
-      · exact (by decide : ¬ 729 ∣ 599479) hdiv
-      · exact (by decide : ¬ 730 ∣ 599479) hdiv
-      · exact (by decide : ¬ 731 ∣ 599479) hdiv
-      · exact (by decide : ¬ 732 ∣ 599479) hdiv
-      · exact (by decide : ¬ 733 ∣ 599479) hdiv
-      · exact (by decide : ¬ 734 ∣ 599479) hdiv
-      · exact (by decide : ¬ 735 ∣ 599479) hdiv
-      · exact (by decide : ¬ 736 ∣ 599479) hdiv
-      · exact (by decide : ¬ 737 ∣ 599479) hdiv
-      · exact (by decide : ¬ 738 ∣ 599479) hdiv
-      · exact (by decide : ¬ 739 ∣ 599479) hdiv
-      · exact (by decide : ¬ 740 ∣ 599479) hdiv
-      · exact (by decide : ¬ 741 ∣ 599479) hdiv
-      · exact (by decide : ¬ 742 ∣ 599479) hdiv
-      · exact (by decide : ¬ 743 ∣ 599479) hdiv
-      · exact (by decide : ¬ 744 ∣ 599479) hdiv
-      · exact (by decide : ¬ 745 ∣ 599479) hdiv
-      · exact (by decide : ¬ 746 ∣ 599479) hdiv
-      · exact (by decide : ¬ 747 ∣ 599479) hdiv
-      · exact (by decide : ¬ 748 ∣ 599479) hdiv
-      · exact (by decide : ¬ 749 ∣ 599479) hdiv
-      · exact (by decide : ¬ 750 ∣ 599479) hdiv
-      · exact (by decide : ¬ 751 ∣ 599479) hdiv
-      · exact (by decide : ¬ 752 ∣ 599479) hdiv
-      · exact (by decide : ¬ 753 ∣ 599479) hdiv
-      · exact (by decide : ¬ 754 ∣ 599479) hdiv
-      · exact (by decide : ¬ 755 ∣ 599479) hdiv
-      · exact (by decide : ¬ 756 ∣ 599479) hdiv
-      · exact (by decide : ¬ 757 ∣ 599479) hdiv
-      · exact (by decide : ¬ 758 ∣ 599479) hdiv
-      · exact (by decide : ¬ 759 ∣ 599479) hdiv
-      · exact (by decide : ¬ 760 ∣ 599479) hdiv
-      · exact (by decide : ¬ 761 ∣ 599479) hdiv
-      · exact (by decide : ¬ 762 ∣ 599479) hdiv
-      · exact (by decide : ¬ 763 ∣ 599479) hdiv
-      · exact (by decide : ¬ 764 ∣ 599479) hdiv
-      · exact (by decide : ¬ 765 ∣ 599479) hdiv
-      · exact (by decide : ¬ 766 ∣ 599479) hdiv
-      · exact (by decide : ¬ 767 ∣ 599479) hdiv
-      · exact (by decide : ¬ 768 ∣ 599479) hdiv
-      · exact (by decide : ¬ 769 ∣ 599479) hdiv
-      · exact (by decide : ¬ 770 ∣ 599479) hdiv
-      · exact (by decide : ¬ 771 ∣ 599479) hdiv
-      · exact (by decide : ¬ 772 ∣ 599479) hdiv
-      · exact (by decide : ¬ 773 ∣ 599479) hdiv
-      · exact (by decide : ¬ 774 ∣ 599479) hdiv
-  have hA_factor : (7 : Nat).factorization 599479 = 0 :=
-    Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 599479 ∣ 7)
-  exact primeComponentWitness_of_prime_power_cofactor
-    33 7 2 3 599479 4196353 1 7 0
-    hq_prime
-    (by decide)
-    (by decide)
-    (by decide)
-    hA_factor
-    (by decide)
+  have hquot : primeComponentQuotient 2 33 3 = 4196353 := by decide
+  have hq : Nat.Prime 599479 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 599479 ∣ 7)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F33_A7_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 33 7 2 3 := by
@@ -5405,24 +1257,13 @@ theorem concrete_generated_b2_F33_A7_p3_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b2_F33_A7_p11_prime_witness :
     PrimeComponentWitness 33 7 2 11 23 := by
-  refine ⟨(by decide : Nat.Prime 23), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 33 11 = 1227133513 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 2 33 11 = 1227133513 := by decide
+  have hq : Nat.Prime 23 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 33 11 = 1227133513 := by decide
-    rw [hquot]
-    have hfactor : (1227133513 : Nat).factorization 23 = 1 := by
-      rw [show (1227133513 : Nat) = 23 * 53353631 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 23),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 23 ∣ 53353631),
-      ]
-    rw [hfactor]
-    have hA_factor : (7 : Nat).factorization 23 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 23 ∣ 7)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 23 ∣ 7)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F33_A7_p11_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 33 7 2 11 := by
@@ -5457,7 +1298,8 @@ theorem orderOf_b2_mod1227133513_eq_33_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 2 hcop : (ZMod 1227133513)ˣ) :
           ZMod 1227133513) ^ 33) =
         (1 : ZMod 1227133513)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -5517,24 +1359,13 @@ theorem concrete_generated_b2_F33_A89_factorization_support_cases
 
 theorem concrete_generated_b2_F33_A89_p3_prime_witness :
     PrimeComponentWitness 33 89 2 3 7 := by
-  refine ⟨(by decide : Nat.Prime 7), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 33 3 = 4196353 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 2 33 3 = 4196353 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 33 3 = 4196353 := by decide
-    rw [hquot]
-    have hfactor : (4196353 : Nat).factorization 7 = 1 := by
-      rw [show (4196353 : Nat) = 7 * 599479 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 7),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 599479),
-      ]
-    rw [hfactor]
-    have hA_factor : (89 : Nat).factorization 7 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 89)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 89)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F33_A89_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 33 89 2 3 := by
@@ -5542,24 +1373,13 @@ theorem concrete_generated_b2_F33_A89_p3_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b2_F33_A89_p11_prime_witness :
     PrimeComponentWitness 33 89 2 11 23 := by
-  refine ⟨(by decide : Nat.Prime 23), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 33 11 = 1227133513 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 2 33 11 = 1227133513 := by decide
+  have hq : Nat.Prime 23 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 33 11 = 1227133513 := by decide
-    rw [hquot]
-    have hfactor : (1227133513 : Nat).factorization 23 = 1 := by
-      rw [show (1227133513 : Nat) = 23 * 53353631 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 23),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 23 ∣ 53353631),
-      ]
-    rw [hfactor]
-    have hA_factor : (89 : Nat).factorization 23 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 23 ∣ 89)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 23 ∣ 89)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F33_A89_p11_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 33 89 2 11 := by
@@ -5594,7 +1414,8 @@ theorem orderOf_b2_mod96516119_eq_33_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 2 hcop : (ZMod 96516119)ˣ) :
           ZMod 96516119) ^ 33) =
         (1 : ZMod 96516119)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -5656,24 +1477,13 @@ theorem concrete_generated_b2_F105_A7_p3_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b2_F105_A7_p5_prime_witness :
     PrimeComponentWitness 105 7 2 5 31 := by
-  refine ⟨(by decide : Nat.Prime 31), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 105 5 = 19342822337210501698682881 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 2 105 5 = 19342822337210501698682881 := by decide
+  have hq : Nat.Prime 31 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 105 5 = 19342822337210501698682881 := by decide
-    rw [hquot]
-    have hfactor : (19342822337210501698682881 : Nat).factorization 31 = 1 := by
-      rw [show (19342822337210501698682881 : Nat) = 31 * 623962010877758119312351 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 31),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 31 ∣ 623962010877758119312351),
-      ]
-    rw [hfactor]
-    have hA_factor : (7 : Nat).factorization 31 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 31 ∣ 7)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 31 ∣ 7)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F105_A7_p5_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 105 7 2 5 := by
@@ -5682,24 +1492,13 @@ theorem concrete_generated_b2_F105_A7_p5_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b2_F105_A7_p7_prime_witness :
     PrimeComponentWitness 105 7 2 7 71 := by
-  refine ⟨(by decide : Nat.Prime 71), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 105 7 = 1237977819370199922113544193 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 2 105 7 = 1237977819370199922113544193 := by decide
+  have hq : Nat.Prime 71 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 105 7 = 1237977819370199922113544193 := by decide
-    rw [hquot]
-    have hfactor : (1237977819370199922113544193 : Nat).factorization 71 = 1 := by
-      rw [show (1237977819370199922113544193 : Nat) = 71 * 17436307315073238339627383 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 71),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 71 ∣ 17436307315073238339627383),
-      ]
-    rw [hfactor]
-    have hA_factor : (7 : Nat).factorization 71 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 71 ∣ 7)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 71 ∣ 7)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F105_A7_p7_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 105 7 2 7 := by
@@ -5738,7 +1537,8 @@ theorem orderOf_b2_mod5794974172471905835413500367433_eq_105_from_emittedCertifi
       change (((ZMod.unitOfCoprime 2 hcop : (ZMod 5794974172471905835413500367433)ˣ) :
           ZMod 5794974172471905835413500367433) ^ 105) =
         (1 : ZMod 5794974172471905835413500367433)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -5840,24 +1640,13 @@ theorem concrete_generated_b2_F210_A21_p3_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b2_F210_A21_p5_prime_witness :
     PrimeComponentWitness 210 21 2 5 11 := by
-  refine ⟨(by decide : Nat.Prime 11), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 210 5 = 374144419156796217651873571134047410522241514864641 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 2 210 5 = 374144419156796217651873571134047410522241514864641 := by decide
+  have hq : Nat.Prime 11 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 210 5 = 374144419156796217651873571134047410522241514864641 := by decide
-    rw [hquot]
-    have hfactor : (374144419156796217651873571134047410522241514864641 : Nat).factorization 11 = 1 := by
-      rw [show (374144419156796217651873571134047410522241514864641 : Nat) = 11 * 34013129014254201604715779194004310047476501351331 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 11),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 11 ∣ 34013129014254201604715779194004310047476501351331),
-      ]
-    rw [hfactor]
-    have hA_factor : (21 : Nat).factorization 11 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 11 ∣ 21)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 11 ∣ 21)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F210_A21_p5_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 210 21 2 5 := by
@@ -5866,24 +1655,13 @@ theorem concrete_generated_b2_F210_A21_p5_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b2_F210_A21_p7_prime_witness :
     PrimeComponentWitness 210 21 2 7 43 := by
-  refine ⟨(by decide : Nat.Prime 43), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 210 7 = 1532495542293136552393534905231451066410343099426406401 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 2 210 7 = 1532495542293136552393534905231451066410343099426406401 := by decide
+  have hq : Nat.Prime 43 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 210 7 = 1532495542293136552393534905231451066410343099426406401 := by decide
-    rw [hquot]
-    have hfactor : (1532495542293136552393534905231451066410343099426406401 : Nat).factorization 43 = 1 := by
-      rw [show (1532495542293136552393534905231451066410343099426406401 : Nat) = 43 * 35639431216119454706826393144917466660705653475032707 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 43),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 43 ∣ 35639431216119454706826393144917466660705653475032707),
-      ]
-    rw [hfactor]
-    have hA_factor : (21 : Nat).factorization 43 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 43 ∣ 21)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 43 ∣ 21)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F210_A21_p7_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 210 21 2 7 := by
@@ -5925,7 +1703,8 @@ theorem orderOf_b2_mod7835735987243838295976043726463573833251123169683713634993
       change (((ZMod.unitOfCoprime 2 hcop : (ZMod 78357359872438382959760437264635738332511231696837136349933763)ˣ) :
           ZMod 78357359872438382959760437264635738332511231696837136349933763) ^ 210) =
         (1 : ZMod 78357359872438382959760437264635738332511231696837136349933763)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -6007,7 +1786,8 @@ theorem orderOf_b3_mod22_eq_5_from_emittedCertificate_denNorm :
       apply Units.ext
       change (((ZMod.unitOfCoprime 3 hcop : (ZMod 22)ˣ) : ZMod 22) ^ 5) =
         (1 : ZMod 22)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -6044,26 +1824,13 @@ theorem concrete_generated_b3_F10_factorization_support_cases
 
 theorem concrete_generated_b3_F10_A121_p2_prime_witness :
     PrimeComponentWitness 10 121 3 2 2 := by
-  refine ⟨(by decide : Nat.Prime 2), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 3 10 2 = 244 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 3 10 2 = 244 := by decide
+  have hq : Nat.Prime 2 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 3 10 2 = 244 := by decide
-    rw [hquot]
-    have hfactor : (244 : Nat).factorization 2 = 2 := by
-      rw [show (244 : Nat) = 2 ^ 2 * 61 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      change (2 ^ 2 : Nat).factorization 2 + (61 : Nat).factorization 2 = 2
-      have hleft : (2 ^ 2 : Nat).factorization 2 = 2 :=
-        Nat.factorization_pow_self (by decide : Nat.Prime 2)
-      have hright : (61 : Nat).factorization 2 = 0 :=
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 2 ∣ 61)
-      rw [hleft, hright]
-    rw [hfactor]
-    have hA_factor : (121 : Nat).factorization 2 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 2 ∣ 121)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 2 ∣ 121)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b3_F10_A121_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 10 121 3 2 := by
@@ -6071,24 +1838,13 @@ theorem concrete_generated_b3_F10_A121_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b3_F10_A121_p5_prime_witness :
     PrimeComponentWitness 10 121 3 5 61 := by
-  refine ⟨(by decide : Nat.Prime 61), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 3 10 5 = 7381 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 3 10 5 = 7381 := by decide
+  have hq : Nat.Prime 61 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 3 10 5 = 7381 := by decide
-    rw [hquot]
-    have hfactor : (7381 : Nat).factorization 61 = 1 := by
-      rw [show (7381 : Nat) = 61 * 121 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 61),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 61 ∣ 121),
-      ]
-    rw [hfactor]
-    have hA_factor : (121 : Nat).factorization 61 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 61 ∣ 121)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 61 ∣ 121)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b3_F10_A121_p5_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 10 121 3 5 := by
@@ -6122,7 +1878,8 @@ theorem orderOf_b3_mod488_eq_10_from_emittedCertificate_denNorm :
       apply Units.ext
       change (((ZMod.unitOfCoprime 3 hcop : (ZMod 488)ˣ) : ZMod 488) ^ 10) =
         (1 : ZMod 488)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -6155,24 +1912,13 @@ theorem concrete_generated_b6_F6_factorization_support_cases
 
 theorem concrete_generated_b6_F6_A31_p2_prime_witness :
     PrimeComponentWitness 6 31 6 2 7 := by
-  refine ⟨(by decide : Nat.Prime 7), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 6 6 2 = 217 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 6 6 2 = 217 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 6 6 2 = 217 := by decide
-    rw [hquot]
-    have hfactor : (217 : Nat).factorization 7 = 1 := by
-      rw [show (217 : Nat) = 7 * 31 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 7),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 31),
-      ]
-    rw [hfactor]
-    have hA_factor : (31 : Nat).factorization 7 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 31)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 31)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b6_F6_A31_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 6 31 6 2 := by
@@ -6180,24 +1926,13 @@ theorem concrete_generated_b6_F6_A31_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b6_F6_A31_p3_prime_witness :
     PrimeComponentWitness 6 31 6 3 43 := by
-  refine ⟨(by decide : Nat.Prime 43), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 6 6 3 = 1333 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 6 6 3 = 1333 := by decide
+  have hq : Nat.Prime 43 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 6 6 3 = 1333 := by decide
-    rw [hquot]
-    have hfactor : (1333 : Nat).factorization 43 = 1 := by
-      rw [show (1333 : Nat) = 43 * 31 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 43),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 43 ∣ 31),
-      ]
-    rw [hfactor]
-    have hA_factor : (31 : Nat).factorization 43 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 43 ∣ 31)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 43 ∣ 31)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b6_F6_A31_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 6 31 6 3 := by
@@ -6231,7 +1966,8 @@ theorem orderOf_b6_mod1505_eq_6_from_emittedCertificate_denNorm :
       apply Units.ext
       change (((ZMod.unitOfCoprime 6 hcop : (ZMod 1505)ˣ) : ZMod 1505) ^ 6) =
         (1 : ZMod 1505)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -6270,24 +2006,13 @@ theorem concrete_generated_b6_F12_A403_factorization_support_cases
 
 theorem concrete_generated_b6_F12_A403_p2_prime_witness :
     PrimeComponentWitness 12 403 6 2 37 := by
-  refine ⟨(by decide : Nat.Prime 37), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 6 12 2 = 46657 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 6 12 2 = 46657 := by decide
+  have hq : Nat.Prime 37 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 6 12 2 = 46657 := by decide
-    rw [hquot]
-    have hfactor : (46657 : Nat).factorization 37 = 1 := by
-      rw [show (46657 : Nat) = 37 * 1261 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 37),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 37 ∣ 1261),
-      ]
-    rw [hfactor]
-    have hA_factor : (403 : Nat).factorization 37 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 37 ∣ 403)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 37 ∣ 403)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b6_F12_A403_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 403 6 2 := by
@@ -6295,24 +2020,13 @@ theorem concrete_generated_b6_F12_A403_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b6_F12_A403_p3_prime_witness :
     PrimeComponentWitness 12 403 6 3 43 := by
-  refine ⟨(by decide : Nat.Prime 43), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 6 12 3 = 1680913 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 6 12 3 = 1680913 := by decide
+  have hq : Nat.Prime 43 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 6 12 3 = 1680913 := by decide
-    rw [hquot]
-    have hfactor : (1680913 : Nat).factorization 43 = 1 := by
-      rw [show (1680913 : Nat) = 43 * 39091 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 43),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 43 ∣ 39091),
-      ]
-    rw [hfactor]
-    have hA_factor : (403 : Nat).factorization 43 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 43 ∣ 403)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 43 ∣ 403)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b6_F12_A403_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 403 6 3 := by
@@ -6347,7 +2061,8 @@ theorem orderOf_b6_mod5401445_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 6 hcop : (ZMod 5401445)ˣ) :
           ZMod 5401445) ^ 12) =
         (1 : ZMod 5401445)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -6380,24 +2095,13 @@ theorem concrete_generated_b5_F6_factorization_support_cases
 
 theorem concrete_generated_b5_F6_A21_p2_prime_witness :
     PrimeComponentWitness 6 21 5 2 2 := by
-  refine ⟨(by decide : Nat.Prime 2), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 5 6 2 = 126 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 5 6 2 = 126 := by decide
+  have hq : Nat.Prime 2 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 5 6 2 = 126 := by decide
-    rw [hquot]
-    have hfactor : (126 : Nat).factorization 2 = 1 := by
-      rw [show (126 : Nat) = 2 * 63 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 2),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 2 ∣ 63),
-      ]
-    rw [hfactor]
-    have hA_factor : (21 : Nat).factorization 2 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 2 ∣ 21)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 2 ∣ 21)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b5_F6_A21_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 6 21 5 2 := by
@@ -6405,24 +2109,13 @@ theorem concrete_generated_b5_F6_A21_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b5_F6_A21_p3_prime_witness :
     PrimeComponentWitness 6 21 5 3 31 := by
-  refine ⟨(by decide : Nat.Prime 31), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 5 6 3 = 651 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 5 6 3 = 651 := by decide
+  have hq : Nat.Prime 31 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 5 6 3 = 651 := by decide
-    rw [hquot]
-    have hfactor : (651 : Nat).factorization 31 = 1 := by
-      rw [show (651 : Nat) = 31 * 21 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 31),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 31 ∣ 21),
-      ]
-    rw [hfactor]
-    have hA_factor : (21 : Nat).factorization 31 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 31 ∣ 21)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 31 ∣ 21)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b5_F6_A21_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 6 21 5 3 := by
@@ -6456,7 +2149,8 @@ theorem orderOf_b5_mod744_eq_6_from_emittedCertificate_denNorm :
       apply Units.ext
       change (((ZMod.unitOfCoprime 5 hcop : (ZMod 744)ˣ) : ZMod 744) ^ 6) =
         (1 : ZMod 744)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -6489,24 +2183,13 @@ theorem concrete_generated_b10_F6_A273_factorization_support_cases
 
 theorem concrete_generated_b10_F6_A273_p2_prime_witness :
     PrimeComponentWitness 6 273 10 2 11 := by
-  refine ⟨(by decide : Nat.Prime 11), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 10 6 2 = 1001 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 10 6 2 = 1001 := by decide
+  have hq : Nat.Prime 11 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 10 6 2 = 1001 := by decide
-    rw [hquot]
-    have hfactor : (1001 : Nat).factorization 11 = 1 := by
-      rw [show (1001 : Nat) = 11 * 91 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 11),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 11 ∣ 91),
-      ]
-    rw [hfactor]
-    have hA_factor : (273 : Nat).factorization 11 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 11 ∣ 273)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 11 ∣ 273)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b10_F6_A273_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 6 273 10 2 := by
@@ -6514,24 +2197,13 @@ theorem concrete_generated_b10_F6_A273_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b10_F6_A273_p3_prime_witness :
     PrimeComponentWitness 6 273 10 3 37 := by
-  refine ⟨(by decide : Nat.Prime 37), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 10 6 3 = 10101 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 10 6 3 = 10101 := by decide
+  have hq : Nat.Prime 37 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 10 6 3 = 10101 := by decide
-    rw [hquot]
-    have hfactor : (10101 : Nat).factorization 37 = 1 := by
-      rw [show (10101 : Nat) = 37 * 273 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 37),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 37 ∣ 273),
-      ]
-    rw [hfactor]
-    have hA_factor : (273 : Nat).factorization 37 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 37 ∣ 273)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 37 ∣ 273)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b10_F6_A273_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 6 273 10 3 := by
@@ -6565,7 +2237,8 @@ theorem orderOf_b10_mod3663_eq_6_from_emittedCertificate_denNorm :
       apply Units.ext
       change (((ZMod.unitOfCoprime 10 hcop : (ZMod 3663)ˣ) : ZMod 3663) ^ 6) =
         (1 : ZMod 3663)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -6598,24 +2271,13 @@ theorem concrete_generated_b4_F6_factorization_support_cases
 
 theorem concrete_generated_b4_F6_A21_p2_prime_witness :
     PrimeComponentWitness 6 21 4 2 5 := by
-  refine ⟨(by decide : Nat.Prime 5), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 4 6 2 = 65 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 4 6 2 = 65 := by decide
+  have hq : Nat.Prime 5 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 4 6 2 = 65 := by decide
-    rw [hquot]
-    have hfactor : (65 : Nat).factorization 5 = 1 := by
-      rw [show (65 : Nat) = 5 * 13 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 5),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 13),
-      ]
-    rw [hfactor]
-    have hA_factor : (21 : Nat).factorization 5 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 21)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 21)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b4_F6_A21_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 6 21 4 2 := by
@@ -6623,24 +2285,13 @@ theorem concrete_generated_b4_F6_A21_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b4_F6_A21_p3_prime_witness :
     PrimeComponentWitness 6 21 4 3 13 := by
-  refine ⟨(by decide : Nat.Prime 13), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 4 6 3 = 273 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 4 6 3 = 273 := by decide
+  have hq : Nat.Prime 13 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 4 6 3 = 273 := by decide
-    rw [hquot]
-    have hfactor : (273 : Nat).factorization 13 = 1 := by
-      rw [show (273 : Nat) = 13 * 21 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 13),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 13 ∣ 21),
-      ]
-    rw [hfactor]
-    have hA_factor : (21 : Nat).factorization 13 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 13 ∣ 21)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 13 ∣ 21)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b4_F6_A21_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 6 21 4 3 := by
@@ -6674,7 +2325,8 @@ theorem orderOf_b4_mod195_eq_6_from_emittedCertificate_denNorm :
       apply Units.ext
       change (((ZMod.unitOfCoprime 4 hcop : (ZMod 195)ˣ) : ZMod 195) ^ 6) =
         (1 : ZMod 195)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -6714,24 +2366,13 @@ theorem concrete_generated_b4_F12_A357_factorization_support_cases
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b4_F12_A357_p2_prime_witness :
     PrimeComponentWitness 12 357 4 2 241 := by
-  refine ⟨(by decide : Nat.Prime 241), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 4 12 2 = 4097 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 4 12 2 = 4097 := by decide
+  have hq : Nat.Prime 241 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 4 12 2 = 4097 := by decide
-    rw [hquot]
-    have hfactor : (4097 : Nat).factorization 241 = 1 := by
-      rw [show (4097 : Nat) = 241 * 17 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 241),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 241 ∣ 17),
-      ]
-    rw [hfactor]
-    have hA_factor : (357 : Nat).factorization 241 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 241 ∣ 357)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 241 ∣ 357)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b4_F12_A357_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 357 4 2 := by
@@ -6739,24 +2380,13 @@ theorem concrete_generated_b4_F12_A357_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b4_F12_A357_p3_prime_witness :
     PrimeComponentWitness 12 357 4 3 13 := by
-  refine ⟨(by decide : Nat.Prime 13), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 4 12 3 = 65793 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 4 12 3 = 65793 := by decide
+  have hq : Nat.Prime 13 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 4 12 3 = 65793 := by decide
-    rw [hquot]
-    have hfactor : (65793 : Nat).factorization 13 = 1 := by
-      rw [show (65793 : Nat) = 13 * 5061 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 13),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 13 ∣ 5061),
-      ]
-    rw [hfactor]
-    have hA_factor : (357 : Nat).factorization 13 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 13 ∣ 357)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 13 ∣ 357)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b4_F12_A357_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 357 4 3 := by
@@ -6790,7 +2420,8 @@ theorem orderOf_b4_mod46995_eq_12_from_emittedCertificate_denNorm :
       apply Units.ext
       change (((ZMod.unitOfCoprime 4 hcop : (ZMod 46995)ˣ) : ZMod 46995) ^ 12) =
         (1 : ZMod 46995)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -6829,24 +2460,13 @@ theorem concrete_generated_b12_F12_A133_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A133_p2_prime_witness :
     PrimeComponentWitness 12 133 12 2 5 := by
-  refine ⟨(by decide : Nat.Prime 5), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 5 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 5 = 1 := by
-      rw [show (2985985 : Nat) = 5 * 597197 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 5),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 597197),
-      ]
-    rw [hfactor]
-    have hA_factor : (133 : Nat).factorization 5 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 133)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 133)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A133_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 133 12 2 := by
@@ -6855,24 +2475,13 @@ theorem concrete_generated_b12_F12_A133_p2_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b12_F12_A133_p3_prime_witness :
     PrimeComponentWitness 12 133 12 3 157 := by
-  refine ⟨(by decide : Nat.Prime 157), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 157 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 157 = 1 := by
-      rw [show (430002433 : Nat) = 157 * 2738869 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 157),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 2738869),
-      ]
-    rw [hfactor]
-    have hA_factor : (133 : Nat).factorization 157 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 133)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 133)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A133_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 133 12 3 := by
@@ -6907,7 +2516,8 @@ theorem orderOf_b12_mod67038349235_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 67038349235)ˣ) :
           ZMod 67038349235) ^ 12) =
         (1 : ZMod 67038349235)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -6946,168 +2556,13 @@ theorem concrete_generated_b12_F12_A145_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A145_p2_prime_witness :
     PrimeComponentWitness 12 145 12 2 20593 := by
-  have hq_prime : Nat.Prime 20593 := by
-    rw [Nat.prime_def_le_sqrt]
-    constructor
-    · decide
-    · intro m hm_ge hm_le hdiv
-      have hm_le143 : m ≤ 143 := by
-        have hsqrt_lt : Nat.sqrt 20593 < 144 :=
-          (Nat.sqrt_lt'.2 (by decide : 20593 < 144 ^ 2))
-        exact Nat.le_of_lt_succ (lt_of_le_of_lt hm_le hsqrt_lt)
-      interval_cases m
-      · exact (by decide : ¬ 2 ∣ 20593) hdiv
-      · exact (by decide : ¬ 3 ∣ 20593) hdiv
-      · exact (by decide : ¬ 4 ∣ 20593) hdiv
-      · exact (by decide : ¬ 5 ∣ 20593) hdiv
-      · exact (by decide : ¬ 6 ∣ 20593) hdiv
-      · exact (by decide : ¬ 7 ∣ 20593) hdiv
-      · exact (by decide : ¬ 8 ∣ 20593) hdiv
-      · exact (by decide : ¬ 9 ∣ 20593) hdiv
-      · exact (by decide : ¬ 10 ∣ 20593) hdiv
-      · exact (by decide : ¬ 11 ∣ 20593) hdiv
-      · exact (by decide : ¬ 12 ∣ 20593) hdiv
-      · exact (by decide : ¬ 13 ∣ 20593) hdiv
-      · exact (by decide : ¬ 14 ∣ 20593) hdiv
-      · exact (by decide : ¬ 15 ∣ 20593) hdiv
-      · exact (by decide : ¬ 16 ∣ 20593) hdiv
-      · exact (by decide : ¬ 17 ∣ 20593) hdiv
-      · exact (by decide : ¬ 18 ∣ 20593) hdiv
-      · exact (by decide : ¬ 19 ∣ 20593) hdiv
-      · exact (by decide : ¬ 20 ∣ 20593) hdiv
-      · exact (by decide : ¬ 21 ∣ 20593) hdiv
-      · exact (by decide : ¬ 22 ∣ 20593) hdiv
-      · exact (by decide : ¬ 23 ∣ 20593) hdiv
-      · exact (by decide : ¬ 24 ∣ 20593) hdiv
-      · exact (by decide : ¬ 25 ∣ 20593) hdiv
-      · exact (by decide : ¬ 26 ∣ 20593) hdiv
-      · exact (by decide : ¬ 27 ∣ 20593) hdiv
-      · exact (by decide : ¬ 28 ∣ 20593) hdiv
-      · exact (by decide : ¬ 29 ∣ 20593) hdiv
-      · exact (by decide : ¬ 30 ∣ 20593) hdiv
-      · exact (by decide : ¬ 31 ∣ 20593) hdiv
-      · exact (by decide : ¬ 32 ∣ 20593) hdiv
-      · exact (by decide : ¬ 33 ∣ 20593) hdiv
-      · exact (by decide : ¬ 34 ∣ 20593) hdiv
-      · exact (by decide : ¬ 35 ∣ 20593) hdiv
-      · exact (by decide : ¬ 36 ∣ 20593) hdiv
-      · exact (by decide : ¬ 37 ∣ 20593) hdiv
-      · exact (by decide : ¬ 38 ∣ 20593) hdiv
-      · exact (by decide : ¬ 39 ∣ 20593) hdiv
-      · exact (by decide : ¬ 40 ∣ 20593) hdiv
-      · exact (by decide : ¬ 41 ∣ 20593) hdiv
-      · exact (by decide : ¬ 42 ∣ 20593) hdiv
-      · exact (by decide : ¬ 43 ∣ 20593) hdiv
-      · exact (by decide : ¬ 44 ∣ 20593) hdiv
-      · exact (by decide : ¬ 45 ∣ 20593) hdiv
-      · exact (by decide : ¬ 46 ∣ 20593) hdiv
-      · exact (by decide : ¬ 47 ∣ 20593) hdiv
-      · exact (by decide : ¬ 48 ∣ 20593) hdiv
-      · exact (by decide : ¬ 49 ∣ 20593) hdiv
-      · exact (by decide : ¬ 50 ∣ 20593) hdiv
-      · exact (by decide : ¬ 51 ∣ 20593) hdiv
-      · exact (by decide : ¬ 52 ∣ 20593) hdiv
-      · exact (by decide : ¬ 53 ∣ 20593) hdiv
-      · exact (by decide : ¬ 54 ∣ 20593) hdiv
-      · exact (by decide : ¬ 55 ∣ 20593) hdiv
-      · exact (by decide : ¬ 56 ∣ 20593) hdiv
-      · exact (by decide : ¬ 57 ∣ 20593) hdiv
-      · exact (by decide : ¬ 58 ∣ 20593) hdiv
-      · exact (by decide : ¬ 59 ∣ 20593) hdiv
-      · exact (by decide : ¬ 60 ∣ 20593) hdiv
-      · exact (by decide : ¬ 61 ∣ 20593) hdiv
-      · exact (by decide : ¬ 62 ∣ 20593) hdiv
-      · exact (by decide : ¬ 63 ∣ 20593) hdiv
-      · exact (by decide : ¬ 64 ∣ 20593) hdiv
-      · exact (by decide : ¬ 65 ∣ 20593) hdiv
-      · exact (by decide : ¬ 66 ∣ 20593) hdiv
-      · exact (by decide : ¬ 67 ∣ 20593) hdiv
-      · exact (by decide : ¬ 68 ∣ 20593) hdiv
-      · exact (by decide : ¬ 69 ∣ 20593) hdiv
-      · exact (by decide : ¬ 70 ∣ 20593) hdiv
-      · exact (by decide : ¬ 71 ∣ 20593) hdiv
-      · exact (by decide : ¬ 72 ∣ 20593) hdiv
-      · exact (by decide : ¬ 73 ∣ 20593) hdiv
-      · exact (by decide : ¬ 74 ∣ 20593) hdiv
-      · exact (by decide : ¬ 75 ∣ 20593) hdiv
-      · exact (by decide : ¬ 76 ∣ 20593) hdiv
-      · exact (by decide : ¬ 77 ∣ 20593) hdiv
-      · exact (by decide : ¬ 78 ∣ 20593) hdiv
-      · exact (by decide : ¬ 79 ∣ 20593) hdiv
-      · exact (by decide : ¬ 80 ∣ 20593) hdiv
-      · exact (by decide : ¬ 81 ∣ 20593) hdiv
-      · exact (by decide : ¬ 82 ∣ 20593) hdiv
-      · exact (by decide : ¬ 83 ∣ 20593) hdiv
-      · exact (by decide : ¬ 84 ∣ 20593) hdiv
-      · exact (by decide : ¬ 85 ∣ 20593) hdiv
-      · exact (by decide : ¬ 86 ∣ 20593) hdiv
-      · exact (by decide : ¬ 87 ∣ 20593) hdiv
-      · exact (by decide : ¬ 88 ∣ 20593) hdiv
-      · exact (by decide : ¬ 89 ∣ 20593) hdiv
-      · exact (by decide : ¬ 90 ∣ 20593) hdiv
-      · exact (by decide : ¬ 91 ∣ 20593) hdiv
-      · exact (by decide : ¬ 92 ∣ 20593) hdiv
-      · exact (by decide : ¬ 93 ∣ 20593) hdiv
-      · exact (by decide : ¬ 94 ∣ 20593) hdiv
-      · exact (by decide : ¬ 95 ∣ 20593) hdiv
-      · exact (by decide : ¬ 96 ∣ 20593) hdiv
-      · exact (by decide : ¬ 97 ∣ 20593) hdiv
-      · exact (by decide : ¬ 98 ∣ 20593) hdiv
-      · exact (by decide : ¬ 99 ∣ 20593) hdiv
-      · exact (by decide : ¬ 100 ∣ 20593) hdiv
-      · exact (by decide : ¬ 101 ∣ 20593) hdiv
-      · exact (by decide : ¬ 102 ∣ 20593) hdiv
-      · exact (by decide : ¬ 103 ∣ 20593) hdiv
-      · exact (by decide : ¬ 104 ∣ 20593) hdiv
-      · exact (by decide : ¬ 105 ∣ 20593) hdiv
-      · exact (by decide : ¬ 106 ∣ 20593) hdiv
-      · exact (by decide : ¬ 107 ∣ 20593) hdiv
-      · exact (by decide : ¬ 108 ∣ 20593) hdiv
-      · exact (by decide : ¬ 109 ∣ 20593) hdiv
-      · exact (by decide : ¬ 110 ∣ 20593) hdiv
-      · exact (by decide : ¬ 111 ∣ 20593) hdiv
-      · exact (by decide : ¬ 112 ∣ 20593) hdiv
-      · exact (by decide : ¬ 113 ∣ 20593) hdiv
-      · exact (by decide : ¬ 114 ∣ 20593) hdiv
-      · exact (by decide : ¬ 115 ∣ 20593) hdiv
-      · exact (by decide : ¬ 116 ∣ 20593) hdiv
-      · exact (by decide : ¬ 117 ∣ 20593) hdiv
-      · exact (by decide : ¬ 118 ∣ 20593) hdiv
-      · exact (by decide : ¬ 119 ∣ 20593) hdiv
-      · exact (by decide : ¬ 120 ∣ 20593) hdiv
-      · exact (by decide : ¬ 121 ∣ 20593) hdiv
-      · exact (by decide : ¬ 122 ∣ 20593) hdiv
-      · exact (by decide : ¬ 123 ∣ 20593) hdiv
-      · exact (by decide : ¬ 124 ∣ 20593) hdiv
-      · exact (by decide : ¬ 125 ∣ 20593) hdiv
-      · exact (by decide : ¬ 126 ∣ 20593) hdiv
-      · exact (by decide : ¬ 127 ∣ 20593) hdiv
-      · exact (by decide : ¬ 128 ∣ 20593) hdiv
-      · exact (by decide : ¬ 129 ∣ 20593) hdiv
-      · exact (by decide : ¬ 130 ∣ 20593) hdiv
-      · exact (by decide : ¬ 131 ∣ 20593) hdiv
-      · exact (by decide : ¬ 132 ∣ 20593) hdiv
-      · exact (by decide : ¬ 133 ∣ 20593) hdiv
-      · exact (by decide : ¬ 134 ∣ 20593) hdiv
-      · exact (by decide : ¬ 135 ∣ 20593) hdiv
-      · exact (by decide : ¬ 136 ∣ 20593) hdiv
-      · exact (by decide : ¬ 137 ∣ 20593) hdiv
-      · exact (by decide : ¬ 138 ∣ 20593) hdiv
-      · exact (by decide : ¬ 139 ∣ 20593) hdiv
-      · exact (by decide : ¬ 140 ∣ 20593) hdiv
-      · exact (by decide : ¬ 141 ∣ 20593) hdiv
-      · exact (by decide : ¬ 142 ∣ 20593) hdiv
-      · exact (by decide : ¬ 143 ∣ 20593) hdiv
-  have hA_factor : (145 : Nat).factorization 20593 = 0 :=
-    Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 145)
-  exact primeComponentWitness_of_prime_power_cofactor
-    12 145 12 2 20593 2985985 1 145 0
-    hq_prime
-    (by decide)
-    (by decide)
-    (by decide)
-    hA_factor
-    (by decide)
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 20593 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 145)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A145_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 145 12 2 := by
@@ -7115,24 +2570,13 @@ theorem concrete_generated_b12_F12_A145_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A145_p3_prime_witness :
     PrimeComponentWitness 12 145 12 3 7 := by
-  refine ⟨(by decide : Nat.Prime 7), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 7 = 1 := by
-      rw [show (430002433 : Nat) = 7 * 61428919 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 7),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 61428919),
-      ]
-    rw [hfactor]
-    have hA_factor : (145 : Nat).factorization 7 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 145)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 145)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A145_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 145 12 3 := by
@@ -7167,7 +2611,8 @@ theorem orderOf_b12_mod61490347919_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 61490347919)ˣ) :
           ZMod 61490347919) ^ 12) =
         (1 : ZMod 61490347919)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -7206,168 +2651,13 @@ theorem concrete_generated_b12_F12_A19285_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A19285_p2_prime_witness :
     PrimeComponentWitness 12 19285 12 2 20593 := by
-  have hq_prime : Nat.Prime 20593 := by
-    rw [Nat.prime_def_le_sqrt]
-    constructor
-    · decide
-    · intro m hm_ge hm_le hdiv
-      have hm_le143 : m ≤ 143 := by
-        have hsqrt_lt : Nat.sqrt 20593 < 144 :=
-          (Nat.sqrt_lt'.2 (by decide : 20593 < 144 ^ 2))
-        exact Nat.le_of_lt_succ (lt_of_le_of_lt hm_le hsqrt_lt)
-      interval_cases m
-      · exact (by decide : ¬ 2 ∣ 20593) hdiv
-      · exact (by decide : ¬ 3 ∣ 20593) hdiv
-      · exact (by decide : ¬ 4 ∣ 20593) hdiv
-      · exact (by decide : ¬ 5 ∣ 20593) hdiv
-      · exact (by decide : ¬ 6 ∣ 20593) hdiv
-      · exact (by decide : ¬ 7 ∣ 20593) hdiv
-      · exact (by decide : ¬ 8 ∣ 20593) hdiv
-      · exact (by decide : ¬ 9 ∣ 20593) hdiv
-      · exact (by decide : ¬ 10 ∣ 20593) hdiv
-      · exact (by decide : ¬ 11 ∣ 20593) hdiv
-      · exact (by decide : ¬ 12 ∣ 20593) hdiv
-      · exact (by decide : ¬ 13 ∣ 20593) hdiv
-      · exact (by decide : ¬ 14 ∣ 20593) hdiv
-      · exact (by decide : ¬ 15 ∣ 20593) hdiv
-      · exact (by decide : ¬ 16 ∣ 20593) hdiv
-      · exact (by decide : ¬ 17 ∣ 20593) hdiv
-      · exact (by decide : ¬ 18 ∣ 20593) hdiv
-      · exact (by decide : ¬ 19 ∣ 20593) hdiv
-      · exact (by decide : ¬ 20 ∣ 20593) hdiv
-      · exact (by decide : ¬ 21 ∣ 20593) hdiv
-      · exact (by decide : ¬ 22 ∣ 20593) hdiv
-      · exact (by decide : ¬ 23 ∣ 20593) hdiv
-      · exact (by decide : ¬ 24 ∣ 20593) hdiv
-      · exact (by decide : ¬ 25 ∣ 20593) hdiv
-      · exact (by decide : ¬ 26 ∣ 20593) hdiv
-      · exact (by decide : ¬ 27 ∣ 20593) hdiv
-      · exact (by decide : ¬ 28 ∣ 20593) hdiv
-      · exact (by decide : ¬ 29 ∣ 20593) hdiv
-      · exact (by decide : ¬ 30 ∣ 20593) hdiv
-      · exact (by decide : ¬ 31 ∣ 20593) hdiv
-      · exact (by decide : ¬ 32 ∣ 20593) hdiv
-      · exact (by decide : ¬ 33 ∣ 20593) hdiv
-      · exact (by decide : ¬ 34 ∣ 20593) hdiv
-      · exact (by decide : ¬ 35 ∣ 20593) hdiv
-      · exact (by decide : ¬ 36 ∣ 20593) hdiv
-      · exact (by decide : ¬ 37 ∣ 20593) hdiv
-      · exact (by decide : ¬ 38 ∣ 20593) hdiv
-      · exact (by decide : ¬ 39 ∣ 20593) hdiv
-      · exact (by decide : ¬ 40 ∣ 20593) hdiv
-      · exact (by decide : ¬ 41 ∣ 20593) hdiv
-      · exact (by decide : ¬ 42 ∣ 20593) hdiv
-      · exact (by decide : ¬ 43 ∣ 20593) hdiv
-      · exact (by decide : ¬ 44 ∣ 20593) hdiv
-      · exact (by decide : ¬ 45 ∣ 20593) hdiv
-      · exact (by decide : ¬ 46 ∣ 20593) hdiv
-      · exact (by decide : ¬ 47 ∣ 20593) hdiv
-      · exact (by decide : ¬ 48 ∣ 20593) hdiv
-      · exact (by decide : ¬ 49 ∣ 20593) hdiv
-      · exact (by decide : ¬ 50 ∣ 20593) hdiv
-      · exact (by decide : ¬ 51 ∣ 20593) hdiv
-      · exact (by decide : ¬ 52 ∣ 20593) hdiv
-      · exact (by decide : ¬ 53 ∣ 20593) hdiv
-      · exact (by decide : ¬ 54 ∣ 20593) hdiv
-      · exact (by decide : ¬ 55 ∣ 20593) hdiv
-      · exact (by decide : ¬ 56 ∣ 20593) hdiv
-      · exact (by decide : ¬ 57 ∣ 20593) hdiv
-      · exact (by decide : ¬ 58 ∣ 20593) hdiv
-      · exact (by decide : ¬ 59 ∣ 20593) hdiv
-      · exact (by decide : ¬ 60 ∣ 20593) hdiv
-      · exact (by decide : ¬ 61 ∣ 20593) hdiv
-      · exact (by decide : ¬ 62 ∣ 20593) hdiv
-      · exact (by decide : ¬ 63 ∣ 20593) hdiv
-      · exact (by decide : ¬ 64 ∣ 20593) hdiv
-      · exact (by decide : ¬ 65 ∣ 20593) hdiv
-      · exact (by decide : ¬ 66 ∣ 20593) hdiv
-      · exact (by decide : ¬ 67 ∣ 20593) hdiv
-      · exact (by decide : ¬ 68 ∣ 20593) hdiv
-      · exact (by decide : ¬ 69 ∣ 20593) hdiv
-      · exact (by decide : ¬ 70 ∣ 20593) hdiv
-      · exact (by decide : ¬ 71 ∣ 20593) hdiv
-      · exact (by decide : ¬ 72 ∣ 20593) hdiv
-      · exact (by decide : ¬ 73 ∣ 20593) hdiv
-      · exact (by decide : ¬ 74 ∣ 20593) hdiv
-      · exact (by decide : ¬ 75 ∣ 20593) hdiv
-      · exact (by decide : ¬ 76 ∣ 20593) hdiv
-      · exact (by decide : ¬ 77 ∣ 20593) hdiv
-      · exact (by decide : ¬ 78 ∣ 20593) hdiv
-      · exact (by decide : ¬ 79 ∣ 20593) hdiv
-      · exact (by decide : ¬ 80 ∣ 20593) hdiv
-      · exact (by decide : ¬ 81 ∣ 20593) hdiv
-      · exact (by decide : ¬ 82 ∣ 20593) hdiv
-      · exact (by decide : ¬ 83 ∣ 20593) hdiv
-      · exact (by decide : ¬ 84 ∣ 20593) hdiv
-      · exact (by decide : ¬ 85 ∣ 20593) hdiv
-      · exact (by decide : ¬ 86 ∣ 20593) hdiv
-      · exact (by decide : ¬ 87 ∣ 20593) hdiv
-      · exact (by decide : ¬ 88 ∣ 20593) hdiv
-      · exact (by decide : ¬ 89 ∣ 20593) hdiv
-      · exact (by decide : ¬ 90 ∣ 20593) hdiv
-      · exact (by decide : ¬ 91 ∣ 20593) hdiv
-      · exact (by decide : ¬ 92 ∣ 20593) hdiv
-      · exact (by decide : ¬ 93 ∣ 20593) hdiv
-      · exact (by decide : ¬ 94 ∣ 20593) hdiv
-      · exact (by decide : ¬ 95 ∣ 20593) hdiv
-      · exact (by decide : ¬ 96 ∣ 20593) hdiv
-      · exact (by decide : ¬ 97 ∣ 20593) hdiv
-      · exact (by decide : ¬ 98 ∣ 20593) hdiv
-      · exact (by decide : ¬ 99 ∣ 20593) hdiv
-      · exact (by decide : ¬ 100 ∣ 20593) hdiv
-      · exact (by decide : ¬ 101 ∣ 20593) hdiv
-      · exact (by decide : ¬ 102 ∣ 20593) hdiv
-      · exact (by decide : ¬ 103 ∣ 20593) hdiv
-      · exact (by decide : ¬ 104 ∣ 20593) hdiv
-      · exact (by decide : ¬ 105 ∣ 20593) hdiv
-      · exact (by decide : ¬ 106 ∣ 20593) hdiv
-      · exact (by decide : ¬ 107 ∣ 20593) hdiv
-      · exact (by decide : ¬ 108 ∣ 20593) hdiv
-      · exact (by decide : ¬ 109 ∣ 20593) hdiv
-      · exact (by decide : ¬ 110 ∣ 20593) hdiv
-      · exact (by decide : ¬ 111 ∣ 20593) hdiv
-      · exact (by decide : ¬ 112 ∣ 20593) hdiv
-      · exact (by decide : ¬ 113 ∣ 20593) hdiv
-      · exact (by decide : ¬ 114 ∣ 20593) hdiv
-      · exact (by decide : ¬ 115 ∣ 20593) hdiv
-      · exact (by decide : ¬ 116 ∣ 20593) hdiv
-      · exact (by decide : ¬ 117 ∣ 20593) hdiv
-      · exact (by decide : ¬ 118 ∣ 20593) hdiv
-      · exact (by decide : ¬ 119 ∣ 20593) hdiv
-      · exact (by decide : ¬ 120 ∣ 20593) hdiv
-      · exact (by decide : ¬ 121 ∣ 20593) hdiv
-      · exact (by decide : ¬ 122 ∣ 20593) hdiv
-      · exact (by decide : ¬ 123 ∣ 20593) hdiv
-      · exact (by decide : ¬ 124 ∣ 20593) hdiv
-      · exact (by decide : ¬ 125 ∣ 20593) hdiv
-      · exact (by decide : ¬ 126 ∣ 20593) hdiv
-      · exact (by decide : ¬ 127 ∣ 20593) hdiv
-      · exact (by decide : ¬ 128 ∣ 20593) hdiv
-      · exact (by decide : ¬ 129 ∣ 20593) hdiv
-      · exact (by decide : ¬ 130 ∣ 20593) hdiv
-      · exact (by decide : ¬ 131 ∣ 20593) hdiv
-      · exact (by decide : ¬ 132 ∣ 20593) hdiv
-      · exact (by decide : ¬ 133 ∣ 20593) hdiv
-      · exact (by decide : ¬ 134 ∣ 20593) hdiv
-      · exact (by decide : ¬ 135 ∣ 20593) hdiv
-      · exact (by decide : ¬ 136 ∣ 20593) hdiv
-      · exact (by decide : ¬ 137 ∣ 20593) hdiv
-      · exact (by decide : ¬ 138 ∣ 20593) hdiv
-      · exact (by decide : ¬ 139 ∣ 20593) hdiv
-      · exact (by decide : ¬ 140 ∣ 20593) hdiv
-      · exact (by decide : ¬ 141 ∣ 20593) hdiv
-      · exact (by decide : ¬ 142 ∣ 20593) hdiv
-      · exact (by decide : ¬ 143 ∣ 20593) hdiv
-  have hA_factor : (19285 : Nat).factorization 20593 = 0 :=
-    Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 19285)
-  exact primeComponentWitness_of_prime_power_cofactor
-    12 19285 12 2 20593 2985985 1 145 0
-    hq_prime
-    (by decide)
-    (by decide)
-    (by decide)
-    hA_factor
-    (by decide)
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 20593 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 19285)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A19285_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 19285 12 2 := by
@@ -7376,24 +2666,13 @@ theorem concrete_generated_b12_F12_A19285_p2_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b12_F12_A19285_p3_prime_witness :
     PrimeComponentWitness 12 19285 12 3 157 := by
-  refine ⟨(by decide : Nat.Prime 157), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 157 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 157 = 1 := by
-      rw [show (430002433 : Nat) = 157 * 2738869 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 157),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 2738869),
-      ]
-    rw [hfactor]
-    have hA_factor : (19285 : Nat).factorization 157 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 19285)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 19285)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A19285_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 19285 12 3 := by
@@ -7428,7 +2707,8 @@ theorem orderOf_b12_mod462333443_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 462333443)ˣ) :
           ZMod 462333443) ^ 12) =
         (1 : ZMod 462333443)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -7467,168 +2747,13 @@ theorem concrete_generated_b12_F12_A3027745_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A3027745_p2_prime_witness :
     PrimeComponentWitness 12 3027745 12 2 20593 := by
-  have hq_prime : Nat.Prime 20593 := by
-    rw [Nat.prime_def_le_sqrt]
-    constructor
-    · decide
-    · intro m hm_ge hm_le hdiv
-      have hm_le143 : m ≤ 143 := by
-        have hsqrt_lt : Nat.sqrt 20593 < 144 :=
-          (Nat.sqrt_lt'.2 (by decide : 20593 < 144 ^ 2))
-        exact Nat.le_of_lt_succ (lt_of_le_of_lt hm_le hsqrt_lt)
-      interval_cases m
-      · exact (by decide : ¬ 2 ∣ 20593) hdiv
-      · exact (by decide : ¬ 3 ∣ 20593) hdiv
-      · exact (by decide : ¬ 4 ∣ 20593) hdiv
-      · exact (by decide : ¬ 5 ∣ 20593) hdiv
-      · exact (by decide : ¬ 6 ∣ 20593) hdiv
-      · exact (by decide : ¬ 7 ∣ 20593) hdiv
-      · exact (by decide : ¬ 8 ∣ 20593) hdiv
-      · exact (by decide : ¬ 9 ∣ 20593) hdiv
-      · exact (by decide : ¬ 10 ∣ 20593) hdiv
-      · exact (by decide : ¬ 11 ∣ 20593) hdiv
-      · exact (by decide : ¬ 12 ∣ 20593) hdiv
-      · exact (by decide : ¬ 13 ∣ 20593) hdiv
-      · exact (by decide : ¬ 14 ∣ 20593) hdiv
-      · exact (by decide : ¬ 15 ∣ 20593) hdiv
-      · exact (by decide : ¬ 16 ∣ 20593) hdiv
-      · exact (by decide : ¬ 17 ∣ 20593) hdiv
-      · exact (by decide : ¬ 18 ∣ 20593) hdiv
-      · exact (by decide : ¬ 19 ∣ 20593) hdiv
-      · exact (by decide : ¬ 20 ∣ 20593) hdiv
-      · exact (by decide : ¬ 21 ∣ 20593) hdiv
-      · exact (by decide : ¬ 22 ∣ 20593) hdiv
-      · exact (by decide : ¬ 23 ∣ 20593) hdiv
-      · exact (by decide : ¬ 24 ∣ 20593) hdiv
-      · exact (by decide : ¬ 25 ∣ 20593) hdiv
-      · exact (by decide : ¬ 26 ∣ 20593) hdiv
-      · exact (by decide : ¬ 27 ∣ 20593) hdiv
-      · exact (by decide : ¬ 28 ∣ 20593) hdiv
-      · exact (by decide : ¬ 29 ∣ 20593) hdiv
-      · exact (by decide : ¬ 30 ∣ 20593) hdiv
-      · exact (by decide : ¬ 31 ∣ 20593) hdiv
-      · exact (by decide : ¬ 32 ∣ 20593) hdiv
-      · exact (by decide : ¬ 33 ∣ 20593) hdiv
-      · exact (by decide : ¬ 34 ∣ 20593) hdiv
-      · exact (by decide : ¬ 35 ∣ 20593) hdiv
-      · exact (by decide : ¬ 36 ∣ 20593) hdiv
-      · exact (by decide : ¬ 37 ∣ 20593) hdiv
-      · exact (by decide : ¬ 38 ∣ 20593) hdiv
-      · exact (by decide : ¬ 39 ∣ 20593) hdiv
-      · exact (by decide : ¬ 40 ∣ 20593) hdiv
-      · exact (by decide : ¬ 41 ∣ 20593) hdiv
-      · exact (by decide : ¬ 42 ∣ 20593) hdiv
-      · exact (by decide : ¬ 43 ∣ 20593) hdiv
-      · exact (by decide : ¬ 44 ∣ 20593) hdiv
-      · exact (by decide : ¬ 45 ∣ 20593) hdiv
-      · exact (by decide : ¬ 46 ∣ 20593) hdiv
-      · exact (by decide : ¬ 47 ∣ 20593) hdiv
-      · exact (by decide : ¬ 48 ∣ 20593) hdiv
-      · exact (by decide : ¬ 49 ∣ 20593) hdiv
-      · exact (by decide : ¬ 50 ∣ 20593) hdiv
-      · exact (by decide : ¬ 51 ∣ 20593) hdiv
-      · exact (by decide : ¬ 52 ∣ 20593) hdiv
-      · exact (by decide : ¬ 53 ∣ 20593) hdiv
-      · exact (by decide : ¬ 54 ∣ 20593) hdiv
-      · exact (by decide : ¬ 55 ∣ 20593) hdiv
-      · exact (by decide : ¬ 56 ∣ 20593) hdiv
-      · exact (by decide : ¬ 57 ∣ 20593) hdiv
-      · exact (by decide : ¬ 58 ∣ 20593) hdiv
-      · exact (by decide : ¬ 59 ∣ 20593) hdiv
-      · exact (by decide : ¬ 60 ∣ 20593) hdiv
-      · exact (by decide : ¬ 61 ∣ 20593) hdiv
-      · exact (by decide : ¬ 62 ∣ 20593) hdiv
-      · exact (by decide : ¬ 63 ∣ 20593) hdiv
-      · exact (by decide : ¬ 64 ∣ 20593) hdiv
-      · exact (by decide : ¬ 65 ∣ 20593) hdiv
-      · exact (by decide : ¬ 66 ∣ 20593) hdiv
-      · exact (by decide : ¬ 67 ∣ 20593) hdiv
-      · exact (by decide : ¬ 68 ∣ 20593) hdiv
-      · exact (by decide : ¬ 69 ∣ 20593) hdiv
-      · exact (by decide : ¬ 70 ∣ 20593) hdiv
-      · exact (by decide : ¬ 71 ∣ 20593) hdiv
-      · exact (by decide : ¬ 72 ∣ 20593) hdiv
-      · exact (by decide : ¬ 73 ∣ 20593) hdiv
-      · exact (by decide : ¬ 74 ∣ 20593) hdiv
-      · exact (by decide : ¬ 75 ∣ 20593) hdiv
-      · exact (by decide : ¬ 76 ∣ 20593) hdiv
-      · exact (by decide : ¬ 77 ∣ 20593) hdiv
-      · exact (by decide : ¬ 78 ∣ 20593) hdiv
-      · exact (by decide : ¬ 79 ∣ 20593) hdiv
-      · exact (by decide : ¬ 80 ∣ 20593) hdiv
-      · exact (by decide : ¬ 81 ∣ 20593) hdiv
-      · exact (by decide : ¬ 82 ∣ 20593) hdiv
-      · exact (by decide : ¬ 83 ∣ 20593) hdiv
-      · exact (by decide : ¬ 84 ∣ 20593) hdiv
-      · exact (by decide : ¬ 85 ∣ 20593) hdiv
-      · exact (by decide : ¬ 86 ∣ 20593) hdiv
-      · exact (by decide : ¬ 87 ∣ 20593) hdiv
-      · exact (by decide : ¬ 88 ∣ 20593) hdiv
-      · exact (by decide : ¬ 89 ∣ 20593) hdiv
-      · exact (by decide : ¬ 90 ∣ 20593) hdiv
-      · exact (by decide : ¬ 91 ∣ 20593) hdiv
-      · exact (by decide : ¬ 92 ∣ 20593) hdiv
-      · exact (by decide : ¬ 93 ∣ 20593) hdiv
-      · exact (by decide : ¬ 94 ∣ 20593) hdiv
-      · exact (by decide : ¬ 95 ∣ 20593) hdiv
-      · exact (by decide : ¬ 96 ∣ 20593) hdiv
-      · exact (by decide : ¬ 97 ∣ 20593) hdiv
-      · exact (by decide : ¬ 98 ∣ 20593) hdiv
-      · exact (by decide : ¬ 99 ∣ 20593) hdiv
-      · exact (by decide : ¬ 100 ∣ 20593) hdiv
-      · exact (by decide : ¬ 101 ∣ 20593) hdiv
-      · exact (by decide : ¬ 102 ∣ 20593) hdiv
-      · exact (by decide : ¬ 103 ∣ 20593) hdiv
-      · exact (by decide : ¬ 104 ∣ 20593) hdiv
-      · exact (by decide : ¬ 105 ∣ 20593) hdiv
-      · exact (by decide : ¬ 106 ∣ 20593) hdiv
-      · exact (by decide : ¬ 107 ∣ 20593) hdiv
-      · exact (by decide : ¬ 108 ∣ 20593) hdiv
-      · exact (by decide : ¬ 109 ∣ 20593) hdiv
-      · exact (by decide : ¬ 110 ∣ 20593) hdiv
-      · exact (by decide : ¬ 111 ∣ 20593) hdiv
-      · exact (by decide : ¬ 112 ∣ 20593) hdiv
-      · exact (by decide : ¬ 113 ∣ 20593) hdiv
-      · exact (by decide : ¬ 114 ∣ 20593) hdiv
-      · exact (by decide : ¬ 115 ∣ 20593) hdiv
-      · exact (by decide : ¬ 116 ∣ 20593) hdiv
-      · exact (by decide : ¬ 117 ∣ 20593) hdiv
-      · exact (by decide : ¬ 118 ∣ 20593) hdiv
-      · exact (by decide : ¬ 119 ∣ 20593) hdiv
-      · exact (by decide : ¬ 120 ∣ 20593) hdiv
-      · exact (by decide : ¬ 121 ∣ 20593) hdiv
-      · exact (by decide : ¬ 122 ∣ 20593) hdiv
-      · exact (by decide : ¬ 123 ∣ 20593) hdiv
-      · exact (by decide : ¬ 124 ∣ 20593) hdiv
-      · exact (by decide : ¬ 125 ∣ 20593) hdiv
-      · exact (by decide : ¬ 126 ∣ 20593) hdiv
-      · exact (by decide : ¬ 127 ∣ 20593) hdiv
-      · exact (by decide : ¬ 128 ∣ 20593) hdiv
-      · exact (by decide : ¬ 129 ∣ 20593) hdiv
-      · exact (by decide : ¬ 130 ∣ 20593) hdiv
-      · exact (by decide : ¬ 131 ∣ 20593) hdiv
-      · exact (by decide : ¬ 132 ∣ 20593) hdiv
-      · exact (by decide : ¬ 133 ∣ 20593) hdiv
-      · exact (by decide : ¬ 134 ∣ 20593) hdiv
-      · exact (by decide : ¬ 135 ∣ 20593) hdiv
-      · exact (by decide : ¬ 136 ∣ 20593) hdiv
-      · exact (by decide : ¬ 137 ∣ 20593) hdiv
-      · exact (by decide : ¬ 138 ∣ 20593) hdiv
-      · exact (by decide : ¬ 139 ∣ 20593) hdiv
-      · exact (by decide : ¬ 140 ∣ 20593) hdiv
-      · exact (by decide : ¬ 141 ∣ 20593) hdiv
-      · exact (by decide : ¬ 142 ∣ 20593) hdiv
-      · exact (by decide : ¬ 143 ∣ 20593) hdiv
-  have hA_factor : (3027745 : Nat).factorization 20593 = 0 :=
-    Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 3027745)
-  exact primeComponentWitness_of_prime_power_cofactor
-    12 3027745 12 2 20593 2985985 1 145 0
-    hq_prime
-    (by decide)
-    (by decide)
-    (by decide)
-    hA_factor
-    (by decide)
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 20593 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 3027745)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A3027745_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 3027745 12 2 := by
@@ -7636,168 +2761,13 @@ theorem concrete_generated_b12_F12_A3027745_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A3027745_p3_prime_witness :
     PrimeComponentWitness 12 3027745 12 3 20593 := by
-  have hq_prime : Nat.Prime 20593 := by
-    rw [Nat.prime_def_le_sqrt]
-    constructor
-    · decide
-    · intro m hm_ge hm_le hdiv
-      have hm_le143 : m ≤ 143 := by
-        have hsqrt_lt : Nat.sqrt 20593 < 144 :=
-          (Nat.sqrt_lt'.2 (by decide : 20593 < 144 ^ 2))
-        exact Nat.le_of_lt_succ (lt_of_le_of_lt hm_le hsqrt_lt)
-      interval_cases m
-      · exact (by decide : ¬ 2 ∣ 20593) hdiv
-      · exact (by decide : ¬ 3 ∣ 20593) hdiv
-      · exact (by decide : ¬ 4 ∣ 20593) hdiv
-      · exact (by decide : ¬ 5 ∣ 20593) hdiv
-      · exact (by decide : ¬ 6 ∣ 20593) hdiv
-      · exact (by decide : ¬ 7 ∣ 20593) hdiv
-      · exact (by decide : ¬ 8 ∣ 20593) hdiv
-      · exact (by decide : ¬ 9 ∣ 20593) hdiv
-      · exact (by decide : ¬ 10 ∣ 20593) hdiv
-      · exact (by decide : ¬ 11 ∣ 20593) hdiv
-      · exact (by decide : ¬ 12 ∣ 20593) hdiv
-      · exact (by decide : ¬ 13 ∣ 20593) hdiv
-      · exact (by decide : ¬ 14 ∣ 20593) hdiv
-      · exact (by decide : ¬ 15 ∣ 20593) hdiv
-      · exact (by decide : ¬ 16 ∣ 20593) hdiv
-      · exact (by decide : ¬ 17 ∣ 20593) hdiv
-      · exact (by decide : ¬ 18 ∣ 20593) hdiv
-      · exact (by decide : ¬ 19 ∣ 20593) hdiv
-      · exact (by decide : ¬ 20 ∣ 20593) hdiv
-      · exact (by decide : ¬ 21 ∣ 20593) hdiv
-      · exact (by decide : ¬ 22 ∣ 20593) hdiv
-      · exact (by decide : ¬ 23 ∣ 20593) hdiv
-      · exact (by decide : ¬ 24 ∣ 20593) hdiv
-      · exact (by decide : ¬ 25 ∣ 20593) hdiv
-      · exact (by decide : ¬ 26 ∣ 20593) hdiv
-      · exact (by decide : ¬ 27 ∣ 20593) hdiv
-      · exact (by decide : ¬ 28 ∣ 20593) hdiv
-      · exact (by decide : ¬ 29 ∣ 20593) hdiv
-      · exact (by decide : ¬ 30 ∣ 20593) hdiv
-      · exact (by decide : ¬ 31 ∣ 20593) hdiv
-      · exact (by decide : ¬ 32 ∣ 20593) hdiv
-      · exact (by decide : ¬ 33 ∣ 20593) hdiv
-      · exact (by decide : ¬ 34 ∣ 20593) hdiv
-      · exact (by decide : ¬ 35 ∣ 20593) hdiv
-      · exact (by decide : ¬ 36 ∣ 20593) hdiv
-      · exact (by decide : ¬ 37 ∣ 20593) hdiv
-      · exact (by decide : ¬ 38 ∣ 20593) hdiv
-      · exact (by decide : ¬ 39 ∣ 20593) hdiv
-      · exact (by decide : ¬ 40 ∣ 20593) hdiv
-      · exact (by decide : ¬ 41 ∣ 20593) hdiv
-      · exact (by decide : ¬ 42 ∣ 20593) hdiv
-      · exact (by decide : ¬ 43 ∣ 20593) hdiv
-      · exact (by decide : ¬ 44 ∣ 20593) hdiv
-      · exact (by decide : ¬ 45 ∣ 20593) hdiv
-      · exact (by decide : ¬ 46 ∣ 20593) hdiv
-      · exact (by decide : ¬ 47 ∣ 20593) hdiv
-      · exact (by decide : ¬ 48 ∣ 20593) hdiv
-      · exact (by decide : ¬ 49 ∣ 20593) hdiv
-      · exact (by decide : ¬ 50 ∣ 20593) hdiv
-      · exact (by decide : ¬ 51 ∣ 20593) hdiv
-      · exact (by decide : ¬ 52 ∣ 20593) hdiv
-      · exact (by decide : ¬ 53 ∣ 20593) hdiv
-      · exact (by decide : ¬ 54 ∣ 20593) hdiv
-      · exact (by decide : ¬ 55 ∣ 20593) hdiv
-      · exact (by decide : ¬ 56 ∣ 20593) hdiv
-      · exact (by decide : ¬ 57 ∣ 20593) hdiv
-      · exact (by decide : ¬ 58 ∣ 20593) hdiv
-      · exact (by decide : ¬ 59 ∣ 20593) hdiv
-      · exact (by decide : ¬ 60 ∣ 20593) hdiv
-      · exact (by decide : ¬ 61 ∣ 20593) hdiv
-      · exact (by decide : ¬ 62 ∣ 20593) hdiv
-      · exact (by decide : ¬ 63 ∣ 20593) hdiv
-      · exact (by decide : ¬ 64 ∣ 20593) hdiv
-      · exact (by decide : ¬ 65 ∣ 20593) hdiv
-      · exact (by decide : ¬ 66 ∣ 20593) hdiv
-      · exact (by decide : ¬ 67 ∣ 20593) hdiv
-      · exact (by decide : ¬ 68 ∣ 20593) hdiv
-      · exact (by decide : ¬ 69 ∣ 20593) hdiv
-      · exact (by decide : ¬ 70 ∣ 20593) hdiv
-      · exact (by decide : ¬ 71 ∣ 20593) hdiv
-      · exact (by decide : ¬ 72 ∣ 20593) hdiv
-      · exact (by decide : ¬ 73 ∣ 20593) hdiv
-      · exact (by decide : ¬ 74 ∣ 20593) hdiv
-      · exact (by decide : ¬ 75 ∣ 20593) hdiv
-      · exact (by decide : ¬ 76 ∣ 20593) hdiv
-      · exact (by decide : ¬ 77 ∣ 20593) hdiv
-      · exact (by decide : ¬ 78 ∣ 20593) hdiv
-      · exact (by decide : ¬ 79 ∣ 20593) hdiv
-      · exact (by decide : ¬ 80 ∣ 20593) hdiv
-      · exact (by decide : ¬ 81 ∣ 20593) hdiv
-      · exact (by decide : ¬ 82 ∣ 20593) hdiv
-      · exact (by decide : ¬ 83 ∣ 20593) hdiv
-      · exact (by decide : ¬ 84 ∣ 20593) hdiv
-      · exact (by decide : ¬ 85 ∣ 20593) hdiv
-      · exact (by decide : ¬ 86 ∣ 20593) hdiv
-      · exact (by decide : ¬ 87 ∣ 20593) hdiv
-      · exact (by decide : ¬ 88 ∣ 20593) hdiv
-      · exact (by decide : ¬ 89 ∣ 20593) hdiv
-      · exact (by decide : ¬ 90 ∣ 20593) hdiv
-      · exact (by decide : ¬ 91 ∣ 20593) hdiv
-      · exact (by decide : ¬ 92 ∣ 20593) hdiv
-      · exact (by decide : ¬ 93 ∣ 20593) hdiv
-      · exact (by decide : ¬ 94 ∣ 20593) hdiv
-      · exact (by decide : ¬ 95 ∣ 20593) hdiv
-      · exact (by decide : ¬ 96 ∣ 20593) hdiv
-      · exact (by decide : ¬ 97 ∣ 20593) hdiv
-      · exact (by decide : ¬ 98 ∣ 20593) hdiv
-      · exact (by decide : ¬ 99 ∣ 20593) hdiv
-      · exact (by decide : ¬ 100 ∣ 20593) hdiv
-      · exact (by decide : ¬ 101 ∣ 20593) hdiv
-      · exact (by decide : ¬ 102 ∣ 20593) hdiv
-      · exact (by decide : ¬ 103 ∣ 20593) hdiv
-      · exact (by decide : ¬ 104 ∣ 20593) hdiv
-      · exact (by decide : ¬ 105 ∣ 20593) hdiv
-      · exact (by decide : ¬ 106 ∣ 20593) hdiv
-      · exact (by decide : ¬ 107 ∣ 20593) hdiv
-      · exact (by decide : ¬ 108 ∣ 20593) hdiv
-      · exact (by decide : ¬ 109 ∣ 20593) hdiv
-      · exact (by decide : ¬ 110 ∣ 20593) hdiv
-      · exact (by decide : ¬ 111 ∣ 20593) hdiv
-      · exact (by decide : ¬ 112 ∣ 20593) hdiv
-      · exact (by decide : ¬ 113 ∣ 20593) hdiv
-      · exact (by decide : ¬ 114 ∣ 20593) hdiv
-      · exact (by decide : ¬ 115 ∣ 20593) hdiv
-      · exact (by decide : ¬ 116 ∣ 20593) hdiv
-      · exact (by decide : ¬ 117 ∣ 20593) hdiv
-      · exact (by decide : ¬ 118 ∣ 20593) hdiv
-      · exact (by decide : ¬ 119 ∣ 20593) hdiv
-      · exact (by decide : ¬ 120 ∣ 20593) hdiv
-      · exact (by decide : ¬ 121 ∣ 20593) hdiv
-      · exact (by decide : ¬ 122 ∣ 20593) hdiv
-      · exact (by decide : ¬ 123 ∣ 20593) hdiv
-      · exact (by decide : ¬ 124 ∣ 20593) hdiv
-      · exact (by decide : ¬ 125 ∣ 20593) hdiv
-      · exact (by decide : ¬ 126 ∣ 20593) hdiv
-      · exact (by decide : ¬ 127 ∣ 20593) hdiv
-      · exact (by decide : ¬ 128 ∣ 20593) hdiv
-      · exact (by decide : ¬ 129 ∣ 20593) hdiv
-      · exact (by decide : ¬ 130 ∣ 20593) hdiv
-      · exact (by decide : ¬ 131 ∣ 20593) hdiv
-      · exact (by decide : ¬ 132 ∣ 20593) hdiv
-      · exact (by decide : ¬ 133 ∣ 20593) hdiv
-      · exact (by decide : ¬ 134 ∣ 20593) hdiv
-      · exact (by decide : ¬ 135 ∣ 20593) hdiv
-      · exact (by decide : ¬ 136 ∣ 20593) hdiv
-      · exact (by decide : ¬ 137 ∣ 20593) hdiv
-      · exact (by decide : ¬ 138 ∣ 20593) hdiv
-      · exact (by decide : ¬ 139 ∣ 20593) hdiv
-      · exact (by decide : ¬ 140 ∣ 20593) hdiv
-      · exact (by decide : ¬ 141 ∣ 20593) hdiv
-      · exact (by decide : ¬ 142 ∣ 20593) hdiv
-      · exact (by decide : ¬ 143 ∣ 20593) hdiv
-  have hA_factor : (3027745 : Nat).factorization 20593 = 0 :=
-    Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 3027745)
-  exact primeComponentWitness_of_prime_power_cofactor
-    12 3027745 12 3 20593 430002433 1 20881 0
-    hq_prime
-    (by decide)
-    (by decide)
-    (by decide)
-    hA_factor
-    (by decide)
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 20593 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 3027745)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A3027745_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 3027745 12 3 := by
@@ -7832,7 +2802,8 @@ theorem orderOf_b12_mod2944799_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 2944799)ˣ) :
           ZMod 2944799) ^ 12) =
         (1 : ZMod 2944799)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -7871,168 +2842,13 @@ theorem concrete_generated_b12_F12_A212135_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A212135_p2_prime_witness :
     PrimeComponentWitness 12 212135 12 2 20593 := by
-  have hq_prime : Nat.Prime 20593 := by
-    rw [Nat.prime_def_le_sqrt]
-    constructor
-    · decide
-    · intro m hm_ge hm_le hdiv
-      have hm_le143 : m ≤ 143 := by
-        have hsqrt_lt : Nat.sqrt 20593 < 144 :=
-          (Nat.sqrt_lt'.2 (by decide : 20593 < 144 ^ 2))
-        exact Nat.le_of_lt_succ (lt_of_le_of_lt hm_le hsqrt_lt)
-      interval_cases m
-      · exact (by decide : ¬ 2 ∣ 20593) hdiv
-      · exact (by decide : ¬ 3 ∣ 20593) hdiv
-      · exact (by decide : ¬ 4 ∣ 20593) hdiv
-      · exact (by decide : ¬ 5 ∣ 20593) hdiv
-      · exact (by decide : ¬ 6 ∣ 20593) hdiv
-      · exact (by decide : ¬ 7 ∣ 20593) hdiv
-      · exact (by decide : ¬ 8 ∣ 20593) hdiv
-      · exact (by decide : ¬ 9 ∣ 20593) hdiv
-      · exact (by decide : ¬ 10 ∣ 20593) hdiv
-      · exact (by decide : ¬ 11 ∣ 20593) hdiv
-      · exact (by decide : ¬ 12 ∣ 20593) hdiv
-      · exact (by decide : ¬ 13 ∣ 20593) hdiv
-      · exact (by decide : ¬ 14 ∣ 20593) hdiv
-      · exact (by decide : ¬ 15 ∣ 20593) hdiv
-      · exact (by decide : ¬ 16 ∣ 20593) hdiv
-      · exact (by decide : ¬ 17 ∣ 20593) hdiv
-      · exact (by decide : ¬ 18 ∣ 20593) hdiv
-      · exact (by decide : ¬ 19 ∣ 20593) hdiv
-      · exact (by decide : ¬ 20 ∣ 20593) hdiv
-      · exact (by decide : ¬ 21 ∣ 20593) hdiv
-      · exact (by decide : ¬ 22 ∣ 20593) hdiv
-      · exact (by decide : ¬ 23 ∣ 20593) hdiv
-      · exact (by decide : ¬ 24 ∣ 20593) hdiv
-      · exact (by decide : ¬ 25 ∣ 20593) hdiv
-      · exact (by decide : ¬ 26 ∣ 20593) hdiv
-      · exact (by decide : ¬ 27 ∣ 20593) hdiv
-      · exact (by decide : ¬ 28 ∣ 20593) hdiv
-      · exact (by decide : ¬ 29 ∣ 20593) hdiv
-      · exact (by decide : ¬ 30 ∣ 20593) hdiv
-      · exact (by decide : ¬ 31 ∣ 20593) hdiv
-      · exact (by decide : ¬ 32 ∣ 20593) hdiv
-      · exact (by decide : ¬ 33 ∣ 20593) hdiv
-      · exact (by decide : ¬ 34 ∣ 20593) hdiv
-      · exact (by decide : ¬ 35 ∣ 20593) hdiv
-      · exact (by decide : ¬ 36 ∣ 20593) hdiv
-      · exact (by decide : ¬ 37 ∣ 20593) hdiv
-      · exact (by decide : ¬ 38 ∣ 20593) hdiv
-      · exact (by decide : ¬ 39 ∣ 20593) hdiv
-      · exact (by decide : ¬ 40 ∣ 20593) hdiv
-      · exact (by decide : ¬ 41 ∣ 20593) hdiv
-      · exact (by decide : ¬ 42 ∣ 20593) hdiv
-      · exact (by decide : ¬ 43 ∣ 20593) hdiv
-      · exact (by decide : ¬ 44 ∣ 20593) hdiv
-      · exact (by decide : ¬ 45 ∣ 20593) hdiv
-      · exact (by decide : ¬ 46 ∣ 20593) hdiv
-      · exact (by decide : ¬ 47 ∣ 20593) hdiv
-      · exact (by decide : ¬ 48 ∣ 20593) hdiv
-      · exact (by decide : ¬ 49 ∣ 20593) hdiv
-      · exact (by decide : ¬ 50 ∣ 20593) hdiv
-      · exact (by decide : ¬ 51 ∣ 20593) hdiv
-      · exact (by decide : ¬ 52 ∣ 20593) hdiv
-      · exact (by decide : ¬ 53 ∣ 20593) hdiv
-      · exact (by decide : ¬ 54 ∣ 20593) hdiv
-      · exact (by decide : ¬ 55 ∣ 20593) hdiv
-      · exact (by decide : ¬ 56 ∣ 20593) hdiv
-      · exact (by decide : ¬ 57 ∣ 20593) hdiv
-      · exact (by decide : ¬ 58 ∣ 20593) hdiv
-      · exact (by decide : ¬ 59 ∣ 20593) hdiv
-      · exact (by decide : ¬ 60 ∣ 20593) hdiv
-      · exact (by decide : ¬ 61 ∣ 20593) hdiv
-      · exact (by decide : ¬ 62 ∣ 20593) hdiv
-      · exact (by decide : ¬ 63 ∣ 20593) hdiv
-      · exact (by decide : ¬ 64 ∣ 20593) hdiv
-      · exact (by decide : ¬ 65 ∣ 20593) hdiv
-      · exact (by decide : ¬ 66 ∣ 20593) hdiv
-      · exact (by decide : ¬ 67 ∣ 20593) hdiv
-      · exact (by decide : ¬ 68 ∣ 20593) hdiv
-      · exact (by decide : ¬ 69 ∣ 20593) hdiv
-      · exact (by decide : ¬ 70 ∣ 20593) hdiv
-      · exact (by decide : ¬ 71 ∣ 20593) hdiv
-      · exact (by decide : ¬ 72 ∣ 20593) hdiv
-      · exact (by decide : ¬ 73 ∣ 20593) hdiv
-      · exact (by decide : ¬ 74 ∣ 20593) hdiv
-      · exact (by decide : ¬ 75 ∣ 20593) hdiv
-      · exact (by decide : ¬ 76 ∣ 20593) hdiv
-      · exact (by decide : ¬ 77 ∣ 20593) hdiv
-      · exact (by decide : ¬ 78 ∣ 20593) hdiv
-      · exact (by decide : ¬ 79 ∣ 20593) hdiv
-      · exact (by decide : ¬ 80 ∣ 20593) hdiv
-      · exact (by decide : ¬ 81 ∣ 20593) hdiv
-      · exact (by decide : ¬ 82 ∣ 20593) hdiv
-      · exact (by decide : ¬ 83 ∣ 20593) hdiv
-      · exact (by decide : ¬ 84 ∣ 20593) hdiv
-      · exact (by decide : ¬ 85 ∣ 20593) hdiv
-      · exact (by decide : ¬ 86 ∣ 20593) hdiv
-      · exact (by decide : ¬ 87 ∣ 20593) hdiv
-      · exact (by decide : ¬ 88 ∣ 20593) hdiv
-      · exact (by decide : ¬ 89 ∣ 20593) hdiv
-      · exact (by decide : ¬ 90 ∣ 20593) hdiv
-      · exact (by decide : ¬ 91 ∣ 20593) hdiv
-      · exact (by decide : ¬ 92 ∣ 20593) hdiv
-      · exact (by decide : ¬ 93 ∣ 20593) hdiv
-      · exact (by decide : ¬ 94 ∣ 20593) hdiv
-      · exact (by decide : ¬ 95 ∣ 20593) hdiv
-      · exact (by decide : ¬ 96 ∣ 20593) hdiv
-      · exact (by decide : ¬ 97 ∣ 20593) hdiv
-      · exact (by decide : ¬ 98 ∣ 20593) hdiv
-      · exact (by decide : ¬ 99 ∣ 20593) hdiv
-      · exact (by decide : ¬ 100 ∣ 20593) hdiv
-      · exact (by decide : ¬ 101 ∣ 20593) hdiv
-      · exact (by decide : ¬ 102 ∣ 20593) hdiv
-      · exact (by decide : ¬ 103 ∣ 20593) hdiv
-      · exact (by decide : ¬ 104 ∣ 20593) hdiv
-      · exact (by decide : ¬ 105 ∣ 20593) hdiv
-      · exact (by decide : ¬ 106 ∣ 20593) hdiv
-      · exact (by decide : ¬ 107 ∣ 20593) hdiv
-      · exact (by decide : ¬ 108 ∣ 20593) hdiv
-      · exact (by decide : ¬ 109 ∣ 20593) hdiv
-      · exact (by decide : ¬ 110 ∣ 20593) hdiv
-      · exact (by decide : ¬ 111 ∣ 20593) hdiv
-      · exact (by decide : ¬ 112 ∣ 20593) hdiv
-      · exact (by decide : ¬ 113 ∣ 20593) hdiv
-      · exact (by decide : ¬ 114 ∣ 20593) hdiv
-      · exact (by decide : ¬ 115 ∣ 20593) hdiv
-      · exact (by decide : ¬ 116 ∣ 20593) hdiv
-      · exact (by decide : ¬ 117 ∣ 20593) hdiv
-      · exact (by decide : ¬ 118 ∣ 20593) hdiv
-      · exact (by decide : ¬ 119 ∣ 20593) hdiv
-      · exact (by decide : ¬ 120 ∣ 20593) hdiv
-      · exact (by decide : ¬ 121 ∣ 20593) hdiv
-      · exact (by decide : ¬ 122 ∣ 20593) hdiv
-      · exact (by decide : ¬ 123 ∣ 20593) hdiv
-      · exact (by decide : ¬ 124 ∣ 20593) hdiv
-      · exact (by decide : ¬ 125 ∣ 20593) hdiv
-      · exact (by decide : ¬ 126 ∣ 20593) hdiv
-      · exact (by decide : ¬ 127 ∣ 20593) hdiv
-      · exact (by decide : ¬ 128 ∣ 20593) hdiv
-      · exact (by decide : ¬ 129 ∣ 20593) hdiv
-      · exact (by decide : ¬ 130 ∣ 20593) hdiv
-      · exact (by decide : ¬ 131 ∣ 20593) hdiv
-      · exact (by decide : ¬ 132 ∣ 20593) hdiv
-      · exact (by decide : ¬ 133 ∣ 20593) hdiv
-      · exact (by decide : ¬ 134 ∣ 20593) hdiv
-      · exact (by decide : ¬ 135 ∣ 20593) hdiv
-      · exact (by decide : ¬ 136 ∣ 20593) hdiv
-      · exact (by decide : ¬ 137 ∣ 20593) hdiv
-      · exact (by decide : ¬ 138 ∣ 20593) hdiv
-      · exact (by decide : ¬ 139 ∣ 20593) hdiv
-      · exact (by decide : ¬ 140 ∣ 20593) hdiv
-      · exact (by decide : ¬ 141 ∣ 20593) hdiv
-      · exact (by decide : ¬ 142 ∣ 20593) hdiv
-      · exact (by decide : ¬ 143 ∣ 20593) hdiv
-  have hA_factor : (212135 : Nat).factorization 20593 = 0 :=
-    Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 212135)
-  exact primeComponentWitness_of_prime_power_cofactor
-    12 212135 12 2 20593 2985985 1 145 0
-    hq_prime
-    (by decide)
-    (by decide)
-    (by decide)
-    hA_factor
-    (by decide)
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 20593 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 212135)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A212135_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 212135 12 2 := by
@@ -8041,24 +2857,13 @@ theorem concrete_generated_b12_F12_A212135_p2_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b12_F12_A212135_p3_prime_witness :
     PrimeComponentWitness 12 212135 12 3 157 := by
-  refine ⟨(by decide : Nat.Prime 157), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 157 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 157 = 1 := by
-      rw [show (430002433 : Nat) = 157 * 2738869 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 157),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 2738869),
-      ]
-    rw [hfactor]
-    have hA_factor : (212135 : Nat).factorization 157 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 212135)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 212135)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A212135_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 212135 12 3 := by
@@ -8093,7 +2898,8 @@ theorem orderOf_b12_mod42030313_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 42030313)ˣ) :
           ZMod 42030313) ^ 12) =
         (1 : ZMod 42030313)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -8132,168 +2938,13 @@ theorem concrete_generated_b12_F12_A250705_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A250705_p2_prime_witness :
     PrimeComponentWitness 12 250705 12 2 20593 := by
-  have hq_prime : Nat.Prime 20593 := by
-    rw [Nat.prime_def_le_sqrt]
-    constructor
-    · decide
-    · intro m hm_ge hm_le hdiv
-      have hm_le143 : m ≤ 143 := by
-        have hsqrt_lt : Nat.sqrt 20593 < 144 :=
-          (Nat.sqrt_lt'.2 (by decide : 20593 < 144 ^ 2))
-        exact Nat.le_of_lt_succ (lt_of_le_of_lt hm_le hsqrt_lt)
-      interval_cases m
-      · exact (by decide : ¬ 2 ∣ 20593) hdiv
-      · exact (by decide : ¬ 3 ∣ 20593) hdiv
-      · exact (by decide : ¬ 4 ∣ 20593) hdiv
-      · exact (by decide : ¬ 5 ∣ 20593) hdiv
-      · exact (by decide : ¬ 6 ∣ 20593) hdiv
-      · exact (by decide : ¬ 7 ∣ 20593) hdiv
-      · exact (by decide : ¬ 8 ∣ 20593) hdiv
-      · exact (by decide : ¬ 9 ∣ 20593) hdiv
-      · exact (by decide : ¬ 10 ∣ 20593) hdiv
-      · exact (by decide : ¬ 11 ∣ 20593) hdiv
-      · exact (by decide : ¬ 12 ∣ 20593) hdiv
-      · exact (by decide : ¬ 13 ∣ 20593) hdiv
-      · exact (by decide : ¬ 14 ∣ 20593) hdiv
-      · exact (by decide : ¬ 15 ∣ 20593) hdiv
-      · exact (by decide : ¬ 16 ∣ 20593) hdiv
-      · exact (by decide : ¬ 17 ∣ 20593) hdiv
-      · exact (by decide : ¬ 18 ∣ 20593) hdiv
-      · exact (by decide : ¬ 19 ∣ 20593) hdiv
-      · exact (by decide : ¬ 20 ∣ 20593) hdiv
-      · exact (by decide : ¬ 21 ∣ 20593) hdiv
-      · exact (by decide : ¬ 22 ∣ 20593) hdiv
-      · exact (by decide : ¬ 23 ∣ 20593) hdiv
-      · exact (by decide : ¬ 24 ∣ 20593) hdiv
-      · exact (by decide : ¬ 25 ∣ 20593) hdiv
-      · exact (by decide : ¬ 26 ∣ 20593) hdiv
-      · exact (by decide : ¬ 27 ∣ 20593) hdiv
-      · exact (by decide : ¬ 28 ∣ 20593) hdiv
-      · exact (by decide : ¬ 29 ∣ 20593) hdiv
-      · exact (by decide : ¬ 30 ∣ 20593) hdiv
-      · exact (by decide : ¬ 31 ∣ 20593) hdiv
-      · exact (by decide : ¬ 32 ∣ 20593) hdiv
-      · exact (by decide : ¬ 33 ∣ 20593) hdiv
-      · exact (by decide : ¬ 34 ∣ 20593) hdiv
-      · exact (by decide : ¬ 35 ∣ 20593) hdiv
-      · exact (by decide : ¬ 36 ∣ 20593) hdiv
-      · exact (by decide : ¬ 37 ∣ 20593) hdiv
-      · exact (by decide : ¬ 38 ∣ 20593) hdiv
-      · exact (by decide : ¬ 39 ∣ 20593) hdiv
-      · exact (by decide : ¬ 40 ∣ 20593) hdiv
-      · exact (by decide : ¬ 41 ∣ 20593) hdiv
-      · exact (by decide : ¬ 42 ∣ 20593) hdiv
-      · exact (by decide : ¬ 43 ∣ 20593) hdiv
-      · exact (by decide : ¬ 44 ∣ 20593) hdiv
-      · exact (by decide : ¬ 45 ∣ 20593) hdiv
-      · exact (by decide : ¬ 46 ∣ 20593) hdiv
-      · exact (by decide : ¬ 47 ∣ 20593) hdiv
-      · exact (by decide : ¬ 48 ∣ 20593) hdiv
-      · exact (by decide : ¬ 49 ∣ 20593) hdiv
-      · exact (by decide : ¬ 50 ∣ 20593) hdiv
-      · exact (by decide : ¬ 51 ∣ 20593) hdiv
-      · exact (by decide : ¬ 52 ∣ 20593) hdiv
-      · exact (by decide : ¬ 53 ∣ 20593) hdiv
-      · exact (by decide : ¬ 54 ∣ 20593) hdiv
-      · exact (by decide : ¬ 55 ∣ 20593) hdiv
-      · exact (by decide : ¬ 56 ∣ 20593) hdiv
-      · exact (by decide : ¬ 57 ∣ 20593) hdiv
-      · exact (by decide : ¬ 58 ∣ 20593) hdiv
-      · exact (by decide : ¬ 59 ∣ 20593) hdiv
-      · exact (by decide : ¬ 60 ∣ 20593) hdiv
-      · exact (by decide : ¬ 61 ∣ 20593) hdiv
-      · exact (by decide : ¬ 62 ∣ 20593) hdiv
-      · exact (by decide : ¬ 63 ∣ 20593) hdiv
-      · exact (by decide : ¬ 64 ∣ 20593) hdiv
-      · exact (by decide : ¬ 65 ∣ 20593) hdiv
-      · exact (by decide : ¬ 66 ∣ 20593) hdiv
-      · exact (by decide : ¬ 67 ∣ 20593) hdiv
-      · exact (by decide : ¬ 68 ∣ 20593) hdiv
-      · exact (by decide : ¬ 69 ∣ 20593) hdiv
-      · exact (by decide : ¬ 70 ∣ 20593) hdiv
-      · exact (by decide : ¬ 71 ∣ 20593) hdiv
-      · exact (by decide : ¬ 72 ∣ 20593) hdiv
-      · exact (by decide : ¬ 73 ∣ 20593) hdiv
-      · exact (by decide : ¬ 74 ∣ 20593) hdiv
-      · exact (by decide : ¬ 75 ∣ 20593) hdiv
-      · exact (by decide : ¬ 76 ∣ 20593) hdiv
-      · exact (by decide : ¬ 77 ∣ 20593) hdiv
-      · exact (by decide : ¬ 78 ∣ 20593) hdiv
-      · exact (by decide : ¬ 79 ∣ 20593) hdiv
-      · exact (by decide : ¬ 80 ∣ 20593) hdiv
-      · exact (by decide : ¬ 81 ∣ 20593) hdiv
-      · exact (by decide : ¬ 82 ∣ 20593) hdiv
-      · exact (by decide : ¬ 83 ∣ 20593) hdiv
-      · exact (by decide : ¬ 84 ∣ 20593) hdiv
-      · exact (by decide : ¬ 85 ∣ 20593) hdiv
-      · exact (by decide : ¬ 86 ∣ 20593) hdiv
-      · exact (by decide : ¬ 87 ∣ 20593) hdiv
-      · exact (by decide : ¬ 88 ∣ 20593) hdiv
-      · exact (by decide : ¬ 89 ∣ 20593) hdiv
-      · exact (by decide : ¬ 90 ∣ 20593) hdiv
-      · exact (by decide : ¬ 91 ∣ 20593) hdiv
-      · exact (by decide : ¬ 92 ∣ 20593) hdiv
-      · exact (by decide : ¬ 93 ∣ 20593) hdiv
-      · exact (by decide : ¬ 94 ∣ 20593) hdiv
-      · exact (by decide : ¬ 95 ∣ 20593) hdiv
-      · exact (by decide : ¬ 96 ∣ 20593) hdiv
-      · exact (by decide : ¬ 97 ∣ 20593) hdiv
-      · exact (by decide : ¬ 98 ∣ 20593) hdiv
-      · exact (by decide : ¬ 99 ∣ 20593) hdiv
-      · exact (by decide : ¬ 100 ∣ 20593) hdiv
-      · exact (by decide : ¬ 101 ∣ 20593) hdiv
-      · exact (by decide : ¬ 102 ∣ 20593) hdiv
-      · exact (by decide : ¬ 103 ∣ 20593) hdiv
-      · exact (by decide : ¬ 104 ∣ 20593) hdiv
-      · exact (by decide : ¬ 105 ∣ 20593) hdiv
-      · exact (by decide : ¬ 106 ∣ 20593) hdiv
-      · exact (by decide : ¬ 107 ∣ 20593) hdiv
-      · exact (by decide : ¬ 108 ∣ 20593) hdiv
-      · exact (by decide : ¬ 109 ∣ 20593) hdiv
-      · exact (by decide : ¬ 110 ∣ 20593) hdiv
-      · exact (by decide : ¬ 111 ∣ 20593) hdiv
-      · exact (by decide : ¬ 112 ∣ 20593) hdiv
-      · exact (by decide : ¬ 113 ∣ 20593) hdiv
-      · exact (by decide : ¬ 114 ∣ 20593) hdiv
-      · exact (by decide : ¬ 115 ∣ 20593) hdiv
-      · exact (by decide : ¬ 116 ∣ 20593) hdiv
-      · exact (by decide : ¬ 117 ∣ 20593) hdiv
-      · exact (by decide : ¬ 118 ∣ 20593) hdiv
-      · exact (by decide : ¬ 119 ∣ 20593) hdiv
-      · exact (by decide : ¬ 120 ∣ 20593) hdiv
-      · exact (by decide : ¬ 121 ∣ 20593) hdiv
-      · exact (by decide : ¬ 122 ∣ 20593) hdiv
-      · exact (by decide : ¬ 123 ∣ 20593) hdiv
-      · exact (by decide : ¬ 124 ∣ 20593) hdiv
-      · exact (by decide : ¬ 125 ∣ 20593) hdiv
-      · exact (by decide : ¬ 126 ∣ 20593) hdiv
-      · exact (by decide : ¬ 127 ∣ 20593) hdiv
-      · exact (by decide : ¬ 128 ∣ 20593) hdiv
-      · exact (by decide : ¬ 129 ∣ 20593) hdiv
-      · exact (by decide : ¬ 130 ∣ 20593) hdiv
-      · exact (by decide : ¬ 131 ∣ 20593) hdiv
-      · exact (by decide : ¬ 132 ∣ 20593) hdiv
-      · exact (by decide : ¬ 133 ∣ 20593) hdiv
-      · exact (by decide : ¬ 134 ∣ 20593) hdiv
-      · exact (by decide : ¬ 135 ∣ 20593) hdiv
-      · exact (by decide : ¬ 136 ∣ 20593) hdiv
-      · exact (by decide : ¬ 137 ∣ 20593) hdiv
-      · exact (by decide : ¬ 138 ∣ 20593) hdiv
-      · exact (by decide : ¬ 139 ∣ 20593) hdiv
-      · exact (by decide : ¬ 140 ∣ 20593) hdiv
-      · exact (by decide : ¬ 141 ∣ 20593) hdiv
-      · exact (by decide : ¬ 142 ∣ 20593) hdiv
-      · exact (by decide : ¬ 143 ∣ 20593) hdiv
-  have hA_factor : (250705 : Nat).factorization 20593 = 0 :=
-    Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 250705)
-  exact primeComponentWitness_of_prime_power_cofactor
-    12 250705 12 2 20593 2985985 1 145 0
-    hq_prime
-    (by decide)
-    (by decide)
-    (by decide)
-    hA_factor
-    (by decide)
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 20593 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 250705)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A250705_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 250705 12 2 := by
@@ -8302,24 +2953,13 @@ theorem concrete_generated_b12_F12_A250705_p2_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b12_F12_A250705_p3_prime_witness :
     PrimeComponentWitness 12 250705 12 3 157 := by
-  refine ⟨(by decide : Nat.Prime 157), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 157 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 157 = 1 := by
-      rw [show (430002433 : Nat) = 157 * 2738869 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 157),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 2738869),
-      ]
-    rw [hfactor]
-    have hA_factor : (250705 : Nat).factorization 157 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 250705)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 250705)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A250705_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 250705 12 3 := by
@@ -8354,7 +2994,8 @@ theorem orderOf_b12_mod35564111_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 35564111)ˣ) :
           ZMod 35564111) ^ 12) =
         (1 : ZMod 35564111)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -8393,24 +3034,13 @@ theorem concrete_generated_b12_F12_A104405_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A104405_p2_prime_witness :
     PrimeComponentWitness 12 104405 12 2 29 := by
-  refine ⟨(by decide : Nat.Prime 29), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 29 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 29 = 1 := by
-      rw [show (2985985 : Nat) = 29 * 102965 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 29),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 102965),
-      ]
-    rw [hfactor]
-    have hA_factor : (104405 : Nat).factorization 29 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 104405)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 104405)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A104405_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 104405 12 2 := by
@@ -8418,168 +3048,13 @@ theorem concrete_generated_b12_F12_A104405_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A104405_p3_prime_witness :
     PrimeComponentWitness 12 104405 12 3 20593 := by
-  have hq_prime : Nat.Prime 20593 := by
-    rw [Nat.prime_def_le_sqrt]
-    constructor
-    · decide
-    · intro m hm_ge hm_le hdiv
-      have hm_le143 : m ≤ 143 := by
-        have hsqrt_lt : Nat.sqrt 20593 < 144 :=
-          (Nat.sqrt_lt'.2 (by decide : 20593 < 144 ^ 2))
-        exact Nat.le_of_lt_succ (lt_of_le_of_lt hm_le hsqrt_lt)
-      interval_cases m
-      · exact (by decide : ¬ 2 ∣ 20593) hdiv
-      · exact (by decide : ¬ 3 ∣ 20593) hdiv
-      · exact (by decide : ¬ 4 ∣ 20593) hdiv
-      · exact (by decide : ¬ 5 ∣ 20593) hdiv
-      · exact (by decide : ¬ 6 ∣ 20593) hdiv
-      · exact (by decide : ¬ 7 ∣ 20593) hdiv
-      · exact (by decide : ¬ 8 ∣ 20593) hdiv
-      · exact (by decide : ¬ 9 ∣ 20593) hdiv
-      · exact (by decide : ¬ 10 ∣ 20593) hdiv
-      · exact (by decide : ¬ 11 ∣ 20593) hdiv
-      · exact (by decide : ¬ 12 ∣ 20593) hdiv
-      · exact (by decide : ¬ 13 ∣ 20593) hdiv
-      · exact (by decide : ¬ 14 ∣ 20593) hdiv
-      · exact (by decide : ¬ 15 ∣ 20593) hdiv
-      · exact (by decide : ¬ 16 ∣ 20593) hdiv
-      · exact (by decide : ¬ 17 ∣ 20593) hdiv
-      · exact (by decide : ¬ 18 ∣ 20593) hdiv
-      · exact (by decide : ¬ 19 ∣ 20593) hdiv
-      · exact (by decide : ¬ 20 ∣ 20593) hdiv
-      · exact (by decide : ¬ 21 ∣ 20593) hdiv
-      · exact (by decide : ¬ 22 ∣ 20593) hdiv
-      · exact (by decide : ¬ 23 ∣ 20593) hdiv
-      · exact (by decide : ¬ 24 ∣ 20593) hdiv
-      · exact (by decide : ¬ 25 ∣ 20593) hdiv
-      · exact (by decide : ¬ 26 ∣ 20593) hdiv
-      · exact (by decide : ¬ 27 ∣ 20593) hdiv
-      · exact (by decide : ¬ 28 ∣ 20593) hdiv
-      · exact (by decide : ¬ 29 ∣ 20593) hdiv
-      · exact (by decide : ¬ 30 ∣ 20593) hdiv
-      · exact (by decide : ¬ 31 ∣ 20593) hdiv
-      · exact (by decide : ¬ 32 ∣ 20593) hdiv
-      · exact (by decide : ¬ 33 ∣ 20593) hdiv
-      · exact (by decide : ¬ 34 ∣ 20593) hdiv
-      · exact (by decide : ¬ 35 ∣ 20593) hdiv
-      · exact (by decide : ¬ 36 ∣ 20593) hdiv
-      · exact (by decide : ¬ 37 ∣ 20593) hdiv
-      · exact (by decide : ¬ 38 ∣ 20593) hdiv
-      · exact (by decide : ¬ 39 ∣ 20593) hdiv
-      · exact (by decide : ¬ 40 ∣ 20593) hdiv
-      · exact (by decide : ¬ 41 ∣ 20593) hdiv
-      · exact (by decide : ¬ 42 ∣ 20593) hdiv
-      · exact (by decide : ¬ 43 ∣ 20593) hdiv
-      · exact (by decide : ¬ 44 ∣ 20593) hdiv
-      · exact (by decide : ¬ 45 ∣ 20593) hdiv
-      · exact (by decide : ¬ 46 ∣ 20593) hdiv
-      · exact (by decide : ¬ 47 ∣ 20593) hdiv
-      · exact (by decide : ¬ 48 ∣ 20593) hdiv
-      · exact (by decide : ¬ 49 ∣ 20593) hdiv
-      · exact (by decide : ¬ 50 ∣ 20593) hdiv
-      · exact (by decide : ¬ 51 ∣ 20593) hdiv
-      · exact (by decide : ¬ 52 ∣ 20593) hdiv
-      · exact (by decide : ¬ 53 ∣ 20593) hdiv
-      · exact (by decide : ¬ 54 ∣ 20593) hdiv
-      · exact (by decide : ¬ 55 ∣ 20593) hdiv
-      · exact (by decide : ¬ 56 ∣ 20593) hdiv
-      · exact (by decide : ¬ 57 ∣ 20593) hdiv
-      · exact (by decide : ¬ 58 ∣ 20593) hdiv
-      · exact (by decide : ¬ 59 ∣ 20593) hdiv
-      · exact (by decide : ¬ 60 ∣ 20593) hdiv
-      · exact (by decide : ¬ 61 ∣ 20593) hdiv
-      · exact (by decide : ¬ 62 ∣ 20593) hdiv
-      · exact (by decide : ¬ 63 ∣ 20593) hdiv
-      · exact (by decide : ¬ 64 ∣ 20593) hdiv
-      · exact (by decide : ¬ 65 ∣ 20593) hdiv
-      · exact (by decide : ¬ 66 ∣ 20593) hdiv
-      · exact (by decide : ¬ 67 ∣ 20593) hdiv
-      · exact (by decide : ¬ 68 ∣ 20593) hdiv
-      · exact (by decide : ¬ 69 ∣ 20593) hdiv
-      · exact (by decide : ¬ 70 ∣ 20593) hdiv
-      · exact (by decide : ¬ 71 ∣ 20593) hdiv
-      · exact (by decide : ¬ 72 ∣ 20593) hdiv
-      · exact (by decide : ¬ 73 ∣ 20593) hdiv
-      · exact (by decide : ¬ 74 ∣ 20593) hdiv
-      · exact (by decide : ¬ 75 ∣ 20593) hdiv
-      · exact (by decide : ¬ 76 ∣ 20593) hdiv
-      · exact (by decide : ¬ 77 ∣ 20593) hdiv
-      · exact (by decide : ¬ 78 ∣ 20593) hdiv
-      · exact (by decide : ¬ 79 ∣ 20593) hdiv
-      · exact (by decide : ¬ 80 ∣ 20593) hdiv
-      · exact (by decide : ¬ 81 ∣ 20593) hdiv
-      · exact (by decide : ¬ 82 ∣ 20593) hdiv
-      · exact (by decide : ¬ 83 ∣ 20593) hdiv
-      · exact (by decide : ¬ 84 ∣ 20593) hdiv
-      · exact (by decide : ¬ 85 ∣ 20593) hdiv
-      · exact (by decide : ¬ 86 ∣ 20593) hdiv
-      · exact (by decide : ¬ 87 ∣ 20593) hdiv
-      · exact (by decide : ¬ 88 ∣ 20593) hdiv
-      · exact (by decide : ¬ 89 ∣ 20593) hdiv
-      · exact (by decide : ¬ 90 ∣ 20593) hdiv
-      · exact (by decide : ¬ 91 ∣ 20593) hdiv
-      · exact (by decide : ¬ 92 ∣ 20593) hdiv
-      · exact (by decide : ¬ 93 ∣ 20593) hdiv
-      · exact (by decide : ¬ 94 ∣ 20593) hdiv
-      · exact (by decide : ¬ 95 ∣ 20593) hdiv
-      · exact (by decide : ¬ 96 ∣ 20593) hdiv
-      · exact (by decide : ¬ 97 ∣ 20593) hdiv
-      · exact (by decide : ¬ 98 ∣ 20593) hdiv
-      · exact (by decide : ¬ 99 ∣ 20593) hdiv
-      · exact (by decide : ¬ 100 ∣ 20593) hdiv
-      · exact (by decide : ¬ 101 ∣ 20593) hdiv
-      · exact (by decide : ¬ 102 ∣ 20593) hdiv
-      · exact (by decide : ¬ 103 ∣ 20593) hdiv
-      · exact (by decide : ¬ 104 ∣ 20593) hdiv
-      · exact (by decide : ¬ 105 ∣ 20593) hdiv
-      · exact (by decide : ¬ 106 ∣ 20593) hdiv
-      · exact (by decide : ¬ 107 ∣ 20593) hdiv
-      · exact (by decide : ¬ 108 ∣ 20593) hdiv
-      · exact (by decide : ¬ 109 ∣ 20593) hdiv
-      · exact (by decide : ¬ 110 ∣ 20593) hdiv
-      · exact (by decide : ¬ 111 ∣ 20593) hdiv
-      · exact (by decide : ¬ 112 ∣ 20593) hdiv
-      · exact (by decide : ¬ 113 ∣ 20593) hdiv
-      · exact (by decide : ¬ 114 ∣ 20593) hdiv
-      · exact (by decide : ¬ 115 ∣ 20593) hdiv
-      · exact (by decide : ¬ 116 ∣ 20593) hdiv
-      · exact (by decide : ¬ 117 ∣ 20593) hdiv
-      · exact (by decide : ¬ 118 ∣ 20593) hdiv
-      · exact (by decide : ¬ 119 ∣ 20593) hdiv
-      · exact (by decide : ¬ 120 ∣ 20593) hdiv
-      · exact (by decide : ¬ 121 ∣ 20593) hdiv
-      · exact (by decide : ¬ 122 ∣ 20593) hdiv
-      · exact (by decide : ¬ 123 ∣ 20593) hdiv
-      · exact (by decide : ¬ 124 ∣ 20593) hdiv
-      · exact (by decide : ¬ 125 ∣ 20593) hdiv
-      · exact (by decide : ¬ 126 ∣ 20593) hdiv
-      · exact (by decide : ¬ 127 ∣ 20593) hdiv
-      · exact (by decide : ¬ 128 ∣ 20593) hdiv
-      · exact (by decide : ¬ 129 ∣ 20593) hdiv
-      · exact (by decide : ¬ 130 ∣ 20593) hdiv
-      · exact (by decide : ¬ 131 ∣ 20593) hdiv
-      · exact (by decide : ¬ 132 ∣ 20593) hdiv
-      · exact (by decide : ¬ 133 ∣ 20593) hdiv
-      · exact (by decide : ¬ 134 ∣ 20593) hdiv
-      · exact (by decide : ¬ 135 ∣ 20593) hdiv
-      · exact (by decide : ¬ 136 ∣ 20593) hdiv
-      · exact (by decide : ¬ 137 ∣ 20593) hdiv
-      · exact (by decide : ¬ 138 ∣ 20593) hdiv
-      · exact (by decide : ¬ 139 ∣ 20593) hdiv
-      · exact (by decide : ¬ 140 ∣ 20593) hdiv
-      · exact (by decide : ¬ 141 ∣ 20593) hdiv
-      · exact (by decide : ¬ 142 ∣ 20593) hdiv
-      · exact (by decide : ¬ 143 ∣ 20593) hdiv
-  have hA_factor : (104405 : Nat).factorization 20593 = 0 :=
-    Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 104405)
-  exact primeComponentWitness_of_prime_power_cofactor
-    12 104405 12 3 20593 430002433 1 20881 0
-    hq_prime
-    (by decide)
-    (by decide)
-    (by decide)
-    hA_factor
-    (by decide)
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 20593 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 104405)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A104405_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 104405 12 3 := by
@@ -8614,7 +3089,8 @@ theorem orderOf_b12_mod85399171_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 85399171)ˣ) :
           ZMod 85399171) ^ 12) =
         (1 : ZMod 85399171)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -8653,24 +3129,13 @@ theorem concrete_generated_b12_F12_A1148455_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A1148455_p2_prime_witness :
     PrimeComponentWitness 12 1148455 12 2 29 := by
-  refine ⟨(by decide : Nat.Prime 29), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 29 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 29 = 1 := by
-      rw [show (2985985 : Nat) = 29 * 102965 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 29),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 102965),
-      ]
-    rw [hfactor]
-    have hA_factor : (1148455 : Nat).factorization 29 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 1148455)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 1148455)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A1148455_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 1148455 12 2 := by
@@ -8678,168 +3143,13 @@ theorem concrete_generated_b12_F12_A1148455_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A1148455_p3_prime_witness :
     PrimeComponentWitness 12 1148455 12 3 20593 := by
-  have hq_prime : Nat.Prime 20593 := by
-    rw [Nat.prime_def_le_sqrt]
-    constructor
-    · decide
-    · intro m hm_ge hm_le hdiv
-      have hm_le143 : m ≤ 143 := by
-        have hsqrt_lt : Nat.sqrt 20593 < 144 :=
-          (Nat.sqrt_lt'.2 (by decide : 20593 < 144 ^ 2))
-        exact Nat.le_of_lt_succ (lt_of_le_of_lt hm_le hsqrt_lt)
-      interval_cases m
-      · exact (by decide : ¬ 2 ∣ 20593) hdiv
-      · exact (by decide : ¬ 3 ∣ 20593) hdiv
-      · exact (by decide : ¬ 4 ∣ 20593) hdiv
-      · exact (by decide : ¬ 5 ∣ 20593) hdiv
-      · exact (by decide : ¬ 6 ∣ 20593) hdiv
-      · exact (by decide : ¬ 7 ∣ 20593) hdiv
-      · exact (by decide : ¬ 8 ∣ 20593) hdiv
-      · exact (by decide : ¬ 9 ∣ 20593) hdiv
-      · exact (by decide : ¬ 10 ∣ 20593) hdiv
-      · exact (by decide : ¬ 11 ∣ 20593) hdiv
-      · exact (by decide : ¬ 12 ∣ 20593) hdiv
-      · exact (by decide : ¬ 13 ∣ 20593) hdiv
-      · exact (by decide : ¬ 14 ∣ 20593) hdiv
-      · exact (by decide : ¬ 15 ∣ 20593) hdiv
-      · exact (by decide : ¬ 16 ∣ 20593) hdiv
-      · exact (by decide : ¬ 17 ∣ 20593) hdiv
-      · exact (by decide : ¬ 18 ∣ 20593) hdiv
-      · exact (by decide : ¬ 19 ∣ 20593) hdiv
-      · exact (by decide : ¬ 20 ∣ 20593) hdiv
-      · exact (by decide : ¬ 21 ∣ 20593) hdiv
-      · exact (by decide : ¬ 22 ∣ 20593) hdiv
-      · exact (by decide : ¬ 23 ∣ 20593) hdiv
-      · exact (by decide : ¬ 24 ∣ 20593) hdiv
-      · exact (by decide : ¬ 25 ∣ 20593) hdiv
-      · exact (by decide : ¬ 26 ∣ 20593) hdiv
-      · exact (by decide : ¬ 27 ∣ 20593) hdiv
-      · exact (by decide : ¬ 28 ∣ 20593) hdiv
-      · exact (by decide : ¬ 29 ∣ 20593) hdiv
-      · exact (by decide : ¬ 30 ∣ 20593) hdiv
-      · exact (by decide : ¬ 31 ∣ 20593) hdiv
-      · exact (by decide : ¬ 32 ∣ 20593) hdiv
-      · exact (by decide : ¬ 33 ∣ 20593) hdiv
-      · exact (by decide : ¬ 34 ∣ 20593) hdiv
-      · exact (by decide : ¬ 35 ∣ 20593) hdiv
-      · exact (by decide : ¬ 36 ∣ 20593) hdiv
-      · exact (by decide : ¬ 37 ∣ 20593) hdiv
-      · exact (by decide : ¬ 38 ∣ 20593) hdiv
-      · exact (by decide : ¬ 39 ∣ 20593) hdiv
-      · exact (by decide : ¬ 40 ∣ 20593) hdiv
-      · exact (by decide : ¬ 41 ∣ 20593) hdiv
-      · exact (by decide : ¬ 42 ∣ 20593) hdiv
-      · exact (by decide : ¬ 43 ∣ 20593) hdiv
-      · exact (by decide : ¬ 44 ∣ 20593) hdiv
-      · exact (by decide : ¬ 45 ∣ 20593) hdiv
-      · exact (by decide : ¬ 46 ∣ 20593) hdiv
-      · exact (by decide : ¬ 47 ∣ 20593) hdiv
-      · exact (by decide : ¬ 48 ∣ 20593) hdiv
-      · exact (by decide : ¬ 49 ∣ 20593) hdiv
-      · exact (by decide : ¬ 50 ∣ 20593) hdiv
-      · exact (by decide : ¬ 51 ∣ 20593) hdiv
-      · exact (by decide : ¬ 52 ∣ 20593) hdiv
-      · exact (by decide : ¬ 53 ∣ 20593) hdiv
-      · exact (by decide : ¬ 54 ∣ 20593) hdiv
-      · exact (by decide : ¬ 55 ∣ 20593) hdiv
-      · exact (by decide : ¬ 56 ∣ 20593) hdiv
-      · exact (by decide : ¬ 57 ∣ 20593) hdiv
-      · exact (by decide : ¬ 58 ∣ 20593) hdiv
-      · exact (by decide : ¬ 59 ∣ 20593) hdiv
-      · exact (by decide : ¬ 60 ∣ 20593) hdiv
-      · exact (by decide : ¬ 61 ∣ 20593) hdiv
-      · exact (by decide : ¬ 62 ∣ 20593) hdiv
-      · exact (by decide : ¬ 63 ∣ 20593) hdiv
-      · exact (by decide : ¬ 64 ∣ 20593) hdiv
-      · exact (by decide : ¬ 65 ∣ 20593) hdiv
-      · exact (by decide : ¬ 66 ∣ 20593) hdiv
-      · exact (by decide : ¬ 67 ∣ 20593) hdiv
-      · exact (by decide : ¬ 68 ∣ 20593) hdiv
-      · exact (by decide : ¬ 69 ∣ 20593) hdiv
-      · exact (by decide : ¬ 70 ∣ 20593) hdiv
-      · exact (by decide : ¬ 71 ∣ 20593) hdiv
-      · exact (by decide : ¬ 72 ∣ 20593) hdiv
-      · exact (by decide : ¬ 73 ∣ 20593) hdiv
-      · exact (by decide : ¬ 74 ∣ 20593) hdiv
-      · exact (by decide : ¬ 75 ∣ 20593) hdiv
-      · exact (by decide : ¬ 76 ∣ 20593) hdiv
-      · exact (by decide : ¬ 77 ∣ 20593) hdiv
-      · exact (by decide : ¬ 78 ∣ 20593) hdiv
-      · exact (by decide : ¬ 79 ∣ 20593) hdiv
-      · exact (by decide : ¬ 80 ∣ 20593) hdiv
-      · exact (by decide : ¬ 81 ∣ 20593) hdiv
-      · exact (by decide : ¬ 82 ∣ 20593) hdiv
-      · exact (by decide : ¬ 83 ∣ 20593) hdiv
-      · exact (by decide : ¬ 84 ∣ 20593) hdiv
-      · exact (by decide : ¬ 85 ∣ 20593) hdiv
-      · exact (by decide : ¬ 86 ∣ 20593) hdiv
-      · exact (by decide : ¬ 87 ∣ 20593) hdiv
-      · exact (by decide : ¬ 88 ∣ 20593) hdiv
-      · exact (by decide : ¬ 89 ∣ 20593) hdiv
-      · exact (by decide : ¬ 90 ∣ 20593) hdiv
-      · exact (by decide : ¬ 91 ∣ 20593) hdiv
-      · exact (by decide : ¬ 92 ∣ 20593) hdiv
-      · exact (by decide : ¬ 93 ∣ 20593) hdiv
-      · exact (by decide : ¬ 94 ∣ 20593) hdiv
-      · exact (by decide : ¬ 95 ∣ 20593) hdiv
-      · exact (by decide : ¬ 96 ∣ 20593) hdiv
-      · exact (by decide : ¬ 97 ∣ 20593) hdiv
-      · exact (by decide : ¬ 98 ∣ 20593) hdiv
-      · exact (by decide : ¬ 99 ∣ 20593) hdiv
-      · exact (by decide : ¬ 100 ∣ 20593) hdiv
-      · exact (by decide : ¬ 101 ∣ 20593) hdiv
-      · exact (by decide : ¬ 102 ∣ 20593) hdiv
-      · exact (by decide : ¬ 103 ∣ 20593) hdiv
-      · exact (by decide : ¬ 104 ∣ 20593) hdiv
-      · exact (by decide : ¬ 105 ∣ 20593) hdiv
-      · exact (by decide : ¬ 106 ∣ 20593) hdiv
-      · exact (by decide : ¬ 107 ∣ 20593) hdiv
-      · exact (by decide : ¬ 108 ∣ 20593) hdiv
-      · exact (by decide : ¬ 109 ∣ 20593) hdiv
-      · exact (by decide : ¬ 110 ∣ 20593) hdiv
-      · exact (by decide : ¬ 111 ∣ 20593) hdiv
-      · exact (by decide : ¬ 112 ∣ 20593) hdiv
-      · exact (by decide : ¬ 113 ∣ 20593) hdiv
-      · exact (by decide : ¬ 114 ∣ 20593) hdiv
-      · exact (by decide : ¬ 115 ∣ 20593) hdiv
-      · exact (by decide : ¬ 116 ∣ 20593) hdiv
-      · exact (by decide : ¬ 117 ∣ 20593) hdiv
-      · exact (by decide : ¬ 118 ∣ 20593) hdiv
-      · exact (by decide : ¬ 119 ∣ 20593) hdiv
-      · exact (by decide : ¬ 120 ∣ 20593) hdiv
-      · exact (by decide : ¬ 121 ∣ 20593) hdiv
-      · exact (by decide : ¬ 122 ∣ 20593) hdiv
-      · exact (by decide : ¬ 123 ∣ 20593) hdiv
-      · exact (by decide : ¬ 124 ∣ 20593) hdiv
-      · exact (by decide : ¬ 125 ∣ 20593) hdiv
-      · exact (by decide : ¬ 126 ∣ 20593) hdiv
-      · exact (by decide : ¬ 127 ∣ 20593) hdiv
-      · exact (by decide : ¬ 128 ∣ 20593) hdiv
-      · exact (by decide : ¬ 129 ∣ 20593) hdiv
-      · exact (by decide : ¬ 130 ∣ 20593) hdiv
-      · exact (by decide : ¬ 131 ∣ 20593) hdiv
-      · exact (by decide : ¬ 132 ∣ 20593) hdiv
-      · exact (by decide : ¬ 133 ∣ 20593) hdiv
-      · exact (by decide : ¬ 134 ∣ 20593) hdiv
-      · exact (by decide : ¬ 135 ∣ 20593) hdiv
-      · exact (by decide : ¬ 136 ∣ 20593) hdiv
-      · exact (by decide : ¬ 137 ∣ 20593) hdiv
-      · exact (by decide : ¬ 138 ∣ 20593) hdiv
-      · exact (by decide : ¬ 139 ∣ 20593) hdiv
-      · exact (by decide : ¬ 140 ∣ 20593) hdiv
-      · exact (by decide : ¬ 141 ∣ 20593) hdiv
-      · exact (by decide : ¬ 142 ∣ 20593) hdiv
-      · exact (by decide : ¬ 143 ∣ 20593) hdiv
-  have hA_factor : (1148455 : Nat).factorization 20593 = 0 :=
-    Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 1148455)
-  exact primeComponentWitness_of_prime_power_cofactor
-    12 1148455 12 3 20593 430002433 1 20881 0
-    hq_prime
-    (by decide)
-    (by decide)
-    (by decide)
-    hA_factor
-    (by decide)
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 20593 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 1148455)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A1148455_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 1148455 12 3 := by
@@ -8874,7 +3184,8 @@ theorem orderOf_b12_mod7763561_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 7763561)ˣ) :
           ZMod 7763561) ^ 12) =
         (1 : ZMod 7763561)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -8913,24 +3224,13 @@ theorem concrete_generated_b12_F12_A1357265_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A1357265_p2_prime_witness :
     PrimeComponentWitness 12 1357265 12 2 29 := by
-  refine ⟨(by decide : Nat.Prime 29), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 29 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 29 = 1 := by
-      rw [show (2985985 : Nat) = 29 * 102965 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 29),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 102965),
-      ]
-    rw [hfactor]
-    have hA_factor : (1357265 : Nat).factorization 29 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 1357265)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 1357265)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A1357265_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 1357265 12 2 := by
@@ -8938,168 +3238,13 @@ theorem concrete_generated_b12_F12_A1357265_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A1357265_p3_prime_witness :
     PrimeComponentWitness 12 1357265 12 3 20593 := by
-  have hq_prime : Nat.Prime 20593 := by
-    rw [Nat.prime_def_le_sqrt]
-    constructor
-    · decide
-    · intro m hm_ge hm_le hdiv
-      have hm_le143 : m ≤ 143 := by
-        have hsqrt_lt : Nat.sqrt 20593 < 144 :=
-          (Nat.sqrt_lt'.2 (by decide : 20593 < 144 ^ 2))
-        exact Nat.le_of_lt_succ (lt_of_le_of_lt hm_le hsqrt_lt)
-      interval_cases m
-      · exact (by decide : ¬ 2 ∣ 20593) hdiv
-      · exact (by decide : ¬ 3 ∣ 20593) hdiv
-      · exact (by decide : ¬ 4 ∣ 20593) hdiv
-      · exact (by decide : ¬ 5 ∣ 20593) hdiv
-      · exact (by decide : ¬ 6 ∣ 20593) hdiv
-      · exact (by decide : ¬ 7 ∣ 20593) hdiv
-      · exact (by decide : ¬ 8 ∣ 20593) hdiv
-      · exact (by decide : ¬ 9 ∣ 20593) hdiv
-      · exact (by decide : ¬ 10 ∣ 20593) hdiv
-      · exact (by decide : ¬ 11 ∣ 20593) hdiv
-      · exact (by decide : ¬ 12 ∣ 20593) hdiv
-      · exact (by decide : ¬ 13 ∣ 20593) hdiv
-      · exact (by decide : ¬ 14 ∣ 20593) hdiv
-      · exact (by decide : ¬ 15 ∣ 20593) hdiv
-      · exact (by decide : ¬ 16 ∣ 20593) hdiv
-      · exact (by decide : ¬ 17 ∣ 20593) hdiv
-      · exact (by decide : ¬ 18 ∣ 20593) hdiv
-      · exact (by decide : ¬ 19 ∣ 20593) hdiv
-      · exact (by decide : ¬ 20 ∣ 20593) hdiv
-      · exact (by decide : ¬ 21 ∣ 20593) hdiv
-      · exact (by decide : ¬ 22 ∣ 20593) hdiv
-      · exact (by decide : ¬ 23 ∣ 20593) hdiv
-      · exact (by decide : ¬ 24 ∣ 20593) hdiv
-      · exact (by decide : ¬ 25 ∣ 20593) hdiv
-      · exact (by decide : ¬ 26 ∣ 20593) hdiv
-      · exact (by decide : ¬ 27 ∣ 20593) hdiv
-      · exact (by decide : ¬ 28 ∣ 20593) hdiv
-      · exact (by decide : ¬ 29 ∣ 20593) hdiv
-      · exact (by decide : ¬ 30 ∣ 20593) hdiv
-      · exact (by decide : ¬ 31 ∣ 20593) hdiv
-      · exact (by decide : ¬ 32 ∣ 20593) hdiv
-      · exact (by decide : ¬ 33 ∣ 20593) hdiv
-      · exact (by decide : ¬ 34 ∣ 20593) hdiv
-      · exact (by decide : ¬ 35 ∣ 20593) hdiv
-      · exact (by decide : ¬ 36 ∣ 20593) hdiv
-      · exact (by decide : ¬ 37 ∣ 20593) hdiv
-      · exact (by decide : ¬ 38 ∣ 20593) hdiv
-      · exact (by decide : ¬ 39 ∣ 20593) hdiv
-      · exact (by decide : ¬ 40 ∣ 20593) hdiv
-      · exact (by decide : ¬ 41 ∣ 20593) hdiv
-      · exact (by decide : ¬ 42 ∣ 20593) hdiv
-      · exact (by decide : ¬ 43 ∣ 20593) hdiv
-      · exact (by decide : ¬ 44 ∣ 20593) hdiv
-      · exact (by decide : ¬ 45 ∣ 20593) hdiv
-      · exact (by decide : ¬ 46 ∣ 20593) hdiv
-      · exact (by decide : ¬ 47 ∣ 20593) hdiv
-      · exact (by decide : ¬ 48 ∣ 20593) hdiv
-      · exact (by decide : ¬ 49 ∣ 20593) hdiv
-      · exact (by decide : ¬ 50 ∣ 20593) hdiv
-      · exact (by decide : ¬ 51 ∣ 20593) hdiv
-      · exact (by decide : ¬ 52 ∣ 20593) hdiv
-      · exact (by decide : ¬ 53 ∣ 20593) hdiv
-      · exact (by decide : ¬ 54 ∣ 20593) hdiv
-      · exact (by decide : ¬ 55 ∣ 20593) hdiv
-      · exact (by decide : ¬ 56 ∣ 20593) hdiv
-      · exact (by decide : ¬ 57 ∣ 20593) hdiv
-      · exact (by decide : ¬ 58 ∣ 20593) hdiv
-      · exact (by decide : ¬ 59 ∣ 20593) hdiv
-      · exact (by decide : ¬ 60 ∣ 20593) hdiv
-      · exact (by decide : ¬ 61 ∣ 20593) hdiv
-      · exact (by decide : ¬ 62 ∣ 20593) hdiv
-      · exact (by decide : ¬ 63 ∣ 20593) hdiv
-      · exact (by decide : ¬ 64 ∣ 20593) hdiv
-      · exact (by decide : ¬ 65 ∣ 20593) hdiv
-      · exact (by decide : ¬ 66 ∣ 20593) hdiv
-      · exact (by decide : ¬ 67 ∣ 20593) hdiv
-      · exact (by decide : ¬ 68 ∣ 20593) hdiv
-      · exact (by decide : ¬ 69 ∣ 20593) hdiv
-      · exact (by decide : ¬ 70 ∣ 20593) hdiv
-      · exact (by decide : ¬ 71 ∣ 20593) hdiv
-      · exact (by decide : ¬ 72 ∣ 20593) hdiv
-      · exact (by decide : ¬ 73 ∣ 20593) hdiv
-      · exact (by decide : ¬ 74 ∣ 20593) hdiv
-      · exact (by decide : ¬ 75 ∣ 20593) hdiv
-      · exact (by decide : ¬ 76 ∣ 20593) hdiv
-      · exact (by decide : ¬ 77 ∣ 20593) hdiv
-      · exact (by decide : ¬ 78 ∣ 20593) hdiv
-      · exact (by decide : ¬ 79 ∣ 20593) hdiv
-      · exact (by decide : ¬ 80 ∣ 20593) hdiv
-      · exact (by decide : ¬ 81 ∣ 20593) hdiv
-      · exact (by decide : ¬ 82 ∣ 20593) hdiv
-      · exact (by decide : ¬ 83 ∣ 20593) hdiv
-      · exact (by decide : ¬ 84 ∣ 20593) hdiv
-      · exact (by decide : ¬ 85 ∣ 20593) hdiv
-      · exact (by decide : ¬ 86 ∣ 20593) hdiv
-      · exact (by decide : ¬ 87 ∣ 20593) hdiv
-      · exact (by decide : ¬ 88 ∣ 20593) hdiv
-      · exact (by decide : ¬ 89 ∣ 20593) hdiv
-      · exact (by decide : ¬ 90 ∣ 20593) hdiv
-      · exact (by decide : ¬ 91 ∣ 20593) hdiv
-      · exact (by decide : ¬ 92 ∣ 20593) hdiv
-      · exact (by decide : ¬ 93 ∣ 20593) hdiv
-      · exact (by decide : ¬ 94 ∣ 20593) hdiv
-      · exact (by decide : ¬ 95 ∣ 20593) hdiv
-      · exact (by decide : ¬ 96 ∣ 20593) hdiv
-      · exact (by decide : ¬ 97 ∣ 20593) hdiv
-      · exact (by decide : ¬ 98 ∣ 20593) hdiv
-      · exact (by decide : ¬ 99 ∣ 20593) hdiv
-      · exact (by decide : ¬ 100 ∣ 20593) hdiv
-      · exact (by decide : ¬ 101 ∣ 20593) hdiv
-      · exact (by decide : ¬ 102 ∣ 20593) hdiv
-      · exact (by decide : ¬ 103 ∣ 20593) hdiv
-      · exact (by decide : ¬ 104 ∣ 20593) hdiv
-      · exact (by decide : ¬ 105 ∣ 20593) hdiv
-      · exact (by decide : ¬ 106 ∣ 20593) hdiv
-      · exact (by decide : ¬ 107 ∣ 20593) hdiv
-      · exact (by decide : ¬ 108 ∣ 20593) hdiv
-      · exact (by decide : ¬ 109 ∣ 20593) hdiv
-      · exact (by decide : ¬ 110 ∣ 20593) hdiv
-      · exact (by decide : ¬ 111 ∣ 20593) hdiv
-      · exact (by decide : ¬ 112 ∣ 20593) hdiv
-      · exact (by decide : ¬ 113 ∣ 20593) hdiv
-      · exact (by decide : ¬ 114 ∣ 20593) hdiv
-      · exact (by decide : ¬ 115 ∣ 20593) hdiv
-      · exact (by decide : ¬ 116 ∣ 20593) hdiv
-      · exact (by decide : ¬ 117 ∣ 20593) hdiv
-      · exact (by decide : ¬ 118 ∣ 20593) hdiv
-      · exact (by decide : ¬ 119 ∣ 20593) hdiv
-      · exact (by decide : ¬ 120 ∣ 20593) hdiv
-      · exact (by decide : ¬ 121 ∣ 20593) hdiv
-      · exact (by decide : ¬ 122 ∣ 20593) hdiv
-      · exact (by decide : ¬ 123 ∣ 20593) hdiv
-      · exact (by decide : ¬ 124 ∣ 20593) hdiv
-      · exact (by decide : ¬ 125 ∣ 20593) hdiv
-      · exact (by decide : ¬ 126 ∣ 20593) hdiv
-      · exact (by decide : ¬ 127 ∣ 20593) hdiv
-      · exact (by decide : ¬ 128 ∣ 20593) hdiv
-      · exact (by decide : ¬ 129 ∣ 20593) hdiv
-      · exact (by decide : ¬ 130 ∣ 20593) hdiv
-      · exact (by decide : ¬ 131 ∣ 20593) hdiv
-      · exact (by decide : ¬ 132 ∣ 20593) hdiv
-      · exact (by decide : ¬ 133 ∣ 20593) hdiv
-      · exact (by decide : ¬ 134 ∣ 20593) hdiv
-      · exact (by decide : ¬ 135 ∣ 20593) hdiv
-      · exact (by decide : ¬ 136 ∣ 20593) hdiv
-      · exact (by decide : ¬ 137 ∣ 20593) hdiv
-      · exact (by decide : ¬ 138 ∣ 20593) hdiv
-      · exact (by decide : ¬ 139 ∣ 20593) hdiv
-      · exact (by decide : ¬ 140 ∣ 20593) hdiv
-      · exact (by decide : ¬ 141 ∣ 20593) hdiv
-      · exact (by decide : ¬ 142 ∣ 20593) hdiv
-      · exact (by decide : ¬ 143 ∣ 20593) hdiv
-  have hA_factor : (1357265 : Nat).factorization 20593 = 0 :=
-    Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 1357265)
-  exact primeComponentWitness_of_prime_power_cofactor
-    12 1357265 12 3 20593 430002433 1 20881 0
-    hq_prime
-    (by decide)
-    (by decide)
-    (by decide)
-    hA_factor
-    (by decide)
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 20593 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 1357265)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A1357265_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 1357265 12 3 := by
@@ -9134,7 +3279,8 @@ theorem orderOf_b12_mod6569167_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 6569167)ˣ) :
           ZMod 6569167) ^ 12) =
         (1 : ZMod 6569167)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -9173,168 +3319,13 @@ theorem concrete_generated_b12_F12_A1015_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A1015_p2_prime_witness :
     PrimeComponentWitness 12 1015 12 2 20593 := by
-  have hq_prime : Nat.Prime 20593 := by
-    rw [Nat.prime_def_le_sqrt]
-    constructor
-    · decide
-    · intro m hm_ge hm_le hdiv
-      have hm_le143 : m ≤ 143 := by
-        have hsqrt_lt : Nat.sqrt 20593 < 144 :=
-          (Nat.sqrt_lt'.2 (by decide : 20593 < 144 ^ 2))
-        exact Nat.le_of_lt_succ (lt_of_le_of_lt hm_le hsqrt_lt)
-      interval_cases m
-      · exact (by decide : ¬ 2 ∣ 20593) hdiv
-      · exact (by decide : ¬ 3 ∣ 20593) hdiv
-      · exact (by decide : ¬ 4 ∣ 20593) hdiv
-      · exact (by decide : ¬ 5 ∣ 20593) hdiv
-      · exact (by decide : ¬ 6 ∣ 20593) hdiv
-      · exact (by decide : ¬ 7 ∣ 20593) hdiv
-      · exact (by decide : ¬ 8 ∣ 20593) hdiv
-      · exact (by decide : ¬ 9 ∣ 20593) hdiv
-      · exact (by decide : ¬ 10 ∣ 20593) hdiv
-      · exact (by decide : ¬ 11 ∣ 20593) hdiv
-      · exact (by decide : ¬ 12 ∣ 20593) hdiv
-      · exact (by decide : ¬ 13 ∣ 20593) hdiv
-      · exact (by decide : ¬ 14 ∣ 20593) hdiv
-      · exact (by decide : ¬ 15 ∣ 20593) hdiv
-      · exact (by decide : ¬ 16 ∣ 20593) hdiv
-      · exact (by decide : ¬ 17 ∣ 20593) hdiv
-      · exact (by decide : ¬ 18 ∣ 20593) hdiv
-      · exact (by decide : ¬ 19 ∣ 20593) hdiv
-      · exact (by decide : ¬ 20 ∣ 20593) hdiv
-      · exact (by decide : ¬ 21 ∣ 20593) hdiv
-      · exact (by decide : ¬ 22 ∣ 20593) hdiv
-      · exact (by decide : ¬ 23 ∣ 20593) hdiv
-      · exact (by decide : ¬ 24 ∣ 20593) hdiv
-      · exact (by decide : ¬ 25 ∣ 20593) hdiv
-      · exact (by decide : ¬ 26 ∣ 20593) hdiv
-      · exact (by decide : ¬ 27 ∣ 20593) hdiv
-      · exact (by decide : ¬ 28 ∣ 20593) hdiv
-      · exact (by decide : ¬ 29 ∣ 20593) hdiv
-      · exact (by decide : ¬ 30 ∣ 20593) hdiv
-      · exact (by decide : ¬ 31 ∣ 20593) hdiv
-      · exact (by decide : ¬ 32 ∣ 20593) hdiv
-      · exact (by decide : ¬ 33 ∣ 20593) hdiv
-      · exact (by decide : ¬ 34 ∣ 20593) hdiv
-      · exact (by decide : ¬ 35 ∣ 20593) hdiv
-      · exact (by decide : ¬ 36 ∣ 20593) hdiv
-      · exact (by decide : ¬ 37 ∣ 20593) hdiv
-      · exact (by decide : ¬ 38 ∣ 20593) hdiv
-      · exact (by decide : ¬ 39 ∣ 20593) hdiv
-      · exact (by decide : ¬ 40 ∣ 20593) hdiv
-      · exact (by decide : ¬ 41 ∣ 20593) hdiv
-      · exact (by decide : ¬ 42 ∣ 20593) hdiv
-      · exact (by decide : ¬ 43 ∣ 20593) hdiv
-      · exact (by decide : ¬ 44 ∣ 20593) hdiv
-      · exact (by decide : ¬ 45 ∣ 20593) hdiv
-      · exact (by decide : ¬ 46 ∣ 20593) hdiv
-      · exact (by decide : ¬ 47 ∣ 20593) hdiv
-      · exact (by decide : ¬ 48 ∣ 20593) hdiv
-      · exact (by decide : ¬ 49 ∣ 20593) hdiv
-      · exact (by decide : ¬ 50 ∣ 20593) hdiv
-      · exact (by decide : ¬ 51 ∣ 20593) hdiv
-      · exact (by decide : ¬ 52 ∣ 20593) hdiv
-      · exact (by decide : ¬ 53 ∣ 20593) hdiv
-      · exact (by decide : ¬ 54 ∣ 20593) hdiv
-      · exact (by decide : ¬ 55 ∣ 20593) hdiv
-      · exact (by decide : ¬ 56 ∣ 20593) hdiv
-      · exact (by decide : ¬ 57 ∣ 20593) hdiv
-      · exact (by decide : ¬ 58 ∣ 20593) hdiv
-      · exact (by decide : ¬ 59 ∣ 20593) hdiv
-      · exact (by decide : ¬ 60 ∣ 20593) hdiv
-      · exact (by decide : ¬ 61 ∣ 20593) hdiv
-      · exact (by decide : ¬ 62 ∣ 20593) hdiv
-      · exact (by decide : ¬ 63 ∣ 20593) hdiv
-      · exact (by decide : ¬ 64 ∣ 20593) hdiv
-      · exact (by decide : ¬ 65 ∣ 20593) hdiv
-      · exact (by decide : ¬ 66 ∣ 20593) hdiv
-      · exact (by decide : ¬ 67 ∣ 20593) hdiv
-      · exact (by decide : ¬ 68 ∣ 20593) hdiv
-      · exact (by decide : ¬ 69 ∣ 20593) hdiv
-      · exact (by decide : ¬ 70 ∣ 20593) hdiv
-      · exact (by decide : ¬ 71 ∣ 20593) hdiv
-      · exact (by decide : ¬ 72 ∣ 20593) hdiv
-      · exact (by decide : ¬ 73 ∣ 20593) hdiv
-      · exact (by decide : ¬ 74 ∣ 20593) hdiv
-      · exact (by decide : ¬ 75 ∣ 20593) hdiv
-      · exact (by decide : ¬ 76 ∣ 20593) hdiv
-      · exact (by decide : ¬ 77 ∣ 20593) hdiv
-      · exact (by decide : ¬ 78 ∣ 20593) hdiv
-      · exact (by decide : ¬ 79 ∣ 20593) hdiv
-      · exact (by decide : ¬ 80 ∣ 20593) hdiv
-      · exact (by decide : ¬ 81 ∣ 20593) hdiv
-      · exact (by decide : ¬ 82 ∣ 20593) hdiv
-      · exact (by decide : ¬ 83 ∣ 20593) hdiv
-      · exact (by decide : ¬ 84 ∣ 20593) hdiv
-      · exact (by decide : ¬ 85 ∣ 20593) hdiv
-      · exact (by decide : ¬ 86 ∣ 20593) hdiv
-      · exact (by decide : ¬ 87 ∣ 20593) hdiv
-      · exact (by decide : ¬ 88 ∣ 20593) hdiv
-      · exact (by decide : ¬ 89 ∣ 20593) hdiv
-      · exact (by decide : ¬ 90 ∣ 20593) hdiv
-      · exact (by decide : ¬ 91 ∣ 20593) hdiv
-      · exact (by decide : ¬ 92 ∣ 20593) hdiv
-      · exact (by decide : ¬ 93 ∣ 20593) hdiv
-      · exact (by decide : ¬ 94 ∣ 20593) hdiv
-      · exact (by decide : ¬ 95 ∣ 20593) hdiv
-      · exact (by decide : ¬ 96 ∣ 20593) hdiv
-      · exact (by decide : ¬ 97 ∣ 20593) hdiv
-      · exact (by decide : ¬ 98 ∣ 20593) hdiv
-      · exact (by decide : ¬ 99 ∣ 20593) hdiv
-      · exact (by decide : ¬ 100 ∣ 20593) hdiv
-      · exact (by decide : ¬ 101 ∣ 20593) hdiv
-      · exact (by decide : ¬ 102 ∣ 20593) hdiv
-      · exact (by decide : ¬ 103 ∣ 20593) hdiv
-      · exact (by decide : ¬ 104 ∣ 20593) hdiv
-      · exact (by decide : ¬ 105 ∣ 20593) hdiv
-      · exact (by decide : ¬ 106 ∣ 20593) hdiv
-      · exact (by decide : ¬ 107 ∣ 20593) hdiv
-      · exact (by decide : ¬ 108 ∣ 20593) hdiv
-      · exact (by decide : ¬ 109 ∣ 20593) hdiv
-      · exact (by decide : ¬ 110 ∣ 20593) hdiv
-      · exact (by decide : ¬ 111 ∣ 20593) hdiv
-      · exact (by decide : ¬ 112 ∣ 20593) hdiv
-      · exact (by decide : ¬ 113 ∣ 20593) hdiv
-      · exact (by decide : ¬ 114 ∣ 20593) hdiv
-      · exact (by decide : ¬ 115 ∣ 20593) hdiv
-      · exact (by decide : ¬ 116 ∣ 20593) hdiv
-      · exact (by decide : ¬ 117 ∣ 20593) hdiv
-      · exact (by decide : ¬ 118 ∣ 20593) hdiv
-      · exact (by decide : ¬ 119 ∣ 20593) hdiv
-      · exact (by decide : ¬ 120 ∣ 20593) hdiv
-      · exact (by decide : ¬ 121 ∣ 20593) hdiv
-      · exact (by decide : ¬ 122 ∣ 20593) hdiv
-      · exact (by decide : ¬ 123 ∣ 20593) hdiv
-      · exact (by decide : ¬ 124 ∣ 20593) hdiv
-      · exact (by decide : ¬ 125 ∣ 20593) hdiv
-      · exact (by decide : ¬ 126 ∣ 20593) hdiv
-      · exact (by decide : ¬ 127 ∣ 20593) hdiv
-      · exact (by decide : ¬ 128 ∣ 20593) hdiv
-      · exact (by decide : ¬ 129 ∣ 20593) hdiv
-      · exact (by decide : ¬ 130 ∣ 20593) hdiv
-      · exact (by decide : ¬ 131 ∣ 20593) hdiv
-      · exact (by decide : ¬ 132 ∣ 20593) hdiv
-      · exact (by decide : ¬ 133 ∣ 20593) hdiv
-      · exact (by decide : ¬ 134 ∣ 20593) hdiv
-      · exact (by decide : ¬ 135 ∣ 20593) hdiv
-      · exact (by decide : ¬ 136 ∣ 20593) hdiv
-      · exact (by decide : ¬ 137 ∣ 20593) hdiv
-      · exact (by decide : ¬ 138 ∣ 20593) hdiv
-      · exact (by decide : ¬ 139 ∣ 20593) hdiv
-      · exact (by decide : ¬ 140 ∣ 20593) hdiv
-      · exact (by decide : ¬ 141 ∣ 20593) hdiv
-      · exact (by decide : ¬ 142 ∣ 20593) hdiv
-      · exact (by decide : ¬ 143 ∣ 20593) hdiv
-  have hA_factor : (1015 : Nat).factorization 20593 = 0 :=
-    Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 1015)
-  exact primeComponentWitness_of_prime_power_cofactor
-    12 1015 12 2 20593 2985985 1 145 0
-    hq_prime
-    (by decide)
-    (by decide)
-    (by decide)
-    hA_factor
-    (by decide)
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 20593 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 1015)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A1015_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 1015 12 2 := by
@@ -9342,24 +3333,13 @@ theorem concrete_generated_b12_F12_A1015_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A1015_p3_prime_witness :
     PrimeComponentWitness 12 1015 12 3 19 := by
-  refine ⟨(by decide : Nat.Prime 19), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 19 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 19 = 1 := by
-      rw [show (430002433 : Nat) = 19 * 22631707 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 19),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 22631707),
-      ]
-    rw [hfactor]
-    have hA_factor : (1015 : Nat).factorization 19 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 1015)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 1015)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A1015_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 1015 12 3 := by
@@ -9394,7 +3374,8 @@ theorem orderOf_b12_mod8784335417_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 8784335417)ˣ) :
           ZMod 8784335417) ^ 12) =
         (1 : ZMod 8784335417)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -9433,168 +3414,13 @@ theorem concrete_generated_b12_F12_A11165_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A11165_p2_prime_witness :
     PrimeComponentWitness 12 11165 12 2 20593 := by
-  have hq_prime : Nat.Prime 20593 := by
-    rw [Nat.prime_def_le_sqrt]
-    constructor
-    · decide
-    · intro m hm_ge hm_le hdiv
-      have hm_le143 : m ≤ 143 := by
-        have hsqrt_lt : Nat.sqrt 20593 < 144 :=
-          (Nat.sqrt_lt'.2 (by decide : 20593 < 144 ^ 2))
-        exact Nat.le_of_lt_succ (lt_of_le_of_lt hm_le hsqrt_lt)
-      interval_cases m
-      · exact (by decide : ¬ 2 ∣ 20593) hdiv
-      · exact (by decide : ¬ 3 ∣ 20593) hdiv
-      · exact (by decide : ¬ 4 ∣ 20593) hdiv
-      · exact (by decide : ¬ 5 ∣ 20593) hdiv
-      · exact (by decide : ¬ 6 ∣ 20593) hdiv
-      · exact (by decide : ¬ 7 ∣ 20593) hdiv
-      · exact (by decide : ¬ 8 ∣ 20593) hdiv
-      · exact (by decide : ¬ 9 ∣ 20593) hdiv
-      · exact (by decide : ¬ 10 ∣ 20593) hdiv
-      · exact (by decide : ¬ 11 ∣ 20593) hdiv
-      · exact (by decide : ¬ 12 ∣ 20593) hdiv
-      · exact (by decide : ¬ 13 ∣ 20593) hdiv
-      · exact (by decide : ¬ 14 ∣ 20593) hdiv
-      · exact (by decide : ¬ 15 ∣ 20593) hdiv
-      · exact (by decide : ¬ 16 ∣ 20593) hdiv
-      · exact (by decide : ¬ 17 ∣ 20593) hdiv
-      · exact (by decide : ¬ 18 ∣ 20593) hdiv
-      · exact (by decide : ¬ 19 ∣ 20593) hdiv
-      · exact (by decide : ¬ 20 ∣ 20593) hdiv
-      · exact (by decide : ¬ 21 ∣ 20593) hdiv
-      · exact (by decide : ¬ 22 ∣ 20593) hdiv
-      · exact (by decide : ¬ 23 ∣ 20593) hdiv
-      · exact (by decide : ¬ 24 ∣ 20593) hdiv
-      · exact (by decide : ¬ 25 ∣ 20593) hdiv
-      · exact (by decide : ¬ 26 ∣ 20593) hdiv
-      · exact (by decide : ¬ 27 ∣ 20593) hdiv
-      · exact (by decide : ¬ 28 ∣ 20593) hdiv
-      · exact (by decide : ¬ 29 ∣ 20593) hdiv
-      · exact (by decide : ¬ 30 ∣ 20593) hdiv
-      · exact (by decide : ¬ 31 ∣ 20593) hdiv
-      · exact (by decide : ¬ 32 ∣ 20593) hdiv
-      · exact (by decide : ¬ 33 ∣ 20593) hdiv
-      · exact (by decide : ¬ 34 ∣ 20593) hdiv
-      · exact (by decide : ¬ 35 ∣ 20593) hdiv
-      · exact (by decide : ¬ 36 ∣ 20593) hdiv
-      · exact (by decide : ¬ 37 ∣ 20593) hdiv
-      · exact (by decide : ¬ 38 ∣ 20593) hdiv
-      · exact (by decide : ¬ 39 ∣ 20593) hdiv
-      · exact (by decide : ¬ 40 ∣ 20593) hdiv
-      · exact (by decide : ¬ 41 ∣ 20593) hdiv
-      · exact (by decide : ¬ 42 ∣ 20593) hdiv
-      · exact (by decide : ¬ 43 ∣ 20593) hdiv
-      · exact (by decide : ¬ 44 ∣ 20593) hdiv
-      · exact (by decide : ¬ 45 ∣ 20593) hdiv
-      · exact (by decide : ¬ 46 ∣ 20593) hdiv
-      · exact (by decide : ¬ 47 ∣ 20593) hdiv
-      · exact (by decide : ¬ 48 ∣ 20593) hdiv
-      · exact (by decide : ¬ 49 ∣ 20593) hdiv
-      · exact (by decide : ¬ 50 ∣ 20593) hdiv
-      · exact (by decide : ¬ 51 ∣ 20593) hdiv
-      · exact (by decide : ¬ 52 ∣ 20593) hdiv
-      · exact (by decide : ¬ 53 ∣ 20593) hdiv
-      · exact (by decide : ¬ 54 ∣ 20593) hdiv
-      · exact (by decide : ¬ 55 ∣ 20593) hdiv
-      · exact (by decide : ¬ 56 ∣ 20593) hdiv
-      · exact (by decide : ¬ 57 ∣ 20593) hdiv
-      · exact (by decide : ¬ 58 ∣ 20593) hdiv
-      · exact (by decide : ¬ 59 ∣ 20593) hdiv
-      · exact (by decide : ¬ 60 ∣ 20593) hdiv
-      · exact (by decide : ¬ 61 ∣ 20593) hdiv
-      · exact (by decide : ¬ 62 ∣ 20593) hdiv
-      · exact (by decide : ¬ 63 ∣ 20593) hdiv
-      · exact (by decide : ¬ 64 ∣ 20593) hdiv
-      · exact (by decide : ¬ 65 ∣ 20593) hdiv
-      · exact (by decide : ¬ 66 ∣ 20593) hdiv
-      · exact (by decide : ¬ 67 ∣ 20593) hdiv
-      · exact (by decide : ¬ 68 ∣ 20593) hdiv
-      · exact (by decide : ¬ 69 ∣ 20593) hdiv
-      · exact (by decide : ¬ 70 ∣ 20593) hdiv
-      · exact (by decide : ¬ 71 ∣ 20593) hdiv
-      · exact (by decide : ¬ 72 ∣ 20593) hdiv
-      · exact (by decide : ¬ 73 ∣ 20593) hdiv
-      · exact (by decide : ¬ 74 ∣ 20593) hdiv
-      · exact (by decide : ¬ 75 ∣ 20593) hdiv
-      · exact (by decide : ¬ 76 ∣ 20593) hdiv
-      · exact (by decide : ¬ 77 ∣ 20593) hdiv
-      · exact (by decide : ¬ 78 ∣ 20593) hdiv
-      · exact (by decide : ¬ 79 ∣ 20593) hdiv
-      · exact (by decide : ¬ 80 ∣ 20593) hdiv
-      · exact (by decide : ¬ 81 ∣ 20593) hdiv
-      · exact (by decide : ¬ 82 ∣ 20593) hdiv
-      · exact (by decide : ¬ 83 ∣ 20593) hdiv
-      · exact (by decide : ¬ 84 ∣ 20593) hdiv
-      · exact (by decide : ¬ 85 ∣ 20593) hdiv
-      · exact (by decide : ¬ 86 ∣ 20593) hdiv
-      · exact (by decide : ¬ 87 ∣ 20593) hdiv
-      · exact (by decide : ¬ 88 ∣ 20593) hdiv
-      · exact (by decide : ¬ 89 ∣ 20593) hdiv
-      · exact (by decide : ¬ 90 ∣ 20593) hdiv
-      · exact (by decide : ¬ 91 ∣ 20593) hdiv
-      · exact (by decide : ¬ 92 ∣ 20593) hdiv
-      · exact (by decide : ¬ 93 ∣ 20593) hdiv
-      · exact (by decide : ¬ 94 ∣ 20593) hdiv
-      · exact (by decide : ¬ 95 ∣ 20593) hdiv
-      · exact (by decide : ¬ 96 ∣ 20593) hdiv
-      · exact (by decide : ¬ 97 ∣ 20593) hdiv
-      · exact (by decide : ¬ 98 ∣ 20593) hdiv
-      · exact (by decide : ¬ 99 ∣ 20593) hdiv
-      · exact (by decide : ¬ 100 ∣ 20593) hdiv
-      · exact (by decide : ¬ 101 ∣ 20593) hdiv
-      · exact (by decide : ¬ 102 ∣ 20593) hdiv
-      · exact (by decide : ¬ 103 ∣ 20593) hdiv
-      · exact (by decide : ¬ 104 ∣ 20593) hdiv
-      · exact (by decide : ¬ 105 ∣ 20593) hdiv
-      · exact (by decide : ¬ 106 ∣ 20593) hdiv
-      · exact (by decide : ¬ 107 ∣ 20593) hdiv
-      · exact (by decide : ¬ 108 ∣ 20593) hdiv
-      · exact (by decide : ¬ 109 ∣ 20593) hdiv
-      · exact (by decide : ¬ 110 ∣ 20593) hdiv
-      · exact (by decide : ¬ 111 ∣ 20593) hdiv
-      · exact (by decide : ¬ 112 ∣ 20593) hdiv
-      · exact (by decide : ¬ 113 ∣ 20593) hdiv
-      · exact (by decide : ¬ 114 ∣ 20593) hdiv
-      · exact (by decide : ¬ 115 ∣ 20593) hdiv
-      · exact (by decide : ¬ 116 ∣ 20593) hdiv
-      · exact (by decide : ¬ 117 ∣ 20593) hdiv
-      · exact (by decide : ¬ 118 ∣ 20593) hdiv
-      · exact (by decide : ¬ 119 ∣ 20593) hdiv
-      · exact (by decide : ¬ 120 ∣ 20593) hdiv
-      · exact (by decide : ¬ 121 ∣ 20593) hdiv
-      · exact (by decide : ¬ 122 ∣ 20593) hdiv
-      · exact (by decide : ¬ 123 ∣ 20593) hdiv
-      · exact (by decide : ¬ 124 ∣ 20593) hdiv
-      · exact (by decide : ¬ 125 ∣ 20593) hdiv
-      · exact (by decide : ¬ 126 ∣ 20593) hdiv
-      · exact (by decide : ¬ 127 ∣ 20593) hdiv
-      · exact (by decide : ¬ 128 ∣ 20593) hdiv
-      · exact (by decide : ¬ 129 ∣ 20593) hdiv
-      · exact (by decide : ¬ 130 ∣ 20593) hdiv
-      · exact (by decide : ¬ 131 ∣ 20593) hdiv
-      · exact (by decide : ¬ 132 ∣ 20593) hdiv
-      · exact (by decide : ¬ 133 ∣ 20593) hdiv
-      · exact (by decide : ¬ 134 ∣ 20593) hdiv
-      · exact (by decide : ¬ 135 ∣ 20593) hdiv
-      · exact (by decide : ¬ 136 ∣ 20593) hdiv
-      · exact (by decide : ¬ 137 ∣ 20593) hdiv
-      · exact (by decide : ¬ 138 ∣ 20593) hdiv
-      · exact (by decide : ¬ 139 ∣ 20593) hdiv
-      · exact (by decide : ¬ 140 ∣ 20593) hdiv
-      · exact (by decide : ¬ 141 ∣ 20593) hdiv
-      · exact (by decide : ¬ 142 ∣ 20593) hdiv
-      · exact (by decide : ¬ 143 ∣ 20593) hdiv
-  have hA_factor : (11165 : Nat).factorization 20593 = 0 :=
-    Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 11165)
-  exact primeComponentWitness_of_prime_power_cofactor
-    12 11165 12 2 20593 2985985 1 145 0
-    hq_prime
-    (by decide)
-    (by decide)
-    (by decide)
-    hA_factor
-    (by decide)
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 20593 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 11165)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A11165_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 11165 12 2 := by
@@ -9602,24 +3428,13 @@ theorem concrete_generated_b12_F12_A11165_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A11165_p3_prime_witness :
     PrimeComponentWitness 12 11165 12 3 19 := by
-  refine ⟨(by decide : Nat.Prime 19), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 19 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 19 = 1 := by
-      rw [show (430002433 : Nat) = 19 * 22631707 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 19),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 22631707),
-      ]
-    rw [hfactor]
-    have hA_factor : (11165 : Nat).factorization 19 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 11165)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 11165)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A11165_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 11165 12 3 := by
@@ -9654,7 +3469,8 @@ theorem orderOf_b12_mod798575947_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 798575947)ˣ) :
           ZMod 798575947) ^ 12) =
         (1 : ZMod 798575947)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -9693,168 +3509,13 @@ theorem concrete_generated_b12_F12_A13195_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A13195_p2_prime_witness :
     PrimeComponentWitness 12 13195 12 2 20593 := by
-  have hq_prime : Nat.Prime 20593 := by
-    rw [Nat.prime_def_le_sqrt]
-    constructor
-    · decide
-    · intro m hm_ge hm_le hdiv
-      have hm_le143 : m ≤ 143 := by
-        have hsqrt_lt : Nat.sqrt 20593 < 144 :=
-          (Nat.sqrt_lt'.2 (by decide : 20593 < 144 ^ 2))
-        exact Nat.le_of_lt_succ (lt_of_le_of_lt hm_le hsqrt_lt)
-      interval_cases m
-      · exact (by decide : ¬ 2 ∣ 20593) hdiv
-      · exact (by decide : ¬ 3 ∣ 20593) hdiv
-      · exact (by decide : ¬ 4 ∣ 20593) hdiv
-      · exact (by decide : ¬ 5 ∣ 20593) hdiv
-      · exact (by decide : ¬ 6 ∣ 20593) hdiv
-      · exact (by decide : ¬ 7 ∣ 20593) hdiv
-      · exact (by decide : ¬ 8 ∣ 20593) hdiv
-      · exact (by decide : ¬ 9 ∣ 20593) hdiv
-      · exact (by decide : ¬ 10 ∣ 20593) hdiv
-      · exact (by decide : ¬ 11 ∣ 20593) hdiv
-      · exact (by decide : ¬ 12 ∣ 20593) hdiv
-      · exact (by decide : ¬ 13 ∣ 20593) hdiv
-      · exact (by decide : ¬ 14 ∣ 20593) hdiv
-      · exact (by decide : ¬ 15 ∣ 20593) hdiv
-      · exact (by decide : ¬ 16 ∣ 20593) hdiv
-      · exact (by decide : ¬ 17 ∣ 20593) hdiv
-      · exact (by decide : ¬ 18 ∣ 20593) hdiv
-      · exact (by decide : ¬ 19 ∣ 20593) hdiv
-      · exact (by decide : ¬ 20 ∣ 20593) hdiv
-      · exact (by decide : ¬ 21 ∣ 20593) hdiv
-      · exact (by decide : ¬ 22 ∣ 20593) hdiv
-      · exact (by decide : ¬ 23 ∣ 20593) hdiv
-      · exact (by decide : ¬ 24 ∣ 20593) hdiv
-      · exact (by decide : ¬ 25 ∣ 20593) hdiv
-      · exact (by decide : ¬ 26 ∣ 20593) hdiv
-      · exact (by decide : ¬ 27 ∣ 20593) hdiv
-      · exact (by decide : ¬ 28 ∣ 20593) hdiv
-      · exact (by decide : ¬ 29 ∣ 20593) hdiv
-      · exact (by decide : ¬ 30 ∣ 20593) hdiv
-      · exact (by decide : ¬ 31 ∣ 20593) hdiv
-      · exact (by decide : ¬ 32 ∣ 20593) hdiv
-      · exact (by decide : ¬ 33 ∣ 20593) hdiv
-      · exact (by decide : ¬ 34 ∣ 20593) hdiv
-      · exact (by decide : ¬ 35 ∣ 20593) hdiv
-      · exact (by decide : ¬ 36 ∣ 20593) hdiv
-      · exact (by decide : ¬ 37 ∣ 20593) hdiv
-      · exact (by decide : ¬ 38 ∣ 20593) hdiv
-      · exact (by decide : ¬ 39 ∣ 20593) hdiv
-      · exact (by decide : ¬ 40 ∣ 20593) hdiv
-      · exact (by decide : ¬ 41 ∣ 20593) hdiv
-      · exact (by decide : ¬ 42 ∣ 20593) hdiv
-      · exact (by decide : ¬ 43 ∣ 20593) hdiv
-      · exact (by decide : ¬ 44 ∣ 20593) hdiv
-      · exact (by decide : ¬ 45 ∣ 20593) hdiv
-      · exact (by decide : ¬ 46 ∣ 20593) hdiv
-      · exact (by decide : ¬ 47 ∣ 20593) hdiv
-      · exact (by decide : ¬ 48 ∣ 20593) hdiv
-      · exact (by decide : ¬ 49 ∣ 20593) hdiv
-      · exact (by decide : ¬ 50 ∣ 20593) hdiv
-      · exact (by decide : ¬ 51 ∣ 20593) hdiv
-      · exact (by decide : ¬ 52 ∣ 20593) hdiv
-      · exact (by decide : ¬ 53 ∣ 20593) hdiv
-      · exact (by decide : ¬ 54 ∣ 20593) hdiv
-      · exact (by decide : ¬ 55 ∣ 20593) hdiv
-      · exact (by decide : ¬ 56 ∣ 20593) hdiv
-      · exact (by decide : ¬ 57 ∣ 20593) hdiv
-      · exact (by decide : ¬ 58 ∣ 20593) hdiv
-      · exact (by decide : ¬ 59 ∣ 20593) hdiv
-      · exact (by decide : ¬ 60 ∣ 20593) hdiv
-      · exact (by decide : ¬ 61 ∣ 20593) hdiv
-      · exact (by decide : ¬ 62 ∣ 20593) hdiv
-      · exact (by decide : ¬ 63 ∣ 20593) hdiv
-      · exact (by decide : ¬ 64 ∣ 20593) hdiv
-      · exact (by decide : ¬ 65 ∣ 20593) hdiv
-      · exact (by decide : ¬ 66 ∣ 20593) hdiv
-      · exact (by decide : ¬ 67 ∣ 20593) hdiv
-      · exact (by decide : ¬ 68 ∣ 20593) hdiv
-      · exact (by decide : ¬ 69 ∣ 20593) hdiv
-      · exact (by decide : ¬ 70 ∣ 20593) hdiv
-      · exact (by decide : ¬ 71 ∣ 20593) hdiv
-      · exact (by decide : ¬ 72 ∣ 20593) hdiv
-      · exact (by decide : ¬ 73 ∣ 20593) hdiv
-      · exact (by decide : ¬ 74 ∣ 20593) hdiv
-      · exact (by decide : ¬ 75 ∣ 20593) hdiv
-      · exact (by decide : ¬ 76 ∣ 20593) hdiv
-      · exact (by decide : ¬ 77 ∣ 20593) hdiv
-      · exact (by decide : ¬ 78 ∣ 20593) hdiv
-      · exact (by decide : ¬ 79 ∣ 20593) hdiv
-      · exact (by decide : ¬ 80 ∣ 20593) hdiv
-      · exact (by decide : ¬ 81 ∣ 20593) hdiv
-      · exact (by decide : ¬ 82 ∣ 20593) hdiv
-      · exact (by decide : ¬ 83 ∣ 20593) hdiv
-      · exact (by decide : ¬ 84 ∣ 20593) hdiv
-      · exact (by decide : ¬ 85 ∣ 20593) hdiv
-      · exact (by decide : ¬ 86 ∣ 20593) hdiv
-      · exact (by decide : ¬ 87 ∣ 20593) hdiv
-      · exact (by decide : ¬ 88 ∣ 20593) hdiv
-      · exact (by decide : ¬ 89 ∣ 20593) hdiv
-      · exact (by decide : ¬ 90 ∣ 20593) hdiv
-      · exact (by decide : ¬ 91 ∣ 20593) hdiv
-      · exact (by decide : ¬ 92 ∣ 20593) hdiv
-      · exact (by decide : ¬ 93 ∣ 20593) hdiv
-      · exact (by decide : ¬ 94 ∣ 20593) hdiv
-      · exact (by decide : ¬ 95 ∣ 20593) hdiv
-      · exact (by decide : ¬ 96 ∣ 20593) hdiv
-      · exact (by decide : ¬ 97 ∣ 20593) hdiv
-      · exact (by decide : ¬ 98 ∣ 20593) hdiv
-      · exact (by decide : ¬ 99 ∣ 20593) hdiv
-      · exact (by decide : ¬ 100 ∣ 20593) hdiv
-      · exact (by decide : ¬ 101 ∣ 20593) hdiv
-      · exact (by decide : ¬ 102 ∣ 20593) hdiv
-      · exact (by decide : ¬ 103 ∣ 20593) hdiv
-      · exact (by decide : ¬ 104 ∣ 20593) hdiv
-      · exact (by decide : ¬ 105 ∣ 20593) hdiv
-      · exact (by decide : ¬ 106 ∣ 20593) hdiv
-      · exact (by decide : ¬ 107 ∣ 20593) hdiv
-      · exact (by decide : ¬ 108 ∣ 20593) hdiv
-      · exact (by decide : ¬ 109 ∣ 20593) hdiv
-      · exact (by decide : ¬ 110 ∣ 20593) hdiv
-      · exact (by decide : ¬ 111 ∣ 20593) hdiv
-      · exact (by decide : ¬ 112 ∣ 20593) hdiv
-      · exact (by decide : ¬ 113 ∣ 20593) hdiv
-      · exact (by decide : ¬ 114 ∣ 20593) hdiv
-      · exact (by decide : ¬ 115 ∣ 20593) hdiv
-      · exact (by decide : ¬ 116 ∣ 20593) hdiv
-      · exact (by decide : ¬ 117 ∣ 20593) hdiv
-      · exact (by decide : ¬ 118 ∣ 20593) hdiv
-      · exact (by decide : ¬ 119 ∣ 20593) hdiv
-      · exact (by decide : ¬ 120 ∣ 20593) hdiv
-      · exact (by decide : ¬ 121 ∣ 20593) hdiv
-      · exact (by decide : ¬ 122 ∣ 20593) hdiv
-      · exact (by decide : ¬ 123 ∣ 20593) hdiv
-      · exact (by decide : ¬ 124 ∣ 20593) hdiv
-      · exact (by decide : ¬ 125 ∣ 20593) hdiv
-      · exact (by decide : ¬ 126 ∣ 20593) hdiv
-      · exact (by decide : ¬ 127 ∣ 20593) hdiv
-      · exact (by decide : ¬ 128 ∣ 20593) hdiv
-      · exact (by decide : ¬ 129 ∣ 20593) hdiv
-      · exact (by decide : ¬ 130 ∣ 20593) hdiv
-      · exact (by decide : ¬ 131 ∣ 20593) hdiv
-      · exact (by decide : ¬ 132 ∣ 20593) hdiv
-      · exact (by decide : ¬ 133 ∣ 20593) hdiv
-      · exact (by decide : ¬ 134 ∣ 20593) hdiv
-      · exact (by decide : ¬ 135 ∣ 20593) hdiv
-      · exact (by decide : ¬ 136 ∣ 20593) hdiv
-      · exact (by decide : ¬ 137 ∣ 20593) hdiv
-      · exact (by decide : ¬ 138 ∣ 20593) hdiv
-      · exact (by decide : ¬ 139 ∣ 20593) hdiv
-      · exact (by decide : ¬ 140 ∣ 20593) hdiv
-      · exact (by decide : ¬ 141 ∣ 20593) hdiv
-      · exact (by decide : ¬ 142 ∣ 20593) hdiv
-      · exact (by decide : ¬ 143 ∣ 20593) hdiv
-  have hA_factor : (13195 : Nat).factorization 20593 = 0 :=
-    Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 13195)
-  exact primeComponentWitness_of_prime_power_cofactor
-    12 13195 12 2 20593 2985985 1 145 0
-    hq_prime
-    (by decide)
-    (by decide)
-    (by decide)
-    hA_factor
-    (by decide)
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 20593 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 13195)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A13195_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 13195 12 2 := by
@@ -9862,24 +3523,13 @@ theorem concrete_generated_b12_F12_A13195_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A13195_p3_prime_witness :
     PrimeComponentWitness 12 13195 12 3 19 := by
-  refine ⟨(by decide : Nat.Prime 19), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 19 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 19 = 1 := by
-      rw [show (430002433 : Nat) = 19 * 22631707 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 19),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 22631707),
-      ]
-    rw [hfactor]
-    have hA_factor : (13195 : Nat).factorization 19 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 13195)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 13195)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A13195_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 13195 12 3 := by
@@ -9914,7 +3564,8 @@ theorem orderOf_b12_mod675718109_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 675718109)ˣ) :
           ZMod 675718109) ^ 12) =
         (1 : ZMod 675718109)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -9953,24 +3604,13 @@ theorem concrete_generated_b12_F12_A20881_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A20881_p2_prime_witness :
     PrimeComponentWitness 12 20881 12 2 5 := by
-  refine ⟨(by decide : Nat.Prime 5), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 5 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 5 = 1 := by
-      rw [show (2985985 : Nat) = 5 * 597197 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 5),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 597197),
-      ]
-    rw [hfactor]
-    have hA_factor : (20881 : Nat).factorization 5 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 20881)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 20881)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A20881_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 20881 12 2 := by
@@ -9978,168 +3618,13 @@ theorem concrete_generated_b12_F12_A20881_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A20881_p3_prime_witness :
     PrimeComponentWitness 12 20881 12 3 20593 := by
-  have hq_prime : Nat.Prime 20593 := by
-    rw [Nat.prime_def_le_sqrt]
-    constructor
-    · decide
-    · intro m hm_ge hm_le hdiv
-      have hm_le143 : m ≤ 143 := by
-        have hsqrt_lt : Nat.sqrt 20593 < 144 :=
-          (Nat.sqrt_lt'.2 (by decide : 20593 < 144 ^ 2))
-        exact Nat.le_of_lt_succ (lt_of_le_of_lt hm_le hsqrt_lt)
-      interval_cases m
-      · exact (by decide : ¬ 2 ∣ 20593) hdiv
-      · exact (by decide : ¬ 3 ∣ 20593) hdiv
-      · exact (by decide : ¬ 4 ∣ 20593) hdiv
-      · exact (by decide : ¬ 5 ∣ 20593) hdiv
-      · exact (by decide : ¬ 6 ∣ 20593) hdiv
-      · exact (by decide : ¬ 7 ∣ 20593) hdiv
-      · exact (by decide : ¬ 8 ∣ 20593) hdiv
-      · exact (by decide : ¬ 9 ∣ 20593) hdiv
-      · exact (by decide : ¬ 10 ∣ 20593) hdiv
-      · exact (by decide : ¬ 11 ∣ 20593) hdiv
-      · exact (by decide : ¬ 12 ∣ 20593) hdiv
-      · exact (by decide : ¬ 13 ∣ 20593) hdiv
-      · exact (by decide : ¬ 14 ∣ 20593) hdiv
-      · exact (by decide : ¬ 15 ∣ 20593) hdiv
-      · exact (by decide : ¬ 16 ∣ 20593) hdiv
-      · exact (by decide : ¬ 17 ∣ 20593) hdiv
-      · exact (by decide : ¬ 18 ∣ 20593) hdiv
-      · exact (by decide : ¬ 19 ∣ 20593) hdiv
-      · exact (by decide : ¬ 20 ∣ 20593) hdiv
-      · exact (by decide : ¬ 21 ∣ 20593) hdiv
-      · exact (by decide : ¬ 22 ∣ 20593) hdiv
-      · exact (by decide : ¬ 23 ∣ 20593) hdiv
-      · exact (by decide : ¬ 24 ∣ 20593) hdiv
-      · exact (by decide : ¬ 25 ∣ 20593) hdiv
-      · exact (by decide : ¬ 26 ∣ 20593) hdiv
-      · exact (by decide : ¬ 27 ∣ 20593) hdiv
-      · exact (by decide : ¬ 28 ∣ 20593) hdiv
-      · exact (by decide : ¬ 29 ∣ 20593) hdiv
-      · exact (by decide : ¬ 30 ∣ 20593) hdiv
-      · exact (by decide : ¬ 31 ∣ 20593) hdiv
-      · exact (by decide : ¬ 32 ∣ 20593) hdiv
-      · exact (by decide : ¬ 33 ∣ 20593) hdiv
-      · exact (by decide : ¬ 34 ∣ 20593) hdiv
-      · exact (by decide : ¬ 35 ∣ 20593) hdiv
-      · exact (by decide : ¬ 36 ∣ 20593) hdiv
-      · exact (by decide : ¬ 37 ∣ 20593) hdiv
-      · exact (by decide : ¬ 38 ∣ 20593) hdiv
-      · exact (by decide : ¬ 39 ∣ 20593) hdiv
-      · exact (by decide : ¬ 40 ∣ 20593) hdiv
-      · exact (by decide : ¬ 41 ∣ 20593) hdiv
-      · exact (by decide : ¬ 42 ∣ 20593) hdiv
-      · exact (by decide : ¬ 43 ∣ 20593) hdiv
-      · exact (by decide : ¬ 44 ∣ 20593) hdiv
-      · exact (by decide : ¬ 45 ∣ 20593) hdiv
-      · exact (by decide : ¬ 46 ∣ 20593) hdiv
-      · exact (by decide : ¬ 47 ∣ 20593) hdiv
-      · exact (by decide : ¬ 48 ∣ 20593) hdiv
-      · exact (by decide : ¬ 49 ∣ 20593) hdiv
-      · exact (by decide : ¬ 50 ∣ 20593) hdiv
-      · exact (by decide : ¬ 51 ∣ 20593) hdiv
-      · exact (by decide : ¬ 52 ∣ 20593) hdiv
-      · exact (by decide : ¬ 53 ∣ 20593) hdiv
-      · exact (by decide : ¬ 54 ∣ 20593) hdiv
-      · exact (by decide : ¬ 55 ∣ 20593) hdiv
-      · exact (by decide : ¬ 56 ∣ 20593) hdiv
-      · exact (by decide : ¬ 57 ∣ 20593) hdiv
-      · exact (by decide : ¬ 58 ∣ 20593) hdiv
-      · exact (by decide : ¬ 59 ∣ 20593) hdiv
-      · exact (by decide : ¬ 60 ∣ 20593) hdiv
-      · exact (by decide : ¬ 61 ∣ 20593) hdiv
-      · exact (by decide : ¬ 62 ∣ 20593) hdiv
-      · exact (by decide : ¬ 63 ∣ 20593) hdiv
-      · exact (by decide : ¬ 64 ∣ 20593) hdiv
-      · exact (by decide : ¬ 65 ∣ 20593) hdiv
-      · exact (by decide : ¬ 66 ∣ 20593) hdiv
-      · exact (by decide : ¬ 67 ∣ 20593) hdiv
-      · exact (by decide : ¬ 68 ∣ 20593) hdiv
-      · exact (by decide : ¬ 69 ∣ 20593) hdiv
-      · exact (by decide : ¬ 70 ∣ 20593) hdiv
-      · exact (by decide : ¬ 71 ∣ 20593) hdiv
-      · exact (by decide : ¬ 72 ∣ 20593) hdiv
-      · exact (by decide : ¬ 73 ∣ 20593) hdiv
-      · exact (by decide : ¬ 74 ∣ 20593) hdiv
-      · exact (by decide : ¬ 75 ∣ 20593) hdiv
-      · exact (by decide : ¬ 76 ∣ 20593) hdiv
-      · exact (by decide : ¬ 77 ∣ 20593) hdiv
-      · exact (by decide : ¬ 78 ∣ 20593) hdiv
-      · exact (by decide : ¬ 79 ∣ 20593) hdiv
-      · exact (by decide : ¬ 80 ∣ 20593) hdiv
-      · exact (by decide : ¬ 81 ∣ 20593) hdiv
-      · exact (by decide : ¬ 82 ∣ 20593) hdiv
-      · exact (by decide : ¬ 83 ∣ 20593) hdiv
-      · exact (by decide : ¬ 84 ∣ 20593) hdiv
-      · exact (by decide : ¬ 85 ∣ 20593) hdiv
-      · exact (by decide : ¬ 86 ∣ 20593) hdiv
-      · exact (by decide : ¬ 87 ∣ 20593) hdiv
-      · exact (by decide : ¬ 88 ∣ 20593) hdiv
-      · exact (by decide : ¬ 89 ∣ 20593) hdiv
-      · exact (by decide : ¬ 90 ∣ 20593) hdiv
-      · exact (by decide : ¬ 91 ∣ 20593) hdiv
-      · exact (by decide : ¬ 92 ∣ 20593) hdiv
-      · exact (by decide : ¬ 93 ∣ 20593) hdiv
-      · exact (by decide : ¬ 94 ∣ 20593) hdiv
-      · exact (by decide : ¬ 95 ∣ 20593) hdiv
-      · exact (by decide : ¬ 96 ∣ 20593) hdiv
-      · exact (by decide : ¬ 97 ∣ 20593) hdiv
-      · exact (by decide : ¬ 98 ∣ 20593) hdiv
-      · exact (by decide : ¬ 99 ∣ 20593) hdiv
-      · exact (by decide : ¬ 100 ∣ 20593) hdiv
-      · exact (by decide : ¬ 101 ∣ 20593) hdiv
-      · exact (by decide : ¬ 102 ∣ 20593) hdiv
-      · exact (by decide : ¬ 103 ∣ 20593) hdiv
-      · exact (by decide : ¬ 104 ∣ 20593) hdiv
-      · exact (by decide : ¬ 105 ∣ 20593) hdiv
-      · exact (by decide : ¬ 106 ∣ 20593) hdiv
-      · exact (by decide : ¬ 107 ∣ 20593) hdiv
-      · exact (by decide : ¬ 108 ∣ 20593) hdiv
-      · exact (by decide : ¬ 109 ∣ 20593) hdiv
-      · exact (by decide : ¬ 110 ∣ 20593) hdiv
-      · exact (by decide : ¬ 111 ∣ 20593) hdiv
-      · exact (by decide : ¬ 112 ∣ 20593) hdiv
-      · exact (by decide : ¬ 113 ∣ 20593) hdiv
-      · exact (by decide : ¬ 114 ∣ 20593) hdiv
-      · exact (by decide : ¬ 115 ∣ 20593) hdiv
-      · exact (by decide : ¬ 116 ∣ 20593) hdiv
-      · exact (by decide : ¬ 117 ∣ 20593) hdiv
-      · exact (by decide : ¬ 118 ∣ 20593) hdiv
-      · exact (by decide : ¬ 119 ∣ 20593) hdiv
-      · exact (by decide : ¬ 120 ∣ 20593) hdiv
-      · exact (by decide : ¬ 121 ∣ 20593) hdiv
-      · exact (by decide : ¬ 122 ∣ 20593) hdiv
-      · exact (by decide : ¬ 123 ∣ 20593) hdiv
-      · exact (by decide : ¬ 124 ∣ 20593) hdiv
-      · exact (by decide : ¬ 125 ∣ 20593) hdiv
-      · exact (by decide : ¬ 126 ∣ 20593) hdiv
-      · exact (by decide : ¬ 127 ∣ 20593) hdiv
-      · exact (by decide : ¬ 128 ∣ 20593) hdiv
-      · exact (by decide : ¬ 129 ∣ 20593) hdiv
-      · exact (by decide : ¬ 130 ∣ 20593) hdiv
-      · exact (by decide : ¬ 131 ∣ 20593) hdiv
-      · exact (by decide : ¬ 132 ∣ 20593) hdiv
-      · exact (by decide : ¬ 133 ∣ 20593) hdiv
-      · exact (by decide : ¬ 134 ∣ 20593) hdiv
-      · exact (by decide : ¬ 135 ∣ 20593) hdiv
-      · exact (by decide : ¬ 136 ∣ 20593) hdiv
-      · exact (by decide : ¬ 137 ∣ 20593) hdiv
-      · exact (by decide : ¬ 138 ∣ 20593) hdiv
-      · exact (by decide : ¬ 139 ∣ 20593) hdiv
-      · exact (by decide : ¬ 140 ∣ 20593) hdiv
-      · exact (by decide : ¬ 141 ∣ 20593) hdiv
-      · exact (by decide : ¬ 142 ∣ 20593) hdiv
-      · exact (by decide : ¬ 143 ∣ 20593) hdiv
-  have hA_factor : (20881 : Nat).factorization 20593 = 0 :=
-    Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 20881)
-  exact primeComponentWitness_of_prime_power_cofactor
-    12 20881 12 3 20593 430002433 1 20881 0
-    hq_prime
-    (by decide)
-    (by decide)
-    (by decide)
-    hA_factor
-    (by decide)
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 20593 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 20881)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A20881_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 20881 12 3 := by
@@ -10174,7 +3659,8 @@ theorem orderOf_b12_mod426995855_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 426995855)ˣ) :
           ZMod 426995855) ^ 12) =
         (1 : ZMod 426995855)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -10213,168 +3699,13 @@ theorem concrete_generated_b12_F12_A145145_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A145145_p2_prime_witness :
     PrimeComponentWitness 12 145145 12 2 20593 := by
-  have hq_prime : Nat.Prime 20593 := by
-    rw [Nat.prime_def_le_sqrt]
-    constructor
-    · decide
-    · intro m hm_ge hm_le hdiv
-      have hm_le143 : m ≤ 143 := by
-        have hsqrt_lt : Nat.sqrt 20593 < 144 :=
-          (Nat.sqrt_lt'.2 (by decide : 20593 < 144 ^ 2))
-        exact Nat.le_of_lt_succ (lt_of_le_of_lt hm_le hsqrt_lt)
-      interval_cases m
-      · exact (by decide : ¬ 2 ∣ 20593) hdiv
-      · exact (by decide : ¬ 3 ∣ 20593) hdiv
-      · exact (by decide : ¬ 4 ∣ 20593) hdiv
-      · exact (by decide : ¬ 5 ∣ 20593) hdiv
-      · exact (by decide : ¬ 6 ∣ 20593) hdiv
-      · exact (by decide : ¬ 7 ∣ 20593) hdiv
-      · exact (by decide : ¬ 8 ∣ 20593) hdiv
-      · exact (by decide : ¬ 9 ∣ 20593) hdiv
-      · exact (by decide : ¬ 10 ∣ 20593) hdiv
-      · exact (by decide : ¬ 11 ∣ 20593) hdiv
-      · exact (by decide : ¬ 12 ∣ 20593) hdiv
-      · exact (by decide : ¬ 13 ∣ 20593) hdiv
-      · exact (by decide : ¬ 14 ∣ 20593) hdiv
-      · exact (by decide : ¬ 15 ∣ 20593) hdiv
-      · exact (by decide : ¬ 16 ∣ 20593) hdiv
-      · exact (by decide : ¬ 17 ∣ 20593) hdiv
-      · exact (by decide : ¬ 18 ∣ 20593) hdiv
-      · exact (by decide : ¬ 19 ∣ 20593) hdiv
-      · exact (by decide : ¬ 20 ∣ 20593) hdiv
-      · exact (by decide : ¬ 21 ∣ 20593) hdiv
-      · exact (by decide : ¬ 22 ∣ 20593) hdiv
-      · exact (by decide : ¬ 23 ∣ 20593) hdiv
-      · exact (by decide : ¬ 24 ∣ 20593) hdiv
-      · exact (by decide : ¬ 25 ∣ 20593) hdiv
-      · exact (by decide : ¬ 26 ∣ 20593) hdiv
-      · exact (by decide : ¬ 27 ∣ 20593) hdiv
-      · exact (by decide : ¬ 28 ∣ 20593) hdiv
-      · exact (by decide : ¬ 29 ∣ 20593) hdiv
-      · exact (by decide : ¬ 30 ∣ 20593) hdiv
-      · exact (by decide : ¬ 31 ∣ 20593) hdiv
-      · exact (by decide : ¬ 32 ∣ 20593) hdiv
-      · exact (by decide : ¬ 33 ∣ 20593) hdiv
-      · exact (by decide : ¬ 34 ∣ 20593) hdiv
-      · exact (by decide : ¬ 35 ∣ 20593) hdiv
-      · exact (by decide : ¬ 36 ∣ 20593) hdiv
-      · exact (by decide : ¬ 37 ∣ 20593) hdiv
-      · exact (by decide : ¬ 38 ∣ 20593) hdiv
-      · exact (by decide : ¬ 39 ∣ 20593) hdiv
-      · exact (by decide : ¬ 40 ∣ 20593) hdiv
-      · exact (by decide : ¬ 41 ∣ 20593) hdiv
-      · exact (by decide : ¬ 42 ∣ 20593) hdiv
-      · exact (by decide : ¬ 43 ∣ 20593) hdiv
-      · exact (by decide : ¬ 44 ∣ 20593) hdiv
-      · exact (by decide : ¬ 45 ∣ 20593) hdiv
-      · exact (by decide : ¬ 46 ∣ 20593) hdiv
-      · exact (by decide : ¬ 47 ∣ 20593) hdiv
-      · exact (by decide : ¬ 48 ∣ 20593) hdiv
-      · exact (by decide : ¬ 49 ∣ 20593) hdiv
-      · exact (by decide : ¬ 50 ∣ 20593) hdiv
-      · exact (by decide : ¬ 51 ∣ 20593) hdiv
-      · exact (by decide : ¬ 52 ∣ 20593) hdiv
-      · exact (by decide : ¬ 53 ∣ 20593) hdiv
-      · exact (by decide : ¬ 54 ∣ 20593) hdiv
-      · exact (by decide : ¬ 55 ∣ 20593) hdiv
-      · exact (by decide : ¬ 56 ∣ 20593) hdiv
-      · exact (by decide : ¬ 57 ∣ 20593) hdiv
-      · exact (by decide : ¬ 58 ∣ 20593) hdiv
-      · exact (by decide : ¬ 59 ∣ 20593) hdiv
-      · exact (by decide : ¬ 60 ∣ 20593) hdiv
-      · exact (by decide : ¬ 61 ∣ 20593) hdiv
-      · exact (by decide : ¬ 62 ∣ 20593) hdiv
-      · exact (by decide : ¬ 63 ∣ 20593) hdiv
-      · exact (by decide : ¬ 64 ∣ 20593) hdiv
-      · exact (by decide : ¬ 65 ∣ 20593) hdiv
-      · exact (by decide : ¬ 66 ∣ 20593) hdiv
-      · exact (by decide : ¬ 67 ∣ 20593) hdiv
-      · exact (by decide : ¬ 68 ∣ 20593) hdiv
-      · exact (by decide : ¬ 69 ∣ 20593) hdiv
-      · exact (by decide : ¬ 70 ∣ 20593) hdiv
-      · exact (by decide : ¬ 71 ∣ 20593) hdiv
-      · exact (by decide : ¬ 72 ∣ 20593) hdiv
-      · exact (by decide : ¬ 73 ∣ 20593) hdiv
-      · exact (by decide : ¬ 74 ∣ 20593) hdiv
-      · exact (by decide : ¬ 75 ∣ 20593) hdiv
-      · exact (by decide : ¬ 76 ∣ 20593) hdiv
-      · exact (by decide : ¬ 77 ∣ 20593) hdiv
-      · exact (by decide : ¬ 78 ∣ 20593) hdiv
-      · exact (by decide : ¬ 79 ∣ 20593) hdiv
-      · exact (by decide : ¬ 80 ∣ 20593) hdiv
-      · exact (by decide : ¬ 81 ∣ 20593) hdiv
-      · exact (by decide : ¬ 82 ∣ 20593) hdiv
-      · exact (by decide : ¬ 83 ∣ 20593) hdiv
-      · exact (by decide : ¬ 84 ∣ 20593) hdiv
-      · exact (by decide : ¬ 85 ∣ 20593) hdiv
-      · exact (by decide : ¬ 86 ∣ 20593) hdiv
-      · exact (by decide : ¬ 87 ∣ 20593) hdiv
-      · exact (by decide : ¬ 88 ∣ 20593) hdiv
-      · exact (by decide : ¬ 89 ∣ 20593) hdiv
-      · exact (by decide : ¬ 90 ∣ 20593) hdiv
-      · exact (by decide : ¬ 91 ∣ 20593) hdiv
-      · exact (by decide : ¬ 92 ∣ 20593) hdiv
-      · exact (by decide : ¬ 93 ∣ 20593) hdiv
-      · exact (by decide : ¬ 94 ∣ 20593) hdiv
-      · exact (by decide : ¬ 95 ∣ 20593) hdiv
-      · exact (by decide : ¬ 96 ∣ 20593) hdiv
-      · exact (by decide : ¬ 97 ∣ 20593) hdiv
-      · exact (by decide : ¬ 98 ∣ 20593) hdiv
-      · exact (by decide : ¬ 99 ∣ 20593) hdiv
-      · exact (by decide : ¬ 100 ∣ 20593) hdiv
-      · exact (by decide : ¬ 101 ∣ 20593) hdiv
-      · exact (by decide : ¬ 102 ∣ 20593) hdiv
-      · exact (by decide : ¬ 103 ∣ 20593) hdiv
-      · exact (by decide : ¬ 104 ∣ 20593) hdiv
-      · exact (by decide : ¬ 105 ∣ 20593) hdiv
-      · exact (by decide : ¬ 106 ∣ 20593) hdiv
-      · exact (by decide : ¬ 107 ∣ 20593) hdiv
-      · exact (by decide : ¬ 108 ∣ 20593) hdiv
-      · exact (by decide : ¬ 109 ∣ 20593) hdiv
-      · exact (by decide : ¬ 110 ∣ 20593) hdiv
-      · exact (by decide : ¬ 111 ∣ 20593) hdiv
-      · exact (by decide : ¬ 112 ∣ 20593) hdiv
-      · exact (by decide : ¬ 113 ∣ 20593) hdiv
-      · exact (by decide : ¬ 114 ∣ 20593) hdiv
-      · exact (by decide : ¬ 115 ∣ 20593) hdiv
-      · exact (by decide : ¬ 116 ∣ 20593) hdiv
-      · exact (by decide : ¬ 117 ∣ 20593) hdiv
-      · exact (by decide : ¬ 118 ∣ 20593) hdiv
-      · exact (by decide : ¬ 119 ∣ 20593) hdiv
-      · exact (by decide : ¬ 120 ∣ 20593) hdiv
-      · exact (by decide : ¬ 121 ∣ 20593) hdiv
-      · exact (by decide : ¬ 122 ∣ 20593) hdiv
-      · exact (by decide : ¬ 123 ∣ 20593) hdiv
-      · exact (by decide : ¬ 124 ∣ 20593) hdiv
-      · exact (by decide : ¬ 125 ∣ 20593) hdiv
-      · exact (by decide : ¬ 126 ∣ 20593) hdiv
-      · exact (by decide : ¬ 127 ∣ 20593) hdiv
-      · exact (by decide : ¬ 128 ∣ 20593) hdiv
-      · exact (by decide : ¬ 129 ∣ 20593) hdiv
-      · exact (by decide : ¬ 130 ∣ 20593) hdiv
-      · exact (by decide : ¬ 131 ∣ 20593) hdiv
-      · exact (by decide : ¬ 132 ∣ 20593) hdiv
-      · exact (by decide : ¬ 133 ∣ 20593) hdiv
-      · exact (by decide : ¬ 134 ∣ 20593) hdiv
-      · exact (by decide : ¬ 135 ∣ 20593) hdiv
-      · exact (by decide : ¬ 136 ∣ 20593) hdiv
-      · exact (by decide : ¬ 137 ∣ 20593) hdiv
-      · exact (by decide : ¬ 138 ∣ 20593) hdiv
-      · exact (by decide : ¬ 139 ∣ 20593) hdiv
-      · exact (by decide : ¬ 140 ∣ 20593) hdiv
-      · exact (by decide : ¬ 141 ∣ 20593) hdiv
-      · exact (by decide : ¬ 142 ∣ 20593) hdiv
-      · exact (by decide : ¬ 143 ∣ 20593) hdiv
-  have hA_factor : (145145 : Nat).factorization 20593 = 0 :=
-    Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 145145)
-  exact primeComponentWitness_of_prime_power_cofactor
-    12 145145 12 2 20593 2985985 1 145 0
-    hq_prime
-    (by decide)
-    (by decide)
-    (by decide)
-    hA_factor
-    (by decide)
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 20593 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 145145)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A145145_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 145145 12 2 := by
@@ -10382,24 +3713,13 @@ theorem concrete_generated_b12_F12_A145145_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A145145_p3_prime_witness :
     PrimeComponentWitness 12 145145 12 3 19 := by
-  refine ⟨(by decide : Nat.Prime 19), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 19 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 19 = 1 := by
-      rw [show (430002433 : Nat) = 19 * 22631707 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 19),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 22631707),
-      ]
-    rw [hfactor]
-    have hA_factor : (145145 : Nat).factorization 19 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 145145)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 145145)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A145145_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 145145 12 3 := by
@@ -10434,7 +3754,8 @@ theorem orderOf_b12_mod61428919_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 61428919)ˣ) :
           ZMod 61428919) ^ 12) =
         (1 : ZMod 61428919)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -10473,168 +3794,13 @@ theorem concrete_generated_b12_F12_A159355_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A159355_p2_prime_witness :
     PrimeComponentWitness 12 159355 12 2 20593 := by
-  have hq_prime : Nat.Prime 20593 := by
-    rw [Nat.prime_def_le_sqrt]
-    constructor
-    · decide
-    · intro m hm_ge hm_le hdiv
-      have hm_le143 : m ≤ 143 := by
-        have hsqrt_lt : Nat.sqrt 20593 < 144 :=
-          (Nat.sqrt_lt'.2 (by decide : 20593 < 144 ^ 2))
-        exact Nat.le_of_lt_succ (lt_of_le_of_lt hm_le hsqrt_lt)
-      interval_cases m
-      · exact (by decide : ¬ 2 ∣ 20593) hdiv
-      · exact (by decide : ¬ 3 ∣ 20593) hdiv
-      · exact (by decide : ¬ 4 ∣ 20593) hdiv
-      · exact (by decide : ¬ 5 ∣ 20593) hdiv
-      · exact (by decide : ¬ 6 ∣ 20593) hdiv
-      · exact (by decide : ¬ 7 ∣ 20593) hdiv
-      · exact (by decide : ¬ 8 ∣ 20593) hdiv
-      · exact (by decide : ¬ 9 ∣ 20593) hdiv
-      · exact (by decide : ¬ 10 ∣ 20593) hdiv
-      · exact (by decide : ¬ 11 ∣ 20593) hdiv
-      · exact (by decide : ¬ 12 ∣ 20593) hdiv
-      · exact (by decide : ¬ 13 ∣ 20593) hdiv
-      · exact (by decide : ¬ 14 ∣ 20593) hdiv
-      · exact (by decide : ¬ 15 ∣ 20593) hdiv
-      · exact (by decide : ¬ 16 ∣ 20593) hdiv
-      · exact (by decide : ¬ 17 ∣ 20593) hdiv
-      · exact (by decide : ¬ 18 ∣ 20593) hdiv
-      · exact (by decide : ¬ 19 ∣ 20593) hdiv
-      · exact (by decide : ¬ 20 ∣ 20593) hdiv
-      · exact (by decide : ¬ 21 ∣ 20593) hdiv
-      · exact (by decide : ¬ 22 ∣ 20593) hdiv
-      · exact (by decide : ¬ 23 ∣ 20593) hdiv
-      · exact (by decide : ¬ 24 ∣ 20593) hdiv
-      · exact (by decide : ¬ 25 ∣ 20593) hdiv
-      · exact (by decide : ¬ 26 ∣ 20593) hdiv
-      · exact (by decide : ¬ 27 ∣ 20593) hdiv
-      · exact (by decide : ¬ 28 ∣ 20593) hdiv
-      · exact (by decide : ¬ 29 ∣ 20593) hdiv
-      · exact (by decide : ¬ 30 ∣ 20593) hdiv
-      · exact (by decide : ¬ 31 ∣ 20593) hdiv
-      · exact (by decide : ¬ 32 ∣ 20593) hdiv
-      · exact (by decide : ¬ 33 ∣ 20593) hdiv
-      · exact (by decide : ¬ 34 ∣ 20593) hdiv
-      · exact (by decide : ¬ 35 ∣ 20593) hdiv
-      · exact (by decide : ¬ 36 ∣ 20593) hdiv
-      · exact (by decide : ¬ 37 ∣ 20593) hdiv
-      · exact (by decide : ¬ 38 ∣ 20593) hdiv
-      · exact (by decide : ¬ 39 ∣ 20593) hdiv
-      · exact (by decide : ¬ 40 ∣ 20593) hdiv
-      · exact (by decide : ¬ 41 ∣ 20593) hdiv
-      · exact (by decide : ¬ 42 ∣ 20593) hdiv
-      · exact (by decide : ¬ 43 ∣ 20593) hdiv
-      · exact (by decide : ¬ 44 ∣ 20593) hdiv
-      · exact (by decide : ¬ 45 ∣ 20593) hdiv
-      · exact (by decide : ¬ 46 ∣ 20593) hdiv
-      · exact (by decide : ¬ 47 ∣ 20593) hdiv
-      · exact (by decide : ¬ 48 ∣ 20593) hdiv
-      · exact (by decide : ¬ 49 ∣ 20593) hdiv
-      · exact (by decide : ¬ 50 ∣ 20593) hdiv
-      · exact (by decide : ¬ 51 ∣ 20593) hdiv
-      · exact (by decide : ¬ 52 ∣ 20593) hdiv
-      · exact (by decide : ¬ 53 ∣ 20593) hdiv
-      · exact (by decide : ¬ 54 ∣ 20593) hdiv
-      · exact (by decide : ¬ 55 ∣ 20593) hdiv
-      · exact (by decide : ¬ 56 ∣ 20593) hdiv
-      · exact (by decide : ¬ 57 ∣ 20593) hdiv
-      · exact (by decide : ¬ 58 ∣ 20593) hdiv
-      · exact (by decide : ¬ 59 ∣ 20593) hdiv
-      · exact (by decide : ¬ 60 ∣ 20593) hdiv
-      · exact (by decide : ¬ 61 ∣ 20593) hdiv
-      · exact (by decide : ¬ 62 ∣ 20593) hdiv
-      · exact (by decide : ¬ 63 ∣ 20593) hdiv
-      · exact (by decide : ¬ 64 ∣ 20593) hdiv
-      · exact (by decide : ¬ 65 ∣ 20593) hdiv
-      · exact (by decide : ¬ 66 ∣ 20593) hdiv
-      · exact (by decide : ¬ 67 ∣ 20593) hdiv
-      · exact (by decide : ¬ 68 ∣ 20593) hdiv
-      · exact (by decide : ¬ 69 ∣ 20593) hdiv
-      · exact (by decide : ¬ 70 ∣ 20593) hdiv
-      · exact (by decide : ¬ 71 ∣ 20593) hdiv
-      · exact (by decide : ¬ 72 ∣ 20593) hdiv
-      · exact (by decide : ¬ 73 ∣ 20593) hdiv
-      · exact (by decide : ¬ 74 ∣ 20593) hdiv
-      · exact (by decide : ¬ 75 ∣ 20593) hdiv
-      · exact (by decide : ¬ 76 ∣ 20593) hdiv
-      · exact (by decide : ¬ 77 ∣ 20593) hdiv
-      · exact (by decide : ¬ 78 ∣ 20593) hdiv
-      · exact (by decide : ¬ 79 ∣ 20593) hdiv
-      · exact (by decide : ¬ 80 ∣ 20593) hdiv
-      · exact (by decide : ¬ 81 ∣ 20593) hdiv
-      · exact (by decide : ¬ 82 ∣ 20593) hdiv
-      · exact (by decide : ¬ 83 ∣ 20593) hdiv
-      · exact (by decide : ¬ 84 ∣ 20593) hdiv
-      · exact (by decide : ¬ 85 ∣ 20593) hdiv
-      · exact (by decide : ¬ 86 ∣ 20593) hdiv
-      · exact (by decide : ¬ 87 ∣ 20593) hdiv
-      · exact (by decide : ¬ 88 ∣ 20593) hdiv
-      · exact (by decide : ¬ 89 ∣ 20593) hdiv
-      · exact (by decide : ¬ 90 ∣ 20593) hdiv
-      · exact (by decide : ¬ 91 ∣ 20593) hdiv
-      · exact (by decide : ¬ 92 ∣ 20593) hdiv
-      · exact (by decide : ¬ 93 ∣ 20593) hdiv
-      · exact (by decide : ¬ 94 ∣ 20593) hdiv
-      · exact (by decide : ¬ 95 ∣ 20593) hdiv
-      · exact (by decide : ¬ 96 ∣ 20593) hdiv
-      · exact (by decide : ¬ 97 ∣ 20593) hdiv
-      · exact (by decide : ¬ 98 ∣ 20593) hdiv
-      · exact (by decide : ¬ 99 ∣ 20593) hdiv
-      · exact (by decide : ¬ 100 ∣ 20593) hdiv
-      · exact (by decide : ¬ 101 ∣ 20593) hdiv
-      · exact (by decide : ¬ 102 ∣ 20593) hdiv
-      · exact (by decide : ¬ 103 ∣ 20593) hdiv
-      · exact (by decide : ¬ 104 ∣ 20593) hdiv
-      · exact (by decide : ¬ 105 ∣ 20593) hdiv
-      · exact (by decide : ¬ 106 ∣ 20593) hdiv
-      · exact (by decide : ¬ 107 ∣ 20593) hdiv
-      · exact (by decide : ¬ 108 ∣ 20593) hdiv
-      · exact (by decide : ¬ 109 ∣ 20593) hdiv
-      · exact (by decide : ¬ 110 ∣ 20593) hdiv
-      · exact (by decide : ¬ 111 ∣ 20593) hdiv
-      · exact (by decide : ¬ 112 ∣ 20593) hdiv
-      · exact (by decide : ¬ 113 ∣ 20593) hdiv
-      · exact (by decide : ¬ 114 ∣ 20593) hdiv
-      · exact (by decide : ¬ 115 ∣ 20593) hdiv
-      · exact (by decide : ¬ 116 ∣ 20593) hdiv
-      · exact (by decide : ¬ 117 ∣ 20593) hdiv
-      · exact (by decide : ¬ 118 ∣ 20593) hdiv
-      · exact (by decide : ¬ 119 ∣ 20593) hdiv
-      · exact (by decide : ¬ 120 ∣ 20593) hdiv
-      · exact (by decide : ¬ 121 ∣ 20593) hdiv
-      · exact (by decide : ¬ 122 ∣ 20593) hdiv
-      · exact (by decide : ¬ 123 ∣ 20593) hdiv
-      · exact (by decide : ¬ 124 ∣ 20593) hdiv
-      · exact (by decide : ¬ 125 ∣ 20593) hdiv
-      · exact (by decide : ¬ 126 ∣ 20593) hdiv
-      · exact (by decide : ¬ 127 ∣ 20593) hdiv
-      · exact (by decide : ¬ 128 ∣ 20593) hdiv
-      · exact (by decide : ¬ 129 ∣ 20593) hdiv
-      · exact (by decide : ¬ 130 ∣ 20593) hdiv
-      · exact (by decide : ¬ 131 ∣ 20593) hdiv
-      · exact (by decide : ¬ 132 ∣ 20593) hdiv
-      · exact (by decide : ¬ 133 ∣ 20593) hdiv
-      · exact (by decide : ¬ 134 ∣ 20593) hdiv
-      · exact (by decide : ¬ 135 ∣ 20593) hdiv
-      · exact (by decide : ¬ 136 ∣ 20593) hdiv
-      · exact (by decide : ¬ 137 ∣ 20593) hdiv
-      · exact (by decide : ¬ 138 ∣ 20593) hdiv
-      · exact (by decide : ¬ 139 ∣ 20593) hdiv
-      · exact (by decide : ¬ 140 ∣ 20593) hdiv
-      · exact (by decide : ¬ 141 ∣ 20593) hdiv
-      · exact (by decide : ¬ 142 ∣ 20593) hdiv
-      · exact (by decide : ¬ 143 ∣ 20593) hdiv
-  have hA_factor : (159355 : Nat).factorization 20593 = 0 :=
-    Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 159355)
-  exact primeComponentWitness_of_prime_power_cofactor
-    12 159355 12 2 20593 2985985 1 145 0
-    hq_prime
-    (by decide)
-    (by decide)
-    (by decide)
-    hA_factor
-    (by decide)
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 20593 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 159355)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A159355_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 159355 12 2 := by
@@ -10642,24 +3808,13 @@ theorem concrete_generated_b12_F12_A159355_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A159355_p3_prime_witness :
     PrimeComponentWitness 12 159355 12 3 19 := by
-  refine ⟨(by decide : Nat.Prime 19), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 19 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 19 = 1 := by
-      rw [show (430002433 : Nat) = 19 * 22631707 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 19),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 22631707),
-      ]
-    rw [hfactor]
-    have hA_factor : (159355 : Nat).factorization 19 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 159355)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 159355)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A159355_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 159355 12 3 := by
@@ -10694,7 +3849,8 @@ theorem orderOf_b12_mod55951181_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 55951181)ˣ) :
           ZMod 55951181) ^ 12) =
         (1 : ZMod 55951181)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -10733,24 +3889,13 @@ theorem concrete_generated_b12_F12_A229691_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A229691_p2_prime_witness :
     PrimeComponentWitness 12 229691 12 2 5 := by
-  refine ⟨(by decide : Nat.Prime 5), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 5 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 5 = 1 := by
-      rw [show (2985985 : Nat) = 5 * 597197 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 5),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 597197),
-      ]
-    rw [hfactor]
-    have hA_factor : (229691 : Nat).factorization 5 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 229691)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 229691)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A229691_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 229691 12 2 := by
@@ -10758,168 +3903,13 @@ theorem concrete_generated_b12_F12_A229691_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A229691_p3_prime_witness :
     PrimeComponentWitness 12 229691 12 3 20593 := by
-  have hq_prime : Nat.Prime 20593 := by
-    rw [Nat.prime_def_le_sqrt]
-    constructor
-    · decide
-    · intro m hm_ge hm_le hdiv
-      have hm_le143 : m ≤ 143 := by
-        have hsqrt_lt : Nat.sqrt 20593 < 144 :=
-          (Nat.sqrt_lt'.2 (by decide : 20593 < 144 ^ 2))
-        exact Nat.le_of_lt_succ (lt_of_le_of_lt hm_le hsqrt_lt)
-      interval_cases m
-      · exact (by decide : ¬ 2 ∣ 20593) hdiv
-      · exact (by decide : ¬ 3 ∣ 20593) hdiv
-      · exact (by decide : ¬ 4 ∣ 20593) hdiv
-      · exact (by decide : ¬ 5 ∣ 20593) hdiv
-      · exact (by decide : ¬ 6 ∣ 20593) hdiv
-      · exact (by decide : ¬ 7 ∣ 20593) hdiv
-      · exact (by decide : ¬ 8 ∣ 20593) hdiv
-      · exact (by decide : ¬ 9 ∣ 20593) hdiv
-      · exact (by decide : ¬ 10 ∣ 20593) hdiv
-      · exact (by decide : ¬ 11 ∣ 20593) hdiv
-      · exact (by decide : ¬ 12 ∣ 20593) hdiv
-      · exact (by decide : ¬ 13 ∣ 20593) hdiv
-      · exact (by decide : ¬ 14 ∣ 20593) hdiv
-      · exact (by decide : ¬ 15 ∣ 20593) hdiv
-      · exact (by decide : ¬ 16 ∣ 20593) hdiv
-      · exact (by decide : ¬ 17 ∣ 20593) hdiv
-      · exact (by decide : ¬ 18 ∣ 20593) hdiv
-      · exact (by decide : ¬ 19 ∣ 20593) hdiv
-      · exact (by decide : ¬ 20 ∣ 20593) hdiv
-      · exact (by decide : ¬ 21 ∣ 20593) hdiv
-      · exact (by decide : ¬ 22 ∣ 20593) hdiv
-      · exact (by decide : ¬ 23 ∣ 20593) hdiv
-      · exact (by decide : ¬ 24 ∣ 20593) hdiv
-      · exact (by decide : ¬ 25 ∣ 20593) hdiv
-      · exact (by decide : ¬ 26 ∣ 20593) hdiv
-      · exact (by decide : ¬ 27 ∣ 20593) hdiv
-      · exact (by decide : ¬ 28 ∣ 20593) hdiv
-      · exact (by decide : ¬ 29 ∣ 20593) hdiv
-      · exact (by decide : ¬ 30 ∣ 20593) hdiv
-      · exact (by decide : ¬ 31 ∣ 20593) hdiv
-      · exact (by decide : ¬ 32 ∣ 20593) hdiv
-      · exact (by decide : ¬ 33 ∣ 20593) hdiv
-      · exact (by decide : ¬ 34 ∣ 20593) hdiv
-      · exact (by decide : ¬ 35 ∣ 20593) hdiv
-      · exact (by decide : ¬ 36 ∣ 20593) hdiv
-      · exact (by decide : ¬ 37 ∣ 20593) hdiv
-      · exact (by decide : ¬ 38 ∣ 20593) hdiv
-      · exact (by decide : ¬ 39 ∣ 20593) hdiv
-      · exact (by decide : ¬ 40 ∣ 20593) hdiv
-      · exact (by decide : ¬ 41 ∣ 20593) hdiv
-      · exact (by decide : ¬ 42 ∣ 20593) hdiv
-      · exact (by decide : ¬ 43 ∣ 20593) hdiv
-      · exact (by decide : ¬ 44 ∣ 20593) hdiv
-      · exact (by decide : ¬ 45 ∣ 20593) hdiv
-      · exact (by decide : ¬ 46 ∣ 20593) hdiv
-      · exact (by decide : ¬ 47 ∣ 20593) hdiv
-      · exact (by decide : ¬ 48 ∣ 20593) hdiv
-      · exact (by decide : ¬ 49 ∣ 20593) hdiv
-      · exact (by decide : ¬ 50 ∣ 20593) hdiv
-      · exact (by decide : ¬ 51 ∣ 20593) hdiv
-      · exact (by decide : ¬ 52 ∣ 20593) hdiv
-      · exact (by decide : ¬ 53 ∣ 20593) hdiv
-      · exact (by decide : ¬ 54 ∣ 20593) hdiv
-      · exact (by decide : ¬ 55 ∣ 20593) hdiv
-      · exact (by decide : ¬ 56 ∣ 20593) hdiv
-      · exact (by decide : ¬ 57 ∣ 20593) hdiv
-      · exact (by decide : ¬ 58 ∣ 20593) hdiv
-      · exact (by decide : ¬ 59 ∣ 20593) hdiv
-      · exact (by decide : ¬ 60 ∣ 20593) hdiv
-      · exact (by decide : ¬ 61 ∣ 20593) hdiv
-      · exact (by decide : ¬ 62 ∣ 20593) hdiv
-      · exact (by decide : ¬ 63 ∣ 20593) hdiv
-      · exact (by decide : ¬ 64 ∣ 20593) hdiv
-      · exact (by decide : ¬ 65 ∣ 20593) hdiv
-      · exact (by decide : ¬ 66 ∣ 20593) hdiv
-      · exact (by decide : ¬ 67 ∣ 20593) hdiv
-      · exact (by decide : ¬ 68 ∣ 20593) hdiv
-      · exact (by decide : ¬ 69 ∣ 20593) hdiv
-      · exact (by decide : ¬ 70 ∣ 20593) hdiv
-      · exact (by decide : ¬ 71 ∣ 20593) hdiv
-      · exact (by decide : ¬ 72 ∣ 20593) hdiv
-      · exact (by decide : ¬ 73 ∣ 20593) hdiv
-      · exact (by decide : ¬ 74 ∣ 20593) hdiv
-      · exact (by decide : ¬ 75 ∣ 20593) hdiv
-      · exact (by decide : ¬ 76 ∣ 20593) hdiv
-      · exact (by decide : ¬ 77 ∣ 20593) hdiv
-      · exact (by decide : ¬ 78 ∣ 20593) hdiv
-      · exact (by decide : ¬ 79 ∣ 20593) hdiv
-      · exact (by decide : ¬ 80 ∣ 20593) hdiv
-      · exact (by decide : ¬ 81 ∣ 20593) hdiv
-      · exact (by decide : ¬ 82 ∣ 20593) hdiv
-      · exact (by decide : ¬ 83 ∣ 20593) hdiv
-      · exact (by decide : ¬ 84 ∣ 20593) hdiv
-      · exact (by decide : ¬ 85 ∣ 20593) hdiv
-      · exact (by decide : ¬ 86 ∣ 20593) hdiv
-      · exact (by decide : ¬ 87 ∣ 20593) hdiv
-      · exact (by decide : ¬ 88 ∣ 20593) hdiv
-      · exact (by decide : ¬ 89 ∣ 20593) hdiv
-      · exact (by decide : ¬ 90 ∣ 20593) hdiv
-      · exact (by decide : ¬ 91 ∣ 20593) hdiv
-      · exact (by decide : ¬ 92 ∣ 20593) hdiv
-      · exact (by decide : ¬ 93 ∣ 20593) hdiv
-      · exact (by decide : ¬ 94 ∣ 20593) hdiv
-      · exact (by decide : ¬ 95 ∣ 20593) hdiv
-      · exact (by decide : ¬ 96 ∣ 20593) hdiv
-      · exact (by decide : ¬ 97 ∣ 20593) hdiv
-      · exact (by decide : ¬ 98 ∣ 20593) hdiv
-      · exact (by decide : ¬ 99 ∣ 20593) hdiv
-      · exact (by decide : ¬ 100 ∣ 20593) hdiv
-      · exact (by decide : ¬ 101 ∣ 20593) hdiv
-      · exact (by decide : ¬ 102 ∣ 20593) hdiv
-      · exact (by decide : ¬ 103 ∣ 20593) hdiv
-      · exact (by decide : ¬ 104 ∣ 20593) hdiv
-      · exact (by decide : ¬ 105 ∣ 20593) hdiv
-      · exact (by decide : ¬ 106 ∣ 20593) hdiv
-      · exact (by decide : ¬ 107 ∣ 20593) hdiv
-      · exact (by decide : ¬ 108 ∣ 20593) hdiv
-      · exact (by decide : ¬ 109 ∣ 20593) hdiv
-      · exact (by decide : ¬ 110 ∣ 20593) hdiv
-      · exact (by decide : ¬ 111 ∣ 20593) hdiv
-      · exact (by decide : ¬ 112 ∣ 20593) hdiv
-      · exact (by decide : ¬ 113 ∣ 20593) hdiv
-      · exact (by decide : ¬ 114 ∣ 20593) hdiv
-      · exact (by decide : ¬ 115 ∣ 20593) hdiv
-      · exact (by decide : ¬ 116 ∣ 20593) hdiv
-      · exact (by decide : ¬ 117 ∣ 20593) hdiv
-      · exact (by decide : ¬ 118 ∣ 20593) hdiv
-      · exact (by decide : ¬ 119 ∣ 20593) hdiv
-      · exact (by decide : ¬ 120 ∣ 20593) hdiv
-      · exact (by decide : ¬ 121 ∣ 20593) hdiv
-      · exact (by decide : ¬ 122 ∣ 20593) hdiv
-      · exact (by decide : ¬ 123 ∣ 20593) hdiv
-      · exact (by decide : ¬ 124 ∣ 20593) hdiv
-      · exact (by decide : ¬ 125 ∣ 20593) hdiv
-      · exact (by decide : ¬ 126 ∣ 20593) hdiv
-      · exact (by decide : ¬ 127 ∣ 20593) hdiv
-      · exact (by decide : ¬ 128 ∣ 20593) hdiv
-      · exact (by decide : ¬ 129 ∣ 20593) hdiv
-      · exact (by decide : ¬ 130 ∣ 20593) hdiv
-      · exact (by decide : ¬ 131 ∣ 20593) hdiv
-      · exact (by decide : ¬ 132 ∣ 20593) hdiv
-      · exact (by decide : ¬ 133 ∣ 20593) hdiv
-      · exact (by decide : ¬ 134 ∣ 20593) hdiv
-      · exact (by decide : ¬ 135 ∣ 20593) hdiv
-      · exact (by decide : ¬ 136 ∣ 20593) hdiv
-      · exact (by decide : ¬ 137 ∣ 20593) hdiv
-      · exact (by decide : ¬ 138 ∣ 20593) hdiv
-      · exact (by decide : ¬ 139 ∣ 20593) hdiv
-      · exact (by decide : ¬ 140 ∣ 20593) hdiv
-      · exact (by decide : ¬ 141 ∣ 20593) hdiv
-      · exact (by decide : ¬ 142 ∣ 20593) hdiv
-      · exact (by decide : ¬ 143 ∣ 20593) hdiv
-  have hA_factor : (229691 : Nat).factorization 20593 = 0 :=
-    Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 229691)
-  exact primeComponentWitness_of_prime_power_cofactor
-    12 229691 12 3 20593 430002433 1 20881 0
-    hq_prime
-    (by decide)
-    (by decide)
-    (by decide)
-    hA_factor
-    (by decide)
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 20593 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 229691)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A229691_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 229691 12 3 := by
@@ -10954,7 +3944,8 @@ theorem orderOf_b12_mod38817805_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 38817805)ˣ) :
           ZMod 38817805) ^ 12) =
         (1 : ZMod 38817805)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -10993,24 +3984,13 @@ theorem concrete_generated_b12_F12_A271453_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A271453_p2_prime_witness :
     PrimeComponentWitness 12 271453 12 2 5 := by
-  refine ⟨(by decide : Nat.Prime 5), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 5 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 5 = 1 := by
-      rw [show (2985985 : Nat) = 5 * 597197 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 5),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 597197),
-      ]
-    rw [hfactor]
-    have hA_factor : (271453 : Nat).factorization 5 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 271453)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 271453)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A271453_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 271453 12 2 := by
@@ -11018,168 +3998,13 @@ theorem concrete_generated_b12_F12_A271453_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A271453_p3_prime_witness :
     PrimeComponentWitness 12 271453 12 3 20593 := by
-  have hq_prime : Nat.Prime 20593 := by
-    rw [Nat.prime_def_le_sqrt]
-    constructor
-    · decide
-    · intro m hm_ge hm_le hdiv
-      have hm_le143 : m ≤ 143 := by
-        have hsqrt_lt : Nat.sqrt 20593 < 144 :=
-          (Nat.sqrt_lt'.2 (by decide : 20593 < 144 ^ 2))
-        exact Nat.le_of_lt_succ (lt_of_le_of_lt hm_le hsqrt_lt)
-      interval_cases m
-      · exact (by decide : ¬ 2 ∣ 20593) hdiv
-      · exact (by decide : ¬ 3 ∣ 20593) hdiv
-      · exact (by decide : ¬ 4 ∣ 20593) hdiv
-      · exact (by decide : ¬ 5 ∣ 20593) hdiv
-      · exact (by decide : ¬ 6 ∣ 20593) hdiv
-      · exact (by decide : ¬ 7 ∣ 20593) hdiv
-      · exact (by decide : ¬ 8 ∣ 20593) hdiv
-      · exact (by decide : ¬ 9 ∣ 20593) hdiv
-      · exact (by decide : ¬ 10 ∣ 20593) hdiv
-      · exact (by decide : ¬ 11 ∣ 20593) hdiv
-      · exact (by decide : ¬ 12 ∣ 20593) hdiv
-      · exact (by decide : ¬ 13 ∣ 20593) hdiv
-      · exact (by decide : ¬ 14 ∣ 20593) hdiv
-      · exact (by decide : ¬ 15 ∣ 20593) hdiv
-      · exact (by decide : ¬ 16 ∣ 20593) hdiv
-      · exact (by decide : ¬ 17 ∣ 20593) hdiv
-      · exact (by decide : ¬ 18 ∣ 20593) hdiv
-      · exact (by decide : ¬ 19 ∣ 20593) hdiv
-      · exact (by decide : ¬ 20 ∣ 20593) hdiv
-      · exact (by decide : ¬ 21 ∣ 20593) hdiv
-      · exact (by decide : ¬ 22 ∣ 20593) hdiv
-      · exact (by decide : ¬ 23 ∣ 20593) hdiv
-      · exact (by decide : ¬ 24 ∣ 20593) hdiv
-      · exact (by decide : ¬ 25 ∣ 20593) hdiv
-      · exact (by decide : ¬ 26 ∣ 20593) hdiv
-      · exact (by decide : ¬ 27 ∣ 20593) hdiv
-      · exact (by decide : ¬ 28 ∣ 20593) hdiv
-      · exact (by decide : ¬ 29 ∣ 20593) hdiv
-      · exact (by decide : ¬ 30 ∣ 20593) hdiv
-      · exact (by decide : ¬ 31 ∣ 20593) hdiv
-      · exact (by decide : ¬ 32 ∣ 20593) hdiv
-      · exact (by decide : ¬ 33 ∣ 20593) hdiv
-      · exact (by decide : ¬ 34 ∣ 20593) hdiv
-      · exact (by decide : ¬ 35 ∣ 20593) hdiv
-      · exact (by decide : ¬ 36 ∣ 20593) hdiv
-      · exact (by decide : ¬ 37 ∣ 20593) hdiv
-      · exact (by decide : ¬ 38 ∣ 20593) hdiv
-      · exact (by decide : ¬ 39 ∣ 20593) hdiv
-      · exact (by decide : ¬ 40 ∣ 20593) hdiv
-      · exact (by decide : ¬ 41 ∣ 20593) hdiv
-      · exact (by decide : ¬ 42 ∣ 20593) hdiv
-      · exact (by decide : ¬ 43 ∣ 20593) hdiv
-      · exact (by decide : ¬ 44 ∣ 20593) hdiv
-      · exact (by decide : ¬ 45 ∣ 20593) hdiv
-      · exact (by decide : ¬ 46 ∣ 20593) hdiv
-      · exact (by decide : ¬ 47 ∣ 20593) hdiv
-      · exact (by decide : ¬ 48 ∣ 20593) hdiv
-      · exact (by decide : ¬ 49 ∣ 20593) hdiv
-      · exact (by decide : ¬ 50 ∣ 20593) hdiv
-      · exact (by decide : ¬ 51 ∣ 20593) hdiv
-      · exact (by decide : ¬ 52 ∣ 20593) hdiv
-      · exact (by decide : ¬ 53 ∣ 20593) hdiv
-      · exact (by decide : ¬ 54 ∣ 20593) hdiv
-      · exact (by decide : ¬ 55 ∣ 20593) hdiv
-      · exact (by decide : ¬ 56 ∣ 20593) hdiv
-      · exact (by decide : ¬ 57 ∣ 20593) hdiv
-      · exact (by decide : ¬ 58 ∣ 20593) hdiv
-      · exact (by decide : ¬ 59 ∣ 20593) hdiv
-      · exact (by decide : ¬ 60 ∣ 20593) hdiv
-      · exact (by decide : ¬ 61 ∣ 20593) hdiv
-      · exact (by decide : ¬ 62 ∣ 20593) hdiv
-      · exact (by decide : ¬ 63 ∣ 20593) hdiv
-      · exact (by decide : ¬ 64 ∣ 20593) hdiv
-      · exact (by decide : ¬ 65 ∣ 20593) hdiv
-      · exact (by decide : ¬ 66 ∣ 20593) hdiv
-      · exact (by decide : ¬ 67 ∣ 20593) hdiv
-      · exact (by decide : ¬ 68 ∣ 20593) hdiv
-      · exact (by decide : ¬ 69 ∣ 20593) hdiv
-      · exact (by decide : ¬ 70 ∣ 20593) hdiv
-      · exact (by decide : ¬ 71 ∣ 20593) hdiv
-      · exact (by decide : ¬ 72 ∣ 20593) hdiv
-      · exact (by decide : ¬ 73 ∣ 20593) hdiv
-      · exact (by decide : ¬ 74 ∣ 20593) hdiv
-      · exact (by decide : ¬ 75 ∣ 20593) hdiv
-      · exact (by decide : ¬ 76 ∣ 20593) hdiv
-      · exact (by decide : ¬ 77 ∣ 20593) hdiv
-      · exact (by decide : ¬ 78 ∣ 20593) hdiv
-      · exact (by decide : ¬ 79 ∣ 20593) hdiv
-      · exact (by decide : ¬ 80 ∣ 20593) hdiv
-      · exact (by decide : ¬ 81 ∣ 20593) hdiv
-      · exact (by decide : ¬ 82 ∣ 20593) hdiv
-      · exact (by decide : ¬ 83 ∣ 20593) hdiv
-      · exact (by decide : ¬ 84 ∣ 20593) hdiv
-      · exact (by decide : ¬ 85 ∣ 20593) hdiv
-      · exact (by decide : ¬ 86 ∣ 20593) hdiv
-      · exact (by decide : ¬ 87 ∣ 20593) hdiv
-      · exact (by decide : ¬ 88 ∣ 20593) hdiv
-      · exact (by decide : ¬ 89 ∣ 20593) hdiv
-      · exact (by decide : ¬ 90 ∣ 20593) hdiv
-      · exact (by decide : ¬ 91 ∣ 20593) hdiv
-      · exact (by decide : ¬ 92 ∣ 20593) hdiv
-      · exact (by decide : ¬ 93 ∣ 20593) hdiv
-      · exact (by decide : ¬ 94 ∣ 20593) hdiv
-      · exact (by decide : ¬ 95 ∣ 20593) hdiv
-      · exact (by decide : ¬ 96 ∣ 20593) hdiv
-      · exact (by decide : ¬ 97 ∣ 20593) hdiv
-      · exact (by decide : ¬ 98 ∣ 20593) hdiv
-      · exact (by decide : ¬ 99 ∣ 20593) hdiv
-      · exact (by decide : ¬ 100 ∣ 20593) hdiv
-      · exact (by decide : ¬ 101 ∣ 20593) hdiv
-      · exact (by decide : ¬ 102 ∣ 20593) hdiv
-      · exact (by decide : ¬ 103 ∣ 20593) hdiv
-      · exact (by decide : ¬ 104 ∣ 20593) hdiv
-      · exact (by decide : ¬ 105 ∣ 20593) hdiv
-      · exact (by decide : ¬ 106 ∣ 20593) hdiv
-      · exact (by decide : ¬ 107 ∣ 20593) hdiv
-      · exact (by decide : ¬ 108 ∣ 20593) hdiv
-      · exact (by decide : ¬ 109 ∣ 20593) hdiv
-      · exact (by decide : ¬ 110 ∣ 20593) hdiv
-      · exact (by decide : ¬ 111 ∣ 20593) hdiv
-      · exact (by decide : ¬ 112 ∣ 20593) hdiv
-      · exact (by decide : ¬ 113 ∣ 20593) hdiv
-      · exact (by decide : ¬ 114 ∣ 20593) hdiv
-      · exact (by decide : ¬ 115 ∣ 20593) hdiv
-      · exact (by decide : ¬ 116 ∣ 20593) hdiv
-      · exact (by decide : ¬ 117 ∣ 20593) hdiv
-      · exact (by decide : ¬ 118 ∣ 20593) hdiv
-      · exact (by decide : ¬ 119 ∣ 20593) hdiv
-      · exact (by decide : ¬ 120 ∣ 20593) hdiv
-      · exact (by decide : ¬ 121 ∣ 20593) hdiv
-      · exact (by decide : ¬ 122 ∣ 20593) hdiv
-      · exact (by decide : ¬ 123 ∣ 20593) hdiv
-      · exact (by decide : ¬ 124 ∣ 20593) hdiv
-      · exact (by decide : ¬ 125 ∣ 20593) hdiv
-      · exact (by decide : ¬ 126 ∣ 20593) hdiv
-      · exact (by decide : ¬ 127 ∣ 20593) hdiv
-      · exact (by decide : ¬ 128 ∣ 20593) hdiv
-      · exact (by decide : ¬ 129 ∣ 20593) hdiv
-      · exact (by decide : ¬ 130 ∣ 20593) hdiv
-      · exact (by decide : ¬ 131 ∣ 20593) hdiv
-      · exact (by decide : ¬ 132 ∣ 20593) hdiv
-      · exact (by decide : ¬ 133 ∣ 20593) hdiv
-      · exact (by decide : ¬ 134 ∣ 20593) hdiv
-      · exact (by decide : ¬ 135 ∣ 20593) hdiv
-      · exact (by decide : ¬ 136 ∣ 20593) hdiv
-      · exact (by decide : ¬ 137 ∣ 20593) hdiv
-      · exact (by decide : ¬ 138 ∣ 20593) hdiv
-      · exact (by decide : ¬ 139 ∣ 20593) hdiv
-      · exact (by decide : ¬ 140 ∣ 20593) hdiv
-      · exact (by decide : ¬ 141 ∣ 20593) hdiv
-      · exact (by decide : ¬ 142 ∣ 20593) hdiv
-      · exact (by decide : ¬ 143 ∣ 20593) hdiv
-  have hA_factor : (271453 : Nat).factorization 20593 = 0 :=
-    Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 271453)
-  exact primeComponentWitness_of_prime_power_cofactor
-    12 271453 12 3 20593 430002433 1 20881 0
-    hq_prime
-    (by decide)
-    (by decide)
-    (by decide)
-    hA_factor
-    (by decide)
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 20593 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 271453)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A271453_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 271453 12 3 := by
@@ -11214,7 +4039,8 @@ theorem orderOf_b12_mod32845835_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 32845835)ˣ) :
           ZMod 32845835) ^ 12) =
         (1 : ZMod 32845835)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -11253,24 +4079,13 @@ theorem concrete_generated_b12_F12_A605549_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A605549_p2_prime_witness :
     PrimeComponentWitness 12 605549 12 2 5 := by
-  refine ⟨(by decide : Nat.Prime 5), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 5 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 5 = 1 := by
-      rw [show (2985985 : Nat) = 5 * 597197 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 5),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 597197),
-      ]
-    rw [hfactor]
-    have hA_factor : (605549 : Nat).factorization 5 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 605549)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 605549)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A605549_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 605549 12 2 := by
@@ -11278,168 +4093,13 @@ theorem concrete_generated_b12_F12_A605549_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A605549_p3_prime_witness :
     PrimeComponentWitness 12 605549 12 3 20593 := by
-  have hq_prime : Nat.Prime 20593 := by
-    rw [Nat.prime_def_le_sqrt]
-    constructor
-    · decide
-    · intro m hm_ge hm_le hdiv
-      have hm_le143 : m ≤ 143 := by
-        have hsqrt_lt : Nat.sqrt 20593 < 144 :=
-          (Nat.sqrt_lt'.2 (by decide : 20593 < 144 ^ 2))
-        exact Nat.le_of_lt_succ (lt_of_le_of_lt hm_le hsqrt_lt)
-      interval_cases m
-      · exact (by decide : ¬ 2 ∣ 20593) hdiv
-      · exact (by decide : ¬ 3 ∣ 20593) hdiv
-      · exact (by decide : ¬ 4 ∣ 20593) hdiv
-      · exact (by decide : ¬ 5 ∣ 20593) hdiv
-      · exact (by decide : ¬ 6 ∣ 20593) hdiv
-      · exact (by decide : ¬ 7 ∣ 20593) hdiv
-      · exact (by decide : ¬ 8 ∣ 20593) hdiv
-      · exact (by decide : ¬ 9 ∣ 20593) hdiv
-      · exact (by decide : ¬ 10 ∣ 20593) hdiv
-      · exact (by decide : ¬ 11 ∣ 20593) hdiv
-      · exact (by decide : ¬ 12 ∣ 20593) hdiv
-      · exact (by decide : ¬ 13 ∣ 20593) hdiv
-      · exact (by decide : ¬ 14 ∣ 20593) hdiv
-      · exact (by decide : ¬ 15 ∣ 20593) hdiv
-      · exact (by decide : ¬ 16 ∣ 20593) hdiv
-      · exact (by decide : ¬ 17 ∣ 20593) hdiv
-      · exact (by decide : ¬ 18 ∣ 20593) hdiv
-      · exact (by decide : ¬ 19 ∣ 20593) hdiv
-      · exact (by decide : ¬ 20 ∣ 20593) hdiv
-      · exact (by decide : ¬ 21 ∣ 20593) hdiv
-      · exact (by decide : ¬ 22 ∣ 20593) hdiv
-      · exact (by decide : ¬ 23 ∣ 20593) hdiv
-      · exact (by decide : ¬ 24 ∣ 20593) hdiv
-      · exact (by decide : ¬ 25 ∣ 20593) hdiv
-      · exact (by decide : ¬ 26 ∣ 20593) hdiv
-      · exact (by decide : ¬ 27 ∣ 20593) hdiv
-      · exact (by decide : ¬ 28 ∣ 20593) hdiv
-      · exact (by decide : ¬ 29 ∣ 20593) hdiv
-      · exact (by decide : ¬ 30 ∣ 20593) hdiv
-      · exact (by decide : ¬ 31 ∣ 20593) hdiv
-      · exact (by decide : ¬ 32 ∣ 20593) hdiv
-      · exact (by decide : ¬ 33 ∣ 20593) hdiv
-      · exact (by decide : ¬ 34 ∣ 20593) hdiv
-      · exact (by decide : ¬ 35 ∣ 20593) hdiv
-      · exact (by decide : ¬ 36 ∣ 20593) hdiv
-      · exact (by decide : ¬ 37 ∣ 20593) hdiv
-      · exact (by decide : ¬ 38 ∣ 20593) hdiv
-      · exact (by decide : ¬ 39 ∣ 20593) hdiv
-      · exact (by decide : ¬ 40 ∣ 20593) hdiv
-      · exact (by decide : ¬ 41 ∣ 20593) hdiv
-      · exact (by decide : ¬ 42 ∣ 20593) hdiv
-      · exact (by decide : ¬ 43 ∣ 20593) hdiv
-      · exact (by decide : ¬ 44 ∣ 20593) hdiv
-      · exact (by decide : ¬ 45 ∣ 20593) hdiv
-      · exact (by decide : ¬ 46 ∣ 20593) hdiv
-      · exact (by decide : ¬ 47 ∣ 20593) hdiv
-      · exact (by decide : ¬ 48 ∣ 20593) hdiv
-      · exact (by decide : ¬ 49 ∣ 20593) hdiv
-      · exact (by decide : ¬ 50 ∣ 20593) hdiv
-      · exact (by decide : ¬ 51 ∣ 20593) hdiv
-      · exact (by decide : ¬ 52 ∣ 20593) hdiv
-      · exact (by decide : ¬ 53 ∣ 20593) hdiv
-      · exact (by decide : ¬ 54 ∣ 20593) hdiv
-      · exact (by decide : ¬ 55 ∣ 20593) hdiv
-      · exact (by decide : ¬ 56 ∣ 20593) hdiv
-      · exact (by decide : ¬ 57 ∣ 20593) hdiv
-      · exact (by decide : ¬ 58 ∣ 20593) hdiv
-      · exact (by decide : ¬ 59 ∣ 20593) hdiv
-      · exact (by decide : ¬ 60 ∣ 20593) hdiv
-      · exact (by decide : ¬ 61 ∣ 20593) hdiv
-      · exact (by decide : ¬ 62 ∣ 20593) hdiv
-      · exact (by decide : ¬ 63 ∣ 20593) hdiv
-      · exact (by decide : ¬ 64 ∣ 20593) hdiv
-      · exact (by decide : ¬ 65 ∣ 20593) hdiv
-      · exact (by decide : ¬ 66 ∣ 20593) hdiv
-      · exact (by decide : ¬ 67 ∣ 20593) hdiv
-      · exact (by decide : ¬ 68 ∣ 20593) hdiv
-      · exact (by decide : ¬ 69 ∣ 20593) hdiv
-      · exact (by decide : ¬ 70 ∣ 20593) hdiv
-      · exact (by decide : ¬ 71 ∣ 20593) hdiv
-      · exact (by decide : ¬ 72 ∣ 20593) hdiv
-      · exact (by decide : ¬ 73 ∣ 20593) hdiv
-      · exact (by decide : ¬ 74 ∣ 20593) hdiv
-      · exact (by decide : ¬ 75 ∣ 20593) hdiv
-      · exact (by decide : ¬ 76 ∣ 20593) hdiv
-      · exact (by decide : ¬ 77 ∣ 20593) hdiv
-      · exact (by decide : ¬ 78 ∣ 20593) hdiv
-      · exact (by decide : ¬ 79 ∣ 20593) hdiv
-      · exact (by decide : ¬ 80 ∣ 20593) hdiv
-      · exact (by decide : ¬ 81 ∣ 20593) hdiv
-      · exact (by decide : ¬ 82 ∣ 20593) hdiv
-      · exact (by decide : ¬ 83 ∣ 20593) hdiv
-      · exact (by decide : ¬ 84 ∣ 20593) hdiv
-      · exact (by decide : ¬ 85 ∣ 20593) hdiv
-      · exact (by decide : ¬ 86 ∣ 20593) hdiv
-      · exact (by decide : ¬ 87 ∣ 20593) hdiv
-      · exact (by decide : ¬ 88 ∣ 20593) hdiv
-      · exact (by decide : ¬ 89 ∣ 20593) hdiv
-      · exact (by decide : ¬ 90 ∣ 20593) hdiv
-      · exact (by decide : ¬ 91 ∣ 20593) hdiv
-      · exact (by decide : ¬ 92 ∣ 20593) hdiv
-      · exact (by decide : ¬ 93 ∣ 20593) hdiv
-      · exact (by decide : ¬ 94 ∣ 20593) hdiv
-      · exact (by decide : ¬ 95 ∣ 20593) hdiv
-      · exact (by decide : ¬ 96 ∣ 20593) hdiv
-      · exact (by decide : ¬ 97 ∣ 20593) hdiv
-      · exact (by decide : ¬ 98 ∣ 20593) hdiv
-      · exact (by decide : ¬ 99 ∣ 20593) hdiv
-      · exact (by decide : ¬ 100 ∣ 20593) hdiv
-      · exact (by decide : ¬ 101 ∣ 20593) hdiv
-      · exact (by decide : ¬ 102 ∣ 20593) hdiv
-      · exact (by decide : ¬ 103 ∣ 20593) hdiv
-      · exact (by decide : ¬ 104 ∣ 20593) hdiv
-      · exact (by decide : ¬ 105 ∣ 20593) hdiv
-      · exact (by decide : ¬ 106 ∣ 20593) hdiv
-      · exact (by decide : ¬ 107 ∣ 20593) hdiv
-      · exact (by decide : ¬ 108 ∣ 20593) hdiv
-      · exact (by decide : ¬ 109 ∣ 20593) hdiv
-      · exact (by decide : ¬ 110 ∣ 20593) hdiv
-      · exact (by decide : ¬ 111 ∣ 20593) hdiv
-      · exact (by decide : ¬ 112 ∣ 20593) hdiv
-      · exact (by decide : ¬ 113 ∣ 20593) hdiv
-      · exact (by decide : ¬ 114 ∣ 20593) hdiv
-      · exact (by decide : ¬ 115 ∣ 20593) hdiv
-      · exact (by decide : ¬ 116 ∣ 20593) hdiv
-      · exact (by decide : ¬ 117 ∣ 20593) hdiv
-      · exact (by decide : ¬ 118 ∣ 20593) hdiv
-      · exact (by decide : ¬ 119 ∣ 20593) hdiv
-      · exact (by decide : ¬ 120 ∣ 20593) hdiv
-      · exact (by decide : ¬ 121 ∣ 20593) hdiv
-      · exact (by decide : ¬ 122 ∣ 20593) hdiv
-      · exact (by decide : ¬ 123 ∣ 20593) hdiv
-      · exact (by decide : ¬ 124 ∣ 20593) hdiv
-      · exact (by decide : ¬ 125 ∣ 20593) hdiv
-      · exact (by decide : ¬ 126 ∣ 20593) hdiv
-      · exact (by decide : ¬ 127 ∣ 20593) hdiv
-      · exact (by decide : ¬ 128 ∣ 20593) hdiv
-      · exact (by decide : ¬ 129 ∣ 20593) hdiv
-      · exact (by decide : ¬ 130 ∣ 20593) hdiv
-      · exact (by decide : ¬ 131 ∣ 20593) hdiv
-      · exact (by decide : ¬ 132 ∣ 20593) hdiv
-      · exact (by decide : ¬ 133 ∣ 20593) hdiv
-      · exact (by decide : ¬ 134 ∣ 20593) hdiv
-      · exact (by decide : ¬ 135 ∣ 20593) hdiv
-      · exact (by decide : ¬ 136 ∣ 20593) hdiv
-      · exact (by decide : ¬ 137 ∣ 20593) hdiv
-      · exact (by decide : ¬ 138 ∣ 20593) hdiv
-      · exact (by decide : ¬ 139 ∣ 20593) hdiv
-      · exact (by decide : ¬ 140 ∣ 20593) hdiv
-      · exact (by decide : ¬ 141 ∣ 20593) hdiv
-      · exact (by decide : ¬ 142 ∣ 20593) hdiv
-      · exact (by decide : ¬ 143 ∣ 20593) hdiv
-  have hA_factor : (605549 : Nat).factorization 20593 = 0 :=
-    Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 605549)
-  exact primeComponentWitness_of_prime_power_cofactor
-    12 605549 12 3 20593 430002433 1 20881 0
-    hq_prime
-    (by decide)
-    (by decide)
-    (by decide)
-    hA_factor
-    (by decide)
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 20593 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 605549)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A605549_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 605549 12 3 := by
@@ -11474,7 +4134,8 @@ theorem orderOf_b12_mod14723995_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 14723995)ˣ) :
           ZMod 14723995) ^ 12) =
         (1 : ZMod 14723995)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -11513,168 +4174,13 @@ theorem concrete_generated_b12_F12_A1752905_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A1752905_p2_prime_witness :
     PrimeComponentWitness 12 1752905 12 2 20593 := by
-  have hq_prime : Nat.Prime 20593 := by
-    rw [Nat.prime_def_le_sqrt]
-    constructor
-    · decide
-    · intro m hm_ge hm_le hdiv
-      have hm_le143 : m ≤ 143 := by
-        have hsqrt_lt : Nat.sqrt 20593 < 144 :=
-          (Nat.sqrt_lt'.2 (by decide : 20593 < 144 ^ 2))
-        exact Nat.le_of_lt_succ (lt_of_le_of_lt hm_le hsqrt_lt)
-      interval_cases m
-      · exact (by decide : ¬ 2 ∣ 20593) hdiv
-      · exact (by decide : ¬ 3 ∣ 20593) hdiv
-      · exact (by decide : ¬ 4 ∣ 20593) hdiv
-      · exact (by decide : ¬ 5 ∣ 20593) hdiv
-      · exact (by decide : ¬ 6 ∣ 20593) hdiv
-      · exact (by decide : ¬ 7 ∣ 20593) hdiv
-      · exact (by decide : ¬ 8 ∣ 20593) hdiv
-      · exact (by decide : ¬ 9 ∣ 20593) hdiv
-      · exact (by decide : ¬ 10 ∣ 20593) hdiv
-      · exact (by decide : ¬ 11 ∣ 20593) hdiv
-      · exact (by decide : ¬ 12 ∣ 20593) hdiv
-      · exact (by decide : ¬ 13 ∣ 20593) hdiv
-      · exact (by decide : ¬ 14 ∣ 20593) hdiv
-      · exact (by decide : ¬ 15 ∣ 20593) hdiv
-      · exact (by decide : ¬ 16 ∣ 20593) hdiv
-      · exact (by decide : ¬ 17 ∣ 20593) hdiv
-      · exact (by decide : ¬ 18 ∣ 20593) hdiv
-      · exact (by decide : ¬ 19 ∣ 20593) hdiv
-      · exact (by decide : ¬ 20 ∣ 20593) hdiv
-      · exact (by decide : ¬ 21 ∣ 20593) hdiv
-      · exact (by decide : ¬ 22 ∣ 20593) hdiv
-      · exact (by decide : ¬ 23 ∣ 20593) hdiv
-      · exact (by decide : ¬ 24 ∣ 20593) hdiv
-      · exact (by decide : ¬ 25 ∣ 20593) hdiv
-      · exact (by decide : ¬ 26 ∣ 20593) hdiv
-      · exact (by decide : ¬ 27 ∣ 20593) hdiv
-      · exact (by decide : ¬ 28 ∣ 20593) hdiv
-      · exact (by decide : ¬ 29 ∣ 20593) hdiv
-      · exact (by decide : ¬ 30 ∣ 20593) hdiv
-      · exact (by decide : ¬ 31 ∣ 20593) hdiv
-      · exact (by decide : ¬ 32 ∣ 20593) hdiv
-      · exact (by decide : ¬ 33 ∣ 20593) hdiv
-      · exact (by decide : ¬ 34 ∣ 20593) hdiv
-      · exact (by decide : ¬ 35 ∣ 20593) hdiv
-      · exact (by decide : ¬ 36 ∣ 20593) hdiv
-      · exact (by decide : ¬ 37 ∣ 20593) hdiv
-      · exact (by decide : ¬ 38 ∣ 20593) hdiv
-      · exact (by decide : ¬ 39 ∣ 20593) hdiv
-      · exact (by decide : ¬ 40 ∣ 20593) hdiv
-      · exact (by decide : ¬ 41 ∣ 20593) hdiv
-      · exact (by decide : ¬ 42 ∣ 20593) hdiv
-      · exact (by decide : ¬ 43 ∣ 20593) hdiv
-      · exact (by decide : ¬ 44 ∣ 20593) hdiv
-      · exact (by decide : ¬ 45 ∣ 20593) hdiv
-      · exact (by decide : ¬ 46 ∣ 20593) hdiv
-      · exact (by decide : ¬ 47 ∣ 20593) hdiv
-      · exact (by decide : ¬ 48 ∣ 20593) hdiv
-      · exact (by decide : ¬ 49 ∣ 20593) hdiv
-      · exact (by decide : ¬ 50 ∣ 20593) hdiv
-      · exact (by decide : ¬ 51 ∣ 20593) hdiv
-      · exact (by decide : ¬ 52 ∣ 20593) hdiv
-      · exact (by decide : ¬ 53 ∣ 20593) hdiv
-      · exact (by decide : ¬ 54 ∣ 20593) hdiv
-      · exact (by decide : ¬ 55 ∣ 20593) hdiv
-      · exact (by decide : ¬ 56 ∣ 20593) hdiv
-      · exact (by decide : ¬ 57 ∣ 20593) hdiv
-      · exact (by decide : ¬ 58 ∣ 20593) hdiv
-      · exact (by decide : ¬ 59 ∣ 20593) hdiv
-      · exact (by decide : ¬ 60 ∣ 20593) hdiv
-      · exact (by decide : ¬ 61 ∣ 20593) hdiv
-      · exact (by decide : ¬ 62 ∣ 20593) hdiv
-      · exact (by decide : ¬ 63 ∣ 20593) hdiv
-      · exact (by decide : ¬ 64 ∣ 20593) hdiv
-      · exact (by decide : ¬ 65 ∣ 20593) hdiv
-      · exact (by decide : ¬ 66 ∣ 20593) hdiv
-      · exact (by decide : ¬ 67 ∣ 20593) hdiv
-      · exact (by decide : ¬ 68 ∣ 20593) hdiv
-      · exact (by decide : ¬ 69 ∣ 20593) hdiv
-      · exact (by decide : ¬ 70 ∣ 20593) hdiv
-      · exact (by decide : ¬ 71 ∣ 20593) hdiv
-      · exact (by decide : ¬ 72 ∣ 20593) hdiv
-      · exact (by decide : ¬ 73 ∣ 20593) hdiv
-      · exact (by decide : ¬ 74 ∣ 20593) hdiv
-      · exact (by decide : ¬ 75 ∣ 20593) hdiv
-      · exact (by decide : ¬ 76 ∣ 20593) hdiv
-      · exact (by decide : ¬ 77 ∣ 20593) hdiv
-      · exact (by decide : ¬ 78 ∣ 20593) hdiv
-      · exact (by decide : ¬ 79 ∣ 20593) hdiv
-      · exact (by decide : ¬ 80 ∣ 20593) hdiv
-      · exact (by decide : ¬ 81 ∣ 20593) hdiv
-      · exact (by decide : ¬ 82 ∣ 20593) hdiv
-      · exact (by decide : ¬ 83 ∣ 20593) hdiv
-      · exact (by decide : ¬ 84 ∣ 20593) hdiv
-      · exact (by decide : ¬ 85 ∣ 20593) hdiv
-      · exact (by decide : ¬ 86 ∣ 20593) hdiv
-      · exact (by decide : ¬ 87 ∣ 20593) hdiv
-      · exact (by decide : ¬ 88 ∣ 20593) hdiv
-      · exact (by decide : ¬ 89 ∣ 20593) hdiv
-      · exact (by decide : ¬ 90 ∣ 20593) hdiv
-      · exact (by decide : ¬ 91 ∣ 20593) hdiv
-      · exact (by decide : ¬ 92 ∣ 20593) hdiv
-      · exact (by decide : ¬ 93 ∣ 20593) hdiv
-      · exact (by decide : ¬ 94 ∣ 20593) hdiv
-      · exact (by decide : ¬ 95 ∣ 20593) hdiv
-      · exact (by decide : ¬ 96 ∣ 20593) hdiv
-      · exact (by decide : ¬ 97 ∣ 20593) hdiv
-      · exact (by decide : ¬ 98 ∣ 20593) hdiv
-      · exact (by decide : ¬ 99 ∣ 20593) hdiv
-      · exact (by decide : ¬ 100 ∣ 20593) hdiv
-      · exact (by decide : ¬ 101 ∣ 20593) hdiv
-      · exact (by decide : ¬ 102 ∣ 20593) hdiv
-      · exact (by decide : ¬ 103 ∣ 20593) hdiv
-      · exact (by decide : ¬ 104 ∣ 20593) hdiv
-      · exact (by decide : ¬ 105 ∣ 20593) hdiv
-      · exact (by decide : ¬ 106 ∣ 20593) hdiv
-      · exact (by decide : ¬ 107 ∣ 20593) hdiv
-      · exact (by decide : ¬ 108 ∣ 20593) hdiv
-      · exact (by decide : ¬ 109 ∣ 20593) hdiv
-      · exact (by decide : ¬ 110 ∣ 20593) hdiv
-      · exact (by decide : ¬ 111 ∣ 20593) hdiv
-      · exact (by decide : ¬ 112 ∣ 20593) hdiv
-      · exact (by decide : ¬ 113 ∣ 20593) hdiv
-      · exact (by decide : ¬ 114 ∣ 20593) hdiv
-      · exact (by decide : ¬ 115 ∣ 20593) hdiv
-      · exact (by decide : ¬ 116 ∣ 20593) hdiv
-      · exact (by decide : ¬ 117 ∣ 20593) hdiv
-      · exact (by decide : ¬ 118 ∣ 20593) hdiv
-      · exact (by decide : ¬ 119 ∣ 20593) hdiv
-      · exact (by decide : ¬ 120 ∣ 20593) hdiv
-      · exact (by decide : ¬ 121 ∣ 20593) hdiv
-      · exact (by decide : ¬ 122 ∣ 20593) hdiv
-      · exact (by decide : ¬ 123 ∣ 20593) hdiv
-      · exact (by decide : ¬ 124 ∣ 20593) hdiv
-      · exact (by decide : ¬ 125 ∣ 20593) hdiv
-      · exact (by decide : ¬ 126 ∣ 20593) hdiv
-      · exact (by decide : ¬ 127 ∣ 20593) hdiv
-      · exact (by decide : ¬ 128 ∣ 20593) hdiv
-      · exact (by decide : ¬ 129 ∣ 20593) hdiv
-      · exact (by decide : ¬ 130 ∣ 20593) hdiv
-      · exact (by decide : ¬ 131 ∣ 20593) hdiv
-      · exact (by decide : ¬ 132 ∣ 20593) hdiv
-      · exact (by decide : ¬ 133 ∣ 20593) hdiv
-      · exact (by decide : ¬ 134 ∣ 20593) hdiv
-      · exact (by decide : ¬ 135 ∣ 20593) hdiv
-      · exact (by decide : ¬ 136 ∣ 20593) hdiv
-      · exact (by decide : ¬ 137 ∣ 20593) hdiv
-      · exact (by decide : ¬ 138 ∣ 20593) hdiv
-      · exact (by decide : ¬ 139 ∣ 20593) hdiv
-      · exact (by decide : ¬ 140 ∣ 20593) hdiv
-      · exact (by decide : ¬ 141 ∣ 20593) hdiv
-      · exact (by decide : ¬ 142 ∣ 20593) hdiv
-      · exact (by decide : ¬ 143 ∣ 20593) hdiv
-  have hA_factor : (1752905 : Nat).factorization 20593 = 0 :=
-    Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 1752905)
-  exact primeComponentWitness_of_prime_power_cofactor
-    12 1752905 12 2 20593 2985985 1 145 0
-    hq_prime
-    (by decide)
-    (by decide)
-    (by decide)
-    hA_factor
-    (by decide)
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 20593 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 1752905)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A1752905_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 1752905 12 2 := by
@@ -11682,24 +4188,13 @@ theorem concrete_generated_b12_F12_A1752905_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A1752905_p3_prime_witness :
     PrimeComponentWitness 12 1752905 12 3 19 := by
-  refine ⟨(by decide : Nat.Prime 19), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 19 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 19 = 1 := by
-      rw [show (430002433 : Nat) = 19 * 22631707 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 19),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 22631707),
-      ]
-    rw [hfactor]
-    have hA_factor : (1752905 : Nat).factorization 19 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 1752905)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 1752905)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A1752905_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 1752905 12 3 := by
@@ -11734,7 +4229,8 @@ theorem orderOf_b12_mod5086471_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 5086471)ˣ) :
           ZMod 5086471) ^ 12) =
         (1 : ZMod 5086471)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -11773,168 +4269,13 @@ theorem concrete_generated_b12_F12_A2071615_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A2071615_p2_prime_witness :
     PrimeComponentWitness 12 2071615 12 2 20593 := by
-  have hq_prime : Nat.Prime 20593 := by
-    rw [Nat.prime_def_le_sqrt]
-    constructor
-    · decide
-    · intro m hm_ge hm_le hdiv
-      have hm_le143 : m ≤ 143 := by
-        have hsqrt_lt : Nat.sqrt 20593 < 144 :=
-          (Nat.sqrt_lt'.2 (by decide : 20593 < 144 ^ 2))
-        exact Nat.le_of_lt_succ (lt_of_le_of_lt hm_le hsqrt_lt)
-      interval_cases m
-      · exact (by decide : ¬ 2 ∣ 20593) hdiv
-      · exact (by decide : ¬ 3 ∣ 20593) hdiv
-      · exact (by decide : ¬ 4 ∣ 20593) hdiv
-      · exact (by decide : ¬ 5 ∣ 20593) hdiv
-      · exact (by decide : ¬ 6 ∣ 20593) hdiv
-      · exact (by decide : ¬ 7 ∣ 20593) hdiv
-      · exact (by decide : ¬ 8 ∣ 20593) hdiv
-      · exact (by decide : ¬ 9 ∣ 20593) hdiv
-      · exact (by decide : ¬ 10 ∣ 20593) hdiv
-      · exact (by decide : ¬ 11 ∣ 20593) hdiv
-      · exact (by decide : ¬ 12 ∣ 20593) hdiv
-      · exact (by decide : ¬ 13 ∣ 20593) hdiv
-      · exact (by decide : ¬ 14 ∣ 20593) hdiv
-      · exact (by decide : ¬ 15 ∣ 20593) hdiv
-      · exact (by decide : ¬ 16 ∣ 20593) hdiv
-      · exact (by decide : ¬ 17 ∣ 20593) hdiv
-      · exact (by decide : ¬ 18 ∣ 20593) hdiv
-      · exact (by decide : ¬ 19 ∣ 20593) hdiv
-      · exact (by decide : ¬ 20 ∣ 20593) hdiv
-      · exact (by decide : ¬ 21 ∣ 20593) hdiv
-      · exact (by decide : ¬ 22 ∣ 20593) hdiv
-      · exact (by decide : ¬ 23 ∣ 20593) hdiv
-      · exact (by decide : ¬ 24 ∣ 20593) hdiv
-      · exact (by decide : ¬ 25 ∣ 20593) hdiv
-      · exact (by decide : ¬ 26 ∣ 20593) hdiv
-      · exact (by decide : ¬ 27 ∣ 20593) hdiv
-      · exact (by decide : ¬ 28 ∣ 20593) hdiv
-      · exact (by decide : ¬ 29 ∣ 20593) hdiv
-      · exact (by decide : ¬ 30 ∣ 20593) hdiv
-      · exact (by decide : ¬ 31 ∣ 20593) hdiv
-      · exact (by decide : ¬ 32 ∣ 20593) hdiv
-      · exact (by decide : ¬ 33 ∣ 20593) hdiv
-      · exact (by decide : ¬ 34 ∣ 20593) hdiv
-      · exact (by decide : ¬ 35 ∣ 20593) hdiv
-      · exact (by decide : ¬ 36 ∣ 20593) hdiv
-      · exact (by decide : ¬ 37 ∣ 20593) hdiv
-      · exact (by decide : ¬ 38 ∣ 20593) hdiv
-      · exact (by decide : ¬ 39 ∣ 20593) hdiv
-      · exact (by decide : ¬ 40 ∣ 20593) hdiv
-      · exact (by decide : ¬ 41 ∣ 20593) hdiv
-      · exact (by decide : ¬ 42 ∣ 20593) hdiv
-      · exact (by decide : ¬ 43 ∣ 20593) hdiv
-      · exact (by decide : ¬ 44 ∣ 20593) hdiv
-      · exact (by decide : ¬ 45 ∣ 20593) hdiv
-      · exact (by decide : ¬ 46 ∣ 20593) hdiv
-      · exact (by decide : ¬ 47 ∣ 20593) hdiv
-      · exact (by decide : ¬ 48 ∣ 20593) hdiv
-      · exact (by decide : ¬ 49 ∣ 20593) hdiv
-      · exact (by decide : ¬ 50 ∣ 20593) hdiv
-      · exact (by decide : ¬ 51 ∣ 20593) hdiv
-      · exact (by decide : ¬ 52 ∣ 20593) hdiv
-      · exact (by decide : ¬ 53 ∣ 20593) hdiv
-      · exact (by decide : ¬ 54 ∣ 20593) hdiv
-      · exact (by decide : ¬ 55 ∣ 20593) hdiv
-      · exact (by decide : ¬ 56 ∣ 20593) hdiv
-      · exact (by decide : ¬ 57 ∣ 20593) hdiv
-      · exact (by decide : ¬ 58 ∣ 20593) hdiv
-      · exact (by decide : ¬ 59 ∣ 20593) hdiv
-      · exact (by decide : ¬ 60 ∣ 20593) hdiv
-      · exact (by decide : ¬ 61 ∣ 20593) hdiv
-      · exact (by decide : ¬ 62 ∣ 20593) hdiv
-      · exact (by decide : ¬ 63 ∣ 20593) hdiv
-      · exact (by decide : ¬ 64 ∣ 20593) hdiv
-      · exact (by decide : ¬ 65 ∣ 20593) hdiv
-      · exact (by decide : ¬ 66 ∣ 20593) hdiv
-      · exact (by decide : ¬ 67 ∣ 20593) hdiv
-      · exact (by decide : ¬ 68 ∣ 20593) hdiv
-      · exact (by decide : ¬ 69 ∣ 20593) hdiv
-      · exact (by decide : ¬ 70 ∣ 20593) hdiv
-      · exact (by decide : ¬ 71 ∣ 20593) hdiv
-      · exact (by decide : ¬ 72 ∣ 20593) hdiv
-      · exact (by decide : ¬ 73 ∣ 20593) hdiv
-      · exact (by decide : ¬ 74 ∣ 20593) hdiv
-      · exact (by decide : ¬ 75 ∣ 20593) hdiv
-      · exact (by decide : ¬ 76 ∣ 20593) hdiv
-      · exact (by decide : ¬ 77 ∣ 20593) hdiv
-      · exact (by decide : ¬ 78 ∣ 20593) hdiv
-      · exact (by decide : ¬ 79 ∣ 20593) hdiv
-      · exact (by decide : ¬ 80 ∣ 20593) hdiv
-      · exact (by decide : ¬ 81 ∣ 20593) hdiv
-      · exact (by decide : ¬ 82 ∣ 20593) hdiv
-      · exact (by decide : ¬ 83 ∣ 20593) hdiv
-      · exact (by decide : ¬ 84 ∣ 20593) hdiv
-      · exact (by decide : ¬ 85 ∣ 20593) hdiv
-      · exact (by decide : ¬ 86 ∣ 20593) hdiv
-      · exact (by decide : ¬ 87 ∣ 20593) hdiv
-      · exact (by decide : ¬ 88 ∣ 20593) hdiv
-      · exact (by decide : ¬ 89 ∣ 20593) hdiv
-      · exact (by decide : ¬ 90 ∣ 20593) hdiv
-      · exact (by decide : ¬ 91 ∣ 20593) hdiv
-      · exact (by decide : ¬ 92 ∣ 20593) hdiv
-      · exact (by decide : ¬ 93 ∣ 20593) hdiv
-      · exact (by decide : ¬ 94 ∣ 20593) hdiv
-      · exact (by decide : ¬ 95 ∣ 20593) hdiv
-      · exact (by decide : ¬ 96 ∣ 20593) hdiv
-      · exact (by decide : ¬ 97 ∣ 20593) hdiv
-      · exact (by decide : ¬ 98 ∣ 20593) hdiv
-      · exact (by decide : ¬ 99 ∣ 20593) hdiv
-      · exact (by decide : ¬ 100 ∣ 20593) hdiv
-      · exact (by decide : ¬ 101 ∣ 20593) hdiv
-      · exact (by decide : ¬ 102 ∣ 20593) hdiv
-      · exact (by decide : ¬ 103 ∣ 20593) hdiv
-      · exact (by decide : ¬ 104 ∣ 20593) hdiv
-      · exact (by decide : ¬ 105 ∣ 20593) hdiv
-      · exact (by decide : ¬ 106 ∣ 20593) hdiv
-      · exact (by decide : ¬ 107 ∣ 20593) hdiv
-      · exact (by decide : ¬ 108 ∣ 20593) hdiv
-      · exact (by decide : ¬ 109 ∣ 20593) hdiv
-      · exact (by decide : ¬ 110 ∣ 20593) hdiv
-      · exact (by decide : ¬ 111 ∣ 20593) hdiv
-      · exact (by decide : ¬ 112 ∣ 20593) hdiv
-      · exact (by decide : ¬ 113 ∣ 20593) hdiv
-      · exact (by decide : ¬ 114 ∣ 20593) hdiv
-      · exact (by decide : ¬ 115 ∣ 20593) hdiv
-      · exact (by decide : ¬ 116 ∣ 20593) hdiv
-      · exact (by decide : ¬ 117 ∣ 20593) hdiv
-      · exact (by decide : ¬ 118 ∣ 20593) hdiv
-      · exact (by decide : ¬ 119 ∣ 20593) hdiv
-      · exact (by decide : ¬ 120 ∣ 20593) hdiv
-      · exact (by decide : ¬ 121 ∣ 20593) hdiv
-      · exact (by decide : ¬ 122 ∣ 20593) hdiv
-      · exact (by decide : ¬ 123 ∣ 20593) hdiv
-      · exact (by decide : ¬ 124 ∣ 20593) hdiv
-      · exact (by decide : ¬ 125 ∣ 20593) hdiv
-      · exact (by decide : ¬ 126 ∣ 20593) hdiv
-      · exact (by decide : ¬ 127 ∣ 20593) hdiv
-      · exact (by decide : ¬ 128 ∣ 20593) hdiv
-      · exact (by decide : ¬ 129 ∣ 20593) hdiv
-      · exact (by decide : ¬ 130 ∣ 20593) hdiv
-      · exact (by decide : ¬ 131 ∣ 20593) hdiv
-      · exact (by decide : ¬ 132 ∣ 20593) hdiv
-      · exact (by decide : ¬ 133 ∣ 20593) hdiv
-      · exact (by decide : ¬ 134 ∣ 20593) hdiv
-      · exact (by decide : ¬ 135 ∣ 20593) hdiv
-      · exact (by decide : ¬ 136 ∣ 20593) hdiv
-      · exact (by decide : ¬ 137 ∣ 20593) hdiv
-      · exact (by decide : ¬ 138 ∣ 20593) hdiv
-      · exact (by decide : ¬ 139 ∣ 20593) hdiv
-      · exact (by decide : ¬ 140 ∣ 20593) hdiv
-      · exact (by decide : ¬ 141 ∣ 20593) hdiv
-      · exact (by decide : ¬ 142 ∣ 20593) hdiv
-      · exact (by decide : ¬ 143 ∣ 20593) hdiv
-  have hA_factor : (2071615 : Nat).factorization 20593 = 0 :=
-    Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 2071615)
-  exact primeComponentWitness_of_prime_power_cofactor
-    12 2071615 12 2 20593 2985985 1 145 0
-    hq_prime
-    (by decide)
-    (by decide)
-    (by decide)
-    hA_factor
-    (by decide)
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 20593 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 2071615)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A2071615_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 2071615 12 2 := by
@@ -11942,24 +4283,13 @@ theorem concrete_generated_b12_F12_A2071615_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A2071615_p3_prime_witness :
     PrimeComponentWitness 12 2071615 12 3 19 := by
-  refine ⟨(by decide : Nat.Prime 19), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 19 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 19 = 1 := by
-      rw [show (430002433 : Nat) = 19 * 22631707 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 19),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 22631707),
-      ]
-    rw [hfactor]
-    have hA_factor : (2071615 : Nat).factorization 19 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 2071615)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 2071615)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A2071615_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 2071615 12 3 := by
@@ -11994,7 +4324,8 @@ theorem orderOf_b12_mod4303937_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 4303937)ˣ) :
           ZMod 4303937) ^ 12) =
         (1 : ZMod 4303937)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -12033,24 +4364,13 @@ theorem concrete_generated_b12_F12_A2985983_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A2985983_p2_prime_witness :
     PrimeComponentWitness 12 2985983 12 2 5 := by
-  refine ⟨(by decide : Nat.Prime 5), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 5 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 5 = 1 := by
-      rw [show (2985985 : Nat) = 5 * 597197 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 5),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 597197),
-      ]
-    rw [hfactor]
-    have hA_factor : (2985983 : Nat).factorization 5 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 2985983)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 2985983)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A2985983_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 2985983 12 2 := by
@@ -12058,168 +4378,13 @@ theorem concrete_generated_b12_F12_A2985983_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A2985983_p3_prime_witness :
     PrimeComponentWitness 12 2985983 12 3 20593 := by
-  have hq_prime : Nat.Prime 20593 := by
-    rw [Nat.prime_def_le_sqrt]
-    constructor
-    · decide
-    · intro m hm_ge hm_le hdiv
-      have hm_le143 : m ≤ 143 := by
-        have hsqrt_lt : Nat.sqrt 20593 < 144 :=
-          (Nat.sqrt_lt'.2 (by decide : 20593 < 144 ^ 2))
-        exact Nat.le_of_lt_succ (lt_of_le_of_lt hm_le hsqrt_lt)
-      interval_cases m
-      · exact (by decide : ¬ 2 ∣ 20593) hdiv
-      · exact (by decide : ¬ 3 ∣ 20593) hdiv
-      · exact (by decide : ¬ 4 ∣ 20593) hdiv
-      · exact (by decide : ¬ 5 ∣ 20593) hdiv
-      · exact (by decide : ¬ 6 ∣ 20593) hdiv
-      · exact (by decide : ¬ 7 ∣ 20593) hdiv
-      · exact (by decide : ¬ 8 ∣ 20593) hdiv
-      · exact (by decide : ¬ 9 ∣ 20593) hdiv
-      · exact (by decide : ¬ 10 ∣ 20593) hdiv
-      · exact (by decide : ¬ 11 ∣ 20593) hdiv
-      · exact (by decide : ¬ 12 ∣ 20593) hdiv
-      · exact (by decide : ¬ 13 ∣ 20593) hdiv
-      · exact (by decide : ¬ 14 ∣ 20593) hdiv
-      · exact (by decide : ¬ 15 ∣ 20593) hdiv
-      · exact (by decide : ¬ 16 ∣ 20593) hdiv
-      · exact (by decide : ¬ 17 ∣ 20593) hdiv
-      · exact (by decide : ¬ 18 ∣ 20593) hdiv
-      · exact (by decide : ¬ 19 ∣ 20593) hdiv
-      · exact (by decide : ¬ 20 ∣ 20593) hdiv
-      · exact (by decide : ¬ 21 ∣ 20593) hdiv
-      · exact (by decide : ¬ 22 ∣ 20593) hdiv
-      · exact (by decide : ¬ 23 ∣ 20593) hdiv
-      · exact (by decide : ¬ 24 ∣ 20593) hdiv
-      · exact (by decide : ¬ 25 ∣ 20593) hdiv
-      · exact (by decide : ¬ 26 ∣ 20593) hdiv
-      · exact (by decide : ¬ 27 ∣ 20593) hdiv
-      · exact (by decide : ¬ 28 ∣ 20593) hdiv
-      · exact (by decide : ¬ 29 ∣ 20593) hdiv
-      · exact (by decide : ¬ 30 ∣ 20593) hdiv
-      · exact (by decide : ¬ 31 ∣ 20593) hdiv
-      · exact (by decide : ¬ 32 ∣ 20593) hdiv
-      · exact (by decide : ¬ 33 ∣ 20593) hdiv
-      · exact (by decide : ¬ 34 ∣ 20593) hdiv
-      · exact (by decide : ¬ 35 ∣ 20593) hdiv
-      · exact (by decide : ¬ 36 ∣ 20593) hdiv
-      · exact (by decide : ¬ 37 ∣ 20593) hdiv
-      · exact (by decide : ¬ 38 ∣ 20593) hdiv
-      · exact (by decide : ¬ 39 ∣ 20593) hdiv
-      · exact (by decide : ¬ 40 ∣ 20593) hdiv
-      · exact (by decide : ¬ 41 ∣ 20593) hdiv
-      · exact (by decide : ¬ 42 ∣ 20593) hdiv
-      · exact (by decide : ¬ 43 ∣ 20593) hdiv
-      · exact (by decide : ¬ 44 ∣ 20593) hdiv
-      · exact (by decide : ¬ 45 ∣ 20593) hdiv
-      · exact (by decide : ¬ 46 ∣ 20593) hdiv
-      · exact (by decide : ¬ 47 ∣ 20593) hdiv
-      · exact (by decide : ¬ 48 ∣ 20593) hdiv
-      · exact (by decide : ¬ 49 ∣ 20593) hdiv
-      · exact (by decide : ¬ 50 ∣ 20593) hdiv
-      · exact (by decide : ¬ 51 ∣ 20593) hdiv
-      · exact (by decide : ¬ 52 ∣ 20593) hdiv
-      · exact (by decide : ¬ 53 ∣ 20593) hdiv
-      · exact (by decide : ¬ 54 ∣ 20593) hdiv
-      · exact (by decide : ¬ 55 ∣ 20593) hdiv
-      · exact (by decide : ¬ 56 ∣ 20593) hdiv
-      · exact (by decide : ¬ 57 ∣ 20593) hdiv
-      · exact (by decide : ¬ 58 ∣ 20593) hdiv
-      · exact (by decide : ¬ 59 ∣ 20593) hdiv
-      · exact (by decide : ¬ 60 ∣ 20593) hdiv
-      · exact (by decide : ¬ 61 ∣ 20593) hdiv
-      · exact (by decide : ¬ 62 ∣ 20593) hdiv
-      · exact (by decide : ¬ 63 ∣ 20593) hdiv
-      · exact (by decide : ¬ 64 ∣ 20593) hdiv
-      · exact (by decide : ¬ 65 ∣ 20593) hdiv
-      · exact (by decide : ¬ 66 ∣ 20593) hdiv
-      · exact (by decide : ¬ 67 ∣ 20593) hdiv
-      · exact (by decide : ¬ 68 ∣ 20593) hdiv
-      · exact (by decide : ¬ 69 ∣ 20593) hdiv
-      · exact (by decide : ¬ 70 ∣ 20593) hdiv
-      · exact (by decide : ¬ 71 ∣ 20593) hdiv
-      · exact (by decide : ¬ 72 ∣ 20593) hdiv
-      · exact (by decide : ¬ 73 ∣ 20593) hdiv
-      · exact (by decide : ¬ 74 ∣ 20593) hdiv
-      · exact (by decide : ¬ 75 ∣ 20593) hdiv
-      · exact (by decide : ¬ 76 ∣ 20593) hdiv
-      · exact (by decide : ¬ 77 ∣ 20593) hdiv
-      · exact (by decide : ¬ 78 ∣ 20593) hdiv
-      · exact (by decide : ¬ 79 ∣ 20593) hdiv
-      · exact (by decide : ¬ 80 ∣ 20593) hdiv
-      · exact (by decide : ¬ 81 ∣ 20593) hdiv
-      · exact (by decide : ¬ 82 ∣ 20593) hdiv
-      · exact (by decide : ¬ 83 ∣ 20593) hdiv
-      · exact (by decide : ¬ 84 ∣ 20593) hdiv
-      · exact (by decide : ¬ 85 ∣ 20593) hdiv
-      · exact (by decide : ¬ 86 ∣ 20593) hdiv
-      · exact (by decide : ¬ 87 ∣ 20593) hdiv
-      · exact (by decide : ¬ 88 ∣ 20593) hdiv
-      · exact (by decide : ¬ 89 ∣ 20593) hdiv
-      · exact (by decide : ¬ 90 ∣ 20593) hdiv
-      · exact (by decide : ¬ 91 ∣ 20593) hdiv
-      · exact (by decide : ¬ 92 ∣ 20593) hdiv
-      · exact (by decide : ¬ 93 ∣ 20593) hdiv
-      · exact (by decide : ¬ 94 ∣ 20593) hdiv
-      · exact (by decide : ¬ 95 ∣ 20593) hdiv
-      · exact (by decide : ¬ 96 ∣ 20593) hdiv
-      · exact (by decide : ¬ 97 ∣ 20593) hdiv
-      · exact (by decide : ¬ 98 ∣ 20593) hdiv
-      · exact (by decide : ¬ 99 ∣ 20593) hdiv
-      · exact (by decide : ¬ 100 ∣ 20593) hdiv
-      · exact (by decide : ¬ 101 ∣ 20593) hdiv
-      · exact (by decide : ¬ 102 ∣ 20593) hdiv
-      · exact (by decide : ¬ 103 ∣ 20593) hdiv
-      · exact (by decide : ¬ 104 ∣ 20593) hdiv
-      · exact (by decide : ¬ 105 ∣ 20593) hdiv
-      · exact (by decide : ¬ 106 ∣ 20593) hdiv
-      · exact (by decide : ¬ 107 ∣ 20593) hdiv
-      · exact (by decide : ¬ 108 ∣ 20593) hdiv
-      · exact (by decide : ¬ 109 ∣ 20593) hdiv
-      · exact (by decide : ¬ 110 ∣ 20593) hdiv
-      · exact (by decide : ¬ 111 ∣ 20593) hdiv
-      · exact (by decide : ¬ 112 ∣ 20593) hdiv
-      · exact (by decide : ¬ 113 ∣ 20593) hdiv
-      · exact (by decide : ¬ 114 ∣ 20593) hdiv
-      · exact (by decide : ¬ 115 ∣ 20593) hdiv
-      · exact (by decide : ¬ 116 ∣ 20593) hdiv
-      · exact (by decide : ¬ 117 ∣ 20593) hdiv
-      · exact (by decide : ¬ 118 ∣ 20593) hdiv
-      · exact (by decide : ¬ 119 ∣ 20593) hdiv
-      · exact (by decide : ¬ 120 ∣ 20593) hdiv
-      · exact (by decide : ¬ 121 ∣ 20593) hdiv
-      · exact (by decide : ¬ 122 ∣ 20593) hdiv
-      · exact (by decide : ¬ 123 ∣ 20593) hdiv
-      · exact (by decide : ¬ 124 ∣ 20593) hdiv
-      · exact (by decide : ¬ 125 ∣ 20593) hdiv
-      · exact (by decide : ¬ 126 ∣ 20593) hdiv
-      · exact (by decide : ¬ 127 ∣ 20593) hdiv
-      · exact (by decide : ¬ 128 ∣ 20593) hdiv
-      · exact (by decide : ¬ 129 ∣ 20593) hdiv
-      · exact (by decide : ¬ 130 ∣ 20593) hdiv
-      · exact (by decide : ¬ 131 ∣ 20593) hdiv
-      · exact (by decide : ¬ 132 ∣ 20593) hdiv
-      · exact (by decide : ¬ 133 ∣ 20593) hdiv
-      · exact (by decide : ¬ 134 ∣ 20593) hdiv
-      · exact (by decide : ¬ 135 ∣ 20593) hdiv
-      · exact (by decide : ¬ 136 ∣ 20593) hdiv
-      · exact (by decide : ¬ 137 ∣ 20593) hdiv
-      · exact (by decide : ¬ 138 ∣ 20593) hdiv
-      · exact (by decide : ¬ 139 ∣ 20593) hdiv
-      · exact (by decide : ¬ 140 ∣ 20593) hdiv
-      · exact (by decide : ¬ 141 ∣ 20593) hdiv
-      · exact (by decide : ¬ 142 ∣ 20593) hdiv
-      · exact (by decide : ¬ 143 ∣ 20593) hdiv
-  have hA_factor : (2985983 : Nat).factorization 20593 = 0 :=
-    Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 2985983)
-  exact primeComponentWitness_of_prime_power_cofactor
-    12 2985983 12 3 20593 430002433 1 20881 0
-    hq_prime
-    (by decide)
-    (by decide)
-    (by decide)
-    hA_factor
-    (by decide)
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 20593 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 2985983)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A2985983_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 2985983 12 3 := by
@@ -12254,7 +4419,8 @@ theorem orderOf_b12_mod2985985_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 2985985)ˣ) :
           ZMod 2985985) ^ 12) =
         (1 : ZMod 2985985)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -12293,24 +4459,13 @@ theorem concrete_generated_b12_F12_A6661039_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A6661039_p2_prime_witness :
     PrimeComponentWitness 12 6661039 12 2 5 := by
-  refine ⟨(by decide : Nat.Prime 5), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 5 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 5 = 1 := by
-      rw [show (2985985 : Nat) = 5 * 597197 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 5),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 597197),
-      ]
-    rw [hfactor]
-    have hA_factor : (6661039 : Nat).factorization 5 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 6661039)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 6661039)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A6661039_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 6661039 12 2 := by
@@ -12318,168 +4473,13 @@ theorem concrete_generated_b12_F12_A6661039_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A6661039_p3_prime_witness :
     PrimeComponentWitness 12 6661039 12 3 20593 := by
-  have hq_prime : Nat.Prime 20593 := by
-    rw [Nat.prime_def_le_sqrt]
-    constructor
-    · decide
-    · intro m hm_ge hm_le hdiv
-      have hm_le143 : m ≤ 143 := by
-        have hsqrt_lt : Nat.sqrt 20593 < 144 :=
-          (Nat.sqrt_lt'.2 (by decide : 20593 < 144 ^ 2))
-        exact Nat.le_of_lt_succ (lt_of_le_of_lt hm_le hsqrt_lt)
-      interval_cases m
-      · exact (by decide : ¬ 2 ∣ 20593) hdiv
-      · exact (by decide : ¬ 3 ∣ 20593) hdiv
-      · exact (by decide : ¬ 4 ∣ 20593) hdiv
-      · exact (by decide : ¬ 5 ∣ 20593) hdiv
-      · exact (by decide : ¬ 6 ∣ 20593) hdiv
-      · exact (by decide : ¬ 7 ∣ 20593) hdiv
-      · exact (by decide : ¬ 8 ∣ 20593) hdiv
-      · exact (by decide : ¬ 9 ∣ 20593) hdiv
-      · exact (by decide : ¬ 10 ∣ 20593) hdiv
-      · exact (by decide : ¬ 11 ∣ 20593) hdiv
-      · exact (by decide : ¬ 12 ∣ 20593) hdiv
-      · exact (by decide : ¬ 13 ∣ 20593) hdiv
-      · exact (by decide : ¬ 14 ∣ 20593) hdiv
-      · exact (by decide : ¬ 15 ∣ 20593) hdiv
-      · exact (by decide : ¬ 16 ∣ 20593) hdiv
-      · exact (by decide : ¬ 17 ∣ 20593) hdiv
-      · exact (by decide : ¬ 18 ∣ 20593) hdiv
-      · exact (by decide : ¬ 19 ∣ 20593) hdiv
-      · exact (by decide : ¬ 20 ∣ 20593) hdiv
-      · exact (by decide : ¬ 21 ∣ 20593) hdiv
-      · exact (by decide : ¬ 22 ∣ 20593) hdiv
-      · exact (by decide : ¬ 23 ∣ 20593) hdiv
-      · exact (by decide : ¬ 24 ∣ 20593) hdiv
-      · exact (by decide : ¬ 25 ∣ 20593) hdiv
-      · exact (by decide : ¬ 26 ∣ 20593) hdiv
-      · exact (by decide : ¬ 27 ∣ 20593) hdiv
-      · exact (by decide : ¬ 28 ∣ 20593) hdiv
-      · exact (by decide : ¬ 29 ∣ 20593) hdiv
-      · exact (by decide : ¬ 30 ∣ 20593) hdiv
-      · exact (by decide : ¬ 31 ∣ 20593) hdiv
-      · exact (by decide : ¬ 32 ∣ 20593) hdiv
-      · exact (by decide : ¬ 33 ∣ 20593) hdiv
-      · exact (by decide : ¬ 34 ∣ 20593) hdiv
-      · exact (by decide : ¬ 35 ∣ 20593) hdiv
-      · exact (by decide : ¬ 36 ∣ 20593) hdiv
-      · exact (by decide : ¬ 37 ∣ 20593) hdiv
-      · exact (by decide : ¬ 38 ∣ 20593) hdiv
-      · exact (by decide : ¬ 39 ∣ 20593) hdiv
-      · exact (by decide : ¬ 40 ∣ 20593) hdiv
-      · exact (by decide : ¬ 41 ∣ 20593) hdiv
-      · exact (by decide : ¬ 42 ∣ 20593) hdiv
-      · exact (by decide : ¬ 43 ∣ 20593) hdiv
-      · exact (by decide : ¬ 44 ∣ 20593) hdiv
-      · exact (by decide : ¬ 45 ∣ 20593) hdiv
-      · exact (by decide : ¬ 46 ∣ 20593) hdiv
-      · exact (by decide : ¬ 47 ∣ 20593) hdiv
-      · exact (by decide : ¬ 48 ∣ 20593) hdiv
-      · exact (by decide : ¬ 49 ∣ 20593) hdiv
-      · exact (by decide : ¬ 50 ∣ 20593) hdiv
-      · exact (by decide : ¬ 51 ∣ 20593) hdiv
-      · exact (by decide : ¬ 52 ∣ 20593) hdiv
-      · exact (by decide : ¬ 53 ∣ 20593) hdiv
-      · exact (by decide : ¬ 54 ∣ 20593) hdiv
-      · exact (by decide : ¬ 55 ∣ 20593) hdiv
-      · exact (by decide : ¬ 56 ∣ 20593) hdiv
-      · exact (by decide : ¬ 57 ∣ 20593) hdiv
-      · exact (by decide : ¬ 58 ∣ 20593) hdiv
-      · exact (by decide : ¬ 59 ∣ 20593) hdiv
-      · exact (by decide : ¬ 60 ∣ 20593) hdiv
-      · exact (by decide : ¬ 61 ∣ 20593) hdiv
-      · exact (by decide : ¬ 62 ∣ 20593) hdiv
-      · exact (by decide : ¬ 63 ∣ 20593) hdiv
-      · exact (by decide : ¬ 64 ∣ 20593) hdiv
-      · exact (by decide : ¬ 65 ∣ 20593) hdiv
-      · exact (by decide : ¬ 66 ∣ 20593) hdiv
-      · exact (by decide : ¬ 67 ∣ 20593) hdiv
-      · exact (by decide : ¬ 68 ∣ 20593) hdiv
-      · exact (by decide : ¬ 69 ∣ 20593) hdiv
-      · exact (by decide : ¬ 70 ∣ 20593) hdiv
-      · exact (by decide : ¬ 71 ∣ 20593) hdiv
-      · exact (by decide : ¬ 72 ∣ 20593) hdiv
-      · exact (by decide : ¬ 73 ∣ 20593) hdiv
-      · exact (by decide : ¬ 74 ∣ 20593) hdiv
-      · exact (by decide : ¬ 75 ∣ 20593) hdiv
-      · exact (by decide : ¬ 76 ∣ 20593) hdiv
-      · exact (by decide : ¬ 77 ∣ 20593) hdiv
-      · exact (by decide : ¬ 78 ∣ 20593) hdiv
-      · exact (by decide : ¬ 79 ∣ 20593) hdiv
-      · exact (by decide : ¬ 80 ∣ 20593) hdiv
-      · exact (by decide : ¬ 81 ∣ 20593) hdiv
-      · exact (by decide : ¬ 82 ∣ 20593) hdiv
-      · exact (by decide : ¬ 83 ∣ 20593) hdiv
-      · exact (by decide : ¬ 84 ∣ 20593) hdiv
-      · exact (by decide : ¬ 85 ∣ 20593) hdiv
-      · exact (by decide : ¬ 86 ∣ 20593) hdiv
-      · exact (by decide : ¬ 87 ∣ 20593) hdiv
-      · exact (by decide : ¬ 88 ∣ 20593) hdiv
-      · exact (by decide : ¬ 89 ∣ 20593) hdiv
-      · exact (by decide : ¬ 90 ∣ 20593) hdiv
-      · exact (by decide : ¬ 91 ∣ 20593) hdiv
-      · exact (by decide : ¬ 92 ∣ 20593) hdiv
-      · exact (by decide : ¬ 93 ∣ 20593) hdiv
-      · exact (by decide : ¬ 94 ∣ 20593) hdiv
-      · exact (by decide : ¬ 95 ∣ 20593) hdiv
-      · exact (by decide : ¬ 96 ∣ 20593) hdiv
-      · exact (by decide : ¬ 97 ∣ 20593) hdiv
-      · exact (by decide : ¬ 98 ∣ 20593) hdiv
-      · exact (by decide : ¬ 99 ∣ 20593) hdiv
-      · exact (by decide : ¬ 100 ∣ 20593) hdiv
-      · exact (by decide : ¬ 101 ∣ 20593) hdiv
-      · exact (by decide : ¬ 102 ∣ 20593) hdiv
-      · exact (by decide : ¬ 103 ∣ 20593) hdiv
-      · exact (by decide : ¬ 104 ∣ 20593) hdiv
-      · exact (by decide : ¬ 105 ∣ 20593) hdiv
-      · exact (by decide : ¬ 106 ∣ 20593) hdiv
-      · exact (by decide : ¬ 107 ∣ 20593) hdiv
-      · exact (by decide : ¬ 108 ∣ 20593) hdiv
-      · exact (by decide : ¬ 109 ∣ 20593) hdiv
-      · exact (by decide : ¬ 110 ∣ 20593) hdiv
-      · exact (by decide : ¬ 111 ∣ 20593) hdiv
-      · exact (by decide : ¬ 112 ∣ 20593) hdiv
-      · exact (by decide : ¬ 113 ∣ 20593) hdiv
-      · exact (by decide : ¬ 114 ∣ 20593) hdiv
-      · exact (by decide : ¬ 115 ∣ 20593) hdiv
-      · exact (by decide : ¬ 116 ∣ 20593) hdiv
-      · exact (by decide : ¬ 117 ∣ 20593) hdiv
-      · exact (by decide : ¬ 118 ∣ 20593) hdiv
-      · exact (by decide : ¬ 119 ∣ 20593) hdiv
-      · exact (by decide : ¬ 120 ∣ 20593) hdiv
-      · exact (by decide : ¬ 121 ∣ 20593) hdiv
-      · exact (by decide : ¬ 122 ∣ 20593) hdiv
-      · exact (by decide : ¬ 123 ∣ 20593) hdiv
-      · exact (by decide : ¬ 124 ∣ 20593) hdiv
-      · exact (by decide : ¬ 125 ∣ 20593) hdiv
-      · exact (by decide : ¬ 126 ∣ 20593) hdiv
-      · exact (by decide : ¬ 127 ∣ 20593) hdiv
-      · exact (by decide : ¬ 128 ∣ 20593) hdiv
-      · exact (by decide : ¬ 129 ∣ 20593) hdiv
-      · exact (by decide : ¬ 130 ∣ 20593) hdiv
-      · exact (by decide : ¬ 131 ∣ 20593) hdiv
-      · exact (by decide : ¬ 132 ∣ 20593) hdiv
-      · exact (by decide : ¬ 133 ∣ 20593) hdiv
-      · exact (by decide : ¬ 134 ∣ 20593) hdiv
-      · exact (by decide : ¬ 135 ∣ 20593) hdiv
-      · exact (by decide : ¬ 136 ∣ 20593) hdiv
-      · exact (by decide : ¬ 137 ∣ 20593) hdiv
-      · exact (by decide : ¬ 138 ∣ 20593) hdiv
-      · exact (by decide : ¬ 139 ∣ 20593) hdiv
-      · exact (by decide : ¬ 140 ∣ 20593) hdiv
-      · exact (by decide : ¬ 141 ∣ 20593) hdiv
-      · exact (by decide : ¬ 142 ∣ 20593) hdiv
-      · exact (by decide : ¬ 143 ∣ 20593) hdiv
-  have hA_factor : (6661039 : Nat).factorization 20593 = 0 :=
-    Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 6661039)
-  exact primeComponentWitness_of_prime_power_cofactor
-    12 6661039 12 3 20593 430002433 1 20881 0
-    hq_prime
-    (by decide)
-    (by decide)
-    (by decide)
-    hA_factor
-    (by decide)
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 20593 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 6661039)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A6661039_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 6661039 12 3 := by
@@ -12514,7 +4514,8 @@ theorem orderOf_b12_mod1338545_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 1338545)ˣ) :
           ZMod 1338545) ^ 12) =
         (1 : ZMod 1338545)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -12553,24 +4554,13 @@ theorem concrete_generated_b12_F12_A7872137_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A7872137_p2_prime_witness :
     PrimeComponentWitness 12 7872137 12 2 5 := by
-  refine ⟨(by decide : Nat.Prime 5), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 5 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 5 = 1 := by
-      rw [show (2985985 : Nat) = 5 * 597197 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 5),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 597197),
-      ]
-    rw [hfactor]
-    have hA_factor : (7872137 : Nat).factorization 5 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 7872137)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 7872137)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A7872137_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 7872137 12 2 := by
@@ -12578,168 +4568,13 @@ theorem concrete_generated_b12_F12_A7872137_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A7872137_p3_prime_witness :
     PrimeComponentWitness 12 7872137 12 3 20593 := by
-  have hq_prime : Nat.Prime 20593 := by
-    rw [Nat.prime_def_le_sqrt]
-    constructor
-    · decide
-    · intro m hm_ge hm_le hdiv
-      have hm_le143 : m ≤ 143 := by
-        have hsqrt_lt : Nat.sqrt 20593 < 144 :=
-          (Nat.sqrt_lt'.2 (by decide : 20593 < 144 ^ 2))
-        exact Nat.le_of_lt_succ (lt_of_le_of_lt hm_le hsqrt_lt)
-      interval_cases m
-      · exact (by decide : ¬ 2 ∣ 20593) hdiv
-      · exact (by decide : ¬ 3 ∣ 20593) hdiv
-      · exact (by decide : ¬ 4 ∣ 20593) hdiv
-      · exact (by decide : ¬ 5 ∣ 20593) hdiv
-      · exact (by decide : ¬ 6 ∣ 20593) hdiv
-      · exact (by decide : ¬ 7 ∣ 20593) hdiv
-      · exact (by decide : ¬ 8 ∣ 20593) hdiv
-      · exact (by decide : ¬ 9 ∣ 20593) hdiv
-      · exact (by decide : ¬ 10 ∣ 20593) hdiv
-      · exact (by decide : ¬ 11 ∣ 20593) hdiv
-      · exact (by decide : ¬ 12 ∣ 20593) hdiv
-      · exact (by decide : ¬ 13 ∣ 20593) hdiv
-      · exact (by decide : ¬ 14 ∣ 20593) hdiv
-      · exact (by decide : ¬ 15 ∣ 20593) hdiv
-      · exact (by decide : ¬ 16 ∣ 20593) hdiv
-      · exact (by decide : ¬ 17 ∣ 20593) hdiv
-      · exact (by decide : ¬ 18 ∣ 20593) hdiv
-      · exact (by decide : ¬ 19 ∣ 20593) hdiv
-      · exact (by decide : ¬ 20 ∣ 20593) hdiv
-      · exact (by decide : ¬ 21 ∣ 20593) hdiv
-      · exact (by decide : ¬ 22 ∣ 20593) hdiv
-      · exact (by decide : ¬ 23 ∣ 20593) hdiv
-      · exact (by decide : ¬ 24 ∣ 20593) hdiv
-      · exact (by decide : ¬ 25 ∣ 20593) hdiv
-      · exact (by decide : ¬ 26 ∣ 20593) hdiv
-      · exact (by decide : ¬ 27 ∣ 20593) hdiv
-      · exact (by decide : ¬ 28 ∣ 20593) hdiv
-      · exact (by decide : ¬ 29 ∣ 20593) hdiv
-      · exact (by decide : ¬ 30 ∣ 20593) hdiv
-      · exact (by decide : ¬ 31 ∣ 20593) hdiv
-      · exact (by decide : ¬ 32 ∣ 20593) hdiv
-      · exact (by decide : ¬ 33 ∣ 20593) hdiv
-      · exact (by decide : ¬ 34 ∣ 20593) hdiv
-      · exact (by decide : ¬ 35 ∣ 20593) hdiv
-      · exact (by decide : ¬ 36 ∣ 20593) hdiv
-      · exact (by decide : ¬ 37 ∣ 20593) hdiv
-      · exact (by decide : ¬ 38 ∣ 20593) hdiv
-      · exact (by decide : ¬ 39 ∣ 20593) hdiv
-      · exact (by decide : ¬ 40 ∣ 20593) hdiv
-      · exact (by decide : ¬ 41 ∣ 20593) hdiv
-      · exact (by decide : ¬ 42 ∣ 20593) hdiv
-      · exact (by decide : ¬ 43 ∣ 20593) hdiv
-      · exact (by decide : ¬ 44 ∣ 20593) hdiv
-      · exact (by decide : ¬ 45 ∣ 20593) hdiv
-      · exact (by decide : ¬ 46 ∣ 20593) hdiv
-      · exact (by decide : ¬ 47 ∣ 20593) hdiv
-      · exact (by decide : ¬ 48 ∣ 20593) hdiv
-      · exact (by decide : ¬ 49 ∣ 20593) hdiv
-      · exact (by decide : ¬ 50 ∣ 20593) hdiv
-      · exact (by decide : ¬ 51 ∣ 20593) hdiv
-      · exact (by decide : ¬ 52 ∣ 20593) hdiv
-      · exact (by decide : ¬ 53 ∣ 20593) hdiv
-      · exact (by decide : ¬ 54 ∣ 20593) hdiv
-      · exact (by decide : ¬ 55 ∣ 20593) hdiv
-      · exact (by decide : ¬ 56 ∣ 20593) hdiv
-      · exact (by decide : ¬ 57 ∣ 20593) hdiv
-      · exact (by decide : ¬ 58 ∣ 20593) hdiv
-      · exact (by decide : ¬ 59 ∣ 20593) hdiv
-      · exact (by decide : ¬ 60 ∣ 20593) hdiv
-      · exact (by decide : ¬ 61 ∣ 20593) hdiv
-      · exact (by decide : ¬ 62 ∣ 20593) hdiv
-      · exact (by decide : ¬ 63 ∣ 20593) hdiv
-      · exact (by decide : ¬ 64 ∣ 20593) hdiv
-      · exact (by decide : ¬ 65 ∣ 20593) hdiv
-      · exact (by decide : ¬ 66 ∣ 20593) hdiv
-      · exact (by decide : ¬ 67 ∣ 20593) hdiv
-      · exact (by decide : ¬ 68 ∣ 20593) hdiv
-      · exact (by decide : ¬ 69 ∣ 20593) hdiv
-      · exact (by decide : ¬ 70 ∣ 20593) hdiv
-      · exact (by decide : ¬ 71 ∣ 20593) hdiv
-      · exact (by decide : ¬ 72 ∣ 20593) hdiv
-      · exact (by decide : ¬ 73 ∣ 20593) hdiv
-      · exact (by decide : ¬ 74 ∣ 20593) hdiv
-      · exact (by decide : ¬ 75 ∣ 20593) hdiv
-      · exact (by decide : ¬ 76 ∣ 20593) hdiv
-      · exact (by decide : ¬ 77 ∣ 20593) hdiv
-      · exact (by decide : ¬ 78 ∣ 20593) hdiv
-      · exact (by decide : ¬ 79 ∣ 20593) hdiv
-      · exact (by decide : ¬ 80 ∣ 20593) hdiv
-      · exact (by decide : ¬ 81 ∣ 20593) hdiv
-      · exact (by decide : ¬ 82 ∣ 20593) hdiv
-      · exact (by decide : ¬ 83 ∣ 20593) hdiv
-      · exact (by decide : ¬ 84 ∣ 20593) hdiv
-      · exact (by decide : ¬ 85 ∣ 20593) hdiv
-      · exact (by decide : ¬ 86 ∣ 20593) hdiv
-      · exact (by decide : ¬ 87 ∣ 20593) hdiv
-      · exact (by decide : ¬ 88 ∣ 20593) hdiv
-      · exact (by decide : ¬ 89 ∣ 20593) hdiv
-      · exact (by decide : ¬ 90 ∣ 20593) hdiv
-      · exact (by decide : ¬ 91 ∣ 20593) hdiv
-      · exact (by decide : ¬ 92 ∣ 20593) hdiv
-      · exact (by decide : ¬ 93 ∣ 20593) hdiv
-      · exact (by decide : ¬ 94 ∣ 20593) hdiv
-      · exact (by decide : ¬ 95 ∣ 20593) hdiv
-      · exact (by decide : ¬ 96 ∣ 20593) hdiv
-      · exact (by decide : ¬ 97 ∣ 20593) hdiv
-      · exact (by decide : ¬ 98 ∣ 20593) hdiv
-      · exact (by decide : ¬ 99 ∣ 20593) hdiv
-      · exact (by decide : ¬ 100 ∣ 20593) hdiv
-      · exact (by decide : ¬ 101 ∣ 20593) hdiv
-      · exact (by decide : ¬ 102 ∣ 20593) hdiv
-      · exact (by decide : ¬ 103 ∣ 20593) hdiv
-      · exact (by decide : ¬ 104 ∣ 20593) hdiv
-      · exact (by decide : ¬ 105 ∣ 20593) hdiv
-      · exact (by decide : ¬ 106 ∣ 20593) hdiv
-      · exact (by decide : ¬ 107 ∣ 20593) hdiv
-      · exact (by decide : ¬ 108 ∣ 20593) hdiv
-      · exact (by decide : ¬ 109 ∣ 20593) hdiv
-      · exact (by decide : ¬ 110 ∣ 20593) hdiv
-      · exact (by decide : ¬ 111 ∣ 20593) hdiv
-      · exact (by decide : ¬ 112 ∣ 20593) hdiv
-      · exact (by decide : ¬ 113 ∣ 20593) hdiv
-      · exact (by decide : ¬ 114 ∣ 20593) hdiv
-      · exact (by decide : ¬ 115 ∣ 20593) hdiv
-      · exact (by decide : ¬ 116 ∣ 20593) hdiv
-      · exact (by decide : ¬ 117 ∣ 20593) hdiv
-      · exact (by decide : ¬ 118 ∣ 20593) hdiv
-      · exact (by decide : ¬ 119 ∣ 20593) hdiv
-      · exact (by decide : ¬ 120 ∣ 20593) hdiv
-      · exact (by decide : ¬ 121 ∣ 20593) hdiv
-      · exact (by decide : ¬ 122 ∣ 20593) hdiv
-      · exact (by decide : ¬ 123 ∣ 20593) hdiv
-      · exact (by decide : ¬ 124 ∣ 20593) hdiv
-      · exact (by decide : ¬ 125 ∣ 20593) hdiv
-      · exact (by decide : ¬ 126 ∣ 20593) hdiv
-      · exact (by decide : ¬ 127 ∣ 20593) hdiv
-      · exact (by decide : ¬ 128 ∣ 20593) hdiv
-      · exact (by decide : ¬ 129 ∣ 20593) hdiv
-      · exact (by decide : ¬ 130 ∣ 20593) hdiv
-      · exact (by decide : ¬ 131 ∣ 20593) hdiv
-      · exact (by decide : ¬ 132 ∣ 20593) hdiv
-      · exact (by decide : ¬ 133 ∣ 20593) hdiv
-      · exact (by decide : ¬ 134 ∣ 20593) hdiv
-      · exact (by decide : ¬ 135 ∣ 20593) hdiv
-      · exact (by decide : ¬ 136 ∣ 20593) hdiv
-      · exact (by decide : ¬ 137 ∣ 20593) hdiv
-      · exact (by decide : ¬ 138 ∣ 20593) hdiv
-      · exact (by decide : ¬ 139 ∣ 20593) hdiv
-      · exact (by decide : ¬ 140 ∣ 20593) hdiv
-      · exact (by decide : ¬ 141 ∣ 20593) hdiv
-      · exact (by decide : ¬ 142 ∣ 20593) hdiv
-      · exact (by decide : ¬ 143 ∣ 20593) hdiv
-  have hA_factor : (7872137 : Nat).factorization 20593 = 0 :=
-    Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 7872137)
-  exact primeComponentWitness_of_prime_power_cofactor
-    12 7872137 12 3 20593 430002433 1 20881 0
-    hq_prime
-    (by decide)
-    (by decide)
-    (by decide)
-    hA_factor
-    (by decide)
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 20593 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 7872137)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A7872137_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 7872137 12 3 := by
@@ -12774,7 +4609,8 @@ theorem orderOf_b12_mod1132615_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 1132615)ˣ) :
           ZMod 1132615) ^ 12) =
         (1 : ZMod 1132615)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -12813,168 +4649,13 @@ theorem concrete_generated_b12_F12_A1595_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A1595_p2_prime_witness :
     PrimeComponentWitness 12 1595 12 2 20593 := by
-  have hq_prime : Nat.Prime 20593 := by
-    rw [Nat.prime_def_le_sqrt]
-    constructor
-    · decide
-    · intro m hm_ge hm_le hdiv
-      have hm_le143 : m ≤ 143 := by
-        have hsqrt_lt : Nat.sqrt 20593 < 144 :=
-          (Nat.sqrt_lt'.2 (by decide : 20593 < 144 ^ 2))
-        exact Nat.le_of_lt_succ (lt_of_le_of_lt hm_le hsqrt_lt)
-      interval_cases m
-      · exact (by decide : ¬ 2 ∣ 20593) hdiv
-      · exact (by decide : ¬ 3 ∣ 20593) hdiv
-      · exact (by decide : ¬ 4 ∣ 20593) hdiv
-      · exact (by decide : ¬ 5 ∣ 20593) hdiv
-      · exact (by decide : ¬ 6 ∣ 20593) hdiv
-      · exact (by decide : ¬ 7 ∣ 20593) hdiv
-      · exact (by decide : ¬ 8 ∣ 20593) hdiv
-      · exact (by decide : ¬ 9 ∣ 20593) hdiv
-      · exact (by decide : ¬ 10 ∣ 20593) hdiv
-      · exact (by decide : ¬ 11 ∣ 20593) hdiv
-      · exact (by decide : ¬ 12 ∣ 20593) hdiv
-      · exact (by decide : ¬ 13 ∣ 20593) hdiv
-      · exact (by decide : ¬ 14 ∣ 20593) hdiv
-      · exact (by decide : ¬ 15 ∣ 20593) hdiv
-      · exact (by decide : ¬ 16 ∣ 20593) hdiv
-      · exact (by decide : ¬ 17 ∣ 20593) hdiv
-      · exact (by decide : ¬ 18 ∣ 20593) hdiv
-      · exact (by decide : ¬ 19 ∣ 20593) hdiv
-      · exact (by decide : ¬ 20 ∣ 20593) hdiv
-      · exact (by decide : ¬ 21 ∣ 20593) hdiv
-      · exact (by decide : ¬ 22 ∣ 20593) hdiv
-      · exact (by decide : ¬ 23 ∣ 20593) hdiv
-      · exact (by decide : ¬ 24 ∣ 20593) hdiv
-      · exact (by decide : ¬ 25 ∣ 20593) hdiv
-      · exact (by decide : ¬ 26 ∣ 20593) hdiv
-      · exact (by decide : ¬ 27 ∣ 20593) hdiv
-      · exact (by decide : ¬ 28 ∣ 20593) hdiv
-      · exact (by decide : ¬ 29 ∣ 20593) hdiv
-      · exact (by decide : ¬ 30 ∣ 20593) hdiv
-      · exact (by decide : ¬ 31 ∣ 20593) hdiv
-      · exact (by decide : ¬ 32 ∣ 20593) hdiv
-      · exact (by decide : ¬ 33 ∣ 20593) hdiv
-      · exact (by decide : ¬ 34 ∣ 20593) hdiv
-      · exact (by decide : ¬ 35 ∣ 20593) hdiv
-      · exact (by decide : ¬ 36 ∣ 20593) hdiv
-      · exact (by decide : ¬ 37 ∣ 20593) hdiv
-      · exact (by decide : ¬ 38 ∣ 20593) hdiv
-      · exact (by decide : ¬ 39 ∣ 20593) hdiv
-      · exact (by decide : ¬ 40 ∣ 20593) hdiv
-      · exact (by decide : ¬ 41 ∣ 20593) hdiv
-      · exact (by decide : ¬ 42 ∣ 20593) hdiv
-      · exact (by decide : ¬ 43 ∣ 20593) hdiv
-      · exact (by decide : ¬ 44 ∣ 20593) hdiv
-      · exact (by decide : ¬ 45 ∣ 20593) hdiv
-      · exact (by decide : ¬ 46 ∣ 20593) hdiv
-      · exact (by decide : ¬ 47 ∣ 20593) hdiv
-      · exact (by decide : ¬ 48 ∣ 20593) hdiv
-      · exact (by decide : ¬ 49 ∣ 20593) hdiv
-      · exact (by decide : ¬ 50 ∣ 20593) hdiv
-      · exact (by decide : ¬ 51 ∣ 20593) hdiv
-      · exact (by decide : ¬ 52 ∣ 20593) hdiv
-      · exact (by decide : ¬ 53 ∣ 20593) hdiv
-      · exact (by decide : ¬ 54 ∣ 20593) hdiv
-      · exact (by decide : ¬ 55 ∣ 20593) hdiv
-      · exact (by decide : ¬ 56 ∣ 20593) hdiv
-      · exact (by decide : ¬ 57 ∣ 20593) hdiv
-      · exact (by decide : ¬ 58 ∣ 20593) hdiv
-      · exact (by decide : ¬ 59 ∣ 20593) hdiv
-      · exact (by decide : ¬ 60 ∣ 20593) hdiv
-      · exact (by decide : ¬ 61 ∣ 20593) hdiv
-      · exact (by decide : ¬ 62 ∣ 20593) hdiv
-      · exact (by decide : ¬ 63 ∣ 20593) hdiv
-      · exact (by decide : ¬ 64 ∣ 20593) hdiv
-      · exact (by decide : ¬ 65 ∣ 20593) hdiv
-      · exact (by decide : ¬ 66 ∣ 20593) hdiv
-      · exact (by decide : ¬ 67 ∣ 20593) hdiv
-      · exact (by decide : ¬ 68 ∣ 20593) hdiv
-      · exact (by decide : ¬ 69 ∣ 20593) hdiv
-      · exact (by decide : ¬ 70 ∣ 20593) hdiv
-      · exact (by decide : ¬ 71 ∣ 20593) hdiv
-      · exact (by decide : ¬ 72 ∣ 20593) hdiv
-      · exact (by decide : ¬ 73 ∣ 20593) hdiv
-      · exact (by decide : ¬ 74 ∣ 20593) hdiv
-      · exact (by decide : ¬ 75 ∣ 20593) hdiv
-      · exact (by decide : ¬ 76 ∣ 20593) hdiv
-      · exact (by decide : ¬ 77 ∣ 20593) hdiv
-      · exact (by decide : ¬ 78 ∣ 20593) hdiv
-      · exact (by decide : ¬ 79 ∣ 20593) hdiv
-      · exact (by decide : ¬ 80 ∣ 20593) hdiv
-      · exact (by decide : ¬ 81 ∣ 20593) hdiv
-      · exact (by decide : ¬ 82 ∣ 20593) hdiv
-      · exact (by decide : ¬ 83 ∣ 20593) hdiv
-      · exact (by decide : ¬ 84 ∣ 20593) hdiv
-      · exact (by decide : ¬ 85 ∣ 20593) hdiv
-      · exact (by decide : ¬ 86 ∣ 20593) hdiv
-      · exact (by decide : ¬ 87 ∣ 20593) hdiv
-      · exact (by decide : ¬ 88 ∣ 20593) hdiv
-      · exact (by decide : ¬ 89 ∣ 20593) hdiv
-      · exact (by decide : ¬ 90 ∣ 20593) hdiv
-      · exact (by decide : ¬ 91 ∣ 20593) hdiv
-      · exact (by decide : ¬ 92 ∣ 20593) hdiv
-      · exact (by decide : ¬ 93 ∣ 20593) hdiv
-      · exact (by decide : ¬ 94 ∣ 20593) hdiv
-      · exact (by decide : ¬ 95 ∣ 20593) hdiv
-      · exact (by decide : ¬ 96 ∣ 20593) hdiv
-      · exact (by decide : ¬ 97 ∣ 20593) hdiv
-      · exact (by decide : ¬ 98 ∣ 20593) hdiv
-      · exact (by decide : ¬ 99 ∣ 20593) hdiv
-      · exact (by decide : ¬ 100 ∣ 20593) hdiv
-      · exact (by decide : ¬ 101 ∣ 20593) hdiv
-      · exact (by decide : ¬ 102 ∣ 20593) hdiv
-      · exact (by decide : ¬ 103 ∣ 20593) hdiv
-      · exact (by decide : ¬ 104 ∣ 20593) hdiv
-      · exact (by decide : ¬ 105 ∣ 20593) hdiv
-      · exact (by decide : ¬ 106 ∣ 20593) hdiv
-      · exact (by decide : ¬ 107 ∣ 20593) hdiv
-      · exact (by decide : ¬ 108 ∣ 20593) hdiv
-      · exact (by decide : ¬ 109 ∣ 20593) hdiv
-      · exact (by decide : ¬ 110 ∣ 20593) hdiv
-      · exact (by decide : ¬ 111 ∣ 20593) hdiv
-      · exact (by decide : ¬ 112 ∣ 20593) hdiv
-      · exact (by decide : ¬ 113 ∣ 20593) hdiv
-      · exact (by decide : ¬ 114 ∣ 20593) hdiv
-      · exact (by decide : ¬ 115 ∣ 20593) hdiv
-      · exact (by decide : ¬ 116 ∣ 20593) hdiv
-      · exact (by decide : ¬ 117 ∣ 20593) hdiv
-      · exact (by decide : ¬ 118 ∣ 20593) hdiv
-      · exact (by decide : ¬ 119 ∣ 20593) hdiv
-      · exact (by decide : ¬ 120 ∣ 20593) hdiv
-      · exact (by decide : ¬ 121 ∣ 20593) hdiv
-      · exact (by decide : ¬ 122 ∣ 20593) hdiv
-      · exact (by decide : ¬ 123 ∣ 20593) hdiv
-      · exact (by decide : ¬ 124 ∣ 20593) hdiv
-      · exact (by decide : ¬ 125 ∣ 20593) hdiv
-      · exact (by decide : ¬ 126 ∣ 20593) hdiv
-      · exact (by decide : ¬ 127 ∣ 20593) hdiv
-      · exact (by decide : ¬ 128 ∣ 20593) hdiv
-      · exact (by decide : ¬ 129 ∣ 20593) hdiv
-      · exact (by decide : ¬ 130 ∣ 20593) hdiv
-      · exact (by decide : ¬ 131 ∣ 20593) hdiv
-      · exact (by decide : ¬ 132 ∣ 20593) hdiv
-      · exact (by decide : ¬ 133 ∣ 20593) hdiv
-      · exact (by decide : ¬ 134 ∣ 20593) hdiv
-      · exact (by decide : ¬ 135 ∣ 20593) hdiv
-      · exact (by decide : ¬ 136 ∣ 20593) hdiv
-      · exact (by decide : ¬ 137 ∣ 20593) hdiv
-      · exact (by decide : ¬ 138 ∣ 20593) hdiv
-      · exact (by decide : ¬ 139 ∣ 20593) hdiv
-      · exact (by decide : ¬ 140 ∣ 20593) hdiv
-      · exact (by decide : ¬ 141 ∣ 20593) hdiv
-      · exact (by decide : ¬ 142 ∣ 20593) hdiv
-      · exact (by decide : ¬ 143 ∣ 20593) hdiv
-  have hA_factor : (1595 : Nat).factorization 20593 = 0 :=
-    Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 1595)
-  exact primeComponentWitness_of_prime_power_cofactor
-    12 1595 12 2 20593 2985985 1 145 0
-    hq_prime
-    (by decide)
-    (by decide)
-    (by decide)
-    hA_factor
-    (by decide)
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 20593 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 1595)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A1595_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 1595 12 2 := by
@@ -12982,24 +4663,13 @@ theorem concrete_generated_b12_F12_A1595_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A1595_p3_prime_witness :
     PrimeComponentWitness 12 1595 12 3 7 := by
-  refine ⟨(by decide : Nat.Prime 7), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 7 = 1 := by
-      rw [show (430002433 : Nat) = 7 * 61428919 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 7),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 61428919),
-      ]
-    rw [hfactor]
-    have hA_factor : (1595 : Nat).factorization 7 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 1595)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 1595)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A1595_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 1595 12 3 := by
@@ -13034,7 +4704,8 @@ theorem orderOf_b12_mod5590031629_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 5590031629)ˣ) :
           ZMod 5590031629) ^ 12) =
         (1 : ZMod 5590031629)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -13073,168 +4744,13 @@ theorem concrete_generated_b12_F12_A1885_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A1885_p2_prime_witness :
     PrimeComponentWitness 12 1885 12 2 20593 := by
-  have hq_prime : Nat.Prime 20593 := by
-    rw [Nat.prime_def_le_sqrt]
-    constructor
-    · decide
-    · intro m hm_ge hm_le hdiv
-      have hm_le143 : m ≤ 143 := by
-        have hsqrt_lt : Nat.sqrt 20593 < 144 :=
-          (Nat.sqrt_lt'.2 (by decide : 20593 < 144 ^ 2))
-        exact Nat.le_of_lt_succ (lt_of_le_of_lt hm_le hsqrt_lt)
-      interval_cases m
-      · exact (by decide : ¬ 2 ∣ 20593) hdiv
-      · exact (by decide : ¬ 3 ∣ 20593) hdiv
-      · exact (by decide : ¬ 4 ∣ 20593) hdiv
-      · exact (by decide : ¬ 5 ∣ 20593) hdiv
-      · exact (by decide : ¬ 6 ∣ 20593) hdiv
-      · exact (by decide : ¬ 7 ∣ 20593) hdiv
-      · exact (by decide : ¬ 8 ∣ 20593) hdiv
-      · exact (by decide : ¬ 9 ∣ 20593) hdiv
-      · exact (by decide : ¬ 10 ∣ 20593) hdiv
-      · exact (by decide : ¬ 11 ∣ 20593) hdiv
-      · exact (by decide : ¬ 12 ∣ 20593) hdiv
-      · exact (by decide : ¬ 13 ∣ 20593) hdiv
-      · exact (by decide : ¬ 14 ∣ 20593) hdiv
-      · exact (by decide : ¬ 15 ∣ 20593) hdiv
-      · exact (by decide : ¬ 16 ∣ 20593) hdiv
-      · exact (by decide : ¬ 17 ∣ 20593) hdiv
-      · exact (by decide : ¬ 18 ∣ 20593) hdiv
-      · exact (by decide : ¬ 19 ∣ 20593) hdiv
-      · exact (by decide : ¬ 20 ∣ 20593) hdiv
-      · exact (by decide : ¬ 21 ∣ 20593) hdiv
-      · exact (by decide : ¬ 22 ∣ 20593) hdiv
-      · exact (by decide : ¬ 23 ∣ 20593) hdiv
-      · exact (by decide : ¬ 24 ∣ 20593) hdiv
-      · exact (by decide : ¬ 25 ∣ 20593) hdiv
-      · exact (by decide : ¬ 26 ∣ 20593) hdiv
-      · exact (by decide : ¬ 27 ∣ 20593) hdiv
-      · exact (by decide : ¬ 28 ∣ 20593) hdiv
-      · exact (by decide : ¬ 29 ∣ 20593) hdiv
-      · exact (by decide : ¬ 30 ∣ 20593) hdiv
-      · exact (by decide : ¬ 31 ∣ 20593) hdiv
-      · exact (by decide : ¬ 32 ∣ 20593) hdiv
-      · exact (by decide : ¬ 33 ∣ 20593) hdiv
-      · exact (by decide : ¬ 34 ∣ 20593) hdiv
-      · exact (by decide : ¬ 35 ∣ 20593) hdiv
-      · exact (by decide : ¬ 36 ∣ 20593) hdiv
-      · exact (by decide : ¬ 37 ∣ 20593) hdiv
-      · exact (by decide : ¬ 38 ∣ 20593) hdiv
-      · exact (by decide : ¬ 39 ∣ 20593) hdiv
-      · exact (by decide : ¬ 40 ∣ 20593) hdiv
-      · exact (by decide : ¬ 41 ∣ 20593) hdiv
-      · exact (by decide : ¬ 42 ∣ 20593) hdiv
-      · exact (by decide : ¬ 43 ∣ 20593) hdiv
-      · exact (by decide : ¬ 44 ∣ 20593) hdiv
-      · exact (by decide : ¬ 45 ∣ 20593) hdiv
-      · exact (by decide : ¬ 46 ∣ 20593) hdiv
-      · exact (by decide : ¬ 47 ∣ 20593) hdiv
-      · exact (by decide : ¬ 48 ∣ 20593) hdiv
-      · exact (by decide : ¬ 49 ∣ 20593) hdiv
-      · exact (by decide : ¬ 50 ∣ 20593) hdiv
-      · exact (by decide : ¬ 51 ∣ 20593) hdiv
-      · exact (by decide : ¬ 52 ∣ 20593) hdiv
-      · exact (by decide : ¬ 53 ∣ 20593) hdiv
-      · exact (by decide : ¬ 54 ∣ 20593) hdiv
-      · exact (by decide : ¬ 55 ∣ 20593) hdiv
-      · exact (by decide : ¬ 56 ∣ 20593) hdiv
-      · exact (by decide : ¬ 57 ∣ 20593) hdiv
-      · exact (by decide : ¬ 58 ∣ 20593) hdiv
-      · exact (by decide : ¬ 59 ∣ 20593) hdiv
-      · exact (by decide : ¬ 60 ∣ 20593) hdiv
-      · exact (by decide : ¬ 61 ∣ 20593) hdiv
-      · exact (by decide : ¬ 62 ∣ 20593) hdiv
-      · exact (by decide : ¬ 63 ∣ 20593) hdiv
-      · exact (by decide : ¬ 64 ∣ 20593) hdiv
-      · exact (by decide : ¬ 65 ∣ 20593) hdiv
-      · exact (by decide : ¬ 66 ∣ 20593) hdiv
-      · exact (by decide : ¬ 67 ∣ 20593) hdiv
-      · exact (by decide : ¬ 68 ∣ 20593) hdiv
-      · exact (by decide : ¬ 69 ∣ 20593) hdiv
-      · exact (by decide : ¬ 70 ∣ 20593) hdiv
-      · exact (by decide : ¬ 71 ∣ 20593) hdiv
-      · exact (by decide : ¬ 72 ∣ 20593) hdiv
-      · exact (by decide : ¬ 73 ∣ 20593) hdiv
-      · exact (by decide : ¬ 74 ∣ 20593) hdiv
-      · exact (by decide : ¬ 75 ∣ 20593) hdiv
-      · exact (by decide : ¬ 76 ∣ 20593) hdiv
-      · exact (by decide : ¬ 77 ∣ 20593) hdiv
-      · exact (by decide : ¬ 78 ∣ 20593) hdiv
-      · exact (by decide : ¬ 79 ∣ 20593) hdiv
-      · exact (by decide : ¬ 80 ∣ 20593) hdiv
-      · exact (by decide : ¬ 81 ∣ 20593) hdiv
-      · exact (by decide : ¬ 82 ∣ 20593) hdiv
-      · exact (by decide : ¬ 83 ∣ 20593) hdiv
-      · exact (by decide : ¬ 84 ∣ 20593) hdiv
-      · exact (by decide : ¬ 85 ∣ 20593) hdiv
-      · exact (by decide : ¬ 86 ∣ 20593) hdiv
-      · exact (by decide : ¬ 87 ∣ 20593) hdiv
-      · exact (by decide : ¬ 88 ∣ 20593) hdiv
-      · exact (by decide : ¬ 89 ∣ 20593) hdiv
-      · exact (by decide : ¬ 90 ∣ 20593) hdiv
-      · exact (by decide : ¬ 91 ∣ 20593) hdiv
-      · exact (by decide : ¬ 92 ∣ 20593) hdiv
-      · exact (by decide : ¬ 93 ∣ 20593) hdiv
-      · exact (by decide : ¬ 94 ∣ 20593) hdiv
-      · exact (by decide : ¬ 95 ∣ 20593) hdiv
-      · exact (by decide : ¬ 96 ∣ 20593) hdiv
-      · exact (by decide : ¬ 97 ∣ 20593) hdiv
-      · exact (by decide : ¬ 98 ∣ 20593) hdiv
-      · exact (by decide : ¬ 99 ∣ 20593) hdiv
-      · exact (by decide : ¬ 100 ∣ 20593) hdiv
-      · exact (by decide : ¬ 101 ∣ 20593) hdiv
-      · exact (by decide : ¬ 102 ∣ 20593) hdiv
-      · exact (by decide : ¬ 103 ∣ 20593) hdiv
-      · exact (by decide : ¬ 104 ∣ 20593) hdiv
-      · exact (by decide : ¬ 105 ∣ 20593) hdiv
-      · exact (by decide : ¬ 106 ∣ 20593) hdiv
-      · exact (by decide : ¬ 107 ∣ 20593) hdiv
-      · exact (by decide : ¬ 108 ∣ 20593) hdiv
-      · exact (by decide : ¬ 109 ∣ 20593) hdiv
-      · exact (by decide : ¬ 110 ∣ 20593) hdiv
-      · exact (by decide : ¬ 111 ∣ 20593) hdiv
-      · exact (by decide : ¬ 112 ∣ 20593) hdiv
-      · exact (by decide : ¬ 113 ∣ 20593) hdiv
-      · exact (by decide : ¬ 114 ∣ 20593) hdiv
-      · exact (by decide : ¬ 115 ∣ 20593) hdiv
-      · exact (by decide : ¬ 116 ∣ 20593) hdiv
-      · exact (by decide : ¬ 117 ∣ 20593) hdiv
-      · exact (by decide : ¬ 118 ∣ 20593) hdiv
-      · exact (by decide : ¬ 119 ∣ 20593) hdiv
-      · exact (by decide : ¬ 120 ∣ 20593) hdiv
-      · exact (by decide : ¬ 121 ∣ 20593) hdiv
-      · exact (by decide : ¬ 122 ∣ 20593) hdiv
-      · exact (by decide : ¬ 123 ∣ 20593) hdiv
-      · exact (by decide : ¬ 124 ∣ 20593) hdiv
-      · exact (by decide : ¬ 125 ∣ 20593) hdiv
-      · exact (by decide : ¬ 126 ∣ 20593) hdiv
-      · exact (by decide : ¬ 127 ∣ 20593) hdiv
-      · exact (by decide : ¬ 128 ∣ 20593) hdiv
-      · exact (by decide : ¬ 129 ∣ 20593) hdiv
-      · exact (by decide : ¬ 130 ∣ 20593) hdiv
-      · exact (by decide : ¬ 131 ∣ 20593) hdiv
-      · exact (by decide : ¬ 132 ∣ 20593) hdiv
-      · exact (by decide : ¬ 133 ∣ 20593) hdiv
-      · exact (by decide : ¬ 134 ∣ 20593) hdiv
-      · exact (by decide : ¬ 135 ∣ 20593) hdiv
-      · exact (by decide : ¬ 136 ∣ 20593) hdiv
-      · exact (by decide : ¬ 137 ∣ 20593) hdiv
-      · exact (by decide : ¬ 138 ∣ 20593) hdiv
-      · exact (by decide : ¬ 139 ∣ 20593) hdiv
-      · exact (by decide : ¬ 140 ∣ 20593) hdiv
-      · exact (by decide : ¬ 141 ∣ 20593) hdiv
-      · exact (by decide : ¬ 142 ∣ 20593) hdiv
-      · exact (by decide : ¬ 143 ∣ 20593) hdiv
-  have hA_factor : (1885 : Nat).factorization 20593 = 0 :=
-    Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 1885)
-  exact primeComponentWitness_of_prime_power_cofactor
-    12 1885 12 2 20593 2985985 1 145 0
-    hq_prime
-    (by decide)
-    (by decide)
-    (by decide)
-    hA_factor
-    (by decide)
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 20593 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 1885)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A1885_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 1885 12 2 := by
@@ -13242,24 +4758,13 @@ theorem concrete_generated_b12_F12_A1885_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A1885_p3_prime_witness :
     PrimeComponentWitness 12 1885 12 3 7 := by
-  refine ⟨(by decide : Nat.Prime 7), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 7 = 1 := by
-      rw [show (430002433 : Nat) = 7 * 61428919 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 7),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 61428919),
-      ]
-    rw [hfactor]
-    have hA_factor : (1885 : Nat).factorization 7 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 1885)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 1885)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A1885_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 1885 12 3 := by
@@ -13294,7 +4799,8 @@ theorem orderOf_b12_mod4730026763_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 4730026763)ˣ) :
           ZMod 4730026763) ^ 12) =
         (1 : ZMod 4730026763)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -13333,168 +4839,13 @@ theorem concrete_generated_b12_F12_A2755_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A2755_p2_prime_witness :
     PrimeComponentWitness 12 2755 12 2 20593 := by
-  have hq_prime : Nat.Prime 20593 := by
-    rw [Nat.prime_def_le_sqrt]
-    constructor
-    · decide
-    · intro m hm_ge hm_le hdiv
-      have hm_le143 : m ≤ 143 := by
-        have hsqrt_lt : Nat.sqrt 20593 < 144 :=
-          (Nat.sqrt_lt'.2 (by decide : 20593 < 144 ^ 2))
-        exact Nat.le_of_lt_succ (lt_of_le_of_lt hm_le hsqrt_lt)
-      interval_cases m
-      · exact (by decide : ¬ 2 ∣ 20593) hdiv
-      · exact (by decide : ¬ 3 ∣ 20593) hdiv
-      · exact (by decide : ¬ 4 ∣ 20593) hdiv
-      · exact (by decide : ¬ 5 ∣ 20593) hdiv
-      · exact (by decide : ¬ 6 ∣ 20593) hdiv
-      · exact (by decide : ¬ 7 ∣ 20593) hdiv
-      · exact (by decide : ¬ 8 ∣ 20593) hdiv
-      · exact (by decide : ¬ 9 ∣ 20593) hdiv
-      · exact (by decide : ¬ 10 ∣ 20593) hdiv
-      · exact (by decide : ¬ 11 ∣ 20593) hdiv
-      · exact (by decide : ¬ 12 ∣ 20593) hdiv
-      · exact (by decide : ¬ 13 ∣ 20593) hdiv
-      · exact (by decide : ¬ 14 ∣ 20593) hdiv
-      · exact (by decide : ¬ 15 ∣ 20593) hdiv
-      · exact (by decide : ¬ 16 ∣ 20593) hdiv
-      · exact (by decide : ¬ 17 ∣ 20593) hdiv
-      · exact (by decide : ¬ 18 ∣ 20593) hdiv
-      · exact (by decide : ¬ 19 ∣ 20593) hdiv
-      · exact (by decide : ¬ 20 ∣ 20593) hdiv
-      · exact (by decide : ¬ 21 ∣ 20593) hdiv
-      · exact (by decide : ¬ 22 ∣ 20593) hdiv
-      · exact (by decide : ¬ 23 ∣ 20593) hdiv
-      · exact (by decide : ¬ 24 ∣ 20593) hdiv
-      · exact (by decide : ¬ 25 ∣ 20593) hdiv
-      · exact (by decide : ¬ 26 ∣ 20593) hdiv
-      · exact (by decide : ¬ 27 ∣ 20593) hdiv
-      · exact (by decide : ¬ 28 ∣ 20593) hdiv
-      · exact (by decide : ¬ 29 ∣ 20593) hdiv
-      · exact (by decide : ¬ 30 ∣ 20593) hdiv
-      · exact (by decide : ¬ 31 ∣ 20593) hdiv
-      · exact (by decide : ¬ 32 ∣ 20593) hdiv
-      · exact (by decide : ¬ 33 ∣ 20593) hdiv
-      · exact (by decide : ¬ 34 ∣ 20593) hdiv
-      · exact (by decide : ¬ 35 ∣ 20593) hdiv
-      · exact (by decide : ¬ 36 ∣ 20593) hdiv
-      · exact (by decide : ¬ 37 ∣ 20593) hdiv
-      · exact (by decide : ¬ 38 ∣ 20593) hdiv
-      · exact (by decide : ¬ 39 ∣ 20593) hdiv
-      · exact (by decide : ¬ 40 ∣ 20593) hdiv
-      · exact (by decide : ¬ 41 ∣ 20593) hdiv
-      · exact (by decide : ¬ 42 ∣ 20593) hdiv
-      · exact (by decide : ¬ 43 ∣ 20593) hdiv
-      · exact (by decide : ¬ 44 ∣ 20593) hdiv
-      · exact (by decide : ¬ 45 ∣ 20593) hdiv
-      · exact (by decide : ¬ 46 ∣ 20593) hdiv
-      · exact (by decide : ¬ 47 ∣ 20593) hdiv
-      · exact (by decide : ¬ 48 ∣ 20593) hdiv
-      · exact (by decide : ¬ 49 ∣ 20593) hdiv
-      · exact (by decide : ¬ 50 ∣ 20593) hdiv
-      · exact (by decide : ¬ 51 ∣ 20593) hdiv
-      · exact (by decide : ¬ 52 ∣ 20593) hdiv
-      · exact (by decide : ¬ 53 ∣ 20593) hdiv
-      · exact (by decide : ¬ 54 ∣ 20593) hdiv
-      · exact (by decide : ¬ 55 ∣ 20593) hdiv
-      · exact (by decide : ¬ 56 ∣ 20593) hdiv
-      · exact (by decide : ¬ 57 ∣ 20593) hdiv
-      · exact (by decide : ¬ 58 ∣ 20593) hdiv
-      · exact (by decide : ¬ 59 ∣ 20593) hdiv
-      · exact (by decide : ¬ 60 ∣ 20593) hdiv
-      · exact (by decide : ¬ 61 ∣ 20593) hdiv
-      · exact (by decide : ¬ 62 ∣ 20593) hdiv
-      · exact (by decide : ¬ 63 ∣ 20593) hdiv
-      · exact (by decide : ¬ 64 ∣ 20593) hdiv
-      · exact (by decide : ¬ 65 ∣ 20593) hdiv
-      · exact (by decide : ¬ 66 ∣ 20593) hdiv
-      · exact (by decide : ¬ 67 ∣ 20593) hdiv
-      · exact (by decide : ¬ 68 ∣ 20593) hdiv
-      · exact (by decide : ¬ 69 ∣ 20593) hdiv
-      · exact (by decide : ¬ 70 ∣ 20593) hdiv
-      · exact (by decide : ¬ 71 ∣ 20593) hdiv
-      · exact (by decide : ¬ 72 ∣ 20593) hdiv
-      · exact (by decide : ¬ 73 ∣ 20593) hdiv
-      · exact (by decide : ¬ 74 ∣ 20593) hdiv
-      · exact (by decide : ¬ 75 ∣ 20593) hdiv
-      · exact (by decide : ¬ 76 ∣ 20593) hdiv
-      · exact (by decide : ¬ 77 ∣ 20593) hdiv
-      · exact (by decide : ¬ 78 ∣ 20593) hdiv
-      · exact (by decide : ¬ 79 ∣ 20593) hdiv
-      · exact (by decide : ¬ 80 ∣ 20593) hdiv
-      · exact (by decide : ¬ 81 ∣ 20593) hdiv
-      · exact (by decide : ¬ 82 ∣ 20593) hdiv
-      · exact (by decide : ¬ 83 ∣ 20593) hdiv
-      · exact (by decide : ¬ 84 ∣ 20593) hdiv
-      · exact (by decide : ¬ 85 ∣ 20593) hdiv
-      · exact (by decide : ¬ 86 ∣ 20593) hdiv
-      · exact (by decide : ¬ 87 ∣ 20593) hdiv
-      · exact (by decide : ¬ 88 ∣ 20593) hdiv
-      · exact (by decide : ¬ 89 ∣ 20593) hdiv
-      · exact (by decide : ¬ 90 ∣ 20593) hdiv
-      · exact (by decide : ¬ 91 ∣ 20593) hdiv
-      · exact (by decide : ¬ 92 ∣ 20593) hdiv
-      · exact (by decide : ¬ 93 ∣ 20593) hdiv
-      · exact (by decide : ¬ 94 ∣ 20593) hdiv
-      · exact (by decide : ¬ 95 ∣ 20593) hdiv
-      · exact (by decide : ¬ 96 ∣ 20593) hdiv
-      · exact (by decide : ¬ 97 ∣ 20593) hdiv
-      · exact (by decide : ¬ 98 ∣ 20593) hdiv
-      · exact (by decide : ¬ 99 ∣ 20593) hdiv
-      · exact (by decide : ¬ 100 ∣ 20593) hdiv
-      · exact (by decide : ¬ 101 ∣ 20593) hdiv
-      · exact (by decide : ¬ 102 ∣ 20593) hdiv
-      · exact (by decide : ¬ 103 ∣ 20593) hdiv
-      · exact (by decide : ¬ 104 ∣ 20593) hdiv
-      · exact (by decide : ¬ 105 ∣ 20593) hdiv
-      · exact (by decide : ¬ 106 ∣ 20593) hdiv
-      · exact (by decide : ¬ 107 ∣ 20593) hdiv
-      · exact (by decide : ¬ 108 ∣ 20593) hdiv
-      · exact (by decide : ¬ 109 ∣ 20593) hdiv
-      · exact (by decide : ¬ 110 ∣ 20593) hdiv
-      · exact (by decide : ¬ 111 ∣ 20593) hdiv
-      · exact (by decide : ¬ 112 ∣ 20593) hdiv
-      · exact (by decide : ¬ 113 ∣ 20593) hdiv
-      · exact (by decide : ¬ 114 ∣ 20593) hdiv
-      · exact (by decide : ¬ 115 ∣ 20593) hdiv
-      · exact (by decide : ¬ 116 ∣ 20593) hdiv
-      · exact (by decide : ¬ 117 ∣ 20593) hdiv
-      · exact (by decide : ¬ 118 ∣ 20593) hdiv
-      · exact (by decide : ¬ 119 ∣ 20593) hdiv
-      · exact (by decide : ¬ 120 ∣ 20593) hdiv
-      · exact (by decide : ¬ 121 ∣ 20593) hdiv
-      · exact (by decide : ¬ 122 ∣ 20593) hdiv
-      · exact (by decide : ¬ 123 ∣ 20593) hdiv
-      · exact (by decide : ¬ 124 ∣ 20593) hdiv
-      · exact (by decide : ¬ 125 ∣ 20593) hdiv
-      · exact (by decide : ¬ 126 ∣ 20593) hdiv
-      · exact (by decide : ¬ 127 ∣ 20593) hdiv
-      · exact (by decide : ¬ 128 ∣ 20593) hdiv
-      · exact (by decide : ¬ 129 ∣ 20593) hdiv
-      · exact (by decide : ¬ 130 ∣ 20593) hdiv
-      · exact (by decide : ¬ 131 ∣ 20593) hdiv
-      · exact (by decide : ¬ 132 ∣ 20593) hdiv
-      · exact (by decide : ¬ 133 ∣ 20593) hdiv
-      · exact (by decide : ¬ 134 ∣ 20593) hdiv
-      · exact (by decide : ¬ 135 ∣ 20593) hdiv
-      · exact (by decide : ¬ 136 ∣ 20593) hdiv
-      · exact (by decide : ¬ 137 ∣ 20593) hdiv
-      · exact (by decide : ¬ 138 ∣ 20593) hdiv
-      · exact (by decide : ¬ 139 ∣ 20593) hdiv
-      · exact (by decide : ¬ 140 ∣ 20593) hdiv
-      · exact (by decide : ¬ 141 ∣ 20593) hdiv
-      · exact (by decide : ¬ 142 ∣ 20593) hdiv
-      · exact (by decide : ¬ 143 ∣ 20593) hdiv
-  have hA_factor : (2755 : Nat).factorization 20593 = 0 :=
-    Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 2755)
-  exact primeComponentWitness_of_prime_power_cofactor
-    12 2755 12 2 20593 2985985 1 145 0
-    hq_prime
-    (by decide)
-    (by decide)
-    (by decide)
-    hA_factor
-    (by decide)
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 20593 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 2755)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A2755_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 2755 12 2 := by
@@ -13502,24 +4853,13 @@ theorem concrete_generated_b12_F12_A2755_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A2755_p3_prime_witness :
     PrimeComponentWitness 12 2755 12 3 7 := by
-  refine ⟨(by decide : Nat.Prime 7), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 7 = 1 := by
-      rw [show (430002433 : Nat) = 7 * 61428919 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 7),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 61428919),
-      ]
-    rw [hfactor]
-    have hA_factor : (2755 : Nat).factorization 7 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 2755)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 2755)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A2755_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 2755 12 3 := by
@@ -13554,7 +4894,8 @@ theorem orderOf_b12_mod3236334101_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 3236334101)ˣ) :
           ZMod 3236334101) ^ 12) =
         (1 : ZMod 3236334101)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -13593,168 +4934,13 @@ theorem concrete_generated_b12_F12_A20735_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A20735_p2_prime_witness :
     PrimeComponentWitness 12 20735 12 2 20593 := by
-  have hq_prime : Nat.Prime 20593 := by
-    rw [Nat.prime_def_le_sqrt]
-    constructor
-    · decide
-    · intro m hm_ge hm_le hdiv
-      have hm_le143 : m ≤ 143 := by
-        have hsqrt_lt : Nat.sqrt 20593 < 144 :=
-          (Nat.sqrt_lt'.2 (by decide : 20593 < 144 ^ 2))
-        exact Nat.le_of_lt_succ (lt_of_le_of_lt hm_le hsqrt_lt)
-      interval_cases m
-      · exact (by decide : ¬ 2 ∣ 20593) hdiv
-      · exact (by decide : ¬ 3 ∣ 20593) hdiv
-      · exact (by decide : ¬ 4 ∣ 20593) hdiv
-      · exact (by decide : ¬ 5 ∣ 20593) hdiv
-      · exact (by decide : ¬ 6 ∣ 20593) hdiv
-      · exact (by decide : ¬ 7 ∣ 20593) hdiv
-      · exact (by decide : ¬ 8 ∣ 20593) hdiv
-      · exact (by decide : ¬ 9 ∣ 20593) hdiv
-      · exact (by decide : ¬ 10 ∣ 20593) hdiv
-      · exact (by decide : ¬ 11 ∣ 20593) hdiv
-      · exact (by decide : ¬ 12 ∣ 20593) hdiv
-      · exact (by decide : ¬ 13 ∣ 20593) hdiv
-      · exact (by decide : ¬ 14 ∣ 20593) hdiv
-      · exact (by decide : ¬ 15 ∣ 20593) hdiv
-      · exact (by decide : ¬ 16 ∣ 20593) hdiv
-      · exact (by decide : ¬ 17 ∣ 20593) hdiv
-      · exact (by decide : ¬ 18 ∣ 20593) hdiv
-      · exact (by decide : ¬ 19 ∣ 20593) hdiv
-      · exact (by decide : ¬ 20 ∣ 20593) hdiv
-      · exact (by decide : ¬ 21 ∣ 20593) hdiv
-      · exact (by decide : ¬ 22 ∣ 20593) hdiv
-      · exact (by decide : ¬ 23 ∣ 20593) hdiv
-      · exact (by decide : ¬ 24 ∣ 20593) hdiv
-      · exact (by decide : ¬ 25 ∣ 20593) hdiv
-      · exact (by decide : ¬ 26 ∣ 20593) hdiv
-      · exact (by decide : ¬ 27 ∣ 20593) hdiv
-      · exact (by decide : ¬ 28 ∣ 20593) hdiv
-      · exact (by decide : ¬ 29 ∣ 20593) hdiv
-      · exact (by decide : ¬ 30 ∣ 20593) hdiv
-      · exact (by decide : ¬ 31 ∣ 20593) hdiv
-      · exact (by decide : ¬ 32 ∣ 20593) hdiv
-      · exact (by decide : ¬ 33 ∣ 20593) hdiv
-      · exact (by decide : ¬ 34 ∣ 20593) hdiv
-      · exact (by decide : ¬ 35 ∣ 20593) hdiv
-      · exact (by decide : ¬ 36 ∣ 20593) hdiv
-      · exact (by decide : ¬ 37 ∣ 20593) hdiv
-      · exact (by decide : ¬ 38 ∣ 20593) hdiv
-      · exact (by decide : ¬ 39 ∣ 20593) hdiv
-      · exact (by decide : ¬ 40 ∣ 20593) hdiv
-      · exact (by decide : ¬ 41 ∣ 20593) hdiv
-      · exact (by decide : ¬ 42 ∣ 20593) hdiv
-      · exact (by decide : ¬ 43 ∣ 20593) hdiv
-      · exact (by decide : ¬ 44 ∣ 20593) hdiv
-      · exact (by decide : ¬ 45 ∣ 20593) hdiv
-      · exact (by decide : ¬ 46 ∣ 20593) hdiv
-      · exact (by decide : ¬ 47 ∣ 20593) hdiv
-      · exact (by decide : ¬ 48 ∣ 20593) hdiv
-      · exact (by decide : ¬ 49 ∣ 20593) hdiv
-      · exact (by decide : ¬ 50 ∣ 20593) hdiv
-      · exact (by decide : ¬ 51 ∣ 20593) hdiv
-      · exact (by decide : ¬ 52 ∣ 20593) hdiv
-      · exact (by decide : ¬ 53 ∣ 20593) hdiv
-      · exact (by decide : ¬ 54 ∣ 20593) hdiv
-      · exact (by decide : ¬ 55 ∣ 20593) hdiv
-      · exact (by decide : ¬ 56 ∣ 20593) hdiv
-      · exact (by decide : ¬ 57 ∣ 20593) hdiv
-      · exact (by decide : ¬ 58 ∣ 20593) hdiv
-      · exact (by decide : ¬ 59 ∣ 20593) hdiv
-      · exact (by decide : ¬ 60 ∣ 20593) hdiv
-      · exact (by decide : ¬ 61 ∣ 20593) hdiv
-      · exact (by decide : ¬ 62 ∣ 20593) hdiv
-      · exact (by decide : ¬ 63 ∣ 20593) hdiv
-      · exact (by decide : ¬ 64 ∣ 20593) hdiv
-      · exact (by decide : ¬ 65 ∣ 20593) hdiv
-      · exact (by decide : ¬ 66 ∣ 20593) hdiv
-      · exact (by decide : ¬ 67 ∣ 20593) hdiv
-      · exact (by decide : ¬ 68 ∣ 20593) hdiv
-      · exact (by decide : ¬ 69 ∣ 20593) hdiv
-      · exact (by decide : ¬ 70 ∣ 20593) hdiv
-      · exact (by decide : ¬ 71 ∣ 20593) hdiv
-      · exact (by decide : ¬ 72 ∣ 20593) hdiv
-      · exact (by decide : ¬ 73 ∣ 20593) hdiv
-      · exact (by decide : ¬ 74 ∣ 20593) hdiv
-      · exact (by decide : ¬ 75 ∣ 20593) hdiv
-      · exact (by decide : ¬ 76 ∣ 20593) hdiv
-      · exact (by decide : ¬ 77 ∣ 20593) hdiv
-      · exact (by decide : ¬ 78 ∣ 20593) hdiv
-      · exact (by decide : ¬ 79 ∣ 20593) hdiv
-      · exact (by decide : ¬ 80 ∣ 20593) hdiv
-      · exact (by decide : ¬ 81 ∣ 20593) hdiv
-      · exact (by decide : ¬ 82 ∣ 20593) hdiv
-      · exact (by decide : ¬ 83 ∣ 20593) hdiv
-      · exact (by decide : ¬ 84 ∣ 20593) hdiv
-      · exact (by decide : ¬ 85 ∣ 20593) hdiv
-      · exact (by decide : ¬ 86 ∣ 20593) hdiv
-      · exact (by decide : ¬ 87 ∣ 20593) hdiv
-      · exact (by decide : ¬ 88 ∣ 20593) hdiv
-      · exact (by decide : ¬ 89 ∣ 20593) hdiv
-      · exact (by decide : ¬ 90 ∣ 20593) hdiv
-      · exact (by decide : ¬ 91 ∣ 20593) hdiv
-      · exact (by decide : ¬ 92 ∣ 20593) hdiv
-      · exact (by decide : ¬ 93 ∣ 20593) hdiv
-      · exact (by decide : ¬ 94 ∣ 20593) hdiv
-      · exact (by decide : ¬ 95 ∣ 20593) hdiv
-      · exact (by decide : ¬ 96 ∣ 20593) hdiv
-      · exact (by decide : ¬ 97 ∣ 20593) hdiv
-      · exact (by decide : ¬ 98 ∣ 20593) hdiv
-      · exact (by decide : ¬ 99 ∣ 20593) hdiv
-      · exact (by decide : ¬ 100 ∣ 20593) hdiv
-      · exact (by decide : ¬ 101 ∣ 20593) hdiv
-      · exact (by decide : ¬ 102 ∣ 20593) hdiv
-      · exact (by decide : ¬ 103 ∣ 20593) hdiv
-      · exact (by decide : ¬ 104 ∣ 20593) hdiv
-      · exact (by decide : ¬ 105 ∣ 20593) hdiv
-      · exact (by decide : ¬ 106 ∣ 20593) hdiv
-      · exact (by decide : ¬ 107 ∣ 20593) hdiv
-      · exact (by decide : ¬ 108 ∣ 20593) hdiv
-      · exact (by decide : ¬ 109 ∣ 20593) hdiv
-      · exact (by decide : ¬ 110 ∣ 20593) hdiv
-      · exact (by decide : ¬ 111 ∣ 20593) hdiv
-      · exact (by decide : ¬ 112 ∣ 20593) hdiv
-      · exact (by decide : ¬ 113 ∣ 20593) hdiv
-      · exact (by decide : ¬ 114 ∣ 20593) hdiv
-      · exact (by decide : ¬ 115 ∣ 20593) hdiv
-      · exact (by decide : ¬ 116 ∣ 20593) hdiv
-      · exact (by decide : ¬ 117 ∣ 20593) hdiv
-      · exact (by decide : ¬ 118 ∣ 20593) hdiv
-      · exact (by decide : ¬ 119 ∣ 20593) hdiv
-      · exact (by decide : ¬ 120 ∣ 20593) hdiv
-      · exact (by decide : ¬ 121 ∣ 20593) hdiv
-      · exact (by decide : ¬ 122 ∣ 20593) hdiv
-      · exact (by decide : ¬ 123 ∣ 20593) hdiv
-      · exact (by decide : ¬ 124 ∣ 20593) hdiv
-      · exact (by decide : ¬ 125 ∣ 20593) hdiv
-      · exact (by decide : ¬ 126 ∣ 20593) hdiv
-      · exact (by decide : ¬ 127 ∣ 20593) hdiv
-      · exact (by decide : ¬ 128 ∣ 20593) hdiv
-      · exact (by decide : ¬ 129 ∣ 20593) hdiv
-      · exact (by decide : ¬ 130 ∣ 20593) hdiv
-      · exact (by decide : ¬ 131 ∣ 20593) hdiv
-      · exact (by decide : ¬ 132 ∣ 20593) hdiv
-      · exact (by decide : ¬ 133 ∣ 20593) hdiv
-      · exact (by decide : ¬ 134 ∣ 20593) hdiv
-      · exact (by decide : ¬ 135 ∣ 20593) hdiv
-      · exact (by decide : ¬ 136 ∣ 20593) hdiv
-      · exact (by decide : ¬ 137 ∣ 20593) hdiv
-      · exact (by decide : ¬ 138 ∣ 20593) hdiv
-      · exact (by decide : ¬ 139 ∣ 20593) hdiv
-      · exact (by decide : ¬ 140 ∣ 20593) hdiv
-      · exact (by decide : ¬ 141 ∣ 20593) hdiv
-      · exact (by decide : ¬ 142 ∣ 20593) hdiv
-      · exact (by decide : ¬ 143 ∣ 20593) hdiv
-  have hA_factor : (20735 : Nat).factorization 20593 = 0 :=
-    Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 20735)
-  exact primeComponentWitness_of_prime_power_cofactor
-    12 20735 12 2 20593 2985985 1 145 0
-    hq_prime
-    (by decide)
-    (by decide)
-    (by decide)
-    hA_factor
-    (by decide)
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 20593 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 20735)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A20735_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 20735 12 2 := by
@@ -13762,24 +4948,13 @@ theorem concrete_generated_b12_F12_A20735_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A20735_p3_prime_witness :
     PrimeComponentWitness 12 20735 12 3 7 := by
-  refine ⟨(by decide : Nat.Prime 7), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 7 = 1 := by
-      rw [show (430002433 : Nat) = 7 * 61428919 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 7),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 61428919),
-      ]
-    rw [hfactor]
-    have hA_factor : (20735 : Nat).factorization 7 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 20735)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 20735)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A20735_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 20735 12 3 := by
@@ -13814,7 +4989,8 @@ theorem orderOf_b12_mod430002433_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 430002433)ˣ) :
           ZMod 430002433) ^ 12) =
         (1 : ZMod 430002433)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -13853,168 +5029,13 @@ theorem concrete_generated_b12_F12_A22765_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A22765_p2_prime_witness :
     PrimeComponentWitness 12 22765 12 2 20593 := by
-  have hq_prime : Nat.Prime 20593 := by
-    rw [Nat.prime_def_le_sqrt]
-    constructor
-    · decide
-    · intro m hm_ge hm_le hdiv
-      have hm_le143 : m ≤ 143 := by
-        have hsqrt_lt : Nat.sqrt 20593 < 144 :=
-          (Nat.sqrt_lt'.2 (by decide : 20593 < 144 ^ 2))
-        exact Nat.le_of_lt_succ (lt_of_le_of_lt hm_le hsqrt_lt)
-      interval_cases m
-      · exact (by decide : ¬ 2 ∣ 20593) hdiv
-      · exact (by decide : ¬ 3 ∣ 20593) hdiv
-      · exact (by decide : ¬ 4 ∣ 20593) hdiv
-      · exact (by decide : ¬ 5 ∣ 20593) hdiv
-      · exact (by decide : ¬ 6 ∣ 20593) hdiv
-      · exact (by decide : ¬ 7 ∣ 20593) hdiv
-      · exact (by decide : ¬ 8 ∣ 20593) hdiv
-      · exact (by decide : ¬ 9 ∣ 20593) hdiv
-      · exact (by decide : ¬ 10 ∣ 20593) hdiv
-      · exact (by decide : ¬ 11 ∣ 20593) hdiv
-      · exact (by decide : ¬ 12 ∣ 20593) hdiv
-      · exact (by decide : ¬ 13 ∣ 20593) hdiv
-      · exact (by decide : ¬ 14 ∣ 20593) hdiv
-      · exact (by decide : ¬ 15 ∣ 20593) hdiv
-      · exact (by decide : ¬ 16 ∣ 20593) hdiv
-      · exact (by decide : ¬ 17 ∣ 20593) hdiv
-      · exact (by decide : ¬ 18 ∣ 20593) hdiv
-      · exact (by decide : ¬ 19 ∣ 20593) hdiv
-      · exact (by decide : ¬ 20 ∣ 20593) hdiv
-      · exact (by decide : ¬ 21 ∣ 20593) hdiv
-      · exact (by decide : ¬ 22 ∣ 20593) hdiv
-      · exact (by decide : ¬ 23 ∣ 20593) hdiv
-      · exact (by decide : ¬ 24 ∣ 20593) hdiv
-      · exact (by decide : ¬ 25 ∣ 20593) hdiv
-      · exact (by decide : ¬ 26 ∣ 20593) hdiv
-      · exact (by decide : ¬ 27 ∣ 20593) hdiv
-      · exact (by decide : ¬ 28 ∣ 20593) hdiv
-      · exact (by decide : ¬ 29 ∣ 20593) hdiv
-      · exact (by decide : ¬ 30 ∣ 20593) hdiv
-      · exact (by decide : ¬ 31 ∣ 20593) hdiv
-      · exact (by decide : ¬ 32 ∣ 20593) hdiv
-      · exact (by decide : ¬ 33 ∣ 20593) hdiv
-      · exact (by decide : ¬ 34 ∣ 20593) hdiv
-      · exact (by decide : ¬ 35 ∣ 20593) hdiv
-      · exact (by decide : ¬ 36 ∣ 20593) hdiv
-      · exact (by decide : ¬ 37 ∣ 20593) hdiv
-      · exact (by decide : ¬ 38 ∣ 20593) hdiv
-      · exact (by decide : ¬ 39 ∣ 20593) hdiv
-      · exact (by decide : ¬ 40 ∣ 20593) hdiv
-      · exact (by decide : ¬ 41 ∣ 20593) hdiv
-      · exact (by decide : ¬ 42 ∣ 20593) hdiv
-      · exact (by decide : ¬ 43 ∣ 20593) hdiv
-      · exact (by decide : ¬ 44 ∣ 20593) hdiv
-      · exact (by decide : ¬ 45 ∣ 20593) hdiv
-      · exact (by decide : ¬ 46 ∣ 20593) hdiv
-      · exact (by decide : ¬ 47 ∣ 20593) hdiv
-      · exact (by decide : ¬ 48 ∣ 20593) hdiv
-      · exact (by decide : ¬ 49 ∣ 20593) hdiv
-      · exact (by decide : ¬ 50 ∣ 20593) hdiv
-      · exact (by decide : ¬ 51 ∣ 20593) hdiv
-      · exact (by decide : ¬ 52 ∣ 20593) hdiv
-      · exact (by decide : ¬ 53 ∣ 20593) hdiv
-      · exact (by decide : ¬ 54 ∣ 20593) hdiv
-      · exact (by decide : ¬ 55 ∣ 20593) hdiv
-      · exact (by decide : ¬ 56 ∣ 20593) hdiv
-      · exact (by decide : ¬ 57 ∣ 20593) hdiv
-      · exact (by decide : ¬ 58 ∣ 20593) hdiv
-      · exact (by decide : ¬ 59 ∣ 20593) hdiv
-      · exact (by decide : ¬ 60 ∣ 20593) hdiv
-      · exact (by decide : ¬ 61 ∣ 20593) hdiv
-      · exact (by decide : ¬ 62 ∣ 20593) hdiv
-      · exact (by decide : ¬ 63 ∣ 20593) hdiv
-      · exact (by decide : ¬ 64 ∣ 20593) hdiv
-      · exact (by decide : ¬ 65 ∣ 20593) hdiv
-      · exact (by decide : ¬ 66 ∣ 20593) hdiv
-      · exact (by decide : ¬ 67 ∣ 20593) hdiv
-      · exact (by decide : ¬ 68 ∣ 20593) hdiv
-      · exact (by decide : ¬ 69 ∣ 20593) hdiv
-      · exact (by decide : ¬ 70 ∣ 20593) hdiv
-      · exact (by decide : ¬ 71 ∣ 20593) hdiv
-      · exact (by decide : ¬ 72 ∣ 20593) hdiv
-      · exact (by decide : ¬ 73 ∣ 20593) hdiv
-      · exact (by decide : ¬ 74 ∣ 20593) hdiv
-      · exact (by decide : ¬ 75 ∣ 20593) hdiv
-      · exact (by decide : ¬ 76 ∣ 20593) hdiv
-      · exact (by decide : ¬ 77 ∣ 20593) hdiv
-      · exact (by decide : ¬ 78 ∣ 20593) hdiv
-      · exact (by decide : ¬ 79 ∣ 20593) hdiv
-      · exact (by decide : ¬ 80 ∣ 20593) hdiv
-      · exact (by decide : ¬ 81 ∣ 20593) hdiv
-      · exact (by decide : ¬ 82 ∣ 20593) hdiv
-      · exact (by decide : ¬ 83 ∣ 20593) hdiv
-      · exact (by decide : ¬ 84 ∣ 20593) hdiv
-      · exact (by decide : ¬ 85 ∣ 20593) hdiv
-      · exact (by decide : ¬ 86 ∣ 20593) hdiv
-      · exact (by decide : ¬ 87 ∣ 20593) hdiv
-      · exact (by decide : ¬ 88 ∣ 20593) hdiv
-      · exact (by decide : ¬ 89 ∣ 20593) hdiv
-      · exact (by decide : ¬ 90 ∣ 20593) hdiv
-      · exact (by decide : ¬ 91 ∣ 20593) hdiv
-      · exact (by decide : ¬ 92 ∣ 20593) hdiv
-      · exact (by decide : ¬ 93 ∣ 20593) hdiv
-      · exact (by decide : ¬ 94 ∣ 20593) hdiv
-      · exact (by decide : ¬ 95 ∣ 20593) hdiv
-      · exact (by decide : ¬ 96 ∣ 20593) hdiv
-      · exact (by decide : ¬ 97 ∣ 20593) hdiv
-      · exact (by decide : ¬ 98 ∣ 20593) hdiv
-      · exact (by decide : ¬ 99 ∣ 20593) hdiv
-      · exact (by decide : ¬ 100 ∣ 20593) hdiv
-      · exact (by decide : ¬ 101 ∣ 20593) hdiv
-      · exact (by decide : ¬ 102 ∣ 20593) hdiv
-      · exact (by decide : ¬ 103 ∣ 20593) hdiv
-      · exact (by decide : ¬ 104 ∣ 20593) hdiv
-      · exact (by decide : ¬ 105 ∣ 20593) hdiv
-      · exact (by decide : ¬ 106 ∣ 20593) hdiv
-      · exact (by decide : ¬ 107 ∣ 20593) hdiv
-      · exact (by decide : ¬ 108 ∣ 20593) hdiv
-      · exact (by decide : ¬ 109 ∣ 20593) hdiv
-      · exact (by decide : ¬ 110 ∣ 20593) hdiv
-      · exact (by decide : ¬ 111 ∣ 20593) hdiv
-      · exact (by decide : ¬ 112 ∣ 20593) hdiv
-      · exact (by decide : ¬ 113 ∣ 20593) hdiv
-      · exact (by decide : ¬ 114 ∣ 20593) hdiv
-      · exact (by decide : ¬ 115 ∣ 20593) hdiv
-      · exact (by decide : ¬ 116 ∣ 20593) hdiv
-      · exact (by decide : ¬ 117 ∣ 20593) hdiv
-      · exact (by decide : ¬ 118 ∣ 20593) hdiv
-      · exact (by decide : ¬ 119 ∣ 20593) hdiv
-      · exact (by decide : ¬ 120 ∣ 20593) hdiv
-      · exact (by decide : ¬ 121 ∣ 20593) hdiv
-      · exact (by decide : ¬ 122 ∣ 20593) hdiv
-      · exact (by decide : ¬ 123 ∣ 20593) hdiv
-      · exact (by decide : ¬ 124 ∣ 20593) hdiv
-      · exact (by decide : ¬ 125 ∣ 20593) hdiv
-      · exact (by decide : ¬ 126 ∣ 20593) hdiv
-      · exact (by decide : ¬ 127 ∣ 20593) hdiv
-      · exact (by decide : ¬ 128 ∣ 20593) hdiv
-      · exact (by decide : ¬ 129 ∣ 20593) hdiv
-      · exact (by decide : ¬ 130 ∣ 20593) hdiv
-      · exact (by decide : ¬ 131 ∣ 20593) hdiv
-      · exact (by decide : ¬ 132 ∣ 20593) hdiv
-      · exact (by decide : ¬ 133 ∣ 20593) hdiv
-      · exact (by decide : ¬ 134 ∣ 20593) hdiv
-      · exact (by decide : ¬ 135 ∣ 20593) hdiv
-      · exact (by decide : ¬ 136 ∣ 20593) hdiv
-      · exact (by decide : ¬ 137 ∣ 20593) hdiv
-      · exact (by decide : ¬ 138 ∣ 20593) hdiv
-      · exact (by decide : ¬ 139 ∣ 20593) hdiv
-      · exact (by decide : ¬ 140 ∣ 20593) hdiv
-      · exact (by decide : ¬ 141 ∣ 20593) hdiv
-      · exact (by decide : ¬ 142 ∣ 20593) hdiv
-      · exact (by decide : ¬ 143 ∣ 20593) hdiv
-  have hA_factor : (22765 : Nat).factorization 20593 = 0 :=
-    Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 22765)
-  exact primeComponentWitness_of_prime_power_cofactor
-    12 22765 12 2 20593 2985985 1 145 0
-    hq_prime
-    (by decide)
-    (by decide)
-    (by decide)
-    hA_factor
-    (by decide)
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 20593 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 22765)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A22765_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 22765 12 2 := by
@@ -14022,24 +5043,13 @@ theorem concrete_generated_b12_F12_A22765_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A22765_p3_prime_witness :
     PrimeComponentWitness 12 22765 12 3 7 := by
-  refine ⟨(by decide : Nat.Prime 7), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 7 = 1 := by
-      rw [show (430002433 : Nat) = 7 * 61428919 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 7),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 61428919),
-      ]
-    rw [hfactor]
-    have hA_factor : (22765 : Nat).factorization 7 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 22765)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 22765)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A22765_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 22765 12 3 := by
@@ -14074,7 +5084,8 @@ theorem orderOf_b12_mod391658267_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 391658267)ˣ) :
           ZMod 391658267) ^ 12) =
         (1 : ZMod 391658267)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -14113,168 +5124,13 @@ theorem concrete_generated_b12_F12_A30305_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A30305_p2_prime_witness :
     PrimeComponentWitness 12 30305 12 2 20593 := by
-  have hq_prime : Nat.Prime 20593 := by
-    rw [Nat.prime_def_le_sqrt]
-    constructor
-    · decide
-    · intro m hm_ge hm_le hdiv
-      have hm_le143 : m ≤ 143 := by
-        have hsqrt_lt : Nat.sqrt 20593 < 144 :=
-          (Nat.sqrt_lt'.2 (by decide : 20593 < 144 ^ 2))
-        exact Nat.le_of_lt_succ (lt_of_le_of_lt hm_le hsqrt_lt)
-      interval_cases m
-      · exact (by decide : ¬ 2 ∣ 20593) hdiv
-      · exact (by decide : ¬ 3 ∣ 20593) hdiv
-      · exact (by decide : ¬ 4 ∣ 20593) hdiv
-      · exact (by decide : ¬ 5 ∣ 20593) hdiv
-      · exact (by decide : ¬ 6 ∣ 20593) hdiv
-      · exact (by decide : ¬ 7 ∣ 20593) hdiv
-      · exact (by decide : ¬ 8 ∣ 20593) hdiv
-      · exact (by decide : ¬ 9 ∣ 20593) hdiv
-      · exact (by decide : ¬ 10 ∣ 20593) hdiv
-      · exact (by decide : ¬ 11 ∣ 20593) hdiv
-      · exact (by decide : ¬ 12 ∣ 20593) hdiv
-      · exact (by decide : ¬ 13 ∣ 20593) hdiv
-      · exact (by decide : ¬ 14 ∣ 20593) hdiv
-      · exact (by decide : ¬ 15 ∣ 20593) hdiv
-      · exact (by decide : ¬ 16 ∣ 20593) hdiv
-      · exact (by decide : ¬ 17 ∣ 20593) hdiv
-      · exact (by decide : ¬ 18 ∣ 20593) hdiv
-      · exact (by decide : ¬ 19 ∣ 20593) hdiv
-      · exact (by decide : ¬ 20 ∣ 20593) hdiv
-      · exact (by decide : ¬ 21 ∣ 20593) hdiv
-      · exact (by decide : ¬ 22 ∣ 20593) hdiv
-      · exact (by decide : ¬ 23 ∣ 20593) hdiv
-      · exact (by decide : ¬ 24 ∣ 20593) hdiv
-      · exact (by decide : ¬ 25 ∣ 20593) hdiv
-      · exact (by decide : ¬ 26 ∣ 20593) hdiv
-      · exact (by decide : ¬ 27 ∣ 20593) hdiv
-      · exact (by decide : ¬ 28 ∣ 20593) hdiv
-      · exact (by decide : ¬ 29 ∣ 20593) hdiv
-      · exact (by decide : ¬ 30 ∣ 20593) hdiv
-      · exact (by decide : ¬ 31 ∣ 20593) hdiv
-      · exact (by decide : ¬ 32 ∣ 20593) hdiv
-      · exact (by decide : ¬ 33 ∣ 20593) hdiv
-      · exact (by decide : ¬ 34 ∣ 20593) hdiv
-      · exact (by decide : ¬ 35 ∣ 20593) hdiv
-      · exact (by decide : ¬ 36 ∣ 20593) hdiv
-      · exact (by decide : ¬ 37 ∣ 20593) hdiv
-      · exact (by decide : ¬ 38 ∣ 20593) hdiv
-      · exact (by decide : ¬ 39 ∣ 20593) hdiv
-      · exact (by decide : ¬ 40 ∣ 20593) hdiv
-      · exact (by decide : ¬ 41 ∣ 20593) hdiv
-      · exact (by decide : ¬ 42 ∣ 20593) hdiv
-      · exact (by decide : ¬ 43 ∣ 20593) hdiv
-      · exact (by decide : ¬ 44 ∣ 20593) hdiv
-      · exact (by decide : ¬ 45 ∣ 20593) hdiv
-      · exact (by decide : ¬ 46 ∣ 20593) hdiv
-      · exact (by decide : ¬ 47 ∣ 20593) hdiv
-      · exact (by decide : ¬ 48 ∣ 20593) hdiv
-      · exact (by decide : ¬ 49 ∣ 20593) hdiv
-      · exact (by decide : ¬ 50 ∣ 20593) hdiv
-      · exact (by decide : ¬ 51 ∣ 20593) hdiv
-      · exact (by decide : ¬ 52 ∣ 20593) hdiv
-      · exact (by decide : ¬ 53 ∣ 20593) hdiv
-      · exact (by decide : ¬ 54 ∣ 20593) hdiv
-      · exact (by decide : ¬ 55 ∣ 20593) hdiv
-      · exact (by decide : ¬ 56 ∣ 20593) hdiv
-      · exact (by decide : ¬ 57 ∣ 20593) hdiv
-      · exact (by decide : ¬ 58 ∣ 20593) hdiv
-      · exact (by decide : ¬ 59 ∣ 20593) hdiv
-      · exact (by decide : ¬ 60 ∣ 20593) hdiv
-      · exact (by decide : ¬ 61 ∣ 20593) hdiv
-      · exact (by decide : ¬ 62 ∣ 20593) hdiv
-      · exact (by decide : ¬ 63 ∣ 20593) hdiv
-      · exact (by decide : ¬ 64 ∣ 20593) hdiv
-      · exact (by decide : ¬ 65 ∣ 20593) hdiv
-      · exact (by decide : ¬ 66 ∣ 20593) hdiv
-      · exact (by decide : ¬ 67 ∣ 20593) hdiv
-      · exact (by decide : ¬ 68 ∣ 20593) hdiv
-      · exact (by decide : ¬ 69 ∣ 20593) hdiv
-      · exact (by decide : ¬ 70 ∣ 20593) hdiv
-      · exact (by decide : ¬ 71 ∣ 20593) hdiv
-      · exact (by decide : ¬ 72 ∣ 20593) hdiv
-      · exact (by decide : ¬ 73 ∣ 20593) hdiv
-      · exact (by decide : ¬ 74 ∣ 20593) hdiv
-      · exact (by decide : ¬ 75 ∣ 20593) hdiv
-      · exact (by decide : ¬ 76 ∣ 20593) hdiv
-      · exact (by decide : ¬ 77 ∣ 20593) hdiv
-      · exact (by decide : ¬ 78 ∣ 20593) hdiv
-      · exact (by decide : ¬ 79 ∣ 20593) hdiv
-      · exact (by decide : ¬ 80 ∣ 20593) hdiv
-      · exact (by decide : ¬ 81 ∣ 20593) hdiv
-      · exact (by decide : ¬ 82 ∣ 20593) hdiv
-      · exact (by decide : ¬ 83 ∣ 20593) hdiv
-      · exact (by decide : ¬ 84 ∣ 20593) hdiv
-      · exact (by decide : ¬ 85 ∣ 20593) hdiv
-      · exact (by decide : ¬ 86 ∣ 20593) hdiv
-      · exact (by decide : ¬ 87 ∣ 20593) hdiv
-      · exact (by decide : ¬ 88 ∣ 20593) hdiv
-      · exact (by decide : ¬ 89 ∣ 20593) hdiv
-      · exact (by decide : ¬ 90 ∣ 20593) hdiv
-      · exact (by decide : ¬ 91 ∣ 20593) hdiv
-      · exact (by decide : ¬ 92 ∣ 20593) hdiv
-      · exact (by decide : ¬ 93 ∣ 20593) hdiv
-      · exact (by decide : ¬ 94 ∣ 20593) hdiv
-      · exact (by decide : ¬ 95 ∣ 20593) hdiv
-      · exact (by decide : ¬ 96 ∣ 20593) hdiv
-      · exact (by decide : ¬ 97 ∣ 20593) hdiv
-      · exact (by decide : ¬ 98 ∣ 20593) hdiv
-      · exact (by decide : ¬ 99 ∣ 20593) hdiv
-      · exact (by decide : ¬ 100 ∣ 20593) hdiv
-      · exact (by decide : ¬ 101 ∣ 20593) hdiv
-      · exact (by decide : ¬ 102 ∣ 20593) hdiv
-      · exact (by decide : ¬ 103 ∣ 20593) hdiv
-      · exact (by decide : ¬ 104 ∣ 20593) hdiv
-      · exact (by decide : ¬ 105 ∣ 20593) hdiv
-      · exact (by decide : ¬ 106 ∣ 20593) hdiv
-      · exact (by decide : ¬ 107 ∣ 20593) hdiv
-      · exact (by decide : ¬ 108 ∣ 20593) hdiv
-      · exact (by decide : ¬ 109 ∣ 20593) hdiv
-      · exact (by decide : ¬ 110 ∣ 20593) hdiv
-      · exact (by decide : ¬ 111 ∣ 20593) hdiv
-      · exact (by decide : ¬ 112 ∣ 20593) hdiv
-      · exact (by decide : ¬ 113 ∣ 20593) hdiv
-      · exact (by decide : ¬ 114 ∣ 20593) hdiv
-      · exact (by decide : ¬ 115 ∣ 20593) hdiv
-      · exact (by decide : ¬ 116 ∣ 20593) hdiv
-      · exact (by decide : ¬ 117 ∣ 20593) hdiv
-      · exact (by decide : ¬ 118 ∣ 20593) hdiv
-      · exact (by decide : ¬ 119 ∣ 20593) hdiv
-      · exact (by decide : ¬ 120 ∣ 20593) hdiv
-      · exact (by decide : ¬ 121 ∣ 20593) hdiv
-      · exact (by decide : ¬ 122 ∣ 20593) hdiv
-      · exact (by decide : ¬ 123 ∣ 20593) hdiv
-      · exact (by decide : ¬ 124 ∣ 20593) hdiv
-      · exact (by decide : ¬ 125 ∣ 20593) hdiv
-      · exact (by decide : ¬ 126 ∣ 20593) hdiv
-      · exact (by decide : ¬ 127 ∣ 20593) hdiv
-      · exact (by decide : ¬ 128 ∣ 20593) hdiv
-      · exact (by decide : ¬ 129 ∣ 20593) hdiv
-      · exact (by decide : ¬ 130 ∣ 20593) hdiv
-      · exact (by decide : ¬ 131 ∣ 20593) hdiv
-      · exact (by decide : ¬ 132 ∣ 20593) hdiv
-      · exact (by decide : ¬ 133 ∣ 20593) hdiv
-      · exact (by decide : ¬ 134 ∣ 20593) hdiv
-      · exact (by decide : ¬ 135 ∣ 20593) hdiv
-      · exact (by decide : ¬ 136 ∣ 20593) hdiv
-      · exact (by decide : ¬ 137 ∣ 20593) hdiv
-      · exact (by decide : ¬ 138 ∣ 20593) hdiv
-      · exact (by decide : ¬ 139 ∣ 20593) hdiv
-      · exact (by decide : ¬ 140 ∣ 20593) hdiv
-      · exact (by decide : ¬ 141 ∣ 20593) hdiv
-      · exact (by decide : ¬ 142 ∣ 20593) hdiv
-      · exact (by decide : ¬ 143 ∣ 20593) hdiv
-  have hA_factor : (30305 : Nat).factorization 20593 = 0 :=
-    Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 30305)
-  exact primeComponentWitness_of_prime_power_cofactor
-    12 30305 12 2 20593 2985985 1 145 0
-    hq_prime
-    (by decide)
-    (by decide)
-    (by decide)
-    hA_factor
-    (by decide)
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 20593 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 30305)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A30305_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 30305 12 2 := by
@@ -14282,24 +5138,13 @@ theorem concrete_generated_b12_F12_A30305_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A30305_p3_prime_witness :
     PrimeComponentWitness 12 30305 12 3 7 := by
-  refine ⟨(by decide : Nat.Prime 7), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 7 = 1 := by
-      rw [show (430002433 : Nat) = 7 * 61428919 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 7),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 61428919),
-      ]
-    rw [hfactor]
-    have hA_factor : (30305 : Nat).factorization 7 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 30305)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 30305)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A30305_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 30305 12 3 := by
@@ -14334,7 +5179,8 @@ theorem orderOf_b12_mod294212191_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 294212191)ˣ) :
           ZMod 294212191) ^ 12) =
         (1 : ZMod 294212191)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -14373,168 +5219,13 @@ theorem concrete_generated_b12_F12_A35815_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A35815_p2_prime_witness :
     PrimeComponentWitness 12 35815 12 2 20593 := by
-  have hq_prime : Nat.Prime 20593 := by
-    rw [Nat.prime_def_le_sqrt]
-    constructor
-    · decide
-    · intro m hm_ge hm_le hdiv
-      have hm_le143 : m ≤ 143 := by
-        have hsqrt_lt : Nat.sqrt 20593 < 144 :=
-          (Nat.sqrt_lt'.2 (by decide : 20593 < 144 ^ 2))
-        exact Nat.le_of_lt_succ (lt_of_le_of_lt hm_le hsqrt_lt)
-      interval_cases m
-      · exact (by decide : ¬ 2 ∣ 20593) hdiv
-      · exact (by decide : ¬ 3 ∣ 20593) hdiv
-      · exact (by decide : ¬ 4 ∣ 20593) hdiv
-      · exact (by decide : ¬ 5 ∣ 20593) hdiv
-      · exact (by decide : ¬ 6 ∣ 20593) hdiv
-      · exact (by decide : ¬ 7 ∣ 20593) hdiv
-      · exact (by decide : ¬ 8 ∣ 20593) hdiv
-      · exact (by decide : ¬ 9 ∣ 20593) hdiv
-      · exact (by decide : ¬ 10 ∣ 20593) hdiv
-      · exact (by decide : ¬ 11 ∣ 20593) hdiv
-      · exact (by decide : ¬ 12 ∣ 20593) hdiv
-      · exact (by decide : ¬ 13 ∣ 20593) hdiv
-      · exact (by decide : ¬ 14 ∣ 20593) hdiv
-      · exact (by decide : ¬ 15 ∣ 20593) hdiv
-      · exact (by decide : ¬ 16 ∣ 20593) hdiv
-      · exact (by decide : ¬ 17 ∣ 20593) hdiv
-      · exact (by decide : ¬ 18 ∣ 20593) hdiv
-      · exact (by decide : ¬ 19 ∣ 20593) hdiv
-      · exact (by decide : ¬ 20 ∣ 20593) hdiv
-      · exact (by decide : ¬ 21 ∣ 20593) hdiv
-      · exact (by decide : ¬ 22 ∣ 20593) hdiv
-      · exact (by decide : ¬ 23 ∣ 20593) hdiv
-      · exact (by decide : ¬ 24 ∣ 20593) hdiv
-      · exact (by decide : ¬ 25 ∣ 20593) hdiv
-      · exact (by decide : ¬ 26 ∣ 20593) hdiv
-      · exact (by decide : ¬ 27 ∣ 20593) hdiv
-      · exact (by decide : ¬ 28 ∣ 20593) hdiv
-      · exact (by decide : ¬ 29 ∣ 20593) hdiv
-      · exact (by decide : ¬ 30 ∣ 20593) hdiv
-      · exact (by decide : ¬ 31 ∣ 20593) hdiv
-      · exact (by decide : ¬ 32 ∣ 20593) hdiv
-      · exact (by decide : ¬ 33 ∣ 20593) hdiv
-      · exact (by decide : ¬ 34 ∣ 20593) hdiv
-      · exact (by decide : ¬ 35 ∣ 20593) hdiv
-      · exact (by decide : ¬ 36 ∣ 20593) hdiv
-      · exact (by decide : ¬ 37 ∣ 20593) hdiv
-      · exact (by decide : ¬ 38 ∣ 20593) hdiv
-      · exact (by decide : ¬ 39 ∣ 20593) hdiv
-      · exact (by decide : ¬ 40 ∣ 20593) hdiv
-      · exact (by decide : ¬ 41 ∣ 20593) hdiv
-      · exact (by decide : ¬ 42 ∣ 20593) hdiv
-      · exact (by decide : ¬ 43 ∣ 20593) hdiv
-      · exact (by decide : ¬ 44 ∣ 20593) hdiv
-      · exact (by decide : ¬ 45 ∣ 20593) hdiv
-      · exact (by decide : ¬ 46 ∣ 20593) hdiv
-      · exact (by decide : ¬ 47 ∣ 20593) hdiv
-      · exact (by decide : ¬ 48 ∣ 20593) hdiv
-      · exact (by decide : ¬ 49 ∣ 20593) hdiv
-      · exact (by decide : ¬ 50 ∣ 20593) hdiv
-      · exact (by decide : ¬ 51 ∣ 20593) hdiv
-      · exact (by decide : ¬ 52 ∣ 20593) hdiv
-      · exact (by decide : ¬ 53 ∣ 20593) hdiv
-      · exact (by decide : ¬ 54 ∣ 20593) hdiv
-      · exact (by decide : ¬ 55 ∣ 20593) hdiv
-      · exact (by decide : ¬ 56 ∣ 20593) hdiv
-      · exact (by decide : ¬ 57 ∣ 20593) hdiv
-      · exact (by decide : ¬ 58 ∣ 20593) hdiv
-      · exact (by decide : ¬ 59 ∣ 20593) hdiv
-      · exact (by decide : ¬ 60 ∣ 20593) hdiv
-      · exact (by decide : ¬ 61 ∣ 20593) hdiv
-      · exact (by decide : ¬ 62 ∣ 20593) hdiv
-      · exact (by decide : ¬ 63 ∣ 20593) hdiv
-      · exact (by decide : ¬ 64 ∣ 20593) hdiv
-      · exact (by decide : ¬ 65 ∣ 20593) hdiv
-      · exact (by decide : ¬ 66 ∣ 20593) hdiv
-      · exact (by decide : ¬ 67 ∣ 20593) hdiv
-      · exact (by decide : ¬ 68 ∣ 20593) hdiv
-      · exact (by decide : ¬ 69 ∣ 20593) hdiv
-      · exact (by decide : ¬ 70 ∣ 20593) hdiv
-      · exact (by decide : ¬ 71 ∣ 20593) hdiv
-      · exact (by decide : ¬ 72 ∣ 20593) hdiv
-      · exact (by decide : ¬ 73 ∣ 20593) hdiv
-      · exact (by decide : ¬ 74 ∣ 20593) hdiv
-      · exact (by decide : ¬ 75 ∣ 20593) hdiv
-      · exact (by decide : ¬ 76 ∣ 20593) hdiv
-      · exact (by decide : ¬ 77 ∣ 20593) hdiv
-      · exact (by decide : ¬ 78 ∣ 20593) hdiv
-      · exact (by decide : ¬ 79 ∣ 20593) hdiv
-      · exact (by decide : ¬ 80 ∣ 20593) hdiv
-      · exact (by decide : ¬ 81 ∣ 20593) hdiv
-      · exact (by decide : ¬ 82 ∣ 20593) hdiv
-      · exact (by decide : ¬ 83 ∣ 20593) hdiv
-      · exact (by decide : ¬ 84 ∣ 20593) hdiv
-      · exact (by decide : ¬ 85 ∣ 20593) hdiv
-      · exact (by decide : ¬ 86 ∣ 20593) hdiv
-      · exact (by decide : ¬ 87 ∣ 20593) hdiv
-      · exact (by decide : ¬ 88 ∣ 20593) hdiv
-      · exact (by decide : ¬ 89 ∣ 20593) hdiv
-      · exact (by decide : ¬ 90 ∣ 20593) hdiv
-      · exact (by decide : ¬ 91 ∣ 20593) hdiv
-      · exact (by decide : ¬ 92 ∣ 20593) hdiv
-      · exact (by decide : ¬ 93 ∣ 20593) hdiv
-      · exact (by decide : ¬ 94 ∣ 20593) hdiv
-      · exact (by decide : ¬ 95 ∣ 20593) hdiv
-      · exact (by decide : ¬ 96 ∣ 20593) hdiv
-      · exact (by decide : ¬ 97 ∣ 20593) hdiv
-      · exact (by decide : ¬ 98 ∣ 20593) hdiv
-      · exact (by decide : ¬ 99 ∣ 20593) hdiv
-      · exact (by decide : ¬ 100 ∣ 20593) hdiv
-      · exact (by decide : ¬ 101 ∣ 20593) hdiv
-      · exact (by decide : ¬ 102 ∣ 20593) hdiv
-      · exact (by decide : ¬ 103 ∣ 20593) hdiv
-      · exact (by decide : ¬ 104 ∣ 20593) hdiv
-      · exact (by decide : ¬ 105 ∣ 20593) hdiv
-      · exact (by decide : ¬ 106 ∣ 20593) hdiv
-      · exact (by decide : ¬ 107 ∣ 20593) hdiv
-      · exact (by decide : ¬ 108 ∣ 20593) hdiv
-      · exact (by decide : ¬ 109 ∣ 20593) hdiv
-      · exact (by decide : ¬ 110 ∣ 20593) hdiv
-      · exact (by decide : ¬ 111 ∣ 20593) hdiv
-      · exact (by decide : ¬ 112 ∣ 20593) hdiv
-      · exact (by decide : ¬ 113 ∣ 20593) hdiv
-      · exact (by decide : ¬ 114 ∣ 20593) hdiv
-      · exact (by decide : ¬ 115 ∣ 20593) hdiv
-      · exact (by decide : ¬ 116 ∣ 20593) hdiv
-      · exact (by decide : ¬ 117 ∣ 20593) hdiv
-      · exact (by decide : ¬ 118 ∣ 20593) hdiv
-      · exact (by decide : ¬ 119 ∣ 20593) hdiv
-      · exact (by decide : ¬ 120 ∣ 20593) hdiv
-      · exact (by decide : ¬ 121 ∣ 20593) hdiv
-      · exact (by decide : ¬ 122 ∣ 20593) hdiv
-      · exact (by decide : ¬ 123 ∣ 20593) hdiv
-      · exact (by decide : ¬ 124 ∣ 20593) hdiv
-      · exact (by decide : ¬ 125 ∣ 20593) hdiv
-      · exact (by decide : ¬ 126 ∣ 20593) hdiv
-      · exact (by decide : ¬ 127 ∣ 20593) hdiv
-      · exact (by decide : ¬ 128 ∣ 20593) hdiv
-      · exact (by decide : ¬ 129 ∣ 20593) hdiv
-      · exact (by decide : ¬ 130 ∣ 20593) hdiv
-      · exact (by decide : ¬ 131 ∣ 20593) hdiv
-      · exact (by decide : ¬ 132 ∣ 20593) hdiv
-      · exact (by decide : ¬ 133 ∣ 20593) hdiv
-      · exact (by decide : ¬ 134 ∣ 20593) hdiv
-      · exact (by decide : ¬ 135 ∣ 20593) hdiv
-      · exact (by decide : ¬ 136 ∣ 20593) hdiv
-      · exact (by decide : ¬ 137 ∣ 20593) hdiv
-      · exact (by decide : ¬ 138 ∣ 20593) hdiv
-      · exact (by decide : ¬ 139 ∣ 20593) hdiv
-      · exact (by decide : ¬ 140 ∣ 20593) hdiv
-      · exact (by decide : ¬ 141 ∣ 20593) hdiv
-      · exact (by decide : ¬ 142 ∣ 20593) hdiv
-      · exact (by decide : ¬ 143 ∣ 20593) hdiv
-  have hA_factor : (35815 : Nat).factorization 20593 = 0 :=
-    Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 35815)
-  exact primeComponentWitness_of_prime_power_cofactor
-    12 35815 12 2 20593 2985985 1 145 0
-    hq_prime
-    (by decide)
-    (by decide)
-    (by decide)
-    hA_factor
-    (by decide)
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 20593 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 35815)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A35815_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 35815 12 2 := by
@@ -14542,24 +5233,13 @@ theorem concrete_generated_b12_F12_A35815_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A35815_p3_prime_witness :
     PrimeComponentWitness 12 35815 12 3 7 := by
-  refine ⟨(by decide : Nat.Prime 7), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 7 = 1 := by
-      rw [show (430002433 : Nat) = 7 * 61428919 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 7),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 61428919),
-      ]
-    rw [hfactor]
-    have hA_factor : (35815 : Nat).factorization 7 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 35815)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 35815)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A35815_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 35815 12 3 := by
@@ -14594,7 +5274,8 @@ theorem orderOf_b12_mod248948777_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 248948777)ˣ) :
           ZMod 248948777) ^ 12) =
         (1 : ZMod 248948777)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -14633,168 +5314,13 @@ theorem concrete_generated_b12_F12_A250415_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A250415_p2_prime_witness :
     PrimeComponentWitness 12 250415 12 2 20593 := by
-  have hq_prime : Nat.Prime 20593 := by
-    rw [Nat.prime_def_le_sqrt]
-    constructor
-    · decide
-    · intro m hm_ge hm_le hdiv
-      have hm_le143 : m ≤ 143 := by
-        have hsqrt_lt : Nat.sqrt 20593 < 144 :=
-          (Nat.sqrt_lt'.2 (by decide : 20593 < 144 ^ 2))
-        exact Nat.le_of_lt_succ (lt_of_le_of_lt hm_le hsqrt_lt)
-      interval_cases m
-      · exact (by decide : ¬ 2 ∣ 20593) hdiv
-      · exact (by decide : ¬ 3 ∣ 20593) hdiv
-      · exact (by decide : ¬ 4 ∣ 20593) hdiv
-      · exact (by decide : ¬ 5 ∣ 20593) hdiv
-      · exact (by decide : ¬ 6 ∣ 20593) hdiv
-      · exact (by decide : ¬ 7 ∣ 20593) hdiv
-      · exact (by decide : ¬ 8 ∣ 20593) hdiv
-      · exact (by decide : ¬ 9 ∣ 20593) hdiv
-      · exact (by decide : ¬ 10 ∣ 20593) hdiv
-      · exact (by decide : ¬ 11 ∣ 20593) hdiv
-      · exact (by decide : ¬ 12 ∣ 20593) hdiv
-      · exact (by decide : ¬ 13 ∣ 20593) hdiv
-      · exact (by decide : ¬ 14 ∣ 20593) hdiv
-      · exact (by decide : ¬ 15 ∣ 20593) hdiv
-      · exact (by decide : ¬ 16 ∣ 20593) hdiv
-      · exact (by decide : ¬ 17 ∣ 20593) hdiv
-      · exact (by decide : ¬ 18 ∣ 20593) hdiv
-      · exact (by decide : ¬ 19 ∣ 20593) hdiv
-      · exact (by decide : ¬ 20 ∣ 20593) hdiv
-      · exact (by decide : ¬ 21 ∣ 20593) hdiv
-      · exact (by decide : ¬ 22 ∣ 20593) hdiv
-      · exact (by decide : ¬ 23 ∣ 20593) hdiv
-      · exact (by decide : ¬ 24 ∣ 20593) hdiv
-      · exact (by decide : ¬ 25 ∣ 20593) hdiv
-      · exact (by decide : ¬ 26 ∣ 20593) hdiv
-      · exact (by decide : ¬ 27 ∣ 20593) hdiv
-      · exact (by decide : ¬ 28 ∣ 20593) hdiv
-      · exact (by decide : ¬ 29 ∣ 20593) hdiv
-      · exact (by decide : ¬ 30 ∣ 20593) hdiv
-      · exact (by decide : ¬ 31 ∣ 20593) hdiv
-      · exact (by decide : ¬ 32 ∣ 20593) hdiv
-      · exact (by decide : ¬ 33 ∣ 20593) hdiv
-      · exact (by decide : ¬ 34 ∣ 20593) hdiv
-      · exact (by decide : ¬ 35 ∣ 20593) hdiv
-      · exact (by decide : ¬ 36 ∣ 20593) hdiv
-      · exact (by decide : ¬ 37 ∣ 20593) hdiv
-      · exact (by decide : ¬ 38 ∣ 20593) hdiv
-      · exact (by decide : ¬ 39 ∣ 20593) hdiv
-      · exact (by decide : ¬ 40 ∣ 20593) hdiv
-      · exact (by decide : ¬ 41 ∣ 20593) hdiv
-      · exact (by decide : ¬ 42 ∣ 20593) hdiv
-      · exact (by decide : ¬ 43 ∣ 20593) hdiv
-      · exact (by decide : ¬ 44 ∣ 20593) hdiv
-      · exact (by decide : ¬ 45 ∣ 20593) hdiv
-      · exact (by decide : ¬ 46 ∣ 20593) hdiv
-      · exact (by decide : ¬ 47 ∣ 20593) hdiv
-      · exact (by decide : ¬ 48 ∣ 20593) hdiv
-      · exact (by decide : ¬ 49 ∣ 20593) hdiv
-      · exact (by decide : ¬ 50 ∣ 20593) hdiv
-      · exact (by decide : ¬ 51 ∣ 20593) hdiv
-      · exact (by decide : ¬ 52 ∣ 20593) hdiv
-      · exact (by decide : ¬ 53 ∣ 20593) hdiv
-      · exact (by decide : ¬ 54 ∣ 20593) hdiv
-      · exact (by decide : ¬ 55 ∣ 20593) hdiv
-      · exact (by decide : ¬ 56 ∣ 20593) hdiv
-      · exact (by decide : ¬ 57 ∣ 20593) hdiv
-      · exact (by decide : ¬ 58 ∣ 20593) hdiv
-      · exact (by decide : ¬ 59 ∣ 20593) hdiv
-      · exact (by decide : ¬ 60 ∣ 20593) hdiv
-      · exact (by decide : ¬ 61 ∣ 20593) hdiv
-      · exact (by decide : ¬ 62 ∣ 20593) hdiv
-      · exact (by decide : ¬ 63 ∣ 20593) hdiv
-      · exact (by decide : ¬ 64 ∣ 20593) hdiv
-      · exact (by decide : ¬ 65 ∣ 20593) hdiv
-      · exact (by decide : ¬ 66 ∣ 20593) hdiv
-      · exact (by decide : ¬ 67 ∣ 20593) hdiv
-      · exact (by decide : ¬ 68 ∣ 20593) hdiv
-      · exact (by decide : ¬ 69 ∣ 20593) hdiv
-      · exact (by decide : ¬ 70 ∣ 20593) hdiv
-      · exact (by decide : ¬ 71 ∣ 20593) hdiv
-      · exact (by decide : ¬ 72 ∣ 20593) hdiv
-      · exact (by decide : ¬ 73 ∣ 20593) hdiv
-      · exact (by decide : ¬ 74 ∣ 20593) hdiv
-      · exact (by decide : ¬ 75 ∣ 20593) hdiv
-      · exact (by decide : ¬ 76 ∣ 20593) hdiv
-      · exact (by decide : ¬ 77 ∣ 20593) hdiv
-      · exact (by decide : ¬ 78 ∣ 20593) hdiv
-      · exact (by decide : ¬ 79 ∣ 20593) hdiv
-      · exact (by decide : ¬ 80 ∣ 20593) hdiv
-      · exact (by decide : ¬ 81 ∣ 20593) hdiv
-      · exact (by decide : ¬ 82 ∣ 20593) hdiv
-      · exact (by decide : ¬ 83 ∣ 20593) hdiv
-      · exact (by decide : ¬ 84 ∣ 20593) hdiv
-      · exact (by decide : ¬ 85 ∣ 20593) hdiv
-      · exact (by decide : ¬ 86 ∣ 20593) hdiv
-      · exact (by decide : ¬ 87 ∣ 20593) hdiv
-      · exact (by decide : ¬ 88 ∣ 20593) hdiv
-      · exact (by decide : ¬ 89 ∣ 20593) hdiv
-      · exact (by decide : ¬ 90 ∣ 20593) hdiv
-      · exact (by decide : ¬ 91 ∣ 20593) hdiv
-      · exact (by decide : ¬ 92 ∣ 20593) hdiv
-      · exact (by decide : ¬ 93 ∣ 20593) hdiv
-      · exact (by decide : ¬ 94 ∣ 20593) hdiv
-      · exact (by decide : ¬ 95 ∣ 20593) hdiv
-      · exact (by decide : ¬ 96 ∣ 20593) hdiv
-      · exact (by decide : ¬ 97 ∣ 20593) hdiv
-      · exact (by decide : ¬ 98 ∣ 20593) hdiv
-      · exact (by decide : ¬ 99 ∣ 20593) hdiv
-      · exact (by decide : ¬ 100 ∣ 20593) hdiv
-      · exact (by decide : ¬ 101 ∣ 20593) hdiv
-      · exact (by decide : ¬ 102 ∣ 20593) hdiv
-      · exact (by decide : ¬ 103 ∣ 20593) hdiv
-      · exact (by decide : ¬ 104 ∣ 20593) hdiv
-      · exact (by decide : ¬ 105 ∣ 20593) hdiv
-      · exact (by decide : ¬ 106 ∣ 20593) hdiv
-      · exact (by decide : ¬ 107 ∣ 20593) hdiv
-      · exact (by decide : ¬ 108 ∣ 20593) hdiv
-      · exact (by decide : ¬ 109 ∣ 20593) hdiv
-      · exact (by decide : ¬ 110 ∣ 20593) hdiv
-      · exact (by decide : ¬ 111 ∣ 20593) hdiv
-      · exact (by decide : ¬ 112 ∣ 20593) hdiv
-      · exact (by decide : ¬ 113 ∣ 20593) hdiv
-      · exact (by decide : ¬ 114 ∣ 20593) hdiv
-      · exact (by decide : ¬ 115 ∣ 20593) hdiv
-      · exact (by decide : ¬ 116 ∣ 20593) hdiv
-      · exact (by decide : ¬ 117 ∣ 20593) hdiv
-      · exact (by decide : ¬ 118 ∣ 20593) hdiv
-      · exact (by decide : ¬ 119 ∣ 20593) hdiv
-      · exact (by decide : ¬ 120 ∣ 20593) hdiv
-      · exact (by decide : ¬ 121 ∣ 20593) hdiv
-      · exact (by decide : ¬ 122 ∣ 20593) hdiv
-      · exact (by decide : ¬ 123 ∣ 20593) hdiv
-      · exact (by decide : ¬ 124 ∣ 20593) hdiv
-      · exact (by decide : ¬ 125 ∣ 20593) hdiv
-      · exact (by decide : ¬ 126 ∣ 20593) hdiv
-      · exact (by decide : ¬ 127 ∣ 20593) hdiv
-      · exact (by decide : ¬ 128 ∣ 20593) hdiv
-      · exact (by decide : ¬ 129 ∣ 20593) hdiv
-      · exact (by decide : ¬ 130 ∣ 20593) hdiv
-      · exact (by decide : ¬ 131 ∣ 20593) hdiv
-      · exact (by decide : ¬ 132 ∣ 20593) hdiv
-      · exact (by decide : ¬ 133 ∣ 20593) hdiv
-      · exact (by decide : ¬ 134 ∣ 20593) hdiv
-      · exact (by decide : ¬ 135 ∣ 20593) hdiv
-      · exact (by decide : ¬ 136 ∣ 20593) hdiv
-      · exact (by decide : ¬ 137 ∣ 20593) hdiv
-      · exact (by decide : ¬ 138 ∣ 20593) hdiv
-      · exact (by decide : ¬ 139 ∣ 20593) hdiv
-      · exact (by decide : ¬ 140 ∣ 20593) hdiv
-      · exact (by decide : ¬ 141 ∣ 20593) hdiv
-      · exact (by decide : ¬ 142 ∣ 20593) hdiv
-      · exact (by decide : ¬ 143 ∣ 20593) hdiv
-  have hA_factor : (250415 : Nat).factorization 20593 = 0 :=
-    Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 250415)
-  exact primeComponentWitness_of_prime_power_cofactor
-    12 250415 12 2 20593 2985985 1 145 0
-    hq_prime
-    (by decide)
-    (by decide)
-    (by decide)
-    hA_factor
-    (by decide)
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 20593 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 250415)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A250415_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 250415 12 2 := by
@@ -14802,24 +5328,13 @@ theorem concrete_generated_b12_F12_A250415_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A250415_p3_prime_witness :
     PrimeComponentWitness 12 250415 12 3 7 := by
-  refine ⟨(by decide : Nat.Prime 7), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 7 = 1 := by
-      rw [show (430002433 : Nat) = 7 * 61428919 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 7),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 61428919),
-      ]
-    rw [hfactor]
-    have hA_factor : (250415 : Nat).factorization 7 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 250415)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 250415)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A250415_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 250415 12 3 := by
@@ -14854,7 +5369,8 @@ theorem orderOf_b12_mod35605297_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 35605297)ˣ) :
           ZMod 35605297) ^ 12) =
         (1 : ZMod 35605297)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -14893,168 +5409,13 @@ theorem concrete_generated_b12_F12_A295945_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A295945_p2_prime_witness :
     PrimeComponentWitness 12 295945 12 2 20593 := by
-  have hq_prime : Nat.Prime 20593 := by
-    rw [Nat.prime_def_le_sqrt]
-    constructor
-    · decide
-    · intro m hm_ge hm_le hdiv
-      have hm_le143 : m ≤ 143 := by
-        have hsqrt_lt : Nat.sqrt 20593 < 144 :=
-          (Nat.sqrt_lt'.2 (by decide : 20593 < 144 ^ 2))
-        exact Nat.le_of_lt_succ (lt_of_le_of_lt hm_le hsqrt_lt)
-      interval_cases m
-      · exact (by decide : ¬ 2 ∣ 20593) hdiv
-      · exact (by decide : ¬ 3 ∣ 20593) hdiv
-      · exact (by decide : ¬ 4 ∣ 20593) hdiv
-      · exact (by decide : ¬ 5 ∣ 20593) hdiv
-      · exact (by decide : ¬ 6 ∣ 20593) hdiv
-      · exact (by decide : ¬ 7 ∣ 20593) hdiv
-      · exact (by decide : ¬ 8 ∣ 20593) hdiv
-      · exact (by decide : ¬ 9 ∣ 20593) hdiv
-      · exact (by decide : ¬ 10 ∣ 20593) hdiv
-      · exact (by decide : ¬ 11 ∣ 20593) hdiv
-      · exact (by decide : ¬ 12 ∣ 20593) hdiv
-      · exact (by decide : ¬ 13 ∣ 20593) hdiv
-      · exact (by decide : ¬ 14 ∣ 20593) hdiv
-      · exact (by decide : ¬ 15 ∣ 20593) hdiv
-      · exact (by decide : ¬ 16 ∣ 20593) hdiv
-      · exact (by decide : ¬ 17 ∣ 20593) hdiv
-      · exact (by decide : ¬ 18 ∣ 20593) hdiv
-      · exact (by decide : ¬ 19 ∣ 20593) hdiv
-      · exact (by decide : ¬ 20 ∣ 20593) hdiv
-      · exact (by decide : ¬ 21 ∣ 20593) hdiv
-      · exact (by decide : ¬ 22 ∣ 20593) hdiv
-      · exact (by decide : ¬ 23 ∣ 20593) hdiv
-      · exact (by decide : ¬ 24 ∣ 20593) hdiv
-      · exact (by decide : ¬ 25 ∣ 20593) hdiv
-      · exact (by decide : ¬ 26 ∣ 20593) hdiv
-      · exact (by decide : ¬ 27 ∣ 20593) hdiv
-      · exact (by decide : ¬ 28 ∣ 20593) hdiv
-      · exact (by decide : ¬ 29 ∣ 20593) hdiv
-      · exact (by decide : ¬ 30 ∣ 20593) hdiv
-      · exact (by decide : ¬ 31 ∣ 20593) hdiv
-      · exact (by decide : ¬ 32 ∣ 20593) hdiv
-      · exact (by decide : ¬ 33 ∣ 20593) hdiv
-      · exact (by decide : ¬ 34 ∣ 20593) hdiv
-      · exact (by decide : ¬ 35 ∣ 20593) hdiv
-      · exact (by decide : ¬ 36 ∣ 20593) hdiv
-      · exact (by decide : ¬ 37 ∣ 20593) hdiv
-      · exact (by decide : ¬ 38 ∣ 20593) hdiv
-      · exact (by decide : ¬ 39 ∣ 20593) hdiv
-      · exact (by decide : ¬ 40 ∣ 20593) hdiv
-      · exact (by decide : ¬ 41 ∣ 20593) hdiv
-      · exact (by decide : ¬ 42 ∣ 20593) hdiv
-      · exact (by decide : ¬ 43 ∣ 20593) hdiv
-      · exact (by decide : ¬ 44 ∣ 20593) hdiv
-      · exact (by decide : ¬ 45 ∣ 20593) hdiv
-      · exact (by decide : ¬ 46 ∣ 20593) hdiv
-      · exact (by decide : ¬ 47 ∣ 20593) hdiv
-      · exact (by decide : ¬ 48 ∣ 20593) hdiv
-      · exact (by decide : ¬ 49 ∣ 20593) hdiv
-      · exact (by decide : ¬ 50 ∣ 20593) hdiv
-      · exact (by decide : ¬ 51 ∣ 20593) hdiv
-      · exact (by decide : ¬ 52 ∣ 20593) hdiv
-      · exact (by decide : ¬ 53 ∣ 20593) hdiv
-      · exact (by decide : ¬ 54 ∣ 20593) hdiv
-      · exact (by decide : ¬ 55 ∣ 20593) hdiv
-      · exact (by decide : ¬ 56 ∣ 20593) hdiv
-      · exact (by decide : ¬ 57 ∣ 20593) hdiv
-      · exact (by decide : ¬ 58 ∣ 20593) hdiv
-      · exact (by decide : ¬ 59 ∣ 20593) hdiv
-      · exact (by decide : ¬ 60 ∣ 20593) hdiv
-      · exact (by decide : ¬ 61 ∣ 20593) hdiv
-      · exact (by decide : ¬ 62 ∣ 20593) hdiv
-      · exact (by decide : ¬ 63 ∣ 20593) hdiv
-      · exact (by decide : ¬ 64 ∣ 20593) hdiv
-      · exact (by decide : ¬ 65 ∣ 20593) hdiv
-      · exact (by decide : ¬ 66 ∣ 20593) hdiv
-      · exact (by decide : ¬ 67 ∣ 20593) hdiv
-      · exact (by decide : ¬ 68 ∣ 20593) hdiv
-      · exact (by decide : ¬ 69 ∣ 20593) hdiv
-      · exact (by decide : ¬ 70 ∣ 20593) hdiv
-      · exact (by decide : ¬ 71 ∣ 20593) hdiv
-      · exact (by decide : ¬ 72 ∣ 20593) hdiv
-      · exact (by decide : ¬ 73 ∣ 20593) hdiv
-      · exact (by decide : ¬ 74 ∣ 20593) hdiv
-      · exact (by decide : ¬ 75 ∣ 20593) hdiv
-      · exact (by decide : ¬ 76 ∣ 20593) hdiv
-      · exact (by decide : ¬ 77 ∣ 20593) hdiv
-      · exact (by decide : ¬ 78 ∣ 20593) hdiv
-      · exact (by decide : ¬ 79 ∣ 20593) hdiv
-      · exact (by decide : ¬ 80 ∣ 20593) hdiv
-      · exact (by decide : ¬ 81 ∣ 20593) hdiv
-      · exact (by decide : ¬ 82 ∣ 20593) hdiv
-      · exact (by decide : ¬ 83 ∣ 20593) hdiv
-      · exact (by decide : ¬ 84 ∣ 20593) hdiv
-      · exact (by decide : ¬ 85 ∣ 20593) hdiv
-      · exact (by decide : ¬ 86 ∣ 20593) hdiv
-      · exact (by decide : ¬ 87 ∣ 20593) hdiv
-      · exact (by decide : ¬ 88 ∣ 20593) hdiv
-      · exact (by decide : ¬ 89 ∣ 20593) hdiv
-      · exact (by decide : ¬ 90 ∣ 20593) hdiv
-      · exact (by decide : ¬ 91 ∣ 20593) hdiv
-      · exact (by decide : ¬ 92 ∣ 20593) hdiv
-      · exact (by decide : ¬ 93 ∣ 20593) hdiv
-      · exact (by decide : ¬ 94 ∣ 20593) hdiv
-      · exact (by decide : ¬ 95 ∣ 20593) hdiv
-      · exact (by decide : ¬ 96 ∣ 20593) hdiv
-      · exact (by decide : ¬ 97 ∣ 20593) hdiv
-      · exact (by decide : ¬ 98 ∣ 20593) hdiv
-      · exact (by decide : ¬ 99 ∣ 20593) hdiv
-      · exact (by decide : ¬ 100 ∣ 20593) hdiv
-      · exact (by decide : ¬ 101 ∣ 20593) hdiv
-      · exact (by decide : ¬ 102 ∣ 20593) hdiv
-      · exact (by decide : ¬ 103 ∣ 20593) hdiv
-      · exact (by decide : ¬ 104 ∣ 20593) hdiv
-      · exact (by decide : ¬ 105 ∣ 20593) hdiv
-      · exact (by decide : ¬ 106 ∣ 20593) hdiv
-      · exact (by decide : ¬ 107 ∣ 20593) hdiv
-      · exact (by decide : ¬ 108 ∣ 20593) hdiv
-      · exact (by decide : ¬ 109 ∣ 20593) hdiv
-      · exact (by decide : ¬ 110 ∣ 20593) hdiv
-      · exact (by decide : ¬ 111 ∣ 20593) hdiv
-      · exact (by decide : ¬ 112 ∣ 20593) hdiv
-      · exact (by decide : ¬ 113 ∣ 20593) hdiv
-      · exact (by decide : ¬ 114 ∣ 20593) hdiv
-      · exact (by decide : ¬ 115 ∣ 20593) hdiv
-      · exact (by decide : ¬ 116 ∣ 20593) hdiv
-      · exact (by decide : ¬ 117 ∣ 20593) hdiv
-      · exact (by decide : ¬ 118 ∣ 20593) hdiv
-      · exact (by decide : ¬ 119 ∣ 20593) hdiv
-      · exact (by decide : ¬ 120 ∣ 20593) hdiv
-      · exact (by decide : ¬ 121 ∣ 20593) hdiv
-      · exact (by decide : ¬ 122 ∣ 20593) hdiv
-      · exact (by decide : ¬ 123 ∣ 20593) hdiv
-      · exact (by decide : ¬ 124 ∣ 20593) hdiv
-      · exact (by decide : ¬ 125 ∣ 20593) hdiv
-      · exact (by decide : ¬ 126 ∣ 20593) hdiv
-      · exact (by decide : ¬ 127 ∣ 20593) hdiv
-      · exact (by decide : ¬ 128 ∣ 20593) hdiv
-      · exact (by decide : ¬ 129 ∣ 20593) hdiv
-      · exact (by decide : ¬ 130 ∣ 20593) hdiv
-      · exact (by decide : ¬ 131 ∣ 20593) hdiv
-      · exact (by decide : ¬ 132 ∣ 20593) hdiv
-      · exact (by decide : ¬ 133 ∣ 20593) hdiv
-      · exact (by decide : ¬ 134 ∣ 20593) hdiv
-      · exact (by decide : ¬ 135 ∣ 20593) hdiv
-      · exact (by decide : ¬ 136 ∣ 20593) hdiv
-      · exact (by decide : ¬ 137 ∣ 20593) hdiv
-      · exact (by decide : ¬ 138 ∣ 20593) hdiv
-      · exact (by decide : ¬ 139 ∣ 20593) hdiv
-      · exact (by decide : ¬ 140 ∣ 20593) hdiv
-      · exact (by decide : ¬ 141 ∣ 20593) hdiv
-      · exact (by decide : ¬ 142 ∣ 20593) hdiv
-      · exact (by decide : ¬ 143 ∣ 20593) hdiv
-  have hA_factor : (295945 : Nat).factorization 20593 = 0 :=
-    Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 295945)
-  exact primeComponentWitness_of_prime_power_cofactor
-    12 295945 12 2 20593 2985985 1 145 0
-    hq_prime
-    (by decide)
-    (by decide)
-    (by decide)
-    hA_factor
-    (by decide)
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 20593 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 295945)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A295945_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 295945 12 2 := by
@@ -15062,24 +5423,13 @@ theorem concrete_generated_b12_F12_A295945_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A295945_p3_prime_witness :
     PrimeComponentWitness 12 295945 12 3 7 := by
-  refine ⟨(by decide : Nat.Prime 7), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 7 = 1 := by
-      rw [show (430002433 : Nat) = 7 * 61428919 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 7),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 61428919),
-      ]
-    rw [hfactor]
-    have hA_factor : (295945 : Nat).factorization 7 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 295945)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 295945)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A295945_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 295945 12 3 := by
@@ -15114,7 +5464,8 @@ theorem orderOf_b12_mod30127559_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 30127559)ˣ) :
           ZMod 30127559) ^ 12) =
         (1 : ZMod 30127559)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -15153,168 +5504,13 @@ theorem concrete_generated_b12_F12_A393965_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A393965_p2_prime_witness :
     PrimeComponentWitness 12 393965 12 2 20593 := by
-  have hq_prime : Nat.Prime 20593 := by
-    rw [Nat.prime_def_le_sqrt]
-    constructor
-    · decide
-    · intro m hm_ge hm_le hdiv
-      have hm_le143 : m ≤ 143 := by
-        have hsqrt_lt : Nat.sqrt 20593 < 144 :=
-          (Nat.sqrt_lt'.2 (by decide : 20593 < 144 ^ 2))
-        exact Nat.le_of_lt_succ (lt_of_le_of_lt hm_le hsqrt_lt)
-      interval_cases m
-      · exact (by decide : ¬ 2 ∣ 20593) hdiv
-      · exact (by decide : ¬ 3 ∣ 20593) hdiv
-      · exact (by decide : ¬ 4 ∣ 20593) hdiv
-      · exact (by decide : ¬ 5 ∣ 20593) hdiv
-      · exact (by decide : ¬ 6 ∣ 20593) hdiv
-      · exact (by decide : ¬ 7 ∣ 20593) hdiv
-      · exact (by decide : ¬ 8 ∣ 20593) hdiv
-      · exact (by decide : ¬ 9 ∣ 20593) hdiv
-      · exact (by decide : ¬ 10 ∣ 20593) hdiv
-      · exact (by decide : ¬ 11 ∣ 20593) hdiv
-      · exact (by decide : ¬ 12 ∣ 20593) hdiv
-      · exact (by decide : ¬ 13 ∣ 20593) hdiv
-      · exact (by decide : ¬ 14 ∣ 20593) hdiv
-      · exact (by decide : ¬ 15 ∣ 20593) hdiv
-      · exact (by decide : ¬ 16 ∣ 20593) hdiv
-      · exact (by decide : ¬ 17 ∣ 20593) hdiv
-      · exact (by decide : ¬ 18 ∣ 20593) hdiv
-      · exact (by decide : ¬ 19 ∣ 20593) hdiv
-      · exact (by decide : ¬ 20 ∣ 20593) hdiv
-      · exact (by decide : ¬ 21 ∣ 20593) hdiv
-      · exact (by decide : ¬ 22 ∣ 20593) hdiv
-      · exact (by decide : ¬ 23 ∣ 20593) hdiv
-      · exact (by decide : ¬ 24 ∣ 20593) hdiv
-      · exact (by decide : ¬ 25 ∣ 20593) hdiv
-      · exact (by decide : ¬ 26 ∣ 20593) hdiv
-      · exact (by decide : ¬ 27 ∣ 20593) hdiv
-      · exact (by decide : ¬ 28 ∣ 20593) hdiv
-      · exact (by decide : ¬ 29 ∣ 20593) hdiv
-      · exact (by decide : ¬ 30 ∣ 20593) hdiv
-      · exact (by decide : ¬ 31 ∣ 20593) hdiv
-      · exact (by decide : ¬ 32 ∣ 20593) hdiv
-      · exact (by decide : ¬ 33 ∣ 20593) hdiv
-      · exact (by decide : ¬ 34 ∣ 20593) hdiv
-      · exact (by decide : ¬ 35 ∣ 20593) hdiv
-      · exact (by decide : ¬ 36 ∣ 20593) hdiv
-      · exact (by decide : ¬ 37 ∣ 20593) hdiv
-      · exact (by decide : ¬ 38 ∣ 20593) hdiv
-      · exact (by decide : ¬ 39 ∣ 20593) hdiv
-      · exact (by decide : ¬ 40 ∣ 20593) hdiv
-      · exact (by decide : ¬ 41 ∣ 20593) hdiv
-      · exact (by decide : ¬ 42 ∣ 20593) hdiv
-      · exact (by decide : ¬ 43 ∣ 20593) hdiv
-      · exact (by decide : ¬ 44 ∣ 20593) hdiv
-      · exact (by decide : ¬ 45 ∣ 20593) hdiv
-      · exact (by decide : ¬ 46 ∣ 20593) hdiv
-      · exact (by decide : ¬ 47 ∣ 20593) hdiv
-      · exact (by decide : ¬ 48 ∣ 20593) hdiv
-      · exact (by decide : ¬ 49 ∣ 20593) hdiv
-      · exact (by decide : ¬ 50 ∣ 20593) hdiv
-      · exact (by decide : ¬ 51 ∣ 20593) hdiv
-      · exact (by decide : ¬ 52 ∣ 20593) hdiv
-      · exact (by decide : ¬ 53 ∣ 20593) hdiv
-      · exact (by decide : ¬ 54 ∣ 20593) hdiv
-      · exact (by decide : ¬ 55 ∣ 20593) hdiv
-      · exact (by decide : ¬ 56 ∣ 20593) hdiv
-      · exact (by decide : ¬ 57 ∣ 20593) hdiv
-      · exact (by decide : ¬ 58 ∣ 20593) hdiv
-      · exact (by decide : ¬ 59 ∣ 20593) hdiv
-      · exact (by decide : ¬ 60 ∣ 20593) hdiv
-      · exact (by decide : ¬ 61 ∣ 20593) hdiv
-      · exact (by decide : ¬ 62 ∣ 20593) hdiv
-      · exact (by decide : ¬ 63 ∣ 20593) hdiv
-      · exact (by decide : ¬ 64 ∣ 20593) hdiv
-      · exact (by decide : ¬ 65 ∣ 20593) hdiv
-      · exact (by decide : ¬ 66 ∣ 20593) hdiv
-      · exact (by decide : ¬ 67 ∣ 20593) hdiv
-      · exact (by decide : ¬ 68 ∣ 20593) hdiv
-      · exact (by decide : ¬ 69 ∣ 20593) hdiv
-      · exact (by decide : ¬ 70 ∣ 20593) hdiv
-      · exact (by decide : ¬ 71 ∣ 20593) hdiv
-      · exact (by decide : ¬ 72 ∣ 20593) hdiv
-      · exact (by decide : ¬ 73 ∣ 20593) hdiv
-      · exact (by decide : ¬ 74 ∣ 20593) hdiv
-      · exact (by decide : ¬ 75 ∣ 20593) hdiv
-      · exact (by decide : ¬ 76 ∣ 20593) hdiv
-      · exact (by decide : ¬ 77 ∣ 20593) hdiv
-      · exact (by decide : ¬ 78 ∣ 20593) hdiv
-      · exact (by decide : ¬ 79 ∣ 20593) hdiv
-      · exact (by decide : ¬ 80 ∣ 20593) hdiv
-      · exact (by decide : ¬ 81 ∣ 20593) hdiv
-      · exact (by decide : ¬ 82 ∣ 20593) hdiv
-      · exact (by decide : ¬ 83 ∣ 20593) hdiv
-      · exact (by decide : ¬ 84 ∣ 20593) hdiv
-      · exact (by decide : ¬ 85 ∣ 20593) hdiv
-      · exact (by decide : ¬ 86 ∣ 20593) hdiv
-      · exact (by decide : ¬ 87 ∣ 20593) hdiv
-      · exact (by decide : ¬ 88 ∣ 20593) hdiv
-      · exact (by decide : ¬ 89 ∣ 20593) hdiv
-      · exact (by decide : ¬ 90 ∣ 20593) hdiv
-      · exact (by decide : ¬ 91 ∣ 20593) hdiv
-      · exact (by decide : ¬ 92 ∣ 20593) hdiv
-      · exact (by decide : ¬ 93 ∣ 20593) hdiv
-      · exact (by decide : ¬ 94 ∣ 20593) hdiv
-      · exact (by decide : ¬ 95 ∣ 20593) hdiv
-      · exact (by decide : ¬ 96 ∣ 20593) hdiv
-      · exact (by decide : ¬ 97 ∣ 20593) hdiv
-      · exact (by decide : ¬ 98 ∣ 20593) hdiv
-      · exact (by decide : ¬ 99 ∣ 20593) hdiv
-      · exact (by decide : ¬ 100 ∣ 20593) hdiv
-      · exact (by decide : ¬ 101 ∣ 20593) hdiv
-      · exact (by decide : ¬ 102 ∣ 20593) hdiv
-      · exact (by decide : ¬ 103 ∣ 20593) hdiv
-      · exact (by decide : ¬ 104 ∣ 20593) hdiv
-      · exact (by decide : ¬ 105 ∣ 20593) hdiv
-      · exact (by decide : ¬ 106 ∣ 20593) hdiv
-      · exact (by decide : ¬ 107 ∣ 20593) hdiv
-      · exact (by decide : ¬ 108 ∣ 20593) hdiv
-      · exact (by decide : ¬ 109 ∣ 20593) hdiv
-      · exact (by decide : ¬ 110 ∣ 20593) hdiv
-      · exact (by decide : ¬ 111 ∣ 20593) hdiv
-      · exact (by decide : ¬ 112 ∣ 20593) hdiv
-      · exact (by decide : ¬ 113 ∣ 20593) hdiv
-      · exact (by decide : ¬ 114 ∣ 20593) hdiv
-      · exact (by decide : ¬ 115 ∣ 20593) hdiv
-      · exact (by decide : ¬ 116 ∣ 20593) hdiv
-      · exact (by decide : ¬ 117 ∣ 20593) hdiv
-      · exact (by decide : ¬ 118 ∣ 20593) hdiv
-      · exact (by decide : ¬ 119 ∣ 20593) hdiv
-      · exact (by decide : ¬ 120 ∣ 20593) hdiv
-      · exact (by decide : ¬ 121 ∣ 20593) hdiv
-      · exact (by decide : ¬ 122 ∣ 20593) hdiv
-      · exact (by decide : ¬ 123 ∣ 20593) hdiv
-      · exact (by decide : ¬ 124 ∣ 20593) hdiv
-      · exact (by decide : ¬ 125 ∣ 20593) hdiv
-      · exact (by decide : ¬ 126 ∣ 20593) hdiv
-      · exact (by decide : ¬ 127 ∣ 20593) hdiv
-      · exact (by decide : ¬ 128 ∣ 20593) hdiv
-      · exact (by decide : ¬ 129 ∣ 20593) hdiv
-      · exact (by decide : ¬ 130 ∣ 20593) hdiv
-      · exact (by decide : ¬ 131 ∣ 20593) hdiv
-      · exact (by decide : ¬ 132 ∣ 20593) hdiv
-      · exact (by decide : ¬ 133 ∣ 20593) hdiv
-      · exact (by decide : ¬ 134 ∣ 20593) hdiv
-      · exact (by decide : ¬ 135 ∣ 20593) hdiv
-      · exact (by decide : ¬ 136 ∣ 20593) hdiv
-      · exact (by decide : ¬ 137 ∣ 20593) hdiv
-      · exact (by decide : ¬ 138 ∣ 20593) hdiv
-      · exact (by decide : ¬ 139 ∣ 20593) hdiv
-      · exact (by decide : ¬ 140 ∣ 20593) hdiv
-      · exact (by decide : ¬ 141 ∣ 20593) hdiv
-      · exact (by decide : ¬ 142 ∣ 20593) hdiv
-      · exact (by decide : ¬ 143 ∣ 20593) hdiv
-  have hA_factor : (393965 : Nat).factorization 20593 = 0 :=
-    Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 393965)
-  exact primeComponentWitness_of_prime_power_cofactor
-    12 393965 12 2 20593 2985985 1 145 0
-    hq_prime
-    (by decide)
-    (by decide)
-    (by decide)
-    hA_factor
-    (by decide)
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 20593 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 393965)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A393965_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 393965 12 2 := by
@@ -15322,24 +5518,13 @@ theorem concrete_generated_b12_F12_A393965_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A393965_p3_prime_witness :
     PrimeComponentWitness 12 393965 12 3 7 := by
-  refine ⟨(by decide : Nat.Prime 7), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 7 = 1 := by
-      rw [show (430002433 : Nat) = 7 * 61428919 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 7),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 61428919),
-      ]
-    rw [hfactor]
-    have hA_factor : (393965 : Nat).factorization 7 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 393965)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 393965)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A393965_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 393965 12 3 := by
@@ -15374,7 +5559,8 @@ theorem orderOf_b12_mod22631707_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 22631707)ˣ) :
           ZMod 22631707) ^ 12) =
         (1 : ZMod 22631707)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -15413,168 +5599,13 @@ theorem concrete_generated_b12_F12_A432535_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A432535_p2_prime_witness :
     PrimeComponentWitness 12 432535 12 2 20593 := by
-  have hq_prime : Nat.Prime 20593 := by
-    rw [Nat.prime_def_le_sqrt]
-    constructor
-    · decide
-    · intro m hm_ge hm_le hdiv
-      have hm_le143 : m ≤ 143 := by
-        have hsqrt_lt : Nat.sqrt 20593 < 144 :=
-          (Nat.sqrt_lt'.2 (by decide : 20593 < 144 ^ 2))
-        exact Nat.le_of_lt_succ (lt_of_le_of_lt hm_le hsqrt_lt)
-      interval_cases m
-      · exact (by decide : ¬ 2 ∣ 20593) hdiv
-      · exact (by decide : ¬ 3 ∣ 20593) hdiv
-      · exact (by decide : ¬ 4 ∣ 20593) hdiv
-      · exact (by decide : ¬ 5 ∣ 20593) hdiv
-      · exact (by decide : ¬ 6 ∣ 20593) hdiv
-      · exact (by decide : ¬ 7 ∣ 20593) hdiv
-      · exact (by decide : ¬ 8 ∣ 20593) hdiv
-      · exact (by decide : ¬ 9 ∣ 20593) hdiv
-      · exact (by decide : ¬ 10 ∣ 20593) hdiv
-      · exact (by decide : ¬ 11 ∣ 20593) hdiv
-      · exact (by decide : ¬ 12 ∣ 20593) hdiv
-      · exact (by decide : ¬ 13 ∣ 20593) hdiv
-      · exact (by decide : ¬ 14 ∣ 20593) hdiv
-      · exact (by decide : ¬ 15 ∣ 20593) hdiv
-      · exact (by decide : ¬ 16 ∣ 20593) hdiv
-      · exact (by decide : ¬ 17 ∣ 20593) hdiv
-      · exact (by decide : ¬ 18 ∣ 20593) hdiv
-      · exact (by decide : ¬ 19 ∣ 20593) hdiv
-      · exact (by decide : ¬ 20 ∣ 20593) hdiv
-      · exact (by decide : ¬ 21 ∣ 20593) hdiv
-      · exact (by decide : ¬ 22 ∣ 20593) hdiv
-      · exact (by decide : ¬ 23 ∣ 20593) hdiv
-      · exact (by decide : ¬ 24 ∣ 20593) hdiv
-      · exact (by decide : ¬ 25 ∣ 20593) hdiv
-      · exact (by decide : ¬ 26 ∣ 20593) hdiv
-      · exact (by decide : ¬ 27 ∣ 20593) hdiv
-      · exact (by decide : ¬ 28 ∣ 20593) hdiv
-      · exact (by decide : ¬ 29 ∣ 20593) hdiv
-      · exact (by decide : ¬ 30 ∣ 20593) hdiv
-      · exact (by decide : ¬ 31 ∣ 20593) hdiv
-      · exact (by decide : ¬ 32 ∣ 20593) hdiv
-      · exact (by decide : ¬ 33 ∣ 20593) hdiv
-      · exact (by decide : ¬ 34 ∣ 20593) hdiv
-      · exact (by decide : ¬ 35 ∣ 20593) hdiv
-      · exact (by decide : ¬ 36 ∣ 20593) hdiv
-      · exact (by decide : ¬ 37 ∣ 20593) hdiv
-      · exact (by decide : ¬ 38 ∣ 20593) hdiv
-      · exact (by decide : ¬ 39 ∣ 20593) hdiv
-      · exact (by decide : ¬ 40 ∣ 20593) hdiv
-      · exact (by decide : ¬ 41 ∣ 20593) hdiv
-      · exact (by decide : ¬ 42 ∣ 20593) hdiv
-      · exact (by decide : ¬ 43 ∣ 20593) hdiv
-      · exact (by decide : ¬ 44 ∣ 20593) hdiv
-      · exact (by decide : ¬ 45 ∣ 20593) hdiv
-      · exact (by decide : ¬ 46 ∣ 20593) hdiv
-      · exact (by decide : ¬ 47 ∣ 20593) hdiv
-      · exact (by decide : ¬ 48 ∣ 20593) hdiv
-      · exact (by decide : ¬ 49 ∣ 20593) hdiv
-      · exact (by decide : ¬ 50 ∣ 20593) hdiv
-      · exact (by decide : ¬ 51 ∣ 20593) hdiv
-      · exact (by decide : ¬ 52 ∣ 20593) hdiv
-      · exact (by decide : ¬ 53 ∣ 20593) hdiv
-      · exact (by decide : ¬ 54 ∣ 20593) hdiv
-      · exact (by decide : ¬ 55 ∣ 20593) hdiv
-      · exact (by decide : ¬ 56 ∣ 20593) hdiv
-      · exact (by decide : ¬ 57 ∣ 20593) hdiv
-      · exact (by decide : ¬ 58 ∣ 20593) hdiv
-      · exact (by decide : ¬ 59 ∣ 20593) hdiv
-      · exact (by decide : ¬ 60 ∣ 20593) hdiv
-      · exact (by decide : ¬ 61 ∣ 20593) hdiv
-      · exact (by decide : ¬ 62 ∣ 20593) hdiv
-      · exact (by decide : ¬ 63 ∣ 20593) hdiv
-      · exact (by decide : ¬ 64 ∣ 20593) hdiv
-      · exact (by decide : ¬ 65 ∣ 20593) hdiv
-      · exact (by decide : ¬ 66 ∣ 20593) hdiv
-      · exact (by decide : ¬ 67 ∣ 20593) hdiv
-      · exact (by decide : ¬ 68 ∣ 20593) hdiv
-      · exact (by decide : ¬ 69 ∣ 20593) hdiv
-      · exact (by decide : ¬ 70 ∣ 20593) hdiv
-      · exact (by decide : ¬ 71 ∣ 20593) hdiv
-      · exact (by decide : ¬ 72 ∣ 20593) hdiv
-      · exact (by decide : ¬ 73 ∣ 20593) hdiv
-      · exact (by decide : ¬ 74 ∣ 20593) hdiv
-      · exact (by decide : ¬ 75 ∣ 20593) hdiv
-      · exact (by decide : ¬ 76 ∣ 20593) hdiv
-      · exact (by decide : ¬ 77 ∣ 20593) hdiv
-      · exact (by decide : ¬ 78 ∣ 20593) hdiv
-      · exact (by decide : ¬ 79 ∣ 20593) hdiv
-      · exact (by decide : ¬ 80 ∣ 20593) hdiv
-      · exact (by decide : ¬ 81 ∣ 20593) hdiv
-      · exact (by decide : ¬ 82 ∣ 20593) hdiv
-      · exact (by decide : ¬ 83 ∣ 20593) hdiv
-      · exact (by decide : ¬ 84 ∣ 20593) hdiv
-      · exact (by decide : ¬ 85 ∣ 20593) hdiv
-      · exact (by decide : ¬ 86 ∣ 20593) hdiv
-      · exact (by decide : ¬ 87 ∣ 20593) hdiv
-      · exact (by decide : ¬ 88 ∣ 20593) hdiv
-      · exact (by decide : ¬ 89 ∣ 20593) hdiv
-      · exact (by decide : ¬ 90 ∣ 20593) hdiv
-      · exact (by decide : ¬ 91 ∣ 20593) hdiv
-      · exact (by decide : ¬ 92 ∣ 20593) hdiv
-      · exact (by decide : ¬ 93 ∣ 20593) hdiv
-      · exact (by decide : ¬ 94 ∣ 20593) hdiv
-      · exact (by decide : ¬ 95 ∣ 20593) hdiv
-      · exact (by decide : ¬ 96 ∣ 20593) hdiv
-      · exact (by decide : ¬ 97 ∣ 20593) hdiv
-      · exact (by decide : ¬ 98 ∣ 20593) hdiv
-      · exact (by decide : ¬ 99 ∣ 20593) hdiv
-      · exact (by decide : ¬ 100 ∣ 20593) hdiv
-      · exact (by decide : ¬ 101 ∣ 20593) hdiv
-      · exact (by decide : ¬ 102 ∣ 20593) hdiv
-      · exact (by decide : ¬ 103 ∣ 20593) hdiv
-      · exact (by decide : ¬ 104 ∣ 20593) hdiv
-      · exact (by decide : ¬ 105 ∣ 20593) hdiv
-      · exact (by decide : ¬ 106 ∣ 20593) hdiv
-      · exact (by decide : ¬ 107 ∣ 20593) hdiv
-      · exact (by decide : ¬ 108 ∣ 20593) hdiv
-      · exact (by decide : ¬ 109 ∣ 20593) hdiv
-      · exact (by decide : ¬ 110 ∣ 20593) hdiv
-      · exact (by decide : ¬ 111 ∣ 20593) hdiv
-      · exact (by decide : ¬ 112 ∣ 20593) hdiv
-      · exact (by decide : ¬ 113 ∣ 20593) hdiv
-      · exact (by decide : ¬ 114 ∣ 20593) hdiv
-      · exact (by decide : ¬ 115 ∣ 20593) hdiv
-      · exact (by decide : ¬ 116 ∣ 20593) hdiv
-      · exact (by decide : ¬ 117 ∣ 20593) hdiv
-      · exact (by decide : ¬ 118 ∣ 20593) hdiv
-      · exact (by decide : ¬ 119 ∣ 20593) hdiv
-      · exact (by decide : ¬ 120 ∣ 20593) hdiv
-      · exact (by decide : ¬ 121 ∣ 20593) hdiv
-      · exact (by decide : ¬ 122 ∣ 20593) hdiv
-      · exact (by decide : ¬ 123 ∣ 20593) hdiv
-      · exact (by decide : ¬ 124 ∣ 20593) hdiv
-      · exact (by decide : ¬ 125 ∣ 20593) hdiv
-      · exact (by decide : ¬ 126 ∣ 20593) hdiv
-      · exact (by decide : ¬ 127 ∣ 20593) hdiv
-      · exact (by decide : ¬ 128 ∣ 20593) hdiv
-      · exact (by decide : ¬ 129 ∣ 20593) hdiv
-      · exact (by decide : ¬ 130 ∣ 20593) hdiv
-      · exact (by decide : ¬ 131 ∣ 20593) hdiv
-      · exact (by decide : ¬ 132 ∣ 20593) hdiv
-      · exact (by decide : ¬ 133 ∣ 20593) hdiv
-      · exact (by decide : ¬ 134 ∣ 20593) hdiv
-      · exact (by decide : ¬ 135 ∣ 20593) hdiv
-      · exact (by decide : ¬ 136 ∣ 20593) hdiv
-      · exact (by decide : ¬ 137 ∣ 20593) hdiv
-      · exact (by decide : ¬ 138 ∣ 20593) hdiv
-      · exact (by decide : ¬ 139 ∣ 20593) hdiv
-      · exact (by decide : ¬ 140 ∣ 20593) hdiv
-      · exact (by decide : ¬ 141 ∣ 20593) hdiv
-      · exact (by decide : ¬ 142 ∣ 20593) hdiv
-      · exact (by decide : ¬ 143 ∣ 20593) hdiv
-  have hA_factor : (432535 : Nat).factorization 20593 = 0 :=
-    Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 432535)
-  exact primeComponentWitness_of_prime_power_cofactor
-    12 432535 12 2 20593 2985985 1 145 0
-    hq_prime
-    (by decide)
-    (by decide)
-    (by decide)
-    hA_factor
-    (by decide)
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 20593 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 432535)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A432535_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 432535 12 2 := by
@@ -15582,24 +5613,13 @@ theorem concrete_generated_b12_F12_A432535_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A432535_p3_prime_witness :
     PrimeComponentWitness 12 432535 12 3 7 := by
-  refine ⟨(by decide : Nat.Prime 7), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 7 = 1 := by
-      rw [show (430002433 : Nat) = 7 * 61428919 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 7),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 61428919),
-      ]
-    rw [hfactor]
-    have hA_factor : (432535 : Nat).factorization 7 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 432535)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 432535)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A432535_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 432535 12 3 := by
@@ -15634,7 +5654,8 @@ theorem orderOf_b12_mod20613593_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 20613593)ˣ) :
           ZMod 20613593) ^ 12) =
         (1 : ZMod 20613593)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -15673,168 +5694,13 @@ theorem concrete_generated_b12_F12_A3255395_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A3255395_p2_prime_witness :
     PrimeComponentWitness 12 3255395 12 2 20593 := by
-  have hq_prime : Nat.Prime 20593 := by
-    rw [Nat.prime_def_le_sqrt]
-    constructor
-    · decide
-    · intro m hm_ge hm_le hdiv
-      have hm_le143 : m ≤ 143 := by
-        have hsqrt_lt : Nat.sqrt 20593 < 144 :=
-          (Nat.sqrt_lt'.2 (by decide : 20593 < 144 ^ 2))
-        exact Nat.le_of_lt_succ (lt_of_le_of_lt hm_le hsqrt_lt)
-      interval_cases m
-      · exact (by decide : ¬ 2 ∣ 20593) hdiv
-      · exact (by decide : ¬ 3 ∣ 20593) hdiv
-      · exact (by decide : ¬ 4 ∣ 20593) hdiv
-      · exact (by decide : ¬ 5 ∣ 20593) hdiv
-      · exact (by decide : ¬ 6 ∣ 20593) hdiv
-      · exact (by decide : ¬ 7 ∣ 20593) hdiv
-      · exact (by decide : ¬ 8 ∣ 20593) hdiv
-      · exact (by decide : ¬ 9 ∣ 20593) hdiv
-      · exact (by decide : ¬ 10 ∣ 20593) hdiv
-      · exact (by decide : ¬ 11 ∣ 20593) hdiv
-      · exact (by decide : ¬ 12 ∣ 20593) hdiv
-      · exact (by decide : ¬ 13 ∣ 20593) hdiv
-      · exact (by decide : ¬ 14 ∣ 20593) hdiv
-      · exact (by decide : ¬ 15 ∣ 20593) hdiv
-      · exact (by decide : ¬ 16 ∣ 20593) hdiv
-      · exact (by decide : ¬ 17 ∣ 20593) hdiv
-      · exact (by decide : ¬ 18 ∣ 20593) hdiv
-      · exact (by decide : ¬ 19 ∣ 20593) hdiv
-      · exact (by decide : ¬ 20 ∣ 20593) hdiv
-      · exact (by decide : ¬ 21 ∣ 20593) hdiv
-      · exact (by decide : ¬ 22 ∣ 20593) hdiv
-      · exact (by decide : ¬ 23 ∣ 20593) hdiv
-      · exact (by decide : ¬ 24 ∣ 20593) hdiv
-      · exact (by decide : ¬ 25 ∣ 20593) hdiv
-      · exact (by decide : ¬ 26 ∣ 20593) hdiv
-      · exact (by decide : ¬ 27 ∣ 20593) hdiv
-      · exact (by decide : ¬ 28 ∣ 20593) hdiv
-      · exact (by decide : ¬ 29 ∣ 20593) hdiv
-      · exact (by decide : ¬ 30 ∣ 20593) hdiv
-      · exact (by decide : ¬ 31 ∣ 20593) hdiv
-      · exact (by decide : ¬ 32 ∣ 20593) hdiv
-      · exact (by decide : ¬ 33 ∣ 20593) hdiv
-      · exact (by decide : ¬ 34 ∣ 20593) hdiv
-      · exact (by decide : ¬ 35 ∣ 20593) hdiv
-      · exact (by decide : ¬ 36 ∣ 20593) hdiv
-      · exact (by decide : ¬ 37 ∣ 20593) hdiv
-      · exact (by decide : ¬ 38 ∣ 20593) hdiv
-      · exact (by decide : ¬ 39 ∣ 20593) hdiv
-      · exact (by decide : ¬ 40 ∣ 20593) hdiv
-      · exact (by decide : ¬ 41 ∣ 20593) hdiv
-      · exact (by decide : ¬ 42 ∣ 20593) hdiv
-      · exact (by decide : ¬ 43 ∣ 20593) hdiv
-      · exact (by decide : ¬ 44 ∣ 20593) hdiv
-      · exact (by decide : ¬ 45 ∣ 20593) hdiv
-      · exact (by decide : ¬ 46 ∣ 20593) hdiv
-      · exact (by decide : ¬ 47 ∣ 20593) hdiv
-      · exact (by decide : ¬ 48 ∣ 20593) hdiv
-      · exact (by decide : ¬ 49 ∣ 20593) hdiv
-      · exact (by decide : ¬ 50 ∣ 20593) hdiv
-      · exact (by decide : ¬ 51 ∣ 20593) hdiv
-      · exact (by decide : ¬ 52 ∣ 20593) hdiv
-      · exact (by decide : ¬ 53 ∣ 20593) hdiv
-      · exact (by decide : ¬ 54 ∣ 20593) hdiv
-      · exact (by decide : ¬ 55 ∣ 20593) hdiv
-      · exact (by decide : ¬ 56 ∣ 20593) hdiv
-      · exact (by decide : ¬ 57 ∣ 20593) hdiv
-      · exact (by decide : ¬ 58 ∣ 20593) hdiv
-      · exact (by decide : ¬ 59 ∣ 20593) hdiv
-      · exact (by decide : ¬ 60 ∣ 20593) hdiv
-      · exact (by decide : ¬ 61 ∣ 20593) hdiv
-      · exact (by decide : ¬ 62 ∣ 20593) hdiv
-      · exact (by decide : ¬ 63 ∣ 20593) hdiv
-      · exact (by decide : ¬ 64 ∣ 20593) hdiv
-      · exact (by decide : ¬ 65 ∣ 20593) hdiv
-      · exact (by decide : ¬ 66 ∣ 20593) hdiv
-      · exact (by decide : ¬ 67 ∣ 20593) hdiv
-      · exact (by decide : ¬ 68 ∣ 20593) hdiv
-      · exact (by decide : ¬ 69 ∣ 20593) hdiv
-      · exact (by decide : ¬ 70 ∣ 20593) hdiv
-      · exact (by decide : ¬ 71 ∣ 20593) hdiv
-      · exact (by decide : ¬ 72 ∣ 20593) hdiv
-      · exact (by decide : ¬ 73 ∣ 20593) hdiv
-      · exact (by decide : ¬ 74 ∣ 20593) hdiv
-      · exact (by decide : ¬ 75 ∣ 20593) hdiv
-      · exact (by decide : ¬ 76 ∣ 20593) hdiv
-      · exact (by decide : ¬ 77 ∣ 20593) hdiv
-      · exact (by decide : ¬ 78 ∣ 20593) hdiv
-      · exact (by decide : ¬ 79 ∣ 20593) hdiv
-      · exact (by decide : ¬ 80 ∣ 20593) hdiv
-      · exact (by decide : ¬ 81 ∣ 20593) hdiv
-      · exact (by decide : ¬ 82 ∣ 20593) hdiv
-      · exact (by decide : ¬ 83 ∣ 20593) hdiv
-      · exact (by decide : ¬ 84 ∣ 20593) hdiv
-      · exact (by decide : ¬ 85 ∣ 20593) hdiv
-      · exact (by decide : ¬ 86 ∣ 20593) hdiv
-      · exact (by decide : ¬ 87 ∣ 20593) hdiv
-      · exact (by decide : ¬ 88 ∣ 20593) hdiv
-      · exact (by decide : ¬ 89 ∣ 20593) hdiv
-      · exact (by decide : ¬ 90 ∣ 20593) hdiv
-      · exact (by decide : ¬ 91 ∣ 20593) hdiv
-      · exact (by decide : ¬ 92 ∣ 20593) hdiv
-      · exact (by decide : ¬ 93 ∣ 20593) hdiv
-      · exact (by decide : ¬ 94 ∣ 20593) hdiv
-      · exact (by decide : ¬ 95 ∣ 20593) hdiv
-      · exact (by decide : ¬ 96 ∣ 20593) hdiv
-      · exact (by decide : ¬ 97 ∣ 20593) hdiv
-      · exact (by decide : ¬ 98 ∣ 20593) hdiv
-      · exact (by decide : ¬ 99 ∣ 20593) hdiv
-      · exact (by decide : ¬ 100 ∣ 20593) hdiv
-      · exact (by decide : ¬ 101 ∣ 20593) hdiv
-      · exact (by decide : ¬ 102 ∣ 20593) hdiv
-      · exact (by decide : ¬ 103 ∣ 20593) hdiv
-      · exact (by decide : ¬ 104 ∣ 20593) hdiv
-      · exact (by decide : ¬ 105 ∣ 20593) hdiv
-      · exact (by decide : ¬ 106 ∣ 20593) hdiv
-      · exact (by decide : ¬ 107 ∣ 20593) hdiv
-      · exact (by decide : ¬ 108 ∣ 20593) hdiv
-      · exact (by decide : ¬ 109 ∣ 20593) hdiv
-      · exact (by decide : ¬ 110 ∣ 20593) hdiv
-      · exact (by decide : ¬ 111 ∣ 20593) hdiv
-      · exact (by decide : ¬ 112 ∣ 20593) hdiv
-      · exact (by decide : ¬ 113 ∣ 20593) hdiv
-      · exact (by decide : ¬ 114 ∣ 20593) hdiv
-      · exact (by decide : ¬ 115 ∣ 20593) hdiv
-      · exact (by decide : ¬ 116 ∣ 20593) hdiv
-      · exact (by decide : ¬ 117 ∣ 20593) hdiv
-      · exact (by decide : ¬ 118 ∣ 20593) hdiv
-      · exact (by decide : ¬ 119 ∣ 20593) hdiv
-      · exact (by decide : ¬ 120 ∣ 20593) hdiv
-      · exact (by decide : ¬ 121 ∣ 20593) hdiv
-      · exact (by decide : ¬ 122 ∣ 20593) hdiv
-      · exact (by decide : ¬ 123 ∣ 20593) hdiv
-      · exact (by decide : ¬ 124 ∣ 20593) hdiv
-      · exact (by decide : ¬ 125 ∣ 20593) hdiv
-      · exact (by decide : ¬ 126 ∣ 20593) hdiv
-      · exact (by decide : ¬ 127 ∣ 20593) hdiv
-      · exact (by decide : ¬ 128 ∣ 20593) hdiv
-      · exact (by decide : ¬ 129 ∣ 20593) hdiv
-      · exact (by decide : ¬ 130 ∣ 20593) hdiv
-      · exact (by decide : ¬ 131 ∣ 20593) hdiv
-      · exact (by decide : ¬ 132 ∣ 20593) hdiv
-      · exact (by decide : ¬ 133 ∣ 20593) hdiv
-      · exact (by decide : ¬ 134 ∣ 20593) hdiv
-      · exact (by decide : ¬ 135 ∣ 20593) hdiv
-      · exact (by decide : ¬ 136 ∣ 20593) hdiv
-      · exact (by decide : ¬ 137 ∣ 20593) hdiv
-      · exact (by decide : ¬ 138 ∣ 20593) hdiv
-      · exact (by decide : ¬ 139 ∣ 20593) hdiv
-      · exact (by decide : ¬ 140 ∣ 20593) hdiv
-      · exact (by decide : ¬ 141 ∣ 20593) hdiv
-      · exact (by decide : ¬ 142 ∣ 20593) hdiv
-      · exact (by decide : ¬ 143 ∣ 20593) hdiv
-  have hA_factor : (3255395 : Nat).factorization 20593 = 0 :=
-    Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 3255395)
-  exact primeComponentWitness_of_prime_power_cofactor
-    12 3255395 12 2 20593 2985985 1 145 0
-    hq_prime
-    (by decide)
-    (by decide)
-    (by decide)
-    hA_factor
-    (by decide)
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 20593 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 3255395)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A3255395_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 3255395 12 2 := by
@@ -15842,24 +5708,13 @@ theorem concrete_generated_b12_F12_A3255395_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A3255395_p3_prime_witness :
     PrimeComponentWitness 12 3255395 12 3 7 := by
-  refine ⟨(by decide : Nat.Prime 7), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 7 = 1 := by
-      rw [show (430002433 : Nat) = 7 * 61428919 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 7),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 61428919),
-      ]
-    rw [hfactor]
-    have hA_factor : (3255395 : Nat).factorization 7 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 3255395)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 3255395)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A3255395_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 3255395 12 3 := by
@@ -15894,7 +5749,8 @@ theorem orderOf_b12_mod2738869_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 2738869)ˣ) :
           ZMod 2738869) ^ 12) =
         (1 : ZMod 2738869)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -15933,168 +5789,13 @@ theorem concrete_generated_b12_F12_A4757885_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A4757885_p2_prime_witness :
     PrimeComponentWitness 12 4757885 12 2 20593 := by
-  have hq_prime : Nat.Prime 20593 := by
-    rw [Nat.prime_def_le_sqrt]
-    constructor
-    · decide
-    · intro m hm_ge hm_le hdiv
-      have hm_le143 : m ≤ 143 := by
-        have hsqrt_lt : Nat.sqrt 20593 < 144 :=
-          (Nat.sqrt_lt'.2 (by decide : 20593 < 144 ^ 2))
-        exact Nat.le_of_lt_succ (lt_of_le_of_lt hm_le hsqrt_lt)
-      interval_cases m
-      · exact (by decide : ¬ 2 ∣ 20593) hdiv
-      · exact (by decide : ¬ 3 ∣ 20593) hdiv
-      · exact (by decide : ¬ 4 ∣ 20593) hdiv
-      · exact (by decide : ¬ 5 ∣ 20593) hdiv
-      · exact (by decide : ¬ 6 ∣ 20593) hdiv
-      · exact (by decide : ¬ 7 ∣ 20593) hdiv
-      · exact (by decide : ¬ 8 ∣ 20593) hdiv
-      · exact (by decide : ¬ 9 ∣ 20593) hdiv
-      · exact (by decide : ¬ 10 ∣ 20593) hdiv
-      · exact (by decide : ¬ 11 ∣ 20593) hdiv
-      · exact (by decide : ¬ 12 ∣ 20593) hdiv
-      · exact (by decide : ¬ 13 ∣ 20593) hdiv
-      · exact (by decide : ¬ 14 ∣ 20593) hdiv
-      · exact (by decide : ¬ 15 ∣ 20593) hdiv
-      · exact (by decide : ¬ 16 ∣ 20593) hdiv
-      · exact (by decide : ¬ 17 ∣ 20593) hdiv
-      · exact (by decide : ¬ 18 ∣ 20593) hdiv
-      · exact (by decide : ¬ 19 ∣ 20593) hdiv
-      · exact (by decide : ¬ 20 ∣ 20593) hdiv
-      · exact (by decide : ¬ 21 ∣ 20593) hdiv
-      · exact (by decide : ¬ 22 ∣ 20593) hdiv
-      · exact (by decide : ¬ 23 ∣ 20593) hdiv
-      · exact (by decide : ¬ 24 ∣ 20593) hdiv
-      · exact (by decide : ¬ 25 ∣ 20593) hdiv
-      · exact (by decide : ¬ 26 ∣ 20593) hdiv
-      · exact (by decide : ¬ 27 ∣ 20593) hdiv
-      · exact (by decide : ¬ 28 ∣ 20593) hdiv
-      · exact (by decide : ¬ 29 ∣ 20593) hdiv
-      · exact (by decide : ¬ 30 ∣ 20593) hdiv
-      · exact (by decide : ¬ 31 ∣ 20593) hdiv
-      · exact (by decide : ¬ 32 ∣ 20593) hdiv
-      · exact (by decide : ¬ 33 ∣ 20593) hdiv
-      · exact (by decide : ¬ 34 ∣ 20593) hdiv
-      · exact (by decide : ¬ 35 ∣ 20593) hdiv
-      · exact (by decide : ¬ 36 ∣ 20593) hdiv
-      · exact (by decide : ¬ 37 ∣ 20593) hdiv
-      · exact (by decide : ¬ 38 ∣ 20593) hdiv
-      · exact (by decide : ¬ 39 ∣ 20593) hdiv
-      · exact (by decide : ¬ 40 ∣ 20593) hdiv
-      · exact (by decide : ¬ 41 ∣ 20593) hdiv
-      · exact (by decide : ¬ 42 ∣ 20593) hdiv
-      · exact (by decide : ¬ 43 ∣ 20593) hdiv
-      · exact (by decide : ¬ 44 ∣ 20593) hdiv
-      · exact (by decide : ¬ 45 ∣ 20593) hdiv
-      · exact (by decide : ¬ 46 ∣ 20593) hdiv
-      · exact (by decide : ¬ 47 ∣ 20593) hdiv
-      · exact (by decide : ¬ 48 ∣ 20593) hdiv
-      · exact (by decide : ¬ 49 ∣ 20593) hdiv
-      · exact (by decide : ¬ 50 ∣ 20593) hdiv
-      · exact (by decide : ¬ 51 ∣ 20593) hdiv
-      · exact (by decide : ¬ 52 ∣ 20593) hdiv
-      · exact (by decide : ¬ 53 ∣ 20593) hdiv
-      · exact (by decide : ¬ 54 ∣ 20593) hdiv
-      · exact (by decide : ¬ 55 ∣ 20593) hdiv
-      · exact (by decide : ¬ 56 ∣ 20593) hdiv
-      · exact (by decide : ¬ 57 ∣ 20593) hdiv
-      · exact (by decide : ¬ 58 ∣ 20593) hdiv
-      · exact (by decide : ¬ 59 ∣ 20593) hdiv
-      · exact (by decide : ¬ 60 ∣ 20593) hdiv
-      · exact (by decide : ¬ 61 ∣ 20593) hdiv
-      · exact (by decide : ¬ 62 ∣ 20593) hdiv
-      · exact (by decide : ¬ 63 ∣ 20593) hdiv
-      · exact (by decide : ¬ 64 ∣ 20593) hdiv
-      · exact (by decide : ¬ 65 ∣ 20593) hdiv
-      · exact (by decide : ¬ 66 ∣ 20593) hdiv
-      · exact (by decide : ¬ 67 ∣ 20593) hdiv
-      · exact (by decide : ¬ 68 ∣ 20593) hdiv
-      · exact (by decide : ¬ 69 ∣ 20593) hdiv
-      · exact (by decide : ¬ 70 ∣ 20593) hdiv
-      · exact (by decide : ¬ 71 ∣ 20593) hdiv
-      · exact (by decide : ¬ 72 ∣ 20593) hdiv
-      · exact (by decide : ¬ 73 ∣ 20593) hdiv
-      · exact (by decide : ¬ 74 ∣ 20593) hdiv
-      · exact (by decide : ¬ 75 ∣ 20593) hdiv
-      · exact (by decide : ¬ 76 ∣ 20593) hdiv
-      · exact (by decide : ¬ 77 ∣ 20593) hdiv
-      · exact (by decide : ¬ 78 ∣ 20593) hdiv
-      · exact (by decide : ¬ 79 ∣ 20593) hdiv
-      · exact (by decide : ¬ 80 ∣ 20593) hdiv
-      · exact (by decide : ¬ 81 ∣ 20593) hdiv
-      · exact (by decide : ¬ 82 ∣ 20593) hdiv
-      · exact (by decide : ¬ 83 ∣ 20593) hdiv
-      · exact (by decide : ¬ 84 ∣ 20593) hdiv
-      · exact (by decide : ¬ 85 ∣ 20593) hdiv
-      · exact (by decide : ¬ 86 ∣ 20593) hdiv
-      · exact (by decide : ¬ 87 ∣ 20593) hdiv
-      · exact (by decide : ¬ 88 ∣ 20593) hdiv
-      · exact (by decide : ¬ 89 ∣ 20593) hdiv
-      · exact (by decide : ¬ 90 ∣ 20593) hdiv
-      · exact (by decide : ¬ 91 ∣ 20593) hdiv
-      · exact (by decide : ¬ 92 ∣ 20593) hdiv
-      · exact (by decide : ¬ 93 ∣ 20593) hdiv
-      · exact (by decide : ¬ 94 ∣ 20593) hdiv
-      · exact (by decide : ¬ 95 ∣ 20593) hdiv
-      · exact (by decide : ¬ 96 ∣ 20593) hdiv
-      · exact (by decide : ¬ 97 ∣ 20593) hdiv
-      · exact (by decide : ¬ 98 ∣ 20593) hdiv
-      · exact (by decide : ¬ 99 ∣ 20593) hdiv
-      · exact (by decide : ¬ 100 ∣ 20593) hdiv
-      · exact (by decide : ¬ 101 ∣ 20593) hdiv
-      · exact (by decide : ¬ 102 ∣ 20593) hdiv
-      · exact (by decide : ¬ 103 ∣ 20593) hdiv
-      · exact (by decide : ¬ 104 ∣ 20593) hdiv
-      · exact (by decide : ¬ 105 ∣ 20593) hdiv
-      · exact (by decide : ¬ 106 ∣ 20593) hdiv
-      · exact (by decide : ¬ 107 ∣ 20593) hdiv
-      · exact (by decide : ¬ 108 ∣ 20593) hdiv
-      · exact (by decide : ¬ 109 ∣ 20593) hdiv
-      · exact (by decide : ¬ 110 ∣ 20593) hdiv
-      · exact (by decide : ¬ 111 ∣ 20593) hdiv
-      · exact (by decide : ¬ 112 ∣ 20593) hdiv
-      · exact (by decide : ¬ 113 ∣ 20593) hdiv
-      · exact (by decide : ¬ 114 ∣ 20593) hdiv
-      · exact (by decide : ¬ 115 ∣ 20593) hdiv
-      · exact (by decide : ¬ 116 ∣ 20593) hdiv
-      · exact (by decide : ¬ 117 ∣ 20593) hdiv
-      · exact (by decide : ¬ 118 ∣ 20593) hdiv
-      · exact (by decide : ¬ 119 ∣ 20593) hdiv
-      · exact (by decide : ¬ 120 ∣ 20593) hdiv
-      · exact (by decide : ¬ 121 ∣ 20593) hdiv
-      · exact (by decide : ¬ 122 ∣ 20593) hdiv
-      · exact (by decide : ¬ 123 ∣ 20593) hdiv
-      · exact (by decide : ¬ 124 ∣ 20593) hdiv
-      · exact (by decide : ¬ 125 ∣ 20593) hdiv
-      · exact (by decide : ¬ 126 ∣ 20593) hdiv
-      · exact (by decide : ¬ 127 ∣ 20593) hdiv
-      · exact (by decide : ¬ 128 ∣ 20593) hdiv
-      · exact (by decide : ¬ 129 ∣ 20593) hdiv
-      · exact (by decide : ¬ 130 ∣ 20593) hdiv
-      · exact (by decide : ¬ 131 ∣ 20593) hdiv
-      · exact (by decide : ¬ 132 ∣ 20593) hdiv
-      · exact (by decide : ¬ 133 ∣ 20593) hdiv
-      · exact (by decide : ¬ 134 ∣ 20593) hdiv
-      · exact (by decide : ¬ 135 ∣ 20593) hdiv
-      · exact (by decide : ¬ 136 ∣ 20593) hdiv
-      · exact (by decide : ¬ 137 ∣ 20593) hdiv
-      · exact (by decide : ¬ 138 ∣ 20593) hdiv
-      · exact (by decide : ¬ 139 ∣ 20593) hdiv
-      · exact (by decide : ¬ 140 ∣ 20593) hdiv
-      · exact (by decide : ¬ 141 ∣ 20593) hdiv
-      · exact (by decide : ¬ 142 ∣ 20593) hdiv
-      · exact (by decide : ¬ 143 ∣ 20593) hdiv
-  have hA_factor : (4757885 : Nat).factorization 20593 = 0 :=
-    Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 4757885)
-  exact primeComponentWitness_of_prime_power_cofactor
-    12 4757885 12 2 20593 2985985 1 145 0
-    hq_prime
-    (by decide)
-    (by decide)
-    (by decide)
-    hA_factor
-    (by decide)
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 20593 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 4757885)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A4757885_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 4757885 12 2 := by
@@ -16102,24 +5803,13 @@ theorem concrete_generated_b12_F12_A4757885_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A4757885_p3_prime_witness :
     PrimeComponentWitness 12 4757885 12 3 7 := by
-  refine ⟨(by decide : Nat.Prime 7), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 7 = 1 := by
-      rw [show (430002433 : Nat) = 7 * 61428919 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 7),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 61428919),
-      ]
-    rw [hfactor]
-    have hA_factor : (4757885 : Nat).factorization 7 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 4757885)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 4757885)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A4757885_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 4757885 12 3 := by
@@ -16154,7 +5844,8 @@ theorem orderOf_b12_mod1873963_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 1873963)ˣ) :
           ZMod 1873963) ^ 12) =
         (1 : ZMod 1873963)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -16193,168 +5884,13 @@ theorem concrete_generated_b12_F12_A5622955_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A5622955_p2_prime_witness :
     PrimeComponentWitness 12 5622955 12 2 20593 := by
-  have hq_prime : Nat.Prime 20593 := by
-    rw [Nat.prime_def_le_sqrt]
-    constructor
-    · decide
-    · intro m hm_ge hm_le hdiv
-      have hm_le143 : m ≤ 143 := by
-        have hsqrt_lt : Nat.sqrt 20593 < 144 :=
-          (Nat.sqrt_lt'.2 (by decide : 20593 < 144 ^ 2))
-        exact Nat.le_of_lt_succ (lt_of_le_of_lt hm_le hsqrt_lt)
-      interval_cases m
-      · exact (by decide : ¬ 2 ∣ 20593) hdiv
-      · exact (by decide : ¬ 3 ∣ 20593) hdiv
-      · exact (by decide : ¬ 4 ∣ 20593) hdiv
-      · exact (by decide : ¬ 5 ∣ 20593) hdiv
-      · exact (by decide : ¬ 6 ∣ 20593) hdiv
-      · exact (by decide : ¬ 7 ∣ 20593) hdiv
-      · exact (by decide : ¬ 8 ∣ 20593) hdiv
-      · exact (by decide : ¬ 9 ∣ 20593) hdiv
-      · exact (by decide : ¬ 10 ∣ 20593) hdiv
-      · exact (by decide : ¬ 11 ∣ 20593) hdiv
-      · exact (by decide : ¬ 12 ∣ 20593) hdiv
-      · exact (by decide : ¬ 13 ∣ 20593) hdiv
-      · exact (by decide : ¬ 14 ∣ 20593) hdiv
-      · exact (by decide : ¬ 15 ∣ 20593) hdiv
-      · exact (by decide : ¬ 16 ∣ 20593) hdiv
-      · exact (by decide : ¬ 17 ∣ 20593) hdiv
-      · exact (by decide : ¬ 18 ∣ 20593) hdiv
-      · exact (by decide : ¬ 19 ∣ 20593) hdiv
-      · exact (by decide : ¬ 20 ∣ 20593) hdiv
-      · exact (by decide : ¬ 21 ∣ 20593) hdiv
-      · exact (by decide : ¬ 22 ∣ 20593) hdiv
-      · exact (by decide : ¬ 23 ∣ 20593) hdiv
-      · exact (by decide : ¬ 24 ∣ 20593) hdiv
-      · exact (by decide : ¬ 25 ∣ 20593) hdiv
-      · exact (by decide : ¬ 26 ∣ 20593) hdiv
-      · exact (by decide : ¬ 27 ∣ 20593) hdiv
-      · exact (by decide : ¬ 28 ∣ 20593) hdiv
-      · exact (by decide : ¬ 29 ∣ 20593) hdiv
-      · exact (by decide : ¬ 30 ∣ 20593) hdiv
-      · exact (by decide : ¬ 31 ∣ 20593) hdiv
-      · exact (by decide : ¬ 32 ∣ 20593) hdiv
-      · exact (by decide : ¬ 33 ∣ 20593) hdiv
-      · exact (by decide : ¬ 34 ∣ 20593) hdiv
-      · exact (by decide : ¬ 35 ∣ 20593) hdiv
-      · exact (by decide : ¬ 36 ∣ 20593) hdiv
-      · exact (by decide : ¬ 37 ∣ 20593) hdiv
-      · exact (by decide : ¬ 38 ∣ 20593) hdiv
-      · exact (by decide : ¬ 39 ∣ 20593) hdiv
-      · exact (by decide : ¬ 40 ∣ 20593) hdiv
-      · exact (by decide : ¬ 41 ∣ 20593) hdiv
-      · exact (by decide : ¬ 42 ∣ 20593) hdiv
-      · exact (by decide : ¬ 43 ∣ 20593) hdiv
-      · exact (by decide : ¬ 44 ∣ 20593) hdiv
-      · exact (by decide : ¬ 45 ∣ 20593) hdiv
-      · exact (by decide : ¬ 46 ∣ 20593) hdiv
-      · exact (by decide : ¬ 47 ∣ 20593) hdiv
-      · exact (by decide : ¬ 48 ∣ 20593) hdiv
-      · exact (by decide : ¬ 49 ∣ 20593) hdiv
-      · exact (by decide : ¬ 50 ∣ 20593) hdiv
-      · exact (by decide : ¬ 51 ∣ 20593) hdiv
-      · exact (by decide : ¬ 52 ∣ 20593) hdiv
-      · exact (by decide : ¬ 53 ∣ 20593) hdiv
-      · exact (by decide : ¬ 54 ∣ 20593) hdiv
-      · exact (by decide : ¬ 55 ∣ 20593) hdiv
-      · exact (by decide : ¬ 56 ∣ 20593) hdiv
-      · exact (by decide : ¬ 57 ∣ 20593) hdiv
-      · exact (by decide : ¬ 58 ∣ 20593) hdiv
-      · exact (by decide : ¬ 59 ∣ 20593) hdiv
-      · exact (by decide : ¬ 60 ∣ 20593) hdiv
-      · exact (by decide : ¬ 61 ∣ 20593) hdiv
-      · exact (by decide : ¬ 62 ∣ 20593) hdiv
-      · exact (by decide : ¬ 63 ∣ 20593) hdiv
-      · exact (by decide : ¬ 64 ∣ 20593) hdiv
-      · exact (by decide : ¬ 65 ∣ 20593) hdiv
-      · exact (by decide : ¬ 66 ∣ 20593) hdiv
-      · exact (by decide : ¬ 67 ∣ 20593) hdiv
-      · exact (by decide : ¬ 68 ∣ 20593) hdiv
-      · exact (by decide : ¬ 69 ∣ 20593) hdiv
-      · exact (by decide : ¬ 70 ∣ 20593) hdiv
-      · exact (by decide : ¬ 71 ∣ 20593) hdiv
-      · exact (by decide : ¬ 72 ∣ 20593) hdiv
-      · exact (by decide : ¬ 73 ∣ 20593) hdiv
-      · exact (by decide : ¬ 74 ∣ 20593) hdiv
-      · exact (by decide : ¬ 75 ∣ 20593) hdiv
-      · exact (by decide : ¬ 76 ∣ 20593) hdiv
-      · exact (by decide : ¬ 77 ∣ 20593) hdiv
-      · exact (by decide : ¬ 78 ∣ 20593) hdiv
-      · exact (by decide : ¬ 79 ∣ 20593) hdiv
-      · exact (by decide : ¬ 80 ∣ 20593) hdiv
-      · exact (by decide : ¬ 81 ∣ 20593) hdiv
-      · exact (by decide : ¬ 82 ∣ 20593) hdiv
-      · exact (by decide : ¬ 83 ∣ 20593) hdiv
-      · exact (by decide : ¬ 84 ∣ 20593) hdiv
-      · exact (by decide : ¬ 85 ∣ 20593) hdiv
-      · exact (by decide : ¬ 86 ∣ 20593) hdiv
-      · exact (by decide : ¬ 87 ∣ 20593) hdiv
-      · exact (by decide : ¬ 88 ∣ 20593) hdiv
-      · exact (by decide : ¬ 89 ∣ 20593) hdiv
-      · exact (by decide : ¬ 90 ∣ 20593) hdiv
-      · exact (by decide : ¬ 91 ∣ 20593) hdiv
-      · exact (by decide : ¬ 92 ∣ 20593) hdiv
-      · exact (by decide : ¬ 93 ∣ 20593) hdiv
-      · exact (by decide : ¬ 94 ∣ 20593) hdiv
-      · exact (by decide : ¬ 95 ∣ 20593) hdiv
-      · exact (by decide : ¬ 96 ∣ 20593) hdiv
-      · exact (by decide : ¬ 97 ∣ 20593) hdiv
-      · exact (by decide : ¬ 98 ∣ 20593) hdiv
-      · exact (by decide : ¬ 99 ∣ 20593) hdiv
-      · exact (by decide : ¬ 100 ∣ 20593) hdiv
-      · exact (by decide : ¬ 101 ∣ 20593) hdiv
-      · exact (by decide : ¬ 102 ∣ 20593) hdiv
-      · exact (by decide : ¬ 103 ∣ 20593) hdiv
-      · exact (by decide : ¬ 104 ∣ 20593) hdiv
-      · exact (by decide : ¬ 105 ∣ 20593) hdiv
-      · exact (by decide : ¬ 106 ∣ 20593) hdiv
-      · exact (by decide : ¬ 107 ∣ 20593) hdiv
-      · exact (by decide : ¬ 108 ∣ 20593) hdiv
-      · exact (by decide : ¬ 109 ∣ 20593) hdiv
-      · exact (by decide : ¬ 110 ∣ 20593) hdiv
-      · exact (by decide : ¬ 111 ∣ 20593) hdiv
-      · exact (by decide : ¬ 112 ∣ 20593) hdiv
-      · exact (by decide : ¬ 113 ∣ 20593) hdiv
-      · exact (by decide : ¬ 114 ∣ 20593) hdiv
-      · exact (by decide : ¬ 115 ∣ 20593) hdiv
-      · exact (by decide : ¬ 116 ∣ 20593) hdiv
-      · exact (by decide : ¬ 117 ∣ 20593) hdiv
-      · exact (by decide : ¬ 118 ∣ 20593) hdiv
-      · exact (by decide : ¬ 119 ∣ 20593) hdiv
-      · exact (by decide : ¬ 120 ∣ 20593) hdiv
-      · exact (by decide : ¬ 121 ∣ 20593) hdiv
-      · exact (by decide : ¬ 122 ∣ 20593) hdiv
-      · exact (by decide : ¬ 123 ∣ 20593) hdiv
-      · exact (by decide : ¬ 124 ∣ 20593) hdiv
-      · exact (by decide : ¬ 125 ∣ 20593) hdiv
-      · exact (by decide : ¬ 126 ∣ 20593) hdiv
-      · exact (by decide : ¬ 127 ∣ 20593) hdiv
-      · exact (by decide : ¬ 128 ∣ 20593) hdiv
-      · exact (by decide : ¬ 129 ∣ 20593) hdiv
-      · exact (by decide : ¬ 130 ∣ 20593) hdiv
-      · exact (by decide : ¬ 131 ∣ 20593) hdiv
-      · exact (by decide : ¬ 132 ∣ 20593) hdiv
-      · exact (by decide : ¬ 133 ∣ 20593) hdiv
-      · exact (by decide : ¬ 134 ∣ 20593) hdiv
-      · exact (by decide : ¬ 135 ∣ 20593) hdiv
-      · exact (by decide : ¬ 136 ∣ 20593) hdiv
-      · exact (by decide : ¬ 137 ∣ 20593) hdiv
-      · exact (by decide : ¬ 138 ∣ 20593) hdiv
-      · exact (by decide : ¬ 139 ∣ 20593) hdiv
-      · exact (by decide : ¬ 140 ∣ 20593) hdiv
-      · exact (by decide : ¬ 141 ∣ 20593) hdiv
-      · exact (by decide : ¬ 142 ∣ 20593) hdiv
-      · exact (by decide : ¬ 143 ∣ 20593) hdiv
-  have hA_factor : (5622955 : Nat).factorization 20593 = 0 :=
-    Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 5622955)
-  exact primeComponentWitness_of_prime_power_cofactor
-    12 5622955 12 2 20593 2985985 1 145 0
-    hq_prime
-    (by decide)
-    (by decide)
-    (by decide)
-    hA_factor
-    (by decide)
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 20593 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 20593 ∣ 5622955)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A5622955_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 5622955 12 2 := by
@@ -16362,24 +5898,13 @@ theorem concrete_generated_b12_F12_A5622955_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A5622955_p3_prime_witness :
     PrimeComponentWitness 12 5622955 12 3 7 := by
-  refine ⟨(by decide : Nat.Prime 7), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 7 = 1 := by
-      rw [show (430002433 : Nat) = 7 * 61428919 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 7),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 61428919),
-      ]
-    rw [hfactor]
-    have hA_factor : (5622955 : Nat).factorization 7 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 5622955)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 5622955)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A5622955_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 5622955 12 3 := by
@@ -16414,7 +5939,8 @@ theorem orderOf_b12_mod1585661_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 1585661)ˣ) :
           ZMod 1585661) ^ 12) =
         (1 : ZMod 1585661)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -16453,24 +5979,13 @@ theorem concrete_generated_b12_F12_A665_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A665_p2_prime_witness :
     PrimeComponentWitness 12 665 12 2 29 := by
-  refine ⟨(by decide : Nat.Prime 29), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 29 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 29 = 1 := by
-      rw [show (2985985 : Nat) = 29 * 102965 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 29),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 102965),
-      ]
-    rw [hfactor]
-    have hA_factor : (665 : Nat).factorization 29 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 665)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 665)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A665_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 665 12 2 := by
@@ -16479,24 +5994,13 @@ theorem concrete_generated_b12_F12_A665_p2_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b12_F12_A665_p3_prime_witness :
     PrimeComponentWitness 12 665 12 3 157 := by
-  refine ⟨(by decide : Nat.Prime 157), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 157 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 157 = 1 := by
-      rw [show (430002433 : Nat) = 157 * 2738869 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 157),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 2738869),
-      ]
-    rw [hfactor]
-    have hA_factor : (665 : Nat).factorization 157 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 665)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 665)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A665_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 665 12 3 := by
@@ -16531,7 +6035,8 @@ theorem orderOf_b12_mod13407669847_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 13407669847)ˣ) :
           ZMod 13407669847) ^ 12) =
         (1 : ZMod 13407669847)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -16570,24 +6075,13 @@ theorem concrete_generated_b12_F12_A7315_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A7315_p2_prime_witness :
     PrimeComponentWitness 12 7315 12 2 29 := by
-  refine ⟨(by decide : Nat.Prime 29), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 29 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 29 = 1 := by
-      rw [show (2985985 : Nat) = 29 * 102965 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 29),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 102965),
-      ]
-    rw [hfactor]
-    have hA_factor : (7315 : Nat).factorization 29 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 7315)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 7315)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A7315_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 7315 12 2 := by
@@ -16596,24 +6090,13 @@ theorem concrete_generated_b12_F12_A7315_p2_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b12_F12_A7315_p3_prime_witness :
     PrimeComponentWitness 12 7315 12 3 157 := by
-  refine ⟨(by decide : Nat.Prime 157), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 157 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 157 = 1 := by
-      rw [show (430002433 : Nat) = 157 * 2738869 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 157),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 2738869),
-      ]
-    rw [hfactor]
-    have hA_factor : (7315 : Nat).factorization 157 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 7315)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 7315)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A7315_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 7315 12 3 := by
@@ -16648,7 +6131,8 @@ theorem orderOf_b12_mod1218879077_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 1218879077)ˣ) :
           ZMod 1218879077) ^ 12) =
         (1 : ZMod 1218879077)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -16687,24 +6171,13 @@ theorem concrete_generated_b12_F12_A8645_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A8645_p2_prime_witness :
     PrimeComponentWitness 12 8645 12 2 29 := by
-  refine ⟨(by decide : Nat.Prime 29), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 29 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 29 = 1 := by
-      rw [show (2985985 : Nat) = 29 * 102965 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 29),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 102965),
-      ]
-    rw [hfactor]
-    have hA_factor : (8645 : Nat).factorization 29 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 8645)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 8645)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A8645_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 8645 12 2 := by
@@ -16713,24 +6186,13 @@ theorem concrete_generated_b12_F12_A8645_p2_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b12_F12_A8645_p3_prime_witness :
     PrimeComponentWitness 12 8645 12 3 157 := by
-  refine ⟨(by decide : Nat.Prime 157), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 157 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 157 = 1 := by
-      rw [show (430002433 : Nat) = 157 * 2738869 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 157),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 2738869),
-      ]
-    rw [hfactor]
-    have hA_factor : (8645 : Nat).factorization 157 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 8645)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 8645)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A8645_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 8645 12 3 := by
@@ -16765,7 +6227,8 @@ theorem orderOf_b12_mod1031359219_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 1031359219)ˣ) :
           ZMod 1031359219) ^ 12) =
         (1 : ZMod 1031359219)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -16804,24 +6267,13 @@ theorem concrete_generated_b12_F12_A95095_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A95095_p2_prime_witness :
     PrimeComponentWitness 12 95095 12 2 29 := by
-  refine ⟨(by decide : Nat.Prime 29), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 29 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 29 = 1 := by
-      rw [show (2985985 : Nat) = 29 * 102965 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 29),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 102965),
-      ]
-    rw [hfactor]
-    have hA_factor : (95095 : Nat).factorization 29 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 95095)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 95095)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A95095_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 95095 12 2 := by
@@ -16830,24 +6282,13 @@ theorem concrete_generated_b12_F12_A95095_p2_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b12_F12_A95095_p3_prime_witness :
     PrimeComponentWitness 12 95095 12 3 157 := by
-  refine ⟨(by decide : Nat.Prime 157), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 157 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 157 = 1 := by
-      rw [show (430002433 : Nat) = 157 * 2738869 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 157),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 2738869),
-      ]
-    rw [hfactor]
-    have hA_factor : (95095 : Nat).factorization 157 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 95095)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 95095)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A95095_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 95095 12 3 := by
@@ -16882,7 +6323,8 @@ theorem orderOf_b12_mod93759929_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 93759929)ˣ) :
           ZMod 93759929) ^ 12) =
         (1 : ZMod 93759929)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -16921,24 +6363,13 @@ theorem concrete_generated_b12_F12_A13694345_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A13694345_p2_prime_witness :
     PrimeComponentWitness 12 13694345 12 2 29 := by
-  refine ⟨(by decide : Nat.Prime 29), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 29 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 29 = 1 := by
-      rw [show (2985985 : Nat) = 29 * 102965 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 29),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 102965),
-      ]
-    rw [hfactor]
-    have hA_factor : (13694345 : Nat).factorization 29 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 13694345)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 13694345)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A13694345_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 13694345 12 2 := by
@@ -16947,24 +6378,13 @@ theorem concrete_generated_b12_F12_A13694345_p2_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b12_F12_A13694345_p3_prime_witness :
     PrimeComponentWitness 12 13694345 12 3 157 := by
-  refine ⟨(by decide : Nat.Prime 157), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 157 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 157 = 1 := by
-      rw [show (430002433 : Nat) = 157 * 2738869 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 157),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 2738869),
-      ]
-    rw [hfactor]
-    have hA_factor : (13694345 : Nat).factorization 157 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 13694345)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 13694345)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A13694345_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 13694345 12 3 := by
@@ -16998,7 +6418,8 @@ theorem orderOf_b12_mod651079_eq_12_from_emittedCertificate_denNorm :
       apply Units.ext
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 651079)ˣ) : ZMod 651079) ^ 12) =
         (1 : ZMod 651079)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -17037,24 +6458,13 @@ theorem concrete_generated_b12_F12_A150637795_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A150637795_p2_prime_witness :
     PrimeComponentWitness 12 150637795 12 2 29 := by
-  refine ⟨(by decide : Nat.Prime 29), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 29 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 29 = 1 := by
-      rw [show (2985985 : Nat) = 29 * 102965 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 29),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 102965),
-      ]
-    rw [hfactor]
-    have hA_factor : (150637795 : Nat).factorization 29 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 150637795)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 150637795)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A150637795_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 150637795 12 2 := by
@@ -17063,24 +6473,13 @@ theorem concrete_generated_b12_F12_A150637795_p2_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b12_F12_A150637795_p3_prime_witness :
     PrimeComponentWitness 12 150637795 12 3 157 := by
-  refine ⟨(by decide : Nat.Prime 157), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 157 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 157 = 1 := by
-      rw [show (430002433 : Nat) = 157 * 2738869 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 157),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 2738869),
-      ]
-    rw [hfactor]
-    have hA_factor : (150637795 : Nat).factorization 157 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 150637795)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 150637795)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A150637795_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 150637795 12 3 := by
@@ -17114,7 +6513,8 @@ theorem orderOf_b12_mod59189_eq_12_from_emittedCertificate_denNorm :
       apply Units.ext
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 59189)ˣ) : ZMod 59189) ^ 12) =
         (1 : ZMod 59189)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -17153,24 +6553,13 @@ theorem concrete_generated_b12_F12_A178026485_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A178026485_p2_prime_witness :
     PrimeComponentWitness 12 178026485 12 2 29 := by
-  refine ⟨(by decide : Nat.Prime 29), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 29 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 29 = 1 := by
-      rw [show (2985985 : Nat) = 29 * 102965 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 29),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 102965),
-      ]
-    rw [hfactor]
-    have hA_factor : (178026485 : Nat).factorization 29 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 178026485)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 178026485)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A178026485_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 178026485 12 2 := by
@@ -17179,24 +6568,13 @@ theorem concrete_generated_b12_F12_A178026485_p2_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b12_F12_A178026485_p3_prime_witness :
     PrimeComponentWitness 12 178026485 12 3 157 := by
-  refine ⟨(by decide : Nat.Prime 157), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 157 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 157 = 1 := by
-      rw [show (430002433 : Nat) = 157 * 2738869 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 157),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 2738869),
-      ]
-    rw [hfactor]
-    have hA_factor : (178026485 : Nat).factorization 157 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 178026485)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 178026485)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A178026485_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 178026485 12 3 := by
@@ -17230,7 +6608,8 @@ theorem orderOf_b12_mod50083_eq_12_from_emittedCertificate_denNorm :
       apply Units.ext
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 50083)ˣ) : ZMod 50083) ^ 12) =
         (1 : ZMod 50083)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -17269,24 +6648,13 @@ theorem concrete_generated_b12_F12_A1463_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A1463_p2_prime_witness :
     PrimeComponentWitness 12 1463 12 2 5 := by
-  refine ⟨(by decide : Nat.Prime 5), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 5 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 5 = 1 := by
-      rw [show (2985985 : Nat) = 5 * 597197 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 5),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 597197),
-      ]
-    rw [hfactor]
-    have hA_factor : (1463 : Nat).factorization 5 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 1463)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 1463)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A1463_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 1463 12 2 := by
@@ -17295,24 +6663,13 @@ theorem concrete_generated_b12_F12_A1463_p2_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b12_F12_A1463_p3_prime_witness :
     PrimeComponentWitness 12 1463 12 3 157 := by
-  refine ⟨(by decide : Nat.Prime 157), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 157 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 157 = 1 := by
-      rw [show (430002433 : Nat) = 157 * 2738869 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 157),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 2738869),
-      ]
-    rw [hfactor]
-    have hA_factor : (1463 : Nat).factorization 157 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 1463)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 1463)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A1463_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 1463 12 3 := by
@@ -17347,7 +6704,8 @@ theorem orderOf_b12_mod6094395385_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 6094395385)ˣ) :
           ZMod 6094395385) ^ 12) =
         (1 : ZMod 6094395385)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -17386,24 +6744,13 @@ theorem concrete_generated_b12_F12_A1729_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A1729_p2_prime_witness :
     PrimeComponentWitness 12 1729 12 2 5 := by
-  refine ⟨(by decide : Nat.Prime 5), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 5 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 5 = 1 := by
-      rw [show (2985985 : Nat) = 5 * 597197 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 5),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 597197),
-      ]
-    rw [hfactor]
-    have hA_factor : (1729 : Nat).factorization 5 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 1729)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 1729)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A1729_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 1729 12 2 := by
@@ -17412,24 +6759,13 @@ theorem concrete_generated_b12_F12_A1729_p2_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b12_F12_A1729_p3_prime_witness :
     PrimeComponentWitness 12 1729 12 3 157 := by
-  refine ⟨(by decide : Nat.Prime 157), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 157 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 157 = 1 := by
-      rw [show (430002433 : Nat) = 157 * 2738869 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 157),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 2738869),
-      ]
-    rw [hfactor]
-    have hA_factor : (1729 : Nat).factorization 157 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 1729)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 1729)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A1729_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 1729 12 3 := by
@@ -17464,7 +6800,8 @@ theorem orderOf_b12_mod5156796095_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 5156796095)ˣ) :
           ZMod 5156796095) ^ 12) =
         (1 : ZMod 5156796095)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -17503,24 +6840,13 @@ theorem concrete_generated_b12_F12_A3857_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A3857_p2_prime_witness :
     PrimeComponentWitness 12 3857 12 2 5 := by
-  refine ⟨(by decide : Nat.Prime 5), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 5 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 5 = 1 := by
-      rw [show (2985985 : Nat) = 5 * 597197 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 5),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 597197),
-      ]
-    rw [hfactor]
-    have hA_factor : (3857 : Nat).factorization 5 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 3857)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 3857)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A3857_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 3857 12 2 := by
@@ -17529,24 +6855,13 @@ theorem concrete_generated_b12_F12_A3857_p2_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b12_F12_A3857_p3_prime_witness :
     PrimeComponentWitness 12 3857 12 3 157 := by
-  refine ⟨(by decide : Nat.Prime 157), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 157 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 157 = 1 := by
-      rw [show (430002433 : Nat) = 157 * 2738869 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 157),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 2738869),
-      ]
-    rw [hfactor]
-    have hA_factor : (3857 : Nat).factorization 157 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 3857)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 3857)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A3857_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 3857 12 3 := by
@@ -17581,7 +6896,8 @@ theorem orderOf_b12_mod2311667215_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 2311667215)ˣ) :
           ZMod 2311667215) ^ 12) =
         (1 : ZMod 2311667215)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -17620,24 +6936,13 @@ theorem concrete_generated_b12_F12_A19019_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A19019_p2_prime_witness :
     PrimeComponentWitness 12 19019 12 2 5 := by
-  refine ⟨(by decide : Nat.Prime 5), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 5 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 5 = 1 := by
-      rw [show (2985985 : Nat) = 5 * 597197 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 5),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 597197),
-      ]
-    rw [hfactor]
-    have hA_factor : (19019 : Nat).factorization 5 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 19019)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 19019)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A19019_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 19019 12 2 := by
@@ -17646,24 +6951,13 @@ theorem concrete_generated_b12_F12_A19019_p2_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b12_F12_A19019_p3_prime_witness :
     PrimeComponentWitness 12 19019 12 3 157 := by
-  refine ⟨(by decide : Nat.Prime 157), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 157 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 157 = 1 := by
-      rw [show (430002433 : Nat) = 157 * 2738869 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 157),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 2738869),
-      ]
-    rw [hfactor]
-    have hA_factor : (19019 : Nat).factorization 157 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 19019)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 19019)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A19019_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 19019 12 3 := by
@@ -17698,7 +6992,8 @@ theorem orderOf_b12_mod468799645_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 468799645)ˣ) :
           ZMod 468799645) ^ 12) =
         (1 : ZMod 468799645)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -17737,24 +7032,13 @@ theorem concrete_generated_b12_F12_A42427_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A42427_p2_prime_witness :
     PrimeComponentWitness 12 42427 12 2 5 := by
-  refine ⟨(by decide : Nat.Prime 5), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 5 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 5 = 1 := by
-      rw [show (2985985 : Nat) = 5 * 597197 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 5),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 597197),
-      ]
-    rw [hfactor]
-    have hA_factor : (42427 : Nat).factorization 5 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 42427)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 42427)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A42427_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 42427 12 2 := by
@@ -17763,24 +7047,13 @@ theorem concrete_generated_b12_F12_A42427_p2_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b12_F12_A42427_p3_prime_witness :
     PrimeComponentWitness 12 42427 12 3 157 := by
-  refine ⟨(by decide : Nat.Prime 157), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 157 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 157 = 1 := by
-      rw [show (430002433 : Nat) = 157 * 2738869 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 157),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 2738869),
-      ]
-    rw [hfactor]
-    have hA_factor : (42427 : Nat).factorization 157 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 42427)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 42427)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A42427_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 42427 12 3 := by
@@ -17815,7 +7088,8 @@ theorem orderOf_b12_mod210151565_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 210151565)ˣ) :
           ZMod 210151565) ^ 12) =
         (1 : ZMod 210151565)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -17854,24 +7128,13 @@ theorem concrete_generated_b12_F12_A50141_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A50141_p2_prime_witness :
     PrimeComponentWitness 12 50141 12 2 5 := by
-  refine ⟨(by decide : Nat.Prime 5), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 5 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 5 = 1 := by
-      rw [show (2985985 : Nat) = 5 * 597197 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 5),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 597197),
-      ]
-    rw [hfactor]
-    have hA_factor : (50141 : Nat).factorization 5 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 50141)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 50141)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A50141_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 50141 12 2 := by
@@ -17880,24 +7143,13 @@ theorem concrete_generated_b12_F12_A50141_p2_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b12_F12_A50141_p3_prime_witness :
     PrimeComponentWitness 12 50141 12 3 157 := by
-  refine ⟨(by decide : Nat.Prime 157), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 157 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 157 = 1 := by
-      rw [show (430002433 : Nat) = 157 * 2738869 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 157),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 2738869),
-      ]
-    rw [hfactor]
-    have hA_factor : (50141 : Nat).factorization 157 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 50141)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 50141)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A50141_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 50141 12 3 := by
@@ -17932,7 +7184,8 @@ theorem orderOf_b12_mod177820555_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 177820555)ˣ) :
           ZMod 177820555) ^ 12) =
         (1 : ZMod 177820555)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -17971,24 +7224,13 @@ theorem concrete_generated_b12_F12_A551551_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A551551_p2_prime_witness :
     PrimeComponentWitness 12 551551 12 2 5 := by
-  refine ⟨(by decide : Nat.Prime 5), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 5 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 5 = 1 := by
-      rw [show (2985985 : Nat) = 5 * 597197 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 5),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 597197),
-      ]
-    rw [hfactor]
-    have hA_factor : (551551 : Nat).factorization 5 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 551551)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 551551)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A551551_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 551551 12 2 := by
@@ -17997,24 +7239,13 @@ theorem concrete_generated_b12_F12_A551551_p2_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b12_F12_A551551_p3_prime_witness :
     PrimeComponentWitness 12 551551 12 3 157 := by
-  refine ⟨(by decide : Nat.Prime 157), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 157 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 157 = 1 := by
-      rw [show (430002433 : Nat) = 157 * 2738869 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 157),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 2738869),
-      ]
-    rw [hfactor]
-    have hA_factor : (551551 : Nat).factorization 157 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 551551)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 551551)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A551551_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 551551 12 3 := by
@@ -18049,7 +7280,8 @@ theorem orderOf_b12_mod16165505_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 16165505)ˣ) :
           ZMod 16165505) ^ 12) =
         (1 : ZMod 16165505)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -18088,24 +7320,13 @@ theorem concrete_generated_b12_F12_A2738869_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A2738869_p2_prime_witness :
     PrimeComponentWitness 12 2738869 12 2 5 := by
-  refine ⟨(by decide : Nat.Prime 5), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 5 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 5 = 1 := by
-      rw [show (2985985 : Nat) = 5 * 597197 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 5),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 597197),
-      ]
-    rw [hfactor]
-    have hA_factor : (2738869 : Nat).factorization 5 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 2738869)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 2738869)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A2738869_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 2738869 12 2 := by
@@ -18114,24 +7335,13 @@ theorem concrete_generated_b12_F12_A2738869_p2_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b12_F12_A2738869_p3_prime_witness :
     PrimeComponentWitness 12 2738869 12 3 157 := by
-  refine ⟨(by decide : Nat.Prime 157), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 157 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 157 = 1 := by
-      rw [show (430002433 : Nat) = 157 * 2738869 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 157),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 2738869),
-      ]
-    rw [hfactor]
-    have hA_factor : (2738869 : Nat).factorization 157 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 2738869)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 2738869)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A2738869_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 2738869 12 3 := by
@@ -18166,7 +7376,8 @@ theorem orderOf_b12_mod3255395_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 3255395)ˣ) :
           ZMod 3255395) ^ 12) =
         (1 : ZMod 3255395)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -18205,24 +7416,13 @@ theorem concrete_generated_b12_F12_A30127559_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A30127559_p2_prime_witness :
     PrimeComponentWitness 12 30127559 12 2 5 := by
-  refine ⟨(by decide : Nat.Prime 5), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 5 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 5 = 1 := by
-      rw [show (2985985 : Nat) = 5 * 597197 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 5),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 597197),
-      ]
-    rw [hfactor]
-    have hA_factor : (30127559 : Nat).factorization 5 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 30127559)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 30127559)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A30127559_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 30127559 12 2 := by
@@ -18231,24 +7431,13 @@ theorem concrete_generated_b12_F12_A30127559_p2_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b12_F12_A30127559_p3_prime_witness :
     PrimeComponentWitness 12 30127559 12 3 157 := by
-  refine ⟨(by decide : Nat.Prime 157), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 157 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 157 = 1 := by
-      rw [show (430002433 : Nat) = 157 * 2738869 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 157),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 2738869),
-      ]
-    rw [hfactor]
-    have hA_factor : (30127559 : Nat).factorization 157 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 30127559)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 30127559)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A30127559_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 30127559 12 3 := by
@@ -18282,7 +7471,8 @@ theorem orderOf_b12_mod295945_eq_12_from_emittedCertificate_denNorm :
       apply Units.ext
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 295945)ˣ) : ZMod 295945) ^ 12) =
         (1 : ZMod 295945)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -18321,24 +7511,13 @@ theorem concrete_generated_b12_F12_A35605297_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A35605297_p2_prime_witness :
     PrimeComponentWitness 12 35605297 12 2 5 := by
-  refine ⟨(by decide : Nat.Prime 5), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 5 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 5 = 1 := by
-      rw [show (2985985 : Nat) = 5 * 597197 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 5),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 597197),
-      ]
-    rw [hfactor]
-    have hA_factor : (35605297 : Nat).factorization 5 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 35605297)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 35605297)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A35605297_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 35605297 12 2 := by
@@ -18347,24 +7526,13 @@ theorem concrete_generated_b12_F12_A35605297_p2_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b12_F12_A35605297_p3_prime_witness :
     PrimeComponentWitness 12 35605297 12 3 157 := by
-  refine ⟨(by decide : Nat.Prime 157), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 157 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 157 = 1 := by
-      rw [show (430002433 : Nat) = 157 * 2738869 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 157),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 2738869),
-      ]
-    rw [hfactor]
-    have hA_factor : (35605297 : Nat).factorization 157 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 35605297)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 35605297)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A35605297_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 35605297 12 3 := by
@@ -18398,7 +7566,8 @@ theorem orderOf_b12_mod250415_eq_12_from_emittedCertificate_denNorm :
       apply Units.ext
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 250415)ˣ) : ZMod 250415) ^ 12) =
         (1 : ZMod 250415)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -18437,24 +7606,13 @@ theorem concrete_generated_b12_F12_A79427201_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A79427201_p2_prime_witness :
     PrimeComponentWitness 12 79427201 12 2 5 := by
-  refine ⟨(by decide : Nat.Prime 5), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 5 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 5 = 1 := by
-      rw [show (2985985 : Nat) = 5 * 597197 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 5),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 597197),
-      ]
-    rw [hfactor]
-    have hA_factor : (79427201 : Nat).factorization 5 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 79427201)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 79427201)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A79427201_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 79427201 12 2 := by
@@ -18463,24 +7621,13 @@ theorem concrete_generated_b12_F12_A79427201_p2_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b12_F12_A79427201_p3_prime_witness :
     PrimeComponentWitness 12 79427201 12 3 157 := by
-  refine ⟨(by decide : Nat.Prime 157), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 157 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 157 = 1 := by
-      rw [show (430002433 : Nat) = 157 * 2738869 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 157),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 2738869),
-      ]
-    rw [hfactor]
-    have hA_factor : (79427201 : Nat).factorization 157 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 79427201)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 79427201)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A79427201_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 79427201 12 3 := by
@@ -18514,7 +7661,8 @@ theorem orderOf_b12_mod112255_eq_12_from_emittedCertificate_denNorm :
       apply Units.ext
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 112255)ˣ) : ZMod 112255) ^ 12) =
         (1 : ZMod 112255)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -18553,24 +7701,13 @@ theorem concrete_generated_b12_F12_A391658267_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A391658267_p2_prime_witness :
     PrimeComponentWitness 12 391658267 12 2 5 := by
-  refine ⟨(by decide : Nat.Prime 5), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 5 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 5 = 1 := by
-      rw [show (2985985 : Nat) = 5 * 597197 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 5),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 597197),
-      ]
-    rw [hfactor]
-    have hA_factor : (391658267 : Nat).factorization 5 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 391658267)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 391658267)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A391658267_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 391658267 12 2 := by
@@ -18579,24 +7716,13 @@ theorem concrete_generated_b12_F12_A391658267_p2_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b12_F12_A391658267_p3_prime_witness :
     PrimeComponentWitness 12 391658267 12 3 157 := by
-  refine ⟨(by decide : Nat.Prime 157), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 157 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 157 = 1 := by
-      rw [show (430002433 : Nat) = 157 * 2738869 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 157),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 2738869),
-      ]
-    rw [hfactor]
-    have hA_factor : (391658267 : Nat).factorization 157 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 391658267)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 391658267)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A391658267_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 391658267 12 3 := by
@@ -18630,7 +7756,8 @@ theorem orderOf_b12_mod22765_eq_12_from_emittedCertificate_denNorm :
       apply Units.ext
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 22765)ˣ) : ZMod 22765) ^ 12) =
         (1 : ZMod 22765)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -18669,24 +7796,13 @@ theorem concrete_generated_b12_F12_A873699211_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A873699211_p2_prime_witness :
     PrimeComponentWitness 12 873699211 12 2 5 := by
-  refine ⟨(by decide : Nat.Prime 5), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 5 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 5 = 1 := by
-      rw [show (2985985 : Nat) = 5 * 597197 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 5),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 597197),
-      ]
-    rw [hfactor]
-    have hA_factor : (873699211 : Nat).factorization 5 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 873699211)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 873699211)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A873699211_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 873699211 12 2 := by
@@ -18695,24 +7811,13 @@ theorem concrete_generated_b12_F12_A873699211_p2_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b12_F12_A873699211_p3_prime_witness :
     PrimeComponentWitness 12 873699211 12 3 157 := by
-  refine ⟨(by decide : Nat.Prime 157), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 157 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 157 = 1 := by
-      rw [show (430002433 : Nat) = 157 * 2738869 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 157),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 2738869),
-      ]
-    rw [hfactor]
-    have hA_factor : (873699211 : Nat).factorization 157 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 873699211)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 873699211)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A873699211_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 873699211 12 3 := by
@@ -18746,7 +7851,8 @@ theorem orderOf_b12_mod10205_eq_12_from_emittedCertificate_denNorm :
       apply Units.ext
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 10205)ˣ) : ZMod 10205) ^ 12) =
         (1 : ZMod 10205)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -18785,24 +7891,13 @@ theorem concrete_generated_b12_F12_A1032553613_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A1032553613_p2_prime_witness :
     PrimeComponentWitness 12 1032553613 12 2 5 := by
-  refine ⟨(by decide : Nat.Prime 5), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 5 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 5 = 1 := by
-      rw [show (2985985 : Nat) = 5 * 597197 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 5),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 597197),
-      ]
-    rw [hfactor]
-    have hA_factor : (1032553613 : Nat).factorization 5 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 1032553613)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 1032553613)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A1032553613_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 1032553613 12 2 := by
@@ -18811,24 +7906,13 @@ theorem concrete_generated_b12_F12_A1032553613_p2_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b12_F12_A1032553613_p3_prime_witness :
     PrimeComponentWitness 12 1032553613 12 3 157 := by
-  refine ⟨(by decide : Nat.Prime 157), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 157 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 157 = 1 := by
-      rw [show (430002433 : Nat) = 157 * 2738869 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 157),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 2738869),
-      ]
-    rw [hfactor]
-    have hA_factor : (1032553613 : Nat).factorization 157 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 1032553613)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 157 ∣ 1032553613)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A1032553613_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 1032553613 12 3 := by
@@ -18862,7 +7946,8 @@ theorem orderOf_b12_mod8635_eq_12_from_emittedCertificate_denNorm :
       apply Units.ext
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 8635)ˣ) : ZMod 8635) ^ 12) =
         (1 : ZMod 8635)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -18901,24 +7986,13 @@ theorem concrete_generated_b12_F12_A35_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A35_p2_prime_witness :
     PrimeComponentWitness 12 35 12 2 29 := by
-  refine ⟨(by decide : Nat.Prime 29), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 29 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 29 = 1 := by
-      rw [show (2985985 : Nat) = 29 * 102965 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 29),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 102965),
-      ]
-    rw [hfactor]
-    have hA_factor : (35 : Nat).factorization 29 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 35)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 35)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A35_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 35 12 2 := by
@@ -18926,24 +8000,13 @@ theorem concrete_generated_b12_F12_A35_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A35_p3_prime_witness :
     PrimeComponentWitness 12 35 12 3 19 := by
-  refine ⟨(by decide : Nat.Prime 19), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 19 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 19 = 1 := by
-      rw [show (430002433 : Nat) = 19 * 22631707 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 19),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 22631707),
-      ]
-    rw [hfactor]
-    have hA_factor : (35 : Nat).factorization 19 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 35)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 35)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A35_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 35 12 3 := by
@@ -18978,7 +8041,8 @@ theorem orderOf_b12_mod254745727093_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 254745727093)ˣ) :
           ZMod 254745727093) ^ 12) =
         (1 : ZMod 254745727093)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -19017,24 +8081,13 @@ theorem concrete_generated_b12_F12_A385_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A385_p2_prime_witness :
     PrimeComponentWitness 12 385 12 2 29 := by
-  refine ⟨(by decide : Nat.Prime 29), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 29 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 29 = 1 := by
-      rw [show (2985985 : Nat) = 29 * 102965 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 29),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 102965),
-      ]
-    rw [hfactor]
-    have hA_factor : (385 : Nat).factorization 29 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 385)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 385)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A385_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 385 12 2 := by
@@ -19042,24 +8095,13 @@ theorem concrete_generated_b12_F12_A385_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A385_p3_prime_witness :
     PrimeComponentWitness 12 385 12 3 19 := by
-  refine ⟨(by decide : Nat.Prime 19), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 19 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 19 = 1 := by
-      rw [show (430002433 : Nat) = 19 * 22631707 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 19),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 22631707),
-      ]
-    rw [hfactor]
-    have hA_factor : (385 : Nat).factorization 19 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 385)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 385)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A385_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 385 12 3 := by
@@ -19094,7 +8136,8 @@ theorem orderOf_b12_mod23158702463_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 23158702463)ˣ) :
           ZMod 23158702463) ^ 12) =
         (1 : ZMod 23158702463)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -19133,24 +8176,13 @@ theorem concrete_generated_b12_F12_A455_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A455_p2_prime_witness :
     PrimeComponentWitness 12 455 12 2 29 := by
-  refine ⟨(by decide : Nat.Prime 29), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 29 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 29 = 1 := by
-      rw [show (2985985 : Nat) = 29 * 102965 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 29),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 102965),
-      ]
-    rw [hfactor]
-    have hA_factor : (455 : Nat).factorization 29 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 455)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 455)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A455_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 455 12 2 := by
@@ -19158,24 +8190,13 @@ theorem concrete_generated_b12_F12_A455_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A455_p3_prime_witness :
     PrimeComponentWitness 12 455 12 3 19 := by
-  refine ⟨(by decide : Nat.Prime 19), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 19 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 19 = 1 := by
-      rw [show (430002433 : Nat) = 19 * 22631707 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 19),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 22631707),
-      ]
-    rw [hfactor]
-    have hA_factor : (455 : Nat).factorization 19 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 455)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 455)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A455_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 455 12 3 := by
@@ -19210,7 +8231,8 @@ theorem orderOf_b12_mod19595825161_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 19595825161)ˣ) :
           ZMod 19595825161) ^ 12) =
         (1 : ZMod 19595825161)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -19249,24 +8271,13 @@ theorem concrete_generated_b12_F12_A5005_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A5005_p2_prime_witness :
     PrimeComponentWitness 12 5005 12 2 29 := by
-  refine ⟨(by decide : Nat.Prime 29), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 29 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 29 = 1 := by
-      rw [show (2985985 : Nat) = 29 * 102965 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 29),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 102965),
-      ]
-    rw [hfactor]
-    have hA_factor : (5005 : Nat).factorization 29 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 5005)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 5005)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A5005_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 5005 12 2 := by
@@ -19274,24 +8285,13 @@ theorem concrete_generated_b12_F12_A5005_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A5005_p3_prime_witness :
     PrimeComponentWitness 12 5005 12 3 19 := by
-  refine ⟨(by decide : Nat.Prime 19), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 19 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 19 = 1 := by
-      rw [show (430002433 : Nat) = 19 * 22631707 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 19),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 22631707),
-      ]
-    rw [hfactor]
-    have hA_factor : (5005 : Nat).factorization 19 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 5005)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 5005)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A5005_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 5005 12 3 := by
@@ -19326,7 +8326,8 @@ theorem orderOf_b12_mod1781438651_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 1781438651)ˣ) :
           ZMod 1781438651) ^ 12) =
         (1 : ZMod 1781438651)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -19365,24 +8366,13 @@ theorem concrete_generated_b12_F12_A5495_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A5495_p2_prime_witness :
     PrimeComponentWitness 12 5495 12 2 29 := by
-  refine ⟨(by decide : Nat.Prime 29), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 29 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 29 = 1 := by
-      rw [show (2985985 : Nat) = 29 * 102965 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 29),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 102965),
-      ]
-    rw [hfactor]
-    have hA_factor : (5495 : Nat).factorization 29 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 5495)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 5495)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A5495_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 5495 12 2 := by
@@ -19390,24 +8380,13 @@ theorem concrete_generated_b12_F12_A5495_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A5495_p3_prime_witness :
     PrimeComponentWitness 12 5495 12 3 19 := by
-  refine ⟨(by decide : Nat.Prime 19), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 19 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 19 = 1 := by
-      rw [show (430002433 : Nat) = 19 * 22631707 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 19),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 22631707),
-      ]
-    rw [hfactor]
-    have hA_factor : (5495 : Nat).factorization 19 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 5495)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 5495)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A5495_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 5495 12 3 := by
@@ -19442,7 +8421,8 @@ theorem orderOf_b12_mod1622584249_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 1622584249)ˣ) :
           ZMod 1622584249) ^ 12) =
         (1 : ZMod 1622584249)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -19481,24 +8461,13 @@ theorem concrete_generated_b12_F12_A60445_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A60445_p2_prime_witness :
     PrimeComponentWitness 12 60445 12 2 29 := by
-  refine ⟨(by decide : Nat.Prime 29), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 29 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 29 = 1 := by
-      rw [show (2985985 : Nat) = 29 * 102965 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 29),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 102965),
-      ]
-    rw [hfactor]
-    have hA_factor : (60445 : Nat).factorization 29 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 60445)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 60445)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A60445_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 60445 12 2 := by
@@ -19506,24 +8475,13 @@ theorem concrete_generated_b12_F12_A60445_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A60445_p3_prime_witness :
     PrimeComponentWitness 12 60445 12 3 19 := by
-  refine ⟨(by decide : Nat.Prime 19), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 19 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 19 = 1 := by
-      rw [show (430002433 : Nat) = 19 * 22631707 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 19),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 22631707),
-      ]
-    rw [hfactor]
-    have hA_factor : (60445 : Nat).factorization 19 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 60445)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 60445)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A60445_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 60445 12 3 := by
@@ -19558,7 +8516,8 @@ theorem orderOf_b12_mod147507659_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 147507659)ˣ) :
           ZMod 147507659) ^ 12) =
         (1 : ZMod 147507659)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -19597,24 +8556,13 @@ theorem concrete_generated_b12_F12_A71435_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A71435_p2_prime_witness :
     PrimeComponentWitness 12 71435 12 2 29 := by
-  refine ⟨(by decide : Nat.Prime 29), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 29 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 29 = 1 := by
-      rw [show (2985985 : Nat) = 29 * 102965 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 29),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 102965),
-      ]
-    rw [hfactor]
-    have hA_factor : (71435 : Nat).factorization 29 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 71435)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 71435)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A71435_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 71435 12 2 := by
@@ -19622,24 +8570,13 @@ theorem concrete_generated_b12_F12_A71435_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A71435_p3_prime_witness :
     PrimeComponentWitness 12 71435 12 3 19 := by
-  refine ⟨(by decide : Nat.Prime 19), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 19 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 19 = 1 := by
-      rw [show (430002433 : Nat) = 19 * 22631707 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 19),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 22631707),
-      ]
-    rw [hfactor]
-    have hA_factor : (71435 : Nat).factorization 19 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 71435)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 71435)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A71435_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 71435 12 3 := by
@@ -19674,7 +8611,8 @@ theorem orderOf_b12_mod124814173_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 124814173)ˣ) :
           ZMod 124814173) ^ 12) =
         (1 : ZMod 124814173)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -19713,24 +8651,13 @@ theorem concrete_generated_b12_F12_A720755_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A720755_p2_prime_witness :
     PrimeComponentWitness 12 720755 12 2 29 := by
-  refine ⟨(by decide : Nat.Prime 29), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 29 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 29 = 1 := by
-      rw [show (2985985 : Nat) = 29 * 102965 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 29),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 102965),
-      ]
-    rw [hfactor]
-    have hA_factor : (720755 : Nat).factorization 29 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 720755)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 720755)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A720755_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 720755 12 2 := by
@@ -19738,24 +8665,13 @@ theorem concrete_generated_b12_F12_A720755_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A720755_p3_prime_witness :
     PrimeComponentWitness 12 720755 12 3 19 := by
-  refine ⟨(by decide : Nat.Prime 19), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 19 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 19 = 1 := by
-      rw [show (430002433 : Nat) = 19 * 22631707 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 19),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 22631707),
-      ]
-    rw [hfactor]
-    have hA_factor : (720755 : Nat).factorization 19 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 720755)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 720755)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A720755_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 720755 12 3 := by
@@ -19790,7 +8706,8 @@ theorem orderOf_b12_mod12370501_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 12370501)ˣ) :
           ZMod 12370501) ^ 12) =
         (1 : ZMod 12370501)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -19829,24 +8746,13 @@ theorem concrete_generated_b12_F12_A785785_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A785785_p2_prime_witness :
     PrimeComponentWitness 12 785785 12 2 29 := by
-  refine ⟨(by decide : Nat.Prime 29), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 29 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 29 = 1 := by
-      rw [show (2985985 : Nat) = 29 * 102965 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 29),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 102965),
-      ]
-    rw [hfactor]
-    have hA_factor : (785785 : Nat).factorization 29 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 785785)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 785785)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A785785_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 785785 12 2 := by
@@ -19854,24 +8760,13 @@ theorem concrete_generated_b12_F12_A785785_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A785785_p3_prime_witness :
     PrimeComponentWitness 12 785785 12 3 19 := by
-  refine ⟨(by decide : Nat.Prime 19), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 19 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 19 = 1 := by
-      rw [show (430002433 : Nat) = 19 * 22631707 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 19),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 22631707),
-      ]
-    rw [hfactor]
-    have hA_factor : (785785 : Nat).factorization 19 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 785785)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 785785)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A785785_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 785785 12 3 := by
@@ -19906,7 +8801,8 @@ theorem orderOf_b12_mod11346743_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 11346743)ˣ) :
           ZMod 11346743) ^ 12) =
         (1 : ZMod 11346743)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -19945,24 +8841,13 @@ theorem concrete_generated_b12_F12_A7928305_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A7928305_p2_prime_witness :
     PrimeComponentWitness 12 7928305 12 2 29 := by
-  refine ⟨(by decide : Nat.Prime 29), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 29 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 29 = 1 := by
-      rw [show (2985985 : Nat) = 29 * 102965 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 29),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 102965),
-      ]
-    rw [hfactor]
-    have hA_factor : (7928305 : Nat).factorization 29 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 7928305)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 7928305)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A7928305_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 7928305 12 2 := by
@@ -19970,24 +8855,13 @@ theorem concrete_generated_b12_F12_A7928305_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A7928305_p3_prime_witness :
     PrimeComponentWitness 12 7928305 12 3 19 := by
-  refine ⟨(by decide : Nat.Prime 19), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 19 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 19 = 1 := by
-      rw [show (430002433 : Nat) = 19 * 22631707 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 19),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 22631707),
-      ]
-    rw [hfactor]
-    have hA_factor : (7928305 : Nat).factorization 19 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 7928305)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 7928305)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A7928305_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 7928305 12 3 := by
@@ -20022,7 +8896,8 @@ theorem orderOf_b12_mod1124591_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 1124591)ˣ) :
           ZMod 1124591) ^ 12) =
         (1 : ZMod 1124591)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -20061,24 +8936,13 @@ theorem concrete_generated_b12_F12_A9369815_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A9369815_p2_prime_witness :
     PrimeComponentWitness 12 9369815 12 2 29 := by
-  refine ⟨(by decide : Nat.Prime 29), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 29 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 29 = 1 := by
-      rw [show (2985985 : Nat) = 29 * 102965 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 29),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 102965),
-      ]
-    rw [hfactor]
-    have hA_factor : (9369815 : Nat).factorization 29 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 9369815)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 9369815)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A9369815_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 9369815 12 2 := by
@@ -20086,24 +8950,13 @@ theorem concrete_generated_b12_F12_A9369815_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A9369815_p3_prime_witness :
     PrimeComponentWitness 12 9369815 12 3 19 := by
-  refine ⟨(by decide : Nat.Prime 19), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 19 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 19 = 1 := by
-      rw [show (430002433 : Nat) = 19 * 22631707 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 19),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 22631707),
-      ]
-    rw [hfactor]
-    have hA_factor : (9369815 : Nat).factorization 19 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 9369815)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 9369815)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A9369815_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 9369815 12 3 := by
@@ -20137,7 +8990,8 @@ theorem orderOf_b12_mod951577_eq_12_from_emittedCertificate_denNorm :
       apply Units.ext
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 951577)ˣ) : ZMod 951577) ^ 12) =
         (1 : ZMod 951577)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -20176,24 +9030,13 @@ theorem concrete_generated_b12_F12_A103067965_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A103067965_p2_prime_witness :
     PrimeComponentWitness 12 103067965 12 2 29 := by
-  refine ⟨(by decide : Nat.Prime 29), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 29 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 29 = 1 := by
-      rw [show (2985985 : Nat) = 29 * 102965 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 29),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 102965),
-      ]
-    rw [hfactor]
-    have hA_factor : (103067965 : Nat).factorization 29 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 103067965)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 103067965)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A103067965_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 103067965 12 2 := by
@@ -20201,24 +9044,13 @@ theorem concrete_generated_b12_F12_A103067965_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A103067965_p3_prime_witness :
     PrimeComponentWitness 12 103067965 12 3 19 := by
-  refine ⟨(by decide : Nat.Prime 19), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 19 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 19 = 1 := by
-      rw [show (430002433 : Nat) = 19 * 22631707 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 19),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 22631707),
-      ]
-    rw [hfactor]
-    have hA_factor : (103067965 : Nat).factorization 19 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 103067965)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 103067965)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A103067965_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 103067965 12 3 := by
@@ -20252,7 +9084,8 @@ theorem orderOf_b12_mod86507_eq_12_from_emittedCertificate_denNorm :
       apply Units.ext
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 86507)ˣ) : ZMod 86507) ^ 12) =
         (1 : ZMod 86507)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -20291,24 +9124,13 @@ theorem concrete_generated_b12_F12_A113158535_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A113158535_p2_prime_witness :
     PrimeComponentWitness 12 113158535 12 2 29 := by
-  refine ⟨(by decide : Nat.Prime 29), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 29 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 29 = 1 := by
-      rw [show (2985985 : Nat) = 29 * 102965 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 29),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 102965),
-      ]
-    rw [hfactor]
-    have hA_factor : (113158535 : Nat).factorization 29 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 113158535)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 113158535)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A113158535_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 113158535 12 2 := by
@@ -20316,24 +9138,13 @@ theorem concrete_generated_b12_F12_A113158535_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A113158535_p3_prime_witness :
     PrimeComponentWitness 12 113158535 12 3 19 := by
-  refine ⟨(by decide : Nat.Prime 19), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 19 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 19 = 1 := by
-      rw [show (430002433 : Nat) = 19 * 22631707 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 19),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 22631707),
-      ]
-    rw [hfactor]
-    have hA_factor : (113158535 : Nat).factorization 19 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 113158535)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 113158535)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A113158535_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 113158535 12 3 := by
@@ -20367,7 +9178,8 @@ theorem orderOf_b12_mod78793_eq_12_from_emittedCertificate_denNorm :
       apply Units.ext
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 78793)ˣ) : ZMod 78793) ^ 12) =
         (1 : ZMod 78793)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -20406,24 +9218,13 @@ theorem concrete_generated_b12_F12_A1244743885_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A1244743885_p2_prime_witness :
     PrimeComponentWitness 12 1244743885 12 2 29 := by
-  refine ⟨(by decide : Nat.Prime 29), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 29 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 29 = 1 := by
-      rw [show (2985985 : Nat) = 29 * 102965 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 29),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 102965),
-      ]
-    rw [hfactor]
-    have hA_factor : (1244743885 : Nat).factorization 29 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 1244743885)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 1244743885)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A1244743885_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 1244743885 12 2 := by
@@ -20431,24 +9232,13 @@ theorem concrete_generated_b12_F12_A1244743885_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A1244743885_p3_prime_witness :
     PrimeComponentWitness 12 1244743885 12 3 19 := by
-  refine ⟨(by decide : Nat.Prime 19), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 19 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 19 = 1 := by
-      rw [show (430002433 : Nat) = 19 * 22631707 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 19),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 22631707),
-      ]
-    rw [hfactor]
-    have hA_factor : (1244743885 : Nat).factorization 19 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 1244743885)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 1244743885)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A1244743885_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 1244743885 12 3 := by
@@ -20482,7 +9272,8 @@ theorem orderOf_b12_mod7163_eq_12_from_emittedCertificate_denNorm :
       apply Units.ext
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 7163)ˣ) : ZMod 7163) ^ 12) =
         (1 : ZMod 7163)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -20521,24 +9312,13 @@ theorem concrete_generated_b12_F12_A1471060955_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A1471060955_p2_prime_witness :
     PrimeComponentWitness 12 1471060955 12 2 29 := by
-  refine ⟨(by decide : Nat.Prime 29), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 29 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 29 = 1 := by
-      rw [show (2985985 : Nat) = 29 * 102965 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 29),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 102965),
-      ]
-    rw [hfactor]
-    have hA_factor : (1471060955 : Nat).factorization 29 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 1471060955)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 1471060955)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A1471060955_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 1471060955 12 2 := by
@@ -20546,24 +9326,13 @@ theorem concrete_generated_b12_F12_A1471060955_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A1471060955_p3_prime_witness :
     PrimeComponentWitness 12 1471060955 12 3 19 := by
-  refine ⟨(by decide : Nat.Prime 19), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 19 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 19 = 1 := by
-      rw [show (430002433 : Nat) = 19 * 22631707 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 19),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 22631707),
-      ]
-    rw [hfactor]
-    have hA_factor : (1471060955 : Nat).factorization 19 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 1471060955)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 1471060955)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A1471060955_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 1471060955 12 3 := by
@@ -20597,7 +9366,8 @@ theorem orderOf_b12_mod6061_eq_12_from_emittedCertificate_denNorm :
       apply Units.ext
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 6061)ˣ) : ZMod 6061) ^ 12) =
         (1 : ZMod 6061)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -20636,24 +9406,13 @@ theorem concrete_generated_b12_F12_A5_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A5_p2_prime_witness :
     PrimeComponentWitness 12 5 12 2 29 := by
-  refine ⟨(by decide : Nat.Prime 29), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 29 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 29 = 1 := by
-      rw [show (2985985 : Nat) = 29 * 102965 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 29),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 102965),
-      ]
-    rw [hfactor]
-    have hA_factor : (5 : Nat).factorization 29 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 5)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 5)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A5_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 5 12 2 := by
@@ -20661,24 +9420,13 @@ theorem concrete_generated_b12_F12_A5_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A5_p3_prime_witness :
     PrimeComponentWitness 12 5 12 3 7 := by
-  refine ⟨(by decide : Nat.Prime 7), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 7 = 1 := by
-      rw [show (430002433 : Nat) = 7 * 61428919 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 7),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 61428919),
-      ]
-    rw [hfactor]
-    have hA_factor : (5 : Nat).factorization 7 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 5)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 5)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A5_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 5 12 3 := by
@@ -20713,7 +9461,8 @@ theorem orderOf_b12_mod1783220089651_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 1783220089651)ˣ) :
           ZMod 1783220089651) ^ 12) =
         (1 : ZMod 1783220089651)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -20752,24 +9501,13 @@ theorem concrete_generated_b12_F12_A7_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A7_p2_prime_witness :
     PrimeComponentWitness 12 7 12 2 5 := by
-  refine ⟨(by decide : Nat.Prime 5), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 5 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 5 = 1 := by
-      rw [show (2985985 : Nat) = 5 * 597197 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 5),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 597197),
-      ]
-    rw [hfactor]
-    have hA_factor : (7 : Nat).factorization 5 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 7)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 7)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A7_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 7 12 2 := by
@@ -20777,24 +9515,13 @@ theorem concrete_generated_b12_F12_A7_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A7_p3_prime_witness :
     PrimeComponentWitness 12 7 12 3 19 := by
-  refine ⟨(by decide : Nat.Prime 19), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 19 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 19 = 1 := by
-      rw [show (430002433 : Nat) = 19 * 22631707 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 19),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 22631707),
-      ]
-    rw [hfactor]
-    have hA_factor : (7 : Nat).factorization 19 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 7)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 7)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A7_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 7 12 3 := by
@@ -20829,7 +9556,8 @@ theorem orderOf_b12_mod1273728635465_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 1273728635465)ˣ) :
           ZMod 1273728635465) ^ 12) =
         (1 : ZMod 1273728635465)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -20868,24 +9596,13 @@ theorem concrete_generated_b12_F12_A55_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A55_p2_prime_witness :
     PrimeComponentWitness 12 55 12 2 29 := by
-  refine ⟨(by decide : Nat.Prime 29), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 29 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 29 = 1 := by
-      rw [show (2985985 : Nat) = 29 * 102965 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 29),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 102965),
-      ]
-    rw [hfactor]
-    have hA_factor : (55 : Nat).factorization 29 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 55)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 55)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A55_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 55 12 2 := by
@@ -20893,24 +9610,13 @@ theorem concrete_generated_b12_F12_A55_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A55_p3_prime_witness :
     PrimeComponentWitness 12 55 12 3 7 := by
-  refine ⟨(by decide : Nat.Prime 7), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 7 = 1 := by
-      rw [show (430002433 : Nat) = 7 * 61428919 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 7),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 61428919),
-      ]
-    rw [hfactor]
-    have hA_factor : (55 : Nat).factorization 7 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 55)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 55)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A55_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 55 12 3 := by
@@ -20945,7 +9651,8 @@ theorem orderOf_b12_mod162110917241_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 162110917241)ˣ) :
           ZMod 162110917241) ^ 12) =
         (1 : ZMod 162110917241)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -20984,24 +9691,13 @@ theorem concrete_generated_b12_F12_A65_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A65_p2_prime_witness :
     PrimeComponentWitness 12 65 12 2 29 := by
-  refine ⟨(by decide : Nat.Prime 29), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 29 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 29 = 1 := by
-      rw [show (2985985 : Nat) = 29 * 102965 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 29),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 102965),
-      ]
-    rw [hfactor]
-    have hA_factor : (65 : Nat).factorization 29 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 65)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 65)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A65_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 65 12 2 := by
@@ -21009,24 +9705,13 @@ theorem concrete_generated_b12_F12_A65_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A65_p3_prime_witness :
     PrimeComponentWitness 12 65 12 3 7 := by
-  refine ⟨(by decide : Nat.Prime 7), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 7 = 1 := by
-      rw [show (430002433 : Nat) = 7 * 61428919 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 7),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 61428919),
-      ]
-    rw [hfactor]
-    have hA_factor : (65 : Nat).factorization 7 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 65)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 65)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A65_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 65 12 3 := by
@@ -21061,7 +9746,8 @@ theorem orderOf_b12_mod137170776127_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 137170776127)ˣ) :
           ZMod 137170776127) ^ 12) =
         (1 : ZMod 137170776127)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -21100,24 +9786,13 @@ theorem concrete_generated_b12_F12_A77_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A77_p2_prime_witness :
     PrimeComponentWitness 12 77 12 2 5 := by
-  refine ⟨(by decide : Nat.Prime 5), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 5 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 5 = 1 := by
-      rw [show (2985985 : Nat) = 5 * 597197 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 5),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 597197),
-      ]
-    rw [hfactor]
-    have hA_factor : (77 : Nat).factorization 5 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 77)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 77)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A77_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 77 12 2 := by
@@ -21125,24 +9800,13 @@ theorem concrete_generated_b12_F12_A77_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A77_p3_prime_witness :
     PrimeComponentWitness 12 77 12 3 19 := by
-  refine ⟨(by decide : Nat.Prime 19), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 19 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 19 = 1 := by
-      rw [show (430002433 : Nat) = 19 * 22631707 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 19),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 22631707),
-      ]
-    rw [hfactor]
-    have hA_factor : (77 : Nat).factorization 19 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 77)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 77)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A77_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 77 12 3 := by
@@ -21177,7 +9841,8 @@ theorem orderOf_b12_mod115793512315_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 115793512315)ˣ) :
           ZMod 115793512315) ^ 12) =
         (1 : ZMod 115793512315)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -21216,24 +9881,13 @@ theorem concrete_generated_b12_F12_A91_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A91_p2_prime_witness :
     PrimeComponentWitness 12 91 12 2 5 := by
-  refine ⟨(by decide : Nat.Prime 5), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 5 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 5 = 1 := by
-      rw [show (2985985 : Nat) = 5 * 597197 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 5),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 597197),
-      ]
-    rw [hfactor]
-    have hA_factor : (91 : Nat).factorization 5 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 91)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 91)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A91_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 91 12 2 := by
@@ -21241,24 +9895,13 @@ theorem concrete_generated_b12_F12_A91_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A91_p3_prime_witness :
     PrimeComponentWitness 12 91 12 3 19 := by
-  refine ⟨(by decide : Nat.Prime 19), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 19 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 19 = 1 := by
-      rw [show (430002433 : Nat) = 19 * 22631707 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 19),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 22631707),
-      ]
-    rw [hfactor]
-    have hA_factor : (91 : Nat).factorization 19 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 91)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 91)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A91_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 91 12 3 := by
@@ -21293,7 +9936,8 @@ theorem orderOf_b12_mod97979125805_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 97979125805)ˣ) :
           ZMod 97979125805) ^ 12) =
         (1 : ZMod 97979125805)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -21332,24 +9976,13 @@ theorem concrete_generated_b12_F12_A95_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A95_p2_prime_witness :
     PrimeComponentWitness 12 95 12 2 29 := by
-  refine ⟨(by decide : Nat.Prime 29), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 29 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 29 = 1 := by
-      rw [show (2985985 : Nat) = 29 * 102965 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 29),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 102965),
-      ]
-    rw [hfactor]
-    have hA_factor : (95 : Nat).factorization 29 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 95)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 95)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A95_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 95 12 2 := by
@@ -21357,24 +9990,13 @@ theorem concrete_generated_b12_F12_A95_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A95_p3_prime_witness :
     PrimeComponentWitness 12 95 12 3 7 := by
-  refine ⟨(by decide : Nat.Prime 7), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 7 = 1 := by
-      rw [show (430002433 : Nat) = 7 * 61428919 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 7),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 61428919),
-      ]
-    rw [hfactor]
-    have hA_factor : (95 : Nat).factorization 7 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 95)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 95)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A95_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 95 12 3 := by
@@ -21409,7 +10031,8 @@ theorem orderOf_b12_mod93853688929_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 93853688929)ˣ) :
           ZMod 93853688929) ^ 12) =
         (1 : ZMod 93853688929)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -21448,24 +10071,13 @@ theorem concrete_generated_b12_F12_A203_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A203_p2_prime_witness :
     PrimeComponentWitness 12 203 12 2 5 := by
-  refine ⟨(by decide : Nat.Prime 5), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 5 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 5 = 1 := by
-      rw [show (2985985 : Nat) = 5 * 597197 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 5),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 597197),
-      ]
-    rw [hfactor]
-    have hA_factor : (203 : Nat).factorization 5 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 203)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 203)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A203_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 203 12 2 := by
@@ -21473,24 +10085,13 @@ theorem concrete_generated_b12_F12_A203_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A203_p3_prime_witness :
     PrimeComponentWitness 12 203 12 3 19 := by
-  refine ⟨(by decide : Nat.Prime 19), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 19 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 19 = 1 := by
-      rw [show (430002433 : Nat) = 19 * 22631707 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 19),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 22631707),
-      ]
-    rw [hfactor]
-    have hA_factor : (203 : Nat).factorization 19 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 203)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 203)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A203_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 203 12 3 := by
@@ -21525,7 +10126,8 @@ theorem orderOf_b12_mod43921677085_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 43921677085)ˣ) :
           ZMod 43921677085) ^ 12) =
         (1 : ZMod 43921677085)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -21564,24 +10166,13 @@ theorem concrete_generated_b12_F12_A715_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A715_p2_prime_witness :
     PrimeComponentWitness 12 715 12 2 29 := by
-  refine ⟨(by decide : Nat.Prime 29), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 29 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 29 = 1 := by
-      rw [show (2985985 : Nat) = 29 * 102965 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 29),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 102965),
-      ]
-    rw [hfactor]
-    have hA_factor : (715 : Nat).factorization 29 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 715)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 715)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A715_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 715 12 2 := by
@@ -21589,24 +10180,13 @@ theorem concrete_generated_b12_F12_A715_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A715_p3_prime_witness :
     PrimeComponentWitness 12 715 12 3 7 := by
-  refine ⟨(by decide : Nat.Prime 7), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 7 = 1 := by
-      rw [show (430002433 : Nat) = 7 * 61428919 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 7),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 61428919),
-      ]
-    rw [hfactor]
-    have hA_factor : (715 : Nat).factorization 7 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 715)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 715)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A715_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 715 12 3 := by
@@ -21641,7 +10221,8 @@ theorem orderOf_b12_mod12470070557_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 12470070557)ˣ) :
           ZMod 12470070557) ^ 12) =
         (1 : ZMod 12470070557)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -21680,24 +10261,13 @@ theorem concrete_generated_b12_F12_A785_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A785_p2_prime_witness :
     PrimeComponentWitness 12 785 12 2 29 := by
-  refine ⟨(by decide : Nat.Prime 29), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 29 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 29 = 1 := by
-      rw [show (2985985 : Nat) = 29 * 102965 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 29),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 102965),
-      ]
-    rw [hfactor]
-    have hA_factor : (785 : Nat).factorization 29 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 785)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 785)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A785_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 785 12 2 := by
@@ -21705,24 +10275,13 @@ theorem concrete_generated_b12_F12_A785_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A785_p3_prime_witness :
     PrimeComponentWitness 12 785 12 3 7 := by
-  refine ⟨(by decide : Nat.Prime 7), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 7 = 1 := by
-      rw [show (430002433 : Nat) = 7 * 61428919 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 7),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 61428919),
-      ]
-    rw [hfactor]
-    have hA_factor : (785 : Nat).factorization 7 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 785)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 785)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A785_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 785 12 3 := by
@@ -21757,7 +10316,8 @@ theorem orderOf_b12_mod11358089743_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 11358089743)ˣ) :
           ZMod 11358089743) ^ 12) =
         (1 : ZMod 11358089743)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -21796,24 +10356,13 @@ theorem concrete_generated_b12_F12_A1001_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A1001_p2_prime_witness :
     PrimeComponentWitness 12 1001 12 2 5 := by
-  refine ⟨(by decide : Nat.Prime 5), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 5 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 5 = 1 := by
-      rw [show (2985985 : Nat) = 5 * 597197 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 5),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 597197),
-      ]
-    rw [hfactor]
-    have hA_factor : (1001 : Nat).factorization 5 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 1001)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 1001)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A1001_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 1001 12 2 := by
@@ -21821,24 +10370,13 @@ theorem concrete_generated_b12_F12_A1001_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A1001_p3_prime_witness :
     PrimeComponentWitness 12 1001 12 3 19 := by
-  refine ⟨(by decide : Nat.Prime 19), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 19 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 19 = 1 := by
-      rw [show (430002433 : Nat) = 19 * 22631707 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 19),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 22631707),
-      ]
-    rw [hfactor]
-    have hA_factor : (1001 : Nat).factorization 19 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 1001)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 1001)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A1001_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 1001 12 3 := by
@@ -21873,7 +10411,8 @@ theorem orderOf_b12_mod8907193255_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 8907193255)ˣ) :
           ZMod 8907193255) ^ 12) =
         (1 : ZMod 8907193255)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -21912,24 +10451,13 @@ theorem concrete_generated_b12_F12_A1045_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A1045_p2_prime_witness :
     PrimeComponentWitness 12 1045 12 2 29 := by
-  refine ⟨(by decide : Nat.Prime 29), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 29 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 29 = 1 := by
-      rw [show (2985985 : Nat) = 29 * 102965 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 29),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 102965),
-      ]
-    rw [hfactor]
-    have hA_factor : (1045 : Nat).factorization 29 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 1045)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 1045)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A1045_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 1045 12 2 := by
@@ -21937,24 +10465,13 @@ theorem concrete_generated_b12_F12_A1045_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A1045_p3_prime_witness :
     PrimeComponentWitness 12 1045 12 3 7 := by
-  refine ⟨(by decide : Nat.Prime 7), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 7 = 1 := by
-      rw [show (430002433 : Nat) = 7 * 61428919 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 7),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 61428919),
-      ]
-    rw [hfactor]
-    have hA_factor : (1045 : Nat).factorization 7 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 1045)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 1045)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A1045_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 1045 12 3 := by
@@ -21989,7 +10506,8 @@ theorem orderOf_b12_mod8532153539_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 8532153539)ˣ) :
           ZMod 8532153539) ^ 12) =
         (1 : ZMod 8532153539)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -22028,24 +10546,13 @@ theorem concrete_generated_b12_F12_A1099_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A1099_p2_prime_witness :
     PrimeComponentWitness 12 1099 12 2 5 := by
-  refine ⟨(by decide : Nat.Prime 5), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 5 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 5 = 1 := by
-      rw [show (2985985 : Nat) = 5 * 597197 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 5),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 597197),
-      ]
-    rw [hfactor]
-    have hA_factor : (1099 : Nat).factorization 5 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 1099)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 1099)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A1099_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 1099 12 2 := by
@@ -22053,24 +10560,13 @@ theorem concrete_generated_b12_F12_A1099_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A1099_p3_prime_witness :
     PrimeComponentWitness 12 1099 12 3 19 := by
-  refine ⟨(by decide : Nat.Prime 19), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 19 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 19 = 1 := by
-      rw [show (430002433 : Nat) = 19 * 22631707 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 19),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 22631707),
-      ]
-    rw [hfactor]
-    have hA_factor : (1099 : Nat).factorization 19 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 1099)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 1099)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A1099_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 1099 12 3 := by
@@ -22105,7 +10601,8 @@ theorem orderOf_b12_mod8112921245_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 8112921245)ˣ) :
           ZMod 8112921245) ^ 12) =
         (1 : ZMod 8112921245)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -22144,24 +10641,13 @@ theorem concrete_generated_b12_F12_A1235_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A1235_p2_prime_witness :
     PrimeComponentWitness 12 1235 12 2 29 := by
-  refine ⟨(by decide : Nat.Prime 29), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 29 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 29 = 1 := by
-      rw [show (2985985 : Nat) = 29 * 102965 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 29),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 102965),
-      ]
-    rw [hfactor]
-    have hA_factor : (1235 : Nat).factorization 29 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 1235)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 1235)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A1235_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 1235 12 2 := by
@@ -22169,24 +10655,13 @@ theorem concrete_generated_b12_F12_A1235_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A1235_p3_prime_witness :
     PrimeComponentWitness 12 1235 12 3 7 := by
-  refine ⟨(by decide : Nat.Prime 7), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 7 = 1 := by
-      rw [show (430002433 : Nat) = 7 * 61428919 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 7),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 61428919),
-      ]
-    rw [hfactor]
-    have hA_factor : (1235 : Nat).factorization 7 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 1235)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 1235)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A1235_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 1235 12 3 := by
@@ -22221,7 +10696,8 @@ theorem orderOf_b12_mod7219514533_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 7219514533)ˣ) :
           ZMod 7219514533) ^ 12) =
         (1 : ZMod 7219514533)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -22260,24 +10736,13 @@ theorem concrete_generated_b12_F12_A2233_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A2233_p2_prime_witness :
     PrimeComponentWitness 12 2233 12 2 5 := by
-  refine ⟨(by decide : Nat.Prime 5), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 5 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 5 = 1 := by
-      rw [show (2985985 : Nat) = 5 * 597197 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 5),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 597197),
-      ]
-    rw [hfactor]
-    have hA_factor : (2233 : Nat).factorization 5 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 2233)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 2233)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A2233_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 2233 12 2 := by
@@ -22285,24 +10750,13 @@ theorem concrete_generated_b12_F12_A2233_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A2233_p3_prime_witness :
     PrimeComponentWitness 12 2233 12 3 19 := by
-  refine ⟨(by decide : Nat.Prime 19), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 19 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 19 = 1 := by
-      rw [show (430002433 : Nat) = 19 * 22631707 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 19),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 22631707),
-      ]
-    rw [hfactor]
-    have hA_factor : (2233 : Nat).factorization 19 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 2233)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 2233)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A2233_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 2233 12 3 := by
@@ -22337,7 +10791,8 @@ theorem orderOf_b12_mod3992879735_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 3992879735)ˣ) :
           ZMod 3992879735) ^ 12) =
         (1 : ZMod 3992879735)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -22376,24 +10831,13 @@ theorem concrete_generated_b12_F12_A2639_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A2639_p2_prime_witness :
     PrimeComponentWitness 12 2639 12 2 5 := by
-  refine ⟨(by decide : Nat.Prime 5), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 5 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 5 = 1 := by
-      rw [show (2985985 : Nat) = 5 * 597197 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 5),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 597197),
-      ]
-    rw [hfactor]
-    have hA_factor : (2639 : Nat).factorization 5 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 2639)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 2639)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A2639_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 2639 12 2 := by
@@ -22401,24 +10845,13 @@ theorem concrete_generated_b12_F12_A2639_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A2639_p3_prime_witness :
     PrimeComponentWitness 12 2639 12 3 19 := by
-  refine ⟨(by decide : Nat.Prime 19), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 19 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 19 = 1 := by
-      rw [show (430002433 : Nat) = 19 * 22631707 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 19),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 22631707),
-      ]
-    rw [hfactor]
-    have hA_factor : (2639 : Nat).factorization 19 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 2639)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 2639)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A2639_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 2639 12 3 := by
@@ -22453,7 +10886,8 @@ theorem orderOf_b12_mod3378590545_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 3378590545)ˣ) :
           ZMod 3378590545) ^ 12) =
         (1 : ZMod 3378590545)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -22492,24 +10926,13 @@ theorem concrete_generated_b12_F12_A8635_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A8635_p2_prime_witness :
     PrimeComponentWitness 12 8635 12 2 29 := by
-  refine ⟨(by decide : Nat.Prime 29), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 29 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 29 = 1 := by
-      rw [show (2985985 : Nat) = 29 * 102965 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 29),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 102965),
-      ]
-    rw [hfactor]
-    have hA_factor : (8635 : Nat).factorization 29 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 8635)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 8635)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A8635_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 8635 12 2 := by
@@ -22517,24 +10940,13 @@ theorem concrete_generated_b12_F12_A8635_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A8635_p3_prime_witness :
     PrimeComponentWitness 12 8635 12 3 7 := by
-  refine ⟨(by decide : Nat.Prime 7), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 7 = 1 := by
-      rw [show (430002433 : Nat) = 7 * 61428919 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 7),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 61428919),
-      ]
-    rw [hfactor]
-    have hA_factor : (8635 : Nat).factorization 7 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 8635)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 8635)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A8635_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 8635 12 3 := by
@@ -22569,7 +10981,8 @@ theorem orderOf_b12_mod1032553613_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 1032553613)ˣ) :
           ZMod 1032553613) ^ 12) =
         (1 : ZMod 1032553613)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -22608,24 +11021,13 @@ theorem concrete_generated_b12_F12_A10205_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A10205_p2_prime_witness :
     PrimeComponentWitness 12 10205 12 2 29 := by
-  refine ⟨(by decide : Nat.Prime 29), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 29 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 29 = 1 := by
-      rw [show (2985985 : Nat) = 29 * 102965 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 29),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 102965),
-      ]
-    rw [hfactor]
-    have hA_factor : (10205 : Nat).factorization 29 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 10205)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 10205)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A10205_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 10205 12 2 := by
@@ -22633,24 +11035,13 @@ theorem concrete_generated_b12_F12_A10205_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A10205_p3_prime_witness :
     PrimeComponentWitness 12 10205 12 3 7 := by
-  refine ⟨(by decide : Nat.Prime 7), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 7 = 1 := by
-      rw [show (430002433 : Nat) = 7 * 61428919 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 7),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 61428919),
-      ]
-    rw [hfactor]
-    have hA_factor : (10205 : Nat).factorization 7 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 10205)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 10205)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A10205_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 10205 12 3 := by
@@ -22685,7 +11076,8 @@ theorem orderOf_b12_mod873699211_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 873699211)ˣ) :
           ZMod 873699211) ^ 12) =
         (1 : ZMod 873699211)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -22724,24 +11116,13 @@ theorem concrete_generated_b12_F12_A12089_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A12089_p2_prime_witness :
     PrimeComponentWitness 12 12089 12 2 5 := by
-  refine ⟨(by decide : Nat.Prime 5), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 5 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 5 = 1 := by
-      rw [show (2985985 : Nat) = 5 * 597197 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 5),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 597197),
-      ]
-    rw [hfactor]
-    have hA_factor : (12089 : Nat).factorization 5 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 12089)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 12089)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A12089_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 12089 12 2 := by
@@ -22749,24 +11130,13 @@ theorem concrete_generated_b12_F12_A12089_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A12089_p3_prime_witness :
     PrimeComponentWitness 12 12089 12 3 19 := by
-  refine ⟨(by decide : Nat.Prime 19), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 19 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 19 = 1 := by
-      rw [show (430002433 : Nat) = 19 * 22631707 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 19),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 22631707),
-      ]
-    rw [hfactor]
-    have hA_factor : (12089 : Nat).factorization 19 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 12089)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 12089)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A12089_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 12089 12 3 := by
@@ -22801,7 +11171,8 @@ theorem orderOf_b12_mod737538295_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 737538295)ˣ) :
           ZMod 737538295) ^ 12) =
         (1 : ZMod 737538295)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -22840,24 +11211,13 @@ theorem concrete_generated_b12_F12_A13585_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A13585_p2_prime_witness :
     PrimeComponentWitness 12 13585 12 2 29 := by
-  refine ⟨(by decide : Nat.Prime 29), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 29 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 29 = 1 := by
-      rw [show (2985985 : Nat) = 29 * 102965 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 29),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 102965),
-      ]
-    rw [hfactor]
-    have hA_factor : (13585 : Nat).factorization 29 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 13585)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 13585)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A13585_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 13585 12 2 := by
@@ -22865,24 +11225,13 @@ theorem concrete_generated_b12_F12_A13585_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A13585_p3_prime_witness :
     PrimeComponentWitness 12 13585 12 3 7 := by
-  refine ⟨(by decide : Nat.Prime 7), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 7 = 1 := by
-      rw [show (430002433 : Nat) = 7 * 61428919 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 7),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 61428919),
-      ]
-    rw [hfactor]
-    have hA_factor : (13585 : Nat).factorization 7 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 13585)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 13585)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A13585_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 13585 12 3 := by
@@ -22917,7 +11266,8 @@ theorem orderOf_b12_mod656319503_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 656319503)ˣ) :
           ZMod 656319503) ^ 12) =
         (1 : ZMod 656319503)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -22956,24 +11306,13 @@ theorem concrete_generated_b12_F12_A14287_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A14287_p2_prime_witness :
     PrimeComponentWitness 12 14287 12 2 5 := by
-  refine ⟨(by decide : Nat.Prime 5), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 5 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 5 = 1 := by
-      rw [show (2985985 : Nat) = 5 * 597197 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 5),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 597197),
-      ]
-    rw [hfactor]
-    have hA_factor : (14287 : Nat).factorization 5 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 14287)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 14287)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A14287_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 14287 12 2 := by
@@ -22981,24 +11320,13 @@ theorem concrete_generated_b12_F12_A14287_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A14287_p3_prime_witness :
     PrimeComponentWitness 12 14287 12 3 19 := by
-  refine ⟨(by decide : Nat.Prime 19), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 19 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 19 = 1 := by
-      rw [show (430002433 : Nat) = 19 * 22631707 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 19),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 22631707),
-      ]
-    rw [hfactor]
-    have hA_factor : (14287 : Nat).factorization 19 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 14287)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 14287)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A14287_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 14287 12 3 := by
@@ -23033,7 +11361,8 @@ theorem orderOf_b12_mod624070865_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 624070865)ˣ) :
           ZMod 624070865) ^ 12) =
         (1 : ZMod 624070865)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -23072,24 +11401,13 @@ theorem concrete_generated_b12_F12_A14915_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A14915_p2_prime_witness :
     PrimeComponentWitness 12 14915 12 2 29 := by
-  refine ⟨(by decide : Nat.Prime 29), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 29 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 29 = 1 := by
-      rw [show (2985985 : Nat) = 29 * 102965 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 29),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 102965),
-      ]
-    rw [hfactor]
-    have hA_factor : (14915 : Nat).factorization 29 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 14915)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 14915)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A14915_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 14915 12 2 := by
@@ -23097,24 +11415,13 @@ theorem concrete_generated_b12_F12_A14915_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A14915_p3_prime_witness :
     PrimeComponentWitness 12 14915 12 3 7 := by
-  refine ⟨(by decide : Nat.Prime 7), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 7 = 1 := by
-      rw [show (430002433 : Nat) = 7 * 61428919 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 7),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 61428919),
-      ]
-    rw [hfactor]
-    have hA_factor : (14915 : Nat).factorization 7 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 14915)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 14915)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A14915_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 14915 12 3 := by
@@ -23149,7 +11456,8 @@ theorem orderOf_b12_mod597794197_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 597794197)ˣ) :
           ZMod 597794197) ^ 12) =
         (1 : ZMod 597794197)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -23188,24 +11496,13 @@ theorem concrete_generated_b12_F12_A29029_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A29029_p2_prime_witness :
     PrimeComponentWitness 12 29029 12 2 5 := by
-  refine ⟨(by decide : Nat.Prime 5), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 5 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 5 = 1 := by
-      rw [show (2985985 : Nat) = 5 * 597197 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 5),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 597197),
-      ]
-    rw [hfactor]
-    have hA_factor : (29029 : Nat).factorization 5 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 29029)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 29029)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A29029_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 29029 12 2 := by
@@ -23213,24 +11510,13 @@ theorem concrete_generated_b12_F12_A29029_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A29029_p3_prime_witness :
     PrimeComponentWitness 12 29029 12 3 19 := by
-  refine ⟨(by decide : Nat.Prime 19), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 19 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 19 = 1 := by
-      rw [show (430002433 : Nat) = 19 * 22631707 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 19),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 22631707),
-      ]
-    rw [hfactor]
-    have hA_factor : (29029 : Nat).factorization 19 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 29029)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 29029)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A29029_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 29029 12 3 := by
@@ -23265,7 +11551,8 @@ theorem orderOf_b12_mod307144595_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 307144595)ˣ) :
           ZMod 307144595) ^ 12) =
         (1 : ZMod 307144595)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -23304,24 +11591,13 @@ theorem concrete_generated_b12_F12_A31871_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A31871_p2_prime_witness :
     PrimeComponentWitness 12 31871 12 2 5 := by
-  refine ⟨(by decide : Nat.Prime 5), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 5 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 5 = 1 := by
-      rw [show (2985985 : Nat) = 5 * 597197 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 5),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 597197),
-      ]
-    rw [hfactor]
-    have hA_factor : (31871 : Nat).factorization 5 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 31871)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 31871)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A31871_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 31871 12 2 := by
@@ -23329,24 +11605,13 @@ theorem concrete_generated_b12_F12_A31871_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A31871_p3_prime_witness :
     PrimeComponentWitness 12 31871 12 3 19 := by
-  refine ⟨(by decide : Nat.Prime 19), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 19 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 19 = 1 := by
-      rw [show (430002433 : Nat) = 19 * 22631707 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 19),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 22631707),
-      ]
-    rw [hfactor]
-    have hA_factor : (31871 : Nat).factorization 19 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 31871)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 31871)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A31871_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 31871 12 3 := by
@@ -23381,7 +11646,8 @@ theorem orderOf_b12_mod279755905_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 279755905)ˣ) :
           ZMod 279755905) ^ 12) =
         (1 : ZMod 279755905)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -23420,24 +11686,13 @@ theorem concrete_generated_b12_F12_A11_factorization_support_cases
 
 theorem concrete_generated_b12_F12_A11_p2_prime_witness :
     PrimeComponentWitness 12 11 12 2 5 := by
-  refine ⟨(by decide : Nat.Prime 5), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 5 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
-    rw [hquot]
-    have hfactor : (2985985 : Nat).factorization 5 = 1 := by
-      rw [show (2985985 : Nat) = 5 * 597197 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 5),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 597197),
-      ]
-    rw [hfactor]
-    have hA_factor : (11 : Nat).factorization 5 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 11)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 11)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A11_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 11 12 2 := by
@@ -23445,24 +11700,13 @@ theorem concrete_generated_b12_F12_A11_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b12_F12_A11_p3_prime_witness :
     PrimeComponentWitness 12 11 12 3 7 := by
-  refine ⟨(by decide : Nat.Prime 7), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
-    rw [hquot]
-    have hfactor : (430002433 : Nat).factorization 7 = 1 := by
-      rw [show (430002433 : Nat) = 7 * 61428919 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 7),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 61428919),
-      ]
-    rw [hfactor]
-    have hA_factor : (11 : Nat).factorization 7 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 11)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 11)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b12_F12_A11_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 11 12 3 := by
@@ -23497,7 +11741,8 @@ theorem orderOf_b12_mod810554586205_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 12 hcop : (ZMod 810554586205)ˣ) :
           ZMod 810554586205) ^ 12) =
         (1 : ZMod 810554586205)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -23536,24 +11781,13 @@ theorem concrete_generated_b6_F12_A641173_factorization_support_cases
 
 theorem concrete_generated_b6_F12_A641173_p2_prime_witness :
     PrimeComponentWitness 12 641173 6 2 97 := by
-  refine ⟨(by decide : Nat.Prime 97), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 6 12 2 = 46657 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 6 12 2 = 46657 := by decide
+  have hq : Nat.Prime 97 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 6 12 2 = 46657 := by decide
-    rw [hquot]
-    have hfactor : (46657 : Nat).factorization 97 = 1 := by
-      rw [show (46657 : Nat) = 97 * 481 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 97),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 97 ∣ 481),
-      ]
-    rw [hfactor]
-    have hA_factor : (641173 : Nat).factorization 97 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 97 ∣ 641173)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 97 ∣ 641173)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b6_F12_A641173_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 641173 6 2 := by
@@ -23561,24 +11795,13 @@ theorem concrete_generated_b6_F12_A641173_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b6_F12_A641173_p3_prime_witness :
     PrimeComponentWitness 12 641173 6 3 97 := by
-  refine ⟨(by decide : Nat.Prime 97), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 6 12 3 = 1680913 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 6 12 3 = 1680913 := by decide
+  have hq : Nat.Prime 97 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 6 12 3 = 1680913 := by decide
-    rw [hquot]
-    have hfactor : (1680913 : Nat).factorization 97 = 1 := by
-      rw [show (1680913 : Nat) = 97 * 17329 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 97),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 97 ∣ 17329),
-      ]
-    rw [hfactor]
-    have hA_factor : (641173 : Nat).factorization 97 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 97 ∣ 641173)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 97 ∣ 641173)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b6_F12_A641173_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 641173 6 3 := by
@@ -23612,7 +11835,8 @@ theorem orderOf_b6_mod3395_eq_12_from_emittedCertificate_denNorm :
       apply Units.ext
       change (((ZMod.unitOfCoprime 6 hcop : (ZMod 3395)ˣ) : ZMod 3395) ^ 12) =
         (1 : ZMod 3395)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -23651,24 +11875,13 @@ theorem concrete_generated_b6_F12_A14911_factorization_support_cases
 
 theorem concrete_generated_b6_F12_A14911_p2_prime_witness :
     PrimeComponentWitness 12 14911 6 2 97 := by
-  refine ⟨(by decide : Nat.Prime 97), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 6 12 2 = 46657 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 6 12 2 = 46657 := by decide
+  have hq : Nat.Prime 97 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 6 12 2 = 46657 := by decide
-    rw [hquot]
-    have hfactor : (46657 : Nat).factorization 97 = 1 := by
-      rw [show (46657 : Nat) = 97 * 481 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 97),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 97 ∣ 481),
-      ]
-    rw [hfactor]
-    have hA_factor : (14911 : Nat).factorization 97 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 97 ∣ 14911)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 97 ∣ 14911)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b6_F12_A14911_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 14911 6 2 := by
@@ -23676,24 +11889,13 @@ theorem concrete_generated_b6_F12_A14911_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b6_F12_A14911_p3_prime_witness :
     PrimeComponentWitness 12 14911 6 3 43 := by
-  refine ⟨(by decide : Nat.Prime 43), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 6 12 3 = 1680913 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 6 12 3 = 1680913 := by decide
+  have hq : Nat.Prime 43 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 6 12 3 = 1680913 := by decide
-    rw [hquot]
-    have hfactor : (1680913 : Nat).factorization 43 = 1 := by
-      rw [show (1680913 : Nat) = 43 * 39091 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 43),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 43 ∣ 39091),
-      ]
-    rw [hfactor]
-    have hA_factor : (14911 : Nat).factorization 43 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 43 ∣ 14911)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 43 ∣ 14911)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b6_F12_A14911_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 14911 6 3 := by
@@ -23727,7 +11929,8 @@ theorem orderOf_b6_mod145985_eq_12_from_emittedCertificate_denNorm :
       apply Units.ext
       change (((ZMod.unitOfCoprime 6 hcop : (ZMod 145985)ˣ) : ZMod 145985) ^ 12) =
         (1 : ZMod 145985)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -23766,24 +11969,13 @@ theorem concrete_generated_b6_F12_A17329_factorization_support_cases
 
 theorem concrete_generated_b6_F12_A17329_p2_prime_witness :
     PrimeComponentWitness 12 17329 6 2 37 := by
-  refine ⟨(by decide : Nat.Prime 37), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 6 12 2 = 46657 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 6 12 2 = 46657 := by decide
+  have hq : Nat.Prime 37 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 6 12 2 = 46657 := by decide
-    rw [hquot]
-    have hfactor : (46657 : Nat).factorization 37 = 1 := by
-      rw [show (46657 : Nat) = 37 * 1261 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 37),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 37 ∣ 1261),
-      ]
-    rw [hfactor]
-    have hA_factor : (17329 : Nat).factorization 37 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 37 ∣ 17329)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 37 ∣ 17329)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b6_F12_A17329_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 17329 6 2 := by
@@ -23791,24 +11983,13 @@ theorem concrete_generated_b6_F12_A17329_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b6_F12_A17329_p3_prime_witness :
     PrimeComponentWitness 12 17329 6 3 97 := by
-  refine ⟨(by decide : Nat.Prime 97), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 6 12 3 = 1680913 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 6 12 3 = 1680913 := by decide
+  have hq : Nat.Prime 97 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 6 12 3 = 1680913 := by decide
-    rw [hquot]
-    have hfactor : (1680913 : Nat).factorization 97 = 1 := by
-      rw [show (1680913 : Nat) = 97 * 17329 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 97),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 97 ∣ 17329),
-      ]
-    rw [hfactor]
-    have hA_factor : (17329 : Nat).factorization 97 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 97 ∣ 17329)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 97 ∣ 17329)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b6_F12_A17329_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 17329 6 3 := by
@@ -23842,7 +12023,8 @@ theorem orderOf_b6_mod125615_eq_12_from_emittedCertificate_denNorm :
       apply Units.ext
       change (((ZMod.unitOfCoprime 6 hcop : (ZMod 125615)ˣ) : ZMod 125615) ^ 12) =
         (1 : ZMod 125615)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -23876,26 +12058,13 @@ theorem concrete_generated_b2_F105_A332351_factorization_support_cases
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b2_F105_A332351_p3_prime_witness :
     PrimeComponentWitness 105 332351 2 3 7 := by
-  refine ⟨(by decide : Nat.Prime 7), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 105 3 = 1180591620751771041793 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 2 105 3 = 1180591620751771041793 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 105 3 = 1180591620751771041793 := by decide
-    rw [hquot]
-    have hfactor : (1180591620751771041793 : Nat).factorization 7 = 2 := by
-      rw [show (1180591620751771041793 : Nat) = 7 ^ 2 * 24093706545954511057 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      change (7 ^ 2 : Nat).factorization 7 + (24093706545954511057 : Nat).factorization 7 = 2
-      have hleft : (7 ^ 2 : Nat).factorization 7 = 2 :=
-        Nat.factorization_pow_self (by decide : Nat.Prime 7)
-      have hright : (24093706545954511057 : Nat).factorization 7 = 0 :=
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 24093706545954511057)
-      rw [hleft, hright]
-    rw [hfactor]
-    have hA_factor : (332351 : Nat).factorization 7 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 332351)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 332351)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F105_A332351_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 105 332351 2 3 := by
@@ -23903,195 +12072,13 @@ theorem concrete_generated_b2_F105_A332351_p3_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b2_F105_A332351_p5_prime_witness :
     PrimeComponentWitness 105 332351 2 5 29191 := by
-  have hq_prime : Nat.Prime 29191 := by
-    rw [Nat.prime_def_le_sqrt]
-    constructor
-    · decide
-    · intro m hm_ge hm_le hdiv
-      have hm_le170 : m ≤ 170 := by
-        have hsqrt_lt : Nat.sqrt 29191 < 171 :=
-          (Nat.sqrt_lt'.2 (by decide : 29191 < 171 ^ 2))
-        exact Nat.le_of_lt_succ (lt_of_le_of_lt hm_le hsqrt_lt)
-      interval_cases m
-      · exact (by decide : ¬ 2 ∣ 29191) hdiv
-      · exact (by decide : ¬ 3 ∣ 29191) hdiv
-      · exact (by decide : ¬ 4 ∣ 29191) hdiv
-      · exact (by decide : ¬ 5 ∣ 29191) hdiv
-      · exact (by decide : ¬ 6 ∣ 29191) hdiv
-      · exact (by decide : ¬ 7 ∣ 29191) hdiv
-      · exact (by decide : ¬ 8 ∣ 29191) hdiv
-      · exact (by decide : ¬ 9 ∣ 29191) hdiv
-      · exact (by decide : ¬ 10 ∣ 29191) hdiv
-      · exact (by decide : ¬ 11 ∣ 29191) hdiv
-      · exact (by decide : ¬ 12 ∣ 29191) hdiv
-      · exact (by decide : ¬ 13 ∣ 29191) hdiv
-      · exact (by decide : ¬ 14 ∣ 29191) hdiv
-      · exact (by decide : ¬ 15 ∣ 29191) hdiv
-      · exact (by decide : ¬ 16 ∣ 29191) hdiv
-      · exact (by decide : ¬ 17 ∣ 29191) hdiv
-      · exact (by decide : ¬ 18 ∣ 29191) hdiv
-      · exact (by decide : ¬ 19 ∣ 29191) hdiv
-      · exact (by decide : ¬ 20 ∣ 29191) hdiv
-      · exact (by decide : ¬ 21 ∣ 29191) hdiv
-      · exact (by decide : ¬ 22 ∣ 29191) hdiv
-      · exact (by decide : ¬ 23 ∣ 29191) hdiv
-      · exact (by decide : ¬ 24 ∣ 29191) hdiv
-      · exact (by decide : ¬ 25 ∣ 29191) hdiv
-      · exact (by decide : ¬ 26 ∣ 29191) hdiv
-      · exact (by decide : ¬ 27 ∣ 29191) hdiv
-      · exact (by decide : ¬ 28 ∣ 29191) hdiv
-      · exact (by decide : ¬ 29 ∣ 29191) hdiv
-      · exact (by decide : ¬ 30 ∣ 29191) hdiv
-      · exact (by decide : ¬ 31 ∣ 29191) hdiv
-      · exact (by decide : ¬ 32 ∣ 29191) hdiv
-      · exact (by decide : ¬ 33 ∣ 29191) hdiv
-      · exact (by decide : ¬ 34 ∣ 29191) hdiv
-      · exact (by decide : ¬ 35 ∣ 29191) hdiv
-      · exact (by decide : ¬ 36 ∣ 29191) hdiv
-      · exact (by decide : ¬ 37 ∣ 29191) hdiv
-      · exact (by decide : ¬ 38 ∣ 29191) hdiv
-      · exact (by decide : ¬ 39 ∣ 29191) hdiv
-      · exact (by decide : ¬ 40 ∣ 29191) hdiv
-      · exact (by decide : ¬ 41 ∣ 29191) hdiv
-      · exact (by decide : ¬ 42 ∣ 29191) hdiv
-      · exact (by decide : ¬ 43 ∣ 29191) hdiv
-      · exact (by decide : ¬ 44 ∣ 29191) hdiv
-      · exact (by decide : ¬ 45 ∣ 29191) hdiv
-      · exact (by decide : ¬ 46 ∣ 29191) hdiv
-      · exact (by decide : ¬ 47 ∣ 29191) hdiv
-      · exact (by decide : ¬ 48 ∣ 29191) hdiv
-      · exact (by decide : ¬ 49 ∣ 29191) hdiv
-      · exact (by decide : ¬ 50 ∣ 29191) hdiv
-      · exact (by decide : ¬ 51 ∣ 29191) hdiv
-      · exact (by decide : ¬ 52 ∣ 29191) hdiv
-      · exact (by decide : ¬ 53 ∣ 29191) hdiv
-      · exact (by decide : ¬ 54 ∣ 29191) hdiv
-      · exact (by decide : ¬ 55 ∣ 29191) hdiv
-      · exact (by decide : ¬ 56 ∣ 29191) hdiv
-      · exact (by decide : ¬ 57 ∣ 29191) hdiv
-      · exact (by decide : ¬ 58 ∣ 29191) hdiv
-      · exact (by decide : ¬ 59 ∣ 29191) hdiv
-      · exact (by decide : ¬ 60 ∣ 29191) hdiv
-      · exact (by decide : ¬ 61 ∣ 29191) hdiv
-      · exact (by decide : ¬ 62 ∣ 29191) hdiv
-      · exact (by decide : ¬ 63 ∣ 29191) hdiv
-      · exact (by decide : ¬ 64 ∣ 29191) hdiv
-      · exact (by decide : ¬ 65 ∣ 29191) hdiv
-      · exact (by decide : ¬ 66 ∣ 29191) hdiv
-      · exact (by decide : ¬ 67 ∣ 29191) hdiv
-      · exact (by decide : ¬ 68 ∣ 29191) hdiv
-      · exact (by decide : ¬ 69 ∣ 29191) hdiv
-      · exact (by decide : ¬ 70 ∣ 29191) hdiv
-      · exact (by decide : ¬ 71 ∣ 29191) hdiv
-      · exact (by decide : ¬ 72 ∣ 29191) hdiv
-      · exact (by decide : ¬ 73 ∣ 29191) hdiv
-      · exact (by decide : ¬ 74 ∣ 29191) hdiv
-      · exact (by decide : ¬ 75 ∣ 29191) hdiv
-      · exact (by decide : ¬ 76 ∣ 29191) hdiv
-      · exact (by decide : ¬ 77 ∣ 29191) hdiv
-      · exact (by decide : ¬ 78 ∣ 29191) hdiv
-      · exact (by decide : ¬ 79 ∣ 29191) hdiv
-      · exact (by decide : ¬ 80 ∣ 29191) hdiv
-      · exact (by decide : ¬ 81 ∣ 29191) hdiv
-      · exact (by decide : ¬ 82 ∣ 29191) hdiv
-      · exact (by decide : ¬ 83 ∣ 29191) hdiv
-      · exact (by decide : ¬ 84 ∣ 29191) hdiv
-      · exact (by decide : ¬ 85 ∣ 29191) hdiv
-      · exact (by decide : ¬ 86 ∣ 29191) hdiv
-      · exact (by decide : ¬ 87 ∣ 29191) hdiv
-      · exact (by decide : ¬ 88 ∣ 29191) hdiv
-      · exact (by decide : ¬ 89 ∣ 29191) hdiv
-      · exact (by decide : ¬ 90 ∣ 29191) hdiv
-      · exact (by decide : ¬ 91 ∣ 29191) hdiv
-      · exact (by decide : ¬ 92 ∣ 29191) hdiv
-      · exact (by decide : ¬ 93 ∣ 29191) hdiv
-      · exact (by decide : ¬ 94 ∣ 29191) hdiv
-      · exact (by decide : ¬ 95 ∣ 29191) hdiv
-      · exact (by decide : ¬ 96 ∣ 29191) hdiv
-      · exact (by decide : ¬ 97 ∣ 29191) hdiv
-      · exact (by decide : ¬ 98 ∣ 29191) hdiv
-      · exact (by decide : ¬ 99 ∣ 29191) hdiv
-      · exact (by decide : ¬ 100 ∣ 29191) hdiv
-      · exact (by decide : ¬ 101 ∣ 29191) hdiv
-      · exact (by decide : ¬ 102 ∣ 29191) hdiv
-      · exact (by decide : ¬ 103 ∣ 29191) hdiv
-      · exact (by decide : ¬ 104 ∣ 29191) hdiv
-      · exact (by decide : ¬ 105 ∣ 29191) hdiv
-      · exact (by decide : ¬ 106 ∣ 29191) hdiv
-      · exact (by decide : ¬ 107 ∣ 29191) hdiv
-      · exact (by decide : ¬ 108 ∣ 29191) hdiv
-      · exact (by decide : ¬ 109 ∣ 29191) hdiv
-      · exact (by decide : ¬ 110 ∣ 29191) hdiv
-      · exact (by decide : ¬ 111 ∣ 29191) hdiv
-      · exact (by decide : ¬ 112 ∣ 29191) hdiv
-      · exact (by decide : ¬ 113 ∣ 29191) hdiv
-      · exact (by decide : ¬ 114 ∣ 29191) hdiv
-      · exact (by decide : ¬ 115 ∣ 29191) hdiv
-      · exact (by decide : ¬ 116 ∣ 29191) hdiv
-      · exact (by decide : ¬ 117 ∣ 29191) hdiv
-      · exact (by decide : ¬ 118 ∣ 29191) hdiv
-      · exact (by decide : ¬ 119 ∣ 29191) hdiv
-      · exact (by decide : ¬ 120 ∣ 29191) hdiv
-      · exact (by decide : ¬ 121 ∣ 29191) hdiv
-      · exact (by decide : ¬ 122 ∣ 29191) hdiv
-      · exact (by decide : ¬ 123 ∣ 29191) hdiv
-      · exact (by decide : ¬ 124 ∣ 29191) hdiv
-      · exact (by decide : ¬ 125 ∣ 29191) hdiv
-      · exact (by decide : ¬ 126 ∣ 29191) hdiv
-      · exact (by decide : ¬ 127 ∣ 29191) hdiv
-      · exact (by decide : ¬ 128 ∣ 29191) hdiv
-      · exact (by decide : ¬ 129 ∣ 29191) hdiv
-      · exact (by decide : ¬ 130 ∣ 29191) hdiv
-      · exact (by decide : ¬ 131 ∣ 29191) hdiv
-      · exact (by decide : ¬ 132 ∣ 29191) hdiv
-      · exact (by decide : ¬ 133 ∣ 29191) hdiv
-      · exact (by decide : ¬ 134 ∣ 29191) hdiv
-      · exact (by decide : ¬ 135 ∣ 29191) hdiv
-      · exact (by decide : ¬ 136 ∣ 29191) hdiv
-      · exact (by decide : ¬ 137 ∣ 29191) hdiv
-      · exact (by decide : ¬ 138 ∣ 29191) hdiv
-      · exact (by decide : ¬ 139 ∣ 29191) hdiv
-      · exact (by decide : ¬ 140 ∣ 29191) hdiv
-      · exact (by decide : ¬ 141 ∣ 29191) hdiv
-      · exact (by decide : ¬ 142 ∣ 29191) hdiv
-      · exact (by decide : ¬ 143 ∣ 29191) hdiv
-      · exact (by decide : ¬ 144 ∣ 29191) hdiv
-      · exact (by decide : ¬ 145 ∣ 29191) hdiv
-      · exact (by decide : ¬ 146 ∣ 29191) hdiv
-      · exact (by decide : ¬ 147 ∣ 29191) hdiv
-      · exact (by decide : ¬ 148 ∣ 29191) hdiv
-      · exact (by decide : ¬ 149 ∣ 29191) hdiv
-      · exact (by decide : ¬ 150 ∣ 29191) hdiv
-      · exact (by decide : ¬ 151 ∣ 29191) hdiv
-      · exact (by decide : ¬ 152 ∣ 29191) hdiv
-      · exact (by decide : ¬ 153 ∣ 29191) hdiv
-      · exact (by decide : ¬ 154 ∣ 29191) hdiv
-      · exact (by decide : ¬ 155 ∣ 29191) hdiv
-      · exact (by decide : ¬ 156 ∣ 29191) hdiv
-      · exact (by decide : ¬ 157 ∣ 29191) hdiv
-      · exact (by decide : ¬ 158 ∣ 29191) hdiv
-      · exact (by decide : ¬ 159 ∣ 29191) hdiv
-      · exact (by decide : ¬ 160 ∣ 29191) hdiv
-      · exact (by decide : ¬ 161 ∣ 29191) hdiv
-      · exact (by decide : ¬ 162 ∣ 29191) hdiv
-      · exact (by decide : ¬ 163 ∣ 29191) hdiv
-      · exact (by decide : ¬ 164 ∣ 29191) hdiv
-      · exact (by decide : ¬ 165 ∣ 29191) hdiv
-      · exact (by decide : ¬ 166 ∣ 29191) hdiv
-      · exact (by decide : ¬ 167 ∣ 29191) hdiv
-      · exact (by decide : ¬ 168 ∣ 29191) hdiv
-      · exact (by decide : ¬ 169 ∣ 29191) hdiv
-      · exact (by decide : ¬ 170 ∣ 29191) hdiv
-  have hA_factor : (332351 : Nat).factorization 29191 = 0 :=
-    Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29191 ∣ 332351)
-  exact primeComponentWitness_of_prime_power_cofactor
-    105 332351 2 5 29191 19342822337210501698682881 1 662629657675670641591 0
-    hq_prime
-    (by decide)
-    (by decide)
-    (by decide)
-    hA_factor
-    (by decide)
+  have hquot : primeComponentQuotient 2 105 5 = 19342822337210501698682881 := by decide
+  have hq : Nat.Prime 29191 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29191 ∣ 332351)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F105_A332351_p5_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 105 332351 2 5 := by
@@ -24100,24 +12087,13 @@ theorem concrete_generated_b2_F105_A332351_p5_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b2_F105_A332351_p7_prime_witness :
     PrimeComponentWitness 105 332351 2 7 7 := by
-  refine ⟨(by decide : Nat.Prime 7), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 105 7 = 1237977819370199922113544193 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 2 105 7 = 1237977819370199922113544193 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 105 7 = 1237977819370199922113544193 := by decide
-    rw [hquot]
-    have hfactor : (1237977819370199922113544193 : Nat).factorization 7 = 1 := by
-      rw [show (1237977819370199922113544193 : Nat) = 7 * 176853974195742846016220599 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 7),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 176853974195742846016220599),
-      ]
-    rw [hfactor]
-    have hA_factor : (332351 : Nat).factorization 7 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 332351)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 332351)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F105_A332351_p7_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 105 332351 2 7 := by
@@ -24156,7 +12132,8 @@ theorem orderOf_b2_mod122054151205512668377391681_eq_105_from_emittedCertificate
       change (((ZMod.unitOfCoprime 2 hcop : (ZMod 122054151205512668377391681)ˣ) :
           ZMod 122054151205512668377391681) ^ 105) =
         (1 : ZMod 122054151205512668377391681)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -24223,24 +12200,13 @@ theorem concrete_generated_b2_F105_A15407_p3_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b2_F105_A15407_p5_prime_witness :
     PrimeComponentWitness 105 15407 2 5 151 := by
-  refine ⟨(by decide : Nat.Prime 151), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 105 5 = 19342822337210501698682881 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 2 105 5 = 19342822337210501698682881 := by decide
+  have hq : Nat.Prime 151 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 105 5 = 19342822337210501698682881 := by decide
-    rw [hquot]
-    have hfactor : (19342822337210501698682881 : Nat).factorization 151 = 1 := by
-      rw [show (19342822337210501698682881 : Nat) = 151 * 128098161173579481448231 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 151),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 151 ∣ 128098161173579481448231),
-      ]
-    rw [hfactor]
-    have hA_factor : (15407 : Nat).factorization 151 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 151 ∣ 15407)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 151 ∣ 15407)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F105_A15407_p5_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 105 15407 2 5 := by
@@ -24249,24 +12215,13 @@ theorem concrete_generated_b2_F105_A15407_p5_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b2_F105_A15407_p7_prime_witness :
     PrimeComponentWitness 105 15407 2 7 127 := by
-  refine ⟨(by decide : Nat.Prime 127), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 105 7 = 1237977819370199922113544193 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 2 105 7 = 1237977819370199922113544193 := by decide
+  have hq : Nat.Prime 127 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 105 7 = 1237977819370199922113544193 := by decide
-    rw [hquot]
-    have hfactor : (1237977819370199922113544193 : Nat).factorization 127 = 1 := by
-      rw [show (1237977819370199922113544193 : Nat) = 127 * 9747856845434645056012159 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 127),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 127 ∣ 9747856845434645056012159),
-      ]
-    rw [hfactor]
-    have hA_factor : (15407 : Nat).factorization 127 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 127 ∣ 15407)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 127 ∣ 15407)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F105_A15407_p7_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 105 15407 2 7 := by
@@ -24305,7 +12260,8 @@ theorem orderOf_b2_mod2632882404576058989283734833_eq_105_from_emittedCertificat
       change (((ZMod.unitOfCoprime 2 hcop : (ZMod 2632882404576058989283734833)ˣ) :
           ZMod 2632882404576058989283734833) ^ 105) =
         (1 : ZMod 2632882404576058989283734833)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -24372,24 +12328,13 @@ theorem concrete_generated_b2_F105_A63119_p3_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b2_F105_A63119_p5_prime_witness :
     PrimeComponentWitness 105 63119 2 5 31 := by
-  refine ⟨(by decide : Nat.Prime 31), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 105 5 = 19342822337210501698682881 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 2 105 5 = 19342822337210501698682881 := by decide
+  have hq : Nat.Prime 31 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 105 5 = 19342822337210501698682881 := by decide
-    rw [hquot]
-    have hfactor : (19342822337210501698682881 : Nat).factorization 31 = 1 := by
-      rw [show (19342822337210501698682881 : Nat) = 31 * 623962010877758119312351 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 31),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 31 ∣ 623962010877758119312351),
-      ]
-    rw [hfactor]
-    have hA_factor : (63119 : Nat).factorization 31 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 31 ∣ 63119)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 31 ∣ 63119)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F105_A63119_p5_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 105 63119 2 5 := by
@@ -24398,24 +12343,13 @@ theorem concrete_generated_b2_F105_A63119_p5_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b2_F105_A63119_p7_prime_witness :
     PrimeComponentWitness 105 63119 2 7 337 := by
-  refine ⟨(by decide : Nat.Prime 337), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 105 7 = 1237977819370199922113544193 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 2 105 7 = 1237977819370199922113544193 := by decide
+  have hq : Nat.Prime 337 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 105 7 = 1237977819370199922113544193 := by decide
-    rw [hquot]
-    have hfactor : (1237977819370199922113544193 : Nat).factorization 337 = 1 := by
-      rw [show (1237977819370199922113544193 : Nat) = 337 * 3673524686558456742176689 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 337),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 337 ∣ 3673524686558456742176689),
-      ]
-    rw [hfactor]
-    have hA_factor : (63119 : Nat).factorization 337 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 337 ∣ 63119)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 337 ∣ 63119)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F105_A63119_p7_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 105 63119 2 7 := by
@@ -24454,7 +12388,8 @@ theorem orderOf_b2_mod642672083006754556439336849_eq_105_from_emittedCertificate
       change (((ZMod.unitOfCoprime 2 hcop : (ZMod 642672083006754556439336849)ˣ) :
           ZMod 642672083006754556439336849) ^ 105) =
         (1 : ZMod 642672083006754556439336849)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -24521,24 +12456,13 @@ theorem concrete_generated_b2_F105_A497_p3_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b2_F105_A497_p5_prime_witness :
     PrimeComponentWitness 105 497 2 5 31 := by
-  refine ⟨(by decide : Nat.Prime 31), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 105 5 = 19342822337210501698682881 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 2 105 5 = 19342822337210501698682881 := by decide
+  have hq : Nat.Prime 31 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 105 5 = 19342822337210501698682881 := by decide
-    rw [hquot]
-    have hfactor : (19342822337210501698682881 : Nat).factorization 31 = 1 := by
-      rw [show (19342822337210501698682881 : Nat) = 31 * 623962010877758119312351 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 31),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 31 ∣ 623962010877758119312351),
-      ]
-    rw [hfactor]
-    have hA_factor : (497 : Nat).factorization 31 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 31 ∣ 497)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 31 ∣ 497)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F105_A497_p5_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 105 497 2 5 := by
@@ -24547,24 +12471,13 @@ theorem concrete_generated_b2_F105_A497_p5_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b2_F105_A497_p7_prime_witness :
     PrimeComponentWitness 105 497 2 7 127 := by
-  refine ⟨(by decide : Nat.Prime 127), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 105 7 = 1237977819370199922113544193 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 2 105 7 = 1237977819370199922113544193 := by decide
+  have hq : Nat.Prime 127 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 105 7 = 1237977819370199922113544193 := by decide
-    rw [hquot]
-    have hfactor : (1237977819370199922113544193 : Nat).factorization 127 = 1 := by
-      rw [show (1237977819370199922113544193 : Nat) = 127 * 9747856845434645056012159 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 127),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 127 ∣ 9747856845434645056012159),
-      ]
-    rw [hfactor]
-    have hA_factor : (497 : Nat).factorization 127 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 127 ∣ 497)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 127 ∣ 497)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F105_A497_p7_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 105 497 2 7 := by
@@ -24603,7 +12516,8 @@ theorem orderOf_b2_mod81619354541857828667795779823_eq_105_from_emittedCertifica
       change (((ZMod.unitOfCoprime 2 hcop : (ZMod 81619354541857828667795779823)ˣ) :
           ZMod 81619354541857828667795779823) ^ 105) =
         (1 : ZMod 81619354541857828667795779823)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -24637,26 +12551,13 @@ theorem concrete_generated_b2_F105_A2201_factorization_support_cases
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b2_F105_A2201_p3_prime_witness :
     PrimeComponentWitness 105 2201 2 3 7 := by
-  refine ⟨(by decide : Nat.Prime 7), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 105 3 = 1180591620751771041793 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 2 105 3 = 1180591620751771041793 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 105 3 = 1180591620751771041793 := by decide
-    rw [hquot]
-    have hfactor : (1180591620751771041793 : Nat).factorization 7 = 2 := by
-      rw [show (1180591620751771041793 : Nat) = 7 ^ 2 * 24093706545954511057 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      change (7 ^ 2 : Nat).factorization 7 + (24093706545954511057 : Nat).factorization 7 = 2
-      have hleft : (7 ^ 2 : Nat).factorization 7 = 2 :=
-        Nat.factorization_pow_self (by decide : Nat.Prime 7)
-      have hright : (24093706545954511057 : Nat).factorization 7 = 0 :=
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 24093706545954511057)
-      rw [hleft, hright]
-    rw [hfactor]
-    have hA_factor : (2201 : Nat).factorization 7 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 2201)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 2201)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F105_A2201_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 105 2201 2 3 := by
@@ -24665,24 +12566,13 @@ theorem concrete_generated_b2_F105_A2201_p3_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b2_F105_A2201_p5_prime_witness :
     PrimeComponentWitness 105 2201 2 5 151 := by
-  refine ⟨(by decide : Nat.Prime 151), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 105 5 = 19342822337210501698682881 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 2 105 5 = 19342822337210501698682881 := by decide
+  have hq : Nat.Prime 151 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 105 5 = 19342822337210501698682881 := by decide
-    rw [hquot]
-    have hfactor : (19342822337210501698682881 : Nat).factorization 151 = 1 := by
-      rw [show (19342822337210501698682881 : Nat) = 151 * 128098161173579481448231 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 151),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 151 ∣ 128098161173579481448231),
-      ]
-    rw [hfactor]
-    have hA_factor : (2201 : Nat).factorization 151 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 151 ∣ 2201)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 151 ∣ 2201)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F105_A2201_p5_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 105 2201 2 5 := by
@@ -24691,24 +12581,13 @@ theorem concrete_generated_b2_F105_A2201_p5_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b2_F105_A2201_p7_prime_witness :
     PrimeComponentWitness 105 2201 2 7 7 := by
-  refine ⟨(by decide : Nat.Prime 7), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 105 7 = 1237977819370199922113544193 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 2 105 7 = 1237977819370199922113544193 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 105 7 = 1237977819370199922113544193 := by decide
-    rw [hquot]
-    have hfactor : (1237977819370199922113544193 : Nat).factorization 7 = 1 := by
-      rw [show (1237977819370199922113544193 : Nat) = 7 * 176853974195742846016220599 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 7),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 176853974195742846016220599),
-      ]
-    rw [hfactor]
-    have hA_factor : (2201 : Nat).factorization 7 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 2201)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 2201)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F105_A2201_p7_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 105 2201 2 7 := by
@@ -24747,7 +12626,8 @@ theorem orderOf_b2_mod18430176832032412924986143831_eq_105_from_emittedCertifica
       change (((ZMod.unitOfCoprime 2 hcop : (ZMod 18430176832032412924986143831)ˣ) :
           ZMod 18430176832032412924986143831) ^ 105) =
         (1 : ZMod 18430176832032412924986143831)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -24787,24 +12667,13 @@ theorem concrete_generated_b4_F12_A4641_factorization_support_cases
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b4_F12_A4641_p2_prime_witness :
     PrimeComponentWitness 12 4641 4 2 241 := by
-  refine ⟨(by decide : Nat.Prime 241), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 4 12 2 = 4097 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 4 12 2 = 4097 := by decide
+  have hq : Nat.Prime 241 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 4 12 2 = 4097 := by decide
-    rw [hquot]
-    have hfactor : (4097 : Nat).factorization 241 = 1 := by
-      rw [show (4097 : Nat) = 241 * 17 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 241),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 241 ∣ 17),
-      ]
-    rw [hfactor]
-    have hA_factor : (4641 : Nat).factorization 241 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 241 ∣ 4641)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 241 ∣ 4641)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b4_F12_A4641_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 4641 4 2 := by
@@ -24813,24 +12682,13 @@ theorem concrete_generated_b4_F12_A4641_p2_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b4_F12_A4641_p3_prime_witness :
     PrimeComponentWitness 12 4641 4 3 241 := by
-  refine ⟨(by decide : Nat.Prime 241), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 4 12 3 = 65793 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 4 12 3 = 65793 := by decide
+  have hq : Nat.Prime 241 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 4 12 3 = 65793 := by decide
-    rw [hquot]
-    have hfactor : (65793 : Nat).factorization 241 = 1 := by
-      rw [show (65793 : Nat) = 241 * 273 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 241),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 241 ∣ 273),
-      ]
-    rw [hfactor]
-    have hA_factor : (4641 : Nat).factorization 241 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 241 ∣ 4641)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 241 ∣ 4641)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b4_F12_A4641_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 4641 4 3 := by
@@ -24864,7 +12722,8 @@ theorem orderOf_b4_mod3615_eq_12_from_emittedCertificate_denNorm :
       apply Units.ext
       change (((ZMod.unitOfCoprime 4 hcop : (ZMod 3615)ˣ) : ZMod 3615) ^ 12) =
         (1 : ZMod 3615)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -24903,24 +12762,13 @@ theorem concrete_generated_b4_F12_A273_factorization_support_cases
 
 theorem concrete_generated_b4_F12_A273_p2_prime_witness :
     PrimeComponentWitness 12 273 4 2 17 := by
-  refine ⟨(by decide : Nat.Prime 17), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 4 12 2 = 4097 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 4 12 2 = 4097 := by decide
+  have hq : Nat.Prime 17 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 4 12 2 = 4097 := by decide
-    rw [hquot]
-    have hfactor : (4097 : Nat).factorization 17 = 1 := by
-      rw [show (4097 : Nat) = 17 * 241 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 17),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 17 ∣ 241),
-      ]
-    rw [hfactor]
-    have hA_factor : (273 : Nat).factorization 17 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 17 ∣ 273)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 17 ∣ 273)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b4_F12_A273_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 273 4 2 := by
@@ -24929,24 +12777,13 @@ theorem concrete_generated_b4_F12_A273_p2_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b4_F12_A273_p3_prime_witness :
     PrimeComponentWitness 12 273 4 3 241 := by
-  refine ⟨(by decide : Nat.Prime 241), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 4 12 3 = 65793 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 4 12 3 = 65793 := by decide
+  have hq : Nat.Prime 241 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 4 12 3 = 65793 := by decide
-    rw [hquot]
-    have hfactor : (65793 : Nat).factorization 241 = 1 := by
-      rw [show (65793 : Nat) = 241 * 273 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 241),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 241 ∣ 273),
-      ]
-    rw [hfactor]
-    have hA_factor : (273 : Nat).factorization 241 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 241 ∣ 273)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 241 ∣ 273)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b4_F12_A273_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 273 4 3 := by
@@ -24980,7 +12817,8 @@ theorem orderOf_b4_mod61455_eq_12_from_emittedCertificate_denNorm :
       apply Units.ext
       change (((ZMod.unitOfCoprime 4 hcop : (ZMod 61455)ˣ) : ZMod 61455) ^ 12) =
         (1 : ZMod 61455)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -25013,24 +12851,13 @@ theorem concrete_generated_b10_F6_A231_factorization_support_cases
 
 theorem concrete_generated_b10_F6_A231_p2_prime_witness :
     PrimeComponentWitness 6 231 10 2 13 := by
-  refine ⟨(by decide : Nat.Prime 13), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 10 6 2 = 1001 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 10 6 2 = 1001 := by decide
+  have hq : Nat.Prime 13 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 10 6 2 = 1001 := by decide
-    rw [hquot]
-    have hfactor : (1001 : Nat).factorization 13 = 1 := by
-      rw [show (1001 : Nat) = 13 * 77 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 13),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 13 ∣ 77),
-      ]
-    rw [hfactor]
-    have hA_factor : (231 : Nat).factorization 13 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 13 ∣ 231)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 13 ∣ 231)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b10_F6_A231_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 6 231 10 2 := by
@@ -25038,24 +12865,13 @@ theorem concrete_generated_b10_F6_A231_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b10_F6_A231_p3_prime_witness :
     PrimeComponentWitness 6 231 10 3 13 := by
-  refine ⟨(by decide : Nat.Prime 13), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 10 6 3 = 10101 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 10 6 3 = 10101 := by decide
+  have hq : Nat.Prime 13 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 10 6 3 = 10101 := by decide
-    rw [hquot]
-    have hfactor : (10101 : Nat).factorization 13 = 1 := by
-      rw [show (10101 : Nat) = 13 * 777 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 13),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 13 ∣ 777),
-      ]
-    rw [hfactor]
-    have hA_factor : (231 : Nat).factorization 13 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 13 ∣ 231)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 13 ∣ 231)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b10_F6_A231_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 6 231 10 3 := by
@@ -25089,7 +12905,8 @@ theorem orderOf_b10_mod4329_eq_6_from_emittedCertificate_denNorm :
       apply Units.ext
       change (((ZMod.unitOfCoprime 10 hcop : (ZMod 4329)ˣ) : ZMod 4329) ^ 6) =
         (1 : ZMod 4329)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -25156,24 +12973,13 @@ theorem concrete_generated_b2_F105_A217_p3_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b2_F105_A217_p5_prime_witness :
     PrimeComponentWitness 105 217 2 5 71 := by
-  refine ⟨(by decide : Nat.Prime 71), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 105 5 = 19342822337210501698682881 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 2 105 5 = 19342822337210501698682881 := by decide
+  have hq : Nat.Prime 71 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 105 5 = 19342822337210501698682881 := by decide
-    rw [hquot]
-    have hfactor : (19342822337210501698682881 : Nat).factorization 71 = 1 := by
-      rw [show (19342822337210501698682881 : Nat) = 71 * 272434117425500023925111 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 71),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 71 ∣ 272434117425500023925111),
-      ]
-    rw [hfactor]
-    have hA_factor : (217 : Nat).factorization 71 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 71 ∣ 217)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 71 ∣ 217)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F105_A217_p5_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 105 217 2 5 := by
@@ -25182,24 +12988,13 @@ theorem concrete_generated_b2_F105_A217_p5_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b2_F105_A217_p7_prime_witness :
     PrimeComponentWitness 105 217 2 7 71 := by
-  refine ⟨(by decide : Nat.Prime 71), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 105 7 = 1237977819370199922113544193 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 2 105 7 = 1237977819370199922113544193 := by decide
+  have hq : Nat.Prime 71 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 105 7 = 1237977819370199922113544193 := by decide
-    rw [hquot]
-    have hfactor : (1237977819370199922113544193 : Nat).factorization 71 = 1 := by
-      rw [show (1237977819370199922113544193 : Nat) = 71 * 17436307315073238339627383 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 71),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 71 ∣ 17436307315073238339627383),
-      ]
-    rw [hfactor]
-    have hA_factor : (217 : Nat).factorization 71 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 71 ∣ 217)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 71 ∣ 217)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F105_A217_p7_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 105 217 2 7 := by
@@ -25238,7 +13033,8 @@ theorem orderOf_b2_mod186934650724900188239145173143_eq_105_from_emittedCertific
       change (((ZMod.unitOfCoprime 2 hcop : (ZMod 186934650724900188239145173143)ˣ) :
           ZMod 186934650724900188239145173143) ^ 105) =
         (1 : ZMod 186934650724900188239145173143)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -25272,26 +13068,13 @@ theorem concrete_generated_b2_F105_A31_factorization_support_cases
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b2_F105_A31_p3_prime_witness :
     PrimeComponentWitness 105 31 2 3 7 := by
-  refine ⟨(by decide : Nat.Prime 7), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 105 3 = 1180591620751771041793 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 2 105 3 = 1180591620751771041793 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 105 3 = 1180591620751771041793 := by decide
-    rw [hquot]
-    have hfactor : (1180591620751771041793 : Nat).factorization 7 = 2 := by
-      rw [show (1180591620751771041793 : Nat) = 7 ^ 2 * 24093706545954511057 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      change (7 ^ 2 : Nat).factorization 7 + (24093706545954511057 : Nat).factorization 7 = 2
-      have hleft : (7 ^ 2 : Nat).factorization 7 = 2 :=
-        Nat.factorization_pow_self (by decide : Nat.Prime 7)
-      have hright : (24093706545954511057 : Nat).factorization 7 = 0 :=
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 24093706545954511057)
-      rw [hleft, hright]
-    rw [hfactor]
-    have hA_factor : (31 : Nat).factorization 7 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 31)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 31)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F105_A31_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 105 31 2 3 := by
@@ -25300,24 +13083,13 @@ theorem concrete_generated_b2_F105_A31_p3_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b2_F105_A31_p5_prime_witness :
     PrimeComponentWitness 105 31 2 5 71 := by
-  refine ⟨(by decide : Nat.Prime 71), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 105 5 = 19342822337210501698682881 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 2 105 5 = 19342822337210501698682881 := by decide
+  have hq : Nat.Prime 71 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 105 5 = 19342822337210501698682881 := by decide
-    rw [hquot]
-    have hfactor : (19342822337210501698682881 : Nat).factorization 71 = 1 := by
-      rw [show (19342822337210501698682881 : Nat) = 71 * 272434117425500023925111 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 71),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 71 ∣ 272434117425500023925111),
-      ]
-    rw [hfactor]
-    have hA_factor : (31 : Nat).factorization 71 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 71 ∣ 31)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 71 ∣ 31)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F105_A31_p5_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 105 31 2 5 := by
@@ -25326,24 +13098,13 @@ theorem concrete_generated_b2_F105_A31_p5_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b2_F105_A31_p7_prime_witness :
     PrimeComponentWitness 105 31 2 7 7 := by
-  refine ⟨(by decide : Nat.Prime 7), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 105 7 = 1237977819370199922113544193 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 2 105 7 = 1237977819370199922113544193 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 105 7 = 1237977819370199922113544193 := by decide
-    rw [hquot]
-    have hfactor : (1237977819370199922113544193 : Nat).factorization 7 = 1 := by
-      rw [show (1237977819370199922113544193 : Nat) = 7 * 176853974195742846016220599 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 7),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 176853974195742846016220599),
-      ]
-    rw [hfactor]
-    have hA_factor : (31 : Nat).factorization 7 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 31)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 31)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F105_A31_p7_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 105 31 2 7 := by
@@ -25382,7 +13143,8 @@ theorem orderOf_b2_mod1308542555074301317674016212001_eq_105_from_emittedCertifi
       change (((ZMod.unitOfCoprime 2 hcop : (ZMod 1308542555074301317674016212001)ˣ) :
           ZMod 1308542555074301317674016212001) ^ 105) =
         (1 : ZMod 1308542555074301317674016212001)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -25416,26 +13178,13 @@ theorem concrete_generated_b2_F105_A71_factorization_support_cases
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b2_F105_A71_p3_prime_witness :
     PrimeComponentWitness 105 71 2 3 7 := by
-  refine ⟨(by decide : Nat.Prime 7), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 105 3 = 1180591620751771041793 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 2 105 3 = 1180591620751771041793 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 105 3 = 1180591620751771041793 := by decide
-    rw [hquot]
-    have hfactor : (1180591620751771041793 : Nat).factorization 7 = 2 := by
-      rw [show (1180591620751771041793 : Nat) = 7 ^ 2 * 24093706545954511057 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      change (7 ^ 2 : Nat).factorization 7 + (24093706545954511057 : Nat).factorization 7 = 2
-      have hleft : (7 ^ 2 : Nat).factorization 7 = 2 :=
-        Nat.factorization_pow_self (by decide : Nat.Prime 7)
-      have hright : (24093706545954511057 : Nat).factorization 7 = 0 :=
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 24093706545954511057)
-      rw [hleft, hright]
-    rw [hfactor]
-    have hA_factor : (71 : Nat).factorization 7 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 71)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 71)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F105_A71_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 105 71 2 3 := by
@@ -25444,24 +13193,13 @@ theorem concrete_generated_b2_F105_A71_p3_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b2_F105_A71_p5_prime_witness :
     PrimeComponentWitness 105 71 2 5 31 := by
-  refine ⟨(by decide : Nat.Prime 31), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 105 5 = 19342822337210501698682881 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 2 105 5 = 19342822337210501698682881 := by decide
+  have hq : Nat.Prime 31 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 105 5 = 19342822337210501698682881 := by decide
-    rw [hquot]
-    have hfactor : (19342822337210501698682881 : Nat).factorization 31 = 1 := by
-      rw [show (19342822337210501698682881 : Nat) = 31 * 623962010877758119312351 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 31),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 31 ∣ 623962010877758119312351),
-      ]
-    rw [hfactor]
-    have hA_factor : (71 : Nat).factorization 31 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 31 ∣ 71)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 31 ∣ 71)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F105_A71_p5_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 105 71 2 5 := by
@@ -25470,24 +13208,13 @@ theorem concrete_generated_b2_F105_A71_p5_CanonicalWitnessRowCase :
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b2_F105_A71_p7_prime_witness :
     PrimeComponentWitness 105 71 2 7 7 := by
-  refine ⟨(by decide : Nat.Prime 7), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 2 105 7 = 1237977819370199922113544193 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 2 105 7 = 1237977819370199922113544193 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 2 105 7 = 1237977819370199922113544193 := by decide
-    rw [hquot]
-    have hfactor : (1237977819370199922113544193 : Nat).factorization 7 = 1 := by
-      rw [show (1237977819370199922113544193 : Nat) = 7 * 176853974195742846016220599 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 7),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 176853974195742846016220599),
-      ]
-    rw [hfactor]
-    have hA_factor : (71 : Nat).factorization 7 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 71)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 71)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b2_F105_A71_p7_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 105 71 2 7 := by
@@ -25526,7 +13253,8 @@ theorem orderOf_b2_mod571335481793004800674570458761_eq_105_from_emittedCertific
       change (((ZMod.unitOfCoprime 2 hcop : (ZMod 571335481793004800674570458761)ˣ) :
           ZMod 571335481793004800674570458761) ^ 105) =
         (1 : ZMod 571335481793004800674570458761)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -25565,24 +13293,13 @@ theorem concrete_generated_b6_F12_A481_factorization_support_cases
 
 theorem concrete_generated_b6_F12_A481_p2_prime_witness :
     PrimeComponentWitness 12 481 6 2 97 := by
-  refine ⟨(by decide : Nat.Prime 97), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 6 12 2 = 46657 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 6 12 2 = 46657 := by decide
+  have hq : Nat.Prime 97 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 6 12 2 = 46657 := by decide
-    rw [hquot]
-    have hfactor : (46657 : Nat).factorization 97 = 1 := by
-      rw [show (46657 : Nat) = 97 * 481 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 97),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 97 ∣ 481),
-      ]
-    rw [hfactor]
-    have hA_factor : (481 : Nat).factorization 97 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 97 ∣ 481)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 97 ∣ 481)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b6_F12_A481_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 481 6 2 := by
@@ -25590,24 +13307,13 @@ theorem concrete_generated_b6_F12_A481_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b6_F12_A481_p3_prime_witness :
     PrimeComponentWitness 12 481 6 3 31 := by
-  refine ⟨(by decide : Nat.Prime 31), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 6 12 3 = 1680913 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 6 12 3 = 1680913 := by decide
+  have hq : Nat.Prime 31 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 6 12 3 = 1680913 := by decide
-    rw [hquot]
-    have hfactor : (1680913 : Nat).factorization 31 = 1 := by
-      rw [show (1680913 : Nat) = 31 * 54223 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 31),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 31 ∣ 54223),
-      ]
-    rw [hfactor]
-    have hA_factor : (481 : Nat).factorization 31 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 31 ∣ 481)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 31 ∣ 481)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b6_F12_A481_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 481 6 3 := by
@@ -25642,7 +13348,8 @@ theorem orderOf_b6_mod4525535_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 6 hcop : (ZMod 4525535)ˣ) :
           ZMod 4525535) ^ 12) =
         (1 : ZMod 4525535)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -25681,24 +13388,13 @@ theorem concrete_generated_b6_F12_A13_factorization_support_cases
 
 theorem concrete_generated_b6_F12_A13_p2_prime_witness :
     PrimeComponentWitness 12 13 6 2 37 := by
-  refine ⟨(by decide : Nat.Prime 37), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 6 12 2 = 46657 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 6 12 2 = 46657 := by decide
+  have hq : Nat.Prime 37 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 6 12 2 = 46657 := by decide
-    rw [hquot]
-    have hfactor : (46657 : Nat).factorization 37 = 1 := by
-      rw [show (46657 : Nat) = 37 * 1261 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 37),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 37 ∣ 1261),
-      ]
-    rw [hfactor]
-    have hA_factor : (13 : Nat).factorization 37 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 37 ∣ 13)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 37 ∣ 13)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b6_F12_A13_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 13 6 2 := by
@@ -25706,24 +13402,13 @@ theorem concrete_generated_b6_F12_A13_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b6_F12_A13_p3_prime_witness :
     PrimeComponentWitness 12 13 6 3 31 := by
-  refine ⟨(by decide : Nat.Prime 31), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 6 12 3 = 1680913 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 6 12 3 = 1680913 := by decide
+  have hq : Nat.Prime 31 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 6 12 3 = 1680913 := by decide
-    rw [hquot]
-    have hfactor : (1680913 : Nat).factorization 31 = 1 := by
-      rw [show (1680913 : Nat) = 31 * 54223 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 31),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 31 ∣ 54223),
-      ]
-    rw [hfactor]
-    have hA_factor : (13 : Nat).factorization 31 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 31 ∣ 13)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 31 ∣ 13)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b6_F12_A13_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 13 6 3 := by
@@ -25758,7 +13443,8 @@ theorem orderOf_b6_mod167444795_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 6 hcop : (ZMod 167444795)ˣ) :
           ZMod 167444795) ^ 12) =
         (1 : ZMod 167444795)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -25797,24 +13483,13 @@ theorem concrete_generated_b6_F12_A5_factorization_support_cases
 
 theorem concrete_generated_b6_F12_A5_p2_prime_witness :
     PrimeComponentWitness 12 5 6 2 13 := by
-  refine ⟨(by decide : Nat.Prime 13), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 6 12 2 = 46657 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 6 12 2 = 46657 := by decide
+  have hq : Nat.Prime 13 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 6 12 2 = 46657 := by decide
-    rw [hquot]
-    have hfactor : (46657 : Nat).factorization 13 = 1 := by
-      rw [show (46657 : Nat) = 13 * 3589 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 13),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 13 ∣ 3589),
-      ]
-    rw [hfactor]
-    have hA_factor : (5 : Nat).factorization 13 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 13 ∣ 5)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 13 ∣ 5)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b6_F12_A5_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 5 6 2 := by
@@ -25822,24 +13497,13 @@ theorem concrete_generated_b6_F12_A5_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b6_F12_A5_p3_prime_witness :
     PrimeComponentWitness 12 5 6 3 13 := by
-  refine ⟨(by decide : Nat.Prime 13), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 6 12 3 = 1680913 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 6 12 3 = 1680913 := by decide
+  have hq : Nat.Prime 13 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 6 12 3 = 1680913 := by decide
-    rw [hquot]
-    have hfactor : (1680913 : Nat).factorization 13 = 1 := by
-      rw [show (1680913 : Nat) = 13 * 129301 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 13),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 13 ∣ 129301),
-      ]
-    rw [hfactor]
-    have hA_factor : (5 : Nat).factorization 13 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 13 ∣ 5)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 13 ∣ 5)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b6_F12_A5_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 5 6 3 := by
@@ -25874,7 +13538,8 @@ theorem orderOf_b6_mod435356467_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 6 hcop : (ZMod 435356467)ˣ) :
           ZMod 435356467) ^ 12) =
         (1 : ZMod 435356467)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -25914,24 +13579,13 @@ theorem concrete_generated_b4_F12_A51_factorization_support_cases
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b4_F12_A51_p2_prime_witness :
     PrimeComponentWitness 12 51 4 2 241 := by
-  refine ⟨(by decide : Nat.Prime 241), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 4 12 2 = 4097 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 4 12 2 = 4097 := by decide
+  have hq : Nat.Prime 241 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 4 12 2 = 4097 := by decide
-    rw [hquot]
-    have hfactor : (4097 : Nat).factorization 241 = 1 := by
-      rw [show (4097 : Nat) = 241 * 17 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 241),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 241 ∣ 17),
-      ]
-    rw [hfactor]
-    have hA_factor : (51 : Nat).factorization 241 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 241 ∣ 51)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 241 ∣ 51)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b4_F12_A51_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 51 4 2 := by
@@ -25939,24 +13593,13 @@ theorem concrete_generated_b4_F12_A51_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b4_F12_A51_p3_prime_witness :
     PrimeComponentWitness 12 51 4 3 7 := by
-  refine ⟨(by decide : Nat.Prime 7), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 4 12 3 = 65793 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 4 12 3 = 65793 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 4 12 3 = 65793 := by decide
-    rw [hquot]
-    have hfactor : (65793 : Nat).factorization 7 = 1 := by
-      rw [show (65793 : Nat) = 7 * 9399 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 7),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 9399),
-      ]
-    rw [hfactor]
-    have hA_factor : (51 : Nat).factorization 7 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 51)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 51)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b4_F12_A51_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 51 4 3 := by
@@ -25990,7 +13633,8 @@ theorem orderOf_b4_mod328965_eq_12_from_emittedCertificate_denNorm :
       apply Units.ext
       change (((ZMod.unitOfCoprime 4 hcop : (ZMod 328965)ˣ) : ZMod 328965) ^ 12) =
         (1 : ZMod 328965)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -26029,24 +13673,13 @@ theorem concrete_generated_b4_F12_A21_factorization_support_cases
 
 theorem concrete_generated_b4_F12_A21_p2_prime_witness :
     PrimeComponentWitness 12 21 4 2 17 := by
-  refine ⟨(by decide : Nat.Prime 17), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 4 12 2 = 4097 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 4 12 2 = 4097 := by decide
+  have hq : Nat.Prime 17 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 4 12 2 = 4097 := by decide
-    rw [hquot]
-    have hfactor : (4097 : Nat).factorization 17 = 1 := by
-      rw [show (4097 : Nat) = 17 * 241 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 17),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 17 ∣ 241),
-      ]
-    rw [hfactor]
-    have hA_factor : (21 : Nat).factorization 17 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 17 ∣ 21)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 17 ∣ 21)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b4_F12_A21_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 21 4 2 := by
@@ -26054,24 +13687,13 @@ theorem concrete_generated_b4_F12_A21_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b4_F12_A21_p3_prime_witness :
     PrimeComponentWitness 12 21 4 3 13 := by
-  refine ⟨(by decide : Nat.Prime 13), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 4 12 3 = 65793 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 4 12 3 = 65793 := by decide
+  have hq : Nat.Prime 13 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 4 12 3 = 65793 := by decide
-    rw [hquot]
-    have hfactor : (65793 : Nat).factorization 13 = 1 := by
-      rw [show (65793 : Nat) = 13 * 5061 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 13),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 13 ∣ 5061),
-      ]
-    rw [hfactor]
-    have hA_factor : (21 : Nat).factorization 13 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 13 ∣ 21)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 13 ∣ 21)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b4_F12_A21_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 21 4 3 := by
@@ -26105,7 +13727,8 @@ theorem orderOf_b4_mod798915_eq_12_from_emittedCertificate_denNorm :
       apply Units.ext
       change (((ZMod.unitOfCoprime 4 hcop : (ZMod 798915)ˣ) : ZMod 798915) ^ 12) =
         (1 : ZMod 798915)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -26145,24 +13768,13 @@ theorem concrete_generated_b4_F12_A17_factorization_support_cases
 set_option maxRecDepth 10000 in
 theorem concrete_generated_b4_F12_A17_p2_prime_witness :
     PrimeComponentWitness 12 17 4 2 241 := by
-  refine ⟨(by decide : Nat.Prime 241), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 4 12 2 = 4097 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 4 12 2 = 4097 := by decide
+  have hq : Nat.Prime 241 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 4 12 2 = 4097 := by decide
-    rw [hquot]
-    have hfactor : (4097 : Nat).factorization 241 = 1 := by
-      rw [show (4097 : Nat) = 241 * 17 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 241),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 241 ∣ 17),
-      ]
-    rw [hfactor]
-    have hA_factor : (17 : Nat).factorization 241 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 241 ∣ 17)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 241 ∣ 17)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b4_F12_A17_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 17 4 2 := by
@@ -26170,24 +13782,13 @@ theorem concrete_generated_b4_F12_A17_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b4_F12_A17_p3_prime_witness :
     PrimeComponentWitness 12 17 4 3 3 := by
-  refine ⟨(by decide : Nat.Prime 3), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 4 12 3 = 65793 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 4 12 3 = 65793 := by decide
+  have hq : Nat.Prime 3 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 4 12 3 = 65793 := by decide
-    rw [hquot]
-    have hfactor : (65793 : Nat).factorization 3 = 1 := by
-      rw [show (65793 : Nat) = 3 * 21931 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 3),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 3 ∣ 21931),
-      ]
-    rw [hfactor]
-    have hA_factor : (17 : Nat).factorization 3 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 3 ∣ 17)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 3 ∣ 17)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b4_F12_A17_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 17 4 3 := by
@@ -26221,7 +13822,8 @@ theorem orderOf_b4_mod986895_eq_12_from_emittedCertificate_denNorm :
       apply Units.ext
       change (((ZMod.unitOfCoprime 4 hcop : (ZMod 986895)ˣ) : ZMod 986895) ^ 12) =
         (1 : ZMod 986895)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -26260,24 +13862,13 @@ theorem concrete_generated_b4_F12_A3_factorization_support_cases
 
 theorem concrete_generated_b4_F12_A3_p2_prime_witness :
     PrimeComponentWitness 12 3 4 2 17 := by
-  refine ⟨(by decide : Nat.Prime 17), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 4 12 2 = 4097 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 4 12 2 = 4097 := by decide
+  have hq : Nat.Prime 17 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 4 12 2 = 4097 := by decide
-    rw [hquot]
-    have hfactor : (4097 : Nat).factorization 17 = 1 := by
-      rw [show (4097 : Nat) = 17 * 241 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 17),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 17 ∣ 241),
-      ]
-    rw [hfactor]
-    have hA_factor : (3 : Nat).factorization 17 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 17 ∣ 3)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 17 ∣ 3)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b4_F12_A3_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 3 4 2 := by
@@ -26285,24 +13876,13 @@ theorem concrete_generated_b4_F12_A3_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b4_F12_A3_p3_prime_witness :
     PrimeComponentWitness 12 3 4 3 7 := by
-  refine ⟨(by decide : Nat.Prime 7), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 4 12 3 = 65793 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 4 12 3 = 65793 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 4 12 3 = 65793 := by decide
-    rw [hquot]
-    have hfactor : (65793 : Nat).factorization 7 = 1 := by
-      rw [show (65793 : Nat) = 7 * 9399 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 7),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 9399),
-      ]
-    rw [hfactor]
-    have hA_factor : (3 : Nat).factorization 7 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 3)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 3)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b4_F12_A3_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 3 4 3 := by
@@ -26337,7 +13917,8 @@ theorem orderOf_b4_mod5592405_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 4 hcop : (ZMod 5592405)ˣ) :
           ZMod 5592405) ^ 12) =
         (1 : ZMod 5592405)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -26376,24 +13957,13 @@ theorem concrete_generated_b4_F12_A5_factorization_support_cases
 
 theorem concrete_generated_b4_F12_A5_p2_prime_witness :
     PrimeComponentWitness 12 5 4 2 17 := by
-  refine ⟨(by decide : Nat.Prime 17), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 4 12 2 = 4097 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 4 12 2 = 4097 := by decide
+  have hq : Nat.Prime 17 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 4 12 2 = 4097 := by decide
-    rw [hquot]
-    have hfactor : (4097 : Nat).factorization 17 = 1 := by
-      rw [show (4097 : Nat) = 17 * 241 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 17),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 17 ∣ 241),
-      ]
-    rw [hfactor]
-    have hA_factor : (5 : Nat).factorization 17 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 17 ∣ 5)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 17 ∣ 5)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b4_F12_A5_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 5 4 2 := by
@@ -26401,24 +13971,13 @@ theorem concrete_generated_b4_F12_A5_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b4_F12_A5_p3_prime_witness :
     PrimeComponentWitness 12 5 4 3 3 := by
-  refine ⟨(by decide : Nat.Prime 3), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 4 12 3 = 65793 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 4 12 3 = 65793 := by decide
+  have hq : Nat.Prime 3 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 4 12 3 = 65793 := by decide
-    rw [hquot]
-    have hfactor : (65793 : Nat).factorization 3 = 1 := by
-      rw [show (65793 : Nat) = 3 * 21931 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 3),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 3 ∣ 21931),
-      ]
-    rw [hfactor]
-    have hA_factor : (5 : Nat).factorization 3 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 3 ∣ 5)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 3 ∣ 5)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b4_F12_A5_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 5 4 3 := by
@@ -26453,7 +14012,8 @@ theorem orderOf_b4_mod3355443_eq_12_from_emittedCertificate_denNorm :
       change (((ZMod.unitOfCoprime 4 hcop : (ZMod 3355443)ˣ) :
           ZMod 3355443) ^ 12) =
         (1 : ZMod 3355443)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -26486,24 +14046,13 @@ theorem concrete_generated_b10_F6_A21_factorization_support_cases
 
 theorem concrete_generated_b10_F6_A21_p2_prime_witness :
     PrimeComponentWitness 6 21 10 2 11 := by
-  refine ⟨(by decide : Nat.Prime 11), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 10 6 2 = 1001 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 10 6 2 = 1001 := by decide
+  have hq : Nat.Prime 11 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 10 6 2 = 1001 := by decide
-    rw [hquot]
-    have hfactor : (1001 : Nat).factorization 11 = 1 := by
-      rw [show (1001 : Nat) = 11 * 91 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 11),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 11 ∣ 91),
-      ]
-    rw [hfactor]
-    have hA_factor : (21 : Nat).factorization 11 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 11 ∣ 21)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 11 ∣ 21)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b10_F6_A21_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 6 21 10 2 := by
@@ -26511,24 +14060,13 @@ theorem concrete_generated_b10_F6_A21_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b10_F6_A21_p3_prime_witness :
     PrimeComponentWitness 6 21 10 3 13 := by
-  refine ⟨(by decide : Nat.Prime 13), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 10 6 3 = 10101 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 10 6 3 = 10101 := by decide
+  have hq : Nat.Prime 13 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 10 6 3 = 10101 := by decide
-    rw [hquot]
-    have hfactor : (10101 : Nat).factorization 13 = 1 := by
-      rw [show (10101 : Nat) = 13 * 777 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 13),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 13 ∣ 777),
-      ]
-    rw [hfactor]
-    have hA_factor : (21 : Nat).factorization 13 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 13 ∣ 21)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 13 ∣ 21)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b10_F6_A21_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 6 21 10 3 := by
@@ -26562,7 +14100,8 @@ theorem orderOf_b10_mod47619_eq_6_from_emittedCertificate_denNorm :
       apply Units.ext
       change (((ZMod.unitOfCoprime 10 hcop : (ZMod 47619)ˣ) : ZMod 47619) ^ 6) =
         (1 : ZMod 47619)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -26595,24 +14134,13 @@ theorem concrete_generated_b10_F6_A77_factorization_support_cases
 
 theorem concrete_generated_b10_F6_A77_p2_prime_witness :
     PrimeComponentWitness 6 77 10 2 13 := by
-  refine ⟨(by decide : Nat.Prime 13), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 10 6 2 = 1001 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 10 6 2 = 1001 := by decide
+  have hq : Nat.Prime 13 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 10 6 2 = 1001 := by decide
-    rw [hquot]
-    have hfactor : (1001 : Nat).factorization 13 = 1 := by
-      rw [show (1001 : Nat) = 13 * 77 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 13),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 13 ∣ 77),
-      ]
-    rw [hfactor]
-    have hA_factor : (77 : Nat).factorization 13 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 13 ∣ 77)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 13 ∣ 77)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b10_F6_A77_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 6 77 10 2 := by
@@ -26620,24 +14148,13 @@ theorem concrete_generated_b10_F6_A77_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b10_F6_A77_p3_prime_witness :
     PrimeComponentWitness 6 77 10 3 3 := by
-  refine ⟨(by decide : Nat.Prime 3), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 10 6 3 = 10101 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 10 6 3 = 10101 := by decide
+  have hq : Nat.Prime 3 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 10 6 3 = 10101 := by decide
-    rw [hquot]
-    have hfactor : (10101 : Nat).factorization 3 = 1 := by
-      rw [show (10101 : Nat) = 3 * 3367 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 3),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 3 ∣ 3367),
-      ]
-    rw [hfactor]
-    have hA_factor : (77 : Nat).factorization 3 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 3 ∣ 77)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 3 ∣ 77)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b10_F6_A77_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 6 77 10 3 := by
@@ -26671,7 +14188,8 @@ theorem orderOf_b10_mod12987_eq_6_from_emittedCertificate_denNorm :
       apply Units.ext
       change (((ZMod.unitOfCoprime 10 hcop : (ZMod 12987)ˣ) : ZMod 12987) ^ 6) =
         (1 : ZMod 12987)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -26704,24 +14222,13 @@ theorem concrete_generated_b10_F6_A7_factorization_support_cases
 
 theorem concrete_generated_b10_F6_A7_p2_prime_witness :
     PrimeComponentWitness 6 7 10 2 11 := by
-  refine ⟨(by decide : Nat.Prime 11), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 10 6 2 = 1001 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 10 6 2 = 1001 := by decide
+  have hq : Nat.Prime 11 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 10 6 2 = 1001 := by decide
-    rw [hquot]
-    have hfactor : (1001 : Nat).factorization 11 = 1 := by
-      rw [show (1001 : Nat) = 11 * 91 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 11),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 11 ∣ 91),
-      ]
-    rw [hfactor]
-    have hA_factor : (7 : Nat).factorization 11 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 11 ∣ 7)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 11 ∣ 7)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b10_F6_A7_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 6 7 10 2 := by
@@ -26729,24 +14236,13 @@ theorem concrete_generated_b10_F6_A7_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b10_F6_A7_p3_prime_witness :
     PrimeComponentWitness 6 7 10 3 3 := by
-  refine ⟨(by decide : Nat.Prime 3), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 10 6 3 = 10101 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 10 6 3 = 10101 := by decide
+  have hq : Nat.Prime 3 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 10 6 3 = 10101 := by decide
-    rw [hquot]
-    have hfactor : (10101 : Nat).factorization 3 = 1 := by
-      rw [show (10101 : Nat) = 3 * 3367 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 3),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 3 ∣ 3367),
-      ]
-    rw [hfactor]
-    have hA_factor : (7 : Nat).factorization 3 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 3 ∣ 7)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 3 ∣ 7)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b10_F6_A7_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 6 7 10 3 := by
@@ -26780,7 +14276,8 @@ theorem orderOf_b10_mod142857_eq_6_from_emittedCertificate_denNorm :
       apply Units.ext
       change (((ZMod.unitOfCoprime 10 hcop : (ZMod 142857)ˣ) : ZMod 142857) ^ 6) =
         (1 : ZMod 142857)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -26813,24 +14310,13 @@ theorem concrete_generated_b10_F6_A3_factorization_support_cases
 
 theorem concrete_generated_b10_F6_A3_p2_prime_witness :
     PrimeComponentWitness 6 3 10 2 7 := by
-  refine ⟨(by decide : Nat.Prime 7), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 10 6 2 = 1001 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 10 6 2 = 1001 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 10 6 2 = 1001 := by decide
-    rw [hquot]
-    have hfactor : (1001 : Nat).factorization 7 = 1 := by
-      rw [show (1001 : Nat) = 7 * 143 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 7),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 143),
-      ]
-    rw [hfactor]
-    have hA_factor : (3 : Nat).factorization 7 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 3)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 3)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b10_F6_A3_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 6 3 10 2 := by
@@ -26838,24 +14324,13 @@ theorem concrete_generated_b10_F6_A3_p2_CanonicalWitnessRowCase :
 
 theorem concrete_generated_b10_F6_A3_p3_prime_witness :
     PrimeComponentWitness 6 3 10 3 7 := by
-  refine ⟨(by decide : Nat.Prime 7), ?_, ?_⟩
-  · have hquot : primeComponentQuotient 10 6 3 = 10101 := by decide
-    rw [hquot]
+  have hquot : primeComponentQuotient 10 6 3 = 10101 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
     decide
-  · have hquot : primeComponentQuotient 10 6 3 = 10101 := by decide
-    rw [hquot]
-    have hfactor : (10101 : Nat).factorization 7 = 1 := by
-      rw [show (10101 : Nat) = 7 * 1443 by decide]
-      rw [Nat.factorization_mul (by decide) (by decide)]
-      simp [
-        Nat.Prime.factorization_self (by decide : Nat.Prime 7),
-        Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 1443),
-      ]
-    rw [hfactor]
-    have hA_factor : (3 : Nat).factorization 7 = 0 :=
-      Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 3)
-    rw [hA_factor]
-    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 3)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_generated_b10_F6_A3_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 6 3 10 3 := by
@@ -26889,7 +14364,8 @@ theorem orderOf_b10_mod333333_eq_6_from_emittedCertificate_denNorm :
       apply Units.ext
       change (((ZMod.unitOfCoprime 10 hcop : (ZMod 333333)ˣ) : ZMod 333333) ^ 6) =
         (1 : ZMod 333333)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table
@@ -26905,13 +14381,13 @@ theorem orderOf_b10_mod333333_eq_6_from_emittedCertificate_denNorm :
 
 theorem concrete_lifted_b12_F12_A102965_from_A5_mul20593_p2_prime_witness :
     PrimeComponentWitness 12 102965 12 2 29 := by
-  rw [show (102965 : Nat) = 5 * 20593 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b12_F12_A5_p2_prime_witness
-    (by decide : (5 : Nat) ≠ 0)
-    (by decide : (20593 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 29 ∣ 20593))
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 29 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 29 ∣ 102965)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b12_F12_A102965_from_A5_mul20593_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 102965 12 2 := by
@@ -26919,13 +14395,13 @@ theorem concrete_lifted_b12_F12_A102965_from_A5_mul20593_p2_CanonicalWitnessRowC
 
 theorem concrete_lifted_b12_F12_A102965_from_A5_mul20593_p3_prime_witness :
     PrimeComponentWitness 12 102965 12 3 7 := by
-  rw [show (102965 : Nat) = 5 * 20593 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b12_F12_A5_p3_prime_witness
-    (by decide : (5 : Nat) ≠ 0)
-    (by decide : (20593 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 7 ∣ 20593))
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 102965)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b12_F12_A102965_from_A5_mul20593_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 102965 12 3 := by
@@ -26933,13 +14409,13 @@ theorem concrete_lifted_b12_F12_A102965_from_A5_mul20593_p3_CanonicalWitnessRowC
 
 theorem concrete_lifted_b12_F12_A144151_from_A7_mul20593_p2_prime_witness :
     PrimeComponentWitness 12 144151 12 2 5 := by
-  rw [show (144151 : Nat) = 7 * 20593 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b12_F12_A7_p2_prime_witness
-    (by decide : (7 : Nat) ≠ 0)
-    (by decide : (20593 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 5 ∣ 20593))
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 5 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 144151)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b12_F12_A144151_from_A7_mul20593_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 144151 12 2 := by
@@ -26947,13 +14423,13 @@ theorem concrete_lifted_b12_F12_A144151_from_A7_mul20593_p2_CanonicalWitnessRowC
 
 theorem concrete_lifted_b12_F12_A144151_from_A7_mul20593_p3_prime_witness :
     PrimeComponentWitness 12 144151 12 3 19 := by
-  rw [show (144151 : Nat) = 7 * 20593 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b12_F12_A7_p3_prime_witness
-    (by decide : (7 : Nat) ≠ 0)
-    (by decide : (20593 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 19 ∣ 20593))
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 19 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 19 ∣ 144151)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b12_F12_A144151_from_A7_mul20593_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 144151 12 3 := by
@@ -26961,12 +14437,13 @@ theorem concrete_lifted_b12_F12_A144151_from_A7_mul20593_p3_CanonicalWitnessRowC
 
 theorem concrete_lifted_b12_F12_A13_from_A11_factorization_le_p2_prime_witness :
     PrimeComponentWitness 12 13 12 2 5 := by
-  exact PrimeComponentWitness.of_factorization_le
-    concrete_generated_b12_F12_A11_p2_prime_witness
-    (by
-      rw [Nat.factorization_eq_zero_of_not_dvd
-        (by decide : ¬ 5 ∣ 13)]
-      exact Nat.zero_le _)
+  have hquot : primeComponentQuotient 12 12 2 = 2985985 := by decide
+  have hq : Nat.Prime 5 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 5 ∣ 13)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b12_F12_A13_from_A11_factorization_le_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 13 12 2 := by
@@ -26974,12 +14451,13 @@ theorem concrete_lifted_b12_F12_A13_from_A11_factorization_le_p2_CanonicalWitnes
 
 theorem concrete_lifted_b12_F12_A13_from_A11_factorization_le_p3_prime_witness :
     PrimeComponentWitness 12 13 12 3 7 := by
-  exact PrimeComponentWitness.of_factorization_le
-    concrete_generated_b12_F12_A11_p3_prime_witness
-    (by
-      rw [Nat.factorization_eq_zero_of_not_dvd
-        (by decide : ¬ 7 ∣ 13)]
-      exact Nat.zero_le _)
+  have hquot : primeComponentQuotient 12 12 3 = 430002433 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 13)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b12_F12_A13_from_A11_factorization_le_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 13 12 3 := by
@@ -26987,13 +14465,13 @@ theorem concrete_lifted_b12_F12_A13_from_A11_factorization_le_p3_CanonicalWitnes
 
 theorem concrete_lifted_b2_F33_A623_from_A7_mul89_p3_prime_witness :
     PrimeComponentWitness 33 623 2 3 599479 := by
-  rw [show (623 : Nat) = 7 * 89 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b2_F33_A7_p3_prime_witness
-    (by decide : (7 : Nat) ≠ 0)
-    (by decide : (89 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 599479 ∣ 89))
+  have hquot : primeComponentQuotient 2 33 3 = 4196353 := by decide
+  have hq : Nat.Prime 599479 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 599479 ∣ 623)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b2_F33_A623_from_A7_mul89_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 33 623 2 3 := by
@@ -27001,13 +14479,13 @@ theorem concrete_lifted_b2_F33_A623_from_A7_mul89_p3_CanonicalWitnessRowCase :
 
 theorem concrete_lifted_b2_F33_A623_from_A7_mul89_p11_prime_witness :
     PrimeComponentWitness 33 623 2 11 23 := by
-  rw [show (623 : Nat) = 7 * 89 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b2_F33_A7_p11_prime_witness
-    (by decide : (7 : Nat) ≠ 0)
-    (by decide : (89 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 23 ∣ 89))
+  have hquot : primeComponentQuotient 2 33 11 = 1227133513 := by decide
+  have hq : Nat.Prime 23 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 23 ∣ 623)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b2_F33_A623_from_A7_mul89_p11_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 33 623 2 11 := by
@@ -27015,13 +14493,13 @@ theorem concrete_lifted_b2_F33_A623_from_A7_mul89_p11_CanonicalWitnessRowCase :
 
 theorem concrete_lifted_b2_F33_A13788017_from_A23_mul599479_p3_prime_witness :
     PrimeComponentWitness 33 13788017 2 3 7 := by
-  rw [show (13788017 : Nat) = 23 * 599479 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b2_F33_A23_p3_prime_witness
-    (by decide : (23 : Nat) ≠ 0)
-    (by decide : (599479 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 7 ∣ 599479))
+  have hquot : primeComponentQuotient 2 33 3 = 4196353 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 13788017)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b2_F33_A13788017_from_A23_mul599479_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 33 13788017 2 3 := by
@@ -27029,13 +14507,13 @@ theorem concrete_lifted_b2_F33_A13788017_from_A23_mul599479_p3_CanonicalWitnessR
 
 theorem concrete_lifted_b2_F33_A13788017_from_A23_mul599479_p11_prime_witness :
     PrimeComponentWitness 33 13788017 2 11 89 := by
-  rw [show (13788017 : Nat) = 23 * 599479 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b2_F33_A23_p11_prime_witness
-    (by decide : (23 : Nat) ≠ 0)
-    (by decide : (599479 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 89 ∣ 599479))
+  have hquot : primeComponentQuotient 2 33 11 = 1227133513 := by decide
+  have hq : Nat.Prime 89 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 89 ∣ 13788017)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b2_F33_A13788017_from_A23_mul599479_p11_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 33 13788017 2 11 := by
@@ -27043,12 +14521,13 @@ theorem concrete_lifted_b2_F33_A13788017_from_A23_mul599479_p11_CanonicalWitness
 
 theorem concrete_lifted_b2_F33_A599479_from_A89_factorization_le_p3_prime_witness :
     PrimeComponentWitness 33 599479 2 3 7 := by
-  exact PrimeComponentWitness.of_factorization_le
-    concrete_generated_b2_F33_A89_p3_prime_witness
-    (by
-      rw [Nat.factorization_eq_zero_of_not_dvd
-        (by decide : ¬ 7 ∣ 599479)]
-      exact Nat.zero_le _)
+  have hquot : primeComponentQuotient 2 33 3 = 4196353 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 599479)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b2_F33_A599479_from_A89_factorization_le_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 33 599479 2 3 := by
@@ -27056,12 +14535,13 @@ theorem concrete_lifted_b2_F33_A599479_from_A89_factorization_le_p3_CanonicalWit
 
 theorem concrete_lifted_b2_F33_A599479_from_A89_factorization_le_p11_prime_witness :
     PrimeComponentWitness 33 599479 2 11 23 := by
-  exact PrimeComponentWitness.of_factorization_le
-    concrete_generated_b2_F33_A89_p11_prime_witness
-    (by
-      rw [Nat.factorization_eq_zero_of_not_dvd
-        (by decide : ¬ 23 ∣ 599479)]
-      exact Nat.zero_le _)
+  have hquot : primeComponentQuotient 2 33 11 = 1227133513 := by decide
+  have hq : Nat.Prime 23 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 23 ∣ 599479)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b2_F33_A599479_from_A89_factorization_le_p11_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 33 599479 2 11 := by
@@ -27083,13 +14563,13 @@ theorem concrete_lifted_b2_F105_A75047_from_A497_mul151_p3_CanonicalWitnessRowCa
 
 theorem concrete_lifted_b2_F105_A75047_from_A497_mul151_p5_prime_witness :
     PrimeComponentWitness 105 75047 2 5 31 := by
-  rw [show (75047 : Nat) = 497 * 151 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b2_F105_A497_p5_prime_witness
-    (by decide : (497 : Nat) ≠ 0)
-    (by decide : (151 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 31 ∣ 151))
+  have hquot : primeComponentQuotient 2 105 5 = 19342822337210501698682881 := by decide
+  have hq : Nat.Prime 31 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 31 ∣ 75047)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b2_F105_A75047_from_A497_mul151_p5_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 105 75047 2 5 := by
@@ -27097,13 +14577,13 @@ theorem concrete_lifted_b2_F105_A75047_from_A497_mul151_p5_CanonicalWitnessRowCa
 
 theorem concrete_lifted_b2_F105_A75047_from_A497_mul151_p7_prime_witness :
     PrimeComponentWitness 105 75047 2 7 127 := by
-  rw [show (75047 : Nat) = 497 * 151 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b2_F105_A497_p7_prime_witness
-    (by decide : (497 : Nat) ≠ 0)
-    (by decide : (151 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 127 ∣ 151))
+  have hquot : primeComponentQuotient 2 105 7 = 1237977819370199922113544193 := by decide
+  have hq : Nat.Prime 127 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 127 ∣ 75047)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b2_F105_A75047_from_A497_mul151_p7_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 105 75047 2 7 := by
@@ -27111,13 +14591,13 @@ theorem concrete_lifted_b2_F105_A75047_from_A497_mul151_p7_CanonicalWitnessRowCa
 
 theorem concrete_lifted_b2_F105_A279527_from_A2201_mul127_p3_prime_witness :
     PrimeComponentWitness 105 279527 2 3 7 := by
-  rw [show (279527 : Nat) = 2201 * 127 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b2_F105_A2201_p3_prime_witness
-    (by decide : (2201 : Nat) ≠ 0)
-    (by decide : (127 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 7 ∣ 127))
+  have hquot : primeComponentQuotient 2 105 3 = 1180591620751771041793 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 279527)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b2_F105_A279527_from_A2201_mul127_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 105 279527 2 3 := by
@@ -27125,13 +14605,13 @@ theorem concrete_lifted_b2_F105_A279527_from_A2201_mul127_p3_CanonicalWitnessRow
 
 theorem concrete_lifted_b2_F105_A279527_from_A2201_mul127_p5_prime_witness :
     PrimeComponentWitness 105 279527 2 5 151 := by
-  rw [show (279527 : Nat) = 2201 * 127 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b2_F105_A2201_p5_prime_witness
-    (by decide : (2201 : Nat) ≠ 0)
-    (by decide : (127 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 151 ∣ 127))
+  have hquot : primeComponentQuotient 2 105 5 = 19342822337210501698682881 := by decide
+  have hq : Nat.Prime 151 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 151 ∣ 279527)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b2_F105_A279527_from_A2201_mul127_p5_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 105 279527 2 5 := by
@@ -27139,13 +14619,13 @@ theorem concrete_lifted_b2_F105_A279527_from_A2201_mul127_p5_CanonicalWitnessRow
 
 theorem concrete_lifted_b2_F105_A279527_from_A2201_mul127_p7_prime_witness :
     PrimeComponentWitness 105 279527 2 7 7 := by
-  rw [show (279527 : Nat) = 2201 * 127 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b2_F105_A2201_p7_prime_witness
-    (by decide : (2201 : Nat) ≠ 0)
-    (by decide : (127 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 7 ∣ 127))
+  have hquot : primeComponentQuotient 2 105 7 = 1237977819370199922113544193 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 279527)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b2_F105_A279527_from_A2201_mul127_p7_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 105 279527 2 7 := by
@@ -27167,13 +14647,13 @@ theorem concrete_lifted_b2_F105_A27559_from_A217_mul127_p3_CanonicalWitnessRowCa
 
 theorem concrete_lifted_b2_F105_A27559_from_A217_mul127_p5_prime_witness :
     PrimeComponentWitness 105 27559 2 5 71 := by
-  rw [show (27559 : Nat) = 217 * 127 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b2_F105_A217_p5_prime_witness
-    (by decide : (217 : Nat) ≠ 0)
-    (by decide : (127 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 71 ∣ 127))
+  have hquot : primeComponentQuotient 2 105 5 = 19342822337210501698682881 := by decide
+  have hq : Nat.Prime 71 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 71 ∣ 27559)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b2_F105_A27559_from_A217_mul127_p5_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 105 27559 2 5 := by
@@ -27181,13 +14661,13 @@ theorem concrete_lifted_b2_F105_A27559_from_A217_mul127_p5_CanonicalWitnessRowCa
 
 theorem concrete_lifted_b2_F105_A27559_from_A217_mul127_p7_prime_witness :
     PrimeComponentWitness 105 27559 2 7 71 := by
-  rw [show (27559 : Nat) = 217 * 127 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b2_F105_A217_p7_prime_witness
-    (by decide : (217 : Nat) ≠ 0)
-    (by decide : (127 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 71 ∣ 127))
+  have hquot : primeComponentQuotient 2 105 7 = 1237977819370199922113544193 := by decide
+  have hq : Nat.Prime 71 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 71 ∣ 27559)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b2_F105_A27559_from_A217_mul127_p7_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 105 27559 2 7 := by
@@ -27209,13 +14689,13 @@ theorem concrete_lifted_b2_F105_A889_from_A7_mul127_p3_CanonicalWitnessRowCase :
 
 theorem concrete_lifted_b2_F105_A889_from_A7_mul127_p5_prime_witness :
     PrimeComponentWitness 105 889 2 5 31 := by
-  rw [show (889 : Nat) = 7 * 127 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b2_F105_A7_p5_prime_witness
-    (by decide : (7 : Nat) ≠ 0)
-    (by decide : (127 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 31 ∣ 127))
+  have hquot : primeComponentQuotient 2 105 5 = 19342822337210501698682881 := by decide
+  have hq : Nat.Prime 31 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 31 ∣ 889)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b2_F105_A889_from_A7_mul127_p5_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 105 889 2 5 := by
@@ -27223,13 +14703,13 @@ theorem concrete_lifted_b2_F105_A889_from_A7_mul127_p5_CanonicalWitnessRowCase :
 
 theorem concrete_lifted_b2_F105_A889_from_A7_mul127_p7_prime_witness :
     PrimeComponentWitness 105 889 2 7 71 := by
-  rw [show (889 : Nat) = 7 * 127 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b2_F105_A7_p7_prime_witness
-    (by decide : (7 : Nat) ≠ 0)
-    (by decide : (127 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 71 ∣ 127))
+  have hquot : primeComponentQuotient 2 105 7 = 1237977819370199922113544193 := by decide
+  have hq : Nat.Prime 71 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 71 ∣ 889)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b2_F105_A889_from_A7_mul127_p7_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 105 889 2 7 := by
@@ -27237,13 +14717,13 @@ theorem concrete_lifted_b2_F105_A889_from_A7_mul127_p7_CanonicalWitnessRowCase :
 
 theorem concrete_lifted_b2_F105_A3937_from_A31_mul127_p3_prime_witness :
     PrimeComponentWitness 105 3937 2 3 7 := by
-  rw [show (3937 : Nat) = 31 * 127 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b2_F105_A31_p3_prime_witness
-    (by decide : (31 : Nat) ≠ 0)
-    (by decide : (127 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 7 ∣ 127))
+  have hquot : primeComponentQuotient 2 105 3 = 1180591620751771041793 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 3937)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b2_F105_A3937_from_A31_mul127_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 105 3937 2 3 := by
@@ -27251,13 +14731,13 @@ theorem concrete_lifted_b2_F105_A3937_from_A31_mul127_p3_CanonicalWitnessRowCase
 
 theorem concrete_lifted_b2_F105_A3937_from_A31_mul127_p5_prime_witness :
     PrimeComponentWitness 105 3937 2 5 71 := by
-  rw [show (3937 : Nat) = 31 * 127 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b2_F105_A31_p5_prime_witness
-    (by decide : (31 : Nat) ≠ 0)
-    (by decide : (127 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 71 ∣ 127))
+  have hquot : primeComponentQuotient 2 105 5 = 19342822337210501698682881 := by decide
+  have hq : Nat.Prime 71 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 71 ∣ 3937)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b2_F105_A3937_from_A31_mul127_p5_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 105 3937 2 5 := by
@@ -27265,13 +14745,13 @@ theorem concrete_lifted_b2_F105_A3937_from_A31_mul127_p5_CanonicalWitnessRowCase
 
 theorem concrete_lifted_b2_F105_A3937_from_A31_mul127_p7_prime_witness :
     PrimeComponentWitness 105 3937 2 7 7 := by
-  rw [show (3937 : Nat) = 31 * 127 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b2_F105_A31_p7_prime_witness
-    (by decide : (31 : Nat) ≠ 0)
-    (by decide : (127 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 7 ∣ 127))
+  have hquot : primeComponentQuotient 2 105 7 = 1237977819370199922113544193 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 3937)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b2_F105_A3937_from_A31_mul127_p7_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 105 3937 2 7 := by
@@ -27279,13 +14759,13 @@ theorem concrete_lifted_b2_F105_A3937_from_A31_mul127_p7_CanonicalWitnessRowCase
 
 theorem concrete_lifted_b6_F12_A74555_from_A14911_mul5_p2_prime_witness :
     PrimeComponentWitness 12 74555 6 2 97 := by
-  rw [show (74555 : Nat) = 14911 * 5 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b6_F12_A14911_p2_prime_witness
-    (by decide : (14911 : Nat) ≠ 0)
-    (by decide : (5 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 97 ∣ 5))
+  have hquot : primeComponentQuotient 6 12 2 = 46657 := by decide
+  have hq : Nat.Prime 97 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 97 ∣ 74555)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b6_F12_A74555_from_A14911_mul5_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 74555 6 2 := by
@@ -27293,13 +14773,13 @@ theorem concrete_lifted_b6_F12_A74555_from_A14911_mul5_p2_CanonicalWitnessRowCas
 
 theorem concrete_lifted_b6_F12_A74555_from_A14911_mul5_p3_prime_witness :
     PrimeComponentWitness 12 74555 6 3 43 := by
-  rw [show (74555 : Nat) = 14911 * 5 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b6_F12_A14911_p3_prime_witness
-    (by decide : (14911 : Nat) ≠ 0)
-    (by decide : (5 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 43 ∣ 5))
+  have hquot : primeComponentQuotient 6 12 3 = 1680913 := by decide
+  have hq : Nat.Prime 43 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 43 ∣ 74555)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b6_F12_A74555_from_A14911_mul5_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 74555 6 3 := by
@@ -27307,13 +14787,13 @@ theorem concrete_lifted_b6_F12_A74555_from_A14911_mul5_p3_CanonicalWitnessRowCas
 
 theorem concrete_lifted_b6_F12_A86645_from_A17329_mul5_p2_prime_witness :
     PrimeComponentWitness 12 86645 6 2 37 := by
-  rw [show (86645 : Nat) = 17329 * 5 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b6_F12_A17329_p2_prime_witness
-    (by decide : (17329 : Nat) ≠ 0)
-    (by decide : (5 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 37 ∣ 5))
+  have hquot : primeComponentQuotient 6 12 2 = 46657 := by decide
+  have hq : Nat.Prime 37 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 37 ∣ 86645)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b6_F12_A86645_from_A17329_mul5_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 86645 6 2 := by
@@ -27321,13 +14801,13 @@ theorem concrete_lifted_b6_F12_A86645_from_A17329_mul5_p2_CanonicalWitnessRowCas
 
 theorem concrete_lifted_b6_F12_A86645_from_A17329_mul5_p3_prime_witness :
     PrimeComponentWitness 12 86645 6 3 97 := by
-  rw [show (86645 : Nat) = 17329 * 5 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b6_F12_A17329_p3_prime_witness
-    (by decide : (17329 : Nat) ≠ 0)
-    (by decide : (5 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 97 ∣ 5))
+  have hquot : primeComponentQuotient 6 12 3 = 1680913 := by decide
+  have hq : Nat.Prime 97 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 97 ∣ 86645)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b6_F12_A86645_from_A17329_mul5_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 86645 6 3 := by
@@ -27335,13 +14815,13 @@ theorem concrete_lifted_b6_F12_A86645_from_A17329_mul5_p3_CanonicalWitnessRowCas
 
 theorem concrete_lifted_b6_F12_A2015_from_A403_mul5_p2_prime_witness :
     PrimeComponentWitness 12 2015 6 2 37 := by
-  rw [show (2015 : Nat) = 403 * 5 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b6_F12_A403_p2_prime_witness
-    (by decide : (403 : Nat) ≠ 0)
-    (by decide : (5 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 37 ∣ 5))
+  have hquot : primeComponentQuotient 6 12 2 = 46657 := by decide
+  have hq : Nat.Prime 37 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 37 ∣ 2015)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b6_F12_A2015_from_A403_mul5_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 2015 6 2 := by
@@ -27349,13 +14829,13 @@ theorem concrete_lifted_b6_F12_A2015_from_A403_mul5_p2_CanonicalWitnessRowCase :
 
 theorem concrete_lifted_b6_F12_A2015_from_A403_mul5_p3_prime_witness :
     PrimeComponentWitness 12 2015 6 3 43 := by
-  rw [show (2015 : Nat) = 403 * 5 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b6_F12_A403_p3_prime_witness
-    (by decide : (403 : Nat) ≠ 0)
-    (by decide : (5 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 43 ∣ 5))
+  have hquot : primeComponentQuotient 6 12 3 = 1680913 := by decide
+  have hq : Nat.Prime 43 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 43 ∣ 2015)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b6_F12_A2015_from_A403_mul5_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 2015 6 3 := by
@@ -27363,13 +14843,13 @@ theorem concrete_lifted_b6_F12_A2015_from_A403_mul5_p3_CanonicalWitnessRowCase :
 
 theorem concrete_lifted_b6_F12_A2405_from_A481_mul5_p2_prime_witness :
     PrimeComponentWitness 12 2405 6 2 97 := by
-  rw [show (2405 : Nat) = 481 * 5 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b6_F12_A481_p2_prime_witness
-    (by decide : (481 : Nat) ≠ 0)
-    (by decide : (5 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 97 ∣ 5))
+  have hquot : primeComponentQuotient 6 12 2 = 46657 := by decide
+  have hq : Nat.Prime 97 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 97 ∣ 2405)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b6_F12_A2405_from_A481_mul5_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 2405 6 2 := by
@@ -27377,13 +14857,13 @@ theorem concrete_lifted_b6_F12_A2405_from_A481_mul5_p2_CanonicalWitnessRowCase :
 
 theorem concrete_lifted_b6_F12_A2405_from_A481_mul5_p3_prime_witness :
     PrimeComponentWitness 12 2405 6 3 31 := by
-  rw [show (2405 : Nat) = 481 * 5 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b6_F12_A481_p3_prime_witness
-    (by decide : (481 : Nat) ≠ 0)
-    (by decide : (5 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 31 ∣ 5))
+  have hquot : primeComponentQuotient 6 12 3 = 1680913 := by decide
+  have hq : Nat.Prime 31 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 31 ∣ 2405)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b6_F12_A2405_from_A481_mul5_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 2405 6 3 := by
@@ -27391,13 +14871,13 @@ theorem concrete_lifted_b6_F12_A2405_from_A481_mul5_p3_CanonicalWitnessRowCase :
 
 theorem concrete_lifted_b6_F12_A65_from_A13_mul5_p2_prime_witness :
     PrimeComponentWitness 12 65 6 2 37 := by
-  rw [show (65 : Nat) = 13 * 5 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b6_F12_A13_p2_prime_witness
-    (by decide : (13 : Nat) ≠ 0)
-    (by decide : (5 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 37 ∣ 5))
+  have hquot : primeComponentQuotient 6 12 2 = 46657 := by decide
+  have hq : Nat.Prime 37 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 37 ∣ 65)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b6_F12_A65_from_A13_mul5_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 65 6 2 := by
@@ -27405,13 +14885,13 @@ theorem concrete_lifted_b6_F12_A65_from_A13_mul5_p2_CanonicalWitnessRowCase :
 
 theorem concrete_lifted_b6_F12_A65_from_A13_mul5_p3_prime_witness :
     PrimeComponentWitness 12 65 6 3 31 := by
-  rw [show (65 : Nat) = 13 * 5 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b6_F12_A13_p3_prime_witness
-    (by decide : (13 : Nat) ≠ 0)
-    (by decide : (5 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 31 ∣ 5))
+  have hquot : primeComponentQuotient 6 12 3 = 1680913 := by decide
+  have hq : Nat.Prime 31 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 31 ∣ 65)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b6_F12_A65_from_A13_mul5_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 65 6 3 := by
@@ -27419,13 +14899,13 @@ theorem concrete_lifted_b6_F12_A65_from_A13_mul5_p3_CanonicalWitnessRowCase :
 
 theorem concrete_lifted_b4_F12_A1365_from_A273_mul5_p2_prime_witness :
     PrimeComponentWitness 12 1365 4 2 17 := by
-  rw [show (1365 : Nat) = 273 * 5 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b4_F12_A273_p2_prime_witness
-    (by decide : (273 : Nat) ≠ 0)
-    (by decide : (5 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 17 ∣ 5))
+  have hquot : primeComponentQuotient 4 12 2 = 4097 := by decide
+  have hq : Nat.Prime 17 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 17 ∣ 1365)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b4_F12_A1365_from_A273_mul5_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 1365 4 2 := by
@@ -27433,13 +14913,13 @@ theorem concrete_lifted_b4_F12_A1365_from_A273_mul5_p2_CanonicalWitnessRowCase :
 
 theorem concrete_lifted_b4_F12_A1365_from_A273_mul5_p3_prime_witness :
     PrimeComponentWitness 12 1365 4 3 241 := by
-  rw [show (1365 : Nat) = 273 * 5 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b4_F12_A273_p3_prime_witness
-    (by decide : (273 : Nat) ≠ 0)
-    (by decide : (5 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 241 ∣ 5))
+  have hquot : primeComponentQuotient 4 12 3 = 65793 := by decide
+  have hq : Nat.Prime 241 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 241 ∣ 1365)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b4_F12_A1365_from_A273_mul5_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 1365 4 3 := by
@@ -27447,13 +14927,13 @@ theorem concrete_lifted_b4_F12_A1365_from_A273_mul5_p3_CanonicalWitnessRowCase :
 
 theorem concrete_lifted_b4_F12_A1785_from_A357_mul5_p2_prime_witness :
     PrimeComponentWitness 12 1785 4 2 241 := by
-  rw [show (1785 : Nat) = 357 * 5 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b4_F12_A357_p2_prime_witness
-    (by decide : (357 : Nat) ≠ 0)
-    (by decide : (5 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 241 ∣ 5))
+  have hquot : primeComponentQuotient 4 12 2 = 4097 := by decide
+  have hq : Nat.Prime 241 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 241 ∣ 1785)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b4_F12_A1785_from_A357_mul5_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 1785 4 2 := by
@@ -27461,13 +14941,13 @@ theorem concrete_lifted_b4_F12_A1785_from_A357_mul5_p2_CanonicalWitnessRowCase :
 
 theorem concrete_lifted_b4_F12_A1785_from_A357_mul5_p3_prime_witness :
     PrimeComponentWitness 12 1785 4 3 13 := by
-  rw [show (1785 : Nat) = 357 * 5 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b4_F12_A357_p3_prime_witness
-    (by decide : (357 : Nat) ≠ 0)
-    (by decide : (5 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 13 ∣ 5))
+  have hquot : primeComponentQuotient 4 12 3 = 65793 := by decide
+  have hq : Nat.Prime 13 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 13 ∣ 1785)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b4_F12_A1785_from_A357_mul5_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 1785 4 3 := by
@@ -27475,13 +14955,13 @@ theorem concrete_lifted_b4_F12_A1785_from_A357_mul5_p3_CanonicalWitnessRowCase :
 
 theorem concrete_lifted_b4_F12_A255_from_A51_mul5_p2_prime_witness :
     PrimeComponentWitness 12 255 4 2 241 := by
-  rw [show (255 : Nat) = 51 * 5 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b4_F12_A51_p2_prime_witness
-    (by decide : (51 : Nat) ≠ 0)
-    (by decide : (5 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 241 ∣ 5))
+  have hquot : primeComponentQuotient 4 12 2 = 4097 := by decide
+  have hq : Nat.Prime 241 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 241 ∣ 255)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b4_F12_A255_from_A51_mul5_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 255 4 2 := by
@@ -27489,13 +14969,13 @@ theorem concrete_lifted_b4_F12_A255_from_A51_mul5_p2_CanonicalWitnessRowCase :
 
 theorem concrete_lifted_b4_F12_A255_from_A51_mul5_p3_prime_witness :
     PrimeComponentWitness 12 255 4 3 7 := by
-  rw [show (255 : Nat) = 51 * 5 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b4_F12_A51_p3_prime_witness
-    (by decide : (51 : Nat) ≠ 0)
-    (by decide : (5 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 7 ∣ 5))
+  have hquot : primeComponentQuotient 4 12 3 = 65793 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 255)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b4_F12_A255_from_A51_mul5_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 255 4 3 := by
@@ -27503,13 +14983,13 @@ theorem concrete_lifted_b4_F12_A255_from_A51_mul5_p3_CanonicalWitnessRowCase :
 
 theorem concrete_lifted_b4_F12_A105_from_A21_mul5_p2_prime_witness :
     PrimeComponentWitness 12 105 4 2 17 := by
-  rw [show (105 : Nat) = 21 * 5 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b4_F12_A21_p2_prime_witness
-    (by decide : (21 : Nat) ≠ 0)
-    (by decide : (5 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 17 ∣ 5))
+  have hquot : primeComponentQuotient 4 12 2 = 4097 := by decide
+  have hq : Nat.Prime 17 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 17 ∣ 105)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b4_F12_A105_from_A21_mul5_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 105 4 2 := by
@@ -27517,13 +14997,13 @@ theorem concrete_lifted_b4_F12_A105_from_A21_mul5_p2_CanonicalWitnessRowCase :
 
 theorem concrete_lifted_b4_F12_A105_from_A21_mul5_p3_prime_witness :
     PrimeComponentWitness 12 105 4 3 13 := by
-  rw [show (105 : Nat) = 21 * 5 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b4_F12_A21_p3_prime_witness
-    (by decide : (21 : Nat) ≠ 0)
-    (by decide : (5 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 13 ∣ 5))
+  have hquot : primeComponentQuotient 4 12 3 = 65793 := by decide
+  have hq : Nat.Prime 13 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 13 ∣ 105)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b4_F12_A105_from_A21_mul5_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 105 4 3 := by
@@ -27531,13 +15011,13 @@ theorem concrete_lifted_b4_F12_A105_from_A21_mul5_p3_CanonicalWitnessRowCase :
 
 theorem concrete_lifted_b4_F12_A85_from_A17_mul5_p2_prime_witness :
     PrimeComponentWitness 12 85 4 2 241 := by
-  rw [show (85 : Nat) = 17 * 5 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b4_F12_A17_p2_prime_witness
-    (by decide : (17 : Nat) ≠ 0)
-    (by decide : (5 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 241 ∣ 5))
+  have hquot : primeComponentQuotient 4 12 2 = 4097 := by decide
+  have hq : Nat.Prime 241 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 241 ∣ 85)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b4_F12_A85_from_A17_mul5_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 85 4 2 := by
@@ -27545,13 +15025,13 @@ theorem concrete_lifted_b4_F12_A85_from_A17_mul5_p2_CanonicalWitnessRowCase :
 
 theorem concrete_lifted_b4_F12_A85_from_A17_mul5_p3_prime_witness :
     PrimeComponentWitness 12 85 4 3 3 := by
-  rw [show (85 : Nat) = 17 * 5 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b4_F12_A17_p3_prime_witness
-    (by decide : (17 : Nat) ≠ 0)
-    (by decide : (5 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 3 ∣ 5))
+  have hquot : primeComponentQuotient 4 12 3 = 65793 := by decide
+  have hq : Nat.Prime 3 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 3 ∣ 85)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b4_F12_A85_from_A17_mul5_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 85 4 3 := by
@@ -27559,13 +15039,13 @@ theorem concrete_lifted_b4_F12_A85_from_A17_mul5_p3_CanonicalWitnessRowCase :
 
 theorem concrete_lifted_b4_F12_A15_from_A3_mul5_p2_prime_witness :
     PrimeComponentWitness 12 15 4 2 17 := by
-  rw [show (15 : Nat) = 3 * 5 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b4_F12_A3_p2_prime_witness
-    (by decide : (3 : Nat) ≠ 0)
-    (by decide : (5 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 17 ∣ 5))
+  have hquot : primeComponentQuotient 4 12 2 = 4097 := by decide
+  have hq : Nat.Prime 17 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 17 ∣ 15)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b4_F12_A15_from_A3_mul5_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 15 4 2 := by
@@ -27573,13 +15053,13 @@ theorem concrete_lifted_b4_F12_A15_from_A3_mul5_p2_CanonicalWitnessRowCase :
 
 theorem concrete_lifted_b4_F12_A15_from_A3_mul5_p3_prime_witness :
     PrimeComponentWitness 12 15 4 3 7 := by
-  rw [show (15 : Nat) = 3 * 5 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b4_F12_A3_p3_prime_witness
-    (by decide : (3 : Nat) ≠ 0)
-    (by decide : (5 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 7 ∣ 5))
+  have hquot : primeComponentQuotient 4 12 3 = 65793 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 15)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b4_F12_A15_from_A3_mul5_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 12 15 4 3 := by
@@ -27587,13 +15067,13 @@ theorem concrete_lifted_b4_F12_A15_from_A3_mul5_p3_CanonicalWitnessRowCase :
 
 theorem concrete_lifted_b10_F6_A8547_from_A231_mul37_p2_prime_witness :
     PrimeComponentWitness 6 8547 10 2 13 := by
-  rw [show (8547 : Nat) = 231 * 37 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b10_F6_A231_p2_prime_witness
-    (by decide : (231 : Nat) ≠ 0)
-    (by decide : (37 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 13 ∣ 37))
+  have hquot : primeComponentQuotient 10 6 2 = 1001 := by decide
+  have hq : Nat.Prime 13 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 13 ∣ 8547)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b10_F6_A8547_from_A231_mul37_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 6 8547 10 2 := by
@@ -27601,13 +15081,13 @@ theorem concrete_lifted_b10_F6_A8547_from_A231_mul37_p2_CanonicalWitnessRowCase 
 
 theorem concrete_lifted_b10_F6_A8547_from_A231_mul37_p3_prime_witness :
     PrimeComponentWitness 6 8547 10 3 13 := by
-  rw [show (8547 : Nat) = 231 * 37 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b10_F6_A231_p3_prime_witness
-    (by decide : (231 : Nat) ≠ 0)
-    (by decide : (37 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 13 ∣ 37))
+  have hquot : primeComponentQuotient 10 6 3 = 10101 := by decide
+  have hq : Nat.Prime 13 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 13 ∣ 8547)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b10_F6_A8547_from_A231_mul37_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 6 8547 10 3 := by
@@ -27615,13 +15095,13 @@ theorem concrete_lifted_b10_F6_A8547_from_A231_mul37_p3_CanonicalWitnessRowCase 
 
 theorem concrete_lifted_b10_F6_A777_from_A21_mul37_p2_prime_witness :
     PrimeComponentWitness 6 777 10 2 11 := by
-  rw [show (777 : Nat) = 21 * 37 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b10_F6_A21_p2_prime_witness
-    (by decide : (21 : Nat) ≠ 0)
-    (by decide : (37 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 11 ∣ 37))
+  have hquot : primeComponentQuotient 10 6 2 = 1001 := by decide
+  have hq : Nat.Prime 11 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 11 ∣ 777)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b10_F6_A777_from_A21_mul37_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 6 777 10 2 := by
@@ -27629,13 +15109,13 @@ theorem concrete_lifted_b10_F6_A777_from_A21_mul37_p2_CanonicalWitnessRowCase :
 
 theorem concrete_lifted_b10_F6_A777_from_A21_mul37_p3_prime_witness :
     PrimeComponentWitness 6 777 10 3 13 := by
-  rw [show (777 : Nat) = 21 * 37 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b10_F6_A21_p3_prime_witness
-    (by decide : (21 : Nat) ≠ 0)
-    (by decide : (37 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 13 ∣ 37))
+  have hquot : primeComponentQuotient 10 6 3 = 10101 := by decide
+  have hq : Nat.Prime 13 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 13 ∣ 777)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b10_F6_A777_from_A21_mul37_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 6 777 10 3 := by
@@ -27643,13 +15123,13 @@ theorem concrete_lifted_b10_F6_A777_from_A21_mul37_p3_CanonicalWitnessRowCase :
 
 theorem concrete_lifted_b10_F6_A2849_from_A77_mul37_p2_prime_witness :
     PrimeComponentWitness 6 2849 10 2 13 := by
-  rw [show (2849 : Nat) = 77 * 37 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b10_F6_A77_p2_prime_witness
-    (by decide : (77 : Nat) ≠ 0)
-    (by decide : (37 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 13 ∣ 37))
+  have hquot : primeComponentQuotient 10 6 2 = 1001 := by decide
+  have hq : Nat.Prime 13 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 13 ∣ 2849)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b10_F6_A2849_from_A77_mul37_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 6 2849 10 2 := by
@@ -27657,13 +15137,13 @@ theorem concrete_lifted_b10_F6_A2849_from_A77_mul37_p2_CanonicalWitnessRowCase :
 
 theorem concrete_lifted_b10_F6_A2849_from_A77_mul37_p3_prime_witness :
     PrimeComponentWitness 6 2849 10 3 3 := by
-  rw [show (2849 : Nat) = 77 * 37 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b10_F6_A77_p3_prime_witness
-    (by decide : (77 : Nat) ≠ 0)
-    (by decide : (37 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 3 ∣ 37))
+  have hquot : primeComponentQuotient 10 6 3 = 10101 := by decide
+  have hq : Nat.Prime 3 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 3 ∣ 2849)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b10_F6_A2849_from_A77_mul37_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 6 2849 10 3 := by
@@ -27671,13 +15151,13 @@ theorem concrete_lifted_b10_F6_A2849_from_A77_mul37_p3_CanonicalWitnessRowCase :
 
 theorem concrete_lifted_b10_F6_A91_from_A7_mul13_p2_prime_witness :
     PrimeComponentWitness 6 91 10 2 11 := by
-  rw [show (91 : Nat) = 7 * 13 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b10_F6_A7_p2_prime_witness
-    (by decide : (7 : Nat) ≠ 0)
-    (by decide : (13 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 11 ∣ 13))
+  have hquot : primeComponentQuotient 10 6 2 = 1001 := by decide
+  have hq : Nat.Prime 11 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 11 ∣ 91)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b10_F6_A91_from_A7_mul13_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 6 91 10 2 := by
@@ -27685,13 +15165,13 @@ theorem concrete_lifted_b10_F6_A91_from_A7_mul13_p2_CanonicalWitnessRowCase :
 
 theorem concrete_lifted_b10_F6_A91_from_A7_mul13_p3_prime_witness :
     PrimeComponentWitness 6 91 10 3 3 := by
-  rw [show (91 : Nat) = 7 * 13 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b10_F6_A7_p3_prime_witness
-    (by decide : (7 : Nat) ≠ 0)
-    (by decide : (13 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 3 ∣ 13))
+  have hquot : primeComponentQuotient 10 6 3 = 10101 := by decide
+  have hq : Nat.Prime 3 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 3 ∣ 91)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b10_F6_A91_from_A7_mul13_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 6 91 10 3 := by
@@ -27699,13 +15179,13 @@ theorem concrete_lifted_b10_F6_A91_from_A7_mul13_p3_CanonicalWitnessRowCase :
 
 theorem concrete_lifted_b10_F6_A33_from_A3_mul11_p2_prime_witness :
     PrimeComponentWitness 6 33 10 2 7 := by
-  rw [show (33 : Nat) = 3 * 11 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b10_F6_A3_p2_prime_witness
-    (by decide : (3 : Nat) ≠ 0)
-    (by decide : (11 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 7 ∣ 11))
+  have hquot : primeComponentQuotient 10 6 2 = 1001 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 33)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b10_F6_A33_from_A3_mul11_p2_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 6 33 10 2 := by
@@ -27713,13 +15193,13 @@ theorem concrete_lifted_b10_F6_A33_from_A3_mul11_p2_CanonicalWitnessRowCase :
 
 theorem concrete_lifted_b10_F6_A33_from_A3_mul11_p3_prime_witness :
     PrimeComponentWitness 6 33 10 3 7 := by
-  rw [show (33 : Nat) = 3 * 11 by decide]
-  exact PrimeComponentWitness.mul_right_of_factorization_eq_zero
-    concrete_generated_b10_F6_A3_p3_prime_witness
-    (by decide : (3 : Nat) ≠ 0)
-    (by decide : (11 : Nat) ≠ 0)
-    (Nat.factorization_eq_zero_of_not_dvd
-      (by decide : ¬ 7 ∣ 11))
+  have hquot : primeComponentQuotient 10 6 3 = 10101 := by decide
+  have hq : Nat.Prime 7 := by norm_num
+  refine ⟨hq, ?_, ?_⟩
+  · rw [hquot]
+    decide
+  · rw [hquot, Nat.factorization_eq_zero_of_not_dvd (by decide : ¬ 7 ∣ 33)]
+    exact hq.factorization_pos_of_dvd (by decide) (by decide)
 
 theorem concrete_lifted_b10_F6_A33_from_A3_mul11_p3_CanonicalWitnessRowCase :
     CanonicalWitnessRowCase 6 33 10 3 := by

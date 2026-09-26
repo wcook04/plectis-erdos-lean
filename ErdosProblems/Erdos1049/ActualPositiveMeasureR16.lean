@@ -82,7 +82,7 @@ noncomputable def momentRowCoeff (q : ℝ) : ℕ → ℕ → ℝ
 /-- A finite coefficient sum, not an unspecified Taylor coefficient or an
 assumed positive atom supplier. -/
 noncomputable def actualGamma (q : ℝ) (k : ℕ) : ℝ :=
-  ∑ p ∈ Finset.antidiagonal k,
+  ∑ p ∈ Finset.HasAntidiagonal.antidiagonal k,
     momentRowCoeff q p.1 p.2 / qPochhammerFinite q q p.1
 
 lemma positiveSum_inverse {q w : ℝ} (hq0 : 0 ≤ q) (hq1 : q < 1)
@@ -251,9 +251,9 @@ lemma actualGamma_nonneg {q : ℝ} (hq0 : 0 < q) (hq1 : q < 1) (k : ℕ) :
 row alone already dominates the positive inverse-product coefficients. -/
 theorem one_le_actualGamma {q : ℝ} (hq0 : 0 < q) (hq1 : q < 1) (k : ℕ) :
     1 ≤ actualGamma q k := by
-  have hz : (0, k) ∈ Finset.antidiagonal k := by simp
+  have hz : (0, k) ∈ Finset.HasAntidiagonal.antidiagonal k := by simp
   have h := Finset.single_le_sum
-    (fun p (_ : p ∈ Finset.antidiagonal k) =>
+    (fun p (_ : p ∈ Finset.HasAntidiagonal.antidiagonal k) =>
       div_nonneg (momentRowCoeff_nonneg hq0 hq1 p.1 p.2)
         (qPochhammerFinite_pos hq0.le hq1 hq0.le hq1.le p.1).le) hz
   have hrow : momentRowCoeff q 0 k ≤ actualGamma q k := by

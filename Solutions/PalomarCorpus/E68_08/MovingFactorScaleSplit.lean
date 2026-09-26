@@ -58,7 +58,7 @@ theorem movingPrivateFactorScaleSplit_implies_irrational
           ErdosProblems.Erdos68.factorialBlockPrivateModulus,
           ErdosProblems.Erdos68.factorialBlockTailNumerator,
           ErdosProblems.Erdos68.factorialBlockScale,
-          ErdosProblems.Erdos68.factorialBlockBudget] using hcert)
+          ErdosProblems.Erdos68.factorialBlockBudget] using! hcert)
   simpa [factorialGapSeries, _root_.Erdos68.factorialGapSeries,
     _root_.Erdos68.factorialGapTail,
     _root_.Erdos68.factorialGapTailTerm] using hsource
@@ -112,7 +112,7 @@ theorem splitFactorNormalizedCollision_implies_irrational
           ErdosProblems.Erdos68.factorialBlockPrivateModulus,
           ErdosProblems.Erdos68.factorialBlockTailNumerator,
           ErdosProblems.Erdos68.factorialBlockFactorProjectionModulus,
-          ErdosProblems.Erdos68.factorialBlockBudget] using hcert)
+          ErdosProblems.Erdos68.factorialBlockBudget] using! hcert)
   simpa [factorialGapSeries, _root_.Erdos68.factorialGapSeries,
     _root_.Erdos68.factorialGapTail,
     _root_.Erdos68.factorialGapTailTerm] using hsource

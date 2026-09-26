@@ -63,6 +63,6 @@ theorem exact_denominators_and_threshold_clearing
     ErdosProblems.Erdos269.strictSmoothShell,
     ErdosProblems.Erdos269.strictSmoothExponents,
     ErdosProblems.Erdos269.threePrimeHeight,
-    ErdosProblems.Erdos269.smooth3Val, hthreshold] using h
+    ErdosProblems.Erdos269.smooth3Val, hthreshold] using! h
 
 end PalomarCorpus.E269.ExactDenominator

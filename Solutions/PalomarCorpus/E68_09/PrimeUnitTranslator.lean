@@ -115,7 +115,7 @@ theorem exists_remote_factorialGrid_primeTranslator_reduction
     Erdos68.channelResidual, Erdos68.channelResidualTerm,
     Erdos68.appendPrimeTranslatorCoeff, Erdos68.appendPrimeTranslatorIndex,
     Erdos68.augmentedChannelMomentMatrix, Erdos68.cramerChannelKernelCoeff,
-    Erdos68.factorialGridScale, Erdos68.factorialGridIndex] using
+    Erdos68.factorialGridScale, Erdos68.factorialGridIndex] using!
     Erdos68.exists_remote_factorialGrid_primeTranslator_reduction n B
 
 end PalomarCorpus.E68.PrimeUnitTranslator
