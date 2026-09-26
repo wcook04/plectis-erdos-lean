@@ -3,6 +3,7 @@
 # SPDX-License-Identifier: Apache-2.0
 """Regression checks for release enumeration and checkout metadata boundaries."""
 import json
+import subprocess
 from pathlib import Path
 import tempfile
 import unittest
@@ -52,7 +53,8 @@ class ReleaseToolsTests(unittest.TestCase):
 
     def test_publication_audit_rejects_candidate_local_challenge_import(self):
         with tempfile.TemporaryDirectory() as tmp, patch.object(axioms, "REPO_ROOT", Path(tmp)), \
-                patch.object(axioms, "source_identity", return_value={"commit": "test"}):
+                patch.object(axioms, "source_identity", return_value={"commit": "test", "source_file_count": 0,
+                                                                     "deleted_in_worktree": [], "source_files_sha256": "x"}):
             entry = Path(tmp) / "PalomarCorpus/E68"
             entry.mkdir(parents=True)
             (entry / "comparator.json").write_text(json.dumps({
@@ -63,6 +65,55 @@ class ReleaseToolsTests(unittest.TestCase):
             (entry / "Challenge.lean").write_text("import Solutions.PalomarCorpus.E68\n")
             with self.assertRaisesRegex(ValueError, "only Mathlib"):
                 axioms.run_palomar_audits(["PalomarCorpus/E68"])
+
+    def test_publication_audit_continues_after_an_early_build_failure(self):
+        with tempfile.TemporaryDirectory() as tmp, patch.object(axioms, "REPO_ROOT", Path(tmp)), \
+                patch.object(axioms, "source_identity", return_value={"commit": "test", "source_file_count": 0,
+                                                                     "deleted_in_worktree": [], "source_files_sha256": "x"}):
+            paths = ["PalomarCorpus/E68", "PalomarCorpus/E243"]
+            for path in paths:
+                root = Path(tmp) / path
+                root.mkdir(parents=True)
+                problem = root.name
+                (root / "Challenge.lean").write_text("import Mathlib\n")
+                (root / "comparator.json").write_text(json.dumps({
+                    "challenge_module": f"PalomarCorpus.{problem}.Challenge",
+                    "solution_module": f"Solutions.PalomarCorpus.{problem}",
+                    "theorem_names": [f"PalomarCorpus.{problem}.result"],
+                }))
+            results = [subprocess.CompletedProcess([], 1, "", "first proof failed"),
+                       subprocess.CompletedProcess([], 0, "'PalomarCorpus.E243.result' does not depend on any axioms", "")]
+            progress = Path(tmp) / "audit-progress.json"
+            with patch.object(axioms.subprocess, "run", side_effect=results) as runner:
+                output, binding, outcomes = axioms.run_palomar_audits(paths, progress)
+            self.assertEqual(runner.call_count, 2)
+            self.assertEqual([row["status"] for row in outcomes], ["fail", "pass"])
+            self.assertIn("first proof failed", output)
+            self.assertTrue(binding["source_stable"])
+            saved = json.loads(progress.read_text())
+            self.assertEqual(saved["planned_entries"], paths)
+            self.assertEqual(saved["outcomes"], outcomes)
+
+    def test_publication_audit_records_timeout_and_source_change(self):
+        with tempfile.TemporaryDirectory() as tmp, patch.object(axioms, "REPO_ROOT", Path(tmp)):
+            root = Path(tmp) / "PalomarCorpus/E68"
+            root.mkdir(parents=True)
+            (root / "Challenge.lean").write_text("import Mathlib\n")
+            (root / "comparator.json").write_text(json.dumps({
+                "challenge_module": "PalomarCorpus.E68.Challenge",
+                "solution_module": "Solutions.PalomarCorpus.E68",
+                "theorem_names": ["PalomarCorpus.E68.result"],
+            }))
+            before = {"commit": "test", "source_file_count": 1,
+                      "deleted_in_worktree": [], "source_files_sha256": "old"}
+            after = {**before, "source_files_sha256": "new"}
+            timeout = subprocess.TimeoutExpired(["lake", "lean"], 600, output=b"partial proof")
+            with patch.object(axioms, "source_identity", side_effect=[before, after]), \
+                    patch.object(axioms.subprocess, "run", side_effect=timeout):
+                output, binding, outcomes = axioms.run_palomar_audits(["PalomarCorpus/E68"])
+            self.assertIn("partial proof", output)
+            self.assertEqual(outcomes[0]["status"], "timeout")
+            self.assertFalse(binding["source_stable"])
 
     def test_git_pointer_file_is_metadata_but_source_leaks_are_reported(self):
         with tempfile.TemporaryDirectory() as tmp:

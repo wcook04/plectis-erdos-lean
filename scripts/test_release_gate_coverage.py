@@ -38,14 +38,27 @@ class ReleaseGateCoverageTests(unittest.TestCase):
             }))
         audit_dir = self.artifacts / 'release-axiom-audit'
         audit_dir.mkdir()
-        payload = b'{"errors": []}'
+        entry = 'PalomarCorpus/E68_01'
+        outcome = {'entry': entry, 'status': 'pass', 'returncode': 0}
+        audit_source = {'commit': self.source['commit'], 'source_file_count': 1,
+                        'deleted_in_worktree': [], 'source_files_sha256': 'e' * 64}
+        binding = {'mode': 'fresh_lake_lean', 'source_before': audit_source,
+                   'source_after': audit_source, 'source_stable': True}
+        payload = json.dumps({'status': 'ok', 'planned_entries': [entry],
+                              'entries': [{'entry': entry, 'status': 'ok', 'execution': outcome}],
+                              'source_binding': binding}).encode()
+        progress = json.dumps({'schema': 'palomar_axiom_audit_progress_v1',
+                               'source_before': binding['source_before'],
+                               'planned_entries': [entry], 'outcomes': [outcome]}).encode()
         (audit_dir / 'palomar-axiom-audit.json').write_bytes(payload)
+        (audit_dir / 'audit-progress.json').write_bytes(progress)
         (audit_dir / 'audit-receipt.json').write_text(json.dumps({
             'schema': gate.AUDIT_SCHEMA,
             'status': 'pass',
             'source': self.source,
             'plan_sha256': self.plan['plan_sha256'],
             'payload_sha256': hashlib.sha256(payload).hexdigest(),
+            'progress_sha256': hashlib.sha256(progress).hexdigest(),
         }))
 
     def test_plan_is_exact_and_umbrellas_are_isolated(self):
@@ -86,6 +99,21 @@ class ReleaseGateCoverageTests(unittest.TestCase):
         issues = gate.check_coverage(self.plan, self.artifacts)
         self.assertIn('target population mismatch: targets-2', issues)
         self.assertIn('missing or invalid publication axiom audit', issues)
+
+    def test_censored_audit_payload_fails_even_with_a_matching_receipt_hash(self):
+        self.write_receipts()
+        audit_dir = self.artifacts / 'release-axiom-audit'
+        path = audit_dir / 'palomar-axiom-audit.json'
+        payload = json.loads(path.read_text())
+        payload['entries'] = []
+        raw = json.dumps(payload).encode()
+        path.write_bytes(raw)
+        receipt_path = audit_dir / 'audit-receipt.json'
+        receipt = json.loads(receipt_path.read_text())
+        receipt['payload_sha256'] = hashlib.sha256(raw).hexdigest()
+        receipt_path.write_text(json.dumps(receipt))
+        self.assertIn('stale, incomplete, or failing publication axiom audit',
+                      gate.check_coverage(self.plan, self.artifacts))
 
     def test_failed_audit_keeps_diagnostics_in_artifact(self):
         out_dir = self.artifacts / 'audit'

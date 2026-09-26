@@ -77,6 +77,38 @@ def load_plan(path: Path, root: Path) -> dict:
     return plan
 
 
+def complete_audit_payload(report: object, progress: object, commit: str) -> bool:
+    if not isinstance(report, dict) or not isinstance(progress, dict):
+        return False
+    planned = report.get('planned_entries')
+    rows = report.get('entries')
+    outcomes = progress.get('outcomes')
+    binding = report.get('source_binding')
+    if (report.get('status') != 'ok' or progress.get('schema') != 'palomar_axiom_audit_progress_v1'
+            or not isinstance(planned, list) or not planned or len(set(planned)) != len(planned)
+            or not isinstance(rows, list) or not isinstance(outcomes, list)
+            or progress.get('planned_entries') != planned
+            or len(rows) != len(planned) or len(outcomes) != len(planned)
+            or not isinstance(binding, dict) or binding.get('mode') != 'fresh_lake_lean'
+            or binding.get('source_stable') is not True
+            or binding.get('source_before', {}).get('commit') != commit
+            or progress.get('source_before') != binding.get('source_before')):
+        return False
+    before, after = binding['source_before'], binding.get('source_after')
+    if not isinstance(before, dict) or not isinstance(after, dict):
+        return False
+    source_keys = ('commit', 'source_file_count', 'deleted_in_worktree', 'source_files_sha256')
+    if (any(key not in before or before[key] != after.get(key) for key in source_keys)
+            or not isinstance(before['source_files_sha256'], str)
+            or not isinstance(before['source_file_count'], int)):
+        return False
+    return all(isinstance(row, dict) and isinstance(outcome, dict)
+               and row.get('entry') == entry and outcome.get('entry') == entry
+               and row.get('status') == 'ok' and outcome.get('status') == 'pass'
+               and outcome.get('returncode') == 0 and row.get('execution') == outcome
+               for entry, row, outcome in zip(planned, rows, outcomes))
+
+
 def check_coverage(plan: dict, artifacts: Path) -> list[str]:
     issues: list[str] = []
     for shard in plan['shards']:
@@ -99,14 +131,18 @@ def check_coverage(plan: dict, artifacts: Path) -> list[str]:
     try:
         audit = json.loads((audit_dir / 'audit-receipt.json').read_text(encoding='utf-8'))
         payload = (audit_dir / 'palomar-axiom-audit.json').read_bytes()
-        json.loads(payload)
+        report = json.loads(payload)
+        progress_bytes = (audit_dir / 'audit-progress.json').read_bytes()
+        progress = json.loads(progress_bytes)
     except (OSError, json.JSONDecodeError):
         issues.append('missing or invalid publication axiom audit')
     else:
         if (audit.get('schema') != AUDIT_SCHEMA or audit.get('status') != 'pass'
                 or audit.get('source') != plan['source']
                 or audit.get('plan_sha256') != plan['plan_sha256']
-                or audit.get('payload_sha256') != hashlib.sha256(payload).hexdigest()):
+                or audit.get('payload_sha256') != hashlib.sha256(payload).hexdigest()
+                or audit.get('progress_sha256') != hashlib.sha256(progress_bytes).hexdigest()
+                or not complete_audit_payload(report, progress, plan['source']['commit'])):
             issues.append('stale, incomplete, or failing publication axiom audit')
     return issues
 
@@ -152,12 +188,13 @@ def main() -> int:
             receipt_path = args.out_dir / 'audit-receipt.json'
             payload_path = args.out_dir / 'palomar-axiom-audit.json'
             diagnostics_path = args.out_dir / 'diagnostics.log'
+            progress_path = args.out_dir / 'audit-progress.json'
             receipt = {'schema': AUDIT_SCHEMA, 'status': 'running', 'source': plan['source'],
                        'plan_sha256': plan['plan_sha256'], 'payload_sha256': None}
             save_report(receipt_path, receipt)
             with payload_path.open('w', encoding='utf-8') as output:
                 result = subprocess.run([sys.executable, 'scripts/check_axiom_budget.py',
-                                         '--run-palomar', '--json'], stdout=output,
+                                         '--run-palomar', '--json', '--progress-file', str(progress_path)], stdout=output,
                                         stderr=subprocess.PIPE, text=True, check=False)
             diagnostics_path.write_text(result.stderr, encoding='utf-8')
             if result.stderr:
@@ -171,6 +208,7 @@ def main() -> int:
             receipt['returncode'] = result.returncode
             receipt['payload_sha256'] = file_digest(payload_path)
             receipt['diagnostics_sha256'] = file_digest(diagnostics_path)
+            receipt['progress_sha256'] = file_digest(progress_path) if progress_path.exists() else None
             save_report(receipt_path, receipt)
             return 0 if receipt['status'] == 'pass' else 1
         issues = check_coverage(plan, args.artifacts)
