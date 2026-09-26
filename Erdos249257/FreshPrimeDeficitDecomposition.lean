@@ -65,7 +65,7 @@ theorem totient_mul_le_mul_totient_of_dvd
     rw [← Finset.prod_sdiff hsubset]
     exact mul_le_of_le_one_left
       (Finset.prod_nonneg fun p hp => hf0 p (hsubset hp))
-      (Finset.prod_le_one (fun p hp => hf0 p (Finset.sdiff_subset hp))
+      (Finset.prod_le_one₀ (fun p hp => hf0 p (Finset.sdiff_subset hp))
         (fun p hp => hf1 p (Finset.sdiff_subset hp)))
   have hscale : (0 : ℚ) ≤ (n : ℚ) * (g : ℚ) := by positivity
   have hscaled := mul_le_mul_of_nonneg_left hprod hscale
