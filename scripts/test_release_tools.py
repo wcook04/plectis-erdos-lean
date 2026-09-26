@@ -63,8 +63,13 @@ class ReleaseToolsTests(unittest.TestCase):
                 "theorem_names": ["PalomarCorpus.E68.Family.result"],
             }))
             (entry / "Challenge.lean").write_text("import Solutions.PalomarCorpus.E68\n")
+            progress = Path(tmp) / "audit-progress.json"
             with self.assertRaisesRegex(ValueError, "only Mathlib"):
-                axioms.run_palomar_audits(["PalomarCorpus/E68"])
+                axioms.run_palomar_audits(["PalomarCorpus/E68"], progress)
+            saved = json.loads(progress.read_text())
+            self.assertEqual(saved["planned_entries"], ["PalomarCorpus/E68"])
+            self.assertEqual(saved["outcomes"][0]["status"], "invalid")
+            self.assertIn("only Mathlib", saved["outcomes"][0]["error"])
 
     def test_publication_audit_continues_after_an_early_build_failure(self):
         with tempfile.TemporaryDirectory() as tmp, patch.object(axioms, "REPO_ROOT", Path(tmp)), \

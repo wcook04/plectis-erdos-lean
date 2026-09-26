@@ -135,27 +135,6 @@ def run_palomar_audits(entry_paths: list[str], progress_file: Path | None = None
     outputs = []
     seen = set()
     specifications = []
-    # Validate the whole population before building any member. A malformed later
-    # entry must not leave an apparently complete prefix of the release audit.
-    for entry in entry_paths:
-        root = REPO_ROOT / entry
-        config = json.loads((root / "comparator.json").read_text())
-        problem = root.name
-        if (config.get("challenge_module") != f"PalomarCorpus.{problem}.Challenge"
-                or config.get("solution_module") != f"Solutions.PalomarCorpus.{problem}"):
-            raise ValueError(f"incorrect Challenge/Solution modules: {entry}")
-        challenge = (root / "Challenge.lean").read_bytes()
-        if len(challenge) > 102400 or len(challenge.splitlines()) > 1000:
-            raise ValueError(f"Challenge exceeds a hard publication limit: {entry}")
-        imports = re.findall(r"^import\s+(\S+)", challenge.decode(), re.M)
-        if not imports or any(name != "Mathlib" and not name.startswith("Mathlib.") for name in imports):
-            raise ValueError(f"Challenge must import only Mathlib: {entry}")
-        names = config.get("theorem_names") or []
-        if not names or len(set(names)) != len(names) or seen.intersection(names):
-            raise ValueError(f"empty or duplicated selected theorem identities: {entry}")
-        seen.update(names)
-        specifications.append((entry, problem, config["solution_module"], names))
-
     outcomes: list[dict] = []
 
     def write_progress() -> None:
@@ -171,6 +150,37 @@ def run_palomar_audits(entry_paths: list[str], progress_file: Path | None = None
         temporary.replace(progress_file)
 
     write_progress()
+    # Validate the entire population before building any member. The progress
+    # artifact survives preflight failure with every promised entry accounted for.
+    for entry in entry_paths:
+        try:
+            root = REPO_ROOT / entry
+            config = json.loads((root / "comparator.json").read_text())
+            if not isinstance(config, dict):
+                raise ValueError(f"Comparator must be an object: {entry}")
+            problem = root.name
+            if (config.get("challenge_module") != f"PalomarCorpus.{problem}.Challenge"
+                    or config.get("solution_module") != f"Solutions.PalomarCorpus.{problem}"):
+                raise ValueError(f"incorrect Challenge/Solution modules: {entry}")
+            challenge = (root / "Challenge.lean").read_bytes()
+            if len(challenge) > 102400 or len(challenge.splitlines()) > 1000:
+                raise ValueError(f"Challenge exceeds a hard publication limit: {entry}")
+            imports = re.findall(r"^import\s+(\S+)", challenge.decode(), re.M)
+            if not imports or any(name != "Mathlib" and not name.startswith("Mathlib.") for name in imports):
+                raise ValueError(f"Challenge must import only Mathlib: {entry}")
+            names = config.get("theorem_names") or []
+            if (not isinstance(names, list) or not names
+                    or any(not isinstance(name, str) or not name for name in names)
+                    or len(set(names)) != len(names) or seen.intersection(names)):
+                raise ValueError(f"empty or duplicated selected theorem identities: {entry}")
+            seen.update(names)
+            specifications.append((entry, problem, config["solution_module"], names))
+        except (OSError, ValueError, UnicodeError, TypeError) as error:
+            outcomes[:] = [{"entry": path, "status": "invalid" if path == entry else "not_attempted",
+                            **({"error": str(error)} if path == entry else {})}
+                           for path in entry_paths]
+            write_progress()
+            raise
     with tempfile.TemporaryDirectory(prefix="plectis-axiom-audit-") as directory:
         for entry, problem, solution_module, names in specifications:
             audit = Path(directory) / f"{problem}.lean"
