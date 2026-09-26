@@ -51,6 +51,8 @@ jobs:
       - name: Build launch entries sequentially
         env:
           LEAN_NUM_THREADS: "1"
+          RELEASE_HEARTBEAT_SECONDS: "300"
+          RELEASE_MODULE_BUDGET_SECONDS: "3600"
         run: python3 scripts/build_launch_targets.py
       - name: Preserve the incremental target report
         if: always()

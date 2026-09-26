@@ -13,6 +13,11 @@ on:
 permissions:
   contents: read
 
+# A newer push to the same pull request supersedes the older gate run.
+concurrency:
+  group: release-gate-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   plan:
     runs-on: ubuntu-24.04
@@ -64,6 +69,8 @@ jobs:
       - name: Build every target promised by this shard
         env:
           LEAN_NUM_THREADS: "1"
+          RELEASE_HEARTBEAT_SECONDS: "300"
+          RELEASE_MODULE_BUDGET_SECONDS: "3600"
         run: >-
           python3 scripts/release_gate_coverage.py run-shard
           --plan artifacts/plan.json

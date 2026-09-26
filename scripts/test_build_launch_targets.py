@@ -125,5 +125,57 @@ class LaunchReplayTests(unittest.TestCase):
         fake_run.assert_not_called()
 
 
+class ModuleWatchdogTests(unittest.TestCase):
+    PS = ('  101   7300 /home/r/.elan/toolchains/v/bin/lean /w/Erdos249257/Slow.lean -R ./. -o x.olean\n'
+          '  102     40 lean Solutions/Fast.lean\n'
+          '  103   9000 /usr/bin/python3 scripts/run.py Slow.lean\n'
+          '  104   9000 lake build Solutions\n'
+          'garbage line\n')
+
+    def test_only_lean_compiles_are_reported(self):
+        self.assertEqual(runner.running_lean_modules(self.PS),
+                         [(101, 7300, '/w/Erdos249257/Slow.lean'), (102, 40, 'Solutions/Fast.lean')])
+
+    def test_over_budget_module_is_stopped_once_and_named(self):
+        watchdog = runner.ModuleWatchdog(interval=1, budget=3600)
+        listing = subprocess.CompletedProcess([], 0, stdout=self.PS)
+        with patch.object(runner.subprocess, 'run', return_value=listing), \
+                patch.object(runner.os, 'kill') as kill, \
+                contextlib.redirect_stdout(io.StringIO()) as out:
+            watchdog.poll()
+            watchdog.poll()
+        kill.assert_called_once_with(101, runner.signal.SIGKILL)
+        self.assertEqual(watchdog.killed, ['/w/Erdos249257/Slow.lean'])
+        self.assertIn('::error file=/w/Erdos249257/Slow.lean::', out.getvalue())
+        self.assertIn('still compiling Solutions/Fast.lean after 40s', out.getvalue())
+
+    def test_zero_budget_only_reports(self):
+        watchdog = runner.ModuleWatchdog(interval=1, budget=0)
+        listing = subprocess.CompletedProcess([], 0, stdout=self.PS)
+        with patch.object(runner.subprocess, 'run', return_value=listing), \
+                patch.object(runner.os, 'kill') as kill, \
+                contextlib.redirect_stdout(io.StringIO()):
+            watchdog.poll()
+        kill.assert_not_called()
+
+    def test_stopped_module_fails_a_target_that_lake_passed(self):
+        directory = tempfile.TemporaryDirectory()
+        self.addCleanup(directory.cleanup)
+        report = Path(directory.name) / 'report.json'
+        stub = runner.ModuleWatchdog(interval=1, budget=1)
+        stub.killed = ['Slow.lean']
+        with patch.object(runner, 'start_watchdog', return_value=stub), \
+                patch.dict(os.environ, {'GITHUB_STEP_SUMMARY': str(Path(directory.name) / 's.md')}), \
+                contextlib.redirect_stdout(io.StringIO()):
+            code = runner.build_targets(['Only'], report,
+                                        lambda argv, check: subprocess.CompletedProcess(argv, 0))
+        row = json.loads(report.read_text())['targets'][0]
+        self.assertEqual((code, row['status'], row['over_budget_modules']), (1, 'fail', ['Slow.lean']))
+
+    def test_watchdog_is_off_without_the_environment(self):
+        with patch.dict(os.environ, {}, clear=True):
+            self.assertIsNone(runner.start_watchdog())
+
+
 if __name__ == '__main__':
     unittest.main()

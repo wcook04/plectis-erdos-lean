@@ -13,10 +13,74 @@ import argparse
 import json
 import os
 from pathlib import Path
+import signal
 import subprocess
 import sys
+import threading
 import tomllib
 from collections.abc import Callable, Sequence
+
+# Lake prints a module only when it finishes, so a single module that never
+# finishes is invisible until the job timeout (run 36205344986: 9686 of 9691
+# jobs done in two minutes, then five silent hours). The watchdog names every
+# Lean file still compiling and, past a budget, stops it so the target fails
+# with the module named instead of timing out.
+HEARTBEAT_ENV = 'RELEASE_HEARTBEAT_SECONDS'
+MODULE_BUDGET_ENV = 'RELEASE_MODULE_BUDGET_SECONDS'
+
+
+def running_lean_modules(ps_output: str) -> list[tuple[int, int, str]]:
+    """(pid, elapsed seconds, source file) for each `lean` compiling a .lean file."""
+    rows = []
+    for line in ps_output.splitlines():
+        parts = line.split()
+        if len(parts) < 3 or not parts[0].isdigit() or not parts[1].isdigit():
+            continue
+        executable = parts[2]
+        if executable != 'lean' and not executable.endswith('/lean'):
+            continue
+        source = next((arg for arg in parts[3:] if arg.endswith('.lean')), None)
+        if source is not None:
+            rows.append((int(parts[0]), int(parts[1]), source))
+    return rows
+
+
+class ModuleWatchdog(threading.Thread):
+    def __init__(self, interval: int, budget: int) -> None:
+        super().__init__(daemon=True)
+        self.interval, self.budget = interval, budget
+        self.stopped = threading.Event()
+        self.killed: list[str] = []
+
+    def poll(self) -> None:
+        try:
+            listing = subprocess.run(['ps', '-eo', 'pid=,etimes=,args='],
+                                     capture_output=True, text=True, check=False).stdout
+        except OSError:
+            return
+        for pid, elapsed, source in running_lean_modules(listing):
+            print(f'[watchdog] still compiling {source} after {elapsed}s', flush=True)
+            if self.budget and elapsed > self.budget and source not in self.killed:
+                print(f'::error file={source}::exceeded the {self.budget}s module budget; '
+                      'stopped so the target fails with this module named', flush=True)
+                try:
+                    os.kill(pid, signal.SIGKILL)
+                except OSError:
+                    continue
+                self.killed.append(source)
+
+    def run(self) -> None:
+        while not self.stopped.wait(self.interval):
+            self.poll()
+
+
+def start_watchdog() -> ModuleWatchdog | None:
+    interval = int(os.environ.get(HEARTBEAT_ENV, '0') or 0)
+    if interval <= 0:
+        return None
+    watchdog = ModuleWatchdog(interval, int(os.environ.get(MODULE_BUDGET_ENV, '0') or 0))
+    watchdog.start()
+    return watchdog
 
 
 def read_targets(path: Path) -> list[str]:
@@ -55,6 +119,7 @@ def build_targets(targets: Sequence[str], report_path: Path,
         save_report(report_path, report)
         target = row['target']
         print(f'=== lake build {target} ===', flush=True)
+        watchdog = start_watchdog()
         try:
             result = run(['lake', 'build', target], check=False)
         except (OSError, KeyboardInterrupt) as error:
@@ -70,6 +135,13 @@ def build_targets(targets: Sequence[str], report_path: Path,
                 interrupted = True
             else:
                 row['status'] = 'pass' if result.returncode == 0 else 'fail'
+        finally:
+            if watchdog is not None:
+                watchdog.stopped.set()
+                if watchdog.killed:
+                    row['over_budget_modules'] = list(watchdog.killed)
+                    if row['status'] == 'pass':
+                        row['status'] = 'fail'
         save_report(report_path, report)
         if interrupted:
             break
