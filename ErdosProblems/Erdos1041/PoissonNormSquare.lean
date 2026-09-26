@@ -39,10 +39,14 @@ private theorem poisson_real_part_mean {g : ℂ → ℂ}
   have hi : CircleIntegrable (fun z => poissonKernel 0 c z • g z) 0 1 := by
     have ht := ((Complex.continuous_ofReal.comp_continuousOn
       (poisson_continuousOn_unit_circle hc)).mul hgc).circleIntegrable (by norm_num : (0 : ℝ) ≤ 1)
-    simpa only [Complex.real_smul] using ht
+    first
+      | simpa only [Complex.real_smul, Pi.mul_def, Function.comp_apply] using! ht
+      | (simp only [Complex.real_smul]; exact ht)
   have hm := hg.circleAverage_poissonKernel_smul (by simpa [mem_ball, dist_eq_norm] using hc)
   have hm' : circleAverage (fun z => poissonKernel 0 c z • g z) 0 1 = g c := by
-    simpa only [Pi.smul_apply] using hm
+    first
+      | simpa only [Pi.smul_apply] using! hm
+      | exact hm
   have hr := Complex.reCLM.circleAverage_comp_comm hi
   rw [hm'] at hr
   simpa only [Function.comp_def, map_smul, Complex.reCLM_apply, smul_eq_mul] using hr
@@ -75,9 +79,9 @@ theorem normSq_le_poisson_circleAverage {g : ℂ → ℂ}
   have hquad : CircleIntegrable (fun z => P z * Complex.normSq (g z)) 0 1 :=
     (hpc.mul (Complex.continuous_normSq.comp_continuousOn hgc)).circleIntegrable (by norm_num)
   have htwo : CircleIntegrable (fun z => 2 * (P z * (h z).re)) 0 1 := by
-    simpa only [Pi.smul_apply, smul_eq_mul] using hlinear.const_smul (a := (2 : ℝ))
+    simpa only [Pi.smul_def, Pi.smul_apply, smul_eq_mul] using! hlinear.const_smul (a := (2 : ℝ))
   have hconst : CircleIntegrable (fun z => Complex.normSq (g c) * P z) 0 1 := by
-    simpa only [Pi.smul_apply, smul_eq_mul] using hpint.const_smul (a := Complex.normSq (g c))
+    simpa only [Pi.smul_def, Pi.smul_apply, smul_eq_mul] using! hpint.const_smul (a := Complex.normSq (g c))
   have hleft : CircleIntegrable
       (fun z => 2 * (P z * (h z).re) - Complex.normSq (g c) * P z) 0 1 :=
     htwo.sub hconst

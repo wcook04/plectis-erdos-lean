@@ -228,7 +228,11 @@ theorem monic_cubic_factorisation (P : ℂ[X]) (hP : P.Monic) (hdeg : P.natDegre
   have hl : P.roots.toList.length = 3 := by simpa using hcard
   obtain ⟨r, s, v, hlist⟩ := list_length_three hl
   have hroots : P.roots = r ::ₘ s ::ₘ v ::ₘ 0 := by
-    simpa [hlist] using (Multiset.coe_toList P.roots).symm
+    first
+      | simpa [hlist] using! (Multiset.coe_toList P.roots).symm
+      | (have h := (Multiset.coe_toList P.roots).symm
+         rw [hlist] at h
+         exact h)
   have hp := hs.eq_prod_roots
   refine ⟨r, s, v, ?_⟩
   intro z
