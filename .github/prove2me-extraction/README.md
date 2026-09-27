@@ -1,20 +1,27 @@
 # Pinned Prove2Me extraction
 
-This is a read-only extraction job for two public Lean source commits. It does
+This is a read-only extraction job for pinned public Lean sources. It does
 not call the Prove2Me API or publish a theorem. The exact source commits,
 Lean/Mathlib pins, selected declarations, input module hashes, and official
 extractor hashes are in `manifest.json`. The #257 inventory has 73 modules and
-three project prefixes; #243 has 54 modules and one prefix. The input inventory
+three project prefixes; #243 has 54 modules and one prefix; #249 has 11 modules
+and three prefixes. The input inventory
 does not assert a declaration dependency graph or source positions.
 
 The new workflow cannot receive `workflow_dispatch` while it is absent from
 the default branch. A push to the exact dedicated branch
 `codex/prove2me-remote-extraction-20260924` runs the reviewed `request.json`.
-The initial request selects **#257 full extraction**. Stage 1 checks its actual
-graph and selected declarations before Stage 2 runs on the 73 audited modules.
+The current request selects **#249 full extraction** at `c93c2e4dd86a2e317e0cb650ea244fee1afd59c2`.
+Its root is `ErdosProblems.Erdos249.PaperCompleteR8.FullKernelAssemblies` and
+its selected declaration is
+`ErdosProblems.Erdos249.PaperCompleteR8.displayed_all_base_kernel`.
+This is the all-base finite-level totient-kernel basis/rank theorem, not
+irrationality of the binary totient series. Stage 1 checks its actual graph and
+selected declaration before Stage 2 runs on the 11 audited modules.
 If Stage 2 hits the job limit, the graph and completed partial files remain in
 the run artifact. Set `problem` to `243` in a later reviewed commit to use the
-other source pin. Every push that changes this directory or the workflow file
+other source pin, or `257` for the existing #257 case. The CLI explicitly admits
+only these three reviewed cases. Every push that changes this directory or the workflow file
 launches a run; an unchanged branch does not rerun.
 
 The job restores only a compatible compiled corpus cache from existing CI,
@@ -36,8 +43,14 @@ Static preparation can be checked without running Lean:
 python3 .github/prove2me-extraction/run.py select
 python3 .github/prove2me-extraction/run.py prepare --problem 257 --source /path/to/c93c2e4-checkout --out /tmp/p2m-257
 python3 .github/prove2me-extraction/run.py prepare --problem 243 --source /path/to/4fe59e0-checkout --out /tmp/p2m-243
+python3 .github/prove2me-extraction/run.py prepare --problem 249 --source /path/to/c93c2e4-checkout --out /tmp/p2m-249
 ```
 
-Source checkouts must be at the exact manifest commits. The two `prepare`
+Source checkouts must be at the exact manifest commits. The `prepare`
 commands verify every audited source hash and the prepared Stage 1 script hash
 without launching Lean.
+
+The #249 extraction uses the recorded Lean 4.30 source. Correspondence with
+the paper's Lean 4.29.1 source and the eventual staged upload still requires
+elaborated type and axiom checks. Extraction alone is neither platform
+submission nor personal review, and it does not complete whole-paper coverage.
