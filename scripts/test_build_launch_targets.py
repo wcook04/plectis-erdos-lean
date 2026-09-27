@@ -226,6 +226,19 @@ class ProcessAndPlanTests(unittest.TestCase):
         self.assertIn("github.ref == 'refs/heads/main' && inputs.source_ref == ''",text)
         self.assertNotIn('subprocess.run(["lake"',text)
 
+    def test_release_gate_shares_the_runner_and_retains_its_audit(self):
+        root=Path(__file__).resolve().parents[1]/'.github/workflows'
+        release=(root/'release-gate.yml').read_text()
+        shared=(root/'lean.yml').read_text()
+        self.assertIn('uses: ./.github/workflows/lean.yml',release)
+        self.assertIn('audit_publication: true',release)
+        self.assertNotIn('subprocess.run',release)
+        self.assertIn('workflow_call:',shared)
+        self.assertIn('check_axiom_budget.py --run-palomar --json',shared)
+        self.assertIn('name: palomar-publication-audit',shared)
+        self.assertIn('group: lean-convenience-${{ github.workflow }}-',shared)
+        self.assertLess(shared.index('id: compile'),shared.index('id: audit'))
+
     def test_real_signal_is_not_success(self):
         with tempfile.TemporaryDirectory() as tmp:
             result=runner.run_build([__import__('sys').executable,'-c',

@@ -10,7 +10,8 @@ Use the actual parent ref for a stacked pull request. The runner checks changed
 Lean modules in dependency order before the full `defaultTargets` list. A focused
 failure stops that run immediately; unattempted targets stay visible in the report.
 Use `--keep-going` only when collecting independent launch-target failures is worth
-the extra build time. The publication release and Comparator checks are separate.
+the extra build time. Lean Release Gate calls this same workflow and runner, then requires its
+publication axiom audit. Comparator acceptance remains separate.
 
 To inspect the selection without installing Lean, append `--plan`. To reproduce
 one module quickly, use `--focus Namespace.Module --focused-only`; the resulting
