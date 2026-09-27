@@ -21,9 +21,10 @@ The mechanism is elementary and every step is checked:
 4. `certCheck` packages the four integer inequalities; `den_bound_of_certCheck`
    turns `certCheck = true` into the floor; the instance is `decide +kernel`.
 
-The Python receipt in the packet (`q > 10^12041`, 23369 certified partial
-quotients) is far larger, and nothing here bears on irrationality.  The point
-is the evidence class: this floor is a theorem of the kernel, not a receipt.
+The Python receipt in the packet (`q ≥ 2^39997 > 10^12040`, 23369 certified
+partial quotients) is far larger: bit length `39998` is not an exponent.
+Nothing here bears on irrationality.  The point is the evidence class: this
+floor is a theorem of the kernel, not a receipt.
 -/
 
 open Finset
