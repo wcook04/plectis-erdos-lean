@@ -261,14 +261,16 @@ def run_build(argv: list[str], *, root: Path, log: Path, timeout: float,
 
 def build_targets(targets: Sequence[str], report_path: Path, run: Callable | None = None,
                   metadata: dict | None = None, *, plan: dict | None = None,
-                  root: Path = ROOT, keep_going: bool = True, target_budget: float = 5400,
+                  root: Path = ROOT, keep_going: bool = True, target_budget: float | None = None,
                   total_budget: float = 18000, heartbeat: float = 60,
                   module_budget: float = 3600) -> int:
     if not targets or any(not MODULE.fullmatch(t) for t in targets):
         raise ValueError('refusing empty or invalid target replay')
     rows = [dict(target=t, status='not-attempted', returncode=None,
                  phase=(plan['targets'][i]['phase'] if plan else 'launch')) for i,t in enumerate(targets)]
-    report = {'schema_version': 2, 'status': 'running', 'targets': rows}
+    report = {'schema_version': 2, 'status': 'running', 'targets': rows,
+              'budgets': {'target_seconds': target_budget, 'total_seconds': total_budget,
+                          'module_seconds': module_budget}}
     if plan:
         report['plan'] = plan
     if metadata is not None:
@@ -290,9 +292,13 @@ def build_targets(targets: Sequence[str], report_path: Path, run: Callable | Non
                         row['errors']=list(errors); save_report(report_path,report)
                     result=run_build(['lake','build',row['target']],root=root,
                                      log=report_path.parent/'convenience-logs'/f'{i:03d}-{row["target"]}.log.gz',
-                                     timeout=min(target_budget,deadline-time.monotonic()),heartbeat=heartbeat,
+                                     timeout=min(target_budget or total_budget,deadline-time.monotonic()),heartbeat=heartbeat,
                                      module_budget=module_budget,progress=progress)
+                if result.get('reason') == 'target_timeout' and (target_budget is None or time.monotonic() >= deadline):
+                    result['reason'] = 'run_timeout'
                 row.update(result)
+                if result.get('reason'):
+                    print('::error::'+annotation(f"{row['target']}: {result['reason']} after {result.get('seconds', 0)}s; see retained compiler log"), flush=True)
                 code=result['returncode']
                 interrupted=bool(result.get('reason')) or code<0 or code in (130,137,143)
                 row['status']='incomplete' if interrupted else ('pass' if code==0 else 'fail')
@@ -310,8 +316,8 @@ def build_targets(targets: Sequence[str], report_path: Path, run: Callable | Non
             report['status']='focused-pass'
         save_report(report_path,report)
         lines=['## Lean Convenience', '', f"Result: **{report['status']}**.", '',
-               '| Target | Phase | Result |', '| --- | --- | --- |']
-        lines += [f"| `{r['target']}` | {r['phase']} | {r['status']} |" for r in rows]
+               '| Target | Phase | Result | Reason |', '| --- | --- | --- | --- |']
+        lines += [f"| `{r['target']}` | {r['phase']} | {r['status']} | {r.get('reason') or ''} |" for r in rows]
         summary='\n'.join(lines)+'\n';print(summary,flush=True)
         if destination:=os.environ.get('GITHUB_STEP_SUMMARY'):
             with open(destination,'a') as output:output.write(summary)
@@ -335,7 +341,7 @@ def main() -> int:
     parser.add_argument('--focused-only',action='store_true')
     parser.add_argument('--keep-going',action='store_true',help='collect later launch-target failures too')
     parser.add_argument('--plan',action='store_true',help='write admission plan without invoking Lean')
-    parser.add_argument('--target-budget',type=positive,default=5400)
+    parser.add_argument('--target-budget',type=positive,help='optional aggregate target cap; by default only module and whole-run budgets apply')
     parser.add_argument('--total-budget',type=positive,default=18000)
     parser.add_argument('--heartbeat',type=positive,default=os.environ.get(HEARTBEAT_ENV,'60'))
     parser.add_argument('--module-budget',type=positive,default=os.environ.get(MODULE_BUDGET_ENV,'3600'))

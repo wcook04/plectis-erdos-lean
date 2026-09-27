@@ -33,6 +33,8 @@ on:
         type: boolean
         default: false
   pull_request:
+    # The release gate owns the full build and publication audit for main PRs.
+    branches-ignore: [main]
   push:
     branches: [main, 'palomar/**']
 
@@ -109,11 +111,13 @@ jobs:
           if [[ -n "$FOCUS_MODULE" ]]; then args+=(--focus "$FOCUS_MODULE"); fi
           python3 .ci-driver/scripts/build_launch_targets.py "${args[@]}" --plan
       - name: Restore the corpus build
+        id: corpus_cache
         uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: source/.lake/build
-          key: corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('source/lean-toolchain') }}-${{ hashFiles('source/lake-manifest.json') }}-${{ steps.resolve.outputs.source_sha }}-convenience-v2
+          key: corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('source/lean-toolchain') }}-${{ hashFiles('source/lake-manifest.json') }}-convenience-v3-${{ github.ref }}-${{ steps.resolve.outputs.source_sha }}-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: |
+            corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('source/lean-toolchain') }}-${{ hashFiles('source/lake-manifest.json') }}-convenience-v3-${{ github.ref }}-
             corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('source/lean-toolchain') }}-${{ hashFiles('source/lake-manifest.json') }}-
       - id: lean
         uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
@@ -175,11 +179,12 @@ jobs:
             source/.lake/convenience-logs/*.log.gz
           if-no-files-found: warn
           retention-days: 14
-      # Preserve completed modules after a failed main build. Branch-only source
-      # and externally selected snapshots must not populate the shared main cache.
+      # GitHub isolates PR caches to that PR ref. Unique immutable keys retain
+      # partial progress on retries; Lake rechecks hashes and traces on every run.
+      # Externally selected source snapshots never populate these caches.
       - name: Save the corpus build
-        if: ${{ always() && !cancelled() && github.ref == 'refs/heads/main' && inputs.source_ref == '' }}
+        if: ${{ always() && !cancelled() && steps.lean.outcome == 'success' && inputs.source_ref == '' }}
         uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: source/.lake/build
-          key: corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('source/lean-toolchain') }}-${{ hashFiles('source/lake-manifest.json') }}-${{ steps.resolve.outputs.source_sha }}-convenience-v2
+          key: corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('source/lean-toolchain') }}-${{ hashFiles('source/lake-manifest.json') }}-convenience-v3-${{ github.ref }}-${{ steps.resolve.outputs.source_sha }}-${{ github.run_id }}-${{ github.run_attempt }}

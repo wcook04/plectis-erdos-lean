@@ -13,6 +13,10 @@ on:
   push:
     tags: ['v*']
 
+concurrency:
+  group: lean-release-${{ github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
 
