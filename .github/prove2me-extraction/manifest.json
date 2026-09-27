@@ -410,10 +410,6 @@
           "sha256": "680bbc49e07268971b58b5d89c1712f3f0b01eb6833a753c6394e9fc92659816"
         },
         {
-          "module": "ErdosProblems.Erdos243.LcmRecordDivergence",
-          "sha256": "0e7b7d7b4337a1cf6c1738bde29bb41fff9e7164eea3ed3c4d1fbe7e974e0a6e"
-        },
-        {
           "module": "ErdosProblems.Erdos243.LcmRecordExcess",
           "sha256": "84532662775b6b3fc4c8d6b8957727f9668f0162de4b6fa5fa891096d36c9c57"
         },
@@ -470,6 +466,10 @@
           "sha256": "8e79db319d3744049d30668d1783082e35efab1016c85595f96451a2f2cd9785"
         },
         {
+          "module": "ErdosProblems.Erdos243.PaperCompleteR11.QuantitativeRecordDichotomy",
+          "sha256": "750871d702e43b042464f1c92b5626a3fa5e764482d5a4d47296576e9dff3b36"
+        },
+        {
           "module": "ErdosProblems.Erdos243.PaperCompleteR11.RecordDivisibility",
           "sha256": "deadc1da87d4a23aa6c9c5782ec332843784fb91ed6debedfb3798806b8346d6"
         },
@@ -488,6 +488,18 @@
         {
           "module": "ErdosProblems.Erdos243.PaperCompleteR11.UncentredSeries",
           "sha256": "23c9d6c078207742d72e562cc497dd65f2d3e3e1b5707a938a39477a3f7f1007"
+        },
+        {
+          "module": "ErdosProblems.Erdos243.PaperCompleteR21.DoubleLogOrbitBound",
+          "sha256": "b207945cf309a1e7003ad91f14c62c5f7b116567c331be35263da1a63123ce66"
+        },
+        {
+          "module": "ErdosProblems.Erdos243.PaperCompleteR21.ExactOrbitRecordDichotomy",
+          "sha256": "24d0e8b0cc5f0aab42dcec0ffdca198a4ae2e5af806d1483a3713f7fd9d233d0"
+        },
+        {
+          "module": "ErdosProblems.Erdos243.PaperCompleteR21.SlowGrowthProductIncrements",
+          "sha256": "740185d6b399f10505b3976cf5897544064799e14c3faa4f86ebddfd51301031"
         },
         {
           "module": "ErdosProblems.Erdos243.PaperCompleteR7.Arithmetic",
@@ -526,22 +538,6 @@
           "sha256": "f5ea5f108719f54a3b53985b674de245f78962988cfd7cf0f18e1724d999904f"
         },
         {
-          "module": "ErdosProblems.Erdos243.PaperCompleteR8.CanonicalWeightedRecords",
-          "sha256": "49447007612e14cec3753af7e5f155ff3427c9fdda0baa2ba705a47ab1c9dc3d"
-        },
-        {
-          "module": "ErdosProblems.Erdos243.PaperCompleteR8.Foundation",
-          "sha256": "d6a6cb635a122379ba4621e1a73b8de38ca20ff83009aea3b5fcf7b7a6f63461"
-        },
-        {
-          "module": "ErdosProblems.Erdos243.PaperCompleteR8.WeightAnalysis",
-          "sha256": "621282d39681617d60b0c1ce05d2215b08d1d8545c787cf5c942c396535b1852"
-        },
-        {
-          "module": "ErdosProblems.Erdos243.PaperCompleteR8.WeightedRecords",
-          "sha256": "5fd0792c3334312c6a8d18a1665cb96fce5d3fb2a3590f8e7df16727779b3ad3"
-        },
-        {
           "module": "ErdosProblems.Erdos243.PaperCompleteR9.AdaptiveCoefficients",
           "sha256": "18b6949e9f57b68b44746418c26888cdda7a245a5ac6bd1ac239ef1ce9bef18a"
         },
@@ -578,50 +574,26 @@
           "sha256": "3f9ea00f795247964473c664dcc95f63fe4525a2ea65c3a5491b347c5858688b"
         },
         {
-          "module": "ErdosProblems.Erdos243.SparseResetRecovery",
-          "sha256": "f207295595576c95ab9e7717f219eec3b1d1e33555b0a9a1a1e95c690f623177"
-        },
-        {
           "module": "ErdosProblems.Erdos243.UncentredRecordCharge",
           "sha256": "04c4306f89c159c39f833500781778b79eeb4616fcb5042a1335839cd2ebc8a3"
         }
       ],
-      "prepared_graph_sha256": "6e59e6e1d8b24f7ce428e631a42271637b3f04ec3ec6b2dcd2c42b4bd5c71280",
+      "prepared_graph_sha256": "906e25e6dd53b7d38f19aa2afe5c2f024131e2d60a2a42598a1cb1a1ede6d47f",
       "project_prefixes": [
         "ErdosProblems",
         "Erdos257PeriodNoncollapse",
         "Erdos249257"
       ],
       "root_modules": [
-        "ErdosProblems.Erdos243.ReciprocalTailRigidity",
-        "ErdosProblems.Erdos243.SparseResetRecovery",
-        "ErdosProblems.Erdos243.PaperCompleteR7.LcmDefect",
-        "ErdosProblems.Erdos243.PaperCompleteR8.CanonicalWeightedRecords",
-        "ErdosProblems.Erdos243.PaperCompleteR11.InclusiveLimsup"
+        "ErdosProblems.Erdos243.PaperCompleteR21.DoubleLogOrbitBound"
       ],
       "selected_declarations": [
         {
-          "module": "ErdosProblems.Erdos243.ReciprocalTailRigidity",
-          "name": "ErdosProblems.Erdos243.eventuallyBoundedNegativePart_eventually_zero"
-        },
-        {
-          "module": "ErdosProblems.Erdos243.SparseResetRecovery",
-          "name": "ErdosProblems.Erdos243.eventually_zero_of_summable_negativeRelativeMass_scalar"
-        },
-        {
-          "module": "ErdosProblems.Erdos243.PaperCompleteR7.LcmDefect",
-          "name": "ErdosProblems.Erdos243.PaperCompleteR7.original_coordinate_lcm_bounded_defect"
-        },
-        {
-          "module": "ErdosProblems.Erdos243.PaperCompleteR8.CanonicalWeightedRecords",
-          "name": "ErdosProblems.Erdos243.PaperCompleteR8.canonical_weighted_record"
-        },
-        {
-          "module": "ErdosProblems.Erdos243.PaperCompleteR11.InclusiveLimsup",
-          "name": "ErdosProblems.Erdos243.PaperCompleteR11.canonical_inclusive_logLog_criterion"
+          "module": "ErdosProblems.Erdos243.PaperCompleteR21.DoubleLogOrbitBound",
+          "name": "ErdosProblems.Erdos243.PaperCompleteR21.exactOrbit_double_logarithmic_bound"
         }
       ],
-      "source_commit": "cc7e541cf2081c6fef5a5e377d52e365e33b01eb",
+      "source_commit": "fbf41fb8b571d217b1648070dcc39d5eda5394ad",
       "toolchain": "leanprover/lean4:v4.30.0"
     },
     "249": {
