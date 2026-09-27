@@ -40,11 +40,6 @@ def primePrefix : ℕ → ℕ × ℕ
   | 0 => (0, 0)
   | m + 1 => step m (primePrefix m)
 
-/- Keep the generated checkpoint vocabulary source-compatible after `prefix`
-became reserved syntax in Lean 4.29. -/
-syntax "prefix" term:max : term
-macro_rules
-  | `(prefix $X) => `(primePrefix $X)
 
 /-- Both coordinates are proved; no supplied list of primes is assumed. -/
 theorem prefix_semantics (X : ℕ) :

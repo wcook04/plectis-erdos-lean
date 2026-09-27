@@ -14,9 +14,9 @@ def state0001 : ℕ × ℕ := (564, 22188749203718335908932318439765905744894214
 theorem block0001 : scanBlock 0 4096 (0, 0) = state0001 := by
   decide +kernel
 
-theorem endpoint0001 : prefix 4096 = state0001 := by
+theorem endpoint0001 : primePrefix 4096 = state0001 := by
   have h := scanBlock_prefix 0 4096
-  change scanBlock 0 4096 (0, 0) = prefix 4096 at h
+  change scanBlock 0 4096 (0, 0) = primePrefix 4096 at h
   exact h.symm.trans block0001
 
 end ErdosProblems.Erdos251.PaperV5.Streaming.Chunks

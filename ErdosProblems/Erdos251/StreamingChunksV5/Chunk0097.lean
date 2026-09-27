@@ -14,7 +14,7 @@ def state0097 : ℕ × ℕ := (33647, 209642520688764467626760171760262954750419
 theorem block0097 : scanBlock 393216 4096 state0096 = state0097 := by
   decide +kernel
 
-theorem endpoint0097 : prefix 397312 = state0097 := by
+theorem endpoint0097 : primePrefix 397312 = state0097 := by
   have h := scanBlock_prefix 393216 4096
   rw [endpoint0096] at h
   exact h.symm.trans block0097
