@@ -182,6 +182,32 @@ class ProcessAndPlanTests(unittest.TestCase):
             self.assertEqual(len(calls),1)
             self.assertEqual(json.loads(path.read_text())['targets'][1]['status'],'not-attempted')
 
+    def test_aggregate_target_uses_remaining_run_budget_by_default(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path=Path(tmp)/'r.json'
+            with patch.object(runner.time,'monotonic',return_value=100):
+                with patch.object(runner,'run_build',return_value={'returncode':0}) as build:
+                    self.assertEqual(runner.build_targets(['LargeLibrary'],path,total_budget=18000),0)
+            self.assertEqual(build.call_args.kwargs['timeout'],18000)
+            self.assertIsNone(json.loads(path.read_text())['budgets']['target_seconds'])
+
+    def test_explicit_aggregate_cap_is_preserved(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path=Path(tmp)/'r.json'
+            with patch.object(runner,'run_build',return_value={'returncode':-15,'reason':'target_timeout','seconds':30}) as build:
+                self.assertEqual(runner.build_targets(['LargeLibrary'],path,target_budget=30),2)
+            self.assertEqual(build.call_args.kwargs['timeout'],30)
+            self.assertEqual(json.loads(path.read_text())['targets'][0]['reason'],'target_timeout')
+
+    def test_remaining_run_limit_cannot_be_mislabeled_or_pass(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path=Path(tmp)/'r.json'
+            with patch.object(runner,'run_build',return_value={'returncode':-15,'reason':'target_timeout','seconds':3}):
+                self.assertEqual(runner.build_targets(['LargeLibrary','Later'],path,total_budget=3),2)
+            report=json.loads(path.read_text())
+            self.assertEqual(report['targets'][0]['reason'],'run_timeout')
+            self.assertEqual(report['targets'][1]['status'],'not-attempted')
+
     def test_changed_dependencies_precede_consumers_and_scope_remains_full(self):
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp)
@@ -225,7 +251,10 @@ class ProcessAndPlanTests(unittest.TestCase):
         self.assertIn('.lake/convenience-logs/*.log.gz',text)
         self.assertIn('include-hidden-files: true',text)
         self.assertNotIn('path: .lake\n',text)
-        self.assertIn("github.ref == 'refs/heads/main' && inputs.source_ref == ''",text)
+        self.assertIn("steps.lean.outcome == 'success' && inputs.source_ref == ''",text)
+        self.assertIn('convenience-v3-${{ github.ref }}-',text)
+        self.assertIn('${{ github.run_id }}-${{ github.run_attempt }}',text)
+        self.assertIn('branches-ignore: [main]',text)
         self.assertNotIn('subprocess.run(["lake"',text)
 
     def test_release_gate_shares_the_runner_and_retains_its_audit(self):
@@ -234,6 +263,8 @@ class ProcessAndPlanTests(unittest.TestCase):
         shared=(root/'lean.yml').read_text()
         self.assertIn('uses: ./.github/workflows/lean.yml',release)
         self.assertIn('audit_publication: true',release)
+        self.assertIn('group: lean-release-${{ github.ref }}',release)
+        self.assertIn('cancel-in-progress: true',release)
         self.assertNotIn('subprocess.run',release)
         self.assertIn('workflow_call:',shared)
         self.assertIn('check_axiom_budget.py --run-palomar --json',shared)

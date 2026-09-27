@@ -25,8 +25,9 @@ and elapsed time. Complete compiler output is compressed under
 summary lists attempted and unattempted targets, with errors linked to source
 lines. A timeout, cancellation, log limit or source change cannot produce a pass.
 
-Defaults are one hour per compiler module, 90 minutes per launch target and five
-hours for the complete run. `--module-budget`, `--target-budget` and
+Defaults are one hour per compiler module and five hours for the complete run.
+A library target may contain thousands of modules, so it has no separate default
+wall-clock cap. An explicit `--target-budget` can impose one when needed. `--module-budget`, `--target-budget` and
 `--total-budget` accept finite positive seconds. The runner prints a heartbeat
 every minute and only inspects compiler processes descended from its own Lake
 process. A timeout stops that process group and preserves completed build files.
@@ -53,9 +54,15 @@ The fast infrastructure tests run before package installation or cache hydration
 python3 -m unittest discover -s scripts -p 'test_build_launch_targets.py' -v
 ```
 
-Only builds of main itself save shared corpus caches. PRs and manual runs against
-another source may restore caches, but compiler traces still decide what rebuilds;
-a cached file or a focused pass is never a substitute for complete validation.
+Completed modules are cached after successful or failed builds of the current ref.
+Keys include the toolchain, dependencies, ref, source commit and run attempt.
+GitHub isolates PR caches to their merge ref; retries can reuse partial progress.
+Manual checks of another source never save these caches. Lake still checks source
+hashes and compiler traces, and every run must complete all required validation.
+
+Main-targeting PRs run the complete build once through Lean Release Gate, including
+its publication audit. The convenience trigger handles other PR bases and manual
+checks. A newer release-gate push cancels the obsolete run on that ref.
 
 For a quick manual check before a complete run, add `-f focused_only=true` to
 the dispatch. This produces an explicit `focused-pass`, checks the selected
