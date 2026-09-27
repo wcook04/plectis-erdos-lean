@@ -5,7 +5,7 @@ import Mathlib.Tactic
 # Exact depth-four moment ideal and a supported attaining vector
 
 The finite calculations below rewrite the actual isolated-unit recurrence;
-they do not assume a table for an unrelated sequence. Complete bodies, UNRUN.
+they do not assume a table for an unrelated sequence.
 The quadratic horizon (D,p,H)=(4,3,20) proves the infinite tail conclusion.
 -/
 namespace ErdosProblems.Erdos68.PaperCoverageV5
@@ -89,6 +89,7 @@ theorem finite_scalar_gcd_four : finiteScalarGcd 4 20 = 60 := by
   unfold finiteScalarGcd
   rw [show Finset.Icc (4 + 1) 20 = ({5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20} : Finset ℕ) from by decide]
   norm_num [scalar_5, scalar_6, scalar_7, scalar_8, scalar_9, scalar_10, scalar_11, scalar_12, scalar_13, scalar_14, scalar_15, scalar_16, scalar_17, scalar_18, scalar_19, scalar_20]
+  decide +kernel
 
 /-- This is an infinite-tail statement, via the already authored all-depth
 finite horizon theorem, not via extrapolation from the table. -/
@@ -123,7 +124,8 @@ theorem exact_depth_four_ideal (m : ℤ) : AttainsMoment 4 m ↔ (1380 : ℤ) �
       (by decide) (by decide) (by decide) (by decide) m
 
 noncomputable def depthFourVector : ℕ →₀ ℤ :=
-  12 • canonicalKernel 4 + 253 • isolatedChannelUnit 6 - 11 • isolatedChannelUnit 8
+  (12 : ℤ) • canonicalKernel 4 + (253 : ℤ) • isolatedChannelUnit 6 -
+    (11 : ℤ) • isolatedChannelUnit 8
 
 theorem depthFourVector_admissible : Admissible depthFourVector := by
   apply (admissible_iff _).mpr
