@@ -12,6 +12,7 @@ import unittest
 from unittest.mock import patch
 
 import build_launch_targets as runner
+import convenience_ci as ci
 
 
 class LaunchReplayTests(unittest.TestCase):
@@ -126,6 +127,19 @@ class LaunchReplayTests(unittest.TestCase):
 
 
 class ProcessAndPlanTests(unittest.TestCase):
+    def setUp(self):
+        # These tests deliberately emit proof errors and failed summaries.
+        # Keep them out of the hosting workflow's diagnostics and job summary.
+        self.output = io.StringIO()
+        capture = contextlib.redirect_stdout(self.output)
+        capture.__enter__()
+        self.addCleanup(capture.__exit__, None, None, None)
+        directory = tempfile.TemporaryDirectory()
+        self.addCleanup(directory.cleanup)
+        env = patch.dict(os.environ, {'GITHUB_STEP_SUMMARY': str(Path(directory.name)/'summary')})
+        env.start()
+        self.addCleanup(env.stop)
+
     def test_watchdog_only_sees_this_builds_descendants(self):
         listing = "10 1 300 lake build X\n11 10 200 /bin/lean X.lean\n12 1 999 /bin/lean Other.lean\n13 11 40 /bin/lean Child.lean\n"
         self.assertEqual(runner.owned_modules(listing,10),[(11,200,'X.lean'),(13,40,'Child.lean')])
@@ -206,7 +220,7 @@ class ProcessAndPlanTests(unittest.TestCase):
         self.assertIn('needs: infrastructure',text)
         self.assertLess(text.index('--plan'),text.index('Restore the corpus build'))
         self.assertIn('use-github-cache: false',text)
-        self.assertIn('inputs.source_ref || github.sha',text)
+        self.assertIn('steps.resolve.outputs.source_sha',text)
         self.assertIn('.ci-driver/scripts/build_launch_targets.py',text)
         self.assertIn('.lake/convenience-logs/*.log.gz',text)
         self.assertIn("github.ref == 'refs/heads/main' && inputs.source_ref == ''",text)
@@ -223,6 +237,68 @@ class ProcessAndPlanTests(unittest.TestCase):
         for value in ('0','-1','nan','inf','100000'):
             with self.assertRaises((ValueError,runner.argparse.ArgumentTypeError)):
                 runner.positive(value)
+
+
+class SetupBoundaryTests(unittest.TestCase):
+    def test_named_and_abbreviated_refs_resolve_to_full_commit(self):
+        for ref in ('abc1234', 'topic/change', 'v1.0', 'a'*40):
+            api = unittest.mock.Mock(return_value=subprocess.CompletedProcess([], 0, 'b'*40+'\n', ''))
+            self.assertEqual(ci.resolve_source('owner/repo', ref, api), 'b'*40)
+            self.assertIn('repos/owner/repo/commits/'+ci.quote(ref, safe=''), api.call_args.args[0])
+            self.assertEqual(api.call_args.kwargs['timeout'], 45)
+
+    def test_bad_ref_and_api_failure_never_reach_checkout(self):
+        for code, output in ((1, ''), (0, 'abc1234'), (0, 'null'), (0, 'bad\nsource_sha=evil')):
+            api = unittest.mock.Mock(return_value=subprocess.CompletedProcess([], code, output, ''))
+            with self.assertRaises(ValueError):
+                ci.resolve_source('owner/repo', 'unknown', api)
+        api = unittest.mock.Mock()
+        with self.assertRaises(ValueError):
+            ci.resolve_source('owner/repo', 'bad\nref', api)
+        api.assert_not_called()
+        with self.assertRaises(subprocess.TimeoutExpired):
+            ci.resolve_source('owner/repo', 'main', unittest.mock.Mock(side_effect=subprocess.TimeoutExpired('gh',45)))
+
+    def test_setup_failure_has_diagnostics_without_target_report(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            report = ci.finalize({'status':'incomplete','requested_source':'abc1234'},
+                                 Path(tmp)/'absent.json', {'source':{'outcome':'failure'}})
+            self.assertEqual(report['status'], 'incomplete')
+            self.assertEqual(report['requested_source'], 'abc1234')
+            self.assertEqual(report['incomplete_steps'], {'source':'failure'})
+            self.assertEqual(report['reason'], 'setup_did_not_reach_build')
+
+    def test_setup_failure_cannot_leave_planned_or_stale_success(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp)/'r.json'
+            for status in ('planned', 'running', 'pass', 'focused-pass'):
+                path.write_text(json.dumps({'status':status,'plan':{}}))
+                report = ci.finalize({},path,{'lean':{'outcome':'failure'}})
+                self.assertEqual(report['status'],'incomplete')
+            path.write_text('{"status":"fail"}')
+            self.assertEqual(ci.finalize({},path,{'compile':{'outcome':'failure'}})['status'],'fail')
+            path.write_text('{"status":"pass","plan":{}}')
+            self.assertEqual(ci.finalize({},path,{'compile':{'outcome':'success'}})['status'],'pass')
+
+    def test_negative_tests_do_not_pollute_hosting_workflow(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            summary = Path(tmp)/'host-summary'
+            summary.write_text('real summary\n')
+            env = dict(os.environ, GITHUB_STEP_SUMMARY=str(summary))
+            result = subprocess.run([__import__('sys').executable,'-m','unittest',
+                'test_build_launch_targets.ProcessAndPlanTests'], cwd=Path(__file__).parent,
+                env=env, capture_output=True, text=True, timeout=30)
+            self.assertEqual(result.returncode,0,result.stderr)
+            self.assertNotIn('::error',result.stdout+result.stderr)
+            self.assertEqual(summary.read_text(),'real summary\n')
+
+    def test_artifact_exists_before_any_checkout(self):
+        workflow=(Path(__file__).resolve().parents[1]/'.github/workflows/lean.yml').read_text()
+        build=workflow[workflow.index('  build:'):]
+        self.assertLess(build.index('Initialize setup diagnostics'),build.index('uses: actions/checkout'))
+        self.assertLess(build.index('convenience_ci.py resolve'),build.index('name: Check out the resolved source'))
+        self.assertIn('${{ runner.temp }}/convenience-target-report.json',build)
+        self.assertIn('lake-package-directory: source',build)
 
 
 if __name__ == '__main__':
