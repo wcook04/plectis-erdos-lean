@@ -59,7 +59,7 @@ theorem weighted_record_excess (a : ℕ → ℕ) (ha : StrictMono a)
       ErdosProblems.Erdos243.PaperCompleteR7.clearedIntegerNumerator,
       ErdosProblems.Erdos243.PaperCompleteR7.prefixProduct,
       ErdosProblems.Erdos243.sylvesterNext] at h ⊢
-  convert h <;> split_ifs <;> rfl
+  convert h <;> split_ifs <;> first | rfl | simp_all
 
 noncomputable def growthWeight (a : ℕ → ℕ) (p : ℤ) (q B : ℕ)
     (f : ℝ → ℝ) (n : ℕ) : ℝ := by

@@ -50,7 +50,7 @@ theorem weighted_record_excess (a : ℕ → ℕ) (ha : StrictMono a)
       ErdosProblems.Erdos243.PaperCompleteR7.clearedIntegerNumerator,
       ErdosProblems.Erdos243.PaperCompleteR7.prefixProduct,
       ErdosProblems.Erdos243.sylvesterNext] at h ⊢
-  convert h <;> split_ifs <;> rfl
+  convert h <;> split_ifs <;> first | rfl | simp_all
 
 theorem weighted_growth_record_excess (a : ℕ → ℕ) (ha : StrictMono a)
     (hapos : ∀ n, 0 < a n) (p : ℤ) (q : ℕ) (hq : 0 < q)
