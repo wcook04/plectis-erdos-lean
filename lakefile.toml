@@ -1322,3 +1322,11 @@ globs = ["ExternalVerification269PaperStructuresH.+"]
 [[lean_lib]]
 name = "ExternalVerification257PaperStructuresAY"
 globs = ["ExternalVerification257PaperStructuresAY.+"]
+
+[[lean_lib]]
+name = "P2M_Erdos257_20260927"
+globs = ["P2M_Erdos257_20260927.+"]
+
+[[lean_lib]]
+name = "P2MOverlayAudit"
+globs = ["P2MOverlayAudit.+"]
