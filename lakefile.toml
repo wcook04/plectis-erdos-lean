@@ -1,7 +1,7 @@
 name = "erdos257_period_noncollapse"
 version = "0.1.0"
 keywords = ["math", "erdos257", "period-noncollapse"]
-defaultTargets = ["ErdosProblems.Erdos251.PaperLargeCertificateR7"]
+defaultTargets = ["ExternalVerification251KernelDenominatorFloor", "ErdosProblems.Erdos251.PaperLargeCertificateR7"]
 
 [leanOptions]
 pp.unicode.fun = true
