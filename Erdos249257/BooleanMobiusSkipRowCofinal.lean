@@ -47,8 +47,7 @@ theorem greedyMersenneRemainderRat_half_pos (n : ℕ) :
     (zero_not_mem_greedyMersennePrefixRat (1 / 2 : ℚ) n)
   rw [hsum] at hodd
   obtain ⟨k, hk⟩ := hodd
-  norm_num at hk
-  omega
+  norm_num at hk <;> omega
 
 /-- One positive rational-greedy skip supplies an actual exact local
 Mersenne half row. -/

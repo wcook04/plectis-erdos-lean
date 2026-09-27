@@ -30,8 +30,13 @@ def iterRealForwardDiff : ℕ → (ℕ → ℝ) → ℕ → ℝ
 theorem realForwardDiff_tendsto_zero
     {u : ℕ → ℝ} (hu : Tendsto u atTop (nhds 0)) :
     Tendsto (realForwardDiff u) atTop (nhds 0) := by
-  simpa [realForwardDiff, Function.comp_def] using
-    (hu.comp (tendsto_add_atTop_nat 1)).sub hu
+  change Tendsto (fun n => u (n + 1) - u n) atTop (nhds 0)
+  have h := (hu.comp (tendsto_add_atTop_nat 1)).sub hu
+  have hpoint : Tendsto (fun n => u (n + 1) - u n) atTop (nhds (0 - 0)) := by
+    apply h.congr'
+    exact Filter.Eventually.of_forall fun n => by
+      simp only [Pi.sub_apply, Function.comp_apply]
+  simpa only [sub_self] using hpoint
 
 /-- Every fixed further forward difference of a null sequence is null. -/
 theorem iterRealForwardDiff_tendsto_zero

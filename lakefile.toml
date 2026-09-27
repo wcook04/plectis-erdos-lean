@@ -1,7 +1,7 @@
 name = "erdos257_period_noncollapse"
 version = "0.1.0"
 keywords = ["math", "erdos257", "period-noncollapse"]
-defaultTargets = ["ExternalVerification68ChannelRadius", "ExternalVerification68CompanionOrbitBoundary", "ExternalVerification243PeriodicNegativeOrbit", "ExternalVerification249BinaryCyclotomicAnchors", "ExternalVerification249RankOneSharpFloor", "ExternalVerification251PolynomialShiftCountermodel", "ExternalVerification251ActualPrimeGapTail", "ExternalVerification257ReciprocalSupport", "ExternalVerification257FinitePeriodNoncollapse", "ExternalVerification257RationalTailRigidity", "ExternalVerification269ThreePrimeStructure", "ExternalVerification1041SolvedFamilies", "ExternalVerification1041CyclicTrinomialFiber", "ExternalVerification1041QuarticQuotientFiber", "ExternalVerification1041CriticalGeometry", "ExternalVerification1041TetranomialSpokes", "ExternalVerification1041FirstMergeCriticalValueSeparation", "ExternalVerification1049AdelicHeightBridge", "ExternalVerification1049RationalBaseBarrier", "ExternalVerification1049PrimeSupportSelectors", "ExternalVerification1049HermitePadeNoGo", "ExternalVerification249DyadicTotientKernel", "ExternalVerification249ResidueClassTotientSeries", "ExternalVerification251KernelDenominatorFloor", "ExternalVerification251FreePairEquivalence", "ExternalVerification251PrimeGapIdentity", "ExternalVerification269WindowEscapeEquivalence", "ExternalVerification269ActualShellOrbit", "ExternalVerification1049RationalBaseContour", "ExternalVerification249MobiusMersenneLadderStructure", "ExternalVerification249ParityPerturbedRationalControl", "ExternalVerification257AchievementSetGeometry", "ExternalVerification243BoundedNegativePartRigidity", "ExternalVerification243BoundedRiseReducedTail", "ExternalVerification68PrimeUnitTranslator", "ExternalVerification1041DiskFamilySeparation", "ExternalVerification251BoundedPerturbationCountermodel", "ExternalVerification1041CollinearChord", "Solutions", "PalomarCorpus"]
+defaultTargets = ["ExternalVerification68ChannelRadius", "ExternalVerification68CompanionOrbitBoundary", "ExternalVerification243PeriodicNegativeOrbit", "ExternalVerification249BinaryCyclotomicAnchors", "ExternalVerification249RankOneSharpFloor", "ExternalVerification251PolynomialShiftCountermodel", "ExternalVerification251ActualPrimeGapTail", "ExternalVerification257ReciprocalSupport", "ExternalVerification257FinitePeriodNoncollapse", "ExternalVerification257RationalTailRigidity", "ExternalVerification269ThreePrimeStructure", "ExternalVerification1041SolvedFamilies", "ExternalVerification1041CyclicTrinomialFiber", "ExternalVerification1041QuarticQuotientFiber", "ExternalVerification1041CriticalGeometry", "ExternalVerification1041TetranomialSpokes", "ExternalVerification1041FirstMergeCriticalValueSeparation", "ExternalVerification1049AdelicHeightBridge", "ExternalVerification1049RationalBaseBarrier", "ExternalVerification1049PrimeSupportSelectors", "ExternalVerification1049HermitePadeNoGo", "ExternalVerification249DyadicTotientKernel", "ExternalVerification249ResidueClassTotientSeries", "ExternalVerification251KernelDenominatorFloor", "ExternalVerification251FreePairEquivalence", "ExternalVerification251PrimeGapIdentity", "ExternalVerification269WindowEscapeEquivalence", "ExternalVerification269ActualShellOrbit", "ExternalVerification1049RationalBaseContour", "ExternalVerification249MobiusMersenneLadderStructure", "ExternalVerification249ParityPerturbedRationalControl", "ExternalVerification257AchievementSetGeometry", "ExternalVerification243BoundedNegativePartRigidity", "ExternalVerification243BoundedRiseReducedTail", "ExternalVerification68PrimeUnitTranslator", "ExternalVerification1041DiskFamilySeparation", "ExternalVerification251BoundedPerturbationCountermodel", "ExternalVerification1041CollinearChord", "Erdos257SupportClassComparison", "ExternalVerification243PaperStatementsAF", "Solutions", "PalomarCorpus"]
 
 [leanOptions]
 pp.unicode.fun = true
@@ -9,7 +9,7 @@ pp.unicode.fun = true
 [[require]]
 name = "mathlib"
 scope = "leanprover-community"
-rev = "v4.30.0"
+rev = "v4.35.0-rc2"
 
 # The shared machinery of the #249 and #257 programmes, copied verbatim from the paper repository
 # (`plectis-erdos`, `lean/Erdos249257`), where it is the library every downstream file imports. The
@@ -29,7 +29,13 @@ name = "ErdosProblems"
 # The launch root plus the 21 Sep source-port aggregator. The aggregator is a second root so the
 # ported paper-bound source modules resolve as a build target without widening the launch closure;
 # it is deliberately not a default target, so CI's target list is unchanged.
-globs = ["ErdosProblems", "ErdosProblems.SourcePort20260921"]
+globs = ["ErdosProblems", "ErdosProblems.SourcePort20260921", "ErdosProblems.Erdos1041.Counterexample.HausdorffLength"]
+
+# The #257 R8 support-class comparison (strict inclusion of the old cover class in the
+# strengthened one, a strengthened host outside both the old and the weighted classes, and the
+# finite-union closures). A default target so CI elaborates these modules on every run.
+[[lean_lib]]
+name = "Erdos257SupportClassComparison"
 
 [[lean_lib]]
 name = "ExternalVerification68ChannelRadius"
@@ -1270,6 +1276,10 @@ globs = ["ExternalVerification249PaperStatementsO.+"]
 [[lean_lib]]
 name = "ExternalVerification1041PaperStatementsAC"
 globs = ["ExternalVerification1041PaperStatementsAC.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1041PaperStatementsAE"
+globs = ["ExternalVerification1041PaperStatementsAE.+"]
 
 [[lean_lib]]
 name = "ExternalVerification243PaperStructuresV"

@@ -43,7 +43,7 @@ theorem exists_repair_in_sqrt_window
         intro hj
         have := ih (by omega)
         have := hinc j (by omega)
-        simpa [Nat.add_assoc] using (show Q K + (j + 1) ≤ Q (K + j + 1) by omega)
+        simpa [Nat.add_assoc] using! (show Q K + (j + 1) ≤ Q (K + j + 1) by omega)
   have hlow : (T : ℝ) ≤ (Q (K + T) : ℝ) := by
     exact_mod_cast (show T ≤ Q (K + T) by have := hgrow T le_rfl; omega)
   have hk : K < (s + 1) * (s + 1) := by
@@ -85,7 +85,7 @@ theorem fourNinthsGreedyDefect_le_sqrt_of_mem
   have hfloor : (fourNinthsBinaryFloor N : ℝ) ≤ (2 : ℝ) ^ N * (4 / 9 : ℝ) := by
     have h : 9 * fourNinthsBinaryFloor N ≤ 4 * 2 ^ N := by
       have hd := Nat.div_mul_le_self (4 * 2 ^ N) 9
-      simpa [fourNinthsBinaryFloor, Nat.mul_comm] using hd
+      simpa [fourNinthsBinaryFloor, Nat.mul_comm] using! hd
     have hR : (9 : ℝ) * (fourNinthsBinaryFloor N : ℝ) ≤ 4 * (2 : ℝ) ^ N := by
       exact_mod_cast h
     linarith

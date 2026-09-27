@@ -1,0 +1,76 @@
+{
+  "checked_at": "2026-09-23T20:37:09Z",
+  "diagnostics": [
+    {
+      "code": "toolchain.unsupported",
+      "explanation": "Lean toolchain leanprover/lean4:v4.30.0 is older than the minimum Palomar supports (v4.35.0-rc2)",
+      "next_action": "Update the repository, commit the correction, then make a new submission using the new commit SHA.",
+      "owner": "submitter",
+      "repairable": false,
+      "retryable": false,
+      "stage": "toolchain",
+      "summary": "Lean toolchain leanprover/lean4:v4.30.0 is older than the minimum Palomar supports (v4.35.0-rc2)"
+    }
+  ],
+  "diagnostics_schema_version": 1,
+  "errors": [
+    "Lean toolchain leanprover/lean4:v4.30.0 is older than the minimum Palomar supports (v4.35.0-rc2)"
+  ],
+  "existing_id": null,
+  "formalization_profile_version": 4,
+  "license": {
+    "declared_identifier": "Apache-2.0",
+    "detected_identifier": "Apache-2.0",
+    "path": "LICENSE",
+    "sha256": "5f73f0aafc768cc7c7f5da786dc7614296ee891a456faf175ab07456d3c35046"
+  },
+  "phase": "preparation",
+  "schema_version": 1,
+  "source": {
+    "bytes": 49649483,
+    "commit": "2eb8b00d76450ddcf4b00135f4d1df96747b21cf",
+    "repository": "wcook04/plectis-erdos-lean",
+    "repository_url": "https://github.com/wcook04/plectis-erdos-lean",
+    "tree_url": "https://github.com/wcook04/plectis-erdos-lean/tree/2eb8b00d76450ddcf4b00135f4d1df96747b21cf"
+  },
+  "stage": "preflight",
+  "status": "fail",
+  "submission": {
+    "authorization": {
+      "relationship": "maintainer"
+    },
+    "requested_paths": {
+      "comparator_config_path": "PalomarCorpus/E257_01/comparator.json",
+      "formalization_metadata_path": "PalomarCorpus/E257_01/formalization.yaml",
+      "project_path": ""
+    },
+    "submission_id": "bd09ac624c46"
+  },
+  "verification_profile": {
+    "id": "palomar-standard-v1",
+    "limits": {
+      "execution_budget_seconds": 19800,
+      "file_size_max_bytes": 1099511627776,
+      "job_timeout_minutes": 350,
+      "memory_high_percent": 95,
+      "memory_max_percent": 98,
+      "minimum_host_memory_bytes": 15032385536,
+      "minimum_workspace_free_bytes": 21474836480,
+      "open_files_max": 1048576,
+      "tasks_max": 32768
+    },
+    "runner": {
+      "architecture": "x86_64",
+      "label": "ubuntu-24.04",
+      "provider": "github-hosted"
+    },
+    "sha256": "94fcd7906a1b6c076c0036d742e1c5add8625e49bb474818ec8924576dbf0caa",
+    "trusted_tools": {
+      "bwrap_source_tag": "v0.12.0",
+      "toolchain_floor": "v4.35.0-rc2"
+    }
+  },
+  "warnings": [],
+  "workflow_url": "https://github.com/wcook04/plectis-erdos-lean/actions/runs/35917059793",
+  "execution_profile": "palomar-standard-v1"
+}

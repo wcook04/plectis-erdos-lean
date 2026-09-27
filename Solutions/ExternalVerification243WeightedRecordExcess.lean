@@ -48,15 +48,18 @@ theorem weighted_record_excess (a : ℕ → ℕ) (ha : StrictMono a)
     ∃ B : ℕ, Summable (fun n : ℕ =>
       if (∀ j ≤ n, U a p q j < U a p q (n+1)) then
         (((-V a p q n - B).toNat : ℕ) : ℝ) * f (U a p q n) else 0)
-  simpa only [U, V, C, hM, hL,
-    ErdosProblems.Erdos243.PaperCompleteR8.canonicalLcmOrbit,
-    ErdosProblems.Erdos243.PaperCompleteR8.Record,
-    ErdosProblems.Erdos243.lcmLiftedNumerator,
-    ErdosProblems.Erdos243.lcmLiftedDigit,
-    ErdosProblems.Erdos243.PaperCompleteR7.canonicalNaturalNumerator,
-    ErdosProblems.Erdos243.PaperCompleteR7.clearedIntegerNumerator,
-    ErdosProblems.Erdos243.PaperCompleteR7.prefixProduct,
-    ErdosProblems.Erdos243.sylvesterNext] using h
+  -- The source and statement use different `Decidable` instances for the
+  -- record predicate. Split the pointwise cases before reflexivity.
+  simp only [U, V, C, hM, hL,
+      ErdosProblems.Erdos243.PaperCompleteR8.canonicalLcmOrbit,
+      ErdosProblems.Erdos243.PaperCompleteR8.Record,
+      ErdosProblems.Erdos243.lcmLiftedNumerator,
+      ErdosProblems.Erdos243.lcmLiftedDigit,
+      ErdosProblems.Erdos243.PaperCompleteR7.canonicalNaturalNumerator,
+      ErdosProblems.Erdos243.PaperCompleteR7.clearedIntegerNumerator,
+      ErdosProblems.Erdos243.PaperCompleteR7.prefixProduct,
+      ErdosProblems.Erdos243.sylvesterNext] at h ⊢
+  convert h <;> split_ifs <;> rfl
 
 noncomputable def growthWeight (a : ℕ → ℕ) (p : ℤ) (q B : ℕ)
     (f : ℝ → ℝ) (n : ℕ) : ℝ := by
@@ -94,15 +97,18 @@ theorem weighted_growth_record_excess (a : ℕ → ℕ) (ha : StrictMono a)
         (U a p q n : ℝ) * f (U a p q n) *
           max ((a n : ℝ)^2 / (a (n+1) : ℝ) - 1 - (B : ℝ) / U a p q n) 0
       else 0)
-  simpa only [U, V, C, hM, hL,
-    ErdosProblems.Erdos243.PaperCompleteR8.canonicalLcmOrbit,
-    ErdosProblems.Erdos243.PaperCompleteR8.Record,
-    ErdosProblems.Erdos243.lcmLiftedNumerator,
-    ErdosProblems.Erdos243.lcmLiftedDigit,
-    ErdosProblems.Erdos243.PaperCompleteR7.canonicalNaturalNumerator,
-    ErdosProblems.Erdos243.PaperCompleteR7.clearedIntegerNumerator,
-    ErdosProblems.Erdos243.PaperCompleteR7.prefixProduct,
-    ErdosProblems.Erdos243.sylvesterNext] using h
+  -- The source and statement use different `Decidable` instances for the
+  -- record predicate. Split the pointwise cases before reflexivity.
+  simp only [U, V, C, hM, hL,
+      ErdosProblems.Erdos243.PaperCompleteR8.canonicalLcmOrbit,
+      ErdosProblems.Erdos243.PaperCompleteR8.Record,
+      ErdosProblems.Erdos243.lcmLiftedNumerator,
+      ErdosProblems.Erdos243.lcmLiftedDigit,
+      ErdosProblems.Erdos243.PaperCompleteR7.canonicalNaturalNumerator,
+      ErdosProblems.Erdos243.PaperCompleteR7.clearedIntegerNumerator,
+      ErdosProblems.Erdos243.PaperCompleteR7.prefixProduct,
+      ErdosProblems.Erdos243.sylvesterNext] at h ⊢
+  convert h <;> split_ifs <;> rfl
 
 end
 end Erdos249257.ExternalVerification243WeightedRecordExcess

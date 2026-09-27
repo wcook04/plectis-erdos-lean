@@ -627,7 +627,7 @@ theorem middleLandingSignedExcess_eq_four_floorZ_add_nextFloorError
   have hnext :
       seamWordFloorError (K.below.extend false) =
         4 * seamGreedyFloorError s - (K.belowPulse : ℚ) := by
-    simpa [K, seamAdjacentCut, seamGreedyFloorError] using
+    simpa [K, seamAdjacentCut, seamGreedyFloorError] using!
       seamWordFloorError_extend_false
         (by omega : 3 ≤ s) (seamGreedyWord s)
   change
@@ -3752,7 +3752,9 @@ theorem seamRightRunCharge_lt_row_mul_four_pow
       (seamPerturbedFamily (d + j + 1) (by omega)).pulse_le
         (seamAdjacentCut (d + j + 1) (by omega)).below
     have hp' : pulse j ≤ 2 * (d + j + 1 - 2) := by
-      simpa [pulse] using hp
+      first
+        | exact hp
+        | simpa [pulse] using! hp
     omega
   have hcharge :=
     three_mul_affineRightRunCharge_add_two_mul_le pulse (d + k) k hpulse

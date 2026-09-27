@@ -130,7 +130,7 @@ theorem summable_shellSigma_kernel235 :
   constructor
   · intro a
     exact (hasSum_fintype _).summable
-  · simpa only [tsum_exponentKernel235_shell] using summable_dyadicShellMassR235
+  · simpa only [tsum_exponentKernel235_shell] using! summable_dyadicShellMassR235
 
 theorem summable_exponentKernel235 : Summable exponentKernel235 := by
   exact shellExponentEquiv235.summable_iff.mp summable_shellSigma_kernel235
@@ -200,7 +200,7 @@ theorem long_actual_orbit :
         ∑' n : ℕ, (dyadicOrderedBlockDigit235 (a + n) : ℝ) /
           ∏ j ∈ Finset.range (n + 1), (dyadicBlockBase235 (a + j) : ℝ)) := by
   refine ⟨summable_dyadicShellMassR235, ?_, ?_⟩
-  · simpa [dyadicShellTsumTailR235] using paperSeries235_eq_shellTsum
+  · simpa [dyadicShellTsumTailR235] using! paperSeries235_eq_shellTsum
   · intro a
     exact ⟨orderedDigit235_pos a,
       (half_threePrimeHeight_mul_dyadicShellMassR235 a).symm,

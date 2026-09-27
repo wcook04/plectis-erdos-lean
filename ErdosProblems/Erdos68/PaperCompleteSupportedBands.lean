@@ -33,7 +33,7 @@ theorem supported_quotient_band (f : ℕ →₀ ℤ) (d k : ℕ)
   have h := _root_.Erdos68.channel_coefficient_band (hlo n hn) (hhi n hn)
   have hc : (n.factorial : ℤ) = (d.factorial : ℤ) ^ k * (channelWeight n d : ℤ) := by
     have hz := congrArg (fun a : ℕ => (a : ℤ)) h.symm
-    simpa only [channelWeight, Nat.cast_mul, Nat.cast_pow] using hz
+    simpa only [channelWeight, Nat.cast_mul, Nat.cast_pow] using! hz
   show f n * (n.factorial : ℤ) =
       (d.factorial : ℤ) ^ k * (f n * (channelWeight n d : ℤ))
   rw [hc]
@@ -44,8 +44,8 @@ theorem supported_first_band_cancellation (f : ℕ →₀ ℤ) (d : ℕ)
     (hhi : ∀ n ∈ f.support, n < 2 * d)
     (hz : channelNumerator f d = 0) : factorialMoment f = 0 := by
   have h := supported_quotient_band f d 1
-    (by simpa using hlo) (by simpa using hhi)
-  simpa [hz] using h
+    (by simpa using! hlo) (by simpa using! hhi)
+  simpa [hz] using! h
 
 /-- The witness is an actually supported index, not an unused list entry. -/
 theorem supported_breakpoint_escape (f : ℕ →₀ ℤ) (d : ℕ)

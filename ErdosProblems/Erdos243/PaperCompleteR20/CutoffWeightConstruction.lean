@@ -86,7 +86,7 @@ theorem weighted_cutoffWeight_le_of_prefixMass
   calc
     cutoffPrefixMass u w (X k) * (X k : ℝ≥0∞)⁻¹ ≤
         (b k * (X k : ℝ≥0∞)) * (X k : ℝ≥0∞)⁻¹ :=
-      mul_le_mul_right' (hmass k) _
+      mul_le_mul_left (hmass k) _
     _ = b k := by
       rw [mul_assoc, ENNReal.mul_inv_cancel]
       · simp

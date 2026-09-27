@@ -357,7 +357,7 @@ theorem localPrefixQuotient_evenHalfCutoffCoreSupport_add_remainder
   let C := 2 ^ (2 * R - 1) - 1
   let bits := integerGreedyBits weights C
   have hlen : bits.length = R - 2 := by
-    simpa [bits, weights] using integerGreedyBits_length weights C
+    simpa [bits, weights, Nat.sub_sub] using integerGreedyBits_length weights C
   have hlen' : bits.length = (R - 1) + 1 - 2 := by omega
   have hdecode :=
     localPrefixQuotient_lowerSupportFromBits
@@ -777,7 +777,7 @@ theorem integerGreedyRemainder_full_eq_zero_of_lowerWindow
   · omega
   · exact hhalf
   · omega
-  · simpa [lowerBinaryWindow] using hwindow
+  · simpa [lowerBinaryWindow, localMersenneWeights] using hwindow
 
 /-- A zero full-word greedy remainder is not merely an arithmetic
 certificate: its selected bits decode to an exact finite half row. -/
@@ -840,7 +840,7 @@ theorem exists_exactFullMersenneHalfRowSupport_of_halfCutoffWindow
   · omega
   · omega
   · omega
-  · simpa [lowerBinaryWindow] using hwindow
+  · simpa [lowerBinaryWindow, localMersenneWeights] using hwindow
 
 /-- Even endpoints `M = 2R-1` have separation window `2^(R-1)`. -/
 theorem localMersenneWeights_gapDominates_even

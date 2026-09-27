@@ -30,7 +30,7 @@ theorem constant_div_scale (C : ℝ) :
 theorem polylog_div_log_tendsto {ε : ℝ} (hε : 0 < ε) (hε1 : ε < 1) :
     Tendsto (fun n => polylog ε n / Real.log (n : ℝ)) atTop (𝓝 0) := by
   have hp : Tendsto (fun n : ℕ => Real.log (n : ℝ) ^ (ε - 1)) atTop (𝓝 0) := by
-    simpa only [neg_sub] using
+    simpa only [neg_sub, Function.comp_def] using!
       (tendsto_rpow_neg_atTop (show 0 < 1 - ε by linarith)).comp log_nat_tendsto
   have hu : Tendsto (fun n : ℕ => (2 : ℝ) ^ ε * Real.log (n : ℝ) ^ (ε - 1)) atTop (𝓝 0) := by
     simpa only [mul_zero] using hp.const_mul ((2 : ℝ) ^ ε)

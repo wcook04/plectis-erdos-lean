@@ -37,7 +37,7 @@ theorem periodic_coefficients_zero_eventually
   have hw' : ∀ i n, ww i (n + Q) = ww i n := by
     intro i n
     dsimp [ww]
-    simpa only [Nat.add_assoc, Nat.add_left_comm, Nat.add_comm] using
+    simpa only [Nat.add_assoc, Nat.add_left_comm, Nat.add_comm] using!
       hw i (n + N₀)
   have hrel' : ∀ n,
       ∑ i, ww i n * (Nat.totient (a i * n + bb i) : ℚ) = 0 := by
@@ -47,7 +47,7 @@ theorem periodic_coefficients_zero_eventually
       intro i
       dsimp [bb]
       ring
-    simpa only [hind, ww] using h
+    simpa only [hind, ww] using! h
   have hz := PeriodicTotientIndependence.periodic_coefficients_zero
     a bb ha hcross' Q hQ ww hw' hrel'
   intro i n

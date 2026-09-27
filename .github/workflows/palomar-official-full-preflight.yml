@@ -1,0 +1,178 @@
+# One selected candidate per run. Branch pushes check E257_01; a tag under
+# palomar-preflight-v1/<entry>/<full-source-sha> checks one tag-enabled entry.
+# This calls Palomar's complete reusable verifier; the report is predictive
+# and carries no registry submission or registration state.
+name: Palomar official full preflight
+
+on:
+  # A new workflow is runnable on this release branch before it reaches main.
+  # The selector names one automatic branch-push entry, E257_01. Tag pushes
+  # select one separately gated entry at the exact tagged source commit.
+  push:
+    branches: [codex/palomar-paper-release-v1]
+    tags: ['palomar-preflight-v1/**']
+    paths:
+      - .github/workflows/palomar-official-full-preflight.yml
+      - .github/palomar-release-selection-v1.json
+      - lean-toolchain
+      - lakefile.toml
+      - lake-manifest.json
+      - '**/*.lean'
+      - PalomarCorpus/E257_01/comparator.json
+      - PalomarCorpus/E257_01/formalization.yaml
+  workflow_dispatch:
+    inputs:
+      entry:
+        description: One enabled release entry
+        required: true
+        type: choice
+        options:
+          - E257_01
+          - E249_29
+          - E243_01
+          - E251_01
+          - E269_02
+          - E1049_01
+          - E68_05
+          - E1041_01
+      source_commit:
+        description: Full candidate SHA; must equal the selected workflow ref
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  select:
+    runs-on: ubuntu-24.04
+    outputs:
+      source_commit: ${{ steps.validate.outputs.source_commit }}
+      request_id: ${{ steps.validate.outputs.request_id }}
+      options: ${{ steps.validate.outputs.options }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Validate exact candidate and one selected entry
+        id: validate
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          EVENT_REF: ${{ github.ref }}
+          EVENT_SHA: ${{ github.sha }}
+          SOURCE_COMMIT_INPUT: ${{ inputs.source_commit }}
+          ENTRY_INPUT: ${{ inputs.entry }}
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          python3 - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+          import re
+          import subprocess
+
+          source = os.environ["EVENT_SHA"] if os.environ["EVENT_NAME"] == "push" else os.environ["SOURCE_COMMIT_INPUT"]
+          if not re.fullmatch(r"[0-9a-f]{40}", source):
+              raise SystemExit("source_commit must be a full lowercase SHA")
+          if source != os.environ["EVENT_SHA"] or source != subprocess.check_output(
+              ["git", "rev-parse", "HEAD"], text=True
+          ).strip():
+              raise SystemExit("source_commit must equal the checked-out workflow ref")
+
+          selection = json.loads(Path(".github/palomar-release-selection-v1.json").read_text())
+          event_name = os.environ["EVENT_NAME"]
+          event_ref = os.environ["EVENT_REF"]
+          tag_push = event_name == "push" and event_ref.startswith("refs/tags/")
+          if tag_push:
+              tag = re.fullmatch(
+                  r"refs/tags/palomar-preflight-v1/(E[0-9]+_[0-9]{2})/([0-9a-f]{40})",
+                  event_ref,
+              )
+              if tag is None or tag.group(2) != source:
+                  raise SystemExit("tag must name one entry and the exact candidate full SHA")
+              entry = tag.group(1)
+          elif event_name == "push":
+              if event_ref != "refs/heads/codex/palomar-paper-release-v1":
+                  raise SystemExit("unexpected branch push ref")
+              entry = selection.get("push_preflight_entry")
+          elif event_name == "workflow_dispatch":
+              entry = os.environ["ENTRY_INPUT"]
+          else:
+              raise SystemExit("unsupported preflight trigger")
+          expected_entries = (
+              "E257_01", "E249_29", "E243_01", "E251_01", "E269_02",
+              "E1049_01", "E68_05", "E1041_01",
+          )
+          if selection.get("schema") != "palomar_finite_release_selection_v1" or selection.get("release") != "paper-release-v1":
+              raise SystemExit("release selection identity changed")
+          if selection.get("repository") != "wcook04/plectis-erdos-lean" or os.environ["REPOSITORY"] != selection["repository"]:
+              raise SystemExit("release repository changed")
+          if selection.get("source_commit_binding") != "workflow_ref_equals_candidate_full_sha":
+              raise SystemExit("release selection lost its exact-commit binding")
+          if selection.get("pipeline") != {
+              "repository": "PalomarRegistry/PalomarSubmission",
+              "workflow_path": ".github/workflows/submission.yml",
+              "commit": "1703d7babd984ccc3831cdf89c28221abe34808f",
+              "mode": "full",
+              "execution_profile": "palomar-standard-v1",
+          }:
+              raise SystemExit("release selection and pinned official pipeline differ")
+          rows = selection.get("entries")
+          if not isinstance(rows, list) or len(rows) != 8 or not all(isinstance(row, dict) for row in rows) or tuple(row.get("entry") for row in rows) != expected_entries:
+              raise SystemExit("release selection must contain the exact eight-entry slate")
+          for row in rows:
+              if set(row) != {"entry", "comparator_config_path", "metadata_path", "preflight_enabled", "tag_preflight_enabled"}:
+                  raise SystemExit(f"release entry has unexpected fields: {row['entry']}")
+              name = row["entry"]
+              if row.get("comparator_config_path") != f"PalomarCorpus/{name}/comparator.json":
+                  raise SystemExit(f"Comparator path mismatch for {name}")
+              if row.get("metadata_path") != f"PalomarCorpus/{name}/formalization.yaml":
+                  raise SystemExit(f"metadata path mismatch for {name}")
+              for key in ("comparator_config_path", "metadata_path"):
+                  path = Path(row[key])
+                  if path.is_symlink() or not path.is_file():
+                      raise SystemExit(f"missing or symlinked {key}: {path}")
+              if type(row.get("preflight_enabled")) is not bool:
+                  raise SystemExit(f"preflight gate missing for {name}")
+              if type(row.get("tag_preflight_enabled")) is not bool:
+                  raise SystemExit(f"tag preflight gate missing for {name}")
+          enabled = [row["entry"] for row in rows if row["preflight_enabled"]]
+          if enabled != [selection.get("push_preflight_entry")]:
+              raise SystemExit("exactly the selected push entry must be enabled")
+          selected = next((row for row in rows if row["entry"] == entry), None)
+          if selected is None:
+              raise SystemExit(f"unknown preflight entry: {entry}")
+          if tag_push and not selected["tag_preflight_enabled"]:
+              raise SystemExit(f"tag preflight is not enabled for {entry}")
+          if not tag_push and not selected["preflight_enabled"]:
+              raise SystemExit(f"preflight is not enabled for {entry}")
+          options = {
+              "authorization_relationship": "I am a responsible author or maintainer",
+              "project_path": "",
+              "comparator_config_path": selected["comparator_config_path"],
+              "formalization_metadata_path": selected["metadata_path"],
+          }
+          request_id = hashlib.sha256(
+              f"{entry}:{source}:{os.environ['RUN_ID']}:{os.environ['RUN_ATTEMPT']}".encode()
+          ).hexdigest()[:12]
+          with open(os.environ["GITHUB_OUTPUT"], "a") as output:
+              output.write(f"source_commit={source}\n")
+              output.write(f"request_id={request_id}\n")
+              output.write(f"options={json.dumps(options, separators=(',', ':'))}\n")
+          print(f"Selected {entry} at {source}; official full report request {request_id}")
+          PY
+
+  verify:
+    needs: select
+    uses: PalomarRegistry/PalomarSubmission/.github/workflows/submission.yml@1703d7babd984ccc3831cdf89c28221abe34808f
+    with:
+      repository: wcook04/plectis-erdos-lean
+      commit: ${{ needs.select.outputs.source_commit }}
+      pipeline_commit: 1703d7babd984ccc3831cdf89c28221abe34808f
+      request_id: ${{ needs.select.outputs.request_id }}
+      mode: full
+      execution_profile: palomar-standard-v1
+      options: ${{ needs.select.outputs.options }}

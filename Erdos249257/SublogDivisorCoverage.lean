@@ -115,10 +115,8 @@ theorem card_divisors_pow_le_divisorSubpowerConst_pow_mul
           (if p < 2 ^ k then k ^ k else 1) *
             p ^ n.factorization p) := by
       apply Finset.prod_le_prod
-      · intro p hp
-        exact Nat.zero_le _
-      · intro p hp
-        exact factorization_add_one_pow_le_penalty_mul n p k hk hp
+      intro p hp
+      exact factorization_add_one_pow_le_penalty_mul n p k hk hp
     _ =
         n.primeFactors.prod (fun p => if p < 2 ^ k then k ^ k else 1) *
           n.primeFactors.prod (fun p => p ^ n.factorization p) := by
@@ -128,7 +126,7 @@ theorem card_divisors_pow_le_divisorSubpowerConst_pow_mul
       congr 1
       · rw [← Finset.prod_filter]
         simp
-      · simpa [← Nat.support_factorization] using
+      · simpa [Finsupp.prod] using
           (Nat.prod_factorization_pow_eq_self hn0)
     _ ≤ (k ^ k) ^ (2 ^ k) * n := by
       apply Nat.mul_le_mul_right

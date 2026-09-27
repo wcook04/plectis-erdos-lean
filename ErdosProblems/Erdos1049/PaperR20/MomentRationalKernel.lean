@@ -34,7 +34,7 @@ theorem actualMomentTerm_eq_rationalKernel (q : ℝ) (m t : ℕ) :
     simp only [qPochhammerFinite, pow_succ']
   have hnum : qPochhammerFinite (q ^ (t + 1)) q m =
       ∏ j ∈ Finset.range m, (1 - q ^ (j + 1) * q ^ t) := by
-    simpa only [Nat.add_comm 1 t, Nat.add_comm 1] using
+    simpa only [Nat.add_comm 1 t, Nat.add_comm 1] using!
       qPochhammerFinite_kernel q 1 t m
   have hden : qPochhammerFinite (q ^ (m + t + 1)) q (m + 1) =
       ∏ j ∈ Finset.range (m + 1), (1 - q ^ (m + 1 + j) * q ^ t) := by

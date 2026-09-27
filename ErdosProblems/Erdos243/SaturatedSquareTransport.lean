@@ -310,7 +310,7 @@ theorem legendre_defect_forces_nonsquare_content
   apply hnr
   have hsq := isSquare_content_defect_mod_prime hdvd hpu
   rw [hb] at hsq
-  simpa using hsq
+  simpa using! hsq
 
 /-- Sharper Legendre form over a prime modulus: if `b` is a nonzero square in
 `ZMod p` then so is `e * e'`.  Contrapositive: a non-residue `e * e'` forces

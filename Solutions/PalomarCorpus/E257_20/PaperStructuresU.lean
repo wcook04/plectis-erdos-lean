@@ -38,7 +38,11 @@ theorem IsStraddlePrefix.half_step_forced {u : Finset ℕ} {d : ℕ}
             < 1 / 2 ∧
           (1 / 2 : ℝ) < positiveMersenneSupportValue (↑u : Set ℕ)
             + mersenneWeight (d + 1)) := by
-  simpa only [IsStraddlePrefix_transport_bridge] using @Erdos249257.IsStraddlePrefix.half_step_forced u d (IsStraddlePrefix_transport_bridge.mp hu)
+  have h := @Erdos249257.IsStraddlePrefix.half_step_forced u d
+    (IsStraddlePrefix_transport_bridge.mp hu)
+  first
+  | (simpa only [IsStraddlePrefix_transport_bridge] using h; done)
+  | (simp only [IsStraddlePrefix_transport_bridge]; exact h)
 
 theorem isStraddlePrefix_step_trichotomy {t : ℝ} {u : Finset ℕ} {d : ℕ}
     (hu : IsStraddlePrefix t u d) :
@@ -47,6 +51,10 @@ theorem isStraddlePrefix_step_trichotomy {t : ℝ} {u : Finset ℕ} {d : ℕ}
         (positiveMersenneSupportValue (↑u : Set ℕ) + mersenneTail (d + 1) < t ∧
           t < positiveMersenneSupportValue (↑u : Set ℕ)
               + mersenneWeight (d + 1)) := by
-  simpa only [IsStraddlePrefix_transport_bridge] using @Erdos249257.isStraddlePrefix_step_trichotomy t u d (IsStraddlePrefix_transport_bridge.mp hu)
+  have h := @Erdos249257.isStraddlePrefix_step_trichotomy t u d
+    (IsStraddlePrefix_transport_bridge.mp hu)
+  first
+  | (simpa only [IsStraddlePrefix_transport_bridge] using h; done)
+  | (simp only [IsStraddlePrefix_transport_bridge]; exact h)
 
 end PalomarCorpus.E257.PaperStructuresU

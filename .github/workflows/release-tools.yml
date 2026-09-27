@@ -23,6 +23,8 @@ jobs:
         # write byte-identical result files for the same entry, which is the only reason
         # the sharded replay may be trusted to say what per-entry jobs said.
         run: python3 scripts/test_palomar_replay_shard.py
+      - name: Test Release Gate population reconciliation
+        run: python3 scripts/test_release_gate_coverage.py
       - name: Build the declared release manifest
         run: >-
           python3 scripts/build_release_manifest.py

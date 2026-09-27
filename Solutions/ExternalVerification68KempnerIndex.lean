@@ -51,7 +51,7 @@ theorem rational_denominator_not_dvd_pred_factorial_of_nonunit_carry
     Erdos68.factorialGapSeries, Erdos68.factorialGapTail, Erdos68.factorialGapTailTerm,
     ErdosProblems.Erdos68.factorialGapPrefix, ErdosProblems.Erdos68.strictFacTop,
     ErdosProblems.Erdos68.factorialGapPredecessorGap,
-    ErdosProblems.Erdos68.factorialGapStepCarry] using
+    ErdosProblems.Erdos68.factorialGapStepCarry] using!
     ErdosProblems.Erdos68.rational_denominator_not_dvd_pred_factorial_of_nonunit_carry
       hm hmiss hq hseries
 
@@ -67,7 +67,7 @@ theorem rational_denominator_not_dvd_fiftynine_factorial
     Erdos68.factorialGapSeries, Erdos68.factorialGapTail, Erdos68.factorialGapTailTerm,
     ErdosProblems.Erdos68.factorialGapPrefix, ErdosProblems.Erdos68.strictFacTop,
     ErdosProblems.Erdos68.factorialGapPredecessorGap,
-    ErdosProblems.Erdos68.factorialGapStepCarry] using
+    ErdosProblems.Erdos68.factorialGapStepCarry] using!
     ErdosProblems.Erdos68.rational_denominator_not_dvd_fiftynine_factorial
       hq hseries
 

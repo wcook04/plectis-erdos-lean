@@ -15,6 +15,9 @@ export PalomarCorpus.E257_49.Shared (erdosSupportSeries)
 
 noncomputable section
 
+private theorem carryQuotient_eq_source (q : ℕ) (U : ℕ → ℤ) :
+    carryQuotient q U = Erdos257PeriodNoncollapse.carryQuotient q U := rfl
+
 private noncomputable def toSourceCertificate
     {p : ℤ} {q : ℕ} {U : ℕ → ℤ}
     (cert : BooleanMobiusCarryCertificate p q U) :
@@ -25,9 +28,11 @@ private noncomputable def toSourceCertificate
   divisible := cert.divisible
   mobiusBoolean := by
     intro n hn
-    simpa [carryQuotientAF, carryQuotient,
-      Erdos257PeriodNoncollapse.carryQuotientAF,
-      Erdos257PeriodNoncollapse.carryQuotient] using cert.mobiusBoolean n hn
+    first
+    | exact cert.mobiusBoolean n hn
+    | simpa [carryQuotientAF, carryQuotient, carryQuotient_eq_source,
+        Erdos257PeriodNoncollapse.carryQuotientAF,
+        Erdos257PeriodNoncollapse.carryQuotient] using cert.mobiusBoolean n hn
 
 private noncomputable def ofSourceCertificate
     {p : ℤ} {q : ℕ} {U : ℕ → ℤ}
@@ -39,9 +44,11 @@ private noncomputable def ofSourceCertificate
   divisible := cert.divisible
   mobiusBoolean := by
     intro n hn
-    simpa [carryQuotientAF, carryQuotient,
-      Erdos257PeriodNoncollapse.carryQuotientAF,
-      Erdos257PeriodNoncollapse.carryQuotient] using cert.mobiusBoolean n hn
+    first
+    | exact cert.mobiusBoolean n hn
+    | simpa [carryQuotientAF, carryQuotient, carryQuotient_eq_source,
+        Erdos257PeriodNoncollapse.carryQuotientAF,
+        Erdos257PeriodNoncollapse.carryQuotient] using cert.mobiusBoolean n hn
 
 theorem exists_booleanMobiusCarry_of_support_fraction
     (A : Set ℕ) (hzero : 0 ∉ A)
@@ -59,22 +66,27 @@ theorem exists_booleanMobiusCarry_of_support_fraction
     Erdos257PeriodNoncollapse.exists_booleanMobiusCarry_of_support_fraction
       A hzero hpos p q hq hvalue'
   refine ⟨U, ofSourceCertificate cert, ?_⟩
-  simpa [carryQuotientAF, carryQuotient,
-    Erdos257PeriodNoncollapse.carryQuotientAF,
-    Erdos257PeriodNoncollapse.carryQuotient] using hreconstruct
+  first
+  | exact hreconstruct
+  | simpa [carryQuotientAF, carryQuotient, carryQuotient_eq_source,
+      Erdos257PeriodNoncollapse.carryQuotientAF,
+      Erdos257PeriodNoncollapse.carryQuotient] using hreconstruct
 
 theorem support_fraction_of_booleanMobiusCarry
     (p : ℤ) (q : ℕ) (hq : 0 < q) (U : ℕ → ℤ)
     (cert : BooleanMobiusCarryCertificate p q U) :
     let A := booleanMobiusSupport (carryQuotientAF q U)
     0 ∉ A ∧ erdosSupportSeries 2 A = (p : ℝ) / (q : ℝ) := by
-  simpa [booleanMobiusSupport, carryQuotientAF, carryQuotient,
-    erdosSupportSeries, Erdos257PeriodNoncollapse.booleanMobiusSupport,
-    Erdos257PeriodNoncollapse.carryQuotientAF,
-    Erdos257PeriodNoncollapse.carryQuotient,
-    Erdos257PeriodNoncollapse.erdosSupportSeries] using
-      Erdos257PeriodNoncollapse.support_fraction_of_booleanMobiusCarry
-        p q hq U (toSourceCertificate cert)
+  first
+  | exact Erdos257PeriodNoncollapse.support_fraction_of_booleanMobiusCarry
+      p q hq U (toSourceCertificate cert)
+  | simpa [booleanMobiusSupport, carryQuotientAF, carryQuotient, carryQuotient_eq_source,
+      erdosSupportSeries, Erdos257PeriodNoncollapse.booleanMobiusSupport,
+      Erdos257PeriodNoncollapse.carryQuotientAF,
+      Erdos257PeriodNoncollapse.carryQuotient,
+      Erdos257PeriodNoncollapse.erdosSupportSeries] using
+        Erdos257PeriodNoncollapse.support_fraction_of_booleanMobiusCarry
+          p q hq U (toSourceCertificate cert)
 
 theorem BooleanMobiusCarryCertificate.reconstructsSupport
     {p : ℤ} {q : ℕ} {U : ℕ → ℤ} (hq : 0 < q)
@@ -86,17 +98,20 @@ theorem BooleanMobiusCarryCertificate.reconstructsSupport
       {n : ℕ |
         (ArithmeticFunction.moebius * carryQuotientAF q U) n = 1} = A ∧
       erdosSupportSeries 2 A = (p : ℝ) / (q : ℝ) := by
-  simpa [booleanMobiusSupport, carryQuotientAF, carryQuotient,
-    supportCoeffAF, supportCoeff, IsTemperedBinaryOrbit,
-    erdosSupportSeries, Erdos257PeriodNoncollapse.booleanMobiusSupport,
-    Erdos257PeriodNoncollapse.carryQuotientAF,
-    Erdos257PeriodNoncollapse.carryQuotient,
-    Erdos257PeriodNoncollapse.supportCoeffAF,
-    Erdos257PeriodNoncollapse.supportCoeff,
-    Erdos257PeriodNoncollapse.IsTemperedBinaryOrbit,
-    Erdos257PeriodNoncollapse.erdosSupportSeries] using
-      Erdos257PeriodNoncollapse.BooleanMobiusCarryCertificate.reconstructsSupport
-        hq (toSourceCertificate cert)
+  first
+  | exact Erdos257PeriodNoncollapse.BooleanMobiusCarryCertificate.reconstructsSupport
+      hq (toSourceCertificate cert)
+  | simpa [booleanMobiusSupport, carryQuotientAF, carryQuotient, carryQuotient_eq_source,
+      supportCoeffAF, supportCoeff, IsTemperedBinaryOrbit,
+      erdosSupportSeries, Erdos257PeriodNoncollapse.booleanMobiusSupport,
+      Erdos257PeriodNoncollapse.carryQuotientAF,
+      Erdos257PeriodNoncollapse.carryQuotient,
+      Erdos257PeriodNoncollapse.supportCoeffAF,
+      Erdos257PeriodNoncollapse.supportCoeff,
+      Erdos257PeriodNoncollapse.IsTemperedBinaryOrbit,
+      Erdos257PeriodNoncollapse.erdosSupportSeries] using
+        Erdos257PeriodNoncollapse.BooleanMobiusCarryCertificate.reconstructsSupport
+          hq (toSourceCertificate cert)
 
 theorem exists_normalized_support_fraction_iff_exists_booleanMobiusCarry
     (p : ℤ) (q : ℕ) (hq : 0 < q) :

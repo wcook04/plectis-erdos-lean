@@ -79,7 +79,7 @@ theorem cofinal_charge_of_no_record_cap (U : ℕ → ℕ) (c : ℝ)
   have hden : 0 < recordLogLog (runningMax U n) :=
     lt_of_lt_of_le zero_lt_one (one_le_recordLogLog _)
   have hh := (div_le_iff₀ hden).mp (le_of_not_gt hnot)
-  simpa only [recordLogLogCharge, runningMax_true_increment] using hh
+  simpa only [recordLogLogCharge, runningMax_true_increment] using! hh
 
 /-- Arbitrarily large common divisors exclude every finite nonnegative cap. -/
 theorem RecordGrowthOrbit.no_finite_cap_of_unbounded_gcd (O : RecordGrowthOrbit)
@@ -101,7 +101,7 @@ theorem RecordGrowthOrbit.no_finite_cap_of_unbounded_gcd (O : RecordGrowthOrbit)
   rintro ⟨T, hcap⟩
   apply no_subcritical_record_cap V.a V.U V.D V.increasing V.a_pos V.U_pos V.D_pos
     V.U_step V.D_step V.lower V.record_bound V.den_bound V.unbounded
-    g (c / g) (div_nonneg hc hgR.le) ((div_lt_iff₀ hgR).mpr (by simpa using hcG))
+    g (c / g) (div_nonneg hc hgR.le) ((div_lt_iff₀ hgR).mpr (by simpa using! hcG))
   exact ⟨T, O.quotient_record_cap s g hg hUg hDg hs c T hcap⟩
 
 /-- The unbounded-gcd branch has Theta = positive infinity, not merely Theta > 1. -/
@@ -148,13 +148,13 @@ theorem RecordGrowthOrbit.no_stable_totient_cap (O : RecordGrowthOrbit)
   have hDTs : O.D T ∣ O.D s := dvd_denState_of_le O.a O.D 0 (O.D T) T
     (fun n _ ↦ O.D_step n) (Nat.zero_le _) (dvd_refl _) s hTs
   have hWold : O.D T / g ∣ V.D 0 := by
-    simpa only [V, RecordGrowthOrbit.quotientAt, Nat.add_zero] using
+    simpa only [V, RecordGrowthOrbit.quotientAt, Nat.add_zero] using!
       quotient_dvd_quotient g (O.D T) (O.D s) hg hDgT hDTs
   have hgR : (0 : ℝ) < g := by exact_mod_cast hg
   have hcdiv : (c / g) * Nat.totient (O.D T / g) < (O.D T / g : ℕ) := by
     rw [div_mul_eq_mul_div]
     apply (div_lt_iff₀ hgR).2
-    simpa only [mul_comm] using hcW
+    simpa only [mul_comm] using! hcW
   rintro ⟨R, hcap⟩
   apply no_primitive_totient_record_cap V.a V.U V.D V.increasing V.a_pos V.U_pos V.D_pos
     V.U_step V.D_step hred V.lower V.record_bound V.den_bound V.unbounded
@@ -194,7 +194,7 @@ theorem RecordGrowthOrbit.late_primitive_denominator_gt_one (O : RecordGrowthOrb
     omega
   have hDN : O.D N ≤ O.D (N + 1) := by
     rw [O.D_step]
-    simpa only [one_mul] using Nat.mul_le_mul_right (O.D N)
+    simpa only [one_mul] using! Nat.mul_le_mul_right (O.D N)
       (show 1 ≤ O.a N by have := O.a_pos N; omega)
   have hDN2 : 2 * g ≤ O.D (N + 2) := by
     rw [show N + 2 = (N + 1) + 1 by omega, O.D_step]

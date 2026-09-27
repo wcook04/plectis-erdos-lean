@@ -506,14 +506,15 @@ lemma sum_range_even {M : Type*} [AddCommMonoid M] (n : ℕ) (h : ℕ → M) :
     · rintro ⟨ha, ⟨f, rfl⟩⟩
       exact ⟨f, by omega, rfl⟩
     · rintro ⟨f, hf, rfl⟩
-      exact ⟨by omega, ⟨f, rfl⟩⟩
+      exact ⟨by show 2 * f < n + 1; omega, ⟨f, rfl⟩⟩
   have h2 : (range (n + 1)).filter (fun f => 2 * f ≤ n) = range (n / 2 + 1) := by
     ext f
     simp only [mem_filter, mem_range]
     omega
   rw [h1, h2, Finset.sum_map]
   refine Finset.sum_congr rfl fun f _ => ?_
-  simp
+  show h (2 * f / 2) = h f
+  rw [Nat.mul_div_cancel_left f (by norm_num)]
 
 /-- `(q^t w^2; q)_∞ / (q^t w; q)_∞ = ∑_j (w;q)_j (q^t w)^j / (q;q)_j`, after Euler's formula:
 the two sides agree coefficient by coefficient. -/
@@ -665,7 +666,7 @@ lemma qD_mul (f g : BW) : qD (f * g) = qD f * g + rescale qq f * qD g := by
         (1 - qq ^ p.1) * coeff p.1 f * coeff p.2 g +
           qq ^ p.1 * coeff p.1 f * ((1 - qq ^ p.2) * coeff p.2 g) := by
     intro p hp
-    rw [mem_antidiagonal] at hp
+    rw [Finset.HasAntidiagonal.mem_antidiagonal] at hp
     rw [← hp, pow_add]
     ring
   rw [Finset.sum_congr rfl hsplit, Finset.sum_add_distrib]
@@ -763,19 +764,19 @@ lemma sum_antidiagonalTuple_succ {M : Type*} [AddCommMonoid M] (k n : ℕ)
     (fun py _ => Fin.cons py.1.1 py.2) ?_ ?_ ?_ ?_ ?_
   · intro x hx
     rw [Finset.Nat.mem_antidiagonalTuple, Fin.sum_univ_succ] at hx
-    simp only [mem_sigma, mem_antidiagonal, Finset.Nat.mem_antidiagonalTuple]
+    simp only [mem_sigma, Finset.HasAntidiagonal.mem_antidiagonal, Finset.Nat.mem_antidiagonalTuple]
     refine ⟨by omega, ?_⟩
     simp only [Fin.tail]
     omega
   · intro py hpy
-    simp only [mem_sigma, mem_antidiagonal, Finset.Nat.mem_antidiagonalTuple] at hpy
+    simp only [mem_sigma, Finset.HasAntidiagonal.mem_antidiagonal, Finset.Nat.mem_antidiagonalTuple] at hpy
     rw [Finset.Nat.mem_antidiagonalTuple, Fin.sum_univ_succ]
     simp only [Fin.cons_zero, Fin.cons_succ]
     omega
   · intro x _
     exact Fin.cons_self_tail x
   · intro py hpy
-    simp only [mem_sigma, mem_antidiagonal] at hpy
+    simp only [mem_sigma, Finset.HasAntidiagonal.mem_antidiagonal] at hpy
     obtain ⟨⟨a, b⟩, y⟩ := py
     simp only at hpy
     have hb : n - a = b := by omega
@@ -940,7 +941,7 @@ lemma toQSeries_rogersPoly3 (k : ℕ) : toQSeries (rogersPoly3 k) = rogersR 3 k 
   refine Finset.sum_congr rfl fun p hp => ?_
   rw [map_sum]
   refine Finset.sum_congr rfl fun q hq => ?_
-  rw [mem_antidiagonal] at hp hq
+  rw [Finset.HasAntidiagonal.mem_antidiagonal] at hp hq
   rw [map_mul, toQSeries_gaussBinom, toQSeries_gaussBinom, gaussBinom_eq (by omega : p.1 ≤ k),
     gaussBinom_eq (by omega : q.1 ≤ p.2), show k - p.1 = p.2 by omega,
     show p.2 - q.1 = q.2 by omega]
@@ -1045,7 +1046,7 @@ lemma rogersPoly3_natDegree (k : ℕ) : (rogersPoly3 k).natDegree = k ^ 2 / 3 :=
       (gaussBinom (Polynomial.X : Polynomial ℤ) k x.1.1 * gaussBinom Polynomial.X x.1.2 x.2.1).natDegree
         = x.1.1 * (x.2.1 + x.2.2) + x.2.1 * x.2.2 := by
     intro x hx
-    simp only [mem_sigma, mem_antidiagonal] at hx
+    simp only [mem_sigma, Finset.HasAntidiagonal.mem_antidiagonal] at hx
     obtain ⟨h1, h2⟩ := hx
     have m1 := ErdosProblems.Erdos1049.PaperR12.gaussian_monic_natDegree k x.1.1 (by omega)
     have m2 := ErdosProblems.Erdos1049.PaperR12.gaussian_monic_natDegree x.1.2 x.2.1 (by omega)
@@ -1054,7 +1055,7 @@ lemma rogersPoly3_natDegree (k : ℕ) : (rogersPoly3 k).natDegree = k ^ 2 / 3 :=
       show x.1.2 - x.2.1 = x.2.2 by omega]
   have hx0 : (⟨(k / 3, k - k / 3), ((k + 1) / 3, k - k / 3 - (k + 1) / 3)⟩ :
       Σ _ : ℕ × ℕ, ℕ × ℕ) ∈ (antidiagonal k).sigma (fun p : ℕ × ℕ => antidiagonal p.2) := by
-    simp only [mem_sigma, mem_antidiagonal]
+    simp only [mem_sigma, Finset.HasAntidiagonal.mem_antidiagonal]
     omega
   refine natDegree_sum_of_nonneg _ (fun x : (Σ _ : ℕ × ℕ, ℕ × ℕ) =>
       gaussBinom Polynomial.X k x.1.1 * gaussBinom Polynomial.X x.1.2 x.2.1) (k ^ 2 / 3)
@@ -1062,7 +1063,7 @@ lemma rogersPoly3_natDegree (k : ℕ) : (rogersPoly3 k).natDegree = k ^ 2 / 3 :=
     ?_ _ hx0 (hmon _ hx0).1 ?_
   · intro x hx
     rw [(hmon x hx).2]
-    simp only [mem_sigma, mem_antidiagonal] at hx
+    simp only [mem_sigma, Finset.HasAntidiagonal.mem_antidiagonal] at hx
     have hk : k = x.1.1 + x.2.1 + x.2.2 := by omega
     rw [hk]
     exact three_mul_le_sq _ _ _

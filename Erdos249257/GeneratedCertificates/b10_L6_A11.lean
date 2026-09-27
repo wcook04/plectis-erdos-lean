@@ -101,7 +101,8 @@ theorem orderOf_b10_mod90909_eq_6_from_emittedCertificate_denNorm :
       apply Units.ext
       change (((ZMod.unitOfCoprime 10 hcop : (ZMod 90909)ˣ) : ZMod 90909) ^ 6) =
         (1 : ZMod 90909)
-      rw [ZMod.coe_unitOfCoprime]
+      rw [ZMod.coe_unitOfCoprime, ← Nat.cast_pow, ← Nat.cast_one,
+        ZMod.natCast_eq_natCast_iff']
       decide
     exact (orderOf_dvd_iff_pow_eq_one).2 hpow_unit
   exact finite_period_noncollapse_from_emitted_certificate_table

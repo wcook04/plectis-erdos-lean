@@ -111,7 +111,7 @@ private theorem reflect_cleared_denominator (m : ℕ) :
       (-1 : BivariatePolynomial) ^ (m + 1) *
         sourceInfinityDenominatorPoly m := by
   simpa [clearedMomentDenominatorPoly, sourceInfinityDenominatorPoly]
-    using reflect_prod_C_sub_X (m + 1) (m + 1)
+    using! reflect_prod_C_sub_X (m + 1) (m + 1)
 
 private theorem natDegree_sourceOuterNumeratorCore_le (m : ℕ) :
     (sourceOuterNumeratorCore m).natDegree ≤ 2 * m + 1 := by
@@ -130,7 +130,7 @@ private theorem natDegree_sourceOuterNumeratorCore_le (m : ℕ) :
 
 private theorem natDegree_cleared_denominator_le (m : ℕ) :
     (clearedMomentDenominatorPoly m).natDegree ≤ m + 1 := by
-  simpa [clearedMomentDenominatorPoly] using
+  simpa [clearedMomentDenominatorPoly] using!
     natDegree_prod_linear_le (m + 1) (m + 1)
 
 private theorem natDegree_source_core_residual_le (m : ℕ) :
@@ -158,7 +158,7 @@ private theorem natDegree_le_of_reflect_X_pow_dvd
     have hz := (Polynomial.X_pow_dvd_iff.mp hdvd) l hl
     rw [coeff_reflect, revAt_le (show l ≤ 2 * m + 1 by dsimp [l]; omega)] at hz
     have hrev : 2 * m + 1 - l = n := by dsimp [l]; omega
-    simpa [hrev] using hz
+    simpa [hrev] using! hz
   · exact coeff_eq_zero_of_natDegree_lt (lt_of_le_of_lt hdeg (Nat.lt_of_not_ge hn))
 
 private theorem reflect_source_core_residual (m : ℕ) :
@@ -312,7 +312,7 @@ theorem sourcePade_partial_fraction_identity (m : ℕ) :
           (fun k => sourceResiduePoly m k.val))
       rw [sub_sub] at this
       exact this.trans (max_le hleft hres)
-    simpa using Nat.lt_succ_of_le hdeg
+    simpa using! Nat.lt_succ_of_le hdeg
 
 #print axioms sourcePade_partial_fraction_identity
 

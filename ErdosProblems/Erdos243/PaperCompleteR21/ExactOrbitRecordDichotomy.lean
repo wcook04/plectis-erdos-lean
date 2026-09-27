@@ -510,7 +510,7 @@ theorem exactOrbit_recordTheta_gt_one
       < ((C (s + n + 1) - runningMax C (s + n) : ℕ) : ℝ) := by
     have h := hgap
     rw [hOfun, hrm n] at h
-    simpa [hC'] using h
+    simpa [hC'] using! h
   have hden : 0 < recordLogLog (runningMax C (s + n)) :=
     lt_of_lt_of_le (by norm_num) (one_le_recordLogLog _)
   unfold recordLogLogCharge

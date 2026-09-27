@@ -42,7 +42,7 @@ theorem factorial_pow_dvd_factorial_mul (d k : ℕ) :
       have hstep : (k * d).factorial * d.factorial ∣
           (k * d + d).factorial :=
         Nat.factorial_mul_factorial_dvd_factorial_add (k * d) d
-      simpa [pow_succ, Nat.succ_mul] using hmul.trans hstep
+      simpa [pow_succ, Nat.succ_mul] using! hmul.trans hstep
 
 /-- On any single quotient band `[kd, (k+1)d)`, the `d`-channel coefficient
 is the factorial coefficient divided by the fixed integer `(d!)^k`. -/
@@ -51,8 +51,8 @@ theorem channel_coefficient_band
     d.factorial ^ k * (i.factorial / d.factorial ^ (i / d)) = i.factorial := by
   have hdiv : i / d = k := by
     apply Nat.div_eq_of_lt_le
-    · simpa [mul_comm] using hlo
-    · simpa [mul_comm] using hhi
+    · simpa [mul_comm] using! hlo
+    · simpa [mul_comm] using! hhi
   rw [hdiv]
   exact Nat.mul_div_cancel'
     ((factorial_pow_dvd_factorial_mul d k).trans
@@ -63,8 +63,8 @@ exactly the factorial coefficient divided by `d!`. -/
 theorem channel_coefficient_firstBand
     {d i : ℕ} (hlo : d ≤ i) (hhi : i < 2 * d) :
     d.factorial * (i.factorial / d.factorial ^ (i / d)) = i.factorial := by
-  simpa using channel_coefficient_band (d := d) (i := i) (k := 1)
-    (by simpa using hlo) (by simpa using hhi)
+  simpa using! channel_coefficient_band (d := d) (i := i) (k := 1)
+    (by simpa using! hlo) (by simpa using! hhi)
 
 /-- If all support indices lie in one quotient band for channel `d`, the
 factorial moment is `(d!)^k` times that channel numerator. -/
@@ -81,7 +81,7 @@ theorem factorialMoment_eq_factorial_pow_mul_channelNumerator_band
   have hcast : ((index j).factorial : ℤ) =
       (d.factorial ^ k : ℤ) *
         ((index j).factorial / d.factorial ^ (index j / d) : ℕ) := by
-    simpa only [Nat.cast_mul, Nat.cast_pow] using
+    simpa only [Nat.cast_mul, Nat.cast_pow] using!
       congrArg (fun n : ℕ => (n : ℤ)) hcoeff.symm
   rw [hcast]
   ac_rfl

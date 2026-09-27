@@ -1,0 +1,1548 @@
+{
+  "build_log_tail": "ner/work/_temp/palomar/source/.lake/packages/mathlib/.lake/build/lib/lean:/home/runner/work/_temp/palomar/source/.lake/build/lib/lean /home/runner/.elan/toolchains/leanprover--lean4---v4.35.0-rc2/bin/lean /home/runner/work/_temp/palomar/source/Erdos249257/CertificateKernel.lean -o /home/runner/work/_temp/palomar/source/.lake/build/lib/lean/Erdos249257/CertificateKernel.olean -i /home/runner/work/_temp/palomar/source/.lake/build/lib/lean/Erdos249257/CertificateKernel.ilean -c /home/runner/work/_temp/palomar/source/.lake/build/ir/Erdos249257/CertificateKernel.c --setup /home/runner/work/_temp/palomar/source/.lake/build/ir/Erdos249257/CertificateKernel.setup.json --json\nwarning: Erdos249257/CertificateKernel.lean:350:2: Try this: \n  letI\u0335\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\nwarning: Erdos249257/CertificateKernel.lean:1424:10: `dif_pos` has been deprecated: Use `dite_eq_left` instead\n\nHint: Replace the deprecated name:\n  d\u0335i\u0335f\u0335_\u0335p\u0335o\u0335s\u0335d\u0332i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332l\u0332e\u0332f\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:1432:10: `dif_pos` has been deprecated: Use `dite_eq_left` instead\n\nHint: Replace the deprecated name:\n  d\u0335i\u0335f\u0335_\u0335p\u0335o\u0335s\u0335d\u0332i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332l\u0332e\u0332f\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:1440:10: `dif_pos` has been deprecated: Use `dite_eq_left` instead\n\nHint: Replace the deprecated name:\n  d\u0335i\u0335f\u0335_\u0335p\u0335o\u0335s\u0335d\u0332i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332l\u0332e\u0332f\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:2360:8: `ENat.coe_inj` has been deprecated: Use `ENat.natCast_inj` instead\n\nHint: Replace the deprecated name:\n  E\u0335N\u0335a\u0335t\u0335.\u0335c\u0335o\u0335e\u0335_\u0335i\u0335n\u0335j\u0335E\u0332N\u0332a\u0332t\u0332.\u0332n\u0332a\u0332t\u0332C\u0332a\u0332s\u0332t\u0332_\u0332i\u0332n\u0332j\u0332\nwarning: Erdos249257/CertificateKernel.lean:2881:2: Try this: \n  letI\u0335\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\nwarning: Erdos249257/CertificateKernel.lean:2907:2: Try this: \n  letI\u0335\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\nerror: Erdos249257/CertificateKernel.lean:4535:10: Type mismatch: After simplification, term\n  nat_dvd_of_semigroup_dvd (Finset.dvd_lcm hn0F)\n has type\n  @Dvd.dvd \u2115 Nat.instDvd (id (S.max' hS_ne)) (F.lcm id)\nbut is expected to have type\n  @Dvd.dvd \u2115 Nat.instDvd (S.max' hS_ne) (F.lcm id)\nerror: Erdos249257/CertificateKernel.lean:4606:10: Type mismatch: After simplification, term\n  nat_dvd_of_semigroup_dvd (Finset.dvd_lcm hmF)\n has type\n  @Dvd.dvd \u2115 Nat.instDvd (id m) (F.lcm id)\nbut is expected to have type\n  @Dvd.dvd \u2115 Nat.instDvd m (F.lcm id)\nerror: Erdos249257/CertificateKernel.lean:4613:10: Type mismatch: After simplification, term\n  nat_dvd_of_semigroup_dvd (Finset.dvd_lcm hmF)\n has type\n  @Dvd.dvd \u2115 Nat.instDvd (id m) (F.lcm id)\nbut is expected to have type\n  @Dvd.dvd \u2115 Nat.instDvd m (F.lcm id)\nerror: Erdos249257/CertificateKernel.lean:4716:14: Type mismatch: After simplification, term\n  nat_dvd_of_semigroup_dvd (Finset.dvd_lcm hmF)\n has type\n  @Dvd.dvd \u2115 Nat.instDvd (id m) (F.lcm id)\nbut is expected to have type\n  @Dvd.dvd \u2115 Nat.instDvd m (F.lcm id)\nwarning: Erdos249257/CertificateKernel.lean:4832:2: Try this: \n  haveI\u0335\n\nThe goal is a proposition, so `have` is preferred over `haveI`.\nThe difference between `have` and `haveI` is that `haveI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\nwarning: Erdos249257/CertificateKernel.lean:4833:2: Try this: \n  haveI\u0335\n\nThe goal is a proposition, so `have` is preferred over `haveI`.\nThe difference between `have` and `haveI` is that `haveI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\nwarning: Erdos249257/CertificateKernel.lean:4866:6: Try this: \n  haveI\u0335\n\nThe goal is a proposition, so `have` is preferred over `haveI`.\nThe difference between `have` and `haveI` is that `haveI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\nwarning: Erdos249257/CertificateKernel.lean:4882:2: Try this: \n  haveI\u0335\n\nThe goal is a proposition, so `have` is preferred over `haveI`.\nThe difference between `have` and `haveI` is that `haveI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\nwarning: Erdos249257/CertificateKernel.lean:4883:2: Try this: \n  haveI\u0335\n\nThe goal is a proposition, so `have` is preferred over `haveI`.\nThe difference between `have` and `haveI` is that `haveI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\nwarning: Erdos249257/CertificateKernel.lean:4989:2: Try this: \n  haveI\u0335\n\nThe goal is a proposition, so `have` is preferred over `haveI`.\nThe difference between `have` and `haveI` is that `haveI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\nwarning: Erdos249257/CertificateKernel.lean:4990:2: Try this: \n  haveI\u0335\n\nThe goal is a proposition, so `have` is preferred over `haveI`.\nThe difference between `have` and `haveI` is that `haveI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\nerror: Erdos249257/CertificateKernel.lean:5165:4: Type mismatch: After simplification, term\n  nat_dvd_of_semigroup_dvd (Finset.dvd_lcm hn)\n has type\n  @Dvd.dvd \u2115 Nat.instDvd (id n) (F.lcm id)\nbut is expected to have type\n  @Dvd.dvd \u2115 Nat.instDvd n (F.lcm id)\nwarning: Erdos249257/CertificateKernel.lean:5279:2: Try this: \n  haveI\u0335\n\nThe goal is a proposition, so `have` is preferred over `haveI`.\nThe difference between `have` and `haveI` is that `haveI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\nerror: Erdos249257/CertificateKernel.lean:5311:4: Type mismatch: After simplification, term\n  nat_dvd_of_semigroup_dvd (Finset.dvd_lcm h2mem)\n has type\n  @Dvd.dvd \u2115 Nat.instDvd (id 2) ((Finset.Icc 1 N).lcm id)\nbut is expected to have type\n  @Dvd.dvd \u2115 Nat.instDvd 2 ((Finset.Icc 1 N).lcm id)\nwarning: Erdos249257/CertificateKernel.lean:5440:45: `simp` already closes the goal\n\nHint: Use `simp` instead of `simpa`:\n  [apply] simp [hnEq]\n\nNote: This linter can be disabled with `set_option linter.unnecessarySimpa false`\nerror: Erdos249257/CertificateKernel.lean:6022:4: Type mismatch: After simplification, term\n  nat_dvd_of_semigroup_dvd (Finset.dvd_lcm hmem)\n has type\n  @Dvd.dvd \u2115 Nat.instDvd (id k.factorial) ((Finset.image (fun i \u21a6 (i + 1).factorial) (Finset.range k)).lcm id)\nbut is expected to have type\n  @Dvd.dvd \u2115 Nat.instDvd k.factorial ((Finset.image (fun i \u21a6 (i + 1).factorial) (Finset.range k)).lcm id)\nerror: Erdos249257/CertificateKernel.lean:6037:4: Type mismatch: After simplification, term\n  nat_dvd_of_semigroup_dvd (Finset.dvd_lcm hmem)\n has type\n  @Dvd.dvd \u2115 Nat.instDvd (id (2 ^ (k - 1))) ((Finset.image (fun i \u21a6 2 ^ i) (Finset.range k)).lcm id)\nbut is expected to have type\n  @Dvd.dvd \u2115 Nat.instDvd (2 ^ (k - 1)) ((Finset.image (fun i \u21a6 2 ^ i) (Finset.range k)).lcm id)\nerror: Erdos249257/CertificateKernel.lean:6294:6: Type mismatch: After simplification, term\n  nat_dvd_of_semigroup_dvd (Finset.dvd_lcm hmem1)\n has type\n  @Dvd.dvd \u2115 Nat.instDvd (id (k - 1)) ((Finset.image (fun i \u21a6 i + 1) (Finset.range k)).lcm id)\nbut is expected to have type\n  @Dvd.dvd \u2115 Nat.instDvd (k - 1) ((Finset.image (fun i \u21a6 i + 1) (Finset.range k)).lcm id)\nerror: Erdos249257/CertificateKernel.lean:6296:6: Type mismatch: After simplification, term\n  nat_dvd_of_semigroup_dvd (Finset.dvd_lcm hmem2)\n has type\n  @Dvd.dvd \u2115 Nat.instDvd (id k) ((Finset.image (fun i \u21a6 i + 1) (Finset.range k)).lcm id)\nbut is expected to have type\n  @Dvd.dvd \u2115 Nat.instDvd k ((Finset.image (fun i \u21a6 i + 1) (Finset.range k)).lcm id)\nwarning: Erdos249257/CertificateKernel.lean:7782:14: `if_pos` has been deprecated: Use `ite_eq_left` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335p\u0335o\u0335s\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332l\u0332e\u0332f\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:7783:14: `if_neg` has been deprecated: Use `ite_eq_right` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335n\u0335e\u0335g\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332r\u0332i\u0332g\u0332h\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:7789:14: `if_pos` has been deprecated: Use `ite_eq_left` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335p\u0335o\u0335s\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332l\u0332e\u0332f\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:7791:14: `if_neg` has been deprecated: Use `ite_eq_right` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335n\u0335e\u0335g\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332r\u0332i\u0332g\u0332h\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:7797:14: `if_pos` has been deprecated: Use `ite_eq_left` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335p\u0335o\u0335s\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332l\u0332e\u0332f\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:7800:14: `if_neg` has been deprecated: Use `ite_eq_right` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335n\u0335e\u0335g\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332r\u0332i\u0332g\u0332h\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:7806:14: `if_pos` has been deprecated: Use `ite_eq_left` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335p\u0335o\u0335s\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332l\u0332e\u0332f\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:7809:14: `if_neg` has been deprecated: Use `ite_eq_right` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335n\u0335e\u0335g\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332r\u0332i\u0332g\u0332h\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:7820:14: `if_pos` has been deprecated: Use `ite_eq_left` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335p\u0335o\u0335s\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332l\u0332e\u0332f\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:7820:25: `if_neg` has been deprecated: Use `ite_eq_right` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335n\u0335e\u0335g\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332r\u0332i\u0332g\u0332h\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:7825:14: `if_neg` has been deprecated: Use `ite_eq_right` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335n\u0335e\u0335g\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332r\u0332i\u0332g\u0332h\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:7827:16: `if_pos` has been deprecated: Use `ite_eq_left` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335p\u0335o\u0335s\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332l\u0332e\u0332f\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:7832:16: `if_neg` has been deprecated: Use `ite_eq_right` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335n\u0335e\u0335g\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332r\u0332i\u0332g\u0332h\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:9466:8: `if_pos` has been deprecated: Use `ite_eq_left` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335p\u0335o\u0335s\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332l\u0332e\u0332f\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:9469:8: `if_neg` has been deprecated: Use `ite_eq_right` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335n\u0335e\u0335g\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332r\u0332i\u0332g\u0332h\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:9577:10: `Set.mem_diff` has been deprecated: Use `Set.mem_sdiff` instead\n\nHint: Replace the deprecated name:\n  Set.mem_s\u0332diff\nwarning: Erdos249257/CertificateKernel.lean:9577:10: This simp argument is unused:\n  Set.mem_diff\n\nHint: Omit it from the simp argument list.\n  [apply] simp\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: Erdos249257/CertificateKernel.lean:9672:4: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead\n\nHint: Replace the deprecated name:\n  S\u0335e\u0335t\u0335.\u0335m\u0335e\u0335m\u0335_\u0335s\u0335e\u0335t\u0335O\u0335f\u0335_\u0335e\u0335q\u0335S\u0332e\u0332t\u0332.\u0332m\u0332e\u0332m\u0332_\u0332o\u0332f\u0332P\u0332r\u0332e\u0332d\u0332_\u0332e\u0332q\u0332\nwarning: Erdos249257/CertificateKernel.lean:9712:56: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead\n\nHint: Replace the deprecated name:\n  S\u0335e\u0335t\u0335.\u0335m\u0335e\u0335m\u0335_\u0335s\u0335e\u0335t\u0335O\u0335f\u0335_\u0335e\u0335q\u0335S\u0332e\u0332t\u0332.\u0332m\u0332e\u0332m\u0332_\u0332o\u0332f\u0332P\u0332r\u0332e\u0332d\u0332_\u0332e\u0332q\u0332\nwarning: Erdos249257/CertificateKernel.lean:9852:11: `Set.Infinite.diff` has been deprecated: Use `Set.Infinite.sdiff` instead\nwarning: Erdos249257/CertificateKernel.lean:9857:21: `if_pos` has been deprecated: Use `ite_eq_left` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335p\u0335o\u0335s\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332l\u0332e\u0332f\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:9859:14: `Set.mem_diff` has been deprecated: Use `Set.mem_sdiff` instead\n\nHint: Replace the deprecated name:\n  Set.mem_s\u0332diff\nwarning: Erdos249257/CertificateKernel.lean:9863:23: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead\n\nHint: Replace the deprecated name:\n  S\u0335e\u0335t\u0335.\u0335m\u0335e\u0335m\u0335_\u0335s\u0335e\u0335t\u0335O\u0335f\u0335_\u0335e\u0335q\u0335S\u0332e\u0332t\u0332.\u0332m\u0332e\u0332m\u0332_\u0332o\u0332f\u0332P\u0332r\u0332e\u0332d\u0332_\u0332e\u0332q\u0332\nwarning: Erdos249257/CertificateKernel.lean:9865:21: `if_neg` has been deprecated: Use `ite_eq_right` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335n\u0335e\u0335g\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332r\u0332i\u0332g\u0332h\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:9870:21: `if_pos` has been deprecated: Use `ite_eq_left` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335p\u0335o\u0335s\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332l\u0332e\u0332f\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:9873:21: `if_neg` has been deprecated: Use `ite_eq_right` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335n\u0335e\u0335g\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332r\u0332i\u0332g\u0332h\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:9879:19: `if_neg` has been deprecated: Use `ite_eq_right` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335n\u0335e\u0335g\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332r\u0332i\u0332g\u0332h\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:9889:14: `Set.mem_diff` has been deprecated: Use `Set.mem_sdiff` instead\n\nHint: Replace the deprecated name:\n  Set.mem_s\u0332diff\nwarning: Erdos249257/CertificateKernel.lean:9898:21: `if_pos` has been deprecated: Use `ite_eq_left` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335p\u0335o\u0335s\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332l\u0332e\u0332f\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:9898:32: `if_neg` has been deprecated: Use `ite_eq_right` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335n\u0335e\u0335g\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332r\u0332i\u0332g\u0332h\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:9901:23: `if_neg` has been deprecated: Use `ite_eq_right` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335n\u0335e\u0335g\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332r\u0332i\u0332g\u0332h\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:9901:34: `if_pos` has been deprecated: Use `ite_eq_left` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335p\u0335o\u0335s\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332l\u0332e\u0332f\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:9903:23: `if_neg` has been deprecated: Use `ite_eq_right` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335n\u0335e\u0335g\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332r\u0332i\u0332g\u0332h\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:9903:34: `if_neg` has been deprecated: Use `ite_eq_right` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335n\u0335e\u0335g\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332r\u0332i\u0332g\u0332h\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:9976:12: `if_pos` has been deprecated: Use `ite_eq_left` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335p\u0335o\u0335s\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332l\u0332e\u0332f\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:9980:12: `if_neg` has been deprecated: Use `ite_eq_right` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335n\u0335e\u0335g\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332r\u0332i\u0332g\u0332h\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:9987:12: `if_pos` has been deprecated: Use `ite_eq_left` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335p\u0335o\u0335s\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332l\u0332e\u0332f\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:9992:12: `if_neg` has been deprecated: Use `ite_eq_right` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335n\u0335e\u0335g\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332r\u0332i\u0332g\u0332h\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:10001:14: `if_pos` has been deprecated: Use `ite_eq_left` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335p\u0335o\u0335s\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332l\u0332e\u0332f\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:10004:14: `if_neg` has been deprecated: Use `ite_eq_right` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335n\u0335e\u0335g\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332r\u0332i\u0332g\u0332h\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:10012:14: `if_neg` has been deprecated: Use `ite_eq_right` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335n\u0335e\u0335g\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332r\u0332i\u0332g\u0332h\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:10015:14: `if_pos` has been deprecated: Use `ite_eq_left` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335p\u0335o\u0335s\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332l\u0332e\u0332f\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:10023:14: `if_neg` has been deprecated: Use `ite_eq_right` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335n\u0335e\u0335g\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332r\u0332i\u0332g\u0332h\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:10026:14: `if_neg` has been deprecated: Use `ite_eq_right` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335n\u0335e\u0335g\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332r\u0332i\u0332g\u0332h\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:10052:8: `if_neg` has been deprecated: Use `ite_eq_right` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335n\u0335e\u0335g\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332r\u0332i\u0332g\u0332h\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:10075:8: `if_pos` has been deprecated: Use `ite_eq_left` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335p\u0335o\u0335s\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332l\u0332e\u0332f\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:10079:8: `if_pos` has been deprecated: Use `ite_eq_left` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335p\u0335o\u0335s\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332l\u0332e\u0332f\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:10096:8: `if_neg` has been deprecated: Use `ite_eq_right` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335n\u0335e\u0335g\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332r\u0332i\u0332g\u0332h\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:10477:9: `Set.Infinite.diff` has been deprecated: Use `Set.Infinite.sdiff` instead\nwarning: Erdos249257/CertificateKernel.lean:10479:8: `Set.mem_diff` has been deprecated: Use `Set.mem_sdiff` instead\n\nHint: Replace the deprecated name:\n  Set.mem_s\u0332diff\nwarning: Erdos249257/CertificateKernel.lean:10479:22: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead\n\nHint: Replace the deprecated name:\n  S\u0335e\u0335t\u0335.\u0335m\u0335e\u0335m\u0335_\u0335s\u0335e\u0335t\u0335O\u0335f\u0335_\u0335e\u0335q\u0335S\u0332e\u0332t\u0332.\u0332m\u0332e\u0332m\u0332_\u0332o\u0332f\u0332P\u0332r\u0332e\u0332d\u0332_\u0332e\u0332q\u0332\nwarning: Erdos249257/CertificateKernel.lean:10573:16: `if_pos` has been deprecated: Use `ite_eq_left` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335p\u0335o\u0335s\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332l\u0332e\u0332f\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:10573:26: `if_pos` has been deprecated: Use `ite_eq_left` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335p\u0335o\u0335s\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332l\u0332e\u0332f\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:10574:16: `if_neg` has been deprecated: Use `ite_eq_right` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335n\u0335e\u0335g\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332r\u0332i\u0332g\u0332h\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:10574:26: `if_neg` has been deprecated: Use `ite_eq_right` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335n\u0335e\u0335g\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332r\u0332i\u0332g\u0332h\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:11669:15: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead\n\nHint: Replace the deprecated name:\n  S\u0335e\u0335t\u0335.\u0335m\u0335e\u0335m\u0335_\u0335s\u0335e\u0335t\u0335O\u0335f\u0335_\u0335e\u0335q\u0335S\u0332e\u0332t\u0332.\u0332m\u0332e\u0332m\u0332_\u0332o\u0332f\u0332P\u0332r\u0332e\u0332d\u0332_\u0332e\u0332q\u0332\nwarning: Erdos249257/CertificateKernel.lean:11941:8: `if_pos` has been deprecated: Use `ite_eq_left` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335p\u0335o\u0335s\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332l\u0332e\u0332f\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:11942:50: `if_pos` has been deprecated: Use `ite_eq_left` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335p\u0335o\u0335s\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332l\u0332e\u0332f\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:11943:8: `if_neg` has been deprecated: Use `ite_eq_right` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335n\u0335e\u0335g\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332r\u0332i\u0332g\u0332h\u0332t\u0332\nwarning: Erdos249257/CertificateKernel.lean:11944:6: `if_neg` has been deprecated: Use `ite_eq_right` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335n\u0335e\u0335g\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332r\u0332i\u0332g\u0332h\u0332t\u0332\nSome required targets logged failures:\n- Erdos249257.CertificateKernel\n\nerror: build failed",
+  "bwrap_source_tag": "v0.12.0",
+  "challenge": {
+    "bytes": 11934,
+    "canonical_olean_sha256": "6d08f083dc2c335eaac5d409b847ed694cf2446fa493c01fd592103e8f5dc04c",
+    "dependencies": [
+      {
+        "provenance": "allowlisted",
+        "repository": "leanprover-community/mathlib4"
+      }
+    ],
+    "direct_imports": [
+      "Mathlib"
+    ],
+    "lines": 165,
+    "module": "PalomarCorpus.E257_01.Challenge",
+    "path": "PalomarCorpus/E257_01/Challenge.lean",
+    "sha256": "6ba709d258b2c4f881285cc430b6f21b8b5cb3a4662616ee37517b1ca7c1de62",
+    "transitive_source_count": 2,
+    "trust_level": "high",
+    "untrusted_sources": []
+  },
+  "checked_at": "2026-09-23T21:51:16Z",
+  "classification": {
+    "arxiv": [
+      {
+        "code": "math.NT",
+        "name": "Number Theory"
+      }
+    ],
+    "msc2020": [
+      {
+        "code": "11J72",
+        "name": "Irrationality; linear independence over a field"
+      },
+      {
+        "code": "11B83",
+        "name": "Special sequences and polynomials"
+      }
+    ]
+  },
+  "comparator": {
+    "challenge_module": "PalomarCorpus.E257_01.Challenge",
+    "definition_names": [],
+    "path": "PalomarCorpus/E257_01/comparator.json",
+    "permitted_axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "sha256": "81786cbd5963bf2d1506d8945f9e2a886c426d0df281eb204371deed4884e2f2",
+    "solution_module": "Solutions.PalomarCorpus.E257_01",
+    "theorem_names": [
+      "PalomarCorpus.E257.DivisibilityWeightedSupport.divisibilityWeightedClaim",
+      "PalomarCorpus.E257.MixedWeightedCover.mixedSupportClaim",
+      "PalomarCorpus.E257.PaperStructuresBO.arbitraryWeightMixedSupport_allBase_hereditary",
+      "PalomarCorpus.E257.VariableExponentCover.strengthenedPositiveCoverClaim",
+      "PalomarCorpus.E257.WeightedCloseReturn.weighted_displacement_cofinal_close_return"
+    ]
+  },
+  "diagnostics": [
+    {
+      "code": "solution.build_failed",
+      "explanation": "the Solution build failed (exit 1)\n\nerror: Erdos249257/CertificateKernel.lean:4606:10: Type mismatch: After simplification, term\nerror: Erdos249257/CertificateKernel.lean:4613:10: Type mismatch: After simplification, term\nerror: Erdos249257/CertificateKernel.lean:4716:14: Type mismatch: After simplification, term\nerror: Erdos249257/CertificateKernel.lean:5165:4: Type mismatch: After simplification, term\nerror: Erdos249257/CertificateKernel.lean:5311:4: Type mismatch: After simplification, term\nerror: Erdos249257/CertificateKernel.lean:6022:4: Type mismatch: After simplification, term\nerror: Erdos249257/CertificateKernel.lean:6037:4: Type mismatch: After simplification, term\nerror: Erdos249257/CertificateKernel.lean:6294:6: Type mismatch: After simplification, term\nerror: Erdos249257/CertificateKernel.lean:6296:6: Type mismatch: After simplification, term\nerror: build failed",
+      "next_action": "Correct the Lean failure quoted above, commit it, and make a new submission.",
+      "owner": "submitter",
+      "repairable": false,
+      "retryable": false,
+      "stage": "solution-build",
+      "summary": "the Solution build failed (exit 1)"
+    }
+  ],
+  "diagnostics_schema_version": 1,
+  "errors": [
+    "the Solution build failed (exit 1)"
+  ],
+  "existing_id": null,
+  "formalization": {
+    "automation_method_count": 2,
+    "path": "PalomarCorpus/E257_01/formalization.yaml",
+    "project_name": "Weighted support criteria for reciprocal Mersenne subseries",
+    "review_status": "self-assessed",
+    "sha256": "dfd08dc64484b461afbc6bcb89b58c1934044e7d9c5edfb60e0f6c7fa3b5cc2c",
+    "source_count": 6
+  },
+  "formalization_profile_version": 4,
+  "kernels": [
+    {
+      "argv": [
+        "/home/runner/.elan/toolchains/leanprover--lean4---v4.35.0-rc2/bin/nanoda_bin"
+      ],
+      "name": "nanoda"
+    },
+    {
+      "argv": [
+        "/home/runner/.elan/toolchains/leanprover--lean4---v4.35.0-rc2/bin/con-ron"
+      ],
+      "name": "con-ron"
+    }
+  ],
+  "lake_manifest": {
+    "path": "lake-manifest.json",
+    "sha256": "22ddb352879d89d8ff34a033875b9eeb338e74aba38c44f066594a2e3231e383"
+  },
+  "lakefile": {
+    "format": "toml",
+    "path": "lakefile.toml",
+    "sha256": "825e2afd7c3260a465a2167abd73cee91682c0b99551edb5d50dbec827200f3c"
+  },
+  "lean_toolchain": "leanprover/lean4:v4.35.0-rc2",
+  "lean_toolchain_path": "lean-toolchain",
+  "license": {
+    "declared_identifier": "Apache-2.0",
+    "detected_identifier": "Apache-2.0",
+    "path": "LICENSE",
+    "sha256": "5f73f0aafc768cc7c7f5da786dc7614296ee891a456faf175ab07456d3c35046"
+  },
+  "mathlib_cache": {
+    "available": true,
+    "required": true
+  },
+  "mathlib_toolchain": [
+    {
+      "revision": "065356127b1dc0016f66b7283ce0ce2c4055aa55",
+      "toolchain": "leanprover/lean4:v4.35.0-rc2"
+    }
+  ],
+  "orcid_validation": {
+    "checked_at": "2026-09-23T21:51:18Z",
+    "records": [],
+    "registry": "https://orcid.org",
+    "schema_version": 1
+  },
+  "phase": "verification",
+  "project_dependencies": [
+    {
+      "name": "mathlib",
+      "repository": "leanprover-community/mathlib4",
+      "revision": "065356127b1dc0016f66b7283ce0ce2c4055aa55",
+      "url": "https://github.com/leanprover-community/mathlib4"
+    },
+    {
+      "name": "plausible",
+      "repository": "leanprover-community/plausible",
+      "revision": "e50948299c4dc4a4c21b1c34b6a6a4fddc19f912",
+      "url": "https://github.com/leanprover-community/plausible"
+    },
+    {
+      "name": "LeanSearchClient",
+      "repository": "leanprover-community/LeanSearchClient",
+      "revision": "95e037bfdc31d3916ac615446847fb01960e2719",
+      "url": "https://github.com/leanprover-community/LeanSearchClient"
+    },
+    {
+      "name": "importGraph",
+      "repository": "leanprover-community/import-graph",
+      "revision": "10930f8138f0462dbd744a91fc03a16fae0e046f",
+      "url": "https://github.com/leanprover-community/import-graph"
+    },
+    {
+      "name": "proofwidgets",
+      "repository": "leanprover-community/ProofWidgets4",
+      "revision": "4c70ac059693669e5756e32a7a94b57ee1e99dc5",
+      "url": "https://github.com/leanprover-community/ProofWidgets4"
+    },
+    {
+      "name": "aesop",
+      "repository": "leanprover-community/aesop",
+      "revision": "75d936c7af167cc93fac0d31237682fc2204591d",
+      "url": "https://github.com/leanprover-community/aesop"
+    },
+    {
+      "name": "Qq",
+      "repository": "leanprover-community/quote4",
+      "revision": "786b7acdca7eb4e9c76c5d1d5bd810e7e5c56334",
+      "url": "https://github.com/leanprover-community/quote4"
+    },
+    {
+      "name": "batteries",
+      "repository": "leanprover-community/batteries",
+      "revision": "ed9b316aabe389fec1ef43c3326ab48c7e59be42",
+      "url": "https://github.com/leanprover-community/batteries"
+    },
+    {
+      "name": "Cli",
+      "repository": "leanprover/lean4-cli",
+      "revision": "2842b9871b04862f944c032e34052cb9448ccb71",
+      "url": "https://github.com/leanprover/lean4-cli"
+    }
+  ],
+  "protected_config": "{\n  \"challenge_module\": \"PalomarCanonical45fbfadeff4ce7474a05f072.Challenge\",\n  \"definition_names\": [],\n  \"external_kernels\": {\n    \"con-ron\": [\n      \"/home/runner/.elan/toolchains/leanprover--lean4---v4.35.0-rc2/bin/con-ron\"\n    ],\n    \"nanoda\": [\n      \"/home/runner/.elan/toolchains/leanprover--lean4---v4.35.0-rc2/bin/nanoda_bin\"\n    ]\n  },\n  \"permitted_axioms\": [\n    \"propext\",\n    \"Quot.sound\",\n    \"Classical.choice\"\n  ],\n  \"solution_module\": \"Solutions.PalomarCorpus.E257_01\",\n  \"theorem_names\": [\n    \"PalomarCorpus.E257.DivisibilityWeightedSupport.divisibilityWeightedClaim\",\n    \"PalomarCorpus.E257.MixedWeightedCover.mixedSupportClaim\",\n    \"PalomarCorpus.E257.PaperStructuresBO.arbitraryWeightMixedSupport_allBase_hereditary\",\n    \"PalomarCorpus.E257.VariableExponentCover.strengthenedPositiveCoverClaim\",\n    \"PalomarCorpus.E257.WeightedCloseReturn.weighted_displacement_cofinal_close_return\"\n  ]\n}\n",
+  "protected_config_sha256": "3ab67aa2d49490a928968fc141fdd490dbb5cbcf92736cf171197595510d315c",
+  "provenance": {
+    "mathematical_sources": [
+      {
+        "author_endorsement": "participated",
+        "authors": [
+          {
+            "name": "Will Cook"
+          }
+        ],
+        "license": "Apache-2.0",
+        "note": "The selected weighted-support, displacement and divisor-cover theorems are proved in the Lean modules of this repository and explained in the two immutable paper sources below. The earlier reciprocal-summable assertion is credited to Erd\u0151s. No novelty priority or resolution of the unrestricted parent problem is asserted by this metadata.",
+        "relationship": "other",
+        "title": "Formal reductions, obstruction theorems, and verified subfamilies for eight Erd\u0151s problems",
+        "type": "original-proof"
+      },
+      {
+        "author_endorsement": "participated",
+        "authors": [
+          {
+            "name": "Will Cook"
+          }
+        ],
+        "identifier": "https://github.com/wcook04/plectis-erdos/blob/147f3f1da400a84dcb3013ea6cef75dc8f382b09/paper/257/erdos-257-mersenne-support-subseries.pdf",
+        "license": "CC-BY-4.0",
+        "note": "Immutable short paper, especially res:weighted-support and the positive-cover and mixed-support extensions. Only the five declarations listed in this configuration are selected; the rest of the paper is not thereby registered.",
+        "relationship": "background",
+        "title": "Weighted Support Criteria for Reciprocal Mersenne Subseries",
+        "type": "paper"
+      },
+      {
+        "author_endorsement": "participated",
+        "authors": [
+          {
+            "name": "Will Cook"
+          }
+        ],
+        "identifier": "https://github.com/wcook04/plectis-erdos/blob/147f3f1da400a84dcb3013ea6cef75dc8f382b09/paper/257/erdos257-mersenne-reasoning-surface.pdf",
+        "license": "CC-BY-4.0",
+        "note": "Complete reasoning record and proof context for the selected weighted-support and cover results; supplementary geometry and membership results are outside this entry.",
+        "relationship": "background",
+        "title": "Reciprocal Mersenne Subseries \u2014 complete reasoning record",
+        "type": "paper"
+      },
+      {
+        "author_endorsement": "not-contacted",
+        "authors": [
+          {
+            "name": "Paul Erd\u0151s"
+          }
+        ],
+        "identifier": "https://users.renyi.hu/~p_erdos/1969-09.pdf",
+        "license": "unknown",
+        "note": "Math. Student 36 (1968), 222\u2013226 (issued 1969), especially p. 222. Erd\u0151s stated the reciprocal-summable all-integer-base criterion after proving the coprime case and discussed possible weakenings. That prior statement is credited; the selected weighted and cover criteria are not presented as a new discovery of the reciprocal-summable case.",
+        "relationship": "background",
+        "title": "On the irrationality of certain series",
+        "type": "paper"
+      },
+      {
+        "author_endorsement": "not-contacted",
+        "authors": [
+          {
+            "name": "Thomas F. Bloom"
+          }
+        ],
+        "identifier": "https://www.erdosproblems.com",
+        "license": "unknown",
+        "note": "Problem 257 identifies the unrestricted infinite-support question. This entry proves sufficient weighted and cover conditions and does not answer that unrestricted question.",
+        "relationship": "background",
+        "title": "Erd\u0151s Problems catalogue",
+        "type": "web discussion"
+      },
+      {
+        "author_endorsement": "n/a",
+        "authors": [
+          {
+            "name": "The mathlib contributors"
+          }
+        ],
+        "identifier": "https://github.com/leanprover-community/mathlib4",
+        "license": "Apache-2.0",
+        "relationship": "background",
+        "title": "Mathlib"
+      }
+    ],
+    "related_formalizations": [],
+    "repository_role": "substantive-development",
+    "responsible_maintainers": [
+      {
+        "name": "Will Cook"
+      }
+    ],
+    "result_origin": "original"
+  },
+  "resource_usage": [
+    {
+      "elapsed_seconds": 0.02,
+      "max_rss_kib": 13496,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-initial",
+      "returncode": 0,
+      "system_cpu_seconds": 0.022,
+      "user_cpu_seconds": 0.03,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 58521000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 9027584,
+      "phase": "confinement-initial:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.041,
+      "max_rss_kib": 13496,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-initial",
+      "returncode": 0,
+      "system_cpu_seconds": 0.025,
+      "user_cpu_seconds": 0.048,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 79272000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 13172736,
+      "phase": "confinement-initial:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.02,
+      "max_rss_kib": 13332,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-initial",
+      "returncode": 1,
+      "system_cpu_seconds": 0.023,
+      "user_cpu_seconds": 0.03,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 58894000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "1",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 8773632,
+      "phase": "confinement-initial:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "failed",
+      "systemd_result": "exit-code"
+    },
+    {
+      "elapsed_seconds": 0.041,
+      "max_rss_kib": 13496,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-initial",
+      "returncode": 0,
+      "system_cpu_seconds": 0.031,
+      "user_cpu_seconds": 0.043,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 79415000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 13750272,
+      "phase": "confinement-initial:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.042,
+      "max_rss_kib": 13332,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-initial",
+      "returncode": 1,
+      "system_cpu_seconds": 0.031,
+      "user_cpu_seconds": 0.044,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 80292000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "1",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 13688832,
+      "phase": "confinement-initial:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "failed",
+      "systemd_result": "exit-code"
+    },
+    {
+      "elapsed_seconds": 0.041,
+      "max_rss_kib": 13496,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-initial",
+      "returncode": 1,
+      "system_cpu_seconds": 0.027,
+      "user_cpu_seconds": 0.047,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 80009000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "1",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 13697024,
+      "phase": "confinement-initial:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "failed",
+      "systemd_result": "exit-code"
+    },
+    {
+      "elapsed_seconds": 0.038,
+      "max_rss_kib": 13320,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-initial",
+      "returncode": 1,
+      "system_cpu_seconds": 0.028,
+      "user_cpu_seconds": 0.042,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 76597000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "1",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 12914688,
+      "phase": "confinement-initial:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "failed",
+      "systemd_result": "exit-code"
+    },
+    {
+      "elapsed_seconds": 0.227,
+      "max_rss_kib": 78236,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "comparator-preflight",
+      "returncode": 0,
+      "system_cpu_seconds": 0.104,
+      "user_cpu_seconds": 0.156,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 266652000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 80375808,
+      "phase": "comparator-preflight:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.385,
+      "max_rss_kib": 351904,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "comparator-preflight",
+      "returncode": 0,
+      "system_cpu_seconds": 0.161,
+      "user_cpu_seconds": 0.256,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 423919000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 360611840,
+      "phase": "comparator-preflight:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.24,
+      "max_rss_kib": 78232,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "comparator-preflight",
+      "returncode": 0,
+      "system_cpu_seconds": 0.105,
+      "user_cpu_seconds": 0.168,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 279580000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 80371712,
+      "phase": "comparator-preflight:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.377,
+      "max_rss_kib": 352024,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "comparator-preflight",
+      "returncode": 0,
+      "system_cpu_seconds": 0.149,
+      "user_cpu_seconds": 0.256,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 411340000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 360734720,
+      "phase": "comparator-preflight:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.232,
+      "max_rss_kib": 78236,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "comparator-preflight",
+      "returncode": 0,
+      "system_cpu_seconds": 0.112,
+      "user_cpu_seconds": 0.153,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 272265000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 80375808,
+      "phase": "comparator-preflight:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.382,
+      "max_rss_kib": 352020,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "comparator-preflight",
+      "returncode": 0,
+      "system_cpu_seconds": 0.152,
+      "user_cpu_seconds": 0.263,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 420630000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 360730624,
+      "phase": "comparator-preflight:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 7.044,
+      "max_rss_kib": 160024,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "comparator-preflight",
+      "returncode": 0,
+      "system_cpu_seconds": 0.1,
+      "user_cpu_seconds": 7.068,
+      "workspace_disk_peak_bytes": 4096
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 7174752000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 164126720,
+      "phase": "comparator-preflight:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.13,
+      "max_rss_kib": 31588,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "comparator-preflight",
+      "returncode": 1,
+      "system_cpu_seconds": 0.034,
+      "user_cpu_seconds": 0.131,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 171632000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "1",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 32608256,
+      "phase": "comparator-preflight:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "failed",
+      "systemd_result": "exit-code"
+    },
+    {
+      "elapsed_seconds": 7.035,
+      "max_rss_kib": 159560,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "comparator-preflight",
+      "returncode": 1,
+      "system_cpu_seconds": 0.122,
+      "user_cpu_seconds": 6.977,
+      "workspace_disk_peak_bytes": 4096
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 7105323000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "1",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 163405824,
+      "phase": "comparator-preflight:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "failed",
+      "systemd_result": "exit-code"
+    },
+    {
+      "elapsed_seconds": 2.209,
+      "max_rss_kib": 143716,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "module-resolution",
+      "returncode": 0,
+      "system_cpu_seconds": 0.503,
+      "user_cpu_seconds": 1.791,
+      "workspace_disk_peak_bytes": 737280
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 2299405000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 147427328,
+      "phase": "module-resolution:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.057,
+      "max_rss_kib": 23380,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "module-resolution",
+      "returncode": 0,
+      "system_cpu_seconds": 0.029,
+      "user_cpu_seconds": 0.06,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 95297000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 24203264,
+      "phase": "module-resolution:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 49.142,
+      "max_rss_kib": 8298156,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "trusted-cache",
+      "returncode": 0,
+      "system_cpu_seconds": 49.308,
+      "user_cpu_seconds": 82.268,
+      "workspace_disk_peak_bytes": 7896694784
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 131583339000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 8497328128,
+      "phase": "trusted-cache:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 5.681,
+      "max_rss_kib": 271932,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "trusted-cache",
+      "returncode": 0,
+      "system_cpu_seconds": 3.705,
+      "user_cpu_seconds": 5.942,
+      "workspace_disk_peak_bytes": 1507328
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 9653828000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 278474752,
+      "phase": "trusted-cache:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 2.686,
+      "max_rss_kib": 145048,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "trusted-cache",
+      "returncode": 0,
+      "system_cpu_seconds": 0.678,
+      "user_cpu_seconds": 1.985,
+      "workspace_disk_peak_bytes": 737280
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 2671377000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 148545536,
+      "phase": "trusted-cache:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 4.832,
+      "max_rss_kib": 786476,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "canonical-challenge",
+      "returncode": 0,
+      "system_cpu_seconds": 1.841,
+      "user_cpu_seconds": 2.872,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 4726404000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 805613568,
+      "phase": "canonical-challenge:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.054,
+      "max_rss_kib": 23328,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "canonical-challenge",
+      "returncode": 0,
+      "system_cpu_seconds": 0.029,
+      "user_cpu_seconds": 0.058,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 94010000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 23904256,
+      "phase": "canonical-challenge:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.056,
+      "max_rss_kib": 23340,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "canonical-challenge",
+      "returncode": 0,
+      "system_cpu_seconds": 0.031,
+      "user_cpu_seconds": 0.058,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 95163000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 23916544,
+      "phase": "canonical-challenge:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.017,
+      "max_rss_kib": 13496,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-final",
+      "returncode": 0,
+      "system_cpu_seconds": 0.016,
+      "user_cpu_seconds": 0.033,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 56001000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 9052160,
+      "phase": "confinement-final:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.038,
+      "max_rss_kib": 13496,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-final",
+      "returncode": 0,
+      "system_cpu_seconds": 0.024,
+      "user_cpu_seconds": 0.046,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 76610000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 13443072,
+      "phase": "confinement-final:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.017,
+      "max_rss_kib": 13496,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-final",
+      "returncode": 1,
+      "system_cpu_seconds": 0.02,
+      "user_cpu_seconds": 0.03,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 55947000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "1",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 9031680,
+      "phase": "confinement-final:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "failed",
+      "systemd_result": "exit-code"
+    },
+    {
+      "elapsed_seconds": 0.038,
+      "max_rss_kib": 13496,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-final",
+      "returncode": 0,
+      "system_cpu_seconds": 0.024,
+      "user_cpu_seconds": 0.046,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 76557000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 13946880,
+      "phase": "confinement-final:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.038,
+      "max_rss_kib": 13496,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-final",
+      "returncode": 0,
+      "system_cpu_seconds": 0.028,
+      "user_cpu_seconds": 0.043,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 77069000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 13443072,
+      "phase": "confinement-final:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.039,
+      "max_rss_kib": 13496,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-final",
+      "returncode": 1,
+      "system_cpu_seconds": 0.021,
+      "user_cpu_seconds": 0.05,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 77752000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "1",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 13725696,
+      "phase": "confinement-final:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "failed",
+      "systemd_result": "exit-code"
+    },
+    {
+      "elapsed_seconds": 0.038,
+      "max_rss_kib": 13496,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-final",
+      "returncode": 1,
+      "system_cpu_seconds": 0.025,
+      "user_cpu_seconds": 0.045,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 76381000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "1",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 13713408,
+      "phase": "confinement-final:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "failed",
+      "systemd_result": "exit-code"
+    },
+    {
+      "elapsed_seconds": 0.036,
+      "max_rss_kib": 13496,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-final",
+      "returncode": 1,
+      "system_cpu_seconds": 0.023,
+      "user_cpu_seconds": 0.045,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 75190000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "1",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 13168640,
+      "phase": "confinement-final:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "failed",
+      "systemd_result": "exit-code"
+    },
+    {
+      "elapsed_seconds": 1.34,
+      "max_rss_kib": 109808,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "candidate-configuration",
+      "returncode": 0,
+      "system_cpu_seconds": 0.65,
+      "user_cpu_seconds": 0.742,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 1398896000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 112705536,
+      "phase": "candidate-configuration:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 1.361,
+      "max_rss_kib": 109716,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "candidate-configuration",
+      "returncode": 0,
+      "system_cpu_seconds": 0.664,
+      "user_cpu_seconds": 0.754,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 1425168000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 112611328,
+      "phase": "candidate-configuration:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 6.781,
+      "max_rss_kib": 822440,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "challenge-export",
+      "returncode": 0,
+      "system_cpu_seconds": 1.774,
+      "user_cpu_seconds": 5.016,
+      "workspace_disk_peak_bytes": 71446528
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 6796932000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 842440704,
+      "phase": "challenge-export:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 325.404,
+      "max_rss_kib": 6907072,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "solution-build",
+      "returncode": 1,
+      "system_cpu_seconds": 49.749,
+      "user_cpu_seconds": 751.087,
+      "workspace_disk_peak_bytes": 104534016
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 800845040000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "1",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 7072858112,
+      "phase": "solution-build:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "failed",
+      "systemd_result": "exit-code"
+    }
+  ],
+  "schema_version": 2,
+  "solution": {
+    "module": "Solutions.PalomarCorpus.E257_01",
+    "path": "Solutions/PalomarCorpus/E257_01.lean",
+    "sha256": "d1dee62774443d1c658247061028b2df8498d7f88221e6b2031f536ed8a4501b"
+  },
+  "source": {
+    "bytes": 50485130,
+    "commit": "10c2f5c92fdb2f838931b7862b9bce64d79b24fd",
+    "repository": "wcook04/plectis-erdos-lean",
+    "repository_url": "https://github.com/wcook04/plectis-erdos-lean",
+    "tree_url": "https://github.com/wcook04/plectis-erdos-lean/tree/10c2f5c92fdb2f838931b7862b9bce64d79b24fd"
+  },
+  "stage": "solution-build",
+  "status": "fail",
+  "submission": {
+    "authorization": {
+      "relationship": "maintainer"
+    },
+    "requested_paths": {
+      "comparator_config_path": "PalomarCorpus/E257_01/comparator.json",
+      "formalization_metadata_path": "PalomarCorpus/E257_01/formalization.yaml",
+      "project_path": ""
+    },
+    "submission_id": "ab8f1a139e90"
+  },
+  "tool_digests": {
+    "bwrap": "73f075f985075b56083eb6114edd100359ffe73e7f80a096aa643fae4042f787",
+    "con-ron": "4e5616d94374cae37324dad2594f6230c2bb2297240249fc78ff508f3bc5acef",
+    "lake": "8ba83c98f76562d03b8dbc33f1057151ba6cbb121679dde76b2260ccc90495e1",
+    "lean": "bf8d54e4714cc4b03d3f6bb34c83b7202b87e49c8bfcbff6895c085bb90ceb38",
+    "leanchecker": "9e36e955a251b1313c8eb5b7fa101282d51df109d34d8bb7c1cfdf51985aba29",
+    "leanexport": "c5bc1a10a21e22cbb3671d65987cdef2076833b14182d823ccb2153adf2fa954",
+    "nanoda_bin": "8241c5e6baa29490aa118d382f97961b208ae730fdb96545c2abed74c9ece5a8"
+  },
+  "toolchain_commit": "11acb17ec6b07a8f9e9173e6845197929540936b",
+  "verification_profile": {
+    "id": "palomar-standard-v1",
+    "limits": {
+      "execution_budget_seconds": 19800,
+      "file_size_max_bytes": 1099511627776,
+      "job_timeout_minutes": 350,
+      "memory_high_percent": 95,
+      "memory_max_percent": 98,
+      "minimum_host_memory_bytes": 15032385536,
+      "minimum_workspace_free_bytes": 21474836480,
+      "open_files_max": 1048576,
+      "tasks_max": 32768
+    },
+    "observed_host": {
+      "architecture": "x86_64",
+      "effective_cpus": 4.0,
+      "memory_bytes": 16766414848,
+      "memory_high_bytes": 15928094105,
+      "memory_max_bytes": 16431086551,
+      "workspace_free_bytes": 115161202688
+    },
+    "runner": {
+      "architecture": "x86_64",
+      "label": "ubuntu-24.04",
+      "provider": "github-hosted"
+    },
+    "sha256": "94fcd7906a1b6c076c0036d742e1c5add8625e49bb474818ec8924576dbf0caa",
+    "trusted_tools": {
+      "bwrap_source_tag": "v0.12.0",
+      "toolchain_floor": "v4.35.0-rc2"
+    }
+  },
+  "warnings": [],
+  "workflow_url": "https://github.com/wcook04/plectis-erdos-lean/actions/runs/35924908067",
+  "execution_profile": "palomar-standard-v1"
+}

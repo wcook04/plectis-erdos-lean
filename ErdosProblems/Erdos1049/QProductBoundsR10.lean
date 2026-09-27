@@ -198,7 +198,7 @@ theorem shifted_qPochhammer_bounds {q : ℝ} (hq0 : 0 < q) (hq1 : q < 1)
   constructor
   · apply (qPochhammerInfinity_le_finite hq0.le hq1 hq0.le hq1 n).trans
     unfold qPochhammerFinite
-    apply Finset.prod_le_prod
+    apply Finset.prod_le_prod₀
     · intro k hk
       have h : q * q ^ k ≤ q := by
         simpa using mul_le_mul_of_nonneg_left (pow_le_one₀ hq0.le hq1.le) hq0.le

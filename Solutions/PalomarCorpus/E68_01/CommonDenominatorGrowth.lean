@@ -24,7 +24,7 @@ theorem common_denominator_growth :
       (2 * Real.sqrt 2 / 3) := by
   simpa only [LowerLimitAtLeast,
     ErdosProblems.Erdos68.PaperComplete.LowerLimitAtLeast,
-    channelLCM, _root_.Erdos68.channelLCM] using
+    channelLCM, _root_.Erdos68.channelLCM] using!
     ErdosProblems.Erdos68.PaperComplete.common_denominator_growth
 
 theorem common_denominator_growth_liminf :
@@ -32,7 +32,7 @@ theorem common_denominator_growth_liminf :
       Filter.liminf (fun N : ℕ =>
         ((Real.log (channelLCM N : ℝ) /
           ((N : ℝ) ^ ((3 : ℝ) / 2) * Real.log (N : ℝ)) : ℝ) : EReal)) atTop := by
-  simpa only [channelLCM, _root_.Erdos68.channelLCM] using
+  simpa only [channelLCM, _root_.Erdos68.channelLCM] using!
     ErdosProblems.Erdos68.PaperComplete.common_denominator_growth_liminf
 
 theorem asymptotic_radius_constant_liminf (M R : ℕ → ℕ)
@@ -43,6 +43,6 @@ theorem asymptotic_radius_constant_liminf (M R : ℕ → ℕ)
       Filter.liminf (fun t : ℕ =>
         ((((R t + 1 : ℕ) : ℝ) / (t : ℝ) ^ 3 : ℝ) : EReal)) atTop := by
   refine ErdosProblems.Erdos68.PaperComplete.asymptotic_radius_constant_liminf M R ?_
-  simpa only [channelLCM, _root_.Erdos68.channelLCM] using hH
+  simpa only [channelLCM, _root_.Erdos68.channelLCM] using! hH
 
 end PalomarCorpus.E68.CommonDenominatorGrowth
