@@ -4,29 +4,28 @@ This is a read-only extraction job for pinned public Lean sources. It does
 not call the Prove2Me API or publish a theorem. The exact source commits,
 Lean/Mathlib pins, selected declarations, input module hashes, and official
 extractor hashes are in `manifest.json`. The current mixed-support #257 inventory has 67 modules and
-three project prefixes; #243 has 54 modules and one prefix; #249 has 11 modules
+three project prefixes; #243 has 52 modules and three prefixes; #249 has 11 modules
 and three prefixes. The input inventory
 does not assert a declaration dependency graph or source positions.
 
 The new workflow cannot receive `workflow_dispatch` while it is absent from
 the default branch. A push to the exact dedicated branch
 `codex/prove2me-remote-extraction-20260924` runs the reviewed `request.json`.
-The current reviewed request selects **#257 mixed-support extraction**
-at `c93c2e4dd86a2e317e0cb650ea244fee1afd59c2`. Its root is
-`ErdosProblems.Erdos257.PaperCompleteR8.ArbitraryWeightMixedClaim`; the selected
-endpoint is `arbitraryWeightMixedSupport_allBase_hereditary`. All 67 modules
-are retained. The theorem assumes finite-prime weighted binary mass on E and
-an arbitrary positive-weight logarithmic cover of V; it concludes all-base
-hereditary irrationality on E union V. It does not prove irrationality on an
-arbitrary infinite support. The proof chooses a common sample for both
-budgets; separate small-return witnesses would not suffice.
+The current reviewed request selects **five additional #243 paper targets**
+at `cc7e541cf2081c6fef5a5e377d52e365e33b01eb`, retaining all 52 source modules.
+It selects bounded-negative rigidity, the finite scalar negative-mass theorem,
+the original-coordinate LCM criterion, canonical weighted-record equivalence
+and canonical inclusive log-log criterion. The last is a canonical
+specialization, not the stronger arbitrary-orbit statement being prepared
+separately. The positive-integer scalar theorem is not a real-state extension.
 
-This updates only the #257 case. The historical weighted #257 extraction
-remains frozen under its earlier manifests; accepted proofs are not repeated
-by this request. All seven other cases and the global extractor pins are
-unchanged. The full #1041 counterexample extraction 36300898010 succeeded;
-its original GitHub artifact 10926345599, metadata, exact manifest and verified
-13-module/four-target intake were retained before this request advanced.
+This updates only the #243 case. The historical cubic #243 extraction remains
+frozen under its earlier manifests; its accepted proofs are not repeated by
+this request. All seven other cases and global extractor pins are unchanged.
+The full mixed-support #257 extraction 36302660157 succeeded; its original
+GitHub artifact, metadata, exact manifest and verified 67-module intake were
+retained before this request advanced. That mixed theorem retains its
+arbitrary positive-weight cover and common-sample argument.
 #251 retains both full-strength denominator endpoints and all 250 streaming
 certificate blocks in its 256-module closure. #269 retains both targets over
 15 modules; #1049 retains all eight targets over 59 modules.
@@ -57,7 +56,7 @@ Static preparation can be checked without running Lean:
 ```sh
 python3 .github/prove2me-extraction/run.py select
 python3 .github/prove2me-extraction/run.py prepare --problem 257 --source /path/to/c93c2e4-checkout --out /tmp/p2m-257
-python3 .github/prove2me-extraction/run.py prepare --problem 243 --source /path/to/4fe59e0-checkout --out /tmp/p2m-243
+python3 .github/prove2me-extraction/run.py prepare --problem 243 --source /path/to/cc7e541-checkout --out /tmp/p2m-243
 python3 .github/prove2me-extraction/run.py prepare --problem 249 --source /path/to/c93c2e4-checkout --out /tmp/p2m-249
 ```
 
