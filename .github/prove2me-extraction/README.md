@@ -11,22 +11,26 @@ does not assert a declaration dependency graph or source positions.
 The new workflow cannot receive `workflow_dispatch` while it is absent from
 the default branch. A push to the exact dedicated branch
 `codex/prove2me-remote-extraction-20260924` runs the reviewed `request.json`.
-The next reviewed request selects **#68 full extraction** at
-`c93c2e4dd86a2e317e0cb650ea244fee1afd59c2`. Its root is
-`ErdosProblems.Erdos68.PaperCompleteExisting`; its target is
-`ErdosProblems.Erdos68.PaperComplete.strict_successor_characterisation`.
-This is the strict-successor carry criterion, not an unconditional irrationality
-claim. Stage 1 checks the selected declaration before Stage 2 visits its 25 modules.
-The manifest also retains #249 and adds the full #269 and #1049 selections.
+The current reviewed request selects **#251 full extraction** at
+`d92f079c981c66a7652eb85297d506e61616c062`. Its root is
+`ErdosProblems.Erdos251.PaperLargeCertificateR7`. Both the stronger V5
+`denominator_floor_both` and the printed R7 `denominator_floor_both` endpoints
+are retained, including all 250 streaming certificate blocks in their
+256-module source closure. The exact source build passed in run 36295809434;
+that does not establish generated upload validation or hosted acceptance.
+
+The manifest retains the earlier #68, #249, #269 and #1049 selections.
 #269 has two roots/two targets over 15 modules; #1049 has two roots/eight targets
 over 59 modules. These target arrays must not be shortened to a single endpoint.
+The preceding #1049 run 36296997420 succeeded and its original artifact, graph,
+and all source spans were frozen before advancing this request.
 Do not push another request while an extraction is active: branch concurrency
 cancels the in-progress job. Advance one selected request only after consuming
 the preceding job's terminal receipt and preserving its artifact.
 If Stage 2 hits the job limit, the graph and completed partial files remain in
 the run artifact. Set `problem` to `243` in a later reviewed commit to use the
 other source pin, or `257` for the existing #257 case. The CLI explicitly admits
-only these six reviewed cases. Every push that changes this directory or the workflow file
+only these seven reviewed cases. Every push that changes this directory or the workflow file
 launches a run; an unchanged branch does not rerun.
 
 The job restores only a compatible compiled corpus cache from existing CI,

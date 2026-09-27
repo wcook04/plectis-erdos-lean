@@ -273,7 +273,7 @@ def stage2(source: Path, out: Path, case: dict) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("phase", choices=["select", "prepare", "build", "stage1", "stage2"])
-    parser.add_argument("--problem", choices=["257", "243", "249", "68", "269", "1049"])
+    parser.add_argument("--problem", choices=["257", "243", "249", "68", "269", "1049", "251"])
     parser.add_argument("--source", type=Path)
     parser.add_argument("--out", type=Path)
     args = parser.parse_args()
