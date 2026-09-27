@@ -3,6 +3,8 @@
 # SPDX-License-Identifier: Apache-2.0
 """Regression checks for release enumeration and checkout metadata boundaries."""
 import json
+import contextlib
+import io
 from pathlib import Path
 import tempfile
 import subprocess
@@ -167,7 +169,7 @@ class ReleaseToolsTests(unittest.TestCase):
             workflow=root/'.github/workflows/release-gate.yml';workflow.parent.mkdir(parents=True)
             workflow.write_text('defaultTargets\nsubprocess.run(["lake", "build", target], check=True)')
             output=root/'out/manifest.json';diagnostic=root/'out/diagnostics.json';summary=root/'summary.md'
-            with patch.object(release,'REPO_ROOT',root),patch.object(sys,'argv',['build_release_manifest.py','--commit','exact-candidate','--out',str(output),'--diagnostics',str(diagnostic)]),patch.dict(os.environ,{'GITHUB_STEP_SUMMARY':str(summary)}):
+            with contextlib.redirect_stdout(io.StringIO()),contextlib.redirect_stderr(io.StringIO()),patch.object(release,'REPO_ROOT',root),patch.object(sys,'argv',['build_release_manifest.py','--commit','exact-candidate','--out',str(output),'--diagnostics',str(diagnostic)]),patch.dict(os.environ,{'GITHUB_STEP_SUMMARY':str(summary)}):
                 self.assertEqual(release.main(),1)
             report=json.loads(diagnostic.read_text())
             self.assertEqual(report['status'],'fail')
