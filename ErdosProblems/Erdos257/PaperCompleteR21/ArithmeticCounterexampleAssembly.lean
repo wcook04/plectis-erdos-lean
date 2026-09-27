@@ -1244,7 +1244,7 @@ theorem periodOf_coprime {q q' : ℕ} (hq : q ∈ s.parents) (hq' : q' ∈ s.par
     exact coprime_primeProd (fun x hx => s.tagIndexOf_prime hq' hx)
       (s.tagIndexOf_prime hq hp) (s.tagIndexOf_disjoint hq hq' hne hp)
   unfold periodOf
-  exact Nat.Coprime.mul (Nat.Coprime.mul_right h1 h2) (Nat.Coprime.mul_right h3 h4)
+  exact Nat.Coprime.mul_left (Nat.Coprime.mul_right h1 h2) (Nat.Coprime.mul_right h3 h4)
 
 theorem prod_periodOf_dvd_quotient (hLdvd : s.Lv ∣ s.support.lcm id) :
     (∏ q ∈ s.parents, s.periodOf q) ∣ s.support.lcm id / s.Lv :=
@@ -1506,7 +1506,7 @@ theorem condExceedProb_support_ge (G : Finset ℕ)
     have hstep1 : (∏ q ∈ s.parents, (((s.failSetOf G q).card : ℕ) : ℝ))
         ≤ ∏ q ∈ s.parents, ((s.periodOf q : ℝ)
             * (1 - (s.Lv.divisors.card : ℝ) / (4 * (q : ℝ)))) :=
-      Finset.prod_le_prod (fun q _ => Nat.cast_nonneg _) hfailbound
+      Finset.prod_le_prod₀ (fun q _ => Nat.cast_nonneg _) hfailbound
     have hstep2 : (∏ q ∈ s.parents, ((s.periodOf q : ℝ)
           * (1 - (s.Lv.divisors.card : ℝ) / (4 * (q : ℝ)))))
         = (∏ q ∈ s.parents, (s.periodOf q : ℝ))

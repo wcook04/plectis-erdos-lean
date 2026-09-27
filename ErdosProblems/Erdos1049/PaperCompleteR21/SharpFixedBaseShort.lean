@@ -24,8 +24,8 @@ lemma lambertL_eq_lambert {q : ℝ} (hq0 : 0 < q) (hq1 : q < 1) :
     lambertL q = PaperR16.lambert q := by
   have h : HasSum (PaperR16.lambertTerm q) (lambertL q) := by
     rw [← hasSum_nat_add_iff' 1]
-    simpa [PaperR16.lambertTerm, lambertL_eq hq0 hq1] using hasSum_lambert hq0 hq1
-  simpa [PaperR16.lambert] using h.tsum_eq.symm
+    simpa [PaperR16.lambertTerm, lambertL_eq hq0 hq1] using! hasSum_lambert hq0 hq1
+  simpa [PaperR16.lambert] using! h.tsum_eq.symm
 
 lemma six_mul_orderB_succ (m : ℕ) : 6 * orderB (m + 1) = (m + 1) * m * (2 * m + 1) := by
   induction m with
@@ -60,7 +60,7 @@ theorem sharp_fixed_base_exists {q : ℝ} (hq0 : 0 < q) (hq1 : q < 1) :
     (fun w hw0 hw1 => PaperR16.actualGamma_hasSum hq0 hq1 hw0 hw1)
   refine ⟨sharpK q (PaperR16.actualGamma q),
     mul_pos hA (pow_pos (GeometricUniversality.gramM_pos hq0.le hq1) 3), ?_⟩
-  simpa only [orderB_eq_closed_form, lambertL_eq_lambert hq0 hq1] using hmain
+  simpa only [orderB_eq_closed_form, lambertL_eq_lambert hq0 hq1] using! hmain
 
 end ErdosProblems.Erdos1049.PaperCompleteR21.SharpFixedBase
 

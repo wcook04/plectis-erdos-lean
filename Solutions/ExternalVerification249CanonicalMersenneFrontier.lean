@@ -41,7 +41,7 @@ theorem fullMersenneBlockResidue_succ
   simpa [fullMersenneBlockResidue, totientBlock, deltaTotient,
     ErdosProblems.Erdos249.CyclotomicAnchoredKill.fullMersenneBlockResidue,
     ErdosProblems.Erdos249.CyclotomicAnchoredKill.totientBlock,
-    Erdos257PeriodNoncollapse.TotientTailPeriodKiller.deltaTotient] using
+    Erdos257PeriodNoncollapse.TotientTailPeriodKiller.deltaTotient] using!
     ErdosProblems.Erdos249.CyclotomicAnchoredKill.fullMersenneBlockResidue_succ hM
 
 theorem fullMersenneCenteredResidueGapSupply_of_canonicalBasepoint
@@ -54,7 +54,7 @@ theorem fullMersenneCenteredResidueGapSupply_of_canonicalBasepoint
     ErdosProblems.Erdos249.CyclotomicAnchoredKill.FullMersenneCenteredResidueGapSupply,
     ErdosProblems.Erdos249.CyclotomicAnchoredKill.FullMersenneCenteredResidueGap,
     ErdosProblems.Erdos249.CyclotomicAnchoredKill.fullMersenneBlockResidue,
-    ErdosProblems.Erdos249.CyclotomicAnchoredKill.totientBlock] using
+    ErdosProblems.Erdos249.CyclotomicAnchoredKill.totientBlock] using!
     ErdosProblems.Erdos249.CyclotomicAnchoredKill.fullMersenneCenteredResidueGapSupply_of_canonicalBasepoint
       hsupply
 
@@ -66,7 +66,7 @@ theorem fullMersenneCanonicalBasepointResidueGapSupply_iff_irrational :
     ErdosProblems.Erdos249.CyclotomicAnchoredKill.FullMersenneCanonicalBasepointResidueGapSupply,
     ErdosProblems.Erdos249.CyclotomicAnchoredKill.FullMersenneCenteredResidueGap,
     ErdosProblems.Erdos249.CyclotomicAnchoredKill.fullMersenneBlockResidue,
-    ErdosProblems.Erdos249.CyclotomicAnchoredKill.totientBlock] using
+    ErdosProblems.Erdos249.CyclotomicAnchoredKill.totientBlock] using!
     ErdosProblems.Erdos249.CyclotomicAnchoredKill.fullMersenneCanonicalBasepointResidueGapSupply_iff_irrational
 
 end Erdos249257.ExternalVerification249CanonicalMersenneFrontier

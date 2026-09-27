@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check pinned source bytes and replay integer arithmetic, without compiling Lean.
+"""Check pinned target bytes and replay integer arithmetic, without compiling Lean.
 
 This is preparatory evidence, never a Lean, Comparator or independent-kernel receipt.
 """
@@ -18,15 +18,26 @@ def require(condition: bool, message: str) -> None:
         raise ValueError(message)
 
 
+def check_module_identity(root: Path, rows: list[dict]) -> None:
+    for row in rows:
+        raw = (root / row["target_path"]).read_bytes()
+        port = row.get("target_toolchain_port")
+        if port is not None:
+            require(isinstance(port, dict) and
+                    re.fullmatch(r"[0-9a-f]{40}", port.get("commit", "")) is not None and
+                    re.fullmatch(r"[0-9a-f]{64}", port.get("sha256", "")) is not None and
+                    bool(port.get("reason")),
+                    "Incomplete target toolchain port: " + row["target_path"])
+        expected = port["sha256"] if port is not None else row["sha256"]
+        require(hashlib.sha256(raw).hexdigest() == expected,
+                "Pinned target drift: " + row["target_path"])
+
 def main() -> None:
     sys.set_int_max_str_digits(0)
     family = Path(__file__).resolve().parent
     root = family.parent
     manifest = json.loads((family / "source-transport.json").read_text())
-    for row in manifest["modules"]:
-        raw = (root / row["target_path"]).read_bytes()
-        require(hashlib.sha256(raw).hexdigest() == row["sha256"],
-                "Pinned source drift: " + row["target_path"])
+    check_module_identity(root, manifest["modules"])
     for name, row in manifest["target_environment"].items():
         require(hashlib.sha256((root / name).read_bytes()).hexdigest() == row["sha256"],
                 "Target environment drift: " + name)

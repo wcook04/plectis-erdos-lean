@@ -19,13 +19,17 @@ denominator bound.
 The separate root module `Erdos251LargeCertificateSolution.lean` applies
 `ErdosProblems.Erdos251.PaperR7.LargeCertificate.denominator_floor_both`.
 `comparator.json` selects only that transported endpoint. The solution has a
-separate module root from the protected Challenge and a non-default Lake
-library, so this 250-block certificate is an explicit replay target.
+separate module root from the protected Challenge. The family's default Lake
+target reaches its Challenge and AxiomAudit; the audit imports the separate
+Solution, so normal CI compiles the complete 250-block certificate.
 
 `source-transport.json` records all 256 local modules in the source endpoint's
 import closure at paper commit `7f3dbf0947c387335ffd392b689eea5721017d84`.
-Every listed source file is copied byte for byte. The inherited computational
-options in those certificate blocks are preserved. An independent Python
+The manifest retains every original source hash. All but one module remain
+byte-identical: `PrimeGapDyadicTail.lean` uses the existing Lean 4.35 port's
+three summable-tail API replacements, with unchanged theorem statements.
+Its separate target hash and port commit are recorded explicitly. The inherited
+computational options in the certificate blocks are preserved. An independent Python
 sieve and Horner fold confirms the final state, both strict bracket
 inequalities, determinant one and the numeric bounds:
 
@@ -36,7 +40,7 @@ python3 ExternalVerification251LargeDenominatorFloor/verify_transport.py
 That command checks source identity and integer arithmetic only. It does not
 replace Lean elaboration, the axiom audit, Comparator or independent kernel
 replay. In particular the source pin uses Lean 4.29.1 and this target uses
-4.30.0; all four acceptance stages remain pending for this transport.
+4.35.0-rc2; all four acceptance stages remain pending for this transport.
 
 After resource admission, build only this family and print its axioms:
 

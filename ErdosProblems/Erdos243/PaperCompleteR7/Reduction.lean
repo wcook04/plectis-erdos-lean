@@ -146,7 +146,7 @@ theorem gcd_stabilises_and_reduces
   · intro n hn
     have hc := Nat.coprime_div_gcd_div_gcd
       (Nat.gcd_pos_of_pos_left (D n) (hCpos n))
-    simpa only [hG n hn] using hc
+    simpa only [hG n hn] using! hc
   · intro n hn
     apply Nat.eq_of_mul_eq_mul_left hgpos
     calc

@@ -189,7 +189,7 @@ theorem reflected_product_domination {m : ℕ} (U : ℂ[X]) (c : Fin m → ℂ)
         simpa only [frontier_ball (0 : ℂ) (by norm_num : (1 : ℝ) ≠ 0),
           mem_sphere, dist_zero_right] using hw
       have hprod : (∏ k, ‖1-conj (c k)*w‖) ≤ ∏ k, ‖(t : ℂ)-conj (c k)*w‖ := by
-        apply Finset.prod_le_prod
+        apply Finset.prod_le_prod₀
         · intro k hk; exact norm_nonneg _
         · intro k hk
           apply regularised_factor_norm _ _ t ht.le

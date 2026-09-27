@@ -72,16 +72,16 @@ theorem StrengthenedPositiveCoverClaim_iff :
     have hC' : (ofSource C).StrengthenedCostSummable :=
       (PositiveCoverData.StrengthenedCostSummable_ofSource C).mpr hC
     have hA' : A ⊆ (ofSource C).host := by
-      simpa [PositiveCoverData.host_ofSource] using hA
+      simpa [PositiveCoverData.host_ofSource] using! hA
     have := h (ofSource C) hC' A hA' hInf b hb
-    simpa [erdosSupportSeries_eq] using this
+    simpa [erdosSupportSeries_eq] using! this
   · intro h C hC A hA hInf b hb
     have hC' : (toSource C).StrengthenedCostSummable :=
       (PositiveCoverData.StrengthenedCostSummable_toSource C).mp hC
     have hA' : A ⊆ (toSource C).host := by
-      simpa [PositiveCoverData.host_toSource] using hA
+      simpa [PositiveCoverData.host_toSource] using! hA
     have := h (toSource C) hC' A hA' hInf b hb
-    simpa [erdosSupportSeries_eq] using this
+    simpa [erdosSupportSeries_eq] using! this
 
 theorem strengthenedPositiveCoverClaim : StrengthenedPositiveCoverClaim :=
   StrengthenedPositiveCoverClaim_iff.mpr

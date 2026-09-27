@@ -72,7 +72,7 @@ theorem integral_scaled_tail_le_sharpPaperCap {B a : ℕ} {z : ℤ}
     exact (Nat.le_floor_iff
       (mul_nonneg (Nat.cast_nonneg B) (carryMajorantQtilde_nonneg _))).mpr hboundQ
   have hfZ : ((z.natAbs : ℕ) : ℤ) ≤ (sharpPaperCap B a : ℤ) := by exact_mod_cast hf
-  simpa only [hzabs] using hfZ
+  simpa only [hzabs] using! hfZ
 
 /-- Every equality, onset, positivity, recurrence and cap printed in the bridge.
 The hypotheses do not need the numerator and denominator to be reduced. -/
@@ -152,7 +152,7 @@ theorem irrational_of_escape_dominating_sharp_cap (G : ℕ → ℕ → ℕ)
     have hcast : ((b.toNat : ℕ) : ℤ) = b := Int.toNat_of_nonneg hbpos.le
     apply hposden a b.toNat hbn
     have hR : ((b.toNat : ℕ) : ℝ) = (b : ℝ) := by exact_mod_cast hcast
-    simpa only [hR] using hv
+    simpa only [hR] using! hv
 
 /-- The long cap itself, with every original cofinal quantifier unchanged. -/
 theorem sharp_cap_window_equivalence :

@@ -130,7 +130,10 @@ theorem cofinalLocalWindowEscape_of_irrational_of_quadratic
     CofinalLocalWindowEscape dyadicBlockBase235 dyadicOrderedBlockDigit235 sb := by
   convert ErdosProblems.Erdos269.cofinalLocalWindowEscape_of_irrational_of_quadratic
     h sb c hsb
-  all_goals try exact CofinalLocalWindowEscape_fun_eq
+  all_goals
+    try exact CofinalLocalWindowEscape_fun_eq
+    try (rw [CofinalLocalWindowEscape_fun_eq, dyadicBlockBase235_fun_eq,
+      dyadicOrderedBlockDigit235_fun_eq]; done)
 
 theorem exists_reducedCarry_of_value_eq_rat
     {p q : ℤ} (hq : 0 < q)
@@ -154,6 +157,10 @@ theorem trueNormalizedState_window (lo len : ℕ) :
   all_goals
     try exact windowBase_fun_eq
     try exact windowForcing_fun_eq
+    try (rw [windowBase_fun_eq, dyadicBlockBase235_fun_eq]; done)
+    try (rw [windowForcing_fun_eq, dyadicBlockBase235_fun_eq,
+      dyadicOrderedBlockDigit235_fun_eq]; done)
+    try exact rfl
 
 theorem near_integer_of_residue_le_general
     (B lo len K : ℕ) (hB : 0 < B)
@@ -174,6 +181,7 @@ theorem near_integer_of_residue_le_general
     try exact windowForcing_fun_eq
     try exact dyadicBlockBase235_fun_eq
     try exact dyadicOrderedBlockDigit235_fun_eq
+    try exact rfl
 
 theorem exists_pow_gt_quadratic (c lo : ℕ) :
     ∃ len : ℕ, 0 < len ∧ c * (lo + len + 1) ^ 2 < 2 ^ len := by
@@ -207,7 +215,7 @@ theorem octic_escape_whole :
     CofinalLocalWindowEscape dyadicBlockBase235 dyadicOrderedBlockDigit235 (fun _ _ => 0) := by
   simpa only [ErdosProblems.Erdos269.PaperR7.paperSeries235_eq_shellTsum,
     CofinalLocalWindowEscape_fun_eq, dyadicBlockBase235_fun_eq,
-    dyadicOrderedBlockDigit235_fun_eq, longPaperCap_fun_eq, shortPaperCap_fun_eq] using
+    dyadicOrderedBlockDigit235_fun_eq, longPaperCap_fun_eq, shortPaperCap_fun_eq] using!
     ErdosProblems.Erdos269.PaperCompleteR20.octic_escape_whole
 
 end PalomarCorpus.E269.WindowEscapeEquivalence

@@ -225,7 +225,7 @@ theorem resetDeviation_le_crossingBound_of_late_right_crossing
       dsimp [k] at hj
       omega
     have hno := hnotUM (d + j + 1) (by omega) (by omega) hrowLt
-    simpa [X, pulse, Nat.add_assoc] using
+    simpa [X, pulse, Nat.add_assoc] using!
       rightBranch_excess_succ_eq (s := d + j + 1) (by omega) hno
   have hexact0 := affineRightExcess_exactIterate X pulse k hrec
   have hexact :
@@ -233,13 +233,13 @@ theorem resetDeviation_le_crossingBound_of_late_right_crossing
           ((2 ^ s : ℕ) : ℤ)) + (C : ℤ) =
         ((4 ^ k : ℕ) : ℤ) * seamResetDeviation d := by
     rw [hsk]
-    simpa [X, C, seamResetDeviation] using hexact0
+    simpa [X, C, seamResetDeviation] using! hexact0
   have hcharge0 := seamRightRunCharge_lt_row_mul_four_pow
     (d := d) (k := k) (by omega)
   have hcharge : C < (s - 1) * 4 ^ k := by
     have hdk : d + k = s - 1 := by omega
     rw [← hdk]
-    simpa [C, pulse] using hcharge0
+    simpa [C, pulse] using! hcharge0
   have hwindow := rightBranch_remainder_window
     (s := s) (d := d) (by omega) hd hlate hR
   let w : ℤ := (seamIntegerGreedyRemainder s : ℤ) -
@@ -312,7 +312,7 @@ theorem resetDeviation_le_crossingBound_of_late_right_crossing
       6 * (((2 ^ s : ℕ) : ℤ)) +
           (8 * (((4 ^ (s - d) : ℕ) : ℤ)) + 6 * (s : ℤ) + 4) ≤
           6 * (((2 ^ s : ℕ) : ℤ)) + 12 * P * corr := by
-            simpa only [P, corr, add_comm] using
+            simpa only [P, corr, add_comm] using!
               add_le_add_left hcorrZ (6 * (((2 ^ s : ℕ) : ℤ)))
       _ = 12 * P * (A + corr) := by
         dsimp [P, A, corr]
@@ -323,7 +323,7 @@ theorem resetDeviation_le_crossingBound_of_late_right_crossing
       linarith only [hwUpper, hbaseUpper]
     linarith only [h12]
   have hpowPos : (0 : ℤ) < ((4 ^ k : ℕ) : ℤ) := by positivity
-  have hPpos : (0 : ℤ) < P := by simpa [P] using hpowPos
+  have hPpos : (0 : ℤ) < P := by simpa [P] using! hpowPos
   have hs1Cast : (((s - 1 : ℕ) : ℤ)) = (s : ℤ) - 1 := by
     rw [Nat.cast_sub (by omega)]
     push_cast
@@ -331,9 +331,9 @@ theorem resetDeviation_le_crossingBound_of_late_right_crossing
   have hchargeZ0 : (C : ℤ) <
       ((s - 1 : ℕ) : ℤ) * ((4 ^ k : ℕ) : ℤ) := by exact_mod_cast hcharge
   have hchargeZ : (C : ℤ) < ((s : ℤ) - 1) * P := by
-    simpa [P, hs1Cast] using hchargeZ0
+    simpa [P, hs1Cast] using! hchargeZ0
   have hexactW : w + (C : ℤ) = P * seamResetDeviation d := by
-    simpa [w, P] using hexact
+    simpa [w, P] using! hexact
   by_cases hdev : 0 ≤ seamResetDeviation d
   · have hscaledDev :
         P * seamResetDeviation d < P * (A + 2 * (d : ℤ) + 3) := by
@@ -360,7 +360,7 @@ theorem resetDeviation_le_crossingBound_of_late_right_crossing
     have hscaledNeg : P * (-seamResetDeviation d) < P * A := by
       have hCnonneg : (0 : ℤ) ≤ (C : ℤ) := by positivity
       have hPA : P * A = ((2 ^ (s - 1) : ℕ) : ℤ) := by
-        simpa [P, A] using hpowerZ
+        simpa [P, A] using! hpowerZ
       calc
         P * (-seamResetDeviation d) = -(P * seamResetDeviation d) := by ring
         _ = -(w + (C : ℤ)) := by rw [hexactW]

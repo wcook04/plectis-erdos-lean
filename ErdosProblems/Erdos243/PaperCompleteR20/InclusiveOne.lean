@@ -30,7 +30,9 @@ private theorem excess_summable {K ε : ℝ} (hε : 0 < ε) :
     Summable (excess K ε) := by
   have hs : Summable (fun n : ℕ => 1 / (n : ℝ) ^ (1 + ε)) :=
     Real.summable_one_div_nat_rpow.mpr (by linarith)
-  simpa [excess, div_eq_mul_inv] using hs.mul_left K
+  convert hs.mul_left K using 1
+  funext n
+  simp [excess, div_eq_mul_inv]
 
 /-- Partial products of the summable excess factors are eventually bounded. -/
 private theorem excess_product_eventually_bounded
@@ -143,7 +145,7 @@ private theorem tailScale_le_linear_of_inclusive
     exact Finset.mem_range.mpr (Finset.mem_Ico.mp hj).2
   have hprod : (∏ j ∈ Finset.Ico N n, (1 + excess K ε j)) ≤
       ∏ j ∈ Finset.range n, (1 + excess K ε j) := by
-    apply Finset.prod_le_prod_of_subset_of_one_le hsub
+    apply Finset.prod_le_prod_of_subset_of_one_le₀ hsub
     · intro j _
       linarith [excess_nonneg (ε := ε) hK j]
     · intro j _ _

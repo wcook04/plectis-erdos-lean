@@ -264,7 +264,7 @@ private theorem take_toList_extend {s : ℕ} (hs : 3 ≤ s)
     omega
   · intro n h1 h2
     have hn : n < s - 2 := by
-      simpa [Erdos257PeriodNoncollapse.HalfCylinderIntegerGreedy.SeamRowWord.toList] using h2
+      simpa [Erdos257PeriodNoncollapse.HalfCylinderIntegerGreedy.SeamRowWord.toList] using! h2
     simp only [Erdos257PeriodNoncollapse.HalfCylinderIntegerGreedy.SeamRowWord.toList,
       List.getElem_take, List.getElem_ofFn,
       Erdos257PeriodNoncollapse.HalfCylinderIntegerGreedy.SeamRowWord.extend]

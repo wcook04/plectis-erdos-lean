@@ -40,7 +40,7 @@ theorem weightedTaylorSeries_hasSum {ι : Type*} [Fintype ι]
       (cauchyPowerSeries (weightedAnalyticLog w c) (0 : ℂ) R)
       (0 : ℂ) (R : ℝ≥0∞) :=
     DiffContOnCl.hasFPowerSeriesOnBall hg hR
-  simpa only [weightedTaylorSeries, R] using hs
+  simpa [weightedTaylorSeries, R] using hs
 
 /-- Scalar precomposition, proved directly from the local HasSum criterion. -/
 theorem hasFPowerSeriesAt_scalar_precomp {f : ℂ → ℂ}
@@ -49,9 +49,8 @@ theorem hasFPowerSeriesAt_scalar_precomp {f : ℂ → ℂ}
   apply hasFPowerSeriesAt_iff.mpr
   have hloc := hasFPowerSeriesAt_iff.mp hp
   have ht : Tendsto (fun z : ℂ => t * z) (𝓝 0) (𝓝 0) := by
-    simpa using
-      ((continuous_const.mul continuous_id).tendsto (0 : ℂ) :
-        Tendsto (fun z : ℂ => t * z) (𝓝 0) (𝓝 (t * 0)))
+    convert ((continuous_const.mul continuous_id).tendsto (0 : ℂ) :
+      Tendsto (fun z : ℂ => t * z) (𝓝 0) (𝓝 (t * 0))) using 1 <;> simp
   filter_upwards [ht.eventually hloc] with z hz
   change HasSum (fun n => z ^ n * (t ^ n * p n (fun _ => 1))) (f (t * (0 + z)))
   change HasSum (fun n => (t * z) ^ n * p n (fun _ => 1)) (f (0 + t * z)) at hz
@@ -104,7 +103,7 @@ theorem weightedAnalyticLog_eq_one_on_halfDisc {ι : Type*} [Fintype ι]
     {z : ℂ} (hz : ‖z‖ < 1 / 2) : weightedAnalyticLog w c z = 1 := by
   have hs := (weightedTaylorSeries_hasSum w c hc).hasSum (y := z) (by
     rw [Metric.eball_coe]
-    simpa only [mem_ball, dist_zero_right] using hz)
+    simpa [mem_ball, dist_zero_right] using hz)
   have he : (fun n : ℕ => weightedTaylorSeries w c n (fun _ => z)) =
       (fun n : ℕ => if n = 0 then (1 : ℂ) else 0) := by
     funext n

@@ -50,7 +50,7 @@ theorem tendsto_abs_one_sub_factorialGapStepCarry_div :
   have hinv :
       Filter.Tendsto (fun m : ℕ => 1 / ((m - 1 : ℕ) : ℝ))
         Filter.atTop (nhds 0) := by
-    simpa only [one_div] using tendsto_inv_atTop_zero.comp hpredTopReal
+    simpa only [one_div, Function.comp_def] using! tendsto_inv_atTop_zero.comp hpredTopReal
   refine tendsto_of_tendsto_of_tendsto_of_le_of_le'
     (g := fun _ : ℕ => (0 : ℝ))
     (h := fun m : ℕ => 1 / ((m - 1 : ℕ) : ℝ))
@@ -167,7 +167,7 @@ theorem eventually_zero_of_bounded_coboundary_core
     have hBOne : 1 ≤ B := hB
     have hNq' : N + 1 ≤ q := by
       dsimp [q]
-      simpa using Nat.mul_le_mul_right (N + 1) hBOne
+      simpa using! Nat.mul_le_mul_right (N + 1) hBOne
     omega
   have hqCast :
       (q : ℤ) = (B : ℤ) * ((N + 1 : ℕ) : ℤ) := by
@@ -243,7 +243,7 @@ theorem eventually_zero_of_bounded_coboundary_core
   have hcm := hcZero m hm
   have hcSucc := hcZero (m + 1) (by omega)
   have hmul : (B : ℤ) * d m = 0 := by
-    simpa [hcm, hcSucc] using hmRec
+    simpa [hcm, hcSucc] using! hmRec
   exact (mul_eq_zero.mp hmul).resolve_left (ne_of_gt hBInt)
 
 /-! ## Doubled-prime and single-power divisibility criteria -/
@@ -283,9 +283,9 @@ theorem sq_dvd_double_strictFacTop_factorialGapPrefix_iff
   exact
     sq_dvd_double_strictSuccessor_prime_iff
       hp hpTwo
-      (by simpa only [Nat.cast_mul, Nat.cast_ofNat] using hrec)
+      (by simpa only [Nat.cast_mul, Nat.cast_ofNat] using! hrec)
       hbLower
-      (by simpa only [Nat.cast_mul, Nat.cast_ofNat] using hbUpper)
+      (by simpa only [Nat.cast_mul, Nat.cast_ofNat] using! hbUpper)
 
 /-- A cofinal family of odd primes at which both doubled-index
 square-hit branches fail proves the original Erdős #68 series irrational.
@@ -332,7 +332,7 @@ theorem dvd_strictFacTop_factorialGapPrefix_iff_predecessorGap_window
   obtain ⟨hbLower, hbUpper⟩ := factorialGapStepCarry_bounds hm
   have hmInt : (3 : ℤ) ≤ m := by exact_mod_cast hm
   rw [dvd_strictSuccessor_iff_roundingDigit_eq_one
-    hmInt (by simpa using hrec) hbLower hbUpper]
+    hmInt (by simpa using! hrec) hbLower hbUpper]
   unfold factorialGapStepCarry
   simp only [one_div]
   constructor
@@ -466,10 +466,10 @@ theorem firstExit_carry_eq_neg_one_iff
     have hfloor : ⌊firstExitDelta τ V⌋ = 1 := by omega
     have hlower := Int.floor_le (firstExitDelta τ V)
     rw [hfloor] at hlower
-    simpa using hlower
+    simpa using! hlower
   · intro hδ1
     have hfloor1 : (1 : ℤ) ≤ ⌊firstExitDelta τ V⌋ :=
-      Int.le_floor.mpr (by simpa using hδ1)
+      Int.le_floor.mpr (by simpa using! hδ1)
     have hfloor2 : ⌊firstExitDelta τ V⌋ < 2 :=
       Int.floor_lt.mpr hδ2
     omega
@@ -521,7 +521,7 @@ theorem actualFirstCrossing_denominator_ge
   have hbounds := actualFirstCrossing_gap_bounds hτ hbefore hcross
   apply positive_fraction_denominator_ge ha hv (Nat.sub_pos_of_lt hfac)
   rw [← hgap]
-  simpa [Nat.cast_sub hfac.le] using hbounds.2
+  simpa [Nat.cast_sub hfac.le] using! hbounds.2
 
 /-- On the actual negative-unit exit branch, the first-crossing gap has the
 strong denominator lower bound `τ! (τ! - 1)`. -/
@@ -559,7 +559,7 @@ theorem actualFirstCrossing_negCarry_denominator_ge
   apply positive_real_fraction_denominator_ge ha hv
     (Nat.mul_pos (Nat.factorial_pos τ) (Nat.sub_pos_of_lt hfac))
   rw [← hgapReal]
-  simpa [Nat.cast_mul, Nat.cast_sub hfac.le] using hsmall
+  simpa [Nat.cast_mul, Nat.cast_sub hfac.le] using! hsmall
 
 /-! ## An independent factorial interval inequality -/
 

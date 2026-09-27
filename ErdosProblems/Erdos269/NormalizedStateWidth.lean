@@ -111,16 +111,16 @@ theorem half_height_mul_shellMass_le (m n : ℕ) :
 theorem hasSum_succ_sq_mul_geometric {r : ℝ} (hr : |r| < 1) :
     HasSum (fun n : ℕ => (((n + 1 : ℕ) : ℝ)) ^ 2 * r ^ n)
       (2 * (1 / (1 - r) ^ 3) - 1 / (1 - r) ^ 2) := by
-  have hr' : ‖r‖ < 1 := by simpa [Real.norm_eq_abs] using hr
+  have hr' : ‖r‖ < 1 := by simpa [Real.norm_eq_abs] using! hr
   have h2 := hasSum_choose_mul_geometric_of_norm_lt_one 2 hr'
   have h1 := hasSum_choose_mul_geometric_of_norm_lt_one 1 hr'
   have hcomb := (h2.mul_left 2).sub h1
   refine hcomb.congr_fun ?_
   intro n
   have hc2 : ((n + 2).choose 2 : ℝ) * 2 = ((n + 2 : ℕ) : ℝ) * ((n + 1 : ℕ) : ℝ) := by
-    have h := Nat.succ_mul_choose_eq (n + 1) 1
+    have h := Nat.add_one_mul_choose_eq (n + 1) 1
     rw [Nat.choose_one_right] at h
-    have h' : (n + 2) * (n + 1) = (n + 2).choose 2 * 2 := by simpa using h
+    have h' : (n + 2) * (n + 1) = (n + 2).choose 2 * 2 := by simpa using! h
     exact_mod_cast h'.symm
   have hc1 : ((n + 1).choose 1 : ℝ) = ((n + 1 : ℕ) : ℝ) := by
     rw [Nat.choose_one_right]
@@ -152,7 +152,7 @@ theorem trueNormalizedState_le_quadratic (m : ℕ) :
         / 2)
       (15 * ((m + 1 : ℕ) : ℝ) ^ 2 * 12 / 2) := by
     have := (hasSum_succ_sq_div_two_pow.mul_left (15 * ((m + 1 : ℕ) : ℝ) ^ 2)).div_const 2
-    simpa using this
+    simpa using! this
   have hle : ∀ n : ℕ,
       (threePrimeHeight 2 3 5 (2 ^ m) : ℝ) / 2 * dyadicShellMassR235 (m + n)
         ≤ 15 * ((m + 1 : ℕ) : ℝ) ^ 2 * ((((n + 1 : ℕ) : ℝ)) ^ 2 * (1 / 2 : ℝ) ^ n) / 2 := by

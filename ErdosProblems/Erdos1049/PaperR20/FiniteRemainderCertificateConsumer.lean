@@ -134,10 +134,10 @@ theorem actualMoment_eq_coefficientLinearForm_of_finite_certificate
   have heval (P : ParameterPolynomial) : f P = P.eval₂ (Int.castRingHom ℝ) p := rfl
   have hsumC : (∑ k, Cv k) = coefficientAlpha p m := by
     have h := congrArg f halpha
-    simpa [Cv, coefficientAlpha, f, parameterEval] using h
+    simpa [Cv, coefficientAlpha, f, parameterEval] using! h
   have hzero : f Qzero + p ^ d * coefficientAlpha p m = 0 := by
     have h := congrArg f hconstant
-    simpa [coefficientAlpha, f, parameterEval] using h
+    simpa [coefficientAlpha, f, parameterEval] using! h
   have hkernel : ∀ t : ℕ,
       momentRationalKernel q m (q ^ t) = finiteRationalKernel q m A Cv t := by
     intro t
@@ -198,7 +198,7 @@ theorem actualMoment_eq_coefficientLinearForm_of_finite_certificate
         map_mul, map_pow, map_prod, map_sub, map_one, hpX] at hpoly hQ
       rw [hQ] at hpoly
       rw [hclear]
-      simpa only [f, Cv, mul_assoc, mul_comm, mul_left_comm] using hpoly
+      simpa only [f, Cv, mul_assoc, mul_comm, mul_left_comm] using! hpoly
     have hscaled :
         p ^ d * momentRationalKernel q m x =
           (∑ j : Fin m, f (Qcoeff j) * x ^ (j.val + 1)) +
@@ -246,7 +246,7 @@ theorem actualMoment_eq_coefficientLinearForm_of_finite_certificate
         ne_of_gt (sub_pos.mpr (one_lt_pow₀ hp (by omega)))
       have hd : f (Cpoly k) =
           (p ^ (n.val + 1) - 1) * f (Cquot k n) := by
-        simpa [f, parameterEval] using congrArg f (hCdiv k n)
+        simpa [f, parameterEval] using! congrArg f (hCdiv k n)
       dsimp [q, Cv]
       rw [inv_pow]
       rw [hd]
@@ -258,7 +258,7 @@ theorem actualMoment_eq_coefficientLinearForm_of_finite_certificate
       ne_of_gt (sub_pos.mpr (one_lt_pow₀ hp (by omega)))
     have hd : f (Qcoeff j) =
         (p ^ (j.val + 1) - 1) * f (Qquot j) := by
-      simpa [f, parameterEval] using congrArg f (hQdiv j)
+      simpa [f, parameterEval] using! congrArg f (hQdiv j)
     dsimp [A, q]
     rw [inv_pow]
     rw [hd]
@@ -273,7 +273,7 @@ theorem actualMoment_eq_coefficientLinearForm_of_finite_certificate
         p ^ d * (∑ k : Fin (m + 1), ∑ n : Fin (m + k.val), f (Cquot k n)) -
           ∑ j : Fin m, p ^ (j.val + 1) * f (Qquot j) := by
       simp only [map_sub, map_mul, map_pow, map_sum] at hbetaEval
-      simpa [coefficientBeta, f, parameterEval] using hbetaEval
+      simpa [coefficientBeta, f, parameterEval] using! hbetaEval
     apply (mul_left_cancel₀ hpd)
     calc
       p ^ d *

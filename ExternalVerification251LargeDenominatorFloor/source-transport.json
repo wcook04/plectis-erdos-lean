@@ -37,7 +37,13 @@
       "module": "ErdosProblems.Erdos251.PrimeGapDyadicTail",
       "source_path": "lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
       "target_path": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-      "sha256": "d284ca394ba94d6e43b2819757ce27eb86562949b525f8bbf81546d613abfcd1"
+      "sha256": "d284ca394ba94d6e43b2819757ce27eb86562949b525f8bbf81546d613abfcd1",
+      "target_toolchain_port": {
+        "commit": "85c5678e5cdd31a10d817c0608f23f127f5c5ecb",
+        "sha256": "ea39de17ce64bea4f66b0f15e73fe82b5bad375e86bd66cb1aedea1ad5bb3fc2",
+        "reason": "Reuse the existing Lean 4.35 summable_nat_add_iff replacements at three finite-tail shifts; all theorem statements remain unchanged.",
+        "Lean_Comparator_acceptance": "pending for this large-certificate family"
+      }
     },
     {
       "module": "ErdosProblems.Erdos251.StreamingChunksV5.Chunk0001",
@@ -1545,7 +1551,7 @@
   "compared_declaration": "Erdos249257.ExternalVerification251LargeDenominatorFloor.denominator_floor_both",
   "paper_obligation": "erdos251-prime-gap-reasoning-surface#long251:res:cfexclusion",
   "status": "source_transport_prepared_pending_target_toolchain_replay",
-  "module_byte_policy": "Each listed target file must equal the full source file at the pinned upstream commit.",
+  "module_byte_policy": "sha256 preserves the pinned upstream source. Target files must match it unless target_toolchain_port records an exact reviewed port commit, target hash and reason; such a port is not new Lean or Comparator acceptance.",
   "source_environment": {
     "lean-toolchain": {
       "sha256": "88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5",
@@ -1556,6 +1562,15 @@
     }
   },
   "target_environment": {
+    "lean-toolchain": {
+      "sha256": "8dc8d6f560141069d9073e370611716ef77ada0da8ffa37e2149f44b2e63ac7a",
+      "value": "leanprover/lean4:v4.35.0-rc2"
+    },
+    "lake-manifest.json": {
+      "sha256": "22ddb352879d89d8ff34a033875b9eeb338e74aba38c44f066594a2e3231e383"
+    }
+  },
+  "previous_target_environment": {
     "lean-toolchain": {
       "sha256": "54727eec5cba149c18842e6deb5c41b369d66455c93ce135d7d5347c782b2325",
       "value": "leanprover/lean4:v4.30.0"

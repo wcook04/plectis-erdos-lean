@@ -3,6 +3,9 @@
 # SPDX-License-Identifier: Apache-2.0
 """Regression checks for release enumeration and checkout metadata boundaries."""
 import json
+import hashlib
+import importlib.util
+import subprocess
 from pathlib import Path
 import tempfile
 import unittest
@@ -14,6 +17,12 @@ import check_axiom_budget as axioms
 
 
 class ReleaseToolsTests(unittest.TestCase):
+    def test_release_gate_rejects_an_unpinned_added_action(self):
+        pinned = 'actions/checkout@' + 'a' * 40
+        workflow = f'      - uses: {pinned}\n      - uses: actions/download-artifact@v4\n'
+        self.assertEqual(snapshot._unpinned_workflow_actions(workflow),
+                         (2, ['actions/download-artifact@v4']))
+
     def test_publication_inventory_is_every_paper_order_entry_and_refuses_a_stray(self):
         with tempfile.TemporaryDirectory() as tmp, patch.object(axioms, "REPO_ROOT", Path(tmp)):
             root = Path(tmp)
@@ -46,7 +55,8 @@ class ReleaseToolsTests(unittest.TestCase):
 
     def test_publication_audit_rejects_candidate_local_challenge_import(self):
         with tempfile.TemporaryDirectory() as tmp, patch.object(axioms, "REPO_ROOT", Path(tmp)), \
-                patch.object(axioms, "source_identity", return_value={"commit": "test"}):
+                patch.object(axioms, "source_identity", return_value={"commit": "test", "source_file_count": 0,
+                                                                     "deleted_in_worktree": [], "source_files_sha256": "x"}):
             entry = Path(tmp) / "PalomarCorpus/E68"
             entry.mkdir(parents=True)
             (entry / "comparator.json").write_text(json.dumps({
@@ -55,8 +65,84 @@ class ReleaseToolsTests(unittest.TestCase):
                 "theorem_names": ["PalomarCorpus.E68.Family.result"],
             }))
             (entry / "Challenge.lean").write_text("import Solutions.PalomarCorpus.E68\n")
+            progress = Path(tmp) / "audit-progress.json"
             with self.assertRaisesRegex(ValueError, "only Mathlib"):
-                axioms.run_palomar_audits(["PalomarCorpus/E68"])
+                axioms.run_palomar_audits(["PalomarCorpus/E68"], progress)
+            saved = json.loads(progress.read_text())
+            self.assertEqual(saved["planned_entries"], ["PalomarCorpus/E68"])
+            self.assertEqual(saved["outcomes"][0]["status"], "invalid")
+            self.assertIn("only Mathlib", saved["outcomes"][0]["error"])
+
+    def test_late_duplicate_identity_aborts_before_any_build(self):
+        with tempfile.TemporaryDirectory() as tmp, patch.object(axioms, "REPO_ROOT", Path(tmp)), \
+                patch.object(axioms, "source_identity", return_value={"commit": "test"}):
+            paths = ["PalomarCorpus/E68", "PalomarCorpus/E243"]
+            for path in paths:
+                root = Path(tmp) / path
+                root.mkdir(parents=True)
+                problem = root.name
+                (root / "Challenge.lean").write_text("import Mathlib\n")
+                (root / "comparator.json").write_text(json.dumps({
+                    "challenge_module": f"PalomarCorpus.{problem}.Challenge",
+                    "solution_module": f"Solutions.PalomarCorpus.{problem}",
+                    "theorem_names": ["Same.selected_theorem"],
+                }))
+            progress = Path(tmp) / "audit-progress.json"
+            with patch.object(axioms.subprocess, "run") as runner, \
+                    self.assertRaisesRegex(ValueError, "duplicated selected"):
+                axioms.run_palomar_audits(paths, progress)
+            runner.assert_not_called()
+            self.assertEqual([row["status"] for row in json.loads(progress.read_text())["outcomes"]],
+                             ["not_attempted", "invalid"])
+
+    def test_publication_audit_continues_after_an_early_build_failure(self):
+        with tempfile.TemporaryDirectory() as tmp, patch.object(axioms, "REPO_ROOT", Path(tmp)), \
+                patch.object(axioms, "source_identity", return_value={"commit": "test", "source_file_count": 0,
+                                                                     "deleted_in_worktree": [], "source_files_sha256": "x"}):
+            paths = ["PalomarCorpus/E68", "PalomarCorpus/E243"]
+            for path in paths:
+                root = Path(tmp) / path
+                root.mkdir(parents=True)
+                problem = root.name
+                (root / "Challenge.lean").write_text("import Mathlib\n")
+                (root / "comparator.json").write_text(json.dumps({
+                    "challenge_module": f"PalomarCorpus.{problem}.Challenge",
+                    "solution_module": f"Solutions.PalomarCorpus.{problem}",
+                    "theorem_names": [f"PalomarCorpus.{problem}.result"],
+                }))
+            results = [subprocess.CompletedProcess([], 1, "", "first proof failed"),
+                       subprocess.CompletedProcess([], 0, "'PalomarCorpus.E243.result' does not depend on any axioms", "")]
+            progress = Path(tmp) / "audit-progress.json"
+            with patch.object(axioms.subprocess, "run", side_effect=results) as runner:
+                output, binding, outcomes = axioms.run_palomar_audits(paths, progress)
+            self.assertEqual(runner.call_count, 2)
+            self.assertEqual([row["status"] for row in outcomes], ["fail", "pass"])
+            self.assertIn("first proof failed", output)
+            self.assertTrue(binding["source_stable"])
+            saved = json.loads(progress.read_text())
+            self.assertEqual(saved["planned_entries"], paths)
+            self.assertEqual(saved["outcomes"], outcomes)
+
+    def test_publication_audit_records_timeout_and_source_change(self):
+        with tempfile.TemporaryDirectory() as tmp, patch.object(axioms, "REPO_ROOT", Path(tmp)):
+            root = Path(tmp) / "PalomarCorpus/E68"
+            root.mkdir(parents=True)
+            (root / "Challenge.lean").write_text("import Mathlib\n")
+            (root / "comparator.json").write_text(json.dumps({
+                "challenge_module": "PalomarCorpus.E68.Challenge",
+                "solution_module": "Solutions.PalomarCorpus.E68",
+                "theorem_names": ["PalomarCorpus.E68.result"],
+            }))
+            before = {"commit": "test", "source_file_count": 1,
+                      "deleted_in_worktree": [], "source_files_sha256": "old"}
+            after = {**before, "source_files_sha256": "new"}
+            timeout = subprocess.TimeoutExpired(["lake", "lean"], 600, output=b"partial proof")
+            with patch.object(axioms, "source_identity", side_effect=[before, after]), \
+                    patch.object(axioms.subprocess, "run", side_effect=timeout):
+                output, binding, outcomes = axioms.run_palomar_audits(["PalomarCorpus/E68"])
+            self.assertIn("partial proof", output)
+            self.assertEqual(outcomes[0]["status"], "timeout")
+            self.assertFalse(binding["source_stable"])
 
     def test_git_pointer_file_is_metadata_but_source_leaks_are_reported(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -106,6 +192,52 @@ class ReleaseToolsTests(unittest.TestCase):
                 (root / 'lakefile.toml').write_text(f'defaultTargets = {targets}\n')
                 with self.subTest(targets=targets), patch.object(release, 'REPO_ROOT', root), self.assertRaises(ValueError):
                     release.build(None, 'test-commit')
+
+
+class TransportIdentityTests(unittest.TestCase):
+    def setUp(self):
+        path = Path(__file__).resolve().parents[1] / "ExternalVerification251LargeDenominatorFloor/verify_transport.py"
+        spec = importlib.util.spec_from_file_location("large_floor_transport", path)
+        self.transport = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(self.transport)
+
+    def test_unrecorded_source_drift_is_refused(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            row = {"target_path": "proof.lean", "sha256": hashlib.sha256(b"source").hexdigest()}
+            (root / "proof.lean").write_bytes(b"source")
+            self.transport.check_module_identity(root, [row])
+            (root / "proof.lean").write_bytes(b"changed")
+            with self.assertRaisesRegex(ValueError, "Pinned target drift"):
+                self.transport.check_module_identity(root, [row])
+
+    def test_explicit_port_is_pinned_and_preserves_original_identity(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            source_hash = hashlib.sha256(b"source").hexdigest()
+            row = {"target_path": "proof.lean", "sha256": source_hash,
+                   "target_toolchain_port": {"commit": "a" * 40,
+                       "sha256": hashlib.sha256(b"port").hexdigest(),
+                       "reason": "Existing finite-tail API port"}}
+            (root / "proof.lean").write_bytes(b"port")
+            self.transport.check_module_identity(root, [row])
+            self.assertEqual(row["sha256"], source_hash)
+            (root / "proof.lean").write_bytes(b"unreviewed change")
+            with self.assertRaisesRegex(ValueError, "Pinned target drift"):
+                self.transport.check_module_identity(root, [row])
+
+    def test_partial_port_record_cannot_override_source_hash(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "proof.lean").write_bytes(b"port")
+            complete = {"commit": "a" * 40, "sha256": hashlib.sha256(b"port").hexdigest(),
+                        "reason": "Existing finite-tail API port"}
+            for missing in complete:
+                port = {key: value for key, value in complete.items() if key != missing}
+                row = {"target_path": "proof.lean", "sha256": hashlib.sha256(b"source").hexdigest(),
+                       "target_toolchain_port": port}
+                with self.subTest(missing=missing), self.assertRaisesRegex(ValueError, "Incomplete target"):
+                    self.transport.check_module_identity(root, [row])
 
 
 if __name__ == '__main__':

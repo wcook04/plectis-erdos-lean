@@ -15,8 +15,8 @@ def radialEqualityPolynomial (n : ℕ) (h lam : ℂ) : ℂ[X] := (X - C h) ^ n -
 theorem radialEqualityPolynomial_monic_degree (n : ℕ) (hn : 0 < n) (h lam : ℂ) :
     (radialEqualityPolynomial n h lam).IsMonicOfDegree n := by
   have H : ((X - C h : ℂ[X]) ^ n).IsMonicOfDegree n := by
-    simpa only [one_mul] using (isMonicOfDegree_X_sub_one h).pow n
-  exact H.sub (by simpa only [natDegree_C] using hn)
+    simpa only [one_mul] using! (isMonicOfDegree_X_sub_one h).pow n
+  exact H.sub (by simpa only [natDegree_C] using! hn)
 
 theorem radialEqualityPolynomial_roots (n : ℕ) (hn : 0 < n) (h lam : ℂ)
     (R : ℝ) (hR : 0 ≤ R) (hlam : ‖lam‖ = R ^ n) :
@@ -24,12 +24,12 @@ theorem radialEqualityPolynomial_roots (n : ℕ) (hn : 0 < n) (h lam : ℂ)
   intro z hz
   have hzpow : (z - h) ^ n = lam := by
     simpa only [radialEqualityPolynomial, eval_sub, eval_pow, eval_X, eval_C,
-      sub_eq_zero] using hz
+      sub_eq_zero] using! hz
   have he : ‖z - h‖ ^ n = R ^ n := by
-    simpa only [norm_pow, hlam] using congrArg norm hzpow
+    simpa only [norm_pow, hlam] using! congrArg norm hzpow
   apply (Real.rpow_le_rpow_iff (norm_nonneg _) hR
     (show (0 : ℝ) < n by exact_mod_cast hn)).mp
-  simpa only [Real.rpow_natCast, he] using (le_refl (R ^ n))
+  simpa only [Real.rpow_natCast, he] using! (le_refl (R ^ n))
 
 theorem radialEqualityPolynomial_critical (n : ℕ) (h lam : ℂ) :
     CriticalEnumeration (radialEqualityPolynomial n h lam) (fun _ : Fin (n - 1) => h) := by
@@ -67,10 +67,10 @@ theorem paper_critical_mean_sharpness (n : ℕ) (hn : 2 ≤ n) (h lam : ℂ)
     radialEqualityPolynomial_critical n h lam, ?_, ?_⟩
   · have H := radialEqualityPolynomial_moment n hn0 h lam R hR hlam (2 / ((n : ℝ) - 1))
     have he : (n : ℝ) * (2 / ((n : ℝ) - 1)) = 2 * (n : ℝ) / ((n : ℝ) - 1) := by ring
-    simpa only [hcast, he] using H
+    simpa only [hcast, he] using! H
   · have H := radialEqualityPolynomial_moment n hn0 h lam R hR hlam (1 / (n : ℝ))
     have he : (n : ℝ) * (1 / (n : ℝ)) = 1 := by field_simp
-    simpa only [hcast, he, Real.rpow_one] using H
+    simpa only [hcast, he, Real.rpow_one] using! H
 
 /-- Finite Markov bound, including repeated values as separate indices. -/
 theorem finite_power_tail_bound {ι : Type*} [Fintype ι] (x : ι → ℝ)
@@ -140,7 +140,7 @@ theorem paper_critical_radius_tail {n : ℕ} (hn : 2 ≤ n) (f : ℂ[X])
     (fun j => ‖f.eval (c j)‖ ^ (1 / (n : ℝ)) / R)
     (fun j => div_nonneg (Real.rpow_nonneg (norm_nonneg _) _) hR.le)
     p t ((n : ℝ) - 1) hp ht H
-  simpa only [le_div_iff₀ hR, p] using Htail
+  simpa only [le_div_iff₀ hR, p] using! Htail
 
 /-- The budget supplies a small critical value but no connecting path. -/
 theorem exists_critical_value_le_radius_power {n : ℕ} (hn : 2 ≤ n) (f : ℂ[X])

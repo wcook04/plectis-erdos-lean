@@ -370,7 +370,7 @@ theorem coneCommonPoint_of_succ {H L : ℕ} {Q : List ℕ}
     push_cast
     ring
   -- y = (2·P0 + f + b) + 2^{L+1}·D
-  have hdiv := Int.ediv_add_emod (y - P1) (2 ^ (L + 1))
+  have hdiv := Int.mul_ediv_add_emod (y - P1) (2 ^ (L + 1))
   set D : ℤ := (y - P1) / 2 ^ (L + 1) with hD
   have hy_eq : y = 2 * P0 + f + b + 2 ^ (L + 1) * D := by
     have hyy : y - P1 = 2 ^ (L + 1) * D + b := hdiv.symm
@@ -381,7 +381,7 @@ theorem coneCommonPoint_of_succ {H L : ℕ} {Q : List ℕ}
     rw [hy_eq]
     exact Int.add_mul_emod_self_left m (2 ^ (L + 1)) D
   -- peel the reduced witness: m % 2^{L+1} = (f+b) + 2·(P0 − 2^L·K)
-  have hKdiv := Int.ediv_add_emod m (2 ^ (L + 1))
+  have hKdiv := Int.mul_ediv_add_emod m (2 ^ (L + 1))
   set K : ℤ := m / 2 ^ (L + 1) with hK
   have hmsplit : m % 2 ^ (L + 1) = f + b + 2 * (P0 - 2 ^ L * K) := by
     have h2pow : (2 : ℤ) ^ (L + 1) = 2 * 2 ^ L := by ring

@@ -27,11 +27,11 @@ lemma lowerLimitAtLeast_iff_ereal (f : ℕ → ℝ) (c : ℝ) :
     | bot => exact Eventually.of_forall (fun _ => by simp)
     | coe a =>
       have haa : a < c := by exact_mod_cast ha
-      simpa only [EReal.coe_lt_coe_iff] using h a haa
+      simpa only [EReal.coe_lt_coe_iff] using! h a haa
     | top => simp at ha
   · intro h a ha
     have he := h (a : EReal) (by exact_mod_cast ha)
-    simpa only [EReal.coe_lt_coe_iff] using he
+    simpa only [EReal.coe_lt_coe_iff] using! he
 
 lemma three_halves_power {x : ℝ} (hx : 0 < x) :
     x ^ ((3 : ℝ) / 2) = x * Real.sqrt x := by

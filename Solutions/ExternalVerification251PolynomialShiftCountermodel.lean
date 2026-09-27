@@ -76,8 +76,8 @@ theorem polynomialGapTailCountermodel :
   · intro n
     simpa [polynomialGapWord, ErdosProblems.Erdos251.polynomialGapWord] using
       ErdosProblems.Erdos251.polynomialGapWord_even n
-  · simpa [polynomialGapWord, ErdosProblems.Erdos251.polynomialGapWord] using
-      ErdosProblems.Erdos251.polynomialGapWord_strictMono
+  · rw [polynomialGapWord_eq_source]
+    exact ErdosProblems.Erdos251.polynomialGapWord_strictMono
   · intro h N
     simpa [tailShift, RatIntegral, polynomialTailOrbit,
       ErdosProblems.Erdos251.tailShift,

@@ -91,14 +91,16 @@ automation:
   - method: agent
     models:
     - OpenAI GPT-6 Sol
+    - OpenAI GPT-6 Astra
     framework: Lean 4 and Mathlib
     tool_setup: Exact source transport and independent integer certificate replay; fresh Lean and Comparator replay pending.
 fidelity:
   divergences: >-
     The Challenge independently redeclares the four series definitions against
     Mathlib alone. The Solution applies the exact source declaration. The source
-    closure is byte-identical to the pinned paper repository; the target uses
-    Lean 4.30.0 rather than the source pin's 4.29.1, so acceptance requires a
+    manifest preserves all 256 original source hashes. One module reuses the
+    recorded finite-tail API port; the other 255 remain byte-identical. The
+    target uses Lean 4.35.0-rc2 rather than the source pin's 4.29.1, so acceptance requires a
     fresh build, axiom audit, Comparator check and independent kernel replay.
 review:
   status: self-assessed

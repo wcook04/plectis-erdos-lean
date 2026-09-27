@@ -101,7 +101,7 @@ theorem tendsto_canonicalRemainder_div_factorial_zero (x : ℝ) :
   have hinv :
       Filter.Tendsto (fun N : ℕ => 1 / (N.factorial : ℝ))
         Filter.atTop (nhds 0) := by
-    simpa only [one_div] using tendsto_inv_atTop_zero.comp hfacTop
+    simpa only [one_div, Function.comp_def] using tendsto_inv_atTop_zero.comp hfacTop
   apply squeeze_zero'
   · exact Filter.Eventually.of_forall fun N =>
       div_nonneg (canonicalRemainder_nonneg x N) (by positivity)

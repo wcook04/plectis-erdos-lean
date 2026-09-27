@@ -22,16 +22,16 @@ private theorem definitions_match_region (a b : ℕ) :
 theorem rational_base_region (a b : ℕ) (hb : 0 < b) (hab : b < a)
     (hr : ZudilinContourRegion a b) :
     Irrational (paperLambert ((a : ℝ) / b)) := by
-  simpa only [definitions_match_paperLambert, definitions_match_region] using
+  simpa only [definitions_match_paperLambert, definitions_match_region] using!
     ErdosProblems.Erdos1049.PaperR17.rational_base_region a b hb hab hr
 
 theorem thirtyone_four_powers (r : ℕ) (hr : 0 < r) :
     Irrational (paperLambert (((31 : ℝ) / 4) ^ r)) := by
-  simpa only [definitions_match_paperLambert] using
+  simpa only [definitions_match_paperLambert] using!
     ErdosProblems.Erdos1049.PaperR17.thirtyone_four_powers r hr
 
 theorem thirtyone_four : Irrational (paperLambert ((31 : ℝ) / 4)) := by
-  simpa only [definitions_match_paperLambert] using
+  simpa only [definitions_match_paperLambert] using!
     ErdosProblems.Erdos1049.PaperR17.thirtyone_four
 
 theorem rational_base_measure (a b : ℕ) (hb : 0 < b) (hab : b < a)
@@ -49,7 +49,7 @@ theorem rational_base_measure (a b : ℕ) (hb : 0 < b) (hab : b < a)
     ErdosProblems.Erdos1049.PaperR11.reducedApproximationPairs,
     ErdosProblems.Erdos1049.PaperR11.approximationExponents,
     ErdosProblems.Erdos1049.PaperR11.irrationalityExponent,
-    ErdosProblems.Erdos1049.PaperR10.rationalBaseMeasureBound] using
+    ErdosProblems.Erdos1049.PaperR10.rationalBaseMeasureBound] using!
     ErdosProblems.Erdos1049.PaperR17.rational_base_measure a b hb hab hr
 
 theorem rational_base_power_measure (a b r : ℕ) (hb : 0 < b)
@@ -67,7 +67,7 @@ theorem rational_base_power_measure (a b r : ℕ) (hb : 0 < b)
     ErdosProblems.Erdos1049.PaperR11.reducedApproximationPairs,
     ErdosProblems.Erdos1049.PaperR11.approximationExponents,
     ErdosProblems.Erdos1049.PaperR11.irrationalityExponent,
-    ErdosProblems.Erdos1049.PaperR10.rationalBaseMeasureBound] using
+    ErdosProblems.Erdos1049.PaperR10.rationalBaseMeasureBound] using!
     ErdosProblems.Erdos1049.PaperR17.rational_base_power_measure
       a b r hb hab hr hregion
 
@@ -77,7 +77,7 @@ theorem thirtyone_four_power_measure_lt_301 (r : ℕ) (hr : 0 < r) :
     irrationalityExponent, ErdosProblems.Erdos1049.PaperR7.paperLambert,
     ErdosProblems.Erdos1049.PaperR11.reducedApproximationPairs,
     ErdosProblems.Erdos1049.PaperR11.approximationExponents,
-    ErdosProblems.Erdos1049.PaperR11.irrationalityExponent] using
+    ErdosProblems.Erdos1049.PaperR11.irrationalityExponent] using!
     ErdosProblems.Erdos1049.PaperR17.thirtyone_four_power_measure_lt_301 r hr
 
 theorem thirtyone_four_power_measure_lt_paper_fraction
@@ -88,7 +88,7 @@ theorem thirtyone_four_power_measure_lt_paper_fraction
     irrationalityExponent, ErdosProblems.Erdos1049.PaperR7.paperLambert,
     ErdosProblems.Erdos1049.PaperR11.reducedApproximationPairs,
     ErdosProblems.Erdos1049.PaperR11.approximationExponents,
-    ErdosProblems.Erdos1049.PaperR11.irrationalityExponent] using
+    ErdosProblems.Erdos1049.PaperR11.irrationalityExponent] using!
     ErdosProblems.Erdos1049.PaperR17.thirtyone_four_power_measure_lt_paper_fraction r hr
 
 end PalomarCorpus.E1049.RationalBaseRegion

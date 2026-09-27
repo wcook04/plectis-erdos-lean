@@ -311,7 +311,7 @@ lemma hasSum_lambert (hq0 : 0 < q) (hq1 : q < 1) :
   rw [hasSum_iff_tendsto_nat_of_nonneg h0]
   have hlim : Tendsto (fun J : ℕ => Uq q (q ^ (J + 1)) / Tq q (q ^ (J + 1))) atTop (𝓝 0) := by
     have hup : Tendsto (fun J : ℕ => q ^ J * Uq q q) atTop (𝓝 0) := by
-      simpa using (tendsto_pow_atTop_nhds_zero_of_lt_one hq0.le hq1).mul_const (Uq q q)
+      simpa using! (tendsto_pow_atTop_nhds_zero_of_lt_one hq0.le hq1).mul_const (Uq q q)
     refine squeeze_zero (fun J => ?_) (fun J => ?_) hup
     · have hx0 : 0 ≤ q ^ (J + 1) := pow_nonneg hq0.le _
       have hx1 : q ^ (J + 1) < 1 := pow_lt_one₀ hq0.le hq1 (Nat.succ_ne_zero J)
@@ -358,7 +358,7 @@ lemma hasSum_tau (hq0 : 0 < q) (hq1 : q < 1) : HasSum (tau q) (lambertL q * Pinv
   rw [hasSum_iff_tendsto_nat_of_nonneg (tau_nonneg hq0 hq1)]
   have h1 : Tendsto (fun N : ℕ => (N : ℝ) * tau q N) atTop (𝓝 0) := by
     have hb : Tendsto (fun N : ℕ => betaT q * ((N : ℝ) * q ^ N)) atTop (𝓝 0) := by
-      simpa using (tendsto_self_mul_const_pow_of_lt_one hq0.le hq1).const_mul (betaT q)
+      simpa using! (tendsto_self_mul_const_pow_of_lt_one hq0.le hq1).const_mul (betaT q)
     refine squeeze_zero (fun N => ?_) (fun N => ?_) hb
     · have := tau_nonneg hq0 hq1 N
       positivity
@@ -534,7 +534,7 @@ lemma b2_expand (hq0 : 0 < q) (hq1 : q < 1) (b2 : ℕ → ℝ)
       _ = _ := by rw [h1, h2]; ring
   have hrefl : ∑ i ∈ range (k + 1), tau q (k - i) = ∑ i ∈ range (k + 1), tau q i := by
     have := sum_range_reflect (tau q) (k + 1)
-    simpa using this
+    simpa using! this
   have hsplit := sum_tau_add_tail hq0 hq1 k
   rw [hb2, mul_sum, sum_congr rfl hterm, sum_add_distrib, sum_sub_distrib, sum_sub_distrib,
     sum_const, card_range, nsmul_eq_mul, mul_one, ← mul_sum, ← mul_sum, ← mul_sum, hrefl]
@@ -589,7 +589,7 @@ lemma b3_expand (hq0 : 0 < q) (hq1 : q < 1) (b2 b3 : ℕ → ℝ)
         ring
   have hrefl : ∑ i ∈ range (k + 1), eps2 q (k - i) = ∑ i ∈ range (k + 1), eps2 q i := by
     have := sum_range_reflect (eps2 q) (k + 1)
-    simpa using this
+    simpa using! this
   have hsplit := sum_tau_add_tail hq0 hq1 k
   have hSig : ∑ i ∈ range (k + 1), tau q i = L * Pinv q - tauTail q k := by
     rw [hLdef]
@@ -725,7 +725,7 @@ lemma abs_log_one_add_sub_le {t : ℝ} (ht : |t| ≤ 1 / 2) : |Real.log (1 + t) 
 
 lemma summable_inv_sq_succ : Summable (fun k : ℕ => 1 / ((k : ℝ) + 1) ^ 2) := by
   have h := (summable_nat_add_iff 1).mpr (Real.summable_one_div_nat_pow.mpr one_lt_two)
-  simpa using h
+  simpa using! h
 
 /-- If `|t_k| ≤ A/(k+1)` and `|t_k - s_k| ≤ B/(k+1)^2`, then `log(1+t_k) - s_k` is summable. -/
 lemma summable_log_defect {t s : ℕ → ℝ} {A B : ℝ}

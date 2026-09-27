@@ -120,7 +120,7 @@ theorem actual_exact_modulus_pinning (B lo len K : ℕ) (hB : 0 < B)
       ((B * bridgeWidth (lo + len) : ℕ) : ℝ) := by
     have h := mul_le_mul_of_nonneg_left (trueNormalizedState_le_quadratic (lo + len))
       (show (0 : ℝ) ≤ (B : ℝ) by positivity)
-    simpa [bridgeWidth, Nat.cast_mul, Nat.cast_pow, Nat.cast_add] using h
+    simpa [bridgeWidth, Nat.cast_mul, Nat.cast_pow, Nat.cast_add] using! h
   have hYR : (B : ℝ) * trueNormalizedState (lo + len) ≤ (K : ℝ) :=
     hY.trans (by exact_mod_cast hK)
   have hr0 : (0 : ℝ) ≤ (r : ℤ) := by positivity

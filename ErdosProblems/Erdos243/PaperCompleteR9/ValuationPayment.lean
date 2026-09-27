@@ -90,13 +90,13 @@ theorem contact_full_overlap (p a L u v : ℕ) (hp : Nat.Prime p)
   · constructor
     · intro hd
       rw [← hA] at hd
-      exact hcA.dvd_of_dvd_mul_left (by simpa [mul_comm, g] using hd)
+      exact hcA.dvd_of_dvd_mul_left (by simpa [mul_comm, g] using! hd)
     · intro hd
       exact hd.trans (Nat.gcd_dvd_right L a)
   · constructor
     · intro hd
       rw [← hB] at hd
-      exact hcB.dvd_of_dvd_mul_left (by simpa [mul_comm, g] using hd)
+      exact hcB.dvd_of_dvd_mul_left (by simpa [mul_comm, g] using! hd)
     · intro hd
       exact hd.trans (Nat.gcd_dvd_left L a)
 
