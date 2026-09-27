@@ -22,7 +22,7 @@ jobs:
     timeout-minutes: 355
     env:
       LEAN_NUM_THREADS: '1'
-      P2M_BUNDLE_SHA256: '698218954619f65c0b5ef222727bbbd7e252abf7c11b8506a4d0460a7040a25c'
+      P2M_BUNDLE_SHA256: '9eeb6d24eb9e3a07c508947e971db8f14d9ba947cbdf91bc1d6fd9e1fc8c391e'
       P2M_SOURCE_COMMIT: 'cc7e541cf2081c6fef5a5e377d52e365e33b01eb'
     steps:
       - name: Check out reviewed control files
