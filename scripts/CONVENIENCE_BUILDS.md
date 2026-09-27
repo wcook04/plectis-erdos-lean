@@ -79,7 +79,7 @@ changing a developer build focus must never change manifest membership, audit
 selection, or the release build. Palomar keeps its own existing enumeration.
 Auxiliary Challenge directories are not added by discovery.
 
-After workflow migration, the release gate calls the shared runner with `--release`, which includes every
+The release gate calls the shared runner with `--release`, which includes every
 declared entry and support library before the publication audit. `--focused-only`
 is rejected in that mode. Use `--focus Namespace.Module --focused-only` for a
 source check; the result is `focused-pass`, never release qualification. Preserve
@@ -101,9 +101,4 @@ release attempt. The command records metadata admission only, retains per-comman
 logs and failure JSON, and never asserts compiler or Comparator success. CI uploads
 that directory even when manifest construction fails. No Lean installation is needed.
 
-Deployment boundary: the code-only update supports the currently deployed legacy
-workflows. Its manifest command rejects a legacy release driver whose build
-`defaultTargets` omit any declared entry or support library. The shared workflow
-migration and automatic diagnostic-directory upload require GitHub workflow-write
-authorization; adding these scripts alone does not deploy those workflow edits.
-Local candidate preflight retains the same diagnostic files regardless.
+The shared workflow consumes the declared release population and uploads failure diagnostics. Legacy driver admission remains supported for older branches and fails if their build defaults omit a required target.
