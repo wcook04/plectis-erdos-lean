@@ -91,7 +91,7 @@ theorem weighted_growth_record_excess (a : ℕ → ℕ) (ha : StrictMono a)
       ErdosProblems.Erdos243.PaperCompleteR7.clearedIntegerNumerator,
       ErdosProblems.Erdos243.PaperCompleteR7.prefixProduct,
       ErdosProblems.Erdos243.sylvesterNext] at h ⊢
-  convert h <;> split_ifs <;> simp_all only [ite_true, ite_false]
+  convert h <;> split_ifs <;> first | (simp_all only [ite_true, ite_false]; done) | simp_all
 
 end
 end PalomarCorpus.E243.WeightedRecordExcess
