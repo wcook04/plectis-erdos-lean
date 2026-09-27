@@ -1898,8 +1898,12 @@
           "sha256": "fe6796fb738f1a2d961348a222bf36e1eb05cc0ee45d965150981de341c854d6"
         },
         {
-          "module": "ErdosProblems.Erdos257.PaperCompleteR8.AnalyticSeparationReturn",
-          "sha256": "e7dfeac406d41a2e2c759e0fb796970cdd0683070a60ad010452547f98b07710"
+          "module": "ErdosProblems.Erdos257.PaperCompleteR8.ArbitraryWeightMixedClaim",
+          "sha256": "178828f8466b63d675f421b473db13fe157bbae58b1d377edcf5901c00a6e6f8"
+        },
+        {
+          "module": "ErdosProblems.Erdos257.PaperCompleteR8.ArbitraryWeightReturns",
+          "sha256": "36a45f73c045c45459e63ccfbbb18dcd15127df09f417e4f2499d6fb5516ede7"
         },
         {
           "module": "ErdosProblems.Erdos257.PaperCompleteR8.CommonScale",
@@ -1910,12 +1914,12 @@
           "sha256": "20aa5edfaaa607264d0ccea96504c9bc66286896d8077dfc255955ea2d5a087d"
         },
         {
-          "module": "ErdosProblems.Erdos257.PaperCompleteR8.CountableMeans",
-          "sha256": "5f5178c8ae09c1cbb8267345ebf4bc4f0348549f3193c65b8bc5daa046a633c6"
+          "module": "ErdosProblems.Erdos257.PaperCompleteR8.CountableGaugeBudget",
+          "sha256": "1051ff0f298f5f4f26a0596b2cc9c059c739aeda9e0b20f4ef79c6ce708eedee"
         },
         {
-          "module": "ErdosProblems.Erdos257.PaperCompleteR8.CoverClassTransport",
-          "sha256": "2c4b1c7cbd1a158d56c6ec3df850c17402d6308ca6c2c27310e798b0fb5201ce"
+          "module": "ErdosProblems.Erdos257.PaperCompleteR8.CountableMeans",
+          "sha256": "5f5178c8ae09c1cbb8267345ebf4bc4f0348549f3193c65b8bc5daa046a633c6"
         },
         {
           "module": "ErdosProblems.Erdos257.PaperCompleteR8.CoverPotentialBounds",
@@ -1926,32 +1930,8 @@
           "sha256": "ab7c127328dc6d22c96aebe12197e11218484166e597aa6f2364f6f681e0bcf9"
         },
         {
-          "module": "ErdosProblems.Erdos257.PaperCompleteR8.DivisorCubeIncidence",
-          "sha256": "e7a1ef819f1a83844fe82d9cff99951e39be383844de04e10b84f9de58850aa2"
-        },
-        {
-          "module": "ErdosProblems.Erdos257.PaperCompleteR8.DivisorFrameHostTransport",
-          "sha256": "49362b1f84c25afcfec327c1f9c9d88ee4d5ad0a5a4b27e39a36ea3712045ab9"
-        },
-        {
-          "module": "ErdosProblems.Erdos257.PaperCompleteR8.DivisorFrameWeightedBudget",
-          "sha256": "4e3de7425a6d1596b6a74953a2ec9d92f90bccb703644385dda63b737476f89e"
-        },
-        {
-          "module": "ErdosProblems.Erdos257.PaperCompleteR8.DyadicDivisorFrames",
-          "sha256": "1a4a2ce0354571ef1458fed47288c428b4cec9cdc5886fa58ee9471bc959ea0f"
-        },
-        {
-          "module": "ErdosProblems.Erdos257.PaperCompleteR8.DyadicHostSeparation",
-          "sha256": "38e0bcdbd933d5fbf46039b7acf2129bfddb3c1b038ff5a8ec3b0f2a5d98de3a"
-        },
-        {
           "module": "ErdosProblems.Erdos257.PaperCompleteR8.DyadicKernel",
           "sha256": "e1e39ab5fc72ff0073fb160018a0dc7e6651ceddf3d1336eaa2f227d68144e54"
-        },
-        {
-          "module": "ErdosProblems.Erdos257.PaperCompleteR8.DyadicLogarithmicEvents",
-          "sha256": "ce8930980bd8c6e67457347c708025c5a91f75e0ff6fe94e05021b5532f81103"
         },
         {
           "module": "ErdosProblems.Erdos257.PaperCompleteR8.FiniteCoverLogBudget",
@@ -1980,10 +1960,6 @@
         {
           "module": "ErdosProblems.Erdos257.PaperCompleteR8.PositiveCoverReturn",
           "sha256": "6b0db5654051c0cbadec5b6d75e3c88d937d57602254ebb0c0db6e821ad4f60d"
-        },
-        {
-          "module": "ErdosProblems.Erdos257.PaperCompleteR8.PrimeHarmonicBlocks",
-          "sha256": "c736c368299af1d0d3cdb8db35fca6260fb49d7b2a16d9a0ba6d5b6a4f3180bf"
         },
         {
           "module": "ErdosProblems.Erdos257.PaperCompleteR8.WeightedFiniteEstimates",
@@ -2022,36 +1998,19 @@
           "sha256": "080d1d7e12989e9379c16e179fe5b0693334e8a147fdeb45daa4aa2b87548fb4"
         }
       ],
-      "prepared_graph_sha256": "8425d6b63288b9779d7e14ee0298aff4a558951993afbcc23986d66f917cbdd9",
+      "prepared_graph_sha256": "a9a6b80dac0af9a2a8c02b10ec9443c5eeba302d2a531a0bd572b42c530b5240",
       "project_prefixes": [
         "ErdosProblems",
         "Erdos257PeriodNoncollapse",
         "Erdos249257"
       ],
       "root_modules": [
-        "ErdosProblems.Erdos257.PaperCompleteR8.AnalyticSeparationReturn",
-        "ErdosProblems.Erdos257.PaperCompleteR8.WeightedHereditaryClaim"
+        "ErdosProblems.Erdos257.PaperCompleteR8.ArbitraryWeightMixedClaim"
       ],
       "selected_declarations": [
         {
-          "module": "ErdosProblems.Erdos257.PaperCompleteR8.WeightedReturn",
-          "name": "ErdosProblems.Erdos257.PaperCompleteR8.weightedDyadicMeanTarget"
-        },
-        {
-          "module": "ErdosProblems.Erdos257.PaperCompleteR8.WeightedReturn",
-          "name": "ErdosProblems.Erdos257.PaperCompleteR8.divisibilityWeightedClaim"
-        },
-        {
-          "module": "ErdosProblems.Erdos257.PaperCompleteR8.WeightedHereditaryClaim",
-          "name": "ErdosProblems.Erdos257.PaperCompleteR8.finitePrimeWeighted_subset"
-        },
-        {
-          "module": "ErdosProblems.Erdos257.PaperCompleteR8.WeightedHereditaryClaim",
-          "name": "ErdosProblems.Erdos257.PaperCompleteR8.finitePrimeWeighted_fixedBase_hereditary"
-        },
-        {
-          "module": "ErdosProblems.Erdos257.PaperCompleteR8.AnalyticSeparationReturn",
-          "name": "ErdosProblems.Erdos257.PaperCompleteR8.exists_weighted_not_strengthened_host"
+          "module": "ErdosProblems.Erdos257.PaperCompleteR8.ArbitraryWeightMixedClaim",
+          "name": "ErdosProblems.Erdos257.PaperCompleteR8.arbitraryWeightMixedSupport_allBase_hereditary"
         }
       ],
       "source_commit": "c93c2e4dd86a2e317e0cb650ea244fee1afd59c2",

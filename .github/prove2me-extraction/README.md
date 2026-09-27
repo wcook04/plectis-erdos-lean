@@ -3,7 +3,7 @@
 This is a read-only extraction job for pinned public Lean sources. It does
 not call the Prove2Me API or publish a theorem. The exact source commits,
 Lean/Mathlib pins, selected declarations, input module hashes, and official
-extractor hashes are in `manifest.json`. The #257 inventory has 73 modules and
+extractor hashes are in `manifest.json`. The current mixed-support #257 inventory has 67 modules and
 three project prefixes; #243 has 54 modules and one prefix; #249 has 11 modules
 and three prefixes. The input inventory
 does not assert a declaration dependency graph or source positions.
@@ -11,30 +11,31 @@ does not assert a declaration dependency graph or source positions.
 The new workflow cannot receive `workflow_dispatch` while it is absent from
 the default branch. A push to the exact dedicated branch
 `codex/prove2me-remote-extraction-20260924` runs the reviewed `request.json`.
-The current reviewed request selects **#1041 full counterexample extraction**
-at `cc7e541cf2081c6fef5a5e377d52e365e33b01eb`. Its roots are
-`ErdosProblems.Erdos1041.Counterexample.CatalogueAdapter` and
-`ErdosProblems.Erdos1041.Counterexample.HausdorffLength`. All 13 modules and
-four endpoints are retained: the ani degree-seven and total-variation pair,
-the stronger preconnected-set Hausdorff result, and the false path-length
-assertion. The same polynomial's monic/degree/simple open-disc-root facts
-come from Assembly. Credit ani's existing fixed construction; do not claim a
-new counterexample family or a personal audit. Extraction is preparation,
-not generated proof validation or hosted acceptance.
+The current reviewed request selects **#257 mixed-support extraction**
+at `c93c2e4dd86a2e317e0cb650ea244fee1afd59c2`. Its root is
+`ErdosProblems.Erdos257.PaperCompleteR8.ArbitraryWeightMixedClaim`; the selected
+endpoint is `arbitraryWeightMixedSupport_allBase_hereditary`. All 67 modules
+are retained. The theorem assumes finite-prime weighted binary mass on E and
+an arbitrary positive-weight logarithmic cover of V; it concludes all-base
+hereditary irrationality on E union V. It does not prove irrationality on an
+arbitrary infinite support. The proof chooses a common sample for both
+budgets; separate small-return witnesses would not suffice.
 
-The manifest preserves all seven earlier cases and global extractor pins.
-#251 keeps both full-strength denominator endpoints and all 250 streaming
-certificate blocks in its 256-module closure. Its exact source build 36295809434
-passed, followed by successful full extraction 36298650345. The original
-GitHub artifact and metadata, frozen manifest and verified import of 256 modules
-were retained before this request advanced. #269 retains both targets over
+This updates only the #257 case. The historical weighted #257 extraction
+remains frozen under its earlier manifests; accepted proofs are not repeated
+by this request. All seven other cases and the global extractor pins are
+unchanged. The full #1041 counterexample extraction 36300898010 succeeded;
+its original GitHub artifact 10926345599, metadata, exact manifest and verified
+13-module/four-target intake were retained before this request advanced.
+#251 retains both full-strength denominator endpoints and all 250 streaming
+certificate blocks in its 256-module closure. #269 retains both targets over
 15 modules; #1049 retains all eight targets over 59 modules.
 Do not push another request while an extraction is active: branch concurrency
 cancels the in-progress job. Advance one selected request only after consuming
 the preceding job's terminal receipt and preserving its artifact.
 If Stage 2 hits the job limit, the graph and completed partial files remain in
 the run artifact. Set `problem` to `243` in a later reviewed commit to use the
-other source pin, or `257` for the existing #257 case. The CLI explicitly admits
+other source pin, or `257` for this mixed-support case. The CLI explicitly admits
 only these eight reviewed cases. Every push that changes this directory or the workflow file
 launches a run; an unchanged branch does not rerun.
 
