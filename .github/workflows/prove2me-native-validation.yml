@@ -22,7 +22,7 @@ jobs:
     timeout-minutes: 355
     env:
       LEAN_NUM_THREADS: '1'
-      P2M_BUNDLE_SHA256: 'ef97191a8a28bc95acf682d04e7c318fb86045e47c15f06abc2e7c13e438b372'
+      P2M_BUNDLE_SHA256: '87939a7b191f2c4a1e2399585bc6ccbb0d153d37ddbfaa8d102829c796b9cabc'
       P2M_SOURCE_COMMIT: 'cc7e541cf2081c6fef5a5e377d52e365e33b01eb'
     steps:
       - name: Check out reviewed control files
@@ -36,7 +36,7 @@ jobs:
           mkdir -p output
           python3 control/.github/prove2me-native-validation/transport.py preflight-bundle \
             --bundle "$GITHUB_WORKSPACE/control/.github/prove2me-native-validation/input-1041.zip" \
-            --bundle-sha256 "$P2M_.github/prove2me-native-validation/input-1041.zip_SHA256" \
+            --bundle-sha256 "$P2M_BUNDLE_SHA256" \
             --source-commit "$P2M_SOURCE_COMMIT" \
             | tee output/bundle-preflight.json
       - name: Check out exact source commit
