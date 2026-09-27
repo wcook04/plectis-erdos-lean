@@ -3252,6 +3252,112 @@
       ],
       "source_commit": "fcb1eff5111efabc25fcf3dfcd6ec48d42ef345c",
       "toolchain": "leanprover/lean4:v4.30.0"
+    },
+    "249_remainder": {
+      "mathlib_rev": "c5ea00351c28e24afc9f0f84379aa41082b1188f",
+      "module_rows": [
+        {
+          "module": "Erdos249257.AllBaseTotientKernel",
+          "sha256": "5862e926deceaf81e0a4aac92a7d09467323fc563cdf3c827f465cb4e9ec5dd5"
+        },
+        {
+          "module": "Erdos249257.TotientKernelConditional",
+          "sha256": "6cd4b6af80cf5f476c90a45e8d9663b9de72b0ca80df8c79c329f3141dbb6f90"
+        },
+        {
+          "module": "Erdos249257.TotientKernelIndex",
+          "sha256": "152b4b0326502598ae8c44edc93206a042dc6e200f5d64176040d954c01c63b1"
+        },
+        {
+          "module": "Erdos249257.TotientKernelReduction",
+          "sha256": "cdeaca7d9477f6e493966506e252a0ccc549f27ee60fe77260dfe41044292def"
+        },
+        {
+          "module": "Erdos249257.TotientMahlerDefect",
+          "sha256": "3eb11c02684d26ea3dd061be940709795edaa9d323dee0b2ad29797dcdf6ad53"
+        },
+        {
+          "module": "Erdos257PeriodNoncollapse.AllBaseTotientKernel",
+          "sha256": "086243adddbda820c66a95a18a28f038e3a02a1adca69c52648b89b1d66c931a"
+        },
+        {
+          "module": "Erdos257PeriodNoncollapse.TotientMahlerDefect",
+          "sha256": "1e2d07e13c4621303ec3bd3b78e1e49abe833d5fccdc6665b5c9cd93067b1533"
+        },
+        {
+          "module": "ErdosProblems.Erdos249.PaperCompleteR20.PeriodicIntegerAffine",
+          "sha256": "61918e563bf5358819e6a129a587eea0637869884f66e062ebf11e269ca1945e"
+        },
+        {
+          "module": "ErdosProblems.Erdos249.PaperCompleteR7.KernelIntegral",
+          "sha256": "fbea80a583ea4232f1e49ae3612a7a9d2c7ad999c82faf891b502ae0d8f46072"
+        },
+        {
+          "module": "ErdosProblems.Erdos249.PaperCompleteR7.PeriodicAndPulse",
+          "sha256": "0bed2a6549b785ead149ccbcff4187a794e346e7e6ca3a7b205b45c4a36be818"
+        },
+        {
+          "module": "ErdosProblems.Erdos249.PaperCompleteR7.RationalObservableClassification",
+          "sha256": "8126b3a5419f134e75e0cc74155273ec5223c0fca90acdf9c83ebcc2b939e953"
+        },
+        {
+          "module": "ErdosProblems.Erdos249.PaperCompleteR8.FullKernelAssemblies",
+          "sha256": "dbacdf233edcb87a3f0e0dd35fb6d5adcd05ba91cd4ed3e2aa1ae7e4da0f1785"
+        },
+        {
+          "module": "ErdosProblems.Erdos249.PaperCompleteR8.KernelRelationBasis",
+          "sha256": "2bbe158ebf0dad3125ffb084941206c02301cbe1f2c09cddb48fe2e625f74954"
+        },
+        {
+          "module": "ErdosProblems.Erdos249.PaperCompleteR8.UnitPivotBasis",
+          "sha256": "e11b92bf486db8d8d8059931bdf3a1424278071b74d4f590e4231902ee020965"
+        },
+        {
+          "module": "ErdosProblems.Erdos249.PeriodicTotientIndependence",
+          "sha256": "14e74b1d9c969085a4f577acc86a2d4cdaf0e58af45de2d467c3f41f29556b16"
+        },
+        {
+          "module": "ErdosProblems.Erdos249.ResidueClassTotientSeries",
+          "sha256": "dea677ad39aee98304defdb5c88afa77603b2d6cc6cdc6822635fc88b8f97e7e"
+        }
+      ],
+      "prepared_graph_sha256": "babb4010edc7c21b0ff708ecf6cada80a6cf160a7503f5e66195c2466db20788",
+      "project_prefixes": [
+        "ErdosProblems",
+        "Erdos257PeriodNoncollapse",
+        "Erdos249257"
+      ],
+      "root_modules": [
+        "ErdosProblems.Erdos249.PaperCompleteR20.PeriodicIntegerAffine",
+        "ErdosProblems.Erdos249.PaperCompleteR7.PeriodicAndPulse",
+        "ErdosProblems.Erdos249.PaperCompleteR7.RationalObservableClassification",
+        "ErdosProblems.Erdos249.PaperCompleteR8.FullKernelAssemblies",
+        "ErdosProblems.Erdos249.PaperCompleteR8.KernelRelationBasis"
+      ],
+      "selected_declarations": [
+        {
+          "module": "ErdosProblems.Erdos249.PaperCompleteR8.FullKernelAssemblies",
+          "name": "ErdosProblems.Erdos249.PaperCompleteR8.displayed_full_dyadic_basis"
+        },
+        {
+          "module": "ErdosProblems.Erdos249.PaperCompleteR8.KernelRelationBasis",
+          "name": "ErdosProblems.Erdos249.PaperCompleteR8.displayed_integral_normal_form"
+        },
+        {
+          "module": "ErdosProblems.Erdos249.PaperCompleteR20.PeriodicIntegerAffine",
+          "name": "ErdosProblems.Erdos249.PaperCompleteR20.periodic_freezing_integer_affine"
+        },
+        {
+          "module": "ErdosProblems.Erdos249.PaperCompleteR7.PeriodicAndPulse",
+          "name": "ErdosProblems.Erdos249.PaperCompleteR7.bounded_isolated_pulse"
+        },
+        {
+          "module": "ErdosProblems.Erdos249.PaperCompleteR7.RationalObservableClassification",
+          "name": "ErdosProblems.Erdos249.PaperCompleteR7.RationalObservables.short_note_residue_theorem"
+        }
+      ],
+      "source_commit": "c93c2e4dd86a2e317e0cb650ea244fee1afd59c2",
+      "toolchain": "leanprover/lean4:v4.30.0"
     }
   },
   "extractor_sha256": {
