@@ -146,6 +146,8 @@ jobs:
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: lean-convenience-${{ github.run_id }}-${{ github.run_attempt }}
+          # Only the explicit JSON/gzip allowlist is uploaded, never the cache.
+          include-hidden-files: true
           path: |
             ${{ runner.temp }}/convenience-target-report.json
             source/.lake/convenience-target-report.json
