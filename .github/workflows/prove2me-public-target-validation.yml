@@ -62,12 +62,18 @@ jobs:
           pinned_lean="$(cd cache && elan which lean)"
           test -f "$pinned_lean"
           test ! -L "$pinned_lean"
+          test -d "$GITHUB_WORKSPACE/cache/.lake/packages/batteries/.lake/build/lib/lean"
+          roots=(--library-root "$GITHUB_WORKSPACE/cache/.lake/build/lib/lean")
+          for package_root in "$GITHUB_WORKSPACE"/cache/.lake/packages/*/.lake/build/lib/lean; do
+            if test -d "$package_root"; then
+              roots+=(--library-root "$package_root")
+            fi
+          done
           python3 packet/run_public_target_validation.py \
             --source "$GITHUB_WORKSPACE/source" \
             --cache "$GITHUB_WORKSPACE/cache" \
             --lean-binary "$pinned_lean" \
-            --library-root "$GITHUB_WORKSPACE/cache/.lake/build/lib/lean" \
-            --library-root "$GITHUB_WORKSPACE/cache/.lake/packages/mathlib/.lake/build/lib/lean" \
+            "${roots[@]}" \
             --out "$GITHUB_WORKSPACE/output/public-target" \
             --timeout-seconds 1800 \
             2>&1 | tee output/validation-console.log
