@@ -14,7 +14,7 @@ permissions:
 
 concurrency:
   group: prove2me-243-public-target-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   validate:
@@ -22,7 +22,7 @@ jobs:
     timeout-minutes: 150
     env:
       LEAN_NUM_THREADS: '1'
-      P2M_BUNDLE_SHA256: 'abbbcf4c88595508b1c7aaf018c88d4af32c9c24b2caaf2545e6c3c4734932af'
+      P2M_BUNDLE_SHA256: '3207021fc036c5a5d4665d71d30b66ece413757e1a8f73a4aed5d264a9fdbe9f'
       P2M_SOURCE_COMMIT: 'fbf41fb8b571d217b1648070dcc39d5eda5394ad'
     steps:
       - name: Check out reviewed control files
@@ -30,6 +30,16 @@ jobs:
         with:
           path: control
           persist-credentials: false
+      - name: Check exact packet before Lean setup
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p output packet
+          echo "P2M_DEADLINE_EPOCH=$(( $(date +%s) + 8100 ))" >> "$GITHUB_ENV"
+          bundle="$GITHUB_WORKSPACE/control/.github/prove2me-public-target-validation/input-243-public-target.zip"
+          echo "$P2M_BUNDLE_SHA256  $bundle" | sha256sum -c -
+          unzip -q "$bundle" -d packet
+          python3 packet/run_public_target_validation.py --check-packet 2>&1 | tee output/packet-preflight.log
       - name: Check out exact source commit
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -55,10 +65,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p output packet cache/.lake/build/lib/lean
-          bundle="$GITHUB_WORKSPACE/control/.github/prove2me-public-target-validation/input-243-public-target.zip"
-          echo "$P2M_BUNDLE_SHA256  $bundle" | sha256sum -c -
-          unzip -q "$bundle" -d packet
+          mkdir -p output cache/.lake/build/lib/lean
           pinned_lean="$(cd cache && elan which lean)"
           test -f "$pinned_lean"
           test ! -L "$pinned_lean"
@@ -66,8 +73,6 @@ jobs:
             --source "$GITHUB_WORKSPACE/source" \
             --cache "$GITHUB_WORKSPACE/cache" \
             --lean-binary "$pinned_lean" \
-            --library-root "$GITHUB_WORKSPACE/cache/.lake/build/lib/lean" \
-            --library-root "$GITHUB_WORKSPACE/cache/.lake/packages/mathlib/.lake/build/lib/lean" \
             --out "$GITHUB_WORKSPACE/output/public-target" \
             --timeout-seconds 1800 \
             2>&1 | tee output/validation-console.log

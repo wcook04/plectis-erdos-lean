@@ -31,6 +31,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import re
 import subprocess
 import sys
@@ -40,6 +41,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import palomar_entry_names  # noqa: E402
+import release_inventory
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 ENTRY_PREFIX = "ExternalVerification"
@@ -78,7 +80,7 @@ def parse_log(text: str) -> dict[str, set[str]]:
 
 
 def entries(*, palomar: bool = False) -> list[str]:
-    """The publication entries (with ``palomar``), else the family directories.
+    """The publication entries (with ``palomar``), else the explicitly selected legacy release entries.
 
     The publication set is every ``PalomarCorpus/E*`` configuration, checked as a whole by
     ``scripts/palomar_entry_names.py``: the paper-order ``E<problem>_<NN>`` entries, or in a
@@ -89,9 +91,7 @@ def entries(*, palomar: bool = False) -> list[str]:
         if (REPO_ROOT / "PalomarCorpus/comparator.json").exists():
             raise ValueError("the superseded flat PalomarCorpus/comparator.json is present")
         return [f"PalomarCorpus/{name}" for name in palomar_entry_names.discover(REPO_ROOT)]
-    return sorted(
-        p.name for p in REPO_ROOT.iterdir() if p.is_dir() and p.name.startswith(ENTRY_PREFIX)
-    )
+    return release_inventory.entries(REPO_ROOT)
 
 
 def source_identity() -> dict:
@@ -107,7 +107,7 @@ def source_identity() -> dict:
     ).decode().split("\0")
     selected = sorted(path for path in set(paths) if path and (
         path.endswith(".lean") or path.endswith("/comparator.json")
-        or path in {"lakefile.toml", "lake-manifest.json", "lean-toolchain"}))
+        or path in {"lakefile.toml", "lake-manifest.json", "lean-toolchain", "release-entries.json"}))
     hashes = {}
     deleted = []
     for path in selected:
@@ -258,4 +258,18 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    try:
+        raise SystemExit(main())
+    except (OSError, ValueError, RuntimeError, subprocess.SubprocessError) as error:
+        # stdout remains a usable JSON artifact even if an imported environment
+        # cannot be opened. Keep the original failure and its source context.
+        report = {'schema': 'plectis_erdos_lean_axiom_budget_check_v1',
+                  'status': 'failed', 'phase': 'audit_environment',
+                  'error': str(error), 'command': sys.argv,
+                  'commit': os.environ.get('GITHUB_SHA'),
+                  'does_not_establish': ['release qualification', 'Comparator equivalence']}
+        if '--json' in sys.argv:
+            print(json.dumps(report, indent=2))
+        from build_launch_targets import annotation
+        print('::error::' + annotation(str(error)), file=sys.stderr)
+        raise SystemExit(1)
