@@ -410,6 +410,10 @@
           "sha256": "680bbc49e07268971b58b5d89c1712f3f0b01eb6833a753c6394e9fc92659816"
         },
         {
+          "module": "ErdosProblems.Erdos243.LcmRecordDivergence",
+          "sha256": "0e7b7d7b4337a1cf6c1738bde29bb41fff9e7164eea3ed3c4d1fbe7e974e0a6e"
+        },
+        {
           "module": "ErdosProblems.Erdos243.LcmRecordExcess",
           "sha256": "84532662775b6b3fc4c8d6b8957727f9668f0162de4b6fa5fa891096d36c9c57"
         },
@@ -538,6 +542,22 @@
           "sha256": "f5ea5f108719f54a3b53985b674de245f78962988cfd7cf0f18e1724d999904f"
         },
         {
+          "module": "ErdosProblems.Erdos243.PaperCompleteR8.CanonicalWeightedRecords",
+          "sha256": "49447007612e14cec3753af7e5f155ff3427c9fdda0baa2ba705a47ab1c9dc3d"
+        },
+        {
+          "module": "ErdosProblems.Erdos243.PaperCompleteR8.Foundation",
+          "sha256": "d6a6cb635a122379ba4621e1a73b8de38ca20ff83009aea3b5fcf7b7a6f63461"
+        },
+        {
+          "module": "ErdosProblems.Erdos243.PaperCompleteR8.WeightAnalysis",
+          "sha256": "621282d39681617d60b0c1ce05d2215b08d1d8545c787cf5c942c396535b1852"
+        },
+        {
+          "module": "ErdosProblems.Erdos243.PaperCompleteR8.WeightedRecords",
+          "sha256": "5fd0792c3334312c6a8d18a1665cb96fce5d3fb2a3590f8e7df16727779b3ad3"
+        },
+        {
           "module": "ErdosProblems.Erdos243.PaperCompleteR9.AdaptiveCoefficients",
           "sha256": "18b6949e9f57b68b44746418c26888cdda7a245a5ac6bd1ac239ef1ce9bef18a"
         },
@@ -574,23 +594,52 @@
           "sha256": "3f9ea00f795247964473c664dcc95f63fe4525a2ea65c3a5491b347c5858688b"
         },
         {
+          "module": "ErdosProblems.Erdos243.SparseResetRecovery",
+          "sha256": "f207295595576c95ab9e7717f219eec3b1d1e33555b0a9a1a1e95c690f623177"
+        },
+        {
           "module": "ErdosProblems.Erdos243.UncentredRecordCharge",
           "sha256": "04c4306f89c159c39f833500781778b79eeb4616fcb5042a1335839cd2ebc8a3"
         }
       ],
-      "prepared_graph_sha256": "906e25e6dd53b7d38f19aa2afe5c2f024131e2d60a2a42598a1cb1a1ede6d47f",
+      "prepared_graph_sha256": "d90c634ed3c6500f4df1e7b9ecd1a28536789ed44737e11dbab17b82e65563ca",
       "project_prefixes": [
         "ErdosProblems",
         "Erdos257PeriodNoncollapse",
         "Erdos249257"
       ],
       "root_modules": [
-        "ErdosProblems.Erdos243.PaperCompleteR21.DoubleLogOrbitBound"
+        "ErdosProblems.Erdos243.PaperCompleteR11.InclusiveLimsup",
+        "ErdosProblems.Erdos243.PaperCompleteR21.DoubleLogOrbitBound",
+        "ErdosProblems.Erdos243.PaperCompleteR7.LcmDefect",
+        "ErdosProblems.Erdos243.PaperCompleteR8.CanonicalWeightedRecords",
+        "ErdosProblems.Erdos243.ReciprocalTailRigidity",
+        "ErdosProblems.Erdos243.SparseResetRecovery"
       ],
       "selected_declarations": [
         {
+          "module": "ErdosProblems.Erdos243.PaperCompleteR11.InclusiveLimsup",
+          "name": "ErdosProblems.Erdos243.PaperCompleteR11.canonical_inclusive_logLog_criterion"
+        },
+        {
           "module": "ErdosProblems.Erdos243.PaperCompleteR21.DoubleLogOrbitBound",
           "name": "ErdosProblems.Erdos243.PaperCompleteR21.exactOrbit_double_logarithmic_bound"
+        },
+        {
+          "module": "ErdosProblems.Erdos243.PaperCompleteR7.LcmDefect",
+          "name": "ErdosProblems.Erdos243.PaperCompleteR7.original_coordinate_lcm_bounded_defect"
+        },
+        {
+          "module": "ErdosProblems.Erdos243.PaperCompleteR8.CanonicalWeightedRecords",
+          "name": "ErdosProblems.Erdos243.PaperCompleteR8.canonical_weighted_record"
+        },
+        {
+          "module": "ErdosProblems.Erdos243.ReciprocalTailRigidity",
+          "name": "ErdosProblems.Erdos243.eventuallyBoundedNegativePart_eventually_zero"
+        },
+        {
+          "module": "ErdosProblems.Erdos243.SparseResetRecovery",
+          "name": "ErdosProblems.Erdos243.eventually_zero_of_summable_negativeRelativeMass_scalar"
         }
       ],
       "source_commit": "fbf41fb8b571d217b1648070dcc39d5eda5394ad",
