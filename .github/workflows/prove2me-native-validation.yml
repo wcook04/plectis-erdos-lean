@@ -1,10 +1,10 @@
 # SPDX-FileCopyrightText: 2026 Will Cook
 # SPDX-License-Identifier: Apache-2.0
-name: Prove2Me Pinned Native Validation 257
+name: Prove2Me Pinned Native Validation 269 Repaired Full 71
 
 on:
   push:
-    branches: [codex/prove2me-remote-extraction-20260924]
+    branches: [codex/prove2me-native-validation-269-solution-repair-20260927]
     paths:
       - .github/workflows/prove2me-native-validation.yml
       - .github/prove2me-native-validation/**
@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: prove2me-native-validation-257-${{ github.ref }}
+  group: prove2me-native-validation-269-repair-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -22,10 +22,8 @@ jobs:
     timeout-minutes: 355
     env:
       LEAN_NUM_THREADS: '1'
-      P2M_BUNDLE_SHA256: '460879e58f53a76ded12103509706f68ca3cc82a3ed0e1af943106673e304181'
-      P2M_SOURCE_COMMIT: 'c93c2e4dd86a2e317e0cb650ea244fee1afd59c2'
-      P2M_ROOT_1: 'ErdosProblems.Erdos257.PaperCompleteR8.AnalyticSeparationReturn'
-      P2M_ROOT_2: 'ErdosProblems.Erdos257.PaperCompleteR8.WeightedHereditaryClaim'
+      P2M_BUNDLE_SHA256: '4b6fd42ac5164a2f5e04033852069ea24becbcb84c37e964bca4efbcc6322484'
+      P2M_SOURCE_COMMIT: 'cc7e541cf2081c6fef5a5e377d52e365e33b01eb'
     steps:
       - name: Check out reviewed control files
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -58,7 +56,37 @@ jobs:
         run: |
           mkdir -p output
           cd cache
-          lake build "$P2M_ROOT_1" "$P2M_ROOT_2" 2>&1 | tee ../output/source-cache-build.log
+          roots=(
+            "ErdosProblems.Erdos269.ActualSharpTailMajorantR10"
+            "ErdosProblems.Erdos269.LongWindowCapR11"
+            "ErdosProblems.Erdos269.PaperCompleteR20.BoundedLatticeCollision"
+            "ErdosProblems.Erdos269.PaperCompleteR20.DyadicAlphabetWhole"
+            "ErdosProblems.Erdos269.PaperCompleteR20.EightScaleRigidity"
+            "ErdosProblems.Erdos269.PaperCompleteR20.FixedBaseRecoding"
+            "ErdosProblems.Erdos269.PaperCompleteR20.LiteralTriangleReal"
+            "ErdosProblems.Erdos269.PaperCompleteR20.OcticEscapeWhole"
+            "ErdosProblems.Erdos269.PaperCompleteR20.PhaseStripDecomposition"
+            "ErdosProblems.Erdos269.PaperCompleteR20.RealBaseShortInterval"
+            "ErdosProblems.Erdos269.PaperCompleteR20.RealBoundDenominatorReduction"
+            "ErdosProblems.Erdos269.PaperCompleteR20.RealCutoffs"
+            "ErdosProblems.Erdos269.PaperCompleteR20.RealTwoPrimeKernel"
+            "ErdosProblems.Erdos269.PaperCompleteR20.WeightedShiftValue"
+            "ErdosProblems.Erdos269.PaperCompleteR21.TwoPrimeSums"
+            "ErdosProblems.Erdos269.PaperExactDenominatorR13"
+            "ErdosProblems.Erdos269.PaperFixedStartResidueR14"
+            "ErdosProblems.Erdos269.PaperR7ActualOrbit"
+            "ErdosProblems.Erdos269.PaperR7BasicAssembly"
+            "ErdosProblems.Erdos269.PaperR7FiniteCutRank"
+            "ErdosProblems.Erdos269.PaperR7RationalBridge"
+            "ErdosProblems.Erdos269.PaperR7SeriesIdentification"
+            "ErdosProblems.Erdos269.PaperR7WindowResults"
+            "ErdosProblems.Erdos269.PaperR8RankMajorant"
+            "ErdosProblems.Erdos269.PaperR8UniformRank"
+            "ErdosProblems.Erdos269.ResidueEscape"
+            "ErdosProblems.Erdos269.RestrictedFloorSum"
+            "ErdosProblems.Erdos269.ThreePrimeRunningLcm"
+          )
+          lake build "${roots[@]}" 2>&1 | tee ../output/source-cache-build.log
       - name: Validate exact generated native actions
         shell: bash
         run: |
@@ -67,7 +95,7 @@ jobs:
           test -f "$pinned_lean"
           test ! -L "$pinned_lean"
           python3 control/.github/prove2me-native-validation/transport.py run-pending \
-            --bundle "$GITHUB_WORKSPACE/control/.github/prove2me-native-validation/input-257.zip" \
+            --bundle "$GITHUB_WORKSPACE/control/.github/prove2me-native-validation/input-269.zip" \
             --bundle-sha256 "$P2M_BUNDLE_SHA256" \
             --source-checkout "$GITHUB_WORKSPACE/source" \
             --cache-checkout "$GITHUB_WORKSPACE/cache" \
@@ -79,7 +107,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: prove2me-native-257-${{ github.run_id }}
+          name: prove2me-native-269-${{ github.run_id }}
           path: output/
           if-no-files-found: warn
           retention-days: 7
