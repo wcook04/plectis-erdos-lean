@@ -11,6 +11,8 @@ all finite supports through the proved infinite-tail gcd, and constructs a
 specific admissible primitive vector. These checks are separate from native
 Prove2Me submission and from Comparator acceptance.
 -/
+set_option autoImplicit false
+
 open ErdosProblems.Erdos68.PaperComplete
 open ErdosProblems.Erdos68.PaperCoverageV5
 
@@ -22,7 +24,7 @@ example : AttainsMoment 4 1380 ∧
   depth_four_minimum
 
 example : Admissible depthFourVector ∧ LowChannels 4 depthFourVector ∧
-    factorialMoment depthFourVector = 1380 ∧ coefficientContent depthFourVector = 1 :=
+    ErdosProblems.Erdos68.factorialMoment depthFourVector = 1380 ∧ coefficientContent depthFourVector = 1 :=
   ⟨depthFourVector_admissible, depthFourVector_channels,
     depthFourVector_moment, depthFourVector_content_one⟩
 

@@ -5,7 +5,7 @@ import Mathlib.Tactic
 # Exact depth-four moment ideal and a supported attaining vector
 
 The finite calculations below rewrite the actual isolated-unit recurrence;
-they do not assume a table for an unrelated sequence. Complete bodies, UNRUN.
+they do not assume a table for an unrelated sequence.
 The quadratic horizon (D,p,H)=(4,3,20) proves the infinite tail conclusion.
 -/
 namespace ErdosProblems.Erdos68.PaperCoverageV5
