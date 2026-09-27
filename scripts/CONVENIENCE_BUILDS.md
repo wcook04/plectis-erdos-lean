@@ -56,3 +56,9 @@ python3 -m unittest discover -s scripts -p 'test_build_launch_targets.py' -v
 Only builds of main itself save shared corpus caches. PRs and manual runs against
 another source may restore caches, but compiler traces still decide what rebuilds;
 a cached file or a focused pass is never a substitute for complete validation.
+
+For a quick manual check before a complete run, add `-f focused_only=true` to
+the dispatch. This produces an explicit `focused-pass`, checks the selected
+modules and their import closure, and does not establish full launch coverage.
+Pull requests and release validation always default to the complete launch set;
+a publication audit refuses focused-only mode.

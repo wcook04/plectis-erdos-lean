@@ -314,6 +314,8 @@ class SetupBoundaryTests(unittest.TestCase):
         self.assertLess(build.index('convenience_ci.py resolve'),build.index('name: Check out the resolved source'))
         self.assertIn('${{ runner.temp }}/convenience-target-report.json',build)
         self.assertIn('lake-package-directory: source',build)
+        self.assertIn('Publication audit requires the complete launch set',build)
+        self.assertIn('if [[ "$FOCUSED_ONLY" == true ]]; then args+=(--focused-only); fi',build)
 
 
 if __name__ == '__main__':

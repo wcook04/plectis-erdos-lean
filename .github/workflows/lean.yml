@@ -12,6 +12,9 @@ on:
       focus:
         type: string
         default: ''
+      focused_only:
+        type: boolean
+        default: false
       audit_publication:
         type: boolean
         default: false
@@ -25,6 +28,10 @@ on:
         description: 'Optional Lean module to check before the full launch set'
         type: string
         default: ''
+      focused_only:
+        description: 'Check only focused/changed modules (does not establish a full launch pass)'
+        type: boolean
+        default: false
   pull_request:
   push:
     branches: [main, 'palomar/**']
@@ -33,7 +40,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: lean-convenience-${{ github.workflow }}-${{ github.ref }}-${{ inputs.source_ref }}
+  group: lean-convenience-${{ github.workflow }}-${{ github.ref }}-${{ inputs.source_ref }}-${{ inputs.focused_only }}
   cancel-in-progress: true
 
 jobs:
@@ -90,8 +97,15 @@ jobs:
         env:
           BASE_REF: ${{ github.event.pull_request.base.sha || 'origin/main' }}
           FOCUS_MODULE: ${{ inputs.focus }}
+          FOCUSED_ONLY: ${{ inputs.focused_only }}
+          AUDIT_PUBLICATION: ${{ inputs.audit_publication }}
         run: |
+          if [[ "$FOCUSED_ONLY" == true && "$AUDIT_PUBLICATION" == true ]]; then
+            echo '::error::Publication audit requires the complete launch set'
+            exit 2
+          fi
           args=(--repository source --changed-from "$BASE_REF")
+          if [[ "$FOCUSED_ONLY" == true ]]; then args+=(--focused-only); fi
           if [[ -n "$FOCUS_MODULE" ]]; then args+=(--focus "$FOCUS_MODULE"); fi
           python3 .ci-driver/scripts/build_launch_targets.py "${args[@]}" --plan
       - name: Restore the corpus build
@@ -116,8 +130,15 @@ jobs:
           LEAN_NUM_THREADS: '2'
           BASE_REF: ${{ github.event.pull_request.base.sha || 'origin/main' }}
           FOCUS_MODULE: ${{ inputs.focus }}
+          FOCUSED_ONLY: ${{ inputs.focused_only }}
+          AUDIT_PUBLICATION: ${{ inputs.audit_publication }}
         run: |
+          if [[ "$FOCUSED_ONLY" == true && "$AUDIT_PUBLICATION" == true ]]; then
+            echo '::error::Publication audit requires the complete launch set'
+            exit 2
+          fi
           args=(--repository source --changed-from "$BASE_REF")
+          if [[ "$FOCUSED_ONLY" == true ]]; then args+=(--focused-only); fi
           if [[ -n "$FOCUS_MODULE" ]]; then args+=(--focus "$FOCUS_MODULE"); fi
           python3 .ci-driver/scripts/build_launch_targets.py "${args[@]}"
       - name: Audit every publication entry's Solution environment
