@@ -202,7 +202,7 @@ def prepare_pending(plan_path: Path, map_path: Path, artifact: Path,
                     control_manifest: Path, source: Path, problem: str,
                     out: Path, validation_dir: Path) -> dict:
     """Package exact source and generated actions while the cache remains pending."""
-    require(problem in ("243", "257"), "unsupported problem")
+    require(problem in ("68", "243", "249", "251", "257", "269", "1041", "1049"), "unsupported problem")
     require(map_path.name == "module_map.json" and
             all(path.is_file() and not path.is_symlink() for path in
                 (plan_path, map_path, artifact, control_manifest)),
@@ -320,6 +320,16 @@ def verify_bundle(bundle: Path, expected_sha: str) -> tuple[dict, dict[str, byte
                     "code/remote_validation/derive_runtime_inputs.py")),
                 "pending bundle lacks reviewed extraction or verifier")
     return manifest, files
+
+
+def preflight_bundle(bundle: Path, expected_sha: str, source_commit: str) -> dict:
+    """Check the deployable control/source contract before installing Lean."""
+    manifest, _ = verify_bundle(bundle, expected_sha)
+    require(bool(re.fullmatch(r"[0-9a-f]{40}", source_commit)) and
+            manifest.get("source_commit") == source_commit,
+            "workflow source commit differs from reviewed bundle")
+    return {"status": "passed_bundle_preflight", "bundle_sha256": expected_sha,
+            "source_commit": source_commit, "upload_allowed": False}
 
 
 def git_head(path: Path) -> str:
@@ -485,6 +495,49 @@ def run_step(name: str, command: list[str], out: Path,
             return 124
 
 
+def failure_details(out: Path, step: str) -> dict:
+    """Expose bounded, hash-checked action diagnostics without changing gates."""
+    details = {"step": step}
+    if step != 'build':
+        return details
+    try:
+        receipt = load_json((out / 'build/build_receipt.json').read_bytes())
+        index = receipt.get('failed_at_action')
+        rows = receipt.get('actions', [])
+        details.update(build_status=receipt.get('status'), failed_action_index=index)
+        if isinstance(index, int) and 0 <= index < len(rows):
+            row = rows[index]
+            details.update(action=row['name'], kind=row['kind'], source=row['source'],
+                           exit_code=row['exit_code'], timed_out=row['timed_out'])
+            excerpts = []
+            for label in ('stdout', 'stderr'):
+                log = row[label]
+                safe_name(log['path'])
+                path = out / 'build' / log['path']
+                require(not path.is_symlink() and path.resolve().is_relative_to((out/'build').resolve()),
+                        'diagnostic log escapes build output')
+                require(file_sha(path) == log['sha256'], 'diagnostic log hash mismatch')
+                with path.open('rb') as stream:
+                    stream.seek(max(0, path.stat().st_size - 8192))
+                    excerpts.append(stream.read(8192).decode('utf-8',errors='replace'))
+            details['diagnostic_tail'] = '\n'.join(excerpts)
+        elif receipt.get('error'):
+            details['diagnostic_tail'] = str(receipt['error'])[:8192]
+    except (OSError, KeyError, TypeError, ValueError) as error:
+        details['diagnostic_error'] = str(error)
+    return details
+
+
+def emit_failure(result: dict) -> None:
+    """A single escaped workflow command; raw compiler text is never executed."""
+    details = result.get('failure', {})
+    message = (f"Native validation {details.get('step', 'setup')} failed"
+               + (f" at {details['kind']} {details['action']}" if details.get('action') else '')
+               + '\n' + str(details.get('diagnostic_tail') or result.get('error', '')))
+    escaped = message.replace('%','%25').replace('\r','%0D').replace('\n','%0A')
+    print('::error title=Native validation::'+escaped, file=sys.stderr)
+
+
 def complete_pending(manifest: dict, files: dict[str, bytes], out: Path,
                      source_checkout: Path, cache_checkout: Path,
                      lean_binary: Path, result: dict, result_path: Path) -> tuple[Path, dict]:
@@ -638,8 +691,10 @@ def run_pending(bundle: Path, expected_sha: str, source_checkout: Path,
         result["validated_run_receipt_sha256"] = file_sha(
             out / "validated/remote_validation_receipt.json")
         result["steps"].extend(validated["steps"])
+        if validated.get('failure'):
+            result['failure'] = validated['failure']
         require(validated["status"] == "passed_remote_lean_pending_hosted_readback",
-                "completed native validation failed")
+                "completed native validation failed: " + validated.get('error', 'unknown failure'))
         result["production_receipt_sha256"] = validated["production_receipt_sha256"]
         result["status"] = "passed_remote_lean_pending_hosted_readback"
     except (OSError, KeyError, TypeError, ValueError, subprocess.SubprocessError) as exc:
@@ -710,6 +765,8 @@ def run(bundle: Path, expected_sha: str, source_checkout: Path,
                    "stdout_sha256": file_sha(out / f"{name}.stdout.log"),
                    "stderr_sha256": file_sha(out / f"{name}.stderr.log")}
             result["steps"].append(row)
+            if code != 0:
+                result['failure'] = failure_details(out, name)
             result_path.write_bytes(encode(result))
             require(code == 0, f"{name} gate failed with exit code {code}")
         receipt = load_json(production.read_bytes())
@@ -738,6 +795,10 @@ def run(bundle: Path, expected_sha: str, source_checkout: Path,
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
+    inspect = sub.add_parser("preflight-bundle", help="check pins before Lean setup")
+    inspect.add_argument("--bundle", type=Path, required=True)
+    inspect.add_argument("--bundle-sha256", required=True)
+    inspect.add_argument("--source-commit", required=True)
     prep = sub.add_parser("prepare", help="write a reviewed input bundle")
     for flag in ("plan", "module-map", "graph-config", "source-gate", "out"):
         prep.add_argument("--" + flag, type=Path, required=True)
@@ -746,7 +807,7 @@ def main() -> None:
     pending = sub.add_parser("prepare-pending", help="bundle pinned source inputs before cache build")
     for flag in ("plan", "module-map", "artifact", "manifest", "source", "out"):
         pending.add_argument("--" + flag, type=Path, required=True)
-    pending.add_argument("--problem", choices=("243", "257"), required=True)
+    pending.add_argument("--problem", choices=("68", "243", "249", "251", "257", "269", "1041", "1049"), required=True)
     pending.add_argument("--validation-dir", type=Path,
                          default=Path(__file__).resolve().parents[1] / "validation")
     remote = sub.add_parser("run", help="validate one bundle in a pinned CI checkout")
@@ -763,7 +824,9 @@ def main() -> None:
     remote_pending.add_argument("--timeout-seconds", type=int, default=1800)
     args = parser.parse_args()
     try:
-        if args.command == "prepare":
+        if args.command == "preflight-bundle":
+            result = preflight_bundle(args.bundle, args.bundle_sha256, args.source_commit)
+        elif args.command == "prepare":
             result = prepare(args.plan, args.module_map, args.graph_config,
                              args.source_gate, args.out, args.validation_dir)
         elif args.command == "prepare-pending":
@@ -781,6 +844,7 @@ def main() -> None:
         parser.exit(1, f"remote native validation failed: {exc}\n")
     print(json.dumps(result, sort_keys=True))
     if result.get("status") == "failed":
+        emit_failure(result)
         raise SystemExit(1)
 
 
