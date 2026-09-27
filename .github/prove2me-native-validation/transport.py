@@ -126,6 +126,19 @@ def original_preflight(plan: Path, module_map: Path, validation_dir: Path) -> di
         sys.path.pop(0)
 
 
+def current_generator_authority() -> dict:
+    root = Path(__file__).resolve().parents[1] / "generator"
+    names = ("project.py", "export_aliases.py", "lexical_scope.py",
+             "cross_module_helpers.py", "source_syntax.py", "private_definitions.py")
+    return {"schema": "prove2me_generator_source_v1", "files": {
+        name: file_sha(root / name) for name in names}}
+
+
+def require_current_generation(plan: dict) -> None:
+    require(plan.get("generator_authority") == current_generator_authority(),
+            "generated plan is unversioned or stale; regenerate with the current generator before packaging")
+
+
 def prepare(plan_path: Path, map_path: Path, graph_path: Path,
             gate_path: Path, out: Path, validation_dir: Path) -> dict:
     require(not out.exists() and not out.is_symlink(), "bundle output exists")
@@ -133,6 +146,7 @@ def prepare(plan_path: Path, map_path: Path, graph_path: Path,
         require(path.is_file() and not path.is_symlink(), f"missing input: {path}")
     offline = original_preflight(plan_path, map_path, validation_dir)
     plan, mapping = load_json(plan_path.read_bytes()), load_json(map_path.read_bytes())
+    require_current_generation(plan)
     graph, gate = load_json(graph_path.read_bytes()), load_json(gate_path.read_bytes())
     require(gate.get("status") == "source_import_cache_candidate" and
             graph.get("source_commit") == gate.get("source_commit") and
@@ -216,6 +230,7 @@ def prepare_pending(plan_path: Path, map_path: Path, artifact: Path,
         sys.path.pop(0)
     offline = original_preflight(plan_path, map_path, validation_dir)
     plan = load_json(plan_path.read_bytes())
+    require_current_generation(plan)
     case_rows = {row["module"]: row["sha256"] for row in case["module_rows"]}
     require(set(mapping) == set(case_rows) == set(plan["authority"]["stage2"])
             and all(mapping[module]["sha256"] == case_rows[module]
@@ -496,31 +511,43 @@ def run_step(name: str, command: list[str], out: Path,
 
 
 def failure_details(out: Path, step: str) -> dict:
-    """Expose bounded, hash-checked action diagnostics without changing gates."""
+    """Expose bounded hash-checked diagnostics for build and audit failures."""
     details = {"step": step}
-    if step != 'build':
+    if step not in ('build', 'audit'):
         return details
     try:
-        receipt = load_json((out / 'build/build_receipt.json').read_bytes())
-        index = receipt.get('failed_at_action')
-        rows = receipt.get('actions', [])
-        details.update(build_status=receipt.get('status'), failed_action_index=index)
-        if isinstance(index, int) and 0 <= index < len(rows):
+        directory = out / step
+        receipt = load_json((directory / (step + '_receipt.json')).read_bytes())
+        rows = receipt.get('actions' if step == 'build' else 'jobs', [])
+        index = receipt.get('failed_at_action' if step == 'build' else 'failed_at_job')
+        indices = receipt.get('failed_action_indices', [index]) if step == 'build' else [index]
+        failures = []
+        for index in indices[:20]:
+            if not isinstance(index, int) or not 0 <= index < len(rows):
+                continue
             row = rows[index]
-            details.update(action=row['name'], kind=row['kind'], source=row['source'],
-                           exit_code=row['exit_code'], timed_out=row['timed_out'])
+            failure = {'failed_action_index': index, 'exit_code': row['exit_code'],
+                       'timed_out': row['timed_out'], 'build_status': receipt.get('status'),
+                       'action': row.get('name', row.get('script')),
+                       'kind': row.get('kind', 'audit'),
+                       'source': row.get('source', row.get('script'))}
             excerpts = []
             for label in ('stdout', 'stderr'):
                 log = row[label]
                 safe_name(log['path'])
-                path = out / 'build' / log['path']
-                require(not path.is_symlink() and path.resolve().is_relative_to((out/'build').resolve()),
-                        'diagnostic log escapes build output')
+                path = directory / log['path']
+                require(not path.is_symlink() and path.resolve().is_relative_to(directory.resolve()),
+                        'diagnostic log escapes output')
                 require(file_sha(path) == log['sha256'], 'diagnostic log hash mismatch')
                 with path.open('rb') as stream:
                     stream.seek(max(0, path.stat().st_size - 8192))
-                    excerpts.append(stream.read(8192).decode('utf-8',errors='replace'))
-            details['diagnostic_tail'] = '\n'.join(excerpts)
+                    excerpts.append(stream.read(8192).decode('utf-8', errors='replace'))
+            failure['diagnostic_tail'] = '\n'.join(excerpts)
+            failures.append(failure)
+        if failures:
+            details.update(failures[0])
+            details.update(failures=failures, failed_action_count=len(indices),
+                           blocked_action_count=receipt.get('blocked_action_count', 0))
         elif receipt.get('error'):
             details['diagnostic_tail'] = str(receipt['error'])[:8192]
     except (OSError, KeyError, TypeError, ValueError) as error:
@@ -531,11 +558,13 @@ def failure_details(out: Path, step: str) -> dict:
 def emit_failure(result: dict) -> None:
     """A single escaped workflow command; raw compiler text is never executed."""
     details = result.get('failure', {})
-    message = (f"Native validation {details.get('step', 'setup')} failed"
-               + (f" at {details['kind']} {details['action']}" if details.get('action') else '')
-               + '\n' + str(details.get('diagnostic_tail') or result.get('error', '')))
-    escaped = message.replace('%','%25').replace('\r','%0D').replace('\n','%0A')
-    print('::error title=Native validation::'+escaped, file=sys.stderr)
+    failures = details.get('failures', [details])
+    for failure in failures:
+        message = (f"Native validation {details.get('step', 'setup')} failed"
+                   + (f" at {failure['kind']} {failure['action']}" if failure.get('action') else '')
+                   + '\n' + str(failure.get('diagnostic_tail') or result.get('error', '')))
+        escaped = message.replace('%', '%25').replace('\r', '%0D').replace('\n', '%0A')
+        print('::error title=Native validation::' + escaped, file=sys.stderr)
 
 
 def complete_pending(manifest: dict, files: dict[str, bytes], out: Path,
@@ -746,7 +775,7 @@ def run(bundle: Path, expected_sha: str, source_checkout: Path,
             ("preflight", [sys.executable, str(base / "preflight.py"), *common,
                            "--receipt", str(offline)], 120),
             ("build", [sys.executable, str(base / "run_stage_build.py"), *common,
-                       *graph_gate, "--out", str(build), "--max-load", str(max_load),
+                       *graph_gate, "--out", str(build), "--collect-errors", "--max-load", str(max_load),
                        "--timeout-seconds", str(timeout_seconds)],
              max(3600, timeout_seconds * manifest["action_count"] + 600)),
             ("audit", [sys.executable, str(base / "run_type_axiom_audit.py"), *common,
