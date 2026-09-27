@@ -2034,12 +2034,20 @@
       "mathlib_rev": "c5ea00351c28e24afc9f0f84379aa41082b1188f",
       "module_rows": [
         {
+          "module": "ErdosProblems.Erdos269.ActualSharpTailMajorantR10",
+          "sha256": "7a899f4851c53e3c5ae6f433a1462d2b70b84493bccf435dc0776aadc4e75220"
+        },
+        {
           "module": "ErdosProblems.Erdos269.BlockMassEngines",
           "sha256": "f7fac792bced7515f9f2e50810953f18a9896e897d352611466d4f716cf435af"
         },
         {
           "module": "ErdosProblems.Erdos269.BoundedRadixTailEscape",
           "sha256": "a3e8b3b5e9723a8de2ea1bc3a3dd4635a1cb06c4d563e0d4d9d55aec947f2c61"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.CofinalWindowEscapeEquivalence",
+          "sha256": "15b722f85d9972ab2a4564add23ff4e4478280116d1dc71a99310fab44432f04"
         },
         {
           "module": "ErdosProblems.Erdos269.DyadicBlockMassIdentity",
@@ -2062,20 +2070,168 @@
           "sha256": "42455b1fe8f36dfc2e83d58c469b0fd8268c3d7928b71843022dd308fd6f69ad"
         },
         {
+          "module": "ErdosProblems.Erdos269.FiniteCutRank",
+          "sha256": "1397678f4328f323c786b1f185368ea7f7bcf4e1a33b9db784dc55cfbfdbff88"
+        },
+        {
           "module": "ErdosProblems.Erdos269.IntegralBranchExtinction",
           "sha256": "3c6bc417ae44e7fc80db7893ac3f33626a9ef954d60fe424ea93e102d7b57e3f"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.IntegralBranchWidth",
+          "sha256": "e0559afe20c5855469b9441db3943c37e93f541b6e230d4a873935c2fbf7d7cb"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.JumpConstraintMajorant",
+          "sha256": "4141c29210a2b4a10d8ebecef83cac213342bdf6d4421ebedf8de55b2db41923"
         },
         {
           "module": "ErdosProblems.Erdos269.KernelCarryRank",
           "sha256": "8b32ea2f9583cbea2d5c31c53da1f76400a4f3312a888bea0598016c16044839"
         },
         {
+          "module": "ErdosProblems.Erdos269.LongWindowCapR11",
+          "sha256": "386800c38d615c25d6b6e78f425f7614bc406d40ea74ef906b429945cd5a64ff"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.NormalizedStateWidth",
+          "sha256": "b49f4fa065ffb17cea01ca92f71a4a8c1c7fa4f7067afe430f72c76512951566"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR20.BoundedLatticeCollision",
+          "sha256": "df0a5b32947a3aee58c33ba1ac20138a61bfe19d6155f26f278d0e115997135e"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR20.DyadicAlphabetWhole",
+          "sha256": "6f574340a878d8c3a3dddea5aeedf87be85ee05d2915d7ea88ed7daa7f731ce5"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR20.EightScaleRigidity",
+          "sha256": "a158f10ba1938f5bd133882ffdbb5671e97a8acf4a95ec497d3eb2c0bf76c8a7"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR20.FixedBaseRecoding",
+          "sha256": "1a039b2932f33a0e28b6d48cb5e66da28a98c32b6b2a993653f779860bc523ba"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR20.LiteralTriangle",
+          "sha256": "eabef49c1ca5007f9008aea0cf344bb6035c37a3706b928da2891eddef6542d5"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR20.LiteralTriangleReal",
+          "sha256": "ce60408446c0df9decd618e64850055be6439b69c1840f17b360b7004606c180"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR20.OcticEscapeWhole",
+          "sha256": "80f3ff70846f692ed00e0f4385bba2db9bfcf6132b59745de17bd836bb9eca52"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR20.PhaseStripDecomposition",
+          "sha256": "6a9e6127bb8b01a3854f283f8a53a839684ef00bb9f1401fca917063a274619c"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR20.RealBaseShortInterval",
+          "sha256": "defc040a033a91ab72b0c240968cdee980c091cb891ffcc27ede88233fe04726"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR20.RealBoundDenominatorReduction",
+          "sha256": "b30e6409c5f94e33ce0e56f98dfe6585e3adb00fac96ef0fda5140dfaf47f30a"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR20.RealCutoffs",
+          "sha256": "2106deeaea467407e0c6bc0bb67d276b881c3d9c59d5da49a900b6313e6d2c7f"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR20.RealTwoPrimeKernel",
+          "sha256": "c0c96b38d35be48087dd01795e8af6072af4f0609cc7c1ef94fcb6e3c20a4c1a"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR20.StripDecomposition",
+          "sha256": "731ac7e9d9a24c1e5fcad8c28131eb7f4e1ea27b6713988edea2d8c7b56ba750"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR20.WeightedShiftArithmetic",
+          "sha256": "18afe5f05d9f0e1011c250d9e401c6c68f5592baa6dc2b5922d013d4240fa818"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR20.WeightedShiftValue",
+          "sha256": "6e1647abe5fe1d08782fb513b14b234718edbdb38976ba9514a721a13f0ae153"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR21.TwoPrimeSums",
+          "sha256": "20d09ed71f51221cbb7006da2a91868315d8acd8889e587c8a8300285506602a"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperExactDenominatorR13",
+          "sha256": "a67ae2aa8415541d0bbd8728e933f3342d6223722214d78d462d1341fabfe092"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperFixedStartResidueR14",
+          "sha256": "91d424caadcac0bfff51f88ed56e000e106860cbf19d89e190a57ede01434ad1"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperR7ActualOrbit",
+          "sha256": "0d473c1cf29b5844953fa062c4fda266c579a1c8a4bcbe40f62b4b53ec1cce75"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperR7AnalyticInterfaces",
+          "sha256": "eacbbdf035649eca6a9ab6fa6398100a71b4fad87b8ffd0350adae08bfed8b77"
+        },
+        {
           "module": "ErdosProblems.Erdos269.PaperR7BasicAssembly",
           "sha256": "a65d953d4bc0fba1b4d9d79cc6366fa96dae92f2943ad00e2b3f89831ff2d02f"
         },
         {
-          "module": "ErdosProblems.Erdos269.PaperR7ModularMinors",
-          "sha256": "218eea2a514121d5b7903f5ae7c5e4a83a325d7807ddf09c122e1069c5d6d620"
+          "module": "ErdosProblems.Erdos269.PaperR7FiniteCutRank",
+          "sha256": "08065a305dc94b6b85f6a6cdf90c368a2761d0672629bb37f6b6b4577c04a3b6"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperR7RationalBridge",
+          "sha256": "e4c143c5baf513ff9aa8eae1e4206f918411707126ae39e72d339119f47de377"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperR7SeriesIdentification",
+          "sha256": "523ca9807390180396b07f987ec1f0f1fe4004c648974ebea83045e3b926dedd"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperR7SharpShellBound",
+          "sha256": "47c1cc76356682740b7d4589df14b4228ae88537e278db1e4bed07f0acbb00b1"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperR7WindowResults",
+          "sha256": "eb8352e0234696bbd5c2e24bbce6a1874b25ccd80814e11c5a05c3afc4958bd8"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperR8RankMajorant",
+          "sha256": "f7c614ef17a54a3e3471fab7e5d27cdc5fa4a3d024f32f286d2fab1ced3736ca"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperR8UniformRank",
+          "sha256": "567ad20da4d0cb6122e573afc76ddbe253c8752d9d567a1c65e8e7f1120c1b59"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperR9SourceCounts",
+          "sha256": "df96219bf8306be4bfd09384fad76a80ccc13b7fa16dd4993752f966fff85040"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.R12.ExactModulus",
+          "sha256": "e58eeb4f13ca70dd1f91331f5e5d15160c2c381ca043f9420d03bff712ac5214"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.R12.OcticWindowBand",
+          "sha256": "2cd0173e546f6f35bfab579d93aa0fbc75d71d3ec5061de23ce7c5ac24d9658d"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.RationalLatticeReduction",
+          "sha256": "e9eed3065bb7e93cf784f8c412b1c9eeb1e29383e9ceaa1665bb0ea5076aa24d"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.RationalityCarryBridge",
+          "sha256": "9abe5bfcb4423e19f123e002eab0ff762c63f86b9715663d5b7ff5e36c4f44a8"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.RealCutoffR10",
+          "sha256": "f448e6586c227922fbd869925bfcadfe5581edf289df5a61cead24713ab8d47a"
         },
         {
           "module": "ErdosProblems.Erdos269.ResidueEscape",
@@ -2086,6 +2242,10 @@
           "sha256": "14085590dfbf9b2dc34d4ac1b446667f3ce249b7c25687801c79f7d55db8189e"
         },
         {
+          "module": "ErdosProblems.Erdos269.SharpWindowCapR10",
+          "sha256": "3c21c8d321820caad903ef3816e38fdd72f520414ec727b4e923ea69a047efff"
+        },
+        {
           "module": "ErdosProblems.Erdos269.ThreePrimeRunningLcm",
           "sha256": "769d80481465f4fd8655d5d62c5eb3e372c80c39b0722e80659bf4e150c6c036"
         },
@@ -2094,24 +2254,326 @@
           "sha256": "c3c2013d856ecedc3751e6fb0a4ac237e3ea397aa96fd475c76811137a74ba71"
         }
       ],
-      "prepared_graph_sha256": "930896ca21ea9135c2c3f33d3a381f8d53c57cc1e125369505dd2bac81962e3c",
+      "prepared_graph_sha256": "54b3e7f16d5a231ffdae3cf9144afe0277bf2e1538f231f714a78accb37edaad",
       "project_prefixes": [
         "ErdosProblems",
         "Erdos257PeriodNoncollapse",
         "Erdos249257"
       ],
       "root_modules": [
+        "ErdosProblems.Erdos269.ActualSharpTailMajorantR10",
+        "ErdosProblems.Erdos269.LongWindowCapR11",
+        "ErdosProblems.Erdos269.PaperCompleteR20.BoundedLatticeCollision",
+        "ErdosProblems.Erdos269.PaperCompleteR20.DyadicAlphabetWhole",
+        "ErdosProblems.Erdos269.PaperCompleteR20.EightScaleRigidity",
+        "ErdosProblems.Erdos269.PaperCompleteR20.FixedBaseRecoding",
+        "ErdosProblems.Erdos269.PaperCompleteR20.LiteralTriangleReal",
+        "ErdosProblems.Erdos269.PaperCompleteR20.OcticEscapeWhole",
+        "ErdosProblems.Erdos269.PaperCompleteR20.PhaseStripDecomposition",
+        "ErdosProblems.Erdos269.PaperCompleteR20.RealBaseShortInterval",
+        "ErdosProblems.Erdos269.PaperCompleteR20.RealBoundDenominatorReduction",
+        "ErdosProblems.Erdos269.PaperCompleteR20.RealCutoffs",
+        "ErdosProblems.Erdos269.PaperCompleteR20.RealTwoPrimeKernel",
+        "ErdosProblems.Erdos269.PaperCompleteR20.WeightedShiftValue",
+        "ErdosProblems.Erdos269.PaperCompleteR21.TwoPrimeSums",
+        "ErdosProblems.Erdos269.PaperExactDenominatorR13",
+        "ErdosProblems.Erdos269.PaperFixedStartResidueR14",
+        "ErdosProblems.Erdos269.PaperR7ActualOrbit",
         "ErdosProblems.Erdos269.PaperR7BasicAssembly",
-        "ErdosProblems.Erdos269.PaperR7ModularMinors"
+        "ErdosProblems.Erdos269.PaperR7FiniteCutRank",
+        "ErdosProblems.Erdos269.PaperR7RationalBridge",
+        "ErdosProblems.Erdos269.PaperR7SeriesIdentification",
+        "ErdosProblems.Erdos269.PaperR7WindowResults",
+        "ErdosProblems.Erdos269.PaperR8RankMajorant",
+        "ErdosProblems.Erdos269.PaperR8UniformRank",
+        "ErdosProblems.Erdos269.ResidueEscape",
+        "ErdosProblems.Erdos269.RestrictedFloorSum",
+        "ErdosProblems.Erdos269.ThreePrimeRunningLcm"
       ],
       "selected_declarations": [
         {
-          "module": "ErdosProblems.Erdos269.PaperR7BasicAssembly",
-          "name": "ErdosProblems.Erdos269.PaperR7.paper_uniform_rank_and_nonseparation"
+          "module": "ErdosProblems.Erdos269.PaperCompleteR20.PhaseStripDecomposition",
+          "name": "ErdosProblems.Erdos269.PaperCompleteR20.actual_cubic_no_crossing_strips"
         },
         {
-          "module": "ErdosProblems.Erdos269.PaperR7ModularMinors",
-          "name": "ErdosProblems.Erdos269.PaperR7.admissible_modular_minors"
+          "module": "ErdosProblems.Erdos269.PaperCompleteR20.PhaseStripDecomposition",
+          "name": "ErdosProblems.Erdos269.PaperCompleteR20.actual_weighted_strip_decomposition"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR20.RealBoundDenominatorReduction",
+          "name": "ErdosProblems.Erdos269.PaperCompleteR20.conditional_denominator_reduction_real_bound"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR20.DyadicAlphabetWhole",
+          "name": "ErdosProblems.Erdos269.PaperCompleteR20.dyadic_alphabet_whole"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR20.RealBaseShortInterval",
+          "name": "ErdosProblems.Erdos269.PaperCompleteR20.exponent_unique_real_base_short_interval"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR20.FixedBaseRecoding",
+          "name": "ErdosProblems.Erdos269.PaperCompleteR20.fixed_base_recoding_whole"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR20.LiteralTriangleReal",
+          "name": "ErdosProblems.Erdos269.PaperCompleteR20.literal_triangle_whole"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR20.BoundedLatticeCollision",
+          "name": "ErdosProblems.Erdos269.PaperCompleteR20.long_all_scale_lattice_exact"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR20.OcticEscapeWhole",
+          "name": "ErdosProblems.Erdos269.PaperCompleteR20.octic_escape_whole"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR20.EightScaleRigidity",
+          "name": "ErdosProblems.Erdos269.PaperCompleteR20.paper_pinning_and_eight_scale_rigidity"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR20.RealCutoffs",
+          "name": "ErdosProblems.Erdos269.PaperCompleteR20.realPrefixLcm_eq_of_sameLogCell"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR20.RealCutoffs",
+          "name": "ErdosProblems.Erdos269.PaperCompleteR20.realPrefixLcm_jump_first"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR20.RealCutoffs",
+          "name": "ErdosProblems.Erdos269.PaperCompleteR20.realPrefixLcm_jump_second"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR20.RealCutoffs",
+          "name": "ErdosProblems.Erdos269.PaperCompleteR20.realPrefixLcm_jump_third"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR20.RealCutoffs",
+          "name": "ErdosProblems.Erdos269.PaperCompleteR20.realSmoothExponentShell_bounds"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR20.RealTwoPrimeKernel",
+          "name": "ErdosProblems.Erdos269.PaperCompleteR20.real_two_prime_separation"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR20.RealCutoffs",
+          "name": "ErdosProblems.Erdos269.PaperCompleteR20.running_lcm_real_cutoff_exact"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR20.RealCutoffs",
+          "name": "ErdosProblems.Erdos269.PaperCompleteR20.threePrimeKernelQ_eq_of_sameRealLogCell"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR20.WeightedShiftValue",
+          "name": "ErdosProblems.Erdos269.PaperCompleteR20.weighted_shift_whole"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR21.TwoPrimeSums",
+          "name": "ErdosProblems.Erdos269.PaperCompleteR21.bSum_eq"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR21.TwoPrimeSums",
+          "name": "ErdosProblems.Erdos269.PaperCompleteR21.distinctSum_comm"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR21.TwoPrimeSums",
+          "name": "ErdosProblems.Erdos269.PaperCompleteR21.distinctSum_eq"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR21.TwoPrimeSums",
+          "name": "ErdosProblems.Erdos269.PaperCompleteR21.heckeValue_boundary"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR21.TwoPrimeSums",
+          "name": "ErdosProblems.Erdos269.PaperCompleteR21.irrational_logb_of_primes"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR21.TwoPrimeSums",
+          "name": "ErdosProblems.Erdos269.PaperCompleteR21.pExp_qExp_succ"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR21.TwoPrimeSums",
+          "name": "ErdosProblems.Erdos269.PaperCompleteR21.qExp_pExp_succ"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR21.TwoPrimeSums",
+          "name": "ErdosProblems.Erdos269.PaperCompleteR21.repeatedSum_comm"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR21.TwoPrimeSums",
+          "name": "ErdosProblems.Erdos269.PaperCompleteR21.repeatedSum_eq"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR21.TwoPrimeSums",
+          "name": "ErdosProblems.Erdos269.PaperCompleteR21.runningLcmValues_eq"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR21.TwoPrimeSums",
+          "name": "ErdosProblems.Erdos269.PaperCompleteR21.runningLcm_eq_twoPrimeHeight"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR21.TwoPrimeSums",
+          "name": "ErdosProblems.Erdos269.PaperCompleteR21.transcendental_heckeValue"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR21.TwoPrimeSums",
+          "name": "ErdosProblems.Erdos269.PaperCompleteR21.twoPrimeHeight_smooth"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR21.TwoPrimeSums",
+          "name": "ErdosProblems.Erdos269.PaperCompleteR21.two_prime_affine_and_quadratic"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR21.TwoPrimeSums",
+          "name": "ErdosProblems.Erdos269.PaperCompleteR21.two_prime_sums_transcendental"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperCompleteR21.TwoPrimeSums",
+          "name": "ErdosProblems.Erdos269.PaperCompleteR21.two_prime_transcendence"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.ActualSharpTailMajorantR10",
+          "name": "ErdosProblems.Erdos269.PaperR10.actual_sharp_tail_bound"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.LongWindowCapR11",
+          "name": "ErdosProblems.Erdos269.PaperR11.longPaperCap_le_three_squareR11"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.LongWindowCapR11",
+          "name": "ErdosProblems.Erdos269.PaperR11.long_fixed_split_bridgeR11"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperExactDenominatorR13",
+          "name": "ErdosProblems.Erdos269.PaperR13.clearingCondition_iff_max"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperExactDenominatorR13",
+          "name": "ErdosProblems.Erdos269.PaperR13.exact_denominators_and_minimal_clearing"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperExactDenominatorR13",
+          "name": "ErdosProblems.Erdos269.PaperR13.firstClearingIndex_le_sufficient"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperExactDenominatorR13",
+          "name": "ErdosProblems.Erdos269.PaperR13.firstClearingIndex_minimal"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperExactDenominatorR13",
+          "name": "ErdosProblems.Erdos269.PaperR13.firstClearingIndex_spec"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperExactDenominatorR13",
+          "name": "ErdosProblems.Erdos269.PaperR13.scaled_state_is_integer_iff_firstClearingIndex_le"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperFixedStartResidueR14",
+          "name": "ErdosProblems.Erdos269.PaperR14.eventually_fixedStartResidue_eq_tail_of_integral"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperFixedStartResidueR14",
+          "name": "ErdosProblems.Erdos269.PaperR14.eventually_fixedStartResidue_formula"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperFixedStartResidueR14",
+          "name": "ErdosProblems.Erdos269.PaperR14.fixedStartResidue_ratio_tendsto"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperR7RationalBridge",
+          "name": "ErdosProblems.Erdos269.PaperR7.allReducedTailsNonintegral_iff"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperR7SeriesIdentification",
+          "name": "ErdosProblems.Erdos269.PaperR7.long_actual_orbit"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperR7WindowResults",
+          "name": "ErdosProblems.Erdos269.PaperR7.long_no_bounded_length"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperR7WindowResults",
+          "name": "ErdosProblems.Erdos269.PaperR7.long_window_growth"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperR7BasicAssembly",
+          "name": "ErdosProblems.Erdos269.PaperR7.paper_finite_endpoint_obstruction"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperR7BasicAssembly",
+          "name": "ErdosProblems.Erdos269.PaperR7.paper_jump_count"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperR7BasicAssembly",
+          "name": "ErdosProblems.Erdos269.PaperR7.paper_two_by_two_fixture"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperR7ActualOrbit",
+          "name": "ErdosProblems.Erdos269.PaperR7.radix_eq_height_ratio"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperR7FiniteCutRank",
+          "name": "ErdosProblems.Erdos269.PaperR7.rank_cutMatrix"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperR7ActualOrbit",
+          "name": "ErdosProblems.Erdos269.PaperR7.scaled_integer_or_cofinal_separation"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperR7SeriesIdentification",
+          "name": "ErdosProblems.Erdos269.PaperR7.short_actual_orbit"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperR7RationalBridge",
+          "name": "ErdosProblems.Erdos269.PaperR7.short_fixed_split_bridge"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperR7WindowResults",
+          "name": "ErdosProblems.Erdos269.PaperR7.short_window_equivalence"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperR8RankMajorant",
+          "name": "ErdosProblems.Erdos269.PaperR8.actual_tail_rank_bound"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperR8UniformRank",
+          "name": "ErdosProblems.Erdos269.PaperR8.uniform_rank_complete"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.ThreePrimeRunningLcm",
+          "name": "ErdosProblems.Erdos269.dyadicBlockBase235_cases"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.ThreePrimeRunningLcm",
+          "name": "ErdosProblems.Erdos269.dyadicBlockBase235_mem_interval"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.ThreePrimeRunningLcm",
+          "name": "ErdosProblems.Erdos269.dyadicInternalPower_exponent_unique"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.ThreePrimeRunningLcm",
+          "name": "ErdosProblems.Erdos269.exists_dyadicInternalPower_iff_log_succ"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.ThreePrimeRunningLcm",
+          "name": "ErdosProblems.Erdos269.finiteSmoothKernelSum_groupedByHeight"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.ThreePrimeRunningLcm",
+          "name": "ErdosProblems.Erdos269.log_dyadic_succ_eq_of_no_internalPower"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.ResidueEscape",
+          "name": "ErdosProblems.Erdos269.no_bounded_positive_int_state_of_leastPositiveResidue"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.RestrictedFloorSum",
+          "name": "ErdosProblems.Erdos269.no_positive_reducedCarry_of_cofinalLocalWindowEscape"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.ThreePrimeRunningLcm",
+          "name": "ErdosProblems.Erdos269.threePrimeHeight_dyadicBlock_succ"
         }
       ],
       "source_commit": "cc7e541cf2081c6fef5a5e377d52e365e33b01eb",

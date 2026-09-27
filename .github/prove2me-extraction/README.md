@@ -11,24 +11,25 @@ does not assert a declaration dependency graph or source positions.
 The new workflow cannot receive `workflow_dispatch` while it is absent from
 the default branch. A push to the exact dedicated branch
 `codex/prove2me-remote-extraction-20260924` runs the reviewed `request.json`.
-The current reviewed request selects **five additional #243 paper targets**
-at `cc7e541cf2081c6fef5a5e377d52e365e33b01eb`, retaining all 52 source modules.
-It selects bounded-negative rigidity, the finite scalar negative-mass theorem,
-the original-coordinate LCM criterion, canonical weighted-record equivalence
-and canonical inclusive log-log criterion. The last is a canonical
-specialization, not the stronger arbitrary-orbit statement being prepared
-separately. The positive-integer scalar theorem is not a real-state extension.
+The current reviewed request selects **71 additional #269 paper targets**
+at `cc7e541cf2081c6fef5a5e377d52e365e33b01eb`, retaining all 55 source modules
+and 28 roots. These targets supplement the historical rank and modular pair;
+they cover the remaining selected short- and long-paper statement rows.
+Independent source readback checked all 46 rows and 73 distinct endpoint types.
+The two-prime transcendence implications retain the explicit
+BugeaudLaurentTranscendence hypothesis. The three-prime irrationality question,
+residue escape production and reduced-tail nonintegrality remain open;
+conditional and equivalence consumers do not discharge these obligations.
 
-This updates only the #243 case. The historical cubic #243 extraction remains
-frozen under its earlier manifests; its accepted proofs are not repeated by
-this request. All seven other cases and global extractor pins are unchanged.
-The full mixed-support #257 extraction 36302660157 succeeded; its original
-GitHub artifact, metadata, exact manifest and verified 67-module intake were
-retained before this request advanced. That mixed theorem retains its
-arbitrary positive-weight cover and common-sample argument.
-#251 retains both full-strength denominator endpoints and all 250 streaming
-certificate blocks in its 256-module closure. #269 retains both targets over
-15 modules; #1049 retains all eight targets over 59 modules.
+This updates only the #269 case. The previous two-target extraction remains
+frozen under its earlier manifest; no hosted proof verdict is inherited.
+All seven other cases and global extractor pins are unchanged. The additional
+#243 extraction 36304632090 succeeded; its original GitHub artifact, exact
+manifest and verified 52-module/five-target intake were retained before
+this request advanced. The separate full arbitrary-orbit #243 source replay
+is not part of that extraction. #251 retains both full-strength denominator
+endpoints and all 250 streaming certificate blocks in its 256-module closure.
+#1041 retains its full four-target counterexample and #1049 all eight targets.
 Do not push another request while an extraction is active: branch concurrency
 cancels the in-progress job. Advance one selected request only after consuming
 the preceding job's terminal receipt and preserving its artifact.
@@ -70,8 +71,8 @@ elaborated type and axiom checks. Extraction alone is neither platform
 submission nor personal review, and it does not complete whole-paper coverage.
 
 The additional cases use the same pinned official extractors and Lean 4.30 /
-Mathlib environment. #269 selects uniform kernel rank/nonseparation and
-admissible modular minors; this does not prove irrationality of the three-prime
-sum. #1049 retains all eight selected rational-base threshold, measure and
+Mathlib environment. #269 selects the additional 71 paper endpoints described above; its
+conditional transcendence and residue statements retain their assumptions.
+This does not prove irrationality of the three-prime sum. #1049 retains all eight selected rational-base threshold, measure and
 printed-constant endpoints and their existing source attribution. The supported
 #68 and #1049 snapshots still need their recorded cross-edition elaborated checks.
