@@ -22,7 +22,7 @@ jobs:
     timeout-minutes: 150
     env:
       LEAN_NUM_THREADS: '1'
-      P2M_BUNDLE_SHA256: '3207021fc036c5a5d4665d71d30b66ece413757e1a8f73a4aed5d264a9fdbe9f'
+      P2M_BUNDLE_SHA256: '4579b5119079e02c0eb71639b5e86146ff796d301a650a40fb2d64acdc1c00cf'
       P2M_SOURCE_COMMIT: 'fbf41fb8b571d217b1648070dcc39d5eda5394ad'
     steps:
       - name: Check out reviewed control files
@@ -40,6 +40,7 @@ jobs:
           echo "$P2M_BUNDLE_SHA256  $bundle" | sha256sum -c -
           unzip -q "$bundle" -d packet
           python3 packet/run_public_target_validation.py --check-packet 2>&1 | tee output/packet-preflight.log
+          python3 -m unittest discover -s packet -p test_lean_runtime.py -v 2>&1 | tee output/runtime-unit-tests.log
       - name: Check out exact source commit
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -53,6 +54,7 @@ jobs:
           path: cache
           persist-credentials: false
       - name: Install pinned Lean and compiled Mathlib
+        timeout-minutes: 120
         uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
         with:
           lake-package-directory: cache
@@ -61,6 +63,13 @@ jobs:
           build: 'false'
           test: 'false'
           lint: 'false'
+      - name: Test runtime contract with the real pinned toolchain
+        timeout-minutes: 5
+        shell: bash
+        run: |
+          set -euo pipefail
+          export P2M_TEST_LEAN_BINARY="$(cd cache && elan which lean)"
+          python3 -m unittest discover -s packet -p test_lean_runtime.py -v 2>&1 | tee output/runtime-conformance-tests.log
       - name: Validate exact public contexts and fresh proof bodies
         shell: bash
         run: |
