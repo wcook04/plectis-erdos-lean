@@ -78,3 +78,24 @@ conditional transcendence and residue statements retain their assumptions.
 This does not prove irrationality of the three-prime sum. #1049 retains all eight selected rational-base threshold, measure and
 printed-constant endpoints and their existing source attribution. The supported
 #68 and #1049 snapshots still need their recorded cross-edition elaborated checks.
+
+
+## Bounded extraction and exact partial progress
+
+Every Stage 2 module receives the same 1800-second maximum, including namespace
+projections. The execution deadline starts before setup and leaves 20 minutes of
+the 330-minute job for finalization; each build/extraction subprocess is clamped
+to the remaining execution time. Timeout cleanup terminates the owned process
+group, including descendants after Lake exits.
+
+`stage2_progress.json` records every attempted and unattempted module. A failed
+attempt never leaves a successful `stage2_receipt.json`. A later attempt reuses
+only successful outputs whose source inventory, extractor and driver hashes,
+output hashes, and row counts match. The workflow caches these bounded partial
+outputs under exact source and driver identities; unfinished files are rerun.
+The final receipt retains the existing importer contract. `failure.json` records
+the failing phase and original error; extraction alone never qualifies a proof.
+
+Run `python3 .github/prove2me-extraction/test_run.py` before publication. Tests
+exercise namespace-independent budgets, deadline exhaustion, failed checkpoints,
+corruption/source-change invalidation, and real descendant termination.

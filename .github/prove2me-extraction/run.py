@@ -16,6 +16,9 @@ import os
 import shutil
 import subprocess
 import sys
+import time
+import signal
+import math
 from datetime import datetime, timezone
 import urllib.request
 from pathlib import Path
@@ -47,7 +50,10 @@ def replace_once(text: str, before: str, after: str) -> str:
 
 
 def save_json(path: Path, value: dict) -> None:
-    path.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n")
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = path.with_name(path.name + ".tmp")
+    temporary.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n")
+    temporary.replace(path)
 
 
 def disk_guard(source: Path, out: Path, phase: str) -> None:
@@ -150,28 +156,64 @@ def prepare(source: Path, out: Path, problem: str, case: dict) -> None:
     print(f"Pinned {problem} input, {len(case['module_rows'])} modules; Lean has not run.")
 
 
-def run_logged(command: list[str], source: Path, log: Path, timeout: int) -> None:
-    print("Running", " ".join(command), flush=True)
-    with log.open("w") as stream:
+# One bounded budget for every source module, including namespace projections.
+# Names and source byte sizes are not proxies for elaboration cost.
+STAGE2_MODULE_SECONDS = 1800
+
+
+def remaining_budget(requested: float) -> float:
+    deadline = os.environ.get('P2M_EXTRACTION_DEADLINE_EPOCH')
+    if deadline:
+        value = float(deadline)
+        check(math.isfinite(value), 'invalid extraction deadline')
+        requested = min(requested, value - time.time())
+    check(requested > 0, 'extraction execution deadline exhausted; reserve time for diagnostics')
+    return requested
+
+
+def bounded_process(command, source, stdout, stderr, timeout):
+    """Kill owned descendants as well as Lake on timeout or interruption."""
+    budget = remaining_budget(timeout)
+    process = subprocess.Popen(command, cwd=source, stdout=stdout, stderr=stderr,
+                               start_new_session=True, env={**os.environ, 'LEAN_NUM_THREADS':'1'})
+    try:
+        return process.wait(timeout=budget)
+    except BaseException:
         try:
-            result = subprocess.run(command, cwd=source, stdout=stream,
-                                    stderr=subprocess.STDOUT, timeout=timeout,
-                                    check=False, env={**os.environ, "LEAN_NUM_THREADS": "1"})
-        except subprocess.TimeoutExpired as exc:
-            if log.stat().st_size > MAX_LOG_BYTES:
-                with log.open("rb") as prior:
-                    prior.seek(-MAX_LOG_BYTES, os.SEEK_END)
-                    tail = prior.read()
-                log.write_bytes(b"[earlier build output omitted]\n" + tail)
-            raise RuntimeError(f"command exceeded {timeout}s; see {log}") from exc
-    if log.stat().st_size > MAX_LOG_BYTES:
-        with log.open("rb") as stream:
+            os.killpg(process.pid, signal.SIGTERM)
+        except ProcessLookupError:
+            pass
+        try:
+            process.wait(timeout=5)
+        except subprocess.TimeoutExpired:
+            pass
+        # The direct process may have exited while a descendant ignored TERM.
+        try:
+            os.killpg(process.pid, signal.SIGKILL)
+        except ProcessLookupError:
+            pass
+        process.wait()
+        raise
+
+
+def trim_log(path):
+    if path.exists() and path.stat().st_size > MAX_LOG_BYTES:
+        with path.open('rb') as stream:
             stream.seek(-MAX_LOG_BYTES, os.SEEK_END)
             tail = stream.read()
-        log.write_bytes(b"[earlier build output omitted]\n" + tail)
-    if result.returncode:
+        path.write_bytes(b'[earlier output omitted]\n' + tail)
+
+
+def run_logged(command: list[str], source: Path, log: Path, timeout: int) -> None:
+    print('Running', ' '.join(command), flush=True)
+    try:
+        with log.open('w') as stream:
+            code = bounded_process(command, source, stream, subprocess.STDOUT, timeout)
+    finally:
+        trim_log(log)
+    if code:
         print(log.read_text()[-8000:], file=sys.stderr)
-        raise RuntimeError(f"command exited {result.returncode}; see {log}")
+        raise RuntimeError(f'command exited {code}; see {log}')
 
 
 def build(source: Path, out: Path, case: dict) -> None:
@@ -226,41 +268,57 @@ def stage2(source: Path, out: Path, case: dict) -> None:
           "Stage 2 script changed")
     target = out / "sketch_info"
     target.mkdir(exist_ok=True)
+    # A partial receipt remains incomplete. Reuse requires exact inputs and hashes;
+    # a timeout can never be turned into successful extraction by cached files.
+    progress_path = out/'stage2_progress.json'
+    binding = {'source_commit':case['source_commit'], 'driver_sha256':digest(Path(__file__).read_bytes()),
+               'module_rows':case['module_rows'],
+               'extractor_sha256': MANIFEST['extractor_sha256']['extract_sketch_info.lean']}
+    old = json.loads(progress_path.read_text()) if progress_path.exists() else {}
+    reusable = {row['module']:row for row in old.get('outputs',[]) if row.get('status')=='pass'} if old.get('binding')==binding else {}
+    progress = {'schema':'prove2me_stage2_progress_v1','status':'incomplete','binding':binding,
+                'module_budget_seconds':STAGE2_MODULE_SECONDS,
+                'outputs':[{'module':row['module'],'status':'not_attempted'} for row in case['module_rows']]}
+    save_json(progress_path, progress)
+    # No stale successful final receipt survives a new incomplete attempt.
+    (out/'stage2_receipt.json').unlink(missing_ok=True)
     results = []
-    for row in case["module_rows"]:
-        relative = module_path(row["module"])
-        disk_guard(source, out, f"before Stage 2 {relative}")
-        name = row["module"] + ".jsonl"
-        output = target / name
-        error = target / (row["module"] + ".stderr.log")
-        command = ["lake", "env", "lean", "--run", "extract_sketch_info.lean",
-                   str(relative)]
-        # The 886,933-byte CertificateKernel source reached the original 300 s
-        # cap on run 36004062630, after Stage 1 had passed. Keep the longer
-        # allowance specific to that reviewed source; other modules retain the
-        # shorter failure bound.
-        timeout = 1800 if row["module"] == "Erdos249257.CertificateKernel" else 300
-        print("Stage 2", relative, f"timeout={timeout}s", flush=True)
-        with output.open("w") as stdout, error.open("w") as stderr:
-            try:
-                result = subprocess.run(command, cwd=source, stdout=stdout,
-                                        stderr=stderr, timeout=timeout, check=False,
-                                        env={**os.environ, "LEAN_NUM_THREADS": "1"})
-            except subprocess.TimeoutExpired as exc:
-                raise RuntimeError(f"Stage 2 timed out on {relative}") from exc
-        if result.returncode:
-            print(error.read_text()[-8000:], file=sys.stderr)
-            raise RuntimeError(f"Stage 2 failed on {relative}: {result.returncode}")
-        if error.stat().st_size > MAX_LOG_BYTES:
-            with error.open("rb") as stream:
-                stream.seek(-MAX_LOG_BYTES, os.SEEK_END)
-                tail = stream.read()
-            error.write_bytes(b"[earlier stderr omitted]\n" + tail)
-        rows = jsonl_rows(output)
-        results.append({"module": row["module"], "sha256": digest(output.read_bytes()),
-                        "row_count": len(rows)})
-        size = sum(path.stat().st_size for path in out.rglob("*") if path.is_file())
-        check(size <= MAX_ARTIFACT_BYTES, "extraction artifact exceeds 400 MB ceiling")
+    for index, row in enumerate(case['module_rows']):
+        relative = module_path(row['module'])
+        output = target/(row['module']+'.jsonl')
+        error = target/(row['module']+'.stderr.log')
+        prior = reusable.get(row['module'])
+        item = progress['outputs'][index]
+        started = time.monotonic()
+        try:
+            disk_guard(source,out,f'before Stage 2 {relative}')
+            if prior and output.is_file() and digest(output.read_bytes())==prior['sha256']:
+                rows=jsonl_rows(output)
+                check(len(rows)==prior['row_count'],'cached extraction row count changed')
+                item.update(prior, reused=True)
+            else:
+                budget=remaining_budget(STAGE2_MODULE_SECONDS)
+                item.update(status='running',budget_seconds=budget)
+                save_json(progress_path,progress)
+                print('Stage 2',relative,f'timeout={budget:.0f}s',flush=True)
+                with output.open('w') as stdout,error.open('w') as stderr:
+                    code=bounded_process(['lake','env','lean','--run','extract_sketch_info.lean',str(relative)],source,stdout,stderr,budget)
+                check(code==0,f'Stage 2 failed on {relative}: exit {code}; see {error.name}')
+                rows=jsonl_rows(output)
+                item.update(status='pass',sha256=digest(output.read_bytes()),row_count=len(rows),reused=False)
+            results.append({key:item[key] for key in ('module','sha256','row_count')})
+            size=sum(path.stat().st_size for path in out.rglob('*') if path.is_file())
+            check(size<=MAX_ARTIFACT_BYTES,'extraction artifact exceeds 400 MB ceiling')
+        except BaseException as exc:
+            item.update(status='timeout' if isinstance(exc,subprocess.TimeoutExpired) else 'fail',error=str(exc))
+            progress['failed_module']=row['module']
+            raise
+        finally:
+            trim_log(error)
+            item['elapsed_seconds']=round(time.monotonic()-started,3)
+            save_json(progress_path,progress)
+    progress['status']='pass'
+    save_json(progress_path,progress)
     save_json(out / "stage2_receipt.json", {
         "schema": "prove2me_remote_stage2_v1",
         "source_commit": case["source_commit"],
@@ -295,4 +353,15 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    signal.signal(signal.SIGTERM, lambda *_: (_ for _ in ()).throw(InterruptedError("SIGTERM")))
+    try:
+        main()
+    except (OSError, ValueError, RuntimeError, subprocess.SubprocessError) as error:
+        # Diagnostic artifact and original nonzero result survive every phase.
+        args=sys.argv
+        out=Path(args[args.index('--out')+1]) if '--out' in args else Path('output')
+        save_json(out/'failure.json', {'status':'fail','phase':args[1] if len(args)>1 else None,
+                  'command':args, 'error':str(error),'control_commit':os.environ.get('GITHUB_SHA')})
+        message=str(error).replace('%','%25').replace('\n','%0A').replace('\r','%0D')
+        print('::error title=Pinned extraction::'+message,file=sys.stderr)
+        raise SystemExit(1)

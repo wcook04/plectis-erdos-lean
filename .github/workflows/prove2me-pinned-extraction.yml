@@ -25,11 +25,15 @@ jobs:
     env:
       LEAN_NUM_THREADS: '1'
     steps:
+      - name: Reserve execution and diagnostic time
+        run: echo "P2M_EXTRACTION_DEADLINE_EPOCH=$(( $(date +%s) + 18600 ))" >> "$GITHUB_ENV"
       - name: Check out reviewed control files
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           path: control
           persist-credentials: false
+      - name: Test extraction budget and partial evidence contracts
+        run: python3 control/.github/prove2me-extraction/test_run.py
       - name: Select audited source and phase
         id: selected
         run: python3 control/.github/prove2me-extraction/run.py select
@@ -67,6 +71,15 @@ jobs:
         env:
           P2M_PROBLEM: ${{ steps.selected.outputs.problem }}
         run: python3 control/.github/prove2me-extraction/run.py stage1 --problem "$P2M_PROBLEM" --source source --out output
+      - name: Restore validated extraction progress
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: |
+            output/sketch_info
+            output/stage2_progress.json
+          key: extraction-progress-${{ steps.selected.outputs.source_commit }}-${{ hashFiles('control/.github/prove2me-extraction/run.py', 'control/.github/prove2me-extraction/manifest.json') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            extraction-progress-${{ steps.selected.outputs.source_commit }}-${{ hashFiles('control/.github/prove2me-extraction/run.py', 'control/.github/prove2me-extraction/manifest.json') }}-
       - name: Extract source positions for audited import closure
         if: ${{ steps.selected.outputs.stage == 'full' }}
         env:
@@ -80,3 +93,11 @@ jobs:
           path: output/
           if-no-files-found: warn
           retention-days: 7
+      - name: Save bounded partial extraction progress
+        if: ${{ always() && hashFiles('output/stage2_progress.json') != '' }}
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: |
+            output/sketch_info
+            output/stage2_progress.json
+          key: extraction-progress-${{ steps.selected.outputs.source_commit }}-${{ hashFiles('control/.github/prove2me-extraction/run.py', 'control/.github/prove2me-extraction/manifest.json') }}-${{ github.run_id }}-${{ github.run_attempt }}
