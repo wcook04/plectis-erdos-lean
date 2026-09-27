@@ -2611,6 +2611,10 @@
           "sha256": "e7de8e3080d2ce69bda7a1ab106160e780f850cbb7bf623a1885c3ae9a0694c3"
         },
         {
+          "module": "ErdosProblems.Erdos68.DivisorChannelBasis",
+          "sha256": "cd838193eabf1c6d00e6ee90b4f3a8a813a91f2a1be7a7fb5e23938b60c2a125"
+        },
+        {
           "module": "ErdosProblems.Erdos68.EndpointWeightedPrivateSupport",
           "sha256": "e76dee594f84438f2d189e028e6507efdd162b2157ab60eccd5998174d27c026"
         },
@@ -2647,12 +2651,92 @@
           "sha256": "bc3d5b31e27566df95ab067eb31bb96c91062fb3d6ce553c6052f1c6f8f08d46"
         },
         {
+          "module": "ErdosProblems.Erdos68.FiniteLeadBlocks.Size000",
+          "sha256": "2a2eb9c4a8150fd3596e7e3aa84fcb848b17a3613afbe8b92564c77dd65dbe43"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.FiniteLeadBlocks.Size001",
+          "sha256": "c0f12afe3eb02a68ed074e2553fb57a8a349457dc7215a26744d3eb0cf13af26"
+        },
+        {
           "module": "ErdosProblems.Erdos68.GapScalarNormalForm",
           "sha256": "eeb392e6131a9e6f41bbd33ad90884dab1e6dfee66386e62e59e1bfa9408b528"
         },
         {
+          "module": "ErdosProblems.Erdos68.PaperCompleteAsymptotics",
+          "sha256": "81db83ef5773795dd7dea0ce31f52a135235355eaa63b511453fcd0cd41e7fdc"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PaperCompleteDivisorCoordinates",
+          "sha256": "8401a00839ed2db6a810bd999bd2c32d6a527f8c962b394ee6434f8b933b09f5"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PaperCompleteDyadicEnclosure",
+          "sha256": "148a13d602a1ea80329c35e01ccf18024f045ef39d39ccac426e4bb85cae4d93"
+        },
+        {
           "module": "ErdosProblems.Erdos68.PaperCompleteExisting",
           "sha256": "b1446e097e0b9b1a174cfb704b0d5442710f0f43604358b53108c66dc41bc922"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PaperCompleteFiniteLeadArithmetic",
+          "sha256": "75bdc81dd256d15acb2187da3297c0a56e5fabf7075aa285f3c6a75a3dd7dac3"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PaperCompleteFiniteSizeCertificate",
+          "sha256": "e5f45ce9c9059106eab9a92de62f8142007344f37abb8e31fed687355a181f44"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PaperCompleteFiniteSizeData",
+          "sha256": "f7eee2420c4cc4e79f72ccaffc864fa909a26343134ede511ac11894e65e4e56"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PaperCompleteIntegerSpan",
+          "sha256": "d5da5d1b34b1fbc75ae8a06b7173e9a92e1c9a7ae5f3d817ec9d07588cc1b887"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PaperCompleteKernelFloorAlgorithm",
+          "sha256": "3ec19d925a4e3c743208d4b0bcf31e111318afc1c75b204c88b2210f05e0a6ce"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PaperCompleteKernelFloorSoundness",
+          "sha256": "a1151cbee94a991cce476444e9d59817f60979621d6bc31ba026d94d88ab44f1"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PaperCompleteKernelSizeSum",
+          "sha256": "acd65be630d912730d61400d7c30386dd73d40e74420dc1d88c1c37141014ca0"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PaperCompleteLiminf",
+          "sha256": "605b5adf98b3ccdbc10831c6834f7d1cdc28d0d23c9c8164febdad0cb58eb0e8"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PaperCompleteLowKernel",
+          "sha256": "1405492533c0fb334832be65b3ae4be931ca7caa63dfda77d3d8b4a8b21bf873"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PaperCompleteMomentHorizon",
+          "sha256": "b002318245530d5effd62e565dc7ea18e74459980ca93efa273e005959544e06"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PaperCompleteMomentIdeal",
+          "sha256": "e442b614dcebbd6ab23c123d8043d25468d0e5bf4adf2ff4adb29ccddf8f2eb8"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PaperCompletePrimePole",
+          "sha256": "3c95754dff0a9218167c842b1e0e5decc7a3dfe4de57a123a4342d4a8f7c9bda"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PaperCompleteRadiusLimit",
+          "sha256": "8f3ba25be5a1871340e9f88a6aae4bc3eacc79a86d6d562ae5aa5c1f4314bb18"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PaperCompleteResidualIdentity",
+          "sha256": "e67ef7babd9382248f5f7b094416d53863afd5e8526344636a10f7372752b279"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PaperCompleteSupportedBands",
+          "sha256": "611f43f6e9e5dd3caee345b2bf71abfdda67a3af88102ca4a8e2df0abb901119"
         },
         {
           "module": "ErdosProblems.Erdos68.PrimePoleCriterion",
@@ -2683,19 +2767,149 @@
           "sha256": "e03320c57d2ae0d42f52564023f4d62d92e805696bf010d6b48c66ecb053064b"
         }
       ],
-      "prepared_graph_sha256": "e52f25814db7b35225d51d08025badbbb7c57c1cf42065cc9a92da05d909db7b",
+      "prepared_graph_sha256": "226769246b79e3ec746880d8d1a3c9aa74e98ef372e563131992c7e1b662a3d4",
       "project_prefixes": [
         "ErdosProblems",
         "Erdos257PeriodNoncollapse",
         "Erdos249257"
       ],
       "root_modules": [
-        "ErdosProblems.Erdos68.PaperCompleteExisting"
+        "ErdosProblems.Erdos68.ChannelIntegralCongruence",
+        "ErdosProblems.Erdos68.PaperCompleteDivisorCoordinates",
+        "ErdosProblems.Erdos68.PaperCompleteExisting",
+        "ErdosProblems.Erdos68.PaperCompleteFiniteSizeCertificate",
+        "ErdosProblems.Erdos68.PaperCompleteLiminf",
+        "ErdosProblems.Erdos68.PaperCompleteLowKernel",
+        "ErdosProblems.Erdos68.PaperCompleteMomentHorizon",
+        "ErdosProblems.Erdos68.PaperCompleteMomentIdeal",
+        "ErdosProblems.Erdos68.PaperCompletePrimePole",
+        "ErdosProblems.Erdos68.PaperCompleteResidualIdentity",
+        "ErdosProblems.Erdos68.PaperCompleteSupportedBands"
       ],
       "selected_declarations": [
         {
+          "module": "ErdosProblems.Erdos68.PaperCompletePrimePole",
+          "name": "ErdosProblems.Erdos68.PaperComplete.maximal_prime_power_survival"
+        },
+        {
           "module": "ErdosProblems.Erdos68.PaperCompleteExisting",
-          "name": "ErdosProblems.Erdos68.PaperComplete.strict_successor_characterisation"
+          "name": "ErdosProblems.Erdos68.PaperComplete.cofinal_first_prime_occurrences"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PaperCompleteExisting",
+          "name": "ErdosProblems.Erdos68.PaperComplete.product_lcm_pairwise_gcd"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.ChannelIntegralCongruence",
+          "name": "Erdos68.factorial_gap_gcd_exact"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.ChannelIntegralCongruence",
+          "name": "Erdos68.factorialGapSegment_log_sum_le_channelLCM_add_choose"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PaperCompleteLiminf",
+          "name": "ErdosProblems.Erdos68.PaperComplete.common_denominator_growth_liminf"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PaperCompleteExisting",
+          "name": "ErdosProblems.Erdos68.PaperComplete.companion_orbit_boundary"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PaperCompleteExisting",
+          "name": "ErdosProblems.Erdos68.PaperComplete.lower_interval_criterion"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PaperCompleteExisting",
+          "name": "ErdosProblems.Erdos68.PaperComplete.uniform_family_boundary"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PaperCompleteExisting",
+          "name": "ErdosProblems.Erdos68.PaperComplete.uniform_family_members"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PaperCompleteExisting",
+          "name": "ErdosProblems.Erdos68.PaperComplete.global_complementary_criterion_nat"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PaperCompleteDivisorCoordinates",
+          "name": "ErdosProblems.Erdos68.PaperComplete.divisor_channel_coordinates"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PaperCompleteLowKernel",
+          "name": "ErdosProblems.Erdos68.PaperComplete.low_channel_classification"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PaperCompleteLowKernel",
+          "name": "ErdosProblems.Erdos68.PaperComplete.low_channel_parameters_unique"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PaperCompleteLowKernel",
+          "name": "ErdosProblems.Erdos68.PaperComplete.support_equation"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PaperCompleteMomentHorizon",
+          "name": "ErdosProblems.Erdos68.PaperComplete.finite_channel_moment_certificate"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PaperCompleteMomentIdeal",
+          "name": "ErdosProblems.Erdos68.PaperComplete.exact_moment_ideal_with_primitive_attainment"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PaperCompleteMomentIdeal",
+          "name": "ErdosProblems.Erdos68.PaperComplete.minimumMoment_independent_prime"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PaperCompleteSupportedBands",
+          "name": "ErdosProblems.Erdos68.PaperComplete.supported_integral_normal_form"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PaperCompleteSupportedBands",
+          "name": "ErdosProblems.Erdos68.PaperComplete.supported_quotient_band"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PaperCompleteSupportedBands",
+          "name": "ErdosProblems.Erdos68.PaperComplete.supported_first_band_cancellation"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PaperCompleteSupportedBands",
+          "name": "ErdosProblems.Erdos68.PaperComplete.supported_breakpoint_escape"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PaperCompleteResidualIdentity",
+          "name": "ErdosProblems.Erdos68.PaperComplete.residual_transparency"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PaperCompleteResidualIdentity",
+          "name": "ErdosProblems.Erdos68.PaperComplete.fullResidual_synthesis"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PaperCompleteResidualIdentity",
+          "name": "ErdosProblems.Erdos68.PaperComplete.summable_fullResidual"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PaperCompleteResidualIdentity",
+          "name": "ErdosProblems.Erdos68.PaperComplete.equal_moment_residual_integer_difference"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PaperCompleteExisting",
+          "name": "ErdosProblems.Erdos68.PaperComplete.square_subsequence_radius"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PaperCompleteLiminf",
+          "name": "ErdosProblems.Erdos68.PaperComplete.asymptotic_radius_constant_liminf"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PaperCompleteExisting",
+          "name": "ErdosProblems.Erdos68.PaperComplete.radius_not_littleO"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PaperCompleteExisting",
+          "name": "ErdosProblems.Erdos68.PaperComplete.prime_channel_corrector"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PaperCompleteFiniteSizeCertificate",
+          "name": "ErdosProblems.Erdos68.PaperComplete.FiniteLead.SizeOnly.denominator_exclusion"
         }
       ],
       "source_commit": "c93c2e4dd86a2e317e0cb650ea244fee1afd59c2",
