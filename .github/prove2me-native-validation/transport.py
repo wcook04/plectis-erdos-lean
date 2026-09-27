@@ -202,7 +202,7 @@ def prepare_pending(plan_path: Path, map_path: Path, artifact: Path,
                     control_manifest: Path, source: Path, problem: str,
                     out: Path, validation_dir: Path) -> dict:
     """Package exact source and generated actions while the cache remains pending."""
-    require(problem in ("243", "257"), "unsupported problem")
+    require(problem in ("68", "243", "249", "251", "257", "269", "1041", "1049"), "unsupported problem")
     require(map_path.name == "module_map.json" and
             all(path.is_file() and not path.is_symlink() for path in
                 (plan_path, map_path, artifact, control_manifest)),
@@ -746,7 +746,7 @@ def main() -> None:
     pending = sub.add_parser("prepare-pending", help="bundle pinned source inputs before cache build")
     for flag in ("plan", "module-map", "artifact", "manifest", "source", "out"):
         pending.add_argument("--" + flag, type=Path, required=True)
-    pending.add_argument("--problem", choices=("243", "257"), required=True)
+    pending.add_argument("--problem", choices=("68", "243", "249", "251", "257", "269", "1041", "1049"), required=True)
     pending.add_argument("--validation-dir", type=Path,
                          default=Path(__file__).resolve().parents[1] / "validation")
     remote = sub.add_parser("run", help="validate one bundle in a pinned CI checkout")
