@@ -1,7 +1,28 @@
 name = "erdos257_period_noncollapse"
 version = "0.1.0"
 keywords = ["math", "erdos257", "period-noncollapse"]
-defaultTargets = ["ExternalVerification251KernelDenominatorFloor", "ErdosProblems.Erdos251.PaperLargeCertificateR7"]
+defaultTargets = [
+  "ExternalVerification251KernelDenominatorFloor",
+  "ErdosProblems.Erdos251.PaperLargeCertificateR7",
+  "Definitions.Def_Erdos249257_TotientKernelIndex",
+  "Definitions.Def_Erdos249257_TotientKernelConditional",
+  "Definitions.Def_Erdos249257_TotientMahlerDefect",
+  "Definitions.Def_Erdos249257_AllBaseTotientKernel",
+  "Definitions.Def_ErdosProblems_Erdos249_PaperCompleteR7_KernelIntegral",
+  "Definitions.Def_ErdosProblems_Erdos249_PaperCompleteR8_UnitPivotBasis",
+  "Theorems.Thm_Erdos249257_finrank_allBaseTotientKernel_eq_of_linearIndependent",
+  "Theorems.Thm_Erdos249257_finrank_allBaseThroughLevelFamily_eq",
+  "Theorems.Thm_ErdosProblems_Erdos249_PaperCompleteR7_stepScalar_eulerProduct",
+  "Theorems.Thm_ErdosProblems_Erdos249_PaperCompleteR7_allBase_power_residue_euler",
+  "Theorems.Thm_ErdosProblems_Erdos249_PaperCompleteR7_paper_maximal_power_reduction",
+  "Theorems.Thm_ErdosProblems_Erdos249_PaperCompleteR8_displayed_all_base_kernel",
+  "Solutions.Sol_Erdos249257_finrank_allBaseTotientKernel_eq_of_linearIndependent",
+  "Solutions.Sol_Erdos249257_finrank_allBaseThroughLevelFamily_eq",
+  "Solutions.Sol_ErdosProblems_Erdos249_PaperCompleteR7_stepScalar_eulerProduct",
+  "Solutions.Sol_ErdosProblems_Erdos249_PaperCompleteR7_allBase_power_residue_euler",
+  "Solutions.Sol_ErdosProblems_Erdos249_PaperCompleteR7_paper_maximal_power_reduction",
+  "Solutions.Sol_ErdosProblems_Erdos249_PaperCompleteR8_displayed_all_base_kernel"
+]
 
 [leanOptions]
 pp.unicode.fun = true
@@ -1322,3 +1343,12 @@ globs = ["ExternalVerification269PaperStructuresH.+"]
 [[lean_lib]]
 name = "ExternalVerification257PaperStructuresAY"
 globs = ["ExternalVerification257PaperStructuresAY.+"]
+
+# Compile frozen native #249 action modules independently; no native acceptance.
+[[lean_lib]]
+name = "Definitions"
+globs = ["Definitions.+"]
+
+[[lean_lib]]
+name = "Theorems"
+globs = ["Theorems.+"]
