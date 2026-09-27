@@ -4,7 +4,7 @@ name: Prove2Me Pinned Native Validation 1041 Full Counterexample
 
 on:
   push:
-    branches: [codex/prove2me-native-validation-1041-full-source-20260927]
+    branches: [codex/prove2me-native-validation-1041-type-dependency-repair-20260927]
     paths:
       - .github/workflows/prove2me-native-validation.yml
       - .github/prove2me-native-validation/**
@@ -22,7 +22,7 @@ jobs:
     timeout-minutes: 355
     env:
       LEAN_NUM_THREADS: '1'
-      P2M_BUNDLE_SHA256: '0a6f02e3066afb5de336a41d9223b39709596da8ac0765a8d042b412e73f0a4f'
+      P2M_BUNDLE_SHA256: 'b7598a3a696bc7edf2c167480f9d214019724bf02a05fb6a51d47e5fe78bf7b4'
       P2M_SOURCE_COMMIT: 'cc7e541cf2081c6fef5a5e377d52e365e33b01eb'
     steps:
       - name: Check out reviewed control files
