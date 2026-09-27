@@ -1,10 +1,10 @@
 # SPDX-FileCopyrightText: 2026 Will Cook
 # SPDX-License-Identifier: Apache-2.0
-name: Prove2Me Pinned Native Validation 257
+name: Prove2Me Pinned Native Validation 257 Full Mixed-Support
 
 on:
   push:
-    branches: [codex/prove2me-remote-extraction-20260924]
+    branches: [codex/prove2me-native-validation-257-mixed-source-20260927]
     paths:
       - .github/workflows/prove2me-native-validation.yml
       - .github/prove2me-native-validation/**
@@ -22,10 +22,8 @@ jobs:
     timeout-minutes: 355
     env:
       LEAN_NUM_THREADS: '1'
-      P2M_BUNDLE_SHA256: '460879e58f53a76ded12103509706f68ca3cc82a3ed0e1af943106673e304181'
+      P2M_BUNDLE_SHA256: 'de73d2de1c2acf9c3cfeb181e4f7d54b7ccb607d5057c924b09c53b4458573e1'
       P2M_SOURCE_COMMIT: 'c93c2e4dd86a2e317e0cb650ea244fee1afd59c2'
-      P2M_ROOT_1: 'ErdosProblems.Erdos257.PaperCompleteR8.AnalyticSeparationReturn'
-      P2M_ROOT_2: 'ErdosProblems.Erdos257.PaperCompleteR8.WeightedHereditaryClaim'
     steps:
       - name: Check out reviewed control files
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -58,7 +56,10 @@ jobs:
         run: |
           mkdir -p output
           cd cache
-          lake build "$P2M_ROOT_1" "$P2M_ROOT_2" 2>&1 | tee ../output/source-cache-build.log
+          roots=(
+            "ErdosProblems.Erdos257.PaperCompleteR8.ArbitraryWeightMixedClaim"
+          )
+          lake build "${roots[@]}" 2>&1 | tee ../output/source-cache-build.log
       - name: Validate exact generated native actions
         shell: bash
         run: |
