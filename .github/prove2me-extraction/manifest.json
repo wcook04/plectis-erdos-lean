@@ -1,5 +1,292 @@
 {
   "cases": {
+    "1049": {
+      "mathlib_rev": "c5ea00351c28e24afc9f0f84379aa41082b1188f",
+      "module_rows": [
+        {
+          "module": "ErdosProblems.Erdos1049.ActualAGrowthR14",
+          "sha256": "974a1c38353a1613da63c68fdf31b92abfdf24c5ecd727516bbf8020c55cbf29"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.ActualMomentGeneratingR12",
+          "sha256": "dab9e3d277257215429d5aba1f6463c40de4097107f06bc2aa6e1a6aa23b1dd0"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.ActualSourceAnalyticIdentityR14",
+          "sha256": "3da7120c2061b1ea70a561fec8f101f8fc5baf661871f15b405da310f3a3d5aa"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.ActualSourceRemainderR14",
+          "sha256": "1600a2a1b19f70a957c565fc823a2e5b9460b316651549c9706e27a301ff4af5"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.ActualSourceResiduesR14",
+          "sha256": "f5b96f1dabb839753d679f77bb32d342691f4c9e08e11dc4ca998801d17bf116"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.BezoutPluckerJets",
+          "sha256": "9197db4b21ba936f56a1fc1249bee8307ed33f62a7b2a558dba1f032e07191c5"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.CyclotomicCircleHeightR13",
+          "sha256": "d99948a72130f5206b7a6f5635b10748527728e5c5022b9d47b0d321ff39cca6"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.FiniteFourierCoefficientR13",
+          "sha256": "463cf87cf2c327abe8310dcb05d1a25c6f7efa38e2acc2a4c667670e27d35cb5"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.FiniteResidueInterpolationR14",
+          "sha256": "516246a996333653bd41dabc5300ec8c57bada63ba0a03f6b6cd37d2b2e8b611"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.FirstNewBaseR10",
+          "sha256": "0421fd6c2300301fb954c46345611cedf399f1600994cd8b9a977772e614f159"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.G02ArithmeticR16",
+          "sha256": "13aefde17c2d1f2d4f801f57eb5dff2acb86050c25b116c1c4d38245987ac3c5"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.G02CyclotomicR16",
+          "sha256": "aee921bf897044b095e00253bbb7b0353f3e258276d9e76d3ea01b414b08ec78"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.G02RateCalculusR16",
+          "sha256": "28e04bcec1cacddc571abb31ef789e5811466eeec6a3b4fbbfd0baa45a4f9f88"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.G02SourceRatesR16",
+          "sha256": "8e7452d6b80e6e654d3b4a53ec177023f064ae30e7b1145341df12906effc828"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.G02WeightedBlocksR16",
+          "sha256": "3275b04b7fd960f5e349d75188479941825966611e32434057ef473f13584997"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.GaussianCircleBoundsR12",
+          "sha256": "e84cb2f423dd0d7581d72a4ba96c27bb743dcf19709ad1e2da0a37d771e93ba8"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.GaussianCoefficientsR11",
+          "sha256": "ec00328ecb96803c5a7b0f56f223bcf08bea11c435f5086951ba4c544f91c535"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.GaussianDegreeR12",
+          "sha256": "96cfbd6c24f832f8a130893eefcc1e5d62b80eb9a2782d42ab09458fd68d6802"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.IrrationalityExponentR11",
+          "sha256": "4009ddefacc8b653837312836ab1b0c1e3a0287da41b50d97ecaae4d21c08b77"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.LambertSourceSummationR14",
+          "sha256": "50e680d9b80f16323482dbfba7c1648b44390a3b0e9b6da80ae7d85eaff1a71c"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.MeasureConstantsR10",
+          "sha256": "6a50f3065a412229ea585edc64278e31b136f0a2d5f7309f058d26b862377b56"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.PaperAsymptoticsR9",
+          "sha256": "4ed0b6c09bade5bd8bc6fd4f2e0587d788f4a11cc640c682e4487441a22ae904"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.PaperCompleteR21.PrintedContourConstants",
+          "sha256": "520d3a6423eadf3e7b98bcf686c2066bcbe45e57e56fcf09696552a0fc983d7f"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.PaperCompleteR21.RationalBaseThreshold",
+          "sha256": "0cfa46b6e5e566e017efc4d5cca14c256edd150e45fe3a2c554d5600c3267503"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.PaperHomogenisationR7",
+          "sha256": "8e5a126a8c0b6d4ac99d8adc8694d2a2e2b7423362acd1489f6928d2efc82598"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.PaperLinearFormsR7",
+          "sha256": "72dc9320b390607ccbebf334a5a78d5a1ac8cac38b1001b7bb6c1c857e0c3a3d"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.PaperLongCapR9",
+          "sha256": "6e354a0da113b3390c9a314e86ba4f3169a14cbc81fa9820e747f26e7f1b5512"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.PaperNoDecayR9",
+          "sha256": "3cd83f6b138fd10c8c403aeb055e1cb6239172b1bc34756cb1204dc2e32e9d3e"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.PaperOmegaIndicatorR7",
+          "sha256": "feb8aff592e6266e273eb3205bba9e501c8fe68ecacef2a9d47c3aa93a6e9e20"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.PaperR17.Constants",
+          "sha256": "c765d5f2f0939deca711a654cfb66bfa40d326fb8386a9d0ce9e58761e2aedb2"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.PaperR17.SourceConsumers",
+          "sha256": "423b1637846f347f092805968fb844ea03433481de7eacee694929afd78a6634"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.PaperRankTwoCapR7",
+          "sha256": "5d7e8b5c07d4a96538d225bc86fed23d1d5022af9b2c2e8ccaf97f4a276ed598"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.PaperShortCapR9",
+          "sha256": "81a1264e22348ebdc7dc371611483d5babb3d33d8765850980e64371037ab563"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.QBinomialUnitIdentity",
+          "sha256": "64eaab5bd25b378948d74ae7e2e09ac8c4fe88fc2297164f438b754c6f0bc02d"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.QLucasR13",
+          "sha256": "ef46441a9b60427c879713a72fa955c0e75f288bb200bee9020c6063ad7ba79b"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.QProductBoundsR10",
+          "sha256": "83bcb815312663d6a1453a642ff108529713c13a7fe7ad165301cd8727fc0e82"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.QuadraticMeasureR10",
+          "sha256": "69c03f640b3c98f408ce5d1aa5766ffa5d98dd523783966d4ddd12c8476ca9a6"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.RationalApproximationSeparation",
+          "sha256": "d14e3565a0e589004304d830eaf2dca0f71676936e8de0cdb4afdd16a0c291ee"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.RationalBaseContour",
+          "sha256": "2f5bf1e5013a66c5b6464552abdf888cb5bc3c50dc4ff455b1017aa22a8d30b5"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.RationalBaseLambert",
+          "sha256": "9709184ca2c940b9aacc67a4fb376d92caced99b76c82ccb63d0389e49a239c3"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.ReciprocalPochhammerR14",
+          "sha256": "17f5d44fbf75ef8a31967b2bf1ac74dd5df07f8d15668f3fbd4cf7b98827c09d"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.RootUnityLocalCancellationR13",
+          "sha256": "3359891a41c7b863bd8b1b7bac5c752d6a2d60e0e09a70f91b073ace76714a24"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.SourceBCircleR13",
+          "sha256": "0eaade508877ed97af2cca13d7421d6bce055c31f68f80441b1181dbe004a389"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.SourceBClearingR12",
+          "sha256": "90074e273ef16474020052c8a774a153c25dad309c7ffcc5e1b7c13f508b1d1f"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.SourceBInitialR12",
+          "sha256": "7196fbbba861ad3d8a2030ab0a56163fe65a0e0c2272e5a1111b045cdd54139e"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.SourceBMonomialR12",
+          "sha256": "aaa51db269115cacac55d9bb4f25764cba8670efe4e7b95fa8e2e188c99138fb"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.SourceBTopDegreeR13",
+          "sha256": "cfbafc319ba471530582e5db4285d9155303c3efa2aeb8e6e897033f3bff215b"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.SourceFiniteTransformR12",
+          "sha256": "55a2b316e63771e5f55abb3b31678da4e04470b77a7832b3b993c0ddbd06b965"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.SourceHeightRateR14",
+          "sha256": "c9d6c5b62528879295b96aebf2d425d8e4da21c0b63f7eab39c40fa5faf6212c"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.SourceHomogeneousR12",
+          "sha256": "72baf569032a2bbdda698151b18e7f067b30e27081437d423377e1a9334a72a1"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.SourceOmegaCancellationR13",
+          "sha256": "f840f7271ff9844c31c5a6f8ee4d7c4e627637ccaa522df60caf2cd780c4dcb2"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.SourcePolynomialR11",
+          "sha256": "6466cbcb0d2107ada7cb22e20269102ed4e720a4945daec1b9c210f5adeec163"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.SourcePositiveHBoundsR10",
+          "sha256": "f8cbfa9810a9ddd94eb1cfa16ab83b7d9de573ecac10be967600a2d452c9a97a"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.SourceRootBlocksR13",
+          "sha256": "24ad34712c9a2ca5380060d6d5206cff9d033bbf721648445d421c6aff6f61d3"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.SourceRootCarriesR13",
+          "sha256": "343b163104dc34f965b2296d792908c06d74d3face2b61728ec97b4936f3500a"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.TwoSelectorRemainderEscape",
+          "sha256": "55e53268f87b5f1eeb6b3749bd1ebc2340adf4db63bfa199bfecec3aaa2341b6"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.WeightedFloorBlocksR12",
+          "sha256": "2d33b30b0f77984134464e4f1f7ddb9b081e62741b2784bec16b3b000e8000a1"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.ZudilinConeArithmetic",
+          "sha256": "c03e39bf88456705456d19c473cdc4fbb0cc3f1ab3dd4fa825ba7ba056d9907b"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.ZudilinHeightRegion",
+          "sha256": "bdb9ffaeab12363ed91a6385a6df8ef8e931003ad7862096ed28fc09aa3669fa"
+        }
+      ],
+      "prepared_graph_sha256": "0c2822bf9d224251bcaf6f953399325ef3e54825cb56a60369dcdd43dc68eb3a",
+      "project_prefixes": [
+        "ErdosProblems",
+        "Erdos257PeriodNoncollapse",
+        "Erdos249257"
+      ],
+      "root_modules": [
+        "ErdosProblems.Erdos1049.PaperCompleteR21.RationalBaseThreshold",
+        "ErdosProblems.Erdos1049.PaperCompleteR21.PrintedContourConstants"
+      ],
+      "selected_declarations": [
+        {
+          "module": "ErdosProblems.Erdos1049.PaperCompleteR21.RationalBaseThreshold",
+          "name": "ErdosProblems.Erdos1049.PaperCompleteR21.rational_base_threshold"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.PaperCompleteR21.RationalBaseThreshold",
+          "name": "ErdosProblems.Erdos1049.PaperCompleteR21.rational_base_threshold_log"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.PaperCompleteR21.RationalBaseThreshold",
+          "name": "ErdosProblems.Erdos1049.PaperCompleteR21.zudilin_rpow_lt_iff_contourRegion"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.PaperCompleteR21.RationalBaseThreshold",
+          "name": "ErdosProblems.Erdos1049.PaperCompleteR21.rational_base_measure_uniform"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.PaperCompleteR21.RationalBaseThreshold",
+          "name": "ErdosProblems.Erdos1049.PaperCompleteR21.thirtyoneFour_pow_irrational"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.PaperCompleteR21.RationalBaseThreshold",
+          "name": "ErdosProblems.Erdos1049.PaperCompleteR21.thirtyoneFour_power_measure_lt_301"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.PaperCompleteR21.PrintedContourConstants",
+          "name": "ErdosProblems.Erdos1049.PaperCompleteR21.PrintedContour.printed_contour_short"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.PaperCompleteR21.PrintedContourConstants",
+          "name": "ErdosProblems.Erdos1049.PaperCompleteR21.PrintedContour.printed_mu"
+        }
+      ],
+      "source_commit": "c93c2e4dd86a2e317e0cb650ea244fee1afd59c2",
+      "toolchain": "leanprover/lean4:v4.30.0"
+    },
     "243": {
       "mathlib_rev": "c5ea00351c28e24afc9f0f84379aa41082b1188f",
       "module_rows": [
@@ -628,6 +915,215 @@
         {
           "module": "ErdosProblems.Erdos257.PaperCompleteR8.AnalyticSeparationReturn",
           "name": "ErdosProblems.Erdos257.PaperCompleteR8.exists_weighted_not_strengthened_host"
+        }
+      ],
+      "source_commit": "c93c2e4dd86a2e317e0cb650ea244fee1afd59c2",
+      "toolchain": "leanprover/lean4:v4.30.0"
+    },
+    "269": {
+      "mathlib_rev": "c5ea00351c28e24afc9f0f84379aa41082b1188f",
+      "module_rows": [
+        {
+          "module": "ErdosProblems.Erdos269.BlockMassEngines",
+          "sha256": "f7fac792bced7515f9f2e50810953f18a9896e897d352611466d4f716cf435af"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.BoundedRadixTailEscape",
+          "sha256": "a3e8b3b5e9723a8de2ea1bc3a3dd4635a1cb06c4d563e0d4d9d55aec947f2c61"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.DyadicBlockMassIdentity",
+          "sha256": "aa8a13d21f911f5ac181e6af049b83794b37b5e8633bfe387addde18a01b789d"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.DyadicBlockThresholdPartition",
+          "sha256": "0db1ce6438fc4eeb85854bd174849f3fa51ce33c0757a72518d28a5ccf0e9f2b"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.DyadicOrderedTailRecurrence",
+          "sha256": "b591d5f23c6d6bb8c486f2a3390a41ee03ff90e2d9da2cd2165e79d9755bf06a"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.DyadicRadixTailEscape",
+          "sha256": "d8b6c181c8af288f270986b0d2d0e9adcf2c237b5c8491eab176791ff937d4a9"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.DyadicShellSummability",
+          "sha256": "42455b1fe8f36dfc2e83d58c469b0fd8268c3d7928b71843022dd308fd6f69ad"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.IntegralBranchExtinction",
+          "sha256": "3c6bc417ae44e7fc80db7893ac3f33626a9ef954d60fe424ea93e102d7b57e3f"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.KernelCarryRank",
+          "sha256": "8b32ea2f9583cbea2d5c31c53da1f76400a4f3312a888bea0598016c16044839"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperR7BasicAssembly",
+          "sha256": "a65d953d4bc0fba1b4d9d79cc6366fa96dae92f2943ad00e2b3f89831ff2d02f"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperR7ModularMinors",
+          "sha256": "218eea2a514121d5b7903f5ae7c5e4a83a325d7807ddf09c122e1069c5d6d620"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.ResidueEscape",
+          "sha256": "a9ecacf70d358918e3135c39eb9e6c5c3587d99bc46b8726daba4fc8dd315e7e"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.RestrictedFloorSum",
+          "sha256": "14085590dfbf9b2dc34d4ac1b446667f3ce249b7c25687801c79f7d55db8189e"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.ThreePrimeRunningLcm",
+          "sha256": "769d80481465f4fd8655d5d62c5eb3e372c80c39b0722e80659bf4e150c6c036"
+        },
+        {
+          "module": "ErdosProblems.Shared.IrrationalRotationStaircase",
+          "sha256": "c3c2013d856ecedc3751e6fb0a4ac237e3ea397aa96fd475c76811137a74ba71"
+        }
+      ],
+      "prepared_graph_sha256": "930896ca21ea9135c2c3f33d3a381f8d53c57cc1e125369505dd2bac81962e3c",
+      "project_prefixes": [
+        "ErdosProblems",
+        "Erdos257PeriodNoncollapse",
+        "Erdos249257"
+      ],
+      "root_modules": [
+        "ErdosProblems.Erdos269.PaperR7BasicAssembly",
+        "ErdosProblems.Erdos269.PaperR7ModularMinors"
+      ],
+      "selected_declarations": [
+        {
+          "module": "ErdosProblems.Erdos269.PaperR7BasicAssembly",
+          "name": "ErdosProblems.Erdos269.PaperR7.paper_uniform_rank_and_nonseparation"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.PaperR7ModularMinors",
+          "name": "ErdosProblems.Erdos269.PaperR7.admissible_modular_minors"
+        }
+      ],
+      "source_commit": "cc7e541cf2081c6fef5a5e377d52e365e33b01eb",
+      "toolchain": "leanprover/lean4:v4.30.0"
+    },
+    "68": {
+      "mathlib_rev": "c5ea00351c28e24afc9f0f84379aa41082b1188f",
+      "module_rows": [
+        {
+          "module": "ErdosProblems.Erdos68.CanonicalFactorialDigits",
+          "sha256": "a0b711c869ded5d04b3f22b27ff57ea574cb28550c27535f3c8b4047f8f14827"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.CarryCongruenceNormalForm",
+          "sha256": "fa8c55e485de4bcb82d4a657402928a155adabf7a5c4b447560bbc38aa359cc7"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.ChannelBreakpointRigidity",
+          "sha256": "0f62e658b9964a37ad2bf0310d99ec4fa35f385720932d66e91abac28b65a903"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.ChannelIntegralCongruence",
+          "sha256": "d57d8b79be5dc956a77e428903ca280d928ffab1201e46da3a79e5eaf3da6558"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.CompanionConstantBridge",
+          "sha256": "18d64c58660749777137a1ee8a2e81ecf8e6bc56af1173dbdbdf441d455ee7c3"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.CompanionOrbitRationality",
+          "sha256": "9b0ee56e4ab624ca694aaad7fa3a9b38a89751fe8a81292a2f0c8cfb5d296edf"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.ConstantOnlyMissCertificates",
+          "sha256": "e7de8e3080d2ce69bda7a1ab106160e780f850cbb7bf623a1885c3ae9a0694c3"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.EndpointWeightedPrivateSupport",
+          "sha256": "e76dee594f84438f2d189e028e6507efdd162b2157ab60eccd5998174d27c026"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.FactorialCarry",
+          "sha256": "221c60e6c65a1ffea3efe652c06bbf152ef6b7ae80463bac690077a62e01c5f8"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.FactorialChannelCertificate",
+          "sha256": "a294061b7c2a716f4c30ad22641b977fb2b44ad35b8e292affba8db05a9f7d0c"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.FactorialDigitRigidity",
+          "sha256": "23a39810f47f393046be2075423c646fdfaddb1f6e35e92fd71c4cf6bca7d215"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.FactorialGapPlateauCore",
+          "sha256": "2eb8e4e63d7282a58c84b83801b06cafe0d383044f5a8a2a8960e58cac28d94b"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.FactorialShiftFamilyOrbit",
+          "sha256": "2ee24d0db164a7d786a6b1b7977b28caf0571f233c6ebb2b9a330e429c74daf6"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.FactorialZeroPlateau",
+          "sha256": "6c91bdef6b22856b59952eed00003fb2617d3cc6dff9a14eac475c9b05db0c62"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.FactorialZeroPlateauCertificates",
+          "sha256": "9402494d80f2d2310119bb0a1f0e5c8d9790a74be59794d70948ff98ab7f2b36"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.FactorialZeroPlateauSupplement",
+          "sha256": "bc3d5b31e27566df95ab067eb31bb96c91062fb3d6ce553c6052f1c6f8f08d46"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.GapScalarNormalForm",
+          "sha256": "eeb392e6131a9e6f41bbd33ad90884dab1e6dfee66386e62e59e1bfa9408b528"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PaperCompleteExisting",
+          "sha256": "b1446e097e0b9b1a174cfb704b0d5442710f0f43604358b53108c66dc41bc922"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PrimePoleCriterion",
+          "sha256": "db636f731f83d40aac57917b3233c7f1603cc938261b9912dfcea44a19d5f6cb"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PrimePoleDenominator",
+          "sha256": "3f0c4fd15450867bed729ec61594e3d47248a5978d8cd4ff018a0f14bedb33e8"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PrimeUnitTranslator",
+          "sha256": "3ef49f719f4596f08efb76f561fef7badf7e287873ffd0ad2cb588cd4acf7a5d"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.PrimeZeroBranch",
+          "sha256": "ce7b4a2de42aadf1401e5558bdb12c19994fa4add0f6ddbe0982d7549eda9849"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.SecondLayerDigit",
+          "sha256": "15f3867244566ad2868a0f92eae3d795942db2844a991991631dd50f53b56cc7"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.ShrinkingTargetNormalForm",
+          "sha256": "49ed89dc976adbb457600328289a073180531cd72e1e45d16f521674e9c8bdfe"
+        },
+        {
+          "module": "ErdosProblems.Erdos68.StrictSuccessorArithmetic",
+          "sha256": "e03320c57d2ae0d42f52564023f4d62d92e805696bf010d6b48c66ecb053064b"
+        }
+      ],
+      "prepared_graph_sha256": "e52f25814db7b35225d51d08025badbbb7c57c1cf42065cc9a92da05d909db7b",
+      "project_prefixes": [
+        "ErdosProblems",
+        "Erdos257PeriodNoncollapse",
+        "Erdos249257"
+      ],
+      "root_modules": [
+        "ErdosProblems.Erdos68.PaperCompleteExisting"
+      ],
+      "selected_declarations": [
+        {
+          "module": "ErdosProblems.Erdos68.PaperCompleteExisting",
+          "name": "ErdosProblems.Erdos68.PaperComplete.strict_successor_characterisation"
         }
       ],
       "source_commit": "c93c2e4dd86a2e317e0cb650ea244fee1afd59c2",
