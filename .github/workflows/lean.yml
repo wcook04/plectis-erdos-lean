@@ -39,57 +39,91 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 330
     steps:
-      - name: Check out the source under test
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          ref: ${{ inputs.source_ref || github.sha }}
-          fetch-depth: 0
-      # Keep the driver from the chosen workflow revision, even when testing
-      # an older source branch which predates this infrastructure.
+      # Create diagnostics before either checkout, including checkout failures.
+      - name: Initialize setup diagnostics
+        id: initialize
+        env:
+          SOURCE_REF: ${{ inputs.source_ref || github.sha }}
+          DRIVER_REF: ${{ github.sha }}
+        run: |
+          python3 - <<'PYINIT'
+          import json, os
+          from pathlib import Path
+          report = dict(schema_version=2, status='incomplete', phase='driver_checkout',
+                        requested_source=os.environ['SOURCE_REF'],
+                        driver_commit=os.environ['DRIVER_REF'], targets=[])
+          (Path(os.environ['RUNNER_TEMP'])/'convenience-target-report.json').write_text(json.dumps(report, indent=2)+'\n')
+          PYINIT
       - name: Check out the validated infrastructure
+        id: driver
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: ${{ github.sha }}
           path: .ci-driver
           persist-credentials: false
           sparse-checkout: scripts
+      - name: Resolve source branch, tag or abbreviated commit
+        id: resolve
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 .ci-driver/scripts/convenience_ci.py resolve --report "$RUNNER_TEMP/convenience-target-report.json"
+      - name: Check out the resolved source under test
+        id: source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ steps.resolve.outputs.source_sha }}
+          path: source
+          fetch-depth: 0
       - name: Plan changed modules before installing Lean
+        id: plan
         env:
           BASE_REF: ${{ github.event.pull_request.base.sha || 'origin/main' }}
           FOCUS_MODULE: ${{ inputs.focus }}
         run: |
-          args=(--repository . --changed-from "$BASE_REF")
+          args=(--repository source --changed-from "$BASE_REF")
           if [[ -n "$FOCUS_MODULE" ]]; then args+=(--focus "$FOCUS_MODULE"); fi
           python3 .ci-driver/scripts/build_launch_targets.py "${args[@]}" --plan
       - name: Restore the corpus build
         uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
-          path: .lake/build
-          key: corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-${{ github.sha }}-convenience-v2
+          path: source/.lake/build
+          key: corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('source/lean-toolchain') }}-${{ hashFiles('source/lake-manifest.json') }}-${{ steps.resolve.outputs.source_sha }}-convenience-v2
           restore-keys: |
-            corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-
-      - uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
+            corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('source/lean-toolchain') }}-${{ hashFiles('source/lake-manifest.json') }}-
+      - id: lean
+        uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
         with:
+          lake-package-directory: source
           use-github-cache: false
           use-mathlib-cache: auto
           build: false
       - name: Check changed modules then the complete launch set
+        id: compile
         env:
           LEAN_NUM_THREADS: '2'
           BASE_REF: ${{ github.event.pull_request.base.sha || 'origin/main' }}
           FOCUS_MODULE: ${{ inputs.focus }}
         run: |
-          args=(--repository . --changed-from "$BASE_REF")
+          args=(--repository source --changed-from "$BASE_REF")
           if [[ -n "$FOCUS_MODULE" ]]; then args+=(--focus "$FOCUS_MODULE"); fi
           python3 .ci-driver/scripts/build_launch_targets.py "${args[@]}"
+      - name: Finalize setup and build diagnostics
+        if: ${{ always() && steps.driver.outcome == 'success' }}
+        env:
+          CI_STEPS_JSON: ${{ toJSON(steps) }}
+        run: >-
+          python3 .ci-driver/scripts/convenience_ci.py finalize
+          --report "$RUNNER_TEMP/convenience-target-report.json"
+          --target-report source/.lake/convenience-target-report.json
       - name: Preserve reports and compressed compiler logs
         if: always()
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: lean-convenience-${{ github.run_id }}-${{ github.run_attempt }}
           path: |
-            .lake/convenience-target-report.json
-            .lake/convenience-logs/*.log.gz
+            ${{ runner.temp }}/convenience-target-report.json
+            source/.lake/convenience-target-report.json
+            source/.lake/convenience-logs/*.log.gz
           if-no-files-found: warn
           retention-days: 14
       # Preserve completed modules after a failed main build. Branch-only source
@@ -98,5 +132,5 @@ jobs:
         if: ${{ always() && !cancelled() && github.ref == 'refs/heads/main' && inputs.source_ref == '' }}
         uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
-          path: .lake/build
-          key: corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-${{ github.sha }}-convenience-v2
+          path: source/.lake/build
+          key: corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('source/lean-toolchain') }}-${{ hashFiles('source/lake-manifest.json') }}-${{ steps.resolve.outputs.source_sha }}-convenience-v2

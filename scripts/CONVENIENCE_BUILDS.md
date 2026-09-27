@@ -33,7 +33,12 @@ process. A timeout stops that process group and preserves completed build files.
 For an older source branch, dispatch the **current workflow** with `source_ref`
 set to that branch or full commit, and optionally set `focus`. Do not select the
 old branch as the workflow ref: that selects its old workflow and old safeguards.
-The source and runner revisions are recorded separately. For example, once the
+The source and runner revisions are recorded separately. Branches, tags and
+abbreviated commits are resolved to a full commit before source checkout; the
+resolved commit is the one checked, even if a branch moves during setup. A setup
+report is created before either checkout and retained even if checkout or Lean
+installation fails. Negative regression tests isolate their annotations and
+summaries from the hosting workflow. For example, once the
 infrastructure is on main:
 
 ```sh
