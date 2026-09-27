@@ -213,9 +213,10 @@ theorem reverseCover_strengthened : reverseCover.StrengthenedCostSummable := by
   · intro j
     have h := reverse_strengthened_term_bound j
     convert h using 1
-    unfold coverThreshold
-    rw [show j + 2 = (j + 1) + 1 by omega, pow_succ]
-    ring
+    · rfl
+    · unfold coverThreshold
+      rw [show j + 2 = (j + 1) + 1 by omega, pow_succ]
+      ring
 
 theorem reverseHost_has_strengthened_cover : HasStrengthenedPositiveCover reverseHost :=
   ⟨reverseCover, Set.Subset.refl _, reverseCover_strengthened⟩
