@@ -1,10 +1,10 @@
 # SPDX-FileCopyrightText: 2026 Will Cook
 # SPDX-License-Identifier: Apache-2.0
-name: Prove2Me Pinned Native Validation 257
+name: Prove2Me Pinned Native Validation 243 Full Arbitrary Orbit
 
 on:
   push:
-    branches: [codex/prove2me-remote-extraction-20260924]
+    branches: [codex/prove2me-native-validation-243-arbitrary-orbit-source-20260927]
     paths:
       - .github/workflows/prove2me-native-validation.yml
       - .github/prove2me-native-validation/**
@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: prove2me-native-validation-257-${{ github.ref }}
+  group: prove2me-native-validation-243-arbitrary-orbit-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -22,10 +22,8 @@ jobs:
     timeout-minutes: 355
     env:
       LEAN_NUM_THREADS: '1'
-      P2M_BUNDLE_SHA256: '460879e58f53a76ded12103509706f68ca3cc82a3ed0e1af943106673e304181'
-      P2M_SOURCE_COMMIT: 'c93c2e4dd86a2e317e0cb650ea244fee1afd59c2'
-      P2M_ROOT_1: 'ErdosProblems.Erdos257.PaperCompleteR8.AnalyticSeparationReturn'
-      P2M_ROOT_2: 'ErdosProblems.Erdos257.PaperCompleteR8.WeightedHereditaryClaim'
+      P2M_BUNDLE_SHA256: 'ac46e4b98b6db74e6c006554a082ee26d3d50d3ea984226d380f360aa10ec68a'
+      P2M_SOURCE_COMMIT: 'fbf41fb8b571d217b1648070dcc39d5eda5394ad'
     steps:
       - name: Check out reviewed control files
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -58,7 +56,10 @@ jobs:
         run: |
           mkdir -p output
           cd cache
-          lake build "$P2M_ROOT_1" "$P2M_ROOT_2" 2>&1 | tee ../output/source-cache-build.log
+          roots=(
+            "ErdosProblems.Erdos243.PaperCompleteR21.DoubleLogOrbitBound"
+          )
+          lake build "${roots[@]}" 2>&1 | tee ../output/source-cache-build.log
       - name: Validate exact generated native actions
         shell: bash
         run: |
@@ -67,7 +68,7 @@ jobs:
           test -f "$pinned_lean"
           test ! -L "$pinned_lean"
           python3 control/.github/prove2me-native-validation/transport.py run-pending \
-            --bundle "$GITHUB_WORKSPACE/control/.github/prove2me-native-validation/input-257.zip" \
+            --bundle "$GITHUB_WORKSPACE/control/.github/prove2me-native-validation/input-243-arbitrary-orbit.zip" \
             --bundle-sha256 "$P2M_BUNDLE_SHA256" \
             --source-checkout "$GITHUB_WORKSPACE/source" \
             --cache-checkout "$GITHUB_WORKSPACE/cache" \
@@ -79,7 +80,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: prove2me-native-257-${{ github.run_id }}
+          name: prove2me-native-243-arbitrary-orbit-${{ github.run_id }}
           path: output/
           if-no-files-found: warn
           retention-days: 7
