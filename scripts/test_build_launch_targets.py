@@ -223,6 +223,8 @@ class ProcessAndPlanTests(unittest.TestCase):
         self.assertIn('steps.resolve.outputs.source_sha',text)
         self.assertIn('.ci-driver/scripts/build_launch_targets.py',text)
         self.assertIn('.lake/convenience-logs/*.log.gz',text)
+        self.assertIn('include-hidden-files: true',text)
+        self.assertNotIn('path: .lake\n',text)
         self.assertIn("github.ref == 'refs/heads/main' && inputs.source_ref == ''",text)
         self.assertNotIn('subprocess.run(["lake"',text)
 
