@@ -1,5 +1,92 @@
 {
   "cases": {
+    "1041": {
+      "mathlib_rev": "c5ea00351c28e24afc9f0f84379aa41082b1188f",
+      "module_rows": [
+        {
+          "module": "ErdosProblems.Erdos1041.Counterexample.Assembly",
+          "sha256": "c6174888a3c59acf20f827b01a42bbffce05112eb7c7a3f30350dc1af0fb8f19"
+        },
+        {
+          "module": "ErdosProblems.Erdos1041.Counterexample.BarrierAlgebra",
+          "sha256": "3c051a2863e4da7c2a05e587f2b137d012ad5418ab7418c8f63969455fb0dc25"
+        },
+        {
+          "module": "ErdosProblems.Erdos1041.Counterexample.BarrierCertificates",
+          "sha256": "bc0fbc8361822111f0468267b47f9a40f7ba8e8c126e41873c6a62044864721b"
+        },
+        {
+          "module": "ErdosProblems.Erdos1041.Counterexample.BarrierGraphs",
+          "sha256": "8e3ee82a10ea78f41efa8839a5eb76f6a2e515e88a68adfef85bae68fbf14f91"
+        },
+        {
+          "module": "ErdosProblems.Erdos1041.Counterexample.BarrierSigns",
+          "sha256": "48d3a0e9375b0f060e06c71122309c442ffa4ff1eb02b9405c0100b62581886c"
+        },
+        {
+          "module": "ErdosProblems.Erdos1041.Counterexample.Bottleneck",
+          "sha256": "034cc62cb3769d7c9ff2f1aea4d1917534437f7adec3bf5537500e6b3d80976a"
+        },
+        {
+          "module": "ErdosProblems.Erdos1041.Counterexample.CatalogueAdapter",
+          "sha256": "1f807ef3e453c12f382d4ce7a4f422397e1e2dee33ba87d68323273a1860a600"
+        },
+        {
+          "module": "ErdosProblems.Erdos1041.Counterexample.Components",
+          "sha256": "dc8b8477222840b31b7eb8d4d4ff79e6d909b4b538646e5327bb4ca0029f8d6f"
+        },
+        {
+          "module": "ErdosProblems.Erdos1041.Counterexample.Defs",
+          "sha256": "90d69df047b9252c3a19d538f6adfd6734b25d090c131421cbbbb061f8cadf22"
+        },
+        {
+          "module": "ErdosProblems.Erdos1041.Counterexample.HausdorffLength",
+          "sha256": "069ea76e27304bd34e020cf8aab0fcc9200c495ff892127612e8afe571e3fcb4"
+        },
+        {
+          "module": "ErdosProblems.Erdos1041.Counterexample.InstanceBarriers",
+          "sha256": "4f977e49ba5559eafb5248c4d1c1af0b0f2a08c7d28baf6790f50b39e9cb294d"
+        },
+        {
+          "module": "ErdosProblems.Erdos1041.Counterexample.InstanceConnectivity",
+          "sha256": "c2493995ae3195cb4449757d27b1b2bfaa6a561edbb5b8390c12231568e46d86"
+        },
+        {
+          "module": "ErdosProblems.Erdos1041.Counterexample.InstanceCritical",
+          "sha256": "af8ca59a63e9048e034fbe6b5f8ecb966bde054688d7e2e12a9e159b708c4cbd"
+        }
+      ],
+      "prepared_graph_sha256": "1d08aaf6087c76f622822c6d5bd90a819a7ffeeebc44ddb99f8decdc5931c7bb",
+      "project_prefixes": [
+        "ErdosProblems",
+        "Erdos257PeriodNoncollapse",
+        "Erdos249257"
+      ],
+      "root_modules": [
+        "ErdosProblems.Erdos1041.Counterexample.CatalogueAdapter",
+        "ErdosProblems.Erdos1041.Counterexample.HausdorffLength"
+      ],
+      "selected_declarations": [
+        {
+          "module": "ErdosProblems.Erdos1041.Counterexample.CatalogueAdapter",
+          "name": "Erdos1041.Counterexample.erdos1041_ani_degree_seven"
+        },
+        {
+          "module": "ErdosProblems.Erdos1041.Counterexample.CatalogueAdapter",
+          "name": "Erdos1041.Counterexample.erdos1041_no_short_variation_path"
+        },
+        {
+          "module": "ErdosProblems.Erdos1041.Counterexample.HausdorffLength",
+          "name": "Erdos1041.Counterexample.erdos1041_counterexample_hausdorff"
+        },
+        {
+          "module": "ErdosProblems.Erdos1041.Counterexample.HausdorffLength",
+          "name": "Erdos1041.Counterexample.erdos1041_hausdorff_answer_false"
+        }
+      ],
+      "source_commit": "cc7e541cf2081c6fef5a5e377d52e365e33b01eb",
+      "toolchain": "leanprover/lean4:v4.30.0"
+    },
     "1049": {
       "mathlib_rev": "c5ea00351c28e24afc9f0f84379aa41082b1188f",
       "module_rows": [

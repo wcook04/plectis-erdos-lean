@@ -11,26 +11,31 @@ does not assert a declaration dependency graph or source positions.
 The new workflow cannot receive `workflow_dispatch` while it is absent from
 the default branch. A push to the exact dedicated branch
 `codex/prove2me-remote-extraction-20260924` runs the reviewed `request.json`.
-The current reviewed request selects **#251 full extraction** at
-`d92f079c981c66a7652eb85297d506e61616c062`. Its root is
-`ErdosProblems.Erdos251.PaperLargeCertificateR7`. Both the stronger V5
-`denominator_floor_both` and the printed R7 `denominator_floor_both` endpoints
-are retained, including all 250 streaming certificate blocks in their
-256-module source closure. The exact source build passed in run 36295809434;
-that does not establish generated upload validation or hosted acceptance.
+The current reviewed request selects **#1041 full counterexample extraction**
+at `cc7e541cf2081c6fef5a5e377d52e365e33b01eb`. Its roots are
+`ErdosProblems.Erdos1041.Counterexample.CatalogueAdapter` and
+`ErdosProblems.Erdos1041.Counterexample.HausdorffLength`. All 13 modules and
+four endpoints are retained: the ani degree-seven and total-variation pair,
+the stronger preconnected-set Hausdorff result, and the false path-length
+assertion. The same polynomial's monic/degree/simple open-disc-root facts
+come from Assembly. Credit ani's existing fixed construction; do not claim a
+new counterexample family or a personal audit. Extraction is preparation,
+not generated proof validation or hosted acceptance.
 
-The manifest retains the earlier #68, #249, #269 and #1049 selections.
-#269 has two roots/two targets over 15 modules; #1049 has two roots/eight targets
-over 59 modules. These target arrays must not be shortened to a single endpoint.
-The preceding #1049 run 36296997420 succeeded and its original artifact, graph,
-and all source spans were frozen before advancing this request.
+The manifest preserves all seven earlier cases and global extractor pins.
+#251 keeps both full-strength denominator endpoints and all 250 streaming
+certificate blocks in its 256-module closure. Its exact source build 36295809434
+passed, followed by successful full extraction 36298650345. The original
+GitHub artifact and metadata, frozen manifest and verified import of 256 modules
+were retained before this request advanced. #269 retains both targets over
+15 modules; #1049 retains all eight targets over 59 modules.
 Do not push another request while an extraction is active: branch concurrency
 cancels the in-progress job. Advance one selected request only after consuming
 the preceding job's terminal receipt and preserving its artifact.
 If Stage 2 hits the job limit, the graph and completed partial files remain in
 the run artifact. Set `problem` to `243` in a later reviewed commit to use the
 other source pin, or `257` for the existing #257 case. The CLI explicitly admits
-only these seven reviewed cases. Every push that changes this directory or the workflow file
+only these eight reviewed cases. Every push that changes this directory or the workflow file
 launches a run; an unchanged branch does not rerun.
 
 The job restores only a compatible compiled corpus cache from existing CI,
