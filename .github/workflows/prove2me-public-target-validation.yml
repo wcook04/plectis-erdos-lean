@@ -1,0 +1,81 @@
+# SPDX-FileCopyrightText: 2026 Will Cook
+# SPDX-License-Identifier: Apache-2.0
+name: Prove2Me 243 Public Target Proof Validation
+
+on:
+  push:
+    branches: [codex/prove2me-native-validation-243-public-target-20260927]
+    paths:
+      - .github/workflows/prove2me-public-target-validation.yml
+      - .github/prove2me-public-target-validation/**
+
+permissions:
+  contents: read
+
+concurrency:
+  group: prove2me-243-public-target-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 150
+    env:
+      LEAN_NUM_THREADS: '1'
+      P2M_BUNDLE_SHA256: 'abbbcf4c88595508b1c7aaf018c88d4af32c9c24b2caaf2545e6c3c4734932af'
+      P2M_SOURCE_COMMIT: 'fbf41fb8b571d217b1648070dcc39d5eda5394ad'
+    steps:
+      - name: Check out reviewed control files
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          path: control
+          persist-credentials: false
+      - name: Check out exact source commit
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ env.P2M_SOURCE_COMMIT }}
+          path: source
+          persist-credentials: false
+      - name: Check out separate cache source commit
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ env.P2M_SOURCE_COMMIT }}
+          path: cache
+          persist-credentials: false
+      - name: Install pinned Lean and compiled Mathlib
+        uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
+        with:
+          lake-package-directory: cache
+          use-mathlib-cache: 'true'
+          use-github-cache: 'false'
+          build: 'false'
+          test: 'false'
+          lint: 'false'
+      - name: Validate exact public contexts and fresh proof bodies
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p output packet cache/.lake/build/lib/lean
+          bundle="$GITHUB_WORKSPACE/control/.github/prove2me-public-target-validation/input-243-public-target.zip"
+          echo "$P2M_BUNDLE_SHA256  $bundle" | sha256sum -c -
+          unzip -q "$bundle" -d packet
+          pinned_lean="$(cd cache && elan which lean)"
+          test -f "$pinned_lean"
+          test ! -L "$pinned_lean"
+          python3 packet/run_public_target_validation.py \
+            --source "$GITHUB_WORKSPACE/source" \
+            --cache "$GITHUB_WORKSPACE/cache" \
+            --lean-binary "$pinned_lean" \
+            --library-root "$GITHUB_WORKSPACE/cache/.lake/build/lib/lean" \
+            --library-root "$GITHUB_WORKSPACE/cache/.lake/packages/mathlib/.lake/build/lib/lean" \
+            --out "$GITHUB_WORKSPACE/output/public-target" \
+            --timeout-seconds 1800 \
+            2>&1 | tee output/validation-console.log
+      - name: Preserve validation and failure evidence
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: prove2me-native-243-public-target-${{ github.run_id }}
+          path: output/
+          if-no-files-found: warn
+          retention-days: 7
