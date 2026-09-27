@@ -311,6 +311,50 @@ def prepare_pending(plan_path: Path, map_path: Path, artifact: Path,
             "action_count": len(plan["actions"]), "module_count": len(mapping)}
 
 
+def check_bundle_action_closure(manifest: dict, files: dict[str, bytes]) -> None:
+    """Check semantic inventory before source/cache checkout or Lean setup.
+
+    An internally hash-consistent ZIP can still omit or rename a planned input.
+    The reviewed plan and its separate action inventory must both agree with
+    the packaged source bytes. Extra staged modules are rejected too.
+    """
+    require("original/plan.json" in files, "bundle has no reviewed plan")
+    plan = load_json(files["original/plan.json"])
+    require(sha(files["original/plan.json"]) == manifest.get("original_plan_sha256"),
+            "bundle plan pin differs")
+    actions = plan.get("actions")
+    require(isinstance(actions, list) and bool(actions) and
+            all(isinstance(a, dict) for a in actions) and
+            len(actions) == manifest.get("action_count") and
+            [{key: a.get(key) for key in ("kind", "name", "file", "sha256")}
+             for a in actions] == manifest.get("actions"),
+            "bundle action inventory differs from reviewed plan")
+    paths, identities = set(), set()
+    for action in actions:
+        require(isinstance(action, dict), "invalid bundled action")
+        relative = action.get("file")
+        require(isinstance(relative, str), "action has no source path")
+        safe_name(relative)
+        kind, name = action.get("kind"), action.get("name")
+        directory = {"submit_definition": "Definitions/", "submit_problem": "Theorems/",
+                     "verify_solution": "Solutions/"}.get(kind)
+        require(directory is not None and relative.startswith(directory) and
+                relative.endswith(".lean") and isinstance(name, str) and bool(name),
+                "action source path does not match its phase")
+        require(relative not in paths and (kind, name) not in identities,
+                "duplicate bundled action path or identity")
+        paths.add(relative); identities.add((kind, name))
+        key = "original/stage/" + relative
+        require(key in files and sha(files[key]) == action.get("sha256"),
+                "bundle action source missing or changed: " + relative)
+    require({key.removeprefix("original/stage/") for key in files
+             if key.startswith("original/stage/")} == paths,
+            "bundle contains unplanned staged files")
+    require("original/payloads.json" in files and
+            sha(files["original/payloads.json"]) == plan.get("payloads_sha256"),
+            "bundle payload pin differs")
+
+
 def verify_bundle(bundle: Path, expected_sha: str) -> tuple[dict, dict[str, bytes]]:
     require(bool(HEX.fullmatch(expected_sha)), "invalid expected bundle SHA-256")
     require(bundle.is_file() and file_sha(bundle) == expected_sha, "bundle SHA-256 mismatch")
@@ -349,6 +393,7 @@ def verify_bundle(bundle: Path, expected_sha: str) -> tuple[dict, dict[str, byte
                     "original/import_receipt.json", "code/remote_import/import_artifact.py",
                     "code/remote_validation/derive_runtime_inputs.py")),
                 "pending bundle lacks reviewed extraction or verifier")
+    check_bundle_action_closure(manifest, files)
     return manifest, files
 
 

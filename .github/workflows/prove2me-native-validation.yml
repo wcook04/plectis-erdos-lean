@@ -22,7 +22,7 @@ jobs:
     timeout-minutes: 355
     env:
       LEAN_NUM_THREADS: '1'
-      P2M_BUNDLE_SHA256: '981496518e3137c4b50eb0827a7cc3ef10b5d8722268d34eeff16cad575d18a8'
+      P2M_BUNDLE_SHA256: '49f2b1503451593aec9b1a75da1d137cdfbf09f65976dea5e4d9aaf46f026a60'
       P2M_SOURCE_COMMIT: 'fbf41fb8b571d217b1648070dcc39d5eda5394ad'
     steps:
       - name: Check out reviewed control files
@@ -30,6 +30,16 @@ jobs:
         with:
           path: control
           persist-credentials: false
+      - name: Check reviewed bundle before Lean setup
+        shell: bash
+        run: |
+          echo "P2M_DEADLINE_EPOCH=$(( $(date +%s) + 20400 ))" >> "$GITHUB_ENV"
+          mkdir -p output
+          python3 control/.github/prove2me-native-validation/transport.py preflight-bundle \
+            --bundle "$GITHUB_WORKSPACE/control/.github/prove2me-native-validation/input-243-six-target-alias.zip" \
+            --bundle-sha256 "$P2M_BUNDLE_SHA256" \
+            --source-commit "$P2M_SOURCE_COMMIT" \
+            | tee output/bundle-preflight.json
       - name: Check out exact source commit
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -64,7 +74,9 @@ jobs:
             "ErdosProblems.Erdos243.ReciprocalTailRigidity"
             "ErdosProblems.Erdos243.SparseResetRecovery"
           )
-          lake build "${roots[@]}" 2>&1 | tee ../output/source-cache-build.log
+          remaining=$(( P2M_DEADLINE_EPOCH - $(date +%s) ))
+          test "$remaining" -gt 0
+          timeout --signal=TERM --kill-after=30s "$remaining" lake build "${roots[@]}" 2>&1 | tee ../output/source-cache-build.log
       - name: Validate exact generated native actions
         shell: bash
         run: |

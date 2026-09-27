@@ -27,8 +27,13 @@ import argparse
 import hashlib
 import json
 import re
+import os
+import sys
 import subprocess
 import tomllib
+
+import release_inventory
+from build_launch_targets import annotation, save_report
 from pathlib import Path
 from typing import Any
 
@@ -93,6 +98,11 @@ def mathlib_pin() -> dict[str, str] | None:
 def entry_row(entry: str) -> dict[str, Any]:
     directory = REPO_ROOT / entry
     comparator_path = directory / "comparator.json"
+    required = [comparator_path, directory/'Challenge.lean', directory/'AxiomAudit.lean',
+                directory/'formalization.yaml', REPO_ROOT/'Solutions'/f'{entry}.lean']
+    for path in required:
+        if not path.is_file():
+            raise ValueError(f'Incomplete selected release entry {entry}: missing {path.relative_to(REPO_ROOT)}')
     comparator = json.loads(comparator_path.read_text(encoding="utf-8"))
 
     challenge = directory / "Challenge.lean"
@@ -133,14 +143,7 @@ def entry_row(entry: str) -> dict[str, Any]:
 
 
 def build(tag: str | None, commit: str | None) -> dict[str, Any]:
-    # Default targets define the released entries. The checkout also contains
-    # auxiliary Challenge-only directories that are not Comparator packages.
-    lakefile = tomllib.loads((REPO_ROOT / "lakefile.toml").read_text(encoding="utf-8"))
-    entries = sorted(
-        target for target in lakefile["defaultTargets"] if target.startswith(ENTRY_PREFIX)
-    )
-    if not entries or len(entries) != len(set(entries)):
-        raise ValueError("defaultTargets must name distinct Comparator release entries")
+    entries = release_inventory.entries(REPO_ROOT)
     rows = [entry_row(entry) for entry in entries]
     return {
         "schema": "plectis_erdos_lean_release_manifest_v1",
@@ -164,6 +167,10 @@ def build(tag: str | None, commit: str | None) -> dict[str, Any]:
         "commit": commit or git("rev-parse", "HEAD"),
         "lean_toolchain": toolchain(),
         "mathlib": mathlib_pin(),
+        "release_selection_path": "release-entries.json",
+        "release_selection_sha256": sha256_file(REPO_ROOT/'release-entries.json'),
+        "required_build_targets": release_inventory.build_targets(REPO_ROOT),
+        "release_qualified": False,
         "entry_count": len(rows),
         "problems": sorted(
             {re.sub(r"^" + ENTRY_PREFIX + r"(\d+).*$", r"\1", e) for e in entries}, key=int
@@ -189,26 +196,64 @@ def tracked_files() -> list[Path]:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--out", default="release-manifest.json")
-    parser.add_argument("--sums-out", default="SHA256SUMS")
-    parser.add_argument("--tag")
-    parser.add_argument("--commit")
+    parser.add_argument('--out', default='release-manifest.json')
+    parser.add_argument('--sums-out', default='SHA256SUMS')
+    parser.add_argument('--tag')
+    parser.add_argument('--commit')
+    parser.add_argument('--diagnostics', type=Path)
+    parser.add_argument('--check-tooling', action='store_true', help='run the exact cheap release workflow checks before manifest admission')
     args = parser.parse_args()
+    report = {'schema': 'release_tooling_diagnostics_v1', 'status': 'incomplete',
+              'commit': args.commit or git('rev-parse', 'HEAD'),
+              'workflow_sha': os.environ.get('GITHUB_SHA'),
+              'run_id': os.environ.get('GITHUB_RUN_ID'), 'attempt': os.environ.get('GITHUB_RUN_ATTEMPT'),
+              'command': sys.argv, 'steps': [], 'release_qualified': False}
+    diagnostic = args.diagnostics or Path(args.out).with_name('release-tooling-diagnostics.json')
+    save_report(diagnostic, report)
+    step = 'read build focus'
+    try:
+        report['build_defaults'] = tomllib.loads((REPO_ROOT/'lakefile.toml').read_text()).get('defaultTargets')
+        # Negative fixtures must not emit annotations or summaries into this job.
+        if args.check_tooling:
+            env = {k: v for k, v in os.environ.items() if not k.startswith(('GITHUB_', 'RUNNER_'))}
+            for test in ('test_release_tools.py', 'test_palomar_replay_shard.py', 'test_build_launch_targets.py'):
+                step = 'python3 scripts/' + test
+                result = subprocess.run([sys.executable, 'scripts/' + test], cwd=REPO_ROOT,
+                                        env=env, capture_output=True, text=True, timeout=120)
+                log = diagnostic.with_name(test + '.log')
+                log.write_text(result.stdout + result.stderr)
+                report['steps'].append({'command': step, 'returncode': result.returncode, 'log': log.name})
+                if result.returncode:
+                    raise ValueError(step + ' failed; see ' + log.name)
+        step = 'admit release execution contract'
+        report['execution_contract'] = release_inventory.validate_workflow_contract(REPO_ROOT)
+        step = 'build declared release manifest'
+        manifest = build(args.tag, args.commit)
+        Path(args.out).parent.mkdir(parents=True, exist_ok=True)
+        Path(args.out).write_text(json.dumps(manifest, indent=2) + '\n')
+        Path(args.sums_out).parent.mkdir(parents=True, exist_ok=True)
+        Path(args.sums_out).write_text(sha256sums(tracked_files()))
+        report.update(status='pass', entries=[row['entry'] for row in manifest['entries']],
+                      required_build_targets=manifest['required_build_targets'],
+                      release_selection_sha256=manifest['release_selection_sha256'])
+        print(f"Release tooling admitted {manifest['entry_count']} entries; compiler and replay qualification remain separate.")
+        return 0
+    except (OSError, ValueError, subprocess.SubprocessError) as error:
+        report.update(status='fail', failed_command=step, error=str(error),
+                      repair_route='Restore the reviewed release-entries.json population and Lake libraries; select computation with --focus/--focused-only. Run --check-tooling before publication.')
+        print('::error file=release-entries.json::' + annotation(str(error)), file=sys.stderr)
+        return 1
+    finally:
+        save_report(diagnostic, report)
+        summary = os.environ.get('GITHUB_STEP_SUMMARY')
+        if summary:
+            with open(summary, 'a') as stream:
+                stream.write('## Release tooling\n\n' + report['status'] + '\n\n')
+                stream.write('Candidate: `' + str(report['commit']) + '`\n\n')
+                if report.get('error'):
+                    stream.write(report['failed_command'] + ': ' + report['error'] + '\n\n' + report['repair_route'] + '\n')
+                stream.write('Metadata admission only; this does not qualify a release.\n')
 
-    manifest = build(args.tag, args.commit)
-    Path(args.out).write_text(
-        json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
-    )
-    Path(args.sums_out).write_text(sha256sums(tracked_files()), encoding="utf-8")
 
-    print(f"entries: {manifest['entry_count']}")
-    print(f"commit: {manifest['commit']}")
-    print(f"manifest: {args.out}")
-    print(f"sums: {args.sums_out}")
-    sorries = [row["entry"] for row in manifest["entries"] if row["solution_contains_sorry"]]
-    print(f"solutions containing sorry: {sorries or 'none'}")
-    return 1 if sorries else 0
-
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     raise SystemExit(main())
