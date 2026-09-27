@@ -2051,6 +2051,294 @@
       "source_commit": "c93c2e4dd86a2e317e0cb650ea244fee1afd59c2",
       "toolchain": "leanprover/lean4:v4.30.0"
     },
+    "257_overlay": {
+      "mathlib_rev": "c5ea00351c28e24afc9f0f84379aa41082b1188f",
+      "module_rows": [
+        {
+          "module": "P2M_Erdos257_20260927.Erdos249257.AllBaseReciprocalSupportIrrationality",
+          "sha256": "cd04557c25d09e325e22b3a7b5cd4c97ef02c7e04eb89511cb75c9232996702c"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.Erdos249257.BooleanMobiusCarry",
+          "sha256": "937be87f3f520d87b351a6e5e36f700227d969ce3026babff6ac4c669cc46269"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.Erdos249257.CarrySurvivorExtinction",
+          "sha256": "023de9f28f3083c2c6f6f2b6907c9638a6c993267aadad06d5c2bb59d1b40142"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.Erdos249257.CertificateKernel",
+          "sha256": "21a8f2911c09664e2040b862cef0cd281b6d4270d8e303d79d5ab0eda69f4381"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.Erdos249257.GapFareyBound",
+          "sha256": "cf3b34742f92369df56199763f44ce226d4f407d3e550a388f7e24758585f183"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.Erdos249257.GcdMomentCalculus",
+          "sha256": "bba5843e6e42c9ba2962dc13626092f2085e739a673eeb987f970ea4c2066d93"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.Erdos249257.GenericTailOrbitRigidity",
+          "sha256": "59c45b368b88ff52c4d009598977b66aebe9535ff0db01b7db85a2efc95748eb"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.Erdos249257.GeometricCoprimality",
+          "sha256": "00943c917f13a30ec8e872abcf7a1f25841b356b2f7a3aae530db1802a510436"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.Erdos249257.GreedyAchievementSet",
+          "sha256": "f23f975aaec1d51245701bfdb88793a2d1da8b863d06f49537c96dbd214bb90d"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.Erdos249257.LcmConeFlatness",
+          "sha256": "98a20e2ca06ba10ae54c236fb5fceb580882cb2cbf69c55af2c05b641df9ba36"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.Erdos249257.LcmConeNonflat",
+          "sha256": "83f7fe52e6ec5ad3a904a3c5373b1b75bc2dba4214556625082c055275b5226b"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.Erdos249257.LcmDiagonalReduction",
+          "sha256": "cb38aa926e38f48ce062b67e8c69fc852a9ec73cd92023c4981f1cd4db53f4fa"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.Erdos249257.MersenneLambertLadder",
+          "sha256": "833248df090806f7961922ff0eb89945be447a615f2b9b22bb52d57a6a9ee2af"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.Erdos249257.MersenneTailAtoms",
+          "sha256": "32aa083daa49b10734b142eb12a9147fca7072d1e3d492673e0a7974d07f314b"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.Erdos249257.RationalSupportCarrySkeleton",
+          "sha256": "7d9b227fa2b5186d5a3c83af7a907c85658562d01517cb2bdbcd9c7cf1eebe4c"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.Erdos249257.ReciprocalSupportIrrationality",
+          "sha256": "4e9765c93544e5408e5ba3c1a266c8c68fa393a15113fdfcf9623328cb6616fc"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.Erdos249257.SternBrocotRunGeometry",
+          "sha256": "c6cb91b7a4aa31e0a236a8006666a6130f3e5badbbbf73a4220f7616b0316be7"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.Erdos249257.TotientTailPeriodKiller",
+          "sha256": "67873d2726117815a20a17652093b34329765878b5e238179b347bb5e002e594"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.Erdos257PeriodNoncollapse.AllBaseReciprocalSupportIrrationality",
+          "sha256": "2a4aa0449a4f1591a3f4449439889e12fa84361eb0b3f5e2d250b3967e13fffd"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.Erdos257PeriodNoncollapse.BooleanMobiusCarry",
+          "sha256": "6a41016c79e90625219282855cb7b16a2373d360f4ca70146dbfdff31315190e"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.Erdos257PeriodNoncollapse.CarrySurvivorExtinction",
+          "sha256": "4359c9f756576228fe5123dd5bc598a9b32781d58e985495ee45c4c5cc512bfd"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.Erdos257PeriodNoncollapse.CertificateKernel",
+          "sha256": "a8ce2d9c3c03ff649ff32d77e7ff22058b69696599e0e6c44c77e2c0c120df43"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.Erdos257PeriodNoncollapse.GapFareyBound",
+          "sha256": "79c0edce05f2086aadc9b12a0a01396519e8a1140e1338c96fdc0cc397db78fd"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.Erdos257PeriodNoncollapse.GcdMomentCalculus",
+          "sha256": "d8b084643b515f81f08e1de3625c91c2ebd10a92489ece5d38268b5a1dcf582e"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.Erdos257PeriodNoncollapse.GenericTailOrbitRigidity",
+          "sha256": "74f6ad1d24e0c1f57b1458c28302af9803b49ba267bc7c5e774c4545b501afdf"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.Erdos257PeriodNoncollapse.GeometricCoprimality",
+          "sha256": "896ebb6035dcd8210ded13804503b4e3caf5e0b55a1c4e35b7dfc32a1073feea"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.Erdos257PeriodNoncollapse.GreedyAchievementSet",
+          "sha256": "7c605a8f0f99cf71f82b59d251676aa25acdb8f5896bc68d2768f7f3f5879d43"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.Erdos257PeriodNoncollapse.LcmConeFlatness",
+          "sha256": "da9280ac3e06595af15c43d3dc69a5a1ddd5b9ea360fcf1128bc2f56b2a68d1e"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.Erdos257PeriodNoncollapse.LcmConeNonflat",
+          "sha256": "f988ed193b9691d7165a1c79a6cf158f7f90228acde7abefe02642d16d8a9292"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.Erdos257PeriodNoncollapse.LcmDiagonalReduction",
+          "sha256": "6fe7db2c4cc9c902b684af077d3195bf330051ccf08d9d2142a2f85befb6639e"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.Erdos257PeriodNoncollapse.MersenneLambertLadder",
+          "sha256": "8a8c8ce30a8ecb872aab7f358c7976b4812859fe9ae3966403215b370762393b"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.Erdos257PeriodNoncollapse.MersenneTailAtoms",
+          "sha256": "d19a09750444fe4b765950ed1c7143c5532898c5dcd30852a52119ed0a2c7a77"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.Erdos257PeriodNoncollapse.RationalSupportCarrySkeleton",
+          "sha256": "07e24673989b0a1f59eff1c802bcc7c6ab1719fbaa7a24c8403e51dd8afdc09c"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.Erdos257PeriodNoncollapse.ReciprocalSupportIrrationality",
+          "sha256": "d41d1470d4acc0daf4dae7432f4516fb3aee2a674caebd982d0070fd15fd2678"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.Erdos257PeriodNoncollapse.SternBrocotRunGeometry",
+          "sha256": "37f0d3956a513b8e4719699f98613fbd66c3e4a98398ae756e6a3111cd74a9fd"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.Erdos257PeriodNoncollapse.TotientTailPeriodKiller",
+          "sha256": "fa3621c26209ff00a140d3cdbd62a1132ba8f3e6589fc3a7ce5948bf8abedecb"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.ErdosProblems.Erdos257.CoverIndependentPeriodicMean",
+          "sha256": "4e4bf6e900f127e13958b808dd3d6d233d33fe8323f9f7e944adb09f4b196944"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.ErdosProblems.Erdos257.DyadicShellSynchronisation",
+          "sha256": "de600bc1b6c6af59632aebdde60799fe7c8cc4ee743d59717fda340e03d0294a"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.ErdosProblems.Erdos257.PaperCompleteR7.AnalyticTargets",
+          "sha256": "4a0ba4f614168c46f40916e79911a23387a582ed60f159d2ce0aed90a718847c"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.ErdosProblems.Erdos257.PaperCompleteR7.CoverKernel",
+          "sha256": "57dfb91c64dd031221015bf143a49d946bf6f72e5e0221cefc0c36c68a403a69"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.ErdosProblems.Erdos257.PaperCompleteR7.Displacement",
+          "sha256": "87b867e779aee3a4c4655f5a435b0cb67e873aa0cdcbc473aa1ee4a3aedde69d"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.ErdosProblems.Erdos257.PaperCompleteR7.TailGluing",
+          "sha256": "e745ca8baab0151ee1fc52ec99633f56d7732f9c3bbead8626ccc2770003e4e6"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.ErdosProblems.Erdos257.PaperCompleteR8.ArbitraryWeightMixedClaim",
+          "sha256": "435ca8400ef0a6bbbb818d9bd36883a41f298fabc70f08eda6ec363a614867a5"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.ErdosProblems.Erdos257.PaperCompleteR8.ArbitraryWeightReturns",
+          "sha256": "e44348e9d53405fc08ef1b8173d71697851a964808d0d4e47add59bdd547ffaa"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.ErdosProblems.Erdos257.PaperCompleteR8.CommonScale",
+          "sha256": "598e7014cf2035b6aa14c98f0ae3b1327908c299dff2ce3ba95103eabf2178c0"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.ErdosProblems.Erdos257.PaperCompleteR8.CountableCoverLogBudget",
+          "sha256": "1bb54703a70e30bddf430d4b6da54dea630019a21ee3c01a0bb8f60ca3ee82f1"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.ErdosProblems.Erdos257.PaperCompleteR8.CountableGaugeBudget",
+          "sha256": "ea9ff7d62333c1084ab7fe4a8a27b5adaca11cb8dea5224d5e8f2e9b7a01a25b"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.ErdosProblems.Erdos257.PaperCompleteR8.CountableMeans",
+          "sha256": "4a466b8446eed05702d8b2b315f5014af19d593fc8eccbba7e3099e622eca84a"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.ErdosProblems.Erdos257.PaperCompleteR8.CoverPotentialBounds",
+          "sha256": "a3a9ae454e6cf8c86dce73081adfae9fc0fc2b1826b6a23c7a6801343df9aa22"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.ErdosProblems.Erdos257.PaperCompleteR8.CoverScalarGauge",
+          "sha256": "e725ad3bf8112f6566fc444c1098091b2e0e86a9999305ed04e7d2f7d80fb001"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.ErdosProblems.Erdos257.PaperCompleteR8.DyadicKernel",
+          "sha256": "962a69a79d5741657025a1e00f532249801042fa7b58fbaf2d4a821c1f33f0e9"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.ErdosProblems.Erdos257.PaperCompleteR8.FiniteCoverLogBudget",
+          "sha256": "c5bc53b05875b2ada419b8be1951aef3308b797dc76fce2d7a1db55d2558d29e"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.ErdosProblems.Erdos257.PaperCompleteR8.FiniteMeans",
+          "sha256": "a90d531836629d92f9467e88170567848ffcaa9f1e27830569927fd06f91359f"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.ErdosProblems.Erdos257.PaperCompleteR8.KernelRecurrence",
+          "sha256": "bbf146f23f1c435ef2c828d68fee581170529365b132a45d1790212db62cd9ff"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.ErdosProblems.Erdos257.PaperCompleteR8.MixedGaugeConsumer",
+          "sha256": "be255e901ed258e6530f2a9845cd0496a6dd2e9cae871891eba40c84b532b57b"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.ErdosProblems.Erdos257.PaperCompleteR8.OptimizedCoverBudget",
+          "sha256": "bda6785373a378612a8e597c7b23e2c540cdc519381b68fdd913fe2f5109ba90"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.ErdosProblems.Erdos257.PaperCompleteR8.OrbitBound",
+          "sha256": "7e78005534bc64fe73393e76164adb4ec5597ce54031173d965f19faf76b35ff"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.ErdosProblems.Erdos257.PaperCompleteR8.PositiveCoverReturn",
+          "sha256": "d6c46dd17653bc2d618f50f9a1e45985dcfa15440234d1a6dd82dc884ffc3831"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.ErdosProblems.Erdos257.PaperCompleteR8.WeightedFiniteEstimates",
+          "sha256": "e56ad7ef0c4fc2f0560214db9d61b0c31f345c5445583a09208eae0ac68f6816"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.ErdosProblems.Erdos257.PaperCompleteR8.WeightedFiniteMean",
+          "sha256": "8406fda8f93432b0c989579c02f421d6e71ba8f8f999c050b8936aa9a5674633"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.ErdosProblems.Erdos257.PaperCompleteR8.WeightedHereditaryClaim",
+          "sha256": "0aadf83ccf48f13e2d25fb0bf1e4fcff6032305633c458f37c70ed9b598452af"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.ErdosProblems.Erdos257.PaperCompleteR8.WeightedInfiniteMean",
+          "sha256": "49b17b1e4ba01f1b851dbf75d4be2b252aa6da42f5275f1dc2a726efd08fb164"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.ErdosProblems.Erdos257.PaperCompleteR8.WeightedPrimeProfile",
+          "sha256": "43292f77caa3f95623f7f11891706c714c53b384b6d076477b23f40adef4f140"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.ErdosProblems.Erdos257.PaperCompleteR8.WeightedReturn",
+          "sha256": "aa946b8b935762746aa8f2344d81c8a890d8fe439602bed526e0a2d20c63a436"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.ErdosProblems.Erdos257.PaperCompleteR8.WeightedSchedule",
+          "sha256": "6e38efd4ffeff710dede354147ccd38855ae8f893e76fb6d55c551b9ae94a8c3"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.ErdosProblems.Erdos257.RadixCloseReturn",
+          "sha256": "737c5286b24e3e5ed4552a3f05ecbe507e3a8f76cb63f9901f58cc6d407147ee"
+        },
+        {
+          "module": "P2M_Erdos257_20260927.ErdosProblems.Erdos257.WeightedSupportAveraging",
+          "sha256": "f9f2935fce1f5621cd3a2e1c7014bd99eb8d73bc92cf4bdaccbee03169ffed2a"
+        }
+      ],
+      "prepared_graph_sha256": "2aef6133f16e73f94407f1558f4cfad2fefc3faa43d7d7c8803ad7771ffe4cf8",
+      "project_prefixes": [
+        "P2M_Erdos257_20260927"
+      ],
+      "root_modules": [
+        "P2M_Erdos257_20260927.ErdosProblems.Erdos257.PaperCompleteR8.ArbitraryWeightMixedClaim"
+      ],
+      "selected_declarations": [
+        {
+          "module": "P2M_Erdos257_20260927.ErdosProblems.Erdos257.PaperCompleteR8.ArbitraryWeightMixedClaim",
+          "name": "P2M_Erdos257_20260927.ErdosProblems.Erdos257.PaperCompleteR8.arbitraryWeightMixedSupport_allBase_hereditary"
+        }
+      ],
+      "source_commit": "dfc721c005ae09908b8e8adb3c257b2c1fc0c4cb",
+      "toolchain": "leanprover/lean4:v4.30.0"
+    },
     "269": {
       "mathlib_rev": "c5ea00351c28e24afc9f0f84379aa41082b1188f",
       "module_rows": [
