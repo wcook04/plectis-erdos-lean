@@ -210,8 +210,6 @@ theorem affine_target_coprime_of_cross
 
 
 
-#print axioms not_finiteDimensional_span_fullTotientKernel
-#print axioms finrank_totientKernelThroughLevelFamily_eq
 
 
 
