@@ -234,3 +234,8 @@ Cite this repository through `CITATION.cff`, at the commit you read.
 lake exe cache get
 lake build
 ```
+
+## Build diagnostics
+
+[Lean Convenience builds](scripts/CONVENIENCE_BUILDS.md) explains local checks,
+changed-module checks, failure reports and validation of older source branches.
