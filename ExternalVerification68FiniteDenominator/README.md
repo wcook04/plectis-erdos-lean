@@ -52,3 +52,14 @@ with the supported independent Comparator/NanoDa runner. Existing two-bound
 receipts cannot accept this changed selection. No public acceptance or service
 submission is recorded here. Irrationality and the separate factorial-divisibility
 exclusion remain outside this theorem.
+
+The branch-local `.github/workflows/e68-comparator-replay.yml` runs that focused
+reproduction on a hosted Linux runner after a branch push. It restores the newest
+corpus build, rebuilds Challenge from source, checks the twelve-module binding,
+prints the selected theorem's axioms, and uses the pinned Comparator toolchain
+and supported systemd sandbox for both configurations. The positive result must
+contain NanoDa and Lean kernel acceptance; the deliberately weakened Solution
+must fail with the exact statement-mismatch diagnostic and no kernel acceptance.
+`scripts/e68_comparator_replay.py` writes raw stage logs and an exact-head JSON
+receipt to the `e68-exact-comparator-replay` Actions artifact. A prepared workflow
+or green offline contract check is not an independent replay result.
