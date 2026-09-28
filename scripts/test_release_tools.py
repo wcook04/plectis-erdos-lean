@@ -3,6 +3,8 @@
 # SPDX-License-Identifier: Apache-2.0
 """Regression checks for release enumeration and checkout metadata boundaries."""
 import json
+import hashlib
+import importlib.util
 import subprocess
 from pathlib import Path
 import tempfile
@@ -190,6 +192,52 @@ class ReleaseToolsTests(unittest.TestCase):
                 (root / 'lakefile.toml').write_text(f'defaultTargets = {targets}\n')
                 with self.subTest(targets=targets), patch.object(release, 'REPO_ROOT', root), self.assertRaises(ValueError):
                     release.build(None, 'test-commit')
+
+
+class TransportIdentityTests(unittest.TestCase):
+    def setUp(self):
+        path = Path(__file__).resolve().parents[1] / "ExternalVerification251LargeDenominatorFloor/verify_transport.py"
+        spec = importlib.util.spec_from_file_location("large_floor_transport", path)
+        self.transport = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(self.transport)
+
+    def test_unrecorded_source_drift_is_refused(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            row = {"target_path": "proof.lean", "sha256": hashlib.sha256(b"source").hexdigest()}
+            (root / "proof.lean").write_bytes(b"source")
+            self.transport.check_module_identity(root, [row])
+            (root / "proof.lean").write_bytes(b"changed")
+            with self.assertRaisesRegex(ValueError, "Pinned target drift"):
+                self.transport.check_module_identity(root, [row])
+
+    def test_explicit_port_is_pinned_and_preserves_original_identity(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            source_hash = hashlib.sha256(b"source").hexdigest()
+            row = {"target_path": "proof.lean", "sha256": source_hash,
+                   "target_toolchain_port": {"commit": "a" * 40,
+                       "sha256": hashlib.sha256(b"port").hexdigest(),
+                       "reason": "Existing finite-tail API port"}}
+            (root / "proof.lean").write_bytes(b"port")
+            self.transport.check_module_identity(root, [row])
+            self.assertEqual(row["sha256"], source_hash)
+            (root / "proof.lean").write_bytes(b"unreviewed change")
+            with self.assertRaisesRegex(ValueError, "Pinned target drift"):
+                self.transport.check_module_identity(root, [row])
+
+    def test_partial_port_record_cannot_override_source_hash(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "proof.lean").write_bytes(b"port")
+            complete = {"commit": "a" * 40, "sha256": hashlib.sha256(b"port").hexdigest(),
+                        "reason": "Existing finite-tail API port"}
+            for missing in complete:
+                port = {key: value for key, value in complete.items() if key != missing}
+                row = {"target_path": "proof.lean", "sha256": hashlib.sha256(b"source").hexdigest(),
+                       "target_toolchain_port": port}
+                with self.subTest(missing=missing), self.assertRaisesRegex(ValueError, "Incomplete target"):
+                    self.transport.check_module_identity(root, [row])
 
 
 if __name__ == '__main__':

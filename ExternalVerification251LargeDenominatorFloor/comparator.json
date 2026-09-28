@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification251LargeDenominatorFloor.Challenge",
+  "solution_module": "Erdos251LargeCertificateSolution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification251LargeDenominatorFloor.denominator_floor_both"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}
