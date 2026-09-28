@@ -2,176 +2,28 @@
 # SPDX-License-Identifier: Apache-2.0
 name: Lean Release Gate
 
-# Every launch target and the publication audit must produce a source-bound receipt.
+# Release-gate workflow. All third-party actions are pinned by full commit SHA.
 on:
   workflow_dispatch:
   pull_request:
     branches: [main]
+  # A release is cut by pushing a tag, and until this trigger existed the gate had
+  # never run on one: pull_request and workflow_dispatch alone meant a tag could be
+  # published with only the convenience workflow behind it.
   push:
     tags: ['v*']
+
+concurrency:
+  group: lean-release-${{ github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
 
-# A newer push to the same pull request supersedes the older gate run.
-concurrency:
-  group: release-gate-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
-
+# Use the same tested setup, changed-module plan, bounded runner, and diagnostics.
+# The publication audit remains mandatory after the complete launch build.
 jobs:
-  plan:
-    runs-on: ubuntu-24.04
-    outputs:
-      shards: ${{ steps.coverage.outputs.shards }}
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - name: Resolve the exact launch-target population
-        id: coverage
-        run: >-
-          python3 scripts/release_gate_coverage.py plan
-          --out artifacts/plan.json
-          --github-output "$GITHUB_OUTPUT"
-      - name: Preserve the promised population
-        if: always()
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
-        with:
-          name: release-gate-plan
-          path: artifacts/plan.json
-          if-no-files-found: error
-
   build:
-    needs: plan
-    runs-on: ubuntu-24.04
-    timeout-minutes: 300
-    strategy:
-      fail-fast: false
-      matrix:
-        shard: ${{ fromJSON(needs.plan.outputs.shards) }}
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
-        with:
-          name: release-gate-plan
-          path: artifacts
-      # Each shard restores and saves its own corpus build. Before this, the
-      # gate only restored: the one workflow that saved a corpus build (Lean
-      # Convenience) is cancelled by every new push, and lean-action saved a
-      # 2.5 GB .lake copy per commit that evicted everything else from the
-      # 10 GB cache, so Solutions and PalomarCorpus rebuilt cold every run
-      # and hit the job timeout (PR #10, 26 Sep 2026).
-      - name: Restore this shard's newest corpus build
-        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
-        with:
-          path: .lake/build
-          key: corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-release-${{ matrix.shard }}-${{ github.sha }}
-          restore-keys: |
-            corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-release-${{ matrix.shard }}-
-            corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-
-      - uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
-        with:
-          use-mathlib-cache: auto
-          use-github-cache: false
-          build: false
-          test: false
-          lint: false
-      - name: Build every target promised by this shard
-        # Leaves the job time to save the partial build below.
-        timeout-minutes: 270
-        env:
-          LEAN_NUM_THREADS: "2"
-          RELEASE_HEARTBEAT_SECONDS: "300"
-          RELEASE_MODULE_BUDGET_SECONDS: "3600"
-        run: >-
-          python3 scripts/release_gate_coverage.py run-shard
-          --plan artifacts/plan.json
-          --shard-id "${{ matrix.shard }}"
-          --report artifacts/report.json
-      - name: Preserve incremental results, including failures
-        if: always()
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
-        with:
-          name: release-target-${{ matrix.shard }}
-          path: artifacts/report.json
-          if-no-files-found: error
-      # Saved even when the build fails, times out or is cancelled: Lake
-      # treats a module as built only once its trace is written after its
-      # outputs, so a partial build is a valid head start for the next run.
-      - name: Save this shard's corpus build
-        if: always()
-        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
-        with:
-          path: .lake/build
-          key: corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-release-${{ matrix.shard }}-${{ github.sha }}
-      # The Actions cache cannot be downloaded outside a workflow. Publishing
-      # the widest shard's compiled library lets a developer check a single
-      # failing file locally against exactly the modules CI built, instead of
-      # rebuilding the corpus first. Short retention: it is a working copy.
-      - name: Publish the compiled library for local single-file checks
-        if: ${{ always() && matrix.shard == 'Solutions' }}
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
-        with:
-          name: compiled-library-${{ matrix.shard }}
-          path: .lake/build/lib/lean
-          retention-days: 3
-          if-no-files-found: warn
-
-  # The audit runs after the shards and starts from the Solutions shard's
-  # saved build. Run in parallel it repeated the same cold build with
-  # unbounded Lean threads, and its runner was shut down at 93 minutes
-  # (run 36205344986).
-  audit:
-    needs: [plan, build]
-    if: ${{ !cancelled() && needs.plan.result == 'success' }}
-    runs-on: ubuntu-24.04
-    timeout-minutes: 300
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
-        with:
-          name: release-gate-plan
-          path: artifacts
-      - name: Restore the Solutions shard's corpus build
-        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
-        with:
-          path: .lake/build
-          key: corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-release-Solutions-${{ github.sha }}
-          restore-keys: |
-            corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-release-Solutions-
-            corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-
-      - uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
-        with:
-          use-mathlib-cache: auto
-          use-github-cache: false
-          build: false
-          test: false
-          lint: false
-      - name: Audit every publication entry's Solution environment
-        env:
-          LEAN_NUM_THREADS: "2"
-        run: >-
-          python3 scripts/release_gate_coverage.py audit
-          --plan artifacts/plan.json
-          --out-dir artifacts/audit
-      - name: Preserve the publication audit, including failures
-        if: always()
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
-        with:
-          name: release-axiom-audit
-          path: artifacts/audit/
-          if-no-files-found: error
-
-  reconcile:
-    needs: [plan, build, audit]
-    if: always()
-    runs-on: ubuntu-24.04
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
-        with:
-          path: ci-artifacts
-      - name: Require every source-bound target and audit receipt
-        if: always()
-        run: >-
-          python3 scripts/release_gate_coverage.py check-run
-          --plan ci-artifacts/release-gate-plan/plan.json
-          --artifacts ci-artifacts
+    uses: ./.github/workflows/lean.yml
+    with:
+      audit_publication: true

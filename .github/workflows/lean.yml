@@ -2,72 +2,195 @@
 # SPDX-License-Identifier: Apache-2.0
 name: Lean Convenience
 
-# Developer convenience workflow only. This is not a release gate.
+# Developer convenience only; full Palomar release/replay remains independent.
 on:
+  workflow_call:
+    inputs:
+      source_ref:
+        type: string
+        default: ''
+      focus:
+        type: string
+        default: ''
+      focused_only:
+        type: boolean
+        default: false
+      audit_publication:
+        type: boolean
+        default: false
   workflow_dispatch:
+    inputs:
+      source_ref:
+        description: 'Source branch or commit to check with this workflow version (blank: this ref)'
+        type: string
+        default: ''
+      focus:
+        description: 'Optional Lean module to check before the full launch set'
+        type: string
+        default: ''
+      focused_only:
+        description: 'Check only focused/changed modules (does not establish a full launch pass)'
+        type: boolean
+        default: false
   pull_request:
-  # Other branches build through their pull request, so one push does not
-  # start the same build twice.
+    # The release gate owns the full build and publication audit for main PRs.
+    branches-ignore: [main]
   push:
     branches: [main, 'palomar/**']
 
 permissions:
   contents: read
 
-# A push supersedes the previous one on the same ref. This workflow is not a
-# release gate, so an in-flight run for an older commit is cancelled. The
-# Comparator replay deliberately has no such rule: its runs produce the
-# per-entry receipts a consumer harvests.
 concurrency:
-  group: lean-convenience-${{ github.ref }}
+  group: lean-convenience-${{ github.workflow }}-${{ github.ref }}-${{ inputs.source_ref }}-${{ inputs.focused_only }}
   cancel-in-progress: true
 
 jobs:
-  build:
-    # Pinned rather than `ubuntu-latest`, so the October 2026 migration of that
-    # label cannot change the build environment without a commit here.
+  infrastructure:
     runs-on: ubuntu-24.04
-    # A cold one-thread build of the whole default-target closure took 3h53m
-    # (run 35715779415); the 6h hosted-runner ceiling bounds a runaway.
-    timeout-minutes: 330
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - name: Test sequential target reporting
+      - name: Test the same runner used by local and remote checks
         run: python3 -m unittest discover -s scripts -p 'test_build_launch_targets.py' -v
-      # Every run used to rebuild the whole project from nothing. The newest
-      # corpus build is restored first, so Lake rebuilds only modules whose
-      # inputs changed.
+
+  build:
+    needs: infrastructure
+    runs-on: ubuntu-24.04
+    timeout-minutes: 330
+    steps:
+      # Create diagnostics before either checkout, including checkout failures.
+      - name: Initialize setup diagnostics
+        id: initialize
+        env:
+          SOURCE_REF: ${{ inputs.source_ref || github.sha }}
+          DRIVER_REF: ${{ github.sha }}
+        run: |
+          python3 - <<'PYINIT'
+          import json, os
+          from pathlib import Path
+          report = dict(schema_version=2, status='incomplete', phase='driver_checkout',
+                        requested_source=os.environ['SOURCE_REF'],
+                        driver_commit=os.environ['DRIVER_REF'], targets=[])
+          (Path(os.environ['RUNNER_TEMP'])/'convenience-target-report.json').write_text(json.dumps(report, indent=2)+'\n')
+          PYINIT
+      - name: Check out the validated infrastructure
+        id: driver
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.sha }}
+          path: .ci-driver
+          persist-credentials: false
+          sparse-checkout: scripts
+      - name: Resolve source branch, tag or abbreviated commit
+        id: resolve
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 .ci-driver/scripts/convenience_ci.py resolve --report "$RUNNER_TEMP/convenience-target-report.json"
+      - name: Check out the resolved source under test
+        id: source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ steps.resolve.outputs.source_sha }}
+          path: source
+          fetch-depth: 0
+      - name: Plan changed modules before installing Lean
+        id: plan
+        env:
+          BASE_REF: ${{ github.event.pull_request.base.sha || 'origin/main' }}
+          FOCUS_MODULE: ${{ inputs.focus }}
+          FOCUSED_ONLY: ${{ inputs.focused_only }}
+          AUDIT_PUBLICATION: ${{ inputs.audit_publication }}
+        run: |
+          if [[ "$FOCUSED_ONLY" == true && "$AUDIT_PUBLICATION" == true ]]; then
+            echo '::error::Publication audit requires the complete launch set'
+            exit 2
+          fi
+          args=(--repository source --changed-from "$BASE_REF")
+          if [[ "$AUDIT_PUBLICATION" == true ]]; then args+=(--release); fi
+          if [[ "$FOCUSED_ONLY" == true ]]; then args+=(--focused-only); fi
+          if [[ -n "$FOCUS_MODULE" ]]; then args+=(--focus "$FOCUS_MODULE"); fi
+          python3 .ci-driver/scripts/build_launch_targets.py "${args[@]}" --plan
+      - name: Admit source release inventory before Lean setup
+        working-directory: source
+        run: python3 scripts/build_release_manifest.py --out "$RUNNER_TEMP/release-manifest.json" --sums-out "$RUNNER_TEMP/SHA256SUMS" --diagnostics "$RUNNER_TEMP/release-tooling-diagnostics.json"
       - name: Restore the corpus build
+        id: corpus_cache
         uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
-          path: .lake/build
-          key: corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-${{ github.sha }}-convenience
+          path: source/.lake/build
+          key: corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('source/lean-toolchain') }}-${{ hashFiles('source/lake-manifest.json') }}-convenience-v3-${{ github.ref }}-${{ steps.resolve.outputs.source_sha }}-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: |
-            corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-
-      - uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
+            corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('source/lean-toolchain') }}-${{ hashFiles('source/lake-manifest.json') }}-convenience-v3-${{ github.ref }}-
+            corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('source/lean-toolchain') }}-${{ hashFiles('source/lake-manifest.json') }}-
+      - id: lean
+        uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
         with:
+          lake-package-directory: source
           use-github-cache: false
           use-mathlib-cache: auto
           build: false
-      - name: Build launch entries sequentially
+          test: false
+          lint: false
+      - name: Check changed modules then the complete launch set
+        id: compile
         env:
-          LEAN_NUM_THREADS: "2"
-          RELEASE_HEARTBEAT_SECONDS: "300"
-          RELEASE_MODULE_BUDGET_SECONDS: "3600"
-        run: python3 scripts/build_launch_targets.py
-      - name: Preserve the incremental target report
+          LEAN_NUM_THREADS: '2'
+          BASE_REF: ${{ github.event.pull_request.base.sha || 'origin/main' }}
+          FOCUS_MODULE: ${{ inputs.focus }}
+          FOCUSED_ONLY: ${{ inputs.focused_only }}
+          AUDIT_PUBLICATION: ${{ inputs.audit_publication }}
+        run: |
+          if [[ "$FOCUSED_ONLY" == true && "$AUDIT_PUBLICATION" == true ]]; then
+            echo '::error::Publication audit requires the complete launch set'
+            exit 2
+          fi
+          args=(--repository source --changed-from "$BASE_REF")
+          if [[ "$AUDIT_PUBLICATION" == true ]]; then args+=(--release); fi
+          if [[ "$FOCUSED_ONLY" == true ]]; then args+=(--focused-only); fi
+          if [[ -n "$FOCUS_MODULE" ]]; then args+=(--focus "$FOCUS_MODULE"); fi
+          python3 .ci-driver/scripts/build_launch_targets.py "${args[@]}"
+      - name: Audit every publication entry's Solution environment
+        id: audit
+        if: ${{ inputs.audit_publication }}
+        working-directory: source
+        run: |
+          mkdir -p artifacts
+          python3 scripts/check_axiom_budget.py --run-palomar --json > artifacts/palomar-axiom-audit.json
+      - name: Preserve the publication audit
+        if: ${{ always() && inputs.audit_publication && hashFiles('source/artifacts/palomar-axiom-audit.json') != '' }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: palomar-publication-audit
+          path: source/artifacts/palomar-axiom-audit.json
+      - name: Finalize setup and build diagnostics
+        if: ${{ always() && steps.driver.outcome == 'success' }}
+        env:
+          CI_STEPS_JSON: ${{ toJSON(steps) }}
+        run: >-
+          python3 .ci-driver/scripts/convenience_ci.py finalize
+          --report "$RUNNER_TEMP/convenience-target-report.json"
+          --target-report source/.lake/convenience-target-report.json
+      - name: Preserve reports and compressed compiler logs
         if: always()
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: lean-convenience-target-report
-          path: .lake/convenience-target-report.json
+          name: lean-convenience-${{ github.run_id }}-${{ github.run_attempt }}
+          # Only the explicit JSON/gzip allowlist is uploaded, never the cache.
+          include-hidden-files: true
+          path: |
+            ${{ runner.temp }}/convenience-target-report.json
+            source/.lake/convenience-target-report.json
+            source/.lake/convenience-logs/*.log.gz
+            ${{ runner.temp }}/release-tooling-diagnostics.json
           if-no-files-found: warn
-      # Saved even when the build fails or is cancelled: Lake treats a module
-      # as built only once its trace is written after its outputs, so a
-      # partial build is a valid head start for the next run.
+          retention-days: 14
+      # GitHub isolates PR caches to that PR ref. Unique immutable keys retain
+      # partial progress on retries; Lake rechecks hashes and traces on every run.
+      # Externally selected source snapshots never populate these caches.
       - name: Save the corpus build
-        if: always()
+        if: ${{ always() && !cancelled() && steps.lean.outcome == 'success' && inputs.source_ref == '' }}
         uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
-          path: .lake/build
-          key: corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-${{ github.sha }}-convenience
+          path: source/.lake/build
+          key: corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('source/lean-toolchain') }}-${{ hashFiles('source/lake-manifest.json') }}-convenience-v3-${{ github.ref }}-${{ steps.resolve.outputs.source_sha }}-${{ github.run_id }}-${{ github.run_attempt }}
