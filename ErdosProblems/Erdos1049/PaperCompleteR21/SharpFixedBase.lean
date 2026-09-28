@@ -371,9 +371,12 @@ lemma hasSum_tau (hq0 : 0 < q) (hq1 : q < 1) : HasSum (tau q) (lambertL q * Pinv
     have hs : HasSum (fun m : ℕ => (m : ℝ) * delta q m) (Uq q q) := by
       have := (summable_U hq0 hq1 hq0.le hq1).hasSum
       convert this using 1
-      funext m
-      unfold delta
-      ring
+      -- v4.35 `convert` also leaves `Uq q q = ∑' ...`, true by unfolding `Uq`.
+      all_goals
+        first
+          | rfl
+          | (unfold Uq; rfl)
+          | (funext m; unfold delta; ring)
     exact (tendsto_add_atTop_iff_nat 1).mpr hs.tendsto_sum_nat
   have := h1.add h2
   rw [zero_add] at this

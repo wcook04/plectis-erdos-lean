@@ -54,7 +54,7 @@ theorem real_floor_ratio_liminf_zero_iff (A : ℕ → ℝ≥0∞) :
       (by simp)).mpr
     calc
       A ⌊X⌋₊ ≤ (ε / 2) * ENNReal.ofReal X := hmass
-      _ ≤ (ε / 2) * (2 * (⌊X⌋₊ : ℝ≥0∞)) := mul_le_mul_left' hENN _
+      _ ≤ (ε / 2) * (2 * (⌊X⌋₊ : ℝ≥0∞)) := mul_le_mul_right hENN _
       _ = ε * (⌊X⌋₊ : ℝ≥0∞) := by
         rw [← mul_assoc, ENNReal.div_mul_cancel (by norm_num) (by norm_num)]
   · intro hnat
