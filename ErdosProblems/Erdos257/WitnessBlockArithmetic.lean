@@ -74,7 +74,6 @@ theorem clause_layer_index_unique (C : Finset ℕ) (hCn : C.Nonempty)
     (heq : C.prod id ^ k * m = C.prod id ^ l * n) : k = l := by
   obtain ⟨p, hp⟩ := hCn
   have hv := congrArg (fun a : ℕ => a.factorization p) heq
-  dsimp only at hv
   rw [clause_layer_factorization_of_mem C hC k m hm hmc hp,
     clause_layer_factorization_of_mem C hC l n hn hnc hp] at hv
   exact hv
