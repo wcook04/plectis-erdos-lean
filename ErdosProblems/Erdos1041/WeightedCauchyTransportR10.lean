@@ -49,8 +49,9 @@ theorem hasFPowerSeriesAt_scalar_precomp {f : ℂ → ℂ}
   apply hasFPowerSeriesAt_iff.mpr
   have hloc := hasFPowerSeriesAt_iff.mp hp
   have ht : Tendsto (fun z : ℂ => t * z) (𝓝 0) (𝓝 0) := by
-    convert ((continuous_const.mul continuous_id).tendsto (0 : ℂ) :
-      Tendsto (fun z : ℂ => t * z) (𝓝 0) (𝓝 (t * 0))) using 1 <;> simp
+    have h0 : Tendsto (fun z : ℂ => t * z) (𝓝 0) (𝓝 (t * 0)) :=
+      (continuous_const.mul continuous_id).tendsto (0 : ℂ)
+    rwa [mul_zero] at h0
   filter_upwards [ht.eventually hloc] with z hz
   change HasSum (fun n => z ^ n * (t ^ n * p n (fun _ => 1))) (f (t * (0 + z)))
   change HasSum (fun n => (t * z) ^ n * p n (fun _ => 1)) (f (0 + t * z)) at hz

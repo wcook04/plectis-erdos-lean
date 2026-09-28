@@ -365,7 +365,7 @@ theorem actualGamma_hasSum {q w : ℝ}
   rw [Finset.sum_mul]
   apply Finset.sum_congr rfl
   intro p hp
-  have hpk : p.1 + p.2 = k := Finset.mem_antidiagonal.mp hp
+  have hpk : p.1 + p.2 = k := Finset.HasAntidiagonal.mem_antidiagonal.mp hp
   simp only [f, hpk]
 
 noncomputable def actualAtomWeight (q : ℝ) (k : ℕ) : ℝ :=
