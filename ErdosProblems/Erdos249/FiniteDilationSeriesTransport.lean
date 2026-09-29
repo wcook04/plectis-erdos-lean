@@ -29,9 +29,12 @@ theorem tsum_dilated (d : ℕ) (hd : 0 < d) (f : ℕ → ℝ) :
   let e := multiplesEquiv d hd
   calc
     (∑' N : ℕ, if d ∣ N then f (N / d) else 0) =
-        ∑' N : {N : ℕ // d ∣ N}, f (N.val / d) := by
-          simpa only [Set.indicator, Set.mem_setOf_eq] using
+        ∑' N : ↥({N : ℕ | d ∣ N} : Set ℕ), f (N.val / d) := by
+          simpa only [Set.indicator, Set.mem_ofPred_eq] using
             (tsum_subtype {N : ℕ | d ∣ N} (fun N => f (N / d))).symm
+    _ = ∑' N : {N : ℕ // d ∣ N}, f (N.val / d) := by
+          exact tsum_congr_subtype (fun N : ℕ => f (N / d))
+            (fun N => by simp only [Set.mem_ofPred_eq])
     _ = ∑' n : ℕ, f ((e n).val / d) := by
           exact (e.tsum_eq (fun N : {N : ℕ // d ∣ N} => f (N.val / d))).symm
     _ = ∑' n : ℕ, f n := by
