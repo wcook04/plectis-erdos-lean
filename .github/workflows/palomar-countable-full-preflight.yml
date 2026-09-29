@@ -19,6 +19,9 @@ on:
         type: string
 permissions:
   contents: read
+concurrency:
+  group: countable-totient-preflight-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   select:
     runs-on: ubuntu-24.04
