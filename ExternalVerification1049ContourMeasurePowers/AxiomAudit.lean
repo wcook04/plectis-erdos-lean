@@ -1,0 +1,6 @@
+import Solutions.ExternalVerification1049ContourMeasurePowers
+
+#print axioms ErdosProblems.Erdos1049.PaperR17.rational_base_region
+#print axioms ErdosProblems.Erdos1049.PaperR17.rational_base_power_measure
+#print axioms ErdosProblems.Erdos1049.PaperR17.rational_base_contour_measure
+#print axioms ExternalVerification1049ContourMeasurePowers.rational_base_contour_measure

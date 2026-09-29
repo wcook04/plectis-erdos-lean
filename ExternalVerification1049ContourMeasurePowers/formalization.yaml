@@ -1,0 +1,112 @@
+version: v0.4
+project:
+  name: 'Erdős 1049: exact rational-base contour and power-uniform irrationality exponent'
+  description: For every natural a > b > 0 satisfying the exact Zudilin contour, every
+    positive integral power of a/b has irrational Lambert value and irrationality
+    exponent at most (1-log(b)/log(a))/(C0/C1-log(b)/log(a)). Coprimality is not assumed.
+    The sufficient contour does not settle every rational base greater than one, including
+    3/2. Exact native conjunction build and independent replay remain pending; no
+    discovery priority or acceptance is asserted.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - 11J72
+  - 11J82
+  - 11B65
+sources:
+- title: Zudilin's Forms at Rational Bases and the Exact Normalised Hankel Order
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  license: Apache-2.0
+  author_endorsement: participated
+  note: Exact public source composition of the constructed contour supply and the
+    power-uniform actual irrationality-exponent bound. The corresponding manuscript
+    anchors are res:rational-base-threshold and cor:rational-base-measure. This is
+    formalization and specialization of credited mathematics; discovery priority and
+    human review are unadjudicated.
+  id: https://github.com/wcook04/plectis-erdos-lean/blob/dc8dce2e4c434101ae8c9564af1f8adfdc8e28e8/ErdosProblems/Erdos1049/PaperR17/FCContourMeasureAdapter.lean#L7-L21
+- title: Heine's basic transform and a permutation group for q-harmonic series
+  authors:
+  - Wadim Zudilin
+  id: doi:10.4064/aa111-2-4
+  type: paper
+  relationship: background
+  license: unknown
+  author_endorsement: not-contacted
+  note: Acta Arithmetica111(2004),153–164. Zudilin owns the hypergeometric forms,
+    integrality and analytic estimates being specialized; this preparation does not
+    claim their discovery.
+- title: Arithmetical investigations of a certain infinite product
+  authors:
+  - Peter Bundschuh
+  - Keijo Väänänen
+  id: https://numdam.org/item/CM_1994__91_2_175_0.pdf
+  type: paper
+  relationship: background
+  license: unknown
+  author_endorsement: not-contacted
+  note: Compositio Mathematica91(1994),175–199. Earlier rational-height framework
+    and rational-base threshold; no priority claim for the general method.
+- title: On the irrationality of generalized q-logarithm
+  authors:
+  - Wadim Zudilin
+  id: doi:10.1007/s40993-016-0042-x
+  type: paper
+  relationship: background
+  license: unknown
+  author_endorsement: not-contacted
+  note: Research in Number Theory2(2016),Article15. Section2 announces the rational-base
+    shape under a computable but unspecified constant; the exact contour here is not
+    attributed as a discovery of that general method.
+related_formalizations: []
+status:
+  scope: One conjunction endpoint at all bases in the exact contour and all positive
+    powers.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 1
+  sorry_boundary: Challenge contains one trusted theorem placeholder. Solution and
+    source adapter contain no sorry; exact native conjunction validation is pending.
+  axiom_audit_status: Pending exact native supported-toolchain build and independent
+    conjunction replay; historical component receipts do not certify this new adapter.
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: ExternalVerification1049ContourMeasurePowers.rational_base_contour_measure
+    file: Solutions/ExternalVerification1049ContourMeasurePowers.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification1049ContourMeasurePowers/comparator.json
+automation:
+  methods:
+  - method: manual
+    models: []
+    framework: Mathematical interpretation and claim-boundary review
+    tool_setup: Human-directed scope and significance review
+  - method: agent
+    models:
+    - Anthropic Claude
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+    cost:
+      wall_time: not tracked
+      spend_usd: subscription-based
+      hardware: local machine
+      prompting_notes: n/a
+review:
+  status: pending
+  note: No external human review or Palomar acceptance established.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

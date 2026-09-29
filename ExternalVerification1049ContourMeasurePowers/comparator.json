@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification1049ContourMeasurePowers.Challenge",
+  "solution_module": "Solutions.ExternalVerification1049ContourMeasurePowers",
+  "theorem_names": [
+    "ExternalVerification1049ContourMeasurePowers.rational_base_contour_measure"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}
