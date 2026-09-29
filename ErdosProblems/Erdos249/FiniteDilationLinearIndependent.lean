@@ -115,7 +115,7 @@ theorem linearIndependent_one_and_least_residue_values
     simp [hzeroD e he, positiveRadixValue]
   have hqzero : q = 0 := by
     rw [hDval, add_zero] at hrelation
-    exact Rat.cast_injective (by simpa using hrelation)
+    exact_mod_cast hrelation
   by_cases hd0 : d = 0
   · subst d
     have h0 : 0 ∈ s := hd

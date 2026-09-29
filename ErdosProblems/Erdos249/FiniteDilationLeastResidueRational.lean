@@ -44,7 +44,8 @@ theorem irrational_finset_rational_least_residue_values
     have hMR : (M : ℝ) ≠ 0 := by exact_mod_cast hM.ne'
     have hcδR : (c δ : ℝ) = 0 :=
       (mul_eq_zero.mp hδeq.symm).resolve_left hMR
-    exact hcδ (Rat.cast_injective (by simpa using hcδR))
+    apply hcδ
+    exact_mod_cast hcδR
   have hI := irrational_finset_least_residue_positive_values
     D g m B δ H hm hB hδD hδ hpos hmin hH hgδ
   have hres (n : ℕ) :
