@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification249CountableDilationIndependence.Challenge",
+  "solution_module": "Solutions.ExternalVerification249CountableDilationIndependence",
+  "theorem_names": [
+    "ExternalVerification249CountableDilationIndependence.linearIndependent_one_and_least_residue_values"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

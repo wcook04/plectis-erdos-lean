@@ -1,0 +1,120 @@
+version: v0.4
+project:
+  name: 'Erdős 249: countable rational independence of dilated least-residue values'
+  description: For every fixed modulus m >= 3 and integer base B >= 2, the family consisting
+    of 1 and sum_{n>=1} (phi(n) mod m)/B^(d*n) for every positive dilation d is linearly independent
+    over Q. This bounded-residue theorem does not decide the unreduced Erdős 249 parent. This
+    is prepared metadata; exact public-source build, Comparator replay and human review remain
+    pending.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - 11J72
+  - 11A25
+  - 11B83
+  - 11J82
+  - 11Y60
+sources:
+- title: Rational relations among dilated totient-residue series
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: Lean proof source for the stated endpoint is included in this source release. The
+    ordinary manuscript is not included here. Exact native build, independent replay and human
+    assessment remain pending; historical novelty and priority are unadjudicated.
+  license: Apache-2.0
+  author_endorsement: participated
+- title: Old and New Problems and Results in Combinatorial Number Theory
+  authors:
+  - Paul Erdős
+  - Ronald L. Graham
+  type: book
+  relationship: background
+  note: Page 61 poses the question whether the sum of phi(n)/2^n is irrational; only the problem
+    statement is taken from this source.
+  license: unknown
+  author_endorsement: n/a
+- title: On arithmetical properties of Lambert series
+  authors:
+  - Paul Erdős
+  type: paper
+  relationship: background
+  note: Journal of the Indian Mathematical Society 12 (1948). Supplies the isolated digit-block
+    separation mechanism reused by the residue-class irrationality theorems; no statement
+    about the sum of phi(n)/2^n is taken from it.
+  license: unknown
+  author_endorsement: n/a
+- title: 'Answer 1211557 to: An infinite sum based on the mod-parity of Euler''s totient function'
+  authors:
+  - Erick Wong
+  id: https://math.stackexchange.com/a/1211557
+  type: web discussion
+  relationship: background
+  note: Wong proved least-residue irrationality for matched denominator base and modulus k
+    > 2 (29 March 2015). The endpoint here concerns countable rational independence across
+    positive dilations at every integer base B >= 2; it is not inferred from that result.
+  license: unknown
+  author_endorsement: not-contacted
+- title: Refinement of the Chowla–Erdős method and linear independence of certain Lambert
+    series
+  authors:
+  - Daniel Duverney
+  - Yohei Tachiya
+  id: https://doi.org/10.1515/forum-2018-0299
+  type: paper
+  relationship: background
+  note: Forum Mathematicum 31 (2019), 1557–1566. Published joint-dilation and least-dilation
+    separation mechanism; the residue-observable endpoint here requires its own exact argument.
+    No priority claim is made.
+  license: unknown
+  author_endorsement: not-contacted
+related_formalizations: []
+status:
+  scope: One countable rational-independence endpoint, full m >= 3 and B >= 2 scope.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 1
+  sorry_boundary: Challenge contains one trusted theorem placeholder. Source and solution
+    are intended to contain none; exact build/replay pending.
+  axiom_audit_status: Pending exact separate-module validation and Comparator replay. The
+    recorded private combined-source Lean pass is a separate evidence class.
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: ExternalVerification249CountableDilationIndependence.linearIndependent_one_and_least_residue_values
+    file: Solutions/ExternalVerification249CountableDilationIndependence.lean
+    sorry_count: 0
+    comparator_config: ExternalVerification249CountableDilationIndependence/comparator.json
+automation:
+  methods:
+  - method: manual
+    models: []
+    framework: Mathematical interpretation and claim-boundary review
+    tool_setup: Human-directed scope and significance review
+  - method: agent
+    models:
+    - Anthropic Claude
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+    cost:
+      wall_time: not tracked
+      spend_usd: subscription-based
+      hardware: local machine
+      prompting_notes: n/a
+review:
+  status: pending
+  note: No external human mathematical review is established for this preparation.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

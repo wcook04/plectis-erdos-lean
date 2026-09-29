@@ -419,6 +419,10 @@ name = "ExternalVerification251ShiftedFourPrimeCounting"
 globs = ["ExternalVerification251ShiftedFourPrimeCounting.+"]
 
 [[lean_lib]]
+name = "ExternalVerification249CountableDilationIndependence"
+globs = ["ExternalVerification249CountableDilationIndependence.+"]
+
+[[lean_lib]]
 name = "PalomarCorpus"
 globs = ["PalomarCorpus.+"]
 
