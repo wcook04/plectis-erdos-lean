@@ -48,18 +48,18 @@ theorem irrational_finset_rational_least_residue_values
   have hI := irrational_finset_least_residue_positive_values
     D g m B δ H hm hB hδD hδ hpos hmin hH hgδ
   have hres (n : ℕ) :
-      (((Nat.totient (n + 1) % m : ℤ) : ℝ)) =
+      ((((Nat.totient (n + 1) % m : ℕ) : ℤ) : ℝ)) =
         ((Nat.totient (n + 1) % m : ℕ) : ℝ) := by
     norm_cast
   have hseries (d : ℕ) (hd : d ∈ D) :
       (∑' n : ℕ,
-        ((g d * (Nat.totient (n + 1) % m : ℤ) : ℤ) : ℝ) /
+        ((g d * ((Nat.totient (n + 1) % m : ℕ) : ℤ) : ℤ) : ℝ) /
           ((B : ℝ) ^ d) ^ (n + 1)) =
       (M : ℝ) * positiveRadixValue (B ^ d)
         (fun r : ℕ => c d * (r : ℚ)) m := by
     calc
       (∑' n : ℕ,
-        ((g d * (Nat.totient (n + 1) % m : ℤ) : ℤ) : ℝ) /
+        ((g d * ((Nat.totient (n + 1) % m : ℕ) : ℤ) : ℤ) : ℝ) /
           ((B : ℝ) ^ d) ^ (n + 1)) =
         ∑' n : ℕ, (M : ℝ) *
           ((c d : ℝ) * ((Nat.totient (n + 1) % m : ℕ) : ℝ) /
@@ -77,7 +77,7 @@ theorem irrational_finset_rational_least_residue_values
             Nat.cast_pow]
   have hEq :
       (∑ d ∈ D, ∑' n : ℕ,
-        ((g d * (Nat.totient (n + 1) % m : ℤ) : ℤ) : ℝ) /
+        ((g d * ((Nat.totient (n + 1) % m : ℕ) : ℤ) : ℤ) : ℝ) /
           ((B : ℝ) ^ d) ^ (n + 1)) =
       (M : ℝ) * (∑ d ∈ D,
         positiveRadixValue (B ^ d) (fun r : ℕ => c d * (r : ℚ)) m) := by

@@ -130,7 +130,7 @@ theorem irrational_finset_least_residue_values
     (hH : ∀ d ∈ D, d ≤ H)
     (hcδ : c δ ≠ 0) :
     Irrational (∑ d ∈ D, ∑' n : ℕ,
-      ((c d * (Nat.totient n % m : ℤ) : ℤ) : ℝ) /
+      ((c d * ((Nat.totient n % m : ℕ) : ℤ) : ℤ) : ℝ) /
         ((B : ℝ) ^ d) ^ n) := by
   let g : ℕ → ℕ → ℤ := fun d s => c d * s
   let C : ℝ := ∑ d ∈ D, |(c d : ℝ)| * (m : ℝ)
@@ -177,16 +177,16 @@ theorem irrational_finset_least_residue_positive_values
     (hH : ∀ d ∈ D, d ≤ H)
     (hcδ : c δ ≠ 0) :
     Irrational (∑ d ∈ D, ∑' n : ℕ,
-      ((c d * (Nat.totient (n + 1) % m : ℤ) : ℤ) : ℝ) /
+      ((c d * ((Nat.totient (n + 1) % m : ℕ) : ℤ) : ℤ) : ℝ) /
         ((B : ℝ) ^ d) ^ (n + 1)) := by
   have hI := irrational_finset_least_residue_values
     D c m B δ H hm hB hδD hδ hpos hmin hH hcδ
   have hseries :
       (∑ d ∈ D, ∑' n : ℕ,
-        ((c d * (Nat.totient n % m : ℤ) : ℤ) : ℝ) /
+        ((c d * ((Nat.totient n % m : ℕ) : ℤ) : ℤ) : ℝ) /
           ((B : ℝ) ^ d) ^ n) =
       (∑ d ∈ D, ∑' n : ℕ,
-        ((c d * (Nat.totient (n + 1) % m : ℤ) : ℤ) : ℝ) /
+        ((c d * ((Nat.totient (n + 1) % m : ℕ) : ℤ) : ℤ) : ℝ) /
           ((B : ℝ) ^ d) ^ (n + 1)) := by
     apply Finset.sum_congr rfl
     intro d hd
