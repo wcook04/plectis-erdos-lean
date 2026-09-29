@@ -147,14 +147,14 @@ open scoped BigOperators
 export PalomarCorpus.E249_18.Shared (baseMobiusShadow mersenne mobiusNumerator numericMobiusShadow scaleExplicitShadow scaleExplicitShadowRat squarefreeKernel)
 /-- States the paper statement it is bound to from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.boundary_pair_at_one in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem boundary_pair_at_one :
-    (1, 0) ∈ (Finset.antidiagonal 1).filter
+    (1, 0) ∈ (Finset.HasAntidiagonal.antidiagonal 1).filter
         (fun p : ℕ × ℕ => 0 < p.1 ∧ Nat.Coprime p.1 p.2) ∧
-      ((Finset.antidiagonal 1).filter
+      ((Finset.HasAntidiagonal.antidiagonal 1).filter
         (fun p : ℕ × ℕ => 0 < p.1 ∧ Nat.Coprime p.1 p.2)).card = 1 := by
   sorry
 /-- States the paper statement it is bound to from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.card_coprime_antidiagonal in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem card_coprime_antidiagonal (n : ℕ) :
-    ((Finset.antidiagonal n).filter
+    ((Finset.HasAntidiagonal.antidiagonal n).filter
         (fun p : ℕ × ℕ => 0 < p.1 ∧ Nat.Coprime p.1 p.2)).card = Nat.totient n := by
   sorry
 /-- States the paper statement it is bound to from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.card_mul_sq_le_pairwise_energy in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/

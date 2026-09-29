@@ -92,8 +92,7 @@ theorem unit_cubic_root_nat_classification
     refine ⟨hs1, ht2, ?_⟩
     rcases heq with ⟨_, hh⟩ | ⟨hh, _⟩
     · rw [hs1, ht2] at hh
-      norm_num at hh
-      omega
+      norm_num at hh <;> omega
     · omega
   · have hb := Nat.le_of_dvd (by decide : 0 < 6) hd
     have hgap := nat_square_difference_ge_sum t s hlt
@@ -110,8 +109,7 @@ theorem unit_cubic_root_nat_classification
     rcases heq with ⟨hh, _⟩ | ⟨_, hh⟩
     · omega
     · rw [hsEq, htEq] at hh
-      norm_num at hh
-      omega
+      norm_num at hh <;> omega
 
 /-- Actual root reduction gives the two exact natural-number equations. -/
 theorem unit_cubic_rational_root_clearing

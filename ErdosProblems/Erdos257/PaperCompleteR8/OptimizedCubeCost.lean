@@ -70,7 +70,7 @@ theorem cube_gauge_rank_lower (q : ℕ) (P : Finset ℕ) (n : ℕ)
   by_cases hqn : q ∣ n
   · rw [if_pos hqn, cube_incidence_exact q P n hq hP hn hqn]
     have h := exp_one_mul_sub_one_le_coverGauge_two_rpow (cubePrimeRank q P n : ℝ)
-    simpa only [Real.rpow_natCast, Nat.cast_pow, Nat.cast_ofNat] using h
+    simpa only [Real.rpow_natCast, Nat.cast_pow, Nat.cast_ofNat] using! h
   · have hr : cubePrimeRank q P n = 0 := by
       unfold cubePrimeRank
       apply Finset.card_eq_zero.mpr
@@ -142,14 +142,14 @@ theorem optimized_cube_cost_le_increment (q : ℕ) (P : Finset ℕ)
   rw [hF] at h
   exact h.trans (by
     have hb := div_le_div_of_nonneg_right (cubeProductCost_le_exp q P z hz.le) hz.le
-    simpa only [div_div] using hb)
+    simpa only [div_div] using! hb)
 
 /-- The universally valid bound, including S<1 and P empty. -/
 theorem optimized_cube_cost_le_exp (q : ℕ) (P : Finset ℕ)
     (hq : 0 < q) (hP : ∀ p ∈ P, Nat.Prime p) :
     optimizedLogCoverCost (divisorCube q P : Set ℕ) ≤
       Real.exp (primeReciprocalMass P) / (q : ℝ) := by
-  simpa using optimized_cube_cost_le_increment q P hq hP 1 (by norm_num) le_rfl
+  simpa using! optimized_cube_cost_le_increment q P hq hP 1 (by norm_num) le_rfl
 
 /-- Corrected optimised theorem: the S>=1 hypothesis is essential. -/
 theorem optimized_cube_cost_two_sided (q : ℕ) (P : Finset ℕ)
@@ -197,7 +197,7 @@ theorem one_div_factor_le_optimized_cube_cost (q : ℕ) (P : Finset ℕ)
     (1 / 2) (by norm_num) (by norm_num)
   have hsub : (({q} : Finset ℕ) : Set ℕ) ⊆ (divisorCube q P : Set ℕ) := by
     intro a ha
-    have : a = q := by simpa using ha
+    have : a = q := by simpa using! ha
     subst a
     exact factor_mem_divisorCube q P hP
   have h := finiteGaugeMean_le_optimizedCost C {q} hsub q hq
@@ -207,7 +207,7 @@ theorem one_div_factor_le_optimized_cube_cost (q : ℕ) (P : Finset ℕ)
 theorem optimized_cube_cost_empty (q : ℕ) (hq : 0 < q) :
     optimizedLogCoverCost (divisorCube q ∅ : Set ℕ) = 1 / (q : ℝ) := by
   apply le_antisymm
-  · simpa [primeReciprocalMass] using optimized_cube_cost_le_exp q ∅ hq (by simp)
+  · simpa [primeReciprocalMass] using! optimized_cube_cost_le_exp q ∅ hq (by simp)
   · exact one_div_factor_le_optimized_cube_cost q ∅ hq (by simp)
 
 /-- Exact counterexample to the unqualified e*S/q assertion. -/

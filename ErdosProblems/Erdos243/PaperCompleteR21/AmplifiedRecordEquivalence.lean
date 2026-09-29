@@ -201,7 +201,7 @@ theorem coprimeMultiplier_cofinal (N : ℕ) :
   have hgrow : ∀ k, 2 ^ k ≤ O.lcmQuot (N + k) := by
     intro k
     induction k with
-    | zero => simpa using O.lcmQuot_pos N
+    | zero => simpa using! O.lcmQuot_pos N
     | succ k ih =>
         have h2 := hbig (N + k) (by omega)
         have hsucc := O.lcmQuot_succ (N + k)

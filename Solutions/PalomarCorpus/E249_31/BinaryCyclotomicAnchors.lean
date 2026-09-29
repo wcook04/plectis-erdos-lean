@@ -22,7 +22,7 @@ theorem exists_clean_binaryCyclotomicAnchor
       h * q ∣ p - 1 ∧
       N₀ ≤ p - 1 := by
   simpa [binaryCyclotomicLayer,
-    ErdosProblems.Erdos249.CyclotomicAnchoredKill.binaryCyclotomicLayer] using
+    ErdosProblems.Erdos249.CyclotomicAnchoredKill.binaryCyclotomicLayer] using!
     ErdosProblems.Erdos249.CyclotomicAnchoredKill.exists_clean_binaryCyclotomicAnchor
       h N₀ hh
 
@@ -31,7 +31,7 @@ theorem binaryCyclotomicLayer_unboundedPrimeDivisorSupply
     UnboundedPrimeDivisorSupply binaryCyclotomicLayer h := by
   simpa [UnboundedPrimeDivisorSupply, binaryCyclotomicLayer,
     ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature.UnboundedPrimeDivisorSupply,
-    ErdosProblems.Erdos249.CyclotomicAnchoredKill.binaryCyclotomicLayer] using
+    ErdosProblems.Erdos249.CyclotomicAnchoredKill.binaryCyclotomicLayer] using!
     ErdosProblems.Erdos249.CyclotomicAnchoredKill.binaryCyclotomicLayer_unboundedPrimeDivisorSupply
       h hh
 
@@ -43,7 +43,7 @@ theorem binaryCyclotomicAnchoredKillSupply_iff_irrational :
     ErdosProblems.Erdos249.CyclotomicAnchoredKill.CyclotomicAnchoredKillSupply,
     ErdosProblems.Erdos249.CyclotomicAnchoredKill.binaryCyclotomicLayer,
     Erdos257PeriodNoncollapse.TotientTailPeriodKiller.certifiedKill,
-    Erdos257PeriodNoncollapse.TotientTailPeriodKiller.windowDiscrepancy] using
+    Erdos257PeriodNoncollapse.TotientTailPeriodKiller.windowDiscrepancy] using!
     ErdosProblems.Erdos249.CyclotomicAnchoredKill.binaryCyclotomicAnchoredKillSupply_iff_irrational
 
 theorem exists_unbounded_binaryCyclotomicSupport_with_periodLock_of_not_irrational
@@ -57,7 +57,7 @@ theorem exists_unbounded_binaryCyclotomicSupport_with_periodLock_of_not_irration
   simpa [UnboundedPrimeDivisorSupply, binaryCyclotomicLayer, totientTail,
     ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature.UnboundedPrimeDivisorSupply,
     ErdosProblems.Erdos249.CyclotomicAnchoredKill.binaryCyclotomicLayer,
-    Erdos257PeriodNoncollapse.TotientTailPeriodKiller.totientTail] using
+    Erdos257PeriodNoncollapse.TotientTailPeriodKiller.totientTail] using!
     ErdosProblems.Erdos249.CyclotomicAnchoredKill.exists_unbounded_binaryCyclotomicSupport_with_periodLock_of_not_irrational
       hrat
 

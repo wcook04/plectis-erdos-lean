@@ -123,7 +123,7 @@ theorem t67_not_certifiedKill_at_t64_depth :
 
 theorem natCast_zmod_eq_one_iff' (a m : ℕ) :
     (a : ZMod m) = 1 ↔ a % m = 1 % m := by
-  simpa using ZMod.natCast_eq_natCast_iff' a 1 m
+  simpa using! ZMod.natCast_eq_natCast_iff' a 1 m
 
 theorem natCast_zmod_ne_one_iff' (a m : ℕ) :
     (a : ZMod m) ≠ 1 ↔ a % m ≠ 1 % m :=

@@ -36,7 +36,7 @@ theorem polynomial_countermodel :
     HasSum (fun n : ℕ => (polynomialGapWord (n + 1) : ℝ) / 2 ^ (n + 1)) 32 := by
   refine ⟨polynomialGapWord_pos, polynomialGapWord_even,
     polynomialGapWord_strictMono, polynomialTailOrbit_recurrence,
-    polynomialTailOrbit_shift_integral, (fun n => by simpa using polynomialGapWord_succ_sub n), ?_,
+    polynomialTailOrbit_shift_integral, (fun n => by simpa using! polynomialGapWord_succ_sub n), ?_,
     hasSum_polynomialGapDyadicTerm⟩
   intro n
   exact ⟨polynomialGapWord_adjacent_difference_ne_two n,
@@ -177,7 +177,7 @@ theorem prime_gaps_not_eventually_periodic {h : ℕ} (hh : 0 < h) :
   rintro ⟨N₀, hp⟩
   apply primeGap0_not_eventually_periodic hh
   refine ⟨N₀, fun N hN => ?_⟩
-  simpa [Nat.add_assoc, Nat.add_comm, Nat.add_left_comm] using
+  simpa [Nat.add_assoc, Nat.add_comm, Nat.add_left_comm] using!
     hp (N + 1) (by omega)
 
 /-- The two real-tail definitions in the supplied corpus coincide. -/

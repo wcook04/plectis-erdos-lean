@@ -74,9 +74,9 @@ theorem den_nat_mul_int_div_nat {h M : ℕ} {N : ℤ} (hM : 0 < M)
     rw [Rat.divInt_eq_div]
     push_cast
     rfl
-  rw [heq, Rat.den_mk, if_neg hMZ, Int.gcd_def]
+  rw [heq, Rat.den_divInt, if_neg hMZ, Int.gcd_def]
   simp only [Int.natAbs_natCast, Int.natAbs_mul]
-  rw [hcop.gcd_mul_right_cancel h, Nat.gcd_comm]
+  rw [Nat.gcd_comm M (h * N.natAbs), hcop.gcd_mul_right_cancel h, Nat.gcd_comm]
 
 /-- The half-height normalizer has no prime factors outside `2,3,5`. -/
 theorem heightNormalizer235_dvd_thirty_pow (a : ℕ) (ha : 1 ≤ a) :

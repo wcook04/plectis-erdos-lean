@@ -18,7 +18,7 @@ noncomputable def coeffEval (c : ℕ → ℝ) (w : ℝ) : ℝ :=
   ∑' n : ℕ, c n * w ^ n
 
 noncomputable def coeffConv (a b : ℕ → ℝ) (n : ℕ) : ℝ :=
-  ∑ ij ∈ Finset.antidiagonal n, a ij.1 * b ij.2
+  ∑ ij ∈ Finset.HasAntidiagonal.antidiagonal n, a ij.1 * b ij.2
 
 noncomputable def coeffScale (a : ℕ → ℝ) (r : ℝ) (n : ℕ) : ℝ :=
   a n * r ^ n
@@ -147,7 +147,7 @@ lemma coeffEval_functional_equation {c : ℕ → ℝ} {q w u v : ℝ}
       simpa only [f] using ht
     simpa only [f, pow_zero, mul_one, sub_self, zero_add] using ht'.zero_add
   have he := (hw.hasSum.sub hqw.hasSum).unique ha
-  simp only [pow_zero, mul_one, sub_self, zero_add] at he
+  try simp only [pow_zero, mul_one, sub_self, zero_add] at he
   change coeffEval c w - coeffEval c (q * w) = _ at he
   linear_combination he
 
@@ -163,6 +163,7 @@ lemma coeffConv_mono {a b c d : ℕ → ℝ}
     (ha : ∀ n, 0 ≤ a n) (hd : ∀ n, 0 ≤ d n)
     (hac : ∀ n, a n ≤ c n) (hbd : ∀ n, b n ≤ d n) (n : ℕ) :
     coeffConv a b n ≤ coeffConv c d n := by
+  unfold coeffConv
   apply Finset.sum_le_sum
   intro ij hij
   calc
@@ -176,6 +177,7 @@ lemma coeffConv_le_coeffConv {a b c d : ℕ → ℝ}
     (ha : ∀ n, 0 ≤ a n) (hb : ∀ n, 0 ≤ b n)
     (hac : ∀ n, a n ≤ c n) (hbd : ∀ n, b n ≤ d n) (n : ℕ) :
     coeffConv a b n ≤ coeffConv c d n := by
+  unfold coeffConv
   apply Finset.sum_le_sum
   intro ij hij
   exact mul_le_mul (hac ij.1) (hbd ij.2) (hb ij.2) ((ha ij.1).trans (hac ij.1))
@@ -195,7 +197,7 @@ lemma coeffConv_weight (a b : ℕ → ℝ) (w : ℝ) (n : ℕ) :
   rw [Finset.sum_mul]
   apply Finset.sum_congr rfl
   intro ij hij
-  have he : ij.1 + ij.2 = n := Finset.mem_antidiagonal.mp hij
+  have he : ij.1 + ij.2 = n := Finset.HasAntidiagonal.mem_antidiagonal.mp hij
   rw [← he, pow_add]
   ring
 
@@ -213,16 +215,17 @@ lemma coeffConv_hasSum {a b : ℕ → ℝ} {w : ℝ}
       (fun n => mul_nonneg (hb0 n) (pow_nonneg hw0 n)) ha hb
   let f : ℕ → ℝ := fun n => a n * w ^ n
   let g : ℕ → ℝ := fun n => b n * w ^ n
-  have hs : Summable (fun n : ℕ => ∑ ij ∈ Finset.antidiagonal n,
+  have hs : Summable (fun n : ℕ => ∑ ij ∈ Finset.HasAntidiagonal.antidiagonal n,
       f ij.1 * g ij.2) :=
     summable_sum_mul_antidiagonal_of_summable_mul (A := ℕ) (f := f) (g := g) hp
   have he : (∑' n, f n) * (∑' n, g n) =
-      ∑' n, ∑ ij ∈ Finset.antidiagonal n, f ij.1 * g ij.2 :=
+      ∑' n, ∑ ij ∈ Finset.HasAntidiagonal.antidiagonal n, f ij.1 * g ij.2 :=
     Summable.tsum_mul_tsum_eq_tsum_sum_antidiagonal
       (A := ℕ) (f := f) (g := g) ha hb hp
-  have hsum : HasSum (fun n : ℕ => ∑ ij ∈ Finset.antidiagonal n,
-      f ij.1 * g ij.2) ((∑' n, f n) * (∑' n, g n)) :=
-    he.symm ▸ hs.hasSum
+  have hsum : HasSum (fun n : ℕ => ∑ ij ∈ Finset.HasAntidiagonal.antidiagonal n,
+      f ij.1 * g ij.2) ((∑' n, f n) * (∑' n, g n)) := by
+    rw [he]
+    exact hs.hasSum
   apply hsum.congr_fun
   intro n
   exact coeffConv_weight a b w n
@@ -256,9 +259,9 @@ bound because every discarded convolution term is nonnegative. -/
 lemma left_le_coeffConv {a b : ℕ → ℝ}
     (ha0 : ∀ n, 0 ≤ a n) (hb0 : ∀ n, 0 ≤ b n) (hbz : b 0 = 1) (n : ℕ) :
     a n ≤ coeffConv a b n := by
-  have hm : (n, 0) ∈ Finset.antidiagonal n := by simp
+  have hm : (n, 0) ∈ Finset.HasAntidiagonal.antidiagonal n := by simp
   have h := Finset.single_le_sum
-    (fun ij (_ : ij ∈ Finset.antidiagonal n) => mul_nonneg (ha0 ij.1) (hb0 ij.2)) hm
-  simpa only [hbz, mul_one] using h
+    (fun ij (_ : ij ∈ Finset.HasAntidiagonal.antidiagonal n) => mul_nonneg (ha0 ij.1) (hb0 ij.2)) hm
+  simpa only [coeffConv, hbz, mul_one] using h
 
 end ErdosProblems.Erdos1049.PaperR16

@@ -184,6 +184,7 @@ jobs:
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
       - uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
         with:
+          use-github-cache: false
           use-mathlib-cache: auto
           build: false
           test: false

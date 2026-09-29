@@ -32,11 +32,11 @@ theorem factorial_pow_floor_dvd_factorial
   have hpow :=
     factorial_pow_dvd_factorial_of_dvd hdiv
   have hquot : (d * (i / d)) / d = i / d := by
-    simpa [Nat.mul_comm] using Nat.mul_div_left (i / d) hd
+    simpa [Nat.mul_comm] using! Nat.mul_div_left (i / d) hd
   rw [hquot] at hpow
   exact hpow.trans
     (Nat.factorial_dvd_factorial (by
-      simpa [Nat.mul_comm] using Nat.div_mul_le_self i d))
+      simpa [Nat.mul_comm] using! Nat.div_mul_le_self i d))
 
 /-- Integral weight of index `i` in the divisor channel `d`. -/
 def channelWeight (i d : ℕ) : ℕ :=
@@ -74,14 +74,14 @@ theorem channelEvent_eq_zero_of_not_dvd
     exact hnd (hn0 ▸ dvd_zero d)
   have hdpos : 0 < d := by omega
   have hmodNe : n % d ≠ 0 := by
-    simpa [Nat.dvd_iff_mod_eq_zero] using hnd
+    simpa [Nat.dvd_iff_mod_eq_zero] using! hnd
   have hmodPos : 0 < n % d := Nat.pos_of_ne_zero hmodNe
   have hmodLt : n % d < d := Nat.mod_lt n hdpos
   have hnrepr : n / d * d + n % d = n := by
-    simpa [Nat.mul_comm] using Nat.div_add_mod n d
+    simpa [Nat.mul_comm] using! Nat.div_add_mod n d
   have hfloor : (n - 1) / d = n / d := by
     apply Nat.div_eq_of_lt_le
-    · simpa [Nat.mul_comm] using
+    · simpa [Nat.mul_comm] using!
         (show n / d * d ≤ n - 1 by omega)
     · rw [Nat.add_mul, one_mul]
       omega
@@ -91,7 +91,7 @@ theorem channelEvent_eq_zero_of_not_dvd
     exact factorial_pow_floor_dvd_factorial (n - 1) d hdpos
   have hfac : n.factorial = n * (n - 1).factorial := by
     have hn : n - 1 + 1 = n := by omega
-    simpa only [hn] using Nat.factorial_succ (n - 1)
+    simpa only [hn] using! Nat.factorial_succ (n - 1)
   have hweight :
       channelWeight n d = n * channelWeight (n - 1) d := by
     rw [channelWeight, channelWeight, hfloor, hfac]

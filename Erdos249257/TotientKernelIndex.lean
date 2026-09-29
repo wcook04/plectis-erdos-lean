@@ -223,7 +223,7 @@ theorem existsUnique_totientKernelResidueAtLevel
   have hmodlt : r % k < k := Nat.mod_lt r hkpos
   have hq : r / k < k ^ j := by
     exact (Nat.div_lt_iff_lt_mul hkpos).2 (by
-      simpa only [pow_succ] using hrlt)
+      simpa only [pow_succ] using! hrlt)
   have hd : r % k - 1 < k - 1 := by omega
   let q : Fin (k ^ j) := ⟨r / k, hq⟩
   let d : Fin (k - 1) := ⟨r % k - 1, hd⟩
@@ -256,7 +256,7 @@ theorem card_totientKernelSectionIndex (k e : ℕ) :
     Fin.sum_univ_eq_sum_range (fun j => k ^ j * (k - 1)) e]
   apply Finset.sum_congr rfl
   intro j hj
-  simpa only [Fintype.card_prod, Fintype.card_fin] using
+  simpa only [Fintype.card_prod, Fintype.card_fin] using!
     card_totientKernelSectionLevel k j
 
 /-- Before telescoping, the complete index cardinality is two plus one block

@@ -57,7 +57,7 @@ theorem affine_unit_variation (a v : ℂ) (s : ℝ) :
           ≤ (‖v‖₊ : ℝ≥0∞) * eVariationOn (id : ℝ → ℝ) (Icc s (s + 1)) := by
             simpa only [Function.comp_id] using hv
       _ ≤ (‖v‖₊ : ℝ≥0∞) * 1 := by
-            exact mul_le_mul_left' hid _
+            exact mul_le_mul_of_nonneg_left hid (by positivity)
       _ = (‖v‖₊ : ℝ≥0∞) := mul_one _
   · have hs : s ≤ s + 1 := by linarith
     have hv := eVariationOn.edist_le (affine a v)

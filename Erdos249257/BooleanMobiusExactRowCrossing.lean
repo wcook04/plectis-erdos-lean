@@ -113,8 +113,7 @@ theorem exists_first_localMersenne_crossing
     have hodd := finiteErdosSum_den_odd D hDzero
     rw [← localMersennePrefixValue_eq_finiteErdosSum, heq] at hodd
     obtain ⟨k, hk⟩ := hodd
-    norm_num at hk
-    omega
+    norm_num at hk <;> omega
   have hDbelow : localMersennePrefixValue D < (1 / 2 : ℚ) :=
     lt_of_le_of_ne hDle hDne
   have hcFour : 4 ≤ c := by
@@ -259,8 +258,7 @@ theorem skippedCoreSharpCapacity_below_or_strictly_laterExactRow
     have hodd := finiteErdosSum_den_odd E hzero
     rw [← localMersennePrefixValue_eq_finiteErdosSum, heq] at hodd
     obtain ⟨k, hk⟩ := hodd
-    norm_num at hk
-    omega
+    norm_num at hk <;> omega
   rcases lt_or_gt_of_ne hne with hEbelow | hEabove
   · exact Or.inl ⟨E, hE, hquot, hEbelow⟩
   · obtain ⟨e, heE, heFour, heBelow, heCross⟩ :=

@@ -190,7 +190,7 @@ theorem bracket_of_two_sided_separation
   apply ErdosProblems.Erdos249.PaperCompleteR21.bracket_of_two_sided_separation <;> assumption
 
 theorem card_visible_antidiagonal (n : ℕ) :
-    ((Finset.antidiagonal n).filter
+    ((Finset.HasAntidiagonal.antidiagonal n).filter
         fun q : ℕ × ℕ => 0 < q.1 ∧ Nat.Coprime q.1 q.2).card
       = Nat.totient n := @ErdosProblems.Erdos249.PaperCompleteR21.card_visible_antidiagonal n
 
@@ -507,7 +507,7 @@ theorem parityComparisonProperties_do_not_imply_irrational :
         Irrational (∑' n : ℕ, (c n : ℝ) / 2 ^ n) := @ErdosProblems.Erdos249.PaperCompleteR21.parityComparisonProperties_do_not_imply_irrational
 
 theorem positive_antidiagonal_one :
-    ((Finset.antidiagonal 1).filter
+    ((Finset.HasAntidiagonal.antidiagonal 1).filter
         fun q : ℕ × ℕ => 0 < q.1 ∧ 0 < q.2 ∧ Nat.Coprime q.1 q.2) = ∅ := @ErdosProblems.Erdos249.PaperCompleteR21.positive_antidiagonal_one
 
 theorem primeJumpSharpRadius_formula (H p L : ℕ) :

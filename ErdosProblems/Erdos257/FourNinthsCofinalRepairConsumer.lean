@@ -393,7 +393,7 @@ theorem finiteErdosSum_ne_four_div_nine
     rw [← horder']
     exact hord
   have hlcm' : F.lcm (fun m : ℕ ↦ m) ∣ 6 := by
-    simpa only [id_eq] using hlcm
+    exact hlcm
   have hranks : ∀ n ∈ F, n = 2 ∨ n = 3 ∨ n = 6 := by
     intro n hn
     have hndvd : n ∣ 6 :=

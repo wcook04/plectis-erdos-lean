@@ -49,6 +49,6 @@ theorem original_coordinate_bounded_defect
       (a (n + 1) : ℤ) = (a n : ℤ) ^ 2 - (a n : ℤ) + 1 := by
   refine ErdosProblems.Erdos243.PaperCompleteR7.original_coordinate_bounded_defect
     a ha hpos p q hq hs hgrowth ?_
-  simpa only [productDefect_eq] using hupper
+  simpa only [productDefect_eq] using! hupper
 
 end Erdos249257.ExternalVerification243OriginalCoordinateBoundedDefect

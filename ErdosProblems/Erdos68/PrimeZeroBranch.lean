@@ -793,7 +793,7 @@ theorem
     dsimp [V, V', A, G]
     have hfactorCast :=
       congrArg (fun x : ℕ => (x : ℤ)) hfactorNat
-    simpa only [Nat.cast_mul, Nat.cast_sub hfacOne] using hfactorCast
+    simpa only [Nat.cast_mul, Nat.cast_sub hfacOne, Nat.cast_one] using hfactorCast
   have hEq :
       V' * (U' * G) =
         V' * ((m : ℤ) * U * A - V - b * V * A) := by
@@ -1882,8 +1882,7 @@ theorem cofinal_large_prime_factorialGap_denominator_anchors
     have hgapPos : 0 < m.factorial - 1 := by
       have hfacLower : (2 : ℕ).factorial ≤ m.factorial :=
         Nat.factorial_le hm2
-      norm_num at hfacLower
-      omega
+      norm_num at hfacLower <;> omega
     have hqLe : q ≤ m.factorial - 1 :=
       Nat.le_of_dvd hgapPos hqHit
     omega
@@ -1926,8 +1925,7 @@ theorem cofinal_large_prime_factorialGap_two_step_denominator_anchors
     have hgapPos : 0 < m.factorial - 1 := by
       have hfacLower : (2 : ℕ).factorial ≤ m.factorial :=
         Nat.factorial_le hm2
-      norm_num at hfacLower
-      omega
+      norm_num at hfacLower <;> omega
     have hqLe : q ≤ m.factorial - 1 :=
       Nat.le_of_dvd hgapPos hqHit
     omega
@@ -1977,8 +1975,7 @@ theorem cofinal_largePrefixPrivateModulus_two_step_crt_anchors
     have hgapPos : 0 < m.factorial - 1 := by
       have hfacLower : (2 : ℕ).factorial ≤ m.factorial :=
         Nat.factorial_le hm2
-      norm_num at hfacLower
-      omega
+      norm_num at hfacLower <;> omega
     have hqLe : q ≤ m.factorial - 1 :=
       Nat.le_of_dvd hgapPos hqHit
     omega
@@ -3026,7 +3023,7 @@ theorem exists_prime_avoiding_factorialGapProduct_of_lt
     have hlcmDvd :
         s.lcm id ∣ factorialGapDenominatorProduct B :=
       Finset.lcm_dvd fun q hqs => hnot q hqs
-    simpa only [Finset.lcm_eq_prod hpair] using hlcmDvd
+    simpa [Finset.lcm_eq_prod hpair] using hlcmDvd
   have hle :
       (∏ q ∈ s, q) ≤
         factorialGapDenominatorProduct B :=

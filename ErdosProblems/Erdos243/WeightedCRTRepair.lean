@@ -68,7 +68,7 @@ theorem survivor_interval_dvd_denominator
   induction k generalizing s with
   | zero =>
       intro m hm
-      simpa [survivorSteps] using hm
+      simpa [survivorSteps] using! hm
   | succ k ih =>
       intro m hm
       have hone :
@@ -79,7 +79,7 @@ theorem survivor_interval_dvd_denominator
       have htail := ih (s := s + 1) hone
       change survivorSteps c (s + 1) k (m / Nat.gcd m (c s)) ∣
         v (s + (k + 1))
-      simpa [Nat.add_assoc, Nat.add_comm k 1] using htail
+      simpa [Nat.add_assoc, Nat.add_comm k 1] using! htail
 
 /-- Squared local deletion charges multiply without loss over an interval. -/
 theorem deletionProduct_sq_dvd_scaleProduct
@@ -90,7 +90,7 @@ theorem deletionProduct_sq_dvd_scaleProduct
       (∏ n ∈ Finset.Ico s t, c n ^ 2) ∣
         ∏ n ∈ Finset.Ico s t, h n :=
     Finset.prod_dvd_prod_of_dvd _ _ hsq
-  simpa [deletionProduct, scaleProduct, Finset.prod_pow] using hprod
+  simpa [deletionProduct, scaleProduct, Finset.prod_pow] using! hprod
 
 /-- The lcm of any finite repaired family divides the total deletion
 product.  Overlapping prime demands are therefore charged by a maximum
@@ -125,7 +125,7 @@ theorem blockRepair_product_sq_dvd
   have hprod :
       (∏ i ∈ episodes, M i ^ 2) ∣ ∏ i ∈ episodes, Λ i :=
     Finset.prod_dvd_prod_of_dvd _ _ hpay
-  simpa [Finset.prod_pow] using hprod
+  simpa [Finset.prod_pow] using! hprod
 
 /-- A finite CRT barrier attached to the primitive numerator/denominator
 coordinates at one state. -/
@@ -202,7 +202,7 @@ theorem firstCrossing_repairTransversal
         omega
     have htPrevLt : t - 1 < τ := by omega
     have hmove : u t ≤ u (t - 1) + J := by
-      simpa [htSucc] using hjump (t - 1) htPrev htPrevLt
+      simpa [htSucc] using! hjump (t - 1) htPrev htPrevLt
     have huUpper : u t < B.x + (q.1 + 1) * J := by
       calc
         u t ≤ u (t - 1) + J := hmove
@@ -279,7 +279,7 @@ theorem prefixMultiplierProduct_le_cube
           Nat.mul_le_mul_right _ ih
         _ ≤ a (N + (k + 1)) ^ 2 * a (N + (k + 1)) := by
           exact Nat.mul_le_mul_right _ (by
-            simpa [Nat.add_assoc] using hgrowth (N + k) (by omega))
+            simpa [Nat.add_assoc] using! hgrowth (N + k) (by omega))
         _ = a (N + (k + 1)) ^ 3 := by ring
 
 /-- Exact normal-form data imply the square deletion inequality. -/
@@ -303,7 +303,7 @@ theorem trueDeletion_halves_primitiveNumerator
   have hcSq : 4 ≤ c ^ 2 := by nlinarith
   have hfour : 4 * uNext < 2 * u := by
     exact (Nat.mul_le_mul_right uNext hcSq).trans_lt (by
-      simpa [Nat.mul_comm] using hdelete)
+      simpa [Nat.mul_comm] using! hdelete)
   omega
 
 end ErdosProblems.Erdos243

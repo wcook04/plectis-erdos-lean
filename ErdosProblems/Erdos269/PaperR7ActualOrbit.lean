@@ -115,7 +115,7 @@ theorem scaled_integrality_propagates (B : ℤ) {a : ℕ} {z : ℤ}
       (B : ℝ) * trueNormalizedState (a + k) = (w : ℝ) := by
     intro k
     induction k with
-    | zero => exact ⟨z, by simpa using hz⟩
+    | zero => exact ⟨z, by simpa using! hz⟩
     | succ k ih =>
       obtain ⟨w, hw⟩ := ih
       refine ⟨(dyadicBlockBase235 (a + k) : ℤ) * w -

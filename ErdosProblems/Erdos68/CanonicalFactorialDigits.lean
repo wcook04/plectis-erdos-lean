@@ -67,7 +67,7 @@ theorem facFloor_rat_eq_cleared
       _ = ((((n.factorial / q : ℕ) : ℤ) * a : ℤ) : ℚ) := by
         have h := congrArg (fun z : ℤ => (z : ℚ))
           (mul_comm a ((n.factorial / q : ℕ) : ℤ))
-        simpa only [Int.cast_mul, Int.cast_natCast] using h
+        simpa only [Int.cast_mul, Int.cast_natCast] using! h
   have hscaledR :
       (n.factorial : ℝ) * (((a : ℚ) / (q : ℚ)) : ℝ) =
         ((((n.factorial / q : ℕ) : ℤ) * a : ℤ) : ℝ) := by
@@ -259,7 +259,7 @@ theorem zero_remainder_add (x : ℝ) (m k : ℕ)
     canonicalRemainder x (m + k) = 0 := by
   induction k with
   | zero =>
-      simpa using hzero
+      simpa using! hzero
   | succ k ih =>
       rw [Nat.add_succ]
       exact (zero_remainder_step x (m + k) ih).2

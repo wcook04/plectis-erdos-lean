@@ -183,7 +183,7 @@ theorem factorialGapStepCarry_eq_one_iff_floor_frac_congruence {m : ℕ}
       ((⌊scaledPrefixFrac m⌋ + 2 : ℤ) % (m : ℤ)) := by
     have hEdecomp : (scaledPrefixInt m : ℤ) =
         1 + (m : ℤ) * ((scaledPrefixInt m : ℤ) / (m : ℤ)) := by
-      have hdiv := Int.emod_add_ediv (scaledPrefixInt m : ℤ) (m : ℤ)
+      have hdiv := Int.emod_add_mul_ediv (scaledPrefixInt m : ℤ) (m : ℤ)
       rw [hE1] at hdiv
       omega
     rw [hEdecomp]
@@ -235,7 +235,6 @@ theorem factorialGapStepCarry_eq_zero_iff_floor_frac_congruence {m : ℕ}
   · intro hb
     apply Int.dvd_iff_emod_eq_zero.mp
     refine ⟨P - q, ?_⟩
-    dsimp [f]
     rw [hb] at hstep
     linear_combination hstep - hsplit - hE
   · intro hmod

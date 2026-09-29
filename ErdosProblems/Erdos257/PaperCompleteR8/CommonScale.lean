@@ -91,7 +91,7 @@ theorem one_add_four_ratio_le_two (L M : ℕ) (hM : 0 < M) (hscale : 4 * L ≤ M
   have hLR : 4 * (L : ℝ) ≤ M := by exact_mod_cast hscale
   have hratio : 4 * (L : ℝ) / M ≤ 1 := by
     apply (div_le_iff₀ hMR).2
-    simpa only [one_mul] using hLR
+    simpa only [one_mul] using! hLR
   linarith only [hratio]
 
 end ErdosProblems.Erdos257.PaperCompleteR8
