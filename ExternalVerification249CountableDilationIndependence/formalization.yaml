@@ -33,6 +33,7 @@ sources:
     assessment remain pending; historical novelty and priority are unadjudicated.
   license: Apache-2.0
   author_endorsement: participated
+  id: https://github.com/wcook04/plectis-erdos-lean/blob/104d73ed2fc88846ed6125bafaebb2824f92132a/ErdosProblems/Erdos249/FiniteDilationLinearIndependent.lean#L67-L128
 - title: Old and New Problems and Results in Combinatorial Number Theory
   authors:
   - Paul Erdős

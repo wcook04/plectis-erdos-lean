@@ -1,6 +1,16 @@
 # One exact countable-independence family; predictive mechanical preflight only.
 name: Countable totient independence official preflight
 on:
+  push:
+    branches: [codex/249-countable-independence-20260929]
+    paths:
+      - ErdosProblems/Erdos249/**
+      - ExternalVerification249CountableDilationIndependence/**
+      - Solutions/ExternalVerification249CountableDilationIndependence.lean
+      - lakefile.toml
+      - lean-toolchain
+      - lake-manifest.json
+      - .github/workflows/palomar-countable-full-preflight.yml
   workflow_dispatch:
     inputs:
       candidate_commit:
@@ -20,7 +30,7 @@ jobs:
       - name: Bind one family to exact dispatched source
         id: select
         env:
-          CANDIDATE: ${{ inputs.candidate_commit }}
+          CANDIDATE: ${{ github.event_name == 'push' && github.sha || inputs.candidate_commit }}
           WORKFLOW_SHA: ${{ github.workflow_sha }}
           REPOSITORY: ${{ github.repository }}
           RUN_ID: ${{ github.run_id }}
