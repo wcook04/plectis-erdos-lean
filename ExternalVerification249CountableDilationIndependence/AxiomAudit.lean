@@ -1,0 +1,5 @@
+import Solutions.ExternalVerification249CountableDilationIndependence
+
+#print axioms ExternalVerification249CountableDilationIndependence.linearIndependent_one_and_least_residue_values
+
+#print axioms ErdosProblems.Erdos249.FiniteDilationLinearIndependent.linearIndependent_one_and_least_residue_values

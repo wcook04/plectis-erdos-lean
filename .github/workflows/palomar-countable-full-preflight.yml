@@ -1,0 +1,74 @@
+# One exact countable-independence family; predictive mechanical preflight only.
+name: Countable totient independence official preflight
+on:
+  push:
+    branches: [codex/249-countable-independence-20260929]
+    paths:
+      - ErdosProblems/Erdos249/**
+      - ExternalVerification249CountableDilationIndependence/**
+      - Solutions/ExternalVerification249CountableDilationIndependence.lean
+      - lakefile.toml
+      - lean-toolchain
+      - lake-manifest.json
+      - .github/workflows/palomar-countable-full-preflight.yml
+  workflow_dispatch:
+    inputs:
+      candidate_commit:
+        description: Full source SHA matching this workflow's dispatched ref
+        required: true
+        type: string
+permissions:
+  contents: read
+concurrency:
+  group: countable-totient-preflight-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  select:
+    runs-on: ubuntu-24.04
+    outputs:
+      source_commit: ${{ steps.select.outputs.source_commit }}
+      request_id: ${{ steps.select.outputs.request_id }}
+      options: ${{ steps.select.outputs.options }}
+    steps:
+      - name: Bind one family to exact dispatched source
+        id: select
+        env:
+          CANDIDATE: ${{ github.event_name == 'push' && github.sha || inputs.candidate_commit }}
+          WORKFLOW_SHA: ${{ github.workflow_sha }}
+          REPOSITORY: ${{ github.repository }}
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+        run: |
+          python3 - <<'PY'
+          import hashlib, json, os, re
+          source = os.environ['CANDIDATE']
+          if os.environ['REPOSITORY'] != 'wcook04/plectis-erdos-lean':
+              raise SystemExit('wrong public source repository')
+          if not re.fullmatch('[0-9a-f]{40}', source):
+              raise SystemExit('candidate_commit must be a full lowercase SHA')
+          if source != os.environ['WORKFLOW_SHA']:
+              raise SystemExit('workflow ref and candidate source must be identical')
+          family = 'ExternalVerification249CountableDilationIndependence'
+          options = {
+              'authorization_relationship': 'I am a responsible author or maintainer',
+              'project_path': '',
+              'comparator_config_path': f'{family}/comparator.json',
+              'formalization_metadata_path': f'{family}/formalization.yaml',
+          }
+          request = hashlib.sha256(f"countable249:{source}:{os.environ['RUN_ID']}:{os.environ['RUN_ATTEMPT']}".encode()).hexdigest()[:12]
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write(f'source_commit={source}\n')
+              output.write(f'request_id={request}\n')
+              output.write(f'options={json.dumps(options, separators=(",", ":"))}\n')
+          PY
+  verify:
+    needs: select
+    uses: PalomarRegistry/PalomarSubmission/.github/workflows/submission.yml@1703d7babd984ccc3831cdf89c28221abe34808f
+    with:
+      repository: wcook04/plectis-erdos-lean
+      commit: ${{ needs.select.outputs.source_commit }}
+      pipeline_commit: 1703d7babd984ccc3831cdf89c28221abe34808f
+      request_id: ${{ needs.select.outputs.request_id }}
+      mode: full
+      execution_profile: palomar-standard-v1
+      options: ${{ needs.select.outputs.options }}
