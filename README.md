@@ -232,7 +232,37 @@ Cite this repository through `CITATION.cff`, at the commit you read.
 
 ## Build
 
+Install [elan and Lean](https://leanprover-community.github.io/get_started.html)
+before running Lake. From this repository's root, `lean-toolchain` selects the
+Lean version and `lake-manifest.json` locks Mathlib and its dependencies. Record
+the commit you check; reproducing it does not require updating those pins.
+
 ```sh
+lake --version
 lake exe cache get
 lake build
 ```
+
+The cache download avoids compiling Mathlib from source and can require several
+gigabytes. `lake build` checks the configured default targets. For a bounded
+check, the [convenience-build guide](scripts/CONVENIENCE_BUILDS.md) documents the
+existing runner, its reports and the separate release population. It requires
+Python 3.11 or later. Inspect one target without installing Lean:
+
+```sh
+python3 scripts/build_launch_targets.py --plan \
+  --focus ExternalVerification68FiniteDenominator.Challenge --focused-only
+```
+
+Remove `--plan` only when ready to compile that selected module and its import
+closure. A focused pass is not a complete release build, a Comparator verdict
+or Palomar acceptance.
+
+## Corrections and contributions
+
+For a mathematical question, correction or contribution, use the primary
+[contribution guide](https://github.com/wcook04/plectis-erdos/blob/main/CONTRIBUTING.md).
+Include this release repository's commit, entry or declaration, the exact
+statement at issue and any command output. An ordinary explanation is welcome;
+a Lean patch is not required. Build failures or defects in this release's tools
+can be reported in [this repository's issues](https://github.com/wcook04/plectis-erdos-lean/issues).
