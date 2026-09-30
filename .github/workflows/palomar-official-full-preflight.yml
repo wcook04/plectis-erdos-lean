@@ -9,7 +9,7 @@ on:
   # The selector names one automatic branch-push entry, E257_01. Tag pushes
   # select one separately gated entry at the exact tagged source commit.
   push:
-    branches: [codex/palomar-paper-release-v1]
+    branches: [codex/palomar-paper-release-v1, codex/fc243-slow-growth-preflight-20260930]
     tags: ['palomar-preflight-v1/**']
     paths:
       - .github/workflows/palomar-official-full-preflight.yml
@@ -30,6 +30,7 @@ on:
           - E257_01
           - E249_29
           - E243_01
+          - E243_06
           - E251_01
           - E269_02
           - E1049_01
@@ -95,9 +96,12 @@ jobs:
                   raise SystemExit("tag must name one entry and the exact candidate full SHA")
               entry = tag.group(1)
           elif event_name == "push":
-              if event_ref != "refs/heads/codex/palomar-paper-release-v1":
+              if event_ref == "refs/heads/codex/fc243-slow-growth-preflight-20260930":
+                  entry = "E243_06"
+              elif event_ref == "refs/heads/codex/palomar-paper-release-v1":
+                  entry = selection.get("push_preflight_entry")
+              else:
                   raise SystemExit("unexpected branch push ref")
-              entry = selection.get("push_preflight_entry")
           elif event_name == "workflow_dispatch":
               entry = os.environ["ENTRY_INPUT"]
           else:
@@ -143,6 +147,26 @@ jobs:
           if enabled != [selection.get("push_preflight_entry")]:
               raise SystemExit("exactly the selected push entry must be enabled")
           selected = next((row for row in rows if row["entry"] == entry), None)
+          if entry == "E243_06":
+              # Separate exact family check; the original eight-entry release slate stays intact.
+              if tag_push:
+                  raise SystemExit("E243_06 requires the dedicated branch or explicit dispatch")
+              if event_name == "push" and event_ref != "refs/heads/codex/fc243-slow-growth-preflight-20260930":
+                  raise SystemExit("E243_06 requires the dedicated branch")
+              protected_files = {'PalomarCorpus/E243_06/comparator.json': 'c0286d06ca82a1bde1b92ebf0bed69bbf6cb11616d0f00a5c73d1fdf115935be', 'PalomarCorpus/E243_06/formalization.yaml': 'ed71107ac899c402452f0cf094c957a18572715feed83e4c3ca139f43053b77a'}
+              for family_path, expected_sha256 in protected_files.items():
+                  candidate = Path(family_path)
+                  if candidate.is_symlink() or not candidate.is_file():
+                      raise SystemExit(f"missing or symlinked E243_06 file: {family_path}")
+                  if hashlib.sha256(candidate.read_bytes()).hexdigest() != expected_sha256:
+                      raise SystemExit(f"E243_06 protected family bytes changed: {family_path}")
+              selected = {
+                  "entry": "E243_06",
+                  "comparator_config_path": "PalomarCorpus/E243_06/comparator.json",
+                  "metadata_path": "PalomarCorpus/E243_06/formalization.yaml",
+                  "preflight_enabled": True,
+                  "tag_preflight_enabled": False,
+              }
           if selected is None:
               raise SystemExit(f"unknown preflight entry: {entry}")
           if tag_push and not selected["tag_preflight_enabled"]:
