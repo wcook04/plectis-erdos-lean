@@ -13,6 +13,13 @@ not close any of them.
 
 Problems covered: #68, #243, #249, #251, #257, #269, #1041, #1049.
 
+This repository is the Comparator and Palomar checking projection of the
+[canonical public Lean corpus](https://github.com/wcook04/plectis-erdos). Follow
+that corpus for current papers, the claim registry and the declaration atlas, or
+use the [mathematics reading room](https://wcook04.github.io/plectis/maths/). Entries
+here are bound to this repository commit; the pinned release snapshots below
+retain their own commits and toolchains.
+
 ## Palomar publication surface
 
 Palomar (https://palomar-registry.org) checks Lean proofs with Comparator and independent
