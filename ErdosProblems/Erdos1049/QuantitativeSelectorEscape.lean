@@ -27,7 +27,7 @@ theorem exists_same_signature_same_bin_different_value
     (hcard : (Fintype.card β * Fintype.card ι) * k < Fintype.card α) :
     ∃ x y : α, x ≠ y ∧ f x = f y ∧ bin x = bin y ∧ g x ≠ g y := by
   have hc : Fintype.card (β × ι) * k < Fintype.card α := by
-    simpa only [Fintype.card_prod] using hcard
+    simpa only [Fintype.card_prod] using! hcard
   obtain ⟨x, y, hxy, hpair, hval⟩ :=
     exists_ne_map_eq_map_ne_of_card_mul_lt
       (fun a => (f a, bin a)) g k hg hc
@@ -67,7 +67,7 @@ theorem exists_same_signature_same_bin_different_value_conditional
   have hpair : ∀ x : α,
       (Finset.univ.filter fun y => (f y, g y) = (f x, g x)).card ≤ k := by
     intro x
-    simpa only [Prod.mk.injEq] using hg x
+    simpa only [Prod.mk.injEq] using! hg x
   obtain ⟨x, y, hxy, hf, hb, hfg⟩ :=
     exists_same_signature_same_bin_different_value
       f (fun a => (f a, g a)) bin k hpair hcard

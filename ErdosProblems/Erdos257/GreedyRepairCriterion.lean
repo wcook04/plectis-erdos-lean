@@ -141,7 +141,7 @@ theorem mem_of_greedyBinaryDefect_cofinal_linear_bound
   have hδ : 0 < δ := sub_pos.mpr hn
   have hN : Tendsto (fun m : ℕ => (m : ℝ) / (2 : ℝ) ^ m)
       atTop (nhds 0) := by
-    simpa using tendsto_pow_const_div_const_pow_of_one_lt 1
+    simpa using! tendsto_pow_const_div_const_pow_of_one_lt 1
       (by norm_num : (1 : ℝ) < 2)
   have hOne : Tendsto (fun m : ℕ => (1 : ℝ) / (2 : ℝ) ^ m)
       atTop (nhds 0) := tendsto_const_nhds.div_atTop

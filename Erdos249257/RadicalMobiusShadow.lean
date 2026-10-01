@@ -270,8 +270,12 @@ theorem mobiusNumerator_twicePrime_gcd {p : ℕ} (hp : p.Prime) (hp5 : 5 ≤ p) 
   have hx1 : 1 < 2 ^ p := Nat.one_lt_two_pow hp0.ne'
   have hDfactor :
       mersenne (2 * p) = (2 ^ p - 1) * (2 ^ p + 1) := by
-    simpa [mersenne, Nat.mul_comm 2 p, pow_mul, mul_comm] using
-      (sq_tsub_sq (2 ^ p) 1)
+    calc
+      mersenne (2 * p) = (2 ^ p) ^ 2 - 1 := by
+        simp [mersenne, Nat.mul_comm 2 p, pow_mul]
+      _ = (2 ^ p) ^ 2 - 1 ^ 2 := by simp
+      _ = (2 ^ p + 1) * (2 ^ p - 1) := sq_tsub_sq (2 ^ p) 1
+      _ = (2 ^ p - 1) * (2 ^ p + 1) := Nat.mul_comm _ _
   have hDrepr : mersenne (2 * p) = (2 ^ p) ^ 2 - 1 := by
     simp [mersenne, Nat.mul_comm 2 p, pow_mul]
   have hquot : mersenne (2 * p) / mersenne p = 2 ^ p + 1 := by

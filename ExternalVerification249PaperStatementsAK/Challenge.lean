@@ -198,7 +198,7 @@ theorem unbounded_prime_divisors_of_escape_of_nontrivial {C : ℕ → ℕ} {m : 
 ErdosProblems.Erdos249.PaperCompleteR21.visible_antidiagonal_one in the substantive
 development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem visible_antidiagonal_one :
-    ((Finset.antidiagonal 1).filter
+    ((Finset.HasAntidiagonal.antidiagonal 1).filter
         fun q : ℕ × ℕ => 0 < q.1 ∧ Nat.Coprime q.1 q.2)
       = {((1 : ℕ), (0 : ℕ))} := by
   sorry

@@ -46,7 +46,7 @@ theorem companionOrbitBoundary_strictSuccessorCarry :
       ErdosProblems.Erdos68.factorialGapStepCarry,
       ErdosProblems.Erdos68.factorialGapPredecessorGap,
       ErdosProblems.Erdos68.strictFacTop,
-      ErdosProblems.Erdos68.factorialGapPrefix] using
+      ErdosProblems.Erdos68.factorialGapPrefix] using!
       ErdosProblems.Erdos68.not_irrational_factorialGapSeries_iff_eventually_unit_carries
   · simpa [factorialGapSeries, Erdos68.factorialGapSeries,
       Erdos68.factorialGapTail, Erdos68.factorialGapTailTerm,
@@ -55,7 +55,7 @@ theorem companionOrbitBoundary_strictSuccessorCarry :
       ErdosProblems.Erdos68.factorialGapStepCarry,
       ErdosProblems.Erdos68.factorialGapPredecessorGap,
       ErdosProblems.Erdos68.strictFacTop,
-      ErdosProblems.Erdos68.factorialGapPrefix] using
+      ErdosProblems.Erdos68.factorialGapPrefix] using!
       ErdosProblems.Erdos68.irrational_factorialGapSeries_iff_cofinal_nonunit_carries
   · intro m hm
     simpa [factorialGapStepCarry, factorialGapPredecessorGap, strictFacTop,
@@ -64,13 +64,13 @@ theorem companionOrbitBoundary_strictSuccessorCarry :
       ErdosProblems.Erdos68.factorialGapPredecessorGap,
       ErdosProblems.Erdos68.strictFacTop,
       ErdosProblems.Erdos68.strictFacTopRat,
-      ErdosProblems.Erdos68.factorialGapPrefix] using
+      ErdosProblems.Erdos68.factorialGapPrefix] using!
       ErdosProblems.Erdos68.factorialGapStepCarry_eq_one_iff_dvd_strictFacTopRat hm
   · simpa [factorialGapSeries, Erdos68.factorialGapSeries,
       Erdos68.factorialGapTail, Erdos68.factorialGapTailTerm,
       strictFacTopRat, factorialGapPrefix,
       ErdosProblems.Erdos68.strictFacTopRat,
-      ErdosProblems.Erdos68.factorialGapPrefix] using
+      ErdosProblems.Erdos68.factorialGapPrefix] using!
       ErdosProblems.Erdos68.irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses
 
 theorem companionOrbitBoundary_genericShift (x : ℝ) :

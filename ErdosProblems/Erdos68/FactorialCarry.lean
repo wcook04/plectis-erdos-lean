@@ -38,7 +38,7 @@ theorem factorial_pow_dvd_factorial_of_dvd
     d.factorial ^ (m / d) ∣ m.factorial := by
   have h := Nat.prod_factorial_dvd_factorial_sum
     (Finset.range (m / d)) (fun _ : ℕ => d)
-  simpa [Finset.prod_const, Finset.sum_const, Nat.div_mul_cancel hd] using h
+  simpa [Finset.prod_const, Finset.sum_const, Nat.div_mul_cancel hd] using! h
 
 /-- Divisor-regrouped coefficient in the factorial expansion of Erdős #68. -/
 def factorialCoeff (m : ℕ) : ℕ :=
@@ -83,7 +83,7 @@ theorem no_integral_carry_of_windowMiss
     (hmiss : ¬ WindowHit F U p a) :
     ¬ ∃ z : ℤ,
       Int.ModEq p z a ∧ F < z ∧ (z : ℚ) ≤ F + U := by
-  simpa [WindowHit] using hmiss
+  simpa [WindowHit] using! hmiss
 
 /-- If the interval radius is less than one, it contains at most one integer. -/
 theorem integer_unique_in_short_window

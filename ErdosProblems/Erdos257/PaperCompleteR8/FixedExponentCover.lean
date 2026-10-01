@@ -61,7 +61,7 @@ theorem finiteFractionalMean_le_total_cost (C : PositiveCoverData)
         (C.coefficient j) X hX (fun n => Real.rpow_nonneg (Nat.cast_nonneg _) _)
         (C.coefficient_nonneg j) (C.column_summable j)
       intro n hn
-      simpa only [hconst j] using C.majorises j n hn
+      simpa only [hconst j] using! C.majorises j n hn
     _ ≤ _ := hs.sum_le_tsum J (fun j _ => positiveCover_cost_nonneg C j)
 
 /-- Unbounded finite periodic alpha-means exclude every finite-total-cost

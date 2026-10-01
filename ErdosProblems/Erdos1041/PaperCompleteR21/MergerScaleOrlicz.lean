@@ -233,7 +233,9 @@ private theorem exp_substitution (K : ℝ) (hK : 0 < K) (x : ℝ) (_hx : 0 ≤ x
         ((fun s : ℝ => Real.exp (-(K * s)) * (-K)) t) (Ioc (0 : ℝ) x) t := by
     intro t _
     have h1 : HasDerivAt (fun s : ℝ => -(K * s)) (-K) t := by
-      simpa using ((hasDerivAt_id t).const_mul K).neg
+      first
+        | simpa [Pi.neg_def] using! ((hasDerivAt_id t).const_mul K).neg
+        | exact ((hasDerivAt_id t).const_mul K).neg.congr_deriv (by ring)
     exact h1.exp.hasDerivWithinAt
   have hinj : InjOn (fun s : ℝ => Real.exp (-(K * s))) (Ioc (0 : ℝ) x) := by
     intro a _ b _ hab

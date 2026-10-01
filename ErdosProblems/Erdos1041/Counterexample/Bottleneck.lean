@@ -333,7 +333,7 @@ theorem bottleneck_length_of_disk_hit (p : Polynomial ℂ) (cc : ℂ)
 theorem bottleneck_covering_fibre_eq_on_preconnected
     {E B T : Type*} [TopologicalSpace E] [T2Space E]
     [TopologicalSpace B] [TopologicalSpace T]
-    [SimplyConnectedSpace B] [LocPathConnectedSpace B]
+    [SimplyConnectedSpace B] [LocallyPathConnectedSpace B]
     (π : E → B) (hπ : IsCoveringMap π)
     (S : Set T) (hS : IsPreconnected S) (g : T → E) (hg : ContinuousOn g S)
     (a b : T) (ha : a ∈ S) (hb : b ∈ S) (hab : π (g a) = π (g b)) :
@@ -437,8 +437,8 @@ theorem bottleneckSlitBase_simplyConnected (v : ℂ) (hv : v ≠ 0) :
 
 /-- Local path connectedness follows from openness in the complex plane. -/
 theorem bottleneckSlitBase_locPathConnected (v : ℂ) (hv : v ≠ 0) :
-    LocPathConnectedSpace (bottleneckSlitBase v) :=
-  (bottleneckSlitBase_isOpen v hv).locPathConnectedSpace
+    LocallyPathConnectedSpace (bottleneckSlitBase v) :=
+  (bottleneckSlitBase_isOpen v hv).locallyPathConnectedSpace
 
 /-- The component with the slit preimage removed. -/
 def bottleneckSlitDomain (p : Polynomial ℂ) (cc : ℂ) : Set ℂ :=
@@ -498,7 +498,7 @@ theorem bottleneck_path_meets_slit_of_covering
       (fun z => p.eval z) ⁻¹' bottleneckSlit (p.eval cc) := by
   letI : SimplyConnectedSpace (bottleneckSlitBase (p.eval cc)) :=
     bottleneckSlitBase_simplyConnected (p.eval cc) hv
-  letI : LocPathConnectedSpace (bottleneckSlitBase (p.eval cc)) :=
+  letI : LocallyPathConnectedSpace (bottleneckSlitBase (p.eval cc)) :=
     bottleneckSlitBase_locPathConnected (p.eval cc) hv
   by_contra hno
   have havoid (t : Set.Icc (0 : ℝ) 1) :
@@ -1087,7 +1087,7 @@ theorem bottleneck_fibre_le_two (p : Polynomial ℂ) (cc : ℂ) (hv : p.eval cc 
     e₁ = e₂ ∨ e₁ = e₃ ∨ e₂ = e₃ := by
   letI : SimplyConnectedSpace (bottleneckSlitBase (p.eval cc)) :=
     bottleneckSlitBase_simplyConnected (p.eval cc) hv
-  letI : LocPathConnectedSpace (bottleneckSlitBase (p.eval cc)) :=
+  letI : LocallyPathConnectedSpace (bottleneckSlitBase (p.eval cc)) :=
     bottleneckSlitBase_locPathConnected (p.eval cc) hv
   have hzeroBase : (0 : ℂ) ∈ bottleneckSlitBase (p.eval cc) :=
     ⟨by simp, zero_not_mem_bottleneckSlit (p.eval cc) hv⟩

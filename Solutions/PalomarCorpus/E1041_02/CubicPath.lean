@@ -15,6 +15,13 @@ namespace PalomarCorpus.E1041.CubicPath
 
 noncomputable section
 
+/-- Rewrite the whole path, including its partially applied occurrences under
+continuity and variation, before opening the source predicates. -/
+private theorem hub_eq_source (a c b : ℂ) :
+    hub a c b = ErdosProblems.Erdos1041.PaperCurve.hub a c b := by
+  funext t
+  rfl
+
 theorem cubic_paper_complete (p : ℂ[X]) (z : Fin 3 → ℂ)
     (hp : p = ∏ i, (X - C (z i))) (hz : ∀ i, ‖z i‖ < 1) :
     ∃ i j : Fin 3, ∃ c : ℂ, i ≠ j ∧
@@ -28,7 +35,7 @@ theorem cubic_paper_complete (p : ℂ[X]) (z : Fin 3 → ℂ)
         BoundedVariationOn γ (Icc (0 : ℝ) 2) ∧
         eVariationOn γ (Icc (0 : ℝ) 2) < ENNReal.ofReal 2) ∧
       (Squarefree p → z i ≠ z j) := by
-  simpa only [hub, ErdosProblems.Erdos1041.PaperCurve.hub,
+  simpa only [hub_eq_source,
     ErdosProblems.Erdos1041.PaperCurve.HubBelow,
     ErdosProblems.Erdos1041.PaperCurve.ConnectedBelow] using
     (ErdosProblems.Erdos1041.PaperCubicCompletion.cubic_paper_complete p z hp hz)
@@ -46,7 +53,7 @@ theorem monic_cubic_connector (p : ℂ[X]) (hm : p.Monic)
         BoundedVariationOn γ (Icc (0 : ℝ) 2) ∧
         eVariationOn γ (Icc (0 : ℝ) 2) < ENNReal.ofReal 2) ∧
       (Squarefree p → a ≠ b) := by
-  simpa only [hub, ErdosProblems.Erdos1041.PaperCurve.hub,
+  simpa only [hub_eq_source,
     ErdosProblems.Erdos1041.PaperCurve.HubBelow,
     ErdosProblems.Erdos1041.PaperCurve.ConnectedBelow] using
     (ErdosProblems.Erdos1041.PaperCubicMonic.monic_cubic_connector p hm hd hz)
@@ -61,7 +68,7 @@ theorem complete_translated_cubic_quotient_fibres
       P.eval ((b - h) ^ q) = 0 ∧
       (∀ t ∈ Icc (0 : ℝ) 2, ‖P.eval ((hub a h b t - h) ^ q)‖ < 1) ∧
       eVariationOn (hub a h b) (Icc (0 : ℝ) 2) < ENNReal.ofReal 2 := by
-  simpa only [hub, ErdosProblems.Erdos1041.PaperCurve.hub,
+  simpa only [hub_eq_source,
     ErdosProblems.Erdos1041.PaperCurve.HubBelow] using
     (ErdosProblems.Erdos1041.PaperCubicFibres.complete_translated_cubic_quotient_fibres
       hq h P hP hdeg hdisk htwo)

@@ -24,7 +24,7 @@ theorem newtonFlow_real_value_hasDerivAt
     (hcritical : f' (z t) ≠ 0) :
     HasDerivAt (fun s => f (z s)) (-f (z t)) t := by
   have h := hf.complexToReal_fderiv.comp_hasDerivAt t hz
-  simpa only [ContinuousLinearMap.smul_apply, ContinuousLinearMap.one_apply,
+  simpa only [Function.comp_def, ContinuousLinearMap.smul_apply, ContinuousLinearMap.one_apply,
     smul_eq_mul, derivative_mul_newtonFlowVector hcritical] using h
 
 /-- A complex-valued solution of `v' = -v` on a real interval has the exact

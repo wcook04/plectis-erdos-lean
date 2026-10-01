@@ -224,7 +224,7 @@ theorem SeamRowSmallUpperRightPacketLinearEscape.toMiddleProducerRowEscape
     (hpacket : SeamRowSmallUpperRightPacketLinearEscape) :
     SeamMiddleProducerRowEscape := by
   intro s hs hs13 _hncarry _hmiddle
-  simpa [seamAdjacentCut_remainder] using hpacket.remainder_ge_row hs13
+  simpa [seamAdjacentCut_remainder] using! hpacket.remainder_ge_row hs13
 
 /-- Conversely, the canonical middle-row producer already excludes every
 late row-small seam state.  The row-small classification has only an upper
@@ -382,7 +382,7 @@ theorem SeamActualUpperRightPacketLinearEscape.toMiddleProducerRowEscape
     (hpacket : SeamActualUpperRightPacketLinearEscape) :
     SeamMiddleProducerRowEscape := by
   intro s hs hs13 _hncarry _hmiddle
-  simpa [seamAdjacentCut_remainder] using hpacket.remainder_ge_row hs13
+  simpa [seamAdjacentCut_remainder] using! hpacket.remainder_ge_row hs13
 
 /-- Direct counterexample endpoint: the actual-scale packet producer places
 one-half in the Mersenne achievement set. -/

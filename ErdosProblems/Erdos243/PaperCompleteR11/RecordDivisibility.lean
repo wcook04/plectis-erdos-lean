@@ -23,7 +23,7 @@ theorem runningMax_attained (U : ℕ → ℕ) (n : ℕ) :
       obtain ⟨j, hj, heq⟩ := ih
       by_cases h : U (n + 1) ≤ runningMax U n
       · refine ⟨j, by omega, ?_⟩
-        simpa only [runningMax, max_eq_left h] using heq
+        simpa only [runningMax, max_eq_left h] using! heq
       · refine ⟨n + 1, le_rfl, ?_⟩
         simp only [runningMax, max_eq_right (by omega : runningMax U n ≤ U (n + 1))]
 
@@ -38,7 +38,7 @@ theorem common_divisor_persists
     m ∣ C t ∧ m ∣ D t := by
   obtain ⟨k, rfl⟩ := Nat.exists_eq_add_of_le hst
   induction k with
-  | zero => simpa using And.intro hmC hmD
+  | zero => simpa using! And.intro hmC hmD
   | succ k ih =>
       have ih' := ih (by omega : s ≤ s + k)
       constructor

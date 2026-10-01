@@ -34,12 +34,12 @@ theorem blockDyadicSafeAt_of_unit_skip
     BlockDyadicSafeAt 1 D k := by
   unfold BlockTakeAt BlockDyadicSafeAt at *
   have hlt : 2 ^ k - 1 < 2 * D := by
-    simpa [not_le] using hskip
+    simpa [not_le] using! hskip
   have hpow : 1 ≤ 2 ^ k := Nat.one_le_pow _ _ (by omega)
   have : 2 ^ k ≤ 2 * D := by
     have := Nat.add_one_le_of_lt hlt
     rwa [Nat.sub_add_cancel hpow] at this
-  simpa using this
+  simpa using! this
 
 /-- A real skip with displayed numerator `1` is the abstract unit block-skip condition. -/
 theorem greedyHalf_unit_skip_blockTake
@@ -80,7 +80,7 @@ theorem halfGreedy_skip_dyadic_safe_of_unit_numerator
       BlockDyadicSafeAt
         (halfGreedyResidualDisplayedNumerator n).natAbs
         (halfGreedyPrefixDenominator n) (n + 1) := by
-    simpa [hpabs] using hsafe
+    simpa [hpabs] using! hsafe
   exact (greedyHalfRemainder_le_nextDyadic_iff_excess_nonpos n).1
     (greedyHalfRemainder_le_nextDyadic_of_BlockSafe n hsafe')
 
@@ -126,6 +126,6 @@ theorem halfGreedy_actualBlockSafe_of_le_19
   have habs :
       (halfGreedyResidualDisplayedNumerator n).natAbs = 1 := by
     simp [hp]
-  simpa [habs] using hsafe
+  simpa [habs] using! hsafe
 
 end Erdos249257

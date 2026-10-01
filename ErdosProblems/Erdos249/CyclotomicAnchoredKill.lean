@@ -2794,7 +2794,7 @@ theorem survivorKill_of_certifiedKill
   have hzmod :
       (-z) % (2 : ℤ) ^ L =
         windowDiscrepancy H N L % (2 : ℤ) ^ L := by
-    simpa [z] using hneg
+    simpa only [Int.ModEq, neg_neg, z] using hneg
   exact
     no_endpointSurvivor_of_certifiedKill hcert (-z)
       ⟨by simpa [add_assoc, add_left_comm, add_comm] using hzabs, hzmod⟩

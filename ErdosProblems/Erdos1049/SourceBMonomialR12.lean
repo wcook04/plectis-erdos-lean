@@ -198,7 +198,7 @@ theorem actual_B_monomial_factor (n : ℕ) :
   have hrem := (modByMonic_eq_zero_iff_dvd (monic_X_pow (sourceM n))).2
     (actual_B_monomial_divisibility n)
   have h := modByMonic_add_div (sourceClearedB n) ((X : ℤ[X]) ^ sourceM n)
-  simpa only [hrem, zero_add, sourceBWithoutMonomial] using h.symm
+  simpa only [hrem, zero_add, sourceBWithoutMonomial] using! h.symm
 
 /-- Full X^M clearing of the literal rational B. The Omega factor is not
 included: that later cyclotomic cancellation remains a distinct supplier. -/

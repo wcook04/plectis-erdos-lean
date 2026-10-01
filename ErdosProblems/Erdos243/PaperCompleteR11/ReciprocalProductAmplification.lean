@@ -39,7 +39,7 @@ theorem sum_mul_product_one_sub_le_one {ι : Type*} (s : Finset ι) (x : ι → 
         have h := mul_nonneg
           (add_nonneg (mul_nonneg hxa hS) (sq_nonneg (x a))) hP
         nlinarith
-      simpa only [Finset.sum_insert ha, Finset.prod_insert ha] using
+      simpa only [Finset.sum_insert ha, Finset.prod_insert ha] using!
         hstep.trans (ih h0s h1s)
 
 /-- The complementary union is at least `sum x / (1 + sum x)`. -/
@@ -104,7 +104,7 @@ theorem divergent_reciprocal_window_density
     apply (div_le_iff₀ hi).mpr
     have hpi : (1 : ℝ) ≤ (p i.val : ℝ) := by
       exact_mod_cast Nat.succ_le_of_lt (hp i.val)
-    simpa using hpi
+    simpa using! hpi
   have hP : (1 + S) * P ≤ 1 := sum_mul_product_one_sub_le_one Finset.univ x h0 h1
   have hS0 : 0 ≤ S := Finset.sum_nonneg h0
   have hden : 0 < 1 + S := by linarith
@@ -130,6 +130,6 @@ theorem divergent_reciprocal_window_density
       field_simp [ne_of_gt hLr]
     rw [hid]
     nlinarith
-  · simpa only [P, x] using hd
+  · simpa only [P, x] using! hd
 
 end ErdosProblems.Erdos243.PaperCompleteR11

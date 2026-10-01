@@ -38,7 +38,7 @@ theorem positive_rational_difference_lower_bound
   have hcastPositive : (0 : ℝ) < (whole : ℝ) - (pfx : ℝ) := by
     exact sub_pos.mpr (by exact_mod_cast hpositive)
   rw [abs_of_pos hcastPositive] at hgap
-  simpa only [Nat.cast_mul] using hgap
+  simpa only [Nat.cast_mul] using! hgap
 
 /-- Direct supply adapter for the prefix-denominator shell consumer.  Once
 the analytic shell/far-tail upper bound is known, rationality alone supplies

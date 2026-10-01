@@ -49,7 +49,7 @@ theorem exists_reverseRow (j : ℕ) : Nonempty (ReverseRow j) := by
   refine ⟨⟨q, hprime, hq, P, ?_, hlow, hupp⟩⟩
   intro p hp
   have hn := ((hP p hp).2.2)
-  have hnot : ¬ p < q + 1 := by simpa only [mem_range] using hn
+  have hnot : ¬ p < q + 1 := by simpa only [mem_range] using! hn
   exact ⟨(hP p hp).1, by omega⟩
 
 def reverseRow (j : ℕ) : ReverseRow j := Classical.choice (exists_reverseRow j)
@@ -81,7 +81,7 @@ theorem ReverseRow.sqrt_ge_one {j : ℕ} (R : ReverseRow j) :
 theorem ReverseRow.mass_ge_index {j : ℕ} (R : ReverseRow j) :
     ((j + 1 : ℕ) : ℝ) ≤ primeReciprocalMass R.primes := by
   have h := mul_le_mul_of_nonneg_left R.sqrt_ge_one (Nat.cast_nonneg (j + 1))
-  have h' : ((j + 1 : ℕ) : ℝ) ≤ ((j + 1 : ℕ) : ℝ) * Real.sqrt R.q := by simpa using h
+  have h' : ((j + 1 : ℕ) : ℝ) ≤ ((j + 1 : ℕ) : ℝ) * Real.sqrt R.q := by simpa using! h
   exact h'.trans R.mass_lower
 
 theorem ReverseRow.mass_pos {j : ℕ} (R : ReverseRow j) :
@@ -102,7 +102,7 @@ theorem ReverseRow.mass_ratio_bound {j : ℕ} (R : ReverseRow j) :
     push_cast at hu ⊢
     nlinarith
   have hsc : (((j + 2 : ℕ) : ℝ) * (2 : ℝ) ^ (j + 2)) ≤ Real.sqrt R.q := by
-    simpa only [reverseScale, Nat.cast_mul, Nat.cast_pow, Nat.cast_ofNat] using hs
+    simpa only [reverseScale, Nat.cast_mul, Nat.cast_pow, Nat.cast_ofNat] using! hs
   have hm := mul_le_mul_of_nonneg_right hsc (Real.sqrt_nonneg (R.q : ℝ))
   have hu := mul_le_mul_of_nonneg_right hupper hp.le
   apply (div_le_div_iff₀ hq hp).mpr
@@ -162,7 +162,7 @@ theorem reverseCover_row_cost_bound (j : ℕ) : reverseCover.cost j ≤ Real.exp
     ring
   change (reverseFrame j).cost ≤ _
   rw [reverseFrame, cubeCoverFrame_cost, he]
-  simpa only [one_div_mul_cancel hS.ne'] using h
+  simpa only [one_div_mul_cancel hS.ne'] using! h
 
 theorem reverse_geometric_factor_bound (j : ℕ) :
     (2 : ℝ) ^ (((j + 1 : ℕ) : ℝ) * reverseExponent j) ≤ Real.exp 1 := by
@@ -175,10 +175,10 @@ theorem reverse_geometric_factor_bound (j : ℕ) :
     rw [reverseExponent, two_rpow_exponentFromIncrement (one_div_pos.mpr hS)]
   rw [hpow]
   have hbase : 1 + 1 / S ≤ Real.exp (1 / S) := by
-    simpa [add_comm] using Real.add_one_le_exp (1 / S)
+    simpa [add_comm] using! Real.add_one_le_exp (1 / S)
   have h := pow_le_pow_left₀ (by positivity : 0 ≤ 1 + 1 / S) hbase (j + 1)
   have he : Real.exp (1 / S) ^ (j + 1) = Real.exp (((j + 1 : ℕ) : ℝ) / S) := by
-    simpa only [div_eq_mul_inv, one_mul, mul_comm] using (Real.exp_nat_mul (1 / S) (j + 1)).symm
+    simpa only [div_eq_mul_inv, one_mul, mul_comm] using! (Real.exp_nat_mul (1 / S) (j + 1)).symm
   exact h.trans (he.le.trans (Real.exp_le_exp.mpr ((div_le_one hS).mpr hidx)))
 
 theorem reverse_strengthened_term_bound (j : ℕ) :
@@ -200,7 +200,7 @@ theorem reverse_strengthened_term_bound (j : ℕ) :
   have heq : (Real.exp 1 / ((reverseRow j).q : ℝ) * Real.exp 1) / (1 / S) =
       (Real.exp 1) ^ 2 * (S / ((reverseRow j).q : ℝ)) := by field_simp
   rw [heq] at hdiv
-  exact hdiv.trans (by simpa only [mul_one_div] using hratio)
+  exact hdiv.trans (by simpa only [mul_one_div] using! hratio)
 
 theorem reverseCover_strengthened : reverseCover.StrengthenedCostSummable := by
   have hs : Summable (fun j => (Real.exp 1) ^ 2 * coverThreshold (1 / 2) j) :=
@@ -213,9 +213,10 @@ theorem reverseCover_strengthened : reverseCover.StrengthenedCostSummable := by
   · intro j
     have h := reverse_strengthened_term_bound j
     convert h using 1
-    unfold coverThreshold
-    rw [show j + 2 = (j + 1) + 1 by omega, pow_succ]
-    ring
+    · rfl
+    · unfold coverThreshold
+      rw [show j + 2 = (j + 1) + 1 by omega, pow_succ]
+      ring
 
 theorem reverseHost_has_strengthened_cover : HasStrengthenedPositiveCover reverseHost :=
   ⟨reverseCover, Set.Subset.refl _, reverseCover_strengthened⟩

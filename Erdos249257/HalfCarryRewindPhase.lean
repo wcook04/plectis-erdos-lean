@@ -189,7 +189,7 @@ theorem integerHalfCarry_prefix_eq_add_supportSuffixNumeral
         (supportSuffixNumeral A M L : ℤ) := by
   induction L with
   | zero =>
-      simpa using integerHalfCarry_inter_Iic_eq_of_succ_le
+      simpa [supportSuffixNumeral] using integerHalfCarry_inter_Iic_eq_of_succ_le
         A M (M - 1) (by omega)
   | succ L ih =>
       have hprev : M + L ≤ 2 * M + 1 := by omega

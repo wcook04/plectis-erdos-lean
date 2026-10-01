@@ -756,7 +756,7 @@ lemma heineTerm_base (hq0 : 0 < q) (hq1 : q < 1) (N : ℕ) :
       q ^ ((j : ℕ) ^ 2) * qPochhammerFinite q q j ^ 2 := by
     intro j
     have e := prod_Iio_fin j (fun m => (q ^ (j : ℕ) - q ^ m) ^ 2)
-    simp only at e
+    try simp only at e
     rw [e, prod_range_pow_sub_sq, ← mul_assoc, ← pow_add, add_mul_sub_one]
   rw [prod_congr rfl fun j _ => hj j,
     Fin.prod_univ_eq_prod_range (fun j => q ^ (j ^ 2) * qPochhammerFinite q q j ^ 2) N,
@@ -913,8 +913,8 @@ lemma phi1_kappa_le (hq0 : 0 < q) (hq1 : q < 1) {μ : ℕ → ℕ} (hμ : Antito
   rw [vdet_pow_sq, vdet_pow_sq]
   have hpair : ∏ i, ∏ j ∈ Ioi i, (q ^ kappa N μ j - q ^ kappa N μ i) ^ 2 ≤
       ∏ i : Fin N, ∏ j ∈ Ioi i, ((q ^ (j : ℕ) - q ^ (i : ℕ)) ^ 2 * q ^ (2 * lam i) * vbf i j) := by
-    refine prod_le_prod (fun i _ => prod_nonneg fun j _ => sq_nonneg _) fun i _ => ?_
-    refine prod_le_prod (fun j _ => sq_nonneg _) fun j hj => ?_
+    refine Finset.prod_le_prod₀ (fun i _ => prod_nonneg fun j _ => sq_nonneg _) fun i _ => ?_
+    refine Finset.prod_le_prod₀ (fun j _ => sq_nonneg _) fun j hj => ?_
     have hij' : i < j := mem_Ioi.mp hj
     have hij : (i : ℕ) < j := Fin.lt_def.mp hij'
     exact pair_bound hq0 hq1 hij (hlam_mono i j (le_of_lt hij'))
@@ -927,7 +927,7 @@ lemma phi1_kappa_le (hq0 : 0 < q) (hq1 : q < 1) {μ : ℕ → ℕ} (hμ : Antito
   have hV : ∏ i : Fin N, ∏ j ∈ Ioi i, vbf i j ≤
       ∏ j : Fin N, (if lam j = 0 then 1 else ((qPochhammerInfinity q q) ^ 2)⁻¹) := by
     rw [prod_Ioi_eq_prod_Iio]
-    refine prod_le_prod (fun j _ => prod_nonneg fun i _ => ?_) fun j _ => ?_
+    refine Finset.prod_le_prod₀ (fun j _ => prod_nonneg fun i _ => ?_) fun j _ => ?_
     · simp only [hvbf]
       split_ifs <;> positivity
     · simp only [hvbf]
@@ -936,7 +936,6 @@ lemma phi1_kappa_le (hq0 : 0 < q) (hq1 : q < 1) {μ : ℕ → ℕ} (hμ : Antito
       · rw [prod_inv_distrib, prod_pow]
         have hprod : ∏ i ∈ Iio j, (1 - q ^ ((j : ℕ) - (i : ℕ))) = qPochhammerFinite q q j := by
           have e := prod_Iio_fin j (fun m => 1 - q ^ ((j : ℕ) - m))
-          simp only at e
           rw [e, prod_range_one_sub_pow_sub]
         rw [hprod]
         have h1 := PaperR10.qPochhammerInfinity_le_finite hq0.le hq1 hq0.le hq1 j
@@ -993,7 +992,7 @@ lemma pi_kappa_le {a : ℕ → ℝ} (ha : ∀ k, 0 < a k) {C : ℝ} {n : ℕ}
     (hbd : ∀ k h : ℕ, a (k + h) / a k ≤ C * (1 + (h : ℝ)) ^ n) (μ : ℕ → ℕ) :
     (∏ i : Fin N, a (kappa N μ i)) / (∏ i : Fin N, a i) ≤ ∏ j ∈ range N, alphaB C n (μ j) := by
   rw [← prod_div_distrib, ← prod_fin_reflect N (fun j => alphaB C n (μ j))]
-  refine prod_le_prod (fun i _ => (div_pos (ha _) (ha _)).le) fun i _ => ?_
+  refine Finset.prod_le_prod₀ (fun i _ => (div_pos (ha _) (ha _)).le) fun i _ => ?_
   simp only [kappa, alphaB]
   split_ifs with h
   · rw [h, add_zero, div_self (ha _).ne']
@@ -1158,7 +1157,7 @@ lemma summable_majorant (hq0 : 0 < q) (hq1 : q < 1) {C : ℝ} (hC : 1 ≤ C) (n 
     _ = ∏ j : Fin L0, ∑ u ∈ range (U + 1), thetaB q C n j u := by
         rw [box, prod_univ_sum]
     _ ≤ ∏ j : Fin L0, Real.exp (Θ * (q ^ 2) ^ (j : ℕ)) := by
-        refine prod_le_prod (fun j _ => sum_nonneg fun u _ => hθ0 _ _) fun j _ => ?_
+        refine Finset.prod_le_prod₀ (fun j _ => sum_nonneg fun u _ => hθ0 _ _) fun j _ => ?_
         refine (hθsum j U).trans ?_
         have := Real.add_one_le_exp (Θ * (q ^ 2) ^ (j : ℕ))
         linarith
@@ -1295,7 +1294,7 @@ lemma norm_Fterm_le (hq0 : 0 < q) (hq1 : q < 1) {a : ℕ → ℝ} (ha : ∀ k, 0
     have hA1 : 1 ≤ ∏ j ∈ range N, alphaB C n (μ j) := by
       calc (1 : ℝ) = ∏ j ∈ range N, (1 : ℝ) := by simp
         _ ≤ ∏ j ∈ range N, alphaB C n (μ j) :=
-          prod_le_prod (fun _ _ => zero_le_one) fun j _ => one_le_alphaB hC n _
+          Finset.prod_le_prod₀ (fun _ _ => zero_le_one) fun j _ => one_le_alphaB hC n _
     have habs : |(∏ i : Fin N, a (kappa N μ i)) / ∏ i : Fin N, a i - 1| ≤
         ∏ j ∈ range N, alphaB C n (μ j) := by
       rw [abs_le]
@@ -1368,7 +1367,8 @@ theorem geometric_universality (hq0 : 0 < q) (hq1 : q < 1)
   refine ⟨hMprod, hMpos, hmom, ?_⟩
   have hMo : ∀ m : ℕ, HasSum (fun k => (a k * q ^ k) * (q ^ k) ^ m) (geomMoment q a m) := by
     intro m
-    have h := (hmom m).hasSum
+    have h : HasSum (fun k => a k * q ^ ((m + 1) * k)) (geomMoment q a m) :=
+      (hmom m).hasSum
     convert h using 1
     funext k
     rw [← pow_mul, mul_assoc, ← pow_add]

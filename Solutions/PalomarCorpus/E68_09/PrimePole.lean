@@ -29,7 +29,7 @@ theorem factorialGapPrefixLCMNumerator_mod_prime
     ErdosProblems.Erdos68.factorialGapPrefixLCM,
     ErdosProblems.Erdos68.factorialGapPrefixLCMNumerator,
     ErdosProblems.Erdos68.factorialGapMaxHits,
-    ErdosProblems.Erdos68.factorialGapPrincipalResidue] using
+    ErdosProblems.Erdos68.factorialGapPrincipalResidue] using!
     ErdosProblems.Erdos68.factorialGapPrefixLCMNumerator_mod_prime
       hq he hmax hattain
 

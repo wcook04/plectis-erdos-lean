@@ -127,7 +127,7 @@ theorem exists_binary_collision_of_card_lt {ι α : Type*} [Fintype ι] [Fintype
   push Not at hbad
   have hinj : Function.Injective f := fun s t hst => by
     by_contra hne
-    exact hne (by simpa using (hbad s t hne hst).elim)
+    exact hne (by simpa using! (hbad s t hne hst).elim)
   have hle : Fintype.card (ι → Bool) ≤ Fintype.card α := Fintype.card_le_of_injective f hinj
   simp only [Fintype.card_fun, Fintype.card_bool] at hle
   omega
@@ -152,8 +152,8 @@ theorem binary_row_collision_of_anchor_det_zero (w : ι → R × R) {a b : R}
   have hw : ∀ i, w i = c i • (a, b) := by
     intro i
     apply Prod.ext
-    · simpa [smul_eq_mul] using hc₁ i
-    · simpa [smul_eq_mul] using hc₂ i
+    · simpa [smul_eq_mul] using! hc₁ i
+    · simpa [smul_eq_mul] using! hc₂ i
   set f : (ι → Bool) → R := fun s => ∑ i, if s i then c i else 0 with hf
   have hsum : ∀ s : ι → Bool, (∑ i, if s i then w i else 0) = f s • (a, b) := by
     intro s
@@ -199,7 +199,7 @@ theorem adjacent_det_zero_forces_all_det_zero_of_isCoprime {R : Type*} [CommRing
     | succ n ih =>
         obtain ⟨c, hc₁, hc₂⟩ := ih
         obtain ⟨d, hd₁, hd₂⟩ := exists_scalar_eq_of_det_eq_zero
-          (hcoprime n) (by simpa [Nat.add_comm] using hadj n)
+          (hcoprime n) (by simpa [Nat.add_comm] using! hadj n)
         refine ⟨d * c, ?_, ?_⟩
         · rw [hd₁, hc₁]
           ring
@@ -247,7 +247,7 @@ theorem zmod_binary_tail_collision_of_adjacent_det_zero {N k : ℕ} [NeZero N]
     intro i
     exact hall 0 i
   have hcard' : Fintype.card (ZMod N) < 2 ^ Fintype.card (Fin k) := by
-    simpa using hcard
+    simpa using! hcard
   exact binary_row_collision_of_anchor_det_zero u
     (isCoprime_of_isUnit_right (hunit 0)) hanchor hcard'
 
@@ -289,7 +289,7 @@ theorem zmod_binary_tail_collision_of_adjacent_det_zero_of_isCoprime {N k : ℕ}
     intro i
     exact hall 0 i
   have hcard' : Fintype.card (ZMod N) < 2 ^ Fintype.card (Fin k) := by
-    simpa using hcard
+    simpa using! hcard
   exact binary_row_collision_of_anchor_det_zero u
     (hcoprime 0) hanchor hcard'
 

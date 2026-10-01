@@ -50,7 +50,7 @@ theorem mahler_triangular_injective (D : ℕ) (k : K) (hk : k ≠ 1) (P : ℕ �
       intro h i hi
       have hi0 : i = 0 := by omega
       subst i
-      simpa [mahlerRow, mahlerWeight] using h 0 (by omega)
+      simpa [mahlerRow, mahlerWeight] using! h 0 (by omega)
   | succ D ih =>
       intro h i hi
       have htop := h (D + 1) (by omega)
@@ -63,7 +63,7 @@ theorem mahler_triangular_injective (D : ℕ) (k : K) (hk : k ≠ 1) (P : ℕ �
         intro hzero
         have hinv : k⁻¹ = 1 := (sub_eq_zero.mp hzero).symm
         have heq := congrArg (fun z : K => z⁻¹) hinv
-        exact hk (by simpa using heq)
+        exact hk (by simpa using! heq)
       have hP : P (D + 1) = 0 := (mul_eq_zero.mp hlast).resolve_left hfactor
       have hsmall : ∀ r ≤ D, mahlerRow D k P r = 0 := by
         intro r hr
@@ -71,7 +71,7 @@ theorem mahler_triangular_injective (D : ℕ) (k : K) (hk : k ≠ 1) (P : ℕ �
         rw [mahlerRow_succ, hP, mul_zero, add_zero] at hh
         exact hh
       by_cases heq : i = D + 1
-      · simpa [heq] using hP
+      · simpa [heq] using! hP
       · exact ih hsmall i (by omega)
 
 noncomputable def mahlerPolynomialRow (D : ℕ) (k : K)
@@ -90,8 +90,8 @@ theorem mahler_polynomial_rows_injective (D : ℕ) (k : K) (hk : k ≠ 1)
       mahlerRow D k (fun j => (P j).coeff d) r = 0 := by
     intro r hr
     have hh := congrArg (fun p : K[X] => p.coeff d) (h r hr)
-    simpa [mahlerPolynomialRow, mahlerRow] using hh
-  simpa using mahler_triangular_injective D k hk
+    simpa [mahlerPolynomialRow, mahlerRow] using! hh
+  simpa using! mahler_triangular_injective D k hk
     (fun j => (P j).coeff d) hcoeff i hi
 
 end ErdosProblems.Erdos1049.PaperR11

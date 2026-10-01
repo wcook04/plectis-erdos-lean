@@ -53,7 +53,7 @@ theorem critical_value_three_budgets_sharp (n : ℕ) (hn : 2 ≤ n) (h lam : ℂ
     (1 / ((n : ℝ) - 1))
   have hcast : ((n - 1 : ℕ) : ℝ) = (n : ℝ) - 1 := by
     rw [Nat.cast_sub (by omega : 1 ≤ n), Nat.cast_one]
-  simpa only [hcast, mul_one_div] using Hmiddle
+  simpa only [hcast, mul_one_div] using! Hmiddle
 
 #print axioms critical_value_three_budgets
 #print axioms binomial_radius_power

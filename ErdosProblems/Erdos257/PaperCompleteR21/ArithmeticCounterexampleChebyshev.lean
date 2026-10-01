@@ -206,7 +206,7 @@ theorem prod_one_sub_le_exp_neg_sum {ι : Type*} (B : Finset ι) (x : ι → ℝ
     congr 1
     simp
   rw [hexp]
-  refine Finset.prod_le_prod (fun q hq => by linarith [hx1 q hq]) ?_
+  refine Finset.prod_le_prod₀ (fun q hq => by linarith [hx1 q hq]) ?_
   intro q _
   linarith [Real.add_one_le_exp (-x q)]
 

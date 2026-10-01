@@ -33,7 +33,9 @@ def factorialCarryDigit (n : ℕ) : ℤ :=
 
 theorem factorial_spike_ge_six {n : ℕ} (hn : IsFactorialSpike n) : 6 ≤ n := by
   obtain ⟨k, hk, rfl⟩ := hn
-  simpa using Nat.factorial_le hk
+  have h := Nat.factorial_le hk
+  norm_num at h
+  exact h
 
 theorem factorial_spike_mod_two {n : ℕ} (hn : IsFactorialSpike n) : n % 2 = 0 := by
   obtain ⟨k, hk, rfl⟩ := hn
@@ -150,7 +152,7 @@ theorem factorialCarry_terminal_tendsto_zero (N : ℕ) :
   have h0 : Tendsto (fun m : ℕ => (m : ℝ) ^ 0 / 2 ^ m) atTop (𝓝 0) :=
     tendsto_pow_const_div_const_pow_of_one_lt 0 (by norm_num)
   have h6 : Tendsto (fun m : ℕ => (6 : ℝ) / 2 ^ m) atTop (𝓝 0) := by
-    simpa using h0.const_mul 6
+    simpa only [pow_zero, one_div, one_mul, div_eq_mul_inv, mul_zero] using h0.const_mul 6
   apply squeeze_zero (g := fun m : ℕ => (6 : ℝ) / 2 ^ m) ?_ ?_ h6
   · intro m
     have hn : (0 : ℝ) ≤ (factorialCarry (N + m) : ℝ) := by

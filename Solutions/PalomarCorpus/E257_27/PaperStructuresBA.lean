@@ -68,6 +68,10 @@ theorem exists_laterProtectedExactLocalMersenneRow
     ∃ t : ProtectedExactLocalMersenneRow, s.endpoint < t.endpoint := by
   obtain ⟨w, hw⟩ := @Erdos249257.exists_laterProtectedExactLocalMersenneRow hcap (ProtectedExactLocalMersenneRow_transport_toSrc s)
   refine ⟨ProtectedExactLocalMersenneRow_transport_ofSrc w, ?_⟩
-  simpa only [ProtectedExactLocalMersenneRow_transport_ofSrc_endpoint, ProtectedExactLocalMersenneRow_transport_ofSrc_cutoff, ProtectedExactLocalMersenneRow_transport_ofSrc_support, ProtectedExactLocalMersenneRow_transport_ofSrc_core] using hw
+  first
+  | (simpa only [ProtectedExactLocalMersenneRow_transport_ofSrc_endpoint, ProtectedExactLocalMersenneRow_transport_ofSrc_cutoff, ProtectedExactLocalMersenneRow_transport_ofSrc_support, ProtectedExactLocalMersenneRow_transport_ofSrc_core] using hw; done)
+  | (simpa only [ProtectedExactLocalMersenneRow_transport_ofSrc_endpoint,
+      ProtectedExactLocalMersenneRow_transport_toSrc_endpoint] using hw; done)
+  | exact hw
 
 end PalomarCorpus.E257.PaperStructuresBA

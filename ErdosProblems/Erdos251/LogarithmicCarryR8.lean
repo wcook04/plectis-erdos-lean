@@ -113,8 +113,13 @@ def Special (n : ℕ) : Prop := FirstSpike n ∨ SecondSpike n
 
 theorem special_ge (n : ℕ) (hn : Special n) : 120 ≤ n := by
   rcases hn with ⟨k, hk, rfl⟩ | ⟨k, hk, rfl⟩
-  · simpa using Nat.factorial_le hk
-  · have h : 120 ≤ k.factorial := by simpa using Nat.factorial_le hk
+  · have h := Nat.factorial_le hk
+    norm_num at h
+    exact h
+  · have h : 120 ≤ k.factorial := by
+      have h' := Nat.factorial_le hk
+      norm_num at h'
+      exact h'
     omega
 
 theorem special_even (n : ℕ) (hn : Special n) : n % 2 = 0 := by
