@@ -57,24 +57,36 @@ theorem affineBinaryOrbit_sub (a : ℕ → ℤ) (u0 v0 : ℤ) :
       affineBinaryOrbit a u0 L - affineBinaryOrbit a v0 L =
         (2 : ℤ) ^ L * (u0 - v0) := by
   first
-  | (exact @Erdos249257.affineBinaryOrbit_sub a u0 v0; done)
-  | (set_option smartUnfolding false in
-      exact @Erdos249257.affineBinaryOrbit_sub a u0 v0; done)
-  | (simp only [affineBinaryOrbit_transport_def]
-      exact @Erdos249257.affineBinaryOrbit_sub a u0 v0; done)
-  | (simpa only [affineBinaryOrbit_transport_def] using @Erdos249257.affineBinaryOrbit_sub a u0 v0; done)
-  | (simp only [← affineBinaryOrbit_transport_def] at *
-      exact @Erdos249257.affineBinaryOrbit_sub a u0 v0; done)
-  | (simp only [← affineBinaryOrbit_transport_def] at *
-      simpa only [affineBinaryOrbit_transport_def] using @Erdos249257.affineBinaryOrbit_sub a u0 v0; done)
-  | (simp only [affineBinaryOrbit_transport_def] at *
-      exact @Erdos249257.affineBinaryOrbit_sub a u0 v0; done)
-  | (simp only [affineBinaryOrbit_transport_def] at *
-      simpa only [affineBinaryOrbit_transport_def] using @Erdos249257.affineBinaryOrbit_sub a u0 v0; done)
-  | (apply Erdos249257.affineBinaryOrbit_sub <;> assumption; done)
-  | (simpa only [affineBinaryOrbit] using Erdos249257.affineBinaryOrbit_sub; done)
-  | (set_option smartUnfolding false in
-      with_unfolding_all exact @Erdos249257.affineBinaryOrbit_sub a u0 v0; done)
-  | (with_unfolding_all exact @Erdos249257.affineBinaryOrbit_sub a u0 v0; done)
+  | exact @Erdos249257.affineBinaryOrbit_sub a u0 v0
+    done
+  | set_option smartUnfolding false in
+    exact @Erdos249257.affineBinaryOrbit_sub a u0 v0
+    done
+  | simp only [affineBinaryOrbit_transport_def]
+    exact @Erdos249257.affineBinaryOrbit_sub a u0 v0
+    done
+  | simpa only [affineBinaryOrbit_transport_def] using @Erdos249257.affineBinaryOrbit_sub a u0 v0
+    done
+  | simp only [← affineBinaryOrbit_transport_def] at *
+    exact @Erdos249257.affineBinaryOrbit_sub a u0 v0
+    done
+  | simp only [← affineBinaryOrbit_transport_def] at *
+    simpa only [affineBinaryOrbit_transport_def] using @Erdos249257.affineBinaryOrbit_sub a u0 v0
+    done
+  | simp only [affineBinaryOrbit_transport_def] at *
+    exact @Erdos249257.affineBinaryOrbit_sub a u0 v0
+    done
+  | simp only [affineBinaryOrbit_transport_def] at *
+    simpa only [affineBinaryOrbit_transport_def] using @Erdos249257.affineBinaryOrbit_sub a u0 v0
+    done
+  | apply Erdos249257.affineBinaryOrbit_sub <;> assumption
+    done
+  | simpa only [affineBinaryOrbit] using Erdos249257.affineBinaryOrbit_sub
+    done
+  | set_option smartUnfolding false in
+    with_unfolding_all exact @Erdos249257.affineBinaryOrbit_sub a u0 v0
+    done
+  | with_unfolding_all exact @Erdos249257.affineBinaryOrbit_sub a u0 v0
+    done
 
 end PalomarCorpus.E257.PaperStructuresCK

@@ -30,13 +30,19 @@ theorem squareSpecialisation_holds :
       ∃ β ∈ IntermediateField.adjoin ℚ ({α} : Set L₀),
         β ≠ 0 ∧ β ^ 2 = Polynomial.aeval α H := by
   first
-  | (exact @ErdosProblems.Erdos243.PaperCompleteR21.squareSpecialisation_holds; done)
-  | (set_option smartUnfolding false in
-      exact @ErdosProblems.Erdos243.PaperCompleteR21.squareSpecialisation_holds; done)
-  | (apply ErdosProblems.Erdos243.PaperCompleteR21.squareSpecialisation_holds <;> assumption; done)
-  | (simpa using ErdosProblems.Erdos243.PaperCompleteR21.squareSpecialisation_holds; done)
-  | (set_option smartUnfolding false in
-      with_unfolding_all exact @ErdosProblems.Erdos243.PaperCompleteR21.squareSpecialisation_holds; done)
-  | (with_unfolding_all exact @ErdosProblems.Erdos243.PaperCompleteR21.squareSpecialisation_holds; done)
+  | exact @ErdosProblems.Erdos243.PaperCompleteR21.squareSpecialisation_holds
+    done
+  | set_option smartUnfolding false in
+    exact @ErdosProblems.Erdos243.PaperCompleteR21.squareSpecialisation_holds
+    done
+  | apply ErdosProblems.Erdos243.PaperCompleteR21.squareSpecialisation_holds <;> assumption
+    done
+  | simpa using ErdosProblems.Erdos243.PaperCompleteR21.squareSpecialisation_holds
+    done
+  | set_option smartUnfolding false in
+    with_unfolding_all exact @ErdosProblems.Erdos243.PaperCompleteR21.squareSpecialisation_holds
+    done
+  | with_unfolding_all exact @ErdosProblems.Erdos243.PaperCompleteR21.squareSpecialisation_holds
+    done
 
 end Erdos249257.ExternalVerification243PaperStructuresAG

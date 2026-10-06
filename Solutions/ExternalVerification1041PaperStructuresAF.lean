@@ -60,13 +60,19 @@ theorem erdos1041_counterexample :
         (∀ τ ∈ Set.Icc (0 : ℝ) 1, ‖f.eval (γ τ)‖ < 1) →
         (2 : ENNReal) < pathLength γ := by
   first
-  | (exact @Erdos1041.Counterexample.erdos1041_counterexample; done)
-  | (set_option smartUnfolding false in
-      exact @Erdos1041.Counterexample.erdos1041_counterexample; done)
-  | (apply Erdos1041.Counterexample.erdos1041_counterexample <;> assumption; done)
-  | (simpa only [A, B, Cconst, a, b, c, f, pathLength, s, t, ε, ρ] using Erdos1041.Counterexample.erdos1041_counterexample; done)
-  | (set_option smartUnfolding false in
-      with_unfolding_all exact @Erdos1041.Counterexample.erdos1041_counterexample; done)
-  | (with_unfolding_all exact @Erdos1041.Counterexample.erdos1041_counterexample; done)
+  | exact @Erdos1041.Counterexample.erdos1041_counterexample
+    done
+  | set_option smartUnfolding false in
+    exact @Erdos1041.Counterexample.erdos1041_counterexample
+    done
+  | apply Erdos1041.Counterexample.erdos1041_counterexample <;> assumption
+    done
+  | simpa only [A, B, Cconst, a, b, c, f, pathLength, s, t, ε, ρ] using Erdos1041.Counterexample.erdos1041_counterexample
+    done
+  | set_option smartUnfolding false in
+    with_unfolding_all exact @Erdos1041.Counterexample.erdos1041_counterexample
+    done
+  | with_unfolding_all exact @Erdos1041.Counterexample.erdos1041_counterexample
+    done
 
 end Erdos249257.ExternalVerification1041PaperStructuresAF

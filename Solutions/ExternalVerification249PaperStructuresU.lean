@@ -36,13 +36,19 @@ theorem irrational_totient_series_of_support_gap
       (∑ N ∈ T, windowFirstCos h N L) ≤ (9 / 10 : ℝ) * T.card) :
     Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) := by
   first
-  | (exact @ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_support_gap hgap; done)
-  | (set_option smartUnfolding false in
-      exact @ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_support_gap hgap; done)
-  | (apply ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_support_gap <;> assumption; done)
-  | (simpa only [windowDiscrepancy, windowFirstCos] using ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_support_gap; done)
-  | (set_option smartUnfolding false in
-      with_unfolding_all exact @ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_support_gap hgap; done)
-  | (with_unfolding_all exact @ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_support_gap hgap; done)
+  | exact @ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_support_gap hgap
+    done
+  | set_option smartUnfolding false in
+    exact @ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_support_gap hgap
+    done
+  | apply ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_support_gap <;> assumption
+    done
+  | simpa only [windowDiscrepancy, windowFirstCos] using ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_support_gap
+    done
+  | set_option smartUnfolding false in
+    with_unfolding_all exact @ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_support_gap hgap
+    done
+  | with_unfolding_all exact @ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_support_gap hgap
+    done
 
 end Erdos249257.ExternalVerification249PaperStructuresU

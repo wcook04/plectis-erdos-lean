@@ -350,29 +350,44 @@ theorem exists_strengthened_not_old_or_weighted_host :
       (∀ B : Set ℕ, B ⊆ A → B.Infinite → ∀ b : ℕ, 2 ≤ b →
         Irrational (erdosSupportSeries b B)) := by
   first
-  | (simp only [PositiveCoverData_cost_transport_def, PositiveCoverData_StrengthenedCostSummable_transport_def, PositiveCoverData_host_transport_def, HasStrengthenedPositiveCover_transport_def, PositiveCoverData_oldCostTerm_transport_def, PositiveCoverData_OldCostSummable_transport_def, HasOldPositiveCover_transport_def]
-      exact @ErdosProblems.Erdos257.PaperCompleteR8.exists_strengthened_not_old_or_weighted_host; done)
-  | (simpa only [PositiveCoverData_transport_toSrc_coefficient, PositiveCoverData_transport_toSrc_exponent, PositiveCoverData_transport_toSrc_frame, PositiveCoverData_cost_transport_def, PositiveCoverData_StrengthenedCostSummable_transport_def, PositiveCoverData_host_transport_def, HasStrengthenedPositiveCover_transport_def, PositiveCoverData_oldCostTerm_transport_def, PositiveCoverData_OldCostSummable_transport_def, HasOldPositiveCover_transport_def] using @ErdosProblems.Erdos257.PaperCompleteR8.exists_strengthened_not_old_or_weighted_host; done)
-  | (exact @ErdosProblems.Erdos257.PaperCompleteR8.exists_strengthened_not_old_or_weighted_host; done)
-  | (simpa only [PositiveCoverData_transport_toSrc_coefficient, PositiveCoverData_transport_toSrc_exponent, PositiveCoverData_transport_toSrc_frame, PositiveCoverData_cost_transport_def, PositiveCoverData_StrengthenedCostSummable_transport_def, PositiveCoverData_host_transport_def, HasStrengthenedPositiveCover_transport_def, PositiveCoverData_oldCostTerm_transport_def, PositiveCoverData_OldCostSummable_transport_def, HasOldPositiveCover_transport_def] using @ErdosProblems.Erdos257.PaperCompleteR8.exists_strengthened_not_old_or_weighted_host; done)
-  | (have hsrc := @ErdosProblems.Erdos257.PaperCompleteR8.exists_strengthened_not_old_or_weighted_host
-      simp only [PositiveCoverData_transport_toSrc_coefficient, PositiveCoverData_transport_toSrc_exponent, PositiveCoverData_transport_toSrc_frame, PositiveCoverData_cost_transport_def, PositiveCoverData_StrengthenedCostSummable_transport_def, PositiveCoverData_host_transport_def, HasStrengthenedPositiveCover_transport_def, PositiveCoverData_oldCostTerm_transport_def, PositiveCoverData_OldCostSummable_transport_def, HasOldPositiveCover_transport_def] at hsrc ⊢
-      exact hsrc; done)
-  | (simp only [← PositiveCoverData_transport_toSrc_coefficient, ← PositiveCoverData_transport_toSrc_exponent, ← PositiveCoverData_transport_toSrc_frame, ← PositiveCoverData_cost_transport_def, ← PositiveCoverData_StrengthenedCostSummable_transport_def, ← PositiveCoverData_host_transport_def, ← HasStrengthenedPositiveCover_transport_def, ← PositiveCoverData_oldCostTerm_transport_def, ← PositiveCoverData_OldCostSummable_transport_def, ← HasOldPositiveCover_transport_def] at *
-      exact @ErdosProblems.Erdos257.PaperCompleteR8.exists_strengthened_not_old_or_weighted_host; done)
-  | (simp only [← PositiveCoverData_transport_toSrc_coefficient, ← PositiveCoverData_transport_toSrc_exponent, ← PositiveCoverData_transport_toSrc_frame, ← PositiveCoverData_cost_transport_def, ← PositiveCoverData_StrengthenedCostSummable_transport_def, ← PositiveCoverData_host_transport_def, ← HasStrengthenedPositiveCover_transport_def, ← PositiveCoverData_oldCostTerm_transport_def, ← PositiveCoverData_OldCostSummable_transport_def, ← HasOldPositiveCover_transport_def] at *
-      simpa only [PositiveCoverData_transport_toSrc_coefficient, PositiveCoverData_transport_toSrc_exponent, PositiveCoverData_transport_toSrc_frame, PositiveCoverData_cost_transport_def, PositiveCoverData_StrengthenedCostSummable_transport_def, PositiveCoverData_host_transport_def, HasStrengthenedPositiveCover_transport_def, PositiveCoverData_oldCostTerm_transport_def, PositiveCoverData_OldCostSummable_transport_def, HasOldPositiveCover_transport_def] using @ErdosProblems.Erdos257.PaperCompleteR8.exists_strengthened_not_old_or_weighted_host; done)
-  | (simp only [← PositiveCoverData_transport_toSrc_coefficient, ← PositiveCoverData_transport_toSrc_exponent, ← PositiveCoverData_transport_toSrc_frame, ← PositiveCoverData_cost_transport_def, ← PositiveCoverData_StrengthenedCostSummable_transport_def, ← PositiveCoverData_host_transport_def, ← PositiveCoverData_oldCostTerm_transport_def, ← PositiveCoverData_OldCostSummable_transport_def, HasStrengthenedPositiveCover_transport_def, HasOldPositiveCover_transport_def] at *
-      exact @ErdosProblems.Erdos257.PaperCompleteR8.exists_strengthened_not_old_or_weighted_host; done)
-  | (simp only [← PositiveCoverData_transport_toSrc_coefficient, ← PositiveCoverData_transport_toSrc_exponent, ← PositiveCoverData_transport_toSrc_frame, ← PositiveCoverData_cost_transport_def, ← PositiveCoverData_StrengthenedCostSummable_transport_def, ← PositiveCoverData_host_transport_def, ← PositiveCoverData_oldCostTerm_transport_def, ← PositiveCoverData_OldCostSummable_transport_def, HasStrengthenedPositiveCover_transport_def, HasOldPositiveCover_transport_def] at *
-      simpa only [PositiveCoverData_transport_toSrc_coefficient, PositiveCoverData_transport_toSrc_exponent, PositiveCoverData_transport_toSrc_frame, PositiveCoverData_cost_transport_def, PositiveCoverData_StrengthenedCostSummable_transport_def, PositiveCoverData_host_transport_def, HasStrengthenedPositiveCover_transport_def, PositiveCoverData_oldCostTerm_transport_def, PositiveCoverData_OldCostSummable_transport_def, HasOldPositiveCover_transport_def] using @ErdosProblems.Erdos257.PaperCompleteR8.exists_strengthened_not_old_or_weighted_host; done)
-  | (exact @ErdosProblems.Erdos257.PaperCompleteR8.exists_strengthened_not_old_or_weighted_host; done)
-  | (set_option smartUnfolding false in
-      exact @ErdosProblems.Erdos257.PaperCompleteR8.exists_strengthened_not_old_or_weighted_host; done)
-  | (apply ErdosProblems.Erdos257.PaperCompleteR8.exists_strengthened_not_old_or_weighted_host <;> assumption; done)
-  | (simpa only [FinitePrimeWeighted, HasOldPositiveCover, HasStrengthenedPositiveCover, PositiveCoverData, PositiveCoverData.OldCostSummable, PositiveCoverData.StrengthenedCostSummable, PositiveCoverData.cost, PositiveCoverData.host, PositiveCoverData.oldCostTerm, erdosSupportSeries, primeSetPart, primeWeightedTerm] using ErdosProblems.Erdos257.PaperCompleteR8.exists_strengthened_not_old_or_weighted_host; done)
-  | (set_option smartUnfolding false in
-      with_unfolding_all exact @ErdosProblems.Erdos257.PaperCompleteR8.exists_strengthened_not_old_or_weighted_host; done)
-  | (with_unfolding_all exact @ErdosProblems.Erdos257.PaperCompleteR8.exists_strengthened_not_old_or_weighted_host; done)
+  | simp only [PositiveCoverData_cost_transport_def, PositiveCoverData_StrengthenedCostSummable_transport_def, PositiveCoverData_host_transport_def, HasStrengthenedPositiveCover_transport_def, PositiveCoverData_oldCostTerm_transport_def, PositiveCoverData_OldCostSummable_transport_def, HasOldPositiveCover_transport_def]
+    exact @ErdosProblems.Erdos257.PaperCompleteR8.exists_strengthened_not_old_or_weighted_host
+    done
+  | simpa only [PositiveCoverData_transport_toSrc_coefficient, PositiveCoverData_transport_toSrc_exponent, PositiveCoverData_transport_toSrc_frame, PositiveCoverData_cost_transport_def, PositiveCoverData_StrengthenedCostSummable_transport_def, PositiveCoverData_host_transport_def, HasStrengthenedPositiveCover_transport_def, PositiveCoverData_oldCostTerm_transport_def, PositiveCoverData_OldCostSummable_transport_def, HasOldPositiveCover_transport_def] using @ErdosProblems.Erdos257.PaperCompleteR8.exists_strengthened_not_old_or_weighted_host
+    done
+  | exact @ErdosProblems.Erdos257.PaperCompleteR8.exists_strengthened_not_old_or_weighted_host
+    done
+  | simpa only [PositiveCoverData_transport_toSrc_coefficient, PositiveCoverData_transport_toSrc_exponent, PositiveCoverData_transport_toSrc_frame, PositiveCoverData_cost_transport_def, PositiveCoverData_StrengthenedCostSummable_transport_def, PositiveCoverData_host_transport_def, HasStrengthenedPositiveCover_transport_def, PositiveCoverData_oldCostTerm_transport_def, PositiveCoverData_OldCostSummable_transport_def, HasOldPositiveCover_transport_def] using @ErdosProblems.Erdos257.PaperCompleteR8.exists_strengthened_not_old_or_weighted_host
+    done
+  | have hsrc := @ErdosProblems.Erdos257.PaperCompleteR8.exists_strengthened_not_old_or_weighted_host
+    simp only [PositiveCoverData_transport_toSrc_coefficient, PositiveCoverData_transport_toSrc_exponent, PositiveCoverData_transport_toSrc_frame, PositiveCoverData_cost_transport_def, PositiveCoverData_StrengthenedCostSummable_transport_def, PositiveCoverData_host_transport_def, HasStrengthenedPositiveCover_transport_def, PositiveCoverData_oldCostTerm_transport_def, PositiveCoverData_OldCostSummable_transport_def, HasOldPositiveCover_transport_def] at hsrc ⊢
+    exact hsrc
+    done
+  | simp only [← PositiveCoverData_transport_toSrc_coefficient, ← PositiveCoverData_transport_toSrc_exponent, ← PositiveCoverData_transport_toSrc_frame, ← PositiveCoverData_cost_transport_def, ← PositiveCoverData_StrengthenedCostSummable_transport_def, ← PositiveCoverData_host_transport_def, ← HasStrengthenedPositiveCover_transport_def, ← PositiveCoverData_oldCostTerm_transport_def, ← PositiveCoverData_OldCostSummable_transport_def, ← HasOldPositiveCover_transport_def] at *
+    exact @ErdosProblems.Erdos257.PaperCompleteR8.exists_strengthened_not_old_or_weighted_host
+    done
+  | simp only [← PositiveCoverData_transport_toSrc_coefficient, ← PositiveCoverData_transport_toSrc_exponent, ← PositiveCoverData_transport_toSrc_frame, ← PositiveCoverData_cost_transport_def, ← PositiveCoverData_StrengthenedCostSummable_transport_def, ← PositiveCoverData_host_transport_def, ← HasStrengthenedPositiveCover_transport_def, ← PositiveCoverData_oldCostTerm_transport_def, ← PositiveCoverData_OldCostSummable_transport_def, ← HasOldPositiveCover_transport_def] at *
+    simpa only [PositiveCoverData_transport_toSrc_coefficient, PositiveCoverData_transport_toSrc_exponent, PositiveCoverData_transport_toSrc_frame, PositiveCoverData_cost_transport_def, PositiveCoverData_StrengthenedCostSummable_transport_def, PositiveCoverData_host_transport_def, HasStrengthenedPositiveCover_transport_def, PositiveCoverData_oldCostTerm_transport_def, PositiveCoverData_OldCostSummable_transport_def, HasOldPositiveCover_transport_def] using @ErdosProblems.Erdos257.PaperCompleteR8.exists_strengthened_not_old_or_weighted_host
+    done
+  | simp only [← PositiveCoverData_transport_toSrc_coefficient, ← PositiveCoverData_transport_toSrc_exponent, ← PositiveCoverData_transport_toSrc_frame, ← PositiveCoverData_cost_transport_def, ← PositiveCoverData_StrengthenedCostSummable_transport_def, ← PositiveCoverData_host_transport_def, ← PositiveCoverData_oldCostTerm_transport_def, ← PositiveCoverData_OldCostSummable_transport_def, HasStrengthenedPositiveCover_transport_def, HasOldPositiveCover_transport_def] at *
+    exact @ErdosProblems.Erdos257.PaperCompleteR8.exists_strengthened_not_old_or_weighted_host
+    done
+  | simp only [← PositiveCoverData_transport_toSrc_coefficient, ← PositiveCoverData_transport_toSrc_exponent, ← PositiveCoverData_transport_toSrc_frame, ← PositiveCoverData_cost_transport_def, ← PositiveCoverData_StrengthenedCostSummable_transport_def, ← PositiveCoverData_host_transport_def, ← PositiveCoverData_oldCostTerm_transport_def, ← PositiveCoverData_OldCostSummable_transport_def, HasStrengthenedPositiveCover_transport_def, HasOldPositiveCover_transport_def] at *
+    simpa only [PositiveCoverData_transport_toSrc_coefficient, PositiveCoverData_transport_toSrc_exponent, PositiveCoverData_transport_toSrc_frame, PositiveCoverData_cost_transport_def, PositiveCoverData_StrengthenedCostSummable_transport_def, PositiveCoverData_host_transport_def, HasStrengthenedPositiveCover_transport_def, PositiveCoverData_oldCostTerm_transport_def, PositiveCoverData_OldCostSummable_transport_def, HasOldPositiveCover_transport_def] using @ErdosProblems.Erdos257.PaperCompleteR8.exists_strengthened_not_old_or_weighted_host
+    done
+  | exact @ErdosProblems.Erdos257.PaperCompleteR8.exists_strengthened_not_old_or_weighted_host
+    done
+  | set_option smartUnfolding false in
+    exact @ErdosProblems.Erdos257.PaperCompleteR8.exists_strengthened_not_old_or_weighted_host
+    done
+  | apply ErdosProblems.Erdos257.PaperCompleteR8.exists_strengthened_not_old_or_weighted_host <;> assumption
+    done
+  | simpa only [FinitePrimeWeighted, HasOldPositiveCover, HasStrengthenedPositiveCover, PositiveCoverData, PositiveCoverData.OldCostSummable, PositiveCoverData.StrengthenedCostSummable, PositiveCoverData.cost, PositiveCoverData.host, PositiveCoverData.oldCostTerm, erdosSupportSeries, primeSetPart, primeWeightedTerm] using ErdosProblems.Erdos257.PaperCompleteR8.exists_strengthened_not_old_or_weighted_host
+    done
+  | set_option smartUnfolding false in
+    with_unfolding_all exact @ErdosProblems.Erdos257.PaperCompleteR8.exists_strengthened_not_old_or_weighted_host
+    done
+  | with_unfolding_all exact @ErdosProblems.Erdos257.PaperCompleteR8.exists_strengthened_not_old_or_weighted_host
+    done
 
 end PalomarCorpus.E257.PaperStructuresCI

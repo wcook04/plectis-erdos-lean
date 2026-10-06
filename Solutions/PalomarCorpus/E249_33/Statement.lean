@@ -22,6 +22,7 @@ open scoped BigOperators
 open Filter
 open Finset
 open Topology
+open scoped Classical
 open ArithmeticFunction
 
 namespace PalomarCorpus.E249_33.Shared
@@ -45,6 +46,7 @@ namespace PalomarCorpus.E249.PaperStructuresT
 open Filter
 open Finset
 open Topology
+open scoped Classical
 export PalomarCorpus.E249_33.Shared (windowDiscrepancy)
 /-- Local definition pivotOffset, copied so the compared statements of this entry elaborate against Mathlib alone. -/
 noncomputable def pivotOffset (L s : ℕ) : ℕ := L - s + 1

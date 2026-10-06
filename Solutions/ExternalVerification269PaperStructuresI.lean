@@ -29,13 +29,19 @@ noncomputable def distinctHeightSum235 : ℝ :=
 
 theorem distinctHeightSum235_irrational : Irrational distinctHeightSum235 := by
   first
-  | (exact @ErdosProblems.Erdos269.distinctHeightSum235_irrational; done)
-  | (set_option smartUnfolding false in
-      exact @ErdosProblems.Erdos269.distinctHeightSum235_irrational; done)
-  | (apply ErdosProblems.Erdos269.distinctHeightSum235_irrational <;> assumption; done)
-  | (simpa only [distinctHeightSum235, jumpPoints235, runningHeight235] using ErdosProblems.Erdos269.distinctHeightSum235_irrational; done)
-  | (set_option smartUnfolding false in
-      with_unfolding_all exact @ErdosProblems.Erdos269.distinctHeightSum235_irrational; done)
-  | (with_unfolding_all exact @ErdosProblems.Erdos269.distinctHeightSum235_irrational; done)
+  | exact @ErdosProblems.Erdos269.distinctHeightSum235_irrational
+    done
+  | set_option smartUnfolding false in
+    exact @ErdosProblems.Erdos269.distinctHeightSum235_irrational
+    done
+  | apply ErdosProblems.Erdos269.distinctHeightSum235_irrational <;> assumption
+    done
+  | simpa only [distinctHeightSum235, jumpPoints235, runningHeight235] using ErdosProblems.Erdos269.distinctHeightSum235_irrational
+    done
+  | set_option smartUnfolding false in
+    with_unfolding_all exact @ErdosProblems.Erdos269.distinctHeightSum235_irrational
+    done
+  | with_unfolding_all exact @ErdosProblems.Erdos269.distinctHeightSum235_irrational
+    done
 
 end Erdos249257.ExternalVerification269PaperStructuresI

@@ -50,14 +50,20 @@ theorem irrational_erdosSupportSeries_positivePeriodic
     (hpos : ∃ a : ℕ, 0 < a ∧ a ∈ A) :
     Irrational (erdosSupportSeries b A) := by
   first
-  | (exact @ErdosProblems.Erdos257.PaperCompleteR20.irrational_erdosSupportSeries_positivePeriodic b m A hb hm hper hpos; done)
-  | (set_option smartUnfolding false in
-      exact @ErdosProblems.Erdos257.PaperCompleteR20.irrational_erdosSupportSeries_positivePeriodic b m A hb hm hper hpos; done)
-  | (apply ErdosProblems.Erdos257.PaperCompleteR20.irrational_erdosSupportSeries_positivePeriodic <;> assumption; done)
-  | (simpa only [erdosSupportSeries, primeSetPart, primeWeightedTerm, supportCoeff, terminalPaperCarry] using ErdosProblems.Erdos257.PaperCompleteR20.irrational_erdosSupportSeries_positivePeriodic; done)
-  | (set_option smartUnfolding false in
-      with_unfolding_all exact @ErdosProblems.Erdos257.PaperCompleteR20.irrational_erdosSupportSeries_positivePeriodic b m A hb hm hper hpos; done)
-  | (with_unfolding_all exact @ErdosProblems.Erdos257.PaperCompleteR20.irrational_erdosSupportSeries_positivePeriodic b m A hb hm hper hpos; done)
+  | exact @ErdosProblems.Erdos257.PaperCompleteR20.irrational_erdosSupportSeries_positivePeriodic b m A hb hm hper hpos
+    done
+  | set_option smartUnfolding false in
+    exact @ErdosProblems.Erdos257.PaperCompleteR20.irrational_erdosSupportSeries_positivePeriodic b m A hb hm hper hpos
+    done
+  | apply ErdosProblems.Erdos257.PaperCompleteR20.irrational_erdosSupportSeries_positivePeriodic <;> assumption
+    done
+  | simpa only [erdosSupportSeries, primeSetPart, primeWeightedTerm, supportCoeff, terminalPaperCarry] using ErdosProblems.Erdos257.PaperCompleteR20.irrational_erdosSupportSeries_positivePeriodic
+    done
+  | set_option smartUnfolding false in
+    with_unfolding_all exact @ErdosProblems.Erdos257.PaperCompleteR20.irrational_erdosSupportSeries_positivePeriodic b m A hb hm hper hpos
+    done
+  | with_unfolding_all exact @ErdosProblems.Erdos257.PaperCompleteR20.irrational_erdosSupportSeries_positivePeriodic b m A hb hm hper hpos
+    done
 
 theorem paper_terminalhalf_iff :
     (∃ B : Set ℕ, 0 ∉ B ∧ B.Infinite ∧ erdosSupportSeries 2 B = (1 : ℝ) / 2) ↔
@@ -69,14 +75,20 @@ theorem paper_terminalhalf_iff :
             (fun j ↦ |(terminalPaperCarry (A j) (M j) : ℝ)| / (2 : ℝ) ^ M j)
             Filter.atTop (nhds 0) := by
   first
-  | (exact @ErdosProblems.Erdos257.PaperCompleteR20.paper_terminalhalf_iff; done)
-  | (set_option smartUnfolding false in
-      exact @ErdosProblems.Erdos257.PaperCompleteR20.paper_terminalhalf_iff; done)
-  | (apply ErdosProblems.Erdos257.PaperCompleteR20.paper_terminalhalf_iff <;> assumption; done)
-  | (simpa only [erdosSupportSeries, primeSetPart, primeWeightedTerm, supportCoeff, terminalPaperCarry] using ErdosProblems.Erdos257.PaperCompleteR20.paper_terminalhalf_iff; done)
-  | (set_option smartUnfolding false in
-      with_unfolding_all exact @ErdosProblems.Erdos257.PaperCompleteR20.paper_terminalhalf_iff; done)
-  | (with_unfolding_all exact @ErdosProblems.Erdos257.PaperCompleteR20.paper_terminalhalf_iff; done)
+  | exact @ErdosProblems.Erdos257.PaperCompleteR20.paper_terminalhalf_iff
+    done
+  | set_option smartUnfolding false in
+    exact @ErdosProblems.Erdos257.PaperCompleteR20.paper_terminalhalf_iff
+    done
+  | apply ErdosProblems.Erdos257.PaperCompleteR20.paper_terminalhalf_iff <;> assumption
+    done
+  | simpa only [erdosSupportSeries, primeSetPart, primeWeightedTerm, supportCoeff, terminalPaperCarry] using ErdosProblems.Erdos257.PaperCompleteR20.paper_terminalhalf_iff
+    done
+  | set_option smartUnfolding false in
+    with_unfolding_all exact @ErdosProblems.Erdos257.PaperCompleteR20.paper_terminalhalf_iff
+    done
+  | with_unfolding_all exact @ErdosProblems.Erdos257.PaperCompleteR20.paper_terminalhalf_iff
+    done
 
 theorem finite_monotone_witness_rule_realised
     (E : Finset ℕ) (hE : ∀ p ∈ E, Nat.Prime p)
@@ -89,13 +101,19 @@ theorem finite_monotone_witness_rule_realised
       (∀ A : Set ℕ, A ⊆ H → A.Infinite →
         ∀ b : ℕ, 2 ≤ b → Irrational (erdosSupportSeries b A)) := by
   first
-  | (exact @ErdosProblems.Erdos257.finite_monotone_witness_rule_realised E hE U hUp hUE hU0; done)
-  | (set_option smartUnfolding false in
-      exact @ErdosProblems.Erdos257.finite_monotone_witness_rule_realised E hE U hUp hUE hU0; done)
-  | (apply ErdosProblems.Erdos257.finite_monotone_witness_rule_realised <;> assumption; done)
-  | (simpa only [erdosSupportSeries, primeSetPart, primeWeightedTerm, supportCoeff, terminalPaperCarry] using ErdosProblems.Erdos257.finite_monotone_witness_rule_realised; done)
-  | (set_option smartUnfolding false in
-      with_unfolding_all exact @ErdosProblems.Erdos257.finite_monotone_witness_rule_realised E hE U hUp hUE hU0; done)
-  | (with_unfolding_all exact @ErdosProblems.Erdos257.finite_monotone_witness_rule_realised E hE U hUp hUE hU0; done)
+  | exact @ErdosProblems.Erdos257.finite_monotone_witness_rule_realised E hE U hUp hUE hU0
+    done
+  | set_option smartUnfolding false in
+    exact @ErdosProblems.Erdos257.finite_monotone_witness_rule_realised E hE U hUp hUE hU0
+    done
+  | apply ErdosProblems.Erdos257.finite_monotone_witness_rule_realised <;> assumption
+    done
+  | simpa only [erdosSupportSeries, primeSetPart, primeWeightedTerm, supportCoeff, terminalPaperCarry] using ErdosProblems.Erdos257.finite_monotone_witness_rule_realised
+    done
+  | set_option smartUnfolding false in
+    with_unfolding_all exact @ErdosProblems.Erdos257.finite_monotone_witness_rule_realised E hE U hUp hUE hU0
+    done
+  | with_unfolding_all exact @ErdosProblems.Erdos257.finite_monotone_witness_rule_realised E hE U hUp hUE hU0
+    done
 
 end Erdos249257.ExternalVerification257PaperStructuresCO

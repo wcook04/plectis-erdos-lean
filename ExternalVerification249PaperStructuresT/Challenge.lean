@@ -19,6 +19,7 @@ over that development, not the development itself. The mathematics is developed 
 open Filter
 open Finset
 open Topology
+open scoped Classical
 
 namespace Erdos249257.ExternalVerification249PaperStructuresT
 

@@ -24,13 +24,19 @@ theorem nonintegral_regular_rate_irrational
       atTop (nhds 0)) :
     Irrational (∑' n : ℕ, 1 / (a n : ℝ)) := by
   first
-  | (exact @ErdosProblems.Erdos243.PaperCompleteR21.nonintegral_regular_rate_irrational a ha hpos l hl hnonint hrate; done)
-  | (set_option smartUnfolding false in
-      exact @ErdosProblems.Erdos243.PaperCompleteR21.nonintegral_regular_rate_irrational a ha hpos l hl hnonint hrate; done)
-  | (apply ErdosProblems.Erdos243.PaperCompleteR21.nonintegral_regular_rate_irrational <;> assumption; done)
-  | (simpa using ErdosProblems.Erdos243.PaperCompleteR21.nonintegral_regular_rate_irrational; done)
-  | (set_option smartUnfolding false in
-      with_unfolding_all exact @ErdosProblems.Erdos243.PaperCompleteR21.nonintegral_regular_rate_irrational a ha hpos l hl hnonint hrate; done)
-  | (with_unfolding_all exact @ErdosProblems.Erdos243.PaperCompleteR21.nonintegral_regular_rate_irrational a ha hpos l hl hnonint hrate; done)
+  | exact @ErdosProblems.Erdos243.PaperCompleteR21.nonintegral_regular_rate_irrational a ha hpos l hl hnonint hrate
+    done
+  | set_option smartUnfolding false in
+    exact @ErdosProblems.Erdos243.PaperCompleteR21.nonintegral_regular_rate_irrational a ha hpos l hl hnonint hrate
+    done
+  | apply ErdosProblems.Erdos243.PaperCompleteR21.nonintegral_regular_rate_irrational <;> assumption
+    done
+  | simpa using ErdosProblems.Erdos243.PaperCompleteR21.nonintegral_regular_rate_irrational
+    done
+  | set_option smartUnfolding false in
+    with_unfolding_all exact @ErdosProblems.Erdos243.PaperCompleteR21.nonintegral_regular_rate_irrational a ha hpos l hl hnonint hrate
+    done
+  | with_unfolding_all exact @ErdosProblems.Erdos243.PaperCompleteR21.nonintegral_regular_rate_irrational a ha hpos l hl hnonint hrate
+    done
 
 end Erdos249257.ExternalVerification243PaperStructuresAF
