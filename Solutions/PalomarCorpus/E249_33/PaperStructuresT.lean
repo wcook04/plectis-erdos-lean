@@ -25,20 +25,29 @@ theorem irrational_totient_series_of_goodBase_gap
       (∑ N ∈ pivotGoodBases X (minimalDepth h 26 X) 26 (1 / 1000 : ℝ),
         windowFirstExp h N (minimalDepth h 26 X)).re ≤ (603 / 1000 : ℝ) * X) :
     Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) := by
-  first
-  | exact @ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_goodBase_gap hgap
-    done
-  | set_option smartUnfolding false in
-    exact @ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_goodBase_gap hgap
-    done
-  | apply ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_goodBase_gap <;> assumption
-    done
-  | simpa only [AdmissibleDepth, admissibleDepth_witness, exists_admissibleDepth, minimalDepth, pivotArgument, pivotCofactor, pivotGoodBases, pivotGoodCofactor, pivotOffset, pivotPrime, pivotSupplier, pivotSupplierBases, windowDiscrepancy, windowFirstAngle, windowFirstExp] using ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_goodBase_gap
-    done
-  | set_option smartUnfolding false in
-    with_unfolding_all exact @ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_goodBase_gap hgap
-    done
-  | with_unfolding_all exact @ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_goodBase_gap hgap
-    done
+  have hsup (X L s : ℕ) :
+      pivotSupplierBases X L s = Erdos249257.pivotSupplierBases X L s := by
+    ext N
+    simp only [pivotSupplierBases, Erdos249257.pivotSupplierBases, Finset.mem_filter] <;> rfl
+  have hgood (X L s : ℕ) (η : ℝ) :
+      pivotGoodBases X L s η = Erdos249257.pivotGoodBases X L s η := by
+    ext N
+    simp only [pivotGoodBases, Erdos249257.pivotGoodBases, Finset.mem_filter, hsup] <;> rfl
+  have hdepth (h s X : ℕ) :
+      minimalDepth h s X = ErdosProblems.Erdos249.PaperCompleteR21.minimalDepth h s X := by
+    unfold minimalDepth
+    apply Nat.le_antisymm
+    · exact Nat.find_min' _
+        (ErdosProblems.Erdos249.PaperCompleteR21.minimalDepth_admissible h s X)
+    · exact ErdosProblems.Erdos249.PaperCompleteR21.minimalDepth_le
+        (Nat.find_spec (exists_admissibleDepth h s X))
+  have hexp (h N L : ℕ) :
+      windowFirstExp h N L = Erdos249257.TotientTailPeriodKiller.windowFirstExp h N L := by
+    rfl
+  apply ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_goodBase_gap
+  intro h hh A
+  obtain ⟨X, hX, hg⟩ := hgap h hh A
+  refine ⟨X, hX, ?_⟩
+  simpa only [hdepth, hgood, hexp] using hg
 
 end PalomarCorpus.E249.PaperStructuresT
