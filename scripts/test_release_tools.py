@@ -19,6 +19,64 @@ import check_axiom_budget as axioms
 
 
 class ReleaseToolsTests(unittest.TestCase):
+    def test_axiom_log_keeps_internal_and_trailing_lean_primes(self):
+        prime = "PalomarCorpus.E257.PaperStructuresCM.paper_forced_greedy_tail_lt_weight'"
+        repeated = "Example.internal'part.result''"
+        printed = axioms.parse_log(
+            f"'{prime}' depends on axioms: [propext, Classical.choice]\n"
+            f"'{repeated}' does not depend on any axioms\n"
+        )
+        self.assertEqual(printed, {prime: {"propext", "Classical.choice"}, repeated: set()})
+        self.assertNotIn(prime.rstrip("'"), printed)
+
+    def test_primed_axiom_log_unions_prefixed_wrapped_reports(self):
+        name = "Example.result'"
+        prefix = "build\tAudit\t2026-10-06T19:00:00.000Z "
+        printed = axioms.parse_log(
+            prefix + f"'{name}' depends on axioms: [propext,\n"
+            + prefix + " Classical.choice]\n"
+            + prefix + f"'{name}' does not depend on any axioms\n"
+            + prefix + f"'{name}' depends on axioms: [Unpermitted.axiom]\n"
+        )
+        self.assertEqual(printed[name], {"propext", "Classical.choice", "Unpermitted.axiom"})
+
+    def test_axiom_log_separates_reports_and_rejects_truncated_output(self):
+        printed = axioms.parse_log(
+            "'Example.first'' depends on axioms: [propext] "
+            "'Example.second' does not depend on any axioms\n"
+            "'Example.truncated'' depends on axioms: [Classical.choice\n"
+            "'Example.split\nname' does not depend on any axioms\n"
+        )
+        self.assertEqual(printed, {"Example.first'": {"propext"}, "Example.second": set()})
+
+    def test_primed_audit_still_requires_selected_identity_and_permitted_axioms(self):
+        name = "Example.result'"
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            entry = root / "ExternalVerification257Example"
+            entry.mkdir()
+            (entry / "comparator.json").write_text(json.dumps({
+                "theorem_names": [name], "permitted_axioms": ["propext"],
+            }))
+            log = root / "build.log"
+            cases = [
+                (f"'{name}' depends on axioms: [propext]\n", 0, [], []),
+                ("'Example.result' depends on axioms: [propext]\n", 1, [name], []),
+                (f"'{name}' depends on axioms: [propext, Unpermitted.axiom]\n", 1, [],
+                 [{"declaration": name, "axioms_outside_budget": ["Unpermitted.axiom"]}]),
+            ]
+            for text, expected, missing, over in cases:
+                log.write_text(text)
+                output = io.StringIO()
+                with self.subTest(text=text), contextlib.redirect_stdout(output), \
+                        patch.object(axioms, "REPO_ROOT", root), \
+                        patch.object(axioms, "entries", return_value=[entry.name]), \
+                        patch.object(sys, "argv", ["check_axiom_budget.py", "--log", str(log), "--json"]):
+                    self.assertEqual(axioms.main(), expected)
+                report = json.loads(output.getvalue())
+                self.assertEqual(report["entries"][0]["declarations_not_printed_in_log"], missing)
+                self.assertEqual(report["entries"][0]["declarations_over_budget"], over)
+
     def test_publication_inventory_is_every_paper_order_entry_and_refuses_a_stray(self):
         with tempfile.TemporaryDirectory() as tmp, patch.object(axioms, "REPO_ROOT", Path(tmp)):
             root = Path(tmp)
