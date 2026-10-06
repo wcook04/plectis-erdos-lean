@@ -10,3 +10,6 @@ import Solutions.PalomarCorpus.E257_26.PaperStatementsAF
 import Solutions.PalomarCorpus.E257_26.PaperStatementsAM
 import Solutions.PalomarCorpus.E257_26.PaperStatementsAO
 import Solutions.PalomarCorpus.E257_26.PaperStatementsD
+import Solutions.PalomarCorpus.E257_26.PaperStructuresCJ
+import Solutions.PalomarCorpus.E257_26.PaperStructuresCL
+import Solutions.PalomarCorpus.E257_26.PaperStructuresCN

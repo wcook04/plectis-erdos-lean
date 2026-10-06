@@ -9,3 +9,10 @@ import Solutions.PalomarCorpus.E257_26
 #print axioms PalomarCorpus.E257.PaperStatementsAM.paper_achievement_set_topology
 #print axioms PalomarCorpus.E257.PaperStatementsAO.mixedPrimePowerLayerTwo_supportCoeffInt
 #print axioms PalomarCorpus.E257.PaperStatementsD.greedyHalf_mem_nextMersenneDyadicSliver_iff_excess
+#print axioms PalomarCorpus.E257.PaperStructuresCJ.above_newSum_le_capacity_iff
+#print axioms PalomarCorpus.E257.PaperStructuresCJ.below_newSum_le_capacity
+#print axioms PalomarCorpus.E257.PaperStructuresCJ.nextRemainder_trichotomy
+#print axioms PalomarCorpus.E257.PaperStructuresCJ.prefixChoice_maximal
+#print axioms PalomarCorpus.E257.PaperStructuresCL.dyadicResidualIntNumerator_coprime_oddDenominator
+#print axioms PalomarCorpus.E257.PaperStructuresCL.dyadicResidualInt_denominator_sandwich
+#print axioms PalomarCorpus.E257.PaperStructuresCN.divInt_mem_nextMersenneDyadicSliver_iff_excess

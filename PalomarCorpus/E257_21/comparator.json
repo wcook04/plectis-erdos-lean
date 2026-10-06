@@ -3,6 +3,8 @@
   "solution_module": "Solutions.PalomarCorpus.E257_21",
   "theorem_names": [
     "PalomarCorpus.E257.PaperStatementsAA.largest_false_rank_algebra",
+    "PalomarCorpus.E257.PaperStatementsAM.positiveMersenneSupportValue_coe_finset_ne_half",
+    "PalomarCorpus.E257.PaperStatementsD.half_mem_iff_every_actual_skip_survives",
     "PalomarCorpus.E257.PaperStatementsG.isLastHalfGreedySkip_iff_skip_and_fatal"
   ],
   "permitted_axioms": [

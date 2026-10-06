@@ -19,7 +19,8 @@
     "PalomarCorpus.E257.PaperStatementsAG.irrational_erdosSupportSeries_residueClass",
     "PalomarCorpus.E257.PaperStatementsAG.irrational_intWeightedErdosSeries_periodic_of_coeff_nonneg_of_frequently_ne_zero",
     "PalomarCorpus.E257.PaperStatementsAG.irrational_intWeightedErdosSeries_periodic_of_coeff_nonpos_of_frequently_ne_zero",
-    "PalomarCorpus.E257.PaperStatementsAG.irrational_or_bpow_mul_eq_intCast_intWeightedErdosSeries_periodic"
+    "PalomarCorpus.E257.PaperStatementsAG.irrational_or_bpow_mul_eq_intCast_intWeightedErdosSeries_periodic",
+    "PalomarCorpus.E257.PaperStructuresCO.irrational_erdosSupportSeries_positivePeriodic"
   ],
   "permitted_axioms": [
     "propext",

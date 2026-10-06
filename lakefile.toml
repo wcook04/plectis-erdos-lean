@@ -1432,3 +1432,81 @@ globs = ["ExternalVerification1049PaperStructuresP.+"]
 [[lean_lib]]
 name = "ExternalVerification1049PaperStructuresQ"
 globs = ["ExternalVerification1049PaperStructuresQ.+"]
+
+[[lean_lib]]
+name = "Erdos251LargeCertificate"
+srcDir = "verification/Erdos251LargeCertificate"
+globs = ["ErdosProblems.Erdos251.GcdPrimality", "ErdosProblems.Erdos251.PaperStreamingCertificateV5", "ErdosProblems.Erdos251.StreamingChunksV5.+", "ErdosProblems.Erdos251.PaperLargeStreamingV5", "ErdosProblems.Erdos251.PaperLargeCertificateR7", "ErdosProblems.Erdos251.PaperLargeAuditR7"]
+weakLeanArgs = ["--tstack=262144"]
+
+[[lean_lib]]
+name = "ExternalVerification1041PaperStructuresAF"
+globs = ["ExternalVerification1041PaperStructuresAF.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1041PaperStructuresAG"
+globs = ["ExternalVerification1041PaperStructuresAG.+"]
+
+[[lean_lib]]
+name = "ExternalVerification243PaperStructuresAF"
+globs = ["ExternalVerification243PaperStructuresAF.+"]
+
+[[lean_lib]]
+name = "ExternalVerification243PaperStructuresAG"
+globs = ["ExternalVerification243PaperStructuresAG.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249PaperStructuresS"
+globs = ["ExternalVerification249PaperStructuresS.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249PaperStructuresT"
+globs = ["ExternalVerification249PaperStructuresT.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249PaperStructuresU"
+globs = ["ExternalVerification249PaperStructuresU.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257PaperStructuresCJ"
+globs = ["ExternalVerification257PaperStructuresCJ.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257PaperStructuresCK"
+globs = ["ExternalVerification257PaperStructuresCK.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257PaperStructuresCL"
+globs = ["ExternalVerification257PaperStructuresCL.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257PaperStructuresCM"
+globs = ["ExternalVerification257PaperStructuresCM.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257PaperStructuresCN"
+globs = ["ExternalVerification257PaperStructuresCN.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257PaperStructuresCO"
+globs = ["ExternalVerification257PaperStructuresCO.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257PaperStructuresCP"
+globs = ["ExternalVerification257PaperStructuresCP.+"]
+
+[[lean_lib]]
+name = "ExternalVerification269PaperStructuresI"
+globs = ["ExternalVerification269PaperStructuresI.+"]
+
+[[lean_lib]]
+name = "ExternalVerification251PaperStructuresI"
+globs = ["ExternalVerification251PaperStructuresI.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257PaperStructuresCH"
+globs = ["ExternalVerification257PaperStructuresCH.+"]
+
+[[lean_lib]]
+name = "ExternalVerification257PaperStructuresCI"
+globs = ["ExternalVerification257PaperStructuresCI.+"]

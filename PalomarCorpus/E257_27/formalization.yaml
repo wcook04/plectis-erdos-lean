@@ -1,10 +1,10 @@
 version: v0.4
 project:
-  name: 'Erdős #257: two implications yielding half-membership; compatible finite approximations; a quotient bound at a crossing'
+  name: 'Erdős #257, record sections 6.2 to 6.3: exact identities and reductions; consequence theorems (part 3 of 3)'
   description: >-
-    This entry states 14 theorems that the long record for Erdős problem #257 states in sections the unnumbered section two implications yielding half-membership, the unnumbered section compatible finite approximations and the unnumbered section a quotient bound at a crossing: the theorem “Compactness from exact finite sums”, as finite_boolSupport_ne_half, abs_exactLocalMersenneRowValue_sub_half_le and half_mem_mersenneAchievementSet_of_cofinalExactLocalRows; the theorem “Infinitely many greedy skips suffice”, as cofinalPositiveHalfGreedySkips_iff_half_mem, half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips, cofinalExactLocalMersenneHalfRows_of_positiveHalfGreedySkips and exactLocalMersenneHalfRow_of_positiveHalfGreedySkip; the theorem “A compatible family of finite supports”, as paper_compatible_first_condition_gives_nonneg, paper_compatible_rows_agree_with_limit and paper_compatible_bit_stable; the theorem “A sufficient quotient bound at a crossing”, as cofinalExactLocalMersenneHalfRows_of_criticalQuotientSupply and half_mem_mersenneAchievementSet_of_criticalQuotientSupply; the theorem “Induction from the depth-six example”, as exists_laterProtectedExactLocalMersenneRow; the theorem “The quotient condition on greedy prefixes”, as skippedCoreCriticalQuotientSupply_iff_halfGreedySkipped.
+    This entry states 14 theorems that the long record for Erdős problem #257 states in sections 6.2 (exact identities and reductions) and 6.3 (consequence theorems): the theorem “Perturbed-family maximality and the three-branch recurrence” (section 6.2), as prefixRemainder_eq_capacity_sub_choice; the theorem “Compactness from exact finite sums”, as finite_boolSupport_ne_half, abs_exactLocalMersenneRowValue_sub_half_le and half_mem_mersenneAchievementSet_of_cofinalExactLocalRows; the theorem “Infinitely many greedy skips suffice”, as cofinalPositiveHalfGreedySkips_iff_half_mem, half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips, cofinalExactLocalMersenneHalfRows_of_positiveHalfGreedySkips and exactLocalMersenneHalfRow_of_positiveHalfGreedySkip; the theorem “A compatible family of finite supports”, as paper_compatible_first_condition_gives_nonneg, paper_compatible_rows_agree_with_limit and paper_compatible_bit_stable; the theorem “A sufficient quotient bound at a crossing”, as cofinalExactLocalMersenneHalfRows_of_criticalQuotientSupply and half_mem_mersenneAchievementSet_of_criticalQuotientSupply; the theorem “Induction from the depth-six example”, as exists_laterProtectedExactLocalMersenneRow.
 
-    7 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 7 are derived from the source declaration by a short tactic proof, which certifies implication.
+    8 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 6 are derived from the source declaration by a short tactic proof, which certifies implication.
 
     Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
 
@@ -55,13 +55,13 @@ sources:
   license: Apache-2.0
   author_endorsement: n/a
 status:
-  scope: "One Comparator configuration selecting the 14 theorems listed in PalomarCorpus/E257_27/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 52 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_52, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
+  scope: "One Comparator configuration selecting the 14 theorems listed in PalomarCorpus/E257_27/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 53 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_53, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
   trusted_challenge_sorry_count: 14
-  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E257_27/Challenge.lean. Comparator replay run 35935225572 of wcook04/plectis-erdos-lean at commit cc7e541 built this entry's Challenge and Solution with leanprover/lean4:v4.30.0 and accepted every compared theorem with both the Lean kernel and NanoDa, permitting only the axioms propext, Quot.sound and Classical.choice."
-  axiom_audit_status: "Lean Release Gate run 35935275645 at commit 18ea89f ran scripts/check_axiom_budget.py --run-palomar on the built Solution environment and printed only propext, Quot.sound and Classical.choice for every compared theorem."
+  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E257_27/Challenge.lean, and the Solution modules contain no sorry. Comparator and kernel outcomes are commit-specific and are recorded separately from this source metadata."
+  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. Axiom-audit outcomes are commit-specific and belong in separate receipts; this source field is not an audit receipt."
   permitted_axiom_budget:
   - propext
   - Quot.sound
@@ -103,16 +103,16 @@ status:
     file: "Solutions/PalomarCorpus/E257_27/PaperStatementsF.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_27/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsF.skippedCoreCriticalQuotientSupply_iff_halfGreedySkipped"
-    file: "Solutions/PalomarCorpus/E257_27/PaperStatementsF.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_27/comparator.json"
   - declaration: "PalomarCorpus.E257.PaperStructuresAW.paper_compatible_first_condition_gives_nonneg"
     file: "Solutions/PalomarCorpus/E257_27/PaperStructuresAW.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_27/comparator.json"
   - declaration: "PalomarCorpus.E257.PaperStructuresBA.exists_laterProtectedExactLocalMersenneRow"
     file: "Solutions/PalomarCorpus/E257_27/PaperStructuresBA.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_27/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStructuresCJ.prefixRemainder_eq_capacity_sub_choice"
+    file: "Solutions/PalomarCorpus/E257_27/PaperStructuresCJ.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_27/comparator.json"
   - declaration: "PalomarCorpus.E257.PaperStructuresT.paper_compatible_rows_agree_with_limit"

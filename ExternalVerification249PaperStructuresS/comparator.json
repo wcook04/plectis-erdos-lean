@@ -1,0 +1,17 @@
+{
+  "challenge_module": "ExternalVerification249PaperStructuresS.Challenge",
+  "solution_module": "Solutions.ExternalVerification249PaperStructuresS",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249PaperStructuresS.linearIndependent_one_and_least_residue_values",
+    "Erdos249257.ExternalVerification249PaperStructuresS.rational_mixed_moduli_with_constant_iff",
+    "Erdos249257.ExternalVerification249PaperStructuresS.positiveRadixValue_eq_of_even_constant",
+    "Erdos249257.ExternalVerification249PaperStructuresS.radix_residue_series_irrational",
+    "Erdos249257.ExternalVerification249PaperStructuresS.rational_zmod_radix_observable_iff"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

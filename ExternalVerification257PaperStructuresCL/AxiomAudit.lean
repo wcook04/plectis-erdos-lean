@@ -1,0 +1,4 @@
+import Solutions.ExternalVerification257PaperStructuresCL
+
+#print axioms Erdos249257.ExternalVerification257PaperStructuresCL.dyadicResidualIntNumerator_coprime_oddDenominator
+#print axioms Erdos249257.ExternalVerification257PaperStructuresCL.dyadicResidualInt_denominator_sandwich

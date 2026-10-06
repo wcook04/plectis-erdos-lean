@@ -1,0 +1,15 @@
+{
+  "challenge_module": "ExternalVerification257PaperStructuresCO.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStructuresCO",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStructuresCO.irrational_erdosSupportSeries_positivePeriodic",
+    "Erdos249257.ExternalVerification257PaperStructuresCO.paper_terminalhalf_iff",
+    "Erdos249257.ExternalVerification257PaperStructuresCO.finite_monotone_witness_rule_realised"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

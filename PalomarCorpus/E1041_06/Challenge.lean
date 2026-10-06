@@ -9,7 +9,7 @@ import Mathlib
 set_option autoImplicit false
 
 /-!
-# Erdős #1041, note sections 13 to 16: two chord constructions for binomials; a Poisson identity for critical-value means; a nonlinear integral for component mergers
+# Erdős #1041, note sections 1 to 7: monic trinomials, in every degree; critical proximity and straight-path obstructions; solved polynomial families
 
 Each theorem below restates, against Mathlib alone, a theorem of the Lean development
 for Erdős problem #1041, in the order the papers state them. The definitions a statement
@@ -19,42 +19,17 @@ formalised in this corpus, refutes the total-variation formulation of Erdős pro
 #1041; the theorems in this entry keep their stated hypotheses.
 -/
 
-open Set
-open scoped ENNReal
-open scoped NNReal
-open scoped BigOperators
-open scoped ComplexConjugate
-open Real
-open Complex
 open Polynomial
 open Finset
-open Polynomial Set
-open Polynomial Metric
-open Filter
-open MeasureTheory
-open scoped Topology
-
-namespace PalomarCorpus.E1041.PaperStatementsD
+open scoped BigOperators
 open Set
-open scoped ENNReal
 open scoped NNReal
-/-- `π/n`. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.BinomialChord.angle, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def angle (n : ℕ) : ℝ := Real.pi / (n : ℝ)
-/-- `c = cos(π/n)`. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.BinomialChord.chordCos, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def chordCos (n : ℕ) : ℝ := Real.cos (angle n)
-/-- `ε = (1 - r^n)^{1/n}`. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.BinomialChord.chordEps, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def chordEps (n : ℕ) (r : ℝ) : ℝ := (1 - r ^ n) ^ ((n : ℝ)⁻¹)
-/-- `e^{iπ/n}`; its square is the paper's `ω = e^{2πi/n}`. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.BinomialChord.halfRoot, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def halfRoot (n : ℕ) : ℂ := Complex.exp ((angle n : ℂ) * Complex.I)
-/-- `ω = e^{2πi/n}`. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.BinomialChord.chordOmega, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def chordOmega (n : ℕ) : ℂ := halfRoot n ^ 2
-/-- The point of the segment `[s, sω]` at parameter `u ∈ [0,1]`. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.BinomialChord.chordPoint, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def chordPoint (n : ℕ) (s u : ℝ) : ℂ :=
-  (s : ℂ) * (((1 - u : ℝ) : ℂ) + ((u : ℝ) : ℂ) * chordOmega n)
-/-- `r_* = (1 + c^n)^{-1/n}`. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.BinomialChord.chordThreshold, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def chordThreshold (n : ℕ) : ℝ := (1 + chordCos n ^ n) ^ (-((n : ℝ)⁻¹))
-/-- The paper's inner radius `t = ε/c`. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.BinomialChord.innerRadius, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def innerRadius (n : ℕ) (r : ℝ) : ℝ := chordEps n r / chordCos n
+open scoped ENNReal
+open scoped ComplexConjugate
+open Metric
+open AffineSubspace
+
+namespace PalomarCorpus.E1041_06.Shared
 /-- The geometric conclusion used by the paper: a continuous rectifiable curve with specified endpoints, containment at every parameter, and a strict variation bound. Local copy of ErdosProblems.Erdos1041.PaperCurve.ConnectedBelow, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def ConnectedBelow (f : ℂ → ℂ) (R L : ℝ) (a b : ℂ) : Prop :=
   ∃ γ : ℝ → ℂ, ContinuousOn γ (Icc (0 : ℝ) 2) ∧
@@ -62,165 +37,241 @@ noncomputable def ConnectedBelow (f : ℂ → ℂ) (R L : ℝ) (a b : ℂ) : Pro
     (∀ t ∈ Icc (0 : ℝ) 2, ‖f (γ t)‖ < R) ∧
     BoundedVariationOn γ (Icc (0 : ℝ) 2) ∧
     eVariationOn γ (Icc (0 : ℝ) 2) < ENNReal.ofReal L
-/-- States the paper statement it is bound to from the short record for Erdős problem #1041. Transported from ErdosProblems.Erdos1041.PaperCompleteR21.binomial_chord_decisive_step in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem binomial_chord_decisive_step {n : ℕ} (hn : 2 ≤ n) {θ : ℝ}
-    (hθ : (n : ℝ) * |θ| ≤ Real.pi) :
-    1 + Real.cos ((n : ℝ) * θ) ≤ 2 * Real.cos θ ^ n := by
-  sorry
-/-- States the paper statement it is bound to from the short record for Erdős problem #1041. Transported from ErdosProblems.Erdos1041.PaperCompleteR21.binomial_chord_maximum in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem binomial_chord_maximum {n : ℕ} (hn : 2 ≤ n) {s r : ℝ} (hs : 0 < s) (hsr : s ≤ r) :
-    (∀ u : ℝ, 0 ≤ u → u ≤ 1 →
-        ‖(chordPoint n s u) ^ n - ((r : ℝ) : ℂ) ^ n‖ ≤ r ^ n + (s * chordCos n) ^ n) ∧
-      ‖(chordPoint n s (1 / 2)) ^ n - ((r : ℝ) : ℂ) ^ n‖ = r ^ n + (s * chordCos n) ^ n := by
-  sorry
-/-- States the paper statement it is bound to from the short record for Erdős problem #1041. Transported from ErdosProblems.Erdos1041.PaperCompleteR21.binomial_chords_above_threshold in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem binomial_chords_above_threshold {n : ℕ} (hn : 3 ≤ n) {r : ℝ} (hr0 : 0 < r)
-    (hr1 : r < 1) (hge : chordThreshold n ≤ r) {lam : ℝ} (hl0 : 0 < lam) (hl1 : lam < 1) :
-    ConnectedBelow (fun z => z ^ n - ((r : ℝ) : ℂ) ^ n) 1 2
-      ((r : ℝ) : ℂ) (((r : ℝ) : ℂ) * chordOmega n) := by
-  sorry
-/-- States the paper statement it is bound to from the short record for Erdős problem #1041. Transported from ErdosProblems.Erdos1041.PaperCompleteR21.binomial_chords_at_threshold in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem binomial_chords_at_threshold {n : ℕ} (hn : 2 ≤ n) :
-    (∀ u : ℝ, 0 ≤ u → u ≤ 1 →
-        ‖(chordPoint n (chordThreshold n) u) ^ n
-          - ((chordThreshold n : ℝ) : ℂ) ^ n‖ ≤ 1) ∧
-      ‖(chordPoint n (chordThreshold n) (1 / 2)) ^ n
-        - ((chordThreshold n : ℝ) : ℂ) ^ n‖ = 1 := by
-  sorry
-/-- States the paper statement it is bound to from the short record for Erdős problem #1041. Transported from ErdosProblems.Erdos1041.PaperCompleteR21.binomial_chords_below_threshold in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem binomial_chords_below_threshold {n : ℕ} (hn : 2 ≤ n) {r : ℝ} (hr0 : 0 < r)
-    (hr1 : r < 1) (hlt : r < chordThreshold n) :
-    ConnectedBelow (fun z => z ^ n - ((r : ℝ) : ℂ) ^ n) 1 2
-      ((r : ℝ) : ℂ) (((r : ℝ) : ℂ) * chordOmega n) := by
-  sorry
-/-- States the paper statement it is bound to from the short record for Erdős problem #1041. Transported from ErdosProblems.Erdos1041.PaperCompleteR21.binomial_chords_path in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem binomial_chords_path {n : ℕ} (hn : 2 ≤ n) {r : ℝ} (hr0 : 0 < r) (hr1 : r < 1) :
-    ((r : ℝ) : ℂ) ≠ ((r : ℝ) : ℂ) * chordOmega n ∧
-      (((r : ℝ) : ℂ)) ^ n - ((r : ℝ) : ℂ) ^ n = 0 ∧
-      (((r : ℝ) : ℂ) * chordOmega n) ^ n - ((r : ℝ) : ℂ) ^ n = 0 ∧
-      ConnectedBelow (fun z => z ^ n - ((r : ℝ) : ℂ) ^ n) 1 2
-        ((r : ℝ) : ℂ) (((r : ℝ) : ℂ) * chordOmega n) := by
-  sorry
-/-- States the paper statement it is bound to from the short record for Erdős problem #1041. Transported from ErdosProblems.Erdos1041.PaperCompleteR21.binomial_inner_chord_maximal in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem binomial_inner_chord_maximal {n : ℕ} (hn : 3 ≤ n) {r : ℝ} (hr0 : 0 < r)
-    (hr1 : r ^ n < 1) (hswitch : 1 ≤ r ^ n * (1 + chordCos n ^ n)) :
-    ‖(chordPoint n (innerRadius n r) (1 / 2)) ^ n - ((r : ℝ) : ℂ) ^ n‖ = 1 ∧
-      (∀ s : ℝ, innerRadius n r < s → s ≤ r →
-        1 < ‖(chordPoint n s (1 / 2)) ^ n - ((r : ℝ) : ℂ) ^ n‖) := by
-  sorry
-end PalomarCorpus.E1041.PaperStatementsD
+/-- `p(z) = z^8 - (3/2)z`. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.Lobe.lobePolynomial, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def lobePolynomial : ℂ[X] := X ^ 8 - C (3 / 2) * X
+/-- The closed unit sublevel set of `p`. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.Lobe.lobeSublevel, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def lobeSublevel : Set ℂ := {z : ℂ | ‖lobePolynomial.eval z‖ ≤ 1}
+/-- `C`: the connected component of `{|p| ≤ 1}` containing the origin. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.Lobe.lobeComponent, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def lobeComponent : Set ℂ := connectedComponentIn lobeSublevel 0
+end PalomarCorpus.E1041_06.Shared
 
-namespace PalomarCorpus.E1041.PaperStatementsAB
-open scoped BigOperators
-open scoped ComplexConjugate
-open Real
-open Complex
+namespace PalomarCorpus.E1041.PaperStatementsR
 open Polynomial
-open Set
-/-- Local copy of ErdosProblems.Erdos1041.PaperAnalyticTargets.weightedProduct, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def weightedProduct {m : ℕ} (c : Fin m → ℂ) (w : Fin m → ℝ) (z : ℂ) : ℝ :=
-  ∏ k, ‖1 - conj (c k) * z‖ ^ w k
-/-- Includes the displayed equality classification; proving the inequality alone is not counted as proving this target. Local copy of ErdosProblems.Erdos1041.PaperAnalyticTargets.WeightedFreePoint, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def WeightedFreePoint : Prop :=
-  ∀ (m : ℕ) (c : Fin m → ℂ) (w : Fin m → ℝ),
-    (∀ j, ‖c j‖ ≤ 1) → (∀ j, 0 < w j) → (∑ j, w j) = 1 →
-      (∑ j, w j * weightedProduct c w (c j) ^ 2) ≤ 1 ∧
-      ((∑ j, w j * weightedProduct c w (c j) ^ 2) = 1 ↔ ∀ j, c j = 0)
-/-- States res:fp-weighted-all-degree from the short record for Erdős problem #1041. Transported from ErdosProblems.Erdos1041.paper_weighted_free_point in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem paper_weighted_free_point : WeightedFreePoint := by
-  sorry
-end PalomarCorpus.E1041.PaperStatementsAB
-
-namespace PalomarCorpus.E1041.PaperStatementsL
-open scoped BigOperators
-open scoped ComplexConjugate
-open Real
-open Complex
-/-- States res:fp-weighted-all-degree from the short record for Erdős problem #1041. Transported from ErdosProblems.Erdos1041.geometric_row_mean_closed_disc_le in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem geometric_row_mean_closed_disc_le {m : ℕ} (hm : 0 < m) (c : Fin m → ℂ)
-    (hc : ∀ j, ‖c j‖ ≤ 1) :
-    (∑ j, (∏ k, ‖1 - conj (c j) * c k‖) ^ ((m : ℝ)⁻¹)) ≤ (m : ℝ) := by
-  sorry
-end PalomarCorpus.E1041.PaperStatementsL
-
-namespace PalomarCorpus.E1041.CriticalValueMean
 open Finset
-open Polynomial Set
-open scoped BigOperators
-open Polynomial
-open scoped ComplexConjugate
-open scoped ENNReal
-open Polynomial Metric
-open Polynomial
-open scoped BigOperators
-/-- Every zero of the complex polynomial `p` lies in the closed disc of radius `R` about `h`: `p.eval z = 0` implies `‖z - h‖ ≤ R`. -/
-noncomputable def RootsInClosedDisc (p : ℂ[X]) (h : ℂ) (R : ℝ) : Prop :=
-  ∀ z : ℂ, p.eval z = 0 → ‖z - h‖ ≤ R
-/-- The family `c` indexed by `Fin (n - 1)` lists the critical points of `p` with multiplicity: the derivative of `p` equals `C (n : ℂ)` times the product over `j` of `X - C (c j)`. For a monic `p` of degree `n` this says that `c` enumerates the `n - 1` zeros of the derivative, each as often as its multiplicity. -/
-noncomputable def CriticalEnumeration {n : ℕ} (p : ℂ[X]) (c : Fin (n - 1) → ℂ) : Prop :=
-  p.derivative = C (n : ℂ) * ∏ j, (X - C (c j))
-/-- Critical-value mean in every degree. Let `n ≥ 2`, let `p` be a monic complex polynomial of degree `n` all of whose zeros lie in the closed disc of radius `R ≥ 0` about a centre `h`, and let `c` enumerate its `n - 1` critical points with multiplicity. Then the sum over `j` of `‖p (c j)‖ ^ (2 / (n - 1))` is at most `(n - 1) R ^ (2 n / (n - 1))`, and the sum over `j` of `‖p (c j)‖ ^ (1 / n)` is at most `(n - 1) R`. The exponents are real powers, the centre `h` is arbitrary, and the degenerate radius `R = 0` is included. -/
-theorem paper_critical_value_mean (n : ℕ) (p : ℂ[X]) (c : Fin (n - 1) → ℂ) (h : ℂ) (R : ℝ)
-    (hn : 2 ≤ n) (hp : p.Monic) (hdeg : p.natDegree = n) (hR : 0 ≤ R)
-    (hroots : RootsInClosedDisc p h R) (hc : CriticalEnumeration p c) :
-    (∑ j, ‖p.eval (c j)‖ ^ (2 / ((n : ℝ) - 1))) ≤
-        ((n : ℝ) - 1) * R ^ (2 * (n : ℝ) / ((n : ℝ) - 1)) ∧
-      (∑ j, ‖p.eval (c j)‖ ^ (1 / (n : ℝ))) ≤ ((n : ℝ) - 1) * R := by
+/-- The stored sextic guardrail family `f_r z = z^6 + (1/5) r^2 z^4 - (1/5) r^4 z^2 - r^6`. Local copy of ErdosProblems.Erdos1041.AbelControlPolygon.sextic, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def sextic (r z : ℂ) : ℂ :=
+  z ^ 6 + (1 / 5) * r ^ 2 * z ^ 4 - (1 / 5) * r ^ 4 * z ^ 2 - r ^ 6
+/-- States res:sextic-spoke from the short record for Erdős problem #1041. Transported from ErdosProblems.Erdos1041.PaperCompleteR20.sextic_spoke_counterexample_whole in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem sextic_spoke_counterexample_whole :
+    ∃ r : ℝ, 0 < r ∧ r < 1 ∧
+      (∀ w : ℂ, sextic (r : ℂ) w = 0 → ‖w‖ < 1) ∧
+      sextic (r : ℂ) (r : ℂ) = 0 ∧
+      ∃ t : ℝ, 0 < t ∧ t < 1 ∧
+        1 < ‖sextic (r : ℂ) ((t : ℂ) * (r : ℂ))‖ := by
   sorry
-end PalomarCorpus.E1041.CriticalValueMean
+end PalomarCorpus.E1041.PaperStatementsR
 
-namespace PalomarCorpus.E1041.PaperStatementsF
+namespace PalomarCorpus.E1041.PaperStatementsK
+open Finset
+/-- States res:critical-proximity from the short record for Erdős problem #1041. Transported from ErdosProblems.Erdos1041.exists_two_roots_dist_sum_le_two_mul_geomMean in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem exists_two_roots_dist_sum_le_two_mul_geomMean
+    {n : ℕ} (hn : 2 ≤ n) (z : Fin n → ℂ) (c : ℂ)
+    (hne : ∀ k, c - z k ≠ 0)
+    (hcrit : ∑ k, (c - z k)⁻¹ = 0)
+    {r : ℝ} (hr : 0 < r) (hrn : r ^ n = ∏ k, ‖c - z k‖) :
+    ∃ i j : Fin n, i ≠ j ∧ ‖c - z i‖ + ‖c - z j‖ ≤ 2 * r := by
+  sorry
+end PalomarCorpus.E1041.PaperStatementsK
+
+namespace PalomarCorpus.E1041.PaperStatementsB
+open Finset
+open Polynomial
+open scoped BigOperators
+/-- States the paper statement it is bound to from the short record for Erdős problem #1041. Transported from ErdosProblems.Erdos1041.PaperCompleteR20.exists_two_nearest_roots_of_polynomial_critical in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem exists_two_nearest_roots_of_polynomial_critical {n : ℕ} (hn : 2 ≤ n)
+    (z : Fin n → ℂ) (c : ℂ) (hz : ∀ k, ‖z k‖ < 1)
+    (hp : (∏ k : Fin n, (X - C (z k))).eval c ≠ 0)
+    (hcrit : (∏ k : Fin n, (X - C (z k))).derivative.eval c = 0) :
+    ∃ i j : Fin n, i ≠ j ∧
+      (∀ k, ‖c - z i‖ ≤ ‖c - z k‖) ∧
+      (∀ k, k ≠ i → ‖c - z j‖ ≤ ‖c - z k‖) ∧
+      ‖c - z i‖ + ‖c - z j‖ < 2 := by
+  sorry
+/-- States the paper statement it is bound to from the short record for Erdős problem #1041. Transported from ErdosProblems.Erdos1041.PaperCompleteR20.two_nearest_roots_of_polynomial_critical in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem two_nearest_roots_of_polynomial_critical {n : ℕ} (hn : 2 ≤ n)
+    (z : Fin n → ℂ) (c : ℂ) (hz : ∀ k, ‖z k‖ < 1)
+    (hp : (∏ k : Fin n, (X - C (z k))).eval c ≠ 0)
+    (hcrit : (∏ k : Fin n, (X - C (z k))).derivative.eval c = 0)
+    (i j : Fin n) (hij : i ≠ j)
+    (hi : ∀ k, ‖c - z i‖ ≤ ‖c - z k‖)
+    (hj : ∀ k, k ≠ i → ‖c - z j‖ ≤ ‖c - z k‖) :
+    ‖c - z i‖ + ‖c - z j‖ < 2 := by
+  sorry
+end PalomarCorpus.E1041.PaperStatementsB
+
+namespace PalomarCorpus.E1041.PaperStatementsG
+open Polynomial
+/-- States res:straight-no-go from the short record for Erdős problem #1041. Transported from ErdosProblems.Erdos1041.PaperStraightObstructions.complete_straight_path_obstructions in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem complete_straight_path_obstructions :
+    (∃ f : ℂ[X], f.Monic ∧ f.natDegree = 5 ∧
+      (∀ z : ℂ, f.eval z = 0 → ‖z‖ < 1) ∧
+      ∃ c w : ℂ, f.derivative.eval c = 0 ∧ f.eval c ≠ 0 ∧ f.eval w = 0 ∧
+        (∀ z : ℂ, f.eval z = 0 → z ≠ w → ‖c - w‖ < ‖c - z‖) ∧
+        ∃ t : ℝ, 0 < t ∧ t < 1 ∧ 1 < ‖f.eval (c + (t : ℂ) * (w - c))‖) ∧
+    (∃ g : ℂ[X], g.Monic ∧ g.natDegree = 3 ∧
+      (∀ z : ℂ, g.eval z = 0 → ‖z‖ < 1) ∧
+      ∀ z w : ℂ, g.eval z = 0 → g.eval w = 0 → z ≠ w →
+        1 < ‖g.eval ((z + w) / 2)‖) := by
+  sorry
+end PalomarCorpus.E1041.PaperStatementsG
+
+namespace PalomarCorpus.E1041.PaperStatementsU
+open Polynomial
 open Set
-open Filter
-open MeasureTheory
-open scoped Topology
-/-- `coth t = cosh t / sinh t`. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.coth, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def coth (t : ℝ) : ℝ := Real.cosh t / Real.sinh t
-/-- The integrand `1 / log (coth t)` of the paper's `Φ`, carrying the paper's continuous limiting value `0` at `t = 0`. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.orliczKernel, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def orliczKernel (t : ℝ) : ℝ := 1 / Real.log (coth t)
-/-- `Φ(x) = ∫_0^x dt / log (coth t)`. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.Phi, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def Phi (x : ℝ) : ℝ := ∫ t in (0 : ℝ)..x, orliczKernel t
-/-- `I_k(r) = ∫_r^1 dq / (q * log ((1 + q ^ (2/k)) / (1 - q ^ (2/k))))`. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.mergerIntegral, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def mergerIntegral (k : ℕ) (r : ℝ) : ℝ :=
-  ∫ q in r..(1 : ℝ),
-    1 / (q * Real.log ((1 + q ^ ((2 : ℝ) / k)) / (1 - q ^ ((2 : ℝ) / k))))
-/-- States res:orlicz-currency from the short record for Erdős problem #1041. Transported from ErdosProblems.Erdos1041.PaperCompleteR21.exists_mergerIntegral_lt in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem exists_mergerIntegral_lt {k : ℕ} (hk : 1 ≤ k) {c : ℝ} (hc : 0 < c) :
-    ∃ r : ℝ, 0 < r ∧ r < 1 ∧ mergerIntegral k r < c * (Real.log (1 / r) / k) := by
+open scoped BigOperators
+open scoped NNReal
+open scoped ENNReal
+export PalomarCorpus.E1041_06.Shared (ConnectedBelow)
+/-- A continuous broken line `a → h → b`, with no division by a segment length. Local copy of ErdosProblems.Erdos1041.PaperCurve.hub, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def hub (a h b : ℂ) (t : ℝ) : ℂ :=
+  h + ((max (1 - t) 0 : ℝ) : ℂ) * (a - h) + ((max (t - 1) 0 : ℝ) : ℂ) * (b - h)
+/-- A specified two-segment connector, rather than merely existence of some rectifiable curve. The public `hub` fixes its image and parametrisation. Local copy of ErdosProblems.Erdos1041.PaperCurve.HubBelow, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def HubBelow (f : ℂ → ℂ) (R L : ℝ) (a h b : ℂ) : Prop :=
+  (∀ t ∈ Icc (0 : ℝ) 2, ‖f (hub a h b t)‖ < R) ∧
+    eVariationOn (hub a h b) (Icc (0 : ℝ) 2) < ENNReal.ofReal L
+/-- Occurrences, not necessarily different locations. Local copy of ErdosProblems.Erdos1041.PaperPrimitiveCompletionR10.rootProduct, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def rootProduct (w : Fin 5 → ℂ) (z : ℂ) : ℂ :=
+  (z - w 0) * (z - w 1) * (z - w 2) * (z - w 3) * (z - w 4)
+/-- The precise primitive quintic function. Local copy of ErdosProblems.Erdos1041.PaperPrimitivePath.value, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def value (a b c z : ℂ) : ℂ := z ^ 5 + a * z ^ 4 + b * z + c
+/-- States res:primitive-quintic from the short record for Erdős problem #1041. Transported from ErdosProblems.Erdos1041.PaperPrimitiveCompletionR10.complete_primitive_quintic in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem complete_primitive_quintic (p : ℂ[X]) (hp : p.Monic)
+    (hd : p.natDegree = 5) (a b c : ℂ)
+    (hvalue : ∀ z, p.eval z = value a b c z)
+    (hdisk : ∀ z, p.eval z = 0 → ‖z‖ < 1) :
+    ∃ w : Fin 5 → ℂ, (∀ z, p.eval z = rootProduct w z) ∧
+      ∃ i j : Fin 5, i ≠ j ∧ ‖b*w i+c‖ < 1 ∧ ‖b*w j+c‖ < 1 ∧
+        ConnectedBelow p.eval 1 2 (w i) (w j) ∧
+        (w i ≠ w j → HubBelow p.eval 1 2 (w i) 0 (w j)) ∧
+        (w i = w j →
+          (∀ t : ℝ, ‖p.eval ((fun _ : ℝ => w i) t)‖ < 1) ∧
+          eVariationOn (fun _ : ℝ => w i) (Icc (0 : ℝ) 2) = 0) := by
   sorry
-/-- States res:orlicz-currency from the short record for Erdős problem #1041. Transported from ErdosProblems.Erdos1041.PaperCompleteR21.mergerIntegral_eq_mul_phi in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem mergerIntegral_eq_mul_phi {k : ℕ} (hk : 1 ≤ k) {r : ℝ}
-    (hr0 : 0 < r) (hr1 : r ≤ 1) :
-    mergerIntegral k r = k * Phi (Real.log (1 / r) / k) := by
+end PalomarCorpus.E1041.PaperStatementsU
+
+namespace PalomarCorpus.E1041.PaperStatementsZA
+open Polynomial
+open Set
+open scoped ComplexConjugate
+open scoped BigOperators
+open scoped NNReal
+open scoped ENNReal
+export PalomarCorpus.E1041_06.Shared (ConnectedBelow)
+/-- A closed sublevel connector, allowing the zero-length repeated-root case. Local copy of ErdosProblems.Erdos1041.PaperAnalyticTargets.ConnectedAtMost, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def ConnectedAtMost (f : ℂ → ℂ) (R L : ℝ) (a b : ℂ) : Prop :=
+  ∃ γ : ℝ → ℂ, ContinuousOn γ (Icc (0 : ℝ) 2) ∧ γ 0 = a ∧ γ 2 = b ∧
+    (∀ t ∈ Icc (0 : ℝ) 2, ‖f (γ t)‖ ≤ R) ∧
+    BoundedVariationOn γ (Icc (0 : ℝ) 2) ∧
+    eVariationOn γ (Icc (0 : ℝ) 2) ≤ ENNReal.ofReal L
+/-- Local copy of ErdosProblems.Erdos1041.PaperAnalyticTargets.HasDistinctConnection, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def HasDistinctConnection (p : ℂ[X]) (R L : ℝ) : Prop :=
+  ∃ a b : ℂ, a ≠ b ∧ p.eval a = 0 ∧ p.eval b = 0 ∧ ConnectedBelow p.eval R L a b
+/-- Local copy of ErdosProblems.Erdos1041.PaperAnalyticTargets.RootsInOpenUnitDisc, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def RootsInOpenUnitDisc (p : ℂ[X]) : Prop :=
+  ∀ z : ℂ, p.eval z = 0 → ‖z‖ < 1
+/-- The paper's normalised critical-value separation at a real centre `w₀`: every OTHER critical point `d` satisfies `|f(d)/f(c) - w₀| ≥ S`. For `w₀ = 1` this is `ConnectorR18.ValueSeparatedAt`. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.ValueSeparatedAtCentre, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def ValueSeparatedAtCentre (f : ℂ[X]) (c : ℂ) (w₀ S : ℝ) : Prop :=
+  ∀ d : ℂ, f.derivative.eval d = 0 → d ≠ c → S ≤ ‖f.eval d / f.eval c - (w₀ : ℂ)‖
+/-- The right side of the paper's displayed bound `eq:disk-family-length`, without the `2|v|^{2/n}` prefactor: `(S/(n-1))^{2/n} log((S² + S + p)/(S² - S + p))`. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.separationCoefficient, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def separationCoefficient (n : ℕ) (S p : ℝ) : ℝ :=
+  (S / ((n : ℝ) - 1)) ^ ((2 : ℝ) / (n : ℝ)) *
+    Real.log ((S ^ 2 + S + p) / (S ^ 2 - S + p))
+/-- **The external analytic input**: the paper's Theorem `res:critical-value-separation` (separation of one simple critical value). `f` monic of degree `n ≥ 3`, `c` a simple critical point with `v = f(c) ≠ 0`, `w₀ ∈ [0,1]`, `S > max(w₀, 1-w₀)`, and every other critical point `d` obeying `|f(d)/v - w₀| ≥ S`; then two distinct roots are joined inside `{|f| ≤ |v|}` by a curve `Γ` with `length(Γ)² ≤ 2|v|^{2/n}(S/(n-1))^{2/n} log((S²+S+p)/(S²-S+p))`, `p = w₀(1-w₀)`. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.CriticalValueSeparationTheorem, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def CriticalValueSeparationTheorem : Prop :=
+  ∀ (f : ℂ[X]) (c : ℂ) (w₀ S : ℝ), f.Monic → 3 ≤ f.natDegree →
+    f.derivative.eval c = 0 → f.derivative.derivative.eval c ≠ 0 →
+    f.eval c ≠ 0 → 0 ≤ w₀ → w₀ ≤ 1 → max w₀ (1 - w₀) < S →
+    ValueSeparatedAtCentre f c w₀ S →
+    ∃ a b : ℂ, a ≠ b ∧ f.eval a = 0 ∧ f.eval b = 0 ∧
+      ConnectedAtMost f.eval ‖f.eval c‖
+        (Real.sqrt (2 * ‖f.eval c‖ ^ ((2 : ℝ) / (f.natDegree : ℝ)) *
+          separationCoefficient f.natDegree S (w₀ * (1 - w₀)))) a b
+/-- States res:separation-parent from the short record for Erdős problem #1041. Transported from ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.separation_parent in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem separation_parent (hSep : CriticalValueSeparationTheorem)
+    {f : ℂ[X]} {c : ℂ} {w₀ S : ℝ}
+    (hmonic : f.Monic) (hdeg : 3 ≤ f.natDegree)
+    (hroots : RootsInOpenUnitDisc f)
+    (hcrit : f.derivative.eval c = 0) (hsimple : f.derivative.derivative.eval c ≠ 0)
+    (hv0 : f.eval c ≠ 0) (hv1 : ‖f.eval c‖ < 1)
+    (hw0 : 0 ≤ w₀) (hw1 : w₀ ≤ 1) (hS : 4 / 3 ≤ S)
+    (hsep : ValueSeparatedAtCentre f c w₀ S) :
+    HasDistinctConnection f 1 2 := by
   sorry
-/-- States res:orlicz-currency from the short record for Erdős problem #1041. Transported from ErdosProblems.Erdos1041.PaperCompleteR21.orliczKernel_continuous in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem orliczKernel_continuous : Continuous orliczKernel := by
+end PalomarCorpus.E1041.PaperStatementsZA
+
+namespace PalomarCorpus.E1041.PaperStatementsQ
+open Set
+open Metric
+open AffineSubspace
+open Polynomial
+/-- Local copy of ErdosProblems.Erdos1041.PaperSeparationCounterexample.P, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def P : ℂ[X] := X ^ 3 + (C (3 / 100 : ℂ) * X ^ 1 + C (-3 / 4 : ℂ))
+/-- Local copy of ErdosProblems.Erdos1041.PaperSeparationCounterexample.minus, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def minus : ℂ := -Complex.I / 10
+/-- Local copy of ErdosProblems.Erdos1041.PaperSeparationCounterexample.plus, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def plus : ℂ := Complex.I / 10
+/-- Local copy of ErdosProblems.Erdos1041.PaperSeparationCounterexample.mu, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def mu : ℝ := ‖P.eval plus‖
+/-- Two complex values lie on the same oriented ray from the origin. Local copy of ErdosProblems.Erdos1041.SamePositiveRay, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def SamePositiveRay (a b : ℂ) : Prop :=
+  ∃ r : ℝ, 0 < r ∧ b = (r : ℂ) * a
+/-- States res:sep-or-false from the short record for Erdős problem #1041. Transported from ErdosProblems.Erdos1041.PaperSeparationCounterexample.complete_sep_or_counterexample in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem complete_sep_or_counterexample :
+    P.Monic ∧ P.natDegree = 3 ∧
+    (∀ z : ℂ, P.eval z = 0 → ‖z‖ < 1) ∧
+    (∀ z : ℂ, P.derivative.eval z = 0 ↔ z = plus ∨ z = minus) ∧
+    plus ≠ minus ∧
+    (∀ z : ℂ, P.derivative.eval z = 0 → P.derivative.derivative.eval z ≠ 0) ∧
+    IsLeast {x : ℝ | ∃ c : ℂ, P.derivative.eval c = 0 ∧ x = ‖P.eval c‖} mu ∧
+    (13 / 25 : ℝ) < mu ∧
+    ¬ SamePositiveRay (P.eval plus) (P.eval minus) ∧
+    ‖1 - P.eval minus / P.eval plus‖ < (2 / 375 : ℝ) ∧
+    (2 / 375 : ℝ) < 2 := by
   sorry
-/-- States res:orlicz-currency from the short record for Erdős problem #1041. Transported from ErdosProblems.Erdos1041.PaperCompleteR21.orliczKernel_tendsto_zero in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem orliczKernel_tendsto_zero : Tendsto orliczKernel (𝓝[≠] (0 : ℝ)) (𝓝 0) := by
+end PalomarCorpus.E1041.PaperStatementsQ
+
+namespace PalomarCorpus.E1041.PaperStatementsX
+open Polynomial
+open Set
+export PalomarCorpus.E1041_06.Shared (lobeComponent lobePolynomial lobeSublevel)
+/-- The external classical input for the perimeter clause: for a bounded planar set containing a closed disc of radius `ρ`, the one-dimensional Hausdorff measure of the boundary is at least the circumference `2πρ`. This is absent from Mathlib (which has `μH[1]` but no perimeter-monotonicity or isoperimetric inequality) and from this tree. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.Lobe.PlanePerimeterBound, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def PlanePerimeterBound : Prop :=
+  ∀ (A : Set ℂ) (x : ℂ) (ρ : ℝ), 0 ≤ ρ → Bornology.IsBounded A →
+    Metric.closedBall x ρ ⊆ A →
+    ENNReal.ofReal (2 * Real.pi * ρ)
+      ≤ MeasureTheory.Measure.hausdorffMeasure 1 (frontier A)
+/-- States res:one-root-gamma-false from the short record for Erdős problem #1041. Transported from ErdosProblems.Erdos1041.PaperCompleteR21.Lobe.lobe_perimeter_gt in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem lobe_perimeter_gt (hperim : PlanePerimeterBound) :
+    ENNReal.ofReal (5 * Real.pi / 4)
+      < MeasureTheory.Measure.hausdorffMeasure 1 (frontier lobeComponent) := by
   sorry
-/-- States res:orlicz-currency from the short record for Erdős problem #1041. Transported from ErdosProblems.Erdos1041.PaperCompleteR21.orlicz_currency in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem orlicz_currency :
-    (Tendsto orliczKernel (𝓝[≠] (0 : ℝ)) (𝓝 0) ∧ orliczKernel 0 = 0) ∧
-      (∀ k : ℕ, 1 ≤ k → ∀ r : ℝ, 0 < r → r ≤ 1 →
-        mergerIntegral k r = k * Phi (Real.log (1 / r) / k)) ∧
-      StrictMonoOn Phi (Ioi (0 : ℝ)) ∧
-      MonotoneOn Phi (Ioi (0 : ℝ)) ∧
-      StrictConvexOn ℝ (Ioi (0 : ℝ)) Phi ∧
-      Tendsto (fun x => Phi x / x) (𝓝[>] (0 : ℝ)) (𝓝 0) ∧
-      (∀ k : ℕ, 1 ≤ k → ∀ c : ℝ, 0 < c → ∃ r : ℝ, 0 < r ∧ r < 1 ∧
-        mergerIntegral k r < c * (Real.log (1 / r) / k)) ∧
-      ¬ ∃ c : ℝ, 0 < c ∧ ∀ k : ℕ, 1 ≤ k → ∀ r : ℝ, 0 < r → r < 1 →
-        c * (Real.log (1 / r) / k) ≤ mergerIntegral k r := by
+/-- States res:one-root-gamma-false from the short record for Erdős problem #1041. Transported from ErdosProblems.Erdos1041.PaperCompleteR21.Lobe.one_root_gamma_false in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem one_root_gamma_false (hperim : PlanePerimeterBound)
+    (hGammaQuarter : Real.Gamma (1 / 4) ≤ 3.63) :
+    {z : ℂ | z ∈ lobeComponent ∧ lobePolynomial.eval z = 0} = {(0 : ℂ)} ∧
+      (∃ U : Set ℂ, IsOpen U ∧ Metric.closedBall (0 : ℂ) (5 / 8) ⊆ U ∧
+        U ⊆ lobeComponent) ∧
+      ENNReal.ofReal (5 * Real.pi / 4)
+        < MeasureTheory.Measure.hausdorffMeasure 1 (frontier lobeComponent) ∧
+      Real.Gamma (1 / 4) ^ 2 / (2 * Real.sqrt Real.pi)
+        ≤ (Real.pi / 2) * (1 + Real.sqrt 2) ∧
+      (Real.pi / 2) * (1 + Real.sqrt 2) < 5 * Real.pi / 4 := by
   sorry
-/-- States res:orlicz-currency from the short record for Erdős problem #1041. Transported from ErdosProblems.Erdos1041.PaperCompleteR21.phi_div_tendsto_zero in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem phi_div_tendsto_zero :
-    Tendsto (fun x => Phi x / x) (𝓝[>] (0 : ℝ)) (𝓝 0) := by
+end PalomarCorpus.E1041.PaperStatementsX
+
+namespace PalomarCorpus.E1041.PaperStructuresAD
+open Polynomial
+open Set
+export PalomarCorpus.E1041_06.Shared (lobeComponent lobePolynomial lobeSublevel)
+/-- States res:one-root-gamma-false from the short record for Erdős problem #1041. Transported from ErdosProblems.Erdos1041.PaperCompleteR21.Lobe.one_root_gamma_false_unconditional in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem one_root_gamma_false_unconditional :
+    {z : ℂ | z ∈ lobeComponent ∧ lobePolynomial.eval z = 0} = {(0 : ℂ)} ∧
+      (∃ U : Set ℂ, IsOpen U ∧ Metric.closedBall (0 : ℂ) (5 / 8) ⊆ U ∧
+        U ⊆ lobeComponent) ∧
+      ENNReal.ofReal (5 * Real.pi / 4)
+        < MeasureTheory.Measure.hausdorffMeasure 1 (frontier lobeComponent) ∧
+      Real.Gamma (1 / 4) ^ 2 / (2 * Real.sqrt Real.pi)
+        ≤ (Real.pi / 2) * (1 + Real.sqrt 2) ∧
+      (Real.pi / 2) * (1 + Real.sqrt 2) < 5 * Real.pi / 4 := by
   sorry
-/-- States res:orlicz-currency from the short record for Erdős problem #1041. Transported from ErdosProblems.Erdos1041.PaperCompleteR21.phi_strictConvexOn in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem phi_strictConvexOn : StrictConvexOn ℝ (Ioi (0 : ℝ)) Phi := by
-  sorry
-/-- States res:orlicz-currency from the short record for Erdős problem #1041. Transported from ErdosProblems.Erdos1041.PaperCompleteR21.phi_strictMonoOn in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem phi_strictMonoOn : StrictMonoOn Phi (Ici (0 : ℝ)) := by
-  sorry
-end PalomarCorpus.E1041.PaperStatementsF
+end PalomarCorpus.E1041.PaperStructuresAD

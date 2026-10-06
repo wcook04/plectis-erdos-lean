@@ -8,8 +8,30 @@ import Erdos257PeriodNoncollapse.TwentyOneQuotientGreedy
 import Solutions.PalomarCorpus.E257_52.Statement
 
 namespace PalomarCorpus.E257.TwentyOneFatalBranch
+export PalomarCorpus.E257_52.Shared (greedyMersenneRemainder mersenneAchievementSet mersenneWeight positiveMersenneSupportValue)
 
 noncomputable section
+
+noncomputable def endpointDivisorContribution (D : Finset ℕ) (n : ℕ) : ℕ :=
+  (D.filter fun d ↦ d ∣ n).card
+
+noncomputable def lowerSupportFromBits : ℕ → List Bool → Finset ℕ
+  | _, [] => ∅
+  | d, false :: bits => lowerSupportFromBits (d + 1) bits
+  | d, true :: bits => insert d (lowerSupportFromBits (d + 1) bits)
+
+noncomputable def twentyOneEvenQuotientGreedySupport (R : ℕ) : Finset ℕ :=
+  lowerSupportFromBits 2
+    (integerGreedyBits
+      (localMersenneWeights (2 * R) R)
+      (twentyOneQuotientTarget (2 * R)))
+
+noncomputable def localPrefixTwoStepPulse (D : Finset ℕ) (M : ℕ) : ℕ :=
+  2 * endpointDivisorContribution D (M + 1) +
+    endpointDivisorContribution D (M + 2)
+
+noncomputable def twentyOneTargetTwoStepPulse (M : ℕ) : ℕ :=
+  4 * (2 ^ M % 21) / 21
 
 private theorem integerGreedyBits_transport :
     integerGreedyBits =

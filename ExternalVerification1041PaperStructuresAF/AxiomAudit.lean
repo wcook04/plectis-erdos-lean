@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification1041PaperStructuresAF
+
+#print axioms Erdos249257.ExternalVerification1041PaperStructuresAF.erdos1041_counterexample

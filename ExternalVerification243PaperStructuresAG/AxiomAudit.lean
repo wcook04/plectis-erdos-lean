@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification243PaperStructuresAG
+
+#print axioms Erdos249257.ExternalVerification243PaperStructuresAG.squareSpecialisation_holds

@@ -10,7 +10,7 @@ import Solutions.PalomarCorpus.E257_51.Statement
 open Filter Set
 
 namespace PalomarCorpus.E257.RationalTailRigidity
-export PalomarCorpus.E257_51.Shared (erdosSupportSeries supportCoeff)
+export PalomarCorpus.E257_51.Shared (erdosSupportSeries)
 
 noncomputable section
 

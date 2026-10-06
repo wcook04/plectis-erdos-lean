@@ -31,7 +31,7 @@ open scoped BigOperators
 /- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
 
 namespace PalomarCorpus.E257.PaperStatementsAR
-export PalomarCorpus.E257_28.Shared (localBinarySuffix localMersenneQuotient localPrefixQuotient mersenneWeightRat)
+export PalomarCorpus.E257_28.Shared (localBinarySuffix localMersennePrefixValue localMersenneQuotient localPrefixQuotient mersenneWeightRat)
 
 noncomputable def CofinalExactLocalMersenneHalfRows : Prop :=
   ∀ N : ℕ, ∃ n : ℕ, N ≤ n ∧ ExactLocalMersenneHalfRow n

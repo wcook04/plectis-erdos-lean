@@ -12,4 +12,3 @@ import Solutions.PalomarCorpus.E257_50
 #print axioms PalomarCorpus.E257.GeneralRepairCriterion.mem_iff_greedyBinaryDefect_sqrt_windows
 #print axioms PalomarCorpus.E257.LiteralWeightedCover.exists_weighted_not_strengthened_host
 #print axioms PalomarCorpus.E257.LiteralWeightedCover.exists_weighted_obstruction_with_mixed_heredity
-#print axioms PalomarCorpus.E257.PositiveSkipEquivalence.greedyMersenneRemainderRat_half_pos

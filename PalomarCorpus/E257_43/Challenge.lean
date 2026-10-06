@@ -193,6 +193,17 @@ theorem paper_rung_finite_decision {J : ℕ} (hJ : 2 ≤ J) :
   sorry
 end PalomarCorpus.E257.PaperStatementsJ
 
+namespace PalomarCorpus.E257.PaperStructuresCM
+open Filter
+open Topology
+open Classical
+export PalomarCorpus.E257_43.Shared (rungTail rungWeight)
+/-- States lem:tr-forced-greedy from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_forced_greedy_tail_lt_weight' in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem paper_forced_greedy_tail_lt_weight' {J : ℕ} (hJ : 2 ≤ J) (n : ℕ) :
+    rungTail J n < rungWeight J n := by
+  sorry
+end PalomarCorpus.E257.PaperStructuresCM
+
 namespace PalomarCorpus.E257.PaperStatementsAA
 /-- The manuscript's misalignment mass `μ_J(M) = ∑_{q=2}^{J} 2^{M mod q}/(2^q-1)`. Local copy of ErdosProblems.Erdos257.PaperCompleteR21.misalignMass, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def misalignMass (J M : ℕ) : ℝ :=

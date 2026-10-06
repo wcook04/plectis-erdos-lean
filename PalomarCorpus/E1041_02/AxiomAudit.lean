@@ -1,9 +1,12 @@
 import Solutions.PalomarCorpus.E1041_02
 
-#print axioms PalomarCorpus.E1041.CubicPath.complete_translated_cubic_quotient_fibres
-#print axioms PalomarCorpus.E1041.CubicPath.cubic_paper_complete
-#print axioms PalomarCorpus.E1041.CubicPath.monic_cubic_connector
-#print axioms PalomarCorpus.E1041.PaperStatementsY.cfa_capacity_criterion
-#print axioms PalomarCorpus.E1041.PaperStatementsZA.cfa_arity_criterion
-#print axioms PalomarCorpus.E1041.PaperStatementsZA.cfa_constant_factor_path
-#print axioms PalomarCorpus.E1041.PaperStatementsZB.subcritical_perimeter_path_paper
+#print axioms PalomarCorpus.E1041.PaperStatementsAC.circle_slice_packing
+#print axioms PalomarCorpus.E1041.PaperStatementsAC.circle_slice_packing_abstract
+#print axioms PalomarCorpus.E1041.PaperStatementsAC.dual_arity_floor_abstract
+#print axioms PalomarCorpus.E1041.PaperStatementsC.cosh_dist_polar
+#print axioms PalomarCorpus.E1041.PaperStatementsC.dist_polar_I
+#print axioms PalomarCorpus.E1041.PaperStatementsC.exists_polar
+#print axioms PalomarCorpus.E1041.PaperStatementsC.polar_zero_zero
+#print axioms PalomarCorpus.E1041.PaperStatementsZ.circle_slice_packing
+#print axioms PalomarCorpus.E1041.PaperStatementsZA.scaledLowCriticalFiveHalves_of_lowCritical
+#print axioms PalomarCorpus.E1041.PaperStatementsZA.scaledLowCritical_of_lowCritical

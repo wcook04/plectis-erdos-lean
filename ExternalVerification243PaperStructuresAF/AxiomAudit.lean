@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification243PaperStructuresAF
+
+#print axioms Erdos249257.ExternalVerification243PaperStructuresAF.nonintegral_regular_rate_irrational

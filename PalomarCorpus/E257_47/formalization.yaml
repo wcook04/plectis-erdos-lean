@@ -2,9 +2,9 @@ version: v0.4
 project:
   name: 'Erdős #257, note sections 1 to 9: introduction and main results; finite-support denominator periods; greedy membership and an integer recurrence'
   description: >-
-    This entry states 8 theorems that only the short note for Erdős problem #257 states, in sections 1 (introduction and main results), 4 (finite-support denominator periods), 8 (greedy membership and an integer recurrence) and 9 (further questions): the theorem “a weighted condition on the support” (section 1), as finitePrimeWeighted_fixedBase_hereditary; the theorem “reciprocal-summable supports” (section 1), as irrational_erdosSupportSeries_of_summable_reciprocal; the theorem “the exact denominator period” (section 4), as coprime_base_den_finiteErdosSum and lcm_lt_den_finiteErdosSum; the theorem “membership and nonincreasing integer remainders” (section 8), as paper_general_repair_criteria; the theorem “integer-quotient tests for 1/21” (section 9), as one_div_twenty_one_mem_mersenneAchievementSet_of_cofinalGreedyDecay and twentyOneCofinalEvenQuotientGreedyDecay_of_closedRows; the theorem “finite approximations with vanishing scaled error” (section 9), as paper_terminalhalf.
+    This entry states 9 theorems that only the short note for Erdős problem #257 states, in sections 1 (introduction and main results), 4 (finite-support denominator periods), 8 (greedy membership and an integer recurrence) and 9 (further questions): the theorem “a weighted condition on the support” (section 1), as finitePrimeWeighted_fixedBase_hereditary; the theorem “reciprocal-summable supports” (section 1), as irrational_erdosSupportSeries_of_summable_reciprocal; the theorem “the exact denominator period” (section 4), as coprime_base_den_finiteErdosSum and lcm_lt_den_finiteErdosSum; the theorem “membership and nonincreasing integer remainders” (section 8), as paper_general_repair_criteria; the theorem “integer-quotient tests for 1/21” (section 9), as one_div_twenty_one_mem_mersenneAchievementSet_of_cofinalGreedyDecay and twentyOneCofinalEvenQuotientGreedyDecay_of_closedRows; the theorem “finite approximations with vanishing scaled error” (section 9), as paper_terminalhalf and paper_terminalhalf_iff.
 
-    5 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 3 are derived from the source declaration by a short tactic proof, which certifies implication.
+    6 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 3 are derived from the source declaration by a short tactic proof, which certifies implication.
 
     Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
 
@@ -55,13 +55,13 @@ sources:
   license: Apache-2.0
   author_endorsement: n/a
 status:
-  scope: "One Comparator configuration selecting the 8 theorems listed in PalomarCorpus/E257_47/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 52 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_52, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
+  scope: "One Comparator configuration selecting the 9 theorems listed in PalomarCorpus/E257_47/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 53 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_53, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
-  trusted_challenge_sorry_count: 8
-  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E257_47/Challenge.lean. Comparator replay run 35935225572 of wcook04/plectis-erdos-lean at commit cc7e541 built this entry's Challenge and Solution with leanprover/lean4:v4.30.0 and accepted every compared theorem with both the Lean kernel and NanoDa, permitting only the axioms propext, Quot.sound and Classical.choice."
-  axiom_audit_status: "Lean Release Gate run 35935275645 at commit 18ea89f ran scripts/check_axiom_budget.py --run-palomar on the built Solution environment and printed only propext, Quot.sound and Classical.choice for every compared theorem."
+  trusted_challenge_sorry_count: 9
+  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E257_47/Challenge.lean, and the Solution modules contain no sorry. Comparator and kernel outcomes are commit-specific and are recorded separately from this source metadata."
+  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. Axiom-audit outcomes are commit-specific and belong in separate receipts; this source field is not an audit receipt."
   permitted_axiom_budget:
   - propext
   - Quot.sound
@@ -97,6 +97,10 @@ status:
     comparator_config: "PalomarCorpus/E257_47/comparator.json"
   - declaration: "PalomarCorpus.E257.PaperStructuresBQ.twentyOneCofinalEvenQuotientGreedyDecay_of_closedRows"
     file: "Solutions/PalomarCorpus/E257_47/PaperStructuresBQ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_47/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStructuresCO.paper_terminalhalf_iff"
+    file: "Solutions/PalomarCorpus/E257_47/PaperStructuresCO.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_47/comparator.json"
   development_status: substantive

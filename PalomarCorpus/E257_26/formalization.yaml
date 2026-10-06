@@ -2,9 +2,9 @@ version: v0.4
 project:
   name: 'Erdős #257, record section 6.2: exact identities and reductions (part 6 of 6)'
   description: >-
-    This entry states 9 theorems that the long record for Erdős problem #257 states in section 6.2 (exact identities and reductions): the lemma “An integer test for the interval between the dyadic and Mersenne weights” (section 6.2), as greedyHalf_mem_nextMersenneDyadicSliver_iff_excess; the lemma “The odd denominator survives dyadic subtraction” (section 6.2), as dyadicResidual_denominator_sandwich; the lemma “A guaranteed divisor of a reduced denominator” (section 6.2), as divisor_dvd_divInt_den and survivingDivisor_dvd_scaled_divInt_den; the lemma “Commuting prime-power differences” (section 6.2), as primePowerLayer_comm and mixedPrimePowerLayerTwo_supportCoeffInt; the proposition “Achievement-set topology: compact, closed, perfect, measure exactly one” (section 6.2), as paper_achievement_set_topology; the theorem “Nonmembership of one half and a finite fatal gap” (section 6.2), as half_mem_mersenneAchievementSet_iff_no_existsFatalHalfGap and half_mem_mersenneAchievementSet_or_exists_fatal_gap.
+    This entry states 16 theorems that the long record for Erdős problem #257 states in section 6.2 (exact identities and reductions): the lemma “An integer test for the interval between the dyadic and Mersenne weights” (section 6.2), as greedyHalf_mem_nextMersenneDyadicSliver_iff_excess and divInt_mem_nextMersenneDyadicSliver_iff_excess; the lemma “The odd denominator survives dyadic subtraction” (section 6.2), as dyadicResidual_denominator_sandwich, dyadicResidualIntNumerator_coprime_oddDenominator and dyadicResidualInt_denominator_sandwich; the lemma “A guaranteed divisor of a reduced denominator” (section 6.2), as divisor_dvd_divInt_den and survivingDivisor_dvd_scaled_divInt_den; the lemma “Commuting prime-power differences” (section 6.2), as primePowerLayer_comm and mixedPrimePowerLayerTwo_supportCoeffInt; the proposition “Achievement-set topology: compact, closed, perfect, measure exactly one” (section 6.2), as paper_achievement_set_topology; the theorem “Nonmembership of one half and a finite fatal gap” (section 6.2), as half_mem_mersenneAchievementSet_iff_no_existsFatalHalfGap and half_mem_mersenneAchievementSet_or_exists_fatal_gap; the theorem “Perturbed-family maximality and the three-branch recurrence” (section 6.2), as above_newSum_le_capacity_iff, below_newSum_le_capacity, nextRemainder_trichotomy and prefixChoice_maximal.
 
-    8 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 1 is derived from the source declaration by a short tactic proof, which certifies implication.
+    14 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 2 are derived from the source declaration by a short tactic proof, which certifies implication.
 
     Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
 
@@ -55,13 +55,13 @@ sources:
   license: Apache-2.0
   author_endorsement: n/a
 status:
-  scope: "One Comparator configuration selecting the 9 theorems listed in PalomarCorpus/E257_26/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 52 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_52, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
+  scope: "One Comparator configuration selecting the 16 theorems listed in PalomarCorpus/E257_26/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 53 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_53, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
-  trusted_challenge_sorry_count: 9
-  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E257_26/Challenge.lean. Comparator replay run 35935225572 of wcook04/plectis-erdos-lean at commit cc7e541 built this entry's Challenge and Solution with leanprover/lean4:v4.30.0 and accepted every compared theorem with both the Lean kernel and NanoDa, permitting only the axioms propext, Quot.sound and Classical.choice."
-  axiom_audit_status: "Lean Release Gate run 35935275645 at commit 18ea89f ran scripts/check_axiom_budget.py --run-palomar on the built Solution environment and printed only propext, Quot.sound and Classical.choice for every compared theorem."
+  trusted_challenge_sorry_count: 16
+  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E257_26/Challenge.lean, and the Solution modules contain no sorry. Comparator and kernel outcomes are commit-specific and are recorded separately from this source metadata."
+  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. Axiom-audit outcomes are commit-specific and belong in separate receipts; this source field is not an audit receipt."
   permitted_axiom_budget:
   - propext
   - Quot.sound
@@ -101,6 +101,34 @@ status:
     comparator_config: "PalomarCorpus/E257_26/comparator.json"
   - declaration: "PalomarCorpus.E257.PaperStatementsD.greedyHalf_mem_nextMersenneDyadicSliver_iff_excess"
     file: "Solutions/PalomarCorpus/E257_26/PaperStatementsD.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_26/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStructuresCJ.above_newSum_le_capacity_iff"
+    file: "Solutions/PalomarCorpus/E257_26/PaperStructuresCJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_26/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStructuresCJ.below_newSum_le_capacity"
+    file: "Solutions/PalomarCorpus/E257_26/PaperStructuresCJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_26/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStructuresCJ.nextRemainder_trichotomy"
+    file: "Solutions/PalomarCorpus/E257_26/PaperStructuresCJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_26/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStructuresCJ.prefixChoice_maximal"
+    file: "Solutions/PalomarCorpus/E257_26/PaperStructuresCJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_26/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStructuresCL.dyadicResidualIntNumerator_coprime_oddDenominator"
+    file: "Solutions/PalomarCorpus/E257_26/PaperStructuresCL.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_26/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStructuresCL.dyadicResidualInt_denominator_sandwich"
+    file: "Solutions/PalomarCorpus/E257_26/PaperStructuresCL.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_26/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStructuresCN.divInt_mem_nextMersenneDyadicSliver_iff_excess"
+    file: "Solutions/PalomarCorpus/E257_26/PaperStructuresCN.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_26/comparator.json"
   development_status: substantive

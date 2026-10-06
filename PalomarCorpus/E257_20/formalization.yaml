@@ -2,7 +2,7 @@ version: v0.4
 project:
   name: 'Erdős #257, record section 6.2: exact identities and reductions (part 2 of 6)'
   description: >-
-    This entry states 15 theorems that the long record for Erdős problem #257 states in section 6.2 (exact identities and reductions): the lemma “The values on either side of an eventual right continuation” (section 6.2), as prefix_add_mersenneTail_lt_half_of_eventually_right; the lemma “Each Mersenne weight exceeds its remaining tail” (section 6.2), as halfTwoChannelCap_lt_mersenneTail, mersenneTail_eq_weight_add, mersenneTail_le_two_mul_weight, mersenneTail_lt_weight and two_mul_mersenneWeight_succ_lt; the lemma “The two next-prefix intervals and their gap” (section 6.2), as half_step_forced and isStraddlePrefix_step_trichotomy; the lemma “A greedy gap excludes every representation” (section 6.2), as depth_prefix_interval_disjoint, fatal_gap_endpoint_bounds, fatal_gap_excludes_every_representation and fatal_gap_within_prefix_interval; the lemma “No finite Mersenne sum equals one half” (section 6.2), as half_ne_coe_finset_add_mersenneTail and positiveMersenneSupportValue_coe_finset_ne_half; the theorem “Last-skip iff local fatality: a pointwise criterion” (section 6.2), as half_mem_iff_every_actual_skip_survives.
+    This entry states 15 theorems that the long record for Erdős problem #257 states in section 6.2 (exact identities and reductions): the lemma “The values on either side of an eventual right continuation” (section 6.2), as prefix_add_mersenneTail_lt_half_of_eventually_right; the lemma “Each Mersenne weight exceeds its remaining tail” (section 6.2), as halfTwoChannelCap_lt_mersenneTail, mersenneTail_eq_weight_add, mersenneTail_le_two_mul_weight, mersenneTail_lt_weight and two_mul_mersenneWeight_succ_lt; the lemma “The two next-prefix intervals and their gap” (section 6.2), as half_strict, positiveMersenneSupportValue_insert, half_step_forced and isStraddlePrefix_step_trichotomy; the lemma “A greedy gap excludes every representation” (section 6.2), as depth_prefix_interval_disjoint, fatal_gap_endpoint_bounds, fatal_gap_excludes_every_representation and fatal_gap_within_prefix_interval; the lemma “No finite Mersenne sum equals one half” (section 6.2), as half_ne_coe_finset_add_mersenneTail.
 
     11 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 4 are derived from the source declaration by a short tactic proof, which certifies implication.
 
@@ -55,13 +55,13 @@ sources:
   license: Apache-2.0
   author_endorsement: n/a
 status:
-  scope: "One Comparator configuration selecting the 15 theorems listed in PalomarCorpus/E257_20/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 52 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_52, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
+  scope: "One Comparator configuration selecting the 15 theorems listed in PalomarCorpus/E257_20/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 53 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_53, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
   trusted_challenge_sorry_count: 15
-  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E257_20/Challenge.lean. Comparator replay run 35935225572 of wcook04/plectis-erdos-lean at commit cc7e541 built this entry's Challenge and Solution with leanprover/lean4:v4.30.0 and accepted every compared theorem with both the Lean kernel and NanoDa, permitting only the axioms propext, Quot.sound and Classical.choice."
-  axiom_audit_status: "Lean Release Gate run 35935275645 at commit 18ea89f ran scripts/check_axiom_budget.py --run-palomar on the built Solution environment and printed only propext, Quot.sound and Classical.choice for every compared theorem."
+  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E257_20/Challenge.lean, and the Solution modules contain no sorry. Comparator and kernel outcomes are commit-specific and are recorded separately from this source metadata."
+  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. Axiom-audit outcomes are commit-specific and belong in separate receipts; this source field is not an audit receipt."
   permitted_axiom_budget:
   - propext
   - Quot.sound
@@ -107,16 +107,16 @@ status:
     file: "Solutions/PalomarCorpus/E257_20/PaperStatementsAM.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_20/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAM.positiveMersenneSupportValue_coe_finset_ne_half"
-    file: "Solutions/PalomarCorpus/E257_20/PaperStatementsAM.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_20/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsD.half_mem_iff_every_actual_skip_survives"
-    file: "Solutions/PalomarCorpus/E257_20/PaperStatementsD.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_20/comparator.json"
   - declaration: "PalomarCorpus.E257.PaperStructuresBJ.prefix_add_mersenneTail_lt_half_of_eventually_right"
     file: "Solutions/PalomarCorpus/E257_20/PaperStructuresBJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_20/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStructuresCH.IsStraddlePrefix.half_strict"
+    file: "Solutions/PalomarCorpus/E257_20/PaperStructuresCH.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_20/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStructuresCN.positiveMersenneSupportValue_insert"
+    file: "Solutions/PalomarCorpus/E257_20/PaperStructuresCN.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_20/comparator.json"
   - declaration: "PalomarCorpus.E257.PaperStructuresU.IsStraddlePrefix.half_step_forced"

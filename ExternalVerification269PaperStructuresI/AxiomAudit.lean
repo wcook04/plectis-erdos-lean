@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification269PaperStructuresI
+
+#print axioms Erdos249257.ExternalVerification269PaperStructuresI.distinctHeightSum235_irrational

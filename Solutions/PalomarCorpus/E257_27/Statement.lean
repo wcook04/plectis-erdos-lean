@@ -18,12 +18,12 @@ walks from a compared theorem statement is byte-identical in the Challenge and S
 environments. Generated from the Challenge; do not edit by hand.
 -/
 
+open scoped BigOperators
 open Filter
 open Set
 open Topology
 open scoped ENNReal
 open MeasureTheory
-open scoped BigOperators
 
 namespace PalomarCorpus.E257_27.Shared
 /-- Structural part of an endpoint-by-endpoint repair trajectory. The arithmetic producer receipts are separated into `GlobalBooleanMobiusRepairFeasible` below. Local copy of Erdos249257.BooleanMobiusGlobalRepairTrajectory, restated so the compared statements elaborate against Mathlib alone. -/
@@ -88,6 +88,10 @@ noncomputable def mersenneAchievementSet : Set ℝ :=
   {x : ℝ | ∃ A : Set ℕ, 0 ∉ A ∧ x = positiveMersenneSupportValue A}
 end PalomarCorpus.E257_27.Shared
 
+namespace PalomarCorpus.E257.PaperStructuresCJ
+open scoped BigOperators
+end PalomarCorpus.E257.PaperStructuresCJ
+
 namespace PalomarCorpus.E257.PaperStatementsAL
 open Filter
 open Set
@@ -126,24 +130,7 @@ open Filter
 open scoped ENNReal
 open MeasureTheory
 open Topology
-export PalomarCorpus.E257_27.Shared (CofinalExactLocalMersenneHalfRows CofinalPositiveHalfGreedySkips ExactLocalMersenneHalfRow SkippedCoreCriticalQuotientSupply greedyMersenneRemainderRat localMersennePrefixValue localMersenneQuotient localPrefixQuotient mersenneWeightRat)
-/-- Positive exponents selected through a finite exact-rational greedy run. Local copy of Erdos249257.greedyMersennePrefixRat, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def greedyMersennePrefixRat (x : ℚ) (n : ℕ) : Finset ℕ :=
-  (((Finset.range n).filter fun k =>
-      mersenneWeightRat (k + 1) ≤ greedyMersenneRemainderRat x k).image
-    fun k => k + 1)
-/-- Local copy of Erdos249257.halfGreedyPrefixSupport, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def halfGreedyPrefixSupport (n : ℕ) : Finset ℕ :=
-  greedyMersennePrefixRat (1 / 2 : ℚ) n
-/-- The minimal actual-orbit form of the socket: the quotient lower bound is required only when rank `c` is genuinely skipped by the rational half-greedy orbit. Local copy of Erdos249257.HalfGreedySkippedCriticalQuotientSupply, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def HalfGreedySkippedCriticalQuotientSupply : Prop :=
-  ∀ c : ℕ,
-    4 ≤ c →
-    greedyMersenneRemainderRat (1 / 2 : ℚ) (c - 1) <
-      mersenneWeightRat c →
-    2 ^ ((2 * c - 2) - 1) ≤
-      localPrefixQuotient
-        (insert c (halfGreedyPrefixSupport (c - 1))) (2 * c - 2)
+export PalomarCorpus.E257_27.Shared (CofinalExactLocalMersenneHalfRows CofinalPositiveHalfGreedySkips ExactLocalMersenneHalfRow greedyMersenneRemainderRat localMersenneQuotient localPrefixQuotient mersenneWeightRat)
 end PalomarCorpus.E257.PaperStatementsF
 
 namespace PalomarCorpus.E257.PaperStructuresAW

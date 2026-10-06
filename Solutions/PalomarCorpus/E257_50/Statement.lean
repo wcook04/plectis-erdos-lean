@@ -169,18 +169,3 @@ structure LogBudgetCover (A : Set ℕ) where
     (∑' d : ℕ, coefficient j d / (d : ℝ)) /
       (weight j ^ exponent j) / ((2 : ℝ) ^ exponent j - 1))
 end PalomarCorpus.E257.LiteralWeightedCover
-
-namespace PalomarCorpus.E257.PositiveSkipEquivalence
-open Set
-/-- The rational Mersenne weight 1 divided by 2 to the power n minus 1, taken in the rationals; at n = 0 the value is 0. -/
-noncomputable def mersenneWeightRat (n : ℕ) : ℚ :=
-  1 / ((2 : ℚ) ^ n - 1)
-/-- The rational greedy Mersenne remainder of a rational target x through rank n, computed exactly in the rationals: it starts at x and at each rank n+1 subtracts the rational weight 1 divided by 2 to the power n+1 minus 1 exactly when that weight is at most the current remainder. -/
-noncomputable def greedyMersenneRemainderRat (x : ℚ) : ℕ → ℚ
-  | 0 => x
-  | n + 1 =>
-      if mersenneWeightRat (n + 1) ≤ greedyMersenneRemainderRat x n then
-        greedyMersenneRemainderRat x n - mersenneWeightRat (n + 1)
-      else
-        greedyMersenneRemainderRat x n
-end PalomarCorpus.E257.PositiveSkipEquivalence

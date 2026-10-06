@@ -13,6 +13,7 @@ open Topology
 /- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
 
 namespace PalomarCorpus.E257.PaperStatementsAG
+export PalomarCorpus.E257_17.Shared (erdosSupportSeries)
 
 noncomputable def finiteErdosSum (F : Finset Nat) (b : Nat) : Rat :=
   ∑ n ∈ F, 1 / ((b : Rat) ^ n - 1)

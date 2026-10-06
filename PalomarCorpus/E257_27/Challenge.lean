@@ -9,7 +9,7 @@ import Mathlib
 set_option autoImplicit false
 
 /-!
-# Erdős #257: two implications yielding half-membership; compatible finite approximations; a quotient bound at a crossing
+# Erdős #257, record sections 6.2 to 6.3: exact identities and reductions; consequence theorems (part 3 of 3)
 
 Each theorem below restates, against Mathlib alone, a theorem of the Lean development
 for Erdős problem #257, in the order the papers state them. The definitions a statement
@@ -18,12 +18,12 @@ the source declaration it comes from. Erdős problem #257 remains open, and no t
 this entry decides it.
 -/
 
+open scoped BigOperators
 open Filter
 open Set
 open Topology
 open scoped ENNReal
 open MeasureTheory
-open scoped BigOperators
 
 namespace PalomarCorpus.E257_27.Shared
 /-- Structural part of an endpoint-by-endpoint repair trajectory. The arithmetic producer receipts are separated into `GlobalBooleanMobiusRepairFeasible` below. Local copy of Erdos249257.BooleanMobiusGlobalRepairTrajectory, restated so the compared statements elaborate against Mathlib alone. -/
@@ -87,6 +87,15 @@ noncomputable def positiveMersenneSupportValue (A : Set ℕ) : ℝ :=
 noncomputable def mersenneAchievementSet : Set ℝ :=
   {x : ℝ | ∃ A : Set ℕ, 0 ∉ A ∧ x = positiveMersenneSupportValue A}
 end PalomarCorpus.E257_27.Shared
+
+namespace PalomarCorpus.E257.PaperStructuresCJ
+open scoped BigOperators
+/-- States thm:perturbed-family-maximality from the long record for Erdős problem #257. Transported from Erdos249257.HalfCylinderIntegerGreedy.PerturbedFamily.AdjacentCut.prefixRemainder_eq_capacity_sub_choice in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem prefixRemainder_eq_capacity_sub_choice {α : Type*} (F : PerturbedFamily α) {F : PerturbedFamily α} {C : ℕ} (K : F.AdjacentCut C)
+    [Decidable K.successorCarries] :
+    K.prefixRemainder = K.newCapacity - F.newSum K.prefixChoice := by
+  sorry
+end PalomarCorpus.E257.PaperStructuresCJ
 
 namespace PalomarCorpus.E257.PaperStatementsAL
 open Filter
@@ -164,24 +173,7 @@ open Filter
 open scoped ENNReal
 open MeasureTheory
 open Topology
-export PalomarCorpus.E257_27.Shared (CofinalExactLocalMersenneHalfRows CofinalPositiveHalfGreedySkips ExactLocalMersenneHalfRow SkippedCoreCriticalQuotientSupply greedyMersenneRemainderRat localMersennePrefixValue localMersenneQuotient localPrefixQuotient mersenneWeightRat)
-/-- Positive exponents selected through a finite exact-rational greedy run. Local copy of Erdos249257.greedyMersennePrefixRat, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def greedyMersennePrefixRat (x : ℚ) (n : ℕ) : Finset ℕ :=
-  (((Finset.range n).filter fun k =>
-      mersenneWeightRat (k + 1) ≤ greedyMersenneRemainderRat x k).image
-    fun k => k + 1)
-/-- Local copy of Erdos249257.halfGreedyPrefixSupport, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def halfGreedyPrefixSupport (n : ℕ) : Finset ℕ :=
-  greedyMersennePrefixRat (1 / 2 : ℚ) n
-/-- The minimal actual-orbit form of the socket: the quotient lower bound is required only when rank `c` is genuinely skipped by the rational half-greedy orbit. Local copy of Erdos249257.HalfGreedySkippedCriticalQuotientSupply, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def HalfGreedySkippedCriticalQuotientSupply : Prop :=
-  ∀ c : ℕ,
-    4 ≤ c →
-    greedyMersenneRemainderRat (1 / 2 : ℚ) (c - 1) <
-      mersenneWeightRat c →
-    2 ^ ((2 * c - 2) - 1) ≤
-      localPrefixQuotient
-        (insert c (halfGreedyPrefixSupport (c - 1))) (2 * c - 2)
+export PalomarCorpus.E257_27.Shared (CofinalExactLocalMersenneHalfRows CofinalPositiveHalfGreedySkips ExactLocalMersenneHalfRow greedyMersenneRemainderRat localMersenneQuotient localPrefixQuotient mersenneWeightRat)
 /-- States record:257bm-c2 from the long record for Erdős problem #257. Transported from Erdos249257.cofinalExactLocalMersenneHalfRows_of_positiveHalfGreedySkips in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem cofinalExactLocalMersenneHalfRows_of_positiveHalfGreedySkips
     (hskips : CofinalPositiveHalfGreedySkips) :
@@ -194,11 +186,6 @@ theorem exactLocalMersenneHalfRow_of_positiveHalfGreedySkip
     (hskip : greedyMersenneRemainderRat (1 / 2 : ℚ) (c - 1) <
       mersenneWeightRat c) :
     ExactLocalMersenneHalfRow (2 * c - 2) := by
-  sorry
-/-- States record:257bm-c6 from the long record for Erdős problem #257. Transported from Erdos249257.skippedCoreCriticalQuotientSupply_iff_halfGreedySkipped in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem skippedCoreCriticalQuotientSupply_iff_halfGreedySkipped :
-    SkippedCoreCriticalQuotientSupply ↔
-      HalfGreedySkippedCriticalQuotientSupply := by
   sorry
 end PalomarCorpus.E257.PaperStatementsF
 

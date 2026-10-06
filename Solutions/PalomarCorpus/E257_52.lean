@@ -5,4 +5,6 @@ Authors: Will Cook
 -/
 import Mathlib
 import Solutions.PalomarCorpus.E257_52.Statement
+import Solutions.PalomarCorpus.E257_52.ScaledGreedyTrap
+import Solutions.PalomarCorpus.E257_52.TerminalScaledVanishing
 import Solutions.PalomarCorpus.E257_52.TwentyOneFatalBranch

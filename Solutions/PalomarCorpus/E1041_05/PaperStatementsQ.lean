@@ -17,9 +17,15 @@ open Polynomial
 /- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
 
 namespace PalomarCorpus.E1041.PaperStatementsQ
+export PalomarCorpus.E1041_05.Shared (SamePositiveRay)
 
-noncomputable def newtonFlowVector (value derivative : ℂ) : ℂ :=
-  -value / derivative
+noncomputable def P : ℂ[X] := X ^ 3 + (C (3 / 100 : ℂ) * X ^ 1 + C (-3 / 4 : ℂ))
+
+noncomputable def minus : ℂ := -Complex.I / 10
+
+noncomputable def plus : ℂ := Complex.I / 10
+
+noncomputable def mu : ℝ := ‖P.eval plus‖
 
 theorem newton_real_endpoint_whole
     {f f' : ℂ → ℂ} {z : ℝ → ℂ} {a b : ℝ} (hab : a < b)

@@ -11,9 +11,9 @@
     "PalomarCorpus.E257.PaperStatementsD.half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips",
     "PalomarCorpus.E257.PaperStatementsF.cofinalExactLocalMersenneHalfRows_of_positiveHalfGreedySkips",
     "PalomarCorpus.E257.PaperStatementsF.exactLocalMersenneHalfRow_of_positiveHalfGreedySkip",
-    "PalomarCorpus.E257.PaperStatementsF.skippedCoreCriticalQuotientSupply_iff_halfGreedySkipped",
     "PalomarCorpus.E257.PaperStructuresAW.paper_compatible_first_condition_gives_nonneg",
     "PalomarCorpus.E257.PaperStructuresBA.exists_laterProtectedExactLocalMersenneRow",
+    "PalomarCorpus.E257.PaperStructuresCJ.prefixRemainder_eq_capacity_sub_choice",
     "PalomarCorpus.E257.PaperStructuresT.paper_compatible_rows_agree_with_limit",
     "PalomarCorpus.E257.PaperStructuresW.paper_compatible_bit_stable"
   ],

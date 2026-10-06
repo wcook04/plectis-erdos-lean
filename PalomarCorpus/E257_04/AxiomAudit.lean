@@ -15,4 +15,5 @@ import Solutions.PalomarCorpus.E257_04
 #print axioms PalomarCorpus.E257.PaperStatementsAM.existsFatalHalfGap_of_certificate
 #print axioms PalomarCorpus.E257.PaperStatementsAM.mersenneTail_eq_sum_add
 #print axioms PalomarCorpus.E257.PaperStatementsAM.scaledMersenneWeight_cast
+#print axioms PalomarCorpus.E257.PaperStructuresCK.affineBinaryOrbit_sub
 #print axioms PalomarCorpus.E257.PaperStructuresS.paper_one_sidedness

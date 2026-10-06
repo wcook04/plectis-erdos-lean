@@ -5,5 +5,9 @@ Authors: Will Cook
 -/
 import Mathlib
 import Solutions.PalomarCorpus.E1041_08.Statement
-import Solutions.PalomarCorpus.E1041_08.SolvedFamilies
-import Solutions.PalomarCorpus.E1041_08.TetranomialSpokes
+import Solutions.PalomarCorpus.E1041_08.CriticalGeometry
+import Solutions.PalomarCorpus.E1041_08.CyclicTrinomialFiber
+import Solutions.PalomarCorpus.E1041_08.DegreeSevenCounterexample
+import Solutions.PalomarCorpus.E1041_08.FirstMergeCriticalValueSeparation
+import Solutions.PalomarCorpus.E1041_08.PaperStructuresAG
+import Solutions.PalomarCorpus.E1041_08.QuarticQuotientFiber

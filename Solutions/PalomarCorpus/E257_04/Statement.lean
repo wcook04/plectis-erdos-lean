@@ -25,6 +25,10 @@ open scoped ENNReal
 open MeasureTheory
 
 namespace PalomarCorpus.E257_04.Shared
+/-- The binary affine orbit driven by an integer sequence a from an initial value, defined by orbit 0 equal to the initial value and orbit (n+1) equal to twice orbit n minus a at n+1. -/
+noncomputable def affineBinaryOrbit (a : ℕ → ℤ) (u0 : ℤ) : ℕ → ℤ
+  | 0 => u0
+  | n + 1 => 2 * affineBinaryOrbit a u0 n - a (n + 1)
 /-- The real Mersenne weight 1 divided by 2 to the power n minus 1; at n = 0 the value is 0 because division by zero is zero here. -/
 noncomputable def mersenneWeight (n : ℕ) : ℝ :=
   1 / ((2 : ℝ) ^ n - 1)
@@ -39,10 +43,7 @@ end PalomarCorpus.E257_04.Shared
 namespace PalomarCorpus.E257.PaperStatementsA
 open Filter
 open Set
-/-- The exact binary affine orbit driven by the fresh coefficient word `a`. Local copy of Erdos249257.affineBinaryOrbit, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def affineBinaryOrbit (a : ℕ → ℤ) (u0 : ℤ) : ℕ → ℤ
-  | 0 => u0
-  | n + 1 => 2 * affineBinaryOrbit a u0 n - a (n + 1)
+export PalomarCorpus.E257_04.Shared (affineBinaryOrbit)
 end PalomarCorpus.E257.PaperStatementsA
 
 namespace PalomarCorpus.E257.PaperStatementsAA
@@ -61,6 +62,12 @@ noncomputable def balancedPulseCoeff (m r : ℕ) : ℕ → ℕ := fun n ↦
   else if n = m + 1 then 2 * r
   else 0
 end PalomarCorpus.E257.PaperStatementsAE
+
+namespace PalomarCorpus.E257.PaperStructuresCK
+open Filter
+open Set
+export PalomarCorpus.E257_04.Shared (affineBinaryOrbit)
+end PalomarCorpus.E257.PaperStructuresCK
 
 namespace PalomarCorpus.E257.PaperStatementsAM
 open Filter

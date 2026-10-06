@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ExternalVerification1041PaperStructuresAG.Challenge",
+  "solution_module": "Solutions.ExternalVerification1041PaperStructuresAG",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041PaperStructuresAG.erdos1041_counterexample_hausdorff",
+    "Erdos249257.ExternalVerification1041PaperStructuresAG.s3_bottleneck_hausdorff"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}
