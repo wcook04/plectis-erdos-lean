@@ -40,6 +40,10 @@ noncomputable def b : ℂ := Complex.I * (B : ℂ) + (9 / 5 : ℚ) * (s : ℂ)
 
 noncomputable def c : ℂ := -(Cconst : ℂ) - (162 / 25 : ℚ) * (s : ℂ) * Complex.I
 
+noncomputable def ε : ℚ := s ^ 2
+
+noncomputable def ρ : ℚ := 1 - s ^ 16
+
 noncomputable def f : Polynomial ℂ :=
   Polynomial.X ^ 7
     + Polynomial.C (-(ρ : ℂ) * (ε : ℂ) ^ 6 * conj c) * Polynomial.X ^ 6
@@ -57,7 +61,16 @@ noncomputable def shiftQuad (p : Polynomial ℂ) (cc : ℂ) : Polynomial ℂ :=
 theorem erdos1041_counterexample_hausdorff :
     ∀ z₁ z₂, f.IsRoot z₁ → f.IsRoot z₂ → z₁ ≠ z₂ →
       ∀ K : Set ℂ, IsPreconnected K → z₁ ∈ K → z₂ ∈ K → K ⊆ Omega f →
-        (2 : ℝ≥0∞) < μH[1] K := @Erdos1041.Counterexample.erdos1041_counterexample_hausdorff
+        (2 : ℝ≥0∞) < μH[1] K := by
+  first
+  | (exact @Erdos1041.Counterexample.erdos1041_counterexample_hausdorff; done)
+  | (set_option smartUnfolding false in
+      exact @Erdos1041.Counterexample.erdos1041_counterexample_hausdorff; done)
+  | (apply Erdos1041.Counterexample.erdos1041_counterexample_hausdorff <;> assumption; done)
+  | (simpa only [A, B, Cconst, Omega, a, b, c, f, s, shiftQuad, t, ε, ρ] using Erdos1041.Counterexample.erdos1041_counterexample_hausdorff; done)
+  | (set_option smartUnfolding false in
+      with_unfolding_all exact @Erdos1041.Counterexample.erdos1041_counterexample_hausdorff; done)
+  | (with_unfolding_all exact @Erdos1041.Counterexample.erdos1041_counterexample_hausdorff; done)
 
 theorem s3_bottleneck_hausdorff
     (p : Polynomial ℂ) (cc : ℂ) (hcc : cc ∈ Omega p)
@@ -78,6 +91,15 @@ theorem s3_bottleneck_hausdorff
     (hKsub : K ⊆ connectedComponentIn (Omega p) cc)
     (hK₁ : b₁ ∈ K) (hK₂ : b₂ ∈ K) :
     ENNReal.ofReal (‖b₁ - cc‖ + ‖b₂ - cc‖ - 8 / 3 * Real.sqrt (δ / ‖aHat‖))
-      ≤ μH[1] K := @Erdos1041.Counterexample.s3_bottleneck_hausdorff p cc hcc hcrit hv b₁ b₂ hne hb₁ hb₂ hr₁ hr₂ hzeros huniq aHat haHat h hh hdisk δ hδ hδpos hδsmall K hK hKsub hK₁ hK₂
+      ≤ μH[1] K := by
+  first
+  | (exact @Erdos1041.Counterexample.s3_bottleneck_hausdorff p cc hcc hcrit hv b₁ b₂ hne hb₁ hb₂ hr₁ hr₂ hzeros huniq aHat haHat h hh hdisk δ hδ hδpos hδsmall K hK hKsub hK₁ hK₂; done)
+  | (set_option smartUnfolding false in
+      exact @Erdos1041.Counterexample.s3_bottleneck_hausdorff p cc hcc hcrit hv b₁ b₂ hne hb₁ hb₂ hr₁ hr₂ hzeros huniq aHat haHat h hh hdisk δ hδ hδpos hδsmall K hK hKsub hK₁ hK₂; done)
+  | (apply Erdos1041.Counterexample.s3_bottleneck_hausdorff <;> assumption; done)
+  | (simpa only [A, B, Cconst, Omega, a, b, c, f, s, shiftQuad, t, ε, ρ] using Erdos1041.Counterexample.s3_bottleneck_hausdorff; done)
+  | (set_option smartUnfolding false in
+      with_unfolding_all exact @Erdos1041.Counterexample.s3_bottleneck_hausdorff p cc hcc hcrit hv b₁ b₂ hne hb₁ hb₂ hr₁ hr₂ hzeros huniq aHat haHat h hh hdisk δ hδ hδpos hδsmall K hK hKsub hK₁ hK₂; done)
+  | (with_unfolding_all exact @Erdos1041.Counterexample.s3_bottleneck_hausdorff p cc hcc hcrit hv b₁ b₂ hne hb₁ hb₂ hr₁ hr₂ hzeros huniq aHat haHat h hh hdisk δ hδ hδpos hδsmall K hK hKsub hK₁ hK₂; done)
 
 end Erdos249257.ExternalVerification1041PaperStructuresAG

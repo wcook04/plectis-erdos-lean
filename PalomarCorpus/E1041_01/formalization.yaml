@@ -4,7 +4,7 @@ project:
   description: >-
     This entry states 8 theorems that the long record for Erdős problem #1041 states in sections 1 (the historical question) and 2 (trinomials): the statement labelled res:ani-degree-seven-counterexample-long (section 1), as erdos1041_ani_degree_seven, erdos1041_hausdorff_answer_false, erdos1041_hausdorff_negation, erdos1041_counterexample and erdos1041_counterexample_hausdorff; the theorem “trinomial root connections” (section 2), as complete_trinomial, all_degree_monic_trinomials_whole and all_spokes.
 
-    7 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 1 is derived from the source declaration by a short tactic proof, which certifies implication.
+    5 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 3 are derived from the source declaration by a short tactic proof, which certifies implication.
 
     Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
 

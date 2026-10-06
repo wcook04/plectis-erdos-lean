@@ -24,7 +24,6 @@ open Topology
 open scoped ENNReal
 open MeasureTheory
 open scoped ArithmeticFunction.Omega
-open scoped BigOperators
 
 namespace PalomarCorpus.E257_26.Shared
 /-- The real Mersenne weight 1 divided by 2 to the power n minus 1; at n = 0 the value is 0 because division by zero is zero here. -/
@@ -266,34 +265,3 @@ theorem paper_achievement_set_topology :
       volume mersenneAchievementSet = 1 := by
   sorry
 end PalomarCorpus.E257.PaperStatementsAM
-
-namespace PalomarCorpus.E257.PaperStructuresCJ
-open scoped BigOperators
-/-- States thm:perturbed-family-maximality from the long record for Erdős problem #257. Transported from Erdos249257.HalfCylinderIntegerGreedy.PerturbedFamily.AdjacentCut.above_newSum_le_capacity_iff in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem above_newSum_le_capacity_iff {α : Type*} (F : PerturbedFamily α) {F : PerturbedFamily α} {C : ℕ} (K : F.AdjacentCut C) :
-    F.newSum K.above ≤ K.newCapacity ↔ K.successorCarries := by
-  sorry
-/-- States thm:perturbed-family-maximality from the long record for Erdős problem #257. Transported from Erdos249257.HalfCylinderIntegerGreedy.PerturbedFamily.AdjacentCut.below_newSum_le_capacity in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem below_newSum_le_capacity {α : Type*} (F : PerturbedFamily α) {F : PerturbedFamily α} {C : ℕ} (K : F.AdjacentCut C)
-    (hcap : F.pulseCap < F.gap) :
-    F.newSum K.below ≤ K.newCapacity := by
-  sorry
-/-- States thm:perturbed-family-maximality from the long record for Erdős problem #257. Transported from Erdos249257.HalfCylinderIntegerGreedy.PerturbedFamily.AdjacentCut.nextRemainder_trichotomy in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem nextRemainder_trichotomy {α : Type*} (F : PerturbedFamily α) {F : PerturbedFamily α} {C : ℕ} (K : F.AdjacentCut C)
-    [Decidable K.successorCarries] :
-    K.nextRemainder =
-      if K.successorCarries then
-        F.gap - (4 * K.overshoot + K.abovePulse)
-      else if 4 * K.remainder + F.gap - K.belowPulse < K.terminalWeight then
-        4 * K.remainder + F.gap - K.belowPulse
-      else
-        4 * K.remainder - F.gap - K.belowPulse - 4 := by
-  sorry
-/-- States thm:perturbed-family-maximality from the long record for Erdős problem #257. Transported from Erdos249257.HalfCylinderIntegerGreedy.PerturbedFamily.AdjacentCut.prefixChoice_maximal in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem prefixChoice_maximal {α : Type*} (F : PerturbedFamily α) {F : PerturbedFamily α} {C : ℕ} (K : F.AdjacentCut C)
-    (hcap : F.pulseCap < F.gap)
-    [Decidable K.successorCarries]
-    {x : α} (hx : F.newSum x ≤ K.newCapacity) :
-    F.newSum x ≤ F.newSum K.prefixChoice := by
-  sorry
-end PalomarCorpus.E257.PaperStructuresCJ

@@ -19,6 +19,15 @@ theorem nonintegral_regular_rate_irrational
     (hrate : Tendsto (fun n : ℕ => (n : ℝ) ^ l *
       ((a n : ℝ) ^ 2 / (a (n + 1) : ℝ) - (1 + l / (n : ℝ))))
       atTop (nhds 0)) :
-    Irrational (∑' n : ℕ, 1 / (a n : ℝ)) := @ErdosProblems.Erdos243.PaperCompleteR21.nonintegral_regular_rate_irrational a ha hpos l hl hnonint hrate
+    Irrational (∑' n : ℕ, 1 / (a n : ℝ)) := by
+  first
+  | (exact @ErdosProblems.Erdos243.PaperCompleteR21.nonintegral_regular_rate_irrational a ha hpos l hl hnonint hrate; done)
+  | (set_option smartUnfolding false in
+      exact @ErdosProblems.Erdos243.PaperCompleteR21.nonintegral_regular_rate_irrational a ha hpos l hl hnonint hrate; done)
+  | (apply ErdosProblems.Erdos243.PaperCompleteR21.nonintegral_regular_rate_irrational <;> assumption; done)
+  | (simpa using ErdosProblems.Erdos243.PaperCompleteR21.nonintegral_regular_rate_irrational; done)
+  | (set_option smartUnfolding false in
+      with_unfolding_all exact @ErdosProblems.Erdos243.PaperCompleteR21.nonintegral_regular_rate_irrational a ha hpos l hl hnonint hrate; done)
+  | (with_unfolding_all exact @ErdosProblems.Erdos243.PaperCompleteR21.nonintegral_regular_rate_irrational a ha hpos l hl hnonint hrate; done)
 
 end PalomarCorpus.E243.PaperStructuresAF

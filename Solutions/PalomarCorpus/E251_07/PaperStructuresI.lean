@@ -17,6 +17,6 @@ export PalomarCorpus.E251_07.Shared (prime0 primeDyadicTerm primeGap0 primeGapDy
 theorem denominator_floor_both (a : ℤ) (b : ℕ) (hb : 0 < b)
     (hS : (∑' n, primeDyadicTerm n) = a / b ∨
       (∑' n, primeGapDyadicTerm n) = a / b) :
-    2 ^ 39997 ≤ b ∧ 10 ^ 12040 < b := @ErdosProblems.Erdos251.PaperR7.LargeCertificate.denominator_floor_both
+    2 ^ 39997 ≤ b ∧ 10 ^ 12040 < b := @ErdosProblems.Erdos251.PaperR7.LargeCertificate.denominator_floor_both a b hb hS
 
 end PalomarCorpus.E251.PaperStructuresI

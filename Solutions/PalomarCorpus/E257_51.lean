@@ -5,9 +5,8 @@ Authors: Will Cook
 -/
 import Mathlib
 import Solutions.PalomarCorpus.E257_51.Statement
+import Solutions.PalomarCorpus.E257_51.LiteralWeightedCover
 import Solutions.PalomarCorpus.E257_51.PaperStructuresCI
 import Solutions.PalomarCorpus.E257_51.PaperStructuresCO
 import Solutions.PalomarCorpus.E257_51.PositiveSkipEquivalence
 import Solutions.PalomarCorpus.E257_51.RationalMembership
-import Solutions.PalomarCorpus.E257_51.RationalTailRigidity
-import Solutions.PalomarCorpus.E257_51.ReciprocalSupport

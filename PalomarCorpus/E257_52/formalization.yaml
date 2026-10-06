@@ -1,8 +1,8 @@
 version: v0.4
 project:
-  name: 'Erdős #257, the scaled greedy trap, terminal scaled vanishing and twenty one fatal branch families'
+  name: 'Erdős #257, the rational tail rigidity, reciprocal support and scaled greedy trap families'
   description: >-
-    This entry states 11 theorems of the scaled greedy trap, terminal scaled vanishing and twenty one fatal branch developments of the Lean formalisation of Erdős problem #257, to which no paper statement is bound. scaledGreedyRemainder_tendsto_atTop_of_not_mem: If x is nonnegative and does not belong to the base two Mersenne achievement set, then its scaled greedy remainder tends to infinity. mem_mersenneAchievementSet_iff_scaledRemainder_cofinallyBounded: For every nonnegative real x, membership in the base two Mersenne achievement set is equivalent to the existence of one bounded cofinal subsequence of the scaled greedy remainder. mersenneAchievementSet_eq_scaledGreedyTrap: The base two Mersenne achievement set is exactly the set of nonnegative reals whose scaled greedy remainder stays strictly below the universal barrier 2 at every scale. rat_mem_mersenneAchievementSet_iff_scaledLowerBranchCofinally: For every nonnegative rational q, membership in the base two Mersenne achievement set is equivalent to cofinal crossing of the moving lower separatrix, that is to twice the scaled greedy remainder falling strictly below the rescaled Mersenne weight at the next rank, at arbitrarily late scales. one_div_twentyOne_mem_iff_scaledLowerBranchCofinally: The instance of the rational lower separatrix criterion at the target one over twenty one: membership of one over twenty one in the base two Mersenne achievement set is equivalent to cofinal crossing of the moving lower separatrix for that target. one_div_twentyOne_mem_iff_scaledRemainder_cofinallyBounded: The instance of the cofinal boundedness criterion at the target one over twenty one: membership of one over twenty one in the base two Mersenne achievement set is equivalent to the scaled greedy remainder for that target having one bounded cofinal subsequence. terminalScaledVanishing_completeCounterexample: Conditional on a terminal scaled vanishing sequence existing, there is an infinite set A of natural numbers whose base two series with terms 1 divided by 2 to the power a minus 1 equals exactly one half, and the universal irrationality assertion of the parent problem is therefore false. twentyOneClosedRow_forces_quotientGreedy: Closed row canonicalisation: if a Boolean word has the same length as the local Mersenne weight list at binary scale 2R through rank R, its selected weight plus a residual s equals the denominator twenty one capacity at that scale, and the residual satisfies s at most 2 to the power R, then the word is exactly the integer greedy word and s is exactly the greedy remainder. one_div_twenty_one_mem_mersenneAchievementSet_of_closedLowerStates: Conditional on the closed lower state supply condition, one over twenty one belongs to the base two Mersenne achievement set. one_div_twenty_one_mem_iff_not_fatalAlignedBranch: Membership of one over twenty one in the base two Mersenne achievement set is equivalent to the failure of the explicit fatal aligned branch. twentyOneFatalAlignedBranch_eventually_strict_supercapacity: Inside the fatal aligned branch, the canonical quotient greedy remainder eventually stays strictly above the closed binary capacity, that is there is a threshold beyond which 2 to the power R is strictly below the greedy remainder at every rank R.
+    This entry states 10 theorems of the rational tail rigidity, reciprocal support, scaled greedy trap and terminal scaled vanishing developments of the Lean formalisation of Erdős problem #257, to which no paper statement is bound. supportCoeffZeroWindow_length_le_eps_logb_add: Necessary condition under rationality: if A contains a positive element, v is positive, and the base two support series of A equals p divided by 2 to the power c times v, then for every positive epsilon there is a nonnegative constant B such that every zero window of the divisor incidence coefficients beginning at c+N has length at most B plus epsilon times the base two logarithm of N+1. one_div_oddOrder_le_reciprocalMass_of_support_fraction: Necessary condition under rationality: if A contains a positive element, its reciprocal support terms are summable, v is odd and greater than 1, the natural truncation of p is coprime to v, and the base two support series of A equals p divided by 2 to the power c times v, then the reciprocal mass of A is at least the reciprocal of the multiplicative order of 2 modulo v. irrational_supportPowerSeries_of_summable_reciprocal: Principal theorem of this entry: for every integer base b at least 2 and every infinite set A of natural numbers whose reciprocal support terms are summable, the series with terms 1 divided by b to the power a minus 1, summed over a in A, is irrational. scaledGreedyRemainder_tendsto_atTop_of_not_mem: If x is nonnegative and does not belong to the base two Mersenne achievement set, then its scaled greedy remainder tends to infinity. mem_mersenneAchievementSet_iff_scaledRemainder_cofinallyBounded: For every nonnegative real x, membership in the base two Mersenne achievement set is equivalent to the existence of one bounded cofinal subsequence of the scaled greedy remainder. mersenneAchievementSet_eq_scaledGreedyTrap: The base two Mersenne achievement set is exactly the set of nonnegative reals whose scaled greedy remainder stays strictly below the universal barrier 2 at every scale. rat_mem_mersenneAchievementSet_iff_scaledLowerBranchCofinally: For every nonnegative rational q, membership in the base two Mersenne achievement set is equivalent to cofinal crossing of the moving lower separatrix, that is to twice the scaled greedy remainder falling strictly below the rescaled Mersenne weight at the next rank, at arbitrarily late scales. one_div_twentyOne_mem_iff_scaledLowerBranchCofinally: The instance of the rational lower separatrix criterion at the target one over twenty one: membership of one over twenty one in the base two Mersenne achievement set is equivalent to cofinal crossing of the moving lower separatrix for that target. one_div_twentyOne_mem_iff_scaledRemainder_cofinallyBounded: The instance of the cofinal boundedness criterion at the target one over twenty one: membership of one over twenty one in the base two Mersenne achievement set is equivalent to the scaled greedy remainder for that target having one bounded cofinal subsequence. terminalScaledVanishing_completeCounterexample: Conditional on a terminal scaled vanishing sequence existing, there is an infinite set A of natural numbers whose base two series with terms 1 divided by 2 to the power a minus 1 equals exactly one half, and the universal irrationality assertion of the parent problem is therefore false.
 
     Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
 
@@ -31,11 +31,21 @@ sources:
 - title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
   authors:
   - Will Cook
-  type: original-proof
-  relationship: other
-  note: "The compared theorems are independently restated Lean theorems proved in this repository and described in the public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos."
+  id: https://github.com/wcook04/plectis-erdos
+  type: other
+  relationship: background
+  note: "The public problem notes and reasoning records that describe the compared theorems and their relationship to the literature. A compared theorem re-proves, formalises or adapts a result of the source marked with a substantive relationship below; the remaining compared theorems are proved in this repository, and no priority is claimed for them beyond the checked proofs."
   license: Apache-2.0
   author_endorsement: participated
+- title: "On the irrationality of certain series"
+  authors:
+  - "Paul Erdos"
+  id: "https://users.renyi.hu/~p_erdos/1969-09.pdf"
+  type: "paper"
+  relationship: "independently-proves"
+  note: "The Mathematics Student 36 (1968, issued 1969), 222-226. The printed theorem on p. 222 gives irrationality for pairwise coprime supports with convergent reciprocal sum at every integer base at least 2, and Erdős states there that pairwise coprimality can be removed by a longer argument that he does not print. ReciprocalSupport.irrational_supportPowerSeries_of_summable_reciprocal is that stated extension, proved independently; no priority over Erdős and no identification with his omitted argument is taken from this source."
+  license: "unknown"
+  author_endorsement: "not-contacted"
 - title: "On arithmetical properties of Lambert series"
   authors:
   - "Paul Erdos"
@@ -114,11 +124,11 @@ related_formalizations:
   relationship: "independent"
   note: "States the open parent problem (erdos_257, proof sorry), proves the Lambert identity tsum_top_eq, and states the Erdős 1948 full-support irrationality as the variant tsum_top with proof sorry. It is statement-level prior art; no theorem compared here is derived from it, and the theorem irrational_erdosBorwein_series elsewhere in this repository proves the statement that tsum_top leaves open."
 status:
-  scope: "One Comparator configuration selecting the 11 theorems listed in PalomarCorpus/E257_52/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 53 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_53, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
+  scope: "One Comparator configuration selecting the 10 theorems listed in PalomarCorpus/E257_52/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 53 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_53, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
-  trusted_challenge_sorry_count: 11
+  trusted_challenge_sorry_count: 10
   sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E257_52/Challenge.lean, and the Solution modules contain no sorry. Comparator and kernel outcomes are commit-specific and are recorded separately from this source metadata."
   axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. Axiom-audit outcomes are commit-specific and belong in separate receipts; this source field is not an audit receipt."
   permitted_axiom_budget:
@@ -126,6 +136,18 @@ status:
   - Quot.sound
   - Classical.choice
   main_results:
+  - declaration: "PalomarCorpus.E257.RationalTailRigidity.one_div_oddOrder_le_reciprocalMass_of_support_fraction"
+    file: "Solutions/PalomarCorpus/E257_52/RationalTailRigidity.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_52/comparator.json"
+  - declaration: "PalomarCorpus.E257.RationalTailRigidity.supportCoeffZeroWindow_length_le_eps_logb_add"
+    file: "Solutions/PalomarCorpus/E257_52/RationalTailRigidity.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_52/comparator.json"
+  - declaration: "PalomarCorpus.E257.ReciprocalSupport.irrational_supportPowerSeries_of_summable_reciprocal"
+    file: "Solutions/PalomarCorpus/E257_52/ReciprocalSupport.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_52/comparator.json"
   - declaration: "PalomarCorpus.E257.ScaledGreedyTrap.mem_mersenneAchievementSet_iff_scaledRemainder_cofinallyBounded"
     file: "Solutions/PalomarCorpus/E257_52/ScaledGreedyTrap.lean"
     sorry_count: 0
@@ -152,22 +174,6 @@ status:
     comparator_config: "PalomarCorpus/E257_52/comparator.json"
   - declaration: "PalomarCorpus.E257.TerminalScaledVanishing.terminalScaledVanishing_completeCounterexample"
     file: "Solutions/PalomarCorpus/E257_52/TerminalScaledVanishing.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_52/comparator.json"
-  - declaration: "PalomarCorpus.E257.TwentyOneFatalBranch.one_div_twenty_one_mem_iff_not_fatalAlignedBranch"
-    file: "Solutions/PalomarCorpus/E257_52/TwentyOneFatalBranch.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_52/comparator.json"
-  - declaration: "PalomarCorpus.E257.TwentyOneFatalBranch.one_div_twenty_one_mem_mersenneAchievementSet_of_closedLowerStates"
-    file: "Solutions/PalomarCorpus/E257_52/TwentyOneFatalBranch.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_52/comparator.json"
-  - declaration: "PalomarCorpus.E257.TwentyOneFatalBranch.twentyOneClosedRow_forces_quotientGreedy"
-    file: "Solutions/PalomarCorpus/E257_52/TwentyOneFatalBranch.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_52/comparator.json"
-  - declaration: "PalomarCorpus.E257.TwentyOneFatalBranch.twentyOneFatalAlignedBranch_eventually_strict_supercapacity"
-    file: "Solutions/PalomarCorpus/E257_52/TwentyOneFatalBranch.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_52/comparator.json"
   development_status: substantive

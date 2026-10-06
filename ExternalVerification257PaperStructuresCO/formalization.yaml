@@ -5,11 +5,11 @@ project:
   description: >-
     3 theorems of the substantive development for Erdős problem #257
     restated against Mathlib alone and transported from the source declarations named
-    below. The substantive formalization lives in Erdos249257.CertificateKernel, ErdosProblems.Erdos257.PaperCompleteR20.PositivePeriodicSupport, ErdosProblems.Erdos257.PaperCompleteR20.TerminalSetCorrespondence, ErdosProblems.Erdos257.PaperCompleteR7.AnalyticTargets, ErdosProblems.Erdos257.WitnessLogicIrrational in this repository and at
+    below. The substantive formalization lives in Erdos249257.CertificateKernel, ErdosProblems.Erdos257.PaperCompleteR20.PositivePeriodicSupport, ErdosProblems.Erdos257.PaperCompleteR20.TerminalSetCorrespondence, ErdosProblems.Erdos257.PaperCompleteR7.PrimeWeightedDefinitions, ErdosProblems.Erdos257.WitnessLogicIrrational in this repository and at
     public commit 436f55ebdafa67e4af0fff79f621c13f2ded12bf of https://github.com/wcook04/plectis-erdos. This entry is a comparison
-    interface over that development. 3 statements transport by direct term
+    interface over that development. 0 statements transport by direct term
     application, which certifies definitional identity with the source statement;
-    0 transport through a tactic bridge, which certifies implication only. The
+    3 transport through a tactic bridge, which certifies implication only. The
     parent Erdős problem remains open.
   authors:
   - Will Cook
@@ -65,7 +65,7 @@ status:
   - Quot.sound
   - Classical.choice
   development_status: substantive
-  local_proof_provenance: Erdos249257.CertificateKernel, ErdosProblems.Erdos257.PaperCompleteR20.PositivePeriodicSupport, ErdosProblems.Erdos257.PaperCompleteR20.TerminalSetCorrespondence, ErdosProblems.Erdos257.PaperCompleteR7.AnalyticTargets, ErdosProblems.Erdos257.WitnessLogicIrrational in this repository, which is the same development published at https://github.com/wcook04/plectis-erdos commit 436f55ebdafa67e4af0fff79f621c13f2ded12bf
+  local_proof_provenance: Erdos249257.CertificateKernel, ErdosProblems.Erdos257.PaperCompleteR20.PositivePeriodicSupport, ErdosProblems.Erdos257.PaperCompleteR20.TerminalSetCorrespondence, ErdosProblems.Erdos257.PaperCompleteR7.PrimeWeightedDefinitions, ErdosProblems.Erdos257.WitnessLogicIrrational in this repository, which is the same development published at https://github.com/wcook04/plectis-erdos commit 436f55ebdafa67e4af0fff79f621c13f2ded12bf
   canonical_claim_status: generated comparison interface over substantive Lean in this repository
   main_results:
   - declaration: Erdos249257.ExternalVerification257PaperStructuresCO.irrational_erdosSupportSeries_positivePeriodic
@@ -78,7 +78,7 @@ status:
     source_declaration: ErdosProblems.Erdos257.PaperCompleteR20.irrational_erdosSupportSeries_positivePeriodic
     source_file: ErdosProblems/Erdos257/PaperCompleteR20/PositivePeriodicSupport.lean
     source_commit: 436f55ebdafa67e4af0fff79f621c13f2ded12bf
-    transport: definitional
+    transport: derived
   - declaration: Erdos249257.ExternalVerification257PaperStructuresCO.paper_terminalhalf_iff
     file: Solutions/ExternalVerification257PaperStructuresCO.lean
     sorry_count: 0
@@ -89,7 +89,7 @@ status:
     source_declaration: ErdosProblems.Erdos257.PaperCompleteR20.paper_terminalhalf_iff
     source_file: ErdosProblems/Erdos257/PaperCompleteR20/TerminalSetCorrespondence.lean
     source_commit: 436f55ebdafa67e4af0fff79f621c13f2ded12bf
-    transport: definitional
+    transport: derived
   - declaration: Erdos249257.ExternalVerification257PaperStructuresCO.finite_monotone_witness_rule_realised
     file: Solutions/ExternalVerification257PaperStructuresCO.lean
     sorry_count: 0
@@ -100,7 +100,7 @@ status:
     source_declaration: ErdosProblems.Erdos257.finite_monotone_witness_rule_realised
     source_file: ErdosProblems/Erdos257/WitnessLogicIrrational.lean
     source_commit: 436f55ebdafa67e4af0fff79f621c13f2ded12bf
-    transport: definitional
+    transport: derived
 automation:
   methods:
   - method: agent

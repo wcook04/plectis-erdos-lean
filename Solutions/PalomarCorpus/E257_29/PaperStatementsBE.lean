@@ -6,7 +6,7 @@ Authors: Will Cook
 import Mathlib
 import Erdos249257.HalfUpperResetCriticalBand
 import ErdosProblems.Erdos257.PaperCompleteR21.DyadicBandAndTwoSidedBounds
-import Solutions.PalomarCorpus.E257_28.Statement
+import Solutions.PalomarCorpus.E257_29.Statement
 
 open Finset
 

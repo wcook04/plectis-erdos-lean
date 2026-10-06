@@ -5,7 +5,7 @@ project:
   description: >-
     1 theorems of the substantive development for Erdős problem #257
     restated against Mathlib alone and transported from the source declarations named
-    below. The substantive formalization lives in Erdos249257.CertificateKernel, ErdosProblems.Erdos257.PaperCompleteR7.AnalyticTargets, ErdosProblems.Erdos257.PaperCompleteR8.OldCoverObstruction, ErdosProblems.Erdos257.PaperCompleteR8.ReverseStrengthenedHost in this repository and at
+    below. The substantive formalization lives in Erdos249257.CertificateKernel, ErdosProblems.Erdos257.PaperCompleteR7.AnalyticTargets, ErdosProblems.Erdos257.PaperCompleteR7.PrimeWeightedDefinitions, ErdosProblems.Erdos257.PaperCompleteR8.OldCoverObstruction, ErdosProblems.Erdos257.PaperCompleteR8.ReverseStrengthenedHost in this repository and at
     public commit 436f55ebdafa67e4af0fff79f621c13f2ded12bf of https://github.com/wcook04/plectis-erdos. This entry is a comparison
     interface over that development. 0 statements transport by direct term
     application, which certifies definitional identity with the source statement;
@@ -65,7 +65,7 @@ status:
   - Quot.sound
   - Classical.choice
   development_status: substantive
-  local_proof_provenance: Erdos249257.CertificateKernel, ErdosProblems.Erdos257.PaperCompleteR7.AnalyticTargets, ErdosProblems.Erdos257.PaperCompleteR8.OldCoverObstruction, ErdosProblems.Erdos257.PaperCompleteR8.ReverseStrengthenedHost in this repository, which is the same development published at https://github.com/wcook04/plectis-erdos commit 436f55ebdafa67e4af0fff79f621c13f2ded12bf
+  local_proof_provenance: Erdos249257.CertificateKernel, ErdosProblems.Erdos257.PaperCompleteR7.AnalyticTargets, ErdosProblems.Erdos257.PaperCompleteR7.PrimeWeightedDefinitions, ErdosProblems.Erdos257.PaperCompleteR8.OldCoverObstruction, ErdosProblems.Erdos257.PaperCompleteR8.ReverseStrengthenedHost in this repository, which is the same development published at https://github.com/wcook04/plectis-erdos commit 436f55ebdafa67e4af0fff79f621c13f2ded12bf
   canonical_claim_status: generated comparison interface over substantive Lean in this repository
   main_results:
   - declaration: Erdos249257.ExternalVerification257PaperStructuresCP.exists_strengthened_not_old_or_weighted_host

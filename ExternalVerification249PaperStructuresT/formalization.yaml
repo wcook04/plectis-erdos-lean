@@ -7,9 +7,9 @@ project:
     restated against Mathlib alone and transported from the source declarations named
     below. The substantive formalization lives in Erdos249257.FirstHarmonicPivot, Erdos249257.TotientTailPeriodKiller, ErdosProblems.ArgumentGraph.Results.Erdos249Endpoint, ErdosProblems.Erdos249.PaperCompleteR21.UnassignedSmoothCount in this repository and at
     public commit 436f55ebdafa67e4af0fff79f621c13f2ded12bf of https://github.com/wcook04/plectis-erdos. This entry is a comparison
-    interface over that development. 1 statements transport by direct term
+    interface over that development. 0 statements transport by direct term
     application, which certifies definitional identity with the source statement;
-    0 transport through a tactic bridge, which certifies implication only. The
+    1 transport through a tactic bridge, which certifies implication only. The
     parent Erdős problem remains open.
   authors:
   - Will Cook
@@ -78,7 +78,7 @@ status:
     source_declaration: ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_goodBase_gap
     source_file: ErdosProblems/ArgumentGraph/Results/Erdos249Endpoint.lean
     source_commit: 436f55ebdafa67e4af0fff79f621c13f2ded12bf
-    transport: definitional
+    transport: derived
 automation:
   methods:
   - method: agent

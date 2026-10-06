@@ -12,7 +12,6 @@ open Filter Topology
 open scoped BigOperators
 
 namespace PalomarCorpus.E257.ScaledGreedyTrap
-export PalomarCorpus.E257_52.Shared (greedyMersenneRemainder mersenneAchievementSet mersenneWeight positiveMersenneSupportValue)
 
 noncomputable section
 

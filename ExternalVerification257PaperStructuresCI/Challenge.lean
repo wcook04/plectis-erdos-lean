@@ -12,6 +12,7 @@ https://github.com/wcook04/plectis-erdos. The definitions are local copies of th
 the statements elaborate against Mathlib alone. This module is a comparison interface
 over that development, not the development itself. The mathematics is developed in
 `Erdos249257.CertificateKernel`, `ErdosProblems.Erdos257.PaperCompleteR7.AnalyticTargets`,
+`ErdosProblems.Erdos257.PaperCompleteR7.PrimeWeightedDefinitions`,
 `ErdosProblems.Erdos257.PaperCompleteR8.OldCoverObstruction`,
 `ErdosProblems.Erdos257.PaperCompleteR8.ReverseStrengthenedHost`.
 -/
@@ -48,8 +49,26 @@ structure PositiveCoverData where
     (((frame j).filter (fun a => a ∣ n)).card : ℝ) ^ exponent j ≤
       ∑ d ∈ n.divisors, coefficient j d
 
+noncomputable def PositiveCoverData.cost (C : PositiveCoverData) (j : ℕ) : ℝ :=
+  ∑' d : ℕ, C.coefficient j d / (d : ℝ)
+
+noncomputable def PositiveCoverData.StrengthenedCostSummable (C : PositiveCoverData) : Prop :=
+  Summable (fun j : ℕ =>
+    C.cost j * (2 : ℝ) ^ (((j + 1 : ℕ) : ℝ) * C.exponent j) /
+      ((2 : ℝ) ^ C.exponent j - 1))
+
+noncomputable def PositiveCoverData.host (C : PositiveCoverData) : Set ℕ :=
+  {a | ∃ j, a ∈ C.frame j}
+
 noncomputable def HasStrengthenedPositiveCover (A : Set ℕ) : Prop :=
   ∃ C : PositiveCoverData, A ⊆ C.host ∧ C.StrengthenedCostSummable
+
+noncomputable def PositiveCoverData.oldCostTerm (C : PositiveCoverData) (j : ℕ) : ℝ :=
+  C.cost j * (2 : ℝ) ^ (((j + 1 : ℕ) : ℝ) * C.exponent j) *
+    (2 : ℝ) ^ C.exponent j / (((2 : ℝ) ^ C.exponent j - 1) ^ 2)
+
+noncomputable def PositiveCoverData.OldCostSummable (C : PositiveCoverData) : Prop :=
+  Summable C.oldCostTerm
 
 noncomputable def HasOldPositiveCover (A : Set ℕ) : Prop :=
   ∃ C : PositiveCoverData, A ⊆ C.host ∧ C.OldCostSummable

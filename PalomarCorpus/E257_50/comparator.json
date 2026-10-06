@@ -11,9 +11,7 @@
     "PalomarCorpus.E257.FourNinthsRepairWindows.four_ninths_mem_iff_repair_sqrt_windows",
     "PalomarCorpus.E257.FourNinthsRepairWindows.four_ninths_not_mem_of_strict_sqrt_window",
     "PalomarCorpus.E257.GeneralRepairCriterion.mem_iff_greedyBinaryDefect_cofinal_repairs",
-    "PalomarCorpus.E257.GeneralRepairCriterion.mem_iff_greedyBinaryDefect_sqrt_windows",
-    "PalomarCorpus.E257.LiteralWeightedCover.exists_weighted_not_strengthened_host",
-    "PalomarCorpus.E257.LiteralWeightedCover.exists_weighted_obstruction_with_mixed_heredity"
+    "PalomarCorpus.E257.GeneralRepairCriterion.mem_iff_greedyBinaryDefect_sqrt_windows"
   ],
   "permitted_axioms": [
     "propext",

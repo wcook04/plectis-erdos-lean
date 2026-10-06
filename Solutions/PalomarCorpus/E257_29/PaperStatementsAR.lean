@@ -19,7 +19,7 @@ import ErdosProblems.Erdos257.PaperCompleteR20.QuotientRowIdentity
 import ErdosProblems.Erdos257.PaperCompleteR20.QuotientRowReal
 import ErdosProblems.Erdos257.PaperCompleteR21.ExactRowDichotomyCountermodels
 import ErdosProblems.Erdos257.PaperCompleteR21.MersenneQuotientRowRecurrences
-import Solutions.PalomarCorpus.E257_27.Statement
+import Solutions.PalomarCorpus.E257_29.Statement
 
 open Filter
 open Set
@@ -31,7 +31,14 @@ open scoped BigOperators
 /- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
 
 namespace PalomarCorpus.E257.PaperStatementsAR
-export PalomarCorpus.E257_27.Shared (CofinalExactLocalMersenneHalfRows ExactLocalMersenneHalfRow localMersenneQuotient localPrefixQuotient mersenneAchievementSet mersenneWeight mersenneWeightRat positiveMersenneSupportValue)
+
+noncomputable def ExactLocalMersenneHalfRow (n : ℕ) : Prop :=
+  ∃ D : Finset ℕ,
+    (∀ d ∈ D, 2 ≤ d ∧ d ≤ n) ∧
+      localPrefixQuotient D n = 2 ^ (n - 1) - 1
+
+noncomputable def CofinalExactLocalMersenneHalfRows : Prop :=
+  ∀ N : ℕ, ∃ n : ℕ, N ≤ n ∧ ExactLocalMersenneHalfRow n
 
 noncomputable def truncatedMersenneWeight (s d : ℕ) : ℕ :=
   4 ^ s / (2 ^ d - 1)
@@ -45,11 +52,17 @@ noncomputable def SkippedCoreCriticalQuotientSupply : Prop :=
     2 ^ ((2 * c - 2) - 1) ≤
       localPrefixQuotient (insert c D) (2 * c - 2)
 
+noncomputable def mersenneWeight (n : ℕ) : ℝ :=
+  1 / ((2 : ℝ) ^ n - 1)
+
 noncomputable def mersenneTail (n : ℕ) : ℝ :=
   ∑' k : ℕ, mersenneWeight (n + k + 1)
 
 noncomputable def erdosBorweinMersenneConstant : ℝ :=
   mersenneTail 0
+
+noncomputable def exactLocalMersenneRowValue (D : Finset ℕ) : ℝ :=
+  ((localMersennePrefixValue D : ℚ) : ℝ)
 
 noncomputable def localBinarySuffix (D : Finset ℕ) (k M : ℕ) : ℕ :=
   2 ^ (M - k) - localPrefixQuotient D M - 1
@@ -65,6 +78,12 @@ noncomputable def localMersenneGeometricQuotient (M d : ℕ) : ℕ :=
 
 noncomputable def localGeometricPrefixQuotient (D : Finset ℕ) (M : ℕ) : ℕ :=
   ∑ d ∈ D, localMersenneGeometricQuotient M d
+
+noncomputable def positiveMersenneSupportValue (A : Set ℕ) : ℝ :=
+  ∑' k : ℕ, Set.indicator A mersenneWeight (k + 1)
+
+noncomputable def mersenneAchievementSet : Set ℝ :=
+  {x : ℝ | ∃ A : Set ℕ, 0 ∉ A ∧ x = positiveMersenneSupportValue A}
 
 noncomputable def rowDeviation (n : ℕ) (D : Finset ℕ) : ℤ :=
   (2 : ℤ)^(2*n-1) - (2 : ℤ)^(n+1) - ∑ d ∈ D, (truncatedMersenneWeight n d : ℤ)

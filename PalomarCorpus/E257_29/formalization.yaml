@@ -1,12 +1,12 @@
 version: v0.4
 project:
-  name: 'Erdős #257, the paper structures BY family: reducing the dyadic-boundary checks'
+  name: 'Erdős #257, the paper structures BY family: filling the remaining binary positions; reducing the dyadic-boundary checks'
   description: >-
-    This entry states 1 theorem that the long record for Erdős problem #257 states in section the unnumbered section reducing the dyadic-boundary checks: the proposition “An upper bound for the reset expression”, as seamUpperResetCharge_le.
+    This entry states 6 theorems that the long record for Erdős problem #257 states in sections the unnumbered section filling the remaining binary positions and the unnumbered section reducing the dyadic-boundary checks: the theorem “A finite sum from a skipped prefix”, as paper_exact_row_from_skipped_prefix; the theorem “Testing one nearest dyadic boundary”, as paper_critical_dyadic_band_index_eq_top_of_le_two, paper_critical_dyadic_band_index_unique, paper_critical_dyadic_boundary_is_smallest and paper_dyadic_band_escape_iff_single_test; the proposition “An upper bound for the reset expression”, as seamUpperResetCharge_le.
 
     It also states 12 proof obligations of the definitions copied into it: seamPerturbedFamily_gap_pos, seamPerturbedFamily_oldSum_injective, seamPerturbedFamily_separated, seamPerturbedFamily_pulseCap_lt_three_gap, wordPulse_le, exists_seamWord_minimal_above, integerGreedyBits_length, seamAboveWord_minimal, seamAboveWord_strict, seamWeights_length_eq, seamAdjacentCut_below_admissible and seamAdjacentCut_below_maximal. Each is a lemma or a proof field that one of those definitions names, and its documentation names the source it is stated from. The papers state none of them, and the Solution proves each from the source development.
 
-    7 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 6 are derived from the source declaration by a short tactic proof, which certifies implication.
+    12 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 6 are derived from the source declaration by a short tactic proof, which certifies implication.
 
     Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
 
@@ -57,11 +57,11 @@ sources:
   license: Apache-2.0
   author_endorsement: n/a
 status:
-  scope: "One Comparator configuration selecting the 13 theorems listed in PalomarCorpus/E257_29/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 53 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_53, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
+  scope: "One Comparator configuration selecting the 18 theorems listed in PalomarCorpus/E257_29/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 53 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_53, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
-  trusted_challenge_sorry_count: 13
+  trusted_challenge_sorry_count: 18
   sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E257_29/Challenge.lean, and the Solution modules contain no sorry. Comparator and kernel outcomes are commit-specific and are recorded separately from this source metadata."
   axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. Axiom-audit outcomes are commit-specific and belong in separate receipts; this source field is not an audit receipt."
   permitted_axiom_budget:
@@ -69,6 +69,26 @@ status:
   - Quot.sound
   - Classical.choice
   main_results:
+  - declaration: "PalomarCorpus.E257.PaperStatementsAR.paper_exact_row_from_skipped_prefix"
+    file: "Solutions/PalomarCorpus/E257_29/PaperStatementsAR.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_29/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsBE.paper_critical_dyadic_band_index_eq_top_of_le_two"
+    file: "Solutions/PalomarCorpus/E257_29/PaperStatementsBE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_29/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsBE.paper_critical_dyadic_band_index_unique"
+    file: "Solutions/PalomarCorpus/E257_29/PaperStatementsBE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_29/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsBE.paper_critical_dyadic_boundary_is_smallest"
+    file: "Solutions/PalomarCorpus/E257_29/PaperStatementsBE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_29/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsBE.paper_dyadic_band_escape_iff_single_test"
+    file: "Solutions/PalomarCorpus/E257_29/PaperStatementsBE.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_29/comparator.json"
   - declaration: "PalomarCorpus.E257.PaperStructuresBY.exists_seamWord_minimal_above"
     file: "Solutions/PalomarCorpus/E257_29/PaperStructuresBY.lean"
     sorry_count: 0
@@ -122,7 +142,7 @@ status:
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_29/comparator.json"
   development_status: substantive
-  local_proof_provenance: "the proof modules Erdos249257 in this repository, imported by Solutions.PalomarCorpus.E257_29; the Solutions.ExternalVerification257* family modules are a regression mirror of the same proofs and are not imported by this configuration"
+  local_proof_provenance: "the proof modules Erdos249257, ErdosProblems.Erdos257 in this repository, imported by Solutions.PalomarCorpus.E257_29; the Solutions.ExternalVerification257* family modules are a regression mirror of the same proofs and are not imported by this configuration"
   canonical_claim_status: "problem-level Comparator entry over substantive Lean in this repository"
 automation:
   methods:

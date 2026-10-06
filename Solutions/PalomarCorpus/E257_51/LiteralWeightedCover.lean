@@ -5,11 +5,12 @@ Authors: Will Cook
 -/
 import Mathlib
 import ErdosProblems.Erdos257.PaperCompleteR8.AnalyticSeparationReturn
-import Solutions.PalomarCorpus.E257_50.Statement
+import Solutions.PalomarCorpus.E257_51.Statement
 
 open Set
 
 namespace PalomarCorpus.E257.LiteralWeightedCover
+export PalomarCorpus.E257_51.Shared (FinitePrimeWeighted erdosSupportSeries primeSetPart primeWeightedTerm)
 
 noncomputable section
 

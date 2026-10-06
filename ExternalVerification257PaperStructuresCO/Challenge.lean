@@ -14,7 +14,7 @@ over that development, not the development itself. The mathematics is developed 
 `Erdos249257.CertificateKernel`,
 `ErdosProblems.Erdos257.PaperCompleteR20.PositivePeriodicSupport`,
 `ErdosProblems.Erdos257.PaperCompleteR20.TerminalSetCorrespondence`,
-`ErdosProblems.Erdos257.PaperCompleteR7.AnalyticTargets`,
+`ErdosProblems.Erdos257.PaperCompleteR7.PrimeWeightedDefinitions`,
 `ErdosProblems.Erdos257.WitnessLogicIrrational`.
 -/
 

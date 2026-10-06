@@ -2,6 +2,11 @@
   "challenge_module": "PalomarCorpus.E257_29.Challenge",
   "solution_module": "Solutions.PalomarCorpus.E257_29",
   "theorem_names": [
+    "PalomarCorpus.E257.PaperStatementsAR.paper_exact_row_from_skipped_prefix",
+    "PalomarCorpus.E257.PaperStatementsBE.paper_critical_dyadic_band_index_eq_top_of_le_two",
+    "PalomarCorpus.E257.PaperStatementsBE.paper_critical_dyadic_band_index_unique",
+    "PalomarCorpus.E257.PaperStatementsBE.paper_critical_dyadic_boundary_is_smallest",
+    "PalomarCorpus.E257.PaperStatementsBE.paper_dyadic_band_escape_iff_single_test",
     "PalomarCorpus.E257.PaperStructuresBY.exists_seamWord_minimal_above",
     "PalomarCorpus.E257.PaperStructuresBY.integerGreedyBits_length",
     "PalomarCorpus.E257.PaperStructuresBY.seamAboveWord_minimal",

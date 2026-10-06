@@ -26,6 +26,6 @@ noncomputable def primeGapDyadicTerm (n : ℕ) : ℝ := (primeGap0 n : ℝ) / 2 
 theorem denominator_floor_both (a : ℤ) (b : ℕ) (hb : 0 < b)
     (hS : (∑' n, primeDyadicTerm n) = a / b ∨
       (∑' n, primeGapDyadicTerm n) = a / b) :
-    2 ^ 39997 ≤ b ∧ 10 ^ 12040 < b := @ErdosProblems.Erdos251.PaperR7.LargeCertificate.denominator_floor_both
+    2 ^ 39997 ≤ b ∧ 10 ^ 12040 < b := @ErdosProblems.Erdos251.PaperR7.LargeCertificate.denominator_floor_both a b hb hS
 
 end Erdos249257.ExternalVerification251PaperStructuresI

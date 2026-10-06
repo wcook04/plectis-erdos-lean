@@ -15,6 +15,15 @@ open Topology
 
 namespace PalomarCorpus.E269.PaperStructuresI
 
-theorem distinctHeightSum235_irrational : Irrational distinctHeightSum235 := @ErdosProblems.Erdos269.distinctHeightSum235_irrational
+theorem distinctHeightSum235_irrational : Irrational distinctHeightSum235 := by
+  first
+  | (exact @ErdosProblems.Erdos269.distinctHeightSum235_irrational; done)
+  | (set_option smartUnfolding false in
+      exact @ErdosProblems.Erdos269.distinctHeightSum235_irrational; done)
+  | (apply ErdosProblems.Erdos269.distinctHeightSum235_irrational <;> assumption; done)
+  | (simpa only [distinctHeightSum235, jumpPoints235, runningHeight235] using ErdosProblems.Erdos269.distinctHeightSum235_irrational; done)
+  | (set_option smartUnfolding false in
+      with_unfolding_all exact @ErdosProblems.Erdos269.distinctHeightSum235_irrational; done)
+  | (with_unfolding_all exact @ErdosProblems.Erdos269.distinctHeightSum235_irrational; done)
 
 end PalomarCorpus.E269.PaperStructuresI

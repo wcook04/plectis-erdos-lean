@@ -5,12 +5,12 @@ Authors: Will Cook
 -/
 import Mathlib
 import Erdos257PeriodNoncollapse.SublogDivisorCoverage
-import Solutions.PalomarCorpus.E257_51.Statement
+import Solutions.PalomarCorpus.E257_52.Statement
 
 open Filter Set
 
 namespace PalomarCorpus.E257.RationalTailRigidity
-export PalomarCorpus.E257_51.Shared (erdosSupportSeries)
+export PalomarCorpus.E257_52.Shared (erdosSupportSeries supportCoeff)
 
 noncomputable section
 

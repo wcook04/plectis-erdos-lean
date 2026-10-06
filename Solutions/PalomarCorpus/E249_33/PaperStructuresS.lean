@@ -20,7 +20,16 @@ theorem linearIndependent_one_and_least_residue_values
     (m B : ℕ) (hm : 3 ≤ m) (hB : 2 ≤ B) :
     LinearIndependent ℚ (fun d : ℕ =>
       if d = 0 then (1 : ℝ) else
-        positiveRadixValue (B ^ d) (fun r : ℕ => (r : ℚ)) m) := @ErdosProblems.Erdos249.FiniteDilationLinearIndependent.linearIndependent_one_and_least_residue_values m B hm hB
+        positiveRadixValue (B ^ d) (fun r : ℕ => (r : ℚ)) m) := by
+  first
+  | (exact @ErdosProblems.Erdos249.FiniteDilationLinearIndependent.linearIndependent_one_and_least_residue_values m B hm hB; done)
+  | (set_option smartUnfolding false in
+      exact @ErdosProblems.Erdos249.FiniteDilationLinearIndependent.linearIndependent_one_and_least_residue_values m B hm hB; done)
+  | (apply ErdosProblems.Erdos249.FiniteDilationLinearIndependent.linearIndependent_one_and_least_residue_values <;> assumption; done)
+  | (simpa only [positiveRadixValue, radixValue] using ErdosProblems.Erdos249.FiniteDilationLinearIndependent.linearIndependent_one_and_least_residue_values; done)
+  | (set_option smartUnfolding false in
+      with_unfolding_all exact @ErdosProblems.Erdos249.FiniteDilationLinearIndependent.linearIndependent_one_and_least_residue_values m B hm hB; done)
+  | (with_unfolding_all exact @ErdosProblems.Erdos249.FiniteDilationLinearIndependent.linearIndependent_one_and_least_residue_values m B hm hB; done)
 
 theorem rational_mixed_moduli_with_constant_iff
     (D : Finset ℕ) (k : ℕ → ℕ)
@@ -32,7 +41,16 @@ theorem rational_mixed_moduli_with_constant_iff
       (f d (Nat.totient (n + 1) : ZMod (2 ^ (k d))) : ℝ) /
         ((B : ℝ) ^ d) ^ (n + 1)) = (q : ℝ)) ↔
       ∀ d ∈ D, ∀ r : ℕ, r < 2 ^ (k d) → Even r →
-        f d (r : ZMod (2 ^ (k d))) = f d 0 := @ErdosProblems.Erdos249.FiniteDilationMixedModuli.rational_mixed_moduli_with_constant_iff D k f B q₀ hB hpos hk
+        f d (r : ZMod (2 ^ (k d))) = f d 0 := by
+  first
+  | (exact @ErdosProblems.Erdos249.FiniteDilationMixedModuli.rational_mixed_moduli_with_constant_iff D k f B q₀ hB hpos hk; done)
+  | (set_option smartUnfolding false in
+      exact @ErdosProblems.Erdos249.FiniteDilationMixedModuli.rational_mixed_moduli_with_constant_iff D k f B q₀ hB hpos hk; done)
+  | (apply ErdosProblems.Erdos249.FiniteDilationMixedModuli.rational_mixed_moduli_with_constant_iff <;> assumption; done)
+  | (simpa only [positiveRadixValue, radixValue] using ErdosProblems.Erdos249.FiniteDilationMixedModuli.rational_mixed_moduli_with_constant_iff; done)
+  | (set_option smartUnfolding false in
+      with_unfolding_all exact @ErdosProblems.Erdos249.FiniteDilationMixedModuli.rational_mixed_moduli_with_constant_iff D k f B q₀ hB hpos hk; done)
+  | (with_unfolding_all exact @ErdosProblems.Erdos249.FiniteDilationMixedModuli.rational_mixed_moduli_with_constant_iff D k f B q₀ hB hpos hk; done)
 
 theorem positiveRadixValue_eq_of_even_constant
     (B : ℕ) (hB : 2 ≤ B) {k : ℕ} (hk : 1 ≤ k)
@@ -40,11 +58,29 @@ theorem positiveRadixValue_eq_of_even_constant
     (hc : ∀ r, r < 2 ^ k → r % 2 = 0 → f r = c) :
     positiveRadixValue B f (2 ^ k) =
       ((B : ℝ) + 1) / (B : ℝ) ^ 2 * (f 1 : ℝ) +
-        (c : ℝ) / ((B : ℝ) ^ 2 * ((B : ℝ) - 1)) := @ErdosProblems.Erdos249.PaperCompleteR7.IntegerRadixObservables.positiveRadixValue_eq_of_even_constant B hB k hk f c hc
+        (c : ℝ) / ((B : ℝ) ^ 2 * ((B : ℝ) - 1)) := by
+  first
+  | (exact @ErdosProblems.Erdos249.PaperCompleteR7.IntegerRadixObservables.positiveRadixValue_eq_of_even_constant B hB k hk f c hc; done)
+  | (set_option smartUnfolding false in
+      exact @ErdosProblems.Erdos249.PaperCompleteR7.IntegerRadixObservables.positiveRadixValue_eq_of_even_constant B hB k hk f c hc; done)
+  | (apply ErdosProblems.Erdos249.PaperCompleteR7.IntegerRadixObservables.positiveRadixValue_eq_of_even_constant <;> assumption; done)
+  | (simpa only [positiveRadixValue, radixValue] using ErdosProblems.Erdos249.PaperCompleteR7.IntegerRadixObservables.positiveRadixValue_eq_of_even_constant; done)
+  | (set_option smartUnfolding false in
+      with_unfolding_all exact @ErdosProblems.Erdos249.PaperCompleteR7.IntegerRadixObservables.positiveRadixValue_eq_of_even_constant B hB k hk f c hc; done)
+  | (with_unfolding_all exact @ErdosProblems.Erdos249.PaperCompleteR7.IntegerRadixObservables.positiveRadixValue_eq_of_even_constant B hB k hk f c hc; done)
 
 theorem radix_residue_series_irrational
     (B : ℕ) (hB : 2 ≤ B) {m : ℕ} (hm : 3 ≤ m) :
-    Irrational (radixValue B (fun n => (Nat.totient n % m : ℤ))) := @ErdosProblems.Erdos249.PaperCompleteR7.RationalIntegerRadix.radix_residue_series_irrational B hB m hm
+    Irrational (radixValue B (fun n => (Nat.totient n % m : ℤ))) := by
+  first
+  | (exact @ErdosProblems.Erdos249.PaperCompleteR7.RationalIntegerRadix.radix_residue_series_irrational B hB m hm; done)
+  | (set_option smartUnfolding false in
+      exact @ErdosProblems.Erdos249.PaperCompleteR7.RationalIntegerRadix.radix_residue_series_irrational B hB m hm; done)
+  | (apply ErdosProblems.Erdos249.PaperCompleteR7.RationalIntegerRadix.radix_residue_series_irrational <;> assumption; done)
+  | (simpa only [positiveRadixValue, radixValue] using ErdosProblems.Erdos249.PaperCompleteR7.RationalIntegerRadix.radix_residue_series_irrational; done)
+  | (set_option smartUnfolding false in
+      with_unfolding_all exact @ErdosProblems.Erdos249.PaperCompleteR7.RationalIntegerRadix.radix_residue_series_irrational B hB m hm; done)
+  | (with_unfolding_all exact @ErdosProblems.Erdos249.PaperCompleteR7.RationalIntegerRadix.radix_residue_series_irrational B hB m hm; done)
 
 theorem rational_zmod_radix_observable_iff
     (B : ℕ) (hB : 2 ≤ B) {k : ℕ} (hk : 1 ≤ k)
@@ -52,6 +88,15 @@ theorem rational_zmod_radix_observable_iff
     (∃ q : ℚ,
       (∑' n : ℕ, (f (Nat.totient (n + 1) : ZMod (2 ^ k)) : ℝ) /
         (B : ℝ) ^ (n + 1)) = (q : ℝ)) ↔
-      ∀ r : ℕ, r < 2 ^ k → r % 2 = 0 → f (r : ZMod (2 ^ k)) = f 0 := @ErdosProblems.Erdos249.PaperCompleteR7.RationalIntegerRadix.rational_zmod_radix_observable_iff B hB k hk f
+      ∀ r : ℕ, r < 2 ^ k → r % 2 = 0 → f (r : ZMod (2 ^ k)) = f 0 := by
+  first
+  | (exact @ErdosProblems.Erdos249.PaperCompleteR7.RationalIntegerRadix.rational_zmod_radix_observable_iff B hB k hk f; done)
+  | (set_option smartUnfolding false in
+      exact @ErdosProblems.Erdos249.PaperCompleteR7.RationalIntegerRadix.rational_zmod_radix_observable_iff B hB k hk f; done)
+  | (apply ErdosProblems.Erdos249.PaperCompleteR7.RationalIntegerRadix.rational_zmod_radix_observable_iff <;> assumption; done)
+  | (simpa only [positiveRadixValue, radixValue] using ErdosProblems.Erdos249.PaperCompleteR7.RationalIntegerRadix.rational_zmod_radix_observable_iff; done)
+  | (set_option smartUnfolding false in
+      with_unfolding_all exact @ErdosProblems.Erdos249.PaperCompleteR7.RationalIntegerRadix.rational_zmod_radix_observable_iff B hB k hk f; done)
+  | (with_unfolding_all exact @ErdosProblems.Erdos249.PaperCompleteR7.RationalIntegerRadix.rational_zmod_radix_observable_iff B hB k hk f; done)
 
 end PalomarCorpus.E249.PaperStructuresS

@@ -6,7 +6,7 @@ Authors: Will Cook
 import Mathlib
 import Erdos249257.BooleanMobiusGlobalRepair
 import ErdosProblems.Erdos257.PaperCompleteR21.CompatibleFiniteRowFamily
-import Solutions.PalomarCorpus.E257_27.Statement
+import Solutions.PalomarCorpus.E257_28.Statement
 
 open Filter
 open Set
@@ -15,8 +15,9 @@ open scoped BigOperators
 /- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
 
 namespace PalomarCorpus.E257.PaperStructuresW
-export PalomarCorpus.E257_27.Shared (BooleanMobiusGlobalRepairTrajectory)
 
+/-- The copied structure `BooleanMobiusGlobalRepairTrajectory` and its source `Erdos249257.BooleanMobiusGlobalRepairTrajectory` carry the same
+fields, so each converts into the other field by field. -/
 noncomputable def BooleanMobiusGlobalRepairTrajectory_transport_toSrc (x : BooleanMobiusGlobalRepairTrajectory) :
     Erdos249257.BooleanMobiusGlobalRepairTrajectory :=
   ⟨x.bit, x.frozen_step⟩

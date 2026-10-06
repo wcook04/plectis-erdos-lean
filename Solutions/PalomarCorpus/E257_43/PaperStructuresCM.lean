@@ -17,6 +17,15 @@ namespace PalomarCorpus.E257.PaperStructuresCM
 export PalomarCorpus.E257_43.Shared (rungTail rungWeight)
 
 theorem paper_forced_greedy_tail_lt_weight' {J : ℕ} (hJ : 2 ≤ J) (n : ℕ) :
-    rungTail J n < rungWeight J n := @ErdosProblems.Erdos257.PaperCompleteR21.paper_forced_greedy_tail_lt_weight' J hJ n
+    rungTail J n < rungWeight J n := by
+  first
+  | (exact @ErdosProblems.Erdos257.PaperCompleteR21.paper_forced_greedy_tail_lt_weight' J hJ n; done)
+  | (set_option smartUnfolding false in
+      exact @ErdosProblems.Erdos257.PaperCompleteR21.paper_forced_greedy_tail_lt_weight' J hJ n; done)
+  | (apply ErdosProblems.Erdos257.PaperCompleteR21.paper_forced_greedy_tail_lt_weight' <;> assumption; done)
+  | (simpa only [rungTail, rungWeight] using ErdosProblems.Erdos257.PaperCompleteR21.paper_forced_greedy_tail_lt_weight'; done)
+  | (set_option smartUnfolding false in
+      with_unfolding_all exact @ErdosProblems.Erdos257.PaperCompleteR21.paper_forced_greedy_tail_lt_weight' J hJ n; done)
+  | (with_unfolding_all exact @ErdosProblems.Erdos257.PaperCompleteR21.paper_forced_greedy_tail_lt_weight' J hJ n; done)
 
 end PalomarCorpus.E257.PaperStructuresCM

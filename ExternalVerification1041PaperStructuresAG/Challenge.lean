@@ -41,6 +41,10 @@ noncomputable def b : ℂ := Complex.I * (B : ℂ) + (9 / 5 : ℚ) * (s : ℂ)
 
 noncomputable def c : ℂ := -(Cconst : ℂ) - (162 / 25 : ℚ) * (s : ℂ) * Complex.I
 
+noncomputable def ε : ℚ := s ^ 2
+
+noncomputable def ρ : ℚ := 1 - s ^ 16
+
 noncomputable def f : Polynomial ℂ :=
   Polynomial.X ^ 7
     + Polynomial.C (-(ρ : ℂ) * (ε : ℂ) ^ 6 * conj c) * Polynomial.X ^ 6

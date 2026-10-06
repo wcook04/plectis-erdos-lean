@@ -7,7 +7,7 @@ import Mathlib
 import Erdos249257.BooleanMobiusCriticalCapacityCofinal
 import Erdos249257.BooleanMobiusLocalRepair
 import Erdos249257.GreedyAchievementSet
-import Solutions.PalomarCorpus.E257_27.Statement
+import Solutions.PalomarCorpus.E257_28.Statement
 
 open scoped BigOperators
 open scoped ENNReal
@@ -19,7 +19,7 @@ open Topology
 /- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
 
 namespace PalomarCorpus.E257.PaperStructuresBA
-export PalomarCorpus.E257_27.Shared (SkippedCoreCriticalQuotientSupply localMersennePrefixValue localMersenneQuotient localPrefixQuotient mersenneWeightRat)
+export PalomarCorpus.E257_28.Shared (SkippedCoreCriticalQuotientSupply localMersennePrefixValue localMersenneQuotient localPrefixQuotient mersenneWeightRat)
 
 noncomputable def ProtectedExactLocalMersenneRow_transport_toSrc (x : ProtectedExactLocalMersenneRow) :
     Erdos249257.ProtectedExactLocalMersenneRow :=

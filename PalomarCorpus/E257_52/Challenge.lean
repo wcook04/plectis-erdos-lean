@@ -9,7 +9,7 @@ import Mathlib
 set_option autoImplicit false
 
 /-!
-# Erdős #257, the scaled greedy trap, terminal scaled vanishing and twenty one fatal branch families
+# Erdős #257, the rational tail rigidity, reciprocal support and scaled greedy trap families
 
 Each theorem below restates, against Mathlib alone, a theorem of the Lean development
 for Erdős problem #257, in the order the papers state them. The definitions a statement
@@ -18,15 +18,92 @@ the source declaration it comes from. Erdős problem #257 remains open, and no t
 this entry decides it.
 -/
 
+open Filter Set
 open Set
 open Filter Topology
 open scoped BigOperators
-open Filter Set
 
 namespace PalomarCorpus.E257_52.Shared
+/-- The base b reciprocal power subseries supported on A, namely the sum over a in A of 1 divided by b to the power a minus 1, written as an unconditional sum of the indicator of A; the exponent a = 0 contributes 0 because division by zero is zero here, so membership of 0 in A does not change the value. -/
+noncomputable def erdosSupportSeries (b : ℕ) (A : Set ℕ) : ℝ :=
+  ∑' a : ℕ, Set.indicator A (fun a => (1 : ℝ) / ((b : ℝ) ^ a - 1)) a
+/-- **The support coefficient** `f_A(n) = #{d ∣ n : d ∈ A}`, the Dirichlet incidence `1_A * 1` of a support set `A ⊆ ℕ`. This is the coefficient in which Erdős #257 is actually stated: `∑_{a∈A} 1/(b^a - 1) = ∑_n f_A(n)/b^n`. Full support gives `f_ℕ = τ`; primes give `ω`; prime powers give `Ω`. Local copy of Erdos249257.supportCoeff, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def supportCoeff (A : Set ℕ) (n : ℕ) : ℕ :=
+  letI := Classical.decPred fun d : ℕ => d ∈ A
+  (n.divisors.filter fun d => d ∈ A).card
+end PalomarCorpus.E257_52.Shared
+
+namespace PalomarCorpus.E257.RationalTailRigidity
+open Filter Set
+export PalomarCorpus.E257_52.Shared (erdosSupportSeries supportCoeff)
+/-- A zero window of length h beginning after N for a natural coefficient sequence f: f vanishes at N+j+1 for every j below h. -/
+noncomputable def CoeffZeroWindow (f : ℕ → ℕ) (N h : ℕ) : Prop :=
+  ∀ j : ℕ, j < h → f (N + j + 1) = 0
+/-- A zero window of length h beginning after N for the divisor incidence coefficients of A, that is a stretch of h consecutive integers after N none of which has a divisor in A. -/
+noncomputable def SupportCoeffZeroWindow (A : Set ℕ) (N h : ℕ) : Prop :=
+  CoeffZeroWindow (supportCoeff A) N h
+/-- The reciprocal support summand at a, namely 1 divided by a when a lies in A and 0 otherwise; the exponent a = 0 contributes 0. -/
+noncomputable def reciprocalSupportTerm (A : Set ℕ) (a : ℕ) : ℝ :=
+  Set.indicator A (fun a : ℕ => (1 : ℝ) / (a : ℝ)) a
+/-- The reciprocal mass of A, namely the sum over a in A of 1 divided by a, taken as an unconditional sum of the reciprocal support terms. -/
+noncomputable def reciprocalMass (A : Set ℕ) : ℝ :=
+  ∑' a : ℕ, reciprocalSupportTerm A a
+/-- The multiplicative order of 2 modulo an odd positive integer v, formed from the unit that the oddness of v determines. -/
+noncomputable def oddDoublingOrder (v : ℕ) (hvodd : Odd v) : ℕ :=
+  orderOf (ZMod.unitOfCoprime 2 (Nat.coprime_two_left.mpr hvodd))
+/-- Necessary condition under rationality: if A contains a positive element, v is positive, and the base two support series of A equals p divided by 2 to the power c times v, then for every positive epsilon there is a nonnegative constant B such that every zero window of the divisor incidence coefficients beginning at c+N has length at most B plus epsilon times the base two logarithm of N+1. The constant depends on the displayed rationality data, and infinitude of A is not assumed. -/
+theorem supportCoeffZeroWindow_length_le_eps_logb_add
+    (A : Set ℕ) (hA : ∃ a : ℕ, 0 < a ∧ a ∈ A)
+    (p : ℤ) (c v : ℕ) (hv : 0 < v)
+    (hvalue : erdosSupportSeries 2 A =
+      (p : ℝ) / ((2 ^ c * v : ℕ) : ℝ))
+    (ε : ℝ) (hε : 0 < ε) :
+    ∃ B : ℝ, 0 ≤ B ∧
+      ∀ N h : ℕ,
+        SupportCoeffZeroWindow A (c + N) h →
+        (h : ℝ) ≤ ε * Real.logb 2 (N + 1 : ℝ) + B := by
+  sorry
+/-- Necessary condition under rationality: if A contains a positive element, its reciprocal support terms are summable, v is odd and greater than 1, the natural truncation of p is coprime to v, and the base two support series of A equals p divided by 2 to the power c times v, then the reciprocal mass of A is at least the reciprocal of the multiplicative order of 2 modulo v. Infinitude of A is absent from the hypotheses, so the bound also applies to finite supports. -/
+theorem one_div_oddOrder_le_reciprocalMass_of_support_fraction
+    (A : Set ℕ) (hA : ∃ a : ℕ, 0 < a ∧ a ∈ A)
+    (hsum : Summable (reciprocalSupportTerm A))
+    (p : ℤ) (c : ℕ) {v : ℕ} (hv : 1 < v) (hvodd : Odd v)
+    (hpv : p.toNat.Coprime v)
+    (hvalue : erdosSupportSeries 2 A =
+      (p : ℝ) / ((2 ^ c * v : ℕ) : ℝ)) :
+    (1 : ℝ) / (oddDoublingOrder v hvodd : ℝ) ≤ reciprocalMass A := by
+  sorry
+end PalomarCorpus.E257.RationalTailRigidity
+
+namespace PalomarCorpus.E257.ReciprocalSupport
+/-- The reciprocal support summand at a, namely 1 divided by a when a lies in A and 0 otherwise; the exponent a = 0 contributes 0. -/
+noncomputable def supportReciprocalTerm (A : Set ℕ) (a : ℕ) : ℝ :=
+  Set.indicator A (fun a : ℕ => (1 : ℝ) / (a : ℝ)) a
+/-- The base b reciprocal power subseries supported on A, namely the sum over a in A of 1 divided by b to the power a minus 1, written as an unconditional sum of the indicator of A; the exponent a = 0 contributes 0. -/
+noncomputable def supportPowerSeries (b : ℕ) (A : Set ℕ) : ℝ :=
+  ∑' a : ℕ, Set.indicator A
+    (fun a : ℕ => (1 : ℝ) / ((b : ℝ) ^ a - 1)) a
+/-- Principal theorem of this entry: for every integer base b at least 2 and every infinite set A of natural numbers whose reciprocal support terms are summable, the series with terms 1 divided by b to the power a minus 1, summed over a in A, is irrational. The support is arbitrary subject to infinitude and reciprocal summability; no pairwise coprimality, periodicity, density, or powerful support hypothesis appears. Erdős printed the pairwise coprime case at every integer base in 1968 and stated the removal of coprimality without printing its proof. -/
+theorem irrational_supportPowerSeries_of_summable_reciprocal
+    (b : ℕ) (A : Set ℕ) (hb : 2 ≤ b) (hA : A.Infinite)
+    (hsum : Summable (supportReciprocalTerm A)) :
+    Irrational (supportPowerSeries b A) := by
+  sorry
+end PalomarCorpus.E257.ReciprocalSupport
+
+namespace PalomarCorpus.E257.ScaledGreedyTrap
+open Set
+open Filter Topology
+open scoped BigOperators
 /-- The real Mersenne weight 1 divided by 2 to the power n minus 1; at n = 0 the value is 0 because division by zero is zero here. -/
 noncomputable def mersenneWeight (n : ℕ) : ℝ :=
   1 / ((2 : ℝ) ^ n - 1)
+/-- The real number coded by a set A of exponents, namely the sum over a in A with a at least 1 of 1 divided by 2 to the power a minus 1; the indexing runs over k and evaluates the indicator at k+1, so only positive exponents contribute. -/
+noncomputable def positiveMersenneSupportValue (A : Set ℕ) : ℝ :=
+  ∑' k : ℕ, Set.indicator A mersenneWeight (k + 1)
+/-- The Mersenne achievement set, with the analytically invisible zero bit normalized away. Local copy of Erdos249257.mersenneAchievementSet, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def mersenneAchievementSet : Set ℝ :=
+  {x | ∃ A : Set ℕ, 0 ∉ A ∧ x = positiveMersenneSupportValue A}
 /-- Real greedy residual after processing exponents `1, ..., n`. Local copy of Erdos249257.greedyMersenneRemainder, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def greedyMersenneRemainder (x : ℝ) : ℕ → ℝ
   | 0 => x
@@ -35,19 +112,6 @@ noncomputable def greedyMersenneRemainder (x : ℝ) : ℕ → ℝ
         greedyMersenneRemainder x n - mersenneWeight (n + 1)
       else
         greedyMersenneRemainder x n
-/-- The real number coded by a set A of exponents, namely the sum over a in A with a at least 1 of 1 divided by 2 to the power a minus 1; the indexing runs over k and evaluates the indicator at k+1, so only positive exponents contribute. -/
-noncomputable def positiveMersenneSupportValue (A : Set ℕ) : ℝ :=
-  ∑' k : ℕ, Set.indicator A mersenneWeight (k + 1)
-/-- The Mersenne achievement set, with the analytically invisible zero bit normalized away. Local copy of Erdos249257.mersenneAchievementSet, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def mersenneAchievementSet : Set ℝ :=
-  {x | ∃ A : Set ℕ, 0 ∉ A ∧ x = positiveMersenneSupportValue A}
-end PalomarCorpus.E257_52.Shared
-
-namespace PalomarCorpus.E257.ScaledGreedyTrap
-open Set
-open Filter Topology
-open scoped BigOperators
-export PalomarCorpus.E257_52.Shared (greedyMersenneRemainder mersenneAchievementSet mersenneWeight positiveMersenneSupportValue)
 /-- The greedy remainder of x at scale N rescaled by the binary place value, namely 2 to the power N times the greedy Mersenne remainder of x after rank N. -/
 noncomputable def scaledGreedyRemainder (x : ℝ) (N : ℕ) : ℝ :=
   (2 : ℝ) ^ N * greedyMersenneRemainder x N
@@ -96,10 +160,7 @@ end PalomarCorpus.E257.ScaledGreedyTrap
 
 namespace PalomarCorpus.E257.TerminalScaledVanishing
 open Filter Set
-/-- **The support coefficient** `f_A(n) = #{d ∣ n : d ∈ A}`, the Dirichlet incidence `1_A * 1` of a support set `A ⊆ ℕ`. This is the coefficient in which Erdős #257 is actually stated: `∑_{a∈A} 1/(b^a - 1) = ∑_n f_A(n)/b^n`. Full support gives `f_ℕ = τ`; primes give `ω`; prime powers give `Ω`. Local copy of Erdos249257.supportCoeff, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def supportCoeff (A : Set ℕ) (n : ℕ) : ℕ :=
-  letI := Classical.decPred fun d : ℕ => d ∈ A
-  (n.divisors.filter fun d => d ∈ A).card
+export PalomarCorpus.E257_52.Shared (erdosSupportSeries supportCoeff)
 /-- The binary affine orbit driven by an integer sequence a from an initial value, defined by orbit 0 equal to the initial value and orbit (n+1) equal to twice orbit n minus a at n+1. -/
 noncomputable def affineBinaryOrbit (a : ℕ → ℤ) (u0 : ℤ) : ℕ → ℤ
   | 0 => u0
@@ -127,10 +188,6 @@ structure HalfTerminalOnlyScaledVanishingSequence where
         |(integerHalfCarry (wordSupport (word n)) (depth n - 1) : ℝ)| /
           (2 : ℝ) ^ depth n)
       atTop (nhds 0)
-/-- The base b reciprocal power subseries supported on A, namely the sum over a in A of 1 divided by b to the power a minus 1, written as an unconditional sum of the indicator of A; the exponent a = 0 contributes 0 because division by zero is zero here, so membership of 0 in A does not change the value. -/
-noncomputable def erdosSupportSeries (b : ℕ) (A : Set ℕ) : ℝ :=
-  ∑' a : ℕ, Set.indicator A
-    (fun a => (1 : ℝ) / ((b : ℝ) ^ a - 1)) a
 /-- The universal assertion of the parent problem, named as a proposition so that conditional theorems can refer to it: for every infinite set A of natural numbers the base two series with terms 1 divided by 2 to the power a minus 1, summed over a in A, is irrational. Nothing in this development asserts this proposition. -/
 noncomputable def UniversalMersenneSubseriesIrrationality : Prop :=
   ∀ A : Set ℕ, A.Infinite → Irrational (erdosSupportSeries 2 A)
@@ -142,132 +199,3 @@ theorem terminalScaledVanishing_completeCounterexample
     ¬ UniversalMersenneSubseriesIrrationality := by
   sorry
 end PalomarCorpus.E257.TerminalScaledVanishing
-
-namespace PalomarCorpus.E257.TwentyOneFatalBranch
-export PalomarCorpus.E257_52.Shared (greedyMersenneRemainder mersenneAchievementSet mersenneWeight positiveMersenneSupportValue)
-/-- The rational Mersenne weight 1 divided by 2 to the power n minus 1, taken in the rationals; at n = 0 the value is 0. -/
-noncomputable def mersenneWeightRat (n : ℕ) : ℚ :=
-  1 / ((2 : ℚ) ^ n - 1)
-/-- The Mersenne tail beyond rank n, namely the sum over k at least 0 of the Mersenne weight at n+k+1. -/
-noncomputable def mersenneTail (n : ℕ) : ℝ :=
-  ∑' k : ℕ, mersenneWeight (n + k + 1)
-/-- The set of ranks selected by the greedy Mersenne rule on x, namely the positive m for which the weight at m is at most the greedy remainder after rank m minus 1. -/
-noncomputable def greedyMersenneSupport (x : ℝ) : Set ℕ :=
-  {m : ℕ | m ≠ 0 ∧
-    mersenneWeight m ≤ greedyMersenneRemainder x (m - 1)}
-/-- The set of positive ranks that the greedy Mersenne rule on x does not select. -/
-noncomputable def greedyMersenneSkippedSupport (x : ℝ) : Set ℕ :=
-  {m : ℕ | m ≠ 0 ∧ m ∉ greedyMersenneSupport x}
-/-- The fatal condition for a target x at rank n: the greedy Mersenne remainder after rank n strictly exceeds the whole remaining Mersenne tail, so the remainder can no longer be exhausted by later ranks. -/
-noncomputable def GreedyMersenneFatalAt (x : ℝ) (n : ℕ) : Prop :=
-  mersenneTail n < greedyMersenneRemainder x n
-/-- The total weight selected by a Boolean word, namely the sum of those weights whose corresponding entry of the word is true, with the recursion stopping at the end of either list. -/
-noncomputable def weightedBoolSum : List ℕ → List Bool → ℕ
-  | w :: ws, true :: bs => w + weightedBoolSum ws bs
-  | _ :: ws, false :: bs => weightedBoolSum ws bs
-  | _, _ => 0
-/-- The greedy Boolean word for an integer subset sum problem: given a list of weights in the order presented and a capacity, take a weight when it is at most the current capacity and subtract it, otherwise skip it and keep the capacity. -/
-noncomputable def integerGreedyBits : List ℕ → ℕ → List Bool
-  | [], _ => []
-  | w :: ws, C =>
-      if w ≤ C then
-        true :: integerGreedyBits ws (C - w)
-      else
-        false :: integerGreedyBits ws C
-/-- The capacity left unpaid after the greedy Boolean word has been applied to a weight list, namely the capacity minus the total weight selected greedily. -/
-noncomputable def integerGreedyRemainder (weights : List ℕ) (C : ℕ) : ℕ :=
-  C - weightedBoolSum weights (integerGreedyBits weights C)
-/-- The local integer Mersenne quotient at binary scale M and rank d, namely the natural number quotient of 2 to the power M by 2 to the power d minus 1; at d = 0 the divisor is 0 and the value is 0. -/
-noncomputable def localMersenneQuotient (M d : ℕ) : ℕ :=
-  2 ^ M / (2 ^ d - 1)
-/-- The total local quotient carried by a finite set D of ranks at binary scale M, namely the sum over d in D of the local Mersenne quotient at M and d. -/
-noncomputable def localPrefixQuotient (D : Finset ℕ) (M : ℕ) : ℕ :=
-  ∑ d ∈ D, localMersenneQuotient M d
-/-- The list of local Mersenne quotients at binary scale M for the ranks from the given starting index up to R, in increasing rank order. -/
-noncomputable def localMersenneWeightsFrom (M R : ℕ) : ℕ → List ℕ
-  | d =>
-      if h : d ≤ R then
-        localMersenneQuotient M d :: localMersenneWeightsFrom M R (d + 1)
-      else
-        []
-termination_by d => R + 1 - d
-decreasing_by omega
-/-- The local Mersenne weight list at binary scale M through rank R, namely the local quotients for the ranks 2 up to R. -/
-noncomputable def localMersenneWeights (M R : ℕ) : List ℕ :=
-  localMersenneWeightsFrom M R 2
-/-- The integer capacity of the denominator twenty one quotient problem at binary scale M, namely the natural number quotient of 2 to the power M by 21. -/
-noncomputable def twentyOneQuotientTarget (M : ℕ) : ℕ :=
-  2 ^ M / 21
-/-- The Boolean word produced by running the exact rational greedy Mersenne rule on a rational target for a prescribed number of ranks starting at a given rank, taking a rank exactly when its rational Mersenne weight is at most the current remainder. -/
-noncomputable def rationalMersenneGreedyBitsFrom : ℕ → ℕ → ℚ → List Bool
-  | _, 0, _ => []
-  | d, n + 1, x =>
-      if mersenneWeightRat d ≤ x then
-        true ::
-          rationalMersenneGreedyBitsFrom (d + 1) n
-            (x - mersenneWeightRat d)
-      else
-        false :: rationalMersenneGreedyBitsFrom (d + 1) n x
-/-- The capacity left unpaid by the integer greedy rule on the local Mersenne weights at binary scale 2R through rank R against the denominator twenty one capacity at that scale. -/
-noncomputable def twentyOneEvenQuotientGreedyRemainder (R : ℕ) : ℕ :=
-  integerGreedyRemainder
-    (localMersenneWeights (2 * R) R)
-    (twentyOneQuotientTarget (2 * R))
-/-- The closed lower state supply condition, named as a proposition: for every R at least 2 there are a finite set D of ranks between 2 and R and a residual s with the local prefix quotient of D at binary scale 2R plus s equal to the denominator twenty one capacity at that scale and with s at most 2 to the power R. -/
-noncomputable def TwentyOneClosedLowerStateSupply : Prop :=
-  ∀ R : ℕ, 2 ≤ R →
-    ∃ D : Finset ℕ, ∃ s : ℕ,
-      (∀ d ∈ D, 2 ≤ d ∧ d ≤ R) ∧
-      localPrefixQuotient D (2 * R) + s =
-        twentyOneQuotientTarget (2 * R) ∧
-      s ≤ 2 ^ R
-/-- The eventual doubling block condition, named as a proposition: from some threshold onward, every K admits a rank n with K strictly below n, n at most twice K, and n selected by the greedy Mersenne rule on the target one over twenty one. -/
-noncomputable def TwentyOneGreedyEventuallyHitsDoublingBlocks : Prop :=
-  ∃ K₀ : ℕ, ∀ K : ℕ, K₀ ≤ K →
-    ∃ n : ℕ, K < n ∧ n ≤ 2 * K ∧
-      n ∈ greedyMersenneSupport (1 / 21 : ℝ)
-/-- The explicit fatal aligned branch for the target one over twenty one, named as a proposition: there are a rank n and a threshold at which the greedy rule is fatal at n, only finitely many positive ranks are skipped, every rank after n is selected, the integer greedy word on the full local Mersenne weights agrees with the exact rational greedy word at every sufficiently large even scale, and the eventual doubling block condition holds. -/
-noncomputable def TwentyOneFatalAlignedBranch : Prop :=
-  ∃ n R₀ : ℕ,
-    GreedyMersenneFatalAt (1 / 21 : ℝ) n ∧
-      (greedyMersenneSkippedSupport (1 / 21 : ℝ)).Finite ∧
-      (∀ k : ℕ,
-        n + k + 1 ∈ greedyMersenneSupport (1 / 21 : ℝ)) ∧
-      (∀ R : ℕ, R₀ ≤ R →
-        integerGreedyBits
-            (localMersenneWeights (2 * R) (2 * R))
-            (twentyOneQuotientTarget (2 * R)) =
-          rationalMersenneGreedyBitsFrom 2 (2 * R - 1) (1 / 21 : ℚ)) ∧
-      TwentyOneGreedyEventuallyHitsDoublingBlocks
-/-- Closed row canonicalisation: if a Boolean word has the same length as the local Mersenne weight list at binary scale 2R through rank R, its selected weight plus a residual s equals the denominator twenty one capacity at that scale, and the residual satisfies s at most 2 to the power R, then the word is exactly the integer greedy word and s is exactly the greedy remainder. The theorem supplies no closed row. -/
-theorem twentyOneClosedRow_forces_quotientGreedy
-    {R s : ℕ} {bits : List Bool}
-    (hlen :
-      bits.length = (localMersenneWeights (2 * R) R).length)
-    (hrow :
-      weightedBoolSum (localMersenneWeights (2 * R) R) bits + s =
-        twentyOneQuotientTarget (2 * R))
-    (hclosed : s ≤ 2 ^ R) :
-    bits =
-        integerGreedyBits
-          (localMersenneWeights (2 * R) R)
-          (twentyOneQuotientTarget (2 * R)) ∧
-      s = twentyOneEvenQuotientGreedyRemainder R := by
-  sorry
-/-- Conditional on the closed lower state supply condition, one over twenty one belongs to the base two Mersenne achievement set. The hypothesis is not established here. -/
-theorem one_div_twenty_one_mem_mersenneAchievementSet_of_closedLowerStates
-    (hsupply : TwentyOneClosedLowerStateSupply) :
-    (1 / 21 : ℝ) ∈ mersenneAchievementSet := by
-  sorry
-/-- Membership of one over twenty one in the base two Mersenne achievement set is equivalent to the failure of the explicit fatal aligned branch. This is an exact dichotomy; it does not show that the fatal branch is impossible. -/
-theorem one_div_twenty_one_mem_iff_not_fatalAlignedBranch :
-    (1 / 21 : ℝ) ∈ mersenneAchievementSet ↔
-      ¬ TwentyOneFatalAlignedBranch := by
-  sorry
-/-- Inside the fatal aligned branch, the canonical quotient greedy remainder eventually stays strictly above the closed binary capacity, that is there is a threshold beyond which 2 to the power R is strictly below the greedy remainder at every rank R. This is a consequence within the branch, not a refutation of it. -/
-theorem twentyOneFatalAlignedBranch_eventually_strict_supercapacity
-    (hbranch : TwentyOneFatalAlignedBranch) :
-    ∃ K : ℕ, ∀ R : ℕ, K ≤ R →
-      2 ^ R < twentyOneEvenQuotientGreedyRemainder R := by
-  sorry
-end PalomarCorpus.E257.TwentyOneFatalBranch

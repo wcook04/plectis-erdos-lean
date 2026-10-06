@@ -9,7 +9,7 @@ import Mathlib
 set_option autoImplicit false
 
 /-!
-# Erdős #257, the paper structures BY family: reducing the dyadic-boundary checks
+# Erdős #257, the paper structures BY family: filling the remaining binary positions; reducing the dyadic-boundary checks
 
 Each theorem below restates, against Mathlib alone, a theorem of the Lean development
 for Erdős problem #257, in the order the papers state them. The definitions a statement
@@ -20,8 +20,80 @@ of them, and the Solution proves each from the source. Erdős problem #257 remai
 and no theorem in this entry decides it.
 -/
 
-open Finset
+open Filter
+open Set
+open scoped ENNReal
+open MeasureTheory
+open Topology
 open scoped BigOperators
+open Finset
+
+namespace PalomarCorpus.E257.PaperStatementsAR
+open Filter
+open Set
+open scoped ENNReal
+open MeasureTheory
+open Topology
+open scoped BigOperators
+/-- The integral part of `2^M / (2^d - 1)`. Local copy of Erdos249257.localMersenneQuotient, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def localMersenneQuotient (M d : ℕ) : ℕ :=
+  2 ^ M / (2 ^ d - 1)
+/-- Sum of the integral quotient contributions of a finite Boolean support. Local copy of Erdos249257.localPrefixQuotient, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def localPrefixQuotient (D : Finset ℕ) (M : ℕ) : ℕ :=
+  ∑ d ∈ D, localMersenneQuotient M d
+/-- The exact rational Mersenne weight `1 / (2^n - 1)`. Its meaningful support indices are positive; at index zero Lean's division convention gives zero. Local copy of Erdos249257.mersenneWeightRat, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def mersenneWeightRat (n : ℕ) : ℚ :=
+  1 / ((2 : ℚ) ^ n - 1)
+/-- The exact finite Mersenne value of a Boolean lower support. Local copy of Erdos249257.localMersennePrefixValue, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def localMersennePrefixValue (D : Finset ℕ) : ℚ :=
+  ∑ d ∈ D, mersenneWeightRat d
+/-- States record:257bm-c10 from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_exact_row_from_skipped_prefix in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem paper_exact_row_from_skipped_prefix {D : Finset ℕ} {c : ℕ}
+    (hc : 4 ≤ c) (hD : ∀ d ∈ D, 2 ≤ d ∧ d < c)
+    (hbelow : localMersennePrefixValue D < (1 / 2 : ℚ))
+    (hskip : (1 / 2 : ℚ) - localMersennePrefixValue D <
+      mersenneWeightRat c) :
+    ∃ E : Finset ℕ,
+      D ⊆ E ∧
+      (∀ d ∈ E, 2 ≤ d ∧ d ≤ 2 * c - 2) ∧
+      localPrefixQuotient E (2 * c - 2) = 2 ^ (2 * c - 3) - 1 := by
+  sorry
+end PalomarCorpus.E257.PaperStatementsAR
+
+namespace PalomarCorpus.E257.PaperStatementsBE
+open Finset
+/-- `j` indexes the smallest power `2^(d-j+1)` that is still at least `E`. The final disjunction handles the last index, where there is no next power in the band family. Local copy of Erdos249257.HalfUpperResetCriticalBand.CriticalDyadicBandIndex, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def CriticalDyadicBandIndex (d E j : ℕ) : Prop :=
+  j ≤ d ∧
+    E ≤ 2 ^ (d - j + 1) ∧
+      (j = d ∨ 2 ^ (d - (j + 1) + 1) < E)
+/-- Avoidance of every width-`2(d+j)` interval immediately below the dyadic power indexed by `j`. Local copy of Erdos249257.HalfUpperResetCriticalBand.DyadicBandEscape, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def DyadicBandEscape (d E : ℕ) : Prop :=
+  ∀ j : ℕ, j ≤ d →
+    2 ^ (d - j + 1) < E ∨ E + 2 * (d + j) ≤ 2 ^ (d - j + 1)
+/-- States record:257bm-c11 from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_critical_dyadic_band_index_eq_top_of_le_two in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem paper_critical_dyadic_band_index_eq_top_of_le_two {d E j : ℕ}
+    (hE : E ≤ 2) (hj : CriticalDyadicBandIndex d E j) :
+    j = d := by
+  sorry
+/-- States record:257bm-c11 from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_critical_dyadic_band_index_unique in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem paper_critical_dyadic_band_index_unique {d E : ℕ}
+    (hE : E ≤ 2 ^ (d + 1)) :
+    ∃! j : ℕ, CriticalDyadicBandIndex d E j := by
+  sorry
+/-- States record:257bm-c11 from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_critical_dyadic_boundary_is_smallest in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem paper_critical_dyadic_boundary_is_smallest {d E j : ℕ}
+    (hj : CriticalDyadicBandIndex d E j) :
+    E ≤ 2 ^ (d - j + 1) ∧
+      ∀ i : ℕ, i ≤ d → E ≤ 2 ^ (d - i + 1) →
+        (2 : ℕ) ^ (d - j + 1) ≤ 2 ^ (d - i + 1) := by
+  sorry
+/-- States record:257bm-c11 from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_dyadic_band_escape_iff_single_test in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem paper_dyadic_band_escape_iff_single_test {d E j : ℕ}
+    (hj : CriticalDyadicBandIndex d E j) :
+    DyadicBandEscape d E ↔ E + 2 * (d + j) ≤ 2 ^ (d - j + 1) := by
+  sorry
+end PalomarCorpus.E257.PaperStatementsBE
 
 namespace PalomarCorpus.E257.PaperStructuresBY
 open Finset

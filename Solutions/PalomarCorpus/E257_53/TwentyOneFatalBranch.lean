@@ -11,23 +11,6 @@ namespace PalomarCorpus.E257.TwentyOneFatalBranch
 
 noncomputable section
 
-noncomputable def positiveMersenneSupportValue (A : Set ℕ) : ℝ :=
-  ∑' k : ℕ, Set.indicator A mersenneWeight (k + 1)
-
-noncomputable def mersenneAchievementSet : Set ℝ :=
-  {x : ℝ | ∃ A : Set ℕ, 0 ∉ A ∧ x = positiveMersenneSupportValue A}
-
-noncomputable def localPrefixQuotient (D : Finset ℕ) (M : ℕ) : ℕ :=
-  ∑ d ∈ D, localMersenneQuotient M d
-
-noncomputable def TwentyOneClosedLowerStateSupply : Prop :=
-  ∀ R : ℕ, 2 ≤ R →
-    ∃ D : Finset ℕ, ∃ s : ℕ,
-      (∀ d ∈ D, 2 ≤ d ∧ d ≤ R) ∧
-      localPrefixQuotient D (2 * R) + s =
-        twentyOneQuotientTarget (2 * R) ∧
-      s ≤ 2 ^ R
-
 private theorem integerGreedyBits_transport :
     integerGreedyBits =
       Erdos257PeriodNoncollapse.HalfCylinderIntegerGreedy.integerGreedyBits := by

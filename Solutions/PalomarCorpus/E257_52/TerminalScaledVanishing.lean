@@ -10,6 +10,7 @@ import Solutions.PalomarCorpus.E257_52.Statement
 open Filter Set
 
 namespace PalomarCorpus.E257.TerminalScaledVanishing
+export PalomarCorpus.E257_52.Shared (erdosSupportSeries supportCoeff)
 
 noncomputable section
 

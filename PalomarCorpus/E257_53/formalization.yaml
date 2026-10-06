@@ -2,7 +2,7 @@ version: v0.4
 project:
   name: 'Erdős #257, the twenty one fatal branch family'
   description: >-
-    This entry states 1 theorem of the twenty one fatal branch development of the Lean formalisation of Erdős problem #257, to which no paper statement is bound. twentyOneFatalAlignedBranch_eventually_affine_supercapacity: Inside the fatal aligned branch, the greedy support and remainder eventually follow one exact affine recurrence: beyond a threshold the support at R+1 is the support at R with the rank R+1 inserted, and the remainder at R+1 equals four times the remainder at R plus the target two step pulse at binary scale 2R, minus the two step divisor pulse of the support at that scale, and then minus the sum of 2 to the power R+1 and 1.
+    This entry states 5 theorems of the twenty one fatal branch development of the Lean formalisation of Erdős problem #257, to which no paper statement is bound. twentyOneClosedRow_forces_quotientGreedy: Closed row canonicalisation: if a Boolean word has the same length as the local Mersenne weight list at binary scale 2R through rank R, its selected weight plus a residual s equals the denominator twenty one capacity at that scale, and the residual satisfies s at most 2 to the power R, then the word is exactly the integer greedy word and s is exactly the greedy remainder. one_div_twenty_one_mem_mersenneAchievementSet_of_closedLowerStates: Conditional on the closed lower state supply condition, one over twenty one belongs to the base two Mersenne achievement set. one_div_twenty_one_mem_iff_not_fatalAlignedBranch: Membership of one over twenty one in the base two Mersenne achievement set is equivalent to the failure of the explicit fatal aligned branch. twentyOneFatalAlignedBranch_eventually_strict_supercapacity: Inside the fatal aligned branch, the canonical quotient greedy remainder eventually stays strictly above the closed binary capacity, that is there is a threshold beyond which 2 to the power R is strictly below the greedy remainder at every rank R. twentyOneFatalAlignedBranch_eventually_affine_supercapacity: Inside the fatal aligned branch, the greedy support and remainder eventually follow one exact affine recurrence: beyond a threshold the support at R+1 is the support at R with the rank R+1 inserted, and the remainder at R+1 equals four times the remainder at R plus the target two step pulse at binary scale 2R, minus the two step divisor pulse of the support at that scale, and then minus the sum of 2 to the power R+1 and 1.
 
     Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
 
@@ -114,11 +114,11 @@ related_formalizations:
   relationship: "independent"
   note: "States the open parent problem (erdos_257, proof sorry), proves the Lambert identity tsum_top_eq, and states the Erdős 1948 full-support irrationality as the variant tsum_top with proof sorry. It is statement-level prior art; no theorem compared here is derived from it, and the theorem irrational_erdosBorwein_series elsewhere in this repository proves the statement that tsum_top leaves open."
 status:
-  scope: "One Comparator configuration selecting the 1 theorems listed in PalomarCorpus/E257_53/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 53 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_53, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
+  scope: "One Comparator configuration selecting the 5 theorems listed in PalomarCorpus/E257_53/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 53 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_53, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
-  trusted_challenge_sorry_count: 1
+  trusted_challenge_sorry_count: 5
   sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E257_53/Challenge.lean, and the Solution modules contain no sorry. Comparator and kernel outcomes are commit-specific and are recorded separately from this source metadata."
   axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. Axiom-audit outcomes are commit-specific and belong in separate receipts; this source field is not an audit receipt."
   permitted_axiom_budget:
@@ -126,7 +126,23 @@ status:
   - Quot.sound
   - Classical.choice
   main_results:
+  - declaration: "PalomarCorpus.E257.TwentyOneFatalBranch.one_div_twenty_one_mem_iff_not_fatalAlignedBranch"
+    file: "Solutions/PalomarCorpus/E257_53/TwentyOneFatalBranch.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_53/comparator.json"
+  - declaration: "PalomarCorpus.E257.TwentyOneFatalBranch.one_div_twenty_one_mem_mersenneAchievementSet_of_closedLowerStates"
+    file: "Solutions/PalomarCorpus/E257_53/TwentyOneFatalBranch.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_53/comparator.json"
+  - declaration: "PalomarCorpus.E257.TwentyOneFatalBranch.twentyOneClosedRow_forces_quotientGreedy"
+    file: "Solutions/PalomarCorpus/E257_53/TwentyOneFatalBranch.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_53/comparator.json"
   - declaration: "PalomarCorpus.E257.TwentyOneFatalBranch.twentyOneFatalAlignedBranch_eventually_affine_supercapacity"
+    file: "Solutions/PalomarCorpus/E257_53/TwentyOneFatalBranch.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_53/comparator.json"
+  - declaration: "PalomarCorpus.E257.TwentyOneFatalBranch.twentyOneFatalAlignedBranch_eventually_strict_supercapacity"
     file: "Solutions/PalomarCorpus/E257_53/TwentyOneFatalBranch.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_53/comparator.json"

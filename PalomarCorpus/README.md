@@ -97,10 +97,10 @@ The entries restate the theorems of the Lean development for each problem in the
 | [`E257_23`](E257_23/) | 16 | Erdős #257, record sections 6 to 10: detailed results and their hypotheses; hypothesis-specific obstructions (part 2 of 3) |
 | [`E257_24`](E257_24/) | 14 | Erdős #257, record section 6.2: exact identities and reductions (part 4 of 6) |
 | [`E257_25`](E257_25/) | 17 | Erdős #257, record section 6.2: exact identities and reductions (part 5 of 6) |
-| [`E257_26`](E257_26/) | 16 | Erdős #257, record section 6.2: exact identities and reductions (part 6 of 6) |
+| [`E257_26`](E257_26/) | 12 | Erdős #257, record section 6.2: exact identities and reductions (part 6 of 6) |
 | [`E257_27`](E257_27/) | 14 | Erdős #257, record sections 6.2 to 6.3: exact identities and reductions; consequence theorems (part 3 of 3) |
-| [`E257_28`](E257_28/) | 16 | Erdős #257: a quotient bound at a crossing; filling the remaining binary positions; reducing the dyadic-boundary checks |
-| [`E257_29`](E257_29/) | 13 | Erdős #257, the paper structures BY family: reducing the dyadic-boundary checks |
+| [`E257_28`](E257_28/) | 15 | Erdős #257: compatible finite approximations; a quotient bound at a crossing; filling the remaining binary positions |
+| [`E257_29`](E257_29/) | 18 | Erdős #257, the paper structures BY family: filling the remaining binary positions; reducing the dyadic-boundary checks |
 | [`E257_30`](E257_30/) | 1 | Erdős #257: nonnegativity of the omitted-tail margin |
 | [`E257_31`](E257_31/) | 15 | Erdős #257, record sections 6 to 9: detailed results and their hypotheses; which hypotheses remain unproved (part 3 of 4) |
 | [`E257_32`](E257_32/) | 8 | Erdős #257: nonnegativity of the omitted-tail margin; square-root bounds for half-carries |
@@ -121,10 +121,10 @@ The entries restate the theorems of the Lean development for each problem in the
 | [`E257_47`](E257_47/) | 9 | Erdős #257, note sections 1 to 9: introduction and main results; finite-support denominator periods; greedy membership and an integer recurrence |
 | [`E257_48`](E257_48/) | 1 | Erdős #257, note section 9: further questions |
 | [`E257_49`](E257_49/) | 11 | Erdős #257, the achievement set geometry, actual upper successor and Boolean Mobius carry families |
-| [`E257_50`](E257_50/) | 12 | Erdős #257, the fair coding, finite period noncollapse and four ninths repair windows families |
-| [`E257_51`](E257_51/) | 10 | Erdős #257, the paper structures CI, paper structures CO and positive skip equivalence families |
-| [`E257_52`](E257_52/) | 11 | Erdős #257, the scaled greedy trap, terminal scaled vanishing and twenty one fatal branch families |
-| [`E257_53`](E257_53/) | 1 | Erdős #257, the twenty one fatal branch family |
+| [`E257_50`](E257_50/) | 10 | Erdős #257, the fair coding, finite period noncollapse and four ninths repair windows families |
+| [`E257_51`](E257_51/) | 9 | Erdős #257, the literal weighted cover, paper structures CI and paper structures CO families |
+| [`E257_52`](E257_52/) | 10 | Erdős #257, the rational tail rigidity, reciprocal support and scaled greedy trap families |
+| [`E257_53`](E257_53/) | 5 | Erdős #257, the twenty one fatal branch family |
 | [`E269_01`](E269_01/) | 13 | Erdős #269, record sections 1 to 2: the problem, and what is settled; the finite geometry of the running value |
 | [`E269_02`](E269_02/) | 13 | Erdős #269, record sections 4 to 5: why the third prime prevents finite separation; the recurrence for tails between powers of two |
 | [`E269_03`](E269_03/) | 6 | Erdős #269, record sections 5 to 6: the recurrence for tails between powers of two; bounding the tails and clearing a rational denominator |

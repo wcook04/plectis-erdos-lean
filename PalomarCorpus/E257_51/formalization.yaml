@@ -1,10 +1,10 @@
 version: v0.4
 project:
-  name: 'Erdős #257, the paper structures CI, paper structures CO and positive skip equivalence families'
+  name: 'Erdős #257, the literal weighted cover, paper structures CI and paper structures CO families'
   description: >-
-    This entry states 10 theorems of the paper structures CI, paper structures CO, positive skip equivalence, rational membership, rational tail rigidity and reciprocal support developments of the Lean formalisation of Erdős problem #257, to which no paper statement is bound. exists_strengthened_not_old_or_weighted_host: States res:weighted-cover-incomparability from the short record for Erdős problem #257. finite_monotone_witness_rule_realised: States prop:257-finite-witness-rule from the long record for Erdős problem #257. greedyMersenneRemainderRat_half_pos: Every finite rational greedy remainder of the target one half is strictly positive, so no finite greedy prefix represents one half exactly. greedyMersenneSkippedSupport_infinite_iff_cofinal_skips: For every real x, the set of positive ranks skipped by the greedy Mersenne rule on x is infinite if and only if for every K there is an n at least K at which the weight at n+1 exceeds the greedy remainder after rank n. infinite_greedyMersenneSkippedSupport_of_rat_mem: If a rational q belongs to the base two Mersenne achievement set, then the greedy Mersenne rule on q skips infinitely many positive ranks. rat_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite: For every nonnegative rational q, membership of q in the base two Mersenne achievement set is equivalent to the greedy Mersenne rule on q skipping infinitely many positive ranks. rat_mem_mersenneAchievementSet_iff_cofinal_greedy_skips: For every nonnegative rational q, membership of q in the base two Mersenne achievement set is equivalent to the greedy rule skipping at arbitrarily late ranks, that is to the condition that for every K some n at least K has the weight at n+1 exceeding the greedy remainder after rank n. supportCoeffZeroWindow_length_le_eps_logb_add: Necessary condition under rationality: if A contains a positive element, v is positive, and the base two support series of A equals p divided by 2 to the power c times v, then for every positive epsilon there is a nonnegative constant B such that every zero window of the divisor incidence coefficients beginning at c+N has length at most B plus epsilon times the base two logarithm of N+1. one_div_oddOrder_le_reciprocalMass_of_support_fraction: Necessary condition under rationality: if A contains a positive element, its reciprocal support terms are summable, v is odd and greater than 1, the natural truncation of p is coprime to v, and the base two support series of A equals p divided by 2 to the power c times v, then the reciprocal mass of A is at least the reciprocal of the multiplicative order of 2 modulo v. irrational_supportPowerSeries_of_summable_reciprocal: Principal theorem of this entry: for every integer base b at least 2 and every infinite set A of natural numbers whose reciprocal support terms are summable, the series with terms 1 divided by b to the power a minus 1, summed over a in A, is irrational.
+    This entry states 9 theorems of the literal weighted cover, paper structures CI, paper structures CO, positive skip equivalence and rational membership developments of the Lean formalisation of Erdős problem #257, to which no paper statement is bound. exists_weighted_not_strengthened_host: There is an infinite set A of positive exponents with 0 not in A that has finite prime part weighted mass at base 2, has divergent reciprocal mass, admits no strengthened positive cover, admits no logarithmic budget cover at all, and all of whose infinite subsets have irrational support series at every integer base at least 2. exists_weighted_obstruction_with_mixed_heredity: There is an infinite set A of positive exponents with 0 not in A that has finite prime part weighted mass at base 2, admits no logarithmic budget cover, and yet can be combined with an arbitrary strengthened positive cover host V so that every infinite subset of the union of A and V has irrational support series at every integer base at least 2. exists_strengthened_not_old_or_weighted_host: States res:weighted-cover-incomparability from the short record for Erdős problem #257. finite_monotone_witness_rule_realised: States prop:257-finite-witness-rule from the long record for Erdős problem #257. greedyMersenneRemainderRat_half_pos: Every finite rational greedy remainder of the target one half is strictly positive, so no finite greedy prefix represents one half exactly. greedyMersenneSkippedSupport_infinite_iff_cofinal_skips: For every real x, the set of positive ranks skipped by the greedy Mersenne rule on x is infinite if and only if for every K there is an n at least K at which the weight at n+1 exceeds the greedy remainder after rank n. infinite_greedyMersenneSkippedSupport_of_rat_mem: If a rational q belongs to the base two Mersenne achievement set, then the greedy Mersenne rule on q skips infinitely many positive ranks. rat_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite: For every nonnegative rational q, membership of q in the base two Mersenne achievement set is equivalent to the greedy Mersenne rule on q skipping infinitely many positive ranks. rat_mem_mersenneAchievementSet_iff_cofinal_greedy_skips: For every nonnegative rational q, membership of q in the base two Mersenne achievement set is equivalent to the greedy rule skipping at arbitrarily late ranks, that is to the condition that for every K some n at least K has the weight at n+1 exceeding the greedy remainder after rank n.
 
-    1 of the restated theorems is proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 1 is derived from the source declaration by a short tactic proof, which certifies implication.
+    2 are derived from the source declaration by a short tactic proof, which certifies implication.
 
     Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
 
@@ -33,21 +33,11 @@ sources:
 - title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
   authors:
   - Will Cook
-  id: https://github.com/wcook04/plectis-erdos
-  type: other
-  relationship: background
-  note: "The public problem notes and reasoning records that describe the compared theorems and their relationship to the literature. A compared theorem re-proves, formalises or adapts a result of the source marked with a substantive relationship below; the remaining compared theorems are proved in this repository, and no priority is claimed for them beyond the checked proofs."
+  type: original-proof
+  relationship: other
+  note: "The compared theorems are independently restated Lean theorems proved in this repository and described in the public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos."
   license: Apache-2.0
   author_endorsement: participated
-- title: "On the irrationality of certain series"
-  authors:
-  - "Paul Erdos"
-  id: "https://users.renyi.hu/~p_erdos/1969-09.pdf"
-  type: "paper"
-  relationship: "independently-proves"
-  note: "The Mathematics Student 36 (1968, issued 1969), 222-226. The printed theorem on p. 222 gives irrationality for pairwise coprime supports with convergent reciprocal sum at every integer base at least 2, and Erdős states there that pairwise coprimality can be removed by a longer argument that he does not print. ReciprocalSupport.irrational_supportPowerSeries_of_summable_reciprocal is that stated extension, proved independently; no priority over Erdős and no identification with his omitted argument is taken from this source."
-  license: "unknown"
-  author_endorsement: "not-contacted"
 - title: "On arithmetical properties of Lambert series"
   authors:
   - "Paul Erdos"
@@ -126,11 +116,11 @@ related_formalizations:
   relationship: "independent"
   note: "States the open parent problem (erdos_257, proof sorry), proves the Lambert identity tsum_top_eq, and states the Erdős 1948 full-support irrationality as the variant tsum_top with proof sorry. It is statement-level prior art; no theorem compared here is derived from it, and the theorem irrational_erdosBorwein_series elsewhere in this repository proves the statement that tsum_top leaves open."
 status:
-  scope: "One Comparator configuration selecting the 10 theorems listed in PalomarCorpus/E257_51/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 53 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_53, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
+  scope: "One Comparator configuration selecting the 9 theorems listed in PalomarCorpus/E257_51/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 53 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_53, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
-  trusted_challenge_sorry_count: 10
+  trusted_challenge_sorry_count: 9
   sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E257_51/Challenge.lean, and the Solution modules contain no sorry. Comparator and kernel outcomes are commit-specific and are recorded separately from this source metadata."
   axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. Axiom-audit outcomes are commit-specific and belong in separate receipts; this source field is not an audit receipt."
   permitted_axiom_budget:
@@ -138,6 +128,14 @@ status:
   - Quot.sound
   - Classical.choice
   main_results:
+  - declaration: "PalomarCorpus.E257.LiteralWeightedCover.exists_weighted_not_strengthened_host"
+    file: "Solutions/PalomarCorpus/E257_51/LiteralWeightedCover.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_51/comparator.json"
+  - declaration: "PalomarCorpus.E257.LiteralWeightedCover.exists_weighted_obstruction_with_mixed_heredity"
+    file: "Solutions/PalomarCorpus/E257_51/LiteralWeightedCover.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_51/comparator.json"
   - declaration: "PalomarCorpus.E257.PaperStructuresCI.exists_strengthened_not_old_or_weighted_host"
     file: "Solutions/PalomarCorpus/E257_51/PaperStructuresCI.lean"
     sorry_count: 0
@@ -164,18 +162,6 @@ status:
     comparator_config: "PalomarCorpus/E257_51/comparator.json"
   - declaration: "PalomarCorpus.E257.RationalMembership.rat_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite"
     file: "Solutions/PalomarCorpus/E257_51/RationalMembership.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_51/comparator.json"
-  - declaration: "PalomarCorpus.E257.RationalTailRigidity.one_div_oddOrder_le_reciprocalMass_of_support_fraction"
-    file: "Solutions/PalomarCorpus/E257_51/RationalTailRigidity.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_51/comparator.json"
-  - declaration: "PalomarCorpus.E257.RationalTailRigidity.supportCoeffZeroWindow_length_le_eps_logb_add"
-    file: "Solutions/PalomarCorpus/E257_51/RationalTailRigidity.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_51/comparator.json"
-  - declaration: "PalomarCorpus.E257.ReciprocalSupport.irrational_supportPowerSeries_of_summable_reciprocal"
-    file: "Solutions/PalomarCorpus/E257_51/ReciprocalSupport.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_51/comparator.json"
   development_status: substantive

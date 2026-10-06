@@ -27,7 +27,7 @@ open Topology
 /- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
 
 namespace PalomarCorpus.E257.PaperStatementsF
-export PalomarCorpus.E257_28.Shared (localBinarySuffix localMersennePrefixValue localMersenneQuotient localPrefixQuotient mersenneWeightRat)
+export PalomarCorpus.E257_28.Shared (SkippedCoreCriticalQuotientSupply localBinarySuffix localMersennePrefixValue localMersenneQuotient localPrefixQuotient mersenneWeightRat)
 
 noncomputable def ExactLocalMersenneHalfRow (n : ℕ) : Prop :=
   ∃ D : Finset ℕ,

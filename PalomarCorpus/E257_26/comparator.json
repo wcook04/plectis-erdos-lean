@@ -11,10 +11,6 @@
     "PalomarCorpus.E257.PaperStatementsAM.paper_achievement_set_topology",
     "PalomarCorpus.E257.PaperStatementsAO.mixedPrimePowerLayerTwo_supportCoeffInt",
     "PalomarCorpus.E257.PaperStatementsD.greedyHalf_mem_nextMersenneDyadicSliver_iff_excess",
-    "PalomarCorpus.E257.PaperStructuresCJ.above_newSum_le_capacity_iff",
-    "PalomarCorpus.E257.PaperStructuresCJ.below_newSum_le_capacity",
-    "PalomarCorpus.E257.PaperStructuresCJ.nextRemainder_trichotomy",
-    "PalomarCorpus.E257.PaperStructuresCJ.prefixChoice_maximal",
     "PalomarCorpus.E257.PaperStructuresCL.dyadicResidualIntNumerator_coprime_oddDenominator",
     "PalomarCorpus.E257.PaperStructuresCL.dyadicResidualInt_denominator_sandwich",
     "PalomarCorpus.E257.PaperStructuresCN.divInt_mem_nextMersenneDyadicSliver_iff_excess"

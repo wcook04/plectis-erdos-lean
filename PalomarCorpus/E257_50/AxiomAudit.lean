@@ -10,5 +10,3 @@ import Solutions.PalomarCorpus.E257_50
 #print axioms PalomarCorpus.E257.FourNinthsRepairWindows.four_ninths_not_mem_of_strict_sqrt_window
 #print axioms PalomarCorpus.E257.GeneralRepairCriterion.mem_iff_greedyBinaryDefect_cofinal_repairs
 #print axioms PalomarCorpus.E257.GeneralRepairCriterion.mem_iff_greedyBinaryDefect_sqrt_windows
-#print axioms PalomarCorpus.E257.LiteralWeightedCover.exists_weighted_not_strengthened_host
-#print axioms PalomarCorpus.E257.LiteralWeightedCover.exists_weighted_obstruction_with_mixed_heredity

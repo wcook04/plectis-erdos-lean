@@ -2,9 +2,9 @@ version: v0.4
 project:
   name: 'Erdős #257, record sections 6.2 to 6.3: exact identities and reductions; consequence theorems (part 3 of 3)'
   description: >-
-    This entry states 14 theorems that the long record for Erdős problem #257 states in sections 6.2 (exact identities and reductions) and 6.3 (consequence theorems): the theorem “Perturbed-family maximality and the three-branch recurrence” (section 6.2), as prefixRemainder_eq_capacity_sub_choice; the theorem “Compactness from exact finite sums”, as finite_boolSupport_ne_half, abs_exactLocalMersenneRowValue_sub_half_le and half_mem_mersenneAchievementSet_of_cofinalExactLocalRows; the theorem “Infinitely many greedy skips suffice”, as cofinalPositiveHalfGreedySkips_iff_half_mem, half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips, cofinalExactLocalMersenneHalfRows_of_positiveHalfGreedySkips and exactLocalMersenneHalfRow_of_positiveHalfGreedySkip; the theorem “A compatible family of finite supports”, as paper_compatible_first_condition_gives_nonneg, paper_compatible_rows_agree_with_limit and paper_compatible_bit_stable; the theorem “A sufficient quotient bound at a crossing”, as cofinalExactLocalMersenneHalfRows_of_criticalQuotientSupply and half_mem_mersenneAchievementSet_of_criticalQuotientSupply; the theorem “Induction from the depth-six example”, as exists_laterProtectedExactLocalMersenneRow.
+    This entry states 14 theorems that the long record for Erdős problem #257 states in sections 6.2 (exact identities and reductions) and 6.3 (consequence theorems): the theorem “Perturbed-family maximality and the three-branch recurrence” (section 6.2), as above_newSum_le_capacity_iff, below_newSum_le_capacity, nextRemainder_trichotomy, prefixChoice_maximal and prefixRemainder_eq_capacity_sub_choice; the theorem “Compactness from exact finite sums”, as finite_boolSupport_ne_half, abs_exactLocalMersenneRowValue_sub_half_le and half_mem_mersenneAchievementSet_of_cofinalExactLocalRows; the theorem “Infinitely many greedy skips suffice”, as cofinalPositiveHalfGreedySkips_iff_half_mem, half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips, cofinalExactLocalMersenneHalfRows_of_positiveHalfGreedySkips and exactLocalMersenneHalfRow_of_positiveHalfGreedySkip; the theorem “A compatible family of finite supports”, as paper_compatible_first_condition_gives_nonneg and paper_compatible_rows_agree_with_limit.
 
-    8 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 6 are derived from the source declaration by a short tactic proof, which certifies implication.
+    4 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 10 are derived from the source declaration by a short tactic proof, which certifies implication.
 
     Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
 
@@ -75,15 +75,7 @@ status:
     file: "Solutions/PalomarCorpus/E257_27/PaperStatementsAR.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_27/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAR.cofinalExactLocalMersenneHalfRows_of_criticalQuotientSupply"
-    file: "Solutions/PalomarCorpus/E257_27/PaperStatementsAR.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_27/comparator.json"
   - declaration: "PalomarCorpus.E257.PaperStatementsAR.half_mem_mersenneAchievementSet_of_cofinalExactLocalRows"
-    file: "Solutions/PalomarCorpus/E257_27/PaperStatementsAR.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_27/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAR.half_mem_mersenneAchievementSet_of_criticalQuotientSupply"
     file: "Solutions/PalomarCorpus/E257_27/PaperStatementsAR.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_27/comparator.json"
@@ -107,8 +99,20 @@ status:
     file: "Solutions/PalomarCorpus/E257_27/PaperStructuresAW.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_27/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresBA.exists_laterProtectedExactLocalMersenneRow"
-    file: "Solutions/PalomarCorpus/E257_27/PaperStructuresBA.lean"
+  - declaration: "PalomarCorpus.E257.PaperStructuresCJ.above_newSum_le_capacity_iff"
+    file: "Solutions/PalomarCorpus/E257_27/PaperStructuresCJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_27/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStructuresCJ.below_newSum_le_capacity"
+    file: "Solutions/PalomarCorpus/E257_27/PaperStructuresCJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_27/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStructuresCJ.nextRemainder_trichotomy"
+    file: "Solutions/PalomarCorpus/E257_27/PaperStructuresCJ.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_27/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStructuresCJ.prefixChoice_maximal"
+    file: "Solutions/PalomarCorpus/E257_27/PaperStructuresCJ.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_27/comparator.json"
   - declaration: "PalomarCorpus.E257.PaperStructuresCJ.prefixRemainder_eq_capacity_sub_choice"
@@ -117,10 +121,6 @@ status:
     comparator_config: "PalomarCorpus/E257_27/comparator.json"
   - declaration: "PalomarCorpus.E257.PaperStructuresT.paper_compatible_rows_agree_with_limit"
     file: "Solutions/PalomarCorpus/E257_27/PaperStructuresT.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_27/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStructuresW.paper_compatible_bit_stable"
-    file: "Solutions/PalomarCorpus/E257_27/PaperStructuresW.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_27/comparator.json"
   development_status: substantive

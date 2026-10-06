@@ -7,9 +7,9 @@ project:
     restated against Mathlib alone and transported from the source declarations named
     below. The substantive formalization lives in Erdos249257.DyadicPrefixCompression in this repository and at
     public commit 436f55ebdafa67e4af0fff79f621c13f2ded12bf of https://github.com/wcook04/plectis-erdos. This entry is a comparison
-    interface over that development. 2 statements transport by direct term
+    interface over that development. 0 statements transport by direct term
     application, which certifies definitional identity with the source statement;
-    0 transport through a tactic bridge, which certifies implication only. The
+    2 transport through a tactic bridge, which certifies implication only. The
     parent Erdős problem remains open.
   authors:
   - Will Cook
@@ -78,7 +78,7 @@ status:
     source_declaration: Erdos249257.dyadicResidualIntNumerator_coprime_oddDenominator
     source_file: Erdos249257/DyadicPrefixCompression.lean
     source_commit: 436f55ebdafa67e4af0fff79f621c13f2ded12bf
-    transport: definitional
+    transport: derived
   - declaration: Erdos249257.ExternalVerification257PaperStructuresCL.dyadicResidualInt_denominator_sandwich
     file: Solutions/ExternalVerification257PaperStructuresCL.lean
     sorry_count: 0
@@ -89,7 +89,7 @@ status:
     source_declaration: Erdos249257.dyadicResidualInt_denominator_sandwich
     source_file: Erdos249257/DyadicPrefixCompression.lean
     source_commit: 436f55ebdafa67e4af0fff79f621c13f2ded12bf
-    transport: definitional
+    transport: derived
 automation:
   methods:
   - method: agent

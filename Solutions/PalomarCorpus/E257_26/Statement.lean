@@ -24,7 +24,6 @@ open Topology
 open scoped ENNReal
 open MeasureTheory
 open scoped ArithmeticFunction.Omega
-open scoped BigOperators
 
 namespace PalomarCorpus.E257_26.Shared
 /-- The real Mersenne weight 1 divided by 2 to the power n minus 1; at n = 0 the value is 0 because division by zero is zero here. -/
@@ -176,7 +175,3 @@ noncomputable def mersenneDigitTerm (k : ℕ) (b : ℕ → Fin 2) : ℝ :=
 noncomputable def positiveMersenneDigitValue (b : ℕ → Fin 2) : ℝ :=
   ∑' k : ℕ, mersenneDigitTerm k b
 end PalomarCorpus.E257.PaperStatementsAM
-
-namespace PalomarCorpus.E257.PaperStructuresCJ
-open scoped BigOperators
-end PalomarCorpus.E257.PaperStructuresCJ

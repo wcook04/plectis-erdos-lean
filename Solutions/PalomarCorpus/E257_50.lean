@@ -9,4 +9,3 @@ import Solutions.PalomarCorpus.E257_50.FairCoding
 import Solutions.PalomarCorpus.E257_50.FinitePeriodNoncollapse
 import Solutions.PalomarCorpus.E257_50.FourNinthsRepairWindows
 import Solutions.PalomarCorpus.E257_50.GeneralRepairCriterion
-import Solutions.PalomarCorpus.E257_50.LiteralWeightedCover

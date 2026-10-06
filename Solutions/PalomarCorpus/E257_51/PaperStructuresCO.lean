@@ -7,7 +7,7 @@ import Mathlib
 import Erdos249257.CertificateKernel
 import ErdosProblems.Erdos257.PaperCompleteR20.PositivePeriodicSupport
 import ErdosProblems.Erdos257.PaperCompleteR20.TerminalSetCorrespondence
-import ErdosProblems.Erdos257.PaperCompleteR7.AnalyticTargets
+import ErdosProblems.Erdos257.PaperCompleteR7.PrimeWeightedDefinitions
 import ErdosProblems.Erdos257.WitnessLogicIrrational
 import Solutions.PalomarCorpus.E257_51.Statement
 
@@ -32,7 +32,16 @@ theorem irrational_erdosSupportSeries_positivePeriodic
     (b m : ℕ) (A : Set ℕ) (hb : 2 ≤ b) (hm : 0 < m)
     (hper : ∀ n : ℕ, 0 < n → (n + m ∈ A ↔ n ∈ A))
     (hpos : ∃ a : ℕ, 0 < a ∧ a ∈ A) :
-    Irrational (erdosSupportSeries b A) := @ErdosProblems.Erdos257.PaperCompleteR20.irrational_erdosSupportSeries_positivePeriodic b m A hb hm hper hpos
+    Irrational (erdosSupportSeries b A) := by
+  first
+  | (exact @ErdosProblems.Erdos257.PaperCompleteR20.irrational_erdosSupportSeries_positivePeriodic b m A hb hm hper hpos; done)
+  | (set_option smartUnfolding false in
+      exact @ErdosProblems.Erdos257.PaperCompleteR20.irrational_erdosSupportSeries_positivePeriodic b m A hb hm hper hpos; done)
+  | (apply ErdosProblems.Erdos257.PaperCompleteR20.irrational_erdosSupportSeries_positivePeriodic <;> assumption; done)
+  | (simpa only [erdosSupportSeries, primeSetPart, primeWeightedTerm, supportCoeff, terminalPaperCarry] using ErdosProblems.Erdos257.PaperCompleteR20.irrational_erdosSupportSeries_positivePeriodic; done)
+  | (set_option smartUnfolding false in
+      with_unfolding_all exact @ErdosProblems.Erdos257.PaperCompleteR20.irrational_erdosSupportSeries_positivePeriodic b m A hb hm hper hpos; done)
+  | (with_unfolding_all exact @ErdosProblems.Erdos257.PaperCompleteR20.irrational_erdosSupportSeries_positivePeriodic b m A hb hm hper hpos; done)
 
 theorem paper_terminalhalf_iff :
     (∃ B : Set ℕ, 0 ∉ B ∧ B.Infinite ∧ erdosSupportSeries 2 B = (1 : ℝ) / 2) ↔
@@ -42,7 +51,16 @@ theorem paper_terminalhalf_iff :
           (∀ j n, n ∈ A j → 2 ≤ n ∧ n ≤ M j) ∧
           Filter.Tendsto
             (fun j ↦ |(terminalPaperCarry (A j) (M j) : ℝ)| / (2 : ℝ) ^ M j)
-            Filter.atTop (nhds 0) := @ErdosProblems.Erdos257.PaperCompleteR20.paper_terminalhalf_iff
+            Filter.atTop (nhds 0) := by
+  first
+  | (exact @ErdosProblems.Erdos257.PaperCompleteR20.paper_terminalhalf_iff; done)
+  | (set_option smartUnfolding false in
+      exact @ErdosProblems.Erdos257.PaperCompleteR20.paper_terminalhalf_iff; done)
+  | (apply ErdosProblems.Erdos257.PaperCompleteR20.paper_terminalhalf_iff <;> assumption; done)
+  | (simpa only [erdosSupportSeries, primeSetPart, primeWeightedTerm, supportCoeff, terminalPaperCarry] using ErdosProblems.Erdos257.PaperCompleteR20.paper_terminalhalf_iff; done)
+  | (set_option smartUnfolding false in
+      with_unfolding_all exact @ErdosProblems.Erdos257.PaperCompleteR20.paper_terminalhalf_iff; done)
+  | (with_unfolding_all exact @ErdosProblems.Erdos257.PaperCompleteR20.paper_terminalhalf_iff; done)
 
 theorem finite_monotone_witness_rule_realised
     (E : Finset ℕ) (hE : ∀ p ∈ E, Nat.Prime p)
@@ -53,6 +71,15 @@ theorem finite_monotone_witness_rule_realised
         (Summable (Set.indicator H (primeWeightedTerm b P)) ↔ U (P ∩ E))) ∧
       ¬ Summable (Set.indicator H (fun a : ℕ => (1 : ℝ) / a)) ∧
       (∀ A : Set ℕ, A ⊆ H → A.Infinite →
-        ∀ b : ℕ, 2 ≤ b → Irrational (erdosSupportSeries b A)) := @ErdosProblems.Erdos257.finite_monotone_witness_rule_realised E hE U hUp hUE hU0
+        ∀ b : ℕ, 2 ≤ b → Irrational (erdosSupportSeries b A)) := by
+  first
+  | (exact @ErdosProblems.Erdos257.finite_monotone_witness_rule_realised E hE U hUp hUE hU0; done)
+  | (set_option smartUnfolding false in
+      exact @ErdosProblems.Erdos257.finite_monotone_witness_rule_realised E hE U hUp hUE hU0; done)
+  | (apply ErdosProblems.Erdos257.finite_monotone_witness_rule_realised <;> assumption; done)
+  | (simpa only [erdosSupportSeries, primeSetPart, primeWeightedTerm, supportCoeff, terminalPaperCarry] using ErdosProblems.Erdos257.finite_monotone_witness_rule_realised; done)
+  | (set_option smartUnfolding false in
+      with_unfolding_all exact @ErdosProblems.Erdos257.finite_monotone_witness_rule_realised E hE U hUp hUE hU0; done)
+  | (with_unfolding_all exact @ErdosProblems.Erdos257.finite_monotone_witness_rule_realised E hE U hUp hUE hU0; done)
 
 end PalomarCorpus.E257.PaperStructuresCO

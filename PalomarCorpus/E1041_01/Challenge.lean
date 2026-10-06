@@ -44,6 +44,8 @@ noncomputable def a : ℂ := (A : ℂ) - (s : ℂ) * Complex.I
 noncomputable def b : ℂ := Complex.I * (B : ℂ) + (9 / 5 : ℚ) * (s : ℂ)
 /-- Local definition c, copied so the compared statements of this entry elaborate against Mathlib alone. -/
 noncomputable def c : ℂ := -(Cconst : ℂ) - (162 / 25 : ℚ) * (s : ℂ) * Complex.I
+noncomputable def ε : ℚ := s ^ 2
+noncomputable def ρ : ℚ := 1 - s ^ 16
 /-- Local definition f, copied so the compared statements of this entry elaborate against Mathlib alone. -/
 noncomputable def f : Polynomial ℂ :=
   Polynomial.X ^ 7

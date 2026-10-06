@@ -23,6 +23,15 @@ theorem erdos1041_counterexample :
     ∀ z₁ z₂, f.IsRoot z₁ → f.IsRoot z₂ → z₁ ≠ z₂ →
       ∀ γ : ℝ → ℂ, ContinuousOn γ (Set.Icc 0 1) → γ 0 = z₁ → γ 1 = z₂ →
         (∀ τ ∈ Set.Icc (0 : ℝ) 1, ‖f.eval (γ τ)‖ < 1) →
-        (2 : ENNReal) < pathLength γ := @Erdos1041.Counterexample.erdos1041_counterexample
+        (2 : ENNReal) < pathLength γ := by
+  first
+  | (exact @Erdos1041.Counterexample.erdos1041_counterexample; done)
+  | (set_option smartUnfolding false in
+      exact @Erdos1041.Counterexample.erdos1041_counterexample; done)
+  | (apply Erdos1041.Counterexample.erdos1041_counterexample <;> assumption; done)
+  | (simpa only [A, B, Cconst, a, b, c, f, pathLength, s, t, ε, ρ] using Erdos1041.Counterexample.erdos1041_counterexample; done)
+  | (set_option smartUnfolding false in
+      with_unfolding_all exact @Erdos1041.Counterexample.erdos1041_counterexample; done)
+  | (with_unfolding_all exact @Erdos1041.Counterexample.erdos1041_counterexample; done)
 
 end PalomarCorpus.E1041.PaperStructuresAF

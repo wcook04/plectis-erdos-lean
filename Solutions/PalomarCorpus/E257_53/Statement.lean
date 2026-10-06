@@ -28,6 +28,12 @@ noncomputable def mersenneWeight (n : ℕ) : ℝ :=
 /-- The Mersenne tail beyond rank n, namely the sum over k at least 0 of the Mersenne weight at n+k+1. -/
 noncomputable def mersenneTail (n : ℕ) : ℝ :=
   ∑' k : ℕ, mersenneWeight (n + k + 1)
+/-- The real number coded by a set A of exponents, namely the sum over a in A with a at least 1 of 1 divided by 2 to the power a minus 1; the indexing runs over k and evaluates the indicator at k+1, so only positive exponents contribute. -/
+noncomputable def positiveMersenneSupportValue (A : Set ℕ) : ℝ :=
+  ∑' k : ℕ, Set.indicator A mersenneWeight (k + 1)
+/-- The Mersenne achievement set, with the analytically invisible zero bit normalized away. Local copy of Erdos249257.mersenneAchievementSet, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def mersenneAchievementSet : Set ℝ :=
+  {x : ℝ | ∃ A : Set ℕ, 0 ∉ A ∧ x = positiveMersenneSupportValue A}
 /-- The remainder left by the greedy Mersenne rule applied to a nonnegative real x through rank n: it starts at x and, at each rank n+1, subtracts the weight 1 divided by 2 to the power n+1 minus 1 exactly when that weight is at most the current remainder. -/
 noncomputable def greedyMersenneRemainder (x : ℝ) : ℕ → ℝ
   | 0 => x
@@ -65,6 +71,9 @@ noncomputable def integerGreedyRemainder (weights : List ℕ) (C : ℕ) : ℕ :=
 /-- The local integer Mersenne quotient at binary scale M and rank d, namely the natural number quotient of 2 to the power M by 2 to the power d minus 1; at d = 0 the divisor is 0 and the value is 0. -/
 noncomputable def localMersenneQuotient (M d : ℕ) : ℕ :=
   2 ^ M / (2 ^ d - 1)
+/-- The total local quotient carried by a finite set D of ranks at binary scale M, namely the sum over d in D of the local Mersenne quotient at M and d. -/
+noncomputable def localPrefixQuotient (D : Finset ℕ) (M : ℕ) : ℕ :=
+  ∑ d ∈ D, localMersenneQuotient M d
 /-- The divisor incidence of a finite set D of ranks at n, namely the number of members of D that divide n. -/
 noncomputable def endpointDivisorContribution (D : Finset ℕ) (n : ℕ) : ℕ :=
   (D.filter fun d ↦ d ∣ n).card
@@ -116,6 +125,14 @@ noncomputable def localPrefixTwoStepPulse (D : Finset ℕ) (M : ℕ) : ℕ :=
 /-- The two step pulse of the denominator twenty one target at binary scale M, namely the natural number quotient of 4 times the residue of 2 to the power M modulo 21 by 21. -/
 noncomputable def twentyOneTargetTwoStepPulse (M : ℕ) : ℕ :=
   4 * (2 ^ M % 21) / 21
+/-- The closed lower state supply condition, named as a proposition: for every R at least 2 there are a finite set D of ranks between 2 and R and a residual s with the local prefix quotient of D at binary scale 2R plus s equal to the denominator twenty one capacity at that scale and with s at most 2 to the power R. -/
+noncomputable def TwentyOneClosedLowerStateSupply : Prop :=
+  ∀ R : ℕ, 2 ≤ R →
+    ∃ D : Finset ℕ, ∃ s : ℕ,
+      (∀ d ∈ D, 2 ≤ d ∧ d ≤ R) ∧
+      localPrefixQuotient D (2 * R) + s =
+        twentyOneQuotientTarget (2 * R) ∧
+      s ≤ 2 ^ R
 /-- The eventual doubling block condition, named as a proposition: from some threshold onward, every K admits a rank n with K strictly below n, n at most twice K, and n selected by the greedy Mersenne rule on the target one over twenty one. -/
 noncomputable def TwentyOneGreedyEventuallyHitsDoublingBlocks : Prop :=
   ∃ K₀ : ℕ, ∀ K : ℕ, K₀ ≤ K →

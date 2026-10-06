@@ -94,6 +94,15 @@ theorem irrational_totient_series_of_goodBase_gap
     (hgap : ∀ h : ℕ, 0 < h → ∀ A : ℕ, ∃ X : ℕ, max A 1 ≤ X ∧
       (∑ N ∈ pivotGoodBases X (minimalDepth h 26 X) 26 (1 / 1000 : ℝ),
         windowFirstExp h N (minimalDepth h 26 X)).re ≤ (603 / 1000 : ℝ) * X) :
-    Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) := @ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_goodBase_gap hgap
+    Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) := by
+  first
+  | (exact @ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_goodBase_gap hgap; done)
+  | (set_option smartUnfolding false in
+      exact @ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_goodBase_gap hgap; done)
+  | (apply ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_goodBase_gap <;> assumption; done)
+  | (simpa only [AdmissibleDepth, admissibleDepth_witness, exists_admissibleDepth, minimalDepth, pivotArgument, pivotCofactor, pivotGoodBases, pivotGoodCofactor, pivotOffset, pivotPrime, pivotSupplier, pivotSupplierBases, windowDiscrepancy, windowFirstAngle, windowFirstExp] using ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_goodBase_gap; done)
+  | (set_option smartUnfolding false in
+      with_unfolding_all exact @ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_goodBase_gap hgap; done)
+  | (with_unfolding_all exact @ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_goodBase_gap hgap; done)
 
 end Erdos249257.ExternalVerification249PaperStructuresT

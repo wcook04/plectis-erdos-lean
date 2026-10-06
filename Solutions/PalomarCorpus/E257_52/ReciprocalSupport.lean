@@ -5,7 +5,7 @@ Authors: Will Cook
 -/
 import Mathlib
 import Erdos257PeriodNoncollapse.AllBaseReciprocalSupportIrrationality
-import Solutions.PalomarCorpus.E257_51.Statement
+import Solutions.PalomarCorpus.E257_52.Statement
 
 namespace PalomarCorpus.E257.ReciprocalSupport
 

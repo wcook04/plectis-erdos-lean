@@ -7,9 +7,9 @@ project:
     restated against Mathlib alone and transported from the source declarations named
     below. The substantive formalization lives in Erdos249257.HalfCylinderIntegerGreedy in this repository and at
     public commit 436f55ebdafa67e4af0fff79f621c13f2ded12bf of https://github.com/wcook04/plectis-erdos. This entry is a comparison
-    interface over that development. 5 statements transport by direct term
+    interface over that development. 0 statements transport by direct term
     application, which certifies definitional identity with the source statement;
-    0 transport through a tactic bridge, which certifies implication only. The
+    5 transport through a tactic bridge, which certifies implication only. The
     parent Erdős problem remains open.
   authors:
   - Will Cook
@@ -78,7 +78,7 @@ status:
     source_declaration: Erdos249257.HalfCylinderIntegerGreedy.PerturbedFamily.AdjacentCut.above_newSum_le_capacity_iff
     source_file: Erdos249257/HalfCylinderIntegerGreedy.lean
     source_commit: 436f55ebdafa67e4af0fff79f621c13f2ded12bf
-    transport: definitional
+    transport: derived
   - declaration: Erdos249257.ExternalVerification257PaperStructuresCJ.below_newSum_le_capacity
     file: Solutions/ExternalVerification257PaperStructuresCJ.lean
     sorry_count: 0
@@ -89,7 +89,7 @@ status:
     source_declaration: Erdos249257.HalfCylinderIntegerGreedy.PerturbedFamily.AdjacentCut.below_newSum_le_capacity
     source_file: Erdos249257/HalfCylinderIntegerGreedy.lean
     source_commit: 436f55ebdafa67e4af0fff79f621c13f2ded12bf
-    transport: definitional
+    transport: derived
   - declaration: Erdos249257.ExternalVerification257PaperStructuresCJ.nextRemainder_trichotomy
     file: Solutions/ExternalVerification257PaperStructuresCJ.lean
     sorry_count: 0
@@ -100,7 +100,7 @@ status:
     source_declaration: Erdos249257.HalfCylinderIntegerGreedy.PerturbedFamily.AdjacentCut.nextRemainder_trichotomy
     source_file: Erdos249257/HalfCylinderIntegerGreedy.lean
     source_commit: 436f55ebdafa67e4af0fff79f621c13f2ded12bf
-    transport: definitional
+    transport: derived
   - declaration: Erdos249257.ExternalVerification257PaperStructuresCJ.prefixChoice_maximal
     file: Solutions/ExternalVerification257PaperStructuresCJ.lean
     sorry_count: 0
@@ -111,7 +111,7 @@ status:
     source_declaration: Erdos249257.HalfCylinderIntegerGreedy.PerturbedFamily.AdjacentCut.prefixChoice_maximal
     source_file: Erdos249257/HalfCylinderIntegerGreedy.lean
     source_commit: 436f55ebdafa67e4af0fff79f621c13f2ded12bf
-    transport: definitional
+    transport: derived
   - declaration: Erdos249257.ExternalVerification257PaperStructuresCJ.prefixRemainder_eq_capacity_sub_choice
     file: Solutions/ExternalVerification257PaperStructuresCJ.lean
     sorry_count: 0
@@ -122,7 +122,7 @@ status:
     source_declaration: Erdos249257.HalfCylinderIntegerGreedy.PerturbedFamily.AdjacentCut.prefixRemainder_eq_capacity_sub_choice
     source_file: Erdos249257/HalfCylinderIntegerGreedy.lean
     source_commit: 436f55ebdafa67e4af0fff79f621c13f2ded12bf
-    transport: definitional
+    transport: derived
 automation:
   methods:
   - method: agent

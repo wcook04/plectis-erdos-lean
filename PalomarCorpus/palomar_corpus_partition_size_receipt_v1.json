@@ -1,9 +1,9 @@
 {
   "schema": "palomar_corpus_size_receipt_v1",
-  "generated_at": "2026-10-06T01:13:05Z",
+  "generated_at": "2026-10-06T02:22:14Z",
   "public_root": ".",
   "path_base": "repository_root",
-  "git_head": "4ff36488de1f5cf08a9b3e7df5b0302f78bd8609",
+  "git_head": "b3ecdb5cfcab97bdb3e374be64aa9125c2bb8a00",
   "selected_families": [
     "ExternalVerification1041CriticalGeometry",
     "ExternalVerification1041CriticalValueMean",
@@ -388,7 +388,7 @@
     "over_hard_limit": false,
     "over_preferred_surface": true,
     "mode": "pretty_stripped",
-    "shared_def_count": 600,
+    "shared_def_count": 598,
     "shared_def_names": [
       "A",
       "ActualLcmTopEdgeResidueGap",

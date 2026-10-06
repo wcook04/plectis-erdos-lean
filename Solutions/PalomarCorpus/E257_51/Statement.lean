@@ -18,11 +18,10 @@ walks from a compared theorem statement is byte-identical in the Challenge and S
 environments. Generated from the Challenge; do not edit by hand.
 -/
 
+open Set
 open Finset
 open Filter
 open Topology
-open Set
-open Filter Set
 
 namespace PalomarCorpus.E257_51.Shared
 /-- The base b reciprocal power subseries supported on A, namely the sum over a in A of 1 divided by b to the power a minus 1, written as an unconditional sum of the indicator of A; the exponent a = 0 contributes 0 because division by zero is zero here, so membership of 0 in A does not change the value. -/
@@ -35,17 +34,15 @@ noncomputable def primeSetPart (P : Finset ℕ) (a : ℕ) : ℕ :=
 noncomputable def primeWeightedTerm (b : ℕ) (P : Finset ℕ) (a : ℕ) : ℝ :=
   (primeSetPart P a : ℝ) /
     ((a : ℝ) * ((b : ℝ) ^ primeSetPart P a - 1))
-end PalomarCorpus.E257_51.Shared
-
-namespace PalomarCorpus.E257.PaperStructuresCI
-open Finset
-open Filter
-open Topology
-export PalomarCorpus.E257_51.Shared (erdosSupportSeries primeSetPart primeWeightedTerm)
 /-- The weighted hypothesis, not its irrationality conclusion. Local copy of ErdosProblems.Erdos257.PaperCompleteR7.FinitePrimeWeighted, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def FinitePrimeWeighted (b : ℕ) (A : Set ℕ) : Prop :=
   ∃ P : Finset ℕ, P.Nonempty ∧ (∀ p ∈ P, Nat.Prime p) ∧
     Summable (Set.indicator A (primeWeightedTerm b P))
+end PalomarCorpus.E257_51.Shared
+
+namespace PalomarCorpus.E257.LiteralWeightedCover
+open Set
+export PalomarCorpus.E257_51.Shared (FinitePrimeWeighted erdosSupportSeries primeSetPart primeWeightedTerm)
 /-- Data for a positive fractional divisor cover: a sequence of finite frames of positive integers (frame j, with 0 not in it), exponents alpha j with 0 < alpha j and alpha j at most 1, and nonnegative coefficients c j d with each column sum over d of c j d / d convergent, subject to the divisor majorisation that for every frame index j and every n at least 1 the number of members of frame j dividing n, raised to the power alpha j, is at most the sum of c j d over the divisors d of n. -/
 structure PositiveCoverData where
   frame : ℕ → Finset ℕ
@@ -58,9 +55,79 @@ structure PositiveCoverData where
   majorises : ∀ j n, 0 < n →
     (((frame j).filter (fun a => a ∣ n)).card : ℝ) ^ exponent j ≤
       ∑ d ∈ n.divisors, coefficient j d
+/-- The cost C j of frame j of a positive cover, namely the sum over d of c j d divided by d; the d = 0 summand is zero because division by zero is zero here. -/
+noncomputable def PositiveCoverData.cost (C : PositiveCoverData) (j : ℕ) : ℝ :=
+  ∑' d : ℕ, C.coefficient j d / (d : ℝ)
+/-- The host of a positive cover, namely the set of positive integers that belong to at least one of its frames. -/
+noncomputable def PositiveCoverData.host (C : PositiveCoverData) : Set ℕ :=
+  {a | ∃ j, a ∈ C.frame j}
+/-- The strengthened one inverse power cover cost condition: the sum over frame indices j of C j times 2 raised to the power (j+1) times alpha j, divided by 2 raised to alpha j minus 1, converges. -/
+noncomputable def PositiveCoverData.StrengthenedCostSummable (C : PositiveCoverData) : Prop :=
+  Summable (fun j : ℕ =>
+    C.cost j * (2 : ℝ) ^ (((j + 1 : ℕ) : ℝ) * C.exponent j) /
+      ((2 : ℝ) ^ C.exponent j - 1))
 /-- A set A of exponents has a strengthened positive cover when some positive cover data has A inside its host and satisfies the strengthened one inverse power cost condition. -/
 noncomputable def HasStrengthenedPositiveCover (A : Set ℕ) : Prop :=
   ∃ C : PositiveCoverData, A ⊆ C.host ∧ C.StrengthenedCostSummable
+/-- Arbitrary weight positive cover data on a prescribed support A: finite frames avoiding 0, strictly positive frame weights summing to 1, exponents alpha j with 0 < alpha j and alpha j at most 1, nonnegative coefficients with convergent columns, the requirement that every element of A lies in some frame, the divisor majorisation of the fractional frame incidence by the coefficient divisor sums, and convergence of the logarithmic budget whose j th term is the frame cost divided by the weight raised to alpha j and by 2 raised to alpha j minus 1. -/
+structure LogBudgetCover (A : Set ℕ) where
+  frame : ℕ → Finset ℕ
+  weight : ℕ → ℝ
+  exponent : ℕ → ℝ
+  coefficient : ℕ → ℕ → ℝ
+  frame_positive : ∀ j, 0 ∉ frame j
+  weight_positive : ∀ j, 0 < weight j
+  weight_sum : HasSum weight 1
+  exponent_bounds : ∀ j, 0 < exponent j ∧ exponent j ≤ 1
+  coefficient_nonneg : ∀ j d, 0 < d → 0 ≤ coefficient j d
+  column_summable : ∀ j, Summable (fun d : ℕ => coefficient j d / (d : ℝ))
+  covers : ∀ a ∈ A, ∃ j, a ∈ frame j
+  majorises : ∀ j n, 0 < n →
+    (((frame j).filter (fun a => a ∣ n)).card : ℝ) ^ exponent j ≤
+      ∑ d ∈ n.divisors, coefficient j d
+  budget_summable : Summable (fun j =>
+    (∑' d : ℕ, coefficient j d / (d : ℝ)) /
+      (weight j ^ exponent j) / ((2 : ℝ) ^ exponent j - 1))
+end PalomarCorpus.E257.LiteralWeightedCover
+
+namespace PalomarCorpus.E257.PaperStructuresCI
+open Finset
+open Filter
+open Topology
+export PalomarCorpus.E257_51.Shared (FinitePrimeWeighted erdosSupportSeries primeSetPart primeWeightedTerm)
+/-- Data for a positive fractional divisor cover: a sequence of finite frames of positive integers (frame j, with 0 not in it), exponents alpha j with 0 < alpha j and alpha j at most 1, and nonnegative coefficients c j d with each column sum over d of c j d / d convergent, subject to the divisor majorisation that for every frame index j and every n at least 1 the number of members of frame j dividing n, raised to the power alpha j, is at most the sum of c j d over the divisors d of n. -/
+structure PositiveCoverData where
+  frame : ℕ → Finset ℕ
+  exponent : ℕ → ℝ
+  coefficient : ℕ → ℕ → ℝ
+  frame_positive : ∀ j, 0 ∉ frame j
+  exponent_bounds : ∀ j, 0 < exponent j ∧ exponent j ≤ 1
+  coefficient_nonneg : ∀ j d, 0 < d → 0 ≤ coefficient j d
+  column_summable : ∀ j, Summable (fun d : ℕ => coefficient j d / (d : ℝ))
+  majorises : ∀ j n, 0 < n →
+    (((frame j).filter (fun a => a ∣ n)).card : ℝ) ^ exponent j ≤
+      ∑ d ∈ n.divisors, coefficient j d
+/-- The cost C j of frame j of a positive cover, namely the sum over d of c j d divided by d; the d = 0 summand is zero because division by zero is zero here. -/
+noncomputable def PositiveCoverData.cost (C : PositiveCoverData) (j : ℕ) : ℝ :=
+  ∑' d : ℕ, C.coefficient j d / (d : ℝ)
+/-- The strengthened one inverse power cover cost condition: the sum over frame indices j of C j times 2 raised to the power (j+1) times alpha j, divided by 2 raised to alpha j minus 1, converges. -/
+noncomputable def PositiveCoverData.StrengthenedCostSummable (C : PositiveCoverData) : Prop :=
+  Summable (fun j : ℕ =>
+    C.cost j * (2 : ℝ) ^ (((j + 1 : ℕ) : ℝ) * C.exponent j) /
+      ((2 : ℝ) ^ C.exponent j - 1))
+/-- The host of a positive cover, namely the set of positive integers that belong to at least one of its frames. -/
+noncomputable def PositiveCoverData.host (C : PositiveCoverData) : Set ℕ :=
+  {a | ∃ j, a ∈ C.frame j}
+/-- A set A of exponents has a strengthened positive cover when some positive cover data has A inside its host and satisfies the strengthened one inverse power cost condition. -/
+noncomputable def HasStrengthenedPositiveCover (A : Set ℕ) : Prop :=
+  ∃ C : PositiveCoverData, A ⊆ C.host ∧ C.StrengthenedCostSummable
+/-- Local definition oldCostTerm, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def PositiveCoverData.oldCostTerm (C : PositiveCoverData) (j : ℕ) : ℝ :=
+  C.cost j * (2 : ℝ) ^ (((j + 1 : ℕ) : ℝ) * C.exponent j) *
+    (2 : ℝ) ^ C.exponent j / (((2 : ℝ) ^ C.exponent j - 1) ^ 2)
+/-- Local definition OldCostSummable, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def PositiveCoverData.OldCostSummable (C : PositiveCoverData) : Prop :=
+  Summable C.oldCostTerm
 /-- Local definition HasOldPositiveCover, copied so the compared statements of this entry elaborate against Mathlib alone. -/
 noncomputable def HasOldPositiveCover (A : Set ℕ) : Prop :=
   ∃ C : PositiveCoverData, A ⊆ C.host ∧ C.OldCostSummable
@@ -114,37 +181,3 @@ noncomputable def greedyMersenneSupport (x : ℝ) : Set ℕ :=
 noncomputable def greedyMersenneSkippedSupport (x : ℝ) : Set ℕ :=
   {m : ℕ | m ≠ 0 ∧ m ∉ greedyMersenneSupport x}
 end PalomarCorpus.E257.RationalMembership
-
-namespace PalomarCorpus.E257.RationalTailRigidity
-open Filter Set
-export PalomarCorpus.E257_51.Shared (erdosSupportSeries)
-/-- **The support coefficient** `f_A(n) = #{d ∣ n : d ∈ A}`, the Dirichlet incidence `1_A * 1` of a support set `A ⊆ ℕ`. This is the coefficient in which Erdős #257 is actually stated: `∑_{a∈A} 1/(b^a - 1) = ∑_n f_A(n)/b^n`. Full support gives `f_ℕ = τ`; primes give `ω`; prime powers give `Ω`. Local copy of Erdos249257.supportCoeff, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def supportCoeff (A : Set ℕ) (n : ℕ) : ℕ :=
-  letI := Classical.decPred fun d : ℕ => d ∈ A
-  (n.divisors.filter fun d => d ∈ A).card
-/-- A zero window of length h beginning after N for a natural coefficient sequence f: f vanishes at N+j+1 for every j below h. -/
-noncomputable def CoeffZeroWindow (f : ℕ → ℕ) (N h : ℕ) : Prop :=
-  ∀ j : ℕ, j < h → f (N + j + 1) = 0
-/-- A zero window of length h beginning after N for the divisor incidence coefficients of A, that is a stretch of h consecutive integers after N none of which has a divisor in A. -/
-noncomputable def SupportCoeffZeroWindow (A : Set ℕ) (N h : ℕ) : Prop :=
-  CoeffZeroWindow (supportCoeff A) N h
-/-- The reciprocal support summand at a, namely 1 divided by a when a lies in A and 0 otherwise; the exponent a = 0 contributes 0. -/
-noncomputable def reciprocalSupportTerm (A : Set ℕ) (a : ℕ) : ℝ :=
-  Set.indicator A (fun a : ℕ => (1 : ℝ) / (a : ℝ)) a
-/-- The reciprocal mass of A, namely the sum over a in A of 1 divided by a, taken as an unconditional sum of the reciprocal support terms. -/
-noncomputable def reciprocalMass (A : Set ℕ) : ℝ :=
-  ∑' a : ℕ, reciprocalSupportTerm A a
-/-- The multiplicative order of 2 modulo an odd positive integer v, formed from the unit that the oddness of v determines. -/
-noncomputable def oddDoublingOrder (v : ℕ) (hvodd : Odd v) : ℕ :=
-  orderOf (ZMod.unitOfCoprime 2 (Nat.coprime_two_left.mpr hvodd))
-end PalomarCorpus.E257.RationalTailRigidity
-
-namespace PalomarCorpus.E257.ReciprocalSupport
-/-- The reciprocal support summand at a, namely 1 divided by a when a lies in A and 0 otherwise; the exponent a = 0 contributes 0. -/
-noncomputable def supportReciprocalTerm (A : Set ℕ) (a : ℕ) : ℝ :=
-  Set.indicator A (fun a : ℕ => (1 : ℝ) / (a : ℝ)) a
-/-- The base b reciprocal power subseries supported on A, namely the sum over a in A of 1 divided by b to the power a minus 1, written as an unconditional sum of the indicator of A; the exponent a = 0 contributes 0. -/
-noncomputable def supportPowerSeries (b : ℕ) (A : Set ℕ) : ℝ :=
-  ∑' a : ℕ, Set.indicator A
-    (fun a : ℕ => (1 : ℝ) / ((b : ℝ) ^ a - 1)) a
-end PalomarCorpus.E257.ReciprocalSupport
