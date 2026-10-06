@@ -26,13 +26,13 @@ theorem irrational_totient_series_of_goodBase_gap
         windowFirstExp h N (minimalDepth h 26 X)).re ≤ (603 / 1000 : ℝ) * X) :
     Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) := by
   have hsup (X L s : ℕ) :
-      pivotSupplierBases X L s = Erdos249257.pivotSupplierBases X L s := by
+      pivotSupplierBases X L s = Erdos249257.TotientTailPeriodKiller.pivotSupplierBases X L s := by
     ext N
-    simp only [pivotSupplierBases, Erdos249257.pivotSupplierBases, Finset.mem_filter] <;> rfl
+    simp only [pivotSupplierBases, Erdos249257.TotientTailPeriodKiller.pivotSupplierBases, Finset.mem_filter] <;> rfl
   have hgood (X L s : ℕ) (η : ℝ) :
-      pivotGoodBases X L s η = Erdos249257.pivotGoodBases X L s η := by
+      pivotGoodBases X L s η = Erdos249257.TotientTailPeriodKiller.pivotGoodBases X L s η := by
     ext N
-    simp only [pivotGoodBases, Erdos249257.pivotGoodBases, Finset.mem_filter, hsup] <;> rfl
+    simp only [pivotGoodBases, Erdos249257.TotientTailPeriodKiller.pivotGoodBases, Finset.mem_filter, hsup] <;> rfl
   have hdepth (h s X : ℕ) :
       minimalDepth h s X = ErdosProblems.Erdos249.PaperCompleteR21.minimalDepth h s X := by
     unfold minimalDepth
