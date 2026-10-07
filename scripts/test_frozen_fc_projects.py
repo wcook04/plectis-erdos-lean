@@ -109,5 +109,77 @@ class FrozenProjectTests(unittest.TestCase):
                 self.assertNotIn("actions/cache", text)
 
 
+class LakeLibraryTargetTests(unittest.TestCase):
+    project = "verification/FCMergedIntegerAdapters"
+
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.root = Path(self.temp.name)
+        shutil.copytree(frozen.ROOT / self.project, self.root / self.project)
+        self.binding_path = self.root / self.project / "source-binding.json"
+        self.binding = json.loads(self.binding_path.read_text())
+
+    def test_library_name_collision_builds_both_original_glob_roots(self):
+        result = frozen.check_project(self.root, self.project)
+        self.assertEqual(result["proof_lean_files"], 12)
+        self.assertEqual(result["original_lean_files"], 105)
+        self.assertEqual(result["lake_build_root_count"], 2)
+
+    def test_initial_import_only_packet_is_rejected_before_candidate_execution(self):
+        # Recreate the escaped packaging error, including its initial schema.
+        proof = self.binding.pop("proof_source_closure")
+        self.binding.pop("lake_build_roots")
+        for path in list(self.binding["source_closure"]):
+            if path.endswith(".lean") and path not in proof:
+                self.binding["source_closure"].pop(path)
+                self.binding["source_path_origins"].pop(path)
+                (self.root / path).unlink()
+        self.binding_path.write_text(json.dumps(self.binding))
+        with self.assertRaisesRegex(ValueError, "missing source path.*FormalConjecturesVariants"):
+            frozen.check_project(self.root, self.project)
+
+    def test_build_only_dependency_cannot_be_omitted(self):
+        path = next(path for path in self.binding["source_closure"]
+                    if path.endswith(".lean") and path not in self.binding["proof_source_closure"]
+                    and path not in self.binding["lake_build_roots"])
+        self.binding["source_closure"].pop(path)
+        self.binding["source_path_origins"].pop(path)
+        (self.root / path).unlink()
+        self.binding_path.write_text(json.dumps(self.binding))
+        with self.assertRaisesRegex(ValueError, "unresolved"):
+            frozen.check_project(self.root, self.project)
+
+    def test_proof_closure_cannot_claim_unselected_library_sibling(self):
+        path = next(path for path in self.binding["lake_build_roots"] if path not in self.binding["proof_source_closure"])
+        self.binding["proof_source_closure"][path] = self.binding["source_closure"][path]
+        self.binding_path.write_text(json.dumps(self.binding))
+        with self.assertRaisesRegex(ValueError, "selected proof import closure"):
+            frozen.check_project(self.root, self.project)
+
+    def test_library_can_build_selected_module_through_a_glob_import(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            project = Path(tmp); (project / "src" / "Lib").mkdir(parents=True)
+            (project / "src" / "Lib.lean").write_text("import Mathlib\n")
+            (project / "src" / "Lib" / "Adapter.lean").write_text("import Lib\n")
+            (project / "lakefile.toml").write_text('[[lean_lib]]\nname="Lib"\nsrcDir="src"\nglobs=["Lib.Adapter"]\n')
+            roots = frozen.lake_build_roots(project, "Lib", "src/Lib.lean")
+            self.assertEqual(roots, {"src/Lib/Adapter.lean"})
+            self.assertEqual(frozen.reachable_sources(project, sorted(roots)), {"src/Lib.lean", "src/Lib/Adapter.lean"})
+
+    def test_wildcard_and_default_root_semantics_match_lake_globs(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            project = Path(tmp); (project / "src" / "Lib").mkdir(parents=True)
+            for path in ["src/Lib.lean", "src/Lib/A.lean", "src/Lib/B.lean"]:
+                (project / path).write_text("import Mathlib\n")
+            lake = project / "lakefile.toml"
+            lake.write_text('[[lean_lib]]\nname="Lib"\nsrcDir="src"\n')
+            self.assertEqual(frozen.lake_build_roots(project, "Lib", "src/Lib.lean"), {"src/Lib.lean"})
+            lake.write_text(lake.read_text() + 'globs=["Lib.*"]\n')
+            self.assertEqual(frozen.lake_build_roots(project, "Lib", "src/Lib.lean"), {"src/Lib.lean", "src/Lib/A.lean", "src/Lib/B.lean"})
+            lake.write_text('[[lean_lib]]\nname="Lib"\nsrcDir="src"\nglobs=["Lib.+"]\n')
+            self.assertEqual(frozen.lake_build_roots(project, "Lib", "src/Lib/A.lean"), {"src/Lib/A.lean", "src/Lib/B.lean"})
+
+
 if __name__ == "__main__":
     unittest.main()

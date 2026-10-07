@@ -78,7 +78,7 @@ def imports(body: str) -> list[str]:
         for module in line.split()]
 
 
-def reachable_sources(project: Path, entry_path: str) -> set[str]:
+def reachable_sources(project: Path, entry_path: str | list[str]) -> set[str]:
     config = tomllib.loads(regular(project, "lakefile.toml").read_text())
     libraries = config.get("lean_lib", [])
     source_roots = {project, *(project / library.get("srcDir", ".") for library in libraries)}
@@ -91,7 +91,8 @@ def reachable_sources(project: Path, entry_path: str) -> set[str]:
             (glob.endswith(".*") and (module == glob[:-2] or module.startswith(glob[:-1]))) or
             (glob.endswith(".+") and module.startswith(glob[:-1])) for glob in globs)
 
-    pending, seen = [regular(project, entry_path)], set()
+    entries = [entry_path] if isinstance(entry_path, str) else entry_path
+    pending, seen = [regular(project, path) for path in entries], set()
     while pending:
         path = pending.pop()
         relative = path.relative_to(project).as_posix()
@@ -112,6 +113,39 @@ def reachable_sources(project: Path, entry_path: str) -> set[str]:
                 raise ValueError(f"unresolved or ambiguous local import: {module}")
             pending.append(regular(project, found[0].relative_to(project).as_posix()))
     return seen
+
+
+def lake_build_roots(project: Path, solution_module: str, entry_path: str) -> set[str]:
+    """Match Lake's library target precedence and Glob.one/submodule semantics.
+
+    A module whose name equals a library name selects the entire library target.
+    Original wildcard inventories must also be independently checked at their
+    immutable origin; the local check rejects omitted explicit glob roots.
+    """
+    config = tomllib.loads(regular(project, "lakefile.toml").read_text())
+    libraries = [library for library in config.get("lean_lib", [])
+                 if library["name"] == solution_module]
+    if not libraries:
+        return {entry_path}
+    if len(libraries) != 1:
+        raise ValueError("ambiguous selected Lake library target")
+    library = libraries[0]
+    source = project / library.get("srcDir", ".")
+    globs = library.get("globs", library.get("roots", [library["name"]]))
+    roots = set()
+    for glob in globs:
+        if not re.fullmatch(r"[A-Za-z_][\w.]*(?:\*|\+)?", glob):
+            raise ValueError("unsupported Lake build glob")
+        wildcard = glob.endswith((".*", ".+"))
+        module = glob[:-2] if wildcard else glob
+        if not glob.endswith(".+"):
+            path = source / (module.replace(".", "/") + ".lean")
+            roots.add(regular(project, path.relative_to(project).as_posix()).relative_to(project).as_posix())
+        if wildcard:
+            directory = source / module.replace(".", "/")
+            for path in directory.rglob("*.lean"):
+                roots.add(regular(project, path.relative_to(project).as_posix()).relative_to(project).as_posix())
+    return roots
 
 
 def check_project(root: Path, project_path: str) -> dict:
@@ -159,9 +193,25 @@ def check_project(root: Path, project_path: str) -> dict:
     if imports(regular(root, challenge_path).read_text()) != ["Mathlib"]:
         raise ValueError("independent Challenge must import only Mathlib")
     reachable = reachable_sources(project, binding["original_source_path"])
+    # Previously reviewed non-library selections already recorded exactly the
+    # selected proof graph in source_closure. Keep those immutable manifests
+    # admissible; expanded packets explicitly distinguish both closures.
+    proof = binding.get("proof_source_closure", {
+        path: digest for path, digest in closure.items() if path.endswith(".lean")})
+    expected_proof = {project_path + "/" + path for path in reachable}
+    if set(proof) != expected_proof or any(closure.get(path) != digest for path, digest in proof.items()):
+        raise ValueError("manifest differs from selected proof import closure")
+    roots = lake_build_roots(project, binding["solution_module"], binding["original_source_path"])
+    expected_roots = {project_path + "/" + path for path in roots}
+    build_roots = binding.get("lake_build_roots", {path: closure.get(path) for path in expected_roots})
+    if set(build_roots) != expected_roots or any(closure.get(path) != digest for path, digest in build_roots.items()):
+        raise ValueError("manifest differs from actual Lake build roots")
+    build_sources = reachable_sources(project, sorted(roots))
+    if binding["original_source_path"] not in build_sources:
+        raise ValueError("selected Solution is absent from Lake build closure")
     recorded = {origin for origin in origins.values() if origin.endswith(".lean")}
-    if reachable != recorded:
-        raise ValueError("manifest differs from the complete reachable original import closure")
+    if build_sources != recorded:
+        raise ValueError("manifest differs from the complete Lake build import closure")
     expected = {path.removeprefix(project_path + "/") for path in closure | binding["package_sources"]}
     expected.add("source-binding.json")
     all_paths = list(project.rglob("*"))
@@ -171,7 +221,8 @@ def check_project(root: Path, project_path: str) -> dict:
     if actual != expected:
         raise ValueError("isolated project contains missing or unrecorded files")
     return {"project_path": project_path, "original_commit": binding["original_commit"],
-            "original_lean_files": len(reachable), "selected_declarations": binding["selected_declarations"],
+            "original_lean_files": len(build_sources), "proof_lean_files": len(reachable),
+            "lake_build_root_count": len(roots), "selected_declarations": binding["selected_declarations"],
             "status": "source_packaging_passed", "kernel_verification": "not_established"}
 
 

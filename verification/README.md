@@ -3,7 +3,11 @@
 These isolated projects preserve the complete local import closure of an original
 proof and its original Lake configuration, dependency lock and Lean toolchain.
 Their source files keep the original relative layout and bytes. The main release
-project does not import these historical projects.
+project does not import these historical projects. When a selected module also
+names a Lake library, its target builds every configured library glob. The frozen
+snapshot includes those roots and their complete import closure too. Expanded
+packets record `proof_source_closure` separately from all immutable build inputs
+in `source_closure`; a co-built sibling is not another selected proof target.
 
 | Project | Original source commit | Formal Conjectures PRs | Official caller |
 | --- | --- | --- | --- |
