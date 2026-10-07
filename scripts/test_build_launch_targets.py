@@ -213,7 +213,7 @@ class ProcessAndPlanTests(unittest.TestCase):
             root=Path(tmp)
             def git(*args):return subprocess.check_output(['git',*args],cwd=root,text=True).strip()
             git('init','-q');git('config','user.name','Test');git('config','user.email','test@example.invalid')
-            (root/'lakefile.toml').write_text('defaultTargets=["Library"]\n[[lean_lib]]\nname="Library"\nsrcDir="lean"\n')
+            (root/'lakefile.toml').write_text('defaultTargets=["Library"]\n[[lean_lib]]\nname="Library"\nsrcDir="lean"\nroots=["A","Z"]\n')
             (root/'lean-toolchain').write_text('leanprover/lean4:v4.30.0')
             (root/'lake-manifest.json').write_text('{}')
             git('add','.');git('commit','-qm','base');base=git('rev-parse','HEAD')
@@ -293,6 +293,83 @@ class ProcessAndPlanTests(unittest.TestCase):
         for value in ('0','-1','nan','inf','100000'):
             with self.assertRaises((ValueError,runner.argparse.ArgumentTypeError)):
                 runner.positive(value)
+
+
+class ChangedModuleOwnershipTests(unittest.TestCase):
+    def setUp(self):
+        directory = tempfile.TemporaryDirectory()
+        self.addCleanup(directory.cleanup)
+        self.root = Path(directory.name)
+        self.git('init', '-q')
+        self.git('config', 'user.name', 'Test')
+        self.git('config', 'user.email', 'test@example.invalid')
+        (self.root/'lean-toolchain').write_text('leanprover/lean4:v4.30.0')
+        (self.root/'lake-manifest.json').write_text('{}')
+
+    def git(self, *args):
+        return subprocess.check_output(['git', *args], cwd=self.root, text=True).strip()
+
+    def plan(self, configuration, files):
+        (self.root/'lakefile.toml').write_text(configuration)
+        self.git('add', '.')
+        self.git('commit', '-qm', 'base')
+        base = self.git('rev-parse', 'HEAD')
+        for name, body in files.items():
+            path = self.root/name
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(body)
+        self.git('add', '.')
+        self.git('commit', '-qm', 'changed sources')
+        return runner.make_plan(self.root, base, [], False)
+
+    def test_outer_project_excludes_nested_projects_and_unclaimed_fixtures(self):
+        plan = self.plan('defaultTargets=["Outer"]\n[[lean_lib]]\nname="Outer"\n', {
+            'Outer/Z.lean': 'def z := 1\n',
+            'Outer/A.lean': 'import Outer.Z\n',
+            'verification/Other/lakefile.toml': 'name="other"\n',
+            'verification/Other/lean/Outer/Z.lean': 'def z := 2\n',
+            'fixtures/Outer/Z.lean': 'def z := 3\n',
+            'OuterBackup/Z.lean': 'def z := 4\n',
+        })
+        self.assertEqual([row['target'] for row in plan['targets']], ['Outer.Z', 'Outer.A', 'Outer'])
+        self.assertEqual({row['path'] for row in plan['excluded_changed_sources']}, {
+            'verification/Other/lean/Outer/Z.lean', 'fixtures/Outer/Z.lean', 'OuterBackup/Z.lean'})
+        self.assertTrue(all(row['reason'] == 'not_buildable_in_selected_project'
+                            for row in plan['excluded_changed_sources']))
+        self.assertEqual(plan['scope'], 'full')
+
+    def test_package_and_library_source_dirs_custom_roots_and_extra_globs(self):
+        plan = self.plan('defaultTargets=["Library"]\nsrcDir="src"\n[[lean_lib]]\n'
+                         'name="Library"\nsrcDir="proofs"\nroots=["Actual"]\n'
+                         'globs=["Actual", "Extra.*", "Descendants.+", "Single"]\n', {
+            'src/proofs/Actual/Z.lean': 'def z := 1\n',
+            'src/proofs/Actual/A.lean': 'import Actual.Z\n',
+            'src/proofs/Extra.lean': 'def e := 1\n',
+            'src/proofs/Extra/Child.lean': 'def e := 2\n',
+            'src/proofs/Descendants/Child.lean': 'def d := 1\n',
+            'src/proofs/Single.lean': 'def s := 1\n',
+            'src/proofs/Single/Child.lean': 'def s := 2\n',
+            'src/proofs/Descendants.lean': 'def d := 2\n',
+            'src/Actual/Wrong.lean': 'def w := 1\n',
+        })
+        focused = [row['target'] for row in plan['targets'] if row['phase'] == 'focused']
+        self.assertEqual(focused, ['Actual.Z', 'Actual.A', 'Descendants.Child', 'Extra', 'Extra.Child', 'Single'])
+        self.assertEqual({row['path'] for row in plan['excluded_changed_sources']}, {
+            'src/proofs/Single/Child.lean', 'src/proofs/Descendants.lean', 'src/Actual/Wrong.lean'})
+        self.assertEqual(plan['targets'][-1], {'target': 'Library', 'phase': 'launch'})
+
+    def test_unselected_root_and_shadowed_source_are_not_build_targets(self):
+        plan = self.plan('defaultTargets=["Later"]\n[[lean_lib]]\nname="Earlier"\n'
+                         'srcDir="old"\nroots=["Shared"]\n[[lean_lib]]\n'
+                         'name="Later"\nsrcDir="new"\nroots=["Shared", "Unselected"]\n'
+                         'globs=["Shared"]\n', {
+            'old/Shared/Changed.lean': 'def old := 1\n',
+            'new/Shared/Changed.lean': 'def current := 1\n',
+            'new/Unselected/Child.lean': 'def unselected := 1\n',
+        })
+        self.assertEqual([row['target'] for row in plan['targets']], ['Shared.Changed', 'Later'])
+        self.assertEqual({row['path'] for row in plan['excluded_changed_sources']}, {
+            'old/Shared/Changed.lean', 'new/Unselected/Child.lean'})
 
 
 class SetupBoundaryTests(unittest.TestCase):

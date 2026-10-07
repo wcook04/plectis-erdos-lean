@@ -68,15 +68,53 @@ def source_identity(root: Path) -> dict:
             'manifest_sha256': hashlib.sha256((root / 'lake-manifest.json').read_bytes()).hexdigest()}
 
 
-def focused_targets(root: Path, base: str) -> list[str]:
+def glob_matches(glob: str, module: str) -> bool:
+    if glob.endswith('.*'):
+        prefix = glob[:-2]
+        return module == prefix or module.startswith(prefix + '.')
+    if glob.endswith('.+'):
+        return module.startswith(glob[:-2] + '.')
+    return module == glob
+
+
+def buildable_module(library: dict, module: str) -> bool:
+    # Lake LeanLibConfig.isBuildableModule, not just containment in srcDir.
+    # A root's descendants are buildable only when a glob selects that root.
+    roots = library.get('roots', [library['name']])
+    globs = library.get('globs', roots)
+    return any(glob_matches(glob, module) for glob in globs) or any(
+        (module == prefix or module.startswith(prefix + '.'))
+        and any(glob_matches(glob, prefix) for glob in globs) for prefix in roots)
+
+
+def changed_module(root: Path, path: Path, config: dict) -> str | None:
+    libraries = config.get('lean_lib', [])
+    def source_root(library):
+        return (root / config.get('srcDir', '.') / library.get('srcDir', '.')).resolve()
+    for library in reversed(libraries):
+        try:
+            candidate = path.resolve().relative_to(source_root(library)).with_suffix('').as_posix().replace('/', '.')
+        except ValueError:
+            continue
+        if not MODULE.fullmatch(candidate) or not buildable_module(library, candidate):
+            continue
+        # Lake resolves module ownership in reverse declaration order. A file
+        # in an earlier library's source tree cannot stand in for its owner.
+        owner = next(row for row in reversed(libraries) if buildable_module(row, candidate))
+        expected = source_root(owner) / (candidate.replace('.', '/') + '.lean')
+        if expected == path.resolve():
+            return candidate
+    return None
+
+
+def focused_targets(root: Path, base: str, *, excluded: list[dict] | None = None) -> list[str]:
     # PRs compare with their actual parent, including stacked PRs. On manual
     # dispatch the default main comparison catches stale branch-only modules.
     ancestor = git('merge-base', 'HEAD', base, root=root)
     names = subprocess.check_output(['git', 'diff', '--name-only', '-z', '--diff-filter=ACMR',
                                      ancestor, '--', '*.lean'], cwd=root, timeout=30).split(b'\0')
     with (root / 'lakefile.toml').open('rb') as source:
-        libraries = tomllib.load(source).get('lean_lib', [])
-    roots = sorted({str(row.get('srcDir', '.')) for row in libraries}, key=len, reverse=True)
+        config = tomllib.load(source)
     modules = {}
     for raw in names:
         if not raw:
@@ -84,14 +122,12 @@ def focused_targets(root: Path, base: str) -> list[str]:
         path = Path(os.fsdecode(raw))
         if not (root/path).is_file():
             continue
-        for source_root in roots:
-            try:
-                candidate = path.relative_to(source_root).with_suffix('').as_posix().replace('/', '.')
-            except ValueError:
-                continue
-            if MODULE.fullmatch(candidate):
-                modules[candidate] = root/path
-                break
+        candidate = changed_module(root, root/path, config)
+        if candidate is not None:
+            modules[candidate] = root/path
+        elif excluded is not None:
+            excluded.append({'path': path.as_posix(),
+                             'reason': 'not_buildable_in_selected_project'})
     # Dependencies among changed files go first. This catches a failed imported
     # module before spending time building its changed downstream consumers.
     ordered, active, done = [], set(), set()
@@ -118,7 +154,8 @@ def make_plan(root: Path, base: str | None, focus: Sequence[str], focused_only: 
             raise ValueError('focused-only validation cannot qualify a release')
         from release_inventory import build_targets as release_targets
         targets = release_targets(root)
-    changed = focused_targets(root, base) if base else []
+    excluded = []
+    changed = focused_targets(root, base, excluded=excluded) if base else []
     priority = list(dict.fromkeys([*focus, *changed]))
     if any(not MODULE.fullmatch(t) for t in priority):
         raise ValueError('invalid focused module name')
@@ -130,7 +167,8 @@ def make_plan(root: Path, base: str | None, focus: Sequence[str], focused_only: 
     return {'schema_version': 2, 'source': source_identity(root),
             'driver_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
             'scope': 'focused' if focused_only else 'full',
-            'baseline': base, 'default_targets': read_targets(root/'lakefile.toml'),
+            'baseline': base, 'excluded_changed_sources': excluded,
+            'default_targets': read_targets(root/'lakefile.toml'),
             'release_targets': targets if release else None, 'targets': phases}
 
 
