@@ -1,0 +1,42 @@
+{
+  "schema": "frozen_fc_project_binding/1",
+  "repository": "wcook04/plectis-erdos-lean",
+  "project_path": "verification/FC249RationalObservable",
+  "original_repository": "wcook04/plectis-erdos",
+  "original_commit": "c4bff4aa152465b3c92fffe808f76b0e5f78293c",
+  "original_source_path": "lean/ErdosProblems/Erdos249/PaperCompleteR7/RationalObservableClassification.lean",
+  "source_path": "verification/FC249RationalObservable/lean/ErdosProblems/Erdos249/PaperCompleteR7/RationalObservableClassification.lean",
+  "solution_module": "ErdosProblems.Erdos249.PaperCompleteR7.RationalObservableClassification",
+  "challenge_module": "ExternalVerification.FC249RationalObservable.Challenge",
+  "selected_declarations": [
+    "ErdosProblems.Erdos249.PaperCompleteR7.RationalObservables.rational_zmod_observable_iff"
+  ],
+  "pull_requests": [
+    6579
+  ],
+  "source_closure": {
+    "verification/FC249RationalObservable/LICENSE": "sha256:5f73f0aafc768cc7c7f5da786dc7614296ee891a456faf175ab07456d3c35046",
+    "verification/FC249RationalObservable/README.md": "sha256:a251c0ebf9dffa3835eafded23b0ef2193dd47fb6b1c0e59847a181572dfe3be",
+    "verification/FC249RationalObservable/lake-manifest.json": "sha256:ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c",
+    "verification/FC249RationalObservable/lakefile.toml": "sha256:1dfa73e634bdd635ffdd11c6f661495adc3ce2acd7553faf3c5d816b9fd23841",
+    "verification/FC249RationalObservable/lean-toolchain": "sha256:88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5",
+    "verification/FC249RationalObservable/lean/ErdosProblems/Erdos249/PaperCompleteR7/RationalObservableClassification.lean": "sha256:a2f210bd66fa1c7026c2dec9da5c04978f0be6f49ac2f227499abaae96234a68",
+    "verification/FC249RationalObservable/lean/ErdosProblems/Erdos249/ResidueClassTotientSeries.lean": "sha256:dea677ad39aee98304defdb5c88afa77603b2d6cc6cdc6822635fc88b8f97e7e"
+  },
+  "source_path_origins": {
+    "verification/FC249RationalObservable/LICENSE": "LICENSE",
+    "verification/FC249RationalObservable/README.md": "README.md",
+    "verification/FC249RationalObservable/lake-manifest.json": "lake-manifest.json",
+    "verification/FC249RationalObservable/lakefile.toml": "lakefile.toml",
+    "verification/FC249RationalObservable/lean-toolchain": "lean-toolchain",
+    "verification/FC249RationalObservable/lean/ErdosProblems/Erdos249/PaperCompleteR7/RationalObservableClassification.lean": "lean/ErdosProblems/Erdos249/PaperCompleteR7/RationalObservableClassification.lean",
+    "verification/FC249RationalObservable/lean/ErdosProblems/Erdos249/ResidueClassTotientSeries.lean": "lean/ErdosProblems/Erdos249/ResidueClassTotientSeries.lean"
+  },
+  "package_sources": {
+    "verification/FC249RationalObservable/verification/ExternalVerification/FC249RationalObservable/Challenge.lean": "sha256:d23984c660eaebaa47a70dca8375eb455044ed9bd80ad67f06c12b282bf45bb0",
+    "verification/FC249RationalObservable/verification/ExternalVerification/FC249RationalObservable/comparator.json": "sha256:08f3ffaf1924753cbc19c61e3227e9e28f142e5d5c049ec294af88d8483fdd04",
+    "verification/FC249RationalObservable/verification/ExternalVerification/FC249RationalObservable/formalization.yaml": "sha256:f5bf2b20ce848a63470f66c328fe852a1e1e49fc4978bb33b57ba8e540e094d7"
+  },
+  "assurance_status": "prepared_unverified",
+  "trust_boundary": "Original source bytes and environment are frozen here; only a fresh official full verifier pass at the current host commit can establish kernel acceptance."
+}

@@ -57,10 +57,16 @@ The Palomar entries are packed in the order the papers state their theorems; [`P
 The former problem-level `E257` submission at commit `52f29ad1` settled as `verification-error` on 14 September 2026 after a renderer failure ([PalomarSubmission #134](https://github.com/PalomarRegistry/PalomarSubmission/issues/134)). In the paper-order layout, `E257_01` at commit `b85ed30805188eb4390a686b111294b24363418e` passed [caller-side preflight](https://github.com/wcook04/plectis-erdos-lean/actions/runs/36007327582) and [Palomar's mechanical verification](https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/36009433226). Its editorial review reached `review-ready`, and a registration request for that review was accepted on 24 September 2026. At the last successful status check, 25 September 2026 at 00:28 UTC, no registered ID, version, or public URL had been confirmed. The other selected entries have their own preparation evidence; this paragraph makes no registration claim for them.
 <!-- palomar-entry-table:end -->
 
-The workflow [`palomar-replay.yml`](.github/workflows/palomar-replay.yml) and
-`scripts/check_axiom_budget.py --run-palomar` provide caller-side checks for the source
-commit they run on. A passing caller replay is separate from a Palomar verification or
-registration. The former problem-level E257 submission and the current `E257_01` outcome
+The legacy workflow [`palomar-replay.yml`](.github/workflows/palomar-replay.yml) supplies
+shared-workspace diagnostics. Its green results and historical Lean/NanoDa acceptance
+lines do not certify independently protected Challenge or dependency inputs. Independent
+verification uses the pinned official job in
+[`fc-trusted-comparator-preflight.yml`](.github/workflows/fc-trusted-comparator-preflight.yml),
+which prepares and protects those inputs before candidate code runs.
+`scripts/check_axiom_budget.py --run-palomar` checks the printed axiom budget for its
+selected source; it does not establish Comparator equivalence or NanoDa acceptance.
+Palomar verification and registration remain separate outcomes. The former problem-level
+E257 submission and the current `E257_01` outcome
 are distinguished below. The `ExternalVerification*` directories are regression and
 development entries, separate from `PalomarCorpus/`.
 

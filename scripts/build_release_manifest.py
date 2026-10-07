@@ -216,7 +216,7 @@ def main() -> int:
         # Negative fixtures must not emit annotations or summaries into this job.
         if args.check_tooling:
             env = {k: v for k, v in os.environ.items() if not k.startswith(('GITHUB_', 'RUNNER_'))}
-            for test in ('test_release_tools.py', 'test_palomar_replay_shard.py', 'test_build_launch_targets.py'):
+            for test in ('test_release_tools.py', 'test_palomar_replay_shard.py', 'test_build_launch_targets.py', 'test_frozen_fc_projects.py'):
                 step = 'python3 scripts/' + test
                 result = subprocess.run([sys.executable, 'scripts/' + test], cwd=REPO_ROOT,
                                         env=env, capture_output=True, text=True, timeout=120)

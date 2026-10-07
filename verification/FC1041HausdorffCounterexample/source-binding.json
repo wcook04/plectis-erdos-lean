@@ -1,0 +1,69 @@
+{
+  "schema": "frozen_fc_project_binding/1",
+  "repository": "wcook04/plectis-erdos-lean",
+  "project_path": "verification/FC1041HausdorffCounterexample",
+  "original_repository": "wcook04/plectis-erdos",
+  "original_commit": "0ee31b3a99ef93d2b679a427b474b23710597bad",
+  "original_source_path": "lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean",
+  "source_path": "verification/FC1041HausdorffCounterexample/lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean",
+  "solution_module": "ErdosProblems.Erdos1041.Counterexample.HausdorffLength",
+  "challenge_module": "ExternalVerification.FC1041HausdorffCounterexample.Challenge",
+  "selected_declarations": [
+    "Erdos1041.Counterexample.erdos1041_hausdorff_answer_false"
+  ],
+  "pull_requests": [
+    6505
+  ],
+  "source_closure": {
+    "verification/FC1041HausdorffCounterexample/LICENSE": "sha256:5f73f0aafc768cc7c7f5da786dc7614296ee891a456faf175ab07456d3c35046",
+    "verification/FC1041HausdorffCounterexample/lean-toolchain": "sha256:88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5",
+    "verification/FC1041HausdorffCounterexample/README.md": "sha256:d350800a7b1ce25a9cdb90bd3a343c40fc7d00ef41aaa2adf64d7b91cbbe0f34",
+    "verification/FC1041HausdorffCounterexample/lake-manifest.json": "sha256:ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c",
+    "verification/FC1041HausdorffCounterexample/lakefile.toml": "sha256:908500f31b84972a088465dbefa35b748beeaaf1fdca47872f0abe8b7fdd5d73",
+    "verification/FC1041HausdorffCounterexample/lean/ErdosProblems/Erdos1041/Counterexample/BarrierCertificates.lean": "sha256:bc0fbc8361822111f0468267b47f9a40f7ba8e8c126e41873c6a62044864721b",
+    "verification/FC1041HausdorffCounterexample/lean/ErdosProblems/Erdos1041/Counterexample/InstanceConnectivity.lean": "sha256:fe8b1208dbce3fea8aafadc08a007f6b93e3170edf5c5ff32f3fa366bf5bfd96",
+    "verification/FC1041HausdorffCounterexample/lean/ErdosProblems/Erdos1041/Counterexample/Components.lean": "sha256:dc8b8477222840b31b7eb8d4d4ff79e6d909b4b538646e5327bb4ca0029f8d6f",
+    "verification/FC1041HausdorffCounterexample/lean/ErdosProblems/Erdos1041/Counterexample/BarrierSigns.lean": "sha256:48d3a0e9375b0f060e06c71122309c442ffa4ff1eb02b9405c0100b62581886c",
+    "verification/FC1041HausdorffCounterexample/lean/ErdosProblems/Erdos1041/Counterexample/InstanceCritical.lean": "sha256:af8ca59a63e9048e034fbe6b5f8ecb966bde054688d7e2e12a9e159b708c4cbd",
+    "verification/FC1041HausdorffCounterexample/lean/ErdosProblems/Erdos1041/Counterexample/BarrierGraphs.lean": "sha256:8e3ee82a10ea78f41efa8839a5eb76f6a2e515e88a68adfef85bae68fbf14f91",
+    "verification/FC1041HausdorffCounterexample/lean/ErdosProblems/Erdos1041/Counterexample/Assembly.lean": "sha256:c6174888a3c59acf20f827b01a42bbffce05112eb7c7a3f30350dc1af0fb8f19",
+    "verification/FC1041HausdorffCounterexample/lean/ErdosProblems/Erdos1041/Counterexample/Defs.lean": "sha256:90d69df047b9252c3a19d538f6adfd6734b25d090c131421cbbbb061f8cadf22",
+    "verification/FC1041HausdorffCounterexample/lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean": "sha256:069ea76e27304bd34e020cf8aab0fcc9200c495ff892127612e8afe571e3fcb4",
+    "verification/FC1041HausdorffCounterexample/lean/ErdosProblems/Erdos1041/Counterexample/Bottleneck.lean": "sha256:034cc62cb3769d7c9ff2f1aea4d1917534437f7adec3bf5537500e6b3d80976a",
+    "verification/FC1041HausdorffCounterexample/lean/ErdosProblems/Erdos1041/Counterexample/InstanceBarriers.lean": "sha256:4f977e49ba5559eafb5248c4d1c1af0b0f2a08c7d28baf6790f50b39e9cb294d",
+    "verification/FC1041HausdorffCounterexample/lean/ErdosProblems/Erdos1041/Counterexample/BarrierAlgebra.lean": "sha256:3c051a2863e4da7c2a05e587f2b137d012ad5418ab7418c8f63969455fb0dc25"
+  },
+  "source_path_origins": {
+    "verification/FC1041HausdorffCounterexample/LICENSE": "LICENSE",
+    "verification/FC1041HausdorffCounterexample/lean-toolchain": "lean-toolchain",
+    "verification/FC1041HausdorffCounterexample/README.md": "README.md",
+    "verification/FC1041HausdorffCounterexample/lake-manifest.json": "lake-manifest.json",
+    "verification/FC1041HausdorffCounterexample/lakefile.toml": "lakefile.toml",
+    "verification/FC1041HausdorffCounterexample/lean/ErdosProblems/Erdos1041/Counterexample/BarrierCertificates.lean": "lean/ErdosProblems/Erdos1041/Counterexample/BarrierCertificates.lean",
+    "verification/FC1041HausdorffCounterexample/lean/ErdosProblems/Erdos1041/Counterexample/InstanceConnectivity.lean": "lean/ErdosProblems/Erdos1041/Counterexample/InstanceConnectivity.lean",
+    "verification/FC1041HausdorffCounterexample/lean/ErdosProblems/Erdos1041/Counterexample/Components.lean": "lean/ErdosProblems/Erdos1041/Counterexample/Components.lean",
+    "verification/FC1041HausdorffCounterexample/lean/ErdosProblems/Erdos1041/Counterexample/BarrierSigns.lean": "lean/ErdosProblems/Erdos1041/Counterexample/BarrierSigns.lean",
+    "verification/FC1041HausdorffCounterexample/lean/ErdosProblems/Erdos1041/Counterexample/InstanceCritical.lean": "lean/ErdosProblems/Erdos1041/Counterexample/InstanceCritical.lean",
+    "verification/FC1041HausdorffCounterexample/lean/ErdosProblems/Erdos1041/Counterexample/BarrierGraphs.lean": "lean/ErdosProblems/Erdos1041/Counterexample/BarrierGraphs.lean",
+    "verification/FC1041HausdorffCounterexample/lean/ErdosProblems/Erdos1041/Counterexample/Assembly.lean": "lean/ErdosProblems/Erdos1041/Counterexample/Assembly.lean",
+    "verification/FC1041HausdorffCounterexample/lean/ErdosProblems/Erdos1041/Counterexample/Defs.lean": "lean/ErdosProblems/Erdos1041/Counterexample/Defs.lean",
+    "verification/FC1041HausdorffCounterexample/lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean": "lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean",
+    "verification/FC1041HausdorffCounterexample/lean/ErdosProblems/Erdos1041/Counterexample/Bottleneck.lean": "lean/ErdosProblems/Erdos1041/Counterexample/Bottleneck.lean",
+    "verification/FC1041HausdorffCounterexample/lean/ErdosProblems/Erdos1041/Counterexample/InstanceBarriers.lean": "lean/ErdosProblems/Erdos1041/Counterexample/InstanceBarriers.lean",
+    "verification/FC1041HausdorffCounterexample/lean/ErdosProblems/Erdos1041/Counterexample/BarrierAlgebra.lean": "lean/ErdosProblems/Erdos1041/Counterexample/BarrierAlgebra.lean"
+  },
+  "package_sources": {
+    "verification/FC1041HausdorffCounterexample/verification/ExternalVerification/FC1041HausdorffCounterexample/comparator.json": "sha256:8e965ffc5aeb784e97bfd782881d27661d858ba49492060b6c543d7b709e81f0",
+    "verification/FC1041HausdorffCounterexample/verification/ExternalVerification/FC1041HausdorffCounterexample/formalization.yaml": "sha256:815779fc56f346297cb2354f1f377c2efe1bc77dfb20a979dac3b14164120a4f",
+    "verification/FC1041HausdorffCounterexample/verification/ExternalVerification/FC1041HausdorffCounterexample/Challenge.lean": "sha256:7109ed58d354aa2218f506550e30739945c67f56161e36fd3a4a9a83a11ad3fc"
+  },
+  "assurance_status": "prepared_unverified",
+  "trust_boundary": "Original source bytes and environment are frozen here; only a fresh official full verifier pass at the current host commit can establish kernel acceptance.",
+  "definition_bindings": [
+    {
+      "source": "Erdos1041.Counterexample.fcLength",
+      "challenge": "Erdos1041.Counterexample.fcLength",
+      "definition": "noncomputable def fcLength (s : Set \u2102) : \u211d\u22650\u221e := \u03bcH[1] s"
+    }
+  ]
+}

@@ -9,6 +9,13 @@ python3 scripts/build_launch_targets.py --changed-from origin/main
 Use the actual parent ref for a stacked pull request. The runner checks changed
 Lean modules in dependency order before the full `defaultTargets` list. A focused
 failure stops that run immediately; unattempted targets stay visible in the report.
+Changed files become focused targets only when the selected Lake project owns
+them: package and library `srcDir`, `roots`, `globs`, and library declaration
+precedence must agree with Lake's buildable-module rules. A source-directory
+match alone is insufficient. Nested verification projects and unclaimed fixtures
+remain outside the outer build; inspect `plan.excluded_changed_sources` for their
+paths and reasons. Their own workflows establish their verification separately.
+This selection never reduces the full launch or declared release population.
 Use `--keep-going` only when collecting independent launch-target failures is worth
 the extra build time. Lean Release Gate calls this same workflow and runner, then requires its
 publication axiom audit. Comparator acceptance remains separate.
