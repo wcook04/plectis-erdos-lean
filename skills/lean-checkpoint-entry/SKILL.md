@@ -93,9 +93,15 @@ Read in this order, and stop at the first failure.
 2. **Check the Solution proves that declaration.** Same name, same statement, same
    hypotheses.
 3. **Read the axiom output.** Look for `sorryAx` first, then anything unexpected.
-4. **Check `formalization.yaml` against what you just read.** Divergences that are
+4. **Check how verification prepared its inputs.** Certification requires a fresh
+   verifier-controlled workspace, independently prepared dependencies, and a protected
+   Challenge compiled before candidate code runs. A shared-workspace replay or a green
+   build is diagnostic evidence until this boundary is verified. Bind the report to
+   the exact source commit, project root, selected declarations and full successful
+   verifier job; a kernel acceptance line alone is insufficient.
+5. **Check `formalization.yaml` against what you just read.** Divergences that are
    recorded are a boundary. Divergences that are not recorded are a defect.
-5. **Ask what it does not establish.** A checked theorem is not a reviewed theorem,
+6. **Ask what it does not establish.** A checked theorem is not a reviewed theorem,
    not a new theorem, and not an important one. Novelty is a literature question and
    the machine has no opinion on it.
 

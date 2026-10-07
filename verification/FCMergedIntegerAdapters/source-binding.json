@@ -1,0 +1,74 @@
+{
+  "schema": "frozen_fc_project_binding/1",
+  "repository": "wcook04/plectis-erdos-lean",
+  "project_path": "verification/FCMergedIntegerAdapters",
+  "original_repository": "wcook04/plectis-erdos",
+  "original_commit": "b9f1eb80aa11bbf66fb1df88804502b8c9c27d8e",
+  "original_source_path": "research/adapters/FormalConjecturesAdapter.lean",
+  "source_path": "verification/FCMergedIntegerAdapters/research/adapters/FormalConjecturesAdapter.lean",
+  "solution_module": "FormalConjecturesAdapter",
+  "challenge_module": "ExternalVerification.FCMergedIntegerAdapters.Challenge",
+  "selected_declarations": [
+    "Erdos249257.FormalConjecturesAdapter.erdos_257_variants_tsum_top",
+    "Erdos249257.FormalConjecturesAdapter.erdos_1049_variants_geq_2_integer",
+    "Erdos249257.FormalConjecturesAdapter.erdos_258_variants_constant"
+  ],
+  "pull_requests": [
+    6506,
+    6507,
+    5034
+  ],
+  "source_closure": {
+    "verification/FCMergedIntegerAdapters/LICENSE": "sha256:5f73f0aafc768cc7c7f5da786dc7614296ee891a456faf175ab07456d3c35046",
+    "verification/FCMergedIntegerAdapters/README.md": "sha256:d350800a7b1ce25a9cdb90bd3a343c40fc7d00ef41aaa2adf64d7b91cbbe0f34",
+    "verification/FCMergedIntegerAdapters/lake-manifest.json": "sha256:ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c",
+    "verification/FCMergedIntegerAdapters/lakefile.toml": "sha256:908500f31b84972a088465dbefa35b748beeaaf1fdca47872f0abe8b7fdd5d73",
+    "verification/FCMergedIntegerAdapters/lean-toolchain": "sha256:88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5",
+    "verification/FCMergedIntegerAdapters/lean/Erdos249257/CarrySurvivorExtinction.lean": "sha256:6baa1dc557dec8babc2635af8dcd461e4af8742313a21f00959219f439bee644",
+    "verification/FCMergedIntegerAdapters/lean/Erdos249257/CertificateKernel.lean": "sha256:90e9be09a22c200314c29c63afdb48969491ef30ff040b0910a2fbc0c049c38a",
+    "verification/FCMergedIntegerAdapters/lean/Erdos249257/GapFareyBound.lean": "sha256:076397176d7ca70d0ab4771872bd415ef5487d90f55e389f4250d7f3f43abc25",
+    "verification/FCMergedIntegerAdapters/lean/Erdos249257/GcdMomentCalculus.lean": "sha256:e535c90b20cf4c424df5503efbd33159a2fcff3f2dc1b901f035d5b2ce297369",
+    "verification/FCMergedIntegerAdapters/lean/Erdos249257/GeometricCoprimality.lean": "sha256:ad2a7ff4fefefdf6374c3a8d9ea2afd1d27b638883e9a1625d1049cadf21a0b7",
+    "verification/FCMergedIntegerAdapters/lean/Erdos249257/LcmConeFlatness.lean": "sha256:977b61323d775a8f4305691ae966c851a3b752f544a4f3f9293a5b7ee2fc0347",
+    "verification/FCMergedIntegerAdapters/lean/Erdos249257/LcmConeNonflat.lean": "sha256:b113c51081a5a926c635dd8f192c4915e1f2a3a6ad6768ea9ed9d03954991af0",
+    "verification/FCMergedIntegerAdapters/lean/Erdos249257/LcmDiagonalReduction.lean": "sha256:1c87948ec072687e0516e4f603f11e0938c692588cfb9bf3e459d7e91c80d801",
+    "verification/FCMergedIntegerAdapters/lean/Erdos249257/MersenneLambertLadder.lean": "sha256:bfc03595228b61b5b5b4a7ff1e23723b827e21587277a67deb4879b9068429ed",
+    "verification/FCMergedIntegerAdapters/lean/Erdos249257/SternBrocotRunGeometry.lean": "sha256:fcb72bd7eb8a4d0edbf068357e49dfdba9196ad0a897ceaa9d878f0b2bb58ff0",
+    "verification/FCMergedIntegerAdapters/lean/Erdos249257/TotientTailPeriodKiller.lean": "sha256:1e30899a37d017c8b83d54b61e101be920a86d9ae01e612c31ffce1dd6217b8f",
+    "verification/FCMergedIntegerAdapters/research/adapters/FormalConjecturesAdapter.lean": "sha256:402321bc485917ad3860e63834db0b6899f9d12a074fb1518cfb8d90529aea07"
+  },
+  "source_path_origins": {
+    "verification/FCMergedIntegerAdapters/LICENSE": "LICENSE",
+    "verification/FCMergedIntegerAdapters/README.md": "README.md",
+    "verification/FCMergedIntegerAdapters/lake-manifest.json": "lake-manifest.json",
+    "verification/FCMergedIntegerAdapters/lakefile.toml": "lakefile.toml",
+    "verification/FCMergedIntegerAdapters/lean-toolchain": "lean-toolchain",
+    "verification/FCMergedIntegerAdapters/lean/Erdos249257/CarrySurvivorExtinction.lean": "lean/Erdos249257/CarrySurvivorExtinction.lean",
+    "verification/FCMergedIntegerAdapters/lean/Erdos249257/CertificateKernel.lean": "lean/Erdos249257/CertificateKernel.lean",
+    "verification/FCMergedIntegerAdapters/lean/Erdos249257/GapFareyBound.lean": "lean/Erdos249257/GapFareyBound.lean",
+    "verification/FCMergedIntegerAdapters/lean/Erdos249257/GcdMomentCalculus.lean": "lean/Erdos249257/GcdMomentCalculus.lean",
+    "verification/FCMergedIntegerAdapters/lean/Erdos249257/GeometricCoprimality.lean": "lean/Erdos249257/GeometricCoprimality.lean",
+    "verification/FCMergedIntegerAdapters/lean/Erdos249257/LcmConeFlatness.lean": "lean/Erdos249257/LcmConeFlatness.lean",
+    "verification/FCMergedIntegerAdapters/lean/Erdos249257/LcmConeNonflat.lean": "lean/Erdos249257/LcmConeNonflat.lean",
+    "verification/FCMergedIntegerAdapters/lean/Erdos249257/LcmDiagonalReduction.lean": "lean/Erdos249257/LcmDiagonalReduction.lean",
+    "verification/FCMergedIntegerAdapters/lean/Erdos249257/MersenneLambertLadder.lean": "lean/Erdos249257/MersenneLambertLadder.lean",
+    "verification/FCMergedIntegerAdapters/lean/Erdos249257/SternBrocotRunGeometry.lean": "lean/Erdos249257/SternBrocotRunGeometry.lean",
+    "verification/FCMergedIntegerAdapters/lean/Erdos249257/TotientTailPeriodKiller.lean": "lean/Erdos249257/TotientTailPeriodKiller.lean",
+    "verification/FCMergedIntegerAdapters/research/adapters/FormalConjecturesAdapter.lean": "research/adapters/FormalConjecturesAdapter.lean"
+  },
+  "package_sources": {
+    "verification/FCMergedIntegerAdapters/verification/ExternalVerification/FCMergedIntegerAdapters/Challenge.lean": "sha256:8b2ae89050b8643bce87e4a348b2f242a175f7ebc677324eb6ce507a062d31fc",
+    "verification/FCMergedIntegerAdapters/verification/ExternalVerification/FCMergedIntegerAdapters/comparator.json": "sha256:94616bdf2d61e8f3d421896c92880fab79dd5759bd939fc08f3d78b1d09f223f",
+    "verification/FCMergedIntegerAdapters/verification/ExternalVerification/FCMergedIntegerAdapters/formalization.yaml": "sha256:94f6c509517b5a13dcb05d48aed385ca74c338ff487bd0cb4ea68dc7e4bf83ca"
+  },
+  "assurance_status": "prepared_unverified",
+  "trust_boundary": "Original source bytes and environment are frozen here; only a fresh official full verifier pass at the current host commit can establish kernel acceptance.",
+  "historical_equivalence": {
+    "pull_request": 5034,
+    "original_link_commit": "a9104f2f12aa0d4e9da8a93574b14990ed02dc2a",
+    "original_link_path": "adapters/FormalConjecturesAdapter.lean",
+    "declaration": "Erdos249257.FormalConjecturesAdapter.erdos_258_variants_constant",
+    "whole_module_sha256": "sha256:402321bc485917ad3860e63834db0b6899f9d12a074fb1518cfb8d90529aea07",
+    "claim": "The selected b9f module bytes match the older linked module. Fresh verification certifies only the new replay source commit."
+  }
+}

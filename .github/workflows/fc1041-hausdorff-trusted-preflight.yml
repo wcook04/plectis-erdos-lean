@@ -1,0 +1,76 @@
+# SPDX-FileCopyrightText: 2026 Will Cook
+# SPDX-License-Identifier: Apache-2.0
+# Original proof sources are frozen inside an isolated project. Only the pinned
+# official job executes candidate Lean after preparing trusted dependencies.
+name: FC1041HausdorffCounterexample trusted original project
+
+on:
+  push:
+    branches: [codex/fc-original-projects-trusted-preflight-20261007]
+    paths:
+      - .github/workflows/fc1041-hausdorff-trusted-preflight.yml
+      - verification/FC1041HausdorffCounterexample/**
+      - scripts/check_frozen_fc_projects.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  select:
+    runs-on: ubuntu-24.04
+    outputs:
+      source_commit: ${{ steps.inputs.outputs.source_commit }}
+      request_id: ${{ steps.inputs.outputs.request_id }}
+      options: ${{ steps.inputs.outputs.options }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: wcook04/plectis-erdos-lean
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Validate immutable original source packaging
+        run: python3 scripts/check_frozen_fc_projects.py --project verification/FC1041HausdorffCounterexample
+      - name: Select this exact isolated project
+        id: inputs
+        env:
+          SOURCE_COMMIT: ${{ github.sha }}
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          python3 - <<'PY'
+          import hashlib, json, os, re, subprocess
+          source = os.environ['SOURCE_COMMIT']
+          if os.environ['REPOSITORY'] != 'wcook04/plectis-erdos-lean':
+              raise SystemExit('unexpected repository')
+          if not re.fullmatch(r'[0-9a-f]{40}', source):
+              raise SystemExit('source_commit must be a full immutable SHA')
+          if subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip() != source:
+              raise SystemExit('checkout differs from caller source')
+          options = {
+              'authorization_relationship': 'I am a responsible author or maintainer',
+              'project_path': 'verification/FC1041HausdorffCounterexample',
+              'comparator_config_path': 'verification/FC1041HausdorffCounterexample/verification/ExternalVerification/FC1041HausdorffCounterexample/comparator.json',
+              'formalization_metadata_path': 'verification/FC1041HausdorffCounterexample/verification/ExternalVerification/FC1041HausdorffCounterexample/formalization.yaml',
+          }
+          request = hashlib.sha256(
+              f"FC1041HausdorffCounterexample:{source}:{os.environ['RUN_ID']}:{os.environ['RUN_ATTEMPT']}".encode()
+          ).hexdigest()[:12]
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write(f'source_commit={source}\nrequest_id={request}\n')
+              output.write(f"options={json.dumps(options, separators=(',', ':'))}\n")
+          print(f'Original project FC1041HausdorffCounterexample; replay source {source}')
+          PY
+
+  verify:
+    needs: select
+    uses: PalomarRegistry/PalomarSubmission/.github/workflows/submission.yml@f49b4f29aa458fc70c3a4c8cadca9312adbdc559
+    with:
+      repository: wcook04/plectis-erdos-lean
+      commit: ${{ needs.select.outputs.source_commit }}
+      pipeline_commit: f49b4f29aa458fc70c3a4c8cadca9312adbdc559
+      request_id: ${{ needs.select.outputs.request_id }}
+      mode: full
+      execution_profile: palomar-standard-v1
+      options: ${{ needs.select.outputs.options }}

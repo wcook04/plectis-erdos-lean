@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification.FC249RationalObservable.Challenge",
+  "solution_module": "ErdosProblems.Erdos249.PaperCompleteR7.RationalObservableClassification",
+  "theorem_names": [
+    "ErdosProblems.Erdos249.PaperCompleteR7.RationalObservables.rational_zmod_observable_iff"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

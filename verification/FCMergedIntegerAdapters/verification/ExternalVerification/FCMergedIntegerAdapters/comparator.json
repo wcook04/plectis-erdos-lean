@@ -1,0 +1,15 @@
+{
+  "challenge_module": "ExternalVerification.FCMergedIntegerAdapters.Challenge",
+  "solution_module": "FormalConjecturesAdapter",
+  "theorem_names": [
+    "Erdos249257.FormalConjecturesAdapter.erdos_257_variants_tsum_top",
+    "Erdos249257.FormalConjecturesAdapter.erdos_1049_variants_geq_2_integer",
+    "Erdos249257.FormalConjecturesAdapter.erdos_258_variants_constant"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,36 @@
+version: v0.4
+project:
+  name: Exact Formal Conjectures Erdős1041 Hausdorff counterexample assurance
+  description: Independent mechanical verification of the original immutable Hausdorff-length counterexample adapter. The mathematical counterexample is ani's; Will Cook formalised the proof. All original proof modules and environment inputs are copied unchanged.
+  authors: [Will Cook]
+  license: Apache-2.0
+  responsible_maintainers: [Will Cook]
+repository:
+  role: substantive-development
+classification:
+  arxiv: [math.CV]
+  msc2020: [30C10]
+sources:
+  - title: Exact Formal Conjectures PR6505 Hausdorff-length statement
+    authors: [Will Cook]
+    id: https://github.com/google-deepmind/formal-conjectures/blob/5dd3328591f6ba8fd671d8caa4e5c5d29e0f570d/FormalConjectures/ErdosProblems/1041.lean
+    type: other
+    relationship: formalizes
+    license: Apache-2.0
+    author_endorsement: participated
+  - title: Original pinned Hausdorff-length Lean proof, formalising ani's counterexample
+    authors: [Will Cook]
+    id: https://github.com/wcook04/plectis-erdos/blob/0ee31b3a99ef93d2b679a427b474b23710597bad/lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean
+    type: other
+    relationship: other
+    license: Apache-2.0
+    author_endorsement: participated
+automation:
+  methods:
+    - method: agent
+      models: [OpenAI Codex, Anthropic Claude]
+      framework: Lean 4 and Mathlib
+      tool_setup: AI-assisted formalisation under Will Cook's direction; OpenAI Codex prepared this exact verification package.
+review:
+  status: self-assessed
+  notes: Independently controlled exact-target kernel verification is pending. This package asserts no human peer review, registry acceptance or new mathematical discovery.

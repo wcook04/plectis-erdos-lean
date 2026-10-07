@@ -1,0 +1,50 @@
+version: v0.4
+project:
+  name: Exact Formal Conjectures FCMergedIntegerAdapters assurance
+  description: Independent mechanical verification of the original immutable linked source against a Mathlib-only Challenge. No mathematical theorem or source proof is changed.
+  authors: [Will Cook]
+  license: Apache-2.0
+  responsible_maintainers: [Will Cook]
+repository:
+  role: substantive-development
+classification:
+  arxiv: [math.NT]
+  msc2020: [11J72]
+sources:
+  - title: Exact merged Formal Conjectures PR 5034 statement
+    authors: [Will Cook]
+    id: https://github.com/google-deepmind/formal-conjectures/blob/24984cbe91e37e602f609bc3ef9f3e5f3fcdf051/FormalConjectures/ErdosProblems/258.lean
+    type: other
+    relationship: formalizes
+    license: Apache-2.0
+    author_endorsement: participated
+  - title: Exact Formal Conjectures PR 6506 statement
+    authors: [Will Cook]
+    id: https://github.com/google-deepmind/formal-conjectures/blob/81f111e430aa45926c66b1c4774122a6e8ef8aad/FormalConjectures/ErdosProblems/257.lean
+    type: other
+    relationship: formalizes
+    license: Apache-2.0
+    author_endorsement: participated
+  - title: Exact Formal Conjectures PR 6507 statement
+    authors: [Will Cook]
+    id: https://github.com/google-deepmind/formal-conjectures/blob/220f6e9789b5c4a1575aa573178820776c276a66/FormalConjectures/ErdosProblems/1049.lean
+    type: other
+    relationship: formalizes
+    license: Apache-2.0
+    author_endorsement: participated
+  - title: Original linked Lean theorem source
+    authors: [Will Cook]
+    id: https://github.com/wcook04/plectis-erdos/blob/b9f1eb80aa11bbf66fb1df88804502b8c9c27d8e/research/adapters/FormalConjecturesAdapter.lean
+    type: other
+    relationship: other
+    license: Apache-2.0
+    author_endorsement: participated
+automation:
+  methods:
+    - method: agent
+      models: [OpenAI Codex, Anthropic Claude]
+      framework: Lean 4 and Mathlib
+      tool_setup: AI-assisted proof development under Will Cook's direction; this exact verification package was prepared with OpenAI Codex.
+review:
+  status: self-assessed
+  notes: Kernel verification is pending an independently controlled official mechanical report. This package makes no registry acceptance or human peer-review claim.
