@@ -16,6 +16,9 @@ tooling workflow can execute it without pytest, and as a pytest module.
 from __future__ import annotations
 
 import json
+import os
+import re
+import subprocess
 import shutil
 import sys
 import tempfile
@@ -82,8 +85,8 @@ def context(**overrides) -> dict:
 def fake_runner(outcomes: dict[str, dict]):
     """A runner whose answers are fixed per entry, so a result is fully determined.
 
-    Each entry maps to `{"comparator_rc": int, "log": str, "challenge_rc": int,
-    "solution_rc": int, "audit_rc": int}`; every stage also reports fixed seconds, so the
+    Each entry maps to `{"comparator_rc": int, "log": str, "audit_rc": int}`;
+    every stage also reports fixed seconds, so the
     timings a result records are deterministic and can be compared byte for byte.
     """
     def runner(stage, argv, *, log_path=None, env=None):
@@ -96,11 +99,7 @@ def fake_runner(outcomes: dict[str, dict]):
                           if part.startswith("PalomarCorpus.")
                           or part.startswith("Solutions.PalomarCorpus.")), None)
         spec = outcomes.get(entry, {})
-        if stage == shard.STAGE_CHALLENGE:
-            rc, text, seconds = spec.get("challenge_rc", 0), "built\n", 7.0
-        elif stage == shard.STAGE_SOLUTION:
-            rc, text, seconds = spec.get("solution_rc", 0), "built\n", 11.0
-        elif stage == shard.STAGE_COMPARATOR:
+        if stage == shard.STAGE_COMPARATOR:
             rc, text, seconds = spec.get("comparator_rc", 0), spec.get("log", GREEN_LOG), 52.0
         else:
             rc, text, seconds = spec.get("audit_rc", 0), "audited\n", 9.0
@@ -157,7 +156,7 @@ def test_a_failing_entry_does_not_stop_the_entries_after_it():
     with tempfile.TemporaryDirectory() as tmp:
         corpus = make_corpus(Path(tmp) / "corpus", {"E68": 1, "E243": 1, "E257": 1})
         outcomes = {
-            "E68": {"challenge_rc": 1},
+            "E68": {"comparator_rc": 1, "log": RED_LOG},
             "E243": {"comparator_rc": 1, "log": RED_LOG},
             "E257": {"comparator_rc": 0, "log": GREEN_LOG},
         }
@@ -169,14 +168,10 @@ def test_a_failing_entry_does_not_stop_the_entries_after_it():
         assert manifest["missing_entries"] == []
         assert manifest["failed_entries"] == ["E243", "E68"]
         assert manifest["complete"] is True and manifest["all_passed"] is False
-        # A build failure means the Comparator never ran, so it reports no verdict. A null
-        # exit is what the single-entry workflow's always-run receipt step recorded, and the
-        # reconciliation reads it as a comparison failure.
         blocked = json.loads((out / "receipt-E68.json").read_text())
-        assert blocked["exit"] is None and blocked["process_exit"] is None
-        assert blocked["verification"] == {"outcome": "failed",
-                                           "failure_stage": "build_challenge", "error": None}
-        assert [row["stage"] for row in blocked["stages"]] == ["build_challenge"]
+        assert blocked["exit"] == 1 and blocked["verification"]["outcome"] == "failed"
+        assert [row["stage"] for row in blocked["stages"]] == ["run_comparator", "render_audit"]
+
 
 
 def test_an_entry_that_cannot_be_read_still_produces_a_result_file():
@@ -221,6 +216,71 @@ def test_a_shard_with_no_usable_sandbox_reports_it_per_entry():
         receipt = json.loads((out / "receipt-E68.json").read_text())
         assert receipt["sandbox_mode"] == "unavailable" and receipt["exit"] == 125
         assert "refusing an insecure fallback" in (out / "E68.log").read_text()
+
+
+def _trusted_caller_blocks():
+    path = Path(__file__).resolve().parents[1] / ".github/workflows/fc-trusted-comparator-preflight.yml"
+    blocks = re.findall(r"          python3 - <<'PY'\n(.*?)\n          PY", path.read_text(), re.S)
+    assert len(blocks) == 2
+    return ["\n".join(line[10:] for line in block.splitlines()) for block in blocks]
+
+
+def test_trusted_caller_binds_exact_source_and_rejects_invalid_input():
+    code = _trusted_caller_blocks()[0]
+    with tempfile.TemporaryDirectory() as tmp:
+        output = Path(tmp) / "outputs"
+        env = {**os.environ, "SOURCE_COMMIT": "c" * 40, "ENTRY": "E1049_08",
+               "CALLER_SHA": "a" * 40, "RUN_ID": "17", "RUN_ATTEMPT": "1",
+               "REPOSITORY": "wcook04/plectis-erdos-lean", "GITHUB_OUTPUT": str(output)}
+        result = subprocess.run([sys.executable, "-c", code], env=env, capture_output=True)
+        assert result.returncode == 0, result.stderr.decode()
+        values = dict(line.split("=", 1) for line in output.read_text().splitlines())
+        assert values["source_commit"] == "c" * 40
+        assert json.loads(values["options"])["comparator_config_path"] == "PalomarCorpus/E1049_08/comparator.json"
+        for key, invalid in (("SOURCE_COMMIT", "main"), ("SOURCE_COMMIT", "c" * 39),
+                             ("ENTRY", "../E1049_08"), ("ENTRY", "E1049_08\nextra"),
+                             ("REPOSITORY", "someone/other")):
+            result = subprocess.run([sys.executable, "-c", code], env={**env, key: invalid}, capture_output=True)
+            assert result.returncode != 0, (key, invalid)
+
+
+def test_trusted_caller_checks_source_without_running_its_build():
+    code = _trusted_caller_blocks()[1]
+    checkout = Path(__file__).resolve().parents[1]
+    sha = subprocess.check_output(["git", "-C", str(checkout), "rev-parse", "HEAD"], text=True).strip()
+    with tempfile.TemporaryDirectory() as tmp:
+        root = Path(tmp)
+        (root / "source").symlink_to(checkout, target_is_directory=True)
+        env = {**os.environ, "SOURCE_COMMIT": sha, "ENTRY": "E1049_08"}
+        result = subprocess.run([sys.executable, "-c", code], cwd=root, env=env, capture_output=True)
+        assert result.returncode == 0, result.stderr.decode()
+        result = subprocess.run([sys.executable, "-c", code], cwd=root,
+                                env={**env, "SOURCE_COMMIT": "0" * 40}, capture_output=True)
+        assert result.returncode != 0
+        assert b"checkout differs" in result.stderr
+        assert "lake" not in code and "exec(" not in code
+
+
+def test_no_unsandboxed_prebuild_and_no_certification_claim():
+    seen = []
+    def runner(stage, argv, *, log_path=None, env=None):
+        seen.append((stage, argv))
+        return fake_runner({})(stage, argv, log_path=log_path, env=env)
+    with tempfile.TemporaryDirectory() as tmp:
+        corpus = make_corpus(Path(tmp) / "corpus", {"E68": 1})
+        result = shard.verify_entry("E68", corpus_root=corpus, out_dir=Path(tmp) / "out",
+                                    runner=runner, context=context(), now=clock)
+        assert all(stage not in {"build_challenge", "build_solution"} for stage, _ in seen)
+        assert all(argv[:2] != ["lake", "build"] for _, argv in seen)
+        receipt = result["receipt"]
+        assert receipt["verification"]["outcome"] == "diagnostic_passed"
+        assert receipt["certification_eligible"] is False
+        assert receipt["trust_class"] == "diagnostic_only_shared_workspace"
+        assert "trusted formal-proof certification" in receipt["not_established"]
+    workflow = (Path(__file__).resolve().parents[1] / ".github/workflows/palomar-replay.yml").read_text()
+    assert "  push:" not in workflow
+    assert "Restore the newest corpus build" not in workflow
+    assert "run: rm -rf .lake/build" in workflow
 
 
 # -------------------------------------------------------------------- the verdict rule
