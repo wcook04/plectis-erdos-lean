@@ -5,8 +5,8 @@
 
 These are two different things and this module keeps them apart on purpose.
 
-**The entry verification unit** is one publication entry: build its Challenge, build its
-Solution, run the pinned Comparator on it, replay Palomar's core-notation audit, and write
+**The diagnostic unit** is one publication entry: let Comparator build its Challenge and
+Solution inside its own sandbox, replay Palomar's core-notation audit, and write
 one self-contained result file, `receipt-<entry>.json`. `verify_entry` is the only code
 path that does this, and `run_shard` calls it in a loop. Nothing in the result depends on
 which other entries happened to share the runner: no shard id, no neighbour's exit code, no
@@ -30,6 +30,9 @@ A shard is red if either is false, and the reconciliation in
 `tools/meta/formal_math/comparator_identity_receipts.py` classifies every expected entry from
 the corpus commit, so a green shard can never stand in for its promised entries.
 
+This legacy runner does not independently control the Challenge and dependency workspace.
+Its receipts are diagnostics, never certification. Trusted verification uses the pinned
+official full workflow in fc-trusted-comparator-preflight.yml.
 No part of this module submits, registers, or claims a Palomar verdict.
 """
 from __future__ import annotations
@@ -80,12 +83,12 @@ DEFAULT_ENTRY_SECONDS = 300
 
 ENTRY_DIGEST_FILES = ("Challenge.lean", "comparator.json", "formalization.yaml")
 
-STAGE_CHALLENGE = "build_challenge"
-STAGE_SOLUTION = "build_solution"
 STAGE_COMPARATOR = "run_comparator"
 STAGE_RENDER_AUDIT = "render_audit"
 
 NOT_ESTABLISHED = [
+    "independent Challenge and dependency integrity",
+    "trusted formal-proof certification",
     "Palomar mechanical verification",
     "Palomar editorial review",
     "Palomar registration",
@@ -568,23 +571,9 @@ def verify_entry(
     theorem_names = list(config.get("theorem_names") or [])
     failure_stage: str | None = None
 
-    challenge_rc = record(STAGE_CHALLENGE, runner(
-        STAGE_CHALLENGE, ["lake", "build", f"PalomarCorpus.{entry}.Challenge"],
-        log_path=out_dir / f"build-challenge-{entry}.log",
-        env={"LEAN_NUM_THREADS": "2"},
-    ))
-    solution_rc = 0
-    if challenge_rc == 0:
-        solution_rc = record(STAGE_SOLUTION, runner(
-            STAGE_SOLUTION, ["lake", "build", f"Solutions.PalomarCorpus.{entry}"],
-            log_path=out_dir / f"build-solution-{entry}.log",
-            env={"LEAN_NUM_THREADS": "2"},
-        ))
-    else:
-        failure_stage = STAGE_CHALLENGE
-    if failure_stage is None and solution_rc != 0:
-        failure_stage = STAGE_SOLUTION
-
+    # Never execute an untrusted Solution before Comparator. Comparator owns the
+    # sandboxed Challenge and Solution builds. Even without these unsafe prebuilds,
+    # this legacy shared workspace is diagnostic evidence only.
     if failure_stage is None:
         budget_minutes = comparator_budget_minutes(theorem_names)
         argv = comparator_argv(
@@ -677,6 +666,8 @@ def _receipt(
     github = context.get("github") or {}
     return {
         "schema": RECEIPT_SCHEMA,
+        "trust_class": "diagnostic_only_shared_workspace",
+        "certification_eligible": False,
         "generated_at": generated_at,
         "entry": entry,
         "github": {
@@ -709,7 +700,7 @@ def _receipt(
             # The one-line answer for this entry, independent of any other entry and of the
             # shard that carried it. `failure_stage` names where it stopped, so a null exit
             # is never ambiguous between "the Comparator said nothing" and "it was never run".
-            "outcome": "passed" if comparison["exit"] == 0 and comparison["process_exit"] == 0
+            "outcome": "diagnostic_passed" if comparison["exit"] == 0 and comparison["process_exit"] == 0
                        else "failed",
             "failure_stage": failure_stage,
             "error": error,
