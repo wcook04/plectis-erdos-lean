@@ -1,0 +1,108 @@
+# SPDX-FileCopyrightText: 2026 Will Cook
+# SPDX-License-Identifier: Apache-2.0
+# The caller revision and proof revision are independent: this workflow never
+# executes the submitted repository's build scripts. The immutable official job
+# prepares its own fresh workspace, protects Challenge and authenticates Mathlib.
+name: FC trusted Comparator preflight
+
+on:
+  workflow_dispatch:
+    inputs:
+      source_commit:
+        description: Full immutable proof-source SHA (Lean v4.30.0)
+        required: true
+        type: string
+      entry:
+        description: One PalomarCorpus entry, for example E1049_08
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  select:
+    runs-on: ubuntu-24.04
+    outputs:
+      source_commit: ${{ steps.inputs.outputs.source_commit }}
+      request_id: ${{ steps.inputs.outputs.request_id }}
+      options: ${{ steps.inputs.outputs.options }}
+    steps:
+      - name: Validate immutable source and entry inputs
+        id: inputs
+        env:
+          SOURCE_COMMIT: ${{ inputs.source_commit }}
+          ENTRY: ${{ inputs.entry }}
+          CALLER_SHA: ${{ github.sha }}
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          python3 - <<'PY'
+          import hashlib, json, os, re
+          source, entry = os.environ['SOURCE_COMMIT'], os.environ['ENTRY']
+          if os.environ['REPOSITORY'] != 'wcook04/plectis-erdos-lean':
+              raise SystemExit('unexpected repository')
+          if not re.fullmatch(r'[0-9a-f]{40}', source):
+              raise SystemExit('source_commit must be a full lowercase SHA')
+          if not re.fullmatch(r'E[0-9]+_[0-9]{2,3}', entry):
+              raise SystemExit('entry must name one paper-order PalomarCorpus entry')
+          options = {
+              'authorization_relationship': 'I am a responsible author or maintainer',
+              'project_path': '',
+              'comparator_config_path': f'PalomarCorpus/{entry}/comparator.json',
+              'formalization_metadata_path': f'PalomarCorpus/{entry}/formalization.yaml',
+          }
+          request = hashlib.sha256(
+              f"{entry}:{source}:{os.environ['CALLER_SHA']}:{os.environ['RUN_ID']}:{os.environ['RUN_ATTEMPT']}".encode()
+          ).hexdigest()[:12]
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write(f'source_commit={source}\nrequest_id={request}\n')
+              output.write(f"options={json.dumps(options, separators=(',', ':'))}\n")
+          print(f'Caller {os.environ["CALLER_SHA"]}; proof source {source}; entry {entry}')
+          PY
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: wcook04/plectis-erdos-lean
+          ref: ${{ steps.inputs.outputs.source_commit }}
+          path: source
+          persist-credentials: false
+      - name: Check selected source without executing it
+        env:
+          SOURCE_COMMIT: ${{ steps.inputs.outputs.source_commit }}
+          ENTRY: ${{ inputs.entry }}
+        run: |
+          python3 - <<'PY'
+          import json, os, subprocess
+          from pathlib import Path
+          root, entry = Path('source'), os.environ['ENTRY']
+          if subprocess.check_output(['git', '-C', str(root), 'rev-parse', 'HEAD'], text=True).strip() != os.environ['SOURCE_COMMIT']:
+              raise SystemExit('checkout differs from immutable proof source')
+          toolchain = root / 'lean-toolchain'
+          if toolchain.is_symlink() or toolchain.read_text().strip() != 'leanprover/lean4:v4.30.0':
+              raise SystemExit('this reviewed historical pipeline caller requires Lean v4.30.0')
+          directory = root / 'PalomarCorpus' / entry
+          for name in ('Challenge.lean', 'comparator.json', 'formalization.yaml'):
+              path = directory / name
+              if path.is_symlink() or not path.is_file():
+                  raise SystemExit(f'missing or symlinked {path}')
+          config = json.loads((directory / 'comparator.json').read_text())
+          if config.get('challenge_module') != f'PalomarCorpus.{entry}.Challenge' or config.get('solution_module') != f'Solutions.PalomarCorpus.{entry}':
+              raise SystemExit('entry modules differ from selected source')
+          if not config.get('theorem_names') or set(config.get('permitted_axioms', [])) - {'propext', 'Quot.sound', 'Classical.choice'}:
+              raise SystemExit('invalid theorem selection or permitted axioms')
+          if config.get('enable_nanoda') is not True or config.get('definition_names', []):
+              raise SystemExit('both kernels and fully defined statements are required')
+          PY
+
+  verify:
+    needs: select
+    uses: PalomarRegistry/PalomarSubmission/.github/workflows/submission.yml@f49b4f29aa458fc70c3a4c8cadca9312adbdc559
+    with:
+      repository: wcook04/plectis-erdos-lean
+      commit: ${{ needs.select.outputs.source_commit }}
+      pipeline_commit: f49b4f29aa458fc70c3a4c8cadca9312adbdc559
+      request_id: ${{ needs.select.outputs.request_id }}
+      mode: full
+      execution_profile: palomar-standard-v1
+      options: ${{ needs.select.outputs.options }}
