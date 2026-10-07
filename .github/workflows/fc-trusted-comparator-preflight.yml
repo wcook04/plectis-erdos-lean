@@ -6,6 +6,11 @@
 name: FC trusted Comparator preflight
 
 on:
+  # Bootstrap on this reviewed branch before workflow_dispatch is discoverable
+  # on main. Only caller changes launch the frozen E1049_08 repair check.
+  push:
+    branches: [codex/trusted-comparator-replay-20261007]
+    paths: [.github/workflows/fc-trusted-comparator-preflight.yml]
   workflow_dispatch:
     inputs:
       source_commit:
@@ -31,8 +36,8 @@ jobs:
       - name: Validate immutable source and entry inputs
         id: inputs
         env:
-          SOURCE_COMMIT: ${{ inputs.source_commit }}
-          ENTRY: ${{ inputs.entry }}
+          SOURCE_COMMIT: ${{ inputs.source_commit || 'cc7e541cf2081c6fef5a5e377d52e365e33b01eb' }}
+          ENTRY: ${{ inputs.entry || 'E1049_08' }}
           CALLER_SHA: ${{ github.sha }}
           RUN_ID: ${{ github.run_id }}
           RUN_ATTEMPT: ${{ github.run_attempt }}
@@ -70,7 +75,7 @@ jobs:
       - name: Check selected source without executing it
         env:
           SOURCE_COMMIT: ${{ steps.inputs.outputs.source_commit }}
-          ENTRY: ${{ inputs.entry }}
+          ENTRY: ${{ inputs.entry || 'E1049_08' }}
         run: |
           python3 - <<'PY'
           import json, os, subprocess
