@@ -11,8 +11,9 @@ theorem Erdos257.erdos_257.variants.summable_reciprocal_support_subtype
     (b : ℕ) (A : Set ℕ) (hb : 2 ≤ b) (hA : A.Infinite)
     (hsum : Summable fun a : A => 1 / (a : ℝ)) :
     Irrational (∑' n : A, 1 / ((b : ℝ) ^ (n : ℕ) - 1)) := by
-  rw [tsum_subtype]
+  rw [tsum_subtype A (fun a : ℕ => (1 : ℝ) / ((b : ℝ) ^ a - 1))]
   exact Erdos257.erdos_257.variants.summable_reciprocal_support b A hb hA
-    (summable_subtype_iff_indicator.mp hsum)
+    ((summable_subtype_iff_indicator (s := A)
+      (f := fun a : ℕ => (1 : ℝ) / (a : ℝ))).mp hsum)
 
 #print axioms Erdos257.erdos_257.variants.summable_reciprocal_support_subtype
