@@ -287,7 +287,11 @@
   "package_sources": {
     "verification/FC257ReciprocalSupport/verification/ExternalVerification/FC257ReciprocalSupport/Challenge.lean": "sha256:7e3ba8dcee12eda053f533ac35cd8738238b4f96737ce8115f9c3a02351c2e16",
     "verification/FC257ReciprocalSupport/verification/ExternalVerification/FC257ReciprocalSupport/comparator.json": "sha256:48efd738ac5e89cbb383a17c938c9d388a8656d44897308614c8b2b94311d20e",
-    "verification/FC257ReciprocalSupport/verification/ExternalVerification/FC257ReciprocalSupport/formalization.yaml": "sha256:a2fe550e5cc7b350d182ed7e08b947288d82367f4e257bc6083bc3f84d0bddce"
+    "verification/FC257ReciprocalSupport/verification/ExternalVerification/FC257ReciprocalSupport/formalization.yaml": "sha256:a2fe550e5cc7b350d182ed7e08b947288d82367f4e257bc6083bc3f84d0bddce",
+    "verification/FC257ReciprocalSupport/verification/Solutions/FC257Subtype.lean": "sha256:32d6e60a7b1d86366594d0547fadab021684019114a7b5d168a0eb1724ba9a18",
+    "verification/FC257ReciprocalSupport/verification/ExternalVerification/FC257Subtype/Challenge.lean": "sha256:801977aed9c4f9a56877cc8331ce77a56968585b4d9e43864936b618176dc092",
+    "verification/FC257ReciprocalSupport/verification/ExternalVerification/FC257Subtype/comparator.json": "sha256:e5084142e382bdc134703e359ab0892352e538988838e4082a9a052f6b6edffd",
+    "verification/FC257ReciprocalSupport/verification/ExternalVerification/FC257Subtype/formalization.yaml": "sha256:cb9243c4b21794df10668fb04bc4e309c95ebd8c1074dd9390d231593d426fb7"
   },
   "assurance_status": "prepared_unverified",
   "trust_boundary": "Original source bytes and environment are frozen here; only a fresh official full verifier pass at the current host commit can establish kernel acceptance."
