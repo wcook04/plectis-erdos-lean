@@ -13,9 +13,10 @@ of the series or certify the paper's large computed denominator exclusions.
 
 All substantive proof bodies are present locally. The mathematical source comes
 from `wcook04/plectis-erdos-lean` commit `6bc4913c4ca42ac48829ad2d89985f8516361cb5`. The only mathematical-source
-changes introduce Lean's module visibility syntax; all six theorem headers
-and every proof body are unchanged. Statement is regenerated from Challenge by
-its existing source owner. The canonical full corpus remains the authority for
+changes introduce Lean's module visibility syntax and two exact simp-list
+additions in PrimeZeroBranch. The six theorem headers, types, data and all other
+proof bytes are unchanged. Statement is regenerated from Challenge by its
+existing source owner. The canonical full corpus remains the authority for
 other entries. Historical registered receiving sources remain separate.
 
 Build with the pinned Lean toolchain and Mathlib dependency:

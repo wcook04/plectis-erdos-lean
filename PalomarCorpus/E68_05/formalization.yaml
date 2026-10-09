@@ -74,11 +74,11 @@ status:
   scope: A selected source snapshot containing exactly the six declarations listed
     in PalomarCorpus/E68_05/comparator.json and their complete local Challenge/Solution
     import closure. All mathematical source comes from wcook04/plectis-erdos-lean
-    commit 6bc4913c4ca42ac48829ad2d89985f8516361cb5, with only Lean module visibility
-    syntax added. The canonical full corpus and its other entries remain outside this
-    snapshot. This snapshot includes the substantive proof bodies, not a remote proof
-    dependency. Large computed denominator exclusions and other E68 configurations
-    remain outside this selection.
+    commit 6bc4913c4ca42ac48829ad2d89985f8516361cb5, with Lean module visibility syntax
+    and two exact simp-list additions in PrimeZeroBranch.lean only. The canonical
+    full corpus and its other entries remain outside this snapshot. This snapshot
+    includes the substantive proof bodies, not a remote proof dependency. Large computed
+    denominator exclusions and other E68 configurations remain outside this selection.
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0

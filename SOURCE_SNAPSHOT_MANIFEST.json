@@ -46,8 +46,8 @@
     "PalomarCorpus.E68.PaperStatementsA.finite_channel_moment_certificate_eq",
     "PalomarCorpus.E68.PaperStatementsA.global_complementary_criterion_nat"
   ],
-  "proof_source_delta": "module/public import/exposed public section only",
-  "metadata_delta": "scope explicitly names this selected substantive-source snapshot",
+  "proof_source_delta": "module/public import/exposed public section; two exact PrimeZeroBranch theorem simp-list additions only",
+  "metadata_delta": "selected substantive-source scope and exact two-simp proof adaptation provenance only",
   "lake_delta": "only selected libraries/default target; dependency revisions unchanged",
   "files": {
     ".github/workflows/lean.yml": "153d1c9ecbabf9ca031623f5ecadeab36e9134c40f9af699bf7007329a107742",
@@ -77,15 +77,15 @@
     "ErdosProblems/Erdos68/PrimePoleCriterion.lean": "7545f8677bff9c2a2f5b7391ca241307a90c8c0a1e441d36414dad29919041cc",
     "ErdosProblems/Erdos68/PrimePoleDenominator.lean": "486967e2aa26f6bcbe59fb7db53496723883f70a22ee99b3b0bf979044769188",
     "ErdosProblems/Erdos68/PrimeUnitTranslator.lean": "e00bebfc976f1809b2a95dbf207e59f1f78246952fea4639fc0277ce82baa77c",
-    "ErdosProblems/Erdos68/PrimeZeroBranch.lean": "90c9560d597c86f8fc58cb4608890399341b5f0c40bee9b9b9f46addd371fc41",
+    "ErdosProblems/Erdos68/PrimeZeroBranch.lean": "1c926c27c9708795450e79a36dd2e0636c33a6fbfc826c1a7a4a59a58d8ccdfa",
     "ErdosProblems/Erdos68/SecondLayerDigit.lean": "4311fd7d1fed4a4acce0a31f46212d5d758004afc81f4f816419cb3005f8ddcf",
     "ErdosProblems/Erdos68/ShrinkingTargetNormalForm.lean": "fca49dde04bd5c7803f189291128f00f639d4b38e00c7096c30febe361f6d914",
     "ErdosProblems/Erdos68/StrictSuccessorArithmetic.lean": "3b949413bb87a5d9f7914ec058cb4bb6d8b74206fb1f138f5d6e0702db4f5cbc",
     "LICENSE": "5f73f0aafc768cc7c7f5da786dc7614296ee891a456faf175ab07456d3c35046",
     "PalomarCorpus/E68_05/Challenge.lean": "1d1aa1c066303ed3331862eac0db38285af82ab3b3bc3a56893d0302692e0e24",
     "PalomarCorpus/E68_05/comparator.json": "7fbd61aa62d6be523ff4eb2fceb41d83bb6346791359492b3500601f324e2f28",
-    "PalomarCorpus/E68_05/formalization.yaml": "cb257d123baa9ba8f22c23ea1f3e8fe3e7646ec7b8e2202d5365978910d45a6f",
-    "README.md": "c423b51a7b5f762cb4a22d4528acb1d94f221d1c9697be062292e11a9a7027b3",
+    "PalomarCorpus/E68_05/formalization.yaml": "5ede87fe5a06bba16bd890ab8595e9af3f1ac7d165478f705b7794947cabb414",
+    "README.md": "13a2d05bf863a2767b0e5327666e71484f56c380781738a0dde43ab8120853c4",
     "Solutions/PalomarCorpus/E68_05.lean": "020207cd7e3c7e766ae9086e2991aa0a619ae3ff2c3280271a87e58498e7644d",
     "Solutions/PalomarCorpus/E68_05/PaperStatementsA.lean": "198e2f54c6a28ab2ae2559d4e159025ffcbb4f45ea01e4a28b15e91274f6e580",
     "Solutions/PalomarCorpus/E68_05/Statement.lean": "5853dc79e34a6de39f5a1a9097d7be55c6fd1a28bcb9bdd611403bf440070e53",
@@ -103,5 +103,37 @@
     "PalomarCorpus.E68.PaperStatementsA.finite_channel_moment_certificate_eq": "86400a3d02d904d1fbc22f9fc387a6d0d7c71fac65735475f77fc635bd10bf29",
     "PalomarCorpus.E68.PaperStatementsA.global_complementary_criterion_nat": "31f43b9af6b4e0ca2c2ef7667141341f0a4ee1f28b41862040bb44f053a4aa2e"
   },
-  "statement_regenerated_from_challenge": true
+  "statement_regenerated_from_challenge": true,
+  "approved_simp_list_proof_delta": {
+    "schema": "palomar_e68_exact_simp_list_proof_port_v1",
+    "frozen_authority_commit": "6bc4913c4ca42ac48829ad2d89985f8516361cb5",
+    "failed_selected_source_commit": "34510f2dec8501f11b78e7f4a2ba39dc1e4e0865",
+    "files": {
+      "ErdosProblems/Erdos68/PrimeZeroBranch.lean": {
+        "original_sha256": "sha256:ce7b4a2de42aadf1401e5558bdb12c19994fa4add0f6ddbe0982d7549eda9849",
+        "repaired_sha256": "sha256:eee18450dd76c9847aecab4c82ee19ae8a45ccdb8363dda621bed60726fb3b94"
+      }
+    },
+    "declarations": [
+      {
+        "name": "ErdosProblems.Erdos68.factorialGapPredecessorGapNumerator_mul_transitionNormalizer",
+        "original_sha256": "sha256:fb8c322ef0c189c86c0e8ab6e3f235aafe8f8478fb834cb2ecc5bd0f44bceb63",
+        "repaired_sha256": "sha256:aa06ea847602ab58aa965113440f8bdcf680cd137bbbce3f42fd211cc1d52edb"
+      },
+      {
+        "name": "ErdosProblems.Erdos68.exists_prime_avoiding_factorialGapProduct_of_lt",
+        "original_sha256": "sha256:e4fe3d8c2588e075d7ba0bace70b7fb626d56178d0006a7e4b19cca50b662b73",
+        "repaired_sha256": "sha256:c8873e2dbdc7ad054e5f27c38ea6b77afb0a4d7293b2deecdfe48b9448aedd58"
+      }
+    ],
+    "exact_added_simp_lemmas": [
+      "Nat.cast_one",
+      "id_eq"
+    ],
+    "all_theorem_headers_types_data_and_other_proof_bytes_unchanged": true,
+    "neutrality": "Only theorem proof simplifier whitelists gain cast-of-one and identity-application reductions.",
+    "verification_boundary": "Source-anchored review only; genuine corrected-source compiler and other official verdicts remain pending.",
+    "selected_edition_admission": false
+  },
+  "supersedes_selected_source_commit": "34510f2dec8501f11b78e7f4a2ba39dc1e4e0865"
 }
