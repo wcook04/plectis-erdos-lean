@@ -1,3 +1,0 @@
-import Solutions.ExternalVerification1041PaperStatementsH
-
-#print axioms Erdos249257.ExternalVerification1041PaperStatementsH.all_spokes

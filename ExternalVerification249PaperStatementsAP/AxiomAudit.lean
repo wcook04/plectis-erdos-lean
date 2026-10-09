@@ -1,3 +1,0 @@
-import Solutions.ExternalVerification249PaperStatementsAP
-
-#print axioms Erdos249257.ExternalVerification249PaperStatementsAP.tsum_moebius_lambert_sq

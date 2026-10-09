@@ -1,9 +1,13 @@
-import ErdosProblems.Erdos251.RealPrimeGapTail
-import ErdosProblems.Erdos251.PolynomialGapSeriesValue
-import ErdosProblems.Erdos251.FreePairReduction
-import ErdosProblems.Erdos251.AffineCylinderCollapse
-import ErdosProblems.Erdos251.BoundedPerturbationCountermodel
-import Mathlib
+module
+
+public import ErdosProblems.Erdos251.RealPrimeGapTail
+public import ErdosProblems.Erdos251.PolynomialGapSeriesValue
+public import ErdosProblems.Erdos251.FreePairReduction
+public import ErdosProblems.Erdos251.AffineCylinderCollapse
+public import ErdosProblems.Erdos251.BoundedPerturbationCountermodel
+public import Mathlib
+
+@[expose] public section
 
 /-!
 # Paper-complete assemblies for Erdős 251, round 7

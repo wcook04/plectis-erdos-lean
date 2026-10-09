@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos251.PaperCoreR7
-import Mathlib.Data.Nat.Factorial.Basic
+module
+
+public import ErdosProblems.Erdos251.PaperCoreR7
+public import Mathlib.Data.Nat.Factorial.Basic
+
+@[expose] public section
 
 /-!
 # The long record's bounded recurring-values countermodel

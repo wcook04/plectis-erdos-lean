@@ -1,6 +1,10 @@
-import ErdosProblems.Erdos251.ResidueFeedbackCore
-import Mathlib.Data.Nat.Factorial.Basic
-import Mathlib.Order.Filter.AtTopBot.Basic
+module
+
+public import ErdosProblems.Erdos251.ResidueFeedbackCore
+public import Mathlib.Data.Nat.Factorial.Basic
+public import Mathlib.Order.Filter.AtTopBot.Basic
+
+@[expose] public section
 
 /-!
 # A schedule for an arbitrary divergent envelope (round 8)

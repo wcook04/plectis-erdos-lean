@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos251.GrowingBlocksR11
+module
+
+public import ErdosProblems.Erdos251.GrowingBlocksR11
+
+@[expose] public section
 
 /-! # End-to-end sparse rationalisation and growing-block preservation
 One support is chosen before the target value.

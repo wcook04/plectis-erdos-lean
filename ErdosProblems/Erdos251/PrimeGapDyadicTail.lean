@@ -1,20 +1,24 @@
-import Mathlib.Data.Nat.Prime.Nth
-import Mathlib.Data.Nat.PrimeFin
-import Mathlib.Data.Nat.Prime.Factorial
-import Mathlib.Data.Nat.Periodic
-import Mathlib.Data.Nat.Factorization.Basic
-import Mathlib.Data.Rat.Lemmas
-import Mathlib.Algebra.BigOperators.Group.Finset.Basic
-import Mathlib.Algebra.BigOperators.Ring.Finset
-import Mathlib.Analysis.SpecificLimits.Normed
-import Mathlib.NumberTheory.Bertrand
-import Mathlib.NumberTheory.PowModTotient
-import Mathlib.NumberTheory.PrimeCounting
-import Mathlib.NumberTheory.Real.Irrational
-import Mathlib.Topology.Algebra.InfiniteSum.NatInt
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.NormNum
-import Mathlib.Tactic.Ring
+module
+
+public import Mathlib.Data.Nat.Prime.Nth
+public import Mathlib.Data.Nat.PrimeFin
+public import Mathlib.Data.Nat.Prime.Factorial
+public import Mathlib.Data.Nat.Periodic
+public import Mathlib.Data.Nat.Factorization.Basic
+public import Mathlib.Data.Rat.Lemmas
+public import Mathlib.Algebra.BigOperators.Group.Finset.Basic
+public import Mathlib.Algebra.BigOperators.Ring.Finset
+public import Mathlib.Analysis.SpecificLimits.Normed
+public import Mathlib.NumberTheory.Bertrand
+public import Mathlib.NumberTheory.PowModTotient
+public import Mathlib.NumberTheory.PrimeCounting
+public import Mathlib.NumberTheory.Real.Irrational
+public import Mathlib.Topology.Algebra.InfiniteSum.NatInt
+public import Mathlib.Tactic.FieldSimp
+public import Mathlib.Tactic.NormNum
+public import Mathlib.Tactic.Ring
+
+@[expose] public section
 
 open scoped BigOperators
 

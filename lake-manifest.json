@@ -111,7 +111,7 @@
       "configFile": "lakefile.toml"
     }
   ],
-  "name": "erdos257_period_noncollapse",
+  "name": "erdos251_sparse_rationalisation",
   "lakeDir": ".lake",
   "fixedToolchain": false
 }

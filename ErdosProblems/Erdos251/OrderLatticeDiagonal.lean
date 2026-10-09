@@ -1,6 +1,10 @@
-import ErdosProblems.Erdos251.PrimeGapDyadicTail
-import Mathlib.Data.ZMod.Basic
-import Mathlib.GroupTheory.OrderOfElement
+module
+
+public import ErdosProblems.Erdos251.PrimeGapDyadicTail
+public import Mathlib.Data.ZMod.Basic
+public import Mathlib.GroupTheory.OrderOfElement
+
+@[expose] public section
 
 /-!
 # Erdős #251: the integral shifts form an order lattice, and one schedule decides

@@ -3,9 +3,13 @@ Copyright (c) 2026 Will Cook. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Will Cook
 -/
-import Mathlib
-import ErdosProblems.Erdos251.PaperCompleteR20.TrueTail
-import Solutions.PalomarCorpus.E251_01.Statement
+module
+
+public import Mathlib
+public import ErdosProblems.Erdos251.PaperCompleteR20.TrueTail
+public import Solutions.PalomarCorpus.E251_01.Statement
+
+@[expose] public section
 
 open Filter
 open Finset

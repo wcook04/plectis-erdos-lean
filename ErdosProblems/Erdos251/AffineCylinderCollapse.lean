@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos251.AffineShiftEscape
-import ErdosProblems.Erdos251.OrderLatticeDiagonal
+module
+
+public import ErdosProblems.Erdos251.AffineShiftEscape
+public import ErdosProblems.Erdos251.OrderLatticeDiagonal
+
+@[expose] public section
 
 /-!
 # Erdős #251: the affine `2`-adic cylinder collapses onto its own basepoint

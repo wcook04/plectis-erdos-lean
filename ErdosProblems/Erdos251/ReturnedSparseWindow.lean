@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos251.PaperSparseCouplingR7
+module
+
+public import ErdosProblems.Erdos251.PaperSparseCouplingR7
+
+@[expose] public section
 
 /-! Extended block-window bound from the R10 #251 supplement.
 Reuses the existing finite incidence theorem. No asymptotic supplier is assumed. -/

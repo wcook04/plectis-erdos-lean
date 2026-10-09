@@ -1,8 +1,12 @@
-import ErdosProblems.Erdos251.SparseScheduleDensityR8
-import Mathlib.Topology.Algebra.InfiniteSum.ENNReal
-import Mathlib.Topology.Algebra.InfiniteSum.NatInt
-import Mathlib.Topology.Algebra.InfiniteSum.Order
-import Mathlib.Analysis.SpecificLimits.Normed
+module
+
+public import ErdosProblems.Erdos251.SparseScheduleDensityR8
+public import Mathlib.Topology.Algebra.InfiniteSum.ENNReal
+public import Mathlib.Topology.Algebra.InfiniteSum.NatInt
+public import Mathlib.Topology.Algebra.InfiniteSum.Order
+public import Mathlib.Analysis.SpecificLimits.Normed
+
+@[expose] public section
 
 /-!
 # Interval filling on the constructed sparse centres

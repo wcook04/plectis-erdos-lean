@@ -1,4 +1,0 @@
-import Solutions.ExternalVerification249PaperStatementsAF
-
-#print axioms Erdos249257.ExternalVerification249PaperStatementsAF.mobiusMersenneTheta_two_eq_totient_offset
-#print axioms Erdos249257.ExternalVerification249PaperStatementsAF.scaled_dyadic_sum_odd

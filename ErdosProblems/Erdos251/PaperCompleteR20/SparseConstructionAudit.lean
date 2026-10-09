@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos251.SparsePaperR11
+module
+
+public import ErdosProblems.Erdos251.SparsePaperR11
+
+@[expose] public section
 
 noncomputable section
 open Filter Topology Finset

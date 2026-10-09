@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos251.PrimeGapDyadicTail
-import Mathlib.Topology.Algebra.InfiniteSum.ENNReal
+module
+
+public import ErdosProblems.Erdos251.PrimeGapDyadicTail
+public import Mathlib.Topology.Algebra.InfiniteSum.ENNReal
+
+@[expose] public section
 
 /-!
 # Erdős #251: the polynomial-gap countermodel series has the rational value `32`

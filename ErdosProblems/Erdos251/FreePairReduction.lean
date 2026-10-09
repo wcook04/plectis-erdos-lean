@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos251.OrderLatticeDiagonal
+module
+
+public import ErdosProblems.Erdos251.OrderLatticeDiagonal
+
+@[expose] public section
 
 /-!
 # Erdős #251: the free-pair reduction

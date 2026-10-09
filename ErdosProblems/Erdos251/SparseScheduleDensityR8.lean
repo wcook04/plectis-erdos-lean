@@ -1,6 +1,10 @@
-import ErdosProblems.Erdos251.SparseScheduleR8
-import Mathlib.Data.Finset.Card
-import Mathlib.Order.Interval.Finset.Nat
+module
+
+public import ErdosProblems.Erdos251.SparseScheduleR8
+public import Mathlib.Data.Finset.Card
+public import Mathlib.Order.Interval.Finset.Nat
+
+@[expose] public section
 
 /-!
 # Uniform interval counting for the round-8 sparse schedule

@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos251.SparseRationalisationCore
+module
+
+public import ErdosProblems.Erdos251.SparseRationalisationCore
+
+@[expose] public section
 
 /-!
 # Single-site residue feedback

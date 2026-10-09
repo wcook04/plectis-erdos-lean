@@ -1,4 +1,8 @@
-import Mathlib
+module
+
+public import Mathlib
+
+@[expose] public section
 
 /-! The boundary condition for genuine dyadic tails, with arbitrary real
 coefficients and the paper's absolute-convergence hypothesis. -/

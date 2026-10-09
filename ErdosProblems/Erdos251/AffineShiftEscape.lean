@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos251.PrimeGapDyadicTail
+module
+
+public import ErdosProblems.Erdos251.PrimeGapDyadicTail
+
+@[expose] public section
 
 /-!
 # Erdős #251: the ±2 wall, and the affine 2-adic escape that removes it

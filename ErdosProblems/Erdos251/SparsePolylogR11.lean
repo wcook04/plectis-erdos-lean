@@ -1,6 +1,10 @@
-import ErdosProblems.Erdos251.SparseAmbientR9
-import Mathlib.Analysis.Complex.ExponentialBounds
-import Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics
+module
+
+public import ErdosProblems.Erdos251.SparseAmbientR9
+public import Mathlib.Analysis.Complex.ExponentialBounds
+public import Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics
+
+@[expose] public section
 
 /-!
 # Quantitative counting for the actual envelope-driven sparse schedule

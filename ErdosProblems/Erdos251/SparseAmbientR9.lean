@@ -1,6 +1,10 @@
-import ErdosProblems.Erdos251.SparseIntervalR8
-import Mathlib.Logic.Function.Basic
-import Mathlib.Topology.Algebra.InfiniteSum.Basic
+module
+
+public import ErdosProblems.Erdos251.SparseIntervalR8
+public import Mathlib.Logic.Function.Basic
+public import Mathlib.Topology.Algebra.InfiniteSum.Basic
+
+@[expose] public section
 
 /-!
 # Ambient sparse rationalisation: the actual infinite coefficient word

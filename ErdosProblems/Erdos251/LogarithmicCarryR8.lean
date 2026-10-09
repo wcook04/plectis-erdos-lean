@@ -1,8 +1,12 @@
-import ErdosProblems.Erdos251.PaperBoundedCarryR7
-import Mathlib.Algebra.Order.Floor.Ring
-import Mathlib.Analysis.SpecialFunctions.Log.Basic
-import Mathlib.Order.Filter.AtTopBot.Archimedean
-import Mathlib.Data.Nat.Periodic
+module
+
+public import ErdosProblems.Erdos251.PaperBoundedCarryR7
+public import Mathlib.Algebra.Order.Floor.Ring
+public import Mathlib.Analysis.SpecialFunctions.Log.Basic
+public import Mathlib.Order.Filter.AtTopBot.Archimedean
+public import Mathlib.Data.Nat.Periodic
+
+@[expose] public section
 
 /-!
 # The logarithmically growing value-6 countermodel

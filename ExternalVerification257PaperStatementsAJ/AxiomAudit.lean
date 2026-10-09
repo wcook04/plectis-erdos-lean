@@ -1,3 +1,0 @@
-import Solutions.ExternalVerification257PaperStatementsAJ
-
-#print axioms Erdos249257.ExternalVerification257PaperStatementsAJ.tsum_moebius_div_two_pow_sub_one_eq_half

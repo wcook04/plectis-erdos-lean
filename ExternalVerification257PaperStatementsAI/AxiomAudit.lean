@@ -1,3 +1,0 @@
-import Solutions.ExternalVerification257PaperStatementsAI
-
-#print axioms Erdos249257.ExternalVerification257PaperStatementsAI.paper_forced_greedy_low_ranks

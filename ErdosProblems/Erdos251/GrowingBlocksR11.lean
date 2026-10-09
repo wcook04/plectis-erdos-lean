@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos251.SparsePolylogR11
-import ErdosProblems.Erdos251.ReturnedSparseWindow
+module
+
+public import ErdosProblems.Erdos251.SparsePolylogR11
+public import ErdosProblems.Erdos251.ReturnedSparseWindow
+
+@[expose] public section
 
 /-! # Growing unnormalised blocks: total variation and bounded tests
 Probability is uniform over the X starting indices in

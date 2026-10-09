@@ -1,7 +1,11 @@
-import ErdosProblems.Erdos251.LogarithmicCarryR8
-import ErdosProblems.Erdos251.SparseScheduleDensityR8
-import Mathlib.Analysis.SpecialFunctions.Stirling
-import Mathlib.Topology.MetricSpace.Pseudo.Defs
+module
+
+public import ErdosProblems.Erdos251.LogarithmicCarryR8
+public import ErdosProblems.Erdos251.SparseScheduleDensityR8
+public import Mathlib.Analysis.SpecialFunctions.Stirling
+public import Mathlib.Topology.MetricSpace.Pseudo.Defs
+
+@[expose] public section
 
 /-!
 # Cumulative n log n growth for the value-6 word
