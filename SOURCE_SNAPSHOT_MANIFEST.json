@@ -137,7 +137,7 @@
     "PalomarCorpus.E243.PaperStructuresAD.minus_one_forbidden_word",
     "PalomarCorpus.E243.PaperStructuresAD.plus_one_forbidden_word"
   ],
-  "proof_source_delta": "module/public import/exposed public section only",
+  "proof_source_delta": "module/public import/exposed public section only; infinity instance visibility made public",
   "metadata_delta": "scope explicitly names this selected substantive-source snapshot",
   "lake_delta": "only selected libraries/default target; dependency revisions unchanged",
   "files": {
@@ -248,7 +248,7 @@
     "ErdosProblems/Shared/DirichletPoleComparison.lean": "81a01651061bca9bf88ce50b8a397f4023399c2a7a0ecb80eaea28222d95e383",
     "ErdosProblems/Shared/IdealCountingEuler.lean": "b166dfbebf9eaf11f876128bb5717f45d9bacf382b73c4ee9b26234b4561cc08",
     "ErdosProblems/Shared/NonsquareModuloPrimes.lean": "7caad298875ce2accd05b9d8e433d2d9f1ba2a0eb4bb6eec20c6527409bfa3fe",
-    "ErdosProblems/Shared/QuadraticSplitPrimes.lean": "4642feb9126b4b53325fdced9252eb25065681d01d0f01e7e5734fead9bed33f",
+    "ErdosProblems/Shared/QuadraticSplitPrimes.lean": "eec8c8df1035d845ada5db10d6d7c4d861d2070dde5c3c3bb297063d32b5f07a",
     "LICENSE": "5f73f0aafc768cc7c7f5da786dc7614296ee891a456faf175ab07456d3c35046",
     "PalomarCorpus/E243_01/Challenge.lean": "c90c0bbc5dd5e4edb449d501694f172f10e61f0055ebf9f24b266e45591db084",
     "PalomarCorpus/E243_01/comparator.json": "821258fb2c458325d140ca341c09c32ba0a46cbbbef16c1a1fda4376f44a56b3",
@@ -285,5 +285,19 @@
     "PalomarCorpus.E243.PaperStructuresAD.minus_one_forbidden_word": "33f56cd26353c6a375ef7c3d57ea5d9cd863f6463ac14aa14192ef5fe55516ae",
     "PalomarCorpus.E243.PaperStructuresAD.plus_one_forbidden_word": "c9e555a881c186c8fa14833999abce0f44cf7681a329e4ca40e2eeee56f93126"
   },
-  "statement_regenerated_from_challenge": true
+  "statement_regenerated_from_challenge": true,
+  "supersedes_selected_source_commit": "1c610cfdef0c6af97dfc848e30a34113efffd51f",
+  "visibility_repairs": [
+    {
+      "schema": "palomar_e243_instance_visibility_delta_v1",
+      "path": "ErdosProblems/Shared/QuadraticSplitPrimes.lean",
+      "declaration": "ErdosProblems.Shared.QuadraticSplit.infinite_ringOfIntegers",
+      "original_sha256": "4642feb9126b4b53325fdced9252eb25065681d01d0f01e7e5734fead9bed33f",
+      "repaired_sha256": "eec8c8df1035d845ada5db10d6d7c4d861d2070dde5c3c3bb297063d32b5f07a",
+      "change": "private instance -> public instance; type and proof body unchanged",
+      "reason": "Lean module public theorem signatures cannot synthesize private instances",
+      "frozen_mathematical_bytes_recovered_exactly": true,
+      "lean_source_authority": "https://github.com/leanprover/lean4/blob/v4.35.0-rc2/src/Lean/Meta/SynthInstance.lean#L205-L207"
+    }
+  ]
 }
