@@ -10,10 +10,11 @@ Erdős problem #249's irrationality question remains open.
 All substantive Lean proof bodies are present in this snapshot. The source comes from the
 full corpus at commit `6bc4913c4ca42ac48829ad2d89985f8516361cb5` in `wcook04/plectis-erdos-lean`.
 The mathematical-source changes introduce Lean's module visibility syntax and replace
-only the retainedChannel index-bound proofs with explicit Nat arithmetic terms. The
-channel levels, residues and five selected theorem statements are unchanged. The Statement
-module is regenerated from the repaired Challenge. The isolated arithmetic proof compiles;
-Comparator and kernel outcomes for this corrected edition require their own verification.
+only the retainedChannel and fullRetainedChannel index-bound proofs with explicit Nat
+arithmetic terms. Channel levels, residues and five selected theorem statements are
+unchanged. Statement is regenerated from Challenge. A small exported Init-only pair
+passes the pinned structural Comparator algorithm; full-source official verification
+remains commit-specific and separate.
 The canonical full corpus remains the authority for the other entries.
 
 Build with the pinned Lean toolchain and Mathlib dependency:

@@ -75,11 +75,14 @@ noncomputable def oddCoreTotientKernelFamily : TotientOddCoreIndex → ℕ → �
   | Sum.inr ⟨j, r⟩ => totientKernelSeq (j + 1) (2 * r.val + 1)
 /-- The inclusion of the two initial and odd-residue channels into the full dyadic index set. -/
 noncomputable def fullRetainedChannel : TotientOddCoreIndex → TotientDyadicKernelIndex
-  | Sum.inl i => ⟨i.val, ⟨0, by positivity⟩⟩
+  | Sum.inl i => ⟨i.val, ⟨0, Nat.two_pow_pos i.val⟩⟩
   | Sum.inr ⟨j, r⟩ => ⟨j + 1, ⟨2 * r.val + 1, by
-      have hr := r.isLt
-      rw [pow_succ]
-      omega⟩⟩
+      have hr : r.val + 1 ≤ 2 ^ j := r.isLt
+      calc 2 * r.val + 1 < 2 * r.val + 2 :=
+          Nat.add_lt_add_left (Nat.lt_succ_self 1) (2 * r.val)
+        _ = 2 * (r.val + 1) := (Nat.mul_succ 2 r.val).symm
+        _ ≤ 2 * 2 ^ j := Nat.mul_le_mul_left 2 hr
+        _ = 2 ^ (j + 1) := Nat.pow_succ'.symm⟩⟩
 /-- The space of finitely supported rational relations among all dyadic totient subsequences, defined as the kernel of their linear-combination map. -/
 noncomputable abbrev FullRelations := LinearMap.ker (Finsupp.linearCombination ℚ fullTotientKernelFamily)
 /-- The dyadic channels outside the retained initial and odd-residue channels. -/
