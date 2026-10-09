@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos243.PaperCompleteR11.WindowIncidence
-import Mathlib.Data.ZMod.QuotientRing
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR11.WindowIncidence
+public import Mathlib.Data.ZMod.QuotientRing
+
+@[expose] public section
 
 /-!
 # Combining all finite good-prime obstructions

@@ -1,3 +1,0 @@
-import Solutions.ExternalVerification249PaperStatementsC
-
-#print axioms Erdos249257.ExternalVerification249PaperStatementsC.irrational_totient_series_of_lcm_cone_window_kill_supply

@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos243.PaperCompleteR20.CubicRateDefect
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR20.CubicRateDefect
+
+@[expose] public section
 
 /-!
 # Erdős 243: normalised cubic comparison

@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos243.PaperCompleteR11.InclusiveLimsup
-import ErdosProblems.Erdos243.PaperCompleteR11.CanonicalRecords
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR11.InclusiveLimsup
+public import ErdosProblems.Erdos243.PaperCompleteR11.CanonicalRecords
+
+@[expose] public section
 
 /-!
 # The quantitative branches of the global record dichotomy

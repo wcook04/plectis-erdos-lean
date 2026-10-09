@@ -1,6 +1,10 @@
-import ErdosProblems.Erdos243.PaperCompleteR7.Limits
-import Mathlib.Analysis.SpecificLimits.Normed
-import Mathlib.Topology.Algebra.InfiniteSum.NatInt
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR7.Limits
+public import Mathlib.Analysis.SpecificLimits.Normed
+public import Mathlib.Topology.Algebra.InfiniteSum.NatInt
+
+@[expose] public section
 
 /-!
 # Analytic part of the canonical tail bridge

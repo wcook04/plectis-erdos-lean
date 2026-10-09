@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos243.PaperCompleteR20.CubicRateDifferenceLimits
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR20.CubicRateDifferenceLimits
+
+@[expose] public section
 
 /-!
 # Erdős 243: the cubic-rate residual recurrence

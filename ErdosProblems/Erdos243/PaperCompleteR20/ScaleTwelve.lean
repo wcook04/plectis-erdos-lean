@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos243.PaperCompleteR11.CubicFieldScale
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR11.CubicFieldScale
+
+@[expose] public section
 
 /-!
 # Erdős 243: literal classification of the scales

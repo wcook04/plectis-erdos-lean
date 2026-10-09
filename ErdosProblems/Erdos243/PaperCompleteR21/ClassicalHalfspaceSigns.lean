@@ -1,6 +1,10 @@
-import ErdosProblems.Erdos243.GlobalLcmHeight
-import ErdosProblems.Erdos243.PaperCompleteR7.ProductDefect
-import Mathlib.Tactic.NormNum.GCD
+module
+
+public import ErdosProblems.Erdos243.GlobalLcmHeight
+public import ErdosProblems.Erdos243.PaperCompleteR7.ProductDefect
+public import Mathlib.Tactic.NormNum.GCD
+
+@[expose] public section
 
 /-!
 # Erdős 243: comparison of the two signs (`long243:res:classicalhalfspace`)

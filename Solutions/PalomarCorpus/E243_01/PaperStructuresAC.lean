@@ -3,13 +3,17 @@ Copyright (c) 2026 Will Cook. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Will Cook
 -/
-import Mathlib
-import ErdosProblems.Erdos243.PaperCompleteR11.CubicIntegralNormalisation
-import ErdosProblems.Erdos243.PaperCompleteR11.CubicZeroDensityShape
-import ErdosProblems.Erdos243.PaperCompleteR21.CubicRateExclusionChain
-import ErdosProblems.Erdos243.PaperCompleteR21.SquareSpecialisationUnconditional
-import ErdosProblems.Erdos243.PaperCompleteR9.PolynomialCorrections
-import Solutions.PalomarCorpus.E243_01.Statement
+module
+
+public import Mathlib
+public import ErdosProblems.Erdos243.PaperCompleteR11.CubicIntegralNormalisation
+public import ErdosProblems.Erdos243.PaperCompleteR11.CubicZeroDensityShape
+public import ErdosProblems.Erdos243.PaperCompleteR21.CubicRateExclusionChain
+public import ErdosProblems.Erdos243.PaperCompleteR21.SquareSpecialisationUnconditional
+public import ErdosProblems.Erdos243.PaperCompleteR9.PolynomialCorrections
+public import Solutions.PalomarCorpus.E243_01.Statement
+
+@[expose] public section
 
 /- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
 

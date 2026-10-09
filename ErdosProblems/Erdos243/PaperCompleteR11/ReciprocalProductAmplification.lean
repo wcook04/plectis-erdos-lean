@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos243.PaperCompleteR11.CRTObstructionDensity
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR11.CRTObstructionDensity
+
+@[expose] public section
 
 /-!
 # Removing the prime-size loss

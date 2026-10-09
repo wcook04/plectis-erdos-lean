@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos243.CumulativeLcmTransfer
+module
+
+public import ErdosProblems.Erdos243.CumulativeLcmTransfer
+
+@[expose] public section
 
 /-! A genuine LCM-adapted, positive-coefficient orbit with unit actual record
 jumps and unbounded height. Its lack of centring is essential. -/

@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos243.PaperCompleteR11.RecordDivisibility
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR11.RecordDivisibility
+
+@[expose] public section
 
 /-!
 # Coprime cores of a finite non-coprime family

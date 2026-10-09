@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos243.PaperCompleteR11.CubicQuarticWindows
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR11.CubicQuarticWindows
+
+@[expose] public section
 
 /-! The two exact modulo-seven phases in the paper, together with the
 sharp one-seventh lower-density obstruction. -/

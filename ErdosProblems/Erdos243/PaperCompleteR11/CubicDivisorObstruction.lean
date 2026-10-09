@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos243.PaperCompleteR11.CubicPrimitiveNormalisation
-import ErdosProblems.Erdos243.PaperCompleteR11.DensityTransport
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR11.CubicPrimitiveNormalisation
+public import ErdosProblems.Erdos243.PaperCompleteR11.DensityTransport
+
+@[expose] public section
 
 /-!
 # Nonunit constants: explicit primitive divisor obstructions

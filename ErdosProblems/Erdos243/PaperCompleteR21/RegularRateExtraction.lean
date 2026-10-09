@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos243.PaperCompleteR20.CubicRatePositiveRationalProfile
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR20.CubicRatePositiveRationalProfile
+
+@[expose] public section
 
 /-!
 # Erdős 243: integer extraction at a regular rate, at every exponent

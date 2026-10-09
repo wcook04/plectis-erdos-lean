@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos243.PaperCompleteR20.CubicRateProductEndpoint
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR20.CubicRateProductEndpoint
+
+@[expose] public section
 
 /-!
 # Erdős 243: exact eventual cubic profile

@@ -1,7 +1,11 @@
-import ErdosProblems.Erdos243.PaperCompleteR11.InclusiveRecordAssembly
-import ErdosProblems.Erdos243.PaperCompleteR11.InclusiveBoundaryFinite
-import Mathlib.Data.EReal.Basic
-import Mathlib.Order.LiminfLimsup
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR11.InclusiveRecordAssembly
+public import ErdosProblems.Erdos243.PaperCompleteR11.InclusiveBoundaryFinite
+public import Mathlib.Data.EReal.Basic
+public import Mathlib.Order.LiminfLimsup
+
+@[expose] public section
 
 /-!
 # Extended-real inclusive log-log endpoint

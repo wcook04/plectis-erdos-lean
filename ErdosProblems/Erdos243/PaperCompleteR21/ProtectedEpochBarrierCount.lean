@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos243.ProtectedEpochEnergy
+module
+
+public import ErdosProblems.Erdos243.ProtectedEpochEnergy
+
+@[expose] public section
 
 /-!
 # Erdős 243: counting crossings before a prime power is lost, in paper form

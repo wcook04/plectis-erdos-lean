@@ -1,3 +1,0 @@
-import Solutions.ExternalVerification243ProtectedEpochEnergy
-
-#print axioms Erdos249257.ExternalVerification243ProtectedEpochEnergy.protected_epoch_energy_integer

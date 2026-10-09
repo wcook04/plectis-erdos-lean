@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos243.PaperCompleteR7.ProductDefect
-import ErdosProblems.Erdos243.PaperCompleteR11.QuantitativeRecordDichotomy
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR7.ProductDefect
+public import ErdosProblems.Erdos243.PaperCompleteR11.QuantitativeRecordDichotomy
+
+@[expose] public section
 
 /-!
 # Erdős 243: the slow-growth clause of `long243:res:strausbounded`

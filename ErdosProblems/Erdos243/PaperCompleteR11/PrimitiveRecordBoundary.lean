@@ -1,7 +1,11 @@
-import ErdosProblems.Erdos243.PaperCompleteR11.SubcriticalRecordBoundary
-import ErdosProblems.Erdos243.PaperCompleteR11.PresievedCRT
-import ErdosProblems.Erdos243.PaperCompleteR7.Reduction
-import Mathlib.Data.Fintype.EquivFin
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR11.SubcriticalRecordBoundary
+public import ErdosProblems.Erdos243.PaperCompleteR11.PresievedCRT
+public import ErdosProblems.Erdos243.PaperCompleteR7.Reduction
+public import Mathlib.Data.Fintype.EquivFin
+
+@[expose] public section
 
 /-!
 # Strict primitive totient amplification

@@ -1,6 +1,10 @@
-import ErdosProblems.Erdos243.PaperCompleteR20.CubicRateQuotientIncrement
-import Mathlib.Analysis.PSeries
-import Mathlib.Analysis.SpecialFunctions.Log.Summable
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR20.CubicRateQuotientIncrement
+public import Mathlib.Analysis.PSeries
+public import Mathlib.Analysis.SpecialFunctions.Log.Summable
+
+@[expose] public section
 
 /-!
 # Erdős 243: boundedness of the cubic quotient

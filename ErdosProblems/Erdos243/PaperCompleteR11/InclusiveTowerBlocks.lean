@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos243.PaperCompleteR11.OrbitBlockArithmetic
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR11.OrbitBlockArithmetic
+
+@[expose] public section
 
 /-!
 # Explicit square-sized blocks for the inclusive boundary

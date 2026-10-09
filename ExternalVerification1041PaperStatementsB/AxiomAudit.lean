@@ -1,4 +1,0 @@
-import Solutions.ExternalVerification1041PaperStatementsB
-
-#print axioms Erdos249257.ExternalVerification1041PaperStatementsB.exists_two_nearest_roots_of_polynomial_critical
-#print axioms Erdos249257.ExternalVerification1041PaperStatementsB.two_nearest_roots_of_polynomial_critical

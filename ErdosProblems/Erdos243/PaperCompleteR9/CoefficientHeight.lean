@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos243.PaperCompleteR7.LcmStationarity
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR7.LcmStationarity
+
+@[expose] public section
 
 /-!
 # Coefficient-uniform height from a bound only at records

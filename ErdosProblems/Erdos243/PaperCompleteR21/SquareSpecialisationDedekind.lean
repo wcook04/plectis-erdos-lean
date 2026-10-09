@@ -1,7 +1,11 @@
-import Mathlib.FieldTheory.IntermediateField.Adjoin.Basic
-import Mathlib.RingTheory.AdjoinRoot
-import Mathlib.RingTheory.Polynomial.IntegralNormalization
-import ErdosProblems.Shared.NonsquareModuloPrimes
+module
+
+public import Mathlib.FieldTheory.IntermediateField.Adjoin.Basic
+public import Mathlib.RingTheory.AdjoinRoot
+public import Mathlib.RingTheory.Polynomial.IntegralNormalization
+public import ErdosProblems.Shared.NonsquareModuloPrimes
+
+@[expose] public section
 
 /-!
 # Erdős 243: the square-specialisation lemma without the Chebotarev density theorem

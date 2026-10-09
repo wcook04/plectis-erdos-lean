@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos243.PaperCompleteR11.PrimitiveRecordBoundary
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR11.PrimitiveRecordBoundary
+
+@[expose] public section
 
 /-!
 # Exact record-preserving quotient tails

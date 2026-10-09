@@ -1,15 +1,18 @@
 version: v0.4
 project:
   name: Cubic-rate irrationality for reciprocal sums
-  description: 'Every positive strictly increasing zero-indexed integer sequence a with n^3(a_n^2/a_(n+1)
-    - 1 - 3/n) tending to zero has an irrational reciprocal sum. The entry also states the exact integer-tail
-    and number-field steps used to exclude the resulting cubic profile: positive-density exceptions, primitive
-    gcd reduction, square specialisation, scale twelve, forbidden words modulo seven, and regular-rate
-    extraction. The printed one-indexed paper theorem uses its stated finite-prefix argument. The separate
-    bounded-increment Sylvester criterion in the paper is outside this configuration, and the unrestricted
-    Erdős problem #243 remains open. The selected Challenge explicitly retains the strict monotonicity
-    and positivity of a, the HasSum witness for its reciprocal series, and the n³-scaled rate limit. It
-    does not silently infer that rate from the weaker condition a_(n+1)/a_n² → 1.'
+  description: 'Every positive strictly increasing zero-indexed integer sequence a
+    with n^3(a_n^2/a_(n+1) - 1 - 3/n) tending to zero has an irrational reciprocal
+    sum. The entry also states the exact integer-tail and number-field steps used
+    to exclude the resulting cubic profile: positive-density exceptions, primitive
+    gcd reduction, square specialisation, scale twelve, forbidden words modulo seven,
+    and regular-rate extraction. The printed one-indexed paper theorem uses its stated
+    finite-prefix argument. The separate bounded-increment Sylvester criterion in
+    the paper is outside this configuration, and the unrestricted Erdős problem #243
+    remains open. The selected Challenge explicitly retains the strict monotonicity
+    and positivity of a, the HasSum witness for its reciprocal series, and the n³-scaled
+    rate limit. It does not silently infer that rate from the weaker condition a_(n+1)/a_n²
+    → 1.'
   authors:
   - Will Cook
   license: Apache-2.0
@@ -25,16 +28,18 @@ classification:
   - 11B83
   - 11R11
 sources:
-- title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
+- title: Formal reductions, obstruction theorems, and verified subfamilies for eight
+    Erdős problems
   authors:
   - Will Cook
   id: https://github.com/wcook04/plectis-erdos
   type: other
   relationship: background
-  note: The selected Lean theorems formalise the cubic-rate and supporting statements proved in the linked
-    short paper and complete reasoning record. The zero-indexed irrationality theorem is unconditional;
-    the one-indexed paper wording uses a finite-prefix bridge printed in the paper. Neither the bounded-increment
-    criterion nor the unrestricted parent problem is selected.
+  note: The selected Lean theorems formalise the cubic-rate and supporting statements
+    proved in the linked short paper and complete reasoning record. The zero-indexed
+    irrationality theorem is unconditional; the one-indexed paper wording uses a finite-prefix
+    bridge printed in the paper. Neither the bounded-increment criterion nor the unrestricted
+    parent problem is selected.
   license: Apache-2.0
   author_endorsement: participated
 - title: Cubic-Rate Irrationality and Reciprocal-Tail Rigidity
@@ -43,9 +48,9 @@ sources:
   id: https://github.com/wcook04/plectis-erdos/blob/147f3f1da400a84dcb3013ea6cef75dc8f382b09/paper/243/erdos-243-reciprocal-tail-rigidity.pdf
   type: paper
   relationship: formalizes
-  note: The short paper proves the cubic-rate theorem and explains the ordinary finite-prefix passage
-    between its one-indexed statement and the selected zero-indexed Lean theorem. The bounded-increment
-    criterion in the same paper is outside this entry.
+  note: The short paper proves the cubic-rate theorem and explains the ordinary finite-prefix
+    passage between its one-indexed statement and the selected zero-indexed Lean theorem.
+    The bounded-increment criterion in the same paper is outside this entry.
   license: unknown
   author_endorsement: participated
 - title: 'Reciprocal-Tail Rigidity: Theorems, Proofs and Questions'
@@ -54,8 +59,8 @@ sources:
   id: https://github.com/wcook04/plectis-erdos/blob/147f3f1da400a84dcb3013ea6cef75dc8f382b09/paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf
   type: paper
   relationship: formalizes
-  note: Section 2 gives the cubic-profile, square-specialisation and modulo-seven route selected here;
-    the rest of the record is not certified by this one configuration.
+  note: Section 2 gives the cubic-profile, square-specialisation and modulo-seven
+    route selected here; the rest of the record is not certified by this one configuration.
   license: unknown
   author_endorsement: participated
 - title: Irrationality of the reciprocal sum of doubly exponential sequences
@@ -64,9 +69,9 @@ sources:
   id: arXiv:2504.05933
   type: paper
   relationship: background
-  note: Prior cleared tail coordinates and related rational-tail arguments. The selected cubic-rate implication
-    uses its own unconditional square-specialisation proof and is not described as a formalisation of
-    Koizumi's theorem.
+  note: Prior cleared tail coordinates and related rational-tail arguments. The selected
+    cubic-rate implication uses its own unconditional square-specialisation proof
+    and is not described as a formalisation of Koizumi's theorem.
   license: unknown
   author_endorsement: not-contacted
 - title: On the irrationality of certain Ahmes series
@@ -76,8 +81,8 @@ sources:
   id: https://users.renyi.hu/~p_erdos/1964-19.pdf
   type: paper
   relationship: background
-  note: Classical irrationality criterion for related rapidly growing reciprocal sums; it is context,
-    not the selected cubic-rate statement.
+  note: Classical irrationality criterion for related rapidly growing reciprocal sums;
+    it is context, not the selected cubic-rate statement.
   license: unknown
   author_endorsement: not-contacted
 - title: Erdős Problems catalogue
@@ -86,8 +91,9 @@ sources:
   id: https://www.erdosproblems.com
   type: web discussion
   relationship: background
-  note: 'The catalogue identifies Erdős problem #243. This entry proves irrationality for the explicit
-    cubic-rate subclass and does not settle the unrestricted recurrence question.'
+  note: 'The catalogue identifies Erdős problem #243. This entry proves irrationality
+    for the explicit cubic-rate subclass and does not settle the unrestricted recurrence
+    question.'
   license: unknown
   author_endorsement: not-contacted
 - title: Mathlib
@@ -101,24 +107,29 @@ related_formalizations:
 - id: https://github.com/google-deepmind/formal-conjectures/blob/f776d2f2039351b00737ffcafb9d7d7666e1d9af/FormalConjectures/ErdosProblems/243.lean
   title: FormalConjectures.ErdosProblems.243
   relationship: independent
-  note: A mathematically equivalent Lean statement of the problem, up to its zero-based indexing, whose
-    proof ends in sorry; it is statement-level prior art for the formalisation, it supplies no proof authority,
-    and every declaration compared here was stated independently of it.
+  note: A mathematically equivalent Lean statement of the problem, up to its zero-based
+    indexing, whose proof ends in sorry; it is statement-level prior art for the formalisation,
+    it supplies no proof authority, and every declaration compared here was stated
+    independently of it.
 status:
-  scope: 'One Comparator configuration selecting the 13 theorems listed in PalomarCorpus/E243_01/comparator.json,
-    from the Lean development for Erdős problem #243. The problem''s theorems are packed, in the order
-    the papers state them, into the 11 entries PalomarCorpus/E243_01 to PalomarCorpus/E243_11, and each
-    theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification243*
-    directories are internal regression inventory and are not selected.'
+  scope: A selected source snapshot containing exactly the thirteen declarations listed
+    in PalomarCorpus/E243_01/comparator.json and their complete local Challenge/Solution
+    import closure. All mathematical source comes from wcook04/plectis-erdos-lean
+    commit 6bc4913c4ca42ac48829ad2d89985f8516361cb5, with only Lean module visibility
+    syntax added. The canonical full corpus and its other entries remain outside this
+    snapshot. This snapshot includes the substantive proof bodies, not a remote proof
+    dependency.
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
   trusted_challenge_sorry_count: 13
-  sorry_boundary: The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E243_01/Challenge.lean,
-    and the Solution modules contain no sorry. Comparator and kernel outcomes are commit-specific and
-    are recorded separately from this source metadata.
-  axiom_audit_status: The permitted axioms are propext, Quot.sound and Classical.choice. Axiom-audit outcomes
-    are commit-specific and belong in separate receipts; this source field is not an audit receipt.
+  sorry_boundary: The only deliberate placeholders are the trusted theorem bodies
+    in PalomarCorpus/E243_01/Challenge.lean, and the Solution modules contain no sorry.
+    Comparator and kernel outcomes are commit-specific and are recorded separately
+    from this source metadata.
+  axiom_audit_status: The permitted axioms are propext, Quot.sound and Classical.choice.
+    Axiom-audit outcomes are commit-specific and belong in separate receipts; this
+    source field is not an audit receipt.
   permitted_axiom_budget:
   - propext
   - Quot.sound
@@ -177,10 +188,12 @@ status:
     sorry_count: 0
     comparator_config: PalomarCorpus/E243_01/comparator.json
   development_status: substantive
-  local_proof_provenance: the proof modules ErdosProblems.Erdos243 in this repository, imported by Solutions.PalomarCorpus.E243_01;
-    the Solutions.ExternalVerification243* family modules are a regression mirror of the same proofs and
-    are not imported by this configuration
-  canonical_claim_status: problem-level Comparator entry over substantive Lean in this repository
+  local_proof_provenance: The substantive ErdosProblems.Erdos243 and ErdosProblems.Shared
+    modules are included locally and imported by Solutions.PalomarCorpus.E243_01.
+    Historical ExternalVerification243 regression mirrors remain in the canonical
+    full corpus and are outside this selected snapshot.
+  canonical_claim_status: problem-level Comparator entry over substantive Lean in
+    this repository
 automation:
   methods:
   - method: manual
@@ -201,8 +214,9 @@ automation:
 review:
   status: self-assessed
   reviewers: []
-  notes: The author selected the declarations and remains responsible for their mathematical claims. The
-    selected Challenge and Solution sources were inspected locally at Comparator commit a2faa350b45ae08d0e70f5a6ec54943018f8c2b3.
-    This editorial pass is not an independent proof audit, external peer review, or registration. Commit-specific
+  notes: The author selected the declarations and remains responsible for their mathematical
+    claims. The selected Challenge and Solution sources were inspected locally at
+    Comparator commit a2faa350b45ae08d0e70f5a6ec54943018f8c2b3. This editorial pass
+    is not an independent proof audit, external peer review, or registration. Commit-specific
     Comparator and kernel outcomes are recorded in separate exact-input receipts.
 acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

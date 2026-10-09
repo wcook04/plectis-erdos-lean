@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos243.PaperCompleteR7.CanonicalState
-import Mathlib.Analysis.SpecialFunctions.Log.Basic
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR7.CanonicalState
+public import Mathlib.Analysis.SpecialFunctions.Log.Basic
+
+@[expose] public section
 
 /-!
 # The quantitative canonical-tail lemma

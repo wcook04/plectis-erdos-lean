@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos243.PaperCompleteR11.CubicZeroDensityShape
-import ErdosProblems.Erdos243.PaperCompleteR11.CubicGcdFence
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR11.CubicZeroDensityShape
+public import ErdosProblems.Erdos243.PaperCompleteR11.CubicGcdFence
+
+@[expose] public section
 
 /-!
 # Erdős 243: gcd stabilisation and the primitive shape, in paper form

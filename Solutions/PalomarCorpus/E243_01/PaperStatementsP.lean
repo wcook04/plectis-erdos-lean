@@ -3,10 +3,14 @@ Copyright (c) 2026 Will Cook. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Will Cook
 -/
-import Mathlib
-import ErdosProblems.Erdos243.PaperCompleteR11.CubicFieldCoordinates
-import ErdosProblems.Erdos243.PaperCompleteR20.ScaleTwelve
-import Solutions.PalomarCorpus.E243_01.Statement
+module
+
+public import Mathlib
+public import ErdosProblems.Erdos243.PaperCompleteR11.CubicFieldCoordinates
+public import ErdosProblems.Erdos243.PaperCompleteR20.ScaleTwelve
+public import Solutions.PalomarCorpus.E243_01.Statement
+
+@[expose] public section
 
 open Polynomial
 open scoped BigOperators

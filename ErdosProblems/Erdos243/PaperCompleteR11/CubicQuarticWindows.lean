@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos243.PaperCompleteR11.CubicModularDensity
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR11.CubicModularDensity
+
+@[expose] public section
 
 /-!
 # Four-term cubic words and a quartic obstruction

@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos243.CoefficientDivisorFence
-import ErdosProblems.Erdos243.LcmRecordCrossing
+module
+
+public import ErdosProblems.Erdos243.CoefficientDivisorFence
+public import ErdosProblems.Erdos243.LcmRecordCrossing
+
+@[expose] public section
 
 /-!
 # Finite ingredients for record charging without centring

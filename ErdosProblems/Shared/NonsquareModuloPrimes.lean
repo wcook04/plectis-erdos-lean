@@ -1,7 +1,11 @@
-import ErdosProblems.Shared.DirichletPoleComparison
-import ErdosProblems.Shared.IdealCountingEuler
-import ErdosProblems.Shared.QuadraticSplitPrimes
-import Mathlib.RingTheory.AdjoinRoot
+module
+
+public import ErdosProblems.Shared.DirichletPoleComparison
+public import ErdosProblems.Shared.IdealCountingEuler
+public import ErdosProblems.Shared.QuadraticSplitPrimes
+public import Mathlib.RingTheory.AdjoinRoot
+
+@[expose] public section
 
 /-!
 # A non-square of a number field stays a non-square modulo infinitely many primes

@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos243.PaperCompleteR11.RecordDivisibility
-import Mathlib.Data.Nat.Totient
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR11.RecordDivisibility
+public import Mathlib.Data.Nat.Totient
+
+@[expose] public section
 
 /-!
 # Exact finite pre-sieving and the primitive record fence

@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos243.PaperCompleteR11.WindowIncidence
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR11.WindowIncidence
+
+@[expose] public section
 
 /-! Finite-prefix and constant transport for the literal
 lower asymptotic density used throughout the R11 window arguments. -/

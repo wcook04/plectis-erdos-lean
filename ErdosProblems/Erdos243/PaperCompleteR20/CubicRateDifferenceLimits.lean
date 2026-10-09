@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos243.PaperCompleteR20.CubicRateFiniteDifference
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR20.CubicRateFiniteDifference
+
+@[expose] public section
 
 /-!
 # Erdős 243: limit transport for the cubic finite-difference extraction

@@ -3,11 +3,15 @@ Copyright (c) 2026 Will Cook. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Will Cook
 -/
-import Mathlib
-import ErdosProblems.Erdos243.PaperCompleteR11.WindowIncidence
-import ErdosProblems.Erdos243.PaperCompleteR20.TwoForbiddenWords
-import ErdosProblems.Erdos243.PaperCompleteR9.PolynomialCorrections
-import Solutions.PalomarCorpus.E243_01.Statement
+module
+
+public import Mathlib
+public import ErdosProblems.Erdos243.PaperCompleteR11.WindowIncidence
+public import ErdosProblems.Erdos243.PaperCompleteR20.TwoForbiddenWords
+public import ErdosProblems.Erdos243.PaperCompleteR9.PolynomialCorrections
+public import Solutions.PalomarCorpus.E243_01.Statement
+
+@[expose] public section
 
 /- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
 

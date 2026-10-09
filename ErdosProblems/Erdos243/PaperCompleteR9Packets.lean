@@ -1,8 +1,12 @@
-import ErdosProblems.Erdos243.PaperCompleteR9.AdaptiveCoefficients
-import ErdosProblems.Erdos243.PaperCompleteR9.CoefficientHeight
-import ErdosProblems.Erdos243.PaperCompleteR9.PolynomialCorrections
-import ErdosProblems.Erdos243.PaperCompleteR9.ValuationPayment
-import ErdosProblems.Erdos243.PaperCompleteR9.WeightedRecurrence
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR9.AdaptiveCoefficients
+public import ErdosProblems.Erdos243.PaperCompleteR9.CoefficientHeight
+public import ErdosProblems.Erdos243.PaperCompleteR9.PolynomialCorrections
+public import ErdosProblems.Erdos243.PaperCompleteR9.ValuationPayment
+public import ErdosProblems.Erdos243.PaperCompleteR9.WeightedRecurrence
+
+@[expose] public section
 
 /-!
 # R9 coefficient and recurrence packet aggregate

@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos243.ReciprocalTailRigidity
-import Mathlib.Analysis.SpecialFunctions.Log.Summable
+module
+
+public import ErdosProblems.Erdos243.ReciprocalTailRigidity
+public import Mathlib.Analysis.SpecialFunctions.Log.Summable
+
+@[expose] public section
 
 /-!
 # Erdős #243: sparse reset recovery

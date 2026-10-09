@@ -1,8 +1,12 @@
-import Mathlib
-import ErdosProblems.Erdos243.PaperCompleteR20.CubicSquareSpecializationAssembly
-import ErdosProblems.Erdos243.PaperCompleteR20.CubicModularSquareSpecialisation
-import ErdosProblems.Erdos243.PaperCompleteR20.CubicRateCanonicalBridge
-import ErdosProblems.Erdos243.PaperCompleteR11.DensityTransport
+module
+
+public import Mathlib
+public import ErdosProblems.Erdos243.PaperCompleteR20.CubicSquareSpecializationAssembly
+public import ErdosProblems.Erdos243.PaperCompleteR20.CubicModularSquareSpecialisation
+public import ErdosProblems.Erdos243.PaperCompleteR20.CubicRateCanonicalBridge
+public import ErdosProblems.Erdos243.PaperCompleteR11.DensityTransport
+
+@[expose] public section
 
 /-!
 # Erdős 243: from the square specialisation to cubic-rate irrationality

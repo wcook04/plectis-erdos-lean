@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos243.PaperCompleteR11.RecordGcdReduction
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR11.RecordGcdReduction
+
+@[expose] public section
 
 /-!
 # Inclusive coefficient-one record boundary

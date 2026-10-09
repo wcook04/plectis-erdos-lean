@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos243.PaperCompleteR11.UncentredFinite
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR11.UncentredFinite
+
+@[expose] public section
 
 /-!
 # Global uncentred record series

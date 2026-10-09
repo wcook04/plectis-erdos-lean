@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos243.PaperCompleteR11.InclusiveTowerBlocks
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR11.InclusiveTowerBlocks
+
+@[expose] public section
 
 /-!
 # The nonprimitive coefficient-one lower boundary

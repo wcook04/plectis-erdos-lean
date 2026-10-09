@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos243.PrimitiveRecordBarrier
+module
+
+public import ErdosProblems.Erdos243.PrimitiveRecordBarrier
+
+@[expose] public section
 
 /-!
 # Erdős 243: exact prime-power persistence interval

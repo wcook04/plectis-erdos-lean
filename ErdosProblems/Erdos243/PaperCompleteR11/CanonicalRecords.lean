@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos243.PaperCompleteR11.IntegralWeights
-import ErdosProblems.Erdos243.PaperCompleteR7.LcmDefect
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR11.IntegralWeights
+public import ErdosProblems.Erdos243.PaperCompleteR7.LcmDefect
+
+@[expose] public section
 
 /-!
 # Canonical reciprocal-series weighted records

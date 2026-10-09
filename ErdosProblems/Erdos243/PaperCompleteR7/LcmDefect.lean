@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos243.PaperCompleteR7.ProductDefect
-import ErdosProblems.Erdos243.PaperCompleteR7.LcmStationarity
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR7.ProductDefect
+public import ErdosProblems.Erdos243.PaperCompleteR7.LcmStationarity
+
+@[expose] public section
 
 /-!
 # Original-coordinate LCM-prefactor corollary

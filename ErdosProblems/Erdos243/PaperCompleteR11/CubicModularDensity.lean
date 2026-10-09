@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos243.PaperCompleteR11.CubicDivisorObstruction
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR11.CubicDivisorObstruction
+
+@[expose] public section
 
 /-!
 # Single-prime cubic obstructions without the window-length loss

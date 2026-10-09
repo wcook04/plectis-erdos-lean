@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos243.PaperCompleteR11.WindowIncidence
-import Mathlib.Data.Nat.Choose.Basic
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR11.WindowIncidence
+public import Mathlib.Data.Nat.Choose.Basic
+
+@[expose] public section
 
 /-!
 # Integral normalisation at the quarter-density threshold

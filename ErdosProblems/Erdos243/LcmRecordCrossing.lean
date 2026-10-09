@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos243.LcmRecordExcess
-import ErdosProblems.Erdos243.SlowRiseBarrier
+module
+
+public import ErdosProblems.Erdos243.LcmRecordExcess
+public import ErdosProblems.Erdos243.SlowRiseBarrier
+
+@[expose] public section
 
 /-!
 # Counting the CRT heights crossed by one arithmetic step

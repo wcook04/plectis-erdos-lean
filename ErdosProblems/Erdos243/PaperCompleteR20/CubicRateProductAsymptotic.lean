@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos243.PaperCompleteR20.CubicRateQuotientBounded
-import ErdosProblems.Erdos243.PaperCompleteR20.CubicRateSummableTail
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR20.CubicRateQuotientBounded
+public import ErdosProblems.Erdos243.PaperCompleteR20.CubicRateSummableTail
+
+@[expose] public section
 
 /-!
 # Erdős 243: the literal cubic product asymptotic

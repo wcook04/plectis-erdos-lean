@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos243.PaperCompleteR20.CubicRateProductAsymptotic
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR20.CubicRateProductAsymptotic
+
+@[expose] public section
 
 /-!
 # Erdős 243: the integer endpoint of the cubic-rate argument

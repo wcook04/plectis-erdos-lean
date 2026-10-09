@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos243.PaperCompleteR11.CubicModularDensity
-import ErdosProblems.Erdos243.PaperCompleteR11.CubicZeroDensityShape
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR11.CubicModularDensity
+public import ErdosProblems.Erdos243.PaperCompleteR11.CubicZeroDensityShape
+
+@[expose] public section
 
 /-!
 # Erdős 243: modular square data forced by zero exceptional density

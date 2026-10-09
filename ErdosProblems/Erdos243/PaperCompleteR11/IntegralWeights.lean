@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos243.PaperCompleteR11.UncentredSeries
-import Mathlib.Analysis.SumIntegralComparisons
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR11.UncentredSeries
+public import Mathlib.Analysis.SumIntegralComparisons
+
+@[expose] public section
 
 /-!
 # The improper-integral bridge for record weights

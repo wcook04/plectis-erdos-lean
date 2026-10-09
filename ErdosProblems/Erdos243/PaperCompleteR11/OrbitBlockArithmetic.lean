@@ -1,6 +1,10 @@
-import ErdosProblems.Erdos243.PaperCompleteR11.LogLogNormaliser
-import ErdosProblems.Erdos243.PaperCompleteR11.CoprimeCores
-import Mathlib.Data.Fintype.BigOperators
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR11.LogLogNormaliser
+public import ErdosProblems.Erdos243.PaperCompleteR11.CoprimeCores
+public import Mathlib.Data.Fintype.BigOperators
+
+@[expose] public section
 
 /-!
 # Orbit-supplied gcd and product budgets

@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos243.PaperCompleteR9.CoefficientHeight
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR9.CoefficientHeight
+
+@[expose] public section
 
 /-! The weighted endpoint follows from two consecutive zero errors; no
 eventual division by the coefficient is used. -/

@@ -1,6 +1,10 @@
-import ErdosProblems.Erdos243.PaperCompleteR11.CanonicalRecords
-import ErdosProblems.Erdos243.PaperCompleteR7.QuantitativeTail
-import Mathlib.Analysis.SpecificLimits.Normed
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR11.CanonicalRecords
+public import ErdosProblems.Erdos243.PaperCompleteR7.QuantitativeTail
+public import Mathlib.Analysis.SpecificLimits.Normed
+
+@[expose] public section
 
 /-!
 # The canonical weighted growth-defect criterion

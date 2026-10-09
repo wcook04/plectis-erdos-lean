@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos243.CumulativeLcmTransfer
+module
+
+public import ErdosProblems.Erdos243.CumulativeLcmTransfer
+
+@[expose] public section
 
 /-!
 Prime-power payment at a first contact is stated using power divisibility, so

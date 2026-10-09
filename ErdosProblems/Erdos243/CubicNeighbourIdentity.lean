@@ -1,7 +1,11 @@
-import Mathlib.Algebra.Ring.Basic
-import Mathlib.Data.Rat.Defs
-import Mathlib.Data.ZMod.Basic
-import Mathlib.Tactic
+module
+
+public import Mathlib.Algebra.Ring.Basic
+public import Mathlib.Data.Rat.Defs
+public import Mathlib.Data.ZMod.Basic
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-!
 # Erdős #243: cubic neighbouring-value identity and the two mod-7 words

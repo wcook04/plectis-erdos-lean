@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos243.FeedbackRealizability
+module
+
+public import ErdosProblems.Erdos243.FeedbackRealizability
+
+@[expose] public section
 
 /-!
 # Erdős #243: cumulative-LCM height

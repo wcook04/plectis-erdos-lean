@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos243.DynamicCancellation
+module
+
+public import ErdosProblems.Erdos243.DynamicCancellation
+
+@[expose] public section
 
 /-!
 # Erdős #243: feedback realizability

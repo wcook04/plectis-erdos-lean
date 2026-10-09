@@ -1,5 +1,9 @@
-import Mathlib.NumberTheory.LSeries.Convolution
-import Mathlib.Analysis.SpecialFunctions.Pow.Real
+module
+
+public import Mathlib.NumberTheory.LSeries.Convolution
+public import Mathlib.Analysis.SpecialFunctions.Pow.Real
+
+@[expose] public section
 
 /-!
 # Two simple poles exclude a squared comparison of Dirichlet series

@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos243.PaperCompleteR11.CanonicalGrowthBounds
-import Mathlib.Analysis.SpecialFunctions.Log.Basic
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR11.CanonicalGrowthBounds
+public import Mathlib.Analysis.SpecialFunctions.Log.Basic
+
+@[expose] public section
 
 /-!
 # Exact base-two log-log normalisation

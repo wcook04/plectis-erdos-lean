@@ -1,10 +1,14 @@
-import Mathlib.NumberTheory.NumberField.Basic
-import Mathlib.RingTheory.Trace.Basic
-import Mathlib.RingTheory.Ideal.Norm.AbsNorm
-import Mathlib.Algebra.Polynomial.SpecificDegree
-import Mathlib.Algebra.CharP.CharAndCard
-import Mathlib.FieldTheory.Minpoly.Field
-import Mathlib.Algebra.Field.ZMod
+module
+
+public import Mathlib.NumberTheory.NumberField.Basic
+public import Mathlib.RingTheory.Trace.Basic
+public import Mathlib.RingTheory.Ideal.Norm.AbsNorm
+public import Mathlib.Algebra.Polynomial.SpecificDegree
+public import Mathlib.Algebra.CharP.CharAndCard
+public import Mathlib.FieldTheory.Minpoly.Field
+public import Mathlib.Algebra.Field.ZMod
+
+@[expose] public section
 
 /-!
 # Degree-one primes that split in a quadratic extension

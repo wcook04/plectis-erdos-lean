@@ -3,13 +3,17 @@ Copyright (c) 2026 Will Cook. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Will Cook
 -/
-import Mathlib
-import ErdosProblems.Erdos243.PaperCompleteR11.DensityTransport
-import ErdosProblems.Erdos243.PaperCompleteR11.CanonicalRecords
-import ErdosProblems.Erdos243.PaperCompleteR11.ArithmeticWeightedRecord
-import ErdosProblems.Erdos243.PaperCompleteR11.QuantitativeRecordDichotomy
-import ErdosProblems.Erdos243.PaperCompleteR11.InclusiveLimsup
-import Solutions.PalomarCorpus.E243_01.Statement
+module
+
+public import Mathlib
+public import ErdosProblems.Erdos243.PaperCompleteR11.DensityTransport
+public import ErdosProblems.Erdos243.PaperCompleteR11.CanonicalRecords
+public import ErdosProblems.Erdos243.PaperCompleteR11.ArithmeticWeightedRecord
+public import ErdosProblems.Erdos243.PaperCompleteR11.QuantitativeRecordDichotomy
+public import ErdosProblems.Erdos243.PaperCompleteR11.InclusiveLimsup
+public import Solutions.PalomarCorpus.E243_01.Statement
+
+@[expose] public section
 
 open Filter Topology
 open scoped BigOperators

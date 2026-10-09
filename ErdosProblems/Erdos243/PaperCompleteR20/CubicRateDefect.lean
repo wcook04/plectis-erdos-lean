@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos243.PaperCompleteR20.CubicRateResidualStep
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR20.CubicRateResidualStep
+
+@[expose] public section
 
 /-!
 # Erdős 243: from ratio little-o to additive cubic defect

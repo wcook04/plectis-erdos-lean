@@ -1,6 +1,10 @@
-import ErdosProblems.Erdos243.PaperCompleteR11.CubicPrimitiveNormalisation
-import ErdosProblems.Erdos243.PaperCompleteR11.CubicRationalRoots
-import ErdosProblems.Erdos243.PaperCompleteR11.CubicZeroDensityShape
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR11.CubicPrimitiveNormalisation
+public import ErdosProblems.Erdos243.PaperCompleteR11.CubicRationalRoots
+public import ErdosProblems.Erdos243.PaperCompleteR11.CubicZeroDensityShape
+
+@[expose] public section
 
 /-!
 # The full primitive multiplier supply

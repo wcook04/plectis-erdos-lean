@@ -3,23 +3,27 @@ Copyright (c) 2026 Will Cook. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Will Cook
 -/
-import Mathlib
-import ErdosProblems.Erdos243.PaperCompleteR11.CubicIntegralNormalisation
-import ErdosProblems.Erdos243.PaperCompleteR11.CubicRationalRoots
-import ErdosProblems.Erdos243.PaperCompleteR11.CubicZeroDensityShape
-import ErdosProblems.Erdos243.PaperCompleteR11.PrimitiveMultiplierSupply
-import ErdosProblems.Erdos243.PaperCompleteR20.PowerPersistence
-import ErdosProblems.Erdos243.PaperCompleteR21.CubicProfileGcdShape
-import ErdosProblems.Erdos243.PaperCompleteR21.ForbiddenBlockCrossing
-import ErdosProblems.Erdos243.PaperCompleteR21.NegativeMagnitudeExclusions
-import ErdosProblems.Erdos243.PaperCompleteR21.ProtectedEpochBarrierCount
-import ErdosProblems.Erdos243.PaperCompleteR21.ReducedStepLocalArithmetic
-import ErdosProblems.Erdos243.PaperCompleteR7.Arithmetic
-import ErdosProblems.Erdos243.PaperCompleteR7.Reduction
-import ErdosProblems.Erdos243.PaperCompleteR9.PolynomialCorrections
-import ErdosProblems.Erdos243.ProtectedEpochEnergy
-import ErdosProblems.Erdos243.ReciprocalTailRigidity
-import Solutions.PalomarCorpus.E243_01.Statement
+module
+
+public import Mathlib
+public import ErdosProblems.Erdos243.PaperCompleteR11.CubicIntegralNormalisation
+public import ErdosProblems.Erdos243.PaperCompleteR11.CubicRationalRoots
+public import ErdosProblems.Erdos243.PaperCompleteR11.CubicZeroDensityShape
+public import ErdosProblems.Erdos243.PaperCompleteR11.PrimitiveMultiplierSupply
+public import ErdosProblems.Erdos243.PaperCompleteR20.PowerPersistence
+public import ErdosProblems.Erdos243.PaperCompleteR21.CubicProfileGcdShape
+public import ErdosProblems.Erdos243.PaperCompleteR21.ForbiddenBlockCrossing
+public import ErdosProblems.Erdos243.PaperCompleteR21.NegativeMagnitudeExclusions
+public import ErdosProblems.Erdos243.PaperCompleteR21.ProtectedEpochBarrierCount
+public import ErdosProblems.Erdos243.PaperCompleteR21.ReducedStepLocalArithmetic
+public import ErdosProblems.Erdos243.PaperCompleteR7.Arithmetic
+public import ErdosProblems.Erdos243.PaperCompleteR7.Reduction
+public import ErdosProblems.Erdos243.PaperCompleteR9.PolynomialCorrections
+public import ErdosProblems.Erdos243.ProtectedEpochEnergy
+public import ErdosProblems.Erdos243.ReciprocalTailRigidity
+public import Solutions.PalomarCorpus.E243_01.Statement
+
+@[expose] public section
 
 /- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
 

@@ -3,16 +3,20 @@ Copyright (c) 2026 Will Cook. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Will Cook
 -/
-import Mathlib
-import ErdosProblems.Erdos243.PaperCompleteR11.LogLogNormaliser
-import ErdosProblems.Erdos243.PaperCompleteR21.ClassicalHalfspaceSigns
-import ErdosProblems.Erdos243.PaperCompleteR21.SlowGrowthProductIncrements
-import ErdosProblems.Erdos243.PaperCompleteR7.CanonicalState
-import ErdosProblems.Erdos243.PaperCompleteR7.Frontier
-import ErdosProblems.Erdos243.PaperCompleteR7.ProductDefect
-import ErdosProblems.Erdos243.PaperCompleteR7.QuantitativeTail
-import ErdosProblems.Erdos243.ReciprocalTailRigidity
-import Solutions.PalomarCorpus.E243_01.Statement
+module
+
+public import Mathlib
+public import ErdosProblems.Erdos243.PaperCompleteR11.LogLogNormaliser
+public import ErdosProblems.Erdos243.PaperCompleteR21.ClassicalHalfspaceSigns
+public import ErdosProblems.Erdos243.PaperCompleteR21.SlowGrowthProductIncrements
+public import ErdosProblems.Erdos243.PaperCompleteR7.CanonicalState
+public import ErdosProblems.Erdos243.PaperCompleteR7.Frontier
+public import ErdosProblems.Erdos243.PaperCompleteR7.ProductDefect
+public import ErdosProblems.Erdos243.PaperCompleteR7.QuantitativeTail
+public import ErdosProblems.Erdos243.ReciprocalTailRigidity
+public import Solutions.PalomarCorpus.E243_01.Statement
+
+@[expose] public section
 
 open Filter
 open scoped BigOperators

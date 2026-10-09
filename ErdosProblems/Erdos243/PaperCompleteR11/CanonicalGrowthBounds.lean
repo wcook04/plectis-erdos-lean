@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos243.PaperCompleteR11.GrowthRecordEquivalence
-import ErdosProblems.Erdos243.PaperCompleteR11.RecordDivisibility
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR11.GrowthRecordEquivalence
+public import ErdosProblems.Erdos243.PaperCompleteR11.RecordDivisibility
+
+@[expose] public section
 
 /-!
 # Quantitative growth suppliers for the inclusive record argument

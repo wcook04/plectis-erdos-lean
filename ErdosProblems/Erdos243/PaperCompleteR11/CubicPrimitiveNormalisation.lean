@@ -1,6 +1,10 @@
-import ErdosProblems.Erdos243.PaperCompleteR11.CubicIntegralNormalisation
-import ErdosProblems.Erdos243.PaperCompleteR11.CubicGcdFence
-import Mathlib.Data.Int.GCD
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR11.CubicIntegralNormalisation
+public import ErdosProblems.Erdos243.PaperCompleteR11.CubicGcdFence
+public import Mathlib.Data.Int.GCD
+
+@[expose] public section
 
 /-!
 # Constructed primitive cubic tails below quarter density

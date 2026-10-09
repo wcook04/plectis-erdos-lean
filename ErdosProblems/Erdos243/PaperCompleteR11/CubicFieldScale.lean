@@ -1,6 +1,10 @@
-import Mathlib.FieldTheory.IntermediateField.Adjoin.Basic
-import ErdosProblems.Erdos243.PaperCompleteR11.CubicFieldCoordinates
-import ErdosProblems.Erdos243.PaperCompleteR11.CubicRationalScale
+module
+
+public import Mathlib.FieldTheory.IntermediateField.Adjoin.Basic
+public import ErdosProblems.Erdos243.PaperCompleteR11.CubicFieldCoordinates
+public import ErdosProblems.Erdos243.PaperCompleteR11.CubicRationalScale
+
+@[expose] public section
 
 /-!
 # Scale twelve from the actual irreducible cubic root field

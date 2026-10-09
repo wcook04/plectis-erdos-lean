@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos243.PaperCompleteR11.RecordDivisibility
-import ErdosProblems.Erdos243.UncentredRecordCharge
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR11.RecordDivisibility
+public import ErdosProblems.Erdos243.UncentredRecordCharge
+
+@[expose] public section
 
 /-!
 # Finite mixed and raw record charging

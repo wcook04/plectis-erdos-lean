@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos243.PaperCompleteR20.CubicRateQuotientIncrement
-import Mathlib.Analysis.PSeries
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR20.CubicRateQuotientIncrement
+public import Mathlib.Analysis.PSeries
+
+@[expose] public section
 
 /-!
 # Erdős 243: summing a cubic-rate increment

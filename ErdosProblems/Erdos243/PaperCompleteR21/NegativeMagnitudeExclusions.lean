@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos243.ReciprocalTailRigidity
+module
+
+public import ErdosProblems.Erdos243.ReciprocalTailRigidity
+
+@[expose] public section
 
 /-!
 # Erdős 243: descent, and the constant and periodic negative magnitudes

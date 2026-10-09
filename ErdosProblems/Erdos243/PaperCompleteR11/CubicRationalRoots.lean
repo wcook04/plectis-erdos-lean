@@ -1,7 +1,11 @@
-import ErdosProblems.Erdos243.PaperCompleteR11.CubicRationalScale
-import ErdosProblems.Erdos243.PaperCompleteR11.CubicModularDensity
-import ErdosProblems.Erdos243.PaperCompleteR11.CubicFieldCoordinates
-import Mathlib.Algebra.Polynomial.SpecificDegree
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR11.CubicRationalScale
+public import ErdosProblems.Erdos243.PaperCompleteR11.CubicModularDensity
+public import ErdosProblems.Erdos243.PaperCompleteR11.CubicFieldCoordinates
+public import Mathlib.Algebra.Polynomial.SpecificDegree
+
+@[expose] public section
 
 /-!
 # Complete rational-root classification for unit-constant cubic profiles

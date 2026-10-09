@@ -1,6 +1,10 @@
-import ErdosProblems.Erdos243.PaperCompleteR20.CubicRatePositiveRationalProfile
-import ErdosProblems.Erdos243.PaperCompleteR7.QuantitativeTail
-import ErdosProblems.Erdos243.PaperCompleteR7.ProductDefect
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR20.CubicRatePositiveRationalProfile
+public import ErdosProblems.Erdos243.PaperCompleteR7.QuantitativeTail
+public import ErdosProblems.Erdos243.PaperCompleteR7.ProductDefect
+
+@[expose] public section
 
 /-!
 # Erdős 243: the rational reciprocal-tail cubic-rate bridge

@@ -1,3 +1,0 @@
-import Solutions.ExternalVerification243PaperStatementsN
-
-#print axioms Erdos249257.ExternalVerification243PaperStatementsN.regular_rate_extraction_cubic

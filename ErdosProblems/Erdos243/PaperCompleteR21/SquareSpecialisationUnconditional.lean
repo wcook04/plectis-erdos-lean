@@ -1,6 +1,10 @@
-import Mathlib
-import ErdosProblems.Erdos243.PaperCompleteR21.CubicRateExclusionChain
-import ErdosProblems.Erdos243.PaperCompleteR21.SquareSpecialisationDedekind
+module
+
+public import Mathlib
+public import ErdosProblems.Erdos243.PaperCompleteR21.CubicRateExclusionChain
+public import ErdosProblems.Erdos243.PaperCompleteR21.SquareSpecialisationDedekind
+
+@[expose] public section
 
 /-!
 # Erdős 243: the square-specialisation lemma and its consumers, unconditionally

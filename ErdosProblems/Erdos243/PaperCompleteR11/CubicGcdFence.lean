@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos243.PaperCompleteR11.CubicWindowTransport
-import ErdosProblems.Erdos243.ReciprocalTailRigidity
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR11.CubicWindowTransport
+public import ErdosProblems.Erdos243.ReciprocalTailRigidity
+
+@[expose] public section
 
 /-!
 # A uniform four-window gcd reduction for cubic profiles

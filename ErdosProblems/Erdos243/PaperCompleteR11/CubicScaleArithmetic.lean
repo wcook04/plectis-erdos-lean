@@ -1,4 +1,8 @@
-import Mathlib
+module
+
+public import Mathlib
+
+@[expose] public section
 
 /-! UNRUN. Exact coefficient and denominator arithmetic in the cubic
 classification. These declarations do not construct a number-field basis or

@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos243.PaperCompleteR11.CubicQuarticWindows
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR11.CubicQuarticWindows
+
+@[expose] public section
 
 /-!
 # Explicit small-prime quartic certificates

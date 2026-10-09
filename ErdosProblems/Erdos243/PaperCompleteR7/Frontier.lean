@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos243.PaperCompleteR7.CanonicalState
-import ErdosProblems.Erdos243.SparseResetRecovery
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR7.CanonicalState
+public import ErdosProblems.Erdos243.SparseResetRecovery
+
+@[expose] public section
 
 /-!
 # State-level assembly behind the canonical frontier proposition

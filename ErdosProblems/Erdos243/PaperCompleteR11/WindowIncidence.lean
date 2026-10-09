@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos243.PaperCompleteR9.PolynomialCorrections
-import Mathlib
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR9.PolynomialCorrections
+public import Mathlib
+
+@[expose] public section
 
 /-!
 # Window incidences and quantitative exceptional density

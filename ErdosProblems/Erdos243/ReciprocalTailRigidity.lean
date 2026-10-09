@@ -1,12 +1,16 @@
-import Mathlib.Algebra.Order.BigOperators.GroupWithZero.Finset
-import Mathlib.Data.Fin.Pigeonhole
-import Mathlib.Data.Nat.ChineseRemainder
-import Mathlib.Data.Nat.Find
-import Mathlib.Data.Nat.Prime.Basic
-import Mathlib.Data.ZMod.Basic
-import Mathlib.Analysis.SpecificLimits.Basic
-import Mathlib.Order.Filter.AtTopBot.Basic
-import Mathlib.Tactic.Ring
+module
+
+public import Mathlib.Algebra.Order.BigOperators.GroupWithZero.Finset
+public import Mathlib.Data.Fin.Pigeonhole
+public import Mathlib.Data.Nat.ChineseRemainder
+public import Mathlib.Data.Nat.Find
+public import Mathlib.Data.Nat.Prime.Basic
+public import Mathlib.Data.ZMod.Basic
+public import Mathlib.Analysis.SpecificLimits.Basic
+public import Mathlib.Order.Filter.AtTopBot.Basic
+public import Mathlib.Tactic.Ring
+
+@[expose] public section
 
 /-!
 # Erdős #243: reciprocal-tail rigidity

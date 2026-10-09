@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos243.ReciprocalTailRigidity
+module
+
+public import ErdosProblems.Erdos243.ReciprocalTailRigidity
+
+@[expose] public section
 
 open scoped BigOperators
 

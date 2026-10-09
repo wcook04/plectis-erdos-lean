@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos243.PaperCompleteR7.CanonicalState
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR7.CanonicalState
+
+@[expose] public section
 
 /-!
 # The original-coordinate bounded-product-defect corollary

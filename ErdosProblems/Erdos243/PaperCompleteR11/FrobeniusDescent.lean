@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos243.CubicNeighbourIdentity
+module
+
+public import ErdosProblems.Erdos243.CubicNeighbourIdentity
+
+@[expose] public section
 
 /-!
 # The algebraic descent after a good Frobenius prime is supplied

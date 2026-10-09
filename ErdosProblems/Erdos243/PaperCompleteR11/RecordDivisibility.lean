@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos243.PaperCompleteR9Packets
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR9Packets
+
+@[expose] public section
 
 /-!
 # Record fences without primitivity

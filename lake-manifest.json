@@ -111,7 +111,7 @@
       "configFile": "lakefile.toml"
     }
   ],
-  "name": "erdos257_period_noncollapse",
+  "name": "erdos243_cubic_rate",
   "lakeDir": ".lake",
   "fixedToolchain": false
 }

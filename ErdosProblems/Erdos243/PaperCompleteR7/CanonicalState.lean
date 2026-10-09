@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos243.PaperCompleteR7.RealTail
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR7.RealTail
+
+@[expose] public section
 
 /-!
 # Constructing the canonical integer state and its analytic hypotheses

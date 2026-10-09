@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos243.GlobalLcmHeight
-import ErdosProblems.Erdos243.SlowRiseBarrier
+module
+
+public import ErdosProblems.Erdos243.GlobalLcmHeight
+public import ErdosProblems.Erdos243.SlowRiseBarrier
+
+@[expose] public section
 
 /-!
 # Erdős #243: cumulative-LCM transfer

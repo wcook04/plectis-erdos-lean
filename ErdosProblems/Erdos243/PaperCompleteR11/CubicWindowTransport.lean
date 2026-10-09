@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos243.PaperCompleteR11.FrobeniusDescent
-import ErdosProblems.Erdos243.PaperCompleteR11.ReciprocalProductAmplification
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR11.FrobeniusDescent
+public import ErdosProblems.Erdos243.PaperCompleteR11.ReciprocalProductAmplification
+
+@[expose] public section
 
 /-!
 # From actual modular cubic roots to the exceptional-set density

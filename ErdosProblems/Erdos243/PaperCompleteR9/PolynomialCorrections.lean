@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos243.CubicNeighbourIdentity
+module
+
+public import ErdosProblems.Erdos243.CubicNeighbourIdentity
+
+@[expose] public section
 
 /-!
 Correct phase-specific modulo-seven obstructions, a sharp

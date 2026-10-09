@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos243.PaperCompleteR7.Arithmetic
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR7.Arithmetic
+
+@[expose] public section
 
 /-!
 # Full paper assemblies for reduced tails and gcd stabilisation

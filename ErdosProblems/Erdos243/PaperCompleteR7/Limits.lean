@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos243.PaperCompleteR7.Arithmetic
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR7.Arithmetic
+
+@[expose] public section
 
 /-!
 # Real limits and the division-free hypotheses used by the corpus

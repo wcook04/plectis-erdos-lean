@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos243.PaperCompleteR11.CanonicalRecords
-import ErdosProblems.Erdos243.LcmRecordExcess
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR11.CanonicalRecords
+public import ErdosProblems.Erdos243.LcmRecordExcess
+
+@[expose] public section
 
 /-!
 # Exact abstract arithmetic weighted-record dichotomy

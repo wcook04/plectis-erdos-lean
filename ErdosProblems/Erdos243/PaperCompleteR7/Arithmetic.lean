@@ -1,6 +1,10 @@
-import ErdosProblems.Erdos243.ReciprocalTailRigidity
-import ErdosProblems.Erdos243.DynamicCancellation
-import Mathlib.Tactic
+module
+
+public import ErdosProblems.Erdos243.ReciprocalTailRigidity
+public import ErdosProblems.Erdos243.DynamicCancellation
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-!
 # Paper-complete campaign, round 7: exact algebra and signed descent

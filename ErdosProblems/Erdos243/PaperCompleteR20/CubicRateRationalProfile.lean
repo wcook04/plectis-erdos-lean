@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos243.PaperCompleteR20.CubicRateResidualConstant
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR20.CubicRateResidualConstant
+
+@[expose] public section
 
 /-!
 # Erdős 243: rational coefficients of the eventual cubic

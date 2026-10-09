@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos243.PaperCompleteR11.CubicScaleArithmetic
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR11.CubicScaleArithmetic
+
+@[expose] public section
 
 /-!
 # From an actual rational parameter to the integer scale

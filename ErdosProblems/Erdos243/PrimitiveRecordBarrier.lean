@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos243.DynamicCancellation
-import Mathlib.Data.Nat.Factorization.Basic
+module
+
+public import ErdosProblems.Erdos243.DynamicCancellation
+public import Mathlib.Data.Nat.Factorization.Basic
+
+@[expose] public section
 
 /-!
 # Erdős 243: prime-power barriers for record numerator jumps

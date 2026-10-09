@@ -1,5 +1,9 @@
-import Mathlib.RingTheory.PowerBasis
-import ErdosProblems.Erdos243.PaperCompleteR11.CubicSquareCoordinates
+module
+
+public import Mathlib.RingTheory.PowerBasis
+public import ErdosProblems.Erdos243.PaperCompleteR11.CubicSquareCoordinates
+
+@[expose] public section
 
 /-!
 # Extracting the square-root coordinates from a cubic algebra

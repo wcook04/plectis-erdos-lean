@@ -1,8 +1,12 @@
-import Mathlib.Data.Nat.ChineseRemainder
-import Mathlib.Data.Nat.Find
-import Mathlib.Order.Filter.AtTopBot.Basic
-import Mathlib.Tactic.Ring
-import ErdosProblems.Erdos243.ReciprocalTailRigidity
+module
+
+public import Mathlib.Data.Nat.ChineseRemainder
+public import Mathlib.Data.Nat.Find
+public import Mathlib.Order.Filter.AtTopBot.Basic
+public import Mathlib.Tactic.Ring
+public import ErdosProblems.Erdos243.ReciprocalTailRigidity
+
+@[expose] public section
 
 /-!
 # Erdős #243: the slow-rise barrier by common-divisor persistence

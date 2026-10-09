@@ -1,5 +1,9 @@
-import Mathlib
-import ErdosProblems.Erdos243.PrimitiveRecordBarrier
+module
+
+public import Mathlib
+public import ErdosProblems.Erdos243.PrimitiveRecordBarrier
+
+@[expose] public section
 
 /-!
 # Erdős 243: protected-epoch energy from reusable odd-prime barriers

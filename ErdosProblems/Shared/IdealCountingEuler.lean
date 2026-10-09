@@ -1,8 +1,12 @@
-import Mathlib.NumberTheory.NumberField.DedekindZeta
-import Mathlib.NumberTheory.RamificationInertia.Basic
-import Mathlib.RingTheory.Ideal.Int
-import Mathlib.Analysis.PSeries
-import Mathlib.FieldTheory.Finite.Basic
+module
+
+public import Mathlib.NumberTheory.NumberField.DedekindZeta
+public import Mathlib.NumberTheory.RamificationInertia.Basic
+public import Mathlib.RingTheory.Ideal.Int
+public import Mathlib.Analysis.PSeries
+public import Mathlib.FieldTheory.Finite.Basic
+
+@[expose] public section
 
 /-!
 # Counting ideals by their prime factors in a number field

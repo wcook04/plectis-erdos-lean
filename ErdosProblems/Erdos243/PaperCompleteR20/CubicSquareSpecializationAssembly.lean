@@ -1,6 +1,10 @@
-import ErdosProblems.Erdos243.PaperCompleteR11.CubicFieldScale
-import ErdosProblems.Erdos243.PaperCompleteR11.PrimitiveMultiplierSupply
-import ErdosProblems.Erdos243.PaperCompleteR11.CubicQuarticCertificates
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR11.CubicFieldScale
+public import ErdosProblems.Erdos243.PaperCompleteR11.PrimitiveMultiplierSupply
+public import ErdosProblems.Erdos243.PaperCompleteR11.CubicQuarticCertificates
+
+@[expose] public section
 
 /-!
 # Erdős 243: the exact post-specialisation cubic contradiction

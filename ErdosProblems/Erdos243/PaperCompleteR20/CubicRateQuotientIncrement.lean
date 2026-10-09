@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos243.PaperCompleteR20.CubicRateNormalisation
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR20.CubicRateNormalisation
+
+@[expose] public section
 
 /-!
 # Erdős 243: quotient increments at the cubic rate

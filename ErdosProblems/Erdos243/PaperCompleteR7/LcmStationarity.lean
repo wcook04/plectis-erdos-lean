@@ -1,9 +1,13 @@
-import ErdosProblems.Erdos243.PaperCompleteR7.CanonicalState
-import ErdosProblems.Erdos243.CumulativeLcmTransfer
-import ErdosProblems.Erdos243.LcmCriticalBoundary
-import ErdosProblems.Erdos243.LcmRecordCrossing
-import ErdosProblems.Erdos243.CoefficientDivisorFence
-import ErdosProblems.Erdos243.PrimitiveRecordBarrier
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR7.CanonicalState
+public import ErdosProblems.Erdos243.CumulativeLcmTransfer
+public import ErdosProblems.Erdos243.LcmCriticalBoundary
+public import ErdosProblems.Erdos243.LcmRecordCrossing
+public import ErdosProblems.Erdos243.CoefficientDivisorFence
+public import ErdosProblems.Erdos243.PrimitiveRecordBarrier
+
+@[expose] public section
 
 /-!
 # Global boundedness and stationarity of the actual LCM state

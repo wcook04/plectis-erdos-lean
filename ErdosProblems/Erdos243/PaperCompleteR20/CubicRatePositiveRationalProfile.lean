@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos243.PaperCompleteR20.CubicRateRationalProfile
+module
+
+public import ErdosProblems.Erdos243.PaperCompleteR20.CubicRateRationalProfile
+
+@[expose] public section
 
 /-!
 # Erdős 243: positivity of the rational cubic coefficient
