@@ -28,7 +28,7 @@
     "PalomarCorpus.E249.TotientKernelBasis.allSlopeAffineTotientFormsLinearIndependent",
     "PalomarCorpus.E249.TotientKernelBasis.displayed_integral_normal_form"
   ],
-  "proof_source_delta": "module/public import/exposed public section only",
+  "proof_source_delta": "module/public import/exposed public section; retainedChannel bound proof terms only",
   "metadata_delta": "scope explicitly names this selected substantive-source snapshot",
   "lake_delta": "only selected libraries/default target; dependency revisions unchanged",
   "files": {
@@ -46,18 +46,44 @@
     "ErdosProblems/Erdos249/PaperCompleteR8/KernelRelationBasis.lean": "142a1b00fe5900ecf3a1f898a399428adcbda09640892e75aa5bea3e5195584d",
     "ErdosProblems/Erdos249/PaperCompleteR8/UnitPivotBasis.lean": "f6b0e93b6549e645f476ce5f63ef722ea4e5369957d548246eb6759fa89f3ea6",
     "LICENSE": "5f73f0aafc768cc7c7f5da786dc7614296ee891a456faf175ab07456d3c35046",
-    "PalomarCorpus/E249_29/Challenge.lean": "891b0d7337df898bbbe81522c2963fc4e50e08f28838e95a2e8c66327617047d",
+    "PalomarCorpus/E249_29/Challenge.lean": "b701230c980da5889aa5e6fce7b552a5c0ae3b2103b4e0aae2657c1160736a91",
     "PalomarCorpus/E249_29/comparator.json": "63a4f4cadda216b434f07fbb1af61aa73894eebc26d9923b849f68e3a20c6bfc",
     "PalomarCorpus/E249_29/formalization.yaml": "2101b2d6d32cd2499d0234150a0cee72e9734ba4104ebd6a7c551d596be5b04c",
-    "README.md": "37b8e54a03c6c4ad7e80795c19b4dff0753b103ed362dc375031747700279d5b",
+    "README.md": "0403b77b7e18c35ca4b7b6442438fcb629c1c9d9c3fc0c5d8bdc930403a245ea",
     "Solutions/PalomarCorpus/E249_29.lean": "bdc17112ce219986d47245e7c87dce171475aaaaa2df16add257b208f14470ae",
     "Solutions/PalomarCorpus/E249_29/CompleteKernelBases.lean": "53019624738a953509de6a1caf0a521e0675add39881bbd1f81cad97e029574d",
-    "Solutions/PalomarCorpus/E249_29/Statement.lean": "f705f16239f0e3e45151b15a06c56141ee77c845e562d0effd53a3d2a01efe7c",
+    "Solutions/PalomarCorpus/E249_29/Statement.lean": "f082d9185ea362a7f649b0cd120ac456b9f4c2fb36431960af0ee98572a535f5",
     "Solutions/PalomarCorpus/E249_29/TotientKernelBasis.lean": "47bbff311a2df0dd175c9fe9060922ad26e42f235bb218fd3f326e34f9ca203c",
     "lake-manifest.json": "a13856b93d7ba387a546013a3842940c7d9a4796b4ddcdca89996fe60a4da4b5",
     "lakefile.toml": "3e91f0d1e2df4f1830b9adc722d5eaaae01d2b2f2357494c0b116b3547564bb2",
     "lean-toolchain": "8dc8d6f560141069d9073e370611716ef77ada0da8ffa37e2149f44b2e63ac7a"
   },
   "registry_acceptance": false,
-  "canonical_main_replace_or_merge": false
+  "canonical_main_replace_or_merge": false,
+  "approved_term_proof_delta": {
+    "repair_id": "e249_retained_channel_explicit_nat_bounds_v1",
+    "changed_declaration": "PalomarCorpus.E249.TotientKernelBasis.retainedChannel",
+    "original_bound_declaration_sha256": "40e1695ea6119bc31e9a99ef10c1eedd83e1983529247cf5f86320efb0a44045",
+    "repaired_bound_declaration_sha256": "d1f513d092d62363ed90f43f03877c3cb83c75abcdee5233c0e0d2b14e2c73c4",
+    "approved_compiled_probe_sha256": "08d4bff39e930fb6105c6531dfa75c6903976d52ffc61cd0a300a26c7f58e01a",
+    "computational_fields": {
+      "initial_level": "i.val",
+      "initial_residue": "0",
+      "positive_level": "x.1.val + 1",
+      "positive_residue": "canonicalResidue k x"
+    },
+    "computational_fields_unchanged": true,
+    "selected_header_sha256": {
+      "PalomarCorpus.E249.CompleteKernelBases.displayed_all_base_kernel": "40e6af31a0c1e462c247776a805fa55c2bc21d56c475ced6788de9a944ce6041",
+      "PalomarCorpus.E249.CompleteKernelBases.displayed_full_dyadic_basis": "861f3a5a9b42c18e940c6c139d96121cb0b5b39b7424fd02d71ba85303e78420",
+      "PalomarCorpus.E249.TotientKernelBasis.allBaseTotientKernelBasisRankAndRelationDimension": "1f2302b3c8402fed666b1f7b21abafd0564f715eb5c916b7386711d21d2e91e8",
+      "PalomarCorpus.E249.TotientKernelBasis.allSlopeAffineTotientFormsLinearIndependent": "b015ec72891ad9bd9e54f1f9ed20eccefdeb6dbb3ddda7c1fd28f477fe4f3ac1",
+      "PalomarCorpus.E249.TotientKernelBasis.displayed_integral_normal_form": "35848a34e584defd4d005dafd6ab3e117be53318181ba86036cfdec41c924a8e"
+    },
+    "five_selected_headers_unchanged": true,
+    "statement_regenerated_from_challenge": true,
+    "neutrality": "Only Fin/Sigma bound proofs change; proof irrelevance preserves the channel values.",
+    "verification_boundary": "The isolated Nat proof compiles; corrected-source Comparator acceptance is not established."
+  },
+  "supersedes_selected_source_commit": "35e2644752f44321151881dacd1b2110cea561b5"
 }

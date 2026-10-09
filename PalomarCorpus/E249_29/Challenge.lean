@@ -171,18 +171,21 @@ noncomputable abbrev IntegralChannelSpan (k e : ℕ) :=
 noncomputable def retainedChannel (k e : ℕ) (hk : 2 ≤ k) (he : 1 ≤ e) :
     CanonicalIndex k e → ThroughLevelIndex k e
   | Sum.inl i =>
-      ⟨⟨i.val, by have hi := i.isLt; omega⟩,
-        ⟨0, pow_pos (by omega : 0 < k) _⟩⟩
+      ⟨⟨i.val, Nat.lt_of_lt_of_le i.isLt (Nat.succ_le_succ he)⟩,
+        ⟨0, Nat.pow_pos (Nat.lt_of_lt_of_le Nat.zero_lt_two hk)⟩⟩
   | Sum.inr x =>
-      ⟨⟨x.1.val + 1, by have hx := x.1.isLt; omega⟩,
+      ⟨⟨x.1.val + 1, Nat.succ_lt_succ x.1.isLt⟩,
         ⟨canonicalResidue k x, by
           show k * x.2.1.val + (x.2.2.val + 1) < k ^ (x.1.val + 1)
           have hs : x.2.1.val + 1 ≤ k ^ x.1.val := x.2.1.isLt
-          have hu : x.2.2.val < k - 1 := x.2.2.isLt
-          calc k * x.2.1.val + (x.2.2.val + 1) < k * x.2.1.val + k := by omega
-            _ = k * (x.2.1.val + 1) := by ring
+          have hk1 : 1 ≤ k := Nat.le_trans (Nat.le_succ 1) hk
+          have hu : x.2.2.val + 1 < k :=
+            Nat.lt_of_lt_of_eq (Nat.add_lt_add_right x.2.2.isLt 1) (Nat.sub_add_cancel hk1)
+          calc k * x.2.1.val + (x.2.2.val + 1) < k * x.2.1.val + k :=
+              Nat.add_lt_add_left hu (k * x.2.1.val)
+            _ = k * (x.2.1.val + 1) := (Nat.mul_succ k x.2.1.val).symm
             _ ≤ k * k ^ x.1.val := Nat.mul_le_mul_left k hs
-            _ = k ^ (x.1.val + 1) := by ring⟩⟩
+            _ = k ^ (x.1.val + 1) := Nat.pow_succ'.symm⟩⟩
 /-- The unreduced channel indices through level `e` that are not retained channels. -/
 noncomputable abbrev OmittedIntegralChannel (k e : ℕ) (hk : 2 ≤ k) (he : 1 ≤ e) :=
   { i : ThroughLevelIndex k e // i ∉ Set.range (retainedChannel k e hk he) }
