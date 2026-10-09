@@ -1,5 +1,9 @@
-import Erdos249257.TotientMahlerDefect
-import Erdos249257.TotientKernelConditional
+module
+
+public import Erdos249257.TotientMahlerDefect
+public import Erdos249257.TotientKernelConditional
+
+@[expose] public section
 
 /-!
 # The all-base totient kernel: unconditional independence, exact rank, explicit basis

@@ -1,7 +1,11 @@
-import Mathlib.LinearAlgebra.Basis.Basic
-import Mathlib.LinearAlgebra.Finsupp.Defs
-import Mathlib.LinearAlgebra.Finsupp.LinearCombination
-import Mathlib
+module
+
+public import Mathlib.LinearAlgebra.Basis.Basic
+public import Mathlib.LinearAlgebra.Finsupp.Defs
+public import Mathlib.LinearAlgebra.Finsupp.LinearCombination
+public import Mathlib
+
+@[expose] public section
 
 set_option autoImplicit false
 

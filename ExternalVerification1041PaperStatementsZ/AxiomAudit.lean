@@ -1,3 +1,0 @@
-import Solutions.ExternalVerification1041PaperStatementsZ
-
-#print axioms Erdos249257.ExternalVerification1041PaperStatementsZ.circle_slice_packing

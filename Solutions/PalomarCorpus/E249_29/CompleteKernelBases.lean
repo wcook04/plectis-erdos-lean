@@ -3,9 +3,13 @@ Copyright (c) 2026 Will Cook. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Will Cook
 -/
-import Mathlib
-import ErdosProblems.Erdos249.PaperCompleteR8.FullKernelAssemblies
-import Solutions.PalomarCorpus.E249_29.Statement
+module
+
+public import Mathlib
+public import ErdosProblems.Erdos249.PaperCompleteR8.FullKernelAssemblies
+public import Solutions.PalomarCorpus.E249_29.Statement
+
+@[expose] public section
 
 open Filter Topology
 open scoped BigOperators

@@ -1,3 +1,0 @@
-import Solutions.ExternalVerification1041PaperStatementsG
-
-#print axioms Erdos249257.ExternalVerification1041PaperStatementsG.complete_straight_path_obstructions

@@ -1,3 +1,0 @@
-import Solutions.ExternalVerification257PaperStructuresBV
-
-#print axioms Erdos249257.ExternalVerification257PaperStructuresBV.seamScaledRem_eq_tailGreedyRemainder

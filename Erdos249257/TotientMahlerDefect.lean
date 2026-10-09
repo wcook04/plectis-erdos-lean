@@ -1,9 +1,13 @@
-import Mathlib.Data.Nat.Totient
-import Mathlib.Data.Nat.ChineseRemainder
-import Mathlib.LinearAlgebra.Dimension.Constructions
-import Mathlib.LinearAlgebra.Matrix.Determinant.Basic
-import Mathlib.NumberTheory.LSeries.PrimesInAP
-import Mathlib.NumberTheory.PrimesCongruentOne
+module
+
+public import Mathlib.Data.Nat.Totient
+public import Mathlib.Data.Nat.ChineseRemainder
+public import Mathlib.LinearAlgebra.Dimension.Constructions
+public import Mathlib.LinearAlgebra.Matrix.Determinant.Basic
+public import Mathlib.NumberTheory.LSeries.PrimesInAP
+public import Mathlib.NumberTheory.PrimesCongruentOne
+
+@[expose] public section
 
 /-!
 # Exact ranks of dyadic totient kernels

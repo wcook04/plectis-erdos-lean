@@ -1,3 +1,0 @@
-import Solutions.ExternalVerification269PaperStatementsY
-
-#print axioms Erdos249257.ExternalVerification269PaperStatementsY.transcendental_heckeValue

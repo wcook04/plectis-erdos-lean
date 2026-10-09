@@ -1,3 +1,0 @@
-import Solutions.ExternalVerification243PaperStructuresAA
-
-#print axioms Erdos249257.ExternalVerification243PaperStructuresAA.tail_multiplier_quadratic_lower

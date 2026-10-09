@@ -1,4 +1,8 @@
-import Mathlib.Data.Nat.Totient
+module
+
+public import Mathlib.Data.Nat.Totient
+
+@[expose] public section
 
 /-!
 # Reduction identities for the totient `k`-kernel, for every integer base

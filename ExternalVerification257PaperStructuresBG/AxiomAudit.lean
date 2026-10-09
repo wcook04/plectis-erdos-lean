@@ -1,4 +1,0 @@
-import Solutions.ExternalVerification257PaperStructuresBG
-
-#print axioms Erdos249257.ExternalVerification257PaperStructuresBG.paper_protected_row_crossing_beyond_cutoff
-#print axioms Erdos249257.ExternalVerification257PaperStructuresBG.paper_protected_row_endpoint_growth

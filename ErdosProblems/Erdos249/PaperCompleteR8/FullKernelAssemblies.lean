@@ -1,6 +1,10 @@
-import ErdosProblems.Erdos249.PaperCompleteR8.KernelRelationBasis
-import Erdos257PeriodNoncollapse.TotientMahlerDefect
-import Mathlib
+module
+
+public import ErdosProblems.Erdos249.PaperCompleteR8.KernelRelationBasis
+public import Erdos257PeriodNoncollapse.TotientMahlerDefect
+public import Mathlib
+
+@[expose] public section
 
 set_option autoImplicit false
 

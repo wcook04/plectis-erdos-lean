@@ -1,3 +1,0 @@
-import Solutions.PalomarCorpus.E257_24
-
-#print axioms PalomarCorpus.E257.PaperStructuresBJ.skipped_fullShell_neg_iff_alignment_and_seamRemainder_pos

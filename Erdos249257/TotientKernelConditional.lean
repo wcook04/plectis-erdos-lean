@@ -1,6 +1,10 @@
-import Erdos249257.TotientKernelReduction
-import Erdos249257.TotientKernelIndex
-import Mathlib.LinearAlgebra.Dimension.Constructions
+module
+
+public import Erdos249257.TotientKernelReduction
+public import Erdos249257.TotientKernelIndex
+public import Mathlib.LinearAlgebra.Dimension.Constructions
+
+@[expose] public section
 
 /-!
 # Conditional exact rank for the all-base totient kernel

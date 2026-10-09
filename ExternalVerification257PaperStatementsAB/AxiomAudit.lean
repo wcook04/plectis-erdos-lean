@@ -1,3 +1,0 @@
-import Solutions.ExternalVerification257PaperStatementsAB
-
-#print axioms Erdos249257.ExternalVerification257PaperStatementsAB.relationInvariantLinearChannels_det_eq_zero

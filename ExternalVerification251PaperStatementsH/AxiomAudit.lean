@@ -1,3 +1,0 @@
-import Solutions.ExternalVerification251PaperStatementsH
-
-#print axioms Erdos249257.ExternalVerification251PaperStatementsH.real_block_identity

@@ -111,7 +111,7 @@
       "configFile": "lakefile.toml"
     }
   ],
-  "name": "erdos257_period_noncollapse",
+  "name": "erdos249_totient_kernel",
   "lakeDir": ".lake",
   "fixedToolchain": false
 }

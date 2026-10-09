@@ -3,10 +3,14 @@ Copyright (c) 2026 Will Cook. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Will Cook
 -/
-import Mathlib
-import Erdos257PeriodNoncollapse.AllBaseTotientKernel
-import ErdosProblems.Erdos249.PaperCompleteR8.KernelRelationBasis
-import Solutions.PalomarCorpus.E249_29.Statement
+module
+
+public import Mathlib
+public import Erdos257PeriodNoncollapse.AllBaseTotientKernel
+public import ErdosProblems.Erdos249.PaperCompleteR8.KernelRelationBasis
+public import Solutions.PalomarCorpus.E249_29.Statement
+
+@[expose] public section
 
 open Module
 

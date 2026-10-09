@@ -1,7 +1,11 @@
-import ErdosProblems.Erdos249.PaperCompleteR7.KernelIntegral
-import ErdosProblems.Erdos249.PaperCompleteR8.UnitPivotBasis
-import Mathlib.LinearAlgebra.Dimension.StrongRankCondition
-import Mathlib
+module
+
+public import ErdosProblems.Erdos249.PaperCompleteR7.KernelIntegral
+public import ErdosProblems.Erdos249.PaperCompleteR8.UnitPivotBasis
+public import Mathlib.LinearAlgebra.Dimension.StrongRankCondition
+public import Mathlib
+
+@[expose] public section
 
 set_option autoImplicit false
 

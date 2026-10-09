@@ -1,5 +1,9 @@
-import Erdos257PeriodNoncollapse.AllBaseTotientKernel
-import Mathlib
+module
+
+public import Erdos257PeriodNoncollapse.AllBaseTotientKernel
+public import Mathlib
+
+@[expose] public section
 
 /-!
 # Integral coordinates and the paper's Euler-product scalar

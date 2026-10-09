@@ -1,5 +1,9 @@
-import Mathlib.Algebra.Ring.GeomSum
-import Mathlib.Data.Fintype.BigOperators
+module
+
+public import Mathlib.Algebra.Ring.GeomSum
+public import Mathlib.Data.Fintype.BigOperators
+
+@[expose] public section
 
 /-!
 # Finite indices for the all-base totient kernel
