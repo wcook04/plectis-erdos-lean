@@ -1,9 +1,13 @@
-import Mathlib.Algebra.Polynomial.Eval.Defs
-import Mathlib.Data.Fintype.Pigeonhole
-import Mathlib.Data.ZMod.Coprime
-import Mathlib.Data.ZMod.Basic
-import Mathlib.RingTheory.Polynomial.Cyclotomic.Basic
-import Mathlib.Tactic
+module
+
+public import Mathlib.Algebra.Polynomial.Eval.Defs
+public import Mathlib.Data.Fintype.Pigeonhole
+public import Mathlib.Data.ZMod.Coprime
+public import Mathlib.Data.ZMod.Basic
+public import Mathlib.RingTheory.Polynomial.Cyclotomic.Basic
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-!
 # Erdős #1049: endpoint arithmetic for the Heine--Zudilin cone

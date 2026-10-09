@@ -1,7 +1,11 @@
-import ErdosProblems.Erdos1049.G02ArithmeticR16
-import ErdosProblems.Erdos1049.WeightedFloorBlocksR12
-import ErdosProblems.Erdos1049.SourceHeightRateR14
-import Mathlib
+module
+
+public import ErdosProblems.Erdos1049.G02ArithmeticR16
+public import ErdosProblems.Erdos1049.WeightedFloorBlocksR12
+public import ErdosProblems.Erdos1049.SourceHeightRateR14
+public import Mathlib
+
+@[expose] public section
 
 /-! Literal thirteen-block supplier: the complement degree has quadratic rate. -/
 namespace ErdosProblems.Erdos1049.PaperR16

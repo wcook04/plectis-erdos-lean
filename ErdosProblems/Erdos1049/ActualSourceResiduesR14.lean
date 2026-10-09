@@ -1,6 +1,10 @@
-import ErdosProblems.Erdos1049.ReciprocalPochhammerR14
-import ErdosProblems.Erdos1049.LambertSourceSummationR14
-import Mathlib
+module
+
+public import ErdosProblems.Erdos1049.ReciprocalPochhammerR14
+public import ErdosProblems.Erdos1049.LambertSourceSummationR14
+public import Mathlib
+
+@[expose] public section
 
 /-!
 # Residues of the literal 2004 rational kernel

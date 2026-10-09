@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos1049.TwoSelectorRemainderEscape
+module
+
+public import ErdosProblems.Erdos1049.TwoSelectorRemainderEscape
+
+@[expose] public section
 
 /-!
 

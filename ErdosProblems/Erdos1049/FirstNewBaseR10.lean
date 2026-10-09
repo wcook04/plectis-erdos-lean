@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos1049.RationalBaseContour
-import ErdosProblems.Erdos1049.QProductBoundsR10
+module
+
+public import ErdosProblems.Erdos1049.RationalBaseContour
+public import ErdosProblems.Erdos1049.QProductBoundsR10
+
+@[expose] public section
 
 /-!
 # The least new denominator and numerator

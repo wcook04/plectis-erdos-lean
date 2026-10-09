@@ -1,6 +1,10 @@
-import ErdosProblems.Erdos1049.SourceBCircleR13
-import ErdosProblems.Erdos1049.FiniteFourierCoefficientR13
-import Mathlib
+module
+
+public import ErdosProblems.Erdos1049.SourceBCircleR13
+public import ErdosProblems.Erdos1049.FiniteFourierCoefficientR13
+public import Mathlib
+
+@[expose] public section
 
 /-!
 # Cyclotomic complement and actual cancelled-pair coefficient bounds

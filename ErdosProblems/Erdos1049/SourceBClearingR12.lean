@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos1049.SourcePolynomialR11
-import Mathlib
+module
+
+public import ErdosProblems.Erdos1049.SourcePolynomialR11
+public import Mathlib
+
+@[expose] public section
 
 /-!
 # Literal B coefficient and its first polynomial clearing

@@ -1,6 +1,10 @@
-import ErdosProblems.Erdos1049.PaperShortCapR9
-import Mathlib.Order.LiminfLimsup
-import Mathlib.Algebra.Order.Ring.Int
+module
+
+public import ErdosProblems.Erdos1049.PaperShortCapR9
+public import Mathlib.Order.LiminfLimsup
+public import Mathlib.Algebra.Order.Ring.Int
+
+@[expose] public section
 
 /-!
 The LONG-record cap: maximum coefficient height, actual degrees and logarithmic

@@ -1,6 +1,10 @@
-import ErdosProblems.Erdos1049.SourceFiniteTransformR12
-import ErdosProblems.Erdos1049.SourceHomogeneousR12
-import Mathlib
+module
+
+public import ErdosProblems.Erdos1049.SourceFiniteTransformR12
+public import ErdosProblems.Erdos1049.SourceHomogeneousR12
+public import Mathlib
+
+@[expose] public section
 
 /-!
 # Root-window cancellation for the actual Omega carry pattern

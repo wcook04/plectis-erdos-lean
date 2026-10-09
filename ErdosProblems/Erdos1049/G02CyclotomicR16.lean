@@ -1,6 +1,10 @@
-import ErdosProblems.Erdos1049.G02RateCalculusR16
-import ErdosProblems.Erdos1049.ActualSourceRemainderR14
-import Mathlib
+module
+
+public import ErdosProblems.Erdos1049.G02RateCalculusR16
+public import ErdosProblems.Erdos1049.ActualSourceRemainderR14
+public import Mathlib
+
+@[expose] public section
 
 /-!
 # G02 fixed-base cyclotomic logarithms

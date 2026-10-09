@@ -1,6 +1,10 @@
-import ErdosProblems.Erdos1049.PaperAsymptoticsR9
-import ErdosProblems.Erdos1049.PaperLinearFormsR7
-import ErdosProblems.Erdos1049.RationalApproximationSeparation
+module
+
+public import ErdosProblems.Erdos1049.PaperAsymptoticsR9
+public import ErdosProblems.Erdos1049.PaperLinearFormsR7
+public import ErdosProblems.Erdos1049.RationalApproximationSeparation
+
+@[expose] public section
 
 /-!
 # A complete quadratic-mesh irrationality-measure consumer

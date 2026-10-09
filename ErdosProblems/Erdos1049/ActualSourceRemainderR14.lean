@@ -1,7 +1,11 @@
-import ErdosProblems.Erdos1049.ActualSourceAnalyticIdentityR14
-import ErdosProblems.Erdos1049.SourceOmegaCancellationR13
-import ErdosProblems.Erdos1049.PaperShortCapR9
-import Mathlib
+module
+
+public import ErdosProblems.Erdos1049.ActualSourceAnalyticIdentityR14
+public import ErdosProblems.Erdos1049.SourceOmegaCancellationR13
+public import ErdosProblems.Erdos1049.PaperShortCapR9
+public import Mathlib
+
+@[expose] public section
 
 /-!
 # Evaluation and nonvanishing of the actual cancelled remainder

@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos1049.SourcePolynomialR11
-import Mathlib
+module
+
+public import ErdosProblems.Erdos1049.SourcePolynomialR11
+public import Mathlib
+
+@[expose] public section
 
 /-!
 # Exact weighted floor blocks for the actual thirteen intervals

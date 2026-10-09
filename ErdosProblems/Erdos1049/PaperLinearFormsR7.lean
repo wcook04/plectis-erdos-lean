@@ -1,9 +1,13 @@
-import ErdosProblems.Erdos1049.PaperHomogenisationR7
-import ErdosProblems.Erdos1049.RationalBaseContour
-import ErdosProblems.Erdos1049.TwoSelectorRemainderEscape
-import Mathlib.NumberTheory.Real.Irrational
-import Mathlib.Topology.MetricSpace.Pseudo.Defs
-import Mathlib.Tactic
+module
+
+public import ErdosProblems.Erdos1049.PaperHomogenisationR7
+public import ErdosProblems.Erdos1049.RationalBaseContour
+public import ErdosProblems.Erdos1049.TwoSelectorRemainderEscape
+public import Mathlib.NumberTheory.Real.Irrational
+public import Mathlib.Topology.MetricSpace.Pseudo.Defs
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-!
 # R7: the integer-form irrationality consumer and its polynomial bridge

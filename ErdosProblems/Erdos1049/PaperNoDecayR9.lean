@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos1049.PaperLongCapR9
+module
+
+public import ErdosProblems.Erdos1049.PaperLongCapR9
+
+@[expose] public section
 
 /-!
 A failure of homogenised decay below the square boundary, without assuming

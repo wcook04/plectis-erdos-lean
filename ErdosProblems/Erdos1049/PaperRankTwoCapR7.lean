@@ -1,8 +1,12 @@
-import ErdosProblems.Erdos1049.BezoutPluckerJets
-import Mathlib.NumberTheory.Real.Irrational
-import Mathlib.Analysis.SpecialFunctions.Log.Basic
-import Mathlib.Topology.MetricSpace.Pseudo.Defs
-import Mathlib.Tactic
+module
+
+public import ErdosProblems.Erdos1049.BezoutPluckerJets
+public import Mathlib.NumberTheory.Real.Irrational
+public import Mathlib.Analysis.SpecialFunctions.Log.Basic
+public import Mathlib.Topology.MetricSpace.Pseudo.Defs
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-!
 # R7: the rank-two obstruction inside the degree-budget cap

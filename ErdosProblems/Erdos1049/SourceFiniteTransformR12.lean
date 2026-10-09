@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos1049.QBinomialUnitIdentity
-import Mathlib
+module
+
+public import ErdosProblems.Erdos1049.QBinomialUnitIdentity
+public import Mathlib
+
+@[expose] public section
 
 /-! # The missing free-variable finite source transform
 The variable z is independent of q.

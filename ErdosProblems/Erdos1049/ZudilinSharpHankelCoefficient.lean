@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos1049.AdelicHeightBridge
+module
+
+public import ErdosProblems.Erdos1049.AdelicHeightBridge
+
+@[expose] public section
 
 /-!
 # Erdős #1049: the exact leading coefficient of Zudilin's normalized Hankel determinant

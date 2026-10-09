@@ -1,7 +1,11 @@
-import ErdosProblems.Erdos1049.GaussianCoefficientsR11
-import ErdosProblems.Erdos1049.PaperOmegaIndicatorR7
-import ErdosProblems.Erdos1049.ZudilinConeArithmetic
-import Mathlib
+module
+
+public import ErdosProblems.Erdos1049.GaussianCoefficientsR11
+public import ErdosProblems.Erdos1049.PaperOmegaIndicatorR7
+public import ErdosProblems.Erdos1049.ZudilinConeArithmetic
+public import Mathlib
+
+@[expose] public section
 
 /-!
 # Actual finite 2004 A coefficient and its normalisation

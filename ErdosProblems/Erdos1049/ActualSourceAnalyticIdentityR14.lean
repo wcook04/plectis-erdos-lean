@@ -1,6 +1,10 @@
-import ErdosProblems.Erdos1049.ActualSourceResiduesR14
-import ErdosProblems.Erdos1049.SourcePositiveHBoundsR10
-import Mathlib
+module
+
+public import ErdosProblems.Erdos1049.ActualSourceResiduesR14
+public import ErdosProblems.Erdos1049.SourcePositiveHBoundsR10
+public import Mathlib
+
+@[expose] public section
 
 /-!
 # The actual analytic identity A_n F - B_n = H_n

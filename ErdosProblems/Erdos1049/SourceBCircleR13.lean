@@ -1,6 +1,10 @@
-import ErdosProblems.Erdos1049.SourceOmegaCancellationR13
-import ErdosProblems.Erdos1049.GaussianCircleBoundsR12
-import Mathlib
+module
+
+public import ErdosProblems.Erdos1049.SourceOmegaCancellationR13
+public import ErdosProblems.Erdos1049.GaussianCircleBoundsR12
+public import Mathlib
+
+@[expose] public section
 
 /-!
 # Uniform complex bound for literal B and the actual cancelled pair

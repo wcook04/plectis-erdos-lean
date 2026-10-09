@@ -1,4 +1,8 @@
-import Mathlib.Analysis.Real.Pi.Bounds
+module
+
+public import Mathlib.Analysis.Real.Pi.Bounds
+
+@[expose] public section
 
 /-!
 # Erdős #1049: a rectangular Hermite--Padé threshold comparison

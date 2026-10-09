@@ -1,6 +1,10 @@
-import ErdosProblems.Erdos1049.QBinomialUnitIdentity
-import Mathlib.Algebra.Polynomial.Roots
-import Mathlib
+module
+
+public import ErdosProblems.Erdos1049.QBinomialUnitIdentity
+public import Mathlib.Algebra.Polynomial.Roots
+public import Mathlib
+
+@[expose] public section
 
 /-!
 # Finite simple-pole interpolation, without a partial-fractions assumption

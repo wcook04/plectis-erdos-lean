@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos1049.AllRow.FiniteStates
+module
+
+public import ErdosProblems.Erdos1049.AllRow.FiniteStates
+
+@[expose] public section
 
 /-!
 # Source-exact finite polynomial approximations

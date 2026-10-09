@@ -1,2 +1,0 @@
-import Solutions.ExternalVerification257MixedWeightedCover
-#print axioms Erdos249257.ExternalVerification257MixedWeightedCover.mixedSupportClaim

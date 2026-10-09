@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos1049.SourceRootBlocksR13
-import Mathlib
+module
+
+public import ErdosProblems.Erdos1049.SourceRootBlocksR13
+public import Mathlib
+
+@[expose] public section
 
 /-!
 # Actual all-index Omega cancellation for the literal cleared B

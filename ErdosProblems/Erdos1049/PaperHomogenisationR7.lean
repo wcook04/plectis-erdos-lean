@@ -1,6 +1,10 @@
-import ErdosProblems.Erdos1049.ZudilinConeArithmetic
-import Mathlib.Algebra.Polynomial.Eval.Defs
-import Mathlib.Tactic
+module
+
+public import ErdosProblems.Erdos1049.ZudilinConeArithmetic
+public import Mathlib.Algebra.Polynomial.Eval.Defs
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-!
 # R7: integral homogeneous evaluation at a rational base

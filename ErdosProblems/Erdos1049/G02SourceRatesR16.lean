@@ -1,8 +1,12 @@
-import ErdosProblems.Erdos1049.G02CyclotomicR16
-import ErdosProblems.Erdos1049.ActualAGrowthR14
-import ErdosProblems.Erdos1049.LambertSourceSummationR14
-import ErdosProblems.Erdos1049.PaperLongCapR9
-import Mathlib
+module
+
+public import ErdosProblems.Erdos1049.G02CyclotomicR16
+public import ErdosProblems.Erdos1049.ActualAGrowthR14
+public import ErdosProblems.Erdos1049.LambertSourceSummationR14
+public import ErdosProblems.Erdos1049.PaperLongCapR9
+public import Mathlib
+
+@[expose] public section
 
 /-!
 # G02 literal source-rate assembly

@@ -1,6 +1,10 @@
-import ErdosProblems.Erdos1049.QLucasR13
-import ErdosProblems.Erdos1049.SourceBTopDegreeR13
-import Mathlib
+module
+
+public import ErdosProblems.Erdos1049.QLucasR13
+public import ErdosProblems.Erdos1049.SourceBTopDegreeR13
+public import Mathlib
+
+@[expose] public section
 
 /-!
 # Exact source carry geometry and the first Omega channel

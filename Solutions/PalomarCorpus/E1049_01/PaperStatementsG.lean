@@ -3,14 +3,18 @@ Copyright (c) 2026 Will Cook. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Will Cook
 -/
-import Mathlib
-import ErdosProblems.Erdos1049.AdelicHeightBridge
-import ErdosProblems.Erdos1049.AllRow.Producer
-import ErdosProblems.Erdos1049.PaperCompleteR21.RationalBaseThreshold
-import ErdosProblems.Erdos1049.RationalBaseContour
-import ErdosProblems.Erdos1049.RationalBaseLambert
-import ErdosProblems.Erdos1049.ZudilinSharpHankelCoefficient
-import Solutions.PalomarCorpus.E1049_01.Statement
+module
+
+public import Mathlib
+public import ErdosProblems.Erdos1049.AdelicHeightBridge
+public import ErdosProblems.Erdos1049.AllRow.Producer
+public import ErdosProblems.Erdos1049.PaperCompleteR21.RationalBaseThreshold
+public import ErdosProblems.Erdos1049.RationalBaseContour
+public import ErdosProblems.Erdos1049.RationalBaseLambert
+public import ErdosProblems.Erdos1049.ZudilinSharpHankelCoefficient
+public import Solutions.PalomarCorpus.E1049_01.Statement
+
+@[expose] public section
 
 open scoped BigOperators
 

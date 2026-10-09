@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos1049.SourceRootCarriesR13
-import Mathlib
+module
+
+public import ErdosProblems.Erdos1049.SourceRootCarriesR13
+public import Mathlib
+
+@[expose] public section
 
 /-!
 # Global residue-block cancellation at the literal source indices

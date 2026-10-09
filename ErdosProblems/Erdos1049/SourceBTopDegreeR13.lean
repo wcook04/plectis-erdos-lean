@@ -1,6 +1,10 @@
-import ErdosProblems.Erdos1049.GaussianDegreeR12
-import ErdosProblems.Erdos1049.SourceBInitialR12
-import Mathlib
+module
+
+public import ErdosProblems.Erdos1049.GaussianDegreeR12
+public import ErdosProblems.Erdos1049.SourceBInitialR12
+public import Mathlib
+
+@[expose] public section
 
 /-!
 # Exact top degree of the literal cleared B numerator

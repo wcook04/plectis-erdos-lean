@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos1049.MeasureConstantsR10
-import Mathlib.Analysis.SpecialFunctions.Log.Deriv
+module
+
+public import ErdosProblems.Erdos1049.MeasureConstantsR10
+public import Mathlib.Analysis.SpecialFunctions.Log.Deriv
+
+@[expose] public section
 
 /-!
 # Erdős #1049: the printed decimals of `θ*`, `μ` and `4^μ`

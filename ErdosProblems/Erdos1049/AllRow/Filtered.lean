@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos1049.ZudilinSharpHankelCoefficient
+module
+
+public import ErdosProblems.Erdos1049.ZudilinSharpHankelCoefficient
+
+@[expose] public section
 
 /-!
 # Finite coefficient calculus for the all-row producer

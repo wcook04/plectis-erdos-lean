@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos1049.PaperR17.SourceConsumers
+module
+
+public import ErdosProblems.Erdos1049.PaperR17.SourceConsumers
+
+@[expose] public section
 
 /-!
 # Erdős #1049: the rational-base threshold in its paper form

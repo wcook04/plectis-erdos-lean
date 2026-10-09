@@ -1,8 +1,12 @@
-import ErdosProblems.Erdos1049.ZudilinHeightRegion
-import Mathlib.Analysis.PSeries
-import Mathlib.Analysis.Real.Pi.Bounds
-import Mathlib.NumberTheory.ZetaValues
-import Mathlib.Topology.Algebra.InfiniteSum.Real
+module
+
+public import ErdosProblems.Erdos1049.ZudilinHeightRegion
+public import Mathlib.Analysis.PSeries
+public import Mathlib.Analysis.Real.Pi.Bounds
+public import Mathlib.NumberTheory.ZetaValues
+public import Mathlib.Topology.Algebra.InfiniteSum.Real
+
+@[expose] public section
 
 /-!
 # Erdős #1049: the rational-base contour of Zudilin's `(14,12,14;27)` forms

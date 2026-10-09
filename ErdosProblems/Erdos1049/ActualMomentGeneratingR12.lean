@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos1049.QProductBoundsR10
-import Mathlib
+module
+
+public import ErdosProblems.Erdos1049.QProductBoundsR10
+public import Mathlib
+
+@[expose] public section
 
 /-!
 # The actual analytic moment generating identity

@@ -1,12 +1,16 @@
-import ErdosProblems.Erdos1049.ZudilinHeightRegion
-import ErdosProblems.Erdos1049.HermitePadeNoGo
-import ErdosProblems.Erdos1049.ZudilinConeArithmetic
-import Mathlib.Combinatorics.Pigeonhole
-import Mathlib.LinearAlgebra.Vandermonde
-import Mathlib.RingTheory.PowerSeries.Inverse
-import Mathlib.RingTheory.PowerSeries.NoZeroDivisors
-import Mathlib.RingTheory.PowerSeries.Order
-import Mathlib.RingTheory.PowerSeries.WellKnown
+module
+
+public import ErdosProblems.Erdos1049.ZudilinHeightRegion
+public import ErdosProblems.Erdos1049.HermitePadeNoGo
+public import ErdosProblems.Erdos1049.ZudilinConeArithmetic
+public import Mathlib.Combinatorics.Pigeonhole
+public import Mathlib.LinearAlgebra.Vandermonde
+public import Mathlib.RingTheory.PowerSeries.Inverse
+public import Mathlib.RingTheory.PowerSeries.NoZeroDivisors
+public import Mathlib.RingTheory.PowerSeries.Order
+public import Mathlib.RingTheory.PowerSeries.WellKnown
+
+@[expose] public section
 
 /-!
 # Erdős #1049: one integer certificate controls four separate obstructions

@@ -1,6 +1,10 @@
-import Mathlib.Algebra.Order.Floor.Ring
-import Mathlib.Data.Real.Basic
-import Mathlib.Tactic
+module
+
+public import Mathlib.Algebra.Order.Floor.Ring
+public import Mathlib.Data.Real.Basic
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-!
 # R7: the exact 48-cell proof of `res:omega-indicator`

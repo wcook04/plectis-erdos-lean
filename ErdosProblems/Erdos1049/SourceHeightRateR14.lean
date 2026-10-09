@@ -1,6 +1,10 @@
-import ErdosProblems.Erdos1049.CyclotomicCircleHeightR13
-import ErdosProblems.Erdos1049.PaperLongCapR9
-import Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics
+module
+
+public import ErdosProblems.Erdos1049.CyclotomicCircleHeightR13
+public import ErdosProblems.Erdos1049.PaperLongCapR9
+public import Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics
+
+@[expose] public section
 
 /-!
 # Subquadratic coefficient heights of the actual cancelled source pair

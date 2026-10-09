@@ -1,75 +1,213 @@
 # SPDX-FileCopyrightText: 2026 Will Cook
 # SPDX-License-Identifier: Apache-2.0
-name: Lean Convenience
+name: E1049 official mechanical and Challenge rendering preflight
+run-name: E1049_01 source preflight ${{ inputs.source_commit }}
 
-# Developer convenience workflow only. This is not a release gate.
+# Predictive source checks only: no Palomar admission, review or registration.
+# This filename already exists on the public repository's default branch.
 on:
   workflow_dispatch:
-  pull_request:
-  # Other branches build through their pull request, so one push does not
-  # start the same build twice.
-  push:
-    branches: [main, 'palomar/**']
+    inputs:
+      entry:
+        description: Selected substantive-source entry
+        required: true
+        type: choice
+        options: [E1049_01]
+      source_commit:
+        description: Full immutable candidate SHA, equal to the workflow ref
+        required: true
+        type: string
 
 permissions:
   contents: read
 
-# A push supersedes the previous one on the same ref. This workflow is not a
-# release gate, so an in-flight run for an older commit is cancelled. The
-# Comparator replay deliberately has no such rule: its runs produce the
-# per-entry receipts a consumer harvests.
 concurrency:
-  group: lean-convenience-${{ github.ref }}
-  cancel-in-progress: true
+  group: e1049-source-preflight-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
+  cancel-in-progress: false
 
 jobs:
-  build:
-    # Pinned rather than `ubuntu-latest`, so the October 2026 migration of that
-    # label cannot change the build environment without a commit here.
+  select:
     runs-on: ubuntu-24.04
-    # A cold one-thread build of the whole default-target closure took 3h53m
-    # (run 35715779415); the 6h hosted-runner ceiling bounds a runaway.
-    timeout-minutes: 330
+    timeout-minutes: 5
+    outputs:
+      mechanical_request_id: ${{ steps.bind.outputs.mechanical_request_id }}
+      render_request_id: ${{ steps.bind.outputs.render_request_id }}
+      challenge_sha256: ${{ steps.bind.outputs.challenge_sha256 }}
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      # Every run used to rebuild the whole project from nothing. The newest
-      # corpus build is restored first, so Lake rebuilds only modules whose
-      # inputs changed.
-      - name: Restore the corpus build
-        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
-        with:
-          path: .lake/build
-          key: corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-${{ github.sha }}-convenience
-          restore-keys: |
-            corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-
-      - uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
-        with:
-          use-mathlib-cache: auto
-          build: false
-      - name: Build launch entries sequentially
+      - name: Require the exact selected source edition
         env:
-          LEAN_NUM_THREADS: "1"
+          SOURCE: ${{ github.sha }}
+          REQUESTED_SOURCE: ${{ inputs.source_commit }}
+          ENTRY: ${{ inputs.entry }}
+          REPOSITORY: ${{ github.repository }}
         run: |
-          set -euo pipefail
           python3 - <<'PY'
-          import re
-          import subprocess
-
-          text = open("lakefile.toml", encoding="utf-8").read()
-          match = re.search(r'defaultTargets\s*=\s*\[(.*?)\]', text, re.S)
-          if not match:
-              raise SystemExit("defaultTargets not found in lakefile.toml")
-          targets = re.findall(r'"([^"]+)"', match.group(1))
-          for target in targets:
-              print(f"=== lake build {target} ===", flush=True)
-              subprocess.run(["lake", "build", target], check=True)
+          import os, re
+          if (os.environ['ENTRY'] != 'E1049_01' or
+              os.environ['REPOSITORY'] != 'wcook04/plectis-erdos-lean' or
+              not re.fullmatch(r'[0-9a-f]{40}', os.environ['SOURCE']) or
+              os.environ['REQUESTED_SOURCE'] != os.environ['SOURCE']):
+              raise SystemExit('Exact E1049 entry, repository and immutable workflow/source binding required')
           PY
-      # Saved even when the build fails or is cancelled: Lake treats a module
-      # as built only once its trace is written after its outputs, so a
-      # partial build is a valid head start for the next run.
-      - name: Save the corpus build
-        if: always()
-        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+      - name: Check out the immutable source for digest binding
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
-          path: .lake/build
-          key: corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-${{ github.sha }}-convenience
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          sparse-checkout: PalomarCorpus/E1049_01
+      - name: Bind independent report identifiers and Challenge bytes
+        id: bind
+        env:
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+          SOURCE: ${{ github.sha }}
+        run: |
+          python3 - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          config = json.loads(Path('PalomarCorpus/E1049_01/comparator.json').read_text())
+          if (config['challenge_module'] != 'PalomarCorpus.E1049_01.Challenge' or
+              config['solution_module'] != 'Solutions.PalomarCorpus.E1049_01'):
+              raise SystemExit('Selected Comparator module identities changed')
+          identity = ':'.join(os.environ[key] for key in ('RUN_ID', 'RUN_ATTEMPT', 'SOURCE'))
+          request = hashlib.sha256(identity.encode()).hexdigest()
+          digest = hashlib.sha256(Path('PalomarCorpus/E1049_01/Challenge.lean').read_bytes()).hexdigest()
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write('mechanical_request_id=' + request[:12] + '\n')
+              output.write('render_request_id=' + request[:32] + '\n')
+              output.write('challenge_sha256=' + digest + '\n')
+          PY
+
+  mechanical:
+    needs: select
+    uses: PalomarRegistry/PalomarSubmission/.github/workflows/submission.yml@d4e41c1d5b0d114c4859e6e5831dc6d3ad1d0d44
+    with:
+      repository: ${{ github.repository }}
+      commit: ${{ github.sha }}
+      pipeline_commit: d4e41c1d5b0d114c4859e6e5831dc6d3ad1d0d44
+      request_id: ${{ needs.select.outputs.mechanical_request_id }}
+      mode: full
+      execution_profile: palomar-standard-v1
+      options: '{"comparator_config_path":"PalomarCorpus/E1049_01/comparator.json","formalization_metadata_path":"PalomarCorpus/E1049_01/formalization.yaml","authorization_relationship":"I am a responsible author or maintainer"}'
+
+  render:
+    needs: select
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    env:
+      PALOMAR_EXECUTION_PROFILE: palomar-standard-v1
+    steps:
+      - name: Free disk space
+        uses: jlumbroso/free-disk-space@54081f138730dfa15788a46383842cd2f914a1be
+        with:
+          tool-cache: false
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: false
+          docker-images: true
+          swap-storage: false
+      - name: Check out the pinned trusted renderer
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          repository: PalomarRegistry/PalomarSubmission
+          ref: d4e41c1d5b0d114c4859e6e5831dc6d3ad1d0d44
+          path: pipeline
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: '3.11.10'
+      - name: Install locked renderer dependencies
+        run: python -m pip install --disable-pip-version-check --require-hashes --no-deps -r pipeline/requirements.txt
+      - name: Fetch and bind the exact selected source
+        id: prepare
+        working-directory: pipeline
+        env:
+          SOURCE_REPOSITORY: ${{ github.repository }}
+          SOURCE_COMMIT: ${{ github.sha }}
+          CHALLENGE_SHA256: ${{ needs.select.outputs.challenge_sha256 }}
+        run: |
+          python -m scripts.render_challenge prepare \
+            --repository "$SOURCE_REPOSITORY" \
+            --commit "$SOURCE_COMMIT" \
+            --challenge-sha256 "$CHALLENGE_SHA256" \
+            --project-path '' \
+            --challenge-path PalomarCorpus/E1049_01/Challenge.lean \
+            --solution-path Solutions/PalomarCorpus/E1049_01.lean \
+            --comparator-config-path PalomarCorpus/E1049_01/comparator.json \
+            --lakefile-path lakefile.toml \
+            --lean-toolchain-path lean-toolchain \
+            --work-dir "$RUNNER_TEMP/palomar-render" \
+            --output "$RUNNER_TEMP/palomar-render/report.json"
+      - name: Install pinned elan
+        if: steps.prepare.outputs.ready == 'true'
+        run: |
+          python3 pipeline/scripts/trusted_download.py \
+            --url https://github.com/leanprover/elan/releases/download/v4.2.3/elan-x86_64-unknown-linux-gnu.tar.gz \
+            --output "$RUNNER_TEMP/elan.tar.gz" \
+            --sha256 df0b2b3a439961ffcbb3985214365ffe40f49bc871df04dff268c7d8e21ca8b2
+          mkdir "$RUNNER_TEMP/elan"
+          tar -xzf "$RUNNER_TEMP/elan.tar.gz" -C "$RUNNER_TEMP/elan"
+          "$RUNNER_TEMP/elan/elan-init" -y --no-modify-path --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Install the source's accepted Lean toolchain
+        if: steps.prepare.outputs.ready == 'true'
+        env:
+          LEAN_TOOLCHAIN: ${{ steps.prepare.outputs.lean_toolchain }}
+        run: elan toolchain install "$LEAN_TOOLCHAIN"
+      - name: Build pinned bubblewrap
+        if: steps.prepare.outputs.ready == 'true'
+        run: |
+          sudo apt-get update -qq >/dev/null
+          sudo apt-get install -y -qq meson ninja-build libcap-dev pkg-config >/dev/null
+          echo "PALOMAR_BWRAP=$(pipeline/scripts/install_bwrap.sh "$RUNNER_TEMP/bwrap-bin")" >> "$GITHUB_ENV"
+      - name: Build, sanitize and hash Challenge rendering under bubblewrap
+        if: steps.prepare.outputs.ready == 'true'
+        working-directory: pipeline
+        env:
+          WORKFLOW_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          python -m scripts.render_challenge execute \
+            --work-dir "$RUNNER_TEMP/palomar-render" \
+            --output "$RUNNER_TEMP/palomar-render/report.json" \
+            --bwrap "$PALOMAR_BWRAP" \
+            --renderer-commit d4e41c1d5b0d114c4859e6e5831dc6d3ad1d0d44 \
+            --bwrap-source-tag v0.12.0 \
+            --workflow-url "$WORKFLOW_URL"
+      - name: Upload bounded source-bound render report and result
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: challenge-render-${{ needs.select.outputs.render_request_id }}
+          path: |
+            ${{ runner.temp }}/palomar-render/report.json
+            ${{ runner.temp }}/palomar-render/result
+          if-no-files-found: error
+          retention-days: 30
+      - name: Require successful rendering of this exact source edition
+        if: always()
+        env:
+          SOURCE_REPOSITORY: ${{ github.repository }}
+          SOURCE_COMMIT: ${{ github.sha }}
+          CHALLENGE_SHA256: ${{ needs.select.outputs.challenge_sha256 }}
+        run: |
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          report = json.loads((Path(os.environ['RUNNER_TEMP']) / 'palomar-render/report.json').read_text())
+          expected = {
+              'repository': os.environ['SOURCE_REPOSITORY'],
+              'repository_url': 'https://github.com/' + os.environ['SOURCE_REPOSITORY'],
+              'commit': os.environ['SOURCE_COMMIT'],
+              'challenge_sha256': os.environ['CHALLENGE_SHA256'],
+              'project_path': '',
+              'challenge_path': 'PalomarCorpus/E1049_01/Challenge.lean',
+              'solution_path': 'Solutions/PalomarCorpus/E1049_01.lean',
+              'comparator_config_path': 'PalomarCorpus/E1049_01/comparator.json',
+              'lakefile_path': 'lakefile.toml',
+              'lean_toolchain_path': 'lean-toolchain',
+          }
+          if (report.get('status') != 'pass' or report.get('source') != expected or
+              report.get('renderer_commit') != 'd4e41c1d5b0d114c4859e6e5831dc6d3ad1d0d44'):
+              raise SystemExit('Rendering did not pass for the exact selected source and pinned renderer')
+          PY

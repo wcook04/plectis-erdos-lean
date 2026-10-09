@@ -1,6 +1,10 @@
-import ErdosProblems.Erdos1049.PaperR17.Constants
-import ErdosProblems.Erdos1049.IrrationalityExponentR11
-import ErdosProblems.Erdos1049.PaperNoDecayR9
+module
+
+public import ErdosProblems.Erdos1049.PaperR17.Constants
+public import ErdosProblems.Erdos1049.IrrationalityExponentR11
+public import ErdosProblems.Erdos1049.PaperNoDecayR9
+
+@[expose] public section
 
 /-!
 # The literal G02 supplier, the original R7 consumer, and the power-uniform measure

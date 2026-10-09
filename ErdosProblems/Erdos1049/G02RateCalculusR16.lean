@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos1049.G02WeightedBlocksR16
-import Mathlib
+module
+
+public import ErdosProblems.Erdos1049.G02WeightedBlocksR16
+public import Mathlib
+
+@[expose] public section
 
 /-! Quadratic-rate transport lemmas and strict-rate dominance for the source.
 The V step follows from strict separation of the U and remainder rates. -/

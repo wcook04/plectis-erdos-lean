@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos1049.QBinomialUnitIdentity
-import Mathlib
+module
+
+public import ErdosProblems.Erdos1049.QBinomialUnitIdentity
+public import Mathlib
+
+@[expose] public section
 
 /-! # Coefficient bounds for the actual Gaussian recurrence
 

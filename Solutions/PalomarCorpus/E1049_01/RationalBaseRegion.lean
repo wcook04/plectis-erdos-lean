@@ -3,9 +3,13 @@ Copyright (c) 2026 Will Cook. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Will Cook
 -/
-import ErdosProblems.Erdos1049.PaperR17.SourceConsumers
-import Mathlib
-import Solutions.PalomarCorpus.E1049_01.Statement
+module
+
+public import ErdosProblems.Erdos1049.PaperR17.SourceConsumers
+public import Mathlib
+public import Solutions.PalomarCorpus.E1049_01.Statement
+
+@[expose] public section
 
 open scoped BigOperators
 

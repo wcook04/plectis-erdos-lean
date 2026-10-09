@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos1049.RationalBaseContour
-import Mathlib.Analysis.SpecialFunctions.Log.Deriv
+module
+
+public import ErdosProblems.Erdos1049.RationalBaseContour
+public import Mathlib.Analysis.SpecialFunctions.Log.Deriv
+
+@[expose] public section
 
 /-!
 # Erdős #1049: the printed decimals that depend only on `log` and `π`

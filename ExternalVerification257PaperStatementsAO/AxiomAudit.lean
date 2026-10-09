@@ -1,4 +1,0 @@
-import Solutions.ExternalVerification257PaperStatementsAO
-
-#print axioms Erdos249257.ExternalVerification257PaperStatementsAO.mixedPrimePowerLayerTwo_supportCoeffInt
-#print axioms Erdos249257.ExternalVerification257PaperStatementsAO.mixedPrimePowerLayerTwo_twelve_fixture

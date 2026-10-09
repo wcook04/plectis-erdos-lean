@@ -1,8 +1,12 @@
-import ErdosProblems.Erdos1049.QProductBoundsR10
-import Mathlib.NumberTheory.ArithmeticFunction.Moebius
-import Mathlib.NumberTheory.ZetaValues
-import Mathlib.NumberTheory.Harmonic.Bounds
-import Mathlib
+module
+
+public import ErdosProblems.Erdos1049.QProductBoundsR10
+public import Mathlib.NumberTheory.ArithmeticFunction.Moebius
+public import Mathlib.NumberTheory.ZetaValues
+public import Mathlib.NumberTheory.Harmonic.Bounds
+public import Mathlib
+
+@[expose] public section
 
 /-!
 # G02 arithmetic suppliers: the summatory totient with an explicit error

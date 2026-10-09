@@ -1,7 +1,11 @@
-import ErdosProblems.Erdos1049.SourceBClearingR12
-import ErdosProblems.Erdos1049.ActualMomentGeneratingR12
-import ErdosProblems.Erdos1049.PaperLinearFormsR7
-import Mathlib
+module
+
+public import ErdosProblems.Erdos1049.SourceBClearingR12
+public import ErdosProblems.Erdos1049.ActualMomentGeneratingR12
+public import ErdosProblems.Erdos1049.PaperLinearFormsR7
+public import Mathlib
+
+@[expose] public section
 
 /-!
 # Absolutely convergent Lambert-window summation for the literal source B

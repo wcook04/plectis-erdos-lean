@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos1049.AllRow.Filtered
+module
+
+public import ErdosProblems.Erdos1049.AllRow.Filtered
+
+@[expose] public section
 
 /-!
 # An exact finite-state version of the filtered row identity

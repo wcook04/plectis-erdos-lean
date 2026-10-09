@@ -1,7 +1,11 @@
-import ErdosProblems.Erdos1049.SourceFiniteTransformR12
-import ErdosProblems.Erdos1049.SourceBClearingR12
-import ErdosProblems.Erdos1049.GaussianDegreeR12
-import Mathlib
+module
+
+public import ErdosProblems.Erdos1049.SourceFiniteTransformR12
+public import ErdosProblems.Erdos1049.SourceBClearingR12
+public import ErdosProblems.Erdos1049.GaussianDegreeR12
+public import Mathlib
+
+@[expose] public section
 
 /-!
 # Homogeneous finite transform and monomial cancellation tools

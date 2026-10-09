@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos1049.AllRow.SourcePolynomial
+module
+
+public import ErdosProblems.Erdos1049.AllRow.SourcePolynomial
+
+@[expose] public section
 
 /-!
 # All normalized source rows and the existing determinant consumer

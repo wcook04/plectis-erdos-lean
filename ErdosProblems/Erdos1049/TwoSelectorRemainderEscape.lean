@@ -1,7 +1,11 @@
-import ErdosProblems.Erdos1049.BezoutPluckerJets
-import Mathlib.Algebra.Order.Ring.Abs
-import Mathlib.Data.Real.Basic
-import Mathlib.Topology.MetricSpace.Pseudo.Defs
+module
+
+public import ErdosProblems.Erdos1049.BezoutPluckerJets
+public import Mathlib.Algebra.Order.Ring.Abs
+public import Mathlib.Data.Real.Basic
+public import Mathlib.Topology.MetricSpace.Pseudo.Defs
+
+@[expose] public section
 
 /-!
 # Erdős #1049: two-selector analytic-nullspace escape

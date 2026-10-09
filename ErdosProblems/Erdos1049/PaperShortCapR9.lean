@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos1049.PaperAsymptoticsR9
-import ErdosProblems.Erdos1049.PaperHomogenisationR7
+module
+
+public import ErdosProblems.Erdos1049.PaperAsymptoticsR9
+public import ErdosProblems.Erdos1049.PaperHomogenisationR7
+
+@[expose] public section
 
 /-!
 The complete short-note cap, as an compiled proof-source candidate.

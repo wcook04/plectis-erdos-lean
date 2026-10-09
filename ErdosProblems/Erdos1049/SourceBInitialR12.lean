@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos1049.SourceBMonomialR12
-import Mathlib
+module
+
+public import ErdosProblems.Erdos1049.SourceBMonomialR12
+public import Mathlib
+
+@[expose] public section
 
 /-!
 # Exact initial coefficient of the actual B numerator

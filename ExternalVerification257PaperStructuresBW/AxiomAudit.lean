@@ -1,3 +1,0 @@
-import Solutions.ExternalVerification257PaperStructuresBW
-
-#print axioms Erdos249257.ExternalVerification257PaperStructuresBW.paper_seam_escape_implies_half_membership

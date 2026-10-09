@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos1049.RootUnityLocalCancellationR13
-import Mathlib
+module
+
+public import ErdosProblems.Erdos1049.RootUnityLocalCancellationR13
+public import Mathlib
+
+@[expose] public section
 
 /-!
 # q-Lucas for the project's actual Pascal-recursive Gaussian

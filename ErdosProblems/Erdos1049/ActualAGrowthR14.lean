@@ -1,7 +1,11 @@
-import ErdosProblems.Erdos1049.ActualSourceRemainderR14
-import ErdosProblems.Erdos1049.GaussianDegreeR12
-import Mathlib.Analysis.SpecificLimits.Normed
-import Mathlib
+module
+
+public import ErdosProblems.Erdos1049.ActualSourceRemainderR14
+public import ErdosProblems.Erdos1049.GaussianDegreeR12
+public import Mathlib.Analysis.SpecificLimits.Normed
+public import Mathlib
+
+@[expose] public section
 
 /-!
 # Fixed-base growth of the actual alternating A polynomial

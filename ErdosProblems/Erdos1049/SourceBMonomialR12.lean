@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos1049.SourceHomogeneousR12
-import Mathlib
+module
+
+public import ErdosProblems.Erdos1049.SourceHomogeneousR12
+public import Mathlib
+
+@[expose] public section
 
 /-!
 # The actual B monomial cancellation

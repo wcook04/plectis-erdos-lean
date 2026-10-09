@@ -1,6 +1,10 @@
-import ErdosProblems.Erdos1049.FiniteResidueInterpolationR14
-import ErdosProblems.Erdos1049.QProductBoundsR10
-import Mathlib
+module
+
+public import ErdosProblems.Erdos1049.FiniteResidueInterpolationR14
+public import ErdosProblems.Erdos1049.QProductBoundsR10
+public import Mathlib
+
+@[expose] public section
 
 /-!
 # Reciprocal factorials and reflected finite products

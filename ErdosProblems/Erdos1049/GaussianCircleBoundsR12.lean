@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos1049.GaussianDegreeR12
-import Mathlib
+module
+
+public import ErdosProblems.Erdos1049.GaussianDegreeR12
+public import Mathlib
+
+@[expose] public section
 
 /-!
 # Actual source A on a complex circle

@@ -1,13 +1,17 @@
-import Mathlib.Data.ZMod.Basic
-import Mathlib.RingTheory.Coprime.Basic
-import Mathlib.Algebra.BigOperators.Group.Finset.Basic
-import Mathlib.Algebra.Module.BigOperators
-import Mathlib.Algebra.Module.Prod
-import Mathlib.Data.Fintype.Pi
-import Lean.Elab.Tactic.Omega
-import Mathlib.Tactic.Choose
-import Mathlib.Tactic.Push
-import Mathlib.Tactic.Ring
+module
+
+public import Mathlib.Data.ZMod.Basic
+public import Mathlib.RingTheory.Coprime.Basic
+public import Mathlib.Algebra.BigOperators.Group.Finset.Basic
+public import Mathlib.Algebra.Module.BigOperators
+public import Mathlib.Algebra.Module.Prod
+public import Mathlib.Data.Fintype.Pi
+public import Lean.Elab.Tactic.Omega
+public import Mathlib.Tactic.Choose
+public import Mathlib.Tactic.Push
+public import Mathlib.Tactic.Ring
+
+@[expose] public section
 
 /-!
 # Erdős #1049: the Bézout–Plücker normal form for endpoint jets

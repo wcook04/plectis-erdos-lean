@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos1049.QProductBoundsR10
-import ErdosProblems.Erdos1049.PaperAsymptoticsR9
+module
+
+public import ErdosProblems.Erdos1049.QProductBoundsR10
+public import ErdosProblems.Erdos1049.PaperAsymptoticsR9
+
+@[expose] public section
 
 /-!
 # The actual positive 2004 source series in direction (14,12,14;27)

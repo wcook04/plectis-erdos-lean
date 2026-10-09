@@ -1,4 +1,0 @@
-import Solutions.ExternalVerification243PaperStatementsB
-
-#print axioms Erdos249257.ExternalVerification243PaperStatementsB.original_coordinate_inclusive_one
-#print axioms Erdos249257.ExternalVerification243PaperStatementsB.original_coordinate_inclusive_one_pointwise

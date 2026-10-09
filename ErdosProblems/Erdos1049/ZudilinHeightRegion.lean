@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos1049.RationalBaseLambert
-import Mathlib.Analysis.Real.Pi.Bounds
+module
+
+public import ErdosProblems.Erdos1049.RationalBaseLambert
+public import Mathlib.Analysis.Real.Pi.Bounds
+
+@[expose] public section
 
 /-!
 # Erdős #1049: elementary height-region certificates

@@ -1,8 +1,12 @@
-import ErdosProblems.Erdos1049.PaperRankTwoCapR7
-import Mathlib.Analysis.Asymptotics.Defs
-import Mathlib.Analysis.SpecialFunctions.Log.Basic
-import Mathlib.Analysis.SpecialFunctions.Pow.Real
-import Mathlib.Tactic
+module
+
+public import ErdosProblems.Erdos1049.PaperRankTwoCapR7
+public import Mathlib.Analysis.Asymptotics.Defs
+public import Mathlib.Analysis.SpecialFunctions.Log.Basic
+public import Mathlib.Analysis.SpecialFunctions.Pow.Real
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-!
 Quadratic asymptotic transfer, revision of the round-8 return.

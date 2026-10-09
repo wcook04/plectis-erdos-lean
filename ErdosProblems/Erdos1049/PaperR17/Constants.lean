@@ -1,6 +1,10 @@
-import ErdosProblems.Erdos1049.G02SourceRatesR16
-import ErdosProblems.Erdos1049.MeasureConstantsR10
-import ErdosProblems.Erdos1049.FirstNewBaseR10
+module
+
+public import ErdosProblems.Erdos1049.G02SourceRatesR16
+public import ErdosProblems.Erdos1049.MeasureConstantsR10
+public import ErdosProblems.Erdos1049.FirstNewBaseR10
+
+@[expose] public section
 
 /-!
 # Exact identification of the supplier and retained-paper constants

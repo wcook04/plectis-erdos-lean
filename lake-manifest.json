@@ -111,7 +111,7 @@
       "configFile": "lakefile.toml"
     }
   ],
-  "name": "erdos257_period_noncollapse",
+  "name": "erdos1049_rational_base_region",
   "lakeDir": ".lake",
   "fixedToolchain": false
 }

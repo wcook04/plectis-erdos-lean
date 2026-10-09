@@ -1,3 +1,0 @@
-import Solutions.ExternalVerification249PaperStatementsE
-
-#print axioms Erdos249257.ExternalVerification249PaperStatementsE.fiveQuarter_comparison_rational_with_carryRank_floor

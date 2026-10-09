@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos1049.QuadraticMeasureR10
-import Mathlib
+module
+
+public import ErdosProblems.Erdos1049.QuadraticMeasureR10
+public import Mathlib
+
+@[expose] public section
 
 /-!
 # The supremum definition of the irrationality exponent

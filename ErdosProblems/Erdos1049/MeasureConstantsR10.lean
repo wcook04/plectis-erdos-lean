@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos1049.RationalBaseContour
-import ErdosProblems.Erdos1049.QuadraticMeasureR10
+module
+
+public import ErdosProblems.Erdos1049.RationalBaseContour
+public import ErdosProblems.Erdos1049.QuadraticMeasureR10
+
+@[expose] public section
 
 /-!
 # Exact constants for the power-uniform 31/4 bound
