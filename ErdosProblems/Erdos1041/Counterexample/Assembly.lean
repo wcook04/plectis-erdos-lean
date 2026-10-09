@@ -1,10 +1,14 @@
-import Mathlib
-import ErdosProblems.Erdos1041.Counterexample.Defs
-import ErdosProblems.Erdos1041.Counterexample.Components
-import ErdosProblems.Erdos1041.Counterexample.Bottleneck
-import ErdosProblems.Erdos1041.Counterexample.InstanceCritical
-import ErdosProblems.Erdos1041.Counterexample.InstanceConnectivity
-import ErdosProblems.Erdos1041.Counterexample.InstanceBarriers
+module
+
+public import Mathlib
+public import ErdosProblems.Erdos1041.Counterexample.Defs
+public import ErdosProblems.Erdos1041.Counterexample.Components
+public import ErdosProblems.Erdos1041.Counterexample.Bottleneck
+public import ErdosProblems.Erdos1041.Counterexample.InstanceCritical
+public import ErdosProblems.Erdos1041.Counterexample.InstanceConnectivity
+public import ErdosProblems.Erdos1041.Counterexample.InstanceBarriers
+
+@[expose] public section
 
 /-! External source: ani, erdosproblems.com forum thread 1041, 7 Sept 2026.
 Formalisation of §5 (the length obstruction) of `ani_degree7_counterexample.tex`. -/

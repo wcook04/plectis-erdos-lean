@@ -1,16 +1,20 @@
 /-
 Copyright (c) 2026. Released under Apache 2.0 license.
 -/
-import Mathlib.Algebra.Polynomial.Derivative
-import Mathlib.Algebra.Polynomial.Div
-import Mathlib.Algebra.Polynomial.Roots
-import Mathlib.Analysis.SpecialFunctions.Complex.Log
-import Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic
-import Mathlib.Analysis.SpecialFunctions.Pow.Real
-import Mathlib.Topology.EMetricSpace.BoundedVariation
-import Mathlib.Topology.Connected.LocallyConnected
-import Mathlib.Tactic.NormNum
-import Mathlib.Tactic.Ring
+module
+
+public import Mathlib.Algebra.Polynomial.Derivative
+public import Mathlib.Algebra.Polynomial.Div
+public import Mathlib.Algebra.Polynomial.Roots
+public import Mathlib.Analysis.SpecialFunctions.Complex.Log
+public import Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic
+public import Mathlib.Analysis.SpecialFunctions.Pow.Real
+public import Mathlib.Topology.EMetricSpace.BoundedVariation
+public import Mathlib.Topology.Connected.LocallyConnected
+public import Mathlib.Tactic.NormNum
+public import Mathlib.Tactic.Ring
+
+@[expose] public section
 
 /-!
 External source: ani, erdosproblems.com forum thread 1041, 7 Sept 2026.

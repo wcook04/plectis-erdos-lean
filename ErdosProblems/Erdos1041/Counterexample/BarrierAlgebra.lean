@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos1041.Counterexample.Defs
-import Mathlib
+module
+
+public import ErdosProblems.Erdos1041.Counterexample.Defs
+public import Mathlib
+
+@[expose] public section
 /-! External source: ani, erdosproblems.com forum thread 1041, 7 Sept 2026.
 Explicit separating barriers replacing the Riemann-Hurwitz step of Lemma 2.1, at `s = 10⁻⁶`. -/
 

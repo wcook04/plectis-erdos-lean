@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos1041.Counterexample.Assembly
+module
+
+public import ErdosProblems.Erdos1041.Counterexample.Assembly
+
+@[expose] public section
 
 /-!
 Catalogue-shaped adapters for the Formal Conjectures 1041 contribution.

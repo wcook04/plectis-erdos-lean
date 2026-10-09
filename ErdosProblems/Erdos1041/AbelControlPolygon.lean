@@ -1,8 +1,12 @@
-import Mathlib.Tactic
+module
+
+public import Mathlib.Tactic
 -- Lean 4.30.0 / Mathlib c5ea0035 no longer reaches `Complex.isAlgClosed` through `Mathlib.Tactic`,
 -- so the `IsAlgClosed ℂ` instance this file's proofs use is imported explicitly. Statements are
 -- unchanged.
-import Mathlib.Analysis.Complex.Polynomial.Basic
+public import Mathlib.Analysis.Complex.Polynomial.Basic
+
+@[expose] public section
 
 /-!
 # Erdős #1041: the Abel control polygon and the all-degree monic trinomial family

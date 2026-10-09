@@ -1,3 +1,0 @@
-import Solutions.ExternalVerification249PaperStatementsBL
-
-#print axioms Erdos249257.ExternalVerification249PaperStatementsBL.tailOrbitFirstExp_re_eq

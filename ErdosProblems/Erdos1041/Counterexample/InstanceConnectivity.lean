@@ -1,9 +1,13 @@
-import ErdosProblems.Erdos1041.Counterexample.Defs
-import ErdosProblems.Erdos1041.Counterexample.InstanceCritical
-import Mathlib.Tactic
-import Mathlib.Topology.Connected.PathConnected
-import Mathlib.Analysis.Real.Pi.Bounds
-import Mathlib.Analysis.Calculus.Deriv.Polynomial
+module
+
+public import ErdosProblems.Erdos1041.Counterexample.Defs
+public import ErdosProblems.Erdos1041.Counterexample.InstanceCritical
+public import Mathlib.Tactic
+public import Mathlib.Topology.Connected.PathConnected
+public import Mathlib.Analysis.Real.Pi.Bounds
+public import Mathlib.Analysis.Calculus.Deriv.Polynomial
+
+@[expose] public section
 
 /-! External source: ani, erdosproblems.com forum thread 1041, 7 Sept 2026.
 Formalisation of the connections to the roots (§4.2) of `ani_degree7_counterexample.tex`

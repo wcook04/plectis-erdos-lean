@@ -1,4 +1,0 @@
-import Solutions.ExternalVerification1049PaperStructuresQ
-
-#print axioms Erdos249257.ExternalVerification1049PaperStructuresQ.exists_quadratic_source_height_bound
-#print axioms Erdos249257.ExternalVerification1049PaperStructuresQ.maxPairHeight_source_eq

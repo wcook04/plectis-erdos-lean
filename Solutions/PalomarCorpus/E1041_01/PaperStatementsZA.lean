@@ -3,13 +3,17 @@ Copyright (c) 2026 Will Cook. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Will Cook
 -/
-import Mathlib
-import ErdosProblems.Erdos1041.PaperAnalyticTargets
-import ErdosProblems.Erdos1041.PaperCompleteR21.ConstantFactorAreaCriteria
-import ErdosProblems.Erdos1041.PaperCompleteR21.LowCriticalScaleTransport
-import ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent
-import ErdosProblems.Erdos1041.PaperCurveAssembly
-import Solutions.PalomarCorpus.E1041_01.Statement
+module
+
+public import Mathlib
+public import ErdosProblems.Erdos1041.PaperAnalyticTargets
+public import ErdosProblems.Erdos1041.PaperCompleteR21.ConstantFactorAreaCriteria
+public import ErdosProblems.Erdos1041.PaperCompleteR21.LowCriticalScaleTransport
+public import ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent
+public import ErdosProblems.Erdos1041.PaperCurveAssembly
+public import Solutions.PalomarCorpus.E1041_01.Statement
+
+@[expose] public section
 
 open Polynomial
 open Set

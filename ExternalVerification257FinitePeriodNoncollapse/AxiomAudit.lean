@@ -1,4 +1,0 @@
-import Solutions.ExternalVerification257FinitePeriodNoncollapse
-
-#print axioms Erdos249257.ExternalVerification257FinitePeriodNoncollapse.finite_period_noncollapse_rat_den
-#print axioms Erdos249257.ExternalVerification257FinitePeriodNoncollapse.lcm_lt_den_finiteErdosSum

@@ -1,9 +1,13 @@
-import ErdosProblems.Erdos1041.Counterexample.Defs
-import Mathlib.Tactic
-import Mathlib.Tactic.ComputeDegree
-import Mathlib.Topology.Order.IntermediateValue
-import Mathlib.Topology.MetricSpace.Contracting
-import Mathlib.Analysis.Real.Pi.Bounds
+module
+
+public import ErdosProblems.Erdos1041.Counterexample.Defs
+public import Mathlib.Tactic
+public import Mathlib.Tactic.ComputeDegree
+public import Mathlib.Topology.Order.IntermediateValue
+public import Mathlib.Topology.MetricSpace.Contracting
+public import Mathlib.Analysis.Real.Pi.Bounds
+
+@[expose] public section
 
 /-! External source: ani, erdosproblems.com forum thread 1041, 7 Sept 2026.
 Formalisation of the concrete critical configuration of `ani_degree7_counterexample.tex`

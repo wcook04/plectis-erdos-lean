@@ -1,3 +1,0 @@
-import Solutions.ExternalVerification249PaperStructuresP
-
-#print axioms Erdos249257.ExternalVerification249PaperStructuresP.linearIndependent_of_separatedMinorCertificate

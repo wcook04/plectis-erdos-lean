@@ -111,7 +111,7 @@
       "configFile": "lakefile.toml"
     }
   ],
-  "name": "erdos257_period_noncollapse",
+  "name": "erdos1041_lemniscate_counterexample",
   "lakeDir": ".lake",
   "fixedToolchain": false
 }

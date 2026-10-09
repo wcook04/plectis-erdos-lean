@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos1041.PaperTrinomial
+module
+
+public import ErdosProblems.Erdos1041.PaperTrinomial
+
+@[expose] public section
 
 /-!
 # Erdős 1041: the whole all-degree monic-trinomial statement

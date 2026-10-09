@@ -1,2 +1,0 @@
-import Solutions.ExternalVerification257TerminalScaledVanishing
-#print axioms Erdos249257.ExternalVerification257TerminalScaledVanishing.terminalScaledVanishing_completeCounterexample

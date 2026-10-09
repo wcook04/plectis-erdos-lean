@@ -1,6 +1,10 @@
-import ErdosProblems.Erdos1041.PaperCurveAssembly
-import ErdosProblems.Erdos1041.PaperAnalyticTargets
-import Mathlib
+module
+
+public import ErdosProblems.Erdos1041.PaperCurveAssembly
+public import ErdosProblems.Erdos1041.PaperAnalyticTargets
+public import Mathlib
+
+@[expose] public section
 
 /-!
 # Erdős 1041: the area/perimeter cluster

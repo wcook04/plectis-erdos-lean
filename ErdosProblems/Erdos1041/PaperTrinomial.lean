@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos1041.PaperCurveAssembly
-import ErdosProblems.Erdos1041.AbelControlPolygon
+module
+
+public import ErdosProblems.Erdos1041.PaperCurveAssembly
+public import ErdosProblems.Erdos1041.AbelControlPolygon
+
+@[expose] public section
 
 /-!
 # The complete displayed trinomial statement

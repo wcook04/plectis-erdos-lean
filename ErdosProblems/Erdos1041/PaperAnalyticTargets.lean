@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos1041.PaperCurveAssembly
-import Mathlib
+module
+
+public import ErdosProblems.Erdos1041.PaperCurveAssembly
+public import Mathlib
+
+@[expose] public section
 
 /-!
 # Explicit, UNPROVED targets for the remaining analytic assemblies

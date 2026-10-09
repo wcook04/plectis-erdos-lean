@@ -1,3 +1,0 @@
-import Solutions.ExternalVerification1041PaperStatementsA
-
-#print axioms Erdos249257.ExternalVerification1041PaperStatementsA.erdos1041_ani_degree_seven

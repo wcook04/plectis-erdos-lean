@@ -1,3 +1,0 @@
-import Solutions.ExternalVerification251PaperStatementsL
-
-#print axioms Erdos249257.ExternalVerification251PaperStatementsL.actual_free_pair_criterion

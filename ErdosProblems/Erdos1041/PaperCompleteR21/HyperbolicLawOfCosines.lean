@@ -1,4 +1,8 @@
-import Mathlib
+module
+
+public import Mathlib
+
+@[expose] public section
 
 /-!
 # Erdős #1041: the hyperbolic law of cosines, and the two packing environments unconditionally

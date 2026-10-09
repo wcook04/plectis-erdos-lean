@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos1041.PaperAnalyticTargets
+module
+
+public import ErdosProblems.Erdos1041.PaperAnalyticTargets
+
+@[expose] public section
 
 /-!
 # Erdős 1041: the scale-free low-critical corollaries

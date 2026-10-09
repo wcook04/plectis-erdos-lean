@@ -1,5 +1,9 @@
-import Mathlib
-import ErdosProblems.Erdos1041.Counterexample.Defs
+module
+
+public import Mathlib
+public import ErdosProblems.Erdos1041.Counterexample.Defs
+
+@[expose] public section
 
 /-! External source: ani, erdosproblems.com forum thread 1041, 7 Sept 2026.
 Formalisation of Lemma 2.1 from `ani_degree7_counterexample.tex`. -/

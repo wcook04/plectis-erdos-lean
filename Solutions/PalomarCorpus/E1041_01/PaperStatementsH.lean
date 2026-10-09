@@ -3,9 +3,13 @@ Copyright (c) 2026 Will Cook. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Will Cook
 -/
-import Mathlib
-import ErdosProblems.Erdos1041.PaperTrinomial
-import Solutions.PalomarCorpus.E1041_01.Statement
+module
+
+public import Mathlib
+public import ErdosProblems.Erdos1041.PaperTrinomial
+public import Solutions.PalomarCorpus.E1041_01.Statement
+
+@[expose] public section
 
 open Set
 

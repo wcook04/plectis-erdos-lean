@@ -1,3 +1,0 @@
-import Solutions.ExternalVerification257PaperStructuresBA
-
-#print axioms Erdos249257.ExternalVerification257PaperStructuresBA.exists_laterProtectedExactLocalMersenneRow

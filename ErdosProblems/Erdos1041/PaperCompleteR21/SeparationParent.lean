@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos1041.PaperAnalyticTargets
+module
+
+public import ErdosProblems.Erdos1041.PaperAnalyticTargets
+
+@[expose] public section
 
 /-!
 # Erdős 1041: a sufficient condition for a length-`2` path

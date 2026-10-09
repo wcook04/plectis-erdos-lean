@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos1041.Counterexample.Assembly
+module
+
+public import ErdosProblems.Erdos1041.Counterexample.Assembly
+
+@[expose] public section
 
 /-! External source: ani, erdosproblems.com forum thread 1041, 7 Sept 2026. -/
 
