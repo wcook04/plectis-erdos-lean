@@ -1,7 +1,11 @@
-import ErdosProblems.Erdos269.ThreePrimeRunningLcm
-import ErdosProblems.Shared.IrrationalRotationStaircase
-import Mathlib.LinearAlgebra.Matrix.Determinant.Basic
-import Mathlib.Analysis.SpecialFunctions.Log.Base
+module
+
+public import ErdosProblems.Erdos269.ThreePrimeRunningLcm
+public import ErdosProblems.Shared.IrrationalRotationStaircase
+public import Mathlib.LinearAlgebra.Matrix.Determinant.Basic
+public import Mathlib.Analysis.SpecialFunctions.Log.Base
+
+@[expose] public section
 
 /-!
 # Erdős #269: the rank phase transition of the running-LCM kernel

@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos269.IntegralBranchExtinction
+module
+
+public import ErdosProblems.Erdos269.IntegralBranchExtinction
+
+@[expose] public section
 
 /-!
 # Erdős #269: the depth-`K` pinning telescope

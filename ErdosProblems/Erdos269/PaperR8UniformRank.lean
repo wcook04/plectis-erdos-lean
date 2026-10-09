@@ -1,8 +1,12 @@
-import ErdosProblems.Erdos269.PaperR7AnalyticInterfaces
-import Mathlib.Topology.ContinuousMap.Bounded.Normed
-import Mathlib.Analysis.Normed.Module.FiniteDimension
-import Mathlib.Topology.MetricSpace.Pseudo.Basic
-import Mathlib.Data.ENNReal.Real
+module
+
+public import ErdosProblems.Erdos269.PaperR7AnalyticInterfaces
+public import Mathlib.Topology.ContinuousMap.Bounded.Normed
+public import Mathlib.Analysis.Normed.Module.FiniteDimension
+public import Mathlib.Topology.MetricSpace.Pseudo.Basic
+public import Mathlib.Data.ENNReal.Real
+
+@[expose] public section
 
 /-!
 # The infinite uniform finite-rank obstruction

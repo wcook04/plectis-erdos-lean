@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos269.IntegralBranchExtinction
-import Mathlib.Analysis.SpecificLimits.Normed
+module
+
+public import ErdosProblems.Erdos269.IntegralBranchExtinction
+public import Mathlib.Analysis.SpecificLimits.Normed
+
+@[expose] public section
 
 /-!
 # Erdős #269: an explicit all-scale width for the normalized tail state

@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos269.DyadicOrderedTailRecurrence
+module
+
+public import ErdosProblems.Erdos269.DyadicOrderedTailRecurrence
+
+@[expose] public section
 
 /-!
 # Erdős #269: summability of the actual dyadic shell masses

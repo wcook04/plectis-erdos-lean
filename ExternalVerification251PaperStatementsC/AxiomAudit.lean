@@ -1,3 +1,0 @@
-import Solutions.ExternalVerification251PaperStatementsC
-
-#print axioms Erdos249257.ExternalVerification251PaperStatementsC.real_dyadic_orbit_eq_true_tail_iff

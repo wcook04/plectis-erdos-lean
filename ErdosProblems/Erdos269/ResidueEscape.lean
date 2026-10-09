@@ -1,5 +1,9 @@
-import Mathlib.Data.Int.ModEq
-import Mathlib.Tactic
+module
+
+public import Mathlib.Data.Int.ModEq
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-!
 # Erdős #269: the finite least-positive-residue obstruction

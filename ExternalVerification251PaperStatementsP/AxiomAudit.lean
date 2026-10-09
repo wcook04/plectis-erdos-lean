@@ -1,3 +1,0 @@
-import Solutions.ExternalVerification251PaperStatementsP
-
-#print axioms Erdos249257.ExternalVerification251PaperStatementsP.finite_small_pair

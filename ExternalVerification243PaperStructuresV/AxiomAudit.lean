@@ -1,4 +1,0 @@
-import Solutions.ExternalVerification243PaperStructuresV
-
-#print axioms Erdos249257.ExternalVerification243PaperStructuresV.canc_lt_of_amp_le
-#print axioms Erdos249257.ExternalVerification243PaperStructuresV.eventuallySylvester_of_amp_le

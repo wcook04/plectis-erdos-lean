@@ -3,11 +3,15 @@ Copyright (c) 2026 Will Cook. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Will Cook
 -/
-import Mathlib
-import ErdosProblems.Erdos269.PaperCompleteR20.RealBaseShortInterval
-import ErdosProblems.Erdos269.PaperCompleteR20.RealTwoPrimeKernel
-import ErdosProblems.Erdos269.ResidueEscape
-import Solutions.PalomarCorpus.E269_02.Statement
+module
+
+public import Mathlib
+public import ErdosProblems.Erdos269.PaperCompleteR20.RealBaseShortInterval
+public import ErdosProblems.Erdos269.PaperCompleteR20.RealTwoPrimeKernel
+public import ErdosProblems.Erdos269.ResidueEscape
+public import Solutions.PalomarCorpus.E269_02.Statement
+
+@[expose] public section
 
 /- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
 

@@ -1,6 +1,10 @@
-import ErdosProblems.Erdos269.KernelCarryRank
-import Mathlib.Data.ZMod.Basic
-import Mathlib.LinearAlgebra.Matrix.NonsingularInverse
+module
+
+public import ErdosProblems.Erdos269.KernelCarryRank
+public import Mathlib.Data.ZMod.Basic
+public import Mathlib.LinearAlgebra.Matrix.NonsingularInverse
+
+@[expose] public section
 
 /-!
 # Round 7: actual uniform minors modulo every admissible denominator

@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos269.PaperR7RationalBridge
+module
+
+public import ErdosProblems.Erdos269.PaperR7RationalBridge
+
+@[expose] public section
 
 /-!
 # The finite denominator collision bound

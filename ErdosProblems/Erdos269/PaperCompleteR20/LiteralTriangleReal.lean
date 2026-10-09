@@ -1,6 +1,10 @@
-import ErdosProblems.Erdos269.PaperCompleteR20.LiteralTriangle
-import Mathlib.Analysis.SpecialFunctions.Log.Base
-import Mathlib.Algebra.Order.Floor.Ring
+module
+
+public import ErdosProblems.Erdos269.PaperCompleteR20.LiteralTriangle
+public import Mathlib.Analysis.SpecialFunctions.Log.Base
+public import Mathlib.Algebra.Order.Floor.Ring
+
+@[expose] public section
 
 /-! Exact logarithmic coordinates and the paper's rectangle lower bound. -/
 

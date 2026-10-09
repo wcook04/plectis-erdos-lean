@@ -1,6 +1,10 @@
-import ErdosProblems.Erdos269.PaperR7RationalBridge
-import ErdosProblems.Erdos269.PaperR7BasicAssembly
-import ErdosProblems.Erdos269.JumpConstraintMajorant
+module
+
+public import ErdosProblems.Erdos269.PaperR7RationalBridge
+public import ErdosProblems.Erdos269.PaperR7BasicAssembly
+public import ErdosProblems.Erdos269.JumpConstraintMajorant
+
+@[expose] public section
 
 /-!
 # Round 7: exact window statements at the correct bounds

@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos269.BoundedRadixTailEscape
-import ErdosProblems.Erdos269.ThreePrimeRunningLcm
+module
+
+public import ErdosProblems.Erdos269.BoundedRadixTailEscape
+public import ErdosProblems.Erdos269.ThreePrimeRunningLcm
+
+@[expose] public section
 
 /-!
 # Erdős #269: actual dyadic-radix tail escape

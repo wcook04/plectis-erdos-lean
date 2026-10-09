@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos269.DyadicShellSummability
+module
+
+public import ErdosProblems.Erdos269.DyadicShellSummability
+
+@[expose] public section
 
 /-!
 # The actual shell numerator as a finite weighted triangle

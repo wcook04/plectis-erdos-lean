@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos269.PaperR8RankMajorant
-import ErdosProblems.Erdos269.JumpConstraintMajorant
+module
+
+public import ErdosProblems.Erdos269.PaperR8RankMajorant
+public import ErdosProblems.Erdos269.JumpConstraintMajorant
+
+@[expose] public section
 
 /-!
 # The jump-constrained bound for the literal tail

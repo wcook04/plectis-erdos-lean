@@ -1,17 +1,19 @@
 version: v0.4
 project:
   name: Infinite rank of the three-prime running-LCM kernel
-  description: For pairwise distinct primes p, q and r, the three-prime reciprocal running-LCM kernel
-    has nonzero square minors of every order, with row and column indices chosen independently of the
-    third exponent. Consequently it admits no finite rational separated representation. The selected entry
-    also proves an exact rank formula for threshold-column matrices, an explicit two-by-two example at
-    2,3,5, separation in the two-prime comparison, and the four-base dyadic recurrence for the actual
-    2,3,5 sum. A uniform finite-rank approximation statement concerns the rescaled carry matrix. The stronger
-    unit-determinant modular minors are in E269_08 and are outside this configuration. Infinite kernel
-    rank does not prove irrationality of the running-LCM series. In the selected rank theorem the determinants
-    remain nonzero for every fixed third exponent k using the same injective row and column maps. The
-    distance theorem concerns a rescaled real carry matrix and is not an approximation lower bound for
-    the original summable kernel.
+  description: For pairwise distinct primes p, q and r, the three-prime reciprocal
+    running-LCM kernel has nonzero square minors of every order, with row and column
+    indices chosen independently of the third exponent. Consequently it admits no
+    finite rational separated representation. The selected entry also proves an exact
+    rank formula for threshold-column matrices, an explicit two-by-two example at
+    2,3,5, separation in the two-prime comparison, and the four-base dyadic recurrence
+    for the actual 2,3,5 sum. A uniform finite-rank approximation statement concerns
+    the rescaled carry matrix. The stronger unit-determinant modular minors are in
+    E269_08 and are outside this configuration. Infinite kernel rank does not prove
+    irrationality of the running-LCM series. In the selected rank theorem the determinants
+    remain nonzero for every fixed third exponent k using the same injective row and
+    column maps. The distance theorem concerns a rescaled real carry matrix and is
+    not an approximation lower bound for the original summable kernel.
   authors:
   - Will Cook
   license: Apache-2.0
@@ -27,15 +29,17 @@ classification:
   - 15A03
   - 11J72
 sources:
-- title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
+- title: Formal reductions, obstruction theorems, and verified subfamilies for eight
+    Erdős problems
   authors:
   - Will Cook
   id: https://github.com/wcook04/plectis-erdos
   type: other
   relationship: background
-  note: The selected Lean theorems formalise the three-prime rank and actual dyadic recurrence arguments
-    in the linked papers. Fan’s earlier two-prime factorisation is credited as the comparison case. The
-    modular-minor strengthening, residue criteria and irrationality question are outside this single configuration.
+  note: The selected Lean theorems formalise the three-prime rank and actual dyadic
+    recurrence arguments in the linked papers. Fan’s earlier two-prime factorisation
+    is credited as the comparison case. The modular-minor strengthening, residue criteria
+    and irrationality question are outside this single configuration.
   license: Apache-2.0
   author_endorsement: participated
 - title: No Finite Separable Representation at Three Prime Generators
@@ -44,8 +48,9 @@ sources:
   id: https://github.com/wcook04/plectis-erdos/blob/147f3f1da400a84dcb3013ea6cef75dc8f382b09/paper/269/erdos-269-three-prime-running-lcm.pdf
   type: paper
   relationship: formalizes
-  note: The no-finite-separation theorem, threshold rank and actual dyadic recurrence are selected. The
-    modular-minor corollary and later residue criteria in the same paper are outside this configuration.
+  note: The no-finite-separation theorem, threshold rank and actual dyadic recurrence
+    are selected. The modular-minor corollary and later residue criteria in the same
+    paper are outside this configuration.
   license: unknown
   author_endorsement: participated
 - title: 'The Three-Prime Running LCM: Kernel Rank and Tail Arithmetic'
@@ -54,8 +59,8 @@ sources:
   id: https://github.com/wcook04/plectis-erdos/blob/147f3f1da400a84dcb3013ea6cef75dc8f382b09/paper/269/erdos269-running-lcm-reasoning-surface.pdf
   type: paper
   relationship: formalizes
-  note: Gives the three-prime rank mechanism and actual-orbit calculations. Only declarations named by
-    E269_02 are selected.
+  note: Gives the three-prime rank mechanism and actual-orbit calculations. Only declarations
+    named by E269_02 are selected.
   license: unknown
   author_endorsement: participated
 - title: 'Erdős Problem #269 discussion: two-prime separation'
@@ -64,8 +69,9 @@ sources:
   id: https://www.erdosproblems.com/forum/thread/269#post-7218
   type: web discussion
   relationship: background
-  note: Fan’s 26 June 2026 post gives the repeated two-prime factorisation used for comparison. Credit
-    it as prior work; the selected three-prime infinite-rank theorem is separate.
+  note: Fan’s 26 June 2026 post gives the repeated two-prime factorisation used for
+    comparison. Credit it as prior work; the selected three-prime infinite-rank theorem
+    is separate.
   license: unknown
   author_endorsement: not-contacted
 - title: Erdős Problems catalogue
@@ -74,8 +80,9 @@ sources:
   id: https://www.erdosproblems.com
   type: web discussion
   relationship: background
-  note: The catalogue states the running-LCM irrationality question. The selected kernel nonseparation
-    result is structural and does not decide the arithmetic nature of the sum.
+  note: The catalogue states the running-LCM irrationality question. The selected
+    kernel nonseparation result is structural and does not decide the arithmetic nature
+    of the sum.
   license: unknown
   author_endorsement: not-contacted
 - title: Mathlib
@@ -86,20 +93,25 @@ sources:
   license: Apache-2.0
   author_endorsement: n/a
 status:
-  scope: 'One Comparator configuration selecting the 13 theorems listed in PalomarCorpus/E269_02/comparator.json,
-    from the Lean development for Erdős problem #269. The problem''s theorems are packed, in the order
-    the papers state them, into the 11 entries PalomarCorpus/E269_01 to PalomarCorpus/E269_11, and each
-    theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification269*
-    directories are internal regression inventory and are not selected.'
+  scope: A selected source snapshot containing exactly the thirteen declarations listed
+    in PalomarCorpus/E269_02/comparator.json and their complete local Challenge/Solution
+    import closure. All mathematical source comes from wcook04/plectis-erdos-lean
+    commit 6bc4913c4ca42ac48829ad2d89985f8516361cb5, with only Lean module visibility
+    syntax added. The canonical full corpus and its other entries remain outside this
+    snapshot. This snapshot includes the substantive proof bodies, not a remote proof
+    dependency. The stronger E269_08 modular-minor configuration remains outside this
+    selection.
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
   trusted_challenge_sorry_count: 13
-  sorry_boundary: The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E269_02/Challenge.lean,
-    and the Solution modules contain no sorry. Comparator and kernel outcomes are commit-specific and
-    are recorded separately from this source metadata.
-  axiom_audit_status: The permitted axioms are propext, Quot.sound and Classical.choice. Axiom-audit outcomes
-    are commit-specific and belong in separate receipts; this source field is not an audit receipt.
+  sorry_boundary: The only deliberate placeholders are the trusted theorem bodies
+    in PalomarCorpus/E269_02/Challenge.lean, and the Solution modules contain no sorry.
+    Comparator and kernel outcomes are commit-specific and are recorded separately
+    from this source metadata.
+  axiom_audit_status: The permitted axioms are propext, Quot.sound and Classical.choice.
+    Axiom-audit outcomes are commit-specific and belong in separate receipts; this
+    source field is not an audit receipt.
   permitted_axiom_budget:
   - propext
   - Quot.sound
@@ -158,10 +170,12 @@ status:
     sorry_count: 0
     comparator_config: PalomarCorpus/E269_02/comparator.json
   development_status: substantive
-  local_proof_provenance: the proof modules ErdosProblems.Erdos269 in this repository, imported by Solutions.PalomarCorpus.E269_02;
-    the Solutions.ExternalVerification269* family modules are a regression mirror of the same proofs and
-    are not imported by this configuration
-  canonical_claim_status: problem-level Comparator entry over substantive Lean in this repository
+  local_proof_provenance: The substantive ErdosProblems.Erdos269 and ErdosProblems.Shared
+    modules are included locally and imported by Solutions.PalomarCorpus.E269_02.
+    Historical ExternalVerification269 regression mirrors remain in the canonical
+    full corpus and are outside this selected snapshot.
+  canonical_claim_status: problem-level Comparator entry over substantive Lean in
+    this repository
 automation:
   methods:
   - method: manual
@@ -182,8 +196,9 @@ automation:
 review:
   status: self-assessed
   reviewers: []
-  notes: The author selected the declarations and remains responsible for their mathematical claims. The
-    selected Challenge and Solution sources were inspected locally at Comparator commit a2faa350b45ae08d0e70f5a6ec54943018f8c2b3.
-    This editorial pass is not an independent proof audit, external peer review, or registration. Commit-specific
+  notes: The author selected the declarations and remains responsible for their mathematical
+    claims. The selected Challenge and Solution sources were inspected locally at
+    Comparator commit a2faa350b45ae08d0e70f5a6ec54943018f8c2b3. This editorial pass
+    is not an independent proof audit, external peer review, or registration. Commit-specific
     Comparator and kernel outcomes are recorded in separate exact-input receipts.
 acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

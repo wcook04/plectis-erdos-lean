@@ -1,3 +1,0 @@
-import Solutions.ExternalVerification251PaperStatementsJ
-
-#print axioms Erdos249257.ExternalVerification251PaperStatementsJ.real_orbit_exact_den_and_shift

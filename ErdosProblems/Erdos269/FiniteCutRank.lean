@@ -1,6 +1,10 @@
-import Mathlib.Data.Fintype.BigOperators
-import Mathlib.LinearAlgebra.LinearIndependent.Basic
-import Mathlib.Tactic
+module
+
+public import Mathlib.Data.Fintype.BigOperators
+public import Mathlib.LinearAlgebra.LinearIndependent.Basic
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-!
 # Finite cut-rank algebra for the three-prime carry matrix

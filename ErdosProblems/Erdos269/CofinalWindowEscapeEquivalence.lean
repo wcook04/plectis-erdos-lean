@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos269.RationalityCarryBridge
+module
+
+public import ErdosProblems.Erdos269.RationalityCarryBridge
+
+@[expose] public section
 
 /-!
 # Erdős #269: the cofinal local-window escape producer is *equivalent* to the target

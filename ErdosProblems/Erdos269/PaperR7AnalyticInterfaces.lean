@@ -1,6 +1,10 @@
-import ErdosProblems.Erdos269.KernelCarryRank
-import Mathlib.RingTheory.Algebraic.Basic
-import Mathlib.Tactic
+module
+
+public import ErdosProblems.Erdos269.KernelCarryRank
+public import Mathlib.RingTheory.Algebraic.Basic
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-!
 # Round 7: proved algebra around explicitly unresolved analytic inputs

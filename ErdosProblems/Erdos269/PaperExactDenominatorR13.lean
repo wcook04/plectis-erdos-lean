@@ -1,7 +1,11 @@
-import ErdosProblems.Erdos269.PaperR7RationalBridge
-import Mathlib.Data.Rat.Lemmas
-import Mathlib.Data.Nat.Factorization.Basic
-import Mathlib.Data.Nat.Find
+module
+
+public import ErdosProblems.Erdos269.PaperR7RationalBridge
+public import Mathlib.Data.Rat.Lemmas
+public import Mathlib.Data.Nat.Factorization.Basic
+public import Mathlib.Data.Nat.Find
+
+@[expose] public section
 
 /-!
 # Exact reduced denominators for the paper tail states

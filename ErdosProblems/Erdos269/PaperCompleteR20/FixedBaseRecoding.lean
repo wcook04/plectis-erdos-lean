@@ -1,8 +1,12 @@
-import ErdosProblems.Erdos269.PaperR8RankMajorant
+module
+
+public import ErdosProblems.Erdos269.PaperR8RankMajorant
 -- `Summable.norm` (the alias of `summable_norm_iff`) no longer arrives transitively on Lean 4.30.0
 -- / Mathlib c5ea0035, and dot notation no longer resolves it because `Summable` now unfolds to
 -- `Exists`. Imported explicitly and applied by name below. Statements are unchanged.
-import Mathlib.Analysis.Normed.Module.FiniteDimension
+public import Mathlib.Analysis.Normed.Module.FiniteDimension
+
+@[expose] public section
 
 /-!
 # Direct fixed-base recoding of the actual series

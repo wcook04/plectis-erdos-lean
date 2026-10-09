@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos269.PaperR7ActualOrbit
-import ErdosProblems.Erdos269.PaperR9SourceCounts
+module
+
+public import ErdosProblems.Erdos269.PaperR7ActualOrbit
+public import ErdosProblems.Erdos269.PaperR9SourceCounts
+
+@[expose] public section
 
 /-! The full dyadic alphabet statement includes its non-positional warning.
 The printed scale-four example is checked by the Lean kernel after transport

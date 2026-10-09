@@ -1,3 +1,0 @@
-import Solutions.ExternalVerification249TermwiseDyadicVacuous
-
-#print axioms Erdos249257.ExternalVerification249TermwiseDyadicVacuous.termwise_dyadic_window_vacuous

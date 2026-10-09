@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos269.SharpWindowCapR10
+module
+
+public import ErdosProblems.Erdos269.SharpWindowCapR10
+
+@[expose] public section
 
 /-! Narrow long-cap endpoint composition. No historical broad bridge import,
 no missing producer, and no alteration of the onset or window conventions. -/

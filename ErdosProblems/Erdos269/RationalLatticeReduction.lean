@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos269.DyadicShellSummability
-import ErdosProblems.Erdos269.ThreePrimeRunningLcm
+module
+
+public import ErdosProblems.Erdos269.DyadicShellSummability
+public import ErdosProblems.Erdos269.ThreePrimeRunningLcm
+
+@[expose] public section
 
 /-!
 # Erdős #269: rationality forces an all-scale lattice, and the collision target

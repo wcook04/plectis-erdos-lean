@@ -1,6 +1,10 @@
-import ErdosProblems.Erdos269.FiniteCutRank
-import Mathlib.LinearAlgebra.Matrix.Rank
-import Mathlib.LinearAlgebra.Dimension.Constructions
+module
+
+public import ErdosProblems.Erdos269.FiniteCutRank
+public import Mathlib.LinearAlgebra.Matrix.Rank
+public import Mathlib.LinearAlgebra.Dimension.Constructions
+
+@[expose] public section
 
 /-!
 # Paper-complete campaign, round 7: the complete finite cut-rank formula

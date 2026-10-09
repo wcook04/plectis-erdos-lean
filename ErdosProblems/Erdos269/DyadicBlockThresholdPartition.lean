@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos269.DyadicBlockMassIdentity
-import ErdosProblems.Erdos269.ThreePrimeRunningLcm
+module
+
+public import ErdosProblems.Erdos269.DyadicBlockMassIdentity
+public import ErdosProblems.Erdos269.ThreePrimeRunningLcm
+
+@[expose] public section
 
 /-!
 # Erdős #269: all-scale internal-threshold partition

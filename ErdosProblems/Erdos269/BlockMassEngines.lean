@@ -1,6 +1,10 @@
-import Mathlib.Algebra.BigOperators.Group.List.Basic
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.Ring
+module
+
+public import Mathlib.Algebra.BigOperators.Group.List.Basic
+public import Mathlib.Tactic.Linarith
+public import Mathlib.Tactic.Ring
+
+@[expose] public section
 
 /-!
 # Erdős #269: the two exact engines behind the block-digit formula

@@ -1,5 +1,9 @@
-import Mathlib.Data.Nat.Log
-import Mathlib.Tactic
+module
+
+public import Mathlib.Data.Nat.Log
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-!
 # Erdős #269: the three-consecutive-2-jump obstruction and the Q̃ algebra

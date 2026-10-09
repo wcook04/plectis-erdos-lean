@@ -1,6 +1,10 @@
-import ErdosProblems.Erdos269.PaperR7ActualOrbit
-import Mathlib.Data.Nat.Factorization.Basic
-import Mathlib.Topology.Algebra.InfiniteSum.Real
+module
+
+public import ErdosProblems.Erdos269.PaperR7ActualOrbit
+public import Mathlib.Data.Nat.Factorization.Basic
+public import Mathlib.Topology.Algebra.InfiniteSum.Real
+
+@[expose] public section
 
 /-!
 # Round 7: identify the original smooth-number series with the shell tsum

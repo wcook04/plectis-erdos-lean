@@ -1,4 +1,0 @@
-import Solutions.ExternalVerification251PaperStatementsY
-
-#print axioms Erdos249257.ExternalVerification251PaperStatementsY.prime_gap_equal_shift_zeroDensity
-#print axioms Erdos249257.ExternalVerification251PaperStatementsY.prime_gap_two_window_sparse

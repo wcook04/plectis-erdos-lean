@@ -1,3 +1,0 @@
-import Solutions.ExternalVerification1041PaperStatementsJ
-
-#print axioms Erdos249257.ExternalVerification1041PaperStatementsJ.cubic_has_safe_root_spoke

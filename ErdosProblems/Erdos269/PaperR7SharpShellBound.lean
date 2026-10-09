@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos269.NormalizedStateWidth
-import Mathlib.Tactic
+module
+
+public import ErdosProblems.Erdos269.NormalizedStateWidth
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-!
 # Round 7: the literal `8640 / 343` shell bound

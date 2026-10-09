@@ -1,6 +1,10 @@
-import ErdosProblems.Erdos269.PaperR7SharpShellBound
-import ErdosProblems.Erdos269.IntegralBranchWidth
-import ErdosProblems.Erdos269.DyadicRadixTailEscape
+module
+
+public import ErdosProblems.Erdos269.PaperR7SharpShellBound
+public import ErdosProblems.Erdos269.IntegralBranchWidth
+public import ErdosProblems.Erdos269.DyadicRadixTailEscape
+
+@[expose] public section
 
 /-!
 # Round 7: literal forcing, infinite digit expansion and scaled dichotomy

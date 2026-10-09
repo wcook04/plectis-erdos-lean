@@ -1,3 +1,0 @@
-import Solutions.ExternalVerification249PaperStatementsH
-
-#print axioms Erdos249257.ExternalVerification249PaperStatementsH.irrational_totient_iff_moebius_square

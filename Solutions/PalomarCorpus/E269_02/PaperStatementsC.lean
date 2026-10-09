@@ -3,29 +3,33 @@ Copyright (c) 2026 Will Cook. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Will Cook
 -/
-import Mathlib
-import ErdosProblems.Erdos269.ActualSharpTailMajorantR10
-import ErdosProblems.Erdos269.BoundedRadixTailEscape
-import ErdosProblems.Erdos269.DyadicBlockMassIdentity
-import ErdosProblems.Erdos269.DyadicBlockThresholdPartition
-import ErdosProblems.Erdos269.DyadicOrderedTailRecurrence
-import ErdosProblems.Erdos269.DyadicShellSummability
-import ErdosProblems.Erdos269.IntegralBranchExtinction
-import ErdosProblems.Erdos269.JumpConstraintMajorant
-import ErdosProblems.Erdos269.LongWindowCapR11
-import ErdosProblems.Erdos269.PaperCompleteR20.BoundedLatticeCollision
-import ErdosProblems.Erdos269.PaperCompleteR20.DyadicAlphabetWhole
-import ErdosProblems.Erdos269.PaperCompleteR20.EightScaleRigidity
-import ErdosProblems.Erdos269.PaperR7ActualOrbit
-import ErdosProblems.Erdos269.PaperR7BasicAssembly
-import ErdosProblems.Erdos269.PaperR7RationalBridge
-import ErdosProblems.Erdos269.PaperR7SeriesIdentification
-import ErdosProblems.Erdos269.PaperR7WindowResults
-import ErdosProblems.Erdos269.PaperR8RankMajorant
-import ErdosProblems.Erdos269.ResidueEscape
-import ErdosProblems.Erdos269.RestrictedFloorSum
-import ErdosProblems.Erdos269.ThreePrimeRunningLcm
-import Solutions.PalomarCorpus.E269_02.Statement
+module
+
+public import Mathlib
+public import ErdosProblems.Erdos269.ActualSharpTailMajorantR10
+public import ErdosProblems.Erdos269.BoundedRadixTailEscape
+public import ErdosProblems.Erdos269.DyadicBlockMassIdentity
+public import ErdosProblems.Erdos269.DyadicBlockThresholdPartition
+public import ErdosProblems.Erdos269.DyadicOrderedTailRecurrence
+public import ErdosProblems.Erdos269.DyadicShellSummability
+public import ErdosProblems.Erdos269.IntegralBranchExtinction
+public import ErdosProblems.Erdos269.JumpConstraintMajorant
+public import ErdosProblems.Erdos269.LongWindowCapR11
+public import ErdosProblems.Erdos269.PaperCompleteR20.BoundedLatticeCollision
+public import ErdosProblems.Erdos269.PaperCompleteR20.DyadicAlphabetWhole
+public import ErdosProblems.Erdos269.PaperCompleteR20.EightScaleRigidity
+public import ErdosProblems.Erdos269.PaperR7ActualOrbit
+public import ErdosProblems.Erdos269.PaperR7BasicAssembly
+public import ErdosProblems.Erdos269.PaperR7RationalBridge
+public import ErdosProblems.Erdos269.PaperR7SeriesIdentification
+public import ErdosProblems.Erdos269.PaperR7WindowResults
+public import ErdosProblems.Erdos269.PaperR8RankMajorant
+public import ErdosProblems.Erdos269.ResidueEscape
+public import ErdosProblems.Erdos269.RestrictedFloorSum
+public import ErdosProblems.Erdos269.ThreePrimeRunningLcm
+public import Solutions.PalomarCorpus.E269_02.Statement
+
+@[expose] public section
 
 open scoped BigOperators
 

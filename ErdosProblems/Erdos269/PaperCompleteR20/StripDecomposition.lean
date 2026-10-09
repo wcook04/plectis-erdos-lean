@@ -1,6 +1,10 @@
-import Mathlib.Algebra.BigOperators.Intervals
-import Mathlib.Data.Real.Basic
-import Mathlib.Tactic
+module
+
+public import Mathlib.Algebra.BigOperators.Intervals
+public import Mathlib.Data.Real.Basic
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-!
 # First-entry strips in a nested finite family

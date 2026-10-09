@@ -3,24 +3,28 @@ Copyright (c) 2026 Will Cook. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Will Cook
 -/
-import Mathlib
-import ErdosProblems.Erdos269.DyadicBlockMassIdentity
-import ErdosProblems.Erdos269.DyadicBlockThresholdPartition
-import ErdosProblems.Erdos269.PaperCompleteR20.FixedBaseRecoding
-import ErdosProblems.Erdos269.PaperCompleteR20.LiteralTriangle
-import ErdosProblems.Erdos269.PaperCompleteR20.LiteralTriangleReal
-import ErdosProblems.Erdos269.PaperCompleteR20.PhaseStripDecomposition
-import ErdosProblems.Erdos269.PaperCompleteR20.StripDecomposition
-import ErdosProblems.Erdos269.PaperCompleteR20.WeightedShiftArithmetic
-import ErdosProblems.Erdos269.PaperCompleteR20.WeightedShiftValue
-import ErdosProblems.Erdos269.PaperExactDenominatorR13
-import ErdosProblems.Erdos269.PaperR7ActualOrbit
-import ErdosProblems.Erdos269.PaperR7BasicAssembly
-import ErdosProblems.Erdos269.PaperR7ModularMinors
-import ErdosProblems.Erdos269.PaperR7SeriesIdentification
-import ErdosProblems.Erdos269.RestrictedFloorSum
-import ErdosProblems.Erdos269.ThreePrimeRunningLcm
-import Solutions.PalomarCorpus.E269_02.Statement
+module
+
+public import Mathlib
+public import ErdosProblems.Erdos269.DyadicBlockMassIdentity
+public import ErdosProblems.Erdos269.DyadicBlockThresholdPartition
+public import ErdosProblems.Erdos269.PaperCompleteR20.FixedBaseRecoding
+public import ErdosProblems.Erdos269.PaperCompleteR20.LiteralTriangle
+public import ErdosProblems.Erdos269.PaperCompleteR20.LiteralTriangleReal
+public import ErdosProblems.Erdos269.PaperCompleteR20.PhaseStripDecomposition
+public import ErdosProblems.Erdos269.PaperCompleteR20.StripDecomposition
+public import ErdosProblems.Erdos269.PaperCompleteR20.WeightedShiftArithmetic
+public import ErdosProblems.Erdos269.PaperCompleteR20.WeightedShiftValue
+public import ErdosProblems.Erdos269.PaperExactDenominatorR13
+public import ErdosProblems.Erdos269.PaperR7ActualOrbit
+public import ErdosProblems.Erdos269.PaperR7BasicAssembly
+public import ErdosProblems.Erdos269.PaperR7ModularMinors
+public import ErdosProblems.Erdos269.PaperR7SeriesIdentification
+public import ErdosProblems.Erdos269.RestrictedFloorSum
+public import ErdosProblems.Erdos269.ThreePrimeRunningLcm
+public import Solutions.PalomarCorpus.E269_02.Statement
+
+@[expose] public section
 
 open scoped BigOperators
 

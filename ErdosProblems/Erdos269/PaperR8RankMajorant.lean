@@ -1,6 +1,10 @@
-import ErdosProblems.Erdos269.PaperR7WindowResults
-import Mathlib.Topology.Algebra.InfiniteSum.Order
-import Mathlib.Topology.Algebra.InfiniteSum.Real
+module
+
+public import ErdosProblems.Erdos269.PaperR7WindowResults
+public import Mathlib.Topology.Algebra.InfiniteSum.Order
+public import Mathlib.Topology.Algebra.InfiniteSum.Real
+
+@[expose] public section
 
 /-!
 # The actual height-rank majorant (round 8)

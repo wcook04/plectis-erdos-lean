@@ -1,3 +1,0 @@
-import Solutions.ExternalVerification1049PaperStatementsX
-
-#print axioms Erdos249257.ExternalVerification1049PaperStatementsX.no_finite_simultaneous_two_three_system

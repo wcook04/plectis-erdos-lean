@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos269.NormalizedStateWidth
-import ErdosProblems.Erdos269.RationalLatticeReduction
+module
+
+public import ErdosProblems.Erdos269.NormalizedStateWidth
+public import ErdosProblems.Erdos269.RationalLatticeReduction
+
+@[expose] public section
 
 /-!
 # Erdős #269: the rationality-to-carry bridge, closed

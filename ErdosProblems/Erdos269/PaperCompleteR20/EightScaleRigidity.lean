@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos269.PaperR7WindowResults
+module
+
+public import ErdosProblems.Erdos269.PaperR7WindowResults
+
+@[expose] public section
 
 /-!
 # Uniqueness for the full printed eight-scale width

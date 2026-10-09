@@ -1,6 +1,10 @@
-import ErdosProblems.Erdos269.DyadicBlockThresholdPartition
-import Mathlib.Data.Nat.Log
-import Mathlib.Tactic
+module
+
+public import ErdosProblems.Erdos269.DyadicBlockThresholdPartition
+public import Mathlib.Data.Nat.Log
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-!
 # Exact source-count normalisation for certificate reconstruction

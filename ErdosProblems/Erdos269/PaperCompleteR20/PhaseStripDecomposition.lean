@@ -1,6 +1,10 @@
-import ErdosProblems.Erdos269.PaperCompleteR20.StripDecomposition
-import ErdosProblems.Erdos269.PaperCompleteR20.LiteralTriangleReal
-import ErdosProblems.Erdos269.PaperCompleteR20.WeightedShiftArithmetic
+module
+
+public import ErdosProblems.Erdos269.PaperCompleteR20.StripDecomposition
+public import ErdosProblems.Erdos269.PaperCompleteR20.LiteralTriangleReal
+public import ErdosProblems.Erdos269.PaperCompleteR20.WeightedShiftArithmetic
+
+@[expose] public section
 
 /-! The printed integer-floor weights and their exact crossing factors. -/
 

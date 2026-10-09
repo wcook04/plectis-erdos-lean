@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos269.DyadicBlockThresholdPartition
-import ErdosProblems.Erdos269.DyadicRadixTailEscape
+module
+
+public import ErdosProblems.Erdos269.DyadicBlockThresholdPartition
+public import ErdosProblems.Erdos269.DyadicRadixTailEscape
+
+@[expose] public section
 
 /-!
 # Erdős #269: the ordered source digit is the actual tail digit

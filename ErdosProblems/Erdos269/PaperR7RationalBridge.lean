@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos269.PaperR7SeriesIdentification
-import ErdosProblems.Erdos269.CofinalWindowEscapeEquivalence
+module
+
+public import ErdosProblems.Erdos269.PaperR7SeriesIdentification
+public import ErdosProblems.Erdos269.CofinalWindowEscapeEquivalence
+
+@[expose] public section
 
 /-!
 # Round 7: the fixed denominator split and the literal original value

@@ -1,6 +1,10 @@
-import ErdosProblems.Erdos269.KernelCarryRank
-import ErdosProblems.Erdos269.IntegralBranchExtinction
-import ErdosProblems.Erdos269.RestrictedFloorSum
+module
+
+public import ErdosProblems.Erdos269.KernelCarryRank
+public import ErdosProblems.Erdos269.IntegralBranchExtinction
+public import ErdosProblems.Erdos269.RestrictedFloorSum
+
+@[expose] public section
 
 /-!
 # Round 7: whole displayed statements assembled from the supplied library

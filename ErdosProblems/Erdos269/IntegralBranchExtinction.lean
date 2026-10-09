@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos269.DyadicShellSummability
+module
+
+public import ErdosProblems.Erdos269.DyadicShellSummability
+
+@[expose] public section
 
 /-!
 # Erdős #269: extinction of the integral branch through pinning windows

@@ -1,7 +1,11 @@
-import ErdosProblems.Erdos269.ThreePrimeRunningLcm
-import ErdosProblems.Erdos269.ResidueEscape
-import Mathlib.Algebra.BigOperators.Group.Finset.Sigma
-import Mathlib.Data.Nat.Log
+module
+
+public import ErdosProblems.Erdos269.ThreePrimeRunningLcm
+public import ErdosProblems.Erdos269.ResidueEscape
+public import Mathlib.Algebra.BigOperators.Group.Finset.Sigma
+public import Mathlib.Data.Nat.Log
+
+@[expose] public section
 
 /-!
 # Erdős #269: restricted floor sums and local windows

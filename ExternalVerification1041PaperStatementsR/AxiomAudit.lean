@@ -1,3 +1,0 @@
-import Solutions.ExternalVerification1041PaperStatementsR
-
-#print axioms Erdos249257.ExternalVerification1041PaperStatementsR.sextic_spoke_counterexample_whole

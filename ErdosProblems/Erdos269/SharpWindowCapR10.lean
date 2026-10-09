@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos269.ActualSharpTailMajorantR10
+module
+
+public import ErdosProblems.Erdos269.ActualSharpTailMajorantR10
+
+@[expose] public section
 
 /-! Endpoint composition of the actual constrained majorant. This is an
 additional valid escape criterion, not an assertion that escape has been

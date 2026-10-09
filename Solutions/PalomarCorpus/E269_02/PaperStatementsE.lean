@@ -3,11 +3,15 @@ Copyright (c) 2026 Will Cook. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Will Cook
 -/
-import Mathlib
-import ErdosProblems.Erdos269.KernelCarryRank
-import ErdosProblems.Erdos269.PaperR7AnalyticInterfaces
-import ErdosProblems.Erdos269.PaperR8UniformRank
-import Solutions.PalomarCorpus.E269_02.Statement
+module
+
+public import Mathlib
+public import ErdosProblems.Erdos269.KernelCarryRank
+public import ErdosProblems.Erdos269.PaperR7AnalyticInterfaces
+public import ErdosProblems.Erdos269.PaperR8UniformRank
+public import Solutions.PalomarCorpus.E269_02.Statement
+
+@[expose] public section
 
 open Set
 open Metric

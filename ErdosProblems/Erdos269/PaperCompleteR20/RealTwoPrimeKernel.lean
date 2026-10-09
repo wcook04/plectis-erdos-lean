@@ -1,6 +1,10 @@
-import Mathlib.Analysis.SpecialFunctions.Log.Base
-import Mathlib.Algebra.Order.Floor.Ring
-import Mathlib.Tactic
+module
+
+public import Mathlib.Analysis.SpecialFunctions.Log.Base
+public import Mathlib.Algebra.Order.Floor.Ring
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-!
 # Two-generator separation for arbitrary real bases

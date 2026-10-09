@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos269.BlockMassEngines
-import ErdosProblems.Erdos269.RestrictedFloorSum
+module
+
+public import ErdosProblems.Erdos269.BlockMassEngines
+public import ErdosProblems.Erdos269.RestrictedFloorSum
+
+@[expose] public section
 
 /-!
 # Erdős #269: exact dyadic block-mass normalization
