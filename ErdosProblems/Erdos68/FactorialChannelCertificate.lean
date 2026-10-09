@@ -1,9 +1,13 @@
-import ErdosProblems.Erdos68.FactorialCarry
-import Lean.Elab.Tactic.Omega
-import Mathlib.Data.Finsupp.Basic
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.NormNum.NatFactorial
-import Mathlib.Tactic.Ring
+module
+
+public import ErdosProblems.Erdos68.FactorialCarry
+public import Lean.Elab.Tactic.Omega
+public import Mathlib.Data.Finsupp.Basic
+public import Mathlib.Tactic.Linarith
+public import Mathlib.Tactic.NormNum.NatFactorial
+public import Mathlib.Tactic.Ring
+
+@[expose] public section
 
 /-!
 # Erdős #68: factorial-channel certificates

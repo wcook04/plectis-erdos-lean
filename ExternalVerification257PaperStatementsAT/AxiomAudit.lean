@@ -1,4 +1,0 @@
-import Solutions.ExternalVerification257PaperStatementsAT
-
-#print axioms Erdos249257.ExternalVerification257PaperStatementsAT.binaryCoeffTail_supportCoeff_coe_finset_le_card
-#print axioms Erdos249257.ExternalVerification257PaperStatementsAT.paper_terminal_strip_witness_six

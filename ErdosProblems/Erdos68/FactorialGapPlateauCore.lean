@@ -1,7 +1,11 @@
-import ErdosProblems.Erdos68.CanonicalFactorialDigits
-import ErdosProblems.Erdos68.PrimeUnitTranslator
-import ErdosProblems.Erdos68.StrictSuccessorArithmetic
-import Mathlib.NumberTheory.Real.Irrational
+module
+
+public import ErdosProblems.Erdos68.CanonicalFactorialDigits
+public import ErdosProblems.Erdos68.PrimeUnitTranslator
+public import ErdosProblems.Erdos68.StrictSuccessorArithmetic
+public import Mathlib.NumberTheory.Real.Irrational
+
+@[expose] public section
 
 /-!
 # Erdős #68: factorial-gap plateau core

@@ -1,5 +1,9 @@
-import Mathlib.Data.Nat.Factorization.Basic
-import Mathlib.Data.Rat.Lemmas
+module
+
+public import Mathlib.Data.Nat.Factorization.Basic
+public import Mathlib.Data.Rat.Lemmas
+
+@[expose] public section
 
 /-!
 # Prime powers surviving rational denominator reduction

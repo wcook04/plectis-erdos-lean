@@ -1,14 +1,18 @@
-import ErdosProblems.Erdos68.ChannelBreakpointRigidity
-import Mathlib.Algebra.GCDMonoid.Finset
-import Mathlib.Algebra.GCDMonoid.FinsetLemmas
-import Mathlib.Algebra.Ring.GeomSum
-import Mathlib.Analysis.Asymptotics.Defs
-import Mathlib.Analysis.Complex.ExponentialBounds
-import Mathlib.Analysis.Real.Pi.Bounds
-import Mathlib.Analysis.SpecialFunctions.Stirling
-import Mathlib.Data.Nat.Factorial.BigOperators
-import Mathlib.Data.Nat.ModEq
-import Mathlib.Tactic.Ring
+module
+
+public import ErdosProblems.Erdos68.ChannelBreakpointRigidity
+public import Mathlib.Algebra.GCDMonoid.Finset
+public import Mathlib.Algebra.GCDMonoid.FinsetLemmas
+public import Mathlib.Algebra.Ring.GeomSum
+public import Mathlib.Analysis.Asymptotics.Defs
+public import Mathlib.Analysis.Complex.ExponentialBounds
+public import Mathlib.Analysis.Real.Pi.Bounds
+public import Mathlib.Analysis.SpecialFunctions.Stirling
+public import Mathlib.Data.Nat.Factorial.BigOperators
+public import Mathlib.Data.Nat.ModEq
+public import Mathlib.Tactic.Ring
+
+@[expose] public section
 
 /-!
 # Integral channel congruence for Erdős problem 68

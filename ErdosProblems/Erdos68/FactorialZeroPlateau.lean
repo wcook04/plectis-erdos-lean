@@ -1,6 +1,10 @@
-import ErdosProblems.Erdos68.FactorialGapPlateauCore
-import ErdosProblems.Erdos68.FactorialZeroPlateauCertificates
-import ErdosProblems.Erdos68.FactorialZeroPlateauSupplement
+module
+
+public import ErdosProblems.Erdos68.FactorialGapPlateauCore
+public import ErdosProblems.Erdos68.FactorialZeroPlateauCertificates
+public import ErdosProblems.Erdos68.FactorialZeroPlateauSupplement
+
+@[expose] public section
 
 /-!
 # Erdős #68: factorial-grid plateaux and the exact carry criterion

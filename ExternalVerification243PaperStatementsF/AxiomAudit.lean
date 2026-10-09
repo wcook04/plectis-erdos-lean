@@ -1,3 +1,0 @@
-import Solutions.ExternalVerification243PaperStatementsF
-
-#print axioms Erdos249257.ExternalVerification243PaperStatementsF.original_coordinate_strict_one

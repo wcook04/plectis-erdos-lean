@@ -1,3 +1,0 @@
-import Solutions.ExternalVerification251PaperStatementsZ
-
-#print axioms Erdos249257.ExternalVerification251PaperStatementsZ.short_joint_prime_gap_countermodel

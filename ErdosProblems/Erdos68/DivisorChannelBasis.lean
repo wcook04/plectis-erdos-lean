@@ -1,11 +1,15 @@
-import ErdosProblems.Erdos68.FactorialChannelCertificate
-import Mathlib.Algebra.BigOperators.Finsupp.Basic
-import Mathlib.Algebra.BigOperators.Ring.Finset
-import Mathlib.Algebra.GCDMonoid.Finset
-import Mathlib.Data.Finsupp.SMul
-import Mathlib.Data.Nat.GCD.Prime
-import Mathlib.Data.Nat.Prime.Basic
-import Mathlib.RingTheory.Coprime.Lemmas
+module
+
+public import ErdosProblems.Erdos68.FactorialChannelCertificate
+public import Mathlib.Algebra.BigOperators.Finsupp.Basic
+public import Mathlib.Algebra.BigOperators.Ring.Finset
+public import Mathlib.Algebra.GCDMonoid.Finset
+public import Mathlib.Data.Finsupp.SMul
+public import Mathlib.Data.Nat.GCD.Prime
+public import Mathlib.Data.Nat.Prime.Basic
+public import Mathlib.RingTheory.Coprime.Lemmas
+
+@[expose] public section
 
 /-!
 # Divisor-coordinate channel basis for Erdős problem 68

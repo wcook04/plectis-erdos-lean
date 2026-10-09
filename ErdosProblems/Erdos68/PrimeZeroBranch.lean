@@ -1,7 +1,11 @@
-import ErdosProblems.Erdos68.EndpointWeightedPrivateSupport
-import Mathlib.Data.Nat.Prime.Infinite
-import Mathlib.Data.ZMod.Factorial
-import Mathlib.NumberTheory.Wilson
+module
+
+public import ErdosProblems.Erdos68.EndpointWeightedPrivateSupport
+public import Mathlib.Data.Nat.Prime.Infinite
+public import Mathlib.Data.ZMod.Factorial
+public import Mathlib.NumberTheory.Wilson
+
+@[expose] public section
 
 /-!
 # Erdős #68: the prime zero branch

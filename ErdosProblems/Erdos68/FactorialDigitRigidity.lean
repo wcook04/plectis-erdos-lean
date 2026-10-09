@@ -1,10 +1,14 @@
-import Mathlib.Algebra.Order.Floor.Ring
-import Mathlib.Data.Nat.Cast.Field
-import Mathlib.Data.Nat.Multiplicity
-import Mathlib.Data.Rat.Floor
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.NormNum
-import Mathlib.Tactic.Ring
+module
+
+public import Mathlib.Algebra.Order.Floor.Ring
+public import Mathlib.Data.Nat.Cast.Field
+public import Mathlib.Data.Nat.Multiplicity
+public import Mathlib.Data.Rat.Floor
+public import Mathlib.Tactic.FieldSimp
+public import Mathlib.Tactic.NormNum
+public import Mathlib.Tactic.Ring
+
+@[expose] public section
 
 /-!
 # Erdős #68: factorial digits and strict successors

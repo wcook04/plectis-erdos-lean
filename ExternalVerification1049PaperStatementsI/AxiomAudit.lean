@@ -1,4 +1,0 @@
-import Solutions.ExternalVerification1049PaperStatementsI
-
-#print axioms Erdos249257.ExternalVerification1049PaperStatementsI.rational_base_measure_uniform
-#print axioms Erdos249257.ExternalVerification1049PaperStatementsI.thirtyoneFour_power_measure_lt_301

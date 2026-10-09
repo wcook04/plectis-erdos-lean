@@ -1,16 +1,20 @@
-import ErdosProblems.Erdos68.ChannelIntegralCongruence
-import Mathlib.Algebra.BigOperators.Fin
-import Mathlib.Algebra.Order.Round
-import Mathlib.Analysis.SpecificLimits.Normed
-import Mathlib.Data.Fin.VecNotation
-import Mathlib.Data.Nat.Prime.Basic
-import Mathlib.LinearAlgebra.Matrix.Adjugate
-import Mathlib.LinearAlgebra.Vandermonde
-import Mathlib.Tactic.FinCases
-import Mathlib.Tactic.Positivity
-import Mathlib.Tactic.Ring
-import Mathlib.Topology.Algebra.InfiniteSum.Basic
-import Mathlib.Topology.Algebra.InfiniteSum.Ring
+module
+
+public import ErdosProblems.Erdos68.ChannelIntegralCongruence
+public import Mathlib.Algebra.BigOperators.Fin
+public import Mathlib.Algebra.Order.Round
+public import Mathlib.Analysis.SpecificLimits.Normed
+public import Mathlib.Data.Fin.VecNotation
+public import Mathlib.Data.Nat.Prime.Basic
+public import Mathlib.LinearAlgebra.Matrix.Adjugate
+public import Mathlib.LinearAlgebra.Vandermonde
+public import Mathlib.Tactic.FinCases
+public import Mathlib.Tactic.Positivity
+public import Mathlib.Tactic.Ring
+public import Mathlib.Topology.Algebra.InfiniteSum.Basic
+public import Mathlib.Topology.Algebra.InfiniteSum.Ring
+
+@[expose] public section
 
 /-!
 # Prime unit translator for Erdős problem 68

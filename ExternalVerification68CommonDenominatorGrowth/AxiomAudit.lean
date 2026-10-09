@@ -1,6 +1,0 @@
-import Solutions.ExternalVerification68CommonDenominatorGrowth
-
-#print axioms Erdos249257.ExternalVerification68CommonDenominatorGrowth.common_denominator_growth
-#print axioms Erdos249257.ExternalVerification68CommonDenominatorGrowth.common_denominator_growth_liminf
-
-#print axioms Erdos249257.ExternalVerification68CommonDenominatorGrowth.asymptotic_radius_constant_liminf

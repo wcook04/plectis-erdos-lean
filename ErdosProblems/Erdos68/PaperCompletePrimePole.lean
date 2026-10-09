@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos68.PrimePoleCriterion
-import ErdosProblems.Erdos68.PrimePoleDenominator
+module
+
+public import ErdosProblems.Erdos68.PrimePoleCriterion
+public import ErdosProblems.Erdos68.PrimePoleDenominator
+
+@[expose] public section
 
 /-!
 # End-to-end maximal prime-power survival

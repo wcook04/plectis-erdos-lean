@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos68.CompanionConstantBridge
+module
+
+public import ErdosProblems.Erdos68.CompanionConstantBridge
+
+@[expose] public section
 
 /-!
 # Erdős #68: constant-only miss certificates

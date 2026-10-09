@@ -1,3 +1,0 @@
-import Solutions.ExternalVerification1041PaperStatementsK
-
-#print axioms Erdos249257.ExternalVerification1041PaperStatementsK.exists_two_roots_dist_sum_le_two_mul_geomMean

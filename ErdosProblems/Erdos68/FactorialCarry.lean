@@ -1,10 +1,14 @@
-import Mathlib.Data.Int.ModEq
-import Mathlib.Data.Nat.Choose.Multinomial
-import Mathlib.Data.Rat.Lemmas
-import Mathlib.NumberTheory.Divisors
-import Lean.Elab.Tactic.Omega
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.NormNum
+module
+
+public import Mathlib.Data.Int.ModEq
+public import Mathlib.Data.Nat.Choose.Multinomial
+public import Mathlib.Data.Rat.Lemmas
+public import Mathlib.NumberTheory.Divisors
+public import Lean.Elab.Tactic.Omega
+public import Mathlib.Tactic.Linarith
+public import Mathlib.Tactic.NormNum
+
+@[expose] public section
 
 open scoped BigOperators
 

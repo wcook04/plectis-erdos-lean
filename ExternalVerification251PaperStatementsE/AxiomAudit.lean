@@ -1,3 +1,0 @@
-import Solutions.ExternalVerification251PaperStatementsE
-
-#print axioms Erdos249257.ExternalVerification251PaperStatementsE.bounded_recurring_values_countermodel

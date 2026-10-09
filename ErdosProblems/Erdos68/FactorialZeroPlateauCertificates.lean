@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos68.FactorialGapPlateauCore
-import Mathlib.Tactic.NormNum
+module
+
+public import ErdosProblems.Erdos68.FactorialGapPlateauCore
+public import Mathlib.Tactic.NormNum
+
+@[expose] public section
 
 /-!
 # Erdős #68: exact-index plateau certificates

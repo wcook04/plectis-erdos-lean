@@ -1,8 +1,12 @@
-import ErdosProblems.Erdos68.DivisorChannelBasis
-import Mathlib.Combinatorics.Enumerative.Bell
-import Mathlib.Algebra.GCDMonoid.Finset
-import Mathlib.Data.Nat.Prime.Basic
-import Mathlib.Tactic
+module
+
+public import ErdosProblems.Erdos68.DivisorChannelBasis
+public import Mathlib.Combinatorics.Enumerative.Bell
+public import Mathlib.Algebra.GCDMonoid.Finset
+public import Mathlib.Data.Nat.Prime.Basic
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-!
 # The actual factorial specialisation of the quadratic tail-gcd theorem

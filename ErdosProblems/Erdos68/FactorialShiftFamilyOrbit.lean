@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos68.CompanionOrbitRationality
+module
+
+public import ErdosProblems.Erdos68.CompanionOrbitRationality
+
+@[expose] public section
 
 /-!
 # Erdős's shifted-factorial family under one companion-orbit boundary

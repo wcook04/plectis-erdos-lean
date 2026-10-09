@@ -1,3 +1,0 @@
-import Solutions.ExternalVerification257PaperStructuresS
-
-#print axioms Erdos249257.ExternalVerification257PaperStructuresS.paper_one_sidedness

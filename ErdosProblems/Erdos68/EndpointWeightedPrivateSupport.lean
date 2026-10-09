@@ -1,11 +1,15 @@
-import ErdosProblems.Erdos68.ChannelIntegralCongruence
-import ErdosProblems.Erdos68.FactorialChannelCertificate
-import ErdosProblems.Erdos68.FactorialZeroPlateau
-import Mathlib.Algebra.GCDMonoid.FinsetLemmas
-import Mathlib.Data.Nat.GCD.BigOperators
-import Mathlib.Data.Nat.Factorization.Basic
-import Mathlib.Data.Nat.Prime.Basic
-import Mathlib.Data.Nat.Prime.Factorial
+module
+
+public import ErdosProblems.Erdos68.ChannelIntegralCongruence
+public import ErdosProblems.Erdos68.FactorialChannelCertificate
+public import ErdosProblems.Erdos68.FactorialZeroPlateau
+public import Mathlib.Algebra.GCDMonoid.FinsetLemmas
+public import Mathlib.Data.Nat.GCD.BigOperators
+public import Mathlib.Data.Nat.Factorization.Basic
+public import Mathlib.Data.Nat.Prime.Basic
+public import Mathlib.Data.Nat.Prime.Factorial
+
+@[expose] public section
 
 /-!
 # Erdős #68: collision cores, private residues, and factorial-block endpoints

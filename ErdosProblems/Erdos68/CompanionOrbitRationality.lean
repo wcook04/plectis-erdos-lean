@@ -1,7 +1,11 @@
-import ErdosProblems.Erdos68.ConstantOnlyMissCertificates
-import ErdosProblems.Erdos68.SecondLayerDigit
-import ErdosProblems.Erdos68.FactorialDigitRigidity
-import Mathlib.NumberTheory.Real.Irrational
+module
+
+public import ErdosProblems.Erdos68.ConstantOnlyMissCertificates
+public import ErdosProblems.Erdos68.SecondLayerDigit
+public import ErdosProblems.Erdos68.FactorialDigitRigidity
+public import Mathlib.NumberTheory.Real.Irrational
+
+@[expose] public section
 
 /-!
 # Erdős #68: full companion-orbit rationality boundary

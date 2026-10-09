@@ -111,7 +111,7 @@
       "configFile": "lakefile.toml"
     }
   ],
-  "name": "erdos257_period_noncollapse",
+  "name": "erdos68_factorial_carry_channels",
   "lakeDir": ".lake",
   "fixedToolchain": false
 }

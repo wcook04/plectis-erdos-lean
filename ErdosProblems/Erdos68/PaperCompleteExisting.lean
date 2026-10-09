@@ -1,12 +1,16 @@
-import ErdosProblems.Erdos68.CompanionOrbitRationality
-import ErdosProblems.Erdos68.FactorialZeroPlateauSupplement
-import ErdosProblems.Erdos68.FactorialShiftFamilyOrbit
-import ErdosProblems.Erdos68.ShrinkingTargetNormalForm
-import ErdosProblems.Erdos68.PrimePoleCriterion
-import ErdosProblems.Erdos68.PrimePoleDenominator
-import ErdosProblems.Erdos68.PrimeZeroBranch
-import ErdosProblems.Erdos68.ChannelIntegralCongruence
-import ErdosProblems.Erdos68.PrimeUnitTranslator
+module
+
+public import ErdosProblems.Erdos68.CompanionOrbitRationality
+public import ErdosProblems.Erdos68.FactorialZeroPlateauSupplement
+public import ErdosProblems.Erdos68.FactorialShiftFamilyOrbit
+public import ErdosProblems.Erdos68.ShrinkingTargetNormalForm
+public import ErdosProblems.Erdos68.PrimePoleCriterion
+public import ErdosProblems.Erdos68.PrimePoleDenominator
+public import ErdosProblems.Erdos68.PrimeZeroBranch
+public import ErdosProblems.Erdos68.ChannelIntegralCongruence
+public import ErdosProblems.Erdos68.PrimeUnitTranslator
+
+@[expose] public section
 
 /-!
 # Paper-complete assemblies for Erdős 68

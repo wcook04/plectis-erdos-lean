@@ -1,5 +1,9 @@
-import Mathlib.Algebra.BigOperators.Ring.Finset
-import Mathlib.Data.Nat.Factorial.Basic
+module
+
+public import Mathlib.Algebra.BigOperators.Ring.Finset
+public import Mathlib.Data.Nat.Factorial.Basic
+
+@[expose] public section
 
 /-!
 # Channel breakpoint rigidity for Erdős problem 68

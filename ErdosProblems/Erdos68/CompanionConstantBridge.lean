@@ -1,5 +1,9 @@
-import ErdosProblems.Erdos68.CarryCongruenceNormalForm
-import ErdosProblems.Erdos68.GapScalarNormalForm
+module
+
+public import ErdosProblems.Erdos68.CarryCongruenceNormalForm
+public import ErdosProblems.Erdos68.GapScalarNormalForm
+
+@[expose] public section
 
 /-!
 # Erdős #68: companion-constant telescope and lower-window certificate

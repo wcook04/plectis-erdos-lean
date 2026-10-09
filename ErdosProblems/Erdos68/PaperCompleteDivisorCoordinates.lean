@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos68.DivisorChannelBasis
+module
+
+public import ErdosProblems.Erdos68.DivisorChannelBasis
+
+@[expose] public section
 
 /-!
 # Full integral coordinate theorem

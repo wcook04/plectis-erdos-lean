@@ -3,21 +3,25 @@ Copyright (c) 2026 Will Cook. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Will Cook
 -/
-import Mathlib
-import ErdosProblems.Erdos68.CanonicalFactorialDigits
-import ErdosProblems.Erdos68.CompanionConstantBridge
-import ErdosProblems.Erdos68.ConstantOnlyMissCertificates
-import ErdosProblems.Erdos68.DivisorChannelBasis
-import ErdosProblems.Erdos68.EndpointWeightedPrivateSupport
-import ErdosProblems.Erdos68.FactorialChannelCertificate
-import ErdosProblems.Erdos68.FactorialGapPlateauCore
-import ErdosProblems.Erdos68.PaperCompleteDivisorCoordinates
-import ErdosProblems.Erdos68.PaperCompleteExisting
-import ErdosProblems.Erdos68.PaperCompleteMomentHorizon
-import ErdosProblems.Erdos68.PaperCompletePrimePole
-import ErdosProblems.Erdos68.PrimeUnitTranslator
-import ErdosProblems.Erdos68.PrimeZeroBranch
-import Solutions.PalomarCorpus.E68_05.Statement
+module
+
+public import Mathlib
+public import ErdosProblems.Erdos68.CanonicalFactorialDigits
+public import ErdosProblems.Erdos68.CompanionConstantBridge
+public import ErdosProblems.Erdos68.ConstantOnlyMissCertificates
+public import ErdosProblems.Erdos68.DivisorChannelBasis
+public import ErdosProblems.Erdos68.EndpointWeightedPrivateSupport
+public import ErdosProblems.Erdos68.FactorialChannelCertificate
+public import ErdosProblems.Erdos68.FactorialGapPlateauCore
+public import ErdosProblems.Erdos68.PaperCompleteDivisorCoordinates
+public import ErdosProblems.Erdos68.PaperCompleteExisting
+public import ErdosProblems.Erdos68.PaperCompleteMomentHorizon
+public import ErdosProblems.Erdos68.PaperCompletePrimePole
+public import ErdosProblems.Erdos68.PrimeUnitTranslator
+public import ErdosProblems.Erdos68.PrimeZeroBranch
+public import Solutions.PalomarCorpus.E68_05.Statement
+
+@[expose] public section
 
 open scoped BigOperators
 open Finsupp

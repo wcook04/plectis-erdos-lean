@@ -1,6 +1,10 @@
-import Mathlib.Algebra.Order.Floor.Ring
-import Mathlib.Data.Nat.Factorial.Basic
-import Mathlib.Tactic
+module
+
+public import Mathlib.Algebra.Order.Floor.Ring
+public import Mathlib.Data.Nat.Factorial.Basic
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-!
 # Erdős #68: canonical factorial digits

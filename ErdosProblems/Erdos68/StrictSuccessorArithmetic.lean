@@ -1,5 +1,9 @@
-import Mathlib.Data.Int.Basic
-import Mathlib.Tactic
+module
+
+public import Mathlib.Data.Int.Basic
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-!
 # Erdős #68: strict-successor arithmetic

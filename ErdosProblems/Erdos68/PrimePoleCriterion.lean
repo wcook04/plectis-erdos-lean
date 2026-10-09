@@ -1,4 +1,8 @@
-import ErdosProblems.Erdos68.PrimeZeroBranch
+module
+
+public import ErdosProblems.Erdos68.PrimeZeroBranch
+
+@[expose] public section
 
 /-!
 # Erdős #68: finite prime-pole survival
