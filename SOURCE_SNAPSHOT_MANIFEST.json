@@ -32,7 +32,7 @@
   "metadata_delta": "scope explicitly names this selected substantive-source snapshot",
   "lake_delta": "only selected libraries/default target; dependency revisions unchanged",
   "files": {
-    ".github/workflows/palomar-official-full-preflight.yml": "eb9a590e13b53f07d69f09bd05b26f799620af503f8b25b1719f22a8e0130adf",
+    ".github/workflows/lean.yml": "dc50d5a58db956cfec59a87f515d5f7a2858a1c214c4c37d773c4b6caafbbc99",
     ".gitignore": "fde850d24186b6e99c8c0debd641fb3ab85198b109eb66f71a1fea02bd6ea1b3",
     "Erdos249257/AllBaseTotientKernel.lean": "6e34d7f71d74bc16dbe04f814eb791dd91a8a356f4b04cbdd25cd33d32d60908",
     "Erdos249257/TotientKernelConditional.lean": "f886759d6ea8899809f4a5426178e4084b78896b5ac1fb8c9b5d9a576935f939",
