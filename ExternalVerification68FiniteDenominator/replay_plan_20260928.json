@@ -1,0 +1,95 @@
+{
+  "schema": "external_verification_68_finite_replay_plan_v1",
+  "status": "plan_only_no_independent_comparator_execution",
+  "pr": "https://github.com/wcook04/plectis-erdos-lean/pull/20",
+  "exact_public_head": "4793222f9d53175c33b25546632e7b5494226314",
+  "selected_theorem": "Erdos249257.ExternalVerification68FiniteDenominator.full_finite_denominator_exclusion",
+  "statement": "For every integer a and positive natural q, factorialGapSeries = a/q implies 2^39990 <= q, fareyLeftDenominator + fareyRightDenominator <= q, and 10^12040 < q.",
+  "source_binding": {
+    "file": "ExternalVerification68FiniteDenominator/source_binding.json",
+    "source_modules_checked": 12,
+    "environment_files": [
+      "lean-toolchain",
+      "lake-manifest.json"
+    ],
+    "offline_contract": "pass_with_nine_negative_controls",
+    "lean_build": "pending",
+    "axiom_audit": "pending"
+  },
+  "file_sha256": {
+    "ExternalVerification68FiniteDenominator/Challenge.lean": "83d8c61ec38f89d883e159d9237662159848e2d61c5ab4de11a05dead6d98454",
+    "ExternalVerification68FiniteDenominator/Solution.lean": "b2b6702af4ffabbf07fb3edc5d80acdaaa8dd0d5ae973bd9d44d9d12fa39db5c",
+    "ExternalVerification68FiniteDenominator/NegativeSolution.lean": "dccf9d8c04d25df402f9683441665965b33517cd4a608d2bee72ad5539b0ac54",
+    "ExternalVerification68FiniteDenominator/AxiomAudit.lean": "09e82402866ad9eb0bedff020d76718cfc4043da7b5da74cc825b1bc0d75a1d7",
+    "ExternalVerification68FiniteDenominator/comparator.json": "c3f051632205e396c7814cd9749ee2874f28997743c52f1a7fb9a27224d725e5",
+    "ExternalVerification68FiniteDenominator/comparator-negative-mismatch.json": "0e25e54fce33100835875d42154e567ced40a840d9ca7a6b203da1bf537e07a6",
+    "lean-toolchain": "54727eec5cba149c18842e6deb5c41b369d66455c93ce135d7d5347c782b2325",
+    "lake-manifest.json": "48c00670762672b37a1860b0b1192d90d707ac047e7504a1d4828107cb6c902f"
+  },
+  "official_ci": {
+    "lean_release_gate_run": 36359928703,
+    "lean_convenience_run": 36359928724,
+    "head_required": "4793222f9d53175c33b25546632e7b5494226314",
+    "consume_only_terminal_runs": true,
+    "required_evidence": [
+      "all four family modules built at the exact head",
+      "full-target #print axioms output from AxiomAudit.lean",
+      "no unexpected axioms"
+    ]
+  },
+  "independent_replay_route": {
+    "current_workflow": ".github/workflows/palomar-replay.yml",
+    "current_runner": "scripts/palomar_replay_shard.py",
+    "current_scope": "PalomarCorpus/E* only; no existing workflow dispatch includes this ExternalVerification family",
+    "viable_execution": "Dedicated narrow GitHub Actions run on this exact public head using the current pinned Comparator toolchain and sandbox preflight; no local Lake build or credential bypass. Add and review that route only after wrapper CI is green.",
+    "sandbox": "Reuse sandbox_preflight and comparator_argv; fail closed when neither user nor nonprivileged system manager is available.",
+    "permission": "contents: read; no credentials or publication token required",
+    "tool_revisions": {
+      "comparator": "575674928e239f5bc452aab72d1dd7b0f1326494",
+      "lean4export": "a3e35a584f59b390667db7269cd37fca8575e4bf",
+      "landrun": "811cfff51ceaf3d9843708aa6d22e9b84ccac8b4",
+      "nanoda": "68d5ca9db226849b41a6fff59d796ff19d0a8840"
+    }
+  },
+  "replay_steps": [
+    {
+      "stage": "fresh_challenge",
+      "action": "Remove cached Challenge OLean/IR for this family, then lake build ExternalVerification68FiniteDenominator.Challenge in hosted runner."
+    },
+    {
+      "stage": "solution_and_audit",
+      "action": "lake build ExternalVerification68FiniteDenominator.Solution ExternalVerification68FiniteDenominator.AxiomAudit ExternalVerification68FiniteDenominator.NegativeSolution; retain raw build logs."
+    },
+    {
+      "stage": "positive",
+      "config": "ExternalVerification68FiniteDenominator/comparator.json",
+      "action": "Run the pinned Comparator through comparator_argv in the supported systemd sandbox with NanoDa enabled.",
+      "pass_if": [
+        "process exit 0",
+        "log includes nanoda kernel accepts the solution",
+        "log includes Lean default kernel accepts the solution",
+        "selected theorem is the full three-conjunct declaration"
+      ]
+    },
+    {
+      "stage": "negative",
+      "config": "ExternalVerification68FiniteDenominator/comparator-negative-mismatch.json",
+      "action": "Run the same pinned Comparator and sandbox against NegativeSolution.",
+      "pass_if": [
+        "process exit nonzero",
+        "diagnostic contains Challenge and solution theorem statement do not match: 'Erdos249257.ExternalVerification68FiniteDenominator.full_finite_denominator_exclusion'",
+        "neither kernel accepts this mismatched solution"
+      ]
+    }
+  ],
+  "receipt_required": [
+    "GitHub run id/attempt and exact source SHA",
+    "tool revisions and both Lean toolchains",
+    "source, Challenge, Solution, NegativeSolution, both config and environment hashes",
+    "raw build/axiom, positive and negative log hashes",
+    "sandbox mode and raw process exits",
+    "positive NanoDa and Lean kernel acceptance lines",
+    "exact negative type-mismatch diagnostic"
+  ],
+  "acceptance_boundary": "This plan and green offline checks do not establish Comparator acceptance. Existing two-bound receipts cannot be reused; require actual positive and negative replay on the exact selected theorem and source/environment identities."
+}
