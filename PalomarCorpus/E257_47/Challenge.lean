@@ -68,6 +68,11 @@ noncomputable def mersenneAchievementSet : Set ℝ :=
 noncomputable def supportCoeff (A : Set ℕ) (n : ℕ) : ℕ :=
   letI := Classical.decPred fun d : ℕ => d ∈ A
   (n.divisors.filter fun d => d ∈ A).card
+/-- The paper's terminal carry, with its sum reindexed from `j = 2, ..., M` to `j = 0, ..., M - 2`. Local copy of ErdosProblems.Erdos257.PaperCompleteR20.terminalPaperCarry, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def terminalPaperCarry (A : Set ℕ) (M : ℕ) : ℤ :=
+  (2 : ℤ) ^ (M - 1) -
+    ∑ j ∈ Finset.range (M - 1),
+      (2 : ℤ) ^ (M - 2 - j) * (supportCoeff A (j + 2) : ℤ)
 /-- The integer capacity of the denominator twenty one quotient problem at binary scale M, namely the natural number quotient of 2 to the power M by 21. -/
 noncomputable def twentyOneQuotientTarget (M : ℕ) : ℕ :=
   2 ^ M / 21
@@ -100,12 +105,7 @@ end PalomarCorpus.E257_47.Shared
 namespace PalomarCorpus.E257.PaperStatementsBC
 open Filter
 open Topology
-export PalomarCorpus.E257_47.Shared (erdosSupportSeries supportCoeff)
-/-- The paper's terminal carry, with its sum reindexed from `j = 2, ..., M` to `j = 0, ..., M - 2`. Local copy of ErdosProblems.Erdos257.PaperCompleteR20.terminalPaperCarry, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def terminalPaperCarry (A : Set ℕ) (M : ℕ) : ℤ :=
-  (2 : ℤ) ^ (M - 1) -
-    ∑ j ∈ Finset.range (M - 1),
-      (2 : ℤ) ^ (M - 2 - j) * (supportCoeff A (j + 2) : ℤ)
+export PalomarCorpus.E257_47.Shared (erdosSupportSeries supportCoeff terminalPaperCarry)
 /-- The full prime-power part determined by a finite set of primes. Local copy of ErdosProblems.Erdos257.PaperCompleteR7.primeSetPart, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def primeSetPart (P : Finset ℕ) (a : ℕ) : ℕ :=
   ∏ p ∈ P, p ^ a.factorization p
@@ -244,3 +244,20 @@ theorem twentyOneCofinalEvenQuotientGreedyDecay_of_closedRows
     TwentyOneCofinalEvenQuotientGreedyDecay := by
   sorry
 end PalomarCorpus.E257.PaperStructuresBQ
+
+namespace PalomarCorpus.E257.PaperStructuresCO
+open Filter
+open Topology
+export PalomarCorpus.E257_47.Shared (erdosSupportSeries supportCoeff terminalPaperCarry)
+/-- States res:terminalhalf from the short record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR20.paper_terminalhalf_iff in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem paper_terminalhalf_iff :
+    (∃ B : Set ℕ, 0 ∉ B ∧ B.Infinite ∧ erdosSupportSeries 2 B = (1 : ℝ) / 2) ↔
+      ∃ (M : ℕ → ℕ) (A : ℕ → Set ℕ),
+        (∀ j, 1 ≤ M j) ∧
+          Filter.Tendsto M Filter.atTop Filter.atTop ∧
+          (∀ j n, n ∈ A j → 2 ≤ n ∧ n ≤ M j) ∧
+          Filter.Tendsto
+            (fun j ↦ |(terminalPaperCarry (A j) (M j) : ℝ)| / (2 : ℝ) ^ M j)
+            Filter.atTop (nhds 0) := by
+  sorry
+end PalomarCorpus.E257.PaperStructuresCO

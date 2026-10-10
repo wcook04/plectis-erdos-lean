@@ -18,70 +18,129 @@ walks from a compared theorem statement is byte-identical in the Challenge and S
 environments. Generated from the Challenge; do not edit by hand.
 -/
 
-open Set
 open Polynomial
-open Finset
+open Set
+open scoped ComplexConjugate
+open scoped BigOperators
 open scoped NNReal
 open scoped ENNReal
+open MeasureTheory
+open Finset
+open Polynomial Set
+open Polynomial Metric
 
 namespace PalomarCorpus.E1041_03.Shared
-/-- The real number cos (π / (2 n)). For n ≥ 2 it is the scale that carries the two outermost zeros of the degree-n Chebyshev polynomial to -1 and 1. -/
-noncomputable def endpointScale (n : ℕ) : ℝ :=
-  Real.cos (Real.pi / (2 * (n : ℝ)))
-/-- The sharp endpoint-normalised Chebyshev height C n = 1 / (2 ^ (n - 1) cos ^ n (π / (2 n))), written as the absolute value of (2 ^ (n - 1))⁻¹ * (endpointScale n)⁻¹ ^ n. For n ≥ 2 it is the maximum modulus on [-1, 1] of the monic polynomial T n (cos (π / (2 n)) x) / (2 ^ (n - 1) cos ^ n (π / (2 n))), whose extreme zeros are -1 and 1. The exponent n - 1 is natural subtraction, and the absolute value is cosmetic because the expression is positive for every n ≥ 2; at n = 1 the inverse of cos (π / 2) is 0 by the Lean convention and the value is 0. -/
-noncomputable def comparisonBound (n : ℕ) : ℝ :=
-  |((2 : ℝ) ^ (n - 1))⁻¹ * (endpointScale n)⁻¹ ^ n|
+/-- A closed sublevel connector, allowing the zero-length repeated-root case. Local copy of ErdosProblems.Erdos1041.PaperAnalyticTargets.ConnectedAtMost, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def ConnectedAtMost (f : ℂ → ℂ) (R L : ℝ) (a b : ℂ) : Prop :=
+  ∃ γ : ℝ → ℂ, ContinuousOn γ (Icc (0 : ℝ) 2) ∧ γ 0 = a ∧ γ 2 = b ∧
+    (∀ t ∈ Icc (0 : ℝ) 2, ‖f (γ t)‖ ≤ R) ∧
+    BoundedVariationOn γ (Icc (0 : ℝ) 2) ∧
+    eVariationOn γ (Icc (0 : ℝ) 2) ≤ ENNReal.ofReal L
+/-- Local copy of ErdosProblems.Erdos1041.PaperAnalyticTargets.CriticalMinimum, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def CriticalMinimum (p : ℂ[X]) (μ : ℝ) : Prop :=
+  IsLeast {x : ℝ | ∃ c : ℂ, p.derivative.eval c = 0 ∧ x = ‖p.eval c‖} μ
+/-- Two zero occurrences joined by a path of length at most `L` inside the OPEN sublevel set `{|f| < R}`. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.cfaJoinedBelow, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def cfaJoinedBelow {n : ℕ} (f : ℂ[X]) (z : Fin n → ℂ) (R L : ℝ) : Prop :=
+  ∃ i j : Fin n, i ≠ j ∧
+    (∃ γ : ℝ → ℂ, ContinuousOn γ (Set.Icc (0 : ℝ) 2) ∧ γ 0 = z i ∧ γ 2 = z j ∧
+      (∀ t ∈ Set.Icc (0 : ℝ) 2, ‖f.eval (γ t)‖ < R) ∧
+      BoundedVariationOn γ (Set.Icc (0 : ℝ) 2) ∧
+      eVariationOn γ (Set.Icc (0 : ℝ) 2) ≤ ENNReal.ofReal L) ∧
+    (Squarefree f → z i ≠ z j)
 end PalomarCorpus.E1041_03.Shared
 
-namespace PalomarCorpus.E1041.PaperStatementsI
-open Set
+namespace PalomarCorpus.E1041.PaperStatementsZA
 open Polynomial
-export PalomarCorpus.E1041_03.Shared (comparisonBound endpointScale)
-end PalomarCorpus.E1041.PaperStatementsI
-
-namespace PalomarCorpus.E1041.PaperStatementsE
-open Polynomial
-open Finset
 open Set
-/-- The conclusion of the sharp collinear diameter theorem, with the constant left as a parameter `K`. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.CollinearDiameterBound, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def CollinearDiameterBound (n : ℕ) (K : ℝ) : Prop :=
-  ∀ base dir : ℂ, ‖dir‖ = 1 → ∀ (y : Fin n → ℝ) (f : ℂ[X]),
-    f = (∏ k, (X - C (base + dir * (y k : ℂ)))) → ∀ D : ℝ,
-      IsGreatest {d : ℝ | ∃ j k : Fin n,
-          d = dist (base + dir * (y j : ℂ)) (base + dir * (y k : ℂ))} D →
-        ∃ j k : Fin n, j ≠ k ∧ y j ≤ y k ∧
-          (∀ l : Fin n, y l ≤ y j ∨ y k ≤ y l) ∧
-          dist (base + dir * (y j : ℂ)) (base + dir * (y k : ℂ)) ≤ D ∧
-          ∀ z ∈ segment ℝ (base + dir * (y j : ℂ)) (base + dir * (y k : ℂ)),
-            ‖f.eval z‖ ≤ K * (D / 2) ^ n
-end PalomarCorpus.E1041.PaperStatementsE
-
-namespace PalomarCorpus.E1041.PaperStatementsS
-open Polynomial
-open Finset
-open Set
-export PalomarCorpus.E1041_03.Shared (comparisonBound endpointScale)
-/-- The zeros of the endpoint-normalised scaled Chebyshev polynomial `q_*(x) = T_n(r_n x) / (2^(n-1) r_n^n)` of degree `n = m + 2`, listed in increasing order: `cos((2k+1)π/(2n)) / cos(π/(2n))`. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.chebNode, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def chebNode (m : ℕ) (i : Fin (m + 2)) : ℝ :=
-  Real.cos ((2 * ((m + 1 - (i : ℕ) : ℕ) : ℝ) + 1) * Real.pi / (2 * ((m + 2 : ℕ) : ℝ)))
-    / endpointScale (m + 2)
-/-- The endpoint-normalised monic Chebyshev comparison polynomial. Local copy of ErdosProblems.Erdos1041.SharpCollinearChebyshev.monicScaledChebyshev, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def monicScaledChebyshev (n : ℕ) : ℝ[X] :=
-  C (((2 : ℝ) ^ (n - 1))⁻¹) *
-    (Polynomial.Chebyshev.T ℝ (n : ℤ)).scaleRoots (endpointScale n)⁻¹
-end PalomarCorpus.E1041.PaperStatementsS
-
-namespace PalomarCorpus.E1041.PaperStatementsT
-open Polynomial
-open Finset
-open Set
+open scoped ComplexConjugate
+open scoped BigOperators
 open scoped NNReal
 open scoped ENNReal
-/-- The geometric conclusion used by the paper: a continuous rectifiable curve with specified endpoints, containment at every parameter, and a strict variation bound. Local copy of ErdosProblems.Erdos1041.PaperCurve.ConnectedBelow, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def ConnectedBelow (f : ℂ → ℂ) (R L : ℝ) (a b : ℂ) : Prop :=
-  ∃ γ : ℝ → ℂ, ContinuousOn γ (Icc (0 : ℝ) 2) ∧
-    γ 0 = a ∧ γ 2 = b ∧
-    (∀ t ∈ Icc (0 : ℝ) 2, ‖f (γ t)‖ < R) ∧
-    BoundedVariationOn γ (Icc (0 : ℝ) 2) ∧
-    eVariationOn γ (Icc (0 : ℝ) 2) < ENNReal.ofReal L
-end PalomarCorpus.E1041.PaperStatementsT
+export PalomarCorpus.E1041_03.Shared (ConnectedAtMost CriticalMinimum cfaJoinedBelow)
+/-- Local copy of ErdosProblems.Erdos1041.PaperAnalyticTargets.RootEnumeration, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def RootEnumeration {n : ℕ} (p : ℂ[X]) (z : Fin n → ℂ) : Prop :=
+  p = ∏ i, (X - C (z i))
+/-- The arity corollary's bracket: the (CF) bracket after the reductions `ρ ≤ 1` and `(λμ)^{1/n} ≤ 1` that its proof performs. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.cfaArityBracket, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def cfaArityBracket (lam r : ℝ) : ℝ :=
+  Real.sqrt 2 * r / (1 - r) ^ 2 + Real.sqrt (Real.log (lam / r)) +
+    Real.pi / Real.sqrt (Real.log lam)
+/-- **External input for `res:constant-factor-arity`.** The same construction as `CFAPathConstruction`, in the shape its corollary's proof uses: every selected component contains the first-merge component, so its root count is at least `k₀`, and the reductions `ρ ≤ 1`, `(λμ)^{1/n} ≤ 1` available when `λμ ≤ 1` have already been made. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.CFAArityConstruction, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def CFAArityConstruction (n : ℕ) (f : ℂ[X]) (z : Fin n → ℂ) (k₀ : ℕ) (lam r : ℝ) : Prop :=
+  cfaJoinedBelow f z 1 (Real.sqrt (2 / (k₀ : ℝ)) * cfaArityBracket lam r)
+/-- The paper's displayed bracket (CF). Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.cfaBracket, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def cfaBracket (n k : ℕ) (lam r : ℝ) : ℝ :=
+  Real.sqrt (2 / (k : ℝ)) *
+    (Real.sqrt 2 * r / (1 - r) ^ 2 +
+      lam ^ ((1 : ℝ) / (n : ℝ)) *
+        (Real.sqrt (Real.log (lam / r)) + Real.pi / Real.sqrt (Real.log lam)))
+/-- External input for `res:constant-factor-path`, the paper's construction: for a monic `f` of degree `n ≥ 3` with least critical modulus `μ > 0`, every `r ∈ (0,1)` and `λ > 1` give a selected component with `k ≥ 2` roots and a path in `{|f| < λμ}` between two zero occurrences of length at most the bracket (CF) times `μ^{1/n}`. The proof uses Pólya's area inequality, the Koebe distortion theorem, the coarea formula, the area formula for the univalent inverse branches and a mean-value choice of a regular level strictly inside its window. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.CFAPathConstruction, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def CFAPathConstruction : Prop :=
+  ∀ (n : ℕ) (f : ℂ[X]) (z : Fin n → ℂ) (μ lam r : ℝ),
+    3 ≤ n → f.Monic → f.natDegree = n → RootEnumeration f z →
+    CriticalMinimum f μ → 0 < μ → 0 < r → r < 1 → 1 < lam →
+    ∃ k : ℕ, 2 ≤ k ∧
+      cfaJoinedBelow f z (lam * μ) (cfaBracket n k lam r * μ ^ ((1 : ℝ) / (n : ℝ)))
+/-- Two zero occurrences joined by a path of length at most `L` inside the closed sublevel set `{|f| ≤ R}`, with distinct locations when `f` is squarefree. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.cfaJoinedAtMost, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def cfaJoinedAtMost {n : ℕ} (f : ℂ[X]) (z : Fin n → ℂ) (R L : ℝ) : Prop :=
+  ∃ i j : Fin n, i ≠ j ∧ ConnectedAtMost f.eval R L (z i) (z j) ∧
+    (Squarefree f → z i ≠ z j)
+end PalomarCorpus.E1041.PaperStatementsZA
+
+namespace PalomarCorpus.E1041.PaperStatementsY
+open Polynomial
+open scoped NNReal
+open scoped ENNReal
+open scoped BigOperators
+export PalomarCorpus.E1041_03.Shared (cfaJoinedBelow)
+/-- **External input for `res:constant-factor-capacity`.** The averaging proof of `res:constant-factor-path`, rerun on the component `C` of `{|f| < 2μ}` containing the first-merge critical point, with the global area input replaced by the component form `Area(C) ≤ π cap(closure C)² = π κ²(2μ)^{2/n}` of the area-capacity inequality, at `λ = 2`, `r = 1/20`. `κ` is the paper's capacity ratio `cap(closure C)/(2μ)^{1/n}`; the pinned Mathlib has no logarithmic capacity, so `κ` enters as the real parameter this hypothesis is stated for. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.CFACapacityConstruction, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def CFACapacityConstruction (n : ℕ) (f : ℂ[X]) (z : Fin n → ℂ) (κ : ℝ) (k₀ : ℕ) : Prop :=
+  cfaJoinedBelow f z 1
+    (Real.sqrt (2 / (k₀ : ℝ)) *
+      (Real.sqrt 2 * (1 / 20) / (1 - 1 / 20) ^ 2 +
+        κ * (Real.sqrt (Real.log 40) + Real.pi / Real.sqrt (Real.log 2))))
+/-- The paper's `A = 283/3610` and `B = 52029/9100`. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.cfaA, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def cfaA : ℝ := 283 / 3610
+/-- Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.cfaB, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def cfaB : ℝ := 52029 / 9100
+/-- The paper's threshold `τ_k = (√(2k) - A)/B`. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.cfaTau, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def cfaTau (k : ℕ) : ℝ := (Real.sqrt (2 * (k : ℝ)) - cfaA) / cfaB
+end PalomarCorpus.E1041.PaperStatementsY
+
+namespace PalomarCorpus.E1041.PaperStatementsZB
+open Set
+open MeasureTheory
+open Polynomial
+open scoped ComplexConjugate
+open scoped BigOperators
+export PalomarCorpus.E1041_03.Shared (ConnectedAtMost CriticalMinimum)
+/-- The half-perimeter property of a set `U`: every point of `U` is joined to every point of its frontier, inside the sublevel set `{|f| ≤ R}`, by a rectifiable path of length at most half of `H¹(∂U)`. For a Jordan domain the paper proves it by choosing one of the two boundary arcs, which needs the Jordan curve theorem; here the property is a hypothesis. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.HalfPerimeterJoin, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def HalfPerimeterJoin (f : ℂ → ℂ) (R : ℝ) (U : Set ℂ) : Prop :=
+  ∀ H : ℝ, μH[(1 : ℝ)] (frontier U) ≤ ENNReal.ofReal H →
+    ∀ p ∈ U, ∀ q ∈ frontier U, ConnectedAtMost f R (H / 2) p q
+/-- The paper's conclusion: two distinct roots joined inside `{|f| ≤ R}` by a rectifiable path of length at most `L`. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.HasDistinctConnectionAtMost, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def HasDistinctConnectionAtMost (f : ℂ → ℂ) (R L : ℝ) : Prop :=
+  ∃ a b : ℂ, a ≠ b ∧ f a = 0 ∧ f b = 0 ∧ ConnectedAtMost f R L a b
+/-- The classical input of stage 1: at the first critical level the sublevel set has two distinct one-root components `U_a`, `U_b` whose closures meet at a critical point, each of perimeter at most `P` and each with the half-perimeter joining property. It packages the component-wise Riemann-Hurwitz count of Ebenfelt, Khavinson and Shapiro, the continuous extension of the inverse branch at a critical point, lower semicontinuity of length under uniform convergence, and the Jordan curve theorem. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.SubcriticalSplitExists, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def SubcriticalSplitExists (f : ℂ → ℂ) (μ P : ℝ) : Prop :=
+  ∃ (a b c : ℂ) (Ua Ub : Set ℂ), a ≠ b ∧ f a = 0 ∧ f b = 0 ∧
+    a ∈ Ua ∧ b ∈ Ub ∧ c ∈ frontier Ua ∧ c ∈ frontier Ub ∧
+    μH[(1 : ℝ)] (frontier Ua) ≤ ENNReal.ofReal P ∧
+    μH[(1 : ℝ)] (frontier Ub) ≤ ENNReal.ofReal P ∧
+    HalfPerimeterJoin f μ Ua ∧ HalfPerimeterJoin f μ Ub
+end PalomarCorpus.E1041.PaperStatementsZB
+
+namespace PalomarCorpus.E1041.CubicPath
+open Finset
+open Polynomial Set
+open scoped BigOperators
+open Polynomial
+open scoped ComplexConjugate
+open scoped ENNReal
+open Polynomial Metric
+open Polynomial Set
+open scoped BigOperators
+/-- The two-segment path from a to b through the hub c, defined for every real t by c + max (1 - t) 0 * (a - c) + max (t - 1) 0 * (b - c) with the real coefficients cast into the complex numbers; it equals a at t = 0, the hub c at t = 1, and b at t = 2, and the clamped coefficients make it continuous and piecewise affine on the whole real line. -/
+noncomputable def hub (a c b : ℂ) (t : ℝ) : ℂ :=
+  c + ((max (1 - t) 0 : ℝ) : ℂ) * (a - c) +
+    ((max (t - 1) 0 : ℝ) : ℂ) * (b - c)
+end PalomarCorpus.E1041.CubicPath

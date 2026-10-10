@@ -31,10 +31,19 @@ open scoped BigOperators
 /- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
 
 namespace PalomarCorpus.E257.PaperStatementsAR
-export PalomarCorpus.E257_27.Shared (CofinalExactLocalMersenneHalfRows ExactLocalMersenneHalfRow SkippedCoreCriticalQuotientSupply localMersennePrefixValue localMersenneQuotient localPrefixQuotient mersenneAchievementSet mersenneWeight mersenneWeightRat positiveMersenneSupportValue)
+export PalomarCorpus.E257_27.Shared (CofinalExactLocalMersenneHalfRows ExactLocalMersenneHalfRow localMersenneQuotient localPrefixQuotient mersenneAchievementSet mersenneWeight mersenneWeightRat positiveMersenneSupportValue)
 
 noncomputable def truncatedMersenneWeight (s d : ℕ) : ℕ :=
   4 ^ s / (2 ^ d - 1)
+
+noncomputable def SkippedCoreCriticalQuotientSupply : Prop :=
+  ∀ (D : Finset ℕ) (c : ℕ),
+    4 ≤ c →
+    (∀ d ∈ D, 2 ≤ d ∧ d < c) →
+    localMersennePrefixValue D < (1 / 2 : ℚ) →
+    (1 / 2 : ℚ) - localMersennePrefixValue D < mersenneWeightRat c →
+    2 ^ ((2 * c - 2) - 1) ≤
+      localPrefixQuotient (insert c D) (2 * c - 2)
 
 noncomputable def mersenneTail (n : ℕ) : ℝ :=
   ∑' k : ℕ, mersenneWeight (n + k + 1)

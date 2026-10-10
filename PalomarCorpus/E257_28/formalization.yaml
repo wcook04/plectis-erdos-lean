@@ -1,10 +1,10 @@
 version: v0.4
 project:
-  name: 'Erdős #257: a quotient bound at a crossing; filling the remaining binary positions; reducing the dyadic-boundary checks'
+  name: 'Erdős #257: compatible finite approximations; a quotient bound at a crossing; filling the remaining binary positions'
   description: >-
-    This entry states 15 theorems that the long record for Erdős problem #257 states in sections the unnumbered section a quotient bound at a crossing, the unnumbered section filling the remaining binary positions and the unnumbered section reducing the dyadic-boundary checks: the theorem “Two consecutive skips”, as halfGreedySkippedCriticalQuotientSupply_of_precriticalSuffix, halfGreedySkippedPrecriticalSuffixSupply_iff_preTake and halfGreedy_precriticalSuffix_lt_of_next_skip; the theorem “A later skip after a selected block”, as sub_two_le_two_pow_sub_four, precriticalCrossingTax_of_futureThreshold and halfGreedy_precriticalSuffix_lt_of_future_skip_after_takenBlock; the theorem “Filling the remaining binary positions”, as exists_exactRowStrictUpperFill_of_skippedCoreSharpCapacity; the theorem “An exact sum at depth 2c-2”, as exactLocalMersenneHalfRow_two_mul_sub_two_of_skippedCoreSharpCapacity; the proposition “Quotients in the upper half of the index range”, as exists_boolean_word_of_lt_two_pow and localMersenneQuotient_eq_two_pow_sub_of_half_lt; the theorem “A finite sum from a skipped prefix”, as paper_exact_row_from_skipped_prefix; the theorem “Testing one nearest dyadic boundary”, as paper_critical_dyadic_band_index_eq_top_of_le_two, paper_critical_dyadic_band_index_unique, paper_critical_dyadic_boundary_is_smallest and paper_dyadic_band_escape_iff_single_test.
+    This entry states 15 theorems that the long record for Erdős problem #257 states in sections the unnumbered section compatible finite approximations, the unnumbered section a quotient bound at a crossing and the unnumbered section filling the remaining binary positions: the theorem “A compatible family of finite supports”, as paper_compatible_bit_stable; the theorem “A sufficient quotient bound at a crossing”, as cofinalExactLocalMersenneHalfRows_of_criticalQuotientSupply and half_mem_mersenneAchievementSet_of_criticalQuotientSupply; the theorem “Induction from the depth-six example”, as exists_laterProtectedExactLocalMersenneRow; the theorem “The quotient condition on greedy prefixes”, as skippedCoreCriticalQuotientSupply_iff_halfGreedySkipped; the theorem “Two consecutive skips”, as halfGreedySkippedCriticalQuotientSupply_of_precriticalSuffix, halfGreedySkippedPrecriticalSuffixSupply_iff_preTake and halfGreedy_precriticalSuffix_lt_of_next_skip; the theorem “A later skip after a selected block”, as sub_two_le_two_pow_sub_four, precriticalCrossingTax_of_futureThreshold and halfGreedy_precriticalSuffix_lt_of_future_skip_after_takenBlock; the theorem “Filling the remaining binary positions”, as exists_exactRowStrictUpperFill_of_skippedCoreSharpCapacity; the theorem “An exact sum at depth 2c-2”, as exactLocalMersenneHalfRow_two_mul_sub_two_of_skippedCoreSharpCapacity; the proposition “Quotients in the upper half of the index range”, as exists_boolean_word_of_lt_two_pow and localMersenneQuotient_eq_two_pow_sub_of_half_lt.
 
-    11 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 4 are derived from the source declaration by a short tactic proof, which certifies implication.
+    9 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 6 are derived from the source declaration by a short tactic proof, which certifies implication.
 
     Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
 
@@ -55,13 +55,13 @@ sources:
   license: Apache-2.0
   author_endorsement: n/a
 status:
-  scope: "One Comparator configuration selecting the 15 theorems listed in PalomarCorpus/E257_28/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 52 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_52, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
+  scope: "One Comparator configuration selecting the 15 theorems listed in PalomarCorpus/E257_28/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 53 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_53, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
   trusted_challenge_sorry_count: 15
-  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E257_28/Challenge.lean. Comparator replay run 35935225572 of wcook04/plectis-erdos-lean at commit cc7e541 built this entry's Challenge and Solution with leanprover/lean4:v4.30.0 and accepted every compared theorem with both the Lean kernel and NanoDa, permitting only the axioms propext, Quot.sound and Classical.choice."
-  axiom_audit_status: "Lean Release Gate run 35935275645 at commit 18ea89f ran scripts/check_axiom_budget.py --run-palomar on the built Solution environment and printed only propext, Quot.sound and Classical.choice for every compared theorem."
+  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E257_28/Challenge.lean, and the Solution modules contain no sorry. Comparator and kernel outcomes are commit-specific and are recorded separately from this source metadata."
+  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. Axiom-audit outcomes are commit-specific and belong in separate receipts; this source field is not an audit receipt."
   permitted_axiom_budget:
   - propext
   - Quot.sound
@@ -79,6 +79,10 @@ status:
     file: "Solutions/PalomarCorpus/E257_28/PaperStatementsAD.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_28/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAR.cofinalExactLocalMersenneHalfRows_of_criticalQuotientSupply"
+    file: "Solutions/PalomarCorpus/E257_28/PaperStatementsAR.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_28/comparator.json"
   - declaration: "PalomarCorpus.E257.PaperStatementsAR.exactLocalMersenneHalfRow_two_mul_sub_two_of_skippedCoreSharpCapacity"
     file: "Solutions/PalomarCorpus/E257_28/PaperStatementsAR.lean"
     sorry_count: 0
@@ -87,28 +91,12 @@ status:
     file: "Solutions/PalomarCorpus/E257_28/PaperStatementsAR.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_28/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsAR.paper_exact_row_from_skipped_prefix"
+  - declaration: "PalomarCorpus.E257.PaperStatementsAR.half_mem_mersenneAchievementSet_of_criticalQuotientSupply"
     file: "Solutions/PalomarCorpus/E257_28/PaperStatementsAR.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_28/comparator.json"
   - declaration: "PalomarCorpus.E257.PaperStatementsAR.precriticalCrossingTax_of_futureThreshold"
     file: "Solutions/PalomarCorpus/E257_28/PaperStatementsAR.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_28/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsBE.paper_critical_dyadic_band_index_eq_top_of_le_two"
-    file: "Solutions/PalomarCorpus/E257_28/PaperStatementsBE.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_28/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsBE.paper_critical_dyadic_band_index_unique"
-    file: "Solutions/PalomarCorpus/E257_28/PaperStatementsBE.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_28/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsBE.paper_critical_dyadic_boundary_is_smallest"
-    file: "Solutions/PalomarCorpus/E257_28/PaperStatementsBE.lean"
-    sorry_count: 0
-    comparator_config: "PalomarCorpus/E257_28/comparator.json"
-  - declaration: "PalomarCorpus.E257.PaperStatementsBE.paper_dyadic_band_escape_iff_single_test"
-    file: "Solutions/PalomarCorpus/E257_28/PaperStatementsBE.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_28/comparator.json"
   - declaration: "PalomarCorpus.E257.PaperStatementsF.halfGreedySkippedCriticalQuotientSupply_of_precriticalSuffix"
@@ -125,6 +113,18 @@ status:
     comparator_config: "PalomarCorpus/E257_28/comparator.json"
   - declaration: "PalomarCorpus.E257.PaperStatementsF.halfGreedy_precriticalSuffix_lt_of_next_skip"
     file: "Solutions/PalomarCorpus/E257_28/PaperStatementsF.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_28/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStatementsF.skippedCoreCriticalQuotientSupply_iff_halfGreedySkipped"
+    file: "Solutions/PalomarCorpus/E257_28/PaperStatementsF.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_28/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStructuresBA.exists_laterProtectedExactLocalMersenneRow"
+    file: "Solutions/PalomarCorpus/E257_28/PaperStructuresBA.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_28/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStructuresW.paper_compatible_bit_stable"
+    file: "Solutions/PalomarCorpus/E257_28/PaperStructuresW.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_28/comparator.json"
   development_status: substantive

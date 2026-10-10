@@ -27,7 +27,7 @@ open Topology
 /- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
 
 namespace PalomarCorpus.E257.PaperStatementsF
-export PalomarCorpus.E257_28.Shared (localBinarySuffix localMersenneQuotient localPrefixQuotient mersenneWeightRat)
+export PalomarCorpus.E257_28.Shared (SkippedCoreCriticalQuotientSupply localBinarySuffix localMersennePrefixValue localMersenneQuotient localPrefixQuotient mersenneWeightRat)
 
 noncomputable def ExactLocalMersenneHalfRow (n : ℕ) : Prop :=
   ∃ D : Finset ℕ,
@@ -97,18 +97,6 @@ noncomputable def HalfGreedySkippedFullShellNonnegative : Prop :=
     (¬ mersenneWeight n ≤
       greedyMersenneRemainder (1 / 2 : ℝ) (n - 1)) →
     0 ≤ greedyHalfFrozenMargin (n - 1) n
-
-noncomputable def localMersennePrefixValue (D : Finset ℕ) : ℚ :=
-  ∑ d ∈ D, mersenneWeightRat d
-
-noncomputable def SkippedCoreCriticalQuotientSupply : Prop :=
-  ∀ (D : Finset ℕ) (c : ℕ),
-    4 ≤ c →
-    (∀ d ∈ D, 2 ≤ d ∧ d < c) →
-    localMersennePrefixValue D < (1 / 2 : ℚ) →
-    (1 / 2 : ℚ) - localMersennePrefixValue D < mersenneWeightRat c →
-    2 ^ ((2 * c - 2) - 1) ≤
-      localPrefixQuotient (insert c D) (2 * c - 2)
 
 noncomputable def greedyMersenneSupport (x : ℝ) : Set ℕ :=
   {m : ℕ | m ≠ 0 ∧

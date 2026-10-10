@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification257PaperStructuresCM
+
+#print axioms Erdos249257.ExternalVerification257PaperStructuresCM.paper_forced_greedy_tail_lt_weight'

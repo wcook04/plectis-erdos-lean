@@ -122,6 +122,13 @@ noncomputable def rungDecisionHorizon (J : ℕ) : ℕ :=
   (insert 3 (rungBadFinset J)).max' ⟨3, Finset.mem_insert_self 3 _⟩
 end PalomarCorpus.E257.PaperStatementsJ
 
+namespace PalomarCorpus.E257.PaperStructuresCM
+open Filter
+open Topology
+open Classical
+export PalomarCorpus.E257_43.Shared (rungTail rungWeight)
+end PalomarCorpus.E257.PaperStructuresCM
+
 namespace PalomarCorpus.E257.PaperStatementsAA
 /-- The manuscript's misalignment mass `μ_J(M) = ∑_{q=2}^{J} 2^{M mod q}/(2^q-1)`. Local copy of ErdosProblems.Erdos257.PaperCompleteR21.misalignMass, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def misalignMass (J M : ℕ) : ℝ :=

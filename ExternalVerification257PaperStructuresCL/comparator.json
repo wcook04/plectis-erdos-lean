@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ExternalVerification257PaperStructuresCL.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStructuresCL",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStructuresCL.dyadicResidualIntNumerator_coprime_oddDenominator",
+    "Erdos249257.ExternalVerification257PaperStructuresCL.dyadicResidualInt_denominator_sandwich"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

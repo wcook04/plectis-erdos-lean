@@ -4,6 +4,7 @@ import Solutions.PalomarCorpus.E251_07
 #print axioms PalomarCorpus.E251.LcmDiagonalCriterion.irrationalInitial_iff_cofinalNonintegralTailShifts
 #print axioms PalomarCorpus.E251.LcmDiagonalCriterion.irrationalInitial_iff_nonintegral_on_schedule
 #print axioms PalomarCorpus.E251.LcmDiagonalCriterion.tailShiftIntegral_iff_orderOf_dvd
+#print axioms PalomarCorpus.E251.PaperStructuresI.denominator_floor_both
 #print axioms PalomarCorpus.E251.PolynomialShiftCountermodel.polynomialGapTailCountermodel
 #print axioms PalomarCorpus.E251.PrimeGapIdentity.prime0_le_polynomial
 #print axioms PalomarCorpus.E251.PrimeGapIdentity.primeDisplayedSeries_eq_four_add_two_primeGapSeries

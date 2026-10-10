@@ -19,7 +19,7 @@ open scoped ENNReal
 /- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
 
 namespace PalomarCorpus.E1041.PaperStatementsU
-export PalomarCorpus.E1041_05.Shared (ConnectedBelow)
+export PalomarCorpus.E1041_05.Shared (rootProduct value)
 
 theorem primitive_quintic_two_tail (a b c : ℂ) (w : Fin 5 → ℂ)
     (hf : ∀ z, value a b c z = rootProduct w z) :

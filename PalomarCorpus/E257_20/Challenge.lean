@@ -173,6 +173,43 @@ theorem two_mul_mersenneWeight_succ_lt {n : ℕ} (hn : 0 < n) :
   sorry
 end PalomarCorpus.E257.PaperStatementsAH
 
+namespace PalomarCorpus.E257.PaperStructuresCH
+open Filter
+open Set
+open Topology
+open scoped ENNReal
+open MeasureTheory
+export PalomarCorpus.E257_20.Shared (mersenneTail mersenneWeight positiveMersenneSupportValue)
+/-- **Packet §4.** A finite support word certified to straddle the target at depth `d`: the coded value is at most `t` and the value plus the complete unresolved tail mass still reaches `t`. This is deliberately *weaker* than the `HalfPrefixForcingChain.interval_trapped` containment condition: overlap of the correction image with the cylinder, not containment inside it. Local copy of Erdos249257.IsStraddlePrefix, restated so the compared statements elaborate against Mathlib alone. -/
+structure IsStraddlePrefix (t : ℝ) (u : Finset ℕ) (d : ℕ) : Prop where
+  mem_bounds : ∀ n ∈ u, 0 < n ∧ n ≤ d
+  value_le : positiveMersenneSupportValue (↑u : Set ℕ) ≤ t
+  le_value_add_tail :
+    t ≤ positiveMersenneSupportValue (↑u : Set ℕ) + mersenneTail d
+/-- States lem:rank-step-trichotomy from the long record for Erdős problem #257. Transported from Erdos249257.IsStraddlePrefix.half_strict in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem IsStraddlePrefix.half_strict {u : Finset ℕ} {d : ℕ}
+    (hu : IsStraddlePrefix (1 / 2 : ℝ) u d) :
+    positiveMersenneSupportValue (↑u : Set ℕ) < 1 / 2 ∧
+      (1 / 2 : ℝ) < positiveMersenneSupportValue (↑u : Set ℕ)
+        + mersenneTail d := by
+  sorry
+end PalomarCorpus.E257.PaperStructuresCH
+
+namespace PalomarCorpus.E257.PaperStructuresCN
+open Filter
+open Set
+open Topology
+open scoped ENNReal
+open MeasureTheory
+export PalomarCorpus.E257_20.Shared (mersenneWeight positiveMersenneSupportValue)
+/-- States lem:rank-step-trichotomy from the long record for Erdős problem #257. Transported from Erdos249257.positiveMersenneSupportValue_insert in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem positiveMersenneSupportValue_insert {F : Finset ℕ} {a : ℕ}
+    (ha : a ∉ F) :
+    positiveMersenneSupportValue (↑(insert a F) : Set ℕ)
+      = mersenneWeight a + positiveMersenneSupportValue (↑F : Set ℕ) := by
+  sorry
+end PalomarCorpus.E257.PaperStructuresCN
+
 namespace PalomarCorpus.E257.PaperStructuresU
 open Filter
 open Set
@@ -222,11 +259,6 @@ theorem half_ne_coe_finset_add_mersenneTail
     positiveMersenneSupportValue (↑u : Set ℕ) + mersenneTail d
       ≠ (1 / 2 : ℝ) := by
   sorry
-/-- States lem:half-endpoint-kills from the long record for Erdős problem #257. Transported from Erdos249257.positiveMersenneSupportValue_coe_finset_ne_half in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem positiveMersenneSupportValue_coe_finset_ne_half
-    {u : Finset ℕ} (h0 : 0 ∉ u) :
-    positiveMersenneSupportValue (↑u : Set ℕ) ≠ (1 / 2 : ℝ) := by
-  sorry
 /-- States lem:fatal-gap-exclusion from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.depth_prefix_interval_disjoint in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem depth_prefix_interval_disjoint {t : ℝ} {u v : Finset ℕ} {d : ℕ}
     (hu : ∀ n ∈ u, 0 < n ∧ n ≤ d) (hv : ∀ n ∈ v, 0 < n ∧ n ≤ d)
@@ -262,37 +294,3 @@ theorem fatal_gap_within_prefix_interval {t : ℝ} {u : Finset ℕ} {d : ℕ}
       t ≤ positiveMersenneSupportValue (↑u : Set ℕ) + mersenneTail d := by
   sorry
 end PalomarCorpus.E257.PaperStatementsAM
-
-namespace PalomarCorpus.E257.PaperStatementsD
-open Filter
-open Set
-open Topology
-open scoped ENNReal
-open MeasureTheory
-export PalomarCorpus.E257_20.Shared (mersenneTail mersenneWeight positiveMersenneSupportValue)
-/-- Real greedy residual after processing exponents `1, ..., n`. Local copy of Erdos249257.greedyMersenneRemainder, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def greedyMersenneRemainder (x : ℝ) : ℕ → ℝ
-  | 0 => x
-  | n + 1 =>
-      if mersenneWeight (n + 1) ≤ greedyMersenneRemainder x n then
-        greedyMersenneRemainder x n - mersenneWeight (n + 1)
-      else
-        greedyMersenneRemainder x n
-/-- The set of positive exponents selected by the real greedy recursion. Local copy of Erdos249257.greedyMersenneSupport, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def greedyMersenneSupport (x : ℝ) : Set ℕ :=
-  {m : ℕ | m ≠ 0 ∧
-    mersenneWeight m ≤ greedyMersenneRemainder x (m - 1)}
-/-- The positive exponents omitted by the real greedy recursion. Local copy of Erdos249257.greedyMersenneSkippedSupport, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def greedyMersenneSkippedSupport (x : ℝ) : Set ℕ :=
-  {m : ℕ | m ≠ 0 ∧ m ∉ greedyMersenneSupport x}
-/-- The Mersenne achievement set, with the analytically invisible zero bit normalized away. Local copy of Erdos249257.mersenneAchievementSet, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def mersenneAchievementSet : Set ℝ :=
-  {x : ℝ | ∃ A : Set ℕ, 0 ∉ A ∧ x = positiveMersenneSupportValue A}
-/-- States thm:last-skip-iff-fatal from the long record for Erdős problem #257. Transported from Erdos249257.half_mem_iff_every_actual_skip_survives in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem half_mem_iff_every_actual_skip_survives :
-    (1 / 2 : ℝ) ∈ mersenneAchievementSet ↔
-      ∀ M : ℕ,
-        M ∈ greedyMersenneSkippedSupport (1 / 2 : ℝ) →
-          greedyMersenneRemainder (1 / 2 : ℝ) M ≤ mersenneTail M := by
-  sorry
-end PalomarCorpus.E257.PaperStatementsD

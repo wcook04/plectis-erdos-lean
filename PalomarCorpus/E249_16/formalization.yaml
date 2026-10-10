@@ -51,13 +51,13 @@ sources:
   license: Apache-2.0
   author_endorsement: n/a
 status:
-  scope: "One Comparator configuration selecting the 29 theorems listed in PalomarCorpus/E249_16/comparator.json, from the Lean development for Erdős problem #249. The problem's theorems are packed, in the order the papers state them, into the 33 entries PalomarCorpus/E249_01 to PalomarCorpus/E249_33, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification249* directories are internal regression inventory and are not selected."
+  scope: "One Comparator configuration selecting the 29 theorems listed in PalomarCorpus/E249_16/comparator.json, from the Lean development for Erdős problem #249. The problem's theorems are packed, in the order the papers state them, into the 34 entries PalomarCorpus/E249_01 to PalomarCorpus/E249_34, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification249* directories are internal regression inventory and are not selected."
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
   trusted_challenge_sorry_count: 29
-  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E249_16/Challenge.lean. Comparator replay run 35935225572 of wcook04/plectis-erdos-lean at commit cc7e541 built this entry's Challenge and Solution with leanprover/lean4:v4.30.0 and accepted every compared theorem with both the Lean kernel and NanoDa, permitting only the axioms propext, Quot.sound and Classical.choice."
-  axiom_audit_status: "Lean Release Gate run 35935275645 at commit 18ea89f ran scripts/check_axiom_budget.py --run-palomar on the built Solution environment and printed only propext, Quot.sound and Classical.choice for every compared theorem."
+  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E249_16/Challenge.lean, and the Solution modules contain no sorry. Comparator and kernel outcomes are commit-specific and are recorded separately from this source metadata."
+  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. Axiom-audit outcomes are commit-specific and belong in separate receipts; this source field is not an audit receipt."
   permitted_axiom_budget:
   - propext
   - Quot.sound

@@ -9,4 +9,5 @@ import Solutions.PalomarCorpus.E257_04.PaperStatementsA
 import Solutions.PalomarCorpus.E257_04.PaperStatementsAA
 import Solutions.PalomarCorpus.E257_04.PaperStatementsAE
 import Solutions.PalomarCorpus.E257_04.PaperStatementsAM
+import Solutions.PalomarCorpus.E257_04.PaperStructuresCK
 import Solutions.PalomarCorpus.E257_04.PaperStructuresS

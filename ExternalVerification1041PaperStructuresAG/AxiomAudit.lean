@@ -1,0 +1,4 @@
+import Solutions.ExternalVerification1041PaperStructuresAG
+
+#print axioms Erdos249257.ExternalVerification1041PaperStructuresAG.erdos1041_counterexample_hausdorff
+#print axioms Erdos249257.ExternalVerification1041PaperStructuresAG.s3_bottleneck_hausdorff

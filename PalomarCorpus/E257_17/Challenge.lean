@@ -22,12 +22,16 @@ open Filter
 open Topology
 open scoped BigOperators
 
+namespace PalomarCorpus.E257_17.Shared
+/-- The base b reciprocal power subseries supported on A, namely the sum over a in A of 1 divided by b to the power a minus 1, written as an unconditional sum of the indicator of A; the exponent a = 0 contributes 0 because division by zero is zero here, so membership of 0 in A does not change the value. -/
+noncomputable def erdosSupportSeries (b : ℕ) (A : Set ℕ) : ℝ :=
+  ∑' a : ℕ, Set.indicator A (fun a => (1 : ℝ) / ((b : ℝ) ^ a - 1)) a
+end PalomarCorpus.E257_17.Shared
+
 namespace PalomarCorpus.E257.PaperStatementsAG
 open Filter
 open Topology
-/-- **The Erdős #257 support series** `∑_{a ∈ A} 1/(b^a - 1)`, as an indicator series over ℕ. The `a = 0` term is `1/(1-1) = 0` under real division-by-zero conventions, so supports containing `0` contribute nothing spurious. Local copy of Erdos249257.erdosSupportSeries, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def erdosSupportSeries (b : ℕ) (A : Set ℕ) : ℝ :=
-  ∑' a : ℕ, Set.indicator A (fun a => (1 : ℝ) / ((b : ℝ) ^ a - 1)) a
+export PalomarCorpus.E257_17.Shared (erdosSupportSeries)
 /-- **The signed weighted divisor coefficient** `∑_{d ∣ n} w d` for an integer weight `w : ℕ → ℤ`, the Dirichlet incidence `w * 1` with signs. At a Nat weight (cast) this is `weightedCoeff`. Local copy of Erdos249257.intWeightedCoeff, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def intWeightedCoeff (w : ℕ → ℤ) (n : ℕ) : ℤ :=
   ∑ d ∈ n.divisors, w d
@@ -77,6 +81,19 @@ theorem irrational_or_bpow_mul_eq_intCast_intWeightedErdosSeries_periodic
       ∨ ∃ (k : ℕ) (z : ℤ), (b : ℝ) ^ k * intWeightedErdosSeries b w = (z : ℝ) := by
   sorry
 end PalomarCorpus.E257.PaperStatementsAG
+
+namespace PalomarCorpus.E257.PaperStructuresCO
+open Filter
+open Topology
+export PalomarCorpus.E257_17.Shared (erdosSupportSeries)
+/-- States thm:periodic-support from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR20.irrational_erdosSupportSeries_positivePeriodic in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem irrational_erdosSupportSeries_positivePeriodic
+    (b m : ℕ) (A : Set ℕ) (hb : 2 ≤ b) (hm : 0 < m)
+    (hper : ∀ n : ℕ, 0 < n → (n + m ∈ A ↔ n ∈ A))
+    (hpos : ∃ a : ℕ, 0 < a ∧ a ∈ A) :
+    Irrational (erdosSupportSeries b A) := by
+  sorry
+end PalomarCorpus.E257.PaperStructuresCO
 
 namespace PalomarCorpus.E257.PaperStatementsAD
 open scoped BigOperators

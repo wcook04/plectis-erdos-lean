@@ -16,3 +16,4 @@ import Solutions.PalomarCorpus.E257_43
 #print axioms PalomarCorpus.E257.PaperStatementsN.paper_one_orbit_stability
 #print axioms PalomarCorpus.E257.PaperStatementsN.paper_one_sided_finite_decision_boundary
 #print axioms PalomarCorpus.E257.PaperStatementsN.tailGreedyRemainder_mersenne
+#print axioms PalomarCorpus.E257.PaperStructuresCM.paper_forced_greedy_tail_lt_weight'

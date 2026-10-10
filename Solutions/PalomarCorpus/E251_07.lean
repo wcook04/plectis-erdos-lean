@@ -6,6 +6,7 @@ Authors: Will Cook
 import Mathlib
 import Solutions.PalomarCorpus.E251_07.Statement
 import Solutions.PalomarCorpus.E251_07.LcmDiagonalCriterion
+import Solutions.PalomarCorpus.E251_07.PaperStructuresI
 import Solutions.PalomarCorpus.E251_07.PolynomialShiftCountermodel
 import Solutions.PalomarCorpus.E251_07.PrimeGapIdentity
 import Solutions.PalomarCorpus.E251_07.PrimeGapNonperiodicity

@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification249PaperStructuresU
+
+#print axioms Erdos249257.ExternalVerification249PaperStructuresU.irrational_totient_series_of_support_gap

@@ -18,26 +18,17 @@ the source declaration it comes from. Erdős problem #257 remains open, and no t
 this entry decides it.
 -/
 
-open Set
 open Filter
+open Set
+open Topology
 open scoped ENNReal
 open MeasureTheory
-open Topology
 open scoped Classical
 
-namespace PalomarCorpus.E257.PaperStatementsG
-open Set
-open Filter
-open scoped ENNReal
-open MeasureTheory
-open Topology
-open scoped Classical
-/-- The real Mersenne weight `1 / (2^n - 1)`. Local copy of Erdos249257.mersenneWeight, restated so the compared statements elaborate against Mathlib alone. -/
+namespace PalomarCorpus.E257_21.Shared
+/-- The real Mersenne weight 1 divided by 2 to the power n minus 1; at n = 0 the value is 0 because division by zero is zero here. -/
 noncomputable def mersenneWeight (n : ℕ) : ℝ :=
   1 / ((2 : ℝ) ^ n - 1)
-/-- The remaining mass after processing exponents `1, ..., n`. Local copy of Erdos249257.mersenneTail, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def mersenneTail (n : ℕ) : ℝ :=
-  ∑' k : ℕ, mersenneWeight (n + k + 1)
 /-- Real greedy residual after processing exponents `1, ..., n`. Local copy of Erdos249257.greedyMersenneRemainder, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def greedyMersenneRemainder (x : ℝ) : ℕ → ℝ
   | 0 => x
@@ -46,16 +37,65 @@ noncomputable def greedyMersenneRemainder (x : ℝ) : ℕ → ℝ
         greedyMersenneRemainder x n - mersenneWeight (n + 1)
       else
         greedyMersenneRemainder x n
-/-- A greedy state is fatal when its residual is already larger than all remaining Mersenne mass. Local copy of Erdos249257.GreedyMersenneFatalAt, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def GreedyMersenneFatalAt (x : ℝ) (n : ℕ) : Prop :=
-  mersenneTail n < greedyMersenneRemainder x n
-/-- The set of positive exponents selected by the real greedy recursion. Local copy of Erdos249257.greedyMersenneSupport, restated so the compared statements elaborate against Mathlib alone. -/
+/-- The set of ranks selected by the greedy Mersenne rule on x, namely the positive m for which the weight at m is at most the greedy remainder after rank m minus 1. -/
 noncomputable def greedyMersenneSupport (x : ℝ) : Set ℕ :=
   {m : ℕ | m ≠ 0 ∧
     mersenneWeight m ≤ greedyMersenneRemainder x (m - 1)}
 /-- The positive exponents omitted by the real greedy recursion. Local copy of Erdos249257.greedyMersenneSkippedSupport, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def greedyMersenneSkippedSupport (x : ℝ) : Set ℕ :=
   {m : ℕ | m ≠ 0 ∧ m ∉ greedyMersenneSupport x}
+/-- The Mersenne tail beyond rank n, namely the sum over k at least 0 of the Mersenne weight at n+k+1. -/
+noncomputable def mersenneTail (n : ℕ) : ℝ :=
+  ∑' k : ℕ, mersenneWeight (n + k + 1)
+/-- The real number coded by a set A of exponents, namely the sum over a in A with a at least 1 of 1 divided by 2 to the power a minus 1; the indexing runs over k and evaluates the indicator at k+1, so only positive exponents contribute. -/
+noncomputable def positiveMersenneSupportValue (A : Set ℕ) : ℝ :=
+  ∑' k : ℕ, Set.indicator A mersenneWeight (k + 1)
+end PalomarCorpus.E257_21.Shared
+
+namespace PalomarCorpus.E257.PaperStatementsAM
+open Filter
+open Set
+open Topology
+open scoped ENNReal
+open MeasureTheory
+export PalomarCorpus.E257_21.Shared (mersenneWeight positiveMersenneSupportValue)
+/-- States lem:half-endpoint-kills from the long record for Erdős problem #257. Transported from Erdos249257.positiveMersenneSupportValue_coe_finset_ne_half in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem positiveMersenneSupportValue_coe_finset_ne_half
+    {u : Finset ℕ} (h0 : 0 ∉ u) :
+    positiveMersenneSupportValue (↑u : Set ℕ) ≠ (1 / 2 : ℝ) := by
+  sorry
+end PalomarCorpus.E257.PaperStatementsAM
+
+namespace PalomarCorpus.E257.PaperStatementsD
+open Filter
+open Set
+open Topology
+open scoped ENNReal
+open MeasureTheory
+export PalomarCorpus.E257_21.Shared (greedyMersenneRemainder greedyMersenneSkippedSupport greedyMersenneSupport mersenneTail mersenneWeight positiveMersenneSupportValue)
+/-- The Mersenne achievement set, with the analytically invisible zero bit normalized away. Local copy of Erdos249257.mersenneAchievementSet, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def mersenneAchievementSet : Set ℝ :=
+  {x : ℝ | ∃ A : Set ℕ, 0 ∉ A ∧ x = positiveMersenneSupportValue A}
+/-- States thm:last-skip-iff-fatal from the long record for Erdős problem #257. Transported from Erdos249257.half_mem_iff_every_actual_skip_survives in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem half_mem_iff_every_actual_skip_survives :
+    (1 / 2 : ℝ) ∈ mersenneAchievementSet ↔
+      ∀ M : ℕ,
+        M ∈ greedyMersenneSkippedSupport (1 / 2 : ℝ) →
+          greedyMersenneRemainder (1 / 2 : ℝ) M ≤ mersenneTail M := by
+  sorry
+end PalomarCorpus.E257.PaperStatementsD
+
+namespace PalomarCorpus.E257.PaperStatementsG
+open Set
+open Filter
+open scoped ENNReal
+open MeasureTheory
+open Topology
+open scoped Classical
+export PalomarCorpus.E257_21.Shared (greedyMersenneRemainder greedyMersenneSkippedSupport greedyMersenneSupport mersenneTail mersenneWeight)
+/-- A greedy state is fatal when its residual is already larger than all remaining Mersenne mass. Local copy of Erdos249257.GreedyMersenneFatalAt, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def GreedyMersenneFatalAt (x : ℝ) (n : ℕ) : Prop :=
+  mersenneTail n < greedyMersenneRemainder x n
 /-- `M` is the final exponent skipped by the actual greedy half orbit. Local copy of Erdos249257.IsLastHalfGreedySkip, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def IsLastHalfGreedySkip (M : ℕ) : Prop :=
   M ∈ greedyMersenneSkippedSupport (1 / 2 : ℝ) ∧

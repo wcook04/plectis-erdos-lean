@@ -18,46 +18,65 @@ walks from a compared theorem statement is byte-identical in the Challenge and S
 environments. Generated from the Challenge; do not edit by hand.
 -/
 
-open Polynomial
 open Set
-open scoped BigOperators
+open Polynomial
+open Finset
 open scoped NNReal
 open scoped ENNReal
-open scoped ComplexConjugate
-open Real
-open Filter
-open Metric
-open Bornology
-open scoped Topology
-open AffineSubspace
 
 namespace PalomarCorpus.E1041_04.Shared
-/-- The family `c` indexed by `Fin (n - 1)` lists the critical points of `p` with multiplicity: the derivative of `p` equals `C (n : ℂ)` times the product over `j` of `X - C (c j)`. For a monic `p` of degree `n` this says that `c` enumerates the `n - 1` zeros of the derivative, each as often as its multiplicity. -/
-noncomputable def CriticalEnumeration {n : ℕ} (p : ℂ[X]) (c : Fin (n - 1) → ℂ) : Prop :=
-  p.derivative = C (n : ℂ) * ∏ j, (X - C (c j))
-/-- Every zero of the complex polynomial `p` lies in the closed disc of radius `R` about `h`: `p.eval z = 0` implies `‖z - h‖ ≤ R`. -/
-noncomputable def RootsInClosedDisc (p : ℂ[X]) (h : ℂ) (R : ℝ) : Prop :=
-  ∀ z : ℂ, p.eval z = 0 → ‖z - h‖ ≤ R
-/-- Two complex values lie on the same oriented ray from the origin. Local copy of ErdosProblems.Erdos1041.SamePositiveRay, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def SamePositiveRay (a b : ℂ) : Prop :=
-  ∃ r : ℝ, 0 < r ∧ b = (r : ℂ) * a
-/-- Occurrences, not necessarily different locations. Local copy of ErdosProblems.Erdos1041.PaperPrimitiveCompletionR10.rootProduct, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def rootProduct (w : Fin 5 → ℂ) (z : ℂ) : ℂ :=
-  (z - w 0) * (z - w 1) * (z - w 2) * (z - w 3) * (z - w 4)
-/-- The precise primitive quintic function. Local copy of ErdosProblems.Erdos1041.PaperPrimitivePath.value, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def value (a b c z : ℂ) : ℂ := z ^ 5 + a * z ^ 4 + b * z + c
+/-- The real number cos (π / (2 n)). For n ≥ 2 it is the scale that carries the two outermost zeros of the degree-n Chebyshev polynomial to -1 and 1. -/
+noncomputable def endpointScale (n : ℕ) : ℝ :=
+  Real.cos (Real.pi / (2 * (n : ℝ)))
+/-- The sharp endpoint-normalised Chebyshev height C n = 1 / (2 ^ (n - 1) cos ^ n (π / (2 n))), written as the absolute value of (2 ^ (n - 1))⁻¹ * (endpointScale n)⁻¹ ^ n. For n ≥ 2 it is the maximum modulus on [-1, 1] of the monic polynomial T n (cos (π / (2 n)) x) / (2 ^ (n - 1) cos ^ n (π / (2 n))), whose extreme zeros are -1 and 1. The exponent n - 1 is natural subtraction, and the absolute value is cosmetic because the expression is positive for every n ≥ 2; at n = 1 the inverse of cos (π / 2) is 0 by the Lean convention and the value is 0. -/
+noncomputable def comparisonBound (n : ℕ) : ℝ :=
+  |((2 : ℝ) ^ (n - 1))⁻¹ * (endpointScale n)⁻¹ ^ n|
 end PalomarCorpus.E1041_04.Shared
 
-namespace PalomarCorpus.E1041.PaperStatementsM
-end PalomarCorpus.E1041.PaperStatementsM
-
-namespace PalomarCorpus.E1041.PaperStatementsU
-open Polynomial
+namespace PalomarCorpus.E1041.PaperStatementsI
 open Set
-open scoped BigOperators
+open Polynomial
+export PalomarCorpus.E1041_04.Shared (comparisonBound endpointScale)
+end PalomarCorpus.E1041.PaperStatementsI
+
+namespace PalomarCorpus.E1041.PaperStatementsE
+open Polynomial
+open Finset
+open Set
+/-- The conclusion of the sharp collinear diameter theorem, with the constant left as a parameter `K`. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.CollinearDiameterBound, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def CollinearDiameterBound (n : ℕ) (K : ℝ) : Prop :=
+  ∀ base dir : ℂ, ‖dir‖ = 1 → ∀ (y : Fin n → ℝ) (f : ℂ[X]),
+    f = (∏ k, (X - C (base + dir * (y k : ℂ)))) → ∀ D : ℝ,
+      IsGreatest {d : ℝ | ∃ j k : Fin n,
+          d = dist (base + dir * (y j : ℂ)) (base + dir * (y k : ℂ))} D →
+        ∃ j k : Fin n, j ≠ k ∧ y j ≤ y k ∧
+          (∀ l : Fin n, y l ≤ y j ∨ y k ≤ y l) ∧
+          dist (base + dir * (y j : ℂ)) (base + dir * (y k : ℂ)) ≤ D ∧
+          ∀ z ∈ segment ℝ (base + dir * (y j : ℂ)) (base + dir * (y k : ℂ)),
+            ‖f.eval z‖ ≤ K * (D / 2) ^ n
+end PalomarCorpus.E1041.PaperStatementsE
+
+namespace PalomarCorpus.E1041.PaperStatementsS
+open Polynomial
+open Finset
+open Set
+export PalomarCorpus.E1041_04.Shared (comparisonBound endpointScale)
+/-- The zeros of the endpoint-normalised scaled Chebyshev polynomial `q_*(x) = T_n(r_n x) / (2^(n-1) r_n^n)` of degree `n = m + 2`, listed in increasing order: `cos((2k+1)π/(2n)) / cos(π/(2n))`. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.chebNode, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def chebNode (m : ℕ) (i : Fin (m + 2)) : ℝ :=
+  Real.cos ((2 * ((m + 1 - (i : ℕ) : ℕ) : ℝ) + 1) * Real.pi / (2 * ((m + 2 : ℕ) : ℝ)))
+    / endpointScale (m + 2)
+/-- The endpoint-normalised monic Chebyshev comparison polynomial. Local copy of ErdosProblems.Erdos1041.SharpCollinearChebyshev.monicScaledChebyshev, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def monicScaledChebyshev (n : ℕ) : ℝ[X] :=
+  C (((2 : ℝ) ^ (n - 1))⁻¹) *
+    (Polynomial.Chebyshev.T ℝ (n : ℤ)).scaleRoots (endpointScale n)⁻¹
+end PalomarCorpus.E1041.PaperStatementsS
+
+namespace PalomarCorpus.E1041.PaperStatementsT
+open Polynomial
+open Finset
+open Set
 open scoped NNReal
 open scoped ENNReal
-export PalomarCorpus.E1041_04.Shared (rootProduct value)
 /-- The geometric conclusion used by the paper: a continuous rectifiable curve with specified endpoints, containment at every parameter, and a strict variation bound. Local copy of ErdosProblems.Erdos1041.PaperCurve.ConnectedBelow, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def ConnectedBelow (f : ℂ → ℂ) (R L : ℝ) (a b : ℂ) : Prop :=
   ∃ γ : ℝ → ℂ, ContinuousOn γ (Icc (0 : ℝ) 2) ∧
@@ -65,77 +84,4 @@ noncomputable def ConnectedBelow (f : ℂ → ℂ) (R L : ℝ) (a b : ℂ) : Pro
     (∀ t ∈ Icc (0 : ℝ) 2, ‖f (γ t)‖ < R) ∧
     BoundedVariationOn γ (Icc (0 : ℝ) 2) ∧
     eVariationOn γ (Icc (0 : ℝ) 2) < ENNReal.ofReal L
-/-- A continuous broken line `a → h → b`, with no division by a segment length. Local copy of ErdosProblems.Erdos1041.PaperCurve.hub, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def hub (a h b : ℂ) (t : ℝ) : ℂ :=
-  h + ((max (1 - t) 0 : ℝ) : ℂ) * (a - h) + ((max (t - 1) 0 : ℝ) : ℂ) * (b - h)
-/-- A specified two-segment connector, rather than merely existence of some rectifiable curve. The public `hub` fixes its image and parametrisation. Local copy of ErdosProblems.Erdos1041.PaperCurve.HubBelow, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def HubBelow (f : ℂ → ℂ) (R L : ℝ) (a h b : ℂ) : Prop :=
-  (∀ t ∈ Icc (0 : ℝ) 2, ‖f (hub a h b t)‖ < R) ∧
-    eVariationOn (hub a h b) (Icc (0 : ℝ) 2) < ENNReal.ofReal L
-end PalomarCorpus.E1041.PaperStatementsU
-
-namespace PalomarCorpus.E1041.PaperStatementsV
-open Polynomial
-open Set
-open scoped BigOperators
-export PalomarCorpus.E1041_04.Shared (rootProduct value)
-end PalomarCorpus.E1041.PaperStatementsV
-
-namespace PalomarCorpus.E1041.PaperStatementsJ
-open scoped ComplexConjugate
-end PalomarCorpus.E1041.PaperStatementsJ
-
-namespace PalomarCorpus.E1041.PaperStatementsO
-open scoped BigOperators
-open Polynomial
-open Set
-open scoped ComplexConjugate
-export PalomarCorpus.E1041_04.Shared (CriticalEnumeration RootsInClosedDisc)
-end PalomarCorpus.E1041.PaperStatementsO
-
-namespace PalomarCorpus.E1041.PaperStatementsP
-open scoped BigOperators
-open Polynomial
-open Set
-open scoped ComplexConjugate
-open Real
-export PalomarCorpus.E1041_04.Shared (CriticalEnumeration RootsInClosedDisc)
-/-- Local copy of ErdosProblems.Erdos1041.radialEqualityPolynomial, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def radialEqualityPolynomial (n : ℕ) (h lam : ℂ) : ℂ[X] := (X - C h) ^ n - C lam
-end PalomarCorpus.E1041.PaperStatementsP
-
-namespace PalomarCorpus.E1041.PaperStatementsW
-open Polynomial
-open Set
-open Filter
-open Metric
-open Bornology
-open scoped BigOperators
-open scoped ComplexConjugate
-open scoped Topology
-export PalomarCorpus.E1041_04.Shared (CriticalEnumeration RootsInClosedDisc)
-/-- Reflected-derivative bound, with the derivative root multiplicities specified by an exact polynomial factorisation. Local copy of ErdosProblems.Erdos1041.PaperAnalyticTargets.ReflectedCriticalValue, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def ReflectedCriticalValue : Prop :=
-  ∀ (n : ℕ) (p : ℂ[X]) (c : Fin (n - 1) → ℂ), 2 ≤ n → p.Monic →
-    p.natDegree = n → RootsInClosedDisc p 0 1 → CriticalEnumeration p c →
-      ∀ j, ‖p.eval (c j)‖ ≤ ∏ k, ‖1 - conj (c k) * c j‖
-end PalomarCorpus.E1041.PaperStatementsW
-
-namespace PalomarCorpus.E1041.PaperStatementsQ
-open Set
-open Metric
-open AffineSubspace
-open Polynomial
-export PalomarCorpus.E1041_04.Shared (SamePositiveRay)
-/-- The complex Newton vector associated with a value and its nonzero derivative. Local copy of ErdosProblems.Erdos1041.newtonFlowVector, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def newtonFlowVector (value derivative : ℂ) : ℂ :=
-  -value / derivative
-end PalomarCorpus.E1041.PaperStatementsQ
-
-namespace PalomarCorpus.E1041.PaperStatementsN
-open Set
-open Metric
-open AffineSubspace
-open Polynomial
-export PalomarCorpus.E1041_04.Shared (SamePositiveRay)
-end PalomarCorpus.E1041.PaperStatementsN
+end PalomarCorpus.E1041.PaperStatementsT

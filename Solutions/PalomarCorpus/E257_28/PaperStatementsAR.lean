@@ -31,25 +31,10 @@ open scoped BigOperators
 /- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
 
 namespace PalomarCorpus.E257.PaperStatementsAR
-export PalomarCorpus.E257_28.Shared (localBinarySuffix localMersenneQuotient localPrefixQuotient mersenneWeightRat)
-
-noncomputable def CofinalExactLocalMersenneHalfRows : Prop :=
-  ∀ N : ℕ, ∃ n : ℕ, N ≤ n ∧ ExactLocalMersenneHalfRow n
+export PalomarCorpus.E257_28.Shared (SkippedCoreCriticalQuotientSupply localBinarySuffix localMersennePrefixValue localMersenneQuotient localPrefixQuotient mersenneWeightRat)
 
 noncomputable def truncatedMersenneWeight (s d : ℕ) : ℕ :=
   4 ^ s / (2 ^ d - 1)
-
-noncomputable def SkippedCoreCriticalQuotientSupply : Prop :=
-  ∀ (D : Finset ℕ) (c : ℕ),
-    4 ≤ c →
-    (∀ d ∈ D, 2 ≤ d ∧ d < c) →
-    localMersennePrefixValue D < (1 / 2 : ℚ) →
-    (1 / 2 : ℚ) - localMersennePrefixValue D < mersenneWeightRat c →
-    2 ^ ((2 * c - 2) - 1) ≤
-      localPrefixQuotient (insert c D) (2 * c - 2)
-
-noncomputable def mersenneWeight (n : ℕ) : ℝ :=
-  1 / ((2 : ℝ) ^ n - 1)
 
 noncomputable def mersenneTail (n : ℕ) : ℝ :=
   ∑' k : ℕ, mersenneWeight (n + k + 1)
@@ -65,12 +50,6 @@ noncomputable def localMersenneGeometricQuotient (M d : ℕ) : ℕ :=
 
 noncomputable def localGeometricPrefixQuotient (D : Finset ℕ) (M : ℕ) : ℕ :=
   ∑ d ∈ D, localMersenneGeometricQuotient M d
-
-noncomputable def positiveMersenneSupportValue (A : Set ℕ) : ℝ :=
-  ∑' k : ℕ, Set.indicator A mersenneWeight (k + 1)
-
-noncomputable def mersenneAchievementSet : Set ℝ :=
-  {x : ℝ | ∃ A : Set ℕ, 0 ∉ A ∧ x = positiveMersenneSupportValue A}
 
 noncomputable def rowDeviation (n : ℕ) (D : Finset ℕ) : ℤ :=
   (2 : ℤ)^(2*n-1) - (2 : ℤ)^(n+1) - ∑ d ∈ D, (truncatedMersenneWeight n d : ℤ)

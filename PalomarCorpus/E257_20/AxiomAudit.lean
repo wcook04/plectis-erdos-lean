@@ -10,8 +10,8 @@ import Solutions.PalomarCorpus.E257_20
 #print axioms PalomarCorpus.E257.PaperStatementsAM.fatal_gap_excludes_every_representation
 #print axioms PalomarCorpus.E257.PaperStatementsAM.fatal_gap_within_prefix_interval
 #print axioms PalomarCorpus.E257.PaperStatementsAM.half_ne_coe_finset_add_mersenneTail
-#print axioms PalomarCorpus.E257.PaperStatementsAM.positiveMersenneSupportValue_coe_finset_ne_half
-#print axioms PalomarCorpus.E257.PaperStatementsD.half_mem_iff_every_actual_skip_survives
 #print axioms PalomarCorpus.E257.PaperStructuresBJ.prefix_add_mersenneTail_lt_half_of_eventually_right
+#print axioms PalomarCorpus.E257.PaperStructuresCH.IsStraddlePrefix.half_strict
+#print axioms PalomarCorpus.E257.PaperStructuresCN.positiveMersenneSupportValue_insert
 #print axioms PalomarCorpus.E257.PaperStructuresU.IsStraddlePrefix.half_step_forced
 #print axioms PalomarCorpus.E257.PaperStructuresU.isStraddlePrefix_step_trichotomy

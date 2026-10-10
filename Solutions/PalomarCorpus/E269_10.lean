@@ -6,4 +6,5 @@ Authors: Will Cook
 import Mathlib
 import Solutions.PalomarCorpus.E269_10.Statement
 import Solutions.PalomarCorpus.E269_10.IntegralBranchPinning
+import Solutions.PalomarCorpus.E269_10.PaperStructuresI
 import Solutions.PalomarCorpus.E269_10.ThreePrimeStructure

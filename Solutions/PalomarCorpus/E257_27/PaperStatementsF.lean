@@ -27,7 +27,7 @@ open Topology
 /- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
 
 namespace PalomarCorpus.E257.PaperStatementsF
-export PalomarCorpus.E257_27.Shared (CofinalExactLocalMersenneHalfRows CofinalPositiveHalfGreedySkips ExactLocalMersenneHalfRow SkippedCoreCriticalQuotientSupply greedyMersenneRemainderRat localMersennePrefixValue localMersenneQuotient localPrefixQuotient mersenneWeightRat)
+export PalomarCorpus.E257_27.Shared (CofinalExactLocalMersenneHalfRows CofinalPositiveHalfGreedySkips ExactLocalMersenneHalfRow greedyMersenneRemainderRat localMersenneQuotient localPrefixQuotient mersenneWeightRat)
 
 noncomputable def affineBinaryOrbit (a : ℕ → ℤ) (u0 : ℤ) : ℕ → ℤ
   | 0 => u0
@@ -62,6 +62,14 @@ noncomputable def futureSkipCapacity
 noncomputable def localBinarySuffix (D : Finset ℕ) (k M : ℕ) : ℕ :=
   2 ^ (M - k) - localPrefixQuotient D M - 1
 
+noncomputable def greedyMersennePrefixRat (x : ℚ) (n : ℕ) : Finset ℕ :=
+  (((Finset.range n).filter fun k =>
+      mersenneWeightRat (k + 1) ≤ greedyMersenneRemainderRat x k).image
+    fun k => k + 1)
+
+noncomputable def halfGreedyPrefixSupport (n : ℕ) : Finset ℕ :=
+  greedyMersennePrefixRat (1 / 2 : ℚ) n
+
 noncomputable def HalfGreedyPreTakePrecriticalSuffixSupply : Prop :=
   ∀ c : ℕ,
     6 ≤ c →
@@ -71,6 +79,15 @@ noncomputable def HalfGreedyPreTakePrecriticalSuffixSupply : Prop :=
       greedyMersenneRemainderRat (1 / 2 : ℚ) c →
     localBinarySuffix (halfGreedyPrefixSupport (c - 1)) 1 (2 * c - 3) <
       2 ^ (c - 3)
+
+noncomputable def HalfGreedySkippedCriticalQuotientSupply : Prop :=
+  ∀ c : ℕ,
+    4 ≤ c →
+    greedyMersenneRemainderRat (1 / 2 : ℚ) (c - 1) <
+      mersenneWeightRat c →
+    2 ^ ((2 * c - 2) - 1) ≤
+      localPrefixQuotient
+        (insert c (halfGreedyPrefixSupport (c - 1))) (2 * c - 2)
 
 noncomputable def mersenneWeight (n : ℕ) : ℝ :=
   1 / ((2 : ℝ) ^ n - 1)
@@ -103,6 +120,18 @@ noncomputable def HalfGreedySkippedPrecriticalSuffixSupply : Prop :=
       mersenneWeightRat c →
     localBinarySuffix (halfGreedyPrefixSupport (c - 1)) 1 (2 * c - 3) <
       2 ^ (c - 3)
+
+noncomputable def localMersennePrefixValue (D : Finset ℕ) : ℚ :=
+  ∑ d ∈ D, mersenneWeightRat d
+
+noncomputable def SkippedCoreCriticalQuotientSupply : Prop :=
+  ∀ (D : Finset ℕ) (c : ℕ),
+    4 ≤ c →
+    (∀ d ∈ D, 2 ≤ d ∧ d < c) →
+    localMersennePrefixValue D < (1 / 2 : ℚ) →
+    (1 / 2 : ℚ) - localMersennePrefixValue D < mersenneWeightRat c →
+    2 ^ ((2 * c - 2) - 1) ≤
+      localPrefixQuotient (insert c D) (2 * c - 2)
 
 noncomputable def greedyMersenneSupport (x : ℝ) : Set ℕ :=
   {m : ℕ | m ≠ 0 ∧

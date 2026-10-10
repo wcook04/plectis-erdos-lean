@@ -9,7 +9,7 @@ import Mathlib
 set_option autoImplicit false
 
 /-!
-# Erdős #243, the bounded negative part rigidity, bounded rise reduced tail and periodic negative orbit families
+# Erdős #243, the bounded negative part rigidity, bounded rise reduced tail and paper structures AF families
 
 Each theorem below restates, against Mathlib alone, a theorem of the Lean development
 for Erdős problem #243, in the order the papers state them. The definitions a statement
@@ -18,11 +18,9 @@ the source declaration it comes from. Erdős problem #243 remains open, and no t
 this entry decides it.
 -/
 
+open Filter
+
 namespace PalomarCorpus.E243_10.Shared
-/-- The running maximum `max_{k ≤ n} u k` of a natural-valued sequence, given by `runningMax u 0 = u 0` and `runningMax u (n+1) = max (runningMax u n) (u (n+1))`. -/
-noncomputable def runningMax (u : ℕ → ℕ) : ℕ → ℕ
-  | 0 => u 0
-  | n + 1 => max (runningMax u n) (u (n + 1))
 /-- The Sylvester successor `a² - a + 1`, expressed in a ring. Local copy of ErdosProblems.Erdos243.sylvesterNext, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def sylvesterNext (a : ℤ) : ℤ :=
   a ^ 2 - a + 1
@@ -90,6 +88,19 @@ theorem no_eventuallyBoundedRise_reducedTail
   sorry
 end PalomarCorpus.E243.BoundedRiseReducedTail
 
+namespace PalomarCorpus.E243.PaperStructuresAF
+open Filter
+/-- States long243:res:nonintegralrate from the long record for Erdős problem #243. Transported from ErdosProblems.Erdos243.PaperCompleteR21.nonintegral_regular_rate_irrational in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem nonintegral_regular_rate_irrational
+    (a : ℕ → ℕ) (ha : StrictMono a) (hpos : ∀ n, 0 < a n)
+    (l : ℝ) (hl : 1 < l) (hnonint : ∀ d : ℕ, l ≠ (d : ℝ))
+    (hrate : Tendsto (fun n : ℕ => (n : ℝ) ^ l *
+      ((a n : ℝ) ^ 2 / (a (n + 1) : ℝ) - (1 + l / (n : ℝ))))
+      atTop (nhds 0)) :
+    Irrational (∑' n : ℕ, 1 / (a n : ℝ)) := by
+  sorry
+end PalomarCorpus.E243.PaperStructuresAF
+
 namespace PalomarCorpus.E243.PeriodicNegativeOrbit
 /-- Unconditional exclusion of a phase-primitive periodic negative-error orbit: for natural sequences with `a n ≥ 2`, `0 < e n < a n`, `D (n+1) = a n * D n`, `C (n+1) = C n + e n`, the shape equation `D n + e n = (a n - 1) * C n`, a period `h > 0` with `e (n+h) = e n`, a positive drift `C (n+h) = C n + M` with `M > 0`, and the primitivity condition that no prime dividing `M` divides both `C 0` and every value of `e`, the hypotheses are contradictory. Here `e n` is the magnitude of a negative centred error, and `a n - 1` is natural subtraction, which is harmless because `a n ≥ 2`. -/
 theorem no_phasePrimitivePeriodicNegative_orbit
@@ -141,7 +152,11 @@ theorem no_eventuallyPeriodicNegative_orbit
 end PalomarCorpus.E243.PeriodicNegativeOrbit
 
 namespace PalomarCorpus.E243.PrimitiveRecordRigidity
-export PalomarCorpus.E243_10.Shared (runningMax sylvesterNext)
+export PalomarCorpus.E243_10.Shared (sylvesterNext)
+/-- The running maximum `max_{k ≤ n} u k` of a natural-valued sequence, given by `runningMax u 0 = u 0` and `runningMax u (n+1) = max (runningMax u n) (u (n+1))`. -/
+noncomputable def runningMax (u : ℕ → ℕ) : ℕ → ℕ
+  | 0 => u 0
+  | n + 1 => max (runningMax u n) (u (n + 1))
 /-- Supporting lemma on one primitive step with arbitrary cancellation: given `w + v = a * u`, `w = hc * u'` and `a * v = hc * v'` with `u` coprime to `v`, `v > 0` and `w > 0`, a prime power `p ^ l` dividing `v` still divides the next denominator `v'` as soon as the raw numerator satisfies `w < p ^ (l+1)`. The valuation of `p` in the denominator cannot drop while the raw numerator stays below the next power of `p`, whatever the cancellation factor `hc` is. -/
 theorem primitive_valuation_no_drop
     {a u v w hc u' v' p l : ℕ}
@@ -253,31 +268,3 @@ theorem recordRiseTwo_sylvesterNext_eventually
     ∃ M, ∀ n, M ≤ n → (a (n + 1) : ℤ) = sylvesterNext (a n : ℤ) := by
   sorry
 end PalomarCorpus.E243.PrimitiveRecordRigidity
-
-namespace PalomarCorpus.E243.ProtectedEpochEnergy
-export PalomarCorpus.E243_10.Shared (runningMax)
-/-- Protected-epoch record energy: for an odd prime `p`, an exponent `l ≥ 1` and a primitive orbit from `s` with arbitrary cancellation, `u n` coprime to `v n`, `v n > 0`, `w n > 0`, `w n + v n = a n * u n`, `w n = hc n * u (n+1)`, `a n * v n = hc n * v (n+1)` and the slow bound `2 * w n ≤ 3 * u n`, if `Q = p ^ l` divides `v s` with `Q ≥ 16` and `4 * runningMax u s < p * Q`, and `s < τ` with `p * Q ≤ 2 * u τ`, then there is a finite set `J` of indices in `[s, τ)`, each a global record step with `hc n = 1` and jump `u n + 3 ≤ u (n+1)`, such that `p * Q ≤ (8 * p + 8) * J.card + 4 * ∑_{n ∈ J} (u (n+1) - u n - 2) + 8 * p`, the inner subtraction being natural subtraction. -/
-theorem protected_epoch_energy_integer
-    (a u v w hc : ℕ → ℕ) (p l s τ : ℕ)
-    (hp : p.Prime)
-    (hpodd : Odd p)
-    (hl : 1 ≤ l)
-    (hred : ∀ n, s ≤ n → Nat.Coprime (u n) (v n))
-    (hvpos : ∀ n, s ≤ n → 0 < v n)
-    (hw : ∀ n, s ≤ n → w n + v n = a n * u n)
-    (hwpos : ∀ n, s ≤ n → 0 < w n)
-    (hnum : ∀ n, s ≤ n → w n = hc n * u (n + 1))
-    (hden : ∀ n, s ≤ n → a n * v n = hc n * v (n + 1))
-    (hslow : ∀ n, s ≤ n → 2 * w n ≤ 3 * u n)
-    (hprot : p ^ l ∣ v s)
-    (hQ : 16 ≤ p ^ l)
-    (hRs : 4 * runningMax u s < p * p ^ l)
-    (hsτ : s < τ)
-    (hτ : p * p ^ l ≤ 2 * u τ) :
-    ∃ J : Finset ℕ,
-      (∀ n ∈ J, s ≤ n ∧ n < τ ∧ runningMax u n < u (n + 1) ∧
-          u n + 3 ≤ u (n + 1) ∧ hc n = 1) ∧
-      p * p ^ l ≤ (8 * p + 8) * J.card
-        + 4 * ∑ n ∈ J, (u (n + 1) - u n - 2) + 8 * p := by
-  sorry
-end PalomarCorpus.E243.ProtectedEpochEnergy

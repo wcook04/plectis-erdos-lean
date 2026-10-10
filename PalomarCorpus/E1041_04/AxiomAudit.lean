@@ -1,15 +1,14 @@
 import Solutions.PalomarCorpus.E1041_04
 
-#print axioms PalomarCorpus.E1041.PaperStatementsJ.cubic_has_safe_root_spoke
-#print axioms PalomarCorpus.E1041.PaperStatementsM.primitiveInterior_exists_two_tailEnergy_lt_one
-#print axioms PalomarCorpus.E1041.PaperStatementsN.translated_samePositiveRay_parameterization
-#print axioms PalomarCorpus.E1041.PaperStatementsO.critical_value_three_budgets
-#print axioms PalomarCorpus.E1041.PaperStatementsP.critical_value_three_budgets_sharp
-#print axioms PalomarCorpus.E1041.PaperStatementsQ.newton_real_endpoint_whole
-#print axioms PalomarCorpus.E1041.PaperStatementsQ.newton_real_value_whole
-#print axioms PalomarCorpus.E1041.PaperStatementsU.primitive_quintic_two_tail
-#print axioms PalomarCorpus.E1041.PaperStatementsU.primitive_quintic_two_tail_of_polynomial
-#print axioms PalomarCorpus.E1041.PaperStatementsV.tail_le_one_and_eq_iff_of_leading_zero
-#print axioms PalomarCorpus.E1041.PaperStatementsV.tail_norm_of_leading_zero
-#print axioms PalomarCorpus.E1041.PaperStatementsV.two_tails_closedDisc_of_ne_zero
-#print axioms PalomarCorpus.E1041.PaperStatementsW.reflected_critical_value
+#print axioms PalomarCorpus.E1041.PaperStatementsE.collinearDiameterBound_sharpConstant
+#print axioms PalomarCorpus.E1041.PaperStatementsE.exists_collinear_factorisation
+#print axioms PalomarCorpus.E1041.PaperStatementsE.sharpConstant_le_of_collinearDiameterBound
+#print axioms PalomarCorpus.E1041.PaperStatementsE.sharp_collinear_root_diameter
+#print axioms PalomarCorpus.E1041.PaperStatementsE.sharp_collinear_root_diameter_monic
+#print axioms PalomarCorpus.E1041.PaperStatementsI.exists_peak_le_comparisonBound
+#print axioms PalomarCorpus.E1041.PaperStatementsS.chebyshev_configuration_attains
+#print axioms PalomarCorpus.E1041.PaperStatementsS.exists_gap_le_comparisonBound
+#print axioms PalomarCorpus.E1041.PaperStatementsS.monicScaledChebyshev_eq_prod
+#print axioms PalomarCorpus.E1041.PaperStatementsS.sharp_collinear_equality_attained
+#print axioms PalomarCorpus.E1041.PaperStatementsT.collinear_erdos_1041
+#print axioms PalomarCorpus.E1041.PaperStatementsT.collinear_erdos_1041_monic

@@ -25,32 +25,38 @@ open MeasureTheory
 open scoped ComplexConjugate
 open Set
 open scoped NNReal
-open scoped BigOperators
-open Real
-open scoped UpperHalfPlane
 
 namespace PalomarCorpus.E1041_01.Shared
-/-- The denominator `R = cosh d - sinh d cos θ` of the polar parametrisation is positive, because `|sinh d| < cosh d`. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.Hyperbolic.polarDen_pos, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def polarDen_pos (d θ : ℝ) : 0 < cosh d - sinh d * cos θ := by
-  have hsq := Real.cosh_sq_sub_sinh_sq d
-  have hpos := Real.cosh_pos d
-  have habs : |sinh d| < cosh d := by
-    nlinarith [sq_abs (sinh d), abs_nonneg (sinh d)]
-  have h2 : sinh d * cos θ ≤ |sinh d| := by
-    calc sinh d * cos θ ≤ |sinh d * cos θ| := le_abs_self _
-      _ = |sinh d| * |cos θ| := abs_mul _ _
-      _ ≤ |sinh d| * 1 := mul_le_mul_of_nonneg_left (Real.abs_cos_le_one θ) (abs_nonneg _)
-      _ = |sinh d| := mul_one _
-  linarith
-/-- **Geodesic polar coordinates on the hyperbolic plane.** `polar d θ` is the point of the upper half-plane at hyperbolic distance `|d|` from the centre `i` with argument `θ`: the image of the Poincaré-disc point `tanh (d/2) e^{iθ}` (the paper's coordinates) under the Cayley transform `w ↦ i(1+w)/(1-w)`, which is `(-(sinh d sin θ) + i)/(cosh d - sinh d cos θ)`. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.Hyperbolic.polar, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def polar (d θ : ℝ) : ℍ :=
-  ⟨⟨-(sinh d * sin θ) / (cosh d - sinh d * cos θ), 1 / (cosh d - sinh d * cos θ)⟩,
-    one_div_pos.mpr (polarDen_pos d θ)⟩
+/-- Local definition s, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def s : ℚ := 1 / 10 ^ 6
+/-- Local definition t, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def t : ℚ := 417 / 40
+/-- Local definition A, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def A : ℚ := -5 + 12 * t - 3 * t ^ 2
+/-- Local definition B, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def B : ℚ := -4 + 4 * t + 6 * t ^ 2
+/-- Local definition Cconst, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def Cconst : ℚ := t * (-8 + 15 * t - 2 * t ^ 2)
+/-- Local definition a, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def a : ℂ := (A : ℂ) - (s : ℂ) * Complex.I
+/-- Local definition b, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def b : ℂ := Complex.I * (B : ℂ) + (9 / 5 : ℚ) * (s : ℂ)
+/-- Local definition c, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def c : ℂ := -(Cconst : ℂ) - (162 / 25 : ℚ) * (s : ℂ) * Complex.I
+noncomputable def ε : ℚ := s ^ 2
+noncomputable def ρ : ℚ := 1 - s ^ 16
+/-- Local definition f, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def f : Polynomial ℂ :=
+  Polynomial.X ^ 7
+    + Polynomial.C (-(ρ : ℂ) * (ε : ℂ) ^ 6 * conj c) * Polynomial.X ^ 6
+    + Polynomial.C (-(ρ : ℂ) ^ 2 * (ε : ℂ) ^ 5 * conj b) * Polynomial.X ^ 5
+    + Polynomial.C (-(ρ : ℂ) ^ 3 * (ε : ℂ) ^ 4 * conj a) * Polynomial.X ^ 4
+    + Polynomial.C ((ρ : ℂ) ^ 4 * (ε : ℂ) ^ 4 * a) * Polynomial.X ^ 3
+    + Polynomial.C ((ρ : ℂ) ^ 5 * (ε : ℂ) ^ 5 * b) * Polynomial.X ^ 2
+    + Polynomial.C ((ρ : ℂ) ^ 6 * (ε : ℂ) ^ 6 * c) * Polynomial.X
+    + Polynomial.C (-(ρ : ℂ) ^ 7)
 /-- A public function spelling exactly the trinomial in both papers. Local copy of ErdosProblems.Erdos1041.PaperTrinomial.polynomialValue, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def polynomialValue (n m : ℕ) (a b z : ℂ) : ℂ := z ^ n + a * z ^ m + b
-/-- The paper's `w(d,r) = arccos (clamp ((cosh d cosh r - cosh (D/2))/(sinh d sinh r)))`, the half-width of the arc cut from the hyperbolic circle of radius `r` about the centre by the open hyperbolic ball of radius `D/2` about a point at distance `d` from the centre. `clamp` truncates to `[-1,1]`. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.Hyperbolic.sliceHalfAngle, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def sliceHalfAngle (D d r : ℝ) : ℝ :=
-  arccos (max (-1) (min 1 ((cosh d * cosh r - cosh (D / 2)) / (sinh d * sinh r))))
 end PalomarCorpus.E1041_01.Shared
 
 namespace PalomarCorpus.E1041.PaperStatementsA
@@ -65,11 +71,29 @@ open MeasureTheory
 open Polynomial
 open Metric
 open scoped ComplexConjugate
-/-- Local definition s, copied so the compared statements of this entry elaborate against Mathlib alone. -/
-noncomputable def s : ℚ := 1 / 10 ^ 6
+export PalomarCorpus.E1041_01.Shared (s)
 /-- Local definition fcLength, copied so the compared statements of this entry elaborate against Mathlib alone. -/
 noncomputable def fcLength (s : Set ℂ) : ℝ≥0∞ := μH[1] s
 end PalomarCorpus.E1041.PaperStatementsAE
+
+namespace PalomarCorpus.E1041.PaperStructuresAF
+open scoped ComplexConjugate
+open scoped ENNReal
+export PalomarCorpus.E1041_01.Shared (A B Cconst a b c f s t)
+/-- Local definition pathLength, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def pathLength (γ : ℝ → ℂ) : ENNReal := eVariationOn γ (Set.Icc 0 1)
+end PalomarCorpus.E1041.PaperStructuresAF
+
+namespace PalomarCorpus.E1041.PaperStructuresAG
+open scoped ENNReal
+open MeasureTheory
+open Polynomial
+open Metric
+open scoped ComplexConjugate
+export PalomarCorpus.E1041_01.Shared (A B Cconst a b c f s t)
+/-- Local definition Omega, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def Omega (p : Polynomial ℂ) : Set ℂ := {z : ℂ | ‖p.eval z‖ < 1}
+end PalomarCorpus.E1041.PaperStructuresAG
 
 namespace PalomarCorpus.E1041.PaperStatementsAA
 open Set
@@ -85,68 +109,3 @@ namespace PalomarCorpus.E1041.PaperStatementsH
 open Set
 export PalomarCorpus.E1041_01.Shared (polynomialValue)
 end PalomarCorpus.E1041.PaperStatementsH
-
-namespace PalomarCorpus.E1041.PaperStatementsZA
-open Polynomial
-open Set
-open scoped ComplexConjugate
-open scoped BigOperators
-open scoped NNReal
-open scoped ENNReal
-/-- Local copy of ErdosProblems.Erdos1041.PaperAnalyticTargets.CriticalMinimum, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def CriticalMinimum (p : ℂ[X]) (μ : ℝ) : Prop :=
-  IsLeast {x : ℝ | ∃ c : ℂ, p.derivative.eval c = 0 ∧ x = ‖p.eval c‖} μ
-/-- The geometric conclusion used by the paper: a continuous rectifiable curve with specified endpoints, containment at every parameter, and a strict variation bound. Local copy of ErdosProblems.Erdos1041.PaperCurve.ConnectedBelow, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def ConnectedBelow (f : ℂ → ℂ) (R L : ℝ) (a b : ℂ) : Prop :=
-  ∃ γ : ℝ → ℂ, ContinuousOn γ (Icc (0 : ℝ) 2) ∧
-    γ 0 = a ∧ γ 2 = b ∧
-    (∀ t ∈ Icc (0 : ℝ) 2, ‖f (γ t)‖ < R) ∧
-    BoundedVariationOn γ (Icc (0 : ℝ) 2) ∧
-    eVariationOn γ (Icc (0 : ℝ) 2) < ENNReal.ofReal L
-/-- Local copy of ErdosProblems.Erdos1041.PaperAnalyticTargets.HasDistinctConnection, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def HasDistinctConnection (p : ℂ[X]) (R L : ℝ) : Prop :=
-  ∃ a b : ℂ, a ≠ b ∧ p.eval a = 0 ∧ p.eval b = 0 ∧ ConnectedBelow p.eval R L a b
-/-- Target shared by both `res:low-critical-thirteen-twentyfifths` rows. Local copy of ErdosProblems.Erdos1041.PaperAnalyticTargets.LowCriticalThirteenTwentyFifths, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def LowCriticalThirteenTwentyFifths : Prop :=
-  ∀ (p : ℂ[X]) (μ : ℝ), p.Monic → Squarefree p → 2 ≤ p.natDegree →
-    CriticalMinimum p μ → μ ≤ 13 / 25 → HasDistinctConnection p 1 2
-/-- Main bound in both scale-free corollaries. Local copy of ErdosProblems.Erdos1041.PaperAnalyticTargets.ScaledLowCritical, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def ScaledLowCritical : Prop :=
-  ∀ (p : ℂ[X]) (μ : ℝ), p.Monic → Squarefree p → 2 ≤ p.natDegree →
-    CriticalMinimum p μ →
-    HasDistinctConnection p ((25 / 13 : ℝ) * μ)
-      (2 * (((25 / 13 : ℝ) * μ) ^ (1 / (p.natDegree : ℝ))))
-/-- The additional `5/2` bound in the short-note scaling corollary. Local copy of ErdosProblems.Erdos1041.PaperAnalyticTargets.ScaledLowCriticalFiveHalves, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def ScaledLowCriticalFiveHalves : Prop :=
-  ∀ (p : ℂ[X]) (μ : ℝ), p.Monic → Squarefree p → 2 ≤ p.natDegree →
-    CriticalMinimum p μ →
-    HasDistinctConnection p ((25 / 13 : ℝ) * μ)
-      ((5 / 2 : ℝ) * (μ ^ (1 / (p.natDegree : ℝ))))
-end PalomarCorpus.E1041.PaperStatementsZA
-
-namespace PalomarCorpus.E1041.PaperStatementsAC
-open Real
-open Set
-open MeasureTheory
-open scoped UpperHalfPlane
-export PalomarCorpus.E1041_01.Shared (polar polarDen_pos sliceHalfAngle)
-/-- The paper's `δ(a) = -log(1 - e^{-1/a})`. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.Hyperbolic.delta, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def delta (a : ℝ) : ℝ := -log (1 - exp (-(1 / a)))
-/-- The paper's `λ(d) = -log tanh(d/2)`. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.Hyperbolic.lam, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def lam (d : ℝ) : ℝ := -log (tanh (d / 2))
-end PalomarCorpus.E1041.PaperStatementsAC
-
-namespace PalomarCorpus.E1041.PaperStatementsC
-open Real
-open Set
-open MeasureTheory
-open scoped UpperHalfPlane
-export PalomarCorpus.E1041_01.Shared (polar polarDen_pos)
-end PalomarCorpus.E1041.PaperStatementsC
-
-namespace PalomarCorpus.E1041.PaperStatementsZ
-open Real
-open Set
-open MeasureTheory
-export PalomarCorpus.E1041_01.Shared (sliceHalfAngle)
-end PalomarCorpus.E1041.PaperStatementsZ

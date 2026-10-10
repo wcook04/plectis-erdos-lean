@@ -1,0 +1,66 @@
+/- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
+import Erdos249257.DyadicPrefixCompression
+
+/-!
+# Independent restatements for Erdős problem #257
+
+Each theorem below restates a refereed declaration of the substantive development in
+this repository, at public commit `436f55ebdafa67e4af0fff79f621c13f2ded12bf` of
+https://github.com/wcook04/plectis-erdos. The definitions are local copies of the source definitions, so
+the statements elaborate against Mathlib alone. This module is a comparison interface
+over that development, not the development itself. The mathematics is developed in
+`Erdos249257.DyadicPrefixCompression`.
+-/
+
+open Set
+
+namespace Erdos249257.ExternalVerification257PaperStructuresCL
+
+noncomputable def dyadicResidualIntNumerator (p r : ℤ) (c D : ℕ) : ℤ :=
+  p * (D : ℤ) - ((2 ^ c : ℕ) : ℤ) * r
+
+noncomputable def dyadicResidualIntRat (p r : ℤ) (c D : ℕ) : ℚ :=
+  Rat.divInt (dyadicResidualIntNumerator p r c D) (((2 ^ c * D : ℕ) : ℤ))
+
+theorem dyadicResidualIntNumerator_coprime_oddDenominator
+    (p r : ℤ) (c D : ℕ) (hDodd : Odd D)
+    (hrD : r.natAbs.Coprime D) :
+    (dyadicResidualIntNumerator p r c D).natAbs.Coprime D := by
+  first
+  | exact @Erdos249257.dyadicResidualIntNumerator_coprime_oddDenominator p r c D hDodd hrD
+    done
+  | set_option smartUnfolding false in
+    exact @Erdos249257.dyadicResidualIntNumerator_coprime_oddDenominator p r c D hDodd hrD
+    done
+  | apply Erdos249257.dyadicResidualIntNumerator_coprime_oddDenominator <;> assumption
+    done
+  | simpa only [dyadicResidualIntNumerator, dyadicResidualIntRat] using Erdos249257.dyadicResidualIntNumerator_coprime_oddDenominator
+    done
+  | set_option smartUnfolding false in
+    with_unfolding_all exact @Erdos249257.dyadicResidualIntNumerator_coprime_oddDenominator p r c D hDodd hrD
+    done
+  | with_unfolding_all exact @Erdos249257.dyadicResidualIntNumerator_coprime_oddDenominator p r c D hDodd hrD
+    done
+
+theorem dyadicResidualInt_denominator_sandwich
+    (p r : ℤ) (c D : ℕ) (hDpos : 0 < D)
+    (hND : (dyadicResidualIntNumerator p r c D).natAbs.Coprime D) :
+    D ∣ (dyadicResidualIntRat p r c D).den ∧
+      (dyadicResidualIntRat p r c D).den ∣ 2 ^ c * D := by
+  first
+  | exact @Erdos249257.dyadicResidualInt_denominator_sandwich p r c D hDpos hND
+    done
+  | set_option smartUnfolding false in
+    exact @Erdos249257.dyadicResidualInt_denominator_sandwich p r c D hDpos hND
+    done
+  | apply Erdos249257.dyadicResidualInt_denominator_sandwich <;> assumption
+    done
+  | simpa only [dyadicResidualIntNumerator, dyadicResidualIntRat] using Erdos249257.dyadicResidualInt_denominator_sandwich
+    done
+  | set_option smartUnfolding false in
+    with_unfolding_all exact @Erdos249257.dyadicResidualInt_denominator_sandwich p r c D hDpos hND
+    done
+  | with_unfolding_all exact @Erdos249257.dyadicResidualInt_denominator_sandwich p r c D hDpos hND
+    done
+
+end Erdos249257.ExternalVerification257PaperStructuresCL

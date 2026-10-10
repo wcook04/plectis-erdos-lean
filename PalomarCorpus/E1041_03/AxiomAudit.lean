@@ -1,14 +1,9 @@
 import Solutions.PalomarCorpus.E1041_03
 
-#print axioms PalomarCorpus.E1041.PaperStatementsE.collinearDiameterBound_sharpConstant
-#print axioms PalomarCorpus.E1041.PaperStatementsE.exists_collinear_factorisation
-#print axioms PalomarCorpus.E1041.PaperStatementsE.sharpConstant_le_of_collinearDiameterBound
-#print axioms PalomarCorpus.E1041.PaperStatementsE.sharp_collinear_root_diameter
-#print axioms PalomarCorpus.E1041.PaperStatementsE.sharp_collinear_root_diameter_monic
-#print axioms PalomarCorpus.E1041.PaperStatementsI.exists_peak_le_comparisonBound
-#print axioms PalomarCorpus.E1041.PaperStatementsS.chebyshev_configuration_attains
-#print axioms PalomarCorpus.E1041.PaperStatementsS.exists_gap_le_comparisonBound
-#print axioms PalomarCorpus.E1041.PaperStatementsS.monicScaledChebyshev_eq_prod
-#print axioms PalomarCorpus.E1041.PaperStatementsS.sharp_collinear_equality_attained
-#print axioms PalomarCorpus.E1041.PaperStatementsT.collinear_erdos_1041
-#print axioms PalomarCorpus.E1041.PaperStatementsT.collinear_erdos_1041_monic
+#print axioms PalomarCorpus.E1041.CubicPath.complete_translated_cubic_quotient_fibres
+#print axioms PalomarCorpus.E1041.CubicPath.cubic_paper_complete
+#print axioms PalomarCorpus.E1041.CubicPath.monic_cubic_connector
+#print axioms PalomarCorpus.E1041.PaperStatementsY.cfa_capacity_criterion
+#print axioms PalomarCorpus.E1041.PaperStatementsZA.cfa_arity_criterion
+#print axioms PalomarCorpus.E1041.PaperStatementsZA.cfa_constant_factor_path
+#print axioms PalomarCorpus.E1041.PaperStatementsZB.subcritical_perimeter_path_paper

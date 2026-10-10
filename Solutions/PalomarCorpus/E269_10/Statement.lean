@@ -19,6 +19,9 @@ environments. Generated from the Challenge; do not edit by hand.
 -/
 
 open scoped BigOperators
+open Finset
+open Filter
+open Topology
 
 namespace PalomarCorpus.E269_10.Shared
 /-- The smooth lattice value `p ^ i * q ^ j * r ^ k` attached to the exponent triple `(i, j, k)`. -/
@@ -84,6 +87,21 @@ noncomputable def dyadicNormalizedTailStateR235
 noncomputable def trueNormalizedState (a : ℕ) : ℝ :=
   dyadicNormalizedTailStateR235 dyadicShellTsumTailR235 a
 end PalomarCorpus.E269.IntegralBranchPinning
+
+namespace PalomarCorpus.E269.PaperStructuresI
+open Finset
+open Filter
+open Topology
+/-- Local definition jumpPoints235, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def jumpPoints235 : Set ℕ :=
+  {t | ∃ n, 1 ≤ n ∧ (t = 2 ^ n ∨ t = 3 ^ n ∨ t = 5 ^ n)}
+/-- Local definition runningHeight235, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def runningHeight235 (t : ℕ) : ℕ :=
+  2 ^ Nat.log 2 t * 3 ^ Nat.log 3 t * 5 ^ Nat.log 5 t
+/-- Local definition distinctHeightSum235, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def distinctHeightSum235 : ℝ :=
+  1 + ∑' t : jumpPoints235, (1 : ℝ) / (runningHeight235 t : ℝ)
+end PalomarCorpus.E269.PaperStructuresI
 
 namespace PalomarCorpus.E269.ThreePrimeStructure
 export PalomarCorpus.E269_10.Shared (smooth3Val threePrimeHeight)

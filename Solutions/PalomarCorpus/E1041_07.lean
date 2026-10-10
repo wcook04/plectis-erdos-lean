@@ -5,8 +5,8 @@ Authors: Will Cook
 -/
 import Mathlib
 import Solutions.PalomarCorpus.E1041_07.Statement
-import Solutions.PalomarCorpus.E1041_07.CriticalGeometry
-import Solutions.PalomarCorpus.E1041_07.CyclicTrinomialFiber
-import Solutions.PalomarCorpus.E1041_07.DegreeSevenCounterexample
-import Solutions.PalomarCorpus.E1041_07.FirstMergeCriticalValueSeparation
-import Solutions.PalomarCorpus.E1041_07.QuarticQuotientFiber
+import Solutions.PalomarCorpus.E1041_07.CriticalValueMean
+import Solutions.PalomarCorpus.E1041_07.PaperStatementsAB
+import Solutions.PalomarCorpus.E1041_07.PaperStatementsD
+import Solutions.PalomarCorpus.E1041_07.PaperStatementsF
+import Solutions.PalomarCorpus.E1041_07.PaperStatementsL

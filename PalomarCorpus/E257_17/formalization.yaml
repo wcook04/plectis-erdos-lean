@@ -2,9 +2,9 @@ version: v0.4
 project:
   name: 'Erdős #257, record section 6.1: conditional membership tests (part 6 of 6)'
   description: >-
-    This entry states 18 theorems that the long record for Erdős problem #257 states in section 6.1 (conditional membership tests): the theorem “Factorial-support and 2^k-support instances” (section 6.1), as irrational_erdosSum_two_pow_support; the theorem “Multiples-support irrationality via dilation” (section 6.1), as erdosSupportSeries_multiples_eq_pow_base_full_support and irrational_erdosSupportSeries_multiples; the theorem “Residue-class and odd-support irrationality” (section 6.1), as irrational_erdosSupportSeries_residueClass; the theorem “A formal dichotomy for signed periodic weights” (section 6.1), as irrational_intWeightedErdosSeries_periodic_of_coeff_nonneg_of_frequently_ne_zero, irrational_intWeightedErdosSeries_periodic_of_coeff_nonpos_of_frequently_ne_zero and irrational_or_bpow_mul_eq_intCast_intWeightedErdosSeries_periodic; the theorem “Denominators of finite Mersenne sums” (section 6.1), as channelProduct_coprime_mobiusNumerator_of_one_le, paperA_eq_mobiusNumerator, paperB_eq_baseMobiusShadow, paperB_eq_divInt_paperA, paper_channel_factor_gcd_eq_one, paper_channel_factors_pairwise_coprime, paper_mersenne_channel_survival, paper_mersenne_channel_survival_of_coprime_scale and upperHalfChannel_survivorProduct_dvd_den_of_one_le; the theorem “Exponential growth of the reduced denominators” (section 6.1), as lcmHeight_scaledMobiusShadow_den_lower_bound and upperHalfMersenneProduct_lower_bound.
+    This entry states 19 theorems that the long record for Erdős problem #257 states in section 6.1 (conditional membership tests): the theorem “Factorial-support and 2^k-support instances” (section 6.1), as irrational_erdosSum_two_pow_support; the theorem “Multiples-support irrationality via dilation” (section 6.1), as erdosSupportSeries_multiples_eq_pow_base_full_support and irrational_erdosSupportSeries_multiples; the theorem “Periodic-support irrationality” (section 6.1), as irrational_erdosSupportSeries_positivePeriodic; the theorem “Residue-class and odd-support irrationality” (section 6.1), as irrational_erdosSupportSeries_residueClass; the theorem “A formal dichotomy for signed periodic weights” (section 6.1), as irrational_intWeightedErdosSeries_periodic_of_coeff_nonneg_of_frequently_ne_zero, irrational_intWeightedErdosSeries_periodic_of_coeff_nonpos_of_frequently_ne_zero and irrational_or_bpow_mul_eq_intCast_intWeightedErdosSeries_periodic; the theorem “Denominators of finite Mersenne sums” (section 6.1), as channelProduct_coprime_mobiusNumerator_of_one_le, paperA_eq_mobiusNumerator, paperB_eq_baseMobiusShadow, paperB_eq_divInt_paperA, paper_channel_factor_gcd_eq_one, paper_channel_factors_pairwise_coprime, paper_mersenne_channel_survival, paper_mersenne_channel_survival_of_coprime_scale and upperHalfChannel_survivorProduct_dvd_den_of_one_le; the theorem “Exponential growth of the reduced denominators” (section 6.1), as lcmHeight_scaledMobiusShadow_den_lower_bound and upperHalfMersenneProduct_lower_bound.
 
-    18 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement.
+    18 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 1 is derived from the source declaration by a short tactic proof, which certifies implication.
 
     Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
 
@@ -55,13 +55,13 @@ sources:
   license: Apache-2.0
   author_endorsement: n/a
 status:
-  scope: "One Comparator configuration selecting the 18 theorems listed in PalomarCorpus/E257_17/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 52 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_52, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
+  scope: "One Comparator configuration selecting the 19 theorems listed in PalomarCorpus/E257_17/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 53 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_53, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
-  trusted_challenge_sorry_count: 18
-  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E257_17/Challenge.lean. Comparator replay run 35935225572 of wcook04/plectis-erdos-lean at commit cc7e541 built this entry's Challenge and Solution with leanprover/lean4:v4.30.0 and accepted every compared theorem with both the Lean kernel and NanoDa, permitting only the axioms propext, Quot.sound and Classical.choice."
-  axiom_audit_status: "Lean Release Gate run 35935275645 at commit 18ea89f ran scripts/check_axiom_budget.py --run-palomar on the built Solution environment and printed only propext, Quot.sound and Classical.choice for every compared theorem."
+  trusted_challenge_sorry_count: 19
+  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E257_17/Challenge.lean, and the Solution modules contain no sorry. Comparator and kernel outcomes are commit-specific and are recorded separately from this source metadata."
+  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. Axiom-audit outcomes are commit-specific and belong in separate receipts; this source field is not an audit receipt."
   permitted_axiom_budget:
   - propext
   - Quot.sound
@@ -137,6 +137,10 @@ status:
     comparator_config: "PalomarCorpus/E257_17/comparator.json"
   - declaration: "PalomarCorpus.E257.PaperStatementsAG.irrational_or_bpow_mul_eq_intCast_intWeightedErdosSeries_periodic"
     file: "Solutions/PalomarCorpus/E257_17/PaperStatementsAG.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_17/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStructuresCO.irrational_erdosSupportSeries_positivePeriodic"
+    file: "Solutions/PalomarCorpus/E257_17/PaperStructuresCO.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_17/comparator.json"
   development_status: substantive

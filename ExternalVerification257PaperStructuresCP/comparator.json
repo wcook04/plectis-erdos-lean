@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification257PaperStructuresCP.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStructuresCP",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStructuresCP.exists_strengthened_not_old_or_weighted_host"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

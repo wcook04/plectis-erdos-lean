@@ -20,6 +20,7 @@ environments. Generated from the Challenge; do not edit by hand.
 
 open Filter Topology
 open scoped BigOperators
+open NumberField
 open Polynomial
 open Filter
 open Finset
@@ -74,6 +75,11 @@ noncomputable def rationalBinomialCubic (m c : ℚ) : Polynomial ℚ :=
   Polynomial.C (m / 6) * Polynomial.X * (Polynomial.X + 1) *
     (Polynomial.X + 2) + Polynomial.C c
 end PalomarCorpus.E243.PaperStatementsA
+
+namespace PalomarCorpus.E243.PaperStructuresAG
+open NumberField
+open Polynomial
+end PalomarCorpus.E243.PaperStructuresAG
 
 namespace PalomarCorpus.E243.PaperStatementsP
 open Polynomial

@@ -24,8 +24,8 @@ retain their own commits and toolchains.
 
 Palomar (https://palomar-registry.org) checks Lean proofs with Comparator and independent
 kernel replay before editorial review. `PalomarCorpus/` is the live paper-order checking
-inventory. At this `main` commit it contains 143 entries and 1,889 selected theorem names,
-as counted below. Each entry has its own Comparator configuration; its Challenge states
+inventory. The generated table below counts its entries and selected theorem names.
+Each entry has its own Comparator configuration; its Challenge states
 the selected theorems against Mathlib, and its Solution supplies the proofs.
 
 The finite release is a separate selection of eight configurations and 95 theorem names
@@ -45,14 +45,14 @@ The Palomar entries are packed in the order the papers state their theorems; [`P
 | Problem | Entries | Theorems |
 |---|---|---:|
 | #68 | `E68_01` to `E68_10` | 73 |
-| #243 | `E243_01` to `E243_11` | 140 |
-| #249 | `E249_01` to `E249_33` | 622 |
-| #251 | `E251_01` to `E251_08` | 87 |
-| #257 | `E257_01` to `E257_52` | 651 |
-| #269 | `E269_01` to `E269_11` | 92 |
-| #1041 | `E1041_01` to `E1041_08` | 107 |
+| #243 | `E243_01` to `E243_12` | 142 |
+| #249 | `E249_01` to `E249_34` | 629 |
+| #251 | `E251_01` to `E251_08` | 88 |
+| #257 | `E257_01` to `E257_53` | 667 |
+| #269 | `E269_01` to `E269_11` | 93 |
+| #1041 | `E1041_01` to `E1041_09` | 110 |
 | #1049 | `E1049_01` to `E1049_10` | 117 |
-| Total | 143 entries | 1889 |
+| Total | 147 entries | 1919 |
 
 As observed on 9 October 2026 at 15:00 UTC, `E257_01` at commit `b85ed30805188eb4390a686b111294b24363418e` is registered as [PALOMAR-2026-09-25-000009 v1](https://palomar-registry.org/entry.html?id=PALOMAR-2026-09-25-000009&version=1). That edition passed [caller-side preflight](https://github.com/wcook04/plectis-erdos-lean/actions/runs/36007327582) and [Palomar's mechanical verification](https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/36009433226). Its registration is bound to that source edition and selected interface.
 
