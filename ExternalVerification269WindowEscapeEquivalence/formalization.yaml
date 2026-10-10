@@ -18,7 +18,7 @@ project:
     for which the window base is nonzero and the least positive residue of -B times
     the window forcing modulo the absolute window base exceeds sb B (lo+len); the
     actual escape is this proposition at the radix word b, the digit m, and the short
-    bound B times 90 (n+1)^2. Nine declarations are compared. The complete octic escape proposition also covers
+    bound B times 90 (n+1)^2. Nine declarations are selected for comparison. The complete octic escape proposition also covers
     every cap G dominating the printed long cap with G(B,a)/8^a tending to zero,
     proves the hypotheses for the long and short caps, and includes automatic
     escape at the zero cap. The actual escape holds
@@ -94,7 +94,7 @@ sources:
   license: Apache-2.0
   author_endorsement: n/a
 status:
-  scope: Nine compared theorems expose the headline equivalence against S(0), the
+  scope: Nine selected theorems expose the headline equivalence against S(0), the
     equivalence against S(1), the forward implication from irrationality to the actual
     escape, the quadratic-family form of that implication, the rationality-to-carry
     bridge, the real window identity for the genuine normalized state, the residue
