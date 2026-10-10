@@ -1,0 +1,110 @@
+# SPDX-FileCopyrightText: 2026 Will Cook
+# SPDX-License-Identifier: Apache-2.0
+name: E1041 Hausdorff exact Comparator replay
+
+# This branch-local push trigger runs the selected preconnected-set theorem before
+# merge. A workflow_dispatch trigger alone would require the file on main.
+on:
+  push:
+    branches: ['codex/1041-hausdorff-comparator-20260928']
+    paths:
+      - .github/workflows/e1041-hausdorff-comparator-replay.yml
+      - scripts/e1041_hausdorff_comparator_replay.py
+      - scripts/palomar_replay_shard.py
+      - ExternalVerification1041HausdorffCounterexample/**
+      - ErdosProblems/Erdos1041/Counterexample/**
+      - lean-toolchain
+      - lake-manifest.json
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  COMPARATOR_REV: 575674928e239f5bc452aab72d1dd7b0f1326494
+  LEAN4EXPORT_REV: a3e35a584f59b390667db7269cd37fca8575e4bf
+  LANDRUN_REV: 811cfff51ceaf3d9843708aa6d22e9b84ccac8b4
+  NANODA_REV: 68d5ca9db226849b41a6fff59d796ff19d0a8840
+
+jobs:
+  replay:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 330
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Restore the newest corpus build
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: .lake/build
+          key: corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-${{ github.sha }}-convenience
+          restore-keys: |
+            corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-
+      - uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
+        with:
+          use-mathlib-cache: auto
+          build: false
+          test: false
+          lint: false
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version: '1.24'
+          cache: false
+      - name: Build the pinned independent verification tools
+        run: |
+          set -euo pipefail
+          clone() {
+            for attempt in 1 2 3 4; do
+              rm -rf "$2"
+              if git clone --filter=blob:none "$1" "$2"; then return 0; fi
+              sleep $((attempt * 15))
+            done
+            return 1
+          }
+          toolchain() {
+            for attempt in 1 2 3 4 5; do
+              if elan toolchain list | grep -Fq "${1#*:}"; then return 0; fi
+              if elan toolchain install "$1"; then return 0; fi
+              sleep $((attempt * 20))
+            done
+            return 1
+          }
+          clone https://github.com/leanprover/comparator.git "$RUNNER_TEMP/comparator"
+          git -C "$RUNNER_TEMP/comparator" checkout --detach "$COMPARATOR_REV"
+          test "$(git -C "$RUNNER_TEMP/comparator" rev-parse HEAD)" = "$COMPARATOR_REV"
+          toolchain "$(tr -d '\r\n' < "$RUNNER_TEMP/comparator/lean-toolchain")"
+          (cd "$RUNNER_TEMP/comparator" && lake build comparator)
+          clone https://github.com/leanprover/lean4export.git "$RUNNER_TEMP/lean4export"
+          git -C "$RUNNER_TEMP/lean4export" checkout --detach "$LEAN4EXPORT_REV"
+          test "$(git -C "$RUNNER_TEMP/lean4export" rev-parse HEAD)" = "$LEAN4EXPORT_REV"
+          toolchain "$(tr -d '\r\n' < lean-toolchain)"
+          (cd "$RUNNER_TEMP/lean4export" && ELAN_TOOLCHAIN="$(tr -d '\r\n' < lean-toolchain)" lake build lean4export)
+          clone https://github.com/zouuup/landrun.git "$RUNNER_TEMP/landrun-src"
+          git -C "$RUNNER_TEMP/landrun-src" checkout --detach "$LANDRUN_REV"
+          test "$(git -C "$RUNNER_TEMP/landrun-src" rev-parse HEAD)" = "$LANDRUN_REV"
+          (cd "$RUNNER_TEMP/landrun-src" && go build -o "$RUNNER_TEMP/landrun" cmd/landrun/main.go)
+          clone https://github.com/robsimmons/nanoda_lib.git "$RUNNER_TEMP/nanoda"
+          git -C "$RUNNER_TEMP/nanoda" checkout --detach "$NANODA_REV"
+          test "$(git -C "$RUNNER_TEMP/nanoda" rev-parse HEAD)" = "$NANODA_REV"
+          export PATH="$HOME/.cargo/bin:/usr/local/bin:/usr/bin:/bin"
+          if ! command -v cargo >/dev/null 2>&1; then
+            curl --proto '=https' --tlsv1.2 --fail --silent --show-error \
+              https://sh.rustup.rs | sh -s -- -y --default-toolchain stable --profile minimal
+            . "$HOME/.cargo/env"
+          fi
+          (cd "$RUNNER_TEMP/nanoda" && cargo build --release --locked --bin nanoda_bin)
+          test -x "$RUNNER_TEMP/nanoda/target/release/nanoda_bin"
+      - name: Replay the exact target and its deliberate mismatch
+        run: |
+          python3 scripts/e1041_hausdorff_comparator_replay.py \
+            --root . --out artifacts/e1041-hausdorff-comparator \
+            --expected-head "$GITHUB_SHA" \
+            --comparator-bin "$RUNNER_TEMP/comparator/.lake/build/bin/comparator" \
+            --landrun "$RUNNER_TEMP/landrun" \
+            --lean4export "$RUNNER_TEMP/lean4export/.lake/build/bin/lean4export" \
+            --nanoda "$RUNNER_TEMP/nanoda/target/release/nanoda_bin"
+      - name: Upload raw logs and exact-head receipt
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: e1041-hausdorff-exact-comparator-replay
+          path: artifacts/e1041-hausdorff-comparator

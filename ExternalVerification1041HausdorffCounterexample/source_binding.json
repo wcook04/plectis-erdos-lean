@@ -1,0 +1,62 @@
+{
+  "schema": "e1041_hausdorff_source_binding_v1",
+  "source_commit": "8e01c98d8e76286b876361478138e39c670fd1b0",
+  "source_theorem": "Erdos1041.Counterexample.erdos1041_counterexample_hausdorff",
+  "source_instance_theorem": "Erdos1041.Counterexample.erdos1041_counterexample",
+  "selected_theorem": "Erdos249257.ExternalVerification1041HausdorffCounterexample.preconnected_hausdorff_counterexample",
+  "source_modules": [
+    {
+      "path": "ErdosProblems/Erdos1041/Counterexample/Assembly.lean",
+      "sha256": "c6174888a3c59acf20f827b01a42bbffce05112eb7c7a3f30350dc1af0fb8f19"
+    },
+    {
+      "path": "ErdosProblems/Erdos1041/Counterexample/BarrierAlgebra.lean",
+      "sha256": "3c051a2863e4da7c2a05e587f2b137d012ad5418ab7418c8f63969455fb0dc25"
+    },
+    {
+      "path": "ErdosProblems/Erdos1041/Counterexample/BarrierCertificates.lean",
+      "sha256": "bc0fbc8361822111f0468267b47f9a40f7ba8e8c126e41873c6a62044864721b"
+    },
+    {
+      "path": "ErdosProblems/Erdos1041/Counterexample/BarrierGraphs.lean",
+      "sha256": "8e3ee82a10ea78f41efa8839a5eb76f6a2e515e88a68adfef85bae68fbf14f91"
+    },
+    {
+      "path": "ErdosProblems/Erdos1041/Counterexample/BarrierSigns.lean",
+      "sha256": "48d3a0e9375b0f060e06c71122309c442ffa4ff1eb02b9405c0100b62581886c"
+    },
+    {
+      "path": "ErdosProblems/Erdos1041/Counterexample/Bottleneck.lean",
+      "sha256": "034cc62cb3769d7c9ff2f1aea4d1917534437f7adec3bf5537500e6b3d80976a"
+    },
+    {
+      "path": "ErdosProblems/Erdos1041/Counterexample/Components.lean",
+      "sha256": "dc8b8477222840b31b7eb8d4d4ff79e6d909b4b538646e5327bb4ca0029f8d6f"
+    },
+    {
+      "path": "ErdosProblems/Erdos1041/Counterexample/Defs.lean",
+      "sha256": "90d69df047b9252c3a19d538f6adfd6734b25d090c131421cbbbb061f8cadf22"
+    },
+    {
+      "path": "ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean",
+      "sha256": "069ea76e27304bd34e020cf8aab0fcc9200c495ff892127612e8afe571e3fcb4"
+    },
+    {
+      "path": "ErdosProblems/Erdos1041/Counterexample/InstanceBarriers.lean",
+      "sha256": "4f977e49ba5559eafb5248c4d1c1af0b0f2a08c7d28baf6790f50b39e9cb294d"
+    },
+    {
+      "path": "ErdosProblems/Erdos1041/Counterexample/InstanceConnectivity.lean",
+      "sha256": "c2493995ae3195cb4449757d27b1b2bfaa6a561edbb5b8390c12231568e46d86"
+    },
+    {
+      "path": "ErdosProblems/Erdos1041/Counterexample/InstanceCritical.lean",
+      "sha256": "af8ca59a63e9048e034fbe6b5f8ecb966bde054688d7e2e12a9e159b708c4cbd"
+    }
+  ],
+  "source_environment_sha256": {
+    "lean-toolchain": "54727eec5cba149c18842e6deb5c41b369d66455c93ce135d7d5347c782b2325",
+    "lake-manifest.json": "48c00670762672b37a1860b0b1192d90d707ac047e7504a1d4828107cb6c902f"
+  },
+  "scope": "One explicit polynomial with the preconnected strict-lemniscate Hausdorff bound; excludes ani family and historical human review."
+}
