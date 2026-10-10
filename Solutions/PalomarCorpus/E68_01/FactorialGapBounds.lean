@@ -21,7 +21,7 @@ theorem factorial_gap_gcd_exact
     let g := Nat.gcd (m.factorial - 1) (n.factorial - 1)
     let Q := n.descFactorial (n - m)
     g ∣ Q - 1 ∧ g ≤ Q - 1 ∧ Q - 1 < n ^ (n - m) := by
-  simpa only [channelLCM, Erdos68.channelLCM] using
+  simpa only [channelLCM, Erdos68.channelLCM] using!
     Erdos68.factorial_gap_gcd_exact hm hmn
 
 theorem factorialGapSegment_log_sum_le_channelLCM_add_choose
@@ -30,7 +30,7 @@ theorem factorialGapSegment_log_sum_le_channelLCM_add_choose
       Real.log ((n.factorial - 1 : ℕ) : ℝ)) ≤
       Real.log (channelLCM D : ℝ) +
         (((k + 1).choose 3 : ℕ) : ℝ) * Real.log (D : ℝ) := by
-  simpa only [channelLCM, Erdos68.channelLCM] using
+  simpa only [channelLCM, Erdos68.channelLCM] using!
     Erdos68.factorialGapSegment_log_sum_le_channelLCM_add_choose hkD
 
 end PalomarCorpus.E68.FactorialGapBounds

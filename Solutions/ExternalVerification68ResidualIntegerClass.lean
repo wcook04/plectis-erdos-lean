@@ -85,49 +85,11 @@ theorem residual_transparency {D : ℕ} (hD : 2 ≤ D) (t : ℤ)
       (t : ℝ) * (channelLCM D : ℝ) *
         (factorialGapSeries - gapPrefixReal D) +
       (coordinateMass z : ℝ) := by
-  simpa [channelWeight, channelNumerator, factorialMoment, channelLCM,
-    adjacentDifference, isolatedChannelUnit, channelBasisColumn, channelSynthesis,
-    kernelCoordinates, canonicalKernel, TailCoordinates, integerEvaluation,
-    coordinateMass, fullResidualTerm, fullResidual, gapPrefixReal,
-    factorialGapSeries, ErdosProblems.Erdos68.channelWeight,
-    ErdosProblems.Erdos68.channelNumerator, ErdosProblems.Erdos68.factorialMoment,
-    ErdosProblems.Erdos68.channelLCM, ErdosProblems.Erdos68.adjacentDifference,
-    ErdosProblems.Erdos68.isolatedChannelUnit,
-    ErdosProblems.Erdos68.PaperComplete.channelBasisColumn,
-    ErdosProblems.Erdos68.PaperComplete.channelSynthesis,
-    ErdosProblems.Erdos68.PaperComplete.kernelCoordinates,
-    ErdosProblems.Erdos68.PaperComplete.canonicalKernel,
-    ErdosProblems.Erdos68.PaperComplete.TailCoordinates,
-    ErdosProblems.Erdos68.PaperComplete.integerEvaluation,
-    ErdosProblems.Erdos68.PaperComplete.coordinateMass,
-    ErdosProblems.Erdos68.PaperComplete.fullResidualTerm,
-    ErdosProblems.Erdos68.PaperComplete.fullResidual,
-    ErdosProblems.Erdos68.PaperComplete.gapPrefixReal, Erdos68.factorialGapSeries,
-    Erdos68.factorialGapTail, Erdos68.factorialGapTailTerm] using
-    ErdosProblems.Erdos68.PaperComplete.residual_transparency hD t hz
+  exact ErdosProblems.Erdos68.PaperComplete.residual_transparency hD t hz
 
 theorem summable_fullResidual {f : ℕ →₀ ℤ} (h0 : f 0 = 0) :
     Summable (fullResidualTerm f) := by
-  simpa [channelWeight, channelNumerator, factorialMoment, channelLCM,
-    adjacentDifference, isolatedChannelUnit, channelBasisColumn, channelSynthesis,
-    kernelCoordinates, canonicalKernel, TailCoordinates, integerEvaluation,
-    coordinateMass, fullResidualTerm, fullResidual, gapPrefixReal,
-    factorialGapSeries, ErdosProblems.Erdos68.channelWeight,
-    ErdosProblems.Erdos68.channelNumerator, ErdosProblems.Erdos68.factorialMoment,
-    ErdosProblems.Erdos68.channelLCM, ErdosProblems.Erdos68.adjacentDifference,
-    ErdosProblems.Erdos68.isolatedChannelUnit,
-    ErdosProblems.Erdos68.PaperComplete.channelBasisColumn,
-    ErdosProblems.Erdos68.PaperComplete.channelSynthesis,
-    ErdosProblems.Erdos68.PaperComplete.kernelCoordinates,
-    ErdosProblems.Erdos68.PaperComplete.canonicalKernel,
-    ErdosProblems.Erdos68.PaperComplete.TailCoordinates,
-    ErdosProblems.Erdos68.PaperComplete.integerEvaluation,
-    ErdosProblems.Erdos68.PaperComplete.coordinateMass,
-    ErdosProblems.Erdos68.PaperComplete.fullResidualTerm,
-    ErdosProblems.Erdos68.PaperComplete.fullResidual,
-    ErdosProblems.Erdos68.PaperComplete.gapPrefixReal, Erdos68.factorialGapSeries,
-    Erdos68.factorialGapTail, Erdos68.factorialGapTailTerm] using
-    ErdosProblems.Erdos68.PaperComplete.summable_fullResidual h0
+  exact ErdosProblems.Erdos68.PaperComplete.summable_fullResidual h0
 
 theorem zero_moment_residual_integral {f : ℕ →₀ ℤ}
     (h0 : f 0 = 0) (hm : factorialMoment f = 0) :

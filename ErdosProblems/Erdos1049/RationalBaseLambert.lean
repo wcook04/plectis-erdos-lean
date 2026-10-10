@@ -92,7 +92,7 @@ theorem sevenHalves_archimedean_height_condition :
   have hmargin :
       Real.log 2 / Real.log 7 <
         (1 : ℝ) / 2 - 1 / Real.pi ^ 2 := by
-    simpa [BundschuhVaananenHeightRegion] using
+    simpa [BundschuhVaananenHeightRegion] using!
       sevenHalves_mem_bundschuhVaananenHeightRegion
   have hratio :
       Real.log 2 <
@@ -110,13 +110,13 @@ theorem sevenHalves_archimedean_height_condition :
         (Real.log 7 - Real.log 2) /
           ((1 : ℝ) / 2 + 1 / Real.pi ^ 2) := by
     apply (lt_div_iff₀ hc).2
-    simpa [mul_comm] using hcore
+    simpa [mul_comm] using! hcore
   have hlog72 : 0 < Real.log ((7 : ℝ) / 2) :=
     Real.log_pos (by norm_num)
   apply (div_lt_iff₀ hlog72).2
   rw [Real.log_div (by norm_num : (7 : ℝ) ≠ 0)
     (by norm_num : (2 : ℝ) ≠ 0)]
-  simpa [div_eq_mul_inv, mul_comm] using hdiv
+  simpa [div_eq_mul_inv, mul_comm] using! hdiv
 
 /-- The finite arithmetic core of a coordinatewise rational-base corridor.
 `digit` abstracts the final divisor coefficient that is individually cleared. -/

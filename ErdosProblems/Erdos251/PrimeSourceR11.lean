@@ -65,7 +65,9 @@ theorem summable_primeDyadicTerm_of_polynomial_growth (C k : ℕ)
     exact summable_pow_mul_geometric_of_norm_lt_one k (by norm_num)
   have hshift : Summable (fun n : ℕ => (((1 + n : ℕ) : ℝ) ^ k) *
       ((1 / 2 : ℝ) ^ (1 + n))) := by
-    simpa only [Function.comp_apply] using hpoly.comp_injective (add_right_injective 1)
+    convert hpoly.comp_injective (add_right_injective 1) using 1
+    funext n
+    simp [Function.comp_def, Nat.add_comm]
   have hmajor : Summable (fun n : ℕ => (C : ℝ) *
       ((((1 + n : ℕ) : ℝ) ^ k) * ((1 / 2 : ℝ) ^ (1 + n)))) :=
     hshift.mul_left (C : ℝ)
@@ -171,7 +173,9 @@ theorem summable_primeDyadicTerm : Summable primeDyadicTerm :=
 
 theorem summable_primeGapDyadicTerm : Summable primeGapDyadicTerm := by
   have hshift : Summable (fun n => primeDyadicTerm (n + 1)) := by
-    simpa [Nat.add_comm] using summable_primeDyadicTerm.comp_injective (add_left_injective 1)
+    convert summable_primeDyadicTerm.comp_injective (add_left_injective 1) using 1
+    funext n
+    simp [Function.comp_def]
   exact ((hshift.mul_left 2).sub summable_primeDyadicTerm).congr fun n =>
     (primeGapDyadicTerm_eq n).symm
 
@@ -203,8 +207,10 @@ theorem actualTail_recurrence (N : ℕ) :
 theorem actualTail_eq_shifted_sum (N : ℕ) :
     actualTail N = ∑' k : ℕ, (primeGap0 (N + k + 1) : ℝ) / 2 ^ (k + 1) := by
   have hshift : Summable (fun k => primeGapDyadicTerm (k + (N + 1))) := by
-    simpa [Nat.add_comm] using
-      summable_primeGapDyadicTerm.comp_injective (add_left_injective (N + 1))
+    convert summable_primeGapDyadicTerm.comp_injective
+      (add_left_injective (N + 1)) using 1
+    funext n
+    simp [Function.comp_def]
   have hsplit := summable_primeGapDyadicTerm.sum_add_tsum_nat_add (N + 1)
   unfold actualTail
   rw [← hsplit]

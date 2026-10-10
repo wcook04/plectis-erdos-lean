@@ -36,7 +36,8 @@ theorem polynomial_eq_zero_of_eval_tendsto_zero (P : ℤ[X])
     (hP : Tendsto (realPolynomialEval P) atTop (𝓝 0)) : P = 0 := by
   have hmap : Tendsto (fun x : ℝ => (P.map (Int.castRingHom ℝ)).eval x)
       atTop (𝓝 0) := by
-    simpa only [realPolynomialEval, Polynomial.eval_map] using hP
+    simpa only [Polynomial.eval_map] using!
+      (show Tendsto (fun x : ℝ => P.eval₂ (Int.castRingHom ℝ) x) atTop (𝓝 0) from hP)
   have hlead : (P.map (Int.castRingHom ℝ)).leadingCoeff = 0 :=
     ((Polynomial.tendsto_nhds_iff (P.map (Int.castRingHom ℝ))).mp hmap).1
   have hz : P.map (Int.castRingHom ℝ) = 0 :=

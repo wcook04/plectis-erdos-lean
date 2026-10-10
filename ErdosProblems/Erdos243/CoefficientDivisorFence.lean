@@ -47,8 +47,8 @@ theorem no_jump_through_fence (a b L u v rho B z : ℤ)
       have : v ≤ rho * v := by nlinarith
       omega
     nlinarith
-  have hstep' : v = a * u - b * L := by simpa [hrhoone] using hstep
-  have hcap' : v ≤ u + B := by simpa [hrhoone] using hcap
+  have hstep' : v = a * u - b * L := by simpa [hrhoone] using! hstep
+  have hcap' : v ≤ u + B := by simpa [hrhoone] using! hcap
   have hzu : z ≤ u := by omega
   obtain ⟨m, hm, hmu, hmL⟩ := hcover u hzu hbefore
   have hd : 0 < v - u := by omega

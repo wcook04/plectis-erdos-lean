@@ -15,6 +15,7 @@ open scoped BigOperators
 
 theorem gaussian_constant_coefficient (n k : ℕ) (hk : k ≤ n) :
     (gaussBinom (X : ℤ[X]) n k).coeff 0 = 1 := by
+  change constantCoeff (gaussBinom (X : ℤ[X]) n k) = 1
   have h := congrArg (constantCoeff : ℤ[X] →+* ℤ)
     (gaussBinom_mul_qPochhammer_qPochhammer (X : ℤ[X]) n k hk)
   simpa only [map_mul, qPochhammer_X_constantCoeff, mul_one] using h

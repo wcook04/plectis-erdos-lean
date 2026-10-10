@@ -71,7 +71,7 @@ theorem sourceInnerZ_qPochhammer (q z : R) {a d v : ℕ}
   rw [← mul_sum]
   have hp : (∑ j ∈ range v, qBinomialTerm q (z * q ^ h) (v - 1) j) =
       qPochhammer q (z * q ^ h) (v - 1) := by
-    simpa only [hv'] using (qPochhammer_eq_sum q (z * q ^ h) (v - 1)).symm
+    simpa only [hv'] using! (qPochhammer_eq_sum q (z * q ^ h) (v - 1)).symm
   rw [hp]
 
 /-- Recovery of the supplied nonnegative-power version, with no new premise. -/
@@ -89,7 +89,7 @@ theorem actual_source_free_variable_transform (q z : R) (n : ℕ) :
       ∑ h ∈ range (12 * n + 1),
         (-1 : R) ^ h * q ^ (h * (2 * n + 1) + h.choose 2) *
           gaussBinom q (12 * n) h * qPochhammer q (z * q ^ h) (13 * n) := by
-  simpa using sourceInnerZ_qPochhammer q z
+  simpa using! sourceInnerZ_qPochhammer q z
     (a := 12 * n + 1) (d := 2 * n) (v := 13 * n + 1) (by omega) (by omega)
 
 

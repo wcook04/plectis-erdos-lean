@@ -70,7 +70,7 @@ theorem pairEnergy5_lower_of_four_large
           have hprod1234 : 0 ≤ (z1 - 1) * (z2 * z3 * z4 - 1) :=
             mul_nonneg (sub_nonneg.mpr hz1) (sub_nonneg.mpr hz234)
           nlinarith
-        simpa only [mul_assoc] using hz1234
+        simpa only [mul_assoc] using! hz1234
       _ = y * z1 * z2 * z3 * z4 := by ring
       _ ≤ 1 := hprod
   have hyz1 : y * z1 ≤ 1 := by
@@ -235,7 +235,7 @@ theorem five_exists_two_lt_one_of_pairEnergy_lt_six_add_four_prod
       have h3 : 1 ≤ x3 := h13 h1
       have h4 : 1 ≤ x4 := h14 h1
       apply contradict_of_four_large x1 x0 x2 x3 x4 hx1 h0' h2 h3 h4
-      · simpa only [mul_assoc, mul_left_comm, mul_comm] using hprod
+      · simpa only [mul_assoc, mul_left_comm, mul_comm] using! hprod
       · simp only [pairEnergy5]
         ring
       · ring
@@ -244,7 +244,7 @@ theorem five_exists_two_lt_one_of_pairEnergy_lt_six_add_four_prod
       · have h3 : 1 ≤ x3 := h23 h2
         have h4 : 1 ≤ x4 := h24 h2
         apply contradict_of_four_large x2 x0 x1 x3 x4 hx2 h0' h1' h3 h4
-        · simpa only [mul_assoc, mul_left_comm, mul_comm] using hprod
+        · simpa only [mul_assoc, mul_left_comm, mul_comm] using! hprod
         · simp only [pairEnergy5]
           ring
         · ring
@@ -252,13 +252,13 @@ theorem five_exists_two_lt_one_of_pairEnergy_lt_six_add_four_prod
         by_cases h3 : x3 < 1
         · have h4 : 1 ≤ x4 := h34 h3
           apply contradict_of_four_large x3 x0 x1 x2 x4 hx3 h0' h1' h2' h4
-          · simpa only [mul_assoc, mul_left_comm, mul_comm] using hprod
+          · simpa only [mul_assoc, mul_left_comm, mul_comm] using! hprod
           · simp only [pairEnergy5]
             ring
           · ring
         · have h3' : 1 ≤ x3 := le_of_not_gt h3
           apply contradict_of_four_large x4 x0 x1 x2 x3 hx4 h0' h1' h2' h3'
-          · simpa only [mul_assoc, mul_left_comm, mul_comm] using hprod
+          · simpa only [mul_assoc, mul_left_comm, mul_comm] using! hprod
           · simp only [pairEnergy5]
             ring
           · ring

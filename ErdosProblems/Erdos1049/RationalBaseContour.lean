@@ -86,7 +86,7 @@ theorem sum_le_trigammaSeries_sub {u v : ℝ} (hu : 0 < u) (huv : u < v) (K : �
 /-- The `k = 0` term alone. -/
 theorem firstTerm_le_trigammaSeries_sub {u v : ℝ} (hu : 0 < u) (huv : u < v) :
     1 / u ^ 2 - 1 / v ^ 2 ≤ trigammaSeries u - trigammaSeries v := by
-  simpa using sum_le_trigammaSeries_sub hu huv 1
+  simpa using! sum_le_trigammaSeries_sub hu huv 1
 
 /-- `ψ₁(x) ≤ 1/x² + π²/6` for `0 < x`: split off the `k = 0` term and compare
 the rest with `ζ(2)`. -/

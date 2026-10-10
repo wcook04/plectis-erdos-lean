@@ -2,8 +2,9 @@
   "challenge_module": "ExternalVerification1041PaperStatementsAE.Challenge",
   "solution_module": "Solutions.ExternalVerification1041PaperStatementsAE",
   "theorem_names": [
-    "Erdos249257.ExternalVerification1041PaperStatementsAE.erdos1041_hausdorff_answer_false",
-    "Erdos249257.ExternalVerification1041PaperStatementsAE.erdos1041_hausdorff_negation"
+    "Erdos249257.ExternalVerification1041PaperStatementsAE.erdos1041_counterexample_hausdorff",
+    "Erdos249257.ExternalVerification1041PaperStatementsAE.erdos1041_hausdorff_negation",
+    "Erdos249257.ExternalVerification1041PaperStatementsAE.erdos1041_hausdorff_answer_false"
   ],
   "permitted_axioms": [
     "propext",

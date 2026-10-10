@@ -33,7 +33,7 @@ theorem irrational_supportPowerSeries_of_summable_reciprocal
     Irrational (supportPowerSeries b A) := by
   simpa [supportReciprocalTerm, supportPowerSeries,
     Erdos257PeriodNoncollapse.reciprocalSupportTerm,
-    Erdos257PeriodNoncollapse.erdosSupportSeries] using
+    Erdos257PeriodNoncollapse.erdosSupportSeries] using!
     Erdos257PeriodNoncollapse.irrational_erdosSupportSeries_of_summable_reciprocal
       b A hb hA hsum
 

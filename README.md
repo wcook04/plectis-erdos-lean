@@ -24,7 +24,7 @@ retain their own commits and toolchains.
 
 Palomar (https://palomar-registry.org) checks Lean proofs with Comparator and independent
 kernel replay before editorial review. `PalomarCorpus/` is the live paper-order checking
-inventory. At this `main` commit it contains 143 entries and 1,889 selected theorem names,
+inventory. This checkout contains 143 entries and 1,890 selected theorem names,
 as counted below. Each entry has its own Comparator configuration; its Challenge states
 the selected theorems against Mathlib, and its Solution supplies the proofs.
 
@@ -35,9 +35,9 @@ six entries (`E249_29`, `E243_01`, `E251_01`, `E269_02`, `E1049_01`, `E1041_01`)
 and `E68_05` uses `dc779af057dbab4224ac4f0cc101384f340fabc2`, whose
 [caller-side preflight passed](https://github.com/wcook04/plectis-erdos-lean/actions/runs/36019608937).
 Caller-side full preflights passed for those eight exact configurations and commits.
-Those passes do not certify the whole live inventory. Current `main` uses Lean 4.30.0;
-the pinned release snapshots use Lean 4.35.0-rc2. No entry claims to solve an
-unrestricted parent problem.
+Those passes do not certify the whole live inventory. The pinned release snapshots use
+Lean 4.35.0-rc2; this checkout requires its own source-specific checks. No entry claims
+to solve an unrestricted parent problem.
 
 <!-- palomar-entry-table:begin (generated; do not edit by hand) -->
 The Palomar entries are packed in the order the papers state their theorems; [`PalomarCorpus/README.md`](PalomarCorpus/README.md) lists every entry with its theorem count and title.
@@ -50,9 +50,9 @@ The Palomar entries are packed in the order the papers state their theorems; [`P
 | #251 | `E251_01` to `E251_08` | 87 |
 | #257 | `E257_01` to `E257_52` | 651 |
 | #269 | `E269_01` to `E269_11` | 92 |
-| #1041 | `E1041_01` to `E1041_08` | 107 |
+| #1041 | `E1041_01` to `E1041_08` | 108 |
 | #1049 | `E1049_01` to `E1049_10` | 117 |
-| Total | 143 entries | 1889 |
+| Total | 143 entries | 1890 |
 
 As observed on 9 October 2026 at 15:00 UTC, `E257_01` at commit `b85ed30805188eb4390a686b111294b24363418e` is registered as [PALOMAR-2026-09-25-000009 v1](https://palomar-registry.org/entry.html?id=PALOMAR-2026-09-25-000009&version=1). That edition passed [caller-side preflight](https://github.com/wcook04/plectis-erdos-lean/actions/runs/36007327582) and [Palomar's mechanical verification](https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/36009433226). Its registration is bound to that source edition and selected interface.
 
@@ -199,7 +199,14 @@ matching Solution directory. Among the adapters,
 against Mathlib alone; the other adapters import it instead of re-declaring any
 definition, so the constants Comparator walks from each compared statement are the
 same on both sides. Its axiom audit is supplied by
-`scripts/check_axiom_budget.py --run-palomar`, which the release gate runs. The per-problem
+`scripts/check_axiom_budget.py --run-palomar`, which the release gate runs. The
+audit rebuilds each Solution import closure with Lake before checking axioms. On
+failure, the `release-axiom-audit` CI artifact keeps `diagnostics.log` alongside
+its source-bound failure receipt, so proof errors remain available while the
+other release shards are still running. When a Solution adapter's copied
+statement is definitionally equal to its source theorem, use direct `exact`
+transport: unfolding recursive definitions in a broad `simpa` can leave
+deprecated recursor aliases in incompatible normal forms. The per-problem
 sections above and the family table describe `ExternalVerification*` entries; their
 theorem counts are separate from the paper-order Palomar entries.
 

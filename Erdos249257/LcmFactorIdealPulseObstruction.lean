@@ -88,7 +88,7 @@ theorem abs_sparsePulseLetter_le (A : ℤ) (S : Finset ℕ) (i : ℕ) :
   all_goals simp [sparsePulseLetter, sparsePulseState, hi, hs, abs_mul]
   all_goals have hA : 0 ≤ |A| := abs_nonneg A
   all_goals ring_nf
-  all_goals simp only [abs_neg] at *
+  all_goals try simp only [abs_neg] at *
   all_goals omega
 
 /-! ## Dyadic coboundaries and finite shift rank

@@ -28,7 +28,7 @@ noncomputable def primeGapDyadicTerm (n : ℕ) : ℝ :=
 theorem denominator_floor_both (a : ℤ) (b : ℕ) (hb : 0 < b) :
     ((∑' n, primeDyadicTerm n) = a / b → 2 ^ 589 ≤ b ∧ 10 ^ 177 < b) ∧
     ((∑' n, primeGapDyadicTerm n) = a / b → 2 ^ 589 ≤ b ∧ 10 ^ 177 < b) := by
-  simpa only [prime0, primeGap0, primeDyadicTerm, primeGapDyadicTerm, ErdosProblems.Erdos251.prime0, ErdosProblems.Erdos251.primeGap0, ErdosProblems.Erdos251.primeDyadicTerm, ErdosProblems.Erdos251.primeGapDyadicTerm] using
+  simpa only [prime0, primeGap0, primeDyadicTerm, primeGapDyadicTerm, ErdosProblems.Erdos251.prime0, ErdosProblems.Erdos251.primeGap0, ErdosProblems.Erdos251.primeDyadicTerm, ErdosProblems.Erdos251.primeGapDyadicTerm] using!
     ErdosProblems.Erdos251.PaperR7.denominator_floor_both a b hb
 
 end Erdos249257.ExternalVerification251ExactDenominatorFloors

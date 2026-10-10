@@ -33,7 +33,7 @@ theorem actualLcmTailOrbit_eq_scaled_totientSeries_sub_prefix (a : ℕ) :
     Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmHeight,
     Erdos257PeriodNoncollapse.TotientTailPeriodKiller.totientTail,
     Erdos257PeriodNoncollapse.TotientTailPeriodKiller.totientPrefix,
-    periodLcm_eq_source] using
+    periodLcm_eq_source] using!
     Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmTailOrbit_eq_scaled_totientSeries_sub_prefix a
 
 theorem irrational_totientSeries_iff_actualLcmOrbitNonintegralitySupply :
@@ -45,7 +45,7 @@ theorem irrational_totientSeries_iff_actualLcmOrbitNonintegralitySupply :
     Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmTailOrbit,
     Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmHeight,
     Erdos257PeriodNoncollapse.TotientTailPeriodKiller.totientTail,
-    periodLcm_eq_source] using
+    periodLcm_eq_source] using!
     Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_iff_actualLcmOrbitNonintegralitySupply
 
 end PalomarCorpus.E249.ActualLcmOrbit

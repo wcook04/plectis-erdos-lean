@@ -41,9 +41,9 @@ private lemma finite_sum_radial_limit (S : Finset ℕ) (f : ℕ → ℝ → ℂ)
     Tendsto (fun r : ℝ => ∑ i ∈ S, f i r) radial (𝓝 (∑ i ∈ S, v i)) := by
   induction S using Finset.induction_on with
   | empty =>
-      simpa using (tendsto_const_nhds : Tendsto (fun _ : ℝ => (0 : ℂ)) radial (𝓝 0))
+      simpa using! (tendsto_const_nhds : Tendsto (fun _ : ℝ => (0 : ℂ)) radial (𝓝 0))
   | @insert a S ha ih =>
-      simpa only [Finset.sum_insert ha] using (h a).add ih
+      simpa only [Finset.sum_insert ha] using! (h a).add ih
 
 /-- Transport through `z=rζ` and the one-sided radial limit. -/
 theorem literal_mahler_boundary_sum (k D : ℕ) (hk : 0 < k)
@@ -63,7 +63,7 @@ theorem literal_mahler_boundary_sum (k D : ℕ) (hk : 0 < k)
     have hcont : Continuous (fun r : ℝ => (A i).eval ((r : ℂ) * ζ)) := by fun_prop
     have hp : Tendsto (fun r : ℝ => (A i).eval ((r : ℂ) * ζ))
         radial (𝓝 ((A i).eval ζ)) := by
-      simpa only [Complex.ofReal_one, one_mul] using
+      simpa only [Complex.ofReal_one, one_mul] using!
         (hcont.tendsto 1).mono_left nhdsWithin_le_nhds
     exact hp.mul (lambert_mahler_radial_weight ell k s i hell hk hc ζ hζ)
   have hlimit := finite_sum_radial_limit (Finset.range (D + 1)) f v hterm
@@ -72,7 +72,7 @@ theorem literal_mahler_boundary_sum (k D : ℕ) (hk : 0 < k)
     filter_upwards [radial_eventually_unit] with r hr
     have hz : ‖(r : ℂ) * ζ‖ < 1 := by
       simpa only [norm_mul, hnorm, mul_one, Complex.norm_real, Real.norm_eq_abs,
-        abs_of_pos hr.1] using hr.2
+        abs_of_pos hr.1] using! hr.2
     have heq := hEq ((r : ℂ) * ζ) hz
     calc
       (∑ i ∈ Finset.range (D + 1), f i r) =

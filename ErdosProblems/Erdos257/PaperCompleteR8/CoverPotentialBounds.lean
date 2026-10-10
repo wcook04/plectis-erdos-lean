@@ -29,7 +29,7 @@ theorem coverBase_gt_one (C : PositiveCoverData) (j : ℕ) : 1 < coverBase C j :
 theorem coverBase_le_two (C : PositiveCoverData) (j : ℕ) : coverBase C j ≤ 2 := by
   have h := Real.rpow_le_rpow_of_exponent_le (by norm_num : (1 : ℝ) ≤ 2)
     (C.exponent_bounds j).2
-  simpa only [Real.rpow_one] using h
+  simpa only [coverBase, Real.rpow_one] using h
 
 def coverPotential (C : PositiveCoverData) (j N : ℕ) : ℝ :=
   divisorPotential (coverBase C j) (C.coefficient j) N

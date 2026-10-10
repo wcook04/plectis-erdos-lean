@@ -49,18 +49,24 @@ theorem totient_mul_le_mul_totient_of_dvd
   let f : ℕ → ℚ := fun p => 1 - (p : ℚ)⁻¹
   have hsubset : g.primeFactors ⊆ n.primeFactors :=
     Nat.primeFactors_mono hgn hn.ne'
+  have hf0 : ∀ p ∈ n.primeFactors, 0 ≤ f p := by
+    intro p hp
+    have hpOne : (1 : ℚ) ≤ (p : ℚ) := by
+      exact_mod_cast (Nat.prime_of_mem_primeFactors hp).one_le
+    exact sub_nonneg.mpr (inv_le_one_of_one_le₀ hpOne)
+  have hf1 : ∀ p ∈ n.primeFactors, f p ≤ 1 := by
+    intro p _hp
+    have hpInv : (0 : ℚ) ≤ (p : ℚ)⁻¹ := by positivity
+    show 1 - (p : ℚ)⁻¹ ≤ 1
+    linarith
   have hprod :
       (∏ p ∈ n.primeFactors, f p) ≤
         ∏ p ∈ g.primeFactors, f p := by
-    apply Finset.prod_le_prod_of_subset_of_le_one hsubset
-    · intro p hp
-      have hpPrime := Nat.prime_of_mem_primeFactors hp
-      have hpOne : (1 : ℚ) ≤ (p : ℚ) := by
-        exact_mod_cast hpPrime.one_le
-      exact sub_nonneg.mpr (inv_le_one_of_one_le₀ hpOne)
-    · intro p _hp _hnew
-      have hpInv : (0 : ℚ) ≤ (p : ℚ)⁻¹ := by positivity
-      linarith
+    rw [← Finset.prod_sdiff hsubset]
+    exact mul_le_of_le_one_left
+      (Finset.prod_nonneg fun p hp => hf0 p (hsubset hp))
+      (Finset.prod_le_one₀ (fun p hp => hf0 p (Finset.sdiff_subset hp))
+        (fun p hp => hf1 p (Finset.sdiff_subset hp)))
   have hscale : (0 : ℚ) ≤ (n : ℚ) * (g : ℚ) := by positivity
   have hscaled := mul_le_mul_of_nonneg_left hprod hscale
   have hq :

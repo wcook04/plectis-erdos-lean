@@ -609,8 +609,7 @@ theorem finite_boolSupport_ne_half
   have hodd := finiteErdosSum_den_odd F hFzero
   rw [hrat] at hodd
   obtain ⟨k, hk⟩ := hodd
-  norm_num at hk
-  omega
+  norm_num at hk <;> omega
 
 /-- Membership of `1/2` in the Mersenne achievement set is exactly the
 existence of an infinite positive-index support with support-series value

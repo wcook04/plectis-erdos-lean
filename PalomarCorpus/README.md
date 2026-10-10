@@ -133,7 +133,7 @@ The entries restate the theorems of the Lean development for each problem in the
 | [`E269_09`](E269_09/) | 12 | Erdős #269, the actual shell orbit, all scale lattice and carry mechanism families |
 | [`E269_10`](E269_10/) | 11 | Erdős #269, the integral branch pinning and three prime structure families |
 | [`E269_11`](E269_11/) | 9 | Erdős #269, the window escape equivalence family |
-| [`E1041_01`](E1041_01/) | 16 | Erdős #1041, record sections 1 to 3: the historical question; trinomials; a small least critical value |
+| [`E1041_01`](E1041_01/) | 17 | Erdős #1041, record sections 1 to 3: the historical question; trinomials; a small least critical value |
 | [`E1041_02`](E1041_02/) | 7 | Erdős #1041, record sections 4 to 7; the cubic path family: a path estimate from area and boundary length; degree three; collinear roots and two sparse polynomial families |
 | [`E1041_03`](E1041_03/) | 12 | Erdős #1041, record section 7.1: collinear roots and Chebyshev comparison |
 | [`E1041_04`](E1041_04/) | 13 | Erdős #1041, record sections 7 to 10: collinear roots and two sparse polynomial families; further families and counterexamples to proposed proof steps; the Newton value equation |
@@ -162,9 +162,9 @@ The entries restate the theorems of the Lean development for each problem in the
 | #251 | 8 | 87 |
 | #257 | 52 | 651 |
 | #269 | 11 | 92 |
-| #1041 | 8 | 107 |
+| #1041 | 8 | 108 |
 | #1049 | 10 | 117 |
-| Total | 143 | 1889 |
+| Total | 143 | 1890 |
 
 ## Paper-linked required Lean claims
 

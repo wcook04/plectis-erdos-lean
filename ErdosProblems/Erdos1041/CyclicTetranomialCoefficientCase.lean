@@ -53,7 +53,7 @@ theorem tetranomial_middleTail_norm_lt_one
     (hbudget : ‖b‖ + ‖c‖ ≤ 1) :
     ‖c + b * w ^ s‖ < 1 := by
   by_cases hb : b = 0
-  · simpa [hb] using hc
+  · simpa [hb] using! hc
   · have hws : ‖w‖ ^ s < 1 :=
       pow_lt_one₀ (norm_nonneg w) hw (by omega)
     have hbpos : 0 < ‖b‖ := norm_pos_iff.mpr hb
@@ -63,7 +63,7 @@ theorem tetranomial_middleTail_norm_lt_one
       ‖c + b * w ^ s‖ ≤ ‖c‖ + ‖b * w ^ s‖ := norm_add_le _ _
       _ = ‖c‖ + ‖b‖ * ‖w‖ ^ s := by rw [norm_mul, norm_pow]
       _ < ‖c‖ + ‖b‖ * 1 := by nlinarith
-      _ ≤ 1 := by simpa [add_comm] using hbudget
+      _ ≤ 1 := by simpa [add_comm] using! hbudget
 
 /-- If the constant, middle tail, and leading root power are strictly inside
 the unit ball, their Abel coefficients force the complete root spoke below

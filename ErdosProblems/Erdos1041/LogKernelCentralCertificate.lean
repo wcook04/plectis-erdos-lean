@@ -75,7 +75,7 @@ theorem sum_exp_logInteractionRow_le_of_certificate
         (∑ i, exponentialRemainder (M i) * logInteractionDiagonal c i) := by
     simpa only [Finset.sum_add_distrib, Finset.sum_const, Finset.card_univ,
       Fintype.card_fin, nsmul_eq_mul, mul_one, sum_logInteractionRow,
-      ← Finset.mul_sum, sub_eq_add_neg] using hs
+      ← Finset.mul_sum, sub_eq_add_neg] using! hs
   have hb := mul_le_mul_of_nonneg_left hcertificate hcoef
   have hcancel : (logInteractionEnergy c / m) * m = logInteractionEnergy c :=
     div_mul_cancel₀ _ hmpos.ne'
@@ -102,7 +102,7 @@ theorem freePointMean_le_of_log_certificate
     (hcap : ∀ i, logInteractionRow c i ≤ M i)
     (hcertificate : (∑ i, exponentialRemainder (M i) * logInteractionDiagonal c i) ≤ m) :
     (∑ i, (∏ j, ‖1 - conj (c i) * c j‖) ^ (1 / (m : ℝ))) ≤ m := by
-  simpa only [exp_logInteractionRow_eq_rpow c hc] using
+  simpa only [exp_logInteractionRow_eq_rpow c hc] using!
     sum_exp_logInteractionRow_le_of_certificate hm c hc M hM hcap hcertificate
 
 end ErdosProblems.Erdos1041

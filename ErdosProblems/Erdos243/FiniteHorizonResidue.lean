@@ -34,7 +34,7 @@ theorem forcedNumerator_modEq
   have hlinear :
       (n + 2 : ℤ) * a ≡ (n + 2 : ℤ) * b [ZMOD modulus] :=
     h.mul_left _
-  simpa [forcedNumerator] using
+  simpa [forcedNumerator] using!
     (hquad.sub hlinear).add_right (n + 3 : ℤ)
 
 /-- Exact division cancels the same nonzero factor from values and modulus. -/
@@ -45,7 +45,7 @@ theorem quotient_modEq_of_modEq_mul
     a / d ≡ b / d [ZMOD m] := by
   obtain ⟨a, rfl⟩ := ha
   obtain ⟨b, rfl⟩ := hb
-  simpa [Int.mul_ediv_cancel_left _ hd] using h.mul_left_cancel' hd
+  simpa [Int.mul_ediv_cancel_left _ hd] using! h.mul_left_cancel' hd
 
 /-- Modulus sufficient for `remaining` forced updates starting at `index`.
 It is represented recursively so each exact division removes the visible first
@@ -62,14 +62,14 @@ theorem horizonModulus_eq_ascFactorial (remaining index : ℕ) :
   | zero => simp [horizonModulus]
   | succ remaining ih =>
       rw [horizonModulus, ih]
-      simpa [Nat.ascFactorial_succ] using
+      simpa [Nat.ascFactorial_succ] using!
         Nat.succ_ascFactorial (index + 2) remaining
 
 /-- At the initial index, the finite-horizon modulus is exactly `(h + 1)!`. -/
 theorem horizonModulus_zero_eq_factorial (h : ℕ) :
     horizonModulus h 0 = (h + 1).factorial := by
   rw [horizonModulus_eq_ascFactorial]
-  simpa [Nat.add_comm] using Nat.ascFactorial_eq_div 1 h
+  simpa [Nat.add_comm] using! Nat.ascFactorial_eq_div 1 h
 
 /-- Exact survival predicate for the first `remaining` forced divisions. -/
 def ForcedSurvives : ℕ → ℕ → ℤ → Prop
@@ -104,7 +104,7 @@ theorem forcedSurvives_iff_of_modEq :
       have hab' :
           a ≡ b [ZMOD (index + 2 : ℤ) *
             (horizonModulus remaining (index + 1) : ℤ)] := by
-        simpa [horizonModulus, Nat.cast_mul] using hab
+        simpa [horizonModulus, Nat.cast_mul] using! hab
       have hnum :
           forcedNumerator index a ≡ forcedNumerator index b
             [ZMOD (index + 2 : ℤ) *
@@ -136,6 +136,6 @@ theorem forcedSurvives_iff_of_modEq_factorial
     (hab : a ≡ b [ZMOD ((h + 1).factorial : ℤ)]) :
     ForcedSurvives h 0 a ↔ ForcedSurvives h 0 b := by
   apply forcedSurvives_iff_of_modEq
-  simpa [horizonModulus_zero_eq_factorial] using hab
+  simpa [horizonModulus_zero_eq_factorial] using! hab
 
 end ErdosProblems.Erdos243

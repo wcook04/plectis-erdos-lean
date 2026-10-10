@@ -36,7 +36,7 @@ theorem finiteAtomicCoefficient_column_summable {ι : Type*} (I : Finset ι)
   intro i hi
   apply summable_of_ne_finset_zero (s := {d i})
   intro a ha
-  have had : a ≠ d i := by simpa using ha
+  have had : a ≠ d i := by simpa using! ha
   simp [had]
 
 theorem finiteAtomicCoefficient_cost {ι : Type*} (I : Finset ι)
@@ -49,7 +49,7 @@ theorem finiteAtomicCoefficient_cost {ι : Type*} (I : Finset ι)
     intro i hi
     apply summable_of_ne_finset_zero (s := {d i})
     intro a ha
-    have had : a ≠ d i := by simpa using ha
+    have had : a ≠ d i := by simpa using! ha
     simp [had]
   simp_rw [finiteAtomicCoefficient, Finset.sum_div]
   rw [Summable.tsum_finsetSum hs]
@@ -58,7 +58,7 @@ theorem finiteAtomicCoefficient_cost {ι : Type*} (I : Finset ι)
   rw [tsum_eq_sum (s := {d i})]
   · simp
   · intro a ha
-    have had : a ≠ d i := by simpa using ha
+    have had : a ≠ d i := by simpa using! ha
     simp [had]
 
 /-- The conductor sum is literally the incidence sum of the finite atoms. -/

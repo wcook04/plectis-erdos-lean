@@ -57,7 +57,7 @@ theorem divisor_eq_self_of_cutoff_lt_of_le_two_mul
   have h2d : 2 * d ≤ n := by
     calc
       2 * d ≤ (n / d) * d := Nat.mul_le_mul_right d hk
-      _ = n := by simpa [mul_comm] using Nat.mul_div_cancel' hd
+      _ = n := by simpa [mul_comm] using! Nat.mul_div_cancel' hd
   omega
 
 /-- On the first shell after removing the prefix, the divisor shadow is the
@@ -76,9 +76,9 @@ theorem supportCoeff_primitiveResidual_first_shell
       constructor
       · rintro ⟨⟨hdvd, _⟩, hdA, hdX⟩
         exact divisor_eq_self_of_cutoff_lt_of_le_two_mul hdvd hn0
-          (by simpa using hdX) hn2X
+          (by simpa using! hdX) hn2X
       · rintro rfl
-        exact ⟨⟨dvd_rfl, hn0⟩, hnA, by simpa [primitiveResidual] using hXn⟩
+        exact ⟨⟨dvd_rfl, hn0⟩, hnA, by simpa [primitiveResidual] using! hXn⟩
     rw [hfilter]
     simp [primitiveBit, hnA]
   · have hfilter :
@@ -89,7 +89,7 @@ theorem supportCoeff_primitiveResidual_first_shell
       have hdvd : d ∣ n := (Nat.mem_divisors.mp hddivs).1
       have hn0 : n ≠ 0 := by omega
       have hdn := divisor_eq_self_of_cutoff_lt_of_le_two_mul hdvd hn0
-        (by simpa using hdX) hn2X
+        (by simpa using! hdX) hn2X
       exact hnA (hdn ▸ hdA)
     rw [hfilter]
     simp [primitiveBit, hnA]
@@ -219,7 +219,7 @@ theorem prefixDenominator_shell_power_bound
     ((2 : ℝ) ^ X) ≤ ((q * D : ℕ) : ℝ) * (K + 1) := by
   have hpow : (0 : ℝ) < (2 : ℝ) ^ X := by positivity
   have hpowOne : (2 : ℝ) ≤ (2 : ℝ) ^ X := by
-    simpa using (pow_le_pow_right₀ (by norm_num : (1 : ℝ) ≤ 2) hX)
+    simpa using! (pow_le_pow_right₀ (by norm_num : (1 : ℝ) ≤ 2) hX)
   have hqd : (0 : ℝ) < ((q * D : ℕ) : ℝ) := by positivity
   have htail : 2 / (2 : ℝ) ^ X ≤ 1 := by
     exact (div_le_one hpow).2 hpowOne
@@ -235,7 +235,7 @@ theorem prefixDenominator_shell_power_bound
       _ ≤ ((K : ℝ) + 1) / (2 : ℝ) ^ X := by gcongr
       _ = (K + 1 : ℕ) / (2 : ℝ) ^ X := by push_cast; ring
   have hcross := (div_le_div_iff₀ hqd hpow).mp hcombine
-  simpa [one_mul, mul_comm] using hcross
+  simpa [one_mul, mul_comm] using! hcross
 
 /-- The same elementary pressure excludes a next support exponent whose
 power of two is larger than `4qD`. -/
@@ -248,6 +248,6 @@ theorem nextSupport_power_bound
   have hpow : (0 : ℝ) < (2 : ℝ) ^ m := by positivity
   have h := hlower.trans hupper
   have hcross := (div_le_div_iff₀ hqd hpow).mp h
-  simpa [one_mul, mul_comm, mul_left_comm] using hcross
+  simpa [one_mul, mul_comm, mul_left_comm] using! hcross
 
 end Erdos249257

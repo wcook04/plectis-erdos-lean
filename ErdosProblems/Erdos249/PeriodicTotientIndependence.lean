@@ -68,7 +68,7 @@ theorem periodic_coefficients_zero
       dsimp [aa, bb]
       ring
     simpa only [hper, harg, Finset.sum_apply, Pi.smul_apply, smul_eq_mul,
-      Pi.zero_apply] using hh
+      Pi.zero_apply] using! hh
   exact (Fintype.linearIndependent_iff.mp hli) (fun j => w j n) hz i
 
 end ErdosProblems.Erdos249.PeriodicTotientIndependence

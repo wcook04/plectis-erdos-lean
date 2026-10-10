@@ -40,11 +40,17 @@ theorem hasDerivAt_weightedAnalyticLog {ι : Type*} [Fintype ι]
         simpa only [norm_neg, norm_mul, Complex.norm_conj] using hc j
       simpa only [sub_eq_add_neg] using Complex.mem_slitPlane_of_norm_lt_one hh
     have hlin : HasDerivAt (fun t : ℂ => 1 - conj (c j) * t) (-conj (c j)) z := by
-      simpa only [mul_one, zero_sub] using
-        ((hasDerivAt_const z (1 : ℂ)).sub ((hasDerivAt_id z).const_mul (conj (c j))))
+      first
+        | simpa only [mul_one, zero_sub, Pi.sub_def, id_eq] using!
+            ((hasDerivAt_const z (1 : ℂ)).sub ((hasDerivAt_id z).const_mul (conj (c j))))
+        | exact ((hasDerivAt_const z (1 : ℂ)).sub
+            ((hasDerivAt_id z).const_mul (conj (c j)))).congr_deriv (by ring)
     exact (hlin.clog hslit).const_mul (w j : ℂ)
-  simpa only [weightedAnalyticLog] using
-    (HasDerivAt.fun_sum (fun j (_ : j ∈ Finset.univ) => hterm j)).cexp
+  have hsum := (HasDerivAt.fun_sum (fun j (_ : j ∈ Finset.univ) => hterm j)).cexp
+  first
+    | exact hsum
+    | (delta weightedAnalyticLog; simpa only using hsum)
+    | simpa only [weightedAnalyticLog] using! hsum
 
 /-- A concrete radius bound on the points supplies analyticity on a whole
 closed disc. Positive weights and their normalization are not needed here. -/

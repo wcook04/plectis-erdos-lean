@@ -142,11 +142,14 @@ theorem det_ne_zero_of_diagonal_mod_prime
     ext i j
     by_cases hij : i = j
     · subst hij
-      simp [hNdef, Matrix.diagonal_apply_eq]
+      rw [Matrix.diagonal_apply_eq]
+      change ((M i i : ℤ) : ZMod ℓ) = (M i i : ZMod ℓ)
+      norm_cast
     · rw [Matrix.diagonal_apply_ne _ hij]
       have hz : ((M i j : ℕ) : ZMod ℓ) = 0 :=
         (natCast_zmod_eq_zero_iff_dvd' _ _).mpr (hoff i j hij)
-      simpa [hNdef] using hz
+      change ((M i j : ℤ) : ZMod ℓ) = 0
+      simpa only [Int.cast_natCast] using hz
   have hdetZMod : Matrix.det ((Int.castRingHom (ZMod ℓ)).mapMatrix N) ≠ 0 := by
     rw [hmapped, Matrix.det_diagonal]
     refine Finset.prod_ne_zero_iff.mpr fun i _ => ?_
@@ -161,7 +164,8 @@ theorem det_ne_zero_of_diagonal_mod_prime
   have hmatrix :
       (Int.castRingHom ℚ).mapMatrix N = (fun i j => (M i j : ℚ)) := by
     ext i j
-    simp [hNdef]
+    change ((M i j : ℤ) : ℚ) = (M i j : ℚ)
+    norm_cast
   rw [hmatrix, hzero] at hmap
   exact hdetInt (Int.cast_eq_zero.mp hmap)
 

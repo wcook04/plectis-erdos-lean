@@ -192,7 +192,7 @@ theorem parameterEval_sourceFiniteCorrectionPoly_cleared (m : ℕ) (p : ℝ) :
   have h := congrArg (parameterEval p)
     (sourceShiftedQuotientCorrection_scale m j)
   have hX : parameterEval p X = p := by simp [parameterEval]
-  simpa only [map_mul, map_pow, hX] using h
+  simpa only [map_mul, map_pow, hX] using! h
 
 #print axioms sourceQuotientPositiveCoeff_factor
 #print axioms sourceShiftedQuotientCorrection_scale

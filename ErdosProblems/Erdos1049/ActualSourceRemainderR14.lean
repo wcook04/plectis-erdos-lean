@@ -19,7 +19,7 @@ open scoped BigOperators
 lemma real_power_denominator_nonzero (p : ℝ) (hp : 1 < p) (j : ℕ) (hj : 0 < j) :
     p ^ j - 1 ≠ 0 := by
   have hpow : p ≤ p ^ j := by
-    simpa only [pow_one] using pow_le_pow_right₀ hp.le (show 1 ≤ j by omega)
+    simpa only [pow_one] using! pow_le_pow_right₀ hp.le (show 1 ≤ j by omega)
   exact (sub_pos.mpr (hp.trans_le hpow)).ne'
 
 lemma real_cyclotomic_eval_nonzero (p : ℝ) (hp : 1 < p) (j : ℕ) (hj : 0 < j) :
@@ -49,10 +49,10 @@ lemma actual_real_B_normalisation (p : ℝ) (hp : 1 < p) (n : ℕ) :
       p ^ sourceM n * (sourceV n).eval₂ (Int.castRingHom ℝ) p := by
   let f : ℤ[X] →+* ℝ := eval₂RingHom (Int.castRingHom ℝ) p
   have hclear := actual_B_first_clearing f n
-    (by simpa [f] using (zero_lt_one.trans hp).ne')
+    (by simpa [f] using! (zero_lt_one.trans hp).ne')
     (by
       intro j hj
-      simpa [f] using real_power_denominator_nonzero p hp j (mem_Icc.mp hj).1)
+      simpa [f] using! real_power_denominator_nonzero p hp j (mem_Icc.mp hj).1)
   have hinc := congrArg f (actual_B_polynomial_inclusion n)
   have hsplit := congrArg f (sourceD_factor n)
   simp only [map_mul, map_pow] at hinc hsplit
@@ -61,7 +61,7 @@ lemma actual_real_B_normalisation (p : ℝ) (hp : 1 < p) (n : ℕ) :
   have hO : f (sourceOmega n) ≠ 0 :=
     (actual_source_Omega_and_complement_real_nonzero p hp n).1
   apply mul_left_cancel₀ hO
-  simpa only [f, sourceBReal, coe_eval₂RingHom, eval₂_X, mul_assoc] using hinc
+  simpa only [f, sourceBReal, coe_eval₂RingHom, eval₂_X, mul_assoc] using! hinc
 
 lemma actual_real_A_normalisation (p : ℝ) (n : ℕ) :
     (sourceComplement n).eval₂ (Int.castRingHom ℝ) p *
@@ -109,7 +109,7 @@ theorem actual_source_error_quadLogRate_zero (p : ℝ) (hp : 1 < p) :
       (fun n => (sourceA n).eval₂ (Int.castRingHom ℝ) p * PaperR7.paperLambert p -
         sourceBReal n p) 0 := by
   have hp0 := zero_lt_one.trans hp
-  simpa only [actual_A_F_sub_B_eq_H_real p hp] using
+  simpa only [actual_A_F_sub_B_eq_H_real p hp] using!
     sourcePositiveH_quadLogRate_zero (inv_pos.mpr hp0) ((inv_lt_one₀ hp0).mpr hp)
 
 /-- Exact logarithmic decomposition; no missing cyclotomic rate is renamed

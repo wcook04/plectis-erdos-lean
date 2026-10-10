@@ -152,7 +152,11 @@ theorem admissible_modular_minors (n : ℕ) :
   refine ⟨I, J, hI, hJ, ?_, ?_⟩
   · intro k
     cases n with
-    | zero => simp [Matrix.det_fin_zero]
+    | zero =>
+      have hdet : (Matrix.det fun i j : Fin 0 =>
+          threePrimeKernelQ 2 3 5 (I i) (J j) k) = (1 : ℚ) := Matrix.det_fin_zero
+      intro hzero
+      exact one_ne_zero (hdet.symm.trans hzero)
     | succ n =>
       let u₂ : ℚˣ := Units.mk0 2 (by norm_num)
       let u₃ : ℚˣ := Units.mk0 3 (by norm_num)
@@ -174,7 +178,10 @@ theorem admissible_modular_minors (n : ℕ) :
   · intro B _ hB k
     have hdet : IsUnit (Matrix.det fun i j : Fin n => kernelMod235 B (I i) (J j) k) := by
       cases n with
-      | zero => simp [Matrix.det_fin_zero]
+      | zero =>
+        have hzero : (Matrix.det fun i j : Fin 0 =>
+            kernelMod235 B (I i) (J j) k) = (1 : ZMod B) := Matrix.det_fin_zero
+        exact hzero.symm ▸ isUnit_one
       | succ n =>
         obtain ⟨⟨u₂, h₂⟩, ⟨u₃, h₃⟩, ⟨u₅, h₅⟩⟩ := admissible_prime_units hB
         have hunit := selected_unit_minor u₂ u₃ u₅ h₂ h₃ h₅ n I J hcarry k

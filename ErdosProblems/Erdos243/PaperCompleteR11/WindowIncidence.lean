@@ -44,7 +44,7 @@ theorem window_incidence_bound (A : Finset ℕ) (E : Set ℕ) (L X : ℕ)
     apply Subtype.ext
     omega
   have hc := Fintype.card_le_of_injective f hf
-  simpa [exceptionCount, Nat.mul_comm] using hc
+  simpa [exceptionCount, Nat.mul_comm] using! hc
 
 /-- A whole rectangle of residue centres has exactly the expected cardinality.
 The proof uses the quotient and remainder, not an informal independence claim. -/
@@ -63,10 +63,10 @@ theorem residue_rectangle_card (M T K : ℕ) (R : Finset ℕ)
     have hM : 0 < M := lt_of_le_of_lt (Nat.zero_le _) hxr
     have hr : x.2 = y.2 := by
       have := congrArg (fun z : ℕ ↦ z % M) he
-      simpa [Nat.add_mod, Nat.mod_eq_of_lt hxr, Nat.mod_eq_of_lt hyr] using this
+      simpa [Nat.add_mod, Nat.mod_eq_of_lt hxr, Nat.mod_eq_of_lt hyr] using! this
     have hk : x.1 = y.1 := by
       have he' : (T + x.1) * M + x.2 = (T + y.1) * M + y.2 := by
-        simpa using he
+        simpa using! he
       rw [hr] at he'
       have hm : (T + x.1) * M = (T + y.1) * M := Nat.add_right_cancel he'
       have ht := Nat.eq_of_mul_eq_mul_right hM hm
@@ -116,7 +116,7 @@ theorem residue_window_linear_bound (E : Set ℕ) (M L T : ℕ)
     have hmul := Nat.mul_le_mul_left (T + k) (show 1 ≤ M by omega)
     have hnT : T ≤ (T + k) * M + r := by nlinarith
     have hnR : ((T + k) * M + r) % M ∈ R := by
-      simpa [Nat.add_mod, Nat.mod_eq_of_lt hr'] using hr
+      simpa [Nat.add_mod, Nat.mod_eq_of_lt hr'] using! hr
     obtain ⟨i, hi, he⟩ := hhit _ hnT hnR
     refine ⟨i, hi, ?_, he⟩
     have hkm := Nat.mul_le_mul_right M (Nat.succ_le_of_lt hk')
@@ -202,6 +202,6 @@ theorem clean_windows_of_not_lower_density (E : Set ℕ) (L : ℕ) (hL : 0 < L)
     have h := disjoint_periodic_linear_bound E T L L hL (le_refl L) hhit X
     have hr : (X : ℝ) ≤ (L : ℝ) * (exceptionCount E X : ℝ) + ((T + L : ℕ) : ℝ) := by
       exact_mod_cast h
-    simpa only [one_mul] using hr
+    simpa only [one_mul] using! hr
 
 end ErdosProblems.Erdos243.PaperCompleteR11

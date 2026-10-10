@@ -31,7 +31,7 @@ lemma qPochhammerInfinity_antitone_arg {a b q : ℝ}
   apply Filter.Eventually.of_forall
   intro n
   unfold qPochhammerFinite
-  apply Finset.prod_le_prod
+  apply Finset.prod_le_prod₀
   · intro k hk
     have hu : b * q ^ k ≤ b := by
       simpa using mul_le_mul_of_nonneg_left (pow_le_one₀ hq0 hq1.le) hb0
@@ -135,8 +135,10 @@ theorem qBinomialRatio_eval {a q w : ℝ}
   have hr := hpa.mul he
   have hid : coeffEval (qBinomialRatioCoeff a q) w * qPochhammerInfinity w q =
       qPochhammerInfinity (a * w) q := by
+    change Tendsto (fun n => coeffEval (qBinomialRatioCoeff a q) w *
+      qPochhammerFinite w q (n + 1)) atTop _ at hl
     apply tendsto_nhds_unique hl
-    simpa only [mul_one] using hr.congr' (Filter.Eventually.of_forall (fun n =>
+    simpa only [mul_one] using! hr.congr' (Filter.Eventually.of_forall (fun n =>
       (qBinomialRatio_finite_identity ha0 ha1 hq0 hq1 hw0 hw1 (n + 1)).symm))
   exact (eq_div_iff (qPochhammerInfinity_pos w q).ne').2 hid
 
@@ -355,8 +357,10 @@ theorem eulerEval_pochhammer_identity {q w : ℝ}
     (eulerCoeff_nonneg hq0 hq1) (eulerCoeff_le hq0 hq1)
     (eulerCoeff_zero q) hq0 hq1 hw0 hw1.le
   have hl := hp.const_mul (coeffEval (eulerCoeff q) w)
+  change Tendsto (fun n => coeffEval (eulerCoeff q) w *
+    qPochhammerFinite w q (n + 1)) atTop _ at hl
   apply tendsto_nhds_unique hl
-  simpa only [one_mul] using (he.mul hp2).congr' (Filter.Eventually.of_forall
+  simpa only [one_mul] using! (he.mul hp2).congr' (Filter.Eventually.of_forall
     (fun n => (eulerEval_finite_identity hq0 hq1 hw0 hw1 (n + 1)).symm))
 
 /-- The numerator splitting in the paper, with the Euler factors supplied

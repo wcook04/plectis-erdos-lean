@@ -38,7 +38,7 @@ theorem unitInterval_pow_anti {u : ℝ} {r m : ℕ}
     omega
   have hk : u ^ k ≤ 1 := pow_le_one₀ hu0 hu1
   rw [hmk, pow_add]
-  simpa only [mul_one] using
+  simpa only [mul_one] using!
     mul_le_mul_of_nonneg_left hk (pow_nonneg hu0 r)
 
 /-- Eliminating the linear coefficient at a root of the quotient trinomial
@@ -84,7 +84,7 @@ theorem trinomialRoot_spoke_norm_le_constant
     _ = (1 - u ^ m) * ‖c‖ := by ring
     _ ≤ ‖c‖ := by
           have hcoef : 1 - u ^ m ≤ 1 := by linarith
-          simpa using mul_le_mul_of_nonneg_right hcoef (norm_nonneg c)
+          simpa using! mul_le_mul_of_nonneg_right hcoef (norm_nonneg c)
 
 /-- The strict containment conclusion once the quotient constant term is
 strictly inside the unit disk. -/
