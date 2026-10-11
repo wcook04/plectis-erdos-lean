@@ -15,7 +15,7 @@
   "trust_boundary": "Matching source syntax or a locally restated Challenge is insufficient. Export the actual immutable receiving module before proof compilation and compare its elaborated statement/dependency closure with this Solution.",
   "source_files": {
     "ErdosProblems/Erdos249/PaperCompleteR7/RationalObservableClassification.lean": "sha256:81a806db60720dd12c25610f2f1bab544e7f104b21a49274b90eaf6538e84715",
-    "ErdosProblems/Erdos249/ResidueClassTotientSeries.lean": "sha256:dea677ad39aee98304defdb5c88afa77603b2d6cc6cdc6822635fc88b8f97e7e",
+    "ErdosProblems/Erdos249/ResidueClassTotientSeries.lean": "sha256:a12b2f8e1fe1dfdb50e92aaf9aebbdab6eeb5c405a9786bbec497a5510a7fa94",
     "FC249Repair.lean": "sha256:113bcebf7415fa76d79e570eda87865d2f0ec7253e603ce0410a6cc51e7910c9"
   },
   "original_proof_files": {

@@ -87,7 +87,6 @@ theorem summable_dyadicTerm (hC : ∀ n, |(a n : ℝ)| ≤ C) :
     Summable fun n : ℕ => (a n : ℝ) / 2 ^ n := by
   refine Summable.of_norm_bounded (g := fun n : ℕ => C / 2 ^ n) (summable_const_div_two_pow C) ?_
   intro n
-  dsimp only
   have h2 : (0 : ℝ) < 2 ^ n := by positivity
   rw [Real.norm_eq_abs, abs_div, abs_of_pos h2]
   gcongr
@@ -98,7 +97,6 @@ theorem summable_dyadicTailTerm (hC : ∀ n, |(a n : ℝ)| ≤ C) (N : ℕ) :
   refine Summable.of_norm_bounded (g := fun j : ℕ => C / 2 ^ (j + 1))
     (summable_const_div_two_pow_succ C) ?_
   intro j
-  dsimp only
   have h2 : (0 : ℝ) < 2 ^ (j + 1) := by positivity
   rw [Real.norm_eq_abs, abs_div, abs_of_pos h2]
   gcongr
