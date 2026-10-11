@@ -163,8 +163,13 @@
       "source_path": "verification/FCMergedIntegerAdapters/lean/Erdos249257/CarrySurvivorExtinction.lean",
       "source_sha256": "sha256:6baa1dc557dec8babc2635af8dcd461e4af8742313a21f00959219f439bee644",
       "port_path": "Erdos249257/CarrySurvivorExtinction.lean",
-      "port_sha256": "sha256:6baa1dc557dec8babc2635af8dcd461e4af8742313a21f00959219f439bee644",
-      "edits": []
+      "port_sha256": "sha256:05774e6c3a469cdcff39afbbaea18911a8524b59826a718b232775d00746d845",
+      "edits": [
+        {
+          "kind": "receiving_cast_normal_form_port",
+          "reason": "Native c513 run38172370918: restrict integer-to-real cast normalization to cast_sum/cast_mul/cast_natCast so Nat quotient stays natural; explicitly reduce carryOrbit at zero."
+        }
+      ]
     },
     {
       "source_path": "verification/FCMergedIntegerAdapters/lean/Erdos249257/CertificateKernel.lean",
@@ -219,8 +224,13 @@
       "source_path": "verification/FCMergedIntegerAdapters/lean/Erdos249257/MersenneLambertLadder.lean",
       "source_sha256": "sha256:bfc03595228b61b5b5b4a7ff1e23723b827e21587277a67deb4879b9068429ed",
       "port_path": "Erdos249257/MersenneLambertLadder.lean",
-      "port_sha256": "sha256:bfc03595228b61b5b5b4a7ff1e23723b827e21587277a67deb4879b9068429ed",
-      "edits": []
+      "port_sha256": "sha256:de5a9d047c57f22f9fe2770050172134f8d01ec78e2ae19225ef356efdde2753",
+      "edits": [
+        {
+          "kind": "receiving_cast_normal_form_port",
+          "reason": "Native c513 run38172370918: restrict integer-to-real cast normalization to cast_sum/cast_mul/cast_natCast so Nat quotient stays natural; explicitly reduce carryOrbit at zero."
+        }
+      ]
     },
     {
       "source_path": "verification/FCMergedIntegerAdapters/lean/Erdos249257/SternBrocotRunGeometry.lean",

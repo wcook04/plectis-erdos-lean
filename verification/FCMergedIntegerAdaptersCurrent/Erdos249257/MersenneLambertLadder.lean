@@ -502,8 +502,7 @@ theorem tsum_moebius_lambert_sq {r : ℝ} (hr0 : 0 ≤ r) (hr1 : r < 1) :
   congr 1
   have h := congrArg (fun z : ℤ => (z : ℝ))
     (sum_divisors_moebius_mul_div (n : ℕ) n.pos)
-  push_cast at h
-  simpa using h
+  simpa only [Int.cast_sum, Int.cast_mul, Int.cast_natCast] using h
 
 /-! ## Evaluations at `r = 1/2`: the Mersenne forms -/
 
