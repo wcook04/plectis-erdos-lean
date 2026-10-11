@@ -829,8 +829,13 @@
       "source_path": "verification/FC257ReciprocalSupport/lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicKernel.lean",
       "source_sha256": "sha256:cb452fe9fcace03b9152e2cf4b1f7b351b9b0313647181e95c68754b48560bbf",
       "port_path": "ErdosProblems/Erdos257/PaperCompleteR8/DyadicKernel.lean",
-      "port_sha256": "sha256:cb452fe9fcace03b9152e2cf4b1f7b351b9b0313647181e95c68754b48560bbf",
-      "edits": []
+      "port_sha256": "sha256:0f90442d6513a2046cd0f89aa8f1cf7268510ef3b11c5f5116598b029ebbb850",
+      "edits": [
+        {
+          "kind": "receiving_native_full_diagnostic_port",
+          "reason": "Authenticated c5 native failure: disambiguate pinned ideal API, use new primesOver namespace, normalize function and reflexive conversion goals explicitly, use ordinary norm_num kernel proofs for opaque ZMod division."
+        }
+      ]
     },
     {
       "source_path": "verification/FC257ReciprocalSupport/lean/ErdosProblems/Erdos257/PaperCompleteR8/FiniteMeans.lean",

@@ -65,7 +65,7 @@ theorem pow_sub_one_ratio_le {B : ℝ} (hB : 1 < B)
   rw [geom_sum_eq hB.ne', geom_sum_eq hB.ne'] at h
   have hmul := mul_le_mul_of_nonneg_right h hgap.le
   have hscaled : (d : ℝ) * (B ^ n - 1) ≤ (n : ℝ) * (B ^ d - 1) := by
-    convert hmul using 1 <;> field_simp [hgap.ne']
+    convert hmul using 1 <;> first | rfl | field_simp [hgap.ne']
   exact (div_le_div_iff₀ hden hdR).2 (by nlinarith only [hscaled])
 
 /-- Pointwise far no-wrap bound. -/
@@ -252,7 +252,7 @@ theorem dyadicMean_kernelWeight_le (B : ℝ) (hB : 1 < B) (hB2 : B ≤ 2)
         (∑ j ∈ J.filter (fun j => d ≤ L * 2 ^ j), (1 / 2 : ℝ) ^ j) / (B - 1) := by
       rw [Finset.sum_div, Finset.sum_filter]
     rw [heq]
-    convert hdiv using 1 <;> dsimp [a] <;> field_simp <;> ring
+    convert hdiv using 1 <;> first | rfl | (dsimp [a] <;> field_simp <;> ring)
   have htrans : (∑ j ∈ J, trans j) ≤ 2 * (L : ℝ) * a := by
     let K := J.filter (fun j => L * 2 ^ j < d ∧ d ≤ 2 * (L * 2 ^ j))
     have hKcard : K.card ≤ 1 := by

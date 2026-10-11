@@ -455,8 +455,13 @@
           "source_sha256": "sha256:b5c4afbbbcc2ac8e0b125ca15ad6c609e8bf6988fbc8153eefcae748b443655d"
         }
       ],
-      "port_sha256": "sha256:b5c4afbbbcc2ac8e0b125ca15ad6c609e8bf6988fbc8153eefcae748b443655d",
-      "edits": [],
+      "port_sha256": "sha256:3a94b3cf1820057de0ac724d3f7ebf806a61445d02f06c29c84b0d02359322d7",
+      "edits": [
+        {
+          "kind": "receiving_native_full_diagnostic_port",
+          "reason": "Authenticated c5 native failure: disambiguate pinned ideal API, use new primesOver namespace, normalize function and reflexive conversion goals explicitly, use ordinary norm_num kernel proofs for opaque ZMod division."
+        }
+      ],
       "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
     },
     {
@@ -1031,8 +1036,13 @@
           "source_sha256": "sha256:6f031b5857b6592fdc680b06665a78515db6f2ea7680fb1c272be2fd5fb28d06"
         }
       ],
-      "port_sha256": "sha256:6f031b5857b6592fdc680b06665a78515db6f2ea7680fb1c272be2fd5fb28d06",
-      "edits": [],
+      "port_sha256": "sha256:e3e494b3fa187f5817d6adc701bb3601faf6715523554e9db3a31cccbc222046",
+      "edits": [
+        {
+          "kind": "receiving_native_full_diagnostic_port",
+          "reason": "Authenticated c5 native failure: disambiguate pinned ideal API, use new primesOver namespace, normalize function and reflexive conversion goals explicitly, use ordinary norm_num kernel proofs for opaque ZMod division."
+        }
+      ],
       "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
     },
     {
@@ -1475,8 +1485,13 @@
           "source_sha256": "sha256:97c41240bca4b881ab9ec8a8c91470e0622064eeb4f7b82d537b1bf25fd34052"
         }
       ],
-      "port_sha256": "sha256:97c41240bca4b881ab9ec8a8c91470e0622064eeb4f7b82d537b1bf25fd34052",
-      "edits": [],
+      "port_sha256": "sha256:8c79b4432ed9afb944ec771c15d79eaff97e6d815538e92867779694f0c87999",
+      "edits": [
+        {
+          "kind": "receiving_native_full_diagnostic_port",
+          "reason": "Authenticated c5 native failure: disambiguate pinned ideal API, use new primesOver namespace, normalize function and reflexive conversion goals explicitly, use ordinary norm_num kernel proofs for opaque ZMod division."
+        }
+      ],
       "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
     },
     {
@@ -1835,8 +1850,13 @@
           "source_sha256": "sha256:f8c168b953a000950c5668e3245fc951448bfaa9605ac9b7e8d667f12fed0b62"
         }
       ],
-      "port_sha256": "sha256:f8c168b953a000950c5668e3245fc951448bfaa9605ac9b7e8d667f12fed0b62",
-      "edits": [],
+      "port_sha256": "sha256:78abc51d8f137a3d496ab11608514961d34eb39ca6ac652765b6699d0c5fb573",
+      "edits": [
+        {
+          "kind": "receiving_native_full_diagnostic_port",
+          "reason": "Authenticated c5 native failure: disambiguate pinned ideal API, use new primesOver namespace, normalize function and reflexive conversion goals explicitly, use ordinary norm_num kernel proofs for opaque ZMod division."
+        }
+      ],
       "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
     },
     {
@@ -1853,8 +1873,13 @@
           "source_sha256": "sha256:0aabe588e0b8a76fe31b4ac5692824876268ecce65e8e19f60060ea8736d5111"
         }
       ],
-      "port_sha256": "sha256:0aabe588e0b8a76fe31b4ac5692824876268ecce65e8e19f60060ea8736d5111",
-      "edits": [],
+      "port_sha256": "sha256:0714a2e5c69cd48eaaf666bd34bac0a9bc7bb62d00f43366f3d39bebe744fb5d",
+      "edits": [
+        {
+          "kind": "receiving_native_full_diagnostic_port",
+          "reason": "Authenticated c5 native failure: disambiguate pinned ideal API, use new primesOver namespace, normalize function and reflexive conversion goals explicitly, use ordinary norm_num kernel proofs for opaque ZMod division."
+        }
+      ],
       "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
     },
     {

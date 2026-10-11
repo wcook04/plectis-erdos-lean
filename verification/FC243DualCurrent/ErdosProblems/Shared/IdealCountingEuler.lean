@@ -110,7 +110,7 @@ theorem card_le_sum_countSupp (P : Ideal (𝓞 K) → Prop) {n : ℕ} (hn : n �
     ((normalizedFactors I).filter (fun 𝔭 => ¬ P 𝔭)).prod
   have hgb : ∀ I : Ideal (𝓞 K), I ≠ ⊥ → gp I * bp I = I := fun I hI => by
     simp only [gp, bp]
-    rw [Multiset.prod_filter_mul_prod_filter_not, prod_normalizedFactors_eq_self hI]
+    rw [Multiset.prod_filter_mul_prod_filter_not, Ideal.prod_normalizedFactors_eq_self hI]
   have hS0 : ∀ I ∈ normSet (K := K) n, I ≠ ⊥ := fun I hI h => by
     apply hn
     rw [← mem_normSet.mp hI, h, absNorm_bot]
@@ -234,7 +234,7 @@ theorem sum_countSupp_mul_le (M : Type*) [Field M] [NumberField M] [Algebra K M]
     simp only [Φ, X]
     rw [Multiset.prod_add, map_mul, map_multiset_prod, map_multiset_prod, Multiset.map_map,
       Multiset.map_map]
-    conv_rhs => rw [← prod_normalizedFactors_eq_self hp1, ← prod_normalizedFactors_eq_self hp2,
+    conv_rhs => rw [← Ideal.prod_normalizedFactors_eq_self hp1, ← Ideal.prod_normalizedFactors_eq_self hp2,
       map_multiset_prod, map_multiset_prod]
     congr 1
     · congr 1
@@ -300,8 +300,8 @@ theorem sum_countSupp_mul_le (M : Type*) [Field M] [NumberField M] [Algebra K M]
     have e2 : normalizedFactors p.2 = normalizedFactors q.2 := by
       rw [← hrec₂ p gp1 gp2, ← hrec₂ q gq1 gq2, hX]
     refine Prod.ext ?_ ?_
-    · rw [← prod_normalizedFactors_eq_self hp1, ← prod_normalizedFactors_eq_self hq1, e1]
-    · rw [← prod_normalizedFactors_eq_self hp2, ← prod_normalizedFactors_eq_self hq2, e2]
+    · rw [← Ideal.prod_normalizedFactors_eq_self hp1, ← Ideal.prod_normalizedFactors_eq_self hq1, e1]
+    · rw [← Ideal.prod_normalizedFactors_eq_self hp2, ← Ideal.prod_normalizedFactors_eq_self hq2, e2]
 
 /-! ### A finite Euler product bound -/
 
@@ -325,7 +325,7 @@ theorem sum_inv_absNorm_le_prod (F : Finset (Ideal (𝓞 K))) (hF : ∀ 𝔭 ∈
     · simp only [Φ]
       rw [Finset.prod_coe_sort F (fun i => i ^ Multiset.count i (normalizedFactors I)),
         ← Finset.prod_multiset_count_of_subset (normalizedFactors I) F]
-      · exact prod_normalizedFactors_eq_self hI0
+      · exact Ideal.prod_normalizedFactors_eq_self hI0
       · intro 𝔭 h𝔭
         exact hIF 𝔭 (Multiset.mem_toFinset.mp h𝔭)
   have hw : ∀ e : F → ℕ, ((absNorm (Φ e) : ℝ))⁻¹ =
@@ -408,11 +408,11 @@ theorem card_le_finrank_of_forall_mem {p : ℕ} (hp : p.Prime) (F : Finset (Idea
   have hp0 : Ideal.span {(p : ℤ)} ≠ ⊥ := by
     rw [Ne, Ideal.span_singleton_eq_bot]
     exact_mod_cast hp.ne_zero
-  calc F.card ≤ (primesOverFinset (Ideal.span {(p : ℤ)}) (𝓞 K)).card := by
+  calc F.card ≤ (IsDedekindDomain.primesOverFinset (Ideal.span {(p : ℤ)}) (𝓞 K)).card := by
         apply Finset.card_le_card
         intro 𝔭 h𝔭
         obtain ⟨hprime, hmem⟩ := hF 𝔭 h𝔭
-        rw [mem_primesOverFinset_iff hp0]
+        rw [IsDedekindDomain.mem_primesOverFinset_iff hp0]
         refine ⟨hprime, ⟨?_⟩⟩
         refine (Int.ideal_span_isMaximal_of_prime p).eq_of_le ?_ ?_
         · haveI := hprime

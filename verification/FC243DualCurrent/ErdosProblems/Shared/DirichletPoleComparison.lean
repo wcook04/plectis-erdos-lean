@@ -193,7 +193,7 @@ theorem false_of_pole_comparison {a g b m : ℕ → ℝ}
     apply tendsto_nhdsWithin_of_tendsto_nhds
     have h := ((continuous_id.sub continuous_const).tendsto (1 : ℝ) :
       Tendsto (fun s : ℝ => id s - 1) (𝓝 1) (𝓝 (id 1 - 1)))
-    simpa using h
+    convert h using 1 <;> first | rfl | simp
   have hR : Tendsto (fun s : ℝ => B ^ 2 * (s - 1) * ((s - 1) * ∑' n, rterm m s n))
       (𝓝[>] 1) (𝓝 (B ^ 2 * 0 * rm)) :=
     (hlim0.const_mul (B ^ 2)).mul hM'

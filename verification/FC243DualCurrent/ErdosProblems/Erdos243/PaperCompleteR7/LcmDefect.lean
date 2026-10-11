@@ -106,7 +106,7 @@ theorem original_coordinate_lcm_bounded_defect
       have hmul := mul_le_mul_of_nonneg_right hscale hγ
       have htoQ : Z n ≤ (q : ℝ) * lcmDefect a n := by
         dsimp [Z, lcmDefect, γ] at *
-        convert hmul using 1 <;> ring
+        convert hmul using 1 <;> first | rfl | ring
       calc
         Z n ≤ (q : ℝ) * lcmDefect a n := htoQ
         _ ≤ (q : ℝ) * H := mul_le_mul_of_nonneg_left (hH n hn) hqr.le

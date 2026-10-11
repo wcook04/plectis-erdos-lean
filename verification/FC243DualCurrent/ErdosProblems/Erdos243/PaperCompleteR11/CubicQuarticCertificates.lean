@@ -214,7 +214,7 @@ theorem integral_cubic_1920_841_density
     LowerDensityAtLeast {n : ℕ | u n ≠ 1920 * risingBinomial n + 841} (1 / 7) := by
   apply integral_cubic_mod_seven_quartic_density a u v 1920 841 T hnum hden
   · decide
-  · exact Or.inr (Or.inr (Or.inl (by decide)))
+  · exact Or.inr (Or.inr (Or.inl (by norm_num)))
 
 /-- The reflected constant is covered too; the two signs are not silently
 identified by an order-reversing change of the natural index. -/
@@ -224,7 +224,7 @@ theorem integral_cubic_1920_neg841_density
     (hden : ∀ j, T ≤ j → v (j + 1) = a j * v j) :
     LowerDensityAtLeast {n : ℕ | u n ≠ 1920 * risingBinomial n - 841} (1 / 7) := by
   have hh := integral_cubic_mod_seven_quartic_density a u v 1920 (-841) T hnum hden
-    (by decide) (Or.inr (Or.inl (by decide)))
+    (by decide) (Or.inr (Or.inl (by norm_num)))
   simpa only [sub_eq_add_neg] using hh
 
 /-- Positive-threshold exclusion for every certified coefficient class. -/
