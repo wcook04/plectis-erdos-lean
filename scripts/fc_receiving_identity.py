@@ -26,16 +26,36 @@ TOOLS = {
     "pipeline": ("https://github.com/PalomarRegistry/PalomarSubmission.git", "ef2fa1eadcb246c2346ddba39b52eaa53d4bb763"),
 }
 TARGETS = {
-    "6579": ("e6bf75a53ef0655241873e5f12427fb6b4695de5", "249", "FC249RationalObservableCurrent", "FC249Repair", "Erdos249.erdos_249.variants.rational_dyadic_observable"),
-    "6576": ("ba0edafdf1bc3b0ad3a563295503ef68751dc514", "1041", "FC1041SharpGapCurrent", "FC6576Solution", "Erdos1041.erdos_1041.variants.sharp_collinear_gap"),
-    "6577": ("38f435dab7ca2da901588a5e91e93452eaba8910", "249", "FC249CountableIndependenceCurrent", "FC6577Solution", "Erdos249.erdos_249.variants.least_residue_dilation_independence"),
-    "6527": ("4139651cf87e3ec7893d6038e5d12173f075be66", "1049", "FC1049ContourMeasureCurrent", "FC6527Solution", "Erdos1049.erdos_1049.variants.rational_base_contour_measure"),
+    "6579": ("e6bf75a53ef0655241873e5f12427fb6b4695de5", "FormalConjectures/ErdosProblems/249.lean", "FormalConjectures.ErdosProblems.249", "FC249RationalObservableCurrent", "FC249Repair", "Erdos249.erdos_249.variants.rational_dyadic_observable"),
+    "6576": ("ba0edafdf1bc3b0ad3a563295503ef68751dc514", "FormalConjectures/ErdosProblems/1041.lean", "FormalConjectures.ErdosProblems.1041", "FC1041SharpGapCurrent", "FC6576Solution", "Erdos1041.erdos_1041.variants.sharp_collinear_gap"),
+    "6577": ("38f435dab7ca2da901588a5e91e93452eaba8910", "FormalConjectures/ErdosProblems/249.lean", "FormalConjectures.ErdosProblems.249", "FC249CountableIndependenceCurrent", "FC6577Solution", "Erdos249.erdos_249.variants.least_residue_dilation_independence"),
+    "6527": ("4139651cf87e3ec7893d6038e5d12173f075be66", "FormalConjectures/ErdosProblems/1049.lean", "FormalConjectures.ErdosProblems.1049", "FC1049ContourMeasureCurrent", "FC6527Solution", "Erdos1049.erdos_1049.variants.rational_base_contour_measure"),
+    "6523-cubic": ("56710453a2af5ac017df557431aa238346e3a35b", "FormalConjectures/ErdosProblems/243.lean", "FormalConjectures.ErdosProblems.243", "FC243DualCurrent", "FC6523Solutions", "Erdos243.erdos_243.variants.cubic_rate"),
+    "6523-product": ("56710453a2af5ac017df557431aa238346e3a35b", "FormalConjectures/ErdosProblems/243.lean", "FormalConjectures.ErdosProblems.243", "FC243DualCurrent", "FC6523Solutions", "Erdos243.erdos_243.variants.slow_growth_product_defect"),
+    "6528-finite": ("40f7826a7ba761dd39b4542094d6149c60ce6c47", "FormalConjectures/ErdosProblems/257.lean", "FormalConjectures.ErdosProblems.257", "FC257WeightedSupportCurrent", "FC6528Solutions", "Erdos257.erdos_257.variants.finite_prime_weighted_support"),
+    "6528-mixed": ("40f7826a7ba761dd39b4542094d6149c60ce6c47", "FormalConjectures/ErdosProblems/257.lean", "FormalConjectures.ErdosProblems.257", "FC257WeightedSupportCurrent", "FC6528Solutions", "Erdos257.erdos_257.variants.arbitrary_weight_mixed_support"),
+    "6529": ("f5d7b003955c1418d5e962c781aa55ff322a2c16", "FormalConjectures/ErdosProblems/257.lean", "FormalConjectures.ErdosProblems.257", "FC257ReciprocalSupportCurrent", "FC6529Solution", "Erdos257.erdos_257.variants.summable_reciprocal_support"),
+    "6780": ("009f3ca88924051271af89fc988e0d12e1fad23f", "FormalConjectures/Paper/GeometricMomentHankel.lean", "FormalConjectures.Paper.GeometricMomentHankel", "FC1049HankelCurrent", "FC6780Solution", "GeometricMomentHankel.fixed_base_asymptotic"),
+    "6971-257": ("b47d6ce7ebabf79193826fad5b14b13e44f9c786", "FormalConjectures/ErdosProblems/257.lean", "FormalConjectures.ErdosProblems.257", "FCMergedIntegerAdaptersCurrent", "FC6971IntegerSolutions", "Erdos257.erdos_257.variants.tsum_top"),
+    "6971-1049": ("b47d6ce7ebabf79193826fad5b14b13e44f9c786", "FormalConjectures/ErdosProblems/1049.lean", "FormalConjectures.ErdosProblems.1049", "FCMergedIntegerAdaptersCurrent", "FC6971IntegerSolutions", "Erdos1049.erdos_1049.variants.geq_2_integer"),
+    "6971-258": ("b47d6ce7ebabf79193826fad5b14b13e44f9c786", "FormalConjectures/ErdosProblems/258.lean", "FormalConjectures.ErdosProblems.258", "FCMergedIntegerAdaptersCurrent", "FC6971IntegerSolutions", "Erdos258.erdos_258.variants.constant"),
+    "6971-1041": ("b47d6ce7ebabf79193826fad5b14b13e44f9c786", "FormalConjectures/ErdosProblems/1041.lean", "FormalConjectures.ErdosProblems.1041", "FC1041HausdorffCurrent", "FC6971HausdorffSolution", "Erdos1041.erdos_1041"),
 }
 LIBRARY_ROOTS = {
     "6579": {"ErdosProblems", "FC249Repair"},
     "6576": {"ErdosProblems", "ExternalVerification", "FC6576Solution"},
     "6577": {"ErdosProblems", "Solutions", "FC6577Solution"},
     "6527": {"ErdosProblems", "Solutions", "FC6527Solution"},
+    "6523-cubic": {"ErdosProblems", "Solutions", "ExternalVerification", "FC6523Solutions"},
+    "6523-product": {"ErdosProblems", "Solutions", "ExternalVerification", "FC6523Solutions"},
+    "6528-finite": {"Erdos249257", "Erdos257PeriodNoncollapse", "ErdosProblems", "Solutions", "FC6528Solutions"},
+    "6528-mixed": {"Erdos249257", "Erdos257PeriodNoncollapse", "ErdosProblems", "Solutions", "FC6528Solutions"},
+    "6529": {"Erdos249257", "ErdosProblems", "ExternalVerification", "Solutions", "FormalConjecturesVariants", "FC6529Solution"},
+    "6780": {"ErdosProblems", "Solutions", "FC6780Solution"},
+    "6971-257": {"Erdos249257", "FormalConjecturesAdapter", "FC6971IntegerSolutions"},
+    "6971-1049": {"Erdos249257", "FormalConjecturesAdapter", "FC6971IntegerSolutions"},
+    "6971-258": {"Erdos249257", "FormalConjecturesAdapter", "FC6971IntegerSolutions"},
+    "6971-1041": {"ErdosProblems", "FC6971HausdorffSolution"},
 }
 PIN = "leanprover/lean4:v4.33.1"
 MATHLIB = "0df444a360eaa60ab8c11dca51a86af692955474"
@@ -103,16 +123,15 @@ def execute(args):
             raise RuntimeError("source commit must be immutable")
         if git(source, "rev-parse", "HEAD") != args.source_commit or git(source, "status", "--porcelain"):
             raise RuntimeError("candidate checkout must be clean at exact event SHA")
-        fc_commit, problem, package_name, solution_module, declaration = TARGETS[args.unit]
+        fc_commit, fc_path, canonical_module, package_name, solution_module, declaration = TARGETS[args.unit]
         if args.receiving_commit:
             if not re.fullmatch(r"[0-9a-f]{40}", args.receiving_commit):
                 raise RuntimeError("receiving commit must be a full immutable SHA")
             fc_commit = args.receiving_commit
         package_rel = "verification/" + package_name
         package = source / package_rel
-        fc_path = f"FormalConjectures/ErdosProblems/{problem}.lean"
-        # String.toName parses escaped numeric components; these are the actual module names.
-        challenge_module = f"FormalConjectures.ErdosProblems.«{problem}»"
+        # String.toName needs escaping for numeric module segments only.
+        challenge_module = ".".join("«" + part + "»" if part.isdecimal() else part for part in canonical_module.split("."))
         proof_rel = package_rel + "/" + solution_module + ".lean"
         proof_file = source / proof_rel
         if not proof_file.is_file():
@@ -123,7 +142,7 @@ def execute(args):
             raise RuntimeError("receiving verifier must start without candidate artifacts")
         receiving_env = environment(receiving, "receiving", out)
         proof_env = environment(package, "proof", out)
-        report["receiving"] = {"repository": "google-deepmind/formal-conjectures", "commit": fc_commit, "path": fc_path, "declaration": declaration, "project_path": "", "module": f"FormalConjectures.ErdosProblems.{problem}", "lean_toolchain": PIN, "environment": receiving_env, "file_sha256": capture(receiving / fc_path, "receiving-target.lean", out)}
+        report["receiving"] = {"repository": "google-deepmind/formal-conjectures", "commit": fc_commit, "path": fc_path, "declaration": declaration, "project_path": "", "module": canonical_module, "lean_toolchain": PIN, "environment": receiving_env, "file_sha256": capture(receiving / fc_path, "receiving-target.lean", out)}
         report["proof"] = {"repository": "wcook04/plectis-erdos-lean", "commit": args.source_commit, "path": proof_rel, "declaration": declaration, "project_path": package_rel, "module": solution_module, "lean_toolchain": PIN, "environment": proof_env, "file_sha256": capture(proof_file, "proof-target.lean", out)}
         capture(package / "source-binding.json", "source-binding.json", out)
         report["helper_sha256"] = digest(Path(__file__).read_bytes())
@@ -203,7 +222,7 @@ def execute(args):
                 heads[dependency["name"]] = dependency["rev"]
             return heads
         report["dependency_commits"] = dependency_heads()
-        run(["lake", "build", challenge_module], receiving, out / "actual-fc-build.log", env)
+        run(["lake", "--wfail", "build", challenge_module], receiving, out / "actual-fc-build.log", env)
         # Retain the actual challenge before ANY candidate module is compiled.
         export_targets = [*BUILTINS, declaration, *AXIOMS, *PRIMITIVES]
         def export(module, filename):
@@ -222,7 +241,7 @@ def execute(args):
         def compare(config, log_name, expect_success=True):
             path = out / (log_name + ".json")
             path.write_text(json.dumps(config, indent=2) + "\n")
-            argv = systemd_command(["lake", "env", str(comparator), str(path)], cwd=receiving, environment=env, timeout=19800)
+            argv = systemd_command([str(prefix / "bin/lake"), "env", str(comparator), str(path)], cwd=receiving, environment=env, timeout=19800)
             proc = run(argv, receiving, out / (log_name + ".log"), env, check=False)
             text = proc.stdout.decode(errors="replace")
             if expect_success and (proc.returncode or "Your solution is okay!" not in text or "Lean default kernel accepts the solution" not in text or "nanoda kernel accepts the solution" not in text):
