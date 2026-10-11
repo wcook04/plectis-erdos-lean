@@ -97,8 +97,13 @@
       "source_path": "ErdosProblems/Erdos1049/G02ArithmeticR16.lean",
       "port_path": "ErdosProblems/Erdos1049/G02ArithmeticR16.lean",
       "source_sha256": "sha256:13aefde17c2d1f2d4f801f57eb5dff2acb86050c25b116c1c4d38245987ac3c5",
-      "port_sha256": "sha256:13aefde17c2d1f2d4f801f57eb5dff2acb86050c25b116c1c4d38245987ac3c5",
-      "edits": []
+      "port_sha256": "sha256:8404b4f9564601f6df914865b1063a3b6bd0b9638fc9957aaff0e4cea9714107",
+      "edits": [
+        {
+          "kind": "receiving_instance_coherence_port",
+          "reason": "Full native646f run38172932675 leaves Real additive-monoid projection equality before sequence equality. Discharge definitional coherence with rfl on each conversion goal before applying funext to the residual sequence goal."
+        }
+      ]
     },
     {
       "source_path": "ErdosProblems/Erdos1049/G02CyclotomicR16.lean",

@@ -156,7 +156,7 @@ lemma hasSum_divisorsAntidiagonalR16 (f g : ℕ → ℝ)
     summable_mul_of_summable_norm hf.norm hg.norm
   have h := (hf.hasSum.mul hg.hasSum hprod).tsum_fiberwise
     (fun x : ℕ × ℕ => x.1 * x.2)
-  convert h using 1
+  convert h using 1 <;> try rfl
   funext n
   by_cases hn : n = 0
   · subst n
