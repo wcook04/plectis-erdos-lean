@@ -97,13 +97,17 @@ def environment(project: Path, prefix: str, out: Path):
 def execute(args):
     source, work, out = args.source.resolve(), args.work.resolve(), args.output.resolve()
     out.mkdir(parents=True, exist_ok=False)
-    report = {"schema": "formal_conjectures_receiving_identity/1", "evidence_class": "actual_receiving_export_remote_native", "verified": False, "pull_request": int(args.unit), "stages": {}}
+    report = {"schema": "formal_conjectures_receiving_identity/1", "evidence_class": "actual_receiving_export_remote_native", "verified": False, "pull_request": int(args.unit.split("-", 1)[0]), "stages": {}}
     try:
         if not re.fullmatch(r"[0-9a-f]{40}", args.source_commit):
             raise RuntimeError("source commit must be immutable")
         if git(source, "rev-parse", "HEAD") != args.source_commit or git(source, "status", "--porcelain"):
             raise RuntimeError("candidate checkout must be clean at exact event SHA")
         fc_commit, problem, package_name, solution_module, declaration = TARGETS[args.unit]
+        if args.receiving_commit:
+            if not re.fullmatch(r"[0-9a-f]{40}", args.receiving_commit):
+                raise RuntimeError("receiving commit must be a full immutable SHA")
+            fc_commit = args.receiving_commit
         package_rel = "verification/" + package_name
         package = source / package_rel
         fc_path = f"FormalConjectures/ErdosProblems/{problem}.lean"
@@ -140,7 +144,7 @@ def execute(args):
         run(["cargo", "+1.90.0", "build", "--release", "--locked", "--bin", "nanoda_bin"], work / "nanoda", out / "nanoda-build.log")
         exporter = work / "lean4export/.lake/build/bin/lean4export"
         comparator = work / "comparator/.lake/build/bin/comparator"
-        prefix_proc = run(["lake", "env", "lean", "--print-prefix"], receiving, out / "compiler-prefix.log", env)
+        prefix_proc = run(["lean", "--print-prefix"], receiving, out / "compiler-prefix.log", env)
         prefix = Path(prefix_proc.stdout.decode().strip())
         if not prefix.is_absolute() or not (prefix / "bin/lean").is_file():
             raise RuntimeError("invalid trusted compiler prefix")
@@ -284,4 +288,5 @@ if __name__ == "__main__":
     parser.add_argument("--work", required=True, type=Path)
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--unit", choices=TARGETS, default="6579")
+    parser.add_argument("--receiving-commit", default="", help="Exact FC commit override; declaration and environment remain constrained")
     execute(parser.parse_args())

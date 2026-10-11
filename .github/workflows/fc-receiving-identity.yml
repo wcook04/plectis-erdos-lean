@@ -11,6 +11,10 @@ on:
         default: '6579'
         type: choice
         options: ['6579', '6576', '6577', '6527']
+      receiving_commit:
+        description: Optional full FC SHA after a proof-link amendment
+        required: false
+        type: string
       source_commit:
         description: Full source SHA, equal to selected workflow ref
         required: true
@@ -28,6 +32,7 @@ jobs:
       UNIT: ${{ inputs.unit || '6579' }}
       SOURCE_SHA: ${{ github.sha }}
       SOURCE_INPUT: ${{ inputs.source_commit }}
+      RECEIVING_INPUT: ${{ inputs.receiving_commit }}
       GOTOOLCHAIN: go1.24.0
     steps:
       - name: Checkout immutable candidate
@@ -61,6 +66,7 @@ jobs:
             --source "$GITHUB_WORKSPACE" \
             --source-commit "$SOURCE_SHA" \
             --unit "$UNIT" \
+            --receiving-commit "$RECEIVING_INPUT" \
             --work "$RUNNER_TEMP/fc-receiving-verifier" \
             --output "$RUNNER_TEMP/fc-receiving-artifacts"
       - name: Upload authenticated receiving identity
