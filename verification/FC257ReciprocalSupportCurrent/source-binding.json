@@ -345,8 +345,13 @@
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/GeometricCoprimality.lean",
       "source_sha256": "sha256:ad2a7ff4fefefdf6374c3a8d9ea2afd1d27b638883e9a1625d1049cadf21a0b7",
       "port_path": "Erdos249257/GeometricCoprimality.lean",
-      "port_sha256": "sha256:ad2a7ff4fefefdf6374c3a8d9ea2afd1d27b638883e9a1625d1049cadf21a0b7",
-      "edits": []
+      "port_sha256": "sha256:40fb3ec5c69bbc75f847d1481bd30fe0eef6619320cff26c111fb342f1cfc315",
+      "edits": [
+        {
+          "kind": "receiving_antidiagonal_division_api_port",
+          "reason": "Authenticated native run38173532195 c5: remove three inert dsimp steps; use Finset.HasAntidiagonal.sigmaAntidiagonalEquivProd and Int.mul_ediv_add_emod from the fixed receiving APIs. Original source provenance retained."
+        }
+      ]
     },
     {
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/GreedyAchievementSet.lean",
@@ -464,8 +469,13 @@
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/LcmConeNonflat.lean",
       "source_sha256": "sha256:b113c51081a5a926c635dd8f192c4915e1f2a3a6ad6768ea9ed9d03954991af0",
       "port_path": "Erdos249257/LcmConeNonflat.lean",
-      "port_sha256": "sha256:b113c51081a5a926c635dd8f192c4915e1f2a3a6ad6768ea9ed9d03954991af0",
-      "edits": []
+      "port_sha256": "sha256:b89a77cdeb5f3818515ea9cccb3937efdbf8ef4e0ddcb639e82a38ac15c0b050",
+      "edits": [
+        {
+          "kind": "receiving_antidiagonal_division_api_port",
+          "reason": "Authenticated native run38173532195 c5: remove three inert dsimp steps; use Finset.HasAntidiagonal.sigmaAntidiagonalEquivProd and Int.mul_ediv_add_emod from the fixed receiving APIs. Original source provenance retained."
+        }
+      ]
     },
     {
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/LcmDiagonalReduction.lean",
