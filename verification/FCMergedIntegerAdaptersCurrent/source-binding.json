@@ -1,0 +1,250 @@
+{
+  "schema": "fc6971_integer_receiving_port/1",
+  "status": "prepared_unverified",
+  "source_repository": "wcook04/plectis-erdos-lean",
+  "source_ref": "c4eab2571b4692ee9c08d3ec138176f7fbfa09a9",
+  "source_project_path": "verification/FCMergedIntegerAdapters",
+  "source_environment": {
+    "lean-toolchain": {
+      "sha256": "sha256:88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5",
+      "content": "leanprover/lean4:v4.29.1\n\n"
+    },
+    "lake-manifest.json": {
+      "sha256": "sha256:ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c",
+      "content": {
+        "version": "1.1.0",
+        "packagesDir": ".lake/packages",
+        "packages": [
+          {
+            "url": "https://github.com/leanprover-community/mathlib4",
+            "type": "git",
+            "subDir": null,
+            "scope": "leanprover-community",
+            "rev": "5e932f97dd25535344f80f9dd8da3aab83df0fe6",
+            "name": "mathlib",
+            "manifestFile": "lake-manifest.json",
+            "inputRev": "v4.29.1",
+            "inherited": false,
+            "configFile": "lakefile.lean"
+          },
+          {
+            "url": "https://github.com/leanprover-community/plausible",
+            "type": "git",
+            "subDir": null,
+            "scope": "leanprover-community",
+            "rev": "83e90935a17ca19ebe4b7893c7f7066e266f50d3",
+            "name": "plausible",
+            "manifestFile": "lake-manifest.json",
+            "inputRev": "main",
+            "inherited": true,
+            "configFile": "lakefile.toml"
+          },
+          {
+            "url": "https://github.com/leanprover-community/LeanSearchClient",
+            "type": "git",
+            "subDir": null,
+            "scope": "leanprover-community",
+            "rev": "c5d5b8fe6e5158def25cd28eb94e4141ad97c843",
+            "name": "LeanSearchClient",
+            "manifestFile": "lake-manifest.json",
+            "inputRev": "main",
+            "inherited": true,
+            "configFile": "lakefile.toml"
+          },
+          {
+            "url": "https://github.com/leanprover-community/import-graph",
+            "type": "git",
+            "subDir": null,
+            "scope": "leanprover-community",
+            "rev": "48d5698bc464786347c1b0d859b18f938420f060",
+            "name": "importGraph",
+            "manifestFile": "lake-manifest.json",
+            "inputRev": "main",
+            "inherited": true,
+            "configFile": "lakefile.toml"
+          },
+          {
+            "url": "https://github.com/leanprover-community/ProofWidgets4",
+            "type": "git",
+            "subDir": null,
+            "scope": "leanprover-community",
+            "rev": "4dd0959c44d1af0462bd604d0f87c5781307d709",
+            "name": "proofwidgets",
+            "manifestFile": "lake-manifest.json",
+            "inputRev": "v0.0.95+lean-v4.29.1",
+            "inherited": true,
+            "configFile": "lakefile.lean"
+          },
+          {
+            "url": "https://github.com/leanprover-community/aesop",
+            "type": "git",
+            "subDir": null,
+            "scope": "leanprover-community",
+            "rev": "7152850e7b216a0d409701617721b6e469d34bf6",
+            "name": "aesop",
+            "manifestFile": "lake-manifest.json",
+            "inputRev": "master",
+            "inherited": true,
+            "configFile": "lakefile.toml"
+          },
+          {
+            "url": "https://github.com/leanprover-community/quote4",
+            "type": "git",
+            "subDir": null,
+            "scope": "leanprover-community",
+            "rev": "707efb56d0696634e9e965523a1bbe9ac6ce141d",
+            "name": "Qq",
+            "manifestFile": "lake-manifest.json",
+            "inputRev": "master",
+            "inherited": true,
+            "configFile": "lakefile.toml"
+          },
+          {
+            "url": "https://github.com/leanprover-community/batteries",
+            "type": "git",
+            "subDir": null,
+            "scope": "leanprover-community",
+            "rev": "756e3321fd3b02a85ffda19fef789916223e578c",
+            "name": "batteries",
+            "manifestFile": "lake-manifest.json",
+            "inputRev": "main",
+            "inherited": true,
+            "configFile": "lakefile.toml"
+          },
+          {
+            "url": "https://github.com/leanprover/lean4-cli",
+            "type": "git",
+            "subDir": null,
+            "scope": "leanprover",
+            "rev": "7802da01beb530bf051ab657443f9cd9bc3e1a29",
+            "name": "Cli",
+            "manifestFile": "lake-manifest.json",
+            "inputRev": "v4.29.0",
+            "inherited": true,
+            "configFile": "lakefile.toml"
+          }
+        ],
+        "name": "erdos249257",
+        "lakeDir": ".lake"
+      }
+    }
+  },
+  "receiving_repository": "google-deepmind/formal-conjectures",
+  "receiving_head": "b47d6ce7ebabf79193826fad5b14b13e44f9c786",
+  "receiving_pins": {
+    "lean": "leanprover/lean4:v4.33.1",
+    "mathlib": "0df444a360eaa60ab8c11dca51a86af692955474"
+  },
+  "targets": [
+    {
+      "receiving_file": "FormalConjectures/ErdosProblems/257.lean",
+      "file_sha256": "sha256:74035eb2e4a6c8f31b1a30e5a844d4e61897f204929baa899ae95e1be92903fe",
+      "actual_signature": "theorem erdos_257.variants.tsum_top :\n    Irrational <| \u2211' n, n.divisors.card / (2 ^ n : \u211d)",
+      "solution_signature": "theorem erdos_257.variants.tsum_top :\n    Irrational <| \u2211' n, n.divisors.card / (2 ^ n : \u211d)",
+      "source_declaration": "Erdos249257.FormalConjecturesAdapter.erdos_257_variants_tsum_top"
+    },
+    {
+      "receiving_file": "FormalConjectures/ErdosProblems/1049.lean",
+      "file_sha256": "sha256:c201d776f2423dca9434cd16761775777b98bd23d64778fc8278781ff317ed3d",
+      "actual_signature": "theorem erdos_1049.variants.geq_2_integer :\n     \u2200 t : \u2124, t \u2265 2 \u2192 Irrational (\u2211' n : \u2115+, 1 / ((t : \u211d) ^ (n : \u2115) - 1))",
+      "solution_signature": "theorem erdos_1049.variants.geq_2_integer :\n     \u2200 t : \u2124, t \u2265 2 \u2192 Irrational (\u2211' n : \u2115+, 1 / ((t : \u211d) ^ (n : \u2115) - 1))",
+      "source_declaration": "Erdos249257.FormalConjecturesAdapter.erdos_1049_variants_geq_2_integer"
+    },
+    {
+      "receiving_file": "FormalConjectures/ErdosProblems/258.lean",
+      "file_sha256": "sha256:9ba52ec78d4cd1fd46308fc8769b18250abee9193f184146f6734e27884ba498",
+      "actual_signature": "theorem erdos_258.variants.constant : answer(True) \u2194 \u2200 t \u2265 (2 : \u2115),\n    Irrational (\u2211' (n : \u2115), ((n + 1).divisors.card / t^(n + 1)))",
+      "solution_signature": "theorem erdos_258.variants.constant : True \u2194 \u2200 t \u2265 (2 : \u2115),\n    Irrational (\u2211' (n : \u2115), ((n + 1).divisors.card / t^(n + 1)))",
+      "source_declaration": "Erdos249257.FormalConjecturesAdapter.erdos_258_variants_constant"
+    }
+  ],
+  "source_files": [
+    {
+      "source_path": "verification/FCMergedIntegerAdapters/lean/Erdos249257/CarrySurvivorExtinction.lean",
+      "source_sha256": "sha256:6baa1dc557dec8babc2635af8dcd461e4af8742313a21f00959219f439bee644",
+      "port_path": "Erdos249257/CarrySurvivorExtinction.lean",
+      "port_sha256": "sha256:6baa1dc557dec8babc2635af8dcd461e4af8742313a21f00959219f439bee644",
+      "edits": []
+    },
+    {
+      "source_path": "verification/FCMergedIntegerAdapters/lean/Erdos249257/CertificateKernel.lean",
+      "source_sha256": "sha256:90e9be09a22c200314c29c63afdb48969491ef30ff040b0910a2fbc0c049c38a",
+      "port_path": "Erdos249257/CertificateKernel.lean",
+      "port_sha256": "sha256:90e9be09a22c200314c29c63afdb48969491ef30ff040b0910a2fbc0c049c38a",
+      "edits": []
+    },
+    {
+      "source_path": "verification/FCMergedIntegerAdapters/lean/Erdos249257/GapFareyBound.lean",
+      "source_sha256": "sha256:076397176d7ca70d0ab4771872bd415ef5487d90f55e389f4250d7f3f43abc25",
+      "port_path": "Erdos249257/GapFareyBound.lean",
+      "port_sha256": "sha256:076397176d7ca70d0ab4771872bd415ef5487d90f55e389f4250d7f3f43abc25",
+      "edits": []
+    },
+    {
+      "source_path": "verification/FCMergedIntegerAdapters/lean/Erdos249257/GcdMomentCalculus.lean",
+      "source_sha256": "sha256:e535c90b20cf4c424df5503efbd33159a2fcff3f2dc1b901f035d5b2ce297369",
+      "port_path": "Erdos249257/GcdMomentCalculus.lean",
+      "port_sha256": "sha256:e535c90b20cf4c424df5503efbd33159a2fcff3f2dc1b901f035d5b2ce297369",
+      "edits": []
+    },
+    {
+      "source_path": "verification/FCMergedIntegerAdapters/lean/Erdos249257/GeometricCoprimality.lean",
+      "source_sha256": "sha256:ad2a7ff4fefefdf6374c3a8d9ea2afd1d27b638883e9a1625d1049cadf21a0b7",
+      "port_path": "Erdos249257/GeometricCoprimality.lean",
+      "port_sha256": "sha256:ad2a7ff4fefefdf6374c3a8d9ea2afd1d27b638883e9a1625d1049cadf21a0b7",
+      "edits": []
+    },
+    {
+      "source_path": "verification/FCMergedIntegerAdapters/lean/Erdos249257/LcmConeFlatness.lean",
+      "source_sha256": "sha256:977b61323d775a8f4305691ae966c851a3b752f544a4f3f9293a5b7ee2fc0347",
+      "port_path": "Erdos249257/LcmConeFlatness.lean",
+      "port_sha256": "sha256:977b61323d775a8f4305691ae966c851a3b752f544a4f3f9293a5b7ee2fc0347",
+      "edits": []
+    },
+    {
+      "source_path": "verification/FCMergedIntegerAdapters/lean/Erdos249257/LcmConeNonflat.lean",
+      "source_sha256": "sha256:b113c51081a5a926c635dd8f192c4915e1f2a3a6ad6768ea9ed9d03954991af0",
+      "port_path": "Erdos249257/LcmConeNonflat.lean",
+      "port_sha256": "sha256:b113c51081a5a926c635dd8f192c4915e1f2a3a6ad6768ea9ed9d03954991af0",
+      "edits": []
+    },
+    {
+      "source_path": "verification/FCMergedIntegerAdapters/lean/Erdos249257/LcmDiagonalReduction.lean",
+      "source_sha256": "sha256:1c87948ec072687e0516e4f603f11e0938c692588cfb9bf3e459d7e91c80d801",
+      "port_path": "Erdos249257/LcmDiagonalReduction.lean",
+      "port_sha256": "sha256:1c87948ec072687e0516e4f603f11e0938c692588cfb9bf3e459d7e91c80d801",
+      "edits": []
+    },
+    {
+      "source_path": "verification/FCMergedIntegerAdapters/lean/Erdos249257/MersenneLambertLadder.lean",
+      "source_sha256": "sha256:bfc03595228b61b5b5b4a7ff1e23723b827e21587277a67deb4879b9068429ed",
+      "port_path": "Erdos249257/MersenneLambertLadder.lean",
+      "port_sha256": "sha256:bfc03595228b61b5b5b4a7ff1e23723b827e21587277a67deb4879b9068429ed",
+      "edits": []
+    },
+    {
+      "source_path": "verification/FCMergedIntegerAdapters/lean/Erdos249257/SternBrocotRunGeometry.lean",
+      "source_sha256": "sha256:fcb72bd7eb8a4d0edbf068357e49dfdba9196ad0a897ceaa9d878f0b2bb58ff0",
+      "port_path": "Erdos249257/SternBrocotRunGeometry.lean",
+      "port_sha256": "sha256:fcb72bd7eb8a4d0edbf068357e49dfdba9196ad0a897ceaa9d878f0b2bb58ff0",
+      "edits": []
+    },
+    {
+      "source_path": "verification/FCMergedIntegerAdapters/lean/Erdos249257/TotientTailPeriodKiller.lean",
+      "source_sha256": "sha256:1e30899a37d017c8b83d54b61e101be920a86d9ae01e612c31ffce1dd6217b8f",
+      "port_path": "Erdos249257/TotientTailPeriodKiller.lean",
+      "port_sha256": "sha256:1e30899a37d017c8b83d54b61e101be920a86d9ae01e612c31ffce1dd6217b8f",
+      "edits": []
+    },
+    {
+      "source_path": "verification/FCMergedIntegerAdapters/research/adapters/FormalConjecturesAdapter.lean",
+      "source_sha256": "sha256:402321bc485917ad3860e63834db0b6899f9d12a074fb1518cfb8d90529aea07",
+      "port_path": "FormalConjecturesAdapter.lean",
+      "port_sha256": "sha256:402321bc485917ad3860e63834db0b6899f9d12a074fb1518cfb8d90529aea07",
+      "edits": []
+    }
+  ],
+  "wrapper_sha256": "sha256:4a440e76c5cf882b5b486432428a8c99ecbcdf03a86e5b1a09c4db7663e177c5",
+  "answer_expansion": "Receiver answer(True) elaborates to True up to erased answer annotation; preserved raw receiving signature and explicit solution signature. Actual export comparison required.",
+  "verification": "No compilation or receiving export comparison run."
+}

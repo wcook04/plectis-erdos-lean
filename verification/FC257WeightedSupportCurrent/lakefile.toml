@@ -1,0 +1,26 @@
+name = "fc257_weighted_support_current"
+defaultTargets = ["FC6528Solutions"]
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.33.1"
+
+[[lean_lib]]
+name = "Erdos249257"
+globs = ["Erdos249257.+"]
+
+[[lean_lib]]
+name = "Erdos257PeriodNoncollapse"
+globs = ["Erdos257PeriodNoncollapse.+"]
+
+[[lean_lib]]
+name = "ErdosProblems"
+globs = ["ErdosProblems.+"]
+
+[[lean_lib]]
+name = "Solutions"
+globs = ["Solutions.+"]
+
+[[lean_lib]]
+name = "FC6528Solutions"
