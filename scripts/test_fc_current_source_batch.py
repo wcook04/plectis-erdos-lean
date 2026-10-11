@@ -106,7 +106,7 @@ class SourceBatchTests(unittest.TestCase):
         def compile(argv, *, root, log, **kwargs):
             calls.append((argv, root, log))
             log.parent.mkdir(parents=True, exist_ok=True)
-            log.write_bytes(b'fixture retained compiler output')
+            log.write_bytes(b'warning: fixture retained compiler output')
             if damage and len(calls) == 10:
                 (self.root / batch.SETUP_PROJECT / 'FCResult0.lean').write_text('changed by later source')
             return {'returncode': failure if len(calls) == 1 else 0, 'errors': [], 'seconds': 0.01}
@@ -119,10 +119,13 @@ class SourceBatchTests(unittest.TestCase):
         self.assertEqual(code, 1)
         self.assertEqual(report['status'], 'fail')
         self.assertEqual(len(calls), 10)
-        self.assertTrue(all(argv[:3] == ['lake', '--wfail', 'build'] for argv, _, _ in calls))
+        self.assertTrue(all(argv[:2] == ['lake', 'build'] and '--wfail' not in argv for argv, _, _ in calls))
         self.assertEqual(len({root for _, root, _ in calls}), 10)
         self.assertEqual(len({log for _, _, log in calls}), 10)
         self.assertTrue(all(log.exists() for _, _, log in calls))
+        self.assertTrue(all(b'warning:' in log.read_bytes() for _, _, log in calls))
+        self.assertFalse(report['warning_clean_required'])
+        self.assertTrue(all(p['warning_clean_required'] is False for p in report['projects']))
         self.assertEqual([p['status'] for p in report['projects']], ['fail'] + ['pass'] * 9)
         self.assertTrue(all(Path(p['report']).exists() for p in report['projects']))
         self.assertEqual(report['kind'], 'fc_current_source_diagnostics')
@@ -139,6 +142,8 @@ class SourceBatchTests(unittest.TestCase):
         code, _, report = self.replay()
         self.assertEqual(code, 0)
         self.assertEqual(report['status'], 'pass')
+        self.assertFalse(report['warning_clean_required'])
+        self.assertNotIn('warning_clean', report)
         self.assertIn('no receiving identity certification', report['boundary'])
 
     def test_dependency_sharing_does_not_share_candidate_outputs(self):

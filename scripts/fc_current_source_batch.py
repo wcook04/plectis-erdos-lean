@@ -6,6 +6,8 @@
 Read the source snapshot's existing native target registry without executing it.
 The ten projects share only their identical pinned dependencies; candidate source
 roots and build outputs stay separate. Each project uses the convenience runner.
+Warnings remain in compiler logs; ordinary Lake builds match the existing
+candidate compilation policy without stopping later diagnostics on warnings.
 """
 from __future__ import annotations
 
@@ -106,7 +108,8 @@ def plan_batch(root: Path, commit: str) -> dict:
         project['plan'] = runner.make_plan(package, None, [], False)
     return {'source_commit': commit, 'registry_sha256': digest(registry), 'dependencies': dependencies,
             'toolchain': TOOLCHAIN, 'manifest_sha256': MANIFEST, 'projects': list(projects.values()),
-            'setup_project': SETUP_PROJECT, 'driver_sha256': digest(Path(__file__)), 'boundary': BOUNDARY}
+            'setup_project': SETUP_PROJECT, 'driver_sha256': digest(Path(__file__)),
+            'warning_clean_required': False, 'boundary': BOUNDARY}
 
 
 def share_dependencies(root: Path, plan: dict) -> None:
@@ -138,15 +141,16 @@ def share_dependencies(root: Path, plan: dict) -> None:
 def compile_batch(root: Path, plan: dict, report: Path, *, build=runner.build_targets,
                   project_budget: float = 1500) -> int:
     result = {'schema_version': 2, 'kind': 'fc_current_source_diagnostics', 'status': 'running',
-              'plan': plan, 'warning_clean': True, 'boundary': BOUNDARY, 'projects': []}
+              'plan': plan, 'warning_clean_required': False, 'boundary': BOUNDARY, 'projects': []}
     runner.save_report(report, result)
     for project in plan['projects']:
         package = root / project['path']
         project_report = report.parent / 'fc-current-source-batch' / package.name / 'report.json'
-        row = {'path': project['path'], 'units': project['units'], 'report': str(project_report), 'status': 'incomplete'}
+        row = {'path': project['path'], 'units': project['units'], 'report': str(project_report),
+               'warning_clean_required': False, 'status': 'incomplete'}
         try:
             code = build(project['modules'], project_report, plan=project['plan'], root=package,
-                         keep_going=True, warning_clean=True, total_budget=project_budget)
+                         keep_going=True, warning_clean=False, total_budget=project_budget)
             detail = json.loads(project_report.read_text())
             row.update(status=detail['status'], returncode=code, targets=detail['targets'])
         except (OSError, ValueError, KeyError, subprocess.SubprocessError) as error:
@@ -182,13 +186,15 @@ def main(argv=None) -> int:
         plan = plan_batch(root, args.source_commit)
         if args.plan:
             runner.save_report(report, {'schema_version': 2, 'kind': 'fc_current_source_diagnostics',
-                                        'status': 'planned', 'plan': plan, 'boundary': BOUNDARY})
+                                        'status': 'planned', 'plan': plan,
+                                        'warning_clean_required': False, 'boundary': BOUNDARY})
             return 0
         share_dependencies(root, plan)
         return compile_batch(root, plan, report, project_budget=args.project_budget)
     except (OSError, ValueError, KeyError, TypeError, SyntaxError, subprocess.SubprocessError) as error:
         runner.save_report(report, {'schema_version': 2, 'kind': 'fc_current_source_diagnostics',
-                                    'status': 'incomplete', 'error': str(error), 'boundary': BOUNDARY})
+                                    'status': 'incomplete', 'error': str(error),
+                                    'warning_clean_required': False, 'boundary': BOUNDARY})
         print('::error::' + runner.annotation(str(error)))
         return 2
 

@@ -191,7 +191,7 @@ jobs:
           if [[ "$FOCUSED_ONLY" == true ]]; then args+=(--focused-only); fi
           if [[ -n "$FOCUS_MODULE" ]]; then args+=(--focus "$FOCUS_MODULE"); fi
           python3 .ci-driver/scripts/build_launch_targets.py "${args[@]}"
-      - name: Compile every current FC source project with warning-clean diagnostics
+      - name: Compile every current FC candidate project and retain warning diagnostics
         id: compile_fc
         if: ${{ inputs.fc_current_batch }}
         env:
