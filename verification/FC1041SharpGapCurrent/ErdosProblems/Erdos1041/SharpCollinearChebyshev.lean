@@ -82,7 +82,7 @@ theorem eval_monicScaledChebyshev {n : ℕ} (hn : 2 ≤ n) (x : ℝ) :
   simp [monicScaledChebyshev, eval_mul, hscale', mul_assoc]
 
 /-- The comparison polynomial is genuinely monic of degree `n`. -/
-theorem monicScaledChebyshev_isMonicOfDegree {n : ℕ} (hn : 2 ≤ n) :
+theorem monicScaledChebyshev_isMonicOfDegree {n : ℕ} (_hn : 2 ≤ n) :
     (monicScaledChebyshev n).IsMonicOfDegree n := by
   have ha : ((2 : ℝ) ^ (n - 1))⁻¹ ≠ 0 := by positivity
   constructor

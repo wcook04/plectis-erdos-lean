@@ -48,16 +48,16 @@ theorem affine_unit_variation (a v : ℂ) (s : ℝ) :
       trivial
     have hv := hl.comp_eVariationOn_le hm
     have hid : eVariationOn (id : ℝ → ℝ) (Icc s (s + 1)) ≤ 1 := by
-      have h := (monotone_id.monotoneOn (univ : Set ℝ)).eVariationOn_le
+      have h := (monotone_id.monotoneOn (univ : Set ℝ)).eVariationOn_eq
         (mem_univ s) (mem_univ (s + 1))
       simpa only [univ_inter, id_eq, add_sub_cancel_left,
-        ENNReal.ofReal_one] using h
+        ENNReal.ofReal_one] using h.le
     calc
       eVariationOn (affine a v) (Icc s (s + 1))
           ≤ (‖v‖₊ : ℝ≥0∞) * eVariationOn (id : ℝ → ℝ) (Icc s (s + 1)) := by
             simpa only [Function.comp_id] using hv
       _ ≤ (‖v‖₊ : ℝ≥0∞) * 1 := by
-            exact mul_le_mul_left' hid _
+            exact mul_le_mul_right hid _
       _ = (‖v‖₊ : ℝ≥0∞) := mul_one _
   · have hs : s ≤ s + 1 := by linarith
     have hv := eVariationOn.edist_le (affine a v)
@@ -80,15 +80,15 @@ theorem hub_continuous (a h b : ℂ) : Continuous (hub a h b) := by
   fun_prop
 
 @[simp] theorem hub_zero (a h b : ℂ) : hub a h b 0 = a := by
-  norm_num [hub] <;> ring
+  norm_num [hub]
 
 @[simp] theorem hub_one (a h b : ℂ) : hub a h b 1 = h := by
-  norm_num [hub] <;> ring
+  norm_num [hub]
 
 @[simp] theorem hub_two (a h b : ℂ) : hub a h b 2 = b := by
-  norm_num [hub] <;> ring
+  norm_num [hub]
 
-theorem hub_eq_first {a h b : ℂ} {t : ℝ} (ht0 : 0 ≤ t) (ht1 : t ≤ 1) :
+theorem hub_eq_first {a h b : ℂ} {t : ℝ} (_ht0 : 0 ≤ t) (ht1 : t ≤ 1) :
     hub a h b t = affine a (h - a) t := by
   have h0 : 0 ≤ 1 - t := by linarith
   have h1 : t - 1 ≤ 0 := by linarith
@@ -121,7 +121,7 @@ theorem hub_variation (a h b : ℂ) :
     have heq : EqOn (hub a h b) (affine (2 * h - b) (b - h)) (Icc (1 : ℝ) 2) :=
       fun t ht => hub_eq_second ht.1
     rw [eVariationOn.congr heq]
-    convert affine_unit_variation (2 * h - b) (b - h) 1 using 1 <;> norm_num
+    convert affine_unit_variation (2 * h - b) (b - h) 1 using 1; norm_num
   have hs := eVariationOn.Icc_add_Icc (hub a h b) (s := univ)
     (a := (0 : ℝ)) (b := 1) (c := 2) (by norm_num) (by norm_num) (by trivial)
   simp only [univ_inter] at hs

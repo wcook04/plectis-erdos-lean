@@ -24,8 +24,13 @@
       "source_path": "lean/ErdosProblems/Erdos1041/PaperCurveAssembly.lean",
       "port_path": "ErdosProblems/Erdos1041/PaperCurveAssembly.lean",
       "source_sha256": "sha256:6b0a747147efd63870273fb25c4c364050d905900deaf704f9e082b3413bcced",
-      "port_sha256": "sha256:6b0a747147efd63870273fb25c4c364050d905900deaf704f9e082b3413bcced",
-      "edits": []
+      "port_sha256": "sha256:993ed69fc1ed8402ab051059c782b553b4e47dc3e1bef6eacfbd5cedf0b4a370",
+      "edits": [
+        {
+          "kind": "receiving_mathlib_api_port",
+          "reason": "Native c513 run38171881307: replace removed multiplication monotonicity name with current left-factor mul_le_mul_right; use variation equality and remove only compiler-reported unused/no-op proof commands."
+        }
+      ]
     },
     {
       "source_path": "lean/ErdosProblems/Erdos1041/SharpCollinearAlternation.lean",
@@ -38,8 +43,13 @@
       "source_path": "lean/ErdosProblems/Erdos1041/SharpCollinearChebyshev.lean",
       "port_path": "ErdosProblems/Erdos1041/SharpCollinearChebyshev.lean",
       "source_sha256": "sha256:7a5caeceff9b667bf70241e90d7a40483ba0c5a9bfdad2115a069937a90af2cc",
-      "port_sha256": "sha256:7a5caeceff9b667bf70241e90d7a40483ba0c5a9bfdad2115a069937a90af2cc",
-      "edits": []
+      "port_sha256": "sha256:ff4e1f1610ac25c90744a5a48d21afeeb4d828697c0547627b3a1cd2801a963c",
+      "edits": [
+        {
+          "kind": "receiving_mathlib_api_port",
+          "reason": "Native c513 run38171881307: replace removed multiplication monotonicity name with current left-factor mul_le_mul_right; use variation equality and remove only compiler-reported unused/no-op proof commands."
+        }
+      ]
     },
     {
       "source_path": "verification/ExternalVerification/FC1041SharpGap/Solution.lean",
