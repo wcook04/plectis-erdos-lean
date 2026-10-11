@@ -233,8 +233,13 @@
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/CertificateKernel.lean",
       "source_sha256": "sha256:90e9be09a22c200314c29c63afdb48969491ef30ff040b0910a2fbc0c049c38a",
       "port_path": "Erdos249257/CertificateKernel.lean",
-      "port_sha256": "sha256:90e9be09a22c200314c29c63afdb48969491ef30ff040b0910a2fbc0c049c38a",
-      "edits": []
+      "port_sha256": "sha256:0b23fd553b82ad04839c8976428d30bcf3cc44974419ef990cecd6b5d0b8b587",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated strict source batch38175216709 at9a: Transfer exact existing weighted Nat/semigroup divisibility multiplier-witness helper and ten uses; no assumption change. Compiler replay pending."
+        }
+      ]
     },
     {
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/CompositeDilationDefect.lean",
@@ -521,8 +526,13 @@
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/MersenneTailAtoms.lean",
       "source_sha256": "sha256:dd64ab2bd2e044149bd19e19d14818c922783646460bb2d36e9df589fff11530",
       "port_path": "Erdos249257/MersenneTailAtoms.lean",
-      "port_sha256": "sha256:dd64ab2bd2e044149bd19e19d14818c922783646460bb2d36e9df589fff11530",
-      "edits": []
+      "port_sha256": "sha256:e3e3f214de305041df5b5d7520024a09b9f247aad77a604874b835e6874f5a95",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated strict source batch38175216709 at9a: Transfer exact existing weighted explicit Matrix.map rational matrix and typed det_mul_row factorization. Compiler replay pending."
+        }
+      ]
     },
     {
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/PivotAntiReconstruction.lean",
@@ -549,15 +559,25 @@
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/RadicalMobiusShadow.lean",
       "source_sha256": "sha256:0f1275051bc43aa875eea4dd8f189c73ba02121f20a65f02066517986e6df4e5",
       "port_path": "Erdos249257/RadicalMobiusShadow.lean",
-      "port_sha256": "sha256:0f1275051bc43aa875eea4dd8f189c73ba02121f20a65f02066517986e6df4e5",
-      "edits": []
+      "port_sha256": "sha256:63ccb341efd0de2f628dfb89335883b6e4397f4a57213614c3046681cb8e23bf",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated strict source batch38175216709 at9a: Separate definitional instance equalities from Nat factor and Int divisibility algebra goals; preserve arithmetic witnesses. Compiler replay pending."
+        }
+      ]
     },
     {
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/RationalDenominatorSurvival.lean",
       "source_sha256": "sha256:06a6173dddc6c93b9b85e0765e490809bcb80ec37cbe2619514ffa15abee0894",
       "port_path": "Erdos249257/RationalDenominatorSurvival.lean",
-      "port_sha256": "sha256:06a6173dddc6c93b9b85e0765e490809bcb80ec37cbe2619514ffa15abee0894",
-      "edits": []
+      "port_sha256": "sha256:583ee3d770f86fe6f9a20b5d28824801b931855c16b01f4433d0c919b56afdab",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated strict source batch38175216709 at9a: Restrict Nat-to-Int natAbs simplification to natAbs_mul/natAbs_natCast; retain natural quotient. Compiler replay pending."
+        }
+      ]
     },
     {
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/RationalSupportCarrySkeleton.lean",
@@ -675,8 +695,13 @@
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/TotientMahlerDefect.lean",
       "source_sha256": "sha256:3eb11c02684d26ea3dd061be940709795edaa9d323dee0b2ad29797dcdf6ad53",
       "port_path": "Erdos249257/TotientMahlerDefect.lean",
-      "port_sha256": "sha256:3eb11c02684d26ea3dd061be940709795edaa9d323dee0b2ad29797dcdf6ad53",
-      "edits": []
+      "port_sha256": "sha256:79da35212ffda4c027a6ba8cf2380d2f8508e30457078686956abbb14923c5e1",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated strict source batch38175216709 at9a: Keep Matrix product typed while applying pinned mul_diagonal, then explicit Nat-to-Int quotient cast; expose Int-to-Rat map entries directly. Compiler replay pending."
+        }
+      ]
     },
     {
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/TotientTailCarryPeriod.lean",
@@ -710,8 +735,13 @@
       "source_path": "verification/FC257ReciprocalSupport/lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean",
       "source_sha256": "sha256:9a2bc4dcafece55cd76b0bfe1a6b1dc8e1ebabf570c7ea92f9e53fe7629464fa",
       "port_path": "ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean",
-      "port_sha256": "sha256:9a2bc4dcafece55cd76b0bfe1a6b1dc8e1ebabf570c7ea92f9e53fe7629464fa",
-      "edits": []
+      "port_sha256": "sha256:c46ddde1844a472700d51db73b1e0c59120e63e2737076b97b6e234abe6d2a9d",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated strict source batch38175216709 at9a: Discharge convert-generated instance equality with rfl before derivative cancellation ring proof. Compiler replay pending."
+        }
+      ]
     },
     {
       "source_path": "verification/FC257ReciprocalSupport/lean/ErdosProblems/Erdos1049/HermitePadeNoGo.lean",
@@ -766,8 +796,13 @@
       "source_path": "verification/FC257ReciprocalSupport/lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
       "source_sha256": "sha256:d284ca394ba94d6e43b2819757ce27eb86562949b525f8bbf81546d613abfcd1",
       "port_path": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-      "port_sha256": "sha256:d284ca394ba94d6e43b2819757ce27eb86562949b525f8bbf81546d613abfcd1",
-      "edits": []
+      "port_sha256": "sha256:a8f02cb7984ab628df1669a517d46ae77991f2ece9b3fc8d1c4b173b0940108d",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated strict source batch38175216709 at9a: Definitional conversion of shifted summability witnesses and Real additive instances. Compiler replay pending."
+        }
+      ]
     },
     {
       "source_path": "verification/FC257ReciprocalSupport/lean/ErdosProblems/Erdos257/DyadicShellSynchronisation.lean",
@@ -815,8 +850,13 @@
       "source_path": "verification/FC257ReciprocalSupport/lean/ErdosProblems/Erdos257/PaperCompleteR8/CountableMeans.lean",
       "source_sha256": "sha256:c885323ba42c79b086d6eb6ec8a277d791ff2bd15da9b58e771694f778c1f7f7",
       "port_path": "ErdosProblems/Erdos257/PaperCompleteR8/CountableMeans.lean",
-      "port_sha256": "sha256:c885323ba42c79b086d6eb6ec8a277d791ff2bd15da9b58e771694f778c1f7f7",
-      "edits": []
+      "port_sha256": "sha256:f92e13ebd198d4167ad805675aa9d6374e9032f5fef2ad3a07629846ae4be258",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated strict source batch38175216709 at9a: Discharge convert-generated instance equalities with rfl before product reassociation ring proof; apply same port across weighted/reciprocal copies. Compiler replay pending."
+        }
+      ]
     },
     {
       "source_path": "verification/FC257ReciprocalSupport/lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverPotentialBounds.lean",
@@ -1030,15 +1070,25 @@
       "source_path": "verification/FC257ReciprocalSupport/lean/ErdosProblems/Erdos68/PrimeUnitTranslator.lean",
       "source_sha256": "sha256:ceec4294ac834abb7850fe8732a5eea455328ade40bf9a5eb66c6f37cbef2c9a",
       "port_path": "ErdosProblems/Erdos68/PrimeUnitTranslator.lean",
-      "port_sha256": "sha256:ceec4294ac834abb7850fe8732a5eea455328ade40bf9a5eb66c6f37cbef2c9a",
-      "edits": []
+      "port_sha256": "sha256:dd39751621417c4b55b971efb5302f84f70578c0bd6323648aa69e77e62a6c68",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated strict source batch38175216709 at9a: Definitional subtype-tsum and Fin.cases conversions, unfold dotProduct in Cramer row sums, and use ring-hom map_det before scalar cast. Compiler replay pending."
+        }
+      ]
     },
     {
       "source_path": "verification/FC257ReciprocalSupport/lean/ErdosProblems/Erdos68/StrictSuccessorArithmetic.lean",
       "source_sha256": "sha256:e03320c57d2ae0d42f52564023f4d62d92e805696bf010d6b48c66ecb053064b",
       "port_path": "ErdosProblems/Erdos68/StrictSuccessorArithmetic.lean",
-      "port_sha256": "sha256:e03320c57d2ae0d42f52564023f4d62d92e805696bf010d6b48c66ecb053064b",
-      "edits": []
+      "port_sha256": "sha256:bb081eb7e7db7490facbffe0e44b3348aabb07ba5b20d38abbb269af24452999",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated strict source batch38175216709 at9a: Discharge Int divisibility instance equality before unchanged recursion and ring identity. Compiler replay pending."
+        }
+      ]
     },
     {
       "source_path": "verification/FC257ReciprocalSupport/research/adapters/FormalConjecturesVariants.lean",

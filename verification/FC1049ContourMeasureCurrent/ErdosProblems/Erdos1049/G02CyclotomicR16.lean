@@ -66,7 +66,7 @@ lemma logTailTerm_tail_boundR16 (q : ℝ) (hq0 : 0 < q) (hq1 : q < 1) (K : ℕ) 
     (summable_nat_add_iff K).2 (logTailTerm_summableR16 q hq0 hq1)
   have hg : HasSum (fun k : ℕ => q^(k+K+1)/(1-q)) (q^(K+1)/(1-q)^2) := by
     have h := (hasSum_geometric_of_lt_one hq0.le hq1).mul_left (q^(K+1)/(1-q))
-    convert h using 1
+    convert h using 1 <;> try rfl
     · funext k
       rw [show k+K+1=(K+1)+k by omega, pow_add]
       ring

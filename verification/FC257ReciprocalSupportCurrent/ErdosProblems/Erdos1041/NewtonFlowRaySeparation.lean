@@ -70,8 +70,7 @@ theorem newtonFlow_scaledValue_hasDerivAt_zero
     (hcritical : f' (z t) ≠ 0) :
     HasDerivAt (fun s => Complex.exp s * f (z s)) 0 t := by
   have hvalue := newtonFlow_value_hasDerivAt hf hz hcritical
-  convert Complex.hasDerivAt_exp t |>.mul hvalue using 1
-  ring
+  convert Complex.hasDerivAt_exp t |>.mul hvalue using 1 <;> first | rfl | ring
 
 /-- Two complex values lie on the same oriented ray from the origin. -/
 def SamePositiveRay (a b : ℂ) : Prop :=

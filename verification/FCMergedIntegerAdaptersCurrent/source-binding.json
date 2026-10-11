@@ -175,8 +175,13 @@
       "source_path": "verification/FCMergedIntegerAdapters/lean/Erdos249257/CertificateKernel.lean",
       "source_sha256": "sha256:90e9be09a22c200314c29c63afdb48969491ef30ff040b0910a2fbc0c049c38a",
       "port_path": "Erdos249257/CertificateKernel.lean",
-      "port_sha256": "sha256:90e9be09a22c200314c29c63afdb48969491ef30ff040b0910a2fbc0c049c38a",
-      "edits": []
+      "port_sha256": "sha256:0b23fd553b82ad04839c8976428d30bcf3cc44974419ef990cecd6b5d0b8b587",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated strict source batch38175216709 at9a: Transfer exact existing weighted Nat/semigroup divisibility multiplier-witness helper and ten uses; no assumption change. Compiler replay pending."
+        }
+      ]
     },
     {
       "source_path": "verification/FCMergedIntegerAdapters/lean/Erdos249257/GapFareyBound.lean",

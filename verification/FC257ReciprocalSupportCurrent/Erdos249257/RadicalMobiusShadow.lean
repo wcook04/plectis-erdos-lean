@@ -270,8 +270,8 @@ theorem mobiusNumerator_twicePrime_gcd {p : ℕ} (hp : p.Prime) (hp5 : 5 ≤ p) 
   have hx1 : 1 < 2 ^ p := Nat.one_lt_two_pow hp0.ne'
   have hDfactor :
       mersenne (2 * p) = (2 ^ p - 1) * (2 ^ p + 1) := by
-    simpa [mersenne, Nat.mul_comm 2 p, pow_mul, mul_comm] using
-      (sq_tsub_sq (2 ^ p) 1)
+    convert sq_tsub_sq (2 ^ p) 1 using 1 <;>
+      first | rfl | norm_num [mersenne, Nat.mul_comm 2 p, pow_mul, mul_comm]
   have hDrepr : mersenne (2 * p) = (2 ^ p) ^ 2 - 1 := by
     simp [mersenne, Nat.mul_comm 2 p, pow_mul]
   have hquot : mersenne (2 * p) / mersenne p = 2 ^ p + 1 := by
@@ -340,7 +340,7 @@ theorem mobiusNumerator_twicePrime_gcd {p : ℕ} (hp : p.Prime) (hp5 : 5 ≤ p) 
       have hthird : (3 : ℤ) ∣
           2 * ((mersenne (2 * p) / mersenne p : ℕ) : ℤ) := by
         exact dvd_mul_of_dvd_right (by exact_mod_cast h3quot) _
-      convert hfirst.sub (hsecond.add hthird) using 1
+      convert hfirst.sub (hsecond.add hthird) using 1 <;> try rfl
       push_cast [Nat.cast_sub hOneLe]
       ring
     let g := (mobiusNumerator (2 * p)).natAbs.gcd (mersenne (2 * p))
@@ -363,7 +363,7 @@ theorem mobiusNumerator_twicePrime_gcd {p : ℕ} (hp : p.Prime) (hp5 : 5 ≤ p) 
       linear_combination -(p : ℤ) * hthreeA'
     have hg3x : (g : ℤ) ∣ 3 * (2 * (2 ^ p : ℤ) + 1) := by
       have h := (hgD.mul_left (5 * (p : ℤ))).sub (hgM.mul_left 3)
-      convert h using 1
+      convert h using 1 <;> try rfl
       nlinarith [hidentity]
     have hDrepr' : (mersenne (2 * p) : ℤ) = (2 ^ p : ℤ) ^ 2 - 1 := by
       have hsquarepos : 0 < (2 ^ p) ^ 2 := pow_pos (by norm_num) _
@@ -372,7 +372,7 @@ theorem mobiusNumerator_twicePrime_gcd {p : ℕ} (hp : p.Prime) (hp5 : 5 ≤ p) 
       norm_num
     have hg9int : (g : ℤ) ∣ (9 : ℤ) := by
       have h := (hg3x.mul_right (2 * (2 ^ p : ℤ) - 1)).sub (hgD.mul_left 12)
-      convert h using 1
+      convert h using 1 <;> try rfl
       rw [hDrepr']
       ring
     have hg9 : g ∣ 9 := by exact_mod_cast hg9int

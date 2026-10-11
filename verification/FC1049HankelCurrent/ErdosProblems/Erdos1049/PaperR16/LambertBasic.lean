@@ -101,7 +101,7 @@ theorem lambert_hasSum_positive {K : Type*} [NormedField K] [CompleteSpace K]
     cases n with
     | zero => simp
     | succ n => exact False.elim (hn ⟨n, rfl⟩)
-  simpa only [Function.comp_apply, lambertTerm] using
+  simpa only [Function.comp_apply, lambertTerm, lambert] using
     (hi.hasSum_iff ho).2 (lambert_summable z hz).hasSum
 
 theorem lambert_eq_tsum_positive {K : Type*} [NormedField K] [CompleteSpace K]
@@ -184,9 +184,9 @@ lemma lambertTerm_log_bounds (r : ℝ) (hr : 0 < r ∧ r < 1) (n : ℕ) :
         field_simp [ne_of_gt hnR] <;> ring
   constructor
   · have h := mul_le_mul_of_nonneg_left hlo (pow_nonneg hr.1.le n)
-    convert h using 1 <;> dsimp [lambertTerm] <;> ring
+    simpa only [lambertTerm, div_eq_mul_inv, mul_add, mul_comm, mul_left_comm, mul_assoc] using h
   · have h := mul_le_mul_of_nonneg_left hup (pow_nonneg hr.1.le n)
-    convert h using 1 <;> dsimp [lambertTerm] <;> ring
+    simpa only [lambertTerm, div_eq_mul_inv, mul_add, mul_comm, mul_left_comm, mul_assoc] using h
 
 /-- Positive logarithmic mass on the real interval `(0,1)`. -/
 def logMass (r : ℝ) : ℝ := -Real.log (1 - r)
@@ -221,8 +221,8 @@ theorem lambert_log_error_bounds (r : ℝ) (hr : 0 < r ∧ r < 1) :
       ((1 - r) * lambert r) := (lambert_summable r hrnorm).hasSum.mul_left _
   have hl := logarithmic_hasSum r hr
   have hg : HasSum (fun n : ℕ => (1 - r) * r ^ n) (1 : ℝ) := by
-    convert (hasSum_geometric_of_lt_one hr.1.le hr.2).mul_left (1 - r) using 1
-    field_simp [show 1 - r ≠ 0 by linarith [hr.2]]
+    simpa [show 1 - r ≠ 0 by linarith [hr.2]] using
+      (hasSum_geometric_of_lt_one hr.1.le hr.2).mul_left (1 - r)
   have hlo := hasSum_le (fun n => (lambertTerm_log_bounds r hr n).1) hl hs
   have hup := hasSum_le (fun n => (lambertTerm_log_bounds r hr n).2) hs (hl.add hg)
   constructor <;> linarith

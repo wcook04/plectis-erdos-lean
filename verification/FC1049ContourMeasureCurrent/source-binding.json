@@ -109,8 +109,13 @@
       "source_path": "ErdosProblems/Erdos1049/G02CyclotomicR16.lean",
       "port_path": "ErdosProblems/Erdos1049/G02CyclotomicR16.lean",
       "source_sha256": "sha256:aee921bf897044b095e00253bbb7b0353f3e258276d9e76d3ea01b414b08ec78",
-      "port_sha256": "sha256:aee921bf897044b095e00253bbb7b0353f3e258276d9e76d3ea01b414b08ec78",
-      "edits": []
+      "port_sha256": "sha256:f80cc1bdec0656fea066a51fe9da37b5087f76a976831c98e30e55d622bfb599",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated strict source batch38175216709 at9a: Discharge convert-generated Real instance equality with rfl before unchanged function/scalar algebra bullets; matches authenticated arithmetic port. Compiler replay pending."
+        }
+      ]
     },
     {
       "source_path": "ErdosProblems/Erdos1049/G02RateCalculusR16.lean",

@@ -455,11 +455,15 @@
           "source_sha256": "sha256:b5c4afbbbcc2ac8e0b125ca15ad6c609e8bf6988fbc8153eefcae748b443655d"
         }
       ],
-      "port_sha256": "sha256:3a94b3cf1820057de0ac724d3f7ebf806a61445d02f06c29c84b0d02359322d7",
+      "port_sha256": "sha256:a617b95e555d2b569d4333f2aede061dd14ce0fc3ca9ee8081baad8032561ad0",
       "edits": [
         {
           "kind": "receiving_native_full_diagnostic_port",
           "reason": "Authenticated c5 native failure: disambiguate pinned ideal API, use new primesOver namespace, normalize function and reflexive conversion goals explicitly, use ordinary norm_num kernel proofs for opaque ZMod division."
+        },
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated strict source batch38175216709 at9a: Previous norm_num inverse port insufficient: use pinned ZMod.inv_eq_of_mul_eq_one with explicit finite product witness 1920*4=1 mod7, then decide the two finite multiplication equalities. Compiler replay pending."
         }
       ],
       "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
@@ -1239,8 +1243,13 @@
           "source_sha256": "sha256:b0574436a687c29a280c59fccf347815c4104191a2c1ec80e24bfd6d46132108"
         }
       ],
-      "port_sha256": "sha256:b0574436a687c29a280c59fccf347815c4104191a2c1ec80e24bfd6d46132108",
-      "edits": [],
+      "port_sha256": "sha256:d9b056d1a1ad4926f0d9a4a23283caa0b1b16736fac582f7ba2a5ebbed34dc86",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated strict source batch38175216709 at9a: Use definitional conversion for existential Tendsto quotient/error witness. Compiler replay pending."
+        }
+      ],
       "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
     },
     {

@@ -858,8 +858,11 @@ theorem paritySeparatedMatrix_det_ne_zero
   have hfactor :
       (fun i j => (M i j : ℤ)) = B * D := by
     ext i j
-    simp only [Matrix.mul_apply, D, Matrix.diagonal_apply, mul_ite, mul_zero,
-      Finset.sum_ite_eq', Finset.mem_univ, if_true, B]
+    change (M i j : ℤ) =
+      (B * Matrix.diagonal (fun j => ((2 ^ depth j : ℕ) : ℤ))) i j
+    rw [Matrix.mul_diagonal]
+    change (M i j : ℤ) =
+      ((M i j / 2 ^ depth j : ℕ) : ℤ) * ((2 ^ depth j : ℕ) : ℤ)
     exact_mod_cast (Nat.div_mul_cancel (hdiv i j)).symm
   have hdetD : Matrix.det D ≠ 0 := by
     simp only [D, Matrix.det_diagonal]
@@ -873,7 +876,8 @@ theorem paritySeparatedMatrix_det_ne_zero
       (Int.castRingHom ℚ).mapMatrix (fun i j => (M i j : ℤ)) =
         (fun i j => (M i j : ℚ)) := by
     ext i j
-    simp
+    change ((M i j : ℤ) : ℚ) = (M i j : ℚ)
+    simp only [Int.cast_natCast]
   rw [hmatrix, hzero] at hmap
   exact hdetInt (Int.cast_eq_zero.mp hmap)
 

@@ -100,7 +100,7 @@ theorem summable_weighted_kernel_family {ι : Type*}
   · intro i
     have h := mul_le_mul_of_nonneg_left
       (kernelWeight_le_pointwise_majorant (B i) (hB i) (d i) N (hd i)) (hc i)
-    convert h using 1 <;> ring
+    convert h using 1 <;> first | rfl | ring
 
 /-- Scalar linearity is exact, including a zero-size mean. -/
 theorem dyadicMean_const_mul (L R M : ℕ) (c : ℝ) (f : ℕ → ℝ) :
@@ -133,7 +133,7 @@ theorem dyadicMean_tsum_kernel_le {ι : Type*}
     rw [dyadicMean_const_mul]
     have h := mul_le_mul_of_nonneg_left
       (dyadicMean_kernelWeight_le (B i) (hB i) (hB2 i) L (d i) R M hL (hd i) hM) (hc i)
-    convert h using 1 <;> dsimp [K] <;> ring
+    convert h using 1 <;> first | rfl | ring
   have hleft : Summable (fun i => dyadicMean L R M (u i)) := by
     refine Summable.of_nonneg_of_le ?_ hpoint hdom
     intro i

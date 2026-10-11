@@ -479,8 +479,13 @@
       "source_path": "ErdosProblems/Erdos257/PaperCompleteR8/CountableMeans.lean",
       "source_sha256": "sha256:5f5178c8ae09c1cbb8267345ebf4bc4f0348549f3193c65b8bc5daa046a633c6",
       "port_path": "ErdosProblems/Erdos257/PaperCompleteR8/CountableMeans.lean",
-      "port_sha256": "sha256:5f5178c8ae09c1cbb8267345ebf4bc4f0348549f3193c65b8bc5daa046a633c6",
-      "edits": []
+      "port_sha256": "sha256:c1ffc082ae8c14c54b1d942e1dfdd005dfe66d6b402d933bc4c485b0eb6f019a",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated strict source batch38175216709 at9a: Discharge convert-generated instance equalities with rfl before product reassociation ring proof; apply same port across weighted/reciprocal copies. Compiler replay pending."
+        }
+      ]
     },
     {
       "source_path": "ErdosProblems/Erdos257/PaperCompleteR8/CoverPotentialBounds.lean",

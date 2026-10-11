@@ -86,7 +86,7 @@ theorem pow_dvd_dilation_strictSuccessor_iff
       ring
     have hsmallDvd : p ∣ 1 - b := by
       have hsub := hpDvd.sub hbaseDvd
-      convert hsub using 1
+      convert hsub using 1 <;> try rfl
       rw [hrec]
       ring
     have hbSubDvd : p ∣ b - 1 := by

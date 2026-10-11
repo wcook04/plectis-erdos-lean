@@ -159,15 +159,25 @@
       "source_path": "ErdosProblems/Erdos1049/QProductBoundsR10.lean",
       "source_sha256": "sha256:83bcb815312663d6a1453a642ff108529713c13a7fe7ad165301cd8727fc0e82",
       "port_path": "ErdosProblems/Erdos1049/QProductBoundsR10.lean",
-      "port_sha256": "sha256:83bcb815312663d6a1453a642ff108529713c13a7fe7ad165301cd8727fc0e82",
-      "edits": []
+      "port_sha256": "sha256:18c9a7eaf84d2a73fa5e1cc0a3efdbdbb3f04dea694fd3e842393631186c857a",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated strict source batch38175216709 at9a: Direct simpa of geometric HasSum witness, reusing only matched contour proof step. Compiler replay pending."
+        }
+      ]
     },
     {
       "source_path": "ErdosProblems/Erdos1049/PaperR16/LambertBasic.lean",
       "source_sha256": "sha256:638fa1dd20d03dfd64301ccb940c2ef4fe00a81b6876dd221ec658155076799b",
       "port_path": "ErdosProblems/Erdos1049/PaperR16/LambertBasic.lean",
-      "port_sha256": "sha256:638fa1dd20d03dfd64301ccb940c2ef4fe00a81b6876dd221ec658155076799b",
-      "edits": []
+      "port_sha256": "sha256:3d9d01e4cb44921328e384d38da0bf1a86c30bade64faa470d65c14783d9ebba",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated strict source batch38175216709 at9a: Unfold Lambert sum endpoint; direct multiplicative and geometric HasSum normalization replaces inert cleanup tactics. Compiler replay pending."
+        }
+      ]
     },
     {
       "source_path": "ErdosProblems/Erdos1049/PaperCompleteR21/SharpFixedBaseShort.lean",
@@ -215,8 +225,13 @@
       "source_path": "ErdosProblems/Erdos1049/PaperCompleteR21/RogersFactorisation.lean",
       "source_sha256": "sha256:036acfaed46e8014eb13da393ec98ccc49048df46e441db91dab5409c3d916c0",
       "port_path": "ErdosProblems/Erdos1049/PaperCompleteR21/RogersFactorisation.lean",
-      "port_sha256": "sha256:036acfaed46e8014eb13da393ec98ccc49048df46e441db91dab5409c3d916c0",
-      "edits": []
+      "port_sha256": "sha256:931a5705bb5546eb8f7e56ca79675958aea1a09a6dff6936bf340c3e8675a9ba",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated strict source batch38175216709 at9a: Dispatch instance equality to rfl; expose embedding applications for Nat omega arithmetic; qualify current Finset.HasAntidiagonal.mem_antidiagonal to remove ambiguity and arithmetic cascades. Compiler replay pending."
+        }
+      ]
     },
     {
       "source_path": "ErdosProblems/Erdos1049/PaperR20/CoefficientPencil.lean",
