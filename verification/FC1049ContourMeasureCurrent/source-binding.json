@@ -64,8 +64,13 @@
       "source_path": "ErdosProblems/Erdos1049/CyclotomicCircleHeightR13.lean",
       "port_path": "ErdosProblems/Erdos1049/CyclotomicCircleHeightR13.lean",
       "source_sha256": "sha256:e3584535481bbdc6aba32f50edbaedc62a7facc1211ffeed50943493e117ea9f",
-      "port_sha256": "sha256:e3584535481bbdc6aba32f50edbaedc62a7facc1211ffeed50943493e117ea9f",
-      "edits": []
+      "port_sha256": "sha256:d99948a72130f5206b7a6f5635b10748527728e5c5022b9d47b0d321ff39cca6",
+      "edits": [
+        {
+          "kind": "receiving_mathlib_api_port",
+          "reason": "Native c513 run38171885674: current Mathlib uses prod_le_prod with the same nonnegative/pointwise premises; replace inert convert/simp sequence with direct simpa of the geometric HasSum witness."
+        }
+      ]
     },
     {
       "source_path": "ErdosProblems/Erdos1049/FiniteFourierCoefficientR13.lean",
@@ -270,8 +275,13 @@
       "source_path": "ErdosProblems/Erdos1049/QProductBoundsR10.lean",
       "port_path": "ErdosProblems/Erdos1049/QProductBoundsR10.lean",
       "source_sha256": "sha256:5e8f71b6748054d46f5abdafb10255ff7eb0fb010821904217775c2a39bce438",
-      "port_sha256": "sha256:5e8f71b6748054d46f5abdafb10255ff7eb0fb010821904217775c2a39bce438",
-      "edits": []
+      "port_sha256": "sha256:18c9a7eaf84d2a73fa5e1cc0a3efdbdbb3f04dea694fd3e842393631186c857a",
+      "edits": [
+        {
+          "kind": "receiving_mathlib_api_port",
+          "reason": "Native c513 run38171885674: current Mathlib uses prod_le_prod with the same nonnegative/pointwise premises; replace inert convert/simp sequence with direct simpa of the geometric HasSum witness."
+        }
+      ]
     },
     {
       "source_path": "ErdosProblems/Erdos1049/QuadraticMeasureR10.lean",

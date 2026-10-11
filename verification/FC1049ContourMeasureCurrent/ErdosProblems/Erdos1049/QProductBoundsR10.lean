@@ -91,7 +91,7 @@ lemma hasSum_qPochhammer_log_majorant {a q : ℝ}
     HasSum (fun k : ℕ => a * q ^ k / (1 - a))
       (a / ((1 - a) * (1 - q))) := by
   have h := (hasSum_geometric_of_lt_one hq0 hq1).mul_left (a / (1 - a))
-  convert h using 1 <;> simp [div_eq_mul_inv, mul_comm, mul_left_comm, mul_assoc]
+  simpa [div_eq_mul_inv, mul_comm, mul_left_comm, mul_assoc] using h
 
 /-- Absolute logarithmic convergence proves that no limiting product vanishes. -/
 theorem summable_log_qPochhammer {a q : ℝ}
@@ -198,7 +198,7 @@ theorem shifted_qPochhammer_bounds {q : ℝ} (hq0 : 0 < q) (hq1 : q < 1)
   constructor
   · apply (qPochhammerInfinity_le_finite hq0.le hq1 hq0.le hq1 n).trans
     unfold qPochhammerFinite
-    apply Finset.prod_le_prod₀
+    apply Finset.prod_le_prod
     · intro k hk
       have h : q * q ^ k ≤ q := by
         simpa using mul_le_mul_of_nonneg_left (pow_le_one₀ hq0.le hq1.le) hq0.le
