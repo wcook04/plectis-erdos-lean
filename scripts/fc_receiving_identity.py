@@ -177,9 +177,21 @@ def execute(args):
         real_exporter.chmod(0o755)
         proxy = prefix / "bin/fc-receiving-exporter-proxy"
         proxy_source = work / "exporter-proxy.go"
-        proxy_source.write_text('package main\nimport("bytes";"crypto/sha256";"fmt";"os";"os/exec")\nfunc main(){c:=exec.Command(' + json.dumps(str(real_exporter)) + ',os.Args[1:]...); var b bytes.Buffer;c.Stdout=&b;c.Stderr=os.Stderr;err:=c.Run();fmt.Fprintf(os.Stderr,"FC_EXPORT_BYTES %s sha256:%x\\n",os.Args[1],sha256.Sum256(b.Bytes()));os.Stdout.Write(b.Bytes());if err!=nil {if e,ok:=err.(*exec.ExitError);ok{os.Exit(e.ExitCode())};os.Exit(1)}}\n')
+        proxy_source.write_text('package main\nimport "C"\nimport("bytes";"crypto/sha256";"fmt";"os";"os/exec")\nfunc main(){c:=exec.Command(' + json.dumps(str(real_exporter)) + ',os.Args[1:]...); var b bytes.Buffer;c.Stdout=&b;c.Stderr=os.Stderr;err:=c.Run();fmt.Fprintf(os.Stderr,"FC_EXPORT_BYTES %s sha256:%x\\n",os.Args[1],sha256.Sum256(b.Bytes()));os.Stdout.Write(b.Bytes());if err!=nil {fmt.Fprintf(os.Stderr,"FC_EXPORT_CHILD_ERROR %v\\n",err);if e,ok:=err.(*exec.ExitError);ok{os.Exit(e.ExitCode())};os.Exit(1)}}\n')
         capture(proxy_source, "exporter-proxy.go", out)
-        run(["go", "build", "-o", proxy, proxy_source], source, out / "exporter-proxy-build.log", dict(os.environ, CGO_ENABLED="0"))
+        run(["go", "build", "-o", proxy, proxy_source], source, out / "exporter-proxy-build.log", dict(os.environ, CGO_ENABLED="1"))
+        # Both dynamic executables must use the same system loader. Stock
+        # landrun --ldd then grants that loader through the native proxy itself.
+        def elf_interpreter(binary, name):
+            header = run(["readelf", "--program-headers", binary], source, out / (name + "-elf.log"))
+            match = re.search(r"Requesting program interpreter: ([^\]]+)", header.stdout.decode())
+            if not match:
+                raise RuntimeError("trusted executable lacks a dynamic ELF interpreter: " + name)
+            return match[1]
+        proxy_interpreter = elf_interpreter(proxy, "exporter-proxy")
+        if proxy_interpreter != elf_interpreter(real_exporter, "lean4export"):
+            raise RuntimeError("proxy and trusted exporter use different ELF interpreters")
+        report["exporter_proxy_elf_interpreter"] = proxy_interpreter
         if digest(real_exporter.read_bytes()) != digest(exporter.read_bytes()):
             raise RuntimeError("copied trusted exporter changed")
         report["exporter_proxy_sha256"] = digest(proxy.read_bytes())
@@ -189,6 +201,28 @@ def execute(args):
         report["tool_sources"]["lean4export"]["build_toolchain"] = PIN
         report["tools"] = {name + "_commit": rev for name, (_, rev) in TOOLS.items()}
         report["tools"]["lean4export_build_toolchain"] = PIN
+        sys.path.insert(0, str(work / "pipeline/scripts"))
+        from verify_submission import systemd_command
+        def compare(config, log_name, expect_success=True, project=receiving):
+            path = out / (log_name + ".json")
+            path.write_text(json.dumps(config, indent=2) + "\n")
+            argv = systemd_command([str(prefix / "bin/lake"), "env", str(comparator), str(path)], cwd=project, environment=env, timeout=19800)
+            proc = run(argv, project, out / (log_name + ".log"), env, check=False)
+            text = proc.stdout.decode(errors="replace")
+            if expect_success and (proc.returncode or "Your solution is okay!" not in text or "Lean default kernel accepts the solution" not in text or "nanoda kernel accepts the solution" not in text):
+                raise RuntimeError(f"{log_name}: stock Comparator rejected")
+            return proc, text
+        # Exercise the exact stock confinement launcher on trusted Init-only
+        # source before hydrating/building FC or executing candidate source.
+        smoke = work / "trusted-launcher-smoke"
+        smoke.mkdir(exist_ok=False)
+        (smoke / "lean-toolchain").write_text(PIN + "\n")
+        (smoke / "lakefile.toml").write_text('name = "trusted_receiving_smoke"\n[[lean_lib]]\nname = "FCReceivingSmoke"\n')
+        smoke_source = smoke / "FCReceivingSmoke.lean"
+        smoke_source.write_text('import Init\ntheorem FCReceivingSmoke.smoke : True := True.intro\n')
+        capture(smoke_source, "trusted-launcher-smoke.lean", out)
+        compare({"challenge_module": "FCReceivingSmoke", "solution_module": "FCReceivingSmoke", "theorem_names": ["FCReceivingSmoke.smoke"], "permitted_axioms": AXIOMS, "enable_nanoda": True}, "trusted-launcher-smoke", project=smoke)
+        report["trusted_launcher_smoke"] = {"status": "passed", "source": "trusted_helper_init_only", "candidate_executed": False}
         # Add only library search roots to the trusted receiving Lakefile. The actual
         # FC source and its toolchain/manifest are preserved byte for byte.
         lake = receiving / "lakefile.toml"
@@ -236,17 +270,6 @@ def execute(args):
             return digest(proc.stdout)
         challenge_digest = export(challenge_module, "challenge.export")
         report["challenge_export"] = {"path": "challenge.export", "sha256": challenge_digest, "captured_before_solution": True}
-        sys.path.insert(0, str(work / "pipeline/scripts"))
-        from verify_submission import systemd_command
-        def compare(config, log_name, expect_success=True):
-            path = out / (log_name + ".json")
-            path.write_text(json.dumps(config, indent=2) + "\n")
-            argv = systemd_command([str(prefix / "bin/lake"), "env", str(comparator), str(path)], cwd=receiving, environment=env, timeout=19800)
-            proc = run(argv, receiving, out / (log_name + ".log"), env, check=False)
-            text = proc.stdout.decode(errors="replace")
-            if expect_success and (proc.returncode or "Your solution is okay!" not in text or "Lean default kernel accepts the solution" not in text or "nanoda kernel accepts the solution" not in text):
-                raise RuntimeError(f"{log_name}: stock Comparator rejected")
-            return proc, text
         config = {"challenge_module": challenge_module, "solution_module": solution_module, "theorem_names": [declaration], "permitted_axioms": AXIOMS, "enable_nanoda": True}
         _, actual_log = compare(config, "actual-receiving-comparator")
         actual_exports = dict(re.findall(r"^FC_EXPORT_BYTES (\S+) (sha256:[0-9a-f]{64})$", actual_log, re.M))
