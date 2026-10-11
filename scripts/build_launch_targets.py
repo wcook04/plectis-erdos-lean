@@ -307,7 +307,7 @@ def build_targets(targets: Sequence[str], report_path: Path, run: Callable | Non
                   metadata: dict | None = None, *, plan: dict | None = None,
                   root: Path = ROOT, keep_going: bool = True, target_budget: float | None = None,
                   total_budget: float = 18000, heartbeat: float = 60,
-                  module_budget: float = 3600) -> int:
+                  module_budget: float = 3600, warning_clean: bool = False) -> int:
     if not targets or any(not MODULE.fullmatch(t) for t in targets):
         raise ValueError('refusing empty or invalid target replay')
     rows = [dict(target=t, status='not-attempted', returncode=None,
@@ -315,6 +315,8 @@ def build_targets(targets: Sequence[str], report_path: Path, run: Callable | Non
     report = {'schema_version': 2, 'status': 'running', 'targets': rows,
               'budgets': {'target_seconds': target_budget, 'total_seconds': total_budget,
                           'module_seconds': module_budget}}
+    if warning_clean:
+        report['warning_clean'] = True
     if plan:
         report['plan'] = plan
     if metadata is not None:
@@ -330,11 +332,11 @@ def build_targets(targets: Sequence[str], report_path: Path, run: Callable | Non
             print(f"[build] {i+1}/{len(rows)} {row['phase']}: {row['target']}",flush=True)
             try:
                 if run is not None:
-                    result={'returncode':run(['lake','build',row['target']],check=False).returncode}
+                    result={'returncode':run(['lake', *(['--wfail'] if warning_clean else []), 'build', row['target']],check=False).returncode}
                 else:
                     def progress(errors):
                         row['errors']=list(errors); save_report(report_path,report)
-                    result=run_build(['lake','build',row['target']],root=root,
+                    result=run_build(['lake', *(['--wfail'] if warning_clean else []), 'build', row['target']],root=root,
                                      log=report_path.parent/'convenience-logs'/f'{i:03d}-{row["target"]}.log.gz',
                                      timeout=min(target_budget or total_budget,deadline-time.monotonic()),heartbeat=heartbeat,
                                      module_budget=module_budget,progress=progress)
@@ -385,6 +387,7 @@ def main() -> int:
     parser.add_argument('--focused-only',action='store_true')
     parser.add_argument('--release',action='store_true',help='build the independently declared release population')
     parser.add_argument('--keep-going',action='store_true',help='collect later launch-target failures too')
+    parser.add_argument('--wfail',action='store_true',help='treat compiler warnings as failures')
     parser.add_argument('--plan',action='store_true',help='write admission plan without invoking Lean')
     parser.add_argument('--target-budget',type=positive,help='optional aggregate target cap; by default only module and whole-run budgets apply')
     parser.add_argument('--total-budget',type=positive,default=18000)
@@ -400,13 +403,14 @@ def main() -> int:
             raise ValueError('--lakefile cannot override release selection')
         if args.lakefile:
             targets=read_targets(args.lakefile)
-            return build_targets(targets,report,root=root,keep_going=args.keep_going)
+            return build_targets(targets,report,root=root,keep_going=args.keep_going,warning_clean=args.wfail)
         plan=make_plan(root,args.changed_from,args.focus,args.focused_only,args.release)
         if args.plan:
             save_report(report,{'status':'planned','plan':plan});print(json.dumps(plan,indent=2));return 0
         return build_targets([row['target'] for row in plan['targets']],report,plan=plan,
                              root=root,keep_going=args.keep_going,target_budget=args.target_budget,
-                             total_budget=args.total_budget,heartbeat=args.heartbeat,module_budget=args.module_budget)
+                             total_budget=args.total_budget,heartbeat=args.heartbeat,module_budget=args.module_budget,
+                             warning_clean=args.wfail)
     except (OSError,ValueError,subprocess.SubprocessError,InterruptedError) as error:
         save_report(report,{'schema_version':2,'status':'incomplete','error':str(error)})
         print(f'::error::{annotation(str(error))}',file=sys.stderr);return 2
