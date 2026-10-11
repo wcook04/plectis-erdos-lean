@@ -1,0 +1,96 @@
+{
+  "schema": "fc6577_receiving_port/1",
+  "public_base_commit": "5527995cf9375079b8d30bf3121132704f164ad9",
+  "package_path": "verification/FC249CountableIndependenceCurrent",
+  "receiving_repository": "google-deepmind/formal-conjectures",
+  "receiving_head": "38f435dab7ca2da901588a5e91e93452eaba8910",
+  "receiving_file": "FormalConjectures/ErdosProblems/249.lean",
+  "receiving_file_sha256": "sha256:2e56b663911a118736a4c7f86eb95f0309e880906d7e33002438439cfb71d194",
+  "receiving_pins": {
+    "lean": "leanprover/lean4:v4.33.1",
+    "mathlib": "0df444a360eaa60ab8c11dca51a86af692955474"
+  },
+  "source_repository": "wcook04/plectis-erdos-lean",
+  "source_ref": "d85765c9ead139e1c562c93e675ad92616923f6b",
+  "source_pins": {
+    "lean": "leanprover/lean4:v4.35.0-rc2",
+    "mathlib": "065356127b1dc0016f66b7283ce0ce2c4055aa55"
+  },
+  "source_files": [
+    {
+      "source_path": "ErdosProblems/Erdos249/FiniteDilationJointValue.lean",
+      "port_path": "ErdosProblems/Erdos249/FiniteDilationJointValue.lean",
+      "source_sha256": "sha256:11b5db95200ee1a37afd1b17b0c2d2050616c954e395069cc6c00438b7d64ab6",
+      "port_sha256": "sha256:11b5db95200ee1a37afd1b17b0c2d2050616c954e395069cc6c00438b7d64ab6",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos249/FiniteDilationLeastResidueRational.lean",
+      "port_path": "ErdosProblems/Erdos249/FiniteDilationLeastResidueRational.lean",
+      "source_sha256": "sha256:f0a9b432e16f06b5df2d3131081ea0d65fb0d488c3fa1306401fe7fa4ff01eb1",
+      "port_sha256": "sha256:f0a9b432e16f06b5df2d3131081ea0d65fb0d488c3fa1306401fe7fa4ff01eb1",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos249/FiniteDilationLinearIndependent.lean",
+      "port_path": "ErdosProblems/Erdos249/FiniteDilationLinearIndependent.lean",
+      "source_sha256": "sha256:4f3add32aa35f7bc3dff73d6cb97d7c0aaa84517245e421e2e11d0857b92bfde",
+      "port_sha256": "sha256:4f3add32aa35f7bc3dff73d6cb97d7c0aaa84517245e421e2e11d0857b92bfde",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos249/FiniteDilationPulseCore.lean",
+      "port_path": "ErdosProblems/Erdos249/FiniteDilationPulseCore.lean",
+      "source_sha256": "sha256:41eae0aab387aedf79686ffaa838dcc9624048a69ea5f9a18a0d2c58d7102005",
+      "port_sha256": "sha256:41eae0aab387aedf79686ffaa838dcc9624048a69ea5f9a18a0d2c58d7102005",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos249/FiniteDilationSeriesTransport.lean",
+      "port_path": "ErdosProblems/Erdos249/FiniteDilationSeriesTransport.lean",
+      "source_sha256": "sha256:e49ff2f543e0f47dc2da0614a2d928f3c701c8b42016edaac13775b8d2515bba",
+      "port_sha256": "sha256:e49ff2f543e0f47dc2da0614a2d928f3c701c8b42016edaac13775b8d2515bba",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos249/PaperCompleteR7/ArbitraryBaseIsolatedPulse.lean",
+      "port_path": "ErdosProblems/Erdos249/PaperCompleteR7/ArbitraryBaseIsolatedPulse.lean",
+      "source_sha256": "sha256:a8416054c690647f1323043ff818054ad40cb98161671aa474a8a25aff96b4b0",
+      "port_sha256": "sha256:a8416054c690647f1323043ff818054ad40cb98161671aa474a8a25aff96b4b0",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos249/PaperCompleteR7/IntegerRadixObservables.lean",
+      "port_path": "ErdosProblems/Erdos249/PaperCompleteR7/IntegerRadixObservables.lean",
+      "source_sha256": "sha256:0c9f1c6d1d20648d16dada2f44f3c7cf35491beb47766a4f7b791580bd564a82",
+      "port_sha256": "sha256:0c9f1c6d1d20648d16dada2f44f3c7cf35491beb47766a4f7b791580bd564a82",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos249/PaperCompleteR7/RationalObservableClassification.lean",
+      "port_path": "ErdosProblems/Erdos249/PaperCompleteR7/RationalObservableClassification.lean",
+      "source_sha256": "sha256:8126b3a5419f134e75e0cc74155273ec5223c0fca90acdf9c83ebcc2b939e953",
+      "port_sha256": "sha256:8126b3a5419f134e75e0cc74155273ec5223c0fca90acdf9c83ebcc2b939e953",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos249/ResidueClassTotientSeries.lean",
+      "port_path": "ErdosProblems/Erdos249/ResidueClassTotientSeries.lean",
+      "source_sha256": "sha256:c3f826137da5f068267a9c8a810b96162543404a0ade10788fefc658d7607e65",
+      "port_sha256": "sha256:c3f826137da5f068267a9c8a810b96162543404a0ade10788fefc658d7607e65",
+      "edits": []
+    },
+    {
+      "source_path": "Solutions/ExternalVerification249CountableDilationIndependence.lean",
+      "port_path": "Solutions/ExternalVerification249CountableDilationIndependence.lean",
+      "source_sha256": "sha256:49101768b1485eecbeba6d9936af765389f2ad8bb81554a4dc5f6d7cdae0665b",
+      "port_sha256": "sha256:49101768b1485eecbeba6d9936af765389f2ad8bb81554a4dc5f6d7cdae0665b",
+      "edits": []
+    }
+  ],
+  "exact_receiving_statement": "theorem erdos_249.variants.least_residue_dilation_independence\n    (m B : \u2115) (hm : 3 \u2264 m) (hB : 2 \u2264 B) :\n    LinearIndependent \u211a (fun d : \u2115 =>\n      if d = 0 then (1 : \u211d) else\n        \u2211' n : \u2115, ((Nat.totient (n + 1) % m : \u2115) : \u211d) /\n          ((B ^ d : \u2115) : \u211d) ^ (n + 1))",
+  "solution_sha256": "sha256:ee86005e84f1b96409c4a60e532018647b3ba54de2a5b71fc20a5e33240282e2",
+  "validation": "prepared_unverified",
+  "challenge_boundary": "Actual receiving FC export in separate clean receiving checkout before candidate compilation. No copied Challenge in proof package.",
+  "shared_port_plan": "After FC6579 primary port terminal, apply its reviewed2core module changes to RationalObservableClassification and ResidueClassTotientSeries, preserving original source digests and recording actual port edits."
+}

@@ -1,0 +1,18 @@
+name = "fc1049_contour_measure_current"
+defaultTargets = ["FC6527Solution"]
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.33.1"
+
+[[lean_lib]]
+name = "ErdosProblems"
+globs = ["ErdosProblems.+"]
+
+[[lean_lib]]
+name = "Solutions"
+globs = ["Solutions.+"]
+
+[[lean_lib]]
+name = "FC6527Solution"
