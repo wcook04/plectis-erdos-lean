@@ -20,6 +20,24 @@ use the [mathematics reading room](https://wcook04.github.io/plectis/maths/). En
 here are bound to this repository commit; the pinned release snapshots below
 retain their own commits and toolchains.
 
+## Formal Conjectures review
+
+As observed on 12 October 2026, [FC PR #6579](https://github.com/google-deepmind/formal-conjectures/pull/6579)
+is open. Bo Cowgill [approved head `a6a2e0e1`](https://github.com/google-deepmind/formal-conjectures/pull/6579#pullrequestreview-5493193130)
+for the rational dyadic totient-observable statement, including its positive indexing
+and `k = 1` case. The review relies on the author's [receiving-identity run](https://github.com/wcook04/plectis-erdos-lean/actions/runs/38173617731),
+which checks that actual FC declaration and [proof revision `04e14917`](https://github.com/wcook04/plectis-erdos-lean/tree/04e14917b7c9296feabf6674f8e596a2c3ec9082/verification/FC249RationalObservableCurrent)
+in Lean 4.33.1 with FC's Mathlib pin. The run records matching statements and
+dependencies, Lean and NanoDa acceptance with only `propext`, `Classical.choice`
+and `Quot.sound` permitted, and successful positive and mismatch controls.
+The reviewer did not independently rerun this revision.
+
+The [contribution record](https://github.com/wcook04/plectis-erdos/blob/main/docs/verification/FORMAL_CONJECTURES_CROSSWALK.md)
+lists submissions and reviewed revisions. The [earlier independent Lean 4.29.1 review](https://github.com/google-deepmind/formal-conjectures/pull/6579#pullrequestreview-5435222238)
+and [failed cross-version comparison](https://github.com/google-deepmind/formal-conjectures/pull/6579#issuecomment-6112373414)
+remain evidence for their historical heads. The latest approval applies to the
+named statement and revision. The original unreduced-totient question remains open.
+
 ## Palomar publication surface
 
 Palomar (https://palomar-registry.org) checks Lean proofs with Comparator and independent
@@ -238,7 +256,8 @@ A Lean proof establishes that the Solution proves the theorem the Challenge stat
 on the axioms the audit prints. It does not establish that a result is new, that it
 is important, or that anyone has reviewed it. Where the literature does not settle
 novelty, the metadata records novelty as unassessed and makes no priority claim.
-No human mathematical peer review is claimed for any entry in this release.
+The Formal Conjectures review above concerns its exact upstream statement and
+pinned proof. It does not establish review of every Palomar entry in this release.
 
 ## Authorship
 
