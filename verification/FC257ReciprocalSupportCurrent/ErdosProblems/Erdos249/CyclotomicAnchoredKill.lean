@@ -196,10 +196,15 @@ theorem carryOrbit_modEq_neg_totientBlock_shift
               (Nat.totient (N + i + 1) : ℤ) :=
         dvd_mul_of_dvd_left hpMZ _
       have hcombined := dvd_add hdouble hmultiple
-      convert hcombined using 1
-      · rw [show N + (i + 1) = (N + i) + 1 by omega,
+      have hdividend :
+          -totientBlock H (N + (i + 1)) - carryOrbit H N d (i + 1) =
+            2 * (-totientBlock H (N + i) - carryOrbit H N d i) +
+              ((2 : ℤ) ^ H - 1) * (Nat.totient (N + i + 1) : ℤ) := by
+        rw [show N + (i + 1) = (N + i) + 1 by omega,
           totientBlock_succ, carryOrbit]
         ring
+      rw [hdividend]
+      exact hcombined
 
 /-- **Product-modulus four-to-one collapse at a free basepoint.**  Under the
 large-prime geometry `N < p` and `H ≤ p-1`, two states in the same
@@ -2341,8 +2346,15 @@ theorem fullMersenneBlockResidue_succ
         (M : ℤ) ∣ ((2 : ℤ) ^ H - 1) *
           (Nat.totient (N + 1) : ℤ) :=
       dvd_mul_of_dvd_left hMZ _
-    convert dvd_neg.mpr hmultiple using 1
-    ring
+    have hdividend :
+        (2 * (-totientBlock H N) - deltaTotient H (N + 1)) -
+          -(2 * totientBlock H N -
+            ((2 : ℤ) ^ H - 1) * (Nat.totient (N + 1) : ℤ) +
+            deltaTotient H (N + 1)) =
+          -(((2 : ℤ) ^ H - 1) * (Nat.totient (N + 1) : ℤ)) := by
+      ring
+    rw [hdividend]
+    exact dvd_neg.mpr hmultiple
   have hreduce :
       Int.ModEq (M : ℤ)
         (2 * (-totientBlock H N) - deltaTotient H (N + 1))
@@ -2404,8 +2416,15 @@ theorem fullMersenneBlockCenteredLift_succ_modEq
         (M : ℤ) ∣ ((2 : ℤ) ^ H - 1) *
           (Nat.totient (N + 1) : ℤ) :=
       dvd_mul_of_dvd_left hMZ _
-    convert dvd_neg.mpr hmultiple using 1
-    ring
+    have hdividend :
+        (2 * (-totientBlock H N) - deltaTotient H (N + 1)) -
+          -(2 * totientBlock H N -
+            ((2 : ℤ) ^ H - 1) * (Nat.totient (N + 1) : ℤ) +
+            deltaTotient H (N + 1)) =
+          -(((2 : ℤ) ^ H - 1) * (Nat.totient (N + 1) : ℤ)) := by
+      ring
+    rw [hdividend]
+    exact dvd_neg.mpr hmultiple
   have hright :
       Int.ModEq (M : ℤ)
         (2 * (-totientBlock H N) - deltaTotient H (N + 1))
@@ -2703,7 +2722,7 @@ theorem survivorKill_of_certifiedKill
   have hzmod :
       (-z) % (2 : ℤ) ^ L =
         windowDiscrepancy H N L % (2 : ℤ) ^ L := by
-    simpa [z] using hneg
+    simpa only [z, Int.ModEq, neg_neg] using hneg
   exact
     no_endpointSurvivor_of_certifiedKill hcert (-z)
       ⟨by simpa [add_assoc, add_left_comm, add_comm] using hzabs, hzmod⟩

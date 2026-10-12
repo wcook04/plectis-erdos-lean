@@ -421,8 +421,13 @@
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/HalfCylinderFatalGapRightTail.lean",
       "source_sha256": "sha256:42c43b95b21cd9ab116eb71b42e7078e413b603aded1f2f09a111f612ac0506f",
       "port_path": "Erdos249257/HalfCylinderFatalGapRightTail.lean",
-      "port_sha256": "sha256:42c43b95b21cd9ab116eb71b42e7078e413b603aded1f2f09a111f612ac0506f",
-      "edits": []
+      "port_sha256": "sha256:16087d17d9b8ef03d0369958b1f5e1b7764b12a138d1a507215fc04b169dc72d",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated complete source batch38318782519 at exactc439: Expand unapplied composition with Function.comp_def and the unchanged mersenneTail endpoint before existing Nat AC normalization, preserving Tendsto functions, filters and series. Six observed compiler occurrences/five proof sites statically reviewed by parent and aggregate; full successor compiler and receiving/native assurance pending."
+        }
+      ]
     },
     {
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/HalfCylinderFiniteShadow.lean",
@@ -853,8 +858,13 @@
       "source_path": "verification/FC257ReciprocalSupport/lean/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean",
       "source_sha256": "sha256:a02fe36a65de2bb9461b98046556648d6fdb0d92aacfc49a3757144d202367c0",
       "port_path": "ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean",
-      "port_sha256": "sha256:a02fe36a65de2bb9461b98046556648d6fdb0d92aacfc49a3757144d202367c0",
-      "edits": []
+      "port_sha256": "sha256:8c5d08ae8b4e19a3242231ad0da833559fb1904dc04df46da880915aabceddc3",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated complete source batch38318782519 at exactc439: Prove the exact Int dividend algebra separately and rewrite that dividend before applying existing Dvd hypotheses; explicitly unfold Int.ModEq remainder equality and neg_neg. Avoid whole relation convert instance goals without changing modulus, recurrence or assumptions. Six observed compiler occurrences/five proof sites statically reviewed by parent and aggregate; full successor compiler and receiving/native assurance pending."
+        }
+      ]
     },
     {
       "source_path": "verification/FC257ReciprocalSupport/lean/ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
