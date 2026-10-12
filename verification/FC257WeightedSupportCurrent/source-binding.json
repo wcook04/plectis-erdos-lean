@@ -531,8 +531,13 @@
       "source_path": "ErdosProblems/Erdos257/PaperCompleteR8/KernelRecurrence.lean",
       "source_sha256": "sha256:5125df9575b08eafed671c49c33154769ccb1f430fc7b10265cdf6193e2cf800",
       "port_path": "ErdosProblems/Erdos257/PaperCompleteR8/KernelRecurrence.lean",
-      "port_sha256": "sha256:5125df9575b08eafed671c49c33154769ccb1f430fc7b10265cdf6193e2cf800",
-      "edits": []
+      "port_sha256": "sha256:f7b7ae5e5d99a67f0d8a6bd1b67c6015c159f18228d0d6db4936f5015f0efe5c",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38179005870 atde8cba: Close definitional conversion instance equality with rfl before original coefficient ring proof, including identical reachable reciprocal copy. Independent static review passed; compiler replay pending."
+        }
+      ]
     },
     {
       "source_path": "ErdosProblems/Erdos257/PaperCompleteR8/MixedGaugeConsumer.lean",

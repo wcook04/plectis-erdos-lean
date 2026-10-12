@@ -756,7 +756,6 @@ lemma heineTerm_base (hq0 : 0 < q) (hq1 : q < 1) (N : ℕ) :
       q ^ ((j : ℕ) ^ 2) * qPochhammerFinite q q j ^ 2 := by
     intro j
     have e := prod_Iio_fin j (fun m => (q ^ (j : ℕ) - q ^ m) ^ 2)
-    simp only at e
     rw [e, prod_range_pow_sub_sq, ← mul_assoc, ← pow_add, add_mul_sub_one]
   rw [prod_congr rfl fun j _ => hj j,
     Fin.prod_univ_eq_prod_range (fun j => q ^ (j ^ 2) * qPochhammerFinite q q j ^ 2) N,
@@ -936,7 +935,6 @@ lemma phi1_kappa_le (hq0 : 0 < q) (hq1 : q < 1) {μ : ℕ → ℕ} (hμ : Antito
       · rw [prod_inv_distrib, prod_pow]
         have hprod : ∏ i ∈ Iio j, (1 - q ^ ((j : ℕ) - (i : ℕ))) = qPochhammerFinite q q j := by
           have e := prod_Iio_fin j (fun m => 1 - q ^ ((j : ℕ) - m))
-          simp only at e
           rw [e, prod_range_one_sub_pow_sub]
         rw [hprod]
         have h1 := PaperR10.qPochhammerInfinity_le_finite hq0.le hq1 hq0.le hq1 j
@@ -1369,8 +1367,8 @@ theorem geometric_universality (hq0 : 0 < q) (hq1 : q < 1)
   have hMo : ∀ m : ℕ, HasSum (fun k => (a k * q ^ k) * (q ^ k) ^ m) (geomMoment q a m) := by
     intro m
     have h := (hmom m).hasSum
-    convert h using 1
-    funext k
+    unfold geomMoment
+    refine h.congr_fun fun k => ?_
     rw [← pow_mul, mul_assoc, ← pow_add]
     congr 2
     ring
@@ -1397,8 +1395,7 @@ theorem geometric_universality (hq0 : 0 < q) (hq1 : q < 1)
     intro N
     have h := ((hDa N).div_const ((∏ i : Fin N, a i) * baseZ q N)).sub
       ((hD1 N).div_const (baseZ q N))
-    convert h using 1
-    funext μ
+    refine h.congr_fun fun μ => ?_
     simp only [Fterm]
     split_ifs
     · rw [heineTerm_weight]

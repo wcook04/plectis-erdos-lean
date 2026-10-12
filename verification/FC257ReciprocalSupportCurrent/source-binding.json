@@ -362,8 +362,13 @@
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/GreedyAchievementSet.lean",
       "source_sha256": "sha256:ab3f56adfb60182d0bf4d7a2ec6e6276b3bf5c69879c9f73b16fbfa9ec6567e8",
       "port_path": "Erdos249257/GreedyAchievementSet.lean",
-      "port_sha256": "sha256:ab3f56adfb60182d0bf4d7a2ec6e6276b3bf5c69879c9f73b16fbfa9ec6567e8",
-      "edits": []
+      "port_sha256": "sha256:e0f1541a01af49dca8decdba67525b38d322ee317ba287555cfb8cfb586a8898",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38179005870 atde8cba: Reuse exact existing weighted beta/composition tail convergence proof ports. Independent static review passed; compiler replay pending."
+        }
+      ]
     },
     {
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/HalfCarryReachability.lean",
@@ -493,8 +498,13 @@
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/LcmFactorIdealPulseObstruction.lean",
       "source_sha256": "sha256:80d185c97631eb84806c52e0d0d6431e7c01426b1c7c6c3a3b9d24c0af836a0c",
       "port_path": "Erdos249257/LcmFactorIdealPulseObstruction.lean",
-      "port_sha256": "sha256:80d185c97631eb84806c52e0d0d6431e7c01426b1c7c6c3a3b9d24c0af836a0c",
-      "edits": []
+      "port_sha256": "sha256:974bec80bc9b976976be038d98587ab59d628dadaa5b14e5f6b4590d454df2e0",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38179005870 atde8cba: Optional absolute-negative reduction after ring normalization; unchanged omega proves every sparse-pulse branch. Independent static review passed; compiler replay pending."
+        }
+      ]
     },
     {
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/MersenneLambertLadder.lean",
@@ -597,8 +607,13 @@
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/RepunitMobiusNumerator.lean",
       "source_sha256": "sha256:7a9b4b4c19faca8da59b5f479ea212822d45ba97fbc6f97b1f475f41d7be3167",
       "port_path": "Erdos249257/RepunitMobiusNumerator.lean",
-      "port_sha256": "sha256:7a9b4b4c19faca8da59b5f479ea212822d45ba97fbc6f97b1f475f41d7be3167",
-      "edits": []
+      "port_sha256": "sha256:cf6a3a2d49c46e93a1248031886a1b00fe50a65cb59f8278e5eecdd229d97581",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38179005870 atde8cba: Close definitional instance equality via rfl before unchanged cast simp. Independent static review passed; compiler replay pending."
+        }
+      ]
     },
     {
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/SquaredMersenneDiagonalEnclosure.lean",
@@ -667,8 +682,13 @@
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/TotientCarryKernelRigidity.lean",
       "source_sha256": "sha256:751528af82426dba9d10f91bed042784b2466d4b1c54245b4ac751c88ab7b00d",
       "port_path": "Erdos249257/TotientCarryKernelRigidity.lean",
-      "port_sha256": "sha256:751528af82426dba9d10f91bed042784b2466d4b1c54245b4ac751c88ab7b00d",
-      "edits": []
+      "port_sha256": "sha256:4ff68db9662d69d20c0d860fe2843848c5ba91105d34c03deb7869091aa1eace",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38179005870 atde8cba: Expose same canonical odd function family explicitly; compare carry identities pointwise with Pi operations. Independent static review passed; compiler replay pending."
+        }
+      ]
     },
     {
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/TotientKernelConditional.lean",
@@ -888,8 +908,13 @@
       "source_path": "verification/FC257ReciprocalSupport/lean/ErdosProblems/Erdos257/PaperCompleteR8/KernelRecurrence.lean",
       "source_sha256": "sha256:b3c2adba1bc0b80d59b76011ec9f3a724d0e9faeb82e2d889f30b3a2698880c6",
       "port_path": "ErdosProblems/Erdos257/PaperCompleteR8/KernelRecurrence.lean",
-      "port_sha256": "sha256:b3c2adba1bc0b80d59b76011ec9f3a724d0e9faeb82e2d889f30b3a2698880c6",
-      "edits": []
+      "port_sha256": "sha256:2b472cfa0c905c0822aa2decf300a2abb886777b8898009418c81da965e6a747",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38179005870 atde8cba: Close definitional conversion instance equality with rfl before original coefficient ring proof, including identical reachable reciprocal copy. Independent static review passed; compiler replay pending."
+        }
+      ]
     },
     {
       "source_path": "verification/FC257ReciprocalSupport/lean/ErdosProblems/Erdos257/PaperCompleteR8/MixedGaugeConsumer.lean",
@@ -1070,11 +1095,15 @@
       "source_path": "verification/FC257ReciprocalSupport/lean/ErdosProblems/Erdos68/PrimeUnitTranslator.lean",
       "source_sha256": "sha256:ceec4294ac834abb7850fe8732a5eea455328ade40bf9a5eb66c6f37cbef2c9a",
       "port_path": "ErdosProblems/Erdos68/PrimeUnitTranslator.lean",
-      "port_sha256": "sha256:dd39751621417c4b55b971efb5302f84f70578c0bd6323648aa69e77e62a6c68",
+      "port_sha256": "sha256:27fdae66bcf5ec706ffc21e8824af95f3b090610544a1240ee5a2a57cd34f15c",
       "edits": [
         {
           "kind": "receiving_lean_4_33_compiler_port",
           "reason": "Authenticated strict source batch38175216709 at9a: Definitional subtype-tsum and Fin.cases conversions, unfold dotProduct in Cramer row sums, and use ring-hom map_det before scalar cast. Compiler replay pending."
+        },
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38179005870 atde8cba: Expose exact typed bundled RingHom.mapMatrix determinant before original map_det rewrite and scalar zero cast witness. Independent static review passed; compiler replay pending."
         }
       ]
     },

@@ -171,11 +171,15 @@
       "source_path": "ErdosProblems/Erdos1049/PaperR16/LambertBasic.lean",
       "source_sha256": "sha256:638fa1dd20d03dfd64301ccb940c2ef4fe00a81b6876dd221ec658155076799b",
       "port_path": "ErdosProblems/Erdos1049/PaperR16/LambertBasic.lean",
-      "port_sha256": "sha256:3d9d01e4cb44921328e384d38da0bf1a86c30bade64faa470d65c14783d9ebba",
+      "port_sha256": "sha256:fb500d9be59afc2d0f1fbdfb031361b894f7dc259c50b6831279f1daf9b99910",
       "edits": [
         {
           "kind": "receiving_lean_4_33_compiler_port",
           "reason": "Authenticated strict source batch38175216709 at9a: Unfold Lambert sum endpoint; direct multiplicative and geometric HasSum normalization replaces inert cleanup tactics. Compiler replay pending."
+        },
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38179005870 atde8cba: Explicit Function.comp_def beta reduction and mul_one normalization fix actual shifted HasSum and rational-bound residuals. Independent static review passed; compiler replay pending."
         }
       ]
     },
@@ -197,8 +201,13 @@
       "source_path": "ErdosProblems/Erdos1049/PaperCompleteR21/GeometricUniversality.lean",
       "source_sha256": "sha256:ba55c146385ac9855927d45015f65d50a438cd59a4e4f1d9a92ad12e265f5a02",
       "port_path": "ErdosProblems/Erdos1049/PaperCompleteR21/GeometricUniversality.lean",
-      "port_sha256": "sha256:ba55c146385ac9855927d45015f65d50a438cd59a4e4f1d9a92ad12e265f5a02",
-      "edits": []
+      "port_sha256": "sha256:84b952656faf4d0885e15ec837679bbb239f8edd23885ffa2dbf52146a64a213",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38179005870 atde8cba: HasSum.congr_fun transports exact summands; explicitly unfold geomMoment endpoint and remove inert local simp steps. Independent static review passed; compiler replay pending."
+        }
+      ]
     },
     {
       "source_path": "ErdosProblems/Erdos1049/PaperCompleteR21/RogersFactorisationAnalytic.lean",
@@ -211,8 +220,13 @@
       "source_path": "ErdosProblems/Erdos1049/PositiveSeriesR16.lean",
       "source_sha256": "sha256:6a114719f1328632eb8e9592792525325bda8e4bdf39b21d881cdba81915670d",
       "port_path": "ErdosProblems/Erdos1049/PositiveSeriesR16.lean",
-      "port_sha256": "sha256:6a114719f1328632eb8e9592792525325bda8e4bdf39b21d881cdba81915670d",
-      "edits": []
+      "port_sha256": "sha256:deabf786d104e618cf154edcb643476d1c4eecc31d1e24e6999ddcb577d7ab07",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38179005870 atde8cba: Use Nat HasAntidiagonal for intended i+j=n convolution, explicitly unfold coeffConv for sums, remove inert simplification; no heartbeat increase. Independent static review passed; compiler replay pending."
+        }
+      ]
     },
     {
       "source_path": "ErdosProblems/Erdos1049/ActualMomentGeneratingR12.lean",

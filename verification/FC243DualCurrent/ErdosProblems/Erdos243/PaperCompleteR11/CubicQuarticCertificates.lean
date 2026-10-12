@@ -215,7 +215,8 @@ theorem integral_cubic_1920_841_density
   apply integral_cubic_mod_seven_quartic_density a u v 1920 841 T hnum hden
   · decide
   · exact Or.inr (Or.inr (Or.inl (by
-      rw [div_eq_mul_inv, ZMod.inv_eq_of_mul_eq_one 7 (1920 : ZMod 7) 4 (by decide)]
+      rw [div_eq_mul_inv,
+        ZMod.inv_eq_of_mul_eq_one 7 ((1920 : ℤ) : ZMod 7) 4 (by decide)]
       decide)))
 
 /-- The reflected constant is covered too; the two signs are not silently
@@ -227,7 +228,8 @@ theorem integral_cubic_1920_neg841_density
     LowerDensityAtLeast {n : ℕ | u n ≠ 1920 * risingBinomial n - 841} (1 / 7) := by
   have hh := integral_cubic_mod_seven_quartic_density a u v 1920 (-841) T hnum hden
     (by decide) (Or.inr (Or.inl (by
-      rw [div_eq_mul_inv, ZMod.inv_eq_of_mul_eq_one 7 (1920 : ZMod 7) 4 (by decide)]
+      rw [div_eq_mul_inv,
+        ZMod.inv_eq_of_mul_eq_one 7 ((1920 : ℤ) : ZMod 7) 4 (by decide)]
       decide)))
   simpa only [sub_eq_add_neg] using hh
 

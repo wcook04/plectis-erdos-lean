@@ -1,5 +1,6 @@
 import ErdosProblems.Erdos1041.Counterexample.Defs
 import ErdosProblems.Erdos1041.Counterexample.InstanceCritical
+import Mathlib.Analysis.Calculus.Deriv.Polynomial
 import Mathlib.Tactic
 import Mathlib.Topology.Connected.PathConnected
 import Mathlib.Analysis.Real.Pi.Bounds
@@ -660,7 +661,14 @@ theorem sin_enclosure {x lo hi : ℝ} (h0 : 0 ≤ lo) (hlo : lo ≤ x) (hhi : x 
   have h3 : x ^ 3 ≤ hi ^ 3 := pow_le_pow_left₀ hx0 hhi 3
   have h3' : lo ^ 3 ≤ x ^ 3 := pow_le_pow_left₀ h0 hlo 3
   have h4 : x ^ 4 ≤ hi ^ 4 := pow_le_pow_left₀ hx0 hhi 4
-  exact ⟨by nlinarith [hb.1], by nlinarith [hb.2]⟩
+  have h5 : x ^ 5 ≤ x ^ 4 := by
+    calc
+      x ^ 5 = x ^ 4 * x := pow_succ x 4
+      _ ≤ x ^ 4 * 1 := mul_le_mul_of_nonneg_left (hhi.trans h1) (pow_nonneg hx0 4)
+      _ = x ^ 4 := mul_one _
+  have herr : x ^ 5 / 100 ≤ hi ^ 4 * (5 / 96) := by
+    nlinarith [h5, pow_nonneg (hx0.trans hhi) 4]
+  exact ⟨by nlinarith [hb.1, herr], by nlinarith [hb.2, herr]⟩
 
 theorem pi_div7_lo : (3141592 / 7000000 : ℝ) ≤ Real.pi / 7 := by
   have h := Real.pi_gt_d6
@@ -1022,10 +1030,7 @@ theorem Q_hasDerivAt (w : ℂ) : HasDerivAt (fun z : ℂ => Q.eval z) (Qd w) w :
         + p1 * z ^ 1 := by
     funext z; ring
   rw [hsimp]
-  convert hall using 1
-  simp only [Qd]
-  push_cast
-  ring
+  convert hall using 1 <;> first | rfl | (simp only [Qd]; push_cast; ring)
 
 theorem Qd_zero (zs : ℂ) (hcrit : (Polynomial.derivative f).IsRoot zs) :
     Qd (zs / ((ρ : ℂ) * (ε : ℂ))) = 0 := by

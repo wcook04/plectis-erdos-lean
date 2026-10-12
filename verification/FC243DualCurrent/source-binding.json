@@ -455,7 +455,7 @@
           "source_sha256": "sha256:b5c4afbbbcc2ac8e0b125ca15ad6c609e8bf6988fbc8153eefcae748b443655d"
         }
       ],
-      "port_sha256": "sha256:a617b95e555d2b569d4333f2aede061dd14ce0fc3ca9ee8081baad8032561ad0",
+      "port_sha256": "sha256:8dada634adef75e54c3d97fb5c837da214445b2afd1a4bed190b8ffa07d7c2eb",
       "edits": [
         {
           "kind": "receiving_native_full_diagnostic_port",
@@ -464,6 +464,10 @@
         {
           "kind": "receiving_lean_4_33_compiler_port",
           "reason": "Authenticated strict source batch38175216709 at9a: Previous norm_num inverse port insufficient: use pinned ZMod.inv_eq_of_mul_eq_one with explicit finite product witness 1920*4=1 mod7, then decide the two finite multiplication equalities. Compiler replay pending."
+        },
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38179005870 atde8cba: Match inverse rewrite to actual coerced Int denominator into ZMod7; keep exact multiplication/inverse witness4 and finite kernel decide. Independent static review passed; compiler replay pending."
         }
       ],
       "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
@@ -1004,8 +1008,13 @@
           "source_sha256": "sha256:ab29e68c4317b8b931b33182323a0a25c04d9591f835b273fc545f4868bcc012"
         }
       ],
-      "port_sha256": "sha256:ab29e68c4317b8b931b33182323a0a25c04d9591f835b273fc545f4868bcc012",
-      "edits": [],
+      "port_sha256": "sha256:c6839aa57427dd2d0f32c600334f35e6bc67a3886706ba18d14b8ff3637fb2c6",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38179005870 atde8cba: Explicit Function.comp_def shifted Tendsto beta reduction and removal inert dsimp before exact_mod_cast. Independent static review passed; compiler replay pending."
+        }
+      ],
       "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
     },
     {

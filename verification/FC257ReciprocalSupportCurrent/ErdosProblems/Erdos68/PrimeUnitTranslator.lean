@@ -1505,6 +1505,8 @@ theorem augmentedFactorialGridMatrix_det_ne_zero
           (factorialGridIndex n t)).det : ℤ) : ℚ) = 0 := by
       rw [hzero]
       norm_num
+    change ((Int.castRingHom ℚ).mapMatrix
+      (augmentedChannelMomentMatrix (factorialGridIndex n t))).det = 0
     rw [← (Int.castRingHom ℚ).map_det]
     exact hcast
   apply normalizedFactorialGridMatrix_det_ne_zero n t

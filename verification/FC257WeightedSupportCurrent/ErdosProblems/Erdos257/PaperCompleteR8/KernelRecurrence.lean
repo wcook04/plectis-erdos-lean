@@ -95,7 +95,7 @@ theorem summable_divisorPotential_terms (B : ℝ) (hB : 1 < B)
     · have h := mul_le_mul_of_nonneg_left
         (kernelWeight_le_pointwise_majorant B hB d N hd) (hc d hd)
       simp only [div_eq_mul_inv, mul_inv_rev] at h ⊢
-      convert h using 1 <;> ring
+      convert h using 1 <;> first | rfl | ring
 
 theorem divisorPotential_nonneg (B : ℝ) (hB : 1 < B)
     (c : ℕ → ℝ) (hc : ∀ d, 0 < d → 0 ≤ c d) (N : ℕ) :

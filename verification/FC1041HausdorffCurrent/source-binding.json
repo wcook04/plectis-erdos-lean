@@ -186,8 +186,13 @@
       "source_path": "verification/FC1041HausdorffCounterexample/lean/ErdosProblems/Erdos1041/Counterexample/Bottleneck.lean",
       "source_sha256": "sha256:034cc62cb3769d7c9ff2f1aea4d1917534437f7adec3bf5537500e6b3d80976a",
       "port_path": "ErdosProblems/Erdos1041/Counterexample/Bottleneck.lean",
-      "port_sha256": "sha256:034cc62cb3769d7c9ff2f1aea4d1917534437f7adec3bf5537500e6b3d80976a",
-      "edits": []
+      "port_sha256": "sha256:12a9883ee3ed6d40252023df06b4baf725e1cba8e5c2e3492bca4ca4ca0c5248",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38179005870 atde8cba: Canonical locally path connected class throughout dependent binders/instances; definitionally same class alias preserves assumptions. Independent static review passed; compiler replay pending."
+        }
+      ]
     },
     {
       "source_path": "verification/FC1041HausdorffCounterexample/lean/ErdosProblems/Erdos1041/Counterexample/Components.lean",
@@ -226,8 +231,13 @@
       "source_path": "verification/FC1041HausdorffCounterexample/lean/ErdosProblems/Erdos1041/Counterexample/InstanceConnectivity.lean",
       "source_sha256": "sha256:fe8b1208dbce3fea8aafadc08a007f6b93e3170edf5c5ff32f3fa366bf5bfd96",
       "port_path": "ErdosProblems/Erdos1041/Counterexample/InstanceConnectivity.lean",
-      "port_sha256": "sha256:fe8b1208dbce3fea8aafadc08a007f6b93e3170edf5c5ff32f3fa366bf5bfd96",
-      "edits": []
+      "port_sha256": "sha256:cd6adb4aadfe28697a8663a3bae029cb16d6a64ac333b0fc2c60adce0a040781",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38179005870 atde8cba: Preserve quartic Taylor bounds using explicit fifth-power remainder comparison; direct polynomial derivative module import and removal inert cleanup. Independent static review passed; compiler replay pending."
+        }
+      ]
     },
     {
       "source_path": "verification/FC1041HausdorffCounterexample/lean/ErdosProblems/Erdos1041/Counterexample/InstanceCritical.lean",
