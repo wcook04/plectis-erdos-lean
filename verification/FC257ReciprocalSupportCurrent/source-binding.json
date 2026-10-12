@@ -311,8 +311,13 @@
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/DyadicPrefixCompression.lean",
       "source_sha256": "sha256:51f902551a59f61cffad20e28bb0520dfee213b01d250a194ea85ad77cb5f36e",
       "port_path": "Erdos249257/DyadicPrefixCompression.lean",
-      "port_sha256": "sha256:51f902551a59f61cffad20e28bb0520dfee213b01d250a194ea85ad77cb5f36e",
-      "edits": []
+      "port_sha256": "sha256:57fcdb072cfe241841cb6b9cea0323ac24155781f9223693c4546585872dd15b",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38290541540 at exact608: Complete17 observed typed ports: explicit unchanged definition unfolds, Nat/Int cast/natAbs normalization preserving natural division, subtraction, exact literal lcm/exponent and finite range-zero simplification. Independent static source review passed; successor full source compiler replay pending."
+        }
+      ]
     },
     {
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/FirstHarmonicGap.lean",
@@ -615,8 +620,13 @@
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/ReciprocalSupportIrrationality.lean",
       "source_sha256": "sha256:c2e8b59c71ad5996caa8c42a45dad5fc76454533fe102b0fa49503c5495d77b5",
       "port_path": "Erdos249257/ReciprocalSupportIrrationality.lean",
-      "port_sha256": "sha256:c2e8b59c71ad5996caa8c42a45dad5fc76454533fe102b0fa49503c5495d77b5",
-      "edits": []
+      "port_sha256": "sha256:58021b28e49d405c2ddf2a7d9f46cad735e90f7cbf2e1d6cc04a9f75f696af03",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38290541540 at exact608: Exact natural multiplier witnesses for divisibility by4 from original exponent bounds. Independent static source review passed; successor full source compiler replay pending."
+        }
+      ]
     },
     {
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/RepunitMobiusNumerator.lean",
@@ -667,8 +677,13 @@
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/TotientActualLcmOrbitArithmetic.lean",
       "source_sha256": "sha256:5cb90f085c9c684dccf50bb847898bebea7fdd79765031e10713be98b83e8154",
       "port_path": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
-      "port_sha256": "sha256:5cb90f085c9c684dccf50bb847898bebea7fdd79765031e10713be98b83e8154",
-      "edits": []
+      "port_sha256": "sha256:c151c84d7cdc50cdc83eb8cdffdb0e8f8782adb9f478c652499c83378c963920",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38290541540 at exact608: Exact predecessor exponent equality and explicit local t/Nat power-cast normalization in unchanged scaled inequalities. Independent static source review passed; successor full source compiler replay pending."
+        }
+      ]
     },
     {
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/TotientActualLcmOrbitNonintegrality.lean",
@@ -1128,8 +1143,13 @@
       "source_path": "verification/FC257ReciprocalSupport/lean/ErdosProblems/Erdos68/FactorialZeroPlateauSupplement.lean",
       "source_sha256": "sha256:bc3d5b31e27566df95ab067eb31bb96c91062fb3d6ce553c6052f1c6f8f08d46",
       "port_path": "ErdosProblems/Erdos68/FactorialZeroPlateauSupplement.lean",
-      "port_sha256": "sha256:bc3d5b31e27566df95ab067eb31bb96c91062fb3d6ce553c6052f1c6f8f08d46",
-      "edits": []
+      "port_sha256": "sha256:e48f30a8e1498d44da0e00ed6d4f454c67d64dfcacc4e611f6e96614381359a8",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38290541540 at exact608: Explicit Function.comp_def beta normalization in inverse composed Tendsto. Independent static source review passed; successor full source compiler replay pending."
+        }
+      ]
     },
     {
       "source_path": "verification/FC257ReciprocalSupport/lean/ErdosProblems/Erdos68/PrimeUnitTranslator.lean",

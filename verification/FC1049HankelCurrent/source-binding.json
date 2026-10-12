@@ -305,7 +305,7 @@
       "source_path": "ErdosProblems/Erdos1049/ActualPositiveMeasureR16.lean",
       "source_sha256": "sha256:4e264ecc918e30448bb3856f73d64c1dc5f2797756c91334b4387511b6afe2fb",
       "port_path": "ErdosProblems/Erdos1049/ActualPositiveMeasureR16.lean",
-      "port_sha256": "sha256:37085f20dc7988647d39e7107c1c015d1b15449bbbb34f9c52ccff451f51a655",
+      "port_sha256": "sha256:f093e08f05d8502decda222b0f8711daaa1d509a93a89e781d4140d86830fcff",
       "edits": [
         {
           "kind": "receiving_lean_4_33_compiler_port",
@@ -314,6 +314,10 @@
         {
           "kind": "receiving_lean_4_33_compiler_port",
           "reason": "Authenticated source batch38283868154 at PRmerge4bab42, selected successor of preserved98: Expose unchanged actualGamma finite sum for nonnegativity; separate exact v t scalar endpoint algebra from HasSum.congr_fun pointwise row transport, retaining original nonzero premises and pow_add/ring. Independent static review passed; full source compiler replay pending."
+        },
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38290541540 at exact608: Unfold unchanged actualGamma finite sum in exact one_le_actualGamma row bound. Independent static source review passed; successor full source compiler replay pending."
         }
       ]
     },

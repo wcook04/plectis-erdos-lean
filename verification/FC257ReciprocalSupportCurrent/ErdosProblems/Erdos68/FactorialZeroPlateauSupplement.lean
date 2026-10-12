@@ -50,7 +50,7 @@ theorem tendsto_abs_one_sub_factorialGapStepCarry_div :
   have hinv :
       Filter.Tendsto (fun m : ℕ => 1 / ((m - 1 : ℕ) : ℝ))
         Filter.atTop (nhds 0) := by
-    simpa only [one_div] using tendsto_inv_atTop_zero.comp hpredTopReal
+    simpa only [one_div, Function.comp_def] using tendsto_inv_atTop_zero.comp hpredTopReal
   refine tendsto_of_tendsto_of_tendsto_of_le_of_le'
     (g := fun _ : ℕ => (0 : ℝ))
     (h := fun m : ℕ => 1 / ((m - 1 : ℕ) : ℝ))

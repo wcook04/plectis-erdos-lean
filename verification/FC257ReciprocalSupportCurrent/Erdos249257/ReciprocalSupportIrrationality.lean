@@ -1487,9 +1487,13 @@ divisible by 4 once the exponents are at least 2, while `2^v + 2` is congruent t
 theorem no_two_powers_two_apart {v w : ℕ} (hv : 2 ≤ v) (hw : 2 ≤ w)
     (h : 2 ^ w = 2 ^ v + 2) : False := by
   have hdv : (4 : ℕ) ∣ 2 ^ v := by
-    simpa using pow_dvd_pow 2 hv
+    refine ⟨2 ^ (v - 2), ?_⟩
+    rw [show v = 2 + (v - 2) by omega, pow_add]
+    norm_num
   have hdw : (4 : ℕ) ∣ 2 ^ w := by
-    simpa using pow_dvd_pow 2 hw
+    refine ⟨2 ^ (w - 2), ?_⟩
+    rw [show w = 2 + (w - 2) by omega, pow_add]
+    norm_num
   omega
 
 

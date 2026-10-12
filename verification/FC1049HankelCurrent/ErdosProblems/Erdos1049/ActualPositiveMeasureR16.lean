@@ -258,7 +258,7 @@ theorem one_le_actualGamma {q : ℝ} (hq0 : 0 < q) (hq1 : q < 1) (k : ℕ) :
       div_nonneg (momentRowCoeff_nonneg hq0 hq1 p.1 p.2)
         (qPochhammerFinite_pos hq0.le hq1 hq0.le hq1.le p.1).le) hz
   have hrow : momentRowCoeff q 0 k ≤ actualGamma q k := by
-    simpa only [qPochhammerFinite_zero, div_one] using h
+    simpa only [actualGamma, qPochhammerFinite_zero, div_one] using h
   exact ((inverseQCoeff_bounds hq0.le hq1 k).1.trans
     (inverseQCoeff_le_zeroRow hq0 hq1 k)).trans hrow
 
