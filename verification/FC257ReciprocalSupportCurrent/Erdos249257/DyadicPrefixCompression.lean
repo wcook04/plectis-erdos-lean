@@ -1686,7 +1686,7 @@ theorem two_three_dyadicPrefix_fixture :
     ({2, 3} : Finset ℕ) (by simp) (by simp)
   norm_num [finiteErdosSum] at horder
   refine ⟨by norm_num [finiteErdosSum], by norm_num [finiteErdosSum], ?_, ?_, ?_⟩
-  · simpa only [show Nat.lcm 2 3 = 6 by decide] using horder
+  · simpa only [lcm_eq_nat_lcm, show Nat.lcm 2 3 = 6 by decide] using horder
   · norm_num [doublingWrapCount, doublingWrapDigit, doublingResidue,
       Finset.sum_range_succ]
   · norm_num [dyadicResidualRat, dyadicResidualNumerator]
@@ -1704,8 +1704,9 @@ theorem five_term_dyadicPrefix_fixture :
     ({2, 3, 6, 7, 14} : Finset ℕ) (by simp) (by simp)
   norm_num [finiteErdosSum] at horder
   refine ⟨by norm_num [finiteErdosSum], by norm_num [finiteErdosSum], ?_, ?_, ?_⟩
-  · simpa only [show Nat.lcm 2 (Nat.lcm 3 (Nat.lcm 6 (Nat.lcm 7 14))) = 42 by
-      decide] using horder
+  · simpa only [lcm_eq_nat_lcm,
+      show Nat.lcm 2 (Nat.lcm 3 (Nat.lcm 6 (Nat.lcm 7 14))) = 42 by
+        decide] using horder
   · norm_num [doublingWrapCount, doublingWrapDigit, doublingResidue,
       Finset.sum_range_succ]
   · norm_num [dyadicResidualRat, dyadicResidualNumerator]
@@ -5079,10 +5080,18 @@ theorem half_mem_mersenneAchievementSet_of_consecutiveTakeRawMarginSupply
     interval_cases n
     · exfalso
       apply hunsafe
-      norm_num [BlockDyadicSafeAt, halfGreedyResidualDisplayedNumerator,
-        halfGreedyPrefixDenominator, halfGreedyPrefixRat,
-        greedyMersennePrefixRat, finiteErdosSum, Finset.range_zero,
-        Finset.filter_empty, Finset.sum_empty]
+      have hsupp0 : greedyMersennePrefixRat (1 / 2 : ℚ) 0 = ∅ := by
+        unfold greedyMersennePrefixRat
+        rw [Finset.range_zero, Finset.filter_empty, Finset.image_empty]
+      have hprefix0 : halfGreedyPrefixRat 0 = 0 := by
+        unfold halfGreedyPrefixRat
+        rw [hsupp0]
+        unfold finiteErdosSum
+        rw [Finset.sum_empty]
+      simp only [BlockDyadicSafeAt, halfGreedyResidualDisplayedNumerator,
+        halfGreedyPrefixDenominator]
+      rw [hprefix0]
+      norm_num
     · exfalso
       apply hskip
       norm_num [mersenneWeight, greedyMersenneRemainder]

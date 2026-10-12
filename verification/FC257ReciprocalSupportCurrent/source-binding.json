@@ -311,11 +311,15 @@
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/DyadicPrefixCompression.lean",
       "source_sha256": "sha256:51f902551a59f61cffad20e28bb0520dfee213b01d250a194ea85ad77cb5f36e",
       "port_path": "Erdos249257/DyadicPrefixCompression.lean",
-      "port_sha256": "sha256:57fcdb072cfe241841cb6b9cea0323ac24155781f9223693c4546585872dd15b",
+      "port_sha256": "sha256:0123c683398a4dd3b09782049b8919017c14b9208fc3335f439d28486ae0e8a7",
       "edits": [
         {
           "kind": "receiving_lean_4_33_compiler_port",
           "reason": "Authenticated source batch38290541540 at exact608: Complete17 observed typed ports: explicit unchanged definition unfolds, Nat/Int cast/natAbs normalization preserving natural division, subtraction, exact literal lcm/exponent and finite range-zero simplification. Independent static source review passed; successor full source compiler replay pending."
+        },
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38301793074 at exact1b31: Actual three recurring goals: explicit generic lcm_eq_nat_lcm bridge and exact empty finite support/prefix-zero witness rewritten before Rat numerator/denominator projections. Independent static source review passed; successor full source compiler replay pending."
         }
       ]
     },
@@ -710,8 +714,13 @@
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
       "source_sha256": "sha256:3a6c344f725901df861929a92f86950e59d13690ba75c47deb61491c9d9814ce",
       "port_path": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
-      "port_sha256": "sha256:3a6c344f725901df861929a92f86950e59d13690ba75c47deb61491c9d9814ce",
-      "edits": []
+      "port_sha256": "sha256:8a1a672a2ace45541d40ca05bb0b354baa45f2692ea4f19e965d9874cc26cd76",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38301793074 at exact1b31: Expose unchanged certifiedKill/local endpoints before Nat-sum cast, exact numeral and integer addition normalization. Independent static source review passed; successor full source compiler replay pending."
+        }
+      ]
     },
     {
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/TotientCarryKernelRigidity.lean",
@@ -927,11 +936,15 @@
       "source_path": "verification/FC257ReciprocalSupport/lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverPotentialBounds.lean",
       "source_sha256": "sha256:640d9ad631f71243eda69cbd0162d984ddb8e47f3fe7eaa60a3e2fbe5164d9e4",
       "port_path": "ErdosProblems/Erdos257/PaperCompleteR8/CoverPotentialBounds.lean",
-      "port_sha256": "sha256:1a3b31e634225d6d8db85282ff83bdea1fab8e3e88d18fd0784459bd07d49c94",
+      "port_sha256": "sha256:c57980615d5dd8739bf39f92794c0504ddd54fc295cd60dce63d0873196b81d4",
       "edits": [
         {
           "kind": "receiving_lean_4_33_compiler_port",
           "reason": "Authenticated source batch38276766059 at057ba42: rfl-first conversion and guarded original scalar-cost normalization/algebra, including reachable reciprocal duplicate. Independent static reviews passed; full source compiler replay pending."
+        },
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38301793074 at exact1b31: Expose unchanged coverBase definition before original real-power-one normalization. Independent static source review passed; successor full source compiler replay pending."
         }
       ]
     },
@@ -1103,8 +1116,13 @@
       "source_path": "verification/FC257ReciprocalSupport/lean/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean",
       "source_sha256": "sha256:5f999c8f50f693e12ecd059bcee5e6b47044f4f678e31b824f398931ae5224be",
       "port_path": "ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean",
-      "port_sha256": "sha256:5f999c8f50f693e12ecd059bcee5e6b47044f4f678e31b824f398931ae5224be",
-      "edits": []
+      "port_sha256": "sha256:eb08ebee8c4ff1f2315f141cf269b7bd2c6fa0475a2283d3137f5f69f7a76fcf",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38301793074 at exact1b31: Expose unchanged privateQuotient/Function.onFun and Nat.ModEq remainder representations before exact original coprimality/lcm/residue witnesses. Independent static source review passed; successor full source compiler replay pending."
+        }
+      ]
     },
     {
       "source_path": "verification/FC257ReciprocalSupport/lean/ErdosProblems/Erdos68/FactorialCarry.lean",

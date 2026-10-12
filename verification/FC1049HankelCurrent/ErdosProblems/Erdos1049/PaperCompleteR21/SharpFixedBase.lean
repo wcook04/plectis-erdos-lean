@@ -203,15 +203,13 @@ lemma T_rec (hq0 : 0 < q) (hq1 : q < 1) {x : ℝ} (hx0 : 0 ≤ x) (hx1 : x < 1) 
   have h2 : HasSum (fun m : ℕ => einv q m * (q * x) ^ m) (Tq q (q * x)) :=
     (summable_T hq0 hq1 hqx0 hqx1).hasSum
   have h3 : HasSum (fun m : ℕ => einv q m * x ^ m * (1 - q ^ m)) (Tq q x - Tq q (q * x)) := by
-    convert h1.sub h2 using 1
-    funext m
+    refine (h1.sub h2).congr_fun fun m => ?_
     rw [mul_pow]
     ring
   have h4 : HasSum (fun m : ℕ => einv q m * x ^ m * (1 - q ^ m)) (x * Tq q x) := by
     rw [← hasSum_nat_add_iff' 1]
     simp only [range_one, sum_singleton, pow_zero, sub_self, mul_zero, sub_zero]
-    convert h1.mul_left x using 1
-    funext m
+    refine (h1.mul_left x).congr_fun fun m => ?_
     have e := einv_succ_mul hq0 hq1 m
     calc einv q (m + 1) * x ^ (m + 1) * (1 - q ^ (m + 1))
         = (einv q (m + 1) * (1 - q ^ (m + 1))) * x ^ (m + 1) := by ring
@@ -231,16 +229,14 @@ lemma U_rec (hq0 : 0 < q) (hq1 : q < 1) {x : ℝ} (hx0 : 0 ≤ x) (hx1 : x < 1) 
     (summable_U hq0 hq1 hqx0 hqx1).hasSum
   have h3 : HasSum (fun m : ℕ => (m : ℝ) * einv q m * x ^ m * (1 - q ^ m))
       (Uq q x - Uq q (q * x)) := by
-    convert h1.sub h2 using 1
-    funext m
+    refine (h1.sub h2).congr_fun fun m => ?_
     rw [mul_pow]
     ring
   have h4 : HasSum (fun m : ℕ => (m : ℝ) * einv q m * x ^ m * (1 - q ^ m))
       (x * (Uq q x + Tq q x)) := by
     rw [← hasSum_nat_add_iff' 1]
     simp only [range_one, sum_singleton, Nat.cast_zero, zero_mul, sub_zero]
-    convert (h1.add hT).mul_left x using 1
-    funext m
+    refine ((h1.add hT).mul_left x).congr_fun fun m => ?_
     have e := einv_succ_mul hq0 hq1 m
     calc ((m + 1 : ℕ) : ℝ) * einv q (m + 1) * x ^ (m + 1) * (1 - q ^ (m + 1))
         = ((m : ℝ) + 1) * (einv q (m + 1) * (1 - q ^ (m + 1))) * x ^ (m + 1) := by
@@ -369,11 +365,8 @@ lemma hasSum_tau (hq0 : 0 < q) (hq1 : q < 1) : HasSum (tau q) (lambertL q * Pinv
       (𝓝 (lambertL q * Pinv q)) := by
     rw [← U_q_eq hq0 hq1]
     have hs : HasSum (fun m : ℕ => (m : ℝ) * delta q m) (Uq q q) := by
-      have := (summable_U hq0 hq1 hq0.le hq1).hasSum
-      convert this using 1
-      funext m
-      unfold delta
-      ring
+      simpa only [delta, Uq, mul_assoc] using
+        (summable_U hq0 hq1 hq0.le hq1).hasSum
     exact (tendsto_add_atTop_iff_nat 1).mpr hs.tendsto_sum_nat
   have := h1.add h2
   rw [zero_add] at this
@@ -1035,8 +1028,7 @@ theorem sharp_fixed_base {q : ℝ} (hq0 : 0 < q) (hq1 : q < 1) (γ : ℕ → ℝ
     refine Real.hasProd_of_hasSum_log (fun k => ?_) ?_
     · rw [hfac]
       exact Real.exp_pos _
-    · convert hSum using 1
-      funext k
+    · refine hSum.congr_fun fun k => ?_
       rw [hfac, Real.log_exp]
   have htprod : ∏' k : ℕ, sharpFactor q (realGamma q) k = Real.exp (∑' k, ℓ k) := hprod.tprod_eq
   have hApos : 0 < sharpA q (realGamma q) := by

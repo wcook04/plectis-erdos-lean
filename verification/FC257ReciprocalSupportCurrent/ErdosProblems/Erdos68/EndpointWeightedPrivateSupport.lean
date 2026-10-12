@@ -1091,9 +1091,11 @@ theorem privateQuotient_lcm_eq_privateModulus
       privateModulus base s d := by
   unfold privateModulus
   apply Finset.lcm_eq_prod
-  simpa [privateQuotient, Function.onFun] using
-    (collisionCore_privateQuotients_pairwise_coprime
-      (base := base) (s := s) (d := d) hpos)
+  change (s : Set ι).Pairwise (fun i j =>
+    Nat.Coprime (d i / Nat.gcd (d i) (collisionCore base s d))
+      (d j / Nat.gcd (d j) (collisionCore base s d)))
+  exact collisionCore_privateQuotients_pairwise_coprime
+    (base := base) (s := s) (d := d) hpos
 
 /-- A positive denominator family has positive private modulus, even when
 all collision deletion quotients equal one. -/
@@ -1511,10 +1513,11 @@ theorem privateModulus_eq_lcm_div_gcd_collisionCore
       s.lcm d /
         Nat.gcd (s.lcm d) (collisionCore base s d) := by
   rw [← privateQuotient_lcm_eq_privateModulus hpos]
-  simpa [privateQuotient] using
-    (finset_lcm_div_gcd_right_distrib
-      (C := collisionCore base s d)
-      (collisionCore_pos hbase hpos) hpos)
+  change s.lcm (fun i => d i / Nat.gcd (d i) (collisionCore base s d)) =
+    s.lcm d / Nat.gcd (s.lcm d) (collisionCore base s d)
+  exact finset_lcm_div_gcd_right_distrib
+    (C := collisionCore base s d)
+    (collisionCore_pos hbase hpos) hpos
 
 /-- With the distinguished base included, the canonical private modulus is
 the full endpoint common denominator divided by the collision core. -/
@@ -1858,7 +1861,8 @@ theorem projectedResidue_eq_complementary_of_add_modEq_zero
       Z ≡ Q - T % Q [MOD Q] :=
     Nat.ModEq.add_right_cancel' T
       (hmod.trans hcomplement.symm)
-  simpa [projectedResidue, complementaryProjectedResidue] using hZT
+  change Z % Q = (Q - T % Q) % Q
+  exact hZT
 
 /-- Least nonnegative private-modulus residue of the displayed endpoint
 numerator.  Under a nontrivial private modulus, coprimality makes it the

@@ -194,8 +194,13 @@
       "source_path": "ErdosProblems/Erdos1049/PaperCompleteR21/SharpFixedBase.lean",
       "source_sha256": "sha256:c949a4ecc840eac2c5f802f61cef047f71b96aa573bd269dcb969472be6aeb98",
       "port_path": "ErdosProblems/Erdos1049/PaperCompleteR21/SharpFixedBase.lean",
-      "port_sha256": "sha256:c949a4ecc840eac2c5f802f61cef047f71b96aa573bd269dcb969472be6aeb98",
-      "edits": []
+      "port_sha256": "sha256:03179b1d44831809e93bfdd78b4983c7569df616ff0177d28dda7e430d48e922",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38301793074 at exact1b31: Replace four observed plus one parent-approved masked HasSum transports with exact congr_fun and explicitly normalize unchanged delta/Uq endpoints. Independent static source review passed; successor full source compiler replay pending."
+        }
+      ]
     },
     {
       "source_path": "ErdosProblems/Erdos1049/PaperCompleteR21/GeometricUniversality.lean",
