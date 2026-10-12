@@ -491,8 +491,10 @@
       "source_path": "ErdosProblems/Erdos257/PaperCompleteR8/CoverPotentialBounds.lean",
       "source_sha256": "sha256:c75d245c5756c6da036f3cd09b513367ba9c9bc6a4356a93b9e5fa932ac27b1a",
       "port_path": "ErdosProblems/Erdos257/PaperCompleteR8/CoverPotentialBounds.lean",
-      "port_sha256": "sha256:c75d245c5756c6da036f3cd09b513367ba9c9bc6a4356a93b9e5fa932ac27b1a",
-      "edits": []
+      "port_sha256": "sha256:1394c5da08998d3b350e7ecbc0f7df6c313c8b5cce5011961b2bc9516234682d",
+      "edits": [
+        "Repair exact compiler diagnostics from Lean Convenience 38276766059 under the unchanged receiving pins."
+      ]
     },
     {
       "source_path": "ErdosProblems/Erdos257/PaperCompleteR8/CoverScalarGauge.lean",
@@ -681,5 +683,15 @@
     }
   ],
   "proof_adaptation": "Definitional aliases for finite weighted claim; explicit field-preserving constructor for receiving LogBudgetCover nominal type.",
-  "verification": "No compilation or receiving export comparison has been run."
+  "verification": "No compilation or receiving export comparison has been run.",
+  "compiler_repairs": [
+    {
+      "failed_source_commit": "057ba42d60cfcdbe3f46c3f5bd14730570e659f9",
+      "failed_run": "https://github.com/wcook04/plectis-erdos-lean/actions/runs/38276766059",
+      "port_paths": [
+        "ErdosProblems/Erdos257/PaperCompleteR8/CoverPotentialBounds.lean"
+      ],
+      "validation_scope": "complete current-source batch; actual receiving identity is a separate gate"
+    }
+  ]
 }

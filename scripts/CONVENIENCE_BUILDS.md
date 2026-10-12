@@ -77,6 +77,25 @@ modules and their import closure, and does not establish full launch coverage.
 Pull requests and release validation always default to the complete launch set;
 a publication audit refuses focused-only mode.
 
+## Current receiving ports
+
+The outer corpus build excludes nested verification packages. Pull requests
+changing `verification/*Current/`, the current-source runner or its workflow
+therefore run **Current FC source diagnostics** automatically. It calls the
+same Lean Convenience workflow with `fc_current_batch=true` and checks all ten
+projects against their unchanged receiving compiler and dependency pins.
+The source batch keeps candidate outputs separate and continues after a failed
+project. A focused port check does not replace this complete batch.
+
+Read the final batch summary and its artifact before preparing another repair.
+GitHub caps displayed annotations; JSON retains every compiler error, and the
+summary qualifies each location with its nested project. Compressed logs retain
+the complete typed goals. Refresh the changed port hashes in `source-binding.json`
+while preserving original-source hashes and receiving pins. Validate the new
+immutable commit through the complete batch before calling a repair verified.
+This source check establishes compiler compatibility only; actual receiving
+export identity, kernel replay and Comparator acceptance remain separate gates.
+
 ## Release population and candidate admission
 
 `release-entries.json` declares the legacy Comparator release entries and support

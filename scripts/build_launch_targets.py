@@ -232,7 +232,7 @@ def annotation(message: str) -> str:
 
 def run_build(argv: list[str], *, root: Path, log: Path, timeout: float,
               heartbeat: float, module_budget: float, progress: Callable,
-              max_log_bytes: int = 128*1024*1024) -> dict:
+              max_log_bytes: int = 128*1024*1024, annotation_prefix: str = '') -> dict:
     log.parent.mkdir(parents=True, exist_ok=True)
     started = time.monotonic()
     errors, tail = [], deque(maxlen=30)
@@ -244,11 +244,14 @@ def run_build(argv: list[str], *, root: Path, log: Path, timeout: float,
     def consume(line):
         text = line.decode('utf-8', errors='replace').rstrip()
         tail.append(text[-2000:])
-        if (match := ERROR.search(text)) and len(errors) < 20:
+        if match := ERROR.search(text):
             errors.append({'file': match[1], 'line': int(match[2]),
                            'column': int(match[3]), 'message': match[4]})
-            location=annotation(match[1]).replace(',', '%2C').replace(':', '%3A')
-            print(f'::error file={location},line={match[2]},col={match[3]}::'+annotation(match[4]), flush=True)
+            # GitHub caps displayed annotations; that cap must never truncate
+            # the machine-readable repair inventory.
+            if len(errors) <= 20:
+                location=annotation(annotation_prefix + match[1]).replace(',', '%2C').replace(':', '%3A')
+                print(f'::error file={location},line={match[2]},col={match[3]}::'+annotation(match[4]), flush=True)
             progress(errors)
         elif (text.startswith('error:') or 'Some required targets logged failures' in text):
             print(text[-2000:], flush=True)
@@ -339,7 +342,8 @@ def build_targets(targets: Sequence[str], report_path: Path, run: Callable | Non
                     result=run_build(['lake', *(['--wfail'] if warning_clean else []), 'build', row['target']],root=root,
                                      log=report_path.parent/'convenience-logs'/f'{i:03d}-{row["target"]}.log.gz',
                                      timeout=min(target_budget or total_budget,deadline-time.monotonic()),heartbeat=heartbeat,
-                                     module_budget=module_budget,progress=progress)
+                                     module_budget=module_budget,progress=progress,
+                                     annotation_prefix=git('rev-parse', '--show-prefix', root=root) if plan else '')
                 if result.get('reason') == 'target_timeout' and (target_budget is None or time.monotonic() >= deadline):
                     result['reason'] = 'run_timeout'
                 row.update(result)

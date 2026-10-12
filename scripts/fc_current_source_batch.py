@@ -15,6 +15,7 @@ import argparse
 import ast
 import hashlib
 import json
+import os
 from pathlib import Path
 import re
 import subprocess
@@ -138,6 +139,34 @@ def share_dependencies(root: Path, plan: dict) -> None:
             destination.symlink_to(shared.resolve(), target_is_directory=True)
 
 
+def diagnostic_summary(result: dict) -> str:
+    """Expose the complete repair set outside GitHub's annotation quota."""
+    lines = ['## Current FC source diagnostics', '',
+             f"Result: **{result['status']}**. {BOUNDARY}", '',
+             '| Project | Units | Result | Compiler errors |',
+             '| --- | --- | --- | --- |']
+    errors = []
+    for project in result['projects']:
+        current = [(target['target'], error) for target in project.get('targets', [])
+                   for error in target.get('errors', [])]
+        lines.append(f"| `{project['path']}` | {', '.join(project['units'])} | "
+                     f"{project['status']} | {len(current)} |")
+        errors.extend((project['path'], target, error) for target, error in current)
+    lines += ['', f'Compiler errors retained: **{len(errors)}**. '
+              'The artifact contains full typed goals and compressed compiler logs.', '']
+    for project, target, error in errors:
+        # Source-relative paths must include the nested Lake project; otherwise
+        # annotations appear to point at the older outer-corpus source.
+        path = project + '/' + error.get('file', target)
+        location = f"{path}:{error.get('line', '?')}:{error.get('column', '?')}"
+        message = error.get('message', '').replace('\n', ' ').replace('`', "'")
+        lines.append(f'- `{location}` — {message}')
+    for project in result['projects']:
+        if project.get('error'):
+            lines.append(f"- `{project['path']}` — {project['error']}")
+    return '\n'.join(lines) + '\n'
+
+
 def compile_batch(root: Path, plan: dict, report: Path, *, build=runner.build_targets,
                   project_budget: float = 1500) -> int:
     result = {'schema_version': 2, 'kind': 'fc_current_source_diagnostics', 'status': 'running',
@@ -168,6 +197,10 @@ def compile_batch(root: Path, plan: dict, report: Path, *, build=runner.build_ta
     result['status'] = ('incomplete' if result.get('source_changed') or any(p['status'] not in ('pass', 'fail') for p in result['projects'])
                         else 'fail' if any(p['status'] == 'fail' for p in result['projects']) else 'pass')
     runner.save_report(report, result)
+    summary = diagnostic_summary(result)
+    if destination := os.environ.get('GITHUB_STEP_SUMMARY'):
+        with open(destination, 'a') as output:
+            output.write(summary)
     print(json.dumps({'status': result['status'], 'projects': result['projects'], 'boundary': BOUNDARY}, indent=2))
     return 0 if result['status'] == 'pass' else 1
 

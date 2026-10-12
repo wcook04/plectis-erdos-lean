@@ -217,8 +217,10 @@
       "source_path": "verification/FC1041HausdorffCounterexample/lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean",
       "source_sha256": "sha256:069ea76e27304bd34e020cf8aab0fcc9200c495ff892127612e8afe571e3fcb4",
       "port_path": "ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean",
-      "port_sha256": "sha256:069ea76e27304bd34e020cf8aab0fcc9200c495ff892127612e8afe571e3fcb4",
-      "edits": []
+      "port_sha256": "sha256:76a69c7b972381f76889bccdb145884d89c6c13025f7c636c08ada1ff2a290b4",
+      "edits": [
+        "Repair exact compiler diagnostics from Lean Convenience 38276766059 under the unchanged receiving pins."
+      ]
     },
     {
       "source_path": "verification/FC1041HausdorffCounterexample/lean/ErdosProblems/Erdos1041/Counterexample/InstanceBarriers.lean",
@@ -254,5 +256,15 @@
   ],
   "wrapper_sha256": "sha256:17a06cf6a70837b0b2b26850ec476ac33f3e085e1b961e844917b7f23678b17e",
   "answer_expansion": "Receiver answer(False) elaborates to False up to erased answer annotation. Actual export comparison required.",
-  "verification": "No compilation or actual receiving export comparison run."
+  "verification": "No compilation or actual receiving export comparison run.",
+  "compiler_repairs": [
+    {
+      "failed_source_commit": "057ba42d60cfcdbe3f46c3f5bd14730570e659f9",
+      "failed_run": "https://github.com/wcook04/plectis-erdos-lean/actions/runs/38276766059",
+      "port_paths": [
+        "ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean"
+      ],
+      "validation_scope": "complete current-source batch; actual receiving identity is a separate gate"
+    }
+  ]
 }

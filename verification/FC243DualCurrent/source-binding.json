@@ -1275,8 +1275,10 @@
           "source_sha256": "sha256:cd5eb4f8dda2e486b46e02065960a5266803a24c52b9aa459f2ef355512a2af7"
         }
       ],
-      "port_sha256": "sha256:cd5eb4f8dda2e486b46e02065960a5266803a24c52b9aa459f2ef355512a2af7",
-      "edits": [],
+      "port_sha256": "sha256:1c0f6f73a22c28b0a6cc633d82e33b94feac74d333ea3774b3ed8de97c1fd0b1",
+      "edits": [
+        "Repair exact compiler diagnostics from Lean Convenience 38276766059 under the unchanged receiving pins."
+      ],
       "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
     },
     {
@@ -2143,5 +2145,15 @@
   "solution_sha256": "sha256:3a2c0a12f7ca9a2b5cf60ca121054034cc96c36519d5a1293244c2925603b0f2",
   "validation": "prepared_unverified",
   "merge_boundary": "Two independently checked source closures have10shared module paths,8different bytes. Common declaration statements are unchanged by the examined diffs; older ReciprocalTailRigidity has an88line extra support section. Source selection is explicit per file. Source-only snapshot comparisons do not certify this merged project.",
-  "challenge_boundary": "Actual FC243 declaration exports must be frozen before candidate compile, and each selected target must pass independently against its own actual receiving FQN; no copied Challenge included."
+  "challenge_boundary": "Actual FC243 declaration exports must be frozen before candidate compile, and each selected target must pass independently against its own actual receiving FQN; no copied Challenge included.",
+  "compiler_repairs": [
+    {
+      "failed_source_commit": "057ba42d60cfcdbe3f46c3f5bd14730570e659f9",
+      "failed_run": "https://github.com/wcook04/plectis-erdos-lean/actions/runs/38276766059",
+      "port_paths": [
+        "ErdosProblems/Erdos243/PaperCompleteR20/CubicSquareSpecializationAssembly.lean"
+      ],
+      "validation_scope": "complete current-source batch; actual receiving identity is a separate gate"
+    }
+  ]
 }

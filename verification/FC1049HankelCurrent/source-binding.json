@@ -213,8 +213,10 @@
       "source_path": "ErdosProblems/Erdos1049/PaperCompleteR21/RogersFactorisationAnalytic.lean",
       "source_sha256": "sha256:50b6707dc4587ae58c5ccf9b05de57a934b17d41f14b074890d57b8f2d853034",
       "port_path": "ErdosProblems/Erdos1049/PaperCompleteR21/RogersFactorisationAnalytic.lean",
-      "port_sha256": "sha256:50b6707dc4587ae58c5ccf9b05de57a934b17d41f14b074890d57b8f2d853034",
-      "edits": []
+      "port_sha256": "sha256:7b58150d6da631ae2cc04f5afc3e2e320c6c89e4b30027f04ff44190f1ba53f9",
+      "edits": [
+        "Repair exact compiler diagnostics from Lean Convenience 38276766059 under the unchanged receiving pins."
+      ]
     },
     {
       "source_path": "ErdosProblems/Erdos1049/PositiveSeriesR16.lean",
@@ -314,15 +316,19 @@
       "source_path": "ErdosProblems/Erdos1049/PositiveSeriesFubiniR16.lean",
       "source_sha256": "sha256:f41ea0aa18e136f572dd3b05c83593edd2be161e4ce9436df07c94c0325d5c91",
       "port_path": "ErdosProblems/Erdos1049/PositiveSeriesFubiniR16.lean",
-      "port_sha256": "sha256:f41ea0aa18e136f572dd3b05c83593edd2be161e4ce9436df07c94c0325d5c91",
-      "edits": []
+      "port_sha256": "sha256:3f173cb213381e6172b6ca42b6fc5563a486c9d1640775a989efe50f25432e0b",
+      "edits": [
+        "Repair exact compiler diagnostics from Lean Convenience 38276766059 under the unchanged receiving pins."
+      ]
     },
     {
       "source_path": "ErdosProblems/Erdos1049/QBinomialAnalyticR16.lean",
       "source_sha256": "sha256:c2798c90b827439c92a72240d4b55aff9aaa3991cdcde1b654803c2737a687ce",
       "port_path": "ErdosProblems/Erdos1049/QBinomialAnalyticR16.lean",
-      "port_sha256": "sha256:c2798c90b827439c92a72240d4b55aff9aaa3991cdcde1b654803c2737a687ce",
-      "edits": []
+      "port_sha256": "sha256:3fdbf9add0113cffbbf8fc73c828facd234850e70cd382f3b2a5aacaac0e3116",
+      "edits": [
+        "Repair exact compiler diagnostics from Lean Convenience 38276766059 under the unchanged receiving pins."
+      ]
     }
   ],
   "import_graph": {
@@ -455,5 +461,17 @@
     ]
   },
   "wrapper_sha256": "sha256:18b5743afaed6c31ea1d530276c164c6de62e2e8d4855da08b6f21de6cf62909",
-  "verification": "No compilation or actual receiving export comparison run."
+  "verification": "No compilation or actual receiving export comparison run.",
+  "compiler_repairs": [
+    {
+      "failed_source_commit": "057ba42d60cfcdbe3f46c3f5bd14730570e659f9",
+      "failed_run": "https://github.com/wcook04/plectis-erdos-lean/actions/runs/38276766059",
+      "port_paths": [
+        "ErdosProblems/Erdos1049/PaperCompleteR21/RogersFactorisationAnalytic.lean",
+        "ErdosProblems/Erdos1049/PositiveSeriesFubiniR16.lean",
+        "ErdosProblems/Erdos1049/QBinomialAnalyticR16.lean"
+      ],
+      "validation_scope": "complete current-source batch; actual receiving identity is a separate gate"
+    }
+  ]
 }
