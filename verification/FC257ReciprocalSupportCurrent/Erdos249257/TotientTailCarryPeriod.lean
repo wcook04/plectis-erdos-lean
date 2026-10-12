@@ -165,7 +165,7 @@ theorem carryShift_mul_dvd
       rw [show N + (m + 1) * h = N + m * h + h by
         rw [Nat.succ_mul]
         omega]
-      convert hstep.add ih using 1 <;> ring
+      convert hstep.add ih using 1 <;> first | rfl | ring
 
 /-- Uniform quotient-periodicity of all dyadic carry sections.  The period is
 measured in the section variable; its ambient-index shift is `2^j h`. -/
@@ -670,7 +670,7 @@ theorem integral_tailDiff_has_endpointSurvivor
     omega
   · have hreset := carryOrbit_modEq_neg_windowDiscrepancy h N d L
     have hneg := hreset.neg
-    simpa using hneg
+    simpa [Int.ModEq] using hneg
 
 /-! ## Exact infinite carry-lock classification -/
 
@@ -713,7 +713,7 @@ theorem tail_diff_mem_int_of_boundedTailCarry
     omega
   · have hreset := carryOrbit_modEq_neg_windowDiscrepancy h N d L
     have hneg := hreset.neg
-    simpa using hneg
+    simpa [Int.ModEq] using hneg
 
 /-- **Exact edge-lock classification.**  A shifted totient-tail difference is
 an integer iff some integer launch of the affine carry recurrence remains
@@ -786,7 +786,7 @@ theorem tail_diff_notMem_int_of_directedCertifiedKill
   let r : ℤ := windowDiscrepancy h N L % P
   have hymod : y % P = r := by
     have hneg := hzmod.neg
-    simpa [y, P, r] using hneg
+    simpa [y, P, r, Int.ModEq] using hneg
   have hbounds := tail_diff_directed_bounds h (N + L)
   rw [← hz] at hbounds
   have hzlo : -(N + L + 2 : ℤ) < z := by

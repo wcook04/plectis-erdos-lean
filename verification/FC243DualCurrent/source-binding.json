@@ -1275,8 +1275,13 @@
           "source_sha256": "sha256:cd5eb4f8dda2e486b46e02065960a5266803a24c52b9aa459f2ef355512a2af7"
         }
       ],
-      "port_sha256": "sha256:cd5eb4f8dda2e486b46e02065960a5266803a24c52b9aa459f2ef355512a2af7",
-      "edits": [],
+      "port_sha256": "sha256:b10a2ffc019606ed1bd067ec4b913dec33608a0e247f402780a768a924bef327",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38276766059 at057ba42: Exact literal ZMod7 denominator12 inverse3 witness; unchanged +/-1 residues3/4 and kerneldecide product. Independent static reviews passed; full source compiler replay pending."
+        }
+      ],
       "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
     },
     {

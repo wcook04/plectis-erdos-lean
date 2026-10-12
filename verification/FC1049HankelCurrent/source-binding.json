@@ -213,8 +213,13 @@
       "source_path": "ErdosProblems/Erdos1049/PaperCompleteR21/RogersFactorisationAnalytic.lean",
       "source_sha256": "sha256:50b6707dc4587ae58c5ccf9b05de57a934b17d41f14b074890d57b8f2d853034",
       "port_path": "ErdosProblems/Erdos1049/PaperCompleteR21/RogersFactorisationAnalytic.lean",
-      "port_sha256": "sha256:50b6707dc4587ae58c5ccf9b05de57a934b17d41f14b074890d57b8f2d853034",
-      "edits": []
+      "port_sha256": "sha256:38be66dbde0f76a5f1b3ebcd0320eb191eb4739d03b00d5ccea55f75910d8129",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38276766059 at057ba42: Exact Nat antidiagonal membership/equivalence and HasSum.congr_fun pointwise transport avoid additive-instance equality; unchanged algebra including regrouped sum. Independent static reviews passed; full source compiler replay pending."
+        }
+      ]
     },
     {
       "source_path": "ErdosProblems/Erdos1049/PositiveSeriesR16.lean",
@@ -300,8 +305,13 @@
       "source_path": "ErdosProblems/Erdos1049/ActualPositiveMeasureR16.lean",
       "source_sha256": "sha256:4e264ecc918e30448bb3856f73d64c1dc5f2797756c91334b4387511b6afe2fb",
       "port_path": "ErdosProblems/Erdos1049/ActualPositiveMeasureR16.lean",
-      "port_sha256": "sha256:4e264ecc918e30448bb3856f73d64c1dc5f2797756c91334b4387511b6afe2fb",
-      "edits": []
+      "port_sha256": "sha256:b11d634feb465df0ea8de34b92deeaf821a5af48e1a6a71e2fde987f1437dac1",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38276766059 at057ba42: Explicit Nat HasAntidiagonal namespace for original actualGamma finite sum and unchanged summand; four qualification sites. Independent static reviews passed; full source compiler replay pending."
+        }
+      ]
     },
     {
       "source_path": "ErdosProblems/Erdos1049/InfiniteMomentPositivityR10.lean",
@@ -314,15 +324,25 @@
       "source_path": "ErdosProblems/Erdos1049/PositiveSeriesFubiniR16.lean",
       "source_sha256": "sha256:f41ea0aa18e136f572dd3b05c83593edd2be161e4ce9436df07c94c0325d5c91",
       "port_path": "ErdosProblems/Erdos1049/PositiveSeriesFubiniR16.lean",
-      "port_sha256": "sha256:f41ea0aa18e136f572dd3b05c83593edd2be161e4ce9436df07c94c0325d5c91",
-      "edits": []
+      "port_sha256": "sha256:3f173cb213381e6172b6ca42b6fc5563a486c9d1640775a989efe50f25432e0b",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38276766059 at057ba42: Exact Nat HasAntidiagonal finite sums and sigmaAntidiagonalEquivProd namespace for unchanged pair reindexing. Independent static reviews passed; full source compiler replay pending."
+        }
+      ]
     },
     {
       "source_path": "ErdosProblems/Erdos1049/QBinomialAnalyticR16.lean",
       "source_sha256": "sha256:c2798c90b827439c92a72240d4b55aff9aaa3991cdcde1b654803c2737a687ce",
       "port_path": "ErdosProblems/Erdos1049/QBinomialAnalyticR16.lean",
-      "port_sha256": "sha256:c2798c90b827439c92a72240d4b55aff9aaa3991cdcde1b654803c2737a687ce",
-      "edits": []
+      "port_sha256": "sha256:0892e59eff35a6565b622881bc463526f175ce7e71267fcb1896a99326055d3a",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38276766059 at057ba42: Explicit Function.comp_def beta in two exact finite-product Tendsto witnesses. Independent static reviews passed; full source compiler replay pending."
+        }
+      ]
     }
   ],
   "import_graph": {

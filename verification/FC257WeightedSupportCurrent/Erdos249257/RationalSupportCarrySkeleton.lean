@@ -460,6 +460,7 @@ theorem pow_oddDoublingOrder_mod_eq_one
 
 theorem oddDoublingOrder_pos {v : ℕ} (hvodd : Odd v) :
     0 < oddDoublingOrder v hvodd := by
+  letI : NeZero v := ⟨by rcases hvodd with ⟨k, hk⟩; omega⟩
   exact orderOf_pos _
 
 /-- The actual multiplicative order closes the canonical residue cycle. -/

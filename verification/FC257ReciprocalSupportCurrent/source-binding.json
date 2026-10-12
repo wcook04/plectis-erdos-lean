@@ -259,8 +259,13 @@
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/CyclicTensorMobiusShadow.lean",
       "source_sha256": "sha256:5dd25885b3ad74a3131a77042a0469b930b09efb4a871ed8fe95ea51156b9504",
       "port_path": "Erdos249257/CyclicTensorMobiusShadow.lean",
-      "port_sha256": "sha256:5dd25885b3ad74a3131a77042a0469b930b09efb4a871ed8fe95ea51156b9504",
-      "edits": []
+      "port_sha256": "sha256:3ca8c7ba72f31908c8b1ec9070a63ffbf90da5436df11543aa85c0ae368f1277",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38276766059 at057ba42: Explicit cyclicModulus definition aligns unchanged polynomial identity. Independent static reviews passed; full source compiler replay pending."
+        }
+      ]
     },
     {
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/CyclotomicProjectionOfShadow.lean",
@@ -593,8 +598,13 @@
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/RationalSupportCarrySkeleton.lean",
       "source_sha256": "sha256:1738231c9d07b24c404a436b4559571a4b26c36c50c34fa3c0dc77fb7d4d47be",
       "port_path": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "port_sha256": "sha256:1738231c9d07b24c404a436b4559571a4b26c36c50c34fa3c0dc77fb7d4d47be",
-      "edits": []
+      "port_sha256": "sha256:63f8584f6427503c0e56e0a11a1119778bffa8fd7a7622bf8c88c05447de55f1",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38276766059 at057ba42: Existing Oddv-derived proof-local NeZero for finite unit order; reciprocal additionally explicit Nat.ModEq and Function.comp_def beta. Weighted localinstance is parent-approved robustness, not observed fatal. Independent static reviews passed; full source compiler replay pending."
+        }
+      ]
     },
     {
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/ReciprocalSupportIrrationality.lean",
@@ -727,8 +737,13 @@
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/TotientTailCarryPeriod.lean",
       "source_sha256": "sha256:f859ae94fb3cdcf0452ad9eb3673a629bb542ce553472596acdf46e53e75b58d",
       "port_path": "Erdos249257/TotientTailCarryPeriod.lean",
-      "port_sha256": "sha256:f859ae94fb3cdcf0452ad9eb3673a629bb542ce553472596acdf46e53e75b58d",
-      "edits": []
+      "port_sha256": "sha256:5809182d454ad1e7b2740bb84a165da3f4a8f3d7d5ea44dd39676c6df693f28b",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38276766059 at057ba42: Int.ModEq explicit remainder equality and rfl-first unchanged carry telescoping algebra. Independent static reviews passed; full source compiler replay pending."
+        }
+      ]
     },
     {
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/TotientTailPeriodKiller.lean",
@@ -835,8 +850,13 @@
       "source_path": "verification/FC257ReciprocalSupport/lean/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
       "source_sha256": "sha256:7dd147a2bef89f7f23a168c02a8dfb4c7fee887314a7a5367d49336330eb1419",
       "port_path": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
-      "port_sha256": "sha256:7dd147a2bef89f7f23a168c02a8dfb4c7fee887314a7a5367d49336330eb1419",
-      "edits": []
+      "port_sha256": "sha256:21ee7f7ed2bfd2721be0dbf3bac04647e3a26468f81e2e1f0e9185e3f2e72867",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38276766059 at057ba42: Explicit supportedMersenneDigitValue definition reduces unchanged subtype digit map. Independent static reviews passed; full source compiler replay pending."
+        }
+      ]
     },
     {
       "source_path": "verification/FC257ReciprocalSupport/lean/ErdosProblems/Erdos257/PaperCompleteR7/AnalyticTargets.lean",
@@ -882,8 +902,13 @@
       "source_path": "verification/FC257ReciprocalSupport/lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverPotentialBounds.lean",
       "source_sha256": "sha256:640d9ad631f71243eda69cbd0162d984ddb8e47f3fe7eaa60a3e2fbe5164d9e4",
       "port_path": "ErdosProblems/Erdos257/PaperCompleteR8/CoverPotentialBounds.lean",
-      "port_sha256": "sha256:640d9ad631f71243eda69cbd0162d984ddb8e47f3fe7eaa60a3e2fbe5164d9e4",
-      "edits": []
+      "port_sha256": "sha256:1a3b31e634225d6d8db85282ff83bdea1fab8e3e88d18fd0784459bd07d49c94",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38276766059 at057ba42: rfl-first conversion and guarded original scalar-cost normalization/algebra, including reachable reciprocal duplicate. Independent static reviews passed; full source compiler replay pending."
+        }
+      ]
     },
     {
       "source_path": "verification/FC257ReciprocalSupport/lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicKernel.lean",
@@ -1074,8 +1099,13 @@
       "source_path": "verification/FC257ReciprocalSupport/lean/ErdosProblems/Erdos68/FactorialGapPlateauCore.lean",
       "source_sha256": "sha256:8572bdb53144be1aa35b33395db25e3708e717c4dc2e1fd4aa774a12061bcf2a",
       "port_path": "ErdosProblems/Erdos68/FactorialGapPlateauCore.lean",
-      "port_sha256": "sha256:8572bdb53144be1aa35b33395db25e3708e717c4dc2e1fd4aa774a12061bcf2a",
-      "edits": []
+      "port_sha256": "sha256:97d2e63ad73ff7a8fc22a152e2170ffec28761a9d56b5aabc07fe70377cb305a",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38276766059 at057ba42: Explicit Function.comp_def beta of inverse composition witness. Independent static reviews passed; full source compiler replay pending."
+        }
+      ]
     },
     {
       "source_path": "verification/FC257ReciprocalSupport/lean/ErdosProblems/Erdos68/FactorialZeroPlateauCertificates.lean",

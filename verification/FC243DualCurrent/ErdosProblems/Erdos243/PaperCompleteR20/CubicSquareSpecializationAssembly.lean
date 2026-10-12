@@ -64,8 +64,12 @@ theorem primitive_cubic_zero_density_impossible_of_square_specialisation
       (c : ZMod 7) / (12 : ZMod 7) = 4 ∨
       (c : ZMod 7) / (12 : ZMod 7) = 6 := by
     rcases hc with rfl | rfl
-    · exact Or.inr (Or.inl (by decide))
-    · exact Or.inr (Or.inr (Or.inl (by decide)))
+    · exact Or.inr (Or.inl (by
+        rw [div_eq_mul_inv, ZMod.inv_eq_of_mul_eq_one 7 (12 : ZMod 7) 3 (by decide)]
+        decide))
+    · exact Or.inr (Or.inr (Or.inl (by
+        rw [div_eq_mul_inv, ZMod.inv_eq_of_mul_eq_one 7 (12 : ZMod 7) 3 (by decide)]
+        decide)))
   have hdensity := integral_cubic_mod_seven_quartic_density
     (fun n ↦ (a n : ℤ)) (fun n ↦ (u n : ℤ)) (fun n ↦ (v n : ℤ))
     12 c T hnumZ hdenZ (by decide) hratio

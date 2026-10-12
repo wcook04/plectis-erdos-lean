@@ -217,8 +217,13 @@
       "source_path": "verification/FC1041HausdorffCounterexample/lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean",
       "source_sha256": "sha256:069ea76e27304bd34e020cf8aab0fcc9200c495ff892127612e8afe571e3fcb4",
       "port_path": "ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean",
-      "port_sha256": "sha256:069ea76e27304bd34e020cf8aab0fcc9200c495ff892127612e8afe571e3fcb4",
-      "edits": []
+      "port_sha256": "sha256:76a69c7b972381f76889bccdb145884d89c6c13025f7c636c08ada1ff2a290b4",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38276766059 at057ba42: Canonical proof-local locally path connected instance from unchanged slit-base theorem. Independent static reviews passed; full source compiler replay pending."
+        }
+      ]
     },
     {
       "source_path": "verification/FC1041HausdorffCounterexample/lean/ErdosProblems/Erdos1041/Counterexample/InstanceBarriers.lean",

@@ -248,8 +248,13 @@
       "source_path": "Erdos249257/RationalSupportCarrySkeleton.lean",
       "source_sha256": "sha256:4025119b734307d0b2711ec2d2f1b9f1989d237e5c7aa0eebd353173dd9ef450",
       "port_path": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "port_sha256": "sha256:4025119b734307d0b2711ec2d2f1b9f1989d237e5c7aa0eebd353173dd9ef450",
-      "edits": []
+      "port_sha256": "sha256:04c75864ee4ef99b7ef5b9dbd76f9e887442333989241c0bc7a2e9ef722fae20",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38276766059 at057ba42: Existing Oddv-derived proof-local NeZero for finite unit order; reciprocal additionally explicit Nat.ModEq and Function.comp_def beta. Weighted localinstance is parent-approved robustness, not observed fatal. Independent static reviews passed; full source compiler replay pending."
+        }
+      ]
     },
     {
       "source_path": "Erdos249257/ReciprocalSupportIrrationality.lean",
@@ -491,8 +496,13 @@
       "source_path": "ErdosProblems/Erdos257/PaperCompleteR8/CoverPotentialBounds.lean",
       "source_sha256": "sha256:c75d245c5756c6da036f3cd09b513367ba9c9bc6a4356a93b9e5fa932ac27b1a",
       "port_path": "ErdosProblems/Erdos257/PaperCompleteR8/CoverPotentialBounds.lean",
-      "port_sha256": "sha256:c75d245c5756c6da036f3cd09b513367ba9c9bc6a4356a93b9e5fa932ac27b1a",
-      "edits": []
+      "port_sha256": "sha256:9deee392da3f693b6cbfcd7c5ac21cd83532f031d5c7da5bfd15e1ccd8f18098",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38276766059 at057ba42: rfl-first conversion and guarded original scalar-cost normalization/algebra, including reachable reciprocal duplicate. Independent static reviews passed; full source compiler replay pending."
+        }
+      ]
     },
     {
       "source_path": "ErdosProblems/Erdos257/PaperCompleteR8/CoverScalarGauge.lean",
