@@ -305,11 +305,15 @@
       "source_path": "ErdosProblems/Erdos1049/ActualPositiveMeasureR16.lean",
       "source_sha256": "sha256:4e264ecc918e30448bb3856f73d64c1dc5f2797756c91334b4387511b6afe2fb",
       "port_path": "ErdosProblems/Erdos1049/ActualPositiveMeasureR16.lean",
-      "port_sha256": "sha256:b11d634feb465df0ea8de34b92deeaf821a5af48e1a6a71e2fde987f1437dac1",
+      "port_sha256": "sha256:37085f20dc7988647d39e7107c1c015d1b15449bbbb34f9c52ccff451f51a655",
       "edits": [
         {
           "kind": "receiving_lean_4_33_compiler_port",
           "reason": "Authenticated source batch38276766059 at057ba42: Explicit Nat HasAntidiagonal namespace for original actualGamma finite sum and unchanged summand; four qualification sites. Independent static reviews passed; full source compiler replay pending."
+        },
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38283868154 at PRmerge4bab42, selected successor of preserved98: Expose unchanged actualGamma finite sum for nonnegativity; separate exact v t scalar endpoint algebra from HasSum.congr_fun pointwise row transport, retaining original nonzero premises and pow_add/ring. Independent static review passed; full source compiler replay pending."
         }
       ]
     },

@@ -57,7 +57,7 @@ theorem summable_thresholdTailTest_terms (C : PositiveCoverData) (t : ℕ → �
   · intro k
     have h := mul_le_mul_of_nonneg_left (coverPotential_le_cost C (k + J) N)
       (thresholdScale_pos C t ht (k + J)).le
-    convert h using 1 <;> unfold thresholdCost <;> ring
+    convert h using 1 <;> first | rfl | (unfold thresholdCost <;> ring)
 
 theorem dyadicMean_thresholdTailTest_le (C : PositiveCoverData) (t : ℕ → ℝ)
     (ht : ∀ j, 0 < t j) (hs : Summable (thresholdCost C t))
@@ -76,7 +76,7 @@ theorem dyadicMean_thresholdTailTest_le (C : PositiveCoverData) (t : ℕ → ℝ
     have h := mul_le_mul_of_nonneg_left
       (dyadicMean_coverPotential_le C (k + J) L R M hL hM)
       (thresholdScale_pos C t ht (k + J)).le
-    convert h using 1 <;> dsimp [K, thresholdCost] <;> ring
+    convert h using 1 <;> first | rfl | (dsimp [K, thresholdCost] <;> ring)
   have hleft : Summable (fun k => dyadicMean L R M (u k)) := by
     refine Summable.of_nonneg_of_le ?_ hp hdom
     intro k

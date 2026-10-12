@@ -456,8 +456,13 @@
       "source_path": "ErdosProblems/Erdos257/PaperCompleteR8/ArbitraryWeightReturns.lean",
       "source_sha256": "sha256:36a45f73c045c45459e63ccfbbb18dcd15127df09f417e4f2499d6fb5516ede7",
       "port_path": "ErdosProblems/Erdos257/PaperCompleteR8/ArbitraryWeightReturns.lean",
-      "port_sha256": "sha256:36a45f73c045c45459e63ccfbbb18dcd15127df09f417e4f2499d6fb5516ede7",
-      "edits": []
+      "port_sha256": "sha256:bb014a13b9c824f6556dbf62e733acecebb471efa666f79048b65e863f0a7e9a",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38283868154 at PRmerge4bab42, selected successor of preserved98: rfl-first instance conversion then exact thresholdCost/K unfolding and unchanged scalar ring argument. Independent static review passed; full source compiler replay pending."
+        }
+      ]
     },
     {
       "source_path": "ErdosProblems/Erdos257/PaperCompleteR8/CommonScale.lean",

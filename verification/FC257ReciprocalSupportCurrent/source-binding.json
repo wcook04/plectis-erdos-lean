@@ -285,8 +285,13 @@
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/DiagonalFlexibleOddWindowSupply.lean",
       "source_sha256": "sha256:c9775fe2ade1da3e3f90ae431bc7f47a49b8f7f97fcbe25f4435a05d3033e23d",
       "port_path": "Erdos249257/DiagonalFlexibleOddWindowSupply.lean",
-      "port_sha256": "sha256:c9775fe2ade1da3e3f90ae431bc7f47a49b8f7f97fcbe25f4435a05d3033e23d",
-      "edits": []
+      "port_sha256": "sha256:d59c0fbace7d8c19436f15c21b0215ec418c9956bd73c2b8ab2b3e4b10814b28",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38283868154 at PRmerge4bab42, selected successor of preserved98: Normalize exact Int/Nat cast expressions via original ring identities and prove natural exponent index equality using congruence/omega, with unchanged width hypotheses. Independent static review passed; full source compiler replay pending."
+        }
+      ]
     },
     {
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/DiagonalFreshLossBridge.lean",
@@ -629,8 +634,13 @@
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/SquaredMersenneDiagonalEnclosure.lean",
       "source_sha256": "sha256:2fe1a687bf45cd60d646b3c172c4a4ee434fa83aad74fe0c0d071b43f5fe24f5",
       "port_path": "Erdos249257/SquaredMersenneDiagonalEnclosure.lean",
-      "port_sha256": "sha256:2fe1a687bf45cd60d646b3c172c4a4ee434fa83aad74fe0c0d071b43f5fe24f5",
-      "edits": []
+      "port_sha256": "sha256:6e082d7cbf888bea89bd13984c4d78aba44787d4819c64650311c7d50439d10d",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38283868154 at PRmerge4bab42, selected successor of preserved98: rfl-first original directed Lambert scalar inequality conversion, unchanged multiplication/ring argument. Independent static review passed; full source compiler replay pending."
+        }
+      ]
     },
     {
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/SternBrocotRunGeometry.lean",

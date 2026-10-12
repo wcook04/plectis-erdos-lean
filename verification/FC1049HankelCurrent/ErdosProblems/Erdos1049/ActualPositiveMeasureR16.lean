@@ -242,6 +242,7 @@ lemma inverseQCoeff_le_zeroRow {q : ℝ} (hq0 : 0 < q) (hq1 : q < 1) (k : ℕ) :
 
 lemma actualGamma_nonneg {q : ℝ} (hq0 : 0 < q) (hq1 : q < 1) (k : ℕ) :
     0 ≤ actualGamma q k := by
+  unfold actualGamma
   apply Finset.sum_nonneg
   intro p hp
   exact div_nonneg (momentRowCoeff_nonneg hq0 hq1 p.1 p.2)
@@ -337,17 +338,20 @@ theorem actualGamma_hasSum {q w : ℝ}
     intro t
     have h := (momentRowCoeff_positiveSum hq0 hq1 hw0 hw1 t).sum.mul_left
       (w ^ t / qPochhammerFinite q q t)
-    convert h using 1
-    · ext k
-      dsimp [f]
-      rw [pow_add]
-      ring
-    · dsimp [v, actualGeneratingTerm]
+    have hend : v t = w ^ t / qPochhammerFinite q q t *
+        (qPochhammerInfinity (q ^ t * w ^ 2) q /
+          (qPochhammerInfinity w q ^ 3 * qPochhammerInfinity (q ^ t * w) q ^ 2)) := by
+      dsimp only [v, actualGeneratingTerm]
       have hP := (qPochhammerFinite_pos hq0.le hq1 hq0.le hq1.le t).ne'
       have hW := (qPochhammerInfinity_pos w q).ne'
       have hD := (qPochhammerInfinity_pos (q ^ t * w) q).ne'
       field_simp [hP, hW, hD]
       <;> ring
+    rw [hend]
+    refine h.congr_fun fun k => ?_
+    dsimp only [f]
+    rw [pow_add]
+    ring
   have hv : Summable v := (actualGeneratingTerm_summable hq0 hq1 hw0 hw1).div_const _
   have hrowsum : Summable (fun t => ∑' k, f t k) := by
     have he : (fun t => ∑' k, f t k) = v := funext (fun t => (hrow t).tsum_eq)

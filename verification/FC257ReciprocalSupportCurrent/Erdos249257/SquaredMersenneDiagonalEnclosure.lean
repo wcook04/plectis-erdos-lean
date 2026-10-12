@@ -378,8 +378,8 @@ theorem scaleDiagonalTailDifference_directed_lambert_interval
   rw [scaleDiagonalTailDifference_sub_lambertProjectedDiagonal]
   unfold directedLambertLowerBound directedLambertUpperBound
   constructor
-  · convert mul_le_mul_of_nonneg_left hdir.1 hC using 1 <;> ring
-  · convert mul_le_mul_of_nonneg_left hdir.2 hC using 1 <;> ring
+  · convert mul_le_mul_of_nonneg_left hdir.1 hC using 1 <;> first | rfl | ring
+  · convert mul_le_mul_of_nonneg_left hdir.2 hC using 1 <;> first | rfl | ring
 
 /-- Directed separation from the integer lattice rules out a full-target hit.
 Unlike the symmetric consumer, the hypothesis only excludes the one interval

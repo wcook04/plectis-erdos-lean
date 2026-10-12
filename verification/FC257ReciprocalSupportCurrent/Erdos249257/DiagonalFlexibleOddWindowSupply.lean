@@ -49,7 +49,7 @@ theorem adjacentDyadicWidth_add_two
       (2 : ℤ) ^ (m + 2) := by
   have h1 := adjacentDyadicWidth_succ hwidth
   have h2 := adjacentDyadicWidth_succ h1
-  simpa [Nat.add_assoc] using h2
+  convert h2 using 1 <;> first | rfl | ((try push_cast) <;> ring) | (congr 1 <;> omega)
 
 /-- The exact half-word central band at one odd rank. -/
 def PowerTwoOddHalfWordBandAt (a q : ℕ) : Prop :=
@@ -116,13 +116,13 @@ theorem diagonalAdjacentSuffixGapSupply_of_powerTwoOddGuardThreeRankBand
           2 * ((2 * (q + 1) + 1) + 3) : ℤ) <
         (2 : ℤ) ^ (2 * (q + 1) + 1) := by
     have h := adjacentDyadicWidth_add_two hwidth
-    convert h using 1
+    convert h using 1 <;> first | rfl | ((try push_cast) <;> ring) | (congr 1 <;> omega)
   have hwidth2 :
       32 * (3 * periodLcm (2 ^ a) +
           2 * ((2 * (q + 2) + 1) + 3) : ℤ) <
         (2 : ℤ) ^ (2 * (q + 2) + 1) := by
     have h := adjacentDyadicWidth_add_two hwidth1
-    convert h using 1
+    convert h using 1 <;> first | rfl | ((try push_cast) <;> ring) | (congr 1 <;> omega)
   refine ⟨2 ^ a, by omega, ?_⟩
   rcases hwindow with hq0 | hq1 | hq2
   · exact diagonalAdjacentSuffixGapWitness_of_powerTwoOddHalfWordBandAt
