@@ -791,7 +791,7 @@ theorem certifiedKill_bplus2_iff_socket_or_mixed
       unfold certifiedKill
       push_cast at hsock ⊢
       norm_num at hsock ⊢
-      simpa only [add_assoc, add_comm, add_left_comm] using hsock
+      omega
     · exact Or.inr hguard
   · rintro (hsocket | hguard)
     · have hlift :=
@@ -1736,7 +1736,7 @@ theorem two_mul_actualOddHalfCenteredLift_eq_terminal_sub_trueCarry
         P - B < windowDiscrepancy H H m % P ∧
         windowDiscrepancy H H m % P < P := by
     dsimp only [H, e, P, B]
-    simpa only [add_assoc] using htop
+    simpa only [Nat.add_zero, Nat.zero_add, add_assoc] using htop
   have hePos : 0 < e := by
     rw [htop'.1] at htop'
     omega

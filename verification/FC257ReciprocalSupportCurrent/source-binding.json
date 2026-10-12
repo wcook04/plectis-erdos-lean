@@ -477,8 +477,13 @@
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/HalfCylinderSkippedRankLimit.lean",
       "source_sha256": "sha256:ffdccbd616cf3b7e4e2a6afbea1b8c3a7aefd97d903acc2dc4f7afa2453f7eee",
       "port_path": "Erdos249257/HalfCylinderSkippedRankLimit.lean",
-      "port_sha256": "sha256:ffdccbd616cf3b7e4e2a6afbea1b8c3a7aefd97d903acc2dc4f7afa2453f7eee",
-      "edits": []
+      "port_sha256": "sha256:9a6756bb37b2916484dba37b48b8c2c21683de596e7f7e5e2d6bdd648821fac1",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated complete source batch38308284548 at exact284806: Rewrite the unapplied Tendsto composition with Function.comp_def, retaining one_div and the original inverse-limit proof. Parent and independent complete typed-goal static review passed; successor full source compiler and receiving/native assurance pending."
+        }
+      ]
     },
     {
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/HalfGreedyTwoThirdsBand.lean",
@@ -714,11 +719,15 @@
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
       "source_sha256": "sha256:3a6c344f725901df861929a92f86950e59d13690ba75c47deb61491c9d9814ce",
       "port_path": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
-      "port_sha256": "sha256:8a1a672a2ace45541d40ca05bb0b354baa45f2692ea4f19e965d9874cc26cd76",
+      "port_sha256": "sha256:3d33a9117d2ce27dd2ab9b8c3b38bc1b4dca3a77fffd421792ce29f391a1bd9f",
       "edits": [
         {
           "kind": "receiving_lean_4_33_compiler_port",
           "reason": "Authenticated source batch38301793074 at exact1b31: Expose unchanged certifiedKill/local endpoints before Nat-sum cast, exact numeral and integer addition normalization. Independent static source review passed; successor full source compiler replay pending."
+        },
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated complete source batch38308284548 at exact284806: Normalize actual closed Int And bounds with omega after existing cast/unfold steps; simplify Nat.add_zero and Nat.zero_add in unchanged endpoint propositions. Parent and independent complete typed-goal static review passed; successor full source compiler and receiving/native assurance pending."
         }
       ]
     },
