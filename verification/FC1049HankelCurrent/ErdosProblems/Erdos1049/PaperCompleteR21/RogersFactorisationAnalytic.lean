@@ -167,7 +167,7 @@ lemma realTerms_mul (f g : PowerSeries ℚ) (n : ℕ) :
     realTerms q (f * g) n = ∑ p ∈ antidiagonal n, realTerms q f p.1 * realTerms q g p.2 := by
   simp only [realTerms, coeff_mul, Rat.cast_sum, Rat.cast_mul, Finset.sum_mul]
   refine Finset.sum_congr rfl fun p hp => ?_
-  rw [mem_antidiagonal] at hp
+  rw [Finset.HasAntidiagonal.mem_antidiagonal] at hp
   rw [← hp, pow_add]
   ring
 
@@ -499,7 +499,7 @@ section RealEval
 
 lemma hasSum_sum_antidiagonal {f : ℕ × ℕ → ℝ} {a : ℝ} (hf : HasSum f a) :
     HasSum (fun n => ∑ p ∈ antidiagonal n, f p) a := by
-  have h := (Finset.sigmaAntidiagonalEquivProd.hasSum_iff (f := f)).mpr hf
+  have h := (Finset.HasAntidiagonal.sigmaAntidiagonalEquivProd.hasSum_iff (f := f)).mpr hf
   have h2 := h.sigma (fun n => hasSum_fintype _)
   convert h2 using 1
   funext n
@@ -535,7 +535,7 @@ lemma hasSum_coeff_rescale {f : PowerSeries ℝ} {a w v : ℝ}
 lemma hasSum_coeff_C_mul {f : PowerSeries ℝ} {c w v : ℝ}
     (h : HasSum (fun n => coeff n f * w ^ n) v) :
     HasSum (fun n => coeff n (C c * f) * w ^ n) (c * v) := by
-  convert h.mul_left c using 1
+  convert h.mul_left c using 1 <;> try rfl
   funext n
   rw [coeff_C_mul]
   ring
@@ -623,7 +623,7 @@ lemma hasSum_inner (hq0 : 0 < q) (hq1 : q < 1) {w : ℝ} (hw0 : 0 ≤ w) (hw1 : 
   have h := (hasSum_qBinomialRatio hq0 hq1 hw0 hw1.le hx0 hx1).mul_left
     (qPochhammerInfinity w q)⁻¹
   rw [show w * (q ^ t * w) = q ^ t * w ^ 2 by ring] at h
-  convert h using 1
+  convert h using 1 <;> try rfl
   funext j
   rw [inv_qPochhammerInfinity_shift hq0 hq1 hw0 hw1 j,
     PaperR10.qBinomialRatioCoeff_eq_ratio hq0.le hq1, mul_pow, ← pow_mul]
@@ -1191,7 +1191,7 @@ lemma coeff_zero_of_hasSum_zero {e : ℕ → ℝ}
       rw [hz, sub_zero] at h2
       have h3 := h2.mul_left (w ^ n)⁻¹
       rw [mul_zero] at h3
-      convert h3 using 1
+      convert h3 using 1 <;> try rfl
       funext i
       have hwn : w ^ n ≠ 0 := pow_ne_zero n hw0.ne'
       rw [pow_add]
@@ -1233,7 +1233,7 @@ lemma eq_of_hasSum_on_unit_interval {c d : ℕ → ℝ} {F : ℝ → ℝ}
     intro w hw0 hw1
     have h := (hc w hw0 hw1).sub (hd w hw0 hw1)
     rw [sub_self] at h
-    convert h using 1
+    convert h using 1 <;> try rfl
     funext n
     ring
   funext n

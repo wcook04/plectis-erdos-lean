@@ -56,7 +56,7 @@ theorem coverPotential_le_cost (C : PositiveCoverData) (j N : ℕ) :
     · have h := mul_le_mul_of_nonneg_left
         (kernelWeight_le_pointwise_majorant B hB d N hd) (C.coefficient_nonneg j d hd)
       simp only [div_eq_mul_inv, mul_inv_rev] at h ⊢
-      convert h using 1 <;> ring
+      convert h using 1 <;> first | rfl | ring
   have h := Summable.tsum_le_tsum hbnd hs ht
   rw [tsum_mul_left, tsum_div_const] at h
   exact h
@@ -93,7 +93,7 @@ theorem dyadicMean_coverPotential_le (C : PositiveCoverData) (j L R M : ℕ)
         (C.coefficient_nonneg j d hd)
       dsimp only [K]
       simp only [div_eq_mul_inv, mul_inv_rev] at h ⊢
-      convert h using 1 <;> ring
+      convert h using 1 <;> first | rfl | ring
   have hs : Summable (fun d => dyadicMean L R M (u d)) :=
     Summable.of_nonneg_of_le
       (fun d => dyadicMean_nonneg L R M (u d) (hnonneg d)) hpoint hdom
@@ -191,7 +191,7 @@ theorem summable_coverTailTest_terms (C : PositiveCoverData)
   · intro k
     have h := mul_le_mul_of_nonneg_left (coverPotential_le_cost C (k + J) N)
       (coverScale_pos C hε (k + J)).le
-    convert h using 1 <;> simp only [coverScaledCost] <;> ring
+    convert h using 1 <;> first | rfl | simp only [coverScaledCost] <;> first | rfl | ring
 
 /-- The actual countable test is controlled on ANY common observation schedule. -/
 theorem dyadicMean_coverTailTest_le (C : PositiveCoverData)
@@ -211,7 +211,7 @@ theorem dyadicMean_coverTailTest_le (C : PositiveCoverData)
     rw [dyadicMean_const_mul]
     have h := mul_le_mul_of_nonneg_left
       (dyadicMean_coverPotential_le C (k + J) L R M hL hM) (coverScale_pos C hε (k + J)).le
-    convert h using 1 <;> dsimp [K, coverScaledCost] <;> ring
+    convert h using 1 <;> first | rfl | dsimp [K, coverScaledCost] <;> first | rfl | ring
   have hleft : Summable (fun k => dyadicMean L R M (u k)) := by
     refine Summable.of_nonneg_of_le ?_ hpoint hdom
     intro k

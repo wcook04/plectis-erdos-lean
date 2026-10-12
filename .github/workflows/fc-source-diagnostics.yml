@@ -1,0 +1,35 @@
+# SPDX-FileCopyrightText: 2026 Will Cook
+# SPDX-License-Identifier: Apache-2.0
+name: Current FC source diagnostics
+
+# The outer corpus build excludes these nested Lake projects. Every change to
+# a receiving port must therefore exercise the complete pinned source batch.
+on:
+  pull_request:
+    paths:
+      - 'verification/**Current/**'
+      - 'scripts/fc_current_source_batch.py'
+      - 'scripts/fc_receiving_identity.py'
+      - 'scripts/build_launch_targets.py'
+      - 'scripts/test_fc_current_source_batch.py'
+      - 'scripts/test_build_launch_targets.py'
+      - '.github/workflows/lean.yml'
+      - '.github/workflows/fc-source-diagnostics.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'verification/**Current/**'
+      - 'scripts/fc_current_source_batch.py'
+      - 'scripts/fc_receiving_identity.py'
+      - 'scripts/build_launch_targets.py'
+      - '.github/workflows/lean.yml'
+      - '.github/workflows/fc-source-diagnostics.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  source:
+    uses: ./.github/workflows/lean.yml
+    with:
+      fc_current_batch: true

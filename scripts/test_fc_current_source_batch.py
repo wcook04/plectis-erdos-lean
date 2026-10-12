@@ -146,6 +146,27 @@ class SourceBatchTests(unittest.TestCase):
         self.assertNotIn('warning_clean', report)
         self.assertIn('no receiving identity certification', report['boundary'])
 
+    def test_full_summary_exposes_all_errors_at_exact_nested_source_paths(self):
+        errors = [{'file': 'ErdosProblems/Fixture.lean', 'line': i + 1,
+                   'column': 3, 'message': 'Type mismatch'} for i in range(33)]
+        result = {'status': 'fail', 'projects': [
+            {'path': 'verification/FCFixtureCurrent', 'units': ['6579'], 'status': 'fail',
+             'targets': [{'target': 'FCFixture', 'errors': errors}]}]}
+        summary = batch.diagnostic_summary(result)
+        self.assertIn('Compiler errors retained: **33**', summary)
+        self.assertIn('verification/FCFixtureCurrent/ErdosProblems/Fixture.lean:33:3', summary)
+        self.assertEqual(summary.count('— Type mismatch'), 33)
+        self.assertIn(batch.BOUNDARY, summary)
+
+    def test_relevant_pr_changes_automatically_run_complete_source_batch(self):
+        workflow = (Path(__file__).resolve().parents[1] /
+                    '.github/workflows/fc-source-diagnostics.yml').read_text()
+        self.assertIn('pull_request:', workflow)
+        self.assertIn("'verification/**Current/**'", workflow)
+        self.assertIn('uses: ./.github/workflows/lean.yml', workflow)
+        self.assertIn('fc_current_batch: true', workflow)
+        self.assertNotIn('focused_only: true', workflow)
+
     def test_dependency_sharing_does_not_share_candidate_outputs(self):
         plan = self.plan()
         shared = self.root / batch.SETUP_PROJECT / '.lake/packages'
@@ -175,6 +196,14 @@ class SourceBatchTests(unittest.TestCase):
 
 
 class WarningPolicyTests(unittest.TestCase):
+    def setUp(self):
+        directory = tempfile.TemporaryDirectory()
+        self.addCleanup(directory.cleanup)
+        environment = patch.dict(os.environ, {
+            'GITHUB_STEP_SUMMARY': str(Path(directory.name) / 'fixture-summary.md')})
+        environment.start()
+        self.addCleanup(environment.stop)
+
     def test_explicit_warning_clean_flag_preserves_default_command(self):
         with tempfile.TemporaryDirectory() as directory:
             for explicit, expected in [(False, ['lake', 'build', 'Fixture']),

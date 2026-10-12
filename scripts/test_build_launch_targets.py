@@ -166,6 +166,21 @@ class ProcessAndPlanTests(unittest.TestCase):
             self.assertNotEqual(result['returncode'],0)
             self.assertLess(result['seconds'],5)
 
+    def test_annotation_quota_cannot_truncate_error_inventory(self):
+        import gzip
+        with tempfile.TemporaryDirectory() as tmp:
+            log = Path(tmp) / 'many.log.gz'
+            result = runner.run_build([__import__('sys').executable, '-c',
+                "for i in range(33): print(f'error: Demo.lean:{i+1}:3: unsolved goals')\nraise SystemExit(1)"],
+                root=Path(tmp), log=log, timeout=5, heartbeat=1, module_budget=5,
+                progress=lambda _: None, annotation_prefix='verification/FCFixtureCurrent/')
+            self.assertEqual(len(result['errors']), 33)
+            self.assertEqual(result['errors'][-1]['line'], 33)
+            self.assertIn('Demo.lean:33:3', gzip.open(log, 'rt').read())
+            output = self.output.getvalue()
+            self.assertEqual(output.count('::error file='), 20)
+            self.assertIn('file=verification/FCFixtureCurrent/Demo.lean', output)
+
     def test_log_budget_is_fail_closed(self):
         with tempfile.TemporaryDirectory() as tmp:
             result=runner.run_build([__import__('sys').executable,'-c',"print('x'*50000)"],

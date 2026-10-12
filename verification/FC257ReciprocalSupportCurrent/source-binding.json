@@ -259,8 +259,10 @@
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/CyclicTensorMobiusShadow.lean",
       "source_sha256": "sha256:5dd25885b3ad74a3131a77042a0469b930b09efb4a871ed8fe95ea51156b9504",
       "port_path": "Erdos249257/CyclicTensorMobiusShadow.lean",
-      "port_sha256": "sha256:5dd25885b3ad74a3131a77042a0469b930b09efb4a871ed8fe95ea51156b9504",
-      "edits": []
+      "port_sha256": "sha256:fc0a93ef62918b8b75321193de80d61ffe9e85e7e498fe397a881c6d50bff4c5",
+      "edits": [
+        "Repair exact compiler diagnostics from Lean Convenience 38276766059 under the unchanged receiving pins."
+      ]
     },
     {
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/CyclotomicProjectionOfShadow.lean",
@@ -593,8 +595,10 @@
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/RationalSupportCarrySkeleton.lean",
       "source_sha256": "sha256:1738231c9d07b24c404a436b4559571a4b26c36c50c34fa3c0dc77fb7d4d47be",
       "port_path": "Erdos249257/RationalSupportCarrySkeleton.lean",
-      "port_sha256": "sha256:1738231c9d07b24c404a436b4559571a4b26c36c50c34fa3c0dc77fb7d4d47be",
-      "edits": []
+      "port_sha256": "sha256:baf59c92758267d41f8bb79d5025d55073ce994ce7d8313ee5696c946fa82408",
+      "edits": [
+        "Repair exact compiler diagnostics from Lean Convenience 38276766059 under the unchanged receiving pins."
+      ]
     },
     {
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/ReciprocalSupportIrrationality.lean",
@@ -727,8 +731,10 @@
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/TotientTailCarryPeriod.lean",
       "source_sha256": "sha256:f859ae94fb3cdcf0452ad9eb3673a629bb542ce553472596acdf46e53e75b58d",
       "port_path": "Erdos249257/TotientTailCarryPeriod.lean",
-      "port_sha256": "sha256:f859ae94fb3cdcf0452ad9eb3673a629bb542ce553472596acdf46e53e75b58d",
-      "edits": []
+      "port_sha256": "sha256:16a32fd8fc3bb99fd97440676188b96c2b71425eecccd743949b0b397f65fd9a",
+      "edits": [
+        "Repair exact compiler diagnostics from Lean Convenience 38276766059 under the unchanged receiving pins."
+      ]
     },
     {
       "source_path": "verification/FC257ReciprocalSupport/lean/Erdos249257/TotientTailPeriodKiller.lean",
@@ -835,8 +841,10 @@
       "source_path": "verification/FC257ReciprocalSupport/lean/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
       "source_sha256": "sha256:7dd147a2bef89f7f23a168c02a8dfb4c7fee887314a7a5367d49336330eb1419",
       "port_path": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
-      "port_sha256": "sha256:7dd147a2bef89f7f23a168c02a8dfb4c7fee887314a7a5367d49336330eb1419",
-      "edits": []
+      "port_sha256": "sha256:21ee7f7ed2bfd2721be0dbf3bac04647e3a26468f81e2e1f0e9185e3f2e72867",
+      "edits": [
+        "Repair exact compiler diagnostics from Lean Convenience 38276766059 under the unchanged receiving pins."
+      ]
     },
     {
       "source_path": "verification/FC257ReciprocalSupport/lean/ErdosProblems/Erdos257/PaperCompleteR7/AnalyticTargets.lean",
@@ -1074,8 +1082,10 @@
       "source_path": "verification/FC257ReciprocalSupport/lean/ErdosProblems/Erdos68/FactorialGapPlateauCore.lean",
       "source_sha256": "sha256:8572bdb53144be1aa35b33395db25e3708e717c4dc2e1fd4aa774a12061bcf2a",
       "port_path": "ErdosProblems/Erdos68/FactorialGapPlateauCore.lean",
-      "port_sha256": "sha256:8572bdb53144be1aa35b33395db25e3708e717c4dc2e1fd4aa774a12061bcf2a",
-      "edits": []
+      "port_sha256": "sha256:30654c19dad87d9bed1e9bd679cc4be7dd10199b565da99c8071517d8cef4342",
+      "edits": [
+        "Repair exact compiler diagnostics from Lean Convenience 38276766059 under the unchanged receiving pins."
+      ]
     },
     {
       "source_path": "verification/FC257ReciprocalSupport/lean/ErdosProblems/Erdos68/FactorialZeroPlateauCertificates.lean",
@@ -1153,5 +1163,19 @@
     }
   ],
   "wrapper_sha256": "sha256:c04a7ae89a7cbeb6f07c4520f23563c7ed8d9551952bfd4ad8903cfdf117b761",
-  "verification": "No compilation or actual receiving export comparison run."
+  "verification": "No compilation or actual receiving export comparison run.",
+  "compiler_repairs": [
+    {
+      "failed_source_commit": "057ba42d60cfcdbe3f46c3f5bd14730570e659f9",
+      "failed_run": "https://github.com/wcook04/plectis-erdos-lean/actions/runs/38276766059",
+      "port_paths": [
+        "Erdos249257/CyclicTensorMobiusShadow.lean",
+        "Erdos249257/RationalSupportCarrySkeleton.lean",
+        "Erdos249257/TotientTailCarryPeriod.lean",
+        "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
+        "ErdosProblems/Erdos68/FactorialGapPlateauCore.lean"
+      ],
+      "validation_scope": "complete current-source batch; actual receiving identity is a separate gate"
+    }
+  ]
 }
