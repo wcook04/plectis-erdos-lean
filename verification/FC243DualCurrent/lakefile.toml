@@ -20,3 +20,6 @@ globs = ["ExternalVerification.+"]
 
 [[lean_lib]]
 name = "FC6523Solutions"
+
+[[lean_lib]]
+name = "FCNonintegralRateSolutions"
