@@ -26,6 +26,7 @@ TOOLS = {
     "pipeline": ("https://github.com/PalomarRegistry/PalomarSubmission.git", "ef2fa1eadcb246c2346ddba39b52eaa53d4bb763"),
 }
 TARGETS = {
+    "1049-order-coeff": ("", "FormalConjectures/Paper/ZudilinHankelInitialTerm.lean", "FormalConjectures.Paper.ZudilinHankelInitialTerm", "FC1049OrderCoeffCurrent", "FC1049OrderCoeffSolution", "ZudilinHankelInitialTerm.first_nonzero_term"),
     # Unsubmitted candidates require --receiving-commit after their exact FC
     # draft and immutable proof URL have been prepared. No default PR is implied.
     "243-nonintegral": ("", "FormalConjectures/ErdosProblems/243.lean", "FormalConjectures.ErdosProblems.243", "FC243NonintegralRateCurrent", "FCNonintegralRateSolutions", "Erdos243.erdos_243.variants.nonintegral_regular_rate"),

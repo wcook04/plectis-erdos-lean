@@ -29,7 +29,7 @@ SETUP_PROJECT = 'verification/FC249RationalObservableCurrent'
 UNITS = {'6579', '6576', '6577', '6527', '6523-cubic', '6523-product',
          '6528-finite', '6528-mixed', '6529', '6780', '6971-257',
          '6971-1049', '6971-258', '6971-1041'}
-ADDITIONAL_UNITS = {'243-nonintegral', '249-mixed', '269-kernel', '68-liminf'}
+ADDITIONAL_UNITS = {'243-nonintegral', '249-mixed', '269-kernel', '68-liminf', '1049-order-coeff'}
 BOUNDARY = ('Source compiler diagnostics only. No actual FC export, Comparator, '
             'defaultLean or NanoDa acceptance; no receiving identity certification.')
 
