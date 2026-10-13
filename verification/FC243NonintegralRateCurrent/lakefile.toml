@@ -1,0 +1,14 @@
+name = "fc243_nonintegral_rate_current"
+defaultTargets = ["FCNonintegralRateSolutions"]
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.33.1"
+
+[[lean_lib]]
+name = "ErdosProblems"
+globs = ["ErdosProblems.+"]
+
+[[lean_lib]]
+name = "FCNonintegralRateSolutions"
