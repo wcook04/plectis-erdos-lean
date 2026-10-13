@@ -49,6 +49,7 @@ TARGETS = {
     "6971-1041": ("b47d6ce7ebabf79193826fad5b14b13e44f9c786", "FormalConjectures/ErdosProblems/1041.lean", "FormalConjectures.ErdosProblems.1041", "FC1041HausdorffCurrent", "FC6971HausdorffSolution", "Erdos1041.erdos_1041"),
 }
 LIBRARY_ROOTS = {
+    "1049-order-coeff": {"ErdosProblems", "FC1049OrderCoeffSolution"},
     "243-nonintegral": {"ErdosProblems", "FCNonintegralRateSolutions"},
     "249-mixed": {"ErdosProblems", "FC249MixedModuliSolution"},
     "269-kernel": {"ErdosProblems", "FC269UniformKernelSolution"},
