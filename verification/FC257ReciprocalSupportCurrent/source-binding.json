@@ -1229,8 +1229,13 @@
       "source_path": "verification/FC257ReciprocalSupport/verification/ExternalVerification/Solution.lean",
       "source_sha256": "sha256:cbe59f49b5b34dcd8e4b1ee2073c6cdbcff59b58ca901466855e0a4eeedb99d8",
       "port_path": "ExternalVerification/Solution.lean",
-      "port_sha256": "sha256:cbe59f49b5b34dcd8e4b1ee2073c6cdbcff59b58ca901466855e0a4eeedb99d8",
-      "edits": []
+      "port_sha256": "sha256:70a07bebf2783429c109f20bda11d705eb9a0d6f35dc3de4b83c3dceb98f88e1",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated full source run38325217366 at691a62 exposed22 ExternalVerification/Solution compiler occurrences. Add14 private proved transport-helper candidates for whole function/family/set and fixed rational denominator equalities; preserve original statements, definitions, hypotheses and credits. Split the actual Even proposition instead of assuming hidden Decidable identity, rewrite concrete Nat.lcm fold and complete families before carrier/module transport, and use fixed-modulus Units.ext. Parent and aggregate reviewed all22 full typed goals, original107 declaration records and new14 helper candidates with immutable definitions and pinned APIs. Full successor source compilation and receiving/native assurance remain pending."
+        }
+      ]
     },
     {
       "source_path": "verification/FC257ReciprocalSupport/verification/ExternalVerification/Statements.lean",

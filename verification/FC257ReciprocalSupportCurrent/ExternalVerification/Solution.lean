@@ -174,11 +174,12 @@ private theorem actualLcmRawErrorRadius_eq_source (a q : ℕ) :
 private theorem oddGuardedCanonicalAdjacentSuffixDepth_eq_source (t : ℕ) :
     oddGuardedCanonicalAdjacentSuffixDepth t =
       Erdos249257.DiagonalFreshLossBridge.oddGuardedCanonicalAdjacentSuffixDepth t := by
-  simp [oddGuardedCanonicalAdjacentSuffixDepth,
-    Erdos249257.DiagonalFreshLossBridge.oddGuardedCanonicalAdjacentSuffixDepth,
-    canonicalAdjacentSuffixDepth,
-    Erdos249257.DiagonalFreshLossBridge.canonicalAdjacentSuffixDepth,
-    periodLcm_eq_source]
+  by_cases heven : Even (Nat.log2 (Erdos249257.TotientTailPeriodKiller.periodLcm t) + 10) <;>
+    simp [oddGuardedCanonicalAdjacentSuffixDepth,
+      Erdos249257.DiagonalFreshLossBridge.oddGuardedCanonicalAdjacentSuffixDepth,
+      canonicalAdjacentSuffixDepth,
+      Erdos249257.DiagonalFreshLossBridge.canonicalAdjacentSuffixDepth,
+      periodLcm_eq_source, heven]
 
 private theorem actualLcmOrbitSeparationSupply_eq_source :
     PowerTwoActualLcmOrbitSeparationSupply =
@@ -431,6 +432,96 @@ def totientKernelIndexEquiv (k e : ℕ) :
     TotientKernelIndex k e ≃ Erdos249257.TotientKernelIndex k e :=
   totientKernelHeadIndexEquiv.sumCongr (Equiv.refl _)
 
+private theorem factorialGapDenominator_eq_source :
+    factorialGapDenominator = ErdosProblems.Erdos68.factorialGapDenominator := by
+  funext n
+  rfl
+
+private theorem privateQuotient_eq_source
+    {ι : Type*} [DecidableEq ι] (base : ℕ) (s : Finset ι) (d : ι → ℕ) :
+    privateQuotient base s d = ErdosProblems.Erdos68.privateQuotient base s d := by
+  funext i
+  rfl
+
+private theorem totientKernelThroughLevelFamily_eq_source (e : ℕ) :
+    totientKernelThroughLevelFamily e = Erdos249257.totientKernelThroughLevelFamily e := by
+  funext i n
+  rcases i with ⟨j, r⟩
+  rfl
+
+private theorem fullTotientKernelFamily_eq_source :
+    fullTotientKernelFamily = Erdos249257.fullTotientKernelFamily := by
+  funext i n
+  rcases i with ⟨j, r⟩
+  rfl
+
+private theorem allBaseTotientKernelThroughLevelFamily_eq_source (k e : ℕ) :
+    allBaseTotientKernelThroughLevelFamily k e =
+      Erdos249257.allBaseTotientKernelThroughLevelFamily k e := by
+  funext i n
+  rcases i with ⟨j, r⟩
+  rfl
+
+private theorem canonicalCarryKernelFamily_eq_source (u : ℕ → ℤ) (e : ℕ) :
+    canonicalCarryKernelFamily u e = Erdos249257.canonicalCarryKernelFamily u e := by
+  funext i n
+  rcases i with ⟨j, r⟩
+  rfl
+
+private theorem mersenneWeight_eq_source :
+    mersenneWeight = Erdos249257.mersenneWeight := by
+  funext n
+  rfl
+
+private theorem primeWeightedTerm_eq_source (b : ℕ) (P : Finset ℕ) :
+    primeWeightedTerm b P = ErdosProblems.Erdos257.PaperCompleteR7.primeWeightedTerm b P := by
+  funext a
+  rfl
+
+private theorem supportedMersenneDigitValue_eq_source (J : Set ℕ) :
+    supportedMersenneDigitValue J = ErdosProblems.Erdos257.supportedMersenneDigitValue J := by
+  funext b
+  rfl
+
+private theorem carryQuotientAF_eq_source (q : ℕ) (U : ℕ → ℤ) :
+    carryQuotientAF q U = Erdos249257.carryQuotientAF q U := by
+  apply ArithmeticFunction.ext
+  intro n
+  change carryQuotient q U n = Erdos249257.carryQuotient q U n
+  by_cases hn : n = 0
+  · simp only [carryQuotient, Erdos249257.carryQuotient, if_pos hn]
+  · simp only [carryQuotient, Erdos249257.carryQuotient, if_neg hn]
+
+private theorem smoothPointHeight_eq_source (p q r : ℕ) :
+    smoothPointHeight p q r = ErdosProblems.Erdos269.smoothPointHeight p q r := by
+  funext e
+  rfl
+
+private theorem smoothPrefixExponents_eq_source (p q r x : ℕ) :
+    smoothPrefixExponents p q r x = ErdosProblems.Erdos269.smoothPrefixExponents p q r x := by
+  apply Finset.ext
+  intro e
+  simp only [smoothPrefixExponents, ErdosProblems.Erdos269.smoothPrefixExponents,
+    Finset.mem_filter, smooth3Val, ErdosProblems.Erdos269.smooth3Val]
+
+private theorem smoothPrefixLcm_eq_source (p q r x : ℕ) :
+    smoothPrefixLcm p q r x = ErdosProblems.Erdos269.smoothPrefixLcm p q r x := by
+  have hval :
+      (fun e : ℕ × ℕ × ℕ => smooth3Val p q r e.1 e.2.1 e.2.2) =
+        (fun e : ℕ × ℕ × ℕ => ErdosProblems.Erdos269.smooth3Val p q r e.1 e.2.1 e.2.2) := by
+    funext e
+    rfl
+  change
+    (smoothPrefixExponents p q r x).fold Nat.lcm 1
+        (fun e => smooth3Val p q r e.1 e.2.1 e.2.2) =
+      (ErdosProblems.Erdos269.smoothPrefixExponents p q r x).fold Nat.lcm 1
+        (fun e => ErdosProblems.Erdos269.smooth3Val p q r e.1 e.2.1 e.2.2)
+  rw [smoothPrefixExponents_eq_source, hval]
+
+private theorem finiteErdosSum_eq_source (F : Finset ℕ) (b : ℕ) :
+    finiteErdosSum F b = Erdos249257.finiteErdosSum F b := by
+  rfl
+
 set_option maxHeartbeats 1000000 in
 theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
   constructor
@@ -451,8 +542,8 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
       ErdosProblems.Erdos68.strictFacTop,
       ErdosProblems.Erdos68.factorialGapPrefix] using
       ErdosProblems.Erdos68.irrational_factorialGapSeries_iff_cofinal_nonunit_carries
-  · simpa [CofinalGlobalComplementaryTailCertificate,
-      factorialGapSeries, factorialGapTail, factorialGapTailTerm,
+  · simpa [privateQuotient_eq_source, factorialGapDenominator_eq_source,
+      CofinalGlobalComplementaryTailCertificate, factorialGapSeries, factorialGapTail, factorialGapTailTerm,
       pairwiseCollisionCore, collisionCore, endpointDenominatorLcm,
       endpointTailNumerator, privateQuotient, privateModulus,
       projectedResidue, complementaryProjectedResidue,
@@ -514,19 +605,14 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
       ErdosProblems.Erdos243.sylvesterNext_eventually_of_summable_negativeRelativeMass
         a D C hD hC hCpos hstep hvanish hsum
   · intro e he
-    simpa [totientKernelThroughLevelFamily, totientKernelSeq,
-      Erdos249257.totientKernelThroughLevelFamily,
-      Erdos249257.totientKernelSeq] using
-      Erdos249257.finrank_totientKernelThroughLevelFamily_eq e he
-  · simpa [fullTotientKernelFamily, totientKernelSeq,
-      Erdos249257.fullTotientKernelFamily,
-      Erdos249257.totientKernelSeq] using
-      Erdos249257.not_finiteDimensional_span_fullTotientKernel
+    rw [totientKernelThroughLevelFamily_eq_source]
+    exact Erdos249257.finrank_totientKernelThroughLevelFamily_eq e he
+  · change ¬FiniteDimensional ℚ ↥(Submodule.span ℚ (Set.range fullTotientKernelFamily))
+    rw [fullTotientKernelFamily_eq_source]
+    exact Erdos249257.not_finiteDimensional_span_fullTotientKernel
   · refine ⟨?_⟩
-    simpa [TotientOddCoreIndex, fullTotientKernelFamily, totientKernelSeq,
-      Erdos249257.TotientOddCoreIndex,
-      Erdos249257.fullTotientKernelFamily,
-      Erdos249257.totientKernelSeq] using
+    simpa only [TotientOddCoreIndex, Erdos249257.TotientOddCoreIndex,
+      fullTotientKernelFamily_eq_source] using
       Erdos249257.totientDyadicSectionBasis
   · intro k e hk he hcanon
     have hcanon' :
@@ -555,15 +641,11 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
             Erdos249257.totientKernelSectionResidue]
           funext n
           rfl
-    simpa [allBaseTotientKernelThroughLevelFamily, allBaseTotientKernelSeq,
-      AllBaseTotientKernelThroughLevelIndex,
-      Erdos249257.allBaseTotientKernelThroughLevelFamily,
-      Erdos249257.allBaseTotientKernelSeq,
-      Erdos249257.AllBaseTotientKernelThroughLevelIndex] using
-      Erdos249257.finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent
-        k e hk he hcanon'
+    rw [allBaseTotientKernelThroughLevelFamily_eq_source]
+    exact Erdos249257.finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent
+      k e hk he hcanon'
   · intro hirr
-    simpa [binaryCoeffSeries, IsTemperedBinaryOrbit,
+    simpa [canonicalCarryKernelFamily_eq_source, binaryCoeffSeries, IsTemperedBinaryOrbit,
       CarrySectionsEventuallyPeriodicMod, carryKernelSeq,
       canonicalCarryKernelFamily, Erdos249257.binaryCoeffSeries,
       Erdos249257.IsTemperedBinaryOrbit,
@@ -817,14 +899,14 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
       ErdosProblems.Erdos251.RealIntegral] using
       ErdosProblems.Erdos251.irrational_initial_iff_all_positive_tailShifts_nonintegral
         hrec
-  · simpa [mersenneAchievementSet, positiveMersenneSupportValue, mersenneWeight,
+  · simpa [mersenneWeight_eq_source, mersenneAchievementSet, positiveMersenneSupportValue, mersenneWeight,
       Erdos249257.mersenneAchievementSet,
       Erdos249257.positiveMersenneSupportValue,
       Erdos249257.mersenneWeight] using
       Erdos249257.volume_mersenneAchievementSet
   · intro b hb
     simpa using Erdos249257.irrational_erdosSum_full_support b hb
-  · simpa [DivisibilityWeightedClaim, FinitePrimeWeighted,
+  · simpa [primeWeightedTerm_eq_source, DivisibilityWeightedClaim, FinitePrimeWeighted,
       primeWeightedTerm, primeSetPart, erdosSupportSeries,
       ErdosProblems.Erdos257.PaperCompleteR7.DivisibilityWeightedClaim,
       ErdosProblems.Erdos257.PaperCompleteR7.FinitePrimeWeighted,
@@ -834,7 +916,7 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
       ErdosProblems.Erdos257.PaperCompleteR8.divisibilityWeightedClaim
   · intro b H hb hH0 hH
     have hH' : ErdosProblems.Erdos257.PaperCompleteR7.FinitePrimeWeighted b H := by
-      simpa [FinitePrimeWeighted, primeWeightedTerm, primeSetPart,
+      simpa [primeWeightedTerm_eq_source, FinitePrimeWeighted, primeWeightedTerm, primeSetPart,
         ErdosProblems.Erdos257.PaperCompleteR7.FinitePrimeWeighted,
         ErdosProblems.Erdos257.PaperCompleteR7.primeWeightedTerm,
         ErdosProblems.Erdos257.PaperCompleteR7.primeSetPart] using hH
@@ -856,10 +938,18 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
       Erdos249257.SupportSunflowerDichotomy.irrational_erdosSupportSeries_of_orthogonalPetalBouquet
         hB' hselection'
   · intro F b hF h0 hb hcop
-    simpa [finiteErdosSum, Erdos249257.finiteErdosSum] using
-      Erdos249257.finite_period_noncollapse_rat_den F b hF h0 hb
+    rw [finiteErdosSum_eq_source] at hcop ⊢
+    have hunit :
+        ZMod.unitOfCoprime b hcop =
+          ZMod.unitOfCoprime b
+            (Erdos249257.coprime_base_den_finiteErdosSum F b h0 hb) := by
+      apply Units.ext
+      simp only [ZMod.coe_unitOfCoprime]
+    rw [hunit]
+    exact Erdos249257.finite_period_noncollapse_rat_den F b hF h0 hb
   · intro J
-    simpa [supportedMersenneAchievementSet, supportedMersenneDigitValue,
+    simpa [supportedMersenneDigitValue_eq_source,
+      supportedMersenneAchievementSet, supportedMersenneDigitValue,
       SupportedMersenneDigits, positiveMersenneDigitValue, mersenneDigitTerm,
       mersenneWeight,
       ErdosProblems.Erdos257.supportedMersenneAchievementSet,
@@ -893,9 +983,7 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
           divisible := hU.divisible
           mobiusBoolean := ?_ }
       intro n hn
-      simpa [carryQuotientAF, carryQuotient,
-        Erdos249257.carryQuotientAF, Erdos249257.carryQuotient] using
-        hU.mobiusBoolean n hn
+      simpa only [← carryQuotientAF_eq_source] using hU.mobiusBoolean n hn
     · rintro ⟨U, hU⟩
       have hsource :
           ∃ U : ℕ → ℤ,
@@ -908,9 +996,7 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
             divisible := hU.divisible
             mobiusBoolean := ?_ }
         intro n hn
-        simpa [carryQuotientAF, carryQuotient,
-          Erdos249257.carryQuotientAF, Erdos249257.carryQuotient] using
-          hU.mobiusBoolean n hn
+        simpa only [carryQuotientAF_eq_source] using hU.mobiusBoolean n hn
       have hresult :=
         (Erdos249257.exists_normalized_support_fraction_iff_exists_booleanMobiusCarry
           p q hq).mpr hsource
@@ -938,14 +1024,14 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
     have hhalf :=
       Erdos249257.half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips
         hskips'
-    simpa [mersenneAchievementSet, positiveMersenneSupportValue, mersenneWeight,
+    simpa [mersenneWeight_eq_source, mersenneAchievementSet, positiveMersenneSupportValue, mersenneWeight,
       Erdos249257.mersenneAchievementSet,
       Erdos249257.positiveMersenneSupportValue,
       Erdos249257.mersenneWeight] using hhalf
   · constructor
     · intro hhalf
       have hhalf' : (1 / 2 : ℝ) ∈ Erdos249257.mersenneAchievementSet := by
-        simpa [mersenneAchievementSet, positiveMersenneSupportValue, mersenneWeight,
+        simpa [mersenneWeight_eq_source, mersenneAchievementSet, positiveMersenneSupportValue, mersenneWeight,
           Erdos249257.mersenneAchievementSet,
           Erdos249257.positiveMersenneSupportValue,
           Erdos249257.mersenneWeight] using hhalf
@@ -957,7 +1043,7 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
       have hhalf' :=
         Erdos249257.half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse.mpr
           hterminal'
-      simpa [mersenneAchievementSet, positiveMersenneSupportValue, mersenneWeight,
+      simpa [mersenneWeight_eq_source, mersenneAchievementSet, positiveMersenneSupportValue, mersenneWeight,
         Erdos249257.mersenneAchievementSet,
         Erdos249257.positiveMersenneSupportValue,
         Erdos249257.mersenneWeight] using hhalf'
@@ -977,15 +1063,13 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
       ErdosProblems.Erdos269.smooth3Val] using
       ErdosProblems.Erdos269.kernel_235_minor_eq_neg_one_fifteen
   · intro p q r x hp hq hr hpq hpr hqr hx
-    simpa [smoothPrefixLcm, smoothPrefixExponents, threePrimeHeight, smooth3Val,
-      ErdosProblems.Erdos269.smoothPrefixLcm,
-      ErdosProblems.Erdos269.smoothPrefixExponents,
-      ErdosProblems.Erdos269.threePrimeHeight,
-      ErdosProblems.Erdos269.smooth3Val] using
+    simpa only [smoothPrefixLcm_eq_source, threePrimeHeight,
+      ErdosProblems.Erdos269.threePrimeHeight] using
       ErdosProblems.Erdos269.smoothPrefixLcm_eq_threePrimeHeight
         hp hq hr hpq hpr hqr hx
   · intro p q r hp hq hr
-    simpa [smoothExponentBox, smoothPointHeight, smoothHeightFiber,
+    simpa [smoothPointHeight_eq_source,
+      smoothExponentBox, smoothPointHeight, smoothHeightFiber,
       threePrimeKernelQ, threePrimeHeight, smooth3Val,
       ErdosProblems.Erdos269.smoothExponentBox,
       ErdosProblems.Erdos269.smoothPointHeight,
@@ -1277,17 +1361,14 @@ theorem sylvesterNext_eventually_of_summable_negativeRelativeMass
 theorem finrank_totientKernelThroughLevelFamily_eq :
     TotientFiniteKernelRankStatement := by
   intro e he
-  simpa [totientKernelThroughLevelFamily, totientKernelSeq,
-    Erdos249257.totientKernelThroughLevelFamily,
-    Erdos249257.totientKernelSeq] using
-    Erdos249257.finrank_totientKernelThroughLevelFamily_eq e he
+  rw [totientKernelThroughLevelFamily_eq_source]
+  exact Erdos249257.finrank_totientKernelThroughLevelFamily_eq e he
 
 theorem not_finiteDimensional_span_fullTotientKernel :
     TotientInfiniteKernelRankStatement := by
-  simpa [fullTotientKernelFamily, totientKernelSeq,
-    Erdos249257.fullTotientKernelFamily,
-    Erdos249257.totientKernelSeq] using
-    Erdos249257.not_finiteDimensional_span_fullTotientKernel
+  change ¬FiniteDimensional ℚ ↥(Submodule.span ℚ (Set.range fullTotientKernelFamily))
+  rw [fullTotientKernelFamily_eq_source]
+  exact Erdos249257.not_finiteDimensional_span_fullTotientKernel
 
 theorem exists_totientDyadicSectionBasis :
     TotientDyadicSectionBasisStatement :=
@@ -1347,7 +1428,7 @@ theorem lcm_factorIdeal_finiteRank_shiftAlgebra_not_sufficient
       t ht
 
 theorem volume_mersenneAchievementSet : volume mersenneAchievementSet = 1 := by
-  simpa [mersenneAchievementSet, positiveMersenneSupportValue, mersenneWeight,
+  simpa [mersenneWeight_eq_source, mersenneAchievementSet, positiveMersenneSupportValue, mersenneWeight,
     Erdos249257.mersenneAchievementSet,
     Erdos249257.positiveMersenneSupportValue,
     Erdos249257.mersenneWeight] using
