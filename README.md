@@ -52,6 +52,20 @@ retain their original proof pins. The separate
 [ten-project source build](https://github.com/wcook04/plectis-erdos-lean/actions/runs/38341643841)
 passes for all fourteen units. [FC PR7260](https://github.com/google-deepmind/formal-conjectures/pull/7260)
 updates five already accepted proof links without changing their statements.
+
+On 13 October, Bo Cowgill [approved the five repaired links at `49e83c34`](https://github.com/google-deepmind/formal-conjectures/pull/7260#pullrequestreview-5507189340).
+He checked that the adapters preserve the FC statements and checked the author-hosted
+receiving logs against proof source `d1fe386f`. He did not independently rerun
+the external proofs. PR7260 remains open with review required; this maintenance
+adds no mathematical result.
+
+Bo also [approved the fixed-base Hankel statement at `d194bd96`](https://github.com/google-deepmind/formal-conjectures/pull/6780#pullrequestreview-5507342139).
+The receiving check resolves his earlier workspace concern by exporting the actual
+FC challenge before candidate compilation and checking the consumed export.
+He relied on the author-hosted receipt without independently rerunning the proof.
+PR6780 remains open with review required. The statement covers each fixed
+`0 < q < 1`; it gives no uniformity as q approaches one and no solution of #1049.
+
 The previously recorded Palomar and Lean 4.29.1 evidence below remains bound to
 its own source and environment.
 
