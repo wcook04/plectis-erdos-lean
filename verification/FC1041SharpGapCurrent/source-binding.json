@@ -1,0 +1,94 @@
+{
+  "schema": "fc6576_receiving_port/1",
+  "receiving_repository": "google-deepmind/formal-conjectures",
+  "receiving_head": "ba0edafdf1bc3b0ad3a563295503ef68751dc514",
+  "receiving_pins": {
+    "lean": "leanprover/lean4:v4.33.1",
+    "mathlib": "0df444a360eaa60ab8c11dca51a86af692955474"
+  },
+  "source_repository": "wcook04/plectis-erdos",
+  "source_ref": "fd9f1ca7c491349aed2091620160eb32212dd930",
+  "source_pins": {
+    "lean": "leanprover/lean4:v4.29.1",
+    "mathlib": "5e932f97dd25535344f80f9dd8da3aab83df0fe6"
+  },
+  "source_files": [
+    {
+      "source_path": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean",
+      "port_path": "ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean",
+      "source_sha256": "sha256:f4fb644187da79046882400ad0ae2d409448232afddb76ec31aa63771808409a",
+      "port_sha256": "sha256:f4fb644187da79046882400ad0ae2d409448232afddb76ec31aa63771808409a",
+      "edits": []
+    },
+    {
+      "source_path": "lean/ErdosProblems/Erdos1041/PaperCurveAssembly.lean",
+      "port_path": "ErdosProblems/Erdos1041/PaperCurveAssembly.lean",
+      "source_sha256": "sha256:6b0a747147efd63870273fb25c4c364050d905900deaf704f9e082b3413bcced",
+      "port_sha256": "sha256:993ed69fc1ed8402ab051059c782b553b4e47dc3e1bef6eacfbd5cedf0b4a370",
+      "edits": [
+        {
+          "kind": "receiving_mathlib_api_port",
+          "reason": "Native c513 run38171881307: replace removed multiplication monotonicity name with current left-factor mul_le_mul_right; use variation equality and remove only compiler-reported unused/no-op proof commands."
+        }
+      ]
+    },
+    {
+      "source_path": "lean/ErdosProblems/Erdos1041/SharpCollinearAlternation.lean",
+      "port_path": "ErdosProblems/Erdos1041/SharpCollinearAlternation.lean",
+      "source_sha256": "sha256:5c49a2c0859f07fa6ee5e3ade4e405bf892d70b38e90b64d9a057d7cc007f8c4",
+      "port_sha256": "sha256:5c49a2c0859f07fa6ee5e3ade4e405bf892d70b38e90b64d9a057d7cc007f8c4",
+      "edits": []
+    },
+    {
+      "source_path": "lean/ErdosProblems/Erdos1041/SharpCollinearChebyshev.lean",
+      "port_path": "ErdosProblems/Erdos1041/SharpCollinearChebyshev.lean",
+      "source_sha256": "sha256:7a5caeceff9b667bf70241e90d7a40483ba0c5a9bfdad2115a069937a90af2cc",
+      "port_sha256": "sha256:ff4e1f1610ac25c90744a5a48d21afeeb4d828697c0547627b3a1cd2801a963c",
+      "edits": [
+        {
+          "kind": "receiving_mathlib_api_port",
+          "reason": "Native c513 run38171881307: replace removed multiplication monotonicity name with current left-factor mul_le_mul_right; use variation equality and remove only compiler-reported unused/no-op proof commands."
+        }
+      ]
+    },
+    {
+      "source_path": "verification/ExternalVerification/FC1041SharpGap/Solution.lean",
+      "port_path": "ExternalVerification/FC1041SharpGap/Solution.lean",
+      "source_sha256": "sha256:48e074bd4e0654f447a9d6c3dbe5d5448532b698e2fb587ae127525aef8b2f25",
+      "port_sha256": "sha256:48e074bd4e0654f447a9d6c3dbe5d5448532b698e2fb587ae127525aef8b2f25",
+      "edits": [
+        {
+          "kind": "path_only",
+          "reason": "Keep source module path relative to project root so governed build planner includes import closure; source bytes unchanged."
+        }
+      ]
+    }
+  ],
+  "target_file_sha256": "sha256:eee45bd1b775e62bd5e4cd109359fd37b58b461889653ef412752dd0efe7b9bf",
+  "exact_receiving_statement": "theorem erdos_1041.variants.sharp_collinear_gap {m : \u2115} (Y : Fin (m + 2) \u2192 \u211d)\n    (hY : StrictMono Y) (hY0 : Y 0 = -1)\n    (hY1 : Y (Fin.last (m + 1)) = 1) :\n    \u2203 i : Fin (m + 1), \u2200 x \u2208 Set.Icc (Y i.castSucc) (Y i.succ),\n      |\u220f j, (x - Y j)| \u2264\n        1 / (2 ^ ((m + 2) - 1) *\n          Real.cos (Real.pi / (2 * (((m + 2 : \u2115) : \u211d)))) ^ (m + 2))",
+  "solution_sha256": "sha256:cd31bbc5a1c28655ed18c53395b84612e9bd43b38a26717b2de949c67ee59d10",
+  "comparison": {
+    "challenge_module": "FormalConjectures.ErdosProblems.\u00ab1041\u00bb",
+    "solution_module": "FC6576Solution",
+    "theorem_names": [
+      "Erdos1041.erdos_1041.variants.sharp_collinear_gap"
+    ],
+    "permitted_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "enable_nanoda": true,
+    "challenge_source": "Separate clean actual FC worktree at immutable receiving head",
+    "note": "No copied Challenge is included in this source package."
+  },
+  "validation": "prepared_unverified",
+  "boundary": "Challenge is actual untouched FormalConjectures module; Solution defines same receiving FQN from ported source proof. No FC target axiom imported into Solution.",
+  "precheck": {
+    "mathlib_import_module_count": 13,
+    "missing_receiving_module_paths": [],
+    "proof_imports_target": false
+  },
+  "public_base_commit": "5527995cf9375079b8d30bf3121132704f164ad9",
+  "package_path": "verification/FC1041SharpGapCurrent"
+}

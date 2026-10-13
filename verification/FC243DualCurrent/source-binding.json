@@ -1,0 +1,2152 @@
+{
+  "schema": "fc6523_dual_receiving_port/1",
+  "public_base_commit": "5527995cf9375079b8d30bf3121132704f164ad9",
+  "package_path": "verification/FC243DualCurrent",
+  "receiving_repository": "google-deepmind/formal-conjectures",
+  "receiving_head": "56710453a2af5ac017df557431aa238346e3a35b",
+  "receiving_file": "FormalConjectures/ErdosProblems/243.lean",
+  "receiving_file_sha256": "sha256:e70283fe99fff7084d0c7f3ebb0efd56d121a53ae1d62242e4819283b9d439dd",
+  "receiving_pins": {
+    "lean": "leanprover/lean4:v4.33.1",
+    "mathlib": "0df444a360eaa60ab8c11dca51a86af692955474"
+  },
+  "source_targets": [
+    {
+      "id": "cubic",
+      "repository": "wcook04/plectis-erdos",
+      "ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+      "declaration": "ErdosProblems.Erdos243.FormalConjecturesAdapter.erdos_243_variants_cubic_rate",
+      "source_module_count": 55,
+      "original_environment": {
+        "lean-toolchain": {
+          "sha256": "sha256:88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5",
+          "pin": "leanprover/lean4:v4.29.1"
+        },
+        "lake-manifest.json": {
+          "sha256": "sha256:ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c",
+          "mathlib": {
+            "url": "https://github.com/leanprover-community/mathlib4",
+            "type": "git",
+            "subDir": null,
+            "scope": "leanprover-community",
+            "rev": "5e932f97dd25535344f80f9dd8da3aab83df0fe6",
+            "name": "mathlib",
+            "manifestFile": "lake-manifest.json",
+            "inputRev": "v4.29.1",
+            "inherited": false,
+            "configFile": "lakefile.lean"
+          }
+        }
+      }
+    },
+    {
+      "id": "slow",
+      "repository": "wcook04/plectis-erdos-lean",
+      "ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "declaration": "PalomarCorpus.E243.PaperStatementsL.original_coordinate_slow_growth_defect",
+      "source_module_count": 64,
+      "original_environment": {
+        "lean-toolchain": {
+          "sha256": "sha256:8dc8d6f560141069d9073e370611716ef77ada0da8ffa37e2149f44b2e63ac7a",
+          "pin": "leanprover/lean4:v4.35.0-rc2"
+        },
+        "lake-manifest.json": {
+          "sha256": "sha256:22ddb352879d89d8ff34a033875b9eeb338e74aba38c44f066594a2e3231e383",
+          "mathlib": {
+            "url": "https://github.com/leanprover-community/mathlib4",
+            "type": "git",
+            "subDir": null,
+            "scope": "leanprover-community",
+            "rev": "065356127b1dc0016f66b7283ce0ce2c4055aa55",
+            "name": "mathlib",
+            "manifestFile": "lake-manifest.json",
+            "inputRev": "v4.35.0-rc2",
+            "inherited": false,
+            "configFile": "lakefile.lean"
+          }
+        }
+      }
+    }
+  ],
+  "source_files": [
+    {
+      "port_path": "ErdosProblems/Erdos243/CoefficientDivisorFence.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/CoefficientDivisorFence.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/CoefficientDivisorFence.lean",
+          "source_sha256": "sha256:4915fa4c156a1da36de5df62006668a4c887cdb937a0da7cd70002f3b14500aa"
+        }
+      ],
+      "port_sha256": "sha256:4915fa4c156a1da36de5df62006668a4c887cdb937a0da7cd70002f3b14500aa",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/CubicNeighbourIdentity.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/CubicNeighbourIdentity.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/CubicNeighbourIdentity.lean",
+          "source_sha256": "sha256:309fd2710addf2827db2b0179688997041697d30218ebba4fd1d87cf352c9bb8"
+        },
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/CubicNeighbourIdentity.lean",
+          "source_sha256": "sha256:309fd2710addf2827db2b0179688997041697d30218ebba4fd1d87cf352c9bb8"
+        }
+      ],
+      "port_sha256": "sha256:309fd2710addf2827db2b0179688997041697d30218ebba4fd1d87cf352c9bb8",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/CumulativeLcmTransfer.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/CumulativeLcmTransfer.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/CumulativeLcmTransfer.lean",
+          "source_sha256": "sha256:1a6d988f24122b1875590bb61a6013ea2a9c1aa0e648a1b4d829f54833646a8e"
+        }
+      ],
+      "port_sha256": "sha256:1a6d988f24122b1875590bb61a6013ea2a9c1aa0e648a1b4d829f54833646a8e",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/DynamicCancellation.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/DynamicCancellation.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/DynamicCancellation.lean",
+          "source_sha256": "sha256:0da6cf5dd09100a815d79fce850ad458b4a492ccc1206573741f93f7752fdf76"
+        },
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/DynamicCancellation.lean",
+          "source_sha256": "sha256:0da6cf5dd09100a815d79fce850ad458b4a492ccc1206573741f93f7752fdf76"
+        }
+      ],
+      "port_sha256": "sha256:0da6cf5dd09100a815d79fce850ad458b4a492ccc1206573741f93f7752fdf76",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/FeedbackRealizability.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/FeedbackRealizability.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/FeedbackRealizability.lean",
+          "source_sha256": "sha256:b5244899b15e5554ca45d0079023b9ec50622569c607b8ebaaf13ba2eba7c8e3"
+        }
+      ],
+      "port_sha256": "sha256:b5244899b15e5554ca45d0079023b9ec50622569c607b8ebaaf13ba2eba7c8e3",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/GlobalLcmHeight.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/GlobalLcmHeight.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/GlobalLcmHeight.lean",
+          "source_sha256": "sha256:9b9d070b01a39b6685f9aee7b7669e22589b2a2a5dbf57a9c299879429711d02"
+        }
+      ],
+      "port_sha256": "sha256:9b9d070b01a39b6685f9aee7b7669e22589b2a2a5dbf57a9c299879429711d02",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/LcmCriticalBoundary.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/LcmCriticalBoundary.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/LcmCriticalBoundary.lean",
+          "source_sha256": "sha256:da5323838ee6412f15f2a9a169188edd46d105ba5a9b36a4161a1ca3cff33fbe"
+        }
+      ],
+      "port_sha256": "sha256:da5323838ee6412f15f2a9a169188edd46d105ba5a9b36a4161a1ca3cff33fbe",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/LcmRecordCrossing.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/LcmRecordCrossing.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/LcmRecordCrossing.lean",
+          "source_sha256": "sha256:680bbc49e07268971b58b5d89c1712f3f0b01eb6833a753c6394e9fc92659816"
+        }
+      ],
+      "port_sha256": "sha256:680bbc49e07268971b58b5d89c1712f3f0b01eb6833a753c6394e9fc92659816",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/LcmRecordExcess.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/LcmRecordExcess.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/LcmRecordExcess.lean",
+          "source_sha256": "sha256:84532662775b6b3fc4c8d6b8957727f9668f0162de4b6fa5fa891096d36c9c57"
+        }
+      ],
+      "port_sha256": "sha256:84532662775b6b3fc4c8d6b8957727f9668f0162de4b6fa5fa891096d36c9c57",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR11/CRTObstructionDensity.lean",
+      "selected_source": "cubic",
+      "selected_repository": "wcook04/plectis-erdos",
+      "selected_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+      "selected_source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/CRTObstructionDensity.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/CRTObstructionDensity.lean",
+          "source_sha256": "sha256:e596013e977bb26505adf5f363015ae2daadee89bb4b057eb770293a8a07c066"
+        }
+      ],
+      "port_sha256": "sha256:e596013e977bb26505adf5f363015ae2daadee89bb4b057eb770293a8a07c066",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR11/CanonicalGrowthBounds.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/PaperCompleteR11/CanonicalGrowthBounds.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/PaperCompleteR11/CanonicalGrowthBounds.lean",
+          "source_sha256": "sha256:a6e8d3afd38d1fc77562efccc91c5adf435658c66ac00b556f294b68551bde54"
+        }
+      ],
+      "port_sha256": "sha256:a6e8d3afd38d1fc77562efccc91c5adf435658c66ac00b556f294b68551bde54",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR11/CanonicalRecords.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/PaperCompleteR11/CanonicalRecords.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/PaperCompleteR11/CanonicalRecords.lean",
+          "source_sha256": "sha256:de92efaad6c33fc77ca6f4fcd6a4d53499091dcb75497c5d731a64a400251d84"
+        }
+      ],
+      "port_sha256": "sha256:de92efaad6c33fc77ca6f4fcd6a4d53499091dcb75497c5d731a64a400251d84",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR11/CoprimeCores.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/PaperCompleteR11/CoprimeCores.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/PaperCompleteR11/CoprimeCores.lean",
+          "source_sha256": "sha256:66d8d3d5d141aa95064c28928a579f62a9e0afc40d2561287ddf2643bfcbca80"
+        }
+      ],
+      "port_sha256": "sha256:66d8d3d5d141aa95064c28928a579f62a9e0afc40d2561287ddf2643bfcbca80",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR11/CubicDivisorObstruction.lean",
+      "selected_source": "cubic",
+      "selected_repository": "wcook04/plectis-erdos",
+      "selected_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+      "selected_source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/CubicDivisorObstruction.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/CubicDivisorObstruction.lean",
+          "source_sha256": "sha256:cbf157679337539155a36a46dc13fa248c23432dfccd17f4a085bd91d8448232"
+        }
+      ],
+      "port_sha256": "sha256:cbf157679337539155a36a46dc13fa248c23432dfccd17f4a085bd91d8448232",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR11/CubicFieldCoordinates.lean",
+      "selected_source": "cubic",
+      "selected_repository": "wcook04/plectis-erdos",
+      "selected_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+      "selected_source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/CubicFieldCoordinates.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/CubicFieldCoordinates.lean",
+          "source_sha256": "sha256:a14fa691c466b6c7e1c5a596d40ba95aa83b968ae540d74fb1c7cbbcd1cbc2da"
+        }
+      ],
+      "port_sha256": "sha256:a14fa691c466b6c7e1c5a596d40ba95aa83b968ae540d74fb1c7cbbcd1cbc2da",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR11/CubicFieldScale.lean",
+      "selected_source": "cubic",
+      "selected_repository": "wcook04/plectis-erdos",
+      "selected_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+      "selected_source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/CubicFieldScale.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/CubicFieldScale.lean",
+          "source_sha256": "sha256:be925cf34832fc37d23836bdf52d87b5fa7a7ea9447ee0c5fd39a3c2698af58e"
+        }
+      ],
+      "port_sha256": "sha256:be925cf34832fc37d23836bdf52d87b5fa7a7ea9447ee0c5fd39a3c2698af58e",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR11/CubicGcdFence.lean",
+      "selected_source": "cubic",
+      "selected_repository": "wcook04/plectis-erdos",
+      "selected_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+      "selected_source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/CubicGcdFence.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/CubicGcdFence.lean",
+          "source_sha256": "sha256:454bcdca8ab72dcfde9fbe4c42fcb8388ba02db6ae53358c93535f46029a7088"
+        }
+      ],
+      "port_sha256": "sha256:454bcdca8ab72dcfde9fbe4c42fcb8388ba02db6ae53358c93535f46029a7088",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR11/CubicIntegralNormalisation.lean",
+      "selected_source": "cubic",
+      "selected_repository": "wcook04/plectis-erdos",
+      "selected_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+      "selected_source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/CubicIntegralNormalisation.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/CubicIntegralNormalisation.lean",
+          "source_sha256": "sha256:eb1634bf514f61c7d62b05969a1cef9b7a5e37bf97bcb63a8087c7fc3b280184"
+        }
+      ],
+      "port_sha256": "sha256:eb1634bf514f61c7d62b05969a1cef9b7a5e37bf97bcb63a8087c7fc3b280184",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR11/CubicModularDensity.lean",
+      "selected_source": "cubic",
+      "selected_repository": "wcook04/plectis-erdos",
+      "selected_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+      "selected_source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/CubicModularDensity.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/CubicModularDensity.lean",
+          "source_sha256": "sha256:53e5418b85c25c06e556a68e8bfff9d7bbc70443f9f9a8bbd036cf1e599d5183"
+        }
+      ],
+      "port_sha256": "sha256:53e5418b85c25c06e556a68e8bfff9d7bbc70443f9f9a8bbd036cf1e599d5183",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR11/CubicPrimitiveNormalisation.lean",
+      "selected_source": "cubic",
+      "selected_repository": "wcook04/plectis-erdos",
+      "selected_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+      "selected_source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/CubicPrimitiveNormalisation.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/CubicPrimitiveNormalisation.lean",
+          "source_sha256": "sha256:c7532f603fcb83aa7340e707eb0f6c4ddcaabdbe377ebcd468c976e57b00a4dc"
+        }
+      ],
+      "port_sha256": "sha256:c7532f603fcb83aa7340e707eb0f6c4ddcaabdbe377ebcd468c976e57b00a4dc",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR11/CubicQuarticCertificates.lean",
+      "selected_source": "cubic",
+      "selected_repository": "wcook04/plectis-erdos",
+      "selected_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+      "selected_source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/CubicQuarticCertificates.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/CubicQuarticCertificates.lean",
+          "source_sha256": "sha256:b5c4afbbbcc2ac8e0b125ca15ad6c609e8bf6988fbc8153eefcae748b443655d"
+        }
+      ],
+      "port_sha256": "sha256:8dada634adef75e54c3d97fb5c837da214445b2afd1a4bed190b8ffa07d7c2eb",
+      "edits": [
+        {
+          "kind": "receiving_native_full_diagnostic_port",
+          "reason": "Authenticated c5 native failure: disambiguate pinned ideal API, use new primesOver namespace, normalize function and reflexive conversion goals explicitly, use ordinary norm_num kernel proofs for opaque ZMod division."
+        },
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated strict source batch38175216709 at9a: Previous norm_num inverse port insufficient: use pinned ZMod.inv_eq_of_mul_eq_one with explicit finite product witness 1920*4=1 mod7, then decide the two finite multiplication equalities. Compiler replay pending."
+        },
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38179005870 atde8cba: Match inverse rewrite to actual coerced Int denominator into ZMod7; keep exact multiplication/inverse witness4 and finite kernel decide. Independent static review passed; compiler replay pending."
+        }
+      ],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR11/CubicQuarticWindows.lean",
+      "selected_source": "cubic",
+      "selected_repository": "wcook04/plectis-erdos",
+      "selected_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+      "selected_source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/CubicQuarticWindows.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/CubicQuarticWindows.lean",
+          "source_sha256": "sha256:e8229575155d965307682009172193d2167273c87ce7e65e82ddba3a5c7b2ea3"
+        }
+      ],
+      "port_sha256": "sha256:e8229575155d965307682009172193d2167273c87ce7e65e82ddba3a5c7b2ea3",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR11/CubicRationalRoots.lean",
+      "selected_source": "cubic",
+      "selected_repository": "wcook04/plectis-erdos",
+      "selected_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+      "selected_source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/CubicRationalRoots.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/CubicRationalRoots.lean",
+          "source_sha256": "sha256:6a1b0a06f83c3ca7b7a624ca6e248485793c116dc8d501bb011adc6afc7c09ed"
+        }
+      ],
+      "port_sha256": "sha256:6a1b0a06f83c3ca7b7a624ca6e248485793c116dc8d501bb011adc6afc7c09ed",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR11/CubicRationalScale.lean",
+      "selected_source": "cubic",
+      "selected_repository": "wcook04/plectis-erdos",
+      "selected_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+      "selected_source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/CubicRationalScale.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/CubicRationalScale.lean",
+          "source_sha256": "sha256:20512dc568770be559768e4f627bd08b4f2adbb02353d204abb87f0ae1de6323"
+        }
+      ],
+      "port_sha256": "sha256:20512dc568770be559768e4f627bd08b4f2adbb02353d204abb87f0ae1de6323",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR11/CubicScaleArithmetic.lean",
+      "selected_source": "cubic",
+      "selected_repository": "wcook04/plectis-erdos",
+      "selected_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+      "selected_source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/CubicScaleArithmetic.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/CubicScaleArithmetic.lean",
+          "source_sha256": "sha256:f5b1bb9ef2c4f1d6b4af9d750d8a38607c4e4393269269d893efb5c9efb4d1bb"
+        }
+      ],
+      "port_sha256": "sha256:f5b1bb9ef2c4f1d6b4af9d750d8a38607c4e4393269269d893efb5c9efb4d1bb",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR11/CubicSquareCoordinates.lean",
+      "selected_source": "cubic",
+      "selected_repository": "wcook04/plectis-erdos",
+      "selected_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+      "selected_source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/CubicSquareCoordinates.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/CubicSquareCoordinates.lean",
+          "source_sha256": "sha256:c40f80b1b84fdcda854dcdc0869f5e974dcec66a9c375f2df95a979ec43263a4"
+        }
+      ],
+      "port_sha256": "sha256:c40f80b1b84fdcda854dcdc0869f5e974dcec66a9c375f2df95a979ec43263a4",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR11/CubicWindowTransport.lean",
+      "selected_source": "cubic",
+      "selected_repository": "wcook04/plectis-erdos",
+      "selected_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+      "selected_source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/CubicWindowTransport.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/CubicWindowTransport.lean",
+          "source_sha256": "sha256:b9d452fa4377ac47e080230be5a79044f4a4d786b8dc765e2adb987869238fd3"
+        }
+      ],
+      "port_sha256": "sha256:b9d452fa4377ac47e080230be5a79044f4a4d786b8dc765e2adb987869238fd3",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR11/CubicZeroDensityShape.lean",
+      "selected_source": "cubic",
+      "selected_repository": "wcook04/plectis-erdos",
+      "selected_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+      "selected_source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/CubicZeroDensityShape.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/CubicZeroDensityShape.lean",
+          "source_sha256": "sha256:27b63a244e7cff432f0450ea650761bbb84b3505532a51b0798ada0a1af00ea0"
+        }
+      ],
+      "port_sha256": "sha256:27b63a244e7cff432f0450ea650761bbb84b3505532a51b0798ada0a1af00ea0",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR11/DensityTransport.lean",
+      "selected_source": "cubic",
+      "selected_repository": "wcook04/plectis-erdos",
+      "selected_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+      "selected_source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/DensityTransport.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/DensityTransport.lean",
+          "source_sha256": "sha256:726d893fb43efef818077a33f684b03659c122d065ce8c6c6f4de2a76052581f"
+        }
+      ],
+      "port_sha256": "sha256:726d893fb43efef818077a33f684b03659c122d065ce8c6c6f4de2a76052581f",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR11/FrobeniusDescent.lean",
+      "selected_source": "cubic",
+      "selected_repository": "wcook04/plectis-erdos",
+      "selected_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+      "selected_source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/FrobeniusDescent.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/FrobeniusDescent.lean",
+          "source_sha256": "sha256:269228a73d0867a361b7cbab58d1338c243687eb498fcf4defa1436dae82c2f6"
+        }
+      ],
+      "port_sha256": "sha256:269228a73d0867a361b7cbab58d1338c243687eb498fcf4defa1436dae82c2f6",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR11/GrowthRecordEquivalence.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/PaperCompleteR11/GrowthRecordEquivalence.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/PaperCompleteR11/GrowthRecordEquivalence.lean",
+          "source_sha256": "sha256:b4f98a519e484d6e6629ffebd2340c7c2a7f48158127d4bae02c2b5680070b07"
+        }
+      ],
+      "port_sha256": "sha256:b4f98a519e484d6e6629ffebd2340c7c2a7f48158127d4bae02c2b5680070b07",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR11/InclusiveBoundaryFinite.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/PaperCompleteR11/InclusiveBoundaryFinite.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/PaperCompleteR11/InclusiveBoundaryFinite.lean",
+          "source_sha256": "sha256:2d8b519ce1e46c6f6e54f0702429a42efb0baf0124f9abc6bf97933f6cee6ce8"
+        }
+      ],
+      "port_sha256": "sha256:2d8b519ce1e46c6f6e54f0702429a42efb0baf0124f9abc6bf97933f6cee6ce8",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR11/InclusiveLimsup.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/PaperCompleteR11/InclusiveLimsup.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/PaperCompleteR11/InclusiveLimsup.lean",
+          "source_sha256": "sha256:0af049831a98f06d9ddc4aae654488ab065999501804ea301e2295e3b05359e9"
+        }
+      ],
+      "port_sha256": "sha256:0af049831a98f06d9ddc4aae654488ab065999501804ea301e2295e3b05359e9",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR11/InclusiveRecordAssembly.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/PaperCompleteR11/InclusiveRecordAssembly.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/PaperCompleteR11/InclusiveRecordAssembly.lean",
+          "source_sha256": "sha256:df4ec2edc67d0daa0dacd970418725d251b888174e4fceb0ae747930ab8a84b8"
+        }
+      ],
+      "port_sha256": "sha256:df4ec2edc67d0daa0dacd970418725d251b888174e4fceb0ae747930ab8a84b8",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR11/InclusiveTowerBlocks.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/PaperCompleteR11/InclusiveTowerBlocks.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/PaperCompleteR11/InclusiveTowerBlocks.lean",
+          "source_sha256": "sha256:7571a0616d8526ba2acdf488001c665244ebcba346caf22e5131a3b77e29b3cf"
+        }
+      ],
+      "port_sha256": "sha256:7571a0616d8526ba2acdf488001c665244ebcba346caf22e5131a3b77e29b3cf",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR11/IntegralWeights.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/PaperCompleteR11/IntegralWeights.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/PaperCompleteR11/IntegralWeights.lean",
+          "source_sha256": "sha256:f44f1ab22ab947c6386c0551047292ddee88d23d195e69d3a42f950b5385992e"
+        }
+      ],
+      "port_sha256": "sha256:f44f1ab22ab947c6386c0551047292ddee88d23d195e69d3a42f950b5385992e",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR11/LogLogNormaliser.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/PaperCompleteR11/LogLogNormaliser.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/PaperCompleteR11/LogLogNormaliser.lean",
+          "source_sha256": "sha256:5ee899744efa8586753af962d8ad60febaaae06166ba2cbc21671a1e51d9218f"
+        }
+      ],
+      "port_sha256": "sha256:5ee899744efa8586753af962d8ad60febaaae06166ba2cbc21671a1e51d9218f",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR11/OrbitBlockArithmetic.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/PaperCompleteR11/OrbitBlockArithmetic.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/PaperCompleteR11/OrbitBlockArithmetic.lean",
+          "source_sha256": "sha256:56c02087baadfb195584478accfac74a3e6705a2e05a8e915052308008079002"
+        }
+      ],
+      "port_sha256": "sha256:56c02087baadfb195584478accfac74a3e6705a2e05a8e915052308008079002",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR11/PresievedCRT.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/PaperCompleteR11/PresievedCRT.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/PaperCompleteR11/PresievedCRT.lean",
+          "source_sha256": "sha256:e461dbad5f937c5bcc719448499f9ec6d36e21af0cd4cf4d3b0c85e5818b83e7"
+        }
+      ],
+      "port_sha256": "sha256:e461dbad5f937c5bcc719448499f9ec6d36e21af0cd4cf4d3b0c85e5818b83e7",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR11/PrimitiveMultiplierSupply.lean",
+      "selected_source": "cubic",
+      "selected_repository": "wcook04/plectis-erdos",
+      "selected_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+      "selected_source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/PrimitiveMultiplierSupply.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/PrimitiveMultiplierSupply.lean",
+          "source_sha256": "sha256:75b2db6bd59b8bec7f076adc173c13750cdce9b3d3173b3f153090d5dd6791ce"
+        }
+      ],
+      "port_sha256": "sha256:75b2db6bd59b8bec7f076adc173c13750cdce9b3d3173b3f153090d5dd6791ce",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR11/PrimitiveRecordBoundary.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/PaperCompleteR11/PrimitiveRecordBoundary.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/PaperCompleteR11/PrimitiveRecordBoundary.lean",
+          "source_sha256": "sha256:8e79db319d3744049d30668d1783082e35efab1016c85595f96451a2f2cd9785"
+        }
+      ],
+      "port_sha256": "sha256:8e79db319d3744049d30668d1783082e35efab1016c85595f96451a2f2cd9785",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR11/QuantitativeRecordDichotomy.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/PaperCompleteR11/QuantitativeRecordDichotomy.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/PaperCompleteR11/QuantitativeRecordDichotomy.lean",
+          "source_sha256": "sha256:aeabd584f4597049e3af385d425a3872c9c15fbeadf78d5ab7ef88f7a3fafcf1"
+        }
+      ],
+      "port_sha256": "sha256:aeabd584f4597049e3af385d425a3872c9c15fbeadf78d5ab7ef88f7a3fafcf1",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR11/ReciprocalProductAmplification.lean",
+      "selected_source": "cubic",
+      "selected_repository": "wcook04/plectis-erdos",
+      "selected_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+      "selected_source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/ReciprocalProductAmplification.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/ReciprocalProductAmplification.lean",
+          "source_sha256": "sha256:a3fe6e96950fc5e2360dc06c07e2d909529290e6a661249d7b93d6c40deef4e0"
+        }
+      ],
+      "port_sha256": "sha256:a3fe6e96950fc5e2360dc06c07e2d909529290e6a661249d7b93d6c40deef4e0",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR11/RecordDivisibility.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/PaperCompleteR11/RecordDivisibility.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/PaperCompleteR11/RecordDivisibility.lean",
+          "source_sha256": "sha256:ca6ce91a73c160ec7ec94418ded22142066cf9bb13b9b3d67231bfd78fa250e4"
+        }
+      ],
+      "port_sha256": "sha256:ca6ce91a73c160ec7ec94418ded22142066cf9bb13b9b3d67231bfd78fa250e4",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR11/RecordGcdReduction.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/PaperCompleteR11/RecordGcdReduction.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/PaperCompleteR11/RecordGcdReduction.lean",
+          "source_sha256": "sha256:38ff2fbcbb5e08be31dca1238f5621c8fa57eae286fd02fabc2a81013ede3de9"
+        }
+      ],
+      "port_sha256": "sha256:38ff2fbcbb5e08be31dca1238f5621c8fa57eae286fd02fabc2a81013ede3de9",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR11/SubcriticalRecordBoundary.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/PaperCompleteR11/SubcriticalRecordBoundary.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/PaperCompleteR11/SubcriticalRecordBoundary.lean",
+          "source_sha256": "sha256:48da7096496435cb1af2cc6d3672350cf79768deebd211038c8d5635ff89873b"
+        }
+      ],
+      "port_sha256": "sha256:48da7096496435cb1af2cc6d3672350cf79768deebd211038c8d5635ff89873b",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR11/UncentredFinite.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/PaperCompleteR11/UncentredFinite.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/PaperCompleteR11/UncentredFinite.lean",
+          "source_sha256": "sha256:db6dd8ff92ec0cba631814e8f2c90541790cdd94560af0c9cd6cbdb04d2d9dac"
+        }
+      ],
+      "port_sha256": "sha256:db6dd8ff92ec0cba631814e8f2c90541790cdd94560af0c9cd6cbdb04d2d9dac",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR11/UncentredSeries.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/PaperCompleteR11/UncentredSeries.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/PaperCompleteR11/UncentredSeries.lean",
+          "source_sha256": "sha256:23c9d6c078207742d72e562cc497dd65f2d3e3e1b5707a938a39477a3f7f1007"
+        }
+      ],
+      "port_sha256": "sha256:23c9d6c078207742d72e562cc497dd65f2d3e3e1b5707a938a39477a3f7f1007",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR11/WindowIncidence.lean",
+      "selected_source": "cubic",
+      "selected_repository": "wcook04/plectis-erdos",
+      "selected_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+      "selected_source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/WindowIncidence.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR11/WindowIncidence.lean",
+          "source_sha256": "sha256:ca378dfde984ed1f7add938e2a2786560cc5d647e6def00c96fbb071162a04e6"
+        }
+      ],
+      "port_sha256": "sha256:ca378dfde984ed1f7add938e2a2786560cc5d647e6def00c96fbb071162a04e6",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR20/CubicModularSquareSpecialisation.lean",
+      "selected_source": "cubic",
+      "selected_repository": "wcook04/plectis-erdos",
+      "selected_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+      "selected_source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR20/CubicModularSquareSpecialisation.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR20/CubicModularSquareSpecialisation.lean",
+          "source_sha256": "sha256:a12adfa68470d9330a3694c6121c10dec65d144eb9aabb80030b5d086155c26a"
+        }
+      ],
+      "port_sha256": "sha256:a12adfa68470d9330a3694c6121c10dec65d144eb9aabb80030b5d086155c26a",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR20/CubicRateCanonicalBridge.lean",
+      "selected_source": "cubic",
+      "selected_repository": "wcook04/plectis-erdos",
+      "selected_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+      "selected_source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateCanonicalBridge.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateCanonicalBridge.lean",
+          "source_sha256": "sha256:ab29e68c4317b8b931b33182323a0a25c04d9591f835b273fc545f4868bcc012"
+        }
+      ],
+      "port_sha256": "sha256:c6839aa57427dd2d0f32c600334f35e6bc67a3886706ba18d14b8ff3637fb2c6",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38179005870 atde8cba: Explicit Function.comp_def shifted Tendsto beta reduction and removal inert dsimp before exact_mod_cast. Independent static review passed; compiler replay pending."
+        }
+      ],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR20/CubicRateDefect.lean",
+      "selected_source": "cubic",
+      "selected_repository": "wcook04/plectis-erdos",
+      "selected_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+      "selected_source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateDefect.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateDefect.lean",
+          "source_sha256": "sha256:16443410972e0526e1e190e49a92237f3681c337b3c0c472d869c8b65aa75327"
+        }
+      ],
+      "port_sha256": "sha256:16443410972e0526e1e190e49a92237f3681c337b3c0c472d869c8b65aa75327",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR20/CubicRateDifferenceLimits.lean",
+      "selected_source": "cubic",
+      "selected_repository": "wcook04/plectis-erdos",
+      "selected_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+      "selected_source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateDifferenceLimits.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateDifferenceLimits.lean",
+          "source_sha256": "sha256:6f031b5857b6592fdc680b06665a78515db6f2ea7680fb1c272be2fd5fb28d06"
+        }
+      ],
+      "port_sha256": "sha256:e3e494b3fa187f5817d6adc701bb3601faf6715523554e9db3a31cccbc222046",
+      "edits": [
+        {
+          "kind": "receiving_native_full_diagnostic_port",
+          "reason": "Authenticated c5 native failure: disambiguate pinned ideal API, use new primesOver namespace, normalize function and reflexive conversion goals explicitly, use ordinary norm_num kernel proofs for opaque ZMod division."
+        }
+      ],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR20/CubicRateFiniteDifference.lean",
+      "selected_source": "cubic",
+      "selected_repository": "wcook04/plectis-erdos",
+      "selected_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+      "selected_source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateFiniteDifference.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateFiniteDifference.lean",
+          "source_sha256": "sha256:04dd6258e12d3c39955c5a59bfb2a34ff8ab4739c28ff9681dec7121f25358b8"
+        }
+      ],
+      "port_sha256": "sha256:04dd6258e12d3c39955c5a59bfb2a34ff8ab4739c28ff9681dec7121f25358b8",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR20/CubicRateNormalisation.lean",
+      "selected_source": "cubic",
+      "selected_repository": "wcook04/plectis-erdos",
+      "selected_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+      "selected_source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateNormalisation.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateNormalisation.lean",
+          "source_sha256": "sha256:52e7b634f19b1e52f214d97b8fd7a9071602d5d4710fafbdf366600b40594d67"
+        }
+      ],
+      "port_sha256": "sha256:52e7b634f19b1e52f214d97b8fd7a9071602d5d4710fafbdf366600b40594d67",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR20/CubicRatePositiveRationalProfile.lean",
+      "selected_source": "cubic",
+      "selected_repository": "wcook04/plectis-erdos",
+      "selected_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+      "selected_source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR20/CubicRatePositiveRationalProfile.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR20/CubicRatePositiveRationalProfile.lean",
+          "source_sha256": "sha256:dd4e9af85a5a8d7fd3895372e0579403f2b5f8b17b2f8908488f1a8fd4d71f76"
+        }
+      ],
+      "port_sha256": "sha256:dd4e9af85a5a8d7fd3895372e0579403f2b5f8b17b2f8908488f1a8fd4d71f76",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR20/CubicRateProductAsymptotic.lean",
+      "selected_source": "cubic",
+      "selected_repository": "wcook04/plectis-erdos",
+      "selected_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+      "selected_source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateProductAsymptotic.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateProductAsymptotic.lean",
+          "source_sha256": "sha256:2566c43e06cb48e2ebcf331d7edcec16785ac6492155ec964a2a312fefcb7b22"
+        }
+      ],
+      "port_sha256": "sha256:2566c43e06cb48e2ebcf331d7edcec16785ac6492155ec964a2a312fefcb7b22",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR20/CubicRateProductEndpoint.lean",
+      "selected_source": "cubic",
+      "selected_repository": "wcook04/plectis-erdos",
+      "selected_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+      "selected_source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateProductEndpoint.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateProductEndpoint.lean",
+          "source_sha256": "sha256:12f15a762efb527e82562b17dd639ee93d88b2807107cca23f9039541673366b"
+        }
+      ],
+      "port_sha256": "sha256:12f15a762efb527e82562b17dd639ee93d88b2807107cca23f9039541673366b",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR20/CubicRateQuotientBounded.lean",
+      "selected_source": "cubic",
+      "selected_repository": "wcook04/plectis-erdos",
+      "selected_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+      "selected_source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateQuotientBounded.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateQuotientBounded.lean",
+          "source_sha256": "sha256:54bea7e6cabc3304c1156a99c05e3324fe85075573081c59b316267d02219ab1"
+        }
+      ],
+      "port_sha256": "sha256:54bea7e6cabc3304c1156a99c05e3324fe85075573081c59b316267d02219ab1",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR20/CubicRateQuotientIncrement.lean",
+      "selected_source": "cubic",
+      "selected_repository": "wcook04/plectis-erdos",
+      "selected_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+      "selected_source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateQuotientIncrement.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateQuotientIncrement.lean",
+          "source_sha256": "sha256:9ba6d0608bb27089072c6a2dcb7bfaec715a7356b2c111e4e39f923fa5f7c71c"
+        }
+      ],
+      "port_sha256": "sha256:9ba6d0608bb27089072c6a2dcb7bfaec715a7356b2c111e4e39f923fa5f7c71c",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR20/CubicRateRationalProfile.lean",
+      "selected_source": "cubic",
+      "selected_repository": "wcook04/plectis-erdos",
+      "selected_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+      "selected_source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateRationalProfile.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateRationalProfile.lean",
+          "source_sha256": "sha256:4bba22b3b26327bccb4721dcd6f69fb22e1250bb9984875208e2e5b27fdb0bf1"
+        }
+      ],
+      "port_sha256": "sha256:4bba22b3b26327bccb4721dcd6f69fb22e1250bb9984875208e2e5b27fdb0bf1",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR20/CubicRateResidualConstant.lean",
+      "selected_source": "cubic",
+      "selected_repository": "wcook04/plectis-erdos",
+      "selected_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+      "selected_source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateResidualConstant.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateResidualConstant.lean",
+          "source_sha256": "sha256:2571ede4891fb6030f28b660cf902a906cd03cbefdaa4ce2c3667dba5119c149"
+        }
+      ],
+      "port_sha256": "sha256:2571ede4891fb6030f28b660cf902a906cd03cbefdaa4ce2c3667dba5119c149",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR20/CubicRateResidualStep.lean",
+      "selected_source": "cubic",
+      "selected_repository": "wcook04/plectis-erdos",
+      "selected_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+      "selected_source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateResidualStep.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateResidualStep.lean",
+          "source_sha256": "sha256:d35eb660cf877a141de7b9b4b508878f610ea45cb36b783bea8a01182089e641"
+        }
+      ],
+      "port_sha256": "sha256:d35eb660cf877a141de7b9b4b508878f610ea45cb36b783bea8a01182089e641",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR20/CubicRateSummableTail.lean",
+      "selected_source": "cubic",
+      "selected_repository": "wcook04/plectis-erdos",
+      "selected_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+      "selected_source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateSummableTail.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateSummableTail.lean",
+          "source_sha256": "sha256:b0574436a687c29a280c59fccf347815c4104191a2c1ec80e24bfd6d46132108"
+        }
+      ],
+      "port_sha256": "sha256:d9b056d1a1ad4926f0d9a4a23283caa0b1b16736fac582f7ba2a5ebbed34dc86",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated strict source batch38175216709 at9a: Use definitional conversion for existential Tendsto quotient/error witness. Compiler replay pending."
+        }
+      ],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR20/CubicSquareSpecializationAssembly.lean",
+      "selected_source": "cubic",
+      "selected_repository": "wcook04/plectis-erdos",
+      "selected_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+      "selected_source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR20/CubicSquareSpecializationAssembly.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR20/CubicSquareSpecializationAssembly.lean",
+          "source_sha256": "sha256:cd5eb4f8dda2e486b46e02065960a5266803a24c52b9aa459f2ef355512a2af7"
+        }
+      ],
+      "port_sha256": "sha256:b10a2ffc019606ed1bd067ec4b913dec33608a0e247f402780a768a924bef327",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38276766059 at057ba42: Exact literal ZMod7 denominator12 inverse3 witness; unchanged +/-1 residues3/4 and kerneldecide product. Independent static reviews passed; full source compiler replay pending."
+        }
+      ],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR20/InclusiveOne.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/PaperCompleteR20/InclusiveOne.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/PaperCompleteR20/InclusiveOne.lean",
+          "source_sha256": "sha256:f1306b5cae9756f67640b1ecb91312f889846de9c02f7033df2ccd08ae26a5d1"
+        }
+      ],
+      "port_sha256": "sha256:f1306b5cae9756f67640b1ecb91312f889846de9c02f7033df2ccd08ae26a5d1",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean",
+          "source_sha256": "sha256:4dba60b8a5d11be9c84943c5ddce3190b0c14cc85dab618cc77cf50f2feec7ee"
+        }
+      ],
+      "port_sha256": "sha256:4dba60b8a5d11be9c84943c5ddce3190b0c14cc85dab618cc77cf50f2feec7ee",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR21/CubicRateExclusionChain.lean",
+      "selected_source": "cubic",
+      "selected_repository": "wcook04/plectis-erdos",
+      "selected_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+      "selected_source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR21/CubicRateExclusionChain.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR21/CubicRateExclusionChain.lean",
+          "source_sha256": "sha256:a046664fd8c873a9a3b04f7c5cd8334fe0182a455c98e7bf9ff814f81f617cd1"
+        }
+      ],
+      "port_sha256": "sha256:a046664fd8c873a9a3b04f7c5cd8334fe0182a455c98e7bf9ff814f81f617cd1",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR21/ExactOrbitRecordDichotomy.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/PaperCompleteR21/ExactOrbitRecordDichotomy.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/PaperCompleteR21/ExactOrbitRecordDichotomy.lean",
+          "source_sha256": "sha256:eb5df67e505c23e22ca1139a9a766e3e84818e803acd27d76cd9a457ed33d4b6"
+        }
+      ],
+      "port_sha256": "sha256:eb5df67e505c23e22ca1139a9a766e3e84818e803acd27d76cd9a457ed33d4b6",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR21/ProductDefectThresholds.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/PaperCompleteR21/ProductDefectThresholds.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/PaperCompleteR21/ProductDefectThresholds.lean",
+          "source_sha256": "sha256:fbbeb66bb3110adf5aa303a95f84b2c87720af63ac5229b40991494a84b6dac3"
+        }
+      ],
+      "port_sha256": "sha256:fbbeb66bb3110adf5aa303a95f84b2c87720af63ac5229b40991494a84b6dac3",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR21/SlowGrowthProductIncrements.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/PaperCompleteR21/SlowGrowthProductIncrements.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/PaperCompleteR21/SlowGrowthProductIncrements.lean",
+          "source_sha256": "sha256:740185d6b399f10505b3976cf5897544064799e14c3faa4f86ebddfd51301031"
+        }
+      ],
+      "port_sha256": "sha256:740185d6b399f10505b3976cf5897544064799e14c3faa4f86ebddfd51301031",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationDedekind.lean",
+      "selected_source": "cubic",
+      "selected_repository": "wcook04/plectis-erdos",
+      "selected_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+      "selected_source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationDedekind.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationDedekind.lean",
+          "source_sha256": "sha256:ec5f78eacbb094f555d7170c518d7dd92427017c9bc76cb8fe4632ffc36ef23f"
+        }
+      ],
+      "port_sha256": "sha256:ec5f78eacbb094f555d7170c518d7dd92427017c9bc76cb8fe4632ffc36ef23f",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationUnconditional.lean",
+      "selected_source": "cubic",
+      "selected_repository": "wcook04/plectis-erdos",
+      "selected_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+      "selected_source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationUnconditional.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationUnconditional.lean",
+          "source_sha256": "sha256:4c3da44d71fa6e8abf4ddf8b891ec36d6d5795be801dd4b0111577591af7187e"
+        }
+      ],
+      "port_sha256": "sha256:4c3da44d71fa6e8abf4ddf8b891ec36d6d5795be801dd4b0111577591af7187e",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean",
+          "source_sha256": "sha256:3f30f98cbca7652c6815ef197cbd5d2b757249938f42e14eb961c29c83b52532"
+        },
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean",
+          "source_sha256": "sha256:eed39d58bc6e45000d595978a1cf9998e4fed0efabeb6539de73926ebf43580e"
+        }
+      ],
+      "port_sha256": "sha256:eed39d58bc6e45000d595978a1cf9998e4fed0efabeb6539de73926ebf43580e",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR7/CanonicalState.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/PaperCompleteR7/CanonicalState.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR7/CanonicalState.lean",
+          "source_sha256": "sha256:17d3459b72e0bc1cd3fbb99db504b0216f7fbf144b64d3f9882b9fb24b53ea24"
+        },
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/PaperCompleteR7/CanonicalState.lean",
+          "source_sha256": "sha256:5b886cbad81ccde4812a525175911964076aa3a18089e8b5e1ee2b9157281698"
+        }
+      ],
+      "port_sha256": "sha256:5b886cbad81ccde4812a525175911964076aa3a18089e8b5e1ee2b9157281698",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean",
+          "source_sha256": "sha256:069c051f36813f2088f8d6f49a92bb90a06797de3d97ad4fe5fe7221ddac1086"
+        }
+      ],
+      "port_sha256": "sha256:069c051f36813f2088f8d6f49a92bb90a06797de3d97ad4fe5fe7221ddac1086",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR7/LcmDefect.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/PaperCompleteR7/LcmDefect.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/PaperCompleteR7/LcmDefect.lean",
+          "source_sha256": "sha256:97c41240bca4b881ab9ec8a8c91470e0622064eeb4f7b82d537b1bf25fd34052"
+        }
+      ],
+      "port_sha256": "sha256:8c79b4432ed9afb944ec771c15d79eaff97e6d815538e92867779694f0c87999",
+      "edits": [
+        {
+          "kind": "receiving_native_full_diagnostic_port",
+          "reason": "Authenticated c5 native failure: disambiguate pinned ideal API, use new primesOver namespace, normalize function and reflexive conversion goals explicitly, use ordinary norm_num kernel proofs for opaque ZMod division."
+        }
+      ],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR7/LcmStationarity.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/PaperCompleteR7/LcmStationarity.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/PaperCompleteR7/LcmStationarity.lean",
+          "source_sha256": "sha256:97e04d33459405ae82c2bb88d651b61a89da3b19bc14fc69035c90d84064f9d6"
+        }
+      ],
+      "port_sha256": "sha256:97e04d33459405ae82c2bb88d651b61a89da3b19bc14fc69035c90d84064f9d6",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR7/Limits.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/PaperCompleteR7/Limits.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR7/Limits.lean",
+          "source_sha256": "sha256:b54013a6cf901984d7586e351bc9a9897742d03672b784628af21e4411c65389"
+        },
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/PaperCompleteR7/Limits.lean",
+          "source_sha256": "sha256:c1a39fa720de9b791f8e49d960735cf1a50d6486c14f217662dedac848ee4f4e"
+        }
+      ],
+      "port_sha256": "sha256:c1a39fa720de9b791f8e49d960735cf1a50d6486c14f217662dedac848ee4f4e",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR7/ProductDefect.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/PaperCompleteR7/ProductDefect.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR7/ProductDefect.lean",
+          "source_sha256": "sha256:119164a66c483b5a971fff230d9bd35d7b9ed269ff83bc335ed6c5ac2d23e1c7"
+        },
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/PaperCompleteR7/ProductDefect.lean",
+          "source_sha256": "sha256:1e9f3571d7485d4e40f72390879b4b7f5fb3e7a24c259ade9d1323d532dd9a28"
+        }
+      ],
+      "port_sha256": "sha256:1e9f3571d7485d4e40f72390879b4b7f5fb3e7a24c259ade9d1323d532dd9a28",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR7/QuantitativeTail.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/PaperCompleteR7/QuantitativeTail.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR7/QuantitativeTail.lean",
+          "source_sha256": "sha256:703c2000b0f138263b20eb485a7bf628e3c4868cb44d208adcd896eca16bd802"
+        },
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/PaperCompleteR7/QuantitativeTail.lean",
+          "source_sha256": "sha256:097706b4d201fae32d62fabfaba4e4dd0511210dc06c01621da14f94bab44844"
+        }
+      ],
+      "port_sha256": "sha256:097706b4d201fae32d62fabfaba4e4dd0511210dc06c01621da14f94bab44844",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR7/RealTail.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/PaperCompleteR7/RealTail.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR7/RealTail.lean",
+          "source_sha256": "sha256:d8726b2f0c6ce3acc87a148841101741600317792d8d4fa18a174f684393f0e3"
+        },
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/PaperCompleteR7/RealTail.lean",
+          "source_sha256": "sha256:0de714b9d12f3fb7eef4c6153792f9de83fc80a3932e755f9229768ca9b7e63e"
+        }
+      ],
+      "port_sha256": "sha256:0de714b9d12f3fb7eef4c6153792f9de83fc80a3932e755f9229768ca9b7e63e",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean",
+          "source_sha256": "sha256:3decb9f3508023c74a46834b9a5a3779b2624dea7f3dd1d2aa6131c99c92c6ae"
+        }
+      ],
+      "port_sha256": "sha256:3decb9f3508023c74a46834b9a5a3779b2624dea7f3dd1d2aa6131c99c92c6ae",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR9/AdaptiveCoefficients.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/PaperCompleteR9/AdaptiveCoefficients.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/PaperCompleteR9/AdaptiveCoefficients.lean",
+          "source_sha256": "sha256:18b6949e9f57b68b44746418c26888cdda7a245a5ac6bd1ac239ef1ce9bef18a"
+        }
+      ],
+      "port_sha256": "sha256:18b6949e9f57b68b44746418c26888cdda7a245a5ac6bd1ac239ef1ce9bef18a",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR9/CoefficientHeight.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/PaperCompleteR9/CoefficientHeight.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/PaperCompleteR9/CoefficientHeight.lean",
+          "source_sha256": "sha256:feff879cf96616abfa7740d4b7d16b6c2af2e406a5b363529acb5910576e31bd"
+        }
+      ],
+      "port_sha256": "sha256:feff879cf96616abfa7740d4b7d16b6c2af2e406a5b363529acb5910576e31bd",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR9/PolynomialCorrections.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/PaperCompleteR9/PolynomialCorrections.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR9/PolynomialCorrections.lean",
+          "source_sha256": "sha256:17c75d3187048bb3340bf307de19618c868a67e03ab7da91d6304fac3bff2d6b"
+        },
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/PaperCompleteR9/PolynomialCorrections.lean",
+          "source_sha256": "sha256:4b1328c3a8f5d58f8c303fbc5e94b8d21f2cd57a6127bcc788d8330470569bcf"
+        }
+      ],
+      "port_sha256": "sha256:4b1328c3a8f5d58f8c303fbc5e94b8d21f2cd57a6127bcc788d8330470569bcf",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR9/ValuationPayment.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/PaperCompleteR9/ValuationPayment.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/PaperCompleteR9/ValuationPayment.lean",
+          "source_sha256": "sha256:cea3447f98e560fda8368b19cd1c8b1dad661f52873d4ce187780882ce0045c3"
+        }
+      ],
+      "port_sha256": "sha256:cea3447f98e560fda8368b19cd1c8b1dad661f52873d4ce187780882ce0045c3",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR9/WeightedRecurrence.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/PaperCompleteR9/WeightedRecurrence.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/PaperCompleteR9/WeightedRecurrence.lean",
+          "source_sha256": "sha256:65b11402814eea22cb09567accc363bd925874d823ec7e24c0e7334cee872191"
+        }
+      ],
+      "port_sha256": "sha256:65b11402814eea22cb09567accc363bd925874d823ec7e24c0e7334cee872191",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR9Packets.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/PaperCompleteR9Packets.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/PaperCompleteR9Packets.lean",
+          "source_sha256": "sha256:fd0990610a7e47572b959ff4682ecb665c2789fb434565068c269eab1cec959f"
+        }
+      ],
+      "port_sha256": "sha256:fd0990610a7e47572b959ff4682ecb665c2789fb434565068c269eab1cec959f",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PrimitiveRecordBarrier.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/PrimitiveRecordBarrier.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/PrimitiveRecordBarrier.lean",
+          "source_sha256": "sha256:5efe953ee5c05ba8995b53e03ff6600a732f7fdf7937fd1e9d0240ef38ea8d9c"
+        }
+      ],
+      "port_sha256": "sha256:5efe953ee5c05ba8995b53e03ff6600a732f7fdf7937fd1e9d0240ef38ea8d9c",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+      "selected_source": "cubic",
+      "selected_repository": "wcook04/plectis-erdos",
+      "selected_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+      "selected_source_path": "lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "source_sha256": "sha256:516544a9e64edd668a83d9b0ea0179d32c2dbeea7a3bea773d498d6897695f18"
+        },
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "source_sha256": "sha256:b67410ec01838b03740985bb4200c683d074b473772db0077562d66cdc2009cf"
+        }
+      ],
+      "port_sha256": "sha256:516544a9e64edd668a83d9b0ea0179d32c2dbeea7a3bea773d498d6897695f18",
+      "edits": [],
+      "selection_reason": "Preserve cubic source extra reciprocal-tail realization declarations without changing shared declarations."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/SlowRiseBarrier.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/SlowRiseBarrier.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/SlowRiseBarrier.lean",
+          "source_sha256": "sha256:b12733bd83a0274bdf854c2a0f01e7547dda8b535753b267b66e559020b9a37c"
+        }
+      ],
+      "port_sha256": "sha256:b12733bd83a0274bdf854c2a0f01e7547dda8b535753b267b66e559020b9a37c",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
+          "source_sha256": "sha256:f207295595576c95ab9e7717f219eec3b1d1e33555b0a9a1a1e95c690f623177"
+        }
+      ],
+      "port_sha256": "sha256:f207295595576c95ab9e7717f219eec3b1d1e33555b0a9a1a1e95c690f623177",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/UncentredRecordCharge.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "ErdosProblems/Erdos243/UncentredRecordCharge.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "ErdosProblems/Erdos243/UncentredRecordCharge.lean",
+          "source_sha256": "sha256:04c4306f89c159c39f833500781778b79eeb4616fcb5042a1335839cd2ebc8a3"
+        }
+      ],
+      "port_sha256": "sha256:04c4306f89c159c39f833500781778b79eeb4616fcb5042a1335839cd2ebc8a3",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Shared/DirichletPoleComparison.lean",
+      "selected_source": "cubic",
+      "selected_repository": "wcook04/plectis-erdos",
+      "selected_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+      "selected_source_path": "lean/ErdosProblems/Shared/DirichletPoleComparison.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Shared/DirichletPoleComparison.lean",
+          "source_sha256": "sha256:f8c168b953a000950c5668e3245fc951448bfaa9605ac9b7e8d667f12fed0b62"
+        }
+      ],
+      "port_sha256": "sha256:78abc51d8f137a3d496ab11608514961d34eb39ca6ac652765b6699d0c5fb573",
+      "edits": [
+        {
+          "kind": "receiving_native_full_diagnostic_port",
+          "reason": "Authenticated c5 native failure: disambiguate pinned ideal API, use new primesOver namespace, normalize function and reflexive conversion goals explicitly, use ordinary norm_num kernel proofs for opaque ZMod division."
+        }
+      ],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Shared/IdealCountingEuler.lean",
+      "selected_source": "cubic",
+      "selected_repository": "wcook04/plectis-erdos",
+      "selected_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+      "selected_source_path": "lean/ErdosProblems/Shared/IdealCountingEuler.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Shared/IdealCountingEuler.lean",
+          "source_sha256": "sha256:0aabe588e0b8a76fe31b4ac5692824876268ecce65e8e19f60060ea8736d5111"
+        }
+      ],
+      "port_sha256": "sha256:0714a2e5c69cd48eaaf666bd34bac0a9bc7bb62d00f43366f3d39bebe744fb5d",
+      "edits": [
+        {
+          "kind": "receiving_native_full_diagnostic_port",
+          "reason": "Authenticated c5 native failure: disambiguate pinned ideal API, use new primesOver namespace, normalize function and reflexive conversion goals explicitly, use ordinary norm_num kernel proofs for opaque ZMod division."
+        }
+      ],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Shared/NonsquareModuloPrimes.lean",
+      "selected_source": "cubic",
+      "selected_repository": "wcook04/plectis-erdos",
+      "selected_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+      "selected_source_path": "lean/ErdosProblems/Shared/NonsquareModuloPrimes.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Shared/NonsquareModuloPrimes.lean",
+          "source_sha256": "sha256:71c9e4eed415f9704f76b41a7759e95c2a50a4516efb2650a6f9c9dc3bd8425d"
+        }
+      ],
+      "port_sha256": "sha256:71c9e4eed415f9704f76b41a7759e95c2a50a4516efb2650a6f9c9dc3bd8425d",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ErdosProblems/Shared/QuadraticSplitPrimes.lean",
+      "selected_source": "cubic",
+      "selected_repository": "wcook04/plectis-erdos",
+      "selected_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+      "selected_source_path": "lean/ErdosProblems/Shared/QuadraticSplitPrimes.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "lean/ErdosProblems/Shared/QuadraticSplitPrimes.lean",
+          "source_sha256": "sha256:282d48a483761f5292c178b0398cc7ba000d3ab102dfc44406638c673fdb184d"
+        }
+      ],
+      "port_sha256": "sha256:282d48a483761f5292c178b0398cc7ba000d3ab102dfc44406638c673fdb184d",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "ExternalVerification/FC243CubicRate/Solution.lean",
+      "selected_source": "cubic",
+      "selected_repository": "wcook04/plectis-erdos",
+      "selected_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+      "selected_source_path": "verification/ExternalVerification/FC243CubicRate/Solution.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "db97307d0f70dcddb29bcf482679ab2a5251a663",
+          "source_path": "verification/ExternalVerification/FC243CubicRate/Solution.lean",
+          "source_sha256": "sha256:6f2df88703132935e4747f9a82fd2bcbcd6717d3e63bec4443e543a4918b0ac4"
+        }
+      ],
+      "port_sha256": "sha256:6f2df88703132935e4747f9a82fd2bcbcd6717d3e63bec4443e543a4918b0ac4",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "Solutions/PalomarCorpus/E243_06.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "Solutions/PalomarCorpus/E243_06.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "Solutions/PalomarCorpus/E243_06.lean",
+          "source_sha256": "sha256:b745b62275abb868f5091d13ab8bb6b43c86edc349384dc43d3cf5ae46d53952"
+        }
+      ],
+      "port_sha256": "sha256:b745b62275abb868f5091d13ab8bb6b43c86edc349384dc43d3cf5ae46d53952",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "Solutions/PalomarCorpus/E243_06/OriginalCoordinateBoundedDefect.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "Solutions/PalomarCorpus/E243_06/OriginalCoordinateBoundedDefect.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "Solutions/PalomarCorpus/E243_06/OriginalCoordinateBoundedDefect.lean",
+          "source_sha256": "sha256:1bf5fd650e4a0bc631e8cd0269f3b2b8d61e4b594e0d8da9be89b7c9ec6b91eb"
+        }
+      ],
+      "port_sha256": "sha256:1bf5fd650e4a0bc631e8cd0269f3b2b8d61e4b594e0d8da9be89b7c9ec6b91eb",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "Solutions/PalomarCorpus/E243_06/PaperStatementsB.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "Solutions/PalomarCorpus/E243_06/PaperStatementsB.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "Solutions/PalomarCorpus/E243_06/PaperStatementsB.lean",
+          "source_sha256": "sha256:c87768ce17b4b76e9cefc2cd74f7c9960793db51508587875ca43569d06c3fe5"
+        }
+      ],
+      "port_sha256": "sha256:c87768ce17b4b76e9cefc2cd74f7c9960793db51508587875ca43569d06c3fe5",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "Solutions/PalomarCorpus/E243_06/PaperStatementsF.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "Solutions/PalomarCorpus/E243_06/PaperStatementsF.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "Solutions/PalomarCorpus/E243_06/PaperStatementsF.lean",
+          "source_sha256": "sha256:feac42dc1a6d29ca961b1e6f1d42d52fa406137a358c25dceeff7c4f0ad64dae"
+        }
+      ],
+      "port_sha256": "sha256:feac42dc1a6d29ca961b1e6f1d42d52fa406137a358c25dceeff7c4f0ad64dae",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "Solutions/PalomarCorpus/E243_06/PaperStatementsL.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "Solutions/PalomarCorpus/E243_06/PaperStatementsL.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "Solutions/PalomarCorpus/E243_06/PaperStatementsL.lean",
+          "source_sha256": "sha256:7e875c74c9832e04e05d772b9e419b5cdcab71df3accc5ae3a398ac78ec365a2"
+        }
+      ],
+      "port_sha256": "sha256:7e875c74c9832e04e05d772b9e419b5cdcab71df3accc5ae3a398ac78ec365a2",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "Solutions/PalomarCorpus/E243_06/PaperStatementsR.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "Solutions/PalomarCorpus/E243_06/PaperStatementsR.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "Solutions/PalomarCorpus/E243_06/PaperStatementsR.lean",
+          "source_sha256": "sha256:45282fb3b147f33916d6f26de2c1b5b0e657c5f29b7f370ae056b0437532c25b"
+        }
+      ],
+      "port_sha256": "sha256:45282fb3b147f33916d6f26de2c1b5b0e657c5f29b7f370ae056b0437532c25b",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "Solutions/PalomarCorpus/E243_06/PaperStructuresAA.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "Solutions/PalomarCorpus/E243_06/PaperStructuresAA.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "Solutions/PalomarCorpus/E243_06/PaperStructuresAA.lean",
+          "source_sha256": "sha256:5850fa0449568952bf66ff0a78d21d512c7dc8838fec5da0b964abeef8dda886"
+        }
+      ],
+      "port_sha256": "sha256:5850fa0449568952bf66ff0a78d21d512c7dc8838fec5da0b964abeef8dda886",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "Solutions/PalomarCorpus/E243_06/PaperStructuresAB.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "Solutions/PalomarCorpus/E243_06/PaperStructuresAB.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "Solutions/PalomarCorpus/E243_06/PaperStructuresAB.lean",
+          "source_sha256": "sha256:20a676664547de8cc3394b5caa9e0e3ed4ab7e3c130b8e37ec3a5fa1d8a80ec3"
+        }
+      ],
+      "port_sha256": "sha256:20a676664547de8cc3394b5caa9e0e3ed4ab7e3c130b8e37ec3a5fa1d8a80ec3",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "Solutions/PalomarCorpus/E243_06/PaperStructuresAE.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "Solutions/PalomarCorpus/E243_06/PaperStructuresAE.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "Solutions/PalomarCorpus/E243_06/PaperStructuresAE.lean",
+          "source_sha256": "sha256:41979a11bee4b8f69b9683872e4b530e8596b9d0a75e7cd7fd24eee7a93f7aa7"
+        }
+      ],
+      "port_sha256": "sha256:41979a11bee4b8f69b9683872e4b530e8596b9d0a75e7cd7fd24eee7a93f7aa7",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    },
+    {
+      "port_path": "Solutions/PalomarCorpus/E243_06/Statement.lean",
+      "selected_source": "slow",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+      "selected_source_path": "Solutions/PalomarCorpus/E243_06/Statement.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1be0b5416aa58e84f7bcd72c961c525f24e4910",
+          "source_path": "Solutions/PalomarCorpus/E243_06/Statement.lean",
+          "source_sha256": "sha256:18f15550d9f67ec643a174cec4df6ba67c1d6fcbcb72e0d205d16e9934b0945e"
+        }
+      ],
+      "port_sha256": "sha256:18f15550d9f67ec643a174cec4df6ba67c1d6fcbcb72e0d205d16e9934b0945e",
+      "edits": [],
+      "selection_reason": "Use slow-growth proof-migration snapshot on shared paths; otherwise retain the source belonging to the target closure."
+    }
+  ],
+  "exact_receiving_statements": {
+    "Erdos243.erdos_243.variants.cubic_rate": "theorem erdos_243.variants.cubic_rate (a : \u2115 \u2192 \u2115)\n    (ha : StrictMono a) (hpos : \u2200 n, 0 < a n)\n    (hrate : Tendsto (fun n : \u2115 => (n : \u211d) ^ 3 *\n      ((a n : \u211d) ^ 2 / (a (n + 1) : \u211d) - (1 + 3 / (n : \u211d)))) atTop (\ud835\udcdd 0)) :\n    Irrational (\u2211' n : \u2115, 1 / (a n : \u211d))",
+    "Erdos243.erdos_243.variants.slow_growth_product_defect": "theorem slow_growth_product_defect\n    (a : \u2115 \u2192 \u2115) (ha : StrictMono a) (hpos : \u2200 n, 0 < a n)\n    (p : \u2124) (q : \u2115) (hq : 0 < q)\n    (hs : HasSum (fun n \u21a6 1 / (a n : \u211d)) ((p : \u211d) / (q : \u211d)))\n    (hgrowth : Tendsto (fun n \u21a6 (a (n + 1) : \u211d) / (a n : \u211d) ^ 2)\n      atTop (nhds 1))\n    (\u03b4 : \u211d) (h\u03b4 : 0 < \u03b4)\n    (hslow : \u2203 N : \u2115, \u2200 n : \u2115, N \u2264 n \u2192\n      productDefect a n \u2264 (1 - \u03b4) / (q : \u211d) *\n        recordLogLog ((prefixProduct a n : \u211d) / (a n : \u211d))) :\n    \u2203 N, \u2200 n, N \u2264 n \u2192\n      (a (n + 1) : \u2124) = (a n : \u2124) ^ 2 - (a n : \u2124) + 1"
+  },
+  "receiving_definition_block_sha256": "sha256:70c414a8a7eccb17b84347339fd8ea1a0e00d739afa595e0dbdb9a2a1f5b01ff",
+  "solution_sha256": "sha256:3a2c0a12f7ca9a2b5cf60ca121054034cc96c36519d5a1293244c2925603b0f2",
+  "validation": "prepared_unverified",
+  "merge_boundary": "Two independently checked source closures have10shared module paths,8different bytes. Common declaration statements are unchanged by the examined diffs; older ReciprocalTailRigidity has an88line extra support section. Source selection is explicit per file. Source-only snapshot comparisons do not certify this merged project.",
+  "challenge_boundary": "Actual FC243 declaration exports must be frozen before candidate compile, and each selected target must pass independently against its own actual receiving FQN; no copied Challenge included."
+}

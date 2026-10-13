@@ -1,0 +1,263 @@
+{
+  "schema": "fc6971_hausdorff_receiving_port/1",
+  "status": "prepared_unverified",
+  "source_repository": "wcook04/plectis-erdos-lean",
+  "source_ref": "587c48f213106c20ba2cdf3d585700c1394fc44f",
+  "source_project_path": "verification/FC1041HausdorffCounterexample",
+  "source_declaration": "Erdos1041.Counterexample.erdos1041_hausdorff_answer_false",
+  "source_environment": {
+    "lean-toolchain": {
+      "sha256": "sha256:88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5",
+      "content": "leanprover/lean4:v4.29.1\n\n"
+    },
+    "lake-manifest.json": {
+      "sha256": "sha256:ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c",
+      "content": {
+        "version": "1.1.0",
+        "packagesDir": ".lake/packages",
+        "packages": [
+          {
+            "url": "https://github.com/leanprover-community/mathlib4",
+            "type": "git",
+            "subDir": null,
+            "scope": "leanprover-community",
+            "rev": "5e932f97dd25535344f80f9dd8da3aab83df0fe6",
+            "name": "mathlib",
+            "manifestFile": "lake-manifest.json",
+            "inputRev": "v4.29.1",
+            "inherited": false,
+            "configFile": "lakefile.lean"
+          },
+          {
+            "url": "https://github.com/leanprover-community/plausible",
+            "type": "git",
+            "subDir": null,
+            "scope": "leanprover-community",
+            "rev": "83e90935a17ca19ebe4b7893c7f7066e266f50d3",
+            "name": "plausible",
+            "manifestFile": "lake-manifest.json",
+            "inputRev": "main",
+            "inherited": true,
+            "configFile": "lakefile.toml"
+          },
+          {
+            "url": "https://github.com/leanprover-community/LeanSearchClient",
+            "type": "git",
+            "subDir": null,
+            "scope": "leanprover-community",
+            "rev": "c5d5b8fe6e5158def25cd28eb94e4141ad97c843",
+            "name": "LeanSearchClient",
+            "manifestFile": "lake-manifest.json",
+            "inputRev": "main",
+            "inherited": true,
+            "configFile": "lakefile.toml"
+          },
+          {
+            "url": "https://github.com/leanprover-community/import-graph",
+            "type": "git",
+            "subDir": null,
+            "scope": "leanprover-community",
+            "rev": "48d5698bc464786347c1b0d859b18f938420f060",
+            "name": "importGraph",
+            "manifestFile": "lake-manifest.json",
+            "inputRev": "main",
+            "inherited": true,
+            "configFile": "lakefile.toml"
+          },
+          {
+            "url": "https://github.com/leanprover-community/ProofWidgets4",
+            "type": "git",
+            "subDir": null,
+            "scope": "leanprover-community",
+            "rev": "4dd0959c44d1af0462bd604d0f87c5781307d709",
+            "name": "proofwidgets",
+            "manifestFile": "lake-manifest.json",
+            "inputRev": "v0.0.95+lean-v4.29.1",
+            "inherited": true,
+            "configFile": "lakefile.lean"
+          },
+          {
+            "url": "https://github.com/leanprover-community/aesop",
+            "type": "git",
+            "subDir": null,
+            "scope": "leanprover-community",
+            "rev": "7152850e7b216a0d409701617721b6e469d34bf6",
+            "name": "aesop",
+            "manifestFile": "lake-manifest.json",
+            "inputRev": "master",
+            "inherited": true,
+            "configFile": "lakefile.toml"
+          },
+          {
+            "url": "https://github.com/leanprover-community/quote4",
+            "type": "git",
+            "subDir": null,
+            "scope": "leanprover-community",
+            "rev": "707efb56d0696634e9e965523a1bbe9ac6ce141d",
+            "name": "Qq",
+            "manifestFile": "lake-manifest.json",
+            "inputRev": "master",
+            "inherited": true,
+            "configFile": "lakefile.toml"
+          },
+          {
+            "url": "https://github.com/leanprover-community/batteries",
+            "type": "git",
+            "subDir": null,
+            "scope": "leanprover-community",
+            "rev": "756e3321fd3b02a85ffda19fef789916223e578c",
+            "name": "batteries",
+            "manifestFile": "lake-manifest.json",
+            "inputRev": "main",
+            "inherited": true,
+            "configFile": "lakefile.toml"
+          },
+          {
+            "url": "https://github.com/leanprover/lean4-cli",
+            "type": "git",
+            "subDir": null,
+            "scope": "leanprover",
+            "rev": "7802da01beb530bf051ab657443f9cd9bc3e1a29",
+            "name": "Cli",
+            "manifestFile": "lake-manifest.json",
+            "inputRev": "v4.29.0",
+            "inherited": true,
+            "configFile": "lakefile.toml"
+          }
+        ],
+        "name": "erdos249257",
+        "lakeDir": ".lake"
+      }
+    }
+  },
+  "receiving_repository": "google-deepmind/formal-conjectures",
+  "receiving_head": "b47d6ce7ebabf79193826fad5b14b13e44f9c786",
+  "receiving_file": "FormalConjectures/ErdosProblems/1041.lean",
+  "receiving_file_sha256": "sha256:d29a576372abd0abd220ec54b949237c388c52213166313f4b8d5ad9b81e269a",
+  "actual_signature": "theorem erdos_1041 :\n    answer(False) \u2194 \u2200 (n : \u2115) (f : \u2102[X]), n \u2265 2 \u2192 f.natDegree = n \u2192 f.Monic \u2192\n      f.rootSet \u2102 \u2286 Metric.ball 0 1 \u2192\n      \u2203 (z\u2081 z\u2082 : \u2102) (h : ({z\u2081, z\u2082} : Multiset \u2102) \u2264 f.roots) (\u03b3 : Path z\u2081 z\u2082),\n        Set.range \u03b3 \u2286 { z : \u2102 | \u2016f.eval z\u2016 < 1 } \u2227 length (Set.range \u03b3) < 2",
+  "solution_signature": "theorem erdos_1041 :\n    False \u2194 \u2200 (n : \u2115) (f : \u2102[X]), n \u2265 2 \u2192 f.natDegree = n \u2192 f.Monic \u2192\n      f.rootSet \u2102 \u2286 Metric.ball 0 1 \u2192\n      \u2203 (z\u2081 z\u2082 : \u2102) (h : ({z\u2081, z\u2082} : Multiset \u2102) \u2264 f.roots) (\u03b3 : Path z\u2081 z\u2082),\n        Set.range \u03b3 \u2286 { z : \u2102 | \u2016f.eval z\u2016 < 1 } \u2227 length (Set.range \u03b3) < 2",
+  "receiving_length_definition": "noncomputable def length (s : Set \u2102) : \u211d\u22650\u221e := \u03bcH[1] s\n",
+  "receiving_pins": {
+    "lean": "leanprover/lean4:v4.33.1",
+    "mathlib": "0df444a360eaa60ab8c11dca51a86af692955474"
+  },
+  "source_files": [
+    {
+      "source_path": "verification/FC1041HausdorffCounterexample/lean/ErdosProblems/Erdos1041/Counterexample/Assembly.lean",
+      "source_sha256": "sha256:c6174888a3c59acf20f827b01a42bbffce05112eb7c7a3f30350dc1af0fb8f19",
+      "port_path": "ErdosProblems/Erdos1041/Counterexample/Assembly.lean",
+      "port_sha256": "sha256:c6174888a3c59acf20f827b01a42bbffce05112eb7c7a3f30350dc1af0fb8f19",
+      "edits": []
+    },
+    {
+      "source_path": "verification/FC1041HausdorffCounterexample/lean/ErdosProblems/Erdos1041/Counterexample/BarrierAlgebra.lean",
+      "source_sha256": "sha256:3c051a2863e4da7c2a05e587f2b137d012ad5418ab7418c8f63969455fb0dc25",
+      "port_path": "ErdosProblems/Erdos1041/Counterexample/BarrierAlgebra.lean",
+      "port_sha256": "sha256:3c051a2863e4da7c2a05e587f2b137d012ad5418ab7418c8f63969455fb0dc25",
+      "edits": []
+    },
+    {
+      "source_path": "verification/FC1041HausdorffCounterexample/lean/ErdosProblems/Erdos1041/Counterexample/BarrierCertificates.lean",
+      "source_sha256": "sha256:bc0fbc8361822111f0468267b47f9a40f7ba8e8c126e41873c6a62044864721b",
+      "port_path": "ErdosProblems/Erdos1041/Counterexample/BarrierCertificates.lean",
+      "port_sha256": "sha256:bc0fbc8361822111f0468267b47f9a40f7ba8e8c126e41873c6a62044864721b",
+      "edits": []
+    },
+    {
+      "source_path": "verification/FC1041HausdorffCounterexample/lean/ErdosProblems/Erdos1041/Counterexample/BarrierGraphs.lean",
+      "source_sha256": "sha256:8e3ee82a10ea78f41efa8839a5eb76f6a2e515e88a68adfef85bae68fbf14f91",
+      "port_path": "ErdosProblems/Erdos1041/Counterexample/BarrierGraphs.lean",
+      "port_sha256": "sha256:8e3ee82a10ea78f41efa8839a5eb76f6a2e515e88a68adfef85bae68fbf14f91",
+      "edits": []
+    },
+    {
+      "source_path": "verification/FC1041HausdorffCounterexample/lean/ErdosProblems/Erdos1041/Counterexample/BarrierSigns.lean",
+      "source_sha256": "sha256:48d3a0e9375b0f060e06c71122309c442ffa4ff1eb02b9405c0100b62581886c",
+      "port_path": "ErdosProblems/Erdos1041/Counterexample/BarrierSigns.lean",
+      "port_sha256": "sha256:6db7e84203b3cac299a889048f30687e9a07008dcb87b1d8f587c6febf13068a",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated strict source batch38175216709 at9a: Pinned Real.sin_gt_sub_cube takes only positivity; preserve interval and cosine estimates. Compiler replay pending."
+        }
+      ]
+    },
+    {
+      "source_path": "verification/FC1041HausdorffCounterexample/lean/ErdosProblems/Erdos1041/Counterexample/Bottleneck.lean",
+      "source_sha256": "sha256:034cc62cb3769d7c9ff2f1aea4d1917534437f7adec3bf5537500e6b3d80976a",
+      "port_path": "ErdosProblems/Erdos1041/Counterexample/Bottleneck.lean",
+      "port_sha256": "sha256:12a9883ee3ed6d40252023df06b4baf725e1cba8e5c2e3492bca4ca4ca0c5248",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38179005870 atde8cba: Canonical locally path connected class throughout dependent binders/instances; definitionally same class alias preserves assumptions. Independent static review passed; compiler replay pending."
+        }
+      ]
+    },
+    {
+      "source_path": "verification/FC1041HausdorffCounterexample/lean/ErdosProblems/Erdos1041/Counterexample/Components.lean",
+      "source_sha256": "sha256:dc8b8477222840b31b7eb8d4d4ff79e6d909b4b538646e5327bb4ca0029f8d6f",
+      "port_path": "ErdosProblems/Erdos1041/Counterexample/Components.lean",
+      "port_sha256": "sha256:f509047fc1c8197cdf65daebf1c2ace3001b7b3bfe5b2829013a3460606111e2",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated strict source batch38175216709 at9a: Canonical LocallyPathConnectedSpace class and IsOpen constructor; deprecated alias is not a class binder. Preserve simply-connected and preconnected assumptions. Compiler replay pending."
+        }
+      ]
+    },
+    {
+      "source_path": "verification/FC1041HausdorffCounterexample/lean/ErdosProblems/Erdos1041/Counterexample/Defs.lean",
+      "source_sha256": "sha256:90d69df047b9252c3a19d538f6adfd6734b25d090c131421cbbbb061f8cadf22",
+      "port_path": "ErdosProblems/Erdos1041/Counterexample/Defs.lean",
+      "port_sha256": "sha256:90d69df047b9252c3a19d538f6adfd6734b25d090c131421cbbbb061f8cadf22",
+      "edits": []
+    },
+    {
+      "source_path": "verification/FC1041HausdorffCounterexample/lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean",
+      "source_sha256": "sha256:069ea76e27304bd34e020cf8aab0fcc9200c495ff892127612e8afe571e3fcb4",
+      "port_path": "ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean",
+      "port_sha256": "sha256:76a69c7b972381f76889bccdb145884d89c6c13025f7c636c08ada1ff2a290b4",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38276766059 at057ba42: Canonical proof-local locally path connected instance from unchanged slit-base theorem. Independent static reviews passed; full source compiler replay pending."
+        }
+      ]
+    },
+    {
+      "source_path": "verification/FC1041HausdorffCounterexample/lean/ErdosProblems/Erdos1041/Counterexample/InstanceBarriers.lean",
+      "source_sha256": "sha256:4f977e49ba5559eafb5248c4d1c1af0b0f2a08c7d28baf6790f50b39e9cb294d",
+      "port_path": "ErdosProblems/Erdos1041/Counterexample/InstanceBarriers.lean",
+      "port_sha256": "sha256:4f977e49ba5559eafb5248c4d1c1af0b0f2a08c7d28baf6790f50b39e9cb294d",
+      "edits": []
+    },
+    {
+      "source_path": "verification/FC1041HausdorffCounterexample/lean/ErdosProblems/Erdos1041/Counterexample/InstanceConnectivity.lean",
+      "source_sha256": "sha256:fe8b1208dbce3fea8aafadc08a007f6b93e3170edf5c5ff32f3fa366bf5bfd96",
+      "port_path": "ErdosProblems/Erdos1041/Counterexample/InstanceConnectivity.lean",
+      "port_sha256": "sha256:cd6adb4aadfe28697a8663a3bae029cb16d6a64ac333b0fc2c60adce0a040781",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38179005870 atde8cba: Preserve quartic Taylor bounds using explicit fifth-power remainder comparison; direct polynomial derivative module import and removal inert cleanup. Independent static review passed; compiler replay pending."
+        }
+      ]
+    },
+    {
+      "source_path": "verification/FC1041HausdorffCounterexample/lean/ErdosProblems/Erdos1041/Counterexample/InstanceCritical.lean",
+      "source_sha256": "sha256:af8ca59a63e9048e034fbe6b5f8ecb966bde054688d7e2e12a9e159b708c4cbd",
+      "port_path": "ErdosProblems/Erdos1041/Counterexample/InstanceCritical.lean",
+      "port_sha256": "sha256:a47e6e0961c22ff79899e8a2bbe1e92e733480df75a932cbf985ef71ee84e874",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated strict source batch38175216709 at9a: Explicitly unfold Subtype.map in the original contraction norm bound. Compiler replay pending."
+        }
+      ]
+    }
+  ],
+  "wrapper_sha256": "sha256:17a06cf6a70837b0b2b26850ec476ac33f3e085e1b961e844917b7f23678b17e",
+  "answer_expansion": "Receiver answer(False) elaborates to False up to erased answer annotation. Actual export comparison required.",
+  "verification": "No compilation or actual receiving export comparison run."
+}

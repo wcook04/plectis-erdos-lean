@@ -1,0 +1,28 @@
+{
+  "schema": "fc_receiving_proof_environment_binding/1",
+  "receiving_repository": "google-deepmind/formal-conjectures",
+  "receiving_commit": "e6bf75a53ef0655241873e5f12427fb6b4695de5",
+  "receiving_path": "FormalConjectures/ErdosProblems/249.lean",
+  "receiving_declaration": "Erdos249.erdos_249.variants.rational_dyadic_observable",
+  "original_proof_repository": "wcook04/plectis-erdos-lean",
+  "original_proof_commit": "587c48f213106c20ba2cdf3d585700c1394fc44f",
+  "original_project_path": "verification/FC249RationalObservable",
+  "solution_module": "FC249Repair",
+  "solution_declaration": "Erdos249.erdos_249.variants.rational_dyadic_observable",
+  "toolchain": "leanprover/lean4:v4.33.1",
+  "mathlib_commit": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "assurance_status": "prepared_unverified",
+  "trust_boundary": "Matching source syntax or a locally restated Challenge is insufficient. Export the actual immutable receiving module before proof compilation and compare its elaborated statement/dependency closure with this Solution.",
+  "source_files": {
+    "ErdosProblems/Erdos249/PaperCompleteR7/RationalObservableClassification.lean": "sha256:81a806db60720dd12c25610f2f1bab544e7f104b21a49274b90eaf6538e84715",
+    "ErdosProblems/Erdos249/ResidueClassTotientSeries.lean": "sha256:a12b2f8e1fe1dfdb50e92aaf9aebbdab6eeb5c405a9786bbec497a5510a7fa94",
+    "FC249Repair.lean": "sha256:113bcebf7415fa76d79e570eda87865d2f0ec7253e603ce0410a6cc51e7910c9"
+  },
+  "original_proof_files": {
+    "verification/FC249RationalObservable/lean/ErdosProblems/Erdos249/ResidueClassTotientSeries.lean": "sha256:dea677ad39aee98304defdb5c88afa77603b2d6cc6cdc6822635fc88b8f97e7e",
+    "verification/FC249RationalObservable/lean/ErdosProblems/Erdos249/PaperCompleteR7/RationalObservableClassification.lean": "sha256:a2f210bd66fa1c7026c2dec9da5c04978f0be6f49ac2f227499abaae96234a68",
+    "verification/FC249RationalObservable/lean-toolchain": "sha256:88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5",
+    "verification/FC249RationalObservable/lake-manifest.json": "sha256:ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c"
+  },
+  "receiving_file_sha256": "sha256:59837b7045ab729ab0853111c37beace5e89abafcc018f08ff6bf6fe60389de4"
+}

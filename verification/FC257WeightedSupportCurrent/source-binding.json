@@ -1,0 +1,700 @@
+{
+  "schema": "fc6528_dual_receiving_port/1",
+  "status": "prepared_unverified",
+  "public_base_commit": "5527995cf9375079b8d30bf3121132704f164ad9",
+  "package_path": "verification/FC257WeightedSupportCurrent",
+  "source_repository": "wcook04/plectis-erdos-lean",
+  "source_ref": "fd5388a4ea3a19f0b950395b137fda261c05f9a0",
+  "source_environment": {
+    "lean-toolchain": {
+      "sha256": "sha256:8dc8d6f560141069d9073e370611716ef77ada0da8ffa37e2149f44b2e63ac7a",
+      "content": "leanprover/lean4:v4.35.0-rc2\n"
+    },
+    "lake-manifest.json": {
+      "sha256": "sha256:22ddb352879d89d8ff34a033875b9eeb338e74aba38c44f066594a2e3231e383",
+      "content": {
+        "version": "1.2.0",
+        "packagesDir": ".lake/packages",
+        "packages": [
+          {
+            "url": "https://github.com/leanprover-community/mathlib4",
+            "type": "git",
+            "subDir": null,
+            "scope": "leanprover-community",
+            "rev": "065356127b1dc0016f66b7283ce0ce2c4055aa55",
+            "name": "mathlib",
+            "manifestFile": "lake-manifest.json",
+            "inputRev": "v4.35.0-rc2",
+            "inherited": false,
+            "configFile": "lakefile.lean"
+          },
+          {
+            "url": "https://github.com/leanprover-community/plausible",
+            "type": "git",
+            "subDir": null,
+            "scope": "leanprover-community",
+            "rev": "e50948299c4dc4a4c21b1c34b6a6a4fddc19f912",
+            "name": "plausible",
+            "manifestFile": "lake-manifest.json",
+            "inputRev": "main",
+            "inherited": true,
+            "configFile": "lakefile.toml"
+          },
+          {
+            "url": "https://github.com/leanprover-community/LeanSearchClient",
+            "type": "git",
+            "subDir": null,
+            "scope": "leanprover-community",
+            "rev": "95e037bfdc31d3916ac615446847fb01960e2719",
+            "name": "LeanSearchClient",
+            "manifestFile": "lake-manifest.json",
+            "inputRev": "main",
+            "inherited": true,
+            "configFile": "lakefile.toml"
+          },
+          {
+            "url": "https://github.com/leanprover-community/import-graph",
+            "type": "git",
+            "subDir": null,
+            "scope": "leanprover-community",
+            "rev": "10930f8138f0462dbd744a91fc03a16fae0e046f",
+            "name": "importGraph",
+            "manifestFile": "lake-manifest.json",
+            "inputRev": "main",
+            "inherited": true,
+            "configFile": "lakefile.toml"
+          },
+          {
+            "url": "https://github.com/leanprover-community/ProofWidgets4",
+            "type": "git",
+            "subDir": null,
+            "scope": "leanprover-community",
+            "rev": "4c70ac059693669e5756e32a7a94b57ee1e99dc5",
+            "name": "proofwidgets",
+            "manifestFile": "lake-manifest.json",
+            "inputRev": "main",
+            "inherited": true,
+            "configFile": "lakefile.lean"
+          },
+          {
+            "url": "https://github.com/leanprover-community/aesop",
+            "type": "git",
+            "subDir": null,
+            "scope": "leanprover-community",
+            "rev": "75d936c7af167cc93fac0d31237682fc2204591d",
+            "name": "aesop",
+            "manifestFile": "lake-manifest.json",
+            "inputRev": "master",
+            "inherited": true,
+            "configFile": "lakefile.toml"
+          },
+          {
+            "url": "https://github.com/leanprover-community/quote4",
+            "type": "git",
+            "subDir": null,
+            "scope": "leanprover-community",
+            "rev": "786b7acdca7eb4e9c76c5d1d5bd810e7e5c56334",
+            "name": "Qq",
+            "manifestFile": "lake-manifest.json",
+            "inputRev": "master",
+            "inherited": true,
+            "configFile": "lakefile.toml"
+          },
+          {
+            "url": "https://github.com/leanprover-community/batteries",
+            "type": "git",
+            "subDir": null,
+            "scope": "leanprover-community",
+            "rev": "ed9b316aabe389fec1ef43c3326ab48c7e59be42",
+            "name": "batteries",
+            "manifestFile": "lake-manifest.json",
+            "inputRev": "main",
+            "inherited": true,
+            "configFile": "lakefile.toml"
+          },
+          {
+            "url": "https://github.com/leanprover/lean4-cli",
+            "type": "git",
+            "subDir": null,
+            "scope": "leanprover",
+            "rev": "2842b9871b04862f944c032e34052cb9448ccb71",
+            "name": "Cli",
+            "manifestFile": "lake-manifest.json",
+            "inputRev": "v4.35.0-rc2",
+            "inherited": true,
+            "configFile": "lakefile.toml"
+          }
+        ],
+        "name": "erdos257_period_noncollapse",
+        "lakeDir": ".lake",
+        "fixedToolchain": false
+      }
+    }
+  },
+  "receiving_repository": "google-deepmind/formal-conjectures",
+  "receiving_head": "40f7826a7ba761dd39b4542094d6149c60ce6c47",
+  "receiving_file": "FormalConjectures/ErdosProblems/257.lean",
+  "receiving_file_sha256": "sha256:6865f178f0323fd39bf7f2eb3156ebf6acbfe0975e1c76bb4b39ad9588c218a3",
+  "receiving_pins": {
+    "lean": "leanprover/lean4:v4.33.1",
+    "mathlib": "0df444a360eaa60ab8c11dca51a86af692955474"
+  },
+  "actual_receiving_signatures": {
+    "finite_prime_weighted_support": "theorem erdos_257.variants.finite_prime_weighted_support :\n    (\u2200 (b : \u2115) (A : Set \u2115), 2 \u2264 b \u2192 0 \u2209 A \u2192 A.Infinite \u2192\n      erdos_257.variants.finitePrimeWeighted b A \u2192\n        Irrational (\u2211' a : \u2115,\n          Set.indicator A (fun a => (1 : \u211d) / ((b : \u211d) ^ a - 1)) a)) \u2227\n    (\u2200 H : Set \u2115, 0 \u2209 H \u2192 erdos_257.variants.finitePrimeWeighted 2 H \u2192\n      \u2200 A : Set \u2115, A \u2286 H \u2192 A.Infinite \u2192\n        \u2200 b : \u2115, 2 \u2264 b \u2192\n          Irrational (\u2211' a : \u2115,\n            Set.indicator A (fun a => (1 : \u211d) / ((b : \u211d) ^ a - 1)) a))",
+    "arbitrary_weight_mixed_support": "theorem erdos_257.variants.arbitrary_weight_mixed_support\n    (E V : Set \u2115) (hE0 : 0 \u2209 E) (hE : erdos_257.variants.finitePrimeWeighted 2 E)\n    (D : LogBudgetCover V) :\n    \u2200 A : Set \u2115, A \u2286 E \u222a V \u2192 A.Infinite \u2192 \u2200 b : \u2115, 2 \u2264 b \u2192\n      Irrational (erdosSupportSeries b A)"
+  },
+  "receiving_definition_block_sha256": "sha256:ccc42c73193d39f088fed3189f156e69283e3ae2485574ba89a2c4632f7d5a45",
+  "wrapper_sha256": "sha256:2cba27fbd384062c58016d1be722055ce1c1758183ab9c0f4ea2462ac7effa00",
+  "original_source_files": [
+    {
+      "source_path": "Erdos249257/AllBaseReciprocalSupportIrrationality.lean",
+      "source_sha256": "sha256:94e400fc2d849dd3f901dc571bddc9f550722c0a2848cb216fa04f29cf0e04d5",
+      "port_path": "Erdos249257/AllBaseReciprocalSupportIrrationality.lean",
+      "port_sha256": "sha256:94e400fc2d849dd3f901dc571bddc9f550722c0a2848cb216fa04f29cf0e04d5",
+      "edits": []
+    },
+    {
+      "source_path": "Erdos249257/BooleanMobiusCarry.lean",
+      "source_sha256": "sha256:b796db336e0227e3f5199bbc08107df8be764d391d138439d0f818d437dd4fe6",
+      "port_path": "Erdos249257/BooleanMobiusCarry.lean",
+      "port_sha256": "sha256:b796db336e0227e3f5199bbc08107df8be764d391d138439d0f818d437dd4fe6",
+      "edits": []
+    },
+    {
+      "source_path": "Erdos249257/CarrySurvivorExtinction.lean",
+      "source_sha256": "sha256:e0523d7bcb42600807aa561f0a07afb3962efd11dd8aa76cfd1fa48c8af54e6d",
+      "port_path": "Erdos249257/CarrySurvivorExtinction.lean",
+      "port_sha256": "sha256:e0523d7bcb42600807aa561f0a07afb3962efd11dd8aa76cfd1fa48c8af54e6d",
+      "edits": []
+    },
+    {
+      "source_path": "Erdos249257/CertificateKernel.lean",
+      "source_sha256": "sha256:0b23fd553b82ad04839c8976428d30bcf3cc44974419ef990cecd6b5d0b8b587",
+      "port_path": "Erdos249257/CertificateKernel.lean",
+      "port_sha256": "sha256:0b23fd553b82ad04839c8976428d30bcf3cc44974419ef990cecd6b5d0b8b587",
+      "edits": []
+    },
+    {
+      "source_path": "Erdos249257/GapFareyBound.lean",
+      "source_sha256": "sha256:076397176d7ca70d0ab4771872bd415ef5487d90f55e389f4250d7f3f43abc25",
+      "port_path": "Erdos249257/GapFareyBound.lean",
+      "port_sha256": "sha256:076397176d7ca70d0ab4771872bd415ef5487d90f55e389f4250d7f3f43abc25",
+      "edits": []
+    },
+    {
+      "source_path": "Erdos249257/GcdMomentCalculus.lean",
+      "source_sha256": "sha256:e535c90b20cf4c424df5503efbd33159a2fcff3f2dc1b901f035d5b2ce297369",
+      "port_path": "Erdos249257/GcdMomentCalculus.lean",
+      "port_sha256": "sha256:e535c90b20cf4c424df5503efbd33159a2fcff3f2dc1b901f035d5b2ce297369",
+      "edits": []
+    },
+    {
+      "source_path": "Erdos249257/GenericTailOrbitRigidity.lean",
+      "source_sha256": "sha256:89b4b0ebd2799ee359193be66852c394486ef39251c2f278df10c6de88a5e291",
+      "port_path": "Erdos249257/GenericTailOrbitRigidity.lean",
+      "port_sha256": "sha256:89b4b0ebd2799ee359193be66852c394486ef39251c2f278df10c6de88a5e291",
+      "edits": []
+    },
+    {
+      "source_path": "Erdos249257/GeometricCoprimality.lean",
+      "source_sha256": "sha256:40fb3ec5c69bbc75f847d1481bd30fe0eef6619320cff26c111fb342f1cfc315",
+      "port_path": "Erdos249257/GeometricCoprimality.lean",
+      "port_sha256": "sha256:40fb3ec5c69bbc75f847d1481bd30fe0eef6619320cff26c111fb342f1cfc315",
+      "edits": []
+    },
+    {
+      "source_path": "Erdos249257/GreedyAchievementSet.lean",
+      "source_sha256": "sha256:e0f1541a01af49dca8decdba67525b38d322ee317ba287555cfb8cfb586a8898",
+      "port_path": "Erdos249257/GreedyAchievementSet.lean",
+      "port_sha256": "sha256:e0f1541a01af49dca8decdba67525b38d322ee317ba287555cfb8cfb586a8898",
+      "edits": []
+    },
+    {
+      "source_path": "Erdos249257/LcmConeFlatness.lean",
+      "source_sha256": "sha256:daf6338ebbeb5138016ff2e2488774e34852a00bdec49bf65ed93fb02d934638",
+      "port_path": "Erdos249257/LcmConeFlatness.lean",
+      "port_sha256": "sha256:daf6338ebbeb5138016ff2e2488774e34852a00bdec49bf65ed93fb02d934638",
+      "edits": []
+    },
+    {
+      "source_path": "Erdos249257/LcmConeNonflat.lean",
+      "source_sha256": "sha256:b89a77cdeb5f3818515ea9cccb3937efdbf8ef4e0ddcb639e82a38ac15c0b050",
+      "port_path": "Erdos249257/LcmConeNonflat.lean",
+      "port_sha256": "sha256:b89a77cdeb5f3818515ea9cccb3937efdbf8ef4e0ddcb639e82a38ac15c0b050",
+      "edits": []
+    },
+    {
+      "source_path": "Erdos249257/LcmDiagonalReduction.lean",
+      "source_sha256": "sha256:1c87948ec072687e0516e4f603f11e0938c692588cfb9bf3e459d7e91c80d801",
+      "port_path": "Erdos249257/LcmDiagonalReduction.lean",
+      "port_sha256": "sha256:1c87948ec072687e0516e4f603f11e0938c692588cfb9bf3e459d7e91c80d801",
+      "edits": []
+    },
+    {
+      "source_path": "Erdos249257/MersenneLambertLadder.lean",
+      "source_sha256": "sha256:de5a9d047c57f22f9fe2770050172134f8d01ec78e2ae19225ef356efdde2753",
+      "port_path": "Erdos249257/MersenneLambertLadder.lean",
+      "port_sha256": "sha256:de5a9d047c57f22f9fe2770050172134f8d01ec78e2ae19225ef356efdde2753",
+      "edits": []
+    },
+    {
+      "source_path": "Erdos249257/MersenneTailAtoms.lean",
+      "source_sha256": "sha256:e3e3f214de305041df5b5d7520024a09b9f247aad77a604874b835e6874f5a95",
+      "port_path": "Erdos249257/MersenneTailAtoms.lean",
+      "port_sha256": "sha256:e3e3f214de305041df5b5d7520024a09b9f247aad77a604874b835e6874f5a95",
+      "edits": []
+    },
+    {
+      "source_path": "Erdos249257/RationalSupportCarrySkeleton.lean",
+      "source_sha256": "sha256:4025119b734307d0b2711ec2d2f1b9f1989d237e5c7aa0eebd353173dd9ef450",
+      "port_path": "Erdos249257/RationalSupportCarrySkeleton.lean",
+      "port_sha256": "sha256:04c75864ee4ef99b7ef5b9dbd76f9e887442333989241c0bc7a2e9ef722fae20",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38276766059 at057ba42: Existing Oddv-derived proof-local NeZero for finite unit order; reciprocal additionally explicit Nat.ModEq and Function.comp_def beta. Weighted localinstance is parent-approved robustness, not observed fatal. Independent static reviews passed; full source compiler replay pending."
+        }
+      ]
+    },
+    {
+      "source_path": "Erdos249257/ReciprocalSupportIrrationality.lean",
+      "source_sha256": "sha256:741f79c498dd06a59cb823a652bed3e17285aad63655dce077c0821701552559",
+      "port_path": "Erdos249257/ReciprocalSupportIrrationality.lean",
+      "port_sha256": "sha256:741f79c498dd06a59cb823a652bed3e17285aad63655dce077c0821701552559",
+      "edits": []
+    },
+    {
+      "source_path": "Erdos249257/SternBrocotRunGeometry.lean",
+      "source_sha256": "sha256:fcb72bd7eb8a4d0edbf068357e49dfdba9196ad0a897ceaa9d878f0b2bb58ff0",
+      "port_path": "Erdos249257/SternBrocotRunGeometry.lean",
+      "port_sha256": "sha256:fcb72bd7eb8a4d0edbf068357e49dfdba9196ad0a897ceaa9d878f0b2bb58ff0",
+      "edits": []
+    },
+    {
+      "source_path": "Erdos249257/TotientTailPeriodKiller.lean",
+      "source_sha256": "sha256:f6e563e1ba5a5f3f9357bc7e214b18d9d411b89725cbd678176e4e3e3e38e098",
+      "port_path": "Erdos249257/TotientTailPeriodKiller.lean",
+      "port_sha256": "sha256:f6e563e1ba5a5f3f9357bc7e214b18d9d411b89725cbd678176e4e3e3e38e098",
+      "edits": []
+    },
+    {
+      "source_path": "Erdos257PeriodNoncollapse/AllBaseReciprocalSupportIrrationality.lean",
+      "source_sha256": "sha256:9514df643486455a6614343fc758f0663826a1400cdeef87f13217b14e8a37f9",
+      "port_path": "Erdos257PeriodNoncollapse/AllBaseReciprocalSupportIrrationality.lean",
+      "port_sha256": "sha256:9514df643486455a6614343fc758f0663826a1400cdeef87f13217b14e8a37f9",
+      "edits": []
+    },
+    {
+      "source_path": "Erdos257PeriodNoncollapse/BooleanMobiusCarry.lean",
+      "source_sha256": "sha256:e696456363324a0755ae55094b62f6fa80488be6ef4013cc47e5d386cd813c47",
+      "port_path": "Erdos257PeriodNoncollapse/BooleanMobiusCarry.lean",
+      "port_sha256": "sha256:e696456363324a0755ae55094b62f6fa80488be6ef4013cc47e5d386cd813c47",
+      "edits": []
+    },
+    {
+      "source_path": "Erdos257PeriodNoncollapse/CarrySurvivorExtinction.lean",
+      "source_sha256": "sha256:239e3684cd796abf7fb6ced9765090856df51647a8207a32b68d0effddb5bff3",
+      "port_path": "Erdos257PeriodNoncollapse/CarrySurvivorExtinction.lean",
+      "port_sha256": "sha256:239e3684cd796abf7fb6ced9765090856df51647a8207a32b68d0effddb5bff3",
+      "edits": []
+    },
+    {
+      "source_path": "Erdos257PeriodNoncollapse/CertificateKernel.lean",
+      "source_sha256": "sha256:9d1790ac93e8afcfb01ef344044ae5aaffc639b354a36d37a9439bba6b2fcbd1",
+      "port_path": "Erdos257PeriodNoncollapse/CertificateKernel.lean",
+      "port_sha256": "sha256:9d1790ac93e8afcfb01ef344044ae5aaffc639b354a36d37a9439bba6b2fcbd1",
+      "edits": []
+    },
+    {
+      "source_path": "Erdos257PeriodNoncollapse/GapFareyBound.lean",
+      "source_sha256": "sha256:0bc2a68e6f01848ccf6a928e37b761f50ea5d9a2815d51e9be8ba451e59ade1e",
+      "port_path": "Erdos257PeriodNoncollapse/GapFareyBound.lean",
+      "port_sha256": "sha256:0bc2a68e6f01848ccf6a928e37b761f50ea5d9a2815d51e9be8ba451e59ade1e",
+      "edits": []
+    },
+    {
+      "source_path": "Erdos257PeriodNoncollapse/GcdMomentCalculus.lean",
+      "source_sha256": "sha256:8e228f7c42c8c7f07c836294064b7094c1b6c365c887ec97ef458c54ee7c48a6",
+      "port_path": "Erdos257PeriodNoncollapse/GcdMomentCalculus.lean",
+      "port_sha256": "sha256:8e228f7c42c8c7f07c836294064b7094c1b6c365c887ec97ef458c54ee7c48a6",
+      "edits": []
+    },
+    {
+      "source_path": "Erdos257PeriodNoncollapse/GenericTailOrbitRigidity.lean",
+      "source_sha256": "sha256:3807c5cec21bb5153a4f313207252466d347c37b00e57cc622fdcb4315b5dfb3",
+      "port_path": "Erdos257PeriodNoncollapse/GenericTailOrbitRigidity.lean",
+      "port_sha256": "sha256:3807c5cec21bb5153a4f313207252466d347c37b00e57cc622fdcb4315b5dfb3",
+      "edits": []
+    },
+    {
+      "source_path": "Erdos257PeriodNoncollapse/GeometricCoprimality.lean",
+      "source_sha256": "sha256:da7ea4a3b245e10a15447c961faaf06b8862d3d5c372e16557e3214ea529e3d6",
+      "port_path": "Erdos257PeriodNoncollapse/GeometricCoprimality.lean",
+      "port_sha256": "sha256:da7ea4a3b245e10a15447c961faaf06b8862d3d5c372e16557e3214ea529e3d6",
+      "edits": []
+    },
+    {
+      "source_path": "Erdos257PeriodNoncollapse/GreedyAchievementSet.lean",
+      "source_sha256": "sha256:a5dd78490546da357530177e584de50bf5f9bc58d1338196366c4a1e19f0ad3d",
+      "port_path": "Erdos257PeriodNoncollapse/GreedyAchievementSet.lean",
+      "port_sha256": "sha256:a5dd78490546da357530177e584de50bf5f9bc58d1338196366c4a1e19f0ad3d",
+      "edits": []
+    },
+    {
+      "source_path": "Erdos257PeriodNoncollapse/LcmConeFlatness.lean",
+      "source_sha256": "sha256:eb177f23bca52385fb56f0f15a3afa93e6802e6a492db96c0a3bea7225d945cd",
+      "port_path": "Erdos257PeriodNoncollapse/LcmConeFlatness.lean",
+      "port_sha256": "sha256:eb177f23bca52385fb56f0f15a3afa93e6802e6a492db96c0a3bea7225d945cd",
+      "edits": []
+    },
+    {
+      "source_path": "Erdos257PeriodNoncollapse/LcmConeNonflat.lean",
+      "source_sha256": "sha256:5d3e2a57281dff8571650bc9b2e30ea7b9bd44e8cbfb5f884e797791114c245f",
+      "port_path": "Erdos257PeriodNoncollapse/LcmConeNonflat.lean",
+      "port_sha256": "sha256:5d3e2a57281dff8571650bc9b2e30ea7b9bd44e8cbfb5f884e797791114c245f",
+      "edits": []
+    },
+    {
+      "source_path": "Erdos257PeriodNoncollapse/LcmDiagonalReduction.lean",
+      "source_sha256": "sha256:2b58868a6337f4797bd3474b623c9813b361da567dd3305d1f6757c2ea0b62cc",
+      "port_path": "Erdos257PeriodNoncollapse/LcmDiagonalReduction.lean",
+      "port_sha256": "sha256:2b58868a6337f4797bd3474b623c9813b361da567dd3305d1f6757c2ea0b62cc",
+      "edits": []
+    },
+    {
+      "source_path": "Erdos257PeriodNoncollapse/MersenneLambertLadder.lean",
+      "source_sha256": "sha256:63129b68afbd6e892b75d9ff828679b2964a4c8fa404328708b32d5f9f715dd2",
+      "port_path": "Erdos257PeriodNoncollapse/MersenneLambertLadder.lean",
+      "port_sha256": "sha256:63129b68afbd6e892b75d9ff828679b2964a4c8fa404328708b32d5f9f715dd2",
+      "edits": []
+    },
+    {
+      "source_path": "Erdos257PeriodNoncollapse/MersenneTailAtoms.lean",
+      "source_sha256": "sha256:3ec87446d61977531426a30f3f8c2e34ccc8d28c788927f6d7bd83f74fbefc4c",
+      "port_path": "Erdos257PeriodNoncollapse/MersenneTailAtoms.lean",
+      "port_sha256": "sha256:3ec87446d61977531426a30f3f8c2e34ccc8d28c788927f6d7bd83f74fbefc4c",
+      "edits": []
+    },
+    {
+      "source_path": "Erdos257PeriodNoncollapse/RationalSupportCarrySkeleton.lean",
+      "source_sha256": "sha256:9e51cd2cbeb8eee7af17735d13c693dd87d85f9ce2d171ee1857360e86974edc",
+      "port_path": "Erdos257PeriodNoncollapse/RationalSupportCarrySkeleton.lean",
+      "port_sha256": "sha256:9e51cd2cbeb8eee7af17735d13c693dd87d85f9ce2d171ee1857360e86974edc",
+      "edits": []
+    },
+    {
+      "source_path": "Erdos257PeriodNoncollapse/ReciprocalSupportIrrationality.lean",
+      "source_sha256": "sha256:4e9ef42e9533afe97eeaae6d55b99a859d95e6c282e883aeb56052e7da3fc5ac",
+      "port_path": "Erdos257PeriodNoncollapse/ReciprocalSupportIrrationality.lean",
+      "port_sha256": "sha256:4e9ef42e9533afe97eeaae6d55b99a859d95e6c282e883aeb56052e7da3fc5ac",
+      "edits": []
+    },
+    {
+      "source_path": "Erdos257PeriodNoncollapse/SternBrocotRunGeometry.lean",
+      "source_sha256": "sha256:6c13546ac2abad991efde1ef0cb15566cbc5a1d8ad700040817b8c60ea6dcc18",
+      "port_path": "Erdos257PeriodNoncollapse/SternBrocotRunGeometry.lean",
+      "port_sha256": "sha256:6c13546ac2abad991efde1ef0cb15566cbc5a1d8ad700040817b8c60ea6dcc18",
+      "edits": []
+    },
+    {
+      "source_path": "Erdos257PeriodNoncollapse/TotientTailPeriodKiller.lean",
+      "source_sha256": "sha256:981a971c6e34efdea2588569e297b9d74d7c44286003cfbbf88419e162922b8f",
+      "port_path": "Erdos257PeriodNoncollapse/TotientTailPeriodKiller.lean",
+      "port_sha256": "sha256:981a971c6e34efdea2588569e297b9d74d7c44286003cfbbf88419e162922b8f",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos257/CoverIndependentPeriodicMean.lean",
+      "source_sha256": "sha256:9307f032842d3210b28ef6f403cc1b145e25c432594059bc37f37bc91de41c2f",
+      "port_path": "ErdosProblems/Erdos257/CoverIndependentPeriodicMean.lean",
+      "port_sha256": "sha256:9307f032842d3210b28ef6f403cc1b145e25c432594059bc37f37bc91de41c2f",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos257/DyadicShellSynchronisation.lean",
+      "source_sha256": "sha256:a87ea6e5d9c9c1b21095dd00cff4a886e4f42a6bd5a679a4d07a095f5aa4ebf0",
+      "port_path": "ErdosProblems/Erdos257/DyadicShellSynchronisation.lean",
+      "port_sha256": "sha256:a87ea6e5d9c9c1b21095dd00cff4a886e4f42a6bd5a679a4d07a095f5aa4ebf0",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos257/PaperCompleteR7/AnalyticTargets.lean",
+      "source_sha256": "sha256:c9bee23de390df136eb8bb6817d558aaf3838f137d0a5b9a94e096746d748be8",
+      "port_path": "ErdosProblems/Erdos257/PaperCompleteR7/AnalyticTargets.lean",
+      "port_sha256": "sha256:c9bee23de390df136eb8bb6817d558aaf3838f137d0a5b9a94e096746d748be8",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos257/PaperCompleteR7/CoverKernel.lean",
+      "source_sha256": "sha256:0b4e29479766f5a6585e6a48c230b18e8e9f020ca9eb68ccbb8f54155d002a90",
+      "port_path": "ErdosProblems/Erdos257/PaperCompleteR7/CoverKernel.lean",
+      "port_sha256": "sha256:0b4e29479766f5a6585e6a48c230b18e8e9f020ca9eb68ccbb8f54155d002a90",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos257/PaperCompleteR7/Displacement.lean",
+      "source_sha256": "sha256:068954ab1f2599b82d36aab0eca08e50e573709e02088b07c9008af8c6a55991",
+      "port_path": "ErdosProblems/Erdos257/PaperCompleteR7/Displacement.lean",
+      "port_sha256": "sha256:068954ab1f2599b82d36aab0eca08e50e573709e02088b07c9008af8c6a55991",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos257/PaperCompleteR7/TailGluing.lean",
+      "source_sha256": "sha256:fe6796fb738f1a2d961348a222bf36e1eb05cc0ee45d965150981de341c854d6",
+      "port_path": "ErdosProblems/Erdos257/PaperCompleteR7/TailGluing.lean",
+      "port_sha256": "sha256:fe6796fb738f1a2d961348a222bf36e1eb05cc0ee45d965150981de341c854d6",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos257/PaperCompleteR8/ArbitraryWeightMixedClaim.lean",
+      "source_sha256": "sha256:5b8da06d3354bd65f7761c070345a2b96c2df0bf6fee35c39e0fc9ce5cd44d8d",
+      "port_path": "ErdosProblems/Erdos257/PaperCompleteR8/ArbitraryWeightMixedClaim.lean",
+      "port_sha256": "sha256:5b8da06d3354bd65f7761c070345a2b96c2df0bf6fee35c39e0fc9ce5cd44d8d",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos257/PaperCompleteR8/ArbitraryWeightReturns.lean",
+      "source_sha256": "sha256:36a45f73c045c45459e63ccfbbb18dcd15127df09f417e4f2499d6fb5516ede7",
+      "port_path": "ErdosProblems/Erdos257/PaperCompleteR8/ArbitraryWeightReturns.lean",
+      "port_sha256": "sha256:bb014a13b9c824f6556dbf62e733acecebb471efa666f79048b65e863f0a7e9a",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38283868154 at PRmerge4bab42, selected successor of preserved98: rfl-first instance conversion then exact thresholdCost/K unfolding and unchanged scalar ring argument. Independent static review passed; full source compiler replay pending."
+        }
+      ]
+    },
+    {
+      "source_path": "ErdosProblems/Erdos257/PaperCompleteR8/CommonScale.lean",
+      "source_sha256": "sha256:99d186a0ef81bb098e3d9235229bf984d3a8a9ac01ab9304e5db628aeb8633ad",
+      "port_path": "ErdosProblems/Erdos257/PaperCompleteR8/CommonScale.lean",
+      "port_sha256": "sha256:99d186a0ef81bb098e3d9235229bf984d3a8a9ac01ab9304e5db628aeb8633ad",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos257/PaperCompleteR8/CountableCoverLogBudget.lean",
+      "source_sha256": "sha256:20aa5edfaaa607264d0ccea96504c9bc66286896d8077dfc255955ea2d5a087d",
+      "port_path": "ErdosProblems/Erdos257/PaperCompleteR8/CountableCoverLogBudget.lean",
+      "port_sha256": "sha256:20aa5edfaaa607264d0ccea96504c9bc66286896d8077dfc255955ea2d5a087d",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos257/PaperCompleteR8/CountableGaugeBudget.lean",
+      "source_sha256": "sha256:6852d46e0b4f3140aa8f9807dbfe7578562a5ffac840e30d7c627ea7f14cc223",
+      "port_path": "ErdosProblems/Erdos257/PaperCompleteR8/CountableGaugeBudget.lean",
+      "port_sha256": "sha256:6852d46e0b4f3140aa8f9807dbfe7578562a5ffac840e30d7c627ea7f14cc223",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos257/PaperCompleteR8/CountableMeans.lean",
+      "source_sha256": "sha256:5f5178c8ae09c1cbb8267345ebf4bc4f0348549f3193c65b8bc5daa046a633c6",
+      "port_path": "ErdosProblems/Erdos257/PaperCompleteR8/CountableMeans.lean",
+      "port_sha256": "sha256:c1ffc082ae8c14c54b1d942e1dfdd005dfe66d6b402d933bc4c485b0eb6f019a",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated strict source batch38175216709 at9a: Discharge convert-generated instance equalities with rfl before product reassociation ring proof; apply same port across weighted/reciprocal copies. Compiler replay pending."
+        }
+      ]
+    },
+    {
+      "source_path": "ErdosProblems/Erdos257/PaperCompleteR8/CoverPotentialBounds.lean",
+      "source_sha256": "sha256:c75d245c5756c6da036f3cd09b513367ba9c9bc6a4356a93b9e5fa932ac27b1a",
+      "port_path": "ErdosProblems/Erdos257/PaperCompleteR8/CoverPotentialBounds.lean",
+      "port_sha256": "sha256:9deee392da3f693b6cbfcd7c5ac21cd83532f031d5c7da5bfd15e1ccd8f18098",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38276766059 at057ba42: rfl-first conversion and guarded original scalar-cost normalization/algebra, including reachable reciprocal duplicate. Independent static reviews passed; full source compiler replay pending."
+        }
+      ]
+    },
+    {
+      "source_path": "ErdosProblems/Erdos257/PaperCompleteR8/CoverScalarGauge.lean",
+      "source_sha256": "sha256:ab7c127328dc6d22c96aebe12197e11218484166e597aa6f2364f6f681e0bcf9",
+      "port_path": "ErdosProblems/Erdos257/PaperCompleteR8/CoverScalarGauge.lean",
+      "port_sha256": "sha256:ab7c127328dc6d22c96aebe12197e11218484166e597aa6f2364f6f681e0bcf9",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos257/PaperCompleteR8/DyadicKernel.lean",
+      "source_sha256": "sha256:e1e39ab5fc72ff0073fb160018a0dc7e6651ceddf3d1336eaa2f227d68144e54",
+      "port_path": "ErdosProblems/Erdos257/PaperCompleteR8/DyadicKernel.lean",
+      "port_sha256": "sha256:f0189a1a02bced46a4a0c45aa2f5edb4b22cc2f0b1ea311dc49b62503394bc43",
+      "edits": [
+        {
+          "kind": "receiving_native_full_diagnostic_port",
+          "reason": "Authenticated c5 native failure: disambiguate pinned ideal API, use new primesOver namespace, normalize function and reflexive conversion goals explicitly, use ordinary norm_num kernel proofs for opaque ZMod division."
+        }
+      ]
+    },
+    {
+      "source_path": "ErdosProblems/Erdos257/PaperCompleteR8/FiniteCoverLogBudget.lean",
+      "source_sha256": "sha256:24a2705f7be923ae2a0b15bbef5734c1d0c106d1379a5f9b79ca1fa74fac3907",
+      "port_path": "ErdosProblems/Erdos257/PaperCompleteR8/FiniteCoverLogBudget.lean",
+      "port_sha256": "sha256:24a2705f7be923ae2a0b15bbef5734c1d0c106d1379a5f9b79ca1fa74fac3907",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos257/PaperCompleteR8/FiniteMeans.lean",
+      "source_sha256": "sha256:9a43c817b2d55097354c5c1cb68150c83002b39f69198720eae89a9568f97b1e",
+      "port_path": "ErdosProblems/Erdos257/PaperCompleteR8/FiniteMeans.lean",
+      "port_sha256": "sha256:9a43c817b2d55097354c5c1cb68150c83002b39f69198720eae89a9568f97b1e",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos257/PaperCompleteR8/KernelRecurrence.lean",
+      "source_sha256": "sha256:5125df9575b08eafed671c49c33154769ccb1f430fc7b10265cdf6193e2cf800",
+      "port_path": "ErdosProblems/Erdos257/PaperCompleteR8/KernelRecurrence.lean",
+      "port_sha256": "sha256:f7b7ae5e5d99a67f0d8a6bd1b67c6015c159f18228d0d6db4936f5015f0efe5c",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38179005870 atde8cba: Close definitional conversion instance equality with rfl before original coefficient ring proof, including identical reachable reciprocal copy. Independent static review passed; compiler replay pending."
+        }
+      ]
+    },
+    {
+      "source_path": "ErdosProblems/Erdos257/PaperCompleteR8/MixedGaugeConsumer.lean",
+      "source_sha256": "sha256:c17bcb97b5bead80e70052bc4105a18f5612d44c574166d5be5c117b9178ae87",
+      "port_path": "ErdosProblems/Erdos257/PaperCompleteR8/MixedGaugeConsumer.lean",
+      "port_sha256": "sha256:c17bcb97b5bead80e70052bc4105a18f5612d44c574166d5be5c117b9178ae87",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos257/PaperCompleteR8/OptimizedCoverBudget.lean",
+      "source_sha256": "sha256:1bfa8ea9385c894b797006f14491889ec7852f9793b8eca232921ccbc7c59f33",
+      "port_path": "ErdosProblems/Erdos257/PaperCompleteR8/OptimizedCoverBudget.lean",
+      "port_sha256": "sha256:1bfa8ea9385c894b797006f14491889ec7852f9793b8eca232921ccbc7c59f33",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos257/PaperCompleteR8/OrbitBound.lean",
+      "source_sha256": "sha256:3c57e29cbe209b528766653cdebd47775eeb28a7ca777c035a2fa3b55efd18ad",
+      "port_path": "ErdosProblems/Erdos257/PaperCompleteR8/OrbitBound.lean",
+      "port_sha256": "sha256:3c57e29cbe209b528766653cdebd47775eeb28a7ca777c035a2fa3b55efd18ad",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos257/PaperCompleteR8/PositiveCoverReturn.lean",
+      "source_sha256": "sha256:6b0db5654051c0cbadec5b6d75e3c88d937d57602254ebb0c0db6e821ad4f60d",
+      "port_path": "ErdosProblems/Erdos257/PaperCompleteR8/PositiveCoverReturn.lean",
+      "port_sha256": "sha256:6b0db5654051c0cbadec5b6d75e3c88d937d57602254ebb0c0db6e821ad4f60d",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos257/PaperCompleteR8/WeightedFiniteEstimates.lean",
+      "source_sha256": "sha256:b8d4e29b9a5855ad7343055c13923f9c03c884c273dff7d960b402d5f68a8673",
+      "port_path": "ErdosProblems/Erdos257/PaperCompleteR8/WeightedFiniteEstimates.lean",
+      "port_sha256": "sha256:b8d4e29b9a5855ad7343055c13923f9c03c884c273dff7d960b402d5f68a8673",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos257/PaperCompleteR8/WeightedFiniteMean.lean",
+      "source_sha256": "sha256:f8979eff4ac05a395fe42042ad74711b4cd5724c1251da54d10bb92485200b04",
+      "port_path": "ErdosProblems/Erdos257/PaperCompleteR8/WeightedFiniteMean.lean",
+      "port_sha256": "sha256:f8979eff4ac05a395fe42042ad74711b4cd5724c1251da54d10bb92485200b04",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos257/PaperCompleteR8/WeightedHereditaryClaim.lean",
+      "source_sha256": "sha256:3a22a6ca16724aa7430c3ebbe92d3bc0a2f599d43cab0452ef46376cd0132518",
+      "port_path": "ErdosProblems/Erdos257/PaperCompleteR8/WeightedHereditaryClaim.lean",
+      "port_sha256": "sha256:3a22a6ca16724aa7430c3ebbe92d3bc0a2f599d43cab0452ef46376cd0132518",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos257/PaperCompleteR8/WeightedInfiniteMean.lean",
+      "source_sha256": "sha256:da2d1e20ba60251548c9c49ac1adf73a75e0e3e7b49ccb14cf59e6a219a0f17e",
+      "port_path": "ErdosProblems/Erdos257/PaperCompleteR8/WeightedInfiniteMean.lean",
+      "port_sha256": "sha256:da2d1e20ba60251548c9c49ac1adf73a75e0e3e7b49ccb14cf59e6a219a0f17e",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos257/PaperCompleteR8/WeightedPrimeProfile.lean",
+      "source_sha256": "sha256:f590d75e14ee7335e64b09890f2526334874ada199550abc63bbeaa9c77cebcc",
+      "port_path": "ErdosProblems/Erdos257/PaperCompleteR8/WeightedPrimeProfile.lean",
+      "port_sha256": "sha256:f590d75e14ee7335e64b09890f2526334874ada199550abc63bbeaa9c77cebcc",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean",
+      "source_sha256": "sha256:27e8601683ee80b4c05208faaea5100dc1943ccd20e06212292682ce5a948e00",
+      "port_path": "ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean",
+      "port_sha256": "sha256:27e8601683ee80b4c05208faaea5100dc1943ccd20e06212292682ce5a948e00",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos257/PaperCompleteR8/WeightedSchedule.lean",
+      "source_sha256": "sha256:e7452a815c43877bb411e94832122d99384e7b28ea4653b654dee9ebff4ee45e",
+      "port_path": "ErdosProblems/Erdos257/PaperCompleteR8/WeightedSchedule.lean",
+      "port_sha256": "sha256:e7452a815c43877bb411e94832122d99384e7b28ea4653b654dee9ebff4ee45e",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos257/RadixCloseReturn.lean",
+      "source_sha256": "sha256:f41026b7b997e130211b88704ffa504785bb6589843bc1d5143d50927715fb01",
+      "port_path": "ErdosProblems/Erdos257/RadixCloseReturn.lean",
+      "port_sha256": "sha256:f41026b7b997e130211b88704ffa504785bb6589843bc1d5143d50927715fb01",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos257/WeightedSupportAveraging.lean",
+      "source_sha256": "sha256:080d1d7e12989e9379c16e179fe5b0693334e8a147fdeb45daa4aa2b87548fb4",
+      "port_path": "ErdosProblems/Erdos257/WeightedSupportAveraging.lean",
+      "port_sha256": "sha256:080d1d7e12989e9379c16e179fe5b0693334e8a147fdeb45daa4aa2b87548fb4",
+      "edits": []
+    },
+    {
+      "source_path": "Solutions/PalomarCorpus/E257_01.lean",
+      "source_sha256": "sha256:d1dee62774443d1c658247061028b2df8498d7f88221e6b2031f536ed8a4501b",
+      "port_path": "Solutions/PalomarCorpus/E257_01.lean",
+      "port_sha256": "sha256:d1dee62774443d1c658247061028b2df8498d7f88221e6b2031f536ed8a4501b",
+      "edits": []
+    },
+    {
+      "source_path": "Solutions/PalomarCorpus/E257_01/DivisibilityWeightedSupport.lean",
+      "source_sha256": "sha256:5cbae68b4601e96d750730632fb51e7203b973f758ab309168d296baa4cbf29e",
+      "port_path": "Solutions/PalomarCorpus/E257_01/DivisibilityWeightedSupport.lean",
+      "port_sha256": "sha256:5cbae68b4601e96d750730632fb51e7203b973f758ab309168d296baa4cbf29e",
+      "edits": []
+    },
+    {
+      "source_path": "Solutions/PalomarCorpus/E257_01/MixedWeightedCover.lean",
+      "source_sha256": "sha256:62d0a3194e42bdf7e4e62950e92c55f07bf1cfd26333f2806c5fa6a3a92fd436",
+      "port_path": "Solutions/PalomarCorpus/E257_01/MixedWeightedCover.lean",
+      "port_sha256": "sha256:62d0a3194e42bdf7e4e62950e92c55f07bf1cfd26333f2806c5fa6a3a92fd436",
+      "edits": []
+    },
+    {
+      "source_path": "Solutions/PalomarCorpus/E257_01/PaperStructuresBO.lean",
+      "source_sha256": "sha256:1f1209a2e79e3d0fd105b72aa0dfa228179011529bc68f8682df4c5181bf4762",
+      "port_path": "Solutions/PalomarCorpus/E257_01/PaperStructuresBO.lean",
+      "port_sha256": "sha256:1f1209a2e79e3d0fd105b72aa0dfa228179011529bc68f8682df4c5181bf4762",
+      "edits": []
+    },
+    {
+      "source_path": "Solutions/PalomarCorpus/E257_01/Statement.lean",
+      "source_sha256": "sha256:b18c28f7aa1f16c43f12614afaa6d885c91b7cd6f5cfb0dc0e64575a585d8909",
+      "port_path": "Solutions/PalomarCorpus/E257_01/Statement.lean",
+      "port_sha256": "sha256:b18c28f7aa1f16c43f12614afaa6d885c91b7cd6f5cfb0dc0e64575a585d8909",
+      "edits": []
+    },
+    {
+      "source_path": "Solutions/PalomarCorpus/E257_01/VariableExponentCover.lean",
+      "source_sha256": "sha256:974b65ba77162ce383dd0aade948b0733d754d3e8270a12886f56b075f8e115c",
+      "port_path": "Solutions/PalomarCorpus/E257_01/VariableExponentCover.lean",
+      "port_sha256": "sha256:974b65ba77162ce383dd0aade948b0733d754d3e8270a12886f56b075f8e115c",
+      "edits": []
+    },
+    {
+      "source_path": "Solutions/PalomarCorpus/E257_01/WeightedCloseReturn.lean",
+      "source_sha256": "sha256:d01f8b50f451a94c8d185969243032b1a80a7bf7dd4241d15e78064f2d22de7e",
+      "port_path": "Solutions/PalomarCorpus/E257_01/WeightedCloseReturn.lean",
+      "port_sha256": "sha256:d01f8b50f451a94c8d185969243032b1a80a7bf7dd4241d15e78064f2d22de7e",
+      "edits": []
+    }
+  ],
+  "proof_adaptation": "Definitional aliases for finite weighted claim; explicit field-preserving constructor for receiving LogBudgetCover nominal type.",
+  "verification": "No compilation or receiving export comparison has been run."
+}

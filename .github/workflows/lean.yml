@@ -18,6 +18,9 @@ on:
       audit_publication:
         type: boolean
         default: false
+      fc_current_batch:
+        type: boolean
+        default: false
   workflow_dispatch:
     inputs:
       source_ref:
@@ -32,6 +35,10 @@ on:
         description: 'Check only focused/changed modules (does not establish a full launch pass)'
         type: boolean
         default: false
+      fc_current_batch:
+        description: 'Source diagnostics for all ten current FC proof projects; never receiving identity'
+        type: boolean
+        default: false
   pull_request:
     # The release gate owns the full build and publication audit for main PRs.
     branches-ignore: [main]
@@ -42,7 +49,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: lean-convenience-${{ github.workflow }}-${{ github.ref }}-${{ inputs.source_ref }}-${{ inputs.focused_only }}
+  group: lean-convenience-${{ github.workflow }}-${{ github.ref }}-${{ inputs.source_ref }}-${{ inputs.focused_only }}-${{ inputs.fc_current_batch }}
   cancel-in-progress: true
 
 jobs:
@@ -52,7 +59,9 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Test the same runner used by local and remote checks
-        run: python3 -m unittest discover -s scripts -p 'test_build_launch_targets.py' -v
+        run: |
+          python3 -m unittest discover -s scripts -p 'test_build_launch_targets.py' -v
+          python3 -m unittest discover -s scripts -p 'test_fc_current_source_batch.py' -v
 
   build:
     needs: infrastructure
@@ -96,6 +105,7 @@ jobs:
           fetch-depth: 0
       - name: Plan changed modules before installing Lean
         id: plan
+        if: ${{ !inputs.fc_current_batch }}
         env:
           BASE_REF: ${{ github.event.pull_request.base.sha || 'origin/main' }}
           FOCUS_MODULE: ${{ inputs.focus }}
@@ -111,11 +121,27 @@ jobs:
           if [[ "$FOCUSED_ONLY" == true ]]; then args+=(--focused-only); fi
           if [[ -n "$FOCUS_MODULE" ]]; then args+=(--focus "$FOCUS_MODULE"); fi
           python3 .ci-driver/scripts/build_launch_targets.py "${args[@]}" --plan
+      - name: Admit the complete current FC source diagnostic batch
+        if: ${{ inputs.fc_current_batch }}
+        env:
+          SOURCE_SHA: ${{ steps.resolve.outputs.source_sha }}
+          FOCUS_MODULE: ${{ inputs.focus }}
+          FOCUSED_ONLY: ${{ inputs.focused_only }}
+          AUDIT_PUBLICATION: ${{ inputs.audit_publication }}
+        run: |
+          if [[ -n "$FOCUS_MODULE" || "$FOCUSED_ONLY" == true || "$AUDIT_PUBLICATION" == true ]]; then
+            echo '::error::The FC source diagnostic batch cannot replace focused or publication validation'
+            exit 2
+          fi
+          python3 .ci-driver/scripts/fc_current_source_batch.py --repository source \
+            --source-commit "$SOURCE_SHA" --report source/.lake/convenience-target-report.json --plan
       - name: Admit source release inventory before Lean setup
+        if: ${{ !inputs.fc_current_batch }}
         working-directory: source
         run: python3 scripts/build_release_manifest.py --out "$RUNNER_TEMP/release-manifest.json" --sums-out "$RUNNER_TEMP/SHA256SUMS" --diagnostics "$RUNNER_TEMP/release-tooling-diagnostics.json"
       - name: Restore the corpus build
         id: corpus_cache
+        if: ${{ !inputs.fc_current_batch }}
         uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: source/.lake/build
@@ -124,6 +150,7 @@ jobs:
             corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('source/lean-toolchain') }}-${{ hashFiles('source/lake-manifest.json') }}-convenience-v3-${{ github.ref }}-
             corpus-build-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('source/lean-toolchain') }}-${{ hashFiles('source/lake-manifest.json') }}-
       - id: lean
+        if: ${{ !inputs.fc_current_batch }}
         uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
         with:
           lake-package-directory: source
@@ -132,8 +159,22 @@ jobs:
           build: false
           test: false
           lint: false
+      - id: lean_fc
+        if: ${{ inputs.fc_current_batch }}
+        uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
+        with:
+          # Batch projects share only the dependencies hydrated in the first
+          # project. Candidate library roots and .lake/build directories remain
+          # independent; no proof build is reused as receiving identity.
+          lake-package-directory: source/verification/FC249RationalObservableCurrent
+          use-github-cache: false
+          use-mathlib-cache: auto
+          build: false
+          test: false
+          lint: false
       - name: Check changed modules then the complete launch set
         id: compile
+        if: ${{ !inputs.fc_current_batch }}
         env:
           LEAN_NUM_THREADS: '2'
           BASE_REF: ${{ github.event.pull_request.base.sha || 'origin/main' }}
@@ -150,15 +191,24 @@ jobs:
           if [[ "$FOCUSED_ONLY" == true ]]; then args+=(--focused-only); fi
           if [[ -n "$FOCUS_MODULE" ]]; then args+=(--focus "$FOCUS_MODULE"); fi
           python3 .ci-driver/scripts/build_launch_targets.py "${args[@]}"
+      - name: Compile every current FC candidate project and retain warning diagnostics
+        id: compile_fc
+        if: ${{ inputs.fc_current_batch }}
+        env:
+          LEAN_NUM_THREADS: '2'
+          SOURCE_SHA: ${{ steps.resolve.outputs.source_sha }}
+        run: |
+          python3 .ci-driver/scripts/fc_current_source_batch.py --repository source \
+            --source-commit "$SOURCE_SHA" --report source/.lake/convenience-target-report.json
       - name: Audit every publication entry's Solution environment
         id: audit
-        if: ${{ inputs.audit_publication }}
+        if: ${{ inputs.audit_publication && !inputs.fc_current_batch }}
         working-directory: source
         run: |
           mkdir -p artifacts
           python3 scripts/check_axiom_budget.py --run-palomar --json > artifacts/palomar-axiom-audit.json
       - name: Preserve the publication audit
-        if: ${{ always() && inputs.audit_publication && hashFiles('source/artifacts/palomar-axiom-audit.json') != '' }}
+        if: ${{ always() && inputs.audit_publication && !inputs.fc_current_batch && hashFiles('source/artifacts/palomar-axiom-audit.json') != '' }}
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: palomar-publication-audit
@@ -182,6 +232,8 @@ jobs:
             ${{ runner.temp }}/convenience-target-report.json
             source/.lake/convenience-target-report.json
             source/.lake/convenience-logs/*.log.gz
+            source/.lake/fc-current-source-batch/**/report.json
+            source/.lake/fc-current-source-batch/**/convenience-logs/*.log.gz
             ${{ runner.temp }}/release-tooling-diagnostics.json
           if-no-files-found: warn
           retention-days: 14
@@ -189,7 +241,7 @@ jobs:
       # partial progress on retries; Lake rechecks hashes and traces on every run.
       # Externally selected source snapshots never populate these caches.
       - name: Save the corpus build
-        if: ${{ always() && !cancelled() && steps.lean.outcome == 'success' && inputs.source_ref == '' }}
+        if: ${{ always() && !cancelled() && steps.lean.outcome == 'success' && inputs.source_ref == '' && !inputs.fc_current_batch }}
         uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: source/.lake/build

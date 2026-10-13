@@ -1,0 +1,29 @@
+name = "fc257_reciprocal_support_current"
+defaultTargets = ["FC6529Solution"]
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.33.1"
+
+[[lean_lib]]
+name = "Erdos249257"
+globs = ["Erdos249257.+"]
+
+[[lean_lib]]
+name = "ErdosProblems"
+globs = ["ErdosProblems.+"]
+
+[[lean_lib]]
+name = "ExternalVerification"
+globs = ["ExternalVerification.+"]
+
+[[lean_lib]]
+name = "Solutions"
+globs = ["Solutions.+"]
+
+[[lean_lib]]
+name = "FormalConjecturesVariants"
+
+[[lean_lib]]
+name = "FC6529Solution"

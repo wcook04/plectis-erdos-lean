@@ -1,0 +1,17 @@
+name = "fc_merged_integer_adapters_current"
+defaultTargets = ["FC6971IntegerSolutions"]
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.33.1"
+
+[[lean_lib]]
+name = "Erdos249257"
+globs = ["Erdos249257.+"]
+
+[[lean_lib]]
+name = "FormalConjecturesAdapter"
+
+[[lean_lib]]
+name = "FC6971IntegerSolutions"

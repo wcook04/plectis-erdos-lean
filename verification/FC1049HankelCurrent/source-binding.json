@@ -1,0 +1,492 @@
+{
+  "schema": "fc6780_receiving_port/1",
+  "status": "prepared_unverified",
+  "source_repository": "wcook04/plectis-erdos-lean",
+  "source_ref": "cc7e541cf2081c6fef5a5e377d52e365e33b01eb",
+  "source_declaration": "PalomarCorpus.E1049.PaperStatementsU.sharp_fixed_base_exists",
+  "source_environment": {
+    "lean-toolchain": {
+      "sha256": "sha256:54727eec5cba149c18842e6deb5c41b369d66455c93ce135d7d5347c782b2325",
+      "content": "leanprover/lean4:v4.30.0\n"
+    },
+    "lake-manifest.json": {
+      "sha256": "sha256:48c00670762672b37a1860b0b1192d90d707ac047e7504a1d4828107cb6c902f",
+      "content": {
+        "version": "1.2.0",
+        "packagesDir": ".lake/packages",
+        "packages": [
+          {
+            "url": "https://github.com/leanprover-community/mathlib4",
+            "type": "git",
+            "subDir": null,
+            "scope": "leanprover-community",
+            "rev": "c5ea00351c28e24afc9f0f84379aa41082b1188f",
+            "name": "mathlib",
+            "manifestFile": "lake-manifest.json",
+            "inputRev": "v4.30.0",
+            "inherited": false,
+            "configFile": "lakefile.lean"
+          },
+          {
+            "url": "https://github.com/leanprover-community/plausible",
+            "type": "git",
+            "subDir": null,
+            "scope": "leanprover-community",
+            "rev": "a456461b368b71d2accd95234832cd9c174b5437",
+            "name": "plausible",
+            "manifestFile": "lake-manifest.json",
+            "inputRev": "main",
+            "inherited": true,
+            "configFile": "lakefile.toml"
+          },
+          {
+            "url": "https://github.com/leanprover-community/LeanSearchClient",
+            "type": "git",
+            "subDir": null,
+            "scope": "leanprover-community",
+            "rev": "c5d5b8fe6e5158def25cd28eb94e4141ad97c843",
+            "name": "LeanSearchClient",
+            "manifestFile": "lake-manifest.json",
+            "inputRev": "main",
+            "inherited": true,
+            "configFile": "lakefile.toml"
+          },
+          {
+            "url": "https://github.com/leanprover-community/import-graph",
+            "type": "git",
+            "subDir": null,
+            "scope": "leanprover-community",
+            "rev": "515cf9d0c00ece5e661f6de4326a53dedc1e8ea1",
+            "name": "importGraph",
+            "manifestFile": "lake-manifest.json",
+            "inputRev": "main",
+            "inherited": true,
+            "configFile": "lakefile.toml"
+          },
+          {
+            "url": "https://github.com/leanprover-community/ProofWidgets4",
+            "type": "git",
+            "subDir": null,
+            "scope": "leanprover-community",
+            "rev": "a84b3e2475d5c5ab979567b1ad8aea21b764bcf8",
+            "name": "proofwidgets",
+            "manifestFile": "lake-manifest.json",
+            "inputRev": "v0.0.99",
+            "inherited": true,
+            "configFile": "lakefile.lean"
+          },
+          {
+            "url": "https://github.com/leanprover-community/aesop",
+            "type": "git",
+            "subDir": null,
+            "scope": "leanprover-community",
+            "rev": "558915ae105bfd8074e22d597613d1961822adc2",
+            "name": "aesop",
+            "manifestFile": "lake-manifest.json",
+            "inputRev": "v4.30.0",
+            "inherited": true,
+            "configFile": "lakefile.toml"
+          },
+          {
+            "url": "https://github.com/leanprover-community/quote4",
+            "type": "git",
+            "subDir": null,
+            "scope": "leanprover-community",
+            "rev": "a6e6c34c4ef182f83b219a3a5a385f51f44bdc4c",
+            "name": "Qq",
+            "manifestFile": "lake-manifest.json",
+            "inputRev": "v4.30.0",
+            "inherited": true,
+            "configFile": "lakefile.toml"
+          },
+          {
+            "url": "https://github.com/leanprover-community/batteries",
+            "type": "git",
+            "subDir": null,
+            "scope": "leanprover-community",
+            "rev": "32dc18cde3684679f3c003de608743b57498c56f",
+            "name": "batteries",
+            "manifestFile": "lake-manifest.json",
+            "inputRev": "main",
+            "inherited": true,
+            "configFile": "lakefile.toml"
+          },
+          {
+            "url": "https://github.com/leanprover/lean4-cli",
+            "type": "git",
+            "subDir": null,
+            "scope": "leanprover",
+            "rev": "6b907cf12b2e445ccb7c24bc208ef04a1f39e84c",
+            "name": "Cli",
+            "manifestFile": "lake-manifest.json",
+            "inputRev": "v4.30.0",
+            "inherited": true,
+            "configFile": "lakefile.toml"
+          }
+        ],
+        "name": "erdos257_period_noncollapse",
+        "lakeDir": ".lake",
+        "fixedToolchain": false
+      }
+    }
+  },
+  "receiving_repository": "google-deepmind/formal-conjectures",
+  "receiving_head": "009f3ca88924051271af89fc988e0d12e1fad23f",
+  "receiving_file": "FormalConjectures/Paper/GeometricMomentHankel.lean",
+  "receiving_file_sha256": "sha256:2d5a780cc781849da827e485e89a0a9ffc2d0bbfdda4b26903ce39ae4e3de808",
+  "actual_signature": "theorem fixed_base_asymptotic {q : \u211d} (hq0 : 0 < q) (hq1 : q < 1) :\n    \u2203 K : \u211d, 0 < K \u2227\n      Tendsto (fun N : \u2115 => (actualMomentHankel q N).det /\n        (K * leadC N * q ^ (N * (N - 1) * (2 * N - 1) / 6) *\n          qPochhammerInfinity q q ^ (2 * N) *\n          (N : \u211d) ^ (-8 * lambert q))) atTop (\ud835\udcdd 1)",
+  "receiving_definitions_sha256": "sha256:c50049c8df632bbbdaa0911f4092dd8711b7d06205ef655c38f6ab6fda87f74d",
+  "receiving_pins": {
+    "lean": "leanprover/lean4:v4.33.1",
+    "mathlib": "0df444a360eaa60ab8c11dca51a86af692955474"
+  },
+  "source_files": [
+    {
+      "source_path": "Solutions/PalomarCorpus/E1049_08/PaperStatementsU.lean",
+      "source_sha256": "sha256:1962bd7882790a32f86b85ee5f587ae3ff972fb571a246c27ef49351c9fe91ef",
+      "port_path": "Solutions/PalomarCorpus/E1049_08/PaperStatementsU.lean",
+      "port_sha256": "sha256:1962bd7882790a32f86b85ee5f587ae3ff972fb571a246c27ef49351c9fe91ef",
+      "edits": []
+    },
+    {
+      "source_path": "Solutions/PalomarCorpus/E1049_08/Statement.lean",
+      "source_sha256": "sha256:7fb2d7f7b6f1b4c6786f71dee68a75ce0d6d64bdc13aa2726c3d1c993672cfd0",
+      "port_path": "Solutions/PalomarCorpus/E1049_08/Statement.lean",
+      "port_sha256": "sha256:7fb2d7f7b6f1b4c6786f71dee68a75ce0d6d64bdc13aa2726c3d1c993672cfd0",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos1049/QProductBoundsR10.lean",
+      "source_sha256": "sha256:83bcb815312663d6a1453a642ff108529713c13a7fe7ad165301cd8727fc0e82",
+      "port_path": "ErdosProblems/Erdos1049/QProductBoundsR10.lean",
+      "port_sha256": "sha256:18c9a7eaf84d2a73fa5e1cc0a3efdbdbb3f04dea694fd3e842393631186c857a",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated strict source batch38175216709 at9a: Direct simpa of geometric HasSum witness, reusing only matched contour proof step. Compiler replay pending."
+        }
+      ]
+    },
+    {
+      "source_path": "ErdosProblems/Erdos1049/PaperR16/LambertBasic.lean",
+      "source_sha256": "sha256:638fa1dd20d03dfd64301ccb940c2ef4fe00a81b6876dd221ec658155076799b",
+      "port_path": "ErdosProblems/Erdos1049/PaperR16/LambertBasic.lean",
+      "port_sha256": "sha256:fb500d9be59afc2d0f1fbdfb031361b894f7dc259c50b6831279f1daf9b99910",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated strict source batch38175216709 at9a: Unfold Lambert sum endpoint; direct multiplicative and geometric HasSum normalization replaces inert cleanup tactics. Compiler replay pending."
+        },
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38179005870 atde8cba: Explicit Function.comp_def beta reduction and mul_one normalization fix actual shifted HasSum and rational-bound residuals. Independent static review passed; compiler replay pending."
+        }
+      ]
+    },
+    {
+      "source_path": "ErdosProblems/Erdos1049/PaperCompleteR21/SharpFixedBaseShort.lean",
+      "source_sha256": "sha256:973ce443d0750877b508292a2ab306aab426766cb8a7348de59258d1ba59df6f",
+      "port_path": "ErdosProblems/Erdos1049/PaperCompleteR21/SharpFixedBaseShort.lean",
+      "port_sha256": "sha256:973ce443d0750877b508292a2ab306aab426766cb8a7348de59258d1ba59df6f",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos1049/PaperCompleteR21/SharpFixedBase.lean",
+      "source_sha256": "sha256:c949a4ecc840eac2c5f802f61cef047f71b96aa573bd269dcb969472be6aeb98",
+      "port_path": "ErdosProblems/Erdos1049/PaperCompleteR21/SharpFixedBase.lean",
+      "port_sha256": "sha256:03179b1d44831809e93bfdd78b4983c7569df616ff0177d28dda7e430d48e922",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38301793074 at exact1b31: Replace four observed plus one parent-approved masked HasSum transports with exact congr_fun and explicitly normalize unchanged delta/Uq endpoints. Independent static source review passed; successor full source compiler replay pending."
+        }
+      ]
+    },
+    {
+      "source_path": "ErdosProblems/Erdos1049/PaperCompleteR21/GeometricUniversality.lean",
+      "source_sha256": "sha256:ba55c146385ac9855927d45015f65d50a438cd59a4e4f1d9a92ad12e265f5a02",
+      "port_path": "ErdosProblems/Erdos1049/PaperCompleteR21/GeometricUniversality.lean",
+      "port_sha256": "sha256:84b952656faf4d0885e15ec837679bbb239f8edd23885ffa2dbf52146a64a213",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38179005870 atde8cba: HasSum.congr_fun transports exact summands; explicitly unfold geomMoment endpoint and remove inert local simp steps. Independent static review passed; compiler replay pending."
+        }
+      ]
+    },
+    {
+      "source_path": "ErdosProblems/Erdos1049/PaperCompleteR21/RogersFactorisationAnalytic.lean",
+      "source_sha256": "sha256:50b6707dc4587ae58c5ccf9b05de57a934b17d41f14b074890d57b8f2d853034",
+      "port_path": "ErdosProblems/Erdos1049/PaperCompleteR21/RogersFactorisationAnalytic.lean",
+      "port_sha256": "sha256:38be66dbde0f76a5f1b3ebcd0320eb191eb4739d03b00d5ccea55f75910d8129",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38276766059 at057ba42: Exact Nat antidiagonal membership/equivalence and HasSum.congr_fun pointwise transport avoid additive-instance equality; unchanged algebra including regrouped sum. Independent static reviews passed; full source compiler replay pending."
+        }
+      ]
+    },
+    {
+      "source_path": "ErdosProblems/Erdos1049/PositiveSeriesR16.lean",
+      "source_sha256": "sha256:6a114719f1328632eb8e9592792525325bda8e4bdf39b21d881cdba81915670d",
+      "port_path": "ErdosProblems/Erdos1049/PositiveSeriesR16.lean",
+      "port_sha256": "sha256:deabf786d104e618cf154edcb643476d1c4eecc31d1e24e6999ddcb577d7ab07",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38179005870 atde8cba: Use Nat HasAntidiagonal for intended i+j=n convolution, explicitly unfold coeffConv for sums, remove inert simplification; no heartbeat increase. Independent static review passed; compiler replay pending."
+        }
+      ]
+    },
+    {
+      "source_path": "ErdosProblems/Erdos1049/ActualMomentGeneratingR12.lean",
+      "source_sha256": "sha256:dab9e3d277257215429d5aba1f6463c40de4097107f06bc2aa6e1a6aa23b1dd0",
+      "port_path": "ErdosProblems/Erdos1049/ActualMomentGeneratingR12.lean",
+      "port_sha256": "sha256:dab9e3d277257215429d5aba1f6463c40de4097107f06bc2aa6e1a6aa23b1dd0",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos1049/PaperCompleteR21/RogersFactorisation.lean",
+      "source_sha256": "sha256:036acfaed46e8014eb13da393ec98ccc49048df46e441db91dab5409c3d916c0",
+      "port_path": "ErdosProblems/Erdos1049/PaperCompleteR21/RogersFactorisation.lean",
+      "port_sha256": "sha256:931a5705bb5546eb8f7e56ca79675958aea1a09a6dff6936bf340c3e8675a9ba",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated strict source batch38175216709 at9a: Dispatch instance equality to rfl; expose embedding applications for Nat omega arithmetic; qualify current Finset.HasAntidiagonal.mem_antidiagonal to remove ambiguity and arithmetic cascades. Compiler replay pending."
+        }
+      ]
+    },
+    {
+      "source_path": "ErdosProblems/Erdos1049/PaperR20/CoefficientPencil.lean",
+      "source_sha256": "sha256:1c7e16472c26b6513aecaa52d4c6efb8d3a0e6b1008ddaf15d192f7ffbdf77c1",
+      "port_path": "ErdosProblems/Erdos1049/PaperR20/CoefficientPencil.lean",
+      "port_sha256": "sha256:1c7e16472c26b6513aecaa52d4c6efb8d3a0e6b1008ddaf15d192f7ffbdf77c1",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos1049/QBinomialUnitIdentity.lean",
+      "source_sha256": "sha256:64eaab5bd25b378948d74ae7e2e09ac8c4fe88fc2297164f438b754c6f0bc02d",
+      "port_path": "ErdosProblems/Erdos1049/QBinomialUnitIdentity.lean",
+      "port_sha256": "sha256:64eaab5bd25b378948d74ae7e2e09ac8c4fe88fc2297164f438b754c6f0bc02d",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos1049/GaussianDegreeR12.lean",
+      "source_sha256": "sha256:96cfbd6c24f832f8a130893eefcc1e5d62b80eb9a2782d42ab09458fd68d6802",
+      "port_path": "ErdosProblems/Erdos1049/GaussianDegreeR12.lean",
+      "port_sha256": "sha256:96cfbd6c24f832f8a130893eefcc1e5d62b80eb9a2782d42ab09458fd68d6802",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos1049/SourcePolynomialR11.lean",
+      "source_sha256": "sha256:6466cbcb0d2107ada7cb22e20269102ed4e720a4945daec1b9c210f5adeec163",
+      "port_path": "ErdosProblems/Erdos1049/SourcePolynomialR11.lean",
+      "port_sha256": "sha256:6466cbcb0d2107ada7cb22e20269102ed4e720a4945daec1b9c210f5adeec163",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
+      "source_sha256": "sha256:c03e39bf88456705456d19c473cdc4fbb0cc3f1ab3dd4fa825ba7ba056d9907b",
+      "port_path": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
+      "port_sha256": "sha256:c03e39bf88456705456d19c473cdc4fbb0cc3f1ab3dd4fa825ba7ba056d9907b",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos1049/PaperOmegaIndicatorR7.lean",
+      "source_sha256": "sha256:feb8aff592e6266e273eb3205bba9e501c8fe68ecacef2a9d47c3aa93a6e9e20",
+      "port_path": "ErdosProblems/Erdos1049/PaperOmegaIndicatorR7.lean",
+      "port_sha256": "sha256:feb8aff592e6266e273eb3205bba9e501c8fe68ecacef2a9d47c3aa93a6e9e20",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos1049/GaussianCoefficientsR11.lean",
+      "source_sha256": "sha256:ec00328ecb96803c5a7b0f56f223bcf08bea11c435f5086951ba4c544f91c535",
+      "port_path": "ErdosProblems/Erdos1049/GaussianCoefficientsR11.lean",
+      "port_sha256": "sha256:ec00328ecb96803c5a7b0f56f223bcf08bea11c435f5086951ba4c544f91c535",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos1049/ActualPositiveMeasureR16.lean",
+      "source_sha256": "sha256:4e264ecc918e30448bb3856f73d64c1dc5f2797756c91334b4387511b6afe2fb",
+      "port_path": "ErdosProblems/Erdos1049/ActualPositiveMeasureR16.lean",
+      "port_sha256": "sha256:f093e08f05d8502decda222b0f8711daaa1d509a93a89e781d4140d86830fcff",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38276766059 at057ba42: Explicit Nat HasAntidiagonal namespace for original actualGamma finite sum and unchanged summand; four qualification sites. Independent static reviews passed; full source compiler replay pending."
+        },
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38283868154 at PRmerge4bab42, selected successor of preserved98: Expose unchanged actualGamma finite sum for nonnegativity; separate exact v t scalar endpoint algebra from HasSum.congr_fun pointwise row transport, retaining original nonzero premises and pow_add/ring. Independent static review passed; full source compiler replay pending."
+        },
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38290541540 at exact608: Unfold unchanged actualGamma finite sum in exact one_le_actualGamma row bound. Independent static source review passed; successor full source compiler replay pending."
+        }
+      ]
+    },
+    {
+      "source_path": "ErdosProblems/Erdos1049/InfiniteMomentPositivityR10.lean",
+      "source_sha256": "sha256:b00c9546ec57574b74b04dde4d855a95712510154174a49218ce8bf3b4c5a2fb",
+      "port_path": "ErdosProblems/Erdos1049/InfiniteMomentPositivityR10.lean",
+      "port_sha256": "sha256:b00c9546ec57574b74b04dde4d855a95712510154174a49218ce8bf3b4c5a2fb",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos1049/PositiveSeriesFubiniR16.lean",
+      "source_sha256": "sha256:f41ea0aa18e136f572dd3b05c83593edd2be161e4ce9436df07c94c0325d5c91",
+      "port_path": "ErdosProblems/Erdos1049/PositiveSeriesFubiniR16.lean",
+      "port_sha256": "sha256:3f173cb213381e6172b6ca42b6fc5563a486c9d1640775a989efe50f25432e0b",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38276766059 at057ba42: Exact Nat HasAntidiagonal finite sums and sigmaAntidiagonalEquivProd namespace for unchanged pair reindexing. Independent static reviews passed; full source compiler replay pending."
+        }
+      ]
+    },
+    {
+      "source_path": "ErdosProblems/Erdos1049/QBinomialAnalyticR16.lean",
+      "source_sha256": "sha256:c2798c90b827439c92a72240d4b55aff9aaa3991cdcde1b654803c2737a687ce",
+      "port_path": "ErdosProblems/Erdos1049/QBinomialAnalyticR16.lean",
+      "port_sha256": "sha256:0892e59eff35a6565b622881bc463526f175ce7e71267fcb1896a99326055d3a",
+      "edits": [
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated source batch38276766059 at057ba42: Explicit Function.comp_def beta in two exact finite-product Tendsto witnesses. Independent static reviews passed; full source compiler replay pending."
+        }
+      ]
+    }
+  ],
+  "import_graph": {
+    "Solutions.PalomarCorpus.E1049_08.PaperStatementsU": [
+      "Mathlib",
+      "ErdosProblems.Erdos1049.ActualMomentGeneratingR12",
+      "ErdosProblems.Erdos1049.ActualPositiveMeasureR16",
+      "ErdosProblems.Erdos1049.PaperCompleteR21.SharpFixedBase",
+      "ErdosProblems.Erdos1049.PaperCompleteR21.SharpFixedBaseShort",
+      "ErdosProblems.Erdos1049.PaperR16.LambertBasic",
+      "ErdosProblems.Erdos1049.QProductBoundsR10",
+      "Solutions.PalomarCorpus.E1049_08.Statement"
+    ],
+    "Solutions.PalomarCorpus.E1049_08.Statement": [
+      "Mathlib"
+    ],
+    "ErdosProblems.Erdos1049.QProductBoundsR10": [
+      "Mathlib.Analysis.SpecialFunctions.Log.Basic",
+      "Mathlib.Analysis.SpecificLimits.Basic",
+      "Mathlib.Topology.Algebra.InfiniteSum.Real",
+      "Mathlib.Topology.Algebra.InfiniteSum.Ring",
+      "Mathlib.Tactic"
+    ],
+    "ErdosProblems.Erdos1049.PaperR16.LambertBasic": [
+      "Mathlib"
+    ],
+    "ErdosProblems.Erdos1049.PaperCompleteR21.SharpFixedBaseShort": [
+      "ErdosProblems.Erdos1049.PaperR16.LambertBasic",
+      "ErdosProblems.Erdos1049.PaperCompleteR21.SharpFixedBase"
+    ],
+    "ErdosProblems.Erdos1049.PaperCompleteR21.SharpFixedBase": [
+      "Mathlib",
+      "ErdosProblems.Erdos1049.ActualPositiveMeasureR16",
+      "ErdosProblems.Erdos1049.PaperCompleteR21.RogersFactorisationAnalytic",
+      "ErdosProblems.Erdos1049.PaperCompleteR21.GeometricUniversality"
+    ],
+    "ErdosProblems.Erdos1049.PaperCompleteR21.GeometricUniversality": [
+      "Mathlib.Analysis.Normed.Group.Tannery",
+      "Mathlib.LinearAlgebra.Vandermonde",
+      "Mathlib.Topology.Instances.Matrix",
+      "Mathlib.Data.Fin.Tuple.Sort",
+      "Mathlib.Analysis.SpecialFunctions.Log.Summable",
+      "Mathlib.Analysis.SpecialFunctions.Pow.Real",
+      "Mathlib.Analysis.SpecificLimits.Basic",
+      "ErdosProblems.Erdos1049.QProductBoundsR10"
+    ],
+    "ErdosProblems.Erdos1049.PaperCompleteR21.RogersFactorisationAnalytic": [
+      "ErdosProblems.Erdos1049.PaperCompleteR21.RogersFactorisation",
+      "ErdosProblems.Erdos1049.ActualMomentGeneratingR12",
+      "ErdosProblems.Erdos1049.PositiveSeriesR16",
+      "Mathlib"
+    ],
+    "ErdosProblems.Erdos1049.PositiveSeriesR16": [
+      "ErdosProblems.Erdos1049.QProductBoundsR10",
+      "Mathlib"
+    ],
+    "ErdosProblems.Erdos1049.ActualMomentGeneratingR12": [
+      "ErdosProblems.Erdos1049.QProductBoundsR10",
+      "Mathlib"
+    ],
+    "ErdosProblems.Erdos1049.PaperCompleteR21.RogersFactorisation": [
+      "ErdosProblems.Erdos1049.QBinomialUnitIdentity",
+      "ErdosProblems.Erdos1049.GaussianCoefficientsR11",
+      "ErdosProblems.Erdos1049.GaussianDegreeR12",
+      "ErdosProblems.Erdos1049.PaperR20.CoefficientPencil",
+      "Mathlib.RingTheory.PowerSeries.PiTopology",
+      "Mathlib.RingTheory.PowerSeries.Expand",
+      "Mathlib.RingTheory.PowerSeries.Inverse",
+      "Mathlib.Data.Fin.Tuple.NatAntidiagonal",
+      "Mathlib.Tactic"
+    ],
+    "ErdosProblems.Erdos1049.PaperR20.CoefficientPencil": [
+      "ErdosProblems.Erdos1049.QBinomialUnitIdentity",
+      "Mathlib"
+    ],
+    "ErdosProblems.Erdos1049.QBinomialUnitIdentity": [
+      "Mathlib.Algebra.BigOperators.Group.Finset.Basic",
+      "Mathlib.Algebra.BigOperators.Ring.Finset",
+      "Mathlib.Algebra.Polynomial.Coeff",
+      "Mathlib.Algebra.Polynomial.Eval.Defs",
+      "Mathlib.Data.Nat.Choose.Basic",
+      "Mathlib.Tactic"
+    ],
+    "ErdosProblems.Erdos1049.GaussianDegreeR12": [
+      "ErdosProblems.Erdos1049.SourcePolynomialR11",
+      "Mathlib"
+    ],
+    "ErdosProblems.Erdos1049.SourcePolynomialR11": [
+      "ErdosProblems.Erdos1049.GaussianCoefficientsR11",
+      "ErdosProblems.Erdos1049.PaperOmegaIndicatorR7",
+      "ErdosProblems.Erdos1049.ZudilinConeArithmetic",
+      "Mathlib"
+    ],
+    "ErdosProblems.Erdos1049.ZudilinConeArithmetic": [
+      "Mathlib.Algebra.Polynomial.Eval.Defs",
+      "Mathlib.Data.Fintype.Pigeonhole",
+      "Mathlib.Data.ZMod.Coprime",
+      "Mathlib.Data.ZMod.Basic",
+      "Mathlib.RingTheory.Polynomial.Cyclotomic.Basic",
+      "Mathlib.Tactic"
+    ],
+    "ErdosProblems.Erdos1049.PaperOmegaIndicatorR7": [
+      "Mathlib.Algebra.Order.Floor.Ring",
+      "Mathlib.Data.Real.Basic",
+      "Mathlib.Tactic"
+    ],
+    "ErdosProblems.Erdos1049.GaussianCoefficientsR11": [
+      "ErdosProblems.Erdos1049.QBinomialUnitIdentity",
+      "Mathlib"
+    ],
+    "ErdosProblems.Erdos1049.ActualPositiveMeasureR16": [
+      "ErdosProblems.Erdos1049.QBinomialAnalyticR16",
+      "ErdosProblems.Erdos1049.PositiveSeriesFubiniR16",
+      "ErdosProblems.Erdos1049.InfiniteMomentPositivityR10"
+    ],
+    "ErdosProblems.Erdos1049.InfiniteMomentPositivityR10": [
+      "Mathlib.Analysis.Matrix.PosDef",
+      "Mathlib.LinearAlgebra.Vandermonde",
+      "Mathlib.Analysis.SpecialFunctions.Log.Basic",
+      "Mathlib.Topology.Algebra.InfiniteSum.Real",
+      "Mathlib.Topology.Algebra.InfiniteSum.Ring",
+      "Mathlib.Tactic"
+    ],
+    "ErdosProblems.Erdos1049.PositiveSeriesFubiniR16": [
+      "ErdosProblems.Erdos1049.PositiveSeriesR16"
+    ],
+    "ErdosProblems.Erdos1049.QBinomialAnalyticR16": [
+      "ErdosProblems.Erdos1049.PositiveSeriesR16",
+      "ErdosProblems.Erdos1049.ActualMomentGeneratingR12"
+    ]
+  },
+  "wrapper_sha256": "sha256:18b5743afaed6c31ea1d530276c164c6de62e2e8d4855da08b6f21de6cf62909",
+  "verification": "No compilation or actual receiving export comparison run."
+}
