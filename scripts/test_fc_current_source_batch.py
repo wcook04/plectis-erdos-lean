@@ -1,5 +1,6 @@
 """Source batch diagnostics retain failures without authoring proof identity."""
 import contextlib
+import ast
 import hashlib
 import io
 import json
@@ -99,6 +100,45 @@ class SourceBatchTests(unittest.TestCase):
         (self.root / batch.SETUP_PROJECT / 'FCResult0.lean').write_text('changed')
         with self.assertRaisesRegex(ValueError, 'clean'):
             self.plan()
+
+    def test_exact_selection_builds_only_selected_projects(self):
+        plan = batch.plan_batch(self.root, self.commit, ['6579'])
+        self.assertEqual(plan['selected_units'], ['6579'])
+        self.assertEqual(set(plan['omitted_units']), batch.UNITS - {'6579'})
+        self.assertEqual([p['path'] for p in plan['projects']], [batch.SETUP_PROJECT])
+        calls = []
+        def build(*args, **kwargs):
+            calls.append(args[0])
+            runner.save_report(args[1], {'status': 'pass', 'targets': []})
+            return 0
+        with contextlib.redirect_stdout(io.StringIO()):
+            self.assertEqual(batch.compile_batch(self.root, plan, self.report, build=build), 0)
+        self.assertEqual(len(calls), 1)
+        for units in ([], ['6579', '6579'], ['unknown'], ['68-liminf']):
+            with self.subTest(units=units), self.assertRaisesRegex(ValueError, 'nonempty, unique'):
+                batch.plan_batch(self.root, self.commit, units)
+
+    def test_reviewed_addition_does_not_drop_existing_registry_or_share_builds(self):
+        registry_path = self.root / 'scripts/fc_receiving_identity.py'
+        registry = ast.literal_eval(ast.parse(registry_path.read_text()).body[0].value)
+        import shutil
+        name = 'FC68CommonDenominatorCurrent'
+        shutil.copytree(self.root / batch.SETUP_PROJECT, self.root / 'verification' / name)
+        registry['68-liminf'] = ('', 'FormalConjectures/Paper/FactorialCommonDenominator.lean',
+                                'FormalConjectures.Paper.FactorialCommonDenominator', name,
+                                'FCResult0', 'FactorialCommonDenominator.growth_liminf')
+        registry_path.write_text('TARGETS = ' + repr(registry) + '\n')
+        self.commit = self.commit_files()
+        plan = batch.plan_batch(self.root, self.commit, ['68-liminf'])
+        self.assertEqual(len(plan['projects']), 1)
+        self.assertEqual(plan['projects'][0]['path'], 'verification/' + name)
+        self.assertEqual(set(plan['omitted_units']), batch.UNITS)
+        self.assertEqual(len(self.plan()['projects']), 11)
+        registry.pop('6579')
+        registry_path.write_text('TARGETS = ' + repr(registry) + '\n')
+        self.commit = self.commit_files()
+        with self.assertRaisesRegex(ValueError, 'fourteen'):
+            batch.plan_batch(self.root, self.commit, ['68-liminf'])
 
     def replay(self, failure=0, damage=False):
         plan = self.plan()

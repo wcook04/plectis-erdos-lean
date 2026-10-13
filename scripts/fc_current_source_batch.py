@@ -4,7 +4,7 @@
 """Compile current FC proof projects for diagnostics, never receiving identity.
 
 Read the source snapshot's existing native target registry without executing it.
-The ten projects share only their identical pinned dependencies; candidate source
+The selected projects share only their identical pinned dependencies; candidate source
 roots and build outputs stay separate. Each project uses the convenience runner.
 Warnings remain in compiler logs; ordinary Lake builds match the existing
 candidate compilation policy without stopping later diagnostics on warnings.
@@ -29,6 +29,7 @@ SETUP_PROJECT = 'verification/FC249RationalObservableCurrent'
 UNITS = {'6579', '6576', '6577', '6527', '6523-cubic', '6523-product',
          '6528-finite', '6528-mixed', '6529', '6780', '6971-257',
          '6971-1049', '6971-258', '6971-1041'}
+ADDITIONAL_UNITS = {'243-nonintegral', '249-mixed', '269-kernel', '68-liminf'}
 BOUNDARY = ('Source compiler diagnostics only. No actual FC export, Comparator, '
             'defaultLean or NanoDa acceptance; no receiving identity certification.')
 
@@ -37,7 +38,7 @@ def digest(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def plan_batch(root: Path, commit: str) -> dict:
+def plan_batch(root: Path, commit: str, units: list[str] | None = None) -> dict:
     if not re.fullmatch('[0-9a-f]{40}', commit) or runner.git('rev-parse', 'HEAD', root=root) != commit:
         raise ValueError('batch source must equal the selected immutable commit')
     if runner.git('status', '--porcelain', root=root):
@@ -49,20 +50,26 @@ def plan_batch(root: Path, commit: str) -> dict:
     if len(assignments) != 1:
         raise ValueError('native target registry is ambiguous')
     targets = ast.literal_eval(assignments[0])
-    if not isinstance(targets, dict) or set(targets) != UNITS:
-        raise ValueError('batch must cover all fourteen existing native units')
+    if (not isinstance(targets, dict) or not UNITS <= set(targets)
+            or not set(targets) <= UNITS | ADDITIONAL_UNITS):
+        raise ValueError('registry must retain all fourteen existing native units and only reviewed additions')
+    selected = list(targets) if units is None else units
+    if not selected or len(set(selected)) != len(selected) or not set(selected) <= set(targets):
+        raise ValueError('selected units must be nonempty, unique and present in the immutable registry')
     projects = {}
     for unit, row in targets.items():
         if (not isinstance(row, tuple) or len(row) != 6 or not all(isinstance(v, str) for v in row)
                 or not re.fullmatch(r'FC\w+Current', row[3]) or not runner.MODULE.fullmatch(row[4])):
             raise ValueError('invalid existing native project selection')
+        if unit not in selected:
+            continue
         project = projects.setdefault(row[3], {'path': 'verification/' + row[3], 'units': [], 'modules': []})
         project['units'].append(unit)
         if row[4] not in project['modules']:
             project['modules'].append(row[4])
-    if len(projects) != 10:
-        raise ValueError('batch must cover the ten distinct current FC projects')
-    if projects[targets['6579'][3]]['path'] != SETUP_PROJECT:
+    if len({targets[u][3] for u in UNITS}) != 10:
+        raise ValueError('registry must retain the ten distinct existing current FC projects')
+    if 'verification/' + targets['6579'][3] != SETUP_PROJECT:
         raise ValueError('primary native unit differs from the workflow dependency setup project')
     dependencies = None
     for project in projects.values():
@@ -107,6 +114,8 @@ def plan_batch(root: Path, commit: str) -> dict:
         project['source_binding_sha256'] = digest(binding_path)
         project['plan'] = runner.make_plan(package, None, [], False)
     return {'source_commit': commit, 'registry_sha256': digest(registry), 'dependencies': dependencies,
+            'selected_units': selected, 'omitted_units': sorted(set(targets) - set(selected)),
+            'selection_boundary': 'Only selected projects are compiled; omitted units receive no new build evidence.',
             'toolchain': TOOLCHAIN, 'manifest_sha256': MANIFEST, 'projects': list(projects.values()),
             'setup_project': SETUP_PROJECT, 'driver_sha256': digest(Path(__file__)),
             'warning_clean_required': False, 'boundary': BOUNDARY}
@@ -178,12 +187,14 @@ def main(argv=None) -> int:
     parser.add_argument('--source-commit', required=True)
     parser.add_argument('--report', type=Path, required=True)
     parser.add_argument('--plan', action='store_true')
+    parser.add_argument('--units', help='Comma-separated exact registry units; omission compiles the full registry')
     parser.add_argument('--project-budget', type=runner.positive, default=1500,
                         help='seconds per project; default ten-project budget fits the shared CI job')
     args = parser.parse_args(argv)
     root, report = args.repository.resolve(), args.report.resolve()
     try:
-        plan = plan_batch(root, args.source_commit)
+        plan = plan_batch(root, args.source_commit,
+                          None if args.units is None else args.units.split(','))
         if args.plan:
             runner.save_report(report, {'schema_version': 2, 'kind': 'fc_current_source_diagnostics',
                                         'status': 'planned', 'plan': plan,

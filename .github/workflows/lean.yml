@@ -21,6 +21,9 @@ on:
       fc_current_batch:
         type: boolean
         default: false
+      fc_current_units:
+        type: string
+        default: ''
   workflow_dispatch:
     inputs:
       source_ref:
@@ -36,9 +39,13 @@ on:
         type: boolean
         default: false
       fc_current_batch:
-        description: 'Source diagnostics for all ten current FC proof projects; never receiving identity'
+        description: 'Current FC source diagnostics; never receiving identity'
         type: boolean
         default: false
+      fc_current_units:
+        description: 'Comma-separated exact FC units; blank checks the complete current registry'
+        type: string
+        default: ''
   pull_request:
     # The release gate owns the full build and publication audit for main PRs.
     branches-ignore: [main]
@@ -49,7 +56,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: lean-convenience-${{ github.workflow }}-${{ github.ref }}-${{ inputs.source_ref }}-${{ inputs.focused_only }}-${{ inputs.fc_current_batch }}
+  group: lean-convenience-${{ github.workflow }}-${{ github.ref }}-${{ inputs.source_ref }}-${{ inputs.focused_only }}-${{ inputs.fc_current_batch }}-${{ inputs.fc_current_units }}
   cancel-in-progress: true
 
 jobs:
@@ -121,20 +128,22 @@ jobs:
           if [[ "$FOCUSED_ONLY" == true ]]; then args+=(--focused-only); fi
           if [[ -n "$FOCUS_MODULE" ]]; then args+=(--focus "$FOCUS_MODULE"); fi
           python3 .ci-driver/scripts/build_launch_targets.py "${args[@]}" --plan
-      - name: Admit the complete current FC source diagnostic batch
+      - name: Admit the selected current FC source diagnostic batch
         if: ${{ inputs.fc_current_batch }}
         env:
           SOURCE_SHA: ${{ steps.resolve.outputs.source_sha }}
           FOCUS_MODULE: ${{ inputs.focus }}
           FOCUSED_ONLY: ${{ inputs.focused_only }}
           AUDIT_PUBLICATION: ${{ inputs.audit_publication }}
+          FC_CURRENT_UNITS: ${{ inputs.fc_current_units }}
         run: |
           if [[ -n "$FOCUS_MODULE" || "$FOCUSED_ONLY" == true || "$AUDIT_PUBLICATION" == true ]]; then
             echo '::error::The FC source diagnostic batch cannot replace focused or publication validation'
             exit 2
           fi
-          python3 .ci-driver/scripts/fc_current_source_batch.py --repository source \
-            --source-commit "$SOURCE_SHA" --report source/.lake/convenience-target-report.json --plan
+          args=(--repository source --source-commit "$SOURCE_SHA" --report source/.lake/convenience-target-report.json --plan)
+          if [[ -n "$FC_CURRENT_UNITS" ]]; then args+=(--units "$FC_CURRENT_UNITS"); fi
+          python3 .ci-driver/scripts/fc_current_source_batch.py "${args[@]}"
       - name: Admit source release inventory before Lean setup
         if: ${{ !inputs.fc_current_batch }}
         working-directory: source
@@ -191,15 +200,17 @@ jobs:
           if [[ "$FOCUSED_ONLY" == true ]]; then args+=(--focused-only); fi
           if [[ -n "$FOCUS_MODULE" ]]; then args+=(--focus "$FOCUS_MODULE"); fi
           python3 .ci-driver/scripts/build_launch_targets.py "${args[@]}"
-      - name: Compile every current FC candidate project and retain warning diagnostics
+      - name: Compile selected current FC candidate projects and retain warning diagnostics
         id: compile_fc
         if: ${{ inputs.fc_current_batch }}
         env:
           LEAN_NUM_THREADS: '2'
           SOURCE_SHA: ${{ steps.resolve.outputs.source_sha }}
+          FC_CURRENT_UNITS: ${{ inputs.fc_current_units }}
         run: |
-          python3 .ci-driver/scripts/fc_current_source_batch.py --repository source \
-            --source-commit "$SOURCE_SHA" --report source/.lake/convenience-target-report.json
+          args=(--repository source --source-commit "$SOURCE_SHA" --report source/.lake/convenience-target-report.json)
+          if [[ -n "$FC_CURRENT_UNITS" ]]; then args+=(--units "$FC_CURRENT_UNITS"); fi
+          python3 .ci-driver/scripts/fc_current_source_batch.py "${args[@]}"
       - name: Audit every publication entry's Solution environment
         id: audit
         if: ${{ inputs.audit_publication && !inputs.fc_current_batch }}

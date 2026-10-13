@@ -1,0 +1,434 @@
+{
+  "schema": "fc243_nonintegral_receiving_port/1",
+  "public_base_commit": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+  "package_path": "verification/FC243NonintegralRateCurrent",
+  "receiving_repository": "google-deepmind/formal-conjectures",
+  "receiving_file": "FormalConjectures/ErdosProblems/243.lean",
+  "receiving_pins": {
+    "lean": "leanprover/lean4:v4.33.1",
+    "mathlib": "0df444a360eaa60ab8c11dca51a86af692955474"
+  },
+  "source_targets": [
+    {
+      "id": "nonintegral",
+      "repository": "wcook04/plectis-erdos",
+      "ref": "6db987f4a843ae40ab07ac782ef0cca1a95815c1",
+      "declaration": "ErdosProblems.Erdos243.PaperCompleteR21.nonintegral_regular_rate_irrational",
+      "source_module_count": 22,
+      "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR21/NonintegralRegularRate.lean"
+    }
+  ],
+  "source_files": [
+    {
+      "port_path": "ErdosProblems/Erdos243/DynamicCancellation.lean",
+      "selected_source": "reused_current_port",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+      "selected_source_path": "verification/FC243DualCurrent/ErdosProblems/Erdos243/DynamicCancellation.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+          "source_path": "verification/FC243DualCurrent/ErdosProblems/Erdos243/DynamicCancellation.lean",
+          "source_sha256": "sha256:0da6cf5dd09100a815d79fce850ad458b4a492ccc1206573741f93f7752fdf76"
+        }
+      ],
+      "port_sha256": "sha256:0da6cf5dd09100a815d79fce850ad458b4a492ccc1206573741f93f7752fdf76",
+      "edits": [],
+      "selection_reason": "Reuse immutable current-FC port bytes; add exactly the public nonintegral extraction and endpoint leaves."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR20/CubicRateDefect.lean",
+      "selected_source": "reused_current_port",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+      "selected_source_path": "verification/FC243DualCurrent/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateDefect.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+          "source_path": "verification/FC243DualCurrent/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateDefect.lean",
+          "source_sha256": "sha256:16443410972e0526e1e190e49a92237f3681c337b3c0c472d869c8b65aa75327"
+        }
+      ],
+      "port_sha256": "sha256:16443410972e0526e1e190e49a92237f3681c337b3c0c472d869c8b65aa75327",
+      "edits": [],
+      "selection_reason": "Reuse immutable current-FC port bytes; add exactly the public nonintegral extraction and endpoint leaves."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR20/CubicRateDifferenceLimits.lean",
+      "selected_source": "reused_current_port",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+      "selected_source_path": "verification/FC243DualCurrent/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateDifferenceLimits.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+          "source_path": "verification/FC243DualCurrent/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateDifferenceLimits.lean",
+          "source_sha256": "sha256:e3e494b3fa187f5817d6adc701bb3601faf6715523554e9db3a31cccbc222046"
+        }
+      ],
+      "port_sha256": "sha256:e3e494b3fa187f5817d6adc701bb3601faf6715523554e9db3a31cccbc222046",
+      "edits": [],
+      "selection_reason": "Reuse immutable current-FC port bytes; add exactly the public nonintegral extraction and endpoint leaves."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR20/CubicRateFiniteDifference.lean",
+      "selected_source": "reused_current_port",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+      "selected_source_path": "verification/FC243DualCurrent/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateFiniteDifference.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+          "source_path": "verification/FC243DualCurrent/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateFiniteDifference.lean",
+          "source_sha256": "sha256:04dd6258e12d3c39955c5a59bfb2a34ff8ab4739c28ff9681dec7121f25358b8"
+        }
+      ],
+      "port_sha256": "sha256:04dd6258e12d3c39955c5a59bfb2a34ff8ab4739c28ff9681dec7121f25358b8",
+      "edits": [],
+      "selection_reason": "Reuse immutable current-FC port bytes; add exactly the public nonintegral extraction and endpoint leaves."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR20/CubicRateNormalisation.lean",
+      "selected_source": "reused_current_port",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+      "selected_source_path": "verification/FC243DualCurrent/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateNormalisation.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+          "source_path": "verification/FC243DualCurrent/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateNormalisation.lean",
+          "source_sha256": "sha256:52e7b634f19b1e52f214d97b8fd7a9071602d5d4710fafbdf366600b40594d67"
+        }
+      ],
+      "port_sha256": "sha256:52e7b634f19b1e52f214d97b8fd7a9071602d5d4710fafbdf366600b40594d67",
+      "edits": [],
+      "selection_reason": "Reuse immutable current-FC port bytes; add exactly the public nonintegral extraction and endpoint leaves."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR20/CubicRatePositiveRationalProfile.lean",
+      "selected_source": "reused_current_port",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+      "selected_source_path": "verification/FC243DualCurrent/ErdosProblems/Erdos243/PaperCompleteR20/CubicRatePositiveRationalProfile.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+          "source_path": "verification/FC243DualCurrent/ErdosProblems/Erdos243/PaperCompleteR20/CubicRatePositiveRationalProfile.lean",
+          "source_sha256": "sha256:dd4e9af85a5a8d7fd3895372e0579403f2b5f8b17b2f8908488f1a8fd4d71f76"
+        }
+      ],
+      "port_sha256": "sha256:dd4e9af85a5a8d7fd3895372e0579403f2b5f8b17b2f8908488f1a8fd4d71f76",
+      "edits": [],
+      "selection_reason": "Reuse immutable current-FC port bytes; add exactly the public nonintegral extraction and endpoint leaves."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR20/CubicRateProductAsymptotic.lean",
+      "selected_source": "reused_current_port",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+      "selected_source_path": "verification/FC243DualCurrent/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateProductAsymptotic.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+          "source_path": "verification/FC243DualCurrent/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateProductAsymptotic.lean",
+          "source_sha256": "sha256:2566c43e06cb48e2ebcf331d7edcec16785ac6492155ec964a2a312fefcb7b22"
+        }
+      ],
+      "port_sha256": "sha256:2566c43e06cb48e2ebcf331d7edcec16785ac6492155ec964a2a312fefcb7b22",
+      "edits": [],
+      "selection_reason": "Reuse immutable current-FC port bytes; add exactly the public nonintegral extraction and endpoint leaves."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR20/CubicRateProductEndpoint.lean",
+      "selected_source": "reused_current_port",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+      "selected_source_path": "verification/FC243DualCurrent/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateProductEndpoint.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+          "source_path": "verification/FC243DualCurrent/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateProductEndpoint.lean",
+          "source_sha256": "sha256:12f15a762efb527e82562b17dd639ee93d88b2807107cca23f9039541673366b"
+        }
+      ],
+      "port_sha256": "sha256:12f15a762efb527e82562b17dd639ee93d88b2807107cca23f9039541673366b",
+      "edits": [],
+      "selection_reason": "Reuse immutable current-FC port bytes; add exactly the public nonintegral extraction and endpoint leaves."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR20/CubicRateQuotientBounded.lean",
+      "selected_source": "reused_current_port",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+      "selected_source_path": "verification/FC243DualCurrent/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateQuotientBounded.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+          "source_path": "verification/FC243DualCurrent/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateQuotientBounded.lean",
+          "source_sha256": "sha256:54bea7e6cabc3304c1156a99c05e3324fe85075573081c59b316267d02219ab1"
+        }
+      ],
+      "port_sha256": "sha256:54bea7e6cabc3304c1156a99c05e3324fe85075573081c59b316267d02219ab1",
+      "edits": [],
+      "selection_reason": "Reuse immutable current-FC port bytes; add exactly the public nonintegral extraction and endpoint leaves."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR20/CubicRateQuotientIncrement.lean",
+      "selected_source": "reused_current_port",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+      "selected_source_path": "verification/FC243DualCurrent/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateQuotientIncrement.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+          "source_path": "verification/FC243DualCurrent/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateQuotientIncrement.lean",
+          "source_sha256": "sha256:9ba6d0608bb27089072c6a2dcb7bfaec715a7356b2c111e4e39f923fa5f7c71c"
+        }
+      ],
+      "port_sha256": "sha256:9ba6d0608bb27089072c6a2dcb7bfaec715a7356b2c111e4e39f923fa5f7c71c",
+      "edits": [],
+      "selection_reason": "Reuse immutable current-FC port bytes; add exactly the public nonintegral extraction and endpoint leaves."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR20/CubicRateRationalProfile.lean",
+      "selected_source": "reused_current_port",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+      "selected_source_path": "verification/FC243DualCurrent/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateRationalProfile.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+          "source_path": "verification/FC243DualCurrent/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateRationalProfile.lean",
+          "source_sha256": "sha256:4bba22b3b26327bccb4721dcd6f69fb22e1250bb9984875208e2e5b27fdb0bf1"
+        }
+      ],
+      "port_sha256": "sha256:4bba22b3b26327bccb4721dcd6f69fb22e1250bb9984875208e2e5b27fdb0bf1",
+      "edits": [],
+      "selection_reason": "Reuse immutable current-FC port bytes; add exactly the public nonintegral extraction and endpoint leaves."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR20/CubicRateResidualConstant.lean",
+      "selected_source": "reused_current_port",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+      "selected_source_path": "verification/FC243DualCurrent/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateResidualConstant.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+          "source_path": "verification/FC243DualCurrent/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateResidualConstant.lean",
+          "source_sha256": "sha256:2571ede4891fb6030f28b660cf902a906cd03cbefdaa4ce2c3667dba5119c149"
+        }
+      ],
+      "port_sha256": "sha256:2571ede4891fb6030f28b660cf902a906cd03cbefdaa4ce2c3667dba5119c149",
+      "edits": [],
+      "selection_reason": "Reuse immutable current-FC port bytes; add exactly the public nonintegral extraction and endpoint leaves."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR20/CubicRateResidualStep.lean",
+      "selected_source": "reused_current_port",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+      "selected_source_path": "verification/FC243DualCurrent/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateResidualStep.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+          "source_path": "verification/FC243DualCurrent/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateResidualStep.lean",
+          "source_sha256": "sha256:d35eb660cf877a141de7b9b4b508878f610ea45cb36b783bea8a01182089e641"
+        }
+      ],
+      "port_sha256": "sha256:d35eb660cf877a141de7b9b4b508878f610ea45cb36b783bea8a01182089e641",
+      "edits": [],
+      "selection_reason": "Reuse immutable current-FC port bytes; add exactly the public nonintegral extraction and endpoint leaves."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR20/CubicRateSummableTail.lean",
+      "selected_source": "reused_current_port",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+      "selected_source_path": "verification/FC243DualCurrent/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateSummableTail.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+          "source_path": "verification/FC243DualCurrent/ErdosProblems/Erdos243/PaperCompleteR20/CubicRateSummableTail.lean",
+          "source_sha256": "sha256:d9b056d1a1ad4926f0d9a4a23283caa0b1b16736fac582f7ba2a5ebbed34dc86"
+        }
+      ],
+      "port_sha256": "sha256:d9b056d1a1ad4926f0d9a4a23283caa0b1b16736fac582f7ba2a5ebbed34dc86",
+      "edits": [],
+      "selection_reason": "Reuse immutable current-FC port bytes; add exactly the public nonintegral extraction and endpoint leaves."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR21/NonintegralRegularRate.lean",
+      "selected_source": "nonintegral",
+      "selected_repository": "wcook04/plectis-erdos",
+      "selected_ref": "6db987f4a843ae40ab07ac782ef0cca1a95815c1",
+      "selected_source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR21/NonintegralRegularRate.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "6db987f4a843ae40ab07ac782ef0cca1a95815c1",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR21/NonintegralRegularRate.lean",
+          "source_sha256": "sha256:dec1dbcf6b48a55574468409dd818b4c28eedf52dda20ab966e41b317ef3d814"
+        }
+      ],
+      "port_sha256": "sha256:0a0f6f1885ad2a456a5d2ad93255781e948bd878878c97511a6ea7705d998e3e",
+      "edits": [
+        "Expand Function.comp_def explicitly in the Tendsto addition simplification for Lean4.33.1; theorem signatures unchanged."
+      ],
+      "selection_reason": "Reuse immutable current-FC port bytes; add exactly the public nonintegral extraction and endpoint leaves."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR21/RegularRateExtraction.lean",
+      "selected_source": "nonintegral",
+      "selected_repository": "wcook04/plectis-erdos",
+      "selected_ref": "6db987f4a843ae40ab07ac782ef0cca1a95815c1",
+      "selected_source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR21/RegularRateExtraction.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos",
+          "source_ref": "6db987f4a843ae40ab07ac782ef0cca1a95815c1",
+          "source_path": "lean/ErdosProblems/Erdos243/PaperCompleteR21/RegularRateExtraction.lean",
+          "source_sha256": "sha256:a749b433e11131633aff852e90d694fb471e7326d1ac33b90dcbb4466e847280"
+        }
+      ],
+      "port_sha256": "sha256:a749b433e11131633aff852e90d694fb471e7326d1ac33b90dcbb4466e847280",
+      "edits": [],
+      "selection_reason": "Reuse immutable current-FC port bytes; add exactly the public nonintegral extraction and endpoint leaves."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean",
+      "selected_source": "reused_current_port",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+      "selected_source_path": "verification/FC243DualCurrent/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+          "source_path": "verification/FC243DualCurrent/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean",
+          "source_sha256": "sha256:eed39d58bc6e45000d595978a1cf9998e4fed0efabeb6539de73926ebf43580e"
+        }
+      ],
+      "port_sha256": "sha256:eed39d58bc6e45000d595978a1cf9998e4fed0efabeb6539de73926ebf43580e",
+      "edits": [],
+      "selection_reason": "Reuse immutable current-FC port bytes; add exactly the public nonintegral extraction and endpoint leaves."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR7/CanonicalState.lean",
+      "selected_source": "reused_current_port",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+      "selected_source_path": "verification/FC243DualCurrent/ErdosProblems/Erdos243/PaperCompleteR7/CanonicalState.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+          "source_path": "verification/FC243DualCurrent/ErdosProblems/Erdos243/PaperCompleteR7/CanonicalState.lean",
+          "source_sha256": "sha256:5b886cbad81ccde4812a525175911964076aa3a18089e8b5e1ee2b9157281698"
+        }
+      ],
+      "port_sha256": "sha256:5b886cbad81ccde4812a525175911964076aa3a18089e8b5e1ee2b9157281698",
+      "edits": [],
+      "selection_reason": "Reuse immutable current-FC port bytes; add exactly the public nonintegral extraction and endpoint leaves."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR7/Limits.lean",
+      "selected_source": "reused_current_port",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+      "selected_source_path": "verification/FC243DualCurrent/ErdosProblems/Erdos243/PaperCompleteR7/Limits.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+          "source_path": "verification/FC243DualCurrent/ErdosProblems/Erdos243/PaperCompleteR7/Limits.lean",
+          "source_sha256": "sha256:c1a39fa720de9b791f8e49d960735cf1a50d6486c14f217662dedac848ee4f4e"
+        }
+      ],
+      "port_sha256": "sha256:c1a39fa720de9b791f8e49d960735cf1a50d6486c14f217662dedac848ee4f4e",
+      "edits": [],
+      "selection_reason": "Reuse immutable current-FC port bytes; add exactly the public nonintegral extraction and endpoint leaves."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR7/QuantitativeTail.lean",
+      "selected_source": "reused_current_port",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+      "selected_source_path": "verification/FC243DualCurrent/ErdosProblems/Erdos243/PaperCompleteR7/QuantitativeTail.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+          "source_path": "verification/FC243DualCurrent/ErdosProblems/Erdos243/PaperCompleteR7/QuantitativeTail.lean",
+          "source_sha256": "sha256:097706b4d201fae32d62fabfaba4e4dd0511210dc06c01621da14f94bab44844"
+        }
+      ],
+      "port_sha256": "sha256:097706b4d201fae32d62fabfaba4e4dd0511210dc06c01621da14f94bab44844",
+      "edits": [],
+      "selection_reason": "Reuse immutable current-FC port bytes; add exactly the public nonintegral extraction and endpoint leaves."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/PaperCompleteR7/RealTail.lean",
+      "selected_source": "reused_current_port",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+      "selected_source_path": "verification/FC243DualCurrent/ErdosProblems/Erdos243/PaperCompleteR7/RealTail.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+          "source_path": "verification/FC243DualCurrent/ErdosProblems/Erdos243/PaperCompleteR7/RealTail.lean",
+          "source_sha256": "sha256:0de714b9d12f3fb7eef4c6153792f9de83fc80a3932e755f9229768ca9b7e63e"
+        }
+      ],
+      "port_sha256": "sha256:0de714b9d12f3fb7eef4c6153792f9de83fc80a3932e755f9229768ca9b7e63e",
+      "edits": [],
+      "selection_reason": "Reuse immutable current-FC port bytes; add exactly the public nonintegral extraction and endpoint leaves."
+    },
+    {
+      "port_path": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+      "selected_source": "reused_current_port",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+      "selected_source_path": "verification/FC243DualCurrent/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+      "source_candidates": [
+        {
+          "source_repository": "wcook04/plectis-erdos-lean",
+          "source_ref": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+          "source_path": "verification/FC243DualCurrent/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "source_sha256": "sha256:516544a9e64edd668a83d9b0ea0179d32c2dbeea7a3bea773d498d6897695f18"
+        }
+      ],
+      "port_sha256": "sha256:516544a9e64edd668a83d9b0ea0179d32c2dbeea7a3bea773d498d6897695f18",
+      "edits": [],
+      "selection_reason": "Reuse immutable current-FC port bytes; add exactly the public nonintegral extraction and endpoint leaves."
+    }
+  ],
+  "exact_receiving_statements": {
+    "Erdos243.erdos_243.variants.nonintegral_regular_rate": "theorem erdos_243.variants.nonintegral_regular_rate\n    (a : \u2115 \u2192 \u2115) (ha : StrictMono a) (hpos : \u2200 n, 0 < a n)\n    (l : \u211d) (hl : 1 < l) (hnonint : \u2200 d : \u2115, l \u2260 (d : \u211d))\n    (hrate : Tendsto (fun n : \u2115 => (n : \u211d) ^ l *\n      ((a n : \u211d) ^ 2 / (a (n + 1) : \u211d) - (1 + l / (n : \u211d))))\n      atTop (nhds 0)) :\n    Irrational (\u2211' n : \u2115, 1 / (a n : \u211d))"
+  },
+  "solution_sha256": "sha256:22574839eefd410929eb14768f3eae6f3a3e85847cb5907be4378135f1f8fbb9",
+  "validation": "prepared_unverified",
+  "merge_boundary": "Independent project holds only22proof modules plus exact wrapper; existing FC243DualCurrent bytes and selected targets are preserved.20imports reuse checked-port source; copied source cannot confer new theorem evidence.",
+  "challenge_boundary": "New actual FC declaration export must be frozen before candidate compilation; pending new receiving commit is not asserted to exist.",
+  "receiving_revision_policy": "An exact receiving commit is supplied to each native verification run and bound in that run report; this source package does not certify a draft or an upstream outcome.",
+  "current_port_repair": {
+    "diagnostic_run": 38470790193,
+    "scope": "Proof tactics only; wrapper and mathematical statements unchanged.",
+    "validation": "Pending repaired immutable source build; historical failure retained."
+  }
+}

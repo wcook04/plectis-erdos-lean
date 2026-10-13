@@ -1,0 +1,77 @@
+{
+  "schema": "fc269_uniform_kernel_receiving_port/1",
+  "source_repository": "wcook04/plectis-erdos-lean",
+  "source_ref": "6bc4913c4ca42ac48829ad2d89985f8516361cb5",
+  "source_declaration": "PalomarCorpus.E269.PaperStatementsA.paper_uniform_rank_and_nonseparation",
+  "selected_proof_dependencies": [
+    {
+      "path": "ErdosProblems/Erdos269/KernelCarryRank.lean",
+      "origin_sha256": "sha256:f60f213d718c75ded9249223872e7a0167eb6b0ebe005bb02bf332fde6373720",
+      "prepared_sha256": "sha256:f60f213d718c75ded9249223872e7a0167eb6b0ebe005bb02bf332fde6373720",
+      "changed": false
+    },
+    {
+      "path": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+      "origin_sha256": "sha256:b0d5634c63729de3eb5d180d984539e2788f42e7ef6ab32a10e49a9136008e50",
+      "prepared_sha256": "sha256:b0d5634c63729de3eb5d180d984539e2788f42e7ef6ab32a10e49a9136008e50",
+      "changed": false
+    },
+    {
+      "path": "ErdosProblems/Shared/IrrationalRotationStaircase.lean",
+      "origin_sha256": "sha256:c3c2013d856ecedc3751e6fb0a4ac237e3ea397aa96fd475c76811137a74ba71",
+      "prepared_sha256": "sha256:c3c2013d856ecedc3751e6fb0a4ac237e3ea397aa96fd475c76811137a74ba71",
+      "changed": false
+    }
+  ],
+  "source_environment": {
+    "lean-toolchain": {
+      "sha256": "sha256:8dc8d6f560141069d9073e370611716ef77ada0da8ffa37e2149f44b2e63ac7a",
+      "content": "leanprover/lean4:v4.35.0-rc2\n"
+    },
+    "lake-manifest.json": {
+      "sha256": "sha256:22ddb352879d89d8ff34a033875b9eeb338e74aba38c44f066594a2e3231e383",
+      "content": "{\n  \"version\": \"1.2.0\",\n  \"packagesDir\": \".lake/packages\",\n  \"packages\": [\n    {\n      \"url\": \"https://github.com/leanprover-community/mathlib4\",\n      \"type\": \"git\",\n      \"subDir\": null,\n      \"scope\": \"leanprover-community\",\n      \"rev\": \"065356127b1dc0016f66b7283ce0ce2c4055aa55\",\n      \"name\": \"mathlib\",\n      \"manifestFile\": \"lake-manifest.json\",\n      \"inputRev\": \"v4.35.0-rc2\",\n      \"inherited\": false,\n      \"configFile\": \"lakefile.lean\"\n    },\n    {\n      \"url\": \"https://github.com/leanprover-community/plausible\",\n      \"type\": \"git\",\n      \"subDir\": null,\n      \"scope\": \"leanprover-community\",\n      \"rev\": \"e50948299c4dc4a4c21b1c34b6a6a4fddc19f912\",\n      \"name\": \"plausible\",\n      \"manifestFile\": \"lake-manifest.json\",\n      \"inputRev\": \"main\",\n      \"inherited\": true,\n      \"configFile\": \"lakefile.toml\"\n    },\n    {\n      \"url\": \"https://github.com/leanprover-community/LeanSearchClient\",\n      \"type\": \"git\",\n      \"subDir\": null,\n      \"scope\": \"leanprover-community\",\n      \"rev\": \"95e037bfdc31d3916ac615446847fb01960e2719\",\n      \"name\": \"LeanSearchClient\",\n      \"manifestFile\": \"lake-manifest.json\",\n      \"inputRev\": \"main\",\n      \"inherited\": true,\n      \"configFile\": \"lakefile.toml\"\n    },\n    {\n      \"url\": \"https://github.com/leanprover-community/import-graph\",\n      \"type\": \"git\",\n      \"subDir\": null,\n      \"scope\": \"leanprover-community\",\n      \"rev\": \"10930f8138f0462dbd744a91fc03a16fae0e046f\",\n      \"name\": \"importGraph\",\n      \"manifestFile\": \"lake-manifest.json\",\n      \"inputRev\": \"main\",\n      \"inherited\": true,\n      \"configFile\": \"lakefile.toml\"\n    },\n    {\n      \"url\": \"https://github.com/leanprover-community/ProofWidgets4\",\n      \"type\": \"git\",\n      \"subDir\": null,\n      \"scope\": \"leanprover-community\",\n      \"rev\": \"4c70ac059693669e5756e32a7a94b57ee1e99dc5\",\n      \"name\": \"proofwidgets\",\n      \"manifestFile\": \"lake-manifest.json\",\n      \"inputRev\": \"main\",\n      \"inherited\": true,\n      \"configFile\": \"lakefile.lean\"\n    },\n    {\n      \"url\": \"https://github.com/leanprover-community/aesop\",\n      \"type\": \"git\",\n      \"subDir\": null,\n      \"scope\": \"leanprover-community\",\n      \"rev\": \"75d936c7af167cc93fac0d31237682fc2204591d\",\n      \"name\": \"aesop\",\n      \"manifestFile\": \"lake-manifest.json\",\n      \"inputRev\": \"master\",\n      \"inherited\": true,\n      \"configFile\": \"lakefile.toml\"\n    },\n    {\n      \"url\": \"https://github.com/leanprover-community/quote4\",\n      \"type\": \"git\",\n      \"subDir\": null,\n      \"scope\": \"leanprover-community\",\n      \"rev\": \"786b7acdca7eb4e9c76c5d1d5bd810e7e5c56334\",\n      \"name\": \"Qq\",\n      \"manifestFile\": \"lake-manifest.json\",\n      \"inputRev\": \"master\",\n      \"inherited\": true,\n      \"configFile\": \"lakefile.toml\"\n    },\n    {\n      \"url\": \"https://github.com/leanprover-community/batteries\",\n      \"type\": \"git\",\n      \"subDir\": null,\n      \"scope\": \"leanprover-community\",\n      \"rev\": \"ed9b316aabe389fec1ef43c3326ab48c7e59be42\",\n      \"name\": \"batteries\",\n      \"manifestFile\": \"lake-manifest.json\",\n      \"inputRev\": \"main\",\n      \"inherited\": true,\n      \"configFile\": \"lakefile.toml\"\n    },\n    {\n      \"url\": \"https://github.com/leanprover/lean4-cli\",\n      \"type\": \"git\",\n      \"subDir\": null,\n      \"scope\": \"leanprover\",\n      \"rev\": \"2842b9871b04862f944c032e34052cb9448ccb71\",\n      \"name\": \"Cli\",\n      \"manifestFile\": \"lake-manifest.json\",\n      \"inputRev\": \"v4.35.0-rc2\",\n      \"inherited\": true,\n      \"configFile\": \"lakefile.toml\"\n    }\n  ],\n  \"name\": \"erdos257_period_noncollapse\",\n  \"lakeDir\": \".lake\",\n  \"fixedToolchain\": false\n}\n"
+    }
+  },
+  "receiving_environment_template": {
+    "repository": "wcook04/plectis-erdos-lean",
+    "ref": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+    "project": "verification/FC1049HankelCurrent"
+  },
+  "receiving_environment": {
+    "lean-toolchain": "sha256:3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71",
+    "lake-manifest.json": "sha256:c8ffc0d59f492007162fe54c68396e4b9f2f305fcf69210a7fbaf0b18fcd8cd9",
+    "lakefile.toml": "sha256:e5f38cda2c6a7316a8fe642a5e73af815757f20f57e6d2afc645a41f1543774c"
+  },
+  "adapter": "Destination definitions and exact theorem type copied from2fd0ac; proof is the same conjunction of two KernelCarryRank declarations as the original PaperR7 assembly. Only the three-module transitive proof import closure is copied, byte-for-byte; unused assembly imports and other paper statements are omitted. No source proof edits yet.",
+  "historical_evidence": "Official source run36020750719 and FC build36935296444 retained at their original commits; neither certifies this new port.",
+  "receiving_pins": {
+    "lean": "leanprover/lean4:v4.33.1",
+    "mathlib": "0df444a360eaa60ab8c11dca51a86af692955474"
+  },
+  "source_files": [
+    {
+      "port_path": "ErdosProblems/Erdos269/KernelCarryRank.lean",
+      "source_sha256": "sha256:f60f213d718c75ded9249223872e7a0167eb6b0ebe005bb02bf332fde6373720",
+      "port_sha256": "sha256:f60f213d718c75ded9249223872e7a0167eb6b0ebe005bb02bf332fde6373720",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "6bc4913c4ca42ac48829ad2d89985f8516361cb5"
+    },
+    {
+      "port_path": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+      "source_sha256": "sha256:b0d5634c63729de3eb5d180d984539e2788f42e7ef6ab32a10e49a9136008e50",
+      "port_sha256": "sha256:b0d5634c63729de3eb5d180d984539e2788f42e7ef6ab32a10e49a9136008e50",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "6bc4913c4ca42ac48829ad2d89985f8516361cb5"
+    },
+    {
+      "port_path": "ErdosProblems/Shared/IrrationalRotationStaircase.lean",
+      "source_sha256": "sha256:c3c2013d856ecedc3751e6fb0a4ac237e3ea397aa96fd475c76811137a74ba71",
+      "port_sha256": "sha256:c3c2013d856ecedc3751e6fb0a4ac237e3ea397aa96fd475c76811137a74ba71",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "6bc4913c4ca42ac48829ad2d89985f8516361cb5"
+    }
+  ],
+  "solution_sha256": "sha256:3dff3698a05e8402fc91cc6f71142cb440270c4b951c8bed889530885c9ffa64",
+  "receiving_revision_policy": "An exact receiving commit is supplied to each native verification run and bound in that run report; this source package does not certify a draft or an upstream outcome."
+}
