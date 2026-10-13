@@ -10,7 +10,7 @@ on:
         required: true
         default: '6579'
         type: choice
-        options: ['6579', '6576', '6577', '6527', '6523-cubic', '6523-product', '6528-finite', '6528-mixed', '6529', '6780', '6971-257', '6971-1049', '6971-258', '6971-1041', '243-nonintegral', '249-mixed', '269-kernel', '68-liminf']
+        options: ['6579', '6576', '6577', '6527', '6523-cubic', '6523-product', '6528-finite', '6528-mixed', '6529', '6780', '6971-257', '6971-1049', '6971-258', '6971-1041', '243-nonintegral', '249-mixed', '269-kernel', '68-liminf', '1049-order-coeff']
       receiving_commit:
         description: Full FC SHA; required for unsubmitted candidates, optional for existing requests
         required: false

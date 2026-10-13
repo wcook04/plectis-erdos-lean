@@ -1,0 +1,14 @@
+name = "fc1049_order_coeff_current"
+defaultTargets = ["FC1049OrderCoeffSolution"]
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.33.1"
+
+[[lean_lib]]
+name = "ErdosProblems"
+globs = ["ErdosProblems.+"]
+
+[[lean_lib]]
+name = "FC1049OrderCoeffSolution"

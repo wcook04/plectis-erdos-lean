@@ -8,11 +8,60 @@ import os
 from pathlib import Path
 import subprocess
 import tempfile
+import tomllib
 import unittest
 from unittest.mock import patch
 
 import build_launch_targets as runner
 import fc_current_source_batch as batch
+
+
+def check_native_library_registry(targets, library_roots, declared_libraries):
+    """Exercise the registry lookup required before native library attachment."""
+    if set(targets) != set(library_roots):
+        raise ValueError('native target/library registry keys differ')
+    for unit, row in targets.items():
+        actual = declared_libraries[row[3]]
+        if not actual <= library_roots[unit] or row[4].split('.')[0] not in actual:
+            raise ValueError('unreviewed or missing native library for ' + unit)
+
+
+class NativeLibraryRegistryTests(unittest.TestCase):
+    def registry(self):
+        root = Path(__file__).resolve().parent.parent
+        tree = ast.parse((root / 'scripts/fc_receiving_identity.py').read_text())
+        values = {node.targets[0].id: ast.literal_eval(node.value) for node in tree.body
+                  if isinstance(node, ast.Assign) and isinstance(node.targets[0], ast.Name)
+                  and node.targets[0].id in {'TARGETS', 'LIBRARY_ROOTS'}}
+        targets, libraries = values['TARGETS'], values['LIBRARY_ROOTS']
+        # Git blobs provide the immutable Lake files even in a sparse worktree.
+        # Candidate Python is parsed as data and never executed by this test.
+        declared = {}
+        for project in {row[3] for row in targets.values()}:
+            lake = subprocess.check_output(['git', '-C', str(root), 'show',
+                'HEAD:verification/' + project + '/lakefile.toml'], text=True)
+            declared[project] = {lib['name'] for lib in tomllib.loads(lake)['lean_lib']}
+        return targets, libraries, declared
+
+    def test_native_registry_covers_actual_lake_libraries(self):
+        targets, libraries, declared = self.registry()
+        check_native_library_registry(targets, libraries, declared)
+        self.assertEqual(libraries['1049-order-coeff'],
+                         declared[targets['1049-order-coeff'][3]])
+        self.assertEqual(libraries['1049-order-coeff'],
+                         {'ErdosProblems', 'FC1049OrderCoeffSolution'})
+
+    def test_native_registry_rejects_missing_target_library_selection(self):
+        targets, libraries, declared = self.registry()
+        libraries.pop('1049-order-coeff')
+        with self.assertRaisesRegex(ValueError, 'registry keys differ'):
+            check_native_library_registry(targets, libraries, declared)
+
+    def test_native_registry_rejects_unreviewed_actual_library(self):
+        targets, libraries, declared = self.registry()
+        declared[targets['1049-order-coeff'][3]].add('UnreviewedCandidate')
+        with self.assertRaisesRegex(ValueError, 'unreviewed or missing'):
+            check_native_library_registry(targets, libraries, declared)
 
 
 class SourceBatchTests(unittest.TestCase):

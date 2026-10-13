@@ -1,0 +1,158 @@
+{
+  "schema": "fc1049_initial_term_receiving_port/1",
+  "status": "prepared_unverified",
+  "source_repository": "wcook04/plectis-erdos-lean",
+  "source_ref": "cc7e541cf2081c6fef5a5e377d52e365e33b01eb",
+  "source_equal_at_base": "71a2bc9f74f8650d7287581f799ba998fe26e60f",
+  "source_entry": "ErdosProblems/Erdos1049/AllRow/Producer.lean",
+  "source_declarations": [
+    "ErdosProblems.Erdos1049.order_zudilinNormalizedHankelDet_all",
+    "ErdosProblems.Erdos1049.leadingCoeff_zudilinNormalizedHankelDet_all"
+  ],
+  "receiving_repository": "google-deepmind/formal-conjectures",
+  "receiving_file": "FormalConjectures/Paper/ZudilinHankelInitialTerm.lean",
+  "actual_signature": "theorem first_nonzero_term (N : \u2115) :\n    PowerSeries.order (hankelDet N) =\n      ((N * (N - 1) * (2 * N - 1) / 6 : \u2115) : \u2115\u221e) \u2227\n    (2 : \u2124) ^ N * PowerSeries.coeff (N * (N - 1) * (2 * N - 1) / 6)\n      (hankelDet N) = (N.factorial : \u2124) ^ 2 * ((N + 1).factorial : \u2124)",
+  "receiving_definitions_sha256": "sha256:9319f8925f1b328fb88a2e3ae06848cf7ac470b4bbf59c27aa24ae8a0c746140",
+  "receiving_pins": {
+    "lean": "leanprover/lean4:v4.33.1",
+    "mathlib": "0df444a360eaa60ab8c11dca51a86af692955474"
+  },
+  "source_files": [
+    {
+      "source_path": "ErdosProblems/Erdos1049/AdelicHeightBridge.lean",
+      "source_sha256": "sha256:1027da513594b867a54d67c34fb1eb3e6f7c743553b29f84b3f30dc86a04a4f0",
+      "port_path": "ErdosProblems/Erdos1049/AdelicHeightBridge.lean",
+      "port_sha256": "sha256:1027da513594b867a54d67c34fb1eb3e6f7c743553b29f84b3f30dc86a04a4f0",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos1049/AllRow/Filtered.lean",
+      "source_sha256": "sha256:c4d214d6d9e0138a31e84bf247fc76cd8a425c83b711f64b8a8e47285dc5239a",
+      "port_path": "ErdosProblems/Erdos1049/AllRow/Filtered.lean",
+      "port_sha256": "sha256:c4d214d6d9e0138a31e84bf247fc76cd8a425c83b711f64b8a8e47285dc5239a",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos1049/AllRow/FiniteStates.lean",
+      "source_sha256": "sha256:1a1bc2b07f2530521f0982b7c40fe56299213b4edd8b0849f0363cc1f9599b60",
+      "port_path": "ErdosProblems/Erdos1049/AllRow/FiniteStates.lean",
+      "port_sha256": "sha256:1a1bc2b07f2530521f0982b7c40fe56299213b4edd8b0849f0363cc1f9599b60",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos1049/AllRow/Producer.lean",
+      "source_sha256": "sha256:d144b89024846b30a267eb4879b2cf9406c98d9602061b399094e4a1296a4e30",
+      "port_path": "ErdosProblems/Erdos1049/AllRow/Producer.lean",
+      "port_sha256": "sha256:d144b89024846b30a267eb4879b2cf9406c98d9602061b399094e4a1296a4e30",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos1049/AllRow/SourcePolynomial.lean",
+      "source_sha256": "sha256:c3e9b61269d70f8d00dea5128b9223ac340dedcd204e5928cca7b2f204593e0f",
+      "port_path": "ErdosProblems/Erdos1049/AllRow/SourcePolynomial.lean",
+      "port_sha256": "sha256:c3e9b61269d70f8d00dea5128b9223ac340dedcd204e5928cca7b2f204593e0f",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos1049/HermitePadeNoGo.lean",
+      "source_sha256": "sha256:812f2ca2ea8b18f8ce8e0a68ae14897aa851fba2e050a07881d839168182f2cc",
+      "port_path": "ErdosProblems/Erdos1049/HermitePadeNoGo.lean",
+      "port_sha256": "sha256:812f2ca2ea8b18f8ce8e0a68ae14897aa851fba2e050a07881d839168182f2cc",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
+      "source_sha256": "sha256:9709184ca2c940b9aacc67a4fb376d92caced99b76c82ccb63d0389e49a239c3",
+      "port_path": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
+      "port_sha256": "sha256:9709184ca2c940b9aacc67a4fb376d92caced99b76c82ccb63d0389e49a239c3",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
+      "source_sha256": "sha256:c03e39bf88456705456d19c473cdc4fbb0cc3f1ab3dd4fa825ba7ba056d9907b",
+      "port_path": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
+      "port_sha256": "sha256:c03e39bf88456705456d19c473cdc4fbb0cc3f1ab3dd4fa825ba7ba056d9907b",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos1049/ZudilinHeightRegion.lean",
+      "source_sha256": "sha256:bdb9ffaeab12363ed91a6385a6df8ef8e931003ad7862096ed28fc09aa3669fa",
+      "port_path": "ErdosProblems/Erdos1049/ZudilinHeightRegion.lean",
+      "port_sha256": "sha256:bdb9ffaeab12363ed91a6385a6df8ef8e931003ad7862096ed28fc09aa3669fa",
+      "edits": []
+    },
+    {
+      "source_path": "ErdosProblems/Erdos1049/ZudilinSharpHankelCoefficient.lean",
+      "source_sha256": "sha256:28a2f6320b9feb1f0c70e2443963de1c2db6b2b0cdaf381ceba656b3a3b4ee44",
+      "port_path": "ErdosProblems/Erdos1049/ZudilinSharpHankelCoefficient.lean",
+      "port_sha256": "sha256:28a2f6320b9feb1f0c70e2443963de1c2db6b2b0cdaf381ceba656b3a3b4ee44",
+      "edits": []
+    }
+  ],
+  "import_graph": {
+    "ErdosProblems.Erdos1049.AllRow.Producer": [
+      "ErdosProblems.Erdos1049.AllRow.SourcePolynomial"
+    ],
+    "ErdosProblems.Erdos1049.AllRow.SourcePolynomial": [
+      "ErdosProblems.Erdos1049.AllRow.FiniteStates"
+    ],
+    "ErdosProblems.Erdos1049.AllRow.FiniteStates": [
+      "ErdosProblems.Erdos1049.AllRow.Filtered"
+    ],
+    "ErdosProblems.Erdos1049.AllRow.Filtered": [
+      "ErdosProblems.Erdos1049.ZudilinSharpHankelCoefficient"
+    ],
+    "ErdosProblems.Erdos1049.ZudilinSharpHankelCoefficient": [
+      "ErdosProblems.Erdos1049.AdelicHeightBridge"
+    ],
+    "ErdosProblems.Erdos1049.AdelicHeightBridge": [
+      "ErdosProblems.Erdos1049.ZudilinHeightRegion",
+      "ErdosProblems.Erdos1049.HermitePadeNoGo",
+      "ErdosProblems.Erdos1049.ZudilinConeArithmetic",
+      "Mathlib.Combinatorics.Pigeonhole",
+      "Mathlib.LinearAlgebra.Vandermonde",
+      "Mathlib.RingTheory.PowerSeries.Inverse",
+      "Mathlib.RingTheory.PowerSeries.NoZeroDivisors",
+      "Mathlib.RingTheory.PowerSeries.Order",
+      "Mathlib.RingTheory.PowerSeries.WellKnown"
+    ],
+    "ErdosProblems.Erdos1049.ZudilinConeArithmetic": [
+      "Mathlib.Algebra.Polynomial.Eval.Defs",
+      "Mathlib.Data.Fintype.Pigeonhole",
+      "Mathlib.Data.ZMod.Coprime",
+      "Mathlib.Data.ZMod.Basic",
+      "Mathlib.RingTheory.Polynomial.Cyclotomic.Basic",
+      "Mathlib.Tactic"
+    ],
+    "ErdosProblems.Erdos1049.HermitePadeNoGo": [
+      "Mathlib.Analysis.Real.Pi.Bounds"
+    ],
+    "ErdosProblems.Erdos1049.ZudilinHeightRegion": [
+      "ErdosProblems.Erdos1049.RationalBaseLambert",
+      "Mathlib.Analysis.Real.Pi.Bounds"
+    ],
+    "ErdosProblems.Erdos1049.RationalBaseLambert": [
+      "Mathlib.Algebra.BigOperators.Group.Finset.Basic",
+      "Mathlib.Analysis.Real.Pi.Bounds",
+      "Mathlib.Analysis.SpecialFunctions.Log.Basic",
+      "Mathlib.Tactic.FieldSimp",
+      "Mathlib.Tactic.NormNum",
+      "Mathlib.Tactic.Ring"
+    ]
+  },
+  "wrapper_sha256": "sha256:36bfed88da47fcc354b8a6abdc0b41678e76b0ff7e06a437ac4fa7ba193fc014",
+  "library_closure": [
+    "ErdosProblems/Erdos1049/AdelicHeightBridge.lean",
+    "ErdosProblems/Erdos1049/AllRow/Filtered.lean",
+    "ErdosProblems/Erdos1049/AllRow/FiniteStates.lean",
+    "ErdosProblems/Erdos1049/AllRow/Producer.lean",
+    "ErdosProblems/Erdos1049/AllRow/SourcePolynomial.lean",
+    "ErdosProblems/Erdos1049/HermitePadeNoGo.lean",
+    "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
+    "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
+    "ErdosProblems/Erdos1049/ZudilinHeightRegion.lean",
+    "ErdosProblems/Erdos1049/ZudilinSharpHankelCoefficient.lean"
+  ],
+  "historical_boundary": "E1049_04 selected order only; it does not certify the joint coefficient target.",
+  "verification": "Exact source copy and declared Lake closure only; current compiler and actual-FC identity pending."
+}
