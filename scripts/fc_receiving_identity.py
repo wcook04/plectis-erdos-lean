@@ -26,6 +26,12 @@ TOOLS = {
     "pipeline": ("https://github.com/PalomarRegistry/PalomarSubmission.git", "ef2fa1eadcb246c2346ddba39b52eaa53d4bb763"),
 }
 TARGETS = {
+    # Unsubmitted candidates require --receiving-commit after their exact FC
+    # draft and immutable proof URL have been prepared. No default PR is implied.
+    "243-nonintegral": ("", "FormalConjectures/ErdosProblems/243.lean", "FormalConjectures.ErdosProblems.243", "FC243NonintegralRateCurrent", "FCNonintegralRateSolutions", "Erdos243.erdos_243.variants.nonintegral_regular_rate"),
+    "249-mixed": ("", "FormalConjectures/ErdosProblems/249.lean", "FormalConjectures.ErdosProblems.249", "FC249MixedModuliCurrent", "FC249MixedModuliSolution", "Erdos249.erdos_249.variants.rational_mixed_dyadic_observables"),
+    "269-kernel": ("", "FormalConjectures/Paper/ThreePrimeRunningLcm.lean", "FormalConjectures.Paper.ThreePrimeRunningLcm", "FC269UniformKernelCurrent", "FC269UniformKernelSolution", "ThreePrimeRunningLcm.uniform_rank_and_nonseparation"),
+    "68-liminf": ("", "FormalConjectures/Paper/FactorialCommonDenominator.lean", "FormalConjectures.Paper.FactorialCommonDenominator", "FC68CommonDenominatorCurrent", "FC68CommonDenominatorSolution", "FactorialCommonDenominator.growth_liminf"),
     "6579": ("e6bf75a53ef0655241873e5f12427fb6b4695de5", "FormalConjectures/ErdosProblems/249.lean", "FormalConjectures.ErdosProblems.249", "FC249RationalObservableCurrent", "FC249Repair", "Erdos249.erdos_249.variants.rational_dyadic_observable"),
     "6576": ("ba0edafdf1bc3b0ad3a563295503ef68751dc514", "FormalConjectures/ErdosProblems/1041.lean", "FormalConjectures.ErdosProblems.1041", "FC1041SharpGapCurrent", "FC6576Solution", "Erdos1041.erdos_1041.variants.sharp_collinear_gap"),
     "6577": ("38f435dab7ca2da901588a5e91e93452eaba8910", "FormalConjectures/ErdosProblems/249.lean", "FormalConjectures.ErdosProblems.249", "FC249CountableIndependenceCurrent", "FC6577Solution", "Erdos249.erdos_249.variants.least_residue_dilation_independence"),
@@ -42,6 +48,10 @@ TARGETS = {
     "6971-1041": ("b47d6ce7ebabf79193826fad5b14b13e44f9c786", "FormalConjectures/ErdosProblems/1041.lean", "FormalConjectures.ErdosProblems.1041", "FC1041HausdorffCurrent", "FC6971HausdorffSolution", "Erdos1041.erdos_1041"),
 }
 LIBRARY_ROOTS = {
+    "243-nonintegral": {"ErdosProblems", "FCNonintegralRateSolutions"},
+    "249-mixed": {"ErdosProblems", "FC249MixedModuliSolution"},
+    "269-kernel": {"ErdosProblems", "FC269UniformKernelSolution"},
+    "68-liminf": {"ErdosProblems", "Solutions", "FC68CommonDenominatorSolution"},
     "6579": {"ErdosProblems", "FC249Repair"},
     "6576": {"ErdosProblems", "ExternalVerification", "FC6576Solution"},
     "6577": {"ErdosProblems", "Solutions", "FC6577Solution"},
@@ -117,7 +127,8 @@ def environment(project: Path, prefix: str, out: Path):
 def execute(args):
     source, work, out = args.source.resolve(), args.work.resolve(), args.output.resolve()
     out.mkdir(parents=True, exist_ok=False)
-    report = {"schema": "formal_conjectures_receiving_identity/1", "evidence_class": "actual_receiving_export_remote_native", "verified": False, "pull_request": int(args.unit.split("-", 1)[0]), "stages": {}}
+    default_receiving = TARGETS[args.unit][0]
+    report = {"schema": "formal_conjectures_receiving_identity/1", "evidence_class": "actual_receiving_export_remote_native", "verified": False, "pull_request": int(args.unit.split("-", 1)[0]) if default_receiving else None, "stages": {}}
     try:
         if not re.fullmatch(r"[0-9a-f]{40}", args.source_commit):
             raise RuntimeError("source commit must be immutable")
@@ -128,6 +139,8 @@ def execute(args):
             if not re.fullmatch(r"[0-9a-f]{40}", args.receiving_commit):
                 raise RuntimeError("receiving commit must be a full immutable SHA")
             fc_commit = args.receiving_commit
+        if not re.fullmatch(r"[0-9a-f]{40}", fc_commit):
+            raise RuntimeError("unsubmitted candidate requires an exact receiving commit")
         package_rel = "verification/" + package_name
         package = source / package_rel
         # String.toName needs escaping for numeric module segments only.

@@ -1,6 +1,5 @@
 {
   "schema": "fc269_uniform_kernel_receiving_port/1",
-  "status": "prepared_unverified",
   "source_repository": "wcook04/plectis-erdos-lean",
   "source_ref": "6bc4913c4ca42ac48829ad2d89985f8516361cb5",
   "source_declaration": "PalomarCorpus.E269.PaperStatementsA.paper_uniform_rank_and_nonseparation",
@@ -45,5 +44,34 @@
     "lakefile.toml": "sha256:e5f38cda2c6a7316a8fe642a5e73af815757f20f57e6d2afc645a41f1543774c"
   },
   "adapter": "Destination definitions and exact theorem type copied from2fd0ac; proof is the same conjunction of two KernelCarryRank declarations as the original PaperR7 assembly. Only the three-module transitive proof import closure is copied, byte-for-byte; unused assembly imports and other paper statements are omitted. No source proof edits yet.",
-  "historical_evidence": "Official source run36020750719 and FC build36935296444 retained at their original commits; neither certifies this new port."
+  "historical_evidence": "Official source run36020750719 and FC build36935296444 retained at their original commits; neither certifies this new port.",
+  "receiving_pins": {
+    "lean": "leanprover/lean4:v4.33.1",
+    "mathlib": "0df444a360eaa60ab8c11dca51a86af692955474"
+  },
+  "source_files": [
+    {
+      "port_path": "ErdosProblems/Erdos269/KernelCarryRank.lean",
+      "source_sha256": "sha256:f60f213d718c75ded9249223872e7a0167eb6b0ebe005bb02bf332fde6373720",
+      "port_sha256": "sha256:f60f213d718c75ded9249223872e7a0167eb6b0ebe005bb02bf332fde6373720",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "6bc4913c4ca42ac48829ad2d89985f8516361cb5"
+    },
+    {
+      "port_path": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+      "source_sha256": "sha256:b0d5634c63729de3eb5d180d984539e2788f42e7ef6ab32a10e49a9136008e50",
+      "port_sha256": "sha256:b0d5634c63729de3eb5d180d984539e2788f42e7ef6ab32a10e49a9136008e50",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "6bc4913c4ca42ac48829ad2d89985f8516361cb5"
+    },
+    {
+      "port_path": "ErdosProblems/Shared/IrrationalRotationStaircase.lean",
+      "source_sha256": "sha256:c3c2013d856ecedc3751e6fb0a4ac237e3ea397aa96fd475c76811137a74ba71",
+      "port_sha256": "sha256:c3c2013d856ecedc3751e6fb0a4ac237e3ea397aa96fd475c76811137a74ba71",
+      "selected_repository": "wcook04/plectis-erdos-lean",
+      "selected_ref": "6bc4913c4ca42ac48829ad2d89985f8516361cb5"
+    }
+  ],
+  "solution_sha256": "sha256:3dff3698a05e8402fc91cc6f71142cb440270c4b951c8bed889530885c9ffa64",
+  "receiving_revision_policy": "An exact receiving commit is supplied to each native verification run and bound in that run report; this source package does not certify a draft or an upstream outcome."
 }

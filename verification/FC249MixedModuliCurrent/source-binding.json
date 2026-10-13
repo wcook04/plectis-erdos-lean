@@ -1,0 +1,207 @@
+{
+  "schema": "fc249_mixed_moduli_receiving_port/1",
+  "package_path": "verification/FC249MixedModuliCurrent",
+  "source_repository": "wcook04/plectis-erdos",
+  "source_ref": "6db987f4a843ae40ab07ac782ef0cca1a95815c1",
+  "source_pins": {
+    "lean": "leanprover/lean4:v4.29.1",
+    "mathlib": "5e932f97dd25535344f80f9dd8da3aab83df0fe6"
+  },
+  "receiving_repository": "google-deepmind/formal-conjectures",
+  "receiving_file": "FormalConjectures/ErdosProblems/249.lean",
+  "receiving_pins": {
+    "lean": "leanprover/lean4:v4.33.1",
+    "mathlib": "0df444a360eaa60ab8c11dca51a86af692955474"
+  },
+  "source_files": [
+    {
+      "source_repository": "wcook04/plectis-erdos",
+      "source_ref": "6db987f4a843ae40ab07ac782ef0cca1a95815c1",
+      "source_path": "lean/ErdosProblems/Erdos249/ResidueClassTotientSeries.lean",
+      "port_path": "ErdosProblems/Erdos249/ResidueClassTotientSeries.lean",
+      "source_sha256": "sha256:dea677ad39aee98304defdb5c88afa77603b2d6cc6cdc6822635fc88b8f97e7e",
+      "port_sha256": "sha256:c3f826137da5f068267a9c8a810b96162543404a0ade10788fefc658d7607e65",
+      "edits": [
+        "Reuse existing receiving-version proof port at d1fe386f; retain source bytes and inherited edit provenance separately."
+      ],
+      "inherited_port": {
+        "repository": "wcook04/plectis-erdos-lean",
+        "ref": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+        "path": "verification/FC249CountableIndependenceCurrent/ErdosProblems/Erdos249/ResidueClassTotientSeries.lean",
+        "source_binding": {
+          "source_path": "ErdosProblems/Erdos249/ResidueClassTotientSeries.lean",
+          "port_path": "ErdosProblems/Erdos249/ResidueClassTotientSeries.lean",
+          "source_sha256": "sha256:c3f826137da5f068267a9c8a810b96162543404a0ade10788fefc658d7607e65",
+          "port_sha256": "sha256:c3f826137da5f068267a9c8a810b96162543404a0ade10788fefc658d7607e65",
+          "edits": []
+        }
+      }
+    },
+    {
+      "source_repository": "wcook04/plectis-erdos",
+      "source_ref": "6db987f4a843ae40ab07ac782ef0cca1a95815c1",
+      "source_path": "lean/ErdosProblems/Erdos249/PaperCompleteR7/RationalObservableClassification.lean",
+      "port_path": "ErdosProblems/Erdos249/PaperCompleteR7/RationalObservableClassification.lean",
+      "source_sha256": "sha256:a2f210bd66fa1c7026c2dec9da5c04978f0be6f49ac2f227499abaae96234a68",
+      "port_sha256": "sha256:8126b3a5419f134e75e0cc74155273ec5223c0fca90acdf9c83ebcc2b939e953",
+      "edits": [
+        "Reuse existing receiving-version proof port at d1fe386f; retain source bytes and inherited edit provenance separately."
+      ],
+      "inherited_port": {
+        "repository": "wcook04/plectis-erdos-lean",
+        "ref": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+        "path": "verification/FC249CountableIndependenceCurrent/ErdosProblems/Erdos249/PaperCompleteR7/RationalObservableClassification.lean",
+        "source_binding": {
+          "source_path": "ErdosProblems/Erdos249/PaperCompleteR7/RationalObservableClassification.lean",
+          "port_path": "ErdosProblems/Erdos249/PaperCompleteR7/RationalObservableClassification.lean",
+          "source_sha256": "sha256:8126b3a5419f134e75e0cc74155273ec5223c0fca90acdf9c83ebcc2b939e953",
+          "port_sha256": "sha256:8126b3a5419f134e75e0cc74155273ec5223c0fca90acdf9c83ebcc2b939e953",
+          "edits": []
+        }
+      }
+    },
+    {
+      "source_repository": "wcook04/plectis-erdos",
+      "source_ref": "6db987f4a843ae40ab07ac782ef0cca1a95815c1",
+      "source_path": "lean/ErdosProblems/Erdos249/PaperCompleteR7/ArbitraryBaseIsolatedPulse.lean",
+      "port_path": "ErdosProblems/Erdos249/PaperCompleteR7/ArbitraryBaseIsolatedPulse.lean",
+      "source_sha256": "sha256:a8416054c690647f1323043ff818054ad40cb98161671aa474a8a25aff96b4b0",
+      "port_sha256": "sha256:a8416054c690647f1323043ff818054ad40cb98161671aa474a8a25aff96b4b0",
+      "edits": [],
+      "inherited_port": {
+        "repository": "wcook04/plectis-erdos-lean",
+        "ref": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+        "path": "verification/FC249CountableIndependenceCurrent/ErdosProblems/Erdos249/PaperCompleteR7/ArbitraryBaseIsolatedPulse.lean",
+        "source_binding": {
+          "source_path": "ErdosProblems/Erdos249/PaperCompleteR7/ArbitraryBaseIsolatedPulse.lean",
+          "port_path": "ErdosProblems/Erdos249/PaperCompleteR7/ArbitraryBaseIsolatedPulse.lean",
+          "source_sha256": "sha256:a8416054c690647f1323043ff818054ad40cb98161671aa474a8a25aff96b4b0",
+          "port_sha256": "sha256:a8416054c690647f1323043ff818054ad40cb98161671aa474a8a25aff96b4b0",
+          "edits": []
+        }
+      }
+    },
+    {
+      "source_repository": "wcook04/plectis-erdos",
+      "source_ref": "6db987f4a843ae40ab07ac782ef0cca1a95815c1",
+      "source_path": "lean/ErdosProblems/Erdos249/PaperCompleteR7/IntegerRadixObservables.lean",
+      "port_path": "ErdosProblems/Erdos249/PaperCompleteR7/IntegerRadixObservables.lean",
+      "source_sha256": "sha256:0c9f1c6d1d20648d16dada2f44f3c7cf35491beb47766a4f7b791580bd564a82",
+      "port_sha256": "sha256:0c9f1c6d1d20648d16dada2f44f3c7cf35491beb47766a4f7b791580bd564a82",
+      "edits": [],
+      "inherited_port": {
+        "repository": "wcook04/plectis-erdos-lean",
+        "ref": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+        "path": "verification/FC249CountableIndependenceCurrent/ErdosProblems/Erdos249/PaperCompleteR7/IntegerRadixObservables.lean",
+        "source_binding": {
+          "source_path": "ErdosProblems/Erdos249/PaperCompleteR7/IntegerRadixObservables.lean",
+          "port_path": "ErdosProblems/Erdos249/PaperCompleteR7/IntegerRadixObservables.lean",
+          "source_sha256": "sha256:0c9f1c6d1d20648d16dada2f44f3c7cf35491beb47766a4f7b791580bd564a82",
+          "port_sha256": "sha256:0c9f1c6d1d20648d16dada2f44f3c7cf35491beb47766a4f7b791580bd564a82",
+          "edits": []
+        }
+      }
+    },
+    {
+      "source_repository": "wcook04/plectis-erdos",
+      "source_ref": "6db987f4a843ae40ab07ac782ef0cca1a95815c1",
+      "source_path": "lean/ErdosProblems/Erdos249/FiniteDilationPulseCore.lean",
+      "port_path": "ErdosProblems/Erdos249/FiniteDilationPulseCore.lean",
+      "source_sha256": "sha256:938f4bc5c5abf5bbb3e66468460cfe8e499ee98c693b72a4659a6226b9bada15",
+      "port_sha256": "sha256:41eae0aab387aedf79686ffaa838dcc9624048a69ea5f9a18a0d2c58d7102005",
+      "edits": [
+        "Reuse existing receiving-version proof port at d1fe386f; retain source bytes and inherited edit provenance separately."
+      ],
+      "inherited_port": {
+        "repository": "wcook04/plectis-erdos-lean",
+        "ref": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+        "path": "verification/FC249CountableIndependenceCurrent/ErdosProblems/Erdos249/FiniteDilationPulseCore.lean",
+        "source_binding": {
+          "source_path": "ErdosProblems/Erdos249/FiniteDilationPulseCore.lean",
+          "port_path": "ErdosProblems/Erdos249/FiniteDilationPulseCore.lean",
+          "source_sha256": "sha256:41eae0aab387aedf79686ffaa838dcc9624048a69ea5f9a18a0d2c58d7102005",
+          "port_sha256": "sha256:41eae0aab387aedf79686ffaa838dcc9624048a69ea5f9a18a0d2c58d7102005",
+          "edits": []
+        }
+      }
+    },
+    {
+      "source_repository": "wcook04/plectis-erdos",
+      "source_ref": "6db987f4a843ae40ab07ac782ef0cca1a95815c1",
+      "source_path": "lean/ErdosProblems/Erdos249/FiniteDilationSeriesTransport.lean",
+      "port_path": "ErdosProblems/Erdos249/FiniteDilationSeriesTransport.lean",
+      "source_sha256": "sha256:7c7578860032083e977b427fec98b4e6d1d2afb033d3629cca0d3abc9a81db77",
+      "port_sha256": "sha256:e49ff2f543e0f47dc2da0614a2d928f3c701c8b42016edaac13775b8d2515bba",
+      "edits": [
+        "Reuse existing receiving-version proof port at d1fe386f; retain source bytes and inherited edit provenance separately."
+      ],
+      "inherited_port": {
+        "repository": "wcook04/plectis-erdos-lean",
+        "ref": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+        "path": "verification/FC249CountableIndependenceCurrent/ErdosProblems/Erdos249/FiniteDilationSeriesTransport.lean",
+        "source_binding": {
+          "source_path": "ErdosProblems/Erdos249/FiniteDilationSeriesTransport.lean",
+          "port_path": "ErdosProblems/Erdos249/FiniteDilationSeriesTransport.lean",
+          "source_sha256": "sha256:e49ff2f543e0f47dc2da0614a2d928f3c701c8b42016edaac13775b8d2515bba",
+          "port_sha256": "sha256:e49ff2f543e0f47dc2da0614a2d928f3c701c8b42016edaac13775b8d2515bba",
+          "edits": []
+        }
+      }
+    },
+    {
+      "source_repository": "wcook04/plectis-erdos",
+      "source_ref": "6db987f4a843ae40ab07ac782ef0cca1a95815c1",
+      "source_path": "lean/ErdosProblems/Erdos249/FiniteDilationJointValue.lean",
+      "port_path": "ErdosProblems/Erdos249/FiniteDilationJointValue.lean",
+      "source_sha256": "sha256:8859d7e61360767799481ca3df60c0c4d5402517d9a692bbfc66c9a8fcb41c1c",
+      "port_sha256": "sha256:11b5db95200ee1a37afd1b17b0c2d2050616c954e395069cc6c00438b7d64ab6",
+      "edits": [
+        "Reuse existing receiving-version proof port at d1fe386f; retain source bytes and inherited edit provenance separately."
+      ],
+      "inherited_port": {
+        "repository": "wcook04/plectis-erdos-lean",
+        "ref": "d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85",
+        "path": "verification/FC249CountableIndependenceCurrent/ErdosProblems/Erdos249/FiniteDilationJointValue.lean",
+        "source_binding": {
+          "source_path": "ErdosProblems/Erdos249/FiniteDilationJointValue.lean",
+          "port_path": "ErdosProblems/Erdos249/FiniteDilationJointValue.lean",
+          "source_sha256": "sha256:11b5db95200ee1a37afd1b17b0c2d2050616c954e395069cc6c00438b7d64ab6",
+          "port_sha256": "sha256:11b5db95200ee1a37afd1b17b0c2d2050616c954e395069cc6c00438b7d64ab6",
+          "edits": []
+        }
+      }
+    },
+    {
+      "source_repository": "wcook04/plectis-erdos",
+      "source_ref": "6db987f4a843ae40ab07ac782ef0cca1a95815c1",
+      "source_path": "lean/ErdosProblems/Erdos249/FiniteDilationRationalObservables.lean",
+      "port_path": "ErdosProblems/Erdos249/FiniteDilationRationalObservables.lean",
+      "source_sha256": "sha256:0fa9cf7b440eeed227f751acadfc47d78ae417b9f2a5e9dd933a2be158c34bb2",
+      "port_sha256": "sha256:0fa9cf7b440eeed227f751acadfc47d78ae417b9f2a5e9dd933a2be158c34bb2",
+      "edits": []
+    },
+    {
+      "source_repository": "wcook04/plectis-erdos",
+      "source_ref": "6db987f4a843ae40ab07ac782ef0cca1a95815c1",
+      "source_path": "lean/ErdosProblems/Erdos249/FiniteDilationDyadicClassification.lean",
+      "port_path": "ErdosProblems/Erdos249/FiniteDilationDyadicClassification.lean",
+      "source_sha256": "sha256:f7cb2e2e0a959cd3cd3c12d3d507540389db66d1be6fe7b43a93b31ab8dbc77e",
+      "port_sha256": "sha256:f7cb2e2e0a959cd3cd3c12d3d507540389db66d1be6fe7b43a93b31ab8dbc77e",
+      "edits": []
+    },
+    {
+      "source_repository": "wcook04/plectis-erdos",
+      "source_ref": "6db987f4a843ae40ab07ac782ef0cca1a95815c1",
+      "source_path": "lean/ErdosProblems/Erdos249/FiniteDilationMixedModuli.lean",
+      "port_path": "ErdosProblems/Erdos249/FiniteDilationMixedModuli.lean",
+      "source_sha256": "sha256:5632148857fef026f9f1e8448e1045b811782ca54e9df6156b51ad55d26993ba",
+      "port_sha256": "sha256:5632148857fef026f9f1e8448e1045b811782ca54e9df6156b51ad55d26993ba",
+      "edits": []
+    }
+  ],
+  "exact_receiving_statement": "theorem erdos_249.variants.rational_mixed_dyadic_observables\n    (D : Finset ℕ) (k : ℕ → ℕ)\n    (f : (d : ℕ) → ZMod (2 ^ (k d)) → ℚ) (B : ℕ) (q₀ : ℚ)\n    (hB : 2 ≤ B)\n    (hpos : ∀ d ∈ D, 0 < d)\n    (hk : ∀ d ∈ D, 0 < k d) :\n    (∃ q : ℚ, (q₀ : ℝ) + (∑ d ∈ D, ∑' n : ℕ,\n      (f d (Nat.totient (n + 1) : ZMod (2 ^ (k d))) : ℝ) /\n        ((B : ℝ) ^ d) ^ (n + 1)) = (q : ℝ)) ↔\n      ∀ d ∈ D, ∀ r : ℕ, r < 2 ^ (k d) → Even r →\n        f d (r : ZMod (2 ^ (k d))) = f d 0",
+  "solution_sha256": "sha256:f8598f46b83e10053ca5c99610c276b41b498b6737dd312b1c5de477ac05f56b",
+  "validation": "prepared_unverified",
+  "challenge_boundary": "Actual receiving FC export remains pending. No copied Challenge included in proof project.",
+  "receiving_revision_policy": "An exact receiving commit is supplied to each native verification run and bound in that run report; this source package does not certify a draft or an upstream outcome."
+}

@@ -1,5 +1,35 @@
 # Frozen Formal Conjectures proof projects
 
+## Additional current-environment candidates
+
+These four isolated projects prepare exact statements for Formal Conjectures in
+Lean 4.33.1 and the pinned receiving Mathlib. Each source binding retains the
+original proof revisions and every copied or ported file digest. Existing
+projects keep their previous bytes and evidence.
+
+| Unit | Project | Exact result |
+| --- | --- | --- |
+| `243-nonintegral` | [FC243NonintegralRateCurrent](FC243NonintegralRateCurrent/source-binding.json) | Irrationality for a positive increasing reciprocal sequence with noninteger regular rate greater than one |
+| `249-mixed` | [FC249MixedModuliCurrent](FC249MixedModuliCurrent/source-binding.json) | Rationality classification for finite mixed dyadic observables at distinct positive dilations |
+| `269-kernel` | [FC269UniformKernelCurrent](FC269UniformKernelCurrent/source-binding.json) | Uniform nonsingular minors of every size and no finite separated kernel representation |
+| `68-liminf` | [FC68CommonDenominatorCurrent](FC68CommonDenominatorCurrent/source-binding.json) | Lower limit for growth of the common denominator of the factorial-minus-one series |
+
+To plan source diagnostics for only these additions from a clean immutable
+checkout:
+
+```sh
+python3 scripts/fc_current_source_batch.py --repository . --source-commit "$(git rev-parse HEAD)" \
+  --units 243-nonintegral,249-mixed,269-kernel,68-liminf --plan --report .lake/fc-additional-plan.json
+```
+
+The report lists selected and omitted units explicitly. Omission grants no new
+build evidence. The receiving verifier requires an explicit immutable FC draft
+commit for these candidates; it compares that actual exported declaration before
+executing the proof. A source compilation alone is not a receiving comparison,
+an FC submission, a novelty judgment or a solution of a parent problem.
+
+## Historical frozen projects
+
 These isolated projects preserve the complete local import closure of an original
 proof and its original Lake configuration, dependency lock and Lean toolchain.
 Their source files keep the original relative layout and bytes. The main release

@@ -4,7 +4,6 @@
   "package_path": "verification/FC243NonintegralRateCurrent",
   "receiving_repository": "google-deepmind/formal-conjectures",
   "receiving_file": "FormalConjectures/ErdosProblems/243.lean",
-  "receiving_head": "pending_exact_new_variant_commit",
   "receiving_pins": {
     "lean": "leanprover/lean4:v4.33.1",
     "mathlib": "0df444a360eaa60ab8c11dca51a86af692955474"
@@ -418,10 +417,11 @@
     }
   ],
   "exact_receiving_statements": {
-    "Erdos243.erdos_243.variants.nonintegral_regular_rate": "theorem erdos_243.variants.nonintegral_regular_rate\n    (a : \u2115 \u2192 \u2115) (ha : StrictMono a) (hpos : \u2200 n, 0 < a n)\n    (l : \u211d) (hl : 1 < l) (hnonint : \u2200 d : \u2115, l \u2260 (d : \u211d))\n    (hrate : Tendsto (fun n : \u2115 => (n : \u211d) ^ l *\n      ((a n : \u211d) ^ 2 / (a (n + 1) : \u211d) - (1 + l / (n : \u211d))))\n      atTop (nhds 0)) :\n    Irrational (\u2211' n : \u2115, 1 / (a n : \u211d))"
+    "Erdos243.erdos_243.variants.nonintegral_regular_rate": "theorem erdos_243.variants.nonintegral_regular_rate\n    (a : ℕ → ℕ) (ha : StrictMono a) (hpos : ∀ n, 0 < a n)\n    (l : ℝ) (hl : 1 < l) (hnonint : ∀ d : ℕ, l ≠ (d : ℝ))\n    (hrate : Tendsto (fun n : ℕ => (n : ℝ) ^ l *\n      ((a n : ℝ) ^ 2 / (a (n + 1) : ℝ) - (1 + l / (n : ℝ))))\n      atTop (nhds 0)) :\n    Irrational (∑' n : ℕ, 1 / (a n : ℝ))"
   },
   "solution_sha256": "sha256:22574839eefd410929eb14768f3eae6f3a3e85847cb5907be4378135f1f8fbb9",
   "validation": "prepared_unverified",
   "merge_boundary": "Independent project holds only22proof modules plus exact wrapper; existing FC243DualCurrent bytes and selected targets are preserved.20imports reuse checked-port source; copied source cannot confer new theorem evidence.",
-  "challenge_boundary": "New actual FC declaration export must be frozen before candidate compilation; pending new receiving commit is not asserted to exist."
+  "challenge_boundary": "New actual FC declaration export must be frozen before candidate compilation; pending new receiving commit is not asserted to exist.",
+  "receiving_revision_policy": "An exact receiving commit is supplied to each native verification run and bound in that run report; this source package does not certify a draft or an upstream outcome."
 }
