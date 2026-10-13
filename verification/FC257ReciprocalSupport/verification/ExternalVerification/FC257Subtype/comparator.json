@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification.FC257Subtype.Challenge",
+  "solution_module": "Solutions.FC257Subtype",
+  "theorem_names": [
+    "Erdos257.erdos_257.variants.summable_reciprocal_support_subtype"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}
