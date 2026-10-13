@@ -1229,11 +1229,15 @@
       "source_path": "verification/FC257ReciprocalSupport/verification/ExternalVerification/Solution.lean",
       "source_sha256": "sha256:cbe59f49b5b34dcd8e4b1ee2073c6cdbcff59b58ca901466855e0a4eeedb99d8",
       "port_path": "ExternalVerification/Solution.lean",
-      "port_sha256": "sha256:70a07bebf2783429c109f20bda11d705eb9a0d6f35dc3de4b83c3dceb98f88e1",
+      "port_sha256": "sha256:0a53eca868b6d0c1cd52eabae6d81d2ae22054678cbd54c8b9d4acb9a101d2b0",
       "edits": [
         {
           "kind": "receiving_lean_4_33_compiler_port",
           "reason": "Authenticated full source run38325217366 at691a62 exposed22 ExternalVerification/Solution compiler occurrences. Add14 private proved transport-helper candidates for whole function/family/set and fixed rational denominator equalities; preserve original statements, definitions, hypotheses and credits. Split the actual Even proposition instead of assuming hidden Decidable identity, rewrite concrete Nat.lcm fold and complete families before carrier/module transport, and use fixed-modulus Units.ext. Parent and aggregate reviewed all22 full typed goals, original107 declaration records and new14 helper candidates with immutable definitions and pinned APIs. Full successor source compilation and receiving/native assurance remain pending."
+        },
+        {
+          "kind": "receiving_lean_4_33_compiler_port",
+          "reason": "Authenticated full source run38332101681 at667340 failed five Solution occurrences: a filtered-prefix helper and four recurring portfolio leaves13/15/52/62. Prove finite-filter/fiber equalities with pinned Finset.filter_congr, rewrite complete family before dependent Basis construction, destruct existential witnesses and transport same-v/u carry rank pointwise, and revert dependent coprimality before fixed-modulus unit comparison. Add one private smoothHeightFiber helper; preserve all121 original headers/definitions/hypotheses/credits and all74 original constructor leaves outside these four. Parent and aggregate reviewed all five actual typed goals, exact patch,129/127 semantic source-span sets and pinned APIs. Prior22 review remains historical static evidence. Full successor compiler and receiving/native gates pending."
         }
       ]
     },

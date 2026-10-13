@@ -499,10 +499,20 @@ private theorem smoothPointHeight_eq_source (p q r : ℕ) :
 
 private theorem smoothPrefixExponents_eq_source (p q r x : ℕ) :
     smoothPrefixExponents p q r x = ErdosProblems.Erdos269.smoothPrefixExponents p q r x := by
-  apply Finset.ext
-  intro e
-  simp only [smoothPrefixExponents, ErdosProblems.Erdos269.smoothPrefixExponents,
-    Finset.mem_filter, smooth3Val, ErdosProblems.Erdos269.smooth3Val]
+  unfold smoothPrefixExponents ErdosProblems.Erdos269.smoothPrefixExponents
+  apply Finset.filter_congr
+  intro e _
+  rfl
+
+private theorem smoothHeightFiber_eq_source
+    (p q r hp hq hr H : ℕ) :
+    smoothHeightFiber p q r hp hq hr H =
+      ErdosProblems.Erdos269.smoothHeightFiber p q r hp hq hr H := by
+  unfold smoothHeightFiber ErdosProblems.Erdos269.smoothHeightFiber
+  unfold smoothExponentBox ErdosProblems.Erdos269.smoothExponentBox
+  apply Finset.filter_congr
+  intro e _
+  rw [smoothPointHeight_eq_source]
 
 private theorem smoothPrefixLcm_eq_source (p q r x : ℕ) :
     smoothPrefixLcm p q r x = ErdosProblems.Erdos269.smoothPrefixLcm p q r x := by
@@ -611,9 +621,8 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
     rw [fullTotientKernelFamily_eq_source]
     exact Erdos249257.not_finiteDimensional_span_fullTotientKernel
   · refine ⟨?_⟩
-    simpa only [TotientOddCoreIndex, Erdos249257.TotientOddCoreIndex,
-      fullTotientKernelFamily_eq_source] using
-      Erdos249257.totientDyadicSectionBasis
+    rw [fullTotientKernelFamily_eq_source]
+    exact Erdos249257.totientDyadicSectionBasis
   · intro k e hk he hcanon
     have hcanon' :
         LinearIndependent ℚ (Erdos249257.canonicalAllBaseTotientKernelFamily k e) := by
@@ -645,15 +654,16 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
     exact Erdos249257.finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent
       k e hk he hcanon'
   · intro hirr
-    simpa [canonicalCarryKernelFamily_eq_source, binaryCoeffSeries, IsTemperedBinaryOrbit,
-      CarrySectionsEventuallyPeriodicMod, carryKernelSeq,
-      canonicalCarryKernelFamily, Erdos249257.binaryCoeffSeries,
-      Erdos249257.IsTemperedBinaryOrbit,
-      Erdos249257.CarrySectionsEventuallyPeriodicMod,
-      Erdos249257.carryKernelSeq,
-      Erdos249257.canonicalCarryKernelFamily] using
+    obtain ⟨v, hv, u, hu, hrank, h, hh, N₀, hperiod⟩ :=
       Erdos249257.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank
         hirr
+    refine ⟨v, hv, u, ?_, ?_, h, hh, N₀, ?_⟩
+    · simpa only [IsTemperedBinaryOrbit, Erdos249257.IsTemperedBinaryOrbit] using hu
+    · intro e
+      rw [canonicalCarryKernelFamily_eq_source]
+      exact hrank e
+    · simpa only [CarrySectionsEventuallyPeriodicMod,
+        Erdos249257.CarrySectionsEventuallyPeriodicMod] using hperiod
   · intro u hu symbols hodd e
     let toSource : VUSymbol → Erdos249257.TotientTailPeriodKiller.VUSymbol :=
       fun σ => { valuation := σ.valuation, unit := σ.unit }
@@ -938,7 +948,9 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
       Erdos249257.SupportSunflowerDichotomy.irrational_erdosSupportSeries_of_orthogonalPetalBouquet
         hB' hselection'
   · intro F b hF h0 hb hcop
-    rw [finiteErdosSum_eq_source] at hcop ⊢
+    revert hcop
+    rw [finiteErdosSum_eq_source]
+    intro hcop
     have hunit :
         ZMod.unitOfCoprime b hcop =
           ZMod.unitOfCoprime b
@@ -1068,12 +1080,9 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
       ErdosProblems.Erdos269.smoothPrefixLcm_eq_threePrimeHeight
         hp hq hr hpq hpr hqr hx
   · intro p q r hp hq hr
-    simpa [smoothPointHeight_eq_source,
-      smoothExponentBox, smoothPointHeight, smoothHeightFiber,
-      threePrimeKernelQ, threePrimeHeight, smooth3Val,
+    simp only [smoothHeightFiber_eq_source, smoothPointHeight_eq_source]
+    simpa only [smoothExponentBox, threePrimeKernelQ, threePrimeHeight, smooth3Val,
       ErdosProblems.Erdos269.smoothExponentBox,
-      ErdosProblems.Erdos269.smoothPointHeight,
-      ErdosProblems.Erdos269.smoothHeightFiber,
       ErdosProblems.Erdos269.threePrimeKernelQ,
       ErdosProblems.Erdos269.threePrimeHeight,
       ErdosProblems.Erdos269.smooth3Val] using
