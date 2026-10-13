@@ -38,6 +38,23 @@ and [failed cross-version comparison](https://github.com/google-deepmind/formal-
 remain evidence for their historical heads. The latest approval applies to the
 named statement and revision. The original unreduced-totient question remains open.
 
+As observed on 13 October, all fourteen affected FC declarations have successful
+receiving-identity checks at their exact delivered heads. The
+[canonical evidence matrix](https://github.com/wcook04/plectis-erdos/blob/460e09248e2a22479ea175c8f93e47f363bd6a68/docs/verification/FORMAL_CONJECTURES_CROSSWALK.md#contribution-activity)
+links each actual-FC export, matching statement and dependencies, default Lean
+and NanoDa acceptance, three-core-axiom budget, and positive/mismatch controls.
+These are author-hosted checks in Lean 4.33.1 with FC's Mathlib pin; they do not
+establish independent human review or an upstream merge.
+
+[Source PR37](https://github.com/wcook04/plectis-erdos-lean/pull/37) contains the eleven
+receiving-environment repairs at `d1fe386f`; the three earlier successful checks
+retain their original proof pins. The separate
+[ten-project source build](https://github.com/wcook04/plectis-erdos-lean/actions/runs/38341643841)
+passes for all fourteen units. [FC PR7260](https://github.com/google-deepmind/formal-conjectures/pull/7260)
+updates five already accepted proof links without changing their statements.
+The previously recorded Palomar and Lean 4.29.1 evidence below remains bound to
+its own source and environment.
+
 ## Palomar publication surface
 
 Palomar (https://palomar-registry.org) checks Lean proofs with Comparator and independent
