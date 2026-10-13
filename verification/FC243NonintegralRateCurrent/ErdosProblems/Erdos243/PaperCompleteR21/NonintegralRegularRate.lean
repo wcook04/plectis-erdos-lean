@@ -63,7 +63,7 @@ private theorem rpow_over_denominator_tendsto_zero
       atTop (nhds 1) := by
     have hh : Tendsto (fun n : ℕ => 1 + ((n + 1 : ℕ) : ℝ)⁻¹)
         atTop (nhds 1) := by
-      simpa only [add_zero] using
+      simpa only [Function.comp_def, add_zero] using
         (tendsto_const_nhds (x := (1 : ℝ))).add hninv
     apply hh.congr'
     filter_upwards [] with n

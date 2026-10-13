@@ -46,8 +46,10 @@
       "source_path": "ErdosProblems/Erdos68/PaperCompleteAsymptotics.lean",
       "source_sha256": "sha256:81db83ef5773795dd7dea0ce31f52a135235355eaa63b511453fcd0cd41e7fdc",
       "port_path": "ErdosProblems/Erdos68/PaperCompleteAsymptotics.lean",
-      "port_sha256": "sha256:81db83ef5773795dd7dea0ce31f52a135235355eaa63b511453fcd0cd41e7fdc",
-      "edits": []
+      "port_sha256": "sha256:058bea4b255bead0a7cce2909b6025a1c283ee48a3222b8f227acbfc1c95f53b",
+      "edits": [
+        "Expand Function.comp_def explicitly in the logarithm-limit composition and unfold Nat.choose for the zero base case in Lean4.33.1; theorem signatures unchanged."
+      ]
     },
     {
       "source_path": "ErdosProblems/Erdos68/PaperCompleteLiminf.lean",
@@ -131,5 +133,10 @@
     "source_closure_sha256": "sha256:f2218652878d214aa02a5e1cdbf3f33848d01110952e72586d2248cf6bae7d60",
     "boundary": "Historical selected v1 identity; source_binding null. Retained without new replay or current admission."
   },
-  "verification": "Source bytes/import closure preserved. Native4.33.1 compilation and actual receiving export comparison pending."
+  "verification": "Source bytes/import closure preserved. Native4.33.1 compilation and actual receiving export comparison pending.",
+  "current_port_repair": {
+    "diagnostic_run": 38470790193,
+    "scope": "Proof tactics only; wrapper and mathematical statements unchanged.",
+    "validation": "Pending repaired immutable source build; historical failure retained."
+  }
 }
