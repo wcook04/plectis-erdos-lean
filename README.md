@@ -400,4 +400,4 @@ This companion provides selected separate checks for the [primary mathematical r
 - [Plectis Atlas](https://wcook04.github.io/plectis-atlas/) is an independent reader for OpenAI’s mathematics release.
 - The earlier [Plectis toolkit](https://github.com/wcook04/plectis) contains reusable Python components and worked examples.
 
-These sit within Will Cook’s wider work with AI agents: research and software prepared with explanations, source and checks so other people can inspect and continue it. See the [programme directory](https://github.com/wcook04/plectis-erdos#the-wider-plectis-programme) and [Plectis website](https://wcook04.github.io/plectis/).
+These sit within Will Cook’s wider work with AI agents: research and software prepared with explanations, source and checks so other people can inspect and continue it. Explore the [research corpus](https://github.com/wcook04/plectis-erdos) and [Plectis website](https://wcook04.github.io/plectis/).
