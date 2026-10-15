@@ -23,6 +23,10 @@ provide a way through that work. Checking entries here are bound to this
 repository commit; the pinned release snapshots below retain their own commits
 and toolchains.
 
+The website is agent-readable: its [navigation guide](https://wcook04.github.io/plectis/llms.txt)
+and [maths map manifest](https://wcook04.github.io/plectis/lean/experience/manifest.json)
+lead to graph data and source-linked research records without running the visual map.
+
 Will Cook maintains this AI-assisted development. It builds on
 [Lean](https://lean-lang.org/) and
 [Mathlib](https://github.com/leanprover-community/mathlib4), with problems,
