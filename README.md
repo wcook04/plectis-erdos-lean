@@ -1,10 +1,12 @@
 # Plectis Erdős Lean
 
-### 38 Lean-verified theorem families across eight Erdős problem programmes
+**A checking companion for eight Erdős problem programmes**
 
-**Will Cook · human-led, AI-assisted mathematical research and formalisation · Lean 4 / Mathlib**
+This repository packages selected mathematical results as separately stated
+Comparator challenges, Lean solutions and axiom audits. It contains 38 theorem
+families alongside the paper-order Palomar checking inventory.
 
-Lead results: irrationality for every reciprocal-summable support and every integer base (Erdős #257); kernel-decided denominator floor for the prime-gap dyadic series (Erdős #251); irrationality of fixed-resolution observables of the totient word (Erdős #249); the cofinal local-window escape is equivalent to irrationality of the three-prime running-LCM value (Erdős #269); explicit cubic radius floor for simultaneous factorial channel cancellation (Erdős #68); the rational-base contour of Zudilin's (14,12,14;27) forms (Erdős #1049); bounded-negative-part rigidity for reciprocal-tail dynamics (Erdős #243); global two-root critical proximity and exact straight-line obstructions (Erdős #1041).
+**[Read the papers](https://github.com/wcook04/plectis-erdos#problem-papers)** · **[Browse the checking entries](PalomarCorpus/README.md)** · **[Set up a clone](#build)**
 
 Each entry states an exact theorem, proves it in Lean against Mathlib, prints the axioms
 it depends on, and records its mathematical consequence, its proof boundary and the
@@ -13,12 +15,47 @@ corpus records [the exact #1041 statement refuted and its remaining limits](http
 
 Problems covered: #68, #243, #249, #251, #257, #269, #1041, #1049.
 
-This repository is the Comparator and Palomar checking projection of the
-[canonical public Lean corpus](https://github.com/wcook04/plectis-erdos). Follow
-that corpus for current papers, the claim registry and the declaration atlas, or
-use the [mathematics reading room](https://wcook04.github.io/plectis/maths/). Entries
-here are bound to this repository commit; the pinned release snapshots below
-retain their own commits and toolchains.
+The [primary research repository](https://github.com/wcook04/plectis-erdos)
+owns the current papers, claim registry and source map. The
+[mathematics reading room](https://wcook04.github.io/plectis/maths/) and
+[interactive maths map](https://wcook04.github.io/plectis/maths/universe.html)
+provide a way through that work. Checking entries here are bound to this
+repository commit; the pinned release snapshots below retain their own commits
+and toolchains.
+
+Will Cook maintains this AI-assisted development. It builds on
+[Lean](https://lean-lang.org/) and
+[Mathlib](https://github.com/leanprover-community/mathlib4), with problems,
+references and discussion from [erdosproblems.com](https://www.erdosproblems.com/).
+Comparator compares selected formal statements; Palomar records verification,
+review and registration separately. See the primary corpus's
+[credit and source records](https://github.com/wcook04/plectis-erdos#credit)
+for prior mathematics, public contributions and reader feedback.
+
+## Where things live
+
+| Location | Role |
+|---|---|
+| [PalomarCorpus/](PalomarCorpus/README.md) | Paper-order challenges, configurations and selected theorem lists. |
+| [Solutions/](Solutions/) | Proof-bearing solutions and adapters for those challenges. |
+| [Erdos249257/](Erdos249257/) | Supporting Lean mathematics imported by the checking entries. |
+| [verification/](verification/) | Receiving-environment checks with their own pinned projects. |
+| [snapshot/](snapshot/README.md) | Snapshot provenance, public API and explicit non-claims. |
+| [scripts/](scripts/) | Build planning, axiom audits and release validation. |
+
+The [entry guide](#reading-an-entry) explains how Challenge, Solution and audit
+fit together. The root [toolchain](lean-toolchain) and
+[dependency manifest](lake-manifest.json) pin the default environment;
+individual verification projects and historical editions can use different pins.
+
+## Videos
+
+The [Plectis introduction](https://wcook04.github.io/plectis/#film-introduction),
+[corpus overview](https://wcook04.github.io/plectis/#film-mathematics-overview)
+and [Erdős #257 demonstration](https://wcook04.github.io/plectis/#film-mathematics)
+are in preparation. Their website slots will link the published recordings.
+The demonstrations show the wider research environment; the sources available
+in this checking companion are mapped above.
 
 ## Formal Conjectures review
 
@@ -126,6 +163,8 @@ are distinguished below. The `ExternalVerification*` directories are regression 
 development entries, separate from `PalomarCorpus/`.
 
 ## Start here
+
+Lead results: irrationality for every reciprocal-summable support and every integer base (Erdős #257); kernel-decided denominator floor for the prime-gap dyadic series (Erdős #251); irrationality of fixed-resolution observables of the totient word (Erdős #249); the cofinal local-window escape is equivalent to irrationality of the three-prime running-LCM value (Erdős #269); explicit cubic radius floor for simultaneous factorial channel cancellation (Erdős #68); the rational-base contour of Zudilin's (14,12,14;27) forms (Erdős #1049); bounded-negative-part rigidity for reciprocal-tail dynamics (Erdős #243); global two-root critical proximity and exact straight-line obstructions (Erdős #1041).
 
 The per-problem sections below introduce selected `ExternalVerification*` family checks.
 The table above counts the current Palomar corpus; a registry submission names one
@@ -301,11 +340,45 @@ boundaries and accepts responsibility for every statement in this repository.
 
 ## Citation
 
-Cite this repository through `CITATION.cff`, at the commit you read.
+Cite this repository through [CITATION.cff](CITATION.cff), at the commit you read.
+Code and documentation are [Apache-2.0](LICENSE); [REUSE.toml](REUSE.toml)
+records the file attribution policy.
+
+## Contribute
+
+For a broken checking entry, build command or release package, follow
+[CONTRIBUTING.md](CONTRIBUTING.md). Mathematical arguments, corrections and
+exposition go through the primary research repository's existing contribution
+process so their evidence and credit stay with the research record.
 
 ## Build
 
+Start with Git and Python 3.11 or later. On macOS or Linux, or Windows through
+WSL, clone the public repository and inspect the build selection without Lean:
+
 ```sh
-lake exe cache get
-lake build
+git clone --filter=blob:none https://github.com/wcook04/plectis-erdos-lean.git
+cd plectis-erdos-lean
+python3 scripts/build_launch_targets.py --plan
 ```
+
+This writes `.lake/convenience-target-report.json` with status `planned` and
+the default build targets. It compiles no proof and downloads no Lean cache.
+
+To compile, install [elan](https://leanprover-community.github.io/get_started.html)
+using its documented setup. From this repository root it reads `lean-toolchain`;
+keep `lake-manifest.json` unchanged to use the pinned dependencies. The first
+build needs network access and space for the toolchain and Mathlib cache.
+
+```sh
+lake --version
+lake exe cache get
+python3 scripts/build_launch_targets.py
+```
+
+The runner checks the default launch targets and retains diagnostics. The
+[build guide](scripts/CONVENIENCE_BUILDS.md) covers focused checks, reports and
+the separate release population. A local compilation does not establish
+Comparator equivalence, NanoDa acceptance or Palomar registration. Those
+outcomes require the corresponding protected replay at its exact source and
+environment.
