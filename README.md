@@ -59,6 +59,9 @@ in this checking companion are mapped above.
 
 ## Formal Conjectures review
 
+<details>
+<summary>Review status, adapter editions and source pins</summary>
+
 As observed on 12 October 2026, [FC PR #6579](https://github.com/google-deepmind/formal-conjectures/pull/6579)
 is open. Bo Cowgill [approved head `a6a2e0e1`](https://github.com/google-deepmind/formal-conjectures/pull/6579#pullrequestreview-5493193130)
 for the rational dyadic totient-observable statement, including its positive indexing
@@ -106,7 +109,12 @@ PR6780 remains open with review required. The statement covers each fixed
 The previously recorded Palomar and Lean 4.29.1 evidence below remains bound to
 its own source and environment.
 
+</details>
+
 ## Palomar publication surface
+
+<details>
+<summary>Replay entries, registry history and claim limits</summary>
 
 Palomar (https://palomar-registry.org) checks Lean proofs with Comparator and independent
 kernel replay before editorial review. `PalomarCorpus/` is the live paper-order checking
@@ -161,6 +169,8 @@ Palomar verification and registration remain separate outcomes. The former probl
 E257 submission and the current `E257_01` outcome
 are distinguished below. The `ExternalVerification*` directories are regression and
 development entries, separate from `PalomarCorpus/`.
+
+</details>
 
 ## Start here
 
