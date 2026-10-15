@@ -58,7 +58,7 @@ theorem no_subcritical_record_cap
   obtain ⟨K, hK⟩ := hrecord
   obtain ⟨L, hL⟩ := hden
   obtain ⟨k₀, hk₀⟩ := eventual_quadratic_budget c 1 1 (N + L + g + 2) hc0
-    (by simpa only [Nat.cast_one, mul_one] using hc1)
+    (by simpa only [Nat.cast_one, mul_one] using! hc1)
   let t := max 5 (max (K + N) (T + k₀))
   let k := 2 ^ t
   let B := k ^ 2

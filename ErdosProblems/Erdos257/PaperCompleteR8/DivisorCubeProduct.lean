@@ -34,7 +34,7 @@ theorem squarefree_prime_product (P : Finset ℕ) (hP : ∀ p ∈ P, Nat.Prime p
   classical
   revert hP
   induction P using Finset.induction_on with
-  | empty => intro hP; simpa using (squarefree_one : Squarefree (1 : ℕ))
+  | empty => intro hP; simpa using! (squarefree_one : Squarefree (1 : ℕ))
   | @insert p P hpP ih =>
     intro hP
     have hp := hP p (mem_insert_self _ _)
@@ -92,7 +92,7 @@ theorem cube_subset_dvd_iff (q : ℕ) (P T : Finset ℕ) (n : ℕ)
     have hTm : T ⊆ m.primeFactors := by
       intro p hp
       obtain ⟨v, hv⟩ := h p hp
-      have hm : m = p * v := Nat.eq_of_mul_eq_mul_left hq (by simpa [mul_assoc] using hv)
+      have hm : m = p * v := Nat.eq_of_mul_eq_mul_left hq (by simpa [mul_assoc] using! hv)
       exact Nat.mem_primeFactors.mpr ⟨hP p (hTP hp), ⟨v, hm⟩, hm0⟩
     exact Nat.mul_dvd_mul_left q
       ((Finset.prod_dvd_prod_of_subset _ _ _ hTm).trans (Nat.prod_primeFactors_dvd m))
@@ -148,7 +148,7 @@ theorem sum_subset_powers (P B : Finset ℕ) (hBP : B ⊆ P) (z : ℝ) :
     · exact fun h => ⟨h.trans hBP, h⟩
   rw [← Finset.sum_filter, heq]
   have h := Finset.prod_one_add (f := fun _ : ℕ => z) B
-  simpa only [Finset.prod_const] using h.symm
+  simpa only [Finset.prod_const] using! h.symm
 
 /-- Exact positive fractional incidence expansion, including the off-q case. -/
 theorem cube_fractional_expansion (q : ℕ) (P : Finset ℕ) (α : ℝ) (n : ℕ)
@@ -230,9 +230,9 @@ theorem cubeProductCost_le_exp (q : ℕ) (P : Finset ℕ) (z : ℝ) (hz : 0 ≤ 
     cubeProductCost q P z ≤ Real.exp (z * primeReciprocalMass P) / (q : ℝ) := by
   have hprod : (∏ p ∈ P, (1 + z / (p : ℝ))) ≤
       ∏ p ∈ P, Real.exp (z / (p : ℝ)) := by
-    apply Finset.prod_le_prod
+    apply Finset.prod_le_prod₀
     · intro p hp; positivity
-    · intro p hp; simpa [add_comm] using Real.add_one_le_exp (z / (p : ℝ))
+    · intro p hp; simpa [add_comm] using! Real.add_one_le_exp (z / (p : ℝ))
   have hexp : (∏ p ∈ P, Real.exp (z / (p : ℝ))) =
       Real.exp (z * primeReciprocalMass P) := by
     rw [← Real.exp_sum]
@@ -244,7 +244,7 @@ theorem cubeProductCost_le_exp (q : ℕ) (P : Finset ℕ) (z : ℝ) (hz : 0 ≤ 
     ring
   have h := mul_le_mul_of_nonneg_left (hprod.trans_eq hexp)
     (one_div_nonneg.mpr (Nat.cast_nonneg q))
-  simpa [cubeProductCost, div_eq_mul_inv, mul_comm] using h
+  simpa [cubeProductCost, div_eq_mul_inv, mul_comm] using! h
 
 /-- The complete-period fractional moment equals the canonical cost. -/
 theorem cube_fractional_mean (q : ℕ) (P : Finset ℕ) (α : ℝ)

@@ -29,7 +29,7 @@ lemma abs_coeff_le_maxCoeffNat (P : Polynomial ℤ) (i : ℕ) :
       Finset.le_sup (f := fun j => (P.coeff j).natAbs) hi
     have hc : ((P.coeff i).natAbs : ℝ) ≤ (maxCoeffNat P : ℝ) := by
       exact_mod_cast hh
-    simpa only [Nat.cast_natAbs, Int.cast_abs] using hc
+    simpa only [Nat.cast_natAbs, Int.cast_abs] using! hc
   · have hz : P.coeff i = 0 := by
       by_contra h
       exact hi (Polynomial.mem_support_iff.mpr h)
@@ -109,7 +109,7 @@ lemma log_width_plus_one_rate (d : ℕ → ℕ) (δ : ℝ) (hδ : 0 < δ)
   have hmid : Real.log ((d n : ℝ) + 1) ≤ C * (2 * (n : ℝ) + 1) := by
     dsimp [C]
     nlinarith
-  simpa only [zero_add] using hmid.trans hlin
+  simpa only [zero_add] using! hmid.trans hlin
 
 structure LongCapHypotheses (U V : ℕ → Polynomial ℤ) (F : ℝ → ℝ)
     (σ δ h : ℝ) : Prop where
@@ -132,7 +132,7 @@ theorem LongCapHypotheses.toShort (U V : ℕ → Polynomial ℤ) (F : ℝ → �
   have hsum := hW.add H.height_upper
   intro ε hε
   filter_upwards [hsum ε hε] with n hn
-  simpa only [zero_add] using (log_pairHeight_le U V n).trans hn
+  simpa only [zero_add] using! (log_pairHeight_le U V n).trans hn
 
 lemma sqScale_pos_of_one_le {n : ℕ} (hn : 1 ≤ n) : 0 < sqScale n := by
   have hnR : (0 : ℝ) < n := by exact_mod_cast hn
@@ -167,7 +167,7 @@ lemma littleO_of_normalized_tendsto (f : ℕ → ℝ) (a : ℝ)
   have hid : f n - a * sqScale n = (f n / sqScale n - a) * sqScale n := by
     field_simp [hs.ne']
   rw [Real.norm_eq_abs, Real.norm_eq_abs, abs_of_pos hs, hid, abs_mul, abs_of_pos hs]
-  exact mul_le_mul_of_nonneg_right (by simpa only [Real.dist_eq] using hn.le) hs.le
+  exact mul_le_mul_of_nonneg_right (by simpa only [Real.dist_eq] using! hn.le) hs.le
 
 lemma quadUpper_of_normalized_tendsto (f : ℕ → ℝ) (a : ℝ)
     (hf : Tendsto (fun n => f n / sqScale n) atTop (𝓝 a)) : QuadUpper f a := by
@@ -229,7 +229,7 @@ theorem long_cap_limsup (U V : ℕ → Polynomial ℤ) (F : ℝ → ℝ)
     intro ε hε
     filter_upwards [hu ε hε, hi] with n hn hid
     rw [hid]
-    simpa only [mul_comm (Real.log (b : ℝ))] using hn
+    simpa only [mul_comm (Real.log (b : ℝ))] using! hn
   have hlo : ∃ c : ℝ, ∀ᶠ n in atTop,
       c ≤ Real.log |(b : ℝ) ^ pairWidth U V n * L n| / sqScale n := by
     refine ⟨ρ - 1, ?_⟩
@@ -242,7 +242,7 @@ theorem long_cap_limsup (U V : ℕ → Polynomial ℤ) (F : ℝ → ℝ)
       mul_nonneg (Nat.cast_nonneg _) hlog
     nlinarith
   have hh := limsup_normalized_le _ _ hu' hlo
-  simpa only [L, ρ, sub_eq_add_neg, neg_mul] using hh
+  simpa only [L, ρ, sub_eq_add_neg, neg_mul] using! hh
 
 /-- The actual limiting degree cannot be smaller than sigma. -/
 theorem actual_degree_ge_sigma (U V : ℕ → Polynomial ℤ) (F : ℝ → ℝ)
@@ -290,7 +290,7 @@ theorem actual_degree_log_limit (U V : ℕ → Polynomial ℤ) (F : ℝ → ℝ)
     (fun n => (pairWidth U V n : ℝ) / sqScale n * Real.log b +
       Real.log |polynomialRemainder U V F ((a : ℝ) / b) n| / sqScale n)
       atTop (𝓝 (d * Real.log b - σ * Real.log ((a : ℝ) / b))) from
-        by simpa only [sub_eq_add_neg, neg_mul] using hsum)
+        by simpa only [sub_eq_add_neg, neg_mul] using! hsum)
   filter_upwards [hid] with n hn
   rw [hn, add_div]
   ring

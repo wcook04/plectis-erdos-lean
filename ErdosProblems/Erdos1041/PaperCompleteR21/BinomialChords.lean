@@ -665,7 +665,7 @@ theorem affine_variation_le (p v : ℂ) {x y : ℝ} (hxy : x ≤ y) :
       ≤ (‖v‖₊ : ℝ≥0∞) * eVariationOn (id : ℝ → ℝ) (Icc x y) := by
         simpa only [Function.comp_id] using hv
     _ ≤ (‖v‖₊ : ℝ≥0∞) * ENNReal.ofReal (y - x) := by
-        exact mul_le_mul_left' hid _
+        exact mul_le_mul_of_nonneg_left hid (by positivity)
     _ = ENNReal.ofReal (‖v‖ * (y - x)) := by
         rw [show ((‖v‖₊ : ℝ≥0∞)) = ENNReal.ofReal ‖v‖ by simp [enorm_eq_nnnorm],
           ← ENNReal.ofReal_mul (norm_nonneg v)]

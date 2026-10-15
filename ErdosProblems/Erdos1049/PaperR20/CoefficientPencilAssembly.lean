@@ -46,7 +46,7 @@ theorem coefficientMomentMatrix_posDef_of_determinants (p : ℝ) (N : ℕ)
   · intro k hk hk0
     have h := hdet k hk hk0
     rw [coefficientHankelDetPoly_eval] at h
-    simpa only [Nat.add_zero] using h
+    simpa only [Nat.add_zero] using! h
 
 /-- The positive diagonal congruence transfers the checked moment determinants
 to the paper's alpha matrix. -/
@@ -66,7 +66,7 @@ theorem coefficientAlphaMatrix_posDef_of_determinants {p : ℝ} (hp : 1 < p)
     simp [coefficientDiagonal]
   rw [coefficientAlphaMatrix_diagonal_congruence]
   apply Matrix.PosDef.smul _ (lt_trans zero_lt_one hp)
-  simpa only [hconj] using hM.conjTranspose_mul_mul_same hD
+  simpa only [hconj] using! hM.conjTranspose_mul_mul_same hD
 
 /-- The only remainder identities needed for rank N are the entries i+j.
 This formulation includes rank zero without natural-subtraction edge cases. -/
@@ -80,7 +80,7 @@ theorem coefficientPencil_remainder_matrix (p : ℝ) (N : ℕ)
   ext i j
   simpa only [coefficientAlphaMatrix, coefficientBetaMatrix,
     PaperR16.actualMomentHankel, Matrix.sub_apply, Matrix.smul_apply,
-    Matrix.of_apply, smul_eq_mul, mul_comm] using (hremainder i j).symm
+    Matrix.of_apply, smul_eq_mul, mul_comm] using! (hremainder i j).symm
 
 /-- The complete finite-rank spectral conclusion, conditional only on its
 explicit determinant and remainder certificates.  Splitting asserts that all
@@ -145,9 +145,9 @@ theorem coefficientPencil_interlaces_of_certificates {p : ℝ} (hp : 1 < p)
     hanti_cast _ _ hHlarge.eigenvalues₀_antitone,
     hanti_cast _ _ hHsmall.eigenvalues₀_antitone, ?_, ?_, hinterlace⟩
   · rw [hreindex (Fintype.card_fin (N + 1)).symm hHlarge.eigenvalues₀]
-    simpa only [RCLike.ofReal_real_eq_id, Function.id_comp] using hlarge
+    simpa only [RCLike.ofReal_real_eq_id, Function.id_comp] using! hlarge
   · rw [hreindex (Fintype.card_fin N).symm hHsmall.eigenvalues₀]
-    simpa only [RCLike.ofReal_real_eq_id, Function.id_comp] using hsmall
+    simpa only [RCLike.ofReal_real_eq_id, Function.id_comp] using! hsmall
 
 #print axioms actualMomentHankel_posDef
 #print axioms coefficientPencil_splits_and_roots_lt_of_certificates

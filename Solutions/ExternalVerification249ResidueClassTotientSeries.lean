@@ -29,14 +29,14 @@ theorem isolated_pulse_separation {a : ℕ → ℤ} {C : ℝ} (hC : ∀ n, |(a n
     (hzero : ∀ i, i ≤ 2 * L → i ≠ L → a (N + 1 + i) = 0) (k : ℤ) :
     (q : ℝ) * (|(t : ℝ)| - C / 2 ^ L) / 2 ^ (N + 1 + L)
       ≤ |(q : ℝ) * dyadicValue a - (k : ℝ)| := by
-  simpa only [dyadicValue, ErdosProblems.Erdos249.dyadicValue] using
+  simpa only [dyadicValue, ErdosProblems.Erdos249.dyadicValue] using!
     ErdosProblems.Erdos249.isolated_pulse_separation hC hq hL hcentre ht hzero k
 
 theorem irrational_dyadicValue_of_pulses {a : ℕ → ℤ} {C : ℝ} (hC : ∀ n, |(a n : ℝ)| ≤ C)
     (hpulse : ∀ L : ℕ, ∃ p : ℕ, L + 1 < p ∧ a p ≠ 0 ∧
       ∀ j, 0 < j → j ≤ L → a (p - j) = 0 ∧ a (p + j) = 0) :
     Irrational (dyadicValue a) := by
-  simpa only [dyadicValue, ErdosProblems.Erdos249.dyadicValue] using
+  simpa only [dyadicValue, ErdosProblems.Erdos249.dyadicValue] using!
     ErdosProblems.Erdos249.irrational_dyadicValue_of_pulses hC hpulse
 
 theorem two_sided_prime_isolation {m : ℕ} (hm : 2 ≤ m) (L N r : ℕ)
@@ -49,20 +49,20 @@ theorem irrational_totientObservable {m : ℕ} (hm : 2 ≤ m) (f : ℕ → ℤ) 
     {r : ℕ} (hr : r < m) (hcop : Nat.Coprime (r + 1) m) (hfr : f r ≠ 0) :
     Irrational (totientObservableValue f m) := by
   simpa only [totientObservableValue,
-    ErdosProblems.Erdos249.totientObservableValue] using
+    ErdosProblems.Erdos249.totientObservableValue] using!
     ErdosProblems.Erdos249.irrational_totientObservable hm f hf0 hr hcop hfr
 
 theorem fixed_resolution_observable_irrational {k : ℕ} (hk : 1 ≤ k) (f : ℕ → ℤ)
     (hf0 : f 0 = 0) {r : ℕ} (hr : r < 2 ^ k) (hreven : r % 2 = 0) (hfr : f r ≠ 0) :
     Irrational (totientObservableValue f (2 ^ k)) := by
   simpa only [totientObservableValue,
-    ErdosProblems.Erdos249.totientObservableValue] using
+    ErdosProblems.Erdos249.totientObservableValue] using!
     ErdosProblems.Erdos249.fixed_resolution_observable_irrational hk f hf0 hr hreven hfr
 
 theorem residue_series_irrational {m : ℕ} (hm : 3 ≤ m) :
     Irrational (totientResidueValue m) := by
   simpa only [totientResidueValue,
-    ErdosProblems.Erdos249.totientResidueValue] using
+    ErdosProblems.Erdos249.totientResidueValue] using!
     ErdosProblems.Erdos249.residue_series_irrational hm
 
 end Erdos249257.ExternalVerification249ResidueClassTotientSeries

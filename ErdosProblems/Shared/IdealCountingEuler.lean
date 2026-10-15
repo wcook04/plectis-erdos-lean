@@ -349,7 +349,7 @@ theorem sum_inv_absNorm_le_prod (F : Finset (Ideal (𝓞 K))) (hF : ∀ 𝔭 ∈
         (Finset.prod_univ_sum (ι := F) (fun _ => Finset.range (E + 1))
           (fun (i : F) (k : ℕ) => (((absNorm (i : Ideal (𝓞 K)) : ℝ))⁻¹) ^ k)).symm
     _ ≤ ∏ i : F, (1 - ((absNorm (i : Ideal (𝓞 K)) : ℝ))⁻¹)⁻¹ := by
-        apply Finset.prod_le_prod
+        apply Finset.prod_le_prod₀
         · intro i _
           exact Finset.sum_nonneg fun k _ => pow_nonneg (hnn _) k
         · intro i _
@@ -375,7 +375,7 @@ theorem prod_inv_one_sub_le_exp (F : Finset (Ideal (𝓞 K))) (hF : ∀ 𝔭 ∈
     ∏ 𝔭 ∈ F, (1 - ((absNorm 𝔭 : ℝ))⁻¹)⁻¹ ≤
       Real.exp (2 * ∑ 𝔭 ∈ F, ((absNorm 𝔭 : ℝ))⁻¹) := by
   rw [Finset.mul_sum, Real.exp_sum]
-  apply Finset.prod_le_prod
+  apply Finset.prod_le_prod₀
   · intro 𝔭 h𝔭
     have h2 : (2 : ℝ) ≤ absNorm 𝔭 := by exact_mod_cast hF 𝔭 h𝔭
     have hx1 : ((absNorm 𝔭 : ℝ))⁻¹ < 1 := inv_lt_one_of_one_lt₀ (by linarith)

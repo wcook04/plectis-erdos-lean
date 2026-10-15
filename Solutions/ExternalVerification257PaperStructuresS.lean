@@ -64,6 +64,9 @@ theorem paper_one_sidedness :
         ((1 / 2 : ℝ) ∉ mersenneAchievementSet ↔ ∃ n : ℕ, P n) ∧
         ((1 / 2 : ℝ) ∈ mersenneAchievementSet ↔ ∀ n : ℕ, ¬ P n)) ∧
       (∀ d : ℕ, ∃ x : ℝ, IsStraddlePrefix x ∅ d ∧ x ∉ mersenneAchievementSet) := by
-  simpa only [IsStraddlePrefix_transport_bridge] using @ErdosProblems.Erdos257.PaperCompleteR21.paper_one_sidedness
+  have h := @ErdosProblems.Erdos257.PaperCompleteR21.paper_one_sidedness
+  first
+  | (simpa only [IsStraddlePrefix_transport_bridge] using h; done)
+  | (simp only [IsStraddlePrefix_transport_bridge]; exact h)
 
 end Erdos249257.ExternalVerification257PaperStructuresS

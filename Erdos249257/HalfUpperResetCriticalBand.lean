@@ -437,9 +437,8 @@ theorem seamUpperThenRightRun_support
         seamWordSupport (seamGreedyWord (d + (q + 1) + 1)) =
             seamWordSupport
               ((seamGreedyWord (d + q + 1)).extend true) := by
-          simpa only [
-            show d + (q + 1) + 1 = (d + q + 1) + 1 by omega
-          ] using congrArg seamWordSupport hword
+          rw [show d + (q + 1) + 1 = (d + q + 1) + 1 by omega]
+          exact congrArg seamWordSupport hword
         _ = insert (d + q + 1)
               (seamWordSupport (seamGreedyWord (d + q + 1))) :=
           seamWordSupport_extend_true (by omega)
@@ -642,7 +641,9 @@ theorem seamGreedyWord_support_eq_base_of_full_suffix
             _ = seamWordSupport (seamGreedyWord (s + 1)) := by
               rw [hright]
             _ = u ∪ Finset.Ico B (s + 1) := by
-              simpa [s] using hsupp
+              first
+                | (simpa only [s, Nat.add_assoc] using! hsupp)
+                | (rw [← Nat.add_assoc] at hsupp; simpa only [s] using! hsupp)
         ext e
         constructor
         · intro he

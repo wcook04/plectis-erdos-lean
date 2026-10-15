@@ -76,7 +76,7 @@ theorem polynomial_eval_exp_upper (U V : ℕ → Polynomial ℤ)
       rw [hp, ← Real.exp_add, mul_comm (pairWidth U V n : ℝ)]
     _ ≤ Real.exp ((h + δ * Real.log x + ε) * sqScale n) := by
       apply Real.exp_le_exp.mpr
-      simpa only [mul_comm (Real.log x) δ] using hn
+      simpa only [mul_comm (Real.log x) δ] using! hn
 
 /-- The omitted analytic step of the paper cap is now composed with its integer core. -/
 theorem sigma_le_delta (U V : ℕ → Polynomial ℤ) (F : ℝ → ℝ)
@@ -89,7 +89,7 @@ theorem sigma_le_delta (U V : ℕ → Polynomial ℤ) (F : ℝ → ℝ)
     (le_max_right _ _).trans_lt hp
   have hpLog : h / (σ - δ) < Real.log p := by
     have ht := Real.log_lt_log (Real.exp_pos (h / (σ - δ))) hpexp
-    simpa only [Real.log_exp] using ht
+    simpa only [Real.log_exp] using! ht
   have hstrict : h + δ * Real.log p < σ * Real.log p := by
     have ht := (div_lt_iff₀ hgap).mp hpLog
     nlinarith
@@ -111,13 +111,13 @@ theorem sigma_le_delta (U V : ℕ → Polynomial ℤ) (F : ℝ → ℝ)
     rfl
   have hA : QuadExpUpper (fun n => (A n : ℝ)) (h + δ * Real.log p) := by
     have hu := polynomial_eval_exp_upper U V δ h p hp1 H.degree_upper H.height_upper
-    simpa only [hcastU] using hu
+    simpa only [hcastU] using! hu
   have hL : QuadLogRate (fun n => (A n : ℝ) * F p - B n) (- (σ * Real.log p)) := by
     rw [hrem]
-    simpa only [neg_mul] using H.remainder_rate p hp1
+    simpa only [neg_mul] using! H.remainder_rate p hp1
   have hne : ∀ᶠ n in atTop, (A n : ℝ) * F p - B n ≠ 0 := by
     filter_upwards [H.nonzero p hp1] with n hn
-    simpa only [hcastU n, hcastV n, polynomialRemainder] using hn
+    simpa only [hcastU n, hcastV n, polynomialRemainder] using! hn
   have hα : 0 ≤ h + δ * Real.log p :=
     add_nonneg H.height_nonneg (mul_nonneg H.delta_pos.le (Real.log_pos hp1).le)
   have hc := rate_le_height_rate A B (F p) (h + δ * Real.log p)
@@ -135,7 +135,7 @@ lemma width_power_exp_upper (d : ℕ → ℕ) (b δ : ℝ) (hb : 1 ≤ b)
     funext n
     rw [abs_of_nonneg (pow_nonneg (zero_le_one.trans hb) _), Real.log_pow, mul_comm]
   rw [heq]
-  simpa only [mul_comm (Real.log b) δ] using h
+  simpa only [mul_comm (Real.log b) δ] using! h
 
 /-- Actual-degree homogeneous remainders, no substituted common width. -/
 theorem cleared_forms_tendsto_zero (U V : ℕ → Polynomial ℤ) (F : ℝ → ℝ)
@@ -156,7 +156,7 @@ theorem cleared_forms_tendsto_zero (U V : ℕ → Polynomial ℤ) (F : ℝ → �
   have he := (H.remainder_rate ((a : ℝ) / b) hx).exp_upper
   have hu := hd.mul he
   apply hu.tendsto_zero
-  simpa only [sub_eq_add_neg, neg_mul] using hbalance
+  simpa only [sub_eq_add_neg, neg_mul] using! hbalance
 
 /-- Full short-paper conclusion, with its two different clauses preserved. -/
 theorem short_note_archimedean_cap (U V : ℕ → Polynomial ℤ) (F : ℝ → ℝ)

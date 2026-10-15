@@ -59,7 +59,7 @@ theorem two_pow_cubePrimeRank_le_incidence (q : ℕ) (P : Finset ℕ) (n : ℕ)
     intro p hp
     obtain ⟨hpP, u, hu⟩ := mem_filter.mp hp
     have htu : t = p * u := Nat.eq_of_mul_eq_mul_left hq (by
-      simpa only [mul_assoc] using hu)
+      simpa only [mul_assoc] using! hu)
     exact Nat.mem_primeFactors.mpr ⟨hP p hpP, ⟨u, htu⟩, ht0⟩
   have hM0 : P.prod id ≠ 0 := (prod_pos (fun p hp => (hP p hp).pos)).ne'
   have hsub : B.powerset.image (fun S => q * S.prod id) ⊆
@@ -101,7 +101,7 @@ theorem cube_log_incidence_lower (q : ℕ) (P F : Finset ℕ) (n : ℕ)
   have hreal : (2 : ℝ) ^ cubePrimeRank q P n ≤
       ((F.filter (fun a => a ∣ n)).card : ℝ) := by exact_mod_cast hnat
   have hlog := Real.log_le_log (by positivity : (0 : ℝ) < 2 ^ cubePrimeRank q P n) hreal
-  simpa only [Real.log_pow, mul_comm] using hlog
+  simpa only [Real.log_pow, mul_comm] using! hlog
 
 /-- Exact dyadic row events, counted as a finite cardinality. -/
 def dyadicBlockCount (P : Finset ℕ) (r n : ℕ) : ℕ :=
@@ -131,7 +131,7 @@ theorem odd_cofactor_of_dyadic_event (r p n : ℕ) (hp : ¬ 2 ∣ p)
     rcases Nat.prime_two.dvd_mul.mp h with h | h
     · exact hp h
     · exact hm2 h
-  · simpa only [mul_assoc] using hm
+  · simpa only [mul_assoc] using! hm
 
 /-- Row events at different exact dyadic valuations cannot coexist. -/
 theorem dyadic_event_row_unique (k l p q n : ℕ) (hp : ¬ 2 ∣ p) (hq : ¬ 2 ∣ q)

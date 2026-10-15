@@ -15,7 +15,7 @@ theorem primeTranslator_moment_zero
     factorialMoment (primeTranslatorCoeff p) (primeTranslatorIndex p) = 0 := by
   simpa [factorialMoment, primeTranslatorCoeff, primeTranslatorIndex,
     Erdos68.factorialMoment, Erdos68.primeTranslatorCoeff,
-    Erdos68.primeTranslatorIndex] using Erdos68.primeTranslator_moment_zero hp
+    Erdos68.primeTranslatorIndex] using! Erdos68.primeTranslator_moment_zero hp
 
 /-- Every channel strictly below `p` annihilates the prime translator. -/
 theorem primeTranslator_channel_zero_of_lt_p
@@ -23,7 +23,7 @@ theorem primeTranslator_channel_zero_of_lt_p
     channelNumerator (primeTranslatorCoeff p) (primeTranslatorIndex p) d = 0 := by
   simpa [channelNumerator, primeTranslatorCoeff, primeTranslatorIndex,
     Erdos68.channelNumerator, Erdos68.primeTranslatorCoeff,
-    Erdos68.primeTranslatorIndex] using
+    Erdos68.primeTranslatorIndex] using!
     Erdos68.primeTranslator_channel_zero_of_lt_p hp hd2 hdp
 
 /-- At the prime itself the sole surviving channel numerator is exactly its
@@ -34,7 +34,7 @@ theorem primeTranslator_channel_at_prime
       (p.factorial : ℤ) - 1 := by
   simpa [channelNumerator, primeTranslatorCoeff, primeTranslatorIndex,
     Erdos68.channelNumerator, Erdos68.primeTranslatorCoeff,
-    Erdos68.primeTranslatorIndex] using
+    Erdos68.primeTranslatorIndex] using!
     Erdos68.primeTranslator_channel_at_prime hp
 
 /-- Every channel strictly beyond `p` annihilates the prime translator. -/
@@ -43,7 +43,7 @@ theorem primeTranslator_channel_zero_of_p_lt
     channelNumerator (primeTranslatorCoeff p) (primeTranslatorIndex p) d = 0 := by
   simpa [channelNumerator, primeTranslatorCoeff, primeTranslatorIndex,
     Erdos68.channelNumerator, Erdos68.primeTranslatorCoeff,
-    Erdos68.primeTranslatorIndex] using
+    Erdos68.primeTranslatorIndex] using!
     Erdos68.primeTranslator_channel_zero_of_p_lt hp hpd
 
 /-- The prime-pair translator is an exact unit direction for the full
@@ -55,7 +55,7 @@ theorem primeTranslator_channelResidual_eq_one
     primeTranslatorCoeff, primeTranslatorIndex,
     Erdos68.channelResidual, Erdos68.channelResidualTerm,
     Erdos68.channelNumerator, Erdos68.primeTranslatorCoeff,
-    Erdos68.primeTranslatorIndex] using
+    Erdos68.primeTranslatorIndex] using!
     Erdos68.primeTranslator_channelResidual_eq_one hD hp hDp
 
 /-- Appending a scaled prime translator shifts the full residual by that
@@ -73,7 +73,7 @@ theorem channelResidual_appendPrimeTranslator
     Erdos68.channelResidual, Erdos68.channelResidualTerm,
     Erdos68.channelNumerator, Erdos68.appendPrimeTranslatorCoeff,
     Erdos68.appendPrimeTranslatorIndex, Erdos68.primeTranslatorCoeff,
-    Erdos68.primeTranslatorIndex] using
+    Erdos68.primeTranslatorIndex] using!
     Erdos68.channelResidual_appendPrimeTranslator coeff index z hD hp hDp
 
 /-- For every cutoff and support threshold, a factorial-grid block and a
@@ -115,7 +115,7 @@ theorem exists_remote_factorialGrid_primeTranslator_reduction
     Erdos68.channelResidual, Erdos68.channelResidualTerm,
     Erdos68.appendPrimeTranslatorCoeff, Erdos68.appendPrimeTranslatorIndex,
     Erdos68.augmentedChannelMomentMatrix, Erdos68.cramerChannelKernelCoeff,
-    Erdos68.factorialGridScale, Erdos68.factorialGridIndex] using
+    Erdos68.factorialGridScale, Erdos68.factorialGridIndex] using!
     Erdos68.exists_remote_factorialGrid_primeTranslator_reduction n B
 
 end PalomarCorpus.E68.PrimeUnitTranslator

@@ -321,7 +321,7 @@ theorem factorialGapTail_eq_shifted_tsum (D : ℕ) :
     _ = ∑' d : {d : ℕ // D < d},
           (1 : ℝ) /
             (((d.1.factorial : ℤ) - 1 : ℤ) : ℝ) := by
-      simpa using
+      exact
         (tsum_subtype {d : ℕ | D < d}
           (fun d : ℕ =>
             (1 : ℝ) /
@@ -1205,7 +1205,7 @@ theorem factorialMoment_cramerChannelKernel
     factorialMoment (cramerChannelKernelCoeff index) index =
       (augmentedChannelMomentMatrix index).det := by
   have h := congrFun (cramerChannelKernel_mulVec index) (0 : Fin (n + 1))
-  simpa [Matrix.mulVec, augmentedChannelMomentMatrix, factorialMoment,
+  simpa [Matrix.mulVec, dotProduct, augmentedChannelMomentMatrix, factorialMoment,
     cramerChannelKernelCoeff, mul_comm] using h
 
 /-- Every channel row of the Cramer coefficient vector vanishes. -/
@@ -1213,7 +1213,7 @@ theorem channelNumerator_cramerChannelKernel_zero
     {n : ℕ} (index : Fin (n + 1) → ℕ) (d : Fin n) :
     channelNumerator (cramerChannelKernelCoeff index) index (d.val + 2) = 0 := by
   have h := congrFun (cramerChannelKernel_mulVec index) d.succ
-  simpa [Matrix.mulVec, augmentedChannelMomentMatrix, channelNumerator,
+  simpa [Matrix.mulVec, dotProduct, augmentedChannelMomentMatrix, channelNumerator,
     cramerChannelKernelCoeff, mul_comm] using h
 
 /-- One explicit nonzero determinant produces a finite channel-kernel vector
@@ -1324,8 +1324,8 @@ theorem factorialGridVandermondeNode_strictMono (n : ℕ) :
   rw [Fin.strictMono_iff_lt_succ]
   intro i
   refine Fin.cases ?_ (fun d => ?_) i
-  · simpa [factorialGridVandermondeNode] using
-      one_lt_factorialGridBase_two n
+  · change 1 < factorialGridBase (n + 2) 2
+    exact one_lt_factorialGridBase_two n
   · change factorialGridBase (n + 2) (d.val + 2) <
       factorialGridBase (n + 2) (d.val + 3)
     exact factorialGridBase_lt_succ (by omega) (by omega)
@@ -1506,7 +1506,7 @@ theorem augmentedFactorialGridMatrix_det_ne_zero
           (factorialGridIndex n t)).det : ℤ) : ℚ) = 0 := by
       rw [hzero]
       norm_num
-    simpa only [Int.cast_det] using hcast
+    simpa only [Int.cast_det, Int.coe_castRingHom] using hcast
   apply normalizedFactorialGridMatrix_det_ne_zero n t
   rw [normalizedFactorialGridMatrix, Matrix.det_mul, hmap]
   simp

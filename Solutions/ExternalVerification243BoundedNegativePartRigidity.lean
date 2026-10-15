@@ -37,13 +37,13 @@ theorem boundedNegativePart_completeRigidity
   have hE' : ∀ n, E n = ErdosProblems.Erdos243.centeredState
       (a n : ℤ) (D n : ℤ) (C n : ℤ) := by
     intro n
-    simpa [centeredState, ErdosProblems.Erdos243.centeredState] using hE n
+    simpa [centeredState, ErdosProblems.Erdos243.centeredState] using! hE n
   have hzero : ∃ N, ∀ n, N ≤ n → E n = 0 :=
     ErdosProblems.Erdos243.eventuallyBoundedNegativePart_eventually_zero
       a C D E ha hCpos hC hD hE' hbound hvanish
   have hrec : ∃ N, ∀ n, N ≤ n →
       (a (n + 1) : ℤ) = sylvesterNext (a n : ℤ) := by
-    simpa [sylvesterNext, ErdosProblems.Erdos243.sylvesterNext] using
+    simpa [sylvesterNext, ErdosProblems.Erdos243.sylvesterNext] using!
       ErdosProblems.Erdos243.boundedNegativePart_sylvesterNext_eventually
         a C D E ha hCpos hC hD hE' hbound hvanish
   exact ⟨hzero, hrec⟩

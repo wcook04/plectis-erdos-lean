@@ -96,12 +96,12 @@ theorem cubic_scale_denominator_dvd48
       Nat.coprime_mul_iff_right.mpr ⟨(hr.pow_left 2).pow_right 3, hs.pow_left 2⟩
     apply hc.dvd_of_dvd_mul_right
     refine ⟨m, ?_⟩
-    simpa only [mul_assoc, mul_comm, mul_left_comm] using heq.symm
+    simpa only [mul_assoc, mul_comm, mul_left_comm] using! heq.symm
   · have hc : Nat.Coprime ((r ^ 2 + s ^ 2) ^ 2) (r * s ^ 3) :=
       Nat.coprime_mul_iff_right.mpr ⟨hr.pow_left 2, (hs.pow_left 2).pow_right 3⟩
     apply hc.dvd_of_dvd_mul_right
     refine ⟨m, ?_⟩
-    simpa only [mul_assoc, mul_comm, mul_left_comm] using heq.symm
+    simpa only [mul_assoc, mul_comm, mul_left_comm] using! heq.symm
 
 /-- The entire positive-integer end of the rational scale calculation,
 including production of the divisor condition, is now one theorem. -/

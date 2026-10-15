@@ -13,8 +13,8 @@ private theorem circleAverage_monomial (n : ℕ) :
   have h : DiffContOnCl ℂ (fun z : ℂ => z ^ n) (ball 0 |(1 : ℝ)|) :=
     (differentiable_id.pow n).diffContOnCl
   by_cases hn : n = 0
-  · simpa [hn] using h.circleAverage
-  · simpa [hn, zero_pow hn] using h.circleAverage
+  · simpa [hn] using! h.circleAverage
+  · simpa [hn, zero_pow hn] using! h.circleAverage
 
 /-- Mixed monomials are orthogonal for normalized unit-circle integration.
 This is an exact integral identity, with no analytic-energy bound assumed. -/
@@ -28,16 +28,16 @@ theorem circleAverage_monomial_conj (n m : ℕ) :
     have h := Complex.conjCLE.toContinuousLinearMap.circleAverage_comp_comm hi
     by_cases hm : m = 0
     · simp [hm, circleAverage_const]
-    · simpa [hm, Function.comp_def, Complex.conjCLE_apply, circleAverage_monomial, eq_comm] using h
+    · simpa [hm, Function.comp_def, Complex.conjCLE_apply, circleAverage_monomial, eq_comm] using! h
   | succ n ih =>
     cases m with
-    | zero => simpa using circleAverage_monomial (n + 1)
+    | zero => simpa using! circleAverage_monomial (n + 1)
     | succ m =>
       have heq : circleAverage (fun z : ℂ => z ^ (n + 1) * conj (z ^ (m + 1))) 0 1 =
           circleAverage (fun z : ℂ => z ^ n * conj (z ^ m)) 0 1 := by
         apply circleAverage_congr_sphere
         intro z hz
-        have hz1 : ‖z‖ = 1 := by simpa [mem_sphere, dist_eq_norm] using hz
+        have hz1 : ‖z‖ = 1 := by simpa [mem_sphere, dist_eq_norm] using! hz
         have hzz : z * conj z = 1 := by
           rw [Complex.mul_conj, Complex.normSq_eq_norm_sq, hz1]
           norm_num

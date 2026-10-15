@@ -101,7 +101,7 @@ theorem lambert_hasSum_positive {K : Type*} [NormedField K] [CompleteSpace K]
     cases n with
     | zero => simp
     | succ n => exact False.elim (hn ⟨n, rfl⟩)
-  simpa only [Function.comp_apply, lambertTerm] using
+  simpa only [Function.comp_apply, lambertTerm] using!
     (hi.hasSum_iff ho).2 (lambert_summable z hz).hasSum
 
 theorem lambert_eq_tsum_positive {K : Type*} [NormedField K] [CompleteSpace K]
@@ -184,9 +184,9 @@ lemma lambertTerm_log_bounds (r : ℝ) (hr : 0 < r ∧ r < 1) (n : ℕ) :
         field_simp [ne_of_gt hnR] <;> ring
   constructor
   · have h := mul_le_mul_of_nonneg_left hlo (pow_nonneg hr.1.le n)
-    convert h using 1 <;> dsimp [lambertTerm] <;> ring
+    convert h using 1 <;> (try dsimp [lambertTerm]) <;> ring
   · have h := mul_le_mul_of_nonneg_left hup (pow_nonneg hr.1.le n)
-    convert h using 1 <;> dsimp [lambertTerm] <;> ring
+    convert h using 1 <;> (try dsimp [lambertTerm]) <;> ring
 
 /-- Positive logarithmic mass on the real interval `(0,1)`. -/
 def logMass (r : ℝ) : ℝ := -Real.log (1 - r)

@@ -19,7 +19,7 @@ theorem eventually_twoSyndetic_fullDepthKillMultipliers_of_seed
   simpa [certifiedKill, windowDiscrepancy, fullDepthKillMultipliers,
     Erdos257PeriodNoncollapse.TotientTailPeriodKiller.certifiedKill,
     Erdos257PeriodNoncollapse.TotientTailPeriodKiller.windowDiscrepancy,
-    ErdosProblems.Erdos249.FullDepthRayAmplifier.fullDepthKillMultipliers] using
+    ErdosProblems.Erdos249.FullDepthRayAmplifier.fullDepthKillMultipliers] using!
     ErdosProblems.Erdos249.FullDepthRayAmplifier.eventually_twoSyndetic_fullDepthKillMultipliers_of_seed hd hseed
 
 theorem exists_fullDepthKill_on_ray_iff_shift_notMem_int
@@ -29,7 +29,7 @@ theorem exists_fullDepthKill_on_ray_iff_shift_notMem_int
   simpa [certifiedKill, windowDiscrepancy, totientTail,
     Erdos257PeriodNoncollapse.TotientTailPeriodKiller.certifiedKill,
     Erdos257PeriodNoncollapse.TotientTailPeriodKiller.windowDiscrepancy,
-    Erdos257PeriodNoncollapse.TotientTailPeriodKiller.totientTail] using
+    Erdos257PeriodNoncollapse.TotientTailPeriodKiller.totientTail] using!
     ErdosProblems.Erdos249.FullDepthRayAmplifier.exists_fullDepthKill_on_ray_iff_shift_notMem_int hd
 
 theorem apFullDepthEscape_iff_irrational :
@@ -37,7 +37,7 @@ theorem apFullDepthEscape_iff_irrational :
   simpa [ApFullDepthEscape, certifiedKill, windowDiscrepancy,
     ErdosProblems.Erdos249.PeriodMultipleEscape.ApFullDepthEscape,
     Erdos257PeriodNoncollapse.TotientTailPeriodKiller.certifiedKill,
-    Erdos257PeriodNoncollapse.TotientTailPeriodKiller.windowDiscrepancy] using
+    Erdos257PeriodNoncollapse.TotientTailPeriodKiller.windowDiscrepancy] using!
     ErdosProblems.Erdos249.FullDepthRayAmplifier.apFullDepthEscape_iff_irrational
 
 theorem cofinalFullDepthKillSupply_iff_periodMultipleKillSupply :
@@ -47,7 +47,7 @@ theorem cofinalFullDepthKillSupply_iff_periodMultipleKillSupply :
     ErdosProblems.Erdos249.FullDepthRayAmplifier.CofinalFullDepthKillSupply,
     ErdosProblems.Erdos249.PeriodMultipleEscape.PeriodMultipleKillSupply,
     Erdos257PeriodNoncollapse.TotientTailPeriodKiller.certifiedKill,
-    Erdos257PeriodNoncollapse.TotientTailPeriodKiller.windowDiscrepancy] using
+    Erdos257PeriodNoncollapse.TotientTailPeriodKiller.windowDiscrepancy] using!
     ErdosProblems.Erdos249.FullDepthRayAmplifier.cofinalFullDepthKillSupply_iff_periodMultipleKillSupply
 
 theorem cofinalFullDepthKillSupply_iff_irrational :
@@ -55,7 +55,7 @@ theorem cofinalFullDepthKillSupply_iff_irrational :
   simpa [CofinalFullDepthKillSupply, certifiedKill, windowDiscrepancy,
     ErdosProblems.Erdos249.FullDepthRayAmplifier.CofinalFullDepthKillSupply,
     Erdos257PeriodNoncollapse.TotientTailPeriodKiller.certifiedKill,
-    Erdos257PeriodNoncollapse.TotientTailPeriodKiller.windowDiscrepancy] using
+    Erdos257PeriodNoncollapse.TotientTailPeriodKiller.windowDiscrepancy] using!
     ErdosProblems.Erdos249.FullDepthRayAmplifier.cofinalFullDepthKillSupply_iff_irrational
 
 end PalomarCorpus.E249.FullDepthRayAmplifier

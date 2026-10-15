@@ -115,7 +115,7 @@ theorem tsum_negativeMobius_eq_half_add_positiveMobiusTail :
   have hSigned :
       (∑' d : ℕ+,
         ((moebius (d : ℕ) : ℤ) : ℝ) * mersenneWeight (d : ℕ)) = 1 / 2 := by
-    simpa [mersenneWeight, mul_one_div] using hLambert
+    simpa [mersenneWeight, mul_one_div, div_eq_mul_inv] using! hLambert
   have hSep :
       (∑' d : ℕ+,
         ((moebius (d : ℕ) : ℤ) : ℝ) * mersenneWeight (d : ℕ)) =

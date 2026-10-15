@@ -1,0 +1,1599 @@
+{
+  "build_log_tail": "onality.lean:90:26: `if_neg` has been deprecated: Use `ite_eq_right` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335n\u0335e\u0335g\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332r\u0332i\u0332g\u0332h\u0332t\u0332\nwarning: Erdos249257/AllBaseReciprocalSupportIrrationality.lean:137:48: `if_false` has been deprecated: Use `ite_false` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335f\u0335a\u0335l\u0335s\u0335e\u0335i\u0332t\u0332e\u0332_\u0332f\u0332a\u0332l\u0332s\u0332e\u0332\nwarning: Erdos249257/AllBaseReciprocalSupportIrrationality.lean:138:58: `if_true` has been deprecated: Use `ite_true` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335t\u0335r\u0335u\u0335e\u0335i\u0332t\u0332e\u0332_\u0332t\u0332r\u0332u\u0332e\u0332\nwarning: Erdos249257/AllBaseReciprocalSupportIrrationality.lean:156:10: `if_pos` has been deprecated: Use `ite_eq_left` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335p\u0335o\u0335s\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332l\u0332e\u0332f\u0332t\u0332\nwarning: Erdos249257/AllBaseReciprocalSupportIrrationality.lean:157:35: `if_neg` has been deprecated: Use `ite_eq_right` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335n\u0335e\u0335g\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332r\u0332i\u0332g\u0332h\u0332t\u0332\nwarning: Erdos249257/AllBaseReciprocalSupportIrrationality.lean:180:10: `if_neg` has been deprecated: Use `ite_eq_right` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335n\u0335e\u0335g\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332r\u0332i\u0332g\u0332h\u0332t\u0332\nwarning: Erdos249257/AllBaseReciprocalSupportIrrationality.lean:181:35: `if_neg` has been deprecated: Use `ite_eq_right` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335n\u0335e\u0335g\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332r\u0332i\u0332g\u0332h\u0332t\u0332\nwarning: Erdos249257/AllBaseReciprocalSupportIrrationality.lean:332:24: `if_neg` has been deprecated: Use `ite_eq_right` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335n\u0335e\u0335g\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332r\u0332i\u0332g\u0332h\u0332t\u0332\nwarning: Erdos249257/AllBaseReciprocalSupportIrrationality.lean:333:25: `if_neg` has been deprecated: Use `ite_eq_right` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335n\u0335e\u0335g\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332r\u0332i\u0332g\u0332h\u0332t\u0332\ninfo: Erdos249257/AllBaseReciprocalSupportIrrationality.lean:458:0: 'Erdos249257.shiftedRadixAtom_sub_zero_le_two_mul_binary_sub_zero' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\ninfo: Erdos249257/AllBaseReciprocalSupportIrrationality.lean:459:0: 'Erdos249257.exists_shiftedRadixSupportAtom_closeReturn_of_summable_reciprocal' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\ninfo: Erdos249257/AllBaseReciprocalSupportIrrationality.lean:460:0: 'Erdos249257.irrational_erdosSupportSeries_of_summable_reciprocal' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n\u26a0 [8976/9004] Built ErdosProblems.Erdos257.WeightedSupportAveraging (2.2s)\nwarning: ErdosProblems/Erdos257/WeightedSupportAveraging.lean:81:42: Unused tactic linter: `ring` does nothing\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\nwarning: ErdosProblems/Erdos257/WeightedSupportAveraging.lean:81:42: this tactic is never executed\n\nNote: This linter can be disabled with `set_option linter.unreachableTactic false`\ninfo: ErdosProblems/Erdos257/WeightedSupportAveraging.lean:171:0: 'ErdosProblems.Erdos257.dyadic_observation_sum_le' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: ErdosProblems/Erdos257/WeightedSupportAveraging.lean:172:0: 'ErdosProblems.Erdos257.cesaroMean_shiftedMersenneAtom_mul_le_gcdMean_add_error' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n\u2714 [8977/9004] Built Erdos257PeriodNoncollapse.AllBaseReciprocalSupportIrrationality (1.6s)\n\u26a0 [8978/9004] Built ErdosProblems.Erdos257.PaperCompleteR8.OrbitBound (2.1s)\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/OrbitBound.lean:185:10: Unused tactic linter: `ring` does nothing\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/OrbitBound.lean:185:10: this tactic is never executed\n\nNote: This linter can be disabled with `set_option linter.unreachableTactic false`\n\u2714 [8979/9004] Built ErdosProblems.Erdos257.RadixCloseReturn (2.3s)\n\u26a0 [8980/9004] Built ErdosProblems.Erdos257.PaperCompleteR7.Displacement (1.7s)\nwarning: ErdosProblems/Erdos257/PaperCompleteR7/Displacement.lean:166:24: `if_neg` has been deprecated: Use `ite_eq_right` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335n\u0335e\u0335g\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332r\u0332i\u0332g\u0332h\u0332t\u0332\n\u2714 [8981/9004] Built ErdosProblems.Erdos257.PaperCompleteR7.AnalyticTargets (1.7s)\n\u2714 [8982/9004] Built ErdosProblems.Erdos257.PaperCompleteR7.TailGluing (1.9s)\n\u26a0 [8983/9004] Built ErdosProblems.Erdos257.PaperCompleteR8.DyadicKernel (7.0s)\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/DyadicKernel.lean:148:6: Unused tactic linter: `ring` does nothing\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/DyadicKernel.lean:148:6: this tactic is never executed\n\nNote: This linter can be disabled with `set_option linter.unreachableTactic false`\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/DyadicKernel.lean:178:10: Unused tactic linter: `ring` does nothing\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/DyadicKernel.lean:184:31: Unused tactic linter: `ring` does nothing\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/DyadicKernel.lean:178:10: this tactic is never executed\n\nNote: This linter can be disabled with `set_option linter.unreachableTactic false`\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/DyadicKernel.lean:184:31: this tactic is never executed\n\nNote: This linter can be disabled with `set_option linter.unreachableTactic false`\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/DyadicKernel.lean:235:34: `if_pos` has been deprecated: Use `ite_eq_left` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335p\u0335o\u0335s\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332l\u0332e\u0332f\u0332t\u0332\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/DyadicKernel.lean:235:45: `if_neg` has been deprecated: Use `ite_eq_right` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335n\u0335e\u0335g\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332r\u0332i\u0332g\u0332h\u0332t\u0332\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/DyadicKernel.lean:243:32: `if_neg` has been deprecated: Use `ite_eq_right` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335n\u0335e\u0335g\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332r\u0332i\u0332g\u0332h\u0332t\u0332\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/DyadicKernel.lean:243:43: `if_pos` has been deprecated: Use `ite_eq_left` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335p\u0335o\u0335s\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332l\u0332e\u0332f\u0332t\u0332\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/DyadicKernel.lean:248:36: `if_neg` has been deprecated: Use `ite_eq_right` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335n\u0335e\u0335g\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332r\u0332i\u0332g\u0332h\u0332t\u0332\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/DyadicKernel.lean:248:47: `if_neg` has been deprecated: Use `ite_eq_right` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335n\u0335e\u0335g\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332r\u0332i\u0332g\u0332h\u0332t\u0332\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/DyadicKernel.lean:233:12: Unused tactic linter: `ring` does nothing\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/DyadicKernel.lean:256:58: Unused tactic linter: `ring` does nothing\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/DyadicKernel.lean:233:12: this tactic is never executed\n\nNote: This linter can be disabled with `set_option linter.unreachableTactic false`\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/DyadicKernel.lean:256:58: this tactic is never executed\n\nNote: This linter can be disabled with `set_option linter.unreachableTactic false`\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/DyadicKernel.lean:256:25: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/DyadicKernel.lean:256:39: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/DyadicKernel.lean:281:26: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/DyadicKernel.lean:281:40: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\n\u2714 [8984/9004] Built ErdosProblems.Erdos257.PaperCompleteR8.CommonScale (3.3s)\n\u26a0 [8985/9004] Built ErdosProblems.Erdos257.PaperCompleteR8.CountableMeans (3.4s)\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/CountableMeans.lean:103:22: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/CountableMeans.lean:136:22: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/CountableMeans.lean:136:36: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\n\u26a0 [8986/9004] Built ErdosProblems.Erdos257.PaperCompleteR8.KernelRecurrence (3.4s)\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/KernelRecurrence.lean:34:32: `if_false` has been deprecated: Use `ite_false` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335f\u0335a\u0335l\u0335s\u0335e\u0335i\u0332t\u0332e\u0332_\u0332f\u0332a\u0332l\u0332s\u0332e\u0332\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/KernelRecurrence.lean:40:29: `if_true` has been deprecated: Use `ite_true` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335t\u0335r\u0335u\u0335e\u0335i\u0332t\u0332e\u0332_\u0332t\u0332r\u0332u\u0332e\u0332\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/KernelRecurrence.lean:54:64: `if_true` has been deprecated: Use `ite_true` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335t\u0335r\u0335u\u0335e\u0335i\u0332t\u0332e\u0332_\u0332t\u0332r\u0332u\u0332e\u0332\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/KernelRecurrence.lean:69:61: `if_false` has been deprecated: Use `ite_false` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335f\u0335a\u0335l\u0335s\u0335e\u0335i\u0332t\u0332e\u0332_\u0332f\u0332a\u0332l\u0332s\u0332e\u0332\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/KernelRecurrence.lean:42:8: Unused tactic linter: `ring` does nothing\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/KernelRecurrence.lean:42:8: this tactic is never executed\n\nNote: This linter can be disabled with `set_option linter.unreachableTactic false`\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/KernelRecurrence.lean:98:24: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/KernelRecurrence.lean:131:10: `if_pos` has been deprecated: Use `ite_eq_left` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335p\u0335o\u0335s\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332l\u0332e\u0332f\u0332t\u0332\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/KernelRecurrence.lean:136:10: `if_neg` has been deprecated: Use `ite_eq_right` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335n\u0335e\u0335g\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332r\u0332i\u0332g\u0332h\u0332t\u0332\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/KernelRecurrence.lean:254:51: `if_false` has been deprecated: Use `ite_false` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335f\u0335a\u0335l\u0335s\u0335e\u0335i\u0332t\u0332e\u0332_\u0332f\u0332a\u0332l\u0332s\u0332e\u0332\n\u26a0 [8987/9004] Built ErdosProblems.Erdos257.PaperCompleteR8.WeightedPrimeProfile (3.2s)\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/WeightedPrimeProfile.lean:105:4: `push_neg` has been deprecated. Prefer using `push Not` instead.\nIf you'd rather continue using `push_neg` in your project, you can implement it as follows:\n```\nopen Lean.Parser.Tactic in\nmacro \"push_neg\" cfg:optConfig loc:(location)? : tactic =>\n  `(tactic| push $cfg:optConfig Not $[$loc]?)\n```\n\u26a0 [8988/9004] Built ErdosProblems.Erdos257.PaperCompleteR8.CoverPotentialBounds (3.5s)\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/CoverPotentialBounds.lean:59:24: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/CoverPotentialBounds.lean:96:24: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/CoverPotentialBounds.lean:194:22: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/CoverPotentialBounds.lean:194:54: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/CoverPotentialBounds.lean:214:22: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/CoverPotentialBounds.lean:214:53: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\n\u26a0 [8989/9004] Built ErdosProblems.Erdos257.PaperCompleteR8.WeightedFiniteEstimates (3.0s)\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/WeightedFiniteEstimates.lean:106:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\n\u26a0 [8990/9004] Built ErdosProblems.Erdos257.PaperCompleteR8.PositiveCoverReturn (3.8s)\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/PositiveCoverReturn.lean:200:5: Variable name `hC` is not explicitly referenced.\n\nHint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:\n  [apply] _hC\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/PositiveCoverReturn.lean:200:49: Variable name `h\u03b5` is not explicitly referenced.\n\nHint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:\n  [apply] _h\u03b5\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n\u2714 [8991/9004] Built Solutions.PalomarCorpus.E257_01.VariableExponentCover (4.4s)\n\u2714 [8992/9004] Built ErdosProblems.Erdos257.PaperCompleteR8.MixedGaugeConsumer (4.0s)\n\u26a0 [8993/9004] Built ErdosProblems.Erdos257.PaperCompleteR8.ArbitraryWeightReturns (5.0s)\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/ArbitraryWeightReturns.lean:60:22: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/ArbitraryWeightReturns.lean:60:47: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/ArbitraryWeightReturns.lean:79:22: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/ArbitraryWeightReturns.lean:79:51: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\n\u26a0 [8994/9004] Built ErdosProblems.Erdos257.PaperCompleteR8.WeightedFiniteMean (5.3s)\ninfo: ErdosProblems/Erdos257/PaperCompleteR8/WeightedFiniteMean.lean:69:69: Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/WeightedFiniteMean.lean:184:8: Unused tactic linter: `ring` does nothing\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/WeightedFiniteMean.lean:184:8: this tactic is never executed\n\nNote: This linter can be disabled with `set_option linter.unreachableTactic false`\n\u26a0 [8995/9004] Built ErdosProblems.Erdos257.PaperCompleteR8.WeightedSchedule (3.4s)\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/WeightedSchedule.lean:27:58: Unused tactic linter: `omega` does nothing\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/WeightedSchedule.lean:27:58: this tactic is never executed\n\nNote: This linter can be disabled with `set_option linter.unreachableTactic false`\n\u26a0 [8996/9004] Built ErdosProblems.Erdos257.PaperCompleteR8.WeightedInfiniteMean (3.2s)\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/WeightedInfiniteMean.lean:28:48: `if_false` has been deprecated: Use `ite_false` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335f\u0335a\u0335l\u0335s\u0335e\u0335i\u0332t\u0332e\u0332_\u0332f\u0332a\u0332l\u0332s\u0332e\u0332\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/WeightedInfiniteMean.lean:143:10: `if_pos` has been deprecated: Use `ite_eq_left` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335p\u0335o\u0335s\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332l\u0332e\u0332f\u0332t\u0332\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/WeightedInfiniteMean.lean:143:19: `if_neg` has been deprecated: Use `ite_eq_right` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335n\u0335e\u0335g\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332r\u0332i\u0332g\u0332h\u0332t\u0332\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/WeightedInfiniteMean.lean:144:10: `if_neg` has been deprecated: Use `ite_eq_right` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335n\u0335e\u0335g\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332r\u0332i\u0332g\u0332h\u0332t\u0332\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/WeightedInfiniteMean.lean:144:19: `if_pos` has been deprecated: Use `ite_eq_left` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335p\u0335o\u0335s\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332l\u0332e\u0332f\u0332t\u0332\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/WeightedInfiniteMean.lean:151:12: `if_pos` has been deprecated: Use `ite_eq_left` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335p\u0335o\u0335s\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332l\u0332e\u0332f\u0332t\u0332\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/WeightedInfiniteMean.lean:153:12: `if_neg` has been deprecated: Use `ite_eq_right` instead\n\nHint: Replace the deprecated name:\n  i\u0335f\u0335_\u0335n\u0335e\u0335g\u0335i\u0332t\u0332e\u0332_\u0332e\u0332q\u0332_\u0332r\u0332i\u0332g\u0332h\u0332t\u0332\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/WeightedInfiniteMean.lean:182:18: This simp argument is unused:\n  han\n\nHint: Omit it from the simp argument list.\n  [apply] simp [haF, show \u00acn \u2264 a by omega, g]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\n\u26a0 [8997/9004] Built ErdosProblems.Erdos257.PaperCompleteR8.WeightedReturn (3.2s)\nwarning: ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean:85:6: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\ninfo: ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean:127:0: 'ErdosProblems.Erdos257.PaperCompleteR8.weighted_displacement_cofinal_close_return' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\ninfo: ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean:129:0: 'ErdosProblems.Erdos257.PaperCompleteR8.weighted_displacement_cofinal_close_return' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n\u2714 [8998/9004] Built Solutions.PalomarCorpus.E257_01.DivisibilityWeightedSupport (4.1s)\n\u2714 [8999/9004] Built Solutions.PalomarCorpus.E257_01.WeightedCloseReturn (4.1s)\n\u2714 [9000/9004] Built Solutions.PalomarCorpus.E257_01.MixedWeightedCover (4.1s)\n\u2714 [9001/9004] Built ErdosProblems.Erdos257.PaperCompleteR8.WeightedHereditaryClaim (4.1s)\n\u2714 [9002/9004] Built ErdosProblems.Erdos257.PaperCompleteR8.ArbitraryWeightMixedClaim (3.2s)\n\u2714 [9003/9004] Built Solutions.PalomarCorpus.E257_01.PaperStructuresBO (2.0s)\n\u2714 [9004/9004] Built Solutions.PalomarCorpus.E257_01 (2.8s)\nBuild completed successfully (9004 jobs).",
+  "bwrap_source_tag": "v0.12.0",
+  "challenge": {
+    "bytes": 11934,
+    "canonical_olean_sha256": "6d08f083dc2c335eaac5d409b847ed694cf2446fa493c01fd592103e8f5dc04c",
+    "dependencies": [
+      {
+        "provenance": "allowlisted",
+        "repository": "leanprover-community/mathlib4"
+      }
+    ],
+    "direct_imports": [
+      "Mathlib"
+    ],
+    "lines": 165,
+    "module": "PalomarCorpus.E257_01.Challenge",
+    "path": "PalomarCorpus/E257_01/Challenge.lean",
+    "sha256": "6ba709d258b2c4f881285cc430b6f21b8b5cb3a4662616ee37517b1ca7c1de62",
+    "transitive_source_count": 2,
+    "trust_level": "high",
+    "untrusted_sources": []
+  },
+  "checked_at": "2026-09-23T23:40:06Z",
+  "classification": {
+    "arxiv": [
+      {
+        "code": "math.NT",
+        "name": "Number Theory"
+      }
+    ],
+    "msc2020": [
+      {
+        "code": "11J72",
+        "name": "Irrationality; linear independence over a field"
+      },
+      {
+        "code": "11B83",
+        "name": "Special sequences and polynomials"
+      }
+    ]
+  },
+  "comparator": {
+    "challenge_module": "PalomarCorpus.E257_01.Challenge",
+    "definition_names": [],
+    "path": "PalomarCorpus/E257_01/comparator.json",
+    "permitted_axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "sha256": "81786cbd5963bf2d1506d8945f9e2a886c426d0df281eb204371deed4884e2f2",
+    "solution_module": "Solutions.PalomarCorpus.E257_01",
+    "theorem_names": [
+      "PalomarCorpus.E257.DivisibilityWeightedSupport.divisibilityWeightedClaim",
+      "PalomarCorpus.E257.MixedWeightedCover.mixedSupportClaim",
+      "PalomarCorpus.E257.PaperStructuresBO.arbitraryWeightMixedSupport_allBase_hereditary",
+      "PalomarCorpus.E257.VariableExponentCover.strengthenedPositiveCoverClaim",
+      "PalomarCorpus.E257.WeightedCloseReturn.weighted_displacement_cofinal_close_return"
+    ]
+  },
+  "comparator_log_tail": "Running con-ron kernel on solution\ncon-ron: accepted 18962 declarations (--verified)\ncon-ron kernel accepts the solution\nRunning nanoda kernel on solution\nnanoda kernel accepts the solution\nRunning Lean default kernel on solution\nLean default kernel accepts the solution\nYour solution is okay!\n\ncon-ron: 1 inductive blocks modelled in-process: Lean.Syntax (30 generated records, checked by the fold as declarations and not counted as records of the file)",
+  "errors": [],
+  "existing_id": null,
+  "formalization": {
+    "automation_method_count": 2,
+    "path": "PalomarCorpus/E257_01/formalization.yaml",
+    "project_name": "Weighted support criteria for reciprocal Mersenne subseries",
+    "review_status": "self-assessed",
+    "sha256": "dfd08dc64484b461afbc6bcb89b58c1934044e7d9c5edfb60e0f6c7fa3b5cc2c",
+    "source_count": 6
+  },
+  "kernels": [
+    {
+      "argv": [
+        "/home/runner/.elan/toolchains/leanprover--lean4---v4.35.0-rc2/bin/nanoda_bin"
+      ],
+      "name": "nanoda"
+    },
+    {
+      "argv": [
+        "/home/runner/.elan/toolchains/leanprover--lean4---v4.35.0-rc2/bin/con-ron"
+      ],
+      "name": "con-ron"
+    }
+  ],
+  "lake_manifest": {
+    "path": "lake-manifest.json",
+    "sha256": "22ddb352879d89d8ff34a033875b9eeb338e74aba38c44f066594a2e3231e383"
+  },
+  "lakefile": {
+    "format": "toml",
+    "path": "lakefile.toml",
+    "sha256": "825e2afd7c3260a465a2167abd73cee91682c0b99551edb5d50dbec827200f3c"
+  },
+  "lean_toolchain": "leanprover/lean4:v4.35.0-rc2",
+  "lean_toolchain_path": "lean-toolchain",
+  "license": {
+    "declared_identifier": "Apache-2.0",
+    "detected_identifier": "Apache-2.0",
+    "path": "LICENSE",
+    "sha256": "5f73f0aafc768cc7c7f5da786dc7614296ee891a456faf175ab07456d3c35046"
+  },
+  "mathlib_cache": {
+    "available": true,
+    "required": true
+  },
+  "mathlib_toolchain": [
+    {
+      "revision": "065356127b1dc0016f66b7283ce0ce2c4055aa55",
+      "toolchain": "leanprover/lean4:v4.35.0-rc2"
+    }
+  ],
+  "orcid_validation": {
+    "checked_at": "2026-09-23T23:31:03Z",
+    "records": [],
+    "registry": "https://orcid.org",
+    "schema_version": 1
+  },
+  "phase": "verification",
+  "project_dependencies": [
+    {
+      "name": "mathlib",
+      "repository": "leanprover-community/mathlib4",
+      "revision": "065356127b1dc0016f66b7283ce0ce2c4055aa55",
+      "url": "https://github.com/leanprover-community/mathlib4"
+    },
+    {
+      "name": "plausible",
+      "repository": "leanprover-community/plausible",
+      "revision": "e50948299c4dc4a4c21b1c34b6a6a4fddc19f912",
+      "url": "https://github.com/leanprover-community/plausible"
+    },
+    {
+      "name": "LeanSearchClient",
+      "repository": "leanprover-community/LeanSearchClient",
+      "revision": "95e037bfdc31d3916ac615446847fb01960e2719",
+      "url": "https://github.com/leanprover-community/LeanSearchClient"
+    },
+    {
+      "name": "importGraph",
+      "repository": "leanprover-community/import-graph",
+      "revision": "10930f8138f0462dbd744a91fc03a16fae0e046f",
+      "url": "https://github.com/leanprover-community/import-graph"
+    },
+    {
+      "name": "proofwidgets",
+      "repository": "leanprover-community/ProofWidgets4",
+      "revision": "4c70ac059693669e5756e32a7a94b57ee1e99dc5",
+      "url": "https://github.com/leanprover-community/ProofWidgets4"
+    },
+    {
+      "name": "aesop",
+      "repository": "leanprover-community/aesop",
+      "revision": "75d936c7af167cc93fac0d31237682fc2204591d",
+      "url": "https://github.com/leanprover-community/aesop"
+    },
+    {
+      "name": "Qq",
+      "repository": "leanprover-community/quote4",
+      "revision": "786b7acdca7eb4e9c76c5d1d5bd810e7e5c56334",
+      "url": "https://github.com/leanprover-community/quote4"
+    },
+    {
+      "name": "batteries",
+      "repository": "leanprover-community/batteries",
+      "revision": "ed9b316aabe389fec1ef43c3326ab48c7e59be42",
+      "url": "https://github.com/leanprover-community/batteries"
+    },
+    {
+      "name": "Cli",
+      "repository": "leanprover/lean4-cli",
+      "revision": "2842b9871b04862f944c032e34052cb9448ccb71",
+      "url": "https://github.com/leanprover/lean4-cli"
+    }
+  ],
+  "protected_config": "{\n  \"challenge_module\": \"PalomarCanonical3be054f17099506dc436643f.Challenge\",\n  \"definition_names\": [],\n  \"external_kernels\": {\n    \"con-ron\": [\n      \"/home/runner/.elan/toolchains/leanprover--lean4---v4.35.0-rc2/bin/con-ron\"\n    ],\n    \"nanoda\": [\n      \"/home/runner/.elan/toolchains/leanprover--lean4---v4.35.0-rc2/bin/nanoda_bin\"\n    ]\n  },\n  \"permitted_axioms\": [\n    \"propext\",\n    \"Quot.sound\",\n    \"Classical.choice\"\n  ],\n  \"solution_module\": \"Solutions.PalomarCorpus.E257_01\",\n  \"theorem_names\": [\n    \"PalomarCorpus.E257.DivisibilityWeightedSupport.divisibilityWeightedClaim\",\n    \"PalomarCorpus.E257.MixedWeightedCover.mixedSupportClaim\",\n    \"PalomarCorpus.E257.PaperStructuresBO.arbitraryWeightMixedSupport_allBase_hereditary\",\n    \"PalomarCorpus.E257.VariableExponentCover.strengthenedPositiveCoverClaim\",\n    \"PalomarCorpus.E257.WeightedCloseReturn.weighted_displacement_cofinal_close_return\"\n  ]\n}\n",
+  "protected_config_sha256": "9c2beb7036ffd5fe3434f190cad4473b7a3a86382940cf1e607195e55c6493b7",
+  "provenance": {
+    "mathematical_sources": [
+      {
+        "author_endorsement": "participated",
+        "authors": [
+          {
+            "name": "Will Cook"
+          }
+        ],
+        "license": "Apache-2.0",
+        "note": "The selected weighted-support, displacement and divisor-cover theorems are proved in the Lean modules of this repository and explained in the two immutable paper sources below. The earlier reciprocal-summable assertion is credited to Erd\u0151s. No novelty priority or resolution of the unrestricted parent problem is asserted by this metadata.",
+        "relationship": "other",
+        "title": "Formal reductions, obstruction theorems, and verified subfamilies for eight Erd\u0151s problems",
+        "type": "original-proof"
+      },
+      {
+        "author_endorsement": "participated",
+        "authors": [
+          {
+            "name": "Will Cook"
+          }
+        ],
+        "identifier": "https://github.com/wcook04/plectis-erdos/blob/147f3f1da400a84dcb3013ea6cef75dc8f382b09/paper/257/erdos-257-mersenne-support-subseries.pdf",
+        "license": "CC-BY-4.0",
+        "note": "Immutable short paper, especially res:weighted-support and the positive-cover and mixed-support extensions. Only the five declarations listed in this configuration are selected; the rest of the paper is not thereby registered.",
+        "relationship": "background",
+        "title": "Weighted Support Criteria for Reciprocal Mersenne Subseries",
+        "type": "paper"
+      },
+      {
+        "author_endorsement": "participated",
+        "authors": [
+          {
+            "name": "Will Cook"
+          }
+        ],
+        "identifier": "https://github.com/wcook04/plectis-erdos/blob/147f3f1da400a84dcb3013ea6cef75dc8f382b09/paper/257/erdos257-mersenne-reasoning-surface.pdf",
+        "license": "CC-BY-4.0",
+        "note": "Complete reasoning record and proof context for the selected weighted-support and cover results; supplementary geometry and membership results are outside this entry.",
+        "relationship": "background",
+        "title": "Reciprocal Mersenne Subseries \u2014 complete reasoning record",
+        "type": "paper"
+      },
+      {
+        "author_endorsement": "not-contacted",
+        "authors": [
+          {
+            "name": "Paul Erd\u0151s"
+          }
+        ],
+        "identifier": "https://users.renyi.hu/~p_erdos/1969-09.pdf",
+        "license": "unknown",
+        "note": "Math. Student 36 (1968), 222\u2013226 (issued 1969), especially p. 222. Erd\u0151s stated the reciprocal-summable all-integer-base criterion after proving the coprime case and discussed possible weakenings. That prior statement is credited; the selected weighted and cover criteria are not presented as a new discovery of the reciprocal-summable case.",
+        "relationship": "background",
+        "title": "On the irrationality of certain series",
+        "type": "paper"
+      },
+      {
+        "author_endorsement": "not-contacted",
+        "authors": [
+          {
+            "name": "Thomas F. Bloom"
+          }
+        ],
+        "identifier": "https://www.erdosproblems.com",
+        "license": "unknown",
+        "note": "Problem 257 identifies the unrestricted infinite-support question. This entry proves sufficient weighted and cover conditions and does not answer that unrestricted question.",
+        "relationship": "background",
+        "title": "Erd\u0151s Problems catalogue",
+        "type": "web discussion"
+      },
+      {
+        "author_endorsement": "n/a",
+        "authors": [
+          {
+            "name": "The mathlib contributors"
+          }
+        ],
+        "identifier": "https://github.com/leanprover-community/mathlib4",
+        "license": "Apache-2.0",
+        "relationship": "background",
+        "title": "Mathlib"
+      }
+    ],
+    "related_formalizations": [],
+    "repository_role": "substantive-development",
+    "responsible_maintainers": [
+      {
+        "name": "Will Cook"
+      }
+    ],
+    "result_origin": "original"
+  },
+  "resource_usage": [
+    {
+      "elapsed_seconds": 0.015,
+      "max_rss_kib": 13556,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-initial",
+      "returncode": 0,
+      "system_cpu_seconds": 0.015,
+      "user_cpu_seconds": 0.02,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 40013000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 8822784,
+      "phase": "confinement-initial:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.028,
+      "max_rss_kib": 13440,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-initial",
+      "returncode": 0,
+      "system_cpu_seconds": 0.019,
+      "user_cpu_seconds": 0.029,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 52857000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 13144064,
+      "phase": "confinement-initial:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.015,
+      "max_rss_kib": 13556,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-initial",
+      "returncode": 1,
+      "system_cpu_seconds": 0.016,
+      "user_cpu_seconds": 0.02,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 39971000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "1",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 9302016,
+      "phase": "confinement-initial:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "failed",
+      "systemd_result": "exit-code"
+    },
+    {
+      "elapsed_seconds": 0.027,
+      "max_rss_kib": 13392,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-initial",
+      "returncode": 0,
+      "system_cpu_seconds": 0.019,
+      "user_cpu_seconds": 0.029,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 52208000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 13422592,
+      "phase": "confinement-initial:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.028,
+      "max_rss_kib": 13556,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-initial",
+      "returncode": 1,
+      "system_cpu_seconds": 0.019,
+      "user_cpu_seconds": 0.029,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 53206000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "1",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 13185024,
+      "phase": "confinement-initial:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "failed",
+      "systemd_result": "exit-code"
+    },
+    {
+      "elapsed_seconds": 0.028,
+      "max_rss_kib": 13556,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-initial",
+      "returncode": 1,
+      "system_cpu_seconds": 0.019,
+      "user_cpu_seconds": 0.029,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 52779000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "1",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 13447168,
+      "phase": "confinement-initial:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "failed",
+      "systemd_result": "exit-code"
+    },
+    {
+      "elapsed_seconds": 0.026,
+      "max_rss_kib": 13376,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-initial",
+      "returncode": 1,
+      "system_cpu_seconds": 0.025,
+      "user_cpu_seconds": 0.022,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 51918000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "1",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 13180928,
+      "phase": "confinement-initial:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "failed",
+      "systemd_result": "exit-code"
+    },
+    {
+      "elapsed_seconds": 0.181,
+      "max_rss_kib": 78224,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "comparator-preflight",
+      "returncode": 0,
+      "system_cpu_seconds": 0.082,
+      "user_cpu_seconds": 0.12,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 207013000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 80363520,
+      "phase": "comparator-preflight:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.282,
+      "max_rss_kib": 351732,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "comparator-preflight",
+      "returncode": 0,
+      "system_cpu_seconds": 0.116,
+      "user_cpu_seconds": 0.186,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 306985000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 360435712,
+      "phase": "comparator-preflight:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.178,
+      "max_rss_kib": 78224,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "comparator-preflight",
+      "returncode": 0,
+      "system_cpu_seconds": 0.092,
+      "user_cpu_seconds": 0.106,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 203417000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 80363520,
+      "phase": "comparator-preflight:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.278,
+      "max_rss_kib": 351920,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "comparator-preflight",
+      "returncode": 0,
+      "system_cpu_seconds": 0.122,
+      "user_cpu_seconds": 0.177,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 304703000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 360628224,
+      "phase": "comparator-preflight:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.181,
+      "max_rss_kib": 76100,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "comparator-preflight",
+      "returncode": 0,
+      "system_cpu_seconds": 0.082,
+      "user_cpu_seconds": 0.118,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 205407000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 78188544,
+      "phase": "comparator-preflight:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.281,
+      "max_rss_kib": 352136,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "comparator-preflight",
+      "returncode": 0,
+      "system_cpu_seconds": 0.128,
+      "user_cpu_seconds": 0.173,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 306138000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 360849408,
+      "phase": "comparator-preflight:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 5.405,
+      "max_rss_kib": 143448,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "comparator-preflight",
+      "returncode": 0,
+      "system_cpu_seconds": 0.094,
+      "user_cpu_seconds": 5.393,
+      "workspace_disk_peak_bytes": 4096
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 5492383000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 147152896,
+      "phase": "comparator-preflight:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.081,
+      "max_rss_kib": 31820,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "comparator-preflight",
+      "returncode": 1,
+      "system_cpu_seconds": 0.026,
+      "user_cpu_seconds": 0.076,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 107540000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "1",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 32600064,
+      "phase": "comparator-preflight:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "failed",
+      "systemd_result": "exit-code"
+    },
+    {
+      "elapsed_seconds": 5.388,
+      "max_rss_kib": 155676,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "comparator-preflight",
+      "returncode": 1,
+      "system_cpu_seconds": 0.104,
+      "user_cpu_seconds": 5.323,
+      "workspace_disk_peak_bytes": 4096
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 5431871000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "1",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 159428608,
+      "phase": "comparator-preflight:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "failed",
+      "systemd_result": "exit-code"
+    },
+    {
+      "elapsed_seconds": 1.325,
+      "max_rss_kib": 144604,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "module-resolution",
+      "returncode": 0,
+      "system_cpu_seconds": 0.398,
+      "user_cpu_seconds": 0.978,
+      "workspace_disk_peak_bytes": 737280
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 1379966000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 148336640,
+      "phase": "module-resolution:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.046,
+      "max_rss_kib": 23372,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "module-resolution",
+      "returncode": 0,
+      "system_cpu_seconds": 0.026,
+      "user_cpu_seconds": 0.04,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 70878000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 24195072,
+      "phase": "module-resolution:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 45.811,
+      "max_rss_kib": 8498652,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "trusted-cache",
+      "returncode": 0,
+      "system_cpu_seconds": 28.924,
+      "user_cpu_seconds": 49.129,
+      "workspace_disk_peak_bytes": 7896653824
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 78058154000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 8702636032,
+      "phase": "trusted-cache:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 5.134,
+      "max_rss_kib": 262620,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "trusted-cache",
+      "returncode": 0,
+      "system_cpu_seconds": 2.445,
+      "user_cpu_seconds": 4.868,
+      "workspace_disk_peak_bytes": 1507328
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 7317570000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 268926976,
+      "phase": "trusted-cache:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 1.839,
+      "max_rss_kib": 145388,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "trusted-cache",
+      "returncode": 0,
+      "system_cpu_seconds": 0.527,
+      "user_cpu_seconds": 1.266,
+      "workspace_disk_peak_bytes": 8192
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 1797400000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 148881408,
+      "phase": "trusted-cache:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 4.42,
+      "max_rss_kib": 664224,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "canonical-challenge",
+      "returncode": 0,
+      "system_cpu_seconds": 1.707,
+      "user_cpu_seconds": 2.012,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 3730980000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 680427520,
+      "phase": "canonical-challenge:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.043,
+      "max_rss_kib": 23332,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "canonical-challenge",
+      "returncode": 0,
+      "system_cpu_seconds": 0.023,
+      "user_cpu_seconds": 0.041,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 69142000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 23908352,
+      "phase": "canonical-challenge:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.048,
+      "max_rss_kib": 23332,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "canonical-challenge",
+      "returncode": 0,
+      "system_cpu_seconds": 0.029,
+      "user_cpu_seconds": 0.038,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 73089000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 24154112,
+      "phase": "canonical-challenge:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.013,
+      "max_rss_kib": 13556,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-final",
+      "returncode": 0,
+      "system_cpu_seconds": 0.016,
+      "user_cpu_seconds": 0.017,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 37315000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 8790016,
+      "phase": "confinement-final:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.025,
+      "max_rss_kib": 13552,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-final",
+      "returncode": 0,
+      "system_cpu_seconds": 0.021,
+      "user_cpu_seconds": 0.026,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 49757000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 13172736,
+      "phase": "confinement-final:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.022,
+      "max_rss_kib": 13372,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-final",
+      "returncode": 1,
+      "system_cpu_seconds": 0.027,
+      "user_cpu_seconds": 0.021,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 51475000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "1",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 8785920,
+      "phase": "confinement-final:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "failed",
+      "systemd_result": "exit-code"
+    },
+    {
+      "elapsed_seconds": 0.026,
+      "max_rss_kib": 13392,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-final",
+      "returncode": 0,
+      "system_cpu_seconds": 0.016,
+      "user_cpu_seconds": 0.031,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 50438000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 13459456,
+      "phase": "confinement-final:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.027,
+      "max_rss_kib": 13556,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-final",
+      "returncode": 0,
+      "system_cpu_seconds": 0.021,
+      "user_cpu_seconds": 0.026,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 51663000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 13496320,
+      "phase": "confinement-final:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 0.027,
+      "max_rss_kib": 13552,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-final",
+      "returncode": 1,
+      "system_cpu_seconds": 0.021,
+      "user_cpu_seconds": 0.027,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 51793000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "1",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 13701120,
+      "phase": "confinement-final:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "failed",
+      "systemd_result": "exit-code"
+    },
+    {
+      "elapsed_seconds": 0.027,
+      "max_rss_kib": 13436,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-final",
+      "returncode": 1,
+      "system_cpu_seconds": 0.02,
+      "user_cpu_seconds": 0.028,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 51142000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "1",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 13709312,
+      "phase": "confinement-final:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "failed",
+      "systemd_result": "exit-code"
+    },
+    {
+      "elapsed_seconds": 0.024,
+      "max_rss_kib": 13556,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 1,
+      "phase": "confinement-final",
+      "returncode": 1,
+      "system_cpu_seconds": 0.02,
+      "user_cpu_seconds": 0.026,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 48983000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "1",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 12902400,
+      "phase": "confinement-final:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "failed",
+      "systemd_result": "exit-code"
+    },
+    {
+      "elapsed_seconds": 1.032,
+      "max_rss_kib": 109872,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "candidate-configuration",
+      "returncode": 0,
+      "system_cpu_seconds": 0.517,
+      "user_cpu_seconds": 0.55,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 1072875000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 112771072,
+      "phase": "candidate-configuration:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 1.02,
+      "max_rss_kib": 109500,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "candidate-configuration",
+      "returncode": 0,
+      "system_cpu_seconds": 0.5,
+      "user_cpu_seconds": 0.56,
+      "workspace_disk_peak_bytes": 0
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 1066741000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 112144384,
+      "phase": "candidate-configuration:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 5.352,
+      "max_rss_kib": 846504,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "challenge-export",
+      "returncode": 0,
+      "system_cpu_seconds": 1.748,
+      "user_cpu_seconds": 3.347,
+      "workspace_disk_peak_bytes": 72925184
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 5099830000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 867082240,
+      "phase": "challenge-export:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 285.538,
+      "max_rss_kib": 6849776,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "solution-build",
+      "returncode": 0,
+      "system_cpu_seconds": 71.696,
+      "user_cpu_seconds": 544.991,
+      "workspace_disk_peak_bytes": 348983296
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 616691976000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 7014187008,
+      "phase": "solution-build:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 5.447,
+      "max_rss_kib": 875224,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "solution-export",
+      "returncode": 0,
+      "system_cpu_seconds": 1.41,
+      "user_cpu_seconds": 4.042,
+      "workspace_disk_peak_bytes": 94302208
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 5457277000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 896491520,
+      "phase": "solution-export:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    },
+    {
+      "elapsed_seconds": 25.354,
+      "max_rss_kib": 636788,
+      "memory_source": "cgroup",
+      "peak_tasks_observed": 3,
+      "phase": "comparator",
+      "returncode": 0,
+      "system_cpu_seconds": 0.287,
+      "user_cpu_seconds": 38.456,
+      "workspace_disk_peak_bytes": 8192
+    },
+    {
+      "cpu_max_applied": false,
+      "cpu_usage_nanoseconds": 38749212000,
+      "deadline_fired": false,
+      "exec_main_code": "1",
+      "exec_main_status": "0",
+      "memory_events": {
+        "oom": 0,
+        "oom_kill": 0
+      },
+      "memory_peak_bytes": 652333056,
+      "phase": "comparator:cgroup",
+      "pids_events_max": 0,
+      "rlimits_applied": {
+        "FSIZE": 1099511627776,
+        "NOFILE": 65536
+      },
+      "supervisor": "cgroup",
+      "supervisor_timeout": false,
+      "systemd_active_state": "inactive",
+      "systemd_result": "success"
+    }
+  ],
+  "schema_version": 2,
+  "solution": {
+    "module": "Solutions.PalomarCorpus.E257_01",
+    "path": "Solutions/PalomarCorpus/E257_01.lean",
+    "sha256": "d1dee62774443d1c658247061028b2df8498d7f88221e6b2031f536ed8a4501b"
+  },
+  "source": {
+    "bytes": 50560846,
+    "commit": "c4c7f68aaaf21713d004bf94140f69da01bbe201",
+    "repository": "wcook04/plectis-erdos-lean",
+    "repository_url": "https://github.com/wcook04/plectis-erdos-lean",
+    "tree_url": "https://github.com/wcook04/plectis-erdos-lean/tree/c4c7f68aaaf21713d004bf94140f69da01bbe201"
+  },
+  "stage": "complete",
+  "status": "pass",
+  "submission": {
+    "authorization": {
+      "relationship": "maintainer"
+    },
+    "requested_paths": {
+      "comparator_config_path": "PalomarCorpus/E257_01/comparator.json",
+      "formalization_metadata_path": "PalomarCorpus/E257_01/formalization.yaml",
+      "project_path": ""
+    },
+    "submission_id": "99d147996cf9"
+  },
+  "tool_digests": {
+    "bwrap": "901e644e3eec0892f71a28e01b510bb43764414af6a8464517d5851e9d266d80",
+    "con-ron": "4e5616d94374cae37324dad2594f6230c2bb2297240249fc78ff508f3bc5acef",
+    "lake": "8ba83c98f76562d03b8dbc33f1057151ba6cbb121679dde76b2260ccc90495e1",
+    "lean": "bf8d54e4714cc4b03d3f6bb34c83b7202b87e49c8bfcbff6895c085bb90ceb38",
+    "leanchecker": "9e36e955a251b1313c8eb5b7fa101282d51df109d34d8bb7c1cfdf51985aba29",
+    "leanexport": "c5bc1a10a21e22cbb3671d65987cdef2076833b14182d823ccb2153adf2fa954",
+    "nanoda_bin": "8241c5e6baa29490aa118d382f97961b208ae730fdb96545c2abed74c9ece5a8"
+  },
+  "toolchain_commit": "11acb17ec6b07a8f9e9173e6845197929540936b",
+  "verification_profile": {
+    "id": "palomar-standard-v1",
+    "limits": {
+      "execution_budget_seconds": 19800,
+      "file_size_max_bytes": 1099511627776,
+      "job_timeout_minutes": 350,
+      "memory_high_percent": 95,
+      "memory_max_percent": 98,
+      "minimum_host_memory_bytes": 15032385536,
+      "minimum_workspace_free_bytes": 21474836480,
+      "open_files_max": 1048576,
+      "tasks_max": 32768
+    },
+    "observed_host": {
+      "architecture": "x86_64",
+      "effective_cpus": 4.0,
+      "memory_bytes": 16766414848,
+      "memory_high_bytes": 15928094105,
+      "memory_max_bytes": 16431086551,
+      "workspace_free_bytes": 115272482816
+    },
+    "runner": {
+      "architecture": "x86_64",
+      "label": "ubuntu-24.04",
+      "provider": "github-hosted"
+    },
+    "sha256": "94fcd7906a1b6c076c0036d742e1c5add8625e49bb474818ec8924576dbf0caa",
+    "trusted_tools": {
+      "bwrap_source_tag": "v0.12.0",
+      "toolchain_floor": "v4.35.0-rc2"
+    }
+  },
+  "warnings": [],
+  "workflow_url": "https://github.com/wcook04/plectis-erdos-lean/actions/runs/35933326858",
+  "execution_profile": "palomar-standard-v1"
+}

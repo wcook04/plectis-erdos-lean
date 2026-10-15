@@ -231,7 +231,7 @@ theorem eventually_linear_prefix_of_liminf_ne_zero
     (fun N : ℕ => cutoffPrefixMass u w N / (N : ℝ≥0∞)) atTop
   have hL : 0 < L := by
     apply bot_lt_iff_ne_bot.mpr
-    simpa only [PrefixLowerDensityZero, L] using hlim
+    exact hlim
   obtain ⟨c, hc0, hcL⟩ : ∃ c : ℝ≥0∞, 0 < c ∧ c < L := exists_between hL
   have hcfin : c ≠ ∞ := ne_top_of_lt hcL
   have hevent : ∀ᶠ N : ℕ in atTop,

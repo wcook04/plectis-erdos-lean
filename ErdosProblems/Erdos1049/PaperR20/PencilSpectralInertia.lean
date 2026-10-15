@@ -52,14 +52,14 @@ theorem hermitian_sub_smul_one_equivalent_weightedSumSquares {n : Type*}
     (H - t • (1 : Matrix n n ℝ)).toQuadraticMap'
   let v : Basis n ℝ (n → ℝ) := hH.eigenvectorBasis.toBasis.map (WithLp.linearEquiv 2 ℝ (n → ℝ))
   have hM : (H - t • (1 : Matrix n n ℝ)).IsSymm := by
-    have hHs : H.IsSymm := by simpa [Matrix.IsHermitian] using hH
+    have hHs : H.IsSymm := by simpa [Matrix.IsHermitian] using! hH
     exact hHs.sub (Matrix.isSymm_one.smul t)
   have heig (i : n) : H *ᵥ v i = hH.eigenvalues i • v i :=
     hH.mulVec_eigenvectorBasis i
   have hdot (i j : n) : v i ⬝ᵥ v j = if i = j then 1 else 0 := by
     have hi := (orthonormal_iff_ite.mp hH.eigenvectorBasis.orthonormal) i j
     simpa only [EuclideanSpace.inner_eq_star_dotProduct, star_trivial,
-      dotProduct_comm] using hi
+      dotProduct_comm] using! hi
   have hform (i j : n) :
       Matrix.toLinearMap₂' ℝ (H - t • (1 : Matrix n n ℝ)) (v i) (v j) =
         (hH.eigenvalues j - t) * (v i ⬝ᵥ v j) := by

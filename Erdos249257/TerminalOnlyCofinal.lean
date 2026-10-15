@@ -165,7 +165,7 @@ theorem half_mem_mersenneAchievementSet_of_cofinalTerminalOnlyStrip
   have hlinearM : Tendsto
       (fun N : ℕ => (4 * (M N : ℝ) + 12) / (2 : ℝ) ^ (M N))
       atTop (nhds 0) := by
-    simpa using hlinear.comp hMtop
+    simpa [Function.comp_def] using hlinear.comp hMtop
   have hdist : Tendsto (fun N : ℕ => dist (y N) (1 / 2 : ℝ))
       atTop (nhds 0) := by
     apply squeeze_zero'

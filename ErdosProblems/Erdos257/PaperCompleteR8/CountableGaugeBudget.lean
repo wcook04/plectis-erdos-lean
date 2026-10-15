@@ -32,7 +32,7 @@ theorem finite_subprobability_cover_gauge_pointwise (J : Finset ℕ) (η α : �
   have hcov : (f : ℝ) ≤ ∑ j ∈ J, (g j : ℝ) := by exact_mod_cast hcover
   obtain ⟨j, hj, hshare⟩ := exists_frame_ge_subprobability_share J η (fun j => (g j : ℝ)) f hJ hη (Nat.cast_nonneg f) hcov
   have hratio : (f : ℝ) ≤ (g j : ℝ) / η j :=
-    (le_div_iff₀ (hηpos j hj)).2 (by simpa [mul_comm] using hshare)
+    (le_div_iff₀ (hηpos j hj)).2 (by simpa [mul_comm] using! hshare)
   have hp := Real.rpow_le_rpow (Nat.cast_nonneg f) hratio (hα j hj).1.le
   rw [Real.div_rpow (Nat.cast_nonneg _) (hηpos j hj).le (α j)] at hp
   exact (coverGauge_le_cost (Nat.cast_nonneg f) (hα j hj).1 (hα j hj).2).trans
@@ -84,7 +84,7 @@ theorem countable_cover_gauge_mean_le_cost
     exact ⟨j, hj⟩
   have hηJ : ∑ j ∈ J, η j ≤ 1 := by
     have hh := hη.summable.sum_le_tsum J (fun j _ => (hηpos j).le)
-    simpa only [hη.tsum_eq] using hh
+    simpa only [hη.tsum_eq] using! hh
   have hpoint : ∀ n, coverGauge ((F.filter (fun a => a ∣ n)).card : ℝ) ≤
       ∑ j ∈ J, (((G j).filter (fun a => a ∣ n)).card : ℝ) ^ α j /
         (η j ^ α j) / ((2 : ℝ) ^ α j - 1) := by

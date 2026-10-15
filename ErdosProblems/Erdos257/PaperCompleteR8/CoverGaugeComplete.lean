@@ -92,7 +92,7 @@ theorem coverLargeMinimizer_bounds {t : ℝ} (ht : 4 < t) :
   constructor
   · exact div_pos (Real.log_pos hratio1) log_two_pos
   · apply (div_lt_iff₀ log_two_pos).mpr
-    simpa only [one_mul] using Real.log_lt_log (by linarith : 0 < u / (u - 1)) hratio2
+    simpa only [one_mul] using! Real.log_lt_log (by linarith : 0 < u / (u - 1)) hratio2
 
 theorem two_rpow_coverLargeMinimizer {t : ℝ} (ht : 4 < t) :
     (2 : ℝ) ^ coverLargeMinimizer t =
@@ -219,7 +219,7 @@ theorem tendsto_large_log_factor :
   have hi : Tendsto (fun u : ℝ => (1 : ℝ) / u) atTop (nhds 0) :=
     tendsto_const_nhds.div_atTop tendsto_id
   have hl : Tendsto (fun u : ℝ => 1 - 1 / u) atTop (nhds 1) := by
-    simpa using tendsto_const_nhds.sub hi
+    simpa using! tendsto_const_nhds.sub hi
   apply tendsto_of_tendsto_of_tendsto_of_le_of_le' hl tendsto_const_nhds
   · filter_upwards [eventually_gt_atTop (1 : ℝ)] with u hu
     exact (log_one_add_inv_squeeze hu).1
@@ -274,7 +274,7 @@ theorem tendsto_coverGauge_div_exp_logTwo :
   have hd := hh.div_const (Real.exp 1)
   have hlim : Tendsto (fun t : ℝ => coverLargeValue (coverLogParameter t) /
       coverLogParameter t / Real.exp 1) atTop (nhds 1) := by
-    simpa only [div_self (Real.exp_pos 1).ne'] using hd
+    simpa only [div_self (Real.exp_pos 1).ne'] using! hd
   apply hlim.congr'
   filter_upwards [eventually_gt_atTop (4 : ℝ)] with t ht
   rw [coverGauge_eq_largeValue ht]

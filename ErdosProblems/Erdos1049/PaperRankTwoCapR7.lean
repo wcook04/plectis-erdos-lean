@@ -28,7 +28,7 @@ theorem eventually_int_zero_of_tendsto_zero (D : ℕ → ℤ)
   refine ⟨N, ?_⟩
   intro n hn
   have hs : |(D n : ℝ)| < 1 := by
-    simpa only [Real.dist_eq, sub_zero] using hN n hn
+    simpa only [Real.dist_eq, sub_zero] using! hN n hn
   have hsZ : |D n| < (1 : ℤ) := by exact_mod_cast hs
   have hab := abs_nonneg (D n)
   have hz : |D n| = 0 := by omega
@@ -43,10 +43,10 @@ theorem eventually_first_coefficient_ne_zero (A B : ℕ → ℤ) (ξ : ℝ)
   obtain ⟨N, hN⟩ := Metric.tendsto_atTop.1 hlim 1 (by norm_num)
   have hsmall : ∀ᶠ n in atTop, |(A n : ℝ) * ξ - B n| < 1 := by
     apply eventually_atTop.2
-    exact ⟨N, fun n hn => by simpa only [Real.dist_eq, sub_zero] using hN n hn⟩
+    exact ⟨N, fun n hn => by simpa only [Real.dist_eq, sub_zero] using! hN n hn⟩
   filter_upwards [hne, hsmall] with n hn hs
   intro hz
-  have hs' : |(B n : ℝ)| < 1 := by simpa [hz] using hs
+  have hs' : |(B n : ℝ)| < 1 := by simpa [hz] using! hs
   have hsZ : |B n| < (1 : ℤ) := by exact_mod_cast hs'
   have hB : B n = 0 := by
     have hab := abs_nonneg (B n)
@@ -111,10 +111,10 @@ theorem no_small_forms_with_adjacent_determinants_tending_zero
     have hZ : (1 : ℤ) ≤ |A (N + i)| := Int.one_le_abs hz
     have hR : (1 : ℝ) ≤ |(A (N + i) : ℝ)| := by exact_mod_cast hZ
     rw [herr i, abs_mul]
-    simpa only [one_mul] using mul_le_mul_of_nonneg_right hR (abs_nonneg η)
+    simpa only [one_mul] using! mul_le_mul_of_nonneg_right hR (abs_nonneg η)
   obtain ⟨M, hM⟩ := Metric.tendsto_atTop.1 hlim |η| (abs_pos.mpr hη)
   have hs : |(A (N + M) : ℝ) * ξ - B (N + M)| < |η| := by
-    simpa only [Real.dist_eq, sub_zero] using hM (N + M) (by omega)
+    simpa only [Real.dist_eq, sub_zero] using! hM (N + M) (by omega)
   exact (not_lt_of_ge (hbound M)) hs
 
 /-- These are the two cross-product limits produced by the super-decay
@@ -138,7 +138,7 @@ theorem no_small_forms_of_cross_product_limits
     push_cast
     ring
   rw [hid] at ht
-  simpa only [sub_zero] using ht
+  simpa only [sub_zero] using! ht
 
 /-- The arithmetic translation of the sufficient homogenisation region. -/
 theorem logarithmic_region_iff_negative_balance

@@ -153,7 +153,7 @@ theorem cubeProductCost_exp_lower (q : ℕ) (P : Finset ℕ) (z : ℝ)
     linarith
   have hprod : (∏ p ∈ P, Real.exp ((z / (p : ℝ)) / 2)) ≤
       ∏ p ∈ P, (1 + z / (p : ℝ)) := by
-    apply Finset.prod_le_prod
+    apply Finset.prod_le_prod₀
     · intro p hp; exact (Real.exp_pos _).le
     · intro p hp
       have h := Real.exp_le_exp.mpr (half_le_log_one_add (hx p hp).1 (hx p hp).2)
@@ -169,7 +169,7 @@ theorem cubeProductCost_exp_lower (q : ℕ) (P : Finset ℕ) (z : ℝ)
     ring
   rw [he] at hprod
   have h := mul_le_mul_of_nonneg_left hprod (one_div_nonneg.mpr (Nat.cast_nonneg q))
-  simpa [cubeProductCost, div_eq_mul_inv, mul_comm] using h
+  simpa [cubeProductCost, div_eq_mul_inv, mul_comm] using! h
 
 /-- A polynomial lower bound avoids any unproved asymptotic comparison. -/
 theorem cubeProductCost_quadratic_lower (q : ℕ) (P : Finset ℕ) (z : ℝ)

@@ -45,17 +45,17 @@ theorem weighted_closed_disc_product_bound {ι : Type*} [Fintype ι]
         (𝓝 ((1 : ℝ) - 0)) := tendsto_const_nhds.sub
       (tendsto_pow_atTop_nhds_zero_of_lt_one
         (by norm_num : (0 : ℝ) ≤ 1 / 2) (by norm_num : (1 / 2 : ℝ) < 1))
-    simpa only [sub_zero] using h
+    simpa only [sub_zero] using! h
   have hbound : ∀ n, F (r n) ≤ 1 := by
     intro n
     apply weighted_open_disc_product_bound w (fun j => (r n : ℂ) * c j) hw0 hw
     intro j
     rw [norm_mul, Complex.norm_real, Real.norm_eq_abs, abs_of_nonneg (hr0 n)]
     exact (mul_le_mul_of_nonneg_left (hc j) (hr0 n)).trans_lt
-      (by simpa only [mul_one] using hr1 n)
+      (by simpa only [mul_one] using! hr1 n)
   have hlim := le_of_tendsto (hF.continuousAt.tendsto.comp hr)
     (Filter.Eventually.of_forall hbound)
-  simpa only [F, Complex.ofReal_one, one_mul] using hlim
+  simpa only [F, Complex.ofReal_one, one_mul] using! hlim
 
 end ErdosProblems.Erdos1041
 end

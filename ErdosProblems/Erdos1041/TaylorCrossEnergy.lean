@@ -31,8 +31,10 @@ theorem hasSum_cauchy_derivative_circle_product {g : ℂ → ℂ} {R : ℝ≥0}
     have hgz := hasSum_cauchy_on_unit_circle hg hR hz'
     have hdz := hasSum_degree_cauchy_on_unit_circle hg hR hz'
     have hcgz : HasSum (fun n : ℕ => conj (a n * z ^ n)) (conj (g z)) := by
-      simpa only [Complex.conjCLE_apply] using
-        Complex.conjCLE.toContinuousLinearMap.hasSum hgz
+      first
+        | simpa only [Complex.conjCLE_apply, ContinuousLinearEquiv.coe_coe] using!
+            Complex.conjCLE.toContinuousLinearMap.hasSum hgz
+        | exact Complex.conjCLE.toContinuousLinearMap.hasSum hgz
     have hn : Summable (fun n : ℕ => ‖(n : ℂ) * a n * z ^ n‖) := by
       simpa only [norm_mul, norm_pow, hz1, one_pow, mul_one] using hcoeff.2
     have hcn : Summable (fun n : ℕ => ‖conj (a n * z ^ n)‖) := by
@@ -73,7 +75,8 @@ theorem hasSum_cauchy_derivative_circle_energy {g : ℂ → ℂ} {R : ℝ≥0}
   have hd : ContinuousOn (deriv g) (sphere (0 : ℂ) 1) := by
     have h := (ContinuousLinearMap.apply ℂ ℂ (1 : ℂ)).continuous.comp_continuousOn
       (hseries.fderiv.continuousOn.mono hsub)
-    simpa only [ContinuousLinearMap.apply_apply, fderiv_apply_one_eq_deriv] using h
+    simpa only [Function.comp_def, ContinuousLinearMap.apply_apply, fderiv_apply_one_eq_deriv]
+      using! h
   have hi : CircleIntegrable (fun z => z * deriv g z * conj (g z)) 0 1 :=
     ContinuousOn.circleIntegrable (by norm_num)
       ((continuousOn_id.mul hd).mul (Complex.continuous_conj.comp_continuousOn hc))

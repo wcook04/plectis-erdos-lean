@@ -180,7 +180,7 @@ theorem centred_actual_lcm_covering
   have hP : B < P := hBP
   have hK : K ≤ K * P := by
     have h1 : 1 ≤ P := by omega
-    simpa using Nat.mul_le_mul_left K h1
+    simpa using! Nat.mul_le_mul_left K h1
   have hx : runningMax U T < x := by
     dsimp [x, K] at *
     omega
@@ -236,7 +236,7 @@ theorem centred_unbounded_not_summable_raw
       (fun n ↦ (a n : ℤ)) (fun _ ↦ (1 : ℤ))
       (fun n ↦ (cumulativeDigitLcm q a n : ℤ))
       T x P B hP hx hunbounded
-      (fun n ↦ by simpa only [one_mul] using harith n)
+      (fun n ↦ by simpa only [one_mul] using! harith n)
       (fun n _hn _hfresh ↦ hcover n _hn) f hf hpos (hdiv x P (by omega))
   rw [mixedCharge_eq_rawCharge_of_centering q a U V B f hq ha hU hstate hcenter] at hmix
   exact hmix
@@ -279,11 +279,11 @@ theorem arithmetic_weighted_record_dichotomy
   have hstate' : ∀ n, (lcmOverlap q a n : ℤ) * U (n + 1) =
       (U n : ℤ) - V n := by
     intro n
-    simpa [lcmOverlap, ← hLid n] using hstate n
+    simpa [lcmOverlap, ← hLid n] using! hstate n
   have herror' : ∀ n, V n = (cumulativeDigitLcm q a n : ℤ) -
       ((a n : ℤ) - 1) * U n := by
     intro n
-    simpa [← hLid n] using herror n
+    simpa [← hLid n] using! herror n
   have hcharge : rawCharge U (lcmOverlap q a) B (natWeight f) =
       paperRecordCharge U V B f :=
     rawCharge_eq_paperRecordCharge U (lcmOverlap q a) V B f hU hstate'
@@ -293,7 +293,7 @@ theorem arithmetic_weighted_record_dichotomy
     have hsraw : Summable (rawCharge U (lcmOverlap q a) B (natWeight f)) := by
       apply summable_of_ne_finset_zero (s := Finset.range N)
       intro n hn
-      have hn' : N ≤ n := by simpa only [Finset.mem_range, not_lt] using hn
+      have hn' : N ≤ n := by simpa only [Finset.mem_range, not_lt] using! hn
       simp [rawCharge, hN n hn']
     rwa [hcharge] at hsraw
   · intro hs

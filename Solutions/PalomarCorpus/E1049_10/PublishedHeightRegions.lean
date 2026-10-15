@@ -19,13 +19,13 @@ theorem eightyOneTwoHundredths_lt_threeHalves_log_ratio :
 
 theorem threeHalves_outside_zudilinHeightRegion :
     ¬ ZudilinHeightRegion 3 2 := by
-  simpa [ZudilinHeightRegion, ErdosProblems.Erdos1049.ZudilinHeightRegion] using
+  simpa [ZudilinHeightRegion, ErdosProblems.Erdos1049.ZudilinHeightRegion] using!
     ErdosProblems.Erdos1049.threeHalves_outside_zudilinHeightRegion
 
 theorem threeHalves_outside_bundschuhVaananenHeightRegion :
     ¬ BundschuhVaananenHeightRegion 3 2 := by
   simpa [BundschuhVaananenHeightRegion,
-    ErdosProblems.Erdos1049.BundschuhVaananenHeightRegion] using
+    ErdosProblems.Erdos1049.BundschuhVaananenHeightRegion] using!
     ErdosProblems.Erdos1049.threeHalves_outside_bundschuhVaananenHeightRegion
 
 end PalomarCorpus.E1049.PublishedHeightRegions

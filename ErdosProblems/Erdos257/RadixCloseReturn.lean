@@ -51,9 +51,9 @@ theorem irrational_erdosSupportSeries_of_radix_closeReturn
   have hstrict :=
     shiftedRadixSupportAtom_zero_strictMinimum b A hb hA N hN
   have hstrictT : T 0 < T N := by
-    simpa [T] using hstrict
+    simpa [T] using! hstrict
   have hnearT : T N < T 0 + 1 / (v : ℝ) := by
-    simpa [T] using hnear
+    simpa [T] using! hnear
   have hgapPos : (0 : ℝ) < ((u N - u 0 : ℤ) : ℝ) := by
     push_cast
     rw [huCast N, huCast 0]
@@ -62,7 +62,7 @@ theorem irrational_erdosSupportSeries_of_radix_closeReturn
     push_cast
     rw [huCast N, huCast 0]
     have htailGap : T N - T 0 < 1 / (v : ℝ) := by
-      exact sub_lt_iff_lt_add.mpr (by simpa [add_comm] using hnearT)
+      exact sub_lt_iff_lt_add.mpr (by simpa [add_comm] using! hnearT)
     have hmul := mul_lt_mul_of_pos_left htailGap hvR
     have hvne : (v : ℝ) ≠ 0 := ne_of_gt hvR
     rw [show (v : ℝ) * (1 / (v : ℝ)) = 1 by field_simp] at hmul

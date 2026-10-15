@@ -178,13 +178,13 @@ theorem abs_moebius_cast_le_one (d : ℕ) :
     |((ArithmeticFunction.moebius d : ℤ) : ℝ)| ≤ 1 := @ErdosProblems.Erdos249.PaperCompleteR21.abs_moebius_cast_le_one d
 
 theorem boundary_pair_at_one :
-    (1, 0) ∈ (Finset.antidiagonal 1).filter
+    (1, 0) ∈ (Finset.HasAntidiagonal.antidiagonal 1).filter
         (fun p : ℕ × ℕ => 0 < p.1 ∧ Nat.Coprime p.1 p.2) ∧
-      ((Finset.antidiagonal 1).filter
+      ((Finset.HasAntidiagonal.antidiagonal 1).filter
         (fun p : ℕ × ℕ => 0 < p.1 ∧ Nat.Coprime p.1 p.2)).card = 1 := @ErdosProblems.Erdos249.PaperCompleteR21.boundary_pair_at_one
 
 theorem card_coprime_antidiagonal (n : ℕ) :
-    ((Finset.antidiagonal n).filter
+    ((Finset.HasAntidiagonal.antidiagonal n).filter
         (fun p : ℕ × ℕ => 0 < p.1 ∧ Nat.Coprime p.1 p.2)).card = Nat.totient n := @ErdosProblems.Erdos249.PaperCompleteR21.card_coprime_antidiagonal n
 
 theorem card_mul_sq_le_pairwise_energy {α : Type*} [DecidableEq α]

@@ -179,7 +179,7 @@ theorem s2_isCoveringMap_of_isProperMap_of_isLocalHomeomorph
 injective. Nonemptiness of the total space is not needed in the statement. -/
 theorem s2_covering_injective
     {E X : Type*} [TopologicalSpace E] [TopologicalSpace X]
-    [PreconnectedSpace E] [SimplyConnectedSpace X] [LocPathConnectedSpace X]
+    [PreconnectedSpace E] [SimplyConnectedSpace X] [LocallyPathConnectedSpace X]
     {g : E → X} (hcover : IsCoveringMap g) : Function.Injective g := by
   intro a b hab
   obtain ⟨σ, hσ, _⟩ := hcover.existsUnique_continuousMap_lifts
@@ -285,7 +285,7 @@ theorem s2_two_zeros_gives_critical_point
   have hDzero : (0 : ℂ) ∈ D := by simp [D]
   letI : ContractibleSpace D := hDconvex.contractibleSpace ⟨0, hDzero⟩
   letI : SimplyConnectedSpace D := SimplyConnectedSpace.ofContractible D
-  letI : LocPathConnectedSpace D := hDopen.locPathConnectedSpace
+  letI : LocallyPathConnectedSpace D := hDopen.locallyPathConnectedSpace
   letI : ConnectedSpace U :=
     isConnected_iff_connectedSpace.mp (isConnected_connectedComponentIn_iff.mpr hz)
   have hqinj : Function.Injective q := s2_covering_injective hqcover

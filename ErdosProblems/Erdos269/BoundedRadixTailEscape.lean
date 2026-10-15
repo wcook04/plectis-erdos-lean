@@ -202,6 +202,6 @@ theorem rational_of_scaledTail_integer
         (((B * X : ℤ) : ℚ) : ℝ) by
       simp [q]]
   apply (eq_div_iff hden).2
-  simpa [mul_comm] using hidentity
+  simpa [mul_comm] using! hidentity
 
 end ErdosProblems.Erdos269

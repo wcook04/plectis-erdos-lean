@@ -181,7 +181,7 @@ theorem irrational_factorialGapSeries_iff_cofinal_odd_unit_carry_break :
       let m := 2 * (j - 1) + 1
       have hmSucc : m + 1 = k := by dsimp [m]; omega
       refine ⟨m, by dsimp [m]; omega, ⟨j - 1, rfl⟩, ?_⟩
-      exact Or.inr (by simpa [hmSucc] using hkNonunit)
+      exact Or.inr (by simpa [hmSucc] using! hkNonunit)
     · refine ⟨k, by omega, ⟨j, hj⟩, Or.inl hkNonunit⟩
   · intro h B
     obtain ⟨m, hmLarge, hmOdd, hbreak⟩ := h B
@@ -343,7 +343,7 @@ theorem consecutive_unit_carries_iff_ultra_endpoint_cylinders
             (m := m + 1) (by omega)).mpr
               (Or.inl (by
                 simpa only [Nat.add_sub_cancel, Nat.cast_add, Nat.cast_one]
-                  using hnextLower))⟩
+                  using! hnextLower))⟩
     · have hfacGt :
           (2 : ℝ) < ((m + 1).factorial : ℝ) := by
         exact_mod_cast
@@ -397,7 +397,7 @@ theorem consecutive_unit_carries_iff_ultra_endpoint_cylinders
             (m := m + 1) (by omega)).mpr
               (Or.inr (by
                 simpa only [Nat.add_sub_cancel, Nat.cast_add, Nat.cast_one]
-                  using hnextUpper))⟩
+                  using! hnextUpper))⟩
 
 /-- **Exact shrinking-target characterization of Erdős #68.**  Irrationality
 is equivalent to cofinal escape, along odd starting indices, from the two
@@ -622,6 +622,6 @@ theorem irrational_factorialGapSeries_of_cofinal_doublePrimeEndpoint_mul_not_dvd
     dsimp [m]
     omega
   · rw [hmSucc, hmSuccZ]
-    simpa [m] using hpMiss
+    simpa [m] using! hpMiss
 
 end ErdosProblems.Erdos68

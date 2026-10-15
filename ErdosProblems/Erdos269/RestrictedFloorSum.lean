@@ -43,7 +43,7 @@ theorem smoothCountLT_swap_first_second (p q r x : ℕ) :
     apply Finset.mem_filter.mpr
     refine ⟨Finset.mem_product.mpr
       ⟨hj, Finset.mem_product.mpr ⟨hi, hk⟩⟩, ?_⟩
-    simpa [smooth3Val, mul_assoc, mul_left_comm, mul_comm] using hzVal
+    simpa [smooth3Val, mul_assoc, mul_left_comm, mul_comm] using! hzVal
   · intro z₁ _hz₁ z₂ _hz₂ hEq
     rcases z₁ with ⟨i₁, j₁, k₁⟩
     rcases z₂ with ⟨i₂, j₂, k₂⟩
@@ -59,7 +59,7 @@ theorem smoothCountLT_swap_first_second (p q r x : ℕ) :
     · apply Finset.mem_filter.mpr
       refine ⟨Finset.mem_product.mpr
         ⟨hi, Finset.mem_product.mpr ⟨hj, hk⟩⟩, ?_⟩
-      simpa [smooth3Val, mul_assoc, mul_left_comm, mul_comm] using hzVal
+      simpa [smooth3Val, mul_assoc, mul_left_comm, mul_comm] using! hzVal
     · rcases z with ⟨j, i, k⟩
       rfl
 
@@ -293,7 +293,7 @@ theorem strictSmoothExponent_fiber_card
     have hj : z.2.1 = e.1 := congrArg Prod.fst hzProj
     have hk : z.2.2 = e.2 := congrArg Prod.snd hzProj
     rw [← hj, ← hk]
-    simpa [smooth3Val, mul_assoc] using hzVal
+    simpa [smooth3Val, mul_assoc] using! hzVal
   · intro z₁ hz₁ z₂ hz₂ hfirst
     have hproj₁ := (Finset.mem_filter.mp hz₁).2
     have hproj₂ := (Finset.mem_filter.mp hz₂).2
@@ -309,7 +309,7 @@ theorem strictSmoothExponent_fiber_card
     apply Finset.mem_filter.mpr
     refine ⟨Finset.mem_filter.mpr ⟨Finset.mem_product.mpr
       ⟨hiRange, Finset.mem_product.mpr ⟨hj, hk⟩⟩, ?_⟩, rfl⟩
-    simpa [smooth3Val, mul_assoc] using hiVal
+    simpa [smooth3Val, mul_assoc] using! hiVal
 
 /-- Replacing every projection fiber by its explicit exponent count turns the
 abstract fiber decomposition into the returned restricted floor sum. -/
@@ -337,7 +337,7 @@ theorem smoothCountLT_eq_restrictedFiberCount
   apply Finset.mem_filter.mpr
   refine ⟨Finset.mem_product.mpr ⟨hj, hk⟩, ?_⟩
   have hval' : p ^ z.1 * (q ^ z.2.1 * r ^ z.2.2) < x := by
-    simpa [smooth3Val, mul_assoc] using hval
+    simpa [smooth3Val, mul_assoc] using! hval
   exact
     (Nat.le_mul_of_pos_left (q ^ z.2.1 * r ^ z.2.2)
       (Nat.pow_pos hp : 0 < p ^ z.1)).trans_lt hval'
@@ -510,7 +510,7 @@ theorem leastPositiveResidue_windowForcing_eq_carry
   let F : ℤ := windowForcing b m lo len
   have hwindow :
       c (lo + len) = W * c lo - B * F := by
-    simpa [W, F] using integralCarry_window c b m B lo len hrec
+    simpa [W, F] using! integralCarry_window c b m B lo len hrec
   have hmodW :
       Int.ModEq W (c (lo + len)) (-B * F) := by
     rw [Int.modEq_iff_dvd]
@@ -523,8 +523,8 @@ theorem leastPositiveResidue_windowForcing_eq_carry
   exact leastPositiveResidue_eq_natAbs_of_pos_le_modEq
     (Int.natAbs_pos.mpr hWpos.ne')
     hcpos
-    (by simpa [W] using hcle)
-    (by simpa [W, F] using hmod)
+    (by simpa [W] using! hcle)
+    (by simpa [W, F] using! hmod)
 
 /-- When shell multiplicities are exact differences of smooth-count
 potentials, the integral-carry window is an explicit weighted potential
@@ -659,7 +659,7 @@ theorem no_positive_reducedCarry_of_cofinalLocalWindowEscape
     (fun n => (b n : ℤ)) (fun n => (m n : ℤ)) lo len
   have hwindow :
       d (lo + len) = W * d lo - (B : ℤ) * F := by
-    simpa [W, F] using
+    simpa [W, F] using!
       integralCarry_window d
         (fun n => (b n : ℤ)) (fun n => (m n : ℤ))
         (B : ℤ) lo len hrec
@@ -674,10 +674,10 @@ theorem no_positive_reducedCarry_of_cofinalLocalWindowEscape
         (d (lo + len)) (-((B : ℤ) * F)) :=
     (Int.modEq_natAbs).2 hmodW
   exact no_bounded_positive_int_state_of_leastPositiveResidue
-    (by simpa [W] using hbasePos)
+    (by simpa [W] using! hbasePos)
     (hpos (lo + len))
     (hbound (lo + len))
-    (by simpa [W, F] using hresidueEscape)
+    (by simpa [W, F] using! hresidueEscape)
     hmod
 
 end ErdosProblems.Erdos269

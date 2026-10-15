@@ -40,7 +40,7 @@ lemma sourceM_rateR16 : QuadRateR16 (fun n => (sourceM n : ℝ)) 266 := by
 lemma sourceK_rateR16 : QuadRateR16 (fun n => (sourceK n : ℝ)) sourceC1R16 := by
   apply rate_of_eventual_linear_errorR16 _ sourceC1R16 42 (by norm_num)
   exact Eventually.of_forall (fun n => by
-    simpa only [sourceC1R16, sqScale] using sourceK_quadratic_residual n)
+    simpa only [sourceC1R16, sqScale] using! sourceK_quadratic_residual n)
 
 lemma actual_U_degree_identityR16 (n : ℕ) (hn : 1 ≤ n) :
     ((sourceU n).natDegree : ℝ) =
@@ -109,7 +109,7 @@ lemma actual_U_eval_normalisationR16 (p : ℝ) (hp : 1 < p) (n : ℕ) :
   apply (eq_div_iff (pow_ne_zero _ hp0)).2
   have h := actual_real_A_normalisation p n
   dsimp [sourceUEvalR16, complementEvalR16, sourceAEvalR16]
-  simpa only [mul_comm] using h.symm
+  simpa only [mul_comm] using! h.symm
 
 lemma actual_U_eventually_nonzeroR16 (p : ℝ) (hp : 1 < p) :
     ∀ᶠ n in atTop, sourceUEvalR16 p n ≠ 0 := by
@@ -205,7 +205,7 @@ theorem actual_V_quadLogRate_and_nonzeroR16 (p : ℝ) (hp : 1 < p) :
   constructor
   · exact quadLogRate_congrR16 hr (Eventually.of_forall he)
   · filter_upwards [hn] with n hn'
-    simpa only [he] using hn'
+    simpa only [he] using! hn'
 
 theorem actual_V_quadLogRateR16 (p : ℝ) (hp : 1 < p) :
     QuadLogRate (sourceVEvalR16 p) (sourceDeltaR16*Real.log p) :=
@@ -247,7 +247,7 @@ theorem actual_cleared_remainder_rateR16 (a b : ℝ) (hb : 0 < b) (hab : b < a) 
       (fun n => b^pairWidth sourceU sourceV n * sourceRemainderR16 (a/b) n)
       (sourceC1R16*Real.log b-sourceC0R16*Real.log a) := by
   have ha : 0 < a := hb.trans hab
-  have hp : 1 < a/b := (lt_div_iff₀ hb).2 (by simpa using hab)
+  have hp : 1 < a/b := (lt_div_iff₀ hb).2 (by simpa using! hab)
   have hpow := quadLogRate_powerR16 (pairWidth sourceU sourceV) sourceDeltaR16 b hb
     actual_pairWidth_rateR16
   have hrem := actual_remainder_quadLogRateR16 (a/b) hp

@@ -237,7 +237,7 @@ theorem endpointWordBlock_const (k H : ℕ) :
 theorem pointwiseTotientValued_const_two :
     PointwiseTotientValued (fun _ => 2) := by
   intro H
-  exact ⟨3, by simpa using Nat.totient_prime Nat.prime_three⟩
+  exact ⟨3, (Nat.totient_prime Nat.prime_three).symm⟩
 
 /-- **Infinite boundary-mode countermodel.**  For every moving envelope based
 at `c >= 2`, the constant-two word is positive, even, bounded by `c+H+1`, and

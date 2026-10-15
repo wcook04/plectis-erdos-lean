@@ -73,7 +73,7 @@ theorem tailOrbitBlockGap_of_nonpositiveBlockDensity
           apply Finset.sum_congr rfl
           intro N hN
           by_cases hp : p N <;> simp [hp]]
-        simpa [U] using (Finset.sum_boole (R := ℝ) (fun N => ¬ p N) I)
+        simpa [U] using! (Finset.sum_boole (R := ℝ) (fun N => ¬ p N) I)
   have hcardI : I.card = X := by
     dsimp [I]
     rw [Nat.card_Ico]
@@ -81,12 +81,12 @@ theorem tailOrbitBlockGap_of_nonpositiveBlockDensity
   have hpartitionNat : T.card + U.card = X := by
     calc
       T.card + U.card = I.card := by
-        simpa [T, U] using I.card_filter_add_card_filter_not p
+        simpa [T, U] using! I.card_filter_add_card_filter_not p
       _ = X := hcardI
   have hpartition : (T.card : ℝ) + (U.card : ℝ) = X := by
     exact_mod_cast hpartitionNat
   have hdenseT : (11 / 100 : ℝ) * X ≤ (T.card : ℝ) := by
-    simpa [I, p, T] using hdense
+    simpa [I, p, T] using! hdense
   refine ⟨X, hX, ?_⟩
   change (∑ N ∈ I, (tailOrbitFirstExp h N).re) ≤ (89 / 100 : ℝ) * X
   nlinarith
@@ -201,7 +201,7 @@ lemma tailOrbitFirstExp_add (h M k : ℕ) :
 lemma tailOrbitFirstExp_eq_initial_pow_two (h N : ℕ) :
     tailOrbitFirstExp h N =
       (tailOrbitFirstExp h 0) ^ (2 ^ N) := by
-  simpa using tailOrbitFirstExp_add h 0 N
+  simpa using! tailOrbitFirstExp_add h 0 N
 
 /-- Exact initial-angle formula for the actual totient phase.  The discarded
 prefix is integral, so the starting phase is the additive character of
@@ -232,7 +232,7 @@ lemma tailOrbitFirstExp_eq_one_iff_tail_diff_mem_int (h N : ℕ) :
     have hscalar :
         2 * Real.pi * (totientTail (N + h) - totientTail N) =
           (m : ℝ) * (2 * Real.pi) := by
-      simpa using him
+      simpa using! him
     have hpi : 0 < 2 * Real.pi := by positivity
     nlinarith
   · rintro ⟨m, hm⟩
@@ -351,7 +351,7 @@ theorem cofinally_tailOrbitFirstExp_adjacent_chord_ge_one_of_not_dyadic
         (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n))) :
     ∀ N₀, ∃ N ≥ N₀,
       1 ≤ ‖tailOrbitFirstExp h (N + 1) - tailOrbitFirstExp h N‖ := by
-  simpa only [tailOrbitFirstExp_eq_scaledTotientSeriesFirstExp] using
+  simpa only [tailOrbitFirstExp_eq_scaledTotientSeriesFirstExp] using!
     cofinally_scaledTotientSeriesFirstExp_adjacent_chord_ge_one_of_not_dyadic h hnd
 
 /-- A non-dyadic initial angle therefore has cofinally many nonpositive real
@@ -384,7 +384,7 @@ theorem cofinally_tailOrbitFirstExp_re_nonpos_of_not_dyadic
             congr 1
             ring
       _ = ‖tailOrbitFirstExp h N - 1‖ := by
-        rw [norm_mul, show ‖tailOrbitFirstExp h N‖ = 1 by simpa [z] using hnorm,
+        rw [norm_mul, show ‖tailOrbitFirstExp h N‖ = 1 by simpa [z] using! hnorm,
           one_mul]
   have hdist : 1 ≤ ‖z - 1‖ := by
     rwa [hchordEq] at hchord
@@ -396,7 +396,7 @@ theorem cofinally_tailOrbitFirstExp_re_nonpos_of_not_dyadic
       nlinarith [norm_nonneg (z - 1)]
     nlinarith
   by_cases hre : z.re ≤ 0
-  · exact ⟨N, hN, by simpa [z] using hre⟩
+  · exact ⟨N, hN, by simpa [z] using! hre⟩
   · refine ⟨N + 1, by omega, ?_⟩
     rw [tailOrbitFirstExp_succ]
     rw [Complex.normSq_apply] at hnormSq
@@ -496,7 +496,7 @@ theorem naturalPivotPointEscape_of_naturalPrimeTailOrbitStrictGap
     omega
   have htailN :
       (tailOrbitFirstExp h N).re < (9 / 10 : ℝ) := by
-    simpa [N] using htail
+    simpa [N] using! htail
   let ε : ℝ := (9 / 10 : ℝ) - (tailOrbitFirstExp h N).re
   have hε : 0 < ε := by
     dsimp [ε]

@@ -133,16 +133,13 @@ theorem floorPrefix_eq_kernelFloorBlock (scale cutoff : Nat) (hc : 2 ≤ cutoff)
   refine Finset.sum_bij (fun j _ => 2 + j) ?_ ?_ ?_ ?_
   · intro j hj
     -- mem_range: Mathlib/Data/Finset/Range.lean.
-    dsimp only
     have hjlt : j < cutoff - 1 := Finset.mem_range.mp hj
     exact Finset.mem_Icc.mpr ⟨by omega, by omega⟩
   · intro j hj k hk heq
-    dsimp only at heq
     omega
   · intro n hn
     obtain ⟨hn2, hnN⟩ := Finset.mem_Icc.mp hn
     refine ⟨n - 2, Finset.mem_range.mpr (by omega), ?_⟩
-    dsimp only
     omega
   · intro j _
     rfl

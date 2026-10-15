@@ -66,13 +66,13 @@ theorem companionOrbit_completeCharacterization :
       Erdos68.factorialGapTail, Erdos68.factorialGapTailTerm,
       companionConstant, ErdosProblems.Erdos68.companionConstant,
       ErdosProblems.Erdos68.compConstTerm, facFloor,
-      ErdosProblems.Erdos68.facFloor] using
+      ErdosProblems.Erdos68.facFloor] using!
       ErdosProblems.Erdos68.not_irrational_factorialGapSeries_iff_eventually_companion_floor_neg_two
   · simpa [factorialGapSeries, Erdos68.factorialGapSeries,
       Erdos68.factorialGapTail, Erdos68.factorialGapTailTerm,
       companionConstant, ErdosProblems.Erdos68.companionConstant,
       ErdosProblems.Erdos68.compConstTerm, facFloor,
-      ErdosProblems.Erdos68.facFloor] using
+      ErdosProblems.Erdos68.facFloor] using!
       ErdosProblems.Erdos68.irrational_factorialGapSeries_iff_cofinal_companion_floor_misses
 
 theorem strictSuccessorCarry_completeCharacterization :
@@ -94,7 +94,7 @@ theorem strictSuccessorCarry_completeCharacterization :
       ErdosProblems.Erdos68.factorialGapStepCarry,
       ErdosProblems.Erdos68.factorialGapPredecessorGap,
       ErdosProblems.Erdos68.strictFacTop,
-      ErdosProblems.Erdos68.factorialGapPrefix] using
+      ErdosProblems.Erdos68.factorialGapPrefix] using!
       ErdosProblems.Erdos68.not_irrational_factorialGapSeries_iff_eventually_unit_carries
   · simpa [factorialGapSeries, Erdos68.factorialGapSeries,
       Erdos68.factorialGapTail, Erdos68.factorialGapTailTerm,
@@ -103,7 +103,7 @@ theorem strictSuccessorCarry_completeCharacterization :
       ErdosProblems.Erdos68.factorialGapStepCarry,
       ErdosProblems.Erdos68.factorialGapPredecessorGap,
       ErdosProblems.Erdos68.strictFacTop,
-      ErdosProblems.Erdos68.factorialGapPrefix] using
+      ErdosProblems.Erdos68.factorialGapPrefix] using!
       ErdosProblems.Erdos68.irrational_factorialGapSeries_iff_cofinal_nonunit_carries
   · intro m hm
     simpa [factorialGapStepCarry, factorialGapPredecessorGap, strictFacTop,
@@ -112,13 +112,13 @@ theorem strictSuccessorCarry_completeCharacterization :
       ErdosProblems.Erdos68.factorialGapPredecessorGap,
       ErdosProblems.Erdos68.strictFacTop,
       ErdosProblems.Erdos68.strictFacTopRat,
-      ErdosProblems.Erdos68.factorialGapPrefix] using
+      ErdosProblems.Erdos68.factorialGapPrefix] using!
       ErdosProblems.Erdos68.factorialGapStepCarry_eq_one_iff_dvd_strictFacTopRat hm
   · simpa [factorialGapSeries, Erdos68.factorialGapSeries,
       Erdos68.factorialGapTail, Erdos68.factorialGapTailTerm,
       strictFacTopRat, factorialGapPrefix,
       ErdosProblems.Erdos68.strictFacTopRat,
-      ErdosProblems.Erdos68.factorialGapPrefix] using
+      ErdosProblems.Erdos68.factorialGapPrefix] using!
       ErdosProblems.Erdos68.irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses
 
 end

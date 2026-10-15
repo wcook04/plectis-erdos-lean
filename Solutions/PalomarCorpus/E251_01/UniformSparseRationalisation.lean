@@ -45,7 +45,7 @@ theorem polylogarithmic_word_interval_uniform (a : ℕ → ℕ) {A ε : ℝ}
     ErdosProblems.Erdos251.PaperR11.SparsePaper.polylogarithmic_word_interval_uniform a ha hε K
   refine ⟨Set.range (ErdosProblems.Erdos251.PaperR8.SparseSchedule.centre
     (ErdosProblems.Erdos251.PaperR11.SparsePolylog.polylog ε) start), ?_⟩
-  simpa only [eventStarts, ErdosProblems.Erdos251.PaperR7.eventStarts, eventFrequency, blockTV, ErdosProblems.Erdos251.PaperR11.GrowingBlocks.eventFrequency, ErdosProblems.Erdos251.PaperR11.GrowingBlocks.blockTV, UpperBanachZero, ErdosProblems.Erdos251.PaperR8.SparseSchedule.UpperBanachZero, polylog, iterlog, ErdosProblems.Erdos251.PaperR11.SparsePolylog.polylog, ErdosProblems.Erdos251.PaperR11.SparsePolylog.iterlog, supportSlice, ErdosProblems.Erdos251.PaperR8.SparseSchedule.supportSlice] using h
+  simpa only [eventStarts, ErdosProblems.Erdos251.PaperR7.eventStarts, eventFrequency, blockTV, ErdosProblems.Erdos251.PaperR11.GrowingBlocks.eventFrequency, ErdosProblems.Erdos251.PaperR11.GrowingBlocks.blockTV, UpperBanachZero, ErdosProblems.Erdos251.PaperR8.SparseSchedule.UpperBanachZero, polylog, iterlog, ErdosProblems.Erdos251.PaperR11.SparsePolylog.polylog, ErdosProblems.Erdos251.PaperR11.SparsePolylog.iterlog, supportSlice, ErdosProblems.Erdos251.PaperR8.SparseSchedule.supportSlice] using! h
 
 theorem arbitrary_word_sparse_rationalisation_uniform (a : ℕ → ℕ) {A : ℝ}
     (ha : HasSum (fun n => (a n : ℝ) / 2 ^ (n + 1)) A)
@@ -58,7 +58,7 @@ theorem arbitrary_word_sparse_rationalisation_uniform (a : ℕ → ℕ) {A : ℝ
         (∀ q : ℕ, 0 < q → ∀ n, Nq q ≤ n →
           q ∣ e n ∧ q ∣ ∑ i ∈ range n, e i) ∧
         HasSum (fun n => ((a n + e n : ℕ) : ℝ) / 2 ^ (n + 1)) r := by
-  simpa only [UpperBanachZero, ErdosProblems.Erdos251.PaperR8.SparseSchedule.UpperBanachZero] using
+  simpa only [UpperBanachZero, ErdosProblems.Erdos251.PaperR8.SparseSchedule.UpperBanachZero] using!
     ErdosProblems.Erdos251.PaperR9.SparseAmbient.arbitrary_word_sparse_rationalisation_uniform a ha f hf K
 
 end PalomarCorpus.E251.UniformSparseRationalisation

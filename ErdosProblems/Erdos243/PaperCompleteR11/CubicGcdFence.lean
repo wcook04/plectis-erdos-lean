@@ -24,7 +24,7 @@ theorem cubic_four_agreements_difference (C : ℕ → ℕ) (P : ℕ → ℚ)
   have h1 := hclear (n + 1)
   have h2 := hclear (n + 2)
   have h3 := hclear (n + 3)
-  have ha0 : (C n : ℚ) = P n := by simpa using hagree 0 (by decide)
+  have ha0 : (C n : ℚ) = P n := by simpa using! hagree 0 (by decide)
   rw [← ha0] at h0
   rw [← hagree 1 (by decide)] at h1
   rw [← hagree 2 (by decide)] at h2
@@ -67,13 +67,13 @@ theorem natural_orbit_common_divisor_tail (a C D : ℕ → ℕ)
     ∀ k : ℕ, d ∣ C (s + k) ∧ d ∣ D (s + k) := by
   intro k
   induction k with
-  | zero => simpa using And.intro hdC hdD
+  | zero => simpa using! And.intro hdC hdD
   | succ k ih =>
       constructor
       · have hs : d ∣ C (s + k + 1) + D (s + k) := by
           rw [hC]
           exact dvd_mul_of_dvd_right ih.1 _
-        simpa only [Nat.add_assoc] using (Nat.dvd_add_iff_left ih.2).mpr hs
+        simpa only [Nat.add_assoc] using! (Nat.dvd_add_iff_left ih.2).mpr hs
       · rw [show s + (k + 1) = s + k + 1 by omega, hD]
         exact dvd_mul_of_dvd_right ih.2 _
 
@@ -99,7 +99,7 @@ theorem cubic_gcd_dvd_of_not_quarter_density (a C D : ℕ → ℕ) (P : ℕ → 
   obtain ⟨k, hk⟩ := Nat.exists_eq_add_of_le (show s ≤ n + j by omega)
   have h := natural_orbit_common_divisor_tail a C D hC hD s
     (Nat.gcd (C s) (D s)) (Nat.gcd_dvd_left _ _) (Nat.gcd_dvd_right _ _) k
-  simpa only [← hk] using h.1
+  simpa only [← hk] using! h.1
 
 /-- A literal bounded-gcd conclusion, with no density-zero premise. -/
 theorem cubic_gcd_bound_of_not_quarter_density (a C D : ℕ → ℕ) (P : ℕ → ℚ)

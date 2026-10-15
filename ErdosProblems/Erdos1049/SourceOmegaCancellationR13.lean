@@ -38,7 +38,7 @@ lemma finite_prefix_supported_on_multiples {R : Type*} [AddCommMonoid R]
     apply mem_filter.mpr
     refine ⟨mem_Icc.mpr ⟨by nlinarith, ?_⟩, dvd_mul_right _ _⟩
     have hm := (Nat.le_div_iff_mul_le hell).mp hbJ
-    simpa only [Nat.mul_comm b ell] using hm
+    simpa only [Nat.mul_comm b ell] using! hm
   · intro a ha b hb hab
     exact Nat.eq_of_mul_eq_mul_left hell hab
   · intro j hj
@@ -50,7 +50,7 @@ lemma finite_prefix_supported_on_multiples {R : Type*} [AddCommMonoid R]
       have : b = 0 := by omega
       simp [this] at hj0
     · apply (Nat.le_div_iff_mul_le hell).mpr
-      simpa only [Nat.mul_comm b ell] using (mem_Icc.mp hjI).2
+      simpa only [Nat.mul_comm b ell] using! (mem_Icc.mp hjI).2
   · intro b hb
     rfl
 
@@ -72,7 +72,7 @@ lemma sourceD_eval_zero_at_root (q : K) (n ell : ℕ) (hell : 0 < ell)
   have h := congrArg (Polynomial.eval₂ (Int.castRingHom K) q)
     (sourceDQuotient_factor n ell hell helln)
   simpa only [eval₂_mul, eval₂_sub, eval₂_pow, eval₂_X, eval₂_one,
-    hroot, sub_self, zero_mul] using h.symm
+    hroot, sub_self, zero_mul] using! h.symm
 
 lemma sourceDQuotient_eval_zero_of_not_dvd (q : K) (n ell j : ℕ)
     (hell : 0 < ell) (helln : ell ≤ 15 * n) (hroot : q ^ ell = 1)
@@ -96,7 +96,7 @@ lemma sourceShiftedASummand_eval_eq_of_dvd (q : K) (n ell s j : ℕ)
     rw [pow_mul, hroot, one_pow]
   have h := congrArg (Polynomial.eval₂ (Int.castRingHom K) q)
     (sourceShiftedASummand_factor n s j hs hj)
-  simpa only [eval₂_mul, eval₂_pow, eval₂_X, pow_mul, hp, one_pow, one_mul] using h
+  simpa only [eval₂_mul, eval₂_pow, eval₂_X, pow_mul, hp, one_pow, one_mul] using! h
 
 noncomputable def sourcePolePrefix (q : K) (n ell L : ℕ) : K :=
   ∑ b ∈ Icc 1 L, (sourceDQuotient n (ell * b)).eval₂ (Int.castRingHom K) q
@@ -191,7 +191,8 @@ theorem actual_B_cyclotomic_dvd (n ell : ℕ) (hell : 0 < ell)
     (mul_eq_zero.mp hzero).resolve_left (pow_ne_zero _ hq)
   rw [cyclotomic_eq_minpoly hp hell]
   apply minpoly.isIntegrallyClosed_dvd (hp.isIntegral hell)
-  simpa only [aeval_def] using hb
+  change (sourceBWithoutMonomial n).eval₂ (algebraMap ℤ ℂ) q = 0 at hb
+  simpa only [aeval_def] using! hb
 
 lemma coprime_finset_product_right {R : Type*} [CommSemiring R]
     (a : R) (s : Finset ℕ) (f : ℕ → R)
@@ -199,7 +200,7 @@ lemma coprime_finset_product_right {R : Type*} [CommSemiring R]
   classical
   revert h
   induction s using Finset.induction_on with
-  | empty => intro h; simpa using (isCoprime_one_right : IsCoprime a 1)
+  | empty => intro h; simpa using! (isCoprime_one_right : IsCoprime a 1)
   | @insert i s hi ih =>
       intro h
       rw [prod_insert hi]
@@ -219,7 +220,7 @@ lemma pairwise_coprime_finset_product_dvd {R : Type*} [CommSemiring R]
       rw [prod_insert hi]
       have hcop := coprime_finset_product_right (f i) s f (fun j hj =>
         hpair i (mem_insert_self _ _) j (mem_insert_of_mem hj)
-          (fun hij => hi (by simpa only [hij] using hj)))
+          (fun hij => hi (by simpa only [hij] using! hj)))
       apply hcop.mul_dvd (hdiv i (mem_insert_self _ _))
       apply ih
       · intro a ha b hb hab
@@ -245,14 +246,14 @@ theorem actual_Omega_divides_B_without_monomial (n : ℕ) :
   apply pairwise_coprime_finset_product_dvd
   · intro i hi j hj hij
     rcases sourceWeight_zero_or_one n i with hwi | hwi
-    · simpa [hwi] using
+    · simpa [hwi] using!
         (isCoprime_one_left : IsCoprime (1 : ℚ[X])
           ((cyclotomic j ℚ) ^ (sourceWeight n j).toNat))
     rcases sourceWeight_zero_or_one n j with hwj | hwj
-    · simpa [hwj] using
+    · simpa [hwj] using!
         (isCoprime_one_right : IsCoprime
           ((cyclotomic i ℚ) ^ (sourceWeight n i).toNat) (1 : ℚ[X]))
-    simpa [hwi, hwj] using (Polynomial.cyclotomic.isCoprime_rat hij)
+    simpa [hwi, hwj] using! (Polynomial.cyclotomic.isCoprime_rat hij)
   · intro ell hell
     rcases sourceWeight_zero_or_one n ell with hw | hw
     · simp [hw]
@@ -273,7 +274,7 @@ theorem actual_B_polynomial_inclusion (n : ℕ) :
 theorem actual_B_without_monomial_factor (n : ℕ) :
     sourceBWithoutMonomial n = sourceOmega n * sourceV n := by
   have h := actual_B_Omega_division n
-  simpa only [actual_Omega_remainder_zero n, zero_add] using h.symm
+  simpa only [actual_Omega_remainder_zero n, zero_add] using! h.symm
 
 theorem actual_V_nonzero (n : ℕ) (hn : 1 ≤ n) : sourceV n ≠ 0 := by
   intro hz

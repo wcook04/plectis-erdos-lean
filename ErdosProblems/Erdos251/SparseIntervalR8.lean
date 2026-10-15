@@ -112,14 +112,14 @@ theorem lowerTail_step (f : ℕ → ℝ) (start : ℕ) (hstart : Ready f start 0
     lowerTail f start n = lowerTerm f start n + lowerTail f start (n + 1) := by
   have hs := (summable_nat_add_iff n).mpr (terms_summable f start hstart).1
   have he := hs.tsum_eq_zero_add
-  simpa only [lowerTail, Nat.zero_add, Nat.add_assoc, Nat.add_left_comm,
+  simpa only [lowerTail, Nat.zero_add, Nat.add_zero, Nat.add_assoc, Nat.add_left_comm,
     Nat.add_comm] using he
 
 theorem upperTail_step (f : ℕ → ℝ) (start : ℕ) (hstart : Ready f start 0) (n : ℕ) :
     upperTail f start n = upperTerm f start n + upperTail f start (n + 1) := by
   have hs := (summable_nat_add_iff n).mpr (terms_summable f start hstart).2.1
   have he := hs.tsum_eq_zero_add
-  simpa only [upperTail, Nat.zero_add, Nat.add_assoc, Nat.add_left_comm,
+  simpa only [upperTail, Nat.zero_add, Nat.add_zero, Nat.add_assoc, Nat.add_left_comm,
     Nat.add_comm] using he
 
 theorem tail_width (f : ℕ → ℝ) (start : ℕ) (hstart : Ready f start 0) (n : ℕ) :

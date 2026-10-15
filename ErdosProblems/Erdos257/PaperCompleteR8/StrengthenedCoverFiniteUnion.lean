@@ -64,11 +64,11 @@ theorem interleavedCover_host (C D : PositiveCoverData) :
   constructor
   · rintro ⟨n, hn⟩
     by_cases h : n % 2 = 0
-    · exact Or.inl ⟨n / 2, by simpa [interleavedCover, h] using hn⟩
-    · exact Or.inr ⟨n / 2, by simpa [interleavedCover, h] using hn⟩
+    · exact Or.inl ⟨n / 2, by simpa [interleavedCover, h] using! hn⟩
+    · exact Or.inr ⟨n / 2, by simpa [interleavedCover, h] using! hn⟩
   · rintro (⟨j, hj⟩ | ⟨j, hj⟩)
-    · exact ⟨2 * j, by simpa using hj⟩
-    · exact ⟨2 * j + 1, by simpa using hj⟩
+    · exact ⟨2 * j, by simpa using! hj⟩
+    · exact ⟨2 * j + 1, by simpa using! hj⟩
 
 /-- The denominator loss on halving an exponent is at most three. -/
 theorem half_exponent_cover_cost_le (c α : ℝ) (hc : 0 ≤ c)
@@ -80,7 +80,7 @@ theorem half_exponent_cover_cost_le (c α : ℝ) (hc : 0 ≤ c)
   have hx2 : x ≤ 2 := by
     have h := Real.rpow_le_rpow_of_exponent_le (by norm_num : (1 : ℝ) ≤ 2)
       (show α / 2 ≤ 1 by linarith)
-    simpa [x] using h
+    simpa [x] using! h
   have hxx : x * x = (2 : ℝ) ^ α := by
     dsimp [x]
     rw [← Real.rpow_add (by norm_num : (0 : ℝ) < 2)]
@@ -124,13 +124,13 @@ theorem interleavedCover_strengthened (C D : PositiveCoverData)
     have h := half_exponent_cover_cost_le (C.cost j) (C.exponent j)
       (positiveCover_cost_nonneg C j) (C.exponent_bounds j).1 (C.exponent_bounds j).2
       (2 * j) j (by omega)
-    simpa [K, interleavedCover, PositiveCoverData.cost] using h
+    simpa [K, interleavedCover, PositiveCoverData.cost] using! h
   · apply Summable.of_nonneg_of_le (fun j => hK (2 * j + 1)) _ (hD.mul_left 3)
     intro j
     have h := half_exponent_cover_cost_le (D.cost j) (D.exponent j)
       (positiveCover_cost_nonneg D j) (D.exponent_bounds j).1 (D.exponent_bounds j).2
       (2 * j + 1) j (by omega)
-    simpa [K, interleavedCover, PositiveCoverData.cost, Nat.add_div] using h
+    simpa [K, interleavedCover, PositiveCoverData.cost, Nat.add_div] using! h
 
 theorem hasStrengthenedPositiveCover_union {A B : Set ℕ}
     (hA : HasStrengthenedPositiveCover A) (hB : HasStrengthenedPositiveCover B) :
@@ -151,7 +151,7 @@ theorem finitePrimeWeighted_finset (b : ℕ) (F : Finset ℕ) :
   classical
   refine ⟨{2}, by simp, ?_, ?_⟩
   · intro p hp
-    have hp2 : p = 2 := by simpa using hp
+    have hp2 : p = 2 := by simpa using! hp
     subst p
     exact Nat.prime_two
   · apply summable_of_ne_finset_zero (s := F)

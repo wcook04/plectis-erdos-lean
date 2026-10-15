@@ -103,7 +103,7 @@ private theorem three_rpow_two_sixths_mul_log_two_bound_lt_one :
     norm_num
   have hz : z < 1 :=
     lt_of_pow_lt_pow_left₀ 3 (by norm_num : (0 : ℝ) ≤ 1) hzpow
-  simpa [z, y] using hz
+  simpa [z, y] using! hz
 
 /-- Exact radius-four threshold: every degree `n >= 3` satisfies
 `5^(2/n) log(4/3) < 1`. -/

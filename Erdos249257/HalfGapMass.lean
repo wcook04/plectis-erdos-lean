@@ -55,7 +55,7 @@ theorem summable_quarter_env (N : ℕ) :
     (by norm_num : (0 : ℝ) ≤ 1 / 4) (by norm_num : (1 : ℝ) / 4 < 1)
   have hshift := (summable_nat_add_iff (N + 1)).mpr hbase
   have hmul := hshift.mul_left (2 / 3 : ℝ)
-  simpa [Nat.add_assoc, Nat.add_comm, Nat.add_left_comm] using hmul
+  simpa [Nat.add_assoc, Nat.add_comm, Nat.add_left_comm] using! hmul
 
 theorem summable_eighth_env (N : ℕ) :
     Summable (fun k : ℕ => (3 : ℝ) * ((1 : ℝ) / 8) ^ (N + k + 1)) := by
@@ -63,7 +63,7 @@ theorem summable_eighth_env (N : ℕ) :
     (by norm_num : (0 : ℝ) ≤ 1 / 8) (by norm_num : (1 : ℝ) / 8 < 1)
   have hshift := (summable_nat_add_iff (N + 1)).mpr hbase
   have hmul := hshift.mul_left (3 : ℝ)
-  simpa [Nat.add_assoc, Nat.add_comm, Nat.add_left_comm] using hmul
+  simpa [Nat.add_assoc, Nat.add_comm, Nat.add_left_comm] using! hmul
 
 /-- **The gap sequence is summable past any level.** -/
 theorem summable_mersenneGap_shift (N : ℕ) :
@@ -75,7 +75,7 @@ theorem summable_mersenneGap_shift (N : ℕ) :
 
 /-- **The gap sequence is summable.** -/
 theorem summable_mersenneGap_succ : Summable (fun k : ℕ => mersenneGap (k + 1)) := by
-  simpa using summable_mersenneGap_shift 0
+  simpa using! summable_mersenneGap_shift 0
 
 /-- **Total gap mass beyond level `N`.**  Summing the landed per-level bound
 `mersenneGap_asymptotic_bound` geometrically: the whole remaining gap mass
@@ -109,15 +109,15 @@ theorem tendsto_mersenneGap_tail_zero :
   have hq : Tendsto (fun N : ℕ => (2 / 9 : ℝ) * ((1 : ℝ) / 4) ^ N) atTop (nhds 0) := by
     have := tendsto_pow_atTop_nhds_zero_of_lt_one
       (by norm_num : (0 : ℝ) ≤ 1 / 4) (by norm_num : (1 : ℝ) / 4 < 1)
-    simpa using this.const_mul (2 / 9 : ℝ)
+    simpa using! this.const_mul (2 / 9 : ℝ)
   have he : Tendsto (fun N : ℕ => (3 / 7 : ℝ) * ((1 : ℝ) / 8) ^ N) atTop (nhds 0) := by
     have := tendsto_pow_atTop_nhds_zero_of_lt_one
       (by norm_num : (0 : ℝ) ≤ 1 / 8) (by norm_num : (1 : ℝ) / 8 < 1)
-    simpa using this.const_mul (3 / 7 : ℝ)
+    simpa using! this.const_mul (3 / 7 : ℝ)
   have hsum : Tendsto
       (fun N : ℕ => (2 / 9 : ℝ) * ((1 : ℝ) / 4) ^ N + (3 / 7 : ℝ) * ((1 : ℝ) / 8) ^ N)
       atTop (nhds 0) := by
-    simpa using hq.add he
+    simpa using! hq.add he
   exact squeeze_zero hlo mersenneGap_tail_le hsum
 
 end Erdos249257

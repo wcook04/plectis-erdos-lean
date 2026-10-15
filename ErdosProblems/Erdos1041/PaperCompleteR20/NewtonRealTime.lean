@@ -16,7 +16,7 @@ theorem newton_value_hasDerivWithinAt
     HasDerivWithinAt (fun s => f (z s)) (-f (z t)) I t := by
   have h := hf.complexToReal_fderiv.comp_hasDerivWithinAt t hz
   simpa only [ContinuousLinearMap.smul_apply, ContinuousLinearMap.one_apply,
-    smul_eq_mul, derivative_mul_newtonFlowVector hc] using h
+    smul_eq_mul, derivative_mul_newtonFlowVector hc, Function.comp_def] using! h
 
 private theorem value_decay_on_interval_of_lt
     {v : ℝ → ℂ} {I : Set ℝ} (hI : OrdConnected I)

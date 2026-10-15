@@ -1063,7 +1063,7 @@ theorem finiteErdosSum_ne_one_div_twenty_one
   rw [horder21] at horder'
   have hlcm : F.lcm id = 6 := horder'.symm
   have hlcm' : F.lcm (fun m : ℕ ↦ m) = 6 := by
-    simpa only [id_eq] using hlcm
+    simpa only [id_eq] using! hlcm
   have hranks : ∀ n ∈ F, n = 2 ∨ n = 3 ∨ n = 6 := by
     intro n hn
     have hndvd : n ∣ 6 := by

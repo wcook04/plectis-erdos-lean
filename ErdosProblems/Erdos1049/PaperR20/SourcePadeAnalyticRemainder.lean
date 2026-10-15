@@ -32,7 +32,7 @@ private theorem sourcePade_constant_cancellation (m : ℕ) (p : ℝ)
   have hsumC : (∑ k : Fin (m + 1), parameterEval p (sourceResiduePoly m k.val)) =
       coefficientAlpha p m := by
     have h := congrArg (parameterEval p) (sum_sourceResidue_fin_eq_coefficientAlpha m)
-    simpa [coefficientAlpha, parameterEval] using h
+    simpa [coefficientAlpha, parameterEval] using! h
   have h_except (k : Fin (m + 1)) :
       p ^ (m + 1 + k.val) *
           (∏ j ∈ (range (m + 1)).erase k.val, p ^ (m + 1 + j)) =
@@ -88,7 +88,7 @@ private theorem sourcePade_scaled_kernel_identity (m : ℕ) (p : ℝ)
     intro j hj
     exact ne_of_gt (hfactor j hj)
   have hclear := momentRationalKernel_clear p hpne m d e x
-    (by simpa [d, e] using sourceQuotient_clearing_balance m) hden
+    (by simpa [d, e] using! sourceQuotient_clearing_balance m) hden
   have hpoly := congrArg
     (fun P : BivariatePolynomial => evalBivariate P p x)
     (sourcePade_partial_fraction_identity m)
@@ -98,10 +98,10 @@ private theorem sourcePade_scaled_kernel_identity (m : ℕ) (p : ℝ)
   have hsumC : (∑ k : Fin (m + 1), f (sourceResiduePoly m k.val)) =
       coefficientAlpha p m := by
     have h := congrArg f (sum_sourceResidue_fin_eq_coefficientAlpha m)
-    simpa [coefficientAlpha, f, parameterEval] using h
+    simpa [coefficientAlpha, f, parameterEval] using! h
   have hzero : f (sourceClearedQuotientCoeff m m) +
       p ^ d * coefficientAlpha p m = 0 := by
-    simpa [f, d] using sourcePade_constant_cancellation m p hp
+    simpa [f, d] using! sourcePade_constant_cancellation m p hp
   have h_except (k : Fin (m + 1)) :
       (p ^ (m + 1 + k.val) - x) *
           (∏ j ∈ (range (m + 1)).erase k.val,
@@ -319,11 +319,11 @@ theorem sourcePade_actualMoment_remainder (m : ℕ) (p : ℝ) (hp : 1 < p) :
   have hq1 : q < 1 := (inv_lt_one₀ hp0).2 hp
   have hkernel := sourcePade_rationalKernel_certificate m p hp
   have hmoment := actualMoment_eq_of_rationalKernel_certificate
-    hq0 hq1 m A Cv (by simpa [A, Cv, q, d] using hkernel)
+    hq0 hq1 m A Cv (by simpa [A, Cv, q, d] using! hkernel)
   have hsumC : (∑ k, Cv k) = coefficientAlpha p m := by
     have h := congrArg (parameterEval p)
       (sum_sourceResidue_fin_eq_coefficientAlpha m)
-    simpa [Cv, coefficientAlpha, parameterEval] using h
+    simpa [Cv, coefficientAlpha, parameterEval] using! h
   have hprefix (k : Fin (m + 1)) :
       Cv k * finiteLambertPrefix q (m + k.val) =
         ∑ n : Fin (m + k.val),
@@ -337,7 +337,7 @@ theorem sourcePade_actualMoment_remainder (m : ℕ) (p : ℝ) (hp : 1 < p) :
     have hd : parameterEval p (sourceResiduePoly m k.val) =
         (p ^ (n.val + 1) - 1) *
           parameterEval p (sourceResidueQuotientPoly m k.val n.val) := by
-      simpa [parameterEval] using congrArg (parameterEval p)
+      simpa [parameterEval] using! congrArg (parameterEval p)
         (sourceResidue_factor m k.val n.val (by omega))
     dsimp [q, Cv]
     rw [inv_pow, hd]
@@ -351,7 +351,7 @@ theorem sourcePade_actualMoment_remainder (m : ℕ) (p : ℝ) (hp : 1 < p) :
     have hd : parameterEval p (sourceQuotientPositiveCoeff m j) =
         (p ^ (j.val + 1) - 1) *
           parameterEval p (sourceQuotientQuotientPoly m j) := by
-      simpa [parameterEval] using congrArg (parameterEval p)
+      simpa [parameterEval] using! congrArg (parameterEval p)
         (sourceQuotientPositiveCoeff_factor m j)
     dsimp [A, q]
     rw [inv_pow, hd]
@@ -385,7 +385,7 @@ theorem sourcePade_actualMoment_remainder (m : ℕ) (p : ℝ) (hp : 1 < p) :
       have hn : p ^ (n.val + 1) - 1 ≠ 0 :=
         ne_of_gt (sub_pos.mpr (one_lt_pow₀ hp (by omega)))
       apply (div_eq_iff hn).2
-      simpa [parameterEval, mul_comm] using hfac
+      simpa [parameterEval, mul_comm] using! hfac
     have hfull :
         (∑ k ∈ range (m + 1),
             ∑ n ∈ range (m + k),
@@ -405,7 +405,7 @@ theorem sourcePade_actualMoment_remainder (m : ℕ) (p : ℝ) (hp : 1 < p) :
       have hn : p ^ (n.val + 1) - 1 ≠ 0 :=
         ne_of_gt (sub_pos.mpr (one_lt_pow₀ hp (by omega)))
       apply (div_eq_iff hn).2
-      simpa [parameterEval, mul_comm] using hfac
+      simpa [parameterEval, mul_comm] using! hfac
     have hQbase :
         (∑ j ∈ range m,
             sourcePositiveCoeffEval m p d j *
@@ -426,7 +426,7 @@ theorem sourcePade_actualMoment_remainder (m : ℕ) (p : ℝ) (hp : 1 < p) :
       rw [show parameterEval p (sourceQuotientPositiveCoeff m j) =
         (p ^ (j.val + 1) - 1) *
           parameterEval p (sourceQuotientQuotientPoly m j) by
-            simpa [parameterEval] using hfac]
+            simpa [parameterEval] using! hfac]
       field_simp [hpd, hn]
     have hQshift :
         (∑ j ∈ range m,
@@ -448,15 +448,15 @@ theorem sourcePade_actualMoment_remainder (m : ℕ) (p : ℝ) (hp : 1 < p) :
       have hfac' : parameterEval p (sourceQuotientPositiveCoeff m j) =
           (p ^ (j.val + 1) - 1) *
             parameterEval p (sourceQuotientQuotientPoly m j) := by
-        simpa [parameterEval] using hfac
+        simpa [parameterEval] using! hfac
       have hscale' : p ^ d *
           parameterEval p (sourceShiftedQuotientCorrectionPoly m j) =
         p ^ ((m + 1) * (j.val + 1)) *
           parameterEval p (sourceQuotientQuotientPoly m j) := by
-        simpa [d, parameterEval] using hscale
+        simpa [d, parameterEval] using! hscale
       rw [hfac']
       field_simp [hpd, hn]
-      simpa [mul_comm, mul_left_comm, mul_assoc] using hscale'.symm
+      simpa [mul_comm, mul_left_comm, mul_assoc] using! hscale'.symm
     dsimp [d] at hkc
     rw [hfull, hQbase, hshort, hQshift] at hkc
     exact hkc
@@ -471,7 +471,7 @@ theorem sourceFiniteCorrectionPoly_eq_coefficientBetaPoly (m : ℕ) :
     sourceFiniteCorrectionPoly m = coefficientBetaPoly m := by
   apply coefficientBetaPoly_eq_of_pade_remainder m
   intro p hp
-  simpa [realPolynomialEval, parameterEval] using
+  simpa [realPolynomialEval, parameterEval] using!
     sourcePade_actualMoment_remainder m p hp
 
 /-- Unconditional all-index analytic remainder identity. -/
@@ -480,7 +480,7 @@ theorem sourcePade_actualMoment_eq_coefficientLinearForm
     PaperR12.actualMoment p⁻¹ m =
       coefficientAlpha p m * PaperR16.lambert p⁻¹ - coefficientBeta p m := by
   rw [coefficientBeta, ← sourceFiniteCorrectionPoly_eq_coefficientBetaPoly m]
-  simpa [coefficientBeta, parameterEval] using
+  simpa [coefficientBeta, parameterEval] using!
     sourcePade_actualMoment_remainder m p hp
 
 #print axioms sourcePade_actualMoment_remainder

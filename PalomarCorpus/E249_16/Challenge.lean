@@ -81,7 +81,7 @@ end PalomarCorpus.E249.PaperStatementsBB
 namespace PalomarCorpus.E249.PaperStatementsAJ
 /-- States prop:C1-inv from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.card_visible_antidiagonal in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem card_visible_antidiagonal (n : ℕ) :
-    ((Finset.antidiagonal n).filter
+    ((Finset.HasAntidiagonal.antidiagonal n).filter
         fun q : ℕ × ℕ => 0 < q.1 ∧ Nat.Coprime q.1 q.2).card
       = Nat.totient n := by
   sorry
@@ -149,7 +149,7 @@ theorem one_div_den_mul_den_le_abs_diff {x u : ℚ} (hne : x ≠ u) :
   sorry
 /-- States prop:C1-inv from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.positive_antidiagonal_one in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem positive_antidiagonal_one :
-    ((Finset.antidiagonal 1).filter
+    ((Finset.HasAntidiagonal.antidiagonal 1).filter
         fun q : ℕ × ℕ => 0 < q.1 ∧ 0 < q.2 ∧ Nat.Coprime q.1 q.2) = ∅ := by
   sorry
 /-- States prop:D9-inv from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.rational_gap_lower_bound in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
@@ -186,7 +186,7 @@ theorem tsum_pos_coprime_pairs_product_form :
   sorry
 /-- States prop:C1-inv from the long record for Erdős problem #249. Transported from ErdosProblems.Erdos249.PaperCompleteR21.visible_antidiagonal_one in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem visible_antidiagonal_one :
-    ((Finset.antidiagonal 1).filter
+    ((Finset.HasAntidiagonal.antidiagonal 1).filter
         fun q : ℕ × ℕ => 0 < q.1 ∧ Nat.Coprime q.1 q.2)
       = {((1 : ℕ), (0 : ℕ))} := by
   sorry

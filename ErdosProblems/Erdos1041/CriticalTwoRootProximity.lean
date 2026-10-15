@@ -346,7 +346,7 @@ theorem exists_two_roots_dist_sum_le_two_mul_geomMean
       calc d j ^ (n - 1) = ∏ _k ∈ univ.erase i, d j := by
             rw [Finset.prod_const, hcard]
         _ ≤ ∏ k ∈ univ.erase i, d k :=
-            Finset.prod_le_prod (fun _ _ => le_of_lt hdj) (fun k hk => hj k hk)
+            Finset.prod_le_prod₀ (fun _ _ => le_of_lt hdj) (fun k hk => hj k hk)
     have hfac : ∏ k, d k = d i * ∏ k ∈ univ.erase i, d k :=
       (Finset.mul_prod_erase univ d (mem_univ i)).symm
     rw [hrn, hfac]

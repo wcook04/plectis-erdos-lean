@@ -461,7 +461,7 @@ theorem firstCertifiedKill_long_terminal
     dsimp [r₀]
     exact Int.mul_ediv_add_emod A₀ Q₀
   have hfull : B < A % Q ∧ A % Q < Q - B := by
-    simpa only [B, A, Q] using hfirst.1
+    simpa [certifiedKill, B, A, Q, Nat.cast_add, add_assoc] using hfirst.1
   have hprevNot :
       ¬(B - 1 < r₀ ∧ r₀ < Q₀ - (B - 1)) := by
     have hnot := hfirst.2 (L - 1) (by omega)
@@ -776,7 +776,7 @@ theorem certifiedKill_bplus2_iff_socket_or_mixed
         (A := windowDiscrepancy h N (b + 2))
         (B := ((N + h + (b + 2) + 2 : ℕ) : ℤ))
         (b := b) (by exact_mod_cast hscale)
-        (by simpa only [certifiedKill] using hcert)
+        (by simpa [certifiedKill, Nat.cast_add, add_assoc] using hcert)
     rcases hsplit with hsock | hguard
     · left
       have hterminal :=
@@ -786,7 +786,9 @@ theorem certifiedKill_bplus2_iff_socket_or_mixed
       rw [hterminal] at hsock
       unfold certifiedKill
       push_cast at hsock ⊢
-      simpa only [add_assoc, add_comm, add_left_comm] using hsock
+      simpa only [show (2 + 2 : ℤ) = 4 by norm_num,
+        show (1 + (1 + 2) : ℤ) = 4 by norm_num,
+        add_assoc, add_comm, add_left_comm] using hsock
     · exact Or.inr hguard
   · rintro (hsocket | hguard)
     · have hlift :=
@@ -1019,7 +1021,7 @@ theorem actualLcmTopEdgeResidueGap_or_of_adjacentSuffixMidband
   · right
     apply (actualLcmTopEdgeResidueGap_iff_terminal a 0 (m + 1) m).2
     refine ⟨by omega, ?_, ?_⟩
-    · simpa [t, H, M, E₁] using hroom'
+    · simpa [t, H, M, E₁, add_assoc] using hroom'
     · rw [show m + 1 - m = 1 by omega]
       simp only [Nat.add_zero]
       have hyWord :
@@ -1028,7 +1030,7 @@ theorem actualLcmTopEdgeResidueGap_or_of_adjacentSuffixMidband
               (periodLcm (2 ^ a) + 1) m % 2 ^ m := by
         simpa using diagonalSuffixResidue_eq_windowDiscrepancy (2 ^ a) 1 m
       rw [← hyWord]
-      simpa [t, H, M, y, E₁, Nat.add_assoc] using hyGap
+      simpa [t, H, M, y, E₁, Nat.add_assoc, add_assoc] using hyGap
   exfalso
   have hxTop : M - E₀ < x := lt_of_not_ge hxGap
   have hyTop : M - E₁ < y := lt_of_not_ge hyGap
@@ -1726,7 +1728,7 @@ theorem two_mul_actualOddHalfCenteredLift_eq_terminal_sub_trueCarry
       windowDiscrepancy H H m % P = P - e ∧
         P - B < windowDiscrepancy H H m % P ∧
         windowDiscrepancy H H m % P < P := by
-    simpa [H, e, P, B, Nat.add_assoc] using htop
+    simpa [H, e, P, B, Nat.add_assoc, add_assoc] using htop
   have hePos : 0 < e := by
     rw [htop'.1] at htop'
     omega

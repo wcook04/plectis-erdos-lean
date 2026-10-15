@@ -38,7 +38,7 @@ theorem state_frontier
   have habsorb : ∀ n, Nc ≤ n → E n = 0 → E (n + 1) = 0 := by
     intro n hn hz
     apply zero_absorbing_at a C D E hC hD hE n hz
-    simpa only [one_mul] using hNc (n + 1) (by omega)
+    simpa only [one_mul] using! hNc (n + 1) (by omega)
   have hnonzero := eventually_nonzero_of_zero_absorbing E Nc habsorb hnotzero
   refine ⟨⟨Nc, hnonzero⟩, (normalized_vanishing_iff C E hCpos).mpr hvanish,
     ?_, ?_⟩
@@ -102,7 +102,7 @@ theorem finite_negative_mass_paper :
       ∃ N, ∀ n, N ≤ n → E n = 0 := by
     intro C E hc hs hsum
     apply eventually_zero_of_summable_negativeRelativeMass_scalar C E hc hs
-    simpa only [negativeRelativeMass_eq_fun] using hsum
+    simpa only [negativeRelativeMass_eq_fun] using! hsum
   refine ⟨hscalar, ?_⟩
   intro a C D E hc hs hd he hsum
   exact natural_sylvester_of_eventual_zero a C D E hc hs hd he
@@ -178,7 +178,7 @@ theorem canonical_frontier
     state_frontier a C D E haevent hcpos hc hd (fun _ ↦ rfl) hnorm hnot
   refine ⟨hnonzero, hlim, hnegative, ?_⟩
   have hsum : ¬ Summable (fun n ↦ max (-(E n : ℝ)) 0 / (C n : ℝ)) := by
-    simpa only [negativeRelativeMass_eq_fun] using hmass
+    simpa only [negativeRelativeMass_eq_fun] using! hmass
   apply nonnegative_partial_sums_tendsto_atTop _ _ hsum
   intro n
   exact div_nonneg (le_max_right _ _) (Nat.cast_nonneg _)

@@ -428,7 +428,10 @@ theorem computablePred_halfFatalCertificateCode :
     ComputablePred HalfFatalCertificateCode := by
   refine PrimrecPred.computablePred (Primrec.primrecPred ?_)
   refine primrec_check.of_eq fun n => ?_
-  simp [HalfFatalCertificateCode]
+  simp only [HalfFatalCertificateCode]
+  have hbool (b : Bool) : b = decide (b = true) := by
+    cases b <;> rfl
+  exact hbool _
 
 theorem exists_halfFatalCertificateCode_iff :
     (∃ n : ℕ, HalfFatalCertificateCode n) ↔ ∃ p : List Bool × ℕ, FatalHalfGapCertificate p := by

@@ -190,7 +190,7 @@ theorem exists_rational_bounded_perturbation_primeGap (M : ℕ) (hM : 0 < M) (K 
   have hS : HasSum (fun n => (primeGap0 n : ℝ) / 2 ^ (n + 1))
       (∑' n, primeGapDyadicTerm n) := by
     have := summable_primeGapDyadicTerm.hasSum
-    simpa [primeGapDyadicTerm] using this
+    exact this
   have hMpos : (0 : ℝ) < M := by exact_mod_cast hM
   have hlt : (∑' n, primeGapDyadicTerm n) < (∑' n, primeGapDyadicTerm n) + M / 2 ^ K := by
     have : (0 : ℝ) < M / 2 ^ K := by positivity

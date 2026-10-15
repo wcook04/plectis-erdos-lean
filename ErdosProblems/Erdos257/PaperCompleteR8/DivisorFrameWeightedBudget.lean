@@ -80,7 +80,7 @@ theorem reciprocal_divisor_prime_product_le_exp (P : Finset ℕ)
     (∑ d ∈ (P.prod id).divisors, (1 : ℝ) / d) ≤
       Real.exp (∑ p ∈ P, (1 : ℝ) / p) := by
   rw [reciprocal_divisor_prime_product P hP, Real.exp_sum]
-  apply prod_le_prod
+  apply Finset.prod_le_prod₀
   · intro p hp
     positivity
   · intro p hp

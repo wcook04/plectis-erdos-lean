@@ -36,7 +36,7 @@ theorem mixedLogBudget_binary_returns_of_mean_target
   have hρ : 0 < ρ := div_pos hε (by norm_num)
   have ht : ∀ j, 0 < t j := fun j => mul_pos hρ (D.weight_positive j)
   have htsum : HasSum t ρ := by
-    simpa only [mul_one] using D.weight_sum.mul_left ρ
+    simpa only [mul_one] using! D.weight_sum.mul_left ρ
   have hs : Summable (thresholdCost C t) :=
     summable_logBudget_thresholdCost D hρ
   have htail := tendsto_sum_nat_add (thresholdCost C t)
@@ -58,7 +58,7 @@ theorem mixedLogBudget_binary_returns_of_mean_target
       dyadicMean Q R M (fun N => displacement 2 E N / ρ) < 1 / 4 := by
     rw [dyadicMean_div_const]
     apply (div_lt_iff₀ hρ).2
-    simpa only [div_eq_mul_inv, one_mul, mul_comm] using hW
+    simpa only [div_eq_mul_inv, one_mul, mul_comm] using! hW
   have hmean : dyadicMean Q R M
       (fun N => displacement 2 E N / ρ + thresholdTailTest C t J N) < 1 := by
     rw [dyadicMean_add]
@@ -80,7 +80,7 @@ theorem mixedLogBudget_binary_returns_of_mean_target
     (le_add_of_nonneg_right hT0).trans_lt hsample
   have hWE : displacement 2 E N < ρ := by
     have hh := (div_lt_iff₀ hρ).mp hW1
-    simpa only [one_mul] using hh
+    simpa only [one_mul] using! hh
   have hdN : ∀ d ∈ coverPrefix C J, d ∣ N :=
     fun d hd => ((hdiv d hd).trans hLQ).trans hQN
   have hCV := displacement_host_le_of_thresholdTailTest C t ht hs ρ htsum J N hdN hS

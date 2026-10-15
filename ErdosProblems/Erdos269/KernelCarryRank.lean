@@ -335,7 +335,10 @@ theorem exists_uniform_nonsingular_threePrimeKernel_minor {p q r : ℕ}
     · rw [if_neg hba] at h ⊢
       omega
   rcases n with _ | m
-  · simp [Matrix.det_fin_zero]
+  · have hdet : (Matrix.det fun a b : Fin 0 => threePrimeKernelQ p q r (I a) (J b) k)
+        = (1 : ℚ) := Matrix.det_fin_zero
+    intro hzero
+    exact one_ne_zero (hdet.symm.trans hzero)
   · have hMat : (fun a b : Fin (m + 1) => threePrimeKernelQ p q r (I a) (J b) k)
         = Matrix.diagonal (fun a : Fin (m + 1) => ((rowFactor p q r (I a) k : ℕ) : ℚ)⁻¹)
           * carryStaircase ((r : ℚ)⁻¹) m
@@ -562,14 +565,24 @@ theorem kernel_235_minor2_eq_neg_one_fifteen :
   calc
     (Matrix.det fun a b : Fin 2 => threePrimeKernelQ 2 3 5 a b 0) =
         -(1 / 15 : ℚ) := by
-      simpa [Matrix.det_fin_two, mul_comm] using
-        kernel_235_minor_eq_neg_one_fifteen
+      calc
+        _ = _ := Matrix.det_fin_two (fun a b : Fin 2 => threePrimeKernelQ 2 3 5 a b 0)
+        _ = -(1 / 15 : ℚ) := by
+          simpa only [Fin.val_zero, Fin.val_one, Nat.cast_zero, Nat.cast_one, mul_comm]
+            using kernel_235_minor_eq_neg_one_fifteen
     _ = -1 / 15 := by norm_num
 
 /-- The leading `3 x 3` minor is also nonzero. -/
 theorem kernel_235_minor3_eq_one_over_81000 :
     (Matrix.det fun a b : Fin 3 => threePrimeKernelQ 2 3 5 a b 0) = 1 / 81000 := by
-  norm_num [Matrix.det_fin_three, kernel235_0_0, kernel235_0_1, kernel235_0_2, kernel235_0_3, kernel235_0_4, kernel235_1_0, kernel235_1_1, kernel235_1_2, kernel235_1_3, kernel235_1_4, kernel235_2_0, kernel235_2_1, kernel235_2_2, kernel235_2_3, kernel235_2_4, kernel235_3_0, kernel235_3_1, kernel235_3_2, kernel235_3_3, kernel235_3_4]
+  calc
+    _ = _ := Matrix.det_fin_three (fun a b : Fin 3 => threePrimeKernelQ 2 3 5 a b 0)
+    _ = 1 / 81000 := by
+      norm_num [kernel235_0_0, kernel235_0_1, kernel235_0_2, kernel235_0_3,
+        kernel235_0_4, kernel235_1_0, kernel235_1_1, kernel235_1_2, kernel235_1_3,
+        kernel235_1_4, kernel235_2_0, kernel235_2_1, kernel235_2_2, kernel235_2_3,
+        kernel235_2_4, kernel235_3_0, kernel235_3_1, kernel235_3_2, kernel235_3_3,
+        kernel235_3_4]
 
 /-- **Falsifier: the leading `4 x 4` minor vanishes, and for a sharp reason.**
 On the first four columns, row `3` is an exact rational multiple of row `0`:

@@ -168,7 +168,7 @@ theorem tailShift_recurrence {g : ℕ → ℤ} {T : ℕ → ℚ}
     DyadicTailRecurrence (shiftDigit g h) (tailShift T h) := by
   intro N
   have := tailShift_succ hrec h N
-  simpa [shiftDigit, Nat.add_assoc, Nat.add_comm, Nat.add_left_comm] using this
+  simpa [shiftDigit, Nat.add_assoc, Nat.add_comm, Nat.add_left_comm] using! this
 
 /-- **One step lifts integrality to evenness.**  Because every digit difference
 is even, an integral shift becomes an *even* integral shift after one step. -/
@@ -210,7 +210,7 @@ theorem affinePowTwo_one {g : ℕ → ℤ} {T : ℕ → ℚ}
     (hEven : RatEvenIntegral (tailShift T h N)) :
     RatAffinePowTwo (tailShift T h (N + 1)) (g (N + 1 + h) - g (N + 1)) 1 := by
   have := affinePowTwo_of_evenIntegral hrec h N 1 hEven
-  simpa [dyadicTailBlock, shiftDigit] using this
+  simpa [dyadicTailBlock, shiftDigit] using! this
 
 /-- **The replacement producer.**  Cofinal escape from the data-dependent affine
 cylinders rules out eventual integrality of the fixed shift.  Only one tail is

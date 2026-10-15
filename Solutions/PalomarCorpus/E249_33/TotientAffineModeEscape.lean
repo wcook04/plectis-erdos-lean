@@ -19,7 +19,7 @@ theorem not_eventuallyAffine_pureDyadicEndpointError (c : ℕ) (k : ℤ) :
     pureDyadicEndpointError, totientBlock,
     ErdosProblems.Erdos249.PeriodMultipleEscape.EventuallyAffinePureDyadicEndpointError,
     ErdosProblems.Erdos249.PeriodMultipleEscape.pureDyadicEndpointError,
-    ErdosProblems.Erdos249.CyclotomicAnchoredKill.totientBlock] using
+    ErdosProblems.Erdos249.CyclotomicAnchoredKill.totientBlock] using!
     ErdosProblems.Erdos249.PeriodMultipleEscape.not_eventuallyAffine_pureDyadicEndpointError c k
 
 end PalomarCorpus.E249.TotientAffineModeEscape

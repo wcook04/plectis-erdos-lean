@@ -23,7 +23,7 @@ theorem zudilin_firstTransformedRow_initialMonomial (l : ℕ) :
       ErdosProblems.Erdos1049.zudilinTransformedNormalizedMoment 1 l =
         ErdosProblems.Erdos1049.zudilinNormalizedMoment (l + 1) -
           ErdosProblems.Erdos1049.zudilinNormalizedMoment l := by
-    simpa using
+    simpa using!
       (ErdosProblems.Erdos1049.zudilinTransformedNormalizedMoment_succ 0 l)
   rw [zudilinFirstTransformedRow, hmoment, hmoment, ← hrow]
   exact
@@ -81,7 +81,7 @@ theorem threeHalves_rectangular_hp_gap_gt_threeThirteenths (rho sigma : ℝ)
   simpa [hpThreshold, hpDecay, hpHeight, hpCyclotomicSaving,
     ErdosProblems.Erdos1049.hpThreshold, ErdosProblems.Erdos1049.hpDecay,
     ErdosProblems.Erdos1049.hpHeight,
-    ErdosProblems.Erdos1049.hpCyclotomicSaving] using
+    ErdosProblems.Erdos1049.hpCyclotomicSaving] using!
     ErdosProblems.Erdos1049.threeHalves_rectangular_hp_gap_gt_threeThirteenths
       rho sigma hrho hsigma
 
@@ -121,7 +121,7 @@ theorem exists_distinct_binary_selectors_same_fourJet_of_power_certificate
     homEvalThreeTwo, ErdosProblems.Erdos1049.selectedFourJetSum,
     ErdosProblems.Erdos1049.fourJetSignature,
     ErdosProblems.Erdos1049.bottomJet3, ErdosProblems.Erdos1049.topJet2,
-    ErdosProblems.Erdos1049.homEvalThreeTwo] using
+    ErdosProblems.Erdos1049.homEvalThreeTwo] using!
     ErdosProblems.Erdos1049.exists_distinct_binary_selectors_same_fourJet_of_power_certificate
       forms hpq hT hrank
 
@@ -136,7 +136,7 @@ theorem exists_distinct_binary_selectors_same_fourJet_of_rank_41
     homEvalThreeTwo, ErdosProblems.Erdos1049.selectedFourJetSum,
     ErdosProblems.Erdos1049.fourJetSignature,
     ErdosProblems.Erdos1049.bottomJet3, ErdosProblems.Erdos1049.topJet2,
-    ErdosProblems.Erdos1049.homEvalThreeTwo] using
+    ErdosProblems.Erdos1049.homEvalThreeTwo] using!
     ErdosProblems.Erdos1049.exists_distinct_binary_selectors_same_fourJet_of_rank_41
       forms hT hrank
 

@@ -42,15 +42,15 @@ theorem separation_of_exponential_envelope
         exact Real.exp_le_exp.mpr (neg_le_neg hcross)
       _ = 1 := by rw [Real.exp_neg, Real.exp_log h2q, mul_inv_cancel₀ h2q.ne']
   have hsep := rational_separation_of_small_integer_form A B p (q : ℤ) ξ
-    (by exact_mod_cast hq) (by simpa using hsmall)
+    (by exact_mod_cast hq) (by simpa using! hsmall)
   have hsep' : |(A : ℝ) * ξ - B| ≤
       |(A : ℝ)| * |ξ - (p : ℝ) / (q : ℝ)| := by
-    simpa using hsep
+    simpa using! hsep
   have hmain : Real.exp (-u) ≤ Real.exp w * |ξ - (p : ℝ) / (q : ℝ)| := by
     exact hlo.trans (hsep'.trans
       (mul_le_mul_of_nonneg_right hA (abs_nonneg _)))
   have hdivide : Real.exp (-u) / Real.exp w ≤ |ξ - (p : ℝ) / (q : ℝ)| :=
-    (div_le_iff₀ (Real.exp_pos w)).mpr (by simpa [mul_comm] using hmain)
+    (div_le_iff₀ (Real.exp_pos w)).mpr (by simpa [mul_comm] using! hmain)
   simpa only [← Real.exp_sub, show -u - w = -(u + w) by ring] using hdivide
 
 /-- A positive quadratic crosses every fixed real level. -/
@@ -114,7 +114,7 @@ theorem approximationExponentUpper_of_quadratic_forms
     hq₀.trans_le (by exact_mod_cast hq)
   have hlogq : T * (N : ℝ) ^ 2 < Real.log (q : ℝ) := by
     have h := Real.log_lt_log (Real.exp_pos _) hqgt
-    simpa using h
+    simpa using! h
   have hlog2pos : 0 < Real.log (2 : ℝ) := Real.log_pos (by norm_num)
   have hlogmul : Real.log (2 * (q : ℝ)) = Real.log 2 + Real.log (q : ℝ) :=
     Real.log_mul (by norm_num) hqR.ne'
@@ -137,7 +137,7 @@ theorem approximationExponentUpper_of_quadratic_forms
   have hprev : T * ((n - 1 : ℕ) : ℝ) ^ 2 < Real.log (2 * (q : ℝ)) := by
     exact lt_of_not_ge (Nat.find_min ex (Nat.sub_lt hn0 (by decide)))
   have hprev' : T * ((n : ℝ) - 1) ^ 2 < Real.log 2 + Real.log (q : ℝ) := by
-    simpa [Nat.cast_sub hn1, hlogmul] using hprev
+    simpa [Nat.cast_sub hn1, hlogmul] using! hprev
   have hνT : 0 ≤ ν * T := mul_nonneg hν0.le hT.le
   have hνabs : 0 ≤ ν * |Real.log 2| := mul_nonneg hν0.le (abs_nonneg _)
   have hlinear : ν * T * (2 * (n : ℝ) - 1) + ν * Real.log 2 ≤
@@ -168,16 +168,16 @@ theorem approximationExponentUpper_of_quadratic_forms
         have he : (-τ - η) * sqScale n = -((τ + η) * (n : ℝ) ^ 2) := by
           unfold sqScale
           ring
-        simpa only [he] using hlo)
+        simpa only [he] using! hlo)
       (by
         have he : (-τ + η) * sqScale n = -(T * (n : ℝ) ^ 2) := by
           dsimp [T, sqScale]
           ring
-        simpa only [he] using hup)
-      (by simpa [sqScale] using hAn) hcross
+        simpa only [he] using! hup)
+      (by simpa [sqScale] using! hAn) hcross
     have hid : (τ + η) * (n : ℝ) ^ 2 + (α + η) * (n : ℝ) ^ 2 =
         S * (n : ℝ) ^ 2 := by dsimp [S]; ring
-    simpa only [hid] using hh
+    simpa only [hid] using! hh
   calc
     (q : ℝ) ^ (-ν) = Real.exp (Real.log (q : ℝ) * (-ν)) :=
       Real.rpow_def_of_pos hqR _

@@ -105,7 +105,7 @@ theorem four_ninths_not_mem_of_strict_sqrt_window
   rw [mersenneAchievementSet_eq]
   apply ErdosProblems.Erdos257.four_ninths_not_mem_of_strict_sqrt_window K
   intro N hKN hN
-  simpa [fourNinthsGreedyDefect_eq] using h N hKN hN
+  simpa [fourNinthsGreedyDefect_eq] using! h N hKN hN
 
 end
 

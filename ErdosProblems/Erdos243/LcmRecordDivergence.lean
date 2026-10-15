@@ -52,7 +52,7 @@ theorem not_summable_recordExcessWeight_of_progression
   calc
     ∑ k ∈ s, f (x + k * P) ≤
         ∑ n ∈ Finset.range N, recordExcessWeight U B f n := by
-      simpa only [recordExcessWeight] using hfinite
+      simpa only [recordExcessWeight] using! hfinite
     _ ≤ ∑' n, recordExcessWeight U B f n :=
       hsum.sum_le_tsum (Finset.range N) (fun n _hn => hcharge n)
 

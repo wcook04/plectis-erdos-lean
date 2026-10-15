@@ -29,7 +29,7 @@ theorem strictMono_nat_linear_lower (a : ℕ → ℕ) (ha : StrictMono a) :
   | succ n ih =>
       have hh := ha (Nat.lt_succ_self n)
       have hh' : a n + 1 ≤ a (n + 1) := by
-        simpa [Nat.succ_eq_add_one] using hh
+        simpa [Nat.succ_eq_add_one] using! hh
       omega
 
 /-- Fixed rational quadratic brackets are derived from the actual limit. -/
@@ -78,7 +78,7 @@ theorem quadratic_double_exponential_bounds
   refine ⟨N, 2 * a N, haN, rfl, ?_⟩
   intro k
   induction k with
-  | zero => simpa using And.intro haN (le_refl (2 * a N))
+  | zero => simpa using! And.intro haN (le_refl (2 * a N))
   | succ k ih =>
       have hq := hN₀ (N + k) (by omega)
       have hidx : N + (k + 1) = (N + k) + 1 := by omega
@@ -130,7 +130,7 @@ theorem positive_ratio_one_geometric_envelope
         have hh' : (U 0 : ℝ) ≤ K := by
           dsimp [K]
           exact_mod_cast hh
-        simpa only [pow_zero, mul_one] using hh'
+        simpa only [pow_zero, mul_one] using! hh'
     | succ n ih =>
         by_cases hn : N ≤ n
         · calc

@@ -145,7 +145,7 @@ theorem reciprocal_pred_tendsto_zero
   have hmul : 1 < ((a (N + k) : ℝ) - 1) * ε := (div_lt_iff₀ hε).mp hden
   have hsmall : 1 / ((a (N + k) : ℝ) - 1) < ε :=
     (div_lt_iff₀ hdenpos).2 (by nlinarith [hmul])
-  simpa only [Real.dist_eq, sub_zero, abs_of_pos (one_div_pos.mpr hdenpos)] using hsmall
+  simpa only [Real.dist_eq, sub_zero, abs_of_pos (one_div_pos.mpr hdenpos)] using! hsmall
 
 /-- The actual reciprocal tail on a Sylvester tail. The sum is already
 known to converge, so uniqueness of limits identifies its value. -/
@@ -172,15 +172,15 @@ theorem realTail_eq_of_eventual_sylvester
         simp only [Nat.add_assoc]
         ring
   have hs0 : Summable (fun k : ℕ ↦ 1 / (a (n + k) : ℝ)) := by
-    simpa only [Nat.add_comm] using (summable_nat_add_iff n).2 hs
+    simpa only [Nat.add_comm] using! (summable_nat_add_iff n).2 hs
   have hlim : Tendsto (fun K : ℕ ↦ ∑ k ∈ Finset.range K, 1 / (a (n + k) : ℝ))
       atTop (𝓝 (1 / ((a n : ℝ) - 1))) := by
     simp_rw [htelescope]
-    simpa only [sub_zero] using
+    simpa only [sub_zero] using!
       (tendsto_const_nhds (x := 1 / ((a n : ℝ) - 1))).sub
         (reciprocal_pred_tendsto_zero a ha hpos n)
   have heq := tendsto_nhds_unique hs0.tendsto_sum_tsum_nat hlim
-  simpa only [realTail, Nat.add_comm] using heq
+  simpa only [realTail, Nat.add_comm] using! heq
 
 /-- A finite prefix followed by a nonincreasing natural orbit is bounded. -/
 theorem bounded_of_eventually_nonincreasing (U : ℕ → ℕ)
@@ -269,7 +269,7 @@ theorem canonical_weighted_record_excess
       exact hB
     obtain ⟨N, hN⟩ := weighted_recurrence_of_summable_raw_integral
       q a U (fun _ ↦ 1) V B hq ha2 hU hstep
-      (fun n ↦ by simpa only [one_mul] using herror n)
+      (fun n ↦ by simpa only [one_mul] using! herror n)
       f hf hpos hdiv hbraw hvanish
     refine ⟨N, ?_⟩
     intro n hn

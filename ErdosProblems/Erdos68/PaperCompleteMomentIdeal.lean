@@ -37,7 +37,6 @@ lemma shifted_scalar_gcd_eq {D H : ℕ} (hD : 1 ≤ D) (hDH : D < H) :
     have hdiv := Finset.gcd_dvd
       (f := fun j => (channelScalar (j + 1)).natAbs) hm
     have he : n - 1 + 1 = n := by omega
-    dsimp only at hdiv
     rw [he] at hdiv
     exact Int.natCast_dvd.mpr hdiv
   · apply Finset.dvd_gcd

@@ -167,7 +167,7 @@ lemma realTerms_mul (f g : PowerSeries ℚ) (n : ℕ) :
     realTerms q (f * g) n = ∑ p ∈ antidiagonal n, realTerms q f p.1 * realTerms q g p.2 := by
   simp only [realTerms, coeff_mul, Rat.cast_sum, Rat.cast_mul, Finset.sum_mul]
   refine Finset.sum_congr rfl fun p hp => ?_
-  rw [mem_antidiagonal] at hp
+  rw [Finset.HasAntidiagonal.mem_antidiagonal] at hp
   rw [← hp, pow_add]
   ring
 
@@ -499,7 +499,7 @@ section RealEval
 
 lemma hasSum_sum_antidiagonal {f : ℕ × ℕ → ℝ} {a : ℝ} (hf : HasSum f a) :
     HasSum (fun n => ∑ p ∈ antidiagonal n, f p) a := by
-  have h := (Finset.sigmaAntidiagonalEquivProd.hasSum_iff (f := f)).mpr hf
+  have h := (Finset.HasAntidiagonal.sigmaAntidiagonalEquivProd.hasSum_iff (f := f)).mpr hf
   have h2 := h.sigma (fun n => hasSum_fintype _)
   convert h2 using 1
   funext n

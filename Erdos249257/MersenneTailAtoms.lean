@@ -96,21 +96,26 @@ theorem det_mersenneAtomMatrix
     Matrix.det (mersenneAtomMatrix d idx) =
       ((Matrix.det (mersenneAtomNumeratorMatrix d idx) : ℤ) : ℚ) /
         ∏ j, ((2 : ℚ) ^ (d j : ℕ) - 1) := by
+  let A : Matrix (Fin m) (Fin m) ℚ :=
+    (mersenneAtomNumeratorMatrix d idx).map (fun x : ℤ => (x : ℚ))
   have hmatrix : mersenneAtomMatrix d idx = Matrix.of fun i j =>
       (1 / ((2 : ℚ) ^ (d j : ℕ) - 1)) *
-        ((mersenneAtomNumeratorMatrix d idx i j : ℤ) : ℚ) := by
+        A i j := by
     ext i j
-    simp only [mersenneAtomMatrix, mersenneTailAtom,
+    simp only [A, Matrix.map_apply, mersenneAtomMatrix, mersenneTailAtom,
       mersenneAtomNumeratorMatrix, Matrix.of_apply]
     push_cast
     ring
+  have hfactor : Matrix.det (Matrix.of fun i j =>
+      (1 / ((2 : ℚ) ^ (d j : ℕ) - 1)) * A i j) =
+      (∏ j, (1 / ((2 : ℚ) ^ (d j : ℕ) - 1))) * Matrix.det A :=
+    Matrix.det_mul_row (fun j => 1 / ((2 : ℚ) ^ (d j : ℕ) - 1)) A
   rw [hmatrix]
-  rw [Matrix.det_mul_row]
-  have hcast : Matrix.det (fun i j =>
-      ((mersenneAtomNumeratorMatrix d idx i j : ℤ) : ℚ)) =
+  rw [hfactor]
+  have hcast : Matrix.det A =
       ((Matrix.det (mersenneAtomNumeratorMatrix d idx) : ℤ) : ℚ) := by
     symm
-    simpa only [Matrix.map_apply] using
+    simpa only [A] using
       (Int.cast_det (R := ℚ) (mersenneAtomNumeratorMatrix d idx))
   rw [hcast]
   simp only [div_eq_mul_inv, one_mul]

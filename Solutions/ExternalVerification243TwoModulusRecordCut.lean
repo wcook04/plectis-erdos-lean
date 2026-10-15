@@ -61,11 +61,11 @@ theorem two_modulus_record_cut
     (hrec : ∀ n, s ≤ n → runningMax u n < u (n + 1) → u (n + 1) ≤ u n + 4) :
     ∀ n, s ≤ n → u n < H := by
   have hRs' : ErdosProblems.Erdos243.runningMax u s < H := by
-    simpa [runningMax_eq] using hRs
+    simpa [runningMax_eq] using! hRs
   have hrec' : ∀ n, s ≤ n →
       ErdosProblems.Erdos243.runningMax u n < u (n + 1) → u (n + 1) ≤ u n + 4 := by
     intro n hn hrn
-    exact hrec n hn (by simpa [runningMax_eq] using hrn)
+    exact hrec n hn (by simpa [runningMax_eq] using! hrn)
   exact ErdosProblems.Erdos243.two_modulus_record_cut a u v w hc m l s H hm1 hl1
     hH hmH hlH hred hw hnum hmv hlv hRs' hrec' 
 

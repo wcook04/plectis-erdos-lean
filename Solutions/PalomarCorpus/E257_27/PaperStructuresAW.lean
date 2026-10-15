@@ -45,6 +45,10 @@ theorem paper_compatible_first_condition_gives_nonneg
         localBinarySuffix (globalRepairLowerSupport T.bit n) 1 (n - 1))
     {n : ℕ} (hn : 2 ≤ n) :
     0 ≤ localRepairInteger (globalRepairLowerSupport T.bit n) 1 n := by
-  simpa only [BooleanMobiusGlobalRepairTrajectory_transport_toSrc_bit] using @ErdosProblems.Erdos257.PaperCompleteR21.paper_compatible_first_condition_gives_nonneg (BooleanMobiusGlobalRepairTrajectory_transport_toSrc T) hbound n hn
+  have h := @ErdosProblems.Erdos257.PaperCompleteR21.paper_compatible_first_condition_gives_nonneg
+    (BooleanMobiusGlobalRepairTrajectory_transport_toSrc T) hbound n hn
+  first
+  | (simpa only [BooleanMobiusGlobalRepairTrajectory_transport_toSrc_bit] using h; done)
+  | exact h
 
 end PalomarCorpus.E257.PaperStructuresAW

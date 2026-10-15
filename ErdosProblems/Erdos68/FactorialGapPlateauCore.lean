@@ -649,7 +649,7 @@ theorem tendsto_strictFacTop_factorialGapPrefix_div_factorial :
   have hinv :
       Filter.Tendsto (fun n : ℕ => 1 / (n.factorial : ℝ))
         Filter.atTop (nhds 0) := by
-    simpa only [one_div] using tendsto_inv_atTop_zero.comp hfacTop
+    simpa only [one_div, Function.comp_def] using tendsto_inv_atTop_zero.comp hfacTop
   refine tendsto_of_tendsto_of_tendsto_of_le_of_le'
     (g := fun n : ℕ =>
       _root_.Erdos68.factorialGapSeries -

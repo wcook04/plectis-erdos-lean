@@ -68,7 +68,7 @@ theorem second_order_numerator_identity {R : Type*} [CommRing R]
     u (n + 2) = (a n + a (n + 1)) * u (n + 1) - (a n) ^ 2 * u n := by
   calc
     u (n + 2) = a (n + 1) * u (n + 1) - v (n + 1) := by
-      simpa [Nat.add_assoc] using hnum (n + 1)
+      simpa [Nat.add_assoc] using! hnum (n + 1)
     _ = a (n + 1) * u (n + 1) - a n * v n := by rw [hden n]
     _ = (a n + a (n + 1)) * u (n + 1) - (a n) ^ 2 * u n := by
       rw [hnum n]
