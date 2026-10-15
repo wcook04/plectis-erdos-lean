@@ -54,10 +54,10 @@ individual verification projects and historical editions can use different pins.
 
 ## Videos
 
-The [Plectis introduction](https://wcook04.github.io/plectis/#film-introduction),
-[corpus overview](https://wcook04.github.io/plectis/#film-mathematics-overview)
-and [Erdős #257 demonstration](https://wcook04.github.io/plectis/#film-mathematics)
-are in preparation. Their website slots will link the published recordings.
+The [Plectis introduction](https://www.youtube.com/watch?v=uO2lbstEH9M),
+[corpus overview](https://www.youtube.com/watch?v=4jObDlHmJRA)
+and [Erdős #257 demonstration](https://www.youtube.com/watch?v=Ok5LkL1owjA)
+are available on YouTube.
 The demonstrations show the wider research environment; the sources available
 in this checking companion are mapped above.
 
