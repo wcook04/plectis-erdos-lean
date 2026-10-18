@@ -1,29 +1,29 @@
 version: v0.4
 project:
-  name: A finite denominator exclusion for the factorial-gap series
-  description: Every positive-denominator rational representation of sum n>=2 1/(n!-1) has denominator at least 2^39990 and greater than 10^12040.
+  name: The full finite denominator exclusion for the factorial-gap series
+  description: Every positive-denominator rational representation of sum n>=2 1/(n!-1) satisfies the binary floor, exact Farey-denominator sum floor, and decimal floor.
   authors: [Will Cook]
   license: Apache-2.0
   responsible_maintainers: [Will Cook]
 sources:
-- title: Kernel checked finite size certificate
+- title: Full finite size certificate
   location: ErdosProblems/Erdos68/PaperCompleteFiniteSizeCertificate.lean
   declaration: ErdosProblems.Erdos68.PaperComplete.FiniteLead.SizeOnly.denominator_exclusion
   relationship: other
 automation:
   methods:
   - method: agent
-    tool_setup: Independent Mathlib-only challenge; direct projection of audited source endpoint. Wrapper compile pending.
+    tool_setup: Independent Mathlib-only challenge with exact numeral definitions; direct full-source consumer. Wrapper elaboration pending.
 review:
   status: unchecked
   reviewers: []
-  notes: Source endpoint compiled and axiom-audited; wrapper has not yet compiled or run Comparator.
+  notes: Original twelve-module source compiled on Lean 4.30 and matches this public base byte for byte; the new full wrapper and exact audit/replay are pending. See source_binding.json.
 status:
-  scope: One finite denominator lower bound; no irrationality or factorial-divisibility exclusion.
+  scope: Full three-conjunct finite denominator exclusion; no reducedness or certificate premise, no irrationality or factorial-divisibility conclusion.
   novelty_status: unassessed
-  canonical_claim_status: source audited; wrapper compile pending
+  canonical_claim_status: exact source closure bound offline; new comparison candidate uncompiled and uncompared
 palomar_qualification:
   status: prepared_local_only
-  replay_status: not_run_for_this_entry
+  replay_status: not_run_for_this_selection
   submission_authorization: operator_approval_required_for_exact_public_commit
-  blockers: [Wrapper build and axiom audit pending, Supported-runner Comparator replay pending]
+  blockers: [Explicit Challenge/Solution/audit build pending, Positive and deliberate-negative Comparator/NanoDa replay pending]

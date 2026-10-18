@@ -1,0 +1,157 @@
+{
+  "schema": "finite_denominator_comparison_source_binding_v1",
+  "acceptance": "candidate_uncompiled_uncompared",
+  "selected_theorem": "Erdos249257.ExternalVerification68FiniteDenominator.full_finite_denominator_exclusion",
+  "source_repository": "https://github.com/wcook04/plectis-erdos-lean",
+  "source_commit": "c93c2e4dd86a2e317e0cb650ea244fee1afd59c2",
+  "source_ci_commit": "8e01c98d8e76286b876361478138e39c670fd1b0",
+  "source_ci_run": 36276879997,
+  "source_ci_receipt": "work/prove2me_release_20260923/audits/68_native/finite_size_430/source_ci_readback/receipt.json",
+  "source_ci_receipt_sha256": "fe4c99129b37ddf0b4e784bffb0d1613bbf294d0d2f7c2c787b0ff9532dd5218",
+  "source_toolchain": "leanprover/lean4:v4.30.0",
+  "source_environment_sha256": {
+    "lean-toolchain": "54727eec5cba149c18842e6deb5c41b369d66455c93ce135d7d5347c782b2325",
+    "lake-manifest.json": "48c00670762672b37a1860b0b1192d90d707ac047e7504a1d4828107cb6c902f"
+  },
+  "source_modules": [
+    {
+      "module": "ErdosProblems.Erdos68.ChannelBreakpointRigidity",
+      "path": "ErdosProblems/Erdos68/ChannelBreakpointRigidity.lean",
+      "sha256": "0f62e658b9964a37ad2bf0310d99ec4fa35f385720932d66e91abac28b65a903",
+      "bytes": 6507,
+      "local_imports": []
+    },
+    {
+      "module": "ErdosProblems.Erdos68.ChannelIntegralCongruence",
+      "path": "ErdosProblems/Erdos68/ChannelIntegralCongruence.lean",
+      "sha256": "d57d8b79be5dc956a77e428903ca280d928ffab1201e46da3a79e5eaf3da6558",
+      "bytes": 55452,
+      "local_imports": [
+        "ErdosProblems.Erdos68.ChannelBreakpointRigidity"
+      ]
+    },
+    {
+      "module": "ErdosProblems.Erdos68.FiniteLeadBlocks.Size000",
+      "path": "ErdosProblems/Erdos68/FiniteLeadBlocks/Size000.lean",
+      "sha256": "2a2eb9c4a8150fd3596e7e3aa84fcb848b17a3613afbe8b92564c77dd65dbe43",
+      "bytes": 20818,
+      "local_imports": [
+        "ErdosProblems.Erdos68.PaperCompleteKernelFloorAlgorithm"
+      ]
+    },
+    {
+      "module": "ErdosProblems.Erdos68.FiniteLeadBlocks.Size001",
+      "path": "ErdosProblems/Erdos68/FiniteLeadBlocks/Size001.lean",
+      "sha256": "c0f12afe3eb02a68ed074e2553fb57a8a349457dc7215a26744d3eb0cf13af26",
+      "bytes": 10005,
+      "local_imports": [
+        "ErdosProblems.Erdos68.PaperCompleteKernelFloorAlgorithm"
+      ]
+    },
+    {
+      "module": "ErdosProblems.Erdos68.PaperCompleteDyadicEnclosure",
+      "path": "ErdosProblems/Erdos68/PaperCompleteDyadicEnclosure.lean",
+      "sha256": "148a13d602a1ea80329c35e01ccf18024f045ef39d39ccac426e4bb85cae4d93",
+      "bytes": 8311,
+      "local_imports": [
+        "ErdosProblems.Erdos68.PrimeUnitTranslator"
+      ]
+    },
+    {
+      "module": "ErdosProblems.Erdos68.PaperCompleteFiniteLeadArithmetic",
+      "path": "ErdosProblems/Erdos68/PaperCompleteFiniteLeadArithmetic.lean",
+      "sha256": "75bdc81dd256d15acb2187da3297c0a56e5fabf7075aa285f3c6a75a3dd7dac3",
+      "bytes": 14640,
+      "local_imports": [
+        "ErdosProblems.Erdos68.PaperCompleteDyadicEnclosure"
+      ]
+    },
+    {
+      "module": "ErdosProblems.Erdos68.PaperCompleteFiniteSizeCertificate",
+      "path": "ErdosProblems/Erdos68/PaperCompleteFiniteSizeCertificate.lean",
+      "sha256": "e5f45ce9c9059106eab9a92de62f8142007344f37abb8e31fed687355a181f44",
+      "bytes": 2601,
+      "local_imports": [
+        "ErdosProblems.Erdos68.PaperCompleteKernelSizeSum"
+      ]
+    },
+    {
+      "module": "ErdosProblems.Erdos68.PaperCompleteFiniteSizeData",
+      "path": "ErdosProblems/Erdos68/PaperCompleteFiniteSizeData.lean",
+      "sha256": "f7eee2420c4cc4e79f72ccaffc864fa909a26343134ede511ac11894e65e4e56",
+      "bytes": 60610,
+      "local_imports": [
+        "ErdosProblems.Erdos68.PaperCompleteFiniteLeadArithmetic"
+      ]
+    },
+    {
+      "module": "ErdosProblems.Erdos68.PaperCompleteKernelFloorAlgorithm",
+      "path": "ErdosProblems/Erdos68/PaperCompleteKernelFloorAlgorithm.lean",
+      "sha256": "3ec19d925a4e3c743208d4b0bcf31e111318afc1c75b204c88b2210f05e0a6ce",
+      "bytes": 1864,
+      "local_imports": []
+    },
+    {
+      "module": "ErdosProblems.Erdos68.PaperCompleteKernelFloorSoundness",
+      "path": "ErdosProblems/Erdos68/PaperCompleteKernelFloorSoundness.lean",
+      "sha256": "a1151cbee94a991cce476444e9d59817f60979621d6bc31ba026d94d88ab44f1",
+      "bytes": 6629,
+      "local_imports": [
+        "ErdosProblems.Erdos68.PaperCompleteDyadicEnclosure",
+        "ErdosProblems.Erdos68.PaperCompleteKernelFloorAlgorithm"
+      ]
+    },
+    {
+      "module": "ErdosProblems.Erdos68.PaperCompleteKernelSizeSum",
+      "path": "ErdosProblems/Erdos68/PaperCompleteKernelSizeSum.lean",
+      "sha256": "acd65be630d912730d61400d7c30386dd73d40e74420dc1d88c1c37141014ca0",
+      "bytes": 1185,
+      "local_imports": [
+        "ErdosProblems.Erdos68.FiniteLeadBlocks.Size000",
+        "ErdosProblems.Erdos68.FiniteLeadBlocks.Size001",
+        "ErdosProblems.Erdos68.PaperCompleteFiniteSizeData",
+        "ErdosProblems.Erdos68.PaperCompleteKernelFloorSoundness"
+      ]
+    },
+    {
+      "module": "ErdosProblems.Erdos68.PrimeUnitTranslator",
+      "path": "ErdosProblems/Erdos68/PrimeUnitTranslator.lean",
+      "sha256": "3ef49f719f4596f08efb76f561fef7badf7e287873ffd0ad2cb588cd4acf7a5d",
+      "bytes": 72848,
+      "local_imports": [
+        "ErdosProblems.Erdos68.ChannelIntegralCongruence"
+      ]
+    }
+  ],
+  "direct_full_target_axiom_output_observed": false,
+  "axiom_evidence_boundary": "Existing two-bound bridge audit supports a transitive subset inference for its source theorem; the new selected full wrapper requires its own actual print-axioms receipt.",
+  "candidate_root_toolchain": "leanprover/lean4:v4.29.1",
+  "candidate_root_source_differences": [
+    {
+      "path": "ErdosProblems/Erdos68/ChannelIntegralCongruence.lean",
+      "compiled_sha256": "d57d8b79be5dc956a77e428903ca280d928ffab1201e46da3a79e5eaf3da6558",
+      "candidate_sha256": "89e59623727b9fd496881485cecd226f861daeef77a161cc8a7ecbb49c0f3a12"
+    }
+  ],
+  "build_targets": [
+    "ExternalVerification68FiniteDenominator.Challenge",
+    "ExternalVerification68FiniteDenominator.Solution",
+    "ExternalVerification68FiniteDenominator.AxiomAudit",
+    "ExternalVerification68FiniteDenominator.NegativeSolution"
+  ],
+  "default_target_boundary": "This family is a non-default private Lake library; ordinary default-root CI does not check this selection. Explicit targets and independent replay are required.",
+  "positive_config": "ExternalVerification68FiniteDenominator/comparator.json",
+  "negative_config": "ExternalVerification68FiniteDenominator/comparator-negative-mismatch.json",
+  "expected_negative_diagnostic": "Challenge and solution theorem statement do not match: 'Erdos249257.ExternalVerification68FiniteDenominator.full_finite_denominator_exclusion'",
+  "challenge_publication_limits": {
+    "source": "scripts/check_axiom_budget.py::run_palomar_audits",
+    "source_commit": "c93c2e4dd86a2e317e0cb650ea244fee1afd59c2",
+    "source_sha256": "0b896e2bac3fd890583cbdeea3f111ad8d012711d44a00b702c9e19c857734b6",
+    "hard_bytes": 102400,
+    "hard_lines": 1000,
+    "actual_bytes": 21114,
+    "actual_lines": 29,
+    "hard_limits_pass": true,
+    "preferred_budget": "No advisory byte limit occurs in this governing source; no cap changed."
+  }
+}

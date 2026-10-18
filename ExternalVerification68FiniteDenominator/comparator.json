@@ -1,8 +1,8 @@
 {
   "challenge_module": "ExternalVerification68FiniteDenominator.Challenge",
-  "solution_module": "Solutions.ExternalVerification68FiniteDenominator",
+  "solution_module": "ExternalVerification68FiniteDenominator.Solution",
   "theorem_names": [
-    "Erdos249257.ExternalVerification68FiniteDenominator.finite_denominator_exclusion"
+    "Erdos249257.ExternalVerification68FiniteDenominator.full_finite_denominator_exclusion"
   ],
   "permitted_axioms": [
     "propext",
