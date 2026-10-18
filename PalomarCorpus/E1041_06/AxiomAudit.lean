@@ -1,20 +1,13 @@
 import Solutions.PalomarCorpus.E1041_06
 
-#print axioms PalomarCorpus.E1041.CriticalValueMean.paper_critical_value_mean
-#print axioms PalomarCorpus.E1041.PaperStatementsAB.paper_weighted_free_point
-#print axioms PalomarCorpus.E1041.PaperStatementsD.binomial_chord_decisive_step
-#print axioms PalomarCorpus.E1041.PaperStatementsD.binomial_chord_maximum
-#print axioms PalomarCorpus.E1041.PaperStatementsD.binomial_chords_above_threshold
-#print axioms PalomarCorpus.E1041.PaperStatementsD.binomial_chords_at_threshold
-#print axioms PalomarCorpus.E1041.PaperStatementsD.binomial_chords_below_threshold
-#print axioms PalomarCorpus.E1041.PaperStatementsD.binomial_chords_path
-#print axioms PalomarCorpus.E1041.PaperStatementsD.binomial_inner_chord_maximal
-#print axioms PalomarCorpus.E1041.PaperStatementsF.exists_mergerIntegral_lt
-#print axioms PalomarCorpus.E1041.PaperStatementsF.mergerIntegral_eq_mul_phi
-#print axioms PalomarCorpus.E1041.PaperStatementsF.orliczKernel_continuous
-#print axioms PalomarCorpus.E1041.PaperStatementsF.orliczKernel_tendsto_zero
-#print axioms PalomarCorpus.E1041.PaperStatementsF.orlicz_currency
-#print axioms PalomarCorpus.E1041.PaperStatementsF.phi_div_tendsto_zero
-#print axioms PalomarCorpus.E1041.PaperStatementsF.phi_strictConvexOn
-#print axioms PalomarCorpus.E1041.PaperStatementsF.phi_strictMonoOn
-#print axioms PalomarCorpus.E1041.PaperStatementsL.geometric_row_mean_closed_disc_le
+#print axioms PalomarCorpus.E1041.PaperStatementsB.exists_two_nearest_roots_of_polynomial_critical
+#print axioms PalomarCorpus.E1041.PaperStatementsB.two_nearest_roots_of_polynomial_critical
+#print axioms PalomarCorpus.E1041.PaperStatementsG.complete_straight_path_obstructions
+#print axioms PalomarCorpus.E1041.PaperStatementsK.exists_two_roots_dist_sum_le_two_mul_geomMean
+#print axioms PalomarCorpus.E1041.PaperStatementsQ.complete_sep_or_counterexample
+#print axioms PalomarCorpus.E1041.PaperStatementsR.sextic_spoke_counterexample_whole
+#print axioms PalomarCorpus.E1041.PaperStatementsU.complete_primitive_quintic
+#print axioms PalomarCorpus.E1041.PaperStatementsX.lobe_perimeter_gt
+#print axioms PalomarCorpus.E1041.PaperStatementsX.one_root_gamma_false
+#print axioms PalomarCorpus.E1041.PaperStatementsZA.separation_parent
+#print axioms PalomarCorpus.E1041.PaperStructuresAD.one_root_gamma_false_unconditional

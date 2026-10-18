@@ -1,0 +1,15 @@
+{
+  "challenge_module": "ExternalVerification257PaperStructuresCN.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStructuresCN",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStructuresCN.IsStraddlePrefix.half_strict",
+    "Erdos249257.ExternalVerification257PaperStructuresCN.divInt_mem_nextMersenneDyadicSliver_iff_excess",
+    "Erdos249257.ExternalVerification257PaperStructuresCN.positiveMersenneSupportValue_insert"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,4 +1,6 @@
 import Solutions.PalomarCorpus.E257_21
 
 #print axioms PalomarCorpus.E257.PaperStatementsAA.largest_false_rank_algebra
+#print axioms PalomarCorpus.E257.PaperStatementsAM.positiveMersenneSupportValue_coe_finset_ne_half
+#print axioms PalomarCorpus.E257.PaperStatementsD.half_mem_iff_every_actual_skip_survives
 #print axioms PalomarCorpus.E257.PaperStatementsG.isLastHalfGreedySkip_iff_skip_and_fatal

@@ -21,36 +21,46 @@ open scoped ENNReal
 /- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
 
 namespace PalomarCorpus.E1041.PaperStatementsZA
-export PalomarCorpus.E1041_02.Shared (ConnectedAtMost CriticalMinimum cfaJoinedBelow)
 
-noncomputable def ConnectedBelow (f : ℂ → ℂ) (R L : ℝ) (a b : ℂ) : Prop :=
-  ∃ γ : ℝ → ℂ, ContinuousOn γ (Icc (0 : ℝ) 2) ∧
-    γ 0 = a ∧ γ 2 = b ∧
-    (∀ t ∈ Icc (0 : ℝ) 2, ‖f (γ t)‖ < R) ∧
+noncomputable def ConnectedAtMost (f : ℂ → ℂ) (R L : ℝ) (a b : ℂ) : Prop :=
+  ∃ γ : ℝ → ℂ, ContinuousOn γ (Icc (0 : ℝ) 2) ∧ γ 0 = a ∧ γ 2 = b ∧
+    (∀ t ∈ Icc (0 : ℝ) 2, ‖f (γ t)‖ ≤ R) ∧
     BoundedVariationOn γ (Icc (0 : ℝ) 2) ∧
-    eVariationOn γ (Icc (0 : ℝ) 2) < ENNReal.ofReal L
+    eVariationOn γ (Icc (0 : ℝ) 2) ≤ ENNReal.ofReal L
 
-noncomputable def HasDistinctConnection (p : ℂ[X]) (R L : ℝ) : Prop :=
-  ∃ a b : ℂ, a ≠ b ∧ p.eval a = 0 ∧ p.eval b = 0 ∧ ConnectedBelow p.eval R L a b
-
-noncomputable def LowCriticalThirteenTwentyFifths : Prop :=
-  ∀ (p : ℂ[X]) (μ : ℝ), p.Monic → Squarefree p → 2 ≤ p.natDegree →
-    CriticalMinimum p μ → μ ≤ 13 / 25 → HasDistinctConnection p 1 2
+noncomputable def RootEnumeration {n : ℕ} (p : ℂ[X]) (z : Fin n → ℂ) : Prop :=
+  p = ∏ i, (X - C (z i))
 
 noncomputable def RootsInOpenUnitDisc (p : ℂ[X]) : Prop :=
   ∀ z : ℂ, p.eval z = 0 → ‖z‖ < 1
 
-noncomputable def ScaledLowCritical : Prop :=
-  ∀ (p : ℂ[X]) (μ : ℝ), p.Monic → Squarefree p → 2 ≤ p.natDegree →
-    CriticalMinimum p μ →
-    HasDistinctConnection p ((25 / 13 : ℝ) * μ)
-      (2 * (((25 / 13 : ℝ) * μ) ^ (1 / (p.natDegree : ℝ))))
+noncomputable def cfaJoinedBelow {n : ℕ} (f : ℂ[X]) (z : Fin n → ℂ) (R L : ℝ) : Prop :=
+  ∃ i j : Fin n, i ≠ j ∧
+    (∃ γ : ℝ → ℂ, ContinuousOn γ (Set.Icc (0 : ℝ) 2) ∧ γ 0 = z i ∧ γ 2 = z j ∧
+      (∀ t ∈ Set.Icc (0 : ℝ) 2, ‖f.eval (γ t)‖ < R) ∧
+      BoundedVariationOn γ (Set.Icc (0 : ℝ) 2) ∧
+      eVariationOn γ (Set.Icc (0 : ℝ) 2) ≤ ENNReal.ofReal L) ∧
+    (Squarefree f → z i ≠ z j)
 
-noncomputable def ScaledLowCriticalFiveHalves : Prop :=
-  ∀ (p : ℂ[X]) (μ : ℝ), p.Monic → Squarefree p → 2 ≤ p.natDegree →
-    CriticalMinimum p μ →
-    HasDistinctConnection p ((25 / 13 : ℝ) * μ)
-      ((5 / 2 : ℝ) * (μ ^ (1 / (p.natDegree : ℝ))))
+noncomputable def cfaArityBracket (lam r : ℝ) : ℝ :=
+  Real.sqrt 2 * r / (1 - r) ^ 2 + Real.sqrt (Real.log (lam / r)) +
+    Real.pi / Real.sqrt (Real.log lam)
+
+noncomputable def CFAArityConstruction (n : ℕ) (f : ℂ[X]) (z : Fin n → ℂ) (k₀ : ℕ) (lam r : ℝ) : Prop :=
+  cfaJoinedBelow f z 1 (Real.sqrt (2 / (k₀ : ℝ)) * cfaArityBracket lam r)
+
+noncomputable def cfaBracket (n k : ℕ) (lam r : ℝ) : ℝ :=
+  Real.sqrt (2 / (k : ℝ)) *
+    (Real.sqrt 2 * r / (1 - r) ^ 2 +
+      lam ^ ((1 : ℝ) / (n : ℝ)) *
+        (Real.sqrt (Real.log (lam / r)) + Real.pi / Real.sqrt (Real.log lam)))
+
+noncomputable def CFAPathConstruction : Prop :=
+  ∀ (n : ℕ) (f : ℂ[X]) (z : Fin n → ℂ) (μ lam r : ℝ),
+    3 ≤ n → f.Monic → f.natDegree = n → RootEnumeration f z →
+    CriticalMinimum f μ → 0 < μ → 0 < r → r < 1 → 1 < lam →
+    ∃ k : ℕ, 2 ≤ k ∧
+      cfaJoinedBelow f z (lam * μ) (cfaBracket n k lam r * μ ^ ((1 : ℝ) / (n : ℝ)))
 
 noncomputable def ValueSeparatedAtCentre (f : ℂ[X]) (c : ℂ) (w₀ S : ℝ) : Prop :=
   ∀ d : ℂ, f.derivative.eval d = 0 → d ≠ c → S ≤ ‖f.eval d / f.eval c - (w₀ : ℂ)‖
@@ -68,6 +78,10 @@ noncomputable def CriticalValueSeparationTheorem : Prop :=
       ConnectedAtMost f.eval ‖f.eval c‖
         (Real.sqrt (2 * ‖f.eval c‖ ^ ((2 : ℝ) / (f.natDegree : ℝ)) *
           separationCoefficient f.natDegree S (w₀ * (1 - w₀)))) a b
+
+noncomputable def cfaJoinedAtMost {n : ℕ} (f : ℂ[X]) (z : Fin n → ℂ) (R L : ℝ) : Prop :=
+  ∃ i j : Fin n, i ≠ j ∧ ConnectedAtMost f.eval R L (z i) (z j) ∧
+    (Squarefree f → z i ≠ z j)
 
 theorem separation_parent (hSep : CriticalValueSeparationTheorem)
     {f : ℂ[X]} {c : ℂ} {w₀ S : ℝ}

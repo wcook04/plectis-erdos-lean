@@ -13,3 +13,4 @@ import Solutions.PalomarCorpus.E243_01.PaperStatementsN
 import Solutions.PalomarCorpus.E243_01.PaperStatementsP
 import Solutions.PalomarCorpus.E243_01.PaperStructuresAC
 import Solutions.PalomarCorpus.E243_01.PaperStructuresAD
+import Solutions.PalomarCorpus.E243_01.PaperStructuresAG

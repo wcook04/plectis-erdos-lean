@@ -1,5 +1,10 @@
 import Solutions.PalomarCorpus.E257_29
 
+#print axioms PalomarCorpus.E257.PaperStatementsAR.paper_exact_row_from_skipped_prefix
+#print axioms PalomarCorpus.E257.PaperStatementsBE.paper_critical_dyadic_band_index_eq_top_of_le_two
+#print axioms PalomarCorpus.E257.PaperStatementsBE.paper_critical_dyadic_band_index_unique
+#print axioms PalomarCorpus.E257.PaperStatementsBE.paper_critical_dyadic_boundary_is_smallest
+#print axioms PalomarCorpus.E257.PaperStatementsBE.paper_dyadic_band_escape_iff_single_test
 #print axioms PalomarCorpus.E257.PaperStructuresBY.exists_seamWord_minimal_above
 #print axioms PalomarCorpus.E257.PaperStructuresBY.integerGreedyBits_length
 #print axioms PalomarCorpus.E257.PaperStructuresBY.seamAboveWord_minimal

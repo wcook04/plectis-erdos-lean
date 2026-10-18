@@ -5,8 +5,12 @@ Authors: Will Cook
 -/
 import Mathlib
 import Solutions.PalomarCorpus.E1041_06.Statement
-import Solutions.PalomarCorpus.E1041_06.CriticalValueMean
-import Solutions.PalomarCorpus.E1041_06.PaperStatementsAB
-import Solutions.PalomarCorpus.E1041_06.PaperStatementsD
-import Solutions.PalomarCorpus.E1041_06.PaperStatementsF
-import Solutions.PalomarCorpus.E1041_06.PaperStatementsL
+import Solutions.PalomarCorpus.E1041_06.PaperStatementsB
+import Solutions.PalomarCorpus.E1041_06.PaperStatementsG
+import Solutions.PalomarCorpus.E1041_06.PaperStatementsK
+import Solutions.PalomarCorpus.E1041_06.PaperStatementsQ
+import Solutions.PalomarCorpus.E1041_06.PaperStatementsR
+import Solutions.PalomarCorpus.E1041_06.PaperStatementsU
+import Solutions.PalomarCorpus.E1041_06.PaperStatementsX
+import Solutions.PalomarCorpus.E1041_06.PaperStatementsZA
+import Solutions.PalomarCorpus.E1041_06.PaperStructuresAD

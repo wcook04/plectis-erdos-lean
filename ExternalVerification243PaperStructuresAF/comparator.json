@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification243PaperStructuresAF.Challenge",
+  "solution_module": "Solutions.ExternalVerification243PaperStructuresAF",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification243PaperStructuresAF.nonintegral_regular_rate_irrational"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

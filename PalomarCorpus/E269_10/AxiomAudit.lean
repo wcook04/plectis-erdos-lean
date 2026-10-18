@@ -4,6 +4,7 @@ import Solutions.PalomarCorpus.E269_10
 #print axioms PalomarCorpus.E269.IntegralBranchPinning.surviving_window_orbit_eq_true_state
 #print axioms PalomarCorpus.E269.IntegralBranchPinning.trueNormalizedState_eq_telescope
 #print axioms PalomarCorpus.E269.IntegralBranchPinning.trueNormalizedState_pinning
+#print axioms PalomarCorpus.E269.PaperStructuresI.distinctHeightSum235_irrational
 #print axioms PalomarCorpus.E269.ThreePrimeStructure.exists_uniform_nonsingular_threePrimeKernel_minor
 #print axioms PalomarCorpus.E269.ThreePrimeStructure.kernel_235_minor_eq_neg_one_fifteen
 #print axioms PalomarCorpus.E269.ThreePrimeStructure.smoothExponentShell_card_quadratic

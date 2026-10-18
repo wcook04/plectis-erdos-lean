@@ -1,5 +1,6 @@
 import Solutions.PalomarCorpus.E243_11
 
+#print axioms PalomarCorpus.E243.ProtectedEpochEnergy.protected_epoch_energy_integer
 #print axioms PalomarCorpus.E243.RecordAmplifiedCancellationVisibility.recordAmplified_error_after_cancellation
 #print axioms PalomarCorpus.E243.RecordIncrementBarrier.recordIncrementOne_sylvesterNext_eventually
 #print axioms PalomarCorpus.E243.RepairEntropy.eventually_recoveryPayment_eq_one_of_fixedLength
@@ -11,5 +12,3 @@ import Solutions.PalomarCorpus.E243_11
 #print axioms PalomarCorpus.E243.SummableNegativeMassRigidity.canonical_finite_negative_mass
 #print axioms PalomarCorpus.E243.SummableNegativeMassRigidity.finite_negative_mass_scalar
 #print axioms PalomarCorpus.E243.SummableNegativeMassRigidity.summableNegativeMass_completeRigidity
-#print axioms PalomarCorpus.E243.WeightedRecordExcess.weighted_growth_record_excess
-#print axioms PalomarCorpus.E243.WeightedRecordExcess.weighted_record_excess

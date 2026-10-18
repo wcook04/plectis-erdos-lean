@@ -13,3 +13,4 @@ import Solutions.PalomarCorpus.E243_01
 #print axioms PalomarCorpus.E243.PaperStructuresAC.transport_square_unconditional
 #print axioms PalomarCorpus.E243.PaperStructuresAD.minus_one_forbidden_word
 #print axioms PalomarCorpus.E243.PaperStructuresAD.plus_one_forbidden_word
+#print axioms PalomarCorpus.E243.PaperStructuresAG.squareSpecialisation_holds

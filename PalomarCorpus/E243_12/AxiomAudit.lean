@@ -1,0 +1,4 @@
+import Solutions.PalomarCorpus.E243_12
+
+#print axioms PalomarCorpus.E243.WeightedRecordExcess.weighted_growth_record_excess
+#print axioms PalomarCorpus.E243.WeightedRecordExcess.weighted_record_excess

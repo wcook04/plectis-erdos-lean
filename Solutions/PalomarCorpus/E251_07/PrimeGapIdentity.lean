@@ -8,7 +8,7 @@ import ErdosProblems.Erdos251.PrimeGapDyadicTail
 import Solutions.PalomarCorpus.E251_07.Statement
 
 namespace PalomarCorpus.E251.PrimeGapIdentity
-export PalomarCorpus.E251_07.Shared (prime0 primeGap0)
+export PalomarCorpus.E251_07.Shared (prime0 primeDyadicTerm primeGap0 primeGapDyadicTerm)
 
 theorem prime0_le_polynomial (n : ℕ) :
     prime0 n ≤ 1250 * (n + 1) ^ 4 :=

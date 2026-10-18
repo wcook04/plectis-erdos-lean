@@ -10,7 +10,10 @@
     "PalomarCorpus.E257.PaperStatementsAM.half_mem_mersenneAchievementSet_or_exists_fatal_gap",
     "PalomarCorpus.E257.PaperStatementsAM.paper_achievement_set_topology",
     "PalomarCorpus.E257.PaperStatementsAO.mixedPrimePowerLayerTwo_supportCoeffInt",
-    "PalomarCorpus.E257.PaperStatementsD.greedyHalf_mem_nextMersenneDyadicSliver_iff_excess"
+    "PalomarCorpus.E257.PaperStatementsD.greedyHalf_mem_nextMersenneDyadicSliver_iff_excess",
+    "PalomarCorpus.E257.PaperStructuresCL.dyadicResidualIntNumerator_coprime_oddDenominator",
+    "PalomarCorpus.E257.PaperStructuresCL.dyadicResidualInt_denominator_sandwich",
+    "PalomarCorpus.E257.PaperStructuresCN.divInt_mem_nextMersenneDyadicSliver_iff_excess"
   ],
   "permitted_axioms": [
     "propext",

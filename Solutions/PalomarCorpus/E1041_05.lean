@@ -5,12 +5,12 @@ Authors: Will Cook
 -/
 import Mathlib
 import Solutions.PalomarCorpus.E1041_05.Statement
-import Solutions.PalomarCorpus.E1041_05.PaperStatementsB
-import Solutions.PalomarCorpus.E1041_05.PaperStatementsG
-import Solutions.PalomarCorpus.E1041_05.PaperStatementsK
+import Solutions.PalomarCorpus.E1041_05.PaperStatementsJ
+import Solutions.PalomarCorpus.E1041_05.PaperStatementsM
+import Solutions.PalomarCorpus.E1041_05.PaperStatementsN
+import Solutions.PalomarCorpus.E1041_05.PaperStatementsO
+import Solutions.PalomarCorpus.E1041_05.PaperStatementsP
 import Solutions.PalomarCorpus.E1041_05.PaperStatementsQ
-import Solutions.PalomarCorpus.E1041_05.PaperStatementsR
 import Solutions.PalomarCorpus.E1041_05.PaperStatementsU
-import Solutions.PalomarCorpus.E1041_05.PaperStatementsX
-import Solutions.PalomarCorpus.E1041_05.PaperStatementsZA
-import Solutions.PalomarCorpus.E1041_05.PaperStructuresAD
+import Solutions.PalomarCorpus.E1041_05.PaperStatementsV
+import Solutions.PalomarCorpus.E1041_05.PaperStatementsW

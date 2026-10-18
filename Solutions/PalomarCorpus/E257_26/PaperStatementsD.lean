@@ -25,7 +25,7 @@ open MeasureTheory
 /- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
 
 namespace PalomarCorpus.E257.PaperStatementsD
-export PalomarCorpus.E257_26.Shared (mersenneWeight)
+export PalomarCorpus.E257_26.Shared (mersenneWeight mersenneWeightRat nextDyadicExcessIntNumerator)
 
 noncomputable def CofinalPositiveHalfGreedySkips : Prop :=
   ∀ N : ℕ, ∃ c : ℕ,

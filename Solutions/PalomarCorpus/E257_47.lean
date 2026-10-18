@@ -11,3 +11,4 @@ import Solutions.PalomarCorpus.E257_47.PaperStatementsBC
 import Solutions.PalomarCorpus.E257_47.PaperStatementsM
 import Solutions.PalomarCorpus.E257_47.PaperStructuresBM
 import Solutions.PalomarCorpus.E257_47.PaperStructuresBQ
+import Solutions.PalomarCorpus.E257_47.PaperStructuresCO

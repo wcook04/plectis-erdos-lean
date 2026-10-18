@@ -17,7 +17,8 @@
     "PalomarCorpus.E257.PaperStatementsN.paper_no_ties_take",
     "PalomarCorpus.E257.PaperStatementsN.paper_one_orbit_stability",
     "PalomarCorpus.E257.PaperStatementsN.paper_one_sided_finite_decision_boundary",
-    "PalomarCorpus.E257.PaperStatementsN.tailGreedyRemainder_mersenne"
+    "PalomarCorpus.E257.PaperStatementsN.tailGreedyRemainder_mersenne",
+    "PalomarCorpus.E257.PaperStructuresCM.paper_forced_greedy_tail_lt_weight'"
   ],
   "permitted_axioms": [
     "propext",

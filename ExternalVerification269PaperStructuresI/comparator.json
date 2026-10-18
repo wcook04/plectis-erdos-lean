@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification269PaperStructuresI.Challenge",
+  "solution_module": "Solutions.ExternalVerification269PaperStructuresI",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification269PaperStructuresI.distinctHeightSum235_irrational"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

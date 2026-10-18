@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification249PaperStructuresT
+
+#print axioms Erdos249257.ExternalVerification249PaperStructuresT.irrational_totient_series_of_goodBase_gap

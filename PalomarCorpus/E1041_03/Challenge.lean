@@ -9,7 +9,7 @@ import Mathlib
 set_option autoImplicit false
 
 /-!
-# Erdős #1041, record section 7.1: collinear roots and Chebyshev comparison
+# Erdős #1041, record sections 4 to 7; the cubic path family: a path estimate from area and boundary length; degree three; collinear roots and two sparse polynomial families
 
 Each theorem below restates, against Mathlib alone, a theorem of the Lean development
 for Erdős problem #1041, in the order the papers state them. The definitions a statement
@@ -19,178 +19,205 @@ formalised in this corpus, refutes the total-variation formulation of Erdős pro
 #1041; the theorems in this entry keep their stated hypotheses.
 -/
 
-open Set
 open Polynomial
-open Finset
+open Set
+open scoped ComplexConjugate
+open scoped BigOperators
 open scoped NNReal
 open scoped ENNReal
+open MeasureTheory
+open Finset
+open Polynomial Set
+open Polynomial Metric
 
 namespace PalomarCorpus.E1041_03.Shared
-/-- The real number cos (π / (2 n)). For n ≥ 2 it is the scale that carries the two outermost zeros of the degree-n Chebyshev polynomial to -1 and 1. -/
-noncomputable def endpointScale (n : ℕ) : ℝ :=
-  Real.cos (Real.pi / (2 * (n : ℝ)))
-/-- The sharp endpoint-normalised Chebyshev height C n = 1 / (2 ^ (n - 1) cos ^ n (π / (2 n))), written as the absolute value of (2 ^ (n - 1))⁻¹ * (endpointScale n)⁻¹ ^ n. For n ≥ 2 it is the maximum modulus on [-1, 1] of the monic polynomial T n (cos (π / (2 n)) x) / (2 ^ (n - 1) cos ^ n (π / (2 n))), whose extreme zeros are -1 and 1. The exponent n - 1 is natural subtraction, and the absolute value is cosmetic because the expression is positive for every n ≥ 2; at n = 1 the inverse of cos (π / 2) is 0 by the Lean convention and the value is 0. -/
-noncomputable def comparisonBound (n : ℕ) : ℝ :=
-  |((2 : ℝ) ^ (n - 1))⁻¹ * (endpointScale n)⁻¹ ^ n|
+/-- A closed sublevel connector, allowing the zero-length repeated-root case. Local copy of ErdosProblems.Erdos1041.PaperAnalyticTargets.ConnectedAtMost, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def ConnectedAtMost (f : ℂ → ℂ) (R L : ℝ) (a b : ℂ) : Prop :=
+  ∃ γ : ℝ → ℂ, ContinuousOn γ (Icc (0 : ℝ) 2) ∧ γ 0 = a ∧ γ 2 = b ∧
+    (∀ t ∈ Icc (0 : ℝ) 2, ‖f (γ t)‖ ≤ R) ∧
+    BoundedVariationOn γ (Icc (0 : ℝ) 2) ∧
+    eVariationOn γ (Icc (0 : ℝ) 2) ≤ ENNReal.ofReal L
+/-- Local copy of ErdosProblems.Erdos1041.PaperAnalyticTargets.CriticalMinimum, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def CriticalMinimum (p : ℂ[X]) (μ : ℝ) : Prop :=
+  IsLeast {x : ℝ | ∃ c : ℂ, p.derivative.eval c = 0 ∧ x = ‖p.eval c‖} μ
+/-- Two zero occurrences joined by a path of length at most `L` inside the OPEN sublevel set `{|f| < R}`. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.cfaJoinedBelow, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def cfaJoinedBelow {n : ℕ} (f : ℂ[X]) (z : Fin n → ℂ) (R L : ℝ) : Prop :=
+  ∃ i j : Fin n, i ≠ j ∧
+    (∃ γ : ℝ → ℂ, ContinuousOn γ (Set.Icc (0 : ℝ) 2) ∧ γ 0 = z i ∧ γ 2 = z j ∧
+      (∀ t ∈ Set.Icc (0 : ℝ) 2, ‖f.eval (γ t)‖ < R) ∧
+      BoundedVariationOn γ (Set.Icc (0 : ℝ) 2) ∧
+      eVariationOn γ (Set.Icc (0 : ℝ) 2) ≤ ENNReal.ofReal L) ∧
+    (Squarefree f → z i ≠ z j)
 end PalomarCorpus.E1041_03.Shared
 
-namespace PalomarCorpus.E1041.PaperStatementsI
-open Set
+namespace PalomarCorpus.E1041.PaperStatementsZA
 open Polynomial
-export PalomarCorpus.E1041_03.Shared (comparisonBound endpointScale)
-/-- States prop:sharp-collinear-chebyshev-comparator from the long record for Erdős problem #1041. Transported from ErdosProblems.Erdos1041.SharpCollinearChebyshev.exists_peak_le_comparisonBound in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem exists_peak_le_comparisonBound
-    {m : ℕ} {p : ℝ[X]} {c : Fin (m + 1) → ℝ}
-    (hp : p.IsMonicOfDegree (m + 2))
-    (hc : StrictMono c) (ha : -1 < c 0) (hb : c (Fin.last m) < 1)
-    (hpa : p.eval (-1) = 0) (hpb : p.eval 1 = 0)
-    (hpalt : ∀ i : Fin m,
-      p.eval (c i.castSucc) * p.eval (c i.succ) < 0)
-    (hc_mem : ∀ i : Fin (m + 1), |c i| ≤ 1) :
-    ∃ i : Fin (m + 1), |p.eval (c i)| ≤ comparisonBound (m + 2) := by
-  sorry
-end PalomarCorpus.E1041.PaperStatementsI
-
-namespace PalomarCorpus.E1041.PaperStatementsE
-open Polynomial
-open Finset
 open Set
-/-- The conclusion of the sharp collinear diameter theorem, with the constant left as a parameter `K`. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.CollinearDiameterBound, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def CollinearDiameterBound (n : ℕ) (K : ℝ) : Prop :=
-  ∀ base dir : ℂ, ‖dir‖ = 1 → ∀ (y : Fin n → ℝ) (f : ℂ[X]),
-    f = (∏ k, (X - C (base + dir * (y k : ℂ)))) → ∀ D : ℝ,
-      IsGreatest {d : ℝ | ∃ j k : Fin n,
-          d = dist (base + dir * (y j : ℂ)) (base + dir * (y k : ℂ))} D →
-        ∃ j k : Fin n, j ≠ k ∧ y j ≤ y k ∧
-          (∀ l : Fin n, y l ≤ y j ∨ y k ≤ y l) ∧
-          dist (base + dir * (y j : ℂ)) (base + dir * (y k : ℂ)) ≤ D ∧
-          ∀ z ∈ segment ℝ (base + dir * (y j : ℂ)) (base + dir * (y k : ℂ)),
-            ‖f.eval z‖ ≤ K * (D / 2) ^ n
-/-- States res:sharp-collinear-root-diameter, thm:sharp-collinear-diameter from the long record and the short record for Erdős problem #1041. Transported from ErdosProblems.Erdos1041.PaperCompleteR21.collinearDiameterBound_sharpConstant in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem collinearDiameterBound_sharpConstant {n : ℕ} (hn : 2 ≤ n) :
-    CollinearDiameterBound n
-      (1 / (2 ^ (n - 1) * Real.cos (Real.pi / (2 * (n : ℝ))) ^ n)) := by
-  sorry
-/-- States cor:collinear-erdos-1041, res:sharp-collinear-root-diameter, thm:sharp-collinear-diameter from the long record and the short record for Erdős problem #1041. Transported from ErdosProblems.Erdos1041.PaperCompleteR21.exists_collinear_factorisation in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem exists_collinear_factorisation (base dir : ℂ) :
-    ∀ (n : ℕ) (f : ℂ[X]), f.IsMonicOfDegree n →
-      (∀ z ∈ f.roots, ∃ t : ℝ, z = base + dir * (t : ℂ)) →
-      ∃ y : Fin n → ℝ, f = ∏ k : Fin n, (X - C (base + dir * (y k : ℂ))) := by
-  sorry
-/-- States res:sharp-collinear-root-diameter, thm:sharp-collinear-diameter from the long record and the short record for Erdős problem #1041. Transported from ErdosProblems.Erdos1041.PaperCompleteR21.sharpConstant_le_of_collinearDiameterBound in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem sharpConstant_le_of_collinearDiameterBound {n : ℕ} (hn : 2 ≤ n) {K : ℝ}
-    (hK : CollinearDiameterBound n K) :
-    1 / (2 ^ (n - 1) * Real.cos (Real.pi / (2 * (n : ℝ))) ^ n) ≤ K := by
-  sorry
-/-- States cor:collinear-erdos-1041, res:sharp-collinear-root-diameter, thm:sharp-collinear-diameter from the long record and the short record for Erdős problem #1041. Transported from ErdosProblems.Erdos1041.PaperCompleteR21.sharp_collinear_root_diameter in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem sharp_collinear_root_diameter {n : ℕ} (hn : 2 ≤ n)
-    (base dir : ℂ) (hdir : ‖dir‖ = 1) (y : Fin n → ℝ) (f : ℂ[X])
-    (hf : f = ∏ k, (X - C (base + dir * (y k : ℂ)))) (D : ℝ)
-    (hD : IsGreatest {d : ℝ | ∃ j k : Fin n,
-        d = dist (base + dir * (y j : ℂ)) (base + dir * (y k : ℂ))} D) :
-    ∃ j k : Fin n, j ≠ k ∧ y j ≤ y k ∧
-      (∀ l : Fin n, y l ≤ y j ∨ y k ≤ y l) ∧
-      dist (base + dir * (y j : ℂ)) (base + dir * (y k : ℂ)) ≤ D ∧
-      ∀ z ∈ segment ℝ (base + dir * (y j : ℂ)) (base + dir * (y k : ℂ)),
-        ‖f.eval z‖
-          ≤ 1 / (2 ^ (n - 1) * Real.cos (Real.pi / (2 * (n : ℝ))) ^ n) * (D / 2) ^ n := by
-  sorry
-/-- States res:sharp-collinear-root-diameter, thm:sharp-collinear-diameter from the long record and the short record for Erdős problem #1041. Transported from ErdosProblems.Erdos1041.PaperCompleteR21.sharp_collinear_root_diameter_monic in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem sharp_collinear_root_diameter_monic {n : ℕ} (hn : 2 ≤ n) (f : ℂ[X])
-    (hf : f.IsMonicOfDegree n) (base dir : ℂ) (hdir : ‖dir‖ = 1)
-    (hcol : ∀ z ∈ f.roots, ∃ t : ℝ, z = base + dir * (t : ℂ)) :
-    ∃ y : Fin n → ℝ, f = (∏ k, (X - C (base + dir * (y k : ℂ)))) ∧
-      ∀ D : ℝ, IsGreatest {d : ℝ | ∃ j k : Fin n,
-          d = dist (base + dir * (y j : ℂ)) (base + dir * (y k : ℂ))} D →
-        ∃ j k : Fin n, j ≠ k ∧ y j ≤ y k ∧
-          (∀ l : Fin n, y l ≤ y j ∨ y k ≤ y l) ∧
-          dist (base + dir * (y j : ℂ)) (base + dir * (y k : ℂ)) ≤ D ∧
-          ∀ z ∈ segment ℝ (base + dir * (y j : ℂ)) (base + dir * (y k : ℂ)),
-            ‖f.eval z‖
-              ≤ 1 / (2 ^ (n - 1) * Real.cos (Real.pi / (2 * (n : ℝ))) ^ n)
-                * (D / 2) ^ n := by
-  sorry
-end PalomarCorpus.E1041.PaperStatementsE
-
-namespace PalomarCorpus.E1041.PaperStatementsS
-open Polynomial
-open Finset
-open Set
-export PalomarCorpus.E1041_03.Shared (comparisonBound endpointScale)
-/-- The zeros of the endpoint-normalised scaled Chebyshev polynomial `q_*(x) = T_n(r_n x) / (2^(n-1) r_n^n)` of degree `n = m + 2`, listed in increasing order: `cos((2k+1)π/(2n)) / cos(π/(2n))`. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.chebNode, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def chebNode (m : ℕ) (i : Fin (m + 2)) : ℝ :=
-  Real.cos ((2 * ((m + 1 - (i : ℕ) : ℕ) : ℝ) + 1) * Real.pi / (2 * ((m + 2 : ℕ) : ℝ)))
-    / endpointScale (m + 2)
-/-- The endpoint-normalised monic Chebyshev comparison polynomial. Local copy of ErdosProblems.Erdos1041.SharpCollinearChebyshev.monicScaledChebyshev, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def monicScaledChebyshev (n : ℕ) : ℝ[X] :=
-  C (((2 : ℝ) ^ (n - 1))⁻¹) *
-    (Polynomial.Chebyshev.T ℝ (n : ℤ)).scaleRoots (endpointScale n)⁻¹
-/-- States res:sharp-collinear-root-diameter, thm:sharp-collinear-diameter from the long record and the short record for Erdős problem #1041. Transported from ErdosProblems.Erdos1041.PaperCompleteR21.chebyshev_configuration_attains in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem chebyshev_configuration_attains {m : ℕ} (base dir : ℂ) (hdir : ‖dir‖ = 1)
-    {R : ℝ} (hR : 0 < R) (f : ℂ[X])
-    (hf : f = ∏ k : Fin (m + 2), (X - C (base + dir * ((R * chebNode m k : ℝ) : ℂ)))) :
-    IsGreatest {d : ℝ | ∃ j k : Fin (m + 2),
-        d = dist (base + dir * ((R * chebNode m j : ℝ) : ℂ))
-                 (base + dir * ((R * chebNode m k : ℝ) : ℂ))} (2 * R) ∧
-      ∀ i : Fin (m + 1),
-        ∃ z ∈ segment ℝ (base + dir * ((R * chebNode m i.castSucc : ℝ) : ℂ))
-                        (base + dir * ((R * chebNode m i.succ : ℝ) : ℂ)),
-          ‖f.eval z‖ = comparisonBound (m + 2) * R ^ (m + 2) := by
-  sorry
-/-- States res:sharp-collinear-root-diameter, thm:sharp-collinear-diameter from the long record and the short record for Erdős problem #1041. Transported from ErdosProblems.Erdos1041.PaperCompleteR21.exists_gap_le_comparisonBound in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem exists_gap_le_comparisonBound {m : ℕ} (Y : Fin (m + 2) → ℝ)
-    (hY : StrictMono Y) (hY0 : Y 0 = -1) (hY1 : Y (Fin.last (m + 1)) = 1) :
-    ∃ i : Fin (m + 1), ∀ x ∈ Icc (Y i.castSucc) (Y i.succ),
-      |∏ j, (x - Y j)| ≤ comparisonBound (m + 2) := by
-  sorry
-/-- States res:sharp-collinear-root-diameter, thm:sharp-collinear-diameter from the long record and the short record for Erdős problem #1041. Transported from ErdosProblems.Erdos1041.PaperCompleteR21.monicScaledChebyshev_eq_prod in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem monicScaledChebyshev_eq_prod (m : ℕ) :
-    monicScaledChebyshev (m + 2) = ∏ i : Fin (m + 2), (X - C (chebNode m i)) := by
-  sorry
-/-- States res:sharp-collinear-root-diameter, thm:sharp-collinear-diameter from the long record and the short record for Erdős problem #1041. Transported from ErdosProblems.Erdos1041.PaperCompleteR21.sharp_collinear_equality_attained in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem sharp_collinear_equality_attained {m : ℕ} (base dir : ℂ) (hdir : ‖dir‖ = 1)
-    {D : ℝ} (hD : 0 < D) (f : ℂ[X])
-    (hf : f = ∏ k : Fin (m + 2), (X - C (base + dir * ((D / 2 * chebNode m k : ℝ) : ℂ)))) :
-    IsGreatest {d : ℝ | ∃ j k : Fin (m + 2),
-        d = dist (base + dir * ((D / 2 * chebNode m j : ℝ) : ℂ))
-                 (base + dir * ((D / 2 * chebNode m k : ℝ) : ℂ))} D ∧
-      ∀ i : Fin (m + 1),
-        ∃ z ∈ segment ℝ (base + dir * ((D / 2 * chebNode m i.castSucc : ℝ) : ℂ))
-                        (base + dir * ((D / 2 * chebNode m i.succ : ℝ) : ℂ)),
-          ‖f.eval z‖
-            = 1 / (2 ^ ((m + 2) - 1)
-                * Real.cos (Real.pi / (2 * ((m + 2 : ℕ) : ℝ))) ^ (m + 2))
-              * (D / 2) ^ (m + 2) := by
-  sorry
-end PalomarCorpus.E1041.PaperStatementsS
-
-namespace PalomarCorpus.E1041.PaperStatementsT
-open Polynomial
-open Finset
-open Set
+open scoped ComplexConjugate
+open scoped BigOperators
 open scoped NNReal
 open scoped ENNReal
-/-- The geometric conclusion used by the paper: a continuous rectifiable curve with specified endpoints, containment at every parameter, and a strict variation bound. Local copy of ErdosProblems.Erdos1041.PaperCurve.ConnectedBelow, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def ConnectedBelow (f : ℂ → ℂ) (R L : ℝ) (a b : ℂ) : Prop :=
-  ∃ γ : ℝ → ℂ, ContinuousOn γ (Icc (0 : ℝ) 2) ∧
-    γ 0 = a ∧ γ 2 = b ∧
-    (∀ t ∈ Icc (0 : ℝ) 2, ‖f (γ t)‖ < R) ∧
-    BoundedVariationOn γ (Icc (0 : ℝ) 2) ∧
-    eVariationOn γ (Icc (0 : ℝ) 2) < ENNReal.ofReal L
-/-- States cor:collinear-erdos-1041 from the long record for Erdős problem #1041. Transported from ErdosProblems.Erdos1041.PaperCompleteR21.collinear_erdos_1041 in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem collinear_erdos_1041 {n : ℕ} (hn : 2 ≤ n) (base dir : ℂ) (hdir : ‖dir‖ = 1)
-    (y : Fin n → ℝ) (f : ℂ[X]) (hf : f = ∏ k, (X - C (base + dir * (y k : ℂ))))
-    (hdisc : ∀ k : Fin n, ‖base + dir * (y k : ℂ)‖ < 1) :
-    ∃ j k : Fin n, j ≠ k ∧
-      ConnectedBelow f.eval 1 2
-        (base + dir * (y j : ℂ)) (base + dir * (y k : ℂ)) := by
+export PalomarCorpus.E1041_03.Shared (ConnectedAtMost CriticalMinimum cfaJoinedBelow)
+/-- Local copy of ErdosProblems.Erdos1041.PaperAnalyticTargets.RootEnumeration, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def RootEnumeration {n : ℕ} (p : ℂ[X]) (z : Fin n → ℂ) : Prop :=
+  p = ∏ i, (X - C (z i))
+/-- The arity corollary's bracket: the (CF) bracket after the reductions `ρ ≤ 1` and `(λμ)^{1/n} ≤ 1` that its proof performs. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.cfaArityBracket, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def cfaArityBracket (lam r : ℝ) : ℝ :=
+  Real.sqrt 2 * r / (1 - r) ^ 2 + Real.sqrt (Real.log (lam / r)) +
+    Real.pi / Real.sqrt (Real.log lam)
+/-- **External input for `res:constant-factor-arity`.** The same construction as `CFAPathConstruction`, in the shape its corollary's proof uses: every selected component contains the first-merge component, so its root count is at least `k₀`, and the reductions `ρ ≤ 1`, `(λμ)^{1/n} ≤ 1` available when `λμ ≤ 1` have already been made. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.CFAArityConstruction, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def CFAArityConstruction (n : ℕ) (f : ℂ[X]) (z : Fin n → ℂ) (k₀ : ℕ) (lam r : ℝ) : Prop :=
+  cfaJoinedBelow f z 1 (Real.sqrt (2 / (k₀ : ℝ)) * cfaArityBracket lam r)
+/-- The paper's displayed bracket (CF). Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.cfaBracket, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def cfaBracket (n k : ℕ) (lam r : ℝ) : ℝ :=
+  Real.sqrt (2 / (k : ℝ)) *
+    (Real.sqrt 2 * r / (1 - r) ^ 2 +
+      lam ^ ((1 : ℝ) / (n : ℝ)) *
+        (Real.sqrt (Real.log (lam / r)) + Real.pi / Real.sqrt (Real.log lam)))
+/-- External input for `res:constant-factor-path`, the paper's construction: for a monic `f` of degree `n ≥ 3` with least critical modulus `μ > 0`, every `r ∈ (0,1)` and `λ > 1` give a selected component with `k ≥ 2` roots and a path in `{|f| < λμ}` between two zero occurrences of length at most the bracket (CF) times `μ^{1/n}`. The proof uses Pólya's area inequality, the Koebe distortion theorem, the coarea formula, the area formula for the univalent inverse branches and a mean-value choice of a regular level strictly inside its window. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.CFAPathConstruction, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def CFAPathConstruction : Prop :=
+  ∀ (n : ℕ) (f : ℂ[X]) (z : Fin n → ℂ) (μ lam r : ℝ),
+    3 ≤ n → f.Monic → f.natDegree = n → RootEnumeration f z →
+    CriticalMinimum f μ → 0 < μ → 0 < r → r < 1 → 1 < lam →
+    ∃ k : ℕ, 2 ≤ k ∧
+      cfaJoinedBelow f z (lam * μ) (cfaBracket n k lam r * μ ^ ((1 : ℝ) / (n : ℝ)))
+/-- Two zero occurrences joined by a path of length at most `L` inside the closed sublevel set `{|f| ≤ R}`, with distinct locations when `f` is squarefree. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.cfaJoinedAtMost, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def cfaJoinedAtMost {n : ℕ} (f : ℂ[X]) (z : Fin n → ℂ) (R L : ℝ) : Prop :=
+  ∃ i j : Fin n, i ≠ j ∧ ConnectedAtMost f.eval R L (z i) (z j) ∧
+    (Squarefree f → z i ≠ z j)
+/-- States res:constant-factor-arity from the long record for Erdős problem #1041. Transported from ErdosProblems.Erdos1041.PaperCompleteR21.cfa_arity_criterion in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem cfa_arity_criterion {n : ℕ} {f : ℂ[X]} {z : Fin n → ℂ} {μ : ℝ} {k₀ : ℕ}
+    (hz : RootEnumeration f z) (hμ : CriticalMinimum f μ)
+    (hcase : 0 < μ →
+      (μ ≤ 1 / 2 ∧ 17 ≤ k₀ ∧ CFAArityConstruction n f z k₀ 2 (13 / 100)) ∨
+      (μ ≤ 1 / 4 ∧ 12 ≤ k₀ ∧ CFAArityConstruction n f z k₀ 4 (3 / 25)) ∨
+      (μ ≤ 1 / 8 ∧ 10 ≤ k₀ ∧ CFAArityConstruction n f z k₀ 8 (11 / 100))) :
+    cfaJoinedBelow f z 1 2 := by
   sorry
-/-- States cor:collinear-erdos-1041 from the long record for Erdős problem #1041. Transported from ErdosProblems.Erdos1041.PaperCompleteR21.collinear_erdos_1041_monic in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem collinear_erdos_1041_monic {n : ℕ} (hn : 2 ≤ n) (f : ℂ[X])
-    (hf : f.IsMonicOfDegree n) (base dir : ℂ) (hdir : ‖dir‖ = 1)
-    (hcol : ∀ z ∈ f.roots, ∃ t : ℝ, z = base + dir * (t : ℂ))
-    (hdisc : ∀ z ∈ f.roots, ‖z‖ < 1) :
-    ∃ a b : ℂ, a ∈ f.roots ∧ b ∈ f.roots ∧
-      ConnectedBelow f.eval 1 2 a b := by
+/-- States res:constant-factor-path from the long record for Erdős problem #1041. Transported from ErdosProblems.Erdos1041.PaperCompleteR21.cfa_constant_factor_path in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem cfa_constant_factor_path (hext : CFAPathConstruction)
+    {n : ℕ} {f : ℂ[X]} {z : Fin n → ℂ} {μ : ℝ}
+    (hn : 2 ≤ n) (hmonic : f.Monic) (hdeg : f.natDegree = n)
+    (hz : RootEnumeration f z) (hμ : CriticalMinimum f μ) :
+    cfaJoinedAtMost f z (2 * μ) ((71 / 10) * μ ^ ((1 : ℝ) / (n : ℝ))) ∧
+      (μ ≤ 1 / 2 → cfaJoinedBelow f z 1 5.7) := by
   sorry
-end PalomarCorpus.E1041.PaperStatementsT
+end PalomarCorpus.E1041.PaperStatementsZA
+
+namespace PalomarCorpus.E1041.PaperStatementsY
+open Polynomial
+open scoped NNReal
+open scoped ENNReal
+open scoped BigOperators
+export PalomarCorpus.E1041_03.Shared (cfaJoinedBelow)
+/-- **External input for `res:constant-factor-capacity`.** The averaging proof of `res:constant-factor-path`, rerun on the component `C` of `{|f| < 2μ}` containing the first-merge critical point, with the global area input replaced by the component form `Area(C) ≤ π cap(closure C)² = π κ²(2μ)^{2/n}` of the area-capacity inequality, at `λ = 2`, `r = 1/20`. `κ` is the paper's capacity ratio `cap(closure C)/(2μ)^{1/n}`; the pinned Mathlib has no logarithmic capacity, so `κ` enters as the real parameter this hypothesis is stated for. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.CFACapacityConstruction, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def CFACapacityConstruction (n : ℕ) (f : ℂ[X]) (z : Fin n → ℂ) (κ : ℝ) (k₀ : ℕ) : Prop :=
+  cfaJoinedBelow f z 1
+    (Real.sqrt (2 / (k₀ : ℝ)) *
+      (Real.sqrt 2 * (1 / 20) / (1 - 1 / 20) ^ 2 +
+        κ * (Real.sqrt (Real.log 40) + Real.pi / Real.sqrt (Real.log 2))))
+/-- The paper's `A = 283/3610` and `B = 52029/9100`. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.cfaA, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def cfaA : ℝ := 283 / 3610
+/-- Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.cfaB, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def cfaB : ℝ := 52029 / 9100
+/-- The paper's threshold `τ_k = (√(2k) - A)/B`. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.cfaTau, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def cfaTau (k : ℕ) : ℝ := (Real.sqrt (2 * (k : ℝ)) - cfaA) / cfaB
+/-- States res:constant-factor-capacity from the long record for Erdős problem #1041. Transported from ErdosProblems.Erdos1041.PaperCompleteR21.cfa_capacity_criterion in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem cfa_capacity_criterion {n : ℕ} {f : ℂ[X]} {z : Fin n → ℂ} {κ : ℝ} {k₀ : ℕ}
+    (hk₀ : 2 ≤ k₀) (hκ0 : 0 ≤ κ) (hκ : κ ≤ cfaTau k₀)
+    (hext : CFACapacityConstruction n f z κ k₀) :
+    cfaJoinedBelow f z 1 2 := by
+  sorry
+end PalomarCorpus.E1041.PaperStatementsY
+
+namespace PalomarCorpus.E1041.PaperStatementsZB
+open Set
+open MeasureTheory
+open Polynomial
+open scoped ComplexConjugate
+open scoped BigOperators
+export PalomarCorpus.E1041_03.Shared (ConnectedAtMost CriticalMinimum)
+/-- The half-perimeter property of a set `U`: every point of `U` is joined to every point of its frontier, inside the sublevel set `{|f| ≤ R}`, by a rectifiable path of length at most half of `H¹(∂U)`. For a Jordan domain the paper proves it by choosing one of the two boundary arcs, which needs the Jordan curve theorem; here the property is a hypothesis. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.HalfPerimeterJoin, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def HalfPerimeterJoin (f : ℂ → ℂ) (R : ℝ) (U : Set ℂ) : Prop :=
+  ∀ H : ℝ, μH[(1 : ℝ)] (frontier U) ≤ ENNReal.ofReal H →
+    ∀ p ∈ U, ∀ q ∈ frontier U, ConnectedAtMost f R (H / 2) p q
+/-- The paper's conclusion: two distinct roots joined inside `{|f| ≤ R}` by a rectifiable path of length at most `L`. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.HasDistinctConnectionAtMost, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def HasDistinctConnectionAtMost (f : ℂ → ℂ) (R L : ℝ) : Prop :=
+  ∃ a b : ℂ, a ≠ b ∧ f a = 0 ∧ f b = 0 ∧ ConnectedAtMost f R L a b
+/-- The classical input of stage 1: at the first critical level the sublevel set has two distinct one-root components `U_a`, `U_b` whose closures meet at a critical point, each of perimeter at most `P` and each with the half-perimeter joining property. It packages the component-wise Riemann-Hurwitz count of Ebenfelt, Khavinson and Shapiro, the continuous extension of the inverse branch at a critical point, lower semicontinuity of length under uniform convergence, and the Jordan curve theorem. Local copy of ErdosProblems.Erdos1041.PaperCompleteR21.SubcriticalSplitExists, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def SubcriticalSplitExists (f : ℂ → ℂ) (μ P : ℝ) : Prop :=
+  ∃ (a b c : ℂ) (Ua Ub : Set ℂ), a ≠ b ∧ f a = 0 ∧ f b = 0 ∧
+    a ∈ Ua ∧ b ∈ Ub ∧ c ∈ frontier Ua ∧ c ∈ frontier Ub ∧
+    μH[(1 : ℝ)] (frontier Ua) ≤ ENNReal.ofReal P ∧
+    μH[(1 : ℝ)] (frontier Ub) ≤ ENNReal.ofReal P ∧
+    HalfPerimeterJoin f μ Ua ∧ HalfPerimeterJoin f μ Ub
+/-- States res:conjecture-p-consumer from the long record for Erdős problem #1041. Transported from ErdosProblems.Erdos1041.PaperCompleteR21.subcritical_perimeter_path_paper in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem subcritical_perimeter_path_paper
+    (p : Polynomial ℂ) (n : ℕ) (μ β : ℝ)
+    (hmonic : p.Monic) (hsf : Squarefree p) (hdeg : p.natDegree = n) (hn : 2 ≤ n)
+    (hμ : CriticalMinimum p μ) (hμpos : 0 < μ) (hβ : 0 < β)
+    (hperim : ∀ σ : ℝ, 0 < σ → σ < μ → ∀ z : ℂ, ‖p.eval z‖ ≤ σ →
+      μH[(1 : ℝ)] (frontier (connectedComponentIn {w : ℂ | ‖p.eval w‖ ≤ σ} z))
+        ≤ ENNReal.ofReal (β * σ ^ (1 / (n : ℝ))))
+    (hsplit : SubcriticalSplitExists (fun z => p.eval z) μ (β * μ ^ (1 / (n : ℝ)))) :
+    HasDistinctConnectionAtMost (fun z => p.eval z) μ (β * μ ^ (1 / (n : ℝ))) := by
+  sorry
+end PalomarCorpus.E1041.PaperStatementsZB
+
+namespace PalomarCorpus.E1041.CubicPath
+open Finset
+open Polynomial Set
+open scoped BigOperators
+open Polynomial
+open scoped ComplexConjugate
+open scoped ENNReal
+open Polynomial Metric
+open Polynomial Set
+open scoped BigOperators
+/-- The two-segment path from a to b through the hub c, defined for every real t by c + max (1 - t) 0 * (a - c) + max (t - 1) 0 * (b - c) with the real coefficients cast into the complex numbers; it equals a at t = 0, the hub c at t = 1, and b at t = 2, and the clamped coefficients make it continuous and piecewise affine on the whole real line. -/
+noncomputable def hub (a c b : ℂ) (t : ℝ) : ℂ :=
+  c + ((max (1 - t) 0 : ℝ) : ℂ) * (a - c) +
+    ((max (t - 1) 0 : ℝ) : ℂ) * (b - c)
+/-- For a monic cubic p presented as the product over i in Fin 3 of (X - C (z i)) whose three listed roots all have modulus strictly below 1, there are distinct indices i, j and a hub c such that hub (z i) c (z j) is continuous, has bounded variation on Icc 0 2, satisfies ‖p.eval (hub (z i) c (z j) t)‖ < 1 for every t in Icc 0 2, and has extended variation strictly below ENNReal.ofReal 2; a second existential gives some curve γ continuous on Icc 0 2 with γ 0 = z i, γ 2 = z j and the same containment and variation bounds, without asserting that γ is that hub path; and Squarefree p implies z i ≠ z j. This is the complete degree-three case of the parent problem in its root-occurrence reading. -/
+theorem cubic_paper_complete (p : ℂ[X]) (z : Fin 3 → ℂ)
+    (hp : p = ∏ i, (X - C (z i))) (hz : ∀ i, ‖z i‖ < 1) :
+    ∃ i j : Fin 3, ∃ c : ℂ, i ≠ j ∧
+      Continuous (hub (z i) c (z j)) ∧
+      BoundedVariationOn (hub (z i) c (z j)) (Icc (0 : ℝ) 2) ∧
+      ((∀ t ∈ Icc (0 : ℝ) 2, ‖p.eval (hub (z i) c (z j) t)‖ < 1) ∧
+        eVariationOn (hub (z i) c (z j)) (Icc (0 : ℝ) 2) < ENNReal.ofReal 2) ∧
+      (∃ γ : ℝ → ℂ, ContinuousOn γ (Icc (0 : ℝ) 2) ∧
+        γ 0 = z i ∧ γ 2 = z j ∧
+        (∀ t ∈ Icc (0 : ℝ) 2, ‖p.eval (γ t)‖ < 1) ∧
+        BoundedVariationOn γ (Icc (0 : ℝ) 2) ∧
+        eVariationOn γ (Icc (0 : ℝ) 2) < ENNReal.ofReal 2) ∧
+      (Squarefree p → z i ≠ z j) := by
+  sorry
+/-- The same degree-three theorem with the cubic given by monicity and degree in place of a root list: for monic p of natural degree 3 every zero of which has modulus strictly below 1, there are zeros a and b of p and a hub c such that hub a c b is continuous, has bounded variation on Icc 0 2, satisfies ‖p.eval (hub a c b t)‖ < 1 for every t in Icc 0 2, and has extended variation strictly below ENNReal.ofReal 2; a second existential gives some curve γ continuous on Icc 0 2 with γ 0 = a, γ 2 = b and the same bounds, without asserting that γ is that hub path. Squarefree p gives a ≠ b; without it a and b may coincide, the degenerate repeated-root case joined by a constant path. -/
+theorem monic_cubic_connector (p : ℂ[X]) (hm : p.Monic)
+    (hd : p.natDegree = 3) (hz : ∀ z : ℂ, p.eval z = 0 → ‖z‖ < 1) :
+    ∃ a b c : ℂ, p.eval a = 0 ∧ p.eval b = 0 ∧
+      Continuous (hub a c b) ∧
+      BoundedVariationOn (hub a c b) (Icc (0 : ℝ) 2) ∧
+      ((∀ t ∈ Icc (0 : ℝ) 2, ‖p.eval (hub a c b t)‖ < 1) ∧
+        eVariationOn (hub a c b) (Icc (0 : ℝ) 2) < ENNReal.ofReal 2) ∧
+      (∃ γ : ℝ → ℂ, ContinuousOn γ (Icc (0 : ℝ) 2) ∧
+        γ 0 = a ∧ γ 2 = b ∧
+        (∀ t ∈ Icc (0 : ℝ) 2, ‖p.eval (γ t)‖ < 1) ∧
+        BoundedVariationOn γ (Icc (0 : ℝ) 2) ∧
+        eVariationOn γ (Icc (0 : ℝ) 2) < ENNReal.ofReal 2) ∧
+      (Squarefree p → a ≠ b) := by
+  sorry
+/-- Translated cubic quotient fibres. Let `q ≥ 2`, let `h` be a complex centre and let `P` be a monic complex polynomial of natural degree 3. Suppose every zero `z` of `z ↦ P.eval ((z - h) ^ q)` has modulus strictly below 1, and that this function has two distinct zeros. Then it has two distinct zeros `a` and `b` such that the two-segment path `hub a h b` from `a` through the centre `h` to `b` satisfies `‖P.eval ((hub a h b t - h) ^ q)‖ < 1` for every `t` in `Icc 0 2` and has extended variation strictly below `ENNReal.ofReal 2` on `Icc 0 2`. The factorisation of `P`, the bounds on its roots and the choice of the two zeros are derived in the proof; none of them is a hypothesis. -/
+theorem complete_translated_cubic_quotient_fibres
+    {q : ℕ} (hq : 2 ≤ q) (h : ℂ) (P : ℂ[X])
+    (hP : P.Monic) (hdeg : P.natDegree = 3)
+    (hdisk : ∀ z : ℂ, P.eval ((z - h) ^ q) = 0 → ‖z‖ < 1)
+    (htwo : ∃ a b : ℂ, a ≠ b ∧
+      P.eval ((a - h) ^ q) = 0 ∧ P.eval ((b - h) ^ q) = 0) :
+    ∃ a b : ℂ, a ≠ b ∧ P.eval ((a - h) ^ q) = 0 ∧
+      P.eval ((b - h) ^ q) = 0 ∧
+      (∀ t ∈ Icc (0 : ℝ) 2, ‖P.eval ((hub a h b t - h) ^ q)‖ < 1) ∧
+      eVariationOn (hub a h b) (Icc (0 : ℝ) 2) < ENNReal.ofReal 2 := by
+  sorry
+end PalomarCorpus.E1041.CubicPath

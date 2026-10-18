@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification257PaperStructuresCK.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStructuresCK",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStructuresCK.affineBinaryOrbit_sub"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification257PaperStructuresCI
+
+#print axioms Erdos249257.ExternalVerification257PaperStructuresCI.exists_strengthened_not_old_or_weighted_host

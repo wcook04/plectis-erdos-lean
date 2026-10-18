@@ -9,7 +9,8 @@
     "PalomarCorpus.E257.PaperStatementsBC.paper_terminalhalf",
     "PalomarCorpus.E257.PaperStatementsM.paper_general_repair_criteria",
     "PalomarCorpus.E257.PaperStructuresBM.one_div_twenty_one_mem_mersenneAchievementSet_of_cofinalGreedyDecay",
-    "PalomarCorpus.E257.PaperStructuresBQ.twentyOneCofinalEvenQuotientGreedyDecay_of_closedRows"
+    "PalomarCorpus.E257.PaperStructuresBQ.twentyOneCofinalEvenQuotientGreedyDecay_of_closedRows",
+    "PalomarCorpus.E257.PaperStructuresCO.paper_terminalhalf_iff"
   ],
   "permitted_axioms": [
     "propext",

@@ -12,9 +12,9 @@
     "PalomarCorpus.E257.PaperStatementsAM.fatal_gap_excludes_every_representation",
     "PalomarCorpus.E257.PaperStatementsAM.fatal_gap_within_prefix_interval",
     "PalomarCorpus.E257.PaperStatementsAM.half_ne_coe_finset_add_mersenneTail",
-    "PalomarCorpus.E257.PaperStatementsAM.positiveMersenneSupportValue_coe_finset_ne_half",
-    "PalomarCorpus.E257.PaperStatementsD.half_mem_iff_every_actual_skip_survives",
     "PalomarCorpus.E257.PaperStructuresBJ.prefix_add_mersenneTail_lt_half_of_eventually_right",
+    "PalomarCorpus.E257.PaperStructuresCH.IsStraddlePrefix.half_strict",
+    "PalomarCorpus.E257.PaperStructuresCN.positiveMersenneSupportValue_insert",
     "PalomarCorpus.E257.PaperStructuresU.IsStraddlePrefix.half_step_forced",
     "PalomarCorpus.E257.PaperStructuresU.isStraddlePrefix_step_trichotomy"
   ],

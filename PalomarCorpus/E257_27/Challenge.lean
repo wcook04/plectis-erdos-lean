@@ -9,7 +9,7 @@ import Mathlib
 set_option autoImplicit false
 
 /-!
-# Erdős #257: two implications yielding half-membership; compatible finite approximations; a quotient bound at a crossing
+# Erdős #257, record sections 6.2 to 6.3: exact identities and reductions; consequence theorems (part 3 of 3)
 
 Each theorem below restates, against Mathlib alone, a theorem of the Lean development
 for Erdős problem #257, in the order the papers state them. The definitions a statement
@@ -18,12 +18,12 @@ the source declaration it comes from. Erdős problem #257 remains open, and no t
 this entry decides it.
 -/
 
+open scoped BigOperators
 open Filter
 open Set
 open Topology
 open scoped ENNReal
 open MeasureTheory
-open scoped BigOperators
 
 namespace PalomarCorpus.E257_27.Shared
 /-- Structural part of an endpoint-by-endpoint repair trajectory. The arithmetic producer receipts are separated into `GlobalBooleanMobiusRepairFeasible` below. Local copy of Erdos249257.BooleanMobiusGlobalRepairTrajectory, restated so the compared statements elaborate against Mathlib alone. -/
@@ -68,18 +68,6 @@ noncomputable def CofinalPositiveHalfGreedySkips : Prop :=
       0 < greedyMersenneRemainderRat (1 / 2 : ℚ) (c - 1) ∧
       greedyMersenneRemainderRat (1 / 2 : ℚ) (c - 1) <
         mersenneWeightRat c
-/-- The exact finite Mersenne value of a Boolean lower support. Local copy of Erdos249257.localMersennePrefixValue, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def localMersennePrefixValue (D : Finset ℕ) : ℚ :=
-  ∑ d ∈ D, mersenneWeightRat d
-/-- The remaining arithmetic socket in the protected-core construction. Whenever a below-half core is crossed by rank `c`, adjoining `c` must already reach the integral half target at endpoint `2c-2`. By `localBinarySuffix_two_mul_sub_two_lt_criticalCapacity_iff`, this is exactly the sharp `c-2`-bit capacity needed by the strict-upper skipped-core fill. The deficit hypothesis records that `c` is a genuine crossing rank. Local copy of Erdos249257.SkippedCoreCriticalQuotientSupply, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def SkippedCoreCriticalQuotientSupply : Prop :=
-  ∀ (D : Finset ℕ) (c : ℕ),
-    4 ≤ c →
-    (∀ d ∈ D, 2 ≤ d ∧ d < c) →
-    localMersennePrefixValue D < (1 / 2 : ℚ) →
-    (1 / 2 : ℚ) - localMersennePrefixValue D < mersenneWeightRat c →
-    2 ^ ((2 * c - 2) - 1) ≤
-      localPrefixQuotient (insert c D) (2 * c - 2)
 /-- The real number coded by a set A of exponents, namely the sum over a in A with a at least 1 of 1 divided by 2 to the power a minus 1; the indexing runs over k and evaluates the indicator at k+1, so only positive exponents contribute. -/
 noncomputable def positiveMersenneSupportValue (A : Set ℕ) : ℝ :=
   ∑' k : ℕ, Set.indicator A mersenneWeight (k + 1)
@@ -87,6 +75,94 @@ noncomputable def positiveMersenneSupportValue (A : Set ℕ) : ℝ :=
 noncomputable def mersenneAchievementSet : Set ℝ :=
   {x : ℝ | ∃ A : Set ℕ, 0 ∉ A ∧ x = positiveMersenneSupportValue A}
 end PalomarCorpus.E257_27.Shared
+
+namespace PalomarCorpus.E257.PaperStructuresCJ
+open scoped BigOperators
+/-- Local definition PerturbedFamily, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+structure PerturbedFamily (α : Type*) where
+  oldSum : α → ℕ
+  pulse : α → ℕ
+  gap : ℕ
+  pulseCap : ℕ
+  gap_pos : 0 < gap
+  pulse_le : ∀ x, pulse x ≤ pulseCap
+  oldSum_injective : Function.Injective oldSum
+  separated : ∀ {x y}, oldSum x < oldSum y →
+    oldSum x + gap ≤ oldSum y
+  pulseCap_lt_three_gap : pulseCap < 3 * gap
+/-- Local definition AdjacentCut, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+structure PerturbedFamily.AdjacentCut {α : Type*} (F : PerturbedFamily α) (C : ℕ) where
+  below : α
+  above : α
+  below_admissible : F.oldSum below ≤ C
+  below_maximal : ∀ x, F.oldSum x ≤ C → F.oldSum x ≤ F.oldSum below
+  above_strict : C < F.oldSum above
+  above_minimal : ∀ x, C < F.oldSum x → F.oldSum above ≤ F.oldSum x
+/-- Local definition abovePulse, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def PerturbedFamily.AdjacentCut.abovePulse {α : Type*} {F : PerturbedFamily α} {C : ℕ} (K : F.AdjacentCut C) : ℕ := F.pulse K.above
+/-- Local definition belowPulse, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def PerturbedFamily.AdjacentCut.belowPulse {α : Type*} {F : PerturbedFamily α} {C : ℕ} (K : F.AdjacentCut C) : ℕ := F.pulse K.below
+/-- Local definition newCapacity, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def PerturbedFamily.AdjacentCut.newCapacity {α : Type*} {F : PerturbedFamily α} {C : ℕ} (_K : F.AdjacentCut C) : ℕ := 4 * C + F.gap
+/-- Local definition overshoot, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def PerturbedFamily.AdjacentCut.overshoot {α : Type*} {F : PerturbedFamily α} {C : ℕ} (K : F.AdjacentCut C) : ℕ := F.oldSum K.above - C
+/-- Local definition remainder, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def PerturbedFamily.AdjacentCut.remainder {α : Type*} {F : PerturbedFamily α} {C : ℕ} (K : F.AdjacentCut C) : ℕ := C - F.oldSum K.below
+/-- Local definition successorCarries, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def PerturbedFamily.AdjacentCut.successorCarries {α : Type*} {F : PerturbedFamily α} {C : ℕ} (K : F.AdjacentCut C) : Prop :=
+  4 * K.overshoot + K.abovePulse ≤ F.gap
+/-- Local definition prefixRemainder, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def PerturbedFamily.AdjacentCut.prefixRemainder {α : Type*} {F : PerturbedFamily α} {C : ℕ} (K : F.AdjacentCut C) [Decidable K.successorCarries] : ℕ :=
+  if K.successorCarries then
+    F.gap - (4 * K.overshoot + K.abovePulse)
+  else
+    4 * K.remainder + F.gap - K.belowPulse
+/-- Local definition terminalWeight, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def PerturbedFamily.AdjacentCut.terminalWeight {α : Type*} {F : PerturbedFamily α} {C : ℕ} (_K : F.AdjacentCut C) : ℕ := 2 * F.gap + 4
+/-- Local definition nextRemainder, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def PerturbedFamily.AdjacentCut.nextRemainder {α : Type*} {F : PerturbedFamily α} {C : ℕ} (K : F.AdjacentCut C) [Decidable K.successorCarries] : ℕ :=
+  if K.terminalWeight ≤ K.prefixRemainder then
+    K.prefixRemainder - K.terminalWeight
+  else
+    K.prefixRemainder
+/-- Local definition prefixChoice, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def PerturbedFamily.AdjacentCut.prefixChoice {α : Type*} {F : PerturbedFamily α} {C : ℕ} (K : F.AdjacentCut C) [Decidable K.successorCarries] : α :=
+  if K.successorCarries then K.above else K.below
+/-- Local definition newSum, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def PerturbedFamily.newSum {α : Type*} (F : PerturbedFamily α) (x : α) : ℕ := 4 * F.oldSum x + F.pulse x
+/-- States thm:perturbed-family-maximality from the long record for Erdős problem #257. Transported from Erdos249257.HalfCylinderIntegerGreedy.PerturbedFamily.AdjacentCut.above_newSum_le_capacity_iff in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem above_newSum_le_capacity_iff {α : Type*} {F : PerturbedFamily α} {C : ℕ} (K : F.AdjacentCut C) :
+    F.newSum K.above ≤ K.newCapacity ↔ K.successorCarries := by
+  sorry
+/-- States thm:perturbed-family-maximality from the long record for Erdős problem #257. Transported from Erdos249257.HalfCylinderIntegerGreedy.PerturbedFamily.AdjacentCut.below_newSum_le_capacity in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem below_newSum_le_capacity {α : Type*} {F : PerturbedFamily α} {C : ℕ} (K : F.AdjacentCut C)
+    (hcap : F.pulseCap < F.gap) :
+    F.newSum K.below ≤ K.newCapacity := by
+  sorry
+/-- States thm:perturbed-family-maximality from the long record for Erdős problem #257. Transported from Erdos249257.HalfCylinderIntegerGreedy.PerturbedFamily.AdjacentCut.nextRemainder_trichotomy in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem nextRemainder_trichotomy {α : Type*} {F : PerturbedFamily α} {C : ℕ} (K : F.AdjacentCut C)
+    [Decidable K.successorCarries] :
+    K.nextRemainder =
+      if K.successorCarries then
+        F.gap - (4 * K.overshoot + K.abovePulse)
+      else if 4 * K.remainder + F.gap - K.belowPulse < K.terminalWeight then
+        4 * K.remainder + F.gap - K.belowPulse
+      else
+        4 * K.remainder - F.gap - K.belowPulse - 4 := by
+  sorry
+/-- States thm:perturbed-family-maximality from the long record for Erdős problem #257. Transported from Erdos249257.HalfCylinderIntegerGreedy.PerturbedFamily.AdjacentCut.prefixChoice_maximal in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem prefixChoice_maximal {α : Type*} {F : PerturbedFamily α} {C : ℕ} (K : F.AdjacentCut C)
+    (hcap : F.pulseCap < F.gap)
+    [Decidable K.successorCarries]
+    {x : α} (hx : F.newSum x ≤ K.newCapacity) :
+    F.newSum x ≤ F.newSum K.prefixChoice := by
+  sorry
+/-- States thm:perturbed-family-maximality from the long record for Erdős problem #257. Transported from Erdos249257.HalfCylinderIntegerGreedy.PerturbedFamily.AdjacentCut.prefixRemainder_eq_capacity_sub_choice in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem prefixRemainder_eq_capacity_sub_choice {α : Type*} {F : PerturbedFamily α} {C : ℕ} (K : F.AdjacentCut C)
+    [Decidable K.successorCarries] :
+    K.prefixRemainder = K.newCapacity - F.newSum K.prefixChoice := by
+  sorry
+end PalomarCorpus.E257.PaperStructuresCJ
 
 namespace PalomarCorpus.E257.PaperStatementsAL
 open Filter
@@ -109,7 +185,10 @@ open scoped ENNReal
 open MeasureTheory
 open Topology
 open scoped BigOperators
-export PalomarCorpus.E257_27.Shared (CofinalExactLocalMersenneHalfRows ExactLocalMersenneHalfRow SkippedCoreCriticalQuotientSupply localMersennePrefixValue localMersenneQuotient localPrefixQuotient mersenneAchievementSet mersenneWeight mersenneWeightRat positiveMersenneSupportValue)
+export PalomarCorpus.E257_27.Shared (CofinalExactLocalMersenneHalfRows ExactLocalMersenneHalfRow localMersenneQuotient localPrefixQuotient mersenneAchievementSet mersenneWeight mersenneWeightRat positiveMersenneSupportValue)
+/-- The exact finite Mersenne value of a Boolean lower support. Local copy of Erdos249257.localMersennePrefixValue, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def localMersennePrefixValue (D : Finset ℕ) : ℚ :=
+  ∑ d ∈ D, mersenneWeightRat d
 /-- The real Mersenne value carried by a finite exact-row support. Local copy of Erdos249257.exactLocalMersenneRowValue, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def exactLocalMersenneRowValue (D : Finset ℕ) : ℝ :=
   ((localMersennePrefixValue D : ℚ) : ℝ)
@@ -121,19 +200,9 @@ theorem abs_exactLocalMersenneRowValue_sub_half_le
     |exactLocalMersenneRowValue D - (1 : ℝ) / 2| ≤
       ((n + 1 : ℕ) : ℝ) / (2 : ℝ) ^ n := by
   sorry
-/-- States record:257bm-c4, record:257bm-c5 from the long record for Erdős problem #257. Transported from Erdos249257.cofinalExactLocalMersenneHalfRows_of_criticalQuotientSupply in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem cofinalExactLocalMersenneHalfRows_of_criticalQuotientSupply
-    (hcap : SkippedCoreCriticalQuotientSupply) :
-    CofinalExactLocalMersenneHalfRows := by
-  sorry
 /-- States record:257bm-c1 from the long record for Erdős problem #257. Transported from Erdos249257.half_mem_mersenneAchievementSet_of_cofinalExactLocalRows in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem half_mem_mersenneAchievementSet_of_cofinalExactLocalRows
     (hcofinal : CofinalExactLocalMersenneHalfRows) :
-    (1 / 2 : ℝ) ∈ mersenneAchievementSet := by
-  sorry
-/-- States record:257bm-c4 from the long record for Erdős problem #257. Transported from Erdos249257.half_mem_mersenneAchievementSet_of_criticalQuotientSupply in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem half_mem_mersenneAchievementSet_of_criticalQuotientSupply
-    (hcap : SkippedCoreCriticalQuotientSupply) :
     (1 / 2 : ℝ) ∈ mersenneAchievementSet := by
   sorry
 end PalomarCorpus.E257.PaperStatementsAR
@@ -164,24 +233,7 @@ open Filter
 open scoped ENNReal
 open MeasureTheory
 open Topology
-export PalomarCorpus.E257_27.Shared (CofinalExactLocalMersenneHalfRows CofinalPositiveHalfGreedySkips ExactLocalMersenneHalfRow SkippedCoreCriticalQuotientSupply greedyMersenneRemainderRat localMersennePrefixValue localMersenneQuotient localPrefixQuotient mersenneWeightRat)
-/-- Positive exponents selected through a finite exact-rational greedy run. Local copy of Erdos249257.greedyMersennePrefixRat, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def greedyMersennePrefixRat (x : ℚ) (n : ℕ) : Finset ℕ :=
-  (((Finset.range n).filter fun k =>
-      mersenneWeightRat (k + 1) ≤ greedyMersenneRemainderRat x k).image
-    fun k => k + 1)
-/-- Local copy of Erdos249257.halfGreedyPrefixSupport, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def halfGreedyPrefixSupport (n : ℕ) : Finset ℕ :=
-  greedyMersennePrefixRat (1 / 2 : ℚ) n
-/-- The minimal actual-orbit form of the socket: the quotient lower bound is required only when rank `c` is genuinely skipped by the rational half-greedy orbit. Local copy of Erdos249257.HalfGreedySkippedCriticalQuotientSupply, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def HalfGreedySkippedCriticalQuotientSupply : Prop :=
-  ∀ c : ℕ,
-    4 ≤ c →
-    greedyMersenneRemainderRat (1 / 2 : ℚ) (c - 1) <
-      mersenneWeightRat c →
-    2 ^ ((2 * c - 2) - 1) ≤
-      localPrefixQuotient
-        (insert c (halfGreedyPrefixSupport (c - 1))) (2 * c - 2)
+export PalomarCorpus.E257_27.Shared (CofinalExactLocalMersenneHalfRows CofinalPositiveHalfGreedySkips ExactLocalMersenneHalfRow greedyMersenneRemainderRat localMersenneQuotient localPrefixQuotient mersenneWeightRat)
 /-- States record:257bm-c2 from the long record for Erdős problem #257. Transported from Erdos249257.cofinalExactLocalMersenneHalfRows_of_positiveHalfGreedySkips in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem cofinalExactLocalMersenneHalfRows_of_positiveHalfGreedySkips
     (hskips : CofinalPositiveHalfGreedySkips) :
@@ -194,11 +246,6 @@ theorem exactLocalMersenneHalfRow_of_positiveHalfGreedySkip
     (hskip : greedyMersenneRemainderRat (1 / 2 : ℚ) (c - 1) <
       mersenneWeightRat c) :
     ExactLocalMersenneHalfRow (2 * c - 2) := by
-  sorry
-/-- States record:257bm-c6 from the long record for Erdős problem #257. Transported from Erdos249257.skippedCoreCriticalQuotientSupply_iff_halfGreedySkipped in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem skippedCoreCriticalQuotientSupply_iff_halfGreedySkipped :
-    SkippedCoreCriticalQuotientSupply ↔
-      HalfGreedySkippedCriticalQuotientSupply := by
   sorry
 end PalomarCorpus.E257.PaperStatementsF
 
@@ -251,48 +298,3 @@ theorem paper_compatible_rows_agree_with_limit
     d ∈ globalRepairStageSupport T.bit n ↔ d ∈ globalRepairLimitSupport T := by
   sorry
 end PalomarCorpus.E257.PaperStructuresT
-
-namespace PalomarCorpus.E257.PaperStructuresW
-open Filter
-open Set
-open scoped BigOperators
-export PalomarCorpus.E257_27.Shared (BooleanMobiusGlobalRepairTrajectory)
-/-- States record:257bm-c3 from the long record for Erdős problem #257. Transported from ErdosProblems.Erdos257.PaperCompleteR21.paper_compatible_bit_stable in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem paper_compatible_bit_stable
-    (T : BooleanMobiusGlobalRepairTrajectory) {d n : ℕ} (hdn : 2 * d ≤ n) :
-    T.bit n d = T.bit (2 * d) d := by
-  sorry
-end PalomarCorpus.E257.PaperStructuresW
-
-namespace PalomarCorpus.E257.PaperStructuresBA
-open scoped BigOperators
-open scoped ENNReal
-open Filter
-open Set
-open MeasureTheory
-open Topology
-export PalomarCorpus.E257_27.Shared (SkippedCoreCriticalQuotientSupply localMersennePrefixValue localMersenneQuotient localPrefixQuotient mersenneWeightRat)
-/-- An exact row together with a protected below-half core. Every support rank outside the core lies strictly above `cutoff`, and the current endpoint lies below `2 * cutoff`. These two inequalities force the next first crossing to occur late enough to give strict endpoint progress. Local copy of Erdos249257.ProtectedExactLocalMersenneRow, restated so the compared statements elaborate against Mathlib alone. -/
-structure ProtectedExactLocalMersenneRow where
-  endpoint : ℕ
-  cutoff : ℕ
-  support : Finset ℕ
-  core : Finset ℕ
-  endpoint_six : 6 ≤ endpoint
-  cutoff_four : 4 ≤ cutoff
-  core_subset : core ⊆ support
-  new_above_cutoff : ∀ d ∈ support, d ∉ core → cutoff < d
-  core_bounds : ∀ d ∈ core, 2 ≤ d ∧ d ≤ cutoff
-  support_bounds : ∀ d ∈ support, 2 ≤ d ∧ d ≤ endpoint
-  exact_quotient :
-    localPrefixQuotient support endpoint = 2 ^ (endpoint - 1) - 1
-  core_below_half : localMersennePrefixValue core < (1 / 2 : ℚ)
-  two_mem_core : 2 ∈ core
-  endpoint_lt_twice_cutoff : endpoint < 2 * cutoff
-/-- States record:257bm-c5 from the long record for Erdős problem #257. Transported from Erdos249257.exists_laterProtectedExactLocalMersenneRow in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
-theorem exists_laterProtectedExactLocalMersenneRow
-    (hcap : SkippedCoreCriticalQuotientSupply)
-    (s : ProtectedExactLocalMersenneRow) :
-    ∃ t : ProtectedExactLocalMersenneRow, s.endpoint < t.endpoint := by
-  sorry
-end PalomarCorpus.E257.PaperStructuresBA

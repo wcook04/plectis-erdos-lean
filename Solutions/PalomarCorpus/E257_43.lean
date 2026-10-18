@@ -10,3 +10,4 @@ import Solutions.PalomarCorpus.E257_43.PaperStatementsAI
 import Solutions.PalomarCorpus.E257_43.PaperStatementsAM
 import Solutions.PalomarCorpus.E257_43.PaperStatementsJ
 import Solutions.PalomarCorpus.E257_43.PaperStatementsN
+import Solutions.PalomarCorpus.E257_43.PaperStructuresCM

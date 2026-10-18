@@ -7,9 +7,7 @@ import Mathlib
 import Solutions.PalomarCorpus.E1041_01.Statement
 import Solutions.PalomarCorpus.E1041_01.PaperStatementsA
 import Solutions.PalomarCorpus.E1041_01.PaperStatementsAA
-import Solutions.PalomarCorpus.E1041_01.PaperStatementsAC
 import Solutions.PalomarCorpus.E1041_01.PaperStatementsAE
-import Solutions.PalomarCorpus.E1041_01.PaperStatementsC
 import Solutions.PalomarCorpus.E1041_01.PaperStatementsH
-import Solutions.PalomarCorpus.E1041_01.PaperStatementsZ
-import Solutions.PalomarCorpus.E1041_01.PaperStatementsZA
+import Solutions.PalomarCorpus.E1041_01.PaperStructuresAF
+import Solutions.PalomarCorpus.E1041_01.PaperStructuresAG

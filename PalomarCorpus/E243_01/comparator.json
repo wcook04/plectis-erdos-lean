@@ -14,7 +14,8 @@
     "PalomarCorpus.E243.PaperStructuresAC.squareSpecialisation",
     "PalomarCorpus.E243.PaperStructuresAC.transport_square_unconditional",
     "PalomarCorpus.E243.PaperStructuresAD.minus_one_forbidden_word",
-    "PalomarCorpus.E243.PaperStructuresAD.plus_one_forbidden_word"
+    "PalomarCorpus.E243.PaperStructuresAD.plus_one_forbidden_word",
+    "PalomarCorpus.E243.PaperStructuresAG.squareSpecialisation_holds"
   ],
   "permitted_axioms": [
     "propext",

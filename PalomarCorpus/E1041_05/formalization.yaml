@@ -1,12 +1,10 @@
 version: v0.4
 project:
-  name: 'Erdős #1041, note sections 1 to 7: monic trinomials, in every degree; critical proximity and straight-path obstructions; solved polynomial families'
+  name: 'Erdős #1041, record sections 7 to 10: collinear roots and two sparse polynomial families; further families and counterexamples to proposed proof steps; the Newton value equation'
   description: >-
-    This entry states 11 theorems that only the short note for Erdős problem #1041 states, in sections 1 (monic trinomials, in every degree), 4 (critical proximity and straight-path obstructions), 5 (solved polynomial families), 6 (critical-value separation in every degree) and 7 (three limits of the sufficient conditions): the proposition “failure of a prescribed radial segment” (section 1), as sextic_spoke_counterexample_whole; the theorem “a geometric-mean bound for distances to a critical point” (section 4), as exists_two_roots_dist_sum_le_two_mul_geomMean; the corollary “two nearest roots” (section 4), as exists_two_nearest_roots_of_polynomial_critical and two_nearest_roots_of_polynomial_critical; the proposition “two counterexamples to straight-path assertions” (section 4), as complete_straight_path_obstructions; the theorem “quintics with two missing coefficients” (section 5.2), as complete_primitive_quintic; the corollary “a sufficient condition for a length-2 path” (section 6), as separation_parent; the proposition “failure of two critical-value criteria to cover all polynomials” (section 7), as complete_sep_or_counterexample; the proposition “a counterexample to the proposed one-root perimeter bound” (section 7), as lobe_perimeter_gt, one_root_gamma_false and one_root_gamma_false_unconditional.
+    This entry states 13 theorems that the long record for Erdős problem #1041 states in sections 7 (collinear roots and two sparse polynomial families), 8 (further families and counterexamples to proposed proof steps), 9 (the Newton value equation) and 10 (arguments, not moduli): the theorem “a consequence of three moment identities” (section 7.2), as primitiveInterior_exists_two_tailEnergy_lt_one; the theorem “a quintic with two missing coefficients” (section 7.2), as primitive_quintic_two_tail, primitive_quintic_two_tail_of_polynomial, tail_le_one_and_eq_iff_of_leading_zero, tail_norm_of_leading_zero and two_tails_closedDisc_of_ne_zero; the theorem “a contained radial segment for a cubic” (section 7.3), as cubic_has_safe_root_spoke; the theorem “a mean bound for critical values”, as critical_value_three_budgets and critical_value_three_budgets_sharp; the lemma “reflected-derivative bound”, as reflected_critical_value; the theorem “value equation” (section 9), as newton_real_value_whole; the corollary “ray separation” (section 9), as newton_real_endpoint_whole; the theorem “ray-collision locus” (section 10), as translated_samePositiveRay_parameterization.
 
-    separation_parent assumes the named input CriticalValueSeparationTheorem as a hypothesis: for a monic complex polynomial f of degree n ≥ 3, a simple critical point c with v = f(c) ≠ 0, a centre w₀ in [0, 1] and S > max(w₀, 1 - w₀) such that every other critical point d satisfies |f(d)/v - w₀| ≥ S, two distinct roots of f are joined inside {|f| ≤ |v|} by a path whose squared length is at most 2|v|^(2/n) (S/(n - 1))^(2/n) log((S² + S + w₀(1 - w₀))/(S² - S + w₀(1 - w₀))). This is the paper's own critical-value separation theorem; this repository does not formalise it.
-
-    10 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 1 is derived from the source declaration by a short tactic proof, which certifies implication.
+    12 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 1 is derived from the source declaration by a short tactic proof, which certifies implication.
 
     Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
 
@@ -53,63 +51,68 @@ sources:
   license: Apache-2.0
   author_endorsement: n/a
 status:
-  scope: "One Comparator configuration selecting the 11 theorems listed in PalomarCorpus/E1041_05/comparator.json, from the Lean development for Erdős problem #1041. The problem's theorems are packed, in the order the papers state them, into the 8 entries PalomarCorpus/E1041_01 to PalomarCorpus/E1041_08, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification1041* directories are internal regression inventory and are not selected."
+  scope: "One Comparator configuration selecting the 13 theorems listed in PalomarCorpus/E1041_05/comparator.json, from the Lean development for Erdős problem #1041. The problem's theorems are packed, in the order the papers state them, into the 9 entries PalomarCorpus/E1041_01 to PalomarCorpus/E1041_09, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification1041* directories are internal regression inventory and are not selected."
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
-  trusted_challenge_sorry_count: 11
-  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E1041_05/Challenge.lean. Comparator replay run 35935225572 of wcook04/plectis-erdos-lean at commit cc7e541 built this entry's Challenge and Solution with leanprover/lean4:v4.30.0 and accepted every compared theorem with both the Lean kernel and NanoDa, permitting only the axioms propext, Quot.sound and Classical.choice."
-  axiom_audit_status: "Lean Release Gate run 35935275645 at commit 18ea89f ran scripts/check_axiom_budget.py --run-palomar on the built Solution environment and printed only propext, Quot.sound and Classical.choice for every compared theorem."
+  trusted_challenge_sorry_count: 13
+  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E1041_05/Challenge.lean, and the Solution modules contain no sorry. Comparator and kernel outcomes are commit-specific and are recorded separately from this source metadata."
+  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. Axiom-audit outcomes are commit-specific and belong in separate receipts; this source field is not an audit receipt."
   permitted_axiom_budget:
   - propext
   - Quot.sound
   - Classical.choice
   main_results:
-  - declaration: "PalomarCorpus.E1041.PaperStatementsB.exists_two_nearest_roots_of_polynomial_critical"
-    file: "Solutions/PalomarCorpus/E1041_05/PaperStatementsB.lean"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsJ.cubic_has_safe_root_spoke"
+    file: "Solutions/PalomarCorpus/E1041_05/PaperStatementsJ.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E1041_05/comparator.json"
-  - declaration: "PalomarCorpus.E1041.PaperStatementsB.two_nearest_roots_of_polynomial_critical"
-    file: "Solutions/PalomarCorpus/E1041_05/PaperStatementsB.lean"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsM.primitiveInterior_exists_two_tailEnergy_lt_one"
+    file: "Solutions/PalomarCorpus/E1041_05/PaperStatementsM.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E1041_05/comparator.json"
-  - declaration: "PalomarCorpus.E1041.PaperStatementsG.complete_straight_path_obstructions"
-    file: "Solutions/PalomarCorpus/E1041_05/PaperStatementsG.lean"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsN.translated_samePositiveRay_parameterization"
+    file: "Solutions/PalomarCorpus/E1041_05/PaperStatementsN.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E1041_05/comparator.json"
-  - declaration: "PalomarCorpus.E1041.PaperStatementsK.exists_two_roots_dist_sum_le_two_mul_geomMean"
-    file: "Solutions/PalomarCorpus/E1041_05/PaperStatementsK.lean"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsO.critical_value_three_budgets"
+    file: "Solutions/PalomarCorpus/E1041_05/PaperStatementsO.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E1041_05/comparator.json"
-  - declaration: "PalomarCorpus.E1041.PaperStatementsQ.complete_sep_or_counterexample"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsP.critical_value_three_budgets_sharp"
+    file: "Solutions/PalomarCorpus/E1041_05/PaperStatementsP.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_05/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsQ.newton_real_endpoint_whole"
     file: "Solutions/PalomarCorpus/E1041_05/PaperStatementsQ.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E1041_05/comparator.json"
-  - declaration: "PalomarCorpus.E1041.PaperStatementsR.sextic_spoke_counterexample_whole"
-    file: "Solutions/PalomarCorpus/E1041_05/PaperStatementsR.lean"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsQ.newton_real_value_whole"
+    file: "Solutions/PalomarCorpus/E1041_05/PaperStatementsQ.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E1041_05/comparator.json"
-  - declaration: "PalomarCorpus.E1041.PaperStatementsU.complete_primitive_quintic"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsU.primitive_quintic_two_tail"
     file: "Solutions/PalomarCorpus/E1041_05/PaperStatementsU.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E1041_05/comparator.json"
-  - declaration: "PalomarCorpus.E1041.PaperStatementsX.lobe_perimeter_gt"
-    file: "Solutions/PalomarCorpus/E1041_05/PaperStatementsX.lean"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsU.primitive_quintic_two_tail_of_polynomial"
+    file: "Solutions/PalomarCorpus/E1041_05/PaperStatementsU.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E1041_05/comparator.json"
-  - declaration: "PalomarCorpus.E1041.PaperStatementsX.one_root_gamma_false"
-    file: "Solutions/PalomarCorpus/E1041_05/PaperStatementsX.lean"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsV.tail_le_one_and_eq_iff_of_leading_zero"
+    file: "Solutions/PalomarCorpus/E1041_05/PaperStatementsV.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E1041_05/comparator.json"
-  - declaration: "PalomarCorpus.E1041.PaperStatementsZA.separation_parent"
-    file: "Solutions/PalomarCorpus/E1041_05/PaperStatementsZA.lean"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsV.tail_norm_of_leading_zero"
+    file: "Solutions/PalomarCorpus/E1041_05/PaperStatementsV.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E1041_05/comparator.json"
-    literature_dependencies:
-    - statement: "CriticalValueSeparationTheorem: for a monic complex polynomial f of degree n ≥ 3, a simple critical point c with v = f(c) ≠ 0, a centre w₀ in [0, 1] and S > max(w₀, 1 - w₀) such that every other critical point d satisfies |f(d)/v - w₀| ≥ S, two distinct roots of f are joined inside {|f| ≤ |v|} by a path whose squared length is at most 2|v|^(2/n) (S/(n - 1))^(2/n) log((S² + S + w₀(1 - w₀))/(S² - S + w₀(1 - w₀)))"
-      source: "Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems"
-  - declaration: "PalomarCorpus.E1041.PaperStructuresAD.one_root_gamma_false_unconditional"
-    file: "Solutions/PalomarCorpus/E1041_05/PaperStructuresAD.lean"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsV.two_tails_closedDisc_of_ne_zero"
+    file: "Solutions/PalomarCorpus/E1041_05/PaperStatementsV.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E1041_05/comparator.json"
+  - declaration: "PalomarCorpus.E1041.PaperStatementsW.reflected_critical_value"
+    file: "Solutions/PalomarCorpus/E1041_05/PaperStatementsW.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E1041_05/comparator.json"
   development_status: substantive

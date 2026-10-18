@@ -7,6 +7,6 @@ import Mathlib
 import Solutions.PalomarCorpus.E243_10.Statement
 import Solutions.PalomarCorpus.E243_10.BoundedNegativePartRigidity
 import Solutions.PalomarCorpus.E243_10.BoundedRiseReducedTail
+import Solutions.PalomarCorpus.E243_10.PaperStructuresAF
 import Solutions.PalomarCorpus.E243_10.PeriodicNegativeOrbit
 import Solutions.PalomarCorpus.E243_10.PrimitiveRecordRigidity
-import Solutions.PalomarCorpus.E243_10.ProtectedEpochEnergy

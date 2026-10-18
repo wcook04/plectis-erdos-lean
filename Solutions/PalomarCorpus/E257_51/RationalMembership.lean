@@ -10,7 +10,6 @@ import Solutions.PalomarCorpus.E257_51.Statement
 open Set
 
 namespace PalomarCorpus.E257.RationalMembership
-export PalomarCorpus.E257_51.Shared (greedyMersenneRemainder mersenneAchievementSet mersenneWeight positiveMersenneSupportValue)
 
 noncomputable section
 

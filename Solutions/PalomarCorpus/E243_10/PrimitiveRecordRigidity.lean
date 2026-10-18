@@ -8,7 +8,7 @@ import ErdosProblems.Erdos243.PrimitiveRecordBarrier
 import Solutions.PalomarCorpus.E243_10.Statement
 
 namespace PalomarCorpus.E243.PrimitiveRecordRigidity
-export PalomarCorpus.E243_10.Shared (runningMax sylvesterNext)
+export PalomarCorpus.E243_10.Shared (sylvesterNext)
 
 theorem runningMax_eq (u : ℕ → ℕ) (n : ℕ) :
     runningMax u n = ErdosProblems.Erdos243.runningMax u n := by

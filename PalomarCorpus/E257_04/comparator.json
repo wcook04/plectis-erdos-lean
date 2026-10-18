@@ -17,6 +17,7 @@
     "PalomarCorpus.E257.PaperStatementsAM.existsFatalHalfGap_of_certificate",
     "PalomarCorpus.E257.PaperStatementsAM.mersenneTail_eq_sum_add",
     "PalomarCorpus.E257.PaperStatementsAM.scaledMersenneWeight_cast",
+    "PalomarCorpus.E257.PaperStructuresCK.affineBinaryOrbit_sub",
     "PalomarCorpus.E257.PaperStructuresS.paper_one_sidedness"
   ],
   "permitted_axioms": [

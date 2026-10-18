@@ -49,8 +49,12 @@ PALOMAR_PROBLEMS = palomar_entry_names.PROBLEMS
 
 # 'Namespace.decl' depends on axioms: [a, b, c]
 # Lean wraps a long axiom list over several lines, so the list may span newlines.
-AXIOM_LINE = re.compile(r"'([^']+)' depends on axioms: \[([^\]]*)\]")
-NO_AXIOM_LINE = re.compile(r"'([^']+)' does not depend on any axioms")
+# Apostrophes are valid inside Lean names, including a trailing prime. The
+# closing quote is identified by its diagnostic suffix, not by excluding primes.
+# Names cannot span log lines; the axiom list may wrap across them.
+AXIOM_REPORT = re.compile(
+    r"'([^\r\n]+?)' (?:does not depend on any axioms|depends on axioms: \[([^\]]*)\])"
+)
 
 # `gh run view --log` prefixes every line with "<job>\t<step>\t<ISO timestamp> ".
 # The prefix has to come off before the wrapped axiom lists are rejoined, or each
@@ -71,10 +75,10 @@ def parse_log(text: str) -> dict[str, set[str]]:
     """
     text = strip_log_prefixes(text)
     printed: dict[str, set[str]] = {}
-    for name in NO_AXIOM_LINE.findall(text):
-        printed.setdefault(name, set())
-    for name, axioms in AXIOM_LINE.findall(text):
-        found = {a.strip() for a in axioms.split(",") if a.strip()}
+    # Consume both report forms in source order. Separate passes could absorb a
+    # preceding quoted report when more than one diagnostic shares a log line.
+    for name, axioms in AXIOM_REPORT.findall(text):
+        found = {a.strip() for a in (axioms or "").split(",") if a.strip()}
         printed.setdefault(name, set()).update(found)
     return printed
 

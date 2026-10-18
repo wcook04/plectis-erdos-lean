@@ -18,11 +18,9 @@ walks from a compared theorem statement is byte-identical in the Challenge and S
 environments. Generated from the Challenge; do not edit by hand.
 -/
 
+open Filter
+
 namespace PalomarCorpus.E243_10.Shared
-/-- The running maximum `max_{k ≤ n} u k` of a natural-valued sequence, given by `runningMax u 0 = u 0` and `runningMax u (n+1) = max (runningMax u n) (u (n+1))`. -/
-noncomputable def runningMax (u : ℕ → ℕ) : ℕ → ℕ
-  | 0 => u 0
-  | n + 1 => max (runningMax u n) (u (n + 1))
 /-- The Sylvester successor `a² - a + 1`, expressed in a ring. Local copy of ErdosProblems.Erdos243.sylvesterNext, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def sylvesterNext (a : ℤ) : ℤ :=
   a ^ 2 - a + 1
@@ -38,13 +36,17 @@ end PalomarCorpus.E243.BoundedNegativePartRigidity
 namespace PalomarCorpus.E243.BoundedRiseReducedTail
 end PalomarCorpus.E243.BoundedRiseReducedTail
 
+namespace PalomarCorpus.E243.PaperStructuresAF
+open Filter
+end PalomarCorpus.E243.PaperStructuresAF
+
 namespace PalomarCorpus.E243.PeriodicNegativeOrbit
 end PalomarCorpus.E243.PeriodicNegativeOrbit
 
 namespace PalomarCorpus.E243.PrimitiveRecordRigidity
-export PalomarCorpus.E243_10.Shared (runningMax sylvesterNext)
+export PalomarCorpus.E243_10.Shared (sylvesterNext)
+/-- The running maximum `max_{k ≤ n} u k` of a natural-valued sequence, given by `runningMax u 0 = u 0` and `runningMax u (n+1) = max (runningMax u n) (u (n+1))`. -/
+noncomputable def runningMax (u : ℕ → ℕ) : ℕ → ℕ
+  | 0 => u 0
+  | n + 1 => max (runningMax u n) (u (n + 1))
 end PalomarCorpus.E243.PrimitiveRecordRigidity
-
-namespace PalomarCorpus.E243.ProtectedEpochEnergy
-export PalomarCorpus.E243_10.Shared (runningMax)
-end PalomarCorpus.E243.ProtectedEpochEnergy

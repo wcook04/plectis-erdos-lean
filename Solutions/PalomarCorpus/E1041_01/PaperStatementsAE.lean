@@ -17,6 +17,7 @@ open scoped ComplexConjugate
 /- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
 
 namespace PalomarCorpus.E1041.PaperStatementsAE
+export PalomarCorpus.E1041_01.Shared (s)
 
 theorem erdos1041_hausdorff_answer_false :
     False ↔ ∀ (n : ℕ) (f : ℂ[X]), n ≥ 2 → f.natDegree = n → f.Monic →

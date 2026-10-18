@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification243PaperStructuresAG.Challenge",
+  "solution_module": "Solutions.ExternalVerification243PaperStructuresAG",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification243PaperStructuresAG.squareSpecialisation_holds"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -20,6 +20,7 @@ this entry decides it.
 
 open Filter Topology
 open scoped BigOperators
+open NumberField
 open Polynomial
 open Filter
 open Finset
@@ -158,6 +159,25 @@ theorem cubic_profile_gcd_stabilisation_and_primitive_shape
             0 < C n / g ∧ 0 < D n / g) := by
   sorry
 end PalomarCorpus.E243.PaperStatementsA
+
+namespace PalomarCorpus.E243.PaperStructuresAG
+open NumberField
+open Polynomial
+/-- States long243:res:squarespec from the long record for Erdős problem #243. Transported from ErdosProblems.Erdos243.PaperCompleteR21.squareSpecialisation_holds in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem squareSpecialisation_holds :
+    ∀ (L₀ : Type) [Field L₀] [Algebra ℚ L₀] (α : L₀) (f H : Polynomial ℚ),
+      Irreducible f → Polynomial.aeval α f = 0 → Polynomial.aeval α H ≠ 0 →
+      ∀ (d : ℕ), 0 < d → ∀ G J : Polynomial ℤ,
+      G.map (Int.castRingHom ℚ) = Polynomial.C (d : ℚ) * f →
+      J.map (Int.castRingHom ℚ) = Polynomial.C ((d : ℚ) ^ 2) * H →
+      (∃ N : ℕ, ∀ ℓ : ℕ, ℓ.Prime → N < ℓ → ∀ r : ZMod ℓ,
+          (G.map (Int.castRingHom (ZMod ℓ))).eval r = 0 →
+          (J.map (Int.castRingHom (ZMod ℓ))).eval r ≠ 0 ∧
+            IsSquare ((J.map (Int.castRingHom (ZMod ℓ))).eval r)) →
+      ∃ β ∈ IntermediateField.adjoin ℚ ({α} : Set L₀),
+        β ≠ 0 ∧ β ^ 2 = Polynomial.aeval α H := by
+  sorry
+end PalomarCorpus.E243.PaperStructuresAG
 
 namespace PalomarCorpus.E243.PaperStatementsP
 open Polynomial

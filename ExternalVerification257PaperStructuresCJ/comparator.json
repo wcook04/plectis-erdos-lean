@@ -1,0 +1,17 @@
+{
+  "challenge_module": "ExternalVerification257PaperStructuresCJ.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStructuresCJ",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStructuresCJ.above_newSum_le_capacity_iff",
+    "Erdos249257.ExternalVerification257PaperStructuresCJ.below_newSum_le_capacity",
+    "Erdos249257.ExternalVerification257PaperStructuresCJ.nextRemainder_trichotomy",
+    "Erdos249257.ExternalVerification257PaperStructuresCJ.prefixChoice_maximal",
+    "Erdos249257.ExternalVerification257PaperStructuresCJ.prefixRemainder_eq_capacity_sub_choice"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

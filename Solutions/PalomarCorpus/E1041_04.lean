@@ -5,12 +5,7 @@ Authors: Will Cook
 -/
 import Mathlib
 import Solutions.PalomarCorpus.E1041_04.Statement
-import Solutions.PalomarCorpus.E1041_04.PaperStatementsJ
-import Solutions.PalomarCorpus.E1041_04.PaperStatementsM
-import Solutions.PalomarCorpus.E1041_04.PaperStatementsN
-import Solutions.PalomarCorpus.E1041_04.PaperStatementsO
-import Solutions.PalomarCorpus.E1041_04.PaperStatementsP
-import Solutions.PalomarCorpus.E1041_04.PaperStatementsQ
-import Solutions.PalomarCorpus.E1041_04.PaperStatementsU
-import Solutions.PalomarCorpus.E1041_04.PaperStatementsV
-import Solutions.PalomarCorpus.E1041_04.PaperStatementsW
+import Solutions.PalomarCorpus.E1041_04.PaperStatementsE
+import Solutions.PalomarCorpus.E1041_04.PaperStatementsI
+import Solutions.PalomarCorpus.E1041_04.PaperStatementsS
+import Solutions.PalomarCorpus.E1041_04.PaperStatementsT

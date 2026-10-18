@@ -8,3 +8,4 @@ import Solutions.PalomarCorpus.E257_47
 #print axioms PalomarCorpus.E257.PaperStatementsM.paper_general_repair_criteria
 #print axioms PalomarCorpus.E257.PaperStructuresBM.one_div_twenty_one_mem_mersenneAchievementSet_of_cofinalGreedyDecay
 #print axioms PalomarCorpus.E257.PaperStructuresBQ.twentyOneCofinalEvenQuotientGreedyDecay_of_closedRows
+#print axioms PalomarCorpus.E257.PaperStructuresCO.paper_terminalhalf_iff

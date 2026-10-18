@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification251PaperStructuresI
+
+#print axioms Erdos249257.ExternalVerification251PaperStructuresI.denominator_floor_both

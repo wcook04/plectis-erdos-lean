@@ -141,6 +141,30 @@ noncomputable def halfTwoChannelCap (n : ℕ) : ℝ :=
     + (1 / 3 : ℝ) * ((1 : ℝ) / 4) ^ n
 end PalomarCorpus.E257.PaperStatementsAH
 
+namespace PalomarCorpus.E257.PaperStructuresCH
+open Filter
+open Set
+open Topology
+open scoped ENNReal
+open MeasureTheory
+export PalomarCorpus.E257_20.Shared (mersenneTail mersenneWeight positiveMersenneSupportValue)
+/-- **Packet §4.** A finite support word certified to straddle the target at depth `d`: the coded value is at most `t` and the value plus the complete unresolved tail mass still reaches `t`. This is deliberately *weaker* than the `HalfPrefixForcingChain.interval_trapped` containment condition: overlap of the correction image with the cylinder, not containment inside it. Local copy of Erdos249257.IsStraddlePrefix, restated so the compared statements elaborate against Mathlib alone. -/
+structure IsStraddlePrefix (t : ℝ) (u : Finset ℕ) (d : ℕ) : Prop where
+  mem_bounds : ∀ n ∈ u, 0 < n ∧ n ≤ d
+  value_le : positiveMersenneSupportValue (↑u : Set ℕ) ≤ t
+  le_value_add_tail :
+    t ≤ positiveMersenneSupportValue (↑u : Set ℕ) + mersenneTail d
+end PalomarCorpus.E257.PaperStructuresCH
+
+namespace PalomarCorpus.E257.PaperStructuresCN
+open Filter
+open Set
+open Topology
+open scoped ENNReal
+open MeasureTheory
+export PalomarCorpus.E257_20.Shared (mersenneWeight positiveMersenneSupportValue)
+end PalomarCorpus.E257.PaperStructuresCN
+
 namespace PalomarCorpus.E257.PaperStructuresU
 open Filter
 open Set
@@ -164,30 +188,3 @@ open scoped ENNReal
 open MeasureTheory
 export PalomarCorpus.E257_20.Shared (mersenneTail mersenneWeight positiveMersenneSupportValue)
 end PalomarCorpus.E257.PaperStatementsAM
-
-namespace PalomarCorpus.E257.PaperStatementsD
-open Filter
-open Set
-open Topology
-open scoped ENNReal
-open MeasureTheory
-export PalomarCorpus.E257_20.Shared (mersenneTail mersenneWeight positiveMersenneSupportValue)
-/-- Real greedy residual after processing exponents `1, ..., n`. Local copy of Erdos249257.greedyMersenneRemainder, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def greedyMersenneRemainder (x : ℝ) : ℕ → ℝ
-  | 0 => x
-  | n + 1 =>
-      if mersenneWeight (n + 1) ≤ greedyMersenneRemainder x n then
-        greedyMersenneRemainder x n - mersenneWeight (n + 1)
-      else
-        greedyMersenneRemainder x n
-/-- The set of positive exponents selected by the real greedy recursion. Local copy of Erdos249257.greedyMersenneSupport, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def greedyMersenneSupport (x : ℝ) : Set ℕ :=
-  {m : ℕ | m ≠ 0 ∧
-    mersenneWeight m ≤ greedyMersenneRemainder x (m - 1)}
-/-- The positive exponents omitted by the real greedy recursion. Local copy of Erdos249257.greedyMersenneSkippedSupport, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def greedyMersenneSkippedSupport (x : ℝ) : Set ℕ :=
-  {m : ℕ | m ≠ 0 ∧ m ∉ greedyMersenneSupport x}
-/-- The Mersenne achievement set, with the analytically invisible zero bit normalized away. Local copy of Erdos249257.mersenneAchievementSet, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def mersenneAchievementSet : Set ℝ :=
-  {x : ℝ | ∃ A : Set ℕ, 0 ∉ A ∧ x = positiveMersenneSupportValue A}
-end PalomarCorpus.E257.PaperStatementsD

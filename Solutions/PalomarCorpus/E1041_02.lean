@@ -5,7 +5,7 @@ Authors: Will Cook
 -/
 import Mathlib
 import Solutions.PalomarCorpus.E1041_02.Statement
-import Solutions.PalomarCorpus.E1041_02.CubicPath
-import Solutions.PalomarCorpus.E1041_02.PaperStatementsY
+import Solutions.PalomarCorpus.E1041_02.PaperStatementsAC
+import Solutions.PalomarCorpus.E1041_02.PaperStatementsC
+import Solutions.PalomarCorpus.E1041_02.PaperStatementsZ
 import Solutions.PalomarCorpus.E1041_02.PaperStatementsZA
-import Solutions.PalomarCorpus.E1041_02.PaperStatementsZB

@@ -6,6 +6,7 @@
     "PalomarCorpus.E251.LcmDiagonalCriterion.irrationalInitial_iff_cofinalNonintegralTailShifts",
     "PalomarCorpus.E251.LcmDiagonalCriterion.irrationalInitial_iff_nonintegral_on_schedule",
     "PalomarCorpus.E251.LcmDiagonalCriterion.tailShiftIntegral_iff_orderOf_dvd",
+    "PalomarCorpus.E251.PaperStructuresI.denominator_floor_both",
     "PalomarCorpus.E251.PolynomialShiftCountermodel.polynomialGapTailCountermodel",
     "PalomarCorpus.E251.PrimeGapIdentity.prime0_le_polynomial",
     "PalomarCorpus.E251.PrimeGapIdentity.primeDisplayedSeries_eq_four_add_two_primeGapSeries",

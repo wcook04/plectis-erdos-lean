@@ -4,6 +4,7 @@ import Solutions.PalomarCorpus.E243_10
 #print axioms PalomarCorpus.E243.BoundedRiseReducedTail.no_boundedRise_of_tailAvoidance
 #print axioms PalomarCorpus.E243.BoundedRiseReducedTail.no_boundedRise_reducedTail
 #print axioms PalomarCorpus.E243.BoundedRiseReducedTail.no_eventuallyBoundedRise_reducedTail
+#print axioms PalomarCorpus.E243.PaperStructuresAF.nonintegral_regular_rate_irrational
 #print axioms PalomarCorpus.E243.PeriodicNegativeOrbit.no_eventuallyPeriodicNegative_orbit
 #print axioms PalomarCorpus.E243.PeriodicNegativeOrbit.no_periodicNegative_orbit
 #print axioms PalomarCorpus.E243.PeriodicNegativeOrbit.no_phasePrimitivePeriodicNegative_orbit
@@ -15,4 +16,3 @@ import Solutions.PalomarCorpus.E243_10
 #print axioms PalomarCorpus.E243.PrimitiveRecordRigidity.protectedPrimePower_persists
 #print axioms PalomarCorpus.E243.PrimitiveRecordRigidity.recordRiseTwo_sylvesterNext_eventually
 #print axioms PalomarCorpus.E243.PrimitiveRecordRigidity.sylvesterStep_of_centeredZero_pair
-#print axioms PalomarCorpus.E243.ProtectedEpochEnergy.protected_epoch_energy_integer

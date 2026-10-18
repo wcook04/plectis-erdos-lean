@@ -18,8 +18,8 @@ walks from a compared theorem statement is byte-identical in the Challenge and S
 environments. Generated from the Challenge; do not edit by hand.
 -/
 
-open Filter Topology
 open scoped BigOperators
+open Filter Topology
 
 namespace PalomarCorpus.E251_07.Shared
 /-- The dyadic tail recurrence with integer digits `g`: a rational sequence `T` satisfies `T (N + 1) = 2 * T N - g (N + 1)` at every index `N`, with the integer digit cast into the rationals. This is the relation obeyed by the rescaled tails `T N = sum over j at least 1 of g (N + j) / 2 ^ j` of a dyadic series with integer coefficients. -/
@@ -30,8 +30,12 @@ noncomputable def RatIntegral (x : ℚ) : Prop :=
   ∃ z : ℤ, x = z
 /-- The zero-based enumeration of the primes in increasing order, so that `prime0 0 = 2`, `prime0 1 = 3`, and `prime0 n` is the `(n + 1)`st prime. -/
 noncomputable def prime0 (n : ℕ) : ℕ := Nat.nth Nat.Prime n
+/-- The real term in the normalized zero-based prime series. Local copy of ErdosProblems.Erdos251.primeDyadicTerm, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def primeDyadicTerm (n : ℕ) : ℝ := (prime0 n : ℝ) / 2 ^ (n + 1)
 /-- The `n`th consecutive prime gap in the zero-based indexing, `prime0 (n + 1) - prime0 n`. The subtraction is truncated subtraction of natural numbers, which agrees with the ordinary difference because the primes increase; the first values are 1, 2, 2, 4, 2, 4. -/
 noncomputable def primeGap0 (n : ℕ) : ℕ := prime0 (n + 1) - prime0 n
+/-- The real term in the corresponding consecutive-prime-gap series. Local copy of ErdosProblems.Erdos251.primeGapDyadicTerm, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def primeGapDyadicTerm (n : ℕ) : ℝ := (primeGap0 n : ℝ) / 2 ^ (n + 1)
 /-- Difference between two tail states separated by `h` steps. Local copy of ErdosProblems.Erdos251.tailShift, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def tailShift (T : ℕ → ℚ) (h N : ℕ) : ℚ :=
   T (N + h) - T N
@@ -58,6 +62,11 @@ noncomputable def lcmDiagonalSchedule : ℕ → ℕ
   | j + 1 => Nat.lcm (lcmDiagonalSchedule j) (j + 1)
 end PalomarCorpus.E251.LcmDiagonalCriterion
 
+namespace PalomarCorpus.E251.PaperStructuresI
+open scoped BigOperators
+export PalomarCorpus.E251_07.Shared (prime0 primeDyadicTerm primeGap0 primeGapDyadicTerm)
+end PalomarCorpus.E251.PaperStructuresI
+
 namespace PalomarCorpus.E251.PolynomialShiftCountermodel
 export PalomarCorpus.E251_07.Shared (DyadicTailRecurrence RatIntegral tailShift)
 /-- The explicit rational orbit `U n = 2 * (n + 4) ^ 2` of the quadratic countermodel, computed in the natural numbers and cast to the rationals. -/
@@ -72,16 +81,10 @@ noncomputable def polynomialGapDyadicTerm (n : ℕ) : ℝ :=
 end PalomarCorpus.E251.PolynomialShiftCountermodel
 
 namespace PalomarCorpus.E251.PrimeGapIdentity
-export PalomarCorpus.E251_07.Shared (prime0 primeGap0)
-/-- The term of the normalised prime dyadic series: the `(n + 1)`st prime, cast to a real number, divided by `2 ^ (n + 1)`. The sum over `n` at least 0 is `2/2 + 3/4 + 5/8` and so on, the value whose irrationality Erdős problem 251 asks about. -/
-noncomputable def primeDyadicTerm (n : ℕ) : ℝ :=
-  (prime0 n : ℝ) / 2 ^ (n + 1)
+export PalomarCorpus.E251_07.Shared (prime0 primeDyadicTerm primeGap0 primeGapDyadicTerm)
 /-- The term of the displayed prime series with denominator `2 ^ n`: the `(n + 1)`st prime, cast to a real number, divided by `2 ^ n`, so that the sum is `2 + 3/2 + 5/4` and so on, twice the normalised series. -/
 noncomputable def primeDisplayedDyadicTerm (n : ℕ) : ℝ :=
   (prime0 n : ℝ) / 2 ^ n
-/-- The term of the consecutive-prime-gap dyadic series: the `n`th prime gap, cast to a real number, divided by `2 ^ (n + 1)`. -/
-noncomputable def primeGapDyadicTerm (n : ℕ) : ℝ :=
-  (primeGap0 n : ℝ) / 2 ^ (n + 1)
 end PalomarCorpus.E251.PrimeGapIdentity
 
 namespace PalomarCorpus.E251.PrimeGapNonperiodicity

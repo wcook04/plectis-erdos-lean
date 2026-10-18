@@ -1,0 +1,5 @@
+import Solutions.ExternalVerification257PaperStructuresCN
+
+#print axioms Erdos249257.ExternalVerification257PaperStructuresCN.IsStraddlePrefix.half_strict
+#print axioms Erdos249257.ExternalVerification257PaperStructuresCN.divInt_mem_nextMersenneDyadicSliver_iff_excess
+#print axioms Erdos249257.ExternalVerification257PaperStructuresCN.positiveMersenneSupportValue_insert

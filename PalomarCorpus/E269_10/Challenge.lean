@@ -9,7 +9,7 @@ import Mathlib
 set_option autoImplicit false
 
 /-!
-# Erdős #269, the integral branch pinning and three prime structure families
+# Erdős #269, the integral branch pinning, paper structures i and three prime structure families
 
 Each theorem below restates, against Mathlib alone, a theorem of the Lean development
 for Erdős problem #269, in the order the papers state them. The definitions a statement
@@ -19,6 +19,9 @@ this entry decides it.
 -/
 
 open scoped BigOperators
+open Finset
+open Filter
+open Topology
 
 namespace PalomarCorpus.E269_10.Shared
 /-- The smooth lattice value `p ^ i * q ^ j * r ^ k` attached to the exponent triple `(i, j, k)`. -/
@@ -125,6 +128,24 @@ theorem surviving_window_orbit_eq_true_state
     y A = trueNormalizedState A := by
   sorry
 end PalomarCorpus.E269.IntegralBranchPinning
+
+namespace PalomarCorpus.E269.PaperStructuresI
+open Finset
+open Filter
+open Topology
+/-- Local definition jumpPoints235, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def jumpPoints235 : Set ℕ :=
+  {t | ∃ n, 1 ≤ n ∧ (t = 2 ^ n ∨ t = 3 ^ n ∨ t = 5 ^ n)}
+/-- Local definition runningHeight235, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def runningHeight235 (t : ℕ) : ℕ :=
+  2 ^ Nat.log 2 t * 3 ^ Nat.log 3 t * 5 ^ Nat.log 5 t
+/-- Local definition distinctHeightSum235, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def distinctHeightSum235 : ℝ :=
+  1 + ∑' t : jumpPoints235, (1 : ℝ) / (runningHeight235 t : ℝ)
+/-- States long269:res:distinct-height-235, res:distinct-height-235 from the long record and the short record for Erdős problem #269. Transported from ErdosProblems.Erdos269.distinctHeightSum235_irrational in the substantive development, whose statement was refereed against the paper in the coverage ledger. -/
+theorem distinctHeightSum235_irrational : Irrational distinctHeightSum235 := by
+  sorry
+end PalomarCorpus.E269.PaperStructuresI
 
 namespace PalomarCorpus.E269.ThreePrimeStructure
 export PalomarCorpus.E269_10.Shared (smooth3Val threePrimeHeight)

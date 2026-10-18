@@ -7,6 +7,7 @@ import Mathlib
 import Solutions.PalomarCorpus.E257_20.Statement
 import Solutions.PalomarCorpus.E257_20.PaperStatementsAH
 import Solutions.PalomarCorpus.E257_20.PaperStatementsAM
-import Solutions.PalomarCorpus.E257_20.PaperStatementsD
 import Solutions.PalomarCorpus.E257_20.PaperStructuresBJ
+import Solutions.PalomarCorpus.E257_20.PaperStructuresCH
+import Solutions.PalomarCorpus.E257_20.PaperStructuresCN
 import Solutions.PalomarCorpus.E257_20.PaperStructuresU

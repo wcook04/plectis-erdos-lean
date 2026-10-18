@@ -17,7 +17,7 @@ open Topology
 /- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
 
 namespace PalomarCorpus.E257.PaperStatementsBC
-export PalomarCorpus.E257_47.Shared (erdosSupportSeries supportCoeff)
+export PalomarCorpus.E257_47.Shared (erdosSupportSeries supportCoeff terminalPaperCarry)
 
 theorem paper_terminalhalf
     (M : ℕ → ℕ) (A : ℕ → Set ℕ)

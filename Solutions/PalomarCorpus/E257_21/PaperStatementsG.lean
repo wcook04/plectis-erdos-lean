@@ -20,6 +20,7 @@ open scoped Classical
 /- Copyright (c) 2026 Will Cook. Released under the Apache 2.0 license. -/
 
 namespace PalomarCorpus.E257.PaperStatementsG
+export PalomarCorpus.E257_21.Shared (greedyMersenneRemainder greedyMersenneSkippedSupport greedyMersenneSupport mersenneTail mersenneWeight)
 
 noncomputable def positiveMersenneSupportValue (A : Set ℕ) : ℝ :=
   ∑' k : ℕ, Set.indicator A mersenneWeight (k + 1)

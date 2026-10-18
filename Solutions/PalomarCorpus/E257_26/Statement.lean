@@ -29,6 +29,12 @@ namespace PalomarCorpus.E257_26.Shared
 /-- The real Mersenne weight 1 divided by 2 to the power n minus 1; at n = 0 the value is 0 because division by zero is zero here. -/
 noncomputable def mersenneWeight (n : ℕ) : ℝ :=
   1 / ((2 : ℝ) ^ n - 1)
+/-- The exact rational Mersenne weight `1 / (2^n - 1)`. Its meaningful support indices are positive; at index zero Lean's division convention gives zero. Local copy of Erdos249257.mersenneWeightRat, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def mersenneWeightRat (n : ℕ) : ℚ :=
+  1 / ((2 : ℚ) ^ n - 1)
+/-- For a displayed residual `p / (2L)`, the integer numerator of its excess above the next dyadic point `2^-(n+1)`. Indeed, `p/(2L) - 2^-(n+1) = E/(2^(n+1)L)`. Keeping `E` integral makes the unresolved skipped-branch comparison an exact Diophantine inequality rather than a real-valued phase estimate. Local copy of Erdos249257.nextDyadicExcessIntNumerator, restated so the compared statements elaborate against Mathlib alone. -/
+noncomputable def nextDyadicExcessIntNumerator (p : ℤ) (n L : ℕ) : ℤ :=
+  ((2 ^ n : ℕ) : ℤ) * p - (L : ℤ)
 /-- The signed coefficient layer between exact `p`-adic levels `e-1` and `e`. Local copy of Erdos249257.MaximalOmegaLayer.primePowerLayer, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def primePowerLayer (p e : ℕ) (g : ℕ → ℤ) (n : ℕ) : ℤ :=
   g (p ^ e * n) - g (p ^ (e - 1) * n)
@@ -40,10 +46,7 @@ open Set
 open Topology
 open scoped ENNReal
 open MeasureTheory
-export PalomarCorpus.E257_26.Shared (mersenneWeight)
-/-- The exact rational Mersenne weight `1 / (2^n - 1)`. Its meaningful support indices are positive; at index zero Lean's division convention gives zero. Local copy of Erdos249257.mersenneWeightRat, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def mersenneWeightRat (n : ℕ) : ℚ :=
-  1 / ((2 : ℚ) ^ n - 1)
+export PalomarCorpus.E257_26.Shared (mersenneWeight mersenneWeightRat nextDyadicExcessIntNumerator)
 /-- Exact rational version of the greedy residual. Local copy of Erdos249257.greedyMersenneRemainderRat, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def greedyMersenneRemainderRat (x : ℚ) : ℕ → ℚ
   | 0 => x
@@ -71,9 +74,6 @@ noncomputable def greedyMersennePrefixRat (x : ℚ) (n : ℕ) : Finset ℕ :=
 /-- The first geometric channel of the Mersenne tail. Local copy of Erdos249257.halfDyadicCap, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def halfDyadicCap (n : ℕ) : ℝ :=
   ((1 : ℝ) / 2) ^ n
-/-- For a displayed residual `p / (2L)`, the integer numerator of its excess above the next dyadic point `2^-(n+1)`. Indeed, `p/(2L) - 2^-(n+1) = E/(2^(n+1)L)`. Keeping `E` integral makes the unresolved skipped-branch comparison an exact Diophantine inequality rather than a real-valued phase estimate. Local copy of Erdos249257.nextDyadicExcessIntNumerator, restated so the compared statements elaborate against Mathlib alone. -/
-noncomputable def nextDyadicExcessIntNumerator (p : ℤ) (n L : ℕ) : ℤ :=
-  ((2 ^ n : ℕ) : ℤ) * p - (L : ℤ)
 /-- The exact finite greedy prefix used to display the half residual. Local copy of Erdos249257.halfGreedyPrefixRat, restated so the compared statements elaborate against Mathlib alone. -/
 noncomputable def halfGreedyPrefixRat (n : ℕ) : ℚ :=
   finiteErdosSum (greedyMersennePrefixRat (1 / 2 : ℚ) n) 2
@@ -91,6 +91,15 @@ noncomputable def halfGreedyNextDyadicExcessNumerator (n : ℕ) : ℤ :=
     (halfGreedyPrefixDenominator n)
 end PalomarCorpus.E257.PaperStatementsD
 
+namespace PalomarCorpus.E257.PaperStructuresCN
+open Filter
+open Set
+open Topology
+open scoped ENNReal
+open MeasureTheory
+export PalomarCorpus.E257_26.Shared (mersenneWeightRat nextDyadicExcessIntNumerator)
+end PalomarCorpus.E257.PaperStructuresCN
+
 namespace PalomarCorpus.E257.PaperStatementsAF
 open Set
 /-- Numerator left after subtracting a reduced finite prefix `r / D` from a dyadic rational `p / 2^c`. The transport theorem below assumes the subtraction is nonnegative, so natural subtraction is exact. Local copy of Erdos249257.dyadicResidualNumerator, restated so the compared statements elaborate against Mathlib alone. -/
@@ -100,6 +109,16 @@ noncomputable def dyadicResidualNumerator (p r c D : ℕ) : ℕ :=
 noncomputable def dyadicResidualRat (p r c D : ℕ) : ℚ :=
   (dyadicResidualNumerator p r c D : ℚ) / (2 ^ c * D : ℕ)
 end PalomarCorpus.E257.PaperStatementsAF
+
+namespace PalomarCorpus.E257.PaperStructuresCL
+open Set
+/-- Local definition dyadicResidualIntNumerator, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def dyadicResidualIntNumerator (p r : ℤ) (c D : ℕ) : ℤ :=
+  p * (D : ℤ) - ((2 ^ c : ℕ) : ℤ) * r
+/-- Local definition dyadicResidualIntRat, copied so the compared statements of this entry elaborate against Mathlib alone. -/
+noncomputable def dyadicResidualIntRat (p r : ℤ) (c D : ℕ) : ℚ :=
+  Rat.divInt (dyadicResidualIntNumerator p r c D) (((2 ^ c * D : ℕ) : ℤ))
+end PalomarCorpus.E257.PaperStructuresCL
 
 namespace PalomarCorpus.E257.PaperStatementsAA
 export PalomarCorpus.E257_26.Shared (primePowerLayer)

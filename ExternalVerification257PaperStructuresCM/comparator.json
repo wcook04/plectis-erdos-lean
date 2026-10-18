@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification257PaperStructuresCM.Challenge",
+  "solution_module": "Solutions.ExternalVerification257PaperStructuresCM",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257PaperStructuresCM.paper_forced_greedy_tail_lt_weight'"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

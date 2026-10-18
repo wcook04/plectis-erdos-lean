@@ -1,0 +1,3 @@
+import Solutions.ExternalVerification257PaperStructuresCH
+
+#print axioms Erdos249257.ExternalVerification257PaperStructuresCH.IsStraddlePrefix.half_strict

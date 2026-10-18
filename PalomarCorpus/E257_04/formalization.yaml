@@ -2,9 +2,9 @@ version: v0.4
 project:
   name: 'Erdős #257, record sections 2.4 to 2.5: the size of the required error bounds; what finite certificates decide'
   description: >-
-    This entry states 16 theorems that the long record for Erdős problem #257 states in sections 2.4 (the size of the required error bounds) and 2.5 (what finite certificates decide): the proposition “Limits of the specified local summaries” (section 2.4), as affineBinaryOrbit_mod_twoPow_eq, paper_centred_completion_of_fixed_precision, balancedPulse_endpoint_fanout, balancedPulse_label_card_lower_bound, balancedPulse_no_autonomous_decoder and balancedPulse_weighted_pair; the proposition “Weighted denominator budget” (section 2.4), as skipSum_den_dvd_prod and weighted_denominator_budget; the theorem “One-sidedness” (section 2.5), as certificate_of_existsFatalHalfGap, certifiedTailBound_cast, certifiedWordValue_cast, existsFatalHalfGap_iff_exists_certificate, existsFatalHalfGap_of_certificate, mersenneTail_eq_sum_add, scaledMersenneWeight_cast and paper_one_sidedness.
+    This entry states 17 theorems that the long record for Erdős problem #257 states in sections 2.4 (the size of the required error bounds) and 2.5 (what finite certificates decide): the proposition “Limits of the specified local summaries” (section 2.4), as affineBinaryOrbit_mod_twoPow_eq, paper_centred_completion_of_fixed_precision, balancedPulse_endpoint_fanout, balancedPulse_label_card_lower_bound, balancedPulse_no_autonomous_decoder, balancedPulse_weighted_pair and affineBinaryOrbit_sub; the proposition “Weighted denominator budget” (section 2.4), as skipSum_den_dvd_prod and weighted_denominator_budget; the theorem “One-sidedness” (section 2.5), as certificate_of_existsFatalHalfGap, certifiedTailBound_cast, certifiedWordValue_cast, existsFatalHalfGap_iff_exists_certificate, existsFatalHalfGap_of_certificate, mersenneTail_eq_sum_add, scaledMersenneWeight_cast and paper_one_sidedness.
 
-    12 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 4 are derived from the source declaration by a short tactic proof, which certifies implication.
+    12 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 5 are derived from the source declaration by a short tactic proof, which certifies implication.
 
     Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
 
@@ -55,13 +55,13 @@ sources:
   license: Apache-2.0
   author_endorsement: n/a
 status:
-  scope: "One Comparator configuration selecting the 16 theorems listed in PalomarCorpus/E257_04/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 52 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_52, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
+  scope: "One Comparator configuration selecting the 17 theorems listed in PalomarCorpus/E257_04/comparator.json, from the Lean development for Erdős problem #257. The problem's theorems are packed, in the order the papers state them, into the 53 entries PalomarCorpus/E257_01 to PalomarCorpus/E257_53, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification257* directories are internal regression inventory and are not selected."
   sorry_count: 0
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
-  trusted_challenge_sorry_count: 16
-  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E257_04/Challenge.lean. Comparator replay run 35935225572 of wcook04/plectis-erdos-lean at commit cc7e541 built this entry's Challenge and Solution with leanprover/lean4:v4.30.0 and accepted every compared theorem with both the Lean kernel and NanoDa, permitting only the axioms propext, Quot.sound and Classical.choice."
-  axiom_audit_status: "Lean Release Gate run 35935275645 at commit 18ea89f ran scripts/check_axiom_budget.py --run-palomar on the built Solution environment and printed only propext, Quot.sound and Classical.choice for every compared theorem."
+  trusted_challenge_sorry_count: 17
+  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E257_04/Challenge.lean, and the Solution modules contain no sorry. Comparator and kernel outcomes are commit-specific and are recorded separately from this source metadata."
+  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. Axiom-audit outcomes are commit-specific and belong in separate receipts; this source field is not an audit receipt."
   permitted_axiom_budget:
   - propext
   - Quot.sound
@@ -125,6 +125,10 @@ status:
     comparator_config: "PalomarCorpus/E257_04/comparator.json"
   - declaration: "PalomarCorpus.E257.PaperStatementsAM.scaledMersenneWeight_cast"
     file: "Solutions/PalomarCorpus/E257_04/PaperStatementsAM.lean"
+    sorry_count: 0
+    comparator_config: "PalomarCorpus/E257_04/comparator.json"
+  - declaration: "PalomarCorpus.E257.PaperStructuresCK.affineBinaryOrbit_sub"
+    file: "Solutions/PalomarCorpus/E257_04/PaperStructuresCK.lean"
     sorry_count: 0
     comparator_config: "PalomarCorpus/E257_04/comparator.json"
   - declaration: "PalomarCorpus.E257.PaperStructuresS.paper_one_sidedness"
