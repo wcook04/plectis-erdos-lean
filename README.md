@@ -2,15 +2,17 @@
 
 **A checking companion for eight Erdős problem programmes**
 
-This repository packages selected mathematical results as separately stated
-Comparator challenges, Lean solutions and axiom audits. It contains 38 theorem
-families alongside the paper-order Palomar checking inventory.
+This repository lets a reviewer inspect a mathematical statement separately
+from the Lean proof offered for it. Comparator checks the proof against that
+separately written statement and a list of permitted axioms.
+The entries cover 38 theorem families alongside a collection ordered by the
+theorems in the papers.
 
 **[Read the papers](https://github.com/wcook04/plectis-erdos#problem-papers)** · **[Browse the checking entries](PalomarCorpus/README.md)** · **[Set up a clone](#build)**
 
-Each entry states an exact theorem, proves it in Lean against Mathlib, prints the axioms
-it depends on, and records its mathematical consequence, its proof boundary and the
-remaining open step. The other seven unrestricted targets remain open. The primary
+Lean checks the proofs against Mathlib. The accompanying records identify the
+assumptions, source revision and remaining open step. The other seven
+unrestricted targets remain open. The primary
 corpus records [the exact #1041 statement refuted and its remaining limits](https://github.com/wcook04/plectis-erdos#results-and-their-limits).
 
 Problems covered: #68, #243, #249, #251, #257, #269, #1041, #1049.
@@ -19,9 +21,9 @@ The [primary research repository](https://github.com/wcook04/plectis-erdos)
 owns the current papers, claim registry and source map. The
 [mathematics reading room](https://wcook04.github.io/plectis/maths/) and
 [interactive maths map](https://wcook04.github.io/plectis/maths/universe.html)
-provide a way through that work. Checking entries here are bound to this
-repository commit; the pinned release snapshots below retain their own commits
-and toolchains.
+connect papers, results and formal sources. Checking entries here are bound to
+this repository commit; the pinned release snapshots below retain their own
+commits and toolchains.
 
 The website is agent-readable: its [navigation guide](https://wcook04.github.io/plectis/llms.txt)
 and [maths map manifest](https://wcook04.github.io/plectis/lean/experience/manifest.json)
@@ -35,6 +37,24 @@ Comparator compares selected formal statements; Palomar records verification,
 review and registration separately. See the primary corpus's
 [credit and source records](https://github.com/wcook04/plectis-erdos#credit)
 for prior mathematics, public contributions and reader feedback.
+
+## Inspect one result
+
+The [#257 reciprocal-summability entry](ExternalVerification257ReciprocalSupport/)
+proves that $\sum_{a\in A}1/(b^a-1)$ is irrational for every integer base $b\ge2$
+and infinite set $A$ of positive integers with $\sum_{a\in A}1/a<\infty$.
+The finite-sum condition concerns the reciprocals of the exponents.
+Start with its [statement](ExternalVerification257ReciprocalSupport/Challenge.lean),
+then compare the [solution](Solutions/ExternalVerification257ReciprocalSupport.lean)
+and [axiom audit](ExternalVerification257ReciprocalSupport/AxiomAudit.lean).
+The [metadata](ExternalVerification257ReciprocalSupport/formalization.yaml)
+records the exact assumptions, source and attribution.
+
+The `sorry` in the Challenge is a deliberate placeholder for the statement to
+be checked. The Solution must supply the proof without that placeholder.
+Reading these files needs no Lean installation; [Build](#build) explains how to
+compile the sources. Compilation, a Comparator replay and registry acceptance
+are separate checks, with their recorded outcomes [below](#palomar-publication-surface).
 
 ## Where things live
 
@@ -54,12 +74,14 @@ individual verification projects and historical editions can use different pins.
 
 ## Videos
 
-The [Plectis introduction (v2)](https://www.youtube.com/watch?v=Ut9068O-HGU),
-[corpus overview](https://www.youtube.com/watch?v=4QGO80qDDc4)
-and [Erdős #257 demonstration](https://www.youtube.com/watch?v=crpv9N4R7qw)
-are available on YouTube.
-The demonstrations show the wider research environment; the sources available
-in this checking companion are mapped above.
+- [Plectis introduction (v2)](https://www.youtube.com/watch?v=Ut9068O-HGU): the purpose of the maths and software projects.
+- [The maths map](https://www.youtube.com/watch?v=4QGO80qDDc4): how the checked statements, longer research records and papers fit together.
+- [Erdős #257 explanation](https://www.youtube.com/watch?v=crpv9N4R7qw): a proof of the reciprocal-summability case, starting with examples. The general problem remains open.
+
+The films show the wider research environment. This companion supplies selected
+formal checks; the [primary corpus](https://github.com/wcook04/plectis-erdos)
+contains the papers and research records. A checked Lean proof does not by
+itself check the argument presented in a video.
 
 ## Formal Conjectures review
 
@@ -322,13 +344,10 @@ Challenge into a protected directory that shadows every module sharing its prefi
 
 ## Method
 
-[`METHOD.md`](METHOD.md) describes how the work reaches the models that do a large part
-of it, and what makes the result safe to accept. In short: reasoning depth and harness
-fitness are separable capabilities, the strongest available reasoner is often the one
-with no tool access and one response per question, and the entry format below is what
-converts an argument from such a source into a checked theorem. The test never asks who
-produced the proof, which is what lets an argument be accepted from a source that cannot
-be supervised.
+[`METHOD.md`](METHOD.md) explains how models without repository access receive
+copies of the relevant sources and return proposed arguments. Agents with tool
+access then formalise and check those arguments. The same entry format records
+the statement, proof and axioms regardless of who proposed the argument.
 
 [`skills/lean-checkpoint-entry/SKILL.md`](skills/lean-checkpoint-entry/SKILL.md) is the
 authoring and review procedure for an entry, written to be usable against any problem
