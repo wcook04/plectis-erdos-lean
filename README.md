@@ -53,8 +53,9 @@ records the exact assumptions, source and attribution.
 The `sorry` in the Challenge is a deliberate placeholder for the statement to
 be checked. The Solution must supply the proof without that placeholder.
 Reading these files needs no Lean installation; [Build](#build) explains how to
-compile the sources. Compilation, a Comparator replay and registry acceptance
-are separate checks, with their recorded outcomes [below](#palomar-publication-surface).
+compile the sources. Compilation, Comparator replay and registry acceptance
+are separate outcomes; the [records below](#palomar-publication-surface)
+distinguish them.
 
 ## Where things live
 
