@@ -54,9 +54,9 @@ individual verification projects and historical editions can use different pins.
 
 ## Videos
 
-The [Plectis introduction](https://www.youtube.com/watch?v=uO2lbstEH9M),
-[corpus overview](https://www.youtube.com/watch?v=4jObDlHmJRA)
-and [Erdős #257 demonstration](https://www.youtube.com/watch?v=Ok5LkL1owjA)
+The [Plectis introduction (v2)](https://www.youtube.com/watch?v=Ut9068O-HGU),
+[corpus overview](https://www.youtube.com/watch?v=4QGO80qDDc4)
+and [Erdős #257 demonstration](https://www.youtube.com/watch?v=crpv9N4R7qw)
 are available on YouTube.
 The demonstrations show the wider research environment; the sources available
 in this checking companion are mapped above.
