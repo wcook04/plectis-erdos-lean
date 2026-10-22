@@ -8,7 +8,9 @@ separately written statement and a list of permitted axioms.
 The entries cover 38 theorem families alongside a collection ordered by the
 theorems in the papers.
 
-**[Read the papers](https://github.com/wcook04/plectis-erdos#problem-papers)** · **[Browse the checking entries](PalomarCorpus/README.md)** · **[Set up a clone](#build)**
+**[Inspect one result](#inspect-one-result)** · **[Browse the checking entries](PalomarCorpus/README.md)** · **[Set up a clone](#build)**
+
+[Watch the maths tour](https://www.youtube.com/watch?v=J2sX6nj3jOk) · [Read the papers](https://github.com/wcook04/plectis-erdos#problem-papers) · [Source map](#where-things-live)
 
 Lean checks the proofs against Mathlib. The accompanying records identify the
 assumptions, source revision and remaining open step. The other seven
@@ -75,9 +77,11 @@ individual verification projects and historical editions can use different pins.
 
 ## Videos
 
-- [Plectis introduction](https://www.youtube.com/watch?v=U1z2-XaLe_w): the purpose of the maths and software projects.
-- [The maths map](https://www.youtube.com/watch?v=J2sX6nj3jOk): how the checked statements, longer research records and papers fit together.
-- [Erdős #257 explanation](https://www.youtube.com/watch?v=vXgIBy5C5X0): a proof of the reciprocal-summability case, starting with examples. The general problem remains open.
+| Watch | Follow the explanation into source |
+|---|---|
+| [The maths map](https://www.youtube.com/watch?v=J2sX6nj3jOk): how the checked statements, longer research records and papers fit together. | The [primary paper list](https://github.com/wcook04/plectis-erdos#problem-papers) and this companion's [paper-order checking entries](PalomarCorpus/README.md). |
+| [Erdős #257 explanation](https://www.youtube.com/watch?v=vXgIBy5C5X0): a proof of the reciprocal-summability case, starting with examples. The general problem remains open. | The [introductory paper](https://github.com/wcook04/plectis-erdos/blob/main/paper/257/erdos257-expository-sums-never-fractions.pdf), then [one statement, solution and axiom audit](#inspect-one-result). |
+| [Plectis introduction](https://www.youtube.com/watch?v=U1z2-XaLe_w): the purpose of the maths and software projects. | The [project website](https://wcook04.github.io/plectis/) for the other repositories and films. |
 
 The films show the wider research environment. This companion supplies selected
 formal checks; the [primary corpus](https://github.com/wcook04/plectis-erdos)
