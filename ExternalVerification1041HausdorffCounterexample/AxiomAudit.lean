@@ -1,0 +1,3 @@
+import ExternalVerification1041HausdorffCounterexample.Solution
+
+#print axioms Erdos249257.ExternalVerification1041HausdorffCounterexample.preconnected_hausdorff_counterexample

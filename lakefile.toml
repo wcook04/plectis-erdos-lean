@@ -434,6 +434,10 @@ name = "ExternalVerification1041DegreeSevenCounterexample"
 globs = ["ExternalVerification1041DegreeSevenCounterexample.+"]
 
 [[lean_lib]]
+name = "ExternalVerification1041HausdorffCounterexample"
+globs = ["ExternalVerification1041HausdorffCounterexample.+"]
+
+[[lean_lib]]
 name = "ExternalVerification1049RationalBaseRegion"
 globs = ["ExternalVerification1049RationalBaseRegion.+"]
 

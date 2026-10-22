@@ -1,0 +1,9 @@
+{
+  "challenge_module": "ExternalVerification1041HausdorffCounterexample.Challenge",
+  "solution_module": "ExternalVerification1041HausdorffCounterexample.NegativeSolution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041HausdorffCounterexample.preconnected_hausdorff_counterexample"
+  ],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
+  "enable_nanoda": true
+}
