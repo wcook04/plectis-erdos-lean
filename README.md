@@ -75,9 +75,9 @@ individual verification projects and historical editions can use different pins.
 
 ## Videos
 
-- [Plectis introduction (v2)](https://www.youtube.com/watch?v=K87Qk0W7-lk): the purpose of the maths and software projects.
-- [The maths map](https://www.youtube.com/watch?v=xdyTZ19yE2E): how the checked statements, longer research records and papers fit together.
-- [Erdős #257 explanation](https://www.youtube.com/watch?v=wuVtWxGE9eA): a proof of the reciprocal-summability case, starting with examples. The general problem remains open.
+- [Plectis introduction](https://www.youtube.com/watch?v=U1z2-XaLe_w): the purpose of the maths and software projects.
+- [The maths map](https://www.youtube.com/watch?v=J2sX6nj3jOk): how the checked statements, longer research records and papers fit together.
+- [Erdős #257 explanation](https://www.youtube.com/watch?v=vXgIBy5C5X0): a proof of the reciprocal-summability case, starting with examples. The general problem remains open.
 
 The films show the wider research environment. This companion supplies selected
 formal checks; the [primary corpus](https://github.com/wcook04/plectis-erdos)
