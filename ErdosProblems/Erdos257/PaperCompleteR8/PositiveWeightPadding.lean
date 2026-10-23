@@ -35,10 +35,10 @@ theorem paddedWeight_positive {ε : ℝ} (hε : 0 < ε) (hε1 : ε < 1) :
 
 theorem paddedWeight_hasSum (ε : ℝ) : HasSum (paddedWeight ε) 1 := by
   have htail : HasSum (fun j => paddedWeight ε (j + 1)) ε := by
-    simpa only [paddedWeight_succ, tsum_coverThreshold] using
+    simpa only [paddedWeight_succ, tsum_coverThreshold] using!
       (summable_coverThreshold ε).hasSum
   have h := htail.zero_add
-  simpa only [paddedWeight_zero, sub_add_cancel] using h
+  simpa only [paddedWeight_zero, sub_add_cancel] using! h
 
 /-- A summable sequence supported on its zeroth term. -/
 theorem summable_zero_supported (f : ℕ → ℝ) (hf : ∀ j, f (j + 1) = 0) :
@@ -104,14 +104,14 @@ def FiniteCoverFrame.padded (F : FiniteCoverFrame) (ε : ℝ)
   column_summable := by
     intro j
     by_cases hj : j = 0
-    · simpa only [if_pos hj] using F.column_summable
+    · simpa only [if_pos hj] using! F.column_summable
     · simp only [if_neg hj, zero_div]
       exact summable_zero
-  covers := fun a ha => ⟨0, by simpa using ha⟩
+  covers := fun a ha => ⟨0, by simpa using! ha⟩
   majorises := by
     intro j n hn
     by_cases hj : j = 0
-    · simpa only [if_pos hj] using F.majorises n hn
+    · simpa only [if_pos hj] using! F.majorises n hn
     · simp [hj, Real.zero_rpow F.exponent_pos.ne']
   budget_summable := by
     apply summable_zero_supported
@@ -186,12 +186,12 @@ theorem FiniteCoverFrame.optimizedCost_le (F : FiniteCoverFrame) :
     linarith
   have hεlim : Tendsto ε atTop (nhds 0) := tendsto_const_nhds.div_atTop hNat
   have hbase : Tendsto (fun k => 1 - ε k) atTop (nhds 1) := by
-    simpa using tendsto_const_nhds.sub hεlim
+    simpa using! tendsto_const_nhds.sub hεlim
   have hp : Tendsto (fun k => (1 - ε k) ^ F.exponent) atTop (nhds 1) := by
-    simpa using hbase.rpow_const (Or.inl (by norm_num : (1 : ℝ) ≠ 0))
+    simpa using! hbase.rpow_const (Or.inl (by norm_num : (1 : ℝ) ≠ 0))
   have hlim : Tendsto (fun k => F.cost / ((1 - ε k) ^ F.exponent) /
       ((2 : ℝ) ^ F.exponent - 1)) atTop (nhds F.scalarCost) := by
-    simpa only [div_one, FiniteCoverFrame.scalarCost] using
+    simpa only [div_one, FiniteCoverFrame.scalarCost] using!
       (tendsto_const_nhds.div hp (by norm_num : (1 : ℝ) ≠ 0)).div_const
         ((2 : ℝ) ^ F.exponent - 1)
   apply ge_of_tendsto hlim

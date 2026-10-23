@@ -143,7 +143,7 @@ theorem seamUpperThenRightRun_criticalIndex_eq_iff_lowerBoundary_lt
       hd5 hk hcarry hrun hcritical
     have hjk : j ≤ k := by
       rcases hlower with hkd | hlower
-      · simpa [hkd] using hcritical.1
+      · simpa [hkd] using! hcritical.1
       · by_contra hnot
         have hkj' : k < j := Nat.lt_of_not_ge hnot
         have hexp : d - j + 1 ≤ d - (k + 1) + 1 := by omega
@@ -274,7 +274,7 @@ theorem seamUpperThenRightRun_criticalIndex_eq_iff_endpointPacket_lt_half
     have hiff := seamUpperThenRightRun_criticalIndex_eq_iff_lowerBoundary_lt
       hd5 hkle hcarry hrun hcritical
     have hexp : d - (k + 1) + 1 = d - k := by omega
-    simpa [E, hexp, Nat.ne_of_lt hklt] using hiff
+    simpa [E, hexp, Nat.ne_of_lt hklt] using! hiff
   have hcylinder := seamUpperThenRightRun_exactCylinder hd5 hcarry hrun
   change seamIntegerGreedyRemainder (d + k + 1) + 4 ^ k * E + C =
       2 ^ (d + k + 1) at hcylinder
@@ -525,7 +525,7 @@ theorem lateUpperReset_previousProducer_isMiddle
           2 ^ (d + 1) < 2 ^ (d + 1) +
             (4 + 2 ^ ((2 * d + 1) - s)) :=
         Nat.lt_add_of_pos_right (by positivity)
-      exact lt_of_lt_of_le (by simpa [Nat.add_assoc] using hplus) hbarrier
+      exact lt_of_lt_of_le (by simpa [Nat.add_assoc] using! hplus) hbarrier
     exact False.elim ((not_lt_of_ge hupperBound) hstrict)
   · exact hmiddle
 
@@ -570,7 +570,7 @@ theorem lateUpperReset_previousMiddleRemainder_ge_row
   let a : ℕ := (2 * d + 1) - s
   have hsd : s ≤ 2 * d + 1 := by omega
   have haAdd : a + s = 2 * d + 1 := by
-    simpa [a] using Nat.sub_add_cancel hsd
+    simpa [a] using! Nat.sub_add_cancel hsd
   have ha6 : 6 ≤ a := by omega
   have hda : d ≤ 2 * a := by omega
   have hpow : 8 * a ≤ 2 ^ a :=
@@ -643,13 +643,13 @@ theorem seamRightBranch_of_fullSuffix
     have hnot : t ∉ seamWordSupport (seamGreedyWord (t + 1)) := by
       apply (not_mem_seamWordSupport_iff_false
         (seamGreedyWord (t + 1)) (by omega) (by omega)).2
-      simpa [SeamRowWord.terminal] using hfalse
+      simpa [SeamRowWord.terminal] using! hfalse
     exact hnot htop
   have hnotUM : ¬ SeamGreedyUpperOrMiddleAt t (by omega) := by
     intro hUM
     have hfalse :=
       (seamGreedy_terminal_false_iff_upperOrMiddle t (by omega)).2 hUM
-    simpa [hfalse] using hterminal
+    simpa [hfalse] using! hterminal
   have hncarry : ¬ (seamAdjacentCut t (by omega)).successorCarries := by
     intro hcarry
     exact hnotUM (Or.inl hcarry)
@@ -693,7 +693,7 @@ theorem lateUpperReset_sourceRemainder_ge_expBarrier
         exact ⟨(hu e he).1, (hu e he).2.trans (Nat.lt_succ_self d)⟩)
       hsupp hdt hts
   have hrow' : d ≤ (seamAdjacentCut d (by omega)).remainder := by
-    simpa [seamAdjacentCut_remainder] using hrow
+    simpa [seamAdjacentCut_remainder] using! hrow
   exact seamMiddleThenRightRun_expBarrier
     (d := d) (s := s) (by omega) (Nat.succ_le_iff.mpr hd.2.1) hrow'
       hmiddle.1 hmiddle.2 hrun

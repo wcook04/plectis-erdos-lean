@@ -76,7 +76,7 @@ theorem disjoint_periodic_lowerDensity (E : Set ℕ) (r s L : ℕ)
     (by exact_mod_cast hs)
   intro X
   have h := disjoint_periodic_linear_bound E r s L hs hL hhit X
-  simpa only [one_mul] using (show (X : ℝ) ≤
+  simpa only [one_mul] using! (show (X : ℝ) ≤
     (s : ℝ) * (exceptionCount E X : ℝ) + ((r + s : ℕ) : ℝ) by exact_mod_cast h)
 
 /-- General fixed offsets are charged by their number, not their maximum size.
@@ -102,7 +102,7 @@ theorem fixed_offset_incidence_bound (A : Finset ℕ) (E : Set ℕ) (L X : ℕ)
     rw [hi] at he
     exact Subtype.ext (Nat.add_right_cancel he)
   have hc := Fintype.card_le_of_injective f hf
-  simpa [exceptionCount, Nat.mul_comm] using hc
+  simpa [exceptionCount, Nat.mul_comm] using! hc
 
 /-- Boundary-corrected count for arbitrary fixed offsets on one progression.
 The offset bound H affects only the additive boundary term, not the density. -/
@@ -176,9 +176,9 @@ theorem fixed_offsets_periodic_lowerDensity (E : Set ℕ) (s L T r : ℕ)
   have h := lowerDensityAtLeast_of_linear_bound E 1 ((s : ℝ) * (L : ℝ))
     (((r + s * T) + H + s : ℕ) : ℝ) hden (by
       intro X
-      simpa only [one_mul] using (show (X : ℝ) ≤
+      simpa only [one_mul] using! (show (X : ℝ) ≤
         ((s : ℝ) * (L : ℝ)) * (exceptionCount E X : ℝ) +
           (((r + s * T) + H + s : ℕ) : ℝ) by exact_mod_cast hbound X))
-  simpa only [mul_comm] using h
+  simpa only [mul_comm] using! h
 
 end ErdosProblems.Erdos243.PaperCompleteR11

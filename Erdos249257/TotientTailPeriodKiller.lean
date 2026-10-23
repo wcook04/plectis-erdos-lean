@@ -91,7 +91,7 @@ private lemma div_two_pow_eq (a : ℝ) (n : ℕ) : a / 2 ^ n = a * (1 / 2 : ℝ)
   ring
 
 private lemma summable_linear_half : Summable (fun j : ℕ => (j : ℝ) * (1 / 2 : ℝ) ^ j) := by
-  simpa using summable_pow_mul_geometric_of_norm_lt_one 1
+  simpa using! summable_pow_mul_geometric_of_norm_lt_one 1
     (r := (1 / 2 : ℝ)) (by rw [Real.norm_eq_abs]; norm_num)
 
 private lemma summable_const_add_mul_half (C : ℝ) :

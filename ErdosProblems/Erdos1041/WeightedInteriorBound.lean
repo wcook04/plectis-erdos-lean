@@ -23,7 +23,7 @@ theorem weighted_interior_point_le_energy {ι : Type*} [Fintype ι]
     intro j
     have h := (mul_le_mul_of_nonneg_left
       (le_of_lt (show (1 : ℝ) < R by exact_mod_cast hR)) (norm_nonneg (c j))).trans_lt (hc j)
-    simpa only [mul_one] using h
+    simpa only [mul_one] using! h
   have hg : DiffContOnCl ℂ g (ball 0 1) := by
     exact (diffContOnCl_weightedAnalyticLog w c R hc).mono
       (ball_subset_ball (le_of_lt (show (1 : ℝ) < R by exact_mod_cast hR)))
@@ -34,7 +34,7 @@ theorem weighted_interior_point_le_energy {ι : Type*} [Fintype ι]
     intro j
     have hne : ∀ z ∈ sphere (0 : ℂ) 1, z - c j ≠ 0 := by
       intro z hz he
-      have hz1 : ‖z‖ = 1 := by simpa [mem_sphere, dist_eq_norm] using hz
+      have hz1 : ‖z‖ = 1 := by simpa [mem_sphere, dist_eq_norm] using! hz
       have he' : z = c j := sub_eq_zero.mp he
       rw [he'] at hz1
       linarith [hc1 j]
@@ -61,7 +61,7 @@ theorem weighted_interior_point_le_energy {ι : Type*} [Fintype ι]
         apply Finset.sum_congr rfl
         intro j _
         symm
-        simpa only [smul_eq_mul] using
+        simpa only [smul_eq_mul] using!
           (circleAverage_fun_smul (a := w j)
             (f := fun z => poissonKernel 0 (c j) z * ‖g z‖ ^ 2) (c := 0) (R := 1))
       _ = circleAverage (fun z => ∑ j,
@@ -96,7 +96,7 @@ theorem weighted_interior_product_bound {ι : Type*} [Fintype ι]
     intro j
     have h := (mul_le_mul_of_nonneg_left
       (le_of_lt (show (1 : ℝ) < R by exact_mod_cast hR)) (norm_nonneg (c j))).trans_lt (hc j)
-    simpa only [mul_one] using h
+    simpa only [mul_one] using! h
   have hm : ∀ j, ‖weightedAnalyticLog w c (c j)‖ =
       ∏ k, ‖1 - conj (c k) * c j‖ ^ w k := by
     intro j
@@ -105,8 +105,8 @@ theorem weighted_interior_product_bound {ι : Type*} [Fintype ι]
     calc
       ‖c k‖ * ‖c j‖ ≤ ‖c k‖ * 1 :=
         mul_le_mul_of_nonneg_left (hc1 j).le (norm_nonneg _)
-      _ < 1 := by simpa only [mul_one] using hc1 k
-  simpa only [hm] using weighted_interior_point_bound w c hw0 hw R hR hc
+      _ < 1 := by simpa only [mul_one] using! hc1 k
+  simpa only [hm] using! weighted_interior_point_bound w c hw0 hw R hR hc
 
 end ErdosProblems.Erdos1041
 end

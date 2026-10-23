@@ -27,7 +27,7 @@ lemma half_pow_le_qPochhammerFinite {q : ℝ} (hq0 : 0 ≤ q)
   calc
     (1 / 2 : ℝ) ^ n = ∏ _k ∈ Finset.range n, (1 / 2 : ℝ) := by simp
     _ ≤ ∏ k ∈ Finset.range n, (1 - q ^ s * q ^ k) := by
-      apply Finset.prod_le_prod
+      apply Finset.prod_le_prod₀
       · intro k hk
         norm_num
       · intro k hk
@@ -159,7 +159,7 @@ theorem actualMoment_tendsto_one (m : ℕ) :
         Tendsto (fun q : ℝ => 1 - q ^ (m + 1)) (𝓝 0) (𝓝 (1 - 0)))
     have hquot : Tendsto (fun q : ℝ => q ^ (m + 1) / (1 - q ^ (m + 1)))
         (𝓝 0) (𝓝 0) := by
-      simpa using hpow.div hden (by norm_num : (1 : ℝ) ≠ 0)
+      simpa using! hpow.div hden (by norm_num : (1 : ℝ) ≠ 0)
     have hconst : Tendsto (fun _ : ℝ => (2 : ℝ) ^ (m + 1)) (𝓝 0)
         (𝓝 ((2 : ℝ) ^ (m + 1))) := tendsto_const_nhds
     simpa using hconst.mul hquot

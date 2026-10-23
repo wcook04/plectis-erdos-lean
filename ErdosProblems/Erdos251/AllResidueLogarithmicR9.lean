@@ -341,8 +341,12 @@ theorem specialCount_bound (R N : ℕ) (hR : 0 < R) :
     specialCount N ≤ R + N / R + 1 := by
   classical
   have hcard : specialCount N = (indexSlice c 0 N).card := by
-    simpa only [specialCount, Special, supportSlice, Nat.zero_add, Nat.Ico_zero_eq_range]
-      using supportSlice_card c allResidueCentre_strictMono 0 N
+    first
+      | simpa only [specialCount, Special, supportSlice, Nat.zero_add, Nat.Ico_zero_eq_range]
+          using! supportSlice_card c allResidueCentre_strictMono 0 N
+      | (have h := supportSlice_card c allResidueCentre_strictMono 0 N
+         simp only [supportSlice, Nat.zero_add, Nat.Ico_zero_eq_range] at h
+         exact h)
   rw [hcard]
   have hsub : indexSlice c 0 N ⊆ range (R + N / R + 1) := by
     intro j hj

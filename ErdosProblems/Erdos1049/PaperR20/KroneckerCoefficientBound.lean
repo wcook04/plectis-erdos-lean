@@ -154,7 +154,7 @@ theorem det_coeff_abs_le_of_majorant {n : ℕ} (A B : Matrix (Fin n) (Fin n) ℤ
         apply Finset.sum_le_sum
         intro σ _
         rw [eval_prod]
-        apply Finset.prod_le_prod
+        apply Finset.prod_le_prod₀
         · intro i _
           exact (hAB (σ i) i).nonneg.eval_one_nonneg
         · intro i _

@@ -104,7 +104,7 @@ theorem no_carryLift_of_errorBound_below_twoPow
     have hprefix := hnull a b (prime235ToSource_injective hab)
     simpa [channelPrefix, carryLiftPerturbation,
       ErdosProblems.Erdos269.channelPrefix,
-      ErdosProblems.Erdos269.carryLiftPerturbation] using hprefix
+      ErdosProblems.Erdos269.carryLiftPerturbation] using! hprefix
   have h23start' : prime235ToSource (jumpBase n23) = .two := by
     simp [h23start, prime235ToSource]
   have h23end' : prime235ToSource (jumpBase (n23 + 1)) = .three := by
@@ -160,7 +160,7 @@ theorem perturbation_eq_zero_of_blockNull_twoAnchors
         (fun n => prime235ToSource (jumpBase n)) ε := by
     intro a b hab
     have hprefix := hnull a b (prime235ToSource_injective hab)
-    simpa [channelPrefix, ErdosProblems.Erdos269.channelPrefix] using hprefix
+    simpa [channelPrefix, ErdosProblems.Erdos269.channelPrefix] using! hprefix
   have h23start' : prime235ToSource (jumpBase n23) = .two := by
     simp [h23start, prime235ToSource]
   have h23end' : prime235ToSource (jumpBase (n23 + 1)) = .three := by
@@ -189,7 +189,7 @@ theorem carryLift_blockDefect
         (base n - 1) * carryLiftError D z carry n := by
   simpa [carryLiftPerturbation, carryLiftError,
     ErdosProblems.Erdos269.carryLiftPerturbation,
-    ErdosProblems.Erdos269.carryLiftError] using
+    ErdosProblems.Erdos269.carryLiftError] using!
     ErdosProblems.Erdos269.carryLift_blockDefect
       D base digit z carry hcarry a b hab
 
@@ -213,7 +213,7 @@ theorem carry_eq_residueDigit_add_coboundary
   simpa [carryResidue, carryQuotient, residueDigit,
     ErdosProblems.Erdos269.carryResidue,
     ErdosProblems.Erdos269.carryQuotient,
-    ErdosProblems.Erdos269.residueDigit] using
+    ErdosProblems.Erdos269.residueDigit] using!
     ErdosProblems.Erdos269.carry_eq_residueDigit_add_coboundary
       B hB base carry digit hrec
 
@@ -259,7 +259,7 @@ theorem no_positive_reducedCarry_of_cofinalLocalWindowEscape
   exact
     ErdosProblems.Erdos269.no_positive_reducedCarry_of_cofinalLocalWindowEscape
       b m shortBound
-      (by simpa [CofinalLocalWindowEscape_fun_eq] using hescape)
+      (by simpa [CofinalLocalWindowEscape_fun_eq] using! hescape)
       B hBpos hBcoprime d hrec hpos hbound
 
 end PalomarCorpus.E269.CarryMechanism

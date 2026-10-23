@@ -61,7 +61,7 @@ theorem circle_weighted_poisson_energy_le_one {ι : Type*} [Fintype ι]
     intro j
     have h := (mul_le_mul_of_nonneg_left
       (le_of_lt (show (1 : ℝ) < R by exact_mod_cast hR)) (norm_nonneg (c j))).trans_lt (hc j)
-    simpa only [mul_one] using h
+    simpa only [mul_one] using! h
   have heq : circleAverage (fun z => ‖weightedAnalyticLog w c z‖ ^ 2 *
       (∑ j, w j * poissonKernel 0 (c j) z)) 0 1 =
       circleAverage (fun z => ‖weightedAnalyticLog w c z‖ ^ 2 *
@@ -75,7 +75,7 @@ theorem circle_weighted_poisson_energy_le_one {ι : Type*} [Fintype ι]
         (1 - 2 * (z * ∑ j, (w j : ℂ) *
           (-conj (c j) / (1 - conj (c j) * z))).re)
     rw [weighted_poisson_log_identity w c hw hc1
-      (by simpa [mem_sphere, dist_eq_norm] using hz)]
+      (by simpa [mem_sphere, dist_eq_norm] using! hz)]
   rw [heq]
   exact circle_weightedAnalyticLog_energy_le_one w c R hR hc
 

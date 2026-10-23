@@ -249,7 +249,7 @@ theorem card_window_filter_mod (M x : ℕ) (hM : 0 < M) (R : Finset ℕ)
         Nat.ModEq.add (Nat.mod_modEq x M).symm (Nat.mod_modEq _ M)
       have e2 : x % M + (M + r - x % M) = M + r := by omega
       have : (x + d) % M = (M + r) % M := by
-        simpa only [e2] using e1
+        rw [e2] at e1; exact e1
       rw [this, Nat.add_mod_left, Nat.mod_eq_of_lt hrM]
     refine ⟨x + d, ?_, hkey⟩
     simp only [Finset.mem_filter, Finset.mem_Ico]
@@ -296,7 +296,7 @@ theorem prefixCount_window (m : ℕ → ℕ) (hm : ∀ j, 0 < m j)
       refine ⟨hn.1, fun hmem => ?_⟩
       obtain ⟨j, hj, hdvd⟩ := (hdict n).mp hmem
       exact hn.2 j hj hdvd
-  have hsum := Finset.filter_card_add_filter_neg_card_eq_card
+  have hsum := Finset.card_filter_add_card_filter_not
     (s := Finset.Ico x (x + prefixModulus m T))
     (p := fun n => n % prefixModulus m T ∈ R)
   rw [hbad, hgoodeq, Nat.card_Ico] at hsum
@@ -369,7 +369,7 @@ theorem prefixDensity_nonneg (m : ℕ → ℕ) (hm : ∀ j, 0 < m j) (T : ℕ) :
 
 theorem prefixDensity_le_one (m : ℕ → ℕ) (hm : ∀ j, 0 < m j) (T : ℕ) :
     prefixDensity m T ≤ 1 := by
-  refine Finset.prod_le_one (fun j _ => ?_) (fun j _ => ?_)
+  refine Finset.prod_le_one₀ (fun j _ => ?_) (fun j _ => ?_)
   · have h1 : (1 : ℝ) ≤ (m j : ℝ) := by exact_mod_cast hm j
     have h2 : 1 / (m j : ℝ) ≤ 1 := by rw [div_le_one (by linarith)]; linarith
     linarith
@@ -755,7 +755,7 @@ theorem prod_binaryTower_le (C : ℕ) :
     ∀ N : ℕ, ∏ k ∈ Finset.range N, binaryTower (k + C) ≤ binaryTower (N + C) := by
   intro N
   induction N with
-  | zero => simpa using binaryTower_pos C
+  | zero => simpa using (show 1 ≤ binaryTower C from binaryTower_pos C)
   | succ N ih =>
       rw [Finset.prod_range_succ]
       have h3 : binaryTower (N + C) * binaryTower (N + C) = binaryTower (N + C + 1) := by

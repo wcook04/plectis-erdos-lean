@@ -185,7 +185,10 @@ theorem two_pi_mul_le_hausdorffMeasure_sphere (x : ℂ) {ρ : ℝ} (hρ : 0 ≤ 
   have hx1 : π / N ≤ 1 := by
     rw [div_le_one₀ hNpos]
     linarith [Real.pi_le_four]
-  have hsin := Real.sin_gt_sub_cube hx0 hx1
+  have hsin : π / N - (π / N) ^ 3 / 4 < Real.sin (π / N) := by
+    have h6 := Real.sin_gt_sub_cube hx0
+    have hc : 0 ≤ (π / N) ^ 3 := by positivity
+    linarith
   have hsin0 : 0 ≤ Real.sin (π / N) :=
     Real.sin_nonneg_of_nonneg_of_le_pi hx0.le (div_le_self Real.pi_pos.le (by linarith))
   have hcube : (N : ℝ) * (ρ * (2 * (π / N - (π / N) ^ 3 / 4)))

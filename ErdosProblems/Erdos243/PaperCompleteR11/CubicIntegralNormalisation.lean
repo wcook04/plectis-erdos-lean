@@ -21,9 +21,9 @@ def risingBinomial (n : ℕ) : ℤ := ((n + 2).choose 3 : ℤ)
 theorem six_mul_rising_choose (n : ℕ) :
     6 * (n + 2).choose 3 = n * (n + 1) * (n + 2) := by
   have h1 : (n + 1) * n = (n + 1).choose 2 * 2 := by
-    simpa using Nat.add_one_mul_choose_eq n 1
+    simpa using! Nat.add_one_mul_choose_eq n 1
   have h2 : (n + 2) * (n + 1).choose 2 = (n + 2).choose 3 * 3 := by
-    simpa only [Nat.add_assoc] using Nat.add_one_mul_choose_eq (n + 1) 2
+    simpa only [Nat.add_assoc] using! Nat.add_one_mul_choose_eq (n + 1) 2
   have h3 := congrArg (fun t : ℕ ↦ t * (n + 2)) h1
   nlinarith
 
@@ -125,7 +125,7 @@ theorem natural_cubic_nonintegral_profile_quarter_density
     LowerDensityAtLeast
       {n : ℕ | (C n : ℚ) ≠ κ * (n : ℚ) * ((n : ℚ) + 1) * ((n : ℚ) + 2) + η}
       (1 / 4) := by
-  simpa only [Int.cast_natCast] using
+  simpa only [Int.cast_natCast] using!
     cubic_nonintegral_profile_quarter_density (fun n ↦ (C n : ℤ)) κ η hbad
 
 /-- A concrete infinite family excluded without any prime supplier. -/

@@ -287,7 +287,7 @@ theorem exists_freshPrimes_prod_one_add_inv_ge (b : ℕ) (hb : 0 < b) (E : Finse
     exact hp1
   have hprod : Real.exp (∑ p ∈ S, (1 / (p : ℝ)) / 2) ≤ ∏ p ∈ S, (1 + 1 / (p : ℝ)) := by
     rw [Real.exp_sum]
-    refine Finset.prod_le_prod (fun p _ => (Real.exp_pos _).le) hfactor
+    refine Finset.prod_le_prod₀ (fun p _ => (Real.exp_pos _).le) hfactor
   have hsumhalf : (∑ p ∈ S, (1 / (p : ℝ)) / 2) = (∑ p ∈ S, (1 : ℝ) / p) / 2 := by
     rw [Finset.sum_div]
   rcases le_or_gt Y 1 with hY | hY
@@ -298,7 +298,7 @@ theorem exists_freshPrimes_prod_one_add_inv_ge (b : ℕ) (hb : 0 < b) (E : Finse
       have hinv : (0 : ℝ) ≤ 1 / (p : ℝ) := by positivity
       linarith
     have hone : (1 : ℝ) ≤ ∏ p ∈ S, (1 + 1 / (p : ℝ)) := by
-      have h := Finset.prod_le_prod (s := S) (f := fun _ : ℕ => (1 : ℝ))
+      have h := Finset.prod_le_prod₀ (s := S) (f := fun _ : ℕ => (1 : ℝ))
         (g := fun p : ℕ => 1 + 1 / (p : ℝ)) (fun p _ => zero_le_one) hterm
       simpa using h
     linarith
@@ -456,7 +456,7 @@ theorem sigmaRatio_primeProd_le_card_divisors {P : Finset ℕ} (hP : ∀ p ∈ P
   classical
   rw [sigmaRatio_primeProd hP, card_divisors_primeProd hP]
   have hle : ∏ p ∈ P, (1 + 1 / (p : ℝ)) ≤ ∏ _p ∈ P, (2 : ℝ) := by
-    refine Finset.prod_le_prod ?_ ?_
+    refine Finset.prod_le_prod₀ ?_ ?_
     · intro p hp
       have hp1 : (1 : ℝ) ≤ (p : ℝ) := by exact_mod_cast (hP p hp).one_lt.le
       have : (0 : ℝ) ≤ 1 / (p : ℝ) := by positivity

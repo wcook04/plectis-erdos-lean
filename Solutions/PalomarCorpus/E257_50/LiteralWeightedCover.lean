@@ -84,7 +84,9 @@ theorem HasStrengthenedPositiveCover_iff (A : Set ℕ) :
   · rintro ⟨C, hA, hC⟩
     refine ⟨ofSource C, ?_,
       (PositiveCoverData.StrengthenedCostSummable_ofSource C).mpr hC⟩
-    simpa [PositiveCoverData.host] using hA
+    first
+    | (simpa [PositiveCoverData.host] using hA; done)
+    | exact hA
 
 noncomputable def LogBudgetCover.toSource {A : Set ℕ} (C : LogBudgetCover A) :
     ErdosProblems.Erdos257.PaperCompleteR8.LogBudgetCover A where

@@ -232,7 +232,7 @@ private theorem sourceResidue_mul_denominatorDeltas (m k : ℕ) (hk : k ≤ m) :
   rw [hcomm] at h2
   have h3' : sourceDeltaPoly (m + k) =
       sourceDeltaPoly k * sourceDeltaSegmentPoly k m := by
-    simpa [Nat.add_comm] using h3
+    simpa [Nat.add_comm] using! h3
   unfold sourceResiduePoly
   rw [h3']
   calc

@@ -94,7 +94,7 @@ lemma sourceDQuotient_map {K : Type*} [Field K]
   apply mul_right_cancel₀ hden
   calc
     f (sourceDQuotient n j) * ((f X) ^ j - 1) = f (sourceD n) := by
-      simpa only [mul_comm] using h
+      simpa only [mul_comm] using! h
     _ = (f (sourceD n) * ((f X) ^ j - 1)⁻¹) * ((f X) ^ j - 1) := by
       rw [mul_assoc, inv_mul_cancel₀ hden, mul_one]
 
@@ -110,7 +110,7 @@ lemma sourceShiftedASummand_map {K : Type*} [Field K]
   apply mul_right_cancel₀ hp
   calc
     f (sourceShiftedASummand n s j) * (f X) ^ (j * (2 * n + s)) =
-        f (sourceASummand n s) := by simpa only [mul_comm] using h
+        f (sourceASummand n s) := by simpa only [mul_comm] using! h
     _ = _ := by rw [mul_assoc, inv_mul_cancel₀ hp, mul_one]
 
 /-- The literal expression, not an abstract source package, has D-clearing.
@@ -176,9 +176,9 @@ theorem actual_B_first_clearing_real (n : ℕ) (x : ℝ) (hx : 1 < x) :
     (Polynomial.eval₂RingHom (Int.castRingHom ℝ) x) (sourceD n) *
       sourceBValue (Polynomial.eval₂RingHom (Int.castRingHom ℝ) x) n
   apply actual_B_first_clearing
-  · simpa using (ne_of_gt (lt_trans zero_lt_one hx) : x ≠ 0)
+  · simpa using! (ne_of_gt (lt_trans zero_lt_one hx) : x ≠ 0)
   · intro j hj
-    simpa using source_real_denominator_ne_zero x hx j (Finset.mem_Icc.mp hj).1
+    simpa using! source_real_denominator_ne_zero x hx j (Finset.mem_Icc.mp hj).1
 
 /-- The literal B as a rational function over Z, not just a real evaluation. -/
 noncomputable def sourceBRational (n : ℕ) : RatFunc ℤ :=
@@ -186,17 +186,17 @@ noncomputable def sourceBRational (n : ℕ) : RatFunc ℤ :=
 
 lemma rationalPolynomial_X_ne_zero :
     algebraMap ℤ[X] (RatFunc ℤ) X ≠ 0 := by
-  simpa only [Ne, IsFractionRing.to_map_eq_zero_iff] using
+  simpa only [Ne, IsFractionRing.to_map_eq_zero_iff] using!
     (X_ne_zero : (X : ℤ[X]) ≠ 0)
 
 lemma rationalPolynomial_pole_ne_zero (j : ℕ) (hj : 0 < j) :
     (algebraMap ℤ[X] (RatFunc ℤ) X) ^ j - 1 ≠ 0 := by
   have hp : (X ^ j - 1 : ℤ[X]) ≠ 0 := by
-    simpa only [map_one] using
+    simpa only [map_one] using!
       (monic_X_pow_sub_C (1 : ℤ) (ne_of_gt hj)).ne_zero
   have hm : algebraMap ℤ[X] (RatFunc ℤ) (X ^ j - 1) ≠ 0 := by
-    simpa only [Ne, IsFractionRing.to_map_eq_zero_iff] using hp
-  simpa only [map_sub, map_pow, map_one] using hm
+    simpa only [Ne, IsFractionRing.to_map_eq_zero_iff] using! hp
+  simpa only [map_sub, map_pow, map_one] using! hm
 
 /-- The first clearing is an unconditional rational-function identity. -/
 theorem actual_B_first_clearing_rational (n : ℕ) :

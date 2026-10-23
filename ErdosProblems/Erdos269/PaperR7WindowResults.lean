@@ -41,11 +41,11 @@ theorem shortPaperEscape_iff_source :
     · have hp := windowBase235_pos lo len
       have hn : actualWindowBase lo len ≠ 0 := hp.ne'
       exact Int.natAbs_pos.mpr hn
-    · simpa [bridgeWidth, Nat.mul_assoc, Nat.mul_comm, Nat.mul_left_comm] using hesc
+    · simpa [bridgeWidth, Nat.mul_assoc, Nat.mul_comm, Nat.mul_left_comm] using! hesc
   · intro h B hB hcop a₀ _
     obtain ⟨lo, len, hlo, hlen, _, hesc⟩ := h B hB hcop a₀
     refine ⟨lo, len, hlo, hlen, ?_⟩
-    simpa [bridgeWidth, Nat.mul_assoc, Nat.mul_comm, Nat.mul_left_comm] using hesc
+    simpa [bridgeWidth, Nat.mul_assoc, Nat.mul_comm, Nat.mul_left_comm] using! hesc
 
 /-- Whole short-note `res:windowconsumer`, for the literal smooth-number sum. -/
 theorem short_window_equivalence :
@@ -206,7 +206,7 @@ theorem long_window_growth (lo len : ℕ) (_hlen : 1 ≤ len) :
   · rw [actualWindowBase_eq_product, actualWindowProduct_eq_log_monomial]
     simp only [natLog_two_pow_eq_floor]
     norm_num
-  · simpa only [actualWindowBase_eq_product, Int.cast_natCast] using
+  · simpa only [actualWindowBase_eq_product, Int.cast_natCast] using!
       actualWindowProduct_geometric_bounds lo len
 
 /-- The long record's actual jump index. -/

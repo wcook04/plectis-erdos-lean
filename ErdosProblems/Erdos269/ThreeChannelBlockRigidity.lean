@@ -73,10 +73,10 @@ theorem channelBlockNull_iff_channelPotential
     intro N
     have hleft : C (jumpBase N) = channelPrefix ε N := by
       apply hnull
-      simpa [C] using hrepresentative (jumpBase N)
+      simpa [C] using! hrepresentative (jumpBase N)
     have hright : C (jumpBase (N + 1)) = channelPrefix ε (N + 1) := by
       apply hnull
-      simpa [C] using hrepresentative (jumpBase (N + 1))
+      simpa [C] using! hrepresentative (jumpBase (N + 1))
     rw [hright, hleft, channelPrefix_succ]
     abel
   · rintro ⟨C, hpotential⟩
@@ -85,7 +85,7 @@ theorem channelBlockNull_iff_channelPotential
         channelPrefix ε N = C (jumpBase N) - C (jumpBase 0) := by
       intro N
       rw [channelPrefix]
-      simpa only [hpotential] using
+      simpa only [hpotential] using!
         sum_range_channelCoboundary jumpBase C N
     rw [hprefix a, hprefix b, hab]
 

@@ -158,7 +158,7 @@ theorem chebyshevDetScale_sq_mul_sq_abs_det_vandermonde_le_pow_card
         nlinarith [abs_nonneg B.det, hprodNonneg]
       _ = ∏ i, ‖row i‖ ^ 2 := by rw [Finset.prod_pow]
       _ ≤ ∏ _i : Fin n, (n : ℝ) :=
-        Finset.prod_le_prod (fun _ _ ↦ sq_nonneg _) (fun i _ ↦ hrow i)
+        Finset.prod_le_prod₀ (fun _ _ ↦ sq_nonneg _) (fun i _ ↦ hrow i)
       _ = (n : ℝ) ^ n := by simp
   have hscale : 0 ≤ chebyshevDetScale n := by
     unfold chebyshevDetScale
@@ -218,7 +218,7 @@ theorem sq_abs_det_vandermonde_le_pow_card
       nlinarith [abs_nonneg A.det, hprodNonneg]
     _ = ∏ i, ‖row i‖ ^ 2 := by rw [Finset.prod_pow]
     _ ≤ ∏ _i : Fin n, (n : ℝ) :=
-      Finset.prod_le_prod (fun _ _ ↦ sq_nonneg _) (fun i _ ↦ hrow i)
+      Finset.prod_le_prod₀ (fun _ _ ↦ sq_nonneg _) (fun i _ ↦ hrow i)
     _ = (n : ℝ) ^ n := by simp
 
 /-- Pairwise-distance form of the real Fekete bound. -/
@@ -266,7 +266,7 @@ theorem exists_norm_lt_one_of_prod_norm_lt_one
     calc
       (1 : ℝ) = ∏ _i : ι, (1 : ℝ) := by simp
       _ ≤ ∏ i, ‖v i‖ :=
-        Finset.prod_le_prod (fun _ _ ↦ zero_le_one) (fun i _ ↦ hge i)
+        Finset.prod_le_prod₀ (fun _ _ ↦ zero_le_one) (fun i _ ↦ hge i)
   exact (not_lt_of_ge hone) hprod
 
 /-- Finite geometric-mean selection in the exact form used by the quantitative
@@ -284,7 +284,7 @@ theorem exists_le_of_prod_le_pow
     calc
       r ^ Fintype.card ι = ∏ _i : ι, r := by simp
       _ < ∏ i, v i :=
-        Finset.prod_lt_prod_of_nonempty
+        Finset.prod_lt_prod_of_nonempty₀
           (fun _ _ ↦ hr) (fun i _ ↦ hlt i) Finset.univ_nonempty
   exact (not_lt_of_ge hprod) hstrict
 

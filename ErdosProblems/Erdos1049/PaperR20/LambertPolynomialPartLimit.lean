@@ -24,7 +24,7 @@ def realDivisorSeries (q : ℝ) : ℝ :=
 lemma realDivisorSeries_summable {q : ℝ} (hq : |q| < 1) :
     Summable (fun n : ℕ => (n.divisors.card : ℝ) * q ^ n) := by
   apply Summable.of_norm_bounded (g := fun n : ℕ => (n : ℝ) * |q| ^ n)
-  · simpa using summable_norm_pow_mul_geometric_of_norm_lt_one (r := q) 1 hq
+  · simpa using! summable_norm_pow_mul_geometric_of_norm_lt_one (r := q) 1 hq
   · intro n
     rw [norm_mul, Real.norm_natCast, norm_pow, Real.norm_eq_abs]
     exact mul_le_mul_of_nonneg_right
@@ -38,12 +38,12 @@ lemma realDivisorSeries_eq_lambert (q : ℝ) (hq : |q| < 1) :
   have hid := tsum_pow_div_one_sub_eq_tsum_sigma (r := q) hq 0
   have hp : (∑' n : ℕ+, q ^ (n : ℕ) / (1 - q ^ (n : ℕ))) =
       ∑' n : ℕ+, ((n : ℕ).divisors.card : ℝ) * q ^ (n : ℕ) := by
-    simpa only [pow_zero, one_mul, ArithmeticFunction.sigma_zero_apply] using hid
+    simpa only [pow_zero, one_mul, ArithmeticFunction.sigma_zero_apply] using! hid
   calc
     realDivisorSeries q =
         ∑' n : ℕ+, ((n : ℕ).divisors.card : ℝ) * q ^ (n : ℕ) := by
       simpa only [Nat.divisors_zero, Finset.card_empty, Nat.cast_zero,
-        zero_mul, zero_add, realDivisorSeries] using hs.symm
+        zero_mul, zero_add, realDivisorSeries] using! hs.symm
     _ = ∑' n : ℕ+, q ^ (n : ℕ) / (1 - q ^ (n : ℕ)) := hp.symm
     _ = ∑' n : ℕ, q ^ (n + 1) / (1 - q ^ (n + 1)) :=
       tsum_pnat_eq_tsum_succ (f := fun n : ℕ => q ^ n / (1 - q ^ n))
@@ -57,23 +57,23 @@ lemma divisorTail_tendsto_zero (i : ℕ) :
   let bound : ℕ → ℝ := fun n =>
     (i + 1 : ℝ) * (n + 1 : ℝ) * (1 / 2 : ℝ) ^ (n + 1)
   have hbase : Summable (fun n : ℕ => (n : ℝ) ^ 1 * (1 / 2 : ℝ) ^ n) := by
-    simpa using summable_norm_pow_mul_geometric_of_norm_lt_one
+    simpa using! summable_norm_pow_mul_geometric_of_norm_lt_one
       (R := ℝ) 1 (show ‖(1 / 2 : ℝ)‖ < 1 by norm_num)
   have hbound : Summable bound := by
     have hs := (summable_nat_add_iff 1).2 hbase
-    simpa [bound, mul_assoc] using hs.mul_left (i + 1 : ℝ)
+    simpa [bound, mul_assoc] using! hs.mul_left (i + 1 : ℝ)
   have ht := tendsto_tsum_of_dominated_convergence
       (f := fun p n => ((n + i + 1).divisors.card : ℝ) * p⁻¹ ^ (n + 1))
       (g := fun _ => (0 : ℝ)) hbound (by
         intro n
-        simpa using (tendsto_inv_atTop_zero.pow (n + 1)).const_mul
+        simpa using! (tendsto_inv_atTop_zero.pow (n + 1)).const_mul
           (((n + i + 1).divisors.card : ℝ))) (by
         filter_upwards [eventually_ge_atTop (2 : ℝ)] with p hp
         intro n
         have hp0 : 0 < p := lt_of_lt_of_le (by norm_num) hp
         have hinv : |p⁻¹| ≤ (1 / 2 : ℝ) := by
           rw [abs_of_pos (inv_pos.mpr hp0)]
-          simpa only [one_div] using (inv_le_inv₀ hp0 (by norm_num)).2 hp
+          simpa only [one_div] using! (inv_le_inv₀ hp0 (by norm_num)).2 hp
         rw [norm_mul, Real.norm_natCast, norm_pow, Real.norm_eq_abs]
         apply mul_le_mul
         · calc
@@ -87,7 +87,7 @@ lemma divisorTail_tendsto_zero (i : ℕ) :
         · exact pow_le_pow_left₀ (abs_nonneg _) hinv _
         · positivity
         · positivity)
-  simpa only [divisorTail, tsum_zero] using ht
+  simpa only [divisorTail, tsum_zero] using! ht
 
 def monomialLambertPart (i : ℕ) (p : ℝ) : ℝ :=
   ∑ r ∈ range i, ((i - r).divisors.card : ℝ) * p ^ r
@@ -181,7 +181,7 @@ theorem hasLambertPolynomialPartLimit (P : ℤ[X]) :
     ring]
   have hsum := tendsto_finset_sum (range (P.natDegree + 1)) (fun i hi =>
     (monomial_lambert_tendsto i).const_mul (P.coeff i : ℝ))
-  simpa using hsum
+  simpa using! hsum
 
 /-- With the two analytic limits discharged, an exact Padé remainder identity
 is the sole remaining input needed to identify the paper's `β_m`. -/

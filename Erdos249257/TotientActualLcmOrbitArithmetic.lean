@@ -637,7 +637,7 @@ theorem one_sub_sum_le_prod_one_sub_rational
     intro i hi
     have hprodOne :
         (∏ j ∈ s with j < i, (1 - f j)) ≤ 1 := by
-      apply Finset.prod_le_one
+      apply Finset.prod_le_one₀
       · intro j hj
         have hjs : j ∈ s := (Finset.mem_filter.mp hj).1
         exact sub_nonneg.mpr (hone j hjs)
@@ -1080,7 +1080,7 @@ theorem periodLcm_lt_four_mul_j_mul_lcmRayArithmeticLetter_divisor
     · simpa [t] using hyPow
   have hprodX :
       (∏ r ∈ relativePrimeFactors j x, (1 - (r : ℚ)⁻¹)) ≤ 1 := by
-    apply Finset.prod_le_one
+    apply Finset.prod_le_one₀
     · intro r hr
       have hrMem : r ∈ x.primeFactors :=
         Finset.sdiff_subset hr
@@ -1313,7 +1313,8 @@ theorem lcmRayArithmeticLetter_foreignPrimePower_bracket
   have hphiDFormula :
       Nat.totient d = p ^ (k - 2) * (p - 1) := by
     dsimp [d]
-    simpa using Nat.totient_prime_pow hp (by omega : 0 < k - 1)
+    simpa only [show k - 1 - 1 = k - 2 by omega] using
+      Nat.totient_prime_pow hp (by omega : 0 < k - 1)
   have hdFormula : d = p ^ (k - 2) * p := by
     dsimp [d]
     rw [show k - 1 = (k - 2) + 1 by omega, pow_succ]
@@ -1925,7 +1926,7 @@ theorem periodLcm_lt_eight_mul_t_mul_lcmRayArithmeticLetter
         (periodLcm t : ℤ) <
           4 * (j : ℤ) * lcmRayArithmeticLetter t j := by
       simpa [t] using hdiv
-    exact hdivT.trans_le (by simpa [mul_assoc] using hscale)
+    exact hdivT.trans_le (by simpa [t, mul_assoc] using hscale)
   · have hforeign :=
       periodLcm_lt_four_mul_lcmRayArithmeticLetter_of_not_dvd
         ha hjpos hjlt (by simpa [t] using hdvd)
@@ -1934,7 +1935,7 @@ theorem periodLcm_lt_eight_mul_t_mul_lcmRayArithmeticLetter
     have hforeignT :
         (periodLcm t : ℤ) < 4 * lcmRayArithmeticLetter t j := by
       simpa [t] using hforeign
-    exact hforeignT.trans_le (by simpa [mul_assoc] using hscale)
+    exact hforeignT.trans_le (by simpa [t, mul_assoc] using hscale)
 
 /-- The lower and upper endpoints belonging to a new-prime offset are
 coprime.  Indeed their difference is the LCM height, which is coprime to the

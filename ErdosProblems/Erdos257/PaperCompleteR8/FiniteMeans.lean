@@ -157,7 +157,7 @@ theorem exists_common_progression_sample
   have hdiv : L ∣ N := ⟨m + 1, by dsimp [N]; ring⟩
   have hLN : L ≤ N := by
     have h := Nat.mul_le_mul_right L (show 1 ≤ m + 1 by omega)
-    simpa only [one_mul] using h
+    simpa only [one_mul] using! h
   have hfN : f N < ε := lt_of_le_of_lt (le_add_of_nonneg_right (hg N)) hpoint
   have hgN : g N < ε := lt_of_le_of_lt (le_add_of_nonneg_left (hf N)) hpoint
   exact ⟨N, hN, hdiv, hLN, hfN, hgN⟩

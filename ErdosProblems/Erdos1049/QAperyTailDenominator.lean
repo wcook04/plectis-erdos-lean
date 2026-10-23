@@ -39,12 +39,12 @@ theorem zmod_binary_collision_of_zero_denominator_coordinates
   let f : (Fin k → Bool) → ZMod N :=
     fun s ↦ ∑ i, if s i then (w i).1 else 0
   have hcard' : Fintype.card (ZMod N) < 2 ^ Fintype.card (Fin k) := by
-    simpa using hcard
+    simpa using! hcard
   obtain ⟨s, t, hne, hst⟩ :=
     BezoutPluckerJets.exists_binary_collision_of_card_lt f hcard'
   refine ⟨s, t, hne, ?_⟩
   apply Prod.ext
-  · simpa [Prod.fst_sum, apply_ite, f] using hst
+  · simpa [Prod.fst_sum, apply_ite, f] using! hst
   · simp [Prod.snd_sum, apply_ite, hzero]
 
 /-- A prime supported in the coefficient `B`, but absent from both `A` and the
@@ -140,7 +140,7 @@ theorem twoSelector_one_numerator_not_dvd_of_prime_tail_support
     mul_dvd_mul hellA₁ hellB₂
   have hright : (ell : ℤ) * ell ∣ A₂ * B₁ :=
     mul_dvd_mul hellA₂ hellB₁
-  simpa [pow_two] using dvd_sub hleft hright
+  simpa [pow_two] using! dvd_sub hleft hright
 
 /-- Two rows with a common tail-denominator prime and only one determinant
 power cannot both have a sub-`1/q` remainder at a rational target whose

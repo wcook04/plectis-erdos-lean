@@ -163,12 +163,12 @@ theorem bounded_lcm_height
     · intro k
       have hh := hcap (T + k) (by omega)
       exact_mod_cast (show lcmOverlap q a (T + k) * U (T + (k + 1)) ≤
-        U (T + k) + B by simpa only [Nat.add_assoc] using hh)
+        U (T + k) + B by simpa only [Nat.add_assoc] using! hh)
     · intro k
       have hs := hstep (T + k)
       rw [hcenter (T + k)] at hs
       simp only [one_mul]
-      simpa only [Nat.add_assoc] using (show
+      simpa only [Nat.add_assoc] using! (show
         (lcmOverlap q a (T + k) : ℤ) * (U (T + k + 1) : ℤ) =
           (a (T + k) : ℤ) * (U (T + k) : ℤ) -
             (cumulativeDigitLcm q a (T + k) : ℤ) by nlinarith [hs])

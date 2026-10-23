@@ -30,7 +30,7 @@ theorem log_kernel_factor_pos {z w : ℂ} (hz : ‖z‖ < 1) (hw : ‖w‖ < 1) 
 `n = 0` vanishes because division by zero is zero. -/
 theorem hasSum_neg_log_norm_one_sub {z : ℂ} (hz : ‖z‖ < 1) :
     HasSum (fun n : ℕ => (z ^ n).re / n) (-Real.log ‖1 - z‖) := by
-  simpa only [Complex.div_natCast_re, Complex.neg_re, Complex.log_re] using
+  simpa only [Complex.div_natCast_re, Complex.neg_re, Complex.log_re] using!
     Complex.hasSum_re (Complex.hasSum_taylorSeries_neg_log hz)
 
 /-- The logarithmic kernel at two strictly interior points. -/
@@ -40,7 +40,7 @@ theorem hasSum_log_kernel {z w : ℂ} (hz : ‖z‖ < 1) (hw : ‖w‖ < 1) :
   have hzw : ‖conj z * w‖ < 1 := by
     rw [norm_mul, Complex.norm_conj]
     nlinarith [norm_nonneg z, norm_nonneg w]
-  simpa only [mul_pow, map_pow] using hasSum_neg_log_norm_one_sub hzw
+  simpa only [mul_pow, map_pow] using! hasSum_neg_log_norm_one_sub hzw
 
 /-- Expansion of one interaction row against the configuration's power sums. -/
 theorem hasSum_log_kernel_row {ι : Type*} (s : Finset ι) (c : ι → ℂ)
@@ -49,7 +49,7 @@ theorem hasSum_log_kernel_row {ι : Type*} (s : Finset ι) (c : ι → ℂ)
       (-∑ j ∈ s, Real.log ‖1 - conj z * c j‖) := by
   have h := hasSum_sum (s := s) (fun j hj => hasSum_log_kernel hz (hc j hj))
   simpa only [Finset.mul_sum, Complex.re_sum, Finset.sum_div,
-    Finset.sum_neg_distrib] using h
+    Finset.sum_neg_distrib] using! h
 
 /-- Summing the pair kernel produces the squared norm of the power sum. -/
 theorem sum_re_conj_pow_mul_pow {ι : Type*} (s : Finset ι) (c : ι → ℂ) (n : ℕ) :
@@ -61,7 +61,7 @@ theorem sum_re_conj_pow_mul_pow {ι : Type*} (s : Finset ι) (c : ι → ℂ) (n
     exact Finset.sum_comm
   have hr := congrArg Complex.re h
   simpa only [Complex.re_sum, ← Complex.normSq_eq_conj_mul_self,
-    Complex.ofReal_re, Complex.normSq_eq_norm_sq] using hr
+    Complex.ofReal_re, Complex.normSq_eq_norm_sq] using! hr
 
 /-- Exact nonnegative energy expansion for an arbitrary finite configuration
 in the open unit disk. No summability hypothesis is required. -/

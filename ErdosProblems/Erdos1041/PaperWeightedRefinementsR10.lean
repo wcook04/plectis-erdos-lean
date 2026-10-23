@@ -131,7 +131,7 @@ theorem equal_free_point_quadratic {m : ℕ} (hm : 0 < m) (c : Fin m → ℂ)
   simp only [← equalFreePointRow_eq_weighted] at h
   rw [← Finset.mul_sum] at h
   have h' : (∑ j, equalFreePointRow c j ^ 2) / (m : ℝ) ≤ 1 := by
-    simpa only [one_div, div_eq_mul_inv, mul_comm, mul_one, one_mul] using h
+    simpa only [one_div, div_eq_mul_inv, mul_comm, mul_one, one_mul] using! h
   exact (div_le_one hmpos).mp h'
 
 theorem equal_free_point_linear {m : ℕ} (hm : 0 < m) (c : Fin m → ℂ)
@@ -142,7 +142,7 @@ theorem equal_free_point_linear {m : ℕ} (hm : 0 < m) (c : Fin m → ℂ)
   simp only [← equalFreePointRow_eq_weighted] at h
   rw [← Finset.mul_sum] at h
   have h' : (∑ j, equalFreePointRow c j) / (m : ℝ) ≤ 1 := by
-    simpa only [one_div, div_eq_mul_inv, mul_comm, mul_one, one_mul] using h
+    simpa only [one_div, div_eq_mul_inv, mul_comm, mul_one, one_mul] using! h
   exact (div_le_one hmpos).mp h'
 
 theorem reflected_kernel_symmetry (a b : ℂ) :
@@ -156,7 +156,7 @@ theorem geometric_row_mean_closed_disc_le {m : ℕ} (hm : 0 < m) (c : Fin m → 
     (hc : ∀ j, ‖c j‖ ≤ 1) :
     (∑ j, (∏ k, ‖1 - conj (c j) * c k‖) ^ ((m : ℝ)⁻¹)) ≤ (m : ℝ) := by
   have h := equal_free_point_linear hm c hc
-  simpa only [equalFreePointRow, reflected_kernel_symmetry, one_div] using h
+  simpa only [equalFreePointRow, reflected_kernel_symmetry, one_div] using! h
 
 /-- Reuse the supplied central-region result, without expanding its old radius. -/
 theorem paper_central_region_comparison {m : ℕ} (hm : 0 < m) (c : Fin m → ℂ)

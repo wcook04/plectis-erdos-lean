@@ -31,7 +31,7 @@ theorem plus_one_forbidden_word (a u v : ℕ → ℤ) (T : ℕ)
     simpa only [twelve_binomial_eq_profile] using
       integral_cubic_quartic_window_hit a u v 12 1 T n 7 hn hnum hden
         3 (by decide) hroot hcert hphase'
-  · simpa only [twelve_binomial_eq_profile] using
+  · simpa only [twelve_binomial_eq_profile, Nat.cast_ofNat] using
       integral_cubic_quartic_prime_density a u v 12 1 T 7 (by decide) hnum hden
         3 (by decide) hroot hcert
 
@@ -47,11 +47,12 @@ theorem minus_one_forbidden_word (a u v : ℕ → ℤ) (T : ℕ)
   have hroot : (12 : ZMod 7) * ((4 : ZMod 7) ^ 3 - 4) + ((6 * (-1) : ℤ) : ZMod 7) = 0 := by decide
   constructor
   · intro n hn hphase
-    have hphase' : (n : ZMod 7) = 4 - 3 := by simpa using hphase
+    have hphase' : (n : ZMod 7) = 4 - 3 := by
+      simpa only [show (4 : ZMod 7) - 3 = 1 by norm_num] using hphase
     simpa only [twelve_binomial_eq_profile] using
       integral_cubic_quartic_window_hit a u v 12 (-1) T n 7 hn hnum hden
         4 (by decide) hroot hcert hphase'
-  · simpa only [twelve_binomial_eq_profile] using
+  · simpa only [twelve_binomial_eq_profile, Nat.cast_ofNat] using
       integral_cubic_quartic_prime_density a u v 12 (-1) T 7 (by decide) hnum hden
         4 (by decide) hroot hcert
 

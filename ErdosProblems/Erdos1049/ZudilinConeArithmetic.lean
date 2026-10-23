@@ -149,7 +149,7 @@ theorem exists_distinct_binary_selectors_same_fourJet
   have hlt :
       Fintype.card (FourJetSignature R S) <
         Fintype.card (Fin n → Bool) := by
-    simpa using hcard
+    simpa using! hcard
   exact Fintype.exists_ne_map_eq_of_card_lt
     (selectedFourJetSum R S W forms) hlt
 
@@ -347,9 +347,9 @@ theorem three_not_dvd_homEvalThreeTwo_of_const_unit
     pow_ne_zero _ (by decide)
   rcases hunit with h | h
   · rw [h] at hzero
-    exact hpow (by simpa using hzero)
+    exact hpow (by simpa using! hzero)
   · rw [h] at hzero
-    exact hpow (by simpa using hzero)
+    exact hpow (by simpa using! hzero)
 
 /-- A unit coefficient at the declared top width prevents any factor `2` in
 the homogeneous specialisation. -/
@@ -365,9 +365,9 @@ theorem two_not_dvd_homEvalThreeTwo_of_top_unit
     pow_ne_zero _ (by decide)
   rcases hunit with h | h
   · rw [h] at hzero
-    exact hpow (by simpa using hzero)
+    exact hpow (by simpa using! hzero)
   · rw [h] at hzero
-    exact hpow (by simpa using hzero)
+    exact hpow (by simpa using! hzero)
 
 /-- If one channel has a unit top coefficient, the two coefficient channels
 cannot have a common factor `2` after homogeneous specialisation. -/

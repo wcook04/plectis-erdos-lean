@@ -107,7 +107,7 @@ theorem tendsto_mersenneWeight_atTop_zero :
     change b + 1 ≤ (2 : ℝ) ^ d at hd
     linarith
   unfold mersenneWeight
-  simpa only [one_div, Function.comp_apply] using
+  simpa only [one_div, Function.comp_apply, Function.comp_def] using
     tendsto_inv_atTop_zero.comp hden
 
 /-- Along cofinal rows, choose one skipped seam coordinate per row whose

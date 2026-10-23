@@ -156,7 +156,7 @@ theorem twoTierPrimorial_dvd_of_integral_jet
   by_cases hp : p.Prime
   · by_cases hpTwo : p = 2
     · subst p
-      simpa [localPrimitiveIndex, hN] using
+      simpa [localPrimitiveIndex, hN, Nat.prime_two] using!
         (four_dvd_index_of_integral_jet hjet hN)
     · by_cases hpSq : p ^ 2 ≤ N
       · simpa [localPrimitiveIndex, hp, hpTwo, hpSq] using

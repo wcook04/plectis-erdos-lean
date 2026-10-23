@@ -34,7 +34,7 @@ theorem positive_rational_gap {whole pfx : ℚ} (h : pfx < whole) :
   have hp : (0 : ℝ) < (whole : ℝ) - (pfx : ℝ) :=
     sub_pos.mpr (by exact_mod_cast h)
   rw [abs_of_pos hp] at hgap
-  simpa only [Nat.cast_mul] using hgap
+  simpa only [Nat.cast_mul] using! hgap
 
 /-- The exact irrationality restatement, not merely the underlying identity. -/
 theorem irrational_totient_iff_moebius_square :
@@ -46,10 +46,10 @@ theorem irrational_totient_iff_moebius_square :
   · intro h
     have hh : Irrational (((1 / 2 : ℚ) : ℝ) +
       (∑' d : ℕ+, ((ArithmeticFunction.moebius (d : ℕ) : ℤ) : ℝ) /
-        ((2 : ℝ) ^ (d : ℕ) - 1) ^ 2)) := by simpa using h
+        ((2 : ℝ) ^ (d : ℕ) - 1) ^ 2)) := by simpa using! h
     exact hh.of_ratCast_add (1 / 2 : ℚ)
   · intro h
-    simpa using h.ratCast_add (1 / 2 : ℚ)
+    simpa using! h.ratCast_add (1 / 2 : ℚ)
 
 /-- Only the first rung is asserted rational. The second is the exact offset
 of the unresolved value; the misleading plural in the long-record heading
@@ -119,7 +119,7 @@ theorem complete_level_zero_rank (k : ℕ) :
     intro a ha i
     have hh := congrFun ha 1
     have hi : i = 0 := Subsingleton.elim _ _
-    simpa [v, Fin.sum_univ_one, Pi.smul_apply, hi] using hh
+    simpa [v, Fin.sum_univ_one, Pi.smul_apply, hi] using! hh
   have hseq : ∀ i : AllBaseThroughLevelIndex k 0,
       allBaseThroughLevelFamily k 0 i = v 0 := by
     rintro ⟨⟨j, hj⟩, ⟨r, hr⟩⟩
@@ -136,7 +136,7 @@ theorem complete_level_zero_rank (k : ℕ) :
       exact ⟨0, (hseq i).symm⟩
     · rintro f ⟨i, rfl⟩
       refine ⟨⟨⟨0, by omega⟩, ⟨0, by simp⟩⟩, ?_⟩
-      simpa [v] using hseq (⟨⟨0, by omega⟩, ⟨0, by simp⟩⟩ : AllBaseThroughLevelIndex k 0)
+      simpa [v] using! hseq (⟨⟨0, by omega⟩, ⟨0, by simp⟩⟩ : AllBaseThroughLevelIndex k 0)
   rw [hrange, finrank_span_eq_card hli]
   simp
 

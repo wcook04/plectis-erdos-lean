@@ -75,6 +75,6 @@ theorem cyclicFiber_composition_zero {q : ℕ} {ζ : ℂ}
     (k : ℕ) : P ((h + y * ζ ^ k - h) ^ q) = 0 := by
   have hz : (ζ ^ k) ^ q = 1 := by
     rw [← pow_mul, Nat.mul_comm k q, pow_mul, hζ, one_pow]
-  simpa only [add_sub_cancel_left, mul_pow, hz, mul_one] using hroot
+  simpa only [add_sub_cancel_left, mul_pow, hz, mul_one] using! hroot
 
 end ErdosProblems.Erdos1041

@@ -103,7 +103,7 @@ private theorem coeff_mul_eq_of_right_coeff_eq_up_to
   rw [PowerSeries.coeff_mul, PowerSeries.coeff_mul]
   apply Finset.sum_congr rfl
   intro ij hij
-  have hadd : ij.1 + ij.2 = l := Finset.mem_antidiagonal.mp hij
+  have hadd : ij.1 + ij.2 = l := Finset.HasAntidiagonal.mem_antidiagonal.mp hij
   rw [hcoeff ij.2 (by omega)]
 
 /-- Multiplying the truncated quotient series by the literal denominator

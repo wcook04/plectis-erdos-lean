@@ -215,7 +215,7 @@ theorem bracket_of_two_sided_separation
 ErdosProblems.Erdos249.PaperCompleteR21.card_visible_antidiagonal in the substantive
 development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem card_visible_antidiagonal (n : ℕ) :
-    ((Finset.antidiagonal n).filter
+    ((Finset.HasAntidiagonal.antidiagonal n).filter
         fun q : ℕ × ℕ => 0 < q.1 ∧ Nat.Coprime q.1 q.2).card
       = Nat.totient n := by
   sorry
@@ -845,7 +845,7 @@ theorem parityComparisonProperties_do_not_imply_irrational :
 ErdosProblems.Erdos249.PaperCompleteR21.positive_antidiagonal_one in the substantive
 development, whose statement was refereed against the paper in the coverage ledger. -/
 theorem positive_antidiagonal_one :
-    ((Finset.antidiagonal 1).filter
+    ((Finset.HasAntidiagonal.antidiagonal 1).filter
         fun q : ℕ × ℕ => 0 < q.1 ∧ 0 < q.2 ∧ Nat.Coprime q.1 q.2) = ∅ := by
   sorry
 

@@ -71,7 +71,7 @@ theorem allBaseTotientKernelSeq_mem_int_span (k e : ℕ) (hk : 2 ≤ k) :
   induction j with
   | zero =>
       intro _ r hr
-      have hr0 : r = 0 := by simpa using hr
+      have hr0 : r = 0 := by simpa using! hr
       subst r
       exact Submodule.subset_span ⟨Sum.inl 0, rfl⟩
   | succ j ih =>
@@ -227,7 +227,7 @@ theorem paper_maximal_power_reduction (k j t u : ℕ) (hk : 2 ≤ k)
     (ht : 1 ≤ t) (htj : t < j) :
     allBaseTotientKernelSeq k j (k ^ t * u) =
       ((k : ℚ) ^ t * missingEulerProduct k u) • allBaseTotientKernelSeq k (j - t) u := by
-  simpa only [Nat.sub_add_cancel (Nat.le_of_lt htj)] using
+  simpa only [Nat.sub_add_cancel (Nat.le_of_lt htj)] using!
     allBase_power_residue_euler k (j - t) t u hk (by omega) ht
 
 end ErdosProblems.Erdos249.PaperCompleteR7

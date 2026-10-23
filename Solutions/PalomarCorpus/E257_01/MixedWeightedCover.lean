@@ -86,7 +86,9 @@ theorem HasStrengthenedPositiveCover_iff (A : Set ℕ) :
   · rintro ⟨C, hA, hC⟩
     refine ⟨ofSource C, ?_,
       (PositiveCoverData.StrengthenedCostSummable_ofSource C).mpr hC⟩
-    simpa [PositiveCoverData.host] using hA
+    first
+    | (simpa [PositiveCoverData.host] using hA; done)
+    | exact hA
 
 theorem MixedSupportClaim_eq :
     MixedSupportClaim ↔ ErdosProblems.Erdos257.PaperCompleteR7.MixedSupportClaim := by

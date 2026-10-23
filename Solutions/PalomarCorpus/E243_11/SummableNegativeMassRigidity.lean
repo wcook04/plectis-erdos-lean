@@ -49,9 +49,11 @@ theorem summableNegativeMass_completeRigidity
   have hsum' : Summable
       (ErdosProblems.Erdos243.negativeRelativeMass C
         (fun n ↦ ErdosProblems.Erdos243.centeredState (a n) (D n) (C n))) := by
-    simpa [negativeRelativeMass,
-      ErdosProblems.Erdos243.negativeRelativeMass, centeredState,
-      ErdosProblems.Erdos243.centeredState] using hsum
+    first
+    | (simpa [negativeRelativeMass,
+        ErdosProblems.Erdos243.negativeRelativeMass, centeredState,
+        ErdosProblems.Erdos243.centeredState] using hsum; done)
+    | exact hsum
   have hzero' : ∃ N, ∀ n, N ≤ n →
       ErdosProblems.Erdos243.centeredState (a n) (D n) (C n) = 0 :=
     ErdosProblems.Erdos243.eventually_zero_of_summable_negativeRelativeMass

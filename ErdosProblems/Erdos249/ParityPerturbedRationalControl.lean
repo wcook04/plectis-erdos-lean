@@ -358,7 +358,6 @@ theorem tsum_deltaTerm : ∑' n : ℕ, (delta (n + 1) : ℝ) / 2 ^ (n + 1) = xi 
     hf.comp_injective
       (fun a b h => by simp only at h; omega : Function.Injective (fun k : ℕ => 2 * k + 1))
   have hsplit := tsum_even_add_odd (f := fun n : ℕ => (delta (n + 1) : ℝ) / 2 ^ (n + 1)) he ho
-  simp only at hsplit
   rw [← hsplit]
   have hzero : ∑' k : ℕ, (delta (2 * k + 1) : ℝ) / 2 ^ (2 * k + 1) = 0 := by
     have : (fun k : ℕ => (delta (2 * k + 1) : ℝ) / 2 ^ (2 * k + 1)) = fun _ => 0 := by
@@ -430,9 +429,10 @@ theorem canonicalCarryDifferenceFamily_eq_smul_totient_of_oddAgree {c : ℕ → 
   funext i
   rcases i with ⟨j, r⟩
   have h := oddAgree_carryKernel_diff hodd hu j.val r.val
+  funext n
   simpa [canonicalCarryDifferenceFamily, canonicalCarryKernelFamily,
     canonicalTotientOddKernelFamily, carryEvenIndex, carryOddIndex,
-    Pi.smul_apply, smul_eq_mul] using h.symm
+    Pi.smul_apply, smul_eq_mul] using congrArg (fun f : ℕ → ℚ => f n) h.symm
 
 /-- **Carry anti-compression for odd-agreeing coefficients.**  The finite-level
 carry sections of any tempered orbit of a coefficient sequence agreeing with

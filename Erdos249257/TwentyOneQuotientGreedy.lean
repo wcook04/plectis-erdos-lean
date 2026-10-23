@@ -1280,7 +1280,7 @@ theorem twentyOneEvenFullQuotientGreedyBits_eq_rational_of_safe
       (by simp [localPrefixQuotient])
       (by
         simpa [twentyOneEvenFullQuotientGreedySupport,
-          twentyOneQuotientDefect, localPrefixQuotient] using hsafe)
+          twentyOneQuotientDefect, localPrefixQuotient, localMersenneWeights] using! hsafe)
   simpa [localMersenneWeights, twentyOneQuotientDefect,
     localPrefixQuotient, localMersennePrefixValue, finiteErdosSum] using
       hcompare

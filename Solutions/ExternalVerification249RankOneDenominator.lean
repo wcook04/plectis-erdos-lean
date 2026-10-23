@@ -22,7 +22,7 @@ noncomputable def mobiusMersennePrefix (Y r : ℕ) : ℝ :=
 
 theorem rankOne_denominator_pos {e Y : ℕ} (he : 1 ≤ e) (hY : 4 ≤ Y) :
     0 < mobiusMersennePrefix Y (2 * e + 2) := by
-  simpa only [mobiusMersennePrefix, mobiusMersenneTerm, ErdosProblems.Erdos249.RankOneSubrankObstruction.mobiusMersennePrefix, Erdos257PeriodNoncollapse.SignedQMomentObstruction.mobiusMersenneTerm] using
+  simpa only [mobiusMersennePrefix, mobiusMersenneTerm, ErdosProblems.Erdos249.RankOneSubrankObstruction.mobiusMersennePrefix, Erdos257PeriodNoncollapse.SignedQMomentObstruction.mobiusMersenneTerm] using!
     ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOne_denominator_pos he hY
 
 end Erdos249257.ExternalVerification249RankOneDenominator

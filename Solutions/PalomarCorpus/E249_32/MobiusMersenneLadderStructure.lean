@@ -29,44 +29,44 @@ theorem mobiusMersenneTheta_no_linearRecurrence_of_eventually
       ∑ k : Fin (m + 1), c k * mobiusMersenneTheta (n + (k : ℕ)) = 0) : False := by
   refine _root_.ErdosProblems.Erdos249.MobiusMersenneLadderSeparation.mobiusMersenneTheta_no_linearRecurrence_of_eventually
     c n₀ hc (fun n hn => ?_)
-  simpa only [theta_eq] using hrec n hn
+  simpa only [theta_eq] using! hrec n hn
 
 theorem mobiusMersenneTheta_no_linearRecurrence :
     ¬ ∃ (m : ℕ) (c : Fin (m + 1) → ℝ), (∃ k, c k ≠ 0) ∧
         ∀ n : ℕ, 1 ≤ n →
           ∑ k : Fin (m + 1), c k * mobiusMersenneTheta (n + (k : ℕ)) = 0 := by
-  simpa only [theta_eq] using
+  simpa only [theta_eq] using!
     _root_.ErdosProblems.Erdos249.MobiusMersenneLadderSeparation.mobiusMersenneTheta_no_linearRecurrence
 
 theorem mobiusMersenneTheta_strict_logConcave (r : ℕ) (hr : 1 ≤ r) :
     mobiusMersenneTheta r * mobiusMersenneTheta (r + 2) <
       mobiusMersenneTheta (r + 1) ^ 2 := by
-  simpa only [theta_eq] using
+  simpa only [theta_eq] using!
     _root_.Erdos257PeriodNoncollapse.SignedQMomentObstruction.mobiusMersenneTheta_strict_logConcave
       r hr
 
 theorem mobiusMersenneTheta_hankel_two_neg (r : ℕ) (hr : 1 ≤ r) :
     mobiusMersenneTheta r * mobiusMersenneTheta (r + 2) -
       mobiusMersenneTheta (r + 1) ^ 2 < 0 := by
-  simpa only [theta_eq] using
+  simpa only [theta_eq] using!
     _root_.Erdos257PeriodNoncollapse.SignedQMomentObstruction.mobiusMersenneTheta_hankel_two_neg
       r hr
 
 theorem mobiusMersenneLambertRung_eq (r : ℕ) (hr : 1 ≤ r) :
     mobiusMersenneLambertRung r = ((1 : ℝ) / 2) ^ r := by
-  simpa only [rung_eq] using
+  simpa only [rung_eq] using!
     _root_.ErdosProblems.Erdos249.MobiusMersenneLadderSeparation.mobiusMersenneLambertRung_eq r hr
 
 theorem lambertRung_shifted_hankelDet_eq_zero (s N : ℕ) (hs : 1 ≤ s) (hN : 2 ≤ N) :
     Matrix.det (Matrix.of fun i j : Fin N =>
       mobiusMersenneLambertRung (s + (i : ℕ) + (j : ℕ))) = 0 := by
-  simpa only [rung_eq] using
+  simpa only [rung_eq] using!
     _root_.ErdosProblems.Erdos249.MobiusMersenneLadderSeparation.lambertRung_shifted_hankelDet_eq_zero
       s N hs hN
 
 theorem mobiusMersenneTheta_ne_mobiusMersenneLambertRung :
     ¬ ∀ r : ℕ, 1 ≤ r → mobiusMersenneTheta r = mobiusMersenneLambertRung r := by
-  simpa only [theta_eq, rung_eq] using
+  simpa only [theta_eq, rung_eq] using!
     _root_.ErdosProblems.Erdos249.MobiusMersenneLadderSeparation.mobiusMersenneTheta_ne_mobiusMersenneLambertRung
 
 end PalomarCorpus.E249.MobiusMersenneLadderStructure

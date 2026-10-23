@@ -88,7 +88,7 @@ theorem signed_eventually_nonnegative_descent
   change C (N + (k + 1)) = C (N + K) at hcs
   have hsucc : C (n + 1) = C n := by
     rw [← hNk]
-    simpa only [Nat.add_assoc] using hcs.trans hc.symm
+    simpa only [Nat.add_assoc] using! hcs.trans hc.symm
   have hs := hstep n
   rw [hsucc] at hs
   omega
@@ -113,7 +113,7 @@ theorem zero_absorbing_at
     refine ⟨-sylvesterDefect (a n : ℤ) (a (n + 1) : ℤ), ?_⟩
     nlinarith [hid]
   apply Int.eq_zero_of_dvd_of_natAbs_lt_natAbs hdiv
-  simpa using hnext
+  simpa using! hnext
 
 /-- The two independent assertions of short-note `res:absorb`/`res:descent`.
 The scalar assertion retains its independent quantifiers. -/
@@ -199,13 +199,13 @@ theorem bounded_negative_endpoint_eventual_multiplier
     (fun n ↦ a (Na + n)) (fun n ↦ C (Na + n)) (fun n ↦ D (Na + n))
     (fun n ↦ E (Na + n)) (fun n ↦ hNa (Na + n) (by omega))
     (fun n ↦ hCpos (Na + n))
-    (fun n ↦ by simpa only [Nat.add_assoc] using hC (Na + n))
-    (fun n ↦ by simpa only [Nat.add_assoc] using hD (Na + n))
+    (fun n ↦ by simpa only [Nat.add_assoc] using! hC (Na + n))
+    (fun n ↦ by simpa only [Nat.add_assoc] using! hD (Na + n))
     (fun n ↦ hE (Na + n)) hshiftbound hshiftvanish
   refine ⟨Na + K, fun n hn ↦ ?_⟩
   have hNn : Na ≤ n := by omega
   have hnK : K ≤ n - Na := by omega
   have hidx : Na + (n - Na) = n := Nat.add_sub_of_le hNn
-  simpa only [← Nat.add_assoc, hidx] using hK (n - Na) hnK
+  simpa only [← Nat.add_assoc, hidx] using! hK (n - Na) hnK
 
 end ErdosProblems.Erdos243.PaperCompleteR7

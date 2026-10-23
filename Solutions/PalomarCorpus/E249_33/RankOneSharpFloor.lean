@@ -20,7 +20,7 @@ theorem rankOneSubrankQuotient_ge_one_five
     ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient,
     ErdosProblems.Erdos249.RankOneSubrankObstruction.mobiusMersennePrefix,
     Erdos257PeriodNoncollapse.SignedQMomentObstruction.mobiusMersenneTheta,
-    Erdos257PeriodNoncollapse.SignedQMomentObstruction.mobiusMersenneTerm] using
+    Erdos257PeriodNoncollapse.SignedQMomentObstruction.mobiusMersenneTerm] using!
     ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient_ge_one_five
       he hY
 
@@ -33,7 +33,7 @@ theorem rankOneSubrankQuotient_eq_one_five_iff
     ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient,
     ErdosProblems.Erdos249.RankOneSubrankObstruction.mobiusMersennePrefix,
     Erdos257PeriodNoncollapse.SignedQMomentObstruction.mobiusMersenneTheta,
-    Erdos257PeriodNoncollapse.SignedQMomentObstruction.mobiusMersenneTerm] using
+    Erdos257PeriodNoncollapse.SignedQMomentObstruction.mobiusMersenneTerm] using!
     ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient_eq_one_five_iff
       he hY
 
@@ -46,7 +46,7 @@ theorem rankOneSubrankQuotient_sub_theta_two_gt_twentyOne_div_threeTwenty
     ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient,
     ErdosProblems.Erdos249.RankOneSubrankObstruction.mobiusMersennePrefix,
     Erdos257PeriodNoncollapse.SignedQMomentObstruction.mobiusMersenneTheta,
-    Erdos257PeriodNoncollapse.SignedQMomentObstruction.mobiusMersenneTerm] using
+    Erdos257PeriodNoncollapse.SignedQMomentObstruction.mobiusMersenneTerm] using!
     ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient_sub_theta_two_gt_twentyOne_div_threeTwenty
       he hY
 
@@ -59,7 +59,7 @@ theorem rankOneSubrankQuotient_sub_theta_two_gt_one_div_sixteen
     ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient,
     ErdosProblems.Erdos249.RankOneSubrankObstruction.mobiusMersennePrefix,
     Erdos257PeriodNoncollapse.SignedQMomentObstruction.mobiusMersenneTheta,
-    Erdos257PeriodNoncollapse.SignedQMomentObstruction.mobiusMersenneTerm] using
+    Erdos257PeriodNoncollapse.SignedQMomentObstruction.mobiusMersenneTerm] using!
     ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient_sub_theta_two_gt_one_div_sixteen
       he hY
 
@@ -72,7 +72,7 @@ theorem not_forall_rankOneSubrankQuotient_sub_theta_two_gt_one_div_fifteen :
     ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient,
     ErdosProblems.Erdos249.RankOneSubrankObstruction.mobiusMersennePrefix,
     Erdos257PeriodNoncollapse.SignedQMomentObstruction.mobiusMersenneTheta,
-    Erdos257PeriodNoncollapse.SignedQMomentObstruction.mobiusMersenneTerm] using
+    Erdos257PeriodNoncollapse.SignedQMomentObstruction.mobiusMersenneTerm] using!
     ErdosProblems.Erdos249.RankOneSubrankObstruction.not_forall_rankOneSubrankQuotient_sub_theta_two_gt_one_div_fifteen
 
 theorem positive_direct_sum_sub_theta_two_gt_twentyOne_div_threeTwenty
@@ -91,7 +91,7 @@ theorem positive_direct_sum_sub_theta_two_gt_twentyOne_div_threeTwenty
     ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient,
     ErdosProblems.Erdos249.RankOneSubrankObstruction.mobiusMersennePrefix,
     Erdos257PeriodNoncollapse.SignedQMomentObstruction.mobiusMersenneTheta,
-    Erdos257PeriodNoncollapse.SignedQMomentObstruction.mobiusMersenneTerm] using
+    Erdos257PeriodNoncollapse.SignedQMomentObstruction.mobiusMersenneTerm] using!
     ErdosProblems.Erdos249.RankOneSubrankObstruction.positive_direct_sum_sub_theta_two_gt_twentyOne_div_threeTwenty
       s hs w e Y hw he hY
 
@@ -107,13 +107,13 @@ theorem primitive_form_abs_gt_twentyOne_div_threeTwenty
     simpa [rankOneSubrankQuotient, mobiusMersennePrefix, mobiusMersenneTerm,
       ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient,
       ErdosProblems.Erdos249.RankOneSubrankObstruction.mobiusMersennePrefix,
-      Erdos257PeriodNoncollapse.SignedQMomentObstruction.mobiusMersenneTerm] using hquot
+      Erdos257PeriodNoncollapse.SignedQMomentObstruction.mobiusMersenneTerm] using! hquot
   simpa [rankOneSubrankQuotient, mobiusMersennePrefix,
     mobiusMersenneTheta, mobiusMersenneTerm,
     ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient,
     ErdosProblems.Erdos249.RankOneSubrankObstruction.mobiusMersennePrefix,
     Erdos257PeriodNoncollapse.SignedQMomentObstruction.mobiusMersenneTheta,
-    Erdos257PeriodNoncollapse.SignedQMomentObstruction.mobiusMersenneTerm] using
+    Erdos257PeriodNoncollapse.SignedQMomentObstruction.mobiusMersenneTerm] using!
     ErdosProblems.Erdos249.RankOneSubrankObstruction.primitive_form_abs_gt_twentyOne_div_threeTwenty
       he hY hq hquot'
 

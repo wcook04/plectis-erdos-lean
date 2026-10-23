@@ -42,10 +42,10 @@ theorem irrational_of_integer_forms_below_every_denominator (ξ : ℝ)
     exact Rat.cast_def r
   rw [hξ] at hne hlt
   have hgap := rational_integerLinearForm_gap r.num (r.den : ℤ) B A
-    (by exact_mod_cast hden) (by simpa using hne)
+    (by exact_mod_cast hden) (by simpa using! hne)
   have hgap' : (1 : ℝ) / (r.den : ℝ) ≤
       |(A : ℝ) * ((r.num : ℝ) / (r.den : ℝ)) - B| := by
-    simpa using hgap
+    simpa using! hgap
   exact (not_lt_of_ge hgap') hlt
 
 /-- The same criterion from an actual convergent sequence of integral forms.
@@ -62,7 +62,7 @@ theorem irrational_of_integer_forms_tendsto_zero (ξ : ℝ)
   obtain ⟨M, hM⟩ := eventually_atTop.1 hne
   let n := max N M
   refine ⟨A n, B n, hM n (le_max_right _ _), ?_⟩
-  simpa only [Real.dist_eq, sub_zero] using hN n (le_max_left _ _)
+  simpa only [Real.dist_eq, sub_zero] using! hN n (le_max_left _ _)
 
 /-- The polynomial version of the exact endpoint consumer: the input is
 ordinary polynomial integrality, a common post-cancellation degree, and the
@@ -90,7 +90,7 @@ theorem irrational_of_cancelled_polynomial_forms
   · filter_upwards [hne] with n hn
     rw [hid n]
     exact mul_ne_zero (pow_ne_zero _ (by exact_mod_cast hb.ne')) hn
-  · simpa only [hid] using hlim
+  · simpa only [hid] using! hlim
 
 /-- EXACTLY the unproved source-supply step. The definition records all the
 integrality and post-cancellation conditions; it does not assume the endpoint
@@ -139,6 +139,6 @@ theorem thirtyone_four_powers_of_source_supply
     (show Nat.Coprime 31 4 by norm_num).pow r r
   have ht := rational_base_region_of_source_supply hsource (31 ^ r) (4 ^ r)
     hb hab hc (thirtyoneFour_power_mem_zudilinContourRegion r hr)
-  simpa only [Nat.cast_pow, Nat.cast_ofNat, div_pow] using ht
+  simpa only [Nat.cast_pow, Nat.cast_ofNat, div_pow] using! ht
 
 end ErdosProblems.Erdos1049.PaperR7

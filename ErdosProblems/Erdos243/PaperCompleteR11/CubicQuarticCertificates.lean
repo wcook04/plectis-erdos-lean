@@ -214,7 +214,17 @@ theorem integral_cubic_1920_841_density
     LowerDensityAtLeast {n : ℕ | u n ≠ 1920 * risingBinomial n + 841} (1 / 7) := by
   apply integral_cubic_mod_seven_quartic_density a u v 1920 841 T hnum hden
   · decide
-  · exact Or.inr (Or.inr (Or.inl (by decide)))
+  · have h841 : (841 : ZMod 7) = 1 :=
+      (ZMod.natCast_eq_natCast_iff' 841 1 7).2 (by decide)
+    have h1920 : (1920 : ZMod 7) = 2 :=
+      (ZMod.natCast_eq_natCast_iff' 1920 2 7).2 (by decide)
+    have hratio : (841 : ZMod 7) / (1920 : ZMod 7) = 4 := by
+      rw [h841, h1920]
+      have h2 : (2 : ZMod 7) ≠ 0 := by decide
+      apply (div_eq_iff h2).2
+      change (1 : ZMod 7) = 8
+      exact (ZMod.natCast_eq_natCast_iff' 1 8 7).2 (by decide)
+    exact Or.inr (Or.inr (Or.inl hratio))
 
 /-- The reflected constant is covered too; the two signs are not silently
 identified by an order-reversing change of the natural index. -/
@@ -223,8 +233,17 @@ theorem integral_cubic_1920_neg841_density
     (hnum : ∀ j, T ≤ j → u (j + 1) + v j = a j * u j)
     (hden : ∀ j, T ≤ j → v (j + 1) = a j * v j) :
     LowerDensityAtLeast {n : ℕ | u n ≠ 1920 * risingBinomial n - 841} (1 / 7) := by
+  have hneg : ((-841 : ℤ) : ZMod 7) = 6 :=
+    (ZMod.intCast_eq_intCast_iff' (-841) 6 7).2 (by decide)
+  have h1920 : (1920 : ZMod 7) = 2 :=
+    (ZMod.natCast_eq_natCast_iff' 1920 2 7).2 (by decide)
+  have hratio : ((-841 : ℤ) : ZMod 7) / (1920 : ZMod 7) = 3 := by
+    rw [hneg, h1920]
+    have h2 : (2 : ZMod 7) ≠ 0 := by decide
+    apply (div_eq_iff h2).2
+    norm_num
   have hh := integral_cubic_mod_seven_quartic_density a u v 1920 (-841) T hnum hden
-    (by decide) (Or.inr (Or.inl (by decide)))
+    (by decide) (Or.inr (Or.inl hratio))
   simpa only [sub_eq_add_neg] using hh
 
 /-- Positive-threshold exclusion for every certified coefficient class. -/

@@ -165,6 +165,8 @@ theorem full_scalar_reduction (i : TotientDyadicKernelIndex) :
   rw [twoCanonicalToOddCore_value]
   funext n
   have hn := congrFun ha n
+  change allBaseTotientKernelSeq 2 i.1 i.2.val n =
+    ((a : ℚ) • allBaseCanonicalFamily 2 i.1 b) n
   simpa only [Pi.smul_apply, smul_eq_mul, zsmul_eq_mul, Int.cast_natCast] using hn
 
 /-- Every full relation-basis vector is an elementary scalar reduction. -/

@@ -311,8 +311,7 @@ theorem campbellQuarterExponent_periodFreeze_noSync
     · simpa [pow_succ, Nat.mul_comm, Nat.mul_left_comm, Nat.mul_assoc] using hfour
     · exact hdpos
   have hlower : 2 ^ 3 ≤ d ^ 3 := Nat.pow_le_pow_left hd 3
-  norm_num at hlower
-  omega
+  norm_num at hlower <;> omega
 
 /-- Substrate-native parameter map.  The hypotheses expose exactly where a
 future analytic construction must improve: the phase-period factor `t`, the

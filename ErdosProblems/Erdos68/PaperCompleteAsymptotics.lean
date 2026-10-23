@@ -166,7 +166,7 @@ lemma moving_log_ratio_tendsto :
       atTop (𝓝 1) := by
   have hlog : Tendsto (fun N : ℕ => Real.log ((blockStart N : ℝ) / (N : ℝ)))
       atTop (𝓝 0) := by
-    simpa using (Real.continuousAt_log (by norm_num : (1 : ℝ) ≠ 0)).tendsto.comp
+    simpa only [Function.comp_def, Real.log_one] using (Real.continuousAt_log (by norm_num : (1 : ℝ) ≠ 0)).tendsto.comp
       block_start_ratio_tendsto
   have h : Tendsto (fun N : ℕ => 1 +
       Real.log ((blockStart N : ℝ) / N) * (Real.log (N : ℝ))⁻¹)
@@ -189,7 +189,7 @@ lemma moving_log_ratio_tendsto :
 lemma choose_three_cast (k : ℕ) :
     ((k + 1).choose 3 : ℝ) = ((k : ℝ) ^ 3 - k) / 6 := by
   cases k with
-  | zero => norm_num
+  | zero => norm_num [Nat.choose_eq_zero_of_lt]
   | succ k =>
     have h := Nat.descFactorial_eq_factorial_mul_choose (k + 2) 3
     norm_num [Nat.descFactorial, Nat.factorial] at h

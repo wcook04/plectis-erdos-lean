@@ -100,13 +100,13 @@ theorem denominator_double_exponential_envelope
   have hbound : ∀ n, D n ≤ Q ^ (2 ^ n) := by
     intro n
     induction n with
-    | zero => simpa only [pow_zero, pow_one] using (le_max_right A (D 0))
+    | zero => simpa only [pow_zero, pow_one] using! (le_max_right A (D 0))
     | succ n ih =>
         rw [hD, doublePower_succ]
         have haQ : a n ≤ Q ^ (2 ^ n) :=
           (ha n).trans (Nat.pow_le_pow_left (le_max_left A (D 0)) _)
         have hh := Nat.mul_le_mul haQ ih
-        simpa only [pow_two] using hh
+        simpa only [pow_two] using! hh
   exact ⟨Q, fun n ↦ (hbound n).trans (natural_base_power_le_binaryTower Q n)⟩
 
 /-- The canonical multiplier envelope is global; its finite prefix is not
@@ -127,7 +127,7 @@ theorem canonical_global_multiplier_envelope
     have hpow : A ≤ A ^ (2 ^ n) := by
       have h := nat_pow_mono_exponent A hApos
         (Nat.one_le_pow n 2 (by norm_num))
-      simpa only [pow_one] using h
+      simpa only [pow_one] using! h
     exact hprefix.trans ((by omega : a N ≤ A).trans hpow)
 
 /-- No denominator-growth hypothesis is added to the canonical endpoint. -/

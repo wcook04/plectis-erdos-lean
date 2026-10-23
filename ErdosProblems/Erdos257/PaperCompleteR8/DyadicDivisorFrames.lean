@@ -63,7 +63,7 @@ theorem dyadicDivisorHost_infinite (M : ℕ → ℕ) (hM : ∀ k, 0 < M k) :
     intro k l h
     have hh := dyadic_exponent_eq_of_odd_cofactors
       (by decide : ¬ 2 ∣ 1) (by decide : ¬ 2 ∣ 1)
-      (by simpa only [mul_one] using h)
+      (by simpa only [mul_one] using! h)
     omega
   apply (Set.infinite_range_of_injective hi).mono
   rintro a ⟨k, rfl⟩
