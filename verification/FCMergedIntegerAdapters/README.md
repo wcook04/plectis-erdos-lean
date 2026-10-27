@@ -21,10 +21,10 @@ The attribution is recorded in [ani's 7 September 2026 forum post](https://www.e
 This release does not solve Erdős #68, #243, #249, #251, #257, #269, or #1049.
 Those seven remain open.
 
-**[Read the mathematics](https://wcook04.github.io/practical-formal-verification/maths/)** ·
-[Website](https://wcook04.github.io/practical-formal-verification/) ·
+**[Read the mathematics](https://wcook04.github.io/plectis/maths/)** ·
+[Website](https://wcook04.github.io/plectis/) ·
 [All papers](paper/README.md) ·
-[Contact me](https://wcook04.github.io/practical-formal-verification/#contact)
+[Contact me](https://wcook04.github.io/plectis/#contact)
 
 ![Eight Erdős problem programmes: papers, checked results, failed routes, and questions another researcher can continue](.github/system-map.png)
 
@@ -101,14 +101,14 @@ from the papers and Lean corpus, with each result's evidence and limits intact.
 
 | Problem | Topic | Papers |
 |---|---|---|
-| [#68](https://www.erdosproblems.com/68) | [Factorial-denominator irrationality](https://wcook04.github.io/practical-formal-verification/maths/problems/erdos_68.html) | [short paper](paper/68/erdos-68-factorial-denominator-irrationality.pdf) · [longer paper](paper/68/erdos68-factorial-reasoning-surface.pdf) |
-| [#243](https://www.erdosproblems.com/243) | [Reciprocal-tail rigidity](https://wcook04.github.io/practical-formal-verification/maths/problems/erdos_243.html) | [short paper](paper/243/erdos-243-reciprocal-tail-rigidity.pdf) · [longer paper](paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf) |
-| [#249](https://www.erdosproblems.com/249) | [Binary totient series](https://wcook04.github.io/practical-formal-verification/maths/problems/erdos_249.html) | [short paper](paper/249/erdos-249-binary-totient-series.pdf) · [longer paper](paper/249/erdos249-totient-reasoning-surface.pdf) |
-| [#251](https://www.erdosproblems.com/251) | [Prime-gap dyadic series](https://wcook04.github.io/practical-formal-verification/maths/problems/erdos_251.html) | [short paper](paper/251/erdos-251-prime-gap-dyadic-series.pdf) · [longer paper](paper/251/erdos251-prime-gap-reasoning-surface.pdf) |
-| [#257](https://www.erdosproblems.com/257) | [Mersenne-support subseries](https://wcook04.github.io/practical-formal-verification/maths/problems/erdos_257.html) | [short paper](paper/257/erdos-257-mersenne-support-subseries.pdf) · [longer paper](paper/257/erdos257-mersenne-reasoning-surface.pdf) |
-| [#269](https://www.erdosproblems.com/269) | [Three-prime running LCM](https://wcook04.github.io/practical-formal-verification/maths/problems/erdos_269.html) | [short paper](paper/269/erdos-269-three-prime-running-lcm.pdf) · [longer paper](paper/269/erdos269-running-lcm-reasoning-surface.pdf) |
-| [#1041](https://www.erdosproblems.com/1041) | [Lemniscates and Newton flow](https://wcook04.github.io/practical-formal-verification/maths/problems/erdos_1041.html) | [short paper](paper/1041/erdos-1041-lemniscate-newton-flow.pdf) · [longer paper](paper/1041/erdos1041-lemniscate-reasoning-surface.pdf) |
-| [#1049](https://www.erdosproblems.com/1049) | [Rational-base Lambert series](https://wcook04.github.io/practical-formal-verification/maths/problems/erdos_1049.html) | [short paper](paper/1049/erdos-1049-rational-base-lambert.pdf) · [longer paper](paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf) |
+| [#68](https://www.erdosproblems.com/68) | [Factorial-denominator irrationality](https://wcook04.github.io/plectis/maths/problems/erdos_68.html) | [short paper](paper/68/erdos-68-factorial-denominator-irrationality.pdf) · [longer paper](paper/68/erdos68-factorial-reasoning-surface.pdf) |
+| [#243](https://www.erdosproblems.com/243) | [Reciprocal-tail rigidity](https://wcook04.github.io/plectis/maths/problems/erdos_243.html) | [short paper](paper/243/erdos-243-reciprocal-tail-rigidity.pdf) · [longer paper](paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf) |
+| [#249](https://www.erdosproblems.com/249) | [Binary totient series](https://wcook04.github.io/plectis/maths/problems/erdos_249.html) | [short paper](paper/249/erdos-249-binary-totient-series.pdf) · [longer paper](paper/249/erdos249-totient-reasoning-surface.pdf) |
+| [#251](https://www.erdosproblems.com/251) | [Prime-gap dyadic series](https://wcook04.github.io/plectis/maths/problems/erdos_251.html) | [short paper](paper/251/erdos-251-prime-gap-dyadic-series.pdf) · [longer paper](paper/251/erdos251-prime-gap-reasoning-surface.pdf) |
+| [#257](https://www.erdosproblems.com/257) | [Mersenne-support subseries](https://wcook04.github.io/plectis/maths/problems/erdos_257.html) | [short paper](paper/257/erdos-257-mersenne-support-subseries.pdf) · [longer paper](paper/257/erdos257-mersenne-reasoning-surface.pdf) |
+| [#269](https://www.erdosproblems.com/269) | [Three-prime running LCM](https://wcook04.github.io/plectis/maths/problems/erdos_269.html) | [short paper](paper/269/erdos-269-three-prime-running-lcm.pdf) · [longer paper](paper/269/erdos269-running-lcm-reasoning-surface.pdf) |
+| [#1041](https://www.erdosproblems.com/1041) | [Lemniscates and Newton flow](https://wcook04.github.io/plectis/maths/problems/erdos_1041.html) | [short paper](paper/1041/erdos-1041-lemniscate-newton-flow.pdf) · [longer paper](paper/1041/erdos1041-lemniscate-reasoning-surface.pdf) |
+| [#1049](https://www.erdosproblems.com/1049) | [Rational-base Lambert series](https://wcook04.github.io/plectis/maths/problems/erdos_1049.html) | [short paper](paper/1049/erdos-1049-rational-base-lambert.pdf) · [longer paper](paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf) |
 
 [Read the result summaries and their limits](docs/RESULTS.md#problem-by-problem-guide),
 including prior work, what was checked, and the questions that remain.
@@ -155,7 +155,7 @@ serves all three, including contributions by email and work without a clone.
 
 - **Ideas, corrections or review:** use the
   [research-progress form](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml)
-  or [email me](https://wcook04.github.io/practical-formal-verification/#contact).
+  or [email me](https://wcook04.github.io/plectis/#contact).
 - **Changes to the repository:** follow [CONTRIBUTING](CONTRIBUTING.md).
 - **Your own agent and spare compute:** use the [frontier relay](docs/FRONTIER_RELAY.md)
   to choose a starting point and return what you find with its evidence.
@@ -234,7 +234,7 @@ order without asking you to decode Lean declaration names first.
 explains the collaborative research process.
 [Problem-Sized Lean Worlds](paper/systems/claim-faithful-publication-systems-paper.pdf)
 describes the publication system. Runnable workflow components live in the
-[Plectis software toolkit](https://github.com/wcook04/practical-formal-verification); selected external
+[Plectis software toolkit](https://github.com/wcook04/plectis); selected external
 verification entries live in [plectis-erdos-lean](https://github.com/wcook04/plectis-erdos-lean).
 The mathematics and tools in this checkout are self-contained.
 
