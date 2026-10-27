@@ -21,14 +21,14 @@ Problems covered: #68, #243, #249, #251, #257, #269, #1041, #1049.
 
 The [primary research repository](https://github.com/wcook04/plectis-erdos)
 owns the current papers, claim registry and source map. The
-[mathematics reading room](https://wcook04.github.io/plectis/maths/) and
-[interactive maths map](https://wcook04.github.io/plectis/maths/universe.html)
+[mathematics reading room](https://wcook04.github.io/practical-formal-verification/maths/) and
+[interactive maths map](https://wcook04.github.io/practical-formal-verification/maths/universe.html)
 connect papers, results and formal sources. Checking entries here are bound to
 this repository commit; the pinned release snapshots below retain their own
 commits and toolchains.
 
-The website is agent-readable: its [navigation guide](https://wcook04.github.io/plectis/llms.txt)
-and [maths map manifest](https://wcook04.github.io/plectis/lean/experience/manifest.json)
+The website is agent-readable: its [navigation guide](https://wcook04.github.io/practical-formal-verification/llms.txt)
+and [maths map manifest](https://wcook04.github.io/practical-formal-verification/lean/experience/manifest.json)
 lead to graph data and source-linked research records without running the visual map.
 
 Will Cook maintains this AI-assisted development. It builds on
@@ -81,7 +81,7 @@ individual verification projects and historical editions can use different pins.
 |---|---|
 | [The maths map](https://www.youtube.com/watch?v=J2sX6nj3jOk): how the checked statements, longer research records and papers fit together. | The [primary paper list](https://github.com/wcook04/plectis-erdos#problem-papers) and this companion's [paper-order checking entries](PalomarCorpus/README.md). |
 | [Erdős #257 explanation](https://www.youtube.com/watch?v=vXgIBy5C5X0): a proof of the reciprocal-summability case, starting with examples. The general problem remains open. | The [introductory paper](https://github.com/wcook04/plectis-erdos/blob/main/paper/257/erdos257-expository-sums-never-fractions.pdf), then [one statement, solution and axiom audit](#inspect-one-result). |
-| [Plectis introduction](https://www.youtube.com/watch?v=U1z2-XaLe_w): the purpose of the maths and software projects. | The [project website](https://wcook04.github.io/plectis/) for the other repositories and films. |
+| [Plectis introduction](https://www.youtube.com/watch?v=U1z2-XaLe_w): the purpose of the maths and software projects. | The [project website](https://wcook04.github.io/practical-formal-verification/) for the other repositories and films. |
 
 The films show the wider research environment. This companion supplies selected
 formal checks; the [primary corpus](https://github.com/wcook04/plectis-erdos)
@@ -426,6 +426,6 @@ environment.
 This companion provides selected separate checks for the [primary mathematical research corpus](https://github.com/wcook04/plectis-erdos#problem-papers), which owns the papers and current research claims.
 
 - [Plectis Atlas](https://wcook04.github.io/plectis-atlas/) is an independent reader for OpenAI’s mathematics release.
-- The earlier [Plectis toolkit](https://github.com/wcook04/plectis) contains reusable Python components and worked examples.
+- The earlier [Plectis toolkit](https://github.com/wcook04/practical-formal-verification) contains reusable Python components and worked examples.
 
-These sit within Will Cook’s wider work with AI agents: research and software prepared with explanations, source and checks so other people can inspect and continue it. Explore the [research corpus](https://github.com/wcook04/plectis-erdos) and [Plectis website](https://wcook04.github.io/plectis/).
+These sit within Will Cook’s wider work with AI agents: research and software prepared with explanations, source and checks so other people can inspect and continue it. Explore the [research corpus](https://github.com/wcook04/plectis-erdos) and [Plectis website](https://wcook04.github.io/practical-formal-verification/).
