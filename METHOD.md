@@ -69,7 +69,7 @@ argument becomes a claim only by passing the entry format that every directory h
 uses.
 
 - `<Entry>/Challenge.lean` fixes the statement, and does not prove it.
-- `Solutions/<Entry>.lean` proves that statement, unchanged.
+- `proofs/Solutions/<Entry>.lean` proves that statement, unchanged.
 - `<Entry>/AxiomAudit.lean` prints the axioms each selected declaration depends on,
   so `sorryAx` cannot hide inside a proof that appears to compile.
 - `<Entry>/comparator.json` binds the three together.

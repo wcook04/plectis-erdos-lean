@@ -57,7 +57,7 @@ status:
   permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
   main_results:
     - declaration: "Erdos249257.ExternalVerification269IntegralBranchPinning.trueNormalizedState_eq_telescope"
-      file: "proofs/families/ExternalVerification269IntegralBranchPinning/Solution.lean"
+      file: "proofs/Solutions/ExternalVerification269IntegralBranchPinning.lean"
       sorry_count: 0
       comparator_config: "proofs/families/ExternalVerification269IntegralBranchPinning/comparator.json"
       canonical_claim_status: "source_proved_wrapper_pending_focused_check"
@@ -67,7 +67,7 @@ status:
       boundary: "The identity does not itself bound the remainder or exclude an integral state."
       literature_dependencies: []
     - declaration: "Erdos249257.ExternalVerification269IntegralBranchPinning.trueNormalizedState_pinning"
-      file: "proofs/families/ExternalVerification269IntegralBranchPinning/Solution.lean"
+      file: "proofs/Solutions/ExternalVerification269IntegralBranchPinning.lean"
       sorry_count: 0
       comparator_config: "proofs/families/ExternalVerification269IntegralBranchPinning/comparator.json"
       canonical_claim_status: "source_proved_wrapper_pending_focused_check"
@@ -77,7 +77,7 @@ status:
       boundary: "Does not exclude an integral state."
       literature_dependencies: []
     - declaration: "Erdos249257.ExternalVerification269IntegralBranchPinning.integral_state_upward_closed"
-      file: "proofs/families/ExternalVerification269IntegralBranchPinning/Solution.lean"
+      file: "proofs/Solutions/ExternalVerification269IntegralBranchPinning.lean"
       sorry_count: 0
       comparator_config: "proofs/families/ExternalVerification269IntegralBranchPinning/comparator.json"
       canonical_claim_status: "source_proved_wrapper_pending_focused_check"
@@ -87,7 +87,7 @@ status:
       boundary: "Classifies propagation after an integral state, not existence."
       literature_dependencies: []
     - declaration: "Erdos249257.ExternalVerification269IntegralBranchPinning.surviving_window_orbit_eq_true_state"
-      file: "proofs/families/ExternalVerification269IntegralBranchPinning/Solution.lean"
+      file: "proofs/Solutions/ExternalVerification269IntegralBranchPinning.lean"
       sorry_count: 0
       comparator_config: "proofs/families/ExternalVerification269IntegralBranchPinning/comparator.json"
       canonical_claim_status: "source_proved_wrapper_pending_focused_check"

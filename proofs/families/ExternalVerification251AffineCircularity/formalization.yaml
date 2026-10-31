@@ -56,7 +56,7 @@ status:
   permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
   main_results:
     - declaration: "Erdos249257.ExternalVerification251AffineCircularity.adjacent_small_mismatch_iff_signed_two_window"
-      file: "proofs/families/ExternalVerification251AffineCircularity/Solution.lean"
+      file: "proofs/Solutions/ExternalVerification251AffineCircularity.lean"
       sorry_count: 0
       comparator_config: "proofs/families/ExternalVerification251AffineCircularity/comparator.json"
       canonical_claim_status: "source_proved_wrapper_pending_focused_check"
@@ -66,7 +66,7 @@ status:
       boundary: "Does not prove cofinal occurrence for actual prime gaps."
       literature_dependencies: []
     - declaration: "Erdos249257.ExternalVerification251AffineCircularity.cofinal_affinePowTwo_escape_iff_not_eventuallyIntegral"
-      file: "proofs/families/ExternalVerification251AffineCircularity/Solution.lean"
+      file: "proofs/Solutions/ExternalVerification251AffineCircularity.lean"
       sorry_count: 0
       comparator_config: "proofs/families/ExternalVerification251AffineCircularity/comparator.json"
       canonical_claim_status: "source_proved_wrapper_pending_focused_check"
@@ -76,7 +76,7 @@ status:
       boundary: "The affine escape test is not an independent prime-theoretic producer."
       literature_dependencies: []
     - declaration: "Erdos249257.ExternalVerification251AffineCircularity.cofinal_blockResidue_escape_iff_not_eventuallyIntegral"
-      file: "proofs/families/ExternalVerification251AffineCircularity/Solution.lean"
+      file: "proofs/Solutions/ExternalVerification251AffineCircularity.lean"
       sorry_count: 0
       comparator_config: "proofs/families/ExternalVerification251AffineCircularity/comparator.json"
       canonical_claim_status: "source_proved_wrapper_pending_focused_check"

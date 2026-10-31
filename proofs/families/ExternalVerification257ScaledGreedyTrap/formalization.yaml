@@ -48,19 +48,19 @@ status:
   permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
   main_results:
     - declaration: "Erdos249257.ExternalVerification257ScaledGreedyTrap.scaledGreedyRemainder_tendsto_atTop_of_not_mem"
-      file: "proofs/families/ExternalVerification257ScaledGreedyTrap/Solution.lean"
+      file: "proofs/Solutions/ExternalVerification257ScaledGreedyTrap.lean"
       sorry_count: 0
       canonical_claim_status: "source_transport_pending_focused_check_low_disk"
       novelty_status: "unassessed"
       boundary: "This classifies nonmembership dynamics; it does not establish nonmembership of 1/2 or 1/21."
     - declaration: "Erdos249257.ExternalVerification257ScaledGreedyTrap.mem_mersenneAchievementSet_iff_scaledRemainder_cofinallyBounded"
-      file: "proofs/families/ExternalVerification257ScaledGreedyTrap/Solution.lean"
+      file: "proofs/Solutions/ExternalVerification257ScaledGreedyTrap.lean"
       sorry_count: 0
       canonical_claim_status: "source_transport_pending_focused_check_low_disk"
       novelty_status: "unassessed"
       boundary: "The equivalence does not construct a bounded cofinal subsequence for 1/2 or 1/21."
     - declaration: "Erdos249257.ExternalVerification257ScaledGreedyTrap.one_div_twentyOne_mem_iff_scaledLowerBranchCofinally"
-      file: "proofs/families/ExternalVerification257ScaledGreedyTrap/Solution.lean"
+      file: "proofs/Solutions/ExternalVerification257ScaledGreedyTrap.lean"
       sorry_count: 0
       canonical_claim_status: "source_transport_pending_focused_check_low_disk"
       novelty_status: "unassessed"

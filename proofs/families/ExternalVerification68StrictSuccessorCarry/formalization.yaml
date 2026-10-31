@@ -107,7 +107,7 @@ status:
     - "Classical.choice"
   main_results:
     - declaration: "Erdos249257.ExternalVerification68StrictSuccessorCarry.companionOrbit_completeCharacterization"
-      file: "proofs/families/ExternalVerification68StrictSuccessorCarry/Solution.lean"
+      file: "proofs/Solutions/ExternalVerification68StrictSuccessorCarry.lean"
       sorry_count: 0
       axioms:
         - "propext"
@@ -131,7 +131,7 @@ status:
       comparator_declaration: "Erdos249257.ExternalVerification68StrictSuccessorCarry.companionOrbit_completeCharacterization"
       literature_dependencies: []
     - declaration: "Erdos249257.ExternalVerification68StrictSuccessorCarry.strictSuccessorCarry_completeCharacterization"
-      file: "proofs/families/ExternalVerification68StrictSuccessorCarry/Solution.lean"
+      file: "proofs/Solutions/ExternalVerification68StrictSuccessorCarry.lean"
       sorry_count: 0
       axioms:
         - "propext"

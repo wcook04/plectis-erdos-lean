@@ -62,7 +62,7 @@ status:
   permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
   main_results:
     - declaration: "Erdos249257.ExternalVerification269AllScaleLattice.qsmul_normalizedTailState_eq_int_of_value_eq_rat"
-      file: "proofs/families/ExternalVerification269AllScaleLattice/Solution.lean"
+      file: "proofs/Solutions/ExternalVerification269AllScaleLattice.lean"
       sorry_count: 0
       comparator_config: "proofs/families/ExternalVerification269AllScaleLattice/comparator.json"
       canonical_claim_status: "source_proved_exact_transport_focused_checked"
@@ -72,7 +72,7 @@ status:
       boundary: "An arithmetic reduction; pairwise incongruence is not proved."
       literature_dependencies: []
     - declaration: "Erdos249257.ExternalVerification269AllScaleLattice.exists_normalizedTailState_collision_of_value_eq_rat"
-      file: "proofs/families/ExternalVerification269AllScaleLattice/Solution.lean"
+      file: "proofs/Solutions/ExternalVerification269AllScaleLattice.lean"
       sorry_count: 0
       comparator_config: "proofs/families/ExternalVerification269AllScaleLattice/comparator.json"
       canonical_claim_status: "source_proved_exact_transport_focused_checked"
@@ -82,7 +82,7 @@ status:
       boundary: "Does not eliminate the collision forced by rationality."
       literature_dependencies: []
     - declaration: "Erdos249257.ExternalVerification269AllScaleLattice.smoothHeight_mul_prime_dvd_boundaryHeight"
-      file: "proofs/families/ExternalVerification269AllScaleLattice/Solution.lean"
+      file: "proofs/Solutions/ExternalVerification269AllScaleLattice.lean"
       sorry_count: 0
       comparator_config: "proofs/families/ExternalVerification269AllScaleLattice/comparator.json"
       canonical_claim_status: "source_proved_exact_transport_pending_expanded_focused_check"

@@ -56,7 +56,7 @@ status:
   permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
   main_results:
     - declaration: "Erdos249257.ExternalVerification243RepairEntropy.repairedFamily_recovery_energy_divisionFree"
-      file: "proofs/families/ExternalVerification243RepairEntropy/Solution.lean"
+      file: "proofs/Solutions/ExternalVerification243RepairEntropy.lean"
       sorry_count: 0
       comparator_config: "proofs/families/ExternalVerification243RepairEntropy/comparator.json"
       canonical_claim_status: "source_proved_wrapper_pending_focused_check"
@@ -70,7 +70,7 @@ status:
       comparator_declaration: "Erdos249257.ExternalVerification243RepairEntropy.repairedFamily_recovery_energy_divisionFree"
       literature_dependencies: []
     - declaration: "Erdos249257.ExternalVerification243RepairEntropy.repaired_card_bound_of_independent"
-      file: "proofs/families/ExternalVerification243RepairEntropy/Solution.lean"
+      file: "proofs/Solutions/ExternalVerification243RepairEntropy.lean"
       sorry_count: 0
       comparator_config: "proofs/families/ExternalVerification243RepairEntropy/comparator.json"
       canonical_claim_status: "source_proved_wrapper_pending_focused_check"
@@ -81,7 +81,7 @@ status:
       comparator_declaration: "Erdos249257.ExternalVerification243RepairEntropy.repaired_card_bound_of_independent"
       literature_dependencies: []
     - declaration: "Erdos249257.ExternalVerification243RepairEntropy.eventually_recoveryPayment_eq_one_of_fixedLength"
-      file: "proofs/families/ExternalVerification243RepairEntropy/Solution.lean"
+      file: "proofs/Solutions/ExternalVerification243RepairEntropy.lean"
       sorry_count: 0
       comparator_config: "proofs/families/ExternalVerification243RepairEntropy/comparator.json"
       canonical_claim_status: "source_proved_wrapper_pending_focused_check"

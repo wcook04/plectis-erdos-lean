@@ -66,7 +66,7 @@ status:
   permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
   main_results:
     - declaration: "Erdos249257.ExternalVerification257BooleanMobiusCarry.exists_normalized_support_fraction_iff_exists_booleanMobiusCarry"
-      file: "proofs/families/ExternalVerification257BooleanMobiusCarry/Solution.lean"
+      file: "proofs/Solutions/ExternalVerification257BooleanMobiusCarry.lean"
       sorry_count: 0
       comparator_config: "proofs/families/ExternalVerification257BooleanMobiusCarry/comparator.json"
       canonical_claim_status: "exact_source_transport_pending_focused_check"
@@ -78,7 +78,7 @@ status:
         the reconstructed support to be infinite.
       literature_dependencies: []
     - declaration: "Erdos249257.ExternalVerification257BooleanMobiusCarry.BooleanMobiusCarryCertificate.reconstructsSupport"
-      file: "proofs/families/ExternalVerification257BooleanMobiusCarry/Solution.lean"
+      file: "proofs/Solutions/ExternalVerification257BooleanMobiusCarry.lean"
       sorry_count: 0
       comparator_config: "proofs/families/ExternalVerification257BooleanMobiusCarry/comparator.json"
       canonical_claim_status: "exact_source_transport_pending_focused_check"
