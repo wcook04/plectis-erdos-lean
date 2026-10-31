@@ -29,7 +29,7 @@ from that repository.
 
 **Remaining boundary.** Universal Erdős 257 and the rational targets 1/2 and 1/21 remain open. The weighted, cover, prime-power, sub-log-star, mixed, and delayed-gluing results cover proper support classes or freely constructed hosts. The reciprocal-summable theorem proves by an independent argument the coprimality-free extension Erdős stated without printing a proof; the statement is his, and no identification with his omitted argument is asserted. The arbitrary prime-power result uses Tao-Teräväinen's correlation theorem and has unverified priority for its arbitrary-selection extension.
 
-Evidence: accepted by the Lean kernel. Routes: compared in the Palomar entry `PalomarCorpus/E257_01` as `DivisibilityWeightedSupport.divisibilityWeightedClaim`; proof source [`WeightedReturn.lean`](ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean); paper label `eq:weighted-return`; public entry PalomarCorpus/E257.
+Evidence: accepted by the Lean kernel. Routes: compared in the Palomar entry `proofs/PalomarCorpus/E257_01` as `DivisibilityWeightedSupport.divisibilityWeightedClaim`; proof source [`WeightedReturn.lean`](ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean); paper label `eq:weighted-return`; public entry proofs/PalomarCorpus/E257.
 
 **Strongest genuine longitudinal theorem.** Finite divisibility-weighted mass implies hereditary all-base irrationality, including explicit reciprocal-divergent short-gap supports..
 
@@ -37,7 +37,7 @@ Finite prime-part weighted mass gives fixed-base irrationality and, at binary we
 
 Evidence: accepted by the Lean kernel. Prior art: unassessed, no audit date.
 
-Routes: compared in the Palomar entry `PalomarCorpus/E257_01` as `DivisibilityWeightedSupport.divisibilityWeightedClaim`; proof source [`WeightedReturn.lean`](ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean); paper label `eq:weighted-return`; public entry PalomarCorpus/E257.
+Routes: compared in the Palomar entry `proofs/PalomarCorpus/E257_01` as `DivisibilityWeightedSupport.divisibilityWeightedClaim`; proof source [`WeightedReturn.lean`](ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean); paper label `eq:weighted-return`; public entry proofs/PalomarCorpus/E257.
 
 **Best standalone structural theorem.** achievement-set topology and exact volume dichotomy.
 
@@ -45,7 +45,7 @@ A supported Mersenne achievement set is the set of reals coded by binary strings
 
 Evidence: accepted by the Lean kernel. Prior art: classical_input_disclosed, no audit date; antecedent Kakeya (1914) and Kovač-Tao Remark 4.1 own compact/perfect/totally disconnected/nowhere dense; the exact measure dichotomy is presented as added.
 
-Routes: source [`ExternalVerification257AchievementSetGeometry/`](ExternalVerification257AchievementSetGeometry/), proof `Solutions.ExternalVerification257AchievementSetGeometry`, package `ExternalVerification257AchievementSetGeometry/comparator.json`; proof source [`MersenneSubseriesRigidity.lean`](ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean); no paper label; public entry launch_core.
+Routes: source [`ExternalVerification257AchievementSetGeometry/`](proofs/families/ExternalVerification257AchievementSetGeometry), proof `Solutions.ExternalVerification257AchievementSetGeometry`, package `proofs/families/ExternalVerification257AchievementSetGeometry/comparator.json`; proof source [`MersenneSubseriesRigidity.lean`](ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean); no paper label; public entry launch_core.
 
 **Strongest unresolved producer** (`contradict_twenty_one_permanent_affine_supercapacity`). Contradict the exact permanent affine-supercapacity regime forced by TwentyOneFatalAlignedBranch. Commit bad43508 proves that any unbounded sequence of closed canonical rows s_R<=2^R already gives the compactness decay required for 1/21 membership, so the fatal branch must eventually satisfy 2^R<s_R at every rank. Combined with commit f23727a, the boundary coin is then always taken: support appends R+1 and the scalar follows one literal affine recurrence with no residual Boolean branch. Commit 73f417a additionally proves that an aligned crossing from exact saturation into strict supercapacity must occur at R=3a+2 and omit a canonical ancestor at a+1 or 2(a+1). This restricts one entrance mechanism but does not show that the fatal branch enters late from exact saturation or contradict the regime after entry. …
 
@@ -67,10 +67,10 @@ Routes: source [`ExternalVerification257AchievementSetGeometry/`](ExternalVerifi
 
 **Entries.**
 
-- [`ExternalVerification257ReciprocalSupport/`](ExternalVerification257ReciprocalSupport/), irrationality for every reciprocal-summable support and every integer base.
-- [`ExternalVerification257AchievementSetGeometry/`](ExternalVerification257AchievementSetGeometry/), rational-fibre null theorem and supported Mersenne achievement-set geometry.
-- [`ExternalVerification257FinitePeriodNoncollapse/`](ExternalVerification257FinitePeriodNoncollapse/), exact multiplicative-order noncollapse at every integer base.
-- [`ExternalVerification257RationalTailRigidity/`](ExternalVerification257RationalTailRigidity/), rational values force unbounded integer tail orbits and mass lower bounds.
+- [`ExternalVerification257ReciprocalSupport/`](proofs/families/ExternalVerification257ReciprocalSupport), irrationality for every reciprocal-summable support and every integer base.
+- [`ExternalVerification257AchievementSetGeometry/`](proofs/families/ExternalVerification257AchievementSetGeometry), rational-fibre null theorem and supported Mersenne achievement-set geometry.
+- [`ExternalVerification257FinitePeriodNoncollapse/`](proofs/families/ExternalVerification257FinitePeriodNoncollapse), exact multiplicative-order noncollapse at every integer base.
+- [`ExternalVerification257RationalTailRigidity/`](proofs/families/ExternalVerification257RationalTailRigidity), rational values force unbounded integer tail orbits and mass lower bounds.
 
 ```sh
 lake build ExternalVerification257ReciprocalSupport Solutions.ExternalVerification257ReciprocalSupport
@@ -97,7 +97,7 @@ The two zero-residue base channels and one odd-residue channel at each positive 
 
 Evidence: accepted by the Lean kernel. Prior art: extends, audited 2026-09-02; antecedent M. Coons, (Non)Automaticity of number theoretic functions, J. Theor. Nombres Bordeaux 22 (2010), no. 2, 339-352 (Theorem 3.2, proof printed p. 349; k-kernel definition in Section 1).
 
-Routes: source [`ExternalVerification249DyadicTotientKernel/`](ExternalVerification249DyadicTotientKernel/), proof `Solutions.ExternalVerification249DyadicTotientKernel`, package `ExternalVerification249DyadicTotientKernel/comparator.json`; proof source [`TotientMahlerDefect.lean`](Erdos257PeriodNoncollapse/TotientMahlerDefect.lean); no paper label; public entry launch_core.
+Routes: source [`ExternalVerification249DyadicTotientKernel/`](proofs/families/ExternalVerification249DyadicTotientKernel), proof `Solutions.ExternalVerification249DyadicTotientKernel`, package `proofs/families/ExternalVerification249DyadicTotientKernel/comparator.json`; proof source [`TotientMahlerDefect.lean`](Erdos257PeriodNoncollapse/TotientMahlerDefect.lean); no paper label; public entry launch_core.
 
 **Strongest unresolved producer** (`totient_specific_moving_dyadic_escape`). Prove FullMersenneCanonicalBasepointResidueGapSupply, the Lean-equivalent arithmetic normal form: for every c and positive odd v, find H>0 divisible by phi(v) such that the canonical residue (-totientBlock(H,c)) mod ((2^H-1)/v) lies in the central interval of radius c+H+1. On the pure-dyadic axis, the Lean-checked signed error E_H=totientBlock(H,c)-k(2^H-1) obeys E_(H+1)=2E_H+phi(c+H+1)-k while the nearest quotient k stays fixed. Exact computation through c<=1000000 finds delay nineteen at c=490794, ruling out caps through seventeen. Pointwise legal-letter methods, the constant-two mode, sublinear errors, and every eventually affine linear-scale error are eliminated. Actual prime positions cofinally force linear excursions; …
 
@@ -118,13 +118,13 @@ Routes: source [`ExternalVerification249DyadicTotientKernel/`](ExternalVerificat
 
 **Entries.**
 
-- [`ExternalVerification249RankOneSharpFloor/`](ExternalVerification249RankOneSharpFloor/), sharp minimiser and explicit 21/320 floor for the positive rank-one Möbius Mersenne cone.
-- [`ExternalVerification249ResidueClassTotientSeries/`](ExternalVerification249ResidueClassTotientSeries/), irrationality of fixed-resolution observables of the totient word.
-- [`ExternalVerification249BinaryCyclotomicAnchors/`](ExternalVerification249BinaryCyclotomicAnchors/), unconditional clean prime anchors in the binary cyclotomic layers.
-- [`ExternalVerification249DyadicTotientKernel/`](ExternalVerification249DyadicTotientKernel/), complete dyadic totient-kernel structure.
-- [`ExternalVerification249MobiusMersenneLadderStructure/`](ExternalVerification249MobiusMersenneLadderStructure/), no finite linear recurrence for the Möbius-Mersenne power ladder, and its separation from the literal Möbius-Lambert ladder.
-- [`ExternalVerification249ParityPerturbedRationalControl/`](ExternalVerification249ParityPerturbedRationalControl/), a parity-perturbed rational control for the binary totient series.
-- [`ExternalVerification249TotientKernelBasis/`](ExternalVerification249TotientKernelBasis/), all-base totient kernel dimension, canonical basis and relation module.
+- [`ExternalVerification249RankOneSharpFloor/`](proofs/families/ExternalVerification249RankOneSharpFloor), sharp minimiser and explicit 21/320 floor for the positive rank-one Möbius Mersenne cone.
+- [`ExternalVerification249ResidueClassTotientSeries/`](proofs/families/ExternalVerification249ResidueClassTotientSeries), irrationality of fixed-resolution observables of the totient word.
+- [`ExternalVerification249BinaryCyclotomicAnchors/`](proofs/families/ExternalVerification249BinaryCyclotomicAnchors), unconditional clean prime anchors in the binary cyclotomic layers.
+- [`ExternalVerification249DyadicTotientKernel/`](proofs/families/ExternalVerification249DyadicTotientKernel), complete dyadic totient-kernel structure.
+- [`ExternalVerification249MobiusMersenneLadderStructure/`](proofs/families/ExternalVerification249MobiusMersenneLadderStructure), no finite linear recurrence for the Möbius-Mersenne power ladder, and its separation from the literal Möbius-Lambert ladder.
+- [`ExternalVerification249ParityPerturbedRationalControl/`](proofs/families/ExternalVerification249ParityPerturbedRationalControl), a parity-perturbed rational control for the binary totient series.
+- [`ExternalVerification249TotientKernelBasis/`](proofs/families/ExternalVerification249TotientKernelBasis), all-base totient kernel dimension, canonical basis and relation module.
 
 ```sh
 lake build ExternalVerification249RankOneSharpFloor Solutions.ExternalVerification249RankOneSharpFloor
@@ -146,15 +146,15 @@ lake build ExternalVerification249TotientKernelBasis Solutions.ExternalVerificat
 
 **Remaining boundary.** The quadruple-sieve estimate is an explicit unproved hypothesis, the h=1 case degenerates, and zero density of exact shifted-gap matches is not yet connected to the tail-smallness event needed to contradict rationality. Erdős #251 remains open.
 
-Evidence: accepted by the Lean kernel. Routes: compared in the Palomar entry the `E251_*` entries of [`PalomarCorpus/`](PalomarCorpus/README.md); no paper label; public entries `E251_*`.
+Evidence: accepted by the Lean kernel. Routes: compared in the Palomar entry the `E251_*` entries of [`PalomarCorpus/`](proofs/PalomarCorpus/README.md); no paper label; public entries `E251_*`.
 
 **Best standalone structural theorem.** A rational logarithmic dyadic word with small digits recurring in every residue class and PNT-scale cumulative growth.
 
 Explicit synthetic positive even logarithmically bounded digits, 2 and 4 recurring in every index residue, cofinal unboundedness, nonperiodicity, strictly increasing odd positions with N log N asymptotic, dyadic sum 6 and integral tail shifts. No primality assertion or counterexample to Erdos251. For all t>0,r<t,N, there are i,j>=N congruent to r mod t with digits2and4. Every positive shift fails to be an eventual period. Every N,h>=0 has integral complete-tail difference. The pointwise bound is4 log(n+1)+24 and position/(N logN) tends to1.
 
-Evidence: accepted by the Lean kernel. The focused build passed with unchanged proof inputs and the three endpoint axiom audits are clean; the theorem is selected by the Palomar entry the `E251_*` entries of [`PalomarCorpus/`](PalomarCorpus/README.md), whose Comparator replay runs in `.github/workflows/palomar-replay.yml`. Prior art: unassessed, audited 2026-09-02; antecedent Vjeko Kovač posted a telescoping countermodel of the same broad species for the neighbouring conjecture printed under #251 in April 2026; priority for this exact every-residue logarithmic form is unassessed..
+Evidence: accepted by the Lean kernel. The focused build passed with unchanged proof inputs and the three endpoint axiom audits are clean; the theorem is selected by the Palomar entry the `E251_*` entries of [`PalomarCorpus/`](proofs/PalomarCorpus/README.md), whose Comparator replay runs in `.github/workflows/palomar-replay.yml`. Prior art: unassessed, audited 2026-09-02; antecedent Vjeko Kovač posted a telescoping countermodel of the same broad species for the neighbouring conjecture printed under #251 in April 2026; priority for this exact every-residue logarithmic form is unassessed..
 
-Routes: compared in the Palomar entry the `E251_*` entries of [`PalomarCorpus/`](PalomarCorpus/README.md); no paper label; public entries `E251_*`.
+Routes: compared in the Palomar entry the `E251_*` entries of [`PalomarCorpus/`](proofs/PalomarCorpus/README.md); no paper label; public entries `E251_*`.
 
 **Strongest unresolved producer** (`cofinal_adjacent_small_mismatch`). For each fixed h >= 1 and every N0, produce N >= N0 such that both actual tail shifts T_(N+h)-T_N and T_(N+h+1)-T_(N+1) lie strictly between -1 and 1 while g_(N+h+1) != g_(N+1). The checked finite consumer then excludes eventual integrality of the h-shift. The quantifier is every positive h, not only h=1. Digit mismatch and smallness are a joint event. A preferred unproved substitute is a positive finite phase-variance lower bound V_t(X,L) on the schedule t=lcm(1..floor(log log X)), L~(1+ε)log_2 log X (PhaseVarianceLab.md); that lower bound is not proved. r5 sparse rationalisation preserves all unnormalised blocks of length o(log log X) and therefore does not supply this joint event; a distinguishing actual-prime estimate must exceed the block-change error or use a longer window. r6 residue-feedback / sharp δ_* construction is a stronger countermodel in the polylogarithmic regime; …
 
@@ -175,12 +175,12 @@ Routes: compared in the Palomar entry the `E251_*` entries of [`PalomarCorpus/`]
 
 **Entries.**
 
-- [`ExternalVerification251PolynomialShiftCountermodel/`](ExternalVerification251PolynomialShiftCountermodel/), exact countermodel to coarse gap-profile irrationality routes.
-- [`ExternalVerification251PrimeGapIdentity/`](ExternalVerification251PrimeGapIdentity/), unconditional prime-gap reformulation of the dyadic prime series.
-- [`ExternalVerification251ActualPrimeGapTail/`](ExternalVerification251ActualPrimeGapTail/), exact rational-tail collapse for the actual prime-gap dyadic series.
-- [`ExternalVerification251BoundedPerturbationCountermodel/`](ExternalVerification251BoundedPerturbationCountermodel/), bounded-perturbation countermodel anchored at the actual prime gaps.
-- [`ExternalVerification251FreePairEquivalence/`](ExternalVerification251FreePairEquivalence/), free-pair equivalence for the actual prime-gap dyadic series.
-- [`ExternalVerification251KernelDenominatorFloor/`](ExternalVerification251KernelDenominatorFloor/), kernel-decided denominator floor for the prime-gap dyadic series.
+- [`ExternalVerification251PolynomialShiftCountermodel/`](proofs/families/ExternalVerification251PolynomialShiftCountermodel), exact countermodel to coarse gap-profile irrationality routes.
+- [`ExternalVerification251PrimeGapIdentity/`](proofs/families/ExternalVerification251PrimeGapIdentity), unconditional prime-gap reformulation of the dyadic prime series.
+- [`ExternalVerification251ActualPrimeGapTail/`](proofs/families/ExternalVerification251ActualPrimeGapTail), exact rational-tail collapse for the actual prime-gap dyadic series.
+- [`ExternalVerification251BoundedPerturbationCountermodel/`](proofs/families/ExternalVerification251BoundedPerturbationCountermodel), bounded-perturbation countermodel anchored at the actual prime gaps.
+- [`ExternalVerification251FreePairEquivalence/`](proofs/families/ExternalVerification251FreePairEquivalence), free-pair equivalence for the actual prime-gap dyadic series.
+- [`ExternalVerification251KernelDenominatorFloor/`](proofs/families/ExternalVerification251KernelDenominatorFloor), kernel-decided denominator floor for the prime-gap dyadic series.
 
 ```sh
 lake build ExternalVerification251PolynomialShiftCountermodel Solutions.ExternalVerification251PolynomialShiftCountermodel
@@ -217,9 +217,9 @@ Routes: no dedicated comparator entry in this release; proof source [`RationalBa
 
 For every rank N, Zudilin's normalized Hankel determinant V_N^* at x=z=1 has q-order N(N-1)(2N-1)/6 and leading coefficient (N!)^2(N+1)!/2^N. The normalized moments and the determinant are Zudilin's construction (Acta Arith. 111 (2004); Res. Number Theory 2 (2016), Art. 15), and Zudilin 2016, Section 4, proves that the q-order is at least N(N-1)(2N-1)/6. The Lean proof in [`AllRow/Producer.lean`](ErdosProblems/Erdos1049/AllRow/Producer.lean) supplies the initial monomial of every transformed row and composes it with the determinant deduction in [`ZudilinSharpHankelCoefficient.lean`](ErdosProblems/Erdos1049/ZudilinSharpHankelCoefficient.lean); exact integer power-series computation agrees at ranks 1 through 7.
 
-Evidence: accepted by the Lean kernel. The two statements are compared in the `E1049_*` entries of [`PalomarCorpus/`](PalomarCorpus/README.md) against a Challenge that restates the normalized moments, the Hankel matrix and its determinant over Mathlib alone, and they depend on the axioms propext, Classical.choice and Quot.sound only. Prior art audited 2026-09-02; antecedent W. Zudilin, On the irrationality of generalized q-logarithm, Res. Number Theory 2 (2016), Art. 15, arXiv:1601.02688 (Section 4 (source.tex lines 278-305): "the q-expansion of V_n^* starts from at least q^{n(n-1)(2n-1)/6}").
+Evidence: accepted by the Lean kernel. The two statements are compared in the `E1049_*` entries of [`PalomarCorpus/`](proofs/PalomarCorpus/README.md) against a Challenge that restates the normalized moments, the Hankel matrix and its determinant over Mathlib alone, and they depend on the axioms propext, Classical.choice and Quot.sound only. Prior art audited 2026-09-02; antecedent W. Zudilin, On the irrationality of generalized q-logarithm, Res. Number Theory 2 (2016), Art. 15, arXiv:1601.02688 (Section 4 (source.tex lines 278-305): "the q-expansion of V_n^* starts from at least q^{n(n-1)(2n-1)/6}").
 
-Routes: Comparator entry the `E1049_*` entries of [`PalomarCorpus/`](PalomarCorpus/README.md) as `PalomarCorpus.E1049.AdelicHeightBridge.zudilinSharpHankelOrderAndCoeff_all` and `PalomarCorpus.E1049.AdelicHeightBridge.coeff_zudilinNormalizedHankelDet_all_rat`; proof source [`AllRow/Producer.lean`](ErdosProblems/Erdos1049/AllRow/Producer.lean); paper labels `res:zudilin-sharp-qorder`, `sec:hankel-order`.
+Routes: Comparator entry the `E1049_*` entries of [`PalomarCorpus/`](proofs/PalomarCorpus/README.md) as `PalomarCorpus.E1049.AdelicHeightBridge.zudilinSharpHankelOrderAndCoeff_all` and `PalomarCorpus.E1049.AdelicHeightBridge.coeff_zudilinNormalizedHankelDet_all_rat`; proof source [`AllRow/Producer.lean`](ErdosProblems/Erdos1049/AllRow/Producer.lean); paper labels `res:zudilin-sharp-qorder`, `sec:hankel-order`.
 
 **Strongest unresolved producer** (`three_halves_pade_height_gap`). The fixed-prime route is conditional, not an unconditional closure of step 1. The finite harmonic descent gives J_5={4,20,24} by the two-line descent lemma plus an empty level-three check, with eps=v_5(3^2-2^2)=1 and loss blocks [8,9],[40,41],[48,49]. If the all-level q-Apery monodromy/continuity premise (M)/(C5) holds, the weighted transfer gives 5 | B_j for every j >= 50 and hence a window gcd divisible by 5^(1+floor(log_5(s/2))) for every start s >= 50. The premise is certified only at N<=3 and over the finite indices recorded in FixedPrimeInfiniteTailProof.md, so the available evidence does not prove an all-index q-Apery denominator tail or unconditionally close the window-divisor substep. No first-appearance prime, factoring of 3^s-2^s, or effective form of Boyd's heuristic is needed under that explicit conditional premise. …
 
@@ -243,11 +243,11 @@ Routes: Comparator entry the `E1049_*` entries of [`PalomarCorpus/`](PalomarCorp
 
 **Entries.**
 
-- [`ExternalVerification1049HermitePadeNoGo/`](ExternalVerification1049HermitePadeNoGo/), sharp rectangular Hermite–Padé threshold no-go with unique equality point.
-- [`ExternalVerification1049AdelicHeightBridge/`](ExternalVerification1049AdelicHeightBridge/), exact first transformed Zudilin row and the 2^64 < 3^41 < 2^65 bracket.
-- [`ExternalVerification1049PrimeSupportSelectors/`](ExternalVerification1049PrimeSupportSelectors/), sharp rational gaps for integral linear forms and the exterior-determinant height tradeoff.
-- [`ExternalVerification1049RationalBaseBarrier/`](ExternalVerification1049RationalBaseBarrier/), no coordinatewise denominator clearing at the rational base 3/2.
-- [`ExternalVerification1049RationalBaseContour/`](ExternalVerification1049RationalBaseContour/), the rational-base contour of Zudilin's (14,12,14;27) forms.
+- [`ExternalVerification1049HermitePadeNoGo/`](proofs/families/ExternalVerification1049HermitePadeNoGo), sharp rectangular Hermite–Padé threshold no-go with unique equality point.
+- [`ExternalVerification1049AdelicHeightBridge/`](proofs/families/ExternalVerification1049AdelicHeightBridge), exact first transformed Zudilin row and the 2^64 < 3^41 < 2^65 bracket.
+- [`ExternalVerification1049PrimeSupportSelectors/`](proofs/families/ExternalVerification1049PrimeSupportSelectors), sharp rational gaps for integral linear forms and the exterior-determinant height tradeoff.
+- [`ExternalVerification1049RationalBaseBarrier/`](proofs/families/ExternalVerification1049RationalBaseBarrier), no coordinatewise denominator clearing at the rational base 3/2.
+- [`ExternalVerification1049RationalBaseContour/`](proofs/families/ExternalVerification1049RationalBaseContour), the rational-base contour of Zudilin's (14,12,14;27) forms.
 
 ```sh
 lake build ExternalVerification1049HermitePadeNoGo Solutions.ExternalVerification1049HermitePadeNoGo
@@ -283,7 +283,7 @@ The accompanying ordinary mathematics completely solves three structured familie
 
 Evidence: accepted by the Lean kernel. Prior art: unknown, no audit date; antecedent The alternation argument sits in the classical Chebyshev context; a bounded search found no earlier form of the quintic selector (entry metadata).
 
-Routes: source [`ExternalVerification1041SolvedFamilies/`](ExternalVerification1041SolvedFamilies/), proof `Solutions.ExternalVerification1041SolvedFamilies`, package `ExternalVerification1041SolvedFamilies/comparator.json`; proof source [`SharpCollinearChebyshev.lean`](ErdosProblems/Erdos1041/SharpCollinearChebyshev.lean); proof source [`PrimitiveQuinticInteriorTail.lean`](ErdosProblems/Erdos1041/PrimitiveQuinticInteriorTail.lean); proof source [`CubicQuotientFiberCase.lean`](ErdosProblems/Erdos1041/CubicQuotientFiberCase.lean); paper labels `thm:sharp-collinear-diameter`, `prop:sharp-collinear-chebyshev-comparator`, `thm:primitive-quintic-two-tail`, `prop:primitive-quintic-two-tail-energy-selector`, `thm:translated-cubic-quotient-fibres`, `lem:cubic-safe-root-spoke`, `bdry:solved-polynomial-families`, `rem:sharp-collinear-formal-boundary`, `rem:primitive-quintic-formal-boundary`, `rem:cubic-quotient-formal-boundary`; public entry launch_core.
+Routes: source [`ExternalVerification1041SolvedFamilies/`](proofs/families/ExternalVerification1041SolvedFamilies), proof `Solutions.ExternalVerification1041SolvedFamilies`, package `proofs/families/ExternalVerification1041SolvedFamilies/comparator.json`; proof source [`SharpCollinearChebyshev.lean`](ErdosProblems/Erdos1041/SharpCollinearChebyshev.lean); proof source [`PrimitiveQuinticInteriorTail.lean`](ErdosProblems/Erdos1041/PrimitiveQuinticInteriorTail.lean); proof source [`CubicQuotientFiberCase.lean`](ErdosProblems/Erdos1041/CubicQuotientFiberCase.lean); paper labels `thm:sharp-collinear-diameter`, `prop:sharp-collinear-chebyshev-comparator`, `thm:primitive-quintic-two-tail`, `prop:primitive-quintic-two-tail-energy-selector`, `thm:translated-cubic-quotient-fibres`, `lem:cubic-safe-root-spoke`, `bdry:solved-polynomial-families`, `rem:sharp-collinear-formal-boundary`, `rem:primitive-quintic-formal-boundary`, `rem:cubic-quotient-formal-boundary`; public entry launch_core.
 
 **Strongest unresolved producer** (`one_root_covering_of_the_first_merge_component`). Prove (COVER): for monic g with roots in the closed unit disk there is a level lambda in [mu,1] and a compact CONNECTED subset Gamma of the first-merge component of {|g| <= lambda} carrying two roots, such that every point of Gamma lies within intrinsic distance 1 of a root of g, paths being allowed to run in the whole component. By visibility_overlap_reduction_to_a_one_root_statement this settles Erdos #1041, with no separate length obligation. Take Gamma as SMALL as possible and the ambient as LARGE as possible: the cheapest Gamma is the descending Newton branch pair from c*, on which the covering was measured in its strongest form -- straight segments at level 1 -- with zero uncovered points over 26 scored rows at 283 points per arc, at least 155 overlap points per row, and worst overlap length 1.90422 against a budget of 2. …
 
@@ -305,14 +305,14 @@ Routes: source [`ExternalVerification1041SolvedFamilies/`](ExternalVerification1
 
 **Entries.**
 
-- [`ExternalVerification1041FirstMergeCriticalValueSeparation/`](ExternalVerification1041FirstMergeCriticalValueSeparation/), exact all-degree critical-value separation thresholds and a sign-free first-merge length bound.
-- [`ExternalVerification1041CriticalGeometry/`](ExternalVerification1041CriticalGeometry/), global two-root critical proximity and exact straight-line obstructions.
-- [`ExternalVerification1041CollinearChord/`](ExternalVerification1041CollinearChord/), straight-chord selection from quantitative collinear critical-gap data.
-- [`ExternalVerification1041CyclicTrinomialFiber/`](ExternalVerification1041CyclicTrinomialFiber/), sublevel containment of trinomial root spokes.
-- [`ExternalVerification1041DiskFamilySeparation/`](ExternalVerification1041DiskFamilySeparation/), uniform disk-family critical-value separation thresholds and a sign-free connector-length bound.
-- [`ExternalVerification1041QuarticQuotientFiber/`](ExternalVerification1041QuarticQuotientFiber/), strict length budget below two for quotient-fibre root lifts.
-- [`ExternalVerification1041SolvedFamilies/`](ExternalVerification1041SolvedFamilies/), checked kernels for three completely solved polynomial families.
-- [`ExternalVerification1041TetranomialSpokes/`](ExternalVerification1041TetranomialSpokes/), coefficient and energy criteria forcing two safe tetranomial spokes.
+- [`ExternalVerification1041FirstMergeCriticalValueSeparation/`](proofs/families/ExternalVerification1041FirstMergeCriticalValueSeparation), exact all-degree critical-value separation thresholds and a sign-free first-merge length bound.
+- [`ExternalVerification1041CriticalGeometry/`](proofs/families/ExternalVerification1041CriticalGeometry), global two-root critical proximity and exact straight-line obstructions.
+- [`ExternalVerification1041CollinearChord/`](proofs/families/ExternalVerification1041CollinearChord), straight-chord selection from quantitative collinear critical-gap data.
+- [`ExternalVerification1041CyclicTrinomialFiber/`](proofs/families/ExternalVerification1041CyclicTrinomialFiber), sublevel containment of trinomial root spokes.
+- [`ExternalVerification1041DiskFamilySeparation/`](proofs/families/ExternalVerification1041DiskFamilySeparation), uniform disk-family critical-value separation thresholds and a sign-free connector-length bound.
+- [`ExternalVerification1041QuarticQuotientFiber/`](proofs/families/ExternalVerification1041QuarticQuotientFiber), strict length budget below two for quotient-fibre root lifts.
+- [`ExternalVerification1041SolvedFamilies/`](proofs/families/ExternalVerification1041SolvedFamilies), checked kernels for three completely solved polynomial families.
+- [`ExternalVerification1041TetranomialSpokes/`](proofs/families/ExternalVerification1041TetranomialSpokes), coefficient and energy criteria forcing two safe tetranomial spokes.
 
 ```sh
 lake build ExternalVerification1041FirstMergeCriticalValueSeparation Solutions.ExternalVerification1041FirstMergeCriticalValueSeparation
@@ -335,7 +335,7 @@ lake build ExternalVerification1041TetranomialSpokes Solutions.ExternalVerificat
 
 **Remaining boundary.** The original hypotheses are not known to force an eventual lower bound on E_n, so Erdős #243 remains open. Badea and Koizumi supply the eventual-nonnegative antecedent; the bounded-negative form widens that sign condition to negative visits of bounded depth while adding normalised vanishing, and the local prior-art audit records only medium confidence in the exact coordinate comparison.
 
-Evidence: accepted by the Lean kernel. Routes: source [`ExternalVerification243BoundedNegativePartRigidity/`](ExternalVerification243BoundedNegativePartRigidity/), proof `Solutions.ExternalVerification243BoundedNegativePartRigidity`, package `ExternalVerification243BoundedNegativePartRigidity/comparator.json`; proof source [`ReciprocalTailRigidity.lean`](ErdosProblems/Erdos243/ReciprocalTailRigidity.lean); no paper label; public entry launch_core.
+Evidence: accepted by the Lean kernel. Routes: source [`ExternalVerification243BoundedNegativePartRigidity/`](proofs/families/ExternalVerification243BoundedNegativePartRigidity), proof `Solutions.ExternalVerification243BoundedNegativePartRigidity`, package `proofs/families/ExternalVerification243BoundedNegativePartRigidity/comparator.json`; proof source [`ReciprocalTailRigidity.lean`](ErdosProblems/Erdos243/ReciprocalTailRigidity.lean); no paper label; public entry launch_core.
 
 **Strongest genuine longitudinal theorem.** bounded-negative complete rigidity and eventual Sylvester recurrence.
 
@@ -343,7 +343,7 @@ Clearing denominators in the rational case of Erdős Problem 243 produces an exa
 
 Evidence: accepted by the Lean kernel. Prior art: extends, audited 2026-09-02; antecedent J. Koizumi, arXiv:2504.05933, Proposition 19(2) and Corollary 20(2) (Badea) (as above).
 
-Routes: source [`ExternalVerification243BoundedNegativePartRigidity/`](ExternalVerification243BoundedNegativePartRigidity/), proof `Solutions.ExternalVerification243BoundedNegativePartRigidity`, package `ExternalVerification243BoundedNegativePartRigidity/comparator.json`; proof source [`ReciprocalTailRigidity.lean`](ErdosProblems/Erdos243/ReciprocalTailRigidity.lean); no paper label; public entry launch_core.
+Routes: source [`ExternalVerification243BoundedNegativePartRigidity/`](proofs/families/ExternalVerification243BoundedNegativePartRigidity), proof `Solutions.ExternalVerification243BoundedNegativePartRigidity`, package `proofs/families/ExternalVerification243BoundedNegativePartRigidity/comparator.json`; proof source [`ReciprocalTailRigidity.lean`](ErdosProblems/Erdos243/ReciprocalTailRigidity.lean); no paper label; public entry launch_core.
 
 **Best standalone structural theorem.** CRT bounded-rise barrier: a slowly rising natural state cannot avoid an infinite pairwise-coprime modulus family at every strict rise.
 
@@ -374,14 +374,14 @@ Routes: no dedicated comparator entry in this release; no paper label; no public
 
 **Entries.**
 
-- [`ExternalVerification243PeriodicNegativeOrbit/`](ExternalVerification243PeriodicNegativeOrbit/), exclusion of eventually periodic negative-magnitude orbits.
-- [`ExternalVerification243ProtectedEpochEnergy/`](ExternalVerification243ProtectedEpochEnergy/), protected-epoch record energy from reusable odd-prime barriers.
-- [`ExternalVerification243BoundedNegativePartRigidity/`](ExternalVerification243BoundedNegativePartRigidity/), bounded-negative-part rigidity for reciprocal-tail dynamics.
-- [`ExternalVerification243BoundedRiseReducedTail/`](ExternalVerification243BoundedRiseReducedTail/), exclusion of bounded-rise reduced tails.
-- [`ExternalVerification243RecordIncrementBarrier/`](ExternalVerification243RecordIncrementBarrier/), unit record-increment rigidity under arbitrary cancellation.
-- [`ExternalVerification243SaturatedSquareTransport/`](ExternalVerification243SaturatedSquareTransport/), saturated square transport across one primitive cancellation and the exact reach of its Legendre defect.
-- [`ExternalVerification243SlowRiseBarrier/`](ExternalVerification243SlowRiseBarrier/), slow-rise exclusion for reduced exact reciprocal tails.
-- [`ExternalVerification243TwoModulusRecordCut/`](ExternalVerification243TwoModulusRecordCut/), the two-modulus record cut and its sharpness at jump five.
+- [`ExternalVerification243PeriodicNegativeOrbit/`](proofs/families/ExternalVerification243PeriodicNegativeOrbit), exclusion of eventually periodic negative-magnitude orbits.
+- [`ExternalVerification243ProtectedEpochEnergy/`](proofs/families/ExternalVerification243ProtectedEpochEnergy), protected-epoch record energy from reusable odd-prime barriers.
+- [`ExternalVerification243BoundedNegativePartRigidity/`](proofs/families/ExternalVerification243BoundedNegativePartRigidity), bounded-negative-part rigidity for reciprocal-tail dynamics.
+- [`ExternalVerification243BoundedRiseReducedTail/`](proofs/families/ExternalVerification243BoundedRiseReducedTail), exclusion of bounded-rise reduced tails.
+- [`ExternalVerification243RecordIncrementBarrier/`](proofs/families/ExternalVerification243RecordIncrementBarrier), unit record-increment rigidity under arbitrary cancellation.
+- [`ExternalVerification243SaturatedSquareTransport/`](proofs/families/ExternalVerification243SaturatedSquareTransport), saturated square transport across one primitive cancellation and the exact reach of its Legendre defect.
+- [`ExternalVerification243SlowRiseBarrier/`](proofs/families/ExternalVerification243SlowRiseBarrier), slow-rise exclusion for reduced exact reciprocal tails.
+- [`ExternalVerification243TwoModulusRecordCut/`](proofs/families/ExternalVerification243TwoModulusRecordCut), the two-modulus record cut and its sharpness at jump five.
 
 ```sh
 lake build ExternalVerification243PeriodicNegativeOrbit Solutions.ExternalVerification243PeriodicNegativeOrbit
@@ -436,9 +436,9 @@ Routes: no dedicated comparator entry in this release; no paper label; no public
 
 **Entries.**
 
-- [`ExternalVerification68CompanionOrbitBoundary/`](ExternalVerification68CompanionOrbitBoundary/), companion-orbit rationality boundary.
-- [`ExternalVerification68ChannelRadius/`](ExternalVerification68ChannelRadius/), explicit cubic radius floor for simultaneous factorial channel cancellation.
-- [`ExternalVerification68PrimeUnitTranslator/`](ExternalVerification68PrimeUnitTranslator/), remote factorial-grid kernels reduced by an exact prime unit translator.
+- [`ExternalVerification68CompanionOrbitBoundary/`](proofs/families/ExternalVerification68CompanionOrbitBoundary), companion-orbit rationality boundary.
+- [`ExternalVerification68ChannelRadius/`](proofs/families/ExternalVerification68ChannelRadius), explicit cubic radius floor for simultaneous factorial channel cancellation.
+- [`ExternalVerification68PrimeUnitTranslator/`](proofs/families/ExternalVerification68PrimeUnitTranslator), remote factorial-grid kernels reduced by an exact prime unit translator.
 
 ```sh
 lake build ExternalVerification68CompanionOrbitBoundary Solutions.ExternalVerification68CompanionOrbitBoundary
@@ -456,7 +456,7 @@ lake build ExternalVerification68PrimeUnitTranslator Solutions.ExternalVerificat
 
 **Remaining boundary.** No three-prime repeated-series irrationality or transcendence theorem is proved. The shell dichotomy by itself treats the unscaled integer-state branch and does not exclude rational denominators greater than one. The all-denominator carry/window statement is Lean-checked but exactly equivalent to the target, so it is an exact reformulation and route no-go rather than a reduction to an easier theorem. Fibre irrationality does not combine to irrationality of the repeated series; Sigma_2 + 2 Sigma_3 + 4 Sigma_5 = 1 is the explicit warning. Steve Fan has priority for the two-prime result and the running-height telescope inputs; the fibre theorem's novelty is unverified.
 
-Evidence: accepted by the Lean kernel. Routes: source [`ExternalVerification269ActualShellOrbit/`](ExternalVerification269ActualShellOrbit/), proof `Solutions.ExternalVerification269ActualShellOrbit`, package `ExternalVerification269ActualShellOrbit/comparator.json`; proof source [`DyadicShellSummability.lean`](ErdosProblems/Erdos269/DyadicShellSummability.lean); no paper label; public entry launch_core.
+Evidence: accepted by the Lean kernel. Routes: source [`ExternalVerification269ActualShellOrbit/`](proofs/families/ExternalVerification269ActualShellOrbit), proof `Solutions.ExternalVerification269ActualShellOrbit`, package `proofs/families/ExternalVerification269ActualShellOrbit/comparator.json`; proof source [`DyadicShellSummability.lean`](ErdosProblems/Erdos269/DyadicShellSummability.lean); no paper label; public entry launch_core.
 
 **Best standalone structural theorem.** exact running-LCM identity, logarithmic-cell constancy, exact jump count, height-fibre normal form, quadratic shell bound, arbitrary-order nonsingular minors, and no finite exact separation.
 
@@ -464,7 +464,7 @@ The running-LCM kernel is K(i,j,k) = 1 / (p^a q^b r^c) with a, b, c the Nat.log 
 
 Evidence: accepted by the Lean kernel. Prior art: new, audited 2026-09-02; antecedent Steve Fan, comment on erdosproblems.com/269, 05:22 on 26 June 2026 (the general-k running-LCM identity, the two-prime factorisation S = S_1 S_2, and transcendence via Hecke-Mahler; closing sentence "This argument does not seem to generalize immediately to |P| >= 3, since S does not factor nicely in the first place.").
 
-Routes: source [`ExternalVerification269ThreePrimeStructure/`](ExternalVerification269ThreePrimeStructure/), proof `Solutions.ExternalVerification269ThreePrimeStructure`, package `ExternalVerification269ThreePrimeStructure/comparator.json`; proof source [`ThreePrimeRunningLcm.lean`](ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean); proof source [`KernelCarryRank.lean`](ErdosProblems/Erdos269/KernelCarryRank.lean); no paper label; public entry launch_core.
+Routes: source [`ExternalVerification269ThreePrimeStructure/`](proofs/families/ExternalVerification269ThreePrimeStructure), proof `Solutions.ExternalVerification269ThreePrimeStructure`, package `proofs/families/ExternalVerification269ThreePrimeStructure/comparator.json`; proof source [`ThreePrimeRunningLcm.lean`](ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean); proof source [`KernelCarryRank.lean`](ErdosProblems/Erdos269/KernelCarryRank.lean); no paper label; public entry launch_core.
 
 **Strongest unresolved producer** (`exclude_exact_integral_dyadic_tails`). For every positive B coprime to 30 and every a>=1, prove that the actual normalised state B X_a is nonintegral. Clearing and the rationality-to-reduced-carry bridge make this equivalent to irrationality of the {2,3,5} series; it is not a strictly stronger producer. The B=1 corner (integral X_a) is included but is not the whole target. Lean proves that the unscaled orbit either hits an integer or returns cofinally 1/31-far from all integers. The denominator-one automaton remains a direct B=1 representation, but the exact a=2295 source word kills every uniform three-transition post-clear proof, and exact left-null certificates eliminate every direct phase-conditioned source potential of total degree at most two. The registered onset in the manuscript remains u+1+2v+3w until a sharper onset is independently checked. …
 
@@ -485,9 +485,9 @@ Routes: source [`ExternalVerification269ThreePrimeStructure/`](ExternalVerificat
 
 **Entries.**
 
-- [`ExternalVerification269ThreePrimeStructure/`](ExternalVerification269ThreePrimeStructure/), exact three-prime running-LCM identity and infinite kernel rank.
-- [`ExternalVerification269ActualShellOrbit/`](ExternalVerification269ActualShellOrbit/), actual dyadic shell orbit, exact recurrence and integral-or-far escape.
-- [`ExternalVerification269WindowEscapeEquivalence/`](ExternalVerification269WindowEscapeEquivalence/), the cofinal local-window escape is equivalent to irrationality of the three-prime running-LCM value.
+- [`ExternalVerification269ThreePrimeStructure/`](proofs/families/ExternalVerification269ThreePrimeStructure), exact three-prime running-LCM identity and infinite kernel rank.
+- [`ExternalVerification269ActualShellOrbit/`](proofs/families/ExternalVerification269ActualShellOrbit), actual dyadic shell orbit, exact recurrence and integral-or-far escape.
+- [`ExternalVerification269WindowEscapeEquivalence/`](proofs/families/ExternalVerification269WindowEscapeEquivalence), the cofinal local-window escape is equivalent to irrationality of the three-prime running-LCM value.
 
 ```sh
 lake build ExternalVerification269ThreePrimeStructure Solutions.ExternalVerification269ThreePrimeStructure

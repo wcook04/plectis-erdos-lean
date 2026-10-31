@@ -15,6 +15,8 @@ Standard library only.
 
 from __future__ import annotations
 
+from corpus_paths import corpus_path, relative_path
+
 import re
 from collections import defaultdict
 from pathlib import Path
@@ -79,7 +81,7 @@ def discover(corpus_root: Path | str = ".") -> list[str]:
     """Every publication entry in the tree, in problem and paper order, once checked."""
     found = [
         path.parent.name
-        for path in Path(corpus_root, "PalomarCorpus").glob("E*/comparator.json")
+        for path in corpus_path(corpus_root, "PalomarCorpus").glob("E*/comparator.json")
     ]
     check_entry_names(found)
     return sorted(found, key=sort_key)

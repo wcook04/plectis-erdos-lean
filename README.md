@@ -1,24 +1,33 @@
 # Plectis Erdős Lean
 
-Lean 4 proofs from research on eight Erdős problems. Each result keeps its
-statement in one file and its proof in another, and
-[Comparator](https://github.com/leanprover/comparator) compares the two, so a
-reviewer can read the statement without reading the proof.
+[Will Cook’s home page: all projects and videos](https://wcook04.github.io/)
+
+This repository contains Lean source for results related to eight mathematical
+problems posed by Paul Erdős. **Lean** is a language for writing mathematical
+statements and proofs that a computer can check. The [research repository](https://github.com/wcook04/plectis-erdos)
+contains the papers and explanations; this repository contains the proof files
+and commands for checking them.
+
+For selected results, the statement and proof are kept in separate files.
+[Comparator](https://github.com/leanprover/comparator) checks the proposed proof
+against the separately written statement and its permitted assumptions. You
+can read that statement to see exactly what is being claimed.
 
 **Theorem to try first.** Let *b* ≥ 2 be an integer and let *A* be an infinite set
 of positive integers such that the sum of 1/*a* over *a* in *A* is finite. Then the
 sum of 1/(*b*<sup>*a*</sup> - 1) over *a* in *A* is irrational.
 
 **See it with nothing installed:**
-[Palomar registry entry](https://palomar-registry.org/entry.html?id=PALOMAR-2026-10-21-000018&version=1) ·
-[statement](ExternalVerification257ReciprocalSupport/Challenge.lean) ·
-[proof](Solutions/ExternalVerification257ReciprocalSupport.lean) ·
+[Proof in Palomar, an online registry](https://palomar-registry.org/entry.html?id=PALOMAR-2026-10-21-000018&version=1) ·
+[statement](proofs/families/ExternalVerification257ReciprocalSupport/Challenge.lean) ·
+[proof](proofs/Solutions/ExternalVerification257ReciprocalSupport.lean) ·
 [build log for this proof on `main`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/41245506245)
 
-**Build this one proof** with [elan](https://leanprover-community.github.io/get_started.html)
-and Git. The first run needs network access and several gigabytes of disk. It
-downloads about 8,500 compiled Mathlib files, then compiles the 38 modules of
-this repository that the proof uses.
+**Build this one proof.** Install Lean with
+[elan](https://leanprover-community.github.io/get_started.html) and install Git.
+`lake`, Lean’s build tool, comes with Lean. The first run needs network access and several gigabytes of disk. It
+downloads about 8,500 compiled files from **Mathlib**, Lean’s mathematics
+library, then compiles the 38 source files in this repository that the proof uses.
 
 ```sh
 git clone --filter=blob:none https://github.com/wcook04/plectis-erdos-lean.git
@@ -27,7 +36,8 @@ lake exe cache get
 lake build ExternalVerification257ReciprocalSupport.AxiomAudit
 ```
 
-The build prints that the theorem depends on axioms `propext`,
+An **axiom** is an assumption the checker permits without a proof. The build
+prints that this theorem uses the axioms `propext`,
 `Classical.choice` and `Quot.sound`, then `Build completed successfully`.
 
 **Next:** [inspect this result](#inspect-one-result) ·
@@ -36,12 +46,16 @@ The build prints that the theorem depends on axioms `propext`,
 [the eight problems](#the-eight-problems) ·
 [folder map](#where-things-live)
 
+[Formal Conjectures](https://github.com/google-deepmind/formal-conjectures) is a
+separate collection of mathematical conjectures written in Lean. Some results
+here have been submitted to that collection.
+
 Will Cook directs this work and is not a mathematician. AI agents did most of
 the research and drafting. Apart from the reviews of requests to Formal Conjectures,
 no human mathematical peer review is recorded. Erdős problem #1041 is answered for the exact Formal Conjectures statement by a
 counterexample due to ani, and the other seven problems remain open. The other
 results here are restricted results, obstructions and reformulations, set out
-per problem in [the table below](#the-eight-problems).
+per problem in [the list below](#the-eight-problems).
 
 ## Inspect one result
 
@@ -49,15 +63,15 @@ The theorem above has one folder and one proof file.
 
 | To see | Open |
 |---|---|
-| The exact statement | [`Challenge.lean`](ExternalVerification257ReciprocalSupport/Challenge.lean). Its `sorry` is deliberate, because this file only states the theorem. |
-| The proof | [`Solutions/ExternalVerification257ReciprocalSupport.lean`](Solutions/ExternalVerification257ReciprocalSupport.lean), which imports [the source proof](Erdos257PeriodNoncollapse/AllBaseReciprocalSupportIrrationality.lean) and contains no `sorry`. |
-| The axioms | [`AxiomAudit.lean`](ExternalVerification257ReciprocalSupport/AxiomAudit.lean), which prints them when built. |
-| What Comparator was told to compare | [`comparator.json`](ExternalVerification257ReciprocalSupport/comparator.json), which names one theorem, three permitted axioms and the NanoDa kernel. |
-| Scope, sources and attribution | [`formalization.yaml`](ExternalVerification257ReciprocalSupport/formalization.yaml). |
+| The exact statement | [`Challenge.lean`](proofs/families/ExternalVerification257ReciprocalSupport/Challenge.lean). Here `sorry` marks a deliberately omitted proof: this file supplies only the statement to compare against. |
+| The proof | [`proofs/Solutions/ExternalVerification257ReciprocalSupport.lean`](proofs/Solutions/ExternalVerification257ReciprocalSupport.lean), which imports [the source proof](Erdos257PeriodNoncollapse/AllBaseReciprocalSupportIrrationality.lean) and contains no `sorry`. |
+| The axioms | [`AxiomAudit.lean`](proofs/families/ExternalVerification257ReciprocalSupport/AxiomAudit.lean), which prints them when built. |
+| What Comparator was told to compare | [`comparator.json`](proofs/families/ExternalVerification257ReciprocalSupport/comparator.json), which names one theorem, three permitted axioms and NanoDa, an additional proof-checking program. |
+| Scope, sources and attribution | [`formalization.yaml`](proofs/families/ExternalVerification257ReciprocalSupport/formalization.yaml). |
 
-The exponent condition concerns the reciprocals of the exponents, and supports
-with a divergent reciprocal sum are outside the theorem, so #257 itself remains
-open. Erdős printed the pairwise-coprime case in 1968 and stated, without
+The condition is about the sum of `1/a` over the exponents in the set A.
+Sets for which that sum diverges are outside this theorem, so it does not
+answer problem #257 for every infinite set. Erdős printed the pairwise-coprime case in 1968 and stated, without
 printing the argument, that coprimality could be dropped. The proof here was
 written independently, with no priority claim.
 
@@ -68,17 +82,17 @@ of it.
 |---|---|---|
 | [Palomar verification run](https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/35192583926) | Comparator and the Lean and NanoDa kernels accepted the proof at commit [`c39cea6a`](https://github.com/wcook04/plectis-erdos-lean/tree/c39cea6a976747d132a848d26f110b9c608d5a45) under Lean 4.29.0. | The current `main`, which uses Lean 4.30.0. |
 | [Palomar review and registration](https://palomar-registry.org/entry.html?id=PALOMAR-2026-10-21-000018&version=1) | A language model reviewed the entry, found no blocking problem and left one comment: the informal proof account omits the step where infinitude gives a strict minimum. The entry was then registered on 21 October 2026. | Human review. Palomar has no human editorial step. |
-| [Formal Conjectures #6529](https://github.com/google-deepmind/formal-conjectures/pull/6529) | Two reviewers approved earlier revisions, and the request was merged on 9 October 2026, adding a subtype version of the statement. | Every other claim in this repository. |
+| [Formal Conjectures #6529](https://github.com/google-deepmind/formal-conjectures/pull/6529) | Two reviewers approved earlier revisions, and the request was merged on 9 October 2026, adding a version of the statement to that collection. | Every other claim in this repository. |
 
 ## What Lean and Comparator establish
 
-Lean's kernel accepts a proof of the exact formal statement, on the axioms the
-audit prints, against the pinned Mathlib.
+Lean’s kernel, the small core program that checks proofs, accepts a proof of
+the exact statement written in Lean. It uses the axioms the audit prints and
+the version of Mathlib fixed by this repository’s dependency file.
 
-Comparator goes further for selected declarations. It compiles the statement
+Comparator checks the theorems named in its configuration file. It compiles the statement
 apart from the proof, confirms the proof proves that same statement, and refuses
-axioms outside the list in `comparator.json`. With NanoDa enabled, a second
-kernel runs on the exported proof.
+axioms outside the list in `comparator.json`. With NanoDa enabled, that additional program also checks the proof.
 
 Neither tool establishes that a result is new or important, or that the formal
 statement says what its English description says. That last judgement comes
@@ -98,10 +112,15 @@ prepares and protects the statement before the proof runs.
 
 ## Arriving from Formal Conjectures
 
+[Formal Conjectures](https://github.com/google-deepmind/formal-conjectures) is a
+separate collection of mathematical conjectures written in Lean. This repository
+contains proofs and adapters, short pieces of Lean code that put a proof into
+the exact statement that collection asks for.
+
 Proof links in Formal Conjectures requests point to commits pinned in this
 repository, usually inside [`verification/`](verification/README.md). Each folder
-there is a separate Lake project with its own toolchain and manifest, and the
-main build does not import it.
+there is a separate project with its own Lean version and dependency list.
+The main build does not include those projects.
 
 | Folder | What it holds |
 |---|---|
@@ -122,16 +141,21 @@ to that request at that commit.
 Each entry folder holds the full statement in `formalization.yaml`, and
 [`PROBLEMS.md`](PROBLEMS.md) gives the longer account of each problem.
 
-| Problem | Selected result here | Entry | Original problem |
-|---|---|---|---|
-| [#68](https://www.erdosproblems.com/68) | An explicit cubic lower bound on the support radius of a finite system of factorial channels, under stated divisibility hypotheses. | [`ChannelRadius`](ExternalVerification68ChannelRadius/) | Open |
-| [#243](https://www.erdosproblems.com/243) | Rigidity of the integer orbit when its centred error has a one-sided bound and normalised vanishing, both assumed: the orbit eventually follows the Sylvester recurrence. | [`BoundedNegativePartRigidity`](ExternalVerification243BoundedNegativePartRigidity/) | Open |
-| [#249](https://www.erdosproblems.com/249) | Irrationality of the sum over *n* of (φ(*n*) mod *m*)/2<sup>*n*</sup> for every *m* ≥ 3. The series with φ(*n*) itself is not covered. | [`ResidueClassTotientSeries`](ExternalVerification249ResidueClassTotientSeries/) | Open |
-| [#251](https://www.erdosproblems.com/251) | Any rational value of the prime-gap series has denominator at least 2<sup>589</sup>, decided in the Lean kernel. Irrationality is not proved. | [`KernelDenominatorFloor`](ExternalVerification251KernelDenominatorFloor/) | Open |
-| [#257](https://www.erdosproblems.com/257) | The theorem at the top of this page. | [`ReciprocalSupport`](ExternalVerification257ReciprocalSupport/) | Open |
-| [#269](https://www.erdosproblems.com/269) | For the primes 2, 3 and 5, an equivalence between a local window escape and irrationality of the running-LCM value. Neither side is proved. | [`WindowEscapeEquivalence`](ExternalVerification269WindowEscapeEquivalence/) | Open |
-| [#1041](https://www.erdosproblems.com/1041) | The exact Formal Conjectures path-length statement is refuted using [ani's degree-seven construction](https://www.erdosproblems.com/forum/thread/1041#post-8861), and two-root distance bounds and straight-line obstructions are proved separately. | [`FC1041HausdorffCounterexample`](verification/FC1041HausdorffCounterexample/) and [`CriticalGeometry`](ExternalVerification1041CriticalGeometry/) | Answered for that statement. Independent human review of its match with the 1958 wording is not recorded. |
-| [#1049](https://www.erdosproblems.com/1049) | Irrationality of the sum over *m* ≥ 1 of 1/((*a*/*b*)<sup>*m*</sup> - 1) for coprime integers *a* > *b* ≥ 1 in an explicit region, which contains 31/4 and its positive powers and excludes 3/2. | [`PalomarCorpus/E1049_01`](PalomarCorpus/E1049_01/) and [`RationalBaseContour`](ExternalVerification1049RationalBaseContour/) | Open |
+- **[#68](https://www.erdosproblems.com/68) — Open** An explicit cubic lower bound on the support radius of a finite system of factorial channels, under stated divisibility hypotheses. Entry: [`ChannelRadius`](proofs/families/ExternalVerification68ChannelRadius).
+
+- **[#243](https://www.erdosproblems.com/243) — Open** Rigidity of the integer orbit when its centred error has a one-sided bound and normalised vanishing, both assumed: the orbit eventually follows the Sylvester recurrence. Entry: [`BoundedNegativePartRigidity`](proofs/families/ExternalVerification243BoundedNegativePartRigidity).
+
+- **[#249](https://www.erdosproblems.com/249) — Open** Irrationality of the sum over *n* of (φ(*n*) mod *m*)/2<sup>*n*</sup> for every *m* ≥ 3. The series with φ(*n*) itself is not covered. Entry: [`ResidueClassTotientSeries`](proofs/families/ExternalVerification249ResidueClassTotientSeries).
+
+- **[#251](https://www.erdosproblems.com/251) — Open** Any rational value of the prime-gap series has denominator at least 2<sup>589</sup>, decided in the Lean kernel. Irrationality is not proved. Entry: [`KernelDenominatorFloor`](proofs/families/ExternalVerification251KernelDenominatorFloor).
+
+- **[#257](https://www.erdosproblems.com/257) — Open** The theorem at the top of this page. Entry: [`ReciprocalSupport`](proofs/families/ExternalVerification257ReciprocalSupport).
+
+- **[#269](https://www.erdosproblems.com/269) — Open** For the primes 2, 3 and 5, an equivalence between a local window escape and irrationality of the running-LCM value. Neither side is proved. Entry: [`WindowEscapeEquivalence`](proofs/families/ExternalVerification269WindowEscapeEquivalence).
+
+- **[#1041](https://www.erdosproblems.com/1041) — Answered for that statement. Independent human review of its match with the 1958 wording is not recorded.** The exact Formal Conjectures path-length statement is refuted using [ani's degree-seven construction](https://www.erdosproblems.com/forum/thread/1041#post-8861), and two-root distance bounds and straight-line obstructions are proved separately. Entry: [`FC1041HausdorffCounterexample`](verification/FC1041HausdorffCounterexample/) and [`CriticalGeometry`](proofs/families/ExternalVerification1041CriticalGeometry).
+
+- **[#1049](https://www.erdosproblems.com/1049) — Open** Irrationality of the sum over *m* ≥ 1 of 1/((*a*/*b*)<sup>*m*</sup> - 1) for coprime integers *a* > *b* ≥ 1 in an explicit region, which contains 31/4 and its positive powers and excludes 3/2. Entry: [`proofs/PalomarCorpus/E1049_01`](proofs/PalomarCorpus/E1049_01) and [`RationalBaseContour`](proofs/families/ExternalVerification1049RationalBaseContour).
 
 The entry names above omit the `ExternalVerification<problem>` prefix of their
 folders. The 38 theorem families are listed in
@@ -139,33 +163,37 @@ folders. The 38 theorem families are listed in
 
 ## Where things live
 
-The root holds more than 370 folders because Lake finds each library by its
-top-level name, and Palomar and Comparator records point at those paths. They
-fall into a few groups.
+Start with the [proof folder guide](proofs/README.md).
 
-| Location | Contents |
-|---|---|
-| `ExternalVerification<problem><Name>/` | 365 folders, each with `Challenge.lean`, `AxiomAudit.lean`, `comparator.json` and `formalization.yaml`. [38 of them](docs/theorem-families.md) are the theorem families. The `PaperStatements*` and `PaperStructures*` folders restate theorems from the papers against Mathlib alone. |
-| [`PalomarCorpus/`](PalomarCorpus/README.md) | 143 entries, in the order the papers state their theorems. |
-| [`Solutions/`](Solutions/) | The proof for each entry, under a separate module prefix so that Palomar's protected Challenge directory cannot shadow it. |
-| [`Erdos249257/`](Erdos249257/), [`Erdos257PeriodNoncollapse/`](Erdos257PeriodNoncollapse/), [`ErdosProblems/`](ErdosProblems/) | The Lean mathematics that the Solutions import. |
-| [`verification/`](verification/README.md) | Separate projects for [Formal Conjectures](#arriving-from-formal-conjectures). |
-| [`scripts/`](scripts/CONVENIENCE_BUILDS.md) | Build runner, axiom audit and release tools, with the build guide. |
-| [`docs/`](docs/theorem-families.md), [`METHOD.md`](METHOD.md), [`PROBLEMS.md`](PROBLEMS.md) | The family list, how AI models were used, and each problem's unresolved step. |
-| [`snapshot/`](snapshot/README.md), `PlectisSnapshot/` | Records of the first public export, tag `v0.1.1`. |
-| [`skills/`](skills/lean-checkpoint-entry/SKILL.md) | The procedure for writing or reviewing an entry. |
+- [`proofs/families/`](proofs/families/): folders for individual statements and
+  their checking configuration. The [38 selected groups](docs/theorem-families.md)
+  are included in the release checks. Other generated folders also live here;
+  their presence alone does not establish that they have passed those checks.
+- [`proofs/PalomarCorpus/`](proofs/PalomarCorpus/README.md): 143 groups of statements,
+  arranged in the order the papers present their theorems.
+- [`proofs/Solutions/`](proofs/Solutions/): proofs and small pieces of Lean code
+  that connect them to the separately written statements.
+- [`Erdos249257/`](Erdos249257/), [`Erdos257PeriodNoncollapse/`](Erdos257PeriodNoncollapse/)
+  and [`ErdosProblems/`](ErdosProblems/): the underlying mathematical proofs and definitions.
+- [`verification/`](verification/README.md): separate projects for checking
+  contributions to Formal Conjectures against its Lean and Mathlib versions.
+- [`scripts/`](scripts/CONVENIENCE_BUILDS.md): build, proof-audit and release tools.
+- [`docs/`](docs/theorem-families.md), [`METHOD.md`](METHOD.md), [`PROBLEMS.md`](PROBLEMS.md):
+  selected statement list, research method and remaining questions.
+- [`snapshot/`](snapshot/README.md) and `PlectisSnapshot/`: records of the first
+  public export, tagged `v0.1.1`.
+- [`skills/`](skills/lean-checkpoint-entry/SKILL.md): instructions for writing or
+  reviewing an entry.
 
-An entry in `PalomarCorpus/E<problem>_<NN>/` has the same four files, and its
-proof is `Solutions/PalomarCorpus/E<problem>_<NN>.lean`. Its adapters import a
-generated `Statement.lean`, the Challenge without its theorems, so that the
-constants Comparator walks are the same on both sides.
+The proof source is grouped under `proofs/`, but Lean module names and build
+commands retain their original names. The [folder guide](proofs/README.md)
+explains that distinction for contributors.
 
 <a id="palomar-publication-surface"></a>
 
 ## Palomar registry
 
-[Palomar](https://palomar-registry.org) is a public registry of Lean
-formalisations. It has three separate steps, and they establish different things.
+[Palomar](https://palomar-registry.org) is a public registry of mathematical statements and proofs written in Lean. It has three separate steps, and they establish different things.
 
 1. **Verification** is a machine run. Comparator compares the selected statements
    with the proof, and independent kernels run on the exported proof.
@@ -178,7 +206,7 @@ formalisations. It has three separate steps, and they establish different things
 
 Ten editions from this repository were recorded as registered when
 [last observed on 22 October 2026](https://github.com/wcook04/plectis-erdos/blob/main/docs/verification/palomar_registry_status.json).
-That record gives each edition's commit, configuration and selected declarations.
+That record gives each edition's commit, configuration and selected statements.
 Registration does not carry over to `main` or to another commit, and the `E1041_01`
 intake has not been registered. As Palomar's
 [statement](https://palomar-registry.org/statement) sets out, an entry does not
@@ -188,7 +216,7 @@ certify novelty, relevance or a match with the informal statement.
 <summary>The 143 paper-order entries, by problem</summary>
 
 <!-- palomar-entry-table:begin (generated; do not edit by hand) -->
-The Palomar entries are packed in the order the papers state their theorems; [`PalomarCorpus/README.md`](PalomarCorpus/README.md) lists every entry with its theorem count and title.
+The Palomar entries are packed in the order the papers state their theorems; [`proofs/PalomarCorpus/README.md`](proofs/PalomarCorpus/README.md) lists every entry with its theorem count and title.
 
 | Problem | Entries | Theorems |
 |---|---|---:|
@@ -216,17 +244,20 @@ python3 scripts/build_launch_targets.py
 
 Appending `--plan` lists the targets without Lean or Mathlib. The
 [build guide](scripts/CONVENIENCE_BUILDS.md) covers changed-module builds, reports
-and the release population. Each project in `verification/` has its own pins.
+and which proofs are included in a release. Each project in `verification/` has its own pins.
 
 ## How AI was used
 
 [`METHOD.md`](METHOD.md) describes the method. Models without repository access
 received copies of the relevant sources and returned proposed arguments, and
-agents with tool access formalised them in Lean. Each result is accepted through
-the same Challenge, Solution and axiom audit, whoever proposed the argument.
+agents with tool access formalised them in Lean. The checking procedure compares a proposed proof with its separate statement
+and lists its permitted assumptions, whoever proposed the argument.
 Will Cook is the responsible maintainer.
 
 ## Papers and videos
+
+[Will Cook’s project index](https://wcook04.github.io/) connects this corpus to
+the other projects.
 
 - [`wcook04/plectis-erdos`](https://github.com/wcook04/plectis-erdos) holds the papers, research records and the [credit record](https://github.com/wcook04/plectis-erdos#credit) for prior mathematics, public contributions and reader feedback.
 - The [mathematics website](https://wcook04.github.io/practical-formal-verification/maths/) and [maths map](https://wcook04.github.io/practical-formal-verification/maths/universe.html) connect papers, results and Lean sources.

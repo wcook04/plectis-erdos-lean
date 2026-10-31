@@ -53,10 +53,11 @@ jobs:
           # discovery path here reads: a stray directory, a gap in a problem's numbering, a
           # problem with no entry, or a mixture with retired E<n>/band names fails the run.
           sys.path.insert(0, "scripts")
+          from corpus_paths import corpus_path
           from palomar_entry_names import discover
           found = discover(".")
           for name in found:
-              entry = Path("PalomarCorpus") / name
+              entry = corpus_path(Path("."), "PalomarCorpus") / name
               cfg = json.loads((entry / "comparator.json").read_text())
               challenge = (entry / "Challenge.lean").read_bytes()
               assert len(challenge) <= 102400 and len(challenge.splitlines()) <= 1000, entry

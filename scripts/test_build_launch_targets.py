@@ -372,6 +372,38 @@ class ChangedModuleOwnershipTests(unittest.TestCase):
             'old/Shared/Changed.lean', 'new/Unselected/Child.lean'})
 
 
+    def test_source_root_move_keeps_full_targets_and_focuses_real_changes(self):
+        configuration='defaultTargets=["Library"]\n[[lean_lib]]\nname="Library"\nglobs=["Library.+"]\n'
+        (self.root/'lakefile.toml').write_text(configuration)
+        (self.root/'Library').mkdir()
+        (self.root/'Library/One.lean').write_text('def one := 1\n')
+        self.git('add', '.');self.git('commit', '-qm', 'base source')
+        base=self.git('rev-parse', 'HEAD')
+        (self.root/'proofs').mkdir()
+        (self.root/'Library').rename(self.root/'proofs/Library')
+        (self.root/'lakefile.toml').write_text(configuration.replace('name="Library"','name="Library"\nsrcDir="proofs"'))
+        self.git('add', '.');self.git('commit', '-qm', 'move source root')
+        plan=runner.make_plan(self.root,base,[],False)
+        self.assertEqual(plan['targets'],[{'target':'Library','phase':'launch'}])
+        self.assertEqual(plan['excluded_changed_sources'][0]['reason'],'byte_identical_move_same_module')
+        (self.root/'proofs/Library/One.lean').write_text('def one := 2\n')
+        plan=runner.make_plan(self.root,base,[],False)
+        self.assertEqual(plan['targets'][0],{'target':'Library.One','phase':'focused'})
+        self.assertEqual(plan['targets'][-1],{'target':'Library','phase':'launch'})
+
+    def test_identical_bytes_under_a_different_module_still_get_a_focused_build(self):
+        configuration='defaultTargets=["Library"]\n[[lean_lib]]\nname="Library"\nglobs=["Library.+"]\n'
+        (self.root/'lakefile.toml').write_text(configuration)
+        (self.root/'Library').mkdir()
+        (self.root/'Library/One.lean').write_text('def example := 1\n')
+        self.git('add', '.');self.git('commit', '-qm', 'base source')
+        base=self.git('rev-parse','HEAD')
+        (self.root/'Library/One.lean').rename(self.root/'Library/Two.lean')
+        self.git('add', '.');self.git('commit', '-qm', 'rename module')
+        plan=runner.make_plan(self.root,base,[],False)
+        self.assertEqual(plan['targets'][0],{'target':'Library.Two','phase':'focused'})
+
+
 class SetupBoundaryTests(unittest.TestCase):
     def test_named_and_abbreviated_refs_resolve_to_full_commit(self):
         for ref in ('abc1234', 'topic/change', 'v1.0', 'a'*40):

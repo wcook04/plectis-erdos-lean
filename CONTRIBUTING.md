@@ -7,7 +7,7 @@ This repository holds Lean entries, adapters and release tools. The
 [research repository](https://github.com/wcook04/plectis-erdos) holds the
 mathematical research, papers and public claim registry.
 
-Changes reach `main` through pull requests. Files under `PalomarCorpus/` come from
+Changes reach `main` through pull requests. Files under `proofs/PalomarCorpus/` come from
 a generator outside this repository, so report a problem in one of them as an
 issue.
 
@@ -41,3 +41,7 @@ You can contribute without a clone or Lean installation. Preserve the exact
 statement, source commit, argument, evidence, limitations and requested credit.
 The primary repository records accepted work and its provenance under its
 [credit policy](https://github.com/wcook04/plectis-erdos/blob/main/docs/research-commons/CREDIT_POLICY.md).
+
+For repository structure changes, run `python3 scripts/check_layout.py` and
+`python3 -m unittest discover -s scripts -p 'test_*.py' -v`. Entry IDs and Lean
+module names stay independent of filesystem placement through Lake `srcDir`.
