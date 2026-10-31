@@ -2,13 +2,13 @@
 # SPDX-License-Identifier: Apache-2.0
 cff-version: 1.2.0
 type: software-code
-message: "Cite this repository at the commit or tag you read. Version v0.1.1 is the first published version: the smallest coherent first cut, twenty-one Comparator entries at one commit on one Mathlib pin. The earlier tag v0.1.0 was superseded before publication and is not the citable version. No Erdős problem in this repository is claimed solved, and no entry has been peer reviewed."
+message: "Cite this repository at the commit or tag you read. Tag v0.1.1 is the first published version, with twenty-one Comparator entries at one commit on one Mathlib pin. The earlier tag v0.1.0 was superseded before publication. No entry has had human peer review."
 title: "Plectis Erdős Lean"
 authors:
   - family-names: "Cook"
     given-names: "Will"
 license: Apache-2.0
-abstract: "Lean 4 formalizations of 38 partial results across 8 open Erdős problems (#68, #243, #249, #251, #257, #269, #1041, #1049). Each entry states a theorem, proves it against Mathlib with no sorry on the proof side, prints the axioms it depends on, and records in its metadata what the theorem does not reach. None of the problems is claimed to be solved, and novelty is recorded as unassessed wherever the literature does not settle it."
+abstract: "Lean 4 formalizations from research on eight Erdős problems (#68, #243, #249, #251, #257, #269, #1041, #1049), in 38 theorem families and 143 entries ordered by the papers. Each entry states a theorem, proves it against Mathlib with no sorry on the proof side, prints the axioms it depends on, and records in its metadata what the theorem does not reach. #1041 is answered for the exact Formal Conjectures statement using ani's counterexample, and the other seven problems remain open. Novelty is recorded as unassessed wherever the literature does not settle it."
 keywords:
   - "Lean 4"
   - "formal mathematics"
@@ -58,5 +58,5 @@ references:
     authors:
       - family-names: "Cook"
         given-names: "Will"
-    repository-code: "https://github.com/wcook04/plectis-lean-erdos249-257"
-    notes: "The companion public corpus. It carries the reviewed claim registry, the declaration atlas and the papers behind these entries; this repository is its Comparator and Palomar release projection at one commit."
+    repository-code: "https://github.com/wcook04/plectis-erdos"
+    notes: "The research repository, with the reviewed claim registry, the declaration atlas and the papers behind these entries."
