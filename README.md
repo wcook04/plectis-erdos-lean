@@ -1,168 +1,191 @@
 # Plectis Erdős Lean
 
-**A checking companion for eight Erdős problem programmes**
+Lean 4 proofs from research on eight Erdős problems. Each result keeps its
+statement in one file and its proof in another, and
+[Comparator](https://github.com/leanprover/comparator) compares the two, so a
+reviewer can read the statement without reading the proof.
 
-This repository lets a reviewer inspect a mathematical statement separately
-from the Lean proof offered for it. Comparator checks the proof against that
-separately written statement and a list of permitted axioms.
-The entries cover 38 theorem families alongside a collection ordered by the
-theorems in the papers.
+**Theorem to try first.** For every integer base $b\ge2$ and every infinite set
+$A$ of positive integers with $\sum_{a\in A}1/a<\infty$, the sum
+$\sum_{a\in A}1/(b^a-1)$ is irrational.
 
-**[Inspect one result](#inspect-one-result)** · **[Browse the checking entries](PalomarCorpus/README.md)** · **[Set up a clone](#build)**
+**See it with nothing installed:**
+[Palomar registry entry](https://palomar-registry.org/entry.html?id=PALOMAR-2026-10-21-000018&version=1) ·
+[statement](ExternalVerification257ReciprocalSupport/Challenge.lean) ·
+[proof](Solutions/ExternalVerification257ReciprocalSupport.lean) ·
+[build log for this proof on `main`](https://github.com/wcook04/plectis-erdos-lean/actions/runs/41245506245)
 
-[Watch the maths tour](https://www.youtube.com/watch?v=u4f-fk1o13k) · [Read the papers](https://github.com/wcook04/plectis-erdos#problem-papers) · [Source map](#where-things-live)
+**Build this one proof** with [elan](https://leanprover-community.github.io/get_started.html)
+and Git. The first run needs network access and several gigabytes of disk. It
+downloads about 8,500 compiled Mathlib files, then compiles the 38 modules of
+this repository that the proof uses.
 
-Lean checks the proofs against Mathlib. The accompanying records identify the
-assumptions, source revision and remaining open step. The other seven
-unrestricted targets remain open. The primary
-corpus records [the exact #1041 statement refuted and its remaining limits](https://github.com/wcook04/plectis-erdos#results-and-their-limits).
+```sh
+git clone --filter=blob:none https://github.com/wcook04/plectis-erdos-lean.git
+cd plectis-erdos-lean
+lake exe cache get
+lake build ExternalVerification257ReciprocalSupport.AxiomAudit
+```
 
-Problems covered: #68, #243, #249, #251, #257, #269, #1041, #1049.
+The build prints that the theorem depends on axioms `propext`,
+`Classical.choice` and `Quot.sound`, then `Build completed successfully`.
 
-The [primary research repository](https://github.com/wcook04/plectis-erdos)
-owns the current papers, claim registry and source map. The
-[mathematics reading room](https://wcook04.github.io/practical-formal-verification/maths/) and
-[interactive maths map](https://wcook04.github.io/practical-formal-verification/maths/universe.html)
-connect papers, results and formal sources. Checking entries here are bound to
-this repository commit; the pinned release snapshots below retain their own
-commits and toolchains.
+**Next:** [inspect this result](#inspect-one-result) ·
+[what Lean and Comparator leave out](#what-lean-and-comparator-establish) ·
+[arriving from Formal Conjectures](#arriving-from-formal-conjectures) ·
+[the eight problems](#the-eight-problems) ·
+[folder map](#where-things-live)
 
-The website is agent-readable: its [navigation guide](https://wcook04.github.io/practical-formal-verification/llms.txt)
-and [maths map manifest](https://wcook04.github.io/practical-formal-verification/lean/experience/manifest.json)
-lead to graph data and source-linked research records without running the visual map.
-
-Will Cook maintains this AI-assisted development. It builds on
-[Lean](https://lean-lang.org/) and
-[Mathlib](https://github.com/leanprover-community/mathlib4), with problems,
-references and discussion from [erdosproblems.com](https://www.erdosproblems.com/).
-Comparator compares selected formal statements; Palomar records verification,
-review and registration separately. See the primary corpus's
-[credit and source records](https://github.com/wcook04/plectis-erdos#credit)
-for prior mathematics, public contributions and reader feedback.
+Will Cook directs this work and is not a mathematician. AI agents did most of
+the research and drafting, and no human mathematical peer review is recorded for
+any entry. Erdős problem #1041 is answered for the exact Formal Conjectures statement by a
+counterexample due to ani, and the other seven problems remain open. The other
+results here are restricted results, obstructions and reformulations, set out
+per problem in [the table below](#the-eight-problems).
 
 ## Inspect one result
 
-The [#257 reciprocal-summability entry](ExternalVerification257ReciprocalSupport/)
-proves that $\sum_{a\in A}1/(b^a-1)$ is irrational for every integer base $b\ge2$
-and infinite set $A$ of positive integers with $\sum_{a\in A}1/a<\infty$.
-The finite-sum condition concerns the reciprocals of the exponents.
-Start with its [statement](ExternalVerification257ReciprocalSupport/Challenge.lean),
-then compare the [solution](Solutions/ExternalVerification257ReciprocalSupport.lean)
-and [axiom audit](ExternalVerification257ReciprocalSupport/AxiomAudit.lean).
-The [metadata](ExternalVerification257ReciprocalSupport/formalization.yaml)
-records the exact assumptions, source and attribution.
+The theorem above has one folder and one proof file.
 
-The `sorry` in the Challenge is a deliberate placeholder for the statement to
-be checked. The Solution must supply the proof without that placeholder.
-Reading these files needs no Lean installation; [Build](#build) explains how to
-compile the sources. Compilation, Comparator replay and registry acceptance
-are separate outcomes; the [records below](#palomar-publication-surface)
-distinguish them.
+| To see | Open |
+|---|---|
+| The exact statement | [`Challenge.lean`](ExternalVerification257ReciprocalSupport/Challenge.lean). Its `sorry` is deliberate, because this file only states the theorem. |
+| The proof | [`Solutions/ExternalVerification257ReciprocalSupport.lean`](Solutions/ExternalVerification257ReciprocalSupport.lean), which imports [the source proof](Erdos257PeriodNoncollapse/AllBaseReciprocalSupportIrrationality.lean) and contains no `sorry`. |
+| The axioms | [`AxiomAudit.lean`](ExternalVerification257ReciprocalSupport/AxiomAudit.lean), which prints them when built. |
+| What Comparator was told to compare | [`comparator.json`](ExternalVerification257ReciprocalSupport/comparator.json), which names one theorem, three permitted axioms and the NanoDa kernel. |
+| Scope, sources and attribution | [`formalization.yaml`](ExternalVerification257ReciprocalSupport/formalization.yaml). |
+
+The exponent condition concerns the reciprocals of the exponents, and supports
+with a divergent reciprocal sum are outside the theorem, so #257 itself remains
+open. Erdős printed the pairwise-coprime case in 1968 and stated, without
+printing the argument, that coprimality could be dropped. The proof here was
+written independently, with no priority claim.
+
+Three outside records exist for this theorem, and each is bound to one version
+of it.
+
+| Record | What it states | What it leaves out |
+|---|---|---|
+| [Palomar verification run](https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/35192583926) | Comparator and the Lean and NanoDa kernels accepted the proof at commit [`c39cea6a`](https://github.com/wcook04/plectis-erdos-lean/tree/c39cea6a976747d132a848d26f110b9c608d5a45) under Lean 4.29.0. | The current `main`, which uses Lean 4.30.0. |
+| [Palomar review and registration](https://palomar-registry.org/entry.html?id=PALOMAR-2026-10-21-000018&version=1) | A language model reviewed the entry, found no blocking problem and left one comment: the informal proof account omits the step where infinitude gives a strict minimum. The entry was then registered on 21 October 2026. | Human review. Palomar has no human editorial step. |
+| [Formal Conjectures #6529](https://github.com/google-deepmind/formal-conjectures/pull/6529) | Two reviewers approved earlier revisions, and the request was merged on 9 October 2026, adding a subtype version of the statement. | Every other claim in this repository. |
+
+## What Lean and Comparator establish
+
+Lean's kernel accepts a proof of the exact formal statement, on the axioms the
+audit prints, against the pinned Mathlib.
+
+Comparator goes further for selected declarations. It compiles the statement
+apart from the proof, confirms the proof proves that same statement, and refuses
+axioms outside the list in `comparator.json`. With NanoDa enabled, a second
+kernel runs on the exported proof.
+
+Neither tool establishes that a result is new or important, or that the formal
+statement says what its English description says. That last judgement comes
+from reading `Challenge.lean`, and a Challenge that states less than the
+surrounding prose would still pass. Where the literature does not settle
+novelty, `formalization.yaml` records it as unassessed.
+
+Comparator also covers only what a run selected. `comparator.json` lists the
+selected theorems, and a result for one commit does not carry over to another.
+`lake build` does not run Comparator. Comparator confines the proof with
+[landrun](https://github.com/zouuup/landrun), which needs Linux, and
+[`palomar-replay.yml`](.github/workflows/palomar-replay.yml) lists the steps that
+build and run it. That workflow is a diagnostic, because statement and proof
+share a workspace. A run of
+[`fc-trusted-comparator-preflight.yml`](.github/workflows/fc-trusted-comparator-preflight.yml)
+prepares and protects the statement before the proof runs.
+
+## Arriving from Formal Conjectures
+
+Proof links in Formal Conjectures requests point to commits pinned in this
+repository, usually inside [`verification/`](verification/README.md). Each folder
+there is a separate Lake project with its own toolchain and manifest, and the
+main build does not import it.
+
+| Folder | What it holds |
+|---|---|
+| `verification/FC*Current/` | Adapters proving the exact Formal Conjectures declaration in Lean 4.33.1 with the Mathlib commit Formal Conjectures pinned. |
+| `verification/FC257ReciprocalSupport/` and three others without `Current` | Frozen copies of an original proof under Lean 4.29.1. |
+| `source-binding.json` in each folder | The original commit, and a digest for every copied file. |
+
+As of 31 October 2026, five contributions have been merged into Formal
+Conjectures and 14 requests are open. The
+[Formal Conjectures crosswalk](https://github.com/wcook04/plectis-erdos/blob/main/docs/verification/FORMAL_CONJECTURES_CROSSWALK.md)
+lists each request with its reviews, and sets the 19 formal declarations beside
+the runs that compared them. Those runs are hosted by this project. A merge
+accepts the scoped upstream change, and an approval on an open request applies
+to that request at that commit.
+
+## The eight problems
+
+Each entry folder holds the full statement in `formalization.yaml`, and
+[`PROBLEMS.md`](PROBLEMS.md) gives the longer account of each problem.
+
+| Problem | Selected result here | Entry | Original problem |
+|---|---|---|---|
+| [#68](https://www.erdosproblems.com/68) | An explicit cubic lower bound on the support radius of a finite system of factorial channels, under stated divisibility hypotheses. | [`ChannelRadius`](ExternalVerification68ChannelRadius/) | Open |
+| [#243](https://www.erdosproblems.com/243) | Rigidity of the integer orbit when its centred error has a one-sided bound and normalised vanishing, both assumed: the orbit eventually follows the Sylvester recurrence. | [`BoundedNegativePartRigidity`](ExternalVerification243BoundedNegativePartRigidity/) | Open |
+| [#249](https://www.erdosproblems.com/249) | Irrationality of $\sum_n(\varphi(n)\bmod m)/2^n$ for every $m\ge3$. The series with $\varphi(n)$ itself is not covered. | [`ResidueClassTotientSeries`](ExternalVerification249ResidueClassTotientSeries/) | Open |
+| [#251](https://www.erdosproblems.com/251) | Any rational value of the prime-gap series has denominator at least $2^{589}$, decided in the Lean kernel. Irrationality is not proved. | [`KernelDenominatorFloor`](ExternalVerification251KernelDenominatorFloor/) | Open |
+| [#257](https://www.erdosproblems.com/257) | The theorem at the top of this page. | [`ReciprocalSupport`](ExternalVerification257ReciprocalSupport/) | Open |
+| [#269](https://www.erdosproblems.com/269) | For the primes 2, 3 and 5, an equivalence between a local window escape and irrationality of the running-LCM value. Neither side is proved. | [`WindowEscapeEquivalence`](ExternalVerification269WindowEscapeEquivalence/) | Open |
+| [#1041](https://www.erdosproblems.com/1041) | The exact Formal Conjectures path-length statement is refuted using [ani's degree-seven construction](https://www.erdosproblems.com/forum/thread/1041#post-8861), and two-root distance bounds and straight-line obstructions are proved separately. | [`FC1041HausdorffCounterexample`](verification/FC1041HausdorffCounterexample/) and [`CriticalGeometry`](ExternalVerification1041CriticalGeometry/) | Answered for that statement. Independent human review of its match with the 1958 wording is not recorded. |
+| [#1049](https://www.erdosproblems.com/1049) | Irrationality of $\sum_{m\ge1}1/((a/b)^m-1)$ for coprime integers $a>b\ge1$ in an explicit region, which contains $31/4$ and its positive powers and excludes $3/2$. | [`PalomarCorpus/E1049_01`](PalomarCorpus/E1049_01/) and [`RationalBaseContour`](ExternalVerification1049RationalBaseContour/) | Open |
+
+The entry names above omit the `ExternalVerification<problem>` prefix of their
+folders. The 38 theorem families are listed in
+[`docs/theorem-families.md`](docs/theorem-families.md).
 
 ## Where things live
 
-| Location | Role |
+The root holds more than 370 folders because Lake finds each library by its
+top-level name, and Palomar and Comparator records point at those paths. They
+fall into a few groups.
+
+| Location | Contents |
 |---|---|
-| [PalomarCorpus/](PalomarCorpus/README.md) | Paper-order challenges, configurations and selected theorem lists. |
-| [Solutions/](Solutions/) | Proof-bearing solutions and adapters for those challenges. |
-| [Erdos249257/](Erdos249257/) | Supporting Lean mathematics imported by the checking entries. |
-| [verification/](verification/) | Receiving-environment checks with their own pinned projects. |
-| [snapshot/](snapshot/README.md) | Snapshot provenance, public API and explicit non-claims. |
-| [scripts/](scripts/) | Build planning, axiom audits and release validation. |
+| `ExternalVerification<problem><Name>/` | 365 folders, each with `Challenge.lean`, `AxiomAudit.lean`, `comparator.json` and `formalization.yaml`. [38 of them](docs/theorem-families.md) are the theorem families. The `PaperStatements*` and `PaperStructures*` folders restate theorems from the papers against Mathlib alone. |
+| [`PalomarCorpus/`](PalomarCorpus/README.md) | 143 entries, in the order the papers state their theorems. |
+| [`Solutions/`](Solutions/) | The proof for each entry, under a separate module prefix so that Palomar's protected Challenge directory cannot shadow it. |
+| [`Erdos249257/`](Erdos249257/), [`Erdos257PeriodNoncollapse/`](Erdos257PeriodNoncollapse/), [`ErdosProblems/`](ErdosProblems/) | The Lean mathematics that the Solutions import. |
+| [`verification/`](verification/README.md) | Separate projects for [Formal Conjectures](#arriving-from-formal-conjectures). |
+| [`scripts/`](scripts/CONVENIENCE_BUILDS.md) | Build runner, axiom audit and release tools, with the build guide. |
+| [`docs/`](docs/theorem-families.md), [`METHOD.md`](METHOD.md), [`PROBLEMS.md`](PROBLEMS.md) | The family list, how AI models were used, and each problem's unresolved step. |
+| [`snapshot/`](snapshot/README.md), `PlectisSnapshot/` | Records of the first public export, tag `v0.1.1`. |
+| [`skills/`](skills/lean-checkpoint-entry/SKILL.md) | The procedure for writing or reviewing an entry. |
 
-The [entry guide](#reading-an-entry) explains how Challenge, Solution and audit
-fit together. The root [toolchain](lean-toolchain) and
-[dependency manifest](lake-manifest.json) pin the default environment;
-individual verification projects and historical editions can use different pins.
+An entry in `PalomarCorpus/E<problem>_<NN>/` has the same four files, and its
+proof is `Solutions/PalomarCorpus/E<problem>_<NN>.lean`. Its adapters import a
+generated `Statement.lean`, the Challenge without its theorems, so that the
+constants Comparator walks are the same on both sides.
 
-## Videos
+<a id="palomar-publication-surface"></a>
 
-| Watch | Follow the explanation into source |
-|---|---|
-| [The maths map](https://www.youtube.com/watch?v=u4f-fk1o13k): how the checked statements, longer research records and papers fit together. | The [primary paper list](https://github.com/wcook04/plectis-erdos#problem-papers) and this companion's [paper-order checking entries](PalomarCorpus/README.md). |
-| [Erdős #257 explanation](https://www.youtube.com/watch?v=uWCqtRkJ8P0): a proof of the reciprocal-summability case, starting with examples. The general problem remains open. | The [introductory paper](https://github.com/wcook04/plectis-erdos/blob/main/paper/257/erdos257-expository-sums-never-fractions.pdf), then [one statement, solution and axiom audit](#inspect-one-result). |
-| [Plectis introduction](https://www.youtube.com/watch?v=MBmVMMogXTA): the purpose of the maths and software projects. | The [project website](https://wcook04.github.io/practical-formal-verification/) for the other repositories and films. |
+## Palomar registry
 
-The films show the wider research environment. This companion supplies selected
-formal checks; the [primary corpus](https://github.com/wcook04/plectis-erdos)
-contains the papers and research records. A checked Lean proof does not by
-itself check the argument presented in a video.
+[Palomar](https://palomar-registry.org) is a public registry of Lean
+formalisations. It has three separate steps, and they establish different things.
 
-## Formal Conjectures review
+1. **Verification** is a machine run. Comparator compares the selected statements
+   with the proof, and independent kernels run on the exported proof.
+2. **Editorial review** is automatic. A language model judges the statement
+   against the informal account and Palomar's published standard, and
+   [Palomar states](https://palomar-registry.org/about) that this review "does not
+   accept, approve, or endorse a result".
+3. **Registration** follows when the review finds no blocking problem and the
+   submitter chooses to register. The entry is then bound to one commit.
+
+Ten editions from this repository were recorded as registered when
+[last observed on 22 October 2026](https://github.com/wcook04/plectis-erdos/blob/main/docs/verification/palomar_registry_status.json).
+That record gives each edition's commit, configuration and selected declarations.
+Registration does not carry over to `main` or to another commit, and the `E1041_01`
+intake has not been registered. As Palomar's
+[statement](https://palomar-registry.org/statement) sets out, an entry does not
+certify novelty, relevance or a match with the informal statement.
 
 <details>
-<summary>Review status, adapter editions and source pins</summary>
-
-As observed on 12 October 2026, [FC PR #6579](https://github.com/google-deepmind/formal-conjectures/pull/6579)
-is open. Bo Cowgill [approved head `a6a2e0e1`](https://github.com/google-deepmind/formal-conjectures/pull/6579#pullrequestreview-5493193130)
-for the rational dyadic totient-observable statement, including its positive indexing
-and `k = 1` case. The review relies on the author's [receiving-identity run](https://github.com/wcook04/plectis-erdos-lean/actions/runs/38173617731),
-which checks that actual FC declaration and [proof revision `04e14917`](https://github.com/wcook04/plectis-erdos-lean/tree/04e14917b7c9296feabf6674f8e596a2c3ec9082/verification/FC249RationalObservableCurrent)
-in Lean 4.33.1 with FC's Mathlib pin. The run records matching statements and
-dependencies, Lean and NanoDa acceptance with only `propext`, `Classical.choice`
-and `Quot.sound` permitted, and successful positive and mismatch controls.
-The reviewer did not independently rerun this revision.
-
-The [contribution record](https://github.com/wcook04/plectis-erdos/blob/main/docs/verification/FORMAL_CONJECTURES_CROSSWALK.md)
-lists submissions and reviewed revisions. The [earlier independent Lean 4.29.1 review](https://github.com/google-deepmind/formal-conjectures/pull/6579#pullrequestreview-5435222238)
-and [failed cross-version comparison](https://github.com/google-deepmind/formal-conjectures/pull/6579#issuecomment-6112373414)
-remain evidence for their historical heads. The latest approval applies to the
-named statement and revision. The original unreduced-totient question remains open.
-
-As observed on 13 October, all fourteen affected FC declarations have successful
-receiving-identity checks at their exact delivered heads. The
-[canonical evidence matrix](https://github.com/wcook04/plectis-erdos/blob/460e09248e2a22479ea175c8f93e47f363bd6a68/docs/verification/FORMAL_CONJECTURES_CROSSWALK.md#contribution-activity)
-links each actual-FC export, matching statement and dependencies, default Lean
-and NanoDa acceptance, three-core-axiom budget, and positive/mismatch controls.
-These are author-hosted checks in Lean 4.33.1 with FC's Mathlib pin; they do not
-establish independent human review or an upstream merge.
-
-[Source PR37](https://github.com/wcook04/plectis-erdos-lean/pull/37) contains the eleven
-receiving-environment repairs at `d1fe386f`; the three earlier successful checks
-retain their original proof pins. The separate
-[ten-project source build](https://github.com/wcook04/plectis-erdos-lean/actions/runs/38341643841)
-passes for all fourteen units. [FC PR7260](https://github.com/google-deepmind/formal-conjectures/pull/7260)
-updates five already accepted proof links without changing their statements.
-
-On 13 October, Bo Cowgill [approved the five repaired links at `49e83c34`](https://github.com/google-deepmind/formal-conjectures/pull/7260#pullrequestreview-5507189340).
-He checked that the adapters preserve the FC statements and checked the author-hosted
-receiving logs against proof source `d1fe386f`. He did not independently rerun
-the external proofs. PR7260 remains open with review required; this maintenance
-adds no mathematical result.
-
-Bo also [approved the fixed-base Hankel statement at `d194bd96`](https://github.com/google-deepmind/formal-conjectures/pull/6780#pullrequestreview-5507342139).
-The receiving check resolves his earlier workspace concern by exporting the actual
-FC challenge before candidate compilation and checking the consumed export.
-He relied on the author-hosted receipt without independently rerunning the proof.
-PR6780 remains open with review required. The statement covers each fixed
-`0 < q < 1`; it gives no uniformity as q approaches one and no solution of #1049.
-
-The previously recorded Palomar and Lean 4.29.1 evidence below remains bound to
-its own source and environment.
-
-</details>
-
-## Palomar publication surface
-
-<details>
-<summary>Replay entries, registry history and claim limits</summary>
-
-Palomar (https://palomar-registry.org) checks Lean proofs with Comparator and independent
-kernel replay before editorial review. `PalomarCorpus/` is the live paper-order checking
-inventory. At this `main` commit it contains 143 entries and 1,889 selected theorem names,
-as counted below. Each entry has its own Comparator configuration; its Challenge states
-the selected theorems against Mathlib, and its Solution supplies the proofs.
-
-The finite release is a separate selection of eight configurations and 95 theorem names
-at three pinned source commits. `E257_01` uses `b85ed30805188eb4390a686b111294b24363418e`;
-six entries (`E249_29`, `E243_01`, `E251_01`, `E269_02`, `E1049_01`, `E1041_01`) use
-`6bc4913c4ca42ac48829ad2d89985f8516361cb5` in [draft release PR #5](https://github.com/wcook04/plectis-erdos-lean/pull/5);
-and `E68_05` uses `dc779af057dbab4224ac4f0cc101384f340fabc2`, whose
-[caller-side preflight passed](https://github.com/wcook04/plectis-erdos-lean/actions/runs/36019608937).
-Caller-side full preflights passed for those eight exact configurations and commits.
-Those passes do not certify the whole live inventory. Current `main` uses Lean 4.30.0;
-the pinned release snapshots use Lean 4.35.0-rc2. No entry claims to solve an
-unrestricted parent problem.
+<summary>The 143 paper-order entries, by problem</summary>
 
 <!-- palomar-entry-table:begin (generated; do not edit by hand) -->
 The Palomar entries are packed in the order the papers state their theorems; [`PalomarCorpus/README.md`](PalomarCorpus/README.md) lists every entry with its theorem count and title.
@@ -178,254 +201,49 @@ The Palomar entries are packed in the order the papers state their theorems; [`P
 | #1041 | `E1041_01` to `E1041_08` | 107 |
 | #1049 | `E1049_01` to `E1049_10` | 117 |
 | Total | 143 entries | 1889 |
-
-As observed on 9 October 2026 at 15:00 UTC, `E257_01` at commit `b85ed30805188eb4390a686b111294b24363418e` is registered as [PALOMAR-2026-09-25-000009 v1](https://palomar-registry.org/entry.html?id=PALOMAR-2026-09-25-000009&version=1). That edition passed [caller-side preflight](https://github.com/wcook04/plectis-erdos-lean/actions/runs/36007327582) and [Palomar's mechanical verification](https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/36009433226). Its registration is bound to that source edition and selected interface.
-
-Three further registration requests were accepted on 9 October: `ExternalVerification269ThreePrimeStructure` and `ExternalVerification257ReciprocalSupport`, both at commit `c39cea6a976747d132a848d26f110b9c608d5a45`, and the former problem-level `E257` edition at commit `52f29ad173b04e3bac941b3663f2b9aebe5de0bb`. Their requests were accepted after delivered reviews; no published registry editions are yet confirmed for them. An earlier attempt at the same `E257` source commit ended in `verification-error` on 14 September after a renderer failure ([PalomarSubmission #134](https://github.com/PalomarRegistry/PalomarSubmission/issues/134)); that failed attempt is distinct from the later reviewed submission.
-
-As observed by 9 October at 15:44 UTC, all three publication attempts have failed during rendering of their historical sources. Public runs for [three-prime structure](https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/37948913697) and [reciprocal support](https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/37949424576) refused their Lean 4.29.0 toolchain; the [former problem-level E257 edition](https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/37953891799) was refused for Lean 4.30.0. The current renderer requires at least Lean 4.35.0-rc2. These are publication blockers: accepted requests and delivered reviews do not become published registrations. At the earlier authenticated status check at 15:33 UTC, the three-prime request was paused for operator attention; the former E257 request had consent recorded with no registration-start event yet. The later E257 render independently establishes its failure. The supported recovery for a paused registration is operator attention and an authorized retry after the cause is fixed; repeating submitter consent cannot resume it. Changing the source would require a separate freshly verified edition.
-
-The primary research repository's [dated status record](https://github.com/wcook04/plectis-erdos/blob/main/docs/verification/palomar_registry_status.json) binds each observation to its exact source, Comparator configuration and selected declarations; its [qualification guide](https://github.com/wcook04/plectis-erdos/blob/main/docs/verification/PALOMAR_QUALIFICATION.md) separates these editions from repository-local readiness. Pending requests are not published registrations, overlapping selections do not count as new mathematics, and historical outcomes do not transfer to current main or another source revision.
 <!-- palomar-entry-table:end -->
-
-The legacy workflow [`palomar-replay.yml`](.github/workflows/palomar-replay.yml) supplies
-shared-workspace diagnostics. Its green results and historical Lean/NanoDa acceptance
-lines do not certify independently protected Challenge or dependency inputs. Independent
-verification uses the pinned official job in
-[`fc-trusted-comparator-preflight.yml`](.github/workflows/fc-trusted-comparator-preflight.yml),
-which prepares and protects those inputs before candidate code runs.
-`scripts/check_axiom_budget.py --run-palomar` checks the printed axiom budget for its
-selected source; it does not establish Comparator equivalence or NanoDa acceptance.
-Palomar verification and registration remain separate outcomes. The former problem-level
-E257 submission and the current `E257_01` outcome
-are distinguished below. The `ExternalVerification*` directories are regression and
-development entries, separate from `PalomarCorpus/`.
 
 </details>
 
-## Start here
+## Larger builds
 
-Lead results: irrationality for every reciprocal-summable support and every integer base (Erdős #257); kernel-decided denominator floor for the prime-gap dyadic series (Erdős #251); irrationality of fixed-resolution observables of the totient word (Erdős #249); the cofinal local-window escape is equivalent to irrationality of the three-prime running-LCM value (Erdős #269); explicit cubic radius floor for simultaneous factorial channel cancellation (Erdős #68); the rational-base contour of Zudilin's (14,12,14;27) forms (Erdős #1049); bounded-negative-part rigidity for reciprocal-tail dynamics (Erdős #243); global two-root critical proximity and exact straight-line obstructions (Erdős #1041).
-
-The per-problem sections below introduce selected `ExternalVerification*` family checks.
-The table above counts the current Palomar corpus; a registry submission names one
-configuration and one exact source commit.
-
-### Erdős #257: irrationality for every reciprocal-summable support and every integer base
-
-For every integer base b at least two and every infinite set A of exponents whose reciprocal sum converges, the series with terms 1/(b^a - 1) supported on A is irrational. One declaration is compared and it carries exactly that statement. The support is an arbitrary infinite set of natural numbers, the exponent zero is normalised to zero by real division, and no pairwise-coprimality, periodicity, density, or powerful-support hypothesis appears. The whole reciprocal-summable support regime is settled uniformly in the base, so every support carrying a counterexample to universal Erdős Problem 257 has divergent reciprocal sum. The proof produces close returns of shifted binary support atoms from an LCM-prefix orbit-mean argument, transfers those returns to every radix through a pointwise inequality bounding the base-b atom displacement by twice the binary one, and closes with an exact radix integer orbit. Erdős (1968) proved the pairwise-coprime reciprocal-summable case for every integer base t at least two and stated that pairwise coprimality is superfluous by a more complicated argument he did not print. This development proves that stated extension, in every integer base, by an independent argument. No theorem-priority claim is made and no identification with Erdős's omitted argument is asserted. Reciprocal-divergent supports are untouched, so universal Erdős Problem 257 remains open.
-
-Boundary. The compared result states that every infinite reciprocal-summable support A gives an irrational reciprocal-power subseries at every integer base at least two. The zero exponent is normalized to zero by real division. No pairwise-coprimality, periodicity, density, or powerful-support hypothesis is assumed. Challenge.lean contains the deliberate Comparator specification sorry; the proof-bearing Solution.lean and its imported source theorem are sorry-free. The atom comparison and close-return producer are subordinate proof mechanisms rather than extra results.
-
-Source: [`ExternalVerification257ReciprocalSupport/`](ExternalVerification257ReciprocalSupport/), configuration `ExternalVerification257ReciprocalSupport/comparator.json`. One declaration is compared in that family entry; the live paper-order entry [`PalomarCorpus/E257_51`](PalomarCorpus/E257_51/) selects it with thirteen other names.
-
-### Erdős #251: kernel-decided denominator floor for the prime-gap dyadic series
-
-Every rational a/b equal to the prime-gap series of Erdős Problem 251, the dyadic series whose term at index n is (p_(n+1) - p_n)/2^(n+1), has denominator b at least 2^589, a number exceeding 10^177. The same floor holds for the zero-based prime series with term p_n/2^(n+1), whose value is 2 more than the gap series. Both floors are decided inside the Lean kernel. certCheck c u v u' v' X packages six integer conditions on a trial-division sieve run over every m < X: the count of primes below X equals c, v and v' are positive, the Farey determinant u'v = uv' + 1 holds, and two inequalities place the prime series strictly inside the interval from u/v to u'/v'. den_bound_of_certCheck converts a passing certificate at any truncation index c at least 9 into the bound v + v' <= b for every rational a/b equal to the prime series, with the omitted tail controlled by 5000(c+1)^4/2^(c+1). cert_10000 discharges that certificate at c = 1229 and X = 10000 on four explicit constants of 177 and 178 digits by kernel evaluation, and the sum v + v' of the two recorded denominators is at least 2^589. A lower bound on the denominator of a rational representation is compatible with rationality of either series. The package supplies no irrationality theorem and Erdős Problem 251 is not decided here.
-
-Boundary. Four source-backed declarations expose a kernel-decided denominator floor of 2^589 for the Erdős #251 prime-gap series and for the zero-based prime series, together with the trial-division certificate that produces it. No irrationality theorem is claimed.
-
-Source: [`ExternalVerification251KernelDenominatorFloor/`](ExternalVerification251KernelDenominatorFloor/), configuration `ExternalVerification251KernelDenominatorFloor/comparator.json`.
-
-### Erdős #249: irrationality of fixed-resolution observables of the totient word
-
-Fix a natural number m at least 2, an integer-valued letter map f on residues with f 0 = 0, and a residue r below m with gcd(r+1, m) = 1 and f r nonzero. The sum over all natural numbers n of f(φ(n) mod m) / 2^n is irrational. Six declarations are compared. At the dyadic resolutions m = 2^k with k at least 1 the coprimality condition is automatic at every even residue, so every integer-valued letter map vanishing at the zero residue and nonzero at some even residue below 2^k has irrational binary value. Specialising the letter map to the least nonnegative residue gives the headline consequence: for every m at least 3 the series A_m, the sum over all natural numbers n of (φ(n) mod m) / 2^n, is irrational. Three further declarations expose the machinery. The isolated pulse separation is the Diophantine core. For an integer sequence a whose terms are bounded in absolute value by C, a letter t at position N+1+L with t nonzero and a(N+1+i) = 0 for every i at most 2L other than i = L, and a positive integer q with 2qC < 2^L, every integer k satisfies q(|t| - C/2^L)/2^(N+1+L) ≤ |qV - k|, where V is the sum over all natural numbers n of a(n)/2^n. The packaged consumer of that separation proves that a bounded integer sequence carrying, for every L, a nonzero letter flanked by L zeros on each side has irrational binary value. The two-sided prime isolation supplies those pulses. For m at least 2 and r with gcd(r+1, m) = 1 and any bounds L and N there is a prime p exceeding both N and L+1 with φ(p) congruent to r modulo m and with m dividing φ(p-j) and φ(p+j) for every j with 0 < j ≤ L. Auxiliary primes congruent to 1 modulo m come from Dirichlet's theorem on primes in arithmetic progressions, and the Chinese remainder theorem glues them into a single congruence class for p. The separation mechanism is the Lambert-series argument of P. Erdős, On arithmetical properties of Lambert series, Journal of the Indian Mathematical Society 12 (1948); the declarations compared here apply it to the reduced sequences φ(n) mod m and no exact prior statement of them has been located. Every compared declaration is a statement about a reduced sequence φ(n) mod m or about an abstract bounded integer sequence. The value of the series in Erdős Problem 249, the sum over n at least 1 of φ(n)/2^n, is the subject of no declaration here, and that problem remains open. The converse half of the rational-relation classification for rational-valued letter maps and the bit-plane independence corollary are absent from this package. The rationality of A_1 and A_2 has no Lean witness in this development, so the hypothesis m at least 3 is stated without a sharpness claim.
-
-Boundary. Six exact source-backed declarations. Challenge.lean contains six intentional Comparator specification sorries.
-
-Source: [`ExternalVerification249ResidueClassTotientSeries/`](ExternalVerification249ResidueClassTotientSeries/), configuration `ExternalVerification249ResidueClassTotientSeries/comparator.json`.
-
-### Erdős #269: the cofinal local-window escape is equivalent to irrationality of the three-prime running-LCM value
-
-The actual cofinal local-window escape for the {2,3,5} dyadic shell orbit is equivalent to irrationality of the running-LCM value, with no hypotheses. Write H(x) = 2^(log 2 x) 3^(log 3 x) 5^(log 5 x) for the three-prime running-LCM height, let the dyadic shell at index a be the set of exponent triples (i,j,k) with 2^a <= 2^i 3^j 5^k < 2^(a+1), let the shell mass be the sum of 1/H(2^i 3^j 5^k) over that shell, and let S(a) be the sum of the shell masses from index a onward. The actual radix word b(a) is 2 times 3 or 1 according to whether a pure 3-power lies strictly inside the dyadic block, times 5 or 1 according to whether a pure 5-power does; the actual ordered digit m(a) is the shell cardinality corrected by the two threshold counts with the suffix coefficients 10 and 4 when the 3-jump precedes the 5-jump and 2 and 12 in the reverse order. The escape proposition at a short bound sb asserts that for every positive B coprime to 30 and every starting index there are lo at least that index and a positive window length len for which the window base is nonzero and the least positive residue of -B times the window forcing modulo the absolute window base exceeds sb B (lo+len); the actual escape is this proposition at the radix word b, the digit m, and the short bound B times 90 (n+1)^2. Nine declarations are selected for comparison. The complete octic escape proposition also gives the equivalence against S(0) for every cap G dominating the printed long cap for positive B and satisfying G(B,a)/8^a tending to zero for each positive B. It proves the decay and domination clauses for the long and short caps, their equivalences, and automatic escape at the zero cap. The actual escape holds if and only if S(0) is irrational, and if and only if S(1) is irrational. Irrationality of S(1) implies the escape at every short bound sb admitting a function c with sb B n at most c B (n+1)^2, which covers the actual short bound and every rescaling and sharpening of it inside the quadratic family. A rational value S(1) = p/q with q positive yields a positive B coprime to 30, a finite onset a0, and an integer sequence d satisfying d(n+1) = b(n) d(n) - B m(n), 0 < d(n), and |d(n)| at most B times 90 (n+1)^2 for every n at least a0. The normalized state X(a) = (H(2^a)/2) S(a) satisfies the exact window identity X(lo+len) = W X(lo) - F for the integer window base W and window forcing F of b and m. If that residue at (lo, len) is at most K and K is at least B times 90 (lo+len+1)^2, then B X(lo) lies within K / 2^len of an integer, for every K meeting the width condition and with no growth condition on K. For all c and lo there is a positive len with c (lo+len+1)^2 < 2^len. The equivalence establishes that the escape proposition is exactly as strong as the target, so proving it is proving Erdős #269. It proves neither side. Erdős #269 remains open, and nothing here bounds, computes, or decides the irrationality of S(0).
-
-Boundary. Nine selected theorems expose the headline equivalence against S(0), the equivalence against S(1), the forward implication from irrationality to the actual escape, the quadratic-family form of that implication, the rationality-to-carry bridge, the real window identity for the genuine normalized state, the residue pinning inequality at an arbitrary admissible short bound, the elementary exponential-over-quadratic window length, and the complete octic escape proposition with dominating sub-octic caps, the named long and short caps, and zero-cap escape. The zero-cap clause proves escape alone; it gives no irrationality conclusion. Challenge.lean contains nine deliberate specification sorries; the proof-bearing Solution imports the checked source.
-
-Source: [`ExternalVerification269WindowEscapeEquivalence/`](ExternalVerification269WindowEscapeEquivalence/), configuration `ExternalVerification269WindowEscapeEquivalence/comparator.json`.
-
-### Erdős #68: explicit cubic radius floor for simultaneous factorial channel cancellation
-
-A channel is an index d at least 2 carrying the modulus d! - 1, obtained by reweighting each factorial term of the series so that the powers of d! divide out; the channel test at d compares that reweighted integer with the factorial moment modulo d! - 1. Six declarations are compared. The sharpest is explicit: for every t at least 2^32 and all natural numbers M and R with M positive, M divisible by the least common multiple of d! - 1 over 2 ≤ d ≤ 2t^2, and M < (R+1)! - 1, the support radius satisfies 3t^3 < 2(R+1). The same hypotheses imposed from t = 4096 onwards give t^3 < 8(R+1), which is the explicit bound available on 4096 ≤ t < 2^32. Imposing each hypothesis set at every large t gives the sequence forms: no radius function can eventually satisfy 2(R(t)+1) ≤ 3t^3, no radius function can eventually satisfy 8(R(t)+1) ≤ t^3, and R(t)+1 is not o(t^3). The sixth declaration evaluates the finite logarithmic constraint that produces these bounds at the value R+1 = (16/9)t^3 and proves that for every t at least 4 the constraint is satisfied there. That declaration bounds no support radius. It establishes that the logarithmic constraint alone does not force a lower bound at the constant 16/9, while the constant proved on this subsequence is 3/2. The subcubic range is closed on the square subsequence D = 2t^2, since every finite channel system meeting the hypotheses carries support radius above (3/2)t^3. The nontrivial input is a finite lower estimate for the channel least common multiple, in which consecutive numbers d! - 1 are combined while their pairwise gcd losses are counted explicitly, and a Stirling bound converts that estimate into the cubic radius. This theorem family is the first presentation recorded in the development and its novelty is unassessed. The divisibility and factorial bounds remain hypotheses, so the irrationality question in Erdős Problem 68 is untouched, and the remaining problem is to derive those hypotheses from the factorial-gap series and to prove that the required channels vanish.
-
-Boundary. Six exact source-backed declarations; one trusted sorry per Challenge theorem.
-
-Source: [`ExternalVerification68ChannelRadius/`](ExternalVerification68ChannelRadius/), configuration `ExternalVerification68ChannelRadius/comparator.json`.
-
-### Erdős #1049: the rational-base contour of Zudilin's (14,12,14;27) forms
-
-A Mathlib-only interface redeclares the trigamma series, the thirteen interval contributions summing to J, the constants C_1 = 1091/2 and C_0 = 266 - (3/pi^2)(225 - J) of Zudilin's (14,12,14;27) forms, the rational-base threshold theta* = C_0/C_1, and the parameter region of reduced bases a/b with log b / log a < theta*. Six statements are checked: the two-sided bound 81/200 < theta* < 1/2, the exclusion of 3/2 from the region, the membership of every positive power of 31/4, and the intermediate constants J >= 77.6 and C_0 > 88371/400. Membership in the region is a statement about parameters. It is the hypothesis consumed by the ordinary proof note attached to these forms, which derives irrationality of F(a/b) = sum_{m>=1} 1/((a/b)^m - 1) for every reduced base in the region from Zudilin's Lemma 7 and the accompanying lemmas. No theorem in this package formalises an analytic step of that note and none asserts anything about the arithmetic nature of F(a/b), so the package does not solve Erdős Problem 1049; irrationality at 3/2 remains open. The direction, the thirteen demi-intervals, the values C_1 = 545.5 and C_0 = 221.30008816..., and the ratio C_1/C_0 = 2.46497868... are printed in Zudilin 2004 (Acta Arith. 111, no. 2, p. 162), where that ratio is the integer-base irrationality-exponent bound of its Theorem 1. The constant theta* checked here is the reciprocal of that printed ratio. Zudilin 2016 separately announced a rational-base extension of the results of that later paper without computing a value. Novelty of the explicit rational-base threshold for F is unassessed.
-
-Boundary. Six exact numeric and membership declarations; one trusted sorry per Challenge theorem.
-
-Source: [`ExternalVerification1049RationalBaseContour/`](ExternalVerification1049RationalBaseContour/), configuration `ExternalVerification1049RationalBaseContour/comparator.json`.
-
-### Erdős #243: bounded-negative-part rigidity for reciprocal-tail dynamics
-
-Clearing denominators in the rational case of Erdős Problem 243 produces an exact integer orbit: multipliers a n greater than 1 drive C (n+1) + D n = a n * C n and D (n+1) = a n * D n, and the centred error is E n = D n - (a n - 1) * C n. The compared theorem proves complete rigidity of the bounded-negative branch of that orbit. An eventual one-sided lower bound -B ≤ E n on the centred error, together with division-free normalized vanishing K * Int.natAbs (E n) < C n at every scale K, forces two conclusions at once: the centred error is exactly zero from some index onward, and the multipliers satisfy the exact Sylvester recurrence a (n+1) = a n ^ 2 - a n + 1 from some index onward. The second conclusion is the Sylvester recurrence itself, which is the target shape for this dynamics, so the theorem reaches that endpoint inside the stated regime. The hypothesis list contains no periodicity assumption, no eventual periodicity assumption, and no sign condition on the centred error, so the statement covers aperiodic orbits and orbits whose centred error changes sign infinitely often. The normalized-vanishing hypothesis is stated division-free over the natural numbers, so the theorem consumes no real-analytic input. Eventual strict centring Int.natAbs (E n) < C n is the K = 1 instance of normalized vanishing and is absorbed into that hypothesis. The proof runs a natural-tail descent on the eventually nonnegative branch and a gcd-stabilisation and scale-reduction obstruction on the recurring bounded-negative branch, then composes the resulting zero-defect statement with the algebraic step that turns a vanishing centred state into the Sylvester successor. The exact recurrence, the one-sided lower bound, and normalized vanishing are hypotheses of the theorem. No declaration in this package produces them for an arbitrary orbit, orbits with cofinally unbounded negative centred error lie outside the statement, and Erdős Problem 243 remains open.
-
-Boundary. In the `ExternalVerification243BoundedNegativePartRigidity` entry, one compared theorem packages eventual zero centred defect and the eventual exact Sylvester recurrence under the bounded-negative hypotheses, and its Challenge.lean has one intentional Comparator specification sorry. Its Solution.lean and the imported source are sorry-free.
-
-Source: [`ExternalVerification243BoundedNegativePartRigidity/`](ExternalVerification243BoundedNegativePartRigidity/), configuration `ExternalVerification243BoundedNegativePartRigidity/comparator.json`. One theorem is compared in that family entry; the live paper-order entry [`PalomarCorpus/E243_10`](PalomarCorpus/E243_10/) selects it with fifteen other names.
-
-### Erdős #1041: global two-root critical proximity and exact straight-line obstructions
-
-For every degree n at least two and every list of n complex roots, at a critical point that is not a root the two distances to some pair of distinct root occurrences sum to at most twice the geometric mean of the n distances from that point. Behind the unit-disk regime stands a real-scalar inequality in N, t, d and e with no polynomial, root or critical point in its statement: for reals N at least two, t less than one, and 0 < d at most e with d at most 1, e at most 1 + t, e at most (N-1)d, and N at most (1 - t^2)(1/d^2 + (N-1)/e^2), the sum d + e is at most 2. Its intended reading takes N as the degree, t as the modulus of the critical point, and d at most e as the two smallest distances from that point to the roots. Strengthening e at most 1 + t to e less than 1 + t upgrades the conclusion to d + e strictly less than 2. The three displayed points 99/100, (99/100)w and (99/100)w^2, with w the primitive cube root of unity -1/2 + (sqrt 3 / 2)i, are roots of the monic cubic z^3 - (99/100)^3, every one of them has modulus strictly less than 1, and the midpoint of every pair of distinct roots has cubic value of modulus strictly larger than 1. That is an exact countermodel to universal straight-line containment for a polynomial whose roots satisfy the open-unit-disk hypothesis of Erdős #1041. For the explicit quintic root set a, ip, -ip, pu_plus, pu_minus with p = 999/1000, a = (901/902)p and u_plus, u_minus = (-451 +- 780i)/901, the sum of reciprocals of the five roots is zero, so the origin is a critical point, and the real root a has squared modulus strictly smaller than that of each of the other four roots, so it is the unique nearest root. At one tenth of that unique nearest spoke the factored quintic has modulus strictly larger than 1. The mechanism is the vanishing sum of reciprocals at a critical point converted into an inverse-square budget on the two smallest root distances, which is what makes the metric conclusion uniform in the degree, and priority for these statements is unassessed. The positive theorems supply distances between roots and critical points. Lemniscate containment lies outside their conclusions. The two obstructions rule out straight root-pair segments and the straight unique-nearest-root spoke.
-
-For the later refutation of the exact Formal Conjectures path-image-length statement
-using ani's degree-seven construction, see [the primary corpus's #1041 case study](https://github.com/wcook04/plectis-erdos/blob/main/docs/case-studies/formal-conjectures-1041.md).
-Independent human review of correspondence with the 1958 wording has not been recorded.
-
-Boundary. Nine compared theorems expose the scale-sensitive critical metric selector, the global disk inverse-balance theorem and strict refinement, the complete quintic unique-nearest-spoke obstruction with its critical-point and uniqueness components, and the complete cubic all-straight-pair obstruction with its root identification and open-unit-disk certificate, without claiming unrestricted containment. The cubic safe-spoke theorem is compared only in ExternalVerification1041SolvedFamilies, so no declaration is owned by two entries.
-
-Source: [`ExternalVerification1041CriticalGeometry/`](ExternalVerification1041CriticalGeometry/), configuration `ExternalVerification1041CriticalGeometry/comparator.json`.
-
-## Featured regression families
-
-| Problem | Result | Entry |
-| --- | --- | --- |
-| #68 | Erdős #68: explicit cubic radius floor for simultaneous factorial channel cancellation | [`ExternalVerification68ChannelRadius`](ExternalVerification68ChannelRadius/) |
-| #68 | Erdős #68 companion-orbit rationality boundary | [`ExternalVerification68CompanionOrbitBoundary`](ExternalVerification68CompanionOrbitBoundary/) |
-| #68 | Erdős #68: remote factorial-grid kernels reduced by an exact prime unit translator | [`ExternalVerification68PrimeUnitTranslator`](ExternalVerification68PrimeUnitTranslator/) |
-| #243 | Erdős #243: bounded-negative-part rigidity for reciprocal-tail dynamics | [`ExternalVerification243BoundedNegativePartRigidity`](ExternalVerification243BoundedNegativePartRigidity/) |
-| #243 | Erdős #243: exclusion of bounded-rise reduced tails | [`ExternalVerification243BoundedRiseReducedTail`](ExternalVerification243BoundedRiseReducedTail/) |
-| #243 | Erdős #243: exclusion of eventually periodic negative-magnitude orbits | [`ExternalVerification243PeriodicNegativeOrbit`](ExternalVerification243PeriodicNegativeOrbit/) |
-| #249 | Erdős #249: unconditional clean prime anchors in the binary cyclotomic layers | [`ExternalVerification249BinaryCyclotomicAnchors`](ExternalVerification249BinaryCyclotomicAnchors/) |
-| #249 | Erdős #249: complete dyadic totient-kernel structure | [`ExternalVerification249DyadicTotientKernel`](ExternalVerification249DyadicTotientKernel/) |
-| #249 | Erdős #249: no finite linear recurrence for the Möbius-Mersenne power ladder, and its separation from the literal Möbius-Lambert ladder | [`ExternalVerification249MobiusMersenneLadderStructure`](ExternalVerification249MobiusMersenneLadderStructure/) |
-| #249 | Erdős #249: a parity-perturbed rational control for the binary totient series | [`ExternalVerification249ParityPerturbedRationalControl`](ExternalVerification249ParityPerturbedRationalControl/) |
-| #249 | Erdős #249: sharp minimiser and explicit 21/320 floor for the positive rank-one Möbius Mersenne cone | [`ExternalVerification249RankOneSharpFloor`](ExternalVerification249RankOneSharpFloor/) |
-| #249 | Erdős #249: irrationality of fixed-resolution observables of the totient word | [`ExternalVerification249ResidueClassTotientSeries`](ExternalVerification249ResidueClassTotientSeries/) |
-| #251 | Erdős #251: exact rational-tail collapse for the actual prime-gap dyadic series | [`ExternalVerification251ActualPrimeGapTail`](ExternalVerification251ActualPrimeGapTail/) |
-| #251 | Erdős #251: bounded-perturbation countermodel anchored at the actual prime gaps | [`ExternalVerification251BoundedPerturbationCountermodel`](ExternalVerification251BoundedPerturbationCountermodel/) |
-| #251 | Erdős #251: free-pair equivalence for the actual prime-gap dyadic series | [`ExternalVerification251FreePairEquivalence`](ExternalVerification251FreePairEquivalence/) |
-| #251 | Erdős #251: kernel-decided denominator floor for the prime-gap dyadic series | [`ExternalVerification251KernelDenominatorFloor`](ExternalVerification251KernelDenominatorFloor/) |
-| #251 | Erdős #251: exact countermodel to coarse gap-profile irrationality routes | [`ExternalVerification251PolynomialShiftCountermodel`](ExternalVerification251PolynomialShiftCountermodel/) |
-| #251 | Erdős #251: unconditional prime-gap reformulation of the dyadic prime series | [`ExternalVerification251PrimeGapIdentity`](ExternalVerification251PrimeGapIdentity/) |
-| #257 | Erdős #257: rational-fibre null theorem and supported Mersenne achievement-set geometry | [`ExternalVerification257AchievementSetGeometry`](ExternalVerification257AchievementSetGeometry/) |
-| #257 | Erdős #257: exact multiplicative-order noncollapse at every integer base | [`ExternalVerification257FinitePeriodNoncollapse`](ExternalVerification257FinitePeriodNoncollapse/) |
-| #257 | Erdős #257: rational values force unbounded integer tail orbits and mass lower bounds | [`ExternalVerification257RationalTailRigidity`](ExternalVerification257RationalTailRigidity/) |
-| #257 | Erdős #257: irrationality for every reciprocal-summable support and every integer base | [`ExternalVerification257ReciprocalSupport`](ExternalVerification257ReciprocalSupport/) |
-| #269 | Erdős #269: actual dyadic shell orbit, exact recurrence and integral-or-far escape | [`ExternalVerification269ActualShellOrbit`](ExternalVerification269ActualShellOrbit/) |
-| #269 | Erdős #269: exact three-prime running-LCM identity and infinite kernel rank | [`ExternalVerification269ThreePrimeStructure`](ExternalVerification269ThreePrimeStructure/) |
-| #269 | Erdős #269: the cofinal local-window escape is equivalent to irrationality of the three-prime running-LCM value | [`ExternalVerification269WindowEscapeEquivalence`](ExternalVerification269WindowEscapeEquivalence/) |
-| #1041 | Erdős #1041: straight-chord selection from quantitative collinear critical-gap data | [`ExternalVerification1041CollinearChord`](ExternalVerification1041CollinearChord/) |
-| #1041 | Erdős #1041: global two-root critical proximity and exact straight-line obstructions | [`ExternalVerification1041CriticalGeometry`](ExternalVerification1041CriticalGeometry/) |
-| #1041 | Erdős #1041: sublevel containment of trinomial root spokes | [`ExternalVerification1041CyclicTrinomialFiber`](ExternalVerification1041CyclicTrinomialFiber/) |
-| #1041 | Erdős #1041: uniform disk-family critical-value separation thresholds and a sign-free connector-length bound | [`ExternalVerification1041DiskFamilySeparation`](ExternalVerification1041DiskFamilySeparation/) |
-| #1041 | Erdős #1041: exact all-degree critical-value separation thresholds and a sign-free first-merge length bound | [`ExternalVerification1041FirstMergeCriticalValueSeparation`](ExternalVerification1041FirstMergeCriticalValueSeparation/) |
-| #1041 | Erdős #1041: strict length budget below two for quotient-fibre root lifts | [`ExternalVerification1041QuarticQuotientFiber`](ExternalVerification1041QuarticQuotientFiber/) |
-| #1041 | Erdős #1041: checked kernels for three completely solved polynomial families | [`ExternalVerification1041SolvedFamilies`](ExternalVerification1041SolvedFamilies/) |
-| #1041 | Erdős #1041: coefficient and energy criteria forcing two safe tetranomial spokes | [`ExternalVerification1041TetranomialSpokes`](ExternalVerification1041TetranomialSpokes/) |
-| #1049 | Erdős #1049: exact first transformed Zudilin row and the 2^64 < 3^41 < 2^65 bracket | [`ExternalVerification1049AdelicHeightBridge`](ExternalVerification1049AdelicHeightBridge/) |
-| #1049 | Erdős #1049: sharp rectangular Hermite–Padé threshold no-go with unique equality point | [`ExternalVerification1049HermitePadeNoGo`](ExternalVerification1049HermitePadeNoGo/) |
-| #1049 | Erdős #1049: sharp rational gaps for integral linear forms and the exterior-determinant height tradeoff | [`ExternalVerification1049PrimeSupportSelectors`](ExternalVerification1049PrimeSupportSelectors/) |
-| #1049 | Erdős #1049: no coordinatewise denominator clearing at the rational base 3/2 | [`ExternalVerification1049RationalBaseBarrier`](ExternalVerification1049RationalBaseBarrier/) |
-| #1049 | Erdős #1049: the rational-base contour of Zudilin's (14,12,14;27) forms | [`ExternalVerification1049RationalBaseContour`](ExternalVerification1049RationalBaseContour/) |
-
-## Reading an entry
-
-A paper-order Palomar entry `PalomarCorpus/E<problem>_<NN>` has `Challenge.lean`,
-`AxiomAudit.lean`, `comparator.json` and `formalization.yaml` in its directory, and
-its Solution `Solutions/PalomarCorpus/E<problem>_<NN>.lean` with adapters under the
-matching Solution directory. Among the adapters,
-`Statement.lean` is the Challenge minus its theorems, generated from it and compiled
-against Mathlib alone; the other adapters import it instead of re-declaring any
-definition, so the constants Comparator walks from each compared statement are the
-same on both sides. Its axiom audit is supplied by
-`scripts/check_axiom_budget.py --run-palomar`, which the release gate runs. The per-problem
-sections above and the family table describe `ExternalVerification*` entries; their
-theorem counts are separate from the paper-order Palomar entries.
-
-Each `ExternalVerification*` entry is five files: four in its directory and its Solution under `Solutions/`.
-
-- `<Entry>/Challenge.lean` states the theorem for a reviewer and does not prove it.
-- `Solutions/<Entry>.lean` proves it. A `sorry` here would be fatal and there is none.
-- `<Entry>/AxiomAudit.lean` prints the axioms each selected declaration depends on.
-- `<Entry>/comparator.json` is the configuration a registry submission names.
-- `<Entry>/formalization.yaml` records scope, sources, attribution and known divergences.
-
-The Solution lives under its own module prefix because the registry compiles each
-Challenge into a protected directory that shadows every module sharing its prefix.
-
-## Method
-
-[`METHOD.md`](METHOD.md) explains how models without repository access receive
-copies of the relevant sources and return proposed arguments. Agents with tool
-access then formalise and check those arguments. The same entry format records
-the statement, proof and axioms regardless of who proposed the argument.
-
-[`skills/lean-checkpoint-entry/SKILL.md`](skills/lean-checkpoint-entry/SKILL.md) is the
-authoring and review procedure for an entry, written to be usable against any problem
-set and any proof assistant convention, not only this one.
-
-## What this repository does not establish
-
-A Lean proof establishes that the Solution proves the theorem the Challenge states,
-on the axioms the audit prints. It does not establish that a result is new, that it
-is important, or that anyone has reviewed it. Where the literature does not settle
-novelty, the metadata records novelty as unassessed and makes no priority claim.
-The Formal Conjectures review above concerns its exact upstream statement and
-pinned proof. It does not establish review of every Palomar entry in this release.
-
-## Authorship
-
-Will Cook is the human author and responsible maintainer.
-AI systems assisted with mathematical exploration, proof search, formalisation and
-Lean engineering, including systems reached only through a chat interface with no
-access to this repository; [`METHOD.md`](METHOD.md) describes that arrangement and its
-verification boundary. The author selected the public claims, reviewed their stated
-boundaries and accepts responsibility for every statement in this repository.
-
-## Citation
-
-Cite this repository through [CITATION.cff](CITATION.cff), at the commit you read.
-Code and documentation are [Apache-2.0](LICENSE); [REUSE.toml](REUSE.toml)
-records the file attribution policy.
-
-## Contribute
-
-For a broken checking entry, build command or release package, follow
-[CONTRIBUTING.md](CONTRIBUTING.md). Mathematical arguments, corrections and
-exposition go through the primary research repository's existing contribution
-process so their evidence and credit stay with the research record.
-
-## Build
-
-Start with Git and Python 3.11 or later. On macOS or Linux, or Windows through
-WSL, clone the public repository and inspect the build selection without Lean:
+Python 3.11 or later runs the build tools. This command builds every default
+target, the 38 families and the full paper-order corpus:
 
 ```sh
-git clone --filter=blob:none https://github.com/wcook04/plectis-erdos-lean.git
-cd plectis-erdos-lean
-python3 scripts/build_launch_targets.py --plan
-```
-
-This writes `.lake/convenience-target-report.json` with status `planned` and
-the default build targets. It compiles no proof and downloads no Lean cache.
-
-To compile, install [elan](https://leanprover-community.github.io/get_started.html)
-using its documented setup. From this repository root it reads `lean-toolchain`;
-keep `lake-manifest.json` unchanged to use the pinned dependencies. The first
-build needs network access and space for the toolchain and Mathlib cache.
-
-```sh
-lake --version
-lake exe cache get
 python3 scripts/build_launch_targets.py
 ```
 
-The runner checks the default launch targets and retains diagnostics. The
-[build guide](scripts/CONVENIENCE_BUILDS.md) covers focused checks, reports and
-the separate release population. A local compilation does not establish
-Comparator equivalence, NanoDa acceptance or Palomar registration. Those
-outcomes require the corresponding protected replay at its exact source and
-environment.
+Appending `--plan` lists the targets without Lean or Mathlib. The
+[build guide](scripts/CONVENIENCE_BUILDS.md) covers changed-module builds, reports
+and the release population. Each project in `verification/` has its own pins.
 
-## Related Plectis projects
+## How AI was used
 
-This companion provides selected separate checks for the [primary mathematical research corpus](https://github.com/wcook04/plectis-erdos#problem-papers), which owns the papers and current research claims.
+[`METHOD.md`](METHOD.md) describes the method. Models without repository access
+received copies of the relevant sources and returned proposed arguments, and
+agents with tool access formalised them in Lean. Each result is accepted through
+the same Challenge, Solution and axiom audit, whoever proposed the argument.
+Will Cook is the responsible maintainer.
 
-- [Plectis Atlas](https://wcook04.github.io/plectis-atlas/) is an independent reader for OpenAI’s mathematics release.
-- The earlier [Plectis toolkit](https://github.com/wcook04/practical-formal-verification) contains reusable Python components and worked examples.
+## Papers and videos
 
-These sit within Will Cook’s wider work with AI agents: research and software prepared with explanations, source and checks so other people can inspect and continue it. Explore the [research corpus](https://github.com/wcook04/plectis-erdos) and [Plectis website](https://wcook04.github.io/practical-formal-verification/).
+- [`wcook04/plectis-erdos`](https://github.com/wcook04/plectis-erdos) holds the papers, research records and the [credit record](https://github.com/wcook04/plectis-erdos#credit) for prior mathematics, public contributions and reader feedback.
+- The [mathematics website](https://wcook04.github.io/practical-formal-verification/maths/) and [maths map](https://wcook04.github.io/practical-formal-verification/maths/universe.html) connect papers, results and Lean sources.
+- [Plectis Atlas](https://wcook04.github.io/plectis-atlas/) is a separate reader for OpenAI's mathematics release, and the [Plectis toolkit](https://github.com/wcook04/practical-formal-verification) holds reusable Python components.
+- Videos: [the maths map](https://www.youtube.com/watch?v=u4f-fk1o13k), [a proof of the #257 theorem above, starting with examples](https://www.youtube.com/watch?v=uWCqtRkJ8P0) and [an introduction to Plectis](https://www.youtube.com/watch?v=MBmVMMogXTA). A Lean proof does not cover the argument spoken in a video.
+
+The project builds on [Lean](https://lean-lang.org/) and
+[Mathlib](https://github.com/leanprover-community/mathlib4), with problems and
+references from [erdosproblems.com](https://www.erdosproblems.com/).
+
+## Contribute and cite
+
+Report a broken entry, build command or release package through
+[`CONTRIBUTING.md`](CONTRIBUTING.md). Mathematical arguments, corrections and
+explanations go to the
+[contribution guide of the research repository](https://github.com/wcook04/plectis-erdos/blob/main/CONTRIBUTING.md).
+
+Cite this repository through [`CITATION.cff`](CITATION.cff), at the commit you
+read. Code and documentation are [Apache-2.0](LICENSE), and
+[`REUSE.toml`](REUSE.toml) records the attribution policy.
