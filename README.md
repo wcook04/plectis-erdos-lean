@@ -5,9 +5,9 @@ statement in one file and its proof in another, and
 [Comparator](https://github.com/leanprover/comparator) compares the two, so a
 reviewer can read the statement without reading the proof.
 
-**Theorem to try first.** For every integer base $b\ge2$ and every infinite set
-$A$ of positive integers with $\sum_{a\in A}1/a<\infty$, the sum
-$\sum_{a\in A}1/(b^a-1)$ is irrational.
+**Theorem to try first.** Let *b* ≥ 2 be an integer and let *A* be an infinite set
+of positive integers such that the sum of 1/*a* over *a* in *A* is finite. Then the
+sum of 1/(*b*<sup>*a*</sup> - 1) over *a* in *A* is irrational.
 
 **See it with nothing installed:**
 [Palomar registry entry](https://palomar-registry.org/entry.html?id=PALOMAR-2026-10-21-000018&version=1) ·
@@ -126,12 +126,12 @@ Each entry folder holds the full statement in `formalization.yaml`, and
 |---|---|---|---|
 | [#68](https://www.erdosproblems.com/68) | An explicit cubic lower bound on the support radius of a finite system of factorial channels, under stated divisibility hypotheses. | [`ChannelRadius`](ExternalVerification68ChannelRadius/) | Open |
 | [#243](https://www.erdosproblems.com/243) | Rigidity of the integer orbit when its centred error has a one-sided bound and normalised vanishing, both assumed: the orbit eventually follows the Sylvester recurrence. | [`BoundedNegativePartRigidity`](ExternalVerification243BoundedNegativePartRigidity/) | Open |
-| [#249](https://www.erdosproblems.com/249) | Irrationality of $\sum_n(\varphi(n)\bmod m)/2^n$ for every $m\ge3$. The series with $\varphi(n)$ itself is not covered. | [`ResidueClassTotientSeries`](ExternalVerification249ResidueClassTotientSeries/) | Open |
-| [#251](https://www.erdosproblems.com/251) | Any rational value of the prime-gap series has denominator at least $2^{589}$, decided in the Lean kernel. Irrationality is not proved. | [`KernelDenominatorFloor`](ExternalVerification251KernelDenominatorFloor/) | Open |
+| [#249](https://www.erdosproblems.com/249) | Irrationality of the sum over *n* of (φ(*n*) mod *m*)/2<sup>*n*</sup> for every *m* ≥ 3. The series with φ(*n*) itself is not covered. | [`ResidueClassTotientSeries`](ExternalVerification249ResidueClassTotientSeries/) | Open |
+| [#251](https://www.erdosproblems.com/251) | Any rational value of the prime-gap series has denominator at least 2<sup>589</sup>, decided in the Lean kernel. Irrationality is not proved. | [`KernelDenominatorFloor`](ExternalVerification251KernelDenominatorFloor/) | Open |
 | [#257](https://www.erdosproblems.com/257) | The theorem at the top of this page. | [`ReciprocalSupport`](ExternalVerification257ReciprocalSupport/) | Open |
 | [#269](https://www.erdosproblems.com/269) | For the primes 2, 3 and 5, an equivalence between a local window escape and irrationality of the running-LCM value. Neither side is proved. | [`WindowEscapeEquivalence`](ExternalVerification269WindowEscapeEquivalence/) | Open |
 | [#1041](https://www.erdosproblems.com/1041) | The exact Formal Conjectures path-length statement is refuted using [ani's degree-seven construction](https://www.erdosproblems.com/forum/thread/1041#post-8861), and two-root distance bounds and straight-line obstructions are proved separately. | [`FC1041HausdorffCounterexample`](verification/FC1041HausdorffCounterexample/) and [`CriticalGeometry`](ExternalVerification1041CriticalGeometry/) | Answered for that statement. Independent human review of its match with the 1958 wording is not recorded. |
-| [#1049](https://www.erdosproblems.com/1049) | Irrationality of $\sum_{m\ge1}1/((a/b)^m-1)$ for coprime integers $a>b\ge1$ in an explicit region, which contains $31/4$ and its positive powers and excludes $3/2$. | [`PalomarCorpus/E1049_01`](PalomarCorpus/E1049_01/) and [`RationalBaseContour`](ExternalVerification1049RationalBaseContour/) | Open |
+| [#1049](https://www.erdosproblems.com/1049) | Irrationality of the sum over *m* ≥ 1 of 1/((*a*/*b*)<sup>*m*</sup> - 1) for coprime integers *a* > *b* ≥ 1 in an explicit region, which contains 31/4 and its positive powers and excludes 3/2. | [`PalomarCorpus/E1049_01`](PalomarCorpus/E1049_01/) and [`RationalBaseContour`](ExternalVerification1049RationalBaseContour/) | Open |
 
 The entry names above omit the `ExternalVerification<problem>` prefix of their
 folders. The 38 theorem families are listed in
