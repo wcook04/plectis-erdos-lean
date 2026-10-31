@@ -61,7 +61,7 @@ theorem strict_successor_window {m : ℕ} (hm : 3 ≤ m) :
       (m : ℝ) * factorialGapPredecessorGap m ≤
           2 + 1 / ((m.factorial : ℝ) - 1)) := by
   refine ⟨factorialGapStepCarry_eq_one_iff_dvd_strictFacTopRat hm, ?_⟩
-  simpa only [strictFacTop_ratCast] using
+  simpa only [strictFacTop_ratCast] using!
     dvd_strictFacTop_factorialGapPrefix_iff_predecessorGap_window hm
 
 /-- The two rational-denominator conclusions in long res:carry-equivalence. -/
@@ -143,7 +143,7 @@ theorem uniform_family_members :
   · intro m
     simp
   · intro m hm hdiv
-    have hdiv' : (m : ℤ) ∣ (2 : ℤ) := by simpa using hdiv
+    have hdiv' : (m : ℤ) ∣ (2 : ℤ) := by simpa using! hdiv
     have hle : (m : ℤ) ≤ 2 := Int.le_of_dvd (by norm_num) hdiv'
     omega
 

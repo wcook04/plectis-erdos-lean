@@ -60,8 +60,8 @@ status:
   sorry_in_definitions: 0
   proof_corpus_sorry_count: 0
   trusted_challenge_sorry_count: 17
-  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E257_25/Challenge.lean. Comparator replay run 35935225572 of wcook04/plectis-erdos-lean at commit cc7e541 built this entry's Challenge and Solution with leanprover/lean4:v4.30.0 and accepted every compared theorem with both the Lean kernel and NanoDa, permitting only the axioms propext, Quot.sound and Classical.choice."
-  axiom_audit_status: "Lean Release Gate run 35935275645 at commit 18ea89f ran scripts/check_axiom_budget.py --run-palomar on the built Solution environment and printed only propext, Quot.sound and Classical.choice for every compared theorem."
+  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in PalomarCorpus/E257_25/Challenge.lean, and the Solution modules contain no sorry. Comparator and kernel outcomes are commit-specific and are recorded separately from this source metadata."
+  axiom_audit_status: "The permitted axioms are propext, Quot.sound and Classical.choice. Axiom-audit outcomes are commit-specific and belong in separate receipts; this source field is not an audit receipt."
   permitted_axiom_budget:
   - propext
   - Quot.sound

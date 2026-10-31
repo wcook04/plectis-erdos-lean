@@ -51,10 +51,10 @@ theorem protected_epoch_energy_integer
       p * p ^ l ≤ (8 * p + 8) * J.card
         + 4 * ∑ n ∈ J, (u (n + 1) - u n - 2) + 8 * p := by
   have hRs' : 4 * ErdosProblems.Erdos243.runningMax u s < p * p ^ l := by
-    simpa [runningMax_eq] using hRs
+    simpa [runningMax_eq] using! hRs
   obtain ⟨J, hJ, hbound⟩ :=
     ErdosProblems.Erdos243.protected_epoch_energy_integer a u v w hc p l s τ hp
       hpodd hl hred hvpos hw hwpos hnum hden hslow hprot hQ hRs' hsτ hτ
-  exact ⟨J, fun n hn => by simpa [runningMax_eq] using hJ n hn, hbound⟩
+  exact ⟨J, fun n hn => by simpa [runningMax_eq] using! hJ n hn, hbound⟩
 
 end Erdos249257.ExternalVerification243ProtectedEpochEnergy

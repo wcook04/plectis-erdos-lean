@@ -65,7 +65,7 @@ theorem mul (hf : Agree D f f') (hg : Agree D g g') :
 theorem pow (hf : Agree D f f') (k : ℕ) : Agree D (f ^ k) (f' ^ k) := by
   induction k with
   | zero => exact refl _ _
-  | succ k ih => simpa only [pow_succ] using ih.mul hf
+  | succ k ih => simpa only [pow_succ] using! ih.mul hf
 
 theorem sum {ι : Type*} (s : Finset ι) (f g : ι → S)
     (h : ∀ i ∈ s, Agree D (f i) (g i)) :
@@ -103,9 +103,9 @@ theorem inv (hf : Agree D f g)
   have h := ((refl D (PowerSeries.invOfUnit f 1)).mul hf).mul
     (refl D (PowerSeries.invOfUnit g 1))
   have hi : PowerSeries.invOfUnit f 1 * f = 1 :=
-    PowerSeries.invOfUnit_mul f 1 (by simpa using hf0)
+    PowerSeries.invOfUnit_mul f 1 (by simpa using! hf0)
   have hj : g * PowerSeries.invOfUnit g 1 = 1 :=
-    PowerSeries.mul_invOfUnit g 1 (by simpa using hg0)
+    PowerSeries.mul_invOfUnit g 1 (by simpa using! hg0)
   rw [hi, one_mul, mul_assoc, hj, mul_one] at h
   exact h.symm
 
@@ -149,14 +149,14 @@ theorem geom_agree_inverse (D B e : ℕ) (he : 0 < e) (hD : D ≤ e * B) :
   have hz0 : PowerSeries.constantCoeff (1 - z) = 1 := by
     simp [z, constantCoeff_q_pow, Nat.ne_of_gt he]
   have hu : U * (1 - z) = 1 :=
-    PowerSeries.invOfUnit_mul (1 - z) 1 (by simpa using hz0)
+    PowerSeries.invOfUnit_mul (1 - z) 1 (by simpa using! hz0)
   have hp : Agree D ((1 - z) * geom B z) 1 := by
     rw [one_sub_mul_geom]
     have hz : Agree D (z ^ B) 0 := by
       dsimp [z]
       rw [← pow_mul]
       exact Agree.X_pow_zero (e * B) hD
-    simpa using (Agree.refl D (1 : S)).sub hz
+    simpa using! (Agree.refl D (1 : S)).sub hz
   have hm := (Agree.refl D U).mul hp
   rw [← mul_assoc, hu, one_mul, mul_one] at hm
   exact hm

@@ -81,7 +81,7 @@ theorem abelWeight_nonneg {t : ℝ} (ht0 : 0 ≤ t) (ht1 : t ≤ 1) (j : ℕ) :
 /-- The Abel weights telescope to `1 - t^n`. -/
 theorem sum_abelWeight (t : ℝ) (n : ℕ) :
     ∑ j ∈ Finset.range n, (t ^ j - t ^ (j + 1)) = 1 - t ^ n := by
-  simpa using Finset.sum_range_sub' (fun j => t ^ j) n
+  simpa using! Finset.sum_range_sub' (fun j => t ^ j) n
 
 /-! ## 1. The Abel control polygon -/
 
@@ -248,7 +248,7 @@ private theorem multiset_prod_norm_lt_one {s : Multiset ℂ}
         hlt z (Multiset.mem_cons.mpr (Or.inr hz))
       rw [Multiset.prod_cons, norm_mul]
       by_cases hs : s = 0
-      · subst hs; simpa using ha1
+      · subst hs; simpa using! ha1
       · have hsp : ‖s.prod‖ < 1 := ih hsl hs
         nlinarith [norm_nonneg a, norm_nonneg s.prod]
 
@@ -297,7 +297,7 @@ theorem norm_const_lt_one_of_roots_lt_one {n m : ℕ} (hm : 1 ≤ m) (hmn : m < 
     hs.eq_prod_roots
   have hP0 : P.eval 0 = ((P.roots.map fun ζ => X - C ζ).prod).eval 0 := by
     have h := congrArg (fun q : ℂ[X] => q.eval 0) hsplit
-    simpa [hmonic.leadingCoeff] using h
+    simpa [hmonic.leadingCoeff] using! h
   have hprodeval :
       ((P.roots.map fun ζ => X - C ζ).prod).eval 0
         = (P.roots.map fun ζ => -ζ).prod := by
@@ -474,7 +474,7 @@ private theorem quadratic_conjugate_norm_sq {r : ℝ} (hr : 0 < r) {v : ℂ}
   have hvbar : (starRingEnd ℂ) v ^ 2 + (6 / 5) * (r : ℂ) ^ 2 * (starRingEnd ℂ) v
       + (r : ℂ) ^ 4 = 0 := by
     have h := congrArg (starRingEnd ℂ) hv
-    simpa [map_ofNat] using h
+    simpa [map_ofNat] using! h
   have hne : (starRingEnd ℂ) v ≠ v := by
     intro hcon
     have hreal : ((v.re : ℝ) : ℂ) = v := Complex.conj_eq_iff_re.mp hcon

@@ -129,9 +129,9 @@ theorem exists_upperResetCriticalDanger_of_nonpositiveComplementBudget
       Nat.lt_of_not_ge hgap
     apply hnone
     refine ⟨s, hs13, j, ?_, ?_, ?_⟩
-    · simpa using hcarry
-    · simpa using hj
-    · simpa using hdanger
+    · simpa using! hcarry
+    · simpa using! hj
+    · simpa using! hdanger
   exact nonpositiveComplementBudget_false_of_upperResetCriticalBandEscape
     hcritical hd hskip hfatal
 
@@ -172,7 +172,7 @@ theorem exists_lastUpperAncestorRightRunDanger_before_of_nonpositiveComplementBu
     exists_lastUpperAncestorRightRun_danger_of_rowSmall hd hseamSmall
   refine ⟨s, hs13, k, hsd, hk, hend, hcarry, hrun,
     hendpointSmall, ?_⟩
-  simpa [seamUpperResetCharge] using hdanger
+  simpa [seamUpperResetCharge] using! hdanger
 
 /-- **Fatal borrow emits a critical danger strictly before its row.**  The
 first-bad-row/last-ancestor argument only consumes upper-reset band
@@ -220,12 +220,12 @@ theorem exists_upperResetCriticalDanger_before_of_nonpositiveComplementBudget
         Nat.lt_of_not_ge hnotGap
       apply hnone
       refine ⟨s, hs13, hsd, j₀, ?_, ?_, ?_⟩
-      · simpa using hcarry
-      · simpa using hj₀
-      · simpa using hdanger
+      · simpa using! hcarry
+      · simpa using! hj₀
+      · simpa using! hdanger
     have hall := dyadicBandEscape_of_critical hj₀ hgap
     intro j hj
-    simpa [seamUpperResetCharge] using hall j hj
+    simpa [seamUpperResetCharge] using! hall j hj
   have hlarge :=
     seamIntegerGreedyRemainder_ge_row_of_upperResetDyadicBandEscape_below
       hd hbandBelow
@@ -324,9 +324,9 @@ theorem half_mem_mersenneAchievementSet_of_base_and_middleResetRemainderScale
     have hdEq : d - 1 + 1 = d := Nat.sub_add_cancel hdpos
     have htake' : mersenneWeight (d - 1 + 1) ≤
         greedyMersenneRemainder (1 / 2 : ℝ) (d - 1) := by
-      simpa [hdEq] using htake
+      simpa [hdEq] using! htake
     rw [if_pos htake', hdEq] at hrec
-    exact (not_lt_of_ge hdFatal) (by simpa [hrec] using hprevPos)
+    exact (not_lt_of_ge hdFatal) (by simpa [hrec] using! hprevPos)
   exact nonpositiveComplementBudget_false_of_middleResetRemainderScaleProducer
     hmid hd13 hskip hdFatal
 

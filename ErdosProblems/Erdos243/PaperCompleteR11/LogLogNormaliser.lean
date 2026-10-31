@@ -79,7 +79,7 @@ theorem one_le_recordLogLog (x : ℝ) : 1 ≤ recordLogLog x := by
   unfold recordLogLog
   apply (le_div_iff₀ log_two_pos).2
   have h := Real.log_le_log (by norm_num : (0 : ℝ) < 2) (inner_logLog_ge_two x)
-  simpa only [one_mul] using h
+  simpa only [one_mul] using! h
 
 /-- Exact evaluation on the integer double-exponential grid. -/
 theorem recordLogLog_binaryTower (n : ℕ) (hn : 1 ≤ n) :
@@ -98,7 +98,7 @@ theorem recordLogLog_binaryTower (n : ℕ) (hn : 1 ≤ n) :
   rw [hpow, Real.log_pow, mul_div_cancel_right₀ _ hl]
 
 theorem recordLogLog_four : recordLogLog 4 = 1 := by
-  simpa [binaryTower] using recordLogLog_binaryTower 1 le_rfl
+  simpa [binaryTower] using! recordLogLog_binaryTower 1 le_rfl
 
 /-- The tower budget gives an exact index bound, with coefficient one. -/
 theorem recordLogLog_le_of_le_binaryTower {x : ℝ} {n : ℕ}

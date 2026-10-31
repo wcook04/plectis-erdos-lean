@@ -59,7 +59,6 @@ theorem card_antidiagonal_filter_pos_coprime (n : ℕ) :
   rw [Nat.totient_eq_card_coprime]
   refine Finset.card_bij' (fun p _ => p.2) (fun a _ => (n - a, a)) ?_ ?_ ?_ ?_
   · intro p hp
-    dsimp only
     rw [Finset.mem_filter, Finset.mem_antidiagonal] at hp
     obtain ⟨hsum, hpos, hcop⟩ := hp
     rw [Finset.mem_filter, Finset.mem_range]
@@ -67,14 +66,12 @@ theorem card_antidiagonal_filter_pos_coprime (n : ℕ) :
     rw [← hsum]
     exact Nat.coprime_add_self_left.mpr hcop
   · intro a ha
-    dsimp only
     rw [Finset.mem_filter, Finset.mem_range] at ha
     obtain ⟨hlt, hcop⟩ := ha
     rw [Finset.mem_filter, Finset.mem_antidiagonal]
     refine ⟨by omega, by omega, ?_⟩
     exact (Nat.coprime_sub_self_left (by omega)).mpr hcop
   · intro p hp
-    dsimp only
     rw [Finset.mem_filter, Finset.mem_antidiagonal] at hp
     obtain ⟨hsum, hpos, -⟩ := hp
     rw [Prod.ext_iff]
@@ -124,13 +121,13 @@ theorem tsum_coprime_pair_pow_eq_tsum_totient_mul_pow {r : ℝ} (hr0 : 0 ≤ r) 
   have hsig : Summable (fun x : (Σ n : ℕ, {y // y ∈ Finset.antidiagonal n}) =>
       if 0 < (x.2 : ℕ × ℕ).1 ∧ Nat.Coprime (x.2 : ℕ × ℕ).1 (x.2 : ℕ × ℕ).2
       then r ^ ((x.2 : ℕ × ℕ).1 + (x.2 : ℕ × ℕ).2) else 0) := by
-    have h := (Equiv.summable_iff Finset.sigmaAntidiagonalEquivProd).mpr hFsum
+    have h := (Equiv.summable_iff Finset.HasAntidiagonal.sigmaAntidiagonalEquivProd).mpr hFsum
     exact h.congr fun x => rfl
   calc (∑' p : ℕ × ℕ, if 0 < p.1 ∧ Nat.Coprime p.1 p.2 then r ^ (p.1 + p.2) else 0)
       = ∑' x : (Σ n : ℕ, {y // y ∈ Finset.antidiagonal n}),
           (if 0 < (x.2 : ℕ × ℕ).1 ∧ Nat.Coprime (x.2 : ℕ × ℕ).1 (x.2 : ℕ × ℕ).2
            then r ^ ((x.2 : ℕ × ℕ).1 + (x.2 : ℕ × ℕ).2) else 0) := by
-        rw [← Finset.sigmaAntidiagonalEquivProd.tsum_eq (f := fun p : ℕ × ℕ =>
+        rw [← Finset.HasAntidiagonal.sigmaAntidiagonalEquivProd.tsum_eq (f := fun p : ℕ × ℕ =>
           if 0 < p.1 ∧ Nat.Coprime p.1 p.2 then r ^ (p.1 + p.2) else 0)]
         exact tsum_congr fun c => rfl
     _ = ∑' n : ℕ, ∑' y : {y // y ∈ Finset.antidiagonal n},

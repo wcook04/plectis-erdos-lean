@@ -29,7 +29,7 @@ theorem repairedFamily_recovery_energy_divisionFree
       ErdosProblems.Erdos243.repairedAt c r (r + L) (m q) := by
     intro q hq
     simpa [repairedAt, deletionProduct, ErdosProblems.Erdos243.repairedAt,
-      ErdosProblems.Erdos243.deletionProduct] using hrepair q hq
+      ErdosProblems.Erdos243.deletionProduct] using! hrepair q hq
   exact ErdosProblems.Erdos243.repairedFamily_recovery_energy_divisionFree
     R m u h c e K r L hK hupos hhpos hstep herr hL hrecover hrepair' hsq
 
@@ -52,7 +52,7 @@ theorem repaired_card_bound_of_independent
       ErdosProblems.Erdos243.repairedAt c r (r + L) (m q) := by
     intro q hq
     simpa [repairedAt, deletionProduct, ErdosProblems.Erdos243.repairedAt,
-      ErdosProblems.Erdos243.deletionProduct] using hrepair q hq
+      ErdosProblems.Erdos243.deletionProduct] using! hrepair q hq
   exact ErdosProblems.Erdos243.repaired_card_bound_of_independent
     R m u h c e K r L hK hupos hhpos hstep herr hL hrecover hrepair' hsq hindep
 

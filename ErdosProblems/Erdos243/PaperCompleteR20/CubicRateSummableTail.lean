@@ -142,8 +142,10 @@ theorem normalisedCubicError_tendsto_zero_of_quotient_increment
     (hincr : Tendsto (fun n : ℕ => (n : ℝ) ^ 3 *
       (cubicQuotient C (n + 1) - cubicQuotient C n)) atTop (nhds 0)) :
     ∃ K : ℝ, Tendsto (normalisedCubicError C K) atTop (nhds 0) := by
-  simpa [normalisedCubicError, cubicQuotient] using
-    exists_limit_with_square_scaled_tail (cubicQuotient C) hincr
+  obtain ⟨K, hK⟩ := exists_limit_with_square_scaled_tail (cubicQuotient C) hincr
+  refine ⟨K, ?_⟩
+  change Tendsto (fun n : ℕ => (n : ℝ) ^ 2 * (cubicQuotient C n - K)) atTop (nhds 0)
+  exact hK
 
 #print axioms ErdosProblems.Erdos243.PaperCompleteR20.exists_limit_with_square_scaled_tail
 #print axioms ErdosProblems.Erdos243.PaperCompleteR20.normalisedCubicError_tendsto_zero_of_quotient_increment

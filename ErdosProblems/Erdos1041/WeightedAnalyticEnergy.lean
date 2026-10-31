@@ -48,12 +48,12 @@ theorem circle_weightedAnalyticLog_energy_le_one {ι : Type*} [Fintype ι]
     intro z hz
     apply weightedAnalyticLog_energy_identity
     intro j
-    have hz1 : ‖z‖ = 1 := by simpa [mem_sphere, dist_eq_norm] using hz
+    have hz1 : ‖z‖ = 1 := by simpa [mem_sphere, dist_eq_norm] using! hz
     rw [hz1]
     exact (mul_le_mul_of_nonneg_left (le_of_lt (show (1 : ℝ) < R by exact_mod_cast hR))
       (norm_nonneg (c j))).trans_lt (hc j)
   rw [heq]
-  simpa only [weightedAnalyticLog_zero, norm_one, one_pow] using he
+  simpa only [weightedAnalyticLog_zero, norm_one, one_pow] using! he
 
 end ErdosProblems.Erdos1041
 end

@@ -32,8 +32,7 @@ theorem realPrimeGapTail_eq_tsum_shifted_gaps (N : ℕ) :
     realPrimeGapTail N =
       ∑' k : ℕ, (primeGap0 (N + k + 1) : ℝ) / 2 ^ (k + 1) := by
   have hshift : Summable (fun k => primeGapDyadicTerm (k + (N + 1))) := by
-    simpa [Nat.add_comm] using
-      summable_primeGapDyadicTerm.comp_injective (add_left_injective (N + 1))
+    exact (summable_nat_add_iff (N + 1)).mpr summable_primeGapDyadicTerm
   rw [realPrimeGapTail_eq_scaled_tsum, ← (hshift.hasSum.mul_left (2 ^ (N + 1))).tsum_eq]
   apply tsum_congr
   intro k
@@ -64,9 +63,9 @@ theorem irrational_realPrimeGapTail_zero_iff :
     Irrational (realPrimeGapTail 0) ↔
       Irrational (∑' n : ℕ, primeGapDyadicTerm n) := by
   rw [realPrimeGapTail_zero]
-  simpa using
+  simpa using!
     (irrational_sub_natCast_iff (x := 2 * ∑' n : ℕ, primeGapDyadicTerm n) (n := 1)).trans
-      (by simpa using
+      (by simpa using!
         (irrational_natCast_mul_iff (n := 2) (x := ∑' n : ℕ, primeGapDyadicTerm n)))
 
 /-- Cofinal escape now refers to the actual real prime-gap tail. -/

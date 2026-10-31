@@ -164,8 +164,8 @@ theorem linearIndependent_totientOddKernelFamily
   have hsub := hcanon.comp (fun i : TotientOddIndex e => Sum.inr i) (by
     intro i k hik
     exact Sum.inr.inj hik)
-  simpa [Function.comp_def, canonicalTotientOddKernelFamily,
-    canonicalTotientKernelFamily] using hsub
+  change LinearIndependent ℚ (canonicalTotientOddKernelFamily e) at hsub
+  exact hsub
 
 /-- A separated minor for the canonical family already certifies independence
 of all its odd channels. -/
@@ -188,9 +188,11 @@ theorem canonicalCarryDifferenceFamily_eq_smul_totient
   rcases i with ⟨j, r⟩
   have h := totient_carryKernel_diff hu
     (j := j.val + 1) (r := 2 * r.val + 1) (by omega)
+  funext n
+  have hn := congrFun h.symm n
   simpa [canonicalCarryDifferenceFamily, canonicalCarryKernelFamily,
     canonicalTotientOddKernelFamily, carryEvenIndex, carryOddIndex,
-    Pi.smul_apply, smul_eq_mul] using h.symm
+    Pi.smul_apply, smul_eq_mul] using hn
 
 /-- Every canonical carry difference lies in the span of the full finite-level
 carry family. -/

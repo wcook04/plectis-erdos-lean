@@ -36,14 +36,14 @@ theorem circle_taylor_energy_add_finite_deficit_le {g : ℂ → ℂ} {R : ℝ≥
   have hsub : sphere (0 : ℂ) 1 ⊆ eball (0 : ℂ) (R : ℝ≥0∞) := by
     intro z hz
     rw [Metric.eball_coe]
-    have hz1 : ‖z‖ = 1 := by simpa [mem_sphere, dist_eq_norm] using hz
-    simpa [mem_ball, dist_eq_norm, hz1] using
+    have hz1 : ‖z‖ = 1 := by simpa [mem_sphere, dist_eq_norm] using! hz
+    simpa [mem_ball, dist_eq_norm, hz1] using!
       (show (1 : ℝ) < R by exact_mod_cast hR)
   have hc := hseries.continuousOn.mono hsub
   have hd : ContinuousOn (deriv g) (sphere (0 : ℂ) 1) := by
     have h := (ContinuousLinearMap.apply ℂ ℂ (1 : ℂ)).continuous.comp_continuousOn
       (hseries.fderiv.continuousOn.mono hsub)
-    simpa only [ContinuousLinearMap.apply_apply, fderiv_apply_one_eq_deriv] using h
+    simpa only [ContinuousLinearMap.apply_apply, fderiv_apply_one_eq_deriv] using! h
   have hn : CircleIntegrable (fun z => ‖g z‖ ^ 2) 0 1 :=
     ContinuousOn.circleIntegrable (by norm_num) (hc.norm.pow 2)
   have hx : CircleIntegrable (fun z => (z * deriv g z * conj (g z)).re) 0 1 :=
@@ -51,11 +51,11 @@ theorem circle_taylor_energy_add_finite_deficit_le {g : ℂ → ℂ} {R : ℝ≥
       (Complex.continuous_re.comp_continuousOn
         ((continuousOn_id.mul hd).mul (Complex.continuous_conj.comp_continuousOn hc)))
   have hx2 : CircleIntegrable (fun z => 2 * (z * deriv g z * conj (g z)).re) 0 1 := by
-    simpa only [smul_eq_mul] using hx.const_smul (a := (2 : ℝ))
+    simpa only [smul_eq_mul] using! hx.const_smul (a := (2 : ℝ))
   rw [circleAverage_fun_sub hn hx2]
   have hscale : circleAverage (fun z => 2 * (z * deriv g z * conj (g z)).re) 0 1 =
       2 * circleAverage (fun z => (z * deriv g z * conj (g z)).re) 0 1 := by
-    simpa only [smul_eq_mul] using
+    simpa only [smul_eq_mul] using!
       (circleAverage_fun_smul (a := (2 : ℝ))
         (f := fun z => (z * deriv g z * conj (g z)).re) (c := 0) (R := 1))
   rw [hscale]
@@ -126,14 +126,14 @@ theorem circle_taylor_energy_identity {g : ℂ → ℂ} {R : ℝ≥0}
   have hsub : sphere (0 : ℂ) 1 ⊆ eball (0 : ℂ) (R : ℝ≥0∞) := by
     intro z hz
     rw [Metric.eball_coe]
-    have hz1 : ‖z‖ = 1 := by simpa [mem_sphere, dist_eq_norm] using hz
-    simpa [mem_ball, dist_eq_norm, hz1] using
+    have hz1 : ‖z‖ = 1 := by simpa [mem_sphere, dist_eq_norm] using! hz
+    simpa [mem_ball, dist_eq_norm, hz1] using!
       (show (1 : ℝ) < R by exact_mod_cast hR)
   have hc := hseries.continuousOn.mono hsub
   have hd : ContinuousOn (deriv g) (sphere (0 : ℂ) 1) := by
     have H := (ContinuousLinearMap.apply ℂ ℂ (1 : ℂ)).continuous.comp_continuousOn
       (hseries.fderiv.continuousOn.mono hsub)
-    simpa only [ContinuousLinearMap.apply_apply, fderiv_apply_one_eq_deriv] using H
+    simpa only [ContinuousLinearMap.apply_apply, fderiv_apply_one_eq_deriv] using! H
   have hnorm : CircleIntegrable (fun z => ‖g z‖ ^ 2) 0 1 :=
     ContinuousOn.circleIntegrable (by norm_num) (hc.norm.pow 2)
   have hcross : CircleIntegrable (fun z => (z * deriv g z * conj (g z)).re) 0 1 :=
@@ -141,11 +141,11 @@ theorem circle_taylor_energy_identity {g : ℂ → ℂ} {R : ℝ≥0}
       (Complex.continuous_re.comp_continuousOn
         ((continuousOn_id.mul hd).mul (Complex.continuous_conj.comp_continuousOn hc)))
   have hcross2 : CircleIntegrable (fun z => 2 * (z * deriv g z * conj (g z)).re) 0 1 := by
-    simpa only [smul_eq_mul] using hcross.const_smul (a := (2 : ℝ))
+    simpa only [smul_eq_mul] using! hcross.const_smul (a := (2 : ℝ))
   rw [circleAverage_fun_sub hnorm hcross2]
   have hscale : circleAverage (fun z => 2 * (z * deriv g z * conj (g z)).re) 0 1 =
       2 * circleAverage (fun z => (z * deriv g z * conj (g z)).re) 0 1 := by
-    simpa only [smul_eq_mul] using
+    simpa only [smul_eq_mul] using!
       (circleAverage_fun_smul (a := (2 : ℝ))
         (f := fun z => (z * deriv g z * conj (g z)).re) (c := 0) (R := 1))
   rw [hscale, (circle_taylor_deficit_hasSum hg hR).tsum_eq]

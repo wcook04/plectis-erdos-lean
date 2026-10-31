@@ -16,7 +16,7 @@ theorem gapSuccessor_eq_mul_pred_of_dvd
     gapSuccessor m = (m : ℤ) * gapSuccessor (m - 1) := by
   simpa [gapSuccessor, strictFacTopRat, factorialGapPrefix,
     ErdosProblems.Erdos68.gapSuccessor, ErdosProblems.Erdos68.strictFacTopRat,
-    ErdosProblems.Erdos68.factorialGapPrefix] using
+    ErdosProblems.Erdos68.factorialGapPrefix] using!
     ErdosProblems.Erdos68.gapSuccessor_eq_mul_pred_of_dvd hm h
 
 theorem gapSuccessor_dvd_of_eventually_dvd
@@ -26,7 +26,7 @@ theorem gapSuccessor_dvd_of_eventually_dvd
     ∀ m, j ≤ m → gapSuccessor j ∣ gapSuccessor m := by
   simpa [gapSuccessor, strictFacTopRat, factorialGapPrefix,
     ErdosProblems.Erdos68.gapSuccessor, ErdosProblems.Erdos68.strictFacTopRat,
-    ErdosProblems.Erdos68.factorialGapPrefix] using
+    ErdosProblems.Erdos68.factorialGapPrefix] using!
     ErdosProblems.Erdos68.gapSuccessor_dvd_of_eventually_dvd hM h hj
 
 theorem factorial_mul_gapSuccessor_eq_of_eventually_dvd
@@ -37,7 +37,7 @@ theorem factorial_mul_gapSuccessor_eq_of_eventually_dvd
       (j.factorial : ℤ) * gapSuccessor m = (m.factorial : ℤ) * gapSuccessor j := by
   simpa [gapSuccessor, strictFacTopRat, factorialGapPrefix,
     ErdosProblems.Erdos68.gapSuccessor, ErdosProblems.Erdos68.strictFacTopRat,
-    ErdosProblems.Erdos68.factorialGapPrefix] using
+    ErdosProblems.Erdos68.factorialGapPrefix] using!
     ErdosProblems.Erdos68.factorial_mul_gapSuccessor_eq_of_eventually_dvd hM h hj
 
 theorem eventually_dvd_gapSuccessor_of_not_irrational
@@ -47,7 +47,7 @@ theorem eventually_dvd_gapSuccessor_of_not_irrational
   simpa [factorialGapSeries, gapSuccessor, strictFacTopRat, factorialGapPrefix,
     Erdos68.factorialGapSeries, Erdos68.factorialGapTail, Erdos68.factorialGapTailTerm,
     ErdosProblems.Erdos68.gapSuccessor, ErdosProblems.Erdos68.strictFacTopRat,
-    ErdosProblems.Erdos68.factorialGapPrefix] using
+    ErdosProblems.Erdos68.factorialGapPrefix] using!
     ErdosProblems.Erdos68.eventually_dvd_gapSuccessor_of_not_irrational hd hrat
 
 theorem irrational_factorialGapSeries_of_cofinal_not_dvd_gapSuccessor
@@ -57,7 +57,7 @@ theorem irrational_factorialGapSeries_of_cofinal_not_dvd_gapSuccessor
   simpa [factorialGapSeries, gapSuccessor, strictFacTopRat, factorialGapPrefix,
     Erdos68.factorialGapSeries, Erdos68.factorialGapTail, Erdos68.factorialGapTailTerm,
     ErdosProblems.Erdos68.gapSuccessor, ErdosProblems.Erdos68.strictFacTopRat,
-    ErdosProblems.Erdos68.factorialGapPrefix] using
+    ErdosProblems.Erdos68.factorialGapPrefix] using!
     ErdosProblems.Erdos68.irrational_factorialGapSeries_of_cofinal_not_dvd_gapSuccessor
       hd h
 
@@ -67,7 +67,7 @@ theorem irrational_factorialGapSeries_of_cofinal_odd_gapSuccessor
   simpa [factorialGapSeries, gapSuccessor, strictFacTopRat, factorialGapPrefix,
     Erdos68.factorialGapSeries, Erdos68.factorialGapTail, Erdos68.factorialGapTailTerm,
     ErdosProblems.Erdos68.gapSuccessor, ErdosProblems.Erdos68.strictFacTopRat,
-    ErdosProblems.Erdos68.factorialGapPrefix] using
+    ErdosProblems.Erdos68.factorialGapPrefix] using!
     ErdosProblems.Erdos68.irrational_factorialGapSeries_of_cofinal_odd_gapSuccessor h
 
 theorem not_eventually_odd_gapSuccessor_of_not_irrational
@@ -76,7 +76,7 @@ theorem not_eventually_odd_gapSuccessor_of_not_irrational
   simpa [factorialGapSeries, gapSuccessor, strictFacTopRat, factorialGapPrefix,
     Erdos68.factorialGapSeries, Erdos68.factorialGapTail, Erdos68.factorialGapTailTerm,
     ErdosProblems.Erdos68.gapSuccessor, ErdosProblems.Erdos68.strictFacTopRat,
-    ErdosProblems.Erdos68.factorialGapPrefix] using
+    ErdosProblems.Erdos68.factorialGapPrefix] using!
     ErdosProblems.Erdos68.not_eventually_odd_gapSuccessor_of_not_irrational hrat
 
 end PalomarCorpus.E68.MultiplicativeSuccessorRigidity

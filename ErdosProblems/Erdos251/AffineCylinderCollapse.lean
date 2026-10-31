@@ -281,7 +281,11 @@ theorem exists_blockResidue_escape_of_not_integral
       (2 : ℚ) ^ r / (tailShift T h N).den ≤
         |(2 : ℚ) ^ r * (tailShift T h N - z)| := by
     rw [abs_mul, abs_of_nonneg hpowNonneg]
-    exact mul_le_mul_of_nonneg_left (by simpa [div_eq_mul_inv] using hdist) hpowNonneg
+    calc
+      (2 : ℚ) ^ r / (tailShift T h N).den =
+          (2 : ℚ) ^ r * ((1 : ℚ) / (tailShift T h N).den) := by ring
+      _ ≤ (2 : ℚ) ^ r * |tailShift T h N - z| :=
+        mul_le_mul_of_nonneg_left hdist hpowNonneg
   have hiter := tail_iterate_eq_pow_mul_sub_block
     (tailShift_recurrence hrec h) N r
   have hboundTerminal : |tailShift T h (N + r)| ≤ bound (N + r) := by

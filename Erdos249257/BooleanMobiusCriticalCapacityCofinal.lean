@@ -154,8 +154,7 @@ theorem localMersennePrefixValue_halfGreedy_lt_half (n : ℕ) :
     (halfGreedyPrefixSupport n) hzero
   rw [← localMersennePrefixValue_eq_finiteErdosSum, heq'] at hodd
   obtain ⟨k, hk⟩ := hodd
-  norm_num at hk
-  omega
+  norm_num at hk <;> omega
 
 /-- The canonical form of the critical quotient socket.  The arbitrary
 finite core has disappeared: only the actual half-greedy prefix at the
@@ -1174,8 +1173,7 @@ theorem exists_laterProtectedExactLocalMersenneRow
       have hodd := finiteErdosSum_den_odd s.support hzero
       rw [← localMersennePrefixValue_eq_finiteErdosSum, heq] at hodd
       obtain ⟨k, hk⟩ := hodd
-      norm_num at hk
-      omega
+      norm_num at hk <;> omega
     have habove : (1 / 2 : ℚ) < localMersennePrefixValue s.support := by
       rcases lt_or_gt_of_ne hne with hlt | hgt
       · exact (hbelow hlt).elim

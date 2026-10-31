@@ -96,8 +96,10 @@ theorem finiteRationalKernel_hasSum {q : ℝ} (hq0 : 0 < q) (hq1 : q < 1)
   have hC := hasSum_sum (s := Finset.univ) (fun k _ => htail k)
   have h := hA.add hC
   convert h using 1
-  simp_rw [mul_sub, Finset.sum_sub_distrib, ← Finset.sum_mul]
-  ring
+  all_goals first
+    | rfl
+    | (funext t; simp only [finiteRationalKernel, Pi.add_apply, Finset.sum_apply])
+    | (simp_rw [mul_sub, Finset.sum_sub_distrib, ← Finset.sum_mul]; ring)
 
 /-- Summation of an externally supplied literal certificate for
 `PaperR12.actualMomentTerm`.  The pointwise identity is the finite certificate

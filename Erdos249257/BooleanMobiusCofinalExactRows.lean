@@ -100,7 +100,7 @@ theorem half_mem_mersenneAchievementSet_of_cofinalExactLocalRows
       · exact Filter.Eventually.of_forall fun N ↦ abs_nonneg _
       · exact Filter.Eventually.of_forall hbound
       · exact tendsto_nat_succ_div_two_pow_zero.comp hntop
-    simpa [Real.norm_eq_abs] using habs
+    simpa [Real.norm_eq_abs] using! habs
   exact isClosed_mersenneAchievementSet.mem_of_tendsto hy
     (Filter.Eventually.of_forall fun N ↦
       exactLocalMersenneRowValue_mem_mersenneAchievementSet

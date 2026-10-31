@@ -386,7 +386,8 @@ theorem prefix_add_mersenneTail_le_half_of_eventually_right
       atTop (nhds (mersenneTail D)) := by
     have hbaseTail :=
       (summable_mersenneTail D).tendsto_sum_tsum_nat.comp hindex
-    simpa only [Nat.add_assoc, Nat.add_comm, Nat.add_left_comm] using hbaseTail
+    simpa only [mersenneTail, Function.comp_def, Nat.add_assoc, Nat.add_comm,
+      Nat.add_left_comm] using hbaseTail
   have hlimit : Tendsto
       (fun j : ℕ => positiveMersenneSupportValue (↑u : Set ℕ) +
         ∑ k ∈ Finset.range (S + j - (D + 1)),

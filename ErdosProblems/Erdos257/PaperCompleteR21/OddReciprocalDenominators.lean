@@ -77,8 +77,7 @@ theorem paper_finite_sum_inv_odd_ne_half {ι : Type*} (s : Finset ι) (f : ι �
   have hd := paper_finite_sum_inv_odd_den_odd s f hodd
   rw [hhalf] at hd
   obtain ⟨k, hk⟩ := hd
-  norm_num at hk
-  omega
+  norm_num at hk <;> omega
 
 /-! ### Applied to the Mersenne denominators `2 ^ a - 1` -/
 
@@ -134,8 +133,7 @@ theorem paper_finite_support_series_ne_half
   have hodd := paper_finiteErdosSum_den_odd F hFzero
   rw [hrat] at hodd
   obtain ⟨k, hk⟩ := hodd
-  norm_num at hk
-  omega
+  norm_num at hk <;> omega
 
 /-- The consequence the same environment draws: a support representing `1/2`
 must be infinite. -/

@@ -244,8 +244,7 @@ theorem quadratic_scalar_tail_gcd {D p : ℕ}
       exact dvd_trans (by exact_mod_cast hb) (hfull n hn)
     · intro hb
       exact (finiteScalarGcd_dvd_iff D H b).mpr (fun n hn _ => hb n hn)
-  · dsimp [H]
-    have hsub : 2 * p - 1 + 1 = 2 * p := by omega
+  · have hsub : 2 * p - 1 + 1 = 2 * p := by omega
     nlinarith
 
 /-- Literal floor-division version of the displayed short-note hypothesis. -/

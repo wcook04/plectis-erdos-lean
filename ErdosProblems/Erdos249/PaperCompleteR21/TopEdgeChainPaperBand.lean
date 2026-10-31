@@ -152,7 +152,9 @@ theorem topEdgeResidueGap_or_of_paperAdjacentSuffixMidband
   · right
     apply (actualLcmTopEdgeResidueGap_iff_terminal a 0 (m + 1) m).2
     refine ⟨by omega, ?_, ?_⟩
-    · simpa [t, H, M, E₁] using hroom'
+    · first
+        | simpa [t, H, M, E₁] using hroom'
+        | omega
     · rw [show m + 1 - m = 1 by omega]
       simp only [Nat.add_zero]
       have hyWord :
@@ -161,7 +163,11 @@ theorem topEdgeResidueGap_or_of_paperAdjacentSuffixMidband
               (periodLcm (2 ^ a) + 1) m % 2 ^ m := by
         simpa using diagonalSuffixResidue_eq_windowDiscrepancy (2 ^ a) 1 m
       rw [← hyWord]
-      simpa [t, H, M, y, E₁, Nat.add_assoc] using hyGap
+      first
+        | simpa [t, H, M, y, E₁, Nat.add_assoc] using hyGap
+        | (have h : diagonalSuffixResidue (2 ^ a) 1 m ≤
+              (2 : ℤ) ^ m - ((2 * periodLcm (2 ^ a) + m + 3 : ℕ) : ℤ) := hyGap
+           omega)
   exfalso
   have hxTop : M - E₀ < x := lt_of_not_ge hxGap
   have hyTop : M - E₁ < y := lt_of_not_ge hyGap

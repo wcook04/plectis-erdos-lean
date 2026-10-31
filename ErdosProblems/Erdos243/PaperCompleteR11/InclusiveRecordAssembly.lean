@@ -49,7 +49,7 @@ theorem RecordGrowthOrbit.no_inclusive_record_cap (O : RecordGrowthOrbit) :
       intro n
       have hh := Nat.coprime_div_gcd_div_gcd (hGpos (s + n))
       change Nat.Coprime (O.U (s + n) / g) (O.D (s + n) / g)
-      simpa only [← hstable n] using hh
+      simpa only [← hstable n] using! hh
     let W := V.D 2
     have hW : 1 < W := by
       have ha2 : 2 ≤ V.a 1 := by
@@ -198,7 +198,7 @@ theorem canonical_inclusive_record_boundary
       c * recordLogLog (runningMax (canonicalNaturalNumerator a p q) n) <
         ((canonicalNaturalNumerator a p q (n + 1) -
           runningMax (canonicalNaturalNumerator a p q) n : ℕ) : ℝ) := by
-  simpa only [canonicalRecordGrowthOrbit] using
+  simpa only [canonicalRecordGrowthOrbit] using!
     (canonicalRecordGrowthOrbit a ha hapos p q hq hs hgrowth hnot).cofinal_inclusive_record
 
 end ErdosProblems.Erdos243.PaperCompleteR11

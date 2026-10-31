@@ -119,10 +119,10 @@ lemma tsum_evalTerm_poly (p : ℚ[X]) (z : ℂ) :
 
 lemma evalTerm_mul_poly (p : ℚ[X]) (f : ℚ⟦X⟧) (z : ℂ) (n : ℕ) :
     evalTerm ((p : ℚ⟦X⟧) * f) z n
-      = ∑ kl ∈ Finset.antidiagonal n, evalTerm (p : ℚ⟦X⟧) z kl.1 * evalTerm f z kl.2 := by
+      = ∑ kl ∈ Finset.HasAntidiagonal.antidiagonal n, evalTerm (p : ℚ⟦X⟧) z kl.1 * evalTerm f z kl.2 := by
   simp only [evalTerm, PowerSeries.coeff_mul, Rat.cast_sum, Rat.cast_mul, Finset.sum_mul]
   refine Finset.sum_congr rfl fun kl hkl => ?_
-  rw [Finset.mem_antidiagonal] at hkl
+  rw [Finset.HasAntidiagonal.mem_antidiagonal] at hkl
   rw [← hkl, pow_add]
   ring
 
@@ -135,7 +135,7 @@ lemma evalTerm_mul_poly_summable_tsum (p : ℚ[X]) (f : ℚ⟦X⟧) (z : ℂ)
         = (p.map (algebraMap ℚ ℂ)).eval z * ∑' n, evalTerm f z n := by
   have hp := evalTerm_poly_norm_summable p z
   refine ⟨Summable.of_norm ?_, ?_⟩
-  · simpa only [evalTerm_mul_poly] using
+  · simpa only [evalTerm_mul_poly] using!
       summable_norm_sum_mul_antidiagonal_of_summable_norm hp hf
   · rw [← tsum_evalTerm_poly p z,
       tsum_mul_tsum_eq_tsum_sum_antidiagonal_of_summable_norm hp hf]
@@ -181,7 +181,7 @@ theorem tsum_divisors_eq_lambert (w : ℂ) (hw : ‖w‖ < 1) :
   have hid : ∑' n : ℕ+, w ^ (n : ℕ) / (1 - w ^ (n : ℕ))
       = ∑' n : ℕ+, ((n : ℕ).divisors.card : ℂ) * w ^ (n : ℕ) := by
     simpa only [pow_zero, one_mul, ArithmeticFunction.sigma_zero_apply]
-      using tsum_pow_div_one_sub_eq_tsum_sigma hw 0
+      using! tsum_pow_div_one_sub_eq_tsum_sigma hw 0
   calc ∑' n : ℕ, (n.divisors.card : ℂ) * w ^ n
       = ∑' n : ℕ+, ((n : ℕ).divisors.card : ℂ) * w ^ (n : ℕ) := by
         rw [← tsum_zero_pnat_eq_tsum_nat hsum]
@@ -217,11 +217,11 @@ theorem orbitSeries_eval {M : ℕ} (hM : 1 ≤ M) (z : ℂ) (hz : ‖z‖ < 1) :
   refine ⟨?_, ?_⟩
   · refine (hinj.summable_iff (f := fun n => ‖evalTerm (orbitSeries M) z n‖)
       fun n hn => (congrArg norm (evalTerm_orbit_off z hn)).trans norm_zero).mp ?_
-    simpa only [Function.comp_def, evalTerm_orbit_mul hM z] using divisors_norm_summable _ hzM
+    simpa only [Function.comp_def, evalTerm_orbit_mul hM z] using! divisors_norm_summable _ hzM
   · have hs : HasSum (fun n => evalTerm (orbitSeries M) z n)
         (∑' m : ℕ, (m.divisors.card : ℂ) * (z ^ M) ^ m) := by
       refine (hinj.hasSum_iff fun n hn => evalTerm_orbit_off z hn).mp ?_
-      simpa only [Function.comp_def, evalTerm_orbit_mul hM z] using
+      simpa only [Function.comp_def, evalTerm_orbit_mul hM z] using!
         (divisors_norm_summable _ hzM).of_norm.hasSum
     rw [hs.tsum_eq, tsum_divisors_eq_lambert _ hzM]
 

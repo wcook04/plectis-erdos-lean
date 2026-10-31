@@ -56,7 +56,7 @@ theorem factorial_scaled_rational_eq_intCast
     _ = ((((n.factorial / q : ℕ) : ℤ) * a : ℤ) : ℚ) := by
       have h := congrArg (fun z : ℤ => (z : ℚ))
         (mul_comm a ((n.factorial / q : ℕ) : ℤ))
-      simpa only [Int.cast_mul, Int.cast_natCast] using h
+      simpa only [Int.cast_mul, Int.cast_natCast] using! h
 
 /-- Every rational number has eventually zero canonical factorial digits.
 The explicit threshold is its displayed denominator. -/

@@ -51,11 +51,11 @@ theorem exceptional_mul_prod_le_add_sum_sub_one
       have hza1 : 1 ≤ z a := hz1 a (Finset.mem_insert_self _ _)
       have hza0 : 0 ≤ z a := le_trans (by norm_num) hza1
       have hprodS1 : 1 ≤ ∏ i ∈ S, z i := by
-        exact Finset.one_le_prod
+        exact Finset.one_le_prod₀
           (fun i hi => hz1 i (Finset.mem_insert_of_mem hi))
       have hya0 : 0 ≤ y * z a := mul_nonneg hy0 hza0
       have htotal' : (y * z a) * ∏ i ∈ S, z i ≤ 1 := by
-        simpa [Finset.prod_insert ha, mul_assoc] using htotal
+        simpa [Finset.prod_insert ha, mul_assoc] using! htotal
       have hya_le_total : y * z a ≤ (y * z a) * ∏ i ∈ S, z i :=
         le_mul_of_one_le_right hya0 hprodS1
       have hya1 : y * z a ≤ 1 := le_trans hya_le_total htotal'
@@ -82,8 +82,8 @@ theorem exists_two_lt_one_of_product_le_one_and_sum_lt_card_sub_one_add_prod
   have hTcard : T.card ≤ 1 := by
     rw [Finset.card_le_one_iff]
     intro i j hi hj
-    have hi' : i ∈ S ∧ x i < 1 := by simpa [T] using hi
-    have hj' : j ∈ S ∧ x j < 1 := by simpa [T] using hj
+    have hi' : i ∈ S ∧ x i < 1 := by simpa [T] using! hi
+    have hj' : j ∈ S ∧ x j < 1 := by simpa [T] using! hj
     by_contra hij
     exact htwo ⟨i, hi'.1, j, hj'.1, hij, hi'.2, hj'.2⟩
   have hSne : S.Nonempty := Finset.nonempty_of_ne_empty (by
@@ -116,7 +116,7 @@ theorem exists_two_lt_one_of_product_le_one_and_sum_lt_card_sub_one_add_prod
     linarith
   by_cases hTne : T.Nonempty
   · obtain ⟨i, hiT⟩ := hTne
-    have hi' : i ∈ S ∧ x i < 1 := by simpa [T] using hiT
+    have hi' : i ∈ S ∧ x i < 1 := by simpa [T] using! hiT
     apply himpossible i hi'.1
     intro j hjErase
     by_contra hj
@@ -152,8 +152,8 @@ theorem exists_two_lt_one_of_sum_lt_card_sub_one_add_product_bonus
   have hTcard : T.card ≤ 1 := by
     rw [Finset.card_le_one_iff]
     intro i j hi hj
-    have hi' : i ∈ S ∧ x i < 1 := by simpa [T] using hi
-    have hj' : j ∈ S ∧ x j < 1 := by simpa [T] using hj
+    have hi' : i ∈ S ∧ x i < 1 := by simpa [T] using! hi
+    have hj' : j ∈ S ∧ x j < 1 := by simpa [T] using! hj
     by_contra hij
     exact htwo ⟨i, hi'.1, j, hj'.1, hij, hi'.2, hj'.2⟩
   have hSne : S.Nonempty := Finset.nonempty_of_ne_empty (by
@@ -170,7 +170,7 @@ theorem exists_two_lt_one_of_sum_lt_card_sub_one_add_product_bonus
     have hprodErase : ∏ j ∈ S.erase i, x j ≤ M ^ (S.erase i).card := by
       calc
         ∏ j ∈ S.erase i, x j ≤ ∏ _j ∈ S.erase i, M := by
-          exact Finset.prod_le_prod
+          exact Finset.prod_le_prod₀
             (fun j hj => hx0 j (Finset.mem_of_mem_erase hj))
             (fun j hj => hxM j (Finset.mem_of_mem_erase hj))
         _ = M ^ (S.erase i).card := by simp
@@ -198,7 +198,7 @@ theorem exists_two_lt_one_of_sum_lt_card_sub_one_add_product_bonus
     linarith
   by_cases hTne : T.Nonempty
   · obtain ⟨i, hiT⟩ := hTne
-    have hi' : i ∈ S ∧ x i < 1 := by simpa [T] using hiT
+    have hi' : i ∈ S ∧ x i < 1 := by simpa [T] using! hiT
     apply himpossible i hi'.1
     intro j hjErase
     by_contra hj

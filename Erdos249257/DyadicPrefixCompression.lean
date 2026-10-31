@@ -48,7 +48,8 @@ theorem dyadicResidualIntNumerator_coprime_oddDenominator
     hpowDint.mul_left hrDint
   have hadd := hprod.neg_left.add_mul_left_left p
   rw [Int.isCoprime_iff_nat_coprime] at hadd
-  simpa only [dyadicResidualIntNumerator, sub_eq_add_neg, mul_comm, add_comm]
+  simpa only [dyadicResidualIntNumerator, sub_eq_add_neg, mul_comm, add_comm,
+    Int.natAbs_natCast]
     using hadd
 
 /-- Integer form of the exact denominator sandwich.  It works for positive,
@@ -1686,7 +1687,7 @@ theorem two_three_dyadicPrefix_fixture :
     ({2, 3} : Finset ℕ) (by simp) (by simp)
   norm_num [finiteErdosSum] at horder
   refine ⟨by norm_num [finiteErdosSum], by norm_num [finiteErdosSum], ?_, ?_, ?_⟩
-  · simpa using horder
+  · exact horder.trans (by decide)
   · norm_num [doublingWrapCount, doublingWrapDigit, doublingResidue,
       Finset.sum_range_succ]
   · norm_num [dyadicResidualRat, dyadicResidualNumerator]
@@ -1704,7 +1705,7 @@ theorem five_term_dyadicPrefix_fixture :
     ({2, 3, 6, 7, 14} : Finset ℕ) (by simp) (by simp)
   norm_num [finiteErdosSum] at horder
   refine ⟨by norm_num [finiteErdosSum], by norm_num [finiteErdosSum], ?_, ?_, ?_⟩
-  · simpa using horder
+  · exact horder.trans (by decide)
   · norm_num [doublingWrapCount, doublingWrapDigit, doublingResidue,
       Finset.sum_range_succ]
   · norm_num [dyadicResidualRat, dyadicResidualNumerator]
@@ -1807,7 +1808,7 @@ theorem halfGreedyResidualDisplayedNumerator_coprime_denominator
   have hadd := hprod.neg_left.add_mul_left_left (1 : ℤ)
   rw [Int.isCoprime_iff_nat_coprime] at hadd
   simpa [halfGreedyResidualDisplayedNumerator, q, D,
-    halfGreedyPrefixDenominator, add_comm, mul_comm] using hadd
+    halfGreedyPrefixDenominator, sub_eq_add_neg, add_comm, mul_comm] using hadd
 
 theorem halfGreedyNextDyadicExcessNumerator_coprime_denominator
     (n : ℕ) :
@@ -2407,7 +2408,8 @@ theorem reducedTakeStep_coprime
     hU_tail.coprime_dvd_left (Nat.div_dvd_of_dvd heU)
   have hUred_dred : Nat.Coprime (U / e) (d / e) :=
     Nat.coprime_div_gcd_div_gcd hepos
-  simpa [Nat.mul_assoc] using hUred_dred.mul_right hUred_tail
+  simpa only [U, e, reducedTakeStepCancellation, Nat.mul_assoc] using
+    hUred_dred.mul_right hUred_tail
 
 /-- Exact rational take-step normal form. -/
 theorem reducedTakeStep_eq
@@ -2753,8 +2755,8 @@ theorem halfGreedy_takenRank_reducedTakeStep
     have hcopInt :
         Nat.Coprime (((U / e : ℕ) : ℤ).natAbs)
           ((Dnext : ℤ).natAbs) := by
-      simpa using hcopNext
-    simpa using Rat.num_div_eq_of_coprime
+      simpa only [Int.natAbs_natCast] using hcopNext
+    exact Rat.num_div_eq_of_coprime
       (a := ((U / e : ℕ) : ℤ)) (b := (Dnext : ℤ))
       (by exact_mod_cast hDnextpos) hcopInt
   have hdenNext :
@@ -2883,7 +2885,8 @@ theorem halfGreedy_takenRank_residualCancellation
   have htakeGeneric : 2 * D₁ ≤ (d * D₁ - 2 * N) * q₁ := by
     simpa only [pNat, hDfac] using htakeFactored
   have hDodd : Odd D := by
-    simpa [D, x] using halfGreedyPrefixDenominator_odd n
+    simpa only [D, x, halfGreedyPrefixDenominator] using
+      halfGreedyPrefixDenominator_odd n
   have h2Dcop : Nat.Coprime 2 D := Nat.coprime_two_left.mpr hDodd
   have hdodd : Odd d := Nat.coprime_two_left.mp
     (h2Dcop.coprime_dvd_right hdD)
@@ -3047,9 +3050,11 @@ theorem halfGreedy_take_raw_reduces_to_next
       halfGreedyResidualDisplayedNumerator (n + 1) := by
     simp [P', Int.natAbs_of_nonneg hp0']
   have hDpos : 0 < D := by
-    simpa [D] using Rat.den_pos (halfGreedyPrefixRat n)
+    simpa only [D, halfGreedyPrefixDenominator] using
+      Rat.den_pos (halfGreedyPrefixRat n)
   have hDpos' : 0 < D' := by
-    simpa [D'] using Rat.den_pos (halfGreedyPrefixRat (n + 1))
+    simpa only [D', halfGreedyPrefixDenominator] using
+      Rat.den_pos (halfGreedyPrefixRat (n + 1))
   have hqpos : 0 < q := by
     dsimp [q]
     exact pow_sub_one_pos_of_ne_zero 2 (n + 1) (by omega) (by omega)
@@ -3621,7 +3626,7 @@ theorem rat_mem_mersenneDyadicSliver_consecutive_gcd_lt_or_exception
     rw [hpcastRat]
     simpa only [q] using (Rat.num_div_den x).symm
   have hMcast : (M : ℚ) = (2 : ℚ) ^ c - 1 := by
-    simpa only [M] using natCast_pow_sub_one 2 c (by omega)
+    exact natCast_pow_sub_one 2 c (by omega)
   have hskipForm : x < (1 : ℚ) / (M : ℚ) := by
     rw [hMcast]
     simpa only [mersenneWeightRat] using hskip
@@ -4090,8 +4095,8 @@ theorem rat_sub_inv_nat_twoStage_normalForm
     rw [hnormal]
     have hcopInt :
         Nat.Coprime (((A / e : ℕ) : ℤ).natAbs) ((B : ℤ).natAbs) := by
-      simpa using hcopB
-    simpa using Rat.num_div_eq_of_coprime
+      simpa only [Int.natAbs_natCast] using hcopB
+    exact Rat.num_div_eq_of_coprime
       (a := ((A / e : ℕ) : ℤ)) (b := (B : ℤ))
       (by exact_mod_cast hBpos) hcopInt
   have hden :
@@ -4101,7 +4106,7 @@ theorem rat_sub_inv_nat_twoStage_normalForm
       (A / e) B hBpos.ne' hcopB
   refine ⟨?_, ?_⟩
   · change (x - (1 : ℚ) / Q).num.natAbs = A / e
-    simpa using congrArg Int.natAbs hnum
+    simpa only [Int.natAbs_natCast] using congrArg Int.natAbs hnum
   · simpa only [B] using hden
 
 /-- The next Mersenne weight lies strictly below the current dyadic cap. -/
@@ -4384,7 +4389,8 @@ theorem greedyHalf_unsafeSkip_consecutive_gcd_lt
   let p := (halfGreedyResidualDisplayedNumerator n).natAbs
   let D := halfGreedyPrefixDenominator n
   have hD : 0 < D := by
-    simpa only [D] using Rat.den_pos (halfGreedyPrefixRat n)
+    simpa only [D, halfGreedyPrefixDenominator] using
+      Rat.den_pos (halfGreedyPrefixRat n)
   have hpodd : Odd p := by
     simpa only [p] using
       (halfGreedyResidualDisplayedNumerator_odd n).natAbs
@@ -4490,7 +4496,8 @@ theorem half_mem_mersenneAchievementSet_of_unsafeSkipGcdOvershootSupply
     apply hunsafe
     simp only [BlockDyadicSafeAt, p, hp0, zero_mul, zero_le]
   have hD : 0 < D := by
-    simpa only [D] using Rat.den_pos (halfGreedyPrefixRat n)
+    simpa only [D, halfGreedyPrefixDenominator] using
+      Rat.den_pos (halfGreedyPrefixRat n)
   have hover : Nat.gcd D (2 ^ (n + 1) - 1) * p ≤
       2 * D - p * (2 ^ (n + 1) - 1) := by
     simpa only [p, D] using hsupply n hskip hunsafe

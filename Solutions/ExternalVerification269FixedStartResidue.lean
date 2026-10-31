@@ -135,7 +135,7 @@ theorem eventually_fixedStartResidue_formula (B lo : ℕ) (hB : 0 < B) :
     ErdosProblems.Erdos269.trueNormalizedState,
     ErdosProblems.Erdos269.windowForcing,
     ErdosProblems.Erdos269.PaperR7.actualWindowProduct,
-    ErdosProblems.Erdos269.PaperR7.actualWindowForcing] using
+    ErdosProblems.Erdos269.PaperR7.actualWindowForcing] using!
     ErdosProblems.Erdos269.PaperR14.eventually_fixedStartResidue_formula B lo hB
 
 theorem fixedStartResidue_ratio_tendsto (B lo : ℕ) (hB : 0 < B) :
@@ -188,7 +188,7 @@ theorem fixedStartResidue_ratio_tendsto (B lo : ℕ) (hB : 0 < B) :
     ErdosProblems.Erdos269.trueNormalizedState,
     ErdosProblems.Erdos269.windowForcing,
     ErdosProblems.Erdos269.PaperR7.actualWindowProduct,
-    ErdosProblems.Erdos269.PaperR7.actualWindowForcing] using
+    ErdosProblems.Erdos269.PaperR7.actualWindowForcing] using!
     ErdosProblems.Erdos269.PaperR14.fixedStartResidue_ratio_tendsto B lo hB
 
 theorem eventually_fixedStartResidue_eq_tail_of_integral
@@ -238,7 +238,7 @@ theorem eventually_fixedStartResidue_eq_tail_of_integral
     ErdosProblems.Erdos269.trueNormalizedState,
     ErdosProblems.Erdos269.windowForcing,
     ErdosProblems.Erdos269.PaperR7.actualWindowProduct,
-    ErdosProblems.Erdos269.PaperR7.actualWindowForcing] using
+    ErdosProblems.Erdos269.PaperR7.actualWindowForcing] using!
     ErdosProblems.Erdos269.PaperR14.eventually_fixedStartResidue_eq_tail_of_integral B lo hB hInt
 
 end Erdos249257.ExternalVerification269FixedStartResidue

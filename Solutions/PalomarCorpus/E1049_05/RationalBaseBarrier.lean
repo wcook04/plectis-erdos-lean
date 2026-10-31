@@ -23,7 +23,7 @@ theorem rationalBaseClearedTailQ_succ
         B * coeff (N + 1) * s ^ (N + 1) := by
   simpa [rationalBaseClearedTailQ, rationalBasePrefixQ,
     ErdosProblems.Erdos1049.rationalBaseClearedTailQ,
-    ErdosProblems.Erdos1049.rationalBasePrefixQ] using
+    ErdosProblems.Erdos1049.rationalBasePrefixQ] using!
     ErdosProblems.Erdos1049.rationalBaseClearedTailQ_succ hr N
 
 theorem twoPow_le_rationalBaseForcingNat
@@ -31,14 +31,14 @@ theorem twoPow_le_rationalBaseForcingNat
     (hs : 2 ≤ s) (hB : 1 ≤ B) (hc : 1 ≤ coeff (N + 1)) :
     2 ^ (N + 1) ≤ rationalBaseForcingNat s B coeff N := by
   simpa [rationalBaseForcingNat,
-    ErdosProblems.Erdos1049.rationalBaseForcingNat] using
+    ErdosProblems.Erdos1049.rationalBaseForcingNat] using!
     ErdosProblems.Erdos1049.twoPow_le_rationalBaseForcingNat hs hB hc
 
 theorem threeHalves_no_coordinatewiseCorridor
     {N K Q digit : ℕ} (hN : 1 ≤ N) (hK : 1 ≤ K) :
     ¬ CoordinatewiseCorridor 3 2 N K Q digit := by
   simpa [CoordinatewiseCorridor,
-    ErdosProblems.Erdos1049.CoordinatewiseCorridor] using
+    ErdosProblems.Erdos1049.CoordinatewiseCorridor] using!
     ErdosProblems.Erdos1049.threeHalves_no_coordinatewiseCorridor
       (Q := Q) (digit := digit) hN hK
 

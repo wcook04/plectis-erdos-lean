@@ -161,6 +161,6 @@ theorem rational_denominator_not_dvd_fiftynine_factorial
     rational_denominator_not_dvd_pred_factorial_of_nonunit_carry
       (m := 60) (by norm_num)
       factorialGapStepCarry_sixty_ne_one hq hseries
-  simpa using h
+  simpa using! h
 
 end ErdosProblems.Erdos68

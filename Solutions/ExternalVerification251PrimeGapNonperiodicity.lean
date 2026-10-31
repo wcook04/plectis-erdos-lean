@@ -29,7 +29,7 @@ theorem primeGap0_not_eventually_periodic
     {h : ℕ} (hpos : 0 < h) :
     ¬ ∃ N₀, ∀ N, N₀ ≤ N →
       primeGap0 (N + h + 1) = primeGap0 (N + 1) := by
-  simpa only [prime0, primeGap0, primeDyadicTerm, primeGapDyadicTerm, ErdosProblems.Erdos251.prime0, ErdosProblems.Erdos251.primeGap0, ErdosProblems.Erdos251.primeDyadicTerm, ErdosProblems.Erdos251.primeGapDyadicTerm] using
+  simpa only [prime0, primeGap0, primeDyadicTerm, primeGapDyadicTerm, ErdosProblems.Erdos251.prime0, ErdosProblems.Erdos251.primeGap0, ErdosProblems.Erdos251.primeDyadicTerm, ErdosProblems.Erdos251.primeGapDyadicTerm] using!
     ErdosProblems.Erdos251.primeGap0_not_eventually_periodic hpos
 
 end Erdos249257.ExternalVerification251PrimeGapNonperiodicity

@@ -53,7 +53,11 @@ theorem monic_quintic_enumeration (p : ℂ[X]) (hp : p.Monic)
   have hl : p.roots.toList.length = 5 := by simpa using hc
   obtain ⟨a, b, c, d, e, he⟩ := list_length_five hl
   have hr : p.roots = a ::ₘ b ::ₘ c ::ₘ d ::ₘ e ::ₘ 0 := by
-    simpa [he] using (Multiset.coe_toList p.roots).symm
+    first
+      | simpa [he] using! (Multiset.coe_toList p.roots).symm
+      | (have h := (Multiset.coe_toList p.roots).symm
+         rw [he] at h
+         exact h)
   refine ⟨![a, b, c, d, e], ?_⟩
   intro z
   rw [(IsAlgClosed.splits p).eq_prod_roots_of_monic hp, hr]

@@ -67,12 +67,12 @@ theorem dyadicSmoothShell235_card_le_square (a : ℕ) :
         (weight := 3 ^ j₁ * 5 ^ k₁)
         (by norm_num)
         (by rw [pow_succ]; simp [Nat.mul_comm])
-        (by simpa [smooth3Val, mul_assoc] using hshell₁.1)
-        (by simpa [smooth3Val, mul_assoc] using hshell₁.2)
-        (by simpa [smooth3Val, mul_assoc] using hshell₂.1)
-        (by simpa [smooth3Val, mul_assoc] using hshell₂.2)
+        (by simpa [smooth3Val, mul_assoc] using! hshell₁.1)
+        (by simpa [smooth3Val, mul_assoc] using! hshell₁.2)
+        (by simpa [smooth3Val, mul_assoc] using! hshell₂.1)
+        (by simpa [smooth3Val, mul_assoc] using! hshell₂.2)
       simp [hi]
-  simpa [target, pow_two] using hcard
+  simpa [target, pow_two] using! hcard
 
 /-- The exact ordered block digit is at most fifteen times the shell
 cardinality: each threshold count is the cardinality of a filter. -/
@@ -146,8 +146,7 @@ theorem summable_dyadicShellMassR235 : Summable dyadicShellMassR235 := by
   have hshift : Summable
       (fun n : ℕ => (((n + 1 : ℕ) : ℝ) ^ 2) *
         (1 / 2 : ℝ) ^ (n + 1)) := by
-    simpa only [Function.comp_apply, Nat.add_comm] using
-      hpoly.comp_injective (add_right_injective 1)
+    exact (summable_nat_add_iff 1).mpr hpoly
   have hmajor : Summable
       (fun n : ℕ => 30 * ((((n + 1 : ℕ) : ℝ) ^ 2) *
         (1 / 2 : ℝ) ^ (n + 1))) := hshift.mul_left 30
@@ -170,7 +169,7 @@ theorem dyadicShellTsumTailR235_eq_shell_add (a : ℕ) :
   have hsplit := ha.sum_add_tsum_nat_add 1
   rw [Finset.sum_range_one] at hsplit
   unfold dyadicShellTsumTailR235
-  simpa only [Nat.add_zero, Nat.add_assoc, Nat.one_add] using hsplit.symm
+  simpa only [Nat.add_zero, Nat.add_assoc, Nat.one_add] using! hsplit.symm
 
 /-- The genuine infinite dyadic-shell tail obeys the exact ordered affine
 radix recurrence at every scale. -/
@@ -195,6 +194,6 @@ theorem dyadicShellTsumTail_integer_or_cofinal_far :
   apply dyadicBlockBase235_integer_or_cofinal_far
     (fun a => (dyadicOrderedBlockDigit235 a : ℤ))
   intro a
-  simpa using dyadicNormalizedShellTsumTailR235_succ a
+  simpa using! dyadicNormalizedShellTsumTailR235_succ a
 
 end ErdosProblems.Erdos269

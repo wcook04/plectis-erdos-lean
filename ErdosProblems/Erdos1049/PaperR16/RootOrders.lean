@@ -50,7 +50,7 @@ theorem lambert_primitive_power_radial_gcd (d m : ℕ)
             ((((d / Nat.gcd d m : ℕ) : ℂ) * (Nat.gcd d m : ℂ)) * (m : ℂ)) := by
         field_simp [hmC, hqC, hgC] <;> ring
       _ = (Nat.gcd d m : ℂ) / ((d : ℂ) * (m : ℂ)) := by rw [hdiv]
-  simpa only [hweight] using hlim
+  simpa only [hweight] using! hlim
 
 /-- Exact primitive-root count supplied by the pinned complex-root API. -/
 theorem primitive_root_count (d : ℕ) :
@@ -82,7 +82,7 @@ theorem isPrimitiveRoot_mahler_power (ell k s i : ℕ)
         _ = ζ ^ (k ^ i) := by
           have hn' : s + (i - s) = i := by omega
           rw [hn']
-    simpa only [he, Nat.sub_eq_zero_of_le hs, pow_zero, mul_one] using hp
+    simpa only [he, Nat.sub_eq_zero_of_le hs, pow_zero, mul_one] using! hp
 
 lemma mahler_order_product (ell k s i : ℕ) :
     k ^ i * (ell * k ^ (s - i)) = ell * k ^ max s i := by
@@ -104,7 +104,7 @@ theorem lambert_mahler_radial_weight (ell k s i : ℕ)
   have hw : (((k ^ i : ℕ) : ℂ) * ((ell * k ^ (s - i) : ℕ) : ℂ)) =
       (ell : ℂ) * (k : ℂ) ^ max s i := by
     exact_mod_cast mahler_order_product ell k s i
-  simpa only [← mul_inv, hw] using hlim
+  simpa only [← mul_inv, hw] using! hlim
 
 /-- An elementary source of pairwise distinct root orders, coprime to `k`. -/
 def testOrder (k s n : ℕ) : ℕ := (k * n + 1) * k ^ s
@@ -123,7 +123,7 @@ lemma testOrder_coprime (k n : ℕ) : (k * n + 1).Coprime k := by
     have hright : Nat.gcd (k * n + 1) k ∣ k * n :=
       dvd_mul_of_dvd_left (Nat.gcd_dvd_right (k * n + 1) k) n
     have hsub := Nat.dvd_sub hleft hright
-    simpa using hsub
+    simpa using! hsub
   · exact one_dvd _
 
 lemma testRoot_primitive (k s n : ℕ) (hk : 0 < k) :

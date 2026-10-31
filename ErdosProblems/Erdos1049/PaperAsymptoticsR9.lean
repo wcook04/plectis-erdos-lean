@@ -46,7 +46,7 @@ lemma littleO_bound (f : ℕ → ℝ) (hf : f =o[atTop] sqScale)
     ∀ᶠ n in atTop, |f n| ≤ ε * sqScale n := by
   have hb := hf.def hε
   filter_upwards [hb] with n hn
-  simpa only [Real.norm_eq_abs, abs_of_nonneg (sqScale_nonneg n)] using hn
+  simpa only [Real.norm_eq_abs, abs_of_nonneg (sqScale_nonneg n)] using! hn
 
 lemma QuadUpper.mono {f : ℕ → ℝ} {a b : ℝ}
     (hf : QuadUpper f a) (hab : a ≤ b) : QuadUpper f b := by
@@ -173,7 +173,7 @@ lemma tendsto_zero_of_exp_bound (f : ℕ → ℝ) (c : ℝ) (hc : 0 < c)
     |f n| ≤ Real.exp (-c * sqScale n) := hN n hnN
     _ < Real.exp (Real.log ε) := Real.exp_lt_exp.mpr hexp
     _ = ε := Real.exp_log hε
-  simpa only [Real.dist_eq, sub_zero] using hsmall
+  simpa only [Real.dist_eq, sub_zero] using! hsmall
 
 lemma QuadExpUpper.tendsto_zero {f : ℕ → ℝ} {a : ℝ}
     (hf : QuadExpUpper f a) (ha : a < 0) : Tendsto f atTop (𝓝 0) := by
@@ -181,7 +181,7 @@ lemma QuadExpUpper.tendsto_zero {f : ℕ → ℝ} {a : ℝ}
   apply tendsto_zero_of_exp_bound f (-a / 2) hc
   filter_upwards [hf (-a / 2) hc] with n hn
   have he : a + -a / 2 = -(-a / 2) := by ring
-  simpa only [he] using hn
+  simpa only [he] using! hn
 
 /-- Complete successor bookkeeping: both products, not just A_n L_n. -/
 theorem cross_product_limits (A L : ℕ → ℝ) (α β : ℝ)

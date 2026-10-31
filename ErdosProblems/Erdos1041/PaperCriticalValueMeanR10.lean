@@ -38,7 +38,7 @@ theorem critical_unit_quadratic {n : ℕ} (hn : 2 ≤ n) (p : ℂ[X])
     exact hpow
   have h := (Finset.sum_le_sum (fun j _ => ht j)).trans
     (equal_free_point_quadratic hm c hcdisc)
-  simpa only [hcast] using h
+  simpa only [hcast] using! h
 
 /-- Every lower nonnegative exponent, in cardinality-normalised form. -/
 theorem critical_unit_moment {n : ℕ} (hn : 2 ≤ n) (p : ℂ[X])
@@ -53,8 +53,8 @@ theorem critical_unit_moment {n : ℕ} (hn : 2 ≤ n) (p : ℂ[X])
     simp only [Fintype.card_fin, Nat.cast_sub (by omega : 1 ≤ n), Nat.cast_one]
   have h := PaperMomentConsumers.lower_moment (fun j => ‖p.eval (c j)‖)
     (fun j => norm_nonneg _) (div_pos (by norm_num : (0 : ℝ) < 2) hn1) ht0 ht
-    (by simpa only [hcast] using critical_unit_quadratic hn p hp hdeg hroots c hc)
-  simpa only [hcast] using h
+    (by simpa only [hcast] using! critical_unit_quadratic hn p hp hdeg hroots c hc)
+  simpa only [hcast] using! h
 
 /-- Scaling an actual monic polynomial supplies its own unit-disc hypotheses. -/
 theorem critical_disc_moment_positive_radius {n : ℕ} (hn : 2 ≤ n) (p : ℂ[X])
@@ -78,7 +78,7 @@ theorem critical_disc_moment_positive_radius {n : ℕ} (hn : 2 ≤ n) (p : ℂ[X
   rw [show (∑ j, ‖p.eval (c j)‖ ^ t) =
     R ^ ((n : ℝ) * t) * (∑ j, ‖q.eval (d j)‖ ^ t) by
       simp only [he, Finset.mul_sum]]
-  simpa only [mul_comm] using
+  simpa only [mul_comm] using!
     mul_le_mul_of_nonneg_left H (Real.rpow_nonneg hR.le _)
 
 /-- Positive-exponent form including the degenerate enclosing disc. -/
@@ -107,14 +107,14 @@ theorem paper_critical_value_mean : PaperAnalyticTargets.CriticalValueMean := by
   · have H := critical_disc_moment hn p hp hdeg h R hR hroots c hc
       (2 / ((n : ℝ) - 1)) (div_pos (by norm_num) hmpos) le_rfl
     have he : (n : ℝ) * (2 / ((n : ℝ) - 1)) = 2 * (n : ℝ) / ((n : ℝ) - 1) := by ring
-    simpa only [he] using H
+    simpa only [he] using! H
   · have ht : 1 / (n : ℝ) ≤ 2 / ((n : ℝ) - 1) := by
       apply (div_le_div_iff₀ hnpos hmpos).mpr
       linarith
     have H := critical_disc_moment hn p hp hdeg h R hR hroots c hc
       (1 / (n : ℝ)) (div_pos (by norm_num) hnpos) ht
     have he : (n : ℝ) * (1 / (n : ℝ)) = 1 := by field_simp
-    simpa only [he, Real.rpow_one] using H
+    simpa only [he, Real.rpow_one] using! H
 
 /-- The older long-paper 1/(n-1) budget, now in every degree, hence also in
 its original domain 2 ≤ n ≤ 5. -/
@@ -130,7 +130,7 @@ theorem paper_critical_value_power_budget {n : ℕ} (hn : 2 ≤ n) (p : ℂ[X])
   have H := critical_disc_moment hn p hp hdeg h R hR hroots c hc
     (1 / ((n : ℝ) - 1)) (div_pos (by norm_num) hmpos)
     ((div_le_div_iff_of_pos_right hmpos).mpr (by norm_num))
-  simpa only [mul_one_div] using H
+  simpa only [mul_one_div] using! H
 
 /-- The older theorem as literally quantified in the long paper. -/
 theorem paper_critical_value_budget_degrees_two_through_five {n : ℕ}

@@ -47,7 +47,7 @@ theorem summable_primeWeighted_enlarge (b : ℕ) (hb : 2 ≤ b)
     (fun a => Set.indicator_nonneg (fun a _ => primeWeightedTerm_nonneg b hb Q a) a) _ hs
   intro a
   by_cases ha : a ∈ A
-  · simpa only [Set.indicator_of_mem ha] using primeWeightedTerm_antitone_primeSet b hb hPQ a
+  · simpa only [Set.indicator_of_mem ha] using! primeWeightedTerm_antitone_primeSet b hb hPQ a
   · simp only [Set.indicator_of_notMem ha, le_refl]
 
 theorem finitePrimeWeighted_mono (b : ℕ) (hb : 2 ≤ b)
@@ -66,10 +66,10 @@ theorem finitePrimeWeighted_mono (b : ℕ) (hb : 2 ≤ b)
 theorem finitePrimeWeighted_empty (b : ℕ) : FinitePrimeWeighted b ∅ := by
   refine ⟨{2}, by simp, ?_, ?_⟩
   · intro p hp
-    have hp2 : p = 2 := by simpa using hp
+    have hp2 : p = 2 := by simpa using! hp
     subst p
     exact Nat.prime_two
-  · simpa only [Set.indicator_empty] using (summable_zero : Summable (fun _ : ℕ => (0 : ℝ)))
+  · simpa only [Set.indicator_empty] using! (summable_zero : Summable (fun _ : ℕ => (0 : ℝ)))
 
 theorem finitePrimeWeighted_union (b : ℕ) (hb : 2 ≤ b)
     {A B : Set ℕ} (hA : FinitePrimeWeighted b A) (hB : FinitePrimeWeighted b B) :
@@ -119,7 +119,7 @@ theorem finitePrimeWeighted_finiteUnion (b : ℕ) (hb : 2 ≤ b)
   classical
   revert hE
   induction I using Finset.induction_on with
-  | empty => intro _; simpa using finitePrimeWeighted_empty b
+  | empty => intro _; simpa using! finitePrimeWeighted_empty b
   | @insert i I hi ih =>
     intro hE
     rw [finiteSupportUnion_insert]

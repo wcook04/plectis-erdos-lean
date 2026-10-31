@@ -32,7 +32,7 @@ theorem freePointSum_central_le {m : ℕ} (hm : 0 < m) (c : Fin m → ℂ)
       rw [← Complex.normSq_eq_conj_mul_self, ← Complex.ofReal_one,
         ← Complex.ofReal_sub, Complex.norm_real, Real.norm_eq_abs,
         Complex.normSq_eq_norm_sq, abs_of_pos hpos]
-    simpa only [sum_logInteractionRow, neg_neg, hdiag] using
+    simpa only [sum_logInteractionRow, neg_neg, hdiag] using!
       logInteractionRow_sq_le hm c hlt j
 
 /-- The same central theorem with the finite-point expression expanded. -/

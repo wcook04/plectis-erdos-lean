@@ -44,7 +44,7 @@ theorem exact_denominators_and_threshold_clearing
       ErdosProblems.Erdos269.strictSmoothShell,
       ErdosProblems.Erdos269.strictSmoothExponents,
       ErdosProblems.Erdos269.threePrimeHeight,
-      ErdosProblems.Erdos269.smooth3Val] using hval
+      ErdosProblems.Erdos269.smooth3Val] using! hval
   have h := ErdosProblems.Erdos269.PaperR13.exact_denominators_and_minimal_clearing
     hB hB30 hcop ha hval'
   have hthreshold :
@@ -63,6 +63,6 @@ theorem exact_denominators_and_threshold_clearing
     ErdosProblems.Erdos269.strictSmoothShell,
     ErdosProblems.Erdos269.strictSmoothExponents,
     ErdosProblems.Erdos269.threePrimeHeight,
-    ErdosProblems.Erdos269.smooth3Val, hthreshold] using h
+    ErdosProblems.Erdos269.smooth3Val, hthreshold] using! h
 
 end PalomarCorpus.E269.ExactDenominator

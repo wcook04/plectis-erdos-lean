@@ -37,13 +37,13 @@ theorem weighted_interior_add_finite_deficit_le {ι : Type*} [Fintype ι]
     intro j
     have h := (mul_le_mul_of_nonneg_left
       (le_of_lt (show (1 : ℝ) < R by exact_mod_cast hR)) (norm_nonneg (c j))).trans_lt (hc j)
-    simpa only [mul_one] using h
+    simpa only [mul_one] using! h
   have hm : ∀ j, ‖weightedAnalyticLog w c (c j)‖ = weightedGeometric w c (c j) := by
     intro j
     apply norm_weightedAnalyticLog_of_norm_bound
     intro k
     exact (mul_le_mul_of_nonneg_left (hc1 j).le (norm_nonneg _)).trans_lt
-      (by simpa only [mul_one] using hc1 k)
+      (by simpa only [mul_one] using! hc1 k)
   have hp := weighted_interior_point_le_energy w c hw0 hw R hR hc
   simp only [hm] at hp
   change weightedQuadratic w c ≤ _ at hp
@@ -54,7 +54,7 @@ theorem weighted_interior_add_finite_deficit_le {ι : Type*} [Fintype ι]
           conj (weightedAnalyticLog w c z)).re) 0 1 := by
     apply circleAverage_congr_sphere
     intro z hz
-    have hz1 : ‖z‖ = 1 := by simpa [mem_sphere, dist_eq_norm] using hz
+    have hz1 : ‖z‖ = 1 := by simpa [mem_sphere, dist_eq_norm] using! hz
     change ‖weightedAnalyticLog w c z‖ ^ 2 *
         (∑ j, w j * poissonKernel 0 (c j) z) =
       ‖weightedAnalyticLog w c z‖ ^ 2 -
@@ -63,7 +63,7 @@ theorem weighted_interior_add_finite_deficit_le {ι : Type*} [Fintype ι]
     rw [weighted_poisson_log_identity w c hw hc1 hz1]
     exact weightedAnalyticLog_energy_identity w c z (by
       intro j
-      simpa only [hz1, mul_one] using hc1 j)
+      simpa only [hz1, mul_one] using! hc1 j)
   rw [heq] at hp
   have he := circle_taylor_energy_add_finite_deficit_le
     (diffContOnCl_weightedAnalyticLog w c R hc) hR s
@@ -88,7 +88,7 @@ theorem weightedRadialSeq_tendsto : Tendsto weightedRadialSeq atTop (𝓝 1) := 
       (𝓝 ((1 : ℝ) - 0)) := tendsto_const_nhds.sub
     (tendsto_pow_atTop_nhds_zero_of_lt_one
       (by norm_num : (0 : ℝ) ≤ 1 / 2) (by norm_num : (1 / 2 : ℝ) < 1))
-  simpa only [weightedRadialSeq, sub_zero] using h
+  simpa only [weightedRadialSeq, sub_zero] using! h
 
 theorem continuous_weightedQuadratic_radial {ι : Type*} [Fintype ι]
     (w : ι → ℝ) (c : ι → ℂ) (hw0 : ∀ j, 0 ≤ w j) :
@@ -131,7 +131,7 @@ theorem weighted_closed_disc_add_finite_deficit_le {ι : Type*} [Fintype ι]
       intro j
       rw [norm_mul, Complex.norm_real, Real.norm_eq_abs, abs_of_nonneg hr0]
       exact (mul_le_mul_of_nonneg_left (hc j) hr0).trans_lt
-        (by simpa only [mul_one] using hr1)
+        (by simpa only [mul_one] using! hr1)
     obtain ⟨R, hR, hRc⟩ := exists_weighted_interior_radius (fun j => (r : ℂ) * c j) hrc
     have h := weighted_interior_add_finite_deficit_le w (fun j => (r : ℂ) * c j)
       hw0 hw R hR hRc s
@@ -145,7 +145,7 @@ theorem weighted_closed_disc_add_finite_deficit_le {ι : Type*} [Fintype ι]
     exact h
   have hlim := le_of_tendsto (hF.continuousAt.tendsto.comp weightedRadialSeq_tendsto)
     (Eventually.of_forall hbound)
-  simpa only [F, Complex.ofReal_one, one_mul, one_pow] using hlim
+  simpa only [F, Complex.ofReal_one, one_mul, one_pow] using! hlim
 
 /-- The nonnegative deficit series is genuinely summable at the boundary.
 The infinite-sum inequality follows from the finite estimates, not from an

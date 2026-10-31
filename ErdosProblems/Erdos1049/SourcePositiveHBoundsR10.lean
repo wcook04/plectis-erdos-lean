@@ -67,12 +67,12 @@ theorem sourcePositiveHTerm_bounds {q : ℝ} (hq0 : 0 < q) (hq1 : q < 1)
   have hup := mul_le_mul hr1.2 hr2.2 (hP.le.trans hr2.1) (inv_nonneg.mpr hP.le)
   constructor
   · have hh := mul_le_mul_of_nonneg_left hlo hpow
-    simpa only [sourcePositiveHTerm, P, pow_two, mul_assoc] using hh
+    simpa only [sourcePositiveHTerm, P, pow_two, mul_assoc] using! hh
   · have hh := mul_le_mul_of_nonneg_left hup hpow
     calc
       sourcePositiveHTerm q n t ≤
           q ^ ((14 * n + 1) * t) * (P⁻¹ * P⁻¹) := by
-        simpa only [sourcePositiveHTerm, P, mul_assoc] using hh
+        simpa only [sourcePositiveHTerm, P, mul_assoc] using! hh
       _ = P⁻¹ ^ 2 * (q ^ (14 * n + 1)) ^ t := by
         rw [pow_mul, pow_two]
         ring
@@ -87,7 +87,7 @@ theorem summable_sourcePositiveHTerm {q : ℝ} (hq0 : 0 < q) (hq1 : q < 1)
     (n : ℕ) : Summable (sourcePositiveHTerm q n) := by
   have hqn : q ^ (14 * n + 1) < 1 := by
     have h := qpow_antitone hq0.le hq1.le (by omega : 1 ≤ 14 * n + 1)
-    have hqpow1 : q ^ 1 < 1 := by simpa only [pow_one] using hq1
+    have hqpow1 : q ^ 1 < 1 := by simpa only [pow_one] using! hq1
     exact h.trans_lt hqpow1
   apply summable_nonneg_dominated (sourcePositiveHTerm_nonneg hq0 hq1 n)
     (fun t => (sourcePositiveHTerm_bounds hq0 hq1 n t).2)
@@ -101,7 +101,7 @@ theorem sourcePositiveH_bounds {q : ℝ} (hq0 : 0 < q) (hq1 : q < 1) (n : ℕ) :
   have hs := summable_sourcePositiveHTerm hq0 hq1 n
   have hqn : q ^ (14 * n + 1) < 1 := by
     have h := qpow_antitone hq0.le hq1.le (by omega : 1 ≤ 14 * n + 1)
-    have hqpow1 : q ^ 1 < 1 := by simpa only [pow_one] using hq1
+    have hqpow1 : q ^ 1 < 1 := by simpa only [pow_one] using! hq1
     exact h.trans_lt hqpow1
   constructor
   · have ht := (sourcePositiveHTerm_bounds hq0 hq1 n 0).1
@@ -114,7 +114,7 @@ theorem sourcePositiveH_bounds {q : ℝ} (hq0 : 0 < q) (hq1 : q < 1) (n : ℕ) :
           (qPochhammerInfinity q q)⁻¹ ^ 2 * (q ^ (14 * n + 1)) ^ t :=
         Summable.tsum_le_tsum (fun t => (sourcePositiveHTerm_bounds hq0 hq1 n t).2)
           hs hg.summable
-      _ = _ := by simpa only [div_eq_mul_inv] using hg.tsum_eq
+      _ = _ := by simpa only [div_eq_mul_inv] using! hg.tsum_eq
 
 /-- Uniform in n: the denominator in the upper bound can be replaced by 1-q. -/
 theorem sourcePositiveH_uniform_bounds {q : ℝ} (hq0 : 0 < q) (hq1 : q < 1) (n : ℕ) :
@@ -123,7 +123,7 @@ theorem sourcePositiveH_uniform_bounds {q : ℝ} (hq0 : 0 < q) (hq1 : q < 1) (n 
   have hb := sourcePositiveH_bounds hq0 hq1 n
   refine ⟨hb.1, hb.2.trans ?_⟩
   have hqn : q ^ (14 * n + 1) ≤ q := by
-    simpa only [pow_one] using qpow_antitone hq0.le hq1.le (by omega : 1 ≤ 14 * n + 1)
+    simpa only [pow_one] using! qpow_antitone hq0.le hq1.le (by omega : 1 ≤ 14 * n + 1)
   exact div_le_div_of_nonneg_left (sq_nonneg _) (sub_pos.mpr hq1) (by linarith)
 
 theorem sourcePositiveH_pos {q : ℝ} (hq0 : 0 < q) (hq1 : q < 1) (n : ℕ) :
@@ -169,6 +169,6 @@ theorem sourcePositiveH_quadLogRate_zero {q : ℝ} (hq0 : 0 < q) (hq1 : q < 1) :
   have htotal := (hbound n).trans (hCmul.trans hn)
   simpa only [PaperR9.sqScale, zero_mul, sub_zero, Real.norm_eq_abs,
     abs_of_nonneg (sq_nonneg (n : ℝ)),
-    abs_of_pos (sourcePositiveH_pos hq0 hq1 n)] using htotal
+    abs_of_pos (sourcePositiveH_pos hq0 hq1 n)] using! htotal
 
 end ErdosProblems.Erdos1049.PaperR10

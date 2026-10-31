@@ -54,7 +54,7 @@ theorem half_log_sq_le_old_scalar_cost {t α : ℝ} (ht : 1 ≤ t)
   have hexp := sq_le_exp_of_nonneg (mul_nonneg hα.le hlog)
   have hp : (α * Real.log t) ^ 2 ≤ t ^ α := by
     rw [Real.rpow_def_of_pos ht0]
-    simpa only [mul_comm] using hexp
+    simpa only [mul_comm] using! hexp
   have hpow : 0 ≤ t ^ α := Real.rpow_nonneg ht0.le _
   have hprod := mul_le_mul_of_nonneg_left hsq (sq_nonneg (Real.log t))
   have hbprod := mul_le_mul_of_nonneg_left hB.le hpow
@@ -100,7 +100,7 @@ theorem countable_cover_scalar_kernel_mean_le_cost
     obtain ⟨j, hj, _⟩ := mem_biUnion.mp (hFJ ha)
     exact ⟨j, hj⟩
   have hηJ : ∑ j ∈ J, η j ≤ 1 := by
-    simpa only [hη.tsum_eq] using hη.summable.sum_le_tsum J (fun j _ => (hηpos j).le)
+    simpa only [hη.tsum_eq] using! hη.summable.sum_le_tsum J (fun j _ => (hηpos j).le)
   have hpoint : ∀ n, φ ((F.filter (fun a => a ∣ n)).card) ≤
       ∑ j ∈ J, (((G j).filter (fun a => a ∣ n)).card : ℝ) ^ α j /
         (η j ^ α j) * k (α j) := by
@@ -119,7 +119,7 @@ theorem countable_cover_scalar_kernel_mean_le_cost
     obtain ⟨j, hj, hshare⟩ := exists_frame_ge_subprobability_share J η
       (fun j => (g j : ℝ)) f hJ hηJ (Nat.cast_nonneg f) hcov
     have hratio : (f : ℝ) ≤ (g j : ℝ) / η j :=
-      (le_div_iff₀ (hηpos j)).mpr (by simpa [mul_comm] using hshare)
+      (le_div_iff₀ (hηpos j)).mpr (by simpa [mul_comm] using! hshare)
     have hp := Real.rpow_le_rpow (Nat.cast_nonneg f) hratio (hα j).1.le
     rw [Real.div_rpow (Nat.cast_nonneg _) (hηpos j).le] at hp
     exact (hscalar f hf _ (hα j).1 (hα j).2).trans
@@ -180,7 +180,7 @@ theorem finiteLogSquareMean_le_old_cost (C : PositiveCoverData) (hC : C.OldCostS
     (F : Finset ℕ) (hF : (F : Set ℕ) ⊆ C.host) (X : ℕ) (hX : 0 < X) :
     finiteLogSquareMean F X ≤ ∑' j, C.oldCostTerm j := by
   have hη : HasSum (coverThreshold 1) 1 := by
-    simpa only [tsum_coverThreshold] using (summable_coverThreshold 1).hasSum
+    simpa only [tsum_coverThreshold] using! (summable_coverThreshold 1).hasSum
   have hsc : ∀ f : ℕ, f ≠ 0 → ∀ α, 0 < α → α ≤ 1 →
       (Real.log (f : ℝ)) ^ 2 / 2 ≤ (f : ℝ) ^ α * oldScalarKernel α := by
     intro f hf α hα hα1
@@ -188,7 +188,7 @@ theorem finiteLogSquareMean_le_old_cost (C : PositiveCoverData) (hC : C.OldCostS
       (by exact_mod_cast Nat.one_le_iff_ne_zero.mpr hf) hα hα1
   have hs : Summable (fun j => C.cost j / (coverThreshold 1 j ^ C.exponent j) *
       oldScalarKernel (C.exponent j)) := by
-    simpa only [← oldCostTerm_eq_kernel] using hC
+    simpa only [← oldCostTerm_eq_kernel] using! hC
   have h := countable_cover_scalar_kernel_mean_le_cost
     (fun f => (Real.log (f : ℝ)) ^ 2 / 2) oldScalarKernel (by simp)
     (fun α _ _ => oldScalarKernel_nonneg α) hsc F C.frame (coverThreshold 1)
@@ -196,7 +196,7 @@ theorem finiteLogSquareMean_le_old_cost (C : PositiveCoverData) (hC : C.OldCostS
     (fun j => coverThreshold_pos (by norm_num) j) C.exponent_bounds
     C.coefficient_nonneg C.column_summable (fun a ha => hF ha) C.majorises hs
   rw [tsum_congr (oldCostTerm_eq_kernel C)]
-  simpa only [finiteLogSquareMean, PositiveCoverData.cost] using h
+  simpa only [finiteLogSquareMean, PositiveCoverData.cost] using! h
 
 /-- Every old variable-exponent cover is excluded, not just the displayed one. -/
 theorem no_old_cover_of_unbounded_logSquare_means (A : Set ℕ)

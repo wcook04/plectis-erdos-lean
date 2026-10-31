@@ -13,12 +13,12 @@ set_option linter.unusedVariables false
 
 theorem totientPrefix_succ (n : ℕ) :
     totientPrefix (n + 1) = 2 * totientPrefix n + Nat.totient (n + 1) := by
-  simpa [totientPrefix, ErdosProblems.Erdos249.totientPrefix] using
+  simpa [totientPrefix, ErdosProblems.Erdos249.totientPrefix] using!
     ErdosProblems.Erdos249.totientPrefix_succ n
 
 theorem totientPrefix_eq_corpusForm (n : ℕ) :
     totientPrefix n = ∑ i ∈ Finset.range (n + 1), Nat.totient i * 2 ^ (n - i) := by
-  simpa [totientPrefix, ErdosProblems.Erdos249.totientPrefix] using
+  simpa [totientPrefix, ErdosProblems.Erdos249.totientPrefix] using!
     ErdosProblems.Erdos249.totientPrefix_eq_corpusForm n
 
 theorem oddPart_mul_prefixTail_eq_intCast
@@ -27,7 +27,7 @@ theorem oddPart_mul_prefixTail_eq_intCast
     (v : ℝ) * prefixTail S n
       = (((2 : ℤ) ^ (n - c) * a - (v : ℤ) * (totientPrefix n : ℤ) : ℤ) : ℝ) := by
   simpa [totientPrefix, prefixTail, ErdosProblems.Erdos249.totientPrefix,
-      ErdosProblems.Erdos249.prefixTail] using
+      ErdosProblems.Erdos249.prefixTail] using!
     ErdosProblems.Erdos249.oddPart_mul_prefixTail_eq_intCast hvpos hS hcn
 
 theorem prefix_twoAdic_denominator_exclusion
@@ -39,7 +39,7 @@ theorem prefix_twoAdic_denominator_exclusion
     (hdvd : 2 ^ t ∣ totientPrefix n) :
     (2 : ℝ) ^ t ≤ (v : ℝ) * prefixTail S n := by
   simpa [totientPrefix, prefixTail, ErdosProblems.Erdos249.totientPrefix,
-      ErdosProblems.Erdos249.prefixTail] using
+      ErdosProblems.Erdos249.prefixTail] using!
     ErdosProblems.Erdos249.prefix_twoAdic_denominator_exclusion hvodd hvpos hS hpos hct hdvd
 
 theorem prefix_twoAdic_denominator_lower_bound
@@ -52,7 +52,7 @@ theorem prefix_twoAdic_denominator_lower_bound
     (hdvd : 2 ^ t ∣ totientPrefix n) :
     (2 : ℝ) ^ t ≤ (v : ℝ) * ((n : ℝ) + 2) := by
   simpa [totientPrefix, prefixTail, ErdosProblems.Erdos249.totientPrefix,
-      ErdosProblems.Erdos249.prefixTail] using
+      ErdosProblems.Erdos249.prefixTail] using!
     ErdosProblems.Erdos249.prefix_twoAdic_denominator_lower_bound
       hvodd hvpos hS hpos htail hct hdvd
 
@@ -66,7 +66,7 @@ theorem prefix_twoAdic_odd_denominator_floor
     (hdvd : 2 ^ t ∣ totientPrefix n) :
     (2 : ℝ) ^ t / ((n : ℝ) + 2) ≤ (v : ℝ) := by
   simpa [totientPrefix, prefixTail, ErdosProblems.Erdos249.totientPrefix,
-      ErdosProblems.Erdos249.prefixTail] using
+      ErdosProblems.Erdos249.prefixTail] using!
     ErdosProblems.Erdos249.prefix_twoAdic_odd_denominator_floor
       hvodd hvpos hS hpos htail hct hdvd
 

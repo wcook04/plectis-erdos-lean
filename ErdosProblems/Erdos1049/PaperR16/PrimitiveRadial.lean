@@ -153,7 +153,9 @@ theorem lambert_primitive_radial (d : ℕ) (hd : 0 < d)
       radial (𝓝 ((d : ℂ)⁻¹)) := by
     have h := (Complex.continuous_ofReal.tendsto ((d : ℝ)⁻¹)).comp
       (radialGauge_div_pow_tendsto d hd)
-    simpa only [Function.comp_apply, Complex.ofReal_inv, Complex.ofReal_natCast] using h
+    change Tendsto (fun r : ℝ => ((radialGauge r / radialGauge (r ^ d) : ℝ) : ℂ))
+      radial (𝓝 (((d : ℝ)⁻¹ : ℝ) : ℂ)) at h
+    simpa only [Complex.ofReal_inv, Complex.ofReal_natCast] using! h
   have hbase := lambert_complex_radial_at_one.comp (power_tendsto_radial d hd)
   have he : (fun r : ℝ => (radialGauge r : ℂ) * lambert ((r : ℂ) * ζ)) =ᶠ[radial]
       (fun r : ℝ => ((radialGauge r / radialGauge (r ^ d) : ℝ) : ℂ) *
@@ -178,7 +180,9 @@ theorem lambert_primitive_power_radial (m d : ℕ) (hm : 0 < m) (hd : 0 < d)
       radial (𝓝 ((m : ℂ)⁻¹)) := by
     have h := (Complex.continuous_ofReal.tendsto ((m : ℝ)⁻¹)).comp
       (radialGauge_div_pow_tendsto m hm)
-    simpa only [Function.comp_apply, Complex.ofReal_inv, Complex.ofReal_natCast] using h
+    change Tendsto (fun r : ℝ => ((radialGauge r / radialGauge (r ^ m) : ℝ) : ℂ))
+      radial (𝓝 (((m : ℝ)⁻¹ : ℝ) : ℂ)) at h
+    simpa only [Complex.ofReal_inv, Complex.ofReal_natCast] using! h
   have hbase := (lambert_primitive_radial d hd (ζ ^ m) hζ).comp
     (power_tendsto_radial m hm)
   have he :

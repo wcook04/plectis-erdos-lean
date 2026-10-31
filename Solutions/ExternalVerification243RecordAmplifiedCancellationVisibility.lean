@@ -25,7 +25,7 @@ theorem recordAmplified_error_after_cancellation
     (hneg : e t < 0) :
     u t ≤ u (s + 1) ∧
       u s * u t ≤ runningMax u t * (e t).natAbs * u (s + 1) := by
-  simpa only [runningMax_eq] using
+  simpa only [runningMax_eq] using!
     ErdosProblems.Erdos243.recordAmplified_error_after_cancellation
       a u v w hc e s t hst he hw hnum hwpos hnonneg hneg
 

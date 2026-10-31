@@ -78,7 +78,7 @@ theorem existsPeakLeComparisonBound
     ∃ i : Fin (m + 1), |p.eval (c i)| ≤ comparisonBound (m + 2) := by
   simpa [comparisonBound, endpointScale,
     ErdosProblems.Erdos1041.SharpCollinearChebyshev.comparisonBound,
-    ErdosProblems.Erdos1041.SharpCollinearChebyshev.endpointScale] using
+    ErdosProblems.Erdos1041.SharpCollinearChebyshev.endpointScale] using!
     (ErdosProblems.Erdos1041.SharpCollinearChebyshev.exists_peak_le_comparisonBound
       hp hc ha hb hpa hpb hpalt hc_mem)
 

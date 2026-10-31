@@ -22,7 +22,7 @@ theorem rational_zmod_observable_iff
       (∑' n : ℕ, (f (Nat.totient (n + 1) : ZMod (2 ^ k)) : ℝ) /
         2 ^ (n + 1)) = (q : ℝ)) ↔
       ∀ r : ℕ, r < 2 ^ k → r % 2 = 0 → f (r : ZMod (2 ^ k)) = f 0 := by
-  simpa only [totientResidueValue, ErdosProblems.Erdos249.totientResidueValue] using
+  simpa only [totientResidueValue, ErdosProblems.Erdos249.totientResidueValue] using!
     ErdosProblems.Erdos249.PaperCompleteR7.RationalObservables.rational_zmod_observable_iff hk f
 
 theorem zmod_observable_value
@@ -30,13 +30,13 @@ theorem zmod_observable_value
     (hc : ∀ r : ℕ, r < 2 ^ k → r % 2 = 0 → f (r : ZMod (2 ^ k)) = c) :
     (∑' n : ℕ, (f (Nat.totient (n + 1) : ZMod (2 ^ k)) : ℝ) /
       2 ^ (n + 1)) = ((3 * f 1 / 4 + c / 4 : ℚ) : ℝ) := by
-  simpa only [totientResidueValue, ErdosProblems.Erdos249.totientResidueValue] using
+  simpa only [totientResidueValue, ErdosProblems.Erdos249.totientResidueValue] using!
     ErdosProblems.Erdos249.PaperCompleteR7.RationalObservables.zmod_observable_value hk f c hc
 
 theorem residue_series_sharp_range :
     (∀ m : ℕ, 3 ≤ m → Irrational (totientResidueValue m)) ∧
     totientResidueValue 1 = 0 ∧ totientResidueValue 2 = 3 / 4 := by
-  simpa only [totientResidueValue, ErdosProblems.Erdos249.totientResidueValue] using
+  simpa only [totientResidueValue, ErdosProblems.Erdos249.totientResidueValue] using!
     ErdosProblems.Erdos249.PaperCompleteR7.RationalObservables.residue_series_sharp_range
 
 theorem short_note_residue_theorem :
@@ -50,7 +50,7 @@ theorem short_note_residue_theorem :
       (∀ r : ℕ, r < 2 ^ k → r % 2 = 0 → f (r : ZMod (2 ^ k)) = c) →
       (∑' n : ℕ, (f (Nat.totient (n + 1) : ZMod (2 ^ k)) : ℝ) /
         2 ^ (n + 1)) = ((3 * f 1 / 4 + c / 4 : ℚ) : ℝ)) := by
-  simpa only [totientResidueValue, ErdosProblems.Erdos249.totientResidueValue] using
+  simpa only [totientResidueValue, ErdosProblems.Erdos249.totientResidueValue] using!
     ErdosProblems.Erdos249.PaperCompleteR7.RationalObservables.short_note_residue_theorem
 
 end Erdos249257.ExternalVerification249RationalObservableClassification

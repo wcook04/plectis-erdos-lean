@@ -287,11 +287,12 @@ theorem mahler_of_stable {k : ℕ} (hk : 1 ≤ k) (V : Submodule (RatFunc ℚ) �
           = algebraMap ℚ[X] (RatFunc ℚ) (b : ℚ[X]) •
               (c i • subs (k ^ (i : ℕ)) f) := by
       intro i
-      rw [hpval, smul_smul]
+      rw [hpval]
       have h1 : algebraMap ℚ[X] ℚ⸨X⸩ (Pf i)
           = algebraMap (RatFunc ℚ) ℚ⸨X⸩ (algebraMap ℚ[X] (RatFunc ℚ) (Pf i)) :=
         IsScalarTower.algebraMap_apply ℚ[X] (RatFunc ℚ) ℚ⸨X⸩ (Pf i)
-      rw [h1, hPf i, Algebra.smul_def, Algebra.smul_def, map_mul]
+      rw [h1, hPf i]
+      simp only [Algebra.smul_def, map_mul, mul_assoc]
     rw [← Fin.sum_univ_eq_sum_range
       (fun i => algebraMap ℚ[X] ℚ⸨X⸩ (p i) * subs (k ^ i) f) (d + 1)]
     calc ∑ i : Fin (d + 1), algebraMap ℚ[X] ℚ⸨X⸩ (p (i : ℕ)) * subs (k ^ (i : ℕ)) f
@@ -646,7 +647,7 @@ private lemma tau_le_split (n A : ℕ) (hA : 1 ≤ A) :
   have hsplit : n.divisors.card
       = (n.divisors.filter (fun d => d ≤ A)).card
         + (n.divisors.filter (fun d => ¬ d ≤ A)).card :=
-    (Finset.filter_card_add_filter_neg_card_eq_card _).symm
+    (Finset.card_filter_add_card_filter_not _).symm
   have h1 : (n.divisors.filter (fun d => d ≤ A)).card ≤ A := by
     have hsub : n.divisors.filter (fun d => d ≤ A) ⊆ Finset.Icc 1 A := by
       intro d hd
@@ -957,7 +958,7 @@ theorem divisorLambert_subs_not_rational {M : ℕ} (hM : 1 ≤ M) :
     rw [hQc, hPc, ← hps0]
     exact hLaurent
   have hconv : ∀ n : ℕ,
-      ∑ ij ∈ Finset.antidiagonal n, cq ij.1 * Q.coeff ij.2 = P.coeff n := by
+      ∑ ij ∈ Finset.HasAntidiagonal.antidiagonal n, cq ij.1 * Q.coeff ij.2 = P.coeff n := by
     intro n
     have h := congrArg (fun φ : ℚ⟦X⟧ => PowerSeries.coeff n φ) hpsQ
     simpa [PowerSeries.coeff_mul, Polynomial.coeff_coe] using h
@@ -998,25 +999,25 @@ theorem divisorLambert_subs_not_rational {M : ℕ} (hM : 1 ≤ M) :
       hfnorm (hpolysummable Qr r)
     rw [csubs_tsum hM r, hpolyeval Qr r] at hcauchy
     have hterm : ∀ n : ℕ,
-        (∑ ij ∈ Finset.antidiagonal n,
+        (∑ ij ∈ Finset.HasAntidiagonal.antidiagonal n,
           (csubs M ij.1 * r ^ ij.1) * (Qr.coeff ij.2 * r ^ ij.2))
           = Pr.coeff n * r ^ n := by
       intro n
-      have hrw : ∀ ij ∈ Finset.antidiagonal n,
+      have hrw : ∀ ij ∈ Finset.HasAntidiagonal.antidiagonal n,
           (csubs M ij.1 * r ^ ij.1) * (Qr.coeff ij.2 * r ^ ij.2)
             = (csubs M ij.1 * Qr.coeff ij.2) * r ^ n := by
         intro ij hij
-        rw [Finset.mem_antidiagonal] at hij
+        rw [Finset.HasAntidiagonal.mem_antidiagonal] at hij
         rw [← hij, pow_add]
         ring
       rw [Finset.sum_congr rfl hrw, ← Finset.sum_mul]
       congr 1
-      have hcast : ∑ ij ∈ Finset.antidiagonal n, csubs M ij.1 * Qr.coeff ij.2
-          = ((∑ ij ∈ Finset.antidiagonal n, cq ij.1 * Q.coeff ij.2 : ℚ) : ℝ) := by
+      have hcast : ∑ ij ∈ Finset.HasAntidiagonal.antidiagonal n, csubs M ij.1 * Qr.coeff ij.2
+          = ((∑ ij ∈ Finset.HasAntidiagonal.antidiagonal n, cq ij.1 * Q.coeff ij.2 : ℚ) : ℝ) := by
         push_cast
         exact Finset.sum_congr rfl fun ij _ => by rw [← hc, hQrc]
       rw [hcast, hconv n, ← hPrc]
-    have hrhs : ∑' n : ℕ, (∑ ij ∈ Finset.antidiagonal n,
+    have hrhs : ∑' n : ℕ, (∑ ij ∈ Finset.HasAntidiagonal.antidiagonal n,
         (csubs M ij.1 * r ^ ij.1) * (Qr.coeff ij.2 * r ^ ij.2)) = Pr.eval r := by
       rw [tsum_congr hterm]
       exact hpolyeval Pr r

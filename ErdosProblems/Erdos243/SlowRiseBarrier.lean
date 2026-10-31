@@ -81,7 +81,7 @@ theorem exists_consecutiveMultiples_between
       y.property i (Finset.mem_univ i)
     have hmP : m i ∣ P := by
       dsimp [P]
-      simpa using Finset.dvd_prod_of_mem m (Finset.mem_univ i)
+      simpa using! Finset.dvd_prod_of_mem m (Finset.mem_univ i)
     have hyP : (y : ℕ) % P ≡ (y : ℕ) [MOD m i] :=
       (Nat.mod_modEq (y : ℕ) P).of_dvd hmP
     have hremLt : i.1 % m i < m i := Nat.mod_lt _ (by have := hm i; omega)
