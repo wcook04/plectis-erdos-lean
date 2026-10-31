@@ -1,0 +1,118 @@
+{
+  "schema": "repository_layout@2",
+  "root_files": [
+    ".gitignore",
+    "CITATION.cff",
+    "CONTRIBUTING.md",
+    "Erdos249257.lean",
+    "Erdos257PeriodNoncollapse.lean",
+    "Erdos257SupportClassComparison.lean",
+    "ErdosProblems.lean",
+    "LICENSE",
+    "METHOD.md",
+    "PROBLEMS.md",
+    "PlectisSnapshot.lean",
+    "README.md",
+    "REUSE.toml",
+    "lake-manifest.json",
+    "lakefile.toml",
+    "lean-toolchain",
+    "release-entries.json"
+  ],
+  "directories": {
+    ".github": {
+      "purpose": "Continuous integration workflows"
+    },
+    "docs": {
+      "purpose": "Reader guides and repository layout policy"
+    },
+    "scripts": {
+      "purpose": "Build, replay, release and validation commands"
+    },
+    "proofs": {
+      "purpose": "Statements, metadata and proof adapters",
+      "guide": "proofs/README.md",
+      "regular_files_only": true,
+      "suffixes": [
+        ".lean",
+        ".json",
+        ".yaml",
+        ".md"
+      ]
+    },
+    "proofs/families": {
+      "purpose": "Per-family Comparator entries",
+      "suffixes": [
+        ".lean",
+        ".json",
+        ".yaml",
+        ".md"
+      ]
+    },
+    "proofs/PalomarCorpus": {
+      "purpose": "Generated paper-order publication entries",
+      "guide": "proofs/PalomarCorpus/README.md",
+      "suffixes": [
+        ".lean",
+        ".json",
+        ".yaml",
+        ".md"
+      ]
+    },
+    "proofs/Solutions": {
+      "purpose": "Lean proof and adapter modules",
+      "suffixes": [
+        ".lean"
+      ]
+    },
+    "Erdos249257": {
+      "purpose": "Shared mathematical source library"
+    },
+    "Erdos257PeriodNoncollapse": {
+      "purpose": "Period and support mathematical source"
+    },
+    "ErdosProblems": {
+      "purpose": "Problem-specific mathematical source"
+    },
+    "PlectisSnapshot": {
+      "purpose": "Stable first-export adapter source"
+    },
+    "snapshot": {
+      "purpose": "Immutable first-export records",
+      "guide": "snapshot/README.md"
+    },
+    "verification": {
+      "purpose": "Independently pinned Formal Conjectures projects",
+      "guide": "verification/README.md"
+    },
+    "skills": {
+      "purpose": "Contributor entry-writing procedure"
+    },
+    "LICENSES": {
+      "purpose": "License texts"
+    }
+  },
+  "undeclared_directories": "error",
+  "required_files": [
+    "README.md",
+    "lakefile.toml",
+    "release-entries.json",
+    "proofs/README.md",
+    "scripts/corpus_paths.py",
+    "scripts/check_layout.py",
+    "docs/repository_layout.json"
+  ],
+  "content_routes": {
+    "README.md": [
+      "proofs/README.md",
+      "proofs/families/",
+      "proofs/PalomarCorpus/"
+    ],
+    "lakefile.toml": [
+      "srcDir = \"proofs/families\"",
+      "srcDir = \"proofs\""
+    ]
+  },
+  "exceptions": {},
+  "gate_provenance": "Portable Git-based layout checker from the maintained repository-organization skill; policy authored from this repository source roles."
+}
