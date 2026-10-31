@@ -97,7 +97,7 @@ status:
     - "Classical.choice"
   main_results:
     - declaration: "Erdos249257.ExternalVerification257GeneralRepairCriterion.mem_iff_greedyBinaryDefect_cofinal_repairs"
-      file: "proofs/families/ExternalVerification257GeneralRepairCriterion/Solution.lean"
+      file: "proofs/Solutions/ExternalVerification257GeneralRepairCriterion.lean"
       sorry_count: 0
       comparator_config: "proofs/families/ExternalVerification257GeneralRepairCriterion/comparator.json"
       canonical_claim_status: "source_backed_exact_transport_focused_checked"
@@ -118,7 +118,7 @@ status:
       comparator_declaration: "Erdos249257.ExternalVerification257GeneralRepairCriterion.mem_iff_greedyBinaryDefect_cofinal_repairs"
       literature_dependencies: []
     - declaration: "Erdos249257.ExternalVerification257GeneralRepairCriterion.mem_iff_greedyBinaryDefect_sqrt_windows"
-      file: "proofs/families/ExternalVerification257GeneralRepairCriterion/Solution.lean"
+      file: "proofs/Solutions/ExternalVerification257GeneralRepairCriterion.lean"
       sorry_count: 0
       comparator_config: "proofs/families/ExternalVerification257GeneralRepairCriterion/comparator.json"
       canonical_claim_status: "source_backed_exact_transport_focused_checked"

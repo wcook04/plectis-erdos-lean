@@ -48,7 +48,7 @@ status:
   permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
   main_results:
     - declaration: "Erdos249257.ExternalVerification68AdjacentUnitCarryWindow.adjacentUnitCarryWindowOffset_eq_twoStep_factorization"
-      file: "proofs/families/ExternalVerification68AdjacentUnitCarryWindow/Solution.lean"
+      file: "proofs/Solutions/ExternalVerification68AdjacentUnitCarryWindow.lean"
       sorry_count: 0
       canonical_claim_status: "source_transport_pending_focused_check"
       novelty_status: "unassessed"

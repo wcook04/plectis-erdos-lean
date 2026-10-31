@@ -55,7 +55,7 @@ status:
   permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
   main_results:
     - declaration: "Erdos249257.ExternalVerification68PrimePole.factorialGapPrefixLCMNumerator_mod_prime"
-      file: "proofs/families/ExternalVerification68PrimePole/Solution.lean"
+      file: "proofs/Solutions/ExternalVerification68PrimePole.lean"
       sorry_count: 0
       comparator_config: "proofs/families/ExternalVerification68PrimePole/comparator.json"
       canonical_claim_status: "exact_source_transport"

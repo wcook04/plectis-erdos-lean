@@ -60,11 +60,11 @@ status:
   permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
   main_results:
     - declaration: "Erdos249257.ExternalVerification257ActualUpperSuccessor.actualUpperRightPacketLinearEscape_iff_successorLinearEscape"
-      file: "proofs/families/ExternalVerification257ActualUpperSuccessor/Solution.lean"
+      file: "proofs/Solutions/ExternalVerification257ActualUpperSuccessor.lean"
       sorry_count: 0
       canonical_claim_status: "exact_source_transport_focused_validation_passed"
     - declaration: "Erdos249257.ExternalVerification257ActualUpperSuccessor.actualUpperSuccessorLinearEscape_completeCounterexample"
-      file: "proofs/families/ExternalVerification257ActualUpperSuccessor/Solution.lean"
+      file: "proofs/Solutions/ExternalVerification257ActualUpperSuccessor.lean"
       sorry_count: 0
       canonical_claim_status: "exact_source_transport_focused_validation_passed"
 

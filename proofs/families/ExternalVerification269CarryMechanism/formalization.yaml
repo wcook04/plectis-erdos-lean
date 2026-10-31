@@ -62,7 +62,7 @@ status:
   permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
   main_results:
     - declaration: "Erdos249257.ExternalVerification269CarryMechanism.no_carryLift_of_errorBound_below_twoPow"
-      file: "proofs/families/ExternalVerification269CarryMechanism/Solution.lean"
+      file: "proofs/Solutions/ExternalVerification269CarryMechanism.lean"
       sorry_count: 0
       comparator_config: "proofs/families/ExternalVerification269CarryMechanism/comparator.json"
       canonical_claim_status: "source_proved_wrapper_focused_lean_and_axiom_audit_passed"
@@ -75,7 +75,7 @@ status:
         none is produced for the actual ordered-power orbit.
       literature_dependencies: []
     - declaration: "Erdos249257.ExternalVerification269CarryMechanism.no_unitAccurateLift_with_twoAnchors_and_firstTwoBlockNull"
-      file: "proofs/families/ExternalVerification269CarryMechanism/Solution.lean"
+      file: "proofs/Solutions/ExternalVerification269CarryMechanism.lean"
       sorry_count: 0
       comparator_config: "proofs/families/ExternalVerification269CarryMechanism/comparator.json"
       canonical_claim_status: "source_proved_wrapper_focused_lean_and_axiom_audit_passed"
@@ -88,7 +88,7 @@ status:
         does not show the actual orbit supplies those hypotheses.
       literature_dependencies: []
     - declaration: "Erdos249257.ExternalVerification269CarryMechanism.perturbation_eq_zero_of_blockNull_twoAnchors"
-      file: "proofs/families/ExternalVerification269CarryMechanism/Solution.lean"
+      file: "proofs/Solutions/ExternalVerification269CarryMechanism.lean"
       sorry_count: 0
       comparator_config: "proofs/families/ExternalVerification269CarryMechanism/comparator.json"
       canonical_claim_status: "source_proved_wrapper_focused_lean_and_axiom_audit_passed"
@@ -98,7 +98,7 @@ status:
       boundary: "Surjectivity, block-nullity, both genuine transitions, and both zero anchors are assumptions."
       literature_dependencies: []
     - declaration: "Erdos249257.ExternalVerification269CarryMechanism.carryLift_blockDefect"
-      file: "proofs/families/ExternalVerification269CarryMechanism/Solution.lean"
+      file: "proofs/Solutions/ExternalVerification269CarryMechanism.lean"
       sorry_count: 0
       comparator_config: "proofs/families/ExternalVerification269CarryMechanism/comparator.json"
       canonical_claim_status: "source_proved_wrapper_focused_lean_and_axiom_audit_passed"
@@ -108,7 +108,7 @@ status:
       boundary: "The identity exposes, but does not cancel, the endpoint and interior error terms."
       literature_dependencies: []
     - declaration: "Erdos249257.ExternalVerification269CarryMechanism.no_positive_reducedCarry_of_cofinalLocalWindowEscape"
-      file: "proofs/families/ExternalVerification269CarryMechanism/Solution.lean"
+      file: "proofs/Solutions/ExternalVerification269CarryMechanism.lean"
       sorry_count: 0
       comparator_config: "proofs/families/ExternalVerification269CarryMechanism/comparator.json"
       canonical_claim_status: "source_proved_wrapper_focused_lean_and_axiom_audit_passed"
@@ -121,7 +121,7 @@ status:
       boundary: "CofinalLocalWindowEscape is a hypothesis, not a theorem."
       literature_dependencies: []
     - declaration: "Erdos249257.ExternalVerification269CarryMechanism.carry_eq_residueDigit_add_coboundary"
-      file: "proofs/families/ExternalVerification269CarryMechanism/Solution.lean"
+      file: "proofs/Solutions/ExternalVerification269CarryMechanism.lean"
       sorry_count: 0
       comparator_config: "proofs/families/ExternalVerification269CarryMechanism/comparator.json"
       canonical_claim_status: "source_proved_wrapper_focused_lean_and_axiom_audit_passed"

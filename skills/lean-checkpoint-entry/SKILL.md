@@ -24,7 +24,7 @@ what makes it possible to accept an argument you could not watch being produced.
 
 ```
 <Entry>/Challenge.lean        the statement, fixed, unproved
-Solutions/<Entry>.lean        the proof of that statement
+proofs/Solutions/<Entry>.lean        the proof of that statement
 <Entry>/AxiomAudit.lean       what the proof depends on
 <Entry>/comparator.json       binds the three
 <Entry>/formalization.yaml    scope, sources, attribution, known divergences
@@ -60,7 +60,7 @@ written to match whatever was achievable.
 
 **3. Prove the Challenge statement, unchanged.**
 
-`Solutions/<Entry>.lean` proves the declaration the Challenge names. Not a variant,
+`proofs/Solutions/<Entry>.lean` proves the declaration the Challenge names. Not a variant,
 not a specialisation, not a restatement with an added hypothesis. If the proof needs
 a hypothesis the Challenge does not carry, the Challenge was wrong and is rewritten
 before the proof is accepted, in the open, rather than adjusted quietly to fit.

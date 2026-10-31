@@ -82,7 +82,7 @@ status:
   axiom_audit_status: "passed_exact_propext_Quot_sound_Classical_choice"
   main_results:
     - declaration: "Erdos249257.ExternalVerification68MovingFactorScaleSplit.movingPrivateFactorScaleSplit_implies_irrational"
-      file: "proofs/families/ExternalVerification68MovingFactorScaleSplit/Solution.lean"
+      file: "proofs/Solutions/ExternalVerification68MovingFactorScaleSplit.lean"
       sorry_count: 0
       comparator_config: "proofs/families/ExternalVerification68MovingFactorScaleSplit/comparator.json"
       canonical_claim_status: "source_checked_wrapper_focused_build_passed"
@@ -94,7 +94,7 @@ status:
       boundary: >-
         The theorem does not establish either cofinal quantitative scale bound.
     - declaration: "Erdos249257.ExternalVerification68MovingFactorScaleSplit.splitFactorNormalizedCollision_implies_irrational"
-      file: "proofs/families/ExternalVerification68MovingFactorScaleSplit/Solution.lean"
+      file: "proofs/Solutions/ExternalVerification68MovingFactorScaleSplit.lean"
       sorry_count: 0
       comparator_config: "proofs/families/ExternalVerification68MovingFactorScaleSplit/comparator.json"
       canonical_claim_status: "source_checked_wrapper_focused_build_passed"
@@ -107,7 +107,7 @@ status:
         The theorem does not produce cofinal factor projections, disagreement,
         or the normalized collision bound.
     - declaration: "Erdos249257.ExternalVerification68MovingFactorScaleSplit.fixedOwnerPair_eventually_absorbed"
-      file: "proofs/families/ExternalVerification68MovingFactorScaleSplit/Solution.lean"
+      file: "proofs/Solutions/ExternalVerification68MovingFactorScaleSplit.lean"
       sorry_count: 0
       comparator_config: "proofs/families/ExternalVerification68MovingFactorScaleSplit/comparator.json"
       canonical_claim_status: "source_checked_wrapper_focused_build_passed"

@@ -78,7 +78,7 @@ status:
   - Classical.choice
   main_results:
   - declaration: Erdos249257.ExternalVerification243SummableNegativeMassRigidity.summableNegativeMass_completeRigidity
-    file: proofs/families/ExternalVerification243SummableNegativeMassRigidity/Solution.lean
+    file: proofs/Solutions/ExternalVerification243SummableNegativeMassRigidity.lean
     sorry_count: 0
     comparator_config: proofs/families/ExternalVerification243SummableNegativeMassRigidity/comparator.json
     canonical_claim_status: source_proved_wrapper_pending_guarded_focused_check

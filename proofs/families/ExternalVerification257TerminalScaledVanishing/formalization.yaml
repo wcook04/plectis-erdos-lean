@@ -72,7 +72,7 @@ status:
   permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
   main_results:
     - declaration: "Erdos249257.ExternalVerification257TerminalScaledVanishing.terminalScaledVanishing_completeCounterexample"
-      file: "proofs/families/ExternalVerification257TerminalScaledVanishing/Solution.lean"
+      file: "proofs/Solutions/ExternalVerification257TerminalScaledVanishing.lean"
       sorry_count: 0
       comparator_config: "proofs/families/ExternalVerification257TerminalScaledVanishing/comparator.json"
       canonical_claim_status: "exact_source_transport_focused_lean_green"

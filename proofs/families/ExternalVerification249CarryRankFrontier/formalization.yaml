@@ -62,7 +62,7 @@ status:
   axioms: ["propext", "Quot.sound", "Classical.choice"]
   main_results:
     - declaration: "Erdos249257.ExternalVerification249CarryRankFrontier.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank"
-      file: "proofs/families/ExternalVerification249CarryRankFrontier/Solution.lean"
+      file: "proofs/Solutions/ExternalVerification249CarryRankFrontier.lean"
       sorry_count: 0
       axioms: ["propext", "Quot.sound", "Classical.choice"]
       comparator_config: "proofs/families/ExternalVerification249CarryRankFrontier/comparator.json"
@@ -78,7 +78,7 @@ status:
         relation: "exact_paper_theorem"
         status: "complete"
     - declaration: "Erdos249257.ExternalVerification249CarryRankFrontier.not_irrational_totientSeries_implies_unbounded_carryRank_unconditional"
-      file: "proofs/families/ExternalVerification249CarryRankFrontier/Solution.lean"
+      file: "proofs/Solutions/ExternalVerification249CarryRankFrontier.lean"
       sorry_count: 0
       axioms: ["propext", "Quot.sound", "Classical.choice"]
       comparator_config: "proofs/families/ExternalVerification249CarryRankFrontier/comparator.json"
@@ -94,7 +94,7 @@ status:
         relation: "exact_paper_theorem"
         status: "complete"
     - declaration: "Erdos249257.ExternalVerification249CarryRankFrontier.finrank_canonicalCarryKernel_ge_of_certificate"
-      file: "proofs/families/ExternalVerification249CarryRankFrontier/Solution.lean"
+      file: "proofs/Solutions/ExternalVerification249CarryRankFrontier.lean"
       sorry_count: 0
       axioms: ["propext", "Quot.sound", "Classical.choice"]
       comparator_config: "proofs/families/ExternalVerification249CarryRankFrontier/comparator.json"
@@ -110,7 +110,7 @@ status:
         relation: "ingredient_of_grouped_theorem"
         status: "complete"
     - declaration: "Erdos249257.ExternalVerification249CarryRankFrontier.totient_carryKernel_diff"
-      file: "proofs/families/ExternalVerification249CarryRankFrontier/Solution.lean"
+      file: "proofs/Solutions/ExternalVerification249CarryRankFrontier.lean"
       sorry_count: 0
       axioms: ["propext", "Quot.sound", "Classical.choice"]
       comparator_config: "proofs/families/ExternalVerification249CarryRankFrontier/comparator.json"
@@ -126,7 +126,7 @@ status:
         relation: "ingredient_of_grouped_theorem"
         status: "complete"
     - declaration: "Erdos249257.ExternalVerification249CarryRankFrontier.carryShift_dvd_iff_tailDiff_mem_int"
-      file: "proofs/families/ExternalVerification249CarryRankFrontier/Solution.lean"
+      file: "proofs/Solutions/ExternalVerification249CarryRankFrontier.lean"
       sorry_count: 0
       axioms: ["propext", "Quot.sound", "Classical.choice"]
       comparator_config: "proofs/families/ExternalVerification249CarryRankFrontier/comparator.json"
@@ -142,7 +142,7 @@ status:
         relation: "exact_paper_theorem"
         status: "complete"
     - declaration: "Erdos249257.ExternalVerification249CarryRankFrontier.not_irrational_binaryCoeffSeries_iff_exists_temperedBinaryOrbit"
-      file: "proofs/families/ExternalVerification249CarryRankFrontier/Solution.lean"
+      file: "proofs/Solutions/ExternalVerification249CarryRankFrontier.lean"
       sorry_count: 0
       axioms: ["propext", "Quot.sound", "Classical.choice"]
       comparator_config: "proofs/families/ExternalVerification249CarryRankFrontier/comparator.json"

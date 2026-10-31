@@ -54,7 +54,7 @@ status:
   permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
   main_results:
     - declaration: "Erdos249257.ExternalVerification251LcmDiagonalCriterion.notIrrationalInitial_iff_exists_integral_positive_tailShift"
-      file: "proofs/families/ExternalVerification251LcmDiagonalCriterion/Solution.lean"
+      file: "proofs/Solutions/ExternalVerification251LcmDiagonalCriterion.lean"
       sorry_count: 0
       comparator_config: "proofs/families/ExternalVerification251LcmDiagonalCriterion/comparator.json"
       canonical_claim_status: "source-proved exact transport; focused Lean and axiom audit passed"
@@ -64,7 +64,7 @@ status:
       boundary: "Abstract real recurrence theorem; it supplies no nonintegral shift for the actual prime-gap orbit."
       literature_dependencies: []
     - declaration: "Erdos249257.ExternalVerification251LcmDiagonalCriterion.irrationalInitial_iff_cofinalNonintegralTailShifts"
-      file: "proofs/families/ExternalVerification251LcmDiagonalCriterion/Solution.lean"
+      file: "proofs/Solutions/ExternalVerification251LcmDiagonalCriterion.lean"
       sorry_count: 0
       comparator_config: "proofs/families/ExternalVerification251LcmDiagonalCriterion/comparator.json"
       canonical_claim_status: "source-proved exact transport; focused Lean and axiom audit passed"
@@ -74,7 +74,7 @@ status:
       boundary: "The equivalence identifies the producer but does not prove it for actual prime gaps."
       literature_dependencies: []
     - declaration: "Erdos249257.ExternalVerification251LcmDiagonalCriterion.tailShiftIntegral_iff_orderOf_dvd"
-      file: "proofs/families/ExternalVerification251LcmDiagonalCriterion/Solution.lean"
+      file: "proofs/Solutions/ExternalVerification251LcmDiagonalCriterion.lean"
       sorry_count: 0
       comparator_config: "proofs/families/ExternalVerification251LcmDiagonalCriterion/comparator.json"
       canonical_claim_status: "source-proved exact transport; focused Lean and axiom audit passed"
@@ -84,7 +84,7 @@ status:
       boundary: "Abstract rational recurrence theorem; no actual-prime nonintegrality is supplied."
       literature_dependencies: []
     - declaration: "Erdos249257.ExternalVerification251LcmDiagonalCriterion.irrationalInitial_iff_nonintegral_on_schedule"
-      file: "proofs/families/ExternalVerification251LcmDiagonalCriterion/Solution.lean"
+      file: "proofs/Solutions/ExternalVerification251LcmDiagonalCriterion.lean"
       sorry_count: 0
       comparator_config: "proofs/families/ExternalVerification251LcmDiagonalCriterion/comparator.json"
       canonical_claim_status: "source-proved exact transport; focused Lean and axiom audit passed"
@@ -94,7 +94,7 @@ status:
       boundary: "Does not prove any schedule miss for actual prime gaps."
       literature_dependencies: []
     - declaration: "Erdos249257.ExternalVerification251LcmDiagonalCriterion.irrationalInitial_iff_allLcmDiagonal_nonintegral"
-      file: "proofs/families/ExternalVerification251LcmDiagonalCriterion/Solution.lean"
+      file: "proofs/Solutions/ExternalVerification251LcmDiagonalCriterion.lean"
       sorry_count: 0
       comparator_config: "proofs/families/ExternalVerification251LcmDiagonalCriterion/comparator.json"
       canonical_claim_status: "source-proved exact transport; focused Lean and axiom audit passed"

@@ -48,7 +48,7 @@ status:
   permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
   main_results:
     - declaration: "Erdos249257.ExternalVerification249FullDepthRayAmplifier.apFullDepthEscape_iff_irrational"
-      file: "proofs/families/ExternalVerification249FullDepthRayAmplifier/Solution.lean"
+      file: "proofs/Solutions/ExternalVerification249FullDepthRayAmplifier.lean"
       sorry_count: 0
       canonical_claim_status: "source_transport_pending_focused_check_low_disk"
       novelty_status: "unassessed"
