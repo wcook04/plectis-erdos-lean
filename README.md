@@ -37,8 +37,8 @@ The build prints that the theorem depends on axioms `propext`,
 [folder map](#where-things-live)
 
 Will Cook directs this work and is not a mathematician. AI agents did most of
-the research and drafting, and no human mathematical peer review is recorded for
-any entry. Erdős problem #1041 is answered for the exact Formal Conjectures statement by a
+the research and drafting. Apart from the reviews of requests to Formal Conjectures,
+no human mathematical peer review is recorded. Erdős problem #1041 is answered for the exact Formal Conjectures statement by a
 counterexample due to ani, and the other seven problems remain open. The other
 results here are restricted results, obstructions and reformulations, set out
 per problem in [the table below](#the-eight-problems).
