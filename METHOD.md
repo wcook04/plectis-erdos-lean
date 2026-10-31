@@ -1,9 +1,9 @@
 # Method: delegating mathematics to a model that has no tools
 
-This repository is the checked surface of a research programme. This document
-describes how the work reaches the models that do a large part of it, and what
-makes the result safe to accept. The mathematics is in the entries. The method is
-here because the method is reusable and the mathematics is specific.
+This repository holds the Lean record of a research programme. This document
+describes how source material reaches the AI models that do a large part of the
+work, and what is required before a returned argument is accepted. The mathematics
+is in the entries.
 
 ## The problem the method solves
 
@@ -13,17 +13,16 @@ separable.
 **Reasoning depth** is whether a model can invent the mathematics: find the route,
 construct the argument, see that a lemma is available.
 
-**Harness fitness** is whether a model can drive tools: read a repository, run a
+**Tool fitness** is whether a model can drive tools: read a repository, run a
 checker, iterate against a compiler, hold a long session.
 
 A model can be strong on one and absent on the other. At any given moment the
 strongest available reasoner is often the one reachable only through a chat
 interface, with no tool access, no view of a repository, and one response per
 question. The usual response is to wait until that model is integrated into a
-coding harness. Waiting costs the months in which it is strongest.
+coding agent, and it may be the strongest available model only for those months.
 
-The method here gets checked mathematical work out of such a model. Three phases,
-and the boundary is crossed once.
+The method here uses such a model in three phases.
 
 ## COMPILE
 
@@ -47,7 +46,7 @@ A **dominance map** over every claim-bearing row for the problem. Rediscovering 
 result the corpus already holds is a failed delegation, so the map exists to make
 that detectable rather than flattering.
 
-A **no-go bank**: the routes already refuted, with the counterexample that killed
+A **list of refuted approaches**: the approaches already refuted, with the counterexample that killed
 each one. A model with one response should not spend it on a route that is known
 to be dead.
 
@@ -60,7 +59,7 @@ rediscovery as new. The contract states that the only complete deliverable is a
 proof of the parent theorem, that every reduction promotes its residual inside the
 same response, and that there is no later turn to defer to.
 
-The model returns prose. Prose is a hypothesis.
+The model returns prose, and that prose is treated as a hypothesis.
 
 ## VERIFY
 
@@ -75,7 +74,7 @@ uses.
   so `sorryAx` cannot hide inside a proof that appears to compile.
 - `<Entry>/comparator.json` binds the three together.
 
-The load-bearing property is that this test **never asks who produced the work**.
+This test **never asks who produced the work**.
 It asks what was proved and on which axioms. A frontier reasoner with no tools,
 another group's system, and a person with a pencil are accepted on identical terms,
 and are refused on identical terms. That is what makes it possible to accept work
@@ -130,5 +129,6 @@ informal one. Those remain human judgements, and this repository records novelty
 unassessed wherever the literature does not settle it.
 
 The method produces checked theorems. It does not produce reviewed ones. No human
-mathematical peer review is claimed for any entry in this release, and every parent
-problem addressed here is open.
+mathematical peer review is claimed for any entry in this release. #1041 is answered
+for the exact Formal Conjectures statement, using ani's counterexample, and the other
+seven original problems remain open.

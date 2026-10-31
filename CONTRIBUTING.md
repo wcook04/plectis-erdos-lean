@@ -1,11 +1,15 @@
 <!-- SPDX-FileCopyrightText: 2026 Will Cook -->
 <!-- SPDX-License-Identifier: Apache-2.0 -->
 
-# Contribute to the checking companion
+# Contribute
 
-This repository owns checking entries, adapters and release tools. The
-[primary research repository](https://github.com/wcook04/plectis-erdos)
-owns the mathematical research, papers and public claim registry.
+This repository holds Lean entries, adapters and release tools. The
+[research repository](https://github.com/wcook04/plectis-erdos) holds the
+mathematical research, papers and public claim registry.
+
+Changes reach `main` through pull requests. Files under `PalomarCorpus/` come from
+a generator outside this repository, so report a problem in one of them as an
+issue.
 
 ## Report a packaging or replay problem
 
