@@ -111,10 +111,26 @@ def focused_targets(root: Path, base: str, *, excluded: list[dict] | None = None
     # PRs compare with their actual parent, including stacked PRs. On manual
     # dispatch the default main comparison catches stale branch-only modules.
     ancestor = git('merge-base', 'HEAD', base, root=root)
-    names = subprocess.check_output(['git', 'diff', '--name-only', '-z', '--diff-filter=ACMR',
-                                     ancestor, '--', '*.lean'], cwd=root, timeout=30).split(b'\0')
+    records = subprocess.check_output(['git', 'diff', '--name-status', '-z', '--find-renames=100%',
+                                       '--diff-filter=ACMR', ancestor, '--', '*.lean'],
+                                      cwd=root, timeout=30).split(b'\0')
+    names, identical_moves = [], {}
+    fields = iter(records)
+    for status in fields:
+        if not status:
+            continue
+        previous = next(fields)
+        if status.startswith((b'R', b'C')):
+            current = next(fields)
+            names.append(current)
+            if status == b'R100':
+                identical_moves[current] = previous
+        else:
+            names.append(previous)
     with (root / 'lakefile.toml').open('rb') as source:
         config = tomllib.load(source)
+    previous_config = (tomllib.loads(git('show', ancestor + ':lakefile.toml', root=root))
+                       if identical_moves else {})
     modules = {}
     for raw in names:
         if not raw:
@@ -124,6 +140,15 @@ def focused_targets(root: Path, base: str, *, excluded: list[dict] | None = None
             continue
         candidate = changed_module(root, root/path, config)
         if candidate is not None:
+            prior = identical_moves.get(raw)
+            if prior is not None and changed_module(root, root/os.fsdecode(prior), previous_config) == candidate:
+                # A source-root move with identical bytes and module identity is
+                # still covered by the full launch/release build below. Repeating
+                # it as an extra focused target does not add validation coverage.
+                if excluded is not None:
+                    excluded.append({'path': path.as_posix(), 'previous_path': os.fsdecode(prior),
+                                     'reason': 'byte_identical_move_same_module'})
+                continue
             modules[candidate] = root/path
         elif excluded is not None:
             excluded.append({'path': path.as_posix(),

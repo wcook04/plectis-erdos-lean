@@ -39,391 +39,488 @@ name = "Erdos257SupportClassComparison"
 
 [[lean_lib]]
 name = "ExternalVerification68ChannelRadius"
+srcDir = "proofs/families"
 globs = ["ExternalVerification68ChannelRadius.+"]
 
 [[lean_lib]]
 name = "ExternalVerification68CompanionOrbitBoundary"
+srcDir = "proofs/families"
 globs = ["ExternalVerification68CompanionOrbitBoundary.+"]
 
 [[lean_lib]]
 name = "ExternalVerification243PeriodicNegativeOrbit"
+srcDir = "proofs/families"
 globs = ["ExternalVerification243PeriodicNegativeOrbit.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249BinaryCyclotomicAnchors"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249BinaryCyclotomicAnchors.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249RankOneSharpFloor"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249RankOneSharpFloor.+"]
 
 [[lean_lib]]
 name = "ExternalVerification251PolynomialShiftCountermodel"
+srcDir = "proofs/families"
 globs = ["ExternalVerification251PolynomialShiftCountermodel.+"]
 
 [[lean_lib]]
 name = "ExternalVerification251ActualPrimeGapTail"
+srcDir = "proofs/families"
 globs = ["ExternalVerification251ActualPrimeGapTail.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257ReciprocalSupport"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257ReciprocalSupport.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257FinitePeriodNoncollapse"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257FinitePeriodNoncollapse.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257RationalTailRigidity"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257RationalTailRigidity.+"]
 
 [[lean_lib]]
 name = "ExternalVerification269ThreePrimeStructure"
+srcDir = "proofs/families"
 globs = ["ExternalVerification269ThreePrimeStructure.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1041SolvedFamilies"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1041SolvedFamilies.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1041CyclicTrinomialFiber"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1041CyclicTrinomialFiber.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1041QuarticQuotientFiber"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1041QuarticQuotientFiber.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1041CriticalGeometry"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1041CriticalGeometry.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1041TetranomialSpokes"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1041TetranomialSpokes.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1041FirstMergeCriticalValueSeparation"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1041FirstMergeCriticalValueSeparation.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1049AdelicHeightBridge"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1049AdelicHeightBridge.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1049RationalBaseBarrier"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1049RationalBaseBarrier.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1049PrimeSupportSelectors"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1049PrimeSupportSelectors.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1049HermitePadeNoGo"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1049HermitePadeNoGo.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249DyadicTotientKernel"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249DyadicTotientKernel.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249ResidueClassTotientSeries"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249ResidueClassTotientSeries.+"]
 
 [[lean_lib]]
 name = "ExternalVerification251KernelDenominatorFloor"
+srcDir = "proofs/families"
 globs = ["ExternalVerification251KernelDenominatorFloor.+"]
 
 [[lean_lib]]
 name = "ExternalVerification251FreePairEquivalence"
+srcDir = "proofs/families"
 globs = ["ExternalVerification251FreePairEquivalence.+"]
 
 [[lean_lib]]
 name = "ExternalVerification251PrimeGapIdentity"
+srcDir = "proofs/families"
 globs = ["ExternalVerification251PrimeGapIdentity.+"]
 
 [[lean_lib]]
 name = "ExternalVerification269WindowEscapeEquivalence"
+srcDir = "proofs/families"
 globs = ["ExternalVerification269WindowEscapeEquivalence.+"]
 
 [[lean_lib]]
 name = "ExternalVerification269ActualShellOrbit"
+srcDir = "proofs/families"
 globs = ["ExternalVerification269ActualShellOrbit.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1049RationalBaseContour"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1049RationalBaseContour.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249MobiusMersenneLadderStructure"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249MobiusMersenneLadderStructure.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249ParityPerturbedRationalControl"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249ParityPerturbedRationalControl.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257AchievementSetGeometry"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257AchievementSetGeometry.+"]
 
 [[lean_lib]]
 name = "ExternalVerification243BoundedNegativePartRigidity"
+srcDir = "proofs/families"
 globs = ["ExternalVerification243BoundedNegativePartRigidity.+"]
 
 [[lean_lib]]
 name = "ExternalVerification243BoundedRiseReducedTail"
+srcDir = "proofs/families"
 globs = ["ExternalVerification243BoundedRiseReducedTail.+"]
 
 [[lean_lib]]
 name = "ExternalVerification68PrimeUnitTranslator"
+srcDir = "proofs/families"
 globs = ["ExternalVerification68PrimeUnitTranslator.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1041DiskFamilySeparation"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1041DiskFamilySeparation.+"]
 
 [[lean_lib]]
 name = "ExternalVerification251BoundedPerturbationCountermodel"
+srcDir = "proofs/families"
 globs = ["ExternalVerification251BoundedPerturbationCountermodel.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1041CollinearChord"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1041CollinearChord.+"]
 
 
 [[lean_lib]]
 name = "ExternalVerification243ProtectedEpochEnergy"
+srcDir = "proofs/families"
 globs = ["ExternalVerification243ProtectedEpochEnergy.+"]
 
 [[lean_lib]]
 name = "ExternalVerification243SlowRiseBarrier"
+srcDir = "proofs/families"
 globs = ["ExternalVerification243SlowRiseBarrier.+"]
 
 [[lean_lib]]
 name = "ExternalVerification243TwoModulusRecordCut"
+srcDir = "proofs/families"
 globs = ["ExternalVerification243TwoModulusRecordCut.+"]
 
 [[lean_lib]]
 name = "ExternalVerification243SaturatedSquareTransport"
+srcDir = "proofs/families"
 globs = ["ExternalVerification243SaturatedSquareTransport.+"]
 
 [[lean_lib]]
 name = "ExternalVerification243RecordIncrementBarrier"
+srcDir = "proofs/families"
 globs = ["ExternalVerification243RecordIncrementBarrier.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249TotientKernelBasis"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249TotientKernelBasis.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1049BezoutPluckerJets"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1049BezoutPluckerJets.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249ActualLcmOrbit"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249ActualLcmOrbit.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249CanonicalMersenneFrontier"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249CanonicalMersenneFrontier.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249CarryRankFrontier"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249CarryRankFrontier.+"]
 
 [[lean_lib]]
 name = "ExternalVerification251LcmDiagonalCriterion"
+srcDir = "proofs/families"
 globs = ["ExternalVerification251LcmDiagonalCriterion.+"]
 
 [[lean_lib]]
 name = "ExternalVerification269AllScaleLattice"
+srcDir = "proofs/families"
 globs = ["ExternalVerification269AllScaleLattice.+"]
 
 [[lean_lib]]
 name = "ExternalVerification68StrictSuccessorCarry"
+srcDir = "proofs/families"
 globs = ["ExternalVerification68StrictSuccessorCarry.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1041CubicPath"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1041CubicPath.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1049ArchimedeanCap"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1049ArchimedeanCap.+"]
 
 [[lean_lib]]
 name = "ExternalVerification243RepairEntropy"
+srcDir = "proofs/families"
 globs = ["ExternalVerification243RepairEntropy.+"]
 
 [[lean_lib]]
 name = "ExternalVerification243SummableNegativeMassRigidity"
+srcDir = "proofs/families"
 globs = ["ExternalVerification243SummableNegativeMassRigidity.+"]
 
 [[lean_lib]]
 name = "ExternalVerification243WeightedRecordExcess"
+srcDir = "proofs/families"
 globs = ["ExternalVerification243WeightedRecordExcess.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249FullDepthRayAmplifier"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249FullDepthRayAmplifier.+"]
 
 [[lean_lib]]
 name = "ExternalVerification251AffineCircularity"
+srcDir = "proofs/families"
 globs = ["ExternalVerification251AffineCircularity.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257ActualUpperSuccessor"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257ActualUpperSuccessor.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257BooleanMobiusCarry"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257BooleanMobiusCarry.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PositiveSkipEquivalence"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PositiveSkipEquivalence.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257ScaledGreedyTrap"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257ScaledGreedyTrap.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257TerminalScaledVanishing"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257TerminalScaledVanishing.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257TwentyOneFatalBranch"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257TwentyOneFatalBranch.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257GeneralRepairCriterion"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257GeneralRepairCriterion.+"]
 
 [[lean_lib]]
 name = "ExternalVerification269CarryMechanism"
+srcDir = "proofs/families"
 globs = ["ExternalVerification269CarryMechanism.+"]
 
 [[lean_lib]]
 name = "ExternalVerification269IntegralBranchPinning"
+srcDir = "proofs/families"
 globs = ["ExternalVerification269IntegralBranchPinning.+"]
 
 [[lean_lib]]
 name = "ExternalVerification68AdjacentUnitCarryWindow"
+srcDir = "proofs/families"
 globs = ["ExternalVerification68AdjacentUnitCarryWindow.+"]
 
 [[lean_lib]]
 name = "ExternalVerification68FiniteDenominator"
+srcDir = "proofs/families"
 globs = ["ExternalVerification68FiniteDenominator.+"]
 
 [[lean_lib]]
 name = "ExternalVerification68MovingFactorScaleSplit"
+srcDir = "proofs/families"
 globs = ["ExternalVerification68MovingFactorScaleSplit.+"]
 
 [[lean_lib]]
 name = "ExternalVerification68PrimePole"
+srcDir = "proofs/families"
 globs = ["ExternalVerification68PrimePole.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257FairCoding"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257FairCoding.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257RationalMembership"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257RationalMembership.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257DyadicObservationSummability"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257DyadicObservationSummability.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1049PublishedHeightRegions"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1049PublishedHeightRegions.+"]
 
 [[lean_lib]]
 name = "ExternalVerification243PrimitiveRecordRigidity"
+srcDir = "proofs/families"
 globs = ["ExternalVerification243PrimitiveRecordRigidity.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249FareyWindowExclusion"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249FareyWindowExclusion.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PrefixTwoAdicExclusion"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PrefixTwoAdicExclusion.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249TermwiseDyadicVacuous"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249TermwiseDyadicVacuous.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249TotientRigidity"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249TotientRigidity.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257DivisibilityWeightedSupport"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257DivisibilityWeightedSupport.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257FourNinthsRepairWindows"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257FourNinthsRepairWindows.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257LiteralWeightedCover"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257LiteralWeightedCover.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257MixedWeightedCover"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257MixedWeightedCover.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257VariableExponentCover"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257VariableExponentCover.+"]
 
 [[lean_lib]]
 name = "ExternalVerification68KempnerIndex"
+srcDir = "proofs/families"
 globs = ["ExternalVerification68KempnerIndex.+"]
 
 [[lean_lib]]
 name = "ExternalVerification68MomentIdeal"
+srcDir = "proofs/families"
 globs = ["ExternalVerification68MomentIdeal.+"]
 
 [[lean_lib]]
 name = "ExternalVerification68MultiplicativeSuccessorRigidity"
+srcDir = "proofs/families"
 globs = ["ExternalVerification68MultiplicativeSuccessorRigidity.+"]
 
 [[lean_lib]]
 name = "ExternalVerification68ResidualIntegerClass"
+srcDir = "proofs/families"
 globs = ["ExternalVerification68ResidualIntegerClass.+"]
 
 [[lean_lib]]
 name = "ExternalVerification68CommonDenominatorGrowth"
+srcDir = "proofs/families"
 globs = ["ExternalVerification68CommonDenominatorGrowth.+"]
 
 [[lean_lib]]
 name = "ExternalVerification243OriginalCoordinateBoundedDefect"
+srcDir = "proofs/families"
 globs = ["ExternalVerification243OriginalCoordinateBoundedDefect.+"]
 
 [[lean_lib]]
 name = "ExternalVerification243RecordAmplifiedCancellationVisibility"
+srcDir = "proofs/families"
 globs = ["ExternalVerification243RecordAmplifiedCancellationVisibility.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249TotientAffineModeEscape"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249TotientAffineModeEscape.+"]
 
 [[lean_lib]]
 name = "ExternalVerification251AllResidueLogarithmicCountermodel"
+srcDir = "proofs/families"
 globs = ["ExternalVerification251AllResidueLogarithmicCountermodel.+"]
 
 [[lean_lib]]
 name = "ExternalVerification251ShiftedFourPrimeCounting"
+srcDir = "proofs/families"
 globs = ["ExternalVerification251ShiftedFourPrimeCounting.+"]
 
 [[lean_lib]]
 name = "PalomarCorpus"
+srcDir = "proofs"
 globs = ["PalomarCorpus.+"]
 
 [[lean_lib]]
 name = "Solutions"
+srcDir = "proofs"
 globs = ["Solutions.+"]
 
 [[lean_lib]]
@@ -431,1004 +528,1255 @@ name = "PlectisSnapshot"
 
 [[lean_lib]]
 name = "ExternalVerification1041DegreeSevenCounterexample"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1041DegreeSevenCounterexample.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1049RationalBaseRegion"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1049RationalBaseRegion.+"]
 
 [[lean_lib]]
 name = "ExternalVerification243CompletePaperRecords"
+srcDir = "proofs/families"
 globs = ["ExternalVerification243CompletePaperRecords.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249CompleteKernelBases"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249CompleteKernelBases.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249RankOneDenominator"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249RankOneDenominator.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249RationalObservableClassification"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249RationalObservableClassification.+"]
 
 [[lean_lib]]
 name = "ExternalVerification251ExactDenominatorFloors"
+srcDir = "proofs/families"
 globs = ["ExternalVerification251ExactDenominatorFloors.+"]
 
 [[lean_lib]]
 name = "ExternalVerification251PrimeGapNonperiodicity"
+srcDir = "proofs/families"
 globs = ["ExternalVerification251PrimeGapNonperiodicity.+"]
 
 [[lean_lib]]
 name = "ExternalVerification251UniformSparseRationalisation"
+srcDir = "proofs/families"
 globs = ["ExternalVerification251UniformSparseRationalisation.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257WeightedCloseReturn"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257WeightedCloseReturn.+"]
 
 [[lean_lib]]
 name = "ExternalVerification269ExactDenominator"
+srcDir = "proofs/families"
 globs = ["ExternalVerification269ExactDenominator.+"]
 
 [[lean_lib]]
 name = "ExternalVerification269FixedStartResidue"
+srcDir = "proofs/families"
 globs = ["ExternalVerification269FixedStartResidue.+"]
 
 [[lean_lib]]
 name = "ExternalVerification68FactorialGapBounds"
+srcDir = "proofs/families"
 globs = ["ExternalVerification68FactorialGapBounds.+"]
 
 [[lean_lib]]
 name = "ExternalVerification68PaperStatementsA"
+srcDir = "proofs/families"
 globs = ["ExternalVerification68PaperStatementsA.+"]
 
 [[lean_lib]]
 name = "ExternalVerification68PaperStatementsB"
+srcDir = "proofs/families"
 globs = ["ExternalVerification68PaperStatementsB.+"]
 
 [[lean_lib]]
 name = "ExternalVerification68PaperStatementsC"
+srcDir = "proofs/families"
 globs = ["ExternalVerification68PaperStatementsC.+"]
 
 [[lean_lib]]
 name = "ExternalVerification251PaperStatementsA"
+srcDir = "proofs/families"
 globs = ["ExternalVerification251PaperStatementsA.+"]
 
 [[lean_lib]]
 name = "ExternalVerification251PaperStatementsB"
+srcDir = "proofs/families"
 globs = ["ExternalVerification251PaperStatementsB.+"]
 
 [[lean_lib]]
 name = "ExternalVerification251PaperStatementsC"
+srcDir = "proofs/families"
 globs = ["ExternalVerification251PaperStatementsC.+"]
 
 [[lean_lib]]
 name = "ExternalVerification251PaperStatementsD"
+srcDir = "proofs/families"
 globs = ["ExternalVerification251PaperStatementsD.+"]
 
 [[lean_lib]]
 name = "ExternalVerification251PaperStatementsE"
+srcDir = "proofs/families"
 globs = ["ExternalVerification251PaperStatementsE.+"]
 
 [[lean_lib]]
 name = "ExternalVerification251PaperStatementsF"
+srcDir = "proofs/families"
 globs = ["ExternalVerification251PaperStatementsF.+"]
 
 [[lean_lib]]
 name = "ExternalVerification251PaperStatementsG"
+srcDir = "proofs/families"
 globs = ["ExternalVerification251PaperStatementsG.+"]
 
 [[lean_lib]]
 name = "ExternalVerification251PaperStatementsJ"
+srcDir = "proofs/families"
 globs = ["ExternalVerification251PaperStatementsJ.+"]
 
 [[lean_lib]]
 name = "ExternalVerification251PaperStatementsK"
+srcDir = "proofs/families"
 globs = ["ExternalVerification251PaperStatementsK.+"]
 
 [[lean_lib]]
 name = "ExternalVerification251PaperStatementsL"
+srcDir = "proofs/families"
 globs = ["ExternalVerification251PaperStatementsL.+"]
 
 [[lean_lib]]
 name = "ExternalVerification251PaperStatementsN"
+srcDir = "proofs/families"
 globs = ["ExternalVerification251PaperStatementsN.+"]
 
 [[lean_lib]]
 name = "ExternalVerification251PaperStatementsO"
+srcDir = "proofs/families"
 globs = ["ExternalVerification251PaperStatementsO.+"]
 
 [[lean_lib]]
 name = "ExternalVerification251PaperStatementsP"
+srcDir = "proofs/families"
 globs = ["ExternalVerification251PaperStatementsP.+"]
 
 [[lean_lib]]
 name = "ExternalVerification251PaperStatementsQ"
+srcDir = "proofs/families"
 globs = ["ExternalVerification251PaperStatementsQ.+"]
 
 [[lean_lib]]
 name = "ExternalVerification251PaperStatementsR"
+srcDir = "proofs/families"
 globs = ["ExternalVerification251PaperStatementsR.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsAC"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsAC.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsAD"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsAD.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsAE"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsAE.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsAF"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsAF.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsAG"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsAG.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsAH"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsAH.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsAI"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsAI.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsAJ"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsAJ.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsAK"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsAK.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsAL"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsAL.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsAM"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsAM.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsAN"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsAN.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsAO"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsAO.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsAP"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsAP.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsAQ"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsAQ.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsAR"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsAR.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsAS"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsAS.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsAT"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsAT.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsAU"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsAU.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsAW"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsAW.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsAX"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsAX.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsAY"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsAY.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsAZ"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsAZ.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsBA"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsBA.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsBB"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsBB.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsBC"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsBC.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsBD"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsBD.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsBE"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsBE.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsBG"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsBG.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsBH"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsBH.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsBJ"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsBJ.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsBK"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsBK.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsBL"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsBL.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsBM"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsBM.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsBN"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsBN.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStatementsAA"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStatementsAA.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStatementsAB"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStatementsAB.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStatementsAC"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStatementsAC.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStatementsAD"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStatementsAD.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStatementsAE"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStatementsAE.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStatementsAF"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStatementsAF.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStatementsAG"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStatementsAG.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStatementsAH"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStatementsAH.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStatementsAI"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStatementsAI.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStatementsAJ"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStatementsAJ.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStatementsAK"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStatementsAK.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStatementsAL"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStatementsAL.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStatementsAM"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStatementsAM.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStatementsAN"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStatementsAN.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStatementsAO"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStatementsAO.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStatementsAP"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStatementsAP.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStatementsAQ"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStatementsAQ.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStatementsAR"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStatementsAR.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStatementsAS"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStatementsAS.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStatementsAT"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStatementsAT.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStatementsAU"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStatementsAU.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStatementsAV"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStatementsAV.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStatementsAX"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStatementsAX.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStatementsBC"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStatementsBC.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStatementsBD"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStatementsBD.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStatementsBE"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStatementsBE.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStatementsBF"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStatementsBF.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1049PaperStatementsA"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1049PaperStatementsA.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1049PaperStatementsB"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1049PaperStatementsB.+"]
 
 [[lean_lib]]
 name = "ExternalVerification243PaperStatementsB"
+srcDir = "proofs/families"
 globs = ["ExternalVerification243PaperStatementsB.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1041PaperStatementsX"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1041PaperStatementsX.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1041PaperStatementsY"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1041PaperStatementsY.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1041PaperStatementsZ"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1041PaperStatementsZ.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1041PaperStatementsZA"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1041PaperStatementsZA.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1041PaperStatementsZB"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1041PaperStatementsZB.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1049PaperStatementsX"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1049PaperStatementsX.+"]
 
 [[lean_lib]]
 name = "ExternalVerification251PaperStatementsX"
+srcDir = "proofs/families"
 globs = ["ExternalVerification251PaperStatementsX.+"]
 
 [[lean_lib]]
 name = "ExternalVerification251PaperStatementsY"
+srcDir = "proofs/families"
 globs = ["ExternalVerification251PaperStatementsY.+"]
 
 [[lean_lib]]
 name = "ExternalVerification251PaperStatementsZ"
+srcDir = "proofs/families"
 globs = ["ExternalVerification251PaperStatementsZ.+"]
 
 [[lean_lib]]
 name = "ExternalVerification251PaperStatementsZA"
+srcDir = "proofs/families"
 globs = ["ExternalVerification251PaperStatementsZA.+"]
 
 [[lean_lib]]
 name = "ExternalVerification269PaperStatementsX"
+srcDir = "proofs/families"
 globs = ["ExternalVerification269PaperStatementsX.+"]
 
 [[lean_lib]]
 name = "ExternalVerification269PaperStatementsY"
+srcDir = "proofs/families"
 globs = ["ExternalVerification269PaperStatementsY.+"]
 
 [[lean_lib]]
 name = "ExternalVerification269PaperStatementsA"
+srcDir = "proofs/families"
 globs = ["ExternalVerification269PaperStatementsA.+"]
 
 [[lean_lib]]
 name = "ExternalVerification269PaperStatementsB"
+srcDir = "proofs/families"
 globs = ["ExternalVerification269PaperStatementsB.+"]
 
 [[lean_lib]]
 name = "ExternalVerification269PaperStatementsC"
+srcDir = "proofs/families"
 globs = ["ExternalVerification269PaperStatementsC.+"]
 
 [[lean_lib]]
 name = "ExternalVerification269PaperStatementsD"
+srcDir = "proofs/families"
 globs = ["ExternalVerification269PaperStatementsD.+"]
 
 [[lean_lib]]
 name = "ExternalVerification269PaperStatementsE"
+srcDir = "proofs/families"
 globs = ["ExternalVerification269PaperStatementsE.+"]
 
 [[lean_lib]]
 name = "ExternalVerification243PaperStatementsA"
+srcDir = "proofs/families"
 globs = ["ExternalVerification243PaperStatementsA.+"]
 
 [[lean_lib]]
 name = "ExternalVerification243PaperStatementsC"
+srcDir = "proofs/families"
 globs = ["ExternalVerification243PaperStatementsC.+"]
 
 [[lean_lib]]
 name = "ExternalVerification243PaperStatementsD"
+srcDir = "proofs/families"
 globs = ["ExternalVerification243PaperStatementsD.+"]
 
 [[lean_lib]]
 name = "ExternalVerification243PaperStatementsE"
+srcDir = "proofs/families"
 globs = ["ExternalVerification243PaperStatementsE.+"]
 
 [[lean_lib]]
 name = "ExternalVerification243PaperStatementsF"
+srcDir = "proofs/families"
 globs = ["ExternalVerification243PaperStatementsF.+"]
 
 [[lean_lib]]
 name = "ExternalVerification243PaperStatementsG"
+srcDir = "proofs/families"
 globs = ["ExternalVerification243PaperStatementsG.+"]
 
 [[lean_lib]]
 name = "ExternalVerification243PaperStatementsH"
+srcDir = "proofs/families"
 globs = ["ExternalVerification243PaperStatementsH.+"]
 
 [[lean_lib]]
 name = "ExternalVerification243PaperStatementsI"
+srcDir = "proofs/families"
 globs = ["ExternalVerification243PaperStatementsI.+"]
 
 [[lean_lib]]
 name = "ExternalVerification243PaperStatementsJ"
+srcDir = "proofs/families"
 globs = ["ExternalVerification243PaperStatementsJ.+"]
 
 [[lean_lib]]
 name = "ExternalVerification243PaperStatementsL"
+srcDir = "proofs/families"
 globs = ["ExternalVerification243PaperStatementsL.+"]
 
 [[lean_lib]]
 name = "ExternalVerification243PaperStatementsN"
+srcDir = "proofs/families"
 globs = ["ExternalVerification243PaperStatementsN.+"]
 
 [[lean_lib]]
 name = "ExternalVerification243PaperStatementsO"
+srcDir = "proofs/families"
 globs = ["ExternalVerification243PaperStatementsO.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1041PaperStatementsA"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1041PaperStatementsA.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1041PaperStatementsAA"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1041PaperStatementsAA.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1041PaperStatementsAB"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1041PaperStatementsAB.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1041PaperStatementsB"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1041PaperStatementsB.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1041PaperStatementsD"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1041PaperStatementsD.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1041PaperStatementsE"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1041PaperStatementsE.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1041PaperStatementsF"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1041PaperStatementsF.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1041PaperStatementsG"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1041PaperStatementsG.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1041PaperStatementsH"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1041PaperStatementsH.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1041PaperStatementsI"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1041PaperStatementsI.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1041PaperStatementsJ"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1041PaperStatementsJ.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1041PaperStatementsK"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1041PaperStatementsK.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1041PaperStatementsL"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1041PaperStatementsL.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1041PaperStatementsM"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1041PaperStatementsM.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1041PaperStatementsN"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1041PaperStatementsN.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1041PaperStatementsO"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1041PaperStatementsO.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1041PaperStatementsP"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1041PaperStatementsP.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1041PaperStatementsQ"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1041PaperStatementsQ.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1041PaperStatementsR"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1041PaperStatementsR.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1041PaperStatementsS"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1041PaperStatementsS.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1041PaperStatementsT"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1041PaperStatementsT.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1041PaperStatementsU"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1041PaperStatementsU.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1041PaperStatementsV"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1041PaperStatementsV.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1041PaperStatementsW"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1041PaperStatementsW.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1049PaperStatementsC"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1049PaperStatementsC.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1049PaperStatementsE"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1049PaperStatementsE.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1049PaperStatementsF"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1049PaperStatementsF.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1049PaperStatementsG"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1049PaperStatementsG.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1049PaperStatementsI"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1049PaperStatementsI.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1049PaperStatementsJ"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1049PaperStatementsJ.+"]
 
 [[lean_lib]]
 name = "ExternalVerification243PaperStatementsK"
+srcDir = "proofs/families"
 globs = ["ExternalVerification243PaperStatementsK.+"]
 
 [[lean_lib]]
 name = "ExternalVerification243PaperStatementsM"
+srcDir = "proofs/families"
 globs = ["ExternalVerification243PaperStatementsM.+"]
 
 [[lean_lib]]
 name = "ExternalVerification243PaperStatementsP"
+srcDir = "proofs/families"
 globs = ["ExternalVerification243PaperStatementsP.+"]
 
 [[lean_lib]]
 name = "ExternalVerification243PaperStatementsQ"
+srcDir = "proofs/families"
 globs = ["ExternalVerification243PaperStatementsQ.+"]
 
 [[lean_lib]]
 name = "ExternalVerification243PaperStatementsR"
+srcDir = "proofs/families"
 globs = ["ExternalVerification243PaperStatementsR.+"]
 
 [[lean_lib]]
 name = "ExternalVerification243PaperStatementsS"
+srcDir = "proofs/families"
 globs = ["ExternalVerification243PaperStatementsS.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsA"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsA.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsB"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsB.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsC"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsC.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsD"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsD.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsE"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsE.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsF"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsF.+"]
 
 [[lean_lib]]
 name = "ExternalVerification251PaperStatementsH"
+srcDir = "proofs/families"
 globs = ["ExternalVerification251PaperStatementsH.+"]
 
 [[lean_lib]]
 name = "ExternalVerification251PaperStatementsI"
+srcDir = "proofs/families"
 globs = ["ExternalVerification251PaperStatementsI.+"]
 
 [[lean_lib]]
 name = "ExternalVerification251PaperStatementsM"
+srcDir = "proofs/families"
 globs = ["ExternalVerification251PaperStatementsM.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStatementsA"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStatementsA.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStatementsB"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStatementsB.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStatementsC"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStatementsC.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStatementsD"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStatementsD.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStatementsE"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStatementsE.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStatementsF"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStatementsF.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStatementsG"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStatementsG.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStatementsI"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStatementsI.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStatementsM"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStatementsM.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStatementsJ"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStatementsJ.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStatementsK"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStatementsK.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStatementsL"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStatementsL.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStatementsN"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStatementsN.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStatementsP"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStatementsP.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStatementsQ"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStatementsQ.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStatementsR"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStatementsR.+"]
 
 [[lean_lib]]
 name = "ExternalVerification269PaperStatementsF"
+srcDir = "proofs/families"
 globs = ["ExternalVerification269PaperStatementsF.+"]
 
 [[lean_lib]]
 name = "ExternalVerification269PaperStatementsG"
+srcDir = "proofs/families"
 globs = ["ExternalVerification269PaperStatementsG.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1049PaperStatementsH"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1049PaperStatementsH.+"]
 
 [[lean_lib]]
 name = "ExternalVerification68PaperStatementsE"
+srcDir = "proofs/families"
 globs = ["ExternalVerification68PaperStatementsE.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsG"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsG.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsH"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsH.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsI"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsI.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsJ"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsJ.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsK"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsK.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsL"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsL.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsM"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsM.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1041PaperStatementsC"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1041PaperStatementsC.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1049PaperStatementsK"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1049PaperStatementsK.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1049PaperStatementsM"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1049PaperStatementsM.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1049PaperStatementsN"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1049PaperStatementsN.+"]
 
 [[lean_lib]]
 name = "ExternalVerification243PaperStructuresT"
+srcDir = "proofs/families"
 globs = ["ExternalVerification243PaperStructuresT.+"]
 
 [[lean_lib]]
 name = "ExternalVerification243PaperStructuresU"
+srcDir = "proofs/families"
 globs = ["ExternalVerification243PaperStructuresU.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1049PaperStructuresD"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1049PaperStructuresD.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStructuresAW"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStructuresAW.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStructuresBA"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStructuresBA.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStructuresBG"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStructuresBG.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStructuresBO"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStructuresBO.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStructuresO"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStructuresO.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStructuresW"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStructuresW.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStatementsO"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStatementsO.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1041PaperStatementsAC"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1041PaperStatementsAC.+"]
 
 [[lean_lib]]
 name = "ExternalVerification243PaperStructuresV"
+srcDir = "proofs/families"
 globs = ["ExternalVerification243PaperStructuresV.+"]
 
 [[lean_lib]]
 name = "ExternalVerification243PaperStructuresW"
+srcDir = "proofs/families"
 globs = ["ExternalVerification243PaperStructuresW.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStructuresN"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStructuresN.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStructuresP"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStructuresP.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStructuresT"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStructuresT.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStructuresU"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStructuresU.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStructuresS"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStructuresS.+"]
 
 [[lean_lib]]
 name = "ExternalVerification243PaperStructuresAB"
+srcDir = "proofs/families"
 globs = ["ExternalVerification243PaperStructuresAB.+"]
 
 [[lean_lib]]
 name = "ExternalVerification243PaperStructuresAA"
+srcDir = "proofs/families"
 globs = ["ExternalVerification243PaperStructuresAA.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStructuresH"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStructuresH.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStructuresV"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStructuresV.+"]
 
 [[lean_lib]]
 name = "ExternalVerification269PaperStructuresH"
+srcDir = "proofs/families"
 globs = ["ExternalVerification269PaperStructuresH.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStructuresAY"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStructuresAY.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStructuresAZ"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStructuresAZ.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStructuresBB"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStructuresBB.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStructuresBH"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStructuresBH.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStructuresBI"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStructuresBI.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStructuresBJ"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStructuresBJ.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStructuresBK"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStructuresBK.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStructuresBL"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStructuresBL.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStructuresBM"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStructuresBM.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStructuresBN"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStructuresBN.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStructuresBP"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStructuresBP.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStructuresBQ"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStructuresBQ.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStructuresBR"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStructuresBR.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStructuresBS"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStructuresBS.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStructuresBT"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStructuresBT.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStructuresBU"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStructuresBU.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStructuresBV"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStructuresBV.+"]
 
 [[lean_lib]]
 name = "ExternalVerification243PaperStructuresAC"
+srcDir = "proofs/families"
 globs = ["ExternalVerification243PaperStructuresAC.+"]
 
 [[lean_lib]]
 name = "ExternalVerification249PaperStructuresQ"
+srcDir = "proofs/families"
 globs = ["ExternalVerification249PaperStructuresQ.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1041PaperStructuresAD"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1041PaperStructuresAD.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1049PaperStructuresL"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1049PaperStructuresL.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1049PaperStructuresO"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1049PaperStructuresO.+"]
 
 [[lean_lib]]
 name = "ExternalVerification257PaperStructuresBW"
+srcDir = "proofs/families"
 globs = ["ExternalVerification257PaperStructuresBW.+"]
 
 [[lean_lib]]
 name = "ExternalVerification243PaperStructuresAD"
+srcDir = "proofs/families"
 globs = ["ExternalVerification243PaperStructuresAD.+"]
 
 [[lean_lib]]
 name = "ExternalVerification243PaperStructuresAE"
+srcDir = "proofs/families"
 globs = ["ExternalVerification243PaperStructuresAE.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1049PaperStructuresP"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1049PaperStructuresP.+"]
 
 [[lean_lib]]
 name = "ExternalVerification1049PaperStructuresQ"
+srcDir = "proofs/families"
 globs = ["ExternalVerification1049PaperStructuresQ.+"]

@@ -23,6 +23,8 @@ Both outputs are release attachments, not repository content.
 
 from __future__ import annotations
 
+from corpus_paths import corpus_path, relative_path
+
 import argparse
 import hashlib
 import json
@@ -96,45 +98,45 @@ def mathlib_pin() -> dict[str, str] | None:
 
 
 def entry_row(entry: str) -> dict[str, Any]:
-    directory = REPO_ROOT / entry
+    directory = corpus_path(REPO_ROOT, entry)
     comparator_path = directory / "comparator.json"
     required = [comparator_path, directory/'Challenge.lean', directory/'AxiomAudit.lean',
-                directory/'formalization.yaml', REPO_ROOT/'Solutions'/f'{entry}.lean']
+                directory/'formalization.yaml', corpus_path(REPO_ROOT, 'Solutions')/f'{entry}.lean']
     for path in required:
         if not path.is_file():
             raise ValueError(f'Incomplete selected release entry {entry}: missing {path.relative_to(REPO_ROOT)}')
     comparator = json.loads(comparator_path.read_text(encoding="utf-8"))
 
     challenge = directory / "Challenge.lean"
-    solution = REPO_ROOT / "Solutions" / f"{entry}.lean"
+    solution = corpus_path(REPO_ROOT, "Solutions") / f"{entry}.lean"
     audit = directory / "AxiomAudit.lean"
     metadata = directory / "formalization.yaml"
 
     row: dict[str, Any] = {
         "entry": entry,
-        "comparator_config_path": f"{entry}/comparator.json",
+        "comparator_config_path": relative_path(REPO_ROOT, f"{entry}/comparator.json"),
         "comparator_config_sha256": sha256_file(comparator_path),
         "challenge_module": comparator.get("challenge_module"),
         "solution_module": comparator.get("solution_module"),
         "theorem_names": comparator.get("theorem_names"),
         "permitted_axioms": comparator.get("permitted_axioms"),
-        "challenge_path": f"{entry}/Challenge.lean",
+        "challenge_path": relative_path(REPO_ROOT, f"{entry}/Challenge.lean"),
         "challenge_sha256": sha256_file(challenge) if challenge.is_file() else None,
-        "solution_path": f"Solutions/{entry}.lean" if solution.is_file() else None,
+        "solution_path": relative_path(REPO_ROOT, f"Solutions/{entry}.lean") if solution.is_file() else None,
         "solution_sha256": sha256_file(solution) if solution.is_file() else None,
-        "axiom_audit_path": f"{entry}/AxiomAudit.lean" if audit.is_file() else None,
+        "axiom_audit_path": relative_path(REPO_ROOT, f"{entry}/AxiomAudit.lean") if audit.is_file() else None,
         "axiom_audit_sha256": sha256_file(audit) if audit.is_file() else None,
     }
 
     negative = directory / "comparator-negative-mismatch.json"
     if negative.is_file():
-        row["negative_comparator_config_path"] = f"{entry}/comparator-negative-mismatch.json"
+        row["negative_comparator_config_path"] = relative_path(REPO_ROOT, f"{entry}/comparator-negative-mismatch.json")
         row["negative_comparator_config_sha256"] = sha256_file(negative)
 
     if metadata.is_file():
         text = metadata.read_text(encoding="utf-8")
         row["axiom_audit_status_recorded"] = yaml_scalar(text, "axiom_audit_status")
-        row["formalization_metadata_path"] = f"{entry}/formalization.yaml"
+        row["formalization_metadata_path"] = relative_path(REPO_ROOT, f"{entry}/formalization.yaml")
         row["formalization_metadata_sha256"] = sha256_file(metadata)
 
     solution_text = solution.read_text(encoding="utf-8") if solution.is_file() else ""

@@ -1,0 +1,195 @@
+version: v0.4
+project:
+  name: 'Erdős #249, record section 6.2.1: initial implications (part 2 of 2)'
+  description: >-
+    This entry states 26 theorems that the long record for Erdős problem #249 states in section 6.2.1 (initial implications): the proposition “A Stern-Brocot recursion with stopping” (section 6.2.1), as divisibility_mass, stopping_probability_ge_third, stopping_transition_probabilities_sum_one, cylinderMass_eq_divisibility_mass_mul, cylinder_mediant_split, cylinder_root_values and normalised_split_probabilities; the proposition “Convergence with an explicit error” (section 6.2.1), as cylinderMass_children_le, sternBrocotDepthMass_error and tendsto_sternBrocotDepthMass; the proposition “A numerator polynomial and its coefficients” (section 6.2.1), as mobiusNumeratorPolynomial_coeff and mobiusNumeratorPolynomial_coeff_pos; the proposition “Evaluation at two” (section 6.2.1), as numerator_eval_two_divisors; the proposition “Decomposition by the radical” (section 6.2.1), as radical_decomposition; the proposition “A cyclotomic congruence” (section 6.2.1), as cyclotomic_dvd_mobiusNumeratorPolynomial_sub, jordanTotientTwo_eq_prod_primeFactors and mobiusNumerator_mod_cyclotomicEval; the proposition “Adjoining a prime: new divisors” (section 6.2.1), as cyclotomic_dvd_primeJump_new_fibre; the proposition “Adjoining a prime: existing divisors” (section 6.2.1), as cyclotomic_dvd_primeJump_old_fibre; the proposition “Lambert-series identities” (section 6.2.1), as lambertValue_eq_divisor_sum_series, alpha_divisor_sum_eq_totient and lambertValue_alpha_eq_totientSeries; the proposition “An affine combination annihilates the specified divisor terms” (section 6.2.1), as joint35_coefficient_moments, joint35_mobiusTermKernel_zero, mobiusTermKernel_affine_in_multiplier and mobiusTermKernel_moment_annihilation.
+
+    23 of the restated theorems are proved by a direct application of the source declaration, which certifies that the restated statement is definitionally the source statement; 3 are derived from the source declaration by a short tactic proof, which certifies implication.
+
+    Each theorem is restated against Mathlib alone, with the definitions its statement uses copied into the Challenge, and its documentation names the source declaration and, where there is one, the paper statement. The proofs come from the Lean development in this repository; the papers and their reasoning records are public at https://github.com/wcook04/plectis-erdos.
+
+    Erdős problem #249 remains open, and no theorem in this entry decides it.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - "11J72"
+  - "11A25"
+  - "11B83"
+  - "11J82"
+  - "11Y60"
+sources:
+- title: Formal reductions, obstruction theorems, and verified subfamilies for eight Erdős problems
+  authors:
+  - Will Cook
+  type: original-proof
+  relationship: other
+  note: "The compared theorems are independently restated Lean theorems proved in this repository and described in the public problem notes and reasoning records at https://github.com/wcook04/plectis-erdos."
+  license: Apache-2.0
+  author_endorsement: participated
+- title: Erdős Problems catalogue
+  authors:
+  - Thomas F. Bloom
+  id: https://www.erdosproblems.com
+  type: web discussion
+  relationship: background
+  note: "Catalogue numbering and status of the parent problem."
+  license: unknown
+  author_endorsement: not-contacted
+- title: Mathlib
+  authors:
+  - The mathlib contributors
+  id: https://github.com/leanprover-community/mathlib4
+  relationship: background
+  license: Apache-2.0
+  author_endorsement: n/a
+status:
+  scope: "One Comparator configuration selecting the 26 theorems listed in proofs/PalomarCorpus/E249_08/comparator.json, from the Lean development for Erdős problem #249. The problem's theorems are packed, in the order the papers state them, into the 33 entries proofs/PalomarCorpus/E249_01 to proofs/PalomarCorpus/E249_33, and each theorem appears in exactly one of them. Declarations that live only in the per-family ExternalVerification249* directories are internal regression inventory and are not selected."
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 26
+  sorry_boundary: "The only deliberate placeholders are the trusted theorem bodies in proofs/PalomarCorpus/E249_08/Challenge.lean. Comparator replay run 35935225572 of wcook04/plectis-erdos-lean at commit cc7e541 built this entry's Challenge and Solution with leanprover/lean4:v4.30.0 and accepted every compared theorem with both the Lean kernel and NanoDa, permitting only the axioms propext, Quot.sound and Classical.choice."
+  axiom_audit_status: "Lean Release Gate run 35935275645 at commit 18ea89f ran scripts/check_axiom_budget.py --run-palomar on the built Solution environment and printed only propext, Quot.sound and Classical.choice for every compared theorem."
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: "PalomarCorpus.E249.PaperStatementsAC.cyclotomic_dvd_mobiusNumeratorPolynomial_sub"
+    file: "proofs/Solutions/PalomarCorpus/E249_08/PaperStatementsAC.lean"
+    sorry_count: 0
+    comparator_config: "proofs/PalomarCorpus/E249_08/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAC.jordanTotientTwo_eq_prod_primeFactors"
+    file: "proofs/Solutions/PalomarCorpus/E249_08/PaperStatementsAC.lean"
+    sorry_count: 0
+    comparator_config: "proofs/PalomarCorpus/E249_08/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAC.mobiusNumeratorPolynomial_coeff"
+    file: "proofs/Solutions/PalomarCorpus/E249_08/PaperStatementsAC.lean"
+    sorry_count: 0
+    comparator_config: "proofs/PalomarCorpus/E249_08/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAC.mobiusNumeratorPolynomial_coeff_pos"
+    file: "proofs/Solutions/PalomarCorpus/E249_08/PaperStatementsAC.lean"
+    sorry_count: 0
+    comparator_config: "proofs/PalomarCorpus/E249_08/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.divisibility_mass"
+    file: "proofs/Solutions/PalomarCorpus/E249_08/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "proofs/PalomarCorpus/E249_08/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.joint35_coefficient_moments"
+    file: "proofs/Solutions/PalomarCorpus/E249_08/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "proofs/PalomarCorpus/E249_08/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.joint35_mobiusTermKernel_zero"
+    file: "proofs/Solutions/PalomarCorpus/E249_08/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "proofs/PalomarCorpus/E249_08/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.lambertValue_eq_divisor_sum_series"
+    file: "proofs/Solutions/PalomarCorpus/E249_08/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "proofs/PalomarCorpus/E249_08/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.mobiusTermKernel_affine_in_multiplier"
+    file: "proofs/Solutions/PalomarCorpus/E249_08/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "proofs/PalomarCorpus/E249_08/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.mobiusTermKernel_moment_annihilation"
+    file: "proofs/Solutions/PalomarCorpus/E249_08/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "proofs/PalomarCorpus/E249_08/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.stopping_probability_ge_third"
+    file: "proofs/Solutions/PalomarCorpus/E249_08/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "proofs/PalomarCorpus/E249_08/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAE.stopping_transition_probabilities_sum_one"
+    file: "proofs/Solutions/PalomarCorpus/E249_08/PaperStatementsAE.lean"
+    sorry_count: 0
+    comparator_config: "proofs/PalomarCorpus/E249_08/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAK.cylinderMass_children_le"
+    file: "proofs/Solutions/PalomarCorpus/E249_08/PaperStatementsAK.lean"
+    sorry_count: 0
+    comparator_config: "proofs/PalomarCorpus/E249_08/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAQ.mobiusNumerator_mod_cyclotomicEval"
+    file: "proofs/Solutions/PalomarCorpus/E249_08/PaperStatementsAQ.lean"
+    sorry_count: 0
+    comparator_config: "proofs/PalomarCorpus/E249_08/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAQ.numerator_eval_two_divisors"
+    file: "proofs/Solutions/PalomarCorpus/E249_08/PaperStatementsAQ.lean"
+    sorry_count: 0
+    comparator_config: "proofs/PalomarCorpus/E249_08/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAQ.radical_decomposition"
+    file: "proofs/Solutions/PalomarCorpus/E249_08/PaperStatementsAQ.lean"
+    sorry_count: 0
+    comparator_config: "proofs/PalomarCorpus/E249_08/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAS.cyclotomic_dvd_primeJump_new_fibre"
+    file: "proofs/Solutions/PalomarCorpus/E249_08/PaperStatementsAS.lean"
+    sorry_count: 0
+    comparator_config: "proofs/PalomarCorpus/E249_08/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAS.cyclotomic_dvd_primeJump_old_fibre"
+    file: "proofs/Solutions/PalomarCorpus/E249_08/PaperStatementsAS.lean"
+    sorry_count: 0
+    comparator_config: "proofs/PalomarCorpus/E249_08/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAY.cylinderMass_eq_divisibility_mass_mul"
+    file: "proofs/Solutions/PalomarCorpus/E249_08/PaperStatementsAY.lean"
+    sorry_count: 0
+    comparator_config: "proofs/PalomarCorpus/E249_08/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAY.cylinder_mediant_split"
+    file: "proofs/Solutions/PalomarCorpus/E249_08/PaperStatementsAY.lean"
+    sorry_count: 0
+    comparator_config: "proofs/PalomarCorpus/E249_08/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAY.cylinder_root_values"
+    file: "proofs/Solutions/PalomarCorpus/E249_08/PaperStatementsAY.lean"
+    sorry_count: 0
+    comparator_config: "proofs/PalomarCorpus/E249_08/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsAY.normalised_split_probabilities"
+    file: "proofs/Solutions/PalomarCorpus/E249_08/PaperStatementsAY.lean"
+    sorry_count: 0
+    comparator_config: "proofs/PalomarCorpus/E249_08/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsB.sternBrocotDepthMass_error"
+    file: "proofs/Solutions/PalomarCorpus/E249_08/PaperStatementsB.lean"
+    sorry_count: 0
+    comparator_config: "proofs/PalomarCorpus/E249_08/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsB.tendsto_sternBrocotDepthMass"
+    file: "proofs/Solutions/PalomarCorpus/E249_08/PaperStatementsB.lean"
+    sorry_count: 0
+    comparator_config: "proofs/PalomarCorpus/E249_08/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsBA.alpha_divisor_sum_eq_totient"
+    file: "proofs/Solutions/PalomarCorpus/E249_08/PaperStatementsBA.lean"
+    sorry_count: 0
+    comparator_config: "proofs/PalomarCorpus/E249_08/comparator.json"
+  - declaration: "PalomarCorpus.E249.PaperStatementsBA.lambertValue_alpha_eq_totientSeries"
+    file: "proofs/Solutions/PalomarCorpus/E249_08/PaperStatementsBA.lean"
+    sorry_count: 0
+    comparator_config: "proofs/PalomarCorpus/E249_08/comparator.json"
+  development_status: substantive
+  local_proof_provenance: "the proof modules Erdos249257, ErdosProblems.Erdos249 in this repository, imported by Solutions.PalomarCorpus.E249_08; the Solutions.ExternalVerification249* family modules are a regression mirror of the same proofs and are not imported by this configuration"
+  canonical_claim_status: "problem-level Comparator entry over substantive Lean in this repository"
+automation:
+  methods:
+  - method: manual
+    models: []
+    framework: Mathematical interpretation and claim-boundary review
+    tool_setup: Human-directed scope and significance review
+  - method: agent
+    models:
+    - Anthropic Claude
+    - OpenAI Codex
+    framework: Lean 4 and Mathlib
+    tool_setup: AI-assisted formalization, verification packaging, and exposition
+    cost:
+      wall_time: not tracked
+      spend_usd: subscription-based
+      hardware: local machine
+      prompting_notes: n/a
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    Every generated restatement was bound to a paper statement and refereed in the eight-paper coverage ledger before its wrapper was generated, and its transport proof was elaborated before the statement was accepted. The author selected the statements and is responsible for the claims. No human referee outside the author has reviewed this entry and no external referee report exists.
+acknowledgements: Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue.

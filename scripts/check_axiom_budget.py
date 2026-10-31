@@ -28,6 +28,8 @@ source bytes it actually ran on.
 
 from __future__ import annotations
 
+from corpus_paths import corpus_path, relative_path
+
 import argparse
 import hashlib
 import json
@@ -88,7 +90,7 @@ def entries(*, palomar: bool = False) -> list[str]:
     problem entries, so no band, and no entry since the paper-order re-pack, was ever audited.
     """
     if palomar:
-        if (REPO_ROOT / "PalomarCorpus/comparator.json").exists():
+        if corpus_path(REPO_ROOT, "PalomarCorpus/comparator.json").exists():
             raise ValueError("the superseded flat PalomarCorpus/comparator.json is present")
         return [f"PalomarCorpus/{name}" for name in palomar_entry_names.discover(REPO_ROOT)]
     return release_inventory.entries(REPO_ROOT)
@@ -134,7 +136,7 @@ def run_palomar_audits(entry_paths: list[str]) -> tuple[str, dict]:
     seen = set()
     with tempfile.TemporaryDirectory(prefix="plectis-axiom-audit-") as directory:
         for entry in entry_paths:
-            root = REPO_ROOT / entry
+            root = corpus_path(REPO_ROOT, entry)
             config = json.loads((root / "comparator.json").read_text())
             problem = root.name
             if (config.get("challenge_module") != f"PalomarCorpus.{problem}.Challenge"
@@ -205,7 +207,7 @@ def main() -> int:
     rows = []
     ok = True
     for entry in selected_entries:
-        comparator = json.loads((REPO_ROOT / entry / "comparator.json").read_text(encoding="utf-8"))
+        comparator = json.loads((corpus_path(REPO_ROOT, entry) / "comparator.json").read_text(encoding="utf-8"))
         permitted = set(comparator.get("permitted_axioms") or [])
         missing, over = [], []
         for name in comparator.get("theorem_names") or []:

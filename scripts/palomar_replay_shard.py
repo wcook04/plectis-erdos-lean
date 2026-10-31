@@ -37,6 +37,8 @@ No part of this module submits, registers, or claims a Palomar verdict.
 """
 from __future__ import annotations
 
+from corpus_paths import corpus_path, relative_path
+
 import argparse
 import hashlib
 import json
@@ -333,10 +335,10 @@ def solution_digest(corpus_root: Path, entry: str) -> dict[str, Any]:
     """
     module = Path("Solutions/PalomarCorpus")
     candidates: list[Path] = []
-    single = corpus_root / module / f"{entry}.lean"
+    single = corpus_path(corpus_root, module / f"{entry}.lean")
     if single.is_file():
         candidates.append(single)
-    directory = corpus_root / module / entry
+    directory = corpus_path(corpus_root, module / entry)
     if directory.is_dir():
         candidates.extend(sorted(path for path in directory.rglob("*.lean") if path.is_file()))
     files = {
@@ -385,7 +387,7 @@ def budgeted_entry_seconds(corpus_root: Path, entries: Sequence[str]) -> dict[st
     """Entry -> its extended Comparator budget in seconds, for the entries that have one."""
     found: dict[str, float] = {}
     for entry in entries:
-        path = Path(corpus_root) / "PalomarCorpus" / entry / "comparator.json"
+        path = corpus_path(corpus_root, "PalomarCorpus") / entry / "comparator.json"
         try:
             names = json.loads(path.read_text(encoding="utf-8")).get("theorem_names") or []
         except (OSError, json.JSONDecodeError):
@@ -539,7 +541,7 @@ def verify_entry(
     corpus_root = Path(corpus_root)
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
-    entry_dir = corpus_root / "PalomarCorpus" / entry
+    entry_dir = corpus_path(corpus_root, "PalomarCorpus") / entry
     result_file = out_dir / f"receipt-{entry}.json"
     stages: list[dict[str, Any]] = []
 
@@ -578,7 +580,7 @@ def verify_entry(
         budget_minutes = comparator_budget_minutes(theorem_names)
         argv = comparator_argv(
             sandbox_mode=str(context.get("sandbox_mode")),
-            config=f"PalomarCorpus/{entry}/comparator.json",
+            config=relative_path(corpus_root, f"PalomarCorpus/{entry}/comparator.json"),
             comparator_bin=str(context.get("comparator_bin")),
             working_directory=str(context.get("working_directory") or corpus_root),
             path=str(context.get("path") or ""),
@@ -761,7 +763,7 @@ def run_shard(
         except Exception as error:  # noqa: BLE001 - one entry must not fell the shard
             receipt = _receipt(
                 entry=entry, config={}, corpus_root=Path(corpus_root),
-                entry_dir=Path(corpus_root) / "PalomarCorpus" / entry, context=context,
+                entry_dir=corpus_path(corpus_root, "PalomarCorpus") / entry, context=context,
                 generated_at=clock(), stages=[],
                 comparison={"exit": None, "process_exit": None,
                             "nanoda_acceptance": False, "lean_acceptance": False},

@@ -236,7 +236,7 @@ def test_trusted_caller_binds_exact_source_and_rejects_invalid_input():
         assert result.returncode == 0, result.stderr.decode()
         values = dict(line.split("=", 1) for line in output.read_text().splitlines())
         assert values["source_commit"] == "c" * 40
-        assert json.loads(values["options"])["comparator_config_path"] == "PalomarCorpus/E1049_08/comparator.json"
+        assert "options" not in values  # file paths are selected only after immutable source checkout
         for key, invalid in (("SOURCE_COMMIT", "main"), ("SOURCE_COMMIT", "c" * 39),
                              ("ENTRY", "../E1049_08"), ("ENTRY", "E1049_08\nextra"),
                              ("REPOSITORY", "someone/other")):
@@ -251,9 +251,12 @@ def test_trusted_caller_checks_source_without_running_its_build():
     with tempfile.TemporaryDirectory() as tmp:
         root = Path(tmp)
         (root / "source").symlink_to(checkout, target_is_directory=True)
-        env = {**os.environ, "SOURCE_COMMIT": sha, "ENTRY": "E1049_08"}
+        env = {**os.environ, "SOURCE_COMMIT": sha, "ENTRY": "E1049_08", "GITHUB_OUTPUT": str(root / "outputs")}
         result = subprocess.run([sys.executable, "-c", code], cwd=root, env=env, capture_output=True)
         assert result.returncode == 0, result.stderr.decode()
+        from corpus_paths import relative_path
+        values = dict(line.split("=", 1) for line in (root / "outputs").read_text().splitlines())
+        assert json.loads(values["options"])["comparator_config_path"] == relative_path(checkout, "PalomarCorpus/E1049_08/comparator.json")
         result = subprocess.run([sys.executable, "-c", code], cwd=root,
                                 env={**env, "SOURCE_COMMIT": "0" * 40}, capture_output=True)
         assert result.returncode != 0
