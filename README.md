@@ -61,13 +61,15 @@ per problem in [the list below](#the-eight-problems).
 
 The theorem above has one folder and one proof file.
 
-| To see | Open |
-|---|---|
-| The exact statement | [`Challenge.lean`](proofs/families/ExternalVerification257ReciprocalSupport/Challenge.lean). Here `sorry` marks a deliberately omitted proof: this file supplies only the statement to compare against. |
-| The proof | [`proofs/Solutions/ExternalVerification257ReciprocalSupport.lean`](proofs/Solutions/ExternalVerification257ReciprocalSupport.lean), which imports [the source proof](Erdos257PeriodNoncollapse/AllBaseReciprocalSupportIrrationality.lean) and contains no `sorry`. |
-| The axioms | [`AxiomAudit.lean`](proofs/families/ExternalVerification257ReciprocalSupport/AxiomAudit.lean), which prints them when built. |
-| What Comparator was told to compare | [`comparator.json`](proofs/families/ExternalVerification257ReciprocalSupport/comparator.json), which names one theorem, three permitted axioms and NanoDa, an additional proof-checking program. |
-| Scope, sources and attribution | [`formalization.yaml`](proofs/families/ExternalVerification257ReciprocalSupport/formalization.yaml). |
+- **The exact statement:** [`Challenge.lean`](proofs/families/ExternalVerification257ReciprocalSupport/Challenge.lean).
+  Here `sorry` marks a deliberately omitted proof: this file supplies only the statement to compare against.
+- **The proof:** [open its Lean file](proofs/Solutions/ExternalVerification257ReciprocalSupport.lean),
+  which imports [the source proof](Erdos257PeriodNoncollapse/AllBaseReciprocalSupportIrrationality.lean) and contains no `sorry`.
+- **The axioms:** [`AxiomAudit.lean`](proofs/families/ExternalVerification257ReciprocalSupport/AxiomAudit.lean),
+  which prints them when built.
+- **What Comparator was told to compare:** [`comparator.json`](proofs/families/ExternalVerification257ReciprocalSupport/comparator.json),
+  which names one theorem, three permitted axioms and NanoDa, an additional proof-checking program.
+- **Scope, sources and attribution:** [`formalization.yaml`](proofs/families/ExternalVerification257ReciprocalSupport/formalization.yaml).
 
 The condition is about the sum of `1/a` over the exponents in the set A.
 Sets for which that sum diverges are outside this theorem, so it does not
@@ -78,11 +80,19 @@ written independently, with no priority claim.
 Three outside records exist for this theorem, and each is bound to one version
 of it.
 
-| Record | What it states | What it leaves out |
-|---|---|---|
-| [Palomar verification run](https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/35192583926) | Comparator and the Lean and NanoDa kernels accepted the proof at commit [`c39cea6a`](https://github.com/wcook04/plectis-erdos-lean/tree/c39cea6a976747d132a848d26f110b9c608d5a45) under Lean 4.29.0. | The current `main`, which uses Lean 4.30.0. |
-| [Palomar review and registration](https://palomar-registry.org/entry.html?id=PALOMAR-2026-10-21-000018&version=1) | A language model reviewed the entry, found no blocking problem and left one comment: the informal proof account omits the step where infinitude gives a strict minimum. The entry was then registered on 21 October 2026. | Human review. Palomar has no human editorial step. |
-| [Formal Conjectures #6529](https://github.com/google-deepmind/formal-conjectures/pull/6529) | Two reviewers approved earlier revisions, and the request was merged on 9 October 2026, adding a version of the statement to that collection. | Every other claim in this repository. |
+- **[Palomar verification run](https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/35192583926):**
+  Comparator and the Lean and NanoDa kernels accepted the proof at commit
+  [`c39cea6a`](https://github.com/wcook04/plectis-erdos-lean/tree/c39cea6a976747d132a848d26f110b9c608d5a45)
+  under Lean 4.29.0. That run does not check the current `main`, which uses Lean 4.30.0.
+- **[Palomar review and registration](https://palomar-registry.org/entry.html?id=PALOMAR-2026-10-21-000018&version=1):**
+  A language model reviewed the entry, found no blocking problem and left one comment:
+  the informal proof account omits the step where infinitude gives a strict minimum.
+  The entry was then registered on 21 October 2026. This was not human review;
+  Palomar has no human editorial step.
+- **[Formal Conjectures #6529](https://github.com/google-deepmind/formal-conjectures/pull/6529):**
+  Two reviewers approved earlier revisions, and the request was merged on 9 October 2026,
+  adding a version of the statement to that collection. This does not establish
+  any other claim in this repository.
 
 ## What Lean and Comparator establish
 
@@ -122,11 +132,14 @@ repository, usually inside [`verification/`](verification/README.md). Each folde
 there is a separate project with its own Lean version and dependency list.
 The main build does not include those projects.
 
-| Folder | What it holds |
-|---|---|
-| `verification/FC*Current/` | Adapters proving the exact Formal Conjectures declaration in Lean 4.33.1 with the Mathlib commit Formal Conjectures pinned. |
-| `verification/FC257ReciprocalSupport/` and three others without `Current` | Frozen copies of an original proof under Lean 4.29.1. |
-| `source-binding.json` in each folder | The original commit, and a digest for every copied file. |
+- Folders named `FC*Current` inside [`verification/`](verification/README.md)
+  contain adapters proving the exact Formal Conjectures declaration in Lean 4.33.1,
+  with the Mathlib commit Formal Conjectures pinned.
+- [`FC257ReciprocalSupport`](verification/FC257ReciprocalSupport/) and three
+  other folders without `Current` contain frozen copies of an original proof
+  under Lean 4.29.1.
+- `source-binding.json` in each folder records the original commit and a
+  digest for every copied file.
 
 As of 31 October 2026, five contributions have been merged into Formal
 Conjectures and 14 requests are open. The
