@@ -74,6 +74,15 @@ status:
       boundary: >-
         Not a universal infinite-support theorem. Erdős 257 remains open.
 
+automation:
+  methods:
+  - method: agent
+    framework: Cursor
+  notes: >-
+    Commit 86a58ed6cb5da9b1a527c474f3e081f0dfcc8246 introduced this package and credits
+    Cursor as a co-author. This entry records that packaging work. The record does not
+    identify the model used to produce the original proof.
+
 review:
   status: "self-assessed"
   reviewers: []
