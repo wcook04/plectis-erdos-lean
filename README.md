@@ -275,7 +275,7 @@ the other projects.
 - [`wcook04/plectis-erdos`](https://github.com/wcook04/plectis-erdos) holds the papers, research records and the [credit record](https://github.com/wcook04/plectis-erdos#credit) for prior mathematics, public contributions and reader feedback.
 - The [mathematics website](https://wcook04.github.io/practical-formal-verification/maths/) and [maths map](https://wcook04.github.io/practical-formal-verification/maths/universe.html) connect papers, results and Lean sources.
 - [Plectis Atlas](https://wcook04.github.io/plectis-atlas/) is a separate reader for OpenAI's mathematics release, and the [Plectis toolkit](https://github.com/wcook04/practical-formal-verification) holds reusable Python components.
-- Videos: [the maths map](https://www.youtube.com/watch?v=u4f-fk1o13k), [a proof of the #257 theorem above, starting with examples](https://www.youtube.com/watch?v=uWCqtRkJ8P0) and [an introduction to Plectis](https://www.youtube.com/watch?v=MBmVMMogXTA). A Lean proof does not cover the argument spoken in a video.
+- Videos: [Introduction to the projects](https://www.youtube.com/watch?v=Yk_kUQUCylc), the Maths Map [short](https://www.youtube.com/watch?v=HvaGqIEKygA) and [full tour](https://www.youtube.com/watch?v=u4f-fk1o13k), and the Erdős #257 [short](https://www.youtube.com/watch?v=0obrJljG0bo) and [full proof with examples](https://www.youtube.com/watch?v=VUSHyYSf1Ak). A Lean proof does not cover the argument spoken in a video.
 
 The project builds on [Lean](https://lean-lang.org/) and
 [Mathlib](https://github.com/leanprover-community/mathlib4), with problems and
